@@ -113,7 +113,7 @@ PagoView::PagoView( company *comp , QWidget *parent, const char *name) : QDialog
 	setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_proveedor->setcompany(comp);
-    inicialize();
+    dialogChanges_cargaInicial();
     _depura("Fin de la inicializaci� de PagoView\n",0);
 }// end PagoView
 
@@ -122,10 +122,6 @@ PagoView::~PagoView() {
     companyact->sacaWindow(this);
 }// end ~PagoView
 
-
-void PagoView::inicialize() {
-    dialogChanges_cargaInicial();
-}// end inicialize
 
 
 void PagoView::on_mui_borrar_clicked() {

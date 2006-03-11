@@ -23,7 +23,6 @@
 
 
 #include <QLineEdit>
-#include <Q3Table>
 
 // Listado de presupuestos.
 #include "ui_pagoslistbase.h"
@@ -37,19 +36,19 @@ class PagosList : public QWidget, private Ui_PagosListBase
 	Q_OBJECT
 
 private:
-	company *companyact;
+	company *m_companyact;
 	/// m_modo == 0 es modo edicion
 	/// m_modo == 1 es modo selector.
 	int m_modo;
-	QString m_idpago;
-	void inicializa();
+	QString mdb_idpago;
+	void inicializar();
 
 public:
 	PagosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
 	PagosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
 			Qt::WFlags flag = 0);
 	~PagosList();
-	void presenta();
+	void presentar();
 	void modoseleccion()
 	{
 		m_modo = 1;
@@ -60,12 +59,12 @@ public:
 	};
 	void setcompany (company *comp)
 	{
-		companyact = comp;
+		m_companyact = comp;
 		m_proveedor->setcompany(comp);
 	};
 	QString idpago()
 	{
-		return m_idpago;
+		return mdb_idpago;
 	};
 	void hideBotonera()
 	{
@@ -94,9 +93,9 @@ public:
 	void imprimir();
 	void meteWindow(QString nom, QObject *obj)
 	{
-		if (companyact != NULL)
+		if (m_companyact != NULL)
 		{
-			companyact->meteWindow(nom, obj);
+			m_companyact->meteWindow(nom, obj);
 		}
 	};
 	void setidproveedor(QString val)
@@ -120,10 +119,10 @@ public slots:
 	};
 	virtual void s_filtrar()
 	{
-		inicializa();
+		inicializar();
 	};
 
-	virtual void on_mui_actualizar_clicked() {presenta();};
+	virtual void on_mui_actualizar_clicked() {presentar();};
 	virtual void s_configurar();
 };
 

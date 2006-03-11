@@ -207,7 +207,7 @@ int provedit::chargeprovider(QString idprov) {
             m_listfacturasprov->setidproveedor(cur->valor("idproveedor"));
             m_listfacturasprov->presenta();
             m_listpagosprov->setidproveedor(cur->valor("idproveedor"));
-            m_listpagosprov->presenta();
+            m_listpagosprov->presentar();
 
             /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
             setCaption("Proveedor "+cur->valor("nomproveedor"));

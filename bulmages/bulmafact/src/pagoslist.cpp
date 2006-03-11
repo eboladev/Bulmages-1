@@ -42,21 +42,20 @@ CREATE TABLE presupuesto (
    idproveedor integer REFERENCES proveedor(idproveedor)
 );
 */
-#include "pagoslist.h"
-#include "company.h"
-#include "pagoview.h"
-#include "qtable1.h"
-#include "funcaux.h"
+
 
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QCheckBox>
 #include <QFile>
 #include <QCheckBox>
 #include <QMenu>
-//Added by qt3to4:
 #include <QTextStream>
 
+#include "pagoslist.h"
+#include "company.h"
+#include "pagoview.h"
+#include "qtable2.h"
+#include "funcaux.h"
 #include "configuracion.h"
 
 #define COL_IDPAGO 0
@@ -116,7 +115,7 @@ void PagosList::cargaconfig() {
 
 
 void PagosList::s_configurar() {
-	_depura("PagosList::s_configurar",0);
+    _depura("PagosList::s_configurar",0);
     if(mver_idpago->isChecked() )
         mui_list->showColumn(COL_IDPAGO);
     else
@@ -158,95 +157,80 @@ void PagosList::s_configurar() {
 
 PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
         : QWidget(parent, name, flag) {
-
-    companyact = NULL;
-
+    m_companyact = NULL;
     setupUi(this);
     m_modo=0;
-    m_idpago="";
+    mdb_idpago="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-    inicializa();
+    inicializar();
     cargaconfig();
-}// end providerslist
+}// end PagosList
 
 
 PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
         : QWidget(parent, name, flag) {
-    companyact = comp;
-
+    m_companyact = comp;
     setupUi(this);
-
     m_proveedor->setcompany(comp);
-
-    inicializa();
+    inicializar();
     cargaconfig();
-    presenta();
+    presentar();
     m_modo=0;
-    m_idpago="";
+    mdb_idpago="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-}// end providerslist
+}// end PagosList
 
 
 
 PagosList::~PagosList() {
-    companyact->sacaWindow(this);
+    m_companyact->sacaWindow(this);
     guardaconfig();
-}// end ~providerslist
+}// end ~PagosList
 
 
 
-void PagosList::inicializa() {
+void PagosList::inicializar() {
     _depura("PagosList::inicializa()\n",0);
     mui_list->setRowCount(0);
-	mui_list->setColumnCount(7);
-
-	QStringList headers;
-	headers << tr( "COL_IDPAGO" ) << tr( "COL_IDPROVEEDOR" ) << tr( "COL_FECHAPAGO" ) << tr( "COL_CANTPAGO" ) << tr( "COL_REFPAGO" ) << tr( "COL_PREVISIONPAGO" ) << tr( "COL_COMENTPAGO" );
-
-	mui_list->setHorizontalHeaderLabels (headers);
-
-
-
+    mui_list->setColumnCount(7);
+    QStringList headers;
+    headers << tr( "COL_IDPAGO" ) << tr( "COL_IDPROVEEDOR" ) << tr( "COL_FECHAPAGO" ) << tr( "COL_CANTPAGO" ) << tr( "COL_REFPAGO" ) << tr( "COL_PREVISIONPAGO" ) << tr( "COL_COMENTPAGO" );
+    mui_list->setHorizontalHeaderLabels (headers);
     _depura("end PagosList::inicializa()\n",0);
 }// end inicializa
 
 
 
-void PagosList::presenta() {
-    _depura("PagosList::presenta()\n",0);
-	s_filtrar();
-
-    if (companyact != NULL ) {
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
-	mui_list->setRowCount( cur->numregistros() );
+void PagosList::presentar() {
+    _depura("PagosList::presentar()\n",0);
+    s_filtrar();
+    if (m_companyact != NULL ) {
+        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
+        mui_list->setRowCount( cur->numregistros() );
         int i=0;
         while (!cur->eof()) {
-	    mui_list->setText(i, COL_IDPAGO, cur->valor("idpago"));
+            mui_list->setText(i, COL_IDPAGO, cur->valor("idpago"));
             mui_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
             mui_list->setText(i,COL_FECHAPAGO,cur->valor("fechapago"));
             mui_list->setText(i,COL_CANTPAGO,cur->valor("cantpago"));
             mui_list->setText(i,COL_REFPAGO,cur->valor("refpago"));
             mui_list->setText(i,COL_PREVISIONPAGO,cur->valor("previsionpago"));
             mui_list->setText(i,COL_COMENTPAGO,cur->valor("comentpago"));
-
             i++;
             cur->siguienteregistro();
         }// end while
         delete cur;
-
         /// Hacemos el calculo del total.
-        cur = companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
-
     }// end if
-	s_configurar();
-
-    _depura("END PagosList::presenta()\n",0);
+    s_configurar();
+    _depura("END PagosList::presentar()\n",0);
 }// end presenta
 
 
@@ -265,13 +249,10 @@ QString PagosList::generaFiltro() {
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT previsionpago";
     }// end if
-
     if (m_fechain->text() != "")
         filtro += " AND fechapago >= '"+m_fechain->text()+"' ";
-
     if (m_fechafin->text() != "")
         filtro += " AND fechapago <= '"+m_fechafin->text()+"' ";
-
     return (filtro);
 }// end generaFiltro
 
@@ -279,17 +260,18 @@ QString PagosList::generaFiltro() {
 
 void PagosList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-	if (a >=0 ) 
-    	on_mui_list_cellDoubleClicked(a,0);
-	else
-	_depura("Debe seleccionar una linea",2);
+    if (a >=0 )
+        on_mui_list_cellDoubleClicked(a,0);
+    else
+        _depura("Debe seleccionar una linea",2);
 }
 
+
 void PagosList::on_mui_list_cellDoubleClicked(int a, int ) {
-    m_idpago = mui_list->item(a,COL_IDPAGO)->text();
-    if (m_modo ==0 && m_idpago != "") {
-        PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
-        bud->cargaPago(m_idpago);
+    mdb_idpago = mui_list->item(a,COL_IDPAGO)->text();
+    if (m_modo ==0 && mdb_idpago != "") {
+        PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
+        bud->cargar(mdb_idpago);
         bud->show();
     } else {
         close();
@@ -300,15 +282,19 @@ void PagosList::on_mui_list_cellDoubleClicked(int a, int ) {
 
 
 void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
-	_depura("PagosList::on_mui_list_customContextMenuRequested",0);
+    _depura("PagosList::on_mui_list_customContextMenuRequested",0);
     int a = mui_list->currentRow();
-	if ( a < 0) return;
-        QMenu *popup = new QMenu(this);
-	QAction *del = popup->addAction(tr("Borrar Pago"));
-        QAction *opcion = popup->exec(QCursor::pos());
-        if (opcion == del) 
-            on_mui_borrar_clicked();
-        delete popup;
+    if ( a < 0)
+        return;
+    QMenu *popup = new QMenu(this);
+    QAction *edit = popup->addAction(tr("Editar Pago"));
+    QAction *del = popup->addAction(tr("Borrar Pago"));
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == del)
+        on_mui_borrar_clicked();
+    if (opcion == edit)
+	on_mui_editar_clicked();
+    delete popup;
 }
 
 
@@ -316,7 +302,7 @@ void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 void PagosList::on_mui_crear_clicked() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
+    PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
     bud->pintaPago();
@@ -379,7 +365,7 @@ void PagosList::imprimir() {
     /// ------------------------------------------------
     fitxersortidatxt += "</tr>";
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         /// -----------------------------
@@ -420,11 +406,11 @@ void PagosList::imprimir() {
 
 void PagosList::on_mui_borrar_clicked() {
     int a = mui_list->currentRow();
-    m_idpago = mui_list->item(a,COL_IDPAGO)->text();
-    if (m_modo ==0 && m_idpago != "") {
-        PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->cargaPago(m_idpago);
+    mdb_idpago = mui_list->item(a,COL_IDPAGO)->text();
+    if (m_modo ==0 && mdb_idpago != "") {
+        PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->cargar(mdb_idpago);
         bud->borraPago();
     }// end if
-    presenta();
+    presentar();
 }// end boton_borrar

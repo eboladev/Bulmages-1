@@ -44,7 +44,6 @@ class PagoView : public QDialog, private Ui_PagoBase, public Pago, public dialog
 public:
 	PagoView(company *, QWidget *, const char *);
 	~PagoView();
-	void inicialize();
 	void manageArticle(int);  
 	void closeEvent(QCloseEvent *);
 	void pintafechapago(QString id)
@@ -80,10 +79,11 @@ public:
 public slots:
 	virtual void on_mui_guardar_clicked() {guardaPago();};
 
-	virtual void s_cargaPagoView(QString id)
+	virtual void cargar(QString id)
 	{
-		Pago::cargaPago(id);
+		Pago::cargar(id);
 		setCaption("Pago " + DBvalue("refpago"));
+    		dialogChanges_cargaInicial();
 	};
 	virtual void on_mui_borrar_clicked();
 

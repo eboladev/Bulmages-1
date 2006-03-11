@@ -63,8 +63,8 @@ void Pago::pintaPago() {
 
 
 // Esta funci� carga un Pago.
-void Pago::cargaPago(QString idbudget) {
-    QString query = "SELECT * FROM pago WHERE idPago="+idbudget;
+void Pago::cargar(QString idpago) {
+    QString query = "SELECT * FROM pago WHERE idPago="+idpago;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
@@ -84,7 +84,7 @@ void Pago::guardaPago() {
     }// end if
     setidpago(id);
     companyact->commit();
-    cargaPago(id);
+//    cargaPago(id);
 }// end guardaPago
 
 

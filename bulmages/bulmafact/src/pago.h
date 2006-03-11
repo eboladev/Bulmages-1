@@ -36,7 +36,7 @@ protected:
 public:
 	Pago(company *);
 	virtual ~Pago();
-	virtual void cargaPago(QString);
+	virtual void cargar(QString);
 	void pintaPago();
 	void guardaPago();
 	void borraPago();
