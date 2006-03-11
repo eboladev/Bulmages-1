@@ -113,9 +113,8 @@ CobroView::CobroView( company *comp , QWidget *parent, const char *name) : QDial
 	setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_cliente->setcompany(comp);
-    inicialize();
     dialogChanges_cargaInicial();
-    _depura("Fin de la inicializacion de CobroView\n",0);
+    _depura("END CobroView::CobroView",0);
 }// end CobroView
 
 
@@ -124,17 +123,14 @@ CobroView::~CobroView() {
 }// end ~CobroView
 
 
-void CobroView::inicialize() {
-}// end inicialize
-
 
 
 void CobroView::on_mui_borrar_clicked() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
+    _depura("CobroView::on_mui_borrar_clicked\n",0);
     if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
         borraCobro();
     }// end if
-}// end boton_borrar
+}
 
 
 

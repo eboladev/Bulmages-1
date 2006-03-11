@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>413</width>
-    <height>219</height>
+    <width>541</width>
+    <height>320</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>3</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>4</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -31,61 +31,168 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>6</number>
      </property>
      <item>
-      <widget class="QToolButton" name="mui_guardar" >
-       <property name="minimumSize" >
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="toolTip" >
-        <string>Guardar Cobro</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Guardar Cobro</string>
-       </property>
+      <widget class="QLabel" name="label" >
        <property name="text" >
         <string/>
        </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
+       <property name="pixmap" >
+        <pixmap resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</pixmap>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="mui_borrar" >
-       <property name="minimumSize" >
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
+      <widget class="QFrame" name="frame" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="toolTip" >
-        <string>Borrar Cobro</string>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
        </property>
-       <property name="whatsThis" >
-        <string>Borrar Cobro</string>
-       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>9</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_guardar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Guardar Cobro</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Guardar Cobro</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Borrar Cobro</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar Cobro</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>328</width>
+            <height>32</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="textLabel1_2_2_3_2_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Referencia</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mui_refcobro" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="mui_previsioncobro" >
+     <property name="text" >
+      <string>Previsión</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="textLabel1_2_3_2" >
        <property name="text" >
-        <string/>
+        <string>Cliente</string>
        </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
+      </widget>
+     </item>
+     <item>
+      <widget class="BusquedaCliente" name="mui_cliente" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>7</hsizetype>
+         <vsizetype>5</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
       </widget>
      </item>
@@ -99,66 +206,11 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>160</width>
-         <height>21</height>
+         <width>161</width>
+         <height>20</height>
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_2_3_2_2" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Referencia</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="mui_refcobro" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>4</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_2_3_2" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Desc Presupuesto</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="mui_comentcobro" />
      </item>
     </layout>
    </item>
@@ -216,48 +268,24 @@
       <number>4</number>
      </property>
      <item>
-      <widget class="QLabel" name="textLabel1_2_3_2" >
-       <property name="text" >
-        <string>Cliente</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaCliente" name="mui_cliente" >
+      <widget class="QLabel" name="textLabel1_2_2_3_2" >
        <property name="sizePolicy" >
         <sizepolicy>
-         <hsizetype>7</hsizetype>
+         <hsizetype>1</hsizetype>
          <vsizetype>5</vsizetype>
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="text" >
+        <string>Desc Presupuesto</string>
+       </property>
       </widget>
      </item>
      <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>161</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+      <widget class="QLineEdit" name="mui_comentcobro" />
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QCheckBox" name="mui_previsioncobro" >
-     <property name="text" >
-      <string>Previsión</string>
-     </property>
-    </widget>
    </item>
    <item>
     <spacer>
@@ -269,8 +297,8 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>31</width>
-       <height>151</height>
+       <width>535</width>
+       <height>51</height>
       </size>
      </property>
     </spacer>
@@ -303,6 +331,271 @@
        <property name="enabled" >
         <bool>true</bool>
        </property>
+       <property name="palette" >
+        <palette>
+         <active>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>237</red>
+           <green>237</green>
+           <blue>237</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>166</red>
+           <green>166</green>
+           <blue>166</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </active>
+         <inactive>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>237</red>
+           <green>237</green>
+           <blue>237</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>166</red>
+           <green>166</green>
+           <blue>166</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </inactive>
+         <disabled>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>237</red>
+           <green>237</green>
+           <blue>237</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>166</red>
+           <green>166</green>
+           <blue>166</blue>
+          </color>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>121</red>
+           <green>125</green>
+           <blue>121</blue>
+          </color>
+          <color>
+           <red>207</red>
+           <green>207</green>
+           <blue>207</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </disabled>
+        </palette>
+       </property>
        <property name="font" >
         <font>
          <family>Arial</family>
@@ -316,6 +609,49 @@
        </property>
        <property name="text" >
         <string/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton" >
+       <property name="text" >
+        <string>Cerrar</string>
        </property>
       </widget>
      </item>
@@ -344,5 +680,22 @@
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CobroBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>503</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>538</x>
+     <y>176</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

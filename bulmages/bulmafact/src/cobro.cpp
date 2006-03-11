@@ -65,8 +65,8 @@ void Cobro::pintaCobro() {
 
 
 // Esta funci� carga un Cobro.
-void Cobro::cargaCobro(QString idbudget) {
-    QString query = "SELECT * FROM cobro WHERE idCobro="+idbudget;
+void Cobro::cargar(QString idcobro) {
+    QString query = "SELECT * FROM cobro WHERE idCobro="+idcobro;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
@@ -86,7 +86,7 @@ void Cobro::guardaCobro() {
     }// end if
     setidcobro(id);
     companyact->commit();
-    cargaCobro(id);
+    cargar(id);
 }// end guardaCobro
 
 

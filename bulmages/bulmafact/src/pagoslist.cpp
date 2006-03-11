@@ -207,7 +207,7 @@ void PagosList::inicializar() {
 
 void PagosList::presentar() {
     _depura("PagosList::presentar()\n",0);
-    s_filtrar();
+    inicializar();
     if (m_companyact != NULL ) {
         cursor2 * cur= m_companyact->cargacursor("SELECT * FROM pago where 1=1"+generaFiltro());
         mui_list->setRowCount( cur->numregistros() );
@@ -277,9 +277,6 @@ void PagosList::on_mui_list_cellDoubleClicked(int a, int ) {
         close();
     }// end if
 }
-
-
-
 
 void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("PagosList::on_mui_list_customContextMenuRequested",0);

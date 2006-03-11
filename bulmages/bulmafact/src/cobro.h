@@ -68,7 +68,7 @@ public:
 	{
 		setDBvalue("comentcobro",val);
 	};
-	virtual void cargaCobro(QString);
+	virtual void cargar(QString);
 	virtual void pintaidcobro(QString)
 	{
 	};

@@ -44,6 +44,7 @@ FORMS += about.ui \
  	 trabajadorbase.ui \
          fpagobase.ui \
 	 pagoslistbase.ui \
+         cobroslistbase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
@@ -72,7 +73,6 @@ FORMS3 += bulmafactbase.ui \
           albaranesproveedorbase.ui \
           busquedafamiliabase.ui \
           busquedatipoarticulobase.ui \
-          cobroslistbase.ui \
           facturasplistbase.ui \
           facturapbase.ui \
 	  pedidosproveedorlistbase.ui \

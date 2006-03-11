@@ -42,21 +42,22 @@ CREATE TABLE presupuesto (
    idcliente integer REFERENCES cliente(idcliente)
 );
 */
+
+
+#include <QMessageBox>
+#include <QCheckBox>
+#include <QFile>
+#include <QCheckBox>
+#include <QTextStream>
+#include <QMenu>
+
+#include "configuracion.h"
 #include "cobroslist.h"
 #include "company.h"
 #include "cobroview.h"
 #include "qtable1.h"
 #include "funcaux.h"
 
-#include <QMessageBox>
-#include <Q3PopupMenu>
-#include <QCheckBox>
-#include <QFile>
-#include <QCheckBox>
-//Added by qt3to4:
-#include <QTextStream>
-
-#include "configuracion.h"
 
 #define COL_IDCOBRO 0
 #define COL_IDCLIENTE 1
@@ -82,13 +83,13 @@ void CobrosList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
+        for (int i = 0; i < mui_list->columnCount(); i++) {
+            mui_list->showColumn(i);
+            stream << mui_list->columnWidth(i) << "\n";
         }// end for
         file.close();
     }// end if
-}// end guardaconfig()
+}
 
 void CobrosList::cargaconfig() {
     QFile file( confpr->valor(CONF_DIR_USER)+"confcobroslist.cfn" );
@@ -96,9 +97,9 @@ void CobrosList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
+        for (int i = 0; i < mui_list->columnCount(); i++) {
             QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
+            mui_list->setColumnWidth(i, linea.toInt());
         }// end for
         file.close();
     } else
@@ -118,132 +119,114 @@ void CobrosList::cargaconfig() {
 
 void CobrosList::s_configurar() {
     if(mver_idcobro->isChecked() )
-        m_list->showColumn(COL_IDCOBRO);
+        mui_list->showColumn(COL_IDCOBRO);
     else
-        m_list->hideColumn(COL_IDCOBRO);
+        mui_list->hideColumn(COL_IDCOBRO);
 
     if(mver_idcliente->isChecked() )
-        m_list->showColumn(COL_IDCLIENTE);
+        mui_list->showColumn(COL_IDCLIENTE);
     else
-        m_list->hideColumn(COL_IDCLIENTE);
+        mui_list->hideColumn(COL_IDCLIENTE);
 
     if(mver_fechacobro->isChecked() )
-        m_list->showColumn(COL_FECHACOBRO);
+        mui_list->showColumn(COL_FECHACOBRO);
     else
-        m_list->hideColumn(COL_FECHACOBRO);
+        mui_list->hideColumn(COL_FECHACOBRO);
 
     if(mver_cantcobro->isChecked() )
-        m_list->showColumn(COL_CANTCOBRO);
+        mui_list->showColumn(COL_CANTCOBRO);
     else
-        m_list->hideColumn(COL_CANTCOBRO);
+        mui_list->hideColumn(COL_CANTCOBRO);
 
     if(mver_refcobro->isChecked() )
-        m_list->showColumn(COL_REFCOBRO);
+        mui_list->showColumn(COL_REFCOBRO);
     else
-        m_list->hideColumn(COL_REFCOBRO);
+        mui_list->hideColumn(COL_REFCOBRO);
 
     if(mver_previsioncobro->isChecked() )
-        m_list->showColumn(COL_PREVISIONCOBRO);
+        mui_list->showColumn(COL_PREVISIONCOBRO);
     else
-        m_list->hideColumn(COL_PREVISIONCOBRO);
+        mui_list->hideColumn(COL_PREVISIONCOBRO);
 
     if(mver_comentcobro->isChecked() )
-        m_list->showColumn(COL_COMENTCOBRO);
+        mui_list->showColumn(COL_COMENTCOBRO);
     else
-        m_list->hideColumn(COL_COMENTCOBRO);
+        mui_list->hideColumn(COL_COMENTCOBRO);
+}
 
 
-
-}// end s_configurar
-
-
-CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : CobrosListBase(parent, name, flag) {
+CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag) : QWidget (parent, name, flag) {
+    setupUi(this);
     inicializa();
     cargaconfig();
     s_configurar();
-    companyact = NULL;
+    m_companyact = NULL;
     m_modo=0;
-    m_idcobro="";
+    mdb_idcobro="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-}// end providerslist
+}
 
-CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : CobrosListBase(parent, name, flag) {
-    companyact = comp;
+CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)   : QWidget(parent, name, flag) {
+    m_companyact = comp;
+    setupUi(this);
     m_cliente->setcompany(comp);
-
     inicializa();
     cargaconfig();
     s_configurar();
     presenta();
     m_modo=0;
-    m_idcobro="";
+    mdb_idcobro="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-}// end providerslist
+}
 
 CobrosList::~CobrosList() {
-    companyact->sacaWindow(this);
+    m_companyact->sacaWindow(this);
     guardaconfig();
-}// end ~providerslist
+}
 
 void CobrosList::inicializa() {
-    fprintf(stderr,"CobrosList::inicializa()\n");
-    m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(7);
-
-    m_list->horizontalHeader()->setLabel( COL_IDCOBRO, tr( "COL_IDCOBRO" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "COL_IDCLIENTE" ) );
-    m_list->horizontalHeader()->setLabel( COL_FECHACOBRO, tr( "COL_FECHACOBRO" ) );
-    m_list->horizontalHeader()->setLabel( COL_CANTCOBRO, tr( "COL_CANTCOBRO" ) );
-    m_list->horizontalHeader()->setLabel( COL_REFCOBRO, tr( "COL_REFCOBRO" ) );
-    m_list->horizontalHeader()->setLabel( COL_PREVISIONCOBRO, tr( "COL_PREVISIONCOBRO" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTCOBRO, tr( "COL_COMENTCOBRO" ) );
-
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");
-    m_list->setReadOnly(TRUE);
-    fprintf(stderr,"end CobrosList::inicializa()\n");
-}// end inicializa
+    _depura("CobrosList::inicializa()\n",0);
+    mui_list->setRowCount(0);
+    mui_list->setColumnCount(7);
+    QStringList headers;
+    headers << tr( "COL_IDCOBRO" ) << tr( "COL_IDCLIENTE" ) << tr( "COL_FECHACOBRO" ) << tr( "COL_CANTCOBRO" ) << tr( "COL_REFCOBRO" ) << tr( "COL_PREVISIONCOBRO" ) << tr( "COL_COMENTCOBRO" );
+    mui_list->setHorizontalHeaderLabels (headers);
+    _depura("end CobrosList::inicializa()\n",0);
+}
 
 
 
 void CobrosList::presenta() {
-    fprintf(stderr,"CobrosList::presenta()\n");
-    if (companyact != NULL ) {
-        cursor2 * cur= companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
-        m_list->setNumRows( cur->numregistros() );
+    _depura("CobrosList::presenta()\n",0);
+	inicializa();
+    if (m_companyact != NULL ) {
+        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
+        mui_list->setRowCount( cur->numregistros() );
         int i=0;
         while (!cur->eof()) {
-            m_list->setText(i,COL_IDCOBRO,cur->valor("idcobro"));
-            m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-            m_list->setText(i,COL_FECHACOBRO,cur->valor("fechacobro"));
-            m_list->setText(i,COL_CANTCOBRO,cur->valor("cantcobro"));
-            m_list->setText(i,COL_REFCOBRO,cur->valor("refcobro"));
-            m_list->setText(i,COL_PREVISIONCOBRO,cur->valor("previsioncobro"));
-            m_list->setText(i,COL_COMENTCOBRO,cur->valor("comentcobro"));
+            mui_list->setText(i,COL_IDCOBRO,cur->valor("idcobro"));
+            mui_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
+            mui_list->setText(i,COL_FECHACOBRO,cur->valor("fechacobro"));
+            mui_list->setText(i,COL_CANTCOBRO,cur->valor("cantcobro"));
+            mui_list->setText(i,COL_REFCOBRO,cur->valor("refcobro"));
+            mui_list->setText(i,COL_PREVISIONCOBRO,cur->valor("previsioncobro"));
+            mui_list->setText(i,COL_COMENTCOBRO,cur->valor("comentcobro"));
             i++;
             cur->siguienteregistro();
         }// end while
         delete cur;
-
         /// Hacemos el calculo del total.
-        cur = companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro where 1=1"+generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro where 1=1"+generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     }// end if
-
-    fprintf(stderr,"end CobrosList::presenta()\n");
-}// end presenta
+	s_configurar();
+    _depura("END CobrosList::presenta()\n",0);
+}
 
 
 
@@ -271,57 +254,31 @@ QString CobrosList::generaFiltro() {
 
     //    filtro += " ORDER BY idcobro";
     return (filtro);
-}// end generaFiltro
-
-
-
-void CobrosList::s_editar() {
-    int a = m_list->currentRow();
-	if (a >=0 ) 
-    	doubleclicked(a,0,0, QPoint());
-	else
-	_depura("Debe seleccionar una linea,2");
-
-
-}
-
-void CobrosList::doubleclicked(int a, int , int , const QPoint &) {
-    m_idcobro = m_list->text(a,COL_IDCOBRO);
-    if (m_modo ==0 && m_idcobro != "") {
-        CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
-        bud->cargaCobro(m_idcobro);
-        bud->show();
-    } else {
-        close();
-    }// end if
 }
 
 
-void CobrosList::s_contextMenu(int, int, int button, const QPoint &poin) {
-    qDebug("button = %d", button);
-    if (button == 2) {
-        Q3PopupMenu *popup;
-        popup = new Q3PopupMenu;
-        popup->insertItem(tr("Borrar Cobro"),101);
-        //popup->insertSeparator();
-        int opcion = popup->exec(m_list->mapToGlobal(poin));
-        switch(opcion) {
-        case 101:
-            s_borrarCobro();
-            break;
-        }// end switch
-        delete popup;
-    }
-}// end contextmenu
+
+void CobrosList::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
+    if (a >=0 )
+        on_mui_list_cellDoubleClicked(a,0);
+    else
+        _depura("Debe seleccionar una linea",2);
+}
 
 
-void CobrosList::s_nuevoCobro() {
-    fprintf(stderr,"Iniciamos el boton_crear\n");
-    CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+
+
+
+
+
+void CobrosList::on_mui_crear_clicked() {
+    _depura("CobrosList::on_mui_crear_clicked",0);
+    CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintaCobro();
-}// end boton_crear
+}
 
 
 void CobrosList::imprimir() {
@@ -380,7 +337,7 @@ void CobrosList::imprimir() {
     /// ------------------------------------------------
     fitxersortidatxt += "</tr>";
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         /// -----------------------------
@@ -412,25 +369,50 @@ void CobrosList::imprimir() {
         stream << buff;
         file.close();
     }
-
     // Crea el pdf  y lo muestra.
     _depura("Vamos a imprimir e listado de cobros",0);
     invocaPDF("cobros");
+}
 
 
-
-
-
-}// end imprimir
-
-
-void CobrosList::s_borrarCobro() {
-    int a = m_list->currentRow();
-    m_idcobro = m_list->text(a,COL_IDCOBRO);
-    if (m_modo ==0 && m_idcobro != "") {
-        CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
-        bud->cargaCobro(m_idcobro);
+void CobrosList::on_mui_borrar_clicked() {
+    int a = mui_list->currentRow();
+    mdb_idcobro = mui_list->item(a,COL_IDCOBRO)->text();
+    if (m_modo ==0 && mdb_idcobro != "") {
+        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
+        bud->cargar(mdb_idcobro);
         bud->borraCobro();
     }// end if
     presenta();
-}// end boton_borrar
+}
+
+
+void CobrosList::on_mui_list_cellDoubleClicked(int a, int ) {
+    mdb_idcobro = mui_list->item(a,COL_IDCOBRO)->text();
+    if (m_modo ==0 && mdb_idcobro != "") {
+        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+        bud->cargar(mdb_idcobro);
+        bud->show();
+    } else {
+        close();
+    }// end if
+}
+
+void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
+    _depura("PagosList::on_mui_list_customContextMenuRequested",0);
+    int a = mui_list->currentRow();
+    if ( a < 0)
+        return;
+    QMenu *popup = new QMenu(this);
+    QAction *edit = popup->addAction(tr("Editar Cobro"));
+    QAction *del = popup->addAction(tr("Borrar Cobro"));
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == del)
+        on_mui_borrar_clicked();
+    if (opcion == edit)
+	on_mui_editar_clicked();
+    delete popup;
+}
+
+
+

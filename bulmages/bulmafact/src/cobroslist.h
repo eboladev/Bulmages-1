@@ -21,26 +21,26 @@
 #ifndef COBROSLIST_H
 #define COBROSLIST_H
 
-// Listado de presupuestos.
+// Listado de Cobros.
 #include <QLineEdit>
 #include <Q3Table>
 
-#include "cobroslistbase.h"
+#include "ui_cobroslistbase.h"
 #include "company.h"
 #include "busquedacliente.h"
 #include "funcaux.h"
 
 
-class CobrosList : public CobrosListBase
+class CobrosList : public QWidget, private Ui_CobrosListBase
 {
 	Q_OBJECT
 
 private:
-	company *companyact;
+	company *m_companyact;
 	/// m_modo == 0 es modo edicion
 	/// m_modo == 1 es modo selector.
 	int m_modo;
-	QString m_idcobro;
+	QString mdb_idcobro;
 	void inicializa();
 
 public:
@@ -59,12 +59,12 @@ public:
 	};
 	void setcompany (company *comp)
 	{
-		companyact = comp;
+		m_companyact = comp;
 		m_cliente->setcompany(comp);
 	};
 	QString idcobro()
 	{
-		return m_idcobro;
+		return mdb_idcobro;
 	};
 	void hideBotonera()
 	{
@@ -93,9 +93,9 @@ public:
 	void imprimir();
 	void meteWindow(QString nom, QObject *obj)
 	{
-		if (companyact != NULL)
+		if (m_companyact != NULL)
 		{
-			companyact->meteWindow(nom, obj);
+			m_companyact->meteWindow(nom, obj);
 		}
 	};
 	void setidcliente(QString val)
@@ -109,39 +109,22 @@ public:
 	void cargaconfig();
 
 public slots:
-	virtual void doubleclicked(int, int, int, const QPoint &);
-	virtual void s_contextMenu(int, int, int, const QPoint &);
-	virtual void s_editar();
-	virtual void s_nuevoCobro();
-	virtual void s_borrarCobro();
-	virtual void s_imprimir()
+	virtual void on_mui_list_cellDoubleClicked(int , int);
+	virtual void on_mui_list_customContextMenuRequested(const QPoint &);
+
+
+	virtual void on_mui_editar_clicked();
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_imprimir_clicked()
 	{
 		imprimir();
 	};
-	virtual void s_filtrar()
+	virtual void on_mui_actualizar_clicked()
 	{
 		presenta();
 	};
-	virtual void s_mostrarBusqueda()
-	{
-		_depura("s_mostrarBusqueda", 0);
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-	    	_depura("s_mostrarConfiguracion", 0);
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
+
 	virtual void s_configurar();
 };
 

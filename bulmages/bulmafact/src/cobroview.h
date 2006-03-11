@@ -37,88 +37,71 @@
 
 class company;
 
-class CobroView : public QDialog, private Ui_CobroBase, public Cobro, public dialogChanges
-{
-	Q_OBJECT
+class CobroView : public QDialog, private Ui_CobroBase, public Cobro, public dialogChanges {
+    Q_OBJECT
 
 public:
-	CobroView(company *, QWidget *, const char *);
-	~CobroView();
-	void inicialize();
-	void manageArticle(int);
-	void closeEvent(QCloseEvent *);
-	void pintafechacobro(QString id)
-	{
-		mui_fechacobro->setText(id);
-	};
-	void pintacomentcobro(QString id)
-	{
-		mui_comentcobro->setText(id);
-	};
-	void pintaidcliente(QString id)
-	{
-		mui_cliente->setidcliente(id);
-	};
-	void pintarefcobro(QString id)
-	{
-		mui_refcobro->setText(id);
-	};
-	void pintacantcobro(QString id)
-	{
-		mui_cantcobro->setText(id);
-	};
-	void pintaprevisioncobro(QString id)
-	{
-		if (id == "t" || id == "TRUE")
-		{
-			mui_previsioncobro->setChecked(TRUE);
-		} else {
-			mui_previsioncobro->setChecked(FALSE);
-		}
-	};
+    CobroView(company *, QWidget *, const char *);
+    ~CobroView();
+    void manageArticle(int);
+    void closeEvent(QCloseEvent *);
+    void pintafechacobro(QString id) {
+        mui_fechacobro->setText(id);
+    };
+    void pintacomentcobro(QString id) {
+        mui_comentcobro->setText(id);
+    };
+    void pintaidcliente(QString id) {
+        mui_cliente->setidcliente(id);
+    };
+    void pintarefcobro(QString id) {
+        mui_refcobro->setText(id);
+    };
+    void pintacantcobro(QString id) {
+        mui_cantcobro->setText(id);
+    };
+    void pintaprevisioncobro(QString id) {
+        if (id == "t" || id == "TRUE") {
+            mui_previsioncobro->setChecked(TRUE);
+        } else {
+            mui_previsioncobro->setChecked(FALSE);
+        }
+    };
 
 public slots:
-	virtual void on_mui_guardar_clicked()
-	{
-		guardaCobro();
-	};
-	virtual void s_cargaCobroView(QString id)
-	{
-		Cobro::cargaCobro(id);
-		setCaption("Cobro " + DBvalue("refcobro"));
-	};
-	virtual void on_mui_borrar_clicked();
+    virtual void on_mui_guardar_clicked() {
+        guardaCobro();
+    };
+    virtual void cargar(QString id) {
+        Cobro::cargar(id);
+        setCaption("Cobro " + DBvalue("refcobro"));
+        dialogChanges_cargaInicial();
+    };
+    virtual void on_mui_borrar_clicked();
 
 
-	virtual void on_mui_comentcobro_textChanged(const QString &str)
-	{
-		setcomentcobro(str);
-	};
-	virtual void on_mui_refcobro_textChanged(const QString &str)
-	{
-		setrefcobro(str);
-	};
-	virtual void on_mui_cantcobro_textChanged(const QString &str)
-	{
-		setcantcobro(str);
-	};
-	virtual void on_mui_previsioncobro_stateChanged(int i)
-	{
-		if (i)
-		{
-			setprevisioncobro("TRUE");
-		} else {
-			setprevisioncobro("FALSE");
-		}
-	}
-	virtual void on_mui_cliente_valueChanged(QString id)
-	{
-		setidcliente(id);
-	};
-	virtual void on_mui_fechacobro_valueChanged(QString id)
-	{
-		setfechacobro(id);
-	};
+    virtual void on_mui_comentcobro_textChanged(const QString &str) {
+        setcomentcobro(str);
+    };
+    virtual void on_mui_refcobro_textChanged(const QString &str) {
+        setrefcobro(str);
+    };
+    virtual void on_mui_cantcobro_textChanged(const QString &str) {
+        setcantcobro(str);
+    };
+    virtual void on_mui_previsioncobro_stateChanged(int i) {
+        if (i) {
+            setprevisioncobro("TRUE");
+        } else {
+            setprevisioncobro("FALSE");
+        }
+    }
+    virtual void on_mui_cliente_valueChanged(QString id) {
+        setidcliente(id);
+    };
+    virtual void on_mui_fechacobro_valueChanged(QString id) {
+        setfechacobro(id);
+    };
 };
 
 #endif
