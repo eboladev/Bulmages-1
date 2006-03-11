@@ -18,18 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "articulolist.h"
 #include <Q3Table>
 #include <QMessageBox>
 #include <QFile>
 #include <QLineEdit>
 #include <QCheckBox>
 #include <QComboBox>
-//Added by qt3to4:
 #include <QTextStream>
 #include <Q3FileDialog>
 
-
+#include "articulolist.h"
 #include "pgimportfiles.h"
 #include "company.h"
 #include "articuloview.h"
@@ -59,214 +57,270 @@
 #define COL_STOCKARTICULO 18
 #define COL_PVPARTICULO 19
 
-void ArticuloList::guardaconfig() {
-    _depura("ArticuloList::INIT_guardaconfig()\n",0);
 
-    QString aux = "";
-    mver_idarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_codcompletoarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_nomarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_descarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_cbarrasarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_tipoarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_descuentoarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_especificacionesarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_iconoarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_fotoarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_posterarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_margenarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_sobrecostearticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_modeloarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_idtipo_iva->isChecked() ? aux += "1,":aux+="0,";
-    mver_desctipo_iva->isChecked() ? aux += "1,":aux+="0,";
-    mver_idlinea_prod->isChecked() ? aux += "1,":aux+="0,";
-    mver_codarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_stockarticulo->isChecked() ? aux += "1,":aux+="0,";
-    mver_pvparticulo->isChecked() ? aux += "1,":aux+="0,";
+void ArticuloList::guardaconfig()
+{
+	_depura("ArticuloList::INIT_guardaconfig()\n", 0);
+	QString aux = "";
+	mver_idarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_codcompletoarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_nomarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_descarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_cbarrasarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_tipoarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_descuentoarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_especificacionesarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_iconoarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_fotoarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_posterarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_margenarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_sobrecostearticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_modeloarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_idtipo_iva->isChecked() ? aux += "1," : aux += "0,";
+	mver_desctipo_iva->isChecked() ? aux += "1," : aux += "0,";
+	mver_idlinea_prod->isChecked() ? aux += "1," : aux += "0,";
+	mver_codarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_stockarticulo->isChecked() ? aux += "1," : aux += "0,";
+	mver_pvparticulo->isChecked() ? aux += "1," : aux += "0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"confArticuloList.cfn" );
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
-        stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
-        }// end for
-        file.close();
-    }// end if
+	QFile file(confpr->valor(CONF_DIR_USER) + "confArticuloList.cfn");
 
-    _depura("ArticuloList::END_guardaconfig()\n",0);
-}// end guardaconfig()
+	if (file.open( QIODevice::WriteOnly))
+	{
+		QTextStream stream(&file);
+		stream << aux << "\n";
 
-void ArticuloList::cargaconfig() {
-    _depura("ArticuloList::INIT_cargaconfig()\n",0);
+		for (int i = 0; i < m_list->numCols(); i++)
+		{
+			m_list->showColumn(i);
+			stream << m_list->columnWidth(i) << "\n";
+		};
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"confArticuloList.cfn" );
-    QString line;
-    if ( file.open( QIODevice::ReadOnly ) ) {
-        QTextStream stream( &file );
-        line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
-            QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
-        }// end for
-        file.close();
-    } else
-        return;
+		file.close();
+	};
 
-    mver_idarticulo->setChecked(line.at(0)=='1');
-    mver_codcompletoarticulo->setChecked(line.at(2)=='1');
-    mver_nomarticulo->setChecked(line.at(4)=='1');
-    mver_descarticulo->setChecked(line.at(6)=='1');
-    mver_cbarrasarticulo->setChecked(line.at(8)=='1');
-    mver_tipoarticulo->setChecked(line.at(10)=='1');
-    mver_descuentoarticulo->setChecked(line.at(12)=='1');
-    mver_especificacionesarticulo->setChecked(line.at(14)=='1');
-    mver_iconoarticulo->setChecked(line.at(16)=='1');
-    mver_fotoarticulo->setChecked(line.at(18)=='1');
-    mver_posterarticulo->setChecked(line.at(20)=='1');
-    mver_margenarticulo->setChecked(line.at(22)=='1');
-    mver_sobrecostearticulo->setChecked(line.at(24)=='1');
-    mver_modeloarticulo->setChecked(line.at(26)=='1');
-    mver_idtipo_iva->setChecked(line.at(28)=='1');
-    mver_desctipo_iva->setChecked(line.at(30)=='1');
-    mver_idlinea_prod->setChecked(line.at(32)=='1');
-    mver_codarticulo->setChecked(line.at(34)=='1');
-    mver_stockarticulo->setChecked(line.at(36)=='1');
-    mver_pvparticulo->setChecked(line.at(38)=='1');
-
-    _depura("ArticuloList::END_guardaconfig()\n",0);
-}// end cargaconfig
+	_depura("ArticuloList::END_guardaconfig()\n", 0);
+};
 
 
+void ArticuloList::cargaconfig()
+{
+	_depura("ArticuloList::INIT_cargaconfig()\n", 0);
+	QFile file( confpr->valor(CONF_DIR_USER) + "confArticuloList.cfn");
+	QString line;
 
-void ArticuloList::s_configurar() {
-    _depura("ArticuloList::INIT_s_configurar()\n",0);
+	if (file.open(QIODevice::ReadOnly))
+	{
+		QTextStream stream(&file);
+		/// line of text excluding '\n'
+		line = stream.readLine();
 
-    if(mver_idarticulo->isChecked() )
-        m_list->showColumn(COL_IDARTICULO);
-    else
-        m_list->hideColumn(COL_IDARTICULO);
+		for (int i = 0; i < m_list->numCols(); i++)
+		{
+			QString linea = stream.readLine();
+			m_list->setColumnWidth(i, linea.toInt());
+		};
 
-    if(mver_codcompletoarticulo->isChecked() )
-        m_list->showColumn(COL_CODCOMPLETOARTICULO);
-    else
-        m_list->hideColumn(COL_CODCOMPLETOARTICULO);
+		file.close();
+	} else {
+		return;
+	};
 
-    if(mver_nomarticulo->isChecked() )
-        m_list->showColumn(COL_NOMARTICULO);
-    else
-        m_list->hideColumn(COL_NOMARTICULO);
-
-    if(mver_descarticulo->isChecked() )
-        m_list->showColumn(COL_DESCARTICULO);
-    else
-        m_list->hideColumn(COL_DESCARTICULO);
-
-    if(mver_cbarrasarticulo->isChecked() )
-        m_list->showColumn(COL_CBARRASARTICULO);
-    else
-        m_list->hideColumn(COL_CBARRASARTICULO);
-
-    if(mver_tipoarticulo->isChecked() )
-        m_list->showColumn(COL_TIPOARTICULO);
-    else
-        m_list->hideColumn(COL_TIPOARTICULO);
-
-    if(mver_descuentoarticulo->isChecked() )
-        m_list->showColumn(COL_DESCUENTOARTICULO);
-    else
-        m_list->hideColumn(COL_DESCUENTOARTICULO);
-
-    if(mver_especificacionesarticulo->isChecked() )
-        m_list->showColumn(COL_ESPECIFICACIONESARTICULO);
-    else
-        m_list->hideColumn(COL_ESPECIFICACIONESARTICULO);
-
-    if(mver_iconoarticulo->isChecked() )
-        m_list->showColumn(COL_ICONOARTICULO);
-    else
-        m_list->hideColumn(COL_ICONOARTICULO);
-
-    if(mver_fotoarticulo->isChecked() )
-        m_list->showColumn(COL_FOTOARTICULO);
-    else
-        m_list->hideColumn(COL_FOTOARTICULO);
-
-    if(mver_posterarticulo->isChecked() )
-        m_list->showColumn(COL_POSTERARTICULO);
-    else
-        m_list->hideColumn(COL_POSTERARTICULO);
-
-    if(mver_margenarticulo->isChecked() )
-        m_list->showColumn(COL_MARGENARTICULO);
-    else
-        m_list->hideColumn(COL_MARGENARTICULO);
-
-    if(mver_sobrecostearticulo->isChecked() )
-        m_list->showColumn(COL_SOBRECOSTEARTICULO);
-    else
-        m_list->hideColumn(COL_SOBRECOSTEARTICULO);
-
-    if(mver_modeloarticulo->isChecked() )
-        m_list->showColumn(COL_MODELOARTICULO);
-    else
-        m_list->hideColumn(COL_MODELOARTICULO);
-
-    if(mver_idtipo_iva->isChecked() )
-        m_list->showColumn(COL_IDTIPO_IVA);
-    else
-        m_list->hideColumn(COL_IDTIPO_IVA);
-
-    if(mver_desctipo_iva->isChecked() )
-        m_list->showColumn(COL_DESCTIPO_IVA);
-    else
-        m_list->hideColumn(COL_DESCTIPO_IVA);
-
-    if(mver_idlinea_prod->isChecked() )
-        m_list->showColumn(COL_IDLINEA_PROD);
-    else
-        m_list->hideColumn(COL_IDLINEA_PROD);
-
-    if(mver_codarticulo->isChecked() )
-        m_list->showColumn(COL_CODARTICULO);
-    else
-        m_list->hideColumn(COL_CODARTICULO);
-
-    if(mver_stockarticulo->isChecked() )
-        m_list->showColumn(COL_STOCKARTICULO);
-    else
-        m_list->hideColumn(COL_STOCKARTICULO);
-
-    if(mver_pvparticulo->isChecked() )
-        m_list->showColumn(COL_PVPARTICULO);
-    else
-        m_list->hideColumn(COL_PVPARTICULO);
+	mver_idarticulo->setChecked(line.at(0) == '1');
+	mver_codcompletoarticulo->setChecked(line.at(2) == '1');
+	mver_nomarticulo->setChecked(line.at(4) == '1');
+	mver_descarticulo->setChecked(line.at(6) == '1');
+	mver_cbarrasarticulo->setChecked(line.at(8) == '1');
+	mver_tipoarticulo->setChecked(line.at(10) == '1');
+	mver_descuentoarticulo->setChecked(line.at(12) == '1');
+	mver_especificacionesarticulo->setChecked(line.at(14) == '1');
+	mver_iconoarticulo->setChecked(line.at(16) == '1');
+	mver_fotoarticulo->setChecked(line.at(18) == '1');
+	mver_posterarticulo->setChecked(line.at(20) == '1');
+	mver_margenarticulo->setChecked(line.at(22) == '1');
+	mver_sobrecostearticulo->setChecked(line.at(24) == '1');
+	mver_modeloarticulo->setChecked(line.at(26) == '1');
+	mver_idtipo_iva->setChecked(line.at(28) == '1');
+	mver_desctipo_iva->setChecked(line.at(30) == '1');
+	mver_idlinea_prod->setChecked(line.at(32) == '1');
+	mver_codarticulo->setChecked(line.at(34) == '1');
+	mver_stockarticulo->setChecked(line.at(36) == '1');
+	mver_pvparticulo->setChecked(line.at(38) == '1');
+	_depura("ArticuloList::END_guardaconfig()\n", 0);
+};
 
 
+void ArticuloList::s_configurar()
+{
+	_depura("ArticuloList::INIT_s_configurar()\n", 0);
 
-    _depura("ArticuloList::END_s_configurar()\n",0);
-}// end s_configurar
+	if (mver_idarticulo->isChecked())
+	{
+		m_list->showColumn(COL_IDARTICULO);
+	} else {
+		m_list->hideColumn(COL_IDARTICULO);
+	};
+
+	if (mver_codcompletoarticulo->isChecked())
+	{
+		m_list->showColumn(COL_CODCOMPLETOARTICULO);
+	} else {
+		m_list->hideColumn(COL_CODCOMPLETOARTICULO);
+	};
+
+	if (mver_nomarticulo->isChecked())
+	{
+		m_list->showColumn(COL_NOMARTICULO);
+	} else {
+		m_list->hideColumn(COL_NOMARTICULO);
+	};
+
+	if (mver_descarticulo->isChecked())
+	{
+		m_list->showColumn(COL_DESCARTICULO);
+	} else {
+		m_list->hideColumn(COL_DESCARTICULO);
+	};
+
+	if (mver_cbarrasarticulo->isChecked())
+	{
+		m_list->showColumn(COL_CBARRASARTICULO);
+	} else {
+		m_list->hideColumn(COL_CBARRASARTICULO);
+	};
+
+	if (mver_tipoarticulo->isChecked())
+	{
+		m_list->showColumn(COL_TIPOARTICULO);
+	} else {
+		m_list->hideColumn(COL_TIPOARTICULO);
+	};
+
+	if (mver_descuentoarticulo->isChecked())
+	{
+		m_list->showColumn(COL_DESCUENTOARTICULO);
+	} else {
+		m_list->hideColumn(COL_DESCUENTOARTICULO);
+	};
+
+	if (mver_especificacionesarticulo->isChecked())
+	{
+		m_list->showColumn(COL_ESPECIFICACIONESARTICULO);
+	} else {
+		m_list->hideColumn(COL_ESPECIFICACIONESARTICULO);
+	};
+
+	if (mver_iconoarticulo->isChecked())
+	{
+		m_list->showColumn(COL_ICONOARTICULO);
+	} else {
+		m_list->hideColumn(COL_ICONOARTICULO);
+	};
+
+	if (mver_fotoarticulo->isChecked())
+	{
+		m_list->showColumn(COL_FOTOARTICULO);
+	} else {
+		m_list->hideColumn(COL_FOTOARTICULO);
+	};
+
+	if (mver_posterarticulo->isChecked())
+	{
+		m_list->showColumn(COL_POSTERARTICULO);
+	} else {
+		m_list->hideColumn(COL_POSTERARTICULO);
+	};
+
+	if (mver_margenarticulo->isChecked())
+	{
+		m_list->showColumn(COL_MARGENARTICULO);
+	} else {
+		m_list->hideColumn(COL_MARGENARTICULO);
+	};
+
+	if (mver_sobrecostearticulo->isChecked())
+	{
+		m_list->showColumn(COL_SOBRECOSTEARTICULO);
+	} else {
+		m_list->hideColumn(COL_SOBRECOSTEARTICULO);
+	};
+
+	if (mver_modeloarticulo->isChecked())
+	{
+		m_list->showColumn(COL_MODELOARTICULO);
+	} else {
+		m_list->hideColumn(COL_MODELOARTICULO);
+	};
+
+	if (mver_idtipo_iva->isChecked())
+	{
+		m_list->showColumn(COL_IDTIPO_IVA);
+	} else {
+		m_list->hideColumn(COL_IDTIPO_IVA);
+	};
+
+	if (mver_desctipo_iva->isChecked())
+	{
+		m_list->showColumn(COL_DESCTIPO_IVA);
+	} else {
+		m_list->hideColumn(COL_DESCTIPO_IVA);
+	};
+
+	if (mver_idlinea_prod->isChecked())
+	{
+		m_list->showColumn(COL_IDLINEA_PROD);
+	} else {
+		m_list->hideColumn(COL_IDLINEA_PROD);
+	};
+
+	if (mver_codarticulo->isChecked())
+	{
+		m_list->showColumn(COL_CODARTICULO);
+	} else {
+		m_list->hideColumn(COL_CODARTICULO);
+	};
+
+	if (mver_stockarticulo->isChecked())
+	{
+		m_list->showColumn(COL_STOCKARTICULO);
+	} else {
+		m_list->hideColumn(COL_STOCKARTICULO);
+	};
+
+	if (mver_pvparticulo->isChecked())
+	{
+		m_list->showColumn(COL_PVPARTICULO);
+	} else {
+		m_list->hideColumn(COL_PVPARTICULO);
+	};
+
+	_depura("ArticuloList::END_s_configurar()\n",0);
+};
 
 
-ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : articleslistbase(parent, name, flag)  , pgimportfiles(comp) {
-    _depura("ArticuloList::INIT_ArticuloList()\n",0);
-    m_companyact = comp;
-    m_tipoarticulo->setcompany(comp);
-    m_familia->setcompany(comp);
-    inicializa();
-    cargaconfig();
-    s_configurar();
-    presenta();
-    m_modo=editmodo;
-    if (m_modo == EditMode)
-        comp->meteWindow("Articulos",this);
-    hideBusqueda();
-    hideConfiguracion();
+ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name,
+				Qt::WFlags flag, edmode editmodo)
+				: articleslistbase(parent, name, flag), pgimportfiles(comp)
+{
+	_depura("ArticuloList::INIT_ArticuloList()\n", 0);
+	m_companyact = comp;
+	m_tipoarticulo->setcompany(comp);
+	m_familia->setcompany(comp);
+	inicializa();
+	cargaconfig();
+	s_configurar();
+	presenta();
+	m_modo = editmodo;
 
-    _depura("ArticuloList::END_ArticuloList()\n",0);
-}// end ArticuloList
+	if (m_modo == EditMode)
+	{
+		comp->meteWindow("Articulos", this);
+	};
+
+	hideBusqueda();
+	hideConfiguracion();
+	_depura("ArticuloList::END_ArticuloList()\n", 0);
+};
 
 
 void ArticuloList::inicializa() {
@@ -658,33 +712,39 @@ void ArticuloList::s_imprimir1() {
 }// end imprimir
 
 
-void ArticuloList::s_exportar() {
-    _depura("ArticuloList::INIT_s_exportar()\n",0);
+void ArticuloList::s_exportar()
+{
+	_depura("ArticuloList::INIT_s_exportar()\n", 0);
+	QFile filexml(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),
+			"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
 
-    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
-    if(filexml.open(QIODevice::WriteOnly)) {
-        bulmafact2XML(filexml, IMPORT_ARTICULOS);
-        filexml.close();
-    } else {
-        _depura("ERROR AL ABRIR ARCHIVO\n",2);
-    }// end if
+	if (filexml.open(QIODevice::WriteOnly))
+	{
+		bulmafact2XML(filexml, IMPORT_ARTICULOS);
+		filexml.close();
+	} else {
+		_depura("ERROR AL ABRIR ARCHIVO\n", 2);
+	};
 
-    _depura("ArticuloList::END_s_exportar()\n",0);
-}//
+	_depura("ArticuloList::END_s_exportar()\n",0);
+};
 
 
-void ArticuloList::s_importar() {
-    _depura("ArticuloList::INIT_s_importar()\n",0);
+void ArticuloList::s_importar()
+{
+	_depura("ArticuloList::INIT_s_importar()\n", 0);
+	QFile filexml(Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),
+			"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
 
-    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
-    if (filexml.open(QIODevice::ReadOnly))  {
-        XML2BulmaFact(filexml, IMPORT_ARTICULOS);
-        filexml.close();
-        presenta();
-    }  else  {
-        _depura("ERROR AL ABRIR ARCHIVO\n",2);
-    }// end if
+	if (filexml.open(QIODevice::ReadOnly))
+	{
+		XML2BulmaFact(filexml, IMPORT_ARTICULOS);
+		filexml.close();
+		presenta();
+	} else {
+		_depura("ERROR AL ABRIR ARCHIVO\n", 2);
+	};
 
-    _depura("ArticuloList::END_s_importar()\n",0);
-}
+	_depura("ArticuloList::END_s_importar()\n",0);
+};
 
