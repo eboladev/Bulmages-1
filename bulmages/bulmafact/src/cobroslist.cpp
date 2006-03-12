@@ -157,7 +157,7 @@ void CobrosList::s_configurar() {
 
 CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag) : QWidget (parent, name, flag) {
     setupUi(this);
-    inicializa();
+    inicializar();
     cargaconfig();
     s_configurar();
     m_companyact = NULL;
@@ -172,10 +172,10 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFl
     m_companyact = comp;
     setupUi(this);
     m_cliente->setcompany(comp);
-    inicializa();
+    inicializar();
     cargaconfig();
     s_configurar();
-    presenta();
+    presentar();
     m_modo=0;
     mdb_idcobro="";
     meteWindow(caption(),this);
@@ -188,7 +188,7 @@ CobrosList::~CobrosList() {
     guardaconfig();
 }
 
-void CobrosList::inicializa() {
+void CobrosList::inicializar() {
     _depura("CobrosList::inicializa()\n",0);
     mui_list->setRowCount(0);
     mui_list->setColumnCount(7);
@@ -200,9 +200,9 @@ void CobrosList::inicializa() {
 
 
 
-void CobrosList::presenta() {
+void CobrosList::presentar() {
     _depura("CobrosList::presenta()\n",0);
-	inicializa();
+	inicializar();
     if (m_companyact != NULL ) {
         cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro where 1=1"+generaFiltro());
         mui_list->setRowCount( cur->numregistros() );
@@ -383,7 +383,7 @@ void CobrosList::on_mui_borrar_clicked() {
         bud->cargar(mdb_idcobro);
         bud->borrar();
     }// end if
-    presenta();
+    presentar();
 }
 
 

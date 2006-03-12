@@ -42,7 +42,7 @@ public:
 	void deleteClient();
 	void closeEvent(QCloseEvent *);
 	void emptyForm();
-	void pintaidcliente(QString val)
+	void pintaidcliente(QString )
 	{
 	};
 	void pintanomcliente(QString val)
@@ -89,17 +89,17 @@ public:
 	{
 		m_urlcliente->setText(val);
 	};
-	void pintafaltacliente(QString val)
+	void pintafaltacliente(QString )
 	{
 	};
-	void pintafbajacliente(QString val)
+	void pintafbajacliente(QString )
 	{
 	};
 	void pintacomentcliente(QString val)
 	{
 		m_comentcliente->setText(val);
 	};
-	void pintainactivocliente(QString val)
+	void pintainactivocliente(QString )
 	{
 	};
 	void pintaprovcliente(QString val)

@@ -41,14 +41,14 @@ private:
 	/// m_modo == 1 es modo selector.
 	int m_modo;
 	QString mdb_idcobro;
-	void inicializa();
+	void inicializar();
 
 public:
 	CobrosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
 	CobrosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
 			Qt::WFlags flag = 0);
 	~CobrosList();
-	void presenta();
+	void presentar();
 	void modoseleccion()
 	{
 		m_modo = 1;
@@ -122,7 +122,7 @@ public slots:
 	};
 	virtual void on_mui_actualizar_clicked()
 	{
-		presenta();
+		presentar();
 	};
 
 	virtual void s_configurar();

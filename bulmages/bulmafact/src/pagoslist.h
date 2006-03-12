@@ -49,19 +49,11 @@ public:
 			Qt::WFlags flag = 0);
 	~PagosList();
 	void presentar();
-	void modoseleccion()
-	{
-		m_modo = 1;
-	};
-	void modoedicion()
-	{
-		m_modo = 0;
-	};
-	void setcompany (company *comp)
-	{
-		m_companyact = comp;
-		m_proveedor->setcompany(comp);
-	};
+	void modoseleccion() 	{m_modo = 1;};
+	void modoedicion()	{m_modo = 0;};
+
+	void setcompany (company *comp)	{m_companyact = comp;m_proveedor->setcompany(comp);	};
+
 	QString idpago()
 	{
 		return mdb_idpago;
