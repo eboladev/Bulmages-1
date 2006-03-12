@@ -96,7 +96,7 @@ void ArticuloList::guardaconfig() {
     }// end if
 
     _depura("ArticuloList::END_guardaconfig()\n",0);
-}// end guardaconfig()
+}// end guardaconfig
 
 void ArticuloList::cargaconfig() {
     _depura("ArticuloList::INIT_cargaconfig()\n",0);
@@ -382,9 +382,8 @@ QString ArticuloList::formaQuery() {
     }// end if
     query +=" ORDER BY codigocompletoarticulo";
     return (query);
-
     _depura("ArticuloList::END_formaQuery()\n",0);
-}// end formaQuery
+}
 
 
 QString ArticuloList::detalleArticulos() {
@@ -393,7 +392,6 @@ QString ArticuloList::detalleArticulos() {
     cursor2 *cur=m_companyact->cargacursor(formaQuery());
     while(!cur->eof()) {
         texto += "<blockTable style=\"tabla1\">\n";
-
         texto += "<tr>\n";
         texto += "<td><h1>"+XMLProtect(cur->valor("nomarticulo"))+"</h1>";
         texto += "<para>"+XMLProtect(cur->valor("obserarticulo"))+"</para></td></tr><tr>\n";
@@ -424,22 +422,16 @@ void ArticuloList::Imprimir() {
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
     /// Copiamos el archivo
 #ifdef WINDOWS
-
     archivo = "copy "+archivo+" "+archivod;
 #else
-
     archivo = "cp "+archivo+" "+archivod;
 #endif
 
     system (archivo.ascii());
-
     /// Copiamos el logo
-
 #ifdef WINDOWS
-
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
-
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
     system (archivologo.ascii());
@@ -539,13 +531,10 @@ void ArticuloList::s_imprimir1() {
         fitxersortidatxt += "	<td>Codigo</td>";
     if(mver_stockarticulo->isChecked() )
         fitxersortidatxt += "	<td>Stock</td>";
-    /// ------------------------------------------------------------------
     fitxersortidatxt += "</tr>";
-
     cursor2 *cur=m_companyact->cargacursor(formaQuery());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-        /// ------------------------------------------------------------------
         if(mver_idarticulo->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idarticulo"))+"</td>";
         if(mver_codcompletoarticulo->isChecked() )
@@ -584,15 +573,12 @@ void ArticuloList::s_imprimir1() {
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codarticulo"))+"</td>";
         if(mver_stockarticulo->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("stockarticulo"))+"</td>";
-        /// ------------------------------------------------------------------
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     }// end if
     delete cur;
     fitxersortidatxt += "</blockTable>";
-
     buff.replace("[story]",fitxersortidatxt);
-
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << buff;
@@ -600,7 +586,6 @@ void ArticuloList::s_imprimir1() {
     }
 
     invocaPDF("articulos1");
-
     _depura("ArticuloList::END_s_imprimir1()\n",0);
 }// end imprimir
 
@@ -617,12 +602,11 @@ void ArticuloList::on_mui_exportar_clicked() {
     }// end if
 
     _depura("ArticuloList::END_s_exportar()\n",0);
-}//
+}
 
 
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar()\n",0);
-
     QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
     if (filexml.open(QIODevice::ReadOnly))  {
         XML2BulmaFact(filexml, IMPORT_ARTICULOS);

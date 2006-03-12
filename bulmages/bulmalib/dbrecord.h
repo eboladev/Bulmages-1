@@ -31,7 +31,16 @@ public:
 	dbrestrict restrictcampo() {return m_restrict;};
 	QString nomcampo() {return m_nomcampo;};
 	QString valorcampo() {return m_valorcampo;};
-	QString valorcampoprep() {
+	QString valorcampoprep(int &error) {
+		error = 0;
+		switch (m_restrict) {
+			case DBNotNull:
+				if (m_valorcampo == "") {
+					_depura("Valor invalido para "+m_nompresentacion,2);
+					error = -1;
+					return "";
+				}// end if
+		}
 		switch (m_type) {
 			case DBint:
 				if (m_valorcampo == "") return "NULL";
@@ -50,6 +59,7 @@ public:
 				return "'"+conexionbase->sanearCadena(m_valorcampo)+"'";
 				return conexionbase->sanearCadena(m_valorcampo);
 		}// end switch
+		error = -1;
 		_depura("Error en la conversion de tipos",2);
 		return "";
 	};

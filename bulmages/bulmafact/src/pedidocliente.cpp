@@ -25,19 +25,19 @@ PedidoCliente::PedidoCliente(company *comp) : DBRecord(comp) {
 
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
-    addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Cliente");
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Almacen");
+    addDBCampo("numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, "Número Pedido Cliente");
     addDBCampo("fechapedidocliente", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Fecha");
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Forma Pago");
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Trabajador");
+    addDBCampo("contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Contacto");
+    addDBCampo("telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Teléfono");
+    addDBCampo("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios");
+    addDBCampo("procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, "Procesado");
+    addDBCampo("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Referencia");
 }
 
 PedidoCliente::~PedidoCliente() {}

@@ -11,8 +11,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>808</width>
-    <height>534</height>
+    <width>745</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -245,7 +245,7 @@
         <item>
          <widget class="QToolButton" name="mui_exportar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Exportar Articulos</string>
           </property>
           <property name="whatsThis" >
            <string>Actualizar Listado</string>
@@ -700,6 +700,12 @@
      </property>
      <property name="alternatingRowColors" >
       <bool>true</bool>
+     </property>
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior" >
+      <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <property name="sortingEnabled" >
       <bool>true</bool>
