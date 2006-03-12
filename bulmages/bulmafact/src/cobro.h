@@ -36,10 +36,10 @@ protected:
 public:
 	Cobro(company *);
 	virtual ~Cobro();
-	void pintaCobro();
-	void guardaCobro();
-	void borraCobro();
-	void vaciaCobro();   
+	void pintar();
+	void guardar();
+	void borrar();
+	void vaciar();   
 	void setidcobro(QString val)
 	{
 		setDBvalue("idcobro",val);

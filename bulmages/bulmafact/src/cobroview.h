@@ -70,7 +70,7 @@ public:
 
 public slots:
     virtual void on_mui_guardar_clicked() {
-        guardaCobro();
+        guardar();
     };
     virtual void cargar(QString id) {
         Cobro::cargar(id);

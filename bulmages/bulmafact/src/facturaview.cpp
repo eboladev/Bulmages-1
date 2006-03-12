@@ -89,7 +89,7 @@ void FacturaView::s_nuevoCobro() {
     bud->setcantcobro(m_totalfactura->text());
     bud->setrefcobro(DBvalue("reffactura"));
     bud->setcomentcobro(DBvalue("descfactura"));
-    bud->pintaCobro();
+    bud->pintar();
     bud->show();
 }// end s_nuevoCobro
 

@@ -9,6 +9,18 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+#include <QMessageBox>
+#include <Q3Table>
+#include <QWidget>
+#include <QObject>
+#include <QComboBox>
+#include <Q3PopupMenu>
+#include <QToolButton>
+#include <QLayout>
+#include <fstream>
+#include <QCloseEvent>
+
+
 #include "pedidoclienteview.h"
 #include "company.h"
 #include "listlinpedidoclienteview.h"
@@ -19,20 +31,10 @@
 #include "cobroview.h"
 #include "albaranclienteview.h"
 #include "informereferencia.h"
-
-#include <QMessageBox>
-#include <Q3Table>
-#include <QWidget>
-#include <QObject>
-#include <QComboBox>
-#include <Q3PopupMenu>
-#include <QToolButton>
-#include <QLayout>
-#include <fstream>
 using namespace std;
 #include "funcaux.h"
 
-#include <QCloseEvent>
+
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
         : PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
@@ -71,7 +73,7 @@ void   PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
     m_totalTaxes->setText(iva.toQString());
     m_totalpedidocliente->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
-}// end pintatotales
+}
 
 
 void PedidoClienteView::s_verpresupuesto() {
@@ -97,7 +99,7 @@ void PedidoClienteView::s_verpresupuesto() {
         bud->show();
     }// end if
     delete cur;
-}// end s_verpresupuesto
+}
 
 
 /// Se encarga de generar un albaran a partir del pedido.
@@ -162,7 +164,7 @@ void PedidoClienteView::s_nuevoCobro() {
     bud->setcantcobro(m_totalpedidocliente->text());
     bud->setrefcobro(DBvalue("refpedidocliente"));
     bud->setcomentcobro(DBvalue("descpedidocliente"));
-    bud->pintaCobro();
+    bud->pintar();
     bud->show();
 }// end s_nuevoCobro
 
@@ -181,7 +183,7 @@ void PedidoClienteView::s_informeReferencia() {
     inf->setreferencia(DBvalue("refpedidocliente"));
     inf->generarinforme();
     delete inf;
-}// end s_informeReferencia
+}
 
 void PedidoClienteView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);

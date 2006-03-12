@@ -277,7 +277,7 @@ void CobrosList::on_mui_crear_clicked() {
     CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
-    bud->pintaCobro();
+    bud->pintar();
 }
 
 
@@ -381,7 +381,7 @@ void CobrosList::on_mui_borrar_clicked() {
     if (m_modo ==0 && mdb_idcobro != "") {
         CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
         bud->cargar(mdb_idcobro);
-        bud->borraCobro();
+        bud->borrar();
     }// end if
     presenta();
 }

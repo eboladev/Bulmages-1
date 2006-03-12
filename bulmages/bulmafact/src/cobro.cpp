@@ -34,7 +34,7 @@ Cobro::Cobro(company *comp) : DBRecord(comp) {
 Cobro::~Cobro() {}
 
 
-void Cobro::borraCobro() {
+void Cobro::borrar() {
     if (DBvalue("idcobro") != "") {
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM cobro WHERE idcobro="+DBvalue("idcobro"));
@@ -43,17 +43,17 @@ void Cobro::borraCobro() {
             return;
         }// end if
         companyact->commit();
-        vaciaCobro();
-        pintaCobro();
+        vaciar();
+        pintar();
     }// end if
 }// end borraCobro
 
 
-void Cobro::vaciaCobro() {
+void Cobro::vaciar() {
     DBclear();
 }// end vaciaCobro
 
-void Cobro::pintaCobro() {
+void Cobro::pintar() {
     pintaidcobro(DBvalue("idcobro"));
     pintaidcliente(DBvalue("idcliente"));
     pintafechacobro(DBvalue("fechacobro"));
@@ -72,11 +72,11 @@ void Cobro::cargar(QString idcobro) {
         DBload(cur);
     }// end if
     delete cur;
-    pintaCobro();
+    pintar();
 }// end chargeBudget
 
 
-void Cobro::guardaCobro() {
+void Cobro::guardar() {
     QString id;
     companyact->begin();
     int error = DBsave(id);
