@@ -21,14 +21,12 @@
 #ifndef ARTICLESLIST_H
 #define ARTICLESLIST_H
 
-#include <Q3Frame>
-
-#include "articleslistbase.h"
+#include "ui_articleslistbase.h"
 #include "company.h"
 #include "pgimportfiles.h"
 
 
-class ArticuloList : public articleslistbase, public pgimportfiles
+class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles
 {
 	Q_OBJECT
 
@@ -44,7 +42,7 @@ private:
 	QString mdb_codigocompletoarticulo;
 	company *m_companyact;
 	edmode m_modo;
-	void inicializa();
+	void inicializar();
 
 public:
 	ArticuloList(company *, QWidget *parent = 0, const char *name = 0,
@@ -74,7 +72,7 @@ public:
 	/// Funciones que se encargan en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
-	/// --
+
 	void modoseleccion()
 	{
 		m_modo = SelectMode;
@@ -101,43 +99,32 @@ public:
 	};
 
 public slots:
-	virtual void s_configurar();
+	virtual void on_mui_list_cellDoubleClicked(int , int);
+	virtual void on_mui_list_customContextMenuRequested(const QPoint &);
+
+	virtual void configurar();
+
 	virtual void s_imprimir1();
-	virtual void s_editArticle(int, int, int, const QPoint &);
-	virtual void s_editArticle();
-	virtual void s_importar();
-	virtual void s_exportar();
-	virtual void removeArticle();
-	virtual void newArticle()
+
+	virtual void on_mui_editar_clicked();
+
+	virtual void on_mui_importar_clicked();
+	virtual void on_mui_exportar_clicked();
+
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_crear_clicked()
 	{
 		m_companyact->s_newArticulo();
 	};
-	virtual void s_imprimir()
+	virtual void on_mui_imprimir_clicked()
 	{
 		Imprimir();
 	};
-	virtual void s_filtrar()
+	virtual void on_mui_actualizar_clicked()
 	{
 		presenta();
 	};
-	virtual void s_mostrarBusqueda()
-	{
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
+
 };
 
 #endif

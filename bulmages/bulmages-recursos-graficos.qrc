@@ -653,9 +653,11 @@
         <file>images/pendientes/i_configuracion.xpm</file>
         <file>images/pendientes/i_edit.png</file>
         <file>images/pendientes/i_editDelete.png</file>
+        <file>images/pendientes/i_exportar.png</file>
         <file>images/pendientes/i_fileNew.xpm</file>
         <file>images/pendientes/i_filePrint.xpm</file>
         <file>images/pendientes/i_find.png</file>
+        <file>images/pendientes/i_immportar.png</file>
         <file>images/pendientes/i_packageSettings.png</file>
         <file>images/pendientes/i_reload.png</file>
         <file>images/pendientes/i_save.xpm</file>

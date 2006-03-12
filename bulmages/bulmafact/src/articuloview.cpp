@@ -160,26 +160,6 @@ int ArticuloView::cargar(QString idarticulo) {
                 m_controlstockarticulo->setChecked(FALSE);
             }// end if
 
-/*
-            // Cargamos las relaciones artículo - proveedor.
-            QString SQLQuery1 = "SELECT * FROM suministra, proveedor WHERE suministra.idproveedor=proveedor.idproveedor and idarticulo="+idArt;
-            cursor2 *cur1 = m_companyact->cargacursor(SQLQuery1);
-	    if (cur1->error()) {
-		error = 1;
-	    }// end if
-
-            m_suministra->setNumRows(cur1->numregistros());
-            int i=0;
-            while (!cur1->eof()) {
-                m_suministra->setText(i,COL_SUMINISTRA_IDPROVEEDOR,cur1->valor("idproveedor"));
-                m_suministra->setText(i,COL_SUMINISTRA_NOMPROVEEDOR,cur1->valor("nomproveedor"));
-                m_suministra->setText(i,COL_SUMINISTRA_REFPRO,cur1->valor("refprosuministra"));
-                m_suministra->setText(i,COL_SUMINISTRA_PRINCIPAL,cur1->valor("principalsuministra"));
-                m_suministra->setText(i++,COL_SUMINISTRA_REFERENT,cur1->valor("referentsuministra"));
-                cur1->siguienteregistro();
-            }// end while
-            delete cur1;
-*/
         } else {
             mdb_idarticulo="0";
         }// end if
