@@ -34,24 +34,7 @@ Cobro::Cobro(company *comp) : DBRecord(comp) {
 Cobro::~Cobro() {}
 
 
-void Cobro::borrar() {
-    if (DBvalue("idcobro") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM cobro WHERE idcobro="+DBvalue("idcobro"));
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-        vaciar();
-        pintar();
-    }// end if
-}// end borraCobro
 
-
-void Cobro::vaciar() {
-    DBclear();
-}// end vaciaCobro
 
 void Cobro::pintar() {
     pintaidcobro(DBvalue("idcobro"));
@@ -64,29 +47,7 @@ void Cobro::pintar() {
 }// end pintaCobro
 
 
-// Esta funci� carga un Cobro.
-void Cobro::cargar(QString idcobro) {
-    QString query = "SELECT * FROM cobro WHERE idCobro="+idcobro;
-    cursor2 * cur= companyact->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
-    }// end if
-    delete cur;
-    pintar();
-}// end chargeBudget
 
 
-void Cobro::guardar() {
-    QString id;
-    companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
-        companyact->rollback();
-        return;
-    }// end if
-    setidcobro(id);
-    companyact->commit();
-    cargar(id);
-}// end guardaCobro
 
 

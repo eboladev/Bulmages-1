@@ -24,16 +24,16 @@
 #include "articleeditbase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
+#include "articulo.h"
 
 
 class company;
 
-class ArticuloView : public articleeditbase, public dialogChanges
+class ArticuloView : public articleeditbase, public dialogChanges, public Articulo
 {
 	Q_OBJECT
 
 private:
-	QString mdb_idarticulo;
 	QString m_archivoimagen;
 	company *m_companyact;
 	cursor2 *m_cursorcombo;
@@ -42,15 +42,13 @@ public:
 	ArticuloView(company *emp, QWidget *parent = 0, const char *name = 0);
 	~ArticuloView();
 	company *companyact() {return m_companyact;};
-	QString idarticulo() {return mdb_idarticulo;};
-
 public:
+	void pintar();
 	int cargar(QString);
 	int ArticuloView::cargarcomboiva(QString);
 	void closeEvent( QCloseEvent *);
 
 public slots:
-	virtual void accept();
 	virtual void boton_nuevo();
 	virtual void boton_borrar();
 	virtual void s_findArticulo();

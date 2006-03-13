@@ -72,8 +72,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
 int ArticuloView_cargar(ArticuloView *art) {
     _depura("ArticuloView_cargar",0);
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
-    l->cargarParaArticulo(art->idarticulo());
+    l->cargarParaArticulo(art->DBvalue("idarticulo"));
     l->pintar();
-
     return 0;
 }

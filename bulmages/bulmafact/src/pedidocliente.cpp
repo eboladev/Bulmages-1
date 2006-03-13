@@ -7,14 +7,14 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+
+#include <QFile>
+#include <QTextStream>
+
+
 #include "pedidocliente.h"
 #include "company.h"
 #include "descpedidocliente.h"
-
-#include <QFile>
-//Added by qt3to4:
-#include <QTextStream>
-
 #include "fixed.h"
 #include "funcaux.h"
 
@@ -22,7 +22,6 @@ typedef QMap<QString, Fixed> base;
 
 PedidoCliente::PedidoCliente(company *comp) : DBRecord(comp) {
     companyact=comp;
-
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
     addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");

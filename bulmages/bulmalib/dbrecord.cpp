@@ -152,7 +152,7 @@ void DBRecord::borrar() {
     _depura("DBRecord::borrar",0);
     if (DBvalue(m_campoid) != "") {
         conexionbase->begin();
-        int error = conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE idltarifa="+DBvalue(m_campoid));
+        int error = conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+m_campoid+"="+DBvalue(m_campoid));
         if (error) {
             conexionbase->rollback();
             return;
@@ -176,3 +176,17 @@ void DBRecord::guardar() {
     conexionbase->commit();
 }// end guardar
 
+
+
+// Esta funci� carga un Articulo.
+int DBRecord::cargar(QString id) {
+	_depura("DBRecord::cargar",0);
+    QString query = "SELECT * FROM "+m_tablename+" WHERE "+m_campoid+"="+id;
+    cursor2 * cur= conexionbase->cargacursor(query);
+    if (!cur->eof()) {
+        DBload(cur);
+    }// end if
+    delete cur;
+	_depura("END DBRecord::cargar",0);
+	return 0;
+}// end chargeBudget

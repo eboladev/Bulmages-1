@@ -33,8 +33,7 @@ public:
 	QString valorcampo() {return m_valorcampo;};
 	QString valorcampoprep(int &error) {
 		error = 0;
-		switch (m_restrict) {
-			case DBNotNull:
+		if (m_restrict & DBNotNull) {
 				if (m_valorcampo == "") {
 					_depura("Valor invalido para "+m_nompresentacion,2);
 					error = -1;
@@ -87,6 +86,7 @@ public:
 	virtual void borrar();
 	virtual void guardar();
 	virtual void vaciar() {DBclear();};
+	virtual int cargar(QString);
 };
 
 

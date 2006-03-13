@@ -190,7 +190,8 @@ HEADERS += bulmafact.h \
 	   listcontrolstock.h \
 	   listcontrolstockview.h \
 	   cliente.h \
-	   clienteview.h
+	   clienteview.h \
+	   articulo.h
 
 	   
 SOURCES += bulmafact.cpp \
@@ -302,7 +303,8 @@ SOURCES += bulmafact.cpp \
 	   listcontrolstock.cpp \
 	   listcontrolstockview.cpp \
 	   cliente.cpp \
-	   clienteview.cpp
+	   clienteview.cpp \
+	   articulo.cpp
 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \

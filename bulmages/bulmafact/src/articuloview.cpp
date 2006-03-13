@@ -42,29 +42,24 @@
 #include "funcaux.h"
 #include "plugins.h"
 
-#define COL_SUMINISTRA_IDSUMINISTRA 0
-#define COL_SUMINISTRA_IDPROVEEDOR 0
-#define COL_SUMINISTRA_NOMPROVEEDOR 1
-#define COL_SUMINISTRA_REFPRO 2
-#define COL_SUMINISTRA_PRINCIPAL 3
-#define COL_SUMINISTRA_REFERENT 4
+
 
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
-        : articleeditbase(parent, name, Qt::WDestructiveClose) ,dialogChanges(this) {
+        : articleeditbase(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), Articulo(comp) {
 
     _depura("ArticuloView::INIT_constructor()\n",0);
     m_companyact = comp;
 
-	    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
-    if (res != 0) return;
+    if (res != 0)
+        return;
 
 
     m_familia->setcompany(comp);
     m_tipoarticulo->setcompany(comp);
     m_componentes->setcompany(comp);
-    mdb_idarticulo = "0";
     m_archivoimagen="";
 
 
@@ -76,41 +71,55 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
     tabWidget2->setTabEnabled(7,FALSE);
 
 
-    // Arreglamos la tabla de proveedores del art�ulo
-    m_suministra->setNumRows( 0 );
-    m_suministra->setNumCols( 0 );
-    m_suministra->setSelectionMode( Q3Table::SingleRow );
-    m_suministra->setSorting( TRUE );
-    m_suministra->setSelectionMode( Q3Table::SingleRow );
-    m_suministra->setColumnMovingEnabled( TRUE );
-    m_suministra->setNumCols(5);
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_IDPROVEEDOR, tr( "Id. Proveedor" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_NOMPROVEEDOR, tr( "Nombre Proveedor" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_REFPRO, tr( "Referencia del Proveedor" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_PRINCIPAL, tr( "Es Principal" ) );
-    m_suministra->horizontalHeader()->setLabel( COL_SUMINISTRA_REFERENT, tr( "Es de Referencia" ) );
-
-    m_suministra->setColumnWidth(COL_SUMINISTRA_IDPROVEEDOR,100);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_NOMPROVEEDOR,300);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_REFPRO,100);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_PRINCIPAL,100);
-    m_suministra->setColumnWidth(COL_SUMINISTRA_REFERENT,100);
-    m_suministra->hideColumn(COL_SUMINISTRA_IDPROVEEDOR);
-    m_suministra->setColumnReadOnly(COL_SUMINISTRA_NOMPROVEEDOR,true);
-
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-    if (m_companyact->meteWindow("Articulo Edicion",this)) return;
+    if (m_companyact->meteWindow("Articulo Edicion",this))
+        return;
 
     dialogChanges_cargaInicial();
     _depura("ArticuloView::END_constructor()\n",0);
 }// end ArticuloView
 
+
 ArticuloView::~ArticuloView() {
     _depura("ArticuloView::INIT_destructor()\n",0);
-    m_companyact->refreshArticles();
+    //    m_companyact->refreshArticles();
     m_companyact->sacaWindow(this);
     _depura("ArticuloView::END_destructor()\n",0);
 }// end ~ArticuloView
+
+
+void ArticuloView::pintar() {
+    _depura("ArticuloView::pintar",1);
+    m_familia->setidfamilia(DBvalue("idfamilia"));
+    m_tipoarticulo->setidtipo_articulo(DBvalue("idtipo_articulo"));
+    m_codigoarticulo->setText(DBvalue("codarticulo"));
+    m_nombrearticulo->setText(DBvalue("nomarticulo"));
+    m_obserarticulo->setText(DBvalue("obserarticulo"));
+    m_pvparticulo->setText(DBvalue("pvparticulo"));
+    m_abrevarticulo->setText(DBvalue("abrevarticulo"));
+
+    m_codigocompletoarticulo->setText(DBvalue("codigocompletoarticulo"));
+    // Pintamos el stockable y el presentable
+    if (DBvalue("presentablearticulo") == "t") {
+        m_presentablearticulo->setChecked(TRUE);
+    } else {
+        m_presentablearticulo->setChecked(FALSE);
+    }// end if
+    if (DBvalue("controlstockarticulo") == "t") {
+        m_controlstockarticulo->setChecked(TRUE);
+    } else {
+        m_controlstockarticulo->setChecked(FALSE);
+    }// end if
+
+
+
+    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));
+
+
+
+    setCaption(tr("Articulo ")+m_codigocompletoarticulo->text());
+    _depura("END ArticuloView::pintar",1);
+}
 
 
 
@@ -121,87 +130,52 @@ ArticuloView::~ArticuloView() {
 * la ventana de edición en modo de inserción                            *
 *************************************************************************/
 int ArticuloView::cargar(QString idarticulo) {
-    _depura("ArticuloView::INIT_chargeArticle()\n",0);
+    _depura("ArticuloView::cargar()\n",0);
     int error =0;
+	setDBvalue( "idarticulo", idarticulo);
 
-    mdb_idarticulo = idarticulo;
 
-	/// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza("ArticuloView_cargar", this);
-    if (res != 0) return res;
+        /// Disparamos los plugins
+        int res = g_plugins->lanza("ArticuloView_cargar", this);
+        if (res != 0)
+            return res;
 
 
     QString ivaType="";
-    if (mdb_idarticulo != "0") {
-        QString SQLQuery = "SELECT * FROM articulo LEFT JOIN familia ON articulo.idfamilia = familia.idfamilia WHERE idarticulo="+mdb_idarticulo;
-        cursor2 *cur= m_companyact->cargacursor(SQLQuery);
-	if (cur->error())  error =1;
-
-
-        if (!cur->eof()) {
-            m_familia->setidfamilia(cur->valor("idfamilia"));
-            m_tipoarticulo->setidtipo_articulo(cur->valor("idtipo_articulo"));
-            m_codigoarticulo->setText(cur->valor("codarticulo"));
-            m_nombrearticulo->setText(cur->valor("nomarticulo"));
-            m_obserarticulo->setText(cur->valor("obserarticulo"));
-            m_pvparticulo->setText(cur->valor("pvparticulo"));
-            m_abrevarticulo->setText(cur->valor("abrevarticulo"));
-            ivaType=cur->valor("idtipo_iva");
-            m_codigocompletoarticulo->setText(cur->valor("codigocompletoarticulo"));
-            // Pintamos el stockable y el presentable
-            if (cur->valor("presentablearticulo") == "t") {
-                m_presentablearticulo->setChecked(TRUE);
-            } else {
-                m_presentablearticulo->setChecked(FALSE);
-            }// end if
-            if (cur->valor("controlstockarticulo") == "t") {
-                m_controlstockarticulo->setChecked(TRUE);
-            } else {
-                m_controlstockarticulo->setChecked(FALSE);
-            }// end if
-
-        } else {
-            mdb_idarticulo="0";
-        }// end if
-        delete cur;
-    }
-
-    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));
+    Articulo::cargar(idarticulo);
+    ivaType=DBvalue("idtipo_iva");
+    pintar();
     int ret = cargarcomboiva(ivaType);
-    if (ret) error = 1;
-
-
-    setCaption(tr("Articulo ")+m_codigocompletoarticulo->text());
-
+    if (ret)
+        error = 1;
     ret = m_companyact->meteWindow(caption(),this);
-    if (ret) error = 1;
-
-    m_componentes->cargaListCompArticulo(mdb_idarticulo);
+    if (ret)
+        error = 1;
+    m_componentes->cargaListCompArticulo(DBvalue("idarticulo"));
     m_componentes->pintaListCompArticulo();
     dialogChanges_cargaInicial();
-
     /// Tratamiento de excepciones
     if (error == 1) {
         _depura("ArticuloView::END_chargeArticle Error en la carga del articulo()\n",0);
         return -1;
     }// end if
 
-    _depura("ArticuloView::END_chargeArticle()\n",0);
+    _depura("END ArticuloView::cargar()\n",0);
     return 0;
 }// end chargeArticle
 
 
 /// Hace la carga del combo-box de tipos de iva para el articulo.
 int ArticuloView::cargarcomboiva(QString idIva) {
-    _depura("ArticuloView::INIT_cargacomboiva()\n",0);
+    _depura("ArticuloView::INIT_cargarcomboiva()\n",0);
 
     m_cursorcombo = NULL;
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = m_companyact->cargacursor("SELECT * FROM tipo_iva");
     if (m_cursorcombo->error()) {
-	 delete m_cursorcombo;
-	 return -1;
+        delete m_cursorcombo;
+        return -1;
     }// end if
     int i = 0;
     int i1 = 0;
@@ -217,9 +191,9 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         m_combotipo_iva->setCurrentItem(i1-1);
     }// end if
 
-    _depura("ArticuloView::END_cargacomboiva()\n",0);
+    _depura("ArticuloView::END_cargarcomboiva()\n",0);
     return 0;
-} // end cargarcomboalmacen
+}
 
 
 /************************************************************************
@@ -227,24 +201,11 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 *************************************************************************/
 void ArticuloView::boton_nuevo() {
     _depura("ArticuloView::INIT_boton_nuevo()\n",0);
-
-    mdb_idarticulo = "0";
-    m_codigoarticulo->setText("");
-    m_nombrearticulo->setText("");
-    m_obserarticulo->setText("");
-    m_pvparticulo->setText("0");
-    m_combotipo_iva->setCurrentItem(0);
-    dialogChanges_cargaInicial();
+    vaciar();
+    pintar();
     _depura("ArticuloView::END_boton_nuevo()\n",0);
-}// end boton_nuevo
+}
 
-/*************************************************************************
-* Esta función es la respuesta a la pulsación del boton de guardar       *
-* Comprueba si es una inserción o una modificación y hace los pasos      *
-* pertinentes                                                            *
-**************************************************************************/
-void ArticuloView::accept() {
-}// end accept
 
 
 /**
@@ -253,22 +214,16 @@ void ArticuloView::accept() {
 void ArticuloView::boton_borrar() {
     _depura("ArticuloView::INIT_boton_borrar()\n",0);
 
-    if (mdb_idarticulo != "0") {
-        m_componentes->borrar();
+    if (DBvalue("idarticulo") != "") {
+
         if ( QMessageBox::question(this,tr("Borrar Articulo"),tr("Esta a punto de borrar un articulo, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
-            QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+mdb_idarticulo;
-            m_companyact->begin();
-            if (m_companyact->ejecuta(SQLQuery)==0) {
-                m_companyact->commit();
-                dialogChanges_cargaInicial();
-                close();
-            } else {
-                m_companyact->rollback();
-            }// end if
+            m_componentes->borrar();
+            borrar();
+		dialogChanges_cargaInicial();
         }// end if
     }// end if
     _depura("ArticuloView::END_boton_borrar()\n",0);
-}// end boton_borrar
+}
 
 
 void ArticuloView::s_findArticulo() {
@@ -286,71 +241,28 @@ void ArticuloView::s_findArticulo() {
 
 void ArticuloView::s_grabarClicked() {
     _depura("ArticuloView::INIT_s_grabarClicked()\n",0);
-
-    QString presentablearticulo = m_presentablearticulo->isChecked() ? "TRUE" : "FALSE";
-    QString controlstockarticulo = m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE";
-    QString idtipo_articulo = m_tipoarticulo->idtipo_articulo();
-    if (idtipo_articulo == "")
-        idtipo_articulo="NULL";
-
-    QString SQLQuery;
-
-    if (mdb_idarticulo != "0") {
-        SQLQuery = "UPDATE articulo SET codarticulo='"+m_companyact->sanearCadena(m_codigoarticulo->text())+"'";
-        SQLQuery += " , nomarticulo='"+m_companyact->sanearCadena(m_nombrearticulo->text())+"'";
-        SQLQuery += " , idfamilia="+m_companyact->sanearCadena(m_familia->idfamilia());
-        SQLQuery += " , obserarticulo='"+m_companyact->sanearCadena(m_obserarticulo->text())+"'";
-        SQLQuery += " , abrevarticulo='"+m_companyact->sanearCadena(m_abrevarticulo->text())+"'";
-        SQLQuery += " , pvparticulo="+m_companyact->sanearCadena(m_pvparticulo->text())+" ";
-        SQLQuery += " , idtipo_iva="+m_companyact->sanearCadena(m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem()));
-        SQLQuery += " , controlstockarticulo="+m_companyact->sanearCadena(controlstockarticulo);
-        SQLQuery += " , presentablearticulo="+m_companyact->sanearCadena(presentablearticulo);
-        SQLQuery += " , idtipo_articulo="+idtipo_articulo;
-        SQLQuery += " WHERE idarticulo ="+mdb_idarticulo;
-        m_companyact->begin();
-        int error = m_companyact->ejecuta(SQLQuery);
-        if (error) {
-            m_companyact->rollback();
-            return;
-        }// end if
-        m_companyact->commit();
-    } else {
-        QString SQLQuery = " INSERT INTO articulo (codarticulo, nomarticulo, obserarticulo, idtipo_iva, idfamilia, pvparticulo, presentablearticulo, controlstockarticulo, idtipo_articulo, abrevarticulo)";
-        SQLQuery += " VALUES (";
-        SQLQuery += " '"+m_companyact->sanearCadena(m_codigoarticulo->text())+"' ";
-        SQLQuery += " , '"+m_companyact->sanearCadena(m_nombrearticulo->text())+"'";
-        SQLQuery += " , '"+m_companyact->sanearCadena(m_obserarticulo->text())+"'";
-        SQLQuery += " , "+m_companyact->sanearCadena(m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem()));
-        SQLQuery += " , "+m_companyact->sanearCadena(m_familia->idfamilia());
-        SQLQuery += " , "+m_companyact->sanearCadena(m_pvparticulo->text())+" ";
-        SQLQuery += " , "+m_companyact->sanearCadena(presentablearticulo);
-        SQLQuery += " , "+m_companyact->sanearCadena(controlstockarticulo);
-        SQLQuery += " , "+idtipo_articulo;
-        SQLQuery += " , '"+m_companyact->sanearCadena(m_abrevarticulo->text())+"'";
-        SQLQuery += ")";
-        m_companyact->begin();
-        int error = m_companyact->ejecuta(SQLQuery);
-        if (error) {
-            m_companyact->rollback();
-            return;
-        }// end if
-        cursor2 *cur= m_companyact->cargacursor("SELECT max(idarticulo) AS m FROM articulo");
-        m_companyact->commit();
-        if (!cur->eof()) {
-            mdb_idarticulo = cur->valor("m");
-        }// end if
-        delete cur;
-
-    }// end if */
+    setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
+    setDBvalue("controlstockarticulo", m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE");
+    setDBvalue("idtipo_articulo", m_tipoarticulo->idtipo_articulo());
+    setDBvalue("codarticulo", m_codigoarticulo->text());
+    setDBvalue("nomarticulo", m_nombrearticulo->text());
+    setDBvalue("idfamilia", m_familia->idfamilia());
+    setDBvalue("obserarticulo", m_obserarticulo->text());
+    setDBvalue("abrevarticulo", m_abrevarticulo->text());
+    setDBvalue("pvparticulo", m_pvparticulo->text());
+    setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem()));
+    Articulo::guardar();
+	/// Guardamos la imagen, si es que existe
     if (m_archivoimagen != "") {
-        cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo="+mdb_idarticulo);
+        cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo="+DBvalue("idarticulo"));
         QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur1->valor("codigocompletoarticulo")+".jpg";
         delete cur1;
-        fprintf(stderr,"%s\n",cadena.ascii());
         system(cadena.ascii());
     }// end if
+	/// Guardamos la lista de componentes
     m_componentes->guardaListCompArticulo();
-    cargar(mdb_idarticulo);
+	dialogChanges_cargaInicial();
+
     _depura("ArticuloView::END_s_grabarClicked()\n",0);
 }// end s_grabarClicked
 
