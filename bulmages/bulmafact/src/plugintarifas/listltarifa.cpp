@@ -50,14 +50,12 @@ int ListLTarifa::cargarParaArticulo(QString idarticulo) {
 
     vaciar();
     mdb_idarticulo = idarticulo;
-    QString SQLQuery = "SELECT * FROM almacen, (SELECT * FROM articulo WHERE idarticulo ="+mdb_idarticulo+") AS t2 , tarifa ";
-	    SQLQuery+= "LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=tarifa.idtarifa ";
-	    SQLQuery+= "";
+    QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa, (SELECT * FROM articulo WHERE idarticulo = "+mdb_idarticulo+") AS t2) AS t3 ";
+	    SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=t3.idtarifa AND t1.idalmacen=t3.idalmacen ";
 
     cursor2 * cur= m_companyact->cargacursor(SQLQuery);
 
     while (!cur->eof())   {
-	_depura("hay elementos");
         /// Creamos un elemento del tipo linpresupuesto y lo agregamos a la lista.
         LTarifa *lin = new LTarifa(m_companyact, cur);
         m_lista.append(lin);
@@ -77,12 +75,14 @@ int ListLTarifa::cargarParaArticulo(QString idarticulo) {
 
 
 void ListLTarifa::guardar() {
-	_depura("ListLTarifa::guardaListLTarifa",0);
+	_depura("ListLTarifa::guardar",2);
     LTarifa *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-	if (linea->pvpltarifa() != "")
+	if (linea->pvpltarifa() != "") {
+		_depura(linea->pvpltarifa(),2);
 	    linea->guardar();
+	}// end if
         i++;
     }// end for
 	_depura("END ListLTarifa::guardaListLTarifa",0);
@@ -97,19 +97,7 @@ void ListLTarifa::vaciar() {
     m_lista.clear();
 }// end guardaListLTarifa
 
-/*
-void ListLTarifa::borrar() {
-    if (mdb_idregistroiva != "")  {
-        m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM iva WHERE idregistroiva="+mdb_idregistroiva);
-        if (error) {
-            m_companyact->rollback();
-            return;
-        }// end if
-        m_companyact->commit();
-    }// end if
-}// end borrar
-*/
+
 
 void ListLTarifa::borrar(int pos) {
     LTarifa *linea;

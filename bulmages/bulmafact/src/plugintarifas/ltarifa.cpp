@@ -24,7 +24,7 @@ void LTarifa::definetabla() {
     addDBCampo("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre 	Articulo");
     addDBCampo("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre 	Articulo");
     addDBCampo("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre 	Articulo");
-}// end definetabla
+}
 
 
 LTarifa::LTarifa(company *comp) : DBRecord(comp) {
@@ -47,8 +47,7 @@ LTarifa::LTarifa(company *comp, QString idltarifa) : DBRecord(comp) {
     } else {
         vaciar();
     }// end if
-}// end LTarifa
-
+}
 
 LTarifa::LTarifa(company *comp, cursor2 *cur) : DBRecord(comp) {
     companyact = comp;
@@ -68,18 +67,10 @@ void LTarifa::setcodigocompletoarticulo(QString val) {
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         setDBvalue("nomarticulo",cur->valor("nomarticulo"));
-        setDBvalue("desclpresupuesto",cur->valor("nomarticulo"));
         setDBvalue("idarticulo", cur->valor("idarticulo"));
-        setDBvalue("pvplpresupuesto",cur->valor("pvp"));
-        setDBvalue("ivalpresupuesto", cur->valor("iva"));
-        if (DBvalue("cantlpresupuesto") == "") {
-            setDBvalue("cantlpresupuesto" , "1");
-            setDBvalue("descuentolpresupuesto" , "0");
-        }// end if
     }// end if
     delete cur;
-}// end setcodigocompletoarticulo
-
+}
 
 void LTarifa::setidarticulo(QString val) {
     _depura("setidarticulo()\n", 0);
@@ -88,18 +79,10 @@ void LTarifa::setidarticulo(QString val) {
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         setDBvalue("nomarticulo" ,cur->valor("nomarticulo"));
-        setDBvalue("desclpresupuesto",cur->valor("nomarticulo"));
         setDBvalue("codigocompletoarticulo",cur->valor("codigocompletoarticulo"));
-        setDBvalue("pvplpresupuesto", cur->valor("pvp"));
-        setDBvalue("ivalpresupuesto", cur->valor("iva"));
-        if (DBvalue("cantlpresupuesto") == "") {
-            setDBvalue("cantlpresupuesto", "1");
-            setDBvalue("descuentolpresupuesto", "0");
-        }// end if
     }// end if
     delete cur;
     _depura("end setidarticulo\n",0);
-}// end setidarticulo
-
+}
 
 

@@ -39,7 +39,6 @@ public:
 	virtual ~LTarifa();
 	virtual void pintar()	{};
 
-
 	inline QString idltarifa() {return DBvalue("idltarifa");};
 	inline QString idtarifa() {return DBvalue("idtarifa");};
 	inline QString idarticulo() {return DBvalue("idarticulo");};
@@ -53,11 +52,12 @@ public:
 
 
 	inline void setidtarifa(QString val) {setDBvalue("idtarifa", val);};
-
 	inline void setnomarticulo(QString val)	{setDBvalue("nomarticulo", val);};
 
 	void setcodigocompletoarticulo(QString);
 	void setidarticulo(QString);
+	
+	inline void setpvpltarifa(const QString &val) {setDBvalue("pvpltarifa",val);};
 
 
 };

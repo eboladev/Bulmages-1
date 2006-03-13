@@ -45,7 +45,8 @@ FORMS += about.ui \
          fpagobase.ui \
 	 pagoslistbase.ui \
          cobroslistbase.ui \
-          articleslistbase.ui \
+         articleslistbase.ui \
+         articleeditbase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
@@ -57,7 +58,6 @@ FORMS3 += bulmafactbase.ui \
           divisionbase.ui \
           budgetbase.ui \
           budgetslistbase.ui \
-          articleeditbase.ui \
           clientdelivnoteslistbase.ui \
           albaranclientebase.ui \
           familiasdlg.ui \

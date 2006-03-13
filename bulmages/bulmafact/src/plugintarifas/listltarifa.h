@@ -50,7 +50,6 @@ public:
         _depura("Esta funcion aun no ha sido implementada\n",2);
     };
     int cargarParaArticulo(QString);
-//    void borrar();
     LTarifa *linpos(int);
     void append(LTarifa *ltarifa) {m_lista.append(ltarifa);};
 
@@ -64,7 +63,20 @@ public:
             linea->setidtarifa(mdb_idtarifa);
             i++;
         }// end for
-    };    
+    };
+
+    void setidarticulo(QString id) {
+	_depura("ponemos el idarticulo adecuado en la lista de tarifas",2);
+        mdb_idarticulo=id;
+        LTarifa *linea;
+        uint i = 0;
+        for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+            linea->setidarticulo(mdb_idarticulo);
+            i++;
+        }// end for
+    };
+
+
 };
 
 #endif

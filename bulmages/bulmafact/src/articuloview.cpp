@@ -46,10 +46,13 @@
 
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
-        : articleeditbase(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), Articulo(comp) {
+        : QWidget(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), Articulo(comp) {
 
     _depura("ArticuloView::INIT_constructor()\n",0);
     m_companyact = comp;
+
+	setupUi(this);
+
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
@@ -57,18 +60,11 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
         return;
 
 
+
     m_familia->setcompany(comp);
     m_tipoarticulo->setcompany(comp);
     m_componentes->setcompany(comp);
     m_archivoimagen="";
-
-
-    // Desabilitamos los tabs que aun no se utilizan
-    tabWidget2->setTabEnabled(3,FALSE);
-    tabWidget2->setTabEnabled(4,FALSE);
-    tabWidget2->setTabEnabled(5,FALSE);
-    tabWidget2->setTabEnabled(6,FALSE);
-    tabWidget2->setTabEnabled(7,FALSE);
 
 
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
@@ -141,6 +137,7 @@ int ArticuloView::cargar(QString idarticulo) {
             return res;
 
 
+
     QString ivaType="";
     Articulo::cargar(idarticulo);
     ivaType=DBvalue("idtipo_iva");
@@ -199,7 +196,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 /************************************************************************
 * Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
 *************************************************************************/
-void ArticuloView::boton_nuevo() {
+void ArticuloView::on_mui_crear_clicked() {
     _depura("ArticuloView::INIT_boton_nuevo()\n",0);
     vaciar();
     pintar();
@@ -211,7 +208,7 @@ void ArticuloView::boton_nuevo() {
 /**
   * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
   */
-void ArticuloView::boton_borrar() {
+void ArticuloView::on_mui_borrar_clicked() {
     _depura("ArticuloView::INIT_boton_borrar()\n",0);
 
     if (DBvalue("idarticulo") != "") {
@@ -226,7 +223,7 @@ void ArticuloView::boton_borrar() {
 }
 
 
-void ArticuloView::s_findArticulo() {
+void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::INIT_s_findArticulo()\n",0);
 
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '"+m_codigocompletoarticulo->text()+"'";
@@ -235,11 +232,12 @@ void ArticuloView::s_findArticulo() {
         cargar(cur->valor("idarticulo"));
     }// end if
     delete cur;
+
     _depura("ArticuloView::END_s_findArticulo()\n",0);
 }// end s_findArticulo
 
 
-void ArticuloView::s_grabarClicked() {
+void ArticuloView::guardar() {
     _depura("ArticuloView::INIT_s_grabarClicked()\n",0);
     setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("controlstockarticulo", m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE");
@@ -261,6 +259,14 @@ void ArticuloView::s_grabarClicked() {
     }// end if
 	/// Guardamos la lista de componentes
     m_componentes->guardaListCompArticulo();
+
+
+        /// Disparamos los plugins
+        int res = g_plugins->lanza("ArticuloView_guardar_post", this);
+        if (res != 0)
+            return;
+
+
 	dialogChanges_cargaInicial();
 
     _depura("ArticuloView::END_s_grabarClicked()\n",0);
@@ -268,7 +274,7 @@ void ArticuloView::s_grabarClicked() {
 
 
 
-void ArticuloView::s_cambiarimagen() {
+void ArticuloView::on_mui_cambiarimagen_clicked() {
     _depura("ArticuloView::INIT_s_cambiarimagen()\n",0);
 
     m_archivoimagen = Q3FileDialog::getOpenFileName(
@@ -289,8 +295,16 @@ void ArticuloView::closeEvent( QCloseEvent *e) {
         int val = QMessageBox::warning( this, "Guardar Articulo",
                                         "Desea guardar los cambios.","Si","No","Cancelar",0,2);
         if (val == 0)
-            s_grabarClicked();
+            on_mui_guardar_clicked();
         if (val == 2)
             e->ignore();
     }// end if
 }
+
+
+void ArticuloView::on_mui_aceptar_clicked() {
+	on_mui_guardar_clicked();
+	close();
+}
+
+

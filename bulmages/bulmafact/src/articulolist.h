@@ -26,6 +26,7 @@
 #include "pgimportfiles.h"
 
 
+
 class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles
 {
 	Q_OBJECT
@@ -118,7 +119,7 @@ public slots:
 	};
 	virtual void on_mui_imprimir_clicked()
 	{
-		Imprimir();
+		s_imprimir1();
 	};
 	virtual void on_mui_actualizar_clicked()
 	{

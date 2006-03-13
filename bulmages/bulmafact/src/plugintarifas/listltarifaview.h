@@ -16,29 +16,38 @@
 @author Tomeu Borras
 */
 
-#include <Q3Table>
-//Added by qt3to4:
 #include <QEvent>
+#include <QTableWidget>
 
+#include "qtable2.h"
 #include "listltarifa.h"
 #include "ltarifa.h"
 
-class ListLTarifaView : public Q3Table , public ListLTarifa {
-Q_OBJECT
+class ListLTarifaView : public QTableWidget2 , public ListLTarifa {
+    Q_OBJECT
 public:
-    ListLTarifaView(QWidget *parent=0, const char *name=0);
+    ListLTarifaView(QWidget *parent=0);
     ~ListLTarifaView();
+
     virtual void pintar();
     virtual void pintar(int);
-    virtual bool eventFilter( QObject *obj, QEvent *ev );
+
     LTarifa *lineaat(int);
     LTarifa *lineaact();
+
     void guardaconfig();
     void cargaconfig();
+    void borraLTarifaAct();
+
+    
+        virtual void contextMenuEvent (QContextMenuEvent *e);
+
 public slots:
-    virtual void valueBudgetLineChanged(int row, int col);
-    virtual void contextMenu ( int , int , const QPoint &  );
-    virtual void borraLTarifaAct();
+	virtual void s_cellChanged(int row, int col);
+
+/**
+        virtual void borraLTarifaAct();
+    */
 };
 
 #endif

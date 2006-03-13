@@ -11,13 +11,11 @@
 #include "busquedatarifa.h"
 #include "listltarifaview.h"
 
-
-
-
 void entryPoint(bulmafact *bges) {
     _depura("Estoy dentro del plugin\n",0);
     bges->setCaption("Prueba de plugin Tarifas.");
 }
+
 
 int ClienteView_ClienteView(ClienteView *cli) {
     _depura("dentro del plugin",0);
@@ -64,7 +62,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
     ListLTarifaView *l = new ListLTarifaView(art);
     l->setObjectName(QString::fromUtf8("ltarifas"));
     l->setcompany( art->companyact());
-    art->tabWidget2->addTab(l, "Tarifas");
+    art->mui_tab->addTab(l, "Tarifas");
     return 0;
 }
 
@@ -74,5 +72,14 @@ int ArticuloView_cargar(ArticuloView *art) {
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
     l->cargarParaArticulo(art->DBvalue("idarticulo"));
     l->pintar();
+    return 0;
+}
+
+
+int ArticuloView_guardar_post(ArticuloView *art) {
+    _depura("ArticuloView_guardar_post",0);
+    ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
+    l->setidarticulo(art->DBvalue("idarticulo"));
+    l->guardar();
     return 0;
 }

@@ -21,7 +21,7 @@
 #ifndef ARTICULOVIEW_H
 #define ARTICULOVIEW_H
 
-#include "articleeditbase.h"
+#include "ui_articleeditbase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "articulo.h"
@@ -29,7 +29,7 @@
 
 class company;
 
-class ArticuloView : public articleeditbase, public dialogChanges, public Articulo
+class ArticuloView : public QWidget, public Ui_ArticuloBase, public dialogChanges, public Articulo
 {
 	Q_OBJECT
 
@@ -45,15 +45,16 @@ public:
 public:
 	void pintar();
 	int cargar(QString);
+	void guardar();
 	int ArticuloView::cargarcomboiva(QString);
 	void closeEvent( QCloseEvent *);
-
 public slots:
-	virtual void boton_nuevo();
-	virtual void boton_borrar();
-	virtual void s_findArticulo();
-	virtual void s_grabarClicked();
-	virtual void s_cambiarimagen();
+	virtual void on_mui_guardar_clicked(){guardar();};
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_m_codigocompletoarticulo_editingFinished();
+	virtual void on_mui_cambiarimagen_clicked();
+	virtual void on_mui_aceptar_clicked();
 };
 
 #endif
