@@ -158,8 +158,8 @@ HEADERS += bulmafact.h \
 	   trabajadorview.h \
 	   busquedatrabajador.h \
 	   comparticulo.h \
-	   listcomparticulo.h \
-	   listcomparticuloview.h \
+	   comparticulolist.h \
+	   comparticulolistview.h \
 	   pago.h \
 	   pagoview.h \
 	   pagoslist.h \
@@ -271,8 +271,8 @@ SOURCES += bulmafact.cpp \
 	   trabajadorview.cpp \
 	   busquedatrabajador.cpp \
 	   comparticulo.cpp \
-	   listcomparticulo.cpp \
-	   listcomparticuloview.cpp \
+	   comparticulolist.cpp \
+	   comparticulolistview.cpp \
 	   pago.cpp \
 	   pagoview.cpp \
 	   pagoslist.cpp \

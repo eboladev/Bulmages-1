@@ -12,6 +12,7 @@
 #include "comparticulo.h"
 
 void CompArticulo::definetabla() {
+	_depura("CompArticulo::definetabla",0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
     addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
@@ -23,11 +24,13 @@ void CompArticulo::definetabla() {
 
 
 CompArticulo::CompArticulo(company *comp) : DBRecord(comp) {
+	_depura("CompArticulo::CompArticulo",0);
     companyact = comp;
     definetabla();
 }
 
 CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponente) : DBRecord(comp) {
+	_depura("CompArticulo::CompArticulo",0);
     companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM comparticulo, articulo WHERE comparticulo.idcomponente=articulo.idarticulo AND idarticulo="+idarticulo+" AND idcomponente="+idcomponente;
@@ -41,6 +44,7 @@ CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponen
 
 
 CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QString d, QString e) : DBRecord(comp) {
+	_depura("CompArticulo::CompArticulo",0);
     companyact = comp;
     definetabla();
     setDBvalue("idarticulo", a);

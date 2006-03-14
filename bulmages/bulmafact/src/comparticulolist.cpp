@@ -9,7 +9,7 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "listcomparticulo.h"
+#include "comparticulolist.h"
 #include "company.h"
 #include "comparticulo.h"
 
@@ -20,12 +20,14 @@ ListCompArticulo::ListCompArticulo(company *comp) {
     mdb_idarticulo="";
 }// end ListCompArticulo
 
+
 ListCompArticulo::ListCompArticulo() {
-    	   fprintf(stderr,"Constructor de ListCompArticulo\n");
+    	   _depura("Constructor de ListCompArticulo\n",0);
            companyact=NULL;
            m_lista.setAutoDelete(TRUE);
            mdb_idarticulo="";
 }// end ListCompArticulo
+
 
 ListCompArticulo::~ListCompArticulo() {}
 
@@ -40,17 +42,17 @@ void ListCompArticulo::nuevalinea(QString idcomponente, QString cantcomparticulo
 	m_lista.append(lin);
 }// end nuevalinea
 
+
 CompArticulo *ListCompArticulo::linpos(int pos) {
 	return (m_lista.at(pos));
 }// end linpos
 
 
 // Carga l�eas de presupuesto
-void ListCompArticulo::cargaListCompArticulo(QString idarticulo) {
+void ListCompArticulo::cargar(QString idarticulo) {
     vaciar();
-    fprintf(stderr,"ListCompArticulo::cargaListCompArticulo\n");
+    _depura("ListCompArticulo::cargaListCompArticulo\n",0);
     mdb_idarticulo = idarticulo;
-    fprintf(stderr,"Hacemos la carga del cursor\n");
     cursor2 * cur= companyact->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo="+mdb_idarticulo+" AND articulo.idarticulo=comparticulo.idcomponente");
     int i=0;
     while (!cur->eof())   {
@@ -67,7 +69,7 @@ void ListCompArticulo::cargaListCompArticulo(QString idarticulo) {
         cur->siguienteregistro();
     }// end while
     delete cur;
-    fprintf(stderr,"Fin de ListCompArticulo::cargaListCompArticulo\n");
+    _depura("END ListCompArticulo::cargar");
 }// end chargeBudgetLines
 
 
@@ -100,10 +102,10 @@ void ListCompArticulo::borrar() {
 }// end borrar
 
 
-void ListCompArticulo::borraCompArticulo(int pos) {
+void ListCompArticulo::borrar(int pos) {
     CompArticulo *linea;
     linea = m_lista.at(pos);
     linea->borrar();
     m_lista.remove(pos);
-    pintaListCompArticulo();
+    pintar();
 }// end borraCompArticulo

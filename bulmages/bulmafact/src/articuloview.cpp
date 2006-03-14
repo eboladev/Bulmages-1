@@ -37,8 +37,8 @@
 #include "tiposarticuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
-#include "listcomparticuloview.h"
-#include "listcomparticulo.h"
+#include "comparticulolistview.h"
+#include "comparticulolist.h"
 #include "funcaux.h"
 #include "plugins.h"
 
@@ -85,7 +85,8 @@ ArticuloView::~ArticuloView() {
 
 
 void ArticuloView::pintar() {
-    _depura("ArticuloView::pintar",1);
+    _depura("ArticuloView::pintar",0);
+
     m_familia->setidfamilia(DBvalue("idfamilia"));
     m_tipoarticulo->setidtipo_articulo(DBvalue("idtipo_articulo"));
     m_codigoarticulo->setText(DBvalue("codarticulo"));
@@ -111,6 +112,8 @@ void ArticuloView::pintar() {
 
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));
 
+	/// Pintamos la parte de componentes
+	m_componentes->pintar();
 
 
     setCaption(tr("Articulo ")+m_codigocompletoarticulo->text());
@@ -141,15 +144,16 @@ int ArticuloView::cargar(QString idarticulo) {
     QString ivaType="";
     Articulo::cargar(idarticulo);
     ivaType=DBvalue("idtipo_iva");
-    pintar();
+
     int ret = cargarcomboiva(ivaType);
     if (ret)
         error = 1;
     ret = m_companyact->meteWindow(caption(),this);
     if (ret)
         error = 1;
-    m_componentes->cargaListCompArticulo(DBvalue("idarticulo"));
-    m_componentes->pintaListCompArticulo();
+    m_componentes->cargar(DBvalue("idarticulo"));
+
+
     dialogChanges_cargaInicial();
     /// Tratamiento de excepciones
     if (error == 1) {
@@ -157,6 +161,7 @@ int ArticuloView::cargar(QString idarticulo) {
         return -1;
     }// end if
 
+    pintar();
     _depura("END ArticuloView::cargar()\n",0);
     return 0;
 }// end chargeArticle
@@ -199,6 +204,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 void ArticuloView::on_mui_crear_clicked() {
     _depura("ArticuloView::INIT_boton_nuevo()\n",0);
     vaciar();
+	m_componentes->vaciar();
     pintar();
     _depura("ArticuloView::END_boton_nuevo()\n",0);
 }

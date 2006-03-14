@@ -24,30 +24,31 @@
 #include <Q3Table>
 #include <QEvent>
 
-#include "listcomparticulo.h"
+#include "comparticulolist.h"
 #include "company.h"
 #include "comparticulo.h"
+#include "qtable2.h"
 
-
-class ListCompArticuloView : public Q3Table , public ListCompArticulo
+class ListCompArticuloView : public QTableWidget2 , public ListCompArticulo
 {
-	Q_OBJECT
+Q_OBJECT
 
 public:
 	ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
 	~ListCompArticuloView();
-	virtual void pintaListCompArticulo();
-	virtual void pintalinListCompArticulo(int);
+	virtual void pintar();
+	virtual void pintar(int);
 	virtual bool eventFilter(QObject *obj, QEvent *ev);
 	CompArticulo *lineaat(int);
 	CompArticulo *lineaact();
+	void generar();
 
 public slots:
-	virtual void valueListCompArticuloViewChanged(int row, int col);
 	virtual QString searchArticle();
 	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borraCompArticuloact();
+        virtual void contextMenuEvent (QContextMenuEvent *);
+	virtual void s_cellChanged(int row, int col);
+	virtual void s_currentCellChanged(int row, int col, int prow, int pcol);
 };
 
 #endif

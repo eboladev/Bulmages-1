@@ -49,15 +49,15 @@ public:
 	virtual ~ListCompArticulo();
 	void guardaListCompArticulo();
 	void vaciar();
-	virtual void pintaListCompArticulo()
+	virtual void pintar()
 	{
 		_depura("La funcion pintaListCompArticulo aun no ha sido implementada.", 0);
 	};
-	void cargaListCompArticulo(QString);
+	void cargar(QString);
 	void borrar();
 	void nuevalinea(QString, QString, QString, QString);
 	CompArticulo *linpos(int);
-	void borraCompArticulo(int);
+	void borrar(int);
 	void setidarticulo(QString id)
 	{
 		mdb_idarticulo = id;
