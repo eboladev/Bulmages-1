@@ -1,0 +1,27 @@
+7 LISTADOS
+
+Puede acceder a esta opción mediante los menús superiores o laterales. BulmaFact contiene los siguientes listados:
+
+	Ventas:
+		- Listado de Presupuestos
+		- Listado de Pedidos de Clientes
+		- Listado de Albaranes de Clientes
+		- Listado de Facturas Emitidas
+	Compras:
+		- Listado de Pedidos a Proveedor
+		- Listado de Albaranes de Proveedor
+		- Listado de Facturas de Proveedor
+
+Un listado le muestra todos los elementos almacenados en BulmaFact que hagan referencia al área que haya seleccionado. Por ejemplo, un Listado de Presupuestos a Clientes le mostrará todos los Presupuestos que haya guardado hasta el momento. Para que su manejo sea más sencillo, puede utilizar las siguientes opciones, accesibles desde los iconos del listado:
+
+- "Folio en Blanco - NUEVO" (IMAGEN) - Abre un nuevo documento en blanco àra que pueda introducir un nuevo elemento en el listado.
+- "Folio con Lápiz - EDITAR" (IMAGEN) - Edita un elemento existente siempre que esté seleccionado en el listado.
+- "Folio con Cruz - ELIMINAR" (IMAGEN) - Elimina un elemento seleccionado de la lista.
+- "Impresora - IMPRIMIR" (IMAGEN) - Crea un documento en formato PDF del elemento seleccionado del listado sin necesidad de editarlo.
+- "Lupa - BÚSQUEDA AVANZADA" (IMAGEN) ? Esta opción le permite buscar la información utilizando criterios adicionales a los mostrados en el listado:
+	· Marque la casilla ?Procesados? si quiere ver todos los elementos de la lista. Dejela sin marcar si sólo quiere ver los elementos pendientes.
+	· En ?Artículo? puede filtrar los elementos a mostrar en función de si incluyen un artículo determinado. Introduzca el código del artículo o seleccionelo de la lista pulsando sobre la lupa.
+	· ?Cliente?: Seleccione el Cliente del cual quiere obtener la información.
+	· ?Fecha Inicial? - ?Fecha Final? Seleccione un rango de fechas para limitar los resultados de la búsqueda. Puede escribirlas a mano o bien pulsar sobre el botón ?calendario? y seleccionarlas de la ventana emergente.
+?Paleta Pintor? - CONFIGURACIÓN DE LISTADOS: En esta opción puede seleccionar qué información quiere que aparezca reflejada en los listados. Según sea a lo que se refiera el listado, podrá configurar unos campos u otros.
+?Flechas? - ACTUALIZAR ? Pulse está opción para refrescar la información del listado y asegurarse de que contiene los últimos datos introducidos o  modificados en el programa.
