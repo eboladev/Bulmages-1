@@ -79,11 +79,12 @@ public:
 public slots:
 	virtual void on_mui_guardar_clicked() {guardaPago();};
 
-	virtual void cargar(QString id)
+	virtual int cargar(QString id)
 	{
-		Pago::cargar(id);
+		int err = Pago::cargar(id);
 		setCaption("Pago " + DBvalue("refpago"));
     		dialogChanges_cargaInicial();
+		return err;
 	};
 	virtual void on_mui_borrar_clicked();
 

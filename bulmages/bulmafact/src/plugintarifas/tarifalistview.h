@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2004 by J. M. Estopa Rey                                *
+ *   pepma@telefonica.net                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,77 +18,40 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef PAGO_H
-#define PAGO_H
+#ifndef TARIFALISTVIEW_H
+#define TARIFALISTVIEW_H
 
-#include <QString>
-
+#include "ui_tarifalistbase.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "pgimportfiles.h"
 
 
-class Pago : public DBRecord
+
+class TarifaListView : public QWidget, private Ui_TarifaListBase, public pgimportfiles
 {
-
-protected:
-	company *companyact;
+	Q_OBJECT
 
 public:
-	Pago(company *);
-	virtual ~Pago();
-	virtual int cargar(QString);
-	void pintaPago();
-	void guardaPago();
-	void borraPago();
-	void vaciaPago();   
-	virtual void pintaidpago(QString)
+	enum edmode
 	{
+		EditMode = 0, SelectMode = 1
 	};
-	virtual void pintaidproveedor(QString)
-	{
-	};
-	virtual void pintafechapago(QString)
-	{
-	};
-	virtual void pintacantpago(QString)
-	{
-	};
-	virtual void pintarefpago(QString)
-	{
-	};
-	virtual void pintaprevisionpago(QString)
-	{
-	};
-	virtual void pintacomentpago(QString)
-	{
-	};
-	void setidpago(QString val)
-	{
-		setDBvalue("idpago", val);
-	};
-	void setidproveedor(QString val)
-	{
-		setDBvalue("idproveedor", val);
-	};
-	void setfechapago(QString val)
-	{
-		setDBvalue("fechapago", val);
-	};
-	void setcantpago(QString val)
-	{
-		setDBvalue("cantpago", val);
-	};
-	void setrefpago(QString val)
-	{
-		setDBvalue("refpago", val);
-	};
-	void setprevisionpago(QString val)
-	{
-		setDBvalue("previsionpago", val);
-	};
-	void setcomentpago(QString val)
-	{
-		setDBvalue("comentpago", val);
+
+private:
+	company *m_companyact;
+	edmode m_modo;
+
+public:
+	TarifaListView(company *, QWidget *parent = 0, const char *name = 0,
+		Qt::WFlags flag = 0, edmode editmodo = EditMode);
+	~TarifaListView();
+	void editar(int);
+public slots:
+	void on_mui_crear_clicked();
+	void on_mui_editar_clicked();
+	void on_mui_borrar_clicked();
+	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+		on_mui_editar_clicked();
 	};
 };
 

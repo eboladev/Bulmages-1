@@ -28,7 +28,10 @@
 #include "company.h"
 #include "comparticulo.h"
 #include "qtable2.h"
+#include "subform2bf.h"
 
+
+/*
 class ListCompArticuloView : public QTableWidget2 , public ListCompArticulo
 {
 Q_OBJECT
@@ -50,5 +53,28 @@ public slots:
 	virtual void s_cellChanged(int row, int col);
 	virtual void s_currentCellChanged(int row, int col, int prow, int pcol);
 };
+*/
+
+
+class ListCompArticuloView : public SubForm2Bf {
+Q_OBJECT
+public:
+	QString mdb_idarticulo;
+	ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
+	~ListCompArticuloView() {};
+
+public slots:
+//        virtual void contextMenuEvent (QContextMenuEvent *);
+	virtual void cargar(QString idarticulo) {
+    _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+    mdb_idarticulo = idarticulo;
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo="+mdb_idarticulo+" AND articulo.idarticulo=comparticulo.idcomponente");
+	SubForm2::cargar(cur);
+    delete cur;
+};
+    virtual void editFinished(int row, int col);
+    virtual void pressedAsterisk(int row, int col);
+};
+
 
 #endif

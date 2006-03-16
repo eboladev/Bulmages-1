@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2004 by Alvaro de Miguel                                *
+ *   alvaro_demiguel@gmail.com                                             *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,64 +18,47 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef DESCALBARANPROV_H
-#define DESCALBARANPROV_H
+#ifndef TARIFAVIEW_H
+#define TARIFAVIEW_H
 
-#include "company.h"
+#include "ui_tarifabase.h"
+#include "postgresiface2.h"
+#include "dialogchanges.h"
 #include "dbrecord.h"
 
+class company;
 
-class DescuentoAlbaranProv : public DBRecord
+class TarifaView : public QWidget, public Ui_TarifaBase, public dialogChanges, public DBRecord
 {
+	Q_OBJECT
 
 private:
-	company *companyact;
-	void definetabla();
+	QString m_idtarifa;
+	QString m_nomtarifa;
+	company *m_companyact;
+	cursor2 *m_cursorcombo;
 
 public:
-	DescuentoAlbaranProv(company *);
-	DescuentoAlbaranProv(company *, QString);
-	/// La carga rapida tiene un comportamiento poco restrictivo para
-	/// aumentar la eficiencia.
-	DescuentoAlbaranProv(company *, QString , QString , QString , QString);
-	virtual ~DescuentoAlbaranProv();
-	virtual void pintaDescuentoAlbaranProv()
-	{
-	};
-	void guardaDescuentoAlbaranProv();
-	void vaciaDescuentoAlbaranProv();
-	inline QString iddalbaranp()
-	{
-		return DBvalue("iddalbaranp");
-	};
-	inline QString conceptdalbaranp()
-	{
-		return DBvalue("conceptdalbaranp");
-	};
-	inline QString proporciondalbaranp()
-	{
-		return DBvalue("proporciondalbaranp");
-	};
-	inline QString idalbaranp()
-	{
-		return DBvalue("idalbaranp");
-	};
-	inline void setiddalbaranp(QString val)
-	{
-		setDBvalue("iddalbaranp",val);
-	};
-	inline void setconceptdalbaranp(QString val)
-	{
-		setDBvalue("conceptdalbaranp",val);
-	};
-	inline void setproporciondalbaranp(QString val)
-	{
-		setDBvalue("proporciondalbaranp",val);
-	};
-	inline void setidalbaranp(QString val)
-	{
-		setDBvalue("idalbaranp",val);
-	};
+	TarifaView(company *emp, QWidget *parent = 0, const char *name = 0);
+	~TarifaView();
+	company *companyact() {return m_companyact;};
+public:
+	void pintar();
+	int cargar(QString);
+	int guardar();
+	int TarifaView::cargarcomboiva(QString);
+	void closeEvent( QCloseEvent *);
+	QString formaQuery(QString);
+
+public slots:
+	virtual void on_mui_guardar_clicked(){guardar();};
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_aceptar_clicked();
+	virtual void on_mui_actualizar_clicked();
 };
+
+
+
 
 #endif

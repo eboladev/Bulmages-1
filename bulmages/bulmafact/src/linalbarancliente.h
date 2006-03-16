@@ -122,7 +122,7 @@ public:
 	void vaciaLinAlbaranCliente();
 	void setcodigocompletoarticulo(QString val);
 	void setidarticulo(QString);
-	void borrar();  
+	int borrar();  
 };
 
 #endif

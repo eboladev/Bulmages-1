@@ -57,18 +57,6 @@ void DescuentoPedidoProveedor::vaciaDescuentoPedidoProveedor() {
 }
 
 
-void DescuentoPedidoProveedor::borrar() {
-    if (DBvalue("iddpedidoproveedor") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dpedidoproveedor WHERE iddpedidoproveedor="+DBvalue("iddpedidoproveedor"));
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-        vaciaDescuentoPedidoProveedor();
-    }// end if
-}// end delete
 
 void DescuentoPedidoProveedor::guardaDescuentoPedidoProveedor() {
     QString id;

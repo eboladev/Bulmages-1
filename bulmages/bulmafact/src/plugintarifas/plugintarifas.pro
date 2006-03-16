@@ -77,17 +77,22 @@ windows {
 #	TARGET = ../../../installbulmages/plugins/mypluginbf
 }
 
+FORMS = tarifalistbase.ui \
+	tarifabase.ui
+
 SOURCES = busquedatarifa.cpp \
 	  plugintarifas.cpp \
-	  ltarifa.cpp \
-	  listltarifa.cpp \
-	  listltarifaview.cpp
+	  listltarifaview.cpp \
+	  tarifalistsubform.cpp \
+	  tarifalistview.cpp \
+	  tarifaview.cpp
 
 HEADERS = busquedatarifa.h \
 	  plugintarifas.h \
-	  ltarifa.h \
-	  listltarifa.h \
-	  listltarifaview.h
+	  listltarifaview.h \
+	  tarifalistsubform.h \
+          tarifalistview.h \
+	  tarifaview.h
 
 #The following line was inserted by qt3to4
 QT += qt3support

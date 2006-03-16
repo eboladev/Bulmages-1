@@ -63,18 +63,7 @@ void CompArticulo::vaciaCompArticulo() {
 }
 
 
-void CompArticulo::borrar() {
-    if (DBvalue("idarticulo") != "" && DBvalue("idcomponente") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+DBvalue("idarticulo")+" AND idcomponente="+DBvalue("idcomponente"));
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-        vaciaCompArticulo();
-    }// end if
-}// end delete
+
 
 void CompArticulo::guardaCompArticulo() {
     /// Segun est�la linea en la base de datos o no se hace una cosa u otra.

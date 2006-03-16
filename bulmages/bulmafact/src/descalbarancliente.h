@@ -76,7 +76,6 @@ public:
 	{
 		setDBvalue("idalbaran",val);
 	};
-	void borrar();
 };
 
 #endif

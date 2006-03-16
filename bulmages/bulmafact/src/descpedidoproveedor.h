@@ -75,7 +75,6 @@ public:
 	{
 		setDBvalue("idpedidoproveedor",val);
 	};
-	void borrar();
 };
 
 #endif

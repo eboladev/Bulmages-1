@@ -18,48 +18,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LTARIFA_H
-#define LTARIFA_H
+#ifndef SUBFORM2BF_H
+#define SUBFORM2BF_H
 
+#include <Q3Table>
+#include <QEvent>
+
+#include "comparticulolist.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "comparticulo.h"
+#include "qtable2.h"
+#include "subform.h"
 
-class LTarifa : public DBRecord
-{
 
-private:
-	company *companyact;
-	void definetabla();
 
+class SubForm2Bf : public SubForm2 {
+Q_OBJECT
 public:
-	LTarifa(company *);
-	LTarifa(company *, QString);
-	LTarifa(company *, cursor2 *);
+	SubForm2Bf(QWidget *parent = 0, const char *name = 0);
+	virtual ~SubForm2Bf() {};
 
-	virtual ~LTarifa();
-	virtual void pintar()	{};
-
-	inline QString idltarifa() {return DBvalue("idltarifa");};
-	inline QString idtarifa() {return DBvalue("idtarifa");};
-	inline QString idarticulo() {return DBvalue("idarticulo");};
-	inline QString idalmacen() {return DBvalue("idalmacen");};
-	inline QString pvpltarifa() {return DBvalue("pvpltarifa");};
-	inline QString codigocompletoarticulo() {return DBvalue("codigocompletoarticulo");};
-	inline QString nomarticulo() {return DBvalue("nomarticulo");};
-	inline QString nomalmacen() {return DBvalue("nomalmacen");};
-	inline QString codigoalmacen() {return DBvalue("codigoalmacen");};
-	inline QString nomtarifa() {return DBvalue("nomtarifa");};
-
-
-	inline void setidtarifa(QString val) {setDBvalue("idtarifa", val);};
-	inline void setnomarticulo(QString val)	{setDBvalue("nomarticulo", val);};
-
-	void setcodigocompletoarticulo(QString);
-	void setidarticulo(QString);
-	
-	inline void setpvpltarifa(const QString &val) {setDBvalue("pvpltarifa",val);};
-
-
+public slots:
+        virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void editFinished(int row, int col);
+    virtual void pressedAsterisk(int row, int col);
 };
+
 
 #endif

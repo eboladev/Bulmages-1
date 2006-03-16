@@ -191,7 +191,9 @@ HEADERS += bulmafact.h \
 	   listcontrolstockview.h \
 	   cliente.h \
 	   clienteview.h \
-	   articulo.h
+	   articulo.h \
+	   subform.h \
+	   subform2bf.h
 
 	   
 SOURCES += bulmafact.cpp \
@@ -304,7 +306,9 @@ SOURCES += bulmafact.cpp \
 	   listcontrolstockview.cpp \
 	   cliente.cpp \
 	   clienteview.cpp \
-	   articulo.cpp
+	   articulo.cpp \
+	   subform.cpp \
+	   subform2bf.cpp
 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \

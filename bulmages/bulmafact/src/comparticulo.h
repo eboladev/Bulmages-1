@@ -74,7 +74,6 @@ public:
 	};
 	void setcodigocompletocomponente(QString);
 	void setidcomponente(QString);
-	void borrar();
 };
 
 #endif

@@ -14,7 +14,7 @@
 #include <Q3ComboBox>
 
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *name)
-: Q3ComboBox(parent, name) {
+: QComboBox(parent) {
     companyact=NULL;
     m_cursorcombo=NULL;
     

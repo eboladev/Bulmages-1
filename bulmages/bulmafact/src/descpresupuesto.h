@@ -75,7 +75,7 @@ public:
 	{
 		setDBvalue("idpresupuesto",val);
 	};
-	void borrar();
+	int borrar();
 };
 
 #endif

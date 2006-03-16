@@ -57,19 +57,6 @@ void DescuentoFacturaProv::vaciaDescuentoFacturaProv() {
 }
 
 
-void DescuentoFacturaProv::borrar() {
-    if (DBvalue("iddfacturap") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dfacturap WHERE iddfacturap="+DBvalue("iddfacturap"));
-        if (error) {
-            companyact->rollback()
-            ;
-            return;
-        }// end if
-        companyact->commit();
-        vaciaDescuentoFacturaProv();
-    }// end if
-}// end delete
 
 void DescuentoFacturaProv::guardaDescuentoFacturaProv() {
     QString id;

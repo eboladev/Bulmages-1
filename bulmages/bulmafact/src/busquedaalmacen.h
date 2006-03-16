@@ -21,13 +21,13 @@
 #ifndef BUSQUEDAALMACEN_H
 #define BUSQUEDAALMACEN_H
 
-#include <Q3ComboBox>
+#include <QComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
 
 
-class BusquedaAlmacen : public Q3ComboBox
+class BusquedaAlmacen : public QComboBox
 {
 	Q_OBJECT
 
@@ -43,6 +43,15 @@ public:
 		companyact = comp;
 	};
 	virtual void setidalmacen(QString idalmacen);
+	QString idalmacen() {
+	int index= currentIndex();
+		if (index > 0)
+		{
+			return(m_cursorcombo->valor("idalmacen", index - 1));
+		} else {
+			return "";
+		}	
+};
 
 public slots:
 	void m_activated(int index)

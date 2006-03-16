@@ -16,38 +16,84 @@
 @author Tomeu Borras
 */
 
+
 #include <QEvent>
 #include <QTableWidget>
 
 #include "qtable2.h"
-#include "listltarifa.h"
-#include "ltarifa.h"
+#include "subform2bf.h"
 
-class ListLTarifaView : public QTableWidget2 , public ListLTarifa {
-    Q_OBJECT
+
+
+
+class ListLTarifaView : public SubForm2Bf {
+Q_OBJECT
 public:
-    ListLTarifaView(QWidget *parent=0);
-    ~ListLTarifaView();
-
-    virtual void pintar();
-    virtual void pintar(int);
-
-    LTarifa *lineaat(int);
-    LTarifa *lineaact();
-
-    void guardaconfig();
-    void cargaconfig();
-    void borraLTarifaAct();
-
-    
-        virtual void contextMenuEvent (QContextMenuEvent *e);
+	QString mdb_idarticulo;
+	ListLTarifaView(QWidget *parent = 0, const char *name = 0);
+	~ListLTarifaView() {};
 
 public slots:
-	virtual void s_cellChanged(int row, int col);
+virtual void cargar(QString idarticulo) {
+    _depura("ListCompArticulo::cargaListCompArticulo\n",0);
 
-/**
-        virtual void borraLTarifaAct();
-    */
+	mdb_idarticulo=idarticulo;
+
+    QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa, (SELECT * FROM articulo WHERE idarticulo = "+mdb_idarticulo+") AS t2) AS t3 ";
+	    SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=t3.idtarifa AND t1.idalmacen=t3.idalmacen ";
+
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+	SubForm2Bf::cargar(cur);
+    delete cur;
 };
 
+
+
+};
+
+
+
+
+class ListLTarifaView1 : public SubForm2Bf {
+Q_OBJECT
+public:
+	ListLTarifaView1(QWidget *parent = 0, const char *name = 0);
+	~ListLTarifaView1() {};
+
+public slots:
+
+
+virtual void cargar(QString SQLQuery) {
+    _depura("ListCompArticulo::cargar\n",0);
+	_depura(SQLQuery,0);
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+	if (!cur->error())
+	SubForm2Bf::cargar(cur);
+    delete cur;
+};
+
+
+
+};
+
+
+/// OJO ESta clase está definida aqui pero es el lanzador del plugin para las entradas de menu del plugin.
+#include "bulmafact.h"
+class myplugin1 : public QObject {
+    Q_OBJECT
+public:
+	bulmafact *m_bges;
+    company *m_companyact;
+public:
+    myplugin1();
+    ~myplugin1();
+    void inicializa(bulmafact *);
+public slots:
+    void elslot();
+};
+
+
 #endif
+
+
+

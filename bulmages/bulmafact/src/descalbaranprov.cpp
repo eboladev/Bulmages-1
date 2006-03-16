@@ -59,18 +59,6 @@ void DescuentoAlbaranProv::vaciaDescuentoAlbaranProv() {
 }
 
 
-void DescuentoAlbaranProv::borrar() {
-    if (DBvalue("iddalbaranp") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dalbaranp WHERE iddalbaranp="+DBvalue("iddalbaranp"));
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-        vaciaDescuentoAlbaranProv();
-    }// end if
-}// end delete
 
 void DescuentoAlbaranProv::guardaDescuentoAlbaranProv() {
     QString id;

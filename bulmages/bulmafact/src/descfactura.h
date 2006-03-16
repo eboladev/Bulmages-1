@@ -76,7 +76,6 @@ public:
 	{
 		setDBvalue("idfactura",val);
 	};
-	void borrar();  
 };
 
 #endif

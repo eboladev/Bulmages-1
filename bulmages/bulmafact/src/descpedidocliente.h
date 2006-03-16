@@ -76,7 +76,6 @@ public:
 	{
 		setDBvalue("idpedidocliente",val);
 	};
-	void borrar();
 };
 
 #endif

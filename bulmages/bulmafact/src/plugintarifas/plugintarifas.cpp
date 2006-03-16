@@ -10,10 +10,50 @@
 #include "funcaux.h"
 #include "busquedatarifa.h"
 #include "listltarifaview.h"
+#include "tarifalistview.h"
 
-void entryPoint(bulmafact *bges) {
+
+myplugin1::myplugin1() {}
+myplugin1::~myplugin1() {}
+
+void myplugin1::elslot() {
+
+/*
+	QDialog *diag=new QDialog(0);
+	diag->setModal(true);
+*/
+	TarifaListView *tar = new TarifaListView(m_companyact, NULL);
+	m_companyact->m_pWorkspace->addWindow(tar);
+
+	tar->show();
+/*
+	connect(tar, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+
+	delete tar;
+	delete diag;
+*/
+}// end elslot
+
+void myplugin1::inicializa(bulmafact *bges) {
+
+    //El menu de empresa
+	m_bges = bges;
+    m_companyact = bges->getcompany();
+    QAction *planCuentas = new QAction("&Tarifas", 0);
+    planCuentas->setStatusTip("Tarifas");
+    planCuentas->setWhatsThis("Tarifas");
+    bges->Artculos->addSeparator();
+    planCuentas->addTo(bges->Artculos);
+    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+
+}// end inicializa
+
+int entryPoint(bulmafact *bges) {
     _depura("Estoy dentro del plugin\n",0);
-    bges->setCaption("Prueba de plugin Tarifas.");
+    myplugin1 *plug= new myplugin1( );
+    plug->inicializa(bges);
+    return 0;
 }
 
 
@@ -70,8 +110,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
 int ArticuloView_cargar(ArticuloView *art) {
     _depura("ArticuloView_cargar",0);
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
-    l->cargarParaArticulo(art->DBvalue("idarticulo"));
-    l->pintar();
+    l->cargar(art->DBvalue("idarticulo"));
     return 0;
 }
 
@@ -79,7 +118,7 @@ int ArticuloView_cargar(ArticuloView *art) {
 int ArticuloView_guardar_post(ArticuloView *art) {
     _depura("ArticuloView_guardar_post",0);
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
-    l->setidarticulo(art->DBvalue("idarticulo"));
+	l->setColumnValue( "idarticulo", art->DBvalue("idarticulo"));
     l->guardar();
     return 0;
 }

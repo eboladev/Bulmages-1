@@ -264,7 +264,8 @@ void ArticuloView::guardar() {
         system(cadena.ascii());
     }// end if
 	/// Guardamos la lista de componentes
-    m_componentes->guardaListCompArticulo();
+	m_componentes->setColumnValue("idarticulo",DBvalue("idarticulo"));
+    m_componentes->guardar();
 
 
         /// Disparamos los plugins

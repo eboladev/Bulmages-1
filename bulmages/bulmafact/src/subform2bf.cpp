@@ -15,24 +15,15 @@
 #include <QKeyEvent>
 #include <QEvent>
 
-#include "articulolist.h"
-#include "comparticulolistview.h"
+#include "subform2bf.h"
 #include "funcaux.h"
+#include "articulolist.h"
 
 
-ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *) : SubForm2Bf(parent) {
-    setDBTableName("comparticulo");
-    setDBCampoId("idcomponente");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "codigocompletoarticulo");
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomarticulo");
-    addSHeader("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "cantcomparticulo");
-    addSHeader("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, "idcomparticulo");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, "idarticulo");
-
-	setinsercion(TRUE);
+SubForm2Bf::SubForm2Bf(QWidget *parent, const char *) : SubForm2(parent) {
 };
 
-void ListCompArticuloView::pressedAsterisk(int row, int col) {
+void SubForm2Bf::pressedAsterisk(int row, int col) {
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     if (camp->nomcampo() != "codigocompletoarticulo")
@@ -49,24 +40,38 @@ void ListCompArticuloView::pressedAsterisk(int row, int col) {
     delete artlist;
     cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo="+idArticle);
     if (!cur->eof() ) {
-        rec->setDBvalue("idcomponente",idArticle);
+        rec->setDBvalue("idarticulo",idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
     }
 };
 
-void ListCompArticuloView::editFinished(int row, int col) {
-    _depura("ListCompArticuloView::editFinished",0);
+void SubForm2Bf::editFinished(int row, int col) {
+    _depura("SubForm2Bf::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
         if (!cur->eof() ) {
-            rec->setDBvalue("idcomponente",cur->valor("idarticulo"));
+            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         }
     }
 };
+
+
+void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
+    _depura("SubForm2Bf::contextMenuEvent",0);
+    int a = currentRow();
+    if ( a < 0)
+        return;
+    QMenu *popup = new QMenu(this);
+    QAction *del = popup->addAction(tr("Borrar"));
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == del)
+        borrar(a);
+    delete popup;
+}
 

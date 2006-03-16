@@ -76,7 +76,6 @@ public:
 	{
 		setDBvalue("idfacturap",val);
 	};
-	void borrar();
 };
 
 #endif
