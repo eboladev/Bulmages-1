@@ -9,16 +9,16 @@
 class DBCampo {
 public:
    enum dbtype {DBint=1, DBvarchar=2, DBdate=3, DBnumeric=4, DBboolean=5};
-   enum dbrestrict {DBNothing=0, DBNotNull=1, DBPrimaryKey=2, DBNoSave=4};
-private:
+   enum dbrestrict {DBNothing=0, DBNotNull=1, DBPrimaryKey=2, DBNoSave=4, DBAuto=5};
+public:
 	QString m_nomcampo;
 	QString m_valorcampo;
 	QString m_nompresentacion;
-	dbrestrict   m_restrict;
+	int   m_restrict;
 	dbtype m_type;
    	postgresiface2 *conexionbase;
 public:
-	DBCampo(postgresiface2 *com, QString nom, dbtype typ, dbrestrict res, QString nomp=""){
+	DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp=""){
 		conexionbase = com;
 		m_nomcampo = nom;
 		m_valorcampo="";
@@ -26,16 +26,16 @@ public:
 		m_restrict = res;
 		m_type = typ;
 	};
-	~DBCampo(){};
-	int set(QString val) {m_valorcampo=val;return 0;};
-	dbrestrict restrictcampo() {return m_restrict;};
+	virtual ~DBCampo(){};
+	virtual int set(QString val) {m_valorcampo=val;return 0;};
+	int restrictcampo() {return m_restrict;};
 	QString nomcampo() {return m_nomcampo;};
 	QString valorcampo() {return m_valorcampo;};
 	QString valorcampoprep(int &error) {
 		error = 0;
-		if (m_restrict & DBNotNull) {
+		if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
 				if (m_valorcampo == "") {
-					_depura("Valor invalido para "+m_nompresentacion,2);
+					_depura("Campo "+m_nompresentacion+" vacio",2);
 					error = -1;
 					return "";
 				}// end if
@@ -65,11 +65,12 @@ public:
 };
 	
 class DBRecord {
-private:
+protected:
     Q3PtrList<DBCampo> m_lista;
     postgresiface2 *conexionbase;
     QString m_tablename;
     QString m_campoid;
+    bool m_nuevoCampo;
 public:
 	DBRecord(postgresiface2 *);
 	virtual ~DBRecord();
@@ -80,11 +81,13 @@ public:
 	QString DBvalueprep(QString);
 	void setDBTableName(QString nom) {m_tablename=nom;};
 	void setDBCampoId(QString nom) {m_campoid = nom;};
-	int addDBCampo(QString, DBCampo::dbtype, DBCampo::dbrestrict, QString);
+	int addDBCampo(QString, DBCampo::dbtype, int, QString);
 	void DBclear();
 
-	virtual void borrar();
-	virtual void guardar();
+	Q3PtrList<DBCampo> *lista() {return &m_lista;};
+
+	virtual int borrar();
+	virtual int guardar();
 	virtual void vaciar() {DBclear();};
 	virtual int cargar(QString);
 };
