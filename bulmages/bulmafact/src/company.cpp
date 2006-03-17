@@ -94,7 +94,7 @@ void company::createMainWindows() {
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 
-    m_providerslist = new providerslist(this, 0,theApp->translate("Proveedores","company"));
+    m_providerslist = new ProveedorList(this, 0,theApp->translate("Proveedores","company"));
     m_pWorkspace->addWindow(m_providerslist);
     m_providerslist->hide();
 

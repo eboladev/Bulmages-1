@@ -45,12 +45,16 @@ TarifaListView::TarifaListView(company *comp, QWidget *parent, const char *name,
     m_companyact = comp;
     mui_list->setcompany(m_companyact);
     mui_list->cargar();
+
+    comp->meteWindow("Tarifas",this);
+
     _depura("TarifaListView::END_TarifaListView()\n",0);
 }// end TarifaListView
 
 
 TarifaListView::~TarifaListView() {
     _depura("TarifaListView::INIT_destructor()\n",0);
+     m_companyact->sacaWindow(this);
     _depura("TarifaListView::END_destructor()\n",0);
 }// end ~TarifaListView
 

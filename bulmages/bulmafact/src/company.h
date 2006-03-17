@@ -28,7 +28,7 @@
 #include "listventanas.h"
 
 
-class providerslist;
+class ProveedorList;
 class ClientsList;
 class ClienteView;
 class ArticuloList;
@@ -51,7 +51,7 @@ class company : public postgresiface2
 {
 
 private:
-	providerslist *m_providerslist;
+	ProveedorList *m_providerslist;
 	ClientsList *m_clientsList;
 	ArticuloList *m_articleslist;
 	PresupuestoList *m_budgetsList;

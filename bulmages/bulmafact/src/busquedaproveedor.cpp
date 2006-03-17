@@ -72,7 +72,7 @@ void BusquedaProveedor::s_searchProveedor() {
 	QDialog *diag=new QDialog(0);
 	diag->setModal(true);
 
-    providerslist *providers = new providerslist(companyact, diag, tr("Seleccione proveedor","company"),0,providerslist::SelectMode);
+    ProveedorList *providers = new ProveedorList(companyact, diag, tr("Seleccione proveedor","company"),0,ProveedorList::SelectMode);
 
 	connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
 	diag->exec();

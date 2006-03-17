@@ -56,13 +56,19 @@ TarifaView::TarifaView(company *comp, QWidget *parent, const char *name)
     mui_almacen->setcompany(comp);
     mui_almacen->setidalmacen("0");
     mui_list->setcompany(comp);
+
+    if (m_companyact->meteWindow("Tarifa Edicion",this))
+        return;
+
     dialogChanges_cargaInicial();
+
     _depura("TarifaView::END_constructor()\n",0);
 }// end TarifaView
 
 
 TarifaView::~TarifaView() {
     _depura("TarifaView::INIT_destructor()\n",0);
+    m_companyact->sacaWindow(this);
     _depura("TarifaView::END_destructor()\n",0);
 }// end ~TarifaView
 
@@ -112,6 +118,12 @@ int TarifaView::cargar(QString idtarifa) {
     setDBvalue( "idtarifa", idtarifa);
     DBRecord::cargar(idtarifa);
     mui_list->cargar(formaQuery(idtarifa));
+
+
+    setCaption("Tarifa "+DBvalue("nomtarifa"));
+    if (m_companyact->meteWindow(caption(),this))
+	return -1;
+
     dialogChanges_cargaInicial();
     /// Tratamiento de excepciones
     if (error == 1) {
@@ -154,10 +166,7 @@ void TarifaView::on_mui_actualizar_clicked() {
     _depura("TarifaView::INIT_boton_nuevo()\n",0);
     guardar();
     QString idtarifa = DBvalue( "idtarifa");
-//    vaciar();
-//    mui_list->vaciar();
     cargar(idtarifa);
-//    pintar();
     _depura("TarifaView::END_boton_nuevo()\n",0);
 }
 

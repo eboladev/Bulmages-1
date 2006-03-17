@@ -16,10 +16,10 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Listado Artículos</string>
+   <string>Tarifas</string>
   </property>
   <property name="windowIcon" >
-   <iconset/>
+   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_tarifa_listado.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

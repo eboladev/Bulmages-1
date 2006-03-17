@@ -291,7 +291,6 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
                           this,
                           "open file dialog",
                           "Choose a file" );
-    fprintf(stderr," Archivo Seleccionado: %s\n",m_archivoimagen.ascii());
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("ArticuloView::END_s_cambiarimagen()\n",0);
 }// end s_cambiarimagen

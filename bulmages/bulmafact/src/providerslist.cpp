@@ -60,19 +60,16 @@ CREATE TABLE proveedor (
 );
 */
 
-
-#include "providerslist.h"
-#include "qtable1.h"
-#include "funcaux.h"
-
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QCheckBox>
 #include <QFile>
 #include <Q3FileDialog>
-//Added by qt3to4:
 #include <QTextStream>
 
+#include "providerslist.h"
+#include "qtable1.h"
+#include "funcaux.h"
 #include "company.h"
 #include "provedit.h"
 #include "pgimportfiles.h"
@@ -93,7 +90,7 @@ CREATE TABLE proveedor (
 #define COL_URLPROVEEDOR 13
 #define COL_CLAVEWEBPROVEEDOR 14
 
-void providerslist::guardaconfig() {
+void ProveedorList::guardaconfig() {
     QString aux = "";
     mver_idproveedor->isChecked() ? aux += "1,":aux+="0,";
     mver_nomproveedor->isChecked() ? aux += "1,":aux+="0,";
@@ -111,27 +108,27 @@ void providerslist::guardaconfig() {
     mver_urlproveedor->isChecked() ? aux += "1,":aux+="0,";
     mver_clavewebproveedor->isChecked() ? aux += "1,":aux+="0,";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"confproviderslist.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+"confProveedorList.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
+        for (int i = 0; i < mui_list->columnCount(); i++) {
+            mui_list->showColumn(i);
+            stream << mui_list->columnWidth(i) << "\n";
         }// end for
         file.close();
     }// end if
 }// end guardaconfig()
 
-void providerslist::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"confproviderslist.cfn" );
+void ProveedorList::cargaconfig() {
+    QFile file( confpr->valor(CONF_DIR_USER)+"confProveedorList.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
+        for (int i = 0; i < mui_list->columnCount(); i++) {
             QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
+            mui_list->setColumnWidth(i, linea.toInt());
         }// end for
         file.close();
     } else
@@ -154,90 +151,90 @@ void providerslist::cargaconfig() {
 
 
 
-void providerslist::s_configurar() {
+void ProveedorList::s_configurar() {
     if(mver_idproveedor->isChecked() )
-        m_list->showColumn(COL_IDPROVEEDOR);
+        mui_list->showColumn(COL_IDPROVEEDOR);
     else
-        m_list->hideColumn(COL_IDPROVEEDOR);
+        mui_list->hideColumn(COL_IDPROVEEDOR);
 
     if(mver_nomproveedor->isChecked() )
-        m_list->showColumn(COL_NOMPROVEEDOR);
+        mui_list->showColumn(COL_NOMPROVEEDOR);
     else
-        m_list->hideColumn(COL_NOMPROVEEDOR);
+        mui_list->hideColumn(COL_NOMPROVEEDOR);
 
     if(mver_nomaltproveedor->isChecked() )
-        m_list->showColumn(COL_NOMALTPROVEEDOR);
+        mui_list->showColumn(COL_NOMALTPROVEEDOR);
     else
-        m_list->hideColumn(COL_NOMALTPROVEEDOR);
+        mui_list->hideColumn(COL_NOMALTPROVEEDOR);
 
     if(mver_cifproveedor->isChecked() )
-        m_list->showColumn(COL_CIFPROVEEDOR);
+        mui_list->showColumn(COL_CIFPROVEEDOR);
     else
-        m_list->hideColumn(COL_CIFPROVEEDOR);
+        mui_list->hideColumn(COL_CIFPROVEEDOR);
 
     if(mver_codicliproveedor->isChecked() )
-        m_list->showColumn(COL_CODICLIPROVEEDOR);
+        mui_list->showColumn(COL_CODICLIPROVEEDOR);
     else
-        m_list->hideColumn(COL_CODICLIPROVEEDOR);
+        mui_list->hideColumn(COL_CODICLIPROVEEDOR);
 
     if(mver_cbancproveedor->isChecked() )
-        m_list->showColumn(COL_CBANCPROVEEDOR);
+        mui_list->showColumn(COL_CBANCPROVEEDOR);
     else
-        m_list->hideColumn(COL_CBANCPROVEEDOR);
+        mui_list->hideColumn(COL_CBANCPROVEEDOR);
 
     if(mver_comentproveedor->isChecked() )
-        m_list->showColumn(COL_COMENTPROVEEDOR);
+        mui_list->showColumn(COL_COMENTPROVEEDOR);
     else
-        m_list->hideColumn(COL_COMENTPROVEEDOR);
+        mui_list->hideColumn(COL_COMENTPROVEEDOR);
 
     if(mver_dirproveedor->isChecked() )
-        m_list->showColumn(COL_DIRPROVEEDOR);
+        mui_list->showColumn(COL_DIRPROVEEDOR);
     else
-        m_list->hideColumn(COL_DIRPROVEEDOR);
+        mui_list->hideColumn(COL_DIRPROVEEDOR);
 
     if(mver_poblproveedor->isChecked() )
-        m_list->showColumn(COL_POBLPROVEEDOR);
+        mui_list->showColumn(COL_POBLPROVEEDOR);
     else
-        m_list->hideColumn(COL_POBLPROVEEDOR);
+        mui_list->hideColumn(COL_POBLPROVEEDOR);
 
     if(mver_cpproveedor->isChecked() )
-        m_list->showColumn(COL_CPPROVEEDOR);
+        mui_list->showColumn(COL_CPPROVEEDOR);
     else
-        m_list->hideColumn(COL_CPPROVEEDOR);
+        mui_list->hideColumn(COL_CPPROVEEDOR);
 
     if(mver_telproveedor->isChecked() )
-        m_list->showColumn(COL_TELPROVEEDOR);
+        mui_list->showColumn(COL_TELPROVEEDOR);
     else
-        m_list->hideColumn(COL_TELPROVEEDOR);
+        mui_list->hideColumn(COL_TELPROVEEDOR);
 
     if(mver_faxproveedor->isChecked() )
-        m_list->showColumn(COL_FAXPROVEEDOR);
+        mui_list->showColumn(COL_FAXPROVEEDOR);
     else
-        m_list->hideColumn(COL_FAXPROVEEDOR);
+        mui_list->hideColumn(COL_FAXPROVEEDOR);
 
     if(mver_emailproveedor->isChecked() )
-        m_list->showColumn(COL_EMAILPROVEEDOR);
+        mui_list->showColumn(COL_EMAILPROVEEDOR);
     else
-        m_list->hideColumn(COL_EMAILPROVEEDOR);
+        mui_list->hideColumn(COL_EMAILPROVEEDOR);
 
     if(mver_urlproveedor->isChecked() )
-        m_list->showColumn(COL_URLPROVEEDOR);
+        mui_list->showColumn(COL_URLPROVEEDOR);
     else
-        m_list->hideColumn(COL_URLPROVEEDOR);
+        mui_list->hideColumn(COL_URLPROVEEDOR);
 
     if(mver_clavewebproveedor->isChecked() )
-        m_list->showColumn(COL_CLAVEWEBPROVEEDOR);
+        mui_list->showColumn(COL_CLAVEWEBPROVEEDOR);
     else
-        m_list->hideColumn(COL_CLAVEWEBPROVEEDOR);
-
-
+        mui_list->hideColumn(COL_CLAVEWEBPROVEEDOR);
 }// end s_configurar
 
-providerslist::providerslist(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : providerslistbase(parent, name, flag) , pgimportfiles(comp) {
+
+ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
+        : QWidget (parent, name, flag) , pgimportfiles(comp) {
+    setupUi(this);
     cargaconfig();
-    s_configurar();
-    companyact = comp;
+    m_companyact = comp;
+    mui_list->setcompany(comp);
     hideBusqueda();
     hideConfiguracion();
     m_modo=editmode;
@@ -245,117 +242,66 @@ providerslist::providerslist(company *comp, QWidget *parent, const char *name, Q
     m_cifprovider="";
     m_nomprovider="";
     if (m_modo == EditMode)
-        companyact->meteWindow(caption(),this);
-
-    m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(15);
-    m_list->horizontalHeader()->setLabel( COL_IDPROVEEDOR, tr( "Codigo" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMPROVEEDOR, tr( "Nombre Fiscal" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMALTPROVEEDOR, tr( "Nombre Comercial" ) );
-    m_list->horizontalHeader()->setLabel( COL_CIFPROVEEDOR, tr( "CIF/NIF" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODICLIPROVEEDOR, tr( "Codigo de cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CBANCPROVEEDOR, tr( "Cuenta Bancaria" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTPROVEEDOR, tr("Observaciones") );
-    m_list->horizontalHeader()->setLabel( COL_DIRPROVEEDOR, tr("Domicilio") );
-    m_list->horizontalHeader()->setLabel( COL_POBLPROVEEDOR, tr("Poblacion�") );
-    m_list->horizontalHeader()->setLabel( COL_CPPROVEEDOR, tr("C.P.") );
-    m_list->horizontalHeader()->setLabel( COL_TELPROVEEDOR, tr("N Telefono") );
-    m_list->horizontalHeader()->setLabel( COL_FAXPROVEEDOR, tr("N Fax") );
-    m_list->horizontalHeader()->setLabel( COL_EMAILPROVEEDOR, tr("Correo Electronico") );
-    m_list->horizontalHeader()->setLabel( COL_URLPROVEEDOR, tr("Pagina Web") );
-    m_list->horizontalHeader()->setLabel( COL_CLAVEWEBPROVEEDOR, tr("Clave propia web proveedor") );
+        m_companyact->meteWindow(caption(),this);
     presenta();
 
-}// end providerslist
+}// end ProveedorList
 
-providerslist::~providerslist() {
+ProveedorList::~ProveedorList() {
     if (m_modo == EditMode)
-        companyact->sacaWindow(this);
+        m_companyact->sacaWindow(this);
     guardaconfig();
-}// end ~providerslist
+}// end ~ProveedorList
 
-void providerslist::presenta() {
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCE).ascii());
-    m_list->setReadOnly(TRUE);
-    m_list->setSorting(FALSE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
-    m_list->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_list->setText(i,COL_IDPROVEEDOR,cur->valor("idproveedor"));
-        m_list->setText(i,COL_NOMPROVEEDOR,cur->valor("nomproveedor"));
-        m_list->setText(i,COL_NOMALTPROVEEDOR,cur->valor("nomaltproveedor"));
-        m_list->setText(i,COL_CIFPROVEEDOR,cur->valor("cifproveedor"));
-        m_list->setText(i,COL_CODICLIPROVEEDOR,cur->valor("codicliproveedor"));
-        m_list->setText(i,COL_CBANCPROVEEDOR,cur->valor("cbancproveedor"));
-        m_list->setText(i,COL_COMENTPROVEEDOR,cur->valor("comentproveedor"));
-        m_list->setText(i,COL_DIRPROVEEDOR,cur->valor("dirproveedor"));
-        m_list->setText(i,COL_POBLPROVEEDOR,cur->valor("poblproveedor"));
-        m_list->setText(i,COL_CPPROVEEDOR,cur->valor("cpproveedor"));
-        m_list->setText(i,COL_TELPROVEEDOR,cur->valor("telproveedor"));
-        m_list->setText(i,COL_FAXPROVEEDOR,cur->valor("faxproveedor"));
-        m_list->setText(i,COL_EMAILPROVEEDOR,cur->valor("emailproveedor"));
-        m_list->setText(i,COL_URLPROVEEDOR,cur->valor("urlproveedor"));
-        m_list->setText(i,COL_CLAVEWEBPROVEEDOR,cur->valor("clavewebproveedor"));
-        i++;
-        cur->siguienteregistro();
-    }// end while
+void ProveedorList::presenta() {
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
+    mui_list->cargar(cur);
     delete cur;
+    s_configurar();
 }// end presenta
 
 
 
-void providerslist::doubleclicked(int a, int , int , const QPoint &) {
-	_depura("providerslist::doubleclicked()",0);
-    m_idprovider = m_list->text(a,COL_IDPROVEEDOR);
-    m_cifprovider = m_list->text(a,COL_CIFPROVEEDOR);
-    m_nomprovider = m_list->text(a,COL_NOMPROVEEDOR);
-    if (m_modo ==0 ) {
-        QString idprov = m_list->text(a, COL_IDPROVEEDOR);
-        provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-        if (prov->chargeprovider(idprov)) {
-            return;
-	}
-        companyact->m_pWorkspace->addWindow(prov);
-        prov->show();
-    } else {
-	emit(selected(m_idprovider));
-        // close();
-    }// end if
-	_depura("END providerslist::doubleclicked()",0);
-}
 
 
-
-
-void providerslist::contextMenu(int , int , const QPoint &) {}// end contextMenuRequested
-
-
-void providerslist::newprovider() {
+void ProveedorList::on_mui_crear_clicked() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    provedit *prov = new provedit(companyact,0,theApp->translate("Edicion de Proveedores", "company"));
-    companyact->m_pWorkspace->addWindow(prov);
+    provedit *prov = new provedit(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+    m_companyact->m_pWorkspace->addWindow(prov);
     prov->show();
 }// end boton_crear
 
 
-void providerslist::s_findProvider() {
+void ProveedorList::s_findProvider() {
     presenta();
 }// end s_findProvider
 
 
-void providerslist::s_editProvider() {
-    int a = m_list->currentRow();
-	if (a >=0 ) 
-    	doubleclicked(a,0,0, QPoint());
-	else
-	_depura("Debe seleccionar una linea",2);
+void ProveedorList::editar(int  row) {
+    _depura("ProveedorList::editar",0);
+    m_idprovider = mui_list->DBvalue(QString("idproveedor"),row);
+    m_cifprovider = mui_list->DBvalue(QString("cifproveedor"),row);
+    m_nomprovider = mui_list->DBvalue(QString("nomproveedor"),row);
+    if (m_modo ==0 ) {
+        provedit *prov = new provedit(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+        if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
+            return;
+        }
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
+    } else {
+        emit(selected(m_idprovider));
+        // close();
+    }// end if
+    _depura("END ProveedorList::editar",0);
+}
+
+void ProveedorList::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
+    if (a >=0 )
+        editar(a);
+    else
+        _depura("Debe seleccionar una linea",2);
 }// end s_editProvider
 
 
@@ -363,29 +309,23 @@ void providerslist::s_editProvider() {
   * Dicha funci� avisa de la perdida de datos y si se decide continuar
   * Se procede a borrar el proveedor
   */
-void providerslist::s_removeProvider() {
-    fprintf(stderr, "removeOrder button activated");
-    if (QMessageBox::warning( this, "BulmaFact - Proveedores",
-                              "Seguro que desea borrar el proveedor?", "Si", "No") == 0) {
-        int row = m_list->currentRow();
-        QString idProvider = m_list->text(row,COL_IDPROVEEDOR);
-        QString SQLQuery = "DELETE FROM proveedor WHERE idproveedor ="+idProvider;
-        companyact->begin();
-        int error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-        presenta();
+void ProveedorList::on_mui_borrar_clicked() {
+    _depura("ProveedorList::on_mui_borrar_clicked",0);
+    int row = mui_list->currentRow();
+    provedit *prov = new provedit(m_companyact, 0);
+    if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
+        return;
     }
+    prov->boton_borrar();
+    delete prov;
+    _depura("END ProveedorList::on_mui_borrar_clicked",0);
 }// end s_removeProvider
 
 
 /** SLOT que se ejecuta al pulsar sobre el bot� de imprimir en la ventana de proveedores
-  * La funci� llama a rtkview para generar el listado predefinido en reports/providerslist.rtk
+  * La funci� llama a rtkview para generar el listado predefinido en reports/ProveedorList.rtk
   */
-void providerslist::s_printProviders() {
+void ProveedorList::on_mui_imprimir_clicked() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"proveedores.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"proveedores.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
@@ -457,7 +397,7 @@ void providerslist::s_printProviders() {
     /// -----------------------------------------------
     fitxersortidatxt += "</tr>";
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         /// -----------------------------------------------
@@ -512,7 +452,7 @@ void providerslist::s_printProviders() {
 
 
 
-void providerslist::s_exportar() {
+void ProveedorList::on_mui_exportar_clicked() {
     QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_PROVEEDORES);
@@ -523,7 +463,7 @@ void providerslist::s_exportar() {
 }//
 
 
-void providerslist::s_importar() {
+void ProveedorList::on_mui_importar_clicked() {
     QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
     if (filexml.open(QIODevice::ReadOnly))  {
         XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
@@ -533,5 +473,32 @@ void providerslist::s_importar() {
         _depura("ERROR AL ABRIR ARCHIVO\n",2);
     }// end if
 }
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+ProveedorListSubform::ProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("proveedor");
+    setDBCampoId("idproveedor");
+    addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idproveedor");
+    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomproveedor");
+    addSHeader("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomaltproveedor");
+    addSHeader("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cifproveedor");
+    addSHeader("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codicliproveedor");
+    addSHeader("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cbancproveedor");
+    addSHeader("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentproveedor");
+    addSHeader("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "dirproveedor");
+    addSHeader("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "poblproveedor");
+    addSHeader("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cpproveedor");
+    addSHeader("telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telproveedor");
+    addSHeader("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "faxproveedor");
+    addSHeader("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "emailproveedor");
+    addSHeader("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "urlproveedor");
+    addSHeader("clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "clavewebproveedor");
+    setinsercion(FALSE);
+};
 
 
