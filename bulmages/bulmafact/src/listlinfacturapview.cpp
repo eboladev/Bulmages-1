@@ -27,6 +27,7 @@
 #include "articulolist.h"
 #include "listlinfacturapview.h"
 #include "funcaux.h"
+#include "fixed.h"
 
 #include <Q3Table>
 #include <QMessageBox>
@@ -231,8 +232,8 @@ void ListLinFacturaProveedorView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCUENTOLFACTURA: {
-                float discountLine = text(row, COL_DESCUENTOLFACTURA).replace(",",".").toFloat();
-                linea->setdescuentolfacturap(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCUENTOLFACTURA).replace(",",".").toAscii());
+                linea->setdescuentolfacturap(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -242,18 +243,18 @@ void ListLinFacturaProveedorView::valueBudgetLineChanged(int row, int col) {
             linea->setdesclfacturap(text(row,COL_DESCLFACTURA));
             break;
         case COL_CANTLFACTURA: {
-                float cantLine = text(row, COL_CANTLFACTURA).replace(",",".").toFloat();
-                linea->setcantlfacturap(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLFACTURA).replace(",",".").toAscii());
+                linea->setcantlfacturap(cantLine.toQString());
                 break;
             }
         case COL_PVPLFACTURA:  {
-                float pvpLine = text(row, COL_PVPLFACTURA).replace(",",".").toFloat();
-                linea->setpvplfacturap(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLFACTURA).replace(",",".").toAscii());
+                linea->setpvplfacturap(pvpLine.toQString());
                 break;
             }
         case COL_TASATIPO_IVA: {
-                float ivaLine = text(row, COL_TASATIPO_IVA).replace(",",".").toFloat();
-                linea->setivalfacturap(QString::number(ivaLine));
+                Fixed ivaLine(text(row, COL_TASATIPO_IVA).replace(",",".").toAscii());
+                linea->setivalfacturap(ivaLine.toQString());
                 break;
             }// end case
         }// end switch
