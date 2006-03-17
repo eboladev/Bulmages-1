@@ -46,12 +46,9 @@ public:
     ;
     virtual ~SDBCampo() {}
     ;
-    virtual int set
-        (QString val) {
-        _depura("SDBCampo::set");
+    virtual int set(QString val) {
         QTableWidgetItem2::setText(val);
-        DBCampo::set
-            (val);
+        DBCampo::set(val);
         return 0;
     };
 	void refresh() {DBCampo::set(text());};
@@ -88,7 +85,7 @@ private:
 public:
 	void guardaconfig();
 	void cargaconfig();
-	void situarse(int, int);
+	void situarse(unsigned int, unsigned int);
 	void setinsercion(bool b) {m_insercion=b;};
     postgresiface2 *companyact() {
         return m_companyact;

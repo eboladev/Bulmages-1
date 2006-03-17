@@ -69,20 +69,6 @@ void LinAlbaranCliente::vaciaLinAlbaranCliente() {
 }
 
 
-int LinAlbaranCliente::borrar() {
-    if (DBvalue("numlalbaran") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM lalbaran WHERE numlalbaran="+DBvalue("numlalbaran"));
-	if (error) {
-		companyact->rollback();
-		return -1;
-	}// end if
-        companyact->commit();
-        vaciaLinAlbaranCliente();
-    }// end if
-	return 0;
-}// end delete
-
 void LinAlbaranCliente::guardaLinAlbaranCliente() {
     QString id;
     companyact->begin();

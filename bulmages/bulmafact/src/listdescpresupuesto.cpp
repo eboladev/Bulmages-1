@@ -95,23 +95,26 @@ void ListDescuentoPresupuesto::vaciar() {
 }// end guardaListDescuentoPresupuesto
 
 
-void ListDescuentoPresupuesto::borrar() {
+int ListDescuentoPresupuesto::borrar() {
     if (mdb_idpresupuesto != "")  {
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
         if (error) {
             companyact->rollback();
-            return;
+            return -1;
         }// end if
         companyact->commit();
     }// end if
+	return 0;
 }// end borrar
 
 
-void ListDescuentoPresupuesto::borraDescuentoPresupuesto(int pos) {
+int ListDescuentoPresupuesto::borraDescuentoPresupuesto(int pos) {
     DescuentoPresupuesto *linea;
     linea = m_lista.at(pos);
-    linea->borrar();
+    int err = linea->borrar();
+	if (err) return err;
     m_lista.remove(pos);
     pintaListDescuentoPresupuesto();
+    return 0;
 }// end borraDescuentoPresupuesto

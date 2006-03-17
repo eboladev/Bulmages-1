@@ -243,7 +243,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 }// end s_findArticulo
 
 
-void ArticuloView::guardar() {
+int ArticuloView::guardar() {
     _depura("ArticuloView::INIT_s_grabarClicked()\n",0);
     setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("controlstockarticulo", m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE");
@@ -271,12 +271,13 @@ void ArticuloView::guardar() {
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_guardar_post", this);
         if (res != 0)
-            return;
+            return res;
 
 
 	dialogChanges_cargaInicial();
 
     _depura("ArticuloView::END_s_grabarClicked()\n",0);
+	return 0;
 }// end s_grabarClicked
 
 

@@ -84,9 +84,9 @@ void SubForm2::pintaCabeceras() {
     setHorizontalHeaderLabels (headers);
 }
 
-void SubForm2::situarse(int row, int col) {
-    int nrow=row;
-    int ncol = col;
+void SubForm2::situarse(unsigned int row, unsigned int col) {
+    unsigned int nrow=row;
+    unsigned int ncol = col;
     SHeader *linea= m_lcabecera.at(ncol);
     bool invalido=TRUE;
     while(invalido) {
@@ -158,7 +158,7 @@ SDBRecord *SubForm2::lineaat(int row) {
 
 bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
     _depura("SubForm2::INIT_eventFilter()\n",0);
-    SDBRecord *linea;
+//    SDBRecord *linea;
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();

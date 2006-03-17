@@ -125,7 +125,6 @@ public:
 	float calculabase();
 	/// Hace el calculo del IVA de la linea.
 	float calculaiva();
-	int borrar();
 };
 
 #endif

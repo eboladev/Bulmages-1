@@ -24,13 +24,10 @@
 #include "company.h"
 #include "dbrecord.h"
 
-class DescuentoPresupuesto : DBRecord
-{
-
+class DescuentoPresupuesto : public DBRecord  {
 private:
 	company *companyact;
 	void definetabla();
-
 public:
 	DescuentoPresupuesto(company *);
 	DescuentoPresupuesto(company *, QString );
@@ -75,7 +72,6 @@ public:
 	{
 		setDBvalue("idpresupuesto",val);
 	};
-	int borrar();
 };
 
 #endif

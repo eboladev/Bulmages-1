@@ -79,20 +79,6 @@ void linpresupuesto::vacialinpresupuesto() {
 }
 
 
-int linpresupuesto::borrar() {
-    if (DBvalue("idlpresupuesto") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idlpresupuesto="+DBvalue("idlpresupuesto"));
-        if (error) {
-            companyact->rollback();
-            return -1;
-        }// end if
-        companyact->commit();
-        vacialinpresupuesto();
-    }// end if
-	return 0;
-}// end delete
-
 
 void linpresupuesto::guardalinpresupuesto() {
     QString id;

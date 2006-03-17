@@ -121,8 +121,7 @@ public:
 	void guardaLinAlbaranCliente();
 	void vaciaLinAlbaranCliente();
 	void setcodigocompletoarticulo(QString val);
-	void setidarticulo(QString);
-	int borrar();  
+	void setidarticulo(QString); 
 };
 
 #endif

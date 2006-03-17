@@ -73,20 +73,6 @@ void DescuentoPresupuesto::vaciaDescuentoPresupuesto() {
 }
 
 
-int DescuentoPresupuesto::borrar() {
-    if (DBvalue("iddpresupuesto") != "") {
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE iddpresupuesto="+DBvalue("iddpresupuesto"));
-        if (error) {
-            companyact->rollback();
-            return -1;
-        }// end if
-        companyact->commit();
-        vaciaDescuentoPresupuesto();
-    }// end if
-	return 0;
-}// end delete
-
 void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
     QString id;
     companyact->begin();

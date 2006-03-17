@@ -54,10 +54,10 @@ public:
 				no ha sido implementada.", 0);
 	};
 	int cargaDescuentos(QString);
-	void borrar();
+	int borrar();
 	void nuevalinea(QString concept, QString propor);
 	DescuentoPresupuesto *linpos(int);
-	void borraDescuentoPresupuesto(int);
+	int borraDescuentoPresupuesto(int);
 	void setidpresupuesto(QString id)
 	{
 		mdb_idpresupuesto = id;

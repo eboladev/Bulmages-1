@@ -45,7 +45,7 @@ public:
 public:
 	void pintar();
 	int cargar(QString);
-	void guardar();
+	int guardar();
 	int ArticuloView::cargarcomboiva(QString);
 	void closeEvent( QCloseEvent *);
 public slots:
