@@ -44,6 +44,8 @@ CREATE TABLE lpedidoproveedor (
 #include "listlinpedidoproveedorview.h"
 #include "linpedidoproveedor.h"
 #include "funcaux.h"
+#include "fixed.h"
+
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
@@ -272,8 +274,8 @@ void ListLinPedidoProveedorView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCUENTOLPEDIDOPROVEEDOR: {
-                float discountLine = text(row, COL_DESCUENTOLPEDIDOPROVEEDOR).replace(",",".").toFloat();
-                linea->setdescuentolpedidoproveedor(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCUENTOLPEDIDOPROVEEDOR).replace(",",".").toAscii());
+                linea->setdescuentolpedidoproveedor(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -283,18 +285,18 @@ void ListLinPedidoProveedorView::valueBudgetLineChanged(int row, int col) {
             linea->setdesclpedidoproveedor(text(row,COL_DESCLPEDIDOPROVEEDOR));
             break;
         case COL_CANTLPEDIDOPROVEEDOR: {
-                float cantLine = text(row, COL_CANTLPEDIDOPROVEEDOR).replace(",",".").toFloat();
-                linea->setcantlpedidoproveedor(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLPEDIDOPROVEEDOR).replace(",",".").toAscii());
+                linea->setcantlpedidoproveedor(cantLine.toQString());
                 break;
             }
         case COL_PVPLPEDIDOPROVEEDOR:  {
-                float pvpLine = text(row, COL_PVPLPEDIDOPROVEEDOR).replace(",",".").toFloat();
-                linea->setpvplpedidoproveedor(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLPEDIDOPROVEEDOR).replace(",",".").toAscii());
+                linea->setpvplpedidoproveedor(pvpLine.toQString());
                 break;
             }
         case COL_TASATIPO_IVA: {
-                float ivaLine = text(row, COL_TASATIPO_IVA).replace(",",".").toFloat();
-                linea->setivalpedidoproveedor(QString::number(ivaLine));
+                Fixed ivaLine(text(row, COL_TASATIPO_IVA).replace(",",".").toAscii());
+                linea->setivalpedidoproveedor(ivaLine.toQString());
                 break;
             }// end case
         case COL_PUNTEO: {

@@ -33,7 +33,7 @@
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>
-
+#include "fixed.h"
 
 
 void listlinpresupuestoview::guardaconfig() {
@@ -248,8 +248,8 @@ void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCUENTOLPRESUPUESTO: {
-                float discountLine = text(row, COL_DESCUENTOLPRESUPUESTO).replace(",",".").toFloat();
-                linea->setdescuentolpresupuesto(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCUENTOLPRESUPUESTO).replace(",",".").toAscii());
+                linea->setdescuentolpresupuesto(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -259,18 +259,18 @@ void listlinpresupuestoview::valueBudgetLineChanged(int row, int col) {
             linea->setdesclpresupuesto(text(row,COL_DESCLPRESUPUESTO));
             break;
         case COL_CANTLPRESUPUESTO: {
-                float cantLine = text(row, COL_CANTLPRESUPUESTO).replace(",",".").toFloat();
-                linea->setcantlpresupuesto(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLPRESUPUESTO).replace(",",".").toAscii());
+                linea->setcantlpresupuesto(cantLine.toQString());
                 break;
             }
         case COL_PVPLPRESUPUESTO:  {
-                float pvpLine = text(row, COL_PVPLPRESUPUESTO).replace(",",".").toFloat();
-                linea->setpvplpresupuesto(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLPRESUPUESTO).replace(",",".").toAscii());
+                linea->setpvplpresupuesto(pvpLine.toQString());
                 break;
             }
         case COL_TASATIPO_IVA: {
-                float ivaLine = text(row, COL_TASATIPO_IVA).replace(",",".").toFloat();
-                linea->setivalpresupuesto(QString::number(ivaLine));
+                Fixed ivaLine(text(row, COL_TASATIPO_IVA).replace(",",".").toAscii());
+                linea->setivalpresupuesto(ivaLine.toQString());
                 break;
             }// end case
         }// end switch

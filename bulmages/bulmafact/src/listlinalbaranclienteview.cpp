@@ -33,7 +33,7 @@
 #include "listlinalbaranclienteview.h"
 #include "articulolist.h"
 #include "funcaux.h"
-
+#include "fixed.h"
 
 void ListLinAlbaranClienteView::guardaconfig() {
     _depura("ListLinAlbaranClienteView::guardaconfig",0);
@@ -232,8 +232,8 @@ void ListLinAlbaranClienteView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCONTLALBARAN: {
-                float discountLine = text(row, COL_DESCONTLALBARAN).replace(",",".").toFloat();
-                linea->setdescontlalbaran(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCONTLALBARAN).replace(",",".").toAscii());
+                linea->setdescontlalbaran(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -243,13 +243,13 @@ void ListLinAlbaranClienteView::valueBudgetLineChanged(int row, int col) {
             linea->setdesclalbaran(text(row,COL_DESCLALBARAN));
             break;
         case COL_CANTLALBARAN: {
-                float cantLine = text(row, COL_CANTLALBARAN).replace(",",".").toFloat();
-                linea->setcantlalbaran(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLALBARAN).replace(",",".").toAscii());
+                linea->setcantlalbaran(cantLine.toQString());
                 break;
             }
         case COL_PVPLALBARAN:  {
-                float pvpLine = text(row, COL_PVPLALBARAN).replace(",",".").toFloat();
-                linea->setpvplalbaran(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLALBARAN).replace(",",".").toAscii());
+                linea->setpvplalbaran(pvpLine.toQString());
                 break;
             }
         }// end switch

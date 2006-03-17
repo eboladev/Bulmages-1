@@ -35,7 +35,7 @@
 #include "listlinalbaranproveedorview.h"
 #include "articulolist.h"
 #include "funcaux.h"
-
+#include "fixed.h"
 
 void ListLinAlbaranProveedorView::guardaconfig() {
     _depura("ListLinAlbaranProveedorView::guardaconfig",0);
@@ -229,8 +229,8 @@ void ListLinAlbaranProveedorView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCONTLALBARANP: {
-                float discountLine = text(row, COL_DESCONTLALBARANP).replace(",",".").toFloat();
-                linea->setdescontlalbaranp(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCONTLALBARANP).replace(",",".").toAscii());
+                linea->setdescontlalbaranp(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -240,13 +240,13 @@ void ListLinAlbaranProveedorView::valueBudgetLineChanged(int row, int col) {
             linea->setdesclalbaranp(text(row,COL_DESCLALBARANP));
             break;
         case COL_CANTLALBARANP: {
-                float cantLine = text(row, COL_CANTLALBARANP).replace(",",".").toFloat();
-                linea->setcantlalbaranp(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLALBARANP).replace(",",".").toAscii());
+                linea->setcantlalbaranp(cantLine.toQString());
                 break;
             }
         case COL_PVPLALBARANP:  {
-                float pvpLine = text(row, COL_PVPLALBARANP).replace(",",".").toFloat();
-                linea->setpvplalbaranp(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLALBARANP).replace(",",".").toAscii());
+                linea->setpvplalbaranp(pvpLine.toQString());
                 break;
             }
         }// end switch

@@ -44,10 +44,11 @@ CREATE TABLE lpedidocliente (
 #include "listlinpedidoclienteview.h"
 #include "linpedidocliente.h"
 #include "funcaux.h"
+#include "fixed.h"
+
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
-//Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>
 
@@ -270,8 +271,8 @@ void ListLinPedidoClienteView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCUENTOLPEDIDOCLIENTE: {
-                float discountLine = text(row, COL_DESCUENTOLPEDIDOCLIENTE).replace(",",".").toFloat();
-                linea->setdescuentolpedidocliente(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCUENTOLPEDIDOCLIENTE).replace(",",".").toAscii());
+                linea->setdescuentolpedidocliente(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -281,18 +282,18 @@ void ListLinPedidoClienteView::valueBudgetLineChanged(int row, int col) {
             linea->setdesclpedidocliente(text(row,COL_DESCLPEDIDOCLIENTE));
             break;
         case COL_CANTLPEDIDOCLIENTE: {
-                float cantLine = text(row, COL_CANTLPEDIDOCLIENTE).replace(",",".").toFloat();
-                linea->setcantlpedidocliente(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLPEDIDOCLIENTE).replace(",",".").toAscii());
+                linea->setcantlpedidocliente(cantLine.toQString());
                 break;
             }
         case COL_PVPLPEDIDOCLIENTE:  {
-                float pvpLine = text(row, COL_PVPLPEDIDOCLIENTE).replace(",",".").toFloat();
-                linea->setpvplpedidocliente(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLPEDIDOCLIENTE).replace(",",".").toAscii());
+                linea->setpvplpedidocliente(pvpLine.toQString());
                 break;
             }
         case COL_TASATIPO_IVA: {
-                float ivaLine = text(row, COL_TASATIPO_IVA).replace(",",".").toFloat();
-                linea->setivalpedidocliente(QString::number(ivaLine));
+                Fixed ivaLine(text(row, COL_TASATIPO_IVA).replace(",",".").toAscii());
+                linea->setivalpedidocliente(ivaLine.toQString());
                 break;
             }// end case
         case COL_PUNTEO: {

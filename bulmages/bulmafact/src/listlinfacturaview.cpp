@@ -27,6 +27,7 @@
 #include "articulolist.h"
 #include "listlinfacturaview.h"
 #include "funcaux.h"
+#include "fixed.h"
 
 #include <Q3Table>
 #include <QMessageBox>
@@ -232,8 +233,8 @@ void ListLinFacturaView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_DESCUENTOLFACTURA: {
-                float discountLine = text(row, COL_DESCUENTOLFACTURA).replace(",",".").toFloat();
-                linea->setdescuentolFactura(QString::number(discountLine));
+                Fixed discountLine(text(row, COL_DESCUENTOLFACTURA).replace(",",".").toAscii());
+                linea->setdescuentolFactura(discountLine.toQString());
                 break;
             }
         case COL_CODARTICULO:
@@ -243,18 +244,18 @@ void ListLinFacturaView::valueBudgetLineChanged(int row, int col) {
             linea->setdesclFactura(text(row,COL_DESCLFACTURA));
             break;
         case COL_CANTLFACTURA: {
-                float cantLine = text(row, COL_CANTLFACTURA).replace(",",".").toFloat();
-                linea->setcantlFactura(QString::number(cantLine));
+                Fixed cantLine(text(row, COL_CANTLFACTURA).replace(",",".").toAscii());
+                linea->setcantlFactura(cantLine.toQString());
                 break;
             }
         case COL_PVPLFACTURA:  {
-                float pvpLine = text(row, COL_PVPLFACTURA).replace(",",".").toFloat();
-                linea->setpvplFactura(QString::number(pvpLine));
+                Fixed pvpLine(text(row, COL_PVPLFACTURA).replace(",",".").toAscii());
+                linea->setpvplFactura(pvpLine.toQString());
                 break;
             }
         case COL_TASATIPO_IVA: {
-                float ivaLine = text(row, COL_TASATIPO_IVA).replace(",",".").toFloat();
-                linea->setivalFactura(QString::number(ivaLine));
+                Fixed ivaLine(text(row, COL_TASATIPO_IVA).replace(",",".").toAscii());
+                linea->setivalFactura(ivaLine.toQString());
                 break;
             }// end case
         }// end switch
