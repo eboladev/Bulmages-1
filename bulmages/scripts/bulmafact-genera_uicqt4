@@ -18,7 +18,7 @@
 
 # Lista con los uis que se tienen que incluir en la clausula FORMS y quitarlos de FORMS3
 
-uis[12]="presupuestoview"
+#uis[12]="presupuestoview"
 uis[11]="providerslistbase"
 uis[10]="articleeditbase"
 uis[9]="articleslistbase"
