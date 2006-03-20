@@ -21,33 +21,32 @@
 #ifndef PROVEDIT_H
 #define PROVEDIT_H
 
-#include "provedit_base.h"
+#include "ui_provedit_base.h"
 
 
 class company;
 
-class provedit : public provedit_base
+class ProveedorView : public QWidget, public Ui_ProveedorBase
 {
 	Q_OBJECT
 
 private:
-	company *companyact;
-	QString idprovider;
+	company *m_companyact;
+	QString mdb_idproveedor;
 	/// Indica si se han producido cambios.
 	bool m_modificado;
 
 public:
-	provedit(company *emp, QWidget *parent = 0, const char *name = 0);
-	~provedit();
+	ProveedorView(company *emp, QWidget *parent = 0, const char *name = 0);
+	~ProveedorView();
 
 public:
 	int chargeprovider(QString);
 
 public slots:
-	virtual void s_saveProvider();
-	virtual void boton_nuevo();
-	virtual void boton_borrar();
-	virtual void boton_newdivision();
+	virtual void on_mui_guardar_clicked();
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
 	virtual void s_setModificado()
 	{
 		m_modificado = TRUE;
@@ -57,6 +56,7 @@ public slots:
 		m_modificado = FALSE;
 	};
 	virtual void close();
+	virtual void on_mui_aceptar_clicked();
 };
 
 #endif

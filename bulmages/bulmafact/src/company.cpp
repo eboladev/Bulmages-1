@@ -174,7 +174,7 @@ void company::listClients () {
 
 
 void company::s_newProveedor() {
-    provedit *prov = new provedit(this,0,theApp->translate("Editar/Anadir proveedor","company"));
+    ProveedorView *prov = new ProveedorView(this,0,theApp->translate("Editar/Anadir proveedor","company"));
     m_pWorkspace->addWindow(prov);
     prov->showMaximized();
 }// end newProveedor

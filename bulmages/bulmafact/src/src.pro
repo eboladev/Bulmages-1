@@ -48,12 +48,12 @@ FORMS += about.ui \
          articleslistbase.ui \
          articleeditbase.ui \
          providerslistbase.ui \
+         provedit_base.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
 #
 FORMS3 += bulmafactbase.ui \
-          provedit_base.ui \
           clientslistbase.ui \
           divisionbase.ui \
           budgetbase.ui \

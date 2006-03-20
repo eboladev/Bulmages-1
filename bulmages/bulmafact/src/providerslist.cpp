@@ -266,7 +266,7 @@ void ProveedorList::presenta() {
 
 void ProveedorList::on_mui_crear_clicked() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    provedit *prov = new provedit(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+    ProveedorView *prov = new ProveedorView(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
     m_companyact->m_pWorkspace->addWindow(prov);
     prov->show();
 }// end boton_crear
@@ -283,7 +283,7 @@ void ProveedorList::editar(int  row) {
     m_cifprovider = mui_list->DBvalue(QString("cifproveedor"),row);
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"),row);
     if (m_modo ==0 ) {
-        provedit *prov = new provedit(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+        ProveedorView *prov = new ProveedorView(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
         if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
             return;
         }
@@ -312,11 +312,11 @@ void ProveedorList::on_mui_editar_clicked() {
 void ProveedorList::on_mui_borrar_clicked() {
     _depura("ProveedorList::on_mui_borrar_clicked",0);
     int row = mui_list->currentRow();
-    provedit *prov = new provedit(m_companyact, 0);
+    ProveedorView *prov = new ProveedorView(m_companyact, 0);
     if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
         return;
     }
-    prov->boton_borrar();
+    prov->on_mui_borrar_clicked();
     delete prov;
     _depura("END ProveedorList::on_mui_borrar_clicked",0);
 }// end s_removeProvider
