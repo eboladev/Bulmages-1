@@ -58,7 +58,8 @@ LANGUAGE = C++
 INCLUDEPATH += ../src \
 	/usr/include/qt4 \
 	/usr/include/qt4/Qt \
-	/usr/lib/qt4/include/Qt
+	/usr/lib/qt4/include/Qt \
+	/usr/include/QtXml
 	
 
 VERSION = 0.1
