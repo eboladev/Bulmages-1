@@ -21,14 +21,37 @@
 #ifndef PEDIDOSCLIENTELIST_H
 #define PEDIDOSCLIENTELIST_H
 
-#include <pedidosclientelistbase.h>
+
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"
+#include "subform2bf.h"
 
 
-class PedidosClienteList : public PedidosClienteListBase {
+class PedidosClienteListSubform : public SubForm2Bf {
+Q_OBJECT
+public:
+	PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
+	~PedidosClienteListSubform() {};
+public slots:
+virtual void cargar() {
+    _depura("PedidosClienteListSubform::cargar\n",0);
+    QString SQLQuery = "SELECT * FROM pedidocliente";
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+	SubForm2::cargar(cur);
+    delete cur;
+};
+virtual int cargar(cursor2 *cur) {
+    _depura("PedidosClienteListSubform::cargar\n",0);
+	SubForm2::cargar(cur);
+	return 0;
+};
+};
+
+
+#include "ui_pedidosclientelistbase.h"
+class PedidosClienteList : public QWidget, public Ui_PedidosClienteListBase {
 Q_OBJECT
 
 private:
@@ -37,8 +60,6 @@ private:
 	/// m_modo ==  es modo selector.
 	int m_modo;
 	QString m_idpedidocliente;
-	void inicializa();
-
 public:
 	PedidosClienteList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
 	PedidosClienteList(company *, QWidget *parent = 0, const char *name = 0,
@@ -58,6 +79,7 @@ public:
 	{
 		companyact = comp;
 		m_cliente->setcompany(comp);
+		mui_list->setcompany(comp);
 	};
 	void hideBotonera()
 	{
@@ -99,52 +121,36 @@ public:
 			companyact->meteWindow(nom, obj);
 		}
 	};
+
+
+	void editar(int);
+
 	QString generarFiltro();
 	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
 
 public slots:
-	virtual void doubleclicked(int, int, int, const QPoint &);
-	virtual void s_printPedidosCliente()
+	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+		on_mui_editar_clicked();
+	};
+	virtual void on_mui_imprimir_clicked()
 	{
 		imprimir();
 	};
-	virtual void s_searchPedidosCliente()
-	{
-		presenta();
-	};
-	virtual void s_newPedidoCliente()
+	virtual void on_mui_crear_clicked()
 	{
 		companyact->s_newPedidoCli();
 	};
-	virtual void s_filtrar()
+	virtual void on_mui_actualizar_clicked()
 	{
 		presenta();
 	};
-	virtual void s_borrarPedidosCliente();
-	virtual void s_editarPedidosCliente();
-	virtual void s_mostrarBusqueda()
-	{
-		_depura("s_mostrarBusqueda.", 0);
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		_depura("s_mostrarConfiguracion.", 0);
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_editar_clicked();
 	virtual void s_configurar();
+signals:
+	void selected(QString);
 };
 
 #endif

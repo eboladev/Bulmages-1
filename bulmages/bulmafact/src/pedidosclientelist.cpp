@@ -9,17 +9,17 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "pedidosclientelist.h"
 
-#include "company.h"
-#include "qtable1.h"
-#include "funcaux.h"
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QFile>
 //Added by qt3to4:
 #include <QTextStream>
 
+#include "pedidosclientelist.h"
+#include "company.h"
+#include "qtable1.h"
+#include "funcaux.h"
 #include "configuracion.h"
 #include "pedidoclienteview.h"
 
@@ -64,10 +64,6 @@ void PedidosClienteList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
-        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -78,10 +74,6 @@ void PedidosClienteList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
-            QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
-        }// end for
         file.close();
     } else
         return;
@@ -108,85 +100,85 @@ void PedidosClienteList::cargaconfig() {
 void PedidosClienteList::s_configurar() {
 
     if(mver_idpedidocliente->isChecked() )
-        m_list->showColumn(COL_IDPEDIDOCLIENTE);
+        mui_list->showColumn(COL_IDPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_IDPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_IDPEDIDOCLIENTE);
 
     if(mver_codigoalmacen->isChecked() )
-        m_list->showColumn(COL_CODIGOALMACEN);
+        mui_list->showColumn(COL_CODIGOALMACEN);
     else
-        m_list->hideColumn(COL_CODIGOALMACEN);
+        mui_list->hideColumn(COL_CODIGOALMACEN);
 
     if(mver_refpedidocliente->isChecked() )
-        m_list->showColumn(COL_REFPEDIDOCLIENTE);
+        mui_list->showColumn(COL_REFPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_REFPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_REFPEDIDOCLIENTE);
 
     if(mver_numpedidocliente->isChecked() )
-        m_list->showColumn(COL_NUMPEDIDOCLIENTE);
+        mui_list->showColumn(COL_NUMPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_NUMPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_NUMPEDIDOCLIENTE);
 
     if(mver_descpedidocliente->isChecked() )
-        m_list->showColumn(COL_DESCPEDIDOCLIENTE);
+        mui_list->showColumn(COL_DESCPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_DESCPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_DESCPEDIDOCLIENTE);
 
     if(mver_nomcliente->isChecked() )
-        m_list->showColumn(COL_NOMCLIENTE);
+        mui_list->showColumn(COL_NOMCLIENTE);
     else
-        m_list->hideColumn(COL_NOMCLIENTE);
+        mui_list->hideColumn(COL_NOMCLIENTE);
 
     if(mver_fechapedidocliente->isChecked() )
-        m_list->showColumn(COL_FECHAPEDIDOCLIENTE);
+        mui_list->showColumn(COL_FECHAPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_FECHAPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_FECHAPEDIDOCLIENTE);
 
     if(mver_contactpedidocliente->isChecked() )
-        m_list->showColumn(COL_CONTACTPEDIDOCLIENTE);
+        mui_list->showColumn(COL_CONTACTPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_CONTACTPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_CONTACTPEDIDOCLIENTE);
 
     if(mver_telpedidocliente->isChecked() )
-        m_list->showColumn(COL_TELPEDIDOCLIENTE);
+        mui_list->showColumn(COL_TELPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_TELPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_TELPEDIDOCLIENTE);
 
     if(mver_comentpedidocliente->isChecked() )
-        m_list->showColumn(COL_COMENTPEDIDOCLIENTE);
+        mui_list->showColumn(COL_COMENTPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_COMENTPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_COMENTPEDIDOCLIENTE);
 
     if(mver_idusuari->isChecked() )
-        m_list->showColumn(COL_IDUSUARI);
+        mui_list->showColumn(COL_IDUSUARI);
     else
-        m_list->hideColumn(COL_IDUSUARI);
+        mui_list->hideColumn(COL_IDUSUARI);
 
     if(mver_idcliente->isChecked() )
-        m_list->showColumn(COL_IDCLIENTE);
+        mui_list->showColumn(COL_IDCLIENTE);
     else
-        m_list->hideColumn(COL_IDCLIENTE);
+        mui_list->hideColumn(COL_IDCLIENTE);
 
     if(mver_idalmacen->isChecked() )
-        m_list->showColumn(COL_IDALMACEN);
+        mui_list->showColumn(COL_IDALMACEN);
     else
-        m_list->hideColumn(COL_IDALMACEN);
+        mui_list->hideColumn(COL_IDALMACEN);
 
 
     if(mver_totalpedidocliente->isChecked() )
-        m_list->showColumn(COL_TOTALPEDIDOCLIENTE);
+        mui_list->showColumn(COL_TOTALPEDIDOCLIENTE);
     else
-        m_list->hideColumn(COL_TOTALPEDIDOCLIENTE);
+        mui_list->hideColumn(COL_TOTALPEDIDOCLIENTE);
 
     if(mver_totalbaseimp->isChecked() )
-        m_list->showColumn(COL_TOTALBASEIMP);
+        mui_list->showColumn(COL_TOTALBASEIMP);
     else
-        m_list->hideColumn(COL_TOTALBASEIMP);
+        mui_list->hideColumn(COL_TOTALBASEIMP);
 
     if(mver_totalimpuestos->isChecked() )
-        m_list->showColumn(COL_TOTALIMPUESTOS);
+        mui_list->showColumn(COL_TOTALIMPUESTOS);
     else
-        m_list->hideColumn(COL_TOTALIMPUESTOS);
+        mui_list->hideColumn(COL_TOTALIMPUESTOS);
 
 
 
@@ -194,25 +186,25 @@ void PedidosClienteList::s_configurar() {
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WFlags flag)
-: PedidosClienteListBase(parent, name, flag) {
+: QWidget(parent, name, flag) {
+	setupUi(this);
     companyact = NULL;
     m_modo=0;
     m_idpedidocliente="";
     meteWindow(caption(),this);
     hideBusqueda();
-	inicializa();
     cargaconfig();
-    s_configurar();
 }// end providerslist
 
 
-PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag) : PedidosClienteListBase(parent, name, flag) {
+PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag) : QWidget(parent, name, flag) {	
+	setupUi(this);
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
-    inicializa();
+	mui_list->setcompany(comp);
     cargaconfig();
-    s_configurar();
+
 	presenta();
     m_modo=0;
     m_idpedidocliente="";
@@ -227,63 +219,13 @@ PedidosClienteList::~PedidosClienteList() {
 }
 
 
-void PedidosClienteList::inicializa() {
-    m_list->setNumRows( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(16);
-    m_list->horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "COL_IDPEDIDOCLIENTE" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMPEDIDOCLIENTE, tr( "Num. Pedido" ) );
-    m_list->horizontalHeader()->setLabel( COL_FECHAPEDIDOCLIENTE, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_CONTACTPEDIDOCLIENTE, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELPEDIDOCLIENTE, tr( "Teléfono" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTPEDIDOCLIENTE, tr( "Comentarios" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuari") );
-    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("Id. Cliente") );
-    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
-    m_list->horizontalHeader()->setLabel( COL_DESCPEDIDOCLIENTE, tr("Descripción") );
-    m_list->horizontalHeader()->setLabel( COL_REFPEDIDOCLIENTE, tr("Referencia") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALPEDIDOCLIENTE, tr("Total") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
-
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPEDIDOSCLIENTE));
-    m_list->setReadOnly(TRUE);
-
-}// end inicializa
 
 
 void PedidosClienteList::presenta() {
+
     /// Hacemos el listado y lo presentamos.
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
-    m_list->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_list->setText(i,COL_IDPEDIDOCLIENTE,cur->valor("idpedidocliente"));
-        m_list->setText(i,COL_NUMPEDIDOCLIENTE,cur->valor("numpedidocliente"));
-        m_list->setText(i,COL_FECHAPEDIDOCLIENTE,cur->valor("fechapedidocliente"));
-        m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-        m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
-        m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-        m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
-	m_list->setText(i,COL_DESCPEDIDOCLIENTE,cur->valor("descpedidocliente"));
-	m_list->setText(i,COL_REFPEDIDOCLIENTE,cur->valor("refpedidocliente"));	
-
-            /// Calculamos el total del presupuesto y lo presentamos.
-            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpedcli("+cur->valor("idpedidocliente")+") AS total, calcbimppedcli("+cur->valor("idpedidocliente")+") AS base, calcimpuestospedcli("+cur->valor("idpedidocliente")+") AS impuestos");
-            m_list->setText(i,COL_TOTALPEDIDOCLIENTE,cur1->valor("total"));
-            m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
-            m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
-            delete cur1;
-
-        i++;
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
+    cursor2 * cur= companyact->cargacursor("SELECT *, calctotalpedcli(idpedidocliente) AS total, calcbimppedcli(idpedidocliente) AS base, calcimpuestospedcli(idpedidocliente) AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
+	mui_list->cargar(cur);
 
 
 	/// Hacemos el calculo del total.
@@ -291,6 +233,7 @@ void PedidosClienteList::presenta() {
 	m_total->setText(cur->valor("total"));
 	delete cur;
 
+    s_configurar();
 }// end presenta
 
 
@@ -329,24 +272,29 @@ QString PedidosClienteList::generarFiltro() {
 
 
 
-void PedidosClienteList::doubleclicked(int a, int , int , const QPoint &) {
-   fprintf(stderr,"PedidosClienteList::doubleclicked()\n");
-   m_idpedidocliente = m_list->text(a,COL_IDPEDIDOCLIENTE);
-   if (m_modo == 0 && m_idpedidocliente != "") {
-      PedidoClienteView *bud = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos de Clientes", "company"));
-	if (      bud->cargaPedidoCliente(m_idpedidocliente) )
-		return;
-	companyact->m_pWorkspace->addWindow(bud);
-      bud->show();
-   } else {
-      close();
-   }// end if
+
+
+void PedidosClienteList::editar(int  row) {
+    _depura("ProveedorList::editar",0);
+    m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"),row);
+    if (m_modo ==0 ) {
+        PedidoClienteView *prov = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos a Cliente", "company"));
+        if (prov->cargar(m_idpedidocliente)) {
+            return;
+        }
+        companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
+    } else {
+        emit(selected(m_idpedidocliente));
+        // close();
+    }// end if
+    _depura("END ProveedorList::editar",0);
 }
 
-void PedidosClienteList::s_editarPedidosCliente() {
-    int a = m_list->currentRow();
+void PedidosClienteList::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
 	if (a >=0 ) 
-    	doubleclicked(a,0,0, QPoint());
+    	editar(a);
 	else
 	_depura("Debe seleccionar una linea",2);
 }
@@ -486,32 +434,55 @@ void PedidosClienteList::imprimir() {
 
 
 
-void PedidosClienteList::s_borrarPedidosCliente() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
-    if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, "BulmaFact - Pedidos Cliente", "Desea borrar el pedido seleccionado", "Si", "No") == 0) {
-            companyact->begin();
-            QString SQLQuery = "DELETE FROM lpedidocliente WHERE idpedidocliente ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOCLIENTE);
-            if (companyact->ejecuta(SQLQuery)==0) {
-                QString SQLQuery = "DELETE FROM dpedidocliente WHERE idpedidocliente ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOCLIENTE);
-                if (companyact->ejecuta(SQLQuery)==0) {
-                        QString SQLQuery = "DELETE FROM pedidocliente WHERE idpedidocliente ="+m_list->text(m_list->currentRow(),COL_IDPEDIDOCLIENTE);
-                        if (companyact->ejecuta(SQLQuery)==0) {
-                            companyact->commit();
-                        } else {
-                            companyact->rollback();
-                        }
-
-                } else {
-                    companyact->rollback();
-                }
-            } else {
-                companyact->rollback();
-            }
+void PedidosClienteList::on_mui_borrar_clicked() {
+    _depura("PedidosClienteList::on_mui_borrar_clicked",0);
+	int row = mui_list->currentRow();
+    m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"),row);
+    if (m_modo ==0 ) {
+        PedidoClienteView *prov = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos a Cliente", "company"));
+        if (prov->cargar(m_idpedidocliente)) {
+            return;
         }
-    }
+	prov->borrar();
+	delete prov;
+        // close();
+    }// end if
+    _depura("END PedidosClienteList::on_mui_borrar_clicked",0);
     presenta();
 }// end boton_borrar
+
+
+
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+
+PedidosClienteListSubform::PedidosClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("pedidocliente");
+    setDBCampoId("idpedidocliente");
+    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idpedidocliente");
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codigoalmacen");
+    addSHeader("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "refpedidocliente");
+    addSHeader("numpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "numpedidocliente");
+    addSHeader("descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "descpedidocliente");
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomcliente");
+    addSHeader("fechapedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechapedidocliente");
+    addSHeader("contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "contactpedidocliente");
+    addSHeader("telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telpedidocliente");
+    addSHeader("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentpedidocliente");
+    addSHeader("idusuari", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idusuari");
+    addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idcliente");
+    addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idalmacen");
+    addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "totalpedidocliente");
+    addSHeader("base", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "totalbaseimp");
+    addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "totalimpuestos");
+    setinsercion(FALSE);
+};
+
 
 
 

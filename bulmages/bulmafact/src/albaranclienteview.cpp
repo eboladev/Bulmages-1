@@ -119,10 +119,8 @@ void AlbaranClienteView::s_verpresupuesto()
 };
 
 
-void AlbaranClienteView::s_verpedidocliente()
-{
-	QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" +
-			DBvalue("refalbaran") + "'";
+void AlbaranClienteView::s_verpedidocliente() {
+	QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" + DBvalue("refalbaran") + "'";
 	cursor2 *cur = companyact->cargacursor(SQLQuery);
 
 	if (cur->numregistros() > 1)
@@ -144,14 +142,14 @@ void AlbaranClienteView::s_verpedidocliente()
 			PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
 				theApp->translate("Edicion de Presupuestos", "company"));
 			companyact->m_pWorkspace->addWindow(bud);
-			bud->cargaPedidoCliente(list->idpedidocliente());
+			bud->cargar(list->idpedidocliente());
 			bud->show();
 		};
 	} else if (!cur->eof()) {
 		PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
 			theApp->translate("Edicion de Presupuestos", "company"));
 		companyact->m_pWorkspace->addWindow(bud);
-		bud->cargaPedidoCliente(cur->valor("idpedidocliente"));
+		bud->cargar(cur->valor("idpedidocliente"));
 		bud->show();
 	};
 

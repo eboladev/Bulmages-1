@@ -89,7 +89,7 @@ void PedidoCliente::pintaPedidoCliente() {
 
 
 // Esta funci� carga un PedidoCliente.
-int PedidoCliente::cargaPedidoCliente(QString idbudget) {
+int PedidoCliente::cargar(QString idbudget) {
     _depura("cargaPedidoCliente()\n",0);
     QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -116,7 +116,7 @@ void PedidoCliente::guardaPedidoCliente() {
     companyact->commit();
     listalineas->guardaListLinPedidoCliente();
     listadescuentos->guardaListDescuentoPedidoCliente();
-    cargaPedidoCliente(id);
+    cargar(id);
 }// end guardaPedidoCliente
 
 
@@ -143,10 +143,8 @@ void PedidoCliente::imprimirPedidoCliente() {
     /// Copiamos el logo
 
 #ifdef WINDOWS
-
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
-
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 

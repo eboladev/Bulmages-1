@@ -168,8 +168,8 @@ void PedidoClienteView::s_nuevoCobro() {
     bud->show();
 }// end s_nuevoCobro
 
-int PedidoClienteView::cargaPedidoCliente(QString id) {
-    PedidoCliente::cargaPedidoCliente(id);
+int PedidoClienteView::cargar(QString id) {
+    PedidoCliente::cargar(id);
     setCaption("Pedido Cliente  "+DBvalue("refpedidocliente"));
     if (companyact->meteWindow(caption(),this))
         return 1;

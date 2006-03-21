@@ -149,7 +149,7 @@ public slots:
 	{
 			guardaPedidoCliente();
 	};
-	virtual int cargaPedidoCliente(QString id);
+	virtual int cargar(QString id);
 	virtual void s_deletePedidoCliente()
 	{
 		borraPedidoCliente();
@@ -187,6 +187,7 @@ public slots:
 	};
 	virtual void s_nuevoCobro();
 	virtual void s_informeReferencia();
+
 };
 
 #endif

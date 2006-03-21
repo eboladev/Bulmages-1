@@ -49,6 +49,7 @@ FORMS += about.ui \
          articleeditbase.ui \
          providerslistbase.ui \
          provedit_base.ui \
+         pedidosclientelistbase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
@@ -64,7 +65,6 @@ FORMS3 += bulmafactbase.ui \
           tiposarticulodlg.ui \
           facturaslistbase.ui \
           facturabase.ui \
-          pedidosclientelistbase.ui \
           pedidoclientebase.ui \
           busquedaclientebase.ui \
           busquedaarticulobase.ui \

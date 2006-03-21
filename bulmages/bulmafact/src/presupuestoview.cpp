@@ -168,7 +168,7 @@ void PresupuestoView::generarPedidoCliente() {
     if(!cur->eof()) {
         PedidoClienteView *bud = new PedidoClienteView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
 	companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaPedidoCliente(cur->valor("idpedidocliente"));
+        bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
         return;
     }
