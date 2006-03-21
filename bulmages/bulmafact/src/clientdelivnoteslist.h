@@ -30,7 +30,7 @@
 #include "company.h"
 
 
-class ClientDelivNotesList : public ClientDelivNotesListBase
+class AlbaranClienteList : public AlbaranClienteListBase
 {
 	Q_OBJECT
 
@@ -50,11 +50,11 @@ private:
 	void inicializa();
 
 public:
-	ClientDelivNotesList(QWidget *parent = 0, const char *name = 0,
+	AlbaranClienteList(QWidget *parent = 0, const char *name = 0,
 				Qt::WFlags flag = 0, edmode editmodo = EditMode);
-	ClientDelivNotesList(company *, QWidget *parent = 0, const char *name = 0,
+	AlbaranClienteList(company *, QWidget *parent = 0, const char *name = 0,
 				Qt::WFlags flag = 0, edmode editmodo = EditMode);
-	~ClientDelivNotesList();
+	~AlbaranClienteList();
 	void presenta();
 	void modoseleccion()
 	{

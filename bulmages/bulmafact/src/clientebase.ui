@@ -690,7 +690,7 @@
                     <property name="name">
                         <cstring>unnamed</cstring>
                     </property>
-                    <widget class="ClientDelivNotesList">
+                    <widget class="AlbaranClienteList">
                         <property name="name">
                             <cstring>m_listalbaranes</cstring>
                         </property>
@@ -1267,7 +1267,7 @@
         <pixmap>image12</pixmap>
     </customwidget>
     <customwidget>
-        <class>ClientDelivNotesList</class>
+        <class>AlbaranClienteList</class>
         <header location="global">clientdelivnoteslist.h</header>
         <sizehint>
             <width>20</width>

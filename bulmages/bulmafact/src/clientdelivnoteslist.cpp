@@ -70,7 +70,7 @@ CREATE TABLE albaran (
 #define COL_TOTALBASEIMP 15
 #define COL_TOTALIMPUESTOS 16
 
-void ClientDelivNotesList::guardaconfig() {
+void AlbaranClienteList::guardaconfig() {
     QString aux = "";
     mver_refalbaran->isChecked() ? aux += "1,":aux+="0,";
     mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
@@ -102,7 +102,7 @@ void ClientDelivNotesList::guardaconfig() {
     }// end if
 }// end guardaconfig()
 
-void ClientDelivNotesList::cargaconfig() {
+void AlbaranClienteList::cargaconfig() {
     QFile file( confpr->valor(CONF_DIR_USER)+"confclientdelivnoteslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
@@ -138,7 +138,7 @@ void ClientDelivNotesList::cargaconfig() {
 
 
 
-void ClientDelivNotesList::s_configurar() {
+void AlbaranClienteList::s_configurar() {
 
     if(mver_refalbaran->isChecked() )
         m_list->showColumn(COL_REFALBARAN);
@@ -229,8 +229,8 @@ void ClientDelivNotesList::s_configurar() {
 }// end s_configurar
 
 
-ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : ClientDelivNotesListBase(parent, name, flag) {
+AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
+        : AlbaranClienteListBase(parent, name, flag) {
     companyact = NULL;
 	inicializa();
     cargaconfig();
@@ -243,8 +243,8 @@ ClientDelivNotesList::ClientDelivNotesList(QWidget *parent, const char *name, Qt
 }// end providerslist
 
 
-ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : ClientDelivNotesListBase(parent, name, flag) {
+AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
+        : AlbaranClienteListBase(parent, name, flag) {
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
@@ -259,17 +259,17 @@ ClientDelivNotesList::ClientDelivNotesList(company *comp, QWidget *parent, const
         companyact->meteWindow(caption(), this);
     hideBusqueda();
     hideConfiguracion();
-}// end ClientDelivNotesList
+}// end AlbaranClienteList
 
-ClientDelivNotesList::~ClientDelivNotesList() {
+AlbaranClienteList::~AlbaranClienteList() {
     if (m_modo == EditMode)
         companyact->sacaWindow(this);
     guardaconfig();
 }// end ~providerslist
 
 
-void ClientDelivNotesList::inicializa() {
-    _depura("ClientDelivNotesList::inicializa\n");
+void AlbaranClienteList::inicializa() {
+    _depura("AlbaranClienteList::inicializa\n");
     m_list->setNumRows( 0 );
     m_list->setNumCols( 0 );
     m_list->setSelectionMode( Q3Table::SingleRow );
@@ -298,12 +298,12 @@ void ClientDelivNotesList::inicializa() {
     m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
     m_list->setReadOnly(TRUE);
 
-    _depura("End ClientDelivNotesList::inicializa");
+    _depura("End AlbaranClienteList::inicializa");
 }// end inicializa
 
 
-void ClientDelivNotesList::presenta() {
-    _depura("ClientDelivNotesList::presenta\n");
+void AlbaranClienteList::presenta() {
+    _depura("AlbaranClienteList::presenta\n");
     cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON  almacen.idalmacen=albaran.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago where 1=1 "+generarFiltro());
     m_list->setNumRows( cur->numregistros() );
     int i=0;
@@ -342,15 +342,15 @@ void ClientDelivNotesList::presenta() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-    _depura("End ClientDelivNotesList::presenta");
+    _depura("End AlbaranClienteList::presenta");
 }// end presenta
 
 
 
-void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
+void AlbaranClienteList::s_doubleclicked(int a, int , int , const QPoint &) {
     m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
     if (m_modo ==0 && m_idclidelivnote != "") {
-        fprintf(stderr,"ClientDelivNotesList::s_doubleclicked\n");
+        fprintf(stderr,"AlbaranClienteList::s_doubleclicked\n");
         AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albaran de Cliente", "company"));
 
         if (cDelivNote->cargaAlbaranCliente(m_idclidelivnote))
@@ -364,7 +364,7 @@ void ClientDelivNotesList::s_doubleclicked(int a, int , int , const QPoint &) {
 }
 
 
-void ClientDelivNotesList::s_edit() {
+void AlbaranClienteList::s_edit() {
     int a = m_list->currentRow();
 	if (a >=0 ) 
     	s_doubleclicked(a,0,0, QPoint());
@@ -373,7 +373,7 @@ void ClientDelivNotesList::s_edit() {
 }
 
 
-void ClientDelivNotesList::s_contextMenu(int, int, int button, const QPoint &poin) {
+void AlbaranClienteList::s_contextMenu(int, int, int button, const QPoint &poin) {
     qDebug("button = %d", button);
     if (button == 2) {
         Q3PopupMenu *popup;
@@ -390,7 +390,7 @@ void ClientDelivNotesList::s_contextMenu(int, int, int button, const QPoint &poi
     }
 }// end contextmenu
 
-void ClientDelivNotesList::s_removeClientDelivNote() {
+void AlbaranClienteList::s_removeClientDelivNote() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     if (m_list->currentRow() >= 0) {
         if (QMessageBox::warning( this, tr("BulmaFact - Albaranes"), tr("Desea borrar el albaran seleccionado"),tr("Si"), tr("No"),0,0,1) == 0) {
@@ -417,7 +417,7 @@ void ClientDelivNotesList::s_removeClientDelivNote() {
 }// end boton_borrar
 
 
-void ClientDelivNotesList::imprimir() {
+void AlbaranClienteList::imprimir() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranescliente.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"albaranescliente.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
@@ -556,7 +556,7 @@ void ClientDelivNotesList::imprimir() {
 }// end imprimir
 
 
-QString ClientDelivNotesList::generarFiltro() {
+QString AlbaranClienteList::generarFiltro() {
     /// Tratamiento de los filtros.
     fprintf(stderr,"Tratamos el filtro \n");
     QString filtro="";

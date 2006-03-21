@@ -118,7 +118,7 @@ void company::createMainWindows() {
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
-    m_clientDelivNotesList = new ClientDelivNotesList(this, 0,theApp->translate("Albaranes de Clientes","company"));
+    m_clientDelivNotesList = new AlbaranClienteList(this, 0,theApp->translate("Albaranes de Clientes","company"));
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 

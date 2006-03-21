@@ -117,7 +117,7 @@ void FacturaView::s_agregaAlbaran() {
     /// Seleccionamos el albarán.FacturaView::s_agregaAlbaran
     // Pedimos la factura a la que agregar
 
-    ClientDelivNotesList *fac = new ClientDelivNotesList(companyact, NULL, tr("Seleccione albaran","company"),0,ClientDelivNotesList::SelectMode);
+    AlbaranClienteList *fac = new AlbaranClienteList(companyact, NULL, tr("Seleccione albaran","company"),0,AlbaranClienteList::SelectMode);
     fac->setidcliente(DBvalue("idcliente"));
     fac->modoseleccion();
 
