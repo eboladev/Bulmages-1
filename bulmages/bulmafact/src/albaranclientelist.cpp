@@ -40,7 +40,7 @@ CREATE TABLE albaran (
 );
  
 */
-#include "clientdelivnoteslist.h"
+#include "albaranclientelist.h"
 #include "company.h"
 #include "albaranclienteview.h"
 #include "qtable1.h"

@@ -58,7 +58,7 @@ Restricciones de llave for�ea:
 
 #include "presupuestolist.h"
 #include "pedidosclientelist.h"
-#include "clientdelivnoteslist.h"
+#include "albaranclientelist.h"
 #include "cobroslist.h"
 #include "facturaslist.h"
 #include "busquedaprovincia.h"

@@ -32,7 +32,7 @@
 #include "clienteview.h"
 #include "articulolist.h"
 #include "presupuestolist.h"
-#include "clientdelivnoteslist.h"
+#include "albaranclientelist.h"
 #include "abreempresaview.h"
 #include "fpagoview.h"
 #include "familiasview.h"

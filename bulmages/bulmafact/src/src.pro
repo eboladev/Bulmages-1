@@ -59,7 +59,7 @@ FORMS3 += bulmafactbase.ui \
           divisionbase.ui \
           budgetbase.ui \
           budgetslistbase.ui \
-          clientdelivnoteslistbase.ui \
+          albaranclientelistbase.ui \
           albaranclientebase.ui \
           familiasdlg.ui \
           tiposarticulodlg.ui \
@@ -94,7 +94,7 @@ HEADERS += bulmafact.h \
            presupuestolist.h \
            articuloview.h \
            EventHandler.h \
-           clientdelivnoteslist.h \
+           albaranclientelist.h \
            albaranclienteview.h \
            listventanas.h \
            fpagoview.h \
@@ -209,7 +209,7 @@ SOURCES += bulmafact.cpp \
            presupuestolist.cpp \
            articuloview.cpp \
            EventHandler.cpp \
-           clientdelivnoteslist.cpp \
+           albaranclientelist.cpp \
            albaranclienteview.cpp \
            listventanas.cpp \
            fpagoview.cpp \

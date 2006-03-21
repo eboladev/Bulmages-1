@@ -24,7 +24,7 @@
 // Listado de albaranes de clientes.
 // Clients delivery notes list.
 
-#include "clientdelivnoteslistbase.h"
+#include "albaranclientelistbase.h"
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"

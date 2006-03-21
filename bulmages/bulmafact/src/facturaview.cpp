@@ -19,7 +19,7 @@
 #include "funcaux.h"
 #include "informereferencia.h"
 
-#include "clientdelivnoteslist.h"
+#include "albaranclientelist.h"
 #include "albarancliente.h"
 
 #include <QCloseEvent>
