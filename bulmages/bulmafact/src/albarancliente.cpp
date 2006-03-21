@@ -125,7 +125,7 @@ void AlbaranCliente::pintaAlbaranCliente()
 
 
 /// Esta funcioncarga un AlbaranCliente.
-int AlbaranCliente::cargaAlbaranCliente(QString idbudget)
+int AlbaranCliente::cargar(QString idbudget)
 {
 	_depura("AlbaranCliente::cargaAlbaranCliente(" + idbudget + ").", 0);
 	QString query = "SELECT * FROM albaran WHERE idalbaran=" + idbudget;
@@ -168,7 +168,7 @@ void AlbaranCliente::guardaAlbaranCliente()
 	companyact->commit();
 	listalineas->guardaListLinAlbaranCliente();
 	listadescuentos->guardaListDescuentoAlbaranCliente();
-	cargaAlbaranCliente(id);
+	cargar(id);
 };
 
 

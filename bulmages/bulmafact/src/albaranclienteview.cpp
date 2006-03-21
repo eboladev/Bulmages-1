@@ -262,9 +262,9 @@ void AlbaranClienteView::agregarFactura()
 };
 
 
-int AlbaranClienteView::cargaAlbaranCliente(QString id)
+int AlbaranClienteView::cargar(QString id)
 {
-	AlbaranCliente::cargaAlbaranCliente(id);
+	AlbaranCliente::cargar(id);
 	setCaption("Albaran Cliente  " + DBvalue("refalbaran"));
 
 	if (companyact->meteWindow(caption(), this))

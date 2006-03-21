@@ -110,7 +110,7 @@ void PedidoClienteView::generarAlbaran() {
     if(!cur->eof()) {
         AlbaranClienteView *bud = new AlbaranClienteView(companyact,NULL,theApp->translate("Edicion de Albaranes de Clientes", "company"));
         companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaAlbaranCliente(cur->valor("idalbaran"));
+        bud->cargar(cur->valor("idalbaran"));
         bud->show();
         return;
     }

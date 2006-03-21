@@ -192,7 +192,7 @@ public:
 	{
 		setDBvalue("procesadoalbaran",val);
 	};
-	virtual int cargaAlbaranCliente(QString);
+	virtual int cargar(QString);
 	virtual void pintaIdAlbaran(QString)
 	{
 	};

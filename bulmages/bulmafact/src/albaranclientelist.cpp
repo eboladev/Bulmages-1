@@ -40,16 +40,16 @@ CREATE TABLE albaran (
 );
  
 */
+#include <QMessageBox>
+#include <QFile>
+#include <QCheckBox>
+#include <QTextStream>
+
+
 #include "albaranclientelist.h"
 #include "company.h"
 #include "albaranclienteview.h"
 #include "qtable1.h"
-#include <QMessageBox>
-#include <Q3PopupMenu>
-#include <QFile>
-#include <QCheckBox>
-//Added by qt3to4:
-#include <QTextStream>
 #include "funcaux.h"
 
 #define COL_REFALBARAN 0
@@ -59,16 +59,14 @@ CREATE TABLE albaran (
 #define COL_NOMCLIENTE 4
 #define COL_IDFORMA_PAGO 5
 #define COL_DESCFORMA_PAGO 6
-#define COL_NUMFACTURA 7
-#define COL_NUMNOFACTURA 8
-#define COL_IDUSUARIO 9
-#define COL_IDCLIENTE 10
-#define COL_IDALBARAN 11
-#define COL_COMENTALBARAN 12
-#define COL_IDALMACEN 13
-#define COL_TOTALALBARAN 14
-#define COL_TOTALBASEIMP 15
-#define COL_TOTALIMPUESTOS 16
+#define COL_IDUSUARIO 7
+#define COL_IDCLIENTE 8
+#define COL_IDALBARAN 9
+#define COL_COMENTALBARAN 10
+#define COL_IDALMACEN 11
+#define COL_TOTALALBARAN 12
+#define COL_TOTALBASEIMP 13
+#define COL_TOTALIMPUESTOS 14
 
 void AlbaranClienteList::guardaconfig() {
     QString aux = "";
@@ -94,10 +92,6 @@ void AlbaranClienteList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
-        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -108,10 +102,6 @@ void AlbaranClienteList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
-            QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
-        }// end for
         file.close();
     } else
         return;
@@ -138,105 +128,93 @@ void AlbaranClienteList::cargaconfig() {
 
 
 
-void AlbaranClienteList::s_configurar() {
+void AlbaranClienteList::configurar() {
 
     if(mver_refalbaran->isChecked() )
-        m_list->showColumn(COL_REFALBARAN);
+        mui_list->showColumn(COL_REFALBARAN);
     else
-        m_list->hideColumn(COL_REFALBARAN);
+        mui_list->hideColumn(COL_REFALBARAN);
 
     if(mver_codigoalmacen->isChecked() )
-        m_list->showColumn(COL_CODIGOALMACEN);
+        mui_list->showColumn(COL_CODIGOALMACEN);
     else
-        m_list->hideColumn(COL_CODIGOALMACEN);
+        mui_list->hideColumn(COL_CODIGOALMACEN);
 
     if(mver_numalbaran->isChecked() )
-        m_list->showColumn(COL_NUMALBARAN);
+        mui_list->showColumn(COL_NUMALBARAN);
     else
-        m_list->hideColumn(COL_NUMALBARAN);
+        mui_list->hideColumn(COL_NUMALBARAN);
 
     if(mver_fechaalbaran->isChecked() )
-        m_list->showColumn(COL_FECHAALBARAN);
+        mui_list->showColumn(COL_FECHAALBARAN);
     else
-        m_list->hideColumn(COL_FECHAALBARAN);
+        mui_list->hideColumn(COL_FECHAALBARAN);
 
     if(mver_nomcliente->isChecked() )
-        m_list->showColumn(COL_NOMCLIENTE);
+        mui_list->showColumn(COL_NOMCLIENTE);
     else
-        m_list->hideColumn(COL_NOMCLIENTE);
+        mui_list->hideColumn(COL_NOMCLIENTE);
 
     if(mver_idforma_pago->isChecked() )
-        m_list->showColumn(COL_IDFORMA_PAGO);
+        mui_list->showColumn(COL_IDFORMA_PAGO);
     else
-        m_list->hideColumn(COL_IDFORMA_PAGO);
+        mui_list->hideColumn(COL_IDFORMA_PAGO);
 
     if(mver_descforma_pago->isChecked() )
-        m_list->showColumn(COL_DESCFORMA_PAGO);
+        mui_list->showColumn(COL_DESCFORMA_PAGO);
     else
-        m_list->hideColumn(COL_DESCFORMA_PAGO);
-
-    if(mver_numfactura->isChecked() )
-        m_list->showColumn(COL_NUMFACTURA);
-    else
-        m_list->hideColumn(COL_NUMFACTURA);
-
-    if(mver_numnofactura->isChecked() )
-        m_list->showColumn(COL_NUMNOFACTURA);
-    else
-        m_list->hideColumn(COL_NUMNOFACTURA);
+        mui_list->hideColumn(COL_DESCFORMA_PAGO);
 
     if(mver_idusuario->isChecked() )
-        m_list->showColumn(COL_IDUSUARIO);
+        mui_list->showColumn(COL_IDUSUARIO);
     else
-        m_list->hideColumn(COL_IDUSUARIO);
+        mui_list->hideColumn(COL_IDUSUARIO);
 
     if(mver_idcliente->isChecked() )
-        m_list->showColumn(COL_IDCLIENTE);
+        mui_list->showColumn(COL_IDCLIENTE);
     else
-        m_list->hideColumn(COL_IDCLIENTE);
+        mui_list->hideColumn(COL_IDCLIENTE);
 
     if(mver_idalbaran->isChecked() )
-        m_list->showColumn(COL_IDALBARAN);
+        mui_list->showColumn(COL_IDALBARAN);
     else
-        m_list->hideColumn(COL_IDALBARAN);
+        mui_list->hideColumn(COL_IDALBARAN);
 
     if(mver_comentalbaran->isChecked() )
-        m_list->showColumn(COL_COMENTALBARAN);
+        mui_list->showColumn(COL_COMENTALBARAN);
     else
-        m_list->hideColumn(COL_COMENTALBARAN);
+        mui_list->hideColumn(COL_COMENTALBARAN);
 
     if(mver_idalmacen->isChecked() )
-        m_list->showColumn(COL_IDALMACEN);
+        mui_list->showColumn(COL_IDALMACEN);
     else
-        m_list->hideColumn(COL_IDALMACEN);
+        mui_list->hideColumn(COL_IDALMACEN);
 
     if(mver_totalalbaran->isChecked() )
-        m_list->showColumn(COL_TOTALALBARAN);
+        mui_list->showColumn(COL_TOTALALBARAN);
     else
-        m_list->hideColumn(COL_TOTALALBARAN);
+        mui_list->hideColumn(COL_TOTALALBARAN);
 
     if(mver_totalbaseimp->isChecked() )
-        m_list->showColumn(COL_TOTALBASEIMP);
+        mui_list->showColumn(COL_TOTALBASEIMP);
     else
-        m_list->hideColumn(COL_TOTALBASEIMP);
+        mui_list->hideColumn(COL_TOTALBASEIMP);
 
     if(mver_totalimpuestos->isChecked() )
-        m_list->showColumn(COL_TOTALIMPUESTOS);
+        mui_list->showColumn(COL_TOTALIMPUESTOS);
     else
-        m_list->hideColumn(COL_TOTALIMPUESTOS);
-
-
+        mui_list->hideColumn(COL_TOTALIMPUESTOS);
 }// end s_configurar
 
 
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : AlbaranClienteListBase(parent, name, flag) {
-    companyact = NULL;
-	inicializa();
+        : QWidget(parent, name, flag) {
+	setupUi(this);
+    m_companyact = NULL;
     cargaconfig();
-    s_configurar();
+    configurar();
     m_modo=editmodo;
-    m_idclidelivnote="";
+    mdb_idalbaran="";
     if (m_modo == EditMode)
         meteWindow(caption(),this);
     hideBusqueda();
@@ -244,175 +222,89 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WF
 
 
 AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : AlbaranClienteListBase(parent, name, flag) {
-    companyact = comp;
+        : QWidget (parent, name, flag) {
+	setupUi(this);
+    m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
-
-    inicializa();
+	mui_list->setcompany(comp);
     cargaconfig();
-	s_configurar();
 	presenta();
     m_modo=editmodo;
-    m_idclidelivnote="";
+    mdb_idalbaran="";
     if (m_modo == EditMode)
-        companyact->meteWindow(caption(), this);
+        m_companyact->meteWindow(caption(), this);
     hideBusqueda();
     hideConfiguracion();
 }// end AlbaranClienteList
 
 AlbaranClienteList::~AlbaranClienteList() {
     if (m_modo == EditMode)
-        companyact->sacaWindow(this);
+        m_companyact->sacaWindow(this);
     guardaconfig();
 }// end ~providerslist
 
 
-void AlbaranClienteList::inicializa() {
-    _depura("AlbaranClienteList::inicializa\n");
-    m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(17);
-    m_list->horizontalHeader()->setLabel( COL_REFALBARAN, tr( "Referencia" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMALBARAN, tr( "N Albaran" ) );
-    m_list->horizontalHeader()->setLabel( COL_FECHAALBARAN, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDFORMA_PAGO, tr( "COL_IDFORMA_PAGO" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMFACTURA, tr( "N Factura" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMNOFACTURA, tr( "N No Fra." ) );
-    m_list->horizontalHeader()->setLabel( COL_IDUSUARIO, tr("COL_IDUSUARIO") );
-    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
-    m_list->horizontalHeader()->setLabel( COL_IDALBARAN, tr("COL_IDALBARAN") );
-    m_list->horizontalHeader()->setLabel( COL_COMENTALBARAN, tr("Comentario") );
-    m_list->horizontalHeader()->setLabel( COL_DESCFORMA_PAGO, tr("Forma de Pago") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALALBARAN, tr("Total") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
-
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTALBARANESCLIENTE));
-    m_list->setReadOnly(TRUE);
-
-    _depura("End AlbaranClienteList::inicializa");
-}// end inicializa
-
 
 void AlbaranClienteList::presenta() {
     _depura("AlbaranClienteList::presenta\n");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON  almacen.idalmacen=albaran.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago where 1=1 "+generarFiltro());
-    m_list->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_list->setText(i,COL_REFALBARAN,cur->valor("refalbaran"));
-        m_list->setText(i,COL_NUMALBARAN,cur->valor("numalbaran"));
-        m_list->setText(i,COL_FECHAALBARAN,cur->valor("fechaalbaran"));
-        m_list->setText(i,COL_IDFORMA_PAGO,cur->valor("idforma_pago"));
-        m_list->setText(i,COL_NUMFACTURA,cur->valor("idfactura"));
-        m_list->setText(i,COL_NUMNOFACTURA,cur->valor("idnofactura"));
-        m_list->setText(i,COL_IDUSUARIO,cur->valor("idtrabajador"));
-        m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-        m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-        m_list->setText(i,COL_IDALBARAN,cur->valor("idalbaran"));
-        m_list->setText(i,COL_COMENTALBARAN,cur->valor("comentalbaran"));
-        m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
-        m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
-        m_list->setText(i,COL_DESCFORMA_PAGO,cur->valor("descforma_pago"));
-
-        _depura("Pintamos los totales");
-        /// Calculamos el total del presupuesto y lo presentamos.
-        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbaran("+cur->valor("idalbaran")+") AS total, calcbimpalbaran("+cur->valor("idalbaran")+") AS base, calcimpuestosalbaran("+cur->valor("idalbaran")+") AS impuestos");
-        m_list->setText(i,COL_TOTALALBARAN,cur1->valor("total"));
-        m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
-        m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
-        delete cur1;
 
 
-        i++;
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalalbaran(idalbaran) AS total, calcbimpalbaran(idalbaran) AS base, calcimpuestosalbaran(idalbaran) AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
+	mui_list->cargar(cur);
+	delete cur;
+
 
     /// Hacemos el calculo del total.
-    cur = companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
+	configurar();
 
     _depura("End AlbaranClienteList::presenta");
 }// end presenta
 
 
 
-void AlbaranClienteList::s_doubleclicked(int a, int , int , const QPoint &) {
-    m_idclidelivnote = m_list->text(a,COL_IDALBARAN);
-    if (m_modo ==0 && m_idclidelivnote != "") {
-        fprintf(stderr,"AlbaranClienteList::s_doubleclicked\n");
-        AlbaranClienteView *cDelivNote = new AlbaranClienteView(companyact,0,theApp->translate("Edicion de Albaran de Cliente", "company"));
 
-        if (cDelivNote->cargaAlbaranCliente(m_idclidelivnote))
+
+void AlbaranClienteList::editar(int  row) {
+    _depura("AlbaranClienteList::editar",0);
+    mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"),row);
+    if (m_modo ==0 ) {
+        AlbaranClienteView *prov = new AlbaranClienteView(m_companyact,0,theApp->translate("Edicion de Albaranes a Cliente", "company"));
+        if (prov->cargar(mdb_idalbaran)) {
             return;
-
-        companyact->m_pWorkspace->addWindow(cDelivNote);
-        cDelivNote->show();
+        }
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
     } else {
-        close();
+        emit(selected(mdb_idalbaran));
+        // close();
     }// end if
+    _depura("END AlbaranClienteList::editar",0);
 }
 
-
-void AlbaranClienteList::s_edit() {
-    int a = m_list->currentRow();
+void AlbaranClienteList::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
 	if (a >=0 ) 
-    	s_doubleclicked(a,0,0, QPoint());
+    	editar(a);
 	else
 	_depura("Debe seleccionar una linea",2);
 }
 
 
-void AlbaranClienteList::s_contextMenu(int, int, int button, const QPoint &poin) {
-    qDebug("button = %d", button);
-    if (button == 2) {
-        Q3PopupMenu *popup;
-        popup = new Q3PopupMenu;
-        popup->insertItem(tr("Eliminar"),101);
-        //popup->insertSeparator();
-        int opcion = popup->exec(m_list->mapToGlobal(poin));
-        switch(opcion) {
-        case 101:
-            s_removeClientDelivNote();
-            break;
-        }// end switch
-        delete popup;
-    }
-}// end contextmenu
 
-void AlbaranClienteList::s_removeClientDelivNote() {
+void AlbaranClienteList::on_mui_borrar_clicked() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
-    if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, tr("BulmaFact - Albaranes"), tr("Desea borrar el albaran seleccionado"),tr("Si"), tr("No"),0,0,1) == 0) {
-            companyact->begin();
-            QString SQLQuery = "DELETE FROM lalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
-            if (companyact->ejecuta(SQLQuery)==0) {
-                QString SQLQuery = "DELETE FROM dalbaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
-                if (companyact->ejecuta(SQLQuery)==0) {
-                    QString SQLQuery = "DELETE FROM albaran WHERE idalbaran ="+m_list->text(m_list->currentRow(),COL_IDALBARAN);
-                    if (companyact->ejecuta(SQLQuery)==0) {
-                        companyact->commit();
-                    } else {
-                        companyact->rollback();
-                    }
-                } else {
-                    companyact->rollback();
-                }
-            } else {
-                companyact->rollback();
-            }
+    mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
+    if (m_modo ==0 ) {
+        AlbaranClienteView *prov = new AlbaranClienteView(m_companyact,0,theApp->translate("Edicion de Albaranes a Cliente", "company"));
+        if (prov->cargar(mdb_idalbaran)) {
+            return;
         }
-    }
+        prov->borrar();
+    }// end if
     presenta();
 }// end boton_borrar
 
@@ -495,7 +387,7 @@ void AlbaranClienteList::imprimir() {
     fitxersortidatxt += "</tr>";
 
     QString SQLQuery = "SELECT * FROM albaran, cliente, almacen where albaran.idcliente=cliente.idcliente AND albaran.idalmacen=almacen.idalmacen"+generarFiltro();
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         /// -----------------------------------
@@ -529,7 +421,7 @@ void AlbaranClienteList::imprimir() {
             fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
 
         /// Calculamos el total del presupuesto y lo presentamos.
-        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbaran("+cur->valor("idalbaran")+") AS total, calcbimpalbaran("+cur->valor("idalbaran")+") AS base, calcimpuestosalbaran("+cur->valor("idalbaran")+") AS impuestos");
+        cursor2 *cur1 = m_companyact->cargacursor("SELECT calctotalalbaran("+cur->valor("idalbaran")+") AS total, calcbimpalbaran("+cur->valor("idalbaran")+") AS base, calcimpuestosalbaran("+cur->valor("idalbaran")+") AS impuestos");
         if(mver_totalalbaran->isChecked() )
             fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
         if(mver_totalbaseimp->isChecked() )
@@ -585,3 +477,41 @@ QString AlbaranClienteList::generarFiltro() {
 
     return (filtro);
 }// end generaFiltro
+
+
+
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("albaran");
+    setDBCampoId("idalbaran");
+
+    addSHeader("refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "refalbaran");
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codigoalmacen");
+    addSHeader("numalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "numalbaran");
+    addSHeader("fechaalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechaalbaran");
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomcliente");
+    addSHeader("idforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idforma_pago");
+    addSHeader("descforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "descforma_pago");
+    addSHeader("idusuari", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idusuari");
+    addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idcliente");
+    addSHeader("idalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idalbaran");
+    addSHeader("comentalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentalbaran");
+    addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idalmacen");
+    addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "total");
+    addSHeader("base", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "base");
+    addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "impuestos");
+    setinsercion(FALSE);
+};
+
+
+
+
+
+
+
+

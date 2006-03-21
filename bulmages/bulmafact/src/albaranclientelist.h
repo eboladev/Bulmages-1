@@ -24,13 +24,36 @@
 // Listado de albaranes de clientes.
 // Clients delivery notes list.
 
-#include "albaranclientelistbase.h"
+
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
+#include "subform2bf.h"
+
+class AlbaranClienteListSubform : public SubForm2Bf {
+Q_OBJECT
+public:
+	AlbaranClienteListSubform(QWidget *parent = 0, const char *name = 0);
+	~AlbaranClienteListSubform() {};
+public slots:
+virtual void cargar() {
+    _depura("AlbaranClienteListSubform::cargar\n",0);
+    QString SQLQuery = "SELECT * FROM albaran";
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+	SubForm2::cargar(cur);
+    delete cur;
+};
+virtual int cargar(cursor2 *cur) {
+    _depura("AlbaranClienteListSubform::cargar\n",0);
+	SubForm2::cargar(cur);
+	return 0;
+};
+};
 
 
-class AlbaranClienteList : public AlbaranClienteListBase
+#include "ui_albaranclientelistbase.h"
+
+class AlbaranClienteList : public QWidget, public Ui_AlbaranClienteListBase
 {
 	Q_OBJECT
 
@@ -42,12 +65,11 @@ public:
 	};
 
 private:
-	company *companyact;
+	company *m_companyact;
 	/// m_modo == 0 es modo edicion
 	/// m_modo == 1 es modo selector.
 	int m_modo;
-	QString m_idclidelivnote;
-	void inicializa();
+	QString mdb_idalbaran;
 
 public:
 	AlbaranClienteList(QWidget *parent = 0, const char *name = 0,
@@ -67,8 +89,9 @@ public:
 	void imprimir();
 	void setcompany (company *comp)
 	{
-		companyact = comp;
+		m_companyact = comp;
 		m_cliente->setcompany(comp);
+		mui_list->setcompany(comp);
 	};
 	void hideBotonera()
 	{
@@ -100,13 +123,13 @@ public:
 	};
 	QString idCliDelivNote()
 	{
-		return m_idclidelivnote;
+		return mdb_idalbaran;
 	};
 	void meteWindow(QString nom, QObject *obj)
 	{
-		if (companyact != NULL)
+		if (m_companyact != NULL)
 		{
-			companyact->meteWindow(nom, obj);
+			m_companyact->meteWindow(nom, obj);
 		}
 	};
 	QString generarFiltro();
@@ -114,47 +137,30 @@ public:
 	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
+	void editar(int);
 
 public slots:
-	virtual void s_doubleclicked(int, int, int, const QPoint &);
-	virtual void s_newClientDelivNote()
-	{
-		companyact->s_newAlbaranCli();
+	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+		on_mui_editar_clicked();
 	};
-	virtual void s_removeClientDelivNote();
-	virtual void s_contextMenu(int, int, int, const QPoint &);
-	virtual void s_configurar();
-	virtual void s_edit();
-	virtual void s_searchClientDelivNote()
+	virtual void on_mui_crear_clicked()
 	{
-		presenta();
+		m_companyact->s_newAlbaranCli();
 	};
-	virtual void s_printClientDelivNote()
+	virtual void on_mui_borrar_clicked();
+	virtual void configurar();
+	virtual void on_mui_editar_clicked();
+	virtual void on_mui_imprimir_clicked()
 	{
 		imprimir();
 	};
-	virtual void s_filtrar()
+	virtual void on_mui_actualizar_clicked()
 	{
 		presenta();
 	};
-	virtual void s_mostrarBusqueda()
-	{
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
+
+signals:
+	void selected(QString);
 };
 
 #endif

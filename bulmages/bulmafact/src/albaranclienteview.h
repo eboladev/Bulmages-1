@@ -188,7 +188,7 @@ public slots:
 	{
 		guardaAlbaranCliente();
 	};
-	virtual int cargaAlbaranCliente(QString id);    
+	virtual int cargar(QString id);    
 	virtual void s_deleteAlbaranCliente()
 	{
 		borraAlbaranCliente();

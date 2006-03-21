@@ -136,7 +136,7 @@ void FacturaView::s_agregaAlbaran() {
 
     /// Creamos la factura.
     AlbaranCliente *bud = new AlbaranCliente(companyact);
-    bud->cargaAlbaranCliente(idalbaran);
+    bud->cargar(idalbaran);
 
 
     /// Agregamos a comentarios que albaran se corresponde.
