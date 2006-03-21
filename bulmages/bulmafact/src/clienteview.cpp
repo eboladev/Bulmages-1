@@ -113,11 +113,11 @@ ClienteView::~ClienteView() {
 * Otherwise it empties the form and sets it so that we can add
 * a new client
 */
-int ClienteView::loadClient(QString idcliente) {
+int ClienteView::cargar(QString idcliente) {
     _depura("ClienteView::loadClient",0);
     int error=0;
 
-    cargaCliente(idcliente);
+    Cliente::cargar(idcliente);
     setCaption("Cliente  "+DBvalue("nomcliente"));
     if(m_companyact->meteWindow(caption(),this))
         return -1;

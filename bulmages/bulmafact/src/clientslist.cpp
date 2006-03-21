@@ -85,7 +85,7 @@ CREATE TABLE cliente (
 #define COL_FALTACLIENTE 12
 #define COL_FBAJACLIENTE 13
 #define COL_COMENTCLIENTE 14
-#define COL_IDRECARGO 15
+
 
 #define EDIT_MODE 0
 
@@ -112,24 +112,17 @@ void ClientsList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_clientList->numCols(); i++) {
-            m_clientList->showColumn(i);
-            stream << m_clientList->columnWidth(i) << "\n";
-        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
 
 void ClientsList::cargaconfig() {
+	_depura("ClientsList::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"confclientslist.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_clientList->numCols(); i++) {
-            QString linea = stream.readLine();
-            m_clientList->setColumnWidth(i, linea.toInt());
-        }// end for
         file.close();
     } else
         return;
@@ -154,142 +147,108 @@ void ClientsList::cargaconfig() {
 
 
 
-void ClientsList::s_configurar() {
+void ClientsList::configurar() {
+	_depura("ClientsList::configurar",0);
     if(mver_idcliente->isChecked() )
-        m_clientList->showColumn(COL_IDCLIENTE);
+        mui_list->showColumn(COL_IDCLIENTE);
     else
-        m_clientList->hideColumn(COL_IDCLIENTE);
+        mui_list->hideColumn(COL_IDCLIENTE);
 
     if(mver_nomcliente->isChecked() )
-        m_clientList->showColumn(COL_NOMCLIENTE);
+        mui_list->showColumn(COL_NOMCLIENTE);
     else
-        m_clientList->hideColumn(COL_NOMCLIENTE);
+        mui_list->hideColumn(COL_NOMCLIENTE);
 
     if(mver_nomaltcliente->isChecked() )
-        m_clientList->showColumn(COL_NOMALTCLIENTE);
+        mui_list->showColumn(COL_NOMALTCLIENTE);
     else
-        m_clientList->hideColumn(COL_NOMALTCLIENTE);
+        mui_list->hideColumn(COL_NOMALTCLIENTE);
 
     if(mver_cifcliente->isChecked() )
-        m_clientList->showColumn(COL_CIFCLIENTE);
+        mui_list->showColumn(COL_CIFCLIENTE);
     else
-        m_clientList->hideColumn(COL_CIFCLIENTE);
+        mui_list->hideColumn(COL_CIFCLIENTE);
 
     if(mver_bancocliente->isChecked() )
-        m_clientList->showColumn(COL_BANCOCLIENTE);
+        mui_list->showColumn(COL_BANCOCLIENTE);
     else
-        m_clientList->hideColumn(COL_BANCOCLIENTE);
+        mui_list->hideColumn(COL_BANCOCLIENTE);
 
     if(mver_dircliente->isChecked() )
-        m_clientList->showColumn(COL_DIRCLIENTE);
+        mui_list->showColumn(COL_DIRCLIENTE);
     else
-        m_clientList->hideColumn(COL_DIRCLIENTE);
+        mui_list->hideColumn(COL_DIRCLIENTE);
 
     if(mver_poblcliente->isChecked() )
-        m_clientList->showColumn(COL_POBLCLIENTE);
+        mui_list->showColumn(COL_POBLCLIENTE);
     else
-        m_clientList->hideColumn(COL_POBLCLIENTE);
+        mui_list->hideColumn(COL_POBLCLIENTE);
 
     if(mver_cpcliente->isChecked() )
-        m_clientList->showColumn(COL_CPCLIENTE);
+        mui_list->showColumn(COL_CPCLIENTE);
     else
-        m_clientList->hideColumn(COL_CPCLIENTE);
+        mui_list->hideColumn(COL_CPCLIENTE);
 
     if(mver_telcliente->isChecked() )
-        m_clientList->showColumn(COL_TELCLIENTE);
+        mui_list->showColumn(COL_TELCLIENTE);
     else
-        m_clientList->hideColumn(COL_TELCLIENTE);
+        mui_list->hideColumn(COL_TELCLIENTE);
 
     if(mver_faxcliente->isChecked() )
-        m_clientList->showColumn(COL_FAXCLIENTE);
+        mui_list->showColumn(COL_FAXCLIENTE);
     else
-        m_clientList->hideColumn(COL_FAXCLIENTE);
+        mui_list->hideColumn(COL_FAXCLIENTE);
 
     if(mver_mailcliente->isChecked() )
-        m_clientList->showColumn(COL_MAILCLIENTE);
+        mui_list->showColumn(COL_MAILCLIENTE);
     else
-        m_clientList->hideColumn(COL_MAILCLIENTE);
+        mui_list->hideColumn(COL_MAILCLIENTE);
 
     if(mver_urlcliente->isChecked() )
-        m_clientList->showColumn(COL_URLCLIENTE);
+        mui_list->showColumn(COL_URLCLIENTE);
     else
-        m_clientList->hideColumn(COL_URLCLIENTE);
+        mui_list->hideColumn(COL_URLCLIENTE);
 
     if(mver_faltacliente->isChecked() )
-        m_clientList->showColumn(COL_FALTACLIENTE);
+        mui_list->showColumn(COL_FALTACLIENTE);
     else
-        m_clientList->hideColumn(COL_FALTACLIENTE);
+        mui_list->hideColumn(COL_FALTACLIENTE);
 
     if(mver_fbajacliente->isChecked() )
-        m_clientList->showColumn(COL_FBAJACLIENTE);
+        mui_list->showColumn(COL_FBAJACLIENTE);
     else
-        m_clientList->hideColumn(COL_FBAJACLIENTE);
+        mui_list->hideColumn(COL_FBAJACLIENTE);
 
     if(mver_comentcliente->isChecked() )
-        m_clientList->showColumn(COL_COMENTCLIENTE);
+        mui_list->showColumn(COL_COMENTCLIENTE);
     else
-        m_clientList->hideColumn(COL_COMENTCLIENTE);
+        mui_list->hideColumn(COL_COMENTCLIENTE);
 
-    if(mver_idrecargo->isChecked() )
-        m_clientList->showColumn(COL_IDRECARGO);
-    else
-        m_clientList->hideColumn(COL_IDRECARGO);
-
+	_depura("END ClientsList::configurar",0);
 }// end s_configurar
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : ClientsListBase(parent, name, flag) , pgimportfiles(comp) {
-    cargaconfig();
-
-    s_configurar();
-    companyact = comp;
-    m_idclient="";
-    m_cifclient="";
-    m_nomclient="";
-    m_mode = editmode;
+        : QWidget(parent, name, flag) , pgimportfiles(comp) {
+    setupUi(this);
+    m_companyact = comp;
+    mui_list->setcompany(comp);
+    mdb_idcliente="";
+    mdb_cifcliente="";
+    mdb_nomcliente="";
+    m_modo = editmode;
     hideBusqueda();
     hideConfiguracion();
-
-
-
-    m_clientList->setNumRows( 0 );
-    m_clientList->setSelectionMode( Q3Table::SingleRow );
-    m_clientList->setSorting( TRUE );
-    m_clientList->setColumnMovingEnabled( TRUE );
-    m_clientList->setNumCols(16);
-    m_clientList->horizontalHeader()->setLabel( COL_IDCLIENTE, tr( "Código" ) );
-    m_clientList->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Nombre Fiscal" ) );
-    m_clientList->horizontalHeader()->setLabel( COL_NOMALTCLIENTE, tr( "Nombre Comercial" ) );
-    m_clientList->horizontalHeader()->setLabel( COL_CIFCLIENTE, tr( "CIF/NIF" ) );
-    m_clientList->horizontalHeader()->setLabel( COL_BANCOCLIENTE, tr( "Cuenta Bancaria" ) );
-    m_clientList->horizontalHeader()->setLabel( COL_DIRCLIENTE, tr( "Domicilio" ) );
-    m_clientList->horizontalHeader()->setLabel( COL_POBLCLIENTE, tr("Població") );
-    m_clientList->horizontalHeader()->setLabel( COL_CPCLIENTE, tr("C.P.") );
-    m_clientList->horizontalHeader()->setLabel( COL_TELCLIENTE, tr("Teléfono") );
-    m_clientList->horizontalHeader()->setLabel( COL_FAXCLIENTE, tr("Fax") );
-    m_clientList->horizontalHeader()->setLabel( COL_MAILCLIENTE, tr("Correo Electrónico") );
-    m_clientList->horizontalHeader()->setLabel( COL_URLCLIENTE, tr("Página Web") );
-    m_clientList->horizontalHeader()->setLabel( COL_FALTACLIENTE, tr("Fecha de Alta") );
-    m_clientList->horizontalHeader()->setLabel( COL_FBAJACLIENTE, tr("Fecha de Baja") );
-    m_clientList->horizontalHeader()->setLabel( COL_COMENTCLIENTE, tr("Observaciones") );
-    m_clientList->horizontalHeader()->setLabel( COL_IDRECARGO, tr("Cod. Recargo Eq.") );
-
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
-    m_clientList->setPaletteBackgroundColor("#DDDDFF");
-    m_clientList->setReadOnly(TRUE);
-
+    cargaconfig();
     presenta();
     /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
-    if (m_mode==EditMode)
-        companyact->meteWindow(caption(),this);
-
-
+    if (m_modo==EditMode)
+        m_companyact->meteWindow(caption(),this);
 }// end clientslist
 
-ClientsList::~ClientsList() {
-    if (m_mode==EditMode)
-        companyact->sacaWindow(this);
 
+ClientsList::~ClientsList() {
+    if (m_modo==EditMode)
+        m_companyact->sacaWindow(this);
     guardaconfig();
 }// end ~clientslist
 
@@ -299,93 +258,69 @@ ClientsList::~ClientsList() {
   * Hacemos la consulta a la base de datos y presentamos el listado.
   */
 void ClientsList::presenta() {
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
-    m_clientList->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_clientList->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-        m_clientList->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-        m_clientList->setText(i,COL_NOMALTCLIENTE,cur->valor("nomaltcliente"));
-        m_clientList->setText(i,COL_CIFCLIENTE,cur->valor("cifcliente"));
-        m_clientList->setText(i,COL_BANCOCLIENTE,cur->valor("bancocliente"));
-        m_clientList->setText(i,COL_DIRCLIENTE,cur->valor("dircliente"));
-        m_clientList->setText(i,COL_POBLCLIENTE,cur->valor("poblcliente"));
-        m_clientList->setText(i,COL_CPCLIENTE,cur->valor("cpcliente"));
-        m_clientList->setText(i,COL_TELCLIENTE,cur->valor("telcliente"));
-        m_clientList->setText(i,COL_FAXCLIENTE,cur->valor("faxcliente"));
-        m_clientList->setText(i,COL_MAILCLIENTE,cur->valor("mailcliente"));
-        m_clientList->setText(i,COL_URLCLIENTE,cur->valor("urlcliente"));
-        m_clientList->setText(i,COL_FALTACLIENTE,cur->valor("faltacliente"));
-        m_clientList->setText(i,COL_FBAJACLIENTE,cur->valor("fbajacliente"));
-        m_clientList->setText(i,COL_COMENTCLIENTE,cur->valor("comentcliente"));
-        i++;
-        cur->siguienteregistro();
-    }// end while
+	_depura("ClientsList::presenta",0);
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
+    mui_list->cargar(cur);
     delete cur;
+    configurar();
+	_depura("END ClientsList::presenta",0);
+
 }// end presenta
 
 
-void ClientsList::m_clientList_clicked(int a, int , int , const QPoint &) {
-    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
-}// end m_clientList_clicked
 
 
-void ClientsList::editClient() {
-    if (m_clientList->currentRow() < 0) {
+void ClientsList::editar(int  row) {
+    _depura("ClientsList::editar",0);
+    mdb_idcliente = mui_list->DBvalue("idcliente");
+    mdb_cifcliente = mui_list->DBvalue("cifcliente",row);
+    mdb_nomcliente = mui_list->DBvalue("nomcliente",row);
+    if (m_modo ==0 ) {
+        ClienteView *prov = new ClienteView(m_companyact,0,theApp->translate("Edicion de Pedidos a Cliente", "company"));
+        if (prov->cargar(mdb_idcliente)) {
+            return;
+        }
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
+    } else {
+        emit(selected(mdb_idcliente));
+        // close();
+    }// end if
+    _depura("END ClientsList::editar",0);
+}
+
+void ClientsList::on_mui_editar_clicked() {
+    if (mui_list->currentRow() < 0) {
         _depura("Debe seleccionar un elemento",2);
         return;
     }// end if
-    m_clientList_doubleClicked(m_clientList->currentRow(), 0, 0, QPoint());
+    editar(mui_list->currentRow());
 
 }// end editClient
 
-/**
-   *  Se ha hecho un doble click sobre la tabla de Clientes.
-  */
-void ClientsList::m_clientList_doubleClicked(int a, int , int , const QPoint &) {
-    m_idclient = m_clientList->text(a,COL_IDCLIENTE);
-    m_cifclient = m_clientList->text(a,COL_CIFCLIENTE);
-    m_nomclient = m_clientList->text(a, COL_NOMCLIENTE);
-    if (m_mode == EDIT_MODE ) {
-	ClienteView *cli = companyact->newClienteView();
-        if(cli->loadClient(m_idclient))
-            return;
-        companyact->m_pWorkspace->addWindow(cli);
-        cli->show();
-    } else {
-	emit(selected(m_idclient));
-    }// end if
-}// end doubleClicked
 
 
-void ClientsList::s_findClients() {
-    presenta();
-}// end s_findClients
 
 
-void ClientsList::s_printClients() {
+
+void ClientsList::on_mui_imprimir_clicked() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"clientes.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"clientes.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
     /// Copiamos el archivo
 #ifdef WINDOWS
-
     archivo = "copy "+archivo+" "+archivod;
 #else
-
     archivo = "cp "+archivo+" "+archivod;
 #endif
 
     system (archivo.ascii());
-
     /// Copiamos el logo
 
 #ifdef WINDOWS
-
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
-
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
@@ -437,7 +372,7 @@ void ClientsList::s_printClients() {
     /// ------------------------------------------------
     fitxersortidatxt += "</tr>";
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         /// -----------------------------
@@ -491,17 +426,13 @@ void ClientsList::s_printClients() {
     // Crea el pdf  y lo muestra.
     _depura("Vamos a imprimir e listado de clientes",0);
     invocaPDF("clientes");
-
-
-
-
 }// end s_printClients
 
 
-void ClientsList::s_borrarCliente() {
-    m_idclient = m_clientList->text(m_clientList->currentRow(),COL_IDCLIENTE);
-    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = "+m_idclient;
-    int error = companyact->ejecuta(SQLQuery);
+void ClientsList::on_mui_borrar_clicked() {
+    mdb_idcliente = mui_list->item(mui_list->currentRow(),COL_IDCLIENTE)->text();
+    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = "+mdb_idcliente;
+    int error = m_companyact->ejecuta(SQLQuery);
     if (error) {
         return;
     }// end if
@@ -509,7 +440,7 @@ void ClientsList::s_borrarCliente() {
 }// end s_borrarCliente
 
 
-void ClientsList::s_exportar() {
+void ClientsList::on_mui_exportar_clicked() {
     QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_CLIENTES);
@@ -520,7 +451,7 @@ void ClientsList::s_exportar() {
 }//
 
 
-void ClientsList::s_importar() {
+void ClientsList::on_mui_importar_clicked() {
     QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
     if (filexml.open(QIODevice::ReadOnly))  {
         XML2BulmaFact(filexml, IMPORT_CLIENTES);
@@ -530,4 +461,39 @@ void ClientsList::s_importar() {
         _depura("ERROR AL ABRIR ARCHIVO\n",2);
     }// end if
 }
+
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+
+ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("cliente");
+    setDBCampoId("idcliente");
+    addSHeader("idcliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idcliente");
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomcliente");
+    addSHeader("nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomaltcliente");
+    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cifcliente");
+    addSHeader("bancocliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "bancocliente");
+    addSHeader("dircliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "dircliente");
+    addSHeader("poblcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "poblcliente");
+    addSHeader("cpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cpcliente");
+    addSHeader("telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telcliente");
+    addSHeader("faxcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "faxcliente");
+    addSHeader("mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "mailcliente");
+    addSHeader("urlcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "urlcliente");
+    addSHeader("faltacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "faltacliente");
+    addSHeader("fbajacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fbajacliente");
+    addSHeader("comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentcliente");
+    setinsercion(FALSE);
+};
+
+
+
+
+
+
 

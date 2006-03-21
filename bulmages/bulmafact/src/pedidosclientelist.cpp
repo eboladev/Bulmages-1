@@ -227,6 +227,7 @@ void PedidosClienteList::presenta() {
     cursor2 * cur= companyact->cargacursor("SELECT *, calctotalpedcli(idpedidocliente) AS total, calcbimppedcli(idpedidocliente) AS base, calcimpuestospedcli(idpedidocliente) AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
 	mui_list->cargar(cur);
 
+	delete cur;
 
 	/// Hacemos el calculo del total.
 	cur = companyact->cargacursor("SELECT SUM(calctotalpedcli(idpedidocliente)) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1"+generarFiltro());

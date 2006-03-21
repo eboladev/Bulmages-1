@@ -93,7 +93,7 @@ void Cliente::pintaCliente() {
 
 
 // Esta funci� carga un Cliente.
-void Cliente::cargaCliente(QString idcliente) {
+int Cliente::cargar(QString idcliente) {
 	_depura("Cliente::cargaCliente",0);
     QString query = "SELECT * FROM cliente WHERE idcliente="+idcliente;
     cursor2 * cur= m_companyact->cargacursor(query);
@@ -102,6 +102,7 @@ void Cliente::cargaCliente(QString idcliente) {
     }// end if
     delete cur;
 	_depura("END Cliente::cargaCliente",0);
+	return 0;
 }// end chargeBudget
 
 

@@ -37,7 +37,7 @@ public:
 	~ClienteView();
 
 public:
-	int loadClient(QString client);
+	int cargar(QString client);
 	void saveClient();
 	void deleteClient();
 	void closeEvent(QCloseEvent *);

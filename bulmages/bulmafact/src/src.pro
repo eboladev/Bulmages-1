@@ -50,12 +50,12 @@ FORMS += about.ui \
          providerslistbase.ui \
          provedit_base.ui \
          pedidosclientelistbase.ui \
+         clientslistbase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
 #
 FORMS3 += bulmafactbase.ui \
-          clientslistbase.ui \
           divisionbase.ui \
           budgetbase.ui \
           budgetslistbase.ui \

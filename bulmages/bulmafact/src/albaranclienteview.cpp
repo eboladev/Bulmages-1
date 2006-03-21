@@ -296,11 +296,11 @@ void AlbaranClienteView::closeEvent(QCloseEvent *e)
 		if (val == 0)
 		{
 			guardaAlbaranCliente();
-		};
+		}
 
 		if (val == 2)
 		{
 			e->ignore();
-		};
+		}
 	};
 };

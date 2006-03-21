@@ -41,7 +41,7 @@ public:
 	virtual void guardaCliente();
 	virtual void borraCliente();
 	virtual void vaciaCliente();
-	virtual void cargaCliente(QString);
+	virtual int cargar(QString);
 	void setidcliente(QString val)
 	{
 		setDBvalue("idcliente", val);

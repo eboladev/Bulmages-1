@@ -23,11 +23,22 @@
 
 #include <Q3Frame>
 
-#include "clientslistbase.h"
 #include "pgimportfiles.h"
 #include "company.h"
+#include "subform2bf.h"
 
-class ClientsList : public ClientsListBase, public pgimportfiles
+
+class ClienteListSubform : public SubForm2Bf {
+Q_OBJECT
+public:
+	ClienteListSubform(QWidget *parent = 0, const char *name = 0);
+	~ClienteListSubform() {};
+};
+
+#include "ui_clientslistbase.h"
+
+
+class ClientsList : public QWidget, public Ui_ClientsListBase, public pgimportfiles
 {
 	Q_OBJECT
 
@@ -39,13 +50,13 @@ public:
 	};
 
 private:
-	edmode m_mode;
-	QString m_idclient;
-	QString m_nomclient;
-	QString m_cifclient;
+	edmode m_modo;
+	QString mdb_idcliente;
+	QString mdb_nomcliente;
+	QString mdb_cifcliente;
 
 public:
-	company *companyact;
+	company *m_companyact;
    
 public:
 	ClientsList(company *, QWidget *parent = 0, const char *name = 0,
@@ -53,24 +64,24 @@ public:
 	~ClientsList();
 	void selectMode()
 	{
-		m_mode = SelectMode;
+		m_modo = SelectMode;
 	};
 	void editMode()
 	{
-		m_mode = EditMode;
+		m_modo = EditMode;
 	};
 	void presenta();
 	QString idclient()
 	{
-		return m_idclient;
+		return mdb_idcliente;
 	};
 	QString nomclient()
 	{
-		return m_nomclient;
+		return mdb_nomcliente;
 	};
 	QString cifclient()
 	{
-		return m_cifclient;
+		return mdb_cifcliente;
 	};
 	void hideBotonera()
 	{
@@ -99,47 +110,26 @@ public:
 	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
+	void editar(int);
 
 public slots:
-	virtual void newClient()
-	{
-		companyact->s_newClienteView();
+	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+		on_mui_editar_clicked();
 	};
-	virtual void editClient();
-	virtual void m_clientList_clicked(int, int, int, const QPoint &);
-	virtual void m_clientList_doubleClicked(int, int, int, const QPoint &);
-	virtual void s_printClients();
-	virtual void s_findClients();
-	virtual void s_refreshClientes()
+	virtual void on_mui_crear_clicked()
 	{
-		presenta();
+		m_companyact->s_newClienteView();
 	};
-	virtual void s_exportar();
-	virtual void s_importar();
-	virtual void s_mostrarBusqueda()
-	{
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
-	virtual void s_filtrar()
+	virtual void on_mui_editar_clicked();
+	virtual void on_mui_imprimir_clicked();
+	virtual void on_mui_actualizar_clicked()
 	{
 		presenta();
 	};
-	virtual void s_borrarCliente();
-	virtual void s_configurar();
+	virtual void on_mui_exportar_clicked();
+	virtual void on_mui_importar_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void configurar();
 
 signals:
 	void selected(QString);
