@@ -67,7 +67,7 @@ SDBRecord *SubForm2::newSDBRecord() {
 
 
 void SubForm2::pintaCabeceras() {
-	_depura("SubForm2::pintaCabeceras",0);
+    _depura("SubForm2::pintaCabeceras",0);
     QStringList headers;
     SHeader * linea;
 
@@ -109,6 +109,8 @@ void SubForm2::situarse(unsigned int row, unsigned int col) {
 
 int SubForm2::cargar(cursor2 *cur) {
     _depura("SubForm2::cargar",0);
+    static bool primero=TRUE;
+
     while (rowCount() ) {
         m_lista.removeFirst();
         removeRow(0);
@@ -121,7 +123,10 @@ int SubForm2::cargar(cursor2 *cur) {
     }// end while
     setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    cargaconfig();
+    if (primero) {
+        cargaconfig();
+        primero = FALSE;
+    }// end if
     setRowCount(m_lista.count());
     SDBRecord *reg;
     int i=0;
@@ -158,7 +163,6 @@ SDBRecord *SubForm2::lineaat(int row) {
 
 bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
     _depura("SubForm2::INIT_eventFilter()\n",0);
-//    SDBRecord *linea;
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=currentColumn();
@@ -187,9 +191,10 @@ bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
 
 
 int SubForm2::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
-	_depura("SubForm2::addSHeader ("+nom+")",0);
+    _depura("SubForm2::addSHeader ("+nom+")",0);
     SHeader *camp = new SHeader( nom, typ, res, opt, nomp);
-    camp->set("");
+    camp->set
+    ("");
     m_lcabecera.append(camp);
     return 0;
 };
@@ -243,17 +248,18 @@ void SubForm2::guardar() {
 int SubForm2::borrar() {
     SDBRecord *rec;
     int i=0;
-	int error = 0;
+    int error = 0;
     for(rec=m_lista.at(i++); i<m_lista.count() ;rec=m_lista.at(i++)) {
         error = rec->borrar();
-	if (error) return -1;
-	}
+        if (error)
+            return -1;
+    }
 
     if(!m_insercion) {
         rec = m_lista.at(m_lista.count()-1);
         error = rec->borrar();
     }
-	return error;
+    return error;
 }
 
 
@@ -263,10 +269,11 @@ int SubForm2::borrar(int row) {
     SDBRecord *rec;
     rec = m_lista.at(row);
     int error = rec->borrar();
-	if (error) return error;
+    if (error)
+        return error;
     m_lista.remove(row);
     removeRow(row);
-	return 0;
+    return 0;
 }
 
 

@@ -23,125 +23,117 @@
 
 #include <Q3Frame>
 
-#include "facturaslistbase.h"
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"
+#include "subform2bf.h"
 
-class FacturasList : public FacturasListBase
-{
-	Q_OBJECT
+class FacturasListSubform : public SubForm2Bf {
+    Q_OBJECT
+public:
+    FacturasListSubform(QWidget *parent = 0, const char *name = 0);
+    ~FacturasListSubform() {}
+    ;
+public slots:
+    virtual void cargar() {
+        _depura("FacturasListSubform::cargar\n",0);
+        QString SQLQuery = "SELECT * FROM factura";
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+    virtual int cargar(cursor2 *cur) {
+        _depura("FacturasListSubform::cargar\n",0);
+        SubForm2::cargar(cur);
+        return 0;
+    };
+};
+
+
+#include "ui_facturaslistbase.h"
+
+class FacturasList : public QWidget, public Ui_FacturasListBase {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	/// m_modo == 0 es modo edicion
-	/// m_modo == 1 es modo selector.
-	int m_modo;
-	QString m_idfactura;
-	void inicializa();
+    company *m_companyact;
+    /// m_modo == 0 es modo edicion
+    /// m_modo == 1 es modo selector.
+    int m_modo;
+    QString mdb_idfactura;
 
 public:
-	FacturasList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	FacturasList(company *,QWidget *parent = 0, const char *name = 0);
-	~FacturasList();
-	void setcompany (company *comp)
-	{
-		companyact = comp;
-		m_cliente->setcompany(comp);
-		m_articulo->setcompany(comp);
-	};
-	void meteWindow(QString nom, QObject *obj)
-	{
-		if (companyact != NULL)
-		{
-			companyact->meteWindow(nom, obj);
-		}
-	};
-	company *getcompany()
-	{
-		return companyact;
-	};
-	int modo()
-	{
-		return m_modo;
-	};
-	void modoseleccion()
-	{
-		m_modo = 1;
-	};
-	void modoedicion()
-	{
-		m_modo = 0;
-	};
-	QString idfactura()
-	{
-		return m_idfactura;
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
-	void setidcliente(QString val)
-	{
-		m_cliente->setidcliente(val);
-	};
-	void setidarticulo(QString val)
-	{
-		m_articulo->setidarticulo(val);
-	};
-	QString generaFiltro();
+    FacturasList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+    FacturasList(company *,QWidget *parent = 0, const char *name = 0);
+    ~FacturasList();
+    void setcompany (company *comp) {
+        m_companyact = comp;
+        m_cliente->setcompany(comp);
+        m_articulo->setcompany(comp);
+        mui_list->setcompany(comp);
+    };
+    void meteWindow(QString nom, QObject *obj) {
+        if (m_companyact != NULL) {
+            m_companyact->meteWindow(nom, obj);
+        }
+    };
+    company *getcompany() {
+        return m_companyact;
+    };
+    int modo() {
+        return m_modo;
+    };
+    void modoseleccion() {
+        m_modo = 1;
+    };
+    void modoedicion() {
+        m_modo = 0;
+    };
+    QString idfactura() {
+        return mdb_idfactura;
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void hideConfiguracion() {
+        m_configuracion->hide();
+    };
+    void showConfiguracion() {
+        m_configuracion->show();
+    };
+    void setidcliente(QString val) {
+        m_cliente->setidcliente(val);
+    };
+    void setidarticulo(QString val) {
+        m_articulo->setidarticulo(val);
+    };
+    QString generaFiltro();
 
-	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
-	void guardaconfig();
-	void cargaconfig();
-	void presenta();
+    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
+    void presenta();
+    void editar(int);
 
 public slots:
-	virtual void doubleclicked(int, int , int , const QPoint &);
-	virtual void s_filtrar()
-	{
-		presenta();
-	}
-	virtual void s_mostrarBusqueda()
-	{
-		_depura("s_mostrarBusqueda", 0);
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		_depura("s_mostrarConfiguracion", 0);
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
-	virtual void s_configurar();
-	virtual void s_new()
-	{
-		companyact->s_newFacturaCli();
-	};
-	virtual void s_edit();
-	virtual void s_print();
+    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    }
+    virtual void configurar();
+    virtual void on_mui_crear_clicked() {
+        m_companyact->s_newFacturaCli();
+    };
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_imprimir_clicked();
+signals:
+    void selected(QString);
 };
 
 #endif

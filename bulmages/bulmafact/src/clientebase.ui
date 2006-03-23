@@ -1268,7 +1268,7 @@
     </customwidget>
     <customwidget>
         <class>AlbaranClienteList</class>
-        <header location="global">clientdelivnoteslist.h</header>
+        <header location="global">albaranclientelist.h</header>
         <sizehint>
             <width>20</width>
             <height>20</height>

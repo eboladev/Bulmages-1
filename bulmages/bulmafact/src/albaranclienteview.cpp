@@ -169,7 +169,7 @@ void AlbaranClienteView::generarFactura() {
 	{
 		FacturaView *bud = companyact->newFacturaView();
 		companyact->m_pWorkspace->addWindow(bud);
-		bud->cargaFactura(cur->valor("idfactura"));
+		bud->cargar(cur->valor("idfactura"));
 		bud->show();
 		return;
 	};
@@ -240,7 +240,7 @@ void AlbaranClienteView::agregarFactura()
 
 	/// Creamos la factura.
 	FacturaView *bud = companyact->newFacturaView();
-	bud->cargaFactura(idfactura);
+	bud->cargar(idfactura);
 	companyact->m_pWorkspace->addWindow(bud);
 	/// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
 	/// pero por ahora pasamos de hacerlo.

@@ -94,8 +94,8 @@ void FacturaView::s_nuevoCobro() {
 }// end s_nuevoCobro
 
 
-int FacturaView::cargaFactura(QString id) {
-    Factura::cargaFactura(id);
+int FacturaView::cargar(QString id) {
+    Factura::cargar(id);
     setCaption("Factura   "+DBvalue("reffactura"));
     if (companyact->meteWindow(caption(),this) )
         return 1;

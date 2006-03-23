@@ -52,6 +52,7 @@ FORMS += about.ui \
          pedidosclientelistbase.ui \
          clientslistbase.ui \
          albaranclientelistbase.ui \
+         facturaslistbase.ui \
 	 listprovincias.ui
 
 # uic3 los convierte de forma automatica.
@@ -63,7 +64,6 @@ FORMS3 += bulmafactbase.ui \
           albaranclientebase.ui \
           familiasdlg.ui \
           tiposarticulodlg.ui \
-          facturaslistbase.ui \
           facturabase.ui \
           pedidoclientebase.ui \
           busquedaclientebase.ui \

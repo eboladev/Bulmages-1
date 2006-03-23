@@ -116,7 +116,7 @@ public:
 	{
 		return listadescuentos;
 	};
-	virtual int cargaFactura(QString);
+	virtual int cargar(QString);
 	void pintaFactura();
 	void guardaFactura();
 	void borraFactura();

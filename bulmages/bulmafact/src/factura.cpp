@@ -83,7 +83,7 @@ void Factura::pintaFactura() {
 
 
 // Esta funci� carga un Factura.
-int Factura::cargaFactura(QString idbudget) {
+int Factura::cargar(QString idbudget) {
     inicialize();
     QString query = "SELECT * FROM factura  WHERE idfactura="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -118,7 +118,7 @@ void Factura::guardaFactura() {
     companyact->commit();
     listalineas->guardaListLinFactura();
     listadescuentos->guardaListDescuentoFactura();
-    cargaFactura(DBvalue("idfactura"));
+    cargar(DBvalue("idfactura"));
 }// end guardaFactura
 
 

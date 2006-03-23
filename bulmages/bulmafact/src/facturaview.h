@@ -136,7 +136,7 @@ public slots:
 	{
 		guardaFactura();
 	};
-	virtual int cargaFactura(QString id);
+	virtual int cargar(QString id);
 	virtual void s_deleteFactura()
 	{
 		borraFactura();
