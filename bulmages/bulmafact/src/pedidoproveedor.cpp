@@ -43,7 +43,7 @@ PedidoProveedor::PedidoProveedor(company *comp) : DBRecord(comp) {
 PedidoProveedor::~PedidoProveedor() {}
 
 
-void PedidoProveedor::borraPedidoProveedor() {
+int PedidoProveedor::borrar() {
     if (DBvalue("idpedidoproveedor") != "") {
         listalineas->borrar();
         listadescuentos->borrar();
@@ -51,12 +51,13 @@ void PedidoProveedor::borraPedidoProveedor() {
         int error = companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor="+DBvalue("idpedidoproveedor"));
 	if (error) {
 		companyact->rollback();
-		return;
+		return -1;
 	}// end if
         companyact->commit();
         vaciaPedidoProveedor();
         pintaPedidoProveedor();
     }// end if
+	return 0;
 }// end borraPedidoProveedor
 
 
@@ -89,7 +90,7 @@ void PedidoProveedor::pintaPedidoProveedor() {
 
 
 // Esta funcion carga un PedidoProveedor.
-int PedidoProveedor::cargaPedidoProveedor(QString idbudget) {
+int PedidoProveedor::cargar(QString idbudget) {
     _depura("cargaPedidoProveedor()\n",0);
     QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -116,7 +117,7 @@ void PedidoProveedor::guardaPedidoProveedor() {
     companyact->commit();
     listalineas->guardaListLinPedidoProveedor();
     listadescuentos->guardaListDescuentoPedidoProveedor();
-    cargaPedidoProveedor(id);
+    cargar(id);
 }// end guardaPedidoProveedor
 
 

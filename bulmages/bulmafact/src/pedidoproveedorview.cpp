@@ -200,8 +200,8 @@ void PedidoProveedorView::s_nuevoCobro() {
 }// end s_nuevoCobro
 
 
-int PedidoProveedorView::cargaPedidoProveedor(QString id) {
-    PedidoProveedor::cargaPedidoProveedor(id);
+int PedidoProveedorView::cargar(QString id) {
+    PedidoProveedor::cargar(id);
     setCaption("Pedido Proveedor  "+DBvalue("refpedidoproveedor"));
     if (companyact->meteWindow(caption(),this))
         return -1;

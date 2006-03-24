@@ -60,10 +60,10 @@ public:
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
 	};
-	virtual int cargaPedidoProveedor(QString);
+	virtual int cargar(QString);
 	void pintaPedidoProveedor();
 	void guardaPedidoProveedor();
-	void borraPedidoProveedor();
+	int borrar();
 	void imprimirPedidoProveedor();
 	void calculaypintatotales();   
 	ListLinPedidoProveedor* getlistalineas()

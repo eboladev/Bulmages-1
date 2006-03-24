@@ -152,10 +152,10 @@ public slots:
 	{
 		guardaPedidoProveedor();
 	};
-	virtual int cargaPedidoProveedor(QString id);
+	virtual int cargar(QString id);
 	virtual void s_deletePedidoProveedor()
 	{
-		borraPedidoProveedor();
+		borrar();
 	};
 	virtual void s_printPedidoProveedor()
 	{
