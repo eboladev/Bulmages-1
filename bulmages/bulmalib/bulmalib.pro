@@ -59,6 +59,7 @@ INCLUDEPATH += ../src \
 	/usr/include/qt4 \
 	/usr/include/qt4/Qt \
 	/usr/lib/qt4/include/Qt \
+	/usr/include/Qt \
 	/usr/include/QtXml
 	
 

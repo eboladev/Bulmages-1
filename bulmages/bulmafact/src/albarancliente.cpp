@@ -262,7 +262,9 @@ void AlbaranCliente::imprimirAlbaranCliente()
 	};
 
 	while (i++ < 15)
-	fitxersortidatxt += "<tr></tr>";
+	{
+		fitxersortidatxt += "<tr></tr>";
+	};
 	fitxersortidatxt += "</blockTable>\n";
 	buff.replace("[story]", fitxersortidatxt);
 	Fixed basei("0.00");

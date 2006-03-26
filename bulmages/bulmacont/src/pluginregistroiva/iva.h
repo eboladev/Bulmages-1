@@ -78,7 +78,7 @@ public:
         setDBvalue("ivaiva",val);
     };
 
-    void borrar();
+    int borrar();
 
 };
 

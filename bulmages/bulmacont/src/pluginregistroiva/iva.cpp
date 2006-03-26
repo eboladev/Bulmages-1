@@ -66,17 +66,18 @@ void Iva::vaciaIva() {
 }
 
 
-void Iva::borrar() {
+int Iva::borrar() {
     if (DBvalue("idiva") != "") {
         m_companyact->begin();
         int error = m_companyact->ejecuta("DELETE FROM iva WHERE idiva="+DBvalue("idiva"));
         if (error) {
             m_companyact->rollback();
-            return;
+            return -1;
         }// end if
         m_companyact->commit();
         vaciaIva();
     }// end if
+    return 0;
 }// end delete
 
 

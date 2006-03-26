@@ -27,7 +27,9 @@ INCLUDEPATH = ../../../bulmalib \
 /usr/include/qt4 \
 /usr/include/qt4/Qt \
 ../../src \
-../../../bulmalib/.ui 
+../../../bulmalib/.ui \
+/usr/include/Qt \
+/usr/include/QtXml
 
 UI_DIR = .ui
 MOC_DIR = .moc

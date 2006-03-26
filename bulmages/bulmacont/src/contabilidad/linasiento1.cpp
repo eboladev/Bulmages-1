@@ -107,17 +107,18 @@ void LinAsiento1::vaciaLinAsiento1() {
 }
 
 
-void LinAsiento1::borrar() {
+int LinAsiento1::borrar() {
     if (DBvalue("idborrador") != "") {
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM borrador WHERE idborrador="+DBvalue("idborrador"));
         if (error) {
             companyact->rollback();
-            return;
+            return -1;
         }// end if
         companyact->commit();
         vaciaLinAsiento1();
     }// end if
+    return 0;
 }// end delete
 
 

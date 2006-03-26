@@ -167,7 +167,7 @@ public:
     void setidc_coste(QString );
 
 
-    void borrar();
+    int borrar();
 
 };
 
