@@ -105,7 +105,7 @@ void AlbaranProveedorView::generarFactura()  {
 	{
 		FacturaProveedorView *bud = companyact->newFacturaProveedorView();
 		companyact->m_pWorkspace->addWindow(bud);
-		bud->cargaFacturaProveedor(cur->valor("idfacturap"));
+		bud->cargar(cur->valor("idfacturap"));
 		bud->show();
 		return;
 	};

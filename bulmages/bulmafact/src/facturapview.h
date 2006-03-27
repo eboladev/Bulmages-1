@@ -120,7 +120,7 @@ public slots:
 	{
 		guardaFacturaProveedor();
 	};
-	virtual int cargaFacturaProveedor(QString id);
+	virtual int cargar(QString id);
 
 	/// Este slot se activa cuando hay cambios en los subformularios.
 	virtual void s_pintaTotales()

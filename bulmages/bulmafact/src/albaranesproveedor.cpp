@@ -571,7 +571,7 @@ void AlbaranesProveedor::on_mui_borrar_clicked()  {
                                                       "company"));
         bud->cargar(mdb_idalbaranp);
         bud->borrar();
-	delete bud;
+        delete bud;
     };
 
     presenta();

@@ -9,14 +9,16 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "facturasplist.h"
-#include "company.h"
-#include "qtable1.h"
+
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QFile>
 //Added by qt3to4:
 #include <QTextStream>
+
+#include "facturasplist.h"
+#include "company.h"
+#include "qtable1.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "configuracion.h"
@@ -57,10 +59,6 @@ void FacturasProveedorList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
-        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -72,10 +70,6 @@ void FacturasProveedorList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
-            QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
-        }// end for
         file.close();
     } else
         return;
@@ -99,96 +93,96 @@ void FacturasProveedorList::cargaconfig() {
 void FacturasProveedorList::s_configurar() {
     _depura ("FacturasProveedorList::s_configurar",0);
     if(mver_reffacturap->isChecked() )
-        m_list->showColumn(COL_REFFACTURAP);
+        mui_list->showColumn(COL_REFFACTURAP);
     else
-        m_list->hideColumn(COL_REFFACTURAP);
+        mui_list->hideColumn(COL_REFFACTURAP);
 
     if(mver_idfacturap->isChecked() )
-        m_list->showColumn(COL_IDFACTURAP);
+        mui_list->showColumn(COL_IDFACTURAP);
     else
-        m_list->hideColumn(COL_IDFACTURAP);
+        mui_list->hideColumn(COL_IDFACTURAP);
 
     if(mver_numfacturap->isChecked() )
-        m_list->showColumn(COL_NUMFACTURAP);
+        mui_list->showColumn(COL_NUMFACTURAP);
     else
-        m_list->hideColumn(COL_NUMFACTURAP);
+        mui_list->hideColumn(COL_NUMFACTURAP);
 
     if(mver_nomcliente->isChecked() )
-        m_list->showColumn(COL_NOMCLIENTE);
+        mui_list->showColumn(COL_NOMCLIENTE);
     else
-        m_list->hideColumn(COL_NOMCLIENTE);
+        mui_list->hideColumn(COL_NOMCLIENTE);
 
     if(mver_ffacturap->isChecked() )
-        m_list->showColumn(COL_FFACTURAP);
+        mui_list->showColumn(COL_FFACTURAP);
     else
-        m_list->hideColumn(COL_FFACTURAP);
+        mui_list->hideColumn(COL_FFACTURAP);
 
     if(mver_contactfacturap->isChecked() )
-        m_list->showColumn(COL_CONTACTFACTURAP);
+        mui_list->showColumn(COL_CONTACTFACTURAP);
     else
-        m_list->hideColumn(COL_CONTACTFACTURAP);
+        mui_list->hideColumn(COL_CONTACTFACTURAP);
 
     if(mver_telfacturap->isChecked() )
-        m_list->showColumn(COL_TELFACTURAP);
+        mui_list->showColumn(COL_TELFACTURAP);
     else
-        m_list->hideColumn(COL_TELFACTURAP);
+        mui_list->hideColumn(COL_TELFACTURAP);
 
     if(mver_comentfacturap->isChecked() )
-        m_list->showColumn(COL_COMENTFACTURAP);
+        mui_list->showColumn(COL_COMENTFACTURAP);
     else
-        m_list->hideColumn(COL_COMENTFACTURAP);
+        mui_list->hideColumn(COL_COMENTFACTURAP);
 
     if(mver_idusuari->isChecked() )
-        m_list->showColumn(COL_IDUSUARI);
+        mui_list->showColumn(COL_IDUSUARI);
     else
-        m_list->hideColumn(COL_IDUSUARI);
+        mui_list->hideColumn(COL_IDUSUARI);
 
     if(mver_idcliente->isChecked() )
-        m_list->showColumn(COL_IDCLIENTE);
+        mui_list->showColumn(COL_IDCLIENTE);
     else
-        m_list->hideColumn(COL_IDCLIENTE);
+        mui_list->hideColumn(COL_IDCLIENTE);
 
     if(mver_totalfacturaproveedor->isChecked() )
-        m_list->showColumn(COL_TOTALFACTURAPROVEEDOR);
+        mui_list->showColumn(COL_TOTALFACTURAPROVEEDOR);
     else
-        m_list->hideColumn(COL_TOTALFACTURAPROVEEDOR);
+        mui_list->hideColumn(COL_TOTALFACTURAPROVEEDOR);
 
     if(mver_totalbaseimp->isChecked() )
-        m_list->showColumn(COL_TOTALBASEIMP);
+        mui_list->showColumn(COL_TOTALBASEIMP);
     else
-        m_list->hideColumn(COL_TOTALBASEIMP);
+        mui_list->hideColumn(COL_TOTALBASEIMP);
 
     if(mver_totalimpuestos->isChecked() )
-        m_list->showColumn(COL_TOTALIMPUESTOS);
+        mui_list->showColumn(COL_TOTALIMPUESTOS);
     else
-        m_list->hideColumn(COL_TOTALIMPUESTOS);
+        mui_list->hideColumn(COL_TOTALIMPUESTOS);
 
 }// end s_configurar
 
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : FacturasProveedorListBase(parent, name, flag) {
-    companyact = NULL;
+        : QWidget(parent, name, flag) {
+    setupUi(this);
+    m_companyact = NULL;
     m_modo=0;
-    m_idfacturap="";
+    mdb_idfacturap="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-    inicializa();
     cargaconfig();
     s_configurar();
 }// end providerslist
 
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, const char *name)
-        : FacturasProveedorListBase(parent, name) {
-    companyact = comp;
-    m_proveedor->setcompany(companyact);
-    m_articulo->setcompany(companyact);
-    inicializa();
+        : QWidget(parent, name) {
+    setupUi(this);
+    m_companyact = comp;
+    m_proveedor->setcompany(m_companyact);
+    m_articulo->setcompany(m_companyact);
     cargaconfig();
     s_configurar();
     presenta();
     m_modo=0;
-    m_idfacturap="";
+    mdb_idfacturap="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
@@ -200,67 +194,19 @@ FacturasProveedorList::~FacturasProveedorList() {
 }
 
 
-void FacturasProveedorList::inicializa() {
-    m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(13);
-    m_list->horizontalHeader()->setLabel( COL_REFFACTURAP, tr( "Referencia" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDFACTURAP, tr( "COL_IDFACTURAP" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Proveedor" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMFACTURAP, tr( "N Factura" ) );
-    m_list->horizontalHeader()->setLabel( COL_FFACTURAP, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_CONTACTFACTURAP, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELFACTURAP, tr( "Teléfono" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTFACTURAP, tr( "Comentarios" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("COL_IDUSUARI") );
-    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("COL_IDCLIENTE") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALFACTURAPROVEEDOR, tr("Total") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos") );
-
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuración que es global.
-    m_list->setPaletteBackgroundColor("#EEFFFF");
-    m_list->setReadOnly(TRUE);
-}// end inicializa
-
 
 void FacturasProveedorList::presenta() {
-
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
-    m_list->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_list->setText(i,COL_REFFACTURAP,cur->valor("reffacturap"));
-        m_list->setText(i,COL_IDFACTURAP,cur->valor("idfacturap"));
-        m_list->setText(i,COL_NUMFACTURAP,cur->valor("numfacturap"));
-        m_list->setText(i,COL_FFACTURAP,cur->valor("ffacturap"));
-        m_list->setText(i,COL_CONTACTFACTURAP,cur->valor("contactfacturap"));
-        m_list->setText(i,COL_TELFACTURAP,cur->valor("telfacturap"));
-        m_list->setText(i,COL_COMENTFACTURAP,cur->valor("comentfacturap"));
-        m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
-        m_list->setText(i,COL_IDCLIENTE,cur->valor("idproveedor"));
-        m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomproveedor"));
-
-        /// Calculamos el total del presupuesto y lo presentamos.
-        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalfacpro("+cur->valor("idfacturap")+") AS total, calcbimpfacpro("+cur->valor("idfacturap")+") AS base, calcimpuestosfacpro("+cur->valor("idfacturap")+") AS impuestos");
-        m_list->setText(i,COL_TOTALFACTURAPROVEEDOR,cur1->valor("total"));
-        m_list->setText(i,COL_TOTALBASEIMP, cur1->valor("base"));
-        m_list->setText(i,COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
-        delete cur1;
-        i++;
-        cur->siguienteregistro();
-    }// end while
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
+    mui_list->cargar(cur);
     delete cur;
 
 
     /// Hacemos el calculo del total.
-    cur = companyact->cargacursor("SELECT SUM(calctotalfacpro(idfacturap)) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(calctotalfacpro(idfacturap)) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 
+    s_configurar();
 }// end presenta
 
 
@@ -297,34 +243,40 @@ QString FacturasProveedorList::generaFiltro() {
     return (filtro);
 }// end generaFiltro
 
-void FacturasProveedorList::doubleclicked(int a, int , int , const QPoint &) {
-    m_idfacturap = m_list->text(a,COL_IDFACTURAP);
-    if (m_modo ==0 && m_idfacturap != "") {
-        FacturaProveedorView *bud = companyact->newFacturaProveedorView();
-        if(bud->cargaFacturaProveedor(m_idfacturap))
+
+
+void FacturasProveedorList::editar(int  row) {
+    _depura("FacturasProveedorList::editar",0);
+    mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"),row);
+    if (m_modo ==0 ) {
+        FacturaProveedorView *prov = new FacturaProveedorView(m_companyact,0,theApp->translate("Edicion de Facturas de Proveedor", "company"));
+        if (prov->cargar(mdb_idfacturap)) {
             return;
-        companyact->m_pWorkspace->addWindow(bud);
-        bud->show();
+        }
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
     } else {
-        close();
+        emit(selected(mdb_idfacturap));
+        // close();
     }// end if
+    _depura("END FacturasProveedorList::editar",0);
+}
+
+void FacturasProveedorList::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
+    if (a >=0 )
+        editar(a);
+    else
+        _depura("Debe seleccionar una linea",2);
 }
 
 
-void FacturasProveedorList::s_editarFacturaProveedor() {
-    int a = m_list->currentRow();
-	if (a >=0 ) 
-    	doubleclicked(a,0,0, QPoint());
-	else
-	_depura("Debe seleccionar una linea",2);
-}
 
-
-void FacturasProveedorList::s_borrarFacturaProveedor() {
-    m_idfacturap = m_list->text(m_list->currentRow(),COL_IDFACTURAP);
-    if (m_idfacturap != "") {
-        FacturaProveedorView *bud = companyact->newFacturaProveedorView();
-        bud->cargaFacturaProveedor(m_idfacturap);
+void FacturasProveedorList::on_mui_borrar_clicked() {
+    mdb_idfacturap = mui_list->DBvalue("idfacturap");
+    if (mdb_idfacturap != "") {
+        FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+        bud->cargar(mdb_idfacturap);
         bud->borraFacturaProveedor();
         delete bud;
     }// end if
@@ -332,7 +284,7 @@ void FacturasProveedorList::s_borrarFacturaProveedor() {
 }
 
 
-void FacturasProveedorList::s_imprimir() {
+void FacturasProveedorList::on_mui_imprimir_clicked() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"facturasproveedor.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"facturasproveedor.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
@@ -400,8 +352,7 @@ void FacturasProveedorList::s_imprimir() {
     /// ---------------------------------------------------------------------
     fitxersortidatxt += "</tr>";
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
-    m_list->setNumRows( cur->numregistros() );
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  "+generaFiltro());
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         /// ----------------------------------------------------------
@@ -427,7 +378,7 @@ void FacturasProveedorList::s_imprimir() {
             fitxersortidatxt += "<td>"+cur->valor("idproveedor")+"</td>";
 
         /// Calculamos el total del presupuesto y lo presentamos.
-        cursor2 *cur1 = companyact->cargacursor("SELECT calctotalfacpro("+cur->valor("idfacturap")+") AS total, calcbimpfacpro("+cur->valor("idfacturap")+") AS base, calcimpuestosfacpro("+cur->valor("idfacturap")+") AS impuestos");
+        cursor2 *cur1 = m_companyact->cargacursor("SELECT calctotalfacpro("+cur->valor("idfacturap")+") AS total, calcbimpfacpro("+cur->valor("idfacturap")+") AS base, calcimpuestosfacpro("+cur->valor("idfacturap")+") AS impuestos");
         if(mver_totalfacturaproveedor->isChecked() )
             fitxersortidatxt += "<td>"+cur1->valor("total")+"</td>";
         if(mver_totalbaseimp->isChecked() )
@@ -452,4 +403,32 @@ void FacturasProveedorList::s_imprimir() {
     invocaPDF("facturasproveedor");
 
 }// end imprimir
+
+
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("facturap");
+    setDBCampoId("idfacturap");
+    addSHeader("reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "reffacturap");
+    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idfacturap");
+    addSHeader("numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "numfacturap");
+    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomproveedor");
+    addSHeader("ffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "ffacturap");
+    addSHeader("contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "contactfacturap");
+    addSHeader("telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telfacturap");
+    addSHeader("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentfacturap");
+    addSHeader("idusuari", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idusuari");
+    addSHeader("idproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idproveedor");
+    addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "total");
+    addSHeader("base", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "base");
+    addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "impuestos");
+    setinsercion(FALSE);
+};
+
 

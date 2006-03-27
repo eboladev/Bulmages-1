@@ -110,7 +110,7 @@ public:
 		setDBvalue("procesadafacturap", val);
 	};
 	virtual void imprimirFacturaProveedor();
-	virtual int cargaFacturaProveedor(QString);
+	virtual int cargar(QString);
 	virtual void pintaFacturaProveedor();
 	virtual void guardaFacturaProveedor();
 	virtual void pintaidproveedor(QString)

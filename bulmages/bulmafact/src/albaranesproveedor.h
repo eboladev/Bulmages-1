@@ -57,107 +57,90 @@ public slots:
 #include "ui_albaranesproveedorlistbase.h"
 
 
-class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase
-{
-	Q_OBJECT
+class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase {
+    Q_OBJECT
 
 private:
-	company *m_companyact;
-	/// == 0 es modo edicion
-	/// == 1 es modo selector
-	int m_modo;
-	QString mdb_idalbaranp;
+    company *m_companyact;
+    /// == 0 es modo edicion
+    /// == 1 es modo selector
+    int m_modo;
+    QString mdb_idalbaranp;
 
 public:
-	AlbaranesProveedor(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-				Qt::WFlags flag = 0);
-	~AlbaranesProveedor();
-	void presenta();
-	void modoseleccion()
-	{
-		m_modo = 1;
-	};
-	void modoedicion()
-	{
-		m_modo = 0;
-	};
-	void setcompany(company *comp)
-	{
-		m_companyact=comp;
-		m_proveedor->setcompany(comp);
-		m_articulo->setcompany(comp);
-	};
-	QString idalbaranp()
-	{
-		return mdb_idalbaranp;
-	};
-	void hideBotonera()
-	{
-		m_botonera->hide();
-	};
-	void showBotonera()
-	{
-		m_botonera->show();
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
-	void imprimir();
-	void meteWindow(QString nom, QObject *obj)
-	{
-		if (m_companyact != NULL)
-		{
-			m_companyact->meteWindow(nom, obj);
-		}
-	};
-	void setidproveedor(QString val)
-	{
-		m_proveedor->setidproveedor(val);
-	};
-	void setidarticulo(QString val)
-	{
-		m_articulo->setidarticulo(val);
-	};
-	QString generaFiltro();
+    AlbaranesProveedor(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+    AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
+                       Qt::WFlags flag = 0);
+    ~AlbaranesProveedor();
+    void presenta();
+    void modoseleccion() {
+        m_modo = 1;
+    };
+    void modoedicion() {
+        m_modo = 0;
+    };
+    void setcompany(company *comp) {
+        m_companyact=comp;
+        m_proveedor->setcompany(comp);
+        m_articulo->setcompany(comp);
+    };
+    QString idalbaranp() {
+        return mdb_idalbaranp;
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void hideConfiguracion() {
+        m_configuracion->hide();
+    };
+    void showConfiguracion() {
+        m_configuracion->show();
+    };
+    void imprimir();
+    void meteWindow(QString nom, QObject *obj) {
+        if (m_companyact != NULL) {
+            m_companyact->meteWindow(nom, obj);
+        }
+    };
+    void setidproveedor(QString val) {
+        m_proveedor->setidproveedor(val);
+    };
+    void setidarticulo(QString val) {
+        m_articulo->setidarticulo(val);
+    };
+    QString generaFiltro();
 
-	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
-	void guardaconfig();
-	void cargaconfig();
-	void editar(int);
+    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
+    void editar(int);
 
 public slots:
     void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
         on_mui_editar_clicked();
     };
-	virtual void on_mui_editar_clicked();
-	virtual void on_mui_crear_clicked()  {
-		if(m_companyact != NULL)
-			m_companyact->s_newAlbaranPro();
-	};
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_imprimir_clicked()
-	{
-		imprimir();
-	};
-	virtual void on_mui_actualizar_clicked()
-	{
-		presenta();
-	};
-	virtual void s_configurar();
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_crear_clicked()  {
+        if(m_companyact != NULL)
+            m_companyact->s_newAlbaranPro();
+    };
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_imprimir_clicked() {
+        imprimir();
+    };
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    };
+    virtual void s_configurar();
 signals:
     void selected(QString);
 };

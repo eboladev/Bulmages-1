@@ -80,7 +80,7 @@ void FacturaProveedor::pintaFacturaProveedor() {
 
 
 // Esta funci� carga un FacturaProveedor.
-int FacturaProveedor::cargaFacturaProveedor(QString idbudget) {
+int FacturaProveedor::cargar(QString idbudget) {
     inicialize();
     QString query = "SELECT * FROM facturap  WHERE idfacturap="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -107,7 +107,7 @@ void FacturaProveedor::guardaFacturaProveedor() {
     companyact->commit();
     listalineas->guardaListLinFacturaProveedor();
     listadescuentos->guardaListDescuentoFacturaProv();
-    cargaFacturaProveedor(DBvalue("idfacturap"));
+    cargar(DBvalue("idfacturap"));
 }// end guardaFacturaProveedor
 
 
