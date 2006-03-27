@@ -223,10 +223,12 @@ void company::s_newFacturaPro() {
 }// end s_nuevaFacturaProveedor
 
 void company::s_newAlbaranPro() {
+    _depura ("company::s_newAlbaranPro",0);
     AlbaranProveedorView *bud = new AlbaranProveedorView(this,0,theApp->translate("Edicion de Albaranes Proveedor", "company"));
     m_pWorkspace->addWindow(bud);
     bud->pintaAlbaranProveedor();
     bud->show();
+    _depura ("END company::s_newAlbaranPro",0);
 }// end s_newAlbaranProveedor
 
 void company::s_newPedidoPro() {

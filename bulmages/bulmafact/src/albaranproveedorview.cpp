@@ -46,8 +46,8 @@
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name)
 	: AlbaranProveedorBase(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp),
-	dialogChanges(this)
-{
+	dialogChanges(this)  {
+	_depura("AlbaranProveedorView::AlbaranProveedorView", 0);
 	subform2->setcompany(comp);
 	m_almacen->setcompany(comp);
 	m_forma_pago->setcompany(comp);
@@ -56,20 +56,19 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const
 	setListLinAlbaranProveedor(subform2);
 	setListDescuentoAlbaranProveedor(m_descuentos);
 	inicialize();
-	comp->meteWindow(caption(), this);
-	_depura("Fin de la inicializacion de AlbaranProveedorView\n", 0);
+	if (companyact != NULL) 
+		companyact->meteWindow(caption(), this);
+	_depura("END AlbaranProveedorView::AlbaranProveedorView", 0);
 };
 
 
-AlbaranProveedorView::~AlbaranProveedorView()
-{
+AlbaranProveedorView::~AlbaranProveedorView()  {
 	companyact->refreshAlbaranesProveedor();
 	companyact->sacaWindow(this);
 };
 
 
-void AlbaranProveedorView::inicialize()
-{
+void AlbaranProveedorView::inicialize()  {
 	m_totalBases->setReadOnly(TRUE);
 	m_totalBases->setAlignment(Qt::AlignRight);
 	m_totalTaxes->setReadOnly(TRUE);
@@ -81,23 +80,20 @@ void AlbaranProveedorView::inicialize()
 };
 
 
-void AlbaranProveedorView::pintatotales(float base, float iva)
-{
+void AlbaranProveedorView::pintatotales(float base, float iva)  {
 	m_totalBases->setText(QString::number(base));
 	m_totalTaxes->setText(QString::number(iva));
 	m_totalalbaranp->setText(QString::number(iva + base));
 };
 
 
-void AlbaranProveedorView::s_verpedidoproveedor()
-{
+void AlbaranProveedorView::s_verpedidoproveedor()  {
 	_depura("Funcion aun no implementada", 2);
 };
 
 
 /// Se encarga de generar una facturap a partir del albaranp
-void AlbaranProveedorView::generarFactura()
-{
+void AlbaranProveedorView::generarFactura()  {
 	_depura("AlbaranProveedorView::generarFactura", 0);
 	/// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
 	/// y salimos de la funcion.
@@ -170,9 +166,9 @@ void AlbaranProveedorView::closeEvent(QCloseEvent *e)
 };
 
 
-int AlbaranProveedorView::cargaAlbaranProveedor(QString id)
+int AlbaranProveedorView::cargar(QString id)
 {
-	AlbaranProveedor::cargaAlbaranProveedor(id);
+	AlbaranProveedor::cargar(id);
 	setCaption("Albaran Proveedor  " + DBvalue("refalbaranp"));
 	if (companyact->meteWindow(caption(), this))
 	{

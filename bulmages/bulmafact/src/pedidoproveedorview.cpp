@@ -127,7 +127,7 @@ void PedidoProveedorView::generarAlbaran() {
     if(!cur->eof()) {
         AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
         companyact->m_pWorkspace->addWindow(bud);
-        bud->cargaAlbaranProveedor(cur->valor("idalbaranp"));
+        bud->cargar(cur->valor("idalbaranp"));
         bud->show();
         return;
     }

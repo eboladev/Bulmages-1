@@ -73,8 +73,6 @@ public:
 		m_forma_pago->setidforma_pago(val);
 	};
 
-	// void pintaIdFactura(QString);
-
 	void pintaidalmacen(QString id)
 	{
 		m_almacen->setidalmacen(id);
@@ -132,10 +130,10 @@ public slots:
 	{
 		guardaAlbaranProveedor();
 	};
-	virtual int cargaAlbaranProveedor(QString id);
+	virtual int cargar(QString id);
 	virtual void s_deleteAlbaranProveedor()
 	{
-		borraAlbaranProveedor();
+		borrar();
 	};
 	virtual void s_printAlbaranProveedor()
 	{

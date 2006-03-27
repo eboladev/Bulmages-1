@@ -38,712 +38,572 @@
 #define COL_DESCALBARANP 2
 #define COL_REFALBARANP 3
 #define COL_FECHAALBARANP 4
-#define COL_LOGINUSUARIO 5
-#define COL_COMENTALBARANP 6
-#define COL_PROCESADOALBARANP 7
-#define COL_IDPROVEEDOR 8
-#define COL_IDFORMA_PAGO 9
-#define COL_IDALMACEN 10
-#define COL_NOMPROVEEDOR 11
-#define COL_NOMALMACEN 12
-#define COL_DESCFORMA_PAGO 13
-#define COL_TOTALALBARANPROVEEDOR 14
-#define COL_TOTALBASEIMP 15
-#define COL_TOTALIMPUESTOS 16
+#define COL_COMENTALBARANP 5
+#define COL_PROCESADOALBARANP 6
+#define COL_IDPROVEEDOR 7
+#define COL_IDFORMA_PAGO 8
+#define COL_IDALMACEN 9
+#define COL_NOMPROVEEDOR 10
+#define COL_NOMALMACEN 11
+#define COL_DESCFORMA_PAGO 12
+#define COL_TOTALALBARANPROVEEDOR 13
+#define COL_TOTALBASEIMP 14
+#define COL_TOTALIMPUESTOS 15
 
 
-void AlbaranesProveedor::guardaconfig()
-{
-	QString aux = "";
-	mver_idalbaranp->isChecked() ? aux += "1," : aux += "0,";
-	mver_numalbaranp->isChecked() ? aux += "1," : aux += "0,";
-	mver_descalbaranp->isChecked() ? aux += "1," : aux += "0,";
-	mver_refalbaranp->isChecked() ? aux += "1," : aux += "0,";
-	mver_fechaalbaranp->isChecked() ? aux += "1," : aux += "0,";
-	mver_loginusuario->isChecked() ? aux += "1," : aux += "0,";
-	mver_comentalbaranp->isChecked() ? aux += "1," : aux += "0,";
-	mver_procesadoalbaranp->isChecked() ? aux += "1," :aux += "0,";
-	mver_idproveedor->isChecked() ? aux += "1," : aux += "0,";
-	mver_idforma_pago->isChecked() ? aux += "1," : aux += "0,";
-	mver_idalmacen->isChecked() ? aux += "1," : aux += "0,";
-	mver_nomproveedor->isChecked() ? aux += "1," : aux += "0,";
-	mver_nomalmacen->isChecked() ? aux += "1," : aux += "0,";
-	mver_descforma_pago->isChecked() ? aux += "1," : aux += "0,";
-	mver_totalalbaranproveedor->isChecked() ? aux += "1," : aux += "0,";
-	mver_totalbaseimp->isChecked() ? aux += "1," : aux += "0,";
-	mver_totalimpuestos->isChecked() ? aux += "1," : aux += "0,";
-	QFile file(confpr->valor(CONF_DIR_USER) + "confalbaranesproveedor.cfn");
+void AlbaranesProveedor::guardaconfig() {
+    QString aux = "";
+    mver_idalbaranp->isChecked() ? aux += "1," : aux += "0,";
+    mver_numalbaranp->isChecked() ? aux += "1," : aux += "0,";
+    mver_descalbaranp->isChecked() ? aux += "1," : aux += "0,";
+    mver_refalbaranp->isChecked() ? aux += "1," : aux += "0,";
+    mver_fechaalbaranp->isChecked() ? aux += "1," : aux += "0,";
+    mver_loginusuario->isChecked() ? aux += "1," : aux += "0,";
+    mver_comentalbaranp->isChecked() ? aux += "1," : aux += "0,";
+    mver_procesadoalbaranp->isChecked() ? aux += "1," :aux += "0,";
+    mver_idproveedor->isChecked() ? aux += "1," : aux += "0,";
+    mver_idforma_pago->isChecked() ? aux += "1," : aux += "0,";
+    mver_idalmacen->isChecked() ? aux += "1," : aux += "0,";
+    mver_nomproveedor->isChecked() ? aux += "1," : aux += "0,";
+    mver_nomalmacen->isChecked() ? aux += "1," : aux += "0,";
+    mver_descforma_pago->isChecked() ? aux += "1," : aux += "0,";
+    mver_totalalbaranproveedor->isChecked() ? aux += "1," : aux += "0,";
+    mver_totalbaseimp->isChecked() ? aux += "1," : aux += "0,";
+    mver_totalimpuestos->isChecked() ? aux += "1," : aux += "0,";
+    QFile file(confpr->valor(CONF_DIR_USER) + "confalbaranesproveedor.cfn");
 
-	if (file.open(QIODevice::WriteOnly))
-	{
-		QTextStream stream(&file);
-		stream << aux << "\n";
-		for (int i = 0; i < m_list->numCols(); i++)
-		{
-			m_list->showColumn(i);
-			stream << m_list->columnWidth(i) << "\n";
-		};
-		file.close();
-	};
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << aux << "\n";
+        file.close();
+    };
 };
 
 
-void AlbaranesProveedor::cargaconfig()
-{
-	QFile file(confpr->valor(CONF_DIR_USER) + "confalbaranesproveedor.cfn");
-	QString line;
-	if (file.open( QIODevice::ReadOnly))
-	{
-		QTextStream stream(&file);
-		/// line of text excluding '\n'
-		line = stream.readLine();
+void AlbaranesProveedor::cargaconfig() {
+    QFile file(confpr->valor(CONF_DIR_USER) + "confalbaranesproveedor.cfn");
+    QString line;
+    if (file.open( QIODevice::ReadOnly)) {
+        QTextStream stream(&file);
+        /// line of text excluding '\n'
+        line = stream.readLine();
+        file.close();
+    } else {
+        return;
+    };
 
-		for (int i = 0; i < m_list->numCols(); i++)
-		{
-			QString linea = stream.readLine();
-			m_list->setColumnWidth(i, linea.toInt());
-		};
-
-		file.close();
-	} else {
-		return;
-	};
-
-	mver_idalbaranp->setChecked(line.at(0) == '1');
-	mver_numalbaranp->setChecked(line.at(2) == '1');
-	mver_descalbaranp->setChecked(line.at(4) == '1');
-	mver_refalbaranp->setChecked(line.at(6) == '1');
-	mver_fechaalbaranp->setChecked(line.at(8) == '1');
-	mver_loginusuario->setChecked(line.at(10) == '1');
-	mver_comentalbaranp->setChecked(line.at(12) == '1');
-	mver_procesadoalbaranp->setChecked(line.at(14) == '1');
-	mver_idproveedor->setChecked(line.at(16) == '1');
-	mver_idforma_pago->setChecked(line.at(18) == '1');
-	mver_idalmacen->setChecked(line.at(20) == '1');
-	mver_nomproveedor->setChecked(line.at(22) == '1');
-	mver_nomalmacen->setChecked(line.at(24) == '1');
-	mver_descforma_pago->setChecked(line.at(26) == '1');
-	mver_totalalbaranproveedor->setChecked(line.at(28) == '1');
-	mver_totalbaseimp->setChecked(line.at(30) == '1');
-	mver_totalimpuestos->setChecked(line.at(32) == '1');
+    mver_idalbaranp->setChecked(line.at(0) == '1');
+    mver_numalbaranp->setChecked(line.at(2) == '1');
+    mver_descalbaranp->setChecked(line.at(4) == '1');
+    mver_refalbaranp->setChecked(line.at(6) == '1');
+    mver_fechaalbaranp->setChecked(line.at(8) == '1');
+    mver_loginusuario->setChecked(line.at(10) == '1');
+    mver_comentalbaranp->setChecked(line.at(12) == '1');
+    mver_procesadoalbaranp->setChecked(line.at(14) == '1');
+    mver_idproveedor->setChecked(line.at(16) == '1');
+    mver_idforma_pago->setChecked(line.at(18) == '1');
+    mver_idalmacen->setChecked(line.at(20) == '1');
+    mver_nomproveedor->setChecked(line.at(22) == '1');
+    mver_nomalmacen->setChecked(line.at(24) == '1');
+    mver_descforma_pago->setChecked(line.at(26) == '1');
+    mver_totalalbaranproveedor->setChecked(line.at(28) == '1');
+    mver_totalbaseimp->setChecked(line.at(30) == '1');
+    mver_totalimpuestos->setChecked(line.at(32) == '1');
 };
 
 
-void AlbaranesProveedor::s_configurar()
-{
-	if (mver_idalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_IDALBARANP);
-	} else {
-		m_list->hideColumn(COL_IDALBARANP);
-	};
+void AlbaranesProveedor::s_configurar() {
+    if (mver_idalbaranp->isChecked()) {
+        mui_list->showColumn(COL_IDALBARANP);
+    } else {
+        mui_list->hideColumn(COL_IDALBARANP);
+    };
 
-	if (mver_numalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_NUMALBARANP);
-	} else {
-		m_list->hideColumn(COL_NUMALBARANP);
-	};
+    if (mver_numalbaranp->isChecked()) {
+        mui_list->showColumn(COL_NUMALBARANP);
+    } else {
+        mui_list->hideColumn(COL_NUMALBARANP);
+    };
 
-	if (mver_descalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_DESCALBARANP);
-	} else {
-		m_list->hideColumn(COL_DESCALBARANP);
-	};
+    if (mver_descalbaranp->isChecked()) {
+        mui_list->showColumn(COL_DESCALBARANP);
+    } else {
+        mui_list->hideColumn(COL_DESCALBARANP);
+    };
 
-	if (mver_refalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_REFALBARANP);
-	} else {
-		m_list->hideColumn(COL_REFALBARANP);
-	};
+    if (mver_refalbaranp->isChecked()) {
+        mui_list->showColumn(COL_REFALBARANP);
+    } else {
+        mui_list->hideColumn(COL_REFALBARANP);
+    };
 
-	if (mver_fechaalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_FECHAALBARANP);
-	} else {
-		m_list->hideColumn(COL_FECHAALBARANP);
-	};
+    if (mver_fechaalbaranp->isChecked()) {
+        mui_list->showColumn(COL_FECHAALBARANP);
+    } else {
+        mui_list->hideColumn(COL_FECHAALBARANP);
+    };
 
-	if (mver_loginusuario->isChecked())
-	{
-		m_list->showColumn(COL_LOGINUSUARIO);
-	} else {
-		m_list->hideColumn(COL_LOGINUSUARIO);
-	};
+    if (mver_comentalbaranp->isChecked()) {
+        mui_list->showColumn(COL_COMENTALBARANP);
+    } else {
+        mui_list->hideColumn(COL_COMENTALBARANP);
+    };
 
-	if (mver_comentalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_COMENTALBARANP);
-	} else {
-		m_list->hideColumn(COL_COMENTALBARANP);
-	};
+    if (mver_procesadoalbaranp->isChecked()) {
+        mui_list->showColumn(COL_PROCESADOALBARANP);
+    } else {
+        mui_list->hideColumn(COL_PROCESADOALBARANP);
+    };
 
-	if (mver_procesadoalbaranp->isChecked())
-	{
-		m_list->showColumn(COL_PROCESADOALBARANP);
-	} else {
-		m_list->hideColumn(COL_PROCESADOALBARANP);
-	};
-	
-	if (mver_idproveedor->isChecked())
-	{
-		m_list->showColumn(COL_IDPROVEEDOR);
-	} else {
-		m_list->hideColumn(COL_IDPROVEEDOR);
-	};
-	
-	if (mver_idforma_pago->isChecked())
-	{
-		m_list->showColumn(COL_IDFORMA_PAGO);
-	} else {
-		m_list->hideColumn(COL_IDFORMA_PAGO);
-	};
+    if (mver_idproveedor->isChecked()) {
+        mui_list->showColumn(COL_IDPROVEEDOR);
+    } else {
+        mui_list->hideColumn(COL_IDPROVEEDOR);
+    };
 
-	if (mver_idalmacen->isChecked())
-	{
-		m_list->showColumn(COL_IDALMACEN);
-	} else {
-		m_list->hideColumn(COL_IDALMACEN);
-	};
+    if (mver_idforma_pago->isChecked()) {
+        mui_list->showColumn(COL_IDFORMA_PAGO);
+    } else {
+        mui_list->hideColumn(COL_IDFORMA_PAGO);
+    };
 
-	if (mver_nomproveedor->isChecked())
-	{
-		m_list->showColumn(COL_NOMPROVEEDOR);
-	} else {
-		m_list->hideColumn(COL_NOMPROVEEDOR);
-	};
+    if (mver_idalmacen->isChecked()) {
+        mui_list->showColumn(COL_IDALMACEN);
+    } else {
+        mui_list->hideColumn(COL_IDALMACEN);
+    };
 
-	if (mver_nomalmacen->isChecked())
-	{
-		m_list->showColumn(COL_NOMALMACEN);
-	} else {
-		m_list->hideColumn(COL_NOMALMACEN);
-	};
-	
-	if (mver_descforma_pago->isChecked())
-	{
-		m_list->showColumn(COL_DESCFORMA_PAGO);
-	} else {
-		m_list->hideColumn(COL_DESCFORMA_PAGO);
-	}
+    if (mver_nomproveedor->isChecked()) {
+        mui_list->showColumn(COL_NOMPROVEEDOR);
+    } else {
+        mui_list->hideColumn(COL_NOMPROVEEDOR);
+    };
 
-	if (mver_totalalbaranproveedor->isChecked())
-	{
-		m_list->showColumn(COL_TOTALALBARANPROVEEDOR);
-	} else {
-		m_list->hideColumn(COL_TOTALALBARANPROVEEDOR);
-	};
+    if (mver_nomalmacen->isChecked()) {
+        mui_list->showColumn(COL_NOMALMACEN);
+    } else {
+        mui_list->hideColumn(COL_NOMALMACEN);
+    };
 
-	if (mver_totalbaseimp->isChecked())
-	{
-		m_list->showColumn(COL_TOTALBASEIMP);
-	} else {
-		m_list->hideColumn(COL_TOTALBASEIMP);
-	};
+    if (mver_descforma_pago->isChecked()) {
+        mui_list->showColumn(COL_DESCFORMA_PAGO);
+    } else {
+        mui_list->hideColumn(COL_DESCFORMA_PAGO);
+    }
 
-	if (mver_totalimpuestos->isChecked())
-	{
-		m_list->showColumn(COL_TOTALIMPUESTOS);
-	} else {
-		m_list->hideColumn(COL_TOTALIMPUESTOS);
-	};
+    if (mver_totalalbaranproveedor->isChecked()) {
+        mui_list->showColumn(COL_TOTALALBARANPROVEEDOR);
+    } else {
+        mui_list->hideColumn(COL_TOTALALBARANPROVEEDOR);
+    };
 
-	if (confpr->valor(CONF_MOSTRAR_ALMACEN) != "YES")
-	{
-		m_list->hideColumn(COL_NOMALMACEN);
-	};
+    if (mver_totalbaseimp->isChecked()) {
+        mui_list->showColumn(COL_TOTALBASEIMP);
+    } else {
+        mui_list->hideColumn(COL_TOTALBASEIMP);
+    };
+
+    if (mver_totalimpuestos->isChecked()) {
+        mui_list->showColumn(COL_TOTALIMPUESTOS);
+    } else {
+        mui_list->hideColumn(COL_TOTALIMPUESTOS);
+    };
+
+    if (confpr->valor(CONF_MOSTRAR_ALMACEN) != "YES") {
+        mui_list->hideColumn(COL_NOMALMACEN);
+    };
 };
 
 
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WFlags flag)
-: AlbaranesProveedorBase(parent, name, flag)
-{
-	inicializa();
-	cargaconfig();
-	s_configurar();
-	companyact = NULL;
-	m_modo = 0;
-	m_idalbaranp = "";
-	meteWindow(caption(), this);
-	hideBusqueda();
-	hideConfiguracion();
+        : QWidget(parent, name, flag) {
+    setupUi(this);
+    cargaconfig();
+    m_companyact = NULL;
+    m_modo = 0;
+    mdb_idalbaranp = "";
+    meteWindow(caption(), this);
+    hideBusqueda();
+    hideConfiguracion();
 };
 
 
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name,
-						Qt::WFlags flag) : AlbaranesProveedorBase(parent,
-						name, flag)
-{
-	companyact = comp;
-	m_proveedor->setcompany(comp);
-	m_articulo->setcompany(comp);
-	inicializa();
-	cargaconfig();
-	s_configurar();
-	presenta();
-	m_modo = 0;
-	m_idalbaranp = "";
-	meteWindow(caption(), this);
-	hideBusqueda();
-	hideConfiguracion();
+                                       Qt::WFlags flag) : QWidget(parent,
+                                                                  name, flag) {
+    setupUi(this);
+    m_companyact = comp;
+    m_proveedor->setcompany(comp);
+    m_articulo->setcompany(comp);
+    cargaconfig();
+    presenta();
+    m_modo = 0;
+    mdb_idalbaranp = "";
+    meteWindow(caption(), this);
+    hideBusqueda();
+    hideConfiguracion();
 };
 
 
-AlbaranesProveedor::~AlbaranesProveedor()
-{
-	companyact->refreshAlbaranesProveedor();
-	companyact->sacaWindow(this);
-	guardaconfig();
+AlbaranesProveedor::~AlbaranesProveedor() {
+    m_companyact->refreshAlbaranesProveedor();
+    m_companyact->sacaWindow(this);
+    guardaconfig();
 };
 
 
-void AlbaranesProveedor::inicializa()
-{
-	_depura("AlbaranesProveedor::inicializa().", 1);
-	m_list->setNumRows(0);
-	m_list->setNumCols(0);
-	m_list->setSelectionMode(Q3Table::SingleRow);
-	m_list->setSorting(TRUE);
-	m_list->setSelectionMode(Q3Table::SingleRow);
-	m_list->setColumnMovingEnabled(TRUE);
-	m_list->setNumCols(17);
-	m_list->horizontalHeader()->setLabel(COL_IDALBARANP, tr( "COL_IDALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_NUMALBARANP, tr( "COL_NUMALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_DESCALBARANP, tr( "COL_DESCALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_REFALBARANP, tr( "COL_REFALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_FECHAALBARANP, tr( "COL_FECHAALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_LOGINUSUARIO, tr( "COL_LOGINUSUARIO"));
-	m_list->horizontalHeader()->setLabel(COL_COMENTALBARANP, tr( "COL_COMENTALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_PROCESADOALBARANP, tr( "COL_PROCESADOALBARANP"));
-	m_list->horizontalHeader()->setLabel(COL_IDPROVEEDOR, tr( "COL_IDPROVEEDOR"));
-	m_list->horizontalHeader()->setLabel(COL_IDFORMA_PAGO, tr("COL_IDFORMA_PAGO"));
-	m_list->horizontalHeader()->setLabel(COL_IDALMACEN, tr("COL_IDALMACEN"));
-	m_list->horizontalHeader()->setLabel(COL_NOMPROVEEDOR, tr("COL_NOMPROVEEDOR"));
-	m_list->horizontalHeader()->setLabel(COL_NOMALMACEN, tr("COL_NOMALMACEN"));
-	m_list->horizontalHeader()->setLabel(COL_DESCFORMA_PAGO, tr("COL_DESCFORMA_PAGO"));
-	m_list->horizontalHeader()->setLabel(COL_TOTALALBARANPROVEEDOR, tr("Total"));
-	m_list->horizontalHeader()->setLabel(COL_TOTALBASEIMP, tr("Base Imponible"));
-	m_list->horizontalHeader()->setLabel(COL_TOTALIMPUESTOS, tr("Impuestos"));
-	/// Establecemos el color de fondo del extracto. El valor lo tiene la clase
-	/// configuracion que es global.
-	m_list->setPaletteBackgroundColor("#EEFFFF");
-	m_list->setReadOnly(TRUE);
-	_depura("END AlbaranesProveedor::inicializa().", 0);
+
+void AlbaranesProveedor::presenta() {
+    _depura("AlbaranesProveedor::presenta().", 1);
+
+    if (m_companyact != NULL ) {
+
+        cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalalbpro(idalbaranp) AS total, calcbimpalbpro(idalbaranp) AS base, calcimpuestosalbpro(idalbaranp) AS impuestos FROM albaranp LEFT " \
+                        "JOIN proveedor ON albaranp.idproveedor = " \
+                        "proveedor.idproveedor LEFT JOIN almacen ON " \
+                        "albaranp.idalmacen=almacen.idalmacen LEFT JOIN " \
+                        "forma_pago ON albaranp.idforma_pago = " \
+                        "forma_pago.idforma_pago WHERE 1=1 " + generaFiltro());
+
+        mui_list->cargar(cur);
+        delete cur;
+
+        /// Hacemos el calculo del total.
+        cur = m_companyact->cargacursor("SELECT SUM(calctotalalbpro(idalbaranp)) " \
+                                        "AS total FROM albaranp LEFT JOIN proveedor ON " \
+                                        "albaranp.idproveedor = proveedor.idproveedor LEFT " \
+                                        "JOIN almacen ON albaranp.idalmacen=almacen.idalmacen " \
+                                        "WHERE 1=1 " + generaFiltro());
+        m_total->setText(cur->valor("total"));
+        delete cur;
+    }
+    s_configurar();
+    _depura("END AlbaranesProveedor::presenta().", 0);
 };
 
 
-void AlbaranesProveedor::presenta()
-{
-	_depura("AlbaranesProveedor::presenta().", 1);
+QString AlbaranesProveedor::generaFiltro() {
+    /// Tratamiento de los filtros.
+    _depura("Tratamos el filtro.", 0);
+    QString filtro = "";
 
-	if (companyact != NULL )
-	{
-		cursor2 * cur = companyact->cargacursor("SELECT * FROM albaranp LEFT " \
-					"JOIN proveedor ON albaranp.idproveedor = " \
-					"proveedor.idproveedor LEFT JOIN almacen ON " \
-					"albaranp.idalmacen=almacen.idalmacen LEFT JOIN " \
-					"forma_pago ON albaranp.idforma_pago = " \
-					"forma_pago.idforma_pago WHERE 1=1 " + generaFiltro());
-		m_list->setNumRows(cur->numregistros());
-		int i=0;
-		while (!cur->eof())
-		{
-			m_list->setText(i, COL_IDALBARANP, cur->valor("idalbaranp"));
-			m_list->setText(i, COL_NUMALBARANP, cur->valor("numalbaranp"));
-			m_list->setText(i, COL_DESCALBARANP, cur->valor("descalbaranp"));
-			m_list->setText(i, COL_REFALBARANP, cur->valor("refalbaranp"));
-			m_list->setText(i, COL_FECHAALBARANP, cur->valor("fechaalbaranp"));
-			//m_list->setText(i, COL_LOGINUSUARIO, cur->valor("loginusuario"));
-			m_list->setText(i, COL_COMENTALBARANP, cur->valor("comentalbaranp"));
-			m_list->setText(i, COL_PROCESADOALBARANP, cur->valor("procesadoalbaranp"));
-			m_list->setText(i, COL_IDPROVEEDOR, cur->valor("idproveedor"));
-			m_list->setText(i, COL_IDFORMA_PAGO, cur->valor("idforma_pago"));
-			m_list->setText(i, COL_IDALMACEN, cur->valor("idalmacen"));
-			m_list->setText(i, COL_NOMPROVEEDOR, cur->valor("nomproveedor"));
-			m_list->setText(i, COL_NOMALMACEN, cur->valor("nomalmacen"));
-			m_list->setText(i, COL_DESCFORMA_PAGO, cur->valor("descforma_pago"));
-			/// Calculamos el total del presupuesto y lo presentamos.
-			cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbpro(" + 
-				cur->valor("idalbaranp") + ") AS total, calcbimpalbpro(" +
-				cur->valor("idalbaranp") + ") AS base, calcimpuestosalbpro(" +
-				cur->valor("idalbaranp") + ") AS impuestos");
-			m_list->setText(i, COL_TOTALALBARANPROVEEDOR, cur1->valor("total"));
-			m_list->setText(i, COL_TOTALBASEIMP, cur1->valor("base"));
-			m_list->setText(i, COL_TOTALIMPUESTOS, cur1->valor("impuestos"));
-			delete cur1;
-			i++;
-			cur->siguienteregistro();
-		};
+    if (m_filtro->text() != "") {
+        filtro = " AND ( descalbaranp LIKE '%" + m_filtro->text() + "%' ";
+        filtro +=" OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
+    } else {
+        filtro = "";
+    };
 
-		delete cur;
-		/// Hacemos el calculo del total.
-		cur = companyact->cargacursor("SELECT SUM(calctotalalbpro(idalbaranp)) " \
-					"AS total FROM albaranp LEFT JOIN proveedor ON " \
-					"albaranp.idproveedor = proveedor.idproveedor LEFT " \
-					"JOIN almacen ON albaranp.idalmacen=almacen.idalmacen " \
-					"WHERE 1=1 " + generaFiltro());
-		m_total->setText(cur->valor("total"));
-		delete cur;
-	};
+    if (m_proveedor->idproveedor() != "") {
+        filtro += " AND albaranp.idproveedor=" + m_proveedor->idproveedor();
+    };
 
-	_depura("END AlbaranesProveedor::presenta().", 0);
+    if (!m_procesados->isChecked()) {
+        filtro += " AND NOT procesadoalbaranp";
+    };
+
+    if (m_articulo->idarticulo() != "") {
+        filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp " \
+                  "WHERE idarticulo='" + m_articulo->idarticulo() + "')";
+    };
+
+    if (m_fechain->text() != "") {
+        filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
+    };
+
+    if (m_fechafin->text() != "") {
+        filtro += " AND fechaalbaranp <= '" + m_fechafin->text() + "' ";
+    };
+
+    //filtro += " ORDER BY idalbaranp";
+    return (filtro);
 };
 
 
-QString AlbaranesProveedor::generaFiltro()
-{
-	/// Tratamiento de los filtros.
-	_depura("Tratamos el filtro.", 0);
-	QString filtro = "";
-
-	if (m_filtro->text() != "")
-	{
-		filtro = " AND ( descalbaranp LIKE '%" + m_filtro->text() + "%' ";
-		filtro +=" OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
-	} else {
-		filtro = "";
-	};
-
-	if (m_proveedor->idproveedor() != "")
-	{
-		filtro += " AND albaranp.idproveedor=" + m_proveedor->idproveedor();
-	};
-
-	if (!m_procesados->isChecked())
-	{
-		filtro += " AND NOT procesadoalbaranp";
-	};
-
-	if (m_articulo->idarticulo() != "")
-	{
-		filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp " \
-				"WHERE idarticulo='" + m_articulo->idarticulo() + "')";
-	};
-
-	if (m_fechain->text() != "")
-	{
-		filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
-	};
-
-	if (m_fechafin->text() != "")
-	{
-		filtro += " AND fechaalbaranp <= '" + m_fechafin->text() + "' ";
-	};
-
-	//filtro += " ORDER BY idalbaranp";
-	return (filtro);
-};
 
 
-void AlbaranesProveedor::s_editar()
-{
-	int a = m_list->currentRow();
-	if (a >=0 )
-	{
-		doubleclicked(a, 0, 0, QPoint());
-	} else {
-		_depura("Debe seleccionar una linea", 2);
-	};
-};
+void AlbaranesProveedor::editar(int  row) {
+    _depura("AlbaranesProveedor::editar",0);
+    mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"),row);
+    if (m_modo ==0 ) {
+        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact,0,theApp->translate("Edicion de Albaranes a Proveedor", "company"));
+        if (prov->cargar(mdb_idalbaranp)) {
+            return;
+        }
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
+    } else {
+        emit(selected(mdb_idalbaranp));
+        // close();
+    }// end if
+    _depura("END AlbaranesProveedor::editar",0);
+}
+
+void AlbaranesProveedor::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
+    if (a >=0 )
+        editar(a);
+    else
+        _depura("Debe seleccionar una linea",2);
+}
 
 
-void AlbaranesProveedor::doubleclicked(int a, int, int, const QPoint &)
-{
-	m_idalbaranp = m_list->text(a,COL_IDALBARANP);
-	if (m_modo == 0 && m_idalbaranp != "")
-	{
-		AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, 0,
-				theApp->translate("Edición de Presupuestos", "company"));
-		companyact->m_pWorkspace->addWindow(bud);
-		bud->cargaAlbaranProveedor(m_idalbaranp);
-		bud->show();
-	} else {
-		close();
-	};
-};
 
 
-void AlbaranesProveedor::s_contextMenu(int, int, int button, const QPoint &poin)
-{
-	qDebug("button = %d", button);
-	if (button == 2)
-	{
-		Q3PopupMenu *popup;
-		popup = new Q3PopupMenu;
-		popup->insertItem(tr("Borrar Albaran Proveedor"), 101);
-		//popup->insertSeparator();
-		int opcion = popup->exec(m_list->mapToGlobal(poin));
 
-		switch(opcion)
-		{
-			case 101:
-				s_removeBudget();
-				break;
-		};
+void AlbaranesProveedor::imprimir() {
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranesproveedor.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "albaranesproveedor.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    /// Copiamos el archivo
+#ifdef WINDOWS
 
-		delete popup;
-	};
-};
+    archivo = "copy " + archivo + " " + archivod;
+#else
 
+    archivo = "cp " + archivo + " " + archivod;
+#endif
 
-void AlbaranesProveedor::imprimir()
-{
-	QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranesproveedor.rml";
-	QString archivod = confpr->valor(CONF_DIR_USER) + "albaranesproveedor.rml";
-	QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-	/// Copiamos el archivo
-	#ifdef WINDOWS
-		archivo = "copy " + archivo + " " + archivod;
-	#else
-		archivo = "cp " + archivo + " " + archivod;
-	#endif
-	system(archivo.ascii());
+    system(archivo.ascii());
 
-	/// Copiamos el logo
-	#ifdef WINDOWS
-		archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) +
-				"logo.jpg";
-	#else
-		archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) +
-				"logo.jpg";
-	#endif
-	system(archivologo.ascii());
+    /// Copiamos el logo
+#ifdef WINDOWS
 
-	QFile file;
-	file.setName(archivod);
-	file.open( QIODevice::ReadOnly );
-	QTextStream stream(&file);
-	QString buff = stream.read();
-	file.close();
-	QString fitxersortidatxt;
-	/// Linea de totales del presupuesto
-	fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-	fitxersortidatxt += "<tr>";
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) +
+                  "logo.jpg";
+#else
 
-	if (mver_idalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Id.</td>";
-	};
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) +
+                  "logo.jpg";
+#endif
 
-	if (mver_numalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Num. Albaran</td>";
-	};
+    system(archivologo.ascii());
 
-	if (mver_descalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Descripcion</td>";
-	};
+    QFile file;
+    file.setName(archivod);
+    file.open( QIODevice::ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    /// Linea de totales del presupuesto
+    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr>";
 
-	if (mver_refalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Referencia</td>";
-	};
+    if (mver_idalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Id.</td>";
+    }
 
-	if(mver_fechaalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Fecha</td>";
-	};
+    if (mver_numalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Num. Albaran</td>";
+    }
 
-	if(mver_loginusuario->isChecked())
-	{
-		fitxersortidatxt += "<td>Usuario</td>";
-	};
+    if (mver_descalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Descripcion</td>";
+    }
 
-	if (mver_comentalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Comentarios</td>";
-	};
+    if (mver_refalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Referencia</td>";
+    }
 
-	if (mver_procesadoalbaranp->isChecked())
-	{
-		fitxersortidatxt += "<td>Procesado</td>";
-	};
+    if(mver_fechaalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Fecha</td>";
+    }
 
-	if (mver_idproveedor->isChecked())
-	{
-		fitxersortidatxt += "<td>Id. Proveedor</td>";
-	};
+    if(mver_loginusuario->isChecked()) {
+        fitxersortidatxt += "<td>Usuario</td>";
+    }
 
-	if (mver_idforma_pago->isChecked())
-	{
-		fitxersortidatxt += "<td>Id. F. Pago</td>";
-	};
+    if (mver_comentalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Comentarios</td>";
+    }
 
-	if (mver_idalmacen->isChecked())
-	{
-		fitxersortidatxt += "<td>Id. Almacen</td>";
-	};
+    if (mver_procesadoalbaranp->isChecked()) {
+        fitxersortidatxt += "<td>Procesado</td>";
+    }
 
-	if (mver_nomproveedor->isChecked())
-	{
-		fitxersortidatxt += "<td>Proveedor</td>";
-	};
+    if (mver_idproveedor->isChecked()) {
+        fitxersortidatxt += "<td>Id. Proveedor</td>";
+    }
 
-	if (mver_nomalmacen->isChecked())
-	{
-		fitxersortidatxt += "<td>Almacen</td>";
-	};
+    if (mver_idforma_pago->isChecked()) {
+        fitxersortidatxt += "<td>Id. F. Pago</td>";
+    }
 
-	if (mver_descforma_pago->isChecked())
-	{
-		fitxersortidatxt += "<td>F. Pago</td>";
-	};
+    if (mver_idalmacen->isChecked()) {
+        fitxersortidatxt += "<td>Id. Almacen</td>";
+    }
 
-	if (mver_totalalbaranproveedor->isChecked())
-	{
-		fitxersortidatxt += "<td>Total</td>";
-	};
+    if (mver_nomproveedor->isChecked()) {
+        fitxersortidatxt += "<td>Proveedor</td>";
+    }
 
-	if (mver_totalbaseimp->isChecked())
-	{
-		fitxersortidatxt += "<td>Base Imp.</td>";
-	};
+    if (mver_nomalmacen->isChecked()) {
+        fitxersortidatxt += "<td>Almacen</td>";
+    }
 
-	if (mver_totalimpuestos->isChecked())
-	{
-		fitxersortidatxt += "<td>Impuestos</td>";
-	};
+    if (mver_descforma_pago->isChecked()) {
+        fitxersortidatxt += "<td>F. Pago</td>";
+    }
 
-	fitxersortidatxt += "</tr>";
-	cursor2 * cur= companyact->cargacursor("SELECT * FROM albaranp LEFT JOIN proveedor " \
-			"ON albaranp.idproveedor = proveedor.idproveedor LEFT JOIN almacen ON " \
-			"albaranp.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON " \
-			"albaranp.idforma_pago = forma_pago.idforma_pago WHERE 1=1 " +
-			generaFiltro());
-	while(!cur->eof())
-	{
-		fitxersortidatxt += "<tr>";
+    if (mver_totalalbaranproveedor->isChecked()) {
+        fitxersortidatxt += "<td>Total</td>";
+    }
 
-		if (mver_idalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("idalbaranp") + "</td>";
-		};
+    if (mver_totalbaseimp->isChecked()) {
+        fitxersortidatxt += "<td>Base Imp.</td>";
+    }
 
-		if (mver_numalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("numalbaranp") + "</td>";
-		};
+    if (mver_totalimpuestos->isChecked()) {
+        fitxersortidatxt += "<td>Impuestos</td>";
+    }
 
-		if (mver_descalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("descalbaranp") + "</td>";
-		};
+    fitxersortidatxt += "</tr>";
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM albaranp LEFT JOIN proveedor " \
+                   "ON albaranp.idproveedor = proveedor.idproveedor LEFT JOIN almacen ON " \
+                   "albaranp.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON " \
+                   "albaranp.idforma_pago = forma_pago.idforma_pago WHERE 1=1 " +
+                   generaFiltro());
+    while(!cur->eof()) {
+        fitxersortidatxt += "<tr>";
 
-		if (mver_refalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("refalbaranp") + "</td>";
-		};
+        if (mver_idalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("idalbaranp") + "</td>";
+        };
 
-		if (mver_fechaalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("fechaalbaranp") + "</td>";
-		};
+        if (mver_numalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("numalbaranp") + "</td>";
+        };
 
-		if (mver_loginusuario->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("idtrabajador") + "</td>";
-		};
+        if (mver_descalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("descalbaranp") + "</td>";
+        };
 
-		if (mver_comentalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("comentalbaranp") + "</td>";
-		};
+        if (mver_refalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("refalbaranp") + "</td>";
+        };
 
-		if (mver_procesadoalbaranp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("procesadoalbaranp") + "</td>";
-		};
+        if (mver_fechaalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("fechaalbaranp") + "</td>";
+        };
 
-		if (mver_idproveedor->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("idproveedor") + "</td>";
-		};
+        if (mver_loginusuario->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("idtrabajador") + "</td>";
+        };
 
-		if (mver_idforma_pago->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("idforma_pago") + "</td>";
-		};
+        if (mver_comentalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("comentalbaranp") + "</td>";
+        };
 
-		if (mver_idalmacen->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("idalmacen") + "</td>";
-		};
+        if (mver_procesadoalbaranp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("procesadoalbaranp") + "</td>";
+        };
 
-		if (mver_nomproveedor->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("nomproveedor") + "</td>";
-		};
+        if (mver_idproveedor->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("idproveedor") + "</td>";
+        };
 
-		if (mver_nomalmacen->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("nomalmacen") + "</td>";
-		};
+        if (mver_idforma_pago->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("idforma_pago") + "</td>";
+        };
 
-		if (mver_descforma_pago->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur->valor("descforma_pago") + "</td>";
-		};
+        if (mver_idalmacen->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("idalmacen") + "</td>";
+        };
 
-		/// Calculamos el total del presupuesto y lo presentamos.
-		cursor2 *cur1 = companyact->cargacursor("SELECT calctotalalbpro(" + 
-				cur->valor("idalbaranp") + ") AS total, calcbimpalbpro(" +
-				cur->valor("idalbaranp") + ") AS base, calcimpuestosalbpro(" +
-				cur->valor("idalbaranp") + ") AS impuestos");
+        if (mver_nomproveedor->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("nomproveedor") + "</td>";
+        };
 
-		if (mver_totalalbaranproveedor->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur1->valor("total") + "</td>";
-		};
+        if (mver_nomalmacen->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("nomalmacen") + "</td>";
+        };
 
-		if (mver_totalbaseimp->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur1->valor("base") + "</td>";
-		};
+        if (mver_descforma_pago->isChecked()) {
+            fitxersortidatxt += "<td>" + cur->valor("descforma_pago") + "</td>";
+        };
 
-		if (mver_totalimpuestos->isChecked())
-		{
-			fitxersortidatxt += "<td>" + cur1->valor("impuestos") + "</td>";
-		};
+        /// Calculamos el total del presupuesto y lo presentamos.
+        cursor2 *cur1 = m_companyact->cargacursor("SELECT calctotalalbpro(" +
+                        cur->valor("idalbaranp") + ") AS total, calcbimpalbpro(" +
+                        cur->valor("idalbaranp") + ") AS base, calcimpuestosalbpro(" +
+                        cur->valor("idalbaranp") + ") AS impuestos");
 
-		delete cur1;
-		fitxersortidatxt += "</tr>";
-		cur->siguienteregistro();
-	};
+        if (mver_totalalbaranproveedor->isChecked()) {
+            fitxersortidatxt += "<td>" + cur1->valor("total") + "</td>";
+        };
 
-	delete cur;
-	fitxersortidatxt += "</blockTable>";
-	buff.replace("[story]", fitxersortidatxt);
+        if (mver_totalbaseimp->isChecked()) {
+            fitxersortidatxt += "<td>" + cur1->valor("base") + "</td>";
+        };
 
-	if (file.open(QIODevice::WriteOnly))
-	{
-		QTextStream stream(&file);
-		stream << buff;
-		file.close();
-	}
+        if (mver_totalimpuestos->isChecked()) {
+            fitxersortidatxt += "<td>" + cur1->valor("impuestos") + "</td>";
+        };
 
-	invocaPDF("albaranesproveedor");
-};
+        delete cur1;
+        fitxersortidatxt += "</tr>";
+        cur->siguienteregistro();
+    };
+
+    delete cur;
+    fitxersortidatxt += "</blockTable>";
+    buff.replace("[story]", fitxersortidatxt);
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    }
+
+    invocaPDF("albaranesproveedor");
+}
 
 
-void AlbaranesProveedor::s_removeBudget()
-{
-	_depura("Iniciamos el boton_borrar.", 0);
-	int a = m_list->currentRow();
-	m_idalbaranp = m_list->text(a,COL_IDALBARANP);
+void AlbaranesProveedor::on_mui_borrar_clicked()  {
+    _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
+    mdb_idalbaranp =  mui_list->DBvalue(QString("idalbaranp"));
 
-	if (m_modo == 0 && m_idalbaranp != "")
-	{
-		AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,
-				companyact->m_pWorkspace,
-				theApp->translate("Edición de Albaranes de Proveedores",
-				"company"));
-		bud->cargaAlbaranProveedor(m_idalbaranp);
-		bud->s_deleteAlbaranProveedor();
-		bud->close();
-	};
+    if (m_modo == 0 && mdb_idalbaranp != "") {
+        AlbaranProveedorView *bud = new AlbaranProveedorView(m_companyact,
+                                    m_companyact->m_pWorkspace,
+                                    theApp->translate("Edición de Albaranes de Proveedores",
+                                                      "company"));
+        bud->cargar(mdb_idalbaranp);
+        bud->borrar();
+	delete bud;
+    };
 
-	presenta();
+    presenta();
+}
+
+
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+
+AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("albaranp");
+    setDBCampoId("idalbaranp");
+    addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idalbaranp");
+    addSHeader("numalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "numalbaranp");
+    addSHeader("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "descalbaranp");
+    addSHeader("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "refalbaranp");
+    addSHeader("fechaalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechaalbaranp");
+    addSHeader("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentalbaranp");
+    addSHeader("procesadoalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "procesadoalbaranp");
+    addSHeader("idproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idproveedor");
+    addSHeader("idforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idforma_pago");
+    addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idalmacen");
+    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomproveedor");
+    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomalmacen");
+    addSHeader("descforma_pago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "descforma_pago");
+    addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "total");
+    addSHeader("base", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "base");
+    addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "impuestos");
+    setinsercion(FALSE);
 };

@@ -55,8 +55,7 @@ AlbaranProveedor::~AlbaranProveedor()
 };
 
 
-void AlbaranProveedor::borraAlbaranProveedor()
-{
+int AlbaranProveedor::borrar()  {
 	if (DBvalue("idalbaranp") != "")
 	{
 		listalineas->borrar();
@@ -67,20 +66,20 @@ void AlbaranProveedor::borraAlbaranProveedor()
 		if (error)
 		{
 			companyact->rollback();
-			return;
+			return -1;
 		};
 
 		companyact->commit();
 		vaciaAlbaranProveedor();
 		pintaAlbaranProveedor();
 	};
-};
+	return 0;
+}
 
 
-void AlbaranProveedor::vaciaAlbaranProveedor()
-{
+void AlbaranProveedor::vaciaAlbaranProveedor()  {
 	DBclear();
-};
+}
 
 
 void AlbaranProveedor::pintaAlbaranProveedor()
@@ -104,7 +103,7 @@ void AlbaranProveedor::pintaAlbaranProveedor()
 
 
 /// Esta funcion carga un AlbaranProveedor.
-int AlbaranProveedor::cargaAlbaranProveedor(QString idbudget)
+int AlbaranProveedor::cargar(QString idbudget)
 {
 	_depura("AlbaranProveedor::cargaAlbaranProveedor()\n", 0);
 	QString query = "SELECT * FROM albaranp WHERE idalbaranp=" + idbudget;
@@ -139,7 +138,7 @@ void AlbaranProveedor::guardaAlbaranProveedor()
 	setidalbaranp(id);
 	listalineas->guardaListLinAlbaranProveedor();
 	listadescuentos->guardaListDescuentoAlbaranProv();
-	cargaAlbaranProveedor(id);
+	cargar(id);
 };
 
 

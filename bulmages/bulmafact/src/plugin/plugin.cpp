@@ -23,6 +23,7 @@ void myplugin::elslot() {
 }// end elslot
 
 
+
 void myplugin::inicializa(bulmafact *bges) {
     //El menu de empresa
     Q3PopupMenu *pPluginMenu = new Q3PopupMenu();
@@ -32,9 +33,9 @@ void myplugin::inicializa(bulmafact *bges) {
     planCuentas->setStatusTip("Muestra el plan contable");
     planCuentas->setWhatsThis("Muestra el plan contable");
     planCuentas->addTo(pPluginMenu);
-
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
 }// end inicializa
+
 
 
 void entryPoint(bulmafact *bges) {

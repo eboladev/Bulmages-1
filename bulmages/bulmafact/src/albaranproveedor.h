@@ -56,7 +56,7 @@ public:
 	};
 	void pintaAlbaranProveedor();
 	void guardaAlbaranProveedor();
-	void borraAlbaranProveedor();
+	int borrar();
 	ListLinAlbaranProveedor* getlistalineas()
 	{
 		return listalineas;
@@ -65,7 +65,7 @@ public:
 	{
 		return listadescuentos;
 	};
-	virtual int cargaAlbaranProveedor(QString);
+	virtual int cargar(QString);
 	virtual void pintaidalbaranp(QString)
 	{
 	};

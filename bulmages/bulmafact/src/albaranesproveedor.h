@@ -24,25 +24,49 @@
 #include <QLineEdit>
 #include <Q3Table>
 
-#include "albaranesproveedorbase.h"
+
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "funcaux.h"
+#include "subform2bf.h"
 
 
-class AlbaranesProveedor : public AlbaranesProveedorBase
+class AlbaranesProveedorListSubform : public SubForm2Bf {
+    Q_OBJECT
+public:
+    AlbaranesProveedorListSubform(QWidget *parent = 0, const char *name = 0);
+    ~AlbaranesProveedorListSubform() {}
+    ;
+public slots:
+    virtual void cargar() {
+        _depura("AlbaranesProveedorListSubform::cargar\n",0);
+        QString SQLQuery = "SELECT * FROM albaranp";
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+    virtual int cargar(cursor2 *cur) {
+        _depura("AlbaranesProveedorListSubform::cargar\n",0);
+        SubForm2::cargar(cur);
+        return 0;
+    };
+};
+
+
+#include "ui_albaranesproveedorlistbase.h"
+
+
+class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase
 {
 	Q_OBJECT
 
 private:
-	company *companyact;
-
+	company *m_companyact;
 	/// == 0 es modo edicion
 	/// == 1 es modo selector
 	int m_modo;
-	void inicializa();
-	QString m_idalbaranp;
+	QString mdb_idalbaranp;
 
 public:
 	AlbaranesProveedor(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
@@ -60,13 +84,13 @@ public:
 	};
 	void setcompany(company *comp)
 	{
-		companyact=comp;
+		m_companyact=comp;
 		m_proveedor->setcompany(comp);
 		m_articulo->setcompany(comp);
 	};
 	QString idalbaranp()
 	{
-		return m_idalbaranp;
+		return mdb_idalbaranp;
 	};
 	void hideBotonera()
 	{
@@ -95,9 +119,9 @@ public:
 	void imprimir();
 	void meteWindow(QString nom, QObject *obj)
 	{
-		if (companyact != NULL)
+		if (m_companyact != NULL)
 		{
-			companyact->meteWindow(nom, obj);
+			m_companyact->meteWindow(nom, obj);
 		}
 	};
 	void setidproveedor(QString val)
@@ -113,45 +137,29 @@ public:
 	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
 	void guardaconfig();
 	void cargaconfig();
+	void editar(int);
 
 public slots:
-	virtual void doubleclicked(int, int, int, const QPoint &);
-	virtual void s_contextMenu(int, int, int, const QPoint &);
-	virtual void s_editar();
-	virtual void newBudget()
-	{
-		companyact->s_newAlbaranPro();
+    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
+	virtual void on_mui_editar_clicked();
+	virtual void on_mui_crear_clicked()  {
+		if(m_companyact != NULL)
+			m_companyact->s_newAlbaranPro();
 	};
-	virtual void s_removeBudget();
-	virtual void s_imprimir()
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_imprimir_clicked()
 	{
 		imprimir();
 	};
-	virtual void s_filtrar()
+	virtual void on_mui_actualizar_clicked()
 	{
 		presenta();
 	};
-	virtual void s_mostrarBusqueda()
-	{
-		_depura("s_mostrarBusqueda",0);
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		_depura("s_mostrarConfiguracion",0);
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
 	virtual void s_configurar();
+signals:
+    void selected(QString);
 };
 
 #endif
