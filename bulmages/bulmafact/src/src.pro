@@ -58,6 +58,7 @@ FORMS += about.ui \
 	 listprovincias.ui \
          facturasplistbase.ui \
          albaranesproveedorlistbase.ui \
+	 clientebase.ui
 
 # uic3 los convierte de forma automatica.
 #
@@ -80,8 +81,8 @@ FORMS3 += bulmafactbase.ui \
 	  pedidoproveedorbase.ui \
 	  listseriefacturabase.ui \
 	  inventariosbase.ui \
-	  inventariobase.ui \
-	  clientebase.ui
+	  inventariobase.ui
+
 
 HEADERS += bulmafact.h \
            company.h \

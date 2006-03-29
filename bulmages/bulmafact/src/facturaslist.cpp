@@ -276,7 +276,7 @@ void FacturasList::editar(int  row) {
     _depura("FacturasList::editar",0);
     mdb_idfactura = mui_list->DBvalue(QString("idfactura"),row);
     if (m_modo ==0 ) {
-        FacturaView *prov = new FacturaView(m_companyact,0,theApp->translate("Edicion de Facturas a Cliente", "company"));
+        FacturaView *prov = m_companyact->newFacturaView();
         if (prov->cargar(mdb_idfactura)) {
             return;
         }

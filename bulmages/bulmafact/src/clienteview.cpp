@@ -44,18 +44,18 @@ Restricciones de llave for�ea:
  
 */
 
-#include "clienteview.h"
-#include "company.h"
-#include "division.h"
+
 #include <QLineEdit>
 #include <QMessageBox>
 #include <Q3Table>
 #include <QToolButton>
 #include <QWidget>
 #include <QComboBox>
-
 #include <QCloseEvent>
 
+#include "clienteview.h"
+#include "company.h"
+#include "division.h"
 #include "presupuestolist.h"
 #include "pedidosclientelist.h"
 #include "albaranclientelist.h"
@@ -66,8 +66,9 @@ Restricciones de llave for�ea:
 #include "plugins.h"
 
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
-        :  ClienteBase(parent, name, Qt::WDestructiveClose) , Cliente(comp), dialogChanges(this) {
+        :  QWidget(parent, name, Qt::WDestructiveClose) , Cliente(comp), dialogChanges(this) {
     _depura("ClienteView::ClienteView",0);
+    setupUi(this);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("ClienteView_ClienteView", this);
     if (res != 0)
@@ -197,11 +198,12 @@ void ClienteView::deleteClient() {
 }
 
 
-void ClienteView::saveButton_clicked() {
+void ClienteView::on_mui_guardar_clicked() {
+    _depura("ClienteView::on_mui_guardar_clicked",0);
     saveClient();
 }
 
-void ClienteView::deleteButton_clicked() {
+void ClienteView::on_mui_borrar_clicked() {
     int ret = QMessageBox::warning(this,tr("Edicion de clientes"),
                                    tr("Est�a punto de borrar un cliente.\n"
                                       "Est�seguro de que quiere borrarlo?"),

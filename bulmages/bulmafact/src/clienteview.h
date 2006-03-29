@@ -22,15 +22,13 @@
 #define CLIENTEVIEW_H
 
 #include "cliente.h"
-#include "clientebase.h"
 #include "dialogchanges.h"
-
+#include "ui_clientebase.h"
 
 class company;
 
-class ClienteView :  public ClienteBase, public Cliente, public dialogChanges
-{
-	Q_OBJECT
+class ClienteView :  public QWidget, public Ui_ClienteBase, public Cliente, public dialogChanges  {
+Q_OBJECT
 
 public:
 	ClienteView(company *emp, QWidget *parent = 0, const char *name = 0);
@@ -108,8 +106,12 @@ public:
 	};
 
 public slots:
-	virtual void saveButton_clicked();
-	virtual void deleteButton_clicked();
+	virtual void on_mui_guardar_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_aceptar_clicked() {
+		saveClient();
+		close();
+	};
 };
 
 #endif

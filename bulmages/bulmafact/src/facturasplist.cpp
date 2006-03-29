@@ -249,7 +249,7 @@ void FacturasProveedorList::editar(int  row) {
     _depura("FacturasProveedorList::editar",0);
     mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"),row);
     if (m_modo ==0 ) {
-        FacturaProveedorView *prov = new FacturaProveedorView(m_companyact,0,theApp->translate("Edicion de Facturas de Proveedor", "company"));
+        FacturaProveedorView *prov = m_companyact->newFacturaProveedorView();
         if (prov->cargar(mdb_idfacturap)) {
             return;
         }
