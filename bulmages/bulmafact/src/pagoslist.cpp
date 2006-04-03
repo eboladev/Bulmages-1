@@ -302,7 +302,7 @@ void PagosList::on_mui_crear_clicked() {
     PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
-    bud->pintaPago();
+    bud->pintar();
 }// end boton_crear
 
 

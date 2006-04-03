@@ -7,14 +7,12 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "pedidoproveedor.h"
-#include "company.h"
-#include "descpedidoproveedor.h"
 
 #include <QFile>
-//Added by qt3to4:
 #include <QTextStream>
 
+#include "pedidoproveedor.h"
+#include "company.h"
 #include "fixed.h"
 #include "funcaux.h"
 
@@ -22,7 +20,6 @@ typedef QMap<QString, Fixed> base;
 
 PedidoProveedor::PedidoProveedor(company *comp) : DBRecord(comp) {
     companyact=comp;
-
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
     addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
@@ -49,15 +46,15 @@ int PedidoProveedor::borrar() {
         listadescuentos->borrar();
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor="+DBvalue("idpedidoproveedor"));
-	if (error) {
-		companyact->rollback();
-		return -1;
-	}// end if
+        if (error) {
+            companyact->rollback();
+            return -1;
+        }// end if
         companyact->commit();
         vaciaPedidoProveedor();
-        pintaPedidoProveedor();
+        pintar();
     }// end if
-	return 0;
+    return 0;
 }// end borraPedidoProveedor
 
 
@@ -65,8 +62,9 @@ void PedidoProveedor::vaciaPedidoProveedor() {
     DBclear();
 }// end vaciaPedidoProveedor
 
-void PedidoProveedor::pintaPedidoProveedor() {
-    _depura("PedidoProveedor::pintaPedidoProveedor\n",0);
+
+void PedidoProveedor::pintar() {
+    _depura("PedidoProveedor::pintar",0);
     pintaidproveedor(DBvalue("idproveedor"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaidpedidoproveedor(DBvalue("idpedidoproveedor"));
@@ -81,43 +79,55 @@ void PedidoProveedor::pintaPedidoProveedor() {
     pintatelpedidoproveedor(DBvalue("telpedidoproveedor"));
     pintaidtrabajador(DBvalue("idtrabajador"));
     /// Pinta el subformulario de detalle del PedidoProveedor.
-    listalineas->pintaListLinPedidoProveedor();
+    //    listalineas->pintaListLinPedidoProveedor();
     // Pinta el subformulario de descuentos del pedidoproveedor
-    listadescuentos->pintaListDescuentoPedidoProveedor();
     calculaypintatotales();
     _depura("FIN PedidoProveedor::pintaPedidoProveedor()\n",0);
-}// end pintaPedidoProveedor
+}
 
 
 // Esta funcion carga un PedidoProveedor.
 int PedidoProveedor::cargar(QString idbudget) {
-    _depura("cargaPedidoProveedor()\n",0);
+    _depura("PedidoProveedor::cargar",0);
     QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor="+idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     }// end if
     delete cur;
-    listalineas->cargaListLinPedidoProveedor(idbudget);
-    listadescuentos->cargaDescuentos(idbudget);
-    pintaPedidoProveedor();
+    listalineas->cargar(idbudget);
+    listadescuentos->cargar(idbudget);
+    pintar();
     return 0;
-}// end chargeBudget
+}
 
 
-void PedidoProveedor::guardaPedidoProveedor() {
+int PedidoProveedor::guardar() {
+    _depura("PedidoProveedor::guardar",0);
     QString id;
     companyact->begin();
     int error = DBsave(id);
     if (error ) {
         companyact->rollback();
-        return;
+        return -1;
     }// end if
     setidpedidoproveedor(id);
+
+    error = listalineas->guardar();
+    if (error ) {
+        companyact->rollback();
+        return -1;
+    }// end if
+
+
+
+    error = listadescuentos->guardar();
+    if (error ) {
+        companyact->rollback();
+        return -1;
+    }// end if
     companyact->commit();
-    listalineas->guardaListLinPedidoProveedor();
-    listadescuentos->guardaListDescuentoPedidoProveedor();
-    cargar(id);
+    return 0;
 }// end guardaPedidoProveedor
 
 
@@ -125,6 +135,7 @@ void PedidoProveedor::guardaPedidoProveedor() {
 
 
 void PedidoProveedor::imprimirPedidoProveedor() {
+	_depura("PedidoProveedor::imprimirPedidoProveedor",2);
     /// Copiamos el archivo
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidoproveedor.rml";
     archivo = "cp "+archivo+" /tmp/pedidoproveedor.rml";
@@ -169,34 +180,37 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     fitxersortidatxt += "</tr>";
 
     QString l;
-    LinPedidoProveedor *linea;
     uint i = 0;
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+
+	_depura("vamos a recorrer el listado de lineas",2);
+    for (int i=0; i < listalineas->rowCount()-1; i++) {
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>"+linea->desclpedidoproveedor()+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpedidoproveedor().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->pvplpedidoproveedor().toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",linea->cantlpedidoproveedor().toFloat() * linea->pvplpedidoproveedor().toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+listalineas->DBvalue("desclpedidoproveedor",i)+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor",i).toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->DBvalue("pvplpedidoproveedor",i).toFloat())+"</td>";
+        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor",i).toFloat() * listalineas->DBvalue("pvplpedidoproveedor",i).toFloat())+"</td>";
         fitxersortidatxt += "</tr>";
-        i++;
     }// end for
+	_depura("Fin de vamos a recorrer el listado de lineas",2);
+
+
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase())+"</td>";
+    fitxersortidatxt += "	<td>"+listalineas->calculabase().toQString()+"</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f", listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "	<td>"+listalineas->calculaiva().toQString()+"</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->calculabase()+listalineas->calculaiva())+"</td>";
+    fitxersortidatxt += "	<td>"+(listalineas->calculabase()+listalineas->calculaiva()).toQString()+"</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "</blockTable>";
 
@@ -207,6 +221,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
         stream << buff;
         file.close();
     }
+	_depura("Vamos a ejecutar el trml2pdf",2);
     system("trml2pdf.py /tmp/pedidoproveedor.rml > /tmp/pedidoproveedor.pdf");
     system("kpdf /tmp/pedidoproveedor.pdf");
 } //end imprimirPedidoProveedor
@@ -220,19 +235,30 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 void PedidoProveedor::calculaypintatotales() {
     _depura("calculaypintatotales \n",0);
     base basesimp;
-    LinPedidoProveedor *linea;
+
+
     /// Impresi� de los contenidos
     QString l;
-    
+    for (int i=0; i < listalineas->rowCount()-1; i++) {
+        Fixed cant(listalineas->DBvalue("cantlpedidoproveedor",i ));
+        Fixed pvpund(listalineas->DBvalue("pvplpedidoproveedor",i ));
+        Fixed desc1(listalineas->DBvalue("descuentolpedidoproveedor",i ));
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
+        basesimp[listalineas->DBvalue("ivalpedidoproveedor",i )] =  basesimp[listalineas->DBvalue("ivalpedidoproveedor",i )]+ base;
+    }// end for
+
+
+/*
     for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-    	Fixed cant(linea->cantlpedidoproveedor().ascii());
-	Fixed pvpund(linea->pvplpedidoproveedor().ascii());
-	Fixed desc1(linea->descuentolpedidoproveedor().ascii());
-	Fixed cantpvp = cant * pvpund;
-	Fixed base = cantpvp - cantpvp * desc1 / 100;
+        Fixed cant(linea->cantlpedidoproveedor().ascii());
+        Fixed pvpund(linea->pvplpedidoproveedor().ascii());
+        Fixed desc1(linea->descuentolpedidoproveedor().ascii());
+        Fixed cantpvp = cant * pvpund;
+        Fixed base = cantpvp - cantpvp * desc1 / 100;
         basesimp[linea->ivalpedidoproveedor()] =  basesimp[linea->ivalpedidoproveedor()]+ base;
     }// end for
-    
+*/
 
     Fixed basei("0.00");
     base::Iterator it;
@@ -241,13 +267,11 @@ void PedidoProveedor::calculaypintatotales() {
     }// end for
     /// Impresi� de los descuentos
     Fixed porcentt("0.00");
-    DescuentoPedidoProveedor *linea1;
-    if (listadescuentos->m_lista.first()) {
-        for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-	    Fixed propor(linea1->proporciondpedidoproveedor().ascii());
-            porcentt = porcentt + propor;
-        }// end for	
-    }// end if
+
+    for (int i=0; i < listadescuentos->rowCount()-1; i++) {
+        Fixed propor(listadescuentos->DBvalue("proporciondpedidoproveedor",i).ascii());
+        porcentt = porcentt + propor;
+    }// end for
 
 
     Fixed totbaseimp("0.00");
@@ -258,19 +282,19 @@ void PedidoProveedor::calculaypintatotales() {
         } else {
             parbaseimp = it.data();
         }// end if
-	totbaseimp = totbaseimp + parbaseimp;
+        totbaseimp = totbaseimp + parbaseimp;
     }// end for
 
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-	    Fixed piva(it.key().ascii());
+        Fixed piva(it.key().ascii());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data()-it.data()*porcentt/100)* piva/100;
         } else {
             pariva = it.data()* piva/100;
         }// end if
-	totiva = totiva + pariva;
+        totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
 }// end calculaypintatotales

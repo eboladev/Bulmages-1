@@ -2,13 +2,63 @@
 #include "funcaux.h"
 
 
+
+DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp){
+		m_conexionbase = com;
+		m_nomcampo = nom;
+		m_valorcampo="";
+		m_nompresentacion = nomp;
+		m_restrict = res;
+		m_tipo = typ;
+}
+
+
+QString DBCampo::valorcampoprep(int &error) {
+		error = 0;
+		if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
+				if (m_valorcampo == "") {
+					_depura("Campo "+m_nompresentacion+" vacio",2);
+					error = -1;
+					return "";
+				}// end if
+		}
+		switch (m_tipo) {
+			case DBint:
+				if (m_valorcampo == "") return "NULL";
+				return m_conexionbase->sanearCadena(m_valorcampo);
+			case DBvarchar:
+				return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+			case DBdate:
+				if (m_valorcampo == "") return "NULL";
+				return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+			case DBnumeric:
+				if (m_valorcampo == "") return "NULL";
+				return m_valorcampo;
+			case DBboolean:
+				if (m_valorcampo == "") return "NULL";
+				if (m_valorcampo == "f" || m_valorcampo == "t")
+				return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+				return m_conexionbase->sanearCadena(m_valorcampo);
+		}// end switch
+		error = -1;
+		_depura("Error en la conversion de tipos",2);
+		return "";
+}
+
+
+/// ----------------------------------------------
+
 DBRecord::DBRecord(postgresiface2 *con) {
-    conexionbase = con;
+    m_conexionbase = con;
     m_nuevoCampo = TRUE;
 }
 
 
 DBRecord::~DBRecord() {}
+
+
+
+
 
 int DBRecord::DBload(cursor2 *cur) {
     _depura("DBRecord::DBload",0);
@@ -83,15 +133,15 @@ int DBRecord::DBsave(QString &id) {
     }// end for
     if (m_nuevoCampo) {
         QString query = "INSERT INTO "+m_tablename+" ("+listcampos+") VALUES ("+listvalores+")";
-        int error = conexionbase->ejecuta(query);
+        int error = m_conexionbase->ejecuta(query);
         if (error)
             return -1;
-        cursor2 *cur = conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
+        cursor2 *cur = m_conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
         id = cur->valor(m_campoid);
         delete cur;
     } else {
         QString query = "UPDATE "+m_tablename+" SET "+queryupdate + " WHERE "+ querywhere;
-        int error = conexionbase->ejecuta(query);
+        int error = m_conexionbase->ejecuta(query);
         if (error)
             return -1;
     }// end if
@@ -152,7 +202,7 @@ QString DBRecord::DBvalueprep(QString nomb) {
 
 
 int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="") {
-    DBCampo *camp = new DBCampo(conexionbase, nom, typ, res, nomp);
+    DBCampo *camp = new DBCampo(m_conexionbase, nom, typ, res, nomp);
     camp->set
     ("");
     m_lista.append(camp);
@@ -180,13 +230,13 @@ int DBRecord::borrar() {
     }// end for
 
     if (m_nuevoCampo == FALSE) {
-        //        conexionbase->begin();
-        int error = conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
+        //        m_conexionbase->begin();
+        int error = m_conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
         if (error) {
-            //            conexionbase->rollback();
+            //            m_conexionbase->rollback();
             return -1;
         }// end if
-        //        conexionbase->commit();
+        //        m_conexionbase->commit();
         DBclear();
     }// end if
     return 0;
@@ -196,14 +246,14 @@ int DBRecord::borrar() {
 int DBRecord::guardar() {
     _depura("DBRecord::guardar",0);
     QString id;
-    //    conexionbase->begin();
+    //    m_conexionbase->begin();
     int error = DBsave(id);
     if (error ) {
-        //        conexionbase->rollback();
+        //        m_conexionbase->rollback();
         return -1;
     }// end if
     setDBvalue(m_campoid,id);
-    //    conexionbase->commit();
+    //    m_conexionbase->commit();
     return 0;
 }// end guardar
 
@@ -213,7 +263,7 @@ int DBRecord::guardar() {
 int DBRecord::cargar(QString id) {
     _depura("DBRecord::cargar",0);
     QString query = "SELECT * FROM "+m_tablename+" WHERE "+m_campoid+"="+id;
-    cursor2 * cur= conexionbase->cargacursor(query);
+    cursor2 * cur= m_conexionbase->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     }// end if

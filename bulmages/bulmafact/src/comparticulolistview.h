@@ -31,30 +31,6 @@
 #include "subform2bf.h"
 
 
-/*
-class ListCompArticuloView : public QTableWidget2 , public ListCompArticulo
-{
-Q_OBJECT
-
-public:
-	ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
-	~ListCompArticuloView();
-	virtual void pintar();
-	virtual void pintar(int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	CompArticulo *lineaat(int);
-	CompArticulo *lineaact();
-	void generar();
-
-public slots:
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-        virtual void contextMenuEvent (QContextMenuEvent *);
-	virtual void s_cellChanged(int row, int col);
-	virtual void s_currentCellChanged(int row, int col, int prow, int pcol);
-};
-*/
-
 
 class ListCompArticuloView : public SubForm2Bf {
 Q_OBJECT

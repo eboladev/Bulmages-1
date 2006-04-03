@@ -18,6 +18,8 @@
 
 # Lista con los uis que se tienen que incluir en la clausula FORMS y quitarlos de FORMS3
 
+uis[22]="pedidoproveedorbase"
+uis[21]="clientebase"
 uis[20]="facturasplistbase"
 uis[19]="albaranesproveedorlistbase"
 uis[18]="pedidosproveedorlist"
@@ -25,7 +27,7 @@ uis[17]="facturaslistbase"
 uis[16]="albaranclientelistbase"
 uis[15]="clientslistbase"
 uis[14]="pedidosclientelistbase"
-uis[13]="provedit_base"
+uis[13]="proveditbase"
 #uis[12]="presupuestoview"
 uis[11]="providerslistbase"
 uis[10]="articleeditbase"

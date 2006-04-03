@@ -156,7 +156,6 @@ int TarifaView::guardar() {
 void TarifaView::on_mui_crear_clicked() {
     _depura("TarifaView::INIT_boton_nuevo()\n",0);
     vaciar();
-    mui_list->vaciar();
     pintar();
     _depura("TarifaView::END_boton_nuevo()\n",0);
 }
@@ -179,7 +178,6 @@ void TarifaView::on_mui_borrar_clicked() {
     if (DBvalue("idtarifa") != "") {
         if ( QMessageBox::question(this,tr("Borrar Tarifa"),tr("Esta a punto de borrar una tarifa, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
             m_companyact->begin();
-
             int error =mui_list->borrar();
             error += borrar();
             if (error) {

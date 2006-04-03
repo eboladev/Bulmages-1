@@ -21,29 +21,28 @@
 #ifndef LISTDESCPEDIDOPROVEEDORVIEW_H
 #define LISTDESCPEDIDOPROVEEDORVIEW_H
 
-#include <Q3Table>
-
-#include "listdescpedidoproveedor.h"
+#include "subform2bf.h"
 #include "company.h"
-#include "descpedidoproveedor.h"
 
 
-class ListDescuentoPedidoProveedorView : public Q3Table , public ListDescuentoPedidoProveedor
-{
-	Q_OBJECT
-
+class ListDescuentoPedidoProveedorView : public SubForm2Bf {
+    Q_OBJECT
 public:
-	ListDescuentoPedidoProveedorView(QWidget *parent = 0, const char *name = 0);
-	~ListDescuentoPedidoProveedorView();
-	virtual void pintaListDescuentoPedidoProveedor();
-	virtual void pintadescListDescuentoPedidoProveedor(int);
-	DescuentoPedidoProveedor *lineaat(int);
-	DescuentoPedidoProveedor *lineaact();
+    QString mdb_idpedidoproveedor;
+    ListDescuentoPedidoProveedorView(QWidget *parent = 0);
+    ~ListDescuentoPedidoProveedorView() {};
 
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borradescpedidoproveedoract();
+    virtual void cargar(QString idpedidoproveedor) {
+        _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+        mdb_idpedidoproveedor = idpedidoproveedor;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+
 };
+
+
 
 #endif

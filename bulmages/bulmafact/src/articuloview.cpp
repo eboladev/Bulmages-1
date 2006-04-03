@@ -112,10 +112,6 @@ void ArticuloView::pintar() {
 
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));
 
-	/// Pintamos la parte de componentes
-	m_componentes->pintar();
-
-
     setCaption(tr("Articulo ")+m_codigocompletoarticulo->text());
     _depura("END ArticuloView::pintar",1);
 }
@@ -204,7 +200,6 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 void ArticuloView::on_mui_crear_clicked() {
     _depura("ArticuloView::INIT_boton_nuevo()\n",0);
     vaciar();
-	m_componentes->vaciar();
     pintar();
     _depura("ArticuloView::END_boton_nuevo()\n",0);
 }

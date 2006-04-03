@@ -21,14 +21,14 @@
 #ifndef BUSQUEDATRABAJADOR_H
 #define BUSQUEDATRABAJADOR_H
 
-#include <Q3ComboBox>
+#include <QComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
 
 
-class BusquedaTrabajador : public Q3ComboBox
+class BusquedaTrabajador : public QComboBox
 {
 	Q_OBJECT
 
@@ -37,14 +37,16 @@ private:
 	cursor2 *m_cursorcombo;
 
 public:
-	BusquedaTrabajador(QWidget *parent = 0, const char *name = 0);
+	BusquedaTrabajador(QWidget *parent = 0);
 	~BusquedaTrabajador();
 	void setcompany(company *comp)
 	{
 		companyact = comp;
 	};
 	virtual void setidtrabajador(QString idtrabajador);
-
+	QString idtrabajador() {
+		return m_cursorcombo->valor("idtrabajador", currentIndex()-1);
+	};
 public slots:
 	void m_activated(int index)
 	{

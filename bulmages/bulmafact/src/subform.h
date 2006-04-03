@@ -1,6 +1,8 @@
 #ifndef SUBFORM_H
 #define SUBFORM_H
 
+#include <Qt>
+
 #include "postgresiface2.h"
 #include "funcaux.h"
 #include "qtable2.h"
@@ -9,30 +11,29 @@
 class SHeader {
 public:
     enum dboptions {DBNone=0, DBReadOnly=1, DBNoView=2, DBNoWrite=4};
-public:
+protected:
     QString m_nomcampo;
     QString m_valorcampo;
     QString m_nompresentacion;
-    int   m_restrict;
-    DBCampo::dbtype m_type;
-    int m_options;
+    unsigned int   m_restricciones;
+    DBCampo::dbtype m_tipo;
+    unsigned int m_options;
 public:
-    SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp="") {
-        m_nomcampo = nom;
-        m_valorcampo="";
-        m_nompresentacion = nomp;
-        m_restrict = res;
-        m_options = opt;
-        m_type = typ;
-    };
-    ~SHeader() {};
+    SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp="");
+    ~SHeader() {}
+    ;
     int set
         (QString val) {
         m_valorcampo=val;
         return 0;
     };
+    unsigned int options() {return m_options;};
+    unsigned int restricciones() {return m_restricciones;};
+    DBCampo::dbtype tipo() {return m_tipo;};
+    QString nompresentacion() {return m_nompresentacion;};
+
     int restrictcampo() {
-        return m_restrict;
+        return m_restricciones;
     };
     QString nomcampo() {
         return m_nomcampo;
@@ -46,12 +47,9 @@ public:
     ;
     virtual ~SDBCampo() {}
     ;
-    virtual int set(QString val) {
-        QTableWidgetItem2::setText(val);
-        DBCampo::set(val);
-        return 0;
-    };
-	void refresh() {DBCampo::set(text());};
+    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
+    virtual int set(QString val);
+    void refresh();
 };
 
 
@@ -61,68 +59,75 @@ public:
     ;
     ~SDBRecord() {}
     ;
-
-    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="") {
-        SDBCampo *camp = new SDBCampo(conexionbase, nom, typ, res, nomp);
-        camp->set
-        ("");
-        m_lista.append(camp);
-        return 0;
-    };
+    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
+    void refresh();
 };
 
 
-class SubForm2: public QTableWidget2 {
-    Q_OBJECT
+class SubForm2: public QTableWidget {
+Q_OBJECT
 private:
     Q3PtrList<SHeader>   m_lcabecera;
     Q3PtrList<SDBRecord> m_lista;
     postgresiface2 *m_companyact;
     QString m_tablename;
     QString m_campoid;
-	bool m_insercion;
-
+    bool m_insercion;
+    bool m_primero;
+    void guardaconfig();
+    void cargaconfig();
+    void pintaCabeceras();
 public:
-	void guardaconfig();
-	void cargaconfig();
-	void situarse(unsigned int, unsigned int);
-	void setinsercion(bool b) {m_insercion=b;};
+    SubForm2(QWidget *parent);
+    virtual ~SubForm2() {
+        guardaconfig();
+    };
+
+    void sortItems(int col, Qt::SortOrder orden);
+
+    void setinsercion(bool b) {
+        m_insercion=b;
+    };
+
+    void setcompany(postgresiface2 *c) {
+        m_companyact = c;
+    };
+
     postgresiface2 *companyact() {
         return m_companyact;
     };
-    SubForm2(QWidget *parent);
-    virtual ~SubForm2() {guardaconfig();}
-    ;
-    virtual bool eventFilter(QObject *obj, QEvent *ev);
-
     void setDBTableName(QString nom) {
         m_tablename=nom;
     };
     void setDBCampoId(QString nom) {
         m_campoid = nom;
     };
+
+    void situarse(unsigned int, unsigned int);
+    Q3PtrList<SDBRecord> *lista(){return &m_lista;};
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
     SDBRecord *newSDBRecord();
-    void setcompany(postgresiface2 *c) {
-        _depura("ListCompArticulo setCompany", 0);
-        m_companyact = c;
-    };
-    virtual void nuevoRegistro();
-	void pintaCabeceras();
-	void setColumnValue(QString, QString);
-	QString DBvalue(QString campo, int row=-1);
 
-    virtual int borrar();
-    virtual int borrar(int);
-    virtual void guardar();
-    virtual void vaciar() {};
-    virtual void pintar() {};
-    virtual int cargar(cursor2 *cur);
+    void setColumnValue(QString, QString);
+    QString DBvalue(QString campo, int row=-1);
     SDBRecord *SubForm2::lineaact();
     SDBRecord *SubForm2::lineaat(int row);
-public:
-    virtual void editFinished(int row, int col) {_depura ("editFinished aun no implementado",1);};
-    virtual void pressedAsterisk(int row, int col) {_depura ("pressedAsterisk aun no implementado",1);};
+
+    virtual void nuevoRegistro();
+    virtual int borrar();
+    virtual int borrar(int);
+    virtual int guardar();
+    virtual int cargar(cursor2 *cur);
+    virtual void pintar();
+    virtual bool eventFilter(QObject *obj, QEvent *ev);
+    virtual void pressedSlash(int row, int col);
+    virtual void pressedAsterisk(int row, int col);
+    virtual void pressedPlus(int row, int col);
+    virtual void editFinished(int row, int col);
+public slots:
+	void sortByColumn(int col);
+signals:
+	void editFinish(int, int);
 };
 
 #endif

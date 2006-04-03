@@ -251,8 +251,6 @@ QString CobrosList::generaFiltro() {
 
     if (m_fechafin->text() != "")
         filtro += " AND fechacobro <= '"+m_fechafin->text()+"' ";
-
-    //    filtro += " ORDER BY idcobro";
     return (filtro);
 }
 
@@ -265,11 +263,6 @@ void CobrosList::on_mui_editar_clicked() {
     else
         _depura("Debe seleccionar una linea",2);
 }
-
-
-
-
-
 
 
 void CobrosList::on_mui_crear_clicked() {

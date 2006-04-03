@@ -24,32 +24,51 @@
 #include <Q3Table>
 #include <QEvent>
 
-#include "listlinpedidoproveedor.h"
+
 #include "company.h"
-#include "linpedidoproveedor.h"
+#include "subform2bf.h"
+#include "fixed.h"
 
-
-class ListLinPedidoProveedorView : public Q3Table , public ListLinPedidoProveedor
-{
-	Q_OBJECT
-
+class ListLinPedidoProveedorView : public SubForm2Bf {
+    Q_OBJECT
 public:
-	ListLinPedidoProveedorView(QWidget *parent = 0, const char *name = 0);
-	~ListLinPedidoProveedorView();
-	virtual void pintaListLinPedidoProveedor();
-	virtual void pintalinListLinPedidoProveedor(int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	LinPedidoProveedor *lineaat(int);
-	LinPedidoProveedor *lineaact();
-	void cargaconfig();
-	void guardaconfig();
-
+    QString mdb_idpedidoproveedor;
+    ListLinPedidoProveedorView(QWidget *parent = 0);
+    ~ListLinPedidoProveedorView() {}
+    ;
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borraLinPedidoProveedoract();
+    virtual void cargar(QString idpedidoproveedor) {
+        _depura("ListLinPedidoProveedorView::cargar\n",0);
+        mdb_idpedidoproveedor = idpedidoproveedor;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+
+    Fixed calculabase() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor",i)) * Fixed(DBvalue("cantlpedidoproveedor",i));
+		base = base + totpar;
+        }// end for
+	return base;
+    };
+
+
+    Fixed calculaiva() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor",i)) * Fixed(DBvalue("ivalpedidoproveedor",i));
+		base = base + totpar;
+        }// end for
+	return base;
 };
+
+
+	virtual void editFinished(int, int);
+
+};
+
+
 
 #endif

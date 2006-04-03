@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include <pedidoproveedorbase.h>
+#include "ui_pedidoproveedorbase.h"
 #include "factura.h"
 #include "listlinpedidoproveedorview.h"
 #include "listdescpedidoproveedorview.h"
@@ -41,154 +41,104 @@
 #include "postgresiface2.h"
 
 
-class PedidoProveedorView : public PedidoProveedorBase, public PedidoProveedor,
-				public dialogChanges
-{
-	Q_OBJECT
+class PedidoProveedorView : public QWidget, public Ui_PedidoProveedorBase, public PedidoProveedor,
+    public dialogChanges {
+    Q_OBJECT
 
 public:
-	PedidoProveedorView(company *, QWidget *parent = 0, const char *name = 0);
-	~PedidoProveedorView();
-	void closeEvent(QCloseEvent *);
-	void generarAlbaran();
-	void inicialize();
-	void pintaidproveedor(QString id)
-	{
-		m_proveedor->setidproveedor(id);
-	};
-	void pintaidalmacen(QString id)
-	{
-		m_almacen->setidalmacen(id);
-	};
-	void pintaidpedidoproveedor(QString)
-	{
-	};
-	void pintanumpedidoproveedor(QString id)
-	{
-		m_numpedidoproveedor->setText(id);
-	};
-	void pintafechapedidoproveedor(QString id)
-	{
-		m_fechapedidoproveedor->setText(id);
-	};
-	void pintadescpedidoproveedor(QString id)
-	{
-		m_descpedidoproveedor->setText(id);
-	};
-	void pintaidforma_pago(QString id)
-	{
-		m_forma_pago->setidforma_pago(id);
-	};
-	void pintaidtrabajador(QString id)
-	{
-		m_trabajador->setidtrabajador(id);
-	};
-	void pintacomentpedidoproveedor(QString id)
-	{
-		m_comentpedidoproveedor->setText(id);
-	};
-	void pintarefpedidoproveedor(QString id)
-	{
-		m_refpedidoproveedor->setText(id);
-	};
-	void pintacontactpedidoproveedor(QString id)
-	{
-		m_contactpedidoproveedor->setText(id);
-	};
-	void pintatelpedidoproveedor(QString id)
-	{
-		m_telpedidoproveedor->setText(id);
-	};
-	void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
-	void pintaprocesadopedidoproveedor(QString id)
-	{
-		if (id == "t" || id == "TRUE")
-		{
-			m_procesadopedidoproveedor->setChecked(TRUE);
-		} else {
-			m_procesadopedidoproveedor->setChecked(FALSE);
-		}
-	};    
+    PedidoProveedorView(company *, QWidget *parent = 0, const char *name = 0);
+    ~PedidoProveedorView();
+    void closeEvent(QCloseEvent *);
+    void generarAlbaran();
+    void inicialize();
+    void pintaidproveedor(QString id) {
+        m_proveedor->setidproveedor(id);
+    };
+    void pintaidalmacen(QString id) {
+        m_almacen->setidalmacen(id);
+    };
+    void pintaidpedidoproveedor(QString) {}
+    ;
+    void pintanumpedidoproveedor(QString id) {
+        m_numpedidoproveedor->setText(id);
+    };
+    void pintafechapedidoproveedor(QString id) {
+        m_fechapedidoproveedor->setText(id);
+    };
+    void pintadescpedidoproveedor(QString id) {
+        m_descpedidoproveedor->setText(id);
+    };
+    void pintaidforma_pago(QString id) {
+        m_forma_pago->setidforma_pago(id);
+    };
+    void pintaidtrabajador(QString id) {
+        m_trabajador->setidtrabajador(id);
+    };
+    void pintacomentpedidoproveedor(QString id) {
+        m_comentpedidoproveedor->setText(id);
+    };
+    void pintarefpedidoproveedor(QString id) {
+        m_refpedidoproveedor->setText(id);
+    };
+    void pintacontactpedidoproveedor(QString id) {
+        m_contactpedidoproveedor->setText(id);
+    };
+    void pintatelpedidoproveedor(QString id) {
+        m_telpedidoproveedor->setText(id);
+    };
+    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    void pintaprocesadopedidoproveedor(QString id) {
+        if (id == "t" || id == "TRUE") {
+            m_procesadopedidoproveedor->setChecked(TRUE);
+        } else {
+            m_procesadopedidoproveedor->setChecked(FALSE);
+        }
+    };
+
+
+    virtual int guardar();
 
 public slots:
-	virtual bool close(bool);
-	virtual void s_comentpedidoproveedortextChanged()
-	{
-		setcomentpedidoproveedor(m_comentpedidoproveedor->text());
-	};
-	virtual void s_numpedidoproveedortextChanged(const QString &val)
-	{
-		setnumpedidoproveedor(val);
-	};
-	virtual void s_proveedorvalueChanged(QString val)
-	{
-		setidproveedor(val);
-	};
-	virtual void s_fechapedidoproveedorvalueChanged(QString val)
-	{
-		setfechapedidoproveedor(val);
-	};
-	virtual void s_almacenvalueChanged(QString val)
-	{
-		setidalmacen(val);
-	};
-	virtual void s_trabajadorvalueChanged(QString val)
-	{
-		setidtrabajador(val);
-	};
-	virtual void s_forma_pagovalueChanged(QString val)
-	{
-		setidforma_pago(val);
-	};
-	virtual void s_refpedidoproveedortextChanged(const QString &val)
-	{
-		setrefpedidoproveedor(val);
-	};
-	virtual void s_descpedidoproveedortextChanged(const QString &val)
-	{
-		setdescpedidoproveedor(val);
-	};
-	virtual void s_savePedidoProveedor()
-	{
-		guardaPedidoProveedor();
-	};
-	virtual int cargar(QString id);
-	virtual void s_deletePedidoProveedor()
-	{
-		borrar();
-	};
-	virtual void s_printPedidoProveedor()
-	{
-		imprimirPedidoProveedor();
-	};
-	virtual void s_contactpedidoproveedortextChanged(const QString &val)
-	{
-		setcontactpedidoproveedor(val);
-	};
-	virtual void s_telpedidoproveedortextChanged(const QString &val)
-	{
-		settelpedidoproveedor(val);
-	};
-	virtual void s_procesadopedidoproveedorstateChanged(int i)
-	{
-		if (i)
-		{
-			setprocesadopedidoproveedor("TRUE");
-		} else {
-			setprocesadopedidoproveedor("FALSE");
-		}
-	};
-	/// Este slot se activa cuando hay cambios en los subformularios.
-	virtual void s_pintaTotales()
-	{
-		calculaypintatotales();
-	};
-	virtual void s_verpresupuesto();
-	virtual void s_generarAlbaran()
-	{
-		generarAlbaran();
-	};
-	virtual void s_nuevoCobro();
+    virtual void on_mui_borrar_clicked() {
+        int val = QMessageBox::warning( this, tr("Borrar Pedido Proveedor."),
+                                        tr("Desea eliminar el pedido del desgraciado proveedor que siempre le sirve tarde las cosas ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        if (val == 0) {
+            borrar();
+            dialogChanges_cargaInicial();
+		_depura(tr("Asi me gusta, con valentia !!!!!"),2);
+
+            close();
+        }// end if
+    };
+    virtual int cargar(QString id);
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+        dialogChanges_cargaInicial();
+    };
+    virtual void on_mui_imprimir_clicked() {
+        imprimirPedidoProveedor();
+    };
+
+
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {
+        calculaypintatotales();
+    };
+    virtual void on_mui_pagar_clicked();
+    virtual void on_mui_facturar_clicked() {
+        generarAlbaran();
+    };
+    virtual void on_m_descuentos_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_subform3_editFinish(int, int) {
+        calculaypintatotales();
+    };
+
+    virtual void on_mui_aceptar_clicked() {
+        if (!guardar() )
+            close();
+    };
 };
 
 #endif

@@ -30,63 +30,6 @@
 QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {
 }
 
-/*
-void QTableWidget2::sortColumn ( int col, bool ascending, bool) {
-    int lastcol = numCols();
-
-    insertColumns(lastcol,3);
-    hideColumn(lastcol);
-    hideColumn(lastcol + 1);
-    hideColumn(lastcol + 2);
-     bool oknumero = TRUE;
-     bool okfecha = TRUE;
-
-    for (int x = 0; x < numRows(); x++) {
-		QString cad = text(x,col);
-		if (cad != "") {
-			setText(x,lastcol+0,cad);
-			/// Comprobamos si es un número.
-			cad.toDouble(&oknumero);
-			if (oknumero) {
-				while (cad.length() < 10)
-					cad.insert(0,"0");
-				setText(x,lastcol + 1,cad);
-			}// end if
-
-			if (okfecha) {
-				if (cad[2] == '/') {
-					QDate fech = normalizafecha(cad);
-					cad = fech.toString(Qt::ISODate);
-				} else {
-					okfecha = FALSE;
-				}// end if
-				setText(x,lastcol + 2,cad);
-			}// end if
-		}// end if
-
-    } // end for
-
-	if (oknumero)
-  		  Q3Table::sortColumn(lastcol+1,ascending,true);
-	else if (okfecha) 
-  		  Q3Table::sortColumn(lastcol+2,ascending,true);	
-	else 
-  		  Q3Table::sortColumn(lastcol+0,ascending,true);	
-
-    removeColumn(lastcol+2);
-    removeColumn(lastcol+1);
-    removeColumn(lastcol+0);
-}
-
-*/
-
-/*
-QWidget *QTableWidget2::beginEdit(int row, int col, bool type) {
-    return(Q3Table::beginEdit(row,col,type));
-}
-*/
-
-
 bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
     _depura("QTableWidget2::INIT_eventFilter()\n",0);
     static bool ctrlpulsado= FALSE;

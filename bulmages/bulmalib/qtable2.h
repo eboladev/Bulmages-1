@@ -37,12 +37,7 @@ public:
    int modo; // Indica el modo de dibujo.
 public:
   QTableWidget2(QWidget * parent = 0 );
-//  void sortColumn ( int col, bool ascending = TRUE, bool wholeRows = TRUE );
-//  QWidget *beginEdit (int, int, bool);
    virtual bool eventFilter( QObject *obj, QEvent *event );
-//   virtual void setItem(int, int, QTableWidgetItem2 *);
-//   void  paintCell ( QPainter * , int , int , const QRect &, bool  );
-
 	void setText( int x, int y, const QString & val) {
 			QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
 		setItem(x, y, newitem);

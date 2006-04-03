@@ -229,14 +229,15 @@ void company::s_newAlbaranPro() {
     bud->pintaAlbaranProveedor();
     bud->show();
     _depura ("END company::s_newAlbaranPro",0);
-}// end s_newAlbaranProveedor
+}
 
 void company::s_newPedidoPro() {
+    _depura ("company::s_newPedidoPro",0);
     PedidoProveedorView *bud = new PedidoProveedorView(this,0,theApp->translate("Edicion de Pedidos Proveedor", "company"));
     m_pWorkspace->addWindow(bud);
-    bud->pintaPedidoProveedor();
+    bud->pintar();
     bud->show();
-}// end s_newAlbaranProveedor
+}
 
 void company::lAlbaranesProveedor () {
     m_albaranesproveedor->hide();

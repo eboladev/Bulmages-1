@@ -21,13 +21,13 @@
 #ifndef BUSQUEDAFORMA_PAGO_H
 #define BUSQUEDAFORMA_PAGO_H
 
-#include <Q3ComboBox>
+#include <QComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
 #include "funcaux.h"
 
-class BusquedaFormaPago : public Q3ComboBox
+class BusquedaFormaPago : public QComboBox
 {
 	Q_OBJECT
 
@@ -36,13 +36,16 @@ private:
 	cursor2 *m_cursorcombo;
 
 public:
-	BusquedaFormaPago(QWidget *parent = 0, const char *name = 0);
+	BusquedaFormaPago(QWidget *parent = 0);
 	~BusquedaFormaPago();
 	void setcompany(company *comp)
 	{
 		companyact = comp;
 	};
 	virtual void setidforma_pago(QString idforma_pago);
+	QString idforma_pago() {
+		return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
+	};
 
 public slots:
 	void m_activated(int index)

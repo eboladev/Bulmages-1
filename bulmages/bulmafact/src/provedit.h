@@ -21,7 +21,7 @@
 #ifndef PROVEDIT_H
 #define PROVEDIT_H
 
-#include "ui_provedit_base.h"
+#include "ui_proveditbase.h"
 
 
 class company;

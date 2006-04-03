@@ -46,6 +46,7 @@ public:
 	~PagoView();
 	void manageArticle(int);  
 	void closeEvent(QCloseEvent *);
+
 	void pintafechapago(QString id)
 	{
 		mui_fechapago->setText(id);

@@ -26,13 +26,82 @@
 
 #include "subform.h"
 
-SubForm2::SubForm2(QWidget *parent) : QTableWidget2(parent) {
+void SDBRecord::refresh() {
+    SDBCampo *camp;
+    for (camp=(SDBCampo *) m_lista.first(); camp; camp= (SDBCampo *) m_lista.next())
+        camp->refresh();
+
+}
+
+
+int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
+    SDBCampo *camp = new SDBCampo(m_conexionbase, nom, typ, res, nomp);
+    camp->set
+    ("");
+    m_lista.append(camp);
+    return 0;
+}
+
+/// -------------------------------------------
+
+void SDBCampo::refresh() {
+    if(tipo() == DBCampo::DBboolean) {
+        DBCampo::set
+            (checkState()==Qt::Checked?"TRUE":"FALSE");
+    } else
+        DBCampo::set
+            (text());
+}
+
+
+int SDBCampo::set
+    (QString val) {
+    if(tipo() == DBCampo::DBboolean) {
+        if (val == "TRUE" || val == "t")
+            setCheckState(Qt::Checked);
+        else
+            setCheckState(Qt::Unchecked);
+
+    } else
+        QTableWidgetItem2::setText(val);
+
+    DBCampo::set
+        (val);
+    return 0;
+}
+
+
+
+
+
+
+
+
+/// ------------------------------------------------------------
+
+SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
+    m_nomcampo = nom;
+    m_valorcampo="";
+    m_nompresentacion = nomp;
+    m_restricciones = res;
+    m_options = opt;
+    m_tipo = typ;
+}
+
+
+
+/// ---------------------------------------------------------
+
+
+
+SubForm2::SubForm2(QWidget *parent) : QTableWidget(parent) {
     setSelectionMode( QAbstractItemView::SingleSelection );
     setSelectionBehavior( QAbstractItemView::SelectRows);
     setAlternatingRowColors(TRUE);
     setSortingEnabled(TRUE);
     installEventFilter(this);
     m_insercion = FALSE;
+    m_primero = TRUE;
 }
 
 
@@ -44,43 +113,57 @@ SDBRecord *SubForm2::newSDBRecord() {
     SHeader * linea;
     for (linea=m_lcabecera.first(); linea; linea=m_lcabecera.next()) {
         _depura("agregamos una cabecera",0);
-        rec->addDBCampo(linea->m_nomcampo, linea->m_type, linea->m_restrict, linea->m_nompresentacion );
+        rec->addDBCampo(linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     }// end for
-
-
     int j=0;
     SDBCampo*camp;
     for(camp =(SDBCampo *) rec->lista()->first(); camp; camp= (SDBCampo *) rec->lista()->next()) {
         SHeader *head = m_lcabecera.at(j);
-        if (head->m_options & SHeader::DBNoWrite) {
-            _depura("cambiamos propieades de flag",0);
-            camp->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable);
-            //camp->setBackgroundColor(QColor("#FF0000"));
-        }
+        Qt::ItemFlags flags=0;
+        flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+        if (!(head->options() & SHeader::DBNoWrite))
+            flags |= Qt::ItemIsEditable;
+        if (head->tipo() == DBCampo::DBboolean)
+            flags |= Qt::ItemIsUserCheckable;
+        camp->setFlags(flags);
         j++;
     }// end for
-
-
-
     return rec;
 }
+
+
+/** Este metodo crea el registro final cuando se trata de subformularios con la opcion de insertar nuevos registros en el subformulario.
+**/
+void SubForm2::nuevoRegistro() {
+    _depura("SubForm2::nuevoRegistro",0);
+    if (!m_insercion)
+        return;
+    SDBRecord *rec = newSDBRecord();
+    m_lista.append(rec);
+    insertRow(rowCount());
+    SDBCampo *camp;
+    int j=0;
+    for(camp =(SDBCampo *) rec->lista()->first(); camp; camp= (SDBCampo *) rec->lista()->next()) {
+        setItem(rowCount()-1,j,camp);
+        j++;
+    }// end for
+}
+
 
 
 void SubForm2::pintaCabeceras() {
     _depura("SubForm2::pintaCabeceras",0);
     QStringList headers;
     SHeader * linea;
-
     int i=0;
     for (linea=m_lcabecera.first(); linea; linea=m_lcabecera.next()) {
-        headers << linea->m_nomcampo;
-        if (linea->m_options & SHeader::DBNoView)
+        headers << linea->nomcampo();
+        if (linea->options() & SHeader::DBNoView)
             hideColumn(i);
         else
             showColumn(i);
         i++;
     }// end for
-
     setHorizontalHeaderLabels (headers);
 }
 
@@ -94,27 +177,41 @@ void SubForm2::situarse(unsigned int row, unsigned int col) {
         if (ncol == m_lcabecera.count()) {
             ncol=0;
             nrow++;
-        }
+        }// end if
         linea = m_lcabecera.at(ncol);
         invalido = FALSE;
-        if(linea->m_options & SHeader::DBNoView)
+        if(linea->options() & SHeader::DBNoView)
             invalido = TRUE;
-        if (linea->m_options & SHeader::DBNoWrite)
+        if (linea->options() & SHeader::DBNoWrite)
             invalido = TRUE;
     }// end while
     setCurrentCell(nrow, ncol);
 }
 
 
+/** Cuando tenemos un registro que no se tiene que cargar (pq es nuevo o algo
+ ** así) de la base de datos, con la funcion pintar lo dejamos en un estado que
+ ** se podria considerar presentable para poder operar con el subformulario.
+ **/
+void SubForm2::pintar() {
+    _depura("SubForm2::pintar",0);
+    setColumnCount(m_lcabecera.count());
+    pintaCabeceras();
+    if (m_primero) {
+        cargaconfig();
+        m_primero = FALSE;
+    }// end if
+    nuevoRegistro();
+    _depura("END SubForm2::pintar",0);
+}
+
 
 int SubForm2::cargar(cursor2 *cur) {
     _depura("SubForm2::cargar",0);
-    static bool primero=TRUE;
-
     while (rowCount() ) {
         m_lista.removeFirst();
         removeRow(0);
-    }
+    }// end while
     while (!cur->eof()) {
         SDBRecord *rec = newSDBRecord();
         rec->DBload(cur);
@@ -123,9 +220,9 @@ int SubForm2::cargar(cursor2 *cur) {
     }// end while
     setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (primero) {
+    if (m_primero) {
         cargaconfig();
-        primero = FALSE;
+        m_primero = FALSE;
     }// end if
     setRowCount(m_lista.count());
     SDBRecord *reg;
@@ -135,10 +232,10 @@ int SubForm2::cargar(cursor2 *cur) {
         int j=0;
         SDBCampo *camp;
         for(camp =(SDBCampo *) reg->lista()->first(); camp; camp= (SDBCampo *) reg->lista()->next()) {
-            _depura("ponemos un item",0);
+            _depura("ponemos un item"+camp->valorcampo(),0);
             setItem(i,j,camp);
             j++;
-        }
+        }// end for
         i++;
     }// end for
     nuevoRegistro();
@@ -150,15 +247,14 @@ int SubForm2::cargar(cursor2 *cur) {
 SDBRecord *SubForm2::lineaact() {
     _depura("SubForm2::lineaact()\n",0);
     return lineaat(currentRow());
-}// end lineaact
+}
 
 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 SDBRecord *SubForm2::lineaat(int row) {
     _depura("SubForm2::lineaat()\n", 0);
     return(m_lista.at(row));
-    _depura("SubForm2::lineaat()\n", 0);
-}// end lineaat
+}
 
 
 bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
@@ -168,7 +264,13 @@ bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
         int col=currentColumn();
         int row=currentRow();
         switch (k->key()) {
+        case Qt::Key_Slash:
+            pressedSlash(row, col);
+            return TRUE;
+            break;
         case Qt::Key_Plus:
+            pressedPlus(row, col);
+            return TRUE;
             break;
         case Qt::Key_Asterisk:
             pressedAsterisk(row, col);
@@ -177,6 +279,7 @@ bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
             editFinished(row, col);
+            emit editFinish( row, col);
             if (row == rowCount()-1)
                 nuevoRegistro();
             situarse(row,col);
@@ -185,7 +288,7 @@ bool SubForm2::eventFilter( QObject *obj, QEvent *ev ) {
         }// end switch
     }// end if
     _depura("SubForm2::END_eventFilter()\n",0);
-    return QTableWidget2::eventFilter( obj, ev );
+    return QTableWidget::eventFilter( obj, ev );
 } //end eventFilter
 
 
@@ -200,20 +303,7 @@ int SubForm2::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 };
 
 
-void SubForm2::nuevoRegistro() {
-    _depura("nuevoRegistro",0);
-    if (!m_insercion)
-        return;
-    SDBRecord *rec = newSDBRecord();
-    m_lista.append(rec);
-    insertRow(rowCount());
-    SDBCampo *camp;
-    int j=0;
-    for(camp =(SDBCampo *) rec->lista()->first(); camp; camp= (SDBCampo *) rec->lista()->next()) {
-        setItem(rowCount()-1,j,camp);
-        j++;
-    }// end for
-}
+
 
 void SubForm2::setColumnValue(QString campo, QString valor) {
     SDBRecord *rec;
@@ -233,16 +323,23 @@ QString SubForm2::DBvalue(QString campo, int row) {
     return rec->DBvalue(campo);
 }
 
-void SubForm2::guardar() {
+int SubForm2::guardar() {
+    _depura("SubForm2::guardar",0);
     SDBRecord *rec;
     int i=0;
-    for(rec=m_lista.at(i++); i<m_lista.count() ;rec=m_lista.at(i++))
-        rec->guardar();
+    int error=0;
+    for(rec=m_lista.at(i++); i<m_lista.count() ;rec=m_lista.at(i++)) {
+        rec->refresh();
+        error = rec->guardar();
+        if (error)
+            return -1;
+    }// end for
 
     if(!m_insercion) {
         rec = m_lista.at(m_lista.count()-1);
-        rec->guardar();
+        error = rec->guardar();
     }
+    return error;
 }
 
 int SubForm2::borrar() {
@@ -253,12 +350,11 @@ int SubForm2::borrar() {
         error = rec->borrar();
         if (error)
             return -1;
-    }
-
+    }// end for
     if(!m_insercion) {
         rec = m_lista.at(m_lista.count()-1);
         error = rec->borrar();
-    }
+    }// end if
     return error;
 }
 
@@ -280,7 +376,6 @@ int SubForm2::borrar(int row) {
 void SubForm2::guardaconfig() {
     _depura("SubForm2::guardaconfig",0);
     QString aux = "";
-
     QFile file( confpr->valor(CONF_DIR_USER)+m_tablename+"tablecfn.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
@@ -300,9 +395,41 @@ void SubForm2::cargaconfig() {
         QTextStream stream( &file );
         for (int i = 0; i < columnCount(); i++) {
             QString linea = stream.readLine();
-            setColumnWidth(i, linea.toInt());
+            if (linea.toInt() > 0)
+                setColumnWidth(i, linea.toInt());
+            else
+                setColumnWidth(i, 2.5);
         }// end for
         file.close();
     }// end if
+}
+
+void SubForm2::pressedSlash(int , int ) {
+    _depura ("pulsadoSlash aun no implementado",2);
+}
+void SubForm2::pressedAsterisk(int , int ) {
+    _depura ("pressedAsterisk aun no implementado",1);
+}
+void SubForm2::pressedPlus(int , int ) {
+    _depura ("pulsadoPlus aun no implementado",1);
+}
+void SubForm2::editFinished(int row, int col) {
+    _depura ("editFinished aun no implementado",1);
+    emit(editFinish(row, col));
+}
+
+
+void SubForm2::sortItems(int col, Qt::SortOrder orden) {
+    _depura("ordenacion desabilitada",2);
+}
+
+
+void SubForm2::sortByColumn(int col) {
+    _depura("SubForm2::sortByColumn",0);
+    if (m_insercion) {
+        removeRow(rowCount()-1);
+    }// end if
+    QTableWidget::sortByColumn(col);
+    nuevoRegistro();
 }
 

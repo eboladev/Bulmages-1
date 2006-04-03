@@ -27,11 +27,10 @@
 #include <Q3Table>
 #include <Q3PtrList>
 
-#include "listlinpedidoproveedor.h"
-#include "listdescpedidoproveedor.h"
+#include "listlinpedidoproveedorview.h"
+#include "listdescpedidoproveedorview.h"
 #include "fixed.h"
 #include "company.h"
-#include "linpedidoproveedor.h"
 #include "dbrecord.h"
 /// Clase que hace de intermediaria entre la tabla de factura de la base de datos y
 /// el programa.
@@ -41,8 +40,8 @@ class PedidoProveedor : public DBRecord
 {
 
 protected:
-	ListLinPedidoProveedor *listalineas;
-	ListDescuentoPedidoProveedor *listadescuentos;
+	ListLinPedidoProveedorView *listalineas;
+	ListDescuentoPedidoProveedorView *listadescuentos;
 	company *companyact;
 
 public:	
@@ -50,27 +49,27 @@ public:
 	virtual ~PedidoProveedor();
 	/// Establece cual es la lista subformulario del presupuesto. Normalmente
 	/// para apuntar listlinpresupuestoview.
-	void setListLinPedidoProveedor(ListLinPedidoProveedor *a)
+	void setListLinPedidoProveedor(ListLinPedidoProveedorView *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setListDescuentoPedidoProveedor(ListDescuentoPedidoProveedor *a)
+	void setListDescuentoPedidoProveedor(ListDescuentoPedidoProveedorView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
 	};
 	virtual int cargar(QString);
-	void pintaPedidoProveedor();
-	void guardaPedidoProveedor();
-	int borrar();
+	virtual void pintar();
+	virtual int guardar();
+	virtual int borrar();
 	void imprimirPedidoProveedor();
 	void calculaypintatotales();   
-	ListLinPedidoProveedor* getlistalineas()
+	ListLinPedidoProveedorView* getlistalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoPedidoProveedor* getlistadescuentos()
+	ListDescuentoPedidoProveedorView* getlistadescuentos()
 	{
 		return listadescuentos;
 	};
@@ -142,8 +141,8 @@ public:
 	void setidpedidoproveedor(QString val)
 	{
 		setDBvalue("idpedidoproveedor", val);
-		listalineas->setidpedidoproveedor(val);
-		listadescuentos->setidpedidoproveedor(val);
+		listalineas->setColumnValue( "idpedidoproveedor",val);
+		listadescuentos->setColumnValue( "idpedidoproveedor",val);
 	};
 	void setnumpedidoproveedor(QString val)
 	{

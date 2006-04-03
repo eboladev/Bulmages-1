@@ -37,10 +37,10 @@ public:
 	Pago(company *);
 	virtual ~Pago();
 	virtual int cargar(QString);
-	void pintaPago();
+	virtual void pintar();
 	void guardaPago();
 	void borraPago();
-	void vaciaPago();   
+	void vaciar();   
 	virtual void pintaidpago(QString)
 	{
 	};

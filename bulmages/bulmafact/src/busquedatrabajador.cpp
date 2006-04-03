@@ -11,10 +11,10 @@
 //
 #include "busquedatrabajador.h"
 #include "company.h"
-#include <Q3ComboBox>
+#include <QComboBox>
 
-BusquedaTrabajador::BusquedaTrabajador(QWidget *parent, const char *name)
-: Q3ComboBox(parent, name) {
+BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
+: QComboBox(parent) {
     companyact=NULL;
     m_cursorcombo=NULL;
     
@@ -22,7 +22,10 @@ BusquedaTrabajador::BusquedaTrabajador(QWidget *parent, const char *name)
 }
 
 
-BusquedaTrabajador::~BusquedaTrabajador() {}
+BusquedaTrabajador::~BusquedaTrabajador() {
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+}
 
 void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     if (m_cursorcombo != NULL)

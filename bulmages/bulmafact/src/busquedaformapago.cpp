@@ -11,10 +11,10 @@
 //
 #include "busquedaformapago.h"
 #include "company.h"
-#include <Q3ComboBox>
+#include <QComboBox>
 
-BusquedaFormaPago::BusquedaFormaPago(QWidget *parent, const char *name)
-: Q3ComboBox(parent, name) {
+BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
+: QComboBox(parent) {
     companyact=NULL;
     m_cursorcombo=NULL;
     
@@ -22,7 +22,10 @@ BusquedaFormaPago::BusquedaFormaPago(QWidget *parent, const char *name)
 }
 
 
-BusquedaFormaPago::~BusquedaFormaPago() {}
+BusquedaFormaPago::~BusquedaFormaPago() {
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+}
 
 void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     if (m_cursorcombo != NULL)

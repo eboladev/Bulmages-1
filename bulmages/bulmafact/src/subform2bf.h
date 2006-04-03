@@ -35,12 +35,13 @@
 class SubForm2Bf : public SubForm2 {
 Q_OBJECT
 public:
-	SubForm2Bf(QWidget *parent = 0, const char *name = 0);
+	SubForm2Bf(QWidget *parent = 0);
 	virtual ~SubForm2Bf() {};
 
 public slots:
         virtual void contextMenuEvent (QContextMenuEvent *);
     virtual void editFinished(int row, int col);
+    virtual void pressedSlash(int row, int col);
     virtual void pressedAsterisk(int row, int col);
 };
 

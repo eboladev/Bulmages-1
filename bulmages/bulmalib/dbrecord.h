@@ -10,64 +10,31 @@ class DBCampo {
 public:
    enum dbtype {DBint=1, DBvarchar=2, DBdate=3, DBnumeric=4, DBboolean=5};
    enum dbrestrict {DBNothing=0, DBNotNull=1, DBPrimaryKey=2, DBNoSave=4, DBAuto=5};
-public:
+protected:
 	QString m_nomcampo;
 	QString m_valorcampo;
 	QString m_nompresentacion;
 	int   m_restrict;
-	dbtype m_type;
-   	postgresiface2 *conexionbase;
+	dbtype m_tipo;
+   	postgresiface2 *m_conexionbase;
 public:
-	DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp=""){
-		conexionbase = com;
-		m_nomcampo = nom;
-		m_valorcampo="";
-		m_nompresentacion = nomp;
-		m_restrict = res;
-		m_type = typ;
-	};
+	DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp="");
 	virtual ~DBCampo(){};
+
+	postgresiface2 *conexionbase() {return m_conexionbase;};
+
+	dbtype tipo() {return m_tipo;};
 	virtual int set(QString val) {m_valorcampo=val;return 0;};
 	int restrictcampo() {return m_restrict;};
 	QString nomcampo() {return m_nomcampo;};
 	QString valorcampo() {return m_valorcampo;};
-	QString valorcampoprep(int &error) {
-		error = 0;
-		if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
-				if (m_valorcampo == "") {
-					_depura("Campo "+m_nompresentacion+" vacio",2);
-					error = -1;
-					return "";
-				}// end if
-		}
-		switch (m_type) {
-			case DBint:
-				if (m_valorcampo == "") return "NULL";
-				return conexionbase->sanearCadena(m_valorcampo);
-			case DBvarchar:
-				return "'"+conexionbase->sanearCadena(m_valorcampo)+"'";
-			case DBdate:
-				if (m_valorcampo == "") return "NULL";
-				return "'"+conexionbase->sanearCadena(m_valorcampo)+"'";
-			case DBnumeric:
-				if (m_valorcampo == "") return "NULL";
-				return m_valorcampo;
-			case DBboolean:
-				if (m_valorcampo == "") return "NULL";
-				if (m_valorcampo == "f" || m_valorcampo == "t")
-				return "'"+conexionbase->sanearCadena(m_valorcampo)+"'";
-				return conexionbase->sanearCadena(m_valorcampo);
-		}// end switch
-		error = -1;
-		_depura("Error en la conversion de tipos",2);
-		return "";
-	};
+	QString valorcampoprep(int &error);
 };
 	
 class DBRecord {
 protected:
     Q3PtrList<DBCampo> m_lista;
-    postgresiface2 *conexionbase;
+    postgresiface2 *m_conexionbase;
     QString m_tablename;
     QString m_campoid;
     bool m_nuevoCampo;

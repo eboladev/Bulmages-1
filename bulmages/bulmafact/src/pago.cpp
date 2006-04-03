@@ -41,17 +41,17 @@ void Pago::borraPago() {
 		return;
 	}// en dif
         companyact->commit();
-        vaciaPago();
-        pintaPago();
+        vaciar();
+        pintar();
     }// end if
 }// end borraPago
 
 
-void Pago::vaciaPago() {
+void Pago::vaciar() {
     DBclear();
 }// end vaciaPago
 
-void Pago::pintaPago() {
+void Pago::pintar() {
     pintaidpago(DBvalue("idpago"));
     pintaidproveedor(DBvalue("idproveedor"));
     pintafechapago(DBvalue("fechapago"));
@@ -70,7 +70,7 @@ int Pago::cargar(QString idpago) {
         DBload(cur);
     }// end if
     delete cur;
-    pintaPago();
+    pintar();
 	return 0;
 }// end chargeBudget
 
@@ -85,7 +85,6 @@ void Pago::guardaPago() {
     }// end if
     setidpago(id);
     companyact->commit();
-//    cargaPago(id);
 }// end guardaPago
 
 

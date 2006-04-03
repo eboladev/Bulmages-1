@@ -20,12 +20,15 @@
 #include "articulolist.h"
 
 
-SubForm2Bf::SubForm2Bf(QWidget *parent, const char *) : SubForm2(parent) {
+SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm2(parent) {
+
 };
 
 void SubForm2Bf::pressedAsterisk(int row, int col) {
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
+
+
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
     _depura("ListCompArticuloView::searchArticle",0);
@@ -43,8 +46,21 @@ void SubForm2Bf::pressedAsterisk(int row, int col) {
         rec->setDBvalue("idarticulo",idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-    }
+    }// end if
 };
+
+
+
+void SubForm2Bf::pressedSlash(int row, int col) {
+    _depura("SubForm2Bf::pressedSlash",2);
+    SDBRecord *rec = lineaat(row);
+    SDBCampo *camp = (SDBCampo *) item(row,col);
+	QString text = editaTexto(camp->text());
+    camp->set(text);
+};
+
+
+
 
 void SubForm2Bf::editFinished(int row, int col) {
     _depura("SubForm2Bf::editFinished",0);
@@ -69,9 +85,16 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
         return;
     QMenu *popup = new QMenu(this);
     QAction *del = popup->addAction(tr("Borrar"));
+    QAction *ajust = popup->addAction(tr("Ajustar Columnas"));
+
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
         borrar(a);
+
+    if (opcion == ajust) {
+	resizeColumnsToContents();
+	}
+
     delete popup;
 }
 
