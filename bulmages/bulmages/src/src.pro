@@ -3,7 +3,7 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./introbulmages/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmages
 
-QT += qt3support
+QT += qt3support xml
 
 LANGUAGE = C++
 
@@ -146,4 +146,4 @@ TARGET = ..\..\..\installbulmages\bulmages
 #The following line was inserted by qt3to4
 QT +=  
 #The following line was inserted by qt3to4
-CONFIG += uic3
+# CONFIG += uic3

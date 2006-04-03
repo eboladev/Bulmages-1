@@ -1,230 +1,164 @@
-<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
-<class>nuevaempresadlg</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>nuevaempresadlg</cstring>
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>nuevaempresadlg</class>
+  <widget class="QDialog" name="nuevaempresadlg" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>2</y>
+        <width>485</width>
+        <height>150</height>
+      </rect>
     </property>
-    <property name="geometry">
+    <property name="minimumSize" >
+      <size>
+        <width>485</width>
+        <height>150</height>
+      </size>
+    </property>
+    <property name="maximumSize" >
+      <size>
+        <width>485</width>
+        <height>150</height>
+      </size>
+    </property>
+    <property name="windowTitle" >
+      <string>Nueva Empresa</string>
+    </property>
+    <property name="windowIcon" >
+      <pixmap>empresa.xpm</pixmap>
+    </property>
+    <widget class="Q3GroupBox" name="GroupBox1" >
+      <property name="geometry" >
         <rect>
-            <x>0</x>
-            <y>2</y>
-            <width>485</width>
-            <height>150</height>
+          <x>11</x>
+          <y>11</y>
+          <width>460</width>
+          <height>80</height>
         </rect>
-    </property>
-    <property name="minimumSize">
-        <size>
-            <width>485</width>
-            <height>150</height>
-        </size>
-    </property>
-    <property name="maximumSize">
-        <size>
-            <width>485</width>
-            <height>150</height>
-        </size>
-    </property>
-    <property name="caption">
-        <string>Nueva Empresa</string>
-    </property>
-    <property name="icon">
-        <pixmap>empresa.xpm</pixmap>
-    </property>
-    <widget class="QGroupBox">
-        <property name="name">
-            <cstring>GroupBox1</cstring>
+      </property>
+      <property name="title" >
+        <string>Datos Empresa</string>
+      </property>
+      <layout class="QGridLayout" >
+        <property name="margin" >
+          <number>0</number>
         </property>
-        <property name="geometry">
-            <rect>
-                <x>11</x>
-                <y>11</y>
-                <width>460</width>
-                <height>80</height>
-            </rect>
-        </property>
-        <property name="frameShape">
-            <enum>GroupBoxPanel</enum>
-        </property>
-        <property name="frameShadow">
-            <enum>Sunken</enum>
-        </property>
-        <property name="title">
-            <string>Datos Empresa</string>
-        </property>
-        <grid>
-            <property name="name">
-                <cstring>unnamed</cstring>
+        <item row="0" column="0" >
+          <layout class="QVBoxLayout" >
+            <property name="margin" >
+              <number>0</number>
             </property>
-            <widget class="QLayoutWidget" row="0" column="0">
-                <property name="name">
-                    <cstring>layout6</cstring>
+            <item>
+              <layout class="QHBoxLayout" >
+                <property name="margin" >
+                  <number>0</number>
                 </property>
-                <vbox>
-                    <property name="name">
-                        <cstring>unnamed</cstring>
+                <item>
+                  <widget class="QLabel" name="TextLabel1" >
+                    <property name="text" >
+                      <string>Nombre de la empresa</string>
                     </property>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout4</cstring>
+                  </widget>
+                </item>
+                <item>
+                  <widget class="QLineEdit" name="nombreempresa" />
+                </item>
+              </layout>
+            </item>
+            <item>
+              <layout class="QHBoxLayout" >
+                <property name="margin" >
+                  <number>0</number>
+                </property>
+                <item>
+                  <layout class="QHBoxLayout" >
+                    <property name="margin" >
+                      <number>0</number>
+                    </property>
+                    <item>
+                      <widget class="QLabel" name="TextLabel3" >
+                        <property name="text" >
+                          <string>Base de Datos</string>
                         </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QLabel">
-                                <property name="name">
-                                    <cstring>TextLabel1</cstring>
-                                </property>
-                                <property name="text">
-                                    <string>Nombre de la empresa</string>
-                                </property>
-                            </widget>
-                            <widget class="QLineEdit">
-                                <property name="name">
-                                    <cstring>nombreempresa</cstring>
-                                </property>
-                                <property name="frameShape">
-                                    <enum>LineEditPanel</enum>
-                                </property>
-                                <property name="frameShadow">
-                                    <enum>Sunken</enum>
-                                </property>
-                            </widget>
-                        </hbox>
-                    </widget>
-                    <widget class="QLayoutWidget">
-                        <property name="name">
-                            <cstring>layout5</cstring>
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QLineEdit" name="bdempresa" />
+                    </item>
+                  </layout>
+                </item>
+                <item>
+                  <layout class="QHBoxLayout" >
+                    <property name="margin" >
+                      <number>0</number>
+                    </property>
+                    <item>
+                      <widget class="QLabel" name="TextLabel2" >
+                        <property name="text" >
+                          <string>Ejercicio</string>
                         </property>
-                        <hbox>
-                            <property name="name">
-                                <cstring>unnamed</cstring>
-                            </property>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout2</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel3</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Base de Datos</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>bdempresa</cstring>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                            <widget class="QLayoutWidget">
-                                <property name="name">
-                                    <cstring>layout3</cstring>
-                                </property>
-                                <hbox>
-                                    <property name="name">
-                                        <cstring>unnamed</cstring>
-                                    </property>
-                                    <widget class="QLabel">
-                                        <property name="name">
-                                            <cstring>TextLabel2</cstring>
-                                        </property>
-                                        <property name="text">
-                                            <string>Ejercicio</string>
-                                        </property>
-                                    </widget>
-                                    <widget class="QLineEdit">
-                                        <property name="name">
-                                            <cstring>ejercicioempresa</cstring>
-                                        </property>
-                                    </widget>
-                                </hbox>
-                            </widget>
-                        </hbox>
-                    </widget>
-                </vbox>
-            </widget>
-        </grid>
+                      </widget>
+                    </item>
+                    <item>
+                      <widget class="QLineEdit" name="ejercicioempresa" />
+                    </item>
+                  </layout>
+                </item>
+              </layout>
+            </item>
+          </layout>
+        </item>
+      </layout>
     </widget>
-    <widget class="QLayoutWidget">
-        <property name="name">
-            <cstring>layout13</cstring>
+    <widget class="QWidget" name="layout13" >
+      <property name="geometry" >
+        <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>460</width>
+          <height>50</height>
+        </rect>
+      </property>
+      <layout class="QHBoxLayout" >
+        <property name="margin" >
+          <number>0</number>
         </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>100</y>
-                <width>460</width>
-                <height>50</height>
-            </rect>
-        </property>
-        <hbox>
-            <property name="name">
-                <cstring>unnamed</cstring>
+        <item>
+          <spacer name="Spacer1" >
+            <property name="sizeHint" >
+              <size>
+                <width>385</width>
+                <height>16</height>
+              </size>
             </property>
-            <spacer>
-                <property name="name">
-                    <cstring>Spacer1</cstring>
-                </property>
-                <property name="orientation">
-                    <enum>Horizontal</enum>
-                </property>
-                <property name="sizeType">
-                    <enum>Expanding</enum>
-                </property>
-                <property name="sizeHint">
-                    <size>
-                        <width>385</width>
-                        <height>16</height>
-                    </size>
-                </property>
-            </spacer>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>PushButton1</cstring>
-                </property>
-                <property name="text">
-                    <string>Aceptar</string>
-                </property>
-            </widget>
-            <widget class="QPushButton">
-                <property name="name">
-                    <cstring>PushButton1_2</cstring>
-                </property>
-                <property name="text">
-                    <string>Cancelar</string>
-                </property>
-            </widget>
-        </hbox>
+            <property name="sizeType" >
+              <enum>Expanding</enum>
+            </property>
+            <property name="orientation" >
+              <enum>Horizontal</enum>
+            </property>
+          </spacer>
+        </item>
+        <item>
+          <widget class="QPushButton" name="PushButton1" >
+            <property name="text" >
+              <string>Aceptar</string>
+            </property>
+          </widget>
+        </item>
+        <item>
+          <widget class="QPushButton" name="PushButton1_2" >
+            <property name="text" >
+              <string>Cancelar</string>
+            </property>
+          </widget>
+        </item>
+      </layout>
     </widget>
-</widget>
-<connections>
-    <connection>
-        <sender>PushButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>nuevaempresadlg</receiver>
-        <slot>accept()</slot>
-    </connection>
-    <connection>
-        <sender>PushButton1_2</sender>
-        <signal>clicked()</signal>
-        <receiver>nuevaempresadlg</receiver>
-        <slot>close()</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>accept()</slot>
-    <slot>boton_lecturaaus()</slot>
-    <slot>boton_usalectura()</slot>
-    <slot>boton_usatotal()</slot>
-    <slot>boton_totalaus()</slot>
-</slots>
-<pixmapinproject/>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

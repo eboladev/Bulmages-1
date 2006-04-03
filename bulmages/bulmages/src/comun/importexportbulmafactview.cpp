@@ -40,9 +40,11 @@ void ImportExportBulmafactView::mensajeria(QString mensaje) {
 }// end publicamensaje
 
 
-ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 * con, QWidget * parent, const char * name, Qt::WFlags f=0) :  ImportExportBulmafactBase(parent,name,f), pgimportfiles(con) {
-	conexionbase = con;
-	inicializaMensajeria();
+ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 * con, QWidget * parent, const char * name, Qt::WFlags f=0) 
+  : QDialog(parent,name,f), pgimportfiles(con) {
+  setupUi(this);
+  conexionbase = con;
+  inicializaMensajeria();
 }//end importContaplus
 
 /// Se ha pulsado sobre el bot� de bsqueda de una subcuenta.

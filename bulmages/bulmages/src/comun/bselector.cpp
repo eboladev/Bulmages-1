@@ -30,25 +30,27 @@
 #endif
 
 
-BSelector::BSelector(QWidget * parent,const char * name) : selectorbase(parent,name) {
-///Al crear el selector, todos los modulos estan cerrados = NULL
-	m_tipoempresa = "";
-	// Mira si está�instalado el bulmafact y de no estarlo desabilita el bot�.
-	QFile f("/usr/bin/bulmafact");
-	if (! f.exists() )
-		m_bulmafact->setEnabled(FALSE);
-	QFile f1("/usr/bin/bulmatpv");
-	if (! f1.exists() )
-		m_bulmatpv->setEnabled(FALSE);
-	QFile f2("/usr/bin/bulmacont");
-	if (! f2.exists() )
-		m_bulmacont->setEnabled(FALSE);
-	QFile f3("/var/www/galopin");
-	if ( ! f3.exists())
-		m_galopin->setEnabled(FALSE);
-	QFile f4("/var/www/bcontaweb");
-	if ( ! f4.exists())
-		m_bcontaweb->setEnabled(FALSE);
+BSelector::BSelector(QWidget * parent,const char * name) 
+  : Q3MainWindow(parent,name) {
+  setupUi(this);
+  ///Al crear el selector, todos los modulos estan cerrados = NULL
+  m_tipoempresa = "";
+  // Mira si está�instalado el bulmafact y de no estarlo desabilita el bot�.
+  QFile f("/usr/bin/bulmafact");
+  if (! f.exists() )
+    m_bulmafact->setEnabled(FALSE);
+  QFile f1("/usr/bin/bulmatpv");
+  if (! f1.exists() )
+    m_bulmatpv->setEnabled(FALSE);
+  QFile f2("/usr/bin/bulmacont");
+  if (! f2.exists() )
+    m_bulmacont->setEnabled(FALSE);
+  QFile f3("/var/www/galopin");
+  if ( ! f3.exists())
+    m_galopin->setEnabled(FALSE);
+  QFile f4("/var/www/bcontaweb");
+  if ( ! f4.exists())
+    m_bcontaweb->setEnabled(FALSE);
 }// end BSelector
 
 

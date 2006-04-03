@@ -17,8 +17,6 @@
 #ifndef QTABLE2_H
 #define QTABLE2_H
 
-#include <q3table.h>
-//Added by qt3to4:
 #include <QEvent>
 #include <QTableWidget>
 
@@ -32,8 +30,6 @@ public:
 QTableWidgetItem2(int type = Type, int mode=0): QTableWidgetItem(type) {modo=mode;}
 QTableWidgetItem2(const QString & text, int type = Type, int mode=0): QTableWidgetItem(text, type) {modo=mode;}
 };
-
-
 
 class QTableWidget2 : public QTableWidget{
   Q_OBJECT
@@ -52,10 +48,8 @@ public:
 		setItem(x, y, newitem);
 	}// end setText
 
-
 signals:
    void pulsadomas(int, int, int);  
 };
 
 #endif
-

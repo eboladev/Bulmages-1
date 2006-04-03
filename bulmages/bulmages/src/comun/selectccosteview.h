@@ -23,10 +23,11 @@
 #include "selectccostedlg.h"
 #include "postgresiface2.h"
 #include <qlistview.h>
+#include <qdialog.h>
 
 class empresa;
 /**@author Tomeu Borras*/
-class selectccosteview : public selectccostedlg
+class selectccosteview : public QDialog, public Ui_selectccostedlg
 {
 Q_OBJECT
 public:

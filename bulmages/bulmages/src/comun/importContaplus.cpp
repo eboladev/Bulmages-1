@@ -43,10 +43,12 @@ void importContaplus::mensajeria(QString mensaje) {
 }// end publicamensaje
 
 
-importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const char * name, Qt::WFlags f=0) :  importContaplusBase(parent,name,f), pgimportfiles(con) {
-	progress = m_progressbar;
-	mensajes = m_mensajes;
-	conexionbase = con;
+importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const char * name, Qt::WFlags f=0) 
+  :  QDialog(parent,name,f), pgimportfiles(con) {
+  setupUi(this);
+  progress = m_progressbar;
+  mensajes = m_mensajes;
+  conexionbase = con;
 }//end importContaplus
 
 /// Se ha pulsado sobre el bot� de bsqueda de una subcuenta.
@@ -127,6 +129,3 @@ void importContaplus::botonExportar() {
 	}// end if
 	mensajein="";
 }// end botonExportar
-
-
-

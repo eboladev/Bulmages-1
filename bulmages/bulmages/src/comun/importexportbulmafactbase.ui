@@ -1,292 +1,211 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>ImportExportBulmafactBase</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>ImportExportBulmafactBase</cstring>
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>ImportExportBulmafactBase</class>
+  <widget class="QDialog" name="ImportExportBulmafactBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>661</width>
+        <height>429</height>
+      </rect>
     </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>661</width>
-            <height>429</height>
-        </rect>
+    <property name="windowTitle" >
+      <string>Importar y Exportar Datos</string>
     </property>
-    <property name="caption">
-        <string>Importar y Exportar Datos</string>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout10</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout25_2</cstring>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_3</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Archivo XML</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit">
-                            <property name="name">
-                                <cstring>m_XML</cstring>
-                            </property>
-                        </widget>
-                    </vbox>
+    <layout class="QVBoxLayout" >
+      <item>
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <item>
+            <layout class="QVBoxLayout" >
+              <property name="margin" >
+                <number>0</number>
+              </property>
+              <item>
+                <widget class="QLabel" name="textLabel1_3" >
+                  <property name="text" >
+                    <string>Archivo XML</string>
+                  </property>
                 </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_5</cstring>
-                    </property>
-                    <property name="sizePolicy">
-                        <sizepolicy>
-                            <hsizetype>0</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>32</horstretch>
-                            <verstretch>32</verstretch>
-                        </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                        <size>
-                            <width>32</width>
-                            <height>32</height>
-                        </size>
-                    </property>
-                    <property name="text">
-                        <string>...</string>
-                    </property>
-                </widget>
-            </hbox>
+              </item>
+              <item>
+                <widget class="QLineEdit" name="m_XML" />
+              </item>
+            </layout>
+          </item>
+          <item>
+            <widget class="QToolButton" name="toolButton1_5" >
+              <property name="sizePolicy" >
+                <sizepolicy>
+                  <hsizetype>0</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>32</horstretch>
+                  <verstretch>32</verstretch>
+                </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+                <size>
+                  <width>32</width>
+                  <height>32</height>
+                </size>
+              </property>
+              <property name="text" >
+                <string>...</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <item>
+            <widget class="QLabel" name="textLabel2" >
+              <property name="text" >
+                <string>Fecha Inicial</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="BusquedaFecha" name="m_fechainicial" />
+          </item>
+          <item>
+            <widget class="QLabel" name="textLabel2_2" >
+              <property name="text" >
+                <string>Fecha Final</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="BusquedaFecha" name="m_fechafinal" />
+          </item>
+          <item>
+            <spacer name="spacer8" >
+              <property name="sizeHint" >
+                <size>
+                  <width>70</width>
+                  <height>20</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <widget class="QCheckBox" name="m_test" >
+          <property name="text" >
+            <string>Realizar sólo &amp;un Testeo</string>
+          </property>
         </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout14</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Fecha Inicial</string>
-                    </property>
-                </widget>
-                <widget class="BusquedaFecha">
-                    <property name="name">
-                        <cstring>m_fechainicial</cstring>
-                    </property>
-                </widget>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel2_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Fecha Final</string>
-                    </property>
-                </widget>
-                <widget class="BusquedaFecha">
-                    <property name="name">
-                        <cstring>m_fechafinal</cstring>
-                    </property>
-                </widget>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer8</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>70</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </hbox>
-        </widget>
-        <widget class="QCheckBox">
-            <property name="name">
-                <cstring>m_test</cstring>
-            </property>
-            <property name="text">
-                <string>Realizar sólo &amp;un Testeo</string>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout6</cstring>
-            </property>
-            <vbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLabel">
-                    <property name="name">
-                        <cstring>textLabel3</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Resultado</string>
-                    </property>
-                </widget>
-                <widget class="QTextBrowser">
-                    <property name="name">
-                        <cstring>m_mensajes</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                </widget>
-            </vbox>
-        </widget>
-        <widget class="QProgressBar">
-            <property name="name">
-                <cstring>m_progressbar</cstring>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout33</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>340</width>
-                            <height>31</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButtonF_X</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Ca&amp;ncelar</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton33_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Expor&amp;tar</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton33</cstring>
-                    </property>
-                    <property name="text">
-                        <string>&amp;Importar</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-    </vbox>
-</widget>
-<customwidgets>
+      </item>
+      <item>
+        <layout class="QVBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <item>
+            <widget class="QLabel" name="textLabel3" >
+              <property name="text" >
+                <string>Resultado</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="Q3TextBrowser" name="m_mensajes" >
+              <property name="text" >
+                <string/>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <widget class="Q3ProgressBar" name="m_progressbar" />
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <item>
+            <spacer name="spacer1" >
+              <property name="sizeHint" >
+                <size>
+                  <width>340</width>
+                  <height>31</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QPushButton" name="pushButtonF_X" >
+              <property name="text" >
+                <string>Ca&amp;ncelar</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="pushButton33_2" >
+              <property name="text" >
+                <string>Expor&amp;tar</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="pushButton33" >
+              <property name="text" >
+                <string>&amp;Importar</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="2" margin="5" />
+  <pixmapfunction></pixmapfunction>
+  <customwidgets>
     <customwidget>
-        <class>BusquedaFecha</class>
-        <header location="local">../../../bulmalib/busquedafecha.h</header>
-        <sizehint>
-            <width>50</width>
-            <height>20</height>
-        </sizehint>
-        <container>0</container>
-        <sizepolicy>
-            <hordata>5</hordata>
-            <verdata>5</verdata>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-        </sizepolicy>
-        <pixmap>image0</pixmap>
-        <signal>valueChanged()</signal>
-        <signal>returnPressed()</signal>
-        <slot access="public" specifier="">selectAll()</slot>
-        <slot access="public" specifier="">setFocus()</slot>
+      <class>BusquedaFecha</class>
+      <extends></extends>
+      <header location="local" >../../../bulmalib/busquedafecha.h</header>
+      <sizehint>
+        <width>50</width>
+        <height>20</height>
+      </sizehint>
+      <container>0</container>
+      <sizepolicy>
+        <hordata>5</hordata>
+        <verdata>5</verdata>
+      </sizepolicy>
+      <pixmap>image0</pixmap>
     </customwidget>
-</customwidgets>
-<images>
-    <image name="image0">
-        <data format="PNG" length="1162">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000045149444154388db5955f68935718c67f5ffddc4e661d27ccc117282342369bd131cab60b8b5eb4cc0b5315970f2fd6ce81e964b3ea95bacde994a1bb5957c658ba1b2d436cba8b990c6c8dd0d10a8a138a7f8695a5ccd066d235c5d5e68341731cd17717496a954db68bbdf072381c78ce7b9ef33cef6b8908d5b02cab065802d8400d6055f2712195bc0f94807b2272dfae9e1efce8e0d37327e6deebf7fa638db38dab125e021f3e8a1471714992fcdb7dc12b90b999c95eba7ca99f12bdc01dcbb2ee52a9b8667e74fe7d193925727b4206cfef11991e94c1f33191db8332f8634c646e5064b453646e50864717ef4f493cd12c475ed7027c06d401cb2c11c1b2aca5f12fe3633bb74456f55eeea0e58f49922583fb122433e0cd28f2330685c2b70276ae879129432408a92c4443f0ce118ff4b7e616b00998ae02fbae9cb8329f5fd9cf8b0a92995edc464dcf77a0ce1a3ebdeca16c302583b2354e4811dfefc70b14898420356e506386b73ef0009a81892a15cb3a77778a4cc7a4eb849689ab4169dbe108b61250a2b596f0ab8e34ae71c4a9d382ad059444b706a56f282873b71c896e53d54f5c0f846aaa8270eb5dce64c16d54f47c0fa9631e9420bed9e140b7e6627f3b7b0e29ae0e0568dbae51b6227532879ef43132e5275aafaa3a5802580bc0c9f124ad2145720cd2031ea664886c765031685f6b48e57a69faddc7aeae02f1fd7eda766bb0156f1dced3a2219d7da0dac5c0b8f52e677286a6e5ed647e3268edd0bc11a20d86911cb438015abb0aa44f7ab89d79e2fbfc84eb1566d6d03d5024daf0b0b8178093e3495aeb15bd171260432008edab21953534adf0d3fa769ecc0d0fa51547d7fa49cf1408376a4cc9909f82d4f83f00bbf52e64211a525032b4d5c2c814b4e800adb10293370c9440d72aaed581db00d8a06c852941b4413d04bce0bce478929637e1dc39c0d674e70c3fd7f9d9d5552473c343d72a74ad22979be1f3c30658497e328f291956067da4c7bd478c5e96dbf2e19e61191e8dc9f4f5a004438e285b4bdb8ea0ccdd3a20cd1b1cb9783a2cf1445882214700d12b1c514a89e368e91b0acba91e5d95db46e08587386e0929d25386c81685291952c73cf67e95e0ccd701f24e919d5b8aecfd3880e368bcd9192841d3464dfbbab2491ecb7124a8685a0bc73f7130258ffe2f3c5ed934897716dc7721f14d016fd694b9c590b960e81d80b64738ae52511bdb1a13b91d93f86947e67e71a46f28289dfbc215a7555c6553a1414b747b99325da764e27a78b1f33600cf573f4f323733d99e1f5428fa9a229535441b40a92247b775d03d90a451417a1c3ad6b94cd6a6695f07bd033e22c10ed2b9049363004c03f700596842d87cb87a8d3ae40f9425658c01557e9eaa5caf6c3080020c653a3c0f32d70cf9198337430238cea226b414788e723ffd950753e1dfe66f401ff006f032f06cb5e21ac007f881672aab8f4a43e1f12195e717810270072858d5996759960d3c093c55017d82ff36f3feac80cf0377adff6b98fe05169428b86e201a330000000049454e44ae426082</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>pushButton33</sender>
-        <signal>clicked()</signal>
-        <receiver>ImportExportBulmafactBase</receiver>
-        <slot>botonImportar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButton33_2</sender>
-        <signal>clicked()</signal>
-        <receiver>ImportExportBulmafactBase</receiver>
-        <slot>botonExportar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButtonF_X</sender>
-        <signal>clicked()</signal>
-        <receiver>ImportExportBulmafactBase</receiver>
-        <slot>close()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_5</sender>
-        <signal>clicked()</signal>
-        <receiver>ImportExportBulmafactBase</receiver>
-        <slot>botonBuscarXML()</slot>
-    </connection>
-</connections>
-<tabstops>
+  </customwidgets>
+  <tabstops>
     <tabstop>pushButtonF_X</tabstop>
-</tabstops>
-<slots>
-    <slot>botonImportar()</slot>
-    <slot>botonExportar()</slot>
-    <slot>botonBuscarDiario()</slot>
-    <slot>botonBuscarSubCta()</slot>
-    <slot>botonBuscarFInicial()</slot>
-    <slot>botonBuscarFFinal()</slot>
-    <slot>botonBuscarXML()</slot>
-</slots>
-<layoutdefaults spacing="2" margin="5"/>
-<includehints>
-    <includehint>busquedafecha.h</includehint>
-    <includehint>busquedafecha.h</includehint>
-</includehints>
-</UI>
+  </tabstops>
+  <images>
+    <image name="image0" >
+      <data format="PNG" length="1162" >89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000045149444154388db5955f68935718c67f5ffddc4e661d27ccc117282342369bd131cab60b8b5eb4cc0b5315970f2fd6ce81e964b3ea95bacde994a1bb5957c658ba1b2d436cba8b990c6c8dd0d10a8a138a7f8695a5ccd066d235c5d5e68341731cd17717496a954db68bbdf072381c78ce7b9ef33cef6b8908d5b02cab065802d8400d6055f2712195bc0f94807b2272dfae9e1efce8e0d37327e6deebf7fa638db38dab125e021f3e8a1471714992fcdb7dc12b90b999c95eba7ca99f12bdc01dcbb2ee52a9b8667e74fe7d193925727b4206cfef11991e94c1f33191db8332f8634c646e5064b453646e50864717ef4f493cd12c475ed7027c06d401cb2c11c1b2aca5f12fe3633bb74456f55eeea0e58f49922583fb122433e0cd28f2330685c2b70276ae879129432408a92c4443f0ce118ff4b7e616b00998ae02fbae9cb8329f5fd9cf8b0a92995edc464dcf77a0ce1a3ebdeca16c302583b2354e4811dfefc70b14898420356e506386b73ef0009a81892a15cb3a77778a4cc7a4eb849689ab4169dbe108b61250a2b596f0ab8e34ae71c4a9d382ad059444b706a56f282873b71c896e53d54f5c0f846aaa8270eb5dce64c16d54f47c0fa9631e9420bed9e140b7e6627f3b7b0e29ae0e0568dbae51b6227532879ef43132e5275aafaa3a5802580bc0c9f124ad2145720cd2031ea664886c765031685f6b48e57a69faddc7aeae02f1fd7eda766bb0156f1dced3a2219d7da0dac5c0b8f52e677286a6e5ed647e3268edd0bc11a20d86911cb438015abb0aa44f7ab89d79e2fbfc84eb1566d6d03d5024daf0b0b8178093e3495aeb15bd171260432008edab21953534adf0d3fa769ecc0d0fa51547d7fa49cf1408376a4cc9909f82d4f83f00bbf52e64211a525032b4d5c2c814b4e800adb10293370c9440d72aaed581db00d8a06c852941b4413d04bce0bce478929637e1dc39c0d674e70c3fd7f9d9d5552473c343d72a74ad22979be1f3c30658497e328f291956067da4c7bd478c5e96dbf2e19e61191e8dc9f4f5a004438e285b4bdb8ea0ccdd3a20cd1b1cb9783a2cf1445882214700d12b1c514a89e368e91b0acba91e5d95db46e08587386e0929d25386c81685291952c73cf67e95e0ccd701f24e919d5b8aecfd3880e368bcd9192841d3464dfbbab2491ecb7124a8685a0bc73f7130258ffe2f3c5ed934897716dc7721f14d016fd694b9c590b960e81d80b64738ae52511bdb1a13b91d93f86947e67e71a46f28289dfbc215a7555c6553a1414b747b99325da764e27a78b1f33600cf573f4f323733d99e1f5428fa9a229535441b40a92247b775d03d90a451417a1c3ad6b94cd6a6695f07bd033e22c10ed2b9049363004c03f700596842d87cb87a8d3ae40f9425658c01557e9eaa5caf6c3080020c653a3c0f32d70cf9198337430238cea226b414788e723ffd950753e1dfe66f401ff006f032f06cb5e21ac007f881672aab8f4a43e1f12195e717810270072858d5996759960d3c093c55017d82ff36f3feac80cf0377adff6b98fe05169428b86e201a330000000049454e44ae426082</data>
+    </image>
+  </images>
+</ui>

@@ -23,12 +23,12 @@
 #include "nuevaempresadlg.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
-
+#include <qdialog.h>
 
 /** @author Josep Burcion */
 class BSelector;
 
-class BNuevaEmpresa : public nuevaempresadlg
+class BNuevaEmpresa : public QDialog, public Ui_nuevaempresadlg
 {
 
 public:

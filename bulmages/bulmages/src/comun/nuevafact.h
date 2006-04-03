@@ -23,12 +23,12 @@
 #include "nuevafactbase.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
-
+#include <qdialog.h>
 
 /** @author Josep Burcion */
 class BSelector;
 
-class nuevafact : public nuevafactbase
+class nuevafact : public QDialog, public Ui_nuevafactbase
 {
 
 public:

@@ -17,7 +17,10 @@
 
 #include <qmessagebox.h>
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, Qt::WFlags f) : nuevaempresadlg(parent,name,f) {}// end BNuevaEmpresa
+BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, Qt::WFlags f)
+  : QDialog(parent,name,f) {
+  setupUi(this);
+}// end BNuevaEmpresa
 
 
 BNuevaEmpresa::~BNuevaEmpresa() {}

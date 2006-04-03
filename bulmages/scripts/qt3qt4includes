@@ -75,8 +75,3 @@ for ((it1=1; it1<$TamArray; it1++)); do
         echo "$archivo - Cambiado OK."
     done
 done
-
-
-
-
-

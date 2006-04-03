@@ -23,11 +23,12 @@
 #include ".ui/logpassbase.h"
 #include "postgresiface2.h"
 
+#include <qdialog.h>
 
 /**
 @author Tomeu Borras
 */
-class logpass : public logpassbase {
+class logpass : public QDialog, public Ui_logpassbase {
 Q_OBJECT
 private:
    bool m_authOK;

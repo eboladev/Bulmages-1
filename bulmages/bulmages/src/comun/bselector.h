@@ -21,8 +21,8 @@
 #define BSELECTOR_H
 
 #include "selectorbase.h"
-
 #include <qevent.h>
+#include <q3mainwindow.h>
 #include "abreempresaview.h"
 #include "bconfiguracion.h"
 
@@ -30,7 +30,7 @@
   * @brief Muestra un selector de aplicaciones y configuraci�
   */
 
-class BSelector : public selectorbase {
+class BSelector : public Q3MainWindow, public Ui_selectorbase {
 Q_OBJECT
 
 private:

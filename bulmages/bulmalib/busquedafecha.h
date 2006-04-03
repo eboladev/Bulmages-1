@@ -14,11 +14,12 @@
 
 #include <busquedafechabase.h>
 #include <qlineedit.h>
+#include <qdialog.h>
 
 /**
 @author Tomeu Borras
 */
-class BusquedaFecha : public BusquedaFechaBase
+class BusquedaFecha :  public QDialog, public Ui_BusquedaFechaBase
 {
 Q_OBJECT
 private:

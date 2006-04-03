@@ -1,134 +1,101 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>msgErrorBase</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>msgErrorBase</cstring>
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>msgErrorBase</class>
+  <widget class="QDialog" name="msgErrorBase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>593</width>
+        <height>163</height>
+      </rect>
     </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>593</width>
-            <height>163</height>
-        </rect>
+    <property name="windowTitle" >
+      <string>Mensaje</string>
     </property>
-    <property name="caption">
-        <string>Mensaje</string>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <property name="resizeMode">
-            <enum>Fixed</enum>
-        </property>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>m_mensaje</cstring>
-            </property>
-            <property name="text">
-                <string>textLabel1</string>
-            </property>
+    <layout class="QVBoxLayout" >
+      <property name="resizeMode" >
+        <enum>Fixed</enum>
+      </property>
+      <item>
+        <widget class="QLabel" name="m_mensaje" >
+          <property name="text" >
+            <string>textLabel1</string>
+          </property>
         </widget>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>m_framedetalles</cstring>
-            </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Raised</enum>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QTextEdit" row="0" column="0">
-                    <property name="name">
-                        <cstring>m_detalles</cstring>
-                    </property>
-                </widget>
-            </grid>
+      </item>
+      <item>
+        <widget class="Q3Frame" name="m_framedetalles" >
+          <property name="frameShape" >
+            <enum>StyledPanel</enum>
+          </property>
+          <property name="frameShadow" >
+            <enum>Raised</enum>
+          </property>
+          <layout class="QGridLayout" >
+            <item row="0" column="0" >
+              <widget class="Q3TextEdit" name="m_detalles" />
+            </item>
+          </layout>
         </widget>
-        <spacer>
-            <property name="name">
-                <cstring>spacer2</cstring>
-            </property>
-            <property name="orientation">
-                <enum>Vertical</enum>
-            </property>
-            <property name="sizeType">
-                <enum>Expanding</enum>
-            </property>
-            <property name="sizeHint">
-                <size>
-                    <width>21</width>
-                    <height>16</height>
-                </size>
-            </property>
+      </item>
+      <item>
+        <spacer name="spacer2" >
+          <property name="sizeHint" >
+            <size>
+              <width>21</width>
+              <height>16</height>
+            </size>
+          </property>
+          <property name="sizeType" >
+            <enum>Expanding</enum>
+          </property>
+          <property name="orientation" >
+            <enum>Vertical</enum>
+          </property>
         </spacer>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout1</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer1</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>261</width>
-                            <height>21</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton2</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Detalles</string>
-                    </property>
-                </widget>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Cerrar</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-    </vbox>
-</widget>
-<connections>
-    <connection>
-        <sender>pushButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>msgErrorBase</receiver>
-        <slot>close()</slot>
-    </connection>
-    <connection>
-        <sender>pushButton2</sender>
-        <signal>clicked()</signal>
-        <receiver>msgErrorBase</receiver>
-        <slot>s_mostrarDetalles()</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>s_mostrarDetalles()</slot>
-</slots>
-<layoutdefaults spacing="2" margin="5"/>
-</UI>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" >
+          <property name="margin" >
+            <number>0</number>
+          </property>
+          <item>
+            <spacer name="spacer1" >
+              <property name="sizeHint" >
+                <size>
+                  <width>261</width>
+                  <height>21</height>
+                </size>
+              </property>
+              <property name="sizeType" >
+                <enum>Expanding</enum>
+              </property>
+              <property name="orientation" >
+                <enum>Horizontal</enum>
+              </property>
+            </spacer>
+          </item>
+          <item>
+            <widget class="QPushButton" name="pushButton2" >
+              <property name="text" >
+                <string>Detalles</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="pushButton1" >
+              <property name="text" >
+                <string>Cerrar</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="2" margin="5" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

@@ -21,6 +21,7 @@
 #define ABREEMPRESAVIEW_H
 
 #include <qstring.h>
+#include <qdialog.h>
 #include ".ui/abreempresadlg.h"
 
 /** @brief  Clase que muestra la lista de empresas para seleccionar aquella con la que se desea trabajar.
@@ -31,7 +32,7 @@
   * Se puede especificar, si es preciso, un tipo de empresas a mostrar (bulmacont o bulmafact) para facilitar la
   * selección de elementos.
 */
-class abreempresaview : public abreempresadlg  {
+class abreempresaview :  public QDialog, public Ui_abreempresadlg  {
    Q_OBJECT
    
 private:

@@ -1,238 +1,170 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>logpassbase</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>logpassbase</cstring>
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>logpassbase</class>
+  <widget class="QDialog" name="logpassbase" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>334</width>
+        <height>157</height>
+      </rect>
     </property>
-    <property name="geometry">
+    <property name="windowTitle" >
+      <string>Usuario</string>
+    </property>
+    <widget class="QLabel" name="textLabel2" >
+      <property name="geometry" >
         <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>334</width>
-            <height>157</height>
+          <x>10</x>
+          <y>70</y>
+          <width>90</width>
+          <height>16</height>
         </rect>
-    </property>
-    <property name="caption">
-        <string>Usuario</string>
-    </property>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel2</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>70</y>
-                <width>90</width>
-                <height>16</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Contraseña</string>
-        </property>
+      </property>
+      <property name="text" >
+        <string>Contraseña</string>
+      </property>
     </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1_2</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>100</y>
-                <width>120</width>
-                <height>26</height>
-            </rect>
-        </property>
-        <property name="paletteForegroundColor">
-            <color>
-                <red>255</red>
-                <green>113</green>
-                <blue>5</blue>
-            </color>
-        </property>
-        <property name="font">
-            <font>
-                <family>Flubber</family>
-                <pointsize>20</pointsize>
-            </font>
-        </property>
-        <property name="text">
-            <string>BulmaGés</string>
-        </property>
-        <property name="textFormat">
-            <enum>PlainText</enum>
-        </property>
+    <widget class="QLabel" name="textLabel1_2" >
+      <property name="geometry" >
+        <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>120</width>
+          <height>26</height>
+        </rect>
+      </property>
+      <property name="font" >
+        <font>
+          <family>Flubber</family>
+          <pointsize>20</pointsize>
+          <weight>0</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+        </font>
+      </property>
+      <property name="text" >
+        <string>BulmaGés</string>
+      </property>
+      <property name="textFormat" >
+        <enum>Qt::PlainText</enum>
+      </property>
     </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>40</y>
-                <width>120</width>
-                <height>16</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Nombre Usuario</string>
-        </property>
+    <widget class="QLabel" name="textLabel1" >
+      <property name="geometry" >
+        <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>120</width>
+          <height>16</height>
+        </rect>
+      </property>
+      <property name="text" >
+        <string>Nombre Usuario</string>
+      </property>
     </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>m_login</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>160</x>
-                <y>40</y>
-                <width>160</width>
-                <height>20</height>
-            </rect>
-        </property>
+    <widget class="QLineEdit" name="m_login" >
+      <property name="geometry" >
+        <rect>
+          <x>160</x>
+          <y>40</y>
+          <width>160</width>
+          <height>20</height>
+        </rect>
+      </property>
     </widget>
-    <widget class="QLineEdit">
-        <property name="name">
-            <cstring>m_password</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>160</x>
-                <y>70</y>
-                <width>161</width>
-                <height>20</height>
-            </rect>
-        </property>
-        <property name="echoMode">
-            <enum>Password</enum>
-        </property>
+    <widget class="QLineEdit" name="m_password" >
+      <property name="geometry" >
+        <rect>
+          <x>160</x>
+          <y>70</y>
+          <width>161</width>
+          <height>20</height>
+        </rect>
+      </property>
+      <property name="echoMode" >
+        <enum>QLineEdit::Password</enum>
+      </property>
     </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>textLabel1_2_2</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>16</x>
-                <y>124</y>
-                <width>100</width>
-                <height>22</height>
-            </rect>
-        </property>
-        <property name="paletteForegroundColor">
-            <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>255</blue>
-            </color>
-        </property>
-        <property name="font">
-            <font>
-                <family>Flubber</family>
-            </font>
-        </property>
-        <property name="text">
-            <string>Lanzador v.0.5</string>
-        </property>
-        <property name="textFormat">
-            <enum>PlainText</enum>
-        </property>
+    <widget class="QLabel" name="textLabel1_2_2" >
+      <property name="geometry" >
+        <rect>
+          <x>16</x>
+          <y>124</y>
+          <width>100</width>
+          <height>22</height>
+        </rect>
+      </property>
+      <property name="font" >
+        <font>
+          <family>Flubber</family>
+          <pointsize>0</pointsize>
+          <weight>0</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+        </font>
+      </property>
+      <property name="text" >
+        <string>Lanzador v.0.5</string>
+      </property>
+      <property name="textFormat" >
+        <enum>Qt::PlainText</enum>
+      </property>
     </widget>
-    <widget class="QPushButton">
-        <property name="name">
-            <cstring>pushButton24</cstring>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>160</x>
-                <y>100</y>
-                <width>160</width>
-                <height>35</height>
-            </rect>
-        </property>
-        <property name="text">
-            <string>Validar</string>
-        </property>
-        <property name="autoDefault">
-            <bool>false</bool>
-        </property>
-        <property name="default">
-            <bool>false</bool>
-        </property>
+    <widget class="QPushButton" name="pushButton24" >
+      <property name="geometry" >
+        <rect>
+          <x>160</x>
+          <y>100</y>
+          <width>160</width>
+          <height>35</height>
+        </rect>
+      </property>
+      <property name="text" >
+        <string>Validar</string>
+      </property>
+      <property name="autoDefault" >
+        <bool>false</bool>
+      </property>
+      <property name="default" >
+        <bool>false</bool>
+      </property>
     </widget>
-    <widget class="QLabel">
-        <property name="name">
-            <cstring>lblAuthError</cstring>
-        </property>
-        <property name="enabled">
-            <bool>true</bool>
-        </property>
-        <property name="geometry">
-            <rect>
-                <x>10</x>
-                <y>10</y>
-                <width>312</width>
-                <height>21</height>
-            </rect>
-        </property>
-        <property name="paletteForegroundColor">
-            <color>
-                <red>255</red>
-                <green>85</green>
-                <blue>0</blue>
-            </color>
-        </property>
-        <property name="text">
-            <string></string>
-        </property>
-        <property name="textFormat">
-            <enum>PlainText</enum>
-        </property>
-        <property name="alignment">
-            <set>AlignCenter</set>
-        </property>
+    <widget class="QLabel" name="lblAuthError" >
+      <property name="enabled" >
+        <bool>true</bool>
+      </property>
+      <property name="geometry" >
+        <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>312</width>
+          <height>21</height>
+        </rect>
+      </property>
+      <property name="text" >
+        <string/>
+      </property>
+      <property name="textFormat" >
+        <enum>Qt::PlainText</enum>
+      </property>
+      <property name="alignment" >
+        <set>Qt::AlignCenter</set>
+      </property>
     </widget>
-</widget>
-<connections>
-    <connection>
-        <sender>pushButton24</sender>
-        <signal>clicked()</signal>
-        <receiver>logpassbase</receiver>
-        <slot>validar()</slot>
-    </connection>
-    <connection>
-        <sender>m_password</sender>
-        <signal>returnPressed()</signal>
-        <receiver>logpassbase</receiver>
-        <slot>validar()</slot>
-    </connection>
-    <connection>
-        <sender>m_login</sender>
-        <signal>returnPressed()</signal>
-        <receiver>m_password</receiver>
-        <slot>selectAll()</slot>
-    </connection>
-    <connection>
-        <sender>m_login</sender>
-        <signal>returnPressed()</signal>
-        <receiver>m_password</receiver>
-        <slot>setFocus()</slot>
-    </connection>
-</connections>
-<tabstops>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
     <tabstop>m_login</tabstop>
     <tabstop>m_password</tabstop>
     <tabstop>pushButton24</tabstop>
-</tabstops>
-<includes>
-    <include location="local" impldecl="in implementation">logpassbase.ui.h</include>
-</includes>
-<slots>
-    <slot access="private">validar()</slot>
-    <slot access="private">returnPressedOnUser()</slot>
-    <slot access="private">returnPressedOnPasswd()</slot>
-</slots>
-<pixmapinproject/>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+  </tabstops>
+</ui>

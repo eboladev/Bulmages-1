@@ -69,7 +69,7 @@ unix{
   }
 }
 #The following line was inserted by qt3to4
-QT +=  qt3support 
+QT +=  qt3support xml
 #The following line was inserted by qt3to4
 CONFIG += uic3
 

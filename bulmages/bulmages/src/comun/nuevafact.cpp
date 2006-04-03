@@ -15,7 +15,9 @@
 #include "nuevafact.h"
 
 
-nuevafact::nuevafact(QWidget * parent, const char * name, Qt::WFlags f) : nuevafactbase(parent,name,f) {
+nuevafact::nuevafact(QWidget * parent, const char * name, Qt::WFlags f) 
+  : QDialog(parent,name,f) {
+  setupUi(this);
 }// end BNuevaEmpresa
 
 

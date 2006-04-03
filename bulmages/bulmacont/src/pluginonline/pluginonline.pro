@@ -65,4 +65,4 @@ SOURCES = pluginonline.cpp
 
 HEADERS = pluginonline.h
 #The following line was inserted by qt3to4
-QT +=  
+QT += xml 

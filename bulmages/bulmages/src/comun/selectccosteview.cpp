@@ -20,36 +20,32 @@
 #include "selectccosteview.h"
 #include "empresa.h"
 
-
 #include <qlistview.h>
 
+selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char *name) 
+: QDialog(parent, name) {
+  setupUi(this);
+  fprintf(stderr,"Constructor de selectccosteview\n");
+  empresaactual = emp;
+  conexionbase = empresaactual->bdempresa();
 
-selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
-*name) : selectccostedlg(parent, name) {
-   fprintf(stderr,"Constructor de selectccosteview\n");
-   empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
-
-   numdigitos = empresaactual->numdigitosempresa();
+  numdigitos = empresaactual->numdigitosempresa();
 //   m_iterador = new QListViewItemIterator (m_listCostes, 0x00001000);
-   m_iterador = new QListViewItemIterator (m_listCostes);
+  m_iterador = new QListViewItemIterator (m_listCostes);
 
-   m_colNomCoste = m_listCostes->addColumn("nom_coste",-1);
-   m_colDescCoste = m_listCostes->addColumn("desc_coste",-1);
-   m_colStatusCoste = m_listCostes->addColumn("Status",-1);
-   m_colIdCoste = m_listCostes->addColumn("idc_coste",0);
-   m_colCheck = m_listCostes->addColumn("Seleccion",-1);
+  m_colNomCoste = m_listCostes->addColumn("nom_coste",-1);
+  m_colDescCoste = m_listCostes->addColumn("desc_coste",-1);
+  m_colStatusCoste = m_listCostes->addColumn("Status",-1);
+  m_colIdCoste = m_listCostes->addColumn("idc_coste",0);
+  m_colCheck = m_listCostes->addColumn("Seleccion",-1);
 
-   cargacostes();
-   fprintf(stderr,"FIN de Constructor de selectccosteview\n");
-
+  cargacostes();
+  fprintf(stderr,"FIN de Constructor de selectccosteview\n");
 }// end selectccsotedlg
-
 
 selectccosteview::~selectccosteview() {
    delete m_iterador;
 }// end selectccosteview
-
 
 void selectccosteview::cargacostes() {
 // Rellenamnos la listbox que va a sustituir al combobox correspondiente.

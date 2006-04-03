@@ -14,7 +14,12 @@
 #include "funcaux.h"
 
 BusquedaFecha::BusquedaFecha(QWidget *parent, const char *name)
- : BusquedaFechaBase(parent, name) {
+ : QDialog(parent, name) {
+  setupUi(this);
+  QObject::connect(m_searchcliente,SIGNAL(clicked(bool)),this,SLOT(s_searchFecha()));
+  QObject::connect(m_fecha,SIGNAL(returnPressed()),this,SLOT(s_returnPressed()));
+  QObject::connect(m_fecha,SIGNAL(textChanged(const QString &)),this,SLOT(s_fechatextChanged(const QString &)));
+  QObject::connect(m_fecha,SIGNAL(lostFocus()),this,SLOT(s_fechalostFocus()));
 }
 
 

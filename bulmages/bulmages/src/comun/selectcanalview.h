@@ -23,10 +23,11 @@
 #include "selectcanaldlg.h"
 #include "postgresiface2.h"
 #include <qlistview.h>
+#include <qdialog.h>
 
 class empresa;
 /**@author Tomeu Borras*/
-class selectcanalview : public selectcanaldlg {
+class selectcanalview : public QDialof, public Ui_selectcanaldlg {
 Q_OBJECT
 public:
     selectcanalview(empresa *emp, QWidget *parent = 0, const char *name = 0);

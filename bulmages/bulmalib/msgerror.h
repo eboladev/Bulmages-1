@@ -15,12 +15,12 @@
 #include <msgerrorbase.h>
 
 #include <q3frame.h>
-
+#include <qdialog.h>
 
 /**
 @author Tomeu Borras
 */
-class msgError : public msgErrorBase
+class msgError :  public QDialog, public Ui_msgErrorBase
 {
 Q_OBJECT
 public:

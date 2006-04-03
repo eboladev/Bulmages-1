@@ -24,24 +24,25 @@
 
 selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char
 *name)
- : selectcanaldlg(parent, name)
+ : QDialog(parent, name)
 {
-   fprintf(stderr,"Inicializacion del selector de canales\n");
-   empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
+  setupUi(this);
+  fprintf(stderr,"Inicializacion del selector de canales\n");
+  empresaactual = emp;
+  conexionbase = empresaactual->bdempresa();
 
-   numdigitos = empresaactual->numdigitosempresa();
+  numdigitos = empresaactual->numdigitosempresa();
 //   m_iterador = new QListViewItemIterator (m_listCanales, 0x00001000);
-   m_iterador = new QListViewItemIterator (m_listCanales);
+  m_iterador = new QListViewItemIterator (m_listCanales);
+  
+  m_colNomCoste = m_listCanales->addColumn("nom_canal",-1);
+  m_colDescCoste = m_listCanales->addColumn("desc_canal",-1);
+  m_colStatusCoste = m_listCanales->addColumn("Status",-1);
+  m_colIdCoste = m_listCanales->addColumn("idcanal",0);
+  m_colCheck = m_listCanales->addColumn("Seleccion",-1);
 
-   m_colNomCoste = m_listCanales->addColumn("nom_canal",-1);
-   m_colDescCoste = m_listCanales->addColumn("desc_canal",-1);
-   m_colStatusCoste = m_listCanales->addColumn("Status",-1);
-   m_colIdCoste = m_listCanales->addColumn("idcanal",0);
-   m_colCheck = m_listCanales->addColumn("Seleccion",-1);
-
-   cargacanales();
-   fprintf(stderr,"Fin del Inicializacion del selector de canales\n");
+  cargacanales();
+  fprintf(stderr,"Fin del Inicializacion del selector de canales\n");
 }// end selectccsotedlg
 
 

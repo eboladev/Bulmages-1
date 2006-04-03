@@ -15,7 +15,7 @@
 #ifndef BCONFIGURACION_H
 #define BCONFIGURACION_H
 
-#include "uiconfiguracion.h"
+#include <uiconfiguracion.h>
 #include "bselector.h"
 #include "postgresiface2.h"
 #include <qpushbutton.h>
@@ -28,6 +28,7 @@
 #include <qspinbox.h>
 #include <qfontdatabase.h>
 #include <q3filedialog.h>
+#include <qdialog.h>
 
 #ifndef WIN32
 #include <sys/wait.h>
@@ -37,7 +38,7 @@
 
 class BSelector;
 
-class BConfiguracion : public UIconfiguracion {
+class BConfiguracion : public QDialog, public Ui_UIconfiguracion {
 Q_OBJECT
 public:
     BConfiguracion(BSelector *, QWidget *, const char *, Qt::WFlags );

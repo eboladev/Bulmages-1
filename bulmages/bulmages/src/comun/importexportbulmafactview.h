@@ -14,13 +14,14 @@
  ***************************************************************************/
 #ifndef _IMPORTBULMAFACT_H_
 #define _IMPORTBULMAFACT_H_
+
+#include <qdialog.h>
  
 #include "importexportbulmafactbase.h"
 #include "pgimportfiles.h"
 #include "postgresiface2.h" 
  
- 
-class ImportExportBulmafactView: public ImportExportBulmafactBase , public pgimportfiles {
+class ImportExportBulmafactView: public QDialog, public Ui_ImportExportBulmafactBase , public pgimportfiles {
 Q_OBJECT
 private:
 	postgresiface2 *conexionbase;

@@ -49,11 +49,17 @@ using namespace std;
   * @param name nombre de la ventana
   * @param modal Indica si la ventana debe comportar de forma modal o no. (por defecto si)
   */
-abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal) : abreempresadlg(parent,name,modal) {
-    m_tipo = tipo;
-    m_tipoempresa = "";
-    m_modo=0;
-    cargaArchivo();
+abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal) 
+  : QDialog(parent,name,modal) {
+  setupUi(this);
+  QObject::connect(botonCancelar,SIGNAL(clicked(bool)),this,SLOT(s_botonCancelar()));
+  QObject::connect(botonAceptar,SIGNAL(clicked(bool)),this,SLOT(accept()));
+  QObject::connect(empresas,SIGNAL(doubleClicked(Q3ListViewItem *)),this,SLOT(accept()));
+  QObject::connect(toolButton1,SIGNAL(clicked(bool)),this,SLOT(s_reloadButton()));
+  m_tipo = tipo;
+  m_tipoempresa = "";
+  m_modo=0;
+  cargaArchivo();
 }// end abreempresaview
 
 
@@ -76,7 +82,7 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 }// end insertCompany
 
 
-/** Se ha pulsado sobre el bot� de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
+/** Se ha pulsado sobre el boton de aceptar con lo que iniciamos la variables y cerramos esta ventana ya que ha cumplico con su cometido
   */
 void abreempresaview::accept() {
     Q3ListViewItem *it;
@@ -128,7 +134,7 @@ void abreempresaview::cargaArchivo() {
 
 
 /** Guarda en el archivo de empresas las empresas disponibles
-  * Tambi� actualiza el listado de empresas visibles.
+  * Tambien actualiza el listado de empresas visibles.
   */
 void abreempresaview::guardaArchivo() {
 #ifndef WINDOWS

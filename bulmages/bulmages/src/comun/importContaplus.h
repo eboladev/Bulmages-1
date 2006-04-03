@@ -15,12 +15,13 @@
 #ifndef _IMPORTCONTAPLUS_H_
 #define _IMPORTCONTAPLUS_H_
 
+#include <qdialog.h>
 #include "importContaplusBase.h"
 #include "pgimportfiles.h"
 #include "postgresiface2.h"
 
 
-class importContaplus: public importContaplusBase , public pgimportfiles {
+class importContaplus: public QDialog, public Ui_importContaplusBase , public pgimportfiles {
     Q_OBJECT
 private:
     postgresiface2 *conexionbase;

@@ -26,25 +26,26 @@
 #include <qlabel.h>
 
 logpass::logpass(QWidget *parent, const char *name)
-: logpassbase(parent, name) {
-    validar();
+: QDialog(parent, name) {
+  setupUi(this);
+  QObject::connect(pushButton24,SIGNAL(clicked()),this,SLOT(validar()));
+  validar();
 }
 
 
 logpass::~logpass() {}
 
-/** @brief Valida si postgres puede abrir bases de datos y si no es as�pide loggin y password
+/** @brief Valida si postgres puede abrir bases de datos y si no es asi pide login y password
   */
 void logpass::validar() {
     _depura("logpass::validar()");
     m_login->setText(postgresiface2::sanearCadena(m_login->text()));
     m_authOK = false;
 
-
     confpr->setValor(CONF_LOGIN_USER,m_login->text());
     confpr->setValor(CONF_PASSWORD_USER,m_password->text());
 
-    ///Comprobamos si es un usuario v�ido
+    ///Comprobamos si es un usuario valido
     metabase = new postgresiface2();
     if(!metabase->inicializa( "template1") ) {
         m_authOK = true;
@@ -61,9 +62,3 @@ void logpass::validar() {
         m_login->setFocus();
     }// end if
 }// end validar
-
-
-
-
-
-

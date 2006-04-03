@@ -32,24 +32,24 @@
 #include <set>
 #endif
 
-
-
-BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, Qt::WFlags f=0) : UIconfiguracion(parent,name,f) {
-    PunteroAlSelector=ref;
-    if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
-        cargarFichaBulmages();
-        m_tab->setTabEnabled(m_tab->page(1),FALSE);
-        m_tab->setTabEnabled(m_tab->page(2),FALSE);
-        m_tab->setTabEnabled(m_tab->page(3),FALSE);
-    }// end if
-    if (PunteroAlSelector->tipoEmpresa() == "BulmaFact") {
-        cargarFichaBulmages();
-        m_tab->setTabEnabled(m_tab->page(0),FALSE);
-        m_tab->setTabEnabled(m_tab->page(2),FALSE);
-        m_tab->setTabEnabled(m_tab->page(3),FALSE);
-    }// end if
-    cargarFichaUsuarios();
-    tablaconfiguracion();
+BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, Qt::WFlags f=0) 
+  : QDialog(parent,name,f) {
+  setupUi(this);
+  PunteroAlSelector=ref;
+  if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
+    cargarFichaBulmages();
+    m_tab->setTabEnabled(m_tab->page(1),FALSE);
+    m_tab->setTabEnabled(m_tab->page(2),FALSE);
+    m_tab->setTabEnabled(m_tab->page(3),FALSE);
+  }// end if
+  if (PunteroAlSelector->tipoEmpresa() == "BulmaFact") {
+    cargarFichaBulmages();
+    m_tab->setTabEnabled(m_tab->page(0),FALSE);
+    m_tab->setTabEnabled(m_tab->page(2),FALSE);
+    m_tab->setTabEnabled(m_tab->page(3),FALSE);
+  }// end if
+  cargarFichaUsuarios();
+  tablaconfiguracion();
 }// end BConfiguracion
 
 BConfiguracion::~BConfiguracion() {}
