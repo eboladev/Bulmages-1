@@ -24,33 +24,26 @@
 #include <Q3Table>
 #include <QEvent>
 
-#include "linalbaranproveedor.h"
-#include "listlinalbaranproveedor.h"
 #include "company.h"
+#include "subform2bf.h"
+#include "fixed.h"
 
 
-class ListLinAlbaranProveedorView : public Q3Table , public ListLinAlbaranProveedor
-{
-	Q_OBJECT
-
+class ListLinAlbaranProveedorView : public SubForm2Bf {
+    Q_OBJECT
 public:
-	ListLinAlbaranProveedorView(QWidget *parent = 0, const char *name = 0);
-	~ListLinAlbaranProveedorView();
-	virtual void pintaListLinAlbaranProveedor();
-	virtual void pintalinListLinAlbaranProveedor(int);
-	virtual void pintalinListLinAlbaranProveedor(LinAlbaranProveedor *, int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	LinAlbaranProveedor *lineaat(int);
-	LinAlbaranProveedor *lineaact();
-	void cargaconfig();
-	void guardaconfig();
-
+    QString mdb_idalbaranp;
+    ListLinAlbaranProveedorView(QWidget *parent = 0);
+    ~ListLinAlbaranProveedorView() {}
+    ;
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borraLinAlbaranProveedoract();
+    virtual void cargar(QString idalbaranp);
+    Fixed calculabase();
+    Fixed calculaiva();
+	virtual void editFinished(int, int);
+
 };
+
+
 
 #endif

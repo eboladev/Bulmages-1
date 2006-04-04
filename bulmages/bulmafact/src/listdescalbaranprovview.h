@@ -21,6 +21,37 @@
 #ifndef LISTDESCALBARANPROVVIEW_H
 #define LISTDESCALBARANPROVVIEW_H
 
+
+#include "subform2bf.h"
+#include "company.h"
+
+
+class ListDescuentoAlbaranProvView : public SubForm2Bf {
+    Q_OBJECT
+public:
+    QString mdb_idalbaranp;
+    ListDescuentoAlbaranProvView(QWidget *parent = 0);
+    ~ListDescuentoAlbaranProvView() {};
+public slots:
+    virtual void cargar(QString idalbaranp) {
+        _depura("ListDescuentoAlbaranProvView::cargar\n",0);
+        mdb_idalbaranp = idalbaranp;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dalbaranp WHERE idalbaranp="+mdb_idalbaranp);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+
+};
+
+
+
+
+
+
+/*
+
+
+
 #include <Q3Table>
 
 #include "listdescalbaranprov.h"
@@ -45,5 +76,9 @@ public slots:
 	virtual void contextMenu (int, int, const QPoint &);
 	virtual void borradescalbaranact();
 };
+
+
+*/
+
 
 #endif

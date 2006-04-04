@@ -141,7 +141,7 @@ void PedidoProveedorView::generarAlbaran() {
         bud->cargar(cur->valor("idalbaranp"));
         bud->show();
         return;
-    }
+    }// end if
     delete cur;
 
 
@@ -169,30 +169,27 @@ void PedidoProveedorView::generarAlbaran() {
     bud->setidalmacen(DBvalue("idalmacen"));
 
     QString l;
-    SDBRecord *linea;
+    SDBRecord *linea, *linea1;
     uint i = 0;
     for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
-        bud->getlistalineas()->nuevalinea(
-            linea->DBvalue("desclpedidoproveedor"),
-            linea->DBvalue("cantlpedidoproveedor"),
-            linea->DBvalue("pvplpedidoproveedor"),
-            linea->DBvalue("descuentolpedidoproveedor"),
-            linea->DBvalue("idarticulo"),
-            linea->DBvalue("codigocompletoarticulo"),
-            linea->DBvalue("nomarticulo"),
-            linea->DBvalue("ivalpedidoproveedor")
-        );
+	linea1 = bud->getlistalineas()->newSDBRecord();
+	linea1->setDBvalue("desclalbaranp",linea->DBvalue("desclpedidoproveedor"));
+	linea1->setDBvalue("cantlalbaranp",linea->DBvalue("cantlpedidoproveedor"));
+	linea1->setDBvalue("pvplalbaranp",linea->DBvalue("pvplpedidoproveedor"));
+	linea1->setDBvalue("descontlalbaranp",linea->DBvalue("descuentolpedidoproveedor"));
+	linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
+	linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
+	linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
+	linea1->setDBvalue("ivalalbaranp",linea->DBvalue("ivalpedidoproveedor"));
         i++;
     }// end for
 
-
-
     for (int i=0; i < listadescuentos->rowCount()-1; i++) {
-        Fixed propor(listadescuentos->DBvalue( "proporciondpedidoproveedor",i).ascii());
-        bud->getlistadescuentos()->nuevalinea(listadescuentos->DBvalue( "conceptdpedidoproveedor",i), listadescuentos->DBvalue( "proporciondpedidoproveedor",i));
+//        Fixed propor(listadescuentos->DBvalue( "proporciondpedidoproveedor",i).ascii());
+	linea1 = bud->getlistadescuentos()->newSDBRecord();
+	linea1->setDBvalue("conceptdalbaranp",listadescuentos->DBvalue( "conceptdpedidoproveedor",i));
+	linea1->setDBvalue("proporciondalbaranp",listadescuentos->DBvalue( "proporciondpedidoproveedor",i));
     }// end for
-
-    bud->pintaAlbaranProveedor();
     bud->show();
 }// end generarAlbaran
 

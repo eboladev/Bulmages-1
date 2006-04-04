@@ -31,7 +31,7 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
-#include "albaranproveedorbase.h"
+#include "ui_albaranproveedorbase.h"
 #include "albaranproveedor.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
@@ -39,7 +39,7 @@
 
 class company;
 
-class AlbaranProveedorView : public AlbaranProveedorBase, public AlbaranProveedor,
+class AlbaranProveedorView : public QWidget, public Ui_AlbaranProveedorBase, public AlbaranProveedor,
 	public dialogChanges
 {
 	Q_OBJECT
@@ -86,11 +86,10 @@ public:
 		m_refalbaranp->setText(val);
 	};
 
-	// void pintaNumFactura(QString);
-
-	void pintatotales(float, float);	
+	void pintatotales(Fixed, Fixed);	
 	void generarFactura();
 	void closeEvent(QCloseEvent *);
+	virtual int guardar();
 
 public slots:
 	virtual void s_comentalbaranptextChanged()
@@ -126,14 +125,24 @@ public slots:
 	{
 		setdescalbaranp(val);
 	};
-	virtual void s_saveAlbaranProveedor()
-	{
-		guardaAlbaranProveedor();
-	};
+	virtual void m_guardar_clicked();
 	virtual int cargar(QString id);
-	virtual void s_deleteAlbaranProveedor()
+	virtual void on_mui_borrar_clicked()
 	{
-		borrar();
+
+
+        int val = QMessageBox::warning( this, tr("Borrar Albaran Proveedor."),
+                                        tr("Desea eliminar el albaran de este proveedor, piense en los dolores de cabeza que la perdida de esta informacion puede causar a otros ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        if (val == 0) {
+
+		if (!borrar()) {
+            	dialogChanges_cargaInicial();
+		_depura("Albaran de Proveedor borrado satisfactoriamente",2);
+		close();
+		}// end if
+        }// end if
+
+
 	};
 	virtual void s_printAlbaranProveedor()
 	{
@@ -153,6 +162,23 @@ public slots:
 	{
 		generarFactura();
 	};
+
+
+	virtual void calculaypintatotales() {
+		s_pintaTotales();
+	};
+
+    virtual void on_m_descuentos_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_subform3_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_mui_aceptar_clicked() {
+        if (!guardar() )
+            close();
+    };
+
 };
 
 #endif

@@ -72,3 +72,31 @@ void ListLinPedidoProveedorView::editFinished(int row, int col) {
 };
 
 
+
+void ListLinPedidoProveedorView::cargar(QString idpedidoproveedor) {
+        _depura("ListLinPedidoProveedorView::cargar\n",0);
+        mdb_idpedidoproveedor = idpedidoproveedor;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+        SubForm2::cargar(cur);
+        delete cur;
+}
+
+Fixed ListLinPedidoProveedorView::calculabase() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor",i)) * Fixed(DBvalue("cantlpedidoproveedor",i));
+		base = base + totpar;
+        }// end for
+	return base;
+}
+
+
+Fixed ListLinPedidoProveedorView::calculaiva() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor",i)) * Fixed(DBvalue("ivalpedidoproveedor",i));
+		base = base + totpar;
+        }// end for
+	return base;
+}
+

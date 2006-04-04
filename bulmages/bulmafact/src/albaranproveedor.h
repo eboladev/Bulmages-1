@@ -27,15 +27,15 @@
 
 #include "company.h"
 #include "dbrecord.h"
-#include "listlinalbaranproveedor.h"
-#include "listdescalbaranprov.h"
+#include "listlinalbaranproveedorview.h"
+#include "listdescalbaranprovview.h"
 
 
 class AlbaranProveedor : public DBRecord
 {
 protected:
-	ListLinAlbaranProveedor *listalineas;
-	ListDescuentoAlbaranProv *listadescuentos;
+	ListLinAlbaranProveedorView *listalineas;
+	ListDescuentoAlbaranProvView *listadescuentos;
 	company *companyact;
 
 public:
@@ -44,24 +44,24 @@ public:
 
 	/// Establece cual es la lista subformulario del presupuesto.
 	/// Normalmente para apuntar listlinpresupuestoview.
-	void setListLinAlbaranProveedor(ListLinAlbaranProveedor *a)
+	void setListLinAlbaranProveedor(ListLinAlbaranProveedorView *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setListDescuentoAlbaranProveedor(ListDescuentoAlbaranProv *a)
+	void setListDescuentoAlbaranProveedor(ListDescuentoAlbaranProvView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
 	};
-	void pintaAlbaranProveedor();
-	void guardaAlbaranProveedor();
-	int borrar();
-	ListLinAlbaranProveedor* getlistalineas()
+	virtual void pintar();
+	virtual int guardar();
+	virtual int borrar();
+	ListLinAlbaranProveedorView* getlistalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoAlbaranProv* getlistadescuentos()
+	ListDescuentoAlbaranProvView* getlistadescuentos()
 	{
 		return listadescuentos;
 	};
@@ -93,14 +93,14 @@ public:
 	virtual void pintarefalbaranp(QString)
 	{
 	};
-	virtual void pintatotales(float, float)
+	virtual void pintatotales(Fixed, Fixed)
 	{
 	};
 	void setidalbaranp(QString val)
 	{
 		setDBvalue("idalbaranp",val);
-		listalineas->setidalbaranp(val);
-		listadescuentos->setidalbaranp(val);
+		listalineas->setColumnValue("idalbaranp",val);
+		listadescuentos->setColumnValue("idalbaranp",val);
 	};
 	void setnumalbaranp(QString val)
 	{

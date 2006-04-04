@@ -56,23 +56,18 @@ AlbaranProveedor::~AlbaranProveedor()
 
 
 int AlbaranProveedor::borrar()  {
-	if (DBvalue("idalbaranp") != "")
-	{
+	if (DBvalue("idalbaranp") != "")  {
 		listalineas->borrar();
 		listadescuentos->borrar();
 		companyact->begin();
 		int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp=" +
 				DBvalue("idalbaranp"));
-		if (error)
-		{
+		if (error)  {
 			companyact->rollback();
 			return -1;
-		};
-
+		}// end if
 		companyact->commit();
-		vaciaAlbaranProveedor();
-		pintaAlbaranProveedor();
-	};
+	}// end if
 	return 0;
 }
 
@@ -82,8 +77,7 @@ void AlbaranProveedor::vaciaAlbaranProveedor()  {
 }
 
 
-void AlbaranProveedor::pintaAlbaranProveedor()
-{
+void AlbaranProveedor::pintar()  {
 	_depura("pintaAlbaranProveedor\n", 0);
 	pintaidalbaranp(DBvalue("idalbaranp"));
 	pintanumalbaranp(DBvalue("numalbaranp"));
@@ -94,36 +88,31 @@ void AlbaranProveedor::pintaAlbaranProveedor()
 	pintaidalmacen(DBvalue("idalmacen"));
 	pintarefalbaranp(DBvalue("refalbaranp"));
 	pintadescalbaranp(DBvalue("descalbaranp"));
-	/// Pinta el subformulario de detalle del AlbaranProveedor.
-	listalineas->pintaListLinAlbaranProveedor();
-	listadescuentos->pintaListDescuentoAlbaranProv();
 	/// Pintamos los totales.
 	pintatotales(listalineas->calculabase(), listalineas->calculaiva());
-};
+}
 
 
 /// Esta funcion carga un AlbaranProveedor.
 int AlbaranProveedor::cargar(QString idbudget)
 {
-	_depura("AlbaranProveedor::cargaAlbaranProveedor()\n", 0);
+	_depura("AlbaranProveedor::cargar()\n", 0);
 	QString query = "SELECT * FROM albaranp WHERE idalbaranp=" + idbudget;
 	cursor2 * cur = companyact->cargacursor(query);
 
 	if (!cur->eof())
-	{
 		DBload(cur);
-	};
 
 	delete cur;
-	listalineas->cargaListLinAlbaranProveedor(idbudget);
-	listadescuentos->cargaDescuentos(idbudget);
-	pintaAlbaranProveedor();
+	listalineas->cargar(idbudget);
+	listadescuentos->cargar(idbudget);
+	pintar();
 	return 0;
 };
 
 
-void AlbaranProveedor::guardaAlbaranProveedor()
-{
+int AlbaranProveedor::guardar() {
+	_depura("AlbaranProveedor::guardar",0);
 	QString id;
 	companyact->begin();
 	int error = DBsave(id);
@@ -131,14 +120,15 @@ void AlbaranProveedor::guardaAlbaranProveedor()
 	if (error)
 	{
 		companyact->rollback();
-		return;
+		return -1;
 	};
     
 	companyact->commit();
 	setidalbaranp(id);
-	listalineas->guardaListLinAlbaranProveedor();
-	listadescuentos->guardaListDescuentoAlbaranProv();
-	cargar(id);
+	listalineas->guardar();
+	listadescuentos->guardar();
+	companyact->commit();
+	return 0;
 };
 
 
@@ -190,19 +180,16 @@ void AlbaranProveedor::imprimirAlbaranProveedor()
 	fitxersortidatxt += "</tr>";
 
 	QString l;
-	LinAlbaranProveedor *linea;
+	SDBRecord *linea;
 	uint i = 0;
 
-	for (linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next())
+	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())
 	{
 		fitxersortidatxt += "<tr>";
-		fitxersortidatxt += "<td>" + linea->desclalbaranp() + "</td>";
-		fitxersortidatxt += "<td>" + l.sprintf("%2.2f", linea->cantlalbaranp().toFloat()) +
-					"</td>";
-		fitxersortidatxt += "<td>" + l.sprintf("%2.2f", linea->pvplalbaranp().toFloat()) +
-					"</td>";
-		fitxersortidatxt += "<td>" + l.sprintf("%2.2f", linea->cantlalbaranp().toFloat()
-					* linea->pvplalbaranp().toFloat()) + "</td>";
+		fitxersortidatxt += "<td>" + linea->DBvalue("desclalbaranp") + "</td>";
+		fitxersortidatxt += "<td>" + linea->DBvalue("cantlalbaranp") +"</td>";
+		fitxersortidatxt += "<td>" + linea->DBvalue("pvplalbaranp") +"</td>";
+		fitxersortidatxt += "<td>" + (Fixed(linea->DBvalue("pvplalbaranp"))*Fixed(linea->DBvalue("pvplalbaranp"))).toQString() + "</td>";
 		fitxersortidatxt += "</tr>";
 		i++;
 	};
@@ -211,20 +198,20 @@ void AlbaranProveedor::imprimirAlbaranProveedor()
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td>Base</td>";
-	fitxersortidatxt += "<td>" + l.sprintf("%2.2f", listalineas->calculabase()) + "</td>";
+	fitxersortidatxt += "<td>" + listalineas->calculabase().toQString() + "</td>";
 	fitxersortidatxt += "</tr>";
 	fitxersortidatxt += "<tr>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td>Iva</td>";
-	fitxersortidatxt += "<td>" + l.sprintf("%2.2f", listalineas->calculaiva()) + "</td>";
+	fitxersortidatxt += "<td>" + listalineas->calculaiva().toQString() + "</td>";
 	fitxersortidatxt += "</tr>";
 	fitxersortidatxt += "<tr>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td>Total</td>";
-	fitxersortidatxt += "<td>" + l.sprintf("%2.2f", listalineas->calculabase() +
-				listalineas->calculaiva()) + "</td>";
+	fitxersortidatxt += "<td>" + (listalineas->calculabase() +
+				listalineas->calculaiva()).toQString() + "</td>";
 	fitxersortidatxt += "</tr>";
 	fitxersortidatxt += "</blockTable>";
 

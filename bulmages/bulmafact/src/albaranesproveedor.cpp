@@ -229,8 +229,7 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WF
 
 
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name,
-                                       Qt::WFlags flag) : QWidget(parent,
-                                                                  name, flag) {
+Qt::WFlags flag) : QWidget(parent,name, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);

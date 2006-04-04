@@ -10,25 +10,8 @@
 //
 //
 
-#define COL_NUMLALBARANP 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLALBARANP 4
-#define COL_CANTLALBARANP 5
-#define COL_PVPLALBARANP 6
-#define COL_DESCONTLALBARANP 7
-#define COL_IDALBARAN 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
-#define COL_IVALALBARANP 12
-
-
-#include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
-//Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>
 
@@ -37,270 +20,78 @@
 #include "funcaux.h"
 #include "fixed.h"
 
-void ListLinAlbaranProveedorView::guardaconfig() {
-    _depura("ListLinAlbaranProveedorView::guardaconfig",0);
-    QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinalbaranproveedorview.cfn" );
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
-        for (int i = 0; i < numCols(); i++) {
-            showColumn(i);
-            stream << columnWidth(i) << "\n";
+ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("lalbaranp");
+    setDBCampoId("numlalbaranp");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "");
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "");
+    addSHeader("numlalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "");
+    addSHeader("desclalbaranp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("cantlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("pvplalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("ivalalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("descontlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+
+    setinsercion(TRUE);
+}
+
+
+
+
+void ListLinAlbaranProveedorView::editFinished(int row, int col) {
+    _depura("ListLinAlbaranProveedorView::editFinished",0);
+    SDBRecord *rec = lineaat(row);
+    SDBCampo *camp = (SDBCampo *) item(row,col);
+    camp->refresh();
+    if (camp->nomcampo() == "codigocompletoarticulo") {
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
+        if (!cur->eof() ) {
+            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
+            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
+            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+            rec->setDBvalue("desclalbaranp", cur->valor("nomarticulo"));
+            rec->setDBvalue("cantlalbaranp", "1.00");
+	    rec->setDBvalue("descontlalbaranp","0.00");
+	    rec->setDBvalue("pvplalbaranp",cur->valor("pvparticulo"));
+        }// end if
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur->eof() ) {
+	    rec->setDBvalue("ivalalbaranp",cur1->valor("porcentasa_iva"));		
+        }// end if
+	delete cur1;
+	delete cur;
+    }// end if
+}
+
+
+void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
+        _depura("ListLinPedidoProveedorView::cargar\n",0);
+        mdb_idalbaranp = idalbaranp;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp="+mdb_idalbaranp);
+        SubForm2::cargar(cur);
+        delete cur;
+}
+
+
+Fixed ListLinAlbaranProveedorView::calculabase() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplalbaranp",i)) * Fixed(DBvalue("cantlalbaranp",i));
+		base = base + totpar;
         }// end for
-        file.close();
-    }// end if
-}// end guardaconfig()
+	return base;
+}
 
-void ListLinAlbaranProveedorView::cargaconfig() {
-	_depura("ListLinAlbaranProveedorView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinalbaranproveedorview.cfn" );
-    QString line;
-    if ( file.open( QIODevice::ReadOnly ) ) {
-        QTextStream stream( &file );
-        for (int i = 0; i < numCols(); i++) {
-            QString linea = stream.readLine();
-            setColumnWidth(i, linea.toInt());
+
+Fixed ListLinAlbaranProveedorView::calculaiva() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplalbaranp",i)) * Fixed(DBvalue("ivalalbaranp",i));
+		base = base + totpar;
         }// end for
-        file.close();
-    }
-}// end cargaconfig
-
-ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinAlbaranProveedor() {
-    /// Inicializamos la tabla de lineas de Factura
-    setNumCols(13);
-    setNumRows(100);
-    horizontalHeader()->setLabel( COL_NUMLALBARANP, tr( "N L�ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLALBARANP, tr( "Descripci�" ) );
-    horizontalHeader()->setLabel( COL_CANTLALBARANP, tr( "Cantidad" ) );
-    horizontalHeader()->setLabel( COL_PVPLALBARANP, tr( "Precio" ) );
-    horizontalHeader()->setLabel( COL_DESCONTLALBARANP, tr( "Descuento" ) );
-    horizontalHeader()->setLabel( COL_IDALBARAN, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Art�ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "C�igo Art�ulo" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
-    horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
-    horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-    horizontalHeader()->setLabel( COL_IVALALBARANP, tr( "IVA" ) );
-
-    hideColumn(COL_NUMLALBARANP);
-    hideColumn(COL_IDALBARAN);
-    hideColumn(COL_IDARTICULO);
-    hideColumn(COL_REMOVE);
-    hideColumn(COL_TASATIPO_IVA);
-    hideColumn(COL_TIPO_IVA);
-
-    setSelectionMode( Q3Table::SingleRow );
-
-    setColumnReadOnly(COL_NOMARTICULO,true);
-    // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor("#DDAADD");
-
-    connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
-    connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-
-    installEventFilter(this);
-	cargaconfig();
+	return base;
 }
 
-
-ListLinAlbaranProveedorView::~ListLinAlbaranProveedorView() {
-	guardaconfig();
-}
-
-
-void ListLinAlbaranProveedorView::pintaListLinAlbaranProveedor() {
-    fprintf(stderr,"INICIO de pintaListLinAlbaranProveedor\n");
-    setNumRows(0);
-    setNumRows(100);
-    /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
-    LinAlbaranProveedor *linea;
-    uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        pintalinListLinAlbaranProveedor(linea,i);
-        i++;
-    }// end for
-    fprintf(stderr,"FIN de pintaListLinAlbaranProveedor\n");
-}
-
-
-void ListLinAlbaranProveedorView::pintalinListLinAlbaranProveedor(LinAlbaranProveedor *linea, int i) {
-    setText(i, COL_NUMLALBARANP, linea->numlalbaranp());
-    setText(i, COL_IDARTICULO, linea->idarticulo());
-    setText(i, COL_CODARTICULO, linea->codigocompletoarticulo());
-    setText(i, COL_NOMARTICULO, linea->nomarticulo());
-    setText(i, COL_DESCLALBARANP, linea->desclalbaranp());
-    setText(i, COL_CANTLALBARANP, linea->cantlalbaranp());
-    setText(i, COL_DESCONTLALBARANP, linea->descontlalbaranp());
-    setText(i, COL_IDALBARAN, linea->idalbaranp());
-    setText(i, COL_REMOVE, "XX");
-    setText(i, COL_TASATIPO_IVA, "XX");
-    setText(i, COL_TIPO_IVA, "XX");
-    setText(i, COL_PVPLALBARANP, linea->pvplalbaranp());
-    setText(i, COL_IVALALBARANP, linea->ivalalbaranp());
-    adjustRow(i);
-}
-
-
-void ListLinAlbaranProveedorView::contextMenu ( int row, int, const QPoint & pos ) {
-    Q3PopupMenu *popup;
-    int opcion;
-    popup = new Q3PopupMenu;
-    popup->insertItem(tr(tr("Borrar Linea")),1);
-    opcion = popup->exec(pos);
-    delete popup;
-    switch(opcion) {
-    case 1:
-        borraLinAlbaranProveedor(row);
-    }// end switch
-}// end contextMenuRequested
-
-
-void ListLinAlbaranProveedorView::borraLinAlbaranProveedoract() {
-    borraLinAlbaranProveedor(currentRow());
-}// end borraLinAlbaranProveedoract
-
-
-void ListLinAlbaranProveedorView::pintalinListLinAlbaranProveedor(int pos) {
-    fprintf(stderr,"pintalinListLinAlbaranProveedor(%d)\n",pos);
-    LinAlbaranProveedor *linea;
-    linea = m_lista.at(pos);
-    pintalinListLinAlbaranProveedor(linea, pos);
-}
-
-
-bool ListLinAlbaranProveedorView::eventFilter( QObject *obj, QEvent *ev ) {
-    fprintf(stderr,"eventFilter()\n");
-    QString idArticle;
-    //    LinAlbaranProveedor *linea=lineaact();
-    LinAlbaranProveedor *linea;//=m_lista.at(currentRow());
-
-    if ( ev->type() == QEvent::KeyRelease ) {
-        //        if ( ev->type() == QEvent::KeyPress ) {
-        QKeyEvent *k = (QKeyEvent *)ev;
-        int col=currentColumn();
-        int row=currentRow();
-        switch (k->key()) {
-        case Qt::Key_Plus:
-		if (col == COL_DESCLALBARANP) {
-                setText(row,col,editaTexto(text(row,col)));
-		valueBudgetLineChanged(row,col);
-                return TRUE;
-		}// end if
-            break;
-        case Qt::Key_Asterisk:
-            linea = lineaact();
-            idArticle = searchArticle();
-            linea->setidarticulo(idArticle);
-            pintalinListLinAlbaranProveedor(currentRow());
-            return TRUE;
-            break;
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
-            switch (col) {
-            case COL_CODARTICULO:
-                setCurrentCell(row, COL_DESCLALBARANP);
-                break;
-            case COL_DESCLALBARANP:
-                setCurrentCell(row, COL_CANTLALBARANP);
-                break;
-            case COL_CANTLALBARANP:
-                setCurrentCell(row, COL_PVPLALBARANP);
-                break;
-            case COL_PVPLALBARANP:
-                setCurrentCell(row+1, COL_CODARTICULO);
-                break;
-            }// end switch
-            return TRUE;
-            break;
-        }// end switch
-    }// end if
-    return Q3Table::eventFilter( obj, ev );
-} //end eventFilter
-
-
-
-void ListLinAlbaranProveedorView::valueBudgetLineChanged(int row, int col) {
-    fprintf(stderr,"valueBudgetLineChanged \n");
-    LinAlbaranProveedor *linea;
-    linea = lineaat(row);
-    if (linea != NULL) {
-        switch (col) {
-        case COL_DESCONTLALBARANP: {
-                Fixed discountLine(text(row, COL_DESCONTLALBARANP).replace(",",".").toAscii());
-                linea->setdescontlalbaranp(discountLine.toQString());
-                break;
-            }
-        case COL_CODARTICULO:
-            manageArticle(row);
-            break;
-        case COL_DESCLALBARANP:
-            linea->setdesclalbaranp(text(row,COL_DESCLALBARANP));
-            break;
-        case COL_CANTLALBARANP: {
-                Fixed cantLine(text(row, COL_CANTLALBARANP).replace(",",".").toAscii());
-                linea->setcantlalbaranp(cantLine.toQString());
-                break;
-            }
-        case COL_PVPLALBARANP:  {
-                Fixed pvpLine(text(row, COL_PVPLALBARANP).replace(",",".").toAscii());
-                linea->setpvplalbaranp(pvpLine.toQString());
-                break;
-            }
-        }// end switch
-        pintalinListLinAlbaranProveedor(row);
-    }// end if
-} //end valueBudgetLineChanged
-
-
-/// Devuelve la linea que se esta tratando actualmente
-LinAlbaranProveedor *ListLinAlbaranProveedorView::lineaact() {
-    fprintf(stderr,"ListLinAlbaranProveedorView::lineaact()\n");
-    return lineaat(currentRow());
-}// end lineaact
-
-
-/// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
-LinAlbaranProveedor *ListLinAlbaranProveedorView::lineaat(int row) {
-    fprintf(stderr,"ListLinAlbaranProveedor::lineaat(%d)\n", row);
-    LinAlbaranProveedor *linea;
-    if (row >=0) {
-        while (m_lista.at(row) == 0 ) {
-            fprintf(stderr,"Creamos la linea\n");
-            linea=new LinAlbaranProveedor(companyact);
-            linea->setidalbaranp(mdb_idalbaranp);
-            m_lista.append(linea);
-        }// end while
-        return(m_lista.at(row));
-    } else {
-        fprintf(stderr,"Linea inexistente\n");
-        return NULL;
-    }// end if
-
-}// end lineaat
-
-
-void ListLinAlbaranProveedorView::manageArticle(int row) {
-    fprintf(stderr,"manageArticle(%d)\n",row);
-    LinAlbaranProveedor *linea= lineaat(row);
-    QString articleCode = text(row, COL_CODARTICULO);
-    linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
-    pintalinListLinAlbaranProveedor(row);
-} //end manageArticle
-
-
-QString ListLinAlbaranProveedorView::searchArticle() {
-    _depura("ListLinAlbaranProveedorView::searchArticle",0);
-    ArticuloList *artlist = new ArticuloList(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,ArticuloList::SelectMode);
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    artlist->show();
-    while(!artlist->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
-    QString idArticle = artlist->idArticle();
-    delete artlist;
-    return idArticle;
-}// end searchArticle

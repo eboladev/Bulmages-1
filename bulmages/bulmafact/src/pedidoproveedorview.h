@@ -95,7 +95,6 @@ public:
         }
     };
 
-
     virtual int guardar();
 
 public slots:

@@ -45,9 +45,10 @@
 
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name)
-	: AlbaranProveedorBase(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp),
+	: QWidget(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp),
 	dialogChanges(this)  {
 	_depura("AlbaranProveedorView::AlbaranProveedorView", 0);
+	setupUi(this);
 	subform2->setcompany(comp);
 	m_almacen->setcompany(comp);
 	m_forma_pago->setcompany(comp);
@@ -69,6 +70,7 @@ AlbaranProveedorView::~AlbaranProveedorView()  {
 
 
 void AlbaranProveedorView::inicialize()  {
+	_depura("AlbaranProveedorView::inicialize",0);
 	m_totalBases->setReadOnly(TRUE);
 	m_totalBases->setAlignment(Qt::AlignRight);
 	m_totalTaxes->setReadOnly(TRUE);
@@ -77,13 +79,14 @@ void AlbaranProveedorView::inicialize()  {
 	m_totalDiscounts->setAlignment(Qt::AlignRight);
 	m_totalalbaranp->setReadOnly(TRUE);
 	m_totalalbaranp->setAlignment(Qt::AlignRight);
+	subform2->pintar();
 };
 
 
-void AlbaranProveedorView::pintatotales(float base, float iva)  {
-	m_totalBases->setText(QString::number(base));
-	m_totalTaxes->setText(QString::number(iva));
-	m_totalalbaranp->setText(QString::number(iva + base));
+void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva)  {
+	m_totalBases->setText(base.toQString());
+	m_totalTaxes->setText(iva.toQString());
+	m_totalalbaranp->setText((iva + base).toQString());
 };
 
 
@@ -108,7 +111,7 @@ void AlbaranProveedorView::generarFactura()  {
 		bud->cargar(cur->valor("idfacturap"));
 		bud->show();
 		return;
-	};
+	}
 
 	delete cur;
 	/// Informamos de que no existe el pedido y a ver si lo queremos realizar.
@@ -118,7 +121,7 @@ void AlbaranProveedorView::generarFactura()  {
                    "Desea Crearla ?"), tr("&Yes"), tr("&No"), QString::null, 0, 1))
 	{
 		return;
-	};
+	}
 
 	/// Creamos la factura.
 	FacturaProveedorView *bud = companyact->newFacturaProveedorView();
@@ -128,52 +131,75 @@ void AlbaranProveedorView::generarFactura()  {
 	bud->setidforma_pago(DBvalue("idforma_pago"));
 	bud->setreffacturap(DBvalue("refalbaranp"));
 	bud->setidproveedor(DBvalue("idproveedor"));
-	LinAlbaranProveedor *linea;
+	SDBRecord *linea;
 	uint i = 0;
 
-	for (linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next())
+	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())
 	{
-		bud->getlistalineas()->nuevalinea(linea->desclalbaranp(),
-			linea->cantlalbaranp(), linea->pvplalbaranp(), linea->descontlalbaranp(),
-			linea->idarticulo(), linea->codigocompletoarticulo(),
-			linea->nomarticulo(), linea->ivalalbaranp());
+		bud->getlistalineas()->nuevalinea(
+			linea->DBvalue("desclalbaranp"),
+			linea->DBvalue("cantlalbaranp"),
+			linea->DBvalue("pvplalbaranp"),
+			linea->DBvalue("descontlalbaranp"),
+			linea->DBvalue("idarticulo"),
+			linea->DBvalue("codigocompletoarticulo"),
+			linea->DBvalue("nomarticulo"),
+			linea->DBvalue("ivalalbaranp"));
 		i++;
-	};
+	}
 
 	bud->pintaFacturaProveedor();
 	bud->show();
-};
+}
 
 
-void AlbaranProveedorView::closeEvent(QCloseEvent *e)
-{
+void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
 	_depura("closeEvent", 0);
-
-	if (dialogChanges_hayCambios())
-	{
+	if (dialogChanges_hayCambios()) {
 		int val = QMessageBox::warning( this, "Guardar Albaran",
 				"Desea guardar los cambios.", "Si", "No", "Cancelar", 0, 2);
-		if (val == 0)
-		{
-			guardaAlbaranProveedor();
-		};
-
+		if (val == 0) 
+			guardar();
 		if (val == 2)
-		{
 			e->ignore();
-		};
-	};
-};
+	}// end if
+}
 
 
-int AlbaranProveedorView::cargar(QString id)
-{
+int AlbaranProveedorView::cargar(QString id)  {
 	AlbaranProveedor::cargar(id);
 	setCaption("Albaran Proveedor  " + DBvalue("refalbaranp"));
-	if (companyact->meteWindow(caption(), this))
-	{
+	if (companyact->meteWindow(caption(), this)) {
 		return -1;
-	}
-
+	}// end if
+	dialogChanges_cargaInicial();
 	return 0;
-};
+}
+
+
+int AlbaranProveedorView::guardar() {
+
+    setcomentalbaranp(m_comentalbaranp->text());
+    setnumalbaranp(m_numalbaranp->text());
+    setidproveedor(m_proveedor->idproveedor());
+    setfechaalbaranp(m_fechaalbaranp->text());
+    setidalmacen(m_almacen->idalmacen());
+//    setidtrabajador(m_trabajador->idtrabajador());
+    setidforma_pago(m_forma_pago->idforma_pago());
+    setrefalbaranp(m_refalbaranp->text());
+    setdescalbaranp(m_descalbaranp->text());
+
+//    setcontactalbaranp(m_contactalbaranp->text());
+//    settelalbaranp(m_telalbaranp->text());
+
+	int err = AlbaranProveedor::guardar();
+	dialogChanges_cargaInicial();
+	return err;
+}
+
+
+void AlbaranProveedorView::m_guardar_clicked() {
+	guardar();
+}
+
+

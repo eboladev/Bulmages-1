@@ -226,10 +226,11 @@ void company::s_newAlbaranPro() {
     _depura ("company::s_newAlbaranPro",0);
     AlbaranProveedorView *bud = new AlbaranProveedorView(this,0,theApp->translate("Edicion de Albaranes Proveedor", "company"));
     m_pWorkspace->addWindow(bud);
-    bud->pintaAlbaranProveedor();
+//    bud->pintar();
     bud->show();
     _depura ("END company::s_newAlbaranPro",0);
 }
+
 
 void company::s_newPedidoPro() {
     _depura ("company::s_newPedidoPro",0);
@@ -239,11 +240,13 @@ void company::s_newPedidoPro() {
     bud->show();
 }
 
+
 void company::lAlbaranesProveedor () {
     m_albaranesproveedor->hide();
     m_albaranesproveedor->showMaximized();
     m_albaranesproveedor->setActiveWindow();
 }// end lAlbaranesProveedor
+
 
 void company::s_listPedidosCli () {
     m_pedidosclienteList->hide();
@@ -251,11 +254,13 @@ void company::s_listPedidosCli () {
     m_pedidosclienteList->setActiveWindow();
 }// end s_listPedidosCli
 
+
 void company::s_listPedidosPro () {
     m_pedidosproveedorList->hide();
     m_pedidosproveedorList->showMaximized();
     m_pedidosproveedorList->setActiveWindow();
 }// end s_listPedidosPro
+
 
 void company::s_listFacturasCli () {
     m_facturasList->hide();
