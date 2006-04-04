@@ -271,13 +271,12 @@ void FacturasProveedorList::on_mui_editar_clicked() {
 }
 
 
-
 void FacturasProveedorList::on_mui_borrar_clicked() {
     mdb_idfacturap = mui_list->DBvalue("idfacturap");
     if (mdb_idfacturap != "") {
         FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
         bud->cargar(mdb_idfacturap);
-        bud->borraFacturaProveedor();
+        bud->on_mui_borrar_clicked();
         delete bud;
     }// end if
     presenta();

@@ -9,14 +9,6 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "facturapview.h"
-#include "company.h"
-#include "listlinfacturapview.h"
-#include "facturap.h"
-#include "providerslist.h"
-#include "cobroview.h"
-#include "funcaux.h"
-
 #include <QMessageBox>
 #include <Q3Table>
 #include <QWidget>
@@ -26,16 +18,21 @@
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>
-
 #include <QCloseEvent>
 using namespace std;
 
-
-
+#include "facturapview.h"
+#include "company.h"
+#include "listlinfacturapview.h"
+#include "facturap.h"
+#include "providerslist.h"
+#include "cobroview.h"
+#include "funcaux.h"
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
-        : FacturaProveedorBase(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) ,dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+	setupUi(this);
     subform2->setcompany(comp);
     m_forma_pago->setcompany(comp);
     m_proveedor->setcompany(comp);
@@ -44,6 +41,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
     setListDescuentoFacturaProv(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
+    dialogChanges_cargaInicial();
     _depura("Fin de la inicializaci� de FacturaProveedor\n");
 }
 
@@ -65,10 +63,10 @@ void FacturaProveedorView::inicialize() {
 }// end inicialize
 
 
-void   FacturaProveedorView::pintatotales(float base, float iva) {
-    m_totalBases->setText(QString::number(base));
-    m_totalTaxes->setText(QString::number(iva));
-    m_totalfacturap->setText(QString::number(iva+base));
+void   FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
+    m_totalBases->setText(base.toQString());
+    m_totalTaxes->setText(iva.toQString());
+    m_totalfacturap->setText((iva+base).toQString());
 }// end pintatotales
 
 
@@ -91,7 +89,7 @@ void FacturaProveedorView::closeEvent( QCloseEvent *e) {
         int val = QMessageBox::warning( this, "Guardar Factura Proveedor",
                                         "Desea guardar los cambios.","Si","No","Cancelar",0,2);
         if (val == 0)
-            guardaFacturaProveedor();
+            guardar();
         if (val == 2)
             e->ignore();
     }// end if
@@ -102,8 +100,24 @@ int FacturaProveedorView::cargar(QString id) {
     setCaption("FacturaProveedor   "+DBvalue("reffacturap"));
     if (companyact->meteWindow(caption(),this))
         return -1;
+    dialogChanges_cargaInicial();
     return 0;
 }
 
 
 
+
+int FacturaProveedorView::guardar() {
+    setidproveedor(m_proveedor->idproveedor());
+    setnumfacturap(m_numfacturap->text());
+    setfechafacturap(m_fechafacturap->text());
+    setdescfacturap(m_descfacturap->text());
+    setcomentfacturap(m_comentfacturap->text());
+    setreffacturap(m_reffacturap->text());
+    setidforma_pago(m_forma_pago->idforma_pago());
+    setprocesadafacturap(m_procesadafacturap->isChecked()?"TRUE":"FALSE");
+
+    int err = FacturaProveedor::guardar();
+    dialogChanges_cargaInicial();
+    return err;
+}

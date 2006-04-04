@@ -27,10 +27,9 @@
 #include <Q3Table>
 #include <Q3PtrList>
 
-#include "listlinfacturap.h"
+#include "listlinfacturapview.h"
 #include "company.h"
-#include "linfacturap.h"
-#include "listdescfacturaprov.h"
+#include "listdescfacturaprovview.h"
 #include "dbrecord.h"
 
 
@@ -38,31 +37,30 @@ class FacturaProveedor : public DBRecord
 {
 
 protected:
-	ListLinFacturaProveedor *listalineas;
-	ListDescuentoFacturaProv *listadescuentos;
+	ListLinFacturaProveedorView *listalineas;
+	ListDescuentoFacturaProvView *listadescuentos;
 	company *companyact;
 
 public:
 	FacturaProveedor(company *);
 	virtual ~FacturaProveedor();
-	ListLinFacturaProveedor* getlistalineas()
+	ListLinFacturaProveedorView* getlistalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoFacturaProv* getlistadescuentos()
+	ListDescuentoFacturaProvView* getlistadescuentos()
 	{
 		return listadescuentos;
 	};
-	void borraFacturaProveedor();
-	void vaciaFacturaProveedor();
+	virtual int borrar();
 	/// Establece cual es la lista subformulario del presupuesto. Normalmente para
 	/// apuntar listlinpresupuestoview.
-	void setListLinFacturaProveedor(ListLinFacturaProveedor *a)
+	void setListLinFacturaProveedor(ListLinFacturaProveedorView *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setListDescuentoFacturaProv(ListDescuentoFacturaProv *a)
+	void setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
@@ -94,8 +92,8 @@ public:
 	void setidfacturap(QString val)
 	{
 		setDBvalue("idfacturap", val);
-		listalineas->setidfacturap(val);
-		listadescuentos->setidfacturap(val);
+		listalineas->setColumnValue("idfacturap",val);
+		listadescuentos->setColumnValue( "idfacturap",val);
 	};
 	void setIdUsuari(QString val)
 	{
@@ -111,8 +109,10 @@ public:
 	};
 	virtual void imprimirFacturaProveedor();
 	virtual int cargar(QString);
-	virtual void pintaFacturaProveedor();
-	virtual void guardaFacturaProveedor();
+	virtual void pintar();
+	virtual int guardar();
+
+
 	virtual void pintaidproveedor(QString)
 	{
 	};
@@ -137,7 +137,7 @@ public:
 	virtual void pintaprocesadafacturap(QString)
 	{
 	};
-	virtual void pintatotales(float, float)
+	virtual void pintatotales(Fixed, Fixed)
 	{
 	};
 	virtual void cargaFacturaProveedorDescuentas(QString)

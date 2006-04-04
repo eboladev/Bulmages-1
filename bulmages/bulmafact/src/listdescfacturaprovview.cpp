@@ -10,6 +10,31 @@
 //
 //
 
+#include <QMessageBox>
+#include <QMenu>
+#include <QKeyEvent>
+#include <QEvent>
+
+#include "listdescfacturaprovview.h"
+#include "articulolist.h"
+#include "comparticulolistview.h"
+#include "funcaux.h"
+
+
+ListDescuentoFacturaProvView::ListDescuentoFacturaProvView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("dfacturap");
+    setDBCampoId("iddfacturap");
+    addSHeader("iddfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddfacturap");
+    addSHeader("conceptdfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdfacturap");
+    addSHeader("proporciondfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondfacturap");
+    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idfacturap");
+    setinsercion(TRUE);
+};
+
+
+/*
+
+
 #define COL_IDDFACTURAP 0
 #define COL_CONCEPTDFACTURAP 1
 #define COL_PROPORCIONDFACTURAP 2
@@ -154,4 +179,4 @@ DescuentoFacturaProv *ListDescuentoFacturaProvView::lineaat(int row) {
 
 }// end lineaat
 
-
+*/

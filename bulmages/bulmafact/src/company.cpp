@@ -218,7 +218,7 @@ FacturaProveedorView * company::newFacturaProveedorView() {
 void company::s_newFacturaPro() {
     FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);
-    bud->pintaFacturaProveedor();
+    bud->pintar();
     bud->show();
 }// end s_nuevaFacturaProveedor
 

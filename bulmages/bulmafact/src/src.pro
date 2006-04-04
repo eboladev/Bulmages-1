@@ -61,6 +61,7 @@ FORMS += about.ui \
          albaranesproveedorlistbase.ui \
 	 pedidoproveedorbase.ui \
          albaranproveedorbase.ui \
+         facturapbase.ui \
 	 clientebase.ui
 
 # uic3 los convierte de forma automatica.
@@ -79,7 +80,6 @@ FORMS3 += bulmafactbase.ui \
           busquedaproveedorbase.ui \
           busquedafamiliabase.ui \
           busquedatipoarticulobase.ui \
-          facturapbase.ui \
 	  listseriefacturabase.ui \
 	  inventariosbase.ui \
 	  inventariobase.ui
@@ -138,8 +138,6 @@ HEADERS += bulmafact.h \
            cobroview.h \
            cobroslist.h \
            facturasplist.h \
-           linfacturap.h \
-           listlinfacturap.h \
            listlinfacturapview.h \
            facturap.h \
            facturapview.h \
@@ -172,8 +170,6 @@ HEADERS += bulmafact.h \
 	   listseriefacturaview.h \
 	   busquedaseriefactura.h \
 	   listdescalbaranprovview.h \
-	   descfacturaprov.h \
-	   listdescfacturaprov.h \
 	   listdescfacturaprovview.h \
 	   aboutview.h \
 	   busquedaprovincia.h \
@@ -245,8 +241,6 @@ SOURCES += bulmafact.cpp \
            cobroview.cpp \
            cobroslist.cpp \
            facturasplist.cpp \
-           linfacturap.cpp \
-           listlinfacturap.cpp \
            listlinfacturapview.cpp \
            facturap.cpp \
            facturapview.cpp \
@@ -279,8 +273,6 @@ SOURCES += bulmafact.cpp \
 	   listseriefacturaview.cpp \
 	   busquedaseriefactura.cpp \
 	   listdescalbaranprovview.cpp \
-	   descfacturaprov.cpp \
-	   listdescfacturaprov.cpp \
 	   listdescfacturaprovview.cpp \
 	   aboutview.cpp \
 	   busquedaprovincia.cpp \

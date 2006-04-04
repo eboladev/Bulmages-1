@@ -21,35 +21,28 @@
 #ifndef LISTLINFACTURAPVIEW_H
 #define LISTLINFACTURAPVIEW_H
 
-#include <Q3Table>
+
 #include <QEvent>
 
-#include "listlinfacturap.h"
 #include "company.h"
-#include "linfacturap.h"
+#include "subform2bf.h"
+#include "fixed.h"
 
 
-class ListLinFacturaProveedorView : public Q3Table , public ListLinFacturaProveedor
-{
-	Q_OBJECT
-
+class ListLinFacturaProveedorView : public SubForm2Bf {
+    Q_OBJECT
 public:
-	ListLinFacturaProveedorView(QWidget *parent = 0, const char *name = 0);
-	~ListLinFacturaProveedorView();
-	virtual void pintaListLinFacturaProveedor();
-	virtual void pintalinListLinFacturaProveedor(int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	LinFacturaProveedor *lineaat(int);
-	LinFacturaProveedor *lineaact();
-	void cargaconfig();
-	void guardaconfig();
-
+    QString mdb_idfacturap;
+    ListLinFacturaProveedorView(QWidget *parent = 0);
+    ~ListLinFacturaProveedorView() {}
+    ;
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borraLinFacturaProveedoract();
+    virtual void cargar(QString idfacturap);
+    Fixed calculabase();
+    Fixed calculaiva();
+    virtual void editFinished(int, int);
+
 };
+
 
 #endif

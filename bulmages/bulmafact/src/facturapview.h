@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "facturapbase.h"
+#include "ui_facturapbase.h"
 #include "facturap.h"
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
@@ -37,107 +37,81 @@
 #include "funcaux.h"
 
 
-class FacturaProveedorView : public FacturaProveedorBase, public FacturaProveedor,
-	public dialogChanges
-{
-	Q_OBJECT
-
+class FacturaProveedorView : public QWidget,  public Ui_FacturaProveedorBase, public FacturaProveedor,
+    public dialogChanges {
+    Q_OBJECT
 public:
-	FacturaProveedorView(company *, QWidget *parent = 0, const char *name = 0);
-	~FacturaProveedorView();
-	void inicialize();
-	void pintaidproveedor(QString id)
-	{
-		m_proveedor->setidproveedor(id);
-	};
-	void pintanumfacturap(QString id)
-	{
-		m_numfacturap->setText(id);
-	};
-	void pintafechafacturap(QString id)
-	{
-		m_fechafacturap->setText(id);
-	};
-	void pintadescfacturap(QString id)
-	{
-		m_descfacturap->setText(id);
-	};
-	void pintaComentFacturaProveedor(QString id)
-	{
-		m_comentfacturap->setText(id);
-	};
-	void pintareffacturap(QString id)
-	{
-		m_reffacturap->setText(id);
-	};
-	void pintaidforma_pago(QString id)
-	{
-		m_forma_pago->setidforma_pago(id);
-	};
-	void pintaprocesadafacturap(QString id)
-	{
-		//fprintf(stderr,"pintaprocesadafacturap(%s)\n",id.ascii());
-		if (id == "t" || id == "TRUE")
-		{
-			m_procesadafacturap->setChecked(TRUE);
-		} else {
-			m_procesadafacturap->setChecked(FALSE);
-		}
-	};
-	virtual void pintatotales(float base, float iva);
-	void closeEvent(QCloseEvent *);
+    FacturaProveedorView(company *, QWidget *parent = 0, const char *name = 0);
+    virtual ~FacturaProveedorView();
+    void inicialize();
+    void pintaidproveedor(QString id) {
+        m_proveedor->setidproveedor(id);
+    };
+    void pintanumfacturap(QString id) {
+        m_numfacturap->setText(id);
+    };
+    void pintafechafacturap(QString id) {
+        m_fechafacturap->setText(id);
+    };
+    void pintadescfacturap(QString id) {
+        m_descfacturap->setText(id);
+    };
+    void pintaComentFacturaProveedor(QString id) {
+        m_comentfacturap->setText(id);
+    };
+    void pintareffacturap(QString id) {
+        m_reffacturap->setText(id);
+    };
+    void pintaidforma_pago(QString id) {
+        m_forma_pago->setidforma_pago(id);
+    };
+    void pintaprocesadafacturap(QString id) {
+        //fprintf(stderr,"pintaprocesadafacturap(%s)\n",id.ascii());
+        if (id == "t" || id == "TRUE") {
+            m_procesadafacturap->setChecked(TRUE);
+        } else {
+            m_procesadafacturap->setChecked(FALSE);
+        }
+    };
+    virtual void pintatotales(Fixed base, Fixed iva);
+    void closeEvent(QCloseEvent *);
+    int guardar();
 
 public slots:
-	virtual void s_comentfacturaptextChanged()
-	{
-		setcomentfacturap(m_comentfacturap->text());
-	};
-	virtual void s_numfacturaptextChanged(const QString &val)
-	{
-		setnumfacturap(val);
-	};
-	virtual void s_reffacturaptextChanged(const QString &val)
-	{
-		setreffacturap(val);
-	};
-	virtual void s_proveedorvalueChanged(QString val)
-	{
-		setidproveedor(val);
-	};
-	virtual void s_fechafacturapvalueChanged(QString val)
-	{
-		setfechafacturap(val);
-	};
-	virtual void s_descfacturaptextChanged(const QString &val)
-	{
-		setdescfacturap(val);
-	};
-	virtual void s_forma_pagovalueChanged(QString val)
-	{
-		setidforma_pago(val);
-	};
-	virtual void s_saveFacturaProveedor()
-	{
-		guardaFacturaProveedor();
-	};
-	virtual int cargar(QString id);
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    };
+    virtual int cargar(QString id);
 
-	/// Este slot se activa cuando hay cambios en los subformularios.
-	virtual void s_pintaTotales()
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {
+        pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    }
+    virtual void s_nuevoCobro();
+    virtual void on_m_descuentos_editFinish(int, int) {
+        s_pintaTotales();
+    };
+    virtual void on_subform2_editFinish(int, int) {
+        s_pintaTotales();
+    };
+
+
+	virtual void on_mui_borrar_clicked()
 	{
-		pintatotales(listalineas->calculabase(), listalineas->calculaiva());
-	}
-	virtual void s_procesadafacturapstateChanged(int i)
-	{
-		//fprintf(stderr,"s_procesadafacturapstateChanged(%d)\n",i);
-		if (i)
-		{
-			setprocesadafacturap("TRUE");
-		} else {
-			setprocesadafacturap("FALSE");
-		}
-	};
-	virtual void s_nuevoCobro();
+
+
+        int val = QMessageBox::warning( this, tr("Borrar Factura Proveedor."),
+                                        tr("Desea eliminar la factura de este Fistro Pecadorrrr de la pradera. ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        if (val == 0) {
+		if (!borrar()) {
+            	dialogChanges_cargaInicial();
+		_depura("Factura de Proveedor borrado satisfactoriamente",2);
+		close();
+		}// end if
+        }// end if
+};
+
+
 };
 
 #endif
