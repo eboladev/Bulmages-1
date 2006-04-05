@@ -20,7 +20,6 @@
 #include <fstream>
 #include <QCloseEvent>
 
-
 #include "pedidoclienteview.h"
 #include "company.h"
 #include "listlinpedidoclienteview.h"
@@ -31,14 +30,12 @@
 #include "cobroview.h"
 #include "albaranclienteview.h"
 #include "informereferencia.h"
-using namespace std;
 #include "funcaux.h"
 
-
-
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
-        : PedidoClienteBase(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+    setupUi(this);
     subform3->setcompany(comp);
     m_cliente->setcompany(comp);
     m_forma_pago->setcompany(comp);
@@ -48,17 +45,6 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
     setListLinPedidoCliente(subform3);
     setListDescuentoPedidoCliente(m_descuentos);
     comp->meteWindow(caption(),this);
-}
-
-bool PedidoClienteView::close(bool fil) {
-    if (dialogChanges_hayCambios())  {
-        if ( QMessageBox::warning( this, "Guardar Pedido Cliente",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_savePedidoCliente();
-    }// end if
-    return (QWidget::close(fil));
 }
 
 
@@ -139,18 +125,26 @@ void PedidoClienteView::generarAlbaran() {
     bud->setidcliente(DBvalue("idcliente"));
     bud->setidalmacen(DBvalue("idalmacen"));
     QString l;
-    LinPedidoCliente *linea;
-    uint i = 0;
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        bud->getlistalineas()->nuevalinea(linea->desclpedidocliente(), linea->cantlpedidocliente(), linea->pvplpedidocliente(),linea->descuentolpedidocliente(),  linea->idarticulo(), linea->codigocompletoarticulo(), linea->nomarticulo(), linea->ivalpedidocliente());
-        i++;
+    SDBRecord *linea;
+    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+        bud->getlistalineas()->nuevalinea(
+            linea->DBvalue("desclpedidocliente"),
+            linea->DBvalue("cantlpedidocliente"),
+            linea->DBvalue("pvplpedidocliente"),
+            linea->DBvalue("descuentolpedidocliente"),
+            linea->DBvalue("idarticulo"),
+            linea->DBvalue("codigocompletoarticulo"),
+            linea->DBvalue("nomarticulo"),
+            linea->DBvalue("ivalpedidocliente")
+        );
     }// end for
 
-    DescuentoPedidoCliente *linea1;
-    i = 0;
-    for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-        bud->getlistadescuentos()->nuevalinea(linea1->conceptdpedidocliente(), linea1->proporciondpedidocliente());
-        i++;
+    SDBRecord *linea1;
+    for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+        bud->getlistadescuentos()->nuevalinea(
+            linea1->DBvalue("conceptdpedidocliente"),
+            linea1->DBvalue("proporciondpedidocliente")
+        );
     }// end for
 
     bud->pintaAlbaranCliente();
@@ -177,6 +171,25 @@ int PedidoClienteView::cargar(QString id) {
     return 0;
 }
 
+int PedidoClienteView::guardar() {
+    setcomentpedidocliente(m_comentpedidocliente->text());
+    setnumpedidocliente(m_numpedidocliente->text());
+    setidcliente(m_cliente->idcliente());
+    setfechapedidocliente(m_fechapedidocliente->text());
+    setidalmacen(m_almacen->idalmacen());
+    setidtrabajador(m_trabajador->idtrabajador());
+    setidforma_pago(m_forma_pago->idforma_pago());
+    setrefpedidocliente(m_refpedidocliente->text());
+    setdescpedidocliente(m_descpedidocliente->text());
+    setcontactpedidocliente(m_contactpedidocliente->text());
+    settelpedidocliente(m_telpedidocliente->text());
+    setprocesadopedidocliente(m_procesadopedidocliente->isChecked()?"TRUE":"FALSE");
+    int err = PedidoCliente::guardar();
+    dialogChanges_cargaInicial();
+    return err;
+}
+
+
 /// Imprime el informe de referencia.
 void PedidoClienteView::s_informeReferencia() {
     InformeReferencia *inf = new InformeReferencia(companyact);
@@ -191,7 +204,7 @@ void PedidoClienteView::closeEvent( QCloseEvent *e) {
         int val = QMessageBox::warning( this, "Guardar Pedido Cliente",
                                         "Desea guardar los cambios.","Si","No","Cancelar",0,2);
         if (val == 0)
-            guardaPedidoCliente();
+            guardar();
         if (val == 2)
             e->ignore();
     }// end if

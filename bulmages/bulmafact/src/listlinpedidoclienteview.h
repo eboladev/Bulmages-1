@@ -21,34 +21,27 @@
 #ifndef LISTLINPEDIDOCLIENTEVIEW_H
 #define LISTLINPEDIDOCLIENTEVIEW_H
 
-#include <Q3Table>
 #include <QEvent>
 
-#include "listlinpedidocliente.h"
 #include "company.h"
-#include "linpedidocliente.h"
+#include "subform2bf.h"
+#include "fixed.h"
 
-class ListLinPedidoClienteView : public Q3Table , public ListLinPedidoCliente
-{
-	Q_OBJECT
-
+class ListLinPedidoClienteView : public SubForm2Bf {
+    Q_OBJECT
 public:
-	ListLinPedidoClienteView(QWidget *parent = 0, const char *name = 0);
-	~ListLinPedidoClienteView();
-	virtual void pintaListLinPedidoCliente();
-	virtual void pintalinListLinPedidoCliente(int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	LinPedidoCliente *lineaat(int);
-	LinPedidoCliente *lineaact();
-	void cargaconfig();
-	void guardaconfig();
-
+    QString mdb_idpedidocliente;
+    ListLinPedidoClienteView(QWidget *parent = 0);
+    ~ListLinPedidoClienteView() {}
+    ;
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borraLinPedidoClienteact();
+    virtual void cargar(QString idpedidocliente);
+    Fixed calculabase();
+    Fixed calculaiva();
+	virtual void editFinished(int, int);
+
 };
+
+
 
 #endif

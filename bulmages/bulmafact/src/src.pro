@@ -62,19 +62,18 @@ FORMS += about.ui \
 	 pedidoproveedorbase.ui \
          albaranproveedorbase.ui \
          facturapbase.ui \
+         pedidoclientebase.ui \
 	 clientebase.ui
 
 # uic3 los convierte de forma automatica.
 #
 FORMS3 += bulmafactbase.ui \
-          divisionbase.ui \
           budgetbase.ui \
           budgetslistbase.ui \
           albaranclientebase.ui \
           familiasdlg.ui \
           tiposarticulodlg.ui \
           facturabase.ui \
-          pedidoclientebase.ui \
           busquedaclientebase.ui \
           busquedaarticulobase.ui \
           busquedaproveedorbase.ui \
@@ -92,7 +91,6 @@ HEADERS += bulmafact.h \
            splashscreen.h \
            clientslist.h \
            articulolist.h \
-           division.h \
            presupuestoview.h \
            presupuestolist.h \
            articuloview.h \
@@ -120,8 +118,6 @@ HEADERS += bulmafact.h \
            pedidosclientelist.h \
            pedidocliente.h \
            pedidoclienteview.h \
-           linpedidocliente.h \
-           listlinpedidocliente.h \
            listlinpedidoclienteview.h \
            busquedacliente.h \
            busquedaformapago.h \
@@ -144,8 +140,6 @@ HEADERS += bulmafact.h \
            descpresupuesto.h \
            listdescpresupuesto.h \
            listdescpresupuestoview.h \
-           descpedidocliente.h \
-           listdescpedidocliente.h \
            listdescpedidoclienteview.h \
            descalbarancliente.h \
            listdescalbarancliente.h \
@@ -195,7 +189,6 @@ SOURCES += bulmafact.cpp \
            splashscreen.cpp \
            clientslist.cpp \
            articulolist.cpp \
-           division.cpp \
            presupuestoview.cpp \
            presupuestolist.cpp \
            articuloview.cpp \
@@ -223,8 +216,6 @@ SOURCES += bulmafact.cpp \
            pedidosclientelist.cpp \
            pedidocliente.cpp \
            pedidoclienteview.cpp \
-           linpedidocliente.cpp \
-           listlinpedidocliente.cpp \
            listlinpedidoclienteview.cpp \
            busquedacliente.cpp \
            busquedaformapago.cpp \
@@ -247,8 +238,6 @@ SOURCES += bulmafact.cpp \
            descpresupuesto.cpp \
            listdescpresupuesto.cpp \
            listdescpresupuestoview.cpp \
-           descpedidocliente.cpp \
-           listdescpedidocliente.cpp \
            listdescpedidoclienteview.cpp \
            descalbarancliente.cpp \
            listdescalbarancliente.cpp \

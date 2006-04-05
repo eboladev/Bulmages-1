@@ -25,30 +25,29 @@
 #include <Q3Table>
 #include <Q3PtrList>
 
-#include "listlinpedidocliente.h"
-#include "listdescpedidocliente.h"
+#include "listlinpedidoclienteview.h"
+#include "listdescpedidoclienteview.h"
 #include "fixed.h"
 #include "company.h"
-#include "linpedidocliente.h"
 #include "dbrecord.h"
 
 
 class PedidoCliente : public DBRecord
 {
 protected:
-	ListLinPedidoCliente *listalineas;
-	ListDescuentoPedidoCliente *listadescuentos;
+	ListLinPedidoClienteView *listalineas;
+	ListDescuentoPedidoClienteView *listadescuentos;
 	company *companyact;
 
 public:
 	/// Establece cual es la lista subformulario del presupuesto.
 	/// Normalmente para apuntar listlinpresupuestoview.
-	void setListLinPedidoCliente(ListLinPedidoCliente *a)
+	void setListLinPedidoCliente(ListLinPedidoClienteView *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setListDescuentoPedidoCliente(ListDescuentoPedidoCliente *a)
+	void setListDescuentoPedidoCliente(ListDescuentoPedidoClienteView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
@@ -57,15 +56,15 @@ public:
 	virtual ~PedidoCliente();
 	virtual int cargar(QString);
 	void pintaPedidoCliente();
-	void guardaPedidoCliente();
-	void borraPedidoCliente();
+	int guardar();
+	int borrar();
 	void imprimirPedidoCliente();
 	void calculaypintatotales();
-	ListLinPedidoCliente* getlistalineas()
+	ListLinPedidoClienteView* getlistalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoPedidoCliente* getlistadescuentos()
+	ListDescuentoPedidoClienteView* getlistadescuentos()
 	{
 		return listadescuentos;
 	};
@@ -137,8 +136,8 @@ public:
 	void setidpedidocliente(QString val)
 	{
 		setDBvalue("idpedidocliente", val);
-		listalineas->setidpedidocliente(val);
-		listadescuentos->setidpedidocliente(val);
+		listalineas->setColumnValue( "idpedidocliente",val);
+		listadescuentos->setColumnValue( "idpedidocliente",val);
 	};
 	void setnumpedidocliente(QString val)
 	{

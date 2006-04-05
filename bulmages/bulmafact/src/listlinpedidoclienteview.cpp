@@ -24,337 +24,92 @@ CREATE TABLE lpedidocliente (
 );
 */
 
-#define COL_PUNTEO 0
-#define COL_NUMLPEDIDOCLIENTE 1
-#define COL_IDARTICULO 2
-#define COL_CODARTICULO 3
-#define COL_NOMARTICULO 4
-#define COL_DESCLPEDIDOCLIENTE 5
-#define COL_CANTLPEDIDOCLIENTE 6
-#define COL_PVPLPEDIDOCLIENTE 7
-#define COL_DESCUENTOLPEDIDOCLIENTE 8
-#define COL_IDPEDIDOCLIENTE 9
-#define COL_REMOVE 10
-#define COL_TASATIPO_IVA 11
-#define COL_TIPO_IVA 12
-#define COL_PREVLPEDIDOCLIENTE 13
-#define COL_IVALPEDIDOCLIENTE 14
-
-#include "articulolist.h"
-#include "listlinpedidoclienteview.h"
-#include "linpedidocliente.h"
-#include "funcaux.h"
-#include "fixed.h"
-
-#include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QKeyEvent>
 #include <QEvent>
 
+#include "articulolist.h"
+#include "listlinpedidoclienteview.h"
+#include "funcaux.h"
+#include "fixed.h"
 
-void ListLinPedidoClienteView::guardaconfig() {
-    _depura("ListLinPedidoClienteView::guardaconfig",0);
-    QString aux = "";
 
-    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoclienteview.cfn" );
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
-        for (int i = 0; i < numCols(); i++) {
-            showColumn(i);
-            stream << columnWidth(i) << "\n";
+ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("lpedidocliente");
+    setDBCampoId("numlpedidocliente");
+    addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "");
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "");
+    addSHeader("numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "");
+    addSHeader("desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+
+    setinsercion(TRUE);
+};
+
+
+
+
+void ListLinPedidoClienteView::editFinished(int row, int col) {
+    _depura("ListLinPedidoClienteView::editFinished",0);
+    SDBRecord *rec = lineaat(row);
+    SDBCampo *camp = (SDBCampo *) item(row,col);
+    camp->refresh();
+    if (camp->nomcampo() == "codigocompletoarticulo") {
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
+        if (!cur->eof() ) {
+            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
+            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
+            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+            rec->setDBvalue("desclpedidocliente", cur->valor("nomarticulo"));
+            rec->setDBvalue("cantlpedidocliente", "1.00");
+	    rec->setDBvalue("descuentolpedidocliente","0.00");
+	    rec->setDBvalue("pvplpedidocliente",cur->valor("pvparticulo"));
+		
+        }// end if
+
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur->eof() ) {
+	    rec->setDBvalue("ivalpedidocliente",cur1->valor("porcentasa_iva"));		
+        }// end if
+	delete cur1;
+	delete cur;
+
+    }// end if
+};
+
+
+
+void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
+        _depura("ListLinPedidoClienteView::cargar\n",0);
+        mdb_idpedidocliente = idpedidocliente;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente="+mdb_idpedidocliente);
+        SubForm2::cargar(cur);
+        delete cur;
+}
+
+Fixed ListLinPedidoClienteView::calculabase() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpedidocliente",i)) * Fixed(DBvalue("cantlpedidocliente",i));
+		base = base + totpar;
         }// end for
-        file.close();
-    }// end if
-}// end guardaconfig()
+	return base;
+}
 
-void ListLinPedidoClienteView::cargaconfig() {
-	_depura("ListLinPedidoClienteView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinpedidoclienteview.cfn" );
-    QString line;
-    if ( file.open( QIODevice::ReadOnly ) ) {
-        QTextStream stream( &file );
-        for (int i = 0; i < numCols(); i++) {
-            QString linea = stream.readLine();
-            setColumnWidth(i, linea.toInt());
+
+Fixed ListLinPedidoClienteView::calculaiva() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpedidocliente",i)) * Fixed(DBvalue("ivalpedidocliente",i));
+		base = base + totpar;
         }// end for
-        file.close();
-    }
-}// end cargaconfig
-
-ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinPedidoCliente() {
-    /// Inicializamos la tabla de lineas de Factura
-    setNumCols(15);
-    setNumRows(100);
-    horizontalHeader()->setLabel( COL_NUMLPEDIDOCLIENTE, tr( "N L�ea" ) );
-    horizontalHeader()->setLabel( COL_DESCLPEDIDOCLIENTE, tr( "Descripci�" ) );
-    horizontalHeader()->setLabel( COL_CANTLPEDIDOCLIENTE, tr( "Cantidad" ) );
-    horizontalHeader()->setLabel( COL_PVPLPEDIDOCLIENTE, tr( "Precio" ) );
-    horizontalHeader()->setLabel( COL_DESCUENTOLPEDIDOCLIENTE, tr( "Descuento" ) );
-    horizontalHeader()->setLabel( COL_IDPEDIDOCLIENTE, tr( "N Pedido" ) );
-    horizontalHeader()->setLabel( COL_IDARTICULO, tr( "Art�ulo" ) );
-    horizontalHeader()->setLabel( COL_CODARTICULO, tr( "C�igo Art�o" ) );
-    horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
-    horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
-    horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-    horizontalHeader()->setLabel( COL_PREVLPEDIDOCLIENTE, tr( "COL_PREVLPEDIDOCLIENTE" ) );
-    horizontalHeader()->setLabel( COL_IVALPEDIDOCLIENTE, tr( "COL_IVALPEDIDOCLIENTE" ) );
-
-    hideColumn(COL_NUMLPEDIDOCLIENTE);
-    hideColumn(COL_IDPEDIDOCLIENTE);
-    hideColumn(COL_IDARTICULO);
-    hideColumn(COL_REMOVE);
-    hideColumn(COL_TASATIPO_IVA);
-    hideColumn(COL_TIPO_IVA);
-
-    setSelectionMode( Q3Table::SingleRow );
-
-    setColumnReadOnly(COL_NOMARTICULO,true);
-    // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
-    setPaletteBackgroundColor(confpr->valor(CONF_BG_LINPEDIDOSCLIENTE));
-
-    connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
-    connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-
-    installEventFilter(this);
-	cargaconfig();
+	return base;
 }
 
-
-ListLinPedidoClienteView::~ListLinPedidoClienteView() {
-guardaconfig();
-}
-
-
-void ListLinPedidoClienteView::pintaListLinPedidoCliente() {
-    fprintf(stderr,"INICIO de pintaListLinPedidoCliente\n");
-    setNumRows(0);
-    setNumRows(100);
-
-   for (int j=0;j<100;j++) {
-	Q3CheckTableItem *check = new Q3CheckTableItem(this,0);
-        setItem(j,COL_PUNTEO,check);
-   }// end for
-
-    /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
-    LinPedidoCliente *linea;
-    uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        setText(i, COL_NUMLPEDIDOCLIENTE, linea->numlpedidocliente());
-        setText(i, COL_IDARTICULO, linea->idarticulo());
-        setText(i, COL_CODARTICULO, linea->codigocompletoarticulo());
-        setText(i, COL_NOMARTICULO, linea->nomarticulo());
-        setText(i, COL_DESCLPEDIDOCLIENTE, linea->desclpedidocliente());
-        setText(i, COL_CANTLPEDIDOCLIENTE, linea->cantlpedidocliente());
-        setText(i, COL_DESCUENTOLPEDIDOCLIENTE, linea->descuentolpedidocliente());
-        setText(i, COL_IDPEDIDOCLIENTE, linea->idpedidocliente());
-        setText(i, COL_REMOVE, "XX");
-        setText(i, COL_TASATIPO_IVA, "XX");
-        setText(i, COL_TIPO_IVA, "XX");
-        setText(i, COL_PVPLPEDIDOCLIENTE, linea->pvplpedidocliente());
-        setText(i, COL_PREVLPEDIDOCLIENTE, linea->prevlpedidocliente());
-        setText(i, COL_IVALPEDIDOCLIENTE, linea->ivalpedidocliente());
-        /// Ponemos un checkbox para el punteo.
-        Q3CheckTableItem *check =(Q3CheckTableItem *) item(i,COL_PUNTEO);
-        if (linea->puntlpedidocliente() == "TRUE")
-            check->setChecked(TRUE);
-	adjustRow(i);
-        i++;
-    }// end for
-    _depura("FIN de pintaListLinPedidoCliente\n");
-}
-
-
-
-void ListLinPedidoClienteView::contextMenu ( int row, int, const QPoint & pos ) {
-    Q3PopupMenu *popup;
-    int opcion;
-    popup = new Q3PopupMenu;
-    popup->insertItem(tr(tr("Borrar Linea")),1);
-    opcion = popup->exec(pos);
-    delete popup;
-    switch(opcion) {
-    case 1:
-        borraLinPedidoCliente(row);
-    }// end switch
-}// end contextMenuRequested
-
-
-void ListLinPedidoClienteView::borraLinPedidoClienteact() {
-    borraLinPedidoCliente(currentRow());
-}// end borraLinPedidoClienteact
-
-
-void ListLinPedidoClienteView::pintalinListLinPedidoCliente(int pos) {
-    fprintf(stderr,"pintalinListLinPedidoCliente(%d)\n",pos);
-    LinPedidoCliente *linea;
-    linea = m_lista.at(pos);
-    setText(pos, COL_NUMLPEDIDOCLIENTE, linea->numlpedidocliente());
-    setText(pos, COL_IDARTICULO, linea->idarticulo());
-    setText(pos, COL_CODARTICULO, linea->codigocompletoarticulo());
-    setText(pos, COL_NOMARTICULO, linea->nomarticulo());
-    setText(pos, COL_DESCLPEDIDOCLIENTE, linea->desclpedidocliente());
-    setText(pos, COL_CANTLPEDIDOCLIENTE, linea->cantlpedidocliente());
-    setText(pos, COL_DESCUENTOLPEDIDOCLIENTE, linea->descuentolpedidocliente());
-    setText(pos, COL_IDPEDIDOCLIENTE, linea->idpedidocliente());
-    setText(pos, COL_REMOVE, "XX");
-    setText(pos, COL_TASATIPO_IVA, "XX");
-    setText(pos, COL_TIPO_IVA, "XX");
-    setText(pos, COL_PVPLPEDIDOCLIENTE, linea->pvplpedidocliente());
-    setText(pos, COL_PREVLPEDIDOCLIENTE, linea->prevlpedidocliente());
-    setText(pos, COL_IVALPEDIDOCLIENTE, linea->ivalpedidocliente());
-    Q3CheckTableItem *check = (Q3CheckTableItem *) item(pos, COL_PUNTEO);
-    if (linea->puntlpedidocliente() == "TRUE")
-        check->setChecked(TRUE);
-    else
-        check->setChecked(FALSE);
-    adjustRow(pos);
-
-}
-
-
-bool ListLinPedidoClienteView::eventFilter( QObject *obj, QEvent *ev ) {
-    fprintf(stderr,"eventFilter()\n");
-    QString idArticle;
-    LinPedidoCliente *linea;
-
-    if ( ev->type() == QEvent::KeyRelease ) {
-        QKeyEvent *k = (QKeyEvent *)ev;
-        int col=currentColumn();
-        int row=currentRow();
-        switch (k->key()) {
-        case Qt::Key_Plus:
-		if (col == COL_DESCLPEDIDOCLIENTE) {
-                setText(row,col,editaTexto(text(row,col)));
-		valueBudgetLineChanged(row,col);
-                return TRUE;
-		}// end if
-            break;
-        case Qt::Key_Asterisk:
-            linea = lineaact();
-            idArticle = searchArticle();
-            linea->setidarticulo(idArticle);
-            pintalinListLinPedidoCliente(currentRow());
-            return TRUE;
-            break;
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            // Esto se hace porque en la ltima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
-            switch (col) {
-            case COL_CODARTICULO:
-                setCurrentCell(row, COL_DESCLPEDIDOCLIENTE);
-                break;
-            case COL_DESCLPEDIDOCLIENTE:
-                setCurrentCell(row, COL_CANTLPEDIDOCLIENTE);
-                break;
-            case COL_CANTLPEDIDOCLIENTE:
-                setCurrentCell(row, COL_PVPLPEDIDOCLIENTE);
-                break;
-            case COL_PVPLPEDIDOCLIENTE:
-                setCurrentCell(row+1, COL_CODARTICULO);
-                break;
-            }// end switch
-            return TRUE;
-            break;
-        }// end switch
-    }// end if
-    return Q3Table::eventFilter( obj, ev );
-} //end eventFilter
-
-
-
-void ListLinPedidoClienteView::valueBudgetLineChanged(int row, int col) {
-    fprintf(stderr,"valueBudgetLineChanged \n");
-    LinPedidoCliente *linea;
-    linea = lineaat(row);
-    if (linea != NULL) {
-        switch (col) {
-        case COL_DESCUENTOLPEDIDOCLIENTE: {
-                Fixed discountLine(text(row, COL_DESCUENTOLPEDIDOCLIENTE).replace(",",".").toAscii());
-                linea->setdescuentolpedidocliente(discountLine.toQString());
-                break;
-            }
-        case COL_CODARTICULO:
-            manageArticle(row);
-            break;
-        case COL_DESCLPEDIDOCLIENTE:
-            linea->setdesclpedidocliente(text(row,COL_DESCLPEDIDOCLIENTE));
-            break;
-        case COL_CANTLPEDIDOCLIENTE: {
-                Fixed cantLine(text(row, COL_CANTLPEDIDOCLIENTE).replace(",",".").toAscii());
-                linea->setcantlpedidocliente(cantLine.toQString());
-                break;
-            }
-        case COL_PVPLPEDIDOCLIENTE:  {
-                Fixed pvpLine(text(row, COL_PVPLPEDIDOCLIENTE).replace(",",".").toAscii());
-                linea->setpvplpedidocliente(pvpLine.toQString());
-                break;
-            }
-        case COL_TASATIPO_IVA: {
-                Fixed ivaLine(text(row, COL_TASATIPO_IVA).replace(",",".").toAscii());
-                linea->setivalpedidocliente(ivaLine.toQString());
-                break;
-            }// end case
-        case COL_PUNTEO: {
-                Q3CheckTableItem *check = (Q3CheckTableItem *) item(row, COL_PUNTEO);
-                if (check->isChecked())
-                    linea->setpuntlpedidocliente("TRUE");
-                else
-                    linea->setpuntlpedidocliente("FALSE");
-            }// end case
-        }// end switch
-        pintalinListLinPedidoCliente(row);
-    }// end if
-} //end valueBudgetLineChanged
-
-
-/// Devuelve la linea que se esta tratando actualmente
-LinPedidoCliente *ListLinPedidoClienteView::lineaact() {
-    fprintf(stderr,"ListLinPedidoClienteView::lineaact()\n");
-    return lineaat(currentRow());
-}// end lineaact
-
-
-/// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
-LinPedidoCliente *ListLinPedidoClienteView::lineaat(int row) {
-    fprintf(stderr,"ListLinPedidoCliente::lineaat(%d)\n", row);
-    LinPedidoCliente *linea;
-    if (row >=0) {
-        while (m_lista.at(row) == 0 ) {
-            fprintf(stderr,"Creamos la linea\n");
-            linea=new LinPedidoCliente(companyact);
-            linea->setidpedidocliente(mdb_idpedidocliente);
-            m_lista.append(linea);
-        }// end while
-        return(m_lista.at(row));
-    } else {
-        fprintf(stderr,"Linea inexistente\n");
-        return NULL;
-    }// end if
-
-}// end lineaat
-
-
-void ListLinPedidoClienteView::manageArticle(int row) {
-    fprintf(stderr,"manageArticle(%d)\n",row);
-    LinPedidoCliente *linea= lineaat(row);
-    QString articleCode = text(row, COL_CODARTICULO);
-    linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
-    pintalinListLinPedidoCliente(row);
-} //end manageArticle
-
-
-QString ListLinPedidoClienteView::searchArticle() {
-    _depura("ListLinPedidoClienteView::searchArticle\n",0);
-    ArticuloList *artlist = new ArticuloList(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,ArticuloList::SelectMode);
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    artlist->show();
-    while(!artlist->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
-    QString idArticle = artlist->idArticle();
-    delete artlist;
-    return idArticle;
-}// end searchArticle

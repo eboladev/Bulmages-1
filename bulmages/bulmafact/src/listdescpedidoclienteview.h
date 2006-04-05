@@ -21,6 +21,36 @@
 #ifndef LISTDESCPEDIDOCLIENTEVIEW_H
 #define LISTDESCPEDIDOCLIENTEVIEW_H
 
+#include "subform2bf.h"
+#include "company.h"
+
+
+class ListDescuentoPedidoClienteView : public SubForm2Bf {
+    Q_OBJECT
+public:
+    QString mdb_idpedidocliente;
+    ListDescuentoPedidoClienteView(QWidget *parent = 0);
+    ~ListDescuentoPedidoClienteView() {};
+
+public slots:
+    virtual void cargar(QString idpedidocliente) {
+        _depura("ListDescuentoPedidoClienteView::cargar\n",0);
+        mdb_idpedidocliente = idpedidocliente;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+
+};
+
+
+
+
+
+
+
+
+/*
 #include <Q3Table>
 
 #include "listdescpedidocliente.h"
@@ -45,5 +75,7 @@ public slots:
 	virtual void contextMenu (int, int, const QPoint &);
 	virtual void borradescpedidoclienteact();
 };
+
+*/
 
 #endif
