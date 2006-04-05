@@ -264,15 +264,21 @@ void balanceview::presentar() {
       // Hacemos la consulta de los apuntes a listar en la base de datos.
       int idc_coste;
       idc_coste = ccostes[combocoste->currentItem()];
+	QString querycoste= "";
+	if(idc_coste > 0)
+		querycoste = " AND idc_coste = "+QString::number(idc_coste)+" ";
 
       // La consulta es compleja, requiere la creación de una tabla temporal y de cierta mandanga por lo que puede
 	// Causar problemas con el motor de base de datos.
 	fprintf(stderr,"BALANCE: Empezamos a hacer la presentacion\n");
         companyact->begin();		
 	query= "CREATE TEMPORARY TABLE balancetemp AS SELECT cuenta.idcuenta, codigo, nivel(codigo) AS nivel, cuenta.descripcion, padre, tipocuenta ,debe, haber, tdebe, thaber,(tdebe-thaber) AS tsaldo, (debe-haber) AS saldo, adebe, ahaber, (adebe-ahaber) AS asaldo, ejdebe, ejhaber, (ejdebe-ejhaber) AS ejsaldo FROM cuenta";
-	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
-	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
-	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '"+ejercicio+"' GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
+
+	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE fecha >= '"+finicial+"' AND fecha<= '"+ffinal+"' "+querycoste+" GROUP BY idcuenta) AS t1 ON t1.idcuenta = cuenta.idcuenta";
+
+	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS adebe, sum(haber) AS ahaber FROM apunte WHERE fecha < '"+finicial+"' "+querycoste+" GROUP BY idcuenta) AS t2 ON t2.idcuenta = cuenta.idcuenta";
+
+	query += " LEFT JOIN (SELECT idcuenta, sum(debe) AS ejdebe, sum(haber) AS ejhaber FROM apunte WHERE EXTRACT (YEAR FROM fecha) = '"+ejercicio+"' "+querycoste+" GROUP BY idcuenta) AS t3 ON t3.idcuenta = cuenta.idcuenta";
 
       companyact->ejecuta(query);
       query.sprintf("UPDATE balancetemp SET padre=0 WHERE padre ISNULL");
