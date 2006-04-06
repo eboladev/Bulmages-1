@@ -12,7 +12,7 @@
 #ifndef MSGERROR_H
 #define MSGERROR_H
 
-#include <msgerrorbase.h>
+#include <ui_msgerrorbase.h>
 
 #include <q3frame.h>
 #include <qdialog.h>

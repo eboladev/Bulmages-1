@@ -2,7 +2,7 @@
                           abreempresaview.h  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,23 +14,23 @@
  *                                                                         *
  ***************************************************************************/
  /** \file abreempresaview.h
-   * Contiene la declaración de la clase \ref abreempresaview y sus métodos.
-   * @author Tomeu Borrás Riera 
+   * Contiene la declaraciï¿½ de la clase \ref abreempresaview y sus mï¿½odos.
+   * @author Tomeu Borrï¿½ Riera 
    */
 #ifndef ABREEMPRESAVIEW_H
 #define ABREEMPRESAVIEW_H
 
 #include <qstring.h>
 #include <qdialog.h>
-#include ".ui/abreempresadlg.h"
+#include "ui_abreempresadlg.h"
 
 /** @brief  Clase que muestra la lista de empresas para seleccionar aquella con la que se desea trabajar.
   *
-  * Esta clase muestra el diálogo de seleccionar una empresa y espera a que se haga doble click sobre uno de los
-  * elementos que contiene, se haga click en aceptar o se de la acción de cancelar.
-  * La ventan siempre se abre en modo modal y detiene la ejecución del programa.<BR>
+  * Esta clase muestra el diï¿½ogo de seleccionar una empresa y espera a que se haga doble click sobre uno de los
+  * elementos que contiene, se haga click en aceptar o se de la acciï¿½ de cancelar.
+  * La ventan siempre se abre en modo modal y detiene la ejecuciï¿½ del programa.<BR>
   * Se puede especificar, si es preciso, un tipo de empresas a mostrar (bulmacont o bulmafact) para facilitar la
-  * selección de elementos.
+  * selecciï¿½ de elementos.
 */
 class abreempresaview :  public QDialog, public Ui_abreempresadlg  {
    Q_OBJECT
@@ -48,14 +48,14 @@ private:
     QString user;
    /// Almacena el password del usuario que desa acceder a la contabilidad.
     QString password;
-    /// Indica  el modo en que opera la ventana. Cerrando la aplicación al cancelar o cerrando sólo la ventana. Por defecto es 0 -> cerrar aplicación.
+    /// Indica  el modo en que opera la ventana. Cerrando la aplicaciï¿½ al cancelar o cerrando sï¿½o la ventana. Por defecto es 0 -> cerrar aplicaciï¿½.
     int m_modo;
        
 public:
    /// \brief Establece el modo no destructivo
    void mododestructivo() {m_modo=0;};
    void modonodestructivo() {m_modo=1;};
-   /// \brief Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentación.
+   /// \brief Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentaciï¿½.
    abreempresaview(QWidget *parent=0,QString tipo=0, const char *name=0, bool modal=true);
    ~abreempresaview();
    /// \brief Devuelve el nombre de la base de datos seleccionada.
@@ -71,11 +71,11 @@ private:
    void cargaArchivo();
 
 private:
-     /// \brief Inserta una compañia en el QList empresas definido en el diálogo
+     /// \brief Inserta una compaï¿½a en el QList empresas definido en el diï¿½ogo
     void insertCompany(QString , QString , QString , QString);
 
 private slots:
-    /// \brief Al pulsar el botón de cancelar se aborta la ejecución del programa.
+    /// \brief Al pulsar el botï¿½ de cancelar se aborta la ejecuciï¿½ del programa.
     virtual void s_botonCancelar() {
       if(m_modo==0)
     	exit(1);

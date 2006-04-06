@@ -1,101 +1,167 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>msgErrorBase</class>
-  <widget class="QDialog" name="msgErrorBase" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>593</width>
-        <height>163</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string>Mensaje</string>
-    </property>
-    <layout class="QVBoxLayout" >
-      <property name="resizeMode" >
-        <enum>Fixed</enum>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>msgErrorBase</class>
+ <widget class="QDialog" name="msgErrorBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>593</width>
+    <height>197</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Mensaje</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="m_mensaje" >
+     <property name="text" >
+      <string>textLabel1</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="Q3Frame" name="m_framedetalles" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
       </property>
-      <item>
-        <widget class="QLabel" name="m_mensaje" >
-          <property name="text" >
-            <string>textLabel1</string>
-          </property>
-        </widget>
+      <property name="spacing" >
+       <number>2</number>
+      </property>
+      <item row="0" column="0" >
+       <widget class="Q3TextEdit" name="m_detalles" />
       </item>
-      <item>
-        <widget class="Q3Frame" name="m_framedetalles" >
-          <property name="frameShape" >
-            <enum>StyledPanel</enum>
-          </property>
-          <property name="frameShadow" >
-            <enum>Raised</enum>
-          </property>
-          <layout class="QGridLayout" >
-            <item row="0" column="0" >
-              <widget class="Q3TextEdit" name="m_detalles" />
-            </item>
-          </layout>
-        </widget>
-      </item>
-      <item>
-        <spacer name="spacer2" >
-          <property name="sizeHint" >
-            <size>
-              <width>21</width>
-              <height>16</height>
-            </size>
-          </property>
-          <property name="sizeType" >
-            <enum>Expanding</enum>
-          </property>
-          <property name="orientation" >
-            <enum>Vertical</enum>
-          </property>
-        </spacer>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <item>
-            <spacer name="spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>261</width>
-                  <height>21</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="pushButton2" >
-              <property name="text" >
-                <string>Detalles</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="pushButton1" >
-              <property name="text" >
-                <string>Cerrar</string>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType" >
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>21</width>
+       <height>16</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>2</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>261</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton2" >
+       <property name="text" >
+        <string>Detalles</string>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton1" >
+       <property name="text" >
+        <string>Cerrar</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <layoutdefault spacing="2" margin="5" />
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="2" margin="5" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_framedetalles</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>467</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>15</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton1</sender>
+   <signal>clicked()</signal>
+   <receiver>msgErrorBase</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>556</x>
+     <y>239</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>585</x>
+     <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

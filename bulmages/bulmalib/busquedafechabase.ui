@@ -1,84 +1,89 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>BusquedaFechaBase</class>
-  <widget class="QWidget" name="BusquedaFechaBase" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>167</width>
-        <height>24</height>
-      </rect>
-    </property>
-    <property name="sizePolicy" >
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>BusquedaFechaBase</class>
+ <widget class="QWidget" name="BusquedaFechaBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>167</width>
+    <height>24</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>7</hsizetype>
+    <vsizetype>5</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>150</width>
+    <height>22</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Form1</string>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QLineEdit" name="m_fecha" >
+     <property name="sizePolicy" >
       <sizepolicy>
-        <hsizetype>7</hsizetype>
-        <vsizetype>5</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
       </sizepolicy>
-    </property>
-    <property name="minimumSize" >
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="m_searchcliente" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>0</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
       <size>
-        <width>150</width>
-        <height>22</height>
+       <width>22</width>
+       <height>22</height>
       </size>
-    </property>
-    <property name="windowTitle" >
-      <string>Form1</string>
-    </property>
-    <layout class="QHBoxLayout" >
-      <item>
-        <widget class="QLineEdit" name="m_fecha" >
-          <property name="sizePolicy" >
-            <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-            </sizepolicy>
-          </property>
-        </widget>
-      </item>
-      <item>
-        <widget class="QToolButton" name="m_searchcliente" >
-          <property name="sizePolicy" >
-            <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-            </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-            <size>
-              <width>22</width>
-              <height>22</height>
-            </size>
-          </property>
-          <property name="maximumSize" >
-            <size>
-              <width>22</width>
-              <height>22</height>
-            </size>
-          </property>
-          <property name="text" >
-            <string/>
-          </property>
-          <property name="icon" >
-            <iconset>image0</iconset>
-          </property>
-        </widget>
-      </item>
-    </layout>
-  </widget>
-  <layoutdefault spacing="0" margin="0" />
-  <pixmapfunction></pixmapfunction>
-  <images>
-    <image name="image0" >
-      <data format="PNG" length="250" >89504e470d0a1a0a0000000d494844520000002000000020080300000044a48ac600000015504c5445000000ffffffff0000ffffcc003dae0066cc000000e7f1013a0000000774524e53ffffffffffff001a4b03460000008d49444154388da593810e80200844854bffff939b620a4ec5ea560bf485801a92a390c25619b8625c3e05d8ccc770b4041168fe125560ad067051b7c48307b8116c0e75c87a02c0038a90877a8dccd82ef1389f81663b005415392dc94b80b1d53602ff0420d6a60f2a9bb193f29b2a671a81df037637d53ca611cc9e74a0755237747aaa61be67c7debb598e6ea38b077dcc807e3d0000000049454e44ae426082</data>
-    </image>
-  </images>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_diario.xpm</iconset>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="0" margin="0" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections/>
 </ui>

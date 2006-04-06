@@ -12,14 +12,14 @@
 #ifndef BUSQUEDAFECHA_H
 #define BUSQUEDAFECHA_H
 
-#include <busquedafechabase.h>
+#include "ui_busquedafechabase.h"
 #include <qlineedit.h>
-#include <qdialog.h>
+#include <qwidget.h>
 
 /**
 @author Tomeu Borras
 */
-class BusquedaFecha :  public QDialog, public Ui_BusquedaFechaBase
+class BusquedaFecha :  public QWidget, public Ui_BusquedaFechaBase
 {
 Q_OBJECT
 private:
