@@ -50,9 +50,10 @@
 
 
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const char *name)
-	: AlbaranClienteBase(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp),
+	: QWidget(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp),
 	dialogChanges(this)
 {
+	setupUi(this);
 	subform2->setcompany(comp);
 	m_descuentos->setcompany(comp);
 	m_almacen->setcompany(comp);
@@ -96,25 +97,22 @@ void AlbaranClienteView::s_verpresupuesto()
 		list->modoseleccion();
 		list->show();
 
-		while (!list->isHidden())
-		{
+		while (!list->isHidden())  {
 			theApp->processEvents();
-		};
+		}
 
 		this->setEnabled(true);
 
-		if (list->idpresupuesto() != QString(""))
-		{
+		if (list->idpresupuesto() != QString(""))  {
 			PresupuestoView *bud = companyact->newBudget();
 			bud->chargeBudget(list->idpresupuesto());
 			bud->show();
-		};
+		}
 	} else if (!cur->eof()) {
 		PresupuestoView *bud = companyact->newBudget();
 		bud->chargeBudget(cur->valor("idpresupuesto"));
 		bud->show();
-	};
-
+	}
 	delete cur;
 };
 
@@ -195,17 +193,22 @@ void AlbaranClienteView::generarFactura() {
 	bud->setidcliente(DBvalue("idcliente"));
 	bud->setidalmacen(DBvalue("idalmacen"));
 	QString l;
-	LinAlbaranCliente *linea;
+	SDBRecord *linea;
 	uint i = 0;
 
-	for (linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next())
-	{
-		bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(),
-			linea->pvplalbaran(),linea->descontlalbaran(), linea->idarticulo(),
-			linea->codigocompletoarticulo(), linea->nomarticulo(),
-			linea->ivalalbaran());
+	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
+		bud->getlistalineas()->nuevalinea(
+		linea->DBvalue("desclalbaran"),
+		linea->DBvalue("cantlalbaran"),
+		linea->DBvalue("pvplalbaran"),
+		linea->DBvalue("descontlalbaran"),
+		linea->DBvalue("idarticulo"),
+		linea->DBvalue("codigocompletoarticulo"),
+		linea->DBvalue("nomarticulo"),
+		linea->DBvalue("ivalalbaran")
+		);
 		i++;
-	};
+	}
 
 	bud->pintaFactura();
 	bud->show();
@@ -245,62 +248,82 @@ void AlbaranClienteView::agregarFactura()
 	/// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
 	/// pero por ahora pasamos de hacerlo.
 	QString l;
-	LinAlbaranCliente *linea;
+	SDBRecord *linea;
 	uint i = 0;
 
-	for (linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next())
-	{
-		bud->getlistalineas()->nuevalinea(linea->desclalbaran(), linea->cantlalbaran(),
-			linea->pvplalbaran(),linea->descontlalbaran(), linea->idarticulo(),
-			linea->codigocompletoarticulo(), linea->nomarticulo(),
-			linea->ivalalbaran());
+	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
+		bud->getlistalineas()->nuevalinea(
+		linea->DBvalue("desclalbaran"), 
+		linea->DBvalue("cantlalbaran"),
+		linea->DBvalue("pvplalbaran"),
+		linea->DBvalue("descontlalbaran"), 
+		linea->DBvalue("idarticulo"),
+		linea->DBvalue("codigocompletoarticulo"), 
+		linea->DBvalue("nomarticulo"),
+		linea->DBvalue("ivalalbaran"));
 		i++;
-	};
-
+	}
 	bud->pintaFactura();
 	bud->show();
-};
+}
 
 
-int AlbaranClienteView::cargar(QString id)
-{
+int AlbaranClienteView::cargar(QString id)  {
 	AlbaranCliente::cargar(id);
 	setCaption("Albaran Cliente  " + DBvalue("refalbaran"));
 
-	if (companyact->meteWindow(caption(), this))
-	{
+	if (companyact->meteWindow(caption(), this))  {
 		return -1;
-	};
+	}
 
 	dialogChanges_cargaInicial();
 	return 0;
-};
+}
 
 
-void AlbaranClienteView::s_informeReferencia()
-{
+void AlbaranClienteView::s_informeReferencia()  {
 	InformeReferencia *inf = new InformeReferencia(companyact);
 	inf->setreferencia(DBvalue("refalbaran"));
 	inf->generarinforme();
 	delete inf;
-};
+}
 
 
 void AlbaranClienteView::closeEvent(QCloseEvent *e)
 {
 	_depura("closeEvent", 0);
-	if (dialogChanges_hayCambios())
-	{
+	if (dialogChanges_hayCambios())	{
 		int val = QMessageBox::warning(this, "Guardar Albaran",
 				"Desea guardar los cambios.", "Si", "No", "Cancelar", 0, 2);
-		if (val == 0)
-		{
-			guardaAlbaranCliente();
+		if (val == 0)  {
+			guardar();
 		}
 
-		if (val == 2)
-		{
+		if (val == 2)  {
 			e->ignore();
 		}
-	};
-};
+	}
+}
+
+
+int AlbaranClienteView::guardar() {
+
+		setcomentalbaran(m_comentalbaran->text());
+		setcomentprivalbaran(m_comentprivalbaran->text());
+		setidalmacen(m_almacen->idalmacen());
+		setNumAlbaran(m_numalbaran->text());
+		setidcliente(m_cliente->idcliente());
+		setprocesadoalbaran(m_procesadoalbaran->isChecked()?"TRUE":"FALSE");
+		setcontactalbaran(m_contactalbaran->text());
+		settelalbaran(m_telalbaran->text());
+		setfechaalbaran(m_fechaalbaran->text());
+		setidforma_pago(m_forma_pago->idforma_pago());
+		setidtrabajador(m_trabajador->idtrabajador());
+		setrefalbaran(m_refalbaran->text());
+		setdescalbaran(m_descalbaran->text());
+
+    int err = AlbaranCliente::guardar();
+    dialogChanges_cargaInicial();
+    return err;
+}
+

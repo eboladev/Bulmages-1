@@ -64,42 +64,39 @@ AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)
 			"Referencia Albaran");
 	listalineas = NULL;
 	listadescuentos = NULL;
-};
+}
 
 
 AlbaranCliente::~AlbaranCliente()
 {
-};
+}
 
 
-void AlbaranCliente::borraAlbaranCliente()
-{
-	if (DBvalue("idalbaran") != "")
-	{
+int AlbaranCliente::borrar() {
+	if (DBvalue("idalbaran") != "")  {
+		companyact->begin();
 		listalineas->borrar();
 		listadescuentos->borrar();
-		companyact->begin();
+
 		int error = companyact->ejecuta("DELETE FROM albaran WHERE idalbaran=" + 
 							DBvalue("idalbaran"));
-		if (error)
-		{
+		if (error)  {
 			companyact->rollback();
-			return;
+			return -1;
 		}
 		companyact->commit();
-		vaciaAlbaranCliente();
-		pintaAlbaranCliente();
 	}
-};
+	return 0;
+}
 
 
 void AlbaranCliente::vaciaAlbaranCliente()
 {
 	DBclear();
-};
+}
 
 
-void AlbaranCliente::pintaAlbaranCliente()
+void AlbaranCliente::pintar()
 {
 	_depura("pintaAlbaranCliente.", 0);
 	pintaIdAlbaran(DBvalue("idalbaran"));
@@ -117,11 +114,11 @@ void AlbaranCliente::pintaAlbaranCliente()
 	pintatelalbaran(DBvalue("telalbaran"));
 	pintaprocesadoalbaran(DBvalue("procesadoalbaran"));
 	/// Pinta el subformulario de detalle del AlbaranCliente.
-	listalineas->pintaListLinAlbaranCliente();
-	listadescuentos->pintaListDescuentoAlbaranCliente();
+//	listalineas->pintaListLinAlbaranCliente();
+//	listadescuentos->pintaListDescuentoAlbaranCliente();
 	/// Pintamos los totales
 	calculaypintatotales();
-};
+}
 
 
 /// Esta funcioncarga un AlbaranCliente.
@@ -130,46 +127,36 @@ int AlbaranCliente::cargar(QString idbudget)
 	_depura("AlbaranCliente::cargaAlbaranCliente(" + idbudget + ").", 0);
 	QString query = "SELECT * FROM albaran WHERE idalbaran=" + idbudget;
 	cursor2 * cur= companyact->cargacursor(query);
-	if (!cur->eof())
-	{
+	if (!cur->eof())  {
 		DBload(cur);
 	}
 	delete cur;
-	/// Si no existe lista de lineas se crea una.
-	if (listalineas == NULL)
-	{
-		listalineas = new ListLinAlbaranCliente(companyact);
-	}
-	listalineas->cargaListLinAlbaranCliente(idbudget);
+
+	listalineas->cargar(idbudget);
 	/// Si no existe lista de descuentos se crea una.
-	if (listadescuentos == NULL)
-	{
-		listadescuentos = new ListDescuentoAlbaranCliente(companyact);
-	}
-	listadescuentos->cargaDescuentos(idbudget);
-	pintaAlbaranCliente();
+
+	listadescuentos->cargar(idbudget);
+	pintar();
 	_depura("Fin AlbaranCliente::cargaAlbaranCliente(" + idbudget + ").", 0);
 	return 0;
-};
+}
 
 
-void AlbaranCliente::guardaAlbaranCliente()
-{
+int AlbaranCliente::guardar() {
 	/// Todo el guardado es una transaccion.
 	QString id;
 	companyact->begin();
 	int error = DBsave(id);
-	if (error)
-	{
+	if (error)  {
 		companyact->rollback();
-		return;
+		return -1;
 	}
 	setidalbaran(id);
 	companyact->commit();
-	listalineas->guardaListLinAlbaranCliente();
-	listadescuentos->guardaListDescuentoAlbaranCliente();
-	cargar(id);
-};
+	listalineas->guardar();
+	listadescuentos->guardar();
+	return 0;
+}
 
 
 void AlbaranCliente::imprimirAlbaranCliente()
@@ -222,7 +209,7 @@ void AlbaranCliente::imprimirAlbaranCliente()
 	buff.replace("[comentalbaran]", DBvalue("comentalbaran"));
 	buff.replace("[descalbaran]", DBvalue("descalbaran"));
 	buff.replace("[refalbaran]", DBvalue("refalbaran"));
-	LinAlbaranCliente *linea;
+
 	/// Impresion de la tabla de contenidos.
 	fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, " \
 				"8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
@@ -237,32 +224,32 @@ void AlbaranCliente::imprimirAlbaranCliente()
 	QString l;
 	/// Contador que sirve para poner lineas de mas en caso de que sea preciso.
 	int i=0;
-	for (linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next())
+	SDBRecord *linea;
+	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())
 	{
-		Fixed base = Fixed(linea->cantlalbaran().ascii()) *
-				Fixed(linea->pvplalbaran().ascii());
-		basesimp[linea->ivalalbaran()] = basesimp[linea->ivalalbaran()] + base -
-				base * Fixed(linea->descontlalbaran().ascii()) / 100;
+		Fixed base = Fixed(linea->DBvalue("cantlalbaran").ascii()) *
+				Fixed(linea->DBvalue("pvplalbaran").ascii());
+		basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base -
+				base * Fixed(linea->DBvalue("descontlalbaran").ascii()) / 100;
 
 		fitxersortidatxt += "<tr>\n";
-		fitxersortidatxt += "<td>" + XMLProtect(linea->codigocompletoarticulo()) +
+		fitxersortidatxt += "<td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) +
 					"</td>\n";
-		fitxersortidatxt += "<td>" + XMLProtect(linea->desclalbaran()) + "</td>\n";
-		fitxersortidatxt += "<td>" + l.sprintf("%s",linea->cantlalbaran().ascii()) +
+		fitxersortidatxt += "<td>" + XMLProtect(linea->DBvalue("desclalbaran")) + "</td>\n";
+		fitxersortidatxt += "<td>" + l.sprintf("%s",linea->DBvalue("cantlalbaran").ascii()) +
 					"</td>\n";
-		fitxersortidatxt += "<td>" + l.sprintf("%s",linea->pvplalbaran().ascii()) +
+		fitxersortidatxt += "<td>" + l.sprintf("%s",linea->DBvalue("pvplalbaran").ascii()) +
 					"</td>\n";
-		fitxersortidatxt += "<td>" + l.sprintf("%s",linea->descontlalbaran().ascii()) +
+		fitxersortidatxt += "<td>" + l.sprintf("%s",linea->DBvalue("descontlalbaran").ascii()) +
 					" %</td>\n";
 		fitxersortidatxt += "<td>" + l.sprintf("%s",(base - base *
-					Fixed(linea->descontlalbaran()) / 100).toQString().ascii())
+					Fixed(linea->DBvalue("descontlalbaran")) / 100).toQString().ascii())
 					+ "</td>\n";
 		fitxersortidatxt += "</tr>";
 		i++;
-	};
+	}
 
-	while (i++ < 15)
-	{
+	while (i++ < 15) {
 		fitxersortidatxt += "<tr></tr>";
 	};
 	fitxersortidatxt += "</blockTable>\n";
@@ -276,8 +263,8 @@ void AlbaranCliente::imprimirAlbaranCliente()
 	/// Impresion de los descuentos.
 	fitxersortidatxt = "";
 	Fixed porcentt("0.00");
-	DescuentoAlbaranCliente *linea1;
-	if (listadescuentos->m_lista.first())
+	SDBRecord *linea1;
+	if (listadescuentos->lista()->first())
 	{
 		fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm," \
 					" 2cm, 3cm\" repeatRows=\"1\">\n";
@@ -286,22 +273,20 @@ void AlbaranCliente::imprimirAlbaranCliente()
 		fitxersortidatxt += "<td>Porcentaje</td>\n";
 		fitxersortidatxt += "<td>Total</td>\n";
 		fitxersortidatxt += "</tr>\n";
-		for (linea1 = listadescuentos->m_lista.first(); linea1;
-			linea1 = listadescuentos->m_lista.next())
-		{
-			porcentt = porcentt + Fixed(linea1->proporciondalbaran().ascii());
+		for (linea1 = listadescuentos->lista()->first(); linea1;linea1 = listadescuentos->lista()->next())  {
+			porcentt = porcentt + Fixed(linea1->DBvalue("proporciondalbaran").ascii());
 			fitxersortidatxt += "<tr>\n";
-			fitxersortidatxt += "<td>" + linea1->conceptdalbaran() + "</td>\n";
+			fitxersortidatxt += "<td>" + linea1->DBvalue("conceptdalbaran") + "</td>\n";
 			fitxersortidatxt += "<td>" + l.sprintf("%s",
-						linea1->proporciondalbaran().ascii()) +
+						linea1->DBvalue("proporciondalbaran").ascii()) +
 						" %</td>\n";
 			fitxersortidatxt += "<td>" + l.sprintf("-%s",
-						(Fixed(linea1->proporciondalbaran()) * basei /
+						(Fixed(linea1->DBvalue("proporciondalbaran")) * basei /
 						100).toQString().ascii()) + "</td>\n";
 			fitxersortidatxt += "</tr>";
 		};
 		fitxersortidatxt += "</blockTable>\n";
-	};
+	}
 	buff.replace("[descuentos]", fitxersortidatxt);
 	/// Impresión de los totales.
 	fitxersortidatxt = "";
@@ -325,7 +310,7 @@ void AlbaranCliente::imprimirAlbaranCliente()
 		totbaseimp = totbaseimp + parbaseimp;
 		tr1 += "<td>Base " + it.key() + " %</td>\n";
 		tr2 += "<td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
-	};
+	}
 
 	Fixed totiva("0.0");
 	Fixed pariva("0.0");
@@ -341,7 +326,7 @@ void AlbaranCliente::imprimirAlbaranCliente()
 		totiva = totiva + pariva;
 		tr1 += "<td>Iva " + it.key() + " %</td>\n";
 		tr2 += "<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
-	};
+	}
 
 	tr1 += "<td>Total </td>\n";
 	tr2 += "<td>"+l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
@@ -353,52 +338,46 @@ void AlbaranCliente::imprimirAlbaranCliente()
 		QTextStream stream(&file);
 		stream << buff;
 		file.close();
-	};
+	}
 
 	invocaPDF("albaran");
+}
 
-};
 
-
-void AlbaranCliente::calculaypintatotales()
-{
+void AlbaranCliente::calculaypintatotales()  {
 	_depura("calculaypintatotales.",0);
 	base basesimp;
-	LinAlbaranCliente *linea;
+	SDBRecord *linea;
 	/// Impresion de los contenidos.
 	QString l;
 
-	for (linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next())
+	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())
 	{
-		Fixed cant(linea->cantlalbaran().ascii());
-		Fixed pvpund(linea->pvplalbaran().ascii());
-		Fixed desc1(linea->descontlalbaran().ascii());
+		Fixed cant(linea->DBvalue("cantlalbaran").ascii());
+		Fixed pvpund(linea->DBvalue("pvplalbaran").ascii());
+		Fixed desc1(linea->DBvalue("descontlalbaran").ascii());
 		Fixed cantpvp = cant * pvpund;
 		Fixed base = cantpvp - cantpvp * desc1 / 100;
-		basesimp[linea->ivalalbaran()] = basesimp[linea->ivalalbaran()] + base;
-	};
+		basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base;
+	}
 
 	Fixed basei("0.00");
 	base::Iterator it;
 
-	for (it = basesimp.begin(); it != basesimp.end(); ++it)
-	{
+	for (it = basesimp.begin(); it != basesimp.end(); ++it)  {
 		basei = basei + it.data();
-	};
+	}
 
 	/// Impresion de los descuentos.
 	Fixed porcentt("0.00");
-	DescuentoAlbaranCliente *linea1;
+	SDBRecord *linea1;
 
-	if (listadescuentos->m_lista.first())
-	{
-		for (linea1 = listadescuentos->m_lista.first(); linea1;
-			linea1 = listadescuentos->m_lista.next())
-		{
-			Fixed propor(linea1->proporciondalbaran().ascii());
+	if (listadescuentos->lista()->first())	{
+		for (linea1 = listadescuentos->lista()->first(); linea1;linea1 = listadescuentos->lista()->next())  {
+			Fixed propor(linea1->DBvalue("proporciondalbaran").ascii());
 			porcentt = porcentt + propor;
-		};
-	};
+		}// end for
+	}// end if
 
 	Fixed totbaseimp("0.00");
 	Fixed parbaseimp("0.00");
@@ -410,9 +389,9 @@ void AlbaranCliente::calculaypintatotales()
 			parbaseimp = it.data() - it.data() * porcentt / 100;
 		} else {
 			parbaseimp = it.data();
-		};
+		}
 		totbaseimp = totbaseimp + parbaseimp;
-	};
+	}
 
 	Fixed totiva("0.00");
 	Fixed pariva("0.00");
@@ -426,10 +405,11 @@ void AlbaranCliente::calculaypintatotales()
 			pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
 		} else {
 			pariva = it.data() * piva / 100;
-		};
+		}
 
 		totiva = totiva + pariva;
-	};
+	}
 
 	pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-};
+}
+

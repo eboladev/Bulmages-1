@@ -145,18 +145,20 @@ void FacturaView::s_agregaAlbaran() {
     setDBvalue("comentfactura", comm);
 
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE, pero por ahora pasamos de hacerlo.
-    LinAlbaranCliente *linea;
-    for (linea = bud->getlistalineas()->m_lista.first(); linea; linea = bud->getlistalineas()->m_lista.next() ) {
+    //LinAlbaranCliente *linea;
+	SDBRecord *linea;
+    for (linea = bud->getlistalineas()->lista()->first(); linea; linea = bud->getlistalineas()->lista()->next() ) {
         //nuevalinea();
-        listalineas->nuevalinea(linea->desclalbaran()
-                                , linea->cantlalbaran()
-                                , linea->pvplalbaran()
-                                , linea->descontlalbaran()
-                                , linea->idarticulo()
-                                , linea->codigocompletoarticulo()
-                                , linea->nomarticulo()
-                                , linea->ivalalbaran()
-                               );
+        listalineas->nuevalinea(
+	linea->DBvalue("desclalbaran"),
+	linea->DBvalue("cantlalbaran"),
+        linea->DBvalue("pvplalbaran"),
+        linea->DBvalue("descontlalbaran"),
+        linea->DBvalue("idarticulo"),
+        linea->DBvalue("codigocompletoarticulo"),
+        linea->DBvalue("nomarticulo"),
+        linea->DBvalue("ivalalbaran")
+        );
     }// end for
 
     delete bud;

@@ -125,29 +125,26 @@ void PedidoClienteView::generarAlbaran() {
     bud->setidcliente(DBvalue("idcliente"));
     bud->setidalmacen(DBvalue("idalmacen"));
     QString l;
-    SDBRecord *linea;
+    SDBRecord *linea, *linea1;
     for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
-        bud->getlistalineas()->nuevalinea(
-            linea->DBvalue("desclpedidocliente"),
-            linea->DBvalue("cantlpedidocliente"),
-            linea->DBvalue("pvplpedidocliente"),
-            linea->DBvalue("descuentolpedidocliente"),
-            linea->DBvalue("idarticulo"),
-            linea->DBvalue("codigocompletoarticulo"),
-            linea->DBvalue("nomarticulo"),
-            linea->DBvalue("ivalpedidocliente")
-        );
+	linea1 = bud->getlistalineas()->newSDBRecord();
+	linea1->setDBvalue( "desclalbaran",linea->DBvalue("desclpedidocliente"));
+	linea1->setDBvalue( "cantlalbaran",linea->DBvalue("cantlpedidocliente"));
+	linea1->setDBvalue( "pvplalbaran",linea->DBvalue("pvplpedidocliente"));
+	linea1->setDBvalue( "descontlalbaran",linea->DBvalue("descuentolpedidocliente"));
+	linea1->setDBvalue( "idarticulo",linea->DBvalue("idarticulo"));
+	linea1->setDBvalue( "codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
+	linea1->setDBvalue( "nomarticulo",linea->DBvalue("nomarticulo"));
+	linea1->setDBvalue( "ivalalbaran",linea->DBvalue("ivalpedidocliente"));
     }// end for
 
-    SDBRecord *linea1;
     for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
-        bud->getlistadescuentos()->nuevalinea(
-            linea1->DBvalue("conceptdpedidocliente"),
-            linea1->DBvalue("proporciondpedidocliente")
-        );
+	linea = bud->getlistadescuentos()->newSDBRecord();
+	linea->setDBvalue( "conceptdalbaran",linea1->DBvalue("conceptdpedidocliente"));
+	linea->setDBvalue( "proporciondalbaran",linea1->DBvalue("proporciondpedidocliente"));
     }// end for
 
-    bud->pintaAlbaranCliente();
+    bud->pintar();
     bud->show();
 }// end generarAlbaran
 

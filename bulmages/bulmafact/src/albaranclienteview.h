@@ -28,7 +28,6 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "listdescalbarancliente.h"
 #include "dialogchanges.h"
 #include "fixed.h"
 #include "busquedacliente.h"
@@ -36,14 +35,14 @@
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
-#include "albaranclientebase.h"
+#include "ui_albaranclientebase.h"
 #include "albarancliente.h"
 #include "postgresiface2.h"
 
 
 class company;
 
-class AlbaranClienteView : public AlbaranClienteBase, public AlbaranCliente,
+class AlbaranClienteView : public QWidget, public Ui_AlbaranClienteBase, public AlbaranCliente,
 	public dialogChanges
 {
 	Q_OBJECT
@@ -124,75 +123,29 @@ public:
 	void generarFactura();
 	void agregarFactura();
 	void closeEvent(QCloseEvent *);
+	virtual int guardar();
 
 public slots:
-	virtual void s_comentalbarantextChanged()
+
+	virtual void on_mui_guardar_clicked()
 	{
-		setcomentalbaran(m_comentalbaran->text());
-	};
-	virtual void s_comentprivalbarantextChanged()
-	{
-		setcomentprivalbaran(m_comentprivalbaran->text());
-	};
-	virtual void s_almacenvalueChanged(QString val)
-	{
-		setidalmacen(val);
-	};
-	virtual void s_numalbarantextChanged(const QString &val)
-	{
-		setNumAlbaran(val);
-	};
-	virtual void s_clientevalueChanged(QString val)
-	{
-		setidcliente(val);
-	};
-	virtual void s_procesadoalbaranstateChanged(int val)
-	{
-		if (val)
-		{
-			setprocesadoalbaran("TRUE");
-		} else {
-			setprocesadoalbaran("FALSE");
-		}
-	}
-	virtual void s_contactalbarantextChanged(const QString &val)
-	{
-		setcontactalbaran(val);
-	};
-	virtual void s_telalbarantextChanged(const QString &val)
-	{
-		settelalbaran(val);
-	};
-	virtual void s_fechaalbaranvalueChanged(QString val)
-	{
-		_depura("s_fechaalbaranvalueChanged()",0);
-		setfechaalbaran(val);
-	};
-	virtual void s_forma_pagovalueChanged(QString val)
-	{
-		setidforma_pago(val);
-	};
-	virtual void s_trabajadorvalueChanged(QString val)
-	{
-		setidtrabajador(val);
-	};
-	virtual void s_refalbarantextChanged(const QString &val)
-	{
-		setrefalbaran(val);
-	};
-	virtual void s_descalbarantextChanged(const QString &val)
-	{
-		setdescalbaran(val);
-	};
-	virtual void s_saveAlbaranCliente()
-	{
-		guardaAlbaranCliente();
+		guardar();
 	};
 	virtual int cargar(QString id);    
-	virtual void s_deleteAlbaranCliente()
-	{
-		borraAlbaranCliente();
-	};
+    virtual void on_mui_borrar_clicked() {
+        int val = QMessageBox::warning( this, tr("Borrar Albaran Cliente."),
+                                        tr("ADVERTENCIA: Eliminar pedidos de cliente puede disminuir la eficacia economica de la empresa. Continuar?"),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        if (val == 0) {
+
+            if (!borrar()) {
+                dialogChanges_cargaInicial();
+                _depura("Albaran borrado satisfactoriamente",2);
+                close();
+            }// end if
+        }// end if
+    };
+
+
 	virtual void s_printAlbaranCliente()
 	{
 	};
@@ -204,11 +157,11 @@ public slots:
 	}
 	virtual void s_verpresupuesto();
 	virtual void s_verpedidocliente();
-	virtual void s_imprimirAlbaranCliente()
+	virtual void on_mui_imprimir_clicked()
 	{
 		imprimirAlbaranCliente();
 	};
-	virtual void s_generarFactura()
+	virtual void on_mui_facturar_clicked()
 	{
 		generarFactura();
 	};

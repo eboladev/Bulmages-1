@@ -23,7 +23,6 @@
 #include <q3datetimeedit.h>
 #include <q3filedialog.h>
 #include <qtoolbutton.h>
-//Added by qt3to4:
 #include <QPixmap>
 #include <Q3PopupMenu>
 

@@ -63,6 +63,7 @@ FORMS += about.ui \
          albaranproveedorbase.ui \
          facturapbase.ui \
          pedidoclientebase.ui \
+         albaranclientebase.ui \
 	 clientebase.ui
 
 # uic3 los convierte de forma automatica.
@@ -70,7 +71,6 @@ FORMS += about.ui \
 FORMS3 += bulmafactbase.ui \
           budgetbase.ui \
           budgetslistbase.ui \
-          albaranclientebase.ui \
           familiasdlg.ui \
           tiposarticulodlg.ui \
           facturabase.ui \
@@ -112,9 +112,7 @@ HEADERS += bulmafact.h \
            listlinfacturaview.h \
            linfactura.h \
            albarancliente.h \
-           listlinalbarancliente.h \
            listlinalbaranclienteview.h \
-           linalbarancliente.h \
            pedidosclientelist.h \
            pedidocliente.h \
            pedidoclienteview.h \
@@ -141,8 +139,6 @@ HEADERS += bulmafact.h \
            listdescpresupuesto.h \
            listdescpresupuestoview.h \
            listdescpedidoclienteview.h \
-           descalbarancliente.h \
-           listdescalbarancliente.h \
            listdescalbaranclienteview.h  \
 	   descfactura.h \
 	   listdescfactura.h \
@@ -210,9 +206,7 @@ SOURCES += bulmafact.cpp \
            listlinfacturaview.cpp \
            linfactura.cpp \
            albarancliente.cpp \
-           listlinalbarancliente.cpp \
            listlinalbaranclienteview.cpp \
-           linalbarancliente.cpp \
            pedidosclientelist.cpp \
            pedidocliente.cpp \
            pedidoclienteview.cpp \
@@ -239,8 +233,6 @@ SOURCES += bulmafact.cpp \
            listdescpresupuesto.cpp \
            listdescpresupuestoview.cpp \
            listdescpedidoclienteview.cpp \
-           descalbarancliente.cpp \
-           listdescalbarancliente.cpp \
            listdescalbaranclienteview.cpp \
 	   descfactura.cpp \
 	   listdescfactura.cpp \

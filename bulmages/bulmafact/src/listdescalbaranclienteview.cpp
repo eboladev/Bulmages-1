@@ -10,6 +10,31 @@
 //
 //
 
+#include <QMessageBox>
+#include <QMenu>
+#include <QKeyEvent>
+#include <QEvent>
+
+#include "listdescalbaranclienteview.h"
+#include "articulolist.h"
+#include "comparticulolistview.h"
+#include "funcaux.h"
+
+
+ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("dalbaran");
+    setDBCampoId("iddalbaran");
+    addSHeader("iddalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddalbaran");
+    addSHeader("conceptdalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdalbaran");
+    addSHeader("proporciondalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondalbaran");
+    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idalbaran");
+    setinsercion(TRUE);
+};
+
+
+/*
+
+
 #define COL_IDDALBARAN 0
 #define COL_CONCEPTDALBARAN 1
 #define COL_PROPORCIONDALBARAN 2
@@ -26,8 +51,8 @@ ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget * paren
     /// Inicializamos la tabla de lineas de albaran
     setNumCols(4);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDDALBARAN, tr( "N Línea" ) );
-    horizontalHeader()->setLabel( COL_CONCEPTDALBARAN, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_IDDALBARAN, tr( "N Lï¿½ea" ) );
+    horizontalHeader()->setLabel( COL_CONCEPTDALBARAN, tr( "Descripciï¿½" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDALBARAN, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_IDALBARAN, tr( "Precio" ) );
 
@@ -154,4 +179,4 @@ DescuentoAlbaranCliente *ListDescuentoAlbaranClienteView::lineaat(int row) {
 
 }// end lineaat
 
-
+*/

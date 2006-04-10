@@ -21,7 +21,6 @@
 #ifndef LISTLINALBARANPROVEEDORVIEW_H
 #define LISTLINALBARANPROVEEDORVIEW_H
 
-#include <Q3Table>
 #include <QEvent>
 
 #include "company.h"

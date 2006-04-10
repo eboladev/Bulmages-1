@@ -26,16 +26,16 @@
 #include <Q3PtrList>
 
 #include "company.h"
-#include "listlinalbarancliente.h"
-#include "listdescalbarancliente.h"
+#include "listlinalbaranclienteview.h"
+#include "listdescalbaranclienteview.h"
 #include "fixed.h"
 #include "dbrecord.h"
 
 class AlbaranCliente : public DBRecord
 {
 protected:
-	ListLinAlbaranCliente *listalineas;
-	ListDescuentoAlbaranCliente *listadescuentos;
+	ListLinAlbaranClienteView *listalineas;
+	ListDescuentoAlbaranClienteView *listadescuentos;
 	company *companyact;
 
 public:
@@ -103,29 +103,29 @@ public:
 	{
 		return DBvalue("telalbaran");
 	};
-	ListLinAlbaranCliente* getlistalineas()
+	ListLinAlbaranClienteView* getlistalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoAlbaranCliente* getlistadescuentos()
+	ListDescuentoAlbaranClienteView* getlistadescuentos()
 	{
 		return listadescuentos;
 	};
-	void pintaAlbaranCliente();
-	void guardaAlbaranCliente();
-	void borraAlbaranCliente();
+	virtual void pintar();
+	virtual int guardar();
+	virtual int borrar();
 	void calculaypintatotales();
 	void imprimirAlbaranCliente();
 	void vaciaAlbaranCliente();
 
 	/// Establece cual es la lista subformulario del presupuesto.
 	/// Normalmente para apuntar listlinpresupuestoview.
-	void setListLinAlbaranCliente(ListLinAlbaranCliente *a)
+	void setListLinAlbaranCliente(ListLinAlbaranClienteView *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setListDescuentoAlbaranCliente(ListDescuentoAlbaranCliente *a)
+	void setListDescuentoAlbaranCliente(ListDescuentoAlbaranClienteView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
@@ -133,8 +133,8 @@ public:
 	void setidalbaran(QString val)
 	{
 		setDBvalue("idalbaran",val);
-		listalineas->setidalbaran(val);
-		listadescuentos->setidalbaran(val);
+		listalineas->setColumnValue( "idalbaran",val);
+		listadescuentos->setColumnValue( "idalbaran",val);
 	};
 	void setNumAlbaran(QString val)
 	{

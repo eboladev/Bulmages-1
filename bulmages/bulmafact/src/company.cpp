@@ -308,7 +308,7 @@ void company::s_newPedidoCli() {
 void company::s_newAlbaranCli() {
     AlbaranClienteView *bud = new AlbaranClienteView(this , 0,theApp->translate("Edicion de Albaran", "company"));
     m_pWorkspace->addWindow(bud);
-    bud->pintaAlbaranCliente();
+    bud->pintar();
     bud->show();
 }// end bud
 
