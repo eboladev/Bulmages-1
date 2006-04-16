@@ -114,6 +114,7 @@ public:
 	virtual void pintar();
 	virtual int guardar();
 	virtual int borrar();
+	virtual int cargar(QString);
 	void calculaypintatotales();
 	void imprimirAlbaranCliente();
 	void vaciaAlbaranCliente();
@@ -192,7 +193,7 @@ public:
 	{
 		setDBvalue("procesadoalbaran",val);
 	};
-	virtual int cargar(QString);
+
 	virtual void pintaIdAlbaran(QString)
 	{
 	};

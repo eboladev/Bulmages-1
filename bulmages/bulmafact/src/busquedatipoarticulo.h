@@ -24,11 +24,11 @@
 #include <QLineEdit>
 #include <QLabel>
 
-#include <busquedatipoarticulobase.h>
+#include "ui_busquedatipoarticulobase.h"
 
 class company;
 
-class BusquedaTipoArticulo : public BusquedaTipoArticuloBase
+class BusquedaTipoArticulo : public QWidget, public Ui_BusquedaTipoArticuloBase
 {
 	Q_OBJECT
 
@@ -61,8 +61,8 @@ public:
 	virtual void setcodtipo_articulo(QString val);
 
 public slots:
-	virtual void s_searchTipoArticulo();
-	virtual void s_codtipo_articulotextChanged(const QString &);
+	virtual void on_mui_buscar_clicked();
+	virtual void on_m_codtipo_articulo_textChanged(const QString &);
 
 signals:
 	void valueChanged(QString);

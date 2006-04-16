@@ -10,6 +10,94 @@
 //
 //
 
+
+#include <QMessageBox>
+#include <Q3PopupMenu>
+#include <QKeyEvent>
+#include <QEvent>
+
+#include "listlinfacturaview.h"
+#include "articulolist.h"
+#include "funcaux.h"
+#include "fixed.h"
+
+
+ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("lfactura");
+    setDBCampoId("idlfactura");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "");
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "");
+    addSHeader("idlfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "");
+    addSHeader("desclfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("cantlfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("pvplfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("ivalfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("descuentolfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+    setinsercion(TRUE);
+}
+
+
+
+
+void ListLinFacturaView::editFinished(int row, int col) {
+    _depura("ListLinFacturaView::editFinished",0);
+    SDBRecord *rec = lineaat(row);
+    SDBCampo *camp = (SDBCampo *) item(row,col);
+    camp->refresh();
+    if (camp->nomcampo() == "codigocompletoarticulo") {
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
+        if (!cur->eof() ) {
+            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
+            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
+            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+            rec->setDBvalue("desclfactura", cur->valor("nomarticulo"));
+            rec->setDBvalue("cantlfactura", "1.00");
+	    rec->setDBvalue("descuentolfactura","0.00");
+	    rec->setDBvalue("pvplfactura",cur->valor("pvparticulo"));
+        }// end if
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur->eof() ) {
+	    rec->setDBvalue("ivalfactura",cur1->valor("porcentasa_iva"));		
+        }// end if
+	delete cur1;
+	delete cur;
+    }// end if
+}
+
+
+void ListLinFacturaView::cargar(QString idfactura) {
+        _depura("ListLinFacturaView::cargar\n",0);
+        mdb_idfactura = idfactura;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura="+mdb_idfactura);
+        SubForm2::cargar(cur);
+        delete cur;
+}
+
+
+Fixed ListLinFacturaView::calculabase() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplfactura",i)) * Fixed(DBvalue("cantlfactura",i));
+		base = base + totpar;
+        }// end for
+	return base;
+}
+
+
+Fixed ListLinFacturaView::calculaiva() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplfactura",i)) * Fixed(DBvalue("ivalfactura",i));
+		base = base + totpar;
+        }// end for
+	return base;
+}
+
+
+
+/*
 #define COL_IDLFACTURA 0
 #define COL_IDARTICULO 1
 #define COL_CODARTICULO 2
@@ -312,3 +400,6 @@ QString ListLinFacturaView::searchArticle() {
     delete artlist;
     return idArticle;
 }// end searchArticle
+
+
+*/

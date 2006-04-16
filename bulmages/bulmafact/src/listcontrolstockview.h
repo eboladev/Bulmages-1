@@ -28,11 +28,50 @@
 #include "company.h"
 #include "controlstock.h"
 
+#include "subform2bf.h"
 
+
+
+
+class ListControlStockView : public SubForm2Bf {
+    Q_OBJECT
+public:
+    QString mdb_idinventario;
+    ListControlStockView(QWidget *parent = 0, const char *name = 0);
+    ~ListControlStockView() {}
+    ;
+
+public slots:
+    virtual void cargar(QString idinventario) {
+        _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+
+        mdb_idinventario=idinventario;
+	QString SQLQuery = "SELECT * FROM ";
+
+	SQLQuery += " (SELECT * FROM articulo, almacen) AS t1 ";
+
+	SQLQuery +=" LEFT JOIN (SELECT *, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = "+idinventario+") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
+	SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
+
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm2Bf::cargar(cur);
+        delete cur;
+    };
+    virtual int guardar() {
+	SubForm2Bf::guardar();
+	cargar(mdb_idinventario);
+	return 0;
+    }
+};
+
+
+
+/*
+ 
 class ListControlStockView : public Q3Table , public ListControlStock
 {
 	Q_OBJECT
-
+ 
 public:
 	ListControlStockView(QWidget *parent = 0, const char *name = 0);
 	~ListControlStockView();
@@ -41,7 +80,7 @@ public:
 	virtual bool eventFilter(QObject *obj, QEvent *ev);
 	ControlStock *lineaat(int);
 	ControlStock *lineaact();
-
+ 
 public slots:
 	virtual void valueBudgetLineChanged(int row, int col);
 	virtual QString searchArticle();
@@ -50,5 +89,8 @@ public slots:
 	virtual void contextMenu (int, int ,const QPoint &);
 	//virtual void borrar();
 };
+ 
+*/
+
 
 #endif

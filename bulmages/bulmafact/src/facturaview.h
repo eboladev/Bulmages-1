@@ -26,7 +26,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include <facturabase.h>
+#include "ui_facturabase.h"
 #include "factura.h"
 #include "listlinpresupuestoview.h"
 #include "busquedacliente.h"
@@ -38,132 +38,96 @@
 #include "postgresiface2.h"
 
 
-class FacturaView : public FacturaBase, public Factura, public dialogChanges
-{
-	Q_OBJECT
+class FacturaView : public QWidget, public Ui_FacturaBase, public Factura, public dialogChanges {
+    Q_OBJECT
 
 public:
-	FacturaView(company *, QWidget *parent = 0, const char *name = 0);
-	~FacturaView();
-	void inicialize();
-	void pintaidcliente(QString id)
-	{
-		m_cliente->setidcliente(id);
-	};
-	void pintaidalmacen(QString id)
-	{
-		m_almacen->setidalmacen(id);
-	};
-	void pintaNumFactura(QString id)
-	{
-		m_numfactura->setText(id);
-	};
-	void pintacodigoserie_factura(QString id)
-	{
-		m_codigoserie_factura->setcodigoserie_factura(id);
-	};
-	void pintafechafactura(QString id)
-	{
-		m_fechafactura->setText(id);
-	};
-	void pintadescfactura(QString id)
-	{
-		m_descfactura->setText(id);
-	};
-	void pintaComentFactura(QString id)
-	{
-		m_comentfactura->setText(id);
-	};
-	void pintareffactura(QString id)
-	{
-		m_reffactura->setText(id);
-	};
-	void pintaidforma_pago(QString id)
-	{
-		m_forma_pago->setidforma_pago(id);
-	};
-	void pintaprocesadafactura(QString id)
-	{
-		//fprintf(stderr,"pintaprocesadafactura(%s)\n",id.ascii());
-		if (id == "t" || id == "TRUE")
-		{
-			m_procesadafactura->setChecked(TRUE);
-		} else {
-			m_procesadafactura->setChecked(FALSE);
-		}
-	};
-	void pintatotales(Fixed , Fixed , Fixed , Fixed);
-	void closeEvent( QCloseEvent *);
+    FacturaView(company *, QWidget *parent = 0, const char *name = 0);
+    ~FacturaView();
+    void inicialize();
+    void pintaidcliente(QString id) {
+        m_cliente->setidcliente(id);
+    };
+    void pintaidalmacen(QString id) {
+        m_almacen->setidalmacen(id);
+    };
+    void pintaNumFactura(QString id) {
+        m_numfactura->setText(id);
+    };
+    void pintacodigoserie_factura(QString id) {
+        m_codigoserie_factura->setcodigoserie_factura(id);
+    };
+    void pintafechafactura(QString id) {
+        m_fechafactura->setText(id);
+    };
+    void pintadescfactura(QString id) {
+        m_descfactura->setText(id);
+    };
+    void pintaComentFactura(QString id) {
+        m_comentfactura->setText(id);
+    };
+    void pintareffactura(QString id) {
+        m_reffactura->setText(id);
+    };
+    void pintaidforma_pago(QString id) {
+        m_forma_pago->setidforma_pago(id);
+    };
+    void pintaprocesadafactura(QString id) {
+        //fprintf(stderr,"pintaprocesadafactura(%s)\n",id.ascii());
+        if (id == "t" || id == "TRUE") {
+            m_procesadafactura->setChecked(TRUE);
+        } else {
+            m_procesadafactura->setChecked(FALSE);
+        }
+    };
+    void pintatotales(Fixed , Fixed , Fixed , Fixed);
+    void closeEvent( QCloseEvent *);
+    virtual int guardar();
 
 public slots:
-	virtual void s_comentfacturatextChanged()
-	{
-		setcomentfactura(m_comentfactura->text());
-	};
-	virtual void s_almacenvalueChanged(QString val)
-	{
-		setidalmacen(val);
-	};
-	virtual void s_numfacturatextChanged(const QString &val)
-	{
-		setNumFactura(val);
-	};
-	virtual void s_reffacturatextChanged(const QString &val)
-	{
-		setreffactura(val);
-	};
-	virtual void s_clientevalueChanged(QString val)
-	{
-		setidcliente(val);
-	};
-	virtual void s_fechafacturavalueChanged(QString val)
-	{
-		setfechafactura(val);
-	};
-	virtual void s_descfacturatextChanged(const QString &val)
-	{
-		setdescfactura(val);
-	};
-	virtual void s_forma_pagovalueChanged(QString val)
-	{
-		setidforma_pago(val);
-	};
-	virtual void s_serie_facturavalueChanged(QString val)
-	{
-		setcodigoserie_factura(val);
-	};
-	virtual void s_saveFactura()
-	{
-		guardaFactura();
-	};
-	virtual int cargar(QString id);
-	virtual void s_deleteFactura()
-	{
-		borraFactura();
-	};
-	virtual void s_printFactura()
-	{
-		imprimirFactura();
-	};
-	virtual void s_agregaAlbaran();
 
-	/// Este slot se activa cuando hay cambios en los subformularios.
-	virtual void s_pintaTotales()
-	{
-		calculaypintatotales();
-	}
-	virtual void s_procesadafacturastateChanged(int i)
-	{
-		//fprintf(stderr,"s_procesadafacturastateChanged(%d)\n",i);
-		if (i)
-		{
-			setprocesadafactura("TRUE");
-		} else {
-			setprocesadafactura("FALSE");
-		}
-	};
-	virtual void s_nuevoCobro();
-	virtual void s_informeReferencia();
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    };
+    virtual int cargar(QString id);
+
+    virtual void on_mui_borrar_clicked() {
+
+
+        int val = QMessageBox::warning( this, tr("Borrar Factura Cliente."),
+                                        tr("Desea eliminar la factura de este cliente, piense en los dolores de cabeza que la perdida de esta informacion puede causar a otros ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        if (val == 0) {
+
+            if (!borrar()) {
+                dialogChanges_cargaInicial();
+                _depura("Factura borrada satisfactoriamente",2);
+                close();
+            }// end if
+        }// end if
+
+
+    };
+    virtual void on_mui_imprimir_clicked() {
+        imprimirFactura();
+    };
+    virtual void on_mui_agregaralbaran_clicked();
+
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {
+        calculaypintatotales();
+    };
+    virtual void on_m_descuentos_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_subform2_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_mui_cobrar_clicked();
+    virtual void on_mui_informereferencia_clicked();
+    virtual void on_mui_aceptar_clicked() {
+        if (!guardar() )
+            close();
+    };
 };
 
 #endif

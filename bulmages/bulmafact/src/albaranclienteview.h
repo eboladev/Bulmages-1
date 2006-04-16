@@ -43,95 +43,75 @@
 class company;
 
 class AlbaranClienteView : public QWidget, public Ui_AlbaranClienteBase, public AlbaranCliente,
-	public dialogChanges
-{
-	Q_OBJECT
-	
+    public dialogChanges {
+    Q_OBJECT
+
 public:
-	AlbaranClienteView(company *, QWidget *, const char *);
-	~AlbaranClienteView();
-	void pintaIdAlbaran(QString)
-	{
-	};
-	void pintaNumAlbaran(QString val)
-	{
-		m_numalbaran->setText(val);
-	};
-	void pintafechaalbaran(QString val)
-	{
-		m_fechaalbaran->setText(val);
-	};
-	void pintaIdUsuario(QString)
-	{
-	};
-	void pintaComentAlbaran(QString val)
-	{
-		m_comentalbaran->setText(val);
-	};
-	void pintaComentPrivAlbaran(QString val)
-	{
-		m_comentprivalbaran->setText(val);
-	};
-	void pintaidcliente(QString val)
-	{
-		m_cliente->setidcliente(val);
-	};
-	void pintaidforma_pago(QString val)
-	{
-		m_forma_pago->setidforma_pago(val);
-	};
-	void pintaIdFactura(QString)
-	{
-	};
-	void pintaidalmacen(QString id)
-	{
-		m_almacen->setidalmacen(id);
-	};
-	void pintaidtrabajador(QString id)
-	{
-		m_trabajador->setidtrabajador(id);
-	};
-	void pintadescalbaran(QString val)
-	{
-		m_descalbaran->setText(val);
-	};
-	void pintarefalbaran(QString val)
-	{
-		m_refalbaran->setText(val);
-	};
-	void pintacontactalbaran(QString val)
-	{
-		m_contactalbaran->setText(val);
-	};
-	void pintatelalbaran(QString val)
-	{
-		m_telalbaran->setText(val);
-	};
-	void pintaprocesadoalbaran(QString id)
-	{
-		if (id == "t" || id == "TRUE")
-		{
-			m_procesadoalbaran->setChecked(TRUE);
-		} else {
-			m_procesadoalbaran->setChecked(FALSE);
-		}
-	};
-	void pintaNumFactura(QString)
-	{
-	};
-	void pintatotales(Fixed, Fixed, Fixed, Fixed);	
-	void generarFactura();
-	void agregarFactura();
-	void closeEvent(QCloseEvent *);
-	virtual int guardar();
+    AlbaranClienteView(company *, QWidget *, const char *);
+    ~AlbaranClienteView();
+    void pintaIdAlbaran(QString) {}
+    ;
+    void pintaNumAlbaran(QString val) {
+        m_numalbaran->setText(val);
+    };
+    void pintafechaalbaran(QString val) {
+        m_fechaalbaran->setText(val);
+    };
+    void pintaIdUsuario(QString) {}
+    ;
+    void pintaComentAlbaran(QString val) {
+        m_comentalbaran->setText(val);
+    };
+    void pintaComentPrivAlbaran(QString val) {
+        m_comentprivalbaran->setText(val);
+    };
+    void pintaidcliente(QString val) {
+        m_cliente->setidcliente(val);
+    };
+    void pintaidforma_pago(QString val) {
+        m_forma_pago->setidforma_pago(val);
+    };
+    void pintaIdFactura(QString) {}
+    ;
+    void pintaidalmacen(QString id) {
+        m_almacen->setidalmacen(id);
+    };
+    void pintaidtrabajador(QString id) {
+        m_trabajador->setidtrabajador(id);
+    };
+    void pintadescalbaran(QString val) {
+        m_descalbaran->setText(val);
+    };
+    void pintarefalbaran(QString val) {
+        m_refalbaran->setText(val);
+    };
+    void pintacontactalbaran(QString val) {
+        m_contactalbaran->setText(val);
+    };
+    void pintatelalbaran(QString val) {
+        m_telalbaran->setText(val);
+    };
+    void pintaprocesadoalbaran(QString id) {
+        if (id == "t" || id == "TRUE") {
+            m_procesadoalbaran->setChecked(TRUE);
+        } else {
+            m_procesadoalbaran->setChecked(FALSE);
+        }
+    };
+    void pintaNumFactura(QString) {}
+    ;
+    void pintatotales(Fixed, Fixed, Fixed, Fixed);
+    void generarFactura();
+    void agregarFactura();
+    void closeEvent(QCloseEvent *);
+    virtual int guardar();
 
 public slots:
 
-	virtual void on_mui_guardar_clicked()
-	{
-		guardar();
-	};
-	virtual int cargar(QString id);    
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    };
+    virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar Albaran Cliente."),
                                         tr("ADVERTENCIA: Eliminar pedidos de cliente puede disminuir la eficacia economica de la empresa. Continuar?"),tr("SI"),tr("No"),tr("Ojala"),0,2);
@@ -146,30 +126,34 @@ public slots:
     };
 
 
-	virtual void s_printAlbaranCliente()
-	{
-	};
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {
+        calculaypintatotales();
+    }
+    virtual void s_verpresupuesto();
+    virtual void on_mui_verpedidocliente_clicked();
+    virtual void on_mui_imprimir_clicked() {
+        imprimirAlbaranCliente();
+    };
+    virtual void on_mui_facturar_clicked() {
+        generarFactura();
+    };
+    virtual void on_mui_informereferencia_clicked();
+    virtual void on_mui_agregarafactura_clicked() {
+        agregarFactura();
+    };
 
-	/// Este slot se activa cuando hay cambios en los subformularios.
-	virtual void s_pintaTotales()
-	{
-		calculaypintatotales();
-	}
-	virtual void s_verpresupuesto();
-	virtual void s_verpedidocliente();
-	virtual void on_mui_imprimir_clicked()
-	{
-		imprimirAlbaranCliente();
-	};
-	virtual void on_mui_facturar_clicked()
-	{
-		generarFactura();
-	};
-	virtual void s_informeReferencia();
-	virtual void s_agregarFactura()
-	{
-		agregarFactura();
-	};
+    virtual void on_m_descuentos_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_subform2_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_mui_aceptar_clicked() {
+        if (!guardar() )
+            close();
+    };
+    virtual void on_mui_cobrar_clicked();
 };
 
 #endif

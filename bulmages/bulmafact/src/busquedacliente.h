@@ -24,12 +24,12 @@
 #include <QLineEdit>
 #include <QLabel>
 
-#include <busquedaclientebase.h>
+#include "ui_busquedaclientebase.h"
 
 
 class company;
 
-class BusquedaCliente : public BusquedaClienteBase
+class BusquedaCliente : public QWidget, public Ui_BusquedaClienteBase
 {
 	Q_OBJECT
 
@@ -62,8 +62,8 @@ public:
 	virtual void setcifcliente(QString val);
 
 public slots:
-	virtual void s_searchCliente();
-	virtual void s_cifclientetextChanged(const QString &);
+	virtual void on_mui_buscar_clicked();
+	virtual void on_m_cifcliente_textChanged(const QString &);
 
 signals:
 	void valueChanged(QString);

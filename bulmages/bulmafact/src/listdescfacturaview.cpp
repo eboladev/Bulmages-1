@@ -9,6 +9,29 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+#include <QMessageBox>
+#include <QMenu>
+#include <QKeyEvent>
+#include <QEvent>
+
+#include "listdescfacturaview.h"
+#include "articulolist.h"
+#include "comparticulolistview.h"
+#include "funcaux.h"
+
+
+ListDescuentoFacturaView::ListDescuentoFacturaView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("dfactura");
+    setDBCampoId("iddfactura");
+    addSHeader("iddfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddfactura");
+    addSHeader("conceptdfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdfactura");
+    addSHeader("proporciondfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondfactura");
+    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idfactura");
+    setinsercion(TRUE);
+}
+
+
+/*
 
 #define COL_IDDFACTURA 0
 #define COL_CONCEPTDFACTURA 1
@@ -26,8 +49,8 @@ ListDescuentoFacturaView::ListDescuentoFacturaView(QWidget * parent, const char 
     /// Inicializamos la tabla de lineas de factura
     setNumCols(4);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDDFACTURA, tr( "Id Línea" ) );
-    horizontalHeader()->setLabel( COL_CONCEPTDFACTURA, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_IDDFACTURA, tr( "Id Lï¿½ea" ) );
+    horizontalHeader()->setLabel( COL_CONCEPTDFACTURA, tr( "Descripciï¿½" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDFACTURA, tr( "Porcentaje" ) );
     horizontalHeader()->setLabel( COL_IDFACTURA, tr( "Factura" ) );
 
@@ -154,4 +177,4 @@ DescuentoFactura *ListDescuentoFacturaView::lineaat(int row) {
 
 }// end lineaat
 
-
+*/

@@ -52,7 +52,7 @@ int PedidoCliente::borrar() {
         }// end if
         companyact->commit();
     }// end if
-	return 0;
+    return 0;
 }// end borraPedidoCliente
 
 
@@ -60,7 +60,7 @@ void PedidoCliente::vaciaPedidoCliente() {
     DBclear();
 }// end vaciaPedidoCliente
 
-void PedidoCliente::pintaPedidoCliente() {
+void PedidoCliente::pintar() {
     _depura("PedidoCliente::pintaPedidoCliente\n",0);
     pintaidcliente(DBvalue("idcliente"));
     pintaidalmacen(DBvalue("idalmacen"));
@@ -92,12 +92,13 @@ int PedidoCliente::cargar(QString idbudget) {
     delete cur;
     listalineas->cargar(idbudget);
     listadescuentos->cargar(idbudget);
-    pintaPedidoCliente();
-	return 0;
+    pintar();
+    return 0;
 }// end chargeBudget
 
 
 int PedidoCliente::guardar() {
+    _depura("PedidoCliente::guardar",0);
     QString id;
     companyact->begin();
     int error = DBsave(id);
@@ -106,15 +107,25 @@ int PedidoCliente::guardar() {
         return -1;
     }// end if
     setidpedidocliente(id);
-    listalineas->guardar();
-    listadescuentos->guardar();
+    error = listalineas->guardar();
+    if (error ) {
+        companyact->rollback();
+        return -1;
+    }// end if
+    error = listadescuentos->guardar();
+    if (error ) {
+        companyact->rollback();
+        return -1;
+    }// end if
     companyact->commit();
+    _depura("END PedidoCliente::guardar",0);
     return 0;
 }// end guardaPedidoCliente
 
 
 
 void PedidoCliente::imprimirPedidoCliente() {
+    _depura("PedidoCliente::imprimirPedidoCliente",0);
 
     base basesimp;
 
@@ -136,8 +147,10 @@ void PedidoCliente::imprimirPedidoCliente() {
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 

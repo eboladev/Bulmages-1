@@ -26,13 +26,13 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "inventariobase.h"
+#include "ui_inventariobase.h"
 #include "inventario.h"
 #include "busquedafecha.h"
 #include "postgresiface2.h"
 
 
-class InventarioView : public InventarioBase, public Inventario
+class InventarioView : public QWidget, public Ui_InventarioBase, public Inventario
 {
 	Q_OBJECT
 
@@ -52,20 +52,18 @@ public:
 	};
 
 public slots:
-	virtual void s_fechainventariovalueChanged(QString val)
+	virtual void on_mui_guardar_clicked()
 	{
-		setfechainventario(val);
+		setfechainventario(m_fechainventario->text());
+		setnominventario(m_nominventario->text());
+		guardar();
 	};
-	virtual void s_nominventariotextChanged(const QString &val)
-	{
-		setnominventario(val);
+	virtual void on_mui_aceptar_clicked() {
+		on_mui_aceptar_clicked();
+		close();
 	};
-	virtual void s_save()
-	{
-		guardaInventario();
-	};
-	virtual void s_delete();
-	virtual void s_pregenerar()
+	virtual void on_mui_borrar_clicked();
+	virtual void on_mui_pregenerar_clicked()
 	{
 		pregenerar();
 	};

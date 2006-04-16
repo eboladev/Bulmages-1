@@ -135,8 +135,6 @@ void ArticuloList::cargaconfig() {
     _depura("ArticuloList::END_guardaconfig()\n",0);
 }// end cargaconfig
 
-
-
 void ArticuloList::configurar() {
     _depura("ArticuloList::INIT_s_configurar()\n",0);
     if(mver_idarticulo->isChecked() )
@@ -241,8 +239,7 @@ void ArticuloList::configurar() {
     _depura("ArticuloList::END_s_configurar()\n",0);
 }
 
-ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, name, flag)  , pgimportfiles(comp) {
+ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)  : QWidget(parent, name, flag)  , pgimportfiles(comp) {
     _depura("ArticuloList::INIT_ArticuloList()\n",0);
 	setupUi(this);
     m_companyact = comp;
@@ -259,7 +256,6 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     _depura("ArticuloList::END_ArticuloList()\n",0);
 }// end ArticuloList
 
-
 void ArticuloList::inicializar() {
     _depura("PagosList::inicializa()\n",0);
     mui_list->setRowCount(0);
@@ -269,9 +265,6 @@ void ArticuloList::inicializar() {
     mui_list->setHorizontalHeaderLabels (headers);
     _depura("end PagosList::inicializa()\n",0);
 } //end inicializa
-
-
-
 
 void ArticuloList::presenta() {
     _depura("ArticuloList::INIT_presenta()\n",0);
@@ -297,13 +290,12 @@ void ArticuloList::presenta() {
     _depura("ArticuloList::END_presenta()\n",0);
 } //end presenta
 
-
 void ArticuloList::editArticle(int  row) {
     _depura("ArticuloList::INIT_editArticle()\n",0);
     mdb_idarticulo = mui_list->item(row,COL_IDARTICULO)->text();
     mdb_nomarticulo = mui_list->item(row,COL_NOMARTICULO)->text();
     mdb_codigocompletoarticulo = mui_list->item(row,COL_CODCOMPLETOARTICULO)->text();
-    if (m_modo ==0 ) {
+    if (m_modo == EditMode ) {
 	ArticuloView *art = m_companyact->newArticuloView();
         m_companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
@@ -311,12 +303,11 @@ void ArticuloList::editArticle(int  row) {
             return;
         art->hide();
         art->show();
-    } else {
-        close();
+    } else {        close();
+        emit(selected(mdb_idarticulo));
     }// end if
     _depura("ArticuloList::END_editArticle()\n",0);
 }
-
 
 void ArticuloList::on_mui_editar_clicked() {
     _depura("ArticuloList::INIT_s_editArticle()\n",0);
@@ -329,7 +320,6 @@ void ArticuloList::on_mui_editar_clicked() {
     _depura("ArticuloList::END_s_editArticle()\n",0);
 }
 
-
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::INIT_destructor()\n",0);
     if(m_modo == EditMode)
@@ -337,9 +327,6 @@ ArticuloList::~ArticuloList() {
     guardaconfig();
     _depura("ArticuloList::END_destructor()\n",0);
 }// end ~ArticuloList
-
-
-
 
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n",0);
@@ -385,7 +372,6 @@ QString ArticuloList::formaQuery() {
     _depura("ArticuloList::END_formaQuery()\n",0);
 }
 
-
 QString ArticuloList::detalleArticulos() {
     _depura("ArticuloList::INIT_detalleArticulos()\n",0);
     QString texto="";
@@ -412,8 +398,6 @@ QString ArticuloList::detalleArticulos() {
     return texto;
     _depura("ArticuloList::END_detalleArticulos()\n",0);
 }// end detalleArticulos
-
-
 
 void ArticuloList::Imprimir() {
     _depura("ArticuloList::INIT_Imprimir()\n",0);
@@ -452,7 +436,6 @@ void ArticuloList::Imprimir() {
     invocaPDF("articulos");
     _depura("ArticuloList::END_Imprimir()\n",0);
 }// end Imprimir
-
 
 void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::INIT_s_imprimir1()\n",0);
@@ -589,7 +572,6 @@ void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::END_s_imprimir1()\n",0);
 }// end imprimir
 
-
 void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::INIT_s_exportar()\n",0);
 
@@ -604,7 +586,6 @@ void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::END_s_exportar()\n",0);
 }
 
-
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar()\n",0);
     QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
@@ -618,17 +599,8 @@ void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::END_s_importar()\n",0);
 }
 
-
 void ArticuloList::on_mui_list_cellDoubleClicked(int a, int ) {
-    mdb_idarticulo = mui_list->item(a,COL_IDARTICULO)->text();
-    if (m_modo ==0 && mdb_idarticulo != "") {
-        ArticuloView *bud = new ArticuloView(m_companyact,0,theApp->translate("Edicion de Pagos", "company"));
-        bud->cargar(mdb_idarticulo);
-	m_companyact->m_pWorkspace->addWindow(bud);
-        bud->show();
-    } else {
-        close();
-    }// end if
+	editArticle(a);
 }
 
 void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {

@@ -9,7 +9,7 @@
 class DBCampo {
 public:
    enum dbtype {DBint=1, DBvarchar=2, DBdate=3, DBnumeric=4, DBboolean=5};
-   enum dbrestrict {DBNothing=0, DBNotNull=1, DBPrimaryKey=2, DBNoSave=4, DBAuto=5};
+   enum dbrestrict {DBNothing=0, DBNotNull=1, DBPrimaryKey=2, DBNoSave=4, DBAuto=8, DBDupPrimaryKey=16, DBRequired=32};
 protected:
 	QString m_nomcampo;
 	QString m_valorcampo;
@@ -27,6 +27,7 @@ public:
 	virtual int set(QString val) {m_valorcampo=val;return 0;};
 	int restrictcampo() {return m_restrict;};
 	QString nomcampo() {return m_nomcampo;};
+	QString nompresentacion() {return m_nompresentacion;};
 	QString valorcampo() {return m_valorcampo;};
 	QString valorcampoprep(int &error);
 };

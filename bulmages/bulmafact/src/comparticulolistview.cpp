@@ -30,7 +30,7 @@ ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *) : SubF
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, "idarticulo");
 
 	setinsercion(TRUE);
-};
+}
 
 void ListCompArticuloView::pressedAsterisk(int row, int col) {
     SDBRecord *rec = lineaat(row);

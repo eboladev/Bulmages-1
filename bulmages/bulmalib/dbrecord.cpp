@@ -3,46 +3,50 @@
 
 
 
-DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp){
-		m_conexionbase = com;
-		m_nomcampo = nom;
-		m_valorcampo="";
-		m_nompresentacion = nomp;
-		m_restrict = res;
-		m_tipo = typ;
+DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp) {
+    m_conexionbase = com;
+    m_nomcampo = nom;
+    m_valorcampo="";
+    m_nompresentacion = nomp;
+    m_restrict = res;
+    m_tipo = typ;
 }
 
 
 QString DBCampo::valorcampoprep(int &error) {
-		error = 0;
-		if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
-				if (m_valorcampo == "") {
-					_depura("Campo "+m_nompresentacion+" vacio",2);
-					error = -1;
-					return "";
-				}// end if
-		}
-		switch (m_tipo) {
-			case DBint:
-				if (m_valorcampo == "") return "NULL";
-				return m_conexionbase->sanearCadena(m_valorcampo);
-			case DBvarchar:
-				return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
-			case DBdate:
-				if (m_valorcampo == "") return "NULL";
-				return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
-			case DBnumeric:
-				if (m_valorcampo == "") return "NULL";
-				return m_valorcampo;
-			case DBboolean:
-				if (m_valorcampo == "") return "NULL";
-				if (m_valorcampo == "f" || m_valorcampo == "t")
-				return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
-				return m_conexionbase->sanearCadena(m_valorcampo);
-		}// end switch
-		error = -1;
-		_depura("Error en la conversion de tipos",2);
-		return "";
+    error = 0;
+    if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
+        if (m_valorcampo == "") {
+            _depura("Campo "+m_nompresentacion+" vacio",2);
+            error = -1;
+            return "";
+        }// end if
+    }
+    switch (m_tipo) {
+    case DBint:
+        if (m_valorcampo == "")
+            return "NULL";
+        return m_conexionbase->sanearCadena(m_valorcampo);
+    case DBvarchar:
+        return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+    case DBdate:
+        if (m_valorcampo == "")
+            return "NULL";
+        return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+    case DBnumeric:
+        if (m_valorcampo == "")
+            return "NULL";
+        return m_valorcampo;
+    case DBboolean:
+        if (m_valorcampo == "")
+            return "NULL";
+        if (m_valorcampo == "f" || m_valorcampo == "t")
+            return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+        return m_conexionbase->sanearCadena(m_valorcampo);
+    }// end switch
+    error = -1;
+    _depura("Error en la conversion de tipos",2);
+    return "";
 }
 
 
@@ -68,8 +72,13 @@ int DBRecord::DBload(cursor2 *cur) {
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
         QString nom =linea->nomcampo();
         QString val = cur->valor(nom);
-        error += linea->set
-                 (val);
+	if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) 
+	&& (val == "") )
+		m_nuevoCampo = TRUE;
+	if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) 
+	&& (val == "") )
+		m_nuevoCampo = TRUE;
+        error += linea->set(val);
     }// end for
     _depura("END DBRecord::DBload",0);
     return error;
@@ -99,7 +108,19 @@ int DBRecord::DBsave(QString &id) {
     QString querywhere = "";
     int err=0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
+            QString lin = linea->valorcampoprep(err);
+            if (err)
+                return -1;
+            querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
+            separadorwhere = " AND ";
+        }// end if
         if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
+	    /// Si el campo es requerido y no está entonces salimos sin dar error.
+            /// No es lo mismo que los not null ya que estos si dan error
+	    if (linea->restrictcampo() & DBCampo::DBRequired) {
+		  if (linea->valorcampo() == "") return 0;
+	    }// end if
             if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
                 QString lin = linea->valorcampoprep(err);
                 if (err)
@@ -217,6 +238,14 @@ int DBRecord::borrar() {
     QString separadorwhere = "";
     QString querywhere = "";
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+        if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
+            int err;
+            QString lin = linea->valorcampoprep(err);
+            if (err)
+                return -1;
+            querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
+            separadorwhere = " AND ";
+        }// end if
         if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
             if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
                 int err;
@@ -230,13 +259,10 @@ int DBRecord::borrar() {
     }// end for
 
     if (m_nuevoCampo == FALSE) {
-        //        m_conexionbase->begin();
         int error = m_conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
         if (error) {
-            //            m_conexionbase->rollback();
             return -1;
         }// end if
-        //        m_conexionbase->commit();
         DBclear();
     }// end if
     return 0;

@@ -1,94 +1,76 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>BusquedaProveedorBase</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>BusquedaProveedorBase</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>581</width>
-            <height>34</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Form1</string>
-    </property>
-    <hbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>m_cifproveedor</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>0</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-        </widget>
-        <widget class="QToolButton">
-            <property name="name">
-                <cstring>m_searchproveedor</cstring>
-            </property>
-            <property name="minimumSize">
-                <size>
-                    <width>32</width>
-                    <height>32</height>
-                </size>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>image0</iconset>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>m_nomproveedor</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>5</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-            <property name="text">
-                <string>Proveedor</string>
-            </property>
-        </widget>
-    </hbox>
-</widget>
-<images>
-    <image name="image0">
-        <data format="PNG" length="771">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002ca49444154388d959531481b511cc6bfb41dcecdf10a1d321a71486806230e063a8490e17add4e0a2a38f44a97c6162538949b445228245d6a0621598a9394500411041d4aad50aa960e513a58e82041e47a74f93abcffe572e755db07c777dcf17eeffb7ff77fef8098516e90246955774892f98535e648e64be6308081b83924691a65c6bd43a545da8d0392e4cea9829ffd56da39278b8ba43e5d2380db00b4feb9a6613393350900ac3258802429309e333c044e57090a0e010c45e1c122e2bcd22237bf8759aec0ce04762a8bed9dc6c39dc515f209c351f899f69c45d5afe04cb443a244023000e8956735fa197342e076632fe4f06f4e0f7e2a7df72d50941c0248db8f48d3b0592cd8cc8d5b0cb2f59d44b28c3aed410f437118f97b33e404991bb598498b63abba1972782953c97eedb3e8a740258e2900c9dca8c5cc4831d20d32f9c077ee977d1886353f88ee861c4f01b87ba935720b6b0ad28994eb3b14d8cab6e8862aa9b6e1fa194f014802b81965ebc9d995b0c3287443696d5de9f2db5e0cf37e67c4f5b3a63fec73e8972de5d6daaec05c7295ac345c3a0d15030902980030180706005d330287cd6d1faad459555a7915642b772407e37761a5d549c8c321949cdea4dabacb6592ceaa4bd6c9f292645a70c87a52a0e44e3545ce6a576e714d5e1a28382ac3a802f37441d67565b89a0ae011e70900585e22b7b61ea3fdfef580e4a5cb978e66d705d0b5d2d82a66344c8e14b18b238c3d3dc4eecb618c7d3d46e28d97027002409d4699acda31a4da417df0fe4b97c58698059bd3da55ce43e34eb164339336e30fec486c565ae05553a07d9993a4f342f5f135b058f865e72936a735de987b5ec7f1c90f3cb83f87fcf84cef0f601ae5eb16f3009c243e22d5def7d09a190090c264e60893b710fcab5820f372e4994699b92cffb58a9e732bddebebf944b164f397e7c1bbf0e05d74b1ffa59df8cf487c7812eaa30d02e8fe011f7cb918e2ec4d4b0000000049454e44ae426082</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>m_searchproveedor</sender>
-        <signal>clicked()</signal>
-        <receiver>BusquedaProveedorBase</receiver>
-        <slot>s_searchProveedor()</slot>
-    </connection>
-    <connection>
-        <sender>m_cifproveedor</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>BusquedaProveedorBase</receiver>
-        <slot>s_cifproveedortextChanged(const QString&amp;)</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>s_searchProveedor()</slot>
-    <slot>s_cifproveedortextChanged(const QString &amp;)</slot>
-</slots>
-<layoutdefaults spacing="0" margin="0"/>
-</UI>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>BusquedaProveedorBase</class>
+ <widget class="QWidget" name="BusquedaProveedorBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>581</width>
+    <height>34</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form1</string>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QLineEdit" name="m_cifproveedor" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="mui_buscar" >
+     <property name="minimumSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_nomproveedor" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Proveedor</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="0" margin="0" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections/>
+</ui>

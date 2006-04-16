@@ -21,13 +21,13 @@
 #ifndef BUSQUEDASERIEFACTURA_H
 #define BUSQUEDASERIEFACTURA_H
 
-#include <Q3ComboBox>
+#include <QComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
 
 
-class BusquedaSerieFactura : public Q3ComboBox
+class BusquedaSerieFactura : public QComboBox
 {
 	Q_OBJECT
 
@@ -43,6 +43,16 @@ public:
 		companyact = comp;
 	};
 	virtual void setcodigoserie_factura(QString);
+	QString codigoserie_factura() {
+	int index= currentIndex();
+		if (index > 0)
+		{
+			return(m_cursorcombo->valor("codigoserie_factura", index - 1));
+		} else {
+			return "";
+		}	
+	};
+
 
 public slots:
 	void m_activated(int index)

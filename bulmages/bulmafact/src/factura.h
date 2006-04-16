@@ -25,11 +25,10 @@
 #include <Q3Table>
 #include <Q3PtrList>
 
-#include "listlinfactura.h"
-#include "listdescfactura.h"
+#include "listlinfacturaview.h"
+#include "listdescfacturaview.h"
 #include "fixed.h"
 #include "company.h"
-#include "linfactura.h"
 #include "dbrecord.h"
 
 
@@ -37,8 +36,8 @@ class Factura : public DBRecord
 {
 
 protected:
-	ListLinFactura *listalineas;
-	ListDescuentoFactura *listadescuentos;
+	ListLinFacturaView *listalineas;
+	ListDescuentoFacturaView *listadescuentos;
 	company *companyact;
 
 public:
@@ -46,12 +45,12 @@ public:
 	virtual ~Factura();
 	/// Establece cual es la lista subformulario del presupuesto. Normalmente para
 	/// apuntar listlinpresupuestoview.
-	void setListLinFactura ( ListLinFactura *a)
+	void setListLinFactura ( ListLinFacturaView *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setListDescuentoFactura ( ListDescuentoFactura *a)
+	void setListDescuentoFactura ( ListDescuentoFacturaView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
@@ -108,18 +107,18 @@ public:
 	{
 		return DBvalue("idforma_pago");
 	};
-	ListLinFactura* getlistalineas()
+	ListLinFacturaView* getlistalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoFactura* getlistadescuentos()
+	ListDescuentoFacturaView* getlistadescuentos()
 	{
 		return listadescuentos;
 	};
 	virtual int cargar(QString);
 	void pintaFactura();
-	void guardaFactura();
-	void borraFactura();
+	virtual int guardar();
+	virtual int  borrar();
 	void setidcliente(QString val)
 	{
 		setDBvalue("idcliente",val);
@@ -155,8 +154,8 @@ public:
 	void setidfactura(QString val)
 	{
 		setDBvalue("idfactura",val);
-		listalineas->setidfactura(val);
-		listadescuentos->setidfactura(val);
+		listalineas->setColumnValue( "idfactura",val);
+		listadescuentos->setColumnValue( "idfactura",val);
 	};
 	void setIdUsuari(QString val)
 	{

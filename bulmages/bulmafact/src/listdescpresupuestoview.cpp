@@ -9,6 +9,28 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+#include <QMessageBox>
+#include <QMenu>
+#include <QKeyEvent>
+#include <QEvent>
+
+#include "listdescpresupuestoview.h"
+#include "articulolist.h"
+#include "comparticulolistview.h"
+#include "funcaux.h"
+
+
+ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("dpresupuesto");
+    setDBCampoId("iddpresupuesto");
+    addSHeader("iddpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddpedidocliente");
+    addSHeader("conceptdpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdpresupuesto");
+    addSHeader("proporciondpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondpresupuesto");
+    addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idpresupuesto");
+    setinsercion(TRUE);
+};
+
+/*
 
 #define COL_IDDPRESUPUESTO 0
 #define COL_CONCEPTDPRESUPUESTO 1
@@ -26,8 +48,8 @@ ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget * parent, con
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(4);
     setNumRows(100);
-    horizontalHeader()->setLabel( COL_IDDPRESUPUESTO, tr( "Id Línea" ) );
-    horizontalHeader()->setLabel( COL_CONCEPTDPRESUPUESTO, tr( "Descripción" ) );
+    horizontalHeader()->setLabel( COL_IDDPRESUPUESTO, tr( "Id Lï¿½ea" ) );
+    horizontalHeader()->setLabel( COL_CONCEPTDPRESUPUESTO, tr( "Descripciï¿½" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDPRESUPUESTO, tr( "Porcentaje" ) );
     horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Presupuesto" ) );
 
@@ -153,5 +175,5 @@ DescuentoPresupuesto *ListDescuentoPresupuestoView::lineaat(int row) {
     }// end if
 
 }// end lineaat
-
+*/
 

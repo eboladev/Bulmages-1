@@ -1,353 +1,446 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>familiasdlg</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>familiasdlg</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>808</width>
-            <height>653</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Familias</string>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>familiasdlg</class>
+ <widget class="QDialog" name="familiasdlg" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>682</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Familias</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>2</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>0</number>
+      </property>
+      <property name="spacing" >
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="mui_crear" >
+        <property name="toolTip" >
+         <string>Nuevo Tipo Artículo</string>
         </property>
-        <property name="margin">
-            <number>0</number>
+        <property name="whatsThis" >
+         <string>Nuevo Tipo Artículo</string>
         </property>
-        <property name="spacing">
-            <number>0</number>
+        <property name="text" >
+         <string/>
         </property>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>frame3</cstring>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_borrar" >
+        <property name="toolTip" >
+         <string>Borrar Tipo Artículo</string>
+        </property>
+        <property name="whatsThis" >
+         <string>Borrar Tipo Artículo</string>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_guardar" >
+        <property name="toolTip" >
+         <string>Guardar Tipo Artículo</string>
+        </property>
+        <property name="whatsThis" >
+         <string>Guardar Tipo Artículo</string>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_imprimir" >
+        <property name="toolTip" >
+         <string>Guardar Tipo Artículo</string>
+        </property>
+        <property name="whatsThis" >
+         <string>Guardar Tipo Artículo</string>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>191</width>
+          <height>30</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="m_listFamilias" />
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="mui_detalles" >
+       <property name="minimumSize" >
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>16</width>
+         <height>16</height>
+        </size>
+       </property>
+       <property name="toolTip" >
+        <string>Imprimir Pedido</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Imprimir Pedido</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+       <property name="checkable" >
+        <bool>true</bool>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Q3GroupBox" name="groupBox1" >
+     <property name="title" >
+      <string>Contenido de la familia</string>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>2</number>
+      </property>
+      <property name="spacing" >
+       <number>2</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>2</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1" >
+            <property name="text" >
+             <string>Nombre</string>
             </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="m_nomFamilia" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>2</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="labelalgo" >
+            <property name="text" >
+             <string>Código</string>
             </property>
-            <property name="frameShadow">
-                <enum>Raised</enum>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image0</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Nueva Familia</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Nueva Família</string>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image1</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Borrar Família</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Borrar Família</string>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_2_5</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image2</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Guardar Família</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Guardar Família</string>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>toolButton1_2_5_2</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image3</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Imprimir Famílias</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Imprimir Famílias</string>
-                    </property>
-                </widget>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer3</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>101</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-            </hbox>
-        </widget>
-        <widget class="QListView">
-            <property name="name">
-                <cstring>m_listFamilias</cstring>
-            </property>
-            <property name="focusPolicy">
-                <enum>NoFocus</enum>
-            </property>
-            <property name="allColumnsShowFocus">
-                <bool>true</bool>
-            </property>
-            <property name="showSortIndicator">
-                <bool>true</bool>
-            </property>
-            <property name="rootIsDecorated">
-                <bool>true</bool>
-            </property>
-        </widget>
-        <widget class="QGroupBox">
-            <property name="name">
-                <cstring>groupBox1</cstring>
-            </property>
-            <property name="title">
-                <string>Contenido de la familia</string>
-            </property>
-            <vbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout7</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout3</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>textLabel1</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Nombre</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_nomFamilia</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                        <widget class="QLayoutWidget">
-                            <property name="name">
-                                <cstring>layout3_2</cstring>
-                            </property>
-                            <hbox>
-                                <property name="name">
-                                    <cstring>unnamed</cstring>
-                                </property>
-                                <widget class="QLabel">
-                                    <property name="name">
-                                        <cstring>labelalgo</cstring>
-                                    </property>
-                                    <property name="text">
-                                        <string>Código</string>
-                                    </property>
-                                </widget>
-                                <widget class="QLineEdit">
-                                    <property name="name">
-                                        <cstring>m_codFamilia</cstring>
-                                    </property>
-                                </widget>
-                            </hbox>
-                        </widget>
-                    </hbox>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout3_2_2</cstring>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>m_codFamilia_2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Código Completo</string>
-                            </property>
-                        </widget>
-                        <widget class="QLineEdit">
-                            <property name="name">
-                                <cstring>m_codCompletoFamilia</cstring>
-                            </property>
-                            <property name="paletteBackgroundColor">
-                                <color>
-                                    <red>255</red>
-                                    <green>255</green>
-                                    <blue>0</blue>
-                                </color>
-                            </property>
-                        </widget>
-                    </hbox>
-                </widget>
-                <widget class="QLayoutWidget">
-                    <property name="name">
-                        <cstring>layout7</cstring>
-                    </property>
-                    <vbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QLabel">
-                            <property name="name">
-                                <cstring>textLabel1_2</cstring>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>5</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                            <property name="text">
-                                <string>Descripción</string>
-                            </property>
-                        </widget>
-                        <widget class="QTextEdit">
-                            <property name="name">
-                                <cstring>m_descFamilia</cstring>
-                            </property>
-                            <property name="sizePolicy">
-                                <sizepolicy>
-                                    <hsizetype>7</hsizetype>
-                                    <vsizetype>0</vsizetype>
-                                    <horstretch>0</horstretch>
-                                    <verstretch>0</verstretch>
-                                </sizepolicy>
-                            </property>
-                        </widget>
-                    </vbox>
-                </widget>
-            </vbox>
-        </widget>
-    </vbox>
-</widget>
-<images>
-    <image name="image0">
-        <data format="PNG" length="664">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000025f494441545885cd97c16a1a5114863f0b01b328b485400b165ae8a29bbec074d7d7e963b4af9065d75d749b2c9bdddc45402942a464319689cc042d3325819960167f17f75e7534a2c691e482fc9c8bde39fee73be72a8a858c502cc2aea44c92d34de2e8540a4d48e5bc35e2c96668429469ed558cad2643ab613753d29d26b1ae5633ebae9f8024e9caca592c6928a99092ce664e6cef80fb4cd849244951522dc72a6d28160c8016987f28f8c0faeb16d80352a0093c77fb29a497d0bf318da0154ccf1f18e6e37b3be057e6ca107693ca7e34ac9663370c8c7d169a30308925295add1d4fbc2d6660a0b581fd58fbcbd25adff99bd3fb05df7e187abf9d5ec2c91fc33302f9f3179eb73007eeb35c19e45a521da988a523236591f4e5f048c09d4e6ccdc07c37b47b9934947e9e262a12e9c8240a0f3301aa9f8149164e63ebc6644276ac2bde81fa1900ca5b601ffa1725bc84ce202778639577602e739a04f6cdb533e0bbc075e059e4f6cead2b6da73b61607a1758ffa3b8704914d2583a3bcfa4b1d43e2f76c0c06cff4b53fafd2c8a9d46566a65a02c6dffe7b9edff34070e201d01afa09f96f0da31f1167a17658d0cf86feea9f7fdbfcc89a4eac0560cf89a17eee199579784ff5de0354a1c1b896a64603ca7ab9c18561dd89e813dd7f7fe0ed887fc1a78ba848903e88fd8c11c58e5c09c13b5ce810516aeaaeaef845926763707e61d58c242bd73609e81d231e058483d0ba3290bf5cf817b76c17673c0eb8332f0a8e7c0f5dd73e0d133d0084d38c928781fe8ebf7633e117082a149c00da696f8e3e717285663d681a015b0501340bb7aadfe6ff800fa1f4a5ee730602925ef0000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
-        <data format="PNG" length="1029">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000003cc494441545885bd964d681b5714853f9b046cc8c22a35c4e0855d52288142ad6e6ab5811062c822dd14b2b0030d8e698bc92a9b42372de9cfcaeb2c0a32a1a05268218be02eab456166119054442d42099291c5c8d8616cdc30236cc1e9e2cd481a7914cbb2d30bc3e18ea4f7ee3defdca387aa42b6505558b645242f4a7225057892bcfc543ab25e4cde7a198baefa0eefc0a0b36dd02aba728aed227a61cfca54152af65f802469dfc07a55d2b6244f72f2af66e2ec19087e63e51d4952d9891e47370ea92aa8019360d76c5293a976be8752efd27f1c02e7813a30022482f775a86f41a5610f45d6afd967c740186e700c56d189bc2f6f478fe3f568e020ac422d0db472492a1f9d8ee19076bb66478e21cc4f14e7c1f70df5f917bb94fe82d5df6c4acf02dc82ec86cd1829b5d63fd6070689e018148ca4f2925795d66cc92d4bdf3d5c13a033f58130baa7215772a56de98fa78e3c475ab31d590f5d011a4c03d5b2f460e6982a64cefdfeac94cdb51d326f58091938b90f54cbd222d267f42cc23b90b42f79b7c6a41bc8bd8eb49a53aee84afbc621573a18180ee732145e34ef10d86605be790ba680264001be4d1ef181d106f04582517f0f9a9068028fde27f9728ffc16a42e2568600346f0c3bdd46ff28ec56b5938076cd0c65a01be3645f887c04bf09712b0bbc76ec3145a6f1a2c556c925390aff95c2305982687e33bef70c43066976031d36620c46601be4c32fa02b8d7d57913269ac0729acb0bb7a106c9b747c9060c50e3843e307b1be6d28681e76603ff39b051c0ff7c28b6f3ca721a3e5da2b2e9c33494367d46020606f7013b237d85348f741fe966f05c47ba8af411d207483fa783995404cfc407bc6c5aba85bc9bb4d57e1539c1e64eb079783f283b5e803aa50f847120697e2cbef31b53e63b6103db51ecf481c1fe0b0ec1bf13aff64a03a86d50f9380909a8ef02e350df3158d921a281fe7da033ee2418fd3746ed0d980ef2e967054a73492612c02e4c8c033b303dce803e1084bf10df797dee6e9b8126941a70f9ef02a52b49b8d066a0be43c4074ea6815e67fe38633eff35235d42eb93481791de44ba8072efcd18cdc468a0ef29f07ef82456edee63a3762fb87c383fa5a58b28376636b7ce2181d61facb4a662a57b0afaf681e59968e74f32ed8990da37a0d58ce93cd85cf37763a760201f7017674ce74f82ce83cd4306c23b61f9c7b4e97c7ea1d57988a7f7817fd6a39d773310de88fe54a4f35369a057f46220c4f066d4c9c0e01ae88ee31838c6092ddb62c8b2ad880945f09d94beffe577ae91228bcd08291ad867927f78ef0d54d5d0ab35600b40afeb395e03ff03fe07cb09e98c67e89d3c0000000049454e44ae426082</data>
-    </image>
-    <image name="image2">
-        <data format="PNG" length="1282">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000004c9494441545885ad973f681b571cc73fcf38a040a6d04102619ad0454e3c4864b9331424e8164a90f1625232d81d4ad282111e8a494baa78084e86067b08484329cd9058ee941b52f20c81bbcd2434f51fb0918d1071362f267e90835f87f33dcbb263c9711e1c3ffdc4ddfbfd7e9ff7bdf77b873404090469087ee073940f487c7573ff497cfbe7c72c205217f15ffa227591f6643a3ddf71fe4e990251f08648f15a51eacfeb52a956a4febc7e28994f21d1133403dcb44bd00c200ded3e10f99b01007a43e3e0a03734f56a9dcaa30a4bd525549f12e52a517d4a8e9befd0fcc765ba5799c84bb1045a474ca2dd9e84ccb16b64f1d70f076f1f95471559aa2e49e55145ead5baf53b69a6a3faa5110970667ce6d804ba2193b99c3944a66bf57722d00d99ece5ac94a7ca52be53b64974adfed38eece5ac94ef94e545f5854cfe3c29d2885ee99e6ed57fda614283090ddeaac7dd1fee72ffe97d007ae2a06eda85661454f5a9084f13dc2fddcf9240be378fd931384987a01930519a40025147ee034054791a867e1aa2f677ed54c1fb07fa399b3fcb6eb88bb7ea45c502a4f708c4955b12449507cd80c285c2a982c7239bcc62760cd5db55669fce0251b1bdad042cfeba106c06649359b6bfd9263790c384067a61f9cdf289832748e0ad7a51d0cd805ba55bf881afdcb44b6fbb0600f4a6c6493ae8758d9b7499fc651237e9a23774940c863c7966dfcc760c9e1bc891c966a2e737b5d5541cef100100e78bfde0de8a871bba786b1e4ee830fafd68d40b8cee8a8c090d18d06b9adac39a55bf251eab9d34a83e25efff7d8fb7eed98add948b5ed3382987858d059c94835ed3e4d239f47a446a617d01fd8f3e92cccd819bbccbbca3902e901dce32e80e2281a858f0ca0f7c4b60d01d94b92773b81f5c74a8b97ee3ba9d68fac13484608cc1c5451b6dfd5d7631c6447e685879b562c964beca903893c07c30d41ed6507d0a69888a09f4b6e3cf2573786b1e63a36388884d4029657f97264ae4d3f97d52eb1a37edda65331943215d4037b5b5b587b503ea8f356009a83e25f53fea68a37142874b372f21226c6d6d914aa50eac6b6b3223df8d446b6d0c09a24a39037cc056ce1928fd5862f0eb41abfe38899e03eadf89d6da339e0d904aa5606bcfd9b32262afc77f3e66636583f9a7f3188cdd370a170a07fc76f5dbcdafb5fb2dfebe28d3f7a6a34eb537debe7ddbd13a571c294f950ff4fee2b5a214878b51236b884c3f88e66defba3d31fec5278be81d4d2e99db67bd02a97329965796499d4b1de90f1587280e17297c5960fade34fe5fbe2510dbd6bdbf7ddfe989f77e6fc52317e6d0ab7a3f810404af03fa13fd04af8323fdb8cbe9758d1b464284e8ec982011bdca2d7b7f7befe975d32e128852aeb2921711b65f6ddb9b9ffdf7eca3b6d05b80305a53ddd4dcfef57644a483fae324ec79c00f7c250d517ee02ba514e773e7b9faed55e65fcdd3bfdd7fa49dfa6d8a443e612b37a1d90317550e87f7fef6f3c791e781381909448d8d8e71f1c645c646c708c2a83bc616c0493be850e3a41d082382dda8dfbe7d27f992695579a55a11e78a23a5f19294264a521a2f9d48fd074ec5dd7ed1d07a9a6d49a6345e92b9077302c8ccf88c14878b32333e237ee047aff469be0d4f4aa678ad2823c32396409cf4277f1b9ed46f4d26be8ebdff7310388dfd1fcad723365808fa9e0000000049454e44ae426082</data>
-    </image>
-    <image name="image3">
-        <data format="PNG" length="1518">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000005b5494441545885bd975f885c571dc73f5b4fe5776402e7ca04e69659d91b141cf5c1ac2f76a122a90fa17d8b5a4a1a7c881bc44d44c2da07d952d134fa906ca5d23e283420d1f5a175943acc8b26e6c1a82055899408c26e496167b1cbdc43bcccfd915ebc3e9c993b33ceaeb6e99f03c3997367e6fe3edfefef777e67ee1c6f6f9413efe7eee606f7bc4d00fab75ea6dcde1cc18c5eefc928fb7f7eb12ccbb22cef94e3797b7312e45d8529cbb22c078341083e9a26d7dbafbcf330c78fde5f8e824f29df6b1e0c5ffdfebe30775338e5e046073e7c046b2de480853ccf67d758724db10672f558a45acf7de8e35030f7968af0a1cf1d2e01ec471f0ec1de08c17883e9750ed6582872ac082858e3a050ac58d29d9b382377a11dcaed51e1ed95f3d1fa4e590e6ef7cb72302807fdedb2ec6f97835baf94e5f666d9df7cb914912a056fda81e34783faf8139faf6cde57b9e65823a01ae64c878ea448e651d5eabeffaf06a62a7770a3030b4b58139193865973ac58f222c51285d9c844ce7bd80252f544e242ee2786f95fc13b2f75d054f1ea3973fa0cb6b10446824289864a478aa3b1f24cb106508f2d420146e2c877fe02c08b3f3dce626b89438b67f64d4108febae20bcff25796d9fcfd4f0025dddd023cb9f60025cf7a50287936bc9e6d0dafa700a4990723a4eaf9c0d209d6ce36100b8716cf007bef82b2f352079f7a7ce171c62106e2e622b9a644c692fb143285ac379d6b0d6919557b9ef588247c2e9a4201471e3846d2385c057bdf9ec17b1e2d144178f4cb8f72fbaf1d76fff937e4fd07d91d78c480bfe331ff865dbf8331900d3cd61c201dbc8e3596f4760f03ecde7e0d31f7f2c14f1fe55b5f5fa0563fc8671f7e1a86f577cf5ec17de1112328cacaa915eefbcc09b6feb185be7a15c9b6f0affe0157807ac501eab7900272df4380dc6f2180fa1e0e4177b79042687d7289c5d6d294e2b9c9e03bafeda085e28cc3e37138d428aee6d8f8e506dd5f74c1c095674e93cc0b2209bd2c2572315a80d424fcbee6d0cce3c4e10be563474e70fa94e3fe078ef0852fb5d14ce72601a6838bab72ef0b8f109c70c681401cc53c7ff979dabf6aa3aa5cfff11aad83a09280a62031a8476a2e443070e8a1657efea393b866c2a7961e9f32608e70b054579efbc17355503141d1cc8c901629493d61a3b341fb85365213aeac076730315ae4482d62e9916fe033c567a1f9ac9e5d252f42ef58bfb01e1c28fb25216940c4348c08aad310a9a644260a9043d846bdc1d56b5d2e5dde00e0ca0f57391c0bf71d3bcfb12f1e478c80099d5244489a09cbabcb0160d01fe035e4ac52ae4a74704c73f1e98b4426222d52222252d270da157965b52d2cd4c089a3fb9b2e1b3f0b30274f9d84026217a328ad668bee1fbbb45f680780fead7ee889054171a1604008d428d8d8cec2688a3501c21a4baa29712da6e77b5010441957894320aec774af7571e2b874f95200d8bcb1495aa48811acd8cae6d8c5d54d14add211cfc76398ef5e0cc18bd0f92802b82f3c009a8d7755abd9e2eaefae82012d74ec40a7dba914250b099a8534d85a509d6a2838cd86ce180121c0246398a7bef3d474cd68f8beaa923413babfeee20eb8f0b9c8d80180679f79164170f36e0cd34cf01a9a92882046f0ea89eb3179162a7904a485927c24a9609e78f2091c612b27cd84eeb5eecc6e1a39301ad55ebcb07e016b2c8db811eccc3dc97c52291309b5e1d593d41372cdc1402451e54cd21ac33cf6c863636726e691037b8d0ae6dcf97344444843c68ae6936a2b22543593d4271cab4955a0e7bf777ea69f0c77c8dc9bf9533a86f9f639c408513daad2b130bf80fe4b917b435d586379f04f0fc29370fdb7d71111d6bfbf3ea39ce131f056ff1557306bdf5c4310a24634d5197d11ce100e04677ceee976ba33ca47f7b9abe7b9ff86597d7c153182732ed8ae39713346359c2ded4e7b46f93b01b027cccad75642cdd4a56a6e37ff7e7346f9bb39aaa79f95afae946b67d7ded307d6fd60f61dff0167dba00953ea71680000000049454e44ae426082</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>m_listFamilias</sender>
-        <signal>selectionChanged(QListViewItem*)</signal>
-        <receiver>familiasdlg</receiver>
-        <slot>s_changedFamilia()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_2_5</sender>
-        <signal>clicked()</signal>
-        <receiver>familiasdlg</receiver>
-        <slot>s_saveFamilia()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>familiasdlg</receiver>
-        <slot>s_newFamilia()</slot>
-    </connection>
-    <connection>
-        <sender>m_listFamilias</sender>
-        <signal>doubleClicked(QListViewItem*)</signal>
-        <receiver>familiasdlg</receiver>
-        <slot>s_doubleClicked(QListViewItem*)</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_2</sender>
-        <signal>clicked()</signal>
-        <receiver>familiasdlg</receiver>
-        <slot>s_deleteFamilia()</slot>
-    </connection>
-    <connection>
-        <sender>toolButton1_2_5_2</sender>
-        <signal>clicked()</signal>
-        <receiver>familiasdlg</receiver>
-        <slot>s_imprimir()</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>cambiacombo(int)</slot>
-    <slot>boton_guardar()</slot>
-    <slot>boton_nuevo()</slot>
-    <slot>boton_borrar()</slot>
-    <slot>s_seleccionado(QListViewItem *)</slot>
-    <slot>close()</slot>
-    <slot>s_saveFamilia()</slot>
-    <slot>s_newFamilia()</slot>
-    <slot>s_doubleClicked(QListViewItem *)</slot>
-    <slot>s_deleteFamilia()</slot>
-    <slot>s_changedFamilia()</slot>
-    <slot>s_imprimir()</slot>
-</slots>
-<layoutdefaults spacing="2" margin="2"/>
-</UI>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="m_codFamilia" />
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="m_codFamilia_2" >
+          <property name="text" >
+           <string>Código Completo</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="m_codCompletoFamilia" />
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="textLabel1_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text" >
+           <string>Descripción</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Q3TextEdit" name="m_descFamilia" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>5</number>
+     </property>
+     <property name="spacing" >
+      <number>2</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>581</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>Aceptar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="2" margin="2" />
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends></extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>mui_detalles</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox1</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>14</x>
+     <y>324</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>31</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_cancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>familiasdlg</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>543</x>
+     <y>568</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>10</x>
+     <y>577</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

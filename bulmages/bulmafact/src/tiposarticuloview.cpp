@@ -9,24 +9,29 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "tiposarticuloview.h"
-#include "company.h"
 #include <Q3ListView>
 #include <QMap>
 #include <QLineEdit>
 #include <Q3TextEdit>
 #include <QMessageBox>
 
+#include "tiposarticuloview.h"
+#include "company.h"
+#include "funcaux.h"
+
 #define COL_IDTIPOARTICULO 0
 #define COL_CODTIPOARTICULO 1
 #define COL_DESCTIPOARTICULO  2
 
 
-tiposarticuloview::tiposarticuloview(company *comp, QWidget *parent, const char *name) : tiposarticulodlg(parent, name), dialogChanges(this) {
+tiposarticuloview::tiposarticuloview(company *comp, QWidget *parent, const char *name) : QDialog(parent, name), dialogChanges(this) {
+    setupUi(this);
     companyact = comp;
-    m_listTipos->addColumn("ID",-1);
-    m_listTipos->addColumn("CODIGO",-1);
-    m_listTipos->addColumn("DESCRIPCION",-1);
+    m_listTipos->setColumnCount(3);
+    QStringList headers;
+    headers << "ID" << "CODIGO" << "DESCRIPCION";
+    m_listTipos->setHeaderLabels(headers);
+
     m_idtipo="";
     setModoEdicion();
     pintar();
@@ -37,20 +42,21 @@ tiposarticuloview::~tiposarticuloview() {}// end ~familiasview
 
 
 void tiposarticuloview::pintar() {
-    Q3ListViewItem * it;
-    QMap <int, Q3ListViewItem*> Lista1;
-    int idtipo=0;
-    cursor2 *cursoraux1;
-    m_listTipos->clear();
-    cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo ORDER BY codtipo_articulo");
+    QTreeWidgetItem * it;
+
+    /// vaciamos el arbol
+    while (m_listTipos->topLevelItemCount () > 0) {
+        it = m_listTipos->takeTopLevelItem(0);
+        delete it;
+    }// end while
+
+    cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo ORDER BY codtipo_articulo");
     while (!cursoraux1->eof()) {
-        idtipo = cursoraux1->valor("idtipo_articulo").toInt();
-        it =new Q3ListViewItem(m_listTipos);
-        Lista1[idtipo]=it;
+        it = new QTreeWidgetItem(m_listTipos);
         it->setText(COL_IDTIPOARTICULO, cursoraux1->valor("idtipo_articulo"));
         it->setText(COL_CODTIPOARTICULO,cursoraux1->valor("codtipo_articulo"));
         it->setText(COL_DESCTIPOARTICULO, cursoraux1->valor("desctipo_articulo"));
-        it->setOpen(true);
+        //       it->setOpen(true);
         cursoraux1->siguienteregistro ();
     }// end while
     delete cursoraux1;
@@ -61,17 +67,17 @@ void tiposarticuloview::pintar() {
 
 
 QString tiposarticuloview::codtipo_articulo() {
-    Q3ListViewItem *it = m_listTipos->currentItem();
+    QTreeWidgetItem *it = m_listTipos->currentItem();
     return it->text(COL_CODTIPOARTICULO);
 };
 
 QString tiposarticuloview::idtipo_articulo() {
-    Q3ListViewItem *it = m_listTipos->currentItem();
+    QTreeWidgetItem *it = m_listTipos->currentItem();
     return it->text(COL_IDTIPOARTICULO);
 };
 
 QString tiposarticuloview::desctipo_articulo() {
-    Q3ListViewItem *it = m_listTipos->currentItem();
+    QTreeWidgetItem *it = m_listTipos->currentItem();
     return it->text(COL_DESCTIPOARTICULO);
 };
 
@@ -81,9 +87,9 @@ QString tiposarticuloview::desctipo_articulo() {
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void tiposarticuloview::s_doubleClicked(Q3ListViewItem *it) {
+void tiposarticuloview::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int ) {
     if (m_modoConsulta) {
-        m_idtipo = it->text(COL_IDTIPOARTICULO);
+        m_idtipo = item->text(COL_IDTIPOARTICULO);
         done(1);
     }// end if
 }// end seleccionado
@@ -94,16 +100,17 @@ void tiposarticuloview::s_doubleClicked(Q3ListViewItem *it) {
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void tiposarticuloview::s_changedTipo() {
-    QString idtipoold = m_listTipos->currentItem()->text(COL_IDTIPOARTICULO);
+void tiposarticuloview::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current , QTreeWidgetItem *  ) {
+    _depura("tiposarticuloview::on_m_listTipos_itemChanged",0);
+    QString idtipoold = current->text(COL_IDTIPOARTICULO);
     if (idtipoold != "") {
         // Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
         trataModificado();
         m_idtipo = idtipoold;
-        m_listTipos->findItem(m_idtipo, COL_IDTIPOARTICULO);
         mostrarplantilla();
     }// end if
-}// end seleccionado
+
+}
 
 
 void tiposarticuloview::mostrarplantilla() {
@@ -138,7 +145,7 @@ bool tiposarticuloview::trataModificado() {
                                    "Desea guardar los cambios.",
                                    QMessageBox::Ok ,
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveTipo();
+            on_mui_guardar_clicked();
         return (TRUE);
     }// end if
     return(FALSE);
@@ -148,7 +155,7 @@ bool tiposarticuloview::trataModificado() {
 /** SLOT que responde a la pulsaci� del bot� de guardar el tipo de iva que se est�editando.
   * Lo que hace es que se hace un update de todos los campos
   */
-void tiposarticuloview::s_saveTipo() {
+void tiposarticuloview::on_mui_guardar_clicked() {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo='"+
                     companyact->sanearCadena(m_codTipo->text())+"', desctipo_articulo= '"+
                     companyact->sanearCadena(m_descTipo->text())+"' WHERE idtipo_articulo="+m_idtipo;
@@ -161,7 +168,9 @@ void tiposarticuloview::s_saveTipo() {
     companyact->commit();
     //pintar();
     // Vamos a hacer algo no reentrante.
-    Q3ListViewItem *it =  m_listTipos->findItem(m_idtipo, COL_IDTIPOARTICULO);
+
+    QList<QTreeWidgetItem *> listit =  m_listTipos->findItems(m_idtipo,Qt::MatchExactly, COL_IDTIPOARTICULO);
+    QTreeWidgetItem *it = listit.first();
     cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo WHERE idtipo_articulo="+m_idtipo);
     if (!cursoraux1->eof()) {
         it->setText(COL_IDTIPOARTICULO, cursoraux1->valor("idtipo_articulo"));
@@ -175,17 +184,18 @@ void tiposarticuloview::s_saveTipo() {
 /** SLOT que responde a la pulsaci� del bot� de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
-void tiposarticuloview::s_newTipo() {
+void tiposarticuloview::on_mui_crear_clicked() {
+    _depura("tiposarticuloview::on_mui_crear_clicked",0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
 
     QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX','Descripcion del tipo')";
     companyact->begin();
     int error = companyact->ejecuta(query);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+    if (error) {
+        companyact->rollback();
+        return;
+    }// end if
     cursor2 *cur = companyact->cargacursor("SELECT max(idtipo_articulo) AS idtipo FROM tipo_articulo");
     companyact->commit();
     m_idtipo = cur->valor("idtipo");
@@ -196,12 +206,14 @@ void tiposarticuloview::s_newTipo() {
 /** SLOT que responde a la pulsaci� del bot� de borrar la familia que se est�editando.
   * Lo que hace es que se hace un update de todos los campos
   */
-void tiposarticuloview::s_deleteTipo() {
+void tiposarticuloview::on_mui_borrar_clicked() {
     trataModificado();
     QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo="+m_idtipo;
     int error = companyact->ejecuta(query);
-	if (error) return;
-    pintar();
-}// end s_saveTipoIVA
+    if (error)
+        return;
+    QTreeWidgetItem *it = m_listTipos->takeTopLevelItem(m_listTipos->indexOfTopLevelItem(m_listTipos->currentItem()));
+    delete it;
+}
 
 

@@ -23,7 +23,8 @@
 using namespace std;
 
 InventarioView::InventarioView(company *comp, QWidget *parent, const char *name)
-: InventarioBase(parent, name, Qt::WDestructiveClose) , Inventario (comp) {
+: QWidget(parent, name, Qt::WDestructiveClose) , Inventario (comp) {
+	setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     _depura("inicializamos el subformulario",0);
     subform2->setcompany(comp);
@@ -41,10 +42,10 @@ InventarioView::~InventarioView() {
 /**
   * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
   */
-void InventarioView::s_delete() {
+void InventarioView::on_mui_borrar_clicked() {
     if (DBvalue("idinventario") != "") {
         if ( QMessageBox::question(this,tr("Borrar Inventario"),tr("Esta a punto de borrar un Inventario, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
-            borraInventario();
+            borrar();
         }// end if
     }// end if
 }// end boton_borrar

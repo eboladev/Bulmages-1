@@ -40,7 +40,6 @@ public:
 	~ListCompArticuloView() {};
 
 public slots:
-//        virtual void contextMenuEvent (QContextMenuEvent *);
 	virtual void cargar(QString idarticulo) {
     _depura("ListCompArticulo::cargaListCompArticulo\n",0);
     mdb_idarticulo = idarticulo;

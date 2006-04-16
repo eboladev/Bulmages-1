@@ -1,94 +1,76 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>BusquedaTipoArticuloBase</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>BusquedaTipoArticuloBase</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>581</width>
-            <height>54</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Form1</string>
-    </property>
-    <hbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>m_codtipo_articulo</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>0</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-        </widget>
-        <widget class="QToolButton">
-            <property name="name">
-                <cstring>m_searchtipo_articulo</cstring>
-            </property>
-            <property name="minimumSize">
-                <size>
-                    <width>32</width>
-                    <height>32</height>
-                </size>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>image0</iconset>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>m_desctipo_articulo</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>5</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-            <property name="text">
-                <string>Tipo Artículo</string>
-            </property>
-        </widget>
-    </hbox>
-</widget>
-<images>
-    <image name="image0">
-        <data format="PNG" length="770">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002c949444154388d959531481b511cc6bfb41dcecdf10a1d321a71486806230e063a8490e17add4e0a2a38f44a97c6162538949b445228245d6a0621598a9394500411041d4aad50aa960e513a58e82041e47a74f93abcffe572e755db07c777dcf17eeffb7ff77fef8098516e90246955774892f98535e648e64be6308081b83924691a65c6bd43a545da8d0392e4cea9829ffd56da39278b8ba43e5d2380db00b4feb9a6613393350900ac3258802429309e333c044e57090a0e010c45e1c122e2bcd22237bf8759aec0ce04762a8bed9dc6c39dc515f209c351f899f69c45d5afe04cb443a244023000e8956735fa197342e076632fe4f06f4e0f7e2a7df72d50941c0248db8f48d3b0592cd8cc8d5b0cb2f59d44b28c3aed410f437118f97b33e404991bb598498b63abba1972782953c97eedb3e8a740258e2900c9dca8c5cc4831d20d32f9c077ee977d1886353f88ee861c4f01b87ba935720b6b0ad28994eb3b14d8cab6e8862aa9b6e1fa194f014802b81965ebc9d995b0c3287443696d5de9f2db5e0cf37e67c4f5b3a63fec73e8972de5d6daaec05c7295ac345c3a0d15030902980030180706005d330287cd6d1faad459555a7915642b772407e37761a5d549c8c321949cdea4dabacb6592ceaa4bd6c9f292645a70c87a52a0e44e3545ce6a576e714d5e1a28382ac3a802f324c8baae0c5753013ce23c0100cb4be4d6d663b4dfbf1e90bc74f9d2d1ecba00ba561a5bc58c86c99122767184b1a787d87d398cb1afc748bcf152004e00a8d32893553b86543ba80fde7fe9b2d810b360735abbca7968dc29966c66d266fc811d89cd4a0bbc6a0ab42f7392745ea83ebe06160bbfec3cc5e6b4c61b73cfeb383ef98107f7e7901f9fe9fd014ca37cdd621e8093c447a4dafb1e5a3303005298cc1c61f216827f150b645e8e3cd3283397e5bf56d1736ea57b7d3d9f28966cfef23c78171ebc8b2ef6bfb413ff19890f4f427db44100dd3f36c2b92169d8b0090000000049454e44ae426082</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>m_searchtipo_articulo</sender>
-        <signal>clicked()</signal>
-        <receiver>BusquedaTipoArticuloBase</receiver>
-        <slot>s_searchTipoArticulo()</slot>
-    </connection>
-    <connection>
-        <sender>m_codtipo_articulo</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>BusquedaTipoArticuloBase</receiver>
-        <slot>s_codtipo_articulotextChanged(const QString&amp;)</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>s_searchTipoArticulo()</slot>
-    <slot>s_codtipo_articulotextChanged(const QString &amp;)</slot>
-</slots>
-<layoutdefaults spacing="0" margin="0"/>
-</UI>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>BusquedaTipoArticuloBase</class>
+ <widget class="QWidget" name="BusquedaTipoArticuloBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>581</width>
+    <height>54</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form1</string>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QLineEdit" name="m_codtipo_articulo" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="mui_buscar" >
+     <property name="minimumSize" >
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_desctipo_articulo" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Tipo Artículo</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="0" margin="0" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections/>
+</ui>

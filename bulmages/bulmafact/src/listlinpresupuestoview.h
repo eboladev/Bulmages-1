@@ -21,35 +21,27 @@
 #ifndef LISTLINPRESUPUESTOVIEW_H
 #define LISTLINPRESUPUESTOVIEW_H
 
-#include <Q3Table>
 #include <QEvent>
 
-#include "listlinpresupuesto.h"
 #include "company.h"
-#include "linpresupuesto.h"
+#include "subform2bf.h"
+#include "fixed.h"
 
-
-class listlinpresupuestoview : public Q3Table , public listlinpresupuesto
-{
-	Q_OBJECT
-
+class listlinpresupuestoview : public SubForm2Bf {
+    Q_OBJECT
 public:
-	listlinpresupuestoview(QWidget *parent = 0, const char *name = 0);
-	~listlinpresupuestoview();
-	virtual void pintalistlinpresupuesto();
-	virtual void pintalinlistlinpresupuesto(int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	linpresupuesto *lineaat(int);
-	linpresupuesto *lineaact();
-	void guardaconfig();
-	void cargaconfig();
-
+    QString mdb_idpresupuesto;
+    listlinpresupuestoview(QWidget *parent = 0);
+    ~listlinpresupuestoview() {}
+    ;
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borralinpresupuestoact();
+    virtual void cargar(QString idpresupuesto);
+    Fixed calculabase();
+    Fixed calculaiva();
+	virtual void editFinished(int, int);
+
 };
+
+
 
 #endif

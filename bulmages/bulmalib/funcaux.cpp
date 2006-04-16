@@ -28,7 +28,9 @@
 #include <QDir>
 
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
-Q3MainWindow *g_main=NULL;
+//Q3MainWindow *g_main=NULL;
+QMainWindow *g_main=NULL;
+
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto(QString texto) {

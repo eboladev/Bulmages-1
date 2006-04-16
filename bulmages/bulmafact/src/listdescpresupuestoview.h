@@ -21,29 +21,26 @@
 #ifndef LISTDESCPRESUPUESTOVIEW_H
 #define LISTDESCPRESUPUESTOVIEW_H
 
-#include <Q3Table>
-
-#include "listdescpresupuesto.h"
+#include "subform2bf.h"
 #include "company.h"
-#include "descpresupuesto.h"
 
 
-class ListDescuentoPresupuestoView : public Q3Table , public ListDescuentoPresupuesto
-{
-	Q_OBJECT
-
+class ListDescuentoPresupuestoView : public SubForm2Bf {
+    Q_OBJECT
 public:
-	ListDescuentoPresupuestoView(QWidget *parent = 0, const char *name = 0);
-	~ListDescuentoPresupuestoView();
-	virtual void pintaListDescuentoPresupuesto();
-	virtual void pintadescListDescuentoPresupuesto(int);
-	DescuentoPresupuesto *lineaat(int);
-	DescuentoPresupuesto *lineaact();
+    QString mdb_idpresupuesto;
+    ListDescuentoPresupuestoView(QWidget *parent = 0);
+    ~ListDescuentoPresupuestoView() {};
 
 public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borradescpresupuestoact();
+    virtual void cargar(QString idpresupuesto) {
+        _depura("ListDescuentoPresupuestoView::cargar\n",0);
+        mdb_idpresupuesto = idpresupuesto;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+
 };
 
 #endif

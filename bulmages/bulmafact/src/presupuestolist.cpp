@@ -24,9 +24,7 @@
 #include <QCheckBox>
 #include <QFile>
 #include <QCheckBox>
-//Added by qt3to4:
 #include <QTextStream>
-
 
 #include "presupuestolist.h"
 #include "company.h"
@@ -77,10 +75,6 @@ void PresupuestoList::guardaconfig() {
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << aux << "\n";
-        for (int i = 0; i < m_list->numCols(); i++) {
-            m_list->showColumn(i);
-            stream << m_list->columnWidth(i) << "\n";
-        }// end for
         file.close();
     }// end if
 }// end guardaconfig()
@@ -92,10 +86,6 @@ void PresupuestoList::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         line = stream.readLine(); // line of text excluding '\n'
-        for (int i = 0; i < m_list->numCols(); i++) {
-            QString linea = stream.readLine();
-            m_list->setColumnWidth(i, linea.toInt());
-        }// end for
         file.close();
     } else
         return;
@@ -121,111 +111,109 @@ void PresupuestoList::cargaconfig() {
 void PresupuestoList::s_configurar() {
 
     if(mver_idpresupuesto->isChecked() )
-        m_list->showColumn(COL_IDPRESUPUESTO);
+        mui_list->showColumn(COL_IDPRESUPUESTO);
     else
-        m_list->hideColumn(COL_IDPRESUPUESTO);
+        mui_list->hideColumn(COL_IDPRESUPUESTO);
 
     if(mver_codigoalmacen->isChecked() )
-        m_list->showColumn(COL_CODIGOALMACEN);
+        mui_list->showColumn(COL_CODIGOALMACEN);
     else
-        m_list->hideColumn(COL_CODIGOALMACEN);
+        mui_list->hideColumn(COL_CODIGOALMACEN);
 
     if(mver_refpresupuesto->isChecked() )
-        m_list->showColumn(COL_REFPRESUPUESTO);
+        mui_list->showColumn(COL_REFPRESUPUESTO);
     else
-        m_list->hideColumn(COL_REFPRESUPUESTO);
+        mui_list->hideColumn(COL_REFPRESUPUESTO);
 
     if(mver_nomcliente->isChecked() )
-        m_list->showColumn(COL_NOMCLIENTE);
+        mui_list->showColumn(COL_NOMCLIENTE);
     else
-        m_list->hideColumn(COL_NOMCLIENTE);
+        mui_list->hideColumn(COL_NOMCLIENTE);
 
     if(mver_descpresupuesto->isChecked() )
-        m_list->showColumn(COL_DESCPRESUPUESTO);
+        mui_list->showColumn(COL_DESCPRESUPUESTO);
     else
-        m_list->hideColumn(COL_DESCPRESUPUESTO);
+        mui_list->hideColumn(COL_DESCPRESUPUESTO);
 
     if(mver_fechapresupuesto->isChecked() )
-        m_list->showColumn(COL_FPRESUPUESTO);
+        mui_list->showColumn(COL_FPRESUPUESTO);
     else
-        m_list->hideColumn(COL_FPRESUPUESTO);
+        mui_list->hideColumn(COL_FPRESUPUESTO);
 
     if(mver_vencpresupuesto->isChecked() )
-        m_list->showColumn(COL_VENCPRESUPUESTO);
+        mui_list->showColumn(COL_VENCPRESUPUESTO);
     else
-        m_list->hideColumn(COL_VENCPRESUPUESTO);
+        mui_list->hideColumn(COL_VENCPRESUPUESTO);
 
     if(mver_contactpresupuesto->isChecked() )
-        m_list->showColumn(COL_CONTACTPRESUPUESTO);
+        mui_list->showColumn(COL_CONTACTPRESUPUESTO);
     else
-        m_list->hideColumn(COL_CONTACTPRESUPUESTO);
+        mui_list->hideColumn(COL_CONTACTPRESUPUESTO);
 
     if(mver_numpresupuesto->isChecked() )
-        m_list->showColumn(COL_NUMPRESUPUESTO);
+        mui_list->showColumn(COL_NUMPRESUPUESTO);
     else
-        m_list->hideColumn(COL_NUMPRESUPUESTO);
+        mui_list->hideColumn(COL_NUMPRESUPUESTO);
 
     if(mver_telpresupuesto->isChecked() )
-        m_list->showColumn(COL_TELPRESUPUESTO);
+        mui_list->showColumn(COL_TELPRESUPUESTO);
     else
-        m_list->hideColumn(COL_TELPRESUPUESTO);
+        mui_list->hideColumn(COL_TELPRESUPUESTO);
 
     if(mver_idcliente->isChecked() )
-        m_list->showColumn(COL_IDCLIENTE);
+        mui_list->showColumn(COL_IDCLIENTE);
     else
-        m_list->hideColumn(COL_IDCLIENTE);
+        mui_list->hideColumn(COL_IDCLIENTE);
 
     if(mver_idusuario->isChecked() )
-        m_list->showColumn(COL_IDUSUARI);
+        mui_list->showColumn(COL_IDUSUARI);
     else
-        m_list->hideColumn(COL_IDUSUARI);
+        mui_list->hideColumn(COL_IDUSUARI);
 
     if(mver_idalmacen->isChecked() )
-        m_list->showColumn(COL_IDALMACEN);
+        mui_list->showColumn(COL_IDALMACEN);
     else
-        m_list->hideColumn(COL_IDALMACEN);
+        mui_list->hideColumn(COL_IDALMACEN);
 
 
     if(mver_totalpresupuesto->isChecked() )
-        m_list->showColumn(COL_TOTALPRESUPUESTO);
+        mui_list->showColumn(COL_TOTALPRESUPUESTO);
     else
-        m_list->hideColumn(COL_TOTALPRESUPUESTO);
+        mui_list->hideColumn(COL_TOTALPRESUPUESTO);
 
     if(mver_totalbaseimp->isChecked() )
-        m_list->showColumn(COL_TOTALBASEIMP);
+        mui_list->showColumn(COL_TOTALBASEIMP);
     else
-        m_list->hideColumn(COL_TOTALBASEIMP);
+        mui_list->hideColumn(COL_TOTALBASEIMP);
 
 
     if(mver_totalimpuestos->isChecked() )
-        m_list->showColumn(COL_TOTALIMPUESTOS);
+        mui_list->showColumn(COL_TOTALIMPUESTOS);
     else
-        m_list->hideColumn(COL_TOTALIMPUESTOS);
+        mui_list->hideColumn(COL_TOTALIMPUESTOS);
 
-    m_list->hideColumn(COL_COMENTPRESUPUESTO);
+    mui_list->hideColumn(COL_COMENTPRESUPUESTO);
 }// end s_configurar
 
 
 PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : BudgetsListBase(parent, name, flag) {
+        : QWidget(parent, name, flag) {
+    setupUi(this);
     m_companyact = NULL;
     m_modo=0;
     m_idpresupuesto="";
     meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
-    inicializa();
     cargaconfig();
 }// end PresupuestoList
 
 PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : BudgetsListBase(parent, name, flag) {
+        : QWidget(parent, name, flag) {
+    setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
-    inicializa();
-    cargaconfig();
-    s_configurar();
     presenta();
     m_modo=0;
     m_idpresupuesto="";
@@ -238,75 +226,22 @@ PresupuestoList::~PresupuestoList() {
     _depura("PresupuestoList::~PresupuestoList",0);
     guardaconfig();
     m_companyact->sacaWindow(this);
-}// end ~providerslist
-
-void PresupuestoList::inicializa() {
-    _depura("PresupuestoList::inicializa()\n");
-    m_list->setNumRows( 0 );
-    m_list->setSorting( TRUE );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(17);
-    m_list->horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Id. Presupuesto" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMCLIENTE, tr( "Cliente" ) );
-    m_list->horizontalHeader()->setLabel( COL_CODIGOALMACEN, tr( "Almacén" ) );
-    m_list->horizontalHeader()->setLabel( COL_NUMPRESUPUESTO, tr( "Num. Presupuesto" ) );
-    m_list->horizontalHeader()->setLabel( COL_FPRESUPUESTO, tr( "Fecha" ) );
-    m_list->horizontalHeader()->setLabel( COL_VENCPRESUPUESTO, tr( "Vencimiento" ) );
-    m_list->horizontalHeader()->setLabel( COL_CONTACTPRESUPUESTO, tr( "Persona Contacto" ) );
-    m_list->horizontalHeader()->setLabel( COL_TELPRESUPUESTO, tr( "Teléfono" ) );
-    m_list->horizontalHeader()->setLabel( COL_COMENTPRESUPUESTO, tr( "Comentarios" ) );
-    m_list->horizontalHeader()->setLabel( COL_IDUSUARI, tr("Id. Usuario") );
-    m_list->horizontalHeader()->setLabel( COL_IDCLIENTE, tr("Id. Cliente") );
-    m_list->horizontalHeader()->setLabel( COL_IDALMACEN, tr("Id. Almacén") );
-    m_list->horizontalHeader()->setLabel( COL_DESCPRESUPUESTO, tr("Descripción") );
-    m_list->horizontalHeader()->setLabel( COL_REFPRESUPUESTO, tr("Referencia.") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALPRESUPUESTO, tr("Total") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALBASEIMP, tr("Base Imponible") );
-    m_list->horizontalHeader()->setLabel( COL_TOTALIMPUESTOS, tr("Impuestos.") );
-
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTPRESUPUESTOS));
-    m_list->setReadOnly(TRUE);
-    _depura("end PresupuestoList::inicializa()\n");
-}// end inicializa
-
+}
 
 void PresupuestoList::presenta() {
     _depura("PresupuestoList::presenta()\n");
 
-    if (m_companyact != NULL ) {
-        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
-        m_list->setNumRows( cur->numregistros() );
-        int i=0;
-        while (!cur->eof()) {
-            m_list->setText(i,COL_IDPRESUPUESTO,cur->valor("idpresupuesto"));
-            m_list->setText(i,COL_NUMPRESUPUESTO,cur->valor("numpresupuesto"));
-            m_list->setText(i,COL_FPRESUPUESTO,cur->valor("fpresupuesto"));
-            m_list->setText(i,COL_VENCPRESUPUESTO,cur->valor("vencpresupuesto"));
-            m_list->setText(i,COL_CONTACTPRESUPUESTO,cur->valor("contactpresupuesto"));
-            m_list->setText(i,COL_TELPRESUPUESTO,cur->valor("telpresupuesto"));
-            m_list->setText(i,COL_COMENTPRESUPUESTO,cur->valor("comentpresupuesto"));
-            m_list->setText(i,COL_IDUSUARI,cur->valor("idusuari"));
-            m_list->setText(i,COL_IDCLIENTE,cur->valor("idcliente"));
-            m_list->setText(i,COL_IDALMACEN,cur->valor("idalmacen"));
-            m_list->setText(i,COL_NOMCLIENTE,cur->valor("nomcliente"));
-            m_list->setText(i,COL_CODIGOALMACEN,cur->valor("codigoalmacen"));
-            m_list->setText(i,COL_REFPRESUPUESTO,cur->valor("refpresupuesto"));
-            m_list->setText(i,COL_DESCPRESUPUESTO,cur->valor("descpresupuesto"));
-            m_list->setText(i,COL_TOTALPRESUPUESTO,cur->valor("totalpresupuesto"));
-            m_list->setText(i,COL_TOTALBASEIMP, cur->valor("bimppresupuesto"));
-            m_list->setText(i,COL_TOTALIMPUESTOS, cur->valor("imppresupuesto"));
-            i++;
-            cur->siguienteregistro();
-        }// end while
-        delete cur;
+    /// Hacemos el listado y lo presentamos.
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1  "+generaFiltro());
+	mui_list->cargar(cur);
+	delete cur;
 
-        /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = presupuesto.idalmacen where 1=1 "+generaFiltro());
-        m_total->setText(cur->valor("total"));
-        delete cur;
-    }// end if
+	/// Hacemos el calculo del total.
+	cur = m_companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1"+generaFiltro());
+	m_total->setText(cur->valor("total"));
+	delete cur;
+
+    s_configurar();
 
 
     _depura("end PresupuestoList::presenta()\n");
@@ -345,53 +280,32 @@ QString PresupuestoList::generaFiltro() {
 }// end generaFiltro
 
 
-void PresupuestoList::s_editar() {
-    int a = m_list->currentRow();
-    if (a >=0 )
-        doubleclicked(a,0,0, QPoint());
-    else
-        _depura("Debe seleccionar una linea",2);
-}
-
-
-void PresupuestoList::doubleclicked(int a, int , int , const QPoint &) {
-    /// Ponemos los parametros que nos interesa en el lugar adecuado.
-    m_idpresupuesto = m_list->text(a,COL_IDPRESUPUESTO);
-
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza("PresupuestoList_doubleclicked", this);
-    if (res != 0)
-        return;
-
-    if (m_modo ==0 && m_idpresupuesto != "") {
-        PresupuestoView *bud = m_companyact->newBudget();
-        m_companyact->m_pWorkspace->addWindow(bud);
-        bud->show();
-        if (bud->chargeBudget(m_idpresupuesto))
+void PresupuestoList::editar(int  row) {
+    _depura("PresupuestoList::editar",0);
+    m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"),row);
+    if (m_modo ==0 ) {
+        PresupuestoView *prov = m_companyact->newBudget();
+        if (prov->cargar(m_idpresupuesto)) {
             return;
-        bud->show();
+        }
+        m_companyact->m_pWorkspace->addWindow(prov);
+        prov->show();
     } else {
-        close();
+        emit(selected(m_idpresupuesto));
     }// end if
+    _depura("END PresupuestoList::editar",0);
 }
 
 
-void PresupuestoList::s_contextMenu(int, int, int button, const QPoint &poin) {
-    qDebug("button = %d", button);
-    if (button == 2) {
-        Q3PopupMenu *popup;
-        popup = new Q3PopupMenu;
-        popup->insertItem(tr("Borrar Presupuesto"),101);
-        //popup->insertSeparator();
-        int opcion = popup->exec(m_list->mapToGlobal(poin));
-        switch(opcion) {
-        case 101:
-            s_removeBudget();
-            break;
-        }// end switch
-        delete popup;
-    }// end if
-}// end contextmenu
+void PresupuestoList::on_mui_editar_clicked() {
+    int a = mui_list->currentRow();
+	if (a >=0 ) 
+    	editar(a);
+	else
+	_depura("Debe seleccionar una linea",2);
+}
+
+
 
 
 void PresupuestoList::imprimir() {
@@ -527,29 +441,51 @@ void PresupuestoList::imprimir() {
 }// end imprimir
 
 
-void PresupuestoList::s_removeBudget() {
-    _depura("Iniciamos el boton_borrar\n",0);
-    if (m_list->currentRow() >= 0) {
-        if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar el presupuesto seleccionado", "Si", "No") == 0) {
-            m_companyact->begin();
-            QString SQLQuery = "DELETE FROM lpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-            if (m_companyact->ejecuta(SQLQuery)==0) {
-                QString SQLQuery = "DELETE FROM dpresupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-                if (m_companyact->ejecuta(SQLQuery)==0) {
-                    QString SQLQuery = "DELETE FROM presupuesto WHERE idpresupuesto ="+m_list->text(m_list->currentRow(),COL_IDPRESUPUESTO);
-                    if (m_companyact->ejecuta(SQLQuery)==0) {
-                        m_companyact->commit();
-                    } else {
-                        m_companyact->rollback();
-                    }
-
-                } else {
-                    m_companyact->rollback();
-                }
-            } else {
-                m_companyact->rollback();
-            }
+void PresupuestoList::on_mui_borrar_clicked() {
+    _depura("PresupuestoList::on_mui_borrar_clicked",0);
+	int row = mui_list->currentRow();
+    m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"),row);
+    if (m_modo ==0 ) {
+        PresupuestoView *prov = m_companyact->newBudget();
+        if (prov->cargar(m_idpresupuesto)) {
+            return;
         }
-    }
+	prov->borrar();
+	delete prov;
+        // close();
+    }// end if
+    _depura("END PresupuestoList::on_mui_borrar_clicked",0);
     presenta();
 }// end boton_borrar
+
+
+
+
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+
+PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("presupuesto");
+    setDBCampoId("idpresupuesto");
+    addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idpedidocliente");
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codigoalmacen");
+    addSHeader("numpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "numpedidocliente");
+    addSHeader("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "refpedidocliente");
+    addSHeader("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "descpedidocliente");
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomcliente");
+    addSHeader("fpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechapedidocliente");
+    addSHeader("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "contactpedidocliente");
+    addSHeader("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telpedidocliente");
+    addSHeader("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentpedidocliente");
+    addSHeader("idusuari", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idusuari");
+    addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idcliente");
+    addSHeader("idalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idalmacen");
+    addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "totalpedidocliente");
+    addSHeader("base", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "totalbaseimp");
+    addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "totalimpuestos");
+    setinsercion(FALSE);
+};
+
+

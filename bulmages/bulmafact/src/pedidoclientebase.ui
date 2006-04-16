@@ -137,7 +137,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="m_deleteboton" >
+         <widget class="QToolButton" name="mui_imprimir" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -209,7 +209,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_facturar" >
+         <widget class="QToolButton" name="mui_pasaraalbaran" >
           <property name="enabled" >
            <bool>true</bool>
           </property>
@@ -314,7 +314,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_informereferncia" >
+         <widget class="QToolButton" name="mui_informereferencia" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -2038,16 +2038,23 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>BusquedaAlmacen</class>
    <extends></extends>
-   <header>busquedacliente.h</header>
+   <header>busquedaalmacen.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>Q3Frame</class>
    <extends></extends>
-   <header>busquedaalmacen.h</header>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2066,13 +2073,6 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>ListDescuentoPedidoClienteView</class>
    <extends></extends>
    <header>listdescpedidoclienteview.h</header>
@@ -2087,16 +2087,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>q3textedit.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaCliente</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

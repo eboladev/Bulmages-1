@@ -29,7 +29,7 @@ ListDescuentoFacturaProvView::ListDescuentoFacturaProvView(QWidget *parent) : Su
     addSHeader("proporciondfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondfacturap");
     addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idfacturap");
     setinsercion(TRUE);
-};
+}
 
 
 /*

@@ -21,142 +21,130 @@
 #ifndef BUDGETSLIST_H
 #define BUDGETSLIST_H
 
-// Listado de presupuestos.
 #include <QLineEdit>
 #include <Q3Table>
 
-#include "budgetslistbase.h"
 #include "company.h"
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
+#include "subform2bf.h"
 
 
-class PresupuestoList : public BudgetsListBase
-{
-	Q_OBJECT
+class PresupuestoListSubForm : public SubForm2Bf {
+    Q_OBJECT
+public:
+    PresupuestoListSubForm(QWidget *parent = 0, const char *name = 0);
+    ~PresupuestoListSubForm() {}
+    ;
+public slots:
+    virtual void cargar() {
+        _depura("PresupuestoListSubForm::cargar\n",0);
+        QString SQLQuery = "SELECT * FROM presupuesto";
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+    virtual int cargar(cursor2 *cur) {
+        _depura("PedidosClienteListSubform::cargar\n",0);
+        SubForm2::cargar(cur);
+        return 0;
+    };
+};
+
+
+#include "ui_budgetslistbase.h"
+
+class PresupuestoList : public QWidget, public Ui_BudgetsListBase {
+    Q_OBJECT
 
 private:
-	company *m_companyact;
-	/// m_modo == 0 es modo edicion
-	/// m_modo == 1 es modo selector.
-	int m_modo;
-	QString m_idpresupuesto;
- 	void inicializa();
+    company *m_companyact;
+    /// m_modo == 0 es modo edicion
+    /// m_modo == 1 es modo selector.
+    int m_modo;
+    QString m_idpresupuesto;
 
 public:
-	PresupuestoList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	PresupuestoList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-			Qt::WFlags flag = 0);
-	~PresupuestoList();
-	void presenta();
-	int modo()
-	{
-		return m_modo;
-	};
-	company *getcompany()
-	{
-		return m_companyact;
-	};
-	QString idpresupuesto()
-	{
-		return m_idpresupuesto;
-	};
-	void modoseleccion()
-	{
-		m_modo = 1;
-	};
-	void modoedicion()
-	{
-		m_modo = 0;
-	};
-	void setcompany (company *comp)
-	{
-		m_companyact = comp;
-		m_cliente->setcompany(comp);
-		m_articulo->setcompany(comp);
-	};
-	void hideBotonera()
-	{
-		m_botonera->hide();
-	};
-	void showBotonera()
-	{
-		m_botonera->show();
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
-	void imprimir();
-	void meteWindow(QString nom, QObject *obj)
-	{
-		if (m_companyact != NULL)
-		{
-			m_companyact->meteWindow(nom, obj);
-		}
-	};
-	void setidcliente(QString val)
-	{
-		m_cliente->setidcliente(val);
-	};
-	void setidarticulo(QString val)
-	{
-		m_articulo->setidarticulo(val);
-	};
-	QString generaFiltro();
+    PresupuestoList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+    PresupuestoList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
+                    Qt::WFlags flag = 0);
+    ~PresupuestoList();
+    void presenta();
+    int modo() {
+        return m_modo;
+    };
+    company *getcompany() {
+        return m_companyact;
+    };
+    QString idpresupuesto() {
+        return m_idpresupuesto;
+    };
+    void modoseleccion() {
+        m_modo = 1;
+    };
+    void modoedicion() {
+        m_modo = 0;
+    };
+    void setcompany (company *comp) {
+        m_companyact = comp;
+        m_cliente->setcompany(comp);
+        m_articulo->setcompany(comp);
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void hideConfiguracion() {
+        m_configuracion->hide();
+    };
+    void showConfiguracion() {
+        m_configuracion->show();
+    };
+    void imprimir();
+    void meteWindow(QString nom, QObject *obj) {
+        if (m_companyact != NULL) {
+            m_companyact->meteWindow(nom, obj);
+        }
+    };
+    void setidcliente(QString val) {
+        m_cliente->setidcliente(val);
+    };
+    void setidarticulo(QString val) {
+        m_articulo->setidarticulo(val);
+    };
+    QString generaFiltro();
 
-	/// Estas funciones guardan y cargan la configuracion de presentacion del listado.
-	void guardaconfig();
-	void cargaconfig();
+    /// Estas funciones guardan y cargan la configuracion de presentacion del listado.
+    void guardaconfig();
+    void cargaconfig();
+    void editar(int);
 
 public slots:
-	virtual void doubleclicked(int, int, int, const QPoint &);
-	virtual void s_contextMenu(int, int, int, const QPoint &);
-	virtual void s_editar();
-	virtual void newBudget()
-	{
-		m_companyact->s_newPresupuestoCli();
+    virtual void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+		on_mui_editar_clicked();
 	};
-	virtual void s_removeBudget();
-	virtual void s_imprimir()
-	{
-		imprimir();
-	};
-	virtual void s_filtrar()
-	{
-		presenta();
-	};
-	virtual void s_mostrarBusqueda()
-	{
-		if (m_busqueda->isVisible())
-		{
-			hideBusqueda();
-		} else {
-			showBusqueda();
-		}
-	};
-	virtual void s_mostrarConfiguracion()
-	{
-		if (m_configuracion->isVisible())
-		{
-			hideConfiguracion();
-		} else {
-			showConfiguracion();
-		}
-	};
-	virtual void s_configurar();
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_crear_clicked() {
+        m_companyact->s_newPresupuestoCli();
+    };
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_imprimir_clicked() {
+        imprimir();
+    };
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    };
+    virtual void s_configurar();
+signals:
+	void selected(QString);
 };
 
 #endif

@@ -21,6 +21,37 @@
 #ifndef LISTLINFACTURAVIEW_H
 #define LISTLINFACTURAVIEW_H
 
+
+
+#include <QEvent>
+
+#include "company.h"
+#include "subform2bf.h"
+#include "fixed.h"
+
+
+class ListLinFacturaView : public SubForm2Bf {
+    Q_OBJECT
+public:
+    QString mdb_idfactura;
+    ListLinFacturaView(QWidget *parent = 0);
+    ~ListLinFacturaView() {}
+    ;
+public slots:
+    virtual void cargar(QString idfactura);
+    Fixed calculabase();
+    Fixed calculaiva();
+    virtual void editFinished(int, int);
+
+};
+
+
+/*
+
+
+
+
+
 #include <Q3Table>
 #include <QEvent>
 
@@ -51,5 +82,8 @@ public slots:
 	virtual void contextMenu (int, int, const QPoint &);
 	virtual void borraLinFacturaact();
 };
+
+*/
+
 
 #endif

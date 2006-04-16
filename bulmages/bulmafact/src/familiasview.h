@@ -21,51 +21,49 @@
 #ifndef FAMILIASVIEW_H
 #define FAMILIASVIEW_H
 
-#include <familiasdlg.h>
+#include "ui_familiasdlg.h"
 #include "dialogchanges.h"
 
 
 class company;
 
-class familiasview : public familiasdlg, dialogChanges
-{
-	Q_OBJECT
+class familiasview : public QDialog, public Ui_familiasdlg, dialogChanges {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	/// Indica cual es el registro que se esta modificando. Sirve para saber los
-	/// cambios que hay que guardar cuando se ha modificado.
-	QString m_idfamilia;
-	/// Indica si es modo consulta o modo edicion. (altera el comportamiento del
-	/// doble click sobre la lista)
-	bool m_modoConsulta;
+    company *companyact;
+    /// Indica cual es el registro que se esta modificando. Sirve para saber los
+    /// cambios que hay que guardar cuando se ha modificado.
+    QString m_idfamilia;
+    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+    /// doble click sobre la lista)
+    bool m_modoConsulta;
 
 public:
-	familiasview(company *, QWidget *parent = 0, const char *name = 0);
-	~familiasview();
-	bool trataModificado();
-	void mostrarplantilla();
-	void setModoConsulta()
-	{
-		m_modoConsulta = TRUE;
-	};
-	void setModoEdicion()
-	{
-		m_modoConsulta = FALSE;
-	};
-	QString codigoCompletoFamilia();
-	QString idFamilia();
-	QString nombreFamilia();
+    familiasview(company *, QWidget *parent = 0, const char *name = 0);
+    ~familiasview();
+    bool trataModificado();
+    void mostrarplantilla();
+    void setModoConsulta() {
+        m_modoConsulta = TRUE;
+    };
+    void setModoEdicion() {
+        m_modoConsulta = FALSE;
+    };
+    QString codigoCompletoFamilia();
+    QString idFamilia();
+    QString nombreFamilia();
 
 public slots:
-	virtual void pintar();
-	virtual void s_doubleClicked(Q3ListViewItem *);
-	virtual void close();
-	virtual void s_saveFamilia();
-	virtual void s_newFamilia();
-	virtual void s_deleteFamilia();
-	virtual void s_changedFamilia();
-	virtual void s_imprimir();
+    virtual void pintar();
+    virtual void on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *);
+    virtual void on_mui_aceptar_clicked();
+    virtual void close();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
+    virtual void on_mui_imprimir_clicked();
 };
 
 #endif

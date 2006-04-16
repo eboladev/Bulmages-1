@@ -18,69 +18,49 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QImage>
+#include <QPixmap>
+#include <QToolButton>
+#include <QMenuBar>
+#include <QFile>
+#include <QStatusBar>
+#include <QMessageBox>
+#include <QPrinter>
+#include <QApplication>
+#include <QTextStream>
+#include <QPainter>
+#include <QWorkspace>
+#include <QMainWindow>
+
 #include "bulmafact.h"
 #include "listventanas.h"
 #include "funcaux.h"
 #include "aboutview.h"
 
-#include <QImage>
-#include <QPixmap>
-#include <Q3ToolBar>
-#include <QToolButton>
-#include <Q3PopupMenu>
-#include <QMenuBar>
-#include <Q3TextEdit>
-#include <QFile>
-#include <Q3FileDialog>
-#include <QStatusBar>
-#include <QMessageBox>
-#include <QPrinter>
-#include <QApplication>
-#include <Q3Accel>
-#include <QTextStream>
-#include <QPainter>
-#include <Q3PaintDeviceMetrics>
-#include <Q3WhatsThis>
-#include <QWorkspace>
-#include <Q3VBox>
-#include <Q3ListBox>
-#include <QMainWindow>
-
-
-bulmafact::bulmafact(QString bd) : bulmafactbase( 0, "bulmafact", Qt::WDestructiveClose ) {
-	//  QPixmap fondo;
-
+bulmafact::bulmafact(QString bd) : QMainWindow() {
+        setupUi(this);
 	m_company=new company();
-
 	m_company->init(bd);
-	view_back = new Q3VBox( this);
-	view_back->setFrameStyle( QFrame::StyledPanel | QFrame::Sunken );
-	pWorkspace = new QWorkspace( view_back, "WorkSpace" );
 
+	pWorkspace = new QWorkspace( this, "WorkSpace" );
 	pWorkspace->setScrollBarsEnabled( TRUE );
-	setCentralWidget(view_back);
-	// setCentralWidget(pWorkspace);
-	pWorkspace->showMaximized();
+	setCentralWidget(pWorkspace);
 	m_company->setWorkspace(pWorkspace);
 
-	/// Aqui creamos la ventana dock para meter las distintas ventanas.
-	// listventanas *list = new listventanas ("Ventanas",0, 0);
-	m_list = new listventanas("Ventanas",this,Qt::Tool);
-	// list->showMaximized();
 
-	/// TODO, ESTA LINEA DEBE VOLVER A PONERSE CUANDO ESTEMOS CON QT4 Full Featured.
-	// addDockWidget(Qt::LeftDockWidgetArea, list);
-	addToolBar(m_list,Qt::DockLeft);
-	// addDockWindow(m_list, Qt::DockLeft);
+	/// Aqui creamos la ventana dock para meter las distintas ventanas.
+	m_list = new listventanas(0);
+
+	addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
 	m_company->setListVentanas(m_list);
 	m_company->createMainWindows();
+
 	showMaximized();
+
 	statusBar()->message( tr("Ready"), 2000 );
 	_depura("Fin de bulmafact constructor\n",0);
 
-	// fondo.load(confpr->valor(CONF_BACKGROUND));
-	// pWorkspace->setBackgroundPixmap (fondo);
 }// end bulmafact
 
 
@@ -94,71 +74,6 @@ bulmafact::~bulmafact() {
 	_depura("End Destructor de BulmaFact",0);
 }
 
-
-void bulmafact::listproviders() {
-	m_company->listproviders();
-}
-
-
-void bulmafact::listClients() {
-	m_company->listClients();
-}
-
-
-/**
-* This action opens the edit/new client window
-*/
-void bulmafact::newClient() {
-	m_company->s_newClienteView();
-}
-
-
-void bulmafact::listBudgets() {
-	m_company->listBudgets();
-}
-
-
-void bulmafact::listClientDelivNotes() {
-	m_company->listClientDelivNotes();
-}
-
-
-void bulmafact::s_trabajadores() {
-	m_company->s_trabajadores();
-}
-
-
-void bulmafact::s_listPedidosCli() {
-	m_company->s_listPedidosCli();
-}// end s_listPedidosCli
-
-
-void bulmafact::listarticles() {
-	_depura("listarticlesaction activado",0);
-	m_company->listarticles();
-}// end listararticles
-
-
-void bulmafact::listdelivnotes() {
-	_depura("listdelivnotes activado",0);
-	m_company->lAlbaranesProveedor();
-}// end listdelivnotes
-
-
-void bulmafact::s_newProveedor() {
-	_depura("provideraction activado",0);
-	m_company->s_newProveedor();
-}// end s_newProveedor
-
-
-void bulmafact::caja() {
-	_depura("caja",0);
-}// end caja
-
-
-void bulmafact::clientes() {
-	_depura("clientes",0);
-}// end clientes
 
 
 void bulmafact::emitirfactura() {
@@ -187,24 +102,9 @@ void bulmafact::aboutQt() {
 }
 
 
-void bulmafact::newClientDelivNote() {
-	m_company->newClientDelivNote();
-}// end newClientDelivNote
-
-
 void bulmafact::s_FPago() {
 	m_company->s_FPago();
 }// end s_FPago
-
-
-void bulmafact::s_Familias() {
-	m_company->s_Familias();
-}// end s_Familias
-
-
-void bulmafact::s_seriesFactura() {
-	m_company->s_seriesFactura();
-}// end s_seriesFactura
 
 
 void bulmafact::s_ventanaCompleta() {
@@ -228,8 +128,6 @@ void bulmafact::closeEvent( QCloseEvent *) {
 #ifdef WINDOWS
 	exit(0);
 #endif
-	delete m_list;
 	delete pWorkspace;
-	delete view_back;
 }
 

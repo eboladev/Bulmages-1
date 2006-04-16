@@ -21,6 +21,30 @@
 #ifndef LISTDESCFACTURAVIEW_H
 #define LISTDESCFACTURAVIEW_H
 
+#include "subform2bf.h"
+#include "company.h"
+
+
+class ListDescuentoFacturaView : public SubForm2Bf {
+    Q_OBJECT
+public:
+    QString mdb_idfactura;
+    ListDescuentoFacturaView(QWidget *parent = 0);
+    ~ListDescuentoFacturaView() {};
+
+public slots:
+    virtual void cargar(QString idfactura) {
+        _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+        mdb_idfactura = idfactura;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfactura WHERE idfactura="+mdb_idfactura);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+
+};
+
+
+/*
 #include <Q3Table>
 
 #include "listdescfactura.h"
@@ -45,5 +69,7 @@ public slots:
 	virtual void contextMenu (int, int, const QPoint &);
 	virtual void borradescfacturaact();
 };
+
+*/
 
 #endif

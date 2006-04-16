@@ -145,7 +145,7 @@ public slots:
 	};
 	virtual void on_mui_crear_clicked()
 	{
-		m_companyact->s_newAlbaranCli();
+		m_companyact->s_newAlbaranClienteView();
 	};
 	virtual void on_mui_borrar_clicked();
 	virtual void configurar();

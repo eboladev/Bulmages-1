@@ -9,60 +9,74 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "familiasview.h"
-#include "company.h"
 #include <Q3ListView>
 #include <QMap>
 #include <QLineEdit>
 #include <Q3TextEdit>
 #include <QMessageBox>
 #include <QFile>
-//Added by qt3to4:
 #include <QTextStream>
 
 
+#include "familiasview.h"
+#include "company.h"
+#include "funcaux.h"
+
+
 #define COL_NOMFAMILIA 0
-#define COL_CODFAMILIA 1
+#define COL_CODCOMPLETOFAMILIA 1
 #define COL_DESCFAMILIA 2
 #define COL_IDFAMILIA  3
-#define COL_CODCOMPLETOFAMILIA 4
+#define COL_CODFAMILIA 4
 
 
-familiasview::familiasview(company *comp, QWidget *parent, const char *name) : familiasdlg(parent, name), dialogChanges(this) {
+familiasview::familiasview(company *comp, QWidget *parent, const char *name) : QDialog(parent, name), dialogChanges(this) {
+    setupUi(this);
     companyact = comp;
-    m_listFamilias->addColumn("NOMBRE",-1);
-    m_listFamilias->addColumn("CODIGO",-1);
-    m_listFamilias->addColumn("DESCRIPCION",-1);
-    m_listFamilias->addColumn("IDFAMILIA",0);
-    m_listFamilias->addColumn("CODIGOCOMPLETO",-1);
+
+    m_listFamilias->setColumnCount(3);
+    QStringList headers;
+    headers << "NOMBRE" << "CODIGO" << "DESCRIPCION" << "IDFAMILIA" << "CODIGOCOMPLETO";
+    m_listFamilias->setHeaderLabels(headers);
+
+    m_listFamilias->setColumnHidden(COL_IDFAMILIA, TRUE);
+    m_listFamilias->setColumnHidden(COL_CODFAMILIA, TRUE);
+
     m_idfamilia="";
     setModoEdicion();
     pintar();
 }// end familiasview
 
 
-familiasview::~familiasview() {}// end ~familiasview
+familiasview::~familiasview() {}
 
 
 void familiasview::pintar() {
-    Q3ListViewItem * it;
-    QMap <int, Q3ListViewItem*> Lista1;
+    _depura("familiasview::pintar",0);
+    QTreeWidgetItem * it;
+    QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
     int idfamilia=0;
     cursor2 *cursoraux1, *cursoraux2;
-    m_listFamilias->clear();
+
+    /// vaciamos el arbol
+    while (m_listFamilias->topLevelItemCount () > 0) {
+        it = m_listFamilias->takeTopLevelItem(0);
+        delete it;
+    }// end while
+
     cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia ISNULL ORDER BY idfamilia");
     while (!cursoraux1->eof()) {
         padre = cursoraux1->valor("padrefamilia").toInt();
         idfamilia = cursoraux1->valor("idfamilia").toInt();
-        it =new Q3ListViewItem(m_listFamilias);
+        it =new QTreeWidgetItem(m_listFamilias);
         Lista1[idfamilia]=it;
         it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
         it->setText(COL_CODFAMILIA,cursoraux1->valor("codigofamilia"));
         it->setText(COL_DESCFAMILIA, cursoraux1->valor("descfamilia"));
         it->setText(COL_IDFAMILIA, cursoraux1->valor("idfamilia"));
         it->setText(COL_CODCOMPLETOFAMILIA, cursoraux1->valor("codigocompletofamilia"));
-        it->setOpen(true);
+        m_listFamilias->expandItem(it);
         cursoraux1->siguienteregistro ();
     }// end while
     delete cursoraux1;
@@ -70,14 +84,14 @@ void familiasview::pintar() {
     while (!cursoraux2->eof()) {
         padre = cursoraux2->valor("padrefamilia").toInt();
         idfamilia = cursoraux2->valor("idfamilia").toInt();
-        it = new Q3ListViewItem(Lista1[padre]);
+        it = new QTreeWidgetItem(Lista1[padre]);
         Lista1[idfamilia]=it;
         it->setText(COL_NOMFAMILIA, cursoraux2->valor("nombrefamilia"));
         it->setText(COL_CODFAMILIA,cursoraux2->valor("codigofamilia"));
         it->setText(COL_DESCFAMILIA, cursoraux2->valor("descfamilia"));
         it->setText(COL_IDFAMILIA, cursoraux2->valor("idfamilia"));
         it->setText(COL_CODCOMPLETOFAMILIA, cursoraux2->valor("codigocompletofamilia"));
-        it->setOpen(true);
+        m_listFamilias->expandItem(it);
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
@@ -88,18 +102,18 @@ void familiasview::pintar() {
 
 
 QString familiasview::codigoCompletoFamilia() {
-    Q3ListViewItem *it = m_listFamilias->currentItem();
+    QTreeWidgetItem *it = m_listFamilias->currentItem();
     return it->text(COL_CODCOMPLETOFAMILIA);
 };
 
 QString familiasview::idFamilia() {
-    Q3ListViewItem *it = m_listFamilias->currentItem();
+    QTreeWidgetItem *it = m_listFamilias->currentItem();
     return it->text(COL_IDFAMILIA);
 };
 
 
 QString familiasview::nombreFamilia() {
-    Q3ListViewItem *it = m_listFamilias->currentItem();
+    QTreeWidgetItem *it = m_listFamilias->currentItem();
     return it->text(COL_NOMFAMILIA);
 };
 
@@ -108,7 +122,7 @@ QString familiasview::nombreFamilia() {
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void familiasview::s_doubleClicked(Q3ListViewItem *it) {
+void familiasview::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
     if (m_modoConsulta) {
         m_idfamilia = it->text(COL_IDFAMILIA);
         done(1);
@@ -121,14 +135,17 @@ void familiasview::s_doubleClicked(Q3ListViewItem *it) {
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void familiasview::s_changedFamilia() {
-    QString idfamiliaold = m_listFamilias->currentItem()->text(COL_IDFAMILIA);
+void familiasview::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * ) {
+    QString idfamiliaold = current->text(COL_IDFAMILIA);
     if (idfamiliaold != "") {
-	// Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
-	trataModificado();
-	m_idfamilia = idfamiliaold;
-	m_listFamilias->findItem(m_idfamilia, COL_IDFAMILIA);
-	mostrarplantilla();
+        // Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
+        trataModificado();
+        m_idfamilia = idfamiliaold;
+        /*
+            QList<QTreeWidgetItem *> listit =  m_listFamilias->findItems(m_idfamilia,Qt::MatchExactly, COL_IDFAMILIA);
+            QTreeWidgetItem *it = listit.first();
+        */
+        mostrarplantilla();
     }// end if
 }// end seleccionado
 
@@ -167,7 +184,7 @@ bool familiasview::trataModificado() {
                                    "Desea guardar los cambios.",
                                    QMessageBox::Ok ,
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveFamilia();
+            on_mui_guardar_clicked();
         return (TRUE);
     }// end if
     return(FALSE);
@@ -177,31 +194,37 @@ bool familiasview::trataModificado() {
 /** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se est�editando.
   * Lo que hace es que se hace un update de todos los campos
   */
-void familiasview::s_saveFamilia() {
+void familiasview::on_mui_guardar_clicked() {
+    _depura("familiasview::on_mui_guardar_clicked",0);
     QString query = "UPDATE familia SET nombrefamilia='"+
-	companyact->sanearCadena(m_nomFamilia->text())+"', descfamilia= '"+
-	companyact->sanearCadena(m_descFamilia->text())+"' , codigofamilia = '"+
-	companyact->sanearCadena(m_codFamilia->text())+"' WHERE idfamilia="+m_idfamilia;
+                    companyact->sanearCadena(m_nomFamilia->text())+"', descfamilia= '"+
+                    companyact->sanearCadena(m_descFamilia->text())+"' , codigofamilia = '"+
+                    companyact->sanearCadena(m_codFamilia->text())+"' WHERE idfamilia="+m_idfamilia;
     int error = companyact->ejecuta(query);
-	if (error) return;
-    // Vamos a hacer algo no reentrante.
-    Q3ListViewItem *it =  m_listFamilias->findItem(m_idfamilia, COL_IDFAMILIA);
-    cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia="+m_idfamilia);
-    if (!cursoraux1->eof()) {
-        it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
-        it->setText(COL_CODFAMILIA,cursoraux1->valor("codigofamilia"));
-        it->setText(COL_DESCFAMILIA, cursoraux1->valor("descfamilia"));
-        it->setText(COL_IDFAMILIA, cursoraux1->valor("idfamilia"));
-        it->setText(COL_CODCOMPLETOFAMILIA, cursoraux1->valor("codigocompletofamilia"));
+    if (error)
+        return;
+    QTreeWidgetItem *it = m_listFamilias->currentItem();
+
+    if (it) {
+        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia="+m_idfamilia);
+        if (!cursoraux1->eof()) {
+            it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
+            it->setText(COL_CODFAMILIA,cursoraux1->valor("codigofamilia"));
+            it->setText(COL_DESCFAMILIA, cursoraux1->valor("descfamilia"));
+            it->setText(COL_IDFAMILIA, cursoraux1->valor("idfamilia"));
+            it->setText(COL_CODCOMPLETOFAMILIA, cursoraux1->valor("codigocompletofamilia"));
+        }// end if
+        delete cursoraux1;
     }// end if
-    delete cursoraux1;
-}// end s_saveTipoIVA
+    dialogChanges_cargaInicial();
+    _depura("END familiasview::on_mui_guardar_clicked",0);
+}
 
 
 /** SLOT que responde a la pulsación del botón de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
-void familiasview::s_newFamilia() {
+void familiasview::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString padrefamilia;
@@ -214,9 +237,9 @@ void familiasview::s_newFamilia() {
     companyact->begin();
     int error = companyact->ejecuta(query);
     if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        companyact->rollback();
+        return;
+    }// end if
     cursor2 *cur = companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
     companyact->commit();
     m_idfamilia = cur->valor("idfamilia");
@@ -227,16 +250,17 @@ void familiasview::s_newFamilia() {
 /** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
   * Lo que hace es que se hace un update de todos los campos
   */
-void familiasview::s_deleteFamilia() {
+void familiasview::on_mui_borrar_clicked() {
     trataModificado();
     QString query = "DELETE FROM FAMILIA WHERE idfamilia="+m_idfamilia;
     int error = companyact->ejecuta(query);
-	if (error) return;
+    if (error)
+        return;
     pintar();
 }// end s_saveTipoIVA
 
 
-void familiasview::s_imprimir() {
+void familiasview::on_mui_imprimir_clicked() {
     /// Copiamos el archivo
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"familias.rml";
     archivo = "cp "+archivo+" /tmp/familias.rml";
@@ -282,4 +306,10 @@ void familiasview::s_imprimir() {
 
 }// end imprimir
 
+
+void familiasview::on_mui_aceptar_clicked() {
+    trataModificado();
+    m_idfamilia = m_listFamilias->currentItem()->text(COL_IDFAMILIA);
+    done(1);
+}
 

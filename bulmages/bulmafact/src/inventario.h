@@ -27,9 +27,9 @@
 #include <Q3Table>
 #include <Q3PtrList>
 
-#include "listcontrolstock.h"
+#include "listcontrolstockview.h"
 #include "company.h"
-#include "controlstock.h"
+//#include "controlstock.h"
 #include "funcaux.h"
 #include "dbrecord.h"
 
@@ -38,7 +38,7 @@ class Inventario : public DBRecord
 {
 
 protected:
-	ListControlStock *listalineas;
+	ListControlStockView *listalineas;
 	company *companyact;
 
 public:
@@ -47,20 +47,20 @@ public:
 
 	/// Establece cual es la lista subformulario del presupuesto. Normalmente
 	/// para apuntar listlinpresupuestoview.
-	void setListControlStock(ListControlStock *a)
+	void setListControlStock(ListControlStockView *a)
 	{
 		_depura("Inventario::setListControlStock",0);
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	ListControlStock* getlistalineas()
+	ListControlStockView* getlistalineas()
 	{
 		return listalineas;
 	};
-	virtual int cargaInventario(QString);
+	virtual int cargar(QString);
 	void pintaInventario();
-	void guardaInventario();
-	void borraInventario();
+	virtual int guardar();
+	virtual int borrar();
 	void imprimirInventario();
 	virtual void pintaidinventario(QString)
 	{
@@ -75,7 +75,7 @@ public:
 	void setidinventario(QString val)
 	{
 		setDBvalue("idinventario", val);
-		listalineas->setidinventario(val);
+		listalineas->setColumnValue( "idinventario",val);
 	};
 	void setfechainventario(QString val)
 	{

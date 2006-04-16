@@ -24,12 +24,12 @@
 #include <QLineEdit>
 #include <QLabel>
 
-#include <busquedafamiliabase.h>
+#include "ui_busquedafamiliabase.h"
 
 
 class company;
 
-class BusquedaFamilia : public BusquedaFamiliaBase
+class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase
 {
 	Q_OBJECT
 
@@ -62,8 +62,8 @@ public:
 	virtual void setcodigocompletofamilia(QString val);
 
 public slots:
-	virtual void s_searchFamilia();
-	virtual void s_codigofamiliatextChanged(const QString &);
+	virtual void on_mui_buscar_clicked();
+	virtual void on_m_codigofamilia_textChanged(const QString &);
 
 signals:
 	void valueChanged(QString);

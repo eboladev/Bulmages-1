@@ -17,19 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
 #ifndef BUSQUEDAARTICULO_H
 #define BUSQUEDAARTICULO_H
 
 #include <QLineEdit>
 #include <QLabel>
 
-#include <busquedaarticulobase.h>
+#include "ui_busquedaarticulobase.h"
 
 
 class company;
 
-class BusquedaArticulo : public BusquedaArticuloBase
+class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase
 {
 	Q_OBJECT
 
@@ -62,9 +61,8 @@ public:
 	virtual void setcodigocompletoarticulo(QString val);
 
 public slots:
-	virtual void s_searchArticulo();
-	virtual void s_codigocompletoarticulotextChanged(const QString &);
-
+	virtual void on_mui_buscar_clicked();
+	virtual void on_m_codigocompletoarticulo_textChanged(const QString &);
 signals:
 	void valueChanged(QString);
 };

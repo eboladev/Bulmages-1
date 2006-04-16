@@ -21,13 +21,13 @@
 #ifndef TIPOSARTICULOVIEW_H
 #define TIPOSARTICULOVIEW_H
 
-#include <tiposarticulodlg.h>
+#include "ui_tiposarticulodlg.h"
 #include "dialogchanges.h"
 
 
 class company;
 
-class tiposarticuloview : public tiposarticulodlg, dialogChanges
+class tiposarticuloview : public QDialog, public Ui_tiposarticulodlg, dialogChanges
 {
 	Q_OBJECT
 
@@ -59,12 +59,15 @@ public:
 
 public slots:
 	virtual void pintar();
-	virtual void s_doubleClicked(Q3ListViewItem *);
+	virtual void on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int column );
 	virtual void close();
-	virtual void s_saveTipo();
-	virtual void s_newTipo();
-	virtual void s_deleteTipo();
-	virtual void s_changedTipo();
+	virtual void on_mui_guardar_clicked();
+	virtual void on_mui_crear_clicked();
+	virtual void on_mui_borrar_clicked();
+	virtual void on_m_listTipos_currentItemChanged ( QTreeWidgetItem * current, QTreeWidgetItem * previous);
+	virtual void on_mui_aceptar_clicked() {
+		close();
+	};
 };
 
 #endif

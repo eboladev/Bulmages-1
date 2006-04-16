@@ -1,6 +1,5 @@
 #include <listventanas.h>
 #include <QObject>
-//Added by qt3to4:
 #include <QPixmap>
 
 #include <map>
@@ -9,7 +8,7 @@
 
 #include <Q3ListBoxPixmap>
 #include <QPainter>
-
+#include <QVBoxLayout>
 
 #include "bulmafact.h"
 #include "funcaux.h"
@@ -17,17 +16,14 @@
 extern bulmafact *bges;
 using namespace std;
 
-listventanas::listventanas(const QString & title,  QWidget *a, Qt::WFlags b): Q3DockWindow (a,title,b) {
+listventanas::listventanas( QWidget *a): QDockWidget (a) {
   _depura("listventanas::INIT_listventanas()\n",0);
-  m_listBox = new Q3ListBox1( 0 ,0 );
-  m_listBox->setCaption( tr( "Ventanas Abiertas") );
-  m_listBox->setGeometry(0,0,100,500);
-  m_listBox->showMaximized();
-  setCloseMode(Q3DockWindow::Always);
+  m_listBox = new Q3ListBox1( this ,0 );
+  m_listBox->setCaption( tr( "Indexador") );
+  setAccessibleName(tr("Indexador"));
+  setAccessibleDescription(tr("Indexador"));
+  setWindowTitle(tr("Indexador"));
   setWidget(m_listBox);
-  showMaximized();
-  setResizeEnabled(TRUE);
-  setMovingEnabled(TRUE);
   connect(m_listBox, SIGNAL(doubleClicked(Q3ListBoxItem *)), this, SLOT(dclicked()));
   connect(m_listBox, SIGNAL(clicked(Q3ListBoxItem *)), this, SLOT(clicked()));
   _depura("listventanas::END_listventanas()\n",0);

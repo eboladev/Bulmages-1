@@ -64,24 +64,21 @@ FORMS += about.ui \
          facturapbase.ui \
          pedidoclientebase.ui \
          albaranclientebase.ui \
-	 clientebase.ui
-
-# uic3 los convierte de forma automatica.
-#
-FORMS3 += bulmafactbase.ui \
-          budgetbase.ui \
-          budgetslistbase.ui \
-          familiasdlg.ui \
-          tiposarticulodlg.ui \
-          facturabase.ui \
-          busquedaclientebase.ui \
-          busquedaarticulobase.ui \
-          busquedaproveedorbase.ui \
-          busquedafamiliabase.ui \
-          busquedatipoarticulobase.ui \
-	  listseriefacturabase.ui \
-	  inventariosbase.ui \
-	  inventariobase.ui
+         facturabase.ui \
+         tiposarticulodlg.ui \
+         busquedaclientebase.ui \
+         busquedaarticulobase.ui \
+         busquedaproveedorbase.ui \
+	 busquedatipoarticulobase.ui \
+         familiasdlg.ui \
+         busquedafamiliabase.ui \
+	 listseriefacturabase.ui \
+	 inventariosbase.ui \
+	 inventariobase.ui \
+	 clientebase.ui \
+         budgetslistbase.ui \
+         bulmafactbase.ui \
+         budgetbase.ui
 
 
 HEADERS += bulmafact.h \
@@ -102,15 +99,11 @@ HEADERS += bulmafact.h \
            familiasview.h \
            tiposarticuloview.h \
            presupuesto.h \
-           listlinpresupuesto.h \
-           linpresupuesto.h \
            listlinpresupuestoview.h \
            facturaslist.h \
            facturaview.h \
            factura.h \
-           listlinfactura.h \
            listlinfacturaview.h \
-           linfactura.h \
            albarancliente.h \
            listlinalbaranclienteview.h \
            pedidosclientelist.h \
@@ -135,13 +128,9 @@ HEADERS += bulmafact.h \
            listlinfacturapview.h \
            facturap.h \
            facturapview.h \
-           descpresupuesto.h \
-           listdescpresupuesto.h \
            listdescpresupuestoview.h \
            listdescpedidoclienteview.h \
            listdescalbaranclienteview.h  \
-	   descfactura.h \
-	   listdescfactura.h \
 	   listdescfacturaview.h \
 	   informereferencia.h \
 	   trabajadorview.h \
@@ -196,15 +185,11 @@ SOURCES += bulmafact.cpp \
            familiasview.cpp \
            tiposarticuloview.cpp \
            presupuesto.cpp \
-           listlinpresupuesto.cpp \
-           linpresupuesto.cpp \
            listlinpresupuestoview.cpp \
            facturaslist.cpp \
            facturaview.cpp \
            factura.cpp \
-           listlinfactura.cpp \
            listlinfacturaview.cpp \
-           linfactura.cpp \
            albarancliente.cpp \
            listlinalbaranclienteview.cpp \
            pedidosclientelist.cpp \
@@ -229,13 +214,9 @@ SOURCES += bulmafact.cpp \
            listlinfacturapview.cpp \
            facturap.cpp \
            facturapview.cpp \
-           descpresupuesto.cpp \
-           listdescpresupuesto.cpp \
            listdescpresupuestoview.cpp \
            listdescpedidoclienteview.cpp \
            listdescalbaranclienteview.cpp \
-	   descfactura.cpp \
-	   listdescfactura.cpp \
 	   listdescfacturaview.cpp \
 	   informereferencia.cpp \
 	   trabajadorview.cpp \
@@ -327,9 +308,4 @@ windows{
 
 TARGET = ../../../installbulmages/bulmafact 
 }
-
-#The following line was inserted by qt3to4
-QT +=  
-#The following line was inserted by qt3to4
-CONFIG += uic3
 

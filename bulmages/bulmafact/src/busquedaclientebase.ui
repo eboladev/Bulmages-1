@@ -1,100 +1,82 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>BusquedaClienteBase</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>BusquedaClienteBase</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>577</width>
-            <height>24</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Form1</string>
-    </property>
-    <hbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QLineEdit">
-            <property name="name">
-                <cstring>m_cifcliente</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>5</hsizetype>
-                    <vsizetype>0</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-        </widget>
-        <widget class="QToolButton">
-            <property name="name">
-                <cstring>m_searchcliente</cstring>
-            </property>
-            <property name="minimumSize">
-                <size>
-                    <width>22</width>
-                    <height>22</height>
-                </size>
-            </property>
-            <property name="maximumSize">
-                <size>
-                    <width>22</width>
-                    <height>22</height>
-                </size>
-            </property>
-            <property name="text">
-                <string></string>
-            </property>
-            <property name="iconSet">
-                <iconset>image0</iconset>
-            </property>
-        </widget>
-        <widget class="QLabel">
-            <property name="name">
-                <cstring>m_nomcliente</cstring>
-            </property>
-            <property name="sizePolicy">
-                <sizepolicy>
-                    <hsizetype>7</hsizetype>
-                    <vsizetype>5</vsizetype>
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                </sizepolicy>
-            </property>
-            <property name="text">
-                <string>Cliente</string>
-            </property>
-        </widget>
-    </hbox>
-</widget>
-<images>
-    <image name="image0">
-        <data format="XPM.GZ" length="4255">789c95965b4fe3481085dff91511f5365ad5c48eedd85aed030cf76b02c375b50f1ddbe1360408492019ed7fdf76d5e986241e6947c6091fa7eab8bafa62be7e695c760e1b5fbeaebc8ecce82e6fe4b766d8f8528c1f1fa77ffff3d7cf95d556d0b03f412b6e84ab7facacf266236f5090daab291c7b4e85a715874dcf33700efeee38d4fc7de52aa362ca1d433f10ce7cfc9eb2d72370047eadb81584799889df96e35620fa48b9d554a653e1cc310fc11178179c22feb8e228b02cfe7c01ce95a9548e9a91c6af0b9b288a8cf02b3855e6f38ae3d07302ce11df548e9bb1f4df18c789c6b7c0b1ead411362e9e0ab0d36f3dabff113803cbfc25a1e73d70a1cc6bca4990a89ff427319ecfc119ea7bafb8dd726c72c72692f81d70a13a6d2ab783764bf255ef2585c69bd2732e7aa6dc0e54e737cfa2d3181cc3efc831f40d70d6ee096f3bceb4be96633cef5bc569cbf9b301c38f7b8e7b9a7f0076fe8163e887e022d5fa9e1c43d7e7f5ec76129daec1712a7e2cfdc8a214cfe3009ca96e7a60f8f19de742fc26ca5980f1ee3bc678ee85f32c40fc3338ceb47f4f60f48bc79e55cfc0451e4b3dac6c026596f56d2217cf5be042d990638da77b6583f9a6d831f4d4b3d67b078e119f38569d5f8473e3d643e418fa06d8406f3b867f175c4297f3ad179952fb6d0ac785d6d753ee85988f43c7d01fc10938142ebc3e0027581f0f9eb5dec231e2476003bde35875bef65c0acbfecc63cf57e012f3d556ce43f47b0d9c802f858b3cd47cfa014ed04f720cff13b0ebe79b63d47fe159e39d7f8978978ffeb23caf889dcea163e8cf8ecb44b8ab5ca0bf7ce358759a81d14fee0b974582fc5bcf3a5e06a35e3a0397e01bc7c897f92e13cf0fcaa57bfe10ec9e77ec59fda49f6569e395dfc1d0f90c6ca01b7009ee3beeebf3643ff413cf579efbe2b7addc0f55e7d4b3eaa7e004fac4b3eaf23eecf73d0fc046b93b02f71d77474c6cb8676ff31bdf7995a90e5c70c97dbee1dbdfb8fb7cc7853a70cef795dbf2c50ffc831f7950af5afd8949571ddfd6a82f3ce457b9463cae73e189adfd4ddf2bdc5f52df79ca33b9a672aff160d185d7adc3377d532dd6c01bbc69b3aa5cf73de3adb908ebc7dbd661070e0b35f0eedcf3f7789f0ff875a9ce011fa286a38f1ac4fb18f9ce63df5ed5f743a5cff5a153df07eecee5eb55d571b2544367be0f95bfdca736dee56fcaf777f138ab998b4f7d98abefdcf7409f5f7d5ed4f4a158ee03b44b5bf347fd33a9e5aac6e11a35d4ad87a6cddcf3f9530edc3817e6e2ad7e3d881e728b238eed9d707b59b711a91d4556bf1eaa8bd8ae9801917dd223995a87f5baf5f0512bf528e7732aa8b4a338ade9c184fad6e1977db00e37588f11d58c116baf663dcc79f4ec75c763baf7f33fb7bb3ecd855f0f76dc0f3cf1a3dcb3e390b9a01ff555d0e3621f68404ff48cdf5f3eada9f35f8ca3b3d807dee2337a80c3f0634dd12b6fd43a2cac079bd3a5ea3c921d644fb7aa8f5a43d39e54db3eb3cb4d1ad384deeacf077aa769d513fab43f698dd6e91bc6bec1439bff4c9bb445dbf5e783d55e644dce309f33dea09e1dcbd0faeed06eb54769cf461cd37efd7aa05df16afb3e1ed0a4ea91ed6d9b2f7434dc5d3e1ff8cc9e8ed2459acae7e8e37ca003781f12e69a8eb01e3eed0bdb39db7d3aa60e893f9dd83d2535d02931f20afa6e9dd769441dd9354bebc1ba9ce84924bd3c93936658e563af9cd384af6cd498762a07eed085fe1f66df7976a758ef3e5dd93d2bbf83af6d2d29febe6e339b763fa5d0530a38d7f72685d4a288624aecd596cf9852ca28356cbf63b9ad6ec8fe77dcb36a54fdddfe2f5cb837afad32e73753f2ceffbf4d499755e6eabf7faefc07f88757d0</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>m_searchcliente</sender>
-        <signal>clicked()</signal>
-        <receiver>BusquedaClienteBase</receiver>
-        <slot>s_searchCliente()</slot>
-    </connection>
-    <connection>
-        <sender>m_cifcliente</sender>
-        <signal>textChanged(const QString&amp;)</signal>
-        <receiver>BusquedaClienteBase</receiver>
-        <slot>s_cifclientetextChanged(const QString&amp;)</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>s_searchCliente()</slot>
-    <slot>s_cifclientetextChanged(const QString &amp;)</slot>
-</slots>
-<layoutdefaults spacing="0" margin="0"/>
-</UI>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>BusquedaClienteBase</class>
+ <widget class="QWidget" name="BusquedaClienteBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>577</width>
+    <height>24</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form1</string>
+  </property>
+  <layout class="QHBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QLineEdit" name="m_cifcliente" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="mui_buscar" >
+     <property name="minimumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="m_nomcliente" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>5</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Cliente</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="0" margin="0" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections/>
+</ui>

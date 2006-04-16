@@ -55,11 +55,12 @@ public:
 	PedidoCliente(company *);
 	virtual ~PedidoCliente();
 	virtual int cargar(QString);
-	void pintaPedidoCliente();
-	int guardar();
-	int borrar();
-	void imprimirPedidoCliente();
-	void calculaypintatotales();
+	virtual void pintar();
+	virtual int guardar();
+	virtual int borrar();
+	virtual void imprimirPedidoCliente();
+	virtual void calculaypintatotales();
+
 	ListLinPedidoClienteView* getlistalineas()
 	{
 		return listalineas;

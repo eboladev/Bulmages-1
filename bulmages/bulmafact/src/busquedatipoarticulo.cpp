@@ -14,7 +14,8 @@
 #include "company.h"
 
 BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent, const char *name)
-: BusquedaTipoArticuloBase(parent, name) {
+: QWidget(parent, name) {
+    setupUi(this);
     companyact=NULL;
     mdb_idtipo_articulo="";
     mdb_desctipo_articulo="";
@@ -60,7 +61,7 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
 
 
 // Bsqueda de TipoArticulos.
-void BusquedaTipoArticulo::s_searchTipoArticulo() {
+void BusquedaTipoArticulo::on_mui_buscar_clicked() {
 	tiposarticuloview *tip = new tiposarticuloview(companyact, 0,0);
 	tip->setModoConsulta();
 	if (tip->exec() == 1) {
@@ -74,7 +75,7 @@ void BusquedaTipoArticulo::s_searchTipoArticulo() {
 }// end searchClient
 
 
-void BusquedaTipoArticulo::s_codtipo_articulotextChanged(const QString &val) {
+void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
     mdb_codtipo_articulo=val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo='"+mdb_codtipo_articulo+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);

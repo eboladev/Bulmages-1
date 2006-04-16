@@ -650,6 +650,7 @@
     </qresource>
     <qresource prefix="/Genericos16x16" />
     <qresource prefix="/Genericos32x32" >
+        <file>images/pendientes/i_bulmages.png</file>
         <file>images/pendientes/i_configuracion.xpm</file>
         <file>images/pendientes/i_diario.xpm</file>
         <file>images/pendientes/i_edit.png</file>

@@ -36,7 +36,7 @@ ListLTarifaView::ListLTarifaView(QWidget *parent, const char *) : SubForm2Bf(par
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, "codigocompletoarticulo");
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, "nomarticulo");
 	setinsercion(FALSE);
-};
+}
 
 
 
@@ -54,4 +54,4 @@ ListLTarifaView1::ListLTarifaView1(QWidget *parent, const char *) : SubForm2Bf(p
     addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, "nomtarifa");
 
 	setinsercion(FALSE);
-};
+}

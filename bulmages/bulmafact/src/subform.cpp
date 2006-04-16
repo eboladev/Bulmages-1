@@ -128,6 +128,8 @@ SDBRecord *SubForm2::newSDBRecord() {
         camp->setFlags(flags);
         j++;
     }// end for
+    _depura("END SubForm2::newSDBRecord",0);
+
     return rec;
 }
 
@@ -338,7 +340,8 @@ int SubForm2::guardar() {
     if(!m_insercion) {
         rec = m_lista.at(m_lista.count()-1);
         error = rec->guardar();
-    }
+    }// end if
+	_depura("END SubForm2::guardar",0);
     return error;
 }
 
@@ -369,6 +372,7 @@ int SubForm2::borrar(int row) {
         return error;
     m_lista.remove(row);
     removeRow(row);
+    emit editFinish( row, 0);
     return 0;
 }
 

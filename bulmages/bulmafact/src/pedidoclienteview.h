@@ -43,7 +43,6 @@
 
 class PedidoClienteView : public QWidget, public Ui_PedidoClienteBase, public PedidoCliente, public dialogChanges {
     Q_OBJECT
-
 public:
     PedidoClienteView(company *, QWidget *parent = 0, const char *name = 0);
     ~PedidoClienteView();
@@ -97,7 +96,9 @@ public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
+
     virtual int cargar(QString id);
+
     virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar Pedido Cliente."),
                                         tr("ADVERTENCIA: Eliminar pedidos de cliente puede disminuir la eficacia economica de la empresa. Continuar?"),tr("SI"),tr("No"),tr("Ojala"),0,2);
@@ -120,13 +121,24 @@ public slots:
     virtual void s_pintaTotales() {
         calculaypintatotales();
     };
-    virtual void s_verpresupuesto();
-    virtual void s_generarAlbaran() {
+    virtual void on_mui_verpresupuesto_clicked();
+
+    virtual void on_mui_pasaraalbaran_clicked() {
         generarAlbaran();
     };
-    virtual void s_nuevoCobro();
-    virtual void s_informeReferencia();
 
+    virtual void on_mui_cobrar_clicked();
+    virtual void on_mui_informereferencia_clicked();
+    virtual void on_m_descuentos_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_subform3_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_mui_aceptar_clicked() {
+        if (!guardar() )
+            close();
+    };
 };
 
 #endif

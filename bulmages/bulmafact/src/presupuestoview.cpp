@@ -72,8 +72,9 @@ using namespace std;
 
 #define coma "'"
 
-PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *name) : BudgetBase(parent, name, Qt::WDestructiveClose) , presupuesto(comp) ,dialogChanges(this) {
+PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *name) : QWidget(parent, name, Qt::WDestructiveClose) , presupuesto(comp) ,dialogChanges(this) {
     _depura("Inicializacion de PresupuestoView\n",0);
+    setupUi(this);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
     if (res != 0)
@@ -106,7 +107,7 @@ void PresupuestoView::closeEvent( QCloseEvent *e) {
         int val = QMessageBox::warning( this, "Guardar Presupuesto",
                                         "Desea guardar los cambios.","Si","No","Cancelar",0,2);
         if (val == 0)
-            s_saveBudget();
+            guardar();
         if (val == 2)
             e->ignore();
     }// end if
@@ -137,19 +138,25 @@ void PresupuestoView::inicialize() {
 
 
 
-void PresupuestoView::s_printBudget() {
+void PresupuestoView::on_mui_imprimir_clicked() {
     imprimirPresupuesto();
 }//end s_printPresupuestoView
 
 
 
 
-void PresupuestoView::s_removeBudget() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
-    if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
-        borraPresupuesto();
+void PresupuestoView::on_mui_borrar_clicked() {
+    int val = QMessageBox::warning( this, tr("Borrar Presupuesto."),
+                                    tr("ADVERTENCIA: Eliminar presupuestos de cliente puede disminuir la eficacia economica de la empresa. Continuar?"),tr("SI"),tr("No"),tr("Ojala"),0,2);
+    if (val == 0) {
+
+        if (!borrar()) {
+            dialogChanges_cargaInicial();
+            _depura("Pedido borrado satisfactoriamente",2);
+            close();
+        }// end if
     }// end if
-}// end boton_borrar
+}
 
 void   PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     fprintf(stderr,"pintatotales()\n");
@@ -163,16 +170,19 @@ void   PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed d
 
 /// Se encarga de generar un pedido a partir del presupuesto.
 void PresupuestoView::generarPedidoCliente() {
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
+	_depura("PresupuestoView::generarPedidoCliente",0);
+
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+DBvalue("refpresupuesto")+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        PedidoClienteView *bud = new PedidoClienteView(companyact,NULL,theApp->translate("Edicion de Pedidos de Clientes", "company"));
+        PedidoClienteView *bud = companyact->newPedidoClienteView();
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
+	delete cur;
         return;
-    }
+    }// end if
     delete cur;
 
 
@@ -187,9 +197,11 @@ void PresupuestoView::generarPedidoCliente() {
         return;
 
     /// Creamos el pedido.
-    PedidoClienteView *bud = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos de Clientes", "company"));
-    bud->vaciaPedidoCliente();
+    PedidoClienteView *bud = companyact->newPedidoClienteView();
+    bud->cargar("0");
     companyact->m_pWorkspace->addWindow(bud);
+
+    /// Traspasamos toda la informacion del presupuesto al pedido.
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcomentpedidocliente(DBvalue("comentpresupuesto"));
     bud->setdescpedidocliente(DBvalue("descpresupuesto"));
@@ -200,40 +212,49 @@ void PresupuestoView::generarPedidoCliente() {
     bud->setidalmacen(DBvalue("idalmacen"));
     bud->setcontactpedidocliente(DBvalue("contactpresupuesto"));
     bud->settelpedidocliente(DBvalue("telpresupuesto"));
-    QString l;
-    linpresupuesto *linea;
+
+
+    /// Traspasamos las lineas del presupuesto a lineas del pedido.
+    SDBRecord *linea;
     SDBRecord *linea2;
-
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        linea2 = bud->getlistalineas()->newSDBRecord();
-        linea2->setDBvalue( "desclpedidocliente",linea->desclpresupuesto());
-        linea2->setDBvalue( "cantlpedidocliente",linea->cantlpresupuesto());
-        linea2->setDBvalue( "pvplpedidocliente",linea->pvplpresupuesto());
-        linea2->setDBvalue( "ivalpedidocliente",linea->ivalpresupuesto());
-        linea2->setDBvalue( "descuentolpedidocliente",linea->descuentolpresupuesto());
-        linea2->setDBvalue( "idarticulo",linea->idarticulo());
-        linea2->setDBvalue( "codigocompletoarticulo",linea->codigocompletoarticulo());
-        linea2->setDBvalue( "nomarticulo",linea->nomarticulo());
+    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+        if (linea->DBvalue( "idarticulo") != "") {
+            linea2 = bud->getlistalineas()->lista()->last();
+            linea2->setDBvalue( "desclpedidocliente",linea->DBvalue("desclpresupuesto"));
+            linea2->setDBvalue( "cantlpedidocliente",linea->DBvalue("cantlpresupuesto"));
+            linea2->setDBvalue( "pvplpedidocliente",linea->DBvalue("pvplpresupuesto"));
+            linea2->setDBvalue( "ivalpedidocliente",linea->DBvalue("ivalpresupuesto"));
+            linea2->setDBvalue( "descuentolpedidocliente",linea->DBvalue("descuentolpresupuesto"));
+            linea2->setDBvalue( "idarticulo",linea->DBvalue("idarticulo"));
+            linea2->setDBvalue( "codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
+            linea2->setDBvalue( "nomarticulo",linea->DBvalue("nomarticulo"));
+            bud->getlistalineas()->nuevoRegistro();
+        }// end if
     }// end for
 
-    DescuentoPresupuesto *linea1;
+    /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
+    SDBRecord *linea1;
     SDBRecord * linea3;
-    for ( linea1 = listadescuentos->m_lista.first(); linea1; linea1 = listadescuentos->m_lista.next() ) {
-        linea3 = bud->getlistadescuentos()->newSDBRecord();
-        linea3->setDBvalue( "conceptdpedidocliente",linea1->conceptdpresupuesto());
-        linea3->setDBvalue( "proporciondpedidocliente",linea1->proporciondpresupuesto());
+    for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+        if (linea1->DBvalue( "proporciondpresupuesto") != "") {
+            linea3 = bud->getlistadescuentos()->lista()->last();
+            linea3->setDBvalue( "conceptdpedidocliente",linea1->DBvalue("conceptdpresupuesto"));
+            linea3->setDBvalue( "proporciondpedidocliente",linea1->DBvalue("proporciondpresupuesto"));
+            bud->getlistadescuentos()->nuevoRegistro();
+        }// end if
     }// end for
 
-    bud->pintaPedidoCliente();
+    /// Pintamos el pedido y lo presentamos.
+    bud->pintar();
     bud->show();
-}// end generaPedidoCliente
+}
 
 
 
 
-int PresupuestoView::chargeBudget(QString id) {
+int PresupuestoView::cargar(QString id) {
     int error = 0;
-    error = presupuesto::chargeBudget(id);
+    error = presupuesto::cargar(id);
     if (error)
         return -1;
     setCaption("presupuesto "+DBvalue("refpresupuesto"));
@@ -245,7 +266,7 @@ int PresupuestoView::chargeBudget(QString id) {
 
 
 
-void PresupuestoView::s_informeReferencia() {
+void PresupuestoView::on_mui_informereferencia_clicked() {
     InformeReferencia *inf = new InformeReferencia(companyact);
     inf->setreferencia(DBvalue("refpresupuesto"));
     inf->generarinforme();
@@ -254,4 +275,21 @@ void PresupuestoView::s_informeReferencia() {
 }
 
 
-
+int PresupuestoView::guardar() {
+    setcomentpresupuesto(m_comentpresupuesto->text());
+    setnumpresupuesto(m_numpresupuesto->text());
+    setidcliente(m_cliente->idcliente());
+    setfpresupuesto(m_fpresupuesto->text());
+    setvencpresupuesto(m_vencpresupuesto->text());
+    setidalmacen(m_almacen->idalmacen());
+    setidtrabajador(m_trabajador->idtrabajador());
+    setidforma_pago(m_forma_pago->idforma_pago());
+    setrefpresupuesto(m_refpresupuesto->text());
+    setdescpresupuesto(m_descpresupuesto->text());
+    setcontactpresupuesto(m_contactpresupuesto->text());
+    settelpresupuesto(m_telpresupuesto->text());
+    setprocesadopresupuesto(m_procesadopresupuesto->isChecked()?"TRUE":"FALSE");
+    int err = presupuesto::guardar();
+    dialogChanges_cargaInicial();
+    return err;
+}

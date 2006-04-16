@@ -47,283 +47,284 @@
 #include "listlinalbaranclienteview.h"
 #include "listdescalbaranclienteview.h"
 #include "facturaslist.h"
+#include "cobroview.h"
 
 
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const char *name)
-	: QWidget(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp),
-	dialogChanges(this)
-{
-	setupUi(this);
-	subform2->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_almacen->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_cliente->setcompany(comp);
-	m_trabajador->setcompany(comp);
-	setListLinAlbaranCliente(subform2);
-	setListDescuentoAlbaranCliente(m_descuentos);
-	comp->meteWindow(caption(),this);
-	dialogChanges_cargaInicial();
-	_depura("Fin de la inicializacion de AlbaranClienteView\n");
-};
+        : QWidget(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp),
+dialogChanges(this) {
+    setupUi(this);
+    subform2->setcompany(comp);
+    m_descuentos->setcompany(comp);
+    m_almacen->setcompany(comp);
+    m_forma_pago->setcompany(comp);
+    m_cliente->setcompany(comp);
+    m_trabajador->setcompany(comp);
+    setListLinAlbaranCliente(subform2);
+    setListDescuentoAlbaranCliente(m_descuentos);
+    comp->meteWindow(caption(),this);
+    dialogChanges_cargaInicial();
+    _depura("Fin de la inicializacion de AlbaranClienteView\n");
+}
 
 
-AlbaranClienteView::~AlbaranClienteView()
-{
-	companyact->refreshAlbaranesCliente();
-	companyact->sacaWindow(this);
-};
+AlbaranClienteView::~AlbaranClienteView() {
+    companyact->refreshAlbaranesCliente();
+    companyact->sacaWindow(this);
+}
 
 
-void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc)
-{
-	m_totalBases->setText(base.toQString());
-	m_totalTaxes->setText(iva.toQString());
-	m_totalalbaran->setText(total.toQString());
-	m_totalDiscounts->setText(desc.toQString());
-};
+void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    m_totalBases->setText(base.toQString());
+    m_totalTaxes->setText(iva.toQString());
+    m_totalalbaran->setText(total.toQString());
+    m_totalDiscounts->setText(desc.toQString());
+}
 
 
-void AlbaranClienteView::s_verpresupuesto()
-{
-	QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='" +
-			DBvalue("refalbaran") + "'";
-	cursor2 *cur = companyact->cargacursor(SQLQuery);
+void AlbaranClienteView::s_verpresupuesto() {
+    QString SQLQuery= "SELECT * FROM presupuesto WHERE refpresupuesto='" +
+                      DBvalue("refalbaran") + "'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
 
-	if (cur->numregistros() > 1)
-	{
-		PresupuestoList *list = new PresupuestoList(companyact, NULL,
-				theApp->translate("Edicion de Presupuestos", "company"));
-		list->modoseleccion();
-		list->show();
+    if (cur->numregistros() > 1) {
+        PresupuestoList *list = new PresupuestoList(companyact, NULL,
+                                theApp->translate("Edicion de Presupuestos", "company"));
+        list->modoseleccion();
+        list->show();
 
-		while (!list->isHidden())  {
-			theApp->processEvents();
-		}
+        while (!list->isHidden())  {
+            theApp->processEvents();
+        }
 
-		this->setEnabled(true);
+        this->setEnabled(true);
 
-		if (list->idpresupuesto() != QString(""))  {
-			PresupuestoView *bud = companyact->newBudget();
-			bud->chargeBudget(list->idpresupuesto());
-			bud->show();
-		}
-	} else if (!cur->eof()) {
-		PresupuestoView *bud = companyact->newBudget();
-		bud->chargeBudget(cur->valor("idpresupuesto"));
-		bud->show();
-	}
-	delete cur;
-};
+        if (list->idpresupuesto() != QString(""))  {
+            PresupuestoView *bud = companyact->newBudget();
+            bud->cargar(list->idpresupuesto());
+            bud->show();
+        }
+    } else if (!cur->eof()) {
+        PresupuestoView *bud = companyact->newBudget();
+        bud->cargar(cur->valor("idpresupuesto"));
+        bud->show();
+    }
+    delete cur;
+}
 
 
-void AlbaranClienteView::s_verpedidocliente() {
-	QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" + DBvalue("refalbaran") + "'";
-	cursor2 *cur = companyact->cargacursor(SQLQuery);
-
-	if (cur->numregistros() > 1)
-	{
-		PedidosClienteList *list = new PedidosClienteList(companyact, NULL,
-				theApp->translate("Edicion de Presupuestos", "company"));
-		list->modoseleccion();
-		list->show();
-
-		while (!list->isHidden())
-		{
-			theApp->processEvents();
-		};
-
-		this->setEnabled(true);
-		if (list->idpedidocliente() != "")
-		{
-			// && list->idpedidocliente() !=NULL
-			PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
-				theApp->translate("Edicion de Presupuestos", "company"));
-			companyact->m_pWorkspace->addWindow(bud);
-			bud->cargar(list->idpedidocliente());
-			bud->show();
-		};
-	} else if (!cur->eof()) {
-		PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
-			theApp->translate("Edicion de Presupuestos", "company"));
-		companyact->m_pWorkspace->addWindow(bud);
-		bud->cargar(cur->valor("idpedidocliente"));
-		bud->show();
-	};
-
-	delete cur;
-};
+void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
+	_depura("on_mui_verpedidocliente_clicked",0);
+    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" + DBvalue("refalbaran") + "'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        while (!cur->eof()) {
+            PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
+                                     theApp->translate("Edicion de Presupuestos", "company"));
+            companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idpedidocliente"));
+            bud->show();
+            cur->siguienteregistro();
+        }// end while
+    } else {
+        _depura("no hay pedidos con esta referencia",2);
+    }// end if
+    delete cur;
+}
 
 
 /// Se encarga de generar una factura a partir de un albaran.
 void AlbaranClienteView::generarFactura() {
-	/// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
-	/// y salimos de la funcion.
-	QString SQLQuery = "SELECT * FROM factura WHERE reffactura='" +
-			DBvalue("refalbaran") + "'";
-	cursor2 *cur = companyact->cargacursor(SQLQuery);
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
+    /// y salimos de la funcion.
+    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='" +
+                       DBvalue("refalbaran") + "'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
 
-	if (!cur->eof())
-	{
-		FacturaView *bud = companyact->newFacturaView();
-		companyact->m_pWorkspace->addWindow(bud);
-		bud->cargar(cur->valor("idfactura"));
-		bud->show();
-		return;
-	};
+    if (!cur->eof()) {
+        FacturaView *bud = companyact->newFacturaView();
+        companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idfactura"));
+        bud->show();
+        return;
+    }
+    delete cur;
 
-	delete cur;
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
+    /// Si no salimos de la funcion.
+    if (QMessageBox::question(this, tr("Factura Inexistente"),
+                              tr("No existe una factura asociada a este albaran. Desea Crearla ?"),
+                              tr("&Yes"), tr("&No"), QString::null, 0, 1)) {
+        return;
+    }
 
-	/// Informamos de que no existe el pedido y a ver si lo queremos realizar.
-	/// Si no salimos de la funcion.
-	if (QMessageBox::question(this, tr("Factura Inexistente"),
-                tr("No existe una factura asociada a este albaran. Desea Crearla ?"),
-                tr("&Yes"), tr("&No"), QString::null, 0, 1))
-	{
-		return;
-	};
+    /// Creamos la factura.
+    FacturaView *bud = companyact->newFacturaView();
+    companyact->m_pWorkspace->addWindow(bud);
 
-	/// Creamos la factura.
-	FacturaView *bud = companyact->newFacturaView();
-	companyact->m_pWorkspace->addWindow(bud);
-	bud->vaciaFactura();
-	bud->setcomentfactura(DBvalue("comentalbaran"));
-	bud->setidforma_pago(DBvalue("idforma_pago"));
-	bud->setreffactura(DBvalue("refalbaran"));
-	bud->setidcliente(DBvalue("idcliente"));
-	bud->setidalmacen(DBvalue("idalmacen"));
-	QString l;
-	SDBRecord *linea;
-	uint i = 0;
+    /// Cargamos un elemento que no existe para inicializar bien la clase.
+    bud->cargar("0");
 
-	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
-		bud->getlistalineas()->nuevalinea(
-		linea->DBvalue("desclalbaran"),
-		linea->DBvalue("cantlalbaran"),
-		linea->DBvalue("pvplalbaran"),
-		linea->DBvalue("descontlalbaran"),
-		linea->DBvalue("idarticulo"),
-		linea->DBvalue("codigocompletoarticulo"),
-		linea->DBvalue("nomarticulo"),
-		linea->DBvalue("ivalalbaran")
-		);
-		i++;
-	}
+    bud->setcomentfactura(DBvalue("comentalbaran"));
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setreffactura(DBvalue("refalbaran"));
+    bud->setidcliente(DBvalue("idcliente"));
+    bud->setidalmacen(DBvalue("idalmacen"));
+    bud->pintaFactura();
+    bud->show();
 
-	bud->pintaFactura();
-	bud->show();
-};
+    QString l;
+    SDBRecord *linea, *linea1;
+    for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
+        if (linea->DBvalue( "idarticulo") != "") {
+            linea1 = bud->getlistalineas()->lista()->last();
+            linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
+            linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
+            linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));
+            linea1->setDBvalue("descuentolfactura",linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
+            linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
+            linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
+            linea1->setDBvalue("ivalfactura",linea->DBvalue("ivalalbaran"));
+            bud->getlistalineas()->nuevoRegistro();
+        }// end if
+    }// end for
+    bud->calculaypintatotales();
+
+
+    m_procesadoalbaran->setChecked(TRUE);
+}
 
 
 /// Se encarga de agregar un albaran a una factura.
-void AlbaranClienteView::agregarFactura()
-{
-	/// Pedimos la factura a la que agregar.
-	_depura("Busqueda de una factura.", 0);
-	FacturasList *fac = new FacturasList(companyact, NULL,
-			tr("Seleccione factura", "company"));
-	fac->modoseleccion();
-	/// Esto es convertir un QWidget en un sistema modal de dialogo.
-	this->setEnabled(false);
-	fac->show();
+void AlbaranClienteView::agregarFactura() {
+    /// Pedimos la factura a la que agregar.
+    _depura("Busqueda de una factura.", 0);
 
-	while(!fac->isHidden())
-	{
-		theApp->processEvents();
-	};
 
-	this->setEnabled(true);
-	QString idfactura = fac->idfactura();
-	delete fac;
-	/// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
-	if (idfactura == "")
-	{
-		return;
-	};
 
-	/// Creamos la factura.
-	FacturaView *bud = companyact->newFacturaView();
-	bud->cargar(idfactura);
-	companyact->m_pWorkspace->addWindow(bud);
-	/// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
-	/// pero por ahora pasamos de hacerlo.
-	QString l;
-	SDBRecord *linea;
-	uint i = 0;
+    QDialog *diag=new QDialog(0);
+    diag->setModal(true);
+    FacturasList *fac = new FacturasList(companyact, diag, tr("Seleccione Factura","company"),0,FacturasList::SelectMode);
+    connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
-	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
-		bud->getlistalineas()->nuevalinea(
-		linea->DBvalue("desclalbaran"), 
-		linea->DBvalue("cantlalbaran"),
-		linea->DBvalue("pvplalbaran"),
-		linea->DBvalue("descontlalbaran"), 
-		linea->DBvalue("idarticulo"),
-		linea->DBvalue("codigocompletoarticulo"), 
-		linea->DBvalue("nomarticulo"),
-		linea->DBvalue("ivalalbaran"));
-		i++;
-	}
-	bud->pintaFactura();
-	bud->show();
+    /// Hacemos que las opciones de filtrado del listado ya estén bien.
+    fac->m_cliente->setidcliente(DBvalue("idcliente"));
+    fac->on_mui_actualizar_clicked();
+
+    /// Lanzamos el dialogo.
+    diag->exec();
+    QString idfactura = fac->idfactura();
+    delete diag;
+
+
+    /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
+    if (idfactura == "") {
+        return;
+    };
+
+    /// Creamos la factura.
+    FacturaView *bud = companyact->newFacturaView();
+    bud->cargar(idfactura);
+
+    companyact->m_pWorkspace->addWindow(bud);
+    /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
+    /// pero por ahora pasamos de hacerlo.
+    QString l;
+    SDBRecord *linea, *linea1;
+    for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
+        if (linea->DBvalue( "idarticulo") != "") {
+            linea1 = bud->getlistalineas()->lista()->last();
+            linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
+            linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
+            linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));
+            linea1->setDBvalue("descuentolfactura",linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
+            linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
+            linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
+            linea1->setDBvalue("ivalfactura",linea->DBvalue("ivalalbaran"));
+            bud->getlistalineas()->nuevoRegistro();
+        }// end if
+    }// end for
+    bud->calculaypintatotales();
+    bud->show();
+
+    m_procesadoalbaran->setChecked(TRUE);
+
 }
 
 
 int AlbaranClienteView::cargar(QString id)  {
-	AlbaranCliente::cargar(id);
-	setCaption("Albaran Cliente  " + DBvalue("refalbaran"));
+    AlbaranCliente::cargar(id);
+    setCaption("Albaran Cliente  " + DBvalue("refalbaran"));
 
-	if (companyact->meteWindow(caption(), this))  {
-		return -1;
-	}
+    if (companyact->meteWindow(caption(), this))  {
+        return -1;
+    }
 
-	dialogChanges_cargaInicial();
-	return 0;
+    dialogChanges_cargaInicial();
+    return 0;
 }
 
 
-void AlbaranClienteView::s_informeReferencia()  {
-	InformeReferencia *inf = new InformeReferencia(companyact);
-	inf->setreferencia(DBvalue("refalbaran"));
-	inf->generarinforme();
-	delete inf;
+void AlbaranClienteView::on_mui_informereferencia_clicked()  {
+    InformeReferencia *inf = new InformeReferencia(companyact);
+    inf->setreferencia(DBvalue("refalbaran"));
+    inf->generarinforme();
+    delete inf;
 }
 
 
-void AlbaranClienteView::closeEvent(QCloseEvent *e)
-{
-	_depura("closeEvent", 0);
-	if (dialogChanges_hayCambios())	{
-		int val = QMessageBox::warning(this, "Guardar Albaran",
-				"Desea guardar los cambios.", "Si", "No", "Cancelar", 0, 2);
-		if (val == 0)  {
-			guardar();
-		}
+void AlbaranClienteView::closeEvent(QCloseEvent *e) {
+    _depura("closeEvent", 0);
+    if (dialogChanges_hayCambios())	{
+        int val = QMessageBox::warning(this, "Guardar Albaran",
+                                       "Desea guardar los cambios.", "Si", "No", "Cancelar", 0, 2);
+        if (val == 0)  {
+            guardar();
+        }
 
-		if (val == 2)  {
-			e->ignore();
-		}
-	}
+        if (val == 2)  {
+            e->ignore();
+        }
+    }
 }
 
 
 int AlbaranClienteView::guardar() {
+    _depura("AlbaranClienteView::guardar",0);
+    /// Cogemos todos los valores del formulario y actualizamos la clase.
+    setcomentalbaran(m_comentalbaran->text());
+    setcomentprivalbaran(m_comentprivalbaran->text());
+    setidalmacen(m_almacen->idalmacen());
+    setNumAlbaran(m_numalbaran->text());
+    setidcliente(m_cliente->idcliente());
+    setprocesadoalbaran(m_procesadoalbaran->isChecked()?"TRUE":"FALSE");
+    setcontactalbaran(m_contactalbaran->text());
+    settelalbaran(m_telalbaran->text());
+    setfechaalbaran(m_fechaalbaran->text());
+    setidforma_pago(m_forma_pago->idforma_pago());
+    setidtrabajador(m_trabajador->idtrabajador());
+    setrefalbaran(m_refalbaran->text());
+    setdescalbaran(m_descalbaran->text());
 
-		setcomentalbaran(m_comentalbaran->text());
-		setcomentprivalbaran(m_comentprivalbaran->text());
-		setidalmacen(m_almacen->idalmacen());
-		setNumAlbaran(m_numalbaran->text());
-		setidcliente(m_cliente->idcliente());
-		setprocesadoalbaran(m_procesadoalbaran->isChecked()?"TRUE":"FALSE");
-		setcontactalbaran(m_contactalbaran->text());
-		settelalbaran(m_telalbaran->text());
-		setfechaalbaran(m_fechaalbaran->text());
-		setidforma_pago(m_forma_pago->idforma_pago());
-		setidtrabajador(m_trabajador->idtrabajador());
-		setrefalbaran(m_refalbaran->text());
-		setdescalbaran(m_descalbaran->text());
-
+    /// Hacemos el guardado.
     int err = AlbaranCliente::guardar();
     dialogChanges_cargaInicial();
+    _depura("END AlbaranClienteView::guardar",0);
     return err;
 }
+
+
+/// Crea un nuevo cobro para el albaran seleccionado.
+void AlbaranClienteView::on_mui_cobrar_clicked() {
+    CobroView *bud = companyact->newCobroView();
+    bud->setidcliente(DBvalue("idcliente"));
+    bud->setcantcobro(m_totalalbaran->text());
+    bud->setrefcobro(DBvalue("refalbaran"));
+    bud->setcomentcobro(DBvalue("descalbaran"));
+    bud->pintar();
+    bud->show();
+}
+
 

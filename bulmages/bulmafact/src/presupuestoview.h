@@ -28,7 +28,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "budgetbase.h"
+#include "ui_budgetbase.h"
 #include "postgresiface2.h"
 #include "presupuesto.h"
 #include "listlinpresupuestoview.h"
@@ -44,161 +44,92 @@
 
 class company;
 
-class PresupuestoView : public BudgetBase , public presupuesto, public dialogChanges
-{
-	Q_OBJECT
+class PresupuestoView : public QWidget, public Ui_BudgetBase , public presupuesto, public dialogChanges {
+    Q_OBJECT
 
 private:
-	cursor2 *m_cursorcombo;
+    cursor2 *m_cursorcombo;
 
 public:
-	PresupuestoView(company *, QWidget *, const char *);
-	~PresupuestoView();
-	void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
-	void inicialize();
-	void manageArticle(int);
-	void pintaNumPresupuesto(QString id)
-	{
-		m_numpresupuesto->setText(id);
-	};
-	void pintaFPresupuesto(QString id)
-	{
-		m_fpresupuesto->setText(id);
-	};
-	void pintaVencPresupuesto(QString id)
-	{
-		m_vencpresupuesto->setText(id);
-	};
-	void pintaContractPresupuesto(QString id)
-	{
-		m_contactpresupuesto->setText(id);
-	};
-	void pintaTelPresupuesto(QString id)
-	{
-		m_telpresupuesto->setText(id);
-	};
-	void pintaComentPresupuesto(QString id)
-	{
-		m_comentpresupuesto->setText(id);
-	};
-	void pintaidcliente(QString id)
-	{
-		m_cliente->setidcliente(id);
-	};
-	void pintarefpresupuesto(QString id)
-	{
-		m_refpresupuesto->setText(id);
-	};
-	void pintaidforma_pago(QString id)
-	{
-		m_forma_pago->setidforma_pago(id);
-	};
-	void pintaidalmacen(QString id)
-	{
-		m_almacen->setidalmacen(id);
-	};
-	void pintaidtrabajador(QString id)
-	{
-		m_trabajador->setidtrabajador(id);
-	};
-	void pintaprocesadopresupuesto(QString id)
-	{
-		if (id == "t" || id == "TRUE")
-		{
-			m_procesadopresupuesto->setChecked(TRUE);
-		} else {
-			m_procesadopresupuesto->setChecked(FALSE);
-		}
-	};
-	void pintadescpresupuesto(QString id)
-	{
-		m_descpresupuesto->setText(id);
-	};
+    PresupuestoView(company *, QWidget *, const char *);
+    ~PresupuestoView();
+    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    void inicialize();
+    void manageArticle(int);
+    void pintaNumPresupuesto(QString id) {
+        m_numpresupuesto->setText(id);
+    };
+    void pintaFPresupuesto(QString id) {
+        m_fpresupuesto->setText(id);
+    };
+    void pintaVencPresupuesto(QString id) {
+        m_vencpresupuesto->setText(id);
+    };
+    void pintaContractPresupuesto(QString id) {
+        m_contactpresupuesto->setText(id);
+    };
+    void pintaTelPresupuesto(QString id) {
+        m_telpresupuesto->setText(id);
+    };
+    void pintaComentPresupuesto(QString id) {
+        m_comentpresupuesto->setText(id);
+    };
+    void pintaidcliente(QString id) {
+        m_cliente->setidcliente(id);
+    };
+    void pintarefpresupuesto(QString id) {
+        m_refpresupuesto->setText(id);
+    };
+    void pintaidforma_pago(QString id) {
+        m_forma_pago->setidforma_pago(id);
+    };
+    void pintaidalmacen(QString id) {
+        m_almacen->setidalmacen(id);
+    };
+    void pintaidtrabajador(QString id) {
+        m_trabajador->setidtrabajador(id);
+    };
+    void pintaprocesadopresupuesto(QString id) {
+        if (id == "t" || id == "TRUE") {
+            m_procesadopresupuesto->setChecked(TRUE);
+        } else {
+            m_procesadopresupuesto->setChecked(FALSE);
+        }
+    };
+    void pintadescpresupuesto(QString id) {
+        m_descpresupuesto->setText(id);
+    };
 
 private:
-	void generarPedidoCliente();
-	virtual void closeEvent(QCloseEvent *);
+    void generarPedidoCliente();
+    virtual void closeEvent(QCloseEvent *);
+    virtual int guardar();
 
 public slots:
-	virtual void s_informeReferencia();
-	virtual int chargeBudget(QString id);
-	virtual void s_removeBudget();
-	virtual void s_printBudget();
-	virtual void s_saveBudget()
-	{
-		guardapresupuesto();
-	};
-	virtual void s_removePresupuestoViewLine()
-	{
-		subform2->borralinpresupuestoact();
-	};
-	virtual void s_comentariotextChanged()
-	{
-		setComentPresupuesto(m_comentpresupuesto->text());
-	};
-	virtual void s_contactotextChanged(const QString &str)
-	{
-		setContractPresupuesto(str);
-	};
-	virtual void s_telpresupuestotextChanged(const QString &str)
-	{
-		setTelPresupuesto(str);
-	};
-	virtual void s_refpresupuestotextChanged(const QString &str)
-	{
-		setrefpresupuesto(str);
-	};
-	virtual void s_numpresupuestotextChanged(const QString &str)
-	{
-		setNumPresupuesto(str);
-	};
-	virtual void s_procesadopresupuestostateChanged(int i)
-	{
-		if (i)
-		{
-			setprocesadopresupuesto("TRUE");
-		} else {
-			setprocesadopresupuesto("FALSE");
-		}
-	};
-	virtual void s_descpresupuestotextChanged(const QString &str)
-	{
-		setdescpresupuesto(str);
-	};
-
-	/// Este slot se activa cuando hay cambios en los subformularios.
-	virtual void s_pintaTotales()
-	{
-		calculaypintatotales();
-	};
-	virtual void s_formapagovalueChanged(QString val)
-	{
-		setidforma_pago(val);
-	};
-	virtual void s_trabajadorvalueChanged(QString val)
-	{
-		setidtrabajador(val);
-	};
-	virtual void s_almacenvalueChanged(QString val)
-	{
-		setidalmacen(val);
-	};
-	virtual void s_clientevalueChanged(QString id)
-	{
-		setidcliente(id);
-	};
-	virtual void s_fpresupuestovalueChanged(QString id)
-	{
-		setFPresupuesto(id);
-	};
-	virtual void s_vencpresupuestovalueChanged(QString id)
-	{
-		setVencPresupuesto(id);
-	};
-	virtual void s_realizarPedidoCliente()
-	{
-		generarPedidoCliente();
-	};
+    virtual void on_mui_informereferencia_clicked();
+    virtual int cargar(QString id);
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    };
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {
+        calculaypintatotales();
+    };
+    virtual void on_mui_pasarapedido_clicked() {
+        generarPedidoCliente();
+    };
+    virtual void on_m_descuentos_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_subform2_editFinish(int, int) {
+        calculaypintatotales();
+    };
+    virtual void on_mui_aceptar_clicked() {
+        if (!guardar() )
+            close();
+    };
 };
 
 #endif

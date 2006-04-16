@@ -58,6 +58,7 @@
 #include "inventariosview.h"
 #include "inventarioview.h"
 #include "plugins.h"
+#include "cobroview.h"
 
 company::company() {}// end company
 
@@ -213,14 +214,33 @@ FacturaProveedorView * company::newFacturaProveedorView() {
         return bud;
     bud = new FacturaProveedorView(this , 0,theApp->translate("Edicion de Facturas Proveedor", "company"));
     return bud;
-}// end FacturaProveedorView
+}
 
 void company::s_newFacturaPro() {
     FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);
     bud->pintar();
     bud->show();
-}// end s_nuevaFacturaProveedor
+}
+
+
+CobroView * company::newCobroView() {
+    _depura("company::newCobroView",0);
+    CobroView *bud;
+    if (g_plugins->lanza("company_newCobroView", this, (void **)&bud) )
+        return bud;
+    bud = new CobroView(this , 0,theApp->translate("Edicion de Cobrosr", "company"));
+    return bud;
+}
+
+void company::s_newCobroView() {
+	_depura("company::s_newCobroView",0);
+    CobroView *bud = newCobroView();
+    m_pWorkspace->addWindow(bud);
+    bud->pintar();
+    bud->show();
+}
+
 
 void company::s_newAlbaranPro() {
     _depura ("company::s_newAlbaranPro",0);
@@ -298,19 +318,6 @@ void company::s_newPresupuestoCli() {
     bud->show();
 }// end bud
 
-void company::s_newPedidoCli() {
-    PedidoClienteView *bud = new PedidoClienteView(this , 0,theApp->translate("Pedido Cliente", "company"));
-    m_pWorkspace->addWindow(bud);
-    bud->pintaPedidoCliente();
-    bud->show();
-}// end bud
-
-void company::s_newAlbaranCli() {
-    AlbaranClienteView *bud = new AlbaranClienteView(this , 0,theApp->translate("Edicion de Albaran", "company"));
-    m_pWorkspace->addWindow(bud);
-    bud->pintar();
-    bud->show();
-}// end bud
 
 FacturaView * company::newFacturaView() {
     /// Lanzamos los plugins necesarios.
@@ -327,6 +334,7 @@ void company::s_newFacturaCli() {
         return;
     FacturaView *bud = newFacturaView();
     m_pWorkspace->addWindow(bud);
+    bud->cargar("0");
     bud->pintaFactura();
     bud->show();
 }// end bud
@@ -409,11 +417,8 @@ void company::s_seriesFactura() {
 
 void company::s_provincias() {
 	_depura("INIT_company::s_provincias",1);
-
 	ListProvinciasView lser(this,0);
-
 	lser.exec();
-
 	_depura("END_company::s_provincias",1);
 }// end s_seriesFactura
 
@@ -449,3 +454,39 @@ void company::s_newInventario() {
     m_pWorkspace->addWindow(bud);
     bud->show();
 }// end s_nuevaFacturaProveedor
+
+
+AlbaranClienteView * company::newAlbaranClienteView() {
+    /// Lanzamos los plugins necesarios.
+    AlbaranClienteView *bud;
+    if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud) )
+        return bud;
+    bud = new AlbaranClienteView(this , 0,theApp->translate("Edicion de Albarnaes a Clientes", "company"));
+    return bud;
+}
+
+void company::s_newAlbaranClienteView() {
+    AlbaranClienteView *bud = newAlbaranClienteView();
+    m_pWorkspace->addWindow(bud);
+    bud->pintar();
+    bud->show();
+}
+
+
+PedidoClienteView * company::newPedidoClienteView() {
+    /// Lanzamos los plugins necesarios.
+    PedidoClienteView *bud;
+    if (g_plugins->lanza("company_newPedidoClienteView", this, (void **)&bud) )
+        return bud;
+    bud = new PedidoClienteView(this , 0,theApp->translate("Edicion de Pedidos a Clientes", "company"));
+    return bud;
+}
+
+void company::s_newPedidoClienteView() {
+    PedidoClienteView *bud = newPedidoClienteView();
+    m_pWorkspace->addWindow(bud);
+    bud->pintar();
+    bud->show();
+}
+
+

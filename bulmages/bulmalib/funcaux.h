@@ -39,9 +39,12 @@ using std::string;
 
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al QMainWindow respectivo en cada caso. Se usa para acceder a determiandos elementos especificos de la ventana como el statusBar
 #include <Q3MainWindow>
+#include <QMainWindow>
 #include <QStatusBar>
 
-extern Q3MainWindow *g_main;
+//extern Q3MainWindow *g_main;
+/// Con BulmaFAct ya no es  asi
+extern QMainWindow *g_main;
 
 
 /** \brief Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.  */

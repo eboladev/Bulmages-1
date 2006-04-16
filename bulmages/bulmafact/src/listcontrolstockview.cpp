@@ -9,6 +9,37 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+#include "listcontrolstockview.h"
+
+ListControlStockView::ListControlStockView(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("controlstock");
+    setDBCampoId("idarticulo");
+    addSHeader("punteocontrolstock", DBCampo::DBboolean, DBCampo::DBNothing, SHeader::DBNone, "punteocontrolstock");
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "codigoalmacen");
+    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomalmacen");
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codigocompletoarticulo");
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomalmacen");
+    addSHeader("stockantcontrolstock", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, "stockantcontrolstock");
+    addSHeader("stocknewcontrolstock", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, "stocknewcontrolstock");
+
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idarticulo");
+    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idalmacen");
+    addSHeader("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idinventario");
+
+
+    addSHeader("idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idarticulo");
+    addSHeader("idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idalmacen");
+    addSHeader("idinventariopk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idinventario");
+
+
+    setinsercion(FALSE);
+}
+
+
+
+
+
+/*
 
 
 #define COL_PUNTEOCONTROLSTOCK 0
@@ -21,6 +52,10 @@
 #define COL_NOMALMACEN 7
 #define COL_STOCKANTCONTROLSTOCK 8
 #define COL_STOCKNEWCONTROLSTOCK 9
+
+
+
+
 
 
 
@@ -273,3 +308,7 @@ void ListControlStockView::manageAlmacen(int row) {
     linea->setcodigoalmacen(text(row,COL_CODALMACEN));
     pintalinListControlStock(row);
 } //end manageArticle
+
+
+
+*/

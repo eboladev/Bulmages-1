@@ -15,7 +15,8 @@
 #include "funcaux.h"
 
 BusquedaArticulo::BusquedaArticulo(QWidget *parent, const char *name)
-: BusquedaArticuloBase(parent, name) {
+: QWidget(parent, name) {
+	setupUi(this);
     companyact=NULL;
     mdb_idarticulo="";
     mdb_nomarticulo="";
@@ -61,30 +62,26 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
 }
 
 
-// Bsqueda de Clientes.
-void BusquedaArticulo::s_searchArticulo() {
-    _depura("BusquedaArticulo::s_searchArticulo",0);
-    ArticuloList *articulos = new ArticuloList(companyact, NULL, tr("Seleccione articulo","company"),0,ArticuloList::SelectMode);
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    articulos->show();
-    while(!articulos->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
+// Bsqueda de Articulos.
+void BusquedaArticulo::on_mui_buscar_clicked() {
+    _depura("BusquedaArticulo::on_mui_buscar_clicked",0);
+    QDialog *diag=new QDialog(0);
+    diag->setModal(true);
+    ArticuloList *articulos = new ArticuloList(companyact, diag, tr("Seleccione articulo","company"),0,ArticuloList::SelectMode);
+    connect(articulos, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    diag->exec();
     if (articulos->codigocompletoarticulo() !="") {
-// && articulos->codigocompletoarticulo() !=NULL
         m_codigocompletoarticulo->setText(articulos->codigocompletoarticulo());
         mdb_codigocompletoarticulo = articulos->codigocompletoarticulo();
         m_nomarticulo->setText(articulos->nomarticulo());
         mdb_nomarticulo = articulos->nomarticulo();
         mdb_idarticulo = articulos->idarticulo();
     }// end if
-    delete articulos;
-//    emit(valueChanged(mdb_idarticulo));
+    delete diag;
 }// end searchClient
 
 
-void BusquedaArticulo::s_codigocompletoarticulotextChanged(const QString &val) {
+void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &val) {
     mdb_codigocompletoarticulo=val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='"+mdb_codigocompletoarticulo+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);

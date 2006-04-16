@@ -17,7 +17,8 @@
 #include "funcaux.h"
 
 BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
-: BusquedaProveedorBase(parent, name) {
+: QWidget(parent, name) {
+    setupUi(this);
     companyact=NULL;
     mdb_idproveedor="";
     mdb_nomproveedor="";
@@ -64,7 +65,7 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 
 
 // Bsqueda de Proveedors.
-void BusquedaProveedor::s_searchProveedor() {
+void BusquedaProveedor::on_mui_buscar_clicked() {
     _depura("Busqueda de un provider\n",0);
 
     // Esto es convertir un QWidget en un sistema modal de dialogo.
@@ -76,8 +77,6 @@ void BusquedaProveedor::s_searchProveedor() {
 
 	connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
 	diag->exec();
-
-
 
     if (providers->cifprovider() !="") {
         m_cifproveedor->setText(providers->cifprovider());
@@ -91,7 +90,7 @@ void BusquedaProveedor::s_searchProveedor() {
 }// end searchClient
 
 
-void BusquedaProveedor::s_cifproveedortextChanged(const QString &val) {
+void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     mdb_cifproveedor=val;
     QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='"+mdb_cifproveedor+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);

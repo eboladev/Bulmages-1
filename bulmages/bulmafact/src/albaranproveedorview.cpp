@@ -178,13 +178,10 @@ int AlbaranProveedorView::guardar() {
     setidproveedor(m_proveedor->idproveedor());
     setfechaalbaranp(m_fechaalbaranp->text());
     setidalmacen(m_almacen->idalmacen());
-    //    setidtrabajador(m_trabajador->idtrabajador());
     setidforma_pago(m_forma_pago->idforma_pago());
     setrefalbaranp(m_refalbaranp->text());
     setdescalbaranp(m_descalbaranp->text());
 
-    //    setcontactalbaranp(m_contactalbaranp->text());
-    //    settelalbaranp(m_telalbaranp->text());
 
     int err = AlbaranProveedor::guardar();
     dialogChanges_cargaInicial();

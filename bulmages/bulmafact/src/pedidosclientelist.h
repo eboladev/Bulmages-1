@@ -140,7 +140,7 @@ public slots:
 	};
 	virtual void on_mui_crear_clicked()
 	{
-		companyact->s_newPedidoCli();
+		companyact->s_newPedidoClienteView();
 	};
 	virtual void on_mui_actualizar_clicked()
 	{

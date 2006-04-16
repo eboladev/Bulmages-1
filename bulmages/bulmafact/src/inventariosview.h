@@ -23,46 +23,58 @@
 
 #include <Q3Frame>
 
-#include "inventariosbase.h"
+
 #include "company.h"
+#include "subform2bf.h"
 
-
-class InventariosView : public InventariosBase
-{
-	Q_OBJECT
-
-private:
-	company *companyact;
-
+class InventariosSubForm : public SubForm2Bf {
+    Q_OBJECT
 public:
-	InventariosView(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	InventariosView(company *,QWidget *parent = 0, const char *name = 0);
-	~InventariosView();
-	void inicializa();
-	void setcompany (company *comp)
-	{
-		companyact = comp;
-	};
-	void meteWindow(QString nom, QObject *obj)
-	{
-		if (companyact != NULL)
-		{
-			companyact->meteWindow(nom, obj);
-		}
-	};
+    InventariosSubForm(QWidget *parent = 0, const char *name = 0);
+    ~InventariosSubForm() {}
+    ;
+public slots:
+    virtual void cargar() {
+        _depura("InventariosSubform::cargar\n",0);
+        QString SQLQuery = "SELECT * FROM inventario";
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm2::cargar(cur);
+        delete cur;
+    };
+};
+
+
+#include "ui_inventariosbase.h"
+
+
+class InventariosView : public QWidget, public Ui_InventariosBase {
+    Q_OBJECT
+private:
+    company *companyact;
+public:
+    InventariosView(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+    InventariosView(company *,QWidget *parent = 0, const char *name = 0);
+    ~InventariosView();
+    void inicializa();
+    void setcompany (company *comp) {
+        companyact = comp;
+        mui_listado->setcompany(comp);
+    };
+    void meteWindow(QString nom, QObject *obj) {
+        if (companyact != NULL) {
+            companyact->meteWindow(nom, obj);
+        }
+    };
 
 public slots:
-	virtual void doubleclicked(int, int , int , const QPoint &);
-	virtual void s_new()
-	{
-		companyact->s_newInventario();
-	};
-    	virtual void s_edit();
-	virtual void s_refresh()
-	{
-		inicializa();
-	};
-	virtual void s_delete();
+    virtual void on_mui_listado_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
+    virtual void on_mui_crear_clicked() {
+        companyact->s_newInventario();
+    };
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_borrar_clicked();
 };
 
 #endif

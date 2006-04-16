@@ -9,14 +9,14 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
-#include "inventariosview.h"
-#include "company.h"
-#include "qtable1.h"
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QFile>
-//Added by qt3to4:
 #include <QTextStream>
+
+#include "inventariosview.h"
+#include "company.h"
+#include "qtable1.h"
 #include "funcaux.h"
 #include "inventarioview.h"
 
@@ -29,16 +29,19 @@
 
 
 InventariosView::InventariosView(QWidget *parent, const char *name, Qt::WFlags flag)
-        : InventariosBase(parent, name, flag) {
+        : QWidget(parent, name, flag) {
+    setupUi(this);
     companyact = NULL;
     meteWindow(caption(),this);
-}// end providerslist
+}
 
 
 InventariosView::InventariosView(company *comp, QWidget *parent, const char *name)
-        : InventariosBase(parent, name, Qt::WDestructiveClose) {
+        : QWidget(parent, name, Qt::WDestructiveClose) {
+    setupUi(this);
     companyact = comp;
-    inicializa();
+    mui_listado->setcompany(comp);
+    mui_listado->cargar();
     meteWindow(caption(),this);
 }
 
@@ -48,72 +51,47 @@ InventariosView::~InventariosView() {
 }
 
 
-void InventariosView::inicializa() {
-    _depura("InventariosView::inicializa()",1);
-    m_list->setNumRows( 0 );
-    m_list->setNumCols( 0 );
-    m_list->setSelectionMode( Q3Table::SingleRow );
-    m_list->setSorting( TRUE );
-    m_list->setColumnMovingEnabled( TRUE );
-    m_list->setNumCols(3);
-    m_list->horizontalHeader()->setLabel( COL_IDINVENTARIO, tr( "COL_IDINVENTARIO" ) );
-    m_list->horizontalHeader()->setLabel( COL_NOMINVENTARIO, tr( "COL_NOMINVENTARIO" ) );
-    m_list->horizontalHeader()->setLabel( COL_FECHAINVENTARIO, tr( "COL_FECHAINVENTARIO" ) );
-    m_list->setColumnWidth(COL_FECHAINVENTARIO,75);
-    // Establecemos el color de fondo del extracto. El valor lo tiene la clase configuracion que es global.
-    m_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_LISTFACTURASCLIENTE));
-    m_list->setReadOnly(TRUE);
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM inventario");
-    m_list->setNumRows( cur->numregistros() );
-    int i=0;
-    while (!cur->eof()) {
-        m_list->setText(i,COL_IDINVENTARIO,cur->valor("idinventario"));
-        m_list->setText(i,COL_NOMINVENTARIO,cur->valor("nominventario"));
-        m_list->setText(i,COL_FECHAINVENTARIO,cur->valor("fechainventario"));
-        i++;
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
-    _depura("END InventariosView::inicializa()",1);
-}// end inicializa
 
-
-
-
-void InventariosView::doubleclicked(int a, int , int , const QPoint &) {
-    QString idinventario = m_list->text(a,COL_IDINVENTARIO);
+void InventariosView::on_mui_editar_clicked() {
+    int a = mui_listado->currentRow();
+    QString idinventario = mui_listado->item(a,COL_IDINVENTARIO)->text();
     if ( idinventario != "") {
         InventarioView *bud = new InventarioView(companyact,0,theApp->translate("Edicion Inventario", "company"));
-        if (bud->cargaInventario(idinventario)) return;
-
+        if (bud->cargar(idinventario)) return;
         companyact->m_pWorkspace->addWindow(bud);
         bud->show();
     } else {
-        close();
+	_depura("Debe seleccionar una linea",2);
     }// end if
+
 }
 
 
-void InventariosView::s_edit() {
-    int a = m_list->currentRow();
-	if (a >=0 ) 
-    	doubleclicked(a,0,0, QPoint());
-	else
-	_depura("Debe seleccionar una linea",2);
-}// end s_edit
-
-
-void InventariosView::s_delete() {
-    int a = m_list->currentRow();
+void InventariosView::on_mui_borrar_clicked() {
+    int a = mui_listado->currentRow();
     if (a >= 0) {
-        QString idinventario = m_list->text(a,COL_IDINVENTARIO);
+        QString idinventario = mui_listado->item(a,COL_IDINVENTARIO)->text();
         if (idinventario != "") {
             InventarioView *inv = new InventarioView(companyact,0,theApp->translate("Edicion Inventario", "company"));
             companyact->m_pWorkspace->addWindow(inv);
-            inv->cargaInventario(idinventario);
+            inv->cargar(idinventario);
             /// Hacemos el borrado sin mostrar pantalla ni nada
-            inv->s_delete();
-            inicializa();
+            inv->on_mui_borrar_clicked();
+	    mui_listado->cargar();
         }// end if
     }// end if
-}// end s_edit
+}
+
+/// =============================================================================
+///                    SUBFORMULARIO
+/// =============================================================================
+InventariosSubForm::InventariosSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    setDBTableName("inventario");
+    setDBCampoId("idinventario");
+    addSHeader("idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView, "idalbaran");
+    addSHeader("nominventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nominventario");
+    addSHeader("fechainventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechainventario");
+    setinsercion(FALSE);
+};
+
+

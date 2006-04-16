@@ -24,12 +24,12 @@
 #include <QLineEdit>
 #include <QLabel>
 
-#include <busquedaproveedorbase.h>
+#include "ui_busquedaproveedorbase.h"
 
 
 class company;
 
-class BusquedaProveedor : public BusquedaProveedorBase
+class BusquedaProveedor : public QWidget, public Ui_BusquedaProveedorBase
 {
 	Q_OBJECT
 
@@ -62,8 +62,8 @@ public:
 	};
 
 public slots:
-	virtual void s_searchProveedor();
-	virtual void s_cifproveedortextChanged(const QString &);
+	virtual void on_mui_buscar_clicked();
+	virtual void on_m_cifproveedor_textChanged(const QString &);
 
 signals:
 	void valueChanged(QString);

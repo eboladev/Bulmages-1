@@ -10,6 +10,98 @@
 //
 //
 
+
+#include <QMessageBox>
+#include <Q3PopupMenu>
+#include <QKeyEvent>
+#include <QEvent>
+
+#include "articulolist.h"
+#include "listlinpresupuestoview.h"
+#include "funcaux.h"
+#include "fixed.h"
+
+
+listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(parent) {
+    setDBTableName("lpresupuesto");
+    setDBCampoId("idlpresupuesto");
+//    addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "");
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "");
+    addSHeader("idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "");
+    addSHeader("desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "");
+    addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+
+    setinsercion(TRUE);
+};
+
+
+
+
+void listlinpresupuestoview::editFinished(int row, int col) {
+    _depura("listlinpresupuestoview::editFinished",0);
+    SDBRecord *rec = lineaat(row);
+    SDBCampo *camp = (SDBCampo *) item(row,col);
+    camp->refresh();
+    if (camp->nomcampo() == "codigocompletoarticulo") {
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
+        if (!cur->eof() ) {
+            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
+            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
+            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+            rec->setDBvalue("desclpresupuesto", cur->valor("nomarticulo"));
+            rec->setDBvalue("cantlpresupuesto", "1.00");
+	    rec->setDBvalue("descuentolpresupuesto","0.00");
+	    rec->setDBvalue("pvplpresupuesto",cur->valor("pvparticulo"));
+        }// end if
+
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur->eof() ) {
+	    rec->setDBvalue("ivalpresupuesto",cur1->valor("porcentasa_iva"));		
+        }// end if
+	delete cur1;
+	delete cur;
+
+    }// end if
+};
+
+
+
+void listlinpresupuestoview::cargar(QString idpresupuesto) {
+        _depura("listlinpresupuestoview::cargar\n",0);
+        mdb_idpresupuesto = idpresupuesto;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto="+mdb_idpresupuesto);
+        SubForm2::cargar(cur);
+        delete cur;
+}
+
+Fixed listlinpresupuestoview::calculabase() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpresupuesto",i)) * Fixed(DBvalue("cantlpresupuesto",i));
+		base = base + totpar;
+        }// end for
+	return base;
+}
+
+
+Fixed listlinpresupuestoview::calculaiva() {
+	Fixed base("0.0");
+        for (int i=0; i < rowCount()-1; i++) {
+		Fixed totpar = Fixed(DBvalue("pvplpresupuesto",i)) * Fixed(DBvalue("ivalpresupuesto",i));
+		base = base + totpar;
+        }// end for
+	return base;
+}
+
+
+
+/*
 #define COL_IDLPRESUPUESTO 0
 #define COL_IDARTICULO 1
 #define COL_CODARTICULO 2
@@ -330,4 +422,4 @@ QString listlinpresupuestoview::searchArticle() {
     return idArticle;
 }// end searchArticle
 
-
+*/

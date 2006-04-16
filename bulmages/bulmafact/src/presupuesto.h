@@ -28,8 +28,8 @@
 #include <Q3PtrList>
 
 #include "fixed.h"
-#include "listlinpresupuesto.h"
-#include "listdescpresupuesto.h"
+#include "listlinpresupuestoview.h"
+#include "listdescpresupuestoview.h"
 #include "company.h"
 #include "linpresupuesto.h"
 #include "dbrecord.h"
@@ -41,29 +41,29 @@ class presupuesto : public DBRecord
 {
 
 protected:
-	listlinpresupuesto *listalineas;
-	ListDescuentoPresupuesto *listadescuentos;
+	listlinpresupuestoview *listalineas;
+	ListDescuentoPresupuestoView *listadescuentos;
 	company *companyact;
 
 public:
 	presupuesto(company *);
 	/// Establece cual es la lista subformulario del presupuesto. Normalmente
 	/// para apuntar listlinpresupuestoview.
-	void setlislinpresupuesto(listlinpresupuesto *a)
+	void setlislinpresupuesto(listlinpresupuestoview *a)
 	{
 		listalineas = a;
 		listalineas->setcompany(companyact);
 	};
-	void setlisdescpresupuesto(ListDescuentoPresupuesto *a)
+	void setlisdescpresupuesto(ListDescuentoPresupuestoView *a)
 	{
 		listadescuentos = a;
 		listadescuentos->setcompany(companyact);
 	};
-	listlinpresupuesto* _listalineas()
+	listlinpresupuestoview* _listalineas()
 	{
 		return listalineas;
 	};
-	ListDescuentoPresupuesto * _listadescuentos()
+	ListDescuentoPresupuestoView * _listadescuentos()
 	{
 		return listadescuentos;
 	};
@@ -132,10 +132,10 @@ public:
 		return DBvalue("idtrabajador");
 	};
 	virtual ~presupuesto();
-	virtual int chargeBudget(QString);
+	virtual int cargar(QString);
 	virtual void pintaPresupuesto();
-	virtual void guardapresupuesto();
-	virtual void borraPresupuesto();
+	virtual int guardar();
+	virtual int borrar();
 	virtual void imprimirPresupuesto();
 	virtual void calculaypintatotales();
 	virtual QString detalleArticulos();
@@ -202,38 +202,35 @@ public:
 	{
 		setDBvalue("idtrabajador", val);
 	};
-	void setNumPresupuesto(QString val)
+	void setnumpresupuesto(QString val)
 	{
 		setDBvalue("numpresupuesto", val);
 	};
-	void setFPresupuesto(QString val)
+	void setfpresupuesto(QString val)
 	{
 		setDBvalue("fpresupuesto", val);
 	};
-	void setVencPresupuesto(QString val)
+	void setvencpresupuesto(QString val)
 	{
 		setDBvalue("vencpresupuesto", val);
 	};
-	void setContractPresupuesto(QString val)
+	void setcontactpresupuesto(QString val)
 	{
 		setDBvalue("contactpresupuesto", val);
 	};
-	void setTelPresupuesto(QString val)
+	void settelpresupuesto(QString val)
 	{
 		setDBvalue("telpresupuesto", val);
 	};
-	void setComentPresupuesto(QString val)
+	void setcomentpresupuesto(QString val)
 	{
 		setDBvalue("comentpresupuesto", val);
 	};
 	void setidpresupuesto(QString val)
 	{
 		setDBvalue("idpresupuesto", val);
-		listalineas->setidpresupuesto(val);
-	};
-	void setIdUsuari(QString val)
-	{
-		setDBvalue("idusuari", val);
+		listalineas->setColumnValue("idpresupuesto",val);
+		listadescuentos->setColumnValue("idpresupuesto",val);
 	};
 	void setprocesadopresupuesto(QString val)
 	{

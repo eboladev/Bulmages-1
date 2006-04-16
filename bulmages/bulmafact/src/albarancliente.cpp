@@ -114,35 +114,34 @@ void AlbaranCliente::pintar()
 	pintatelalbaran(DBvalue("telalbaran"));
 	pintaprocesadoalbaran(DBvalue("procesadoalbaran"));
 	/// Pinta el subformulario de detalle del AlbaranCliente.
-//	listalineas->pintaListLinAlbaranCliente();
-//	listadescuentos->pintaListDescuentoAlbaranCliente();
 	/// Pintamos los totales
 	calculaypintatotales();
 }
 
 
 /// Esta funcioncarga un AlbaranCliente.
-int AlbaranCliente::cargar(QString idbudget)
+int AlbaranCliente::cargar(QString idalbaran)
 {
-	_depura("AlbaranCliente::cargaAlbaranCliente(" + idbudget + ").", 0);
-	QString query = "SELECT * FROM albaran WHERE idalbaran=" + idbudget;
+	_depura("AlbaranCliente::cargar", 0);
+
+	QString query = "SELECT * FROM albaran WHERE idalbaran=" + idalbaran;
 	cursor2 * cur= companyact->cargacursor(query);
 	if (!cur->eof())  {
 		DBload(cur);
 	}
 	delete cur;
 
-	listalineas->cargar(idbudget);
-	/// Si no existe lista de descuentos se crea una.
+	listalineas->cargar(idalbaran);
+	listadescuentos->cargar(idalbaran);
 
-	listadescuentos->cargar(idbudget);
 	pintar();
-	_depura("Fin AlbaranCliente::cargaAlbaranCliente(" + idbudget + ").", 0);
+	_depura("Fin AlbaranCliente::cargar", 0);
 	return 0;
 }
 
 
 int AlbaranCliente::guardar() {
+	_depura("AlbaranCliente::guardar",0);
 	/// Todo el guardado es una transaccion.
 	QString id;
 	companyact->begin();
@@ -152,9 +151,21 @@ int AlbaranCliente::guardar() {
 		return -1;
 	}
 	setidalbaran(id);
+	error = listalineas->guardar();
+	if (error) {
+		companyact->rollback();
+		return -1;
+	}// end if
+	error = listadescuentos->guardar();
+	if (error) {
+		companyact->rollback();
+		return -1;
+	}// end if
+
 	companyact->commit();
-	listalineas->guardar();
-	listadescuentos->guardar();
+
+	_depura("END AlbaranCliente::guardar",0);
+
 	return 0;
 }
 

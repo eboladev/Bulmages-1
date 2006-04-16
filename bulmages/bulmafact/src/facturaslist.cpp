@@ -183,20 +183,21 @@ void FacturasList::configurar() {
 
 }// end s_configurar
 
-FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag)
+FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag,edmode editmodo)
         : QWidget(parent, name, flag) {
 	setupUi(this);
     m_companyact = NULL;
-    m_modo=0;
+    m_modo=editmodo;
     mdb_idfactura="";
-    meteWindow(caption(),this);
+    if (m_modo == EditMode)
+        meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
     cargaconfig();
 }// end providerslist
 
-FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+FacturasList::FacturasList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag,edmode editmodo)
+        : QWidget(parent, name, flag) {
 	setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(m_companyact);
@@ -205,16 +206,18 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name)
 
     cargaconfig();
     presenta();
-    m_modo=0;
+    m_modo=editmodo;
     mdb_idfactura="";
-    meteWindow(caption(),this);
+    if (m_modo == EditMode)
+        meteWindow(caption(),this);
     hideBusqueda();
     hideConfiguracion();
 }
 
 
 FacturasList::~FacturasList() {
-    m_companyact->sacaWindow(this);
+    if (m_modo == EditMode)
+        m_companyact->sacaWindow(this);
     guardaconfig();
 }
 

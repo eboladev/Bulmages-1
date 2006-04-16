@@ -14,7 +14,8 @@
 #include "company.h"
 
 BusquedaFamilia::BusquedaFamilia(QWidget *parent, const char *name)
-: BusquedaFamiliaBase(parent, name) {
+: QWidget(parent, name) {
+    setupUi(this);
     companyact=NULL;
     mdb_idfamilia="";
     mdb_nombrefamilia="";
@@ -60,7 +61,7 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 
 
 // Bsqueda de Familias.
-void BusquedaFamilia::s_searchFamilia() {
+void BusquedaFamilia::on_mui_buscar_clicked() {
 	familiasview *fam = new familiasview(companyact, 0,0);
 	fam->setModoConsulta();
 	if (fam->exec() == 1) {
@@ -75,7 +76,7 @@ void BusquedaFamilia::s_searchFamilia() {
 }// end searchClient
 
 
-void BusquedaFamilia::s_codigofamiliatextChanged(const QString &val) {
+void BusquedaFamilia::on_m_codigofamilia_textChanged(const QString &val) {
     mdb_codigocompletofamilia=val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='"+mdb_codigocompletofamilia+"'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);

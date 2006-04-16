@@ -126,6 +126,8 @@ public slots:
 		presenta();
 	};
 
+signals:
+	void selected(QString);
 };
 
 #endif
