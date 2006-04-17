@@ -29,10 +29,21 @@
 #include <sys/wait.h>
 #endif
 
-
 BSelector::BSelector(QWidget * parent,const char * name) 
-  : Q3MainWindow(parent,name) {
+  : QMainWindow(parent,name) {
   setupUi(this);
+
+    // signals and slots connections
+  QObject::connect(salir, SIGNAL(clicked()), this, SLOT(salir_clicked()));
+  QObject::connect(seleccionaempresa, SIGNAL(clicked()), this, SLOT(seleccionaempresa_clicked()));
+  QObject::connect(m_iglues, SIGNAL(clicked()), this, SLOT(m_iglues_clicked()));
+  QObject::connect(m_bulmatpv, SIGNAL(clicked()), this, SLOT(m_bulmatpv_clicked()));
+  QObject::connect(m_bulmacont, SIGNAL(clicked()), this, SLOT(contabilidad_clicked()));
+  QObject::connect(m_galopin, SIGNAL(clicked()), this, SLOT(produccion_clicked()));
+  QObject::connect(m_bulmafact, SIGNAL(clicked()), this, SLOT(m_bulmafact_clicked()));
+  QObject::connect(configura, SIGNAL(clicked()), this, SLOT(configura_clicked()));
+  QObject::connect(m_bcontaweb, SIGNAL(clicked()), this, SLOT(m_bcontaweb_clicked()));
+
   ///Al crear el selector, todos los modulos estan cerrados = NULL
   m_tipoempresa = "";
   // Mira si está�instalado el bulmafact y de no estarlo desabilita el bot�.
@@ -86,7 +97,7 @@ void BSelector::m_bulmatpv_clicked() {
    if (m_empresabd != "") {
       char cadena[300];
       sprintf(cadena,"bulmatpv bulmatpv %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
-      system (cadena);
+      system(cadena);
    }// end if
 }// end m_bulmatpv_clicked
 
@@ -132,7 +143,6 @@ void BSelector::produccion_clicked() {
 void BSelector::m_bcontaweb_clicked() {
    system(confpr->valor(CONF_NAVEGADOR)+" http://localhost/bcontaweb/ &");
 }
-
 
 ///Boton para entrar en el modulo de Facturación
 void BSelector::m_bulmafact_clicked() {

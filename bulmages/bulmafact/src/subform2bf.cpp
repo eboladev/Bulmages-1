@@ -59,9 +59,6 @@ void SubForm2Bf::pressedSlash(int row, int col) {
     camp->set(text);
 };
 
-
-
-
 void SubForm2Bf::editFinished(int row, int col) {
     _depura("SubForm2Bf::editFinished",0);
     SDBRecord *rec = lineaat(row);
@@ -76,7 +73,6 @@ void SubForm2Bf::editFinished(int row, int col) {
         }
     }
 };
-
 
 void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     _depura("SubForm2Bf::contextMenuEvent",0);

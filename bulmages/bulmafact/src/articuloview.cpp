@@ -29,10 +29,8 @@
 #include <Q3FileDialog>
 #include <QCloseEvent>
 
-
 #include "articuloview.h"
 #include "company.h"
-#include "division.h"
 #include "familiasview.h"
 #include "tiposarticuloview.h"
 #include "busquedafamilia.h"

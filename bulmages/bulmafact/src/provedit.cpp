@@ -62,7 +62,6 @@ CREATE TABLE proveedor (
 
 #include "provedit.h"
 #include "company.h"
-#include "division.h"
 #include <QLineEdit>
 #include <QMessageBox>
 #include <Q3Table>

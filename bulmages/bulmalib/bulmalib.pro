@@ -118,5 +118,4 @@ windows{
 #The following line was inserted by qt3to4
 QT += xml  
 #The following line was inserted by qt3to4
-# CONFIG += uic3
-
+CONFIG += uic

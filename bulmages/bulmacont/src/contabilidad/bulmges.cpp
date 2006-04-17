@@ -24,101 +24,90 @@
 #include "fileprint.xpm"
 
 bulmges::bulmges()
-    : QMainWindow( 0, "bulmges", WDestructiveClose )
+  :QMainWindow(0,"bulmges",WDestructiveClose)
 {
-    printer = new QPrinter;
-    QPixmap openIcon, saveIcon, printIcon;
+  printer = new QPrinter;
+  QPixmap openIcon, saveIcon, printIcon;
 
-    QToolBar * fileTools = new QToolBar( this, "file operations" );
-    fileTools->setLabel( tr("File Operations") );
+  QToolBar * fileTools=new QToolBar(this, "file operations");
+  fileTools->setLabel(tr("File Operations"));
 
-    openIcon = QPixmap( fileopen );
-    QToolButton * fileOpen
-	= new QToolButton( openIcon, tr("Open File"), QString::null,
-			   this, SLOT(choose()), fileTools, "open file" );
+  openIcon=QPixmap(fileopen);
+  QToolButton *fileOpen=new QToolButton(openIcon,tr("Open File"),QString::null,this,SLOT(choose()),fileTools,"open file");
 
-    saveIcon = QPixmap( filesave );
-    QToolButton * fileSave
-	= new QToolButton( saveIcon, tr("Save File"), QString::null,
-			   this, SLOT(save()), fileTools, "save file" );
+  saveIcon=QPixmap(filesave);
+  QToolButton *fileSave=new QToolButton(saveIcon,tr("Save File"),QString::null,this, SLOT(save()), fileTools, "save file" );
 
-    printIcon = QPixmap( fileprint );
-    QToolButton * filePrint
-	= new QToolButton( printIcon, tr("Print File"), QString::null,
-			   this, SLOT(print()), fileTools, "print file" );
+  printIcon=QPixmap(fileprint);
+  QToolButton *filePrint=new QToolButton(printIcon,tr("Print File"),QString::null,this,SLOT(print()),fileTools,"print file");
 
 
-    (void)QWhatsThis::whatsThisButton( fileTools );
+  (void)QWhatsThis::whatsThisButton(fileTools);
 
-    QString fileOpenText = tr("<p><img source=\"fileopen\"> "
-	         "Click this button to open a <em>new file</em>. <br>"
-                 "You can also select the <b>Open</b> command "
-                 "from the <b>File</b> menu.</p>");
+  QString fileOpenText = tr("<p><img source=\"fileopen\"> "
+			    "Click this button to open a <em>new file</em>. <br>"
+			    "You can also select the <b>Open</b> command "
+			    "from the <b>File</b> menu.</p>");
 
-    QWhatsThis::add( fileOpen, fileOpenText );
+  QWhatsThis::add(fileOpen,fileOpenText);
 
-    QMimeSourceFactory::defaultFactory()->setPixmap( "fileopen", openIcon );
+  QMimeSourceFactory::defaultFactory()->setPixmap("fileopen",openIcon);
 
-    QString fileSaveText = tr("<p>Click this button to save the file you "
-                 "are editing. You will be prompted for a file name.\n"
-                 "You can also select the <b>Save</b> command "
-                 "from the <b>File</b> menu.</p>");
+  QString fileSaveText = tr("<p>Click this button to save the file you "
+			    "are editing. You will be prompted for a file name.\n"
+			    "You can also select the <b>Save</b> command "
+			    "from the <b>File</b> menu.</p>");
 
-    QWhatsThis::add( fileSave, fileSaveText );
+  QWhatsThis::add(fileSave,fileSaveText);
 
-    QString filePrintText = tr("Click this button to print the file you "
-                 "are editing.\n You can also select the Print "
-                 "command from the File menu.");
+  QString filePrintText=tr("Click this button to print the file you "
+			   "are editing.\n You can also select the Print "
+			   "command from the File menu.");
 
-    QWhatsThis::add( filePrint, filePrintText );
-
-
-    QPopupMenu * file = new QPopupMenu( this );
-    menuBar()->insertItem( tr("&File"), file );
+  QWhatsThis::add(filePrint,filePrintText);
 
 
-    file->insertItem( tr("&New"), this, SLOT(newDoc()), CTRL+Key_N );
+  QPopupMenu *file=new QPopupMenu(this);
+  menuBar()->insertItem(tr("&File"),file);
 
-    int id;
-    id = file->insertItem( openIcon, tr("&Open..."),
-			   this, SLOT(choose()), CTRL+Key_O );
-    file->setWhatsThis( id, fileOpenText );
+  file->insertItem(tr("&New"),this,SLOT(newDoc()),CTRL+Key_N);
 
-    id = file->insertItem( saveIcon, tr("&Save"),
-			   this, SLOT(save()), CTRL+Key_S );
-    file->setWhatsThis( id, fileSaveText );
+  int id;
+  id=file->insertItem(openIcon, tr("&Open..."),this, SLOT(choose()), CTRL+Key_O );
+  file->setWhatsThis(id,fileOpenText);
 
-    id = file->insertItem( tr("Save &As..."), this, SLOT(saveAs()) );
-    file->setWhatsThis( id, fileSaveText );
+  id=file->insertItem(saveIcon,tr("&Save"),this,SLOT(save()),CTRL+Key_S);
+  file->setWhatsThis(id,fileSaveText);
 
-    file->insertSeparator();
+  id = file->insertItem(tr("Save &As..."),this,SLOT(saveAs()));
+  file->setWhatsThis(id,fileSaveText);
 
-    id = file->insertItem( printIcon, tr("&Print..."),
-			   this, SLOT(print()), CTRL+Key_P );
-    file->setWhatsThis( id, filePrintText );
+  file->insertSeparator();
+  
+  id = file->insertItem(printIcon,tr("&Print..."),this,SLOT(print()),CTRL+Key_P );
+  file->setWhatsThis(id,filePrintText);
 
-    file->insertSeparator();
+  file->insertSeparator();
 
-    file->insertItem( tr("&Close"), this, SLOT(close()), CTRL+Key_W );
+  file->insertItem(tr("&Close"),this,SLOT(close()),CTRL+Key_W);
+  file->insertItem(tr("&Quit"),qApp,SLOT(closeAllWindows()),CTRL+Key_Q);
 
-    file->insertItem( tr("&Quit"), qApp, SLOT( closeAllWindows() ), CTRL+Key_Q );
+  menuBar()->insertSeparator();
 
-    menuBar()->insertSeparator();
+  QPopupMenu *help=new QPopupMenu(this);
+  menuBar()->insertItem(tr("&Help"),help);
 
-    QPopupMenu * help = new QPopupMenu( this );
-    menuBar()->insertItem( tr("&Help"), help );
+  help->insertItem(tr("&About"),this,SLOT(about()),Key_F1);
+  help->insertItem(tr("About &Qt"),this,SLOT(aboutQt()));
+  help->insertSeparator();
+  help->insertItem(tr("What's &This"),this,SLOT(whatsThis()),SHIFT+Key_F1);
 
-    help->insertItem( tr("&About"), this, SLOT(about()), Key_F1 );
-    help->insertItem( tr("About &Qt"), this, SLOT(aboutQt()) );
-    help->insertSeparator();
-    help->insertItem( tr("What's &This"), this, SLOT(whatsThis()), SHIFT+Key_F1 );
+  e = new QTextEdit(this,"editor");
+  e->setFocus();
+  setCentralWidget(e);
+  statusBar()->message(tr("Ready"),2000);
 
-    e = new QTextEdit( this, "editor" );
-    e->setFocus();
-    setCentralWidget( e );
-    statusBar()->message( tr("Ready"), 2000 );
-
-    resize( 450, 600 );
+  resize(450,600);
 }
 
 

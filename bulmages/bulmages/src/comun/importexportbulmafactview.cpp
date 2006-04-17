@@ -43,6 +43,13 @@ void ImportExportBulmafactView::mensajeria(QString mensaje) {
 ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 * con, QWidget * parent, const char * name, Qt::WFlags f=0) 
   : QDialog(parent,name,f), pgimportfiles(con) {
   setupUi(this);
+
+  // signals and slots connections
+  QObject::connect(pushButton33, SIGNAL(clicked()), this, SLOT(botonImportar()));
+  QObject::connect(pushButton33_2, SIGNAL(clicked()), this, SLOT(botonExportar()));
+  QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(close()));
+  QObject::connect(toolButton1_5, SIGNAL(clicked()), this, SLOT(botonBuscarXML()));
+
   conexionbase = con;
   inicializaMensajeria();
 }//end importContaplus

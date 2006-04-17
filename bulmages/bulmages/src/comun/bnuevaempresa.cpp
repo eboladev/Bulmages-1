@@ -20,6 +20,9 @@
 BNuevaEmpresa::BNuevaEmpresa(QWidget * parent, const char * name, Qt::WFlags f)
   : QDialog(parent,name,f) {
   setupUi(this);
+
+  QObject::connect(PushButton1, SIGNAL(clicked()), this, SLOT(accept()));
+  QObject::connect(PushButton1_2, SIGNAL(clicked()), this, SLOT(close()));
 }// end BNuevaEmpresa
 
 

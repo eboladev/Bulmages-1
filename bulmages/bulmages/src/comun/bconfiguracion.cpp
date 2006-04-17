@@ -35,6 +35,17 @@
 BConfiguracion::BConfiguracion(BSelector * ref, QWidget * parent, const char * name, Qt::WFlags f=0) 
   : QDialog(parent,name,f) {
   setupUi(this);
+
+  QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(cerrar()));
+  QObject::connect(pushButtonA_1_2, SIGNAL(clicked()), this, SLOT(nuevaFacturacion()));
+  QObject::connect(pushButton32, SIGNAL(clicked()), this, SLOT(BotonContaplus()));
+  QObject::connect(pushButtonA_4, SIGNAL(clicked()), this, SLOT(BotonA_4restaurarEmpresa()));
+  QObject::connect(m_borrarempresa, SIGNAL(clicked()), this, SLOT(borrarEmpresa()));
+  QObject::connect(pushButtonA_1, SIGNAL(clicked()), this, SLOT(nuevaEmpresa()));
+  QObject::connect(m_backup, SIGNAL(clicked()), this, SLOT(salvarEmpresa()));
+  QObject::connect(pushButtonA_5, SIGNAL(clicked()), this, SLOT(nuevoEjercicio()));
+  QObject::connect(pushButton32_2, SIGNAL(clicked()), this, SLOT(s_importexportbulmafact()));
+
   PunteroAlSelector=ref;
   if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
     cargarFichaBulmages();

@@ -227,3 +227,4 @@ void AlbaranProveedor::imprimirAlbaranProveedor()
 	system("trml2pdf.py /tmp/albaranpproveedor.rml > /tmp/albaranpproveedor.pdf");
 	system("kpdf /tmp/albaranpproveedor.pdf &");
 };
+

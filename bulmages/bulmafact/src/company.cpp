@@ -88,8 +88,6 @@ QString company::searchCompany() {
     return(bd);
 }// end searchCompany
 
-
-
 void company::createMainWindows() {
     m_articleslist = new ArticuloList(this, 0,theApp->translate("Artiulos","company"),0,ArticuloList::EditMode);
     m_pWorkspace->addWindow(m_articleslist);
@@ -119,7 +117,7 @@ void company::createMainWindows() {
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
-    m_clientDelivNotesList = new AlbaranClienteList(this, 0,theApp->translate("Albaranes de Clientes","company"));
+     m_clientDelivNotesList = new AlbaranClienteList(this, 0,theApp->translate("Albaranes de Clientes","company"));
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 
@@ -127,7 +125,7 @@ void company::createMainWindows() {
     m_pWorkspace->addWindow(m_facturasList);
     m_facturasList->hide();
 
-    m_pedidosproveedorList = new PedidosProveedorList(this, 0,theApp->translate("Pedidos a Proveedor","company"));
+   m_pedidosproveedorList = new PedidosProveedorList(this, 0,theApp->translate("Pedidos a Proveedor","company"));
     m_pWorkspace->addWindow(m_pedidosproveedorList);
     m_pedidosproveedorList->hide();
 

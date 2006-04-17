@@ -3,7 +3,7 @@
   <comment></comment>
   <exportmacro></exportmacro>
   <class>selectorbase</class>
-  <widget class="Q3MainWindow" name="selectorbase" >
+  <widget class="QMainWindow" name="selectorbase" >
     <property name="geometry" >
       <rect>
         <x>0</x>
@@ -35,12 +35,6 @@
     <property name="windowTitle" >
       <string>BulmaGes</string>
     </property>
-    <property name="usesBigPixmaps" >
-      <bool>true</bool>
-    </property>
-    <property name="usesTextLabel" >
-      <bool>false</bool>
-    </property>
     <widget class="QWidget" >
       <layout class="QVBoxLayout" >
         <property name="margin" >
@@ -67,7 +61,7 @@
                     <verstretch>0</verstretch>
                   </sizepolicy>
                 </property>
-                <property name="maximumSize" >
+                <property name="maximumSize">
                   <size>
                     <width>10000</width>
                     <height>10000</height>

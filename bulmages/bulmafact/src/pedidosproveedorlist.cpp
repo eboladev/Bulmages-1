@@ -10,6 +10,7 @@
 //
 //
 
+#include <stdio.h>
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QFile>
@@ -96,86 +97,87 @@ void PedidosProveedorList::cargaconfig() {
 }// end cargaconfig
 
 
-void PedidosProveedorList::s_configurar() {
-    if(mver_idpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_IDPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_IDPEDIDOPROVEEDOR);
+void PedidosProveedorList::s_configurar()
+{
+  if(mver_idpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_IDPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_IDPEDIDOPROVEEDOR);
 
-    if(mver_codigoalmacen->isChecked() )
-        mui_list->showColumn(COL_CODIGOALMACEN);
-    else
-        mui_list->hideColumn(COL_CODIGOALMACEN);
+  if(mver_codigoalmacen->isChecked())
+    mui_list->showColumn(COL_CODIGOALMACEN);
+  else
+    mui_list->hideColumn(COL_CODIGOALMACEN);
+  
+  if(mver_refpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_REFPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_REFPEDIDOPROVEEDOR);
 
-    if(mver_refpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_REFPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_REFPEDIDOPROVEEDOR);
+  if(mver_numpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_NUMPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_NUMPEDIDOPROVEEDOR);
 
-    if(mver_numpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_NUMPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_NUMPEDIDOPROVEEDOR);
+  if(mver_descpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_DESCPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_DESCPEDIDOPROVEEDOR);
 
-    if(mver_descpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_DESCPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_DESCPEDIDOPROVEEDOR);
+  if(mver_nomproveedor->isChecked())
+    mui_list->showColumn(COL_NOMPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_NOMPROVEEDOR);
 
-    if(mver_nomproveedor->isChecked() )
-        mui_list->showColumn(COL_NOMPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_NOMPROVEEDOR);
+  if(mver_fechapedidoproveedor->isChecked())
+    mui_list->showColumn(COL_FECHAPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_FECHAPEDIDOPROVEEDOR);
 
-    if(mver_fechapedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_FECHAPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_FECHAPEDIDOPROVEEDOR);
+  if(mver_contacpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_CONTACPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_CONTACPEDIDOPROVEEDOR);
 
-    if(mver_contacpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_CONTACPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_CONTACPEDIDOPROVEEDOR);
+  if(mver_telpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_TELPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_TELPEDIDOPROVEEDOR);
 
-    if(mver_telpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_TELPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_TELPEDIDOPROVEEDOR);
+  if(mver_comentpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_COMENTPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_COMENTPEDIDOPROVEEDOR);
 
-    if(mver_comentpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_COMENTPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_COMENTPEDIDOPROVEEDOR);
+  if(mver_idusuari->isChecked())
+    mui_list->showColumn(COL_IDUSUARI);
+  else
+    mui_list->hideColumn(COL_IDUSUARI);
 
-    if(mver_idusuari->isChecked() )
-        mui_list->showColumn(COL_IDUSUARI);
-    else
-        mui_list->hideColumn(COL_IDUSUARI);
+  if(mver_idproveedor->isChecked())
+    mui_list->showColumn(COL_IDPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_IDPROVEEDOR);
 
-    if(mver_idproveedor->isChecked() )
-        mui_list->showColumn(COL_IDPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_IDPROVEEDOR);
+  if(mver_idalmacen->isChecked())
+    mui_list->showColumn(COL_IDALMACEN);
+  else
+    mui_list->hideColumn(COL_IDALMACEN);
 
-    if(mver_idalmacen->isChecked() )
-        mui_list->showColumn(COL_IDALMACEN);
-    else
-        mui_list->hideColumn(COL_IDALMACEN);
+  if(mver_totalpedidoproveedor->isChecked())
+    mui_list->showColumn(COL_TOTALPEDIDOPROVEEDOR);
+  else
+    mui_list->hideColumn(COL_TOTALPEDIDOPROVEEDOR);
 
-    if(mver_totalpedidoproveedor->isChecked() )
-        mui_list->showColumn(COL_TOTALPEDIDOPROVEEDOR);
-    else
-        mui_list->hideColumn(COL_TOTALPEDIDOPROVEEDOR);
+  if(mver_totalbaseimp->isChecked())
+    mui_list->showColumn(COL_TOTALBASEIMP);
+  else
+    mui_list->hideColumn(COL_TOTALBASEIMP);
 
-    if(mver_totalbaseimp->isChecked() )
-        mui_list->showColumn(COL_TOTALBASEIMP);
-    else
-        mui_list->hideColumn(COL_TOTALBASEIMP);
-
-    if(mver_totalimpuestos->isChecked() )
-        mui_list->showColumn(COL_TOTALIMPUESTOS);
-    else
-        mui_list->hideColumn(COL_TOTALIMPUESTOS);
+  if(mver_totalimpuestos->isChecked())
+    mui_list->showColumn(COL_TOTALIMPUESTOS);
+  else
+    mui_list->hideColumn(COL_TOTALIMPUESTOS);
 
 }// end s_configurar
 
@@ -193,7 +195,8 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, Qt
 }// end providerslist
 
 
-PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag) : QWidget(parent, name, flag) {
+PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag) 
+  : QWidget(parent, name, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);

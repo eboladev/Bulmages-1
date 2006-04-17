@@ -22,7 +22,7 @@
 
 #include "selectorbase.h"
 #include <qevent.h>
-#include <q3mainwindow.h>
+#include <qmainwindow.h>
 #include "abreempresaview.h"
 #include "bconfiguracion.h"
 
@@ -30,7 +30,7 @@
   * @brief Muestra un selector de aplicaciones y configuraci�
   */
 
-class BSelector : public Q3MainWindow, public Ui_selectorbase {
+class BSelector : public QMainWindow, public Ui_selectorbase {
 Q_OBJECT
 
 private:

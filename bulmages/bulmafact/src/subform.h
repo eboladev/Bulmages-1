@@ -14,7 +14,7 @@ public:
 protected:
     QString m_nomcampo;
     QString m_valorcampo;
-    QString m_nompresentacion;
+   QString m_nompresentacion;
     unsigned int   m_restricciones;
     DBCampo::dbtype m_tipo;
     unsigned int m_options;
