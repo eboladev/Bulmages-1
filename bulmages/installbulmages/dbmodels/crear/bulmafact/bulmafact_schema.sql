@@ -278,16 +278,16 @@ END
 CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo () RETURNS "trigger"
 AS '
 DECLARE
-	as RECORD;
+	as_ RECORD;
 	codigocompleto character varying(100);
 	codnumeric integer;
 BEGIN
 	-- Lo primero comprobamos el el código del articulo no esté vacio y de ser así lo llenamos.
 	IF NEW.codarticulo = '''' THEN
-		SELECT INTO as max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
+		SELECT INTO as_ max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 		IF FOUND THEN
-			IF is_number(as.m) THEN
-				codnumeric := to_number(as.m);
+			IF is_number(as_.m) THEN
+				codnumeric := to_number(as_.m);
 				codnumeric := codnumeric +1;
 				NEW.codarticulo := CAST (codnumeric AS varchar);
 				WHILE length(NEW.codarticulo) < 4 LOOP
@@ -299,12 +299,12 @@ BEGIN
 		ELSE
 			NEW.codarticulo = ''0000'';
 		END IF;
-	END IF;
+	END IF; 
 
 	codigocompleto := NEW.codarticulo;
-	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+	SELECT INTO as_ codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
 	IF FOUND THEN
-		codigocompleto := as.codigocompletofamilia || codigocompleto;
+		codigocompleto := as_.codigocompletofamilia || codigocompleto;
 	END IF;
         NEW.codigocompletoarticulo := codigocompleto;
 	RETURN NEW;
