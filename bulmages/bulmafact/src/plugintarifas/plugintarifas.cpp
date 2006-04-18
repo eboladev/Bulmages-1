@@ -43,8 +43,8 @@ void myplugin1::inicializa(bulmafact *bges) {
     QAction *planCuentas = new QAction("&Tarifas", 0);
     planCuentas->setStatusTip("Tarifas");
     planCuentas->setWhatsThis("Tarifas");
-    bges->Artculos->addSeparator();
-    planCuentas->addTo(bges->Artculos);
+    bges->menuArticulos->addSeparator();
+    planCuentas->addTo(bges->menuArticulos);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
 
 }// end inicializa
