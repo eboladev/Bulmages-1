@@ -78,6 +78,7 @@ FORMS += about.ui \
 	 clientebase.ui \
          budgetslistbase.ui \
          bulmafactbase.ui \
+	 listalmacenbase.ui \
          budgetbase.ui
 
 
@@ -163,6 +164,7 @@ HEADERS += bulmafact.h \
 	   clienteview.h \
 	   articulo.h \
 	   subform.h \
+	   listalmacenview.h \
 	   subform2bf.h
 
 	   
@@ -249,6 +251,7 @@ SOURCES += bulmafact.cpp \
 	   clienteview.cpp \
 	   articulo.cpp \
 	   subform.cpp \
+	   listalmacenview.cpp \
 	   subform2bf.cpp
 
 TRANSLATIONS += bulmafact_es.ts \

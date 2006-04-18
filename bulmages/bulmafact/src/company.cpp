@@ -59,6 +59,7 @@
 #include "inventarioview.h"
 #include "plugins.h"
 #include "cobroview.h"
+#include "listalmacenview.h"
 
 company::company() {}// end company
 
@@ -487,4 +488,11 @@ void company::s_newPedidoClienteView() {
     bud->show();
 }
 
+
+void company::s_almacenes() {
+	_depura("INIT_company::s_almacenes",1);
+	ListAlmacenView lser(this,0);
+	lser.exec();
+	_depura("END_company::s_almacenes",1);
+}// end s_seriesFactura
 

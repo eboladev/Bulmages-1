@@ -110,6 +110,8 @@
     <addaction name="actionTrabajadores" />
     <addaction name="separator" />
     <addaction name="actionFormas_de_Pago" />
+    <addaction name="separator" />
+    <addaction name="actionAlmacenes" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -502,6 +504,11 @@
   <action name="actionFormas_de_Pago" >
    <property name="text" >
     <string>Formas de Pago</string>
+   </property>
+  </action>
+  <action name="actionAlmacenes" >
+   <property name="text" >
+    <string>Almacenes</string>
    </property>
   </action>
  </widget>

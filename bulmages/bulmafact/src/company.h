@@ -79,6 +79,10 @@ public:
 	{
 		m_listventanas = doc;
 	};
+	void setWorkspace(QWorkspace *qw)
+	{
+		m_pWorkspace = qw;
+	}
 	void listproviders();
 	void listClients();
 	void s_newProveedor();
@@ -87,10 +91,6 @@ public:
 	void lAlbaranesProveedor();
 	void listBudgets();
 	void listClientDelivNotes();
-	void setWorkspace(QWorkspace *qw)
-	{
-		m_pWorkspace = qw;
-	}
 	void newClientDelivNote();
 	void newPedidoCliente();
 	void newPedidoProveedor();
@@ -133,6 +133,7 @@ public:
         void s_newCobroView();
 	void s_newClienteView();
 	void s_provincias();
+	void s_almacenes();
 	void s_inventarios();
 	void s_newInventario();
 	QString searchCompany();

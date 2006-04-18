@@ -104,7 +104,8 @@ public slots:
 	virtual void on_actionSeries_de_Factura_triggered(){m_company->s_seriesFactura();};
 	virtual void on_actionTrabajadores_triggered(){m_company->s_trabajadores();};
 	virtual void on_actionVentana_Completa_triggered(){s_ventanaCompleta();};
-	virtual void on_actionAcerta_de_triggered(){_depura("Funcion aun no enlazada");};
+	virtual void on_actionAcerta_de_triggered(){s_About();};
+	virtual void on_actionAlmacenes_triggered(){m_company->s_almacenes();};
 	virtual void on_actionListado_de_Pagos_triggered(){_depura("Funcion aun no enlazada");};
 	virtual void on_actionNuevo_Pago_triggered(){_depura("Funcion aun no enlazada");};
 	virtual void on_actionNuevo_Cobro_triggered(){_depura("Funcion aun no enlazada");};
