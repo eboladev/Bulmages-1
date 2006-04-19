@@ -1,6 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C. (Porting to QT4)              *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,34 +20,58 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SUBFORM2BF_H
-#define SUBFORM2BF_H
+#ifndef LISTCONFIGURACIONVIEW_H
+#define LISTCONFIGURACIONVIEW_H
 
-#include <Q3Table>
-#include <QEvent>
+#include <QLineEdit>
+#include <Q3TextEdit>
+#include <QLabel>
+#include <QCheckBox>
 
-#include "comparticulolist.h"
-#include "company.h"
-#include "comparticulo.h"
-#include "qtable2.h"
-#include "subform.h"
+#include "postgresiface2.h"
+#include "cobro.h"
+#include "busquedacliente.h"
+#include "busquedafecha.h"
+#include "subform2bf.h"
 
+class company;
 
-
-class SubForm2Bf : public SubForm2 {
+class ListConfiguracionSubForm : public SubForm2Bf {
 Q_OBJECT
-private:
-	bool m_delete;
 public:
-	SubForm2Bf(QWidget *parent = 0);
-	virtual ~SubForm2Bf() {};
-	void setDelete(bool f) {m_delete=f;};
+	ListConfiguracionSubForm(QWidget *parent = 0, const char *name = 0);
+	~ListConfiguracionSubForm() {};
 public slots:
-        virtual void contextMenuEvent (QContextMenuEvent *);
-    virtual void editFinished(int row, int col);
-    virtual void pressedSlash(int row, int col);
-    virtual void pressedAsterisk(int row, int col);
+	virtual void cargar() {
+    _depura("ListConfiguracionSubForm::cargar\n",0);
+    cursor2 * cur= companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
+	SubForm2::cargar(cur);
+    delete cur;
+};
 };
 
+
+
+
+// CONFIGURACION
+#include "ui_listconfiguracionbase.h"
+
+class ListConfiguracionView : public QDialog, public Ui_ListConfiguracionBase
+{
+	Q_OBJECT
+
+public:
+	company *companyact;
+
+public:
+	ListConfiguracionView( company *comp , QWidget *parent=0, const char *name="");
+	~ListConfiguracionView();
+public slots:
+
+	virtual void on_mui_aceptar_clicked() {
+		mui_listado->guardar();
+		close();
+	};
+};
 
 #endif

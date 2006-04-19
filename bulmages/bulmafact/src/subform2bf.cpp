@@ -21,7 +21,7 @@
 
 
 SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm2(parent) {
-
+    setDelete(TRUE);
 };
 
 void SubForm2Bf::pressedAsterisk(int row, int col) {
@@ -55,8 +55,9 @@ void SubForm2Bf::pressedSlash(int row, int col) {
     _depura("SubForm2Bf::pressedSlash",2);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
-	QString text = editaTexto(camp->text());
-    camp->set(text);
+    QString text = editaTexto(camp->text());
+    camp->set
+    (text);
 };
 
 void SubForm2Bf::editFinished(int row, int col) {
@@ -76,20 +77,36 @@ void SubForm2Bf::editFinished(int row, int col) {
 
 void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     _depura("SubForm2Bf::contextMenuEvent",0);
-    int a = currentRow();
-    if ( a < 0)
+    QAction *del= NULL;
+    int row = currentRow();
+    if ( row < 0)
         return;
+
+    int col = currentColumn();
+    if ( row < 0)
+        return;
+
     QMenu *popup = new QMenu(this);
-    QAction *del = popup->addAction(tr("Borrar"));
+    if(m_delete)
+        del = popup->addAction(tr("Borrar Registro"));
+    popup->addSeparator();
+    QAction *ajustc = popup->addAction(tr("Ajustar Columa"));
+    QAction *ajustac = popup->addAction(tr("Ajustar Altura"));
+
     QAction *ajust = popup->addAction(tr("Ajustar Columnas"));
+    QAction *ajusta = popup->addAction(tr("Ajustar Alturas"));
 
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
-        borrar(a);
-
-    if (opcion == ajust) {
-	resizeColumnsToContents();
-	}
+        borrar(row);
+    if (opcion == ajust)
+        resizeColumnsToContents();
+    if (opcion == ajusta)
+        resizeRowsToContents();
+    if (opcion == ajustc)
+        resizeColumnToContents(col);
+    if (opcion == ajustac)
+        resizeRowToContents(row);
 
     delete popup;
 }

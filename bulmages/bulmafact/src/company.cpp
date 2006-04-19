@@ -60,6 +60,7 @@
 #include "plugins.h"
 #include "cobroview.h"
 #include "listalmacenview.h"
+#include "listconfiguracionview.h"
 
 company::company() {}// end company
 
@@ -494,5 +495,11 @@ void company::s_almacenes() {
 	ListAlmacenView lser(this,0);
 	lser.exec();
 	_depura("END_company::s_almacenes",1);
-}// end s_seriesFactura
+}
 
+void company::s_newListConfiguracionView() {
+	_depura("INIT_company::s_newListConfiguracionView",1);
+	ListConfiguracionView lser(this,0);
+	lser.exec();
+	_depura("END_company::s_newListConfiguracionView",1);
+}

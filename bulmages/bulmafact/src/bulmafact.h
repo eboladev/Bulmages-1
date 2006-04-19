@@ -110,6 +110,7 @@ public slots:
 	virtual void on_actionNuevo_Pago_triggered(){_depura("Funcion aun no enlazada");};
 	virtual void on_actionNuevo_Cobro_triggered(){_depura("Funcion aun no enlazada");};
 	virtual void on_actionListado_de_Cobros_triggered(){_depura("Funcion aun no enlazada");};
+	virtual void on_actionParametros_triggered(){m_company->s_newListConfiguracionView();};
 
 
 

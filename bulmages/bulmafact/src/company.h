@@ -132,6 +132,7 @@ public:
 	void s_newArticulo();
         void s_newCobroView();
 	void s_newClienteView();
+	void s_newListConfiguracionView();
 	void s_provincias();
 	void s_almacenes();
 	void s_inventarios();
