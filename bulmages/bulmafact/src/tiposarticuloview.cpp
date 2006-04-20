@@ -24,7 +24,7 @@
 #define COL_DESCTIPOARTICULO  2
 
 
-tiposarticuloview::tiposarticuloview(company *comp, QWidget *parent, const char *name) : QDialog(parent, name), dialogChanges(this) {
+TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, const char *name) : QDialog(parent, name), dialogChanges(this) {
     setupUi(this);
     companyact = comp;
     m_listTipos->setColumnCount(3);
@@ -38,10 +38,10 @@ tiposarticuloview::tiposarticuloview(company *comp, QWidget *parent, const char 
 }// end familiasview
 
 
-tiposarticuloview::~tiposarticuloview() {}// end ~familiasview
+TipoArticuloList::~TipoArticuloList() {}// end ~familiasview
 
 
-void tiposarticuloview::pintar() {
+void TipoArticuloList::pintar() {
     QTreeWidgetItem * it;
 
     /// vaciamos el arbol
@@ -66,17 +66,17 @@ void tiposarticuloview::pintar() {
 }// end pintar
 
 
-QString tiposarticuloview::codtipo_articulo() {
+QString TipoArticuloList::codtipo_articulo() {
     QTreeWidgetItem *it = m_listTipos->currentItem();
     return it->text(COL_CODTIPOARTICULO);
 };
 
-QString tiposarticuloview::idtipo_articulo() {
+QString TipoArticuloList::idtipo_articulo() {
     QTreeWidgetItem *it = m_listTipos->currentItem();
     return it->text(COL_IDTIPOARTICULO);
 };
 
-QString tiposarticuloview::desctipo_articulo() {
+QString TipoArticuloList::desctipo_articulo() {
     QTreeWidgetItem *it = m_listTipos->currentItem();
     return it->text(COL_DESCTIPOARTICULO);
 };
@@ -87,7 +87,7 @@ QString tiposarticuloview::desctipo_articulo() {
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void tiposarticuloview::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int ) {
+void TipoArticuloList::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int ) {
     if (m_modoConsulta) {
         m_idtipo = item->text(COL_IDTIPOARTICULO);
         done(1);
@@ -100,8 +100,8 @@ void tiposarticuloview::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * ite
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void tiposarticuloview::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current , QTreeWidgetItem *  ) {
-    _depura("tiposarticuloview::on_m_listTipos_itemChanged",0);
+void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *current , QTreeWidgetItem *  ) {
+    _depura("TipoArticuloList::on_m_listTipos_itemChanged",0);
     QString idtipoold = current->text(COL_IDTIPOARTICULO);
     if (idtipoold != "") {
         // Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
@@ -113,7 +113,7 @@ void tiposarticuloview::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *cur
 }
 
 
-void tiposarticuloview::mostrarplantilla() {
+void TipoArticuloList::mostrarplantilla() {
     fprintf(stderr,"mostramos la plantilla\n");
     QString query;
     query= "SELECT * from tipo_articulo WHERE idtipo_articulo="+m_idtipo;
@@ -125,20 +125,20 @@ void tiposarticuloview::mostrarplantilla() {
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr,"Terminamos la ejecución de tiposarticuloview::mostrarplantilla\n");
+    fprintf(stderr,"Terminamos la ejecución de TipoArticuloList::mostrarplantilla\n");
 }// end mostrarplantilla
 
 
 /** Antes de salir de la ventana debemos hacer la comprobaci� de si se ha modificado algo
   * Esta funci� est�dedicada a Francina, Bienvenida al mundo
   */
-void tiposarticuloview::close() {
+void TipoArticuloList::close() {
     trataModificado();
     done(0);
 }// end close
 
 
-bool tiposarticuloview::trataModificado() {
+bool TipoArticuloList::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if ( QMessageBox::warning( this, "Guardar Familia",
@@ -155,7 +155,7 @@ bool tiposarticuloview::trataModificado() {
 /** SLOT que responde a la pulsaci� del bot� de guardar el tipo de iva que se est�editando.
   * Lo que hace es que se hace un update de todos los campos
   */
-void tiposarticuloview::on_mui_guardar_clicked() {
+void TipoArticuloList::on_mui_guardar_clicked() {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo='"+
                     companyact->sanearCadena(m_codTipo->text())+"', desctipo_articulo= '"+
                     companyact->sanearCadena(m_descTipo->text())+"' WHERE idtipo_articulo="+m_idtipo;
@@ -184,8 +184,8 @@ void tiposarticuloview::on_mui_guardar_clicked() {
 /** SLOT que responde a la pulsaci� del bot� de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
-void tiposarticuloview::on_mui_crear_clicked() {
-    _depura("tiposarticuloview::on_mui_crear_clicked",0);
+void TipoArticuloList::on_mui_crear_clicked() {
+    _depura("TipoArticuloList::on_mui_crear_clicked",0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
 
@@ -206,7 +206,7 @@ void tiposarticuloview::on_mui_crear_clicked() {
 /** SLOT que responde a la pulsaci� del bot� de borrar la familia que se est�editando.
   * Lo que hace es que se hace un update de todos los campos
   */
-void tiposarticuloview::on_mui_borrar_clicked() {
+void TipoArticuloList::on_mui_borrar_clicked() {
     trataModificado();
     QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo="+m_idtipo;
     int error = companyact->ejecuta(query);

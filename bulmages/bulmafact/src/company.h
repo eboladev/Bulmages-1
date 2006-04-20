@@ -47,8 +47,10 @@ class FacturaView;
 class FacturaProveedorView;
 class ArticuloView;
 class CobroView;
+class PagoView;
 class AlbaranClienteView;
 class PedidoClienteView;
+class TipoArticuloList;
 
 class company : public postgresiface2
 {
@@ -131,20 +133,26 @@ public:
 	void s_newFacturaCli();
 	void s_newArticulo();
         void s_newCobroView();
+	void s_newPagoView();
 	void s_newClienteView();
 	void s_newListConfiguracionView();
+	void s_newTipoArticuloList();
 	void s_provincias();
 	void s_almacenes();
 	void s_inventarios();
 	void s_newInventario();
+	void viewPagosList();
+	void viewCobrosList();
 	QString searchCompany();
 
 	FacturaProveedorView* newFacturaProveedorView();
 	PresupuestoView *newBudget();
 	FacturaView *newFacturaView();
         CobroView   *newCobroView();
+	PagoView * newPagoView();
 	AlbaranClienteView *newAlbaranClienteView();
 	PedidoClienteView *newPedidoClienteView();
+	TipoArticuloList *newTipoArticuloList();
 };
 
 #endif

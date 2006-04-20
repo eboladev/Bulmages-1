@@ -33,7 +33,7 @@ class BusquedaTipoArticulo : public QWidget, public Ui_BusquedaTipoArticuloBase
 	Q_OBJECT
 
 private:
-	company *companyact;
+	company *m_companyact;
 	QString mdb_idtipo_articulo;
 	QString mdb_desctipo_articulo;
 	QString mdb_codtipo_articulo;
@@ -43,7 +43,7 @@ public:
 	~BusquedaTipoArticulo();
 	void setcompany(company *comp)
 	{
-		companyact = comp;
+		m_companyact = comp;
 	};
 	virtual QString codtipo_articulo()
 	{

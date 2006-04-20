@@ -16,7 +16,7 @@
 BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent, const char *name)
 : QWidget(parent, name) {
     setupUi(this);
-    companyact=NULL;
+    m_companyact=NULL;
     mdb_idtipo_articulo="";
     mdb_desctipo_articulo="";
     mdb_codtipo_articulo="";
@@ -28,7 +28,7 @@ BusquedaTipoArticulo::~BusquedaTipoArticulo() {}
 void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     mdb_idtipo_articulo=val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo='"+mdb_idtipo_articulo+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_codtipo_articulo = cur->valor("codtipo_articulo");
         mdb_desctipo_articulo = cur->valor("desctipo_articulo");
@@ -46,7 +46,7 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
 void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
     mdb_codtipo_articulo=val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo='"+mdb_codtipo_articulo+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_idtipo_articulo = cur->valor("idtipo_articulo");
         mdb_desctipo_articulo = cur->valor("desctipo_articulo");
@@ -62,7 +62,7 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
 
 // Bsqueda de TipoArticulos.
 void BusquedaTipoArticulo::on_mui_buscar_clicked() {
-	tiposarticuloview *tip = new tiposarticuloview(companyact, 0,0);
+	TipoArticuloList *tip = m_companyact->newTipoArticuloList();
 	tip->setModoConsulta();
 	if (tip->exec() == 1) {
 		m_codtipo_articulo->setText(tip->codtipo_articulo());
@@ -78,7 +78,7 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
 void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
     mdb_codtipo_articulo=val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo='"+mdb_codtipo_articulo+"'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_idtipo_articulo = cur->valor("idtipo_articulo");
         mdb_desctipo_articulo = cur->valor("desctipo_articulo");

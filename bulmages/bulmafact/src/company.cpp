@@ -59,8 +59,10 @@
 #include "inventarioview.h"
 #include "plugins.h"
 #include "cobroview.h"
+#include "pagoview.h"
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
+#include "tiposarticuloview.h"
 
 company::company() {}// end company
 
@@ -160,6 +162,18 @@ company::~company() {
     _depura("END Destructor de company",0);
 }
 
+
+void company::viewCobrosList () {
+    m_cobrosList->hide();
+    m_cobrosList->showMaximized();
+    m_cobrosList->setActiveWindow();
+}
+
+void company::viewPagosList () {
+    m_pagosList->hide();
+    m_pagosList->showMaximized();
+    m_pagosList->setActiveWindow();
+}
 
 void company::listproviders () {
     m_providerslist->hide();
@@ -503,3 +517,41 @@ void company::s_newListConfiguracionView() {
 	lser.exec();
 	_depura("END_company::s_newListConfiguracionView",1);
 }
+
+
+
+PagoView * company::newPagoView() {
+    /// Lanzamos los plugins necesarios.
+    PagoView *bud;
+    if (g_plugins->lanza("company_newPagoView", this, (void **)&bud) )
+        return bud;
+    bud = new PagoView(this , 0,theApp->translate("Pago", "company"));
+    return bud;
+}
+
+void company::s_newPagoView() {
+	_depura("INIT_company::s_newPagoView",1);
+	PagoView *pag =  newPagoView();
+	pag->exec();
+	delete pag;
+	_depura("END_company::s_newPagoView",1);
+}
+
+TipoArticuloList * company::newTipoArticuloList() {
+    /// Lanzamos los plugins necesarios.
+    TipoArticuloList *bud;
+    if (g_plugins->lanza("company_newTipoArticuloList", this, (void **)&bud) )
+        return bud;
+    bud = new TipoArticuloList(this , 0,theApp->translate("Tipos de Articulo", "company"));
+    return bud;
+}
+
+void company::s_newTipoArticuloList() {
+	_depura("INIT_company::s_newPagoView",1);
+	TipoArticuloList *pag =  newTipoArticuloList();
+	pag->exec();
+	delete pag;
+	_depura("END_company::s_newPagoView",1);
+}
+
+

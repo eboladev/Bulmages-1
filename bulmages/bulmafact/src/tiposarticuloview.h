@@ -27,7 +27,7 @@
 
 class company;
 
-class tiposarticuloview : public QDialog, public Ui_tiposarticulodlg, dialogChanges
+class TipoArticuloList : public QDialog, public Ui_tiposarticulodlg, dialogChanges
 {
 	Q_OBJECT
 
@@ -41,8 +41,8 @@ private:
 	bool m_modoConsulta;
 
 public:
-	tiposarticuloview(company *, QWidget *parent = 0, const char *name = 0);
-	~tiposarticuloview();
+	TipoArticuloList(company *, QWidget *parent = 0, const char *name = 0);
+	~TipoArticuloList();
 	bool trataModificado();
 	void mostrarplantilla();
 	void setModoConsulta()

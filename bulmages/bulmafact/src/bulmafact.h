@@ -92,10 +92,10 @@ public slots:
 	virtual void on_actionNueva_Factura_Cliente_triggered(){m_company->s_newFacturaCli();};
 	virtual void on_actionListado_Facturas_Cliente_triggered(){m_company->s_listFacturasCli();};
 	virtual void on_actionGestion_Familias_triggered(){m_company->s_Familias();};
-	virtual void on_actionGestion_Tipos_Articulo_triggered(){_depura("Funcion aun no enlazada");};
+	virtual void on_actionGestion_Tipos_Articulo_triggered(){m_company->s_newTipoArticuloList();};
 	virtual void on_actionNuevo_Articulo_triggered(){m_company->s_newArticulo();};
 	virtual void on_actionListado_de_Articulos_triggered(){m_company->listarticles();};
-	virtual void on_actionInventarios_triggered(){		m_company->s_inventarios();};
+	virtual void on_actionInventarios_triggered(){m_company->s_inventarios();};
 	virtual void on_actionNuevo_Proveedor_triggered(){m_company->s_newProveedor();};
 	virtual void on_actionListado_Proveedores_triggered(){m_company->listproviders();};
 	virtual void on_actionNuevo_Cliente_triggered(){m_company->s_newClienteView();};
@@ -106,16 +106,12 @@ public slots:
 	virtual void on_actionVentana_Completa_triggered(){s_ventanaCompleta();};
 	virtual void on_actionAcerta_de_triggered(){s_About();};
 	virtual void on_actionAlmacenes_triggered(){m_company->s_almacenes();};
-	virtual void on_actionListado_de_Pagos_triggered(){_depura("Funcion aun no enlazada");};
-	virtual void on_actionNuevo_Pago_triggered(){_depura("Funcion aun no enlazada");};
-	virtual void on_actionNuevo_Cobro_triggered(){_depura("Funcion aun no enlazada");};
-	virtual void on_actionListado_de_Cobros_triggered(){_depura("Funcion aun no enlazada");};
+	virtual void on_actionListado_de_Pagos_triggered(){m_company->viewPagosList();};
+	virtual void on_actionNuevo_Pago_triggered(){m_company->s_newPagoView();};
+	virtual void on_actionNuevo_Cobro_triggered(){m_company->s_newCobroView();};
+	virtual void on_actionListado_de_Cobros_triggered(){m_company->viewCobrosList();};
 	virtual void on_actionParametros_triggered(){m_company->s_newListConfiguracionView();};
-
-
-
-
-
+	virtual void on_actionFormas_de_Pago_triggered(){s_FPago();};
 
 };
 
