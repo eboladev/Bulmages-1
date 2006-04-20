@@ -22,48 +22,48 @@
 #define __LISTVENTANAS__
 
 #include <QDockWidget>
-//#include <QDockWidget>
-#include <Q3ListBox>
-#include <Q3ListBoxItem>
+#include <QListWidget>
 
 
-class Q3ListBox1 : public Q3ListBox
+class QListWidget1 : public QListWidget
 {
 	Q_OBJECT
 
 public:
-	Q3ListBox1 (QWidget * parent = 0, const char * name = 0, Qt::WFlags f = 0):
-			Q3ListBox (parent, name, f)
+	QListWidget1 (QWidget * parent = 0):
+			QListWidget (parent)
 	{
 	};
-	~Q3ListBox1()
+	~QListWidget1()
 	{
 	};
 	void pintaitem(int i)
 	{
-		updateItem(i);
+//		updateItem(i);
 	};
-	void pintaitem(Q3ListBoxItem *j)
+	void pintaitem(QListWidgetItem *j)
 	{
-		updateItem(j);
+//		updateItem(j);
 	};
 };
 
-
-class Q3ListBoxItem1 : public Q3ListBoxPixmap
+class QListWidgetItem1 : public QListWidgetItem
 {
 
 private:
 	QObject *m_obj;
 	QString m_nombre;
-	Q3ListBox1 *m_list;
+	QListWidget1 *m_list;
 
 public:
-	Q3ListBoxItem1(Q3ListBox1 *l, QPixmap &p): Q3ListBoxPixmap(l, p)
+
+	QListWidgetItem1(QListWidget1 *l, QPixmap &p): QListWidgetItem(l)
 	{
+		setIcon(QIcon(p));
 		m_list = l;
 	};
-	~Q3ListBoxItem1()
+
+	~QListWidgetItem1()
 	{
 	};
 	void setObject(QObject *m)
@@ -84,6 +84,7 @@ public:
 	{
 		return m_nombre;
 	};
+/*
 	void paint(QPainter * p)
 	{
 		Q3ListBoxPixmap::paint(p);
@@ -96,7 +97,9 @@ public:
 	{
 		return Q3ListBoxPixmap::width(lb);
 	};
+*/
 };
+
 
 
 /** \brief Provides the dock window to list all windows in BulmaFact
@@ -108,7 +111,9 @@ class listventanas : public QDockWidget
 	Q_OBJECT
 
 private:
-	Q3ListBox1 *m_listBox;
+//	Q3ListBox1 *m_listBox;
+	QListWidget1 *m_listBox;
+
 
 public:
 	listventanas(QWidget *a = 0);
