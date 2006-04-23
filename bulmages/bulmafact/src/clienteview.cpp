@@ -204,8 +204,8 @@ void ClienteView::on_mui_guardar_clicked() {
 
 void ClienteView::on_mui_borrar_clicked() {
     int ret = QMessageBox::warning(this,tr("Edicion de clientes"),
-                                   tr("Est�a punto de borrar un cliente.\n"
-                                      "Est�seguro de que quiere borrarlo?"),
+                                   tr("Esta a punto de borrar un cliente.\n"
+                                      "Esta seguro que desea borrarlo?"),
                                    QMessageBox::Yes | QMessageBox::Default,
                                    QMessageBox::No,
                                    QMessageBox::Cancel | QMessageBox::Escape);

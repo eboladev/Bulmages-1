@@ -42,7 +42,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
     inicialize();
     comp->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
-    _depura("Fin de la inicializaci� de FacturaProveedor\n");
+    _depura("Fin de la inicializacion de FacturaProveedor\n");
 }
 
 
@@ -86,8 +86,8 @@ void FacturaProveedorView::s_nuevoCobro() {
 void FacturaProveedorView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Factura Proveedor",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning( this, "Guardar factura de proveedor.",
+                                        "Desea guardar los cambios?","Si","No","Cancelar",0,2);
         if (val == 0)
             guardar();
         if (val == 2)

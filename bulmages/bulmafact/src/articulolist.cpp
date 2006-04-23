@@ -261,7 +261,7 @@ void ArticuloList::inicializar() {
     mui_list->setRowCount(0);
     mui_list->setColumnCount(20);
     QStringList headers;
-    headers << tr( "Identificador" ) << tr( "Código" ) << tr( "Código Completo" ) << tr( "Descripción" ) << tr( "Descripción Completa" ) << tr( "Código de Barras" ) << tr( "Tipo de Artículo" )<< tr( "Descuento" )<< tr( "Especificaciones" )<< tr( "Icono" )<< tr( "Foto" )<< tr( "Póster" )<< tr( "Margen" )<< tr( "Sobrecoste" )<< tr( "Modelo" )<< tr( "Tipo de IVA" )<< tr( "Tipo de IVA" )<< tr( "Línea de Producción" )<< tr( "Stock" )<< tr( "PVP" );
+    headers << tr( "Identificador" ) << tr( "Codigo" ) << tr( "Codigo completo" ) << tr( "Descripcion" ) << tr( "Descripcion completa" ) << tr( "Codigo de barras" ) << tr( "Tipo de articulo" )<< tr( "Descuento" )<< tr( "Especificaciones" )<< tr( "Icono" )<< tr( "Foto" )<< tr( "Poster" )<< tr( "Margen" )<< tr( "Sobrecoste" )<< tr( "Modelo" )<< tr( "Tipo de I.V.A." )<< tr( "Tipo de I.V.A." )<< tr( "Linea de produccion" )<< tr( "Stock" )<< tr( "P.V.P." );
     mui_list->setHorizontalHeaderLabels (headers);
     _depura("end PagosList::inicializa()\n",0);
 } //end inicializa
@@ -609,8 +609,8 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
     if ( a < 0)
         return;
     QMenu *popup = new QMenu(this);
-    QAction *edit = popup->addAction(tr("Editar Articulo"));
-    QAction *del = popup->addAction(tr("Borrar Articulo"));
+    QAction *edit = popup->addAction(tr("Editar articulo"));
+    QAction *del = popup->addAction(tr("Borrar articulo"));
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
         on_mui_borrar_clicked();

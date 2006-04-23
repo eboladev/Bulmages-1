@@ -100,12 +100,12 @@ public slots:
 	{
 
 
-        int val = QMessageBox::warning( this, tr("Borrar Factura Proveedor."),
-                                        tr("Desea eliminar la factura de este Fistro Pecadorrrr de la pradera. ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        int val = QMessageBox::warning( this, tr("Borrar factura de proveedor."),
+                                        tr("Desea eliminar la factura?"),tr("Si"),tr("No"),tr("Cancelar"),0,2);
         if (val == 0) {
 		if (!borrar()) {
             	dialogChanges_cargaInicial();
-		_depura("Factura de Proveedor borrado satisfactoriamente",2);
+		_depura("Factura de Proveedor borrado satisfactoriamente.",2);
 		close();
 		}// end if
         }// end if

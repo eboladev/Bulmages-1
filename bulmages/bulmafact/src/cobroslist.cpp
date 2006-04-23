@@ -397,8 +397,8 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     if ( a < 0)
         return;
     QMenu *popup = new QMenu(this);
-    QAction *edit = popup->addAction(tr("Editar Cobro"));
-    QAction *del = popup->addAction(tr("Borrar Cobro"));
+    QAction *edit = popup->addAction(tr("Editar cobro"));
+    QAction *del = popup->addAction(tr("Borrar cobro"));
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
         on_mui_borrar_clicked();

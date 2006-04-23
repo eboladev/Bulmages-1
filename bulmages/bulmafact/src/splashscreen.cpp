@@ -19,7 +19,7 @@ Splash::Splash() : QDialog( 0, "", true, Qt::WStyle_NoBorder |Qt::WStyle_Customi
   l0->setPaletteForegroundColor(QColor("#FF0000"));
   l0->setAlignment( Qt::AlignVCenter );
   l0->setFont( QFont( "Arial", 20, QFont::Bold ) );
-  l0->setText( tr("\n                         v 0.5.9") );
+  l0->setText( tr("\nv 0.5.9") );
   l0->setGeometry(0,0,350,55);
 
 
@@ -34,7 +34,7 @@ Splash::Splash() : QDialog( 0, "", true, Qt::WStyle_NoBorder |Qt::WStyle_Customi
   l2->setVScrollBarMode(Q3ScrollView::AlwaysOff);
   l2->setAlignment( Qt::AlignBottom );
   l2->setFont( QFont( "helvetica", 11, QFont::Normal ) );
-  l2->setText( tr("BULMAG�") );
+  l2->setText( tr("BULMAGES") );
   l2->setGeometry(0,image0.height()-38,image0.width(),58);
   l2->setPaletteForegroundColor(QColor("#000066"));
   l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
@@ -70,18 +70,18 @@ void Splash::paint() {
   static int a=0;
   static QString cad;
   QString mensajes[]={
-                    tr("Calibrando los lasers del lector de CD"),
-                    tr("Comprobando la disquetera y la Memoria Fisica"),
-                    tr("Induciendo energ� quantica, entre su RAM y su ROM"),
-                    tr("Peque�s golpecitos de reajuste del HD"),
-                    tr("Probando la Velocidad el Ventilador de la CPU y su Frecuencia"),
-                    tr("Haciendo PING contra el servidor de la MetaBase"),
-                    tr("Violando a Segmento"),
-                    tr("Dejando tiempo libre al sistema"),
-                    tr("Sincronizando fases Alfa Beta"),
-                    tr("Flusheando Datos con vidas inteligentes superiores"),
-                    tr("Permutando las tablas de partici� del sistema operativo"),
-		    tr("Crackeando BulmaG�")};
+                    tr("Calibrando los lasers del lector de CD."),
+                    tr("Comprobando la disquetera y la memoria RAM."),
+                    tr("Induciendo energia cuantica, entre su RAM y su ROM."),
+                    tr("Pequenyos golpecitos de reajuste del HD."),
+                    tr("Probando la velocidad del ventilador de la CPU y su frecuencia."),
+                    tr("Haciendo PING contra el servidor de la MetaBase."),
+                    tr("Violando a Segmento."),
+                    tr("Dejando tiempo libre al sistema."),
+                    tr("Sincronizando fases Alfa Beta."),
+                    tr("Flusheando datos con vidas inteligentes superiores."),
+                    tr("Permutando las tablas de particiones del Sistema Operativo."),
+		    tr("Crackeando BulmaGes.")};
   if (a) {
    cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
   }// end if

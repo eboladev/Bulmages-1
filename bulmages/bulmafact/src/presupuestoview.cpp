@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -100,11 +100,11 @@ PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *n
 
 
 
-void PresupuestoView::closeEvent( QCloseEvent *e) {
+void PresupuestoView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Presupuesto",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning(this, "Guardar presupuesto",
+                                        "Desea guardar los cambios?","Si","No","Cancelar",0,2);
         if (val == 0)
             guardar();
         if (val == 2)
@@ -145,8 +145,8 @@ void PresupuestoView::on_mui_imprimir_clicked() {
 
 
 void PresupuestoView::on_mui_borrar_clicked() {
-    int val = QMessageBox::warning( this, tr("Borrar Presupuesto."),
-                                    tr("ADVERTENCIA: Eliminar presupuestos de cliente puede disminuir la eficacia economica de la empresa. Continuar?"),tr("SI"),tr("No"),tr("Ojala"),0,2);
+    int val = QMessageBox::warning( this, tr("Borrar presupuesto."),
+                                    tr("ATENCION: Eliminar presupuestos a clientes puede disminuir la eficacia economica de la empresa. Continuar?"),tr("Si"),tr("No"),tr("Cancelar"),0,2);
     if (val == 0) {
 
         if (!borrar()) {
@@ -157,7 +157,7 @@ void PresupuestoView::on_mui_borrar_clicked() {
     }// end if
 }
 
-void   PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     fprintf(stderr,"pintatotales()\n");
     m_totalBases->setText(QString(base.toQString()));
     m_totalTaxes->setText(QString(iva.toQString()));
@@ -185,13 +185,12 @@ void PresupuestoView::generarPedidoCliente() {
     delete cur;
 
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funci�.
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funcion.
     if (QMessageBox::question(
                 this,
-                tr("Pedido Cliente Inexistente"),
-                tr("No existe un pedido asociado a este presupuesto."
-                   "Desea Crearlo ?"),
-                tr("&Yes"), tr("&No"),
+                tr("Pedido de cliente inexistente"),
+                tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
+                tr("&Si"), tr("&No"),
                 QString::null, 0, 1 ) )
         return;
 

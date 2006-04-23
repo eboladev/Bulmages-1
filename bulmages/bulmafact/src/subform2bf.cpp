@@ -32,7 +32,7 @@ void SubForm2Bf::pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
     _depura("ListCompArticuloView::searchArticle",0);
-    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, theApp->translate("Seleccione Artic�ulo","company"),0,ArticuloList::SelectMode);
+    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, theApp->translate("Seleccione articulo","company"),0,ArticuloList::SelectMode);
     // Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
@@ -93,7 +93,7 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     QAction *ajustc = popup->addAction(tr("Ajustar Columa"));
     QAction *ajustac = popup->addAction(tr("Ajustar Altura"));
 
-    QAction *ajust = popup->addAction(tr("Ajustar Columnas"));
+    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
     QAction *ajusta = popup->addAction(tr("Ajustar Alturas"));
 
     QAction *opcion = popup->exec(QCursor::pos());

@@ -114,9 +114,9 @@ void AlbaranProveedorView::generarFactura()  {
     delete cur;
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
-    if (QMessageBox::question(this, tr("Factura Inexistente"),
+    if (QMessageBox::question(this, tr("Factura inexistente"),
                               tr("No existe una factura asociada a este albaran."
-                                 "Desea Crearla ?"), tr("&Yes"), tr("&No"), QString::null, 0, 1)) {
+                                 "Desea crearla?"), tr("&Yes"), tr("&No"), QString::null, 0, 1)) {
         return;
     }
 

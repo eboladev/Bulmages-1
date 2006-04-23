@@ -212,7 +212,7 @@ void ArticuloView::on_mui_borrar_clicked() {
 
     if (DBvalue("idarticulo") != "") {
 
-        if ( QMessageBox::question(this,tr("Borrar Articulo"),tr("Esta a punto de borrar un articulo, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
+        if ( QMessageBox::question(this,tr("Borrar articulo"),tr("Esta a punto de borrar un articulo. Desea continuar?"),tr("Si"),tr("No"),0,1,0) == 0) {
             m_componentes->borrar();
             borrar();
 		dialogChanges_cargaInicial();

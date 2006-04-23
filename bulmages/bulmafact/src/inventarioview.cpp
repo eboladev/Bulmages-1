@@ -44,7 +44,7 @@ InventarioView::~InventarioView() {
   */
 void InventarioView::on_mui_borrar_clicked() {
     if (DBvalue("idinventario") != "") {
-        if ( QMessageBox::question(this,tr("Borrar Inventario"),tr("Esta a punto de borrar un Inventario, Desea continuar?."),tr("Si"),tr("No"),0,1,0) == 0) {
+        if ( QMessageBox::question(this,tr("Borrar inventario"),tr("Esta a punto de borrar un inventario. Desea continuar?"),tr("Si"),tr("No"),0,1,0) == 0) {
             borrar();
         }// end if
     }// end if

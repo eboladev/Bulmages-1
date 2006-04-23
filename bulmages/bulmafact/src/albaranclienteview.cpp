@@ -151,9 +151,9 @@ void AlbaranClienteView::generarFactura() {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
-    if (QMessageBox::question(this, tr("Factura Inexistente"),
-                              tr("No existe una factura asociada a este albaran. Desea Crearla ?"),
-                              tr("&Yes"), tr("&No"), QString::null, 0, 1)) {
+    if (QMessageBox::question(this, tr("Factura inexistente"),
+                              tr("No existe una factura asociada a este albaran. Desea Crearla?"),
+                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
         return;
     }
 
@@ -204,7 +204,7 @@ void AlbaranClienteView::agregarFactura() {
 
     QDialog *diag=new QDialog(0);
     diag->setModal(true);
-    FacturasList *fac = new FacturasList(companyact, diag, tr("Seleccione Factura","company"),0,FacturasList::SelectMode);
+    FacturasList *fac = new FacturasList(companyact, diag, tr("Seleccione factura","company"),0,FacturasList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Hacemos que las opciones de filtrado del listado ya estén bien.
