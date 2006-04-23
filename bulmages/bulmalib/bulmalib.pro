@@ -26,6 +26,7 @@ HEADERS += postgresiface2.h \
 	   qtable2.h \
 	   pgimportfiles.h  \
 	   plugins.h \
+	   busquedaperiodo.h \
 	   dbrecord.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
@@ -43,6 +44,7 @@ SOURCES += postgresiface2.cpp \
 	   qtable2.cpp \
 	   pgimportfiles.cpp \
 	   plugins.cpp \
+	   busquedaperiodo.cpp \
 	   dbrecord.cpp
 
 TRANSLATIONS += bulmalib_es.ts \
