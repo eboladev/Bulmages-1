@@ -78,9 +78,9 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
     m_provcliente->setProvincia("");
 
     /// Desabilitamos los tabs que aun no se usan
-    tab->setTabEnabled(6,FALSE);
-    tab->setTabEnabled(7,FALSE);
-    tab->setTabEnabled(8,FALSE);
+    mui_tab->setTabEnabled(6,FALSE);
+    mui_tab->setTabEnabled(7,FALSE);
+    mui_tab->setTabEnabled(8,FALSE);
 
 
     /// Inicializamos las pantallas auxiliares a esta

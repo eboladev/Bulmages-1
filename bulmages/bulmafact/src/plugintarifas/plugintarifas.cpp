@@ -37,7 +37,7 @@ void myplugin1::elslot() {
 
 void myplugin1::inicializa(bulmafact *bges) {
 
-    //El menu de empresa
+    //El menu de Tarifas en la sección de Artículos
 	m_bges = bges;
     m_companyact = bges->getcompany();
     QAction *planCuentas = new QAction("&Tarifas", 0);
@@ -50,7 +50,7 @@ void myplugin1::inicializa(bulmafact *bges) {
 }// end inicializa
 
 int entryPoint(bulmafact *bges) {
-    _depura("Estoy dentro del plugin\n",0);
+    _depura("Punto de Entrada del plugin de Tarifas\n",0);
     myplugin1 *plug= new myplugin1( );
     plug->inicializa(bges);
     return 0;
