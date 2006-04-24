@@ -29,8 +29,8 @@ class BusquedaPeriodo : public QComboBox
 {
 	Q_OBJECT
 private:
-	QString m_textos[6];
-	QString m_valores[6];
+	QString m_textos[10];
+	QString m_valores[10];
 public:
 	BusquedaPeriodo(QWidget *parent = 0);
 	~BusquedaPeriodo();
