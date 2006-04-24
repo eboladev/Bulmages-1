@@ -56,54 +56,55 @@ void Cliente::borraCliente() {
         m_companyact->commit();
         vaciaCliente();
     }// end if
-}// end borraCliente
+}
 
 
 void Cliente::vaciaCliente() {
     DBclear();
-}// end vaciaCliente
-
+}
 void Cliente::pintaCliente() {
-	_depura("Cliente::pintaCliente",0);
+    _depura("Cliente::pintaCliente",0);
 
-	    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("Cliente_pintaCliente", this);
-    if (res != 0) return;
+    if (res != 0)
+        return;
 
-	pintaidcliente(DBvalue("idcliente"));
-        pintanomcliente (DBvalue("nomcliente"));
-        pintanomaltcliente (DBvalue("nomaltcliente"));
-        pintacifcliente (DBvalue("cifcliente"));
-        pintabancocliente (DBvalue("bancocliente"));
-        pintadircliente (DBvalue("dircliente"));
-        pintapoblcliente (DBvalue("poblcliente"));
-        pintacpcliente (DBvalue("cpcliente"));
-        pintatelcliente (DBvalue("telcliente"));
-        pintafaxcliente (DBvalue("faxcliente"));
-        pintamailcliente (DBvalue("mailcliente"));
-        pintaurlcliente (DBvalue("urlcliente"));
-        pintafaltacliente (DBvalue("faltacliente"));
-        pintafbajacliente (DBvalue("fbajacliente"));
-	pintacomentcliente  (DBvalue("comentcliente"));
-	pintainactivocliente  (DBvalue("inactivocliente"));
-	pintaprovcliente  (DBvalue("provcliente"));
-	_depura("END Cliente::pintaCliente",0);
+    pintaidcliente(DBvalue("idcliente"));
+    pintanomcliente (DBvalue("nomcliente"));
+    pintanomaltcliente (DBvalue("nomaltcliente"));
+    pintacifcliente (DBvalue("cifcliente"));
+    pintabancocliente (DBvalue("bancocliente"));
+    pintadircliente (DBvalue("dircliente"));
+    pintapoblcliente (DBvalue("poblcliente"));
+    pintacpcliente (DBvalue("cpcliente"));
+    pintatelcliente (DBvalue("telcliente"));
+    pintafaxcliente (DBvalue("faxcliente"));
+    pintamailcliente (DBvalue("mailcliente"));
+    pintaurlcliente (DBvalue("urlcliente"));
+    pintafaltacliente (DBvalue("faltacliente"));
+    pintafbajacliente (DBvalue("fbajacliente"));
+    pintacomentcliente  (DBvalue("comentcliente"));
+    pintainactivocliente  (DBvalue("inactivocliente"));
+    pintaprovcliente  (DBvalue("provcliente"));
 
-}// end pintaCliente
+    _depura("END Cliente::pintaCliente",0);
+
+}
 
 
 // Esta funci� carga un Cliente.
 int Cliente::cargar(QString idcliente) {
-	_depura("Cliente::cargaCliente",0);
+    _depura("Cliente::cargaCliente",0);
     QString query = "SELECT * FROM cliente WHERE idcliente="+idcliente;
     cursor2 * cur= m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     }// end if
     delete cur;
-	_depura("END Cliente::cargaCliente",0);
-	return 0;
-}// end chargeBudget
+    _depura("END Cliente::cargaCliente",0);
+    return 0;
+}
 
 
 void Cliente::guardaCliente() {
@@ -116,6 +117,6 @@ void Cliente::guardaCliente() {
     }// end if
     setidcliente(id);
     m_companyact->commit();
-}// end guardaCliente
+}
 
 

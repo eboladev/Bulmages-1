@@ -37,6 +37,9 @@
 #include "funcaux.h"
 #include "aboutview.h"
 
+#include "busquedaperiodo.h"
+
+
 bulmafact::bulmafact(QString bd) : QMainWindow() {
         setupUi(this);
 	m_company=new company();
@@ -57,6 +60,8 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 	m_company->createMainWindows();
 
 	showMaximized();
+
+	BusquedaPeriodo *bus = new BusquedaPeriodo(this);
 
 	statusBar()->message( tr("Ready"), 2000 );
 	_depura("Fin de bulmafact constructor\n",0);

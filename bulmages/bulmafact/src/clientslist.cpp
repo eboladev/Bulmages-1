@@ -114,7 +114,7 @@ void ClientsList::guardaconfig() {
         stream << aux << "\n";
         file.close();
     }// end if
-}// end guardaconfig()
+}
 
 void ClientsList::cargaconfig() {
 	_depura("ClientsList::cargaconfig",0);
@@ -143,7 +143,7 @@ void ClientsList::cargaconfig() {
     mver_fbajacliente->setChecked(line.at(26)=='1');
     mver_comentcliente->setChecked(line.at(28)=='1');
     mver_idrecargo->setChecked(line.at(30)=='1');
-}// end cargaconfig
+}
 
 
 
@@ -225,7 +225,7 @@ void ClientsList::configurar() {
         mui_list->hideColumn(COL_COMENTCLIENTE);
 
 	_depura("END ClientsList::configurar",0);
-}// end s_configurar
+}
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
         : QWidget(parent, name, flag) , pgimportfiles(comp) {
@@ -243,15 +243,14 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::W
     /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
     if (m_modo==EditMode)
         m_companyact->meteWindow(caption(),this);
-}// end clientslist
+}
 
 
 ClientsList::~ClientsList() {
     if (m_modo==EditMode)
         m_companyact->sacaWindow(this);
     guardaconfig();
-}// end ~clientslist
-
+}
 
 /**
   * Iniciamos los clientes.
@@ -265,7 +264,7 @@ void ClientsList::presenta() {
     configurar();
 	_depura("END ClientsList::presenta",0);
 
-}// end presenta
+}
 
 
 
@@ -276,7 +275,7 @@ void ClientsList::editar(int  row) {
     mdb_cifcliente = mui_list->DBvalue("cifcliente",row);
     mdb_nomcliente = mui_list->DBvalue("nomcliente",row);
     if (m_modo ==0 ) {
-        ClienteView *prov = new ClienteView(m_companyact,0,theApp->translate("Edicion de Pedidos a Cliente", "company"));
+        ClienteView *prov = m_companyact->newClienteView();
         if (prov->cargar(mdb_idcliente)) {
             return;
         }

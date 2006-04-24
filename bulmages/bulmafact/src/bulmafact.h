@@ -24,12 +24,10 @@
 #include <QMainWindow>
 #include <QWorkspace>
 
-
 #include "ui_bulmafactbase.h"
 #include "company.h"
 #include "listventanas.h"
 #include "funcaux.h"
-
 
 class bulmafact: public QMainWindow, public Ui_bulmafactbase
 {

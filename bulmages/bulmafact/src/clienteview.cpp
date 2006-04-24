@@ -68,7 +68,7 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
         :  QWidget(parent, name, Qt::WDestructiveClose) , Cliente(comp), dialogChanges(this) {
     _depura("ClienteView::ClienteView",0);
     setupUi(this);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins
     int res = g_plugins->lanza("ClienteView_ClienteView", this);
     if (res != 0)
         return;
@@ -97,11 +97,15 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
 
     m_companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
+    /// Disparamos los plugins
+    res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
 }
 
 ClienteView::~ClienteView() {
     m_companyact->sacaWindow(this);
     m_companyact->refreshClientes();
+    /// Disparamos los plugins
+    g_plugins->lanza("ClienteView_Des_ClienteView", this);
 }
 
 /**
@@ -114,7 +118,7 @@ ClienteView::~ClienteView() {
 * a new client
 */
 int ClienteView::cargar(QString idcliente) {
-    _depura("ClienteView::loadClient",0);
+    _depura("ClienteView::cargar",0);
     int error=0;
 
     Cliente::cargar(idcliente);
@@ -135,8 +139,9 @@ int ClienteView::cargar(QString idcliente) {
     m_listcobros->presentar();
 
     pintaCliente();
-
+//	_depura("Vamos a hacer una carga inicial para dialogchanges",2);
     dialogChanges_cargaInicial();
+    _depura("ClienteView::cargar",0);
     return error;
 }
 
