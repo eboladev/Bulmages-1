@@ -93,10 +93,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nuevo Cliente</string>
+           <string>Nuevo cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Cliente</string>
+           <string>Nuevo cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -115,10 +115,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Cliente</string>
+           <string>Editar cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Cliente</string>
+           <string>Editar cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -137,10 +137,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Cliente</string>
+           <string>Borrar cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Cliente</string>
+           <string>Borrar cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -159,10 +159,10 @@
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="toolTip" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -181,10 +181,10 @@
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
-           <string>Filtrar Clientes</string>
+           <string>Filtrar clientes</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar Clientes</string>
+           <string>Filtrar clientes</string>
           </property>
           <property name="text" >
            <string/>
@@ -206,10 +206,10 @@
         <item>
          <widget class="QToolButton" name="mui_configurar" >
           <property name="toolTip" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Ccoonfigurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -231,10 +231,10 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -253,10 +253,10 @@
         <item>
          <widget class="QToolButton" name="mui_exportar" >
           <property name="toolTip" >
-           <string>Exportar Clientes</string>
+           <string>Exportar clientes</string>
           </property>
           <property name="whatsThis" >
-           <string>Exportar Clientes</string>
+           <string>Exportar clientes</string>
           </property>
           <property name="text" >
            <string>Exportar</string>
@@ -275,10 +275,10 @@
         <item>
          <widget class="QToolButton" name="mui_importar" >
           <property name="toolTip" >
-           <string>Importar Clientes</string>
+           <string>Importar clientes</string>
           </property>
           <property name="whatsThis" >
-           <string>Importar Clientes</string>
+           <string>Importar clientes</string>
           </property>
           <property name="text" >
            <string>Importar</string>
@@ -313,7 +313,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Buscar</string>
+           <string>Buscar:</string>
           </property>
          </widget>
         </item>
@@ -395,7 +395,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idcliente" >
           <property name="text" >
-           <string>&amp;Id. Cliente</string>
+           <string>&amp;Id. cliente</string>
           </property>
           <property name="shortcut" >
            <string>Alt+I</string>
@@ -418,7 +418,7 @@
         <item>
          <widget class="QCheckBox" name="mver_nomaltcliente" >
           <property name="text" >
-           <string>Nom&amp;bre Alternativo</string>
+           <string>Nom&amp;bre alternativo</string>
           </property>
           <property name="checked" >
            <bool>true</bool>
@@ -428,7 +428,7 @@
         <item>
          <widget class="QCheckBox" name="mver_cifcliente" >
           <property name="text" >
-           <string>CI&amp;F</string>
+           <string>C.I.&amp;F.</string>
           </property>
           <property name="shortcut" >
            <string>Alt+F</string>
@@ -461,7 +461,7 @@
         <item>
          <widget class="QCheckBox" name="mver_dircliente" >
           <property name="text" >
-           <string>Direcci&amp;ón</string>
+           <string>Direcci&amp;on</string>
           </property>
           <property name="shortcut" >
            <string>Alt+Ó</string>
@@ -474,14 +474,14 @@
         <item>
          <widget class="QCheckBox" name="mver_poblcliente" >
           <property name="text" >
-           <string>P&amp;oblación</string>
+           <string>P&amp;oblacion</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="mver_cpcliente" >
           <property name="text" >
-           <string>Codi&amp;go Postal</string>
+           <string>Codi&amp;go postal</string>
           </property>
           <property name="shortcut" >
            <string>Alt+G</string>
@@ -527,7 +527,7 @@
         <item>
          <widget class="QCheckBox" name="mver_mailcliente" >
           <property name="text" >
-           <string>e-&amp;mail</string>
+           <string>E-&amp;mail</string>
           </property>
           <property name="shortcut" >
            <string>Alt+M</string>
@@ -557,7 +557,7 @@
         <item>
          <widget class="QCheckBox" name="mver_faltacliente" >
           <property name="text" >
-           <string>Fecha Alta</string>
+           <string>Fecha alta</string>
           </property>
           <property name="shortcut" >
            <string/>
@@ -570,7 +570,7 @@
         <item>
          <widget class="QCheckBox" name="mver_fbajacliente" >
           <property name="text" >
-           <string>Fecha Ba&amp;ja</string>
+           <string>Fecha ba&amp;ja</string>
           </property>
           <property name="shortcut" >
            <string>Alt+J</string>
@@ -596,7 +596,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idrecargo" >
           <property name="text" >
-           <string>I&amp;d. Recargo</string>
+           <string>I&amp;d. recargo</string>
           </property>
           <property name="shortcut" >
            <string>Alt+D</string>
@@ -620,17 +620,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ClienteListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>clientslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ClienteListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>clientslist.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

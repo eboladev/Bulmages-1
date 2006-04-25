@@ -61,7 +61,7 @@
       </sizepolicy>
      </property>
      <property name="text" >
-      <string>Tipo Artículo</string>
+      <string>Tipo de articulo</string>
      </property>
     </widget>
    </item>

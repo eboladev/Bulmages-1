@@ -86,10 +86,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar Inventario</string>
+           <string>Guardar inventario</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar Inventario</string>
+           <string>Guardar inventario</string>
           </property>
           <property name="text" >
            <string/>
@@ -114,10 +114,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar Inventario</string>
+           <string>Borrar inventario</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Inventario</string>
+           <string>Borrar inventario</string>
           </property>
           <property name="text" >
            <string/>
@@ -158,10 +158,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Pregenerar Inventario</string>
+           <string>Pregenerar inventario</string>
           </property>
           <property name="whatsThis" >
-           <string>Pregenerar Inventario</string>
+           <string>Pregenerar inventario</string>
           </property>
           <property name="text" >
            <string/>
@@ -193,7 +193,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_5" >
        <property name="text" >
-        <string>Descripción</string>
+        <string>Descripcion:</string>
        </property>
       </widget>
      </item>
@@ -213,7 +213,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2" >
        <property name="text" >
-        <string>Fecha Creación</string>
+        <string>Fecha creacion:</string>
        </property>
       </widget>
      </item>
@@ -304,14 +304,14 @@
      <item>
       <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
@@ -330,16 +330,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ListControlStockView</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>listcontrolstockview.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>ListControlStockView</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>listcontrolstockview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -75,10 +75,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nuevo Pedido</string>
+           <string>Nuevo pedido</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Pedido</string>
+           <string>Nuevo pedido</string>
           </property>
           <property name="text" >
            <string/>
@@ -97,10 +97,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Pedido</string>
+           <string>Editar pedido</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Pedido</string>
+           <string>Editar pedido</string>
           </property>
           <property name="text" >
            <string/>
@@ -119,10 +119,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Pedido</string>
+           <string>Borrar pedido</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Pedido</string>
+           <string>Borrar pedido</string>
           </property>
           <property name="text" >
            <string/>
@@ -141,10 +141,10 @@
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="toolTip" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -163,10 +163,10 @@
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
-           <string>Filtrar Pedidos</string>
+           <string>Filtrar pedidos</string>
           </property>
           <property name="whatsThis" >
-           <string>FiltrarPedidos</string>
+           <string>Filtrar pedidos</string>
           </property>
           <property name="text" >
            <string/>
@@ -188,10 +188,10 @@
         <item>
          <widget class="QToolButton" name="mui_configurar" >
           <property name="toolTip" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -213,10 +213,10 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -251,7 +251,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2" >
           <property name="text" >
-           <string>Buscar</string>
+           <string>Buscar:</string>
           </property>
          </widget>
         </item>
@@ -312,7 +312,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_2_2" >
           <property name="text" >
-           <string>Contiene Articulo</string>
+           <string>Contiene articulo:</string>
           </property>
          </widget>
         </item>
@@ -338,7 +338,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_2" >
           <property name="text" >
-           <string>Cliente</string>
+           <string>Cliente:</string>
           </property>
          </widget>
         </item>
@@ -374,7 +374,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4" >
           <property name="text" >
-           <string>Fecha Inicial</string>
+           <string>Fecha inicial:</string>
           </property>
          </widget>
         </item>
@@ -400,7 +400,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4_2" >
           <property name="text" >
-           <string>Fecha Final</string>
+           <string>Fecha final:</string>
           </property>
          </widget>
         </item>
@@ -454,14 +454,14 @@
         <item>
          <widget class="QCheckBox" name="mver_idpresupuesto" >
           <property name="text" >
-           <string>&amp;Id. Presupuesto</string>
+           <string>&amp;Id. presupuesto</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="mver_codigoalmacen" >
           <property name="text" >
-           <string>&amp;Codigo Almacen</string>
+           <string>&amp;Codigo almacen</string>
           </property>
           <property name="shortcut" >
            <string>Alt+C</string>
@@ -474,7 +474,7 @@
         <item>
          <widget class="QCheckBox" name="mver_refpresupuesto" >
           <property name="text" >
-           <string>Referencia Presupuesto</string>
+           <string>Referencia presupuesto</string>
           </property>
           <property name="checked" >
            <bool>true</bool>
@@ -484,7 +484,7 @@
         <item>
          <widget class="QCheckBox" name="mver_nomcliente" >
           <property name="text" >
-           <string>&amp;Nombre Cliente</string>
+           <string>&amp;Nombre de cliente</string>
           </property>
           <property name="checked" >
            <bool>true</bool>
@@ -504,7 +504,7 @@
         <item>
          <widget class="QCheckBox" name="mver_descpresupuesto" >
           <property name="text" >
-           <string>&amp;Descripción</string>
+           <string>&amp;Descripcion</string>
           </property>
          </widget>
         </item>
@@ -545,7 +545,7 @@
         <item>
          <widget class="QCheckBox" name="mver_numpresupuesto" >
           <property name="text" >
-           <string>Nu&amp;m. Presupuesto</string>
+           <string>Numero de presupuesto</string>
           </property>
           <property name="checked" >
            <bool>true</bool>
@@ -565,14 +565,14 @@
         <item>
          <widget class="QCheckBox" name="mver_idcliente" >
           <property name="text" >
-           <string>Id. Cliente</string>
+           <string>Id. cliente</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QCheckBox" name="mver_idusuario" >
           <property name="text" >
-           <string>Id. &amp;Usuario</string>
+           <string>Id. &amp;usuario</string>
           </property>
          </widget>
         </item>
@@ -589,7 +589,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idalmacen" >
           <property name="text" >
-           <string>Id. Almacen</string>
+           <string>Id. almacen</string>
           </property>
           <property name="checked" >
            <bool>false</bool>
@@ -599,7 +599,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalpresupuesto" >
           <property name="text" >
-           <string>Total Presupuesto</string>
+           <string>Total presupuesto</string>
           </property>
           <property name="checked" >
            <bool>false</bool>
@@ -609,7 +609,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalbaseimp" >
           <property name="text" >
-           <string>Total &amp;Base Imponible</string>
+           <string>Total &amp;base imponible</string>
           </property>
           <property name="shortcut" >
            <string>Alt+B</string>
@@ -622,7 +622,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalimpuestos" >
           <property name="text" >
-           <string>Total Impuestos</string>
+           <string>Total impuestos</string>
           </property>
           <property name="checked" >
            <bool>false</bool>
@@ -664,7 +664,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_3" >
        <property name="text" >
-        <string>Total</string>
+        <string>Total:</string>
        </property>
       </widget>
      </item>
@@ -697,10 +697,10 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>Q3Frame</class>
    <extends></extends>
-   <header>busquedacliente.h</header>
-   <container>0</container>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -711,10 +711,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
+   <class>PresupuestoListSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>presupuestolist.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -725,9 +725,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>PresupuestoListSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>presupuestolist.h</header>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

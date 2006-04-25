@@ -85,10 +85,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nuevo Cobro</string>
+           <string>Nuevo cobro</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Cobro</string>
+           <string>Nuevo cobro</string>
           </property>
           <property name="text" >
            <string/>
@@ -107,10 +107,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Cobro</string>
+           <string>Editar cobro</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Cobro</string>
+           <string>Editar cobro</string>
           </property>
           <property name="text" >
            <string/>
@@ -129,10 +129,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Cobro</string>
+           <string>Borrar cobro</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Cobro</string>
+           <string>Borrar cobro</string>
           </property>
           <property name="text" >
            <string/>
@@ -151,10 +151,10 @@
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="toolTip" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -173,10 +173,10 @@
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
-           <string>Filtrar Cobros</string>
+           <string>Filtrar cobros</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar Cobros</string>
+           <string>Filtrar cobros</string>
           </property>
           <property name="text" >
            <string/>
@@ -198,10 +198,10 @@
         <item>
          <widget class="QToolButton" name="mui_configurar" >
           <property name="toolTip" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -223,10 +223,10 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -261,7 +261,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Buscar</string>
+           <string>Buscar:</string>
           </property>
          </widget>
         </item>
@@ -322,7 +322,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_2" >
           <property name="text" >
-           <string>Cliente</string>
+           <string>Cliente:</string>
           </property>
          </widget>
         </item>
@@ -358,7 +358,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4" >
           <property name="text" >
-           <string>Fecha Inicial</string>
+           <string>Fecha inicial:</string>
           </property>
          </widget>
         </item>
@@ -384,7 +384,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4_2" >
           <property name="text" >
-           <string>Fecha Final</string>
+           <string>Fecha final:</string>
           </property>
          </widget>
         </item>
@@ -438,7 +438,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idcobro" >
           <property name="text" >
-           <string>&amp;Id. Cobro</string>
+           <string>&amp;Id. cobro</string>
           </property>
           <property name="shortcut" >
            <string>Alt+I</string>
@@ -448,7 +448,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idcliente" >
           <property name="text" >
-           <string>Id. &amp;Cliente</string>
+           <string>Id. &amp;cliente</string>
           </property>
           <property name="shortcut" >
            <string>Alt+C</string>
@@ -578,7 +578,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_3" >
        <property name="text" >
-        <string>Total</string>
+        <string>Total:</string>
        </property>
       </widget>
      </item>
@@ -611,13 +611,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>QTableWidget2</class>
-   <extends>QTableWidget</extends>
-   <header>../../../bulmalib/qtable2.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
@@ -625,9 +618,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
+   <class>QTableWidget2</class>
+   <extends>QTableWidget</extends>
+   <header>../../../bulmalib/qtable2.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -635,6 +628,13 @@
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

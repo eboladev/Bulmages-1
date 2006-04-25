@@ -75,10 +75,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nuevo Proveedor</string>
+           <string>Nuevo proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Proveedor</string>
+           <string>Nuevo proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -97,10 +97,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Proveedor</string>
+           <string>Editar proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Proveedor</string>
+           <string>Editar proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -119,10 +119,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Proveedor</string>
+           <string>Borrar proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Proveedor</string>
+           <string>Borrar proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -141,10 +141,10 @@
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="toolTip" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -163,10 +163,10 @@
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
-           <string>Filtrar Proveedores</string>
+           <string>Filtrar proveedores</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar Proveedores</string>
+           <string>Filtrar proveedores</string>
           </property>
           <property name="text" >
            <string/>
@@ -188,10 +188,10 @@
         <item>
          <widget class="QToolButton" name="mui_configurar" >
           <property name="toolTip" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -213,10 +213,10 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -235,10 +235,10 @@
         <item>
          <widget class="QToolButton" name="mui_exportar" >
           <property name="toolTip" >
-           <string>Exportar Clientes</string>
+           <string>Exportar proveedores</string>
           </property>
           <property name="whatsThis" >
-           <string>Exportar Clientes</string>
+           <string>Exportar proveedores</string>
           </property>
           <property name="text" >
            <string>Exportar</string>
@@ -257,10 +257,10 @@
         <item>
          <widget class="QToolButton" name="m_importar" >
           <property name="toolTip" >
-           <string>Importar Clientes</string>
+           <string>Importar proveedores</string>
           </property>
           <property name="whatsThis" >
-           <string>Importar Clientes</string>
+           <string>Importar proveedores</string>
           </property>
           <property name="text" >
            <string>Importar</string>
@@ -295,7 +295,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2" >
           <property name="text" >
-           <string>Buscar</string>
+           <string>Buscar:</string>
           </property>
          </widget>
         </item>
@@ -387,7 +387,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idproveedor" >
           <property name="text" >
-           <string>&amp;Id. Proveedor</string>
+           <string>&amp;Id. proveedor</string>
           </property>
           <property name="shortcut" >
            <string>Alt+I</string>
@@ -410,7 +410,7 @@
         <item>
          <widget class="QCheckBox" name="mver_nomaltproveedor" >
           <property name="text" >
-           <string>&amp;Nombre Alternativo</string>
+           <string>&amp;Nombre alternativo</string>
           </property>
           <property name="shortcut" >
            <string>Alt+N</string>
@@ -423,7 +423,7 @@
         <item>
          <widget class="QCheckBox" name="mver_cifproveedor" >
           <property name="text" >
-           <string>CI&amp;F</string>
+           <string>C.I&amp;.F.</string>
           </property>
           <property name="shortcut" >
            <string>Alt+F</string>
@@ -446,7 +446,7 @@
         <item>
          <widget class="QCheckBox" name="mver_codicliproveedor" >
           <property name="text" >
-           <string>Codi&amp;go Cliente</string>
+           <string>Codi&amp;go cliente</string>
           </property>
           <property name="shortcut" >
            <string>Alt+G</string>
@@ -479,7 +479,7 @@
         <item>
          <widget class="QCheckBox" name="mver_dirproveedor" >
           <property name="text" >
-           <string>Direcci&amp;ón</string>
+           <string>Direcci&amp;on</string>
           </property>
           <property name="shortcut" >
            <string>Alt+Ó</string>
@@ -512,7 +512,7 @@
         <item>
          <widget class="QCheckBox" name="mver_cpproveedor" >
           <property name="text" >
-           <string>&amp;Codigo Postal</string>
+           <string>&amp;Codigo postal</string>
           </property>
           <property name="shortcut" >
            <string>Alt+C</string>
@@ -563,7 +563,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>e-&amp;mail</string>
+           <string>E-&amp;mail</string>
           </property>
           <property name="shortcut" >
            <string>Alt+M</string>
@@ -605,7 +605,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Clave &amp;Web</string>
+           <string>Clave &amp;web</string>
           </property>
           <property name="shortcut" >
            <string>Alt+W</string>

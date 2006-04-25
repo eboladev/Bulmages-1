@@ -78,10 +78,10 @@
            <bool>true</bool>
           </property>
           <property name="toolTip" >
-           <string>Guardar Cliente</string>
+           <string>Guardar cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar Cliente</string>
+           <string>Guardar cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -106,10 +106,10 @@
            <bool>true</bool>
           </property>
           <property name="toolTip" >
-           <string>Borrar Cliente</string>
+           <string>Borrar cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Cliente</string>
+           <string>Borrar cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -163,7 +163,7 @@
      </property>
      <widget class="QWidget" name="tab3" >
       <attribute name="title" >
-       <string>&amp;Datos Generales</string>
+       <string>&amp;Datos generales</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -183,7 +183,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_5" >
            <property name="text" >
-            <string>&amp;CIF</string>
+            <string>C.I.F.:</string>
            </property>
           </widget>
          </item>
@@ -203,7 +203,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_2" >
            <property name="text" >
-            <string>Nombre</string>
+            <string>Nombre:</string>
            </property>
           </widget>
          </item>
@@ -223,7 +223,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_2_2" >
            <property name="text" >
-            <string>Corporación</string>
+            <string>Corporacion:</string>
            </property>
           </widget>
          </item>
@@ -256,7 +256,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_4" >
            <property name="text" >
-            <string>Nombre comercial</string>
+            <string>Nombre comercial:</string>
            </property>
           </widget>
          </item>
@@ -284,7 +284,7 @@
            <item>
             <widget class="QLabel" name="textLabel2_6" >
              <property name="text" >
-              <string>Dirección</string>
+              <string>Direccion:</string>
              </property>
             </widget>
            </item>
@@ -312,7 +312,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>CP</string>
+              <string>Codigo postal:</string>
              </property>
             </widget>
            </item>
@@ -343,7 +343,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_9" >
            <property name="text" >
-            <string>Población</string>
+            <string>Poblacion:</string>
            </property>
           </widget>
          </item>
@@ -353,7 +353,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_9_2" >
            <property name="text" >
-            <string>Província</string>
+            <string>Provincia:</string>
            </property>
           </widget>
          </item>
@@ -388,7 +388,7 @@
            <item>
             <widget class="QLabel" name="textLabel2_8" >
              <property name="text" >
-              <string>Teléfono</string>
+              <string>Telefono:</string>
              </property>
             </widget>
            </item>
@@ -408,7 +408,7 @@
            <item>
             <widget class="QLabel" name="textLabel2_8_4" >
              <property name="text" >
-              <string>Fax</string>
+              <string>Fax:</string>
              </property>
             </widget>
            </item>
@@ -438,7 +438,7 @@
            <item>
             <widget class="QLabel" name="textLabel2_8_2" >
              <property name="text" >
-              <string>&amp;WEB</string>
+              <string>Pagina web:</string>
              </property>
             </widget>
            </item>
@@ -458,7 +458,7 @@
            <item>
             <widget class="QLabel" name="textLabel2_8_3" >
              <property name="text" >
-              <string>Email</string>
+              <string>E-mail:</string>
              </property>
             </widget>
            </item>
@@ -546,7 +546,7 @@
               </size>
              </property>
              <property name="text" >
-              <string>Datos eComercio</string>
+              <string>Datos eComercio:</string>
              </property>
             </widget>
            </item>
@@ -577,7 +577,7 @@
          <item>
           <widget class="QLabel" name="textLabel2_4_3" >
            <property name="text" >
-            <string>Datos Bancarios</string>
+            <string>Datos bancarios:</string>
            </property>
           </widget>
          </item>
@@ -806,7 +806,7 @@
          <property name="font" >
           <font>
            <family>Sans Serif</family>
-           <pointsize>15</pointsize>
+           <pointsize>9</pointsize>
            <weight>50</weight>
            <italic>false</italic>
            <bold>false</bold>
@@ -815,7 +815,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Resumen por artículos</string>
+          <string>Resumen por articulos:</string>
          </property>
         </widget>
        </item>
@@ -932,7 +932,7 @@
      </widget>
      <widget class="QWidget" name="tab2" >
       <attribute name="title" >
-       <string>Produ&amp;ctos Suministrados</string>
+       <string>Produ&amp;ctos suministrados</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -1045,14 +1045,14 @@
      <item>
       <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
@@ -1063,6 +1063,34 @@
  <layoutdefault spacing="2" margin="5" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
+  <customwidget>
+   <class>FacturasList</class>
+   <extends></extends>
+   <header>facturaslist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>CobrosList</class>
+   <extends></extends>
+   <header>cobroslist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends></extends>
+   <header>busquedaprovincia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
   <customwidget>
    <class>PedidosClienteList</class>
    <extends></extends>
@@ -1078,23 +1106,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
+   <class>Q3Table</class>
    <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>AlbaranClienteList</class>
-   <extends></extends>
-   <header>albaranclientelist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>FacturasList</class>
-   <extends></extends>
-   <header>facturaslist.h</header>
+   <header>q3table.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1106,23 +1120,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>CobrosList</class>
+   <class>AlbaranClienteList</class>
    <extends></extends>
-   <header>cobroslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Table</class>
-   <extends></extends>
-   <header>q3table.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends></extends>
-   <header>busquedaprovincia.h</header>
+   <header>albaranclientelist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

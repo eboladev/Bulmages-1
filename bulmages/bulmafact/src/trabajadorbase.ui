@@ -36,10 +36,10 @@
      <item>
       <widget class="QToolButton" name="mui_nuevo" >
        <property name="toolTip" >
-        <string>Nuevo Trabajador</string>
+        <string>Nuevo trabajador</string>
        </property>
        <property name="whatsThis" >
-        <string>Nuevo Trabajador</string>
+        <string>Nuevo trabajador</string>
        </property>
        <property name="text" >
         <string/>
@@ -58,10 +58,10 @@
      <item>
       <widget class="QToolButton" name="mui_guardar" >
        <property name="toolTip" >
-        <string>Borrar Trabajador</string>
+        <string>Guardar trabajador</string>
        </property>
        <property name="whatsThis" >
-        <string>Borrar Trabajador</string>
+        <string>Guardar trabajador</string>
        </property>
        <property name="text" >
         <string/>
@@ -80,10 +80,10 @@
      <item>
       <widget class="QToolButton" name="mui_borrar" >
        <property name="toolTip" >
-        <string>Guardar Trabajador</string>
+        <string>Borrar trabajador</string>
        </property>
        <property name="whatsThis" >
-        <string>Guardar Trabajador</string>
+        <string>Borrar trabajador</string>
        </property>
        <property name="text" >
         <string/>
@@ -194,7 +194,7 @@
           </sizepolicy>
          </property>
          <property name="title" >
-          <string>Información del Trabajador</string>
+          <string>Informacion del trabajador:</string>
          </property>
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
@@ -217,7 +217,7 @@
             <item>
              <widget class="QLabel" name="textLabel1" >
               <property name="text" >
-               <string>Nombre</string>
+               <string>Nombre:</string>
               </property>
              </widget>
             </item>
@@ -245,7 +245,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Apellidos</string>
+               <string>Apellidos:</string>
               </property>
              </widget>
             </item>
@@ -273,7 +273,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Dirección</string>
+               <string>Direccion:</string>
               </property>
              </widget>
             </item>
@@ -301,7 +301,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Teléfono</string>
+               <string>Telefono:</string>
               </property>
              </widget>
             </item>
@@ -333,7 +333,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Móvil</string>
+               <string>Telefono movil:</string>
               </property>
              </widget>
             </item>
@@ -397,7 +397,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>e-mail</string>
+               <string>E-mail:</string>
               </property>
              </widget>
             </item>
@@ -492,7 +492,7 @@
               <item>
                <widget class="QPushButton" name="mui_imagen" >
                 <property name="text" >
-                 <string>Cambiar Imagen</string>
+                 <string>Cambiar imagen</string>
                 </property>
                </widget>
               </item>
@@ -559,7 +559,7 @@
          <item>
           <widget class="QPushButton" name="pushButton" >
            <property name="text" >
-            <string>Cerrar</string>
+            <string>&amp;Cerrar</string>
            </property>
           </widget>
          </item>

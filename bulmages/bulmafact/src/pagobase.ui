@@ -81,10 +81,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar Pago</string>
+           <string>Guardar pago</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar Pago</string>
+           <string>Guardar pago</string>
           </property>
           <property name="text" >
            <string/>
@@ -109,10 +109,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar Pago</string>
+           <string>Borrar pago</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Pago</string>
+           <string>Borrar pago</string>
           </property>
           <property name="text" >
            <string/>
@@ -155,7 +155,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Referencia</string>
+           <string>Referencia:</string>
           </property>
           <property name="buddy" >
            <cstring>mui_refpago</cstring>
@@ -182,7 +182,7 @@
    <item>
     <widget class="QCheckBox" name="mui_previsionpago" >
      <property name="text" >
-      <string>Previsión</string>
+      <string>Prevision</string>
      </property>
     </widget>
    </item>
@@ -197,7 +197,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2_3_2" >
        <property name="text" >
-        <string>Proveedor</string>
+        <string>Proveedor:</string>
        </property>
       </widget>
      </item>
@@ -240,7 +240,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2_3" >
        <property name="text" >
-        <string>Fecha Pago</string>
+        <string>Fecha pago:</string>
        </property>
       </widget>
      </item>
@@ -293,7 +293,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Desc Pago</string>
+        <string>Descripcion pago:</string>
        </property>
        <property name="buddy" >
         <cstring>mui_comentpago</cstring>
@@ -340,7 +340,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Total Pago</string>
+        <string>Total pago:</string>
        </property>
        <property name="buddy" >
         <cstring>mui_cantpago</cstring>
@@ -675,7 +675,7 @@
      <item>
       <widget class="QPushButton" name="pushButton" >
        <property name="text" >
-        <string>Cerrar</string>
+        <string>&amp;Cerrar</string>
        </property>
       </widget>
      </item>
@@ -687,16 +687,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaProveedor</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedaproveedor.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -54,10 +54,10 @@
       <item>
        <widget class="QToolButton" name="mui_crear" >
         <property name="toolTip" >
-         <string>Nuevo Tipo Artículo</string>
+         <string>Nuevo tipo de articulo</string>
         </property>
         <property name="whatsThis" >
-         <string>Nuevo Tipo Artículo</string>
+         <string>Nuevo tipo de articulo</string>
         </property>
         <property name="text" >
          <string/>
@@ -76,10 +76,10 @@
       <item>
        <widget class="QToolButton" name="mui_borrar" >
         <property name="toolTip" >
-         <string>Borrar Tipo Artículo</string>
+         <string>Borrar tipo de articulo</string>
         </property>
         <property name="whatsThis" >
-         <string>Borrar Tipo Artículo</string>
+         <string>Borrar tipo de articulo</string>
         </property>
         <property name="text" >
          <string/>
@@ -98,10 +98,10 @@
       <item>
        <widget class="QToolButton" name="mui_guardar" >
         <property name="toolTip" >
-         <string>Guardar Tipo Artículo</string>
+         <string>Guardar tipo de articulo</string>
         </property>
         <property name="whatsThis" >
-         <string>Guardar Tipo Artículo</string>
+         <string>Guardar tipo de articulo</string>
         </property>
         <property name="text" >
          <string/>
@@ -120,10 +120,10 @@
       <item>
        <widget class="QToolButton" name="mui_imprimir" >
         <property name="toolTip" >
-         <string>Guardar Tipo Artículo</string>
+         <string>Guardar tipo de articulo</string>
         </property>
         <property name="whatsThis" >
-         <string>Guardar Tipo Artículo</string>
+         <string>Guardar tipo de articulo</string>
         </property>
         <property name="text" >
          <string/>
@@ -227,7 +227,7 @@
    <item>
     <widget class="Q3GroupBox" name="groupBox1" >
      <property name="title" >
-      <string>Contenido de la familia</string>
+      <string>Contenido de la familia:</string>
      </property>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -258,7 +258,7 @@
           <item>
            <widget class="QLabel" name="textLabel1" >
             <property name="text" >
-             <string>Nombre</string>
+             <string>Nombre:</string>
             </property>
            </widget>
           </item>
@@ -278,7 +278,7 @@
           <item>
            <widget class="QLabel" name="labelalgo" >
             <property name="text" >
-             <string>Código</string>
+             <string>Codigo:</string>
             </property>
            </widget>
           </item>
@@ -300,7 +300,7 @@
         <item>
          <widget class="QLabel" name="m_codFamilia_2" >
           <property name="text" >
-           <string>Código Completo</string>
+           <string>Codigo completo:</string>
           </property>
          </widget>
         </item>
@@ -328,7 +328,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Descripción</string>
+           <string>Descripcion:</string>
           </property>
          </widget>
         </item>
@@ -373,14 +373,14 @@
      <item>
       <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>

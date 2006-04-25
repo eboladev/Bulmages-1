@@ -85,10 +85,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nueva Factura</string>
+           <string>Nueva factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Nueva Factura</string>
+           <string>Nueva factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -107,10 +107,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Factura</string>
+           <string>Editar factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Factura</string>
+           <string>Editar factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -129,10 +129,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Factura</string>
+           <string>Borrar factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Factura</string>
+           <string>Borrar factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -157,10 +157,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -179,10 +179,10 @@
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
-           <string>Filtrar Facturas</string>
+           <string>Filtrar facturas</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar Facturas</string>
+           <string>Filtrar facturas</string>
           </property>
           <property name="text" >
            <string/>
@@ -204,10 +204,10 @@
         <item>
          <widget class="QToolButton" name="mui_configurar" >
           <property name="toolTip" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -229,10 +229,10 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -267,7 +267,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Buscar</string>
+           <string>Buscar:</string>
           </property>
          </widget>
         </item>
@@ -334,7 +334,7 @@
         <item>
          <widget class="QLabel" name="textLabel2" >
           <property name="text" >
-           <string>Contiene Artículo</string>
+           <string>Contiene articulo:</string>
           </property>
          </widget>
         </item>
@@ -360,7 +360,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2" >
           <property name="text" >
-           <string>Cliente</string>
+           <string>Cliente:</string>
           </property>
          </widget>
         </item>
@@ -403,7 +403,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4" >
           <property name="text" >
-           <string>Fecha Inicial</string>
+           <string>Fecha inicial:</string>
           </property>
          </widget>
         </item>
@@ -429,7 +429,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4_2" >
           <property name="text" >
-           <string>Fecha Final</string>
+           <string>Fecha final:</string>
           </property>
          </widget>
         </item>
@@ -496,7 +496,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idfactura" >
           <property name="text" >
-           <string>I&amp;d. Factura</string>
+           <string>I&amp;d. factura</string>
           </property>
           <property name="shortcut" >
            <string>Alt+D</string>
@@ -509,7 +509,7 @@
         <item>
          <widget class="QCheckBox" name="mver_codigoalmacen" >
           <property name="text" >
-           <string>Almac&amp;én</string>
+           <string>Almac&amp;en</string>
           </property>
           <property name="shortcut" >
            <string>Alt+É</string>
@@ -522,7 +522,7 @@
         <item>
          <widget class="QCheckBox" name="mver_numfactura" >
           <property name="text" >
-           <string>&amp;Num. Factura</string>
+           <string>&amp;Numero de factura</string>
           </property>
           <property name="shortcut" >
            <string>Alt+N</string>
@@ -614,7 +614,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idusuari" >
           <property name="text" >
-           <string>Id. &amp;Usuario</string>
+           <string>Id. &amp;usuario</string>
           </property>
           <property name="shortcut" >
            <string>Alt+U</string>
@@ -627,7 +627,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idcliente" >
           <property name="text" >
-           <string>&amp;Id. Cliente</string>
+           <string>&amp;Id. cliente</string>
           </property>
           <property name="shortcut" >
            <string>Alt+I</string>
@@ -637,7 +637,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idalmacen" >
           <property name="text" >
-           <string>Id. &amp;Almacén</string>
+           <string>Id. &amp;almacen</string>
           </property>
           <property name="shortcut" >
            <string>Alt+A</string>
@@ -670,7 +670,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalfactura" >
           <property name="text" >
-           <string>Total Factura</string>
+           <string>Total factura</string>
           </property>
           <property name="shortcut" >
            <string/>
@@ -683,7 +683,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalbaseimp" >
           <property name="text" >
-           <string>Total &amp;Base Imponible</string>
+           <string>Total &amp;base imponible</string>
           </property>
           <property name="shortcut" >
            <string>Alt+B</string>
@@ -696,7 +696,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalimpuestos" >
           <property name="text" >
-           <string>Total Impuestos</string>
+           <string>Total impuestos</string>
           </property>
           <property name="shortcut" >
            <string/>
@@ -741,7 +741,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_3" >
        <property name="text" >
-        <string>Total</string>
+        <string>Total:</string>
        </property>
       </widget>
      </item>
@@ -774,13 +774,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends></extends>
-   <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
@@ -788,16 +781,23 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedacliente.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaArticulo</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedaarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

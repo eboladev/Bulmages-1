@@ -64,21 +64,21 @@
             <item>
              <widget class="QPushButton" name="botonnew" >
               <property name="text" >
-               <string>Nuevo</string>
+               <string>&amp;Nuevo</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="botondelete" >
               <property name="text" >
-               <string>Borrar</string>
+               <string>&amp;Borrar</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QPushButton" name="botonsave" >
               <property name="text" >
-               <string>Guardar</string>
+               <string>&amp;Guardar</string>
               </property>
              </widget>
             </item>

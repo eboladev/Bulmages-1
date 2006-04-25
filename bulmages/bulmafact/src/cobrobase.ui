@@ -67,10 +67,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar Cobro</string>
+           <string>Guardar cobro</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar Cobro</string>
+           <string>Guardar cobro</string>
           </property>
           <property name="text" >
            <string/>
@@ -95,10 +95,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar Cobro</string>
+           <string>Borrar cobro</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Cobro</string>
+           <string>Borrar cobro</string>
           </property>
           <property name="text" >
            <string/>
@@ -141,7 +141,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Referencia</string>
+           <string>Referencia:</string>
           </property>
          </widget>
         </item>
@@ -165,7 +165,7 @@
    <item>
     <widget class="QCheckBox" name="mui_previsioncobro" >
      <property name="text" >
-      <string>Previsión</string>
+      <string>Prevision</string>
      </property>
     </widget>
    </item>
@@ -180,7 +180,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2_3_2" >
        <property name="text" >
-        <string>Cliente</string>
+        <string>Cliente:</string>
        </property>
       </widget>
      </item>
@@ -225,7 +225,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_2_3" >
        <property name="text" >
-        <string>Fecha Cobro</string>
+        <string>Fecha cobro:</string>
        </property>
       </widget>
      </item>
@@ -278,7 +278,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Desc Presupuesto</string>
+        <string>Descripcion del presupuesto:</string>
        </property>
       </widget>
      </item>
@@ -322,7 +322,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Total Cobro</string>
+        <string>Total cobro:</string>
        </property>
       </widget>
      </item>
@@ -651,7 +651,7 @@
      <item>
       <widget class="QPushButton" name="pushButton" >
        <property name="text" >
-        <string>Cerrar</string>
+        <string>&amp;Cerrar</string>
        </property>
       </widget>
      </item>
@@ -663,16 +663,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedacliente.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaCliente</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

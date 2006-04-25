@@ -75,10 +75,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nuevo Inventario</string>
+           <string>Nuevo inventario</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Inventario</string>
+           <string>Nuevo inventario</string>
           </property>
           <property name="text" >
            <string/>
@@ -97,10 +97,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Inventario</string>
+           <string>Editar inventario</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Inventario</string>
+           <string>Editar inventario</string>
           </property>
           <property name="text" >
            <string/>
@@ -119,10 +119,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Factura</string>
+           <string>Borrar factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Factura</string>
+           <string>Borrar factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -168,17 +168,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>InventariosSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>inventariosview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>InventariosSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>inventariosview.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

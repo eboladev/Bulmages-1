@@ -46,7 +46,7 @@
      <item>
       <widget class="QPushButton" name="pushButton" >
        <property name="text" >
-        <string>Cerrar</string>
+        <string>&amp;Cerrar</string>
        </property>
       </widget>
      </item>
@@ -63,7 +63,7 @@
       </sizepolicy>
      </property>
      <property name="title" >
-      <string>Información de la Forma de Pago</string>
+      <string>Información de la forma de pago:</string>
      </property>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
@@ -86,7 +86,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Nombre</string>
+           <string>Nombre:</string>
           </property>
          </widget>
         </item>
@@ -121,7 +121,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Plazo primer Recibo (días)</string>
+           <string>Plazo primer recibo (dias):</string>
           </property>
          </widget>
         </item>
@@ -149,7 +149,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Descuento</string>
+           <string>Descuento:</string>
           </property>
          </widget>
         </item>
@@ -177,7 +177,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Número de Plazos</string>
+           <string>Numero de plazos:</string>
           </property>
          </widget>
         </item>
@@ -241,7 +241,7 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Plazo entre Recibos (días)</string>
+           <string>Plazo entre recibos (dias):</string>
           </property>
          </widget>
         </item>
@@ -316,10 +316,10 @@
      <item>
       <widget class="QToolButton" name="mui_crear" >
        <property name="toolTip" >
-        <string>Nueva Forma de Pago</string>
+        <string>Nueva forma de pago</string>
        </property>
        <property name="whatsThis" >
-        <string>Nueva Forma de Pago</string>
+        <string>Nueva forma de pago</string>
        </property>
        <property name="text" >
         <string/>
@@ -338,10 +338,10 @@
      <item>
       <widget class="QToolButton" name="mui_guardar" >
        <property name="toolTip" >
-        <string>Borrar Forma de Pago</string>
+        <string>Borrar forma de pago</string>
        </property>
        <property name="whatsThis" >
-        <string>Borrar Forma de Pago</string>
+        <string>Borrar forma de pago</string>
        </property>
        <property name="text" >
         <string/>
@@ -360,10 +360,10 @@
      <item>
       <widget class="QToolButton" name="muy_borrar" >
        <property name="toolTip" >
-        <string>Guardar Forma de Pago</string>
+        <string>Guardar forma de pago</string>
        </property>
        <property name="whatsThis" >
-        <string>Guardar Forma de Pago</string>
+        <string>Guardar forma de pago</string>
        </property>
        <property name="text" >
         <string/>
