@@ -75,10 +75,10 @@
         <item>
          <widget class="QToolButton" name="mui_crear" >
           <property name="toolTip" >
-           <string>Nuevo Albaran</string>
+           <string>Nuevo albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo Albaran</string>
+           <string>Nuevo albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -97,10 +97,10 @@
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="toolTip" >
-           <string>Editar Albaran</string>
+           <string>Editar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Albaran</string>
+           <string>Editar albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -119,10 +119,10 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="toolTip" >
-           <string>Borrar Albaran</string>
+           <string>Borrar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar Albaran</string>
+           <string>Borrar albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -141,10 +141,10 @@
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="toolTip" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir Listado</string>
+           <string>Imprimir listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -163,10 +163,10 @@
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
-           <string>Filtrar Albaranes</string>
+           <string>Filtrar albaranes</string>
           </property>
           <property name="whatsThis" >
-           <string>Filtrar Albaranes</string>
+           <string>Filtrar albaranes</string>
           </property>
           <property name="text" >
            <string/>
@@ -188,10 +188,10 @@
         <item>
          <widget class="QToolButton" name="mui_configurar" >
           <property name="toolTip" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Configurar Listado</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -213,10 +213,10 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="toolTip" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Actualizar Listado</string>
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -251,7 +251,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Buscar</string>
+           <string>Buscar:</string>
           </property>
          </widget>
         </item>
@@ -312,7 +312,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_2_2" >
           <property name="text" >
-           <string>Contiene artículo</string>
+           <string>Contiene articulo:</string>
           </property>
          </widget>
         </item>
@@ -338,7 +338,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_2_2_2" >
           <property name="text" >
-           <string>Proveedor</string>
+           <string>Proveedor:</string>
           </property>
          </widget>
         </item>
@@ -374,7 +374,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4" >
           <property name="text" >
-           <string>Fecha inicial</string>
+           <string>Fecha inicial:</string>
           </property>
          </widget>
         </item>
@@ -400,7 +400,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4_2" >
           <property name="text" >
-           <string>Fecha Final</string>
+           <string>Fecha final:</string>
           </property>
          </widget>
         </item>
@@ -454,7 +454,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idalbaranp" >
           <property name="text" >
-           <string>&amp;Id. albarán de proveedor</string>
+           <string>&amp;Id. albaran de proveedor</string>
           </property>
           <property name="shortcut" >
            <string>Alt+I</string>
@@ -464,7 +464,7 @@
         <item>
          <widget class="QCheckBox" name="mver_numalbaranp" >
           <property name="text" >
-           <string>&amp;Núm. albarán</string>
+           <string>&amp;Numero de albaran</string>
           </property>
           <property name="shortcut" >
            <string>Alt+N</string>
@@ -477,7 +477,7 @@
         <item>
          <widget class="QCheckBox" name="mver_descalbaranp" >
           <property name="text" >
-           <string>&amp;Descripción</string>
+           <string>&amp;Descripcion</string>
           </property>
           <property name="shortcut" >
            <string>Alt+D</string>
@@ -571,7 +571,7 @@
         <item>
          <widget class="QCheckBox" name="mver_idalmacen" >
           <property name="text" >
-           <string>Id. almac&amp;én</string>
+           <string>Id. almac&amp;en</string>
           </property>
          </widget>
         </item>
@@ -598,7 +598,7 @@
         <item>
          <widget class="QCheckBox" name="mver_nomalmacen" >
           <property name="text" >
-           <string>No&amp;m almacén</string>
+           <string>No&amp;m almacen</string>
           </property>
           <property name="shortcut" >
            <string>Alt+M</string>
@@ -721,7 +721,7 @@
      <item>
       <widget class="QLabel" name="textLabel1_3" >
        <property name="text" >
-        <string>Total</string>
+        <string>Total: </string>
        </property>
       </widget>
      </item>
@@ -754,9 +754,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>AlbaranesProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>albaranesproveedor.h</header>
+   <class>BusquedaProveedor</class>
+   <extends></extends>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -768,10 +768,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>Q3Frame</class>
    <extends></extends>
-   <header>busquedaproveedor.h</header>
-   <container>0</container>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -782,10 +782,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
+   <class>AlbaranesProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>albaranesproveedor.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

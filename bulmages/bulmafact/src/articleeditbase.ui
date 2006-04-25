@@ -160,7 +160,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Código completo</string>
+           <string>Codigo completo:</string>
           </property>
          </widget>
         </item>
@@ -491,7 +491,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Descripción Abreviada</string>
+              <string>Descripcion abreviada:</string>
              </property>
             </widget>
            </item>
@@ -523,7 +523,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Subcódigo</string>
+              <string>Subcodigo:</string>
              </property>
             </widget>
            </item>
@@ -560,7 +560,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Nombre</string>
+              <string>Nombre:</string>
              </property>
             </widget>
            </item>
@@ -588,7 +588,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Tipo de Artículo</string>
+              <string>Tipo de artículo:</string>
              </property>
             </widget>
            </item>
@@ -616,7 +616,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Familia</string>
+              <string>Familia:</string>
              </property>
             </widget>
            </item>
@@ -644,7 +644,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>PVP Recomendado</string>
+              <string>P.V.P. recomendado:</string>
              </property>
             </widget>
            </item>
@@ -684,7 +684,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Tipo de IVA</string>
+              <string>Tipo de I.V.A.:</string>
              </property>
             </widget>
            </item>
@@ -705,14 +705,14 @@
          <item>
           <widget class="QCheckBox" name="m_presentablearticulo" >
            <property name="text" >
-            <string>&amp;Incluir en Detalles</string>
+            <string>&amp;Incluir en detalles</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="m_controlstockarticulo" >
            <property name="text" >
-            <string>&amp;Control de Stock</string>
+            <string>&amp;Control de stock</string>
            </property>
           </widget>
          </item>
@@ -766,7 +766,7 @@
          <item>
           <widget class="QPushButton" name="mui_cambiarimagen" >
            <property name="text" >
-            <string>Cam&amp;biar Imagen</string>
+            <string>Cam&amp;biar imagen</string>
            </property>
           </widget>
          </item>
@@ -805,7 +805,7 @@
      </widget>
      <widget class="QWidget" name="TabPage" >
       <attribute name="title" >
-       <string>Descripci&amp;ón</string>
+       <string>Descripcio&amp;n</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -860,14 +860,14 @@
      <item>
       <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
@@ -879,6 +879,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaFamilia</class>
+   <extends></extends>
+   <header>busquedafamilia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3TextEdit</class>
    <extends></extends>
    <header>q3textedit.h</header>
@@ -886,10 +893,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaTipoArticulo</class>
+   <class>Q3Frame</class>
    <extends></extends>
-   <header>busquedatipoarticulo.h</header>
-   <container>0</container>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -900,17 +907,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFamilia</class>
+   <class>BusquedaTipoArticulo</class>
    <extends></extends>
-   <header>busquedafamilia.h</header>
+   <header>busquedatipoarticulo.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
