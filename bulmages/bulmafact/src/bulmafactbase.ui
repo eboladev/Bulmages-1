@@ -49,6 +49,33 @@
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
    </widget>
+   <widget class="QMenu" name="menuCompras" >
+    <property name="title" >
+     <string>&amp;Compras</string>
+    </property>
+    <addaction name="actionNuevo_Pedido_Proveedor" />
+    <addaction name="actionListado_Pedidos_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Albaran_Proveedor" />
+    <addaction name="actionListado_Albaranes_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNueva_Factura_Proveedor" />
+    <addaction name="actionListado_Facturas_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Pago" />
+    <addaction name="actionListado_de_Pagos" />
+   </widget>
+   <widget class="QMenu" name="menuArticulos" >
+    <property name="title" >
+     <string>&amp;Articulos</string>
+    </property>
+    <addaction name="actionGestion_Familias" />
+    <addaction name="actionGestion_Tipos_Articulo" />
+    <addaction name="actionNuevo_Articulo" />
+    <addaction name="actionListado_de_Articulos" />
+    <addaction name="separator" />
+    <addaction name="actionInventarios" />
+   </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
      <string>&amp;Ventas</string>
@@ -67,22 +94,6 @@
     <addaction name="separator" />
     <addaction name="actionNuevo_Cobro" />
     <addaction name="actionListado_de_Cobros" />
-   </widget>
-   <widget class="QMenu" name="menuCompras" >
-    <property name="title" >
-     <string>&amp;Compras</string>
-    </property>
-    <addaction name="actionNuevo_Pedido_Proveedor" />
-    <addaction name="actionListado_Pedidos_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Albaran_Proveedor" />
-    <addaction name="actionListado_Albaranes_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNueva_Factura_Proveedor" />
-    <addaction name="actionListado_Facturas_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Pago" />
-    <addaction name="actionListado_de_Pagos" />
    </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
@@ -103,17 +114,6 @@
     <addaction name="actionFormas_de_Pago" />
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
-   </widget>
-   <widget class="QMenu" name="menuArticulos" >
-    <property name="title" >
-     <string>&amp;Articulos</string>
-    </property>
-    <addaction name="actionGestion_Familias" />
-    <addaction name="actionGestion_Tipos_Articulo" />
-    <addaction name="actionNuevo_Articulo" />
-    <addaction name="actionListado_de_Articulos" />
-    <addaction name="separator" />
-    <addaction name="actionInventarios" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -247,7 +247,7 @@
     <string>&amp;Salir</string>
    </property>
    <property name="shortcut" >
-    <string>ctrl+q</string>
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionParametros" >
@@ -314,7 +314,7 @@
     <string>Nuevo &amp;presupuesto</string>
    </property>
    <property name="shortcut" >
-    <string>f5</string>
+    <string>F5</string>
    </property>
   </action>
   <action name="actionListado_Presupuestos" >
@@ -365,7 +365,7 @@
     <string>Nueva &amp;factura cliente</string>
    </property>
    <property name="shortcut" >
-    <string>f6</string>
+    <string>F6</string>
    </property>
   </action>
   <action name="actionListado_Facturas_Cliente" >
@@ -394,7 +394,7 @@
     <string>Nuevo &amp;articulo</string>
    </property>
    <property name="shortcut" >
-    <string>f2</string>
+    <string>F2</string>
    </property>
   </action>
   <action name="actionListado_de_Articulos" >
@@ -434,7 +434,7 @@
     <string>Nuevo &amp;cliente</string>
    </property>
    <property name="shortcut" >
-    <string>f4</string>
+    <string>F4</string>
    </property>
   </action>
   <action name="actionListado_Clientes" >
@@ -447,7 +447,7 @@
   </action>
   <action name="actionProvincias" >
    <property name="text" >
-    <string>Pro&amp;vincias...</string>
+    <string>Pro&amp;vincias</string>
    </property>
   </action>
   <action name="actionSeries_de_Factura" >

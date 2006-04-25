@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>686</width>
-    <height>607</height>
+    <width>730</width>
+    <height>691</height>
    </rect>
   </property>
   <property name="font" >
@@ -94,10 +94,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir</string>
+           <string>Guardar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir</string>
+           <string>Guardar</string>
           </property>
           <property name="text" >
            <string/>
@@ -122,10 +122,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar</string>
+           <string>Borrar</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar</string>
+           <string>Borrar</string>
           </property>
           <property name="text" >
            <string/>
@@ -150,10 +150,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
@@ -194,10 +194,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Ver Pedido</string>
+           <string>Ver pedido cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Ver Pedido</string>
+           <string>Ver pedido cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -222,10 +222,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Pasar a Factura</string>
+           <string>Pasar a factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Pasar a Factura</string>
+           <string>Pasar a factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -250,10 +250,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Agregar a Factura</string>
+           <string>Agregar a factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Agregar a Factura</string>
+           <string>Agregar a factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -278,10 +278,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Agregar a Factura Existente</string>
+           <string>Agregar a factura existente</string>
           </property>
           <property name="whatsThis" >
-           <string>Agregar a Factura Existente</string>
+           <string>Agregar a factura existente</string>
           </property>
           <property name="text" >
            <string/>
@@ -315,8 +315,19 @@
         </item>
         <item>
          <widget class="QLabel" name="textLabel1_2_2_3_4" >
+          <property name="font" >
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>11</pointsize>
+            <weight>75</weight>
+            <italic>false</italic>
+            <bold>true</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
           <property name="text" >
-           <string>Referéncia</string>
+           <string>Referencia: </string>
           </property>
          </widget>
         </item>
@@ -332,10 +343,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Informe por Referencia</string>
+           <string>Informe por referencia</string>
           </property>
           <property name="whatsThis" >
-           <string>Informe por Referencia</string>
+           <string>Informe por referencia</string>
           </property>
           <property name="text" >
            <string/>
@@ -415,7 +426,7 @@
        <item>
         <widget class="QLabel" name="textLabel1_2_2_3_3" >
          <property name="text" >
-          <string>Descripción</string>
+          <string>Descripcion:</string>
          </property>
         </widget>
        </item>
@@ -451,7 +462,7 @@
        <item>
         <widget class="QLabel" name="textLabel1_2_2_3" >
          <property name="text" >
-          <string>Albarán nº</string>
+          <string>Nº de albaran:</string>
          </property>
         </widget>
        </item>
@@ -473,28 +484,27 @@
    </item>
    <item>
     <widget class="QFrame" name="frame" >
+     <property name="minimumSize" >
+      <size>
+       <width>16</width>
+       <height>16</height>
+      </size>
+     </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" >
+     <layout class="QHBoxLayout" >
       <property name="margin" >
        <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item row="4" column="1" >
-       <widget class="QCheckBox" name="m_procesadoalbaran" >
-        <property name="text" >
-         <string>Procesado</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" >
-       <layout class="QHBoxLayout" >
+      <item>
+       <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>0</number>
         </property>
@@ -502,19 +512,113 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="textLabel1_3" >
-          <property name="text" >
-           <string>Forma de pago</string>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
           </property>
-         </widget>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>1</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Cliente:</string>
+            </property>
+            <property name="textFormat" >
+             <enum>Qt::AutoText</enum>
+            </property>
+            <property name="scaledContents" >
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaCliente" name="m_cliente" >
+            <property name="minimumSize" >
+             <size>
+              <width>250</width>
+              <height>0</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="BusquedaFormaPago" name="m_forma_pago" />
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_3_2" >
+            <property name="midLineWidth" >
+             <number>0</number>
+            </property>
+            <property name="text" >
+             <string>Almacen:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaAlmacen" name="m_almacen" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_3" >
+            <property name="text" >
+             <string>Forma de pago:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaFormaPago" name="m_forma_pago" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_2_2_2_2" >
+            <property name="text" >
+             <string>Tel. contacto:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="m_telalbaran" />
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
-      <item row="2" column="0" >
-       <layout class="QHBoxLayout" >
+      <item>
+       <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>0</number>
         </property>
@@ -522,135 +626,77 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="textLabel1_3_2" >
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_5" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>1</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text" >
+             <string>Trabajador:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaTrabajador" name="m_trabajador" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_2" >
+            <property name="text" >
+             <string>Fecha de creacion:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaFecha" name="m_fechaalbaran" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_2_2_2" >
+            <property name="text" >
+             <string>Persona de contacto:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="m_contactalbaran" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="m_procesadoalbaran" >
           <property name="text" >
-           <string>Almacén</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaAlmacen" name="m_almacen" />
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="1" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_5" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>1</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Trabajador</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaTrabajador" name="m_trabajador" />
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="1" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2" >
-          <property name="text" >
-           <string>Fecha de creación</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" name="m_fechaalbaran" />
-        </item>
-       </layout>
-      </item>
-      <item rowspan="2" row="2" column="1" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_2" >
-          <property name="text" >
-           <string>Contacto</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_contactalbaran" />
-        </item>
-       </layout>
-      </item>
-      <item row="4" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_2_2" >
-          <property name="text" >
-           <string>Tel. contacto</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_telalbaran" />
-        </item>
-       </layout>
-      </item>
-      <item row="0" column="0" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>1</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Cliente</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaCliente" name="m_cliente" >
-          <property name="minimumSize" >
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
+           <string>Procesado</string>
           </property>
          </widget>
         </item>
@@ -695,86 +741,96 @@
      </widget>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
-       <string>&amp;Comentarios</string>
+       <string>Co&amp;mentarios</string>
       </attribute>
-      <layout class="QVBoxLayout" >
+      <layout class="QHBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" >
+        <layout class="QVBoxLayout" >
          <property name="margin" >
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>2</number>
+          <number>6</number>
          </property>
          <item>
-          <widget class="QLabel" name="textLabel1_6_2" >
-           <property name="text" >
-            <string>Comentarios Públicos</string>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
            </property>
-          </widget>
+           <property name="spacing" >
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel1_6_2" >
+             <property name="text" >
+              <string>Comentarios publicos</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType" >
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>371</width>
+               <height>21</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </item>
          <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
+          <widget class="Q3TextEdit" name="m_comentalbaran" />
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
            </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Expanding</enum>
+           <property name="spacing" >
+            <number>2</number>
            </property>
-           <property name="sizeHint" >
-            <size>
-             <width>371</width>
-             <height>21</height>
-            </size>
-           </property>
-          </spacer>
+           <item>
+            <widget class="QLabel" name="textLabel1_6" >
+             <property name="text" >
+              <string>Comentarios privados</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer>
+             <property name="orientation" >
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType" >
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" >
+              <size>
+               <width>351</width>
+               <height>21</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="Q3TextEdit" name="m_comentprivalbaran" />
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="Q3TextEdit" name="m_comentalbaran" />
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>2</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="textLabel1_6" >
-           <property name="text" >
-            <string>Comentarios Privados</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeType" >
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>351</width>
-             <height>21</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="Q3TextEdit" name="m_comentprivalbaran" />
        </item>
       </layout>
      </widget>
@@ -807,7 +863,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>Total bases Imponibles</string>
+          <string>Total base imponible:</string>
          </property>
         </widget>
        </item>
@@ -1118,7 +1174,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>Total descuentos</string>
+          <string>Total descuentos:</string>
          </property>
         </widget>
        </item>
@@ -1429,7 +1485,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>Total impuestos</string>
+          <string>Total impuestos:</string>
          </property>
         </widget>
        </item>
@@ -1742,7 +1798,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Total Pedido</string>
+        <string>Total pedido: </string>
        </property>
       </widget>
      </item>
@@ -2061,14 +2117,14 @@
      <item>
       <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
@@ -2079,6 +2135,27 @@
  <layoutdefault spacing="2" margin="2" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends></extends>
+   <header>busquedaalmacen.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends></extends>
+   <header>busquedatrabajador.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
   <customwidget>
    <class>ListLinAlbaranClienteView</class>
    <extends></extends>
@@ -2101,20 +2178,6 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3TextEdit</class>
    <extends></extends>
    <header>q3textedit.h</header>
@@ -2122,16 +2185,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends></extends>
-   <header>busquedatrabajador.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2140,22 +2196,6 @@
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
  <connections>
-  <connection>
-   <sender>mui_detalles</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>frame</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>16</x>
-     <y>61</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>85</x>
-     <y>125</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>mui_cancelar</sender>
    <signal>clicked()</signal>
