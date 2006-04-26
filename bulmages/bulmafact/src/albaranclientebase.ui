@@ -24,7 +24,7 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>Albarán</string>
+   <string>Albaran</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
@@ -318,10 +318,10 @@
           <property name="font" >
            <font>
             <family>Sans Serif</family>
-            <pointsize>11</pointsize>
-            <weight>75</weight>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
             <italic>false</italic>
-            <bold>true</bold>
+            <bold>false</bold>
             <underline>false</underline>
             <strikeout>false</strikeout>
            </font>
@@ -425,6 +425,17 @@
        </property>
        <item>
         <widget class="QLabel" name="textLabel1_2_2_3_3" >
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
          <property name="text" >
           <string>Descripcion:</string>
          </property>
@@ -461,6 +472,17 @@
        </property>
        <item>
         <widget class="QLabel" name="textLabel1_2_2_3" >
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
          <property name="text" >
           <string>Nº de albaran:</string>
          </property>
@@ -529,6 +551,17 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text" >
              <string>Cliente:</string>
             </property>
@@ -562,6 +595,17 @@
           </property>
           <item>
            <widget class="QLabel" name="textLabel1_3_2" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="midLineWidth" >
              <number>0</number>
             </property>
@@ -585,6 +629,17 @@
           </property>
           <item>
            <widget class="QLabel" name="textLabel1_3" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text" >
              <string>Forma de pago:</string>
             </property>
@@ -605,8 +660,19 @@
           </property>
           <item>
            <widget class="QLabel" name="textLabel1_2_2_2_2" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text" >
-             <string>Tel. contacto:</string>
+             <string>Telefono de contacto:</string>
             </property>
            </widget>
           </item>
@@ -643,6 +709,17 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text" >
              <string>Trabajador:</string>
             </property>
@@ -663,6 +740,17 @@
           </property>
           <item>
            <widget class="QLabel" name="textLabel1_2" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text" >
              <string>Fecha de creacion:</string>
             </property>
@@ -683,6 +771,17 @@
           </property>
           <item>
            <widget class="QLabel" name="textLabel1_2_2_2" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
             <property name="text" >
              <string>Persona de contacto:</string>
             </property>
@@ -695,6 +794,17 @@
         </item>
         <item>
          <widget class="QCheckBox" name="m_procesadoalbaran" >
+          <property name="font" >
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
           <property name="text" >
            <string>Procesado</string>
           </property>
@@ -707,6 +817,17 @@
    </item>
    <item>
     <widget class="QTabWidget" name="discounts" >
+     <property name="font" >
+      <font>
+       <family>Sans Serif</family>
+       <pointsize>9</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <underline>false</underline>
+       <strikeout>false</strikeout>
+      </font>
+     </property>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
        <string>&amp;Detalle</string>
@@ -769,7 +890,7 @@
            <item>
             <widget class="QLabel" name="textLabel1_6_2" >
              <property name="text" >
-              <string>Comentarios publicos</string>
+              <string>Comentarios publicos:</string>
              </property>
             </widget>
            </item>
@@ -805,7 +926,7 @@
            <item>
             <widget class="QLabel" name="textLabel1_6" >
              <property name="text" >
-              <string>Comentarios privados</string>
+              <string>Comentarios privados:</string>
              </property>
             </widget>
            </item>
@@ -861,6 +982,17 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
          </property>
          <property name="text" >
           <string>Total base imponible:</string>
@@ -1173,6 +1305,17 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
          <property name="text" >
           <string>Total descuentos:</string>
          </property>
@@ -1483,6 +1626,17 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
          </property>
          <property name="text" >
           <string>Total impuestos:</string>
@@ -1796,6 +1950,17 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
        </property>
        <property name="text" >
         <string>Total pedido: </string>
@@ -2116,6 +2281,17 @@
      </item>
      <item>
       <widget class="QPushButton" name="mui_cancelar" >
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
        <property name="text" >
         <string>&amp;Cancelar</string>
        </property>
@@ -2123,6 +2299,17 @@
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
        <property name="text" >
         <string>&amp;Aceptar</string>
        </property>
@@ -2135,20 +2322,6 @@
  <layoutdefault spacing="2" margin="2" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
   <customwidget>
    <class>BusquedaTrabajador</class>
    <extends></extends>
@@ -2178,6 +2351,20 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3TextEdit</class>
    <extends></extends>
    <header>q3textedit.h</header>
@@ -2185,9 +2372,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaAlmacen</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedaalmacen.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

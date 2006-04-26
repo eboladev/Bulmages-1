@@ -1,10 +1,6 @@
 <!DOCTYPE TS><TS>
 <context>
     <name>AlbaranClienteBase</name>
-    <message encoding="UTF-8">
-        <source>Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Imprimir</source>
         <translation type="unfinished"></translation>
@@ -18,71 +14,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ver Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pasar a Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Agregar a Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Agregar a Factura Existente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Referéncia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Albarán nº</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Procesado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forma de pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almacén</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha de creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel. contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -94,122 +30,126 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Comentarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Comentarios Públicos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Comentarios Privados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Ver pedido cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Pasar a factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido</source>
+        <source>Agregar a factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Agregar a factura existente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Referencia: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Informe por referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Nº de albaran:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trabajador:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha de creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Persona de contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Co&amp;mentarios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total base imponible:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono de contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentarios publicos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentarios privados:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>AlbaranClienteListBase</name>
     <message>
         <source>Albaranes a Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Editar Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Albaranes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Procesados</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Codigo Almacén</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Alt+C</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>&amp;Num. Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Fecha Albarán</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -217,15 +157,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>N&amp;om. Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Forma Pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -233,15 +165,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Forma Pa&amp;go</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+G</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nu&amp;m. Factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -249,27 +173,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Num. No Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. &amp;Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>I&amp;d. Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Id. Albar&amp;án</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
@@ -285,15 +193,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <source>Id. Almac&amp;én</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
         <source>Alt+É</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total Albaran</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -305,15 +205,115 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Impuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Referencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Nuevo albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar albaranes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Codigo de almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Numero de albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Fecha de albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>N&amp;ombre del cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. forma pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma pa&amp;go</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero no factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I&amp;d. cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. albar&amp;an</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. almac&amp;en</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -376,27 +376,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ver Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pasar a Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Referéncia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Número de albarán</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
@@ -409,10 +389,6 @@
     </message>
     <message>
         <source>Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almacén</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -428,31 +404,55 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Ver pedido de proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Pasar a factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido</source>
+        <source>Referencia:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Nombre:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Numero de albaran:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total bases imponibles:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -516,75 +516,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Albaran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Albaran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Albaran</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Albaranes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Contiene artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Id. albarán de proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Alt+I</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>&amp;Núm. albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Descripción</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -619,20 +559,12 @@
         <source>Id. forma de pago</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Id. almac&amp;én</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>N&amp;ombre de proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Alt+O</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>No&amp;m almacén</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -664,7 +596,75 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Nuevo albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar albaranes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contiene articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. albaran de proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Numero de albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. almac&amp;en</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No&amp;m almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total: </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -690,68 +690,68 @@
         <source>Borrar</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Código completo</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>&amp;Datos generales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción Abreviada</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Subcódigo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Tipo de Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Familia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>PVP Recomendado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tipo de IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Incluir en Detalles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Control de Stock</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cam&amp;biar Imagen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>C&amp;omponentes</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Codigo completo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion abreviada:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subcodigo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre:</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message encoding="UTF-8">
-        <source>Descripci&amp;ón</source>
+        <source>Tipo de artículo:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Familia:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>P.V.P. recomendado:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo de I.V.A.:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Incluir en detalles</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Control de stock</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cam&amp;biar imagen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcio&amp;n</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -848,60 +848,12 @@
         <source>Listado Artículos</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Editar</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Borrar Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Imprimir Catálogo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Filtrar Artículos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exportar Articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exportar Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Exportar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Sólo Usados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>S&amp;ólo presentables</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
@@ -909,39 +861,15 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tipo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Familia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Id. artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Codigo Completo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&amp;Nombre</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>&amp;Descripción</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Alt+D</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Código de &amp;barras</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -985,22 +913,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Tipo IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción del IVA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Id. línea producto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Código de artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Stoc&amp;k</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1010,6 +922,90 @@
     </message>
     <message>
         <source>P.V.P.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exportar articulos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importar articulos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Solo usados</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>S&amp;olo presentables</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Familia: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Codigo completo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo de &amp;barras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipo I.V.A.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion del I.V.A.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. linea producto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1054,67 +1050,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción del presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Número de presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel. contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Persona de contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pro&amp;cesado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almacén</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forma de pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha de vencimiento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha de creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1130,31 +1066,95 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Guardar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Borrar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Presupuesto</source>
+        <source>Imprimir</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Pasar a pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Referencia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Informe por referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion del presupuesto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de presupuesto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tel. de contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Persona de contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha de vencimiento:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha de creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trabajador:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total bases imponibles:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total presupuesto: </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1165,83 +1165,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>FiltrarPedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Contiene Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Codigo Almacen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+C</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Referencia Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Nombre Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Descripción</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1257,31 +1185,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nu&amp;m. Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Telefono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. &amp;Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. Almacen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total &amp;Base Imponible</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1289,11 +1193,103 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Impuestos</source>
+        <source>Nuevo pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Editar pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar pedidos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contiene articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Codigo almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Referencia presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Nombre de cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total &amp;base imponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1305,14 +1301,14 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>BusquedaArticuloBase</name>
     <message>
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Artículo</source>
+    <message>
+        <source>Articulo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1371,8 +1367,8 @@
         <source>Form1</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Tipo Artículo</source>
+    <message>
+        <source>Tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1383,79 +1379,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Ctrl+S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Borrar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Datos Generales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;CIF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Corporación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre comercial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Dirección</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Población</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Província</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Teléfono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fax</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;WEB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Email</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Comentarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Datos eComercio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Datos Bancarios</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1498,24 +1426,92 @@
         <source>Todos</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Resumen por artículos</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>D&amp;ivisiones</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Produ&amp;ctos Suministrados</source>
+        <source>Guardar cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Borrar cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>&amp;Datos generales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C.I.F.:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Corporacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre comercial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direccion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo postal:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poblacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provincia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fax:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pagina web:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Datos eComercio:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Datos bancarios:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Resumen por articulos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Produ&amp;ctos suministrados</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1545,47 +1541,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ccoonfigurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exportar Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Exportar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Importar Clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1593,15 +1549,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pro&amp;cesados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1617,14 +1565,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nom&amp;bre Alternativo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CI&amp;F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+F</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1633,19 +1573,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <source>Direcci&amp;ón</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
         <source>Alt+Ó</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>P&amp;oblación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Codi&amp;go Postal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1669,10 +1597,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>e-&amp;mail</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+M</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1685,14 +1609,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fecha Alta</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Ba&amp;ja</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+J</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1701,11 +1617,87 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>I&amp;d. Recargo</source>
+        <source>Alt+D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Alt+D</source>
+        <source>Nuevo cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exportar clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importar clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom&amp;bre alternativo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C.I.&amp;F.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direcci&amp;on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>P&amp;oblacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codi&amp;go postal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-&amp;mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha alta</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha ba&amp;ja</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I&amp;d. recargo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1716,39 +1708,39 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Cobro</source>
+        <source>Guardar cobro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Borrar Cobro</source>
+        <source>Borrar cobro</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Previsión</source>
+        <source>Referencia:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cliente</source>
+        <source>Prevision</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fecha Cobro</source>
+        <source>Cliente:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Desc Presupuesto</source>
+        <source>Fecha cobro:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Cobro</source>
+        <source>Descripcion del presupuesto:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cerrar</source>
+        <source>Total cobro:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1805,63 +1797,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Cobros</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesa&amp;dos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. &amp;Cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1901,7 +1841,59 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Nuevo cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar cobros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2087,35 +2079,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cerrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Información de la Forma de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Plazo primer Recibo (días)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Descuento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Número de Plazos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>tipoplazoprimerpago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Plazo entre Recibos (días)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2123,15 +2087,43 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nueva Forma de Pago</source>
+        <source>&amp;Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Información de la forma de pago:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Borrar Forma de Pago</source>
+        <source>Nombre:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Forma de Pago</source>
+        <source>Plazo primer recibo (dias):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descuento:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de plazos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Plazo entre recibos (dias):</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nueva forma de pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar forma de pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Guardar forma de pago</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2142,67 +2134,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Ver Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Realizar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Num. Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Serie</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forma de Pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Procesada</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha Creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almacén</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2218,35 +2154,91 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Comentarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Guardar factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Borrar factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido</source>
+        <source>Imprimir factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Agregar al albaran</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Realizar cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Referencia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Informe por referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de factura:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Serie:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha de creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentarios:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total bases imponibles:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2257,51 +2249,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Ver Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efectuar Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe Por Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Imprimir Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Num. Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesada</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha Creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Forma de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2321,31 +2273,71 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Guardar factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Borrar factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido</source>
+        <source>Facturar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Efectuar pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Informe por referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de factura:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha de creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Forma de pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total bases imponibles:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2421,38 +2413,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nueva Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pro&amp;cesada</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2460,20 +2420,8 @@ Esta seguro que desea borrarlo?</source>
         <source>Alt+C</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Contiene Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2481,23 +2429,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>I&amp;d. Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+D</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <source>Almac&amp;én</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
         <source>Alt+É</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Num. Factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2533,23 +2469,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. &amp;Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Id. Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Id. &amp;Almacén</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2561,23 +2485,95 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total &amp;Base Imponible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Impuestos</source>
+        <source>Nueva factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Editar factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contiene articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I&amp;d. factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almac&amp;en</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Numero de factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total &amp;base imponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2588,38 +2584,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nueva Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Facturas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesa&amp;da</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2627,36 +2591,12 @@ Esta seguro que desea borrarlo?</source>
         <source>Alt+D</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Contiene Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Referencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Id. Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Num. Factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2704,27 +2644,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Total Factura Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total Impuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total &amp;Base Imponible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+B</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. &amp;Usuario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2732,7 +2652,83 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Nueva factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar facturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contiene articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Numero de factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Total factura proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total &amp;base imponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2750,26 +2746,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Inventario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Inventario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pregenerar Inventario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha Creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesado</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2778,11 +2754,31 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Guardar inventario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Borrar inventario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pregenerar inventario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2812,15 +2808,45 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Inventario</source>
+        <source>Nuevo inventario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Editar Inventario</source>
+        <source>Editar inventario</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Borrar Factura</source>
+        <source>Borrar factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ListAlmacenBase</name>
+    <message>
+        <source>Almacenes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ListConfiguracionBase</name>
+    <message>
+        <source>Configuraciones</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2831,19 +2857,19 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Cerrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Nuevo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Borrar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Guardar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2861,11 +2887,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2884,45 +2910,52 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Pago</name>
+    <message>
+        <source>company</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PagoBase</name>
     <message>
         <source>Pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Pago</source>
+        <source>Guardar pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Borrar Pago</source>
+        <source>Borrar pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Previsión</source>
+        <source>Referencia:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Proveedor</source>
+        <source>Prevision</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Fecha Pago</source>
+        <source>Proveedor:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Desc Pago</source>
+        <source>Fecha pago:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pago</source>
+        <source>Descripcion pago:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cerrar</source>
+        <source>Total pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2979,63 +3012,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pagos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pr&amp;ocesados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>I&amp;d. Proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3075,7 +3056,59 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Nuevo pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar pagos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>I&amp;d. proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3090,75 +3123,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ver Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Pasar a Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efectuar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efecturar Cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Desc Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Num. Pedido Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha Creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almacén</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Foma de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel. Contacto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3178,31 +3143,99 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Guardar pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Borrar pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido</source>
+        <source>Imprimir pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Ver presupuesto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Pasar a albaran</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Efectuar cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Referencia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Informe por referencia</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion del pedido:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de pedido cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Foma de pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trabajador:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono de contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total bases imponibles:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3252,87 +3285,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Guardar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borras</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Generar Albarán</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Pagar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Efectuar Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Imprimir Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Desc Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Num. Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Almacén</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pr&amp;ocesado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Fecha Creación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Foma de Pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Tel. Contacto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Contacto</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3352,31 +3309,91 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total bases Imponibles</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>0.00</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total descuentos</source>
+        <source>Guardar pedido de proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total impuestos</source>
+        <source>Borrar pedido de proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido</source>
+        <source>Imprimir pedido de proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Generar albaran</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Efectuar pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Referencia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion de pedido:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de pedido de proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Almacen:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha de creacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Foma de pago:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trabajador:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono de contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contacto:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total bases imponibles:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total descuentos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3444,63 +3461,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>FiltrarPedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. PedidoCliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3508,27 +3469,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Codigo Almacen</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Re&amp;ferencia Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Num. Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Descripción</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3564,19 +3509,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. &amp;Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. Al&amp;macen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3584,23 +3517,103 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total &amp;Base Imponible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Impuestos</source>
+        <source>Nuevo pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Editar pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar pedidos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. pedido de cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Codigo almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Re&amp;ferencia pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Numero de pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. al&amp;macen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total &amp;base imponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3611,38 +3624,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Pedidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesados</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3650,28 +3631,8 @@ Esta seguro que desea borrarlo?</source>
         <source>Proveedor</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Inicial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fecha Final</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Alt+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Codigo Almacen</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3687,15 +3648,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Num. Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+N</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>&amp;Descripción</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3731,19 +3684,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Id. &amp;Usuario</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+U</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Id. Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Id. Almac&amp;én</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
@@ -3751,23 +3692,99 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Total &amp;Base Imponible</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total Impuestos</source>
+        <source>Nuevo pedido proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Total</source>
+        <source>Editar pedido proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar pedido proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar pedidos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Proveedor:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha inicial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fecha final:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Codigo almacen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Numero de pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. &amp;usuario</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Id. almac&amp;en</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total pedido proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total &amp;base imponible</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total impuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Total:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3824,94 +3841,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Crear </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Crear</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Datos Generales</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CIF / NIF</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Nuestro código de cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Corporación</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre comercial</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Dirección</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>CP</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Población</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Província</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Teléfono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>WEB</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Fax</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Email</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Comentarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Datos eComercio</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Datos Bancarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Pedidos</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3929,10 +3858,6 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Divisiones</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Productos Suministrados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3960,11 +3885,99 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Nuevo proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Guardar proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Datos generales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C.I.F. / N.I.F.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuestro codigo de cliente:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Empresa:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre comercial:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direccion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo postal:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Poblacion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Provincia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pagina web:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de fax:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Comentarios:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Datos eComercio:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Datos bancarios:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Productos suministrados</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3975,43 +3988,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Editar Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Filtrar Proveedores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configurar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualizar Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Exportar Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Exportar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Importar Clientes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4019,15 +3996,7 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Buscar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Procesa&amp;dos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Id. Proveedor</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4043,23 +4012,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Nombre Alternativo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>CI&amp;F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+F</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Codi&amp;go Cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4079,19 +4036,11 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message encoding="UTF-8">
-        <source>Direcci&amp;ón</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
         <source>Alt+Ó</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Poblacion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Codigo Postal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4115,10 +4064,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>e-&amp;mail</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Alt+M</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4131,11 +4076,79 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Clave &amp;Web</source>
+        <source>Alt+W</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Alt+W</source>
+        <source>Nuevo proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editar proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Filtrar proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualizar listado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exportar proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Importar proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Buscar:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Id. proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Nombre alternativo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>C.I&amp;.F.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codi&amp;go cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direcci&amp;on</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Codigo postal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-&amp;mail</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Clave &amp;web</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4228,11 +4241,30 @@ v 0.5.9</source>
 <context>
     <name>SubForm2Bf</name>
     <message>
-        <source>Borrar</source>
+        <source>Ajustar columnas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ajustar columnas</source>
+        <source>Borrar Registro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajustar Columa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajustar Altura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajustar Alturas</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Tipos de Articulo</name>
+    <message>
+        <source>company</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4243,43 +4275,7 @@ v 0.5.9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Borrar Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Guardar Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Listado</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Información del Trabajador</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Apellidos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Dirección</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Teléfono</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Móvil</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4287,19 +4283,55 @@ v 0.5.9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>e-mail</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Activo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cambiar Imagen</source>
+        <source>Nuevo trabajador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cerrar</source>
+        <source>Guardar trabajador</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Borrar trabajador</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Informacion del trabajador:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Apellidos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Direccion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono movil:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>E-mail:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cambiar imagen</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4379,34 +4411,6 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Compras</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ventas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Acerca de ...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ventana</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Maestro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Listados</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4415,147 +4419,207 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Salir</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Configuracion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Pedido Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Pedidos Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Albaran Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Albaranes Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nueva Factura Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Facturas Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Presupuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Pedido Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Pedidos Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Albaran Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Albaranes Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nueva Factura Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Facturas Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gestion Familias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gestion Tipos Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de Articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Inventarios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Proveedores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo Cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado Clientes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Provincias</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Series de Factura</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Trabajadores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Ventana Completa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Indexador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Acerta de ...</source>
+        <source>&amp;Empresa</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Listado de Pagos</source>
+        <source>Venta&amp;na</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Pago</source>
+        <source>A&amp;yuda</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nuevo Cobro</source>
+        <source>&amp;Compras</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Listado de Cobros</source>
+        <source>&amp;Articulos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Formas de Pago</source>
+        <source>&amp;Ventas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Maestro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Salir</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Configuracion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;pedido proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado p&amp;edidos proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;albaran proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado a&amp;lbaranes proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nueva &amp;factura proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listado facturas proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F5</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado p&amp;resupuestos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo pe&amp;dido cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado ped&amp;idos cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;albaran cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado a&amp;lbaranes cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nueva &amp;factura cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F6</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listado facturas cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gestion &amp;familias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Tipos de articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F2</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listado de articulos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Inventarios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listado proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F4</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado cliente&amp;s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pro&amp;vincias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Se&amp;ries de factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Trabajadores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ventana &amp;completa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Acerta de Bulmafact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de pago&amp;s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo pa&amp;go</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de co&amp;bros</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Formas de pago</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Almacenes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Documentacion</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>F1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4565,48 +4629,48 @@ QMenuBar and QToolBar.</source>
         <source>Familias</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Guardar Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Imprimir Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Contenido de la familia</source>
+        <source>Nuevo tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Nombre</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Código</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Código Completo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
+        <source>Borrar tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Guardar tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Contenido de la familia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo completo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4623,40 +4687,40 @@ QMenuBar and QToolBar.</source>
         <source>Tipos Articulo</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Nuevo Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Borrar Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Guardar Tipo Artículo</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Imprimir Pedido</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Contenido de la familia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Código</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Descripción</source>
+        <source>Nuevo tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>Borrar tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>Guardar tipo de articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Contenido de la familia:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
