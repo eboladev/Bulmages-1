@@ -451,10 +451,6 @@
 <context>
     <name>AlbaranProveedorView</name>
     <message>
-        <source>&amp;Yes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;No</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1970,6 +1966,13 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Edicion de albaranes de proveedores</name>
+    <message>
+        <source>company</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Edicion de albarnaes a clientes</name>
     <message>
         <source>company</source>
@@ -2041,13 +2044,6 @@ Esta seguro que desea borrarlo?</source>
 </context>
 <context>
     <name>Edicion de proveedores</name>
-    <message>
-        <source>company</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Edici&#xc3;&#xb3;n de Albaranes de Proveedores</name>
     <message>
         <source>company</source>
         <translation type="unfinished"></translation>
@@ -2360,23 +2356,23 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Borrar Factura Cliente.</source>
+        <source>Borrar factura cliente.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>No</source>
+        <source>Desea eliminar la factura de este cliente?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Desea eliminar la factura de este cliente?.</source>
+        <source>&amp;Si</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Si</source>
+        <source>&amp;No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>&amp;Cancelar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3226,23 +3222,7 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>PedidoClienteView</name>
     <message>
-        <source>Albaran Cliente Inexistente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No existe un albaran asociado a este pedido.Desea Crearlo ?</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Yes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3254,11 +3234,19 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Si</source>
+        <source>&amp;Si</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe albaran de cliente.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>No existe un albaran asociado a este pedido.Desea crearlo?</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4610,10 +4598,6 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nuevo tipo de articulo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4653,6 +4637,10 @@ QMenuBar and QToolBar.</source>
         <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Imprimir pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>listventanas</name>
@@ -4663,14 +4651,6 @@ QMenuBar and QToolBar.</source>
 </context>
 <context>
     <name>tiposarticulodlg</name>
-    <message>
-        <source>Tipos Articulo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir Pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message>
         <source>Nuevo tipo de articulo</source>
         <translation type="unfinished"></translation>
@@ -4701,6 +4681,14 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>&amp;Aceptar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tipos de articulo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir pedido</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

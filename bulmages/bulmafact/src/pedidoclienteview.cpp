@@ -98,10 +98,10 @@ void PedidoClienteView::generarAlbaran() {
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funci�.
     if (QMessageBox::question(
                 this,
-                tr("Albaran Cliente Inexistente"),
+                tr("No existe albaran de cliente."),
                 tr("No existe un albaran asociado a este pedido."
-                   "Desea Crearlo ?"),
-                tr("&Yes"), tr("&No"),
+                   "Desea crearlo?"),
+                tr("&Si"), tr("&No"),
                 QString::null, 0, 1 ) )
         return;
 
@@ -203,8 +203,8 @@ void PedidoClienteView::on_mui_informereferencia_clicked() {
 void PedidoClienteView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Pedido Cliente",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning( this, "Guardar pedido de cliente",
+                                        "Desea guardar los cambios?","&Si","&No","&Cancelar",0,2);
         if (val == 0)
             guardar();
         if (val == 2)

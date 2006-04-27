@@ -30,13 +30,13 @@ Articulo::Articulo(company *comp) : DBRecord(comp) {
     addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, "Observaciones");
     addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, "Incluir en presentaciones");
     addDBCampo("controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, "Incluir en control de stock");
-    addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, "Tipo Artículo");
-    addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, "Tipo IVA");
-    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo Completo");
+    addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, "Tipo de articulo");
+    addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, "Tipo de I.V.A.");
+    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo completo");
     addDBCampo("idfamilia", DBCampo::DBint, DBCampo::DBNotNull, "Familia");
     addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, "Stock");
     addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, "Inactivo");
-    addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, "PVP Base");
+    addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, "P.V.P. base");
 }
 
 Articulo::~Articulo() {}

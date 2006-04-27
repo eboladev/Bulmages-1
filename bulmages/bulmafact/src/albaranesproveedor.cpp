@@ -566,7 +566,7 @@ void AlbaranesProveedor::on_mui_borrar_clicked()  {
     if (m_modo == 0 && mdb_idalbaranp != "") {
         AlbaranProveedorView *bud = new AlbaranProveedorView(m_companyact,
                                     m_companyact->m_pWorkspace,
-                                    theApp->translate("Edición de Albaranes de Proveedores",
+                                    theApp->translate("Edicion de albaranes de proveedores",
                                                       "company"));
         bud->cargar(mdb_idalbaranp);
         bud->borrar();

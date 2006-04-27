@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author></author>
+ <author>Tomeu Borras Riera</author>
  <comment></comment>
  <exportmacro></exportmacro>
  <class>familiasdlg</class>
@@ -184,10 +184,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="text" >
         <string/>

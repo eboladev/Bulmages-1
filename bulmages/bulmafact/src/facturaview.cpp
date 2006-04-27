@@ -132,7 +132,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     QString idalbaran = fac->idCliDelivNote();
     delete diag;
 
-    /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operaci�
+    /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
     if (idalbaran == "")
         return;
 
@@ -181,8 +181,8 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
 void FacturaView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Factura",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning(this, "Guardar factura",
+                                        "Desea guardar los cambios?","&Si","&No","&Cancelar",0,2);
         if (val == 0)
             guardar();
         if (val == 2)

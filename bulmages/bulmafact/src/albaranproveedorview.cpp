@@ -116,7 +116,7 @@ void AlbaranProveedorView::generarFactura()  {
     /// Si no salimos de la funcion.
     if (QMessageBox::question(this, tr("Factura inexistente"),
                               tr("No existe una factura asociada a este albaran."
-                                 "Desea crearla?"), tr("&Yes"), tr("&No"), QString::null, 0, 1)) {
+                                 "Desea crearla?"), tr("&Si"), tr("&No"), QString::null, 0, 1)) {
         return;
     }
 

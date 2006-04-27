@@ -276,7 +276,7 @@ void familiasview::on_mui_imprimir_clicked() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Línea de totales del presupuesto
+    // Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 15cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td>Código</td>";

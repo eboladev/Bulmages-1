@@ -94,8 +94,8 @@ public slots:
     virtual void on_mui_borrar_clicked() {
 
 
-        int val = QMessageBox::warning( this, tr("Borrar Factura Cliente."),
-                                        tr("Desea eliminar la factura de este cliente?."),tr("Si"),tr("No"),tr("Cancelar"),0,2);
+        int val = QMessageBox::warning( this, tr("Borrar factura cliente."),
+                                        tr("Desea eliminar la factura de este cliente?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0) {
 
             if (!borrar()) {

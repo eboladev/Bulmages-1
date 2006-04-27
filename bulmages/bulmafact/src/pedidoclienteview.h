@@ -101,7 +101,7 @@ public slots:
 
     virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar pedido de cliente."),
-                                        tr("Desea eliminar este pedido?"),tr("Si"),tr("No"),tr("Cancelar"),0,2);
+                                        tr("Desea eliminar este pedido?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0) {
 
             if (!borrar()) {

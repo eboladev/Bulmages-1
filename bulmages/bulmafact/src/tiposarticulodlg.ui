@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author></author>
+ <author>Tomeu Borras Riera</author>
  <comment></comment>
  <exportmacro></exportmacro>
  <class>tiposarticulodlg</class>
@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Tipos Articulo</string>
+   <string>Tipos de articulo</string>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -158,10 +158,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="text" >
         <string/>

@@ -330,7 +330,7 @@ ArticuloList::~ArticuloList() {
 
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n",0);
-    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Artículo","Esta a punto de borrar un artículo, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar articulo","Esta a punto de borrar un articulo. Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+mui_list->item(mui_list->currentRow(),COL_IDARTICULO)->text();
         m_companyact->begin();
         int error = m_companyact->ejecuta(SQLQuery);

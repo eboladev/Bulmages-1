@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de albaranes.
+// Implementacion del listado de albaranes.
 /*
--- COMPROVACIONS D'INTEGRITAT>Genèriques:
+-- COMPROVACIONS D'INTEGRITAT>Generiques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albará a clients.
+-- Albara a clients.
 CREATE TABLE albaran (
    numalbaran integer PRIMARY KEY,
    fechaalbaran date,

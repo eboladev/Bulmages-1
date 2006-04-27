@@ -109,7 +109,7 @@ int main( int argc, char ** argv ) {
 		bges = new bulmafact("");
 	}// end if
 
-	/// Leemos la configuración específica de la base de datos que se ha abierto.
+	/// Leemos la configuracion especifica de la base de datos que se ha abierto.
 	QString confesp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
 	confpr->leeconfig(confesp);
 
