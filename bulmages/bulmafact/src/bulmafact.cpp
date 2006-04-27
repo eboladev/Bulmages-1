@@ -63,7 +63,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
 	BusquedaPeriodo *bus = new BusquedaPeriodo(this);
 
-	statusBar()->message( tr("Ready"), 2000 );
+	statusBar()->message( tr("Listo"), 2000 );
 	_depura("Fin de bulmafact constructor\n",0);
 
 }// end bulmafact

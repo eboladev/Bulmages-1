@@ -16,7 +16,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Facturas a Clientes</string>
+   <string>Facturas a clientes</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_listado.48x48.png</iconset>
@@ -512,7 +512,7 @@
            <string>Almac&amp;en</string>
           </property>
           <property name="shortcut" >
-           <string>Alt+É</string>
+           <string>Alt+E</string>
           </property>
           <property name="checked" >
            <bool>false</bool>

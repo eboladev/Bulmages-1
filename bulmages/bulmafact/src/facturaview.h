@@ -95,7 +95,7 @@ public slots:
 
 
         int val = QMessageBox::warning( this, tr("Borrar Factura Cliente."),
-                                        tr("Desea eliminar la factura de este cliente, piense en los dolores de cabeza que la perdida de esta informacion puede causar a otros ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+                                        tr("Desea eliminar la factura de este cliente?."),tr("Si"),tr("No"),tr("Cancelar"),0,2);
         if (val == 0) {
 
             if (!borrar()) {

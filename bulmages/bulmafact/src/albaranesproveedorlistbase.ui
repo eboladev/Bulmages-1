@@ -16,7 +16,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Albaranes de Proveedor</string>
+   <string>Albaranes de proveedor</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</iconset>
@@ -624,7 +624,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalalbaranproveedor" >
           <property name="text" >
-           <string>Total albarán proveedor</string>
+           <string>Total albaran proveedor</string>
           </property>
           <property name="shortcut" >
            <string/>

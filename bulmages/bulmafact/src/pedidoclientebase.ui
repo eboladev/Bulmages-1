@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author>Tomeu Borras</author>
+ <author>Tomeu Borras Riera</author>
  <comment></comment>
  <exportmacro></exportmacro>
  <class>PedidoClienteBase</class>
@@ -24,7 +24,7 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>Pedido de Cliente</string>
+   <string>Pedido de cliente</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</iconset>
@@ -380,10 +380,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="text" >
         <string/>

@@ -88,13 +88,13 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
 
     QMenu *popup = new QMenu(this);
     if(m_delete)
-        del = popup->addAction(tr("Borrar Registro"));
+        del = popup->addAction(tr("Borrar registro"));
     popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar Columa"));
-    QAction *ajustac = popup->addAction(tr("Ajustar Altura"));
+    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
+    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
 
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar Alturas"));
+    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)

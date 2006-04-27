@@ -131,13 +131,13 @@ public slots:
 	{
 
 
-        int val = QMessageBox::warning( this, tr("Borrar Albaran Proveedor."),
-                                        tr("Desea eliminar el albaran de este proveedor, piense en los dolores de cabeza que la perdida de esta informacion puede causar a otros ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        int val = QMessageBox::warning( this, tr("Borrar albaran del proveedor."),
+                                        tr("Desea eliminar el albaran del proveedor?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0) {
 
 		if (!borrar()) {
             	dialogChanges_cargaInicial();
-		_depura("Albaran de Proveedor borrado satisfactoriamente",2);
+		_depura("Albaran del proveedor borrado satisfactoriamente",2);
 		close();
 		}// end if
         }// end if

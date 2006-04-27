@@ -32,7 +32,7 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>Albarán de Proveedor</string>
+   <string>Albaran de proveedor</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
@@ -323,10 +323,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="text" >
         <string/>
@@ -465,7 +465,7 @@
            </font>
           </property>
           <property name="text" >
-           <string>Fecha de creación</string>
+           <string>Fecha de creacion</string>
           </property>
          </widget>
         </item>

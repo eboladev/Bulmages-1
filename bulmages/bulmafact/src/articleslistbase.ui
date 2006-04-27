@@ -16,7 +16,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Listado Artículos</string>
+   <string>Listado de articulos</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</iconset>
@@ -376,7 +376,7 @@
              <string>S&amp;olo presentables</string>
             </property>
             <property name="shortcut" >
-             <string>Alt+Ó</string>
+             <string>Alt+O</string>
             </property>
            </widget>
           </item>

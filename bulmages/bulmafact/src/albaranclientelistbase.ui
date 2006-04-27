@@ -16,7 +16,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Albaranes a Clientes</string>
+   <string>Albaranes a clientes</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran_listado.48x48.png</iconset>
@@ -587,7 +587,7 @@
            <string>Id. albar&amp;an</string>
           </property>
           <property name="shortcut" >
-           <string>Alt+Á</string>
+           <string>Alt+A</string>
           </property>
          </widget>
         </item>
@@ -620,7 +620,7 @@
            <string>Id. almac&amp;en</string>
           </property>
           <property name="shortcut" >
-           <string>Alt+É</string>
+           <string>Alt+E</string>
           </property>
          </widget>
         </item>
@@ -640,7 +640,7 @@
         <item>
          <widget class="QCheckBox" name="mver_totalbaseimp" >
           <property name="text" >
-           <string>Total &amp;Base Imponible</string>
+           <string>Total &amp;base imponible</string>
           </property>
           <property name="shortcut" >
            <string>Alt+B</string>

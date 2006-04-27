@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Artículo</string>
+   <string>Articulo</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
@@ -588,7 +588,7 @@
               </sizepolicy>
              </property>
              <property name="text" >
-              <string>Tipo de artículo:</string>
+              <string>Tipo de articulo:</string>
              </property>
             </widget>
            </item>

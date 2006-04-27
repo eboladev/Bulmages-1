@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author>Tomeu Borrás Riera</author>
+ <author>Tomeu Borras Riera</author>
  <comment></comment>
  <exportmacro></exportmacro>
  <class>TrabajadorBase</class>
@@ -365,7 +365,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>NSS</string>
+               <string>Numero de la Seguridad Social</string>
               </property>
              </widget>
             </item>

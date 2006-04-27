@@ -464,7 +464,7 @@
            <string>Direcci&amp;on</string>
           </property>
           <property name="shortcut" >
-           <string>Alt+Ó</string>
+           <string>Alt+O</string>
           </property>
           <property name="checked" >
            <bool>true</bool>

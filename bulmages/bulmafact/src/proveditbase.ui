@@ -1,5 +1,5 @@
 <ui version="4.0" >
- <author></author>
+ <author>Tomeu Borrar Riera</author>
  <comment></comment>
  <exportmacro></exportmacro>
  <class>ProveedorBase</class>
@@ -938,7 +938,7 @@
         </font>
        </property>
        <property name="text" >
-        <string>Resumen por artículos</string>
+        <string>Resumen por articulos</string>
        </property>
       </widget>
       <widget class="QWidget" name="layout79" >

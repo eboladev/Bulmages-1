@@ -113,8 +113,8 @@ public slots:
     };
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar Albaran Cliente."),
-                                        tr("ADVERTENCIA: Eliminar pedidos de cliente puede disminuir la eficacia economica de la empresa. Continuar?"),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        int val = QMessageBox::warning( this, tr("Borrar albaran de cliente."),
+                                        tr("Desea eliminar el albaran de cliente?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0) {
 
             if (!borrar()) {

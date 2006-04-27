@@ -24,7 +24,7 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>Factura de Proveedor</string>
+   <string>Factura de proveedor</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</iconset>
@@ -273,10 +273,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir Pedido</string>
+        <string>Imprimir pedido</string>
        </property>
        <property name="text" >
         <string/>

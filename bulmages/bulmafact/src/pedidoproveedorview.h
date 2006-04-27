@@ -99,12 +99,12 @@ public:
 
 public slots:
     virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar Pedido Proveedor."),
-                                        tr("Desea eliminar el pedido del desgraciado proveedor que siempre le sirve tarde las cosas ?."),tr("SI"),tr("No"),tr("Ojala"),0,2);
+        int val = QMessageBox::warning( this, tr("Borrar pedido al proveedor."),
+                                        tr("Desea eliminar el pedido al proveedor?."),tr("Si"),tr("No"),tr("Cancelar"),0,2);
         if (val == 0) {
             borrar();
             dialogChanges_cargaInicial();
-		_depura(tr("Asi me gusta, con valentia !!!!!"),2);
+		_depura(tr("El pedido se ha borrado satisfactoriamente"),2);
 
             close();
         }// end if

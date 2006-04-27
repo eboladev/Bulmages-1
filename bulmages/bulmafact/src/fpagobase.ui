@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Formas de Pago</string>
+   <string>Formas de pago</string>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -63,7 +63,7 @@
       </sizepolicy>
      </property>
      <property name="title" >
-      <string>Información de la forma de pago:</string>
+      <string>Informacion de la forma de pago:</string>
      </property>
      <property name="orientation" >
       <enum>Qt::Vertical</enum>
