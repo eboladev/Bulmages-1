@@ -31,10 +31,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -78,172 +78,197 @@
          <number>9</number>
         </property>
         <property name="spacing" >
-         <number>2</number>
+         <number>6</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
           </property>
-          <property name="toolTip" >
-           <string>Guardar factura</string>
+          <property name="spacing" >
+           <number>6</number>
           </property>
-          <property name="whatsThis" >
-           <string>Guardar factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Borrar factura</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_facturar" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Facturar</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Facturar</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_pagar" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Efectuar pago</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Efectuar pago</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>229</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_reffacturap" />
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_informeref" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Informe por referencia</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Informe por referencia</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
+          <item>
+           <widget class="QToolButton" name="mui_guardar" >
+            <property name="minimumSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolTip" >
+             <string>Guardar factura</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Guardar factura</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="mui_borrar" >
+            <property name="minimumSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolTip" >
+             <string>Borrar factura</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Borrar factura</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="mui_facturar" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolTip" >
+             <string>Facturar</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Facturar</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="mui_pagar" >
+            <property name="enabled" >
+             <bool>true</bool>
+            </property>
+            <property name="minimumSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolTip" >
+             <string>Efectuar pago</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Efectuar pago</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="textLabel1_2_2_3_4" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>9</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
+            <property name="text" >
+             <string>Referencia: </string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="m_reffacturap" />
+          </item>
+          <item>
+           <widget class="QToolButton" name="mui_informeref" >
+            <property name="minimumSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+            <property name="toolTip" >
+             <string>Informe por referencia</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Informe por referencia</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -574,7 +599,7 @@
      </widget>
      <widget class="QWidget" name="TabPage" >
       <attribute name="title" >
-       <string>Desc&amp;uentos</string>
+       <string>Descuen&amp;tos</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -590,7 +615,7 @@
      </widget>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
-       <string>&amp;Comentarios</string>
+       <string>Comentario&amp;s</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -607,13 +632,6 @@
          <property name="spacing" >
           <number>2</number>
          </property>
-         <item>
-          <widget class="QLabel" name="textLabel1_2_2_2_2_2" >
-           <property name="text" >
-            <string>Comentarios</string>
-           </property>
-          </widget>
-         </item>
          <item>
           <widget class="Q3TextEdit" name="m_comentfacturap" />
          </item>
@@ -1996,9 +2014,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>BusquedaFormaPago</class>
    <extends></extends>
-   <header>busquedaproveedor.h</header>
+   <header>busquedaformapago.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2010,16 +2028,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ListLinFacturaProveedorView</class>
+   <class>BusquedaProveedor</class>
    <extends></extends>
-   <header>listlinfacturapview.h</header>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ListDescuentoFacturaProvView</class>
+   <class>ListLinFacturaProveedorView</class>
    <extends></extends>
-   <header>listdescfacturaprovview.h</header>
+   <header>listlinfacturapview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2031,9 +2049,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>ListDescuentoFacturaProvView</class>
    <extends></extends>
-   <header>busquedaformapago.h</header>
+   <header>listdescfacturaprovview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

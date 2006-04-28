@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>BulmaFact</string>
+   <string>BulmaFact - Facturacion GPL</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_bulmages.png</iconset>
@@ -28,6 +28,29 @@
      <height>29</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>E&amp;mpresa</string>
+    </property>
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
+   </widget>
+   <widget class="QMenu" name="menuCompras" >
+    <property name="title" >
+     <string>Com&amp;pras</string>
+    </property>
+    <addaction name="actionNuevo_Pedido_Proveedor" />
+    <addaction name="actionListado_Pedidos_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Albaran_Proveedor" />
+    <addaction name="actionListado_Albaranes_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNueva_Factura_Proveedor" />
+    <addaction name="actionListado_Facturas_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Pago" />
+    <addaction name="actionListado_de_Pagos" />
+   </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
      <string>&amp;Ventas</string>
@@ -47,25 +70,9 @@
     <addaction name="actionNuevo_Cobro" />
     <addaction name="actionListado_de_Cobros" />
    </widget>
-   <widget class="QMenu" name="menuCompras" >
-    <property name="title" >
-     <string>Co&amp;mpras</string>
-    </property>
-    <addaction name="actionNuevo_Pedido_Proveedor" />
-    <addaction name="actionListado_Pedidos_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Albaran_Proveedor" />
-    <addaction name="actionListado_Albaranes_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNueva_Factura_Proveedor" />
-    <addaction name="actionListado_Facturas_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Pago" />
-    <addaction name="actionListado_de_Pagos" />
-   </widget>
    <widget class="QMenu" name="menuArticulos" >
     <property name="title" >
-     <string>&amp;Articulos</string>
+     <string>Articulo&amp;s</string>
     </property>
     <addaction name="actionGestion_Familias" />
     <addaction name="actionGestion_Tipos_Articulo" />
@@ -76,7 +83,7 @@
    </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
-     <string>&amp;Maestro</string>
+     <string>Maest&amp;ro</string>
     </property>
     <addaction name="actionNuevo_Proveedor" />
     <addaction name="actionListado_Proveedores" />
@@ -99,13 +106,7 @@
      <string>Venta&amp;na</string>
     </property>
     <addaction name="actionVentana_Completa" />
-   </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>&amp;Empresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
+    <addaction name="actionIndexador_2" />
    </widget>
    <widget class="QMenu" name="menuAcerca_de" >
     <property name="title" >
@@ -534,6 +535,14 @@
    </property>
    <property name="shortcut" >
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionIndexador_2" >
+   <property name="text" >
+    <string>&amp;Indexador</string>
+   </property>
+   <property name="shortcut" >
+    <string>f11</string>
    </property>
   </action>
  </widget>

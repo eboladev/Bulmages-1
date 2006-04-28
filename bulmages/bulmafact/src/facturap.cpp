@@ -1,14 +1,23 @@
-//
-// C++ Implementation: FacturaProveedor
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <QFile>
 #include <QTextStream>
 #include <funcaux.h>
@@ -74,7 +83,7 @@ void FacturaProveedor::pintar() {
 }// end pintaFacturaProveedor
 
 
-// Esta funci� carga un FacturaProveedor.
+// Esta funcion carga un FacturaProveedor.
 int FacturaProveedor::cargar(QString idfacturap) {
     inicialize();
     QString query = "SELECT * FROM facturap  WHERE idfacturap="+idfacturap;
@@ -156,7 +165,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
 
 
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+DBvalue("idproveedor");
@@ -176,7 +185,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     buff.replace("[descfacturap]",DBvalue("descfacturap"));
     buff.replace("[reffacturap]",DBvalue("reffacturap"));
 
-    /// Impresi� de la tabla de contenidos.
+    /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td>Cod.</td>\n";
@@ -188,7 +197,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     fitxersortidatxt += "</tr>\n";
     QString l;
 
-    int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
+    int i=0; // Contador que sirve para poner lineas de más en caso de que sea preciso.
 
     SDBRecord *linea;
     for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
@@ -219,7 +228,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
         basei =basei + it.data();
     }// end for
 
-    /// Impresi� de los descuentos
+    /// Impresion de los descuentos
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
@@ -242,7 +251,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     }// end if
     buff.replace("[descuentos]",fitxersortidatxt);
 
-    /// Impresión de los totales
+    /// Impresion de los totales
     fitxersortidatxt= "";
     QString tr1 = "";	// Rellena el primer tr de titulares
     QString tr2 = "";	// Rellena el segundo tr de cantidades
