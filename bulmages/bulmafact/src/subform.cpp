@@ -35,7 +35,7 @@ void SDBRecord::refresh() {
 
 
 int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
-    SDBCampo *camp = new SDBCampo(m_conexionbase, nom, typ, res, nomp);
+    SDBCampo *camp = new SDBCampo(this, m_conexionbase, nom, typ, res, nomp);
     camp->set
     ("");
     m_lista.append(camp);
@@ -54,8 +54,7 @@ void SDBCampo::refresh() {
 }
 
 
-int SDBCampo::set
-    (QString val) {
+int SDBCampo::set(QString val) {
     if(tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
             setCheckState(Qt::Checked);
@@ -69,11 +68,6 @@ int SDBCampo::set
         (val);
     return 0;
 }
-
-
-
-
-
 
 
 
@@ -161,7 +155,7 @@ void SubForm2::pintaCabeceras() {
     SHeader * linea;
     int i=0;
     for (linea=m_lcabecera.first(); linea; linea=m_lcabecera.next()) {
-        headers << linea->nomcampo();
+        headers << linea->nompresentacion();
         if (linea->options() & SHeader::DBNoView)
             hideColumn(i);
         else
@@ -261,7 +255,7 @@ SDBRecord *SubForm2::lineaact() {
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 SDBRecord *SubForm2::lineaat(int row) {
     _depura("SubForm2::lineaat()\n", 0);
-    return(m_lista.at(row));
+    return(((SDBCampo*) item(row,0))->pare());
 }
 
 
@@ -427,12 +421,18 @@ void SubForm2::cargaconfig() {
 void SubForm2::pressedSlash(int , int ) {
     _depura ("pulsadoSlash aun no implementado",2);
 }
+
+
 void SubForm2::pressedAsterisk(int , int ) {
     _depura ("pressedAsterisk aun no implementado",1);
 }
+
+
 void SubForm2::pressedPlus(int , int ) {
     _depura ("pulsadoPlus aun no implementado",1);
 }
+
+
 void SubForm2::editFinished(int row, int col) {
     _depura ("editFinished aun no implementado",1);
     emit(editFinish(row, col));

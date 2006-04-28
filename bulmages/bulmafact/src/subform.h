@@ -62,18 +62,6 @@ public:
 };
 
 
-class SDBCampo: public QTableWidgetItem2, public DBCampo {
-public:
-    SDBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp=""): QTableWidgetItem2(), DBCampo(com,  nom,  typ,  res,  nomp) {}
-    ;
-    virtual ~SDBCampo() {}
-    ;
-    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
-    virtual int set(QString val);
-    void refresh();
-};
-
-
 class SDBRecord: public DBRecord {
 public:
     SDBRecord(postgresiface2 *con) : DBRecord(con) {}
@@ -83,6 +71,24 @@ public:
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
     void refresh();
 };
+
+
+class SDBCampo: public QTableWidgetItem2, public DBCampo {
+private:
+	 SDBRecord *m_pare;
+public:
+    SDBRecord *pare() {return m_pare;};
+    SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp=""): QTableWidgetItem2(), DBCampo(com,  nom,  typ,  res,  nomp) {m_pare=par;}
+    ;
+    virtual ~SDBCampo() {}
+    ;
+    int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
+    virtual int set(QString val);
+    void refresh();
+};
+
+
+
 
 
 class SubForm2: public QTableWidget {
