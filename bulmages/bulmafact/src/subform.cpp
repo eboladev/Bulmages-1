@@ -102,6 +102,8 @@ SubForm2::SubForm2(QWidget *parent) : QTableWidget(parent) {
     installEventFilter(this);
     m_insercion = FALSE;
     m_primero = TRUE;
+    m_colorden = 0;
+    m_tipoorden = 0;
 }
 
 
@@ -241,6 +243,10 @@ int SubForm2::cargar(cursor2 *cur) {
         i++;
     }// end for
     nuevoRegistro();
+
+    /// Ordenamos la tabla.
+    ordenar();
+
     return 0;
 }
 
@@ -341,7 +347,7 @@ int SubForm2::guardar() {
         rec = m_lista.at(m_lista.count()-1);
         error = rec->guardar();
     }// end if
-	_depura("END SubForm2::guardar",0);
+    _depura("END SubForm2::guardar",0);
     return error;
 }
 
@@ -383,6 +389,9 @@ void SubForm2::guardaconfig() {
     QFile file( confpr->valor(CONF_DIR_USER)+m_tablename+"tablecfn.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
+        stream << m_colorden << "\n";
+        stream << m_tipoorden << "\n";
+
         for (int i = 0; i < columnCount(); i++) {
             showColumn(i);
             stream << columnWidth(i) << "\n";
@@ -397,8 +406,14 @@ void SubForm2::cargaconfig() {
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
+        QString linea = stream.readLine();
+        m_colorden = linea.toInt();
+
+        linea = stream.readLine();
+        m_tipoorden = linea.toInt();
+
         for (int i = 0; i < columnCount(); i++) {
-            QString linea = stream.readLine();
+            linea = stream.readLine();
             if (linea.toInt() > 0)
                 setColumnWidth(i, linea.toInt());
             else
@@ -406,6 +421,7 @@ void SubForm2::cargaconfig() {
         }// end for
         file.close();
     }// end if
+    _depura("END SubForm2::cargaconfig",0);
 }
 
 void SubForm2::pressedSlash(int , int ) {
@@ -429,11 +445,21 @@ void SubForm2::sortItems(int col, Qt::SortOrder orden) {
 
 
 void SubForm2::sortByColumn(int col) {
-    _depura("SubForm2::sortByColumn",0);
-    if (m_insercion) {
+    _depura("SubForm2::sortByColumn "+QString::number(col),0);
+    if (m_tipoorden == 0) m_tipoorden=1;
+    else m_tipoorden = 0;
+    m_colorden= col;
+    ordenar();
+    _depura("END SubForm2::sortByColumn",0);
+}
+
+
+void SubForm2::ordenar() {
+    _depura("SubForm2::ordenar ",0);
+    if (m_insercion)
         removeRow(rowCount()-1);
-    }// end if
-    QTableWidget::sortByColumn(col);
+    QTableWidget::sortItems(m_colorden, (Qt::SortOrder) m_tipoorden);
     nuevoRegistro();
+    _depura("END SubForm2::ordenar",0);
 }
 

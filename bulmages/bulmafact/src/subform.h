@@ -95,9 +95,14 @@ private:
     QString m_campoid;
     bool m_insercion;
     bool m_primero;
+    int m_colorden;
+    int m_tipoorden;
+
+private:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();
+
 public:
     SubForm2(QWidget *parent);
     virtual ~SubForm2() {
@@ -145,6 +150,7 @@ public:
     virtual void pressedAsterisk(int row, int col);
     virtual void pressedPlus(int row, int col);
     virtual void editFinished(int row, int col);
+    virtual void ordenar();
 public slots:
 	void sortByColumn(int col);
 signals:
