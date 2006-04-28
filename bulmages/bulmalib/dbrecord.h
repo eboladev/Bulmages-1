@@ -22,6 +22,7 @@ public:
 	virtual ~DBCampo(){};
 
 	postgresiface2 *conexionbase() {return m_conexionbase;};
+	void setconexionbase(postgresiface2 *comp) {m_conexionbase=comp;};
 
 	dbtype tipo() {return m_tipo;};
 	virtual int set(QString val) {m_valorcampo=val;return 0;};
@@ -42,6 +43,8 @@ protected:
 public:
 	DBRecord(postgresiface2 *);
 	virtual ~DBRecord();
+	void setconexionbase(postgresiface2 *comp) {m_conexionbase=comp;};
+	postgresiface2 *conexionbase() {return m_conexionbase;};
 	int DBload(cursor2 *);
 	int DBsave(QString &id);
 	int setDBvalue(QString, QString);

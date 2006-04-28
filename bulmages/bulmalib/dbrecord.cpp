@@ -148,13 +148,12 @@ int DBRecord::DBsave(QString &id) {
             if (m_campoid == linea->nomcampo()) {
                 id = linea->valorcampo();
             }// end if
-
-
         }// end if
     }// end for
     if (m_nuevoCampo) {
         QString query = "INSERT INTO "+m_tablename+" ("+listcampos+") VALUES ("+listvalores+")";
         int error = m_conexionbase->ejecuta(query);
+	_depura(query,0);
         if (error)
             return -1;
         cursor2 *cur = m_conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
@@ -162,6 +161,7 @@ int DBRecord::DBsave(QString &id) {
         delete cur;
     } else {
         QString query = "UPDATE "+m_tablename+" SET "+queryupdate + " WHERE "+ querywhere;
+	_depura(query,0);
         int error = m_conexionbase->ejecuta(query);
         if (error)
             return -1;
