@@ -4404,10 +4404,6 @@ QMenuBar and QToolBar.</translation>
         <translation>A&amp;yuda</translation>
     </message>
     <message>
-        <source>&amp;Compras</source>
-        <translation>&amp;Compras</translation>
-    </message>
-    <message>
         <source>&amp;Articulos</source>
         <translation>&amp;Artículos</translation>
     </message>
@@ -4428,76 +4424,12 @@ QMenuBar and QToolBar.</translation>
         <translation></translation>
     </message>
     <message>
-        <source>&amp;Configuracion</source>
-        <translation>&amp;Configuración</translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;pedido proveedor</source>
-        <translation>Nuevo &amp;pedido proveedor</translation>
-    </message>
-    <message>
-        <source>Listado p&amp;edidos proveedor</source>
-        <translation>Listado p&amp;edidos proveedor</translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;albaran proveedor</source>
-        <translation>Nuevo &amp;albarán proveedor</translation>
-    </message>
-    <message>
-        <source>Listado a&amp;lbaranes proveedor</source>
-        <translation>Listado a&amp;lbaranes proveedor</translation>
-    </message>
-    <message>
-        <source>Nueva &amp;factura proveedor</source>
-        <translation>Nueva &amp;factura proveedor</translation>
-    </message>
-    <message>
-        <source>&amp;Listado facturas proveedor</source>
-        <translation>&amp;Listado facturas proveedor</translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;presupuesto</source>
-        <translation>Nuevo &amp;presupuesto</translation>
-    </message>
-    <message>
         <source>F5</source>
         <translation></translation>
     </message>
     <message>
-        <source>Listado p&amp;resupuestos</source>
-        <translation>Listado p&amp;resupuestos</translation>
-    </message>
-    <message>
-        <source>Nuevo pe&amp;dido cliente</source>
-        <translation>Nuevo pe&amp;dido cliente</translation>
-    </message>
-    <message>
-        <source>Listado ped&amp;idos cliente</source>
-        <translation>Listado ped&amp;idos cliente</translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;albaran cliente</source>
-        <translation>Nuevo &amp;albarán cliente</translation>
-    </message>
-    <message>
-        <source>Listado a&amp;lbaranes cliente</source>
-        <translation>Listado a&amp;lbaranes cliente</translation>
-    </message>
-    <message>
-        <source>Nueva &amp;factura cliente</source>
-        <translation>Nueva &amp;factura cliente</translation>
-    </message>
-    <message>
         <source>F6</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>&amp;Listado facturas cliente</source>
-        <translation>&amp;Listado facturas cliente</translation>
-    </message>
-    <message>
-        <source>Gestion &amp;familias</source>
-        <translation>Gestión &amp;familias</translation>
     </message>
     <message>
         <source>&amp;Tipos de articulo</source>
@@ -4524,20 +4456,12 @@ QMenuBar and QToolBar.</translation>
         <translation>Nuevo &amp;proveedor</translation>
     </message>
     <message>
-        <source>&amp;Listado proveedores</source>
-        <translation>&amp;Listado proveedores</translation>
-    </message>
-    <message>
         <source>Nuevo &amp;cliente</source>
         <translation>Nuevo &amp;cliente</translation>
     </message>
     <message>
         <source>F4</source>
         <translation></translation>
-    </message>
-    <message>
-        <source>Listado cliente&amp;s</source>
-        <translation>Listado cliente&amp;s</translation>
     </message>
     <message>
         <source>Pro&amp;vincias</source>
@@ -4556,26 +4480,6 @@ QMenuBar and QToolBar.</translation>
         <translation>Ventana &amp;completa</translation>
     </message>
     <message>
-        <source>&amp;Acerta de Bulmafact</source>
-        <translation>&amp;Acerta de Bulmafact</translation>
-    </message>
-    <message>
-        <source>Listado de pago&amp;s</source>
-        <translation>Listado de pago&amp;s</translation>
-    </message>
-    <message>
-        <source>Nuevo pa&amp;go</source>
-        <translation>Nuevo pa&amp;go</translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;cobro</source>
-        <translation>Nuevo &amp;cobro</translation>
-    </message>
-    <message>
-        <source>Listado de co&amp;bros</source>
-        <translation>Listado de co&amp;bros</translation>
-    </message>
-    <message>
         <source>&amp;Formas de pago</source>
         <translation>&amp;Formas de pago</translation>
     </message>
@@ -4589,6 +4493,102 @@ QMenuBar and QToolBar.</translation>
     </message>
     <message>
         <source>F1</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Co&amp;mpras</source>
+        <translation>Co&amp;mpras</translation>
+    </message>
+    <message>
+        <source>Configurar &amp;BulmaFact</source>
+        <translation>Configurar &amp;BulmaFact</translation>
+    </message>
+    <message>
+        <source>Nuevo pe&amp;dido a proveedor</source>
+        <translation>Nuevo pe&amp;dido a proveedor</translation>
+    </message>
+    <message>
+        <source>Listado de pedidos de proveedores</source>
+        <translation>Listado de pedidos de proveedores</translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;albaran de proveedor</source>
+        <translation>Nuevo &amp;albarán de proveedor</translation>
+    </message>
+    <message>
+        <source>Listado de albaranes de proveedores</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Nueva &amp;factura de proveedor</source>
+        <translation>Nueva &amp;factura de proveedor</translation>
+    </message>
+    <message>
+        <source>&amp;Listado de facturas de proveedores</source>
+        <translation>&amp;Listado de facturas de proveedores</translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;presupuesto a cliente</source>
+        <translation>Nuevo &amp;presupuesto a cliente</translation>
+    </message>
+    <message>
+        <source>Listado de presupuestos a clientes</source>
+        <translation>Listado de presupuestos a clientes</translation>
+    </message>
+    <message>
+        <source>Nuevo pe&amp;dido de cliente</source>
+        <translation>Nuevo pe&amp;dido de cliente</translation>
+    </message>
+    <message>
+        <source>Listado de ped&amp;idos de clientes</source>
+        <translation>Listado de ped&amp;idos de clientes</translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;albaran a cliente</source>
+        <translation>Nuevo &amp;albarán a cliente</translation>
+    </message>
+    <message>
+        <source>Listado de albaranes a clientes</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Nueva &amp;factura a cliente</source>
+        <translation>Nueva &amp;factura a cliente</translation>
+    </message>
+    <message>
+        <source>Listado de facturas a clientes</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Gestion de &amp;familias</source>
+        <translation>Gestion de &amp;familias</translation>
+    </message>
+    <message>
+        <source>&amp;Listado de proveedores</source>
+        <translation>&amp;Listado de proveedores</translation>
+    </message>
+    <message>
+        <source>Listado de cliente&amp;s</source>
+        <translation>Listado de cliente&amp;s</translation>
+    </message>
+    <message>
+        <source>&amp;Acerta de BulmaFact</source>
+        <translation>&amp;Acerta de BulmaFact</translation>
+    </message>
+    <message>
+        <source>Listado de pagos a proveedores</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Nuevo pa&amp;go a proveedor</source>
+        <translation>Nuevo pa&amp;go a proveedor</translation>
+    </message>
+    <message>
+        <source>Nuevo co&amp;bro a cliente</source>
+        <translation>Nuevo co&amp;bro a cliente</translation>
+    </message>
+    <message>
+        <source>Listado de cobros a clientes</source>
         <translation></translation>
     </message>
 </context>

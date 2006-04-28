@@ -4403,10 +4403,6 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Compras</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Articulos</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4427,75 +4423,11 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Configuracion</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;pedido proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado p&amp;edidos proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;albaran proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado a&amp;lbaranes proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nueva &amp;factura proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Listado facturas proveedor</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>F5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Listado p&amp;resupuestos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo pe&amp;dido cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado ped&amp;idos cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;albaran cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado a&amp;lbaranes cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nueva &amp;factura cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>F6</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&amp;Listado facturas cliente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Gestion &amp;familias</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4523,19 +4455,11 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Listado proveedores</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nuevo &amp;cliente</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>F4</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado cliente&amp;s</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4555,26 +4479,6 @@ QMenuBar and QToolBar.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&amp;Acerta de Bulmafact</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de pago&amp;s</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo pa&amp;go</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Nuevo &amp;cobro</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Listado de co&amp;bros</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&amp;Formas de pago</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4588,6 +4492,102 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>F1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Co&amp;mpras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Configurar &amp;BulmaFact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo pe&amp;dido a proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de pedidos de proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;albaran de proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de albaranes de proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nueva &amp;factura de proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listado de facturas de proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;presupuesto a cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de presupuestos a clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo pe&amp;dido de cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de ped&amp;idos de clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo &amp;albaran a cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de albaranes a clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nueva &amp;factura a cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de facturas a clientes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gestion de &amp;familias</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Listado de proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de cliente&amp;s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Acerta de BulmaFact</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de pagos a proveedores</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo pa&amp;go a proveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nuevo co&amp;bro a cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Listado de cobros a clientes</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
