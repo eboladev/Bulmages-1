@@ -96,8 +96,9 @@ void FacturaProveedorView::s_nuevoCobro() {
 void FacturaProveedorView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar factura de proveedor.",
-                                        "Desea guardar los cambios?","&Si","&No","&Cancelar",0,2);
+        int val = QMessageBox::warning(this, tr("Guardar factura de proveedor."),
+						tr("Desea guardar los cambios?"),
+						tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             guardar();
         if (val == 2)

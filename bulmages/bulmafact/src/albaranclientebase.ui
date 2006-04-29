@@ -9,7 +9,7 @@
     <x>0</x>
     <y>0</y>
     <width>730</width>
-    <height>691</height>
+    <height>556</height>
    </rect>
   </property>
   <property name="font" >
@@ -94,10 +94,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar</string>
+           <string>Guardar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar</string>
+           <string>Guardar albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -122,10 +122,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar</string>
+           <string>Borrar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar</string>
+           <string>Borrar albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -150,10 +150,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir</string>
+           <string>Imprimir albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir</string>
+           <string>Imprimir albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -194,10 +194,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Ver pedido cliente</string>
+           <string>Ver pedido de cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Ver pedido cliente</string>
+           <string>Ver pedido de cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -327,7 +327,7 @@
            </font>
           </property>
           <property name="text" >
-           <string>Referencia: </string>
+           <string>Referencia del albaran:</string>
           </property>
          </widget>
         </item>
@@ -442,7 +442,14 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_descalbaran" />
+        <widget class="QLineEdit" name="m_descalbaran" >
+         <property name="minimumSize" >
+          <size>
+           <width>295</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>
@@ -509,7 +516,7 @@
      <property name="minimumSize" >
       <size>
        <width>16</width>
-       <height>16</height>
+       <height>100</height>
       </size>
      </property>
      <property name="frameShape" >
@@ -834,10 +841,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>0</number>
+        <number>6</number>
        </property>
        <item>
         <widget class="ListLinAlbaranClienteView" name="subform2" />
@@ -846,7 +853,7 @@
      </widget>
      <widget class="QWidget" name="TabPage" >
       <attribute name="title" >
-       <string>Desc&amp;uentos</string>
+       <string>Descuen&amp;tos</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -862,7 +869,7 @@
      </widget>
      <widget class="QWidget" name="tab" >
       <attribute name="title" >
-       <string>Co&amp;mentarios</string>
+       <string>Comentario&amp;s</string>
       </attribute>
       <layout class="QHBoxLayout" >
        <property name="margin" >
@@ -2323,9 +2330,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaTrabajador</class>
+   <class>BusquedaFormaPago</class>
    <extends></extends>
-   <header>busquedatrabajador.h</header>
+   <header>busquedaformapago.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2344,16 +2358,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BusquedaAlmacen</class>
    <extends></extends>
-   <header>busquedaformapago.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedaalmacen.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2365,16 +2372,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
+   <class>BusquedaTrabajador</class>
    <extends></extends>
-   <header>q3textedit.h</header>
+   <header>busquedatrabajador.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaAlmacen</class>
+   <class>Q3TextEdit</class>
    <extends></extends>
-   <header>busquedaalmacen.h</header>
+   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -233,7 +233,7 @@
              </font>
             </property>
             <property name="text" >
-             <string>Referencia: </string>
+             <string>Referencia de factura:</string>
             </property>
            </widget>
           </item>
@@ -324,52 +324,55 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <widget class="QLabel" name="textLabel1_2_2_3" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>5</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <property name="spacing" >
-        <number>6</number>
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>9</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
        </property>
-       <item>
-        <widget class="QLabel" name="textLabel1_2_2_3" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>1</hsizetype>
-           <vsizetype>5</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font" >
-          <font>
-           <family>Sans Serif</family>
-           <pointsize>9</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-           <underline>false</underline>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="text" >
-          <string>Numero de factura:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="m_numfacturap" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       <property name="text" >
+        <string>Numero de factura:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_numfacturap" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>
@@ -482,7 +485,7 @@
            </font>
           </property>
           <property name="text" >
-           <string>Fecha de creacion:</string>
+           <string>Fecha de factura:</string>
           </property>
          </widget>
         </item>
@@ -2007,13 +2010,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends></extends>
    <header>busquedaformapago.h</header>
@@ -2035,6 +2031,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>ListLinFacturaProveedorView</class>
    <extends></extends>
    <header>listlinfacturapview.h</header>
@@ -2042,16 +2045,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
+   <class>ListDescuentoFacturaProvView</class>
    <extends></extends>
-   <header>q3textedit.h</header>
+   <header>listdescfacturaprovview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ListDescuentoFacturaProvView</class>
+   <class>Q3TextEdit</class>
    <extends></extends>
-   <header>listdescfacturaprovview.h</header>
+   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

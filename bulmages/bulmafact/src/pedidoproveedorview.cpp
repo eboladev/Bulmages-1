@@ -1,14 +1,22 @@
-//
-// C++ Implementation: factura
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 
 #include <QCloseEvent>
@@ -20,8 +28,8 @@
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>
-using namespace std;
 
+using namespace std;
 
 #include "pedidoproveedorview.h"
 #include "company.h"
@@ -117,7 +125,7 @@ void   PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fix
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
-    PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
+    PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de pagos", "company"));
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
@@ -148,10 +156,10 @@ void PedidoProveedorView::generarAlbaran() {
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funci�.
     if (QMessageBox::question(
                 this,
-                tr("Albaran Proveedor Inexistente"),
+                tr("Albaran de proveedor inexistente"),
                 tr("No existe un albaran asociado a este pedido."
-                   "Desea Crearlo ?"),
-                tr("&Yes"), tr("&No"),
+                   "Desea crearlo ?"),
+                tr("&Si"), tr("&No"),
                 QString::null, 0, 1 ) )
         return;
 
@@ -198,8 +206,9 @@ void PedidoProveedorView::generarAlbaran() {
 void PedidoProveedorView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Pedido Proveedor",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning(this, tr("Guardar pedido a proveedor"),
+						tr("Desea guardar los cambios?"),
+						tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             guardar();
         if (val == 2)
