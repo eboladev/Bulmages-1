@@ -37,6 +37,9 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
+     <property name="margin" >
+      <number>0</number>
+     </property>
      <layout class="QGridLayout" >
       <property name="margin" >
        <number>5</number>
@@ -93,7 +96,7 @@
      <item>
       <widget class="QPushButton" name="pushButton2" >
        <property name="text" >
-        <string>Detalles</string>
+        <string>&amp;Detalles</string>
        </property>
        <property name="checkable" >
         <bool>true</bool>
@@ -103,7 +106,7 @@
      <item>
       <widget class="QPushButton" name="pushButton1" >
        <property name="text" >
-        <string>Cerrar</string>
+        <string>&amp;Cerrar</string>
        </property>
       </widget>
      </item>

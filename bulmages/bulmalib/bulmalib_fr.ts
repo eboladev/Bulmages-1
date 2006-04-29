@@ -18,21 +18,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;LI&gt; El cliente no existe, se debe hacer una inserci&#xc3;&#xb3;n de &#xc3;&#xa9;ste&lt;/LI&gt;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el proveedor </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>&lt;LI&gt; El proveedor ya existe se pueden hacer modificaciones&lt;/LI&gt;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt; El proveedor no existe, se debe hacer una inserci&#xc3;&#xb3;n de &#xc3;&#xa9;ste&lt;/LI&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -61,35 +51,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;LI&gt;Datos insuficientes para tratar el almac&#xc3;&#xa9;n.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt; Ya existe este almac&#xc3;&#xa9;n.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt; Almac&#xc3;&#xa9;n &lt;B&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;/B&gt; Insertado</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;HR&gt;&lt;B&gt;Tratando Fam&#xc3;&#xad;lia </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; No se ha encontrado el padre de esta fam&#xc3;&#xad;lia.&lt;/P&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>&lt;P&gt;Datos insuficientes para tratar la familia.&lt;/P&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; Ya existe esta fam&#xc3;&#xad;lia.&lt;/P&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -102,23 +68,6 @@
     </message>
     <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Articulo </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>La familia del art&#xc3;&#xad;culo no existe&lt;BR&gt;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;P&gt;Datos insuficientes para tratar el art&#xc3;&#xad;culo.&lt;/P&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; Ya existe este art&#xc3;&#xad;culo.&lt;/P&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; Art&#xc3;&#xad;culo &lt;B&gt;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -150,11 +99,6 @@
     </message>
     <message>
         <source>El empleado del presupuesto no existe&lt;BR&gt;
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>El art&#xc3;&#xad;culo de la l&#xc3;&#xad;nea de presupuesto no existe&lt;BR&gt;
 </source>
         <translation type="unfinished"></translation>
     </message>
@@ -196,6 +140,62 @@
     </message>
     <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Presupuesto </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; El cliente no existe, se debe hacer una insercion de este&lt;/LI&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; El proveedor no existe, se debe hacer una insercion de este&lt;/LI&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Datos insuficientes para tratar el almacen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; Ya existe este almacen.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; Almacen &lt;B&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;HR&gt;&lt;B&gt;Tratando familia </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; No se ha encontrado el padre de esta familia.&lt;/P&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; Ya existe esta familia.&lt;/P&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>La familia del articulo no existe&lt;BR&gt;
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;P&gt;Datos insuficientes para tratar el articulo.&lt;/P&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; Ya existe este articulo.&lt;/P&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; Articulo &lt;B&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>El articulo de la linea de presupuesto no existe&lt;BR&gt;
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -285,20 +285,7 @@
 <context>
     <name>abreempresadlg</name>
     <message>
-        <source>Abrir Empresa</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Abrir Empresa</source>
-        <comment>Sirve para seleccionar la empresa con la que se quiere trabajar</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Actualizar</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Actualiza el listado de Empresas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -318,11 +305,19 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Aceptar</source>
+        <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cancelar</source>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Abrir empresa</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Actualiza el listado de empresas</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -333,7 +328,7 @@
         <translation type="unfinished"></translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>logpassbase</name>
     <message>
         <source>Usuario</source>
@@ -356,7 +351,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Validar</source>
+        <source>&amp;Validar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -371,11 +366,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Detalles</source>
+        <source>&amp;Detalles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cerrar</source>
+        <source>&amp;Cerrar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -387,18 +382,6 @@
     </message>
     <message>
         <source>&lt;LI&gt;Se ha insertado la cuenta </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt;Ya hay una cuenta con el c&#xc3;&#xb3;digo </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt;Inserci&#xc3;&#xb3;n de Asiento</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt;Inserci&#xc3;&#xb3;n de Apunte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -423,6 +406,18 @@
     <message>
         <source>Error en el XML.
 Documento mal formado.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Ya hay una cuenta con el codigo </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Insercion de asiento</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Insercion de apunte</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -2,7 +2,7 @@
                           abreempresaview.cpp  -  description
                              -------------------
     begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borr� Riera
+    copyright            : (C) 2002 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,8 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 /** \file abreempresaview.cpp
-  * Contiene la implementaci� de la clase \ref abreempresaview y sus m�odos.
-  * \author Tomeu Borr� Riera
+  * Contiene la implementacion de la clase \ref abreempresaview y sus metodos.
+  * \author Tomeu Borras Riera
   */
 
 #include <fstream>

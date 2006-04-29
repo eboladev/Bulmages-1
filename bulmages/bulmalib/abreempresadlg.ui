@@ -1,196 +1,184 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>abreempresadlg</class>
-  <widget class="QDialog" name="abreempresadlg" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>390</width>
-        <height>298</height>
-      </rect>
-    </property>
-    <property name="sizePolicy" >
-      <sizepolicy>
-        <hsizetype>7</hsizetype>
-        <vsizetype>7</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-      </sizepolicy>
-    </property>
-    <property name="minimumSize" >
-      <size>
-        <width>390</width>
-        <height>210</height>
-      </size>
-    </property>
-    <property name="maximumSize" >
-      <size>
-        <width>640</width>
-        <height>1000</height>
-      </size>
-    </property>
-    <property name="windowTitle" >
-      <string>Abrir Empresa</string>
-    </property>
-    <property name="windowIcon" >
-      <pixmap>image0</pixmap>
-    </property>
-    <property name="modal" >
-      <bool>true</bool>
-    </property>
-    <property name="toolTip" stdset="0" >
-      <string>Abrir Empresa</string>
-    </property>
-    <layout class="QVBoxLayout" >
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <item>
-            <widget class="QToolButton" name="toolButton1" >
-              <property name="text" >
-                <string/>
-              </property>
-              <property name="icon" >
-                <iconset>image1</iconset>
-              </property>
-              <property name="text" >
-                <string>Actualizar</string>
-              </property>
-              <property name="toolTip" stdset="0" >
-                <string>Actualizar</string>
-              </property>
-              <property name="whatsThis" stdset="0" >
-                <string>Actualiza el listado de Empresas</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <spacer name="spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>281</width>
-                  <height>21</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-        </layout>
-      </item>
-      <item>
-        <widget class="Q3ListView" name="empresas" >
-          <property name="resizePolicy" >
-            <enum>Q3ScrollView::Manual</enum>
-          </property>
-          <property name="selectionMode" >
-            <enum>Q3ListView::Single</enum>
-          </property>
-          <property name="allColumnsShowFocus" >
-            <bool>true</bool>
-          </property>
-          <property name="itemMargin" >
-            <number>0</number>
-          </property>
-          <property name="resizeMode" >
-            <enum>Q3ListView::AllColumns</enum>
-          </property>
-          <column>
-            <property name="text" >
-              <string>Nombre</string>
-            </property>
-            <property name="clickable" >
-              <bool>true</bool>
-            </property>
-            <property name="resizable" >
-              <bool>true</bool>
-            </property>
-          </column>
-          <column>
-            <property name="text" >
-              <string>Año</string>
-            </property>
-            <property name="clickable" >
-              <bool>true</bool>
-            </property>
-            <property name="resizable" >
-              <bool>false</bool>
-            </property>
-          </column>
-          <column>
-            <property name="text" >
-              <string>Archivo</string>
-            </property>
-            <property name="clickable" >
-              <bool>true</bool>
-            </property>
-            <property name="resizable" >
-              <bool>false</bool>
-            </property>
-          </column>
-          <column>
-            <property name="text" >
-              <string>Tipo</string>
-            </property>
-            <property name="clickable" >
-              <bool>true</bool>
-            </property>
-            <property name="resizable" >
-              <bool>false</bool>
-            </property>
-          </column>
-        </widget>
-      </item>
-      <item>
-        <layout class="QHBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <item>
-            <widget class="QPushButton" name="botonAceptar" >
-              <property name="text" >
-                <string>Aceptar</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="botonCancelar" >
-              <property name="text" >
-                <string>Cancelar</string>
-              </property>
-              <property name="autoDefault" >
-                <bool>false</bool>
-              </property>
-            </widget>
-          </item>
-        </layout>
-      </item>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>abreempresadlg</class>
+ <widget class="QDialog" name="abreempresadlg" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>390</width>
+    <height>298</height>
+   </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>7</hsizetype>
+    <vsizetype>7</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize" >
+   <size>
+    <width>390</width>
+    <height>210</height>
+   </size>
+  </property>
+  <property name="maximumSize" >
+   <size>
+    <width>640</width>
+    <height>1000</height>
+   </size>
+  </property>
+  <property name="windowTitle" >
+   <string>Abrir empresa</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset/>
+  </property>
+  <property name="toolTip" >
+   <string>Abrir empresa</string>
+  </property>
+  <property name="modal" >
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>2</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>2</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="toolButton1" >
+       <property name="toolTip" >
+        <string>Actualizar</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Actualiza el listado de empresas</string>
+       </property>
+       <property name="text" >
+        <string>Actualizar</string>
+       </property>
+       <property name="icon" >
+        <iconset>image1</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>281</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
-  </widget>
-  <layoutdefault spacing="2" margin="5" />
-  <pixmapfunction></pixmapfunction>
-  <tabstops>
-    <tabstop>botonAceptar</tabstop>
-    <tabstop>botonCancelar</tabstop>
-  </tabstops>
-  <images>
-    <image name="image0" >
-      <data format="PNG" length="310" >89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff61000000fd49444154388d85923d6bc33010869f76ebd0ffff274aa7902ddde22d63336450360d196470400653783be8fc2145b60de2e08ebbf7f17b8724292a7d9dc54664796f314a82f41ee2dc9c412158f34ab47ab461d107018a56ce95ba228ef9ab04642f0d97d6094cf2f27312a0e09c24c95d2f6940dc2218ac38aa0d39d13681292f5596f5e05cf2a0ab1144e5ff3835af13bcd3b6f0013c5354f04882be072cff39d7dbfb1d80fe09fcf156f760672b13c1636b0b1b7791fc09150f4ac53d8246954b1c4fae541e52fe743c1841ac10f8627de3fe8b4b5c12334e3e7c7f0990bffdce24616e9cf2434e886e7a9d3c14f7b0e64923783d9a901bb5e3cd3fa45d5bf0e1f5a7770000000049454e44ae426082</data>
-    </image>
-    <image name="image1" >
-      <data format="PNG" length="1996" >89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000793494441545885c5975d6c15c715c77fd87be96c722fcc14bbf1aa76948970ca3a6de5eb3491dc8f443845558922b58e78284855805415226f4591d2e4a55f0f45456995122545715a292152d5902852fc92025290402aad6f8b5b2f122103b1c56e60e55df0c63bc18be9c35efc098456957a5efe9a9df3f13f67ceace6c0ff5956fc27caf51d931ac2f5e0f582e9050d98154d3c01de090a73d84ff71a214531b46fe8eaff84407dc7bfb66aa91f37a97d5048b06988961a9381902e361d430b0f935944556033735457bd573bd29f0fb9b8c59e7d7baefc5704ea3b26eb103e07de431082e8012747545dbc6acea0ef12662136f7183e03d60236042b0003e89c22d8d5cf6bbf4fb3f493fdafef5f46e48604fa9f9edc6ad370484b8db12ea213b6fbb0b117bc2a50036680ca3ce6213426e0b5e3d088c14623e8aac6a4f6cd41f9f213c14490ed7f7dffe585715a6f90f9d6c28643389a74a5cb331be0c9877306ea150ac0ad413205aebb186b6ba0ba0a1efb3a74ac4c38397937e3690454fd60baf6edee95a7fed47567d727c1c960f68604fa9f2e83ebb61e545b85df6e8287ee01d55e8104dcd5dc12ded3edb2f12ea8b42a1a13a0abea8e51dbd733f0f90b6fa9cfa9d96b241611a8ef98ac17361cc6d1b8b2e0c52d1556dc96a3440533398f615ce12fff34649920f87002d9a630514e7b75b19eb7aa4255e6a4994be35c04c8eee052e5985f1bffb0ebceae2bc1c9e06acbe2fcc357b4f4a0eaf2b3475d92023a844b1297f8f29f4720052de091f59abefb5d06bea22106e5b88c4c2cd61f8b414b971fad87812f6ac0a0dbea3f0154bdbbdebaa802f51d7fdb0a5d3f4c816736b828d9cc28ce71ab151aef8ff1d8862fa3da2b54d4e22e72d7406d75790bc6274b7d13cfdbd75655e03309473eb89b340bbc89d9875361df6ef4dfd77f79ae02baaa1f07a8af55a83650c2c5c62506677206fa7baed7af8b256beac74bec63e8eb500cf6e608a9c14906b5d412a8b434cf5e9bcc3c8850f8ed2152c0589c903b30727284817ef7d383cf40529476d299b71f8b132470e86488878bb516d0bd07a2ba0f08a7b4b6eb4555631de8ebf430317855c570638c5d9bfb96c51a6b40642188a1de098905d78120827aa79ab33f7c122814bf0840543d6c06bacdc34c8488b69eafd9ec40a37904a2d766064f82c9129403419cb0b1bebcecbf7a3324b2a59edf56eab98049e7d7ca81afd661e77761e7261080cd4afbd002086c16ae1308b749c0f46ae9230574388a202ed15b12fc8d23e04b6f6e7f298e9c0ad9be4131d0bfd8ce02bada4c55028468e9af05449380c664115240230ec91d181e35287f098302cea4211dd5798ce21136f7c223eb61d7f797529e17932da884d38349cd0aae3521d815426aac05cff1482f8072f472273124531ec341894ae46cdfd487eaba61dc39117261257284f4b0d89666130a6c3c465aede1e878028e8222214f14ee823b3f1c944e046503ee5cffe9b723cf9b99a7259a0c282c360d1108aef5c0095df5482ce028a20c84a33067163b7b672bf86d80035ac2a125fbd7139b353397a59da80218b4f44e03b34d02de099319520b2685bc802085e1638b9db95df0eca379493985bd87e19d63e6a6048228473810366f411a03684c1c9c0666ca2328ece16b3da03b4be75ac2700a5bc6c15b70c6bacbe5d08f214fc044d0e32fef954515b0e53169d9f42bc06011428ed8c2da16003f7dd6d8cc1cc526442928015156e213af433eb5dcb1aba067e92db96e0592397fae03261a0318f58bbd6705226f01105214baeabd0a961c900ed43be6f1c957ca8c3f55f2eb7c2bd49c9f242dff88d8e05d2df5c740de0ad01869d07f6f321ab56cfca6bd14747a6d1e0509dd8e4b5824d41c97e1b104a65d2ab781ba7d799c378e240c1f74699c4b78e00bee1ca13f1c2bedc7d384e89ca59836a3fd2daffd3ab6f1470e4eea5c73a0a59e69a4c1535afaef056712b67c43114e415f4d61a6c0af298e198862ca757b79a53ca75ceb9a2215a00ac5aedf41bd0b820bd0d7ae304979fe60d08217b1a45aead4a46666ee3d70f8e8e1ab83f78970d47a4931dbfeade09cc1ef6c272b42bad7d4189f0a71d6d4c8a6cab54942583dbf5eb8efdf51ee3b6b6a6449c87b6305596aa010cfe9e237071d9c30b6713ab46fe8ca921711c5a03cf41245f094e7780cff35c1733d420b7ebb8768e2adaeb90087de17a499410bf55c3f7b0f68a93fb2d8444b5dc09237e1f191e3e87bf5154df08f51eb5d2c66db371cff20a098f510b5102d6b449712baa47b73acba1c386e38320676ba99f9e55f1e68667e5e20f2ddcfefbeba8c40b321afde7fdffdc50332fe7b70a9724c4b7fdda9f3a977ea92208ae04bed0e7151e1aecfbac4d3d029e771f46c4e34e9f0c7a319692128a6cda85ec94ffde2a5835db22b8a6d7c5e4b3dbdfbf9dd73cff21b0e26db7eb0ad452084c5aa06cf6e83641047f736271e8463f0a4064292cc23b5e5f772df1bc506eff63b6fbc6db1a940c4169b08847d61df0bb30be3dc74341bfcce604bbdbbde6a5273bb965a1e88ea7ef99209d769e9af35a95d313f2b7aa74d9c9c16c28ef8c5deb35aea8fc334bce816eeac494cac95b67b5ed933bb34c62d0da79bbfb7b9d516d6055633830214b0aaa3bd63dc625b04028b9d1588198bb502914717a25651111771c8af37135e937f03b544c0cd974252740000000049454e44ae426082</data>
-    </image>
-  </images>
+   </item>
+   <item>
+    <widget class="Q3ListView" name="empresas" >
+     <property name="resizePolicy" >
+      <enum>Q3ScrollView::Manual</enum>
+     </property>
+     <property name="selectionMode" >
+      <enum>Q3ListView::Single</enum>
+     </property>
+     <property name="allColumnsShowFocus" >
+      <bool>true</bool>
+     </property>
+     <property name="itemMargin" >
+      <number>0</number>
+     </property>
+     <property name="resizeMode" >
+      <enum>Q3ListView::AllColumns</enum>
+     </property>
+     <column>
+      <property name="text" >
+       <string>Nombre</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Año</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Archivo</string>
+      </property>
+     </column>
+     <column>
+      <property name="text" >
+       <string>Tipo</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>2</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="botonAceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="botonCancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="2" margin="5" />
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3ListView</class>
+   <extends></extends>
+   <header>q3listview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>botonAceptar</tabstop>
+  <tabstop>botonCancelar</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

@@ -19,12 +19,6 @@
 </translation>
     </message>
     <message>
-        <source>&lt;LI&gt; El cliente no existe, se debe hacer una inserci&#xc3;&#xb3;n de &#xc3;&#xa9;ste&lt;/LI&gt;
-</source>
-        <translation>&lt;LI&gt; El cliente no existe, se debe hacer una inserción de éste&lt;/LI&gt;
-</translation>
-    </message>
-    <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el proveedor </source>
         <translation> &lt;HR&gt;&lt;B&gt;Tratando el proveedor</translation>
     </message>
@@ -32,12 +26,6 @@
         <source>&lt;LI&gt; El proveedor ya existe se pueden hacer modificaciones&lt;/LI&gt;
 </source>
         <translation>&lt;LI&gt; El proveedor ya existe se pueden hacer modificaciones&lt;/LI&gt;
-</translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt; El proveedor no existe, se debe hacer una inserci&#xc3;&#xb3;n de &#xc3;&#xa9;ste&lt;/LI&gt;
-</source>
-        <translation>&lt;LI&gt; El proveedor no existe, se debe hacer una inserción de éste&lt;/LI&gt;
 </translation>
     </message>
     <message>
@@ -65,36 +53,12 @@
         <translation> &lt;HR&gt;&lt;B&gt;Tratando almacén</translation>
     </message>
     <message>
-        <source>&lt;LI&gt;Datos insuficientes para tratar el almac&#xc3;&#xa9;n.</source>
-        <translation>&lt;LI&gt;Datos insuficientes para tratar el almacén.</translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt; Ya existe este almac&#xc3;&#xa9;n.</source>
-        <translation>&lt;LI&gt; Ya existe este almacén.</translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt; Almac&#xc3;&#xa9;n &lt;B&gt;</source>
-        <translation>&lt;LI&gt; Almacén &lt;B&gt;</translation>
-    </message>
-    <message>
         <source>&lt;/B&gt; Insertado</source>
         <translation>&lt;/B&gt; Insertado</translation>
     </message>
     <message>
-        <source>&lt;HR&gt;&lt;B&gt;Tratando Fam&#xc3;&#xad;lia </source>
-        <translation> &lt;HR&gt;&lt;B&gt;Tratando Família</translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; No se ha encontrado el padre de esta fam&#xc3;&#xad;lia.&lt;/P&gt;</source>
-        <translation>&lt;P&gt; No se ha encontrado el padre de esta família.&lt;/P&gt;</translation>
-    </message>
-    <message>
         <source>&lt;P&gt;Datos insuficientes para tratar la familia.&lt;/P&gt;</source>
         <translation>&lt;P&gt;Datos insuficientes para tratar la familia.&lt;/P&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; Ya existe esta fam&#xc3;&#xad;lia.&lt;/P&gt;</source>
-        <translation>&lt;P&gt; Ya existe esta família.&lt;/P&gt;</translation>
     </message>
     <message>
         <source>&lt;P&gt; Familia &lt;B&gt;</source>
@@ -107,24 +71,6 @@
     <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Articulo </source>
         <translation> &lt;HR&gt;&lt;B&gt;Tratando Artículo</translation>
-    </message>
-    <message>
-        <source>La familia del art&#xc3;&#xad;culo no existe&lt;BR&gt;
-</source>
-        <translation>La familia del artículo no existe&lt;BR&gt;
-</translation>
-    </message>
-    <message>
-        <source>&lt;P&gt;Datos insuficientes para tratar el art&#xc3;&#xad;culo.&lt;/P&gt;</source>
-        <translation>&lt;P&gt;Datos insuficientes para tratar el artículo.&lt;/P&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; Ya existe este art&#xc3;&#xad;culo.&lt;/P&gt;</source>
-        <translation>&lt;P&gt; Ya existe este artículo.&lt;/P&gt;</translation>
-    </message>
-    <message>
-        <source>&lt;P&gt; Art&#xc3;&#xad;culo &lt;B&gt;</source>
-        <translation>&lt;P&gt; Artículo &lt;B&gt;</translation>
     </message>
     <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando LPedidoCliente </source>
@@ -160,12 +106,6 @@
         <source>El empleado del presupuesto no existe&lt;BR&gt;
 </source>
         <translation>El empleado del presupuesto no existe&lt;BR&gt;
-</translation>
-    </message>
-    <message>
-        <source>El art&#xc3;&#xad;culo de la l&#xc3;&#xad;nea de presupuesto no existe&lt;BR&gt;
-</source>
-        <translation>El artículo de la línea de presupuesto no existe&lt;BR&gt;
 </translation>
     </message>
     <message>
@@ -207,6 +147,62 @@
     <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando Presupuesto </source>
         <translation> &lt;HR&gt;&lt;B&gt;Tratando Presupuesto</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; El cliente no existe, se debe hacer una insercion de este&lt;/LI&gt;
+</source>
+        <translation>&lt;LI&gt; El cliente no existe, se debe hacer una inserción de este&lt;/LI&gt;(new line)</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; El proveedor no existe, se debe hacer una insercion de este&lt;/LI&gt;
+</source>
+        <translation>&lt;LI&gt; El proveedor no existe, se debe hacer una inserción de este&lt;/LI&gt;(new line)</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Datos insuficientes para tratar el almacen.</source>
+        <translation>&lt;LI&gt;Datos insuficientes para tratar el almacén.</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; Ya existe este almacen.</source>
+        <translation>&lt;LI&gt; Ya existe este almacén.</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt; Almacen &lt;B&gt;</source>
+        <translation>&lt;LI&gt; Almacén &lt;B&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;HR&gt;&lt;B&gt;Tratando familia </source>
+        <translation>(sp)&lt;HR&gt;&lt;B&gt;Tratando familia</translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; No se ha encontrado el padre de esta familia.&lt;/P&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; Ya existe esta familia.&lt;/P&gt;</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>La familia del articulo no existe&lt;BR&gt;
+</source>
+        <translation>La familia del artículo no existe&lt;BR&gt;(new line)</translation>
+    </message>
+    <message>
+        <source>&lt;P&gt;Datos insuficientes para tratar el articulo.&lt;/P&gt;</source>
+        <translation>&lt;P&gt;Datos insuficientes para tratar el artículo.&lt;/P&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; Ya existe este articulo.&lt;/P&gt;</source>
+        <translation>&lt;P&gt; Ya existe este artículo.&lt;/P&gt;</translation>
+    </message>
+    <message>
+        <source>&lt;P&gt; Articulo &lt;B&gt;</source>
+        <translation>&lt;P&gt; Artículo &lt;B&gt;</translation>
+    </message>
+    <message>
+        <source>El articulo de la linea de presupuesto no existe&lt;BR&gt;
+</source>
+        <translation>El artículo de la línea de presupuesto no existe&lt;BR&gt;(new line)</translation>
     </message>
 </context>
 <context>
@@ -295,21 +291,8 @@
 <context>
     <name>abreempresadlg</name>
     <message>
-        <source>Abrir Empresa</source>
-        <translation>Abrir Empresa</translation>
-    </message>
-    <message>
-        <source>Abrir Empresa</source>
-        <comment>Sirve para seleccionar la empresa con la que se quiere trabajar</comment>
-        <translation>Sirve para seleccionar la empresa con la que se quiere trabajar</translation>
-    </message>
-    <message>
         <source>Actualizar</source>
         <translation>Actualizar</translation>
-    </message>
-    <message>
-        <source>Actualiza el listado de Empresas</source>
-        <translation>Actualiza el listado de Empresas</translation>
     </message>
     <message>
         <source>Nombre</source>
@@ -328,12 +311,20 @@
         <translation>Tipo</translation>
     </message>
     <message>
-        <source>Aceptar</source>
-        <translation>Aceptar</translation>
+        <source>&amp;Aceptar</source>
+        <translation>&amp;Aceptar</translation>
     </message>
     <message>
-        <source>Cancelar</source>
-        <translation>Cancelar</translation>
+        <source>&amp;Cancelar</source>
+        <translation>&amp;Cancelar</translation>
+    </message>
+    <message>
+        <source>Abrir empresa</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Actualiza el listado de empresas</source>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -343,7 +334,7 @@
         <translation>Error: Usuario y/o contraseña incorrectos</translation>
     </message>
 </context>
-<context encoding="UTF-8">
+<context>
     <name>logpassbase</name>
     <message>
         <source>Usuario</source>
@@ -366,8 +357,8 @@
         <translation>Lanzador v 0.5</translation>
     </message>
     <message>
-        <source>Validar</source>
-        <translation>Validar</translation>
+        <source>&amp;Validar</source>
+        <translation>&amp;Validar</translation>
     </message>
 </context>
 <context>
@@ -381,12 +372,12 @@
         <translation>Mensaje</translation>
     </message>
     <message>
-        <source>Detalles</source>
-        <translation>Detalles</translation>
+        <source>&amp;Detalles</source>
+        <translation>&amp;Detalles</translation>
     </message>
     <message>
-        <source>Cerrar</source>
-        <translation>Cerrar</translation>
+        <source>&amp;Cerrar</source>
+        <translation>&amp;Cerrar</translation>
     </message>
 </context>
 <context>
@@ -398,18 +389,6 @@
     <message>
         <source>&lt;LI&gt;Se ha insertado la cuenta </source>
         <translation> &lt;LI&gt;Se ha insertado la cuenta</translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt;Ya hay una cuenta con el c&#xc3;&#xb3;digo </source>
-        <translation> &lt;LI&gt;Ya hay una cuenta con el código</translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt;Inserci&#xc3;&#xb3;n de Asiento</source>
-        <translation>&lt;LI&gt;Inserción de Asiento</translation>
-    </message>
-    <message>
-        <source>&lt;LI&gt;Inserci&#xc3;&#xb3;n de Apunte</source>
-        <translation>&lt;LI&gt;Inserción de Apunte</translation>
     </message>
     <message>
         <source>&lt;LI&gt;Apunte fuera de fecha&lt;/LI&gt;
@@ -438,6 +417,18 @@
 Documento mal formado.</source>
         <translation>Error en el XML.
 Documento mal formado.</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Ya hay una cuenta con el codigo </source>
+        <translation>(sp)&lt;LI&gt;Ya hay una cuenta con el código</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Insercion de asiento</source>
+        <translation>&lt;LI&gt;Inserción de asiento</translation>
+    </message>
+    <message>
+        <source>&lt;LI&gt;Insercion de apunte</source>
+        <translation>&lt;LI&gt;Inserción de apunte</translation>
     </message>
 </context>
 </TS>
