@@ -183,8 +183,8 @@ void AlbaranProveedor::imprimirAlbaranProveedor()
 	SDBRecord *linea;
 	uint i = 0;
 
-	for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())
-	{
+	for ( int i = 0; i < listalineas->rowCount(); ++i) {
+		linea = listalineas->lineaat(i);
 		fitxersortidatxt += "<tr>";
 		fitxersortidatxt += "<td>" + linea->DBvalue("desclalbaranp") + "</td>";
 		fitxersortidatxt += "<td>" + linea->DBvalue("cantlalbaranp") +"</td>";
@@ -192,7 +192,7 @@ void AlbaranProveedor::imprimirAlbaranProveedor()
 		fitxersortidatxt += "<td>" + (Fixed(linea->DBvalue("pvplalbaranp"))*Fixed(linea->DBvalue("pvplalbaranp"))).toQString() + "</td>";
 		fitxersortidatxt += "</tr>";
 		i++;
-	};
+	}
 
 	fitxersortidatxt += "<tr>";
 	fitxersortidatxt += "<td></td>";

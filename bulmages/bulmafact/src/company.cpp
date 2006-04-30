@@ -475,7 +475,7 @@ AlbaranClienteView * company::newAlbaranClienteView() {
     AlbaranClienteView *bud;
     if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud) )
         return bud;
-    bud = new AlbaranClienteView(this , 0,theApp->translate("Edicion de albarnaes a clientes", "company"));
+    bud = new AlbaranClienteView(this , 0,theApp->translate("Edicion de albaranes a clientes", "company"));
     return bud;
 }
 

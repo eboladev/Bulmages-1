@@ -107,7 +107,8 @@ SDBRecord *SubForm2::newSDBRecord() {
     rec->setDBTableName( m_tablename);
     rec->setDBCampoId( m_campoid);
     SHeader * linea;
-    for (linea=m_lcabecera.first(); linea; linea=m_lcabecera.next()) {
+    for ( int i = 0; i < m_lcabecera.size(); ++i) {
+	linea = m_lcabecera.at(i);
         _depura("agregamos una cabecera",0);
         rec->addDBCampo(linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     }// end for
@@ -154,13 +155,13 @@ void SubForm2::pintaCabeceras() {
     QStringList headers;
     SHeader * linea;
     int i=0;
-    for (linea=m_lcabecera.first(); linea; linea=m_lcabecera.next()) {
+    for ( int i = 0; i < m_lcabecera.size(); ++i) {
+	linea = m_lcabecera.at(i);
         headers << linea->nompresentacion();
         if (linea->options() & SHeader::DBNoView)
             hideColumn(i);
         else
             showColumn(i);
-        i++;
     }// end for
     setHorizontalHeaderLabels (headers);
 }
@@ -224,8 +225,8 @@ int SubForm2::cargar(cursor2 *cur) {
     }// end if
     setRowCount(m_lista.count());
     SDBRecord *reg;
-    int i=0;
-    for(reg = m_lista.first(); reg; reg=m_lista.next()) {
+    for ( int i = 0; i < m_lista.size(); ++i) {
+	reg = m_lista.at(i);
         _depura("pintamos un SDBRecord",0);
         int j=0;
         SDBCampo *camp;
@@ -234,7 +235,6 @@ int SubForm2::cargar(cursor2 *cur) {
             setItem(i,j,camp);
             j++;
         }// end for
-        i++;
     }// end for
     nuevoRegistro();
 
@@ -309,8 +309,10 @@ int SubForm2::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 
 void SubForm2::setColumnValue(QString campo, QString valor) {
     SDBRecord *rec;
-    for (rec = m_lista.first(); rec; rec = m_lista.next())
+    for (int i = 0; i < m_lista.size(); ++i) {
+	rec = m_lista.at(i);
         rec->setDBvalue(campo, valor);
+   }// end for
 }
 
 
@@ -370,7 +372,7 @@ int SubForm2::borrar(int row) {
     int error = rec->borrar();
     if (error)
         return error;
-    m_lista.remove(row);
+    m_lista.takeAt(row);
     removeRow(row);
     emit editFinish( row, 0);
     return 0;

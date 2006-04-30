@@ -223,7 +223,8 @@ void Factura::imprimirFactura() {
     SDBRecord *linea;
     int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
 
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for( int i=0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlfactura").ascii()) * Fixed(linea->DBvalue("pvplfactura").ascii());
         basesimp[linea->DBvalue("ivalfactura")] = basesimp[linea->DBvalue("ivalfactura")] + base - base * Fixed(linea->DBvalue("descuentolfactura").ascii()) /100;
 
@@ -255,14 +256,14 @@ void Factura::imprimirFactura() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->lista()->first()) {
+    if (listadescuentos->rowCount()) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>Descuento</td>\n";
         fitxersortidatxt += "	<td>Porcentaje</td>\n";
         fitxersortidatxt += "	<td>Total</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+	for ( int i=0; i < listadescuentos->rowCount(); ++i) {
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfactura").ascii());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "	<td>"+linea1->DBvalue("conceptdfactura")+"</td>\n";
@@ -330,7 +331,8 @@ void Factura::calculaypintatotales() {
     /// Impresi� de los contenidos
     QString l;
 
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         Fixed cant(linea->DBvalue("cantlfactura").ascii());
         Fixed pvpund(linea->DBvalue("pvplfactura").ascii());
         Fixed desc1(linea->DBvalue("descuentolfactura").ascii());
@@ -351,8 +353,9 @@ void Factura::calculaypintatotales() {
     /// Impresi� de los descuentos
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->lista()->first()) {
-        for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+    if (listadescuentos->rowCount()) {
+	for ( int i = 0; i < listadescuentos->rowCount(); ++i) {
+	linea1 = listadescuentos->lineaat(i);
             Fixed propor(linea1->DBvalue("proporciondfactura").ascii());
             porcentt = porcentt + propor;
         }// end for

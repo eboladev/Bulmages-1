@@ -132,9 +132,10 @@ void PedidoClienteView::generarAlbaran() {
 
     /// Traspasamos las lineas del albaran
     SDBRecord *linea, *linea1;
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+	for (int i = 0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
-            linea1 = bud->getlistalineas()->lista()->last();
+            linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea1->setDBvalue( "desclalbaran",linea->DBvalue("desclpedidocliente"));
             linea1->setDBvalue( "cantlalbaran",linea->DBvalue("cantlpedidocliente"));
             linea1->setDBvalue( "pvplalbaran",linea->DBvalue("pvplpedidocliente"));
@@ -148,9 +149,10 @@ void PedidoClienteView::generarAlbaran() {
     }// end for
 
     /// Traspasamos los descuentos.
-    for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+    for ( int i = 0; i < listadescuentos->rowCount(); ++i) {
+	linea1 = listadescuentos->lineaat(i);
         if (linea1->DBvalue( "proporciondpedidocliente") != "") {
-            linea = bud->getlistadescuentos()->lista()->last();
+            linea = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount()-1);
             linea->setDBvalue( "conceptdalbaran",linea1->DBvalue("conceptdpedidocliente"));
             linea->setDBvalue( "proporciondalbaran",linea1->DBvalue("proporciondpedidocliente"));
             bud->getlistadescuentos()->nuevoRegistro();

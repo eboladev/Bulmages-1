@@ -149,10 +149,11 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
 
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
     SDBRecord *linea, *linea1;
-    for (linea = bud->getlistalineas()->lista()->first(); linea; linea = bud->getlistalineas()->lista()->next() ) {
+    for (int i = 0; i < bud->getlistalineas()->rowCount(); ++i) {
+	linea = getlistalineas()->lineaat(i);
         /// Los registros vacios no se tienen en cuenta
         if (linea->DBvalue( "idarticulo") != "") {
-            linea1 = getlistalineas()->lista()->last();
+            linea1 = getlistalineas()->lineaat(getlistalineas()->rowCount()-1);
             linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));

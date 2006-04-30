@@ -94,8 +94,8 @@ public:
 class SubForm2: public QTableWidget {
 Q_OBJECT
 private:
-    Q3PtrList<SHeader>   m_lcabecera;
-    Q3PtrList<SDBRecord> m_lista;
+    QList<SHeader *>   m_lcabecera;
+    QList<SDBRecord *> m_lista;
     postgresiface2 *m_companyact;
     QString m_tablename;
     QString m_campoid;
@@ -108,6 +108,7 @@ private:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();
+    QList<SDBRecord *> *lista(){return &m_lista;};
 
 public:
     SubForm2(QWidget *parent);
@@ -136,7 +137,6 @@ public:
     };
 
     void situarse(unsigned int, unsigned int);
-    Q3PtrList<SDBRecord> *lista(){return &m_lista;};
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
     SDBRecord *newSDBRecord();
 

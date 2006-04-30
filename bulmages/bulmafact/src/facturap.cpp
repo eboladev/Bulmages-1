@@ -53,18 +53,18 @@ FacturaProveedor::~FacturaProveedor() {}
 
 
 int FacturaProveedor::borrar() {
-	int error = 0;
+    int error = 0;
     if (DBvalue("idfacturap") != "") {
         companyact->begin();
         error = listalineas->borrar();
-	error += listadescuentos->borrar();
-	error += DBRecord::borrar();
+        error += listadescuentos->borrar();
+        error += DBRecord::borrar();
         if (error) {
             companyact->rollback();
             return -1;
         }// end if
     }// end if
-	return 0;
+    return 0;
 }// end borraFacturaProveedor
 
 
@@ -200,7 +200,8 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     int i=0; // Contador que sirve para poner lineas de más en caso de que sea preciso.
 
     SDBRecord *linea;
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+        linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlfacturap").ascii()) * Fixed(linea->DBvalue("pvplfacturap").ascii());
         basesimp[linea->DBvalue("ivalfacturap")] = basesimp[linea->DBvalue("ivalfacturap")] + base - base * Fixed(linea->DBvalue("descuentolfacturap").ascii()) /100;
 
@@ -232,14 +233,15 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->lista()->first()) {
+    if (listadescuentos->rowCount()) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>Descuento</td>\n";
         fitxersortidatxt += "	<td>Porcentaje</td>\n";
         fitxersortidatxt += "	<td>Total</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+        for ( int i = 0; i < listadescuentos->rowCount(); ++i) {
+            linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfacturap").ascii());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "	<td>"+linea1->DBvalue("conceptdfacturap")+"</td>\n";

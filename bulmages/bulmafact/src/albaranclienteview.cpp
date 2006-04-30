@@ -52,18 +52,22 @@
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp),
 dialogChanges(this) {
+    _depura("AlbaranClienteView::AlbaranClienteView",0);
     setupUi(this);
     subform2->setcompany(comp);
     m_descuentos->setcompany(comp);
+
     m_almacen->setcompany(comp);
     m_forma_pago->setcompany(comp);
     m_cliente->setcompany(comp);
     m_trabajador->setcompany(comp);
+
     setListLinAlbaranCliente(subform2);
     setListDescuentoAlbaranCliente(m_descuentos);
+
     comp->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
-    _depura("Fin de la inicializacion de AlbaranClienteView\n");
+    _depura("END AlbaranClienteView::AlbaranClienteView\n",0);
 }
 
 
@@ -113,7 +117,7 @@ void AlbaranClienteView::s_verpresupuesto() {
 
 
 void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
-	_depura("on_mui_verpedidocliente_clicked",0);
+    _depura("on_mui_verpedidocliente_clicked",0);
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" + DBvalue("refalbaran") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
@@ -174,9 +178,10 @@ void AlbaranClienteView::generarFactura() {
 
     QString l;
     SDBRecord *linea, *linea1;
-    for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
+    for (int i=0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
-            linea1 = bud->getlistalineas()->lista()->last();
+            linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));
@@ -231,9 +236,10 @@ void AlbaranClienteView::agregarFactura() {
     /// pero por ahora pasamos de hacerlo.
     QString l;
     SDBRecord *linea, *linea1;
-    for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next())  {
+	for (int i = 0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
-            linea1 = bud->getlistalineas()->lista()->last();
+            linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));
@@ -254,14 +260,22 @@ void AlbaranClienteView::agregarFactura() {
 
 
 int AlbaranClienteView::cargar(QString id)  {
+    _depura("AlbaranClienteView::cargar",2);
+
+    _depura("    AlbaranCliente::cargar(id);",2);
     AlbaranCliente::cargar(id);
-    setCaption("Albaran Cliente  " + DBvalue("refalbaran"));
 
-    if (companyact->meteWindow(caption(), this))  {
+    _depura("setCaption",2);
+    setCaption(tr("Albaran a cliente  ") + DBvalue("refalbaran"));
+
+    _depura("meteWindow",2);
+    if (companyact->meteWindow(caption(), this))
         return -1;
-    }
 
+    _depura("dialogChanges_cargaInicial",2);
     dialogChanges_cargaInicial();
+    _depura("AlbaranClienteView::cargar",2);
+
     return 0;
 }
 

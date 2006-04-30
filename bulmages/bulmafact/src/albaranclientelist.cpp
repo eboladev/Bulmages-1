@@ -272,10 +272,9 @@ void AlbaranClienteList::editar(int  row) {
     _depura("AlbaranClienteList::editar",0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"),row);
     if (m_modo ==0 ) {
-        AlbaranClienteView *prov = new AlbaranClienteView(m_companyact,0,theApp->translate("Edicion de Albaranes a Cliente", "company"));
-        if (prov->cargar(mdb_idalbaran)) {
+        AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
+        if (prov->cargar(mdb_idalbaran))
             return;
-        }
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
@@ -299,7 +298,7 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
     if (m_modo ==0 ) {
-        AlbaranClienteView *prov = new AlbaranClienteView(m_companyact,0,theApp->translate("Edicion de Albaranes a Cliente", "company"));
+        AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
         if (prov->cargar(mdb_idalbaran)) {
             return;
         }

@@ -179,7 +179,8 @@ void PedidoProveedorView::generarAlbaran() {
     QString l;
     SDBRecord *linea, *linea1;
     uint i = 0;
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
 	linea1 = bud->getlistalineas()->newSDBRecord();
 	linea1->setDBvalue("desclalbaranp",linea->DBvalue("desclpedidoproveedor"));
 	linea1->setDBvalue("cantlalbaranp",linea->DBvalue("cantlpedidoproveedor"));

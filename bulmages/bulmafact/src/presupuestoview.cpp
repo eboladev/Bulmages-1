@@ -104,7 +104,7 @@ void PresupuestoView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning(this, "Guardar presupuesto",
-                                        "Desea guardar los cambios?","Si","No","Cancelar",0,2);
+                                       "Desea guardar los cambios?","Si","No","Cancelar",0,2);
         if (val == 0)
             guardar();
         if (val == 2)
@@ -169,7 +169,7 @@ void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed des
 
 /// Se encarga de generar un pedido a partir del presupuesto.
 void PresupuestoView::generarPedidoCliente() {
-	_depura("PresupuestoView::generarPedidoCliente",0);
+    _depura("PresupuestoView::generarPedidoCliente",0);
 
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='"+DBvalue("refpresupuesto")+"'";
@@ -179,7 +179,7 @@ void PresupuestoView::generarPedidoCliente() {
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
-	delete cur;
+        delete cur;
         return;
     }// end if
     delete cur;
@@ -215,9 +215,10 @@ void PresupuestoView::generarPedidoCliente() {
     /// Traspasamos las lineas del presupuesto a lineas del pedido.
     SDBRecord *linea;
     SDBRecord *linea2;
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for (int i = 0; i < listalineas->rowCount(); i++) {
+        linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
-            linea2 = bud->getlistalineas()->lista()->last();
+            linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea2->setDBvalue( "desclpedidocliente",linea->DBvalue("desclpresupuesto"));
             linea2->setDBvalue( "cantlpedidocliente",linea->DBvalue("cantlpresupuesto"));
             linea2->setDBvalue( "pvplpedidocliente",linea->DBvalue("pvplpresupuesto"));
@@ -232,10 +233,11 @@ void PresupuestoView::generarPedidoCliente() {
 
     /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
     SDBRecord *linea1;
-    SDBRecord * linea3;
-    for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+    SDBRecord *linea3;
+    for (int i = 0; i < listadescuentos->rowCount(); i++) {
+	linea1 = listadescuentos->lineaat(i);
         if (linea1->DBvalue( "proporciondpresupuesto") != "") {
-            linea3 = bud->getlistadescuentos()->lista()->last();
+            linea3 = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount()-1);
             linea3->setDBvalue( "conceptdpedidocliente",linea1->DBvalue("conceptdpresupuesto"));
             linea3->setDBvalue( "proporciondpedidocliente",linea1->DBvalue("proporciondpresupuesto"));
             bud->getlistadescuentos()->nuevoRegistro();

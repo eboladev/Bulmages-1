@@ -204,7 +204,8 @@ void PedidoCliente::imprimirPedidoCliente() {
     int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
 
     SDBRecord *linea;
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpedidocliente").ascii()) * Fixed(linea->DBvalue("pvplpedidocliente").ascii());
         basesimp[linea->DBvalue("ivalpedidocliente")] = basesimp[linea->DBvalue("ivalpedidocliente")] + base - base * Fixed(linea->DBvalue("descuentolpedidocliente").ascii()) /100;
         fitxersortidatxt += "<tr>\n";
@@ -235,14 +236,15 @@ void PedidoCliente::imprimirPedidoCliente() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->lista()->first()) {
+    if (listadescuentos->rowCount()) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>Descuento</td>\n";
         fitxersortidatxt += "	<td>Porcentaje</td>\n";
         fitxersortidatxt += "	<td>Total</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
+            linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpedidocliente").ascii());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "	<td>"+linea1->DBvalue("conceptdpedidocliente")+"</td>\n";
@@ -310,7 +312,8 @@ void PedidoCliente::calculaypintatotales() {
     /// Impresi� de los contenidos
     QString l;
     SDBRecord *linea;
-    for ( linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next() ) {
+    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+	linea = listalineas->lineaat(i);
         Fixed cant(linea->DBvalue("cantlpedidocliente").ascii());
         Fixed pvpund(linea->DBvalue("pvplpedidocliente").ascii());
         Fixed desc1(linea->DBvalue("descuentolpedidocliente").ascii());
@@ -328,8 +331,9 @@ void PedidoCliente::calculaypintatotales() {
     /// Impresi� de los descuentos
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->lista()->first()) {
-        for ( linea1 = listadescuentos->lista()->first(); linea1; linea1 = listadescuentos->lista()->next() ) {
+    if (listadescuentos->rowCount()) {
+	for ( int i = 0; i < listadescuentos->rowCount() ; ++i) {
+		linea1 = listadescuentos->lineaat(i);
             Fixed propor(linea1->DBvalue("proporciondpedidocliente").ascii());
             porcentt = porcentt + propor;
         }// end for

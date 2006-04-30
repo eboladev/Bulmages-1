@@ -129,7 +129,7 @@ void AlbaranProveedorView::generarFactura()  {
     bud->setreffacturap(DBvalue("refalbaranp"));
     bud->setidproveedor(DBvalue("idproveedor"));
     SDBRecord *linea, *linea1;
-    for (linea = listalineas->lista()->first(); linea; linea = listalineas->lista()->next()) {
+    for ( int i  = 0; i < listalineas->rowCount(); ++i) {
         linea1 = bud->getlistalineas()->newSDBRecord();
         linea->setDBvalue("desclfacturap",linea->DBvalue("desclalbaranp"));
         linea->setDBvalue("cantlfacturap",linea->DBvalue("cantlalbaranp"));
