@@ -348,8 +348,6 @@ void Factura::calculaypintatotales() {
         basei = basei + it.data();
     }// end for
 
-
-    /// Impresi� de los descuentos
     /// Impresi� de los descuentos
     Fixed porcentt("0.00");
     SDBRecord *linea1;
@@ -360,7 +358,6 @@ void Factura::calculaypintatotales() {
             porcentt = porcentt + propor;
         }// end for
     }// end if
-
 
     Fixed totbaseimp("0.00");
     Fixed parbaseimp("0.00");

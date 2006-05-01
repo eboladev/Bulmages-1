@@ -64,7 +64,7 @@ ListAlmacenView::~ListAlmacenView() {
 ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("almacen");
     setDBCampoId("idalmacen");
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBDupPrimaryKey, SHeader::DBNoView, "idalmacen");
+    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "idalmacen");
     addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "codigoalmacen");
     addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "nomalmacen");
 	setinsercion(TRUE);

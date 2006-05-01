@@ -110,6 +110,7 @@ using namespace std;
 #define coma "'"
 
 CobroView::CobroView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) , Cobro(comp) ,dialogChanges(this) {
+	_depura("CobroView::CobroView",0);
 	setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_cliente->setcompany(comp);

@@ -260,21 +260,14 @@ void AlbaranClienteView::agregarFactura() {
 
 
 int AlbaranClienteView::cargar(QString id)  {
-    _depura("AlbaranClienteView::cargar",2);
-
-    _depura("    AlbaranCliente::cargar(id);",2);
+    _depura("AlbaranClienteView::cargar",0);
     AlbaranCliente::cargar(id);
-
-    _depura("setCaption",2);
     setCaption(tr("Albaran a cliente  ") + DBvalue("refalbaran"));
-
-    _depura("meteWindow",2);
     if (companyact->meteWindow(caption(), this))
         return -1;
 
-    _depura("dialogChanges_cargaInicial",2);
     dialogChanges_cargaInicial();
-    _depura("AlbaranClienteView::cargar",2);
+    _depura("AlbaranClienteView::cargar",0);
 
     return 0;
 }

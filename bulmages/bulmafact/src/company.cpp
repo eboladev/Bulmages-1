@@ -250,9 +250,9 @@ CobroView * company::newCobroView() {
 void company::s_newCobroView() {
 	_depura("company::s_newCobroView",0);
     CobroView *bud = newCobroView();
-    m_pWorkspace->addWindow(bud);
-    bud->pintar();
-    bud->show();
+//    m_pWorkspace->addWindow(bud);
+//    bud->pintar();
+    bud->exec();
 }
 
 

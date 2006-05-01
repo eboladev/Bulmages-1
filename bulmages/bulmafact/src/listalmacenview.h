@@ -37,18 +37,19 @@
 class company;
 
 class ListAlmacenSubForm : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
 public:
-	ListAlmacenSubForm(QWidget *parent = 0, const char *name = 0);
-	~ListAlmacenSubForm() {};
+    ListAlmacenSubForm(QWidget *parent = 0, const char *name = 0);
+    ~ListAlmacenSubForm() {}
+    ;
 
 public slots:
-	virtual void cargar() {
-    _depura("ListAlmacenSubForm::cargar\n",0);
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
-	SubForm2::cargar(cur);
-    delete cur;
-};
+    virtual void cargar() {
+        _depura("ListAlmacenSubForm::cargar\n",0);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
+        SubForm2::cargar(cur);
+        delete cur;
+    };
 };
 
 
@@ -58,22 +59,21 @@ public slots:
 #include "ui_listalmacenbase.h"
 
 
-class ListAlmacenView : public QDialog, public Ui_ListAlmacenBase
-{
-	Q_OBJECT
+class ListAlmacenView : public QDialog, public Ui_ListAlmacenBase {
+    Q_OBJECT
 
 public:
-	company *companyact;
+    company *companyact;
 
 public:
-	ListAlmacenView(company *comp , QWidget *parent, const char *name="");
-	~ListAlmacenView();
+    ListAlmacenView(company *comp , QWidget *parent, const char *name="");
+    ~ListAlmacenView();
 public slots:
 
-	virtual void on_mui_aceptar_clicked() {
-		mui_listado->guardar();
-		close();
-	};
+    virtual void on_mui_aceptar_clicked() {
+        mui_listado->guardar();
+        close();
+    };
 };
 
 #endif

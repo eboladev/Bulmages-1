@@ -332,7 +332,8 @@ int SubForm2::guardar() {
     SDBRecord *rec;
     int i=0;
     int error=0;
-    for(rec=m_lista.at(i++); i<m_lista.count() ;rec=m_lista.at(i++)) {
+    for (int j=0; j < rowCount()-1; ++j) {
+	rec = lineaat(j);
         rec->refresh();
         error = rec->guardar();
         if (error)
@@ -340,7 +341,7 @@ int SubForm2::guardar() {
     }// end for
 
     if(!m_insercion) {
-        rec = m_lista.at(m_lista.count()-1);
+        rec = lineaat(rowCount()-1);
         error = rec->guardar();
     }// end if
     _depura("END SubForm2::guardar",0);
