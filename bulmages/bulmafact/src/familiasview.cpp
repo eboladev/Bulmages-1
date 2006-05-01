@@ -45,8 +45,7 @@ familiasview::familiasview(company *comp, QWidget *parent, const char *name) : Q
     m_idfamilia="";
     setModoEdicion();
     pintar();
-}// end familiasview
-
+}
 
 familiasview::~familiasview() {}
 
@@ -98,18 +97,18 @@ void familiasview::pintar() {
     m_idfamilia="";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-}// end pintar
+}
 
 
 QString familiasview::codigoCompletoFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     return it->text(COL_CODCOMPLETOFAMILIA);
-};
+}
 
 QString familiasview::idFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     return it->text(COL_IDFAMILIA);
-};
+}
 
 
 QString familiasview::nombreFamilia() {
@@ -127,7 +126,7 @@ void familiasview::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
         m_idfamilia = it->text(COL_IDFAMILIA);
         done(1);
     }// end if
-}// end seleccionado
+}
 
 
 /**
@@ -135,23 +134,21 @@ void familiasview::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
   * Lo que hacemos es mostar el elemento
   * Si el anterior ha sido modificado pedimos para actuar en consecuencia.
   */
-void familiasview::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * ) {
-    QString idfamiliaold = current->text(COL_IDFAMILIA);
-    if (idfamiliaold != "") {
-        // Si usamos el trataModificado peta porque si se guarda se sobreescribe el puntero it.
+void familiasview::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem *previous ) {
+    QString idfamiliaold = "";
+    if (previous)
+        m_idfamilia = previous->text(COL_IDFAMILIA);
+    if (m_idfamilia != "") {
         trataModificado();
-        m_idfamilia = idfamiliaold;
-        /*
-            QList<QTreeWidgetItem *> listit =  m_listFamilias->findItems(m_idfamilia,Qt::MatchExactly, COL_IDFAMILIA);
-            QTreeWidgetItem *it = listit.first();
-        */
-        mostrarplantilla();
+	pintar(previous);
     }// end if
-}// end seleccionado
+    m_idfamilia = current->text(COL_IDFAMILIA);
+    mostrarplantilla();
+}
 
 
 void familiasview::mostrarplantilla() {
-    fprintf(stderr,"mostramos la plantilla\n");
+    _depura("mostramos la plantilla\n",0);
     QString query;
     query= "SELECT * from familia WHERE idfamilia="+m_idfamilia;
     cursor2 *cursorfamilia = companyact->cargacursor(query);
@@ -164,8 +161,8 @@ void familiasview::mostrarplantilla() {
     delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr,"Terminamos la ejecución de familiasview::mostrarplantilla\n");
-}// end mostrarplantilla
+    _depura("Terminamos la ejecución de familiasview::mostrarplantilla\n",0);
+}
 
 
 /** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
@@ -174,7 +171,7 @@ void familiasview::mostrarplantilla() {
 void familiasview::close() {
     trataModificado();
     done(0);
-}// end close
+}
 
 
 bool familiasview::trataModificado() {
@@ -188,7 +185,7 @@ bool familiasview::trataModificado() {
         return (TRUE);
     }// end if
     return(FALSE);
-}// end trataModificado
+}
 
 
 /** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se est�editando.
@@ -203,10 +200,14 @@ void familiasview::on_mui_guardar_clicked() {
     int error = companyact->ejecuta(query);
     if (error)
         return;
-    QTreeWidgetItem *it = m_listFamilias->currentItem();
+    dialogChanges_cargaInicial();
+    _depura("END familiasview::on_mui_guardar_clicked",0);
+}
 
+void familiasview::pintar(QTreeWidgetItem *it) {
+	QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
-        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia="+m_idfamilia);
+        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia="+idfamilia);
         if (!cursoraux1->eof()) {
             it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
             it->setText(COL_CODFAMILIA,cursoraux1->valor("codigofamilia"));
@@ -216,8 +217,6 @@ void familiasview::on_mui_guardar_clicked() {
         }// end if
         delete cursoraux1;
     }// end if
-    dialogChanges_cargaInicial();
-    _depura("END familiasview::on_mui_guardar_clicked",0);
 }
 
 
@@ -245,7 +244,7 @@ void familiasview::on_mui_crear_clicked() {
     m_idfamilia = cur->valor("idfamilia");
     delete cur;
     pintar();
-}// end s_newTipoIVA
+}
 
 /** SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
   * Lo que hace es que se hace un update de todos los campos
@@ -257,7 +256,7 @@ void familiasview::on_mui_borrar_clicked() {
     if (error)
         return;
     pintar();
-}// end s_saveTipoIVA
+}
 
 
 void familiasview::on_mui_imprimir_clicked() {
@@ -304,7 +303,7 @@ void familiasview::on_mui_imprimir_clicked() {
     system("trml2pdf.py /tmp/familias.rml > /tmp/familias.pdf");
     system("kpdf /tmp/familias.pdf &");
 
-}// end imprimir
+}
 
 
 void familiasview::on_mui_aceptar_clicked() {

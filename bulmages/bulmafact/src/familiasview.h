@@ -53,6 +53,7 @@ public:
     QString codigoCompletoFamilia();
     QString idFamilia();
     QString nombreFamilia();
+    void pintar(QTreeWidgetItem *);
 
 public slots:
     virtual void pintar();
