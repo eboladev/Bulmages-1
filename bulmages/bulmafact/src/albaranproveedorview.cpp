@@ -166,7 +166,7 @@ int AlbaranProveedorView::cargar(QString id)  {
     if (companyact->meteWindow(caption(), this)) {
         return -1;
     }// end if
-    
+    dialogChanges_cargaInicial();
     return 0;
 }
 
