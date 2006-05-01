@@ -101,13 +101,6 @@
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
    </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>Venta&amp;na</string>
-    </property>
-    <addaction name="actionVentana_Completa" />
-    <addaction name="actionIndexador_2" />
-   </widget>
    <widget class="QMenu" name="menuAcerca_de" >
     <property name="title" >
      <string>A&amp;yuda</string>
@@ -115,6 +108,13 @@
     <addaction name="actionDocumentacion" />
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
+   </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>Venta&amp;na</string>
+    </property>
+    <addaction name="actionVentana_Completa" />
+    <addaction name="actionIndexador_2" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -465,6 +465,9 @@
    <property name="text" >
     <string>Ventana &amp;completa</string>
    </property>
+   <property name="shortcut" >
+    <string>f11</string>
+   </property>
   </action>
   <action name="actionIndexador" >
    <property name="text" >
@@ -542,7 +545,7 @@
     <string>&amp;Indexador</string>
    </property>
    <property name="shortcut" >
-    <string>f11</string>
+    <string>ctrl+i</string>
    </property>
   </action>
  </widget>
