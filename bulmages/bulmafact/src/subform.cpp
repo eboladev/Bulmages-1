@@ -417,6 +417,8 @@ void SubForm2::cargaconfig() {
                 setColumnWidth(i, 2.5);
         }// end for
         file.close();
+    } else {
+	resizeColumnsToContents();
     }// end if
     _depura("END SubForm2::cargaconfig",0);
 }
