@@ -56,6 +56,7 @@ dialogChanges(this)  {
     setListLinAlbaranProveedor(subform2);
     setListDescuentoAlbaranProveedor(m_descuentos);
     inicialize();
+    dialogChanges_cargaInicial();
     if (companyact != NULL)
         companyact->meteWindow(caption(), this);
     _depura("END AlbaranProveedorView::AlbaranProveedorView", 0);
@@ -165,7 +166,7 @@ int AlbaranProveedorView::cargar(QString id)  {
     if (companyact->meteWindow(caption(), this)) {
         return -1;
     }// end if
-    dialogChanges_cargaInicial();
+    
     return 0;
 }
 
