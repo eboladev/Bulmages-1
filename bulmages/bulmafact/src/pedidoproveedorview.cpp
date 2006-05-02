@@ -56,6 +56,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
     setListLinPedidoProveedor(subform3);
     setListDescuentoPedidoProveedor(m_descuentos);
     inicialize();
+    dialogChanges_cargaInicial();
     comp->meteWindow(caption(),this);
     _depura("Fin de la inicializacion de PedidoProveedor\n");
 }
@@ -110,7 +111,9 @@ int PedidoProveedorView::guardar() {
     settelpedidoproveedor(m_telpedidoproveedor->text());
     setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked()?"TRUE":"FALSE");
     int error = PedidoProveedor::guardar();
+    if (error == 0) {
     dialogChanges_cargaInicial();
+    } //endif
     return error;
 }
 
