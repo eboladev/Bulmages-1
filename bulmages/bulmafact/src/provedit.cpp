@@ -99,7 +99,6 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
     m_listfacturasprov->hideBusqueda();
 
     m_listpagosprov->setcompany(m_companyact);
-    m_listpagosprov->hideConfiguracion();
     m_listpagosprov->hideBusqueda();
 
     if (m_companyact->meteWindow(caption(),this))

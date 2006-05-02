@@ -24,12 +24,23 @@
 
 #include <QLineEdit>
 
-// Listado de presupuestos.
-#include "ui_pagoslistbase.h"
+// Listado de pagos.
+
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "funcaux.h"
+#include "subform2bf.h"
 
+
+class PagosListSubForm : public SubForm2Bf {
+Q_OBJECT
+public:
+	PagosListSubForm(QWidget *parent = 0, const char *name = 0);
+	~PagosListSubForm() {};
+};
+
+
+#include "ui_pagoslistbase.h"
 
 class PagosList : public QWidget, private Ui_PagosListBase
 {
@@ -41,7 +52,6 @@ private:
 	/// m_modo == 1 es modo selector.
 	int m_modo;
 	QString mdb_idpago;
-	void inicializar();
 
 public:
 	PagosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
@@ -74,14 +84,6 @@ public:
 	{
 		m_busqueda->show();
 	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
 	void imprimir();
 	void meteWindow(QString nom, QObject *obj)
 	{
@@ -95,9 +97,6 @@ public:
 		m_proveedor->setidproveedor(val);
 	};
 	QString generaFiltro();
-	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
-	void guardaconfig();
-	void cargaconfig();
 
 public slots:
 	virtual void on_mui_list_cellDoubleClicked(int , int);
@@ -109,13 +108,14 @@ public slots:
 	{
 		imprimir();
 	};
-	virtual void s_filtrar()
-	{
-		inicializar();
-	};
 
 	virtual void on_mui_actualizar_clicked() {presentar();};
-	virtual void s_configurar();
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
+	};
 };
 
 #endif

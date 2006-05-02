@@ -22,7 +22,7 @@
 #include <QKeyEvent>
 #include <QEvent>
 #include <QFile>
-
+#include <QHeaderView>
 
 #include "subform3.h"
 
@@ -45,6 +45,14 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     headers << "Orden" << "Nombre" << "Nombre Campo" << "Visible";
     mui_listcolumnas->setColumnCount(4);
     mui_listcolumnas->setHorizontalHeaderLabels (headers);
+    mui_listcolumnas->setShowGrid(FALSE);
+    mui_listcolumnas->setColumnWidth(0,25);
+    mui_listcolumnas->setColumnWidth(1,100);
+    mui_listcolumnas->setColumnWidth(2,175);
+    mui_listcolumnas->setColumnWidth(3,0);
+    mui_listcolumnas->setSelectionBehavior ( QAbstractItemView::SelectRows );
+    mui_listcolumnas->verticalHeader()->hide();
+
 
     /// Ocultamos la configuraciónAlbaranCliente
     hideConfig();
@@ -194,7 +202,8 @@ int SubForm3::cargar(cursor2 *cur) {
 
     /// Ordenamos la tabla.
     ordenar();
-
+    /// configuramos que registros son visibles y que registros no lo son.
+    on_mui_confcol_clicked();
     return 0;
 }
 
@@ -476,7 +485,6 @@ QString SubForm3::imprimir() {
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
         if (mui_listcolumnas->item(i,0)->checkState() == Qt::Checked)
             fitxersortidatxt += "   <td>"+XMLProtect(mui_listcolumnas->item(i,0)->text())+"</td>\n";
-
     }// end for
     fitxersortidatxt += "</tr>\n";
 

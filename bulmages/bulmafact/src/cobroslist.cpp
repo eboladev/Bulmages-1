@@ -89,7 +89,7 @@ CobrosList::~CobrosList() {
 void CobrosList::presentar() {
     _depura("CobrosList::presenta()\n",0);
     if (m_companyact != NULL ) {
-        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro WHERE 1=1"+generaFiltro());
+        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1"+generaFiltro());
         mui_list->cargar(cur); 
 
         /// Hacemos el calculo del total.
@@ -249,12 +249,18 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent, const char *) : SubForm2Bf
     setDBCampoId("idcobro");
     addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idcobro");
     addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idcliente");
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomproveedor");
+    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cifproveedor");
+    addSHeader("telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telproveedor");
+    addSHeader("mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "emailproveedor");
     addSHeader("fechacobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechacobro");
     addSHeader("cantcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cantcobro");
     addSHeader("refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "refcobro");
     addSHeader("previsioncobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "previsioncobro");
     addSHeader("comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentcobro");
     addSHeader("idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idtrabajador");
+    addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomtrabajador");
+    addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "apellidostrabajador");
     setinsercion(FALSE);
 }
 

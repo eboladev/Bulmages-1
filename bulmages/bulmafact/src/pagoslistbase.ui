@@ -431,159 +431,7 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>2</number>
-      </property>
-      <property name="spacing" >
-       <number>2</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idpago" >
-          <property name="text" >
-           <string>&amp;Id. pago</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idproveedor" >
-          <property name="text" >
-           <string>I&amp;d. proveedor</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+D</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_fechapago" >
-          <property name="text" >
-           <string>&amp;Fecha</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+F</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_cantpago" >
-          <property name="text" >
-           <string>&amp;Cantidad</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+C</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_refpago" >
-          <property name="text" >
-           <string>Referencia</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_previsionpago" >
-          <property name="text" >
-           <string>Prevision</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_comentpago" >
-          <property name="text" >
-           <string>Come&amp;ntarios</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+N</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTableWidget2" name="mui_list" >
-     <property name="contextMenuPolicy" >
-      <enum>Qt::CustomContextMenu</enum>
-     </property>
-     <property name="alternatingRowColors" >
-      <bool>true</bool>
-     </property>
-     <property name="selectionBehavior" >
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="rowCount" >
-      <number>3</number>
-     </property>
-     <property name="columnCount" >
-      <number>10</number>
-     </property>
-     <property name="sortingEnabled" >
-      <bool>true</bool>
-     </property>
-     <row/>
-     <row/>
-     <row/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-     <column/>
-    </widget>
+    <widget class="PagosListSubForm" name="mui_list" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -645,24 +493,24 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>QTableWidget2</class>
-   <extends>QTableWidget</extends>
-   <header>../../../bulmalib/qtable2.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProveedor</class>
    <extends></extends>
    <header>busquedaproveedor.h</header>
    <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>PagosListSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>pagoslist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -690,22 +538,6 @@
     <hint type="destinationlabel" >
      <x>30</x>
      <y>49</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>176</x>
-     <y>32</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>4</x>
-     <y>133</y>
     </hint>
    </hints>
   </connection>
