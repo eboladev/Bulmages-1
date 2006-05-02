@@ -26,162 +26,6 @@
 #include "funcaux.h"
 #include "plugins.h"
 
-#define COL_REFFACTURA 0
-#define COL_IDFACTURA 1
-#define COL_CODIGOALMACEN 2
-#define COL_NUMFACTURA 3
-#define COL_NOMCLIENTE 4
-#define COL_FFACTURA 5
-#define COL_CONTACTFACTURA 6
-#define COL_TELFACTURA 7
-#define COL_COMENTFACTURA 8
-#define COL_IDUSUARI 9
-#define COL_IDCLIENTE 10
-#define COL_IDALMACEN 11
-#define COL_IDSERIE_FACTURA 12
-#define COL_TOTALFACTURA 13
-#define COL_TOTALBASEIMP 14
-#define COL_TOTALIMPUESTOS 15
-
-void FacturasList::guardaconfig() {
-    QString aux = "";
-    mver_reffactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_idfactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
-    mver_numfactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_ffactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_contactfactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_telfactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_comentfactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_idusuari->isChecked() ? aux += "1,":aux+="0,";
-    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
-    mver_idserie_factura->isChecked() ? aux += "1,":aux+="0,";
-    mver_totalfactura->isChecked() ? aux += "1,":aux+="0,";
-    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
-    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
-
-    QFile file( confpr->valor(CONF_DIR_USER)+"conffacturaslist.cfn" );
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
-        stream << aux << "\n";
-        file.close();
-    }// end if
-}// end guardaconfig()
-
-void FacturasList::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"conffacturaslist.cfn" );
-    QString line;
-    if ( file.open( QIODevice::ReadOnly ) ) {
-        QTextStream stream( &file );
-        line = stream.readLine(); // line of text excluding '\n'
-        file.close();
-    } else
-        return;
-
-    mver_reffactura->setChecked(line.at(0)=='1');
-    mver_idfactura->setChecked(line.at(2)=='1');
-    mver_codigoalmacen->setChecked(line.at(4)=='1');
-    mver_numfactura->setChecked(line.at(6)=='1');
-    mver_nomcliente->setChecked(line.at(8)=='1');
-    mver_ffactura->setChecked(line.at(10)=='1');
-    mver_contactfactura->setChecked(line.at(12)=='1');
-    mver_telfactura->setChecked(line.at(14)=='1');
-    mver_comentfactura->setChecked(line.at(16)=='1');
-    mver_idusuari->setChecked(line.at(18)=='1');
-    mver_idcliente->setChecked(line.at(20)=='1');
-    mver_idalmacen->setChecked(line.at(22)=='1');
-    mver_idserie_factura->setChecked(line.at(24)=='1');
-    mver_totalfactura->setChecked(line.at(26)=='1');
-    mver_totalbaseimp->setChecked(line.at(28)=='1');
-    mver_totalimpuestos->setChecked(line.at(30)=='1');
-}// end cargaconfig
-
-
-void FacturasList::configurar() {
-    if(mver_reffactura->isChecked() )
-        mui_list->showColumn(COL_REFFACTURA);
-    else
-        mui_list->hideColumn(COL_REFFACTURA);
-
-    if(mver_idfactura->isChecked() )
-        mui_list->showColumn(COL_IDFACTURA);
-    else
-        mui_list->hideColumn(COL_IDFACTURA);
-
-    if(mver_codigoalmacen->isChecked() )
-        mui_list->showColumn(COL_CODIGOALMACEN);
-    else
-        mui_list->hideColumn(COL_CODIGOALMACEN);
-
-    if(mver_numfactura->isChecked() )
-        mui_list->showColumn(COL_NUMFACTURA);
-    else
-        mui_list->hideColumn(COL_NUMFACTURA);
-
-    if(mver_nomcliente->isChecked() )
-        mui_list->showColumn(COL_NOMCLIENTE);
-    else
-        mui_list->hideColumn(COL_NOMCLIENTE);
-
-    if(mver_ffactura->isChecked() )
-        mui_list->showColumn(COL_FFACTURA);
-    else
-        mui_list->hideColumn(COL_FFACTURA);
-
-    if(mver_contactfactura->isChecked() )
-        mui_list->showColumn(COL_CONTACTFACTURA);
-    else
-        mui_list->hideColumn(COL_CONTACTFACTURA);
-
-    if(mver_telfactura->isChecked() )
-        mui_list->showColumn(COL_TELFACTURA);
-    else
-        mui_list->hideColumn(COL_TELFACTURA);
-
-    if(mver_comentfactura->isChecked() )
-        mui_list->showColumn(COL_COMENTFACTURA);
-    else
-        mui_list->hideColumn(COL_COMENTFACTURA);
-
-    if(mver_idusuari->isChecked() )
-        mui_list->showColumn(COL_IDUSUARI);
-    else
-        mui_list->hideColumn(COL_IDUSUARI);
-
-    if(mver_idcliente->isChecked() )
-        mui_list->showColumn(COL_IDCLIENTE);
-    else
-        mui_list->hideColumn(COL_IDCLIENTE);
-
-    if(mver_idalmacen->isChecked() )
-        mui_list->showColumn(COL_IDALMACEN);
-    else
-        mui_list->hideColumn(COL_IDALMACEN);
-
-    if(mver_idserie_factura->isChecked() )
-        mui_list->showColumn(COL_IDSERIE_FACTURA);
-    else
-        mui_list->hideColumn(COL_IDSERIE_FACTURA);
-
-    if(mver_totalfactura->isChecked() )
-        mui_list->showColumn(COL_TOTALFACTURA);
-    else
-        mui_list->hideColumn(COL_TOTALFACTURA);
-
-    if(mver_totalbaseimp->isChecked() )
-        mui_list->showColumn(COL_TOTALBASEIMP);
-    else
-        mui_list->hideColumn(COL_TOTALBASEIMP);
-
-    if(mver_totalimpuestos->isChecked() )
-        mui_list->showColumn(COL_TOTALIMPUESTOS);
-    else
-        mui_list->hideColumn(COL_TOTALIMPUESTOS);
-
-
-}// end s_configurar
 
 FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag,edmode editmodo)
         : QWidget(parent, name, flag) {
@@ -192,8 +36,6 @@ FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag,ed
     if (m_modo == EditMode)
         meteWindow(caption(),this);
     hideBusqueda();
-    hideConfiguracion();
-    cargaconfig();
 }// end providerslist
 
 FacturasList::FacturasList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag,edmode editmodo)
@@ -203,22 +45,18 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name, Qt:
     m_cliente->setcompany(m_companyact);
     m_articulo->setcompany(m_companyact);
     mui_list->setcompany(m_companyact);
-
-    cargaconfig();
     presenta();
     m_modo=editmodo;
     mdb_idfactura="";
     if (m_modo == EditMode)
         meteWindow(caption(),this);
     hideBusqueda();
-    hideConfiguracion();
 }
 
 
 FacturasList::~FacturasList() {
     if (m_modo == EditMode)
         m_companyact->sacaWindow(this);
-    guardaconfig();
 }
 
 
@@ -238,8 +76,6 @@ void FacturasList::presenta() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-
-	configurar();
     _depura("END FacturasList::presenta()",1);
 }// end presenta
 
@@ -309,10 +145,8 @@ void FacturasList::on_mui_imprimir_clicked() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
-
     archivo = "copy "+archivo+" "+archivod;
 #else
-
     archivo = "cp "+archivo+" "+archivod;
 #endif
 
@@ -321,10 +155,8 @@ void FacturasList::on_mui_imprimir_clicked() {
     /// Copiamos el logo
 
 #ifdef WINDOWS
-
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
-
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 
@@ -339,89 +171,8 @@ void FacturasList::on_mui_imprimir_clicked() {
     QString fitxersortidatxt;
     // L�ea de totales del presupuesto
 
-    //    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
-
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-    if(mver_reffactura->isChecked() )
-        fitxersortidatxt += "	<td>Referencia</td>";
-    if(mver_idfactura->isChecked() )
-        fitxersortidatxt += "	<td>Id. Factura</td>";
-    if(mver_codigoalmacen->isChecked() )
-        fitxersortidatxt += "	<td>Almacen</td>";
-    if(mver_numfactura->isChecked() )
-        fitxersortidatxt += "	<td>Num</td>";
-    if(mver_nomcliente->isChecked() )
-        fitxersortidatxt += "	<td>Cliente</td>";
-    if(mver_ffactura->isChecked() )
-        fitxersortidatxt += "	<td>Fecha</td>";
-    if(mver_contactfactura->isChecked() )
-        fitxersortidatxt += "	<td>Contacto</td>";
-    if(mver_telfactura->isChecked() )
-        fitxersortidatxt += "	<td>Tel</td>";
-    if(mver_comentfactura->isChecked() )
-        fitxersortidatxt += "	<td>Coment</td>";
-    if(mver_idusuari->isChecked() )
-        fitxersortidatxt += "	<td>Id. Usuario</td>";
-    if(mver_idcliente->isChecked() )
-        fitxersortidatxt += "	<td>Id. Cliente</td>";
-    if(mver_idalmacen->isChecked() )
-        fitxersortidatxt += "	<td>Id. Almacen</td>";
-    if(mver_idserie_factura->isChecked() )
-        fitxersortidatxt += "	<td>Serie</td>";
-    if(mver_totalfactura->isChecked() )
-        fitxersortidatxt += "	<td>Total</td>";
-    if(mver_totalbaseimp->isChecked() )
-        fitxersortidatxt += "	<td>Base</td>";
-    if(mver_totalimpuestos->isChecked() )
-        fitxersortidatxt += "	<td>Total Impuestos</td>";
-
-    fitxersortidatxt += "</tr>";
-
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  "+generaFiltro());
-    while(!cur->eof()) {
-        fitxersortidatxt += "<tr>";
-        if(mver_reffactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("reffactura"))+"</td>";
-        if(mver_idfactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idfactura"))+"</td>";
-        if(mver_codigoalmacen->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoalmacen"))+"</td>";
-        if(mver_numfactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numfactura"))+"</td>";
-        if(mver_nomcliente->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomcliente"))+"</td>";
-        if(mver_ffactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("ffactura"))+"</td>";
-        if(mver_contactfactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("contactfactura"))+"</td>";
-        if(mver_telfactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("telfactura"))+"</td>";
-        if(mver_comentfactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentfactura"))+"</td>";
-        if(mver_idusuari->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descfactura"))+"</td>";
-        if(mver_idcliente->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
-        if(mver_idalmacen->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
-        if(mver_idserie_factura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoserie_factura"))+"</td>";
-
-        /// Calculamos el total del presupuesto y lo presentamos.
-        cursor2 *cur1 = m_companyact->cargacursor("SELECT calctotalfactura("+cur->valor("idfactura")+") AS total, calcbimpfactura("+cur->valor("idfactura")+") AS base, calcimpuestosfactura("+cur->valor("idfactura")+") AS impuestos");
-        if(mver_totalfactura->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
-        if(mver_totalbaseimp->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("base"))+"</td>";
-        if(mver_totalimpuestos->isChecked() )
-            fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("impuestos"))+"</td>";
-        delete cur1;
-
-        fitxersortidatxt += "</tr>";
-        cur->siguienteregistro();
-    }// end if
-    delete cur;
+    fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
     buff.replace("[story]",fitxersortidatxt);
@@ -430,11 +181,10 @@ void FacturasList::on_mui_imprimir_clicked() {
         QTextStream stream( &file );
         stream << buff;
         file.close();
-    }
+    }// end if
 
     invocaPDF("facturas");
-}// end imprimir
-
+}
 
 
 

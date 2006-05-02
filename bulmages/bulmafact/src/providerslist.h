@@ -112,17 +112,6 @@ public:
 	{
 		m_busqueda->show();
 	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
-	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
-	void guardaconfig();
-	void cargaconfig();
 
 public slots:
 
@@ -137,9 +126,14 @@ public slots:
 	};
 	virtual void on_mui_exportar_clicked();
 	virtual void on_mui_importar_clicked();
-	virtual void s_configurar();
 	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
 		on_mui_editar_clicked();
+	};
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
 	};
 
 signals:

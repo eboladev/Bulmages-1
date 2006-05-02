@@ -102,12 +102,6 @@ public:
     void showBusqueda() {
         m_busqueda->show();
     };
-    void hideConfiguracion() {
-        m_configuracion->hide();
-    };
-    void showConfiguracion() {
-        m_configuracion->show();
-    };
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
     };
@@ -116,9 +110,6 @@ public:
     };
     QString generaFiltro();
 
-    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
-    void guardaconfig();
-    void cargaconfig();
     void presenta();
     void editar(int);
 
@@ -129,12 +120,17 @@ public slots:
     virtual void on_mui_actualizar_clicked() {
         presenta();
     }
-    virtual void configurar();
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newFacturaCli();
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
+	};
 signals:
     void selected(QString);
 };

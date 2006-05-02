@@ -439,234 +439,6 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>2</number>
-      </property>
-      <property name="spacing" >
-       <number>2</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_reffacturap" >
-          <property name="text" >
-           <string>Referencia</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idfacturap" >
-          <property name="text" >
-           <string>&amp;Id. factura</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_numfacturap" >
-          <property name="text" >
-           <string>&amp;Numero de factura</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+N</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_comentfacturap" >
-          <property name="text" >
-           <string>Co&amp;mentarios</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+M</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_nomcliente" >
-          <property name="text" >
-           <string>&amp;Proveedor</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+P</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_ffacturap" >
-          <property name="text" >
-           <string>&amp;Fecha</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+F</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_contactfacturap" >
-          <property name="text" >
-           <string>C&amp;ontacto</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+O</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_telfacturap" >
-          <property name="text" >
-           <string>&amp;Telefono</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+T</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_totalfacturaproveedor" >
-          <property name="text" >
-           <string>&amp;Total factura proveedor</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+T</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalimpuestos" >
-          <property name="text" >
-           <string>Total impuestos</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalbaseimp" >
-          <property name="text" >
-           <string>Total &amp;base imponible</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+B</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idcliente" >
-          <property name="text" >
-           <string>Id. cliente</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idusuari" >
-          <property name="text" >
-           <string>Id. &amp;usuario</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+U</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>201</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="FacturasProveedorListSubform" name="mui_list" />
    </item>
    <item>
@@ -729,6 +501,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends></extends>
+   <header>busquedaarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>FacturasProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>facturasplist.h</header>
@@ -756,13 +535,6 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends></extends>
-   <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -781,22 +553,6 @@
     <hint type="destinationlabel" >
      <x>160</x>
      <y>66</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>264</x>
-     <y>27</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>304</x>
-     <y>128</y>
     </hint>
    </hints>
   </connection>

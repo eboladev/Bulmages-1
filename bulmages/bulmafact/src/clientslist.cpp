@@ -18,76 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/*
--- El cliente siempre tiene la razón, bueno, o por lo menos eso cree.
---Codi: Clau artificial.
---Nom: Nom comercial o fiscal.
---Nom_alternatiu: Nom comercial o fiscal.
---CIF: Codi d'Identificación Fiscal.
---C_Banc: Compte Bancari.
---Adr: Adreça.
---Pobl: Població
---CProv: Codi de provincia (dos primers d�its del codi postal).
---sCP: Tres darrers dígits del codi postal.
---Telf: Teléfon.
---Fax: Fax.
---Email: eMail.
---Url: Url.
---Data_alta
---Data_Baixa
----Comentaris
-CREATE TABLE cliente (
-  idcliente serial PRIMARY KEY,
-  nomcliente character varying(100),
-  nomaltcliente character varying(300),
-  cifcliente character varying(200),
-  bancocliente character varying(35),
-  dircliente character varying(100),
-  poblcliente character varying(40),
-  cpcliente character varying(10),
-  telcliente character varying(20),
-  faxcliente character varying(20),
-  mailcliente character varying(100),
-  urlcliente character varying(150),
-  faltacliente date DEFAULT NOW(),
-  fbajacliente date,
-  comentcliente character varying(2000),
-  
-  idrecargo integer NOT NULL REFERENCES recargo(idrecargo)
-);
-*/
-
-#include "clientslist.h"
-#include "clienteview.h"
-#include "company.h"
-#include <QMessageBox>
-#include "qtable1.h"
-#include "funcaux.h"
 #include <QLineEdit>
-//Added by qt3to4:
 #include <QTextStream>
 #include "pgimportfiles.h"
 #include <Q3FileDialog>
 #include <QCheckBox>
+#include <QMessageBox>
 
-/*
-#define COL_IDCLIENTE 0
-#define COL_NOMCLIENTE 1
-#define COL_NOMALTCLIENTE 2
-#define COL_CIFCLIENTE 3
-#define COL_BANCOCLIENTE 4
-#define COL_DIRCLIENTE 5
-#define COL_POBLCLIENTE 6
-#define COL_CPCLIENTE 7
-#define COL_TELCLIENTE 8
-#define COL_FAXCLIENTE 9
-#define COL_MAILCLIENTE 10
-#define COL_URLCLIENTE 11
-#define COL_FALTACLIENTE 12
-#define COL_FBAJACLIENTE 13
-#define COL_COMENTCLIENTE 14
-*/
-
+#include "clientslist.h"
+#include "clienteview.h"
+#include "company.h"
+#include "qtable1.h"
+#include "funcaux.h"
 
 #define EDIT_MODE 0
 
@@ -118,13 +60,11 @@ ClientsList::~ClientsList() {
   * Hacemos la consulta a la base de datos y presentamos el listado.
   */
 void ClientsList::presenta() {
-	_depura("ClientsList::presenta",0);
+    _depura("ClientsList::presenta",0);
     cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
     mui_list->cargar(cur);
     delete cur;
-//    configurar();
-	_depura("END ClientsList::presenta",0);
-
+    _depura("END ClientsList::presenta",0);
 }
 
 
@@ -137,14 +77,13 @@ void ClientsList::editar(int  row) {
     mdb_nomcliente = mui_list->DBvalue("nomcliente",row);
     if (m_modo ==0 ) {
         ClienteView *prov = m_companyact->newClienteView();
-        if (prov->cargar(mdb_idcliente)) {
+        if (prov->cargar(mdb_idcliente))
             return;
-        }
+
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idcliente));
-        // close();
     }// end if
     _depura("END ClientsList::editar",0);
 }
@@ -157,7 +96,7 @@ void ClientsList::on_mui_editar_clicked() {
         return;
     }// end if
     editar(mui_list->currentRow());
-}// end editClient
+}
 
 
 
@@ -208,7 +147,6 @@ void ClientsList::on_mui_imprimir_clicked() {
     }// end if
 
     // Crea el pdf  y lo muestra.
-    _depura("Vamos a imprimir e listado de clientes",0);
     invocaPDF("clientes");
 }// end s_printClients
 
@@ -220,7 +158,7 @@ void ClientsList::on_mui_borrar_clicked() {
     if (error)
         return;
     presenta();
-}// end s_borrarCliente
+}
 
 
 void ClientsList::on_mui_exportar_clicked() {
@@ -231,7 +169,7 @@ void ClientsList::on_mui_exportar_clicked() {
     } else {
         _depura("ERROR AL ABRIR ARCHIVO\n",2);
     }// end if
-}//
+}
 
 
 void ClientsList::on_mui_importar_clicked() {
@@ -272,7 +210,7 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     addSHeader("fbajacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fbajacliente");
     addSHeader("comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentcliente");
     setinsercion(FALSE);
-};
+}
 
 
 

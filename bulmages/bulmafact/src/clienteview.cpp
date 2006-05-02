@@ -85,15 +85,10 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
 
     /// Inicializamos las pantallas auxiliares a esta
     m_listpresupuestos->setcompany(m_companyact);
-    m_listpresupuestos->hideConfiguracion();
     m_listpedidos->setcompany(m_companyact);
-    m_listpedidos->hideConfiguracion();
     m_listalbaranes->setcompany(m_companyact);
-    m_listalbaranes->hideConfiguracion();
     m_listfacturas->setcompany(m_companyact);
-    m_listfacturas->hideConfiguracion();
     m_listcobros->setcompany(m_companyact);
-    m_listcobros->hideConfiguracion();
 
     m_companyact->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
@@ -139,7 +134,6 @@ int ClienteView::cargar(QString idcliente) {
     m_listcobros->presentar();
 
     pintaCliente();
-//	_depura("Vamos a hacer una carga inicial para dialogchanges",2);
     dialogChanges_cargaInicial();
     _depura("ClienteView::cargar",0);
     return error;

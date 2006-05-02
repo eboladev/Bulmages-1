@@ -109,14 +109,6 @@ public:
 	{
 		m_busqueda->show();
 	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
 	void setidcliente(QString val)
 	{
 		m_cliente->setidcliente(val);
@@ -134,9 +126,6 @@ public:
 	};
 	QString generarFiltro();
 
-	/// Funciones que se encarga en guardar y cargar la configuracion del listado.
-	void guardaconfig();
-	void cargaconfig();
 	void editar(int);
 
 public slots:
@@ -148,7 +137,6 @@ public slots:
 		m_companyact->s_newAlbaranClienteView();
 	};
 	virtual void on_mui_borrar_clicked();
-	virtual void configurar();
 	virtual void on_mui_editar_clicked();
 	virtual void on_mui_imprimir_clicked()
 	{
@@ -158,7 +146,12 @@ public slots:
 	{
 		presenta();
 	};
-
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
+	};
 signals:
 	void selected(QString);
 };

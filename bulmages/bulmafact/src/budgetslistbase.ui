@@ -429,212 +429,6 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>3</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idpresupuesto" >
-          <property name="text" >
-           <string>&amp;Id. presupuesto</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_codigoalmacen" >
-          <property name="text" >
-           <string>&amp;Codigo almacen</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+C</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_refpresupuesto" >
-          <property name="text" >
-           <string>Referencia presupuesto</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_nomcliente" >
-          <property name="text" >
-           <string>&amp;Nombre de cliente</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_descpresupuesto" >
-          <property name="text" >
-           <string>&amp;Descripcion</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_fechapresupuesto" >
-          <property name="text" >
-           <string>&amp;Fecha</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_vencpresupuesto" >
-          <property name="text" >
-           <string>Vencimiento</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_contactpresupuesto" >
-          <property name="text" >
-           <string>C&amp;ontacto</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_numpresupuesto" >
-          <property name="text" >
-           <string>Numero de presupuesto</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_telpresupuesto" >
-          <property name="text" >
-           <string>&amp;Telefono</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idcliente" >
-          <property name="text" >
-           <string>Id. cliente</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idusuario" >
-          <property name="text" >
-           <string>Id. &amp;usuario</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idalmacen" >
-          <property name="text" >
-           <string>Id. almacen</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalpresupuesto" >
-          <property name="text" >
-           <string>Total presupuesto</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalbaseimp" >
-          <property name="text" >
-           <string>Total &amp;base imponible</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+B</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalimpuestos" >
-          <property name="text" >
-           <string>Total impuestos</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="PresupuestoListSubForm" name="mui_list" />
    </item>
    <item>
@@ -697,10 +491,10 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Frame</class>
+   <class>BusquedaCliente</class>
    <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
+   <header>busquedacliente.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -718,16 +512,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaArticulo</class>
+   <class>Q3Frame</class>
    <extends></extends>
-   <header>busquedaarticulo.h</header>
-   <container>0</container>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>BusquedaArticulo</class>
    <extends></extends>
-   <header>busquedacliente.h</header>
+   <header>busquedaarticulo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -749,22 +543,6 @@
     <hint type="destinationlabel" >
      <x>57</x>
      <y>169</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>281</x>
-     <y>78</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>173</x>
-     <y>254</y>
     </hint>
    </hints>
   </connection>

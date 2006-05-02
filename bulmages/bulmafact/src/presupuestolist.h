@@ -102,12 +102,6 @@ public:
     void showBusqueda() {
         m_busqueda->show();
     };
-    void hideConfiguracion() {
-        m_configuracion->hide();
-    };
-    void showConfiguracion() {
-        m_configuracion->show();
-    };
     void imprimir();
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
@@ -122,15 +116,12 @@ public:
     };
     QString generaFiltro();
 
-    /// Estas funciones guardan y cargan la configuracion de presentacion del listado.
-    void guardaconfig();
-    void cargaconfig();
     void editar(int);
 
 public slots:
     virtual void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
-		on_mui_editar_clicked();
-	};
+        on_mui_editar_clicked();
+    };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newPresupuestoCli();
@@ -142,9 +133,14 @@ public slots:
     virtual void on_mui_actualizar_clicked() {
         presenta();
     };
-    virtual void s_configurar();
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
 signals:
-	void selected(QString);
+    void selected(QString);
 };
 
 #endif

@@ -465,251 +465,6 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>2</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idpedidoproveedor" >
-          <property name="text" >
-           <string>&amp;Id. pedido</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_codigoalmacen" >
-          <property name="text" >
-           <string>&amp;Codigo almacen</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+C</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_refpedidoproveedor" >
-          <property name="text" >
-           <string>Re&amp;ferencia</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+F</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_numpedidoproveedor" >
-          <property name="text" >
-           <string>&amp;Numero de pedido</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+N</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_descpedidoproveedor" >
-          <property name="text" >
-           <string>&amp;Descripcion</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+D</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_nomproveedor" >
-          <property name="text" >
-           <string>Proveedor</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_fechapedidoproveedor" >
-          <property name="text" >
-           <string>Fecha</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_contacpedidoproveedor" >
-          <property name="text" >
-           <string>C&amp;ontacto</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+O</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_telpedidoproveedor" >
-          <property name="text" >
-           <string>&amp;Telefono</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+T</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_comentpedidoproveedor" >
-          <property name="text" >
-           <string>Co&amp;mentarios</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+M</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idusuari" >
-          <property name="text" >
-           <string>Id. &amp;usuario</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+U</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idproveedor" >
-          <property name="text" >
-           <string>Id. proveedor</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idalmacen" >
-          <property name="text" >
-           <string>Id. almac&amp;en</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+É</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalpedidoproveedor" >
-          <property name="text" >
-           <string>Total pedido proveedor</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalbaseimp" >
-          <property name="text" >
-           <string>Total &amp;base imponible</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+B</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_totalimpuestos" >
-          <property name="text" >
-           <string>Total impuestos</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="PedidosProveedorListSubform" name="mui_list" />
    </item>
    <item>
@@ -772,6 +527,20 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>PedidosProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>pedidosproveedorlist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends></extends>
+   <header>busquedaarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
@@ -789,20 +558,6 @@
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>PedidosProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>pedidosproveedorlist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends></extends>
-   <header>busquedaarticulo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -824,22 +579,6 @@
     <hint type="destinationlabel" >
      <x>127</x>
      <y>77</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>252</x>
-     <y>42</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>161</x>
-     <y>232</y>
     </hint>
    </hints>
   </connection>

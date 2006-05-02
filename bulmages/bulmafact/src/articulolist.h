@@ -21,10 +21,19 @@
 #ifndef ARTICLESLIST_H
 #define ARTICLESLIST_H
 
-#include "ui_articleslistbase.h"
 #include "company.h"
 #include "pgimportfiles.h"
+#include "subform2bf.h"
 
+class ArticuloListSubForm : public SubForm2Bf {
+Q_OBJECT
+public:
+	ArticuloListSubForm(QWidget *parent = 0, const char *name = 0);
+	~ArticuloListSubForm() {};
+};
+
+
+#include "ui_articleslistbase.h"
 
 
 class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles
@@ -90,20 +99,10 @@ public:
 	{
 		m_busqueda->show();
 	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
 
 public slots:
 	virtual void on_mui_list_cellDoubleClicked(int , int);
 	virtual void on_mui_list_customContextMenuRequested(const QPoint &);
-
-	virtual void configurar();
 
 	virtual void s_imprimir1();
 
@@ -125,7 +124,12 @@ public slots:
 	{
 		presenta();
 	};
-
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
+	};
 signals:
 	void selected(QString);
 };

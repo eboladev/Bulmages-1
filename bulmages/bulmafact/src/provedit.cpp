@@ -90,15 +90,12 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
     /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
     _depura("inicializamos el listado de pedidos\n",0);
     m_listpedidosprov->setcompany(m_companyact);
-    m_listpedidosprov->hideConfiguracion();
     m_listpedidosprov->hideBusqueda();
 
     m_albaranesprov->setcompany(m_companyact);
-    m_albaranesprov->hideConfiguracion();
     m_albaranesprov->hideBusqueda();
 
     m_listfacturasprov->setcompany(m_companyact);
-    m_listfacturasprov->hideConfiguracion();
     m_listfacturasprov->hideBusqueda();
 
     m_listpagosprov->setcompany(m_companyact);
@@ -109,11 +106,11 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
         return;
     s_releaseModificado();
     _depura("END ProveedorView::ProveedorView",0);
-}// end ProveedorView
+}
 
 ProveedorView::~ProveedorView() {
     m_companyact->sacaWindow(this);
-}// end ~ProveedorView
+}
 
 
 /************************************************************************
@@ -174,7 +171,7 @@ int ProveedorView::chargeprovider(QString idprov) {
     s_releaseModificado();
     _depura("END ProveedorView::chargeprovider",0);
     return 0;
-}// end chargeprovider
+}
 
 
 /************************************************************************
@@ -204,7 +201,7 @@ void ProveedorView::on_mui_crear_clicked() {
     m_urlproveedor->setText("");
     m_comentproveedor->setText("");
     s_releaseModificado();
-}// end boton_nuevo
+}
 
 /*************************************************************************
 * Esta funcion es la respuesta a la pulsacion del boton de guardar       *

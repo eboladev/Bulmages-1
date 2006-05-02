@@ -258,7 +258,7 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
 
-    QTableWidgetItem * it = new QTableWidgetItem(nom);
+    QTableWidgetItem * it = new QTableWidgetItem("");
     it->setFlags(Qt::ItemIsUserCheckable |Qt::ItemIsEnabled |Qt::ItemIsSelectable | Qt::ItemIsEditable);
     it->setCheckState(Qt::Checked);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount()-1, 0, it);
@@ -266,10 +266,10 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     it = new QTableWidgetItem2(nom);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount()-1, 1, it);
 
-    it = new QTableWidgetItem2(nom);
+    it = new QTableWidgetItem2(nomp);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount()-1, 2, it);
 
-    it = new QTableWidgetItem2(nomp);
+    it = new QTableWidgetItem2("");
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount()-1, 3, it);
 
     return 0;

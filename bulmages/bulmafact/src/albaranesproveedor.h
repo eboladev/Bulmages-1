@@ -99,12 +99,6 @@ public:
     void showBusqueda() {
         m_busqueda->show();
     };
-    void hideConfiguracion() {
-        m_configuracion->hide();
-    };
-    void showConfiguracion() {
-        m_configuracion->show();
-    };
     void imprimir();
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
@@ -119,9 +113,7 @@ public:
     };
     QString generaFiltro();
 
-    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
-    void guardaconfig();
-    void cargaconfig();
+
     void editar(int);
 
 public slots:
@@ -140,7 +132,12 @@ public slots:
     virtual void on_mui_actualizar_clicked() {
         presenta();
     };
-    virtual void s_configurar();
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
 signals:
     void selected(QString);
 };

@@ -413,143 +413,7 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>3</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idcobro" >
-          <property name="text" >
-           <string>&amp;Id. cobro</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idcliente" >
-          <property name="text" >
-           <string>Id. &amp;cliente</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+C</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_fechacobro" >
-          <property name="text" >
-           <string>&amp;Fecha</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+F</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_cantcobro" >
-          <property name="text" >
-           <string>Ca&amp;ntidad</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+N</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_refcobro" >
-          <property name="text" >
-           <string>Referencia</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_previsioncobro" >
-          <property name="text" >
-           <string>Prevision</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_comentcobro" >
-          <property name="text" >
-           <string>C&amp;omentarios</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+O</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTableWidget2" name="mui_list" >
-     <property name="contextMenuPolicy" >
-      <enum>Qt::CustomContextMenu</enum>
-     </property>
-     <property name="alternatingRowColors" >
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode" >
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior" >
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="sortingEnabled" >
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="CobrosListSubForm" name="mui_list" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -611,20 +475,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>QTableWidget2</class>
-   <extends>QTableWidget</extends>
-   <header>../../../bulmalib/qtable2.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -635,6 +485,20 @@
    <class>BusquedaCliente</class>
    <extends></extends>
    <header>busquedacliente.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>CobrosListSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>cobroslist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -656,22 +520,6 @@
     <hint type="destinationlabel" >
      <x>158</x>
      <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>255</x>
-     <y>53</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>96</x>
-     <y>154</y>
     </hint>
    </hints>
   </connection>

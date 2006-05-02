@@ -23,10 +23,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
     <widget class="QLabel" name="pixmapLabel1" >
@@ -456,261 +456,7 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>3</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idarticulo" >
-          <property name="text" >
-           <string>&amp;Id. articulo</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_codcompletoarticulo" >
-          <property name="text" >
-           <string>&amp;Codigo completo</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_nomarticulo" >
-          <property name="text" >
-           <string>&amp;Nombre</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_descarticulo" >
-          <property name="text" >
-           <string>&amp;Descripcion</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+D</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_cbarrasarticulo" >
-          <property name="text" >
-           <string>Codigo de &amp;barras</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+B</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_tipoarticulo" >
-          <property name="text" >
-           <string>&amp;Tipo</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_descuentoarticulo" >
-          <property name="text" >
-           <string>Desc&amp;uento</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_especificacionesarticulo" >
-          <property name="text" >
-           <string>Especificaciones</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_iconoarticulo" >
-          <property name="text" >
-           <string>Icono</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_fotoarticulo" >
-          <property name="text" >
-           <string>&amp;Foto</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_posterarticulo" >
-          <property name="text" >
-           <string>P&amp;oster</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_margenarticulo" >
-          <property name="text" >
-           <string>Mar&amp;gen</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_sobrecostearticulo" >
-          <property name="text" >
-           <string>Sobrecoste</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_modeloarticulo" >
-          <property name="text" >
-           <string>&amp;Modelo</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idtipo_iva" >
-          <property name="text" >
-           <string>Tipo I.V.A.</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_desctipo_iva" >
-          <property name="text" >
-           <string>Descripcion del I.V.A.</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idlinea_prod" >
-          <property name="text" >
-           <string>Id. linea producto</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_codarticulo" >
-          <property name="text" >
-           <string>Codigo de articulo</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_stockarticulo" >
-          <property name="text" >
-           <string>Stoc&amp;k</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+K</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_pvparticulo" >
-          <property name="text" >
-           <string>P.V.P.</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTableWidget2" name="mui_list" >
-     <property name="contextMenuPolicy" >
-      <enum>Qt::CustomContextMenu</enum>
-     </property>
-     <property name="alternatingRowColors" >
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode" >
-      <enum>QAbstractItemView::SingleSelection</enum>
-     </property>
-     <property name="selectionBehavior" >
-      <enum>QAbstractItemView::SelectRows</enum>
-     </property>
-     <property name="sortingEnabled" >
-      <bool>true</bool>
-     </property>
-    </widget>
+    <widget class="ArticuloListSubForm" name="mui_list" />
    </item>
   </layout>
  </widget>
@@ -725,6 +471,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>BusquedaTipoArticulo</class>
+   <extends></extends>
+   <header>busquedatipoarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
@@ -732,16 +485,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>QTableWidget2</class>
+   <class>ArticuloListSubForm</class>
    <extends>QTableWidget</extends>
-   <header>../../../bulmalib/qtable2.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTipoArticulo</class>
-   <extends></extends>
-   <header>busquedatipoarticulo.h</header>
+   <header>articulolist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -763,22 +509,6 @@
     <hint type="destinationlabel" >
      <x>193</x>
      <y>75</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>267</x>
-     <y>39</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>320</x>
-     <y>138</y>
     </hint>
    </hints>
   </connection>

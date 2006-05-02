@@ -25,11 +25,21 @@
 #include <QLineEdit>
 #include <Q3Table>
 
-#include "ui_cobroslistbase.h"
+
 #include "company.h"
 #include "busquedacliente.h"
 #include "funcaux.h"
+#include "subform2bf.h"
 
+class CobrosListSubForm : public SubForm2Bf {
+Q_OBJECT
+public:
+	CobrosListSubForm(QWidget *parent = 0, const char *name = 0);
+	~CobrosListSubForm() {};
+};
+
+
+#include "ui_cobroslistbase.h"
 
 class CobrosList : public QWidget, private Ui_CobrosListBase
 {
@@ -41,7 +51,6 @@ private:
 	/// m_modo == 1 es modo selector.
 	int m_modo;
 	QString mdb_idcobro;
-	void inicializar();
 
 public:
 	CobrosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
@@ -82,14 +91,6 @@ public:
 	{
 		m_busqueda->show();
 	};
-	void hideConfiguracion()
-	{
-		m_configuracion->hide();
-	};
-	void showConfiguracion()
-	{
-		m_configuracion->show();
-	};
 	void imprimir();
 	void meteWindow(QString nom, QObject *obj)
 	{
@@ -124,8 +125,12 @@ public slots:
 	{
 		presentar();
 	};
-
-	virtual void s_configurar();
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
+	};
 };
 
 #endif

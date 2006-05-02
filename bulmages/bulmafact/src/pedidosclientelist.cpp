@@ -13,7 +13,6 @@
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QFile>
-//Added by qt3to4:
 #include <QTextStream>
 
 #include "pedidosclientelist.h"
@@ -23,166 +22,6 @@
 #include "configuracion.h"
 #include "pedidoclienteview.h"
 
-#define COL_IDPEDIDOCLIENTE 0
-#define COL_CODIGOALMACEN 1
-#define COL_REFPEDIDOCLIENTE 2
-#define COL_NUMPEDIDOCLIENTE 3
-#define COL_DESCPEDIDOCLIENTE 4
-#define COL_NOMCLIENTE 5
-#define COL_FECHAPEDIDOCLIENTE 6
-#define COL_CONTACTPEDIDOCLIENTE 7
-#define COL_TELPEDIDOCLIENTE 8
-#define COL_COMENTPEDIDOCLIENTE 9
-#define COL_IDUSUARI 10
-#define COL_IDCLIENTE 11
-#define COL_IDALMACEN 12
-#define COL_TOTALPEDIDOCLIENTE 13
-#define COL_TOTALBASEIMP 14
-#define COL_TOTALIMPUESTOS 15
-
-
-void PedidosClienteList::guardaconfig() {
-    QString aux = "";
-    mver_idpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_codigoalmacen->isChecked() ? aux += "1,":aux+="0,";
-    mver_refpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_numpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_descpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_nomcliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_fechapedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_contactpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_telpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_comentpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_idusuari->isChecked() ? aux += "1,":aux+="0,";
-    mver_idcliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_idalmacen->isChecked() ? aux += "1,":aux+="0,";
-    mver_totalpedidocliente->isChecked() ? aux += "1,":aux+="0,";
-    mver_totalbaseimp->isChecked() ? aux += "1,":aux+="0,";
-    mver_totalimpuestos->isChecked() ? aux += "1,":aux+="0,";
-
-    QFile file( confpr->valor(CONF_DIR_USER)+"confpedidosclientelist.cfn" );
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
-        stream << aux << "\n";
-        file.close();
-    }// end if
-}// end guardaconfig()
-
-void PedidosClienteList::cargaconfig() {
-    QFile file( confpr->valor(CONF_DIR_USER)+"confpedidosclientelist.cfn" );
-    QString line;
-    if ( file.open( QIODevice::ReadOnly ) ) {
-        QTextStream stream( &file );
-        line = stream.readLine(); // line of text excluding '\n'
-        file.close();
-    } else
-        return;
-
-    mver_idpedidocliente->setChecked(line.at(0)=='1');
-    mver_codigoalmacen->setChecked(line.at(2)=='1');
-    mver_refpedidocliente->setChecked(line.at(4)=='1');
-    mver_numpedidocliente->setChecked(line.at(6)=='1');
-    mver_descpedidocliente->setChecked(line.at(8)=='1');
-    mver_nomcliente->setChecked(line.at(10)=='1');
-    mver_fechapedidocliente->setChecked(line.at(12)=='1');
-    mver_contactpedidocliente->setChecked(line.at(14)=='1');
-    mver_telpedidocliente->setChecked(line.at(16)=='1');
-    mver_comentpedidocliente->setChecked(line.at(18)=='1');
-    mver_idusuari->setChecked(line.at(20)=='1');
-    mver_idcliente->setChecked(line.at(22)=='1');
-    mver_idalmacen->setChecked(line.at(24)=='1');
-    mver_totalpedidocliente->setChecked(line.at(26)=='1');
-    mver_totalbaseimp->setChecked(line.at(28)=='1');
-    mver_totalimpuestos->setChecked(line.at(30)=='1');
-}// end cargaconfig
-
-
-void PedidosClienteList::s_configurar() {
-
-    if(mver_idpedidocliente->isChecked() )
-        mui_list->showColumn(COL_IDPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_IDPEDIDOCLIENTE);
-
-    if(mver_codigoalmacen->isChecked() )
-        mui_list->showColumn(COL_CODIGOALMACEN);
-    else
-        mui_list->hideColumn(COL_CODIGOALMACEN);
-
-    if(mver_refpedidocliente->isChecked() )
-        mui_list->showColumn(COL_REFPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_REFPEDIDOCLIENTE);
-
-    if(mver_numpedidocliente->isChecked() )
-        mui_list->showColumn(COL_NUMPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_NUMPEDIDOCLIENTE);
-
-    if(mver_descpedidocliente->isChecked() )
-        mui_list->showColumn(COL_DESCPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_DESCPEDIDOCLIENTE);
-
-    if(mver_nomcliente->isChecked() )
-        mui_list->showColumn(COL_NOMCLIENTE);
-    else
-        mui_list->hideColumn(COL_NOMCLIENTE);
-
-    if(mver_fechapedidocliente->isChecked() )
-        mui_list->showColumn(COL_FECHAPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_FECHAPEDIDOCLIENTE);
-
-    if(mver_contactpedidocliente->isChecked() )
-        mui_list->showColumn(COL_CONTACTPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_CONTACTPEDIDOCLIENTE);
-
-    if(mver_telpedidocliente->isChecked() )
-        mui_list->showColumn(COL_TELPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_TELPEDIDOCLIENTE);
-
-    if(mver_comentpedidocliente->isChecked() )
-        mui_list->showColumn(COL_COMENTPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_COMENTPEDIDOCLIENTE);
-
-    if(mver_idusuari->isChecked() )
-        mui_list->showColumn(COL_IDUSUARI);
-    else
-        mui_list->hideColumn(COL_IDUSUARI);
-
-    if(mver_idcliente->isChecked() )
-        mui_list->showColumn(COL_IDCLIENTE);
-    else
-        mui_list->hideColumn(COL_IDCLIENTE);
-
-    if(mver_idalmacen->isChecked() )
-        mui_list->showColumn(COL_IDALMACEN);
-    else
-        mui_list->hideColumn(COL_IDALMACEN);
-
-
-    if(mver_totalpedidocliente->isChecked() )
-        mui_list->showColumn(COL_TOTALPEDIDOCLIENTE);
-    else
-        mui_list->hideColumn(COL_TOTALPEDIDOCLIENTE);
-
-    if(mver_totalbaseimp->isChecked() )
-        mui_list->showColumn(COL_TOTALBASEIMP);
-    else
-        mui_list->hideColumn(COL_TOTALBASEIMP);
-
-    if(mver_totalimpuestos->isChecked() )
-        mui_list->showColumn(COL_TOTALIMPUESTOS);
-    else
-        mui_list->hideColumn(COL_TOTALIMPUESTOS);
-
-
-
-}// end s_configurar
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WFlags flag)
@@ -193,8 +32,7 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WF
     m_idpedidocliente="";
     meteWindow(caption(),this);
     hideBusqueda();
-    cargaconfig();
-}// end providerslist
+}
 
 
 PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag) : QWidget(parent, name, flag) {	
@@ -203,19 +41,15 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const cha
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
 	mui_list->setcompany(comp);
-    cargaconfig();
-
 	presenta();
     m_modo=0;
     m_idpedidocliente="";
     meteWindow(caption(),this);
     hideBusqueda();
-    hideConfiguracion();
 }
 
 
 PedidosClienteList::~PedidosClienteList() {
-   guardaconfig();
 }
 
 
@@ -232,8 +66,6 @@ void PedidosClienteList::presenta() {
 	cur = companyact->cargacursor("SELECT SUM(calctotalpedcli(idpedidocliente)) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1"+generarFiltro());
 	m_total->setText(cur->valor("total"));
 	delete cur;
-
-    s_configurar();
 }// end presenta
 
 
@@ -268,7 +100,7 @@ QString PedidosClienteList::generarFiltro() {
 	filtro += " AND fechapedidocliente <= '"+m_fechafin->text()+"' ";
 
     return (filtro);
-}// end generaFiltro
+}
 
 
 
@@ -337,88 +169,7 @@ void PedidosClienteList::imprimir() {
     // L�ea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-/// ---------------------------------------------------------
-    if(mver_idpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Id.</td>";
-    if(mver_codigoalmacen->isChecked() )
-	    fitxersortidatxt += "	<td>Cod. Almacen</td>";
-    if(mver_refpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Referencia</td>";
-    if(mver_numpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Num. Pedido</td>";
-    if(mver_descpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Descripicon</td>";
-    if(mver_nomcliente->isChecked() )
-	    fitxersortidatxt += "	<td>Cliente</td>";
-    if(mver_fechapedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Fecha</td>";
-    if(mver_contactpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Contacto</td>";
-    if(mver_telpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Telefono</td>";
-    if(mver_comentpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Comentarios</td>";
-    if(mver_idusuari->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Usuario</td>";
-    if(mver_idcliente->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Cliente</td>";
-    if(mver_idalmacen->isChecked() )
-	    fitxersortidatxt += "	<td>Id. Almacen</td>";
-    if(mver_totalpedidocliente->isChecked() )
-	    fitxersortidatxt += "	<td>Total</td>";
-    if(mver_totalbaseimp->isChecked() )
-	    fitxersortidatxt += "	<td>Base Imp.</td>";
-    if(mver_totalimpuestos->isChecked() )
-	    fitxersortidatxt += "	<td>Impuestos</td>";
-/// ----------------------------------------------------------
-    fitxersortidatxt += "</tr>";    
-    
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
-    while(!cur->eof()) {
-    	fitxersortidatxt += "<tr>";
-/// ---------------------------------------------------------
-    if(mver_idpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idpedidocliente"))+"</td>";
-    if(mver_codigoalmacen->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("codigoalmacen"))+"</td>";
-    if(mver_refpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("refpedidocliente"))+"</td>";
-    if(mver_numpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("numpedidocliente"))+"</td>";
-    if(mver_descpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("descpedidocliente"))+"</td>";
-    if(mver_nomcliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("nomcliente"))+"</td>";
-    if(mver_fechapedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("fechapedidocliente"))+"</td>";
-    if(mver_contactpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("contactpedidocliente"))+"</td>";
-    if(mver_telpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("telpedidocliente"))+"</td>";
-    if(mver_comentpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("comentpedidocliente"))+"</td>";
-    if(mver_idusuari->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idusuari"))+"</td>";
-    if(mver_idcliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idcliente"))+"</td>";
-    if(mver_idalmacen->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur->valor("idalmacen"))+"</td>";
-
-            /// Calculamos el total del presupuesto y lo presentamos.
-            cursor2 *cur1 = companyact->cargacursor("SELECT calctotalpedcli("+cur->valor("idpedidocliente")+") AS total, calcbimppedcli("+cur->valor("idpedidocliente")+") AS base, calcimpuestospedcli("+cur->valor("idpedidocliente")+") AS impuestos");
-    if(mver_totalpedidocliente->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("total"))+"</td>";
-    if(mver_totalbaseimp->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("base"))+"</td>";
-    if(mver_totalimpuestos->isChecked() )
-    	fitxersortidatxt += "<td>"+XMLProtect(cur1->valor("impuestos"))+"</td>";
-            delete cur1;
-/// ----------------------------------------------------------
-    	fitxersortidatxt += "</tr>";
-	cur->siguienteregistro();
-    }// end if
-    delete cur;
+    fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
     buff.replace("[story]",fitxersortidatxt);
@@ -436,16 +187,13 @@ void PedidosClienteList::imprimir() {
 
 void PedidosClienteList::on_mui_borrar_clicked() {
     _depura("PedidosClienteList::on_mui_borrar_clicked",0);
-	int row = mui_list->currentRow();
-    m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"),row);
+    m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
     if (m_modo ==0 ) {
         PedidoClienteView *prov = new PedidoClienteView(companyact,0,theApp->translate("Edicion de Pedidos a Cliente", "company"));
-        if (prov->cargar(m_idpedidocliente)) {
+        if (prov->cargar(m_idpedidocliente))
             return;
-        }
 	prov->borrar();
 	delete prov;
-        // close();
     }// end if
     _depura("END PedidosClienteList::on_mui_borrar_clicked",0);
     presenta();

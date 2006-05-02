@@ -96,12 +96,6 @@ public:
     void showBusqueda() {
         m_busqueda->show();
     };
-    void hideConfiguracion() {
-        m_configuracion->hide();
-    };
-    void showConfiguracion() {
-        m_configuracion->show();
-    };
     void hideBotonera() {
         m_botonera->hide();
     };
@@ -134,8 +128,13 @@ public slots:
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void s_configurar();
     virtual void on_mui_imprimir_clicked();
+	virtual void on_mui_configurar_toggled(bool checked) {
+		if (checked) 
+			mui_list->showConfig();
+		else
+			mui_list->hideConfig();
+	};
 signals:
     void selected(QString);
 };
