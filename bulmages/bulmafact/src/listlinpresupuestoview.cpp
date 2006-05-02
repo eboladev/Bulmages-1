@@ -74,7 +74,7 @@ void listlinpresupuestoview::cargar(QString idpresupuesto) {
         _depura("listlinpresupuestoview::cargar\n",0);
         mdb_idpresupuesto = idpresupuesto;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto="+mdb_idpresupuesto);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
 }
 

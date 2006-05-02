@@ -71,7 +71,7 @@ void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
         _depura("ListLinPedidoProveedorView::cargar\n",0);
         mdb_idalbaranp = idalbaranp;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp="+mdb_idalbaranp);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
 }
 

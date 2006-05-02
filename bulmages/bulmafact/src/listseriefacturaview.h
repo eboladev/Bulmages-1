@@ -46,7 +46,7 @@ public slots:
 	virtual void cargar() {
     _depura("ListSerieFacturaSubForm::cargar\n",0);
     cursor2 * cur= companyact()->cargacursor("SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura");
-	SubForm2::cargar(cur);
+	SubForm3::cargar(cur);
     delete cur;
 };
 };

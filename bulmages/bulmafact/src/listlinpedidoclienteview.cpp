@@ -90,7 +90,7 @@ void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
         _depura("ListLinPedidoClienteView::cargar\n",0);
         mdb_idpedidocliente = idpedidocliente;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente="+mdb_idpedidocliente);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
 }
 

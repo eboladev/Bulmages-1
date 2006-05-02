@@ -37,7 +37,7 @@ public slots:
         _depura("ListCompArticulo::cargaListCompArticulo\n",0);
         mdb_idpedidoproveedor = idpedidoproveedor;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
     };
 

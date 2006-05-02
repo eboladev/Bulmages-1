@@ -37,7 +37,7 @@ public slots:
         _depura("ListDescuentoPedidoClienteView::cargar\n",0);
         mdb_idpedidocliente = idpedidocliente;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
     };
 

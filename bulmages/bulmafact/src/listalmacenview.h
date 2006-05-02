@@ -47,7 +47,7 @@ public slots:
     virtual void cargar() {
         _depura("ListAlmacenSubForm::cargar\n",0);
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
     };
 };

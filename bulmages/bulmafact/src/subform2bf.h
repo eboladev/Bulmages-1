@@ -30,9 +30,10 @@
 #include "qtable2.h"
 #include "subform.h"
 
+#include "subform3.h"
 
 
-class SubForm2Bf : public SubForm2 {
+class SubForm2Bf : public SubForm3 {
 Q_OBJECT
 private:
 	bool m_delete;

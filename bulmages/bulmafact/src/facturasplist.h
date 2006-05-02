@@ -42,12 +42,12 @@ public slots:
         _depura("AlbaranesProveedorListSubform::cargar\n",0);
         QString SQLQuery = "SELECT * FROM facturap";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
     };
     virtual int cargar(cursor2 *cur) {
         _depura("AlbaranesProveedorListSubform::cargar\n",0);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         return 0;
     };
 };

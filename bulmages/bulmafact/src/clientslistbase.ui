@@ -370,248 +370,6 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_configuracion" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" >
-      <property name="margin" >
-       <number>5</number>
-      </property>
-      <property name="spacing" >
-       <number>3</number>
-      </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_idcliente" >
-          <property name="text" >
-           <string>&amp;Id. cliente</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+I</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_nomcliente" >
-          <property name="text" >
-           <string>&amp;Nombre</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+N</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_nomaltcliente" >
-          <property name="text" >
-           <string>Nom&amp;bre alternativo</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_cifcliente" >
-          <property name="text" >
-           <string>C.I.&amp;F.</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+F</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_bancocliente" >
-          <property name="text" >
-           <string>Banco</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_dircliente" >
-          <property name="text" >
-           <string>Direcci&amp;on</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+O</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_poblcliente" >
-          <property name="text" >
-           <string>P&amp;oblacion</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_cpcliente" >
-          <property name="text" >
-           <string>Codi&amp;go postal</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+G</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_telcliente" >
-          <property name="text" >
-           <string>&amp;Telefono</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+T</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_faxcliente" >
-          <property name="text" >
-           <string>Fa&amp;x</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+X</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_mailcliente" >
-          <property name="text" >
-           <string>E-&amp;mail</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+M</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_urlcliente" >
-          <property name="text" >
-           <string>&amp;URL</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+U</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>3</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="mver_faltacliente" >
-          <property name="text" >
-           <string>Fecha alta</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_fbajacliente" >
-          <property name="text" >
-           <string>Fecha ba&amp;ja</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+J</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_comentcliente" >
-          <property name="text" >
-           <string>Comentarios</string>
-          </property>
-          <property name="shortcut" >
-           <string/>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="mver_idrecargo" >
-          <property name="text" >
-           <string>I&amp;d. recargo</string>
-          </property>
-          <property name="shortcut" >
-           <string>Alt+D</string>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
     <widget class="ClienteListSubform" name="mui_list" />
    </item>
   </layout>
@@ -620,17 +378,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>ClienteListSubform</class>
    <extends>QTableWidget</extends>
    <header>clientslist.h</header>
    <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
@@ -654,22 +412,6 @@
     <hint type="destinationlabel" >
      <x>96</x>
      <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_configurar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_configuracion</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>253</x>
-     <y>52</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>175</x>
-     <y>125</y>
     </hint>
    </hints>
   </connection>

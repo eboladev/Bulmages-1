@@ -29,7 +29,7 @@
 #include "articulolist.h"
 
 
-SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm2(parent) {
+SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     setDelete(TRUE);
 };
 
@@ -105,6 +105,9 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
+	popup->addSeparator();
+    QAction *verconfig = popup->addAction(tr("Ver Configurador de Subformulario"));
+
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
         borrar(row);
@@ -116,6 +119,10 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
         resizeColumnToContents(col);
     if (opcion == ajustac)
         resizeRowToContents(row);
+
+
+   if(opcion == verconfig)
+	showConfig();
 
     delete popup;
 }

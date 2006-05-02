@@ -70,7 +70,7 @@ void ListLinAlbaranClienteView::cargar(QString idalbaran) {
         _depura("ListLinAlbaranClienteView::cargar\n",0);
         mdb_idalbaran = idalbaran;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran="+mdb_idalbaran);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
 }
 

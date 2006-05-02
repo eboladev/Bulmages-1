@@ -37,7 +37,7 @@ public slots:
         _depura("ListDescuentoAlbaranProvView::cargar\n",0);
         mdb_idalbaranp = idalbaranp;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM dalbaranp WHERE idalbaranp="+mdb_idalbaranp);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
     };
 

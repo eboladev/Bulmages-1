@@ -37,7 +37,7 @@ public slots:
         _depura("ListCompArticulo::cargaListCompArticulo\n",0);
         mdb_idfactura = idfactura;
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfactura WHERE idfactura="+mdb_idfactura);
-        SubForm2::cargar(cur);
+        SubForm3::cargar(cur);
         delete cur;
     };
 

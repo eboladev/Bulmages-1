@@ -44,7 +44,7 @@ public slots:
     _depura("ListCompArticulo::cargaListCompArticulo\n",0);
     mdb_idarticulo = idarticulo;
     cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo="+mdb_idarticulo+" AND articulo.idarticulo=comparticulo.idcomponente");
-	SubForm2::cargar(cur);
+	SubForm3::cargar(cur);
     delete cur;
 };
     virtual void editFinished(int row, int col);

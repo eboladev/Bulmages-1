@@ -39,12 +39,12 @@ virtual void cargar() {
     _depura("ProveedorListSubform::cargar\n",0);
     QString SQLQuery = "SELECT * FROM proveedor";
     cursor2 * cur= companyact()->cargacursor(SQLQuery);
-	SubForm2::cargar(cur);
+	SubForm3::cargar(cur);
     delete cur;
 };
 virtual int cargar(cursor2 *cur) {
     _depura("ProveedorListSubform::cargar\n",0);
-	SubForm2::cargar(cur);
+	SubForm3::cargar(cur);
 	return 0;
 };
 };
