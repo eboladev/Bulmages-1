@@ -73,6 +73,7 @@ public:
    /// Devuelve el valor de una determinada posici� del query
    QString valor(int posicion, int registro=-1);
    bool error() {return m_error;};
+    QString query() {return m_query;};
 public:
    /// Devuelve el valor de una determinada posici� del query
    QString valor(QString campo, int registro=-1);
