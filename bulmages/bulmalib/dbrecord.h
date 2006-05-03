@@ -2,7 +2,7 @@
 #define DBRECORD_H
 
 #include <QString>
-#include <Q3PtrList>
+#include <QList>
 #include "postgresiface2.h"
 #include "funcaux.h"
 
@@ -19,7 +19,7 @@ protected:
    	postgresiface2 *m_conexionbase;
 public:
 	DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp="");
-	virtual ~DBCampo(){};
+	virtual ~DBCampo(){_depura("DBCampo::~DBCampo",1);};
 
 	postgresiface2 *conexionbase() {return m_conexionbase;};
 	void setconexionbase(postgresiface2 *comp) {m_conexionbase=comp;};
@@ -35,7 +35,7 @@ public:
 	
 class DBRecord {
 protected:
-    Q3PtrList<DBCampo> m_lista;
+    QList<DBCampo *> m_lista;
     postgresiface2 *m_conexionbase;
     QString m_tablename;
     QString m_campoid;
@@ -55,7 +55,7 @@ public:
 	int addDBCampo(QString, DBCampo::dbtype, int, QString);
 	void DBclear();
 
-	Q3PtrList<DBCampo> *lista() {return &m_lista;};
+	QList<DBCampo *> *lista() {return &m_lista;};
 
 	virtual int borrar();
 	virtual int guardar();

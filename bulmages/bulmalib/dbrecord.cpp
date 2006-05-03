@@ -69,16 +69,18 @@ int DBRecord::DBload(cursor2 *cur) {
     m_nuevoCampo = FALSE;
     DBCampo *linea;
     int error = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for (int i =0; i < m_lista.size(); ++i) {
+        linea = m_lista.at(i);
         QString nom =linea->nomcampo();
         QString val = cur->valor(nom);
-	if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) 
-	&& (val == "") )
-		m_nuevoCampo = TRUE;
-	if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) 
-	&& (val == "") )
-		m_nuevoCampo = TRUE;
-        error += linea->set(val);
+        if ((linea->restrictcampo() & DBCampo::DBPrimaryKey)
+                && (val == "") )
+            m_nuevoCampo = TRUE;
+        if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey)
+                && (val == "") )
+            m_nuevoCampo = TRUE;
+        error += linea->set
+                 (val);
     }// end for
     _depura("END DBRecord::DBload",0);
     return error;
@@ -88,7 +90,8 @@ void DBRecord::DBclear() {
     _depura("DBRecord::DBclear",0);
     m_nuevoCampo = TRUE;
     DBCampo *linea;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for(int i=0; i < m_lista.size(); ++i) {
+        linea = m_lista.at(i);
         linea->set
         ("");
     }// end for
@@ -107,7 +110,8 @@ int DBRecord::DBsave(QString &id) {
     QString separadorwhere = "";
     QString querywhere = "";
     int err=0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for(int i=0; i < m_lista.size(); ++i) {
+        linea = m_lista.at(i);
         if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
             QString lin = linea->valorcampoprep(err);
             if (err)
@@ -116,11 +120,12 @@ int DBRecord::DBsave(QString &id) {
             separadorwhere = " AND ";
         }// end if
         if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
-	    /// Si el campo es requerido y no está entonces salimos sin dar error.
+            /// Si el campo es requerido y no está entonces salimos sin dar error.
             /// No es lo mismo que los not null ya que estos si dan error
-	    if (linea->restrictcampo() & DBCampo::DBRequired) {
-		  if (linea->valorcampo() == "") return 0;
-	    }// end if
+            if (linea->restrictcampo() & DBCampo::DBRequired) {
+                if (linea->valorcampo() == "")
+                    return 0;
+            }// end if
             if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
                 QString lin = linea->valorcampoprep(err);
                 if (err)
@@ -153,7 +158,7 @@ int DBRecord::DBsave(QString &id) {
     if (m_nuevoCampo) {
         QString query = "INSERT INTO "+m_tablename+" ("+listcampos+") VALUES ("+listvalores+")";
         int error = m_conexionbase->ejecuta(query);
-	_depura(query,0);
+        _depura(query,0);
         if (error)
             return -1;
         cursor2 *cur = m_conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
@@ -161,12 +166,13 @@ int DBRecord::DBsave(QString &id) {
         delete cur;
     } else {
         QString query = "UPDATE "+m_tablename+" SET "+queryupdate + " WHERE "+ querywhere;
-	_depura(query,0);
+        _depura(query,0);
         int error = m_conexionbase->ejecuta(query);
         if (error)
             return -1;
     }// end if
     m_nuevoCampo = FALSE;
+    _depura("END DBRecord::DBSave",0);
     return 0;
 }
 
@@ -174,9 +180,10 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
     _depura("DBRecord::setDBvalue",0);
     DBCampo *linea;
     int error = 0;
-    linea = m_lista.first();
+    int i =0;
+    linea = m_lista.value(i);
     while (linea && linea->nomcampo() != nomb)
-        linea = m_lista.next();
+        linea = m_lista.value(++i);
     if (!linea) {
         _depura("Campo "+nomb+" no encontrado",2);
         return -1;
@@ -191,9 +198,10 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
 QString DBRecord::DBvalue(QString nomb) {
     _depura("DBRecord::value",0);
     DBCampo *linea;
-    linea = m_lista.first();
+    int i =0;
+    linea = m_lista.value(i);
     while (linea && linea->nomcampo()!= nomb)
-        linea = m_lista.next();
+        linea = m_lista.value(++i);
     if (!linea) {
         _depura("Campo "+nomb+" no encontrado",2);
         return "";
@@ -207,9 +215,10 @@ QString DBRecord::DBvalue(QString nomb) {
 QString DBRecord::DBvalueprep(QString nomb) {
     _depura("DBRecord::DBvalueprep",0);
     DBCampo *linea;
-    linea = m_lista.first();
+    int i =0;
+    linea = m_lista.value(i);
     while (linea && linea->nomcampo()!= nomb)
-        linea = m_lista.next();
+        linea = m_lista.value(++i);
     if (!linea) {
         _depura("Campo "+nomb+" no encontrado",2);
         return "";
@@ -223,10 +232,12 @@ QString DBRecord::DBvalueprep(QString nomb) {
 
 
 int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="") {
+    _depura("DBRecord::addDBCampo",0);
     DBCampo *camp = new DBCampo(m_conexionbase, nom, typ, res, nomp);
     camp->set
     ("");
     m_lista.append(camp);
+    _depura("END DBRecord::addDBCampo",0);
     return 0;
 }
 
@@ -237,7 +248,8 @@ int DBRecord::borrar() {
     DBCampo *linea;
     QString separadorwhere = "";
     QString querywhere = "";
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for(int i=0; i < m_lista.size(); ++i) {
+        linea = m_lista.at(i);
         if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
             int err;
             QString lin = linea->valorcampoprep(err);

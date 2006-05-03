@@ -34,16 +34,16 @@ QMainWindow *g_main=NULL;
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto(QString texto) {
-                QTextEdit *ed = new QTextEdit(0);
-		ed->setFixedSize(450,250);
-                ed->setPlainText(texto);
-                g_main->setEnabled(FALSE);
-                ed->show();
-                while(!ed->isHidden())
-                    theApp->processEvents();
-                g_main->setEnabled(TRUE);
-		QString vuelta = ed->toPlainText();
-		return vuelta;
+    QTextEdit *ed = new QTextEdit(0);
+    ed->setFixedSize(450,250);
+    ed->setPlainText(texto);
+    g_main->setEnabled(FALSE);
+    ed->show();
+    while(!ed->isHidden())
+        theApp->processEvents();
+    g_main->setEnabled(TRUE);
+    QString vuelta = ed->toPlainText();
+    return vuelta;
 }
 
 /** Proteje cadenas de texto pasandoles una sustituci� de codigos especiales de XML
@@ -66,16 +66,16 @@ QString XMLProtect( const QString& string ) {
   * \return Devuelve un string con el c�igo de cuenta extendido al nmero de d�itos indicado.
   */
 string extiendecodigo (string cad, unsigned int num1) {
-   string cod=cad;
-   unsigned int num=num1;
-   if (cod.length() < num) {
-     string str7 (num-cod.length()+1,'0');
-     int pos = cod.find(".",0);
-     if (pos > 0) {
-       cod.replace(pos,1,str7);
-     }// end if
-   }// end if
-   return(cod);
+    string cod=cad;
+    unsigned int num=num1;
+    if (cod.length() < num) {
+        string str7 (num-cod.length()+1,'0');
+        int pos = cod.find(".",0);
+        if (pos > 0) {
+            cod.replace(pos,1,str7);
+        }// end if
+    }// end if
+    return(cod);
 }
 
 /** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
@@ -84,16 +84,16 @@ string extiendecodigo (string cad, unsigned int num1) {
   * \return Devuelve un QString con la cuenta extendida al nmero de d�itos indicado.
   */
 QString extiendecodigo (QString cad, unsigned int num1) {
-   QString cod=cad;
-   int num=num1;
-   if (cod.length() < num) {
-     string str7 (num-cod.length()+1,'0');
-     int pos = cod.find(".",0);
-     if (pos > 0) {
-       cod.replace(pos,1,str7.c_str());
-     }// end if
-   }// end if
-   return(cod);
+    QString cod=cad;
+    int num=num1;
+    if (cod.length() < num) {
+        string str7 (num-cod.length()+1,'0');
+        int pos = cod.find(".",0);
+        if (pos > 0) {
+            cod.replace(pos,1,str7.c_str());
+        }// end if
+    }// end if
+    return(cod);
 }
 
 
@@ -103,7 +103,7 @@ QString extiendecodigo (QString cad, unsigned int num1) {
   * \return Numero redondeado
   */
 float fround(float n, unsigned d) {
-  return floor(n*pow(10., d) + .5) / pow (10., d);
+    return floor(n*pow(10., d) + .5) / pow (10., d);
 }// end fround
 
 
@@ -114,8 +114,10 @@ float fround(float n, unsigned d) {
 int roundI(double valor) {
     int retorno;
     double mayor=floor(valor);
-    if ((mayor-valor) >= 0.5)  retorno=(int)mayor-1;
-    else retorno= (int)mayor;
+    if ((mayor-valor) >= 0.5)
+        retorno=(int)mayor-1;
+    else
+        retorno= (int)mayor;
     return retorno;
 }
 
@@ -125,25 +127,25 @@ int roundI(double valor) {
  * \param fechaintro string con la fecha a ser normalizada.
  */
 QDate normalizafecha(QString fechaintro) {
-  QDate fecharesult;
-  int d, M, y;
-  switch(fechaintro.length()) {
+    QDate fecharesult;
+    int d, M, y;
+    switch(fechaintro.length()) {
     case 4: // fecha tipo ddMM, sin // y sin a�.
-      d = fechaintro.mid(0,2).toInt();
-      M = fechaintro.mid(2,2).toInt();
-      y = QDate::currentDate().year();
-      break;
+        d = fechaintro.mid(0,2).toInt();
+        M = fechaintro.mid(2,2).toInt();
+        y = QDate::currentDate().year();
+        break;
     case 5:// fecha tipo dd/MM
-      d = fechaintro.mid(0,2).toInt();
-      M = fechaintro.mid(3,2).toInt();
-      y = QDate::currentDate().year();
-    break;
+        d = fechaintro.mid(0,2).toInt();
+        M = fechaintro.mid(3,2).toInt();
+        y = QDate::currentDate().year();
+        break;
     case 6: // fecha tipo ddMMyy
-      d = fechaintro.mid(0,2).toInt();
-      M = fechaintro.mid(2,2).toInt();
-      y = 2000 + fechaintro.mid(4,2).toInt();
-     break;
-     case 8:
+        d = fechaintro.mid(0,2).toInt();
+        M = fechaintro.mid(2,2).toInt();
+        y = 2000 + fechaintro.mid(4,2).toInt();
+        break;
+    case 8:
         if(fechaintro.contains("/",TRUE) || fechaintro.contains("-",TRUE)) {
             // fecha tipo  dd/MM/yy o dd-MM-yy
             d = fechaintro.mid(0,2).toInt();
@@ -155,19 +157,20 @@ QDate normalizafecha(QString fechaintro) {
             M = fechaintro.mid(2,2).toInt();
             y = fechaintro.mid(4,4).toInt();
         }// end if
-     break;
-     case 10: // fecha tipo dd/MM/yyyy
+        break;
+    case 10: // fecha tipo dd/MM/yyyy
         d = fechaintro.mid(0,2).toInt();
         M = fechaintro.mid(3,2).toInt();
         y = fechaintro.mid(6,4).toInt();
-    break;    
+        break;
     default:
         d = QDate::currentDate().day();
         M = QDate::currentDate().month();
         y = QDate::currentDate().year();
-  }// end switch
-  if (!fecharesult.setYMD(y,M,d)) fecharesult=QDate::currentDate();
-  return(fecharesult);
+    }// end switch
+    if (!fecharesult.setYMD(y,M,d))
+        fecharesult=QDate::currentDate();
+    return(fecharesult);
 }// end normalizafecha
 
 
@@ -176,27 +179,27 @@ QDate normalizafecha(QString fechaintro) {
     Lo hace a partir del quinto d�ito por defecto. Aunque este parametro deber� ser configurable.
   */
 QString ajustacodigo (QString cad, unsigned int num1) {
-   QString cod=cad;
-   unsigned int longcad = cad.length();
-   if (longcad > 4) { 
-	if (longcad < num1) {
-	string str7 (num1 -longcad,'0');
-	cod = cad.left(4);
-	cod += QString(str7.c_str());
-	cod += cad.right(longcad-4);
-	}// end if
-	if (longcad > num1) {
-	cod = cad.left(4);
-	cod += cad.right(num1-4);
-	}// end if
-   }// end if
-   return(cod);
+    QString cod=cad;
+    unsigned int longcad = cad.length();
+    if (longcad > 4) {
+        if (longcad < num1) {
+            string str7 (num1 -longcad,'0');
+            cod = cad.left(4);
+            cod += QString(str7.c_str());
+            cod += cad.right(longcad-4);
+        }// end if
+        if (longcad > num1) {
+            cod = cad.left(4);
+            cod += cad.right(num1-4);
+        }// end if
+    }// end if
+    return(cod);
 }// end ajustacodigo
 
 
 void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString archivo2) {
-	QString cadena = " sed -e \"s&"+texto1+"&"+texto2+"&g\"  "+archivo+" > "+archivo2+"";
-	system (cadena.toAscii().data());
+    QString cadena = " sed -e \"s&"+texto1+"&"+texto2+"&g\"  "+archivo+" > "+archivo2+"";
+    system (cadena.toAscii().data());
 }
 
 
@@ -204,18 +207,18 @@ void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString 
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de la invocacion de trml2pdf
 /// Para evitar trabajo duplicado.
 void generaPDF(const QString arch) {
-	_depura("generaPDF"+arch,0);
-	QDir::setCurrent(confpr->valor(CONF_DIR_USER));
-	QString cadsys;
+    _depura("generaPDF"+arch,0);
+    QDir::setCurrent(confpr->valor(CONF_DIR_USER));
+    QString cadsys;
 #ifdef WINDOWS
-	cadsys = confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
-	system (cadsys.ascii());
-	_depura(cadsys,0);
-	cadsys = confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
-	system (cadsys.ascii());
-	_depura(cadsys,0);
-#else
 
+    cadsys = confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
+    system (cadsys.ascii());
+    _depura(cadsys,0);
+    cadsys = confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
+    system (cadsys.ascii());
+    _depura(cadsys,0);
+#else
 
     cadsys = "trml2pdf.py "+arch+".rml > "+arch+".pdf";
     system(cadsys.ascii());
@@ -231,6 +234,47 @@ void invocaPDF(const QString arch) {
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
-	QString cadsys = "mailsend -h mail.conetxia.com -d conetxia.com -f bulmages@conetxia.com -t tborras@conetxia.com -sub hola -m hola";
+    QString cadsys = "mailsend -h mail.conetxia.com -d conetxia.com -f bulmages@conetxia.com -t tborras@conetxia.com -sub hola -m hola";
     system(cadsys.ascii());
 }
+
+// Nivel 0 = normal
+// Nivel 1 = Bajo
+// Nivel 2 = Alto (sale un popup)
+// Nivel 4 = Comienza depuracion indiscriminada
+// Nivel 5 = Termina depuracion indiscriminada
+
+
+
+void _depura(QString cad, int nivel) {
+static int supnivel=0;
+
+    if (nivel == 5) {
+        supnivel = 0;
+        nivel=2;
+    }
+    if (nivel ==4) {
+        supnivel = 2;
+	nivel = 2;
+ 	}
+
+
+    if (nivel == 0) {
+        if(g_main != NULL) {
+            g_main->statusBar()->message(cad);
+            fprintf(stderr,"%s\n", cad.toAscii().data());
+        } else
+            fprintf(stderr,"%s\n", cad.toAscii().data());
+    } else if (nivel == 1) {
+        fprintf(stderr,"%s\n",cad.toAscii().data());
+    }
+
+ if (nivel == 2 || (supnivel==2 && nivel ==0) ) {
+        QMessageBox::question(
+            NULL,
+            "Informacion de depuracion ",
+            cad,
+            "&Salir",
+            QString::null, 0);
+    }// end if
+}// end depura

@@ -20,31 +20,44 @@
 #include <QEvent>
 #include <QTableWidget>
 
+#include "funcaux.h"
+
 /** *@author Tomeu Borrás Riera */
 
 
 class QTableWidgetItem2 : public QTableWidgetItem {
 public:
-   int modo;
+    int modo;
 public:
-QTableWidgetItem2(int type = Type, int mode=0): QTableWidgetItem(type) {modo=mode;}
-QTableWidgetItem2(const QString & text, int type = Type, int mode=0): QTableWidgetItem(text, type) {modo=mode;}
+    QTableWidgetItem2(int type = Type, int mode=0): QTableWidgetItem(type) {
+        modo=mode;
+    }
+    QTableWidgetItem2(const QString & text, int type = Type, int mode=0): QTableWidgetItem(text, type) {
+        modo=mode;
+    }
+    ~QTableWidgetItem2() {
+        _depura("~QTableWidgetItem2",1);
+    };
 };
 
-class QTableWidget2 : public QTableWidget{
-  Q_OBJECT
+class QTableWidget2 : public QTableWidget {
+    Q_OBJECT
 public:
-   int modo; // Indica el modo de dibujo.
+    int modo; // Indica el modo de dibujo.
 public:
-  QTableWidget2(QWidget * parent = 0 );
-   virtual bool eventFilter( QObject *obj, QEvent *event );
-	void setText( int x, int y, const QString & val) {
-			QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
-		setItem(x, y, newitem);
-	}// end setText
+    QTableWidget2(QWidget * parent = 0 );
+    ~QTableWidget2() {
+        _depura("~QTableWidget2",0);
+    };
+
+    virtual bool eventFilter( QObject *obj, QEvent *event );
+    void setText( int x, int y, const QString & val) {
+        QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
+        setItem(x, y, newitem);
+    }// end setText
 
 signals:
-   void pulsadomas(int, int, int);  
+    void pulsadomas(int, int, int);
 };
 
 #endif

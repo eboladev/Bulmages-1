@@ -75,25 +75,7 @@ std::string Ttos(T arg) {
 }// end Ttos
 
 
-inline void _depura(QString cad, int nivel=0) {
-	if (nivel == 0) {
-		if(g_main != NULL) {
-			g_main->statusBar()->message(cad);
-			fprintf(stderr,"%s", cad.toAscii().data());
-		 } else
-			fprintf(stderr,"%s", cad.toAscii().data());
-	} else if (nivel == 1) {
-		fprintf(stderr,"%s\n",cad.toAscii().data());
-	} else if (nivel == 2) {
-		QMessageBox::question(
-                NULL,
-                "Informacion de depuracion",
-                cad,
-                "&Salir",
-                QString::null, 0);
-	}// end if
-// # endif
-}// end depura
+void _depura(QString cad, int nivel=0);
 
 
 
