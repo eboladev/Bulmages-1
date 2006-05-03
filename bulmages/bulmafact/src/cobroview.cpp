@@ -37,7 +37,6 @@ CREATE TABLE presupuesto (
    telpresupuesto character varying(20),
    vencpresupuesto date,
    comentpresupuesto character varying(3000),
-   idusuari integer,busquedaAlmacen1
    
    idcliente integer REFERENCES cliente(idcliente)
 );

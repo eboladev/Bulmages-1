@@ -99,10 +99,6 @@ public:
 	{
 		return DBvalue("idfactura");
 	};
-	QString idusuari()
-	{
-		return DBvalue("idusuari");
-	};
 	QString idforma_pago()
 	{
 		return DBvalue("idforma_pago");
@@ -156,10 +152,6 @@ public:
 		setDBvalue("idfactura",val);
 		listalineas->setColumnValue( "idfactura",val);
 		listadescuentos->setColumnValue( "idfactura",val);
-	};
-	void setIdUsuari(QString val)
-	{
-		setDBvalue("idusuari",val);
 	};
 	void setidforma_pago(QString val)
 	{

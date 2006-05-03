@@ -24,8 +24,6 @@
 // Listado de Cobros.
 #include <QLineEdit>
 #include <Q3Table>
-
-
 #include "company.h"
 #include "busquedacliente.h"
 #include "funcaux.h"

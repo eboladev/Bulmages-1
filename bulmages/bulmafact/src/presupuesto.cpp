@@ -34,7 +34,6 @@ presupuesto::presupuesto(company *comp) : DBRecord(comp) {
     addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idusuari", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
@@ -115,6 +114,7 @@ int presupuesto::cargar(QString idbudget) {
 
 
 int presupuesto::guardar() {
+	_depura("presupuesto::guardar",0);
     QString id;
     companyact->begin();
     int error = DBsave(id);
@@ -123,9 +123,10 @@ int presupuesto::guardar() {
         return -1;
     }// end if
     setidpresupuesto(id);
-    companyact->commit();
     listalineas->guardar();
     listadescuentos->guardar();
+    companyact->commit();
+	_depura("END presupuesto::guardar",0);
     return 0;
 }// end guardapresupuesto
 

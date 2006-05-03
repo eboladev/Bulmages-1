@@ -66,12 +66,8 @@ public:
 	void resizeRowsToContents() {mui_list->resizeRowsToContents();};
 	void resizeColumnToContents(int i) {mui_list->resizeColumnToContents(i);};
 	void resizeRowToContents(int i) {mui_list->resizeRowToContents(i);};
-
-
 	void hideConfig() {mui_configurador->hide();};
 	void showConfig() {mui_configurador->show();};
-
-
 
     QString imprimir();
     SubForm3(QWidget *parent);
@@ -123,6 +119,7 @@ public:
 public slots:
 	void sortByColumn(int col);
 	virtual void on_mui_confcol_clicked();
+	virtual void on_mui_confquery_clicked();
 signals:
 	void editFinish(int, int);
 };

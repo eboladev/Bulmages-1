@@ -45,7 +45,7 @@ FacturaProveedor::FacturaProveedor(company *comp) : DBRecord(comp) {
     addDBCampo("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("reffacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idusuari", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Trabajador");
     addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
 }
 

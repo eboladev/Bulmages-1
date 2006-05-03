@@ -107,10 +107,6 @@ public:
 	{
 		return DBvalue("idpresupuesto");
 	};
-	QString idusuari()
-	{
-		return DBvalue("idusuari");
-	};
 	QString procesadopresupuesto()
 	{
 		return DBvalue("procesadopresupuesto");

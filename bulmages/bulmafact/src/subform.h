@@ -41,8 +41,7 @@ protected:
     unsigned int m_options;
 public:
     SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp="");
-    ~SHeader() {}
-    ;
+    ~SHeader() {_depura("SHeader::~SHeader",0);};
     int set
         (QString val) {
         m_valorcampo=val;
@@ -66,7 +65,7 @@ class SDBRecord: public DBRecord {
 public:
     SDBRecord(postgresiface2 *con) : DBRecord(con) {}
     ;
-    ~SDBRecord() {}
+    ~SDBRecord() {_depura("SDBRecord::~SDBRecord",0);}
     ;
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
     void refresh();
@@ -80,7 +79,7 @@ public:
     SDBRecord *pare() {return m_pare;};
     SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp=""): QTableWidgetItem2(), DBCampo(com,  nom,  typ,  res,  nomp) {m_pare=par;}
     ;
-    virtual ~SDBCampo() {}
+    virtual ~SDBCampo() {_depura("SDBCampo::~SDBCampo()",1);}
     ;
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
     virtual int set(QString val);
@@ -90,7 +89,7 @@ public:
 
 
 
-
+/*
 class SubForm2: public QTableWidget {
 Q_OBJECT
 private:
@@ -162,6 +161,9 @@ public slots:
 signals:
 	void editFinish(int, int);
 };
+
+
+*/
 
 #endif
 

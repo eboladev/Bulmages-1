@@ -37,14 +37,6 @@ public:
 	~QListWidget1()
 	{
 	};
-	void pintaitem(int i)
-	{
-//		updateItem(i);
-	};
-	void pintaitem(QListWidgetItem *j)
-	{
-//		updateItem(j);
-	};
 };
 
 class QListWidgetItem1 : public QListWidgetItem
@@ -74,7 +66,6 @@ public:
 	{
 		m_nombre = m;
 		setText(m);
-		m_list->pintaitem(this);
 	};
 	QObject *object()
 	{
@@ -84,20 +75,6 @@ public:
 	{
 		return m_nombre;
 	};
-/*
-	void paint(QPainter * p)
-	{
-		Q3ListBoxPixmap::paint(p);
-	};
-	int height(const Q3ListBox * lb)
-	{
-		return Q3ListBoxPixmap::height(lb);
-	};
-	int width(const Q3ListBox * lb)
-	{
-		return Q3ListBoxPixmap::width(lb);
-	};
-*/
 };
 
 
@@ -111,7 +88,6 @@ class listventanas : public QDockWidget
 	Q_OBJECT
 
 private:
-//	Q3ListBox1 *m_listBox;
 	QListWidget1 *m_listBox;
 
 

@@ -37,7 +37,6 @@ CREATE TABLE presupuesto (
    telpresupuesto character varying(20),
    vencpresupuesto date,
    comentpresupuesto character varying(3000),
-   idusuari integer,
    
    idcliente integer REFERENCES cliente(idcliente)
 );
@@ -62,22 +61,27 @@ CREATE TABLE presupuesto (
 
 CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag) : QWidget (parent, name, flag) {
     setupUi(this);
+    _depura("CobrosList::CobrosList",0);
     m_companyact = NULL;
     m_modo=0;
     mdb_idcobro="";
     meteWindow(caption(),this);
     hideBusqueda();
+    _depura("END CobrosList::CobrosList",0);
+
 }
 
 CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)   : QWidget(parent, name, flag) {
-    m_companyact = comp;
     setupUi(this);
+    _depura("CobrosList::CobrosList",0);
+    m_companyact = comp;
     m_cliente->setcompany(comp);
     presentar();
     m_modo=0;
     mdb_idcobro="";
     meteWindow(caption(),this);
     hideBusqueda();
+    _depura("END CobrosList::CobrosList",0);
 }
 
 CobrosList::~CobrosList() {
@@ -87,24 +91,24 @@ CobrosList::~CobrosList() {
 
 
 void CobrosList::presentar() {
-    _depura("CobrosList::presenta()\n",0);
+    _depura("CobrosList::presentar()\n",0);
     if (m_companyact != NULL ) {
         cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1"+generaFiltro());
-        mui_list->cargar(cur); 
+        mui_list->cargar(cur);
+	delete cur;
 
         /// Hacemos el calculo del total.
         cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1"+generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     }// end if
-    _depura("END CobrosList::presenta()\n",0);
+    _depura("END CobrosList::presentar()\n",0);
 }
 
 
 
 QString CobrosList::generaFiltro() {
-    /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
+    _depura("CobrosList::generaFiltro\n",0);
     QString filtro="";
     if (m_filtro->text() != "") {
         filtro = " AND ( desccobro LIKE '%"+m_filtro->text()+"%' ";
@@ -123,6 +127,8 @@ QString CobrosList::generaFiltro() {
 
     if (m_fechafin->text() != "")
         filtro += " AND fechacobro <= '"+m_fechafin->text()+"' ";
+
+    _depura("END CobrosList::generaFiltro\n",0);
     return (filtro);
 }
 
@@ -233,7 +239,7 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     if (opcion == del)
         on_mui_borrar_clicked();
     if (opcion == edit)
-	on_mui_editar_clicked();
+        on_mui_editar_clicked();
     delete popup;
 }
 

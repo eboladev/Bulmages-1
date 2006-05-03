@@ -276,6 +276,7 @@ void PresupuestoView::on_mui_informereferencia_clicked() {
 
 
 int PresupuestoView::guardar() {
+	_depura("PresupuestoView::guardar",0);
     setcomentpresupuesto(m_comentpresupuesto->text());
     setnumpresupuesto(m_numpresupuesto->text());
     setidcliente(m_cliente->idcliente());
@@ -291,5 +292,6 @@ int PresupuestoView::guardar() {
     setprocesadopresupuesto(m_procesadopresupuesto->isChecked()?"TRUE":"FALSE");
     int err = presupuesto::guardar();
     dialogChanges_cargaInicial();
+	_depura("END PresupuestoView::guardar",0);
     return err;
 }

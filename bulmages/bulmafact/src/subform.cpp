@@ -28,17 +28,20 @@
 
 void SDBRecord::refresh() {
     SDBCampo *camp;
-    for (camp=(SDBCampo *) m_lista.first(); camp; camp= (SDBCampo *) m_lista.next())
+    for (int i =0; i < m_lista.size(); ++i) {
+        camp = (SDBCampo *)m_lista.at(i);
         camp->refresh();
-
+    }// end for
 }
 
 
 int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
+    _depura("SDBRecord::addDBCampo",0);
     SDBCampo *camp = new SDBCampo(this, m_conexionbase, nom, typ, res, nomp);
     camp->set
     ("");
     m_lista.append(camp);
+    _depura("END SDBRecord::addDBCampo",0);
     return 0;
 }
 
@@ -54,7 +57,8 @@ void SDBCampo::refresh() {
 }
 
 
-int SDBCampo::set(QString val) {
+int SDBCampo::set
+    (QString val) {
     if(tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
             setCheckState(Qt::Checked);
@@ -82,7 +86,7 @@ SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nom
     m_tipo = typ;
 }
 
-
+/*
 
 /// ---------------------------------------------------------
 
@@ -108,7 +112,7 @@ SDBRecord *SubForm2::newSDBRecord() {
     rec->setDBCampoId( m_campoid);
     SHeader * linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i) {
-	linea = m_lcabecera.at(i);
+        linea = m_lcabecera.at(i);
         _depura("agregamos una cabecera",0);
         rec->addDBCampo(linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     }// end for
@@ -131,8 +135,7 @@ SDBRecord *SubForm2::newSDBRecord() {
 }
 
 
-/** Este metodo crea el registro final cuando se trata de subformularios con la opcion de insertar nuevos registros en el subformulario.
-**/
+
 void SubForm2::nuevoRegistro() {
     _depura("SubForm2::nuevoRegistro",0);
     if (!m_insercion)
@@ -156,7 +159,7 @@ void SubForm2::pintaCabeceras() {
     SHeader * linea;
     int i=0;
     for ( int i = 0; i < m_lcabecera.size(); ++i) {
-	linea = m_lcabecera.at(i);
+        linea = m_lcabecera.at(i);
         headers << linea->nompresentacion();
         if (linea->options() & SHeader::DBNoView)
             hideColumn(i);
@@ -188,10 +191,7 @@ void SubForm2::situarse(unsigned int row, unsigned int col) {
 }
 
 
-/** Cuando tenemos un registro que no se tiene que cargar (pq es nuevo o algo
- ** así) de la base de datos, con la funcion pintar lo dejamos en un estado que
- ** se podria considerar presentable para poder operar con el subformulario.
- **/
+
 void SubForm2::pintar() {
     _depura("SubForm2::pintar",0);
     setColumnCount(m_lcabecera.count());
@@ -226,7 +226,7 @@ int SubForm2::cargar(cursor2 *cur) {
     setRowCount(m_lista.count());
     SDBRecord *reg;
     for ( int i = 0; i < m_lista.size(); ++i) {
-	reg = m_lista.at(i);
+        reg = m_lista.at(i);
         _depura("pintamos un SDBRecord",0);
         int j=0;
         SDBCampo *camp;
@@ -310,9 +310,9 @@ int SubForm2::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 void SubForm2::setColumnValue(QString campo, QString valor) {
     SDBRecord *rec;
     for (int i = 0; i < m_lista.size(); ++i) {
-	rec = m_lista.at(i);
+        rec = m_lista.at(i);
         rec->setDBvalue(campo, valor);
-   }// end for
+    }// end for
 }
 
 
@@ -333,7 +333,7 @@ int SubForm2::guardar() {
     int i=0;
     int error=0;
     for (int j=0; j < rowCount()-1; ++j) {
-	rec = lineaat(j);
+        rec = lineaat(j);
         rec->refresh();
         error = rec->guardar();
         if (error)
@@ -418,7 +418,7 @@ void SubForm2::cargaconfig() {
         }// end for
         file.close();
     } else {
-	resizeColumnsToContents();
+        resizeColumnsToContents();
     }// end if
     _depura("END SubForm2::cargaconfig",0);
 }
@@ -451,8 +451,10 @@ void SubForm2::sortItems(int col, Qt::SortOrder orden) {
 
 void SubForm2::sortByColumn(int col) {
     _depura("SubForm2::sortByColumn "+QString::number(col),0);
-    if (m_tipoorden == 0) m_tipoorden=1;
-    else m_tipoorden = 0;
+    if (m_tipoorden == 0)
+        m_tipoorden=1;
+    else
+        m_tipoorden = 0;
     m_colorden= col;
     ordenar();
     _depura("END SubForm2::sortByColumn",0);
@@ -468,3 +470,5 @@ void SubForm2::ordenar() {
     _depura("END SubForm2::ordenar",0);
 }
 
+
+*/

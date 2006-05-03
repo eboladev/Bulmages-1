@@ -97,10 +97,12 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
 }
 
 ClienteView::~ClienteView() {
+    _depura("ClienteView::~ClienteView\n",0);
     m_companyact->sacaWindow(this);
     m_companyact->refreshClientes();
     /// Disparamos los plugins
     g_plugins->lanza("ClienteView_Des_ClienteView", this);
+    _depura("END ClienteView::~ClienteView\n",0);
 }
 
 /**

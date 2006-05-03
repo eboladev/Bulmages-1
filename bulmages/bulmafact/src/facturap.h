@@ -95,10 +95,6 @@ public:
 		listalineas->setColumnValue("idfacturap",val);
 		listadescuentos->setColumnValue( "idfacturap",val);
 	};
-	void setIdUsuari(QString val)
-	{
-		setDBvalue("idusuari", val);
-	};
 	void setidforma_pago(QString val)
 	{
 		setDBvalue("idforma_pago", val);

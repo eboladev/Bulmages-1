@@ -29,6 +29,7 @@
 
 SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     setupUi(this);
+    _depura("SubForm3::SubForm3",0);
     mui_list->setSelectionMode( QAbstractItemView::SingleSelection );
     mui_list->setSelectionBehavior( QAbstractItemView::SelectRows);
     mui_list->setAlternatingRowColors(TRUE);
@@ -57,11 +58,14 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     /// Ocultamos la configuraciónAlbaranCliente
     hideConfig();
 
+	/// Limpiamos la lista
+	m_lista.clear();
+_depura("END SubForm3::SubForm3",0);
 }
 
 
 SDBRecord *SubForm3::newSDBRecord() {
-    _depura("SubForm3::newSDBRecord",0);
+    _depura("SubForm3::newSDBRecord\n",0);
     SDBRecord *rec = new SDBRecord(m_companyact);
     rec->setDBTableName( m_tablename);
     rec->setDBCampoId( m_campoid);
@@ -71,10 +75,11 @@ SDBRecord *SubForm3::newSDBRecord() {
         _depura("agregamos una cabecera",0);
         rec->addDBCampo(linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     }// end for
-    int j=0;
+
     SDBCampo*camp;
-    for(camp =(SDBCampo *) rec->lista()->first(); camp; camp= (SDBCampo *) rec->lista()->next()) {
-        SHeader *head = m_lcabecera.at(j);
+    for( int i =0; i < rec->lista()->size(); ++i) {
+	camp = (SDBCampo *) rec->lista()->at(i);
+        SHeader *head = m_lcabecera.at(i);
         Qt::ItemFlags flags=0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
         if (!(head->options() & SHeader::DBNoWrite))
@@ -82,9 +87,8 @@ SDBRecord *SubForm3::newSDBRecord() {
         if (head->tipo() == DBCampo::DBboolean)
             flags |= Qt::ItemIsUserCheckable;
         camp->setFlags(flags);
-        j++;
     }// end for
-    _depura("END SubForm3::newSDBRecord",0);
+    _depura("END SubForm3::newSDBRecord\n",0);
 
     return rec;
 }
@@ -93,7 +97,7 @@ SDBRecord *SubForm3::newSDBRecord() {
 /** Este metodo crea el registro final cuando se trata de subformularios con la opcion de insertar nuevos registros en el subformulario.
 **/
 void SubForm3::nuevoRegistro() {
-    _depura("SubForm3::nuevoRegistro",0);
+    _depura("SubForm3::nuevoRegistro\n",0);
     if (!m_insercion)
         return;
     SDBRecord *rec = newSDBRecord();
@@ -101,10 +105,13 @@ void SubForm3::nuevoRegistro() {
     mui_list->insertRow(mui_list->rowCount());
     SDBCampo *camp;
     int j=0;
-    for(camp =(SDBCampo *) rec->lista()->first(); camp; camp= (SDBCampo *) rec->lista()->next()) {
-        mui_list->setItem(mui_list->rowCount()-1,j,camp);
+    for(int i=0; i < rec->lista()->size(); ++i) {
+	camp = (SDBCampo *) rec->lista()->at(i);
+        mui_list->setItem(mui_list->rowCount()-1,i,camp);
         j++;
     }// end for
+    _depura("END SubForm3::nuevoRegistro\n",0);
+
 }
 
 
@@ -167,12 +174,19 @@ void SubForm3::pintar() {
 int SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar",0);
     mui_query->setText(cur->query());
+    SDBRecord *rec;
 
+	_depura("Eliminamos registros.",0);
+	mui_list->clear();
+	mui_list->setRowCount(0);
 
-    while (mui_list->rowCount() ) {
-        m_lista.removeFirst();
-        mui_list->removeRow(0);
+    while (m_lista.count() ) {
+        rec = m_lista.takeFirst();
+	if (rec)
+		delete rec;
     }// end while
+
+	_depura("Ponemos el query",0);
     while (!cur->eof()) {
         SDBRecord *rec = newSDBRecord();
         rec->DBload(cur);
@@ -190,12 +204,11 @@ int SubForm3::cargar(cursor2 *cur) {
     for ( int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
         _depura("pintamos un SDBRecord",0);
-        int j=0;
         SDBCampo *camp;
-        for(camp =(SDBCampo *) reg->lista()->first(); camp; camp= (SDBCampo *) reg->lista()->next()) {
-            _depura("ponemos un item"+camp->valorcampo(),0);
+	for ( int j =0; j < reg->lista()->size(); ++j) {
+		camp = (SDBCampo *) reg->lista()->at(j);
+            _depura("ponemos un item"+camp->valorcampo(),1);
             mui_list->setItem(i,j,camp);
-            j++;
         }// end for
     }// end for
     nuevoRegistro();
@@ -204,6 +217,7 @@ int SubForm3::cargar(cursor2 *cur) {
     ordenar();
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
+    _depura("END SubForm3::cargar",0);
     return 0;
 }
 
@@ -223,7 +237,7 @@ SDBRecord *SubForm3::lineaat(int row) {
 
 
 bool SubForm3::eventFilter( QObject *obj, QEvent *ev ) {
-    _depura("SubForm3::INIT_eventFilter()\n",0);
+    _depura("SubForm3::INIT_eventFilter()\n",1);
     if ( ev->type() == QEvent::KeyRelease ) {
         QKeyEvent *k = (QKeyEvent *)ev;
         int col=mui_list->currentColumn();
@@ -252,9 +266,9 @@ bool SubForm3::eventFilter( QObject *obj, QEvent *ev ) {
             break;
         }// end switch
     }// end if
-    _depura("SubForm3::END_eventFilter()\n",0);
+    _depura("END SubForm3::cargar()\n",1);
     return QWidget::eventFilter( obj, ev );
-} //end eventFilter
+}
 
 
 
@@ -288,11 +302,14 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 
 
 void SubForm3::setColumnValue(QString campo, QString valor) {
+    _depura("SubForm3::setColumnValue",0);
     SDBRecord *rec;
-    for (int i = 0; i < m_lista.size(); ++i) {
-        rec = m_lista.at(i);
-        rec->setDBvalue(campo, valor);
+    for (int i = 0; i < mui_list->rowCount(); ++i) {
+        rec =  lineaat(i);
+        if (rec)
+            rec->setDBvalue(campo,valor);
     }// end for
+    _depura("SubForm3::setColumnValue",0);
 }
 
 
@@ -307,6 +324,7 @@ QString SubForm3::DBvalue(QString campo, int row) {
     return rec->DBvalue(campo);
 }
 
+
 int SubForm3::guardar() {
     _depura("SubForm3::guardar",0);
     SDBRecord *rec;
@@ -319,7 +337,6 @@ int SubForm3::guardar() {
         if (error)
             return -1;
     }// end for
-
     if(!m_insercion) {
         rec = lineaat(mui_list->rowCount()-1);
         error = rec->guardar();
@@ -484,19 +501,28 @@ QString SubForm3::imprimir() {
     QString fitxersortidatxt = "<tr>\n";
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
         if (mui_listcolumnas->item(i,0)->checkState() == Qt::Checked)
-            fitxersortidatxt += "   <td>"+XMLProtect(mui_listcolumnas->item(i,0)->text())+"</td>\n";
+            fitxersortidatxt += "   <td>"+XMLProtect(mui_listcolumnas->item(i,2)->text())+"</td>\n";
     }// end for
     fitxersortidatxt += "</tr>\n";
 
-   for ( int i = 0; i < mui_list->rowCount(); ++i) {
-	fitxersortidatxt += "<tr>\n";
-	for (int j=0; j < mui_listcolumnas->rowCount(); ++j) {
-		if (mui_listcolumnas->item(j,0)->checkState() == Qt::Checked) {
-			fitxersortidatxt += "   <td>"+XMLProtect(mui_list->item(i,j)->text())+"</td>\n";
-		}// end if
-	}// end for
-	fitxersortidatxt += "</tr>\n";
-   }// end for
-	return fitxersortidatxt;
+    for ( int i = 0; i < mui_list->rowCount(); ++i) {
+        fitxersortidatxt += "<tr>\n";
+        for (int j=0; j < mui_listcolumnas->rowCount(); ++j) {
+            if (mui_listcolumnas->item(j,0)->checkState() == Qt::Checked) {
+                fitxersortidatxt += "   <td>"+XMLProtect(mui_list->item(i,j)->text())+"</td>\n";
+            }// end if
+        }// end for
+        fitxersortidatxt += "</tr>\n";
+    }// end for
+    return fitxersortidatxt;
+}
+
+
+void SubForm3::on_mui_confquery_clicked() {
+    _depura("SubForm3::on_mui_confquery_clicked ",0);
+    cursor2 *cur = m_companyact->cargacursor(mui_query->text());
+    cargar(cur);
+    delete cur;
+    _depura("END SubForm3::on_mui_confquery_clicked ",0);
 }
 

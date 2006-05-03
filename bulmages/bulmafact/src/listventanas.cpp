@@ -27,7 +27,7 @@ listventanas::listventanas( QWidget *a): QDockWidget (a) {
     connect(m_listBox, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(dclicked()));
     connect(m_listBox, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(clicked()));
     _depura("listventanas::END_listventanas()\n",0);
-}// end listventanas
+}
 
 
 void listventanas::dclicked() {
@@ -39,7 +39,7 @@ void listventanas::dclicked() {
         widget->showMaximized();
     }// end if
     _depura("END listventanas::clicked()\n",0);
-}// end clicked
+}
 
 void listventanas::clicked() {
     _depura("listventanas::clicked()\n",0);
@@ -50,7 +50,7 @@ void listventanas::clicked() {
         if (widget != punt) {
             widget->hide();
             widget->showNormal();
-        }
+        }// end if
     }// end if
     _depura("END listventanas::clicked()\n",0);
 }
@@ -118,9 +118,11 @@ void listventanas::sacaWindow(QObject *obj) {
     while (i < m_listBox->count())  {
         QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
         if (m->object() == obj) {
+            _depura("listventanas::sacaWindow Ventana encontrada y vamos a sacarla",0);
             m_listBox->takeItem(i);
+            delete m;
             break;
-        }
+        }// end if
         i++;
     }// end while
     _depura("listventanas::END_sacaWindow()\n",0);

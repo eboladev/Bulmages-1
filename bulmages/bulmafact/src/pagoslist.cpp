@@ -68,10 +68,12 @@ PagosList::~PagosList() {
 void PagosList::presentar() {
     _depura("PagosList::presentar()\n",0);
     if (m_companyact != NULL ) {
-        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador where 1=1"+generaFiltro());
+        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador WHERE 1=1"+generaFiltro());
         mui_list->cargar(cur);
+	delete cur;
+
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago where 1=1"+generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago WHERE 1=1"+generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     }// end if
@@ -98,6 +100,7 @@ QString PagosList::generaFiltro() {
         filtro += " AND fechapago >= '"+m_fechain->text()+"' ";
     if (m_fechafin->text() != "")
         filtro += " AND fechapago <= '"+m_fechafin->text()+"' ";
+    _depura("END PagosList::generaFiltro",0);
     return (filtro);
 }// end generaFiltro
 
