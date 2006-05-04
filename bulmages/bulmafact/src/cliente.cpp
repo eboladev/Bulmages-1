@@ -20,6 +20,7 @@
 
 
 Cliente::Cliente(company *comp) : DBRecord(comp) {
+    _depura("Cliente::Cliente",0);
     m_companyact=comp;
     setDBTableName("cliente");
     setDBCampoId("idcliente");
@@ -40,13 +41,14 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
     addDBCampo("provcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    _depura("END Cliente::Cliente",0);
 }
 
 Cliente::~Cliente() {}
 
 
 void Cliente::borraCliente() {
-    if (DBvalue("idcobro") != "") {
+    if (DBvalue("idcliente") != "") {
         m_companyact->begin();
         int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente="+DBvalue("idcliente"));
         if (error) {

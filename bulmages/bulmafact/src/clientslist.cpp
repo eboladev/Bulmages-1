@@ -72,14 +72,13 @@ void ClientsList::presenta() {
 
 void ClientsList::editar(int  row) {
     _depura("ClientsList::editar",0);
-    mdb_idcliente = mui_list->DBvalue("idcliente");
+    mdb_idcliente = mui_list->DBvalue("idcliente", row);
     mdb_cifcliente = mui_list->DBvalue("cifcliente",row);
     mdb_nomcliente = mui_list->DBvalue("nomcliente",row);
     if (m_modo ==0 ) {
         ClienteView *prov = m_companyact->newClienteView();
         if (prov->cargar(mdb_idcliente))
             return;
-
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {

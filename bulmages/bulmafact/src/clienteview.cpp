@@ -73,7 +73,6 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
     if (res != 0)
         return;
 
-
     m_provcliente->setcompany(m_companyact);
     m_provcliente->setProvincia("");
 
@@ -94,12 +93,13 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
     dialogChanges_cargaInicial();
     /// Disparamos los plugins
     res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
+    _depura("ClienteView::ClienteView",0);
+
 }
 
 ClienteView::~ClienteView() {
     _depura("ClienteView::~ClienteView\n",0);
     m_companyact->sacaWindow(this);
-    m_companyact->refreshClientes();
     /// Disparamos los plugins
     g_plugins->lanza("ClienteView_Des_ClienteView", this);
     _depura("END ClienteView::~ClienteView\n",0);
