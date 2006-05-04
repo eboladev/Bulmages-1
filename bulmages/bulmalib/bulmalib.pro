@@ -83,8 +83,10 @@ unix{
 
 LIBS += -rdynamic
 
-CONFIG += release \
-staticlib 
+CONFIG += release
+
+TARGET = bulmalib
+DESTDIR = ../installbulmages
 
   exists(/usr/include/postgresql/libpq-fe.h){
 

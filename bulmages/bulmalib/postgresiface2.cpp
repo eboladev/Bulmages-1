@@ -35,12 +35,14 @@
   * \param SQLQuery Query en formato SQL a realizar en la base de datos.
   */
 cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
+    _depura("cursor2::cursor2",0);
     conn = conn1;
     m_error = FALSE;
     m_query = SQLQuery;
     nomcursor = nombre;
     nregistros=0;
     registroactual=0;
+    _depura(SQLQuery,0);
     result = PQexec(conn, SQLQuery.toAscii().data());
     if (!result ) {
         m_error = TRUE;
@@ -60,6 +62,7 @@ cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
     err.sprintf("Num. Registros: %d, Num. Campos: %d",nregistros, ncampos);
     _depura(err);
     _depura("--------- FIN RESULTADO DE QUERY ----------------");
+    _depura("END cursor2::cursor2",0);
 }// end cursor2
 
 
@@ -111,7 +114,7 @@ int cursor2::numcampo(QString campo) {
         i++;
     }// end while
     if (i== numcampos()) {
-	_depura("Campo: "+campo+" no existe en la consulta: "+m_query, 2);
+        _depura("Campo: "+campo+" no existe en la consulta: "+m_query, 2);
         return(-1);
     }
     return(i);
@@ -147,8 +150,8 @@ QString cursor2::valor(QString campo, int registro) {
     }// end if
 
     i = numcampo(campo);
-    if ( i == -1) 
-	return "";
+    if ( i == -1)
+        return "";
 
     return(QString::fromUtf8(PQgetvalue(result, registro, i)));
 }// end valor
@@ -352,8 +355,9 @@ void postgresiface2::rollback() {
   * \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la respuesta al query.
   */
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
-    _depura(Query);
+    _depura ("postgresiface2::cargacursor",0);
     cursor2 *cur=new cursor2(nomcursor,conn,Query);
+    _depura ("END postgresiface2::cargacursor",0);
     return(cur);
 }// end cargacursor
 
@@ -767,7 +771,8 @@ int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, 
                   ordenasiento,
                   clase);
     int error = ejecuta(query);
-    if (error) return -1;
+    if (error)
+        return -1;
     return(val);
 }// end nuevoasiento
 
