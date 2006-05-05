@@ -38,13 +38,25 @@ public:
     ~QTableWidgetItem2() {
         _depura("~QTableWidgetItem2",1);
     };
+
+    virtual bool operator < ( const QTableWidgetItem & other);
+
 };
 
 class QTableWidget2 : public QTableWidget {
     Q_OBJECT
-public:
+private:
     int modo; // Indica el modo de dibujo.
+    int m_tipoorden;
+    int m_colorden;
 public:
+    int tipoorden() {return m_tipoorden;};
+    int colorden() {return m_colorden;};
+
+    void settipoorden(int t) { m_tipoorden = t;};
+    void setcolorden(int t) { m_colorden = t;};
+
+
     QTableWidget2(QWidget * parent = 0 );
     ~QTableWidget2() {
         _depura("~QTableWidget2",0);
@@ -55,6 +67,10 @@ public:
         QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
         setItem(x, y, newitem);
     }// end setText
+	void sortColumn ( int col, Qt::SortOrder tipoorden);
+	virtual void ordenar();
+public slots:
+	virtual void sortByColumn(int col);
 
 signals:
     void pulsadomas(int, int, int);

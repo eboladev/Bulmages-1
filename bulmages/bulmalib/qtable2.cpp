@@ -27,6 +27,41 @@
 #include "configuracion.h"
 #include "funcaux.h"
 
+
+bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
+	_depura("QTableWidgetItem2::operator<",2);
+        bool oknumero;
+        bool oknumero1;
+        QString cad = text();
+        QString cad1 = other.text();
+
+        if (cad != "") {
+            /// Comprobamos si es un número.
+            double ncad = cad.toDouble(&oknumero);
+            double ncad1 = cad1.toDouble(&oknumero1);
+            if (oknumero && oknumero1) {
+                return ncad < ncad1;
+            }// end if
+
+            QDate fcad = normalizafecha(cad);
+            QString acad = fcad.toString(Qt::ISODate);
+            QDate fcad1 = normalizafecha(cad1);
+            QString acad1 = fcad1.toString(Qt::ISODate);
+
+
+            if (acad[2] == '/' && acad1[2]== '/') {
+                return fcad < fcad1;
+            }// end if
+            return cad < cad1;
+
+        } else {
+            return TRUE;
+        }// end if
+	_depura("END QTableWidgetItem2::operator<",2);
+    }
+
+
+
 QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {
 }
 
@@ -81,56 +116,89 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
 }// end eventFilter
 
 
+void QTableWidget2::ordenar () {
+    _depura("QTableWidget2::ordenar ",0);
 
-
-
-
-
-
-
-
-
-/*
-QTableItem1(QTable *table ,EditType et ,const QString &text, int mode): QTableItem(table, et, text) {
-  modo = mode;
-}// end if
+/* A TENER EN CUENTA QUE PUEDE DAR PROBLEMAS
+    if (m_insercion)
+        mui_list->removeRow(mui_list->rowCount()-1);
+    mui_list->sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
 */
 
-/*
-void QTableItem1::paint( QPainter *p, const QColorGroup &cg, const QRect &cr, bool selected ) {
-    QColorGroup g( cg );
-    // last row is the sum row - we want to make it more visible by
-    // using a red background
-    //    if ( row() == table()->numRows() - 1 )
-//    g.setColor( QColorGroup::Base, QColor::QColor(200,200,255) );
-    QFont f(p->font());
-    // Establecemos el color de fondo de este item como el color de fondo del diario.
-    g.setColor( QColorGroup::Base, QColor::QColor(confpr->valor(CONF_BG_DIARIO).toAscii().data()) );
-
-    // Establecemos la fuente segun las preferencias del diario.
-    f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).toAscii().data()));
-	 f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).toAscii().data());
-    p->setFont( f );
-
-    if (modo == 1) {
-        g.setColor( QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO1).toAscii().data()));
-    } else {
-        g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO2).toAscii().data()));
-    }// end if
-    
-    // MODO 10
-    if (modo == 10) {
-      g.setColor( QColorGroup::Base, QColor::QColor("#FFFFFF") );
-      // Establecemos la fuente segun las preferencias del diario.
-      f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).toAscii().data()));
-            f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).toAscii().data());
-      p->setFont( f );
-      g.setColor(QColorGroup::Text, QColor::QColor("#FF0000"));
-    }// end if
-    // FIN DEL MODO 10
-    
-    Q3TableItem::paint( p, g, cr, selected );
+    sortColumn(m_colorden,(Qt::SortOrder) m_tipoorden);
+    _depura("END QTableWidget2::ordenar",0);
 }
 
-*/
+
+
+void QTableWidget2::sortByColumn ( int col) {
+    _depura("QTableWidget2::sortByColumn ",0);
+    if (m_tipoorden == 0)
+        m_tipoorden=1;
+    else
+        m_tipoorden = 0;
+    sortColumn(col,(Qt::SortOrder) m_tipoorden);
+    _depura("END QTableWidget2::sortByColumn",0);
+}
+
+
+void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
+	_depura("QTableWidget2::sortColumn",0);
+	m_tipoorden = tipoorden;
+	m_colorden = col;
+    int lastcol = columnCount();
+
+    insertColumn(lastcol);
+    insertColumn(lastcol+1);
+    insertColumn(lastcol+2);
+
+    hideColumn(lastcol);
+    hideColumn(lastcol + 1);
+    hideColumn(lastcol + 2);
+     bool oknumero = TRUE;
+     bool okfecha = TRUE;
+
+    for (int x = 0; x < rowCount(); x++) {
+		QString cad = item(x,col)->text();
+		if (cad != "") {
+			setText(x,lastcol+0,cad);
+			/// Comprobamos si es un número.
+			cad.toDouble(&oknumero);
+			if (oknumero) {
+				while (cad.length() < 10)
+					cad.insert(0,"0");
+				setText(x,lastcol + 1,cad);
+			}// end if
+
+			if (okfecha) {
+				if (cad[2] == '/') {
+					QDate fech = normalizafecha(cad);
+					cad = fech.toString(Qt::ISODate);
+				} else {
+					okfecha = FALSE;
+				}// end if
+				setText(x,lastcol + 2,cad);
+			}// end if
+		}// end if
+
+    } // end for
+
+	if (oknumero)
+  		  QTableWidget::sortItems(lastcol+1, tipoorden);
+	else if (okfecha) 
+  		  QTableWidget::sortItems(lastcol+2, tipoorden);	
+	else 
+  		  QTableWidget::sortItems(lastcol+0, tipoorden);	
+
+    removeColumn(lastcol+2);
+    removeColumn(lastcol+1);
+    removeColumn(lastcol+0);
+	_depura("END QTableWidget2::sortColumn",0);
+}
+
+
+
+
+
+
 

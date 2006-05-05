@@ -244,11 +244,13 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 // Nivel 4 = Comienza depuracion indiscriminada
 // Nivel 5 = Termina depuracion indiscriminada
 
-
+#define __DEBUGMODE
+#undef __DEBUGMODE
 
 void _depura(QString cad, int nivel) {
-static int supnivel=0;
 
+#ifdef __DEBUGMODE
+static int supnivel=0;
     if (nivel == 5) {
         supnivel = 0;
         nivel=2;
@@ -269,6 +271,8 @@ static int supnivel=0;
         fprintf(stderr,"%s\n",cad.toAscii().data());
     }
 
+
+
  if (nivel == 2 || (supnivel==2 && nivel ==0) ) {
         QMessageBox::question(
             NULL,
@@ -277,4 +281,19 @@ static int supnivel=0;
             "&Salir",
             QString::null, 0);
     }// end if
+
+#else
+
+ if (nivel == 2 ) {
+        QMessageBox::question(
+            NULL,
+            "Informacion de depuracion ",
+            cad,
+            "&Salir",
+            QString::null, 0);
+    }// end if
+
+
+#endif
+
 }// end depura
