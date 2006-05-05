@@ -235,7 +235,7 @@ void PresupuestoView::generarPedidoCliente() {
     SDBRecord *linea1;
     SDBRecord *linea3;
     for (int i = 0; i < listadescuentos->rowCount(); i++) {
-	linea1 = listadescuentos->lineaat(i);
+        linea1 = listadescuentos->lineaat(i);
         if (linea1->DBvalue( "proporciondpresupuesto") != "") {
             linea3 = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount()-1);
             linea3->setDBvalue( "conceptdpedidocliente",linea1->DBvalue("conceptdpresupuesto"));
@@ -276,7 +276,11 @@ void PresupuestoView::on_mui_informereferencia_clicked() {
 
 
 int PresupuestoView::guardar() {
-	_depura("PresupuestoView::guardar",0);
+    _depura("PresupuestoView::guardar",0);
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("PresupuestoView_guardar", this);
+    if (res != 0)
+        return 0;
     setcomentpresupuesto(m_comentpresupuesto->text());
     setnumpresupuesto(m_numpresupuesto->text());
     setidcliente(m_cliente->idcliente());
@@ -292,6 +296,6 @@ int PresupuestoView::guardar() {
     setprocesadopresupuesto(m_procesadopresupuesto->isChecked()?"TRUE":"FALSE");
     int err = presupuesto::guardar();
     dialogChanges_cargaInicial();
-	_depura("END PresupuestoView::guardar",0);
+    _depura("END PresupuestoView::guardar",0);
     return err;
 }

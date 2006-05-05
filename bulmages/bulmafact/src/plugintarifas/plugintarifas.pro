@@ -9,14 +9,10 @@ TEMPLATE = lib
 CONFIG += release \
          plugin
 	 
-LIBS +=	 -rdynamic 	 
+LIBS +=	 -rdynamic \
+	 -lbulmalib
 
 VERSION = 1.0.0
-
-# DESTDIR = .
-
-
-
 
 unix{
 TARGET = ../../../installbulmages/plugins/tarifasbf

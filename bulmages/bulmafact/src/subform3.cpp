@@ -37,9 +37,6 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     installEventFilter(this);
     m_insercion = FALSE;
     m_primero = TRUE;
-    m_colorden = 0;
-    m_tipoorden = 0;
-
 
     /// Para el listado de  columnas hacemos una inicializacionAlbaranCliente
     QStringList headers;
@@ -214,7 +211,7 @@ int SubForm3::cargar(cursor2 *cur) {
     nuevoRegistro();
 
     /// Ordenamos la tabla.
-    ordenar();
+    mui_list->ordenar();
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     _depura("END SubForm3::cargar",0);
@@ -362,8 +359,6 @@ int SubForm3::borrar() {
 }
 
 
-
-
 int SubForm3::borrar(int row) {
     SDBRecord *rec;
     rec = m_lista.at(row);
@@ -383,8 +378,8 @@ void SubForm3::guardaconfig() {
     QFile file( confpr->valor(CONF_DIR_USER)+m_tablename+"tablecfn.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
-        stream << m_colorden << "\n";
-        stream << m_tipoorden << "\n";
+        stream << mui_list->colorden() << "\n";
+        stream << mui_list->tipoorden() << "\n";
 
         for (int i = 0; i < mui_list->columnCount(); i++) {
             mui_list->showColumn(i);
@@ -410,10 +405,10 @@ void SubForm3::cargaconfig() {
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
         QString linea = stream.readLine();
-        m_colorden = linea.toInt();
+        mui_list->setcolorden (linea.toInt());
 
         linea = stream.readLine();
-        m_tipoorden = linea.toInt();
+        mui_list->settipoorden ( linea.toInt());
 
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
@@ -467,33 +462,6 @@ void SubForm3::pressedPlus(int , int ) {
 void SubForm3::editFinished(int row, int col) {
     _depura ("editFinished aun no implementado",1);
     emit(editFinish(row, col));
-}
-
-
-void SubForm3::sortItems(int col, Qt::SortOrder orden) {
-    _depura("ordenacion desabilitada",2);
-}
-
-
-void SubForm3::sortByColumn(int col) {
-    _depura("SubForm3::sortByColumn "+QString::number(col),0);
-    if (m_tipoorden == 0)
-        m_tipoorden=1;
-    else
-        m_tipoorden = 0;
-    m_colorden= col;
-    ordenar();
-    _depura("END SubForm3::sortByColumn",0);
-}
-
-
-void SubForm3::ordenar() {
-    _depura("SubForm3::ordenar ",0);
-    if (m_insercion)
-        mui_list->removeRow(mui_list->rowCount()-1);
-    mui_list->sortItems(m_colorden, (Qt::SortOrder) m_tipoorden);
-    nuevoRegistro();
-    _depura("END SubForm3::ordenar",0);
 }
 
 

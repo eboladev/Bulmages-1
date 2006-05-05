@@ -33,7 +33,7 @@
 
 
 class SubForm3: public QWidget, public Ui_SubForm3Base {
-Q_OBJECT
+    Q_OBJECT
 private:
     QList<SHeader *>   m_lcabecera;
     QList<SDBRecord *> m_lista;
@@ -42,32 +42,62 @@ private:
     QString m_campoid;
     bool m_insercion;
     bool m_primero;
-    int m_colorden;
-    int m_tipoorden;
 
 private:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();
-    QList<SDBRecord *> *lista(){return &m_lista;};
+    QList<SDBRecord *> *lista() {
+        return &m_lista;
+    };
 
 public:
 
-	int columnCount() {return mui_list->columnCount();};
-	void showColumn(int i) {mui_list->showColumn(i);};
-	int columnWidth(int i) {return mui_list->columnWidth(i);};
-	void setColumnWidth(int i, int j) {mui_list->setColumnWidth(i,j);};
-	void hideColumn(int i) {mui_list->hideColumn(i);};
-	int  currentRow() {return mui_list->currentRow();};
-	QTableWidgetItem *item(int i, int j) {return item(i,j);};
-	int rowCount() {return mui_list->rowCount();};
-	int currentColumn() {return mui_list->currentColumn();};
-	void resizeColumnsToContents() {mui_list->resizeColumnsToContents();};
-	void resizeRowsToContents() {mui_list->resizeRowsToContents();};
-	void resizeColumnToContents(int i) {mui_list->resizeColumnToContents(i);};
-	void resizeRowToContents(int i) {mui_list->resizeRowToContents(i);};
-	void hideConfig() {mui_configurador->hide();};
-	void showConfig() {mui_configurador->show();};
+    int columnCount() {
+        return mui_list->columnCount();
+    };
+    void showColumn(int i) {
+        mui_list->showColumn(i);
+    };
+    int columnWidth(int i) {
+        return mui_list->columnWidth(i);
+    };
+    void setColumnWidth(int i, int j) {
+        mui_list->setColumnWidth(i,j);
+    };
+    void hideColumn(int i) {
+        mui_list->hideColumn(i);
+    };
+    int  currentRow() {
+        return mui_list->currentRow();
+    };
+    QTableWidgetItem *item(int i, int j) {
+        return item(i,j);
+    };
+    int rowCount() {
+        return mui_list->rowCount();
+    };
+    int currentColumn() {
+        return mui_list->currentColumn();
+    };
+    void resizeColumnsToContents() {
+        mui_list->resizeColumnsToContents();
+    };
+    void resizeRowsToContents() {
+        mui_list->resizeRowsToContents();
+    };
+    void resizeColumnToContents(int i) {
+        mui_list->resizeColumnToContents(i);
+    };
+    void resizeRowToContents(int i) {
+        mui_list->resizeRowToContents(i);
+    };
+    void hideConfig() {
+        mui_configurador->hide();
+    };
+    void showConfig() {
+        mui_configurador->show();
+    };
 
     QString imprimir();
     SubForm3(QWidget *parent);
@@ -115,13 +145,11 @@ public:
     virtual void pressedAsterisk(int row, int col);
     virtual void pressedPlus(int row, int col);
     virtual void editFinished(int row, int col);
-    virtual void ordenar();
 public slots:
-	void sortByColumn(int col);
-	virtual void on_mui_confcol_clicked();
-	virtual void on_mui_confquery_clicked();
+    virtual void on_mui_confcol_clicked();
+    virtual void on_mui_confquery_clicked();
 signals:
-	void editFinish(int, int);
+    void editFinish(int, int);
 };
 
 #endif
