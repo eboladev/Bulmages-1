@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "selectorbase.h"
+#include "ui_selectorbase.h"
 #include "bselector.h"
 #include <qpushbutton.h>
 #include <qfile.h>

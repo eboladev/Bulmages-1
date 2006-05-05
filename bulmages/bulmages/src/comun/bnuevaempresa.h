@@ -20,7 +20,7 @@
 #ifndef BNuevaEmpresa_H
 #define BNuevaEmpresa_H
 
-#include "nuevaempresadlg.h"
+#include "ui_nuevaempresadlg.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
 #include <qdialog.h>

@@ -15,7 +15,7 @@
 #ifndef BCONFIGURACION_H
 #define BCONFIGURACION_H
 
-#include <uiconfiguracion.h>
+#include "ui_configuracion.h"
 #include "bselector.h"
 #include "postgresiface2.h"
 #include <qpushbutton.h>

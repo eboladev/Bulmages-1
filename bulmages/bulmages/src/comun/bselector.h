@@ -20,7 +20,7 @@
 #ifndef BSELECTOR_H
 #define BSELECTOR_H
 
-#include "selectorbase.h"
+#include "ui_selectorbase.h"
 #include <qevent.h>
 #include <qmainwindow.h>
 #include "abreempresaview.h"

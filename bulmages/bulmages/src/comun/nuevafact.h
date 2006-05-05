@@ -20,7 +20,7 @@
 #ifndef nuevafact_H
 #define nuevafact_H
 
-#include "nuevafactbase.h"
+#include "ui_nuevafactbase.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
 #include <qdialog.h>

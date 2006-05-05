@@ -14,7 +14,7 @@ INCLUDEPATH += ../../bulmalib  \
 	       /usr/include/qt4/Qt \
 	       /usr/lib/qt4/include/Qt \
 	       /usr/lib/qt4/include/QtXml
-	
+
 TARGET = ../../installbulmages/bulmages 
 
 CONFIG += release \
@@ -24,16 +24,16 @@ CONFIG += release \
 
 TEMPLATE = app 
 
-comun/selectorbase.ui.target = comun/selectorbase.ui 
+#comun/selectorbase.ui.target = comun/selectorbase.ui 
 
 FORMS += comun/importContaplusBase.ui \
 	 comun/selectorbase.ui \
-	comun/uiconfiguracion.ui\
+	comun/configuracion.ui\
 	comun/nuevaempresadlg.ui \
 	comun/nuevafactbase.ui \
 	comun/importexportbulmafactbase.ui
 
-IDLS += comun/selectorbase.ui
+#IDLS += comun/selectorbase.ui
 #        comun/uiconfiguracion.ui \
 #        comun/nuevaempresadlg.ui \
 #        comun/nuevafactbase.ui \
@@ -88,10 +88,8 @@ TRANSLATIONS += ibulmages_es.ts \
 unix{
 
 
-TARGETDEPS += ../../bulmalib/libbulmalib.a 
-
-	LIBS += ../../bulmalib/libbulmalib.a \
-        -lpq 
+	LIBS += -lpq \
+	        -lbulmalib
 
   UI_DIR = .ui
   MOC_DIR = .moc
@@ -143,6 +141,6 @@ TARGET = ..\..\..\installbulmages\bulmages
 }
 
 #The following line was inserted by qt3to4
-QT +=  
+#QT +=  
 #The following line was inserted by qt3to4
 # CONFIG += uic3

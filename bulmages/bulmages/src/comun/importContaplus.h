@@ -16,7 +16,7 @@
 #define _IMPORTCONTAPLUS_H_
 
 #include <qdialog.h>
-#include "importContaplusBase.h"
+#include "ui_importContaplusBase.h"
 #include "pgimportfiles.h"
 #include "postgresiface2.h"
 

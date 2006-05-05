@@ -17,7 +17,7 @@
 
 #include <qdialog.h>
  
-#include "importexportbulmafactbase.h"
+#include "ui_importexportbulmafactbase.h"
 #include "pgimportfiles.h"
 #include "postgresiface2.h" 
  
