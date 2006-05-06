@@ -124,6 +124,10 @@ public:
     void setDBCampoId(QString nom) {
         m_campoid = nom;
     };
+    
+    void clear() {mui_list->clear();};
+    void setRowCount(int i) {mui_list->setRowCount(i);};
+    void setColumnCount(int i) {mui_list->setColumnCount(i);};
 
     void situarse(unsigned int, unsigned int);
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
