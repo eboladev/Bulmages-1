@@ -65,7 +65,7 @@ INCLUDEPATH += ../src \
 	/usr/include/QtXml
 	
 
-VERSION = 0.1
+VERSION = 0.5.9
 
 TARGET = bulmalib
 
@@ -116,7 +116,7 @@ windows{
   CONFIG += release \
 		dll
 
-  VERSION += 0.6
+  VERSION += 0.5.9
 }
 
 #The following line was inserted by qt3to4

@@ -2,7 +2,7 @@
                           funcaux.cpp  -  description
                              -------------------
     begin                : Sun Jan 26 2003
-    copyright            : (C) 2003 by Josep Burcion and Tomeu Borr�  
+    copyright            : (C) 2003 by Josep Burcion and Tomeu Borras
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -14,11 +14,11 @@
  *                                                                         *
  ***************************************************************************/
 /** \file funcaux.cpp
-  * Fichero de implementaci� de funciones auxiliares que no es preciso encapsular<BR>
+  * Fichero de implementacion de funciones auxiliares que no es preciso encapsular<BR>
   * <P>En este fichero se implementan todas aquellas funciones que por su brevedad o aislamiento son
   * utilizadas de forma regular en el programa. Definidas en \ref funcaux.h </P>
   * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
-  * en la pr�tica totalidad de los dem� ficheros</P>
+  * en la practica totalidad de los demas ficheros</P>
   */
 
 #include "funcaux.h"
@@ -28,7 +28,6 @@
 #include <QDir>
 
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
-//Q3MainWindow *g_main=NULL;
 QMainWindow *g_main=NULL;
 
 
@@ -46,7 +45,7 @@ QString editaTexto(QString texto) {
     return vuelta;
 }
 
-/** Proteje cadenas de texto pasandoles una sustituci� de codigos especiales de XML
+/** Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML
   * \param string cadena que se va a proteger.
   * \return cadena en formato protegido.
   */
@@ -62,8 +61,8 @@ QString XMLProtect( const QString& string ) {
 
 /** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
   * \param cad Cadena inicial
-  * \param num1 Numero de d�itos totales de la cuenta.
-  * \return Devuelve un string con el c�igo de cuenta extendido al nmero de d�itos indicado.
+  * \param num1 Numero de digitos totales de la cuenta.
+  * \return Devuelve un string con el codigo de cuenta extendido al nmero de digitos indicado.
   */
 string extiendecodigo (string cad, unsigned int num1) {
     string cod=cad;
@@ -80,8 +79,8 @@ string extiendecodigo (string cad, unsigned int num1) {
 
 /** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
   * \param cad Cadena inicial
-  * \param num1 Numero de d�itos totales de la cuenta.
-  * \return Devuelve un QString con la cuenta extendida al nmero de d�itos indicado.
+  * \param num1 Numero de digitos totales de la cuenta.
+  * \return Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
   */
 QString extiendecodigo (QString cad, unsigned int num1) {
     QString cod=cad;
@@ -107,7 +106,7 @@ float fround(float n, unsigned d) {
 }// end fround
 
 
-/** Esta funci� convierte un numero con decimales a un entero. Usando la regla
+/** Esta funcion convierte un numero con decimales a un entero. Usando la regla
   * que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.
   * \param valor Numero a convertir
   */
@@ -121,7 +120,7 @@ int roundI(double valor) {
     return retorno;
 }
 
-/** Procesa el string pasado como par�etro y devuelve una estructura del tipo QDate
+/** Procesa el string pasado como parametro y devuelve una estructura del tipo QDate
  * Esta funcion extiende la fecha pasada como parametro 
  * QString y devuelve la fecha en formato QDate.
  * \param fechaintro string con la fecha a ser normalizada.
@@ -174,9 +173,9 @@ QDate normalizafecha(QString fechaintro) {
 }// end normalizafecha
 
 
-/** Esta funci� ajusta el c�igo pasado al nmero de digitos especificado.
+/** Esta funcion ajusta el codigo pasado al nmero de digitos especificado.
     Para ello bsca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
-    Lo hace a partir del quinto d�ito por defecto. Aunque este parametro deber� ser configurable.
+    Lo hace a partir del quinto digito por defecto. Aunque este parametro deberia ser configurable.
   */
 QString ajustacodigo (QString cad, unsigned int num1) {
     QString cod=cad;
@@ -234,7 +233,7 @@ void invocaPDF(const QString arch) {
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
-    QString cadsys = "mailsend -h mail.conetxia.com -d conetxia.com -f bulmages@conetxia.com -t tborras@conetxia.com -sub hola -m hola";
+    QString cadsys = "mailsend -h mail.iglues.org -d iglues.org -f bulmages@iglues.org -t test@iglues.org -sub test -m test";
     system(cadsys.ascii());
 }
 
