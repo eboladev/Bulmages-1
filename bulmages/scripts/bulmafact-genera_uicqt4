@@ -18,33 +18,7 @@
 
 # Lista con los uis que se tienen que incluir en la clausula FORMS y quitarlos de FORMS3
 
-uis[27]="pedidoclientebase"
-uis[26]="albaranclientebase"
-uis[25]="pedidoclientebase"
-uis[24]="facturaproveedorbase"
-uis[23]="albaranproveedorbase"
-uis[22]="pedidoproveedorbase"
-uis[21]="clientebase"
-uis[20]="facturasplistbase"
-uis[19]="albaranesproveedorlistbase"
-uis[18]="pedidosproveedorlist"
-uis[17]="facturaslistbase"
-uis[16]="albaranclientelistbase"
-uis[15]="clientslistbase"
-uis[14]="pedidosclientelistbase"
-uis[13]="proveditbase"
-#uis[12]="presupuestoview"
-uis[11]="providerslistbase"
-uis[10]="articleeditbase"
-uis[9]="articleslistbase"
-uis[8]="cobroslistbase"
-uis[7]="pagoslistbase"
-uis[6]="fpagobase"
-uis[5]="trabajadorbase"
-uis[4]="cobrobase"
-uis[3]="pagobase"
-uis[2]="listprovincias"
-uis[1]="about"
+uis[1]=""
 
 # --------------------------------- #
 #    NO EDITAR A PARTIR DE AQUI     #
@@ -54,7 +28,7 @@ uis[1]="about"
 # Ruta ABSOLUTA al directorio donde estan los uis.
 
 cd `pwd`
-cd ../bulmafact/src
+cd ../bulmacont/src/contabilidad
 rutauis=`pwd`
 
 # Genera los uis.
