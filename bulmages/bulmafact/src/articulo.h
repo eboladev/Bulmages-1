@@ -27,8 +27,7 @@
 #include "dbrecord.h"
 
 
-class Articulo : public DBRecord
-{
+class Articulo : public DBRecord {
 
 protected:
 	company *m_companyact;

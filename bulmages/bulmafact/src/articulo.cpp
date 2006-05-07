@@ -31,20 +31,20 @@ Articulo::Articulo(company *comp) : DBRecord(comp) {
     m_companyact=comp;
     setDBTableName("articulo");
     setDBCampoId("idarticulo");
-    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Identificador"));
-    addDBCampo("codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Codigo"));
-    addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre"));
-    addDBCampo("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Abreviacion"));
-    addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Observaciones"));
-    addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, tr("Incluir en presentaciones"));
-    addDBCampo("controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, tr("Incluir en control de stock"));
-    addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, tr("Tipo de articulo"));
-    addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, tr("Tipo de I.V.A."));
-    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Codigo completo"));
-    addDBCampo("idfamilia", DBCampo::DBint, DBCampo::DBNotNull, tr("Familia"));
-    addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, tr("Stock"));
-    addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, tr("Inactivo"));
-    addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, tr("P.V.P. base"));
+    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Identificador", "articulo"));
+    addDBCampo("codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Codigo", "articulo"));
+    addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Nombre", "articulo"));
+    addDBCampo("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Abreviacion", "articulo"));
+    addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Observaciones", "articulo"));
+    addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Incluir en presentaciones", "articulo"));
+    addDBCampo("controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Incluir en control de stock", "articulo"));
+    addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Tipo de articulo", "articulo"));
+    addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Tipo de I.V.A.", "articulo"));
+    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Codigo completo", "articulo"));
+    addDBCampo("idfamilia", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Familia", "articulo"));
+    addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Stock", "articulo"));
+    addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Inactivo", "articulo"));
+    addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("P.V.P. base", "articulo"));
 }
 
 Articulo::~Articulo() {}

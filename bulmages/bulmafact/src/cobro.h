@@ -22,13 +22,13 @@
 #define COBRO_H
 
 #include <QString>
+#include <QObject>
 
 #include "company.h"
 #include "dbrecord.h"
 
 
-class Cobro : public DBRecord
-{
+class Cobro : public DBRecord {
 
 protected:
 	company *companyact;

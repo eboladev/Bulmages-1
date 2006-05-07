@@ -24,8 +24,7 @@
 #include "company.h"
 #include "dbrecord.h"
 
-class CompArticulo : public DBRecord
-{
+class CompArticulo : public DBRecord {
 
 private:
 	company *companyact;

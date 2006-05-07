@@ -31,13 +31,13 @@ Cobro::Cobro(company *comp) : DBRecord(comp) {
 
     setDBTableName("cobro");
     setDBCampoId("idcobro");
-    addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID cobro"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, tr("ID cliente"));
-    addDBCampo("previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, tr("Prevision de cobro"));
-    addDBCampo("fechacobro", DBCampo::DBdate, DBCampo::DBNothing, tr("Fecha de cobro"));
-    addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Referencia del cobro"));
-    addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, tr("Cantidad"));
-    addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
+    addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID cobro", "cobro"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("ID cliente", "cobro"));
+    addDBCampo("previsioncobro", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Prevision de cobro", "cobro"));
+    addDBCampo("fechacobro", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de cobro", "cobro"));
+    addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia del cobro", "cobro"));
+    addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cantidad", "cobro"));
+    addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentarios", "cobro"));
 }
 
 Cobro::~Cobro() {}
@@ -53,7 +53,7 @@ void Cobro::pintar() {
     pintarefcobro(DBvalue("refcobro"));
     pintaprevisioncobro(DBvalue("previsioncobro"));
     pintacomentcobro(DBvalue("comentcobro"));
-}// end pintaCobro
+}
 
 
 

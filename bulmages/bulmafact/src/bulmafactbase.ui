@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>702</width>
-     <height>29</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuEmpresa" >
@@ -128,9 +128,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>475</y>
+     <y>478</y>
      <width>702</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
@@ -466,7 +466,7 @@
     <string>Ventana &amp;completa</string>
    </property>
    <property name="shortcut" >
-    <string>f11</string>
+    <string>F11</string>
    </property>
   </action>
   <action name="actionIndexador" >
@@ -545,7 +545,7 @@
     <string>&amp;Indexador</string>
    </property>
    <property name="shortcut" >
-    <string>ctrl+i</string>
+    <string>Ctrl+I</string>
    </property>
   </action>
  </widget>

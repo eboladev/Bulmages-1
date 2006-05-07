@@ -66,7 +66,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 	statusBar()->message( tr("Listo"), 2000 );
 	_depura("Fin de bulmafact constructor\n",0);
 
-}// end bulmafact
+}
 
 
 bulmafact::~bulmafact() {
@@ -85,14 +85,14 @@ void bulmafact::emitirfactura() {
 	_depura("emitir factura activado",0);
 	QMessageBox::information( this, tr("BulmaFact"),
                               tr("Pulse aceptar para emitir un monton de facturas"));
-}// end emitirfactura
+}
 
 
 void bulmafact::recibirfactura() {
 	_depura("recibir factura activado",0);
 	QMessageBox::critical( this, tr("BulmaFact"),
                            tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
-}// end recibirfactura
+}
 
 
 void bulmafact::about() {
@@ -109,7 +109,7 @@ void bulmafact::aboutQt() {
 
 void bulmafact::s_FPago() {
 	m_company->s_FPago();
-}// end s_FPago
+}
 
 
 void bulmafact::s_ventanaCompleta() {
@@ -118,13 +118,13 @@ void bulmafact::s_ventanaCompleta() {
 	} else {
 		showFullScreen();
 	}// end if
-}// end s_ventanaCompleta
+}
 
 
 void bulmafact::s_About()  {
 	aboutview about;
 	about.exec();
-}// end s_About
+}
 
 
 void bulmafact::closeEvent( QCloseEvent *) {
