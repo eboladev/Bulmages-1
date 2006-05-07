@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
 # Script de instalacion de BulmaGes
-# (C) Tomeu Borras, y Rene Merou Septiempbre 2004
+# (C) Tomeu Borras, y Rene Merou Septiempbre 2004, 2005, 2006
 # Este documento es GPL
 #------------------------------------------------------------------------------
 # Parametros
@@ -164,6 +164,10 @@ cp bulmacont /usr/bin
 #cp bulmatpv /usr/bin
 cp rtkview /usr/bin
 cp trml2pdf/* /usr/bin/
+
+info "Instalando libreria de Bulmalib"
+tiempo
+cp -d libbulmalib* /usr/lib
 
 info "Instalando archivos de revision del archivo de configuracion. \n"
 tiempo
