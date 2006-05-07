@@ -42,6 +42,7 @@
 #include "funcaux.h"
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name) : QWidget(parent, name, Qt::WDestructiveClose) , PedidoCliente (comp),dialogChanges(this) {
+    _depura("PedidoClienteView::PedidoClienteView",0);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     setupUi(this);
     subform3->setcompany(comp);
@@ -53,6 +54,9 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
     setListLinPedidoCliente(subform3);
     setListDescuentoPedidoCliente(m_descuentos);
     comp->meteWindow(caption(),this);
+    /// Hacemos una carga inicial para que la clase quede bien inicializada. (una chapucilla)
+    cargar("0");
+    _depura("END PedidoClienteView::PedidoClienteView",0);
 }
 
 
@@ -132,8 +136,8 @@ void PedidoClienteView::generarAlbaran() {
 
     /// Traspasamos las lineas del albaran
     SDBRecord *linea, *linea1;
-	for (int i = 0; i < listalineas->rowCount(); ++i) {
-	linea = listalineas->lineaat(i);
+    for (int i = 0; i < listalineas->rowCount(); ++i) {
+        linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea1->setDBvalue( "desclalbaran",linea->DBvalue("desclpedidocliente"));
@@ -150,7 +154,7 @@ void PedidoClienteView::generarAlbaran() {
 
     /// Traspasamos los descuentos.
     for ( int i = 0; i < listadescuentos->rowCount(); ++i) {
-	linea1 = listadescuentos->lineaat(i);
+        linea1 = listadescuentos->lineaat(i);
         if (linea1->DBvalue( "proporciondpedidocliente") != "") {
             linea = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount()-1);
             linea->setDBvalue( "conceptdalbaran",linea1->DBvalue("conceptdpedidocliente"));
@@ -215,8 +219,8 @@ void PedidoClienteView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning(this, tr("Guardar pedido de cliente"),
-						tr("Desea guardar los cambios?"),
-						tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             guardar();
         if (val == 2)

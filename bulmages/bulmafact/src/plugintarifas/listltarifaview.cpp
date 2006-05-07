@@ -21,11 +21,10 @@
 #include "listltarifaview.h"
 #include "funcaux.h"
 
-
 ListLTarifaView::ListLTarifaView(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    _depura("ListLTarifaView::ListLTarifaView",0);
     setDBTableName("ltarifa");
     setDBCampoId("idltarifa");
-
     addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomtarifa");
     addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomalmacen");
     addSHeader("pvpltarifa", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "cantcomparticulo");
@@ -35,12 +34,14 @@ ListLTarifaView::ListLTarifaView(QWidget *parent, const char *) : SubForm2Bf(par
     addSHeader("idltarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "idarticulo");
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, "codigocompletoarticulo");
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, "nomarticulo");
-	setinsercion(FALSE);
+    setinsercion(FALSE);
+    _depura("END ListLTarifaView::ListLTarifaView",0);
 }
 
 
 
 ListLTarifaView1::ListLTarifaView1(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    _depura("ListLTarifaView1::ListLTarifaView1",0);
     setDBTableName("ltarifa");
     setDBCampoId("idltarifa");
     addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite , "nomalmacen");
@@ -52,6 +53,6 @@ ListLTarifaView1::ListLTarifaView1(QWidget *parent, const char *) : SubForm2Bf(p
     addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idtarifa");
     addSHeader("idltarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "idltarifa");
     addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoView, "nomtarifa");
-
-	setinsercion(FALSE);
+    setinsercion(FALSE);
+    _depura("ListLTarifaView1::ListLTarifaView1",0);
 }

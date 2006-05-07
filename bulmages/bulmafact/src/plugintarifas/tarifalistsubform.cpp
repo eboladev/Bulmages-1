@@ -26,9 +26,12 @@
 
 
 TarifaListSubform::TarifaListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+	_depura("TarifaListSubform::TarifaListSubform",0);
     setDBTableName("tarifa");
     setDBCampoId("idtarifa");
     addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomarticulo");
     addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, "idtarifa");
 	setinsercion(FALSE);
+	_depura("END TarifaListSubform::TarifaListSubform",0);
+
 };

@@ -50,6 +50,8 @@ FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
     setListDescuentoFactura(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
+    /// Hacemos una carga inicial para que quede bien inicializada la clase( una chapucilla)
+    cargar("0");
     _depura("END FacturaView::FacturaView");
 }
 
@@ -150,7 +152,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
     SDBRecord *linea, *linea1;
     for (int i = 0; i < bud->getlistalineas()->rowCount(); ++i) {
-	linea = getlistalineas()->lineaat(i);
+        linea = getlistalineas()->lineaat(i);
         /// Los registros vacios no se tienen en cuenta
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = getlistalineas()->lineaat(getlistalineas()->rowCount()-1);
@@ -183,7 +185,7 @@ void FacturaView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning(this, "Guardar factura",
-                                        "Desea guardar los cambios?","&Si","&No","&Cancelar",0,2);
+                                       "Desea guardar los cambios?","&Si","&No","&Cancelar",0,2);
         if (val == 0)
             guardar();
         if (val == 2)

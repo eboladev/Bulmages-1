@@ -18,9 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
-
-
 #include <QMessageBox>
 #include <Q3Table>
 #include <QWidget>
@@ -50,25 +47,6 @@ using namespace std;
 #include "informereferencia.h"
 #include "plugins.h"
 
-
-#define COL_IDLPRESUPUESTO 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLPRESUPUESTO 4
-#define COL_CANTLPRESUPUESTO 5
-#define COL_PVPLPRESUPUESTO 6
-#define COL_DESCUENTOLPRESUPUESTO 7
-#define COL_IDPRESUPUESTO 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
-
-#define COL_DESCUENTO_IDDPRESUPUESTO 0
-#define COL_DESCUENTO_CONCEPTDPRESUPUESTO 1
-#define COL_DESCUENTO_PROPORCIONDPRESUPUESTO 2
-#define COL_DESCUENTO_REMOVE 3
-
 #define coma "'"
 
 PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *name) : QWidget(parent, name, Qt::WDestructiveClose) , presupuesto(comp) ,dialogChanges(this) {
@@ -78,7 +56,6 @@ PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *n
     int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
     if (res != 0)
         return;
-
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform2->setcompany(comp);
     m_descuentos->setcompany(comp);
@@ -89,11 +66,12 @@ PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *n
     setlislinpresupuesto(subform2);
     setlisdescpresupuesto(m_descuentos);
     inicialize();
-    _depura("vamos a meter la ventana",0);
     comp->meteWindow(caption(),this);
-
     /// Disparamos los plugins por flanco descendente.
     g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
+
+	/// Hacemos una carga falsa para que la clase quede bien inicializada. (es una chapucilla)
+	cargar("0");
     _depura("Fin de la inicializacion de PresupuestoView\n",0);
 }// end PresupuestoView
 

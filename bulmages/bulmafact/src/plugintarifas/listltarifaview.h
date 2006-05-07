@@ -27,25 +27,27 @@
 
 
 class ListLTarifaView : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
 public:
-	QString mdb_idarticulo;
-	ListLTarifaView(QWidget *parent = 0, const char *name = 0);
-	~ListLTarifaView() {};
+    QString mdb_idarticulo;
+    ListLTarifaView(QWidget *parent = 0, const char *name = 0);
+    ~ListLTarifaView() {}
+    ;
 
 public slots:
-virtual void cargar(QString idarticulo) {
-    _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+    virtual void cargar(QString idarticulo) {
+        _depura("ListLTarifaView::cargaListCompArticulo\n",0);
 
-	mdb_idarticulo=idarticulo;
+        mdb_idarticulo=idarticulo;
 
-    QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa, (SELECT * FROM articulo WHERE idarticulo = "+mdb_idarticulo+") AS t2) AS t3 ";
-	    SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=t3.idtarifa AND t1.idalmacen=t3.idalmacen ";
+        QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa, (SELECT * FROM articulo WHERE idarticulo = "+mdb_idarticulo+") AS t2) AS t3 ";
+        SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=t3.idtarifa AND t1.idalmacen=t3.idalmacen ";
 
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
-	SubForm2Bf::cargar(cur);
-    delete cur;
-};
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm2Bf::cargar(cur);
+        delete cur;
+        _depura("END ListLTarifaView::cargaListCompArticulo\n",0);
+    };
 
 
 
@@ -55,22 +57,23 @@ virtual void cargar(QString idarticulo) {
 
 
 class ListLTarifaView1 : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
 public:
-	ListLTarifaView1(QWidget *parent = 0, const char *name = 0);
-	~ListLTarifaView1() {};
+    ListLTarifaView1(QWidget *parent = 0, const char *name = 0);
+    ~ListLTarifaView1() {}
+    ;
 
 public slots:
 
 
-virtual void cargar(QString SQLQuery) {
-    _depura("ListCompArticulo::cargar\n",0);
-	_depura(SQLQuery,0);
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
-	if (!cur->error())
-	SubForm2Bf::cargar(cur);
-    delete cur;
-};
+    virtual void cargar(QString SQLQuery) {
+        _depura("ListCompArticulo::cargar\n",0);
+        _depura(SQLQuery,0);
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        if (!cur->error())
+            SubForm2Bf::cargar(cur);
+        delete cur;
+    };
 
 
 
@@ -82,7 +85,7 @@ virtual void cargar(QString SQLQuery) {
 class myplugin1 : public QObject {
     Q_OBJECT
 public:
-	bulmafact *m_bges;
+    bulmafact *m_bges;
     company *m_companyact;
 public:
     myplugin1();

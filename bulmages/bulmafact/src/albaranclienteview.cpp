@@ -67,6 +67,7 @@ dialogChanges(this) {
 
     comp->meteWindow(caption(),this);
     dialogChanges_cargaInicial();
+    cargar("0");
     _depura("END AlbaranClienteView::AlbaranClienteView\n",0);
 }
 
@@ -179,7 +180,7 @@ void AlbaranClienteView::generarFactura() {
     QString l;
     SDBRecord *linea, *linea1;
     for (int i=0; i < listalineas->rowCount(); ++i) {
-	linea = listalineas->lineaat(i);
+        linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
@@ -236,8 +237,8 @@ void AlbaranClienteView::agregarFactura() {
     /// pero por ahora pasamos de hacerlo.
     QString l;
     SDBRecord *linea, *linea1;
-	for (int i = 0; i < listalineas->rowCount(); ++i) {
-	linea = listalineas->lineaat(i);
+    for (int i = 0; i < listalineas->rowCount(); ++i) {
+        linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount()-1);
             linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));

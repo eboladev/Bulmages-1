@@ -42,7 +42,7 @@ using namespace std;
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose) , FacturaProveedor (comp) ,dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	setupUi(this);
+    setupUi(this);
     subform2->setcompany(comp);
     m_forma_pago->setcompany(comp);
     m_proveedor->setcompany(comp);
@@ -51,13 +51,13 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
     setListDescuentoFacturaProv(m_descuentos);
     inicialize();
     comp->meteWindow(caption(),this);
-    dialogChanges_cargaInicial();
+    /// Hacemos una cargaa inicial falsa para que se inicializa bien la clase (una  chapucilla)
+    cargar("0");
     _depura("Fin de la inicializacion de FacturaProveedor\n");
 }
 
 
 FacturaProveedorView::~FacturaProveedorView() {
-    //    companyact->refreshFacturaProveedors();
     companyact->sacaWindow(this);
 }
 
@@ -70,14 +70,14 @@ void FacturaProveedorView::inicialize() {
     m_totalDiscounts->setAlignment(Qt::AlignRight);
     m_totalfacturap->setReadOnly(TRUE);
     m_totalfacturap->setAlignment(Qt::AlignRight);
-}// end inicialize
+}
 
 
 void   FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalfacturap->setText((iva+base).toQString());
-}// end pintatotales
+}
 
 
 void FacturaProveedorView::s_nuevoCobro() {
@@ -90,15 +90,15 @@ void FacturaProveedorView::s_nuevoCobro() {
         bud->pintaCobro();
         bud->show();
     */
-}// end s_nuevoCobro
+}
 
 
 void FacturaProveedorView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning(this, tr("Guardar factura de proveedor."),
-						tr("Desea guardar los cambios?"),
-						tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             guardar();
         if (val == 2)

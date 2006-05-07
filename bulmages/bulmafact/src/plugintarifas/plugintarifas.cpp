@@ -17,22 +17,9 @@ myplugin1::myplugin1() {}
 myplugin1::~myplugin1() {}
 
 void myplugin1::elslot() {
-
-/*
-	QDialog *diag=new QDialog(0);
-	diag->setModal(true);
-*/
 	TarifaListView *tar = new TarifaListView(m_companyact, NULL);
 	m_companyact->m_pWorkspace->addWindow(tar);
-
 	tar->show();
-/*
-	connect(tar, SIGNAL(selected(QString)), diag, SLOT(accept()));
-	diag->exec();
-
-	delete tar;
-	delete diag;
-*/
 }// end elslot
 
 void myplugin1::inicializa(bulmafact *bges) {
@@ -103,6 +90,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
     l->setObjectName(QString::fromUtf8("ltarifas"));
     l->setcompany( art->companyact());
     art->mui_tab->addTab(l, "Tarifas");
+    _depura("END ArticuloView_ArticuloView",0);
     return 0;
 }
 
@@ -111,6 +99,7 @@ int ArticuloView_cargar(ArticuloView *art) {
     _depura("ArticuloView_cargar",0);
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
     l->cargar(art->DBvalue("idarticulo"));
+    _depura("END ArticuloView_cargar",0);
     return 0;
 }
 
