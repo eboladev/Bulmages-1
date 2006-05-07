@@ -17,6 +17,11 @@
 #include <unistd.h>
 #endif
 
+#include <QPixmap>
+#include <Q3Frame>
+#include <QEvent>
+
+
 // Qt includes
 #include <q3accel.h>
 
@@ -24,9 +29,7 @@
 #include <q3dockwindow.h>
 
 //Added by qt3to4:
-#include <QPixmap>
-#include <Q3Frame>
-#include <QEvent>
+
 
 // application specific includes
 #include "bulmages01.h"
@@ -38,7 +41,9 @@
 #include "log.h"
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString DB)
-        : BulmaContBase(parent,name,f) {
+        : QMainWindow(parent,name,f) {
+	_depura("Bulmages01::Bulmages01",2);
+	setupUi(this);
 
 	m_empresaactual = new empresa();
 	m_empresaactual->init(DB);
@@ -53,7 +58,9 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
 
     ctllog->setempresa(m_empresaactual);
     ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
-}// end Bulmages01
+
+	_depura("END Bulmages01::Bulmages01",2);
+}
 
 
 Bulmages01::~Bulmages01() {
@@ -73,19 +80,23 @@ void Bulmages01::initActions() {
 
 
 void Bulmages01::initMenuBar() {
+/*
     Ayuda->insertItem(tr("Que es ??"), this, SLOT(whatsThis()), Qt::SHIFT+Qt::Key_F1);
+*/
 }
 
 
 // TOOLBAR
 void Bulmages01::initToolBar() {
+/*
     Q3WhatsThis::whatsThisButton(fileToolbar);
-}// end initToolBar
+*/
+}
 
 
 void Bulmages01::initStatusBar() {
     statusBar()->message(tr("Listo."));
-}// end initSatusBar
+}
 
 
 void Bulmages01::initView() {
@@ -93,7 +104,7 @@ void Bulmages01::initView() {
     m_view_back->setFrameStyle( Q3Frame::StyledPanel | Q3Frame::Sunken );
     m_pWorkspace = new QWorkspace( m_view_back );
     setCentralWidget(m_view_back);
-}// end initView
+}
 
 
 void Bulmages01::showView() {
@@ -101,12 +112,12 @@ void Bulmages01::showView() {
 	m_empresaactual->inicializa1();
     showMaximized();
     m_empresaactual->maximiza();
-}// end initView
+}
 
 
 bool Bulmages01::eventFilter(QObject* object, QEvent* event)  {
     return QWidget::eventFilter( object, event );    // standard event processing
-}// end eventFilter
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -116,11 +127,11 @@ bool Bulmages01::eventFilter(QObject* object, QEvent* event)  {
 void Bulmages01::slotEditUndo()  {
     statusBar()->message(tr("Reverting last action..."));
     statusBar()->message(tr("Ready."));
-}//end slotEditUndo
+}
 
 void Bulmages01::slotAmortizaciones() {
     m_empresaactual->amortizaciones();
-}// end amortizaciones
+}
 
 
 void Bulmages01::slotBloqFechas() {
@@ -130,22 +141,23 @@ void Bulmages01::slotBloqFechas() {
 void Bulmages01::slotEditCut()  {
     statusBar()->message(tr("Cutting selection..."));
     statusBar()->message(tr("Ready."));
-}// end slotEditCut
+}
 
 
 void Bulmages01::slotEditCopy()  {
     statusBar()->message(tr("Copying selection to clipboard..."));
     statusBar()->message(tr("Ready."));
-}//end slotEditCopy
+}
 
 
 void Bulmages01::slotEditPaste()  {
     statusBar()->message(tr("Inserting clipboard contents..."));
     statusBar()->message(tr("Ready."));
-}// end slotEditPaste
+}
 
 
 void Bulmages01::slotViewToolBar(bool toggle)  {
+/*
     statusBar()->message(tr("Toggle toolbar..."));
     if (toggle== false) {
         fileToolbar->hide();
@@ -161,15 +173,16 @@ void Bulmages01::slotViewToolBar(bool toggle)  {
         gestionToolbar->show();
     }// end if
     statusBar()->message(tr("Listo."));
-}// end slotViewToolBar
+*/
+}
 
 void Bulmages01::tile() {
 	m_pWorkspace->tile();
-}// end tile
+}
 
 void Bulmages01::cascade() {
 	m_pWorkspace->cascade();
-}// end tile
+}
 
 
 ///////////////////////////////////////////////////////////////////
@@ -183,7 +196,7 @@ void Bulmages01::slotViewStatusBar(bool toggle)  {
         statusBar()->show();
     }// end if
     statusBar()->message(tr("Ready."));
-}// end slotViewStatusBar
+}
 
 
 ///////////////////////////////////////////////////////////////////
@@ -197,7 +210,7 @@ void Bulmages01::slotViewFullScreen(bool toggle)  {
         showFullScreen();
     }// end if
     statusBar()->message(tr("Ready."));
-}// end slotViewStatusBar
+}
 
 
 
@@ -209,50 +222,50 @@ void Bulmages01::slotHelpAbout()  {
     aboutview *about=new aboutview(0,0);
     about->exec();
     delete about;
-}// end slotHelpAbout
+}
 
 
 void Bulmages01::slotStatusHelpMsg(const QString &text) {
     ///////////////////////////////////////////////////////////////////
     // change status message of whole statusbar temporary (text, msec)
     statusBar()->message(text, 2000);
-}// end slotStatusHelpMsg
+}
 
 
 void Bulmages01::slotPlanCuentas()  {
     statusBar()->message(tr("Plan de Cuentas"));
     m_empresaactual->muestracuentas();
-}// end slotPlanCuentas
+}
 
 
 void Bulmages01::slotListadoCuentas()  {
     statusBar()->message(tr("Listado de Cuentas"));
-}// end slotListadoCuentas
+}
 
 
 void Bulmages01::slotAsientosInteligentes()  {
     statusBar()->message(tr("Asientos Inteligentes"));
     m_empresaactual->ainteligentes();
-}// end slotAsientosInteligentes
+}
 
 
 void Bulmages01::slotIntroducirApuntes()  {
     statusBar()->message(tr("Introducción de Apuntes"));
     m_empresaactual->muestraapuntes();
-}// end slotIntroducirApuntes
+}
 
 void Bulmages01::slotIntroducirApuntes1()  {
     statusBar()->message(tr("Introducción de Borrador"));
     m_empresaactual->muestraapuntes1();
-}// end slotIntroducirApuntes1
+}
 
 void Bulmages01::slotListarApuntes() {
     m_empresaactual->muestraasientos();
-}// end slotListarApuntes
+}
 
 void Bulmages01::slotAsientos()  {
     m_empresaactual->muestraasientos();
-}// end slotAsientos
+}
 
 void Bulmages01::slotCentrosCoste() {
     m_empresaactual->ccostes();
@@ -266,10 +279,7 @@ void Bulmages01::slotMPatrimoniales() {
     m_empresaactual->mpatrimoniales();
 }
 
-void Bulmages01::slotPropiedadesEmpresa()  {
-    statusBar()->message(tr("Propiedades Empresa"));
-    m_empresaactual->propiedadempresa();
-}// end slotPropiedadesEmpresa
+
 
 
 void Bulmages01::slotLibroMayor() {
@@ -280,116 +290,116 @@ void Bulmages01::slotLibroMayor() {
 void Bulmages01::slotLibroDiario()  {
     statusBar()->message(tr("Libro Diario"));
     m_empresaactual->librodiario();
-}// end slotLibroDiario
+}
 
 
 void Bulmages01::slotSiguiente() {
     m_empresaactual->boton_siguiente();
-}// end slotSiguiente
+}
 
 
 void Bulmages01::slotCompBalance() {
     m_empresaactual->compbalance();
-}// end slotCompBalance
+}
 
 
 void Bulmages01::slotAnterior() {
     m_empresaactual->boton_anterior();
-}//end slotAnterior
+}
 
 void Bulmages01::slotUltimo() {
     m_empresaactual->boton_ultimo();
-}// end slotUltimo
+}
 
 void Bulmages01::slotPrimero() {
     m_empresaactual->boton_primero();
-}// end slotPrimero
+}
 
 void Bulmages01::slotPerdidas() {}// end slotPerdidas
 
 void Bulmages01::slot347() {
     m_empresaactual->modelo347();
-}// end slot347
+}
 
 void Bulmages01::slotBalan() {}// end slotBalan
 
 void Bulmages01::slotRegistroIva() {
     m_empresaactual->registroiva();
-}// end slotRegistroIva
+}
 
 
 void Bulmages01::slotReload() {
     m_empresaactual->boton_reload();
-}// end slotReload
+}
 
 
 void Bulmages01::slotBalance() {
     m_empresaactual->librobalance();
-}// end slotBalance
+}
 
 void Bulmages01::slotBalanceTree() {
     m_empresaactual->librobalancetree();
-}// end slotBalance
+}
 
 void Bulmages01::slotGuardar() {
     m_empresaactual->boton_guardar();
-}// end slotGuardar
+}
 
 
 void Bulmages01::slotcierraEmpresa() {
     m_empresaactual->cierraempresa();
-}// end slotGuardar
+}
 
 
 void Bulmages01::slotabreEmpresa() {
     m_empresaactual->abreempresa();
-}// end slotabreEmpresa
+}
 
 void Bulmages01::slotregularizaEmpresa() {
     m_empresaactual->regularizaempresa();
-}// end slotregularizaEmpresa
+}
 
 
 void Bulmages01::slotImprimir() {
     m_empresaactual->boton_imprimir();
-}// end slotImprimir
+}
 
 
 
 void Bulmages01::slotAbrirasientos() {
     m_empresaactual->Abrirasientos();
-}// end slotAbrirasientos
+}
 
 void Bulmages01::slotOrdenarasientos() {
     m_empresaactual->Ordenarasientos();
-}// end slotOrdenarasientos
+}
 
 
 
 void Bulmages01::slotCobPag() {
     m_empresaactual->cobPag();
-}// end cobPag
+}
 
 
 void Bulmages01::slotFiltro() {
     m_empresaactual->Filtro();
-}// end slotFiltro
+}
 
-void Bulmages01::windowMenuAboutToShow()  {}// end windowMenuAboutToShow
+void Bulmages01::windowMenuAboutToShow()  {}
 
 
-void Bulmages01::slotWindowNewWindow() {}// end slotWindowNewWindow
+void Bulmages01::slotWindowNewWindow() {}
 
 
 void Bulmages01::slotAyuda() {
     actualizacionesview *act = new actualizacionesview(0,0);
     act->exec();
     delete act;
-}// end slotAyuda
+}
 
 void Bulmages01::slotSCuentas() {
     m_empresaactual->reemplazacuentaenasientos();
-}// end slotNEjercicio
+}
 
 
 void Bulmages01::slotRecSald() {
@@ -398,11 +408,11 @@ void Bulmages01::slotRecSald() {
 
 void Bulmages01::slotCCosteDef() {
     m_empresaactual->centrocostedefecto();
-}// end slotNEjercicio
+}
 
 void Bulmages01::slotCanalDef() {
     m_empresaactual->canaldefecto();
-}// end slotNEjercicio
+}
 
 
 void Bulmages01::slotTiposIVA() {

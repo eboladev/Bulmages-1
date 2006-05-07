@@ -1,1157 +1,415 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>BulmaContBase</class>
-<widget class="QMainWindow">
-    <property name="name">
-        <cstring>BulmaContBase</cstring>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>BulmaContBase</class>
+ <widget class="QMainWindow" name="BulmaContBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>BulmaCont</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_bulmages.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget" />
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuListados" >
+    <property name="title" >
+     <string>Listados</string>
     </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>124</width>
-            <height>273</height>
-        </rect>
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="actionMasas_Patrimoniales" />
+    <addaction name="separator" />
+    <addaction name="actionRegistro_de_IVA" />
+    <addaction name="actionModelo_347_no_oficial" />
+    <addaction name="separator" />
+    <addaction name="actionCobros_y_Pagos" />
+    <addaction name="actionAmortizaciones" />
+   </widget>
+   <widget class="QMenu" name="menuMaestro" >
+    <property name="title" >
+     <string>Maestro</string>
     </property>
-    <property name="caption">
-        <string>BulmaContBase</string>
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="actionTipos_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionCentros_de_Coste" />
+    <addaction name="actionCanales" />
+    <addaction name="separator" />
+    <addaction name="actionAsientos_Inteligentes" />
+   </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>Ventana</string>
     </property>
-    <property name="icon">
-        <pixmap>image0</pixmap>
+    <addaction name="actionPlan_Contable" />
+    <addaction name="actionAsientos" />
+    <addaction name="actionApuntes_Contables" />
+    <addaction name="actionLibro_Mayor" />
+    <addaction name="actionLibro_Diario" />
+    <addaction name="actionBalance_de_Sumas_y_Saldos" />
+    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+   </widget>
+   <widget class="QMenu" name="menuHerramientas" >
+    <property name="title" >
+     <string>Herramientas</string>
     </property>
-</widget>
-<menubar>
-    <property name="name">
-        <cstring>Menu</cstring>
+    <addaction name="actionImprimir" />
+    <addaction name="actionGuardar" />
+    <addaction name="actionActualizar" />
+    <addaction name="actionFiltrar" />
+    <addaction name="separator" />
+    <addaction name="actionRecalcular_Saldos_Iniciales" />
+    <addaction name="actionSustituir_Cuentas" />
+    <addaction name="actionBloquear_Fechas" />
+    <addaction name="separator" />
+    <addaction name="actionCanal_por_Defecto" />
+    <addaction name="actionCentro_de_Coste_por_Defecto" />
+   </widget>
+   <widget class="QMenu" name="menuAyuda" >
+    <property name="title" >
+     <string>Ayuda</string>
     </property>
-    <item text="Empresa" name="Empresa">
-        <action name="a_propempresa"/>
-        <action name="a_salir"/>
-    </item>
-    <item text="Asiento" name="Asiento">
-        <action name="a_abrirasientos"/>
-        <action name="a_ordenarasientos"/>
-        <separator/>
-        <action name="a_aapertura"/>
-        <action name="a_aregularizacion"/>
-        <action name="a_cierraempresa"/>
-    </item>
-    <item text="Listados" name="Listados">
-        <action name="a_balances"/>
-        <action name="a_mpatrimoniales"/>
-        <separator/>
-        <action name="a_registroiva"/>
-        <action name="a_347"/>
-        <separator/>
-        <action name="a_cobrospagos"/>
-        <action name="a_amortizaciones"/>
-    </item>
-    <item text="Ventana" name="Ventana">
-        <action name="a_plancontable"/>
-        <action name="a_asientos"/>
-        <action name="a_intapunts"/>
-        <action name="a_mayor"/>
-        <action name="a_diario"/>
-        <action name="a_balance"/>
-        <action name="a_balancetree"/>
-    </item>
-    <item text="Maestro" name="Maestro">
-        <action name="a_fpago"/>
-        <action name="a_tiposiva"/>
-        <separator/>
-        <action name="a_ccostes"/>
-        <action name="a_canales"/>
-        <separator/>
-        <action name="a_ainteligentes"/>
-    </item>
-    <item text="Herramientas" name="Herramientas">
-        <action name="a_imprimir"/>
-        <action name="a_guardar"/>
-        <action name="a_filtro"/>
-        <action name="a_actualizar"/>
-        <separator/>
-        <action name="a_recalculasaldos"/>
-        <action name="a_sustituircuentas"/>
-        <action name="a_bloqfechas"/>
-        <separator/>
-        <action name="a_canaldefecto"/>
-        <action name="a_ccostedefecto"/>
-    </item>
-    <item text="Ver" name="Ver">
-        <action name="a_fullscreen"/>
-        <action name="a_tile"/>
-        <action name="a_cascade"/>
-        <separator/>
-        <action name="a_statusbar"/>
-        <action name="a_toolbar"/>
-        <action name="verToolBarsAction"/>
-        <item text="ToolBars" name="popupMenu_48" accel="">
-            <action name="verToolBarsEmpresaAction"/>
-            <action name="verToolBarsVentanasAction"/>
-            <action name="verToolBarsNavegacinAction"/>
-            <action name="verToolBarsAyudaAction"/>
-            <action name="verToolBarsHerramientasAction"/>
-        </item>
-    </item>
-    <item text="Ayuda" name="Ayuda">
-        <action name="a_ayuda"/>
-        <action name="a_acercade"/>
-    </item>
-</menubar>
-<toolbars>
-    <toolbar dock="2">
-        <property name="name">
-            <cstring>empresaToolbar</cstring>
-        </property>
-        <property name="label">
-            <string>Empresa</string>
-        </property>
-        <action name="a_propempresa"/>
-        <action name="a_plancontable"/>
-    </toolbar>
-    <toolbar dock="2">
-        <property name="name">
-            <cstring>ventToolbar</cstring>
-        </property>
-        <property name="resizeEnabled">
-            <bool>false</bool>
-        </property>
-        <property name="label">
-            <string>Ventanas</string>
-        </property>
-        <action name="a_intapunts"/>
-        <action name="a_diario"/>
-        <action name="a_mayor"/>
-        <action name="a_balance"/>
-        <action name="a_balancetree"/>
-        <action name="a_asientos"/>
-        <action name="a_ainteligentes"/>
-        <action name="a_ccostes"/>
-        <action name="a_canales"/>
-    </toolbar>
-    <toolbar dock="2">
-        <property name="name">
-            <cstring>navegacionToolbar</cstring>
-        </property>
-        <property name="label">
-            <string>Navegación</string>
-        </property>
-        <action name="boton_primero"/>
-        <action name="boton_anterior"/>
-        <action name="boton_siguiente"/>
-        <action name="boton_ultimo"/>
-    </toolbar>
-    <toolbar dock="2">
-        <property name="name">
-            <cstring>gestionToolbar</cstring>
-        </property>
-        <property name="label">
-            <string>Utilerias</string>
-        </property>
-        <action name="a_imprimir"/>
-        <action name="a_guardar"/>
-        <action name="a_actualizar"/>
-        <action name="a_filtro"/>
-    </toolbar>
-    <toolbar dock="2">
-        <property name="name">
-            <cstring>fileToolbar</cstring>
-        </property>
-        <property name="label">
-            <string>Ayuda</string>
-        </property>
-        <action name="a_ayuda"/>
-    </toolbar>
-</toolbars>
-<actions>
-    <action>
-        <property name="name">
-            <cstring>boton_primero</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image1</iconset>
-        </property>
-        <property name="text">
-            <string>Primero</string>
-        </property>
-        <property name="accel">
-            <string></string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>boton_anterior</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image2</iconset>
-        </property>
-        <property name="text">
-            <string>Anterior</string>
-        </property>
-        <property name="accel">
-            <string></string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>boton_siguiente</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image3</iconset>
-        </property>
-        <property name="text">
-            <string>Siguiente</string>
-        </property>
-        <property name="accel">
-            <string></string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>boton_ultimo</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image4</iconset>
-        </property>
-        <property name="text">
-            <string>Ultimo</string>
-        </property>
-        <property name="accel">
-            <string>Alt+Down</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_propempresa</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image5</iconset>
-        </property>
-        <property name="text">
-            <string>Propiedades Empresa</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_plancontable</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image6</iconset>
-        </property>
-        <property name="text">
-            <string>Plan Contable</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_intapunts</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image7</iconset>
-        </property>
-        <property name="text">
-            <string>Apuntes Contables</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_mayor</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image8</iconset>
-        </property>
-        <property name="text">
-            <string>Libro Mayor</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_diario</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image9</iconset>
-        </property>
-        <property name="text">
-            <string>Libro Diario</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_balance</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image10</iconset>
-        </property>
-        <property name="text">
-            <string>Balance de Sumas y Saldos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_balancetree</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image11</iconset>
-        </property>
-        <property name="text">
-            <string>Balance Jerárquico de Sumas y Saldos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_asientos</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image12</iconset>
-        </property>
-        <property name="text">
-            <string>Asientos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_ccostes</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image13</iconset>
-        </property>
-        <property name="text">
-            <string>Centros de Coste</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_canales</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image14</iconset>
-        </property>
-        <property name="text">
-            <string>Canales</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_ainteligentes</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image15</iconset>
-        </property>
-        <property name="text">
-            <string>Asientos Inteligentes</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_imprimir</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image16</iconset>
-        </property>
-        <property name="text">
-            <string>Imprimir</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_guardar</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image17</iconset>
-        </property>
-        <property name="text">
-            <string>Guardar</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_actualizar</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image18</iconset>
-        </property>
-        <property name="text">
-            <string>Actualizar</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_filtro</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image19</iconset>
-        </property>
-        <property name="text">
-            <string>Filtrar</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>verToolBarsAction</cstring>
-        </property>
-        <property name="text">
-            <string>ToolBars</string>
-        </property>
-        <property name="menuText">
-            <string>ToolBars</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>verToolBarsEmpresaAction</cstring>
-        </property>
-        <property name="toggleAction">
-            <bool>true</bool>
-        </property>
-        <property name="text">
-            <string>Empresa</string>
-        </property>
-        <property name="menuText">
-            <string>Empresa</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_fpago</cstring>
-        </property>
-        <property name="text">
-            <string>Formas de Pago</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_tiposiva</cstring>
-        </property>
-        <property name="text">
-            <string>Tipos de IVA</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_cobrospagos</cstring>
-        </property>
-        <property name="text">
-            <string>Cobros y Pagos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_recalculasaldos</cstring>
-        </property>
-        <property name="text">
-            <string>Recalcular Saldos Iniciales</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_ccostedefecto</cstring>
-        </property>
-        <property name="text">
-            <string>Centro de Coste por Defecto</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_canaldefecto</cstring>
-        </property>
-        <property name="text">
-            <string>Canal por Defecto</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_sustituircuentas</cstring>
-        </property>
-        <property name="text">
-            <string>Sustituir Cuentas</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_balances</cstring>
-        </property>
-        <property name="text">
-            <string>Cuentas Anuales</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_mpatrimoniales</cstring>
-        </property>
-        <property name="text">
-            <string>Masas Patrimoniales</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_ordenarasientos</cstring>
-        </property>
-        <property name="text">
-            <string>Ordenar Asientos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_abrirasientos</cstring>
-        </property>
-        <property name="text">
-            <string>Abrir Asientos</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_ayuda</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image20</iconset>
-        </property>
-        <property name="text">
-            <string>Ayuda</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_bloqfechas</cstring>
-        </property>
-        <property name="text">
-            <string>Bloquear Fechas</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_amortizaciones</cstring>
-        </property>
-        <property name="text">
-            <string>Amortizaciones</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_registroiva</cstring>
-        </property>
-        <property name="text">
-            <string>Registro de IVA</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_347</cstring>
-        </property>
-        <property name="text">
-            <string>Modelo 347 no oficial</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_aapertura</cstring>
-        </property>
-        <property name="text">
-            <string>Asiento de Apertura</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_aregularizacion</cstring>
-        </property>
-        <property name="text">
-            <string>Asiento de Regularizacion</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_cierraempresa</cstring>
-        </property>
-        <property name="text">
-            <string>Asiento de Cierre</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_acercade</cstring>
-        </property>
-        <property name="text">
-            <string>Acerca de ...</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_tile</cstring>
-        </property>
-        <property name="text">
-            <string>Ordenar Ventanas</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_cascade</cstring>
-        </property>
-        <property name="text">
-            <string>Organizacion en cascada</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_fullscreen</cstring>
-        </property>
-        <property name="toggleAction">
-            <bool>true</bool>
-        </property>
-        <property name="on">
-            <bool>false</bool>
-        </property>
-        <property name="enabled">
-            <bool>true</bool>
-        </property>
-        <property name="text">
-            <string>Pantalla Completa</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_statusbar</cstring>
-        </property>
-        <property name="toggleAction">
-            <bool>true</bool>
-        </property>
-        <property name="on">
-            <bool>true</bool>
-        </property>
-        <property name="text">
-            <string>Ver Statusbar</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_toolbar</cstring>
-        </property>
-        <property name="toggleAction">
-            <bool>true</bool>
-        </property>
-        <property name="on">
-            <bool>true</bool>
-        </property>
-        <property name="text">
-            <string>Ver Toolbars</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>verToolBarsVentanasAction</cstring>
-        </property>
-        <property name="text">
-            <string>Ventanas</string>
-        </property>
-        <property name="menuText">
-            <string>Ventanas</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>verToolBarsNavegacinAction</cstring>
-        </property>
-        <property name="text">
-            <string>Navegación</string>
-        </property>
-        <property name="menuText">
-            <string>Navegación</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>verToolBarsAyudaAction</cstring>
-        </property>
-        <property name="text">
-            <string>Ayuda</string>
-        </property>
-        <property name="menuText">
-            <string>Ayuda</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>verToolBarsHerramientasAction</cstring>
-        </property>
-        <property name="text">
-            <string>Herramientas</string>
-        </property>
-        <property name="menuText">
-            <string>Herramientas</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_salir</cstring>
-        </property>
-        <property name="text">
-            <string>Salir</string>
-        </property>
-        <property name="menuText">
-            <string>Salir</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>Action</cstring>
-        </property>
-        <property name="text">
-            <string>Unnamed</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>Action_2</cstring>
-        </property>
-        <property name="text">
-            <string>Unnamed</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>Action_3</cstring>
-        </property>
-        <property name="text">
-            <string>Unnamed</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>Action_4</cstring>
-        </property>
-        <property name="text">
-            <string>Unnamed</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>Action_5</cstring>
-        </property>
-        <property name="text">
-            <string>Unnamed</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>Action_6</cstring>
-        </property>
-        <property name="text">
-            <string>Unnamed</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>maestrow_itemAction</cstring>
-        </property>
-        <property name="text">
-            <string>w item</string>
-        </property>
-        <property name="menuText">
-            <string>w item</string>
-        </property>
-    </action>
-    <action>
-        <property name="name">
-            <cstring>a_asiento1</cstring>
-        </property>
-        <property name="iconSet">
-            <iconset>image21</iconset>
-        </property>
-        <property name="text">
-            <string>Action_7</string>
-        </property>
-    </action>
-</actions>
-<images>
-    <image name="image0">
-        <data format="PNG" length="275">89504e470d0a1a0a0000000d49484452000000100000001008060000001ff3ff61000000da49444154388d95923b0e02310c44e7fe674154880e6e4009c516295350b8d822459a4711ef27211b44a4c892ad785ec616008972e635aaca478f0990ca05312361e68f0ea2d793374bd19044f272ad343771c9bf4052754b73382670c9c7fd86242c0400c2eb511aa41141f6e2a2966ba231812bef55f6750ba17830f70812f51fd7c7ff1058ac485a6f1a02f53df8319595e03d9ac2602f8a3fd6f1a055fc45d0ddc483bf934bfe76bd3841ea10c4667ccbfc9b4ddc136be97c399f90449c9e1b896d0fd77cae09c5c477e7dcecc3b137d2f7d25863d4d89b0fc5f782ccdefc69c30000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
-        <data format="PNG" length="946">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000379494441545885ed9751489b5714c77fdfc8c30df8908082010b7e50a10929ccd0c2222dd46cc24a5e3acbf6a07b59ddd3dcf6e2e3d2a7ba37f798b7c99eeca0d0eec568b1e04ba70e34b1d025082d7e5087096b31612dc96504fe7bd00a9b1f1aa3b46cecc0e5837b0fdff9dd73ee39f75c47126f53de79abd6ff07382d8060f27adb07e9c400c18bed1b3f314038795da1d03804cce902388e23c7710edd99fb4946d1be5b44c2739840dbf6dbf340647054335f4d3270c963ecc20da07d0f20e9c000b4bb7470adfbc31bca67a5e2b3baeadb52efc7dfc85c1af1d56d651ccb03b18fc675f7eb69cc55889d0972fb57a8bc3bd2feee8196a317191ad3f0d034a17355626e989c5725d91bc63c5cc7d6ca04cfa78ecc86c6e345e7c0642b21e8be32a2a505a9b8a95dd9918a7f4ac37796d45b92cc77b3320b477ce383be613a12207aed0be5b3d2e6b31d49d2e61f756d4b4a2e1495dc967aefe4d53f2d4d2c142549db75fd4d36ebd27056ed0144af4d686941cabfdef9efd28ea4c1e5a242252934237517a4fe7b79e5ebd2ecf69ede6b889d5dfde1ecac4cfc7b5f00ff43b85758a2d15b781d1e0917ee7a55bc2ef874c563bd33865d59c65aa8ad2ee33512dcfca584dbb9ab4710725b55ca61f872be84f72a0dccf89a3a340b169fde24635d62f3f06d4f98d42a147a5c5801a2036017213a807d0585508ccfef17704361265721d61966f24189544f8cb2f5370ee0f83524fb55f06c3fc49398cb594cb444e883183cf2a8855cecca328601a8e5b08134a69903d2d0cc61026908e4a099c60616a192c2fe94f2cd82430124394137212ea6e0b3295c036610aaeb603bc1ae017160a3c0c47b09ee6d803d073c2ad188c7a8ad0117801f73d81f2a341e8f1d1f00c0e972658646e1ca24ee790f37e9525a2f533311789083401a7e9b86172908cc0123c06d680e63ed34bcacc1d382af075a2a447aee39ce99984cd352ed9ba2310fe1ab11982f50e91880fb19f0fae1c52898516cf37d004c600618053b071dfef7454b1ed89fef4bc8c45398cb5344a2051a5b092a3f67c0f3683c9c3958e55a9063dd057a5270ecda22762d83f73c4a65238b39fb86ee827d88ad82e344623280094d605733981334246db5122a971ca72f21ba3de818c736b3a70bf0cfd8fbea3c29384e972bd35b03136a1be0443da19e7b8edd2840d3b6fd8f1374737b102fcb8ed3e5b6dd19fba6e19b94ffc6cbe85f0df017ccbc8bce785b70f20000000049454e44ae426082</data>
-    </image>
-    <image name="image2">
-        <data format="PNG" length="928">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000367494441545885ed9741489b6718c77fdfc8e10d784840c180053f98d07ca4304385455aa8d984955c3acb76d05d56779adb2e1e979eea6eee98db64273b28b4bb182d16bc74ea40130b5d8230f1833a4c98c584b5242f25f0dfc15a184dab899b65630fbc7cf0f1f0fe7feff3bccffb3eaf238937696fbd51f5ff01fe2e8060e26adb1be9c400c181f6c54f0c104e5c552834010173fa00eec76945fb6e1009cf63026debb70710191ad3ec97530c5ef0193f7f0d683f02486a69747f704db98c547854536d57eafde86b990ba36a759ec3d15204bc0f2774fbab19cc65f0ce04b9f90b94df196d7ff5c0b1b317191ed7c8f00ca1b3153c374cd6af90e80d63ee6f60ab2582e792475643fde192f3d2cf6385fdd2a89617a5c2b60e6c5f2a3c93466e2dabb728996fe764168ff8c6869aa6e948f1e895cf95cb48db8ff62549db7fd4b42b29b158506257eabd9553ff8c34b9589024edd6f417dbae492319b50710bd32a9e5452977b8f2dfa57d49432b05858a526856eace4bfd7772cad5a4b9dde77e8710fb07fe23993999d8774d015eb90983032945a337f03b7ce22edcf62bf85df0c9aacf46a7875d5dc15aa8aeade0d7e35cffb988db79e04710b23b154a61f862a188ff3405cc36d5792580ddcab3b4759db475f116e09b9e30c935c8f7b8b00a4407c12e417410fb14f2218fcfeee6714361a6d6c0eb0c3375af48b2c7a3649b8b0338af6b489cbeb88825301733986891d0fb1e3cf0a9865cecea0a8641a866b18114a6910552d0c86202290864a191c20696a09cc4fe986c5a05af050008ba713190844fa7710d9821a86c80ed04bb0ec480cd3c93efc6b9b309f62cf0a0483de6515d07ce033f64b1df97a93f1c6f1d00c0e9726586c7e0d214ee391f37e152dc28513511b89785400a7e9b81c74908cc03a3c04d688c60ed0c3ca9c256be69048e751069cf779c339e4cc352e99ba6be00e1cb1158c853ee1884bb69f0fbe1f11898316ce33d004c601618033b0f1dcdef8b6345e085735f5c2696c45c9c2612cd53df8953fe290dbe4ffdfeeccba7dc31aca5bb40bfe61dbbbe845d4fe3ef45296f66306f9fd25df0026227ef38114f0630a149ec5a1a738286a4ad5642a5a2e3f4c545b70f1d13d846e67401e0201d4e972bd35b05136a1be0443da1f67cc76ee6a161db9ee304dddc73882725c7e972dbee8c5b2ac37fc2fe1b2fa37f35c09fbf688eda46cca46a0000000049454e44ae426082</data>
-    </image>
-    <image name="image3">
-        <data format="PNG" length="900">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000034b494441545885ed974f681b571087bf2d3a3c810a6bb041821824702112f420430e0ef521a28626bac5cd253e8a5e62d24b7b736e4e6fa5e0836fb56f4e2f8d528a2587aa91a14964482b35607b136c90c12e5648c112a9b11ec6f0eb412929457f6caf21b47460d965f7ed9b6f7e33f3f6ad2389b769efbc55efff03f805085e18f75d40be157082415f10fe00422ed12fca04df1b3e35842f001380e1d00b62a357706289534104fc0118a6c752cc0fa6301f4ce2bcdb27fd51774e3287ef1ac83eaff0e56598be00f14fa6700622275342d2a98ff0473754ad4a0faa92242d7ad2c8ecba88c675dc39daa6c0711c71fe1258000b47ff1810327004e65c8485b50a931f0e93dbac918e4768d83eb87c15672022fd5eeb9d8e7654804c5132338b3dcf7b7bd28d27d2e303497b6f9488cfed8a90db5389ce00338b92a4dd576a6b7fddff76634fe10d299e2d6bea50aaee1d48921e6fec2a79735a9ceb9e8eae0a68bbe564fd75643a781d61b57539f5441a792931fb40a624c5bf97aa876fc67f5d912ecdaecb0c7586e8dc05ab3918845b0f3db22198dbacd10cc2edd51af321482f7994fae1d7a51290829f8b6cd560e2478f3b21c8edd4c92421150fe28e5e6dd5551beb0cf07e9ad20e5c194a90bd0f0b26c2c7050fd31fa1f80856a2099ead94308317313607c9141c15c99c4fb0f51cec601f170b1e73c468d4eb1ddd38ed36248ee3c8cc2cd2fc344d66d923bf99a0d1b88b611c1bb80b817130c556e4fb3908a4316e053b32ccc87e8d60328257f078b19ac01632b0b68276bcf61dd1b5065e49eb8752385f56b82ac57f90e22fa568be2c775b72f3925b95dc85b2c2db52b4228d484afeb42e372f996b9f8970b46b117655c0fd2d85dd9ffddb930c04ee00d7c1cd63fb27205084b114e1fd1a896484ad82476d35817d7a0b7b6f965e4b734700a271d86f7678cd62c2b156de6fde26160037098d82473d90a0f1d524f65116d57b2f446d574249c7faa004c73232cf8a702d857db8d58a7c7912fb74f958ce3b029cc44c2c45fd5e053b30dc92fd98919f098001228539ea2643e3bbcfb14b733d737ea600f608ea43d7697c93c1aead9cd8397428c2e35a707442f4bbd85f963bf7790ff35703d662efcfa366f354cec1ef8e28607c39079f29380bfb77ff19fd2700fe04be59db804532d38b0000000049454e44ae426082</data>
-    </image>
-    <image name="image4">
-        <data format="PNG" length="925">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000364494441545885ed974f489b671cc73fefc8e10964f00a0a095448c041dfc00e117ab0cc43c384b5b9d5f5528f61974a77d96ef666771b030fdea637bbcb9a8ea1b12c6b84b555e86656505f8b42042da674604227fa20c27787549c36d1c577a36cec072fefcbf3fe78bf9fdf9fe7cfeb48e26dda3b6f55fd7f80a000e10bfd811b2870069c703810443080884bfc8b79c2ef759f19221080094177e40589de2b3889e489108ee3c8719c377c42c1000cc37d69c63bd3980f0671de6d937eaf3aad7c23700fe49e95f8f2320c5f00ef93219c8e586be59074e62bfad10d95cbd283b2244993bed433ba24e29e8efb02aacb1d1d6f5802c771c4f94b60012cec1f738818d807732ec6c46289c10fbb995aad90f162d46c1b5cbe8ad311937eab9c5e8e4691013245c98c4c9e7adfda926e3c911eef48da3acc8437b62922ae4ecb407380914949d2e62b35b483f16f57b6145d91bcdcbc86f6a4f2d68e24e9f1caa6523787c5b97a395a07284a5aaf8b2cbd8e4c3baf232cd71f879e483d2f25461fc8cc4adef75279efd0ffeb9274697449a6cb533380e6b360610a3ae1d6439f5c04c6562bec86e1f64285f10864a67d66dbe1d7e959200d3f1759abc0c08f3e772230b551259b82b417c6edbd0ac63494690ef07e86d90db8d29524771f264c8c8f0b3ea63d46f111ccc5932ccfcd623a2f62ec14a4d2b05f247b3ec9da33b09d6d5c2cf88c91a056ad3695711a1d481cc791199964f7d30cd9199ffc6a925aed2e867e6ce82e84fac114eb916f4f412883714bd89e6e7ab62b845331fc82cf8b8524b69085c53978be7cd0f44767c6893df04a5ada93a2f97945cb92f783e4bd94e2f979b9eb929b97dcb2e44ecc2bba2ec54b528fa4d44f4b72f392b9f69988c64f6cc21333e03e4f63b747fff4260ba13bc07570f3d8f6010815a12f4d74bb42321563ade0535948629fdec2de1be560693ed8078e67a02900710fb6779b54ce62a2897add6fde2611023705b5824f3594a4f6d520f6510e550f17a266000d57c237ead4c4c27d5999e5225c4b631faed5239f19c43e9d39227e9205da0d014c224df55e09dbd15d4ffbb1c8ff510003c40a63544d96da779f63a7c768753b0e0460f7a1da759dda3759ece25ccbe2d0a409ffaa857b0744bb8bfd65066df82d8b43d01eb0167b7f1cedee9e491c829e8842269038042cc1df61ffee3fa3ff04c01f3895d2a6a3c503080000000049454e44ae426082</data>
-    </image>
-    <image name="image5">
-        <data format="PNG" length="409">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000160494441545885c557cb8dc5200c74eb886eb68c48a403ae14f00eaf85d9cb82f8d8b149207b408824909961c036e10bc209c21714ce406f8fcbc3ffea6d488f007c001c003e403802567d2f23fc5b44eb89084404ef3ca28bedfbbc5e3fee151890d5c87b26d538ffbc6ef1270227889d6ff2809179af4003c24578e731aca77ac0c8dca244de9602a2f708eb8109e6921229a5114496bf9e3778e00673490924f02032f303683d50efd14d054c4ad44a17051630b728514e07eb81078cb9de62c8d6038b98734713c0e085f11ed8a840ed05ef3c7f0a7679405280bf075e5020ba08391654931ba4ab3d20c6820e790fe26e6c183c20c50275cf26995f29c0e60326e34c3017ef81ab7cc00ac2c29ccb13d47c40932fb71cef2d3f3629d0ecc90588a7edd2039a1229a5d2f7ee7e0242cc8657b1d64e839eb76f0661aa0b768298af64848567946b8cadd56e4fc62655b6d77e1a801dcca79478ad0a1600fc02bda22f393249f2e40000000049454e44ae426082</data>
-    </image>
-    <image name="image6">
-        <data format="PNG" length="262">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000000cd494441545885ed55db0dc4200cf3fe7b9571ba82ef0bd472c190132f9df8a82a430bb1e5c4e04d3010bc892b5c988dd3e2aab759190002e00c25ccca5201b314c82b8b052cf3c07405e285b5a7c6acf59c482e79c0f39362e429e078e0cc01e981930533f11e0af462561a5a6abfc9f52d5d91ef5bd83a475ec2c0d7ba747336379e582923997ae78139eb2b596232b1526b84278666416b8a7ef7a588e09ecc877840ba5d758172bb4709757909779d03a5ef9e5d91e357459e3ef72a65b5e8ff65c12f780f055630dfc6031fb89ebf622f0a9f140000000049454e44ae426082</data>
-    </image>
-    <image name="image7">
-        <data format="PNG" length="304">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000000f7494441545885c597411283201004fbffcfb20a1fe3c12f4c0e062289a20b6bf6b045a9e8d0c3888256a1596815694e781f03923e0548bb2a373dd15e890be2c8c5762e8efcdd278cbc5c8f222f7da2c85d1de816c72903d59c1ac4d39c187660445cab0823cfcf73213f5c622fc42b0746c87bc4abb7278abc2b039ee45d196885ce4a6ecec0887873058d22bf9d01ab78e977d7594ff2bdb8c98108f26606fe41decc003b211e226f6600509a6ce2dddf949f390169425aae0730427e9a01d8c4d36e102df1e1ff89a3f467f1ec44990e47f2d30c64e25cdf4e7891373350892d752600b9ee232c0e7892373370564feca2dd89aced0bf441d977cefabfba0000000049454e44ae426082</data>
-    </image>
-    <image name="image8">
-        <data format="PNG" length="231">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000000ae494441545885dd95cb0d80300c43bdff5e304e5708372e509a8f1d040754d14beda7d714360cb61b6c18b67d43f7ffb9f9d67a4906c0561f93c43c99330485c02c69078975423109575225097f521189507205897862328994bd4c12797b49244af79841a23ec98a24d2138c4582f7aa2549949a7b0fffaf0395e6df9e038ce669075e7d0b98cdc30eb09b871c5034773ba06aee7240d97ce980baf9a3031dcda70e7435bf75a0b379780ea8d6036ede2aeb7833cbbd0000000049454e44ae426082</data>
-    </image>
-    <image name="image9">
-        <data format="PNG" length="324">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000010b494441545885dd97ed6d84301044df9e5241aaa0864b7557cd55c2d64015b430f9418e707cd9265e903292b16ced48cbf2f0caa81772a15eb4de72f67a7880ae18ea85a917f669e221e88006e81c9a7becfaf9855c76f3ce819fcd71bec7af1992f9adc0056abdb59181b3c59c8161ef3c991972d9c7c8c032627d7f9ee8565cca07ef0c2c2a109c80992518182ccb911b97f051c4c0f42d4b58d9f1bd18b86d327086761998eaaf1558f1a419d8facef93ffaae877006129e580672130e6320233e96818c58c218c88cfda7e74041a562182860851006764ebeb50ad46520b72d4f559581c2b3a22e03077a05551938d02bea3170b455430103012a6320402cee8617482e1bafcc57cddffd59b7ce4d70cceb0000000049454e44ae426082</data>
-    </image>
-    <image name="image10">
-        <data format="PNG" length="548">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001eb494441545885c556bb6dc330143c65825499c16d5ab9b15748c6c80a6902059ec05318488610c0b78100cde0c22b5c0a8a32493dca14a338048487e3efdd3b9e2881178242f0421831b8371e3bff2b9633074880bf55a2bc028024692212c94a0102a0aac062e643f2b12594704931a35451e5fb9d7dfce694d092761fd3cacb3d30547fdc4d554855da7cd8fe753c301088554879c12577b1c80381ac0902f40ce6afef4e2085e84efab85aa99f3096d58801015bb11f957d1a77f6671b1bc50b6aa5736716939c536e94bdd58f21e9018d69ee7b3d49ee29a091587c6623734f8164e56e7e1b627f7cb16b6f29e0cc99f34c3c907366391ed8efc063942cc6aa07bac8b5b337d80d0f1831aa1ac97b203873efcc9c27967860f1ffc0a4d2738835257214c889d57e0702c02b802f5c9b86df0eacb001a4176cebad65716125bda0ded4400fb8f15cfcf0793015a2641a7e3e982a583c3487a59760f35c7cd3bd25f7c05dfe09d7f24039f38c6fc19ffe13aeaa0085e8003600ef15c37bc0759e41d3dae870b048199fc30d2cf6d7c724ec3760e8641b4e62ab305748a5d6fba4d4fd8578905e0000dfb097c4e71302fc8d2b7e01207d1ac7ebdd78bdb98ec7f303059c7caef25b385620351eaf1fe78b4165c4e0b1ded2558a81f93df0fb8555f13db0162e7e7fd78a3f57b9f82bf350d2e80000000049454e44ae426082</data>
-    </image>
-    <image name="image11">
-        <data format="PNG" length="546">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001e9494441545885c556bb6dc330107df204ae3283d2892ee92e23688cc0d9c08da18c606488145ec0800b0362e94e886648a1152e85740c75a17e94ec08100e4f4f4791a7f78e0455043204aa08b9c9912519b958f24b63fb90a34a14b9f8de31a28a604a031d6b6c5e3684e64a91e2841342f0f1e318e95803258018767c2f7667a41245a115c880a0bcd63f5189a2100dc88f076b20b4020540a11af8234095289aba12ae40881b6655a0388032e766fc300d640750f1d97cdc89532ab132a5b1d600505bc9b18acb4b0c00a72f206d22e3b1f93ad6f335500094015460daca97d180503f4fe6211a703f3ea72f44b9c9edbfd9bdee08006e975be4fe338e97f396eab60ba70903fb378ac6f0723c1d6bac5cc097dbab259f3ed783a7cfb078342fc72b51bbc0aab3b9bad42bd5ce782cef73c3640db8aaefeb80437cd05e90797afe90ea87f8d17da0cfe7432bede37b5db03e6fc95533ab9b553d97b72e6075f2c986b154b3c50bf1a634fd7b815433e3a5f845f682b978b133e1ac1391dcd51e115b7dc03efc06e5d73a326e2579f83e9ca1c66ebe9c84f56901105ddb2fd1d53373cfa4baf2dd4979c737d4b8a0f12762e0fd092dcc3e3e353e36653796f9ccebf89797efb72ac0e5e3950f6159812e5ee6dbf7f93cb0d6fe8e756fbcaf28babbcf27f581ff883f51e9fc9852b0e3e40000000049454e44ae426082</data>
-    </image>
-    <image name="image12">
-        <data format="PNG" length="377">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000140494441545885ed97d189c3300c863f1f3741a7087403778bee734fdde7b6b03728748aaca07bb83aa839c571142e29b402a32860d9fafd4b96915e902c482fa49cd8da1e7eeea5778bbcd8cf8140f58c40d68c551c002481c80a5d36b19803dc1d68675ebb86c4f4ce5646ae35208b39404364adf6f8189a38b02902ffc1fed66c0829276217c9b74cec22e110042517f57d06be17da471e25e514f47a0f916be66b065f40ae0e3de54f233120100e41045b820389e31dfb297f05898f02c79c9c478bcdd97312bb0837f8c37a6be0255ec59f5907ac49dad9923a30b509461c30f37f1c058efc071bbda63ae0857cf6488c3af059f2516bf865bd27efa7ec2f800ec6eb997701cebcaf690dbf5907f4ce4ef1246b2ba059177a0926027b72a07a1b6ad83c7a58d8d313eac9deeeb71679534fb85957fc7e17bcdf862fcd811fb0a2e90b274714da0000000049454e44ae426082</data>
-    </image>
-    <image name="image13">
-        <data format="PNG" length="529">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001d8494441545885c557bb6dc330107d043c40e029548a29a53e03b88b47083c823b650423637880a426cb384d00556a0da410b2c14b2153a2a82f6d2a26403c9c6c89778fefee48b024a8099684d20aff6dd70fef858d2700434c5f26eac58345e438318b01f3129011f8e6b56882f1d6806100c8482a920cb21d7398ed3060160fa576db89bedf85d20a6992526925d2e481e42f8448616ce088666ce063b3dc0bb1166449a1738d244ae0e22803ed3d0e9725931aa869235914c5acbdbc364bc63550f0c240982ce9d384c34043b761c06604f866511434ccccc1ea7bd59cc5801d31ab6fb0cbd0cc886b0687eb444703e30c647564a65e4ca1ed5430069a45d86fe3e2bbc340500dd48bb8913bcf17d1008166f6456e86af06ecd63ca9812106aed140df79c05b032d56949f06dc8a35a4899606bcb2604c033fa08c256decfcc965c0f83003a734b07a7c92f87c3fc1461903622d086be85c03008478856f57347612ed2b3342bb1b4ef5f76e9684eb054269d5e9d3bb975d2bfad3d769b1f34127f22cce263571d33da0af0e1863fbbca58c653d8d133296ad14bd650ede0b429d017dedd5d0596d4c1321c6e1ed207a353047132150c6921d0db8e86a610927044b364521475d24ce1f671ef32336d1064be2dd6fc77f1f7dad40d004e8230000000049454e44ae426082</data>
-    </image>
-    <image name="image14">
-        <data format="PNG" length="579">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000020a494441545885c5974d8ea33010853fb77a936d6e9059a5c90de85d1f0169e63444a3084e93856f816fe0e9ace006b942cd82183031bfe94e5bb29e6cf3a0ea55b96c90ab204690ab509882678f9bc9b52820162b6bf98f7b029291c95abe2a4c41bc8f311713c47c9b0bb79690a0d174c7110772b2c17537fe301f2af4fe694b411eed4ea15539f0688ca7f8839e5b6c6df9cd038b9525319ecb1fb5bcdf972831973f9add43b19cbb3be6f0c73d1949a4593883ffedfb7c8adf5a02b2b47b9e2ce43ade6bbc8f515b25f66cd19f9ae42d998d6aab44aea2d6f0dfe377294ca1ea4400c94e992c69d9296b3ce9f2cbb29c447bb28d828d7cf66c171960cf9d97387e795b9c4067bc18e1c55c0c00fab3ade1739a7bdee3efa0aaaa69746dcfb802900984951952c055c03e8614284c31ac8052392229a051eadf6c0534da3b05dd385779a3404202d09e867d05c04fc89012630adcc5dc9d058fe580bf3ea64028e6de7c27075ee27d0c40f2964c18e0afbbe73d7e555f42a860b7dbb5486ffed6ccc5f0daf520220a7eac1e6b68d6c30a44bfa3dad35fdcdd8c36e5c6cb8123c7700e806d621ec227e48046244524f2b056a055e6ab7220a840a87d8702037520bc1b44eaf82b952f56a0a90b73eac09002fd7af01595309803ced3b00a69b33ea4c0a6dc904a7a8743678192abacbe0f1cfe1c587b1f38fe3dd2dc077ef246f4637fc593ff05cfc2ff2b4229bec24266fa0000000049454e44ae426082</data>
-    </image>
-    <image name="image15">
-        <data format="PNG" length="554">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000001f1494441545885ed57bb6dc330107dcc089942441abba5a7883b6b152345e0cce234868708406ee04033a4d00a2f8545fa4853d42746e222020ec4e97877ef9e1e05096c093a822d619dc5a04fb02f4e8253eb859be94a82243814f74db3fb86e22d318c541489fc9c49260a4c49bf175971a2824daae719283e2380dec60090fb81614d142705400b90239b07cbe44dd6809cd8e27a4a7e81fc38af293bd1fe0126fa9f0df2930400055fe6d90ec0640d44f4cf0020417806266b202a5810db98fdb33470a5e81100727993349026ee848d0120f79f32408a1af0c28bac2b7c4a40e400f8a691361203e237e4836b1c5001ea519110972faf00a5806377fb4d75615155de3f02f8ec72e86b24659551748d83a90ce273df6310939d00d69b9a87d743b4caf80ef9e923163ae6957516a632d70c884b79f43c4fb65c2c434c6b0d00d8bfef435c4edb57cf3aab4c65f0602a0334005bcadc6c73a7ce45b5d6d83e6fa1b5c6ba5a87664e5d4694b9693d3a2a5319b8c60d9f024f997cb3d59b9acbc53258bda9a338935c69a3de036952cea406c6ec47a2fe2b0d7855bac6616556dc0158e3a27efcd07fc1f931cb3ee114a4c8808b9a6fb54afa65bf2203b798dcfb4f2506e668608e4dfe1e90b4cd5943e339df843279d27f4386c959ff05bfb5ce9aec96fe7d30f01793ff6be06e34f00d581c834a823dc3110000000049454e44ae426082</data>
-    </image>
-    <image name="image16">
-        <data format="PNG" length="1428">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000055b494441545885ad573f681b571cfe0a1a5ec0830c0dd490403c14e290a1c9d6bd43c854a478c8394b6d32c47186a06408221473b81014175ca4c1541e023a1592b3067368309507d33b8acb69702a2578388312cee0c03988703141f07578efce96acf85f7a707cfc4ea7f7fb7ddff77befdd03db041d826dc2755c9c2406c0e83ecdff5dc7056cc706db3c150260d0724992bdc51c779c5331771d1700c8ba4992e42776e1499439b5020048926118caac11f4c447297362e6a56b3aa3e4bdcc0fa02a82c1e795391df3f068e6511c06327bb8ed496c3564310959c4897ae0fa0f5764f5c765de56b8add057583799148227ee0100f4a3c63b8a795b310ffc2ee681e75208c113f740e9da953def2386473157deb315a14b863c7e0fec6f9ad8fb8859a8b01df6c43dcc7dc57cc326d9dd88000e9fe7d692c5d009599c2f5224c49e9711b3760f46cf7b3d57c9b95622009a8646b63d59c0e7985b4b16c38590c5852201d05f93de07cacb98e176845e17e3d8f3a61d2b800498bdff0db9aec5367c9679e0042cce17193a21454279af06a517316c7433ed8d23e64dee79bf6e914e8e0078a007e2e4f33279301fc4defb4e518ead18f96af0280e3cb71ba3dfeb26f9891403a0fef0024d43b23fb017c4c95702e60b7906abb208eb89c56432493a36b99c2383805cc9cbceaf53e2bab5c794249b35e5b929fb63b5c8a4105dde77ed055172bfe0333f976750504514940d46c8d4688a2221288420e733f4ab59b2e5b3b19423fd80de4a890c427a4e49295622dba4bf6632392062efc580e8da13f6922fabe491020afd653f8e4bcf4a6493d446350a212413c7265531ace6c8564056f3a41f90ab25723b603229c8ba4557791fddaee3e22bb5b820ba0abf1590420a1554904aa450e9f441a460740cdcfdfa2e6e59b7507951811810f8387b175be705862e4e60f3f52286bf1bc3f0d54b78ff6117ef3fec020032f733f8d8f98833e20c6673b3528178fe46a8aefc5c9efe8a542652c85ff6999bcdd1afaa5861b81672f2f6388550363936b9ac33392038fed338ad271627ef4cb2365763f661967ed5271260acc0d6d616868686b0b3b383c1c141ecbcdbc1e0d9c15899a7bf3ec558620c46c7c018c660c0401a692c7616e50b0920dd49a33a508526344cfd3985f21f6500c0f8ed71a0034c24275041059973194cfd3d85ca8b8ab2a045e03c803790b8056008c03b0067f7c5fb8b191983f1d2407a248dc5578b488fa461bc34307165020bff2ce0fa85eb28ff5b86765193785943f56d1513df4f60eaf729689735dcf8f9862a2024eaafebb87af12a36df6e62f8db61345f357169e412363737313c3c8cad375b183a3f14635ccc2f4f914ea461740cf9a003a49042b923d9ef7ed88596d05046199973193cf8eb019000763bbba8bca8a85950b5488fb4962c32245dc795fdd094f3dcadbbddf3dceb4175e9d33a1b9586c4e70dea8f75ba86cbeca32cfd659fa91f5334a74d6aa31acd69339a0d724ae4e7f2f4e77c9a15936c92e67393dc266b2b35d227dd35976c93b62357b846bd417e22bd0d594584d1957d9c65e37143262ff84c8da6a8ddd4ba30de0de9747fe3e76673f4aa9e2ca24e39ff5b64ad5a93ac57b9575c48728d72c58b57c26e6522c6bd78e86e18ddfa8c4e6fc66371a12877c7f922b9c158a9da728d6c51da1890f6aa4d6e938d75a95063bd7180b976b367373cf4bb7d7f31cadbe27c91c1aa5c29d9244d432a652d59e40689691004b92295eac7fc54e782fdc5641f65e93e72e3dec9cde6183e0b63a5cce726b94e968c525fe6a73e17f45326f330437bc166ee498ede92c7dc4caeeb7ba21ff3ffe56cd84f99c97b93b4efd9d4a775ea333af569bd2ff32f3e1b1e4799c93b93b40b765fe65f7c363c893287bdf71f0f9bbb4a7ca9bedf0000000049454e44ae426082</data>
-    </image>
-    <image name="image17">
-        <data format="PNG" length="1150">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000445494441545885bd5741481b6914feb228841ea597dcba102109c921b2879ab20b2bf4122fee1f7a195a0a6bf6b4ddc3123c48f120a90719a52cb41421bfa5ac33073771a1686fdd8392b958368246a5070b7b88e021e420f10707be3d4c67926812e3c6ee073f2f6f2633effbbff7fef7121f7a039b3efb7a7ca6277cd54b709e10c5cd227842978cbbfe17b0b85924aba49810ac5b75e6648e75abde4ce43f93e94501244209587b1600c0dc35212060ee9aa8cb3a724b395465153741a61dc82ac94d7a0a34c355e2a2bd49328efc2797835f446e29c7aaac32b794635dd63dbf5f3264952c6e16999fc97725d08b32e168f85a64c813f6ac402fcac4a37166e7b2ccce667b22d152fdfd221e8d333b9b6579b5cca7d34fc92a098003dd1834577fbf50b682b21596b797b130bd8085d70b003a1f43b24ae0104844133742401bd0a04e154450c03ab430959902005fc73e60ed59400848fd9842e1cf425fc123b1086adfd770669f417e9048841a9bea4820114dc03ab4a0c5b4be82bb48069350a70a725ee2e5eb97def57635409e10d69e854430818dd30d8cc446a06c050c00fbbbfbd70eee871ff28304e028fb24f304e832d4f8feaff7e43fe4fabb75f223995fcd937f932b6f56188fc6198e86998d667bae7eed91c6fc6c9ee281f0aabf9b0218bb33868d9d0d8c07c7616c1b10b6802c49085ba0f6530d020286327a5246d90a5080593251582e78d5efe2620d90474461a780f13be3304a06c4b080a94c88af3fdb6101e3d440723889e40f49ac4caf20793f8991d80822b1089ec59eb5bc501bd0a0a0a0c5b496ea77ef5fcc03f3ab79a4ce53306c030f1f3ff46ee88b3a60034a29671a2ad3f3cf7006a594e3db0a07a5034f9970300cffa01fea5ca1b05c806fc8d712f7520a92c1246449223d9906d9e8963e5f836b6daa062da441ee48a48229183b064448c0dc3121820e392da4c13c6cd8c272a1a5fadb29c0fa9bba23b32d30f4f31048e2f8f8188140a0f5a12632da23e7982aa5e087b3530c023887b7730c02995f32b8f7ddbd4baab7d48079eae4582ae95d0b0402c0f167e7b325e92df377139f0e3e61ed8f352fd700a0c5b416bf978ecaca6f15eaf33a9d180e2a95ca9576f49b5166e7b22db35f4c088a07c2196455525fd4bb4e4056de55a8cfe92caf951b04f61d53de2f77f447ef8e529fd779f4f6c8b300989f71ce7d7e26cfa255ec18dc4b81dc9648da4998db66e3ee6dc0dab210b91d81b565b5f5dd2967940ca4ec148c92e1a473d7841f7e98bb664befef9a027791243f92eb6fd7afb4fa5ddd9bf3ee0f0d77e76ee77bb1f8a2a302cdc7b0d11c7c3eefcb39998336a0416ec94b56be9218bb3f06cdd660964cef6deece317875efef340d7dee4a4fa671ebf12da427d358b3d7a0c534cf0270cebf6d428404603b0f5fa7faaffb37ab4519f94a22f16dc2d9b90d2c3e5f8498105e1f707bffc5f6db0f5a1a97bb32bf66585c2a5eabfadbbdb01f7841c484e8dafbbf1481b664be709c9bc1bfc4823d5f2f0b7b470000000049454e44ae426082</data>
-    </image>
-    <image name="image18">
-        <data format="PNG" length="1528">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000005bf494441545885a5975f685bd71dc73f776870042adc0b1de88e0c2448c0176ce81532e49ae5c1c286594b1f2ab387da30a89b97555e5f9ca7357dd8e697d5f3a0500506f6609b95872d56604d9542e3ba10e295d6890c4e50a0a6128db14467aa4b09d581097e7b90e558d11f2bdd0f0e12f79e73bedfdff7fcceeff7bb8688f0bc169c8c1e2dd2d0007c0d28b4d62814f562c51874afc0f3036b522faf9398aaf1fab99f53a9555096cda5cdcb7c5cb98f7d536318860088c8a9440622109cb40514a9979364dfcc400d6a164cdfb9c29619c55fcaa0cea4d0db554affa9a326c2b03f1811e3b42330266d494da5485e48f0fae834d9c71fb0f59318e51b8b6c150ae8b20f953afa76b963ad1a32d10d60cfef4d42447a0e351196b57fdd94f7b6d6444464edab0db9fef53d89fc352566c615351116a035ba6e0f08674d694275629c72040a1dd6a44767c93efe80f93b57b131f1b74bf8c50adcae02182d473ad4338ca6d77bbe1051188621cf2ad1934070322ac9c9e491ec1fa3948d8d49ed850afa0478bf236cbd330cc3a0acbb4fec27ff77df897cf9cd81bc210762669312fec3b8a85f39c792f73bbe67473be4d3e73fe8e5fdca6b2b14fcfb442d9bea9d0cf6c81cfebe0f5fd4dbbc1bd44e10693b82ae040072fb39c6ec18e9e21fb96f16a9ecfe05a56945fbc089a61b91010868664666a106891713e8471a35928286eebac9ff630163c412155068054a81065440716d779de9a904d736afc110e8cfb3105200043d5b080128f4138d7a02f5ddf6f41b736352d8290c940d450d9b72f0adc8dd8387222222df347f7effd98a44be5c13f31f49313f5b91b7724b72f0ad881c34dfbfb7b5266a22d271c7ddb82b2b1757c48dbba202aaebfd3f99070cfdc0971fa76ccc5f3824cec5088f2f40314b35e2e37f52400d832e64a94c25c85457a99d4b72edea2cfa46a92326626e4cecb08df94b13fb6f360cd3f5feb7cc10118ef285a88908ea150b94c9c2ab8b643e59864812fd28c7e24fdf60bd9aa3e097d0fff4a1583b066fc5446c342669338dfb3b976823caf2ad659c5d87e5ea32c59d22f5ffd63b480468ea87611886be5d168dc67460595f21fa9a43e9c31ceef9305b879b14fe5d42ef54e18b7a27f891e7de9f3cac8f2ce6b7e751018579c1c4bed35b89e34cd822c1edaa68146a084a7f2fb2f8ca02ebd51c79ff3efa81df1d7c3426e9701aef1d0fbb6a33ffe93c954a856028486a28853565c12dc80432047f1894934ab4a5e26e4a5c692c4380d33d7fc7c3dab49ae08f2b94f64b045590ab8dab84ed30b1a918f6fb9d4a74d4826e4ae807f4f6fc4c1af7372ef6a1cdfcf653f0d9c02c599da5542e4100224f22789e87fdb94d26903926d1b398b4029389300ad5d3f3b9b939c62a635cfef4327ecd07a07658c37fd2fcaf420a1a60876dc27618eb458be26e914ab54261a7d0bfa0b444a14bf139f1bc6d3ccc3e94855f2f8877de13e7ac23d77f7b5d226722a202aaebfc9eb5a00548f38e77282522c6b34329c5e6e12633a119544851a74e6e2fd78ca186eebaa62f81935e0f62ceb0437a3c4d3e9467965968c0ccf00c349ae9bd9bb511683530dfc70cc340a158df5b8706acea55ec3336b9474f1538950020df978417f7c4f55ca6e3d3f8873e7ed5c739e730f6788c72b9dcb328b511389a2486610c4cc4300cc646c7c4711d326f67c8bc9fa1542a61864d2cd362f1d162ff0dba44be1068ef74fbb5585edc93e4cf92225f89acacaec8c6bb1b12894464637943dc61b76737dcb32b1611a3f541d122617491c37dc9151550b8a32e99b733643fcae2ec38ccde9a25399964757bb5e7b9f755e0a4126edc95a5f34bc777d68dbbb2145f1237eecac6bb1b72337753e4eba6e777ff7c57dc975cb9b77a4f665e9d1167c839d57b11e9df56b794f0e21ece8843f46c142b643167ce917f214fa296e0d2879728ee16f12e7858a645fe469ee25ef158cdd30438f5d3ec241137ee62864cac1f59ccc5e7d8ac6e928c24c9efe71937c7b9f8d6c581819f8bc0b3447ad9f300b7ec7f8e213c5d1374da320000000049454e44ae426082</data>
-    </image>
-    <image name="image19">
-        <data format="PNG" length="662">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af40000025d494441545885cd962f8fe260108747202a56204e54ac58711fe2f6ab6c721fe3e4aacd8a0b39415204092748bae642569006410282e4459014d1a42710084405a20251b1e639f1b6b42c6569290b279a37434866e637cffc114284294288a8a9924bdbdb1faff55e2df3c4fe3f14281ab98850e43b1b032282699ad4bfd4b79fd5b2c0033551f006bee7efbd7b019565406a827163202204c300ab6511cd22ecae0d7f61341cc11a980151ea1c8f9d60f0209bccfb607219b8fb7a47d00cb09a165137c27eb1c183de6b0f96301a6be76aaa6003eedc3da8449e324719306f4ded7c9671fea7070b70060e04c084d4797420f31c5b4d1452db6564bf2622a81f8aceef4e9af9029cbe03ab54fe531460850ee023064404c3302044ecae56c0e93bb004864010031802f3020c64ec8483a37320f953d00ce8b4b512ce2056603cd241945020db1185e7808850afebd6336f4ddcaeab9908803110823b73f3331f83fd681f6cc55273c0f77c1ebe3f20a25bd36a5ab08a15c8c938ebf4fedbfd6973e0bd12bee7c35ab3903072680aaab6a2f7da2318071f665e7e17c4932f69bd9d771383b9d05d13bd4447332fbd0bb64ae4d57c06acb442cbfeb250e6851838c444d6b93b777579060e8d9f8dc29957ba077ccf4f27e0266ed105a532af740f484dd2da4f55a99a57ba0712dbb831f4389e2808c0eeda7b13ee5318c82aa0260ad67a3784edb09a02652317117d0f4c8025582dabf425548d012df77638357e95a7bf1203b133bd98166cdbef720c88e84514f7bfffec5f8181b79481a7e7a7cb33905c38a74ec04a0c24bba1c8beff1406cef99ec4c039edab2bf00f3193eca580488f830000000049454e44ae426082</data>
-    </image>
-    <image name="image20">
-        <data format="PNG" length="1345">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af400000508494441545885c5974f489c4718c67f1b3c7c0b5bf884f420e4b0420e2a29acb965c96177d342ba5268353d440ffde3adb62490a650529a95945e24875273aadb26d47808ae07510fa1aea145034dcd4aa14608ac4b09abb4b2fb51655d52e1e961befd1b5737fd435f987df866e69de7997766df99f148e2ffb416008fc7d3b4c322f883e05f8250105802824012ee4520e3814cb36349727f0eb165b0051705298116c1b8baa5ee3b356ffadaff8a80658809f2cb2e41dac5dc896e291456e1f429291456d6ad9f777106f282d8df1620b097dd1997cbf97ee9c782f4878cd5e3f78b527c513ae62f89902035d3201a0d050802cb660666c62f47a5a54543f26b567a2ae5e263d28db40ad333d2aa54989ba9b44bd207ef49b6ad4923223f0981a604b833cf0b249f2ddd59967efe457a2ae9aea4b9b434ed92d5db5d49bfa9d2ffcea4d4d1592dc23e544029ec5990e23913d6ac54888f49d7d3fb13ef67ae9fa667a4e37e4d820a903a5080bbe14cf517f3c67955d2ed7169fa39c825b32f4afed747259fad712322562de04815b97d122e3c040874836f1df241b81f879fdae0b5f6da057cbc0e1379f83a0ea95dc8e7eb5678b7e27fb41fdeec650098820bb9aaa5280b38096f6344c0ab517831025b7183c71fd58ebd0dac019b6efbc20df86ec3d497ec052fec4c54c679e313b06da260cf19ae5a010fe12d80dd139d263fde8f831331e8ebaf1590a96b771c767fb8013b7541b0fadd08a6e0f301009240d4e50237150bfcb87f13efb121d85a858e28acc5a1a30f9c0960a832f0371f823f5c695f4be0b583d05627e0cb33b0f6088ac572551f108740d670663c92c0e3092dc14210e0f55ef05a3c63816e7865c8906f39b56d7b45f21f5fa1b5fb64a56e21099133ec025e28e32ad00acc417850ba7704a074b0d0021423f0bb633650352e78e1a373f0b8abb67e3b02f1442df936f0ee20b8a4d5d865c8894208a01481d8125c0dfa6ce868072ca07838fa6c984a406b6b853c9f37335f49d5ccbc1a1d600a8687a458791306dd50e244606b039ca28b077c4f276bc9b781c87570c9f78b80d790d35bf2918420563ac5e4b325db967c968bfb7fa787afd5269e745a0a74abe08ed308b3eef9320ab172269c87503903b65887a0db2f5b97f902576aee080795512322541620f0cf37e95c2ab9e46285bca0a6fde6dd088c80bfe62c10a4ea6f3a0796a55c45c0f0b5e6859b08a44acbdf52da0bb370ab07021b2dd0d6b24f1ea8b7de2e7867d06cc86f27c06ac2670fe27b45fae056a9aa2ca0076ecec2d51e2c1b9fc5e17f45c06741f725789082271b87f4b7886f6dd2074e026e96783d92cab762416c16aef6d836d807dc298b45f273f3b4767755ea5eea829ddd862e4b5b0e6d3b0e0918beec1ec935c7318007623db032eb38b007f8bce01b70b1b5f26d59b5e400e7af35ee5f2c96c8572ed75d548f50670908f7809378923133b29226e359b89804bb15b6eb66fb60a2d25ed57f75e736eb9b9b244c020cd7f33d23e09c59a370149c4426633699cf027bd0c501386ac35749b80ffc097cfa19ec442aeda5fe9b1b78331912e0f441f8b2115163357ba0dac6c1ee858529080c5816eb1d9db4fbdb4dba6eb10ec6271bc4d71e11291649c00a0dc89fb913ee6705888d433e079af45952c725e9f429e9eca879270c4f4a67a3d2e9b0168f772ae7b34b992e3ff24f1e26d596037b0c2e662135e6e6f3d12a4c57e108a4d27071a4c9a759c325686459f0cf813f0aa129204af97cbf370799f79ff371ea692602ffa5fd05806f8683da7718f20000000049454e44ae426082</data>
-    </image>
-    <image name="image21">
-        <data format="XPM.GZ" length="8129">789ced98c96e1c391286ef7e0ac1713306d19964ae68ccc1fb26db92777b30872099d46ec9d6aec1bc7b47fdc1aae9056897ad72a30f53b40f5f91e21f8c8d59f9d3adb5f71bcfd66efd74e3f8444e76e25adc962f6bb7d2e9c1c1e5bffefdcfffdcb8d90c6bfacf55ed9abbf98f1b37a55f8b6b54cd3ef58c791d5cebb0f94db0af5cd5cd982670a3dc83ef16f685d7173c801f805bfd46c057e04e39406f03dceb8a84f9b4e009bc0d1e9433d67f048f5557c35ed959b0d9cb60a9fadacf38e4c262ebc9834335d42dd61f82a3b2d9df815335d62358160cfb790067dd0ff6aa7795ebaa0ab5d9f70e5c57d1997d6fc1ae4a0ef6d0de821bf02bb09fb35c809b6a7266cf63b09edec11e3901f71a9e8879d31beada993dfb0b86fff825586ae72bac3f0787da7bd33f024765f883360a37c6f26cc1167ff8bf9eead6c33e3e2d3c79c453ee81b3ce83097fefaabaf3b08f9f16ee3dfc298fc075dd37661ffce95c3d78d82fa7736e105ffa0c6e6b69905f8cfc74dd9c05fe727d9d1af39fcd8f756c2c9faac2a941bce83958eadcc0de30193b69605f403ebae082b120bfdde47c8b780ae2e7b2ab5bcbe747857d6bf61e166e0a9fcdd8d7ae6dcddf0eec74bdd98378f9c6351de2c3efc1bdeb3a8bff5e6169cd3fc7e0c1f59de93785539947fefbe0c6def29f166cf5621c9df4769e4fe0e4428f78cba5b1af3a8b3ff24bcbdb9b9ea03e1beff260fba31e9b56cbdff2e721b8f3f580bf675f782c7ab7c1fd9c19fda8197dd127e837e2fd60f97d1f1c7c33225f640b9c7c3b5a7df585736ff581fad3f6e37af32ff2b3757e1c6dbfb3059bbfe0ffd67b196d7d0dd66c16c423ec1aeb07fb0bfa5fdbf958e6778c75d83cf2abed75defc29c6cd30587fc479d4f849cc9fc8bf36f82cd64f2ae326d9f909f16da3b64febd71fc0a9a9839dbf9db1b6571fac3ec6055bfedc01d773269ca7734d134cff7cc166ffc1824d1ffda9f34d5b98176cfe4bc66d335abce1df993b3aac0f885737fb583f7801eedb71347b902f9db4a1c403f37ddbf562f7c713f0d805817d8cfed2876e0ad63f70be7eeaab60fd0dfd66a87a17ccff4d612d01b02fdc98ff04f1d6cba02d8c7e87f232463d0ebeef6d7f817f8746d9facf9bc283cdf389f1d064c433a0de8656e7b13ec07f43d78f255e38ffd0f762f1e073e3a1b7bf67f85f93673026d4f7207d0a60c17d3b6afb8cd6ffa03ffaa18dd68f6f17eea2e503fafda8e918cd7ee4c3d8eabced1fc1e3108d03facf28a388f533c4538dcfc9ea1ffe102de7047dc1fd22c39892d5630047bd3e6d7fc437d4d24d161ff4f7e06498cc7f6f0acb84f832ea599b7198ac7fbe06f79226bb8f70fe30489eacbed08fc318aa09e7e5d7856b5b2fb8cf430cadad67d34f2199fd84788729f413ec0ff047d4078664cf03e8ffd1853099ff517fd12fd8158e85bb3967eb5fa8efa8d555f843e1c9988cdb39cbbbc2395bfda31ee2187db678e03e88129b6cf98af3c618fb6cfe3c2a1c4b3ee17e8a29a6929fe8e7718a53b2fa3c9eb3cd8be9e528d9ea1bf775aa536df121dc1fc9e97a8bc7e3c2395bbe07e3e44afee27e4f7e3e2f4f8d5365cce88fa94f6d367fc3bfda0c3b63427f4a63eab3d5cbbdc263390ffa6d92349479c443c33b66eb6f5785c598111f754761427e24cdde6cfd0ef998d43bc662e7c969caf6bc5517cec6827c99aaa92af3cf176cfec7fda18f4f7561f86fd2078cc2e867934c5218f7efa4095918f5a8e199c713e799d4c0c2a8e7493f8551ff591fd00ac37f591f500aa39eb3d7618cfe929b5cfa17233f72abc318f755ee7418e3fecb432efd89711fe431977830ee73bddce6e7817f72c8f3f3c09f5913ac30e297e15030fa67566f1b6fa2bf657c8c374f985838705ce910a6d9dea6a10a8927cebcb5c291799b77662a764e55d8e25ddee3fd158e3dddf1407726f3ad9e61973ff1211fad701cf267fea267b17a0b7aae3d3ee693158f533ed39358cd46f5d4be2a9ff0395fac649ceb986b5cfe4ee382aff474d71ffb7faab13dcbb6eb0ef5fd5734f8f6b573ead35735eef0dd6b8e7b7f538dfbfce0876b3ce447fcf8876a3ce1a7bccecf7ea0c6737ec11bbcc92ff9d5afbe7dcd6f56a8f196dff17bfec01fb9e2ba7ce7d873c3ed8a343aee79e091988884827d4b91124d9457a3415bb44d3baac0b44b7bb44f07fadd273aa423fa4c5fe878ee4f3aa1d3efd3a0533aa373ba8006d3255dd16dfdf60edda57b749f1ed0c3b2ee113da627dfa9f194d675375e8c67f49c5ed0066d825ed22b7aadabded05b5ea777f4fedb35e8037da4ea570a4cb56a3af2d4805aeaa8a7417faab090fe1709dfa6a1bf51923e384ebfd160c9fae3746b41dbb223bbb227fb72209fe4508ebe51e3b37c91e3df2afc615cc8899caa2567aa772e177239cb896535e44a6eabc69daf68b0dc957b25ef58340be4c1f21ab30a90875f53f883e223792c4f96d390a7b22ecfbe5541359ed3babc5852634336e5e5b76ba8ca2bda90d74b69bcd1eafe0e051d3bf256de2da5f1fe5a1a1f96d2f8782d8d6a298dfa5a1a6e290d7f1d0dbdcb96d168feaff1d76848fb176874cb6948af37e9f78cbb4bfb6a903170a0ef19fa835bfeb6cfd4abd5d8e78c35d71a21fc89c6f90ac7ef35b26a1cfea0dfce97e51dc036ef86185298563852c861f64623fcef5d46d80e3b6177856347c7deec8dc9e29dcc8e9e654b4fb6ca91755799bff781caeccdd2e54a4728ef96fefbf38d5f004aa1bc42</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>boton_primero</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotPrimero()</slot>
-    </connection>
-    <connection>
-        <sender>boton_anterior</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotAnterior()</slot>
-    </connection>
-    <connection>
-        <sender>boton_siguiente</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotSiguiente()</slot>
-    </connection>
-    <connection>
-        <sender>boton_ultimo</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotUltimo()</slot>
-    </connection>
-    <connection>
-        <sender>a_propempresa</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotPropiedadesEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>a_plancontable</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotPlanCuentas()</slot>
-    </connection>
-    <connection>
-        <sender>a_intapunts</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotIntroducirApuntes1()</slot>
-    </connection>
-    <connection>
-        <sender>a_mayor</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotLibroMayor()</slot>
-    </connection>
-    <connection>
-        <sender>a_diario</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotLibroDiario()</slot>
-    </connection>
-    <connection>
-        <sender>a_balance</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotBalance()</slot>
-    </connection>
-    <connection>
-        <sender>a_balancetree</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotBalanceTree()</slot>
-    </connection>
-    <connection>
-        <sender>a_asientos</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotAsientos()</slot>
-    </connection>
-    <connection>
-        <sender>a_ccostes</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotCentrosCoste()</slot>
-    </connection>
-    <connection>
-        <sender>a_canales</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotCanales()</slot>
-    </connection>
-    <connection>
-        <sender>a_ainteligentes</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotAsientosInteligentes()</slot>
-    </connection>
-    <connection>
-        <sender>a_imprimir</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotImprimir()</slot>
-    </connection>
-    <connection>
-        <sender>a_guardar</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotGuardar()</slot>
-    </connection>
-    <connection>
-        <sender>a_actualizar</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotReload()</slot>
-    </connection>
-    <connection>
-        <sender>a_filtro</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotFiltro()</slot>
-    </connection>
-    <connection>
-        <sender>a_fpago</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotFPago()</slot>
-    </connection>
-    <connection>
-        <sender>a_tiposiva</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotTiposIVA()</slot>
-    </connection>
-    <connection>
-        <sender>a_cobrospagos</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotCobPag()</slot>
-    </connection>
-    <connection>
-        <sender>a_recalculasaldos</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotRecSald()</slot>
-    </connection>
-    <connection>
-        <sender>a_ccostedefecto</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotCCosteDef()</slot>
-    </connection>
-    <connection>
-        <sender>a_canaldefecto</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotCanalDef()</slot>
-    </connection>
-    <connection>
-        <sender>a_sustituircuentas</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotSCuentas()</slot>
-    </connection>
-    <connection>
-        <sender>a_balances</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotCompBalance()</slot>
-    </connection>
-    <connection>
-        <sender>a_mpatrimoniales</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotMPatrimoniales()</slot>
-    </connection>
-    <connection>
-        <sender>a_ordenarasientos</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotOrdenarasientos()</slot>
-    </connection>
-    <connection>
-        <sender>a_abrirasientos</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotAbrirasientos()</slot>
-    </connection>
-    <connection>
-        <sender>a_ayuda</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotAyuda()</slot>
-    </connection>
-    <connection>
-        <sender>a_bloqfechas</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotBloqFechas()</slot>
-    </connection>
-    <connection>
-        <sender>a_amortizaciones</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotAmortizaciones()</slot>
-    </connection>
-    <connection>
-        <sender>a_registroiva</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotRegistroIva()</slot>
-    </connection>
-    <connection>
-        <sender>a_347</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slot347()</slot>
-    </connection>
-    <connection>
-        <sender>a_aapertura</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotabreEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>a_aregularizacion</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotregularizaEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>a_cierraempresa</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotcierraEmpresa()</slot>
-    </connection>
-    <connection>
-        <sender>a_acercade</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotHelpAbout()</slot>
-    </connection>
-    <connection>
-        <sender>a_tile</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>tile()</slot>
-    </connection>
-    <connection>
-        <sender>a_cascade</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>cascade()</slot>
-    </connection>
-    <connection>
-        <sender>a_fullscreen</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotViewFullScreen(bool)</slot>
-    </connection>
-    <connection>
-        <sender>a_statusbar</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotViewStatusBar(bool)</slot>
-    </connection>
-    <connection>
-        <sender>a_toolbar</sender>
-        <signal>toggled(bool)</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>slotViewToolBar(bool)</slot>
-    </connection>
-    <connection>
-        <sender>a_salir</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>close()</slot>
-    </connection>
-    <connection>
-        <sender>a_asiento1</sender>
-        <signal>activated()</signal>
-        <receiver>BulmaContBase</receiver>
-        <slot>s_asiento1()</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>slotPrimero()</slot>
-    <slot>slotAnterior()</slot>
-    <slot>slotSiguiente()</slot>
-    <slot>slotUltimo()</slot>
-    <slot>slotPropiedadesEmpresa()</slot>
-    <slot>slotPlanCuentas()</slot>
-    <slot>slotAsientos()</slot>
-    <slot>slotLibroMayor()</slot>
-    <slot>slotLibroDiario()</slot>
-    <slot>slotBalance()</slot>
-    <slot>slotBalanceTree()</slot>
-    <slot>slotIntroducirApuntes1()</slot>
-    <slot>slotCentrosCoste()</slot>
-    <slot>slotCanales()</slot>
-    <slot>slotAsientosInteligentes()</slot>
-    <slot>slotImprimir()</slot>
-    <slot>slotGuardar()</slot>
-    <slot>slotReload()</slot>
-    <slot>slotFiltro()</slot>
-    <slot>slotFPago()</slot>
-    <slot>slotTiposIVA()</slot>
-    <slot>slotCobPag()</slot>
-    <slot>slotRecSald()</slot>
-    <slot>slotCCosteDef()</slot>
-    <slot>slotCanalDef()</slot>
-    <slot>slotSCuentas()</slot>
-    <slot>slotCompBalance()</slot>
-    <slot>slotMPatrimoniales()</slot>
-    <slot>slotOrdenarasientos()</slot>
-    <slot>slotAbrirasientos()</slot>
-    <slot>slotAyuda()</slot>
-    <slot>slotBloqFechas()</slot>
-    <slot>slotAmortizaciones()</slot>
-    <slot>slotRegistroIva()</slot>
-    <slot>slot347()</slot>
-    <slot>slotabreEmpresa()</slot>
-    <slot>slotregularizaEmpresa()</slot>
-    <slot>slotcierraEmpresa()</slot>
-    <slot>slotGruposContables()</slot>
-    <slot>slotHelpAbout()</slot>
-    <slot>tile()</slot>
-    <slot>cascade()</slot>
-    <slot>slotViewFullScreen(bool)</slot>
-    <slot>slotViewStatusBar(bool)</slot>
-    <slot>slotViewToolBar(bool)</slot>
-    <slot>s_asiento1()</slot>
-</slots>
-<layoutdefaults spacing="2" margin="5"/>
-</UI>
+    <addaction name="actionAyuda" />
+    <addaction name="actionAcerca_de" />
+   </widget>
+   <widget class="QMenu" name="menuVer" >
+    <property name="title" >
+     <string>Ver</string>
+    </property>
+    <addaction name="actionPantalla_Completa" />
+    <addaction name="actionOrdenar_Ventanas" />
+    <addaction name="actionOrganizaci_n_en_Cascada" />
+   </widget>
+   <widget class="QMenu" name="menuAsiento" >
+    <property name="title" >
+     <string>Asiento</string>
+    </property>
+    <addaction name="actionAbrir_Asientos" />
+    <addaction name="actionOrdenar_Asientos" />
+    <addaction name="separator" />
+    <addaction name="actionAsiento_de_Apertura" />
+    <addaction name="actionAsiento_de_Regularizacion" />
+    <addaction name="actionAsiento_de_Cierre" />
+   </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>Empresa</string>
+    </property>
+    <addaction name="actionConfiguracion" />
+    <addaction name="actionSalir" />
+   </widget>
+   <addaction name="menuEmpresa" />
+   <addaction name="menuAsiento" />
+   <addaction name="menuListados" />
+   <addaction name="menuVentana" />
+   <addaction name="menuMaestro" />
+   <addaction name="menuHerramientas" />
+   <addaction name="menuVer" />
+   <addaction name="menuAyuda" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>581</y>
+     <width>800</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="toolBar" >
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <attribute name="toolBarArea" >
+    <number>4</number>
+   </attribute>
+   <addaction name="actionConfiguracion" />
+   <addaction name="actionPlan_Contable" />
+   <addaction name="actionApuntes_Contables" />
+   <addaction name="actionAsientos" />
+   <addaction name="actionLibro_Mayor" />
+   <addaction name="actionLibro_Diario" />
+   <addaction name="actionBalance_de_Sumas_y_Saldos" />
+   <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+  </widget>
+  <action name="actionConfiguracion" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Configuracion</string>
+   </property>
+  </action>
+  <action name="actionSalir" >
+   <property name="text" >
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionAbrir_Asientos" >
+   <property name="text" >
+    <string>Abrir Asientos</string>
+   </property>
+  </action>
+  <action name="actionOrdenar_Asientos" >
+   <property name="text" >
+    <string>Ordenar Asientos</string>
+   </property>
+  </action>
+  <action name="actionAsiento_de_Apertura" >
+   <property name="text" >
+    <string>Asiento de Apertura</string>
+   </property>
+  </action>
+  <action name="actionAsiento_de_Regularizacion" >
+   <property name="text" >
+    <string>Asiento de Regularizacion</string>
+   </property>
+  </action>
+  <action name="actionAsiento_de_Cierre" >
+   <property name="text" >
+    <string>Asiento de Cierre</string>
+   </property>
+  </action>
+  <action name="actionCuentas_Anuales" >
+   <property name="text" >
+    <string>Cuentas Anuales</string>
+   </property>
+  </action>
+  <action name="actionMasas_Patrimoniales" >
+   <property name="text" >
+    <string>Masas Patrimoniales</string>
+   </property>
+  </action>
+  <action name="actionRegistro_de_IVA" >
+   <property name="text" >
+    <string>Registro de IVA</string>
+   </property>
+  </action>
+  <action name="actionModelo_347_no_oficial" >
+   <property name="text" >
+    <string>Modelo 347 no oficial</string>
+   </property>
+  </action>
+  <action name="actionCobros_y_Pagos" >
+   <property name="text" >
+    <string>Cobros y Pagos</string>
+   </property>
+  </action>
+  <action name="actionAmortizaciones" >
+   <property name="text" >
+    <string>Amortizaciones</string>
+   </property>
+  </action>
+  <action name="actionPlan_Contable" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Plan Contable</string>
+   </property>
+  </action>
+  <action name="actionAsientos" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_asiento.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Asientos</string>
+   </property>
+  </action>
+  <action name="actionApuntes_Contables" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_lapiz.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Apuntes Contables</string>
+   </property>
+  </action>
+  <action name="actionLibro_Mayor" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_mayor.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Libro Mayor</string>
+   </property>
+  </action>
+  <action name="actionLibro_Diario" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_diario.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Libro Diario</string>
+   </property>
+  </action>
+  <action name="actionBalance_de_Sumas_y_Saldos" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_balance.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Balance de Sumas y Saldos</string>
+   </property>
+  </action>
+  <action name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_arbolBalance.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Balance Jerárquico de Sumas y Saldos</string>
+   </property>
+  </action>
+  <action name="actionFormas_de_Pago" >
+   <property name="text" >
+    <string>Formas de Pago</string>
+   </property>
+  </action>
+  <action name="actionTipos_de_IVA" >
+   <property name="text" >
+    <string>Tipos de IVA</string>
+   </property>
+  </action>
+  <action name="actionCentros_de_Coste" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_centroCoste.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Centros de Coste</string>
+   </property>
+  </action>
+  <action name="actionCanales" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_canales.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Canales</string>
+   </property>
+  </action>
+  <action name="actionAsientos_Inteligentes" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_asientoListo.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Asientos Inteligentes</string>
+   </property>
+  </action>
+  <action name="actionImprimir" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Imprimir</string>
+   </property>
+  </action>
+  <action name="actionGuardar" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+   </property>
+   <property name="text" >
+    <string>Guardar</string>
+   </property>
+  </action>
+  <action name="actionActualizar" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Actualizar</string>
+   </property>
+  </action>
+  <action name="actionFiltrar" >
+   <property name="icon" >
+    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Filtrar</string>
+   </property>
+  </action>
+  <action name="actionRecalcular_Saldos_Iniciales" >
+   <property name="text" >
+    <string>Recalcular Saldos Iniciales</string>
+   </property>
+  </action>
+  <action name="actionSustituir_Cuentas" >
+   <property name="text" >
+    <string>Sustituir Cuentas</string>
+   </property>
+  </action>
+  <action name="actionBloquear_Fechas" >
+   <property name="text" >
+    <string>Bloquear Fechas</string>
+   </property>
+  </action>
+  <action name="actionCanal_por_Defecto" >
+   <property name="text" >
+    <string>Canal por Defecto</string>
+   </property>
+  </action>
+  <action name="actionCentro_de_Coste_por_Defecto" >
+   <property name="text" >
+    <string>Centro de Coste por Defecto</string>
+   </property>
+  </action>
+  <action name="actionPantalla_Completa" >
+   <property name="text" >
+    <string>Pantalla Completa</string>
+   </property>
+  </action>
+  <action name="actionOrdenar_Ventanas" >
+   <property name="text" >
+    <string>Ordenar Ventanas</string>
+   </property>
+  </action>
+  <action name="actionOrganizaci_n_en_Cascada" >
+   <property name="text" >
+    <string>Organización en Cascada</string>
+   </property>
+  </action>
+  <action name="actionAyuda" >
+   <property name="text" >
+    <string>Ayuda</string>
+   </property>
+  </action>
+  <action name="actionAcerca_de" >
+   <property name="text" >
+    <string>Acerca de</string>
+   </property>
+  </action>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources>
+  <include location="../../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionSalir</sender>
+   <signal>activated()</signal>
+   <receiver>BulmaContBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>399</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

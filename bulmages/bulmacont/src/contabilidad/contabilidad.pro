@@ -11,6 +11,8 @@ LANGUAGE = C++
 
 # TARGETDEPS += ../../../bulmalib/libbulmalib.a
 
+RESOURCES += ../../../bulmages-recursos-graficos.qrc
+
 
 INCLUDEPATH += ../../../bulmalib \
 images \
@@ -25,16 +27,18 @@ CONFIG += release
 #qt4
 #rdynamic
 
-LIBS += -rdynamic
+LIBS += -rdynamic \
+	-lbulmalib
 
 
 TEMPLATE = app
 
 TARGET = ../../../installbulmages/bulmacont
 
-FORMS += uiselector.ui \
+FORMS += bulmacontbase.ui
+
+FORMS3 += uiselector.ui \
          about.ui \
-	 bulmacontbase.ui \
          listcuentasdlg1.ui \
          cuentadlg.ui \
          diariodlg1.ui \
@@ -305,15 +309,14 @@ SOURCES += main.cpp \
 	 
 	 
 
- 
+
 
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
 
-	LIBS += ../../../bulmalib/libbulmalib.a \
-	-lpq
+	LIBS += -lpq
 
 INCLUDEPATH += ../../bulmalib \
 		../../bulmalib/.ui \
@@ -335,7 +338,7 @@ INCLUDEPATH += ../../bulmalib \
     DEFINES += DISTRO_DEBIAN_8_0
     DEFINES += QT_THREAD_SUPPORT
   }
-  
+ 
   exists(/usr/include/pgsql/libpq-fe.h){
     DEFINES += DISTRO_RED_HAT
   }
