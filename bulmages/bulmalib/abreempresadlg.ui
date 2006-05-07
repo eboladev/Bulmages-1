@@ -71,7 +71,7 @@
         <string>Actualizar</string>
        </property>
        <property name="icon" >
-        <iconset>image1</iconset>
+        <iconset resource="../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
        </property>
       </widget>
      </item>
@@ -179,6 +179,8 @@
   <tabstop>botonAceptar</tabstop>
   <tabstop>botonCancelar</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../bulmages-recursos-graficos.qrc" />
+ </resources>
  <connections/>
 </ui>
