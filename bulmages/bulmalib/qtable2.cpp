@@ -14,56 +14,56 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "qtable2.h"
+#include <QKeyEvent>
+#include <QEvent>
+
+/*
 #include <qfont.h>
 #include <qpainter.h>
 #include <qcolor.h>
 #include <qdatetime.h>
-//Added by qt3to4:
-#include <QKeyEvent>
-#include <QEvent>
+*/
 
-
+#include "qtable2.h"
 #include "configuracion.h"
 #include "funcaux.h"
 
 
 bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
-	_depura("QTableWidgetItem2::operator<",2);
-        bool oknumero;
-        bool oknumero1;
-        QString cad = text();
-        QString cad1 = other.text();
+    _depura("QTableWidgetItem2::operator<",2);
+    bool oknumero;
+    bool oknumero1;
+    QString cad = text();
+    QString cad1 = other.text();
 
-        if (cad != "") {
-            /// Comprobamos si es un número.
-            double ncad = cad.toDouble(&oknumero);
-            double ncad1 = cad1.toDouble(&oknumero1);
-            if (oknumero && oknumero1) {
-                return ncad < ncad1;
-            }// end if
-
-            QDate fcad = normalizafecha(cad);
-            QString acad = fcad.toString(Qt::ISODate);
-            QDate fcad1 = normalizafecha(cad1);
-            QString acad1 = fcad1.toString(Qt::ISODate);
-
-
-            if (acad[2] == '/' && acad1[2]== '/') {
-                return fcad < fcad1;
-            }// end if
-            return cad < cad1;
-
-        } else {
-            return TRUE;
+    if (cad != "") {
+        /// Comprobamos si es un número.
+        double ncad = cad.toDouble(&oknumero);
+        double ncad1 = cad1.toDouble(&oknumero1);
+        if (oknumero && oknumero1) {
+            return ncad < ncad1;
         }// end if
-	_depura("END QTableWidgetItem2::operator<",2);
-    }
+
+        QDate fcad = normalizafecha(cad);
+        QString acad = fcad.toString(Qt::ISODate);
+        QDate fcad1 = normalizafecha(cad1);
+        QString acad1 = fcad1.toString(Qt::ISODate);
 
 
+        if (acad[2] == '/' && acad1[2]== '/') {
+            return fcad < fcad1;
+        }// end if
+        return cad < cad1;
 
-QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {
+    } else {
+        return TRUE;
+    }// end if
+    _depura("END QTableWidgetItem2::operator<",2);
 }
+
+
+
+QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {}
 
 bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
     _depura("QTableWidget2::INIT_eventFilter()\n",0);
@@ -99,10 +99,10 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
         if (key == 4129) { // el Control
             ctrlpulsado = TRUE;
         }// end if
-	if (key == 47) {  // El dividir /
-	   emit pulsadomas(currentRow(), currentColumn(), key);
-	   return TRUE;
-	}// end if
+        if (key == 47) {  // El dividir /
+            emit pulsadomas(currentRow(), currentColumn(), key);
+            return TRUE;
+        }// end if
     }// end if
     if (event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = (QKeyEvent *) event;
@@ -119,16 +119,15 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
 void QTableWidget2::ordenar () {
     _depura("QTableWidget2::ordenar ",0);
 
-/* A TENER EN CUENTA QUE PUEDE DAR PROBLEMAS
-    if (m_insercion)
-        mui_list->removeRow(mui_list->rowCount()-1);
-    mui_list->sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
-*/
+    /* A TENER EN CUENTA QUE PUEDE DAR PROBLEMAS
+        if (m_insercion)
+            mui_list->removeRow(mui_list->rowCount()-1);
+        mui_list->sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
+    */
 
     sortColumn(m_colorden,(Qt::SortOrder) m_tipoorden);
     _depura("END QTableWidget2::ordenar",0);
 }
-
 
 
 void QTableWidget2::sortByColumn ( int col) {
@@ -143,9 +142,22 @@ void QTableWidget2::sortByColumn ( int col) {
 
 
 void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
-	_depura("QTableWidget2::sortColumn",0);
-	m_tipoorden = tipoorden;
-	m_colorden = col;
+    _depura("QTableWidget2::sortColumn",0);
+
+    m_tipoorden = tipoorden;
+    m_colorden = col;
+
+
+    if (m_colorden > rowCount()) {
+        m_colorden = 0;
+        col = 0;
+    }// end if
+
+    if (m_tipoorden >1) {
+        m_tipoorden = 1;
+        tipoorden = (Qt::SortOrder) 1;
+    }// end if
+
     int lastcol = columnCount();
 
     insertColumn(lastcol);
@@ -155,45 +167,45 @@ void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
     hideColumn(lastcol);
     hideColumn(lastcol + 1);
     hideColumn(lastcol + 2);
-     bool oknumero = TRUE;
-     bool okfecha = TRUE;
+    bool oknumero = TRUE;
+    bool okfecha = TRUE;
 
     for (int x = 0; x < rowCount(); x++) {
-		QString cad = item(x,col)->text();
-		if (cad != "") {
-			setText(x,lastcol+0,cad);
-			/// Comprobamos si es un número.
-			cad.toDouble(&oknumero);
-			if (oknumero) {
-				while (cad.length() < 10)
-					cad.insert(0,"0");
-				setText(x,lastcol + 1,cad);
-			}// end if
+        QString cad = item(x,col)->text();
+        if (cad != "") {
+            setText(x,lastcol+0,cad);
+            /// Comprobamos si es un número.
+            cad.toDouble(&oknumero);
+            if (oknumero) {
+                while (cad.length() < 10)
+                    cad.insert(0,"0");
+                setText(x,lastcol + 1,cad);
+            }// end if
 
-			if (okfecha) {
-				if (cad[2] == '/') {
-					QDate fech = normalizafecha(cad);
-					cad = fech.toString(Qt::ISODate);
-				} else {
-					okfecha = FALSE;
-				}// end if
-				setText(x,lastcol + 2,cad);
-			}// end if
-		}// end if
+            if (okfecha) {
+                if (cad[2] == '/') {
+                    QDate fech = normalizafecha(cad);
+                    cad = fech.toString(Qt::ISODate);
+                } else {
+                    okfecha = FALSE;
+                }// end if
+                setText(x,lastcol + 2,cad);
+            }// end if
+        }// end if
 
     } // end for
 
-	if (oknumero)
-  		  QTableWidget::sortItems(lastcol+1, tipoorden);
-	else if (okfecha) 
-  		  QTableWidget::sortItems(lastcol+2, tipoorden);	
-	else 
-  		  QTableWidget::sortItems(lastcol+0, tipoorden);	
+    if (oknumero)
+        QTableWidget::sortItems(lastcol+1, tipoorden);
+    else if (okfecha)
+        QTableWidget::sortItems(lastcol+2, tipoorden);
+    else
+        QTableWidget::sortItems(lastcol+0, tipoorden);
 
     removeColumn(lastcol+2);
     removeColumn(lastcol+1);
     removeColumn(lastcol+0);
-	_depura("END QTableWidget2::sortColumn",0);
+    _depura("END QTableWidget2::sortColumn",0);
 }
 
 
