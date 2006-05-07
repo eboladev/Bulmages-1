@@ -1,14 +1,23 @@
-//
-// C++ Implementation: ListCompArticulo
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "comparticulolist.h"
 #include "company.h"
 #include "comparticulo.h"
@@ -18,7 +27,7 @@ ListCompArticulo::ListCompArticulo(company *comp) {
     companyact = comp;
     m_lista.setAutoDelete(TRUE);
     mdb_idarticulo="";
-}// end ListCompArticulo
+}
 
 
 ListCompArticulo::ListCompArticulo() {
@@ -26,7 +35,7 @@ ListCompArticulo::ListCompArticulo() {
            companyact=NULL;
            m_lista.setAutoDelete(TRUE);
            mdb_idarticulo="";
-}// end ListCompArticulo
+}
 
 
 ListCompArticulo::~ListCompArticulo() {}
@@ -40,15 +49,15 @@ void ListCompArticulo::nuevalinea(QString idcomponente, QString cantcomparticulo
                               codigocompleto,
                               nombre);
 	m_lista.append(lin);
-}// end nuevalinea
+}
 
 
 CompArticulo *ListCompArticulo::linpos(int pos) {
 	return (m_lista.at(pos));
-}// end linpos
+}
 
 
-// Carga l�eas de presupuesto
+// Carga lineas de presupuesto
 void ListCompArticulo::cargar(QString idarticulo) {
     vaciar();
     _depura("ListCompArticulo::cargaListCompArticulo\n",0);
@@ -70,7 +79,7 @@ void ListCompArticulo::cargar(QString idarticulo) {
     }// end while
     delete cur;
     _depura("END ListCompArticulo::cargar");
-}// end chargeBudgetLines
+}
 
 
 void ListCompArticulo::guardaListCompArticulo() {
@@ -80,13 +89,13 @@ void ListCompArticulo::guardaListCompArticulo() {
         linea->guardaCompArticulo();
         i++;
     }// end for
-}// en guardaListCompArticulo
+}
 
  
 void ListCompArticulo::vaciar() {
     mdb_idarticulo = "";
     m_lista.clear();
-}// end guardaListCompArticulo
+}
 
 
 void ListCompArticulo::borrar() {
@@ -99,7 +108,7 @@ void ListCompArticulo::borrar() {
 	}// end if
         companyact->commit();
     }// end if
-}// end borrar
+}
 
 
 void ListCompArticulo::borrar(int pos) {
@@ -108,4 +117,4 @@ void ListCompArticulo::borrar(int pos) {
     linea->borrar();
     m_lista.remove(pos);
     pintar();
-}// end borraCompArticulo
+}

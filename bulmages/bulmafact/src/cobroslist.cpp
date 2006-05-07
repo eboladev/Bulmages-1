@@ -18,30 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementación del listado de presupuestos.
-/*
--- Entendemos que un presupuesto es una relación de materiales y trabajos cuantificada que
--- hacemos a petición de un cliente determinado
--- Numero
--- Data: Data d'emisió del presupost.
--- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Teléfon.
--- Venciment: Data máxima de validesa del presupost.
--- Comentaris
---  Pressupost a clients.
-CREATE TABLE presupuesto (
-   idpresupuesto serial PRIMARY KEY,
-   numpresupuesto integer,
-   fpresupuesto date,
-   contactpresupuesto character varying(90),
-   telpresupuesto character varying(20),
-   vencpresupuesto date,
-   comentpresupuesto character varying(3000),
-   
-   idcliente integer REFERENCES cliente(idcliente)
-);
-*/
-
 
 #include <QMessageBox>
 #include <QCheckBox>
@@ -145,7 +121,7 @@ void CobrosList::on_mui_editar_clicked() {
 
 void CobrosList::on_mui_crear_clicked() {
     _depura("CobrosList::on_mui_crear_clicked",0);
-    CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+    CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de cobros", "company"));
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
@@ -208,7 +184,7 @@ void CobrosList::on_mui_borrar_clicked() {
     int a = mui_list->currentRow();
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo ==0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
+        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de presupuestos", "company"));
         bud->cargar(mdb_idcobro);
         bud->borrar();
     }// end if
@@ -219,7 +195,7 @@ void CobrosList::on_mui_borrar_clicked() {
 void CobrosList::on_mui_list_cellDoubleClicked(int a, int ) {
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo ==0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
+        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de cobros", "company"));
         bud->cargar(mdb_idcobro);
         bud->show();
     } else {
@@ -253,20 +229,20 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 CobrosListSubForm::CobrosListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("cobro");
     setDBCampoId("idcobro");
-    addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idcobro");
-    addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idcliente");
-    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomproveedor");
-    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cifproveedor");
-    addSHeader("telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telproveedor");
-    addSHeader("mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "emailproveedor");
-    addSHeader("fechacobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "fechacobro");
-    addSHeader("cantcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cantcobro");
-    addSHeader("refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "refcobro");
-    addSHeader("previsioncobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "previsioncobro");
-    addSHeader("comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentcobro");
-    addSHeader("idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "idtrabajador");
-    addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomtrabajador");
-    addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "apellidostrabajador");
+    addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobroº"));
+    addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID cliente"));
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
+    addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("C.I.F."));
+    addSHeader("telcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de telefono"));
+    addSHeader("mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de correo electronico"));
+    addSHeader("fechacobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de cobro"));
+    addSHeader("cantcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cantidad"));
+    addSHeader("refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia del cobro"));
+    addSHeader("previsioncobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Previcion del cobro"));
+    addSHeader("comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
+    addSHeader("idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID trabajador"));
+    addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del trabajador"));
+    addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos del trabajador"));
     setinsercion(FALSE);
 }
 

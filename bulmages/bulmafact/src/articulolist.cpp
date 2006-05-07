@@ -48,7 +48,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     presenta();
     m_modo=editmodo;
     if (m_modo == EditMode)
-        comp->meteWindow("Articulos",this);
+        comp->meteWindow(tr("Articulos"),this);
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n",0);
 }// end ArticuloList
@@ -104,7 +104,9 @@ ArticuloList::~ArticuloList() {
 
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n",0);
-    if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar articulo","Esta a punto de borrar un articulo. Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+    if ( QMessageBox::Yes == QMessageBox::question(this,tr("Borrar articulo"),
+				tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
+				QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery="DELETE FROM articulo WHERE idarticulo="+mui_list->DBvalue("idarticulo");
         m_companyact->begin();
         int error = m_companyact->ejecuta(SQLQuery);
@@ -269,7 +271,7 @@ void ArticuloList::on_mui_exportar_clicked() {
         bulmafact2XML(filexml, IMPORT_ARTICULOS);
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+        _depura("ERROR AL ABRIR EL ARCHIVO\n",2);
     }// end if
 
     _depura("ArticuloList::END_s_exportar()\n",0);
@@ -283,7 +285,7 @@ void ArticuloList::on_mui_importar_clicked() {
         filexml.close();
         presenta();
     }  else  {
-        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+        _depura("ERROR AL ABRIR EL ARCHIVO\n",2);
     }// end if
     _depura("ArticuloList::END_s_importar()\n",0);
 }
@@ -318,15 +320,15 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
 ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("articulo");
     setDBCampoId("idarticulo");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idarticulo");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codigocompletoarticulo");
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomarticulo");
-    addSHeader("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "abrevarticulo");
-    addSHeader("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "obserarticulo");
-    addSHeader("desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "desctipo_articulo");
-    addSHeader("desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "desctipo_iva");
-    addSHeader("pvparticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "pvparticulo");
-    addSHeader("stockarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "stockarticulo");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID articulo"));
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo completo del articulo"));
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del articulo"));
+    addSHeader("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion abreviada del articulo"));
+    addSHeader("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Observaciones sobre el articulo"));
+    addSHeader("desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion del tipo de articulo"));
+    addSHeader("desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion tipo de I.V.A."));
+    addSHeader("pvparticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("P.V.P. articulo"));
+    addSHeader("stockarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
     setinsercion(FALSE);
 }
 

@@ -206,14 +206,12 @@ void AlbaranClienteView::agregarFactura() {
     /// Pedimos la factura a la que agregar.
     _depura("Busqueda de una factura.", 0);
 
-
-
     QDialog *diag=new QDialog(0);
     diag->setModal(true);
     FacturasList *fac = new FacturasList(companyact, diag, tr("Seleccione factura","company"),0,FacturasList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
-    /// Hacemos que las opciones de filtrado del listado ya estén bien.
+    /// Hacemos que las opciones de filtrado del listado ya esten bien.
     fac->m_cliente->setidcliente(DBvalue("idcliente"));
     fac->on_mui_actualizar_clicked();
 
@@ -285,8 +283,8 @@ void AlbaranClienteView::on_mui_informereferencia_clicked()  {
 void AlbaranClienteView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios())	{
-        int val = QMessageBox::warning(this, "Guardar Albaran",
-                                       "Desea guardar los cambios.", "Si", "No", "Cancelar", 0, 2);
+        int val = QMessageBox::warning(this, tr("Guardar albaran"),
+                                       tr("Desea guardar los cambios?"), tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)  {
             guardar();
         }

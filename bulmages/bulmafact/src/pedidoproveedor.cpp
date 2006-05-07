@@ -1,12 +1,23 @@
-//
-// C++ Implementation: PedidoProveedor
-//
-// Description:
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 
 #include <QFile>
 #include <QTextStream>
@@ -237,7 +248,7 @@ void PedidoProveedor::calculaypintatotales() {
     base basesimp;
 
 
-    /// Impresi� de los contenidos
+    /// Impresion de los contenidos
     QString l;
     for (int i=0; i < listalineas->rowCount()-1; i++) {
         Fixed cant(listalineas->DBvalue("cantlpedidoproveedor",i ));
@@ -265,7 +276,7 @@ void PedidoProveedor::calculaypintatotales() {
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.data();
     }// end for
-    /// Impresi� de los descuentos
+    /// Impresion de los descuentos
     Fixed porcentt("0.00");
 
     for (int i=0; i < listadescuentos->rowCount()-1; i++) {
@@ -278,7 +289,7 @@ void PedidoProveedor::calculaypintatotales() {
     Fixed parbaseimp("0.00");
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         if (porcentt > Fixed("0.00") ) {
-            parbaseimp = it.data()-it.data()*porcentt/100;
+            parbaseimp = it.data()-it.data()*porcentt / 100;
         } else {
             parbaseimp = it.data();
         }// end if

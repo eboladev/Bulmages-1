@@ -1,26 +1,35 @@
-//
-// C++ Implementation: CompArticulo
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "comparticulo.h"
 
 void CompArticulo::definetabla() {
 	_depura("CompArticulo::definetabla",0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
-    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
-    addDBCampo("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Linea Presupuesto");
-    addDBCampo("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, "Cantidad");
-    addDBCampo("codigocompletocomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo Articulo");
-    addDBCampo("nomcomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre 	Articulo");
-}// end definetabla
+    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID articulo"));
+    addDBCampo("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID componente"));
+    addDBCampo("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, tr("Cantidad"));
+    addDBCampo("codigocompletocomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Codigo completo del componente"));
+    addDBCampo("nomcomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Nombre del componente"));
+}
 
 
 CompArticulo::CompArticulo(company *comp) : DBRecord(comp) {
@@ -40,7 +49,7 @@ CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponen
     } else {
         vaciaCompArticulo();
     }// end if
-}// end CompArticulo
+}
 
 
 CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QString d, QString e) : DBRecord(comp) {
@@ -52,7 +61,7 @@ CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QStri
     setDBvalue("cantcomparticulo", c);
     setDBvalue("codigocompletocomponente",d);
     setDBvalue("nomcomponente", e);
-}// end CompArticulo
+}
 
 
 CompArticulo::~CompArticulo() {}
@@ -66,7 +75,7 @@ void CompArticulo::vaciaCompArticulo() {
 
 
 void CompArticulo::guardaCompArticulo() {
-    /// Segun est�la linea en la base de datos o no se hace una cosa u otra.
+    /// Segun esta la linea en la base de datos o no se hace una cosa u otra.
     if (DBvalue("idarticulo") != "" && DBvalue("idcomponente") != "") {
         QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES ("+
                            DBvalueprep("idarticulo")+","+
@@ -85,7 +94,7 @@ void CompArticulo::guardaCompArticulo() {
         }// end if
         companyact->commit();
     }// end if
-}// end guardaCompArticulo
+}
 
 
 void CompArticulo::setcodigocompletocomponente(QString val) {
@@ -98,7 +107,7 @@ void CompArticulo::setcodigocompletocomponente(QString val) {
         setDBvalue("idcomponente",cur->valor("idarticulo"));
     }// end if
     delete cur;
-}// end setcodigocompletoarticulo
+}
 
 
 void CompArticulo::setidcomponente(QString val) {
@@ -111,4 +120,4 @@ void CompArticulo::setidcomponente(QString val) {
         setDBvalue("codigocompletocomponente", cur->valor("codigocompletoarticulo"));
     }// end if
     delete cur;
-}// end setidarticulo
+}

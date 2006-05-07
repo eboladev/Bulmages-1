@@ -89,7 +89,7 @@ void PedidoProveedorView::inicialize() {
 
 int PedidoProveedorView::cargar(QString id) {
     PedidoProveedor::cargar(id);
-    setCaption("Pedido Proveedor  "+DBvalue("refpedidoproveedor"));
+    setCaption(tr("Pedido a proveedor  ") + DBvalue("refpedidoproveedor"));
     if (companyact->meteWindow(caption(),this))
         return -1;
     dialogChanges_cargaInicial();

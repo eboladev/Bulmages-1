@@ -18,33 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/*
--- client table
----------------+-------------------------+----------------------------------------------------------------
- idcliente     | integer                 | not null default nextval('public.cliente_idcliente_seq'::text)
- nomcliente    | character varying(100)  |
- nomaltcliente | character varying(300)  |
- cifcliente    | character varying(200)  |
- bancocliente  | character varying(35)   |
- dircliente    | character varying(100)  |
- poblcliente   | character varying(40)   |
- cpcliente     | character varying(10)   |
- telcliente    | character varying(20)   |
- faxcliente    | character varying(20)   |
- mailcliente   | character varying(100)  |
- urlcliente    | character varying(150)  |
- faltacliente  | date                    | default now()
- fbajacliente  | date                    |
- comentcliente | character varying(2000) |
- idrecargo     | integer                 | not null
-�dices:
-    "cliente_pkey" llave primaria, btree (idcliente)
-Restricciones de llave for�ea:
-    "$1" FOREIGN KEY (idrecargo) REFERENCES recargo(idrecargo)
- 
-*/
-
-
 #include <QLineEdit>
 #include <QMessageBox>
 #include <Q3Table>
@@ -217,8 +190,8 @@ void ClienteView::on_mui_borrar_clicked() {
 void ClienteView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Cliente",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning( this, tr("Guardar cliente"),
+                                        tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             saveClient();
         if (val == 2)

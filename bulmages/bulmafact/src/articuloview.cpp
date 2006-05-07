@@ -66,7 +66,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
 
 
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-    if (m_companyact->meteWindow("Articulo Edicion",this))
+    if (m_companyact->meteWindow(tr("Edicion del articulo"),this))
         return;
 
     dialogChanges_cargaInicial();
@@ -193,7 +193,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 
 
 /************************************************************************
-* Esta función se ejecuta cuando se ha pulsado sobre el botón de nuevo  *
+* Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo  *
 *************************************************************************/
 void ArticuloView::on_mui_crear_clicked() {
     _depura("ArticuloView::INIT_boton_nuevo()\n",0);
@@ -205,14 +205,14 @@ void ArticuloView::on_mui_crear_clicked() {
 
 
 /**
-  * Esta función se ejecuta cuando se ha pulsado sobre el botón de borrar *
+  * Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar *
   */
 void ArticuloView::on_mui_borrar_clicked() {
     _depura("ArticuloView::INIT_boton_borrar()\n",0);
 
     if (DBvalue("idarticulo") != "") {
 
-        if ( QMessageBox::question(this,tr("Borrar articulo"),tr("Esta a punto de borrar un articulo. Desea continuar?"),tr("Si"),tr("No"),0,1,0) == 0) {
+        if ( QMessageBox::question(this,tr("Borrar articulo"),tr("Esta a punto de borrar un articulo. Desea continuar?"),tr("&Si"),tr("&No"),0,1,0) == 0) {
             m_componentes->borrar();
             borrar();
 		dialogChanges_cargaInicial();
@@ -280,10 +280,10 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 
     m_archivoimagen = Q3FileDialog::getOpenFileName(
                           "",
-                          "Images (*.jpg)",
+                          tr("Imagenes (*.jpg)"),
                           this,
-                          "open file dialog",
-                          "Choose a file" );
+                          tr("Abrir ventana de archivo"),
+                          tr("Elige un archivo"));
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("ArticuloView::END_s_cambiarimagen()\n",0);
 }// end s_cambiarimagen
@@ -292,8 +292,8 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 void ArticuloView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Articulo",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning( this, tr("Guardar articulo"),
+                                        tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             on_mui_guardar_clicked();
         if (val == 2)

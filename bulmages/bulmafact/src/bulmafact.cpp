@@ -83,15 +83,15 @@ bulmafact::~bulmafact() {
 
 void bulmafact::emitirfactura() {
 	_depura("emitir factura activado",0);
-	QMessageBox::information( this, "BulmaFact",
-                              "Pulse aceptar para emitir un monton de facturas");
+	QMessageBox::information( this, tr("BulmaFact"),
+                              tr("Pulse aceptar para emitir un monton de facturas"));
 }// end emitirfactura
 
 
 void bulmafact::recibirfactura() {
 	_depura("recibir factura activado",0);
-	QMessageBox::critical( this, "BulmaFact",
-                           "Pulse aceptar para recibir(destruir) un monton de facturas");
+	QMessageBox::critical( this, tr("BulmaFact"),
+                           tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
 }// end recibirfactura
 
 
@@ -103,7 +103,7 @@ void bulmafact::about() {
 
 
 void bulmafact::aboutQt() {
-	QMessageBox::aboutQt( this, tr("Qt Application Example") );
+	QMessageBox::aboutQt( this, tr("Qt Application Example"));
 }
 
 

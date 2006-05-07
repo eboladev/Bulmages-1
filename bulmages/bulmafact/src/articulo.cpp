@@ -1,14 +1,23 @@
-//
-// C++ Implementation: Articulo
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "articulo.h"
 #include "company.h"
 #include "configuracion.h"
@@ -18,25 +27,24 @@
 #include <QTextStream>
 
 
-
 Articulo::Articulo(company *comp) : DBRecord(comp) {
     m_companyact=comp;
     setDBTableName("articulo");
     setDBCampoId("idarticulo");
-    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");
-    addDBCampo("codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, "Codigo");
-    addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, "Nombre");
-    addDBCampo("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, "Abreviacion");
-    addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, "Observaciones");
-    addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, "Incluir en presentaciones");
-    addDBCampo("controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, "Incluir en control de stock");
-    addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, "Tipo de articulo");
-    addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, "Tipo de I.V.A.");
-    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo completo");
-    addDBCampo("idfamilia", DBCampo::DBint, DBCampo::DBNotNull, "Familia");
-    addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, "Stock");
-    addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, "Inactivo");
-    addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, "P.V.P. base");
+    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Identificador"));
+    addDBCampo("codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Codigo"));
+    addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre"));
+    addDBCampo("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Abreviacion"));
+    addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Observaciones"));
+    addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, tr("Incluir en presentaciones"));
+    addDBCampo("controlstockarticulo", DBCampo::DBboolean, DBCampo::DBNothing, tr("Incluir en control de stock"));
+    addDBCampo("idtipo_articulo", DBCampo::DBint, DBCampo::DBNothing, tr("Tipo de articulo"));
+    addDBCampo("idtipo_iva", DBCampo::DBint, DBCampo::DBNothing, tr("Tipo de I.V.A."));
+    addDBCampo("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Codigo completo"));
+    addDBCampo("idfamilia", DBCampo::DBint, DBCampo::DBNotNull, tr("Familia"));
+    addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, tr("Stock"));
+    addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, tr("Inactivo"));
+    addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, tr("P.V.P. base"));
 }
 
 Articulo::~Articulo() {}

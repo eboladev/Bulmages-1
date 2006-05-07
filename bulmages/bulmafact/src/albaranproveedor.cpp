@@ -197,13 +197,13 @@ void AlbaranProveedor::imprimirAlbaranProveedor()
 	fitxersortidatxt += "<tr>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td></td>";
-	fitxersortidatxt += "<td>Base</td>";
+	fitxersortidatxt += "<td>Base imponible</td>";
 	fitxersortidatxt += "<td>" + listalineas->calculabase().toQString() + "</td>";
 	fitxersortidatxt += "</tr>";
 	fitxersortidatxt += "<tr>";
 	fitxersortidatxt += "<td></td>";
 	fitxersortidatxt += "<td></td>";
-	fitxersortidatxt += "<td>Iva</td>";
+	fitxersortidatxt += "<td>I.V.A.</td>";
 	fitxersortidatxt += "<td>" + listalineas->calculaiva().toQString() + "</td>";
 	fitxersortidatxt += "</tr>";
 	fitxersortidatxt += "<tr>";

@@ -75,7 +75,7 @@ void company::init(QString bd) {
 
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializaci� de clases a partir de dicha inicializaci�.
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de clases a partir de dicha inicializacion.
   */
 QString company::searchCompany() {
     //El cambio de empresa se realiza desde el selector.

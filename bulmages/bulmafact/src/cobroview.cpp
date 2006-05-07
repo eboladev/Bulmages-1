@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,49 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// PRESUPUESTOS
-/*
--- Entendemos que un presupuesto es una relaci� de materiales y trabajos cuantificada que
--- hacemos a petici� de un cliente determinado
--- Numero
--- Data: Data d'emisi�del presupost.
--- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Tel�on.
--- Venciment: Data m�ima de validesa del presupost.
--- Comentaris
---  Pressupost a clients.
-CREATE TABLE presupuesto (
-   idpresupuesto serial PRIMARY KEY,
-   numpresupuesto integer,
-   fpresupuesto date,
-   contactpresupuesto character varying(90),
-   telpresupuesto character varying(20),
-   vencpresupuesto date,
-   comentpresupuesto character varying(3000),
-   
-   idcliente integer REFERENCES cliente(idcliente)
-);
-*/
-
-/*
--- Linea de presupuesto
--- Numero
--- Descripcio: Descripci�de l'article en el moment de ser presupostat.
--- Quantitat
--- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en l�ia.
--- Linia de pressupost a clients.
-CREATE TABLE lpresupuesto (
-   idlpresupuesto integer PRIMARY KEY,
-   desclpresupuesto character varying(150),
-   cantlpresupuesto float,
-   pvplpresupuesto float,
-   descuentolpresupuesto float,
-   
-   idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
-   idarituclo integer REFERENCES articulo(idarticulo)
-);
-*/
 
 #include "cobroview.h"
 
@@ -127,7 +84,7 @@ CobroView::~CobroView() {
 
 void CobroView::on_mui_borrar_clicked() {
     _depura("CobroView::on_mui_borrar_clicked\n",0);
-    if (QMessageBox::warning( this, "BulmaFact - Presupuestos", "Desea borrar este presupuesto", "Si", "No") == 0) {
+    if (QMessageBox::warning( this, tr("BulmaFact - Presupuestos"), tr("Desea borrar este presupuesto"), tr("&Si"), tr("&No")) == 0) {
         borrar();
     }// end if
 }
@@ -137,8 +94,8 @@ void CobroView::on_mui_borrar_clicked() {
 void CobroView::closeEvent( QCloseEvent *e) {
 	_depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Cobro",
-                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning( this, tr("Guardar cobro"),
+                                   tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
 	if (val == 0) 
             on_mui_guardar_clicked();
 	if (val == 2)
