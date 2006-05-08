@@ -73,7 +73,7 @@ PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *n
 	/// Hacemos una carga falsa para que la clase quede bien inicializada. (es una chapucilla)
 	cargar("0");
     _depura("Fin de la inicializacion de PresupuestoView\n",0);
-}// end PresupuestoView
+}
 
 
 
@@ -81,8 +81,8 @@ PresupuestoView::PresupuestoView( company *comp , QWidget *parent, const char *n
 void PresupuestoView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this, "Guardar presupuesto",
-                                       "Desea guardar los cambios?","Si","No","Cancelar",0,2);
+        int val = QMessageBox::warning(this, tr("Guardar presupuesto"),
+                                       tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
             guardar();
         if (val == 2)
@@ -94,7 +94,7 @@ void PresupuestoView::closeEvent(QCloseEvent *e) {
 PresupuestoView::~PresupuestoView() {
     companyact->refreshBudgets();
     companyact->sacaWindow(this);
-}// end ~PresupuestoView
+}
 
 
 void PresupuestoView::inicialize() {
@@ -111,20 +111,20 @@ void PresupuestoView::inicialize() {
     pintaidforma_pago("0");
     pintaidalmacen("0");
     pintaidtrabajador("0");
-}// end inicialize
+}
 
 
 
 void PresupuestoView::on_mui_imprimir_clicked() {
     imprimirPresupuesto();
-}//end s_printPresupuestoView
+}
 
 
 
 
 void PresupuestoView::on_mui_borrar_clicked() {
     int val = QMessageBox::warning( this, tr("Borrar presupuesto."),
-                                    tr("ATENCION: Eliminar presupuestos a clientes puede disminuir la eficacia economica de la empresa. Continuar?"),tr("Si"),tr("No"),tr("Cancelar"),0,2);
+                                    tr("Esta seguro que desea eliminar este presupuesto?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
     if (val == 0) {
 
         if (!borrar()) {
@@ -141,8 +141,7 @@ void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed des
     m_totalTaxes->setText(QString(iva.toQString()));
     m_totalBudget->setText(QString(total.toQString()));
     m_totalDiscounts->setText(QString(desc.toQString()));
-}// end pintatotales
-
+}
 
 
 /// Se encarga de generar un pedido a partir del presupuesto.

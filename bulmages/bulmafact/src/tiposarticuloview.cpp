@@ -1,14 +1,23 @@
-//
-// C++ Implementation: %{MODULE}
-//
-// Description:
-//
-//
-// Author: %{AUTHOR} <%{EMAIL}>, (C) %{YEAR}
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+*   Copyright (C) 2005 by Tomeu Borras Riera                              *
+*   tborras@conetxia.com                                                  *
+*                                                                         *
+*   This program is free software; you can redistribute it and/or modify  *
+*   it under the terms of the GNU General Public License as published by  *
+*   the Free Software Foundation; either version 2 of the License, or     *
+*   (at your option) any later version.                                   *
+*                                                                         *
+*   This program is distributed in the hope that it will be useful,       *
+*   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+*   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+*   GNU General Public License for more details.                          *
+*                                                                         *
+*   You should have received a copy of the GNU General Public License     *
+*   along with this program; if not, write to the                         *
+*   Free Software Foundation, Inc.,                                       *
+*   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+***************************************************************************/
+
 #include <Q3ListView>
 #include <QMap>
 #include <QLineEdit>
@@ -29,17 +38,16 @@ TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, const char *n
     companyact = comp;
     m_listTipos->setColumnCount(3);
     QStringList headers;
-    headers << "ID" << "CODIGO" << "DESCRIPCION";
+    headers << tr("ID") << tr("CODIGO") << tr("DESCRIPCION");
     m_listTipos->setHeaderLabels(headers);
 
     m_idtipo="";
     setModoEdicion();
     pintar();
-}// end familiasview
+}
 
 
-TipoArticuloList::~TipoArticuloList() {}// end ~familiasview
-
+TipoArticuloList::~TipoArticuloList() {}
 
 void TipoArticuloList::pintar() {
     QTreeWidgetItem * it;
@@ -63,7 +71,7 @@ void TipoArticuloList::pintar() {
     m_idtipo="";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-}// end pintar
+}
 
 
 QString TipoArticuloList::codtipo_articulo() {
@@ -92,7 +100,7 @@ void TipoArticuloList::on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item
         m_idtipo = item->text(COL_IDTIPOARTICULO);
         done(1);
     }// end if
-}// end seleccionado
+}
 
 
 /**
@@ -109,7 +117,6 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged ( QTreeWidgetItem *curr
         m_idtipo = idtipoold;
         mostrarplantilla();
     }// end if
-
 }
 
 
@@ -126,33 +133,33 @@ void TipoArticuloList::mostrarplantilla() {
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     fprintf(stderr,"Terminamos la ejecución de TipoArticuloList::mostrarplantilla\n");
-}// end mostrarplantilla
+}
 
 
-/** Antes de salir de la ventana debemos hacer la comprobaci� de si se ha modificado algo
-  * Esta funci� est�dedicada a Francina, Bienvenida al mundo
+/** Antes de salir de la ventana debemos hacer la comprobacion de si se ha modificado algo
+  * Esta funcion esta dedicada a Francina, Bienvenida al mundo
   */
 void TipoArticuloList::close() {
     trataModificado();
     done(0);
-}// end close
+}
 
 
 bool TipoArticuloList::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, "Guardar Familia",
-                                   "Desea guardar los cambios.",
+        if ( QMessageBox::warning( this, tr("Guardar familia"),
+                                   tr("Desea guardar los cambios?"),
                                    QMessageBox::Ok ,
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
             on_mui_guardar_clicked();
         return (TRUE);
     }// end if
     return(FALSE);
-}// end trataModificado
+}
 
 
-/** SLOT que responde a la pulsaci� del bot� de guardar el tipo de iva que se est�editando.
+/** SLOT que responde a la pulsacion del boton de guardar el tipo de iva que se esta editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void TipoArticuloList::on_mui_guardar_clicked() {
@@ -178,10 +185,10 @@ void TipoArticuloList::on_mui_guardar_clicked() {
         it->setText(COL_DESCTIPOARTICULO, cursoraux1->valor("desctipo_articulo"));
     }// end if
     delete cursoraux1;
-}// end s_saveTipoIVA
+}
 
 
-/** SLOT que responde a la pulsaci� del bot� de nuevo tipo de iva
+/** SLOT que responde a la pulsacion del boton de nuevo tipo de iva
   * Inserta en la tabla de ivas
   */
 void TipoArticuloList::on_mui_crear_clicked() {
@@ -201,9 +208,9 @@ void TipoArticuloList::on_mui_crear_clicked() {
     m_idtipo = cur->valor("idtipo");
     delete cur;
     pintar();
-}// end s_newTipoIVA
+}
 
-/** SLOT que responde a la pulsaci� del bot� de borrar la familia que se est�editando.
+/** SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
   * Lo que hace es que se hace un update de todos los campos
   */
 void TipoArticuloList::on_mui_borrar_clicked() {

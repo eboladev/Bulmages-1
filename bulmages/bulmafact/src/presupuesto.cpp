@@ -1,14 +1,23 @@
-//
-// C++ Implementation: presupuesto
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "presupuesto.h"
 #include "company.h"
 #include "configuracion.h"
@@ -25,21 +34,21 @@ presupuesto::presupuesto(company *comp) : DBRecord(comp) {
     companyact=comp;
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
-    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-}// end presupuesto
+    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID presupuesto", "presupuesto"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("ID cliente", "presupuesto"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("ID almacen", "presupuesto"));
+    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero de presupuesto", "presupuesto"));
+    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de creacion", "presupuesto"));
+    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de vencimiento", "presupuesto"));
+    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Persona de contacto", "presupuesto"));
+    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Numero de telefono", "presupuesto"));
+    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentarios", "presupuesto"));
+    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Presupuesto procesado", "presupuesto"));
+    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descuento", "presupuesto"));
+    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia", "presupuesto"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("ID forma de pago", "presupuesto"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("ID trabajador", "presupuesto"));
+}
 
 presupuesto::~presupuesto() {}
 
@@ -57,12 +66,12 @@ int presupuesto::borrar() {
         companyact->commit();
     }// end if
     return 0;
-}// end borraPresupuesto
+}
 
 
 void presupuesto::vaciaPresupuesto() {
     DBclear();
-}// end vaciaPresupuesto
+}
 
 void presupuesto::pintaPresupuesto() {
     pintaidcliente(DBvalue("idcliente"));
@@ -85,9 +94,9 @@ void presupuesto::pintaPresupuesto() {
     //    listadescuentos->pintaListDescuentoPresupuesto();
 
     calculaypintatotales();
-}// end pintaPresupuesto
+}
 
-// Esta funci� carga un presupuesto.
+// Esta funcion carga un presupuesto.
 int presupuesto::cargar(QString idbudget) {
     int error = 0;
     QString query = "SELECT * FROM presupuesto WHERE idpresupuesto="+idbudget;
@@ -110,7 +119,7 @@ int presupuesto::cargar(QString idbudget) {
 
     pintaPresupuesto();
     return 0;
-}// end chargeBudget
+}
 
 
 int presupuesto::guardar() {
@@ -128,7 +137,7 @@ int presupuesto::guardar() {
     companyact->commit();
 	_depura("END presupuesto::guardar",0);
     return 0;
-}// end guardapresupuesto
+}
 
 
 QString presupuesto::detalleArticulos() {
@@ -171,7 +180,7 @@ QString presupuesto::detalleArticulos() {
     delete cur;
 
     return texto;
-}// end detalleArticulos
+}
 
 
 void presupuesto::imprimirPresupuesto() {
@@ -219,7 +228,7 @@ void presupuesto::imprimirPresupuesto() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -257,7 +266,7 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt += "</tr>\n";
     QString l;
 
-    int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
+    int i=0;// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     SDBRecord *linea;
     for (int i =0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
@@ -288,7 +297,7 @@ void presupuesto::imprimirPresupuesto() {
         basei =basei + it.data();
     }// end for
 
-    /// Impresi� de los descuentos
+    /// Impresion de los descuentos
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
@@ -349,7 +358,7 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt += "<tr>"+tr1+"</tr><tr>"+tr2+"</tr></blockTable>\n";
     buff.replace("[totales]",fitxersortidatxt);
 
-    /// En la versi� para windows hay problemas con las imagenes, por eso de momento lo dejamos as�
+    /// En la version para windows hay problemas con las imagenes, por eso de momento lo dejamos asi.
 #ifndef WINDOWS
 
     buff.replace("[detallearticulos]",detalleArticulos());
@@ -375,7 +384,7 @@ void presupuesto::calculaypintatotales() {
 
     base basesimp;
     SDBRecord *linea;
-    /// Impresi� de los contenidos
+    /// Impresion de los contenidos
     QString l;
     for (int i =0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
@@ -395,7 +404,7 @@ void presupuesto::calculaypintatotales() {
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.data();
     }// end for
-    /// Impresi� de los descuentos
+    /// Impresion de los descuentos
     Fixed porcentt("0.00");
     SDBRecord *linea1;
     if (listadescuentos->rowCount()) {
@@ -431,4 +440,4 @@ void presupuesto::calculaypintatotales() {
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
     _depura("END calculaypintatotales \n",0);
-}// end calculaypintatotales
+}

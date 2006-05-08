@@ -56,7 +56,7 @@ void SubForm2Bf::pressedAsterisk(int row, int col) {
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
     }// end if
-};
+}
 
 
 
@@ -67,7 +67,7 @@ void SubForm2Bf::pressedSlash(int row, int col) {
     QString text = editaTexto(camp->text());
     camp->set
     (text);
-};
+}
 
 void SubForm2Bf::editFinished(int row, int col) {
     _depura("SubForm2Bf::editFinished",0);
@@ -82,7 +82,7 @@ void SubForm2Bf::editFinished(int row, int col) {
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         }
     }
-};
+}
 
 void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     _depura("SubForm2Bf::contextMenuEvent",0);
@@ -106,7 +106,7 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
 	popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver Configurador de Subformulario"));
+    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)

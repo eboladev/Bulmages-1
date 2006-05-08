@@ -155,7 +155,7 @@ void PedidosProveedorList::imprimir() {
     }
     invocaPDF("pedidosproveedor");
 
-}// end imprimir
+}
 
 
 

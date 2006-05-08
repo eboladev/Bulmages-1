@@ -18,48 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/*
--- Los proveedores son los que nos suminstran articulos y/o servicios.
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
--- 1 Article t�1 sol prove�or principal.
--- 1 Article t�1 sol prove�or referent.
--- CAMPOS
--- ======
--- Codi: Clau artificial.
--- Nom: Nom comercial o fiscal.
--- Nom_alternatiu: Nom comercial o fiscal.
--- CIF: Codi d'Identificaci�Fiscal.
--- CodiCli: Codi de client amb que ens facturen. �il per a identificar-nos.
--- C_Banc
--- Comentaris
--- Adre�: Adre�.
--- Poblaci� Poblaci�
--- CProv: Codi de provincia (dos primers d�its del codi postal).
--- sCP: Tres darrers d�its del codi postal.
--- Telf: Tel�on.
--- Fax: Fax.
--- Email: eMail.
--- Url: Url.
--- CompteWeb: Dades de login si disposen de tenda o tarifes en l�ia
-CREATE TABLE proveedor (
- idproveedor serial PRIMARY KEY,
- nomproveedor character varying(200),
- nomaltproveedor character varying(200),
- cifproveedor character varying(12),
- codicliproveedor character varying(30),
- cbancproveedor character varying(20),
- comentproveedor character varying(2000),
- dirproveedor character varying(50),
- poblproveedor character varying(50),
- cpproveedor character varying(9) NOT NULL,
- telproveedor character varying(12),
- faxproveedor character varying(12),
- emailproveedor character varying(100),
- urlproveedor character varying(100),
- clavewebproveedor character varying(100)
-);
-*/
-
 #include "provedit.h"
 #include "company.h"
 #include <QLineEdit>
@@ -113,9 +71,9 @@ ProveedorView::~ProveedorView() {
 
 
 /************************************************************************
-* Esta funci� carga un proveedor de la base de datos y lo presenta.    *
-* Si el parametro pasado no es un identificador v�ido entonces se pone *
-* la ventana de edici� en modo de inserci�                            *
+* Esta funcion carga un proveedor de la base de datos y lo presenta.    *
+* Si el parametro pasado no es un identificador valido entonces se pone *
+* la ventana de edicion en modo de insercion                            *
 *************************************************************************/
 int ProveedorView::chargeprovider(QString idprov) {
     _depura("ProveedorView::chargeprovider",0);
@@ -174,12 +132,12 @@ int ProveedorView::chargeprovider(QString idprov) {
 
 
 /************************************************************************
-* Esta funci� se ejecuta cuando se ha pulsado sobre el bot� de nuevo  *
+* Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo  *
 *************************************************************************/
 void ProveedorView::on_mui_crear_clicked() {
     if (m_modificado  ) {
-        if ( QMessageBox::warning( this, "Guardar Proveedor",
-                                   "Desea guardar los cambios.",
+        if ( QMessageBox::warning( this, tr("Guardar proveedor"),
+                                   tr("Desea guardar los cambios?"),
                                    QMessageBox::Ok ,
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
             on_mui_guardar_clicked();
@@ -261,14 +219,14 @@ void ProveedorView::on_mui_guardar_clicked() {
         m_companyact->commit();
     }// end if
     s_releaseModificado();
-}// end accept
+}
 
 /************************************************************************
-* Esta funci� se ejecuta cuando se ha pulsado sobre el bot� de borrar *
+* Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar *
 *************************************************************************/
 void ProveedorView::on_mui_borrar_clicked() {
     if (mdb_idproveedor != "0") {
-        if ( QMessageBox::Yes == QMessageBox::question(this,"Borrar Proveedor","Esta a punto de borrar un proveedor, Estos datos pueden dar problemas.",QMessageBox::Yes, QMessageBox::No)) {
+        if ( QMessageBox::Yes == QMessageBox::question(this,tr("Borrar proveedor"),tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),QMessageBox::Yes, QMessageBox::No)) {
             QString SQLQuery="DELETE FROM proveedor WHERE idproveedor="+mdb_idproveedor;
             m_companyact->begin();
             int error = m_companyact->ejecuta(SQLQuery);
@@ -280,21 +238,21 @@ void ProveedorView::on_mui_borrar_clicked() {
             close();
         }// end if
     }// end if
-}// end boton_borrar
+}
 
 
 
 void ProveedorView::close() {
     if (m_modificado  ) {
-        if ( QMessageBox::warning( this, "Guardar Proveedor",
-                                   "Desea guardar los cambios.",
+        if ( QMessageBox::warning( this, tr("Guardar proveedor"),
+                                   tr("Desea guardar los cambios?"),
                                    QMessageBox::Ok ,
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
             on_mui_guardar_clicked();
     }// end if
     QWidget::close();
     delete this;
-}// end close
+}
 
 
 void ProveedorView::on_mui_aceptar_clicked() {

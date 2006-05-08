@@ -18,48 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/*
--- Los proveedores son los que nos suminstran articulos y/o servicios.
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
--- 1 Article t�1 sol prove�or principal.
--- 1 Article t�1 sol prove�or referent.
--- CAMPOS
--- ======
--- Codi: Clau artificial.
--- Nom: Nom comercial o fiscal.
--- Nom_alternatiu: Nom comercial o fiscal.
--- CIF: Codi d'Identificaci�Fiscal.
--- CodiCli: Codi de client amb que ens facturen. �il per a identificar-nos.
--- C_Banc
--- Comentaris
--- Adre�: Adre�.
--- Poblaci� Poblaci�
--- CProv: Codi de provincia (dos primers d�its del codi postal).
--- sCP: Tres darrers d�its del codi postal.
--- Telf: Tel�on.
--- Fax: Fax.
--- Email: eMail.
--- Url: Url.
--- CompteWeb: Dades de login si disposen de tenda o tarifes en l�ia
-CREATE TABLE proveedor (
-  idproveedor serial PRIMARY KEY,
-  nomproveedor character varying(200),
-  nomaltproveedor character varying(200),
-  cifproveedor character varying(12),
-  codicliproveedor character varying(30),
-  cbancproveedor character varying(20),
-  comentproveedor character varying(2000),
-  dirproveedor character varying(50),
-  poblproveedor character varying(50),
-  cpproveedor character varying(9) NOT NULL,
-  telproveedor character varying(12),
-  faxproveedor character varying(12),
-  emailproveedor character varying(100),
-  urlproveedor character varying(100),
-  clavewebproveedor character varying(100),
-);
-*/
-
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QCheckBox>
@@ -88,7 +46,7 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Q
         m_companyact->meteWindow(caption(),this);
     presenta();
 
-}// end ProveedorList
+}
 
 ProveedorList::~ProveedorList() {
     if (m_modo == EditMode)
@@ -99,7 +57,7 @@ void ProveedorList::presenta() {
     cursor2 * cur= m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%"+m_filtro->text()+"%'");
     mui_list->cargar(cur);
     delete cur;
-}// end presenta
+}
 
 
 
@@ -110,12 +68,12 @@ void ProveedorList::on_mui_crear_clicked() {
     ProveedorView *prov = new ProveedorView(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
     m_companyact->m_pWorkspace->addWindow(prov);
     prov->show();
-}// end boton_crear
+}
 
 
 void ProveedorList::s_findProvider() {
     presenta();
-}// end s_findProvider
+}
 
 
 void ProveedorList::editar(int  row) {
@@ -124,7 +82,7 @@ void ProveedorList::editar(int  row) {
     m_cifprovider = mui_list->DBvalue(QString("cifproveedor"),row);
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"),row);
     if (m_modo ==0 ) {
-        ProveedorView *prov = new ProveedorView(m_companyact,0,theApp->translate("Edicion de Proveedores", "company"));
+        ProveedorView *prov = new ProveedorView(m_companyact,0,theApp->translate("Edicion de proveedores", "company"));
         if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
             return;
         }
@@ -143,11 +101,11 @@ void ProveedorList::on_mui_editar_clicked() {
         editar(a);
     else
         _depura("Debe seleccionar una linea",2);
-}// end s_editProvider
+}
 
 
-/** SLOT que responde a la pulsaci� de borrar un determinado proveedor
-  * Dicha funci� avisa de la perdida de datos y si se decide continuar
+/** SLOT que responde a la pulsacion de borrar un determinado proveedor
+  * Dicha funcion avisa de la perdida de datos y si se decide continuar
   * Se procede a borrar el proveedor
   */
 void ProveedorList::on_mui_borrar_clicked() {
@@ -160,11 +118,11 @@ void ProveedorList::on_mui_borrar_clicked() {
     prov->on_mui_borrar_clicked();
     delete prov;
     _depura("END ProveedorList::on_mui_borrar_clicked",0);
-}// end s_removeProvider
+}
 
 
-/** SLOT que se ejecuta al pulsar sobre el bot� de imprimir en la ventana de proveedores
-  * La funci� llama a rtkview para generar el listado predefinido en reports/ProveedorList.rtk
+/** SLOT que se ejecuta al pulsar sobre el boton de imprimir en la ventana de proveedores
+  * La funcion llama a rtkview para generar el listado predefinido en reports/ProveedorList.rtk
   */
 void ProveedorList::on_mui_imprimir_clicked() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"proveedores.rml";
@@ -201,7 +159,7 @@ void ProveedorList::on_mui_imprimir_clicked() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
@@ -216,29 +174,29 @@ void ProveedorList::on_mui_imprimir_clicked() {
 
 
     invocaPDF("proveedores");
-}// end s_printProviders.
+}
 
 
 
 void ProveedorList::on_mui_exportar_clicked() {
-    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),tr("Proveedores (*.xml)"), this, tr("Seleccione el archivo"), tr("Elija el archivo")));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_PROVEEDORES);
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+        _depura("ERROR AL ABRIR EL ARCHIVO\n",2);
     }// end if
-}//
+}
 
 
 void ProveedorList::on_mui_importar_clicked() {
-    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Proveedores (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),tr("Proveedores (*.xml)"), this, tr("Seleccione el archivo"), tr("Elija el archivo")));
     if (filexml.open(QIODevice::ReadOnly))  {
         XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
         filexml.close();
         presenta();
     }  else  {
-        _depura("ERROR AL ABRIR ARCHIVO\n",2);
+        _depura("ERROR AL ABRIR EL ARCHIVO\n",2);
     }// end if
 }
 
@@ -251,21 +209,21 @@ void ProveedorList::on_mui_importar_clicked() {
 ProveedorListSubform::ProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("proveedor");
     setDBCampoId("idproveedor");
-    addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, "idproveedor");
-    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomproveedor");
-    addSHeader("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomaltproveedor");
-    addSHeader("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cifproveedor");
-    addSHeader("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codicliproveedor");
-    addSHeader("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cbancproveedor");
-    addSHeader("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "comentproveedor");
-    addSHeader("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "dirproveedor");
-    addSHeader("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "poblproveedor");
-    addSHeader("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "cpproveedor");
-    addSHeader("telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "telproveedor");
-    addSHeader("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "faxproveedor");
-    addSHeader("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "emailproveedor");
-    addSHeader("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "urlproveedor");
-    addSHeader("clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "clavewebproveedor");
+    addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID proveedor"));
+    addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
+    addSHeader("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre alternativo"));
+    addSHeader("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("C.I.F."));
+    addSHeader("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo"));
+    addSHeader("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de cuenta corriente"));
+    addSHeader("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
+    addSHeader("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion"));
+    addSHeader("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Poblacion"));
+    addSHeader("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo postal"));
+    addSHeader("telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de telefono"));
+    addSHeader("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de fax"));
+    addSHeader("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de correo electronico"));
+    addSHeader("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de URL"));
+    addSHeader("clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clave de acceso a la web del proveedor"));
     setinsercion(FALSE);
 };
 
