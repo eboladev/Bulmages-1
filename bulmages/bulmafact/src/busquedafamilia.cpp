@@ -22,6 +22,7 @@
 #include "familiasview.h"
 #include "company.h"
 
+
 BusquedaFamilia::BusquedaFamilia(QWidget *parent, const char *name)
 : QWidget(parent, name) {
     setupUi(this);
@@ -33,6 +34,7 @@ BusquedaFamilia::BusquedaFamilia(QWidget *parent, const char *name)
 
 
 BusquedaFamilia::~BusquedaFamilia() {}
+
 
 void BusquedaFamilia::setidfamilia(QString val) {
     mdb_idfamilia=val;
@@ -49,7 +51,7 @@ void BusquedaFamilia::setidfamilia(QString val) {
     delete cur;
     m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
     m_nombrefamilia->setText(mdb_nombrefamilia);
-}// end setidfamilia
+}
 
 
 void BusquedaFamilia::setcodigocompletofamilia(QString val) {
@@ -69,7 +71,7 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 }
 
 
-// Bsqueda de Familias.
+// Busqueda de familias.
 void BusquedaFamilia::on_mui_buscar_clicked() {
 	familiasview *fam = new familiasview(companyact, 0,0);
 	fam->setModoConsulta();
@@ -82,7 +84,7 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
 	}// end if
 	delete fam;
     emit(valueChanged(mdb_idfamilia));	
-}// end searchClient
+}
 
 
 void BusquedaFamilia::on_m_codigofamilia_textChanged(const QString &val) {
@@ -100,4 +102,5 @@ void BusquedaFamilia::on_m_codigofamilia_textChanged(const QString &val) {
     m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
     m_nombrefamilia->setText(mdb_nombrefamilia);
     emit(valueChanged(mdb_idfamilia));
-}// end setCifClient
+}
+

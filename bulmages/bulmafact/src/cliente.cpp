@@ -52,6 +52,7 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     _depura("END Cliente::Cliente",0);
 }
 
+
 Cliente::~Cliente() {}
 
 
@@ -72,6 +73,8 @@ void Cliente::borraCliente() {
 void Cliente::vaciaCliente() {
     DBclear();
 }
+
+
 void Cliente::pintaCliente() {
     _depura("Cliente::pintaCliente",0);
 
@@ -128,5 +131,4 @@ void Cliente::guardaCliente() {
     setidcliente(id);
     m_companyact->commit();
 }
-
 

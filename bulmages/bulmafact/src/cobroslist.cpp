@@ -34,7 +34,6 @@
 #include "funcaux.h"
 
 
-
 CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag) : QWidget (parent, name, flag) {
     setupUi(this);
     _depura("CobrosList::CobrosList",0);
@@ -46,6 +45,7 @@ CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag) : QWi
     _depura("END CobrosList::CobrosList",0);
 
 }
+
 
 CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)   : QWidget(parent, name, flag) {
     setupUi(this);
@@ -60,10 +60,10 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFl
     _depura("END CobrosList::CobrosList",0);
 }
 
+
 CobrosList::~CobrosList() {
     m_companyact->sacaWindow(this);
 }
-
 
 
 void CobrosList::presentar() {
@@ -80,7 +80,6 @@ void CobrosList::presentar() {
     }// end if
     _depura("END CobrosList::presentar()\n",0);
 }
-
 
 
 QString CobrosList::generaFiltro() {
@@ -107,7 +106,6 @@ QString CobrosList::generaFiltro() {
     _depura("END CobrosList::generaFiltro\n",0);
     return (filtro);
 }
-
 
 
 void CobrosList::on_mui_editar_clicked() {
@@ -220,11 +218,9 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 }
 
 
-
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 
 CobrosListSubForm::CobrosListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("cobro");
@@ -245,12 +241,4 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent, const char *) : SubForm2Bf
     addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos del trabajador"));
     setinsercion(FALSE);
 }
-
-
-
-
-
-
-
-
 

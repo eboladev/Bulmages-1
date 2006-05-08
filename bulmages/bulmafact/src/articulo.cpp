@@ -47,9 +47,8 @@ Articulo::Articulo(company *comp) : DBRecord(comp) {
     addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("P.V.P. base", "articulo"));
 }
 
+
 Articulo::~Articulo() {}
-
-
 
 
 void Articulo::pintar() {
@@ -73,8 +72,5 @@ void Articulo::pintar() {
     pintainactivoarticulo (DBvalue("inactivoarticulo"));
     pintapvparticulo (DBvalue("pvparticulo"));
     _depura("END Articulo::pintar",0);
-}// end pintaArticulo
-
-
-
+}
 

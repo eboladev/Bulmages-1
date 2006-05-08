@@ -18,27 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementacion del listado de albaranes.
-/*
--- COMPROVACIONS D'INTEGRITAT>Generiques:
--- Tots els albarans d'una factura corresponen al mateix client.
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Albara a clients.
-CREATE TABLE albaran (
-   numalbaran integer PRIMARY KEY,
-   fechaalbaran date,
- 
---   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
-   idcliente integer REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),
-   numfactura integer REFERENCES factura(numfactura),
-   numnofactura integer REFERENCES nofactura(numnofactura)
-);
- 
-*/
 #include <QMessageBox>
 #include <QFile>
 #include <QCheckBox>
@@ -175,7 +154,7 @@ void AlbaranClienteList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
 
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
@@ -190,7 +169,7 @@ void AlbaranClienteList::imprimir() {
     }
     invocaPDF("albaranescliente");
 
-}// end imprimir
+}
 
 
 QString AlbaranClienteList::generarFiltro() {
@@ -221,7 +200,7 @@ QString AlbaranClienteList::generarFiltro() {
         filtro += " AND fechaalbaran <= '"+m_fechafin->text()+"' ";
 
     return (filtro);
-}// end generaFiltro
+}
 
 
 
@@ -252,11 +231,3 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent, const char
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
     setinsercion(FALSE);
 };
-
-
-
-
-
-
-
-

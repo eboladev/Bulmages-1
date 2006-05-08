@@ -25,6 +25,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
 : QWidget(parent, name) {
     setupUi(this);
@@ -36,6 +37,7 @@ BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
 
 
 BusquedaProveedor::~BusquedaProveedor() {}
+
 
 void BusquedaProveedor::setidproveedor(QString val) {
     mdb_idproveedor=val;
@@ -73,7 +75,7 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 }
 
 
-// Bsqueda de Proveedors.
+// Busqueda de proveedors.
 void BusquedaProveedor::on_mui_buscar_clicked() {
     _depura("Busqueda de un provider\n",0);
 
@@ -96,7 +98,7 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     }// end if
     delete providers;
 	delete diag;
-}// end searchClient
+}
 
 
 void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
@@ -114,4 +116,5 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     m_cifproveedor->setText(mdb_cifproveedor);
     m_nomproveedor->setText(mdb_nomproveedor);
     emit(valueChanged(mdb_idproveedor));
-}// end setCifClient
+}
+

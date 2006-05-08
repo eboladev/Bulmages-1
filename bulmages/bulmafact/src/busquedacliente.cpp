@@ -23,6 +23,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 BusquedaCliente::BusquedaCliente(QWidget *parent, const char *name)
         : QWidget(parent, name) {
     setupUi(this);
@@ -34,6 +35,7 @@ BusquedaCliente::BusquedaCliente(QWidget *parent, const char *name)
 
 
 BusquedaCliente::~BusquedaCliente() {}
+
 
 void BusquedaCliente::setidcliente(QString val) {
     _depura("BusquedaCliente::setidcliente",0);
@@ -72,7 +74,7 @@ void BusquedaCliente::setcifcliente(QString val) {
 }
 
 
-// Bsqueda de Clientes.
+// Busqueda de clientes.
 void BusquedaCliente::on_mui_buscar_clicked() {
     _depura("BusquedaCliente::on_mui_buscar_clicked\n",0);
     QDialog *diag=new QDialog(0);
@@ -107,4 +109,5 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     m_cifcliente->setText(mdb_cifcliente);
     m_nomcliente->setText(mdb_nomcliente);
     emit(valueChanged(mdb_idcliente));
-}// end setCifClient
+}
+

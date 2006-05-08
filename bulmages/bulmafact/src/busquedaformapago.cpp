@@ -22,6 +22,7 @@
 #include "company.h"
 #include <QComboBox>
 
+
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
 : QComboBox(parent) {
     companyact=NULL;
@@ -35,6 +36,7 @@ BusquedaFormaPago::~BusquedaFormaPago() {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
 }
+
 
 void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     if (m_cursorcombo != NULL)
@@ -53,3 +55,4 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     }
     setCurrentItem(i1);
 }
+

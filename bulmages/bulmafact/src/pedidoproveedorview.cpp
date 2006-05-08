@@ -83,7 +83,7 @@ void PedidoProveedorView::inicialize() {
     pintaidtrabajador("0");
     subform3->pintar();
     m_descuentos->pintar();
-}// end inicialize
+}
 
 
 
@@ -124,7 +124,7 @@ void   PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fix
     m_totalTaxes->setText(iva.toQString());
     m_totalpedidoproveedor->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
-}// end pintatotales
+}
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
@@ -135,7 +135,7 @@ void PedidoProveedorView::on_mui_pagar_clicked() {
     bud->setcomentpago(DBvalue("descpedidoproveedor"));
     bud->pintar();
     bud->show();
-}// end s_verpresupuesto
+}
 
 
 
@@ -160,8 +160,7 @@ void PedidoProveedorView::generarAlbaran() {
     if (QMessageBox::question(
                 this,
                 tr("Albaran de proveedor inexistente"),
-                tr("No existe un albaran asociado a este pedido."
-                   "Desea crearlo ?"),
+                tr("No existe un albaran asociado a este pedido.\n Desea crearlo?"),
                 tr("&Si"), tr("&No"),
                 QString::null, 0, 1 ) )
         return;
@@ -185,25 +184,25 @@ void PedidoProveedorView::generarAlbaran() {
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
 	linea = listalineas->lineaat(i);
 	linea1 = bud->getlistalineas()->newSDBRecord();
-	linea1->setDBvalue("desclalbaranp",linea->DBvalue("desclpedidoproveedor"));
-	linea1->setDBvalue("cantlalbaranp",linea->DBvalue("cantlpedidoproveedor"));
-	linea1->setDBvalue("pvplalbaranp",linea->DBvalue("pvplpedidoproveedor"));
-	linea1->setDBvalue("descontlalbaranp",linea->DBvalue("descuentolpedidoproveedor"));
-	linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
-	linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
-	linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
-	linea1->setDBvalue("ivalalbaranp",linea->DBvalue("ivalpedidoproveedor"));
+	linea1->setDBvalue("desclalbaranp",linea->DBvalue(tr("Descripcion del albaran")));
+	linea1->setDBvalue("cantlalbaranp",linea->DBvalue(tr("Cantidad del pedido")));
+	linea1->setDBvalue("pvplalbaranp",linea->DBvalue(tr("P.V.P.")));
+	linea1->setDBvalue("descontlalbaranp",linea->DBvalue(tr("Descuento")));
+	linea1->setDBvalue("idarticulo",linea->DBvalue(tr("ID articulo")));
+	linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue(tr("Codigo completo articulo")));
+	linea1->setDBvalue("nomarticulo",linea->DBvalue(tr("Nombre del articulo")));
+	linea1->setDBvalue("ivalalbaranp",linea->DBvalue(tr("I.V.A.")));
         i++;
     }// end for
 
     for (int i=0; i < listadescuentos->rowCount()-1; i++) {
 //        Fixed propor(listadescuentos->DBvalue( "proporciondpedidoproveedor",i).ascii());
 	linea1 = bud->getlistadescuentos()->newSDBRecord();
-	linea1->setDBvalue("conceptdalbaranp",listadescuentos->DBvalue( "conceptdpedidoproveedor",i));
-	linea1->setDBvalue("proporciondalbaranp",listadescuentos->DBvalue( "proporciondpedidoproveedor",i));
+	linea1->setDBvalue("conceptdalbaranp",listadescuentos->DBvalue("conceptdpedidoproveedor",i));
+	linea1->setDBvalue("proporciondalbaranp",listadescuentos->DBvalue("proporciondpedidoproveedor",i));
     }// end for
     bud->show();
-}// end generarAlbaran
+}
 
 
 

@@ -66,12 +66,12 @@ int PedidoProveedor::borrar() {
         pintar();
     }// end if
     return 0;
-}// end borraPedidoProveedor
+}
 
 
 void PedidoProveedor::vaciaPedidoProveedor() {
     DBclear();
-}// end vaciaPedidoProveedor
+}
 
 
 void PedidoProveedor::pintar() {
@@ -139,7 +139,7 @@ int PedidoProveedor::guardar() {
     }// end if
     companyact->commit();
     return 0;
-}// end guardaPedidoProveedor
+}
 
 
 
@@ -164,7 +164,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del pedidoproveedor
+    // Linea de totales del pedidoproveedor
 
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -235,7 +235,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 	_depura("Vamos a ejecutar el trml2pdf",2);
     system("trml2pdf.py /tmp/pedidoproveedor.rml > /tmp/pedidoproveedor.pdf");
     system("kpdf /tmp/pedidoproveedor.pdf");
-} //end imprimirPedidoProveedor
+}
 
 
 
@@ -308,4 +308,4 @@ void PedidoProveedor::calculaypintatotales() {
         totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
-}// end calculaypintatotales
+}

@@ -65,6 +65,7 @@ using namespace std;
 
 #define coma "'"
 
+
 CobroView::CobroView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) , Cobro(comp) ,dialogChanges(this) {
 	_depura("CobroView::CobroView",0);
 	setupUi(this);
@@ -80,15 +81,12 @@ CobroView::~CobroView() {
 }
 
 
-
-
 void CobroView::on_mui_borrar_clicked() {
     _depura("CobroView::on_mui_borrar_clicked\n",0);
     if (QMessageBox::warning( this, tr("BulmaFact - Presupuestos"), tr("Desea borrar este presupuesto"), tr("&Si"), tr("&No")) == 0) {
         borrar();
     }// end if
 }
-
 
 
 void CobroView::closeEvent( QCloseEvent *e) {
@@ -102,9 +100,4 @@ void CobroView::closeEvent( QCloseEvent *e) {
 	    e->ignore();
     }// end if	
 }
-
-
-
-
-
 

@@ -33,6 +33,7 @@
 
 #define EDIT_MODE 0
 
+
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
         : QWidget(parent, name, flag) , pgimportfiles(comp) {
     setupUi(this);
@@ -55,6 +56,7 @@ ClientsList::~ClientsList() {
         m_companyact->sacaWindow(this);
 }
 
+
 /**
   * Iniciamos los clientes.
   * Hacemos la consulta a la base de datos y presentamos el listado.
@@ -66,8 +68,6 @@ void ClientsList::presenta() {
     delete cur;
     _depura("END ClientsList::presenta",0);
 }
-
-
 
 
 void ClientsList::editar(int  row) {
@@ -86,7 +86,6 @@ void ClientsList::editar(int  row) {
     }// end if
     _depura("END ClientsList::editar",0);
 }
-
 
 
 void ClientsList::on_mui_editar_clicked() {
@@ -143,7 +142,7 @@ void ClientsList::on_mui_imprimir_clicked() {
 
     // Crea el pdf  y lo muestra.
     invocaPDF("clientes");
-}// end s_printClients
+}
 
 
 void ClientsList::on_mui_borrar_clicked() {
@@ -179,12 +178,9 @@ void ClientsList::on_mui_importar_clicked() {
 }
 
 
-
-
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 
 ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("cliente");
@@ -206,10 +202,4 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     addSHeader("comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
     setinsercion(FALSE);
 }
-
-
-
-
-
-
 

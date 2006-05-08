@@ -22,6 +22,7 @@
 #include "tiposarticuloview.h"
 #include "company.h"
 
+
 BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent, const char *name)
 : QWidget(parent, name) {
     setupUi(this);
@@ -33,6 +34,7 @@ BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent, const char *name)
 
 
 BusquedaTipoArticulo::~BusquedaTipoArticulo() {}
+
 
 void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     mdb_idtipo_articulo=val;
@@ -49,7 +51,7 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     delete cur;
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
-}// end setidtipo_articulo
+}
 
 
 void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
@@ -81,7 +83,7 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
 		mdb_idtipo_articulo = tip->idtipo_articulo();		
 	}// end if
 	delete tip;
-}// end searchClient
+}
 
 
 void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
@@ -99,4 +101,5 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
     emit(valueChanged(mdb_idtipo_articulo));
-}// end setCifClient
+}
+

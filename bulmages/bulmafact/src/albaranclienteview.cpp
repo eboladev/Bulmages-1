@@ -93,7 +93,7 @@ void AlbaranClienteView::s_verpresupuesto() {
 
     if (cur->numregistros() > 1) {
         PresupuestoList *list = new PresupuestoList(companyact, NULL,
-                                theApp->translate("Edicion de Presupuestos", "company"));
+                                theApp->translate("Edicion de presupuestos", "company"));
         list->modoseleccion();
         list->show();
 
@@ -124,7 +124,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     if (!cur->eof()) {
         while (!cur->eof()) {
             PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
-                                     theApp->translate("Edicion de Presupuestos", "company"));
+                                     theApp->translate("Edicion de presupuestos", "company"));
             companyact->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idpedidocliente"));
             bud->show();
@@ -196,7 +196,6 @@ void AlbaranClienteView::generarFactura() {
     }// end for
     bud->calculaypintatotales();
 
-
     m_procesadoalbaran->setChecked(TRUE);
 }
 
@@ -219,7 +218,6 @@ void AlbaranClienteView::agregarFactura() {
     diag->exec();
     QString idfactura = fac->idfactura();
     delete diag;
-
 
     /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
     if (idfactura == "") {
@@ -254,7 +252,6 @@ void AlbaranClienteView::agregarFactura() {
     bud->show();
 
     m_procesadoalbaran->setChecked(TRUE);
-
 }
 
 
@@ -331,5 +328,3 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
     bud->pintar();
     bud->show();
 }
-
-

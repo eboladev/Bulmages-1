@@ -41,29 +41,23 @@
 #include "plugins.h"
 
 
-
-
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), Articulo(comp) {
 
     _depura("ArticuloView::INIT_constructor()\n",0);
     m_companyact = comp;
 
-	setupUi(this);
-
+    setupUi(this);
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
     if (res != 0)
         return;
 
-
-
     m_familia->setcompany(comp);
     m_tipoarticulo->setcompany(comp);
     m_componentes->setcompany(comp);
     m_archivoimagen="";
-
 
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
     if (m_companyact->meteWindow(tr("Edicion del articulo"),this))
@@ -71,7 +65,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
 
     dialogChanges_cargaInicial();
     _depura("ArticuloView::END_constructor()\n",0);
-}// end ArticuloView
+}
 
 
 ArticuloView::~ArticuloView() {
@@ -79,7 +73,7 @@ ArticuloView::~ArticuloView() {
     //    m_companyact->refreshArticles();
     m_companyact->sacaWindow(this);
     _depura("ArticuloView::END_destructor()\n",0);
-}// end ~ArticuloView
+}
 
 
 void ArticuloView::pintar() {
@@ -115,8 +109,6 @@ void ArticuloView::pintar() {
 }
 
 
-
-
 /************************************************************************
 * Esta función carga un artículo de la base de datos y lo presenta.     *
 * Si el parametro pasado no es un identificador válido entonces se pone *
@@ -127,13 +119,10 @@ int ArticuloView::cargar(QString idarticulo) {
     int error =0;
 	setDBvalue( "idarticulo", idarticulo);
 
-
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_cargar", this);
         if (res != 0)
             return res;
-
-
 
     QString ivaType="";
     Articulo::cargar(idarticulo);
@@ -158,7 +147,7 @@ int ArticuloView::cargar(QString idarticulo) {
     pintar();
     _depura("END ArticuloView::cargar()\n",0);
     return 0;
-}// end chargeArticle
+}
 
 
 /// Hace la carga del combo-box de tipos de iva para el articulo.
@@ -203,7 +192,6 @@ void ArticuloView::on_mui_crear_clicked() {
 }
 
 
-
 /**
   * Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar *
   */
@@ -233,7 +221,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     delete cur;
 
     _depura("ArticuloView::END_s_findArticulo()\n",0);
-}// end s_findArticulo
+}
 
 
 int ArticuloView::guardar() {
@@ -271,8 +259,7 @@ int ArticuloView::guardar() {
 
     _depura("ArticuloView::END_s_grabarClicked()\n",0);
 	return 0;
-}// end s_grabarClicked
-
+}
 
 
 void ArticuloView::on_mui_cambiarimagen_clicked() {
@@ -286,7 +273,7 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
                           tr("Elige un archivo"));
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("ArticuloView::END_s_cambiarimagen()\n",0);
-}// end s_cambiarimagen
+}
 
 
 void ArticuloView::closeEvent( QCloseEvent *e) {
@@ -306,5 +293,4 @@ void ArticuloView::on_mui_aceptar_clicked() {
 	on_mui_guardar_clicked();
 	close();
 }
-
 

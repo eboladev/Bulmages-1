@@ -33,6 +33,7 @@ BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *name)
 
 BusquedaAlmacen::~BusquedaAlmacen() {}
 
+
 void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
@@ -50,3 +51,4 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     }
     setCurrentItem(i1);
 }
+

@@ -78,7 +78,7 @@ void PagosList::presentar() {
         delete cur;
     }// end if
     _depura("END PagosList::presentar()\n",0);
-}// end presenta
+}
 
 
 
@@ -102,7 +102,7 @@ QString PagosList::generaFiltro() {
         filtro += " AND fechapago <= '"+m_fechafin->text()+"' ";
     _depura("END PagosList::generaFiltro",0);
     return (filtro);
-}// end generaFiltro
+}
 
 
 
@@ -118,7 +118,7 @@ void PagosList::on_mui_editar_clicked() {
 void PagosList::on_mui_list_cellDoubleClicked(int a, int ) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo ==0 && mdb_idpago != "") {
-        PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
+        PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de pagos", "company"));
         bud->cargar(mdb_idpago);
         bud->show();
     } else {
@@ -147,11 +147,11 @@ void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 void PagosList::on_mui_crear_clicked() {
     fprintf(stderr,"Iniciamos el boton_crear\n");
-    PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Pagos", "company"));
+    PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de pagos", "company"));
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
     bud->pintar();
-}// end boton_crear
+}
 
 
 void PagosList::imprimir() {
@@ -185,7 +185,7 @@ void PagosList::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
@@ -201,18 +201,18 @@ void PagosList::imprimir() {
     // Crea el pdf  y lo muestra.
     _depura("Vamos a imprimir e listado de pagos",0);
     invocaPDF("pagos");
-}// end imprimir
+}
 
 
 void PagosList::on_mui_borrar_clicked() {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo ==0 && mdb_idpago != "") {
-        PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de Presupuestos", "company"));
+        PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de presupuestos", "company"));
         bud->cargar(mdb_idpago);
         bud->borraPago();
     }// end if
     presentar();
-}// end boton_borrar
+}
 
 
 /// =============================================================================

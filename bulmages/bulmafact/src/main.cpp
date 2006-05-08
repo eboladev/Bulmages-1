@@ -131,4 +131,4 @@ int main( int argc, char ** argv ) {
 	delete traductor;
 	delete confpr;
 	return 0;
-}// end main
+}

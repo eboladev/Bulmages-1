@@ -64,7 +64,6 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 };
 
 
-
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta().", 1);
 
@@ -129,8 +128,6 @@ QString AlbaranesProveedor::generaFiltro() {
 };
 
 
-
-
 void AlbaranesProveedor::editar(int  row) {
     _depura("AlbaranesProveedor::editar",0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"),row);
@@ -148,6 +145,7 @@ void AlbaranesProveedor::editar(int  row) {
     _depura("END AlbaranesProveedor::editar",0);
 }
 
+
 void AlbaranesProveedor::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
     if (a >=0 )
@@ -155,9 +153,6 @@ void AlbaranesProveedor::on_mui_editar_clicked() {
     else
         _depura("Debe seleccionar una linea",2);
 }
-
-
-
 
 
 void AlbaranesProveedor::imprimir() {
@@ -229,13 +224,9 @@ void AlbaranesProveedor::on_mui_borrar_clicked()  {
 }
 
 
-
-
-
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("albaranp");

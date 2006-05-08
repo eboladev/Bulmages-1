@@ -37,6 +37,7 @@
 #include "funcaux.h"
 #include "plugins.h"
 
+
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
         :  QWidget(parent, name, Qt::WDestructiveClose) , Cliente(comp), dialogChanges(this) {
     _depura("ClienteView::ClienteView",0);
@@ -70,6 +71,7 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
 
 }
 
+
 ClienteView::~ClienteView() {
     _depura("ClienteView::~ClienteView\n",0);
     m_companyact->sacaWindow(this);
@@ -77,6 +79,7 @@ ClienteView::~ClienteView() {
     g_plugins->lanza("ClienteView_Des_ClienteView", this);
     _depura("END ClienteView::~ClienteView\n",0);
 }
+
 
 /**
 * loadClient
@@ -113,7 +116,6 @@ int ClienteView::cargar(QString idcliente) {
     _depura("ClienteView::cargar",0);
     return error;
 }
-
 
 
 /**
@@ -176,6 +178,7 @@ void ClienteView::on_mui_guardar_clicked() {
     saveClient();
 }
 
+
 void ClienteView::on_mui_borrar_clicked() {
     int ret = QMessageBox::warning(this,tr("Edicion de clientes"),
                                    tr("Esta a punto de borrar un cliente.\n"
@@ -186,6 +189,7 @@ void ClienteView::on_mui_borrar_clicked() {
     if (ret == QMessageBox::Yes)
         deleteClient();
 }
+
 
 void ClienteView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
@@ -198,3 +202,4 @@ void ClienteView::closeEvent( QCloseEvent *e) {
             e->ignore();
     }// end if
 }
+

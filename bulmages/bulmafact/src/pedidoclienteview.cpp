@@ -163,7 +163,7 @@ void PedidoClienteView::generarAlbaran() {
         }// end if
     }// end for
 
-}// end generarAlbaran
+}
 
 
 void PedidoClienteView::on_mui_cobrar_clicked() {
@@ -175,7 +175,7 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
     bud->setcomentcobro(DBvalue("descpedidocliente"));
     bud->pintar();
     bud->show();
-}// end s_nuevoCobro
+}
 
 int PedidoClienteView::cargar(QString id) {
     PedidoCliente::cargar(id);

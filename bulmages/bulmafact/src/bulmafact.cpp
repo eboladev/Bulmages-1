@@ -80,7 +80,6 @@ bulmafact::~bulmafact() {
 }
 
 
-
 void bulmafact::emitirfactura() {
 	_depura("emitir factura activado",0);
 	QMessageBox::information( this, tr("BulmaFact"),

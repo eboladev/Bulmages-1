@@ -51,7 +51,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
         comp->meteWindow(tr("Articulos"),this);
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n",0);
-}// end ArticuloList
+}
 
 
 void ArticuloList::presenta() {
@@ -62,7 +62,8 @@ void ArticuloList::presenta() {
     delete cur;
 
     _depura("ArticuloList::END_presenta()\n",0);
-} //end presenta
+}
+
 
 void ArticuloList::editArticle(int  row) {
     _depura("ArticuloList::INIT_editArticle()\n",0);
@@ -84,6 +85,7 @@ close();
     _depura("ArticuloList::END_editArticle()\n",0);
 }
 
+
 void ArticuloList::on_mui_editar_clicked() {
     _depura("ArticuloList::INIT_s_editArticle()\n",0);
     int a = mui_list->currentRow();
@@ -95,12 +97,14 @@ void ArticuloList::on_mui_editar_clicked() {
     _depura("ArticuloList::END_s_editArticle()\n",0);
 }
 
+
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::INIT_destructor()\n",0);
     if(m_modo == EditMode)
         m_companyact->sacaWindow(this);
     _depura("ArticuloList::END_destructor()\n",0);
-}// end ~ArticuloList
+}
+
 
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n",0);
@@ -119,6 +123,7 @@ void ArticuloList::on_mui_borrar_clicked() {
     }// end if
     _depura("ArticuloList::END_removeArticle()\n",0);
 }
+
 
 QString ArticuloList::formaQuery() {
     _depura("ArticuloList::INIT_formaQuery()\n",0);
@@ -148,6 +153,7 @@ QString ArticuloList::formaQuery() {
     _depura("ArticuloList::END_formaQuery()\n",0);
 }
 
+
 QString ArticuloList::detalleArticulos() {
     _depura("ArticuloList::INIT_detalleArticulos()\n",0);
     QString texto="";
@@ -173,7 +179,8 @@ QString ArticuloList::detalleArticulos() {
     delete cur;
     return texto;
     _depura("ArticuloList::END_detalleArticulos()\n",0);
-}// end detalleArticulos
+}
+
 
 void ArticuloList::Imprimir() {
     _depura("ArticuloList::INIT_Imprimir()\n",0);
@@ -211,7 +218,8 @@ void ArticuloList::Imprimir() {
     }// end if
     invocaPDF("articulos");
     _depura("ArticuloList::END_Imprimir()\n",0);
-}// end Imprimir
+}
+
 
 void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::INIT_s_imprimir1()\n",0);
@@ -248,7 +256,7 @@ void ArticuloList::s_imprimir1() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
@@ -261,7 +269,8 @@ void ArticuloList::s_imprimir1() {
 
     invocaPDF("articulos1");
     _depura("ArticuloList::END_s_imprimir1()\n",0);
-}// end imprimir
+}
+
 
 void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::INIT_s_exportar()\n",0);
@@ -277,6 +286,7 @@ void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::END_s_exportar()\n",0);
 }
 
+
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar()\n",0);
     QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
@@ -290,9 +300,11 @@ void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::END_s_importar()\n",0);
 }
 
+
 void ArticuloList::on_mui_list_cellDoubleClicked(int a, int ) {
 	editArticle(a);
 }
+
 
 void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("ArticuloList::on_mui_list_customContextMenuRequested",0);
@@ -311,11 +323,9 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
 }
 
 
-
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 
 ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("articulo");
@@ -331,6 +341,4 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *) : SubFor
     addSHeader("stockarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
     setinsercion(FALSE);
 }
-
-
 

@@ -1,12 +1,22 @@
-//
-// C++ Implementation: PedidoCliente
-//
-// Description:
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include <QFile>
 #include <QTextStream>
@@ -53,12 +63,12 @@ int PedidoCliente::borrar() {
         companyact->commit();
     }// end if
     return 0;
-}// end borraPedidoCliente
+}
 
 
 void PedidoCliente::vaciaPedidoCliente() {
     DBclear();
-}// end vaciaPedidoCliente
+}
 
 void PedidoCliente::pintar() {
     _depura("PedidoCliente::pintaPedidoCliente\n",0);
@@ -78,10 +88,10 @@ void PedidoCliente::pintar() {
 
     calculaypintatotales();
     _depura("FIN PedidoCliente::pintaPedidoCliente()\n",0);
-}// end pintaPedidoCliente
+}
 
 
-// Esta funci� carga un PedidoCliente.
+// Esta funcion carga un PedidoCliente.
 int PedidoCliente::cargar(QString idbudget) {
     _depura("cargaPedidoCliente()\n",0);
     QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente="+idbudget;
@@ -94,7 +104,7 @@ int PedidoCliente::cargar(QString idbudget) {
     listadescuentos->cargar(idbudget);
     pintar();
     return 0;
-}// end chargeBudget
+}
 
 
 int PedidoCliente::guardar() {
@@ -120,7 +130,7 @@ int PedidoCliente::guardar() {
     companyact->commit();
     _depura("END PedidoCliente::guardar",0);
     return 0;
-}// end guardaPedidoCliente
+}
 
 
 
@@ -164,7 +174,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt="";
-    // L�ea de totales del presupuesto
+    // Linea de totales del presupuesto
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente="+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -189,7 +199,7 @@ void PedidoCliente::imprimirPedidoCliente() {
 
 
 
-    /// Impresi� de la tabla de contenidos.
+    /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "	<td>Cod.</td>\n";
@@ -201,7 +211,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     fitxersortidatxt += "</tr>\n";
     QString l;
 
-    int i=0;// Contador que sirve para poner lineas de más en caso de que sea preciso.
+    int i=0;// Contador que sirve para poner lineas de mas en caso de que sea preciso.
 
     SDBRecord *linea;
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
@@ -232,7 +242,7 @@ void PedidoCliente::imprimirPedidoCliente() {
         basei =basei + it.data();
     }// end for
 
-    /// Impresi� de los descuentos
+    /// Impresion de los descuentos
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
@@ -256,7 +266,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     }// end if
     buff.replace("[descuentos]",fitxersortidatxt);
 
-    /// Impresión de los totales
+    /// Impresion de los totales
     fitxersortidatxt= "";
     QString tr1 = "";	// Rellena el primer tr de titulares
     QString tr2 = "";	// Rellena el segundo tr de cantidades
@@ -302,14 +312,14 @@ void PedidoCliente::imprimirPedidoCliente() {
 
     invocaPDF("pedidocliente");
 
-} //end imprimirPresupuesto
+}
 
 
 void PedidoCliente::calculaypintatotales() {
     _depura("PedidoCliente::calculaypintatotales \n",0);
     base basesimp;
 
-    /// Impresi� de los contenidos
+    /// Impresion de los contenidos
     QString l;
     SDBRecord *linea;
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
@@ -328,7 +338,7 @@ void PedidoCliente::calculaypintatotales() {
     for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
         basei = basei + it.data();
     }// end for
-    /// Impresi� de los descuentos
+    /// Impresion de los descuentos
     Fixed porcentt("0.00");
     SDBRecord *linea1;
     if (listadescuentos->rowCount()) {
@@ -363,4 +373,4 @@ void PedidoCliente::calculaypintatotales() {
         totiva = totiva + pariva;
     }// end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
-}// end calculaypintatotales
+}

@@ -22,6 +22,7 @@
 #include "company.h"
 #include <QComboBox>
 
+
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent, const char *name)
 : QComboBox(parent, name) {
     companyact=NULL;
@@ -32,6 +33,7 @@ BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent, const char *name)
 
 
 BusquedaSerieFactura::~BusquedaSerieFactura() {}
+
 
 void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
     if (m_cursorcombo != NULL)
@@ -50,3 +52,4 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
     }
     setCurrentItem(i1);
 }
+

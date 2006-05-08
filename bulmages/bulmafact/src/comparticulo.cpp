@@ -20,6 +20,7 @@
 
 #include "comparticulo.h"
 
+
 void CompArticulo::definetabla() {
 	_depura("CompArticulo::definetabla",0);
     setDBTableName("comparticulo");
@@ -37,6 +38,7 @@ CompArticulo::CompArticulo(company *comp) : DBRecord(comp) {
     companyact = comp;
     definetabla();
 }
+
 
 CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponente) : DBRecord(comp) {
 	_depura("CompArticulo::CompArticulo",0);
@@ -70,8 +72,6 @@ CompArticulo::~CompArticulo() {}
 void CompArticulo::vaciaCompArticulo() {
     DBclear();
 }
-
-
 
 
 void CompArticulo::guardaCompArticulo() {
@@ -121,3 +121,4 @@ void CompArticulo::setidcomponente(QString val) {
     }// end if
     delete cur;
 }
+

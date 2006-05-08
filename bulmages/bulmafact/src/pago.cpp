@@ -1,14 +1,22 @@
-//
-// C++ Implementation: Pago
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include "pago.h"
 #include "company.h"
@@ -44,12 +52,12 @@ void Pago::borraPago() {
         vaciar();
         pintar();
     }// end if
-}// end borraPago
+}
 
 
 void Pago::vaciar() {
     DBclear();
-}// end vaciaPago
+}
 
 void Pago::pintar() {
     pintaidpago(DBvalue("idpago"));
@@ -59,10 +67,10 @@ void Pago::pintar() {
     pintarefpago(DBvalue("refpago"));
     pintaprevisionpago(DBvalue("previsionpago"));
     pintacomentpago(DBvalue("comentpago"));
-}// end pintaPago
+}
 
 
-// Esta funci� carga un Pago.
+// Esta funcion carga un Pago.
 int Pago::cargar(QString idpago) {
     QString query = "SELECT * FROM pago WHERE idPago="+idpago;
     cursor2 * cur= companyact->cargacursor(query);
@@ -72,7 +80,7 @@ int Pago::cargar(QString idpago) {
     delete cur;
     pintar();
 	return 0;
-}// end chargeBudget
+}
 
 
 void Pago::guardaPago() {
@@ -85,6 +93,6 @@ void Pago::guardaPago() {
     }// end if
     setidpago(id);
     companyact->commit();
-}// end guardaPago
+}
 
 

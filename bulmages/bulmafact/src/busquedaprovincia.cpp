@@ -25,6 +25,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 BusquedaProvincia::BusquedaProvincia(QWidget *parent, const char *name)
         : QComboBox(parent, name) {
     _depura("BusquedaProvincia::BusquedaProvincia",0);
@@ -36,6 +37,7 @@ BusquedaProvincia::BusquedaProvincia(QWidget *parent, const char *name)
 
 
 BusquedaProvincia::~BusquedaProvincia() {}
+
 
 void BusquedaProvincia::setProvincia(QString provincia) {
     _depura("BusquedaProvincia::setProvincia",0);
@@ -56,5 +58,5 @@ void BusquedaProvincia::setProvincia(QString provincia) {
     }// end while
     setCurrentItem(i1);
     _depura("END BusquedaProvincia::setProvincia",0);
-
 }
+

@@ -25,7 +25,6 @@
 #include <QTextStream>
 
 
-
 Cobro::Cobro(company *comp) : DBRecord(comp) {
     companyact=comp;
 
@@ -40,9 +39,8 @@ Cobro::Cobro(company *comp) : DBRecord(comp) {
     addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentarios", "cobro"));
 }
 
+
 Cobro::~Cobro() {}
-
-
 
 
 void Cobro::pintar() {
@@ -54,9 +52,4 @@ void Cobro::pintar() {
     pintaprevisioncobro(DBvalue("previsioncobro"));
     pintacomentcobro(DBvalue("comentcobro"));
 }
-
-
-
-
-
 

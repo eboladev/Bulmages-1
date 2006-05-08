@@ -60,13 +60,13 @@ dialogChanges(this)  {
     if (companyact != NULL)
         companyact->meteWindow(caption(), this);
     _depura("END AlbaranProveedorView::AlbaranProveedorView", 0);
-};
+}
 
 
 AlbaranProveedorView::~AlbaranProveedorView()  {
     companyact->refreshAlbaranesProveedor();
     companyact->sacaWindow(this);
-};
+}
 
 
 void AlbaranProveedorView::inicialize()  {
@@ -80,19 +80,19 @@ void AlbaranProveedorView::inicialize()  {
     m_totalalbaranp->setReadOnly(TRUE);
     m_totalalbaranp->setAlignment(Qt::AlignRight);
     subform2->pintar();
-};
+}
 
 
 void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva)  {
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalalbaranp->setText((iva + base).toQString());
-};
+}
 
 
 void AlbaranProveedorView::s_verpedidoproveedor()  {
     _depura("Funcion aun no implementada", 2);
-};
+}
 
 
 /// Se encarga de generar una facturap a partir del albaranp
@@ -192,5 +192,3 @@ int AlbaranProveedorView::guardar() {
 void AlbaranProveedorView::m_guardar_clicked() {
     guardar();
 }
-
-

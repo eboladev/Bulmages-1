@@ -23,6 +23,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 BusquedaArticulo::BusquedaArticulo(QWidget *parent, const char *name)
 : QWidget(parent, name) {
 	setupUi(this);
@@ -34,6 +35,7 @@ BusquedaArticulo::BusquedaArticulo(QWidget *parent, const char *name)
 
 
 BusquedaArticulo::~BusquedaArticulo() {}
+
 
 void BusquedaArticulo::setidarticulo(QString val) {
     mdb_idarticulo=val;
@@ -71,7 +73,7 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
 }
 
 
-// Bsqueda de Articulos.
+// Busqueda de articulos.
 void BusquedaArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaArticulo::on_mui_buscar_clicked",0);
     QDialog *diag=new QDialog(0);
@@ -87,7 +89,7 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
         mdb_idarticulo = articulos->idarticulo();
     }// end if
     delete diag;
-}// end searchClient
+}
 
 
 void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &val) {
@@ -105,4 +107,5 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
     m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
     m_nomarticulo->setText(mdb_nomarticulo);
     emit(valueChanged(mdb_idarticulo));
-}// end setCifClient
+}
+

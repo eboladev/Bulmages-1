@@ -22,6 +22,7 @@
 #include "company.h"
 #include <QComboBox>
 
+
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
 : QComboBox(parent) {
     companyact=NULL;
@@ -35,6 +36,7 @@ BusquedaTrabajador::~BusquedaTrabajador() {
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
 }
+
 
 void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     if (m_cursorcombo != NULL)
@@ -53,3 +55,4 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     }
     setCurrentItem(i1);
 }
+
