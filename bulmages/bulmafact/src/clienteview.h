@@ -25,93 +25,78 @@
 #include "dialogchanges.h"
 #include "ui_clientebase.h"
 
+
 class company;
 
 class ClienteView :  public QWidget, public Ui_ClienteBase, public Cliente, public dialogChanges  {
-Q_OBJECT
+    Q_OBJECT
 
 public:
-	ClienteView(company *emp, QWidget *parent = 0, const char *name = 0);
-	~ClienteView();
+    ClienteView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ~ClienteView();
 
 public:
-	int cargar(QString client);
-	void saveClient();
-	void deleteClient();
-	void closeEvent(QCloseEvent *);
-	void emptyForm();
-	void pintaidcliente(QString )
-	{
-	};
-	void pintanomcliente(QString val)
-	{
-		m_nomcliente->setText(val);
-	};
-	void pintanomaltcliente(QString val)
-	{
-		m_nomaltcliente->setText(val);
-	};
-	void pintacifcliente(QString val)
-	{
-		m_cifcliente->setText(val);
-	};
-	void pintabancocliente(QString val)
-	{
-		m_bancocliente->setText(val);
-	};
-	void pintadircliente(QString val)
-	{
-		m_dircliente->setText(val);
-	};
-	void pintapoblcliente(QString val)
-	{
-		m_poblcliente->setText(val);
-	};
-	void pintacpcliente(QString val)
-	{
-		m_cpcliente->setText(val);
-	};
-	void pintatelcliente(QString val)
-	{
-		m_telcliente->setText(val);
-	};
-	void pintafaxcliente(QString val)
-	{
-		m_faxcliente->setText(val);
-	};
-	void pintamailcliente(QString val)
-	{
-		m_mailcliente->setText(val);
-	};
-	void pintaurlcliente(QString val)
-	{
-		m_urlcliente->setText(val);
-	};
-	void pintafaltacliente(QString )
-	{
-	};
-	void pintafbajacliente(QString )
-	{
-	};
-	void pintacomentcliente(QString val)
-	{
-		m_comentcliente->setText(val);
-	};
-	void pintainactivocliente(QString )
-	{
-	};
-	void pintaprovcliente(QString val)
-	{
-		m_provcliente->setProvincia(val);
-	};
+    int cargar(QString client);
+    void saveClient();
+    void deleteClient();
+    void closeEvent(QCloseEvent *);
+    void emptyForm();
+    void pintaidcliente(QString ) {}
+    ;
+    void pintanomcliente(QString val) {
+        m_nomcliente->setText(val);
+    };
+    void pintanomaltcliente(QString val) {
+        m_nomaltcliente->setText(val);
+    };
+    void pintacifcliente(QString val) {
+        m_cifcliente->setText(val);
+    };
+    void pintabancocliente(QString val) {
+        m_bancocliente->setText(val);
+    };
+    void pintadircliente(QString val) {
+        m_dircliente->setText(val);
+    };
+    void pintapoblcliente(QString val) {
+        m_poblcliente->setText(val);
+    };
+    void pintacpcliente(QString val) {
+        m_cpcliente->setText(val);
+    };
+    void pintatelcliente(QString val) {
+        m_telcliente->setText(val);
+    };
+    void pintafaxcliente(QString val) {
+        m_faxcliente->setText(val);
+    };
+    void pintamailcliente(QString val) {
+        m_mailcliente->setText(val);
+    };
+    void pintaurlcliente(QString val) {
+        m_urlcliente->setText(val);
+    };
+    void pintafaltacliente(QString ) {}
+    ;
+    void pintafbajacliente(QString ) {}
+    ;
+    void pintacomentcliente(QString val) {
+        m_comentcliente->setText(val);
+    };
+    void pintainactivocliente(QString ) {}
+    ;
+    void pintaprovcliente(QString val) {
+        m_provcliente->setProvincia(val);
+    };
 
 public slots:
-	virtual void on_mui_guardar_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_aceptar_clicked() {
-		saveClient();
-		close();
-	};
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_aceptar_clicked() {
+        saveClient();
+        close();
+    };
 };
 
 #endif
+

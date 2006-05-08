@@ -29,32 +29,38 @@
 
 class company;
 
-class ArticuloView : public QWidget, public Ui_ArticuloBase, public dialogChanges, public Articulo
-{
-	Q_OBJECT
+class ArticuloView : public QWidget, public Ui_ArticuloBase, public dialogChanges, public Articulo {
+    Q_OBJECT
 
 private:
-	QString m_archivoimagen;
-	company *m_companyact;
-	cursor2 *m_cursorcombo;
+    QString m_archivoimagen;
+    company *m_companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	ArticuloView(company *emp, QWidget *parent = 0, const char *name = 0);
-	~ArticuloView();
-	company *companyact() {return m_companyact;};
+    ArticuloView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ~ArticuloView();
+    company *companyact() {
+        return m_companyact;
+    };
+
 public:
-	void pintar();
-	int cargar(QString);
-	int guardar();
-	int ArticuloView::cargarcomboiva(QString);
-	void closeEvent( QCloseEvent *);
+    void pintar();
+    int cargar(QString);
+    int guardar();
+    int ArticuloView::cargarcomboiva(QString);
+    void closeEvent( QCloseEvent *);
+
 public slots:
-	virtual void on_mui_guardar_clicked(){guardar();};
-	virtual void on_mui_crear_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void on_m_codigocompletoarticulo_editingFinished();
-	virtual void on_mui_cambiarimagen_clicked();
-	virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    };
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_m_codigocompletoarticulo_editingFinished();
+    virtual void on_mui_cambiarimagen_clicked();
+    virtual void on_mui_aceptar_clicked();
 };
 
 #endif
+

@@ -25,84 +25,71 @@
 #include <QListWidget>
 
 
-class QListWidget1 : public QListWidget
-{
-	Q_OBJECT
+class QListWidget1 : public QListWidget {
+    Q_OBJECT
 
 public:
-	QListWidget1 (QWidget * parent = 0):
-			QListWidget (parent)
-	{
-	};
-	~QListWidget1()
-	{
-	};
+    QListWidget1 (QWidget * parent = 0):
+    QListWidget (parent) {}
+    ;
+    ~QListWidget1() {}
+    ;
 };
 
-class QListWidgetItem1 : public QListWidgetItem
-{
+
+class QListWidgetItem1 : public QListWidgetItem {
 
 private:
-	QObject *m_obj;
-	QString m_nombre;
-	QListWidget1 *m_list;
+    QObject *m_obj;
+    QString m_nombre;
+    QListWidget1 *m_list;
 
 public:
-
-	QListWidgetItem1(QListWidget1 *l, QPixmap &p): QListWidgetItem(l)
-	{
-		setIcon(QIcon(p));
-		m_list = l;
-	};
-
-	~QListWidgetItem1()
-	{
-	};
-	void setObject(QObject *m)
-	{
-		m_obj = m;
-	};
-	void setNombre(QString m)
-	{
-		m_nombre = m;
-		setText(m);
-	};
-	QObject *object()
-	{
-		return m_obj;
-	};
-	QString nombre()
-	{
-		return m_nombre;
-	};
+    QListWidgetItem1(QListWidget1 *l, QPixmap &p): QListWidgetItem(l) {
+        setIcon(QIcon(p));
+        m_list = l;
+    };
+    ~QListWidgetItem1() {}
+    ;
+    void setObject(QObject *m) {
+        m_obj = m;
+    };
+    void setNombre(QString m) {
+        m_nombre = m;
+        setText(m);
+    };
+    QObject *object() {
+        return m_obj;
+    };
+    QString nombre() {
+        return m_nombre;
+    };
 };
-
 
 
 /** \brief Provides the dock window to list all windows in BulmaFact
  ** \param m_listBox this variable is the listBox that contains all \
 			titles of the diferent windows.
 */
-class listventanas : public QDockWidget
-{
-	Q_OBJECT
+class listventanas : public QDockWidget {
+    Q_OBJECT
 
 private:
-	QListWidget1 *m_listBox;
-
-
-public:
-	listventanas(QWidget *a = 0);
-	~listventanas();
+    QListWidget1 *m_listBox;
 
 public:
-	int meteWindow(QString, QObject *);
-	void sacaWindow(QObject *);
+    listventanas(QWidget *a = 0);
+    ~listventanas();
+
+public:
+    int meteWindow(QString, QObject *);
+    void sacaWindow(QObject *);
 
 public slots:
-	virtual void dclicked();
-	virtual void clicked();
+    virtual void dclicked();
+    virtual void clicked();
 
 };
 
 #endif
+

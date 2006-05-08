@@ -30,19 +30,20 @@
 
 class ListLinAlbaranProveedorView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idalbaranp;
     ListLinAlbaranProveedorView(QWidget *parent = 0);
     ~ListLinAlbaranProveedorView() {}
     ;
+
 public slots:
     virtual void cargar(QString idalbaranp);
     Fixed calculabase();
     Fixed calculaiva();
-	virtual void editFinished(int, int);
+    virtual void editFinished(int, int);
 
 };
 
-
-
 #endif
+

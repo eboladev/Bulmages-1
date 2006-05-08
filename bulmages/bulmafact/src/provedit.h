@@ -26,37 +26,36 @@
 
 class company;
 
-class ProveedorView : public QWidget, public Ui_ProveedorBase
-{
-	Q_OBJECT
+
+class ProveedorView : public QWidget, public Ui_ProveedorBase {
+    Q_OBJECT
 
 private:
-	company *m_companyact;
-	QString mdb_idproveedor;
-	/// Indica si se han producido cambios.
-	bool m_modificado;
+    company *m_companyact;
+    QString mdb_idproveedor;
+    /// Indica si se han producido cambios.
+    bool m_modificado;
 
 public:
-	ProveedorView(company *emp, QWidget *parent = 0, const char *name = 0);
-	~ProveedorView();
+    ProveedorView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ~ProveedorView();
 
 public:
-	int chargeprovider(QString);
+    int chargeprovider(QString);
 
 public slots:
-	virtual void on_mui_guardar_clicked();
-	virtual void on_mui_crear_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void s_setModificado()
-	{
-		m_modificado = TRUE;
-	};
-	virtual void s_releaseModificado()
-	{
-		m_modificado = FALSE;
-	};
-	virtual void close();
-	virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void s_setModificado() {
+        m_modificado = TRUE;
+    };
+    virtual void s_releaseModificado() {
+        m_modificado = FALSE;
+    };
+    virtual void close();
+    virtual void on_mui_aceptar_clicked();
 };
 
 #endif
+

@@ -29,24 +29,29 @@
 #include "comparticulo.h"
 #include "qtable2.h"
 #include "subform.h"
-
 #include "subform3.h"
 
 
 class SubForm2Bf : public SubForm3 {
-Q_OBJECT
+    Q_OBJECT
+
 private:
-	bool m_delete;
+    bool m_delete;
+
 public:
-	SubForm2Bf(QWidget *parent = 0);
-	virtual ~SubForm2Bf() {};
-	void setDelete(bool f) {m_delete=f;};
+    SubForm2Bf(QWidget *parent = 0);
+    virtual ~SubForm2Bf() {}
+    ;
+    void setDelete(bool f) {
+        m_delete=f;
+    };
+
 public slots:
-        virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void contextMenuEvent (QContextMenuEvent *);
     virtual void editFinished(int row, int col);
     virtual void pressedSlash(int row, int col);
     virtual void pressedAsterisk(int row, int col);
 };
 
-
 #endif
+

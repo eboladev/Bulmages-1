@@ -29,19 +29,20 @@
 
 class ListLinPedidoClienteView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idpedidocliente;
     ListLinPedidoClienteView(QWidget *parent = 0);
     ~ListLinPedidoClienteView() {}
     ;
+
 public slots:
     virtual void cargar(QString idpedidocliente);
     Fixed calculabase();
     Fixed calculaiva();
-	virtual void editFinished(int, int);
+    virtual void editFinished(int, int);
 
 };
 
-
-
 #endif
+

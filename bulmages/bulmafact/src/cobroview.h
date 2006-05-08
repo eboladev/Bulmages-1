@@ -21,7 +21,7 @@
 #ifndef COBROVIEW_H
 #define COBROVIEW_H
 
-// PRESUPUESTOS.
+/// PRESUPUESTOS.
 #include <QLineEdit>
 #include <Q3TextEdit>
 #include <QLabel>
@@ -76,11 +76,9 @@ public slots:
         int err = Cobro::cargar(id);
         setCaption("Cobro " + DBvalue("refcobro"));
         dialogChanges_cargaInicial();
-	return err;
+        return err;
     };
     virtual void on_mui_borrar_clicked();
-
-
     virtual void on_mui_comentcobro_textChanged(const QString &str) {
         setcomentcobro(str);
     };
@@ -106,3 +104,4 @@ public slots:
 };
 
 #endif
+

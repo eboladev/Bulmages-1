@@ -24,98 +24,94 @@
 
 #include <QLineEdit>
 
-// Listado de pagos.
-
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ui_pagoslistbase.h"
 
 
 class PagosListSubForm : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
+
 public:
-	PagosListSubForm(QWidget *parent = 0, const char *name = 0);
-	~PagosListSubForm() {};
+    PagosListSubForm(QWidget *parent = 0, const char *name = 0);
+    ~PagosListSubForm() {}
+    ;
 };
 
 
-#include "ui_pagoslistbase.h"
-
-class PagosList : public QWidget, private Ui_PagosListBase
-{
-	Q_OBJECT
+class PagosList : public QWidget, private Ui_PagosListBase {
+    Q_OBJECT
 
 private:
-	company *m_companyact;
-	/// m_modo == 0 es modo edicion
-	/// m_modo == 1 es modo selector.
-	int m_modo;
-	QString mdb_idpago;
+    company *m_companyact;
+    /// m_modo == 0 es modo edicion.
+    /// m_modo == 1 es modo selector.
+    int m_modo;
+    QString mdb_idpago;
 
 public:
-	PagosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	PagosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-			Qt::WFlags flag = 0);
-	~PagosList();
-	void presentar();
-	void modoseleccion() 	{m_modo = 1;};
-	void modoedicion()	{m_modo = 0;};
-
-	void setcompany (company *comp)	{m_companyact = comp;m_proveedor->setcompany(comp);	};
-
-	QString idpago()
-	{
-		return mdb_idpago;
-	};
-	void hideBotonera()
-	{
-		m_botonera->hide();
-	};
-	void showBotonera()
-	{
-		m_botonera->show();
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
-	void imprimir();
-	void meteWindow(QString nom, QObject *obj)
-	{
-		if (m_companyact != NULL)
-		{
-			m_companyact->meteWindow(nom, obj);
-		}
-	};
-	void setidproveedor(QString val)
-	{
-		m_proveedor->setidproveedor(val);
-	};
-	QString generaFiltro();
+    PagosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+    PagosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
+              Qt::WFlags flag = 0);
+    ~PagosList();
+    void presentar();
+    void modoseleccion() {
+        m_modo = 1;
+    };
+    void modoedicion() {
+        m_modo = 0;
+    };
+    void setcompany (company *comp)	{
+        m_companyact = comp;
+        m_proveedor->setcompany(comp);
+    };
+    QString idpago() {
+        return mdb_idpago;
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void imprimir();
+    void meteWindow(QString nom, QObject *obj) {
+        if (m_companyact != NULL) {
+            m_companyact->meteWindow(nom, obj);
+        }
+    };
+    void setidproveedor(QString val) {
+        m_proveedor->setidproveedor(val);
+    };
+    QString generaFiltro();
 
 public slots:
-	virtual void on_mui_list_cellDoubleClicked(int , int);
-	virtual void on_mui_list_customContextMenuRequested(const QPoint &);
-	virtual void on_mui_editar_clicked();
-	virtual void on_mui_crear_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_imprimir_clicked()
-	{
-		imprimir();
-	};
-
-	virtual void on_mui_actualizar_clicked() {presentar();};
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    virtual void on_mui_list_cellDoubleClicked(int , int);
+    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_imprimir_clicked() {
+        imprimir();
+    };
+    virtual void on_mui_actualizar_clicked() {
+        presentar();
+    };
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
 };
 
 #endif
+

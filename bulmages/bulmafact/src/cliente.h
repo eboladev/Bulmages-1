@@ -27,140 +27,108 @@
 #include "dbrecord.h"
 
 
-class Cliente : public DBRecord
-{
+class Cliente : public DBRecord {
 
 protected:
-	company *m_companyact;
+    company *m_companyact;
 
 public:
-	Cliente(company *);
-	company* companyact() {return m_companyact;};
-	virtual ~Cliente();
-	virtual void pintaCliente();
-	virtual void guardaCliente();
-	virtual void borraCliente();
-	virtual void vaciaCliente();
-	virtual int cargar(QString);
-	void setidcliente(QString val)
-	{
-		setDBvalue("idcliente", val);
-	};
-	void setnomcliente(QString val)
-	{
-		setDBvalue("nomcliente", val);
-	};
-	void setnomaltcliente(QString val)
-	{
-		setDBvalue("nomaltcliente", val);
-	};
-	void setcifcliente(QString val)
-	{
-		setDBvalue("cifcliente", val);
-	};
-	void setbancocliente(QString val)
-	{
-		setDBvalue("bancocliente", val);
-	};
-	void setdircliente(QString val)
-	{
-		setDBvalue("dircliente", val);
-	};
-	void setpoblcliente(QString val)
-	{
-		setDBvalue("poblcliente", val);
-	};
-	void setcpcliente(QString val)
-	{
-		setDBvalue("cpcliente", val);
-	};
-	void settelcliente(QString val)
-	{
-		setDBvalue("telcliente", val);
-	};
-	void setfaxcliente(QString val)
-	{
-		setDBvalue("faxcliente", val);
-	};
-	void setmailcliente(QString val)
-	{
-		setDBvalue("mailcliente", val);
-	};
-	void seturlcliente(QString val)
-	{
-		setDBvalue("urlcliente", val);
-	};
-	void setfaltacliente(QString val)
-	{
-		setDBvalue("faltacliente", val);
-	};
-	void setfbajacliente(QString val)
-	{
-		setDBvalue("fbajacliente", val);
-	};
-	void setcomentcliente(QString val)
-	{
-		setDBvalue("comentcliente", val);
-	};
-	void setinactivocliente(QString val)
-	{
-		setDBvalue("inactivocliente", val);
-	};
-	void setprovcliente(QString val)
-	{
-		setDBvalue("provcliente", val);
-	};
-	virtual void pintaidcliente (QString)
-	{
-	};
-	virtual void pintanomcliente (QString)
-	{
-	};
-	virtual void pintanomaltcliente (QString)
-	{
-	};
-	virtual void pintacifcliente (QString)
-	{
-	};
-	virtual void pintabancocliente (QString)
-	{
-	};
-	virtual void pintadircliente (QString)
-	{
-	};
-	virtual void pintapoblcliente (QString)
-	{
-	};
-	virtual void pintacpcliente (QString)
-	{
-	};
-	virtual void pintatelcliente (QString)
-	{
-	};
-	virtual void pintafaxcliente (QString)
-	{
-	};
-	virtual void pintamailcliente (QString)
-	{
-	};
-	virtual void pintaurlcliente (QString)
-	{
-	};
-	virtual void pintafaltacliente (QString)
-	{
-	};
-	virtual void pintafbajacliente (QString)
-	{
-	};
-	virtual void pintacomentcliente (QString)
-	{
-	};
-	virtual void pintainactivocliente (QString)
-	{
-	};
-	virtual void pintaprovcliente (QString)
-	{
-	};
+    Cliente(company *);
+    company* companyact() {
+        return m_companyact;
+    };
+    virtual ~Cliente();
+    virtual void pintaCliente();
+    virtual void guardaCliente();
+    virtual void borraCliente();
+    virtual void vaciaCliente();
+    virtual int cargar(QString);
+    void setidcliente(QString val) {
+        setDBvalue("idcliente", val);
+    };
+    void setnomcliente(QString val) {
+        setDBvalue("nomcliente", val);
+    };
+    void setnomaltcliente(QString val) {
+        setDBvalue("nomaltcliente", val);
+    };
+    void setcifcliente(QString val) {
+        setDBvalue("cifcliente", val);
+    };
+    void setbancocliente(QString val) {
+        setDBvalue("bancocliente", val);
+    };
+    void setdircliente(QString val) {
+        setDBvalue("dircliente", val);
+    };
+    void setpoblcliente(QString val) {
+        setDBvalue("poblcliente", val);
+    };
+    void setcpcliente(QString val) {
+        setDBvalue("cpcliente", val);
+    };
+    void settelcliente(QString val) {
+        setDBvalue("telcliente", val);
+    };
+    void setfaxcliente(QString val) {
+        setDBvalue("faxcliente", val);
+    };
+    void setmailcliente(QString val) {
+        setDBvalue("mailcliente", val);
+    };
+    void seturlcliente(QString val) {
+        setDBvalue("urlcliente", val);
+    };
+    void setfaltacliente(QString val) {
+        setDBvalue("faltacliente", val);
+    };
+    void setfbajacliente(QString val) {
+        setDBvalue("fbajacliente", val);
+    };
+    void setcomentcliente(QString val) {
+        setDBvalue("comentcliente", val);
+    };
+    void setinactivocliente(QString val) {
+        setDBvalue("inactivocliente", val);
+    };
+    void setprovcliente(QString val) {
+        setDBvalue("provcliente", val);
+    };
+    virtual void pintaidcliente (QString) {}
+    ;
+    virtual void pintanomcliente (QString) {}
+    ;
+    virtual void pintanomaltcliente (QString) {}
+    ;
+    virtual void pintacifcliente (QString) {}
+    ;
+    virtual void pintabancocliente (QString) {}
+    ;
+    virtual void pintadircliente (QString) {}
+    ;
+    virtual void pintapoblcliente (QString) {}
+    ;
+    virtual void pintacpcliente (QString) {}
+    ;
+    virtual void pintatelcliente (QString) {}
+    ;
+    virtual void pintafaxcliente (QString) {}
+    ;
+    virtual void pintamailcliente (QString) {}
+    ;
+    virtual void pintaurlcliente (QString) {}
+    ;
+    virtual void pintafaltacliente (QString) {}
+    ;
+    virtual void pintafbajacliente (QString) {}
+    ;
+    virtual void pintacomentcliente (QString) {}
+    ;
+    virtual void pintainactivocliente (QString) {}
+    ;
+    virtual void pintaprovcliente (QString) {}
+    ;
 };
 
 #endif
+

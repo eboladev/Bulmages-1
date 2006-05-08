@@ -35,26 +35,25 @@
 #include <QPixmap>
 #include <qtimer.h>
 #include <q3textbrowser.h>
-
 #include <stdlib.h>
 
 
-class Splash : public QDialog
-{
-	Q_OBJECT
+class Splash : public QDialog {
+    Q_OBJECT
 
 private:
-	QLabel *l;
-	//QLabel *l2;
-	Q3TextBrowser *l2;
+    QLabel *l;
+    //QLabel *l2;
+    Q3TextBrowser *l2;
 
 public:
-	Splash();
-	~Splash();
+    Splash();
+    ~Splash();
 
 public slots:
-	void paint();
-	bool event(QEvent *);
+    void paint();
+    bool event(QEvent *);
 };
 
 #endif
+

@@ -21,132 +21,118 @@
 #ifndef PEDIDOSCLIENTELIST_H
 #define PEDIDOSCLIENTELIST_H
 
-
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ui_pedidosclientelistbase.h"
 
 
 class PedidosClienteListSubform : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
+
 public:
-	PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
-	~PedidosClienteListSubform() {};
+    PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
+    ~PedidosClienteListSubform() {}
+    ;
+
 public slots:
-virtual void cargar() {
-    _depura("PedidosClienteListSubform::cargar\n",0);
-    QString SQLQuery = "SELECT * FROM pedidocliente";
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
-	SubForm3::cargar(cur);
-    delete cur;
-};
-virtual int cargar(cursor2 *cur) {
-    _depura("PedidosClienteListSubform::cargar\n",0);
-	SubForm3::cargar(cur);
-	return 0;
-};
+    virtual void cargar() {
+        _depura("PedidosClienteListSubform::cargar\n", 0);
+        QString SQLQuery = "SELECT * FROM pedidocliente";
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm3::cargar(cur);
+        delete cur;
+    };
+    virtual int cargar(cursor2 *cur) {
+        _depura("PedidosClienteListSubform::cargar\n", 0);
+        SubForm3::cargar(cur);
+        return 0;
+    };
 };
 
 
-#include "ui_pedidosclientelistbase.h"
 class PedidosClienteList : public QWidget, public Ui_PedidosClienteListBase {
-Q_OBJECT
+    Q_OBJECT
 
 private:
-	company *companyact;
-	/// m_modo == 0 es modo edicion
-	/// m_modo ==  es modo selector.
-	int m_modo;
-	QString m_idpedidocliente;
+    company *companyact;
+    /// m_modo == 0 es modo edicion.
+    /// m_modo ==  es modo selector.
+    int m_modo;
+    QString m_idpedidocliente;
+
 public:
-	PedidosClienteList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-	PedidosClienteList(company *, QWidget *parent = 0, const char *name = 0,
-				Qt::WFlags flag = 0);
-	~PedidosClienteList();
-	void presenta();
-	void modoseleccion()
-	{
-		m_modo = 1;
-	};
-	void modoedicion()
-	{
-		m_modo = 0;
-	};
-	void imprimir();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-		m_cliente->setcompany(comp);
-		mui_list->setcompany(comp);
-	};
-	void hideBotonera()
-	{
-		m_botonera->hide();
-	};
-	void showBotonera()
-	{
-		m_botonera->show();
-	};
-	void hideBusqueda()
-	{
-		_depura("Ocultar busqueda.", 0);
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
-
-	QString idpedidocliente()
-	{
-		return m_idpedidocliente;
-	};
-	void setidcliente(QString val)
-	{
-		m_cliente->setidcliente(val);
-	};
-	void meteWindow(QString nom, QObject *obj)
-	{
-		if (companyact != NULL)
-		{
-			companyact->meteWindow(nom, obj);
-		}
-	};
-
-
-	void editar(int);
-
-	QString generarFiltro();
-
+    PedidosClienteList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
+    PedidosClienteList(company *, QWidget *parent = 0, const char *name = 0,
+                       Qt::WFlags flag = 0);
+    ~PedidosClienteList();
+    void presenta();
+    void modoseleccion() {
+        m_modo = 1;
+    };
+    void modoedicion() {
+        m_modo = 0;
+    };
+    void imprimir();
+    void setcompany(company *comp) {
+        companyact = comp;
+        m_cliente->setcompany(comp);
+        mui_list->setcompany(comp);
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        _depura("Ocultar busqueda.", 0);
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    QString idpedidocliente() {
+        return m_idpedidocliente;
+    };
+    void setidcliente(QString val) {
+        m_cliente->setidcliente(val);
+    };
+    void meteWindow(QString nom, QObject *obj) {
+        if (companyact != NULL) {
+            companyact->meteWindow(nom, obj);
+        }
+    };
+    void editar(int);
+    QString generarFiltro();
 
 public slots:
-	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
-		on_mui_editar_clicked();
-	};
-	virtual void on_mui_imprimir_clicked()
-	{
-		imprimir();
-	};
-	virtual void on_mui_crear_clicked()
-	{
-		companyact->s_newPedidoClienteView();
-	};
-	virtual void on_mui_actualizar_clicked()
-	{
-		presenta();
-	};
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_editar_clicked();
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
+    virtual void on_mui_imprimir_clicked() {
+        imprimir();
+    };
+    virtual void on_mui_crear_clicked() {
+        companyact->s_newPedidoClienteView();
+    };
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    };
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
+
 signals:
-	void selected(QString);
+    void selected(QString);
 };
 
 #endif
+

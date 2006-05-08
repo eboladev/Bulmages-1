@@ -26,7 +26,6 @@
 #include <QLabel>
 #include <QCheckBox>
 
-// Presupuestos.
 #include "ui_pagobase.h"
 #include "postgresiface2.h"
 #include "pago.h"
@@ -37,85 +36,72 @@
 
 class company;
 
-class PagoView : public QDialog, private Ui_PagoBase, public Pago, public dialogChanges
-{
-	Q_OBJECT
+
+class PagoView : public QDialog, private Ui_PagoBase, public Pago, public dialogChanges {
+    Q_OBJECT
 
 public:
-	PagoView(company *, QWidget *, const char *);
-	~PagoView();
-	void manageArticle(int);  
-	void closeEvent(QCloseEvent *);
-
-	void pintafechapago(QString id)
-	{
-		mui_fechapago->setText(id);
-	};
-	void pintacomentpago(QString id)
-	{
-		mui_comentpago->setText(id);
-	};
-	void pintaidproveedor(QString id)
-	{
-		mui_proveedor->setidproveedor(id);
-	};
-	void pintarefpago(QString id)
-	{
-		mui_refpago->setText(id);
-	};
-	void pintacantpago(QString id)
-	{
-		mui_cantpago->setText(id);
-	};
-	void pintaprevisionpago(QString id)
-	{
-		if (id == "t" || id == "TRUE")
-		{
-			mui_previsionpago->setChecked(TRUE);
-		} else {
-			mui_previsionpago->setChecked(FALSE);
-		}
-	};
+    PagoView(company *, QWidget *, const char *);
+    ~PagoView();
+    void manageArticle(int);
+    void closeEvent(QCloseEvent *);
+    void pintafechapago(QString id) {
+        mui_fechapago->setText(id);
+    };
+    void pintacomentpago(QString id) {
+        mui_comentpago->setText(id);
+    };
+    void pintaidproveedor(QString id) {
+        mui_proveedor->setidproveedor(id);
+    };
+    void pintarefpago(QString id) {
+        mui_refpago->setText(id);
+    };
+    void pintacantpago(QString id) {
+        mui_cantpago->setText(id);
+    };
+    void pintaprevisionpago(QString id) {
+        if (id == "t" || id == "TRUE") {
+            mui_previsionpago->setChecked(TRUE);
+        } else {
+            mui_previsionpago->setChecked(FALSE);
+        }
+    };
 
 public slots:
-	virtual void on_mui_guardar_clicked() {guardaPago();};
-
-	virtual int cargar(QString id)
-	{
-		int err = Pago::cargar(id);
-		setCaption("Pago " + DBvalue("refpago"));
-    		dialogChanges_cargaInicial();
-		return err;
-	};
-	virtual void on_mui_borrar_clicked();
-
-	virtual void  on_mui_comentpago_textChanged(const QString &str) {
-		setcomentpago(str);
-	};
-
-	virtual void on_mui_refpago_textChanged(const QString &str)	{
-		setrefpago(str);
-	};
-	virtual void on_mui_cantpago_textChanged(const QString &str) {
-		setcantpago(str);
-	};
-	virtual void on_mui_previsionpago_stateChanged(int i)
-	{
-		if (i)
-		{
-			setprevisionpago("TRUE");
-		} else {
-			setprevisionpago("FALSE");
-		}
-	}
-	virtual void on_mui_proveedor_valueChanged(QString id)
-	{
-		setidproveedor(id);
-	};
-	virtual void on_mui_fechapago_valueChanged(QString id)
-	{
-		setfechapago(id);
-	};
+    virtual void on_mui_guardar_clicked() {
+        guardaPago();
+    };
+    virtual int cargar(QString id) {
+        int err = Pago::cargar(id);
+        setCaption("Pago " + DBvalue("refpago"));
+        dialogChanges_cargaInicial();
+        return err;
+    };
+    virtual void on_mui_borrar_clicked();
+    virtual void  on_mui_comentpago_textChanged(const QString &str) {
+        setcomentpago(str);
+    };
+    virtual void on_mui_refpago_textChanged(const QString &str)	{
+        setrefpago(str);
+    };
+    virtual void on_mui_cantpago_textChanged(const QString &str) {
+        setcantpago(str);
+    };
+    virtual void on_mui_previsionpago_stateChanged(int i) {
+        if (i) {
+            setprevisionpago("TRUE");
+        } else {
+            setprevisionpago("FALSE");
+        }
+    }
+    virtual void on_mui_proveedor_valueChanged(QString id) {
+        setidproveedor(id);
+    };
+    virtual void on_mui_fechapago_valueChanged(QString id) {
+        setfechapago(id);
+    };
 };
 
 #endif
+

@@ -24,114 +24,100 @@
 #include "company.h"
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-
-class ArticuloListSubForm : public SubForm2Bf {
-Q_OBJECT
-public:
-	ArticuloListSubForm(QWidget *parent = 0, const char *name = 0);
-	~ArticuloListSubForm() {};
-};
-
-
 #include "ui_articleslistbase.h"
 
 
-class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles
-{
-	Q_OBJECT
+class ArticuloListSubForm : public SubForm2Bf {
+    Q_OBJECT
+public:
+    ArticuloListSubForm(QWidget *parent = 0, const char *name = 0);
+    ~ArticuloListSubForm() {}
+    ;
+};
+
+
+class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles {
+    Q_OBJECT
 
 public:
-	enum edmode
-	{
-		EditMode = 0, SelectMode = 1
-	};
+    enum edmode
+    {
+        EditMode = 0, SelectMode = 1
+    };
 
 private:
-	QString mdb_idarticulo;
-	QString mdb_nomarticulo;
-	QString mdb_codigocompletoarticulo;
-	company *m_companyact;
-	edmode m_modo;
-	void inicializar();
+    QString mdb_idarticulo;
+    QString mdb_nomarticulo;
+    QString mdb_codigocompletoarticulo;
+    company *m_companyact;
+    edmode m_modo;
+    void inicializar();
 
 public:
-	ArticuloList(company *, QWidget *parent = 0, const char *name = 0,
-		Qt::WFlags flag = 0, edmode editmodo = EditMode);
-	~ArticuloList();
-	QString formaQuery();
-	QString detalleArticulos();
-	QString idArticle()
-	{
-		return mdb_idarticulo;
-	};
-	QString idarticulo()
-	{
-		return mdb_idarticulo;
-	};
-	QString nomarticulo()
-	{
-		return mdb_nomarticulo;
-	};
-	QString codigocompletoarticulo()
-	{
-		return mdb_codigocompletoarticulo;
-	};
-	void presenta();
-	void Imprimir();
-	void editArticle(int);
-	/// Funciones que se encargan en guardar y cargar la configuracion del listado.
-	void guardaconfig();
-	void cargaconfig();
+    ArticuloList(company *, QWidget *parent = 0, const char *name = 0,
+                 Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ~ArticuloList();
+    QString formaQuery();
+    QString detalleArticulos();
+    QString idArticle() {
+        return mdb_idarticulo;
+    };
+    QString idarticulo() {
+        return mdb_idarticulo;
+    };
+    QString nomarticulo() {
+        return mdb_nomarticulo;
+    };
+    QString codigocompletoarticulo() {
+        return mdb_codigocompletoarticulo;
+    };
+    void presenta();
+    void Imprimir();
+    void editArticle(int);
+    /// Funciones que se encargan en guardar y cargar la configuracion del listado.
+    void guardaconfig();
+    void cargaconfig();
 
-	void modoseleccion()
-	{
-		m_modo = SelectMode;
-	};
-	void modoedicion()
-	{
-		m_modo = EditMode;
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
+    void modoseleccion() {
+        m_modo = SelectMode;
+    };
+    void modoedicion() {
+        m_modo = EditMode;
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
 
 public slots:
-	virtual void on_mui_list_cellDoubleClicked(int , int);
-	virtual void on_mui_list_customContextMenuRequested(const QPoint &);
+    virtual void on_mui_list_cellDoubleClicked(int, int);
+    virtual void on_mui_list_customContextMenuRequested(const QPoint &);
+    virtual void s_imprimir1();
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_importar_clicked();
+    virtual void on_mui_exportar_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_crear_clicked() {
+        m_companyact->s_newArticulo();
+    };
+    virtual void on_mui_imprimir_clicked() {
+        s_imprimir1();
+    };
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    };
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
 
-	virtual void s_imprimir1();
-
-	virtual void on_mui_editar_clicked();
-
-	virtual void on_mui_importar_clicked();
-	virtual void on_mui_exportar_clicked();
-
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_crear_clicked()
-	{
-		m_companyact->s_newArticulo();
-	};
-	virtual void on_mui_imprimir_clicked()
-	{
-		s_imprimir1();
-	};
-	virtual void on_mui_actualizar_clicked()
-	{
-		presenta();
-	};
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
 signals:
-	void selected(QString);
+    void selected(QString);
 };
 
 #endif
+

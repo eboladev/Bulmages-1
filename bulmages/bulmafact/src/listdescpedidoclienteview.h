@@ -27,55 +27,22 @@
 
 class ListDescuentoPedidoClienteView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idpedidocliente;
     ListDescuentoPedidoClienteView(QWidget *parent = 0);
-    ~ListDescuentoPedidoClienteView() {};
+    ~ListDescuentoPedidoClienteView() {}
+    ;
 
 public slots:
     virtual void cargar(QString idpedidocliente) {
-        _depura("ListDescuentoPedidoClienteView::cargar\n",0);
+        _depura("ListDescuentoPedidoClienteView::cargar\n", 0);
         mdb_idpedidocliente = idpedidocliente;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente="+mdb_idpedidocliente);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente=" + mdb_idpedidocliente);
         SubForm3::cargar(cur);
         delete cur;
     };
-
 };
-
-
-
-
-
-
-
-
-/*
-#include <Q3Table>
-
-#include "listdescpedidocliente.h"
-#include "company.h"
-#include "descpedidocliente.h"
-
-
-class ListDescuentoPedidoClienteView : public Q3Table , public ListDescuentoPedidoCliente
-{
-	Q_OBJECT
-
-public:
-	ListDescuentoPedidoClienteView(QWidget *parent = 0, const char *name = 0);
-	~ListDescuentoPedidoClienteView();
-	virtual void pintaListDescuentoPedidoCliente();
-	virtual void pintadescListDescuentoPedidoCliente(int);
-	DescuentoPedidoCliente *lineaat(int);
-	DescuentoPedidoCliente *lineaact();
-
-public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borradescpedidoclienteact();
-};
-
-*/
 
 #endif
+

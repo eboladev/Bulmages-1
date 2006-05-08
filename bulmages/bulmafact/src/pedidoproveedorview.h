@@ -94,18 +94,17 @@ public:
             m_procesadopedidoproveedor->setChecked(FALSE);
         }
     };
-
     virtual int guardar();
 
 public slots:
     virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar pedido al proveedor."),
-                                        tr("Desea eliminar el pedido al proveedor?."),tr("Si"),tr("No"),tr("Cancelar"),0,2);
+                                              tr("Desea eliminar el pedido al proveedor?."),
+                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
             borrar();
             dialogChanges_cargaInicial();
-		_depura(tr("El pedido se ha borrado satisfactoriamente"),2);
-
+            _depura(tr("El pedido se ha borrado satisfactoriamente"), 2);
             close();
         }// end if
     };
@@ -117,8 +116,6 @@ public slots:
     virtual void on_mui_imprimir_clicked() {
         imprimirPedidoProveedor();
     };
-
-
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         calculaypintatotales();
@@ -133,7 +130,6 @@ public slots:
     virtual void on_subform3_editFinish(int, int) {
         calculaypintatotales();
     };
-
     virtual void on_mui_aceptar_clicked() {
         if (!guardar() )
             close();
@@ -141,3 +137,4 @@ public slots:
 };
 
 #endif
+

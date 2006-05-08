@@ -32,41 +32,36 @@
 #include "postgresiface2.h"
 
 
-class InventarioView : public QWidget, public Ui_InventarioBase, public Inventario
-{
-	Q_OBJECT
+class InventarioView : public QWidget, public Ui_InventarioBase, public Inventario {
+    Q_OBJECT
 
 public:
-	InventarioView(company *, QWidget *parent = 0, const char *name = 0);
-	~InventarioView();
-	void pintaidinventario(QString)
-	{
-	};
-	void pintafechainventario(QString id)
-	{
-		m_fechainventario->setText(id);
-	};
-	void pintanominventario(QString id)
-	{
-		m_nominventario->setText(id);
-	};
+    InventarioView(company *, QWidget *parent = 0, const char *name = 0);
+    ~InventarioView();
+    void pintaidinventario(QString) {}
+    ;
+    void pintafechainventario(QString id) {
+        m_fechainventario->setText(id);
+    };
+    void pintanominventario(QString id) {
+        m_nominventario->setText(id);
+    };
 
 public slots:
-	virtual void on_mui_guardar_clicked()
-	{
-		setfechainventario(m_fechainventario->text());
-		setnominventario(m_nominventario->text());
-		guardar();
-	};
-	virtual void on_mui_aceptar_clicked() {
-		on_mui_aceptar_clicked();
-		close();
-	};
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_pregenerar_clicked()
-	{
-		pregenerar();
-	};
+    virtual void on_mui_guardar_clicked() {
+        setfechainventario(m_fechainventario->text());
+        setnominventario(m_nominventario->text());
+        guardar();
+    };
+    virtual void on_mui_aceptar_clicked() {
+        on_mui_aceptar_clicked();
+        close();
+    };
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_pregenerar_clicked() {
+        pregenerar();
+    };
 };
 
 #endif
+

@@ -27,49 +27,22 @@
 
 class ListDescuentoFacturaView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idfactura;
     ListDescuentoFacturaView(QWidget *parent = 0);
-    ~ListDescuentoFacturaView() {};
+    ~ListDescuentoFacturaView() {}
+    ;
 
 public slots:
     virtual void cargar(QString idfactura) {
-        _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
         mdb_idfactura = idfactura;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfactura WHERE idfactura="+mdb_idfactura);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfactura WHERE idfactura=" + mdb_idfactura);
         SubForm3::cargar(cur);
         delete cur;
     };
-
 };
-
-
-/*
-#include <Q3Table>
-
-#include "listdescfactura.h"
-#include "company.h"
-#include "descfactura.h"
-
-
-class ListDescuentoFacturaView : public Q3Table , public ListDescuentoFactura
-{
-	Q_OBJECT
-
-public:
-	ListDescuentoFacturaView(QWidget *parent = 0, const char *name = 0);
-	~ListDescuentoFacturaView();
-	virtual void pintaListDescuentoFactura();
-	virtual void pintadescListDescuentoFactura(int);
-	DescuentoFactura *lineaat(int);
-	DescuentoFactura *lineaact();
-
-public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borradescfacturaact();
-};
-
-*/
 
 #endif
+

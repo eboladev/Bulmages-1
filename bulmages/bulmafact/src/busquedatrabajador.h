@@ -28,39 +28,37 @@
 #include "funcaux.h"
 
 
-class BusquedaTrabajador : public QComboBox
-{
-	Q_OBJECT
+class BusquedaTrabajador : public QComboBox {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	cursor2 *m_cursorcombo;
+    company *companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	BusquedaTrabajador(QWidget *parent = 0);
-	~BusquedaTrabajador();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setidtrabajador(QString idtrabajador);
-	QString idtrabajador() {
-		return m_cursorcombo->valor("idtrabajador", currentIndex()-1);
-	};
+    BusquedaTrabajador(QWidget *parent = 0);
+    ~BusquedaTrabajador();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setidtrabajador(QString idtrabajador);
+    QString idtrabajador() {
+        return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
+    };
+
 public slots:
-	void m_activated(int index)
-	{
-	    	_depura("Activado el combo box", 0);
-		if (index > 0)
-		{
-			emit(valueChanged(m_cursorcombo->valor("idtrabajador", index - 1)));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void m_activated(int index) {
+        _depura("Activado el combo box", 0);
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("idtrabajador", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

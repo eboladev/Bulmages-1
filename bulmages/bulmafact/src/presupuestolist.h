@@ -28,17 +28,20 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
+#include "ui_budgetslistbase.h"
 
 
 class PresupuestoListSubForm : public SubForm2Bf {
     Q_OBJECT
+
 public:
     PresupuestoListSubForm(QWidget *parent = 0, const char *name = 0);
     ~PresupuestoListSubForm() {}
     ;
+
 public slots:
     virtual void cargar() {
-        _depura("PresupuestoListSubForm::cargar\n",0);
+        _depura("PresupuestoListSubForm::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
@@ -52,14 +55,12 @@ public slots:
 };
 
 
-#include "ui_budgetslistbase.h"
-
 class PresupuestoList : public QWidget, public Ui_BudgetsListBase {
     Q_OBJECT
 
 private:
     company *m_companyact;
-    /// m_modo == 0 es modo edicion
+    /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
     QString m_idpresupuesto;
@@ -115,11 +116,10 @@ public:
         m_articulo->setidarticulo(val);
     };
     QString generaFiltro();
-
     void editar(int);
 
 public slots:
-    virtual void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_editar_clicked();
@@ -139,8 +139,10 @@ public slots:
         else
             mui_list->hideConfig();
     };
+
 signals:
     void selected(QString);
 };
 
 #endif
+

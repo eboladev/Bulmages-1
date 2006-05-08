@@ -27,40 +27,38 @@
 #include "postgresiface2.h"
 #include "funcaux.h"
 
-class BusquedaFormaPago : public QComboBox
-{
-	Q_OBJECT
+
+class BusquedaFormaPago : public QComboBox {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	cursor2 *m_cursorcombo;
+    company *companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	BusquedaFormaPago(QWidget *parent = 0);
-	~BusquedaFormaPago();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setidforma_pago(QString idforma_pago);
-	QString idforma_pago() {
-		return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
-	};
+    BusquedaFormaPago(QWidget *parent = 0);
+    ~BusquedaFormaPago();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setidforma_pago(QString idforma_pago);
+    QString idforma_pago() {
+        return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
+    };
 
 public slots:
-	void m_activated(int index)
-	{
-		_depura("Activado el combo box", 0);
-		if (index > 0)
-		{
-			emit(valueChanged(m_cursorcombo->valor("idforma_pago", index - 1)));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void m_activated(int index) {
+        _depura("Activado el combo box", 0);
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("idforma_pago", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

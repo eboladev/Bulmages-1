@@ -28,39 +28,43 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ui_facturaslistbase.h"
+
 
 class FacturasListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     FacturasListSubform(QWidget *parent = 0, const char *name = 0);
     ~FacturasListSubform() {}
     ;
+
 public slots:
     virtual void cargar() {
-        _depura("FacturasListSubform::cargar\n",0);
+        _depura("FacturasListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM factura";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
     virtual int cargar(cursor2 *cur) {
-        _depura("FacturasListSubform::cargar\n",0);
+        _depura("FacturasListSubform::cargar\n", 0);
         SubForm3::cargar(cur);
         return 0;
     };
 };
 
 
-#include "ui_facturaslistbase.h"
-
 class FacturasList : public QWidget, public Ui_FacturasListBase {
     Q_OBJECT
+
 public:
-	enum edmode
-	{
-		EditMode = 0,
-		SelectMode = 1
-	};
+    enum edmode
+    {
+        EditMode = 0,
+        SelectMode = 1
+    };
+
 private:
     company *m_companyact;
     edmode m_modo;
@@ -125,14 +129,16 @@ public slots:
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
+
 signals:
     void selected(QString);
 };
 
 #endif
+

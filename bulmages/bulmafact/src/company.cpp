@@ -65,27 +65,28 @@
 #include "tiposarticuloview.h"
 
 
-company::company() {}// end company
+company::company() {}
 
 
 void company::init(QString bd) {
     if (bd == "")
         bd = searchCompany();
     inicializa(bd);
-}// end init
+}
 
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de clases a partir de dicha inicializacion.
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
+  * clases a partir de dicha inicializacion.
   */
 QString company::searchCompany() {
-    //El cambio de empresa se realiza desde el selector.
-    _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n",0);
-    abreempresaview *nuevae = new abreempresaview(0,"BulmaFact" );
+    /// El cambio de empresa se realiza desde el selector.
+    _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n", 0);
+    abreempresaview *nuevae = new abreempresaview(0, "BulmaFact");
     nuevae->exec();
-    _depura("Vamos a cambiar la empresa \n",0);
-    QString bd= nuevae->nomDB();
-    _depura("Empresa cambiada a"+bd,0);
+    _depura("Vamos a cambiar la empresa \n", 0);
+    QString bd = nuevae->nomDB();
+    _depura("Empresa cambiada a" + bd, 0);
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
     if (bd == "")
@@ -95,75 +96,73 @@ QString company::searchCompany() {
 
 
 void company::createMainWindows() {
-    _depura("company::createMainWindows",0);
-    m_articleslist = new ArticuloList(this, 0,theApp->translate("Articulos","company"),0,ArticuloList::EditMode);
+    _depura("company::createMainWindows", 0);
+    m_articleslist = new ArticuloList(this, 0, theApp->translate("Articulos","company"), 0, ArticuloList::EditMode);
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 
-    _depura("company::createMainWindows inicializamos m_providerslist\n",1);
+    _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
 
-
-    m_providerslist = new ProveedorList(this, 0,theApp->translate("Proveedores","company"));
+    m_providerslist = new ProveedorList(this, 0, theApp->translate("Proveedores", "company"));
     m_pWorkspace->addWindow(m_providerslist);
     m_providerslist->hide();
 
-    _depura("company::createMainWindows inicializamos m_clientesList\n",1);
+    _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
 
-    m_clientsList = new ClientsList(this, 0,theApp->translate("Clientes","company"));
+    m_clientsList = new ClientsList(this, 0, theApp->translate("Clientes", "company"));
     m_pWorkspace->addWindow(m_clientsList);
     m_clientsList->hide();
 
-    _depura("company::createMainWindows inicializamos m_cobrosList\n",1);
+    _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
 
-
-    m_cobrosList = new CobrosList(this, 0,theApp->translate("Cobros","company"));
+    m_cobrosList = new CobrosList(this, 0, theApp->translate("Cobros", "company"));
     m_pWorkspace->addWindow(m_cobrosList);
     m_cobrosList->hide();
 
-    _depura("company::createMainWindows inicializamos m_pagosList\n",1);
-    m_pagosList =  new PagosList (this, 0, theApp->translate("Pagos","company"));
+    _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
+    m_pagosList =  new PagosList (this, 0, theApp->translate("Pagos", "company"));
     m_pWorkspace->addWindow(m_pagosList);
     m_pagosList->hide();
 
 
-    m_budgetsList = new PresupuestoList(this, 0,theApp->translate("Presupuestos a clientes","company"));
+    m_budgetsList = new PresupuestoList(this, 0, theApp->translate("Presupuestos a clientes", "company"));
     m_pWorkspace->addWindow(m_budgetsList);
     m_budgetsList->hide();
 
-    _depura("company::createMainWindows inicializamos m_pedidosclienteList\n",1);
+    _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
 
-    m_pedidosclienteList = new PedidosClienteList(this, 0,theApp->translate("Pedidos de clientes","company"));
+    m_pedidosclienteList = new PedidosClienteList(this, 0, theApp->translate("Pedidos de clientes", "company"));
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
-    m_clientDelivNotesList = new AlbaranClienteList(this, 0,theApp->translate("Albaranes de clientes","company"));
+    m_clientDelivNotesList = new AlbaranClienteList(this, 0, theApp->translate("Albaranes de clientes", "company"));
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 
-    _depura("company::createMainWindows inicializamos m_facturasList\n",1);
+    _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
 
-    m_facturasList = new FacturasList(this, 0,theApp->translate("Facturas a cliente","company"));
+    m_facturasList = new FacturasList(this, 0, theApp->translate("Facturas a cliente", "company"));
     m_pWorkspace->addWindow(m_facturasList);
     m_facturasList->hide();
 
-    m_pedidosproveedorList = new PedidosProveedorList(this, 0,theApp->translate("Pedidos a proveedor","company"));
+    m_pedidosproveedorList = new PedidosProveedorList(this, 0, theApp->translate("Pedidos a proveedor", "company"));
     m_pWorkspace->addWindow(m_pedidosproveedorList);
     m_pedidosproveedorList->hide();
 
-    m_albaranesproveedor = new AlbaranesProveedor(this, 0,theApp->translate("Albaranes de proveedor","company"));
+    m_albaranesproveedor = new AlbaranesProveedor(this, 0, theApp->translate("Albaranes de proveedor", "company"));
     m_pWorkspace->addWindow(m_albaranesproveedor);
     m_albaranesproveedor->hide();
 
-    m_facturasproveedorlist = new FacturasProveedorList(this, 0,theApp->translate("Facturas de proveedor","company"));
+    m_facturasproveedorlist = new FacturasProveedorList(this, 0, theApp->translate("Facturas de proveedor", "company"));
     m_pWorkspace->addWindow(m_facturasproveedorlist);
     m_facturasproveedorlist->hide();
 
-    _depura("END company::createMainWindows\n",0);
+    _depura("END company::createMainWindows\n", 0);
 }
 
 
 company::~company() {
-    _depura("Destructor de company",0);
+    _depura("Destructor de company", 0);
     delete m_facturasproveedorlist;
     delete m_albaranesproveedor;
     delete m_pedidosproveedorList;
@@ -176,7 +175,7 @@ company::~company() {
     delete m_budgetsList;
     delete m_pedidosclienteList;
     delete m_clientDelivNotesList;
-    _depura("END Destructor de company",0);
+    _depura("END Destructor de company", 0);
 }
 
 
@@ -209,7 +208,7 @@ void company::listClients () {
 
 
 void company::s_newProveedor() {
-    ProveedorView *prov = new ProveedorView(this,0,theApp->translate("Editar/anyadir proveedor","company"));
+    ProveedorView *prov = new ProveedorView(this, 0, theApp->translate("Editar/anyadir proveedor", "company"));
     m_pWorkspace->addWindow(prov);
     prov->showMaximized();
 }
@@ -230,9 +229,9 @@ void company::refreshArticles() {
 ClienteView * company::newClienteView() {
     /// Lanzamos los plugins necesarios.
     ClienteView *bud;
-    if (g_plugins->lanza("company_newClienteView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newClienteView", this, (void **)&bud))
         return bud;
-    bud = new ClienteView(this , 0,theApp->translate("Edicion de clientes", "company"));
+    bud = new ClienteView(this, 0, theApp->translate("Edicion de clientes", "company"));
     return bud;
 }
 
@@ -248,9 +247,9 @@ void company::s_newClienteView() {
 FacturaProveedorView * company::newFacturaProveedorView() {
     /// Lanzamos los plugins necesarios.
     FacturaProveedorView *bud;
-    if (g_plugins->lanza("company_newFacturaProveedorView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newFacturaProveedorView", this, (void **)&bud))
         return bud;
-    bud = new FacturaProveedorView(this , 0,theApp->translate("Edicion de facturas de proveedor", "company"));
+    bud = new FacturaProveedorView(this, 0, theApp->translate("Edicion de facturas de proveedor", "company"));
     return bud;
 }
 
@@ -264,34 +263,34 @@ void company::s_newFacturaPro() {
 
 
 CobroView * company::newCobroView() {
-    _depura("company::newCobroView",0);
+    _depura("company::newCobroView", 0);
     CobroView *bud;
     if (g_plugins->lanza("company_newCobroView", this, (void **)&bud) )
         return bud;
-    bud = new CobroView(this , 0,theApp->translate("Edicion de cobros", "company"));
+    bud = new CobroView(this, 0, theApp->translate("Edicion de cobros", "company"));
     return bud;
 }
 
 
 void company::s_newCobroView() {
-    _depura("company::s_newCobroView",0);
+    _depura("company::s_newCobroView", 0);
     CobroView *bud = newCobroView();
     bud->exec();
 }
 
 
 void company::s_newAlbaranPro() {
-    _depura ("company::s_newAlbaranPro",0);
-    AlbaranProveedorView *bud = new AlbaranProveedorView(this,0,theApp->translate("Edicion de albaranes de proveedor", "company"));
+    _depura ("company::s_newAlbaranPro", 0);
+    AlbaranProveedorView *bud = new AlbaranProveedorView(this, 0, theApp->translate("Edicion de albaranes de proveedor", "company"));
     m_pWorkspace->addWindow(bud);
     bud->show();
-    _depura ("END company::s_newAlbaranPro",0);
+    _depura ("END company::s_newAlbaranPro", 0);
 }
 
 
 void company::s_newPedidoPro() {
     _depura ("company::s_newPedidoPro",0);
-    PedidoProveedorView *bud = new PedidoProveedorView(this,0,theApp->translate("Edicion de pedidos de proveedor", "company"));
+    PedidoProveedorView *bud = new PedidoProveedorView(this, 0, theApp->translate("Edicion de pedidos de proveedor", "company"));
     m_pWorkspace->addWindow(bud);
     bud->pintar();
     bud->show();
@@ -343,16 +342,16 @@ void company::listBudgets() {
 PresupuestoView * company::newBudget() {
     /// Lanzamos los plugins necesarios.
     PresupuestoView *bud;
-    if (g_plugins->lanza("company_newBudget", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newBudget", this, (void **)&bud))
         return bud;
-    bud = new PresupuestoView(this , 0,theApp->translate("Edicion de proveedores", "company"));
+    bud = new PresupuestoView(this , 0, theApp->translate("Edicion de proveedores", "company"));
     return bud;
 }
 
 
 void company::s_newPresupuestoCli() {
     /// Lanzamos los plugins necesarios.
-    if (g_plugins->lanza("company_s_newPresupuestoCli",this) )
+    if (g_plugins->lanza("company_s_newPresupuestoCli", this))
         return;
     PresupuestoView *bud = newBudget();
     m_pWorkspace->addWindow(bud);
@@ -363,16 +362,16 @@ void company::s_newPresupuestoCli() {
 FacturaView * company::newFacturaView() {
     /// Lanzamos los plugins necesarios.
     FacturaView *bud;
-    if (g_plugins->lanza("company_newFacturaView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newFacturaView", this, (void **)&bud))
         return bud;
-    bud = new FacturaView(this , 0,theApp->translate("Edicion de factura", "company"));
+    bud = new FacturaView(this, 0, theApp->translate("Edicion de factura", "company"));
     return bud;
 }
 
 
 void company::s_newFacturaCli() {
     /// Lanzamos los plugins necesarios.
-    if (g_plugins->lanza("company_s_newFacturaCli",this) )
+    if (g_plugins->lanza("company_s_newFacturaCli", this))
         return;
     FacturaView *bud = newFacturaView();
     m_pWorkspace->addWindow(bud);
@@ -400,7 +399,7 @@ void company::listClientDelivNotes() {
 
 
 void company::newClientDelivNote() {
-    AlbaranClienteView *cDelivNote = new AlbaranClienteView(this,0,theApp->translate("Edicion de albaranes", "company"));
+    AlbaranClienteView *cDelivNote = new AlbaranClienteView(this, 0, theApp->translate("Edicion de albaranes", "company"));
     m_pWorkspace->addWindow(cDelivNote);
     cDelivNote->showMaximized();
 }
@@ -427,7 +426,7 @@ void company::refreshClientes() {
 
 
 void company::newPedidoCliente() {
-    PedidoClienteView *bud = new PedidoClienteView(this ,0,theApp->translate("Edicion de pedidos de cliente", "company"));
+    PedidoClienteView *bud = new PedidoClienteView(this, 0, theApp->translate("Edicion de pedidos de cliente", "company"));
     m_pWorkspace->addWindow(bud);
     bud->show();
 }
@@ -443,9 +442,9 @@ void company::refreshPedidosProveedor() {
 }
 
 
-/** Presenta la ventana de formas de pago y espera la ejecuci� de la misma */
+/// Presenta la ventana de formas de pago y espera la ejecucion de la misma.
 void company::s_FPago() {
-    FPagoView *f = new FPagoView(this,NULL,theApp->translate("Formas de pago", "company"));
+    FPagoView *f = new FPagoView(this, NULL, theApp->translate("Formas de pago", "company"));
     f->exec();
     delete f;
 }
@@ -459,55 +458,55 @@ void company::s_trabajadores() {
 
 
 void company::s_Familias() {
-    familiasview *fam = new familiasview(this, 0,0);
+    familiasview *fam = new familiasview(this, 0, 0);
     fam->exec();
     delete fam;
 }
 
 
 void company::s_seriesFactura() {
-    ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0,0);
+    ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0, 0);
     lser->exec();
     delete lser;
 }
 
 
 void company::s_provincias() {
-    _depura("INIT_company::s_provincias",1);
-    ListProvinciasView lser(this,0);
+    _depura("INIT_company::s_provincias", 1);
+    ListProvinciasView lser(this, 0);
     lser.exec();
-    _depura("END_company::s_provincias",1);
+    _depura("END_company::s_provincias", 1);
 }
 
 
 ArticuloView * company::newArticuloView() {
     /// Lanzamos los plugins necesarios.
     ArticuloView *bud;
-    if (g_plugins->lanza("company_newArticuloView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newArticuloView", this, (void **)&bud))
         return bud;
-    bud = new ArticuloView(this , 0,theApp->translate("Edicion de articulos", "company"));
+    bud = new ArticuloView(this, 0, theApp->translate("Edicion de articulos", "company"));
     return bud;
 }
 
 
 void company::s_newArticulo() {
-    //    QString idArt = "0";
+    //QString idArt = "0";
     ArticuloView *art = newArticuloView();
-    //    art->cargar(idArt);
+    //art->cargar(idArt);
     m_pWorkspace->addWindow(art);
     art->show();
 }
 
 
 void company::s_inventarios() {
-    InventariosView *bud = new InventariosView(this,0,theApp->translate("Listado de inventarios", "company"));
+    InventariosView *bud = new InventariosView(this, 0, theApp->translate("Listado de inventarios", "company"));
     m_pWorkspace->addWindow(bud);
     bud->show();
 }
 
 
 void company::s_newInventario() {
-    InventarioView *bud = new InventarioView(this,0,theApp->translate("Nuevo inventario", "company"));
+    InventarioView *bud = new InventarioView(this, 0, theApp->translate("Nuevo inventario", "company"));
     m_pWorkspace->addWindow(bud);
     bud->show();
 }
@@ -518,7 +517,7 @@ AlbaranClienteView * company::newAlbaranClienteView() {
     AlbaranClienteView *bud;
     if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud) )
         return bud;
-    bud = new AlbaranClienteView(this , 0,theApp->translate("Edicion de albaranes a clientes", "company"));
+    bud = new AlbaranClienteView(this, 0, theApp->translate("Edicion de albaranes a clientes", "company"));
     return bud;
 }
 
@@ -536,7 +535,7 @@ PedidoClienteView * company::newPedidoClienteView() {
     PedidoClienteView *bud;
     if (g_plugins->lanza("company_newPedidoClienteView", this, (void **)&bud) )
         return bud;
-    bud = new PedidoClienteView(this , 0,theApp->translate("Edicion de pedidos a clientes", "company"));
+    bud = new PedidoClienteView(this , 0, theApp->translate("Edicion de pedidos a clientes", "company"));
     return bud;
 }
 
@@ -550,18 +549,18 @@ void company::s_newPedidoClienteView() {
 
 
 void company::s_almacenes() {
-    _depura("INIT_company::s_almacenes",1);
-    ListAlmacenView lser(this,0);
+    _depura("INIT_company::s_almacenes", 1);
+    ListAlmacenView lser(this, 0);
     lser.exec();
-    _depura("END_company::s_almacenes",1);
+    _depura("END_company::s_almacenes", 1);
 }
 
 
 void company::s_newListConfiguracionView() {
-    _depura("INIT_company::s_newListConfiguracionView",1);
-    ListConfiguracionView lser(this,0);
+    _depura("INIT_company::s_newListConfiguracionView", 1);
+    ListConfiguracionView lser(this, 0);
     lser.exec();
-    _depura("END_company::s_newListConfiguracionView",1);
+    _depura("END_company::s_newListConfiguracionView", 1);
 }
 
 
@@ -570,17 +569,17 @@ PagoView * company::newPagoView() {
     PagoView *bud;
     if (g_plugins->lanza("company_newPagoView", this, (void **)&bud) )
         return bud;
-    bud = new PagoView(this , 0,theApp->translate("Pago", "company"));
+    bud = new PagoView(this, 0, theApp->translate("Pago", "company"));
     return bud;
 }
 
 
 void company::s_newPagoView() {
-    _depura("INIT_company::s_newPagoView",1);
+    _depura("INIT_company::s_newPagoView", 1);
     PagoView *pag =  newPagoView();
     pag->exec();
     delete pag;
-    _depura("END_company::s_newPagoView",1);
+    _depura("END_company::s_newPagoView", 1);
 }
 
 
@@ -589,16 +588,16 @@ TipoArticuloList * company::newTipoArticuloList() {
     TipoArticuloList *bud;
     if (g_plugins->lanza("company_newTipoArticuloList", this, (void **)&bud) )
         return bud;
-    bud = new TipoArticuloList(this , 0,theApp->translate("Tipos de articulo", "company"));
+    bud = new TipoArticuloList(this, 0, theApp->translate("Tipos de articulo", "company"));
     return bud;
 }
 
 
 void company::s_newTipoArticuloList() {
-    _depura("INIT_company::s_newPagoView",1);
+    _depura("INIT_company::s_newPagoView", 1);
     TipoArticuloList *pag =  newTipoArticuloList();
     pag->exec();
     delete pag;
-    _depura("END_company::s_newPagoView",1);
+    _depura("END_company::s_newPagoView", 1);
 }
 

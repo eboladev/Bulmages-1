@@ -26,110 +26,98 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-
-
-class ClienteListSubform : public SubForm2Bf {
-Q_OBJECT
-public:
-	ClienteListSubform(QWidget *parent = 0, const char *name = 0);
-	~ClienteListSubform() {};
-};
-
 #include "ui_clientslistbase.h"
 
 
-class ClientsList : public QWidget, public Ui_ClientsListBase, public pgimportfiles
-{
-	Q_OBJECT
+class ClienteListSubform : public SubForm2Bf {
+    Q_OBJECT
 
 public:
-	enum edmode
-	{
-		EditMode = 0,
-		SelectMode = 1
-	};
+    ClienteListSubform(QWidget *parent = 0, const char *name = 0);
+    ~ClienteListSubform() {}
+    ;
+};
+
+
+class ClientsList : public QWidget, public Ui_ClientsListBase, public pgimportfiles {
+    Q_OBJECT
+
+public:
+    enum edmode
+    {
+        EditMode = 0,
+        SelectMode = 1
+    };
 
 private:
-	edmode m_modo;
-	QString mdb_idcliente;
-	QString mdb_nomcliente;
-	QString mdb_cifcliente;
+    edmode m_modo;
+    QString mdb_idcliente;
+    QString mdb_nomcliente;
+    QString mdb_cifcliente;
 
 public:
-	company *m_companyact;
-   
-public:
-	ClientsList(company *, QWidget *parent = 0, const char *name = 0,
-			Qt::WFlags flag = 0, edmode editmode = EditMode);
-	~ClientsList();
-	void selectMode()
-	{
-		m_modo = SelectMode;
-	};
-	void editMode()
-	{
-		m_modo = EditMode;
-	};
-	void presenta();
-	QString idclient()
-	{
-		return mdb_idcliente;
-	};
-	QString nomclient()
-	{
-		return mdb_nomcliente;
-	};
-	QString cifclient()
-	{
-		return mdb_cifcliente;
-	};
-	void hideBotonera()
-	{
-		m_botonera->hide();
-	};
-	void showBotonera()
-	{
-		m_botonera->show();
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
+    company *m_companyact;
 
-	void editar(int);
+public:
+    ClientsList(company *, QWidget *parent = 0, const char *name = 0,
+                Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ~ClientsList();
+    void selectMode() {
+        m_modo = SelectMode;
+    };
+    void editMode() {
+        m_modo = EditMode;
+    };
+    void presenta();
+    QString idclient() {
+        return mdb_idcliente;
+    };
+    QString nomclient() {
+        return mdb_nomcliente;
+    };
+    QString cifclient() {
+        return mdb_cifcliente;
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
+    void editar(int);
 
 public slots:
-	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
-		on_mui_editar_clicked();
-	};
-	virtual void on_mui_crear_clicked()
-	{
-		m_companyact->s_newClienteView();
-	};
-	virtual void on_mui_editar_clicked();
-	virtual void on_mui_imprimir_clicked();
-	virtual void on_mui_actualizar_clicked()
-	{
-		presenta();
-	};
-	virtual void on_mui_exportar_clicked();
-	virtual void on_mui_importar_clicked();
-	virtual void on_mui_borrar_clicked();
+    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
+    virtual void on_mui_crear_clicked() {
+        m_companyact->s_newClienteView();
+    };
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    };
+    virtual void on_mui_exportar_clicked();
+    virtual void on_mui_importar_clicked();
+    virtual void on_mui_borrar_clicked();
 
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
 
 signals:
-	void selected(QString);
-
+    void selected(QString);
 };
 
 #endif
+

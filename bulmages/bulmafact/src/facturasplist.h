@@ -23,20 +23,22 @@
 
 #include <Q3Frame>
 
-
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ui_facturasplistbase.h"
 
 
 class FacturasProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     FacturasProveedorListSubform(QWidget *parent = 0, const char *name = 0);
     ~FacturasProveedorListSubform() {}
     ;
+
 public slots:
     virtual void cargar() {
         _depura("AlbaranesProveedorListSubform::cargar\n",0);
@@ -53,15 +55,12 @@ public slots:
 };
 
 
-#include "ui_facturasplistbase.h"
-
-
 class FacturasProveedorList : public QWidget, public Ui_FacturasProveedorListBase {
     Q_OBJECT
 
 private:
     company *m_companyact;
-    /// m_modo == 0 es modo edicion
+    /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
     QString mdb_idfacturap;
@@ -109,7 +108,6 @@ public:
         m_articulo->setidarticulo(val);
     };
     QString generaFiltro();
-
     /// Funciones que se encargan de guardar y cargar la configuracion del listado.
     void guardaconfig();
     void cargaconfig();
@@ -119,7 +117,6 @@ public slots:
     void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
         on_mui_editar_clicked();
     };
-
     virtual void on_mui_actualizar_clicked() {
         presenta();
     };
@@ -129,14 +126,16 @@ public slots:
     virtual void on_mui_editar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
+
 signals:
     void selected(QString);
 };
 
 #endif
+

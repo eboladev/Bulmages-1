@@ -27,69 +27,55 @@
 #include "dbrecord.h"
 
 
-class Pago : public DBRecord
-{
+class Pago : public DBRecord {
 
 protected:
-	company *companyact;
+    company *companyact;
 
 public:
-	Pago(company *);
-	virtual ~Pago();
-	virtual int cargar(QString);
-	virtual void pintar();
-	void guardaPago();
-	void borraPago();
-	void vaciar();   
-	virtual void pintaidpago(QString)
-	{
-	};
-	virtual void pintaidproveedor(QString)
-	{
-	};
-	virtual void pintafechapago(QString)
-	{
-	};
-	virtual void pintacantpago(QString)
-	{
-	};
-	virtual void pintarefpago(QString)
-	{
-	};
-	virtual void pintaprevisionpago(QString)
-	{
-	};
-	virtual void pintacomentpago(QString)
-	{
-	};
-	void setidpago(QString val)
-	{
-		setDBvalue("idpago", val);
-	};
-	void setidproveedor(QString val)
-	{
-		setDBvalue("idproveedor", val);
-	};
-	void setfechapago(QString val)
-	{
-		setDBvalue("fechapago", val);
-	};
-	void setcantpago(QString val)
-	{
-		setDBvalue("cantpago", val);
-	};
-	void setrefpago(QString val)
-	{
-		setDBvalue("refpago", val);
-	};
-	void setprevisionpago(QString val)
-	{
-		setDBvalue("previsionpago", val);
-	};
-	void setcomentpago(QString val)
-	{
-		setDBvalue("comentpago", val);
-	};
+    Pago(company *);
+    virtual ~Pago();
+    virtual int cargar(QString);
+    virtual void pintar();
+    void guardaPago();
+    void borraPago();
+    void vaciar();
+    virtual void pintaidpago(QString) {}
+    ;
+    virtual void pintaidproveedor(QString) {}
+    ;
+    virtual void pintafechapago(QString) {}
+    ;
+    virtual void pintacantpago(QString) {}
+    ;
+    virtual void pintarefpago(QString) {}
+    ;
+    virtual void pintaprevisionpago(QString) {}
+    ;
+    virtual void pintacomentpago(QString) {}
+    ;
+    void setidpago(QString val) {
+        setDBvalue("idpago", val);
+    };
+    void setidproveedor(QString val) {
+        setDBvalue("idproveedor", val);
+    };
+    void setfechapago(QString val) {
+        setDBvalue("fechapago", val);
+    };
+    void setcantpago(QString val) {
+        setDBvalue("cantpago", val);
+    };
+    void setrefpago(QString val) {
+        setDBvalue("refpago", val);
+    };
+    void setprevisionpago(QString val) {
+        setDBvalue("previsionpago", val);
+    };
+    void setcomentpago(QString val) {
+        setDBvalue("comentpago", val);
+    };
 };
 
 #endif
+

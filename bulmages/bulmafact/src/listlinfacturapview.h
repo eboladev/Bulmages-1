@@ -21,7 +21,6 @@
 #ifndef LISTLINFACTURAPVIEW_H
 #define LISTLINFACTURAPVIEW_H
 
-
 #include <QEvent>
 
 #include "company.h"
@@ -31,18 +30,19 @@
 
 class ListLinFacturaProveedorView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idfacturap;
     ListLinFacturaProveedorView(QWidget *parent = 0);
     ~ListLinFacturaProveedorView() {}
     ;
+
 public slots:
     virtual void cargar(QString idfacturap);
     Fixed calculabase();
     Fixed calculaiva();
     virtual void editFinished(int, int);
-
 };
 
-
 #endif
+

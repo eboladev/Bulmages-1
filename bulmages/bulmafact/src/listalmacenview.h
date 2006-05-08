@@ -33,11 +33,15 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
+#include "ui_listalmacenbase.h"
+
 
 class company;
 
+
 class ListAlmacenSubForm : public SubForm2Bf {
     Q_OBJECT
+
 public:
     ListAlmacenSubForm(QWidget *parent = 0, const char *name = 0);
     ~ListAlmacenSubForm() {}
@@ -45,18 +49,12 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura("ListAlmacenSubForm::cargar\n",0);
+        _depura("ListAlmacenSubForm::cargar\n", 0);
         cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
         SubForm3::cargar(cur);
         delete cur;
     };
 };
-
-
-
-
-// ALMACENES
-#include "ui_listalmacenbase.h"
 
 
 class ListAlmacenView : public QDialog, public Ui_ListAlmacenBase {
@@ -66,10 +64,10 @@ public:
     company *companyact;
 
 public:
-    ListAlmacenView(company *comp , QWidget *parent, const char *name="");
+    ListAlmacenView(company *comp , QWidget *parent, const char *name = "");
     ~ListAlmacenView();
-public slots:
 
+public slots:
     virtual void on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
@@ -77,3 +75,4 @@ public slots:
 };
 
 #endif
+

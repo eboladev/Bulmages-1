@@ -29,46 +29,42 @@
 #include "funcaux.h"
 
 
-class ListCompArticulo
-{
+class ListCompArticulo {
 
 public:
-	company *companyact;
-	QString mdb_idarticulo;
-	Q3PtrList<CompArticulo> m_lista;
+    company *companyact;
+    QString mdb_idarticulo;
+    Q3PtrList<CompArticulo> m_lista;
 
 public:
-	ListCompArticulo(company *comp);
-	ListCompArticulo();
-	void setcompany(company *c)
-	{
-		_depura("ListCompArticulo setCompany", 0);
-		companyact = c;
-		_depura("ListCompArticulo  fin de setCompany", 0);
-	};
-	virtual ~ListCompArticulo();
-	void guardaListCompArticulo();
-	void vaciar();
-	virtual void pintar()
-	{
-		_depura("La funcion pintaListCompArticulo aun no ha sido implementada.", 0);
-	};
-	void cargar(QString);
-	void borrar();
-	void nuevalinea(QString, QString, QString, QString);
-	CompArticulo *linpos(int);
-	void borrar(int);
-	void setidarticulo(QString id)
-	{
-		mdb_idarticulo = id;
-		CompArticulo *linea;
-		uint i = 0;
-		for (linea = m_lista.first(); linea; linea = m_lista.next())
-		{
-			linea->setidarticulo(mdb_idarticulo);
-			i++;
-		}
-	};
+    ListCompArticulo(company *comp);
+    ListCompArticulo();
+    void setcompany(company *c) {
+        _depura("ListCompArticulo setCompany", 0);
+        companyact = c;
+        _depura("ListCompArticulo  fin de setCompany", 0);
+    };
+    virtual ~ListCompArticulo();
+    void guardaListCompArticulo();
+    void vaciar();
+    virtual void pintar() {
+        _depura("La funcion pintaListCompArticulo aun no ha sido implementada.", 0);
+    };
+    void cargar(QString);
+    void borrar();
+    void nuevalinea(QString, QString, QString, QString);
+    CompArticulo *linpos(int);
+    void borrar(int);
+    void setidarticulo(QString id) {
+        mdb_idarticulo = id;
+        CompArticulo *linea;
+        uint i = 0;
+        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+            linea->setidarticulo(mdb_idarticulo);
+            i++;
+        }
+    };
 };
 
 #endif
+

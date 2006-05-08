@@ -24,26 +24,27 @@
 #include <Q3Table>
 #include <QEvent>
 
-
 #include "company.h"
 #include "subform2bf.h"
 #include "fixed.h"
 
+
 class ListLinPedidoProveedorView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idpedidoproveedor;
     ListLinPedidoProveedorView(QWidget *parent = 0);
     ~ListLinPedidoProveedorView() {}
     ;
+
 public slots:
     virtual void cargar(QString idpedidoproveedor);
     Fixed calculabase();
     Fixed calculaiva();
-	virtual void editFinished(int, int);
+    virtual void editFinished(int, int);
 
 };
 
-
-
 #endif
+

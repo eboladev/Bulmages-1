@@ -29,44 +29,40 @@
 
 class company;
 
-class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase
-{
-	Q_OBJECT
+class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	QString mdb_idfamilia;
-	QString mdb_nombrefamilia;
-	QString mdb_codigocompletofamilia;
+    company *companyact;
+    QString mdb_idfamilia;
+    QString mdb_nombrefamilia;
+    QString mdb_codigocompletofamilia;
 
 public:
-	BusquedaFamilia(QWidget *parent = 0, const char *name = 0);
-	~BusquedaFamilia();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual QString codigocompletofamilia()
-	{
-		return m_codigocompletofamilia->text();
-	};
-	virtual QString idfamilia()
-	{
-		return mdb_idfamilia;
-	};
-	virtual QString nombrefamilia()
-	{
-		return nombrefamilia();
-	};
-	virtual void setidfamilia(QString val);
-	virtual void setcodigocompletofamilia(QString val);
+    BusquedaFamilia(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaFamilia();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual QString codigocompletofamilia() {
+        return m_codigocompletofamilia->text();
+    };
+    virtual QString idfamilia() {
+        return mdb_idfamilia;
+    };
+    virtual QString nombrefamilia() {
+        return nombrefamilia();
+    };
+    virtual void setidfamilia(QString val);
+    virtual void setcodigocompletofamilia(QString val);
 
 public slots:
-	virtual void on_mui_buscar_clicked();
-	virtual void on_m_codigofamilia_textChanged(const QString &);
+    virtual void on_mui_buscar_clicked();
+    virtual void on_m_codigofamilia_textChanged(const QString &);
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

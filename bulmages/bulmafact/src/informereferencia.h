@@ -26,21 +26,20 @@
 
 class company;
 
-class InformeReferencia
-{
+class InformeReferencia {
 
 private:
-	QString m_referencia;
-	company* companyact;
+    QString m_referencia;
+    company* companyact;
 
 public:
-	InformeReferencia(company *);
-	~InformeReferencia();
-	void setreferencia(QString val)
-	{
-		m_referencia = val;
-	};
-	void generarinforme();
+    InformeReferencia(company *);
+    ~InformeReferencia();
+    void setreferencia(QString val) {
+        m_referencia = val;
+    };
+    void generarinforme();
 };
 
 #endif
+

@@ -33,45 +33,44 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
+#include "ui_listconfiguracionbase.h"
+
 
 class company;
 
+
 class ListConfiguracionSubForm : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
 public:
-	ListConfiguracionSubForm(QWidget *parent = 0, const char *name = 0);
-	~ListConfiguracionSubForm() {};
+    ListConfiguracionSubForm(QWidget *parent = 0, const char *name = 0);
+    ~ListConfiguracionSubForm() {}
+    ;
 public slots:
-	virtual void cargar() {
-    _depura("ListConfiguracionSubForm::cargar\n",0);
-    cursor2 * cur= companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
-	SubForm3::cargar(cur);
-    delete cur;
+    virtual void cargar() {
+        _depura("ListConfiguracionSubForm::cargar\n", 0);
+        cursor2 * cur= companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
+        SubForm3::cargar(cur);
+        delete cur;
+    };
 };
-};
 
 
-
-
-// CONFIGURACION
-#include "ui_listconfiguracionbase.h"
-
-class ListConfiguracionView : public QDialog, public Ui_ListConfiguracionBase
-{
-	Q_OBJECT
+class ListConfiguracionView : public QDialog, public Ui_ListConfiguracionBase {
+    Q_OBJECT
 
 public:
-	company *companyact;
+    company *companyact;
 
 public:
-	ListConfiguracionView( company *comp , QWidget *parent=0, const char *name="");
-	~ListConfiguracionView();
+    ListConfiguracionView(company *comp, QWidget *parent = 0, const char *name = "");
+    ~ListConfiguracionView();
+
 public slots:
-
-	virtual void on_mui_aceptar_clicked() {
-		mui_listado->guardar();
-		close();
-	};
+    virtual void on_mui_aceptar_clicked() {
+        mui_listado->guardar();
+        close();
+    };
 };
 
 #endif
+

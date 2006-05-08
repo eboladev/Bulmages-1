@@ -27,47 +27,46 @@
 
 class company;
 
-class TipoArticuloList : public QDialog, public Ui_tiposarticulodlg, dialogChanges
-{
-	Q_OBJECT
+
+class TipoArticuloList : public QDialog, public Ui_tiposarticulodlg, dialogChanges {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	/// Indica cual es el registro que se esta modificando. Sirve para saber los
-	/// cambios que hay que guardar cuando se ha modificado.
-	QString m_idtipo;
-	/// Indica si es modo consulta o modo edicion. (altera el comportamiento del
-	/// doble click sobre la lista)
-	bool m_modoConsulta;
+    company *companyact;
+    /// Indica cual es el registro que se esta modificando. Sirve para saber los
+    /// cambios que hay que guardar cuando se ha modificado.
+    QString m_idtipo;
+    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+    /// doble click sobre la lista)
+    bool m_modoConsulta;
 
 public:
-	TipoArticuloList(company *, QWidget *parent = 0, const char *name = 0);
-	~TipoArticuloList();
-	bool trataModificado();
-	void mostrarplantilla();
-	void setModoConsulta()
-	{
-		m_modoConsulta = TRUE;
-	};
-	void setModoEdicion()
-	{
-		m_modoConsulta = FALSE;
-	};
-	QString codtipo_articulo();
-	QString idtipo_articulo();
-	QString desctipo_articulo();
+    TipoArticuloList(company *, QWidget *parent = 0, const char *name = 0);
+    ~TipoArticuloList();
+    bool trataModificado();
+    void mostrarplantilla();
+    void setModoConsulta() {
+        m_modoConsulta = TRUE;
+    };
+    void setModoEdicion() {
+        m_modoConsulta = FALSE;
+    };
+    QString codtipo_articulo();
+    QString idtipo_articulo();
+    QString desctipo_articulo();
 
 public slots:
-	virtual void pintar();
-	virtual void on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int column );
-	virtual void close();
-	virtual void on_mui_guardar_clicked();
-	virtual void on_mui_crear_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void on_m_listTipos_currentItemChanged ( QTreeWidgetItem * current, QTreeWidgetItem * previous);
-	virtual void on_mui_aceptar_clicked() {
-		close();
-	};
+    virtual void pintar();
+    virtual void on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int column);
+    virtual void close();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_m_listTipos_currentItemChanged ( QTreeWidgetItem * current, QTreeWidgetItem * previous);
+    virtual void on_mui_aceptar_clicked() {
+        close();
+    };
 };
 
 #endif
+

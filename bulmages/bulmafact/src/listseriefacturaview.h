@@ -33,47 +33,46 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
-
-class company;
-
-class ListSerieFacturaSubForm : public SubForm2Bf {
-Q_OBJECT
-public:
-	ListSerieFacturaSubForm(QWidget *parent = 0, const char *name = 0);
-	~ListSerieFacturaSubForm() {};
-
-public slots:
-	virtual void cargar() {
-    _depura("ListSerieFacturaSubForm::cargar\n",0);
-    cursor2 * cur= companyact()->cargacursor("SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura");
-	SubForm3::cargar(cur);
-    delete cur;
-};
-};
-
-
-
-
-// SERIES DE FACTURA.
 #include "ui_listseriefacturabase.h"
 
 
-class ListSerieFacturaView : public QDialog, public Ui_ListSerieFacturaBase
-{
-	Q_OBJECT
+class company;
+
+
+class ListSerieFacturaSubForm : public SubForm2Bf {
+    Q_OBJECT
 
 public:
-	company *companyact;
+    ListSerieFacturaSubForm(QWidget *parent = 0, const char *name = 0);
+    ~ListSerieFacturaSubForm() {}
+    ;
 
-public:
-	ListSerieFacturaView(company *, QWidget *, const char *);
-	~ListSerieFacturaView();
 public slots:
+    virtual void cargar() {
+        _depura("ListSerieFacturaSubForm::cargar\n",0);
+        cursor2 * cur= companyact()->cargacursor("SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura");
+        SubForm3::cargar(cur);
+        delete cur;
+    };
+};
 
-	virtual void on_mui_aceptar_clicked() {
-		mui_listado->guardar();
-		close();
-	};
+
+class ListSerieFacturaView : public QDialog, public Ui_ListSerieFacturaBase {
+    Q_OBJECT
+
+public:
+    company *companyact;
+
+public:
+    ListSerieFacturaView(company *, QWidget *, const char *);
+    ~ListSerieFacturaView();
+
+public slots:
+    virtual void on_mui_aceptar_clicked() {
+        mui_listado->guardar();
+        close();
+    };
 };
 
 #endif
+

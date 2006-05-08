@@ -21,8 +21,6 @@
 #ifndef LISTLINFACTURAVIEW_H
 #define LISTLINFACTURAVIEW_H
 
-
-
 #include <QEvent>
 
 #include "company.h"
@@ -32,11 +30,13 @@
 
 class ListLinFacturaView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idfactura;
     ListLinFacturaView(QWidget *parent = 0);
     ~ListLinFacturaView() {}
     ;
+
 public slots:
     virtual void cargar(QString idfactura);
     Fixed calculabase();
@@ -45,45 +45,5 @@ public slots:
 
 };
 
-
-/*
-
-
-
-
-
-#include <Q3Table>
-#include <QEvent>
-
-#include "listlinfactura.h"
-#include "company.h"
-#include "linfactura.h"
-
-
-class ListLinFacturaView : public Q3Table , public ListLinFactura
-{
-	Q_OBJECT
-
-public:
-	ListLinFacturaView(QWidget *parent = 0, const char *name = 0);
-	~ListLinFacturaView();
-	virtual void pintaListLinFactura();
-	virtual void pintalinListLinFactura(int);
-	virtual bool eventFilter(QObject *obj, QEvent *ev);
-	LinFactura *lineaat(int);
-	LinFactura *lineaact();
-	void cargaconfig();
-	void guardaconfig();
-
-public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual QString searchArticle();
-	virtual void manageArticle(int row);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borraLinFacturaact();
-};
-
-*/
-
-
 #endif
+

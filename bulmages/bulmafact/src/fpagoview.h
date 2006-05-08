@@ -28,45 +28,42 @@
 
 class company;
 
-class FPagoView : public QDialog, private Ui_FPagoBase, dialogChanges
-{
-	Q_OBJECT
+class FPagoView : public QDialog, private Ui_FPagoBase, dialogChanges {
+    Q_OBJECT
 
 private:
-	company *m_companyact;
-	cursor2 *m_cursorFPagoView;
-	/// Indica cual es el objeto que se esta mostrando.
-	QString mdb_idforma_pago;
-	/// Indica si es modo consulta o modo edicion. (altera el comportamiento
-	/// del doble click sobre la lista)
-	bool m_modoConsulta;
-	QListWidgetItem *m_item;
+    company *m_companyact;
+    cursor2 *m_cursorFPagoView;
+    /// Indica cual es el objeto que se esta mostrando.
+    QString mdb_idforma_pago;
+    /// Indica si es modo consulta o modo edicion. (altera el comportamiento
+    /// del doble click sobre la lista)
+    bool m_modoConsulta;
+    QListWidgetItem *m_item;
 
 private:
-	/// Se encarga de hacer la carga de la consulta (query) inicial y de mostrar la
-	/// lista bien y presentar el elemento que se especifique.
-	void pintar();
+    /// Se encarga de hacer la carga de la consulta (query) inicial y de mostrar la
+    /// lista bien y presentar el elemento que se especifique.
+    void pintar();
 
 public:
-	FPagoView(company * emp, QWidget *parent = 0, const char *name = 0);
-	~FPagoView();
-	void setModoConsulta()
-	{
-		m_modoConsulta = TRUE;
-	};
-	void setModoEdicion()
-	{
-		m_modoConsulta = FALSE;
-	};
-	bool trataModificado(); 
-	virtual void closeEvent(QCloseEvent *);
+    FPagoView(company * emp, QWidget *parent = 0, const char *name = 0);
+    ~FPagoView();
+    void setModoConsulta() {
+        m_modoConsulta = TRUE;
+    };
+    void setModoEdicion() {
+        m_modoConsulta = FALSE;
+    };
+    bool trataModificado();
+    virtual void closeEvent(QCloseEvent *);
 
 private slots:
-	virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
-	virtual void on_mui_guardar_clicked();
-	virtual void on_mui_crear_clicked();
-	virtual void on_mui_borrar_clicked();
-
+    virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
 };
 
 #endif
+

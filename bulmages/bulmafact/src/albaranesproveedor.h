@@ -24,37 +24,36 @@
 #include <QLineEdit>
 #include <Q3Table>
 
-
 #include "company.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ui_albaranesproveedorlistbase.h"
 
 
 class AlbaranesProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     AlbaranesProveedorListSubform(QWidget *parent = 0, const char *name = 0);
     ~AlbaranesProveedorListSubform() {}
     ;
+
 public slots:
     virtual void cargar() {
-        _depura("AlbaranesProveedorListSubform::cargar\n",0);
+        _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM albaranp";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
     virtual int cargar(cursor2 *cur) {
-        _depura("AlbaranesProveedorListSubform::cargar\n",0);
+        _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         SubForm3::cargar(cur);
         return 0;
     };
 };
-
-
-#include "ui_albaranesproveedorlistbase.h"
 
 
 class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase {
@@ -62,8 +61,8 @@ class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase 
 
 private:
     company *m_companyact;
-    /// == 0 es modo edicion
-    /// == 1 es modo selector
+    /// == 0 es modo edicion.
+    /// == 1 es modo selector.
     int m_modo;
     QString mdb_idalbaranp;
 
@@ -112,12 +111,10 @@ public:
         m_articulo->setidarticulo(val);
     };
     QString generaFiltro();
-
-
     void editar(int);
 
 public slots:
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_editar_clicked();
@@ -138,8 +135,10 @@ public slots:
         else
             mui_list->hideConfig();
     };
+
 signals:
     void selected(QString);
 };
 
 #endif
+

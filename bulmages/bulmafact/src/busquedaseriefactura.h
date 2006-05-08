@@ -27,46 +27,41 @@
 #include "postgresiface2.h"
 
 
-class BusquedaSerieFactura : public QComboBox
-{
-	Q_OBJECT
+class BusquedaSerieFactura : public QComboBox {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	cursor2 *m_cursorcombo;
+    company *companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	BusquedaSerieFactura(QWidget *parent = 0, const char *name = 0);
-	~BusquedaSerieFactura();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setcodigoserie_factura(QString);
-	QString codigoserie_factura() {
-	int index= currentIndex();
-		if (index > 0)
-		{
-			return(m_cursorcombo->valor("codigoserie_factura", index - 1));
-		} else {
-			return "";
-		}	
-	};
-
+    BusquedaSerieFactura(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaSerieFactura();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setcodigoserie_factura(QString);
+    QString codigoserie_factura() {
+        int index= currentIndex();
+        if (index > 0) {
+            return(m_cursorcombo->valor("codigoserie_factura", index - 1));
+        } else {
+            return "";
+        }
+    };
 
 public slots:
-	void m_activated(int index)
-	{
-		if (index > 0)
-		{
-			emit(valueChanged(m_cursorcombo->valor("codigoserie_factura", index - 1)));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void m_activated(int index) {
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("codigoserie_factura", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

@@ -66,7 +66,6 @@ public:
         m_forma_pago->setidforma_pago(id);
     };
     void pintaprocesadafacturap(QString id) {
-        //fprintf(stderr,"pintaprocesadafacturap(%s)\n",id.ascii());
         if (id == "t" || id == "TRUE") {
             m_procesadafacturap->setChecked(TRUE);
         } else {
@@ -82,7 +81,6 @@ public slots:
         guardar();
     };
     virtual int cargar(QString id);
-
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         pintatotales(listalineas->calculabase(), listalineas->calculaiva());
@@ -94,24 +92,19 @@ public slots:
     virtual void on_subform2_editFinish(int, int) {
         s_pintaTotales();
     };
-
-
-	virtual void on_mui_borrar_clicked()
-	{
-
-
+    virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar factura de proveedor."),
-                                        tr("Desea eliminar la factura?"),tr("Si"),tr("No"),tr("Cancelar"),0,2);
+                                              tr("Desea eliminar la factura?"),
+                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
-		if (!borrar()) {
-            	dialogChanges_cargaInicial();
-		_depura("Factura de Proveedor borrado satisfactoriamente.",2);
-		close();
-		}// end if
+            if (!borrar()) {
+                dialogChanges_cargaInicial();
+                _depura("Factura de Proveedor borrado satisfactoriamente.", 2);
+                close();
+            }// end if
         }// end if
-};
-
-
+    };
 };
 
 #endif
+

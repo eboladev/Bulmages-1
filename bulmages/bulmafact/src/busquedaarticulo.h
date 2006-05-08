@@ -28,43 +28,40 @@
 
 class company;
 
-class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase
-{
-	Q_OBJECT
+class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	QString mdb_idarticulo;
-	QString mdb_nomarticulo;
-	QString mdb_codigocompletoarticulo;
+    company *companyact;
+    QString mdb_idarticulo;
+    QString mdb_nomarticulo;
+    QString mdb_codigocompletoarticulo;
 
 public:
-	BusquedaArticulo(QWidget *parent = 0, const char *name = 0);
-	~BusquedaArticulo();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual QString codigocompletoarticulo()
-	{
-		return m_codigocompletoarticulo->text();
-	};
-	virtual QString idarticulo()
-	{
-		return mdb_idarticulo;
-	};
-	virtual QString nomarticulo()
-	{
-		return m_nomarticulo->text();
-	};
-	virtual void setidarticulo(QString val);
-	virtual void setcodigocompletoarticulo(QString val);
+    BusquedaArticulo(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaArticulo();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual QString codigocompletoarticulo() {
+        return m_codigocompletoarticulo->text();
+    };
+    virtual QString idarticulo() {
+        return mdb_idarticulo;
+    };
+    virtual QString nomarticulo() {
+        return m_nomarticulo->text();
+    };
+    virtual void setidarticulo(QString val);
+    virtual void setcodigocompletoarticulo(QString val);
 
 public slots:
-	virtual void on_mui_buscar_clicked();
-	virtual void on_m_codigocompletoarticulo_textChanged(const QString &);
+    virtual void on_mui_buscar_clicked();
+    virtual void on_m_codigocompletoarticulo_textChanged(const QString &);
+
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

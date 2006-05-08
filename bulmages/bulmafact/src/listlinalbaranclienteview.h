@@ -21,7 +21,6 @@
 #ifndef LISTLINALBARANCLIENTEVIEW_H
 #define LISTLINALBARANCLIENTEVIEW_H
 
-
 #include <QEvent>
 
 #include "company.h"
@@ -31,21 +30,19 @@
 
 class ListLinAlbaranClienteView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idalbaran;
     ListLinAlbaranClienteView(QWidget *parent = 0);
     ~ListLinAlbaranClienteView() {}
     ;
+
 public slots:
     virtual void cargar(QString idalbaran);
     Fixed calculabase();
     Fixed calculaiva();
-	virtual void editFinished(int, int);
-
+    virtual void editFinished(int, int);
 };
 
-
-
-
-
 #endif
+

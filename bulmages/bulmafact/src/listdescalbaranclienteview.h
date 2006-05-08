@@ -21,61 +21,28 @@
 #ifndef LISTDESCALBARANCLIENTEVIEW_H
 #define LISTDESCALBARANCLIENTEVIEW_H
 
-
-
 #include "subform2bf.h"
 #include "company.h"
 
 
 class ListDescuentoAlbaranClienteView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idalbaran;
     ListDescuentoAlbaranClienteView(QWidget *parent = 0);
-    ~ListDescuentoAlbaranClienteView() {};
+    ~ListDescuentoAlbaranClienteView() {}
+    ;
+
 public slots:
     virtual void cargar(QString idalbaran) {
-        _depura("ListDescuentoAlbaranClienteView::cargar\n",0);
+        _depura("ListDescuentoAlbaranClienteView::cargar\n", 0);
         mdb_idalbaran = idalbaran;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dalbaran WHERE idalbaran="+mdb_idalbaran);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dalbaran WHERE idalbaran=" + mdb_idalbaran);
         SubForm3::cargar(cur);
         delete cur;
     };
-
 };
-
-
-
-
-/*
-
-
-
-#include <Q3Table>
-
-#include "listdescalbarancliente.h"
-#include "company.h"
-#include "descalbarancliente.h"
-
-
-class ListDescuentoAlbaranClienteView : public Q3Table , public ListDescuentoAlbaranCliente
-{
-	Q_OBJECT
-
-public:
-	ListDescuentoAlbaranClienteView(QWidget *parent = 0, const char *name = 0);
-	~ListDescuentoAlbaranClienteView();
-	virtual void pintaListDescuentoAlbaranCliente();
-	virtual void pintadescListDescuentoAlbaranCliente(int);
-	DescuentoAlbaranCliente *lineaat(int);
-	DescuentoAlbaranCliente *lineaact();
-
-public slots:
-	virtual void valueBudgetLineChanged(int row, int col);
-	virtual void contextMenu (int, int, const QPoint &);
-	virtual void borradescalbaranact();
-};
-
-*/
 
 #endif
+

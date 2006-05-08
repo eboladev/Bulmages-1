@@ -29,44 +29,40 @@
 
 class company;
 
-class BusquedaProveedor : public QWidget, public Ui_BusquedaProveedorBase
-{
-	Q_OBJECT
+class BusquedaProveedor : public QWidget, public Ui_BusquedaProveedorBase {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	QString mdb_idproveedor;
-	QString mdb_nomproveedor;
-	QString mdb_cifproveedor;
+    company *companyact;
+    QString mdb_idproveedor;
+    QString mdb_nomproveedor;
+    QString mdb_cifproveedor;
 
 public:
-	BusquedaProveedor(QWidget *parent = 0, const char *name = 0);
-	~BusquedaProveedor();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setidproveedor(QString val);
-	virtual void setcifproveedor(QString val);
-	virtual QString cifproveedor()
-	{
-		return m_cifproveedor->text();
-	};
-	virtual QString idproveedor()
-	{
-		return mdb_idproveedor;
-	};
-	virtual QString nomproveedor()
-	{
-		return nomproveedor();
-	};
+    BusquedaProveedor(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaProveedor();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setidproveedor(QString val);
+    virtual void setcifproveedor(QString val);
+    virtual QString cifproveedor() {
+        return m_cifproveedor->text();
+    };
+    virtual QString idproveedor() {
+        return mdb_idproveedor;
+    };
+    virtual QString nomproveedor() {
+        return nomproveedor();
+    };
 
 public slots:
-	virtual void on_mui_buscar_clicked();
-	virtual void on_m_cifproveedor_textChanged(const QString &);
+    virtual void on_mui_buscar_clicked();
+    virtual void on_m_cifproveedor_textChanged(const QString &);
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

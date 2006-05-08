@@ -27,45 +27,41 @@
 #include "postgresiface2.h"
 
 
-class BusquedaAlmacen : public QComboBox
-{
-	Q_OBJECT
+class BusquedaAlmacen : public QComboBox {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	cursor2 *m_cursorcombo;
+    company *companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	BusquedaAlmacen(QWidget *parent = 0, const char *name = 0);
-	~BusquedaAlmacen();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setidalmacen(QString idalmacen);
-	QString idalmacen() {
-	int index= currentIndex();
-		if (index > 0)
-		{
-			return(m_cursorcombo->valor("idalmacen", index - 1));
-		} else {
-			return "";
-		}	
-};
+    BusquedaAlmacen(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaAlmacen();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setidalmacen(QString idalmacen);
+    QString idalmacen() {
+        int index= currentIndex();
+        if (index > 0) {
+            return(m_cursorcombo->valor("idalmacen", index - 1));
+        } else {
+            return "";
+        }
+    };
 
 public slots:
-	void m_activated(int index)
-	{
-		if (index > 0)
-		{
-			emit(valueChanged(m_cursorcombo->valor("idalmacen", index - 1)));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void m_activated(int index) {
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("idalmacen", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

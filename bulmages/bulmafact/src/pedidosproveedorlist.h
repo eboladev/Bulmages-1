@@ -21,22 +21,25 @@
 #ifndef PEDIDOSPROVEEDORLIST_H
 #define PEDIDOSPROVEEDORLIST_H
 
-
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ui_pedidosproveedorlistbase.h"
+
 
 class PedidosProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     PedidosProveedorListSubform(QWidget *parent = 0, const char *name = 0);
     ~PedidosProveedorListSubform() {}
     ;
+
 public slots:
     virtual void cargar() {
-        _depura("PedidosProveedorListSubform::cargar\n",0);
+        _depura("PedidosProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM pedidoproveedor";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
@@ -49,9 +52,6 @@ public slots:
     };
 };
 
-
-
-#include "ui_pedidosproveedorlistbase.h"
 
 class PedidosProveedorList : public QWidget,  public Ui_PedidosProveedorListBase {
     Q_OBJECT
@@ -93,7 +93,6 @@ public:
     void showBusqueda() {
         m_busqueda->show();
     };
-
     QString idpedidoproveedor() {
         return mdb_idpedidoproveedor;
     };
@@ -106,14 +105,12 @@ public:
         }
     };
     QString generarFiltro();
-
     void editar(int);
 
 public slots:
     void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
         on_mui_editar_clicked();
     };
-
     virtual void on_mui_imprimir_clicked() {
         imprimir();
     };
@@ -128,14 +125,16 @@ public slots:
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
+
 signals:
     void selected(QString);
 };
 
 #endif
+

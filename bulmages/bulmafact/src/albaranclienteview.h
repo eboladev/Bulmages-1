@@ -107,24 +107,22 @@ public:
     virtual int guardar();
 
 public slots:
-
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar albaran de cliente."),
-                                        tr("Desea eliminar el albaran de cliente?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+                                        tr("Desea eliminar el albaran de cliente?"),
+                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
-
             if (!borrar()) {
                 dialogChanges_cargaInicial();
-                _depura("Albaran borrado satisfactoriamente",2);
+                _depura("Albaran borrado satisfactoriamente", 2);
                 close();
             }// end if
         }// end if
     };
-
 
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
@@ -150,10 +148,11 @@ public slots:
         calculaypintatotales();
     };
     virtual void on_mui_aceptar_clicked() {
-        if (!guardar() )
+        if (!guardar())
             close();
     };
     virtual void on_mui_cobrar_clicked();
 };
 
 #endif
+

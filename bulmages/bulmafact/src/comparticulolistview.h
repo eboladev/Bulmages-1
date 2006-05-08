@@ -31,25 +31,25 @@
 #include "subform2bf.h"
 
 
-
 class ListCompArticuloView : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
 public:
-	QString mdb_idarticulo;
-	ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
-	~ListCompArticuloView() {};
+    QString mdb_idarticulo;
+    ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
+    ~ListCompArticuloView() {}
+    ;
 
 public slots:
-	virtual void cargar(QString idarticulo) {
-    _depura("ListCompArticulo::cargaListCompArticulo\n",0);
-    mdb_idarticulo = idarticulo;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo="+mdb_idarticulo+" AND articulo.idarticulo=comparticulo.idcomponente");
-	SubForm3::cargar(cur);
-    delete cur;
-};
+    virtual void cargar(QString idarticulo) {
+        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
+        mdb_idarticulo = idarticulo;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
+        SubForm3::cargar(cur);
+        delete cur;
+    };
     virtual void editFinished(int row, int col);
     virtual void pressedAsterisk(int row, int col);
 };
 
-
 #endif
+

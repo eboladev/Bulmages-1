@@ -33,121 +33,94 @@
 #include "dbrecord.h"
 
 
-class FacturaProveedor : public DBRecord
-{
+class FacturaProveedor : public DBRecord {
 
 protected:
-	ListLinFacturaProveedorView *listalineas;
-	ListDescuentoFacturaProvView *listadescuentos;
-	company *companyact;
+    ListLinFacturaProveedorView *listalineas;
+    ListDescuentoFacturaProvView *listadescuentos;
+    company *companyact;
 
 public:
-	FacturaProveedor(company *);
-	virtual ~FacturaProveedor();
-	ListLinFacturaProveedorView* getlistalineas()
-	{
-		return listalineas;
-	};
-	ListDescuentoFacturaProvView* getlistadescuentos()
-	{
-		return listadescuentos;
-	};
-	virtual int borrar();
-	/// Establece cual es la lista subformulario del presupuesto. Normalmente para
-	/// apuntar listlinpresupuestoview.
-	void setListLinFacturaProveedor(ListLinFacturaProveedorView *a)
-	{
-		listalineas = a;
-		listalineas->setcompany(companyact);
-	};
-	void setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a)
-	{
-		listadescuentos = a;
-		listadescuentos->setcompany(companyact);
-	};
-	void setidproveedor(QString val)
-	{
-		setDBvalue("idproveedor", val);
-	};
-	void setreffacturap(QString val)
-	{
-		setDBvalue("reffacturap", val);
-	};
-	void setnumfacturap(QString val)
-	{
-		setDBvalue("numfacturap", val);
-	};
-	void setfechafacturap(QString val)
-	{
-		setDBvalue("ffacturap", val);
-	};
-	void setdescfacturap(QString val)
-	{
-		setDBvalue("descfacturap", val);
-	};
-	void setcomentfacturap(QString val)
-	{
-		setDBvalue("comentfacturap", val);
-	};
-	void setidfacturap(QString val)
-	{
-		setDBvalue("idfacturap", val);
-		listalineas->setColumnValue("idfacturap",val);
-		listadescuentos->setColumnValue( "idfacturap",val);
-	};
-	void setidforma_pago(QString val)
-	{
-		setDBvalue("idforma_pago", val);
-	};
-	void setprocesadafacturap(QString val)
-	{
-		setDBvalue("procesadafacturap", val);
-	};
-	virtual void imprimirFacturaProveedor();
-	virtual int cargar(QString);
-	virtual void pintar();
-	virtual int guardar();
-
-
-	virtual void pintaidproveedor(QString)
-	{
-	};
-	virtual void pintareffacturap(QString)
-	{
-	};
-	virtual void pintanumfacturap(QString)
-	{
-	};
-	virtual void pintafechafacturap(QString)
-	{
-	};
-	virtual void pintadescfacturap(QString)
-	{
-	};
-	virtual void pintacomentfacturap(QString)
-	{
-	};
-	virtual void pintaidforma_pago(QString)
-	{
-	};
-	virtual void pintaprocesadafacturap(QString)
-	{
-	};
-	virtual void pintatotales(Fixed, Fixed)
-	{
-	};
-	virtual void cargaFacturaProveedorDescuentas(QString)
-	{
-	};
-	virtual void calculateImports()
-	{
-	};
-	virtual void inicialize()
-	{
-	};
-	virtual QString calculateValues()
-	{
-		return "";
-	};
+    FacturaProveedor(company *);
+    virtual ~FacturaProveedor();
+    ListLinFacturaProveedorView* getlistalineas() {
+        return listalineas;
+    };
+    ListDescuentoFacturaProvView* getlistadescuentos() {
+        return listadescuentos;
+    };
+    virtual int borrar();
+    /// Establece cual es la lista subformulario del presupuesto. Normalmente para
+    /// apuntar listlinpresupuestoview.
+    void setListLinFacturaProveedor(ListLinFacturaProveedorView *a) {
+        listalineas = a;
+        listalineas->setcompany(companyact);
+    };
+    void setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a) {
+        listadescuentos = a;
+        listadescuentos->setcompany(companyact);
+    };
+    void setidproveedor(QString val) {
+        setDBvalue("idproveedor", val);
+    };
+    void setreffacturap(QString val) {
+        setDBvalue("reffacturap", val);
+    };
+    void setnumfacturap(QString val) {
+        setDBvalue("numfacturap", val);
+    };
+    void setfechafacturap(QString val) {
+        setDBvalue("ffacturap", val);
+    };
+    void setdescfacturap(QString val) {
+        setDBvalue("descfacturap", val);
+    };
+    void setcomentfacturap(QString val) {
+        setDBvalue("comentfacturap", val);
+    };
+    void setidfacturap(QString val) {
+        setDBvalue("idfacturap", val);
+        listalineas->setColumnValue("idfacturap",val);
+        listadescuentos->setColumnValue( "idfacturap",val);
+    };
+    void setidforma_pago(QString val) {
+        setDBvalue("idforma_pago", val);
+    };
+    void setprocesadafacturap(QString val) {
+        setDBvalue("procesadafacturap", val);
+    };
+    virtual void imprimirFacturaProveedor();
+    virtual int cargar(QString);
+    virtual void pintar();
+    virtual int guardar();
+    virtual void pintaidproveedor(QString) {}
+    ;
+    virtual void pintareffacturap(QString) {}
+    ;
+    virtual void pintanumfacturap(QString) {}
+    ;
+    virtual void pintafechafacturap(QString) {}
+    ;
+    virtual void pintadescfacturap(QString) {}
+    ;
+    virtual void pintacomentfacturap(QString) {}
+    ;
+    virtual void pintaidforma_pago(QString) {}
+    ;
+    virtual void pintaprocesadafacturap(QString) {}
+    ;
+    virtual void pintatotales(Fixed, Fixed) {}
+    ;
+    virtual void cargaFacturaProveedorDescuentas(QString) {}
+    ;
+    virtual void calculateImports() {}
+    ;
+    virtual void inicialize() {}
+    ;
+    virtual QString calculateValues() {
+        return "";
+    };
 };
+
 #endif
+

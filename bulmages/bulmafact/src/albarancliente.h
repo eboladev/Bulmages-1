@@ -31,220 +31,168 @@
 #include "fixed.h"
 #include "dbrecord.h"
 
-class AlbaranCliente : public DBRecord
-{
+class AlbaranCliente : public DBRecord {
 protected:
-	ListLinAlbaranClienteView *listalineas;
-	ListDescuentoAlbaranClienteView *listadescuentos;
-	company *companyact;
+    ListLinAlbaranClienteView *listalineas;
+    ListDescuentoAlbaranClienteView *listadescuentos;
+    company *companyact;
 
 public:
-	AlbaranCliente(company *);
-	virtual ~AlbaranCliente();
+    AlbaranCliente(company *);
+    virtual ~AlbaranCliente();
 
-	/// Funciones de retorno de valores
-	QString idalbaran()
-	{
-		return DBvalue("idalbaran");
-	};
-	QString numalbaran()
-	{
-		return DBvalue("numalbaran");
-	};
-	QString fechaalbaran()
-	{
-		return DBvalue("fechaalbaran");
-	};
-	QString comentalbaran()
-	{
-		return DBvalue("comentalbaran");
-	};
-	QString comentprivalbaran()
-	{
-		return DBvalue("comentprivalbaran");
-	};
-	QString idcliente()
-	{
-		return DBvalue("idcliente");
-	};
-	QString idforma_pago()
-	{
-		return DBvalue("idforma_pago");
-	};
-	QString idalmacen()
-	{
-		return DBvalue("idalmacen");
-	};
-	QString refalbaran()
-	{
-		return DBvalue("refalbaran");
-	};
-	QString descalbaran()
-	{
-		return DBvalue("descalbaran");
-	};
-	QString numfactura()
-	{
-		return DBvalue("numfactura");
-	};
-	QString idtrabajador()
-	{
-		return DBvalue("idtrabajador");
-	};
-	QString procesadoalbaran()
-	{
-		return DBvalue("procesadoalbaran");
-	};
-	QString contactalbaran()
-	{
-		return DBvalue("contactalbaran");
-	};
-	QString telalbaran()
-	{
-		return DBvalue("telalbaran");
-	};
-	ListLinAlbaranClienteView* getlistalineas()
-	{
-		return listalineas;
-	};
-	ListDescuentoAlbaranClienteView* getlistadescuentos()
-	{
-		return listadescuentos;
-	};
-	virtual void pintar();
-	virtual int guardar();
-	virtual int borrar();
-	virtual int cargar(QString);
-	virtual void calculaypintatotales();
-	void imprimirAlbaranCliente();
-	void vaciaAlbaranCliente();
+    /// Funciones de retorno de valores
+    QString idalbaran() {
+        return DBvalue("idalbaran");
+    };
+    QString numalbaran() {
+        return DBvalue("numalbaran");
+    };
+    QString fechaalbaran() {
+        return DBvalue("fechaalbaran");
+    };
+    QString comentalbaran() {
+        return DBvalue("comentalbaran");
+    };
+    QString comentprivalbaran() {
+        return DBvalue("comentprivalbaran");
+    };
+    QString idcliente() {
+        return DBvalue("idcliente");
+    };
+    QString idforma_pago() {
+        return DBvalue("idforma_pago");
+    };
+    QString idalmacen() {
+        return DBvalue("idalmacen");
+    };
+    QString refalbaran() {
+        return DBvalue("refalbaran");
+    };
+    QString descalbaran() {
+        return DBvalue("descalbaran");
+    };
+    QString numfactura() {
+        return DBvalue("numfactura");
+    };
+    QString idtrabajador() {
+        return DBvalue("idtrabajador");
+    };
+    QString procesadoalbaran() {
+        return DBvalue("procesadoalbaran");
+    };
+    QString contactalbaran() {
+        return DBvalue("contactalbaran");
+    };
+    QString telalbaran() {
+        return DBvalue("telalbaran");
+    };
+    ListLinAlbaranClienteView* getlistalineas() {
+        return listalineas;
+    };
+    ListDescuentoAlbaranClienteView* getlistadescuentos() {
+        return listadescuentos;
+    };
+    virtual void pintar();
+    virtual int guardar();
+    virtual int borrar();
+    virtual int cargar(QString);
+    virtual void calculaypintatotales();
+    void imprimirAlbaranCliente();
+    void vaciaAlbaranCliente();
 
-	/// Establece cual es la lista subformulario del presupuesto.
-	/// Normalmente para apuntar listlinpresupuestoview.
-	void setListLinAlbaranCliente(ListLinAlbaranClienteView *a)
-	{
-		listalineas = a;
-		listalineas->setcompany(companyact);
-	};
-	void setListDescuentoAlbaranCliente(ListDescuentoAlbaranClienteView *a)
-	{
-		listadescuentos = a;
-		listadescuentos->setcompany(companyact);
-	};
-	void setidalbaran(QString val)
-	{
-		setDBvalue("idalbaran",val);
-		listalineas->setColumnValue( "idalbaran",val);
-		listadescuentos->setColumnValue( "idalbaran",val);
-	};
-	void setNumAlbaran(QString val)
-	{
-		setDBvalue("numalbaran",val);
-	};
-	void setfechaalbaran(QString val)
-	{
-		setDBvalue("fechaalbaran",val);
-	};
-	void setcomentalbaran(QString val)
-	{
-		setDBvalue("comentalbaran",val);
-	};
-	void setcomentprivalbaran(QString val)
-	{
-		setDBvalue("comentprivalbaran",val);
-	};
-	void setidcliente(QString val)
-	{
-		setDBvalue("idcliente",val);
-	};
-	void setidforma_pago(QString val)
-	{
-		setDBvalue("idforma_pago",val);
-	};
-	void setidtrabajador(QString val)
-	{
-		setDBvalue("idtrabajador",val);
-	};
-	void setidalmacen(QString val)
-	{
-		setDBvalue("idalmacen",val);
-	};
-	void setNumFactura(QString val)
-	{
-		setDBvalue("numfactura",val);
-	};
-	void setrefalbaran(QString val)
-	{
-		setDBvalue("refalbaran",val);
-	};
-	void setdescalbaran(QString val)
-	{
-		setDBvalue("descalbaran",val);
-	};
-	void setcontactalbaran(QString val)
-	{
-		setDBvalue("contactalbaran",val);
-	};
-	void settelalbaran(QString val)
-	{
-		setDBvalue("telalbaran",val);
-	};
-	void setprocesadoalbaran(QString val)
-	{
-		setDBvalue("procesadoalbaran",val);
-	};
-
-	virtual void pintaIdAlbaran(QString)
-	{
-	};
-	virtual void pintaNumAlbaran(QString)
-	{
-	};
-	virtual void pintafechaalbaran(QString)
-	{
-	};
-	virtual void pintaComentAlbaran(QString)
-	{
-	};
-	virtual void pintaComentPrivAlbaran(QString)
-	{
-	};
-	virtual void pintaidcliente(QString)
-	{
-	};
-	virtual void pintaidforma_pago(QString)
-	{
-	};
-	virtual void pintaIdFactura(QString)
-	{
-	};
-	virtual void pintaidalmacen(QString)
-	{
-	};
-	virtual void pintaNumFactura(QString)
-	{
-	};
-	virtual void pintadescalbaran(QString)
-	{
-	};
-	virtual void pintarefalbaran(QString)
-	{
-	};
-	virtual void pintaidtrabajador(QString)
-	{
-	};
-	virtual void pintacontactalbaran(QString)
-	{
-	};
-	virtual void pintatelalbaran(QString)
-	{
-	};
-	virtual void pintaprocesadoalbaran(QString)
-	{
-	};
-	virtual void pintatotales(Fixed, Fixed, Fixed, Fixed)
-	{
-	};
+    /// Establece cual es la lista subformulario del presupuesto.
+    /// Normalmente para apuntar listlinpresupuestoview.
+    void setListLinAlbaranCliente(ListLinAlbaranClienteView *a) {
+        listalineas = a;
+        listalineas->setcompany(companyact);
+    };
+    void setListDescuentoAlbaranCliente(ListDescuentoAlbaranClienteView *a) {
+        listadescuentos = a;
+        listadescuentos->setcompany(companyact);
+    };
+    void setidalbaran(QString val) {
+        setDBvalue("idalbaran", val);
+        listalineas->setColumnValue("idalbaran", val);
+        listadescuentos->setColumnValue("idalbaran", val);
+    };
+    void setNumAlbaran(QString val) {
+        setDBvalue("numalbaran", val);
+    };
+    void setfechaalbaran(QString val) {
+        setDBvalue("fechaalbaran", val);
+    };
+    void setcomentalbaran(QString val) {
+        setDBvalue("comentalbaran", val);
+    };
+    void setcomentprivalbaran(QString val) {
+        setDBvalue("comentprivalbaran", val);
+    };
+    void setidcliente(QString val) {
+        setDBvalue("idcliente", val);
+    };
+    void setidforma_pago(QString val) {
+        setDBvalue("idforma_pago", val);
+    };
+    void setidtrabajador(QString val) {
+        setDBvalue("idtrabajador", val);
+    };
+    void setidalmacen(QString val) {
+        setDBvalue("idalmacen", val);
+    };
+    void setNumFactura(QString val) {
+        setDBvalue("numfactura", val);
+    };
+    void setrefalbaran(QString val) {
+        setDBvalue("refalbaran", val);
+    };
+    void setdescalbaran(QString val) {
+        setDBvalue("descalbaran", val);
+    };
+    void setcontactalbaran(QString val) {
+        setDBvalue("contactalbaran", val);
+    };
+    void settelalbaran(QString val) {
+        setDBvalue("telalbaran", val);
+    };
+    void setprocesadoalbaran(QString val) {
+        setDBvalue("procesadoalbaran", val);
+    };
+    virtual void pintaIdAlbaran(QString) {}
+    ;
+    virtual void pintaNumAlbaran(QString) {}
+    ;
+    virtual void pintafechaalbaran(QString) {}
+    ;
+    virtual void pintaComentAlbaran(QString) {}
+    ;
+    virtual void pintaComentPrivAlbaran(QString) {}
+    ;
+    virtual void pintaidcliente(QString) {}
+    ;
+    virtual void pintaidforma_pago(QString) {}
+    ;
+    virtual void pintaIdFactura(QString) {}
+    ;
+    virtual void pintaidalmacen(QString) {}
+    ;
+    virtual void pintaNumFactura(QString) {}
+    ;
+    virtual void pintadescalbaran(QString) {}
+    ;
+    virtual void pintarefalbaran(QString) {}
+    ;
+    virtual void pintaidtrabajador(QString) {}
+    ;
+    virtual void pintacontactalbaran(QString) {}
+    ;
+    virtual void pintatelalbaran(QString) {}
+    ;
+    virtual void pintaprocesadoalbaran(QString) {}
+    ;
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
+    ;
 };
 
 #endif
+

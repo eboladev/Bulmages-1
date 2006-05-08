@@ -21,8 +21,6 @@
 #ifndef BUDGET_H
 #define BUDGET_H
 
-// PRESUPUESTOS.
-
 #include <QLineEdit>
 #include <Q3TextEdit>
 #include <QLabel>
@@ -43,6 +41,7 @@
 
 
 class company;
+
 
 class PresupuestoView : public QWidget, public Ui_BudgetBase , public presupuesto, public dialogChanges {
     Q_OBJECT
@@ -127,9 +126,10 @@ public slots:
         calculaypintatotales();
     };
     virtual void on_mui_aceptar_clicked() {
-        if (!guardar() )
+        if (!guardar())
             close();
     };
 };
 
 #endif
+

@@ -21,23 +21,24 @@
 #ifndef LISTDESCFACTURAPROVVIEW_H
 #define LISTDESCFACTURAPROVVIEW_H
 
-
 #include "subform2bf.h"
 #include "company.h"
 
 
 class ListDescuentoFacturaProvView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idfacturap;
     ListDescuentoFacturaProvView(QWidget *parent = 0);
-    ~ListDescuentoFacturaProvView() {};
+    ~ListDescuentoFacturaProvView() {}
+    ;
 
 public slots:
     virtual void cargar(QString idfacturap) {
-        _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
         mdb_idfacturap = idfacturap;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfacturap WHERE idfacturap="+mdb_idfacturap);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfacturap WHERE idfacturap=" + mdb_idfacturap);
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -45,3 +46,4 @@ public slots:
 };
 
 #endif
+

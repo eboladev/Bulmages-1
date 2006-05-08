@@ -23,9 +23,10 @@
 
 #include <Q3Frame>
 
-
 #include "company.h"
 #include "subform2bf.h"
+#include "ui_inventariosbase.h"
+
 
 class InventariosSubForm : public SubForm2Bf {
     Q_OBJECT
@@ -35,7 +36,7 @@ public:
     ;
 public slots:
     virtual void cargar() {
-        _depura("InventariosSubform::cargar\n",0);
+        _depura("InventariosSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM inventario";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
@@ -44,13 +45,12 @@ public slots:
 };
 
 
-#include "ui_inventariosbase.h"
-
-
 class InventariosView : public QWidget, public Ui_InventariosBase {
     Q_OBJECT
+
 private:
     company *companyact;
+
 public:
     InventariosView(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
     InventariosView(company *,QWidget *parent = 0, const char *name = 0);
@@ -78,3 +78,4 @@ public slots:
 };
 
 #endif
+

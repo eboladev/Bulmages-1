@@ -29,63 +29,53 @@
 
 #include "listcontrolstockview.h"
 #include "company.h"
-//#include "controlstock.h"
 #include "funcaux.h"
 #include "dbrecord.h"
 
 
-class Inventario : public DBRecord
-{
+class Inventario : public DBRecord {
 
 protected:
-	ListControlStockView *listalineas;
-	company *companyact;
+    ListControlStockView *listalineas;
+    company *companyact;
 
 public:
-	Inventario(company *);
-	virtual ~Inventario();
-
-	/// Establece cual es la lista subformulario del presupuesto. Normalmente
-	/// para apuntar listlinpresupuestoview.
-	void setListControlStock(ListControlStockView *a)
-	{
-		_depura("Inventario::setListControlStock",0);
-		listalineas = a;
-		listalineas->setcompany(companyact);
-	};
-	ListControlStockView* getlistalineas()
-	{
-		return listalineas;
-	};
-	virtual int cargar(QString);
-	void pintaInventario();
-	virtual int guardar();
-	virtual int borrar();
-	void imprimirInventario();
-	virtual void pintaidinventario(QString)
-	{
-	};
-	virtual void pintafechainventario(QString)
-	{
-	};
-	virtual void pintanominventario(QString)
-	{
-	};
-	virtual void pregenerar();
-	void setidinventario(QString val)
-	{
-		setDBvalue("idinventario", val);
-		listalineas->setColumnValue( "idinventario",val);
-	};
-	void setfechainventario(QString val)
-	{
-		setDBvalue("fechainventario", val);
-	};
-	void setnominventario(QString val)
-	{
-		setDBvalue("nominventario", val);
-	};
-	void vaciaInventario();
+    Inventario(company *);
+    virtual ~Inventario();
+    /// Establece cual es la lista subformulario del presupuesto. Normalmente
+    /// para apuntar listlinpresupuestoview.
+    void setListControlStock(ListControlStockView *a) {
+        _depura("Inventario::setListControlStock", 0);
+        listalineas = a;
+        listalineas->setcompany(companyact);
+    };
+    ListControlStockView* getlistalineas() {
+        return listalineas;
+    };
+    virtual int cargar(QString);
+    void pintaInventario();
+    virtual int guardar();
+    virtual int borrar();
+    void imprimirInventario();
+    virtual void pintaidinventario(QString) {}
+    ;
+    virtual void pintafechainventario(QString) {}
+    ;
+    virtual void pintanominventario(QString) {}
+    ;
+    virtual void pregenerar();
+    void setidinventario(QString val) {
+        setDBvalue("idinventario", val);
+        listalineas->setColumnValue( "idinventario", val);
+    };
+    void setfechainventario(QString val) {
+        setDBvalue("fechainventario", val);
+    };
+    void setnominventario(QString val) {
+        setDBvalue("nominventario", val);
+    };
+    void vaciaInventario();
 };
 
 #endif
+

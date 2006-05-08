@@ -40,134 +40,104 @@
 class company;
 
 class AlbaranProveedorView : public QWidget, public Ui_AlbaranProveedorBase, public AlbaranProveedor,
-	public dialogChanges
-{
-	Q_OBJECT
+    public dialogChanges {
+    Q_OBJECT
 
 public:
-	AlbaranProveedorView(company *, QWidget *, const char *);
-	~AlbaranProveedorView();
-	void inicialize();
-	void pintaidalbaranp(QString)
-	{
-	};
-	void pintanumalbaranp(QString val)
-	{
-		m_numalbaranp->setText(val);
-	};
-	void pintafechaalbaranp(QString val)
-	{
-		m_fechaalbaranp->setText(val);
-	};
-	void pintaIdUsuario(QString);
-	void pintaComentAlbaran(QString val)
-	{
-		m_comentalbaranp->setText(val);
-	};
-	void pintaidproveedor(QString val)
-	{
-		m_proveedor->setidproveedor(val);
-	};
-	void pintaidforma_pago(QString val)
-	{
-		m_forma_pago->setidforma_pago(val);
-	};
+    AlbaranProveedorView(company *, QWidget *, const char *);
+    ~AlbaranProveedorView();
+    void inicialize();
+    void pintaidalbaranp(QString) {}
+    ;
+    void pintanumalbaranp(QString val) {
+        m_numalbaranp->setText(val);
+    };
+    void pintafechaalbaranp(QString val) {
+        m_fechaalbaranp->setText(val);
+    };
+    void pintaIdUsuario(QString);
+    void pintaComentAlbaran(QString val) {
+        m_comentalbaranp->setText(val);
+    };
+    void pintaidproveedor(QString val) {
+        m_proveedor->setidproveedor(val);
+    };
+    void pintaidforma_pago(QString val) {
+        m_forma_pago->setidforma_pago(val);
+    };
 
-	void pintaidalmacen(QString id)
-	{
-		m_almacen->setidalmacen(id);
-	};
-	void pintadescalbaranp(QString val)
-	{
-		m_descalbaranp->setText(val);
-	};
-	void pintarefalbaranp(QString val)
-	{
-		m_refalbaranp->setText(val);
-	};
+    void pintaidalmacen(QString id) {
+        m_almacen->setidalmacen(id);
+    };
+    void pintadescalbaranp(QString val) {
+        m_descalbaranp->setText(val);
+    };
+    void pintarefalbaranp(QString val) {
+        m_refalbaranp->setText(val);
+    };
 
-	void pintatotales(Fixed, Fixed);	
-	void generarFactura();
-	void closeEvent(QCloseEvent *);
-	virtual int guardar();
+    void pintatotales(Fixed, Fixed);
+    void generarFactura();
+    void closeEvent(QCloseEvent *);
+    virtual int guardar();
 
 public slots:
-	virtual void s_comentalbaranptextChanged()
-	{
-		setcomentalbaranp(m_comentalbaranp->text());
-	};
-	virtual void s_almacenvalueChanged(QString val)
-	{
-		setidalmacen(val);
-	};
-	virtual void s_numalbaranptextChanged(const QString &val)
-	{
-		setnumalbaranp(val);
-	};
-	virtual void s_proveedorvalueChanged(QString val)
-	{
-		setidproveedor(val);
-	};
-	virtual void s_fechaalbaranpvalueChanged(QString val)
-	{
-		_depura("s_fechaalbaranpvalueChanged()",0);
-		setfechaalbaranp(val);
-	};
-	virtual void s_forma_pagovalueChanged(QString val)
-	{
-		setidforma_pago(val);
-	};
-	virtual void s_refalbaranptextChanged(const QString &val)
-	{
-		setrefalbaranp(val);
-	};
-	virtual void s_descalbaranptextChanged(const QString &val)
-	{
-		setdescalbaranp(val);
-	};
-	virtual void m_guardar_clicked();
-	virtual int cargar(QString id);
-	virtual void on_mui_borrar_clicked()
-	{
-
-
+    virtual void s_comentalbaranptextChanged() {
+        setcomentalbaranp(m_comentalbaranp->text());
+    };
+    virtual void s_almacenvalueChanged(QString val) {
+        setidalmacen(val);
+    };
+    virtual void s_numalbaranptextChanged(const QString &val) {
+        setnumalbaranp(val);
+    };
+    virtual void s_proveedorvalueChanged(QString val) {
+        setidproveedor(val);
+    };
+    virtual void s_fechaalbaranpvalueChanged(QString val) {
+        _depura("s_fechaalbaranpvalueChanged()", 0);
+        setfechaalbaranp(val);
+    };
+    virtual void s_forma_pagovalueChanged(QString val) {
+        setidforma_pago(val);
+    };
+    virtual void s_refalbaranptextChanged(const QString &val) {
+        setrefalbaranp(val);
+    };
+    virtual void s_descalbaranptextChanged(const QString &val) {
+        setdescalbaranp(val);
+    };
+    virtual void m_guardar_clicked();
+    virtual int cargar(QString id);
+    virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar albaran del proveedor."),
-                                        tr("Desea eliminar el albaran del proveedor?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+                                        tr("Desea eliminar el albaran del proveedor?"),
+                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
-
-		if (!borrar()) {
-            	dialogChanges_cargaInicial();
-		_depura("Albaran del proveedor borrado satisfactoriamente",2);
-		close();
-		}// end if
+            if (!borrar()) {
+                dialogChanges_cargaInicial();
+                _depura("Albaran del proveedor borrado satisfactoriamente", 2);
+                close();
+            }// end if
         }// end if
+    };
+    virtual void s_printAlbaranProveedor() {}
+    ;
 
-
-	};
-	virtual void s_printAlbaranProveedor()
-	{
-	};
-
-	/// Este slot se activa cuando hay cambios en los subformularios.
-	virtual void s_pintaTotales()
-	{
-		pintatotales(listalineas->calculabase(), listalineas->calculaiva());
-	}
-	virtual void s_verpedidoproveedor();
-	virtual void s_imprimirAlbaranProveedor()
-	{
-		imprimirAlbaranProveedor();
-	};
-	virtual void s_generarFactura()
-	{
-		generarFactura();
-	};
-
-
-	virtual void calculaypintatotales() {
-		s_pintaTotales();
-	};
-
+    /// Este slot se activa cuando hay cambios en los subformularios.
+    virtual void s_pintaTotales() {
+        pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    }
+    virtual void s_verpedidoproveedor();
+    virtual void s_imprimirAlbaranProveedor() {
+        imprimirAlbaranProveedor();
+    };
+    virtual void s_generarFactura() {
+        generarFactura();
+    };
+    virtual void calculaypintatotales() {
+        s_pintaTotales();
+    };
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
     };
@@ -175,10 +145,10 @@ public slots:
         calculaypintatotales();
     };
     virtual void on_mui_aceptar_clicked() {
-        if (!guardar() )
+        if (!guardar())
             close();
     };
-
 };
 
 #endif
+

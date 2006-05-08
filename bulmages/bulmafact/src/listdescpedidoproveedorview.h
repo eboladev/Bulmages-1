@@ -27,22 +27,23 @@
 
 class ListDescuentoPedidoProveedorView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idpedidoproveedor;
     ListDescuentoPedidoProveedorView(QWidget *parent = 0);
-    ~ListDescuentoPedidoProveedorView() {};
+    ~ListDescuentoPedidoProveedorView() {}
+    ;
 
 public slots:
     virtual void cargar(QString idpedidoproveedor) {
-        _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
         mdb_idpedidoproveedor = idpedidoproveedor;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor="+mdb_idpedidoproveedor);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidoproveedor WHERE idpedidoproveedor=" + mdb_idpedidoproveedor);
         SubForm3::cargar(cur);
         delete cur;
     };
 
 };
 
-
-
 #endif
+

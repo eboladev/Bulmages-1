@@ -31,62 +31,48 @@
 class Cobro : public DBRecord {
 
 protected:
-	company *companyact;
+    company *companyact;
 
 public:
-	Cobro(company *);
-	virtual ~Cobro();
-	virtual void pintar();
-	void setidcobro(QString val)
-	{
-		setDBvalue("idcobro",val);
-	};
-	void setidcliente(QString val)
-	{
-		setDBvalue("idcliente",val);
-	};
-	void setfechacobro(QString val)
-	{
-		setDBvalue("fechacobro",val);
-	};
-	void setcantcobro(QString val)
-	{
-		setDBvalue("cantcobro",val);
-	};
-	void setrefcobro(QString val)
-	{
-		setDBvalue("refcobro",val);
-	};
-	void setprevisioncobro(QString val)
-	{
-		setDBvalue("previsioncobro",val);
-	};
-	void setcomentcobro(QString val)
-	{
-		setDBvalue("comentcobro",val);
-	};
-
-	virtual void pintaidcobro(QString)
-	{
-	};
-	virtual void pintaidcliente(QString)
-	{
-	};
-	virtual void pintafechacobro(QString)
-	{
-	};
-	virtual void pintacantcobro(QString)
-	{
-	};
-	virtual void pintarefcobro(QString)
-	{
-	};
-	virtual void pintaprevisioncobro(QString)
-	{
-	};
-	virtual void pintacomentcobro(QString)
-	{
-	};
+    Cobro(company *);
+    virtual ~Cobro();
+    virtual void pintar();
+    void setidcobro(QString val) {
+        setDBvalue("idcobro", val);
+    };
+    void setidcliente(QString val) {
+        setDBvalue("idcliente", val);
+    };
+    void setfechacobro(QString val) {
+        setDBvalue("fechacobro", val);
+    };
+    void setcantcobro(QString val) {
+        setDBvalue("cantcobro", val);
+    };
+    void setrefcobro(QString val) {
+        setDBvalue("refcobro", val);
+    };
+    void setprevisioncobro(QString val) {
+        setDBvalue("previsioncobro", val);
+    };
+    void setcomentcobro(QString val) {
+        setDBvalue("comentcobro", val);
+    };
+    virtual void pintaidcobro(QString) {}
+    ;
+    virtual void pintaidcliente(QString) {}
+    ;
+    virtual void pintafechacobro(QString) {}
+    ;
+    virtual void pintacantcobro(QString) {}
+    ;
+    virtual void pintarefcobro(QString) {}
+    ;
+    virtual void pintaprevisioncobro(QString) {}
+    ;
+    virtual void pintacomentcobro(QString) {}
+    ;
 };
 
 #endif
+

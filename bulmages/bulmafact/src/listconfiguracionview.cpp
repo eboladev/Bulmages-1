@@ -29,7 +29,6 @@
 #include <QMessageBox>
 #include <fstream>
 
-
 #include "listconfiguracionview.h"
 #include "company.h"
 #include "configuracion.h"
@@ -38,33 +37,28 @@
 using namespace std;
 #include "funcaux.h"
 
-// DEBUGMODE => 0 = Disabled; 1 = Enabled;
-#define DEBUGMODE 1
 
-
-ListConfiguracionView::ListConfiguracionView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) {
-	_depura("ListConfiguracionView::ListConfiguracionView", DEBUGMODE);
-	setupUi(this);
-	companyact = comp;
-	mui_listado->setcompany(comp);
-	mui_listado->cargar();
-	_depura("END ListConfiguracionView::ListConfiguracionView", DEBUGMODE);
+ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) {
+    _depura("ListConfiguracionView::ListConfiguracionView", 1);
+    setupUi(this);
+    companyact = comp;
+    mui_listado->setcompany(comp);
+    mui_listado->cargar();
+    _depura("END ListConfiguracionView::ListConfiguracionView", 1);
 }
 
 
-ListConfiguracionView::~ListConfiguracionView() {
-}
-
-
+ListConfiguracionView::~ListConfiguracionView() {}
 
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("configuracion");
     setDBCampoId("nombre");
-    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "nombre");
-    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, "nombre");
-    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "valor");
-	setinsercion(FALSE);
-	setDelete(FALSE);
+    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("Nombre origen"));
+    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
+    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
+    setinsercion(FALSE);
+    setDelete(FALSE);
 }
+

@@ -25,124 +25,111 @@
 
 #include "pgimportfiles.h"
 #include "subform2bf.h"
+#include "ui_providerslistbase.h"
 
 
 class company;
 
+
 class ProveedorListSubform : public SubForm2Bf {
-Q_OBJECT
+    Q_OBJECT
+
 public:
-	ProveedorListSubform(QWidget *parent = 0, const char *name = 0);
-	~ProveedorListSubform() {};
+    ProveedorListSubform(QWidget *parent = 0, const char *name = 0);
+    ~ProveedorListSubform() {}
+    ;
+
 public slots:
-virtual void cargar() {
-    _depura("ProveedorListSubform::cargar\n",0);
-    QString SQLQuery = "SELECT * FROM proveedor";
-    cursor2 * cur= companyact()->cargacursor(SQLQuery);
-	SubForm3::cargar(cur);
-    delete cur;
+    virtual void cargar() {
+        _depura("ProveedorListSubform::cargar\n", 0);
+        QString SQLQuery = "SELECT * FROM proveedor";
+        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        SubForm3::cargar(cur);
+        delete cur;
+    };
+    virtual int cargar(cursor2 *cur) {
+        _depura("ProveedorListSubform::cargar\n", 0);
+        SubForm3::cargar(cur);
+        return 0;
+    };
 };
-virtual int cargar(cursor2 *cur) {
-    _depura("ProveedorListSubform::cargar\n",0);
-	SubForm3::cargar(cur);
-	return 0;
-};
-};
 
 
-#include "ui_providerslistbase.h"
-
-
-class ProveedorList : public QWidget, public Ui_ProveedorListBase, public pgimportfiles
-{
-	Q_OBJECT
+class ProveedorList : public QWidget, public Ui_ProveedorListBase, public pgimportfiles {
+    Q_OBJECT
 
 public:
-	enum edmode
-	{
-		EditMode = 0,
-		SelectMode = 1
-	};
+    enum edmode
+    {
+        EditMode = 0,
+        SelectMode = 1
+    };
 
 private:
-	company *m_companyact;
-	edmode m_modo;
-	QString m_idprovider;
-	QString m_cifprovider;
-	QString m_nomprovider;
+    company *m_companyact;
+    edmode m_modo;
+    QString m_idprovider;
+    QString m_cifprovider;
+    QString m_nomprovider;
 
 public:
-	ProveedorList(company *, QWidget *parent = 0, const char *name = 0,
-			Qt::WFlags flag = 0, edmode editmode = EditMode);
-	~ProveedorList();
-	void presenta();
-	void modoseleccion()
-	{
-		m_modo = SelectMode;
-	};
-	void modoedicion()
-	{
-		m_modo = EditMode;
-	};
-	QString idprovider()
-	{
-		return m_idprovider;
-	};
-	QString cifprovider()
-	{
-		return m_cifprovider;
-	};
-	QString nomprovider()
-	{
-		return m_nomprovider;
-	};
-	void hideBotonera()
-	{
-		m_botonera->hide();
-	};
-	void showBotonera()
-	{
-		m_botonera->show();
-	};
-	void hideBusqueda()
-	{
-		m_busqueda->hide();
-	};
-	void showBusqueda()
-	{
-		m_busqueda->show();
-	};
+    ProveedorList(company *, QWidget *parent = 0, const char *name = 0,
+                  Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ~ProveedorList();
+    void presenta();
+    void modoseleccion() {
+        m_modo = SelectMode;
+    };
+    void modoedicion() {
+        m_modo = EditMode;
+    };
+    QString idprovider() {
+        return m_idprovider;
+    };
+    QString cifprovider() {
+        return m_cifprovider;
+    };
+    QString nomprovider() {
+        return m_nomprovider;
+    };
+    void hideBotonera() {
+        m_botonera->hide();
+    };
+    void showBotonera() {
+        m_botonera->show();
+    };
+    void hideBusqueda() {
+        m_busqueda->hide();
+    };
+    void showBusqueda() {
+        m_busqueda->show();
+    };
 
 public slots:
-
-	virtual void editar(int);
-	virtual void on_mui_crear_clicked();
-	virtual void s_findProvider();
-	virtual void on_mui_editar_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_imprimir_clicked();
-	virtual void on_mui_actualizar_clicked() {
-		presenta();
-	};
-	virtual void on_mui_exportar_clicked();
-	virtual void on_mui_importar_clicked();
-	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
-		on_mui_editar_clicked();
-	};
-	virtual void on_mui_configurar_toggled(bool checked) {
-		if (checked) 
-			mui_list->showConfig();
-		else
-			mui_list->hideConfig();
-	};
+    virtual void editar(int);
+    virtual void on_mui_crear_clicked();
+    virtual void s_findProvider();
+    virtual void on_mui_editar_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked() {
+        presenta();
+    };
+    virtual void on_mui_exportar_clicked();
+    virtual void on_mui_importar_clicked();
+    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked)
+            mui_list->showConfig();
+        else
+            mui_list->hideConfig();
+    };
 
 signals:
-	void selected(QString);
+    void selected(QString);
 };
 
-
-
-
-
-
 #endif
+

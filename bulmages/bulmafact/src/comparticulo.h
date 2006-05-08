@@ -24,55 +24,49 @@
 #include "company.h"
 #include "dbrecord.h"
 
+
 class CompArticulo : public DBRecord {
 
 private:
-	company *companyact;
-	void definetabla();
+    company *companyact;
+    void definetabla();
 
 public:
-	CompArticulo(company *);
-	CompArticulo(company *, QString, QString);
+    CompArticulo(company *);
+    CompArticulo(company *, QString, QString);
 
-	/// La carga rapida tiene un comportamiento poco restrictivo para 
-	/// aumentar la eficiencia.
-	CompArticulo(company *, QString , QString , QString , QString , QString);
-	virtual ~CompArticulo();
-	virtual void pintaCompArticulo()
-	{
-	};
-	void guardaCompArticulo();
-	void vaciaCompArticulo();
-	inline QString idarticulo()
-	{
-		return DBvalue("idarticulo");
-	};
-	inline QString idcomponente()
-	{
-		return DBvalue("idcomponente");
-	};
-	inline QString cantcomparticulo()
-	{
-		return DBvalue("cantcomparticulo");
-	};
-	inline QString codigocompletocomponente()
-	{
-		return DBvalue("codigocompletocomponente");
-	};
-	inline QString nomcomponente()
-	{
-		return DBvalue("nomcomponente");
-	};
-	inline void setidarticulo(QString val)
-	{
-		setDBvalue("idarticulo",val);
-	};
-	inline void setcantcomparticulo(QString val)
-	{
-		setDBvalue("cantcomparticulo",val);
-	};
-	void setcodigocompletocomponente(QString);
-	void setidcomponente(QString);
+    /// La carga rapida tiene un comportamiento poco restrictivo para
+    /// aumentar la eficiencia.
+    CompArticulo(company *, QString , QString , QString , QString , QString);
+    virtual ~CompArticulo();
+    virtual void pintaCompArticulo() {}
+    ;
+    void guardaCompArticulo();
+    void vaciaCompArticulo();
+    inline QString idarticulo() {
+        return DBvalue("idarticulo");
+    };
+    inline QString idcomponente() {
+        return DBvalue("idcomponente");
+    };
+    inline QString cantcomparticulo() {
+        return DBvalue("cantcomparticulo");
+    };
+    inline QString codigocompletocomponente() {
+        return DBvalue("codigocompletocomponente");
+    };
+    inline QString nomcomponente() {
+        return DBvalue("nomcomponente");
+    };
+    inline void setidarticulo(QString val) {
+        setDBvalue("idarticulo", val);
+    };
+    inline void setcantcomparticulo(QString val) {
+        setDBvalue("cantcomparticulo", val);
+    };
+    void setcodigocompletocomponente(QString);
+    void setidcomponente(QString);
 };
 
 #endif
+

@@ -28,23 +28,24 @@
 
 class company;
 
-class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase
-{
-	Q_OBJECT
+
+class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase {
+    Q_OBJECT
 
 public:
-	company *companyact;
+    company *companyact;
 
 public:
-	ListProvinciasView(company *, QDialog *parent = 0);
-	~ListProvinciasView();
-	void inicializa();
-	int guardalinea(int);
+    ListProvinciasView(company *, QDialog *parent = 0);
+    ~ListProvinciasView();
+    void inicializa();
+    int guardalinea(int);
 
 public slots:
-	virtual void on_botonnew_clicked();
-	virtual void on_botonsave_clicked();
-	virtual void on_botondelete_clicked();
+    virtual void on_botonnew_clicked();
+    virtual void on_botonsave_clicked();
+    virtual void on_botondelete_clicked();
 };
 
 #endif
+

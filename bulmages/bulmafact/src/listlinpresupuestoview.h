@@ -27,21 +27,23 @@
 #include "subform2bf.h"
 #include "fixed.h"
 
+
 class listlinpresupuestoview : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idpresupuesto;
     listlinpresupuestoview(QWidget *parent = 0);
     ~listlinpresupuestoview() {}
     ;
+
 public slots:
     virtual void cargar(QString idpresupuesto);
     Fixed calculabase();
     Fixed calculaiva();
-	virtual void editFinished(int, int);
+    virtual void editFinished(int, int);
 
 };
 
-
-
 #endif
+

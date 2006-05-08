@@ -73,7 +73,6 @@ public:
         m_forma_pago->setidforma_pago(id);
     };
     void pintaprocesadafactura(QString id) {
-        //fprintf(stderr,"pintaprocesadafactura(%s)\n",id.ascii());
         if (id == "t" || id == "TRUE") {
             m_procesadafactura->setChecked(TRUE);
         } else {
@@ -85,33 +84,27 @@ public:
     virtual int guardar();
 
 public slots:
-
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
     virtual int cargar(QString id);
 
     virtual void on_mui_borrar_clicked() {
-
-
         int val = QMessageBox::warning( this, tr("Borrar factura cliente."),
-                                        tr("Desea eliminar la factura de este cliente?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+                                              tr("Desea eliminar la factura de este cliente?"),
+                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
-
             if (!borrar()) {
                 dialogChanges_cargaInicial();
-                _depura("Factura borrada satisfactoriamente",2);
+                _depura("Factura borrada satisfactoriamente", 2);
                 close();
             }// end if
         }// end if
-
-
     };
     virtual void on_mui_imprimir_clicked() {
         imprimirFactura();
     };
     virtual void on_mui_agregaralbaran_clicked();
-
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         calculaypintatotales();
@@ -131,3 +124,4 @@ public slots:
 };
 
 #endif
+

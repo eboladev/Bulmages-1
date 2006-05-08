@@ -111,7 +111,7 @@ void AlbaranCliente::pintar() {
     pintaprocesadoalbaran(DBvalue("procesadoalbaran"));
 
     /// Pinta el subformulario de detalle del AlbaranCliente.
-    /// Pintamos los totales
+    /// Pintamos los totales.
     calculaypintatotales();
     _depura("END AlbaranCliente::pintar", 0);
 
@@ -363,9 +363,9 @@ void AlbaranCliente::calculaypintatotales()  {
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         Fixed val("0.00");
-	val = basesimp[linea->DBvalue("ivalalbaran")];
+        val = basesimp[linea->DBvalue("ivalalbaran")];
         val = val + base;
-	QString lin = linea->DBvalue("ivalalbaran");
+        QString lin = linea->DBvalue("ivalalbaran");
         basesimp[lin] = val;
     }// end for
     Fixed basei("0.00");
@@ -379,11 +379,11 @@ void AlbaranCliente::calculaypintatotales()  {
     SDBRecord *linea1;
 
 
-        for(int i = 0; i < listadescuentos->rowCount(); ++i) {
-            linea1 = listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporciondalbaran").ascii());
-            porcentt = porcentt + propor;
-        }// end for
+    for(int i = 0; i < listadescuentos->rowCount(); ++i) {
+        linea1 = listadescuentos->lineaat(i);
+        Fixed propor(linea1->DBvalue("proporciondalbaran").ascii());
+        porcentt = porcentt + propor;
+    }// end for
 
 
     Fixed totbaseimp("0.00");

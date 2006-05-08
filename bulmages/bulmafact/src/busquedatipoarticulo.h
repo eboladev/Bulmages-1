@@ -26,46 +26,43 @@
 
 #include "ui_busquedatipoarticulobase.h"
 
+
 class company;
 
-class BusquedaTipoArticulo : public QWidget, public Ui_BusquedaTipoArticuloBase
-{
-	Q_OBJECT
+class BusquedaTipoArticulo : public QWidget, public Ui_BusquedaTipoArticuloBase {
+    Q_OBJECT
 
 private:
-	company *m_companyact;
-	QString mdb_idtipo_articulo;
-	QString mdb_desctipo_articulo;
-	QString mdb_codtipo_articulo;
+    company *m_companyact;
+    QString mdb_idtipo_articulo;
+    QString mdb_desctipo_articulo;
+    QString mdb_codtipo_articulo;
 
 public:
-	BusquedaTipoArticulo(QWidget *parent = 0, const char *name = 0);
-	~BusquedaTipoArticulo();
-	void setcompany(company *comp)
-	{
-		m_companyact = comp;
-	};
-	virtual QString codtipo_articulo()
-	{
-		return m_codtipo_articulo->text();
-	};
-	virtual QString idtipo_articulo()
-	{
-		return mdb_idtipo_articulo;
-	};
-	virtual QString desctipo_articulo()
-	{
-		return desctipo_articulo();
-	};
-	virtual void setidtipo_articulo(QString val);
-	virtual void setcodtipo_articulo(QString val);
+    BusquedaTipoArticulo(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaTipoArticulo();
+    void setcompany(company *comp) {
+        m_companyact = comp;
+    };
+    virtual QString codtipo_articulo() {
+        return m_codtipo_articulo->text();
+    };
+    virtual QString idtipo_articulo() {
+        return mdb_idtipo_articulo;
+    };
+    virtual QString desctipo_articulo() {
+        return desctipo_articulo();
+    };
+    virtual void setidtipo_articulo(QString val);
+    virtual void setcodtipo_articulo(QString val);
 
 public slots:
-	virtual void on_mui_buscar_clicked();
-	virtual void on_m_codtipo_articulo_textChanged(const QString &);
+    virtual void on_mui_buscar_clicked();
+    virtual void on_m_codtipo_articulo_textChanged(const QString &);
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

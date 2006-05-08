@@ -29,50 +29,46 @@
 #include "controlstock.h"
 
 
-class ListControlStock
-{
+class ListControlStock {
 
 public:
-	company *companyact;
-	QString mdb_idinventario;
-	Q3PtrList<ControlStock> m_lista;
+    company *companyact;
+    QString mdb_idinventario;
+    Q3PtrList<ControlStock> m_lista;
 
 public:
-	ListControlStock(company *comp);
-	ListControlStock();
-	virtual ~ListControlStock();
-	ControlStock *linpos(int);
-	void cargaListControlStock(QString);
-	void guardaListControlStock();
-	void vaciar();
-	void setidinventario(QString id)
-	{
-		mdb_idinventario = id;
-		ControlStock *linea;
-		uint i = 0;
-		for (linea = m_lista.first(); linea; linea = m_lista.next())
-		{
-			linea->setidinventario(mdb_idinventario);
-			i++;
-		}
-	};
-	void setcompany(company *c)
-	{
-		_depura("ListControlStock setCompany.", 0);
-		companyact = c;
-		_depura("ListControlStock fin de setCompany.", 0);
-	};
-	virtual void pintaListControlStock()
-	{
-		_depura("La funcion pintaListControlStock aun no ha sido implementada.", 0);
-	};
-	void nuevalinea(QString idalmacen, QString idarticulo, QString stockantcontrolstock,
-				QString stocknewcontrolstock, QString punteocontrolstock,
-				QString codigocompletoarticulo, QString nomarticulo,
-				QString nomalmacen, QString codigoalmacen);
-	virtual void borrarListControlStock();
-	virtual void borrarControlStock(int);
-	virtual void pregenerar();
+    ListControlStock(company *comp);
+    ListControlStock();
+    virtual ~ListControlStock();
+    ControlStock *linpos(int);
+    void cargaListControlStock(QString);
+    void guardaListControlStock();
+    void vaciar();
+    void setidinventario(QString id) {
+        mdb_idinventario = id;
+        ControlStock *linea;
+        uint i = 0;
+        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+            linea->setidinventario(mdb_idinventario);
+            i++;
+        }
+    };
+    void setcompany(company *c) {
+        _depura("ListControlStock setCompany.", 0);
+        companyact = c;
+        _depura("ListControlStock fin de setCompany.", 0);
+    };
+    virtual void pintaListControlStock() {
+        _depura("La funcion pintaListControlStock aun no ha sido implementada.", 0);
+    };
+    void nuevalinea(QString idalmacen, QString idarticulo, QString stockantcontrolstock,
+                    QString stocknewcontrolstock, QString punteocontrolstock,
+                    QString codigocompletoarticulo, QString nomarticulo,
+                    QString nomalmacen, QString codigoalmacen);
+    virtual void borrarListControlStock();
+    virtual void borrarControlStock(int);
+    virtual void pregenerar();
 };
 
 #endif
+

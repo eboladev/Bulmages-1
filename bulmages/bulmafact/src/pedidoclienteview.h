@@ -43,6 +43,7 @@
 
 class PedidoClienteView : public QWidget, public Ui_PedidoClienteBase, public PedidoCliente, public dialogChanges {
     Q_OBJECT
+
 public:
     PedidoClienteView(company *, QWidget *parent = 0, const char *name = 0);
     ~PedidoClienteView();
@@ -96,14 +97,12 @@ public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-
     virtual int cargar(QString id);
-
     virtual void on_mui_borrar_clicked() {
         int val = QMessageBox::warning( this, tr("Borrar pedido de cliente."),
-                                        tr("Desea eliminar este pedido?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+                                              tr("Desea eliminar este pedido?"),
+                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
-
             if (!borrar()) {
                 dialogChanges_cargaInicial();
                 _depura("Pedido borrado satisfactoriamente",2);
@@ -111,11 +110,9 @@ public slots:
             }// end if
         }// end if
     };
-
     virtual void on_mui_imprimir_clicked() {
         imprimirPedidoCliente();
     };
-
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual int guardar();
     virtual void s_pintaTotales() {
@@ -126,7 +123,6 @@ public slots:
     virtual void on_mui_pasaraalbaran_clicked() {
         generarAlbaran();
     };
-
     virtual void on_mui_cobrar_clicked();
     virtual void on_mui_informereferencia_clicked();
     virtual void on_m_descuentos_editFinish(int, int) {
@@ -142,3 +138,4 @@ public slots:
 };
 
 #endif
+
