@@ -28,7 +28,6 @@
 #include "busquedacliente.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_cobroslistbase.h"
 
 
 class CobrosListSubForm : public SubForm2Bf {
@@ -39,6 +38,9 @@ public:
     ~CobrosListSubForm() {}
     ;
 };
+
+
+#include "ui_cobroslistbase.h"
 
 
 class CobrosList : public QWidget, private Ui_CobrosListBase {

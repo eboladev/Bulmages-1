@@ -33,7 +33,7 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
-#include "ui_listseriefacturabase.h"
+
 
 
 class company;
@@ -55,6 +55,9 @@ public slots:
         delete cur;
     };
 };
+
+
+#include "ui_listseriefacturabase.h"
 
 
 class ListSerieFacturaView : public QDialog, public Ui_ListSerieFacturaBase {

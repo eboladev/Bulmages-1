@@ -26,7 +26,6 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "ui_clientslistbase.h"
 
 
 class ClienteListSubform : public SubForm2Bf {
@@ -37,6 +36,8 @@ public:
     ~ClienteListSubform() {}
     ;
 };
+
+#include "ui_clientslistbase.h"
 
 
 class ClientsList : public QWidget, public Ui_ClientsListBase, public pgimportfiles {

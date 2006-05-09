@@ -28,7 +28,6 @@
 #include "busquedaproveedor.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_pagoslistbase.h"
 
 
 class PagosListSubForm : public SubForm2Bf {
@@ -40,6 +39,8 @@ public:
     ;
 };
 
+
+#include "ui_pagoslistbase.h"
 
 class PagosList : public QWidget, private Ui_PagosListBase {
     Q_OBJECT

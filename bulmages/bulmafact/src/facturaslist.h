@@ -28,7 +28,6 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_facturaslistbase.h"
 
 
 class FacturasListSubform : public SubForm2Bf {
@@ -54,6 +53,8 @@ public slots:
     };
 };
 
+
+#include "ui_facturaslistbase.h"
 
 class FacturasList : public QWidget, public Ui_FacturasListBase {
     Q_OBJECT

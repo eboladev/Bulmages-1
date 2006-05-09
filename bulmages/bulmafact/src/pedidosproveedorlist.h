@@ -26,7 +26,6 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_pedidosproveedorlistbase.h"
 
 
 class PedidosProveedorListSubform : public SubForm2Bf {
@@ -51,6 +50,9 @@ public slots:
         return 0;
     };
 };
+
+
+#include "ui_pedidosproveedorlistbase.h"
 
 
 class PedidosProveedorList : public QWidget,  public Ui_PedidosProveedorListBase {

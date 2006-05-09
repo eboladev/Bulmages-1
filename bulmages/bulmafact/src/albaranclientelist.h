@@ -27,7 +27,7 @@
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"
-#include "ui_albaranclientelistbase.h"
+
 
 class AlbaranClienteListSubform : public SubForm2Bf {
     Q_OBJECT
@@ -49,6 +49,8 @@ public slots:
         return 0;
     };
 };
+
+#include "ui_albaranclientelistbase.h"
 
 
 class AlbaranClienteList : public QWidget, public Ui_AlbaranClienteListBase {

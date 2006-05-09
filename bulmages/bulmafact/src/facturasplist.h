@@ -28,7 +28,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_facturasplistbase.h"
+
 
 
 class FacturasProveedorListSubform : public SubForm2Bf {
@@ -53,6 +53,9 @@ public slots:
         return 0;
     };
 };
+
+
+#include "ui_facturasplistbase.h"
 
 
 class FacturasProveedorList : public QWidget, public Ui_FacturasProveedorListBase {

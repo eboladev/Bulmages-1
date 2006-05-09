@@ -29,7 +29,6 @@
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_albaranesproveedorlistbase.h"
 
 
 class AlbaranesProveedorListSubform : public SubForm2Bf {
@@ -54,6 +53,8 @@ public slots:
         return 0;
     };
 };
+
+#include "ui_albaranesproveedorlistbase.h"
 
 
 class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase {

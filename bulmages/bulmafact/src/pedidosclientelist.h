@@ -26,8 +26,6 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ui_pedidosclientelistbase.h"
-
 
 class PedidosClienteListSubform : public SubForm2Bf {
     Q_OBJECT
@@ -51,6 +49,9 @@ public slots:
         return 0;
     };
 };
+
+
+#include "ui_pedidosclientelistbase.h"
 
 
 class PedidosClienteList : public QWidget, public Ui_PedidosClienteListBase {

@@ -25,7 +25,6 @@
 
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-#include "ui_providerslistbase.h"
 
 
 class company;
@@ -53,6 +52,9 @@ public slots:
         return 0;
     };
 };
+
+
+#include "ui_providerslistbase.h"
 
 
 class ProveedorList : public QWidget, public Ui_ProveedorListBase, public pgimportfiles {

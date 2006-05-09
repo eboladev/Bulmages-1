@@ -25,7 +25,6 @@
 
 #include "company.h"
 #include "subform2bf.h"
-#include "ui_inventariosbase.h"
 
 
 class InventariosSubForm : public SubForm2Bf {
@@ -43,6 +42,9 @@ public slots:
         delete cur;
     };
 };
+
+
+#include "ui_inventariosbase.h"
 
 
 class InventariosView : public QWidget, public Ui_InventariosBase {

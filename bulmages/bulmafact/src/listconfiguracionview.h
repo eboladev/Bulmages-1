@@ -33,7 +33,6 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
-#include "ui_listconfiguracionbase.h"
 
 
 class company;
@@ -53,6 +52,9 @@ public slots:
         delete cur;
     };
 };
+
+
+#include "ui_listconfiguracionbase.h"
 
 
 class ListConfiguracionView : public QDialog, public Ui_ListConfiguracionBase {

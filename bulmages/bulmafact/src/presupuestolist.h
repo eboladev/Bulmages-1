@@ -28,7 +28,6 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
-#include "ui_budgetslistbase.h"
 
 
 class PresupuestoListSubForm : public SubForm2Bf {
@@ -53,6 +52,9 @@ public slots:
         return 0;
     };
 };
+
+
+#include "ui_budgetslistbase.h"
 
 
 class PresupuestoList : public QWidget, public Ui_BudgetsListBase {
