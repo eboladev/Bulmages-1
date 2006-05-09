@@ -23,39 +23,40 @@
 #include <QCheckBox>
 #include <QTextStream>
 
-
 #include "albaranclientelist.h"
 #include "company.h"
 #include "albaranclienteview.h"
 #include "qtable1.h"
 #include "funcaux.h"
 
+
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : QWidget(parent, name, flag) {
-	setupUi(this);
+    setupUi(this);
     m_companyact = NULL;
     m_modo=editmodo;
-    mdb_idalbaran="";
+    mdb_idalbaran = "";
     if (m_modo == EditMode)
-        meteWindow(caption(),this);
+        meteWindow(caption(), this);
     hideBusqueda();
 }
 
 
 AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
         : QWidget (parent, name, flag) {
-	setupUi(this);
+    setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
-	mui_list->setcompany(comp);
-	presenta();
-    m_modo=editmodo;
-    mdb_idalbaran="";
+    mui_list->setcompany(comp);
+    presenta();
+    m_modo = editmodo;
+    mdb_idalbaran = "";
     if (m_modo == EditMode)
         m_companyact->meteWindow(caption(), this);
     hideBusqueda();
 }
+
 
 AlbaranClienteList::~AlbaranClienteList() {
     if (m_modo == EditMode)
@@ -63,15 +64,12 @@ AlbaranClienteList::~AlbaranClienteList() {
 }
 
 
-
 void AlbaranClienteList::presenta() {
     _depura("AlbaranClienteList::presenta\n");
 
-
     cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalalbaran(idalbaran) AS total, calcbimpalbaran(idalbaran) AS base, calcimpuestosalbaran(idalbaran) AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
-	mui_list->cargar(cur);
-	delete cur;
-
+    mui_list->cargar(cur);
+    delete cur;
 
     /// Hacemos el calculo del total.
     cur = m_companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
@@ -82,13 +80,10 @@ void AlbaranClienteList::presenta() {
 }
 
 
-
-
-
 void AlbaranClienteList::editar(int  row) {
-    _depura("AlbaranClienteList::editar",0);
-    mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"),row);
-    if (m_modo ==0 ) {
+    _depura("AlbaranClienteList::editar", 0);
+    mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
+    if (m_modo == 0) {
         AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
         if (prov->cargar(mdb_idalbaran))
             return;
@@ -96,16 +91,17 @@ void AlbaranClienteList::editar(int  row) {
         prov->show();
     } else {
         emit(selected(mdb_idalbaran));
-    }// end if
-    _depura("END AlbaranClienteList::editar",0);
+    } // end if
+    _depura("END AlbaranClienteList::editar", 0);
 }
+
 
 void AlbaranClienteList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-	if (a >=0 ) 
-    	editar(a);
-	else
-	_depura("Debe seleccionar una linea",2);
+    if (a >= 0)
+        editar(a);
+    else
+        _depura("Debe seleccionar una linea", 2);
 }
 
 
@@ -113,98 +109,93 @@ void AlbaranClienteList::on_mui_editar_clicked() {
 void AlbaranClienteList::on_mui_borrar_clicked() {
     fprintf(stderr,"Iniciamos el boton_borrar\n");
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
-    if (m_modo ==0 ) {
+    if (m_modo == 0) {
         AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
         if (prov->cargar(mdb_idalbaran))
             return;
         prov->borrar();
-    }// end if
+    } // end if
     presenta();
 }
 
 
 void AlbaranClienteList::imprimir() {
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"albaranescliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"albaranescliente.rml";
-    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranescliente.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "albaranescliente.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
-    /// Copiamos el archivo
+    /// Copiamos el archivo.
 #ifdef WINDOWS
-
-    archivo = "copy "+archivo+" "+archivod;
+    archivo = "copy " + archivo + " " + archivod;
 #else
-    archivo = "cp "+archivo+" "+archivod;
+    archivo = "cp " + archivo + " " + archivod;
 #endif
+
     system (archivo.ascii());
 
-    /// Copiamos el logo
-
+    /// Copiamos el logo.
 #ifdef WINDOWS
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system (archivologo.ascii());
 
     QFile file;
-    file.setName( archivod );
-    file.open( QIODevice::ReadOnly );
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Linea de totales del presupuesto
 
+    /// Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
-    buff.replace("[story]",fitxersortidatxt);
+    buff.replace("[story]", fitxersortidatxt);
 
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
         stream << buff;
         file.close();
-    }
-    invocaPDF("albaranescliente");
+    } // end if
 
+    invocaPDF("albaranescliente");
 }
 
 
 QString AlbaranClienteList::generarFiltro() {
     /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
-    QString filtro="";
+    fprintf(stderr, "Tratamos el filtro \n");
+    QString filtro = "";
 
     if (m_filtro->text() != "") {
-        filtro = " AND ( descalbaran LIKE '%"+m_filtro->text()+"%' ";
-        filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+        filtro = " AND ( descalbaran LIKE '%" + m_filtro->text() + "%' ";
+        filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
-    }// end if
+    } // end if
 
     if (m_cliente->idcliente() != "")
-        filtro += " AND albaran.idcliente='"+m_cliente->idcliente()+"'";
+        filtro += " AND albaran.idcliente='" + m_cliente->idcliente() + "'";
 
     if (m_articulo->idarticulo() != "")
-        filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='"+m_articulo->idarticulo()+"')";
+        filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + m_articulo->idarticulo() + "')";
 
     if (!m_procesados->isChecked() )
         filtro += " AND NOT procesadoalbaran";
 
     if (m_fechain->text() != "")
-        filtro += " AND fechaalbaran >= '"+m_fechain->text()+"' ";
+        filtro += " AND fechaalbaran >= '" + m_fechain->text() + "' ";
 
     if (m_fechafin->text() != "")
-        filtro += " AND fechaalbaran <= '"+m_fechafin->text()+"' ";
+        filtro += " AND fechaalbaran <= '" + m_fechafin->text() + "' ";
 
     return (filtro);
 }
-
-
-
-
 
 
 /// =============================================================================
@@ -213,7 +204,6 @@ QString AlbaranClienteList::generarFiltro() {
 AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
-
     addSHeader("refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Referencia de albaran"));
     addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo de almacen"));
     addSHeader("numalbaran", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de albaran"));
@@ -230,4 +220,5 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent, const char
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
     setinsercion(FALSE);
-};
+}
+

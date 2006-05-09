@@ -24,11 +24,10 @@
 
 
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent, const char *name)
-: QComboBox(parent, name) {
+        : QComboBox(parent, name) {
     companyact=NULL;
     m_cursorcombo=NULL;
-    
-    connect(this,SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
 
 
@@ -47,7 +46,7 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
         i ++;
         if (m_cursorcombo->valor("codigoserie_factura") == codigo)
             i1 = i;
-        insertItem(m_cursorcombo->valor("codigoserie_factura")+".-"+m_cursorcombo->valor("descserie_factura"));
+        insertItem(m_cursorcombo->valor("codigoserie_factura") + ".-" + m_cursorcombo->valor("descserie_factura"));
         m_cursorcombo->siguienteregistro();
     }
     setCurrentItem(i1);

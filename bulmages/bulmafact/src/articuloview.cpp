@@ -57,27 +57,26 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
     m_familia->setcompany(comp);
     m_tipoarticulo->setcompany(comp);
     m_componentes->setcompany(comp);
-    m_archivoimagen="";
+    m_archivoimagen = "";
 
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-    if (m_companyact->meteWindow(tr("Edicion del articulo"),this))
+    if (m_companyact->meteWindow(tr("Edicion del articulo"), this))
         return;
 
     dialogChanges_cargaInicial();
-    _depura("ArticuloView::END_constructor()\n",0);
+    _depura("ArticuloView::END_constructor()\n", 0);
 }
 
 
 ArticuloView::~ArticuloView() {
-    _depura("ArticuloView::INIT_destructor()\n",0);
-    //    m_companyact->refreshArticles();
+    _depura("ArticuloView::INIT_destructor()\n", 0);
     m_companyact->sacaWindow(this);
-    _depura("ArticuloView::END_destructor()\n",0);
+    _depura("ArticuloView::END_destructor()\n", 0);
 }
 
 
 void ArticuloView::pintar() {
-    _depura("ArticuloView::pintar",0);
+    _depura("ArticuloView::pintar", 0);
 
     m_familia->setidfamilia(DBvalue("idfamilia"));
     m_tipoarticulo->setidtipo_articulo(DBvalue("idtipo_articulo"));
@@ -88,64 +87,59 @@ void ArticuloView::pintar() {
     m_abrevarticulo->setText(DBvalue("abrevarticulo"));
 
     m_codigocompletoarticulo->setText(DBvalue("codigocompletoarticulo"));
-    // Pintamos el stockable y el presentable
+    /// Pintamos el stockable y el presentable
     if (DBvalue("presentablearticulo") == "t") {
         m_presentablearticulo->setChecked(TRUE);
     } else {
         m_presentablearticulo->setChecked(FALSE);
-    }// end if
+    } // end if
     if (DBvalue("controlstockarticulo") == "t") {
         m_controlstockarticulo->setChecked(TRUE);
     } else {
         m_controlstockarticulo->setChecked(FALSE);
-    }// end if
+    } // end if
 
+    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES) + m_codigocompletoarticulo->text() + ".jpg"));
 
-
-    m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES)+m_codigocompletoarticulo->text()+".jpg"));
-
-    setCaption(tr("Articulo ")+m_codigocompletoarticulo->text());
-    _depura("END ArticuloView::pintar",1);
+    setCaption(tr("Articulo ") + m_codigocompletoarticulo->text());
+    _depura("END ArticuloView::pintar", 1);
 }
 
 
-/************************************************************************
-* Esta función carga un artículo de la base de datos y lo presenta.     *
-* Si el parametro pasado no es un identificador válido entonces se pone *
-* la ventana de edición en modo de inserción                            *
-*************************************************************************/
+/// Esta funcion carga un articulo de la base de datos y lo presenta.
+/// Si el parametro pasado no es un identificador valido entonces se pone
+/// la ventana de edicion en modo de insercion.
 int ArticuloView::cargar(QString idarticulo) {
-    _depura("ArticuloView::cargar()\n",0);
-    int error =0;
-	setDBvalue( "idarticulo", idarticulo);
+    _depura("ArticuloView::cargar()\n", 0);
+    int error = 0;
+    setDBvalue("idarticulo", idarticulo);
 
-        /// Disparamos los plugins
-        int res = g_plugins->lanza("ArticuloView_cargar", this);
-        if (res != 0)
-            return res;
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("ArticuloView_cargar", this);
+    if (res != 0)
+        return res;
 
-    QString ivaType="";
+    QString ivaType = "";
     Articulo::cargar(idarticulo);
-    ivaType=DBvalue("idtipo_iva");
+    ivaType = DBvalue("idtipo_iva");
 
     int ret = cargarcomboiva(ivaType);
     if (ret)
         error = 1;
-    ret = m_companyact->meteWindow(caption(),this);
+    ret = m_companyact->meteWindow(caption(), this);
     if (ret)
         error = 1;
     m_componentes->cargar(DBvalue("idarticulo"));
 
-
     dialogChanges_cargaInicial();
     /// Tratamiento de excepciones
     if (error == 1) {
-        _depura("ArticuloView::END_chargeArticle Error en la carga del articulo()\n",0);
+        _depura("ArticuloView::END_chargeArticle Error en la carga del articulo()\n", 0);
         return -1;
-    }// end if
+    } // end if
 
     pintar();
-    _depura("END ArticuloView::cargar()\n",0);
+    _depura("END ArticuloView::cargar()\n", 0);
     return 0;
 }
 
@@ -161,7 +155,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
     if (m_cursorcombo->error()) {
         delete m_cursorcombo;
         return -1;
-    }// end if
+    } // end if
     int i = 0;
     int i1 = 0;
     while (!m_cursorcombo->eof()) {
@@ -171,61 +165,58 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         }
         m_combotipo_iva->insertItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
-    }// end while
+    } // end while
     if (i1 != 0 ) {
-        m_combotipo_iva->setCurrentItem(i1-1);
-    }// end if
+        m_combotipo_iva->setCurrentItem(i1 - 1);
+    } // end if
 
-    _depura("ArticuloView::END_cargarcomboiva()\n",0);
+    _depura("ArticuloView::END_cargarcomboiva()\n", 0);
     return 0;
 }
 
 
-/************************************************************************
-* Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo  *
-*************************************************************************/
+/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo
 void ArticuloView::on_mui_crear_clicked() {
-    _depura("ArticuloView::INIT_boton_nuevo()\n",0);
+    _depura("ArticuloView::INIT_boton_nuevo()\n", 0);
     vaciar();
     pintar();
-    _depura("ArticuloView::END_boton_nuevo()\n",0);
+    _depura("ArticuloView::END_boton_nuevo()\n", 0);
 }
 
 
-/**
-  * Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar *
-  */
+/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
 void ArticuloView::on_mui_borrar_clicked() {
     _depura("ArticuloView::INIT_boton_borrar()\n",0);
 
     if (DBvalue("idarticulo") != "") {
-
-        if ( QMessageBox::question(this,tr("Borrar articulo"),tr("Esta a punto de borrar un articulo. Desea continuar?"),tr("&Si"),tr("&No"),0,1,0) == 0) {
+        if (QMessageBox::question(this, tr("Borrar articulo"),
+                                        tr("Esta a punto de borrar un articulo. Desea continuar?"),
+                                        tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
             m_componentes->borrar();
             borrar();
-		dialogChanges_cargaInicial();
-        }// end if
-    }// end if
-    _depura("ArticuloView::END_boton_borrar()\n",0);
+            dialogChanges_cargaInicial();
+        } // end if
+    } // end if
+    _depura("ArticuloView::END_boton_borrar()\n", 0);
 }
 
 
 void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
-    _depura("ArticuloView::INIT_s_findArticulo()\n",0);
+    _depura("ArticuloView::INIT_s_findArticulo()\n", 0);
 
-    QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '"+m_codigocompletoarticulo->text()+"'";
+    QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + m_codigocompletoarticulo->text() + "'";
     cursor2 *cur = m_companyact->cargacursor(SQlQuery);
     if (!cur->eof()) {
         cargar(cur->valor("idarticulo"));
-    }// end if
+    } // end if
     delete cur;
 
-    _depura("ArticuloView::END_s_findArticulo()\n",0);
+    _depura("ArticuloView::END_s_findArticulo()\n", 0);
 }
 
 
 int ArticuloView::guardar() {
-    _depura("ArticuloView::INIT_s_grabarClicked()\n",0);
+    _depura("ArticuloView::INIT_s_grabarClicked()\n", 0);
     setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("controlstockarticulo", m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("idtipo_articulo", m_tipoarticulo->idtipo_articulo());
@@ -235,35 +226,35 @@ int ArticuloView::guardar() {
     setDBvalue("obserarticulo", m_obserarticulo->text());
     setDBvalue("abrevarticulo", m_abrevarticulo->text());
     setDBvalue("pvparticulo", m_pvparticulo->text());
-    setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva",m_combotipo_iva->currentItem()));
+    setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentItem()));
     Articulo::guardar();
-	/// Guardamos la imagen, si es que existe
+
+    /// Guardamos la imagen, si es que existe.
     if (m_archivoimagen != "") {
-        cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo="+DBvalue("idarticulo"));
-        QString cadena = "cp "+m_archivoimagen+" "+confpr->valor(CONF_DIR_IMG_ARTICLES)+cur1->valor("codigocompletoarticulo")+".jpg";
+        cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo=" + DBvalue("idarticulo"));
+        QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur1->valor("codigocompletoarticulo") + ".jpg";
         delete cur1;
         system(cadena.ascii());
-    }// end if
-	/// Guardamos la lista de componentes
-	m_componentes->setColumnValue("idarticulo",DBvalue("idarticulo"));
+    } // end if
+
+    /// Guardamos la lista de componentes.
+    m_componentes->setColumnValue("idarticulo", DBvalue("idarticulo"));
     m_componentes->guardar();
 
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("ArticuloView_guardar_post", this);
+    if (res != 0)
+        return res;
 
-        /// Disparamos los plugins
-        int res = g_plugins->lanza("ArticuloView_guardar_post", this);
-        if (res != 0)
-            return res;
+    dialogChanges_cargaInicial();
 
-
-	dialogChanges_cargaInicial();
-
-    _depura("ArticuloView::END_s_grabarClicked()\n",0);
-	return 0;
+    _depura("ArticuloView::END_s_grabarClicked()\n", 0);
+    return 0;
 }
 
 
 void ArticuloView::on_mui_cambiarimagen_clicked() {
-    _depura("ArticuloView::INIT_s_cambiarimagen()\n",0);
+    _depura("ArticuloView::INIT_s_cambiarimagen()\n", 0);
 
     m_archivoimagen = Q3FileDialog::getOpenFileName(
                           "",
@@ -272,25 +263,26 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
                           tr("Abrir ventana de archivo"),
                           tr("Elige un archivo"));
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
-    _depura("ArticuloView::END_s_cambiarimagen()\n",0);
+    _depura("ArticuloView::END_s_cambiarimagen()\n", 0);
 }
 
 
 void ArticuloView::closeEvent( QCloseEvent *e) {
-    _depura("closeEvent",0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, tr("Guardar articulo"),
-                                        tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+    _depura("closeEvent", 0);
+    if (dialogChanges_hayCambios()) {
+        int val = QMessageBox::warning(this, tr("Guardar articulo"),
+                                             tr("Desea guardar los cambios?"),
+                                             tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
             on_mui_guardar_clicked();
         if (val == 2)
             e->ignore();
-    }// end if
+    } // end if
 }
 
 
 void ArticuloView::on_mui_aceptar_clicked() {
-	on_mui_guardar_clicked();
-	close();
+    on_mui_guardar_clicked();
+    close();
 }
 

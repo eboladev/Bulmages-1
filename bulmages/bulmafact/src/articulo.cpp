@@ -52,7 +52,7 @@ Articulo::~Articulo() {}
 
 
 void Articulo::pintar() {
-    _depura("Articulo::pintar",0);
+    _depura("Articulo::pintar", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("Articulo_pintar", this);
     if (res != 0)
@@ -71,6 +71,6 @@ void Articulo::pintar() {
     pintastockarticulo (DBvalue("stockarticulo"));
     pintainactivoarticulo (DBvalue("inactivoarticulo"));
     pintapvparticulo (DBvalue("pvparticulo"));
-    _depura("END Articulo::pintar",0);
+    _depura("END Articulo::pintar", 0);
 }
 

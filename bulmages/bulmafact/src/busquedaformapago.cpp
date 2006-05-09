@@ -24,11 +24,10 @@
 
 
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
-: QComboBox(parent) {
-    companyact=NULL;
-    m_cursorcombo=NULL;
-    
-    connect(this,SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+        : QComboBox(parent) {
+    companyact = NULL;
+    m_cursorcombo = NULL;
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
 
 

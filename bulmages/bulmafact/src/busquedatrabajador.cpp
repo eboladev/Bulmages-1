@@ -24,11 +24,10 @@
 
 
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
-: QComboBox(parent) {
-    companyact=NULL;
-    m_cursorcombo=NULL;
-    
-    connect(this,SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+        : QComboBox(parent) {
+    companyact = NULL;
+    m_cursorcombo = NULL;
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
 
 
@@ -50,7 +49,7 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
         i ++;
         if (m_cursorcombo->valor("idtrabajador") == idtrabajador)
             i1 = i;
-        insertItem(m_cursorcombo->valor("apellidostrabajador")+", "+m_cursorcombo->valor("nomtrabajador"));
+        insertItem(m_cursorcombo->valor("apellidostrabajador") + ", " + m_cursorcombo->valor("nomtrabajador"));
         m_cursorcombo->siguienteregistro();
     }
     setCurrentItem(i1);

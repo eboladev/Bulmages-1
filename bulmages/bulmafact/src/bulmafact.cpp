@@ -81,21 +81,21 @@ bulmafact::~bulmafact() {
 void bulmafact::emitirfactura() {
     _depura("emitir factura activado", 0);
     QMessageBox::information(this, tr("BulmaFact"),
-                              tr("Pulse aceptar para emitir un monton de facturas"));
+                                   tr("Pulse aceptar para emitir un monton de facturas"));
 }
 
 
 void bulmafact::recibirfactura() {
     _depura("recibir factura activado", 0);
     QMessageBox::critical(this, tr("BulmaFact"),
-                           tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
+                          tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
 }
 
 
 void bulmafact::about() {
     QMessageBox::about(this, tr("Qt Application Example"),
-                        tr("This example demonstrates simple use of "
-                           "QMainWindow,\nQMenuBar and QToolBar."));
+                       tr("This example demonstrates simple use of "
+                          "QMainWindow,\nQMenuBar and QToolBar."));
 }
 
 
@@ -114,7 +114,7 @@ void bulmafact::s_ventanaCompleta() {
         showNormal();
     } else {
         showFullScreen();
-    }// end if
+    } // end if
 }
 
 
@@ -127,6 +127,7 @@ void bulmafact::s_About() {
 void bulmafact::closeEvent(QCloseEvent *) {
     _depura("closeEvent", 0);
     delete m_company;
+
 #ifdef WINDOWS
     exit(0);
 #endif

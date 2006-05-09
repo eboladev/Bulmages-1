@@ -44,8 +44,7 @@
 
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp),
-dialogChanges(this)  {
+        : QWidget(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp), dialogChanges(this) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
     setupUi(this);
     subform2->setcompany(comp);
@@ -70,7 +69,7 @@ AlbaranProveedorView::~AlbaranProveedorView()  {
 
 
 void AlbaranProveedorView::inicialize()  {
-    _depura("AlbaranProveedorView::inicialize",0);
+    _depura("AlbaranProveedorView::inicialize", 0);
     m_totalBases->setReadOnly(TRUE);
     m_totalBases->setAlignment(Qt::AlignRight);
     m_totalTaxes->setReadOnly(TRUE);
@@ -83,7 +82,7 @@ void AlbaranProveedorView::inicialize()  {
 }
 
 
-void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva)  {
+void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalalbaranp->setText((iva + base).toQString());
@@ -95,7 +94,7 @@ void AlbaranProveedorView::s_verpedidoproveedor()  {
 }
 
 
-/// Se encarga de generar una facturap a partir del albaranp
+/// Se encarga de generar una facturap a partir del albaranp.
 void AlbaranProveedorView::generarFactura()  {
     _depura("AlbaranProveedorView::generarFactura", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
@@ -113,6 +112,7 @@ void AlbaranProveedorView::generarFactura()  {
     }
 
     delete cur;
+
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
     if (QMessageBox::question(this, tr("Factura inexistente"),
@@ -130,6 +130,7 @@ void AlbaranProveedorView::generarFactura()  {
     bud->setreffacturap(DBvalue("refalbaranp"));
     bud->setidproveedor(DBvalue("idproveedor"));
     SDBRecord *linea, *linea1;
+
     for ( int i  = 0; i < listalineas->rowCount(); ++i) {
         linea1 = bud->getlistalineas()->newSDBRecord();
         linea->setDBvalue("desclfacturap",linea->DBvalue("desclalbaranp"));
@@ -140,7 +141,7 @@ void AlbaranProveedorView::generarFactura()  {
         linea->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
         linea->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
         linea->setDBvalue("ivalfacturap",linea->DBvalue("ivalalbaranp"));
-    }// end for
+    } // end for
 
     bud->pintar();
     bud->show();
@@ -150,22 +151,23 @@ void AlbaranProveedorView::generarFactura()  {
 void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning( this, tr("Guardar albaran"),
-                                        tr("Desea guardar los cambios?"), tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this, tr("Guardar albaran"),
+                                             tr("Desea guardar los cambios?"),
+                                             tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
             guardar();
         if (val == 2)
             e->ignore();
-    }// end if
+    } // end if
 }
 
 
-int AlbaranProveedorView::cargar(QString id)  {
+int AlbaranProveedorView::cargar(QString id) {
     AlbaranProveedor::cargar(id);
     setCaption(tr("Albaran de proveedor  ") + DBvalue("refalbaranp"));
     if (companyact->meteWindow(caption(), this)) {
-        return -1;
-    }// end if
+        return - 1;
+    } // end if
     dialogChanges_cargaInicial();
     return 0;
 }
@@ -182,7 +184,6 @@ int AlbaranProveedorView::guardar() {
     setrefalbaranp(m_refalbaranp->text());
     setdescalbaranp(m_descalbaranp->text());
 
-
     int err = AlbaranProveedor::guardar();
     dialogChanges_cargaInicial();
     return err;
@@ -192,3 +193,4 @@ int AlbaranProveedorView::guardar() {
 void AlbaranProveedorView::m_guardar_clicked() {
     guardar();
 }
+

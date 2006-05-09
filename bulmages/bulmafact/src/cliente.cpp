@@ -17,19 +17,18 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include <QFile>
+#include <QTextStream>
 
 #include "cliente.h"
 #include "company.h"
 #include "configuracion.h"
 #include "plugins.h"
 
-#include <QFile>
-#include <QTextStream>
-
 
 Cliente::Cliente(company *comp) : DBRecord(comp) {
-    _depura("Cliente::Cliente",0);
-    m_companyact=comp;
+    _depura("Cliente::Cliente", 0);
+    m_companyact = comp;
     setDBTableName("cliente");
     setDBCampoId("idcliente");
     addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "ID cliente");
@@ -49,7 +48,7 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, "Fecha de baja del cliente");
     addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios");
     addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Cliente inactivo");
-    _depura("END Cliente::Cliente",0);
+    _depura("END Cliente::Cliente", 0);
 }
 
 
@@ -59,14 +58,14 @@ Cliente::~Cliente() {}
 void Cliente::borraCliente() {
     if (DBvalue("idcliente") != "") {
         m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente="+DBvalue("idcliente"));
+        int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente=" + DBvalue("idcliente"));
         if (error) {
             m_companyact->rollback();
             return;
-        }// end if
+        } // end if
         m_companyact->commit();
         vaciaCliente();
-    }// end if
+    } // end if
 }
 
 
@@ -76,9 +75,9 @@ void Cliente::vaciaCliente() {
 
 
 void Cliente::pintaCliente() {
-    _depura("Cliente::pintaCliente",0);
+    _depura("Cliente::pintaCliente", 0);
 
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("Cliente_pintaCliente", this);
     if (res != 0)
         return;
@@ -101,21 +100,21 @@ void Cliente::pintaCliente() {
     pintainactivocliente  (DBvalue("inactivocliente"));
     pintaprovcliente  (DBvalue("provcliente"));
 
-    _depura("END Cliente::pintaCliente",0);
+    _depura("END Cliente::pintaCliente", 0);
 
 }
 
 
-// Esta funcion carga un Cliente.
+/// Esta funcion carga un Cliente.
 int Cliente::cargar(QString idcliente) {
-    _depura("Cliente::cargaCliente",0);
-    QString query = "SELECT * FROM cliente WHERE idcliente="+idcliente;
+    _depura("Cliente::cargaCliente", 0);
+    QString query = "SELECT * FROM cliente WHERE idcliente=" + idcliente;
     cursor2 * cur= m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
-    }// end if
+    } // end if
     delete cur;
-    _depura("END Cliente::cargaCliente",0);
+    _depura("END Cliente::cargaCliente", 0);
     return 0;
 }
 
@@ -127,7 +126,7 @@ void Cliente::guardaCliente() {
     if (error ) {
         m_companyact->rollback();
         return;
-    }// end if
+    } // end if
     setidcliente(id);
     m_companyact->commit();
 }

@@ -399,8 +399,7 @@ aboutview::aboutview(QDialog *parent) : QDialog(parent) {
     textEdit_autores->setHtml(str_autores);
     textEdit_soporte->setHtml(str_soporte);
     textEdit_licencia->setHtml(str_licencia);
-};
+}
 
 
 aboutview::~aboutview() {}
-;

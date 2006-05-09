@@ -23,11 +23,11 @@
 #include <Q3ComboBox>
 
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *name)
-: QComboBox(parent) {
-    companyact=NULL;
-    m_cursorcombo=NULL;
-    
-    connect(this,SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+        : QComboBox(parent) {
+    companyact = NULL;
+    m_cursorcombo = NULL;
+
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
 
 

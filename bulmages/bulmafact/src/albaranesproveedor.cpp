@@ -33,6 +33,7 @@
 #include "configuracion.h"
 #include "funcaux.h"
 
+
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WFlags flag)
         : QWidget(parent, name, flag) {
     setupUi(this);
@@ -41,11 +42,11 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WF
     mdb_idalbaranp = "";
     meteWindow(caption(), this);
     hideBusqueda();
-};
+}
 
 
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name,
-Qt::WFlags flag) : QWidget(parent,name, flag) {
+                                       Qt::WFlags flag) : QWidget(parent,name, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
@@ -55,27 +56,24 @@ Qt::WFlags flag) : QWidget(parent,name, flag) {
     mdb_idalbaranp = "";
     meteWindow(caption(), this);
     hideBusqueda();
-};
+}
 
 
 AlbaranesProveedor::~AlbaranesProveedor() {
     m_companyact->refreshAlbaranesProveedor();
     m_companyact->sacaWindow(this);
-};
+}
 
 
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta().", 1);
-
     if (m_companyact != NULL ) {
-
         cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalalbpro(idalbaranp) AS total, calcbimpalbpro(idalbaranp) AS base, calcimpuestosalbpro(idalbaranp) AS impuestos FROM albaranp LEFT " \
                         "JOIN proveedor ON albaranp.idproveedor = " \
                         "proveedor.idproveedor LEFT JOIN almacen ON " \
                         "albaranp.idalmacen=almacen.idalmacen LEFT JOIN " \
                         "forma_pago ON albaranp.idforma_pago = " \
                         "forma_pago.idforma_pago WHERE 1=1 " + generaFiltro());
-
         mui_list->cargar(cur);
         delete cur;
 
@@ -89,7 +87,7 @@ void AlbaranesProveedor::presenta() {
         delete cur;
     }
     _depura("END AlbaranesProveedor::presenta().", 0);
-};
+}
 
 
 QString AlbaranesProveedor::generaFiltro() {
@@ -102,37 +100,28 @@ QString AlbaranesProveedor::generaFiltro() {
         filtro +=" OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
-    };
+    }
 
-    if (m_proveedor->idproveedor() != "") {
+    if (m_proveedor->idproveedor() != "")
         filtro += " AND albaranp.idproveedor=" + m_proveedor->idproveedor();
-    };
-
-    if (!m_procesados->isChecked()) {
+    if (!m_procesados->isChecked())
         filtro += " AND NOT procesadoalbaranp";
-    };
-
-    if (m_articulo->idarticulo() != "") {
+    if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp " \
                   "WHERE idarticulo='" + m_articulo->idarticulo() + "')";
-    };
-
-    if (m_fechain->text() != "") {
+    if (m_fechain->text() != "")
         filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
-    };
-
-    if (m_fechafin->text() != "") {
+    if (m_fechafin->text() != "")
         filtro += " AND fechaalbaranp <= '" + m_fechafin->text() + "' ";
-    };
     return (filtro);
-};
+}
 
 
 void AlbaranesProveedor::editar(int  row) {
-    _depura("AlbaranesProveedor::editar",0);
-    mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"),row);
+    _depura("AlbaranesProveedor::editar", 0);
+    mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
     if (m_modo ==0 ) {
-        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact,0,theApp->translate("Edicion de Albaranes a Proveedor", "company"));
+        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0, theApp->translate("Edicion de Albaranes a Proveedor", "company"));
         if (prov->cargar(mdb_idalbaranp)) {
             return;
         }
@@ -140,18 +129,17 @@ void AlbaranesProveedor::editar(int  row) {
         prov->show();
     } else {
         emit(selected(mdb_idalbaranp));
-        // close();
-    }// end if
-    _depura("END AlbaranesProveedor::editar",0);
+    } // end if
+    _depura("END AlbaranesProveedor::editar", 0);
 }
 
 
 void AlbaranesProveedor::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >=0 )
+    if (a >= 0)
         editar(a);
     else
-        _depura("Debe seleccionar una linea",2);
+        _depura("Debe seleccionar una linea", 2);
 }
 
 
@@ -159,12 +147,11 @@ void AlbaranesProveedor::imprimir() {
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranesproveedor.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "albaranesproveedor.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
     /// Copiamos el archivo
 #ifdef WINDOWS
-
     archivo = "copy " + archivo + " " + archivod;
 #else
-
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -172,20 +159,16 @@ void AlbaranesProveedor::imprimir() {
 
     /// Copiamos el logo
 #ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) +
-                  "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) +
-                  "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system(archivologo.ascii());
 
     QFile file;
     file.setName(archivod);
-    file.open( QIODevice::ReadOnly );
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
@@ -206,7 +189,7 @@ void AlbaranesProveedor::imprimir() {
 }
 
 
-void AlbaranesProveedor::on_mui_borrar_clicked()  {
+void AlbaranesProveedor::on_mui_borrar_clicked() {
     _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
     mdb_idalbaranp =  mui_list->DBvalue(QString("idalbaranp"));
 
@@ -218,7 +201,7 @@ void AlbaranesProveedor::on_mui_borrar_clicked()  {
         bud->cargar(mdb_idalbaranp);
         bud->borrar();
         delete bud;
-    };
+    }
 
     presenta();
 }
@@ -227,7 +210,6 @@ void AlbaranesProveedor::on_mui_borrar_clicked()  {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
@@ -248,4 +230,5 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, co
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total albaran"));
     setinsercion(FALSE);
-};
+}
+

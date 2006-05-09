@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QComboBox>
 
 #include "busquedaprovincia.h"
@@ -28,11 +27,11 @@
 
 BusquedaProvincia::BusquedaProvincia(QWidget *parent, const char *name)
         : QComboBox(parent, name) {
-    _depura("BusquedaProvincia::BusquedaProvincia",0);
-    companyact=NULL;
-    m_cursorcombo=NULL;
-    connect(this,SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-    _depura("END BusquedaProvincia::BusquedaProvincia",0);
+    _depura("BusquedaProvincia::BusquedaProvincia", 0);
+    companyact = NULL;
+    m_cursorcombo = NULL;
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaProvincia::BusquedaProvincia", 0);
 }
 
 
@@ -40,7 +39,7 @@ BusquedaProvincia::~BusquedaProvincia() {}
 
 
 void BusquedaProvincia::setProvincia(QString provincia) {
-    _depura("BusquedaProvincia::setProvincia",0);
+    _depura("BusquedaProvincia::setProvincia", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM provincia");
@@ -49,14 +48,16 @@ void BusquedaProvincia::setProvincia(QString provincia) {
     int i1 = 0;
     clear();
     insertItem("--");
+
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("provincia") == provincia)
             i1 = i;
         insertItem(m_cursorcombo->valor("provincia"));
         m_cursorcombo->siguienteregistro();
-    }// end while
+    } // end while
+
     setCurrentItem(i1);
-    _depura("END BusquedaProvincia::setProvincia",0);
+    _depura("END BusquedaProvincia::setProvincia", 0);
 }
 

@@ -27,12 +27,12 @@
 
 
 BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
-: QWidget(parent, name) {
+        : QWidget(parent, name) {
     setupUi(this);
-    companyact=NULL;
-    mdb_idproveedor="";
-    mdb_nomproveedor="";
-    mdb_cifproveedor="";
+    companyact = NULL;
+    mdb_idproveedor = "";
+    mdb_nomproveedor = "";
+    mdb_cifproveedor = "";
 }
 
 
@@ -40,78 +40,81 @@ BusquedaProveedor::~BusquedaProveedor() {}
 
 
 void BusquedaProveedor::setidproveedor(QString val) {
-    mdb_idproveedor=val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor='"+mdb_idproveedor+"'";
+    mdb_idproveedor = val;
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor='" + mdb_idproveedor + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_cifproveedor = cur->valor("cifproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
     } else {
-        mdb_idproveedor="";
-        mdb_nomproveedor="";
-        mdb_cifproveedor="";
-    }// end if
+        mdb_idproveedor = "";
+        mdb_nomproveedor = "";
+        mdb_cifproveedor = "";
+    } // end if
     delete cur;
     m_cifproveedor->setText(mdb_cifproveedor);
     m_nomproveedor->setText(mdb_nomproveedor);
-
 }
 
 
 void BusquedaProveedor::setcifproveedor(QString val) {
-    mdb_cifproveedor=val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='"+mdb_cifproveedor+"'";
+    mdb_cifproveedor = val;
+    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='" + mdb_cifproveedor + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+
+    if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
     } else {
-        mdb_idproveedor="";
-        mdb_nomproveedor="";
-    }// end if
+        mdb_idproveedor = "";
+        mdb_nomproveedor = "";
+    } // end if
+
     delete cur;
     m_cifproveedor->setText(mdb_cifproveedor);
     m_nomproveedor->setText(mdb_nomproveedor);
 }
 
 
-// Busqueda de proveedors.
+/// Busqueda de proveedor.
 void BusquedaProveedor::on_mui_buscar_clicked() {
-    _depura("Busqueda de un provider\n",0);
+    _depura("Busqueda de un provider\n", 0);
 
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
+    /// Esto es convertir un QWidget en un sistema modal de dialogo.
+    QDialog *diag=new QDialog(0);
+    diag->setModal(true);
 
-	QDialog *diag=new QDialog(0);
-	diag->setModal(true);
+    ProveedorList *providers = new ProveedorList(companyact, diag, tr("Seleccione proveedor","company"), 0, ProveedorList::SelectMode);
 
-    ProveedorList *providers = new ProveedorList(companyact, diag, tr("Seleccione proveedor","company"),0,ProveedorList::SelectMode);
+    connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    diag->exec();
 
-	connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
-	diag->exec();
-
-    if (providers->cifprovider() !="") {
+    if (providers->cifprovider() != "") {
         m_cifproveedor->setText(providers->cifprovider());
         mdb_cifproveedor = providers->cifprovider();
         m_nomproveedor->setText(providers->nomprovider());
         mdb_nomproveedor = providers->nomprovider();
         mdb_idproveedor = providers->idprovider();
-    }// end if
+    } // end if
+
     delete providers;
-	delete diag;
+    delete diag;
 }
 
 
 void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
-    mdb_cifproveedor=val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='"+mdb_cifproveedor+"'";
+    mdb_cifproveedor = val;
+    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='" + mdb_cifproveedor + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+
+    if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
     } else {
-        mdb_idproveedor="";
-        mdb_nomproveedor="";
-    }// end if
+        mdb_idproveedor = "";
+        mdb_nomproveedor = "";
+    } // end if
+
     delete cur;
     m_cifproveedor->setText(mdb_cifproveedor);
     m_nomproveedor->setText(mdb_nomproveedor);
