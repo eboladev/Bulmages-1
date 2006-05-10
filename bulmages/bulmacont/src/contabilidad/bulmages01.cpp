@@ -132,9 +132,7 @@ void Bulmages01::slotEditUndo()  {
 
 
 
-void Bulmages01::slotBloqFechas() {
-    (new BbloqFecha(&DBName, this))->exec();
-}
+
 
 void Bulmages01::slotEditCut()  {
     statusBar()->message(tr("Cutting selection..."));
@@ -174,13 +172,6 @@ void Bulmages01::slotViewToolBar(bool toggle)  {
 */
 }
 
-void Bulmages01::tile() {
-	m_pWorkspace->tile();
-}
-
-void Bulmages01::cascade() {
-	m_pWorkspace->cascade();
-}
 
 
 ///////////////////////////////////////////////////////////////////
@@ -212,16 +203,6 @@ void Bulmages01::slotViewFullScreen(bool toggle)  {
 
 
 
-///////////////////////////////////////////////////////////////////
-//turn Statusbar on or off                                       //
-///////////////////////////////////////////////////////////////////
-
-void Bulmages01::slotHelpAbout()  {
-    aboutview *about=new aboutview(0,0);
-    about->exec();
-    delete about;
-}
-
 
 void Bulmages01::slotStatusHelpMsg(const QString &text) {
     ///////////////////////////////////////////////////////////////////
@@ -232,24 +213,6 @@ void Bulmages01::slotStatusHelpMsg(const QString &text) {
 
 void Bulmages01::slotListadoCuentas()  {
     statusBar()->message(tr("Listado de Cuentas"));
-}
-
-
-void Bulmages01::slotAsientosInteligentes()  {
-    statusBar()->message(tr("Asientos Inteligentes"));
-    m_empresaactual->ainteligentes();
-}
-
-
-
-
-void Bulmages01::slotIntroducirApuntes1()  {
-    statusBar()->message(tr("Introducción de Borrador"));
-    m_empresaactual->muestraapuntes1();
-}
-
-void Bulmages01::slotListarApuntes() {
-    m_empresaactual->muestraasientos();
 }
 
 void Bulmages01::slotAsientos()  {
@@ -263,12 +226,6 @@ void Bulmages01::slotCentrosCoste() {
 void Bulmages01::slotCanales() {
     m_empresaactual->canales();
 }
-
-void Bulmages01::slotMPatrimoniales() {
-    m_empresaactual->mpatrimoniales();
-}
-
-
 
 void Bulmages01::slotSiguiente() {
     m_empresaactual->boton_siguiente();
@@ -294,102 +251,12 @@ void Bulmages01::slotPrimero() {
 
 void Bulmages01::slotPerdidas() {}// end slotPerdidas
 
-void Bulmages01::slot347() {
-    m_empresaactual->modelo347();
-}
-
-void Bulmages01::slotBalan() {}// end slotBalan
-
-void Bulmages01::slotRegistroIva() {
-    m_empresaactual->registroiva();
-}
-
-
-void Bulmages01::slotReload() {
-    m_empresaactual->boton_reload();
-}
-
-
-void Bulmages01::slotBalance() {
-    m_empresaactual->librobalance();
-}
-
-void Bulmages01::slotBalanceTree() {
-    m_empresaactual->librobalancetree();
-}
-
-void Bulmages01::slotGuardar() {
-    m_empresaactual->boton_guardar();
-}
-
-
-void Bulmages01::slotcierraEmpresa() {
-    m_empresaactual->cierraempresa();
-}
-
-
-void Bulmages01::slotabreEmpresa() {
-    m_empresaactual->abreempresa();
-}
-
-void Bulmages01::slotregularizaEmpresa() {
-    m_empresaactual->regularizaempresa();
-}
-
-
-void Bulmages01::slotImprimir() {
-    m_empresaactual->boton_imprimir();
-}
-
-
-
-void Bulmages01::slotAbrirasientos() {
-    m_empresaactual->Abrirasientos();
-}
-
-void Bulmages01::slotOrdenarasientos() {
-    m_empresaactual->Ordenarasientos();
-}
-
-
-
-void Bulmages01::slotCobPag() {
-    m_empresaactual->cobPag();
-}
-
-
-void Bulmages01::slotFiltro() {
-    m_empresaactual->Filtro();
-}
-
 void Bulmages01::windowMenuAboutToShow()  {}
 
 
 void Bulmages01::slotWindowNewWindow() {}
 
 
-void Bulmages01::slotAyuda() {
-    actualizacionesview *act = new actualizacionesview(0,0);
-    act->exec();
-    delete act;
-}
-
-void Bulmages01::slotSCuentas() {
-    m_empresaactual->reemplazacuentaenasientos();
-}
-
-
-void Bulmages01::slotRecSald() {
-    // empresaactual->recalculasaldos();
-}
-
-void Bulmages01::slotCCosteDef() {
-    m_empresaactual->centrocostedefecto();
-}
-
-void Bulmages01::slotCanalDef() {
-    m_empresaactual->canaldefecto();
-}
 
 
 void Bulmages01::slotTiposIVA() {
@@ -413,4 +280,16 @@ void Bulmages01::closeEvent( QCloseEvent *) {
 }
 
 
+void Bulmages01::on_actionAyuda_triggered() {
+    actualizacionesview *act = new actualizacionesview(0,0);
+    act->exec();
+    delete act;
+}
 
+
+
+void Bulmages01::on_actionAcerca_de_triggered() {
+    aboutview *about=new aboutview(0,0);
+    about->exec();
+    delete about;
+}

@@ -20,8 +20,7 @@
 #include <errno.h>
 
 #include <QMainWindow>
-
-// include files for QT
+#include <QEvent>
 #include <q3vbox.h>
 #include <qapplication.h>
 #include <q3mainwindow.h>
@@ -39,8 +38,7 @@
 #include <qprinter.h>
 #include <qstring.h>
 #include <qpixmap.h>
-//Added by qt3to4:
-#include <QEvent>
+
 
 
 #include "ui_bulmacontbase.h"
@@ -86,10 +84,6 @@ protected:
     virtual bool eventFilter(QObject* object, QEvent* event);
 
 private slots:
-
-    virtual void tile();
-    virtual void cascade();
-
     /** reverts the last editing action */
     void slotEditUndo();
     /** put the marked text/object into the clipboard and remove
@@ -99,49 +93,21 @@ private slots:
     void slotEditCopy();
     /** paste the clipboard into the document*/
     void slotEditPaste();
-
-
     /** Slot para mostrar los listados de cuentas */
     void slotListadoCuentas();
-    /** Slot para introducir apuntes */
-    void slotIntroducirApuntes1();
-    /** Slot para listar apuntes */
-    void slotListarApuntes();
+
 
     /** Slot para el libro mayor */
     void slotAsientos();
     void slotPerdidas();
-    void slot347();
-    void slotBalan();
     void slotSiguiente();
     void slotAnterior();
     void slotUltimo();
     void slotPrimero();
-    void slotGuardar();
-    void slotImprimir();
-    void slotReload();
-    void slotRegistroIva();
-    void slotAsientosInteligentes();
     void slotCentrosCoste();
     void slotCanales();
-    void slotcierraEmpresa();
-    void slotabreEmpresa();
-    void slotregularizaEmpresa();
     void slotViewFullScreen(bool toggle);
-    void slotBalance();
-    void slotBalanceTree();
-    void slotAyuda();
-    void slotAbrirasientos();
-    void slotOrdenarasientos();
-    void slotFiltro();
-    void slotMPatrimoniales();
     void slotCompBalance();
-    void slotBloqFechas();
-    void slotSCuentas();
-    void slotCCosteDef();
-    void slotCanalDef();
-    void slotRecSald();
-    void slotCobPag();
     void slotTiposIVA();
     void slotFPago();
 
@@ -156,8 +122,6 @@ private slots:
     void slotViewStatusBar(bool toggle);
     /** creates a new view for the current document */
     void slotWindowNewWindow();
-    /** shows an about dlg*/
-    void slotHelpAbout();
     /** change the status message of the whole statusbar temporary */
     void slotStatusHelpMsg(const QString &text);
     /** gets called when the window menu is activated; recreates the window menu with all opened window titles. */
@@ -184,57 +148,125 @@ public slots:
     virtual void on_actionAsientos_triggered() {
         m_empresaactual->muestraasientos();
     };
+
     virtual void on_actionConfiguracion_triggered() {
         m_empresaactual->propiedadempresa();
     };
+
     virtual void on_actionApuntes_Contables_triggered() {
-        m_empresaactual->muestraapuntes();
+    m_empresaactual->muestraapuntes1();
+
     };
+
     virtual void on_actionLibro_Mayor_triggered() {
         m_empresaactual->libromayor();
     };
+
     virtual void on_actionLibro_Diario_triggered() {
         m_empresaactual->librodiario();
     };
+
     virtual void on_actionPlan_Contable_triggered() {
         m_empresaactual->muestracuentas();
     };
+
     virtual void on_actionBalance_de_Sumas_y_Saldos_triggered() {
-        _depura("actionBalancedeSumasySaldos",2);
+        m_empresaactual->librobalance();
     };
+
     virtual void on_actionBalance_Jer_rquico_de_Sumas_y_Saldos_triggered() {
-        _depura("on_actionBalance_Jer_rquico_de_Sumas_y_Saldos_triggered",2);
+        m_empresaactual->librobalancetree();
     };
 
     virtual void on_actionAsientos_Inteligentes_triggered() {
-        _depura("on_actionAsientos_Inteligentes_triggered",2);
+        m_empresaactual->ainteligentes();
     };
 
-    virtual void on_actionImprimir_triggered() { _depura("on_actionImprimir_triggered",2);};
-    virtual void on_actionGuardar_triggered() {_depura("on_actionGuardar_triggered",2);};
-    virtual void on_actionActualizar_triggered() {_depura("on_actionActualizar_triggered",2);};
-    virtual void on_actionFiltrar_triggered() {_depura("on_actionFiltrar_triggered",2);};
-    virtual void on_actionRecalcular_Saldos_Iniciales_triggered() {_depura("on_actionRecalcular_Saldos_Iniciales_triggered",2);};
-    virtual void on_actionSustituir_Cuentas_triggered() {_depura("on_actionSustituir_Cuentas_triggered",2);};
-    virtual void on_actionBloquear_Fechas_triggered() {_depura("",2);};
+    virtual void on_actionImprimir_triggered() {
+        m_empresaactual->boton_imprimir();
+    };
 
-    virtual void on_actionCanal_por_Defecto_triggered() {_depura("",2);};
-    virtual void on_actionCentro_de_Coste_por_Defecto_triggered() {_depura("",2);};
-    virtual void on_actionOrdenar_Ventanas_triggered() {_depura("",2);};
-    virtual void on_actionOrganizaci_n_en_Cascada_triggered() {_depura("",2);};
-    virtual void on_actionAyuda_triggered() {_depura("",2);};
-    virtual void on_actionAcerca_de_triggered() {_depura("",2);};
-    virtual void on_actionAbrir_Asientos_triggered() {_depura("",2);};
-    virtual void on_actionOrdenar_Asientos_triggered() {_depura("",2);};
-    virtual void on_actionAsiento_de_Apertura_triggered() {_depura("",2);};
-    virtual void on_actionAsiento_de_Regularizacion_triggered() {_depura("",2);};
-    virtual void on_actionAsiento_de_Cierre_triggered() {_depura("",2);};
-    virtual void on_actionCuentas_Anuales_triggered() {_depura("",2);};
-    virtual void on_actionMasas_Patrimoniales_triggered() {_depura("",2);};
-    virtual void on_actionRegistro_de_IVA_triggered() {_depura("",2);};
-    virtual void on_actionModelo_347_no_oficial_triggered() {_depura("",2);};
-    virtual void on_actionCobros_y_Pagos_triggered() {_depura("",2);};
-    virtual void on_actionAmortizaciones_triggered() {m_empresaactual->amortizaciones();};
+    virtual void on_actionGuardar_triggered() {
+        m_empresaactual->boton_guardar();
+    };
+
+    virtual void on_actionActualizar_triggered() {
+        m_empresaactual->boton_reload();
+    };
+
+    virtual void on_actionFiltrar_triggered() {
+        m_empresaactual->Filtro();
+    };
+
+    virtual void on_actionRecalcular_Saldos_Iniciales_triggered() {
+        // empresaactual->recalculasaldos();
+    };
+
+
+    virtual void on_actionSustituir_Cuentas_triggered() {
+        m_empresaactual->reemplazacuentaenasientos();
+    };
+
+    virtual void on_actionBloquear_Fechas_triggered() {
+        (new BbloqFecha(&DBName, this))->exec();
+    };
+
+    virtual void on_actionCanal_por_Defecto_triggered() {
+        m_empresaactual->canaldefecto();
+    };
+
+    virtual void on_actionCentro_de_Coste_por_Defecto_triggered() {
+        m_empresaactual->centrocostedefecto();
+    };
+
+    virtual void on_actionOrdenar_Ventanas_triggered() {
+        m_pWorkspace->tile();
+    };
+
+    virtual void on_actionOrganizaci_n_en_Cascada_triggered() {
+        m_pWorkspace->cascade();
+    };
+
+    virtual void on_actionAyuda_triggered();
+
+    virtual void on_actionAcerca_de_triggered();
+
+
+    virtual void on_actionAbrir_Asientos_triggered() {
+        m_empresaactual->Abrirasientos();
+    };
+    virtual void on_actionOrdenar_Asientos_triggered() {
+        m_empresaactual->Ordenarasientos();
+    };
+    virtual void on_actionAsiento_de_Apertura_triggered() {
+        m_empresaactual->abreempresa();
+    };
+    virtual void on_actionAsiento_de_Regularizacion_triggered() {
+        m_empresaactual->regularizaempresa();
+    };
+
+    virtual void on_actionAsiento_de_Cierre_triggered() {
+        m_empresaactual->cierraempresa();
+    };
+    virtual void on_actionCuentas_Anuales_triggered() {
+        _depura("Funcion aun no implementada",2);
+    };
+    virtual void on_actionMasas_Patrimoniales_triggered() {
+        m_empresaactual->mpatrimoniales();
+    };
+
+    virtual void on_actionRegistro_de_IVA_triggered() {
+        m_empresaactual->registroiva();
+    };
+    virtual void on_actionModelo_347_no_oficial_triggered() {
+        m_empresaactual->modelo347();
+    };
+    virtual void on_actionCobros_y_Pagos_triggered() {
+        m_empresaactual->cobPag();
+    };
+    virtual void on_actionAmortizaciones_triggered() {
+        m_empresaactual->amortizaciones();
+    };
 
     virtual void on_actionPantalla_Completa_triggered() {
         if (isFullScreen()) {
