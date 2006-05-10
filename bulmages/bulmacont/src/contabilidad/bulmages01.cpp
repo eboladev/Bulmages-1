@@ -42,7 +42,7 @@
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString DB)
         : QMainWindow(parent,name,f) {
-	_depura("Bulmages01::Bulmages01",2);
+	_depura("Bulmages01::Bulmages01",0);
 	setupUi(this);
 
 	m_empresaactual = new empresa();
@@ -59,7 +59,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     ctllog->setempresa(m_empresaactual);
     ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
 
-	_depura("END Bulmages01::Bulmages01",2);
+	_depura("END Bulmages01::Bulmages01",0);
 }
 
 
@@ -129,9 +129,7 @@ void Bulmages01::slotEditUndo()  {
     statusBar()->message(tr("Ready."));
 }
 
-void Bulmages01::slotAmortizaciones() {
-    m_empresaactual->amortizaciones();
-}
+
 
 
 void Bulmages01::slotBloqFechas() {
@@ -232,12 +230,6 @@ void Bulmages01::slotStatusHelpMsg(const QString &text) {
 }
 
 
-void Bulmages01::slotPlanCuentas()  {
-    statusBar()->message(tr("Plan de Cuentas"));
-    m_empresaactual->muestracuentas();
-}
-
-
 void Bulmages01::slotListadoCuentas()  {
     statusBar()->message(tr("Listado de Cuentas"));
 }
@@ -249,10 +241,7 @@ void Bulmages01::slotAsientosInteligentes()  {
 }
 
 
-void Bulmages01::slotIntroducirApuntes()  {
-    statusBar()->message(tr("Introducción de Apuntes"));
-    m_empresaactual->muestraapuntes();
-}
+
 
 void Bulmages01::slotIntroducirApuntes1()  {
     statusBar()->message(tr("Introducción de Borrador"));
@@ -279,18 +268,6 @@ void Bulmages01::slotMPatrimoniales() {
     m_empresaactual->mpatrimoniales();
 }
 
-
-
-
-void Bulmages01::slotLibroMayor() {
-    statusBar()->message(tr("Libro Mayor"));
-    m_empresaactual->libromayor();
-}
-
-void Bulmages01::slotLibroDiario()  {
-    statusBar()->message(tr("Libro Diario"));
-    m_empresaactual->librodiario();
-}
 
 
 void Bulmages01::slotSiguiente() {
