@@ -35,13 +35,13 @@ TEMPLATE = app
 
 TARGET = ../../../installbulmages/bulmacont
 
-FORMS += bulmacontbase.ui
+FORMS += bulmacontbase.ui \
+	 diariobase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
          listcuentasdlg1.ui \
          cuentadlg.ui \
-         diariodlg1.ui \
          filtrardiariodlg.ui \
          extractodlg1.ui \
          balance1dlg.ui \
@@ -240,7 +240,8 @@ HEADERS += splashscreen.h \
 	   asiento1view.h \
 	   linasiento1.h \
 	   listlinasiento1.h \
-	   listlinasiento1view.h
+	   listlinasiento1view.h \
+	   subform2bc.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -305,7 +306,8 @@ SOURCES += main.cpp \
 	   asiento1view.cpp \
 	   linasiento1.cpp \
 	   listlinasiento1.cpp \
-	   listlinasiento1view.cpp
+	   listlinasiento1view.cpp \
+	   subform2bc.cpp
 	 
 	 
 

@@ -227,9 +227,7 @@ void Bulmages01::slotCanales() {
     m_empresaactual->canales();
 }
 
-void Bulmages01::slotSiguiente() {
-    m_empresaactual->boton_siguiente();
-}
+
 
 
 void Bulmages01::slotCompBalance() {
@@ -237,17 +235,6 @@ void Bulmages01::slotCompBalance() {
 }
 
 
-void Bulmages01::slotAnterior() {
-    m_empresaactual->boton_anterior();
-}
-
-void Bulmages01::slotUltimo() {
-    m_empresaactual->boton_ultimo();
-}
-
-void Bulmages01::slotPrimero() {
-    m_empresaactual->boton_primero();
-}
 
 void Bulmages01::slotPerdidas() {}// end slotPerdidas
 

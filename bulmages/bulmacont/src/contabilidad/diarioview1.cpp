@@ -1,5 +1,5 @@
 /***************************************************************************
-                          diarioview1.cpp  -  description
+                          DiarioView.cpp  -  description
                              -------------------
     begin                : Thu Jan 9 2003
     copyright            : (C) 2003 by Tomeu Borrás Riera
@@ -27,7 +27,7 @@
 #include <QPixmap>
 
 #include "empresa.h"
-#include "diarioview1.h"
+#include "diarioview.h"
 #include "funcaux.h"
 #include "diarioprintview.h"
 #include "diarioprint.h"
@@ -63,7 +63,9 @@
 #define COL_CONTRAPARTIDA 9
 #define COL_NUMASIENTO 10
 
-diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  ) : diariodlg1(parent,name) {
+DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) : QWidget(parent,name) {
+	setupUi(this);
+
     companyact = emp;
 
     m_listado->setSorting( FALSE );
@@ -130,14 +132,14 @@ diarioview1::diarioview1(empresa *emp, QWidget *parent, const char *name, int  )
 
     //Inicializamos el filtro
     filt = new filtrardiarioview(companyact,0,0);
-}// end diarioview1
+}// end DiarioView
 
-diarioview1::~diarioview1() {
+DiarioView::~DiarioView() {
     delete filt;
-}// end ~diarioview1
+}// end ~DiarioView
 
 
-void diarioview1::inicializa1(QString finicial, QString ffinal, int ) {
+void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
     QString s1, s2, s3;
     QDate fecha1aux;
     int dia, mes, ano;
@@ -170,7 +172,7 @@ void diarioview1::inicializa1(QString finicial, QString ffinal, int ) {
 /** \brief SLOT que responde a la pulsación del botón de imprimir.
  * Muestra el formulario de impresión de diario y lo ejecuta \ref DiarioPrintView
  */
-void diarioview1::boton_imprimir() {
+void DiarioView::boton_imprimir() {
     DiarioPrintView *print = new DiarioPrintView(companyact,0,0);
     print->setFiltro(filt);
     print->inicializa1(m_fechainicial1->text(), m_fechafinal1->text());
@@ -181,7 +183,7 @@ void diarioview1::boton_imprimir() {
 /**************************************************************
  * Se ha pulsado sobre el botón guardar del formulario
  **************************************************************/
-void diarioview1::boton_guardar() {
+void DiarioView::boton_guardar() {
     QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Diarios (*.txt)", 0,"Guardar Libro Diario","Elige el nombre de archivo");
     if (!fn.isEmpty()) {
         // Si se ha proporcionado un nombre de archivo valido
@@ -200,7 +202,7 @@ void diarioview1::boton_guardar() {
 /**************************************************************
  * Se ha pulsado sobre el boton aceptar del formulario
  **************************************************************/
-void diarioview1::accept() {
+void DiarioView::accept() {
     presentar();
 }// end diarioview
 
@@ -208,7 +210,7 @@ void diarioview1::accept() {
 // 0 -> del dia actual
 // 1 -> del mes actual
 // 2 -> del año actual
-void diarioview1::boton_extracto1(int tipo) {
+void DiarioView::boton_extracto1(int tipo) {
     QDate fecha1, fecha2, fechaact;
     if(!m_listado->text(m_listado->currentRow(),2).isEmpty()) {
         fechaact = normalizafecha(m_listado->text(m_listado->currentRow(), COL_FECHA));
@@ -237,7 +239,7 @@ void diarioview1::boton_extracto1(int tipo) {
 // 0 -> del periodo actual.
 // 1 -> del mes actual mirado a partir de la fecha de inicio.
 // 2 -> del año actual mirado a partir de la fecha de inicio.
-void diarioview1::boton_balance1(int tipo) {
+void DiarioView::boton_balance1(int tipo) {
     QDate fecha1, fecha2, fechaact, fechaact1;
     if(!m_fechainicial1->text().isEmpty()) {
         fechaact = normalizafecha(m_fechainicial1->text());
@@ -263,8 +265,8 @@ void diarioview1::boton_balance1(int tipo) {
 }// end boton_balance1
 
 
-void diarioview1::boton_asiento() {
-	_depura("diarioview1::boton_asiento",0);
+void DiarioView::boton_asiento() {
+	_depura("DiarioView::boton_asiento",0);
     if (m_listado->currentRow()!= -1) {
         QString text = m_listado->text(m_listado->currentRow(),COL_NUMASIENTO);
         int numasiento = atoi((char *)text.ascii());
@@ -273,11 +275,11 @@ void diarioview1::boton_asiento() {
         }// end if
     }// end if
     companyact->muestraapuntes1();
-	_depura("END diarioview1::boton_asiento",0);
+	_depura("END DiarioView::boton_asiento",0);
 }// end if
 
 
-void diarioview1::presentar() {
+void DiarioView::presentar() {
     float debe, haber;
     float totaldebe1, totalhaber1;
     int idcuenta;
@@ -435,7 +437,7 @@ void diarioview1::presentar() {
 
 
 
-void diarioview1::contextmenu(int , int , const QPoint &poin) {
+void DiarioView::contextmenu(int , int , const QPoint &poin) {
     Q3PopupMenu *popup;
     int opcion;
     popup = new Q3PopupMenu;
@@ -474,7 +476,7 @@ void diarioview1::contextmenu(int , int , const QPoint &poin) {
     delete popup;
 }// end contextmenu
 
-void diarioview1::boton_filtrar() {
+void DiarioView::boton_filtrar() {
     filt->exec();
     accept();
 }// end boton_filtrar
@@ -483,7 +485,7 @@ void diarioview1::boton_filtrar() {
 // Cuando se ha pulsado una tecla sobre la fecha del extracto
 // Se evalua si la pulsación es un código de control o es un digitos
 // Para la introducción de fechas.
-void diarioview1::textChanged(const QString &texto) {
+void DiarioView::textChanged(const QString &texto) {
     QLineEdit *fecha = (QLineEdit *) sender();
     if (texto=="+") {
         Q3PtrList<QDate> a;

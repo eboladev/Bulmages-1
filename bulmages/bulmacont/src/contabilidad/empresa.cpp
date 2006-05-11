@@ -104,7 +104,7 @@ int empresa::inicializa1() {
   /// Inicializamos las ventanas de uso generalizado
   extracto = new extractoview1(this, 0,"extracto");
   pWorkspace->addWindow(extracto);
-  diario = new diarioview1(this,0,"diario");
+  diario = new DiarioView(this,0,"diario");
   pWorkspace->addWindow(diario);
   balance = new balanceview(this, 0,"balance");
   pWorkspace->addWindow(balance);

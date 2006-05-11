@@ -1,5 +1,5 @@
 /***************************************************************************
-                          diarioview1.h  -  description
+                          DiarioView.h  -  description
                              -------------------
     begin                : Thu Jan 9 2003
     copyright            : (C) 2003 by Tomeu Borrás Riera
@@ -17,23 +17,28 @@
 #ifndef DIARIOVIEW1_H
 #define DIARIOVIEW1_H
 
-#include "diariodlg1.h"
-#include "qlineedit1.h"
-#include "qtable1.h"
-#include "postgresiface2.h"
-
-class empresa;
-class filtrardiarioview;
-
 /**
  * \author Tomeu Borrás Riera
- * \class diarioview1 diarioview1.h
+ * \class DiarioView DiarioView.h
  * \brief Libro diario
  * 
  * Clase que muestra el libro diario de la empresa entre dos fechas.
  */
 
-class diarioview1 : public diariodlg1  {
+
+
+#include "qlineedit1.h"
+#include "qtable1.h"
+#include "postgresiface2.h"
+
+
+
+#include "ui_diariobase.h"
+
+class empresa;
+class filtrardiarioview;
+
+class DiarioView : public QWidget, public Ui_DiarioBase  {
    Q_OBJECT
 private:
 /// Estas tres variables son las clases sobre las que trabaja. Deberian estar en la empresa.
@@ -48,8 +53,8 @@ private:
 /// Empresa con la que esta trabajando esta clase.
    empresa *companyact;
 public:
-   diarioview1(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
-   ~diarioview1();
+   DiarioView(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
+   ~DiarioView();
    void accept();
 /// Inicializa la clase con las fechas inicial y final. El ltimo parametro no se usa.  
    void inicializa1(QString, QString, int);

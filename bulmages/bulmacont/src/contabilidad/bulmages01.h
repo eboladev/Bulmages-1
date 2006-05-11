@@ -100,10 +100,6 @@ private slots:
     /** Slot para el libro mayor */
     void slotAsientos();
     void slotPerdidas();
-    void slotSiguiente();
-    void slotAnterior();
-    void slotUltimo();
-    void slotPrimero();
     void slotCentrosCoste();
     void slotCanales();
     void slotViewFullScreen(bool toggle);
@@ -275,6 +271,14 @@ public slots:
             showFullScreen();
         }// end if
     };
+
+
+   virtual void on_actionSiguiente_triggered() {    m_empresaactual->boton_siguiente();};
+   virtual void on_actionAnterior_triggered() {    m_empresaactual->boton_anterior();};
+   virtual void on_actionInicio_triggered() {    m_empresaactual->boton_primero();};
+   virtual void on_actionFin_triggered() {    m_empresaactual->boton_ultimo();};
+
+
 
 
 };

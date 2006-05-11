@@ -56,7 +56,7 @@ private:
     QWorkspace *pWorkspace;
 
     balance1view *balance1;
-    diarioview1 *diario;
+    DiarioView *diario;
     extractoview1 *extracto;
     balanceview *balance;
     Asiento1View *introapunts2;
@@ -85,7 +85,7 @@ public:
 	extractoview1 *extractoempresa() {
 		return extracto;
 	}
-	diarioview1 *diarioempresa() {
+	DiarioView *diarioempresa() {
 		return diario;
 	}
 	balance1view *balnace1empresa() {
