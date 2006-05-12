@@ -53,6 +53,11 @@ private:
 
 public:
 
+
+    SDBCampo * item(int row, int col) {
+        return (SDBCampo *) mui_list->item(row,col);
+    };
+
     int columnCount() {
         return mui_list->columnCount();
     };
@@ -71,9 +76,7 @@ public:
     int  currentRow() {
         return mui_list->currentRow();
     };
-    QTableWidgetItem *item(int i, int j) {
-        return item(i,j);
-    };
+
     int rowCount() {
         return mui_list->rowCount();
     };
@@ -124,10 +127,16 @@ public:
     void setDBCampoId(QString nom) {
         m_campoid = nom;
     };
-    
-    void clear() {mui_list->clear();};
-    void setRowCount(int i) {mui_list->setRowCount(i);};
-    void setColumnCount(int i) {mui_list->setColumnCount(i);};
+
+    void clear() {
+        mui_list->clear();
+    };
+    void setRowCount(int i) {
+        mui_list->setRowCount(i);
+    };
+    void setColumnCount(int i) {
+        mui_list->setColumnCount(i);
+    };
 
     void situarse(unsigned int, unsigned int);
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);

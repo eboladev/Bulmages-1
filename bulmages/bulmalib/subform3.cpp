@@ -55,9 +55,9 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     /// Ocultamos la configuraciónAlbaranCliente
     hideConfig();
 
-	/// Limpiamos la lista
-	m_lista.clear();
-_depura("END SubForm3::SubForm3",0);
+    /// Limpiamos la lista
+    m_lista.clear();
+    _depura("END SubForm3::SubForm3",0);
 }
 
 
@@ -69,13 +69,12 @@ SDBRecord *SubForm3::newSDBRecord() {
     SHeader * linea;
     for ( int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
-        _depura("agregamos una cabecera",0);
         rec->addDBCampo(linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion() );
     }// end for
 
     SDBCampo*camp;
     for( int i =0; i < rec->lista()->size(); ++i) {
-	camp = (SDBCampo *) rec->lista()->at(i);
+        camp = (SDBCampo *) rec->lista()->at(i);
         SHeader *head = m_lcabecera.at(i);
         Qt::ItemFlags flags=0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
@@ -98,14 +97,14 @@ void SubForm3::nuevoRegistro() {
     if (!m_insercion)
         return;
     SDBRecord *rec = newSDBRecord();
+
     m_lista.append(rec);
-    mui_list->insertRow(mui_list->rowCount());
+
+    mui_list->insertRow(m_lista.size()-1);
     SDBCampo *camp;
-    int j=0;
     for(int i=0; i < rec->lista()->size(); ++i) {
-	camp = (SDBCampo *) rec->lista()->at(i);
-        mui_list->setItem(mui_list->rowCount()-1,i,camp);
-        j++;
+        camp = (SDBCampo *) rec->lista()->at(i);
+        mui_list->setItem(m_lista.size()-1,i,camp);
     }// end for
     _depura("END SubForm3::nuevoRegistro\n",0);
 
@@ -172,17 +171,17 @@ int SubForm3::cargar(cursor2 *cur) {
     mui_query->setText(cur->query());
     SDBRecord *rec;
 
-	_depura("Eliminamos registros.",0);
-	mui_list->clear();
-	mui_list->setRowCount(0);
+    _depura("Eliminamos registros.",0);
+    mui_list->clear();
+    mui_list->setRowCount(0);
 
     while (m_lista.count() ) {
         rec = m_lista.takeFirst();
-	if (rec)
-		delete rec;
+        if (rec)
+            delete rec;
     }// end while
 
-	_depura("Ponemos el query",0);
+    _depura("Ponemos el query",0);
     while (!cur->eof()) {
         SDBRecord *rec = newSDBRecord();
         rec->DBload(cur);
@@ -201,8 +200,8 @@ int SubForm3::cargar(cursor2 *cur) {
         reg = m_lista.at(i);
         _depura("pintamos un SDBRecord",0);
         SDBCampo *camp;
-	for ( int j =0; j < reg->lista()->size(); ++j) {
-		camp = (SDBCampo *) reg->lista()->at(j);
+        for ( int j =0; j < reg->lista()->size(); ++j) {
+            camp = (SDBCampo *) reg->lista()->at(j);
             _depura("ponemos un item"+camp->valorcampo(),1);
             mui_list->setItem(i,j,camp);
         }// end for
@@ -228,7 +227,11 @@ SDBRecord *SubForm3::lineaact() {
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()\n", 0);
-    return(((SDBCampo*) mui_list->item(row,0))->pare());
+    SDBCampo *camp =(SDBCampo*) mui_list->item(row,0);
+    SDBRecord *rec = (SDBRecord *) camp->pare();
+    _depura("END SubForm3::lineaat()\n", 0);
+
+    return rec;
 }
 
 
