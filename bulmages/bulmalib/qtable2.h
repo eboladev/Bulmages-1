@@ -64,6 +64,7 @@ public:
 
     virtual bool eventFilter( QObject *obj, QEvent *event );
     void setText( int x, int y, const QString & val) {
+	_depura("QTableWidget::setText",0);
         QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
         setItem(x, y, newitem);
     }// end setText

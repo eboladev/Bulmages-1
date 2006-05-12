@@ -42,11 +42,13 @@ SDBRecord::~SDBRecord() {
 
 
 void SDBRecord::refresh() {
+    _depura("SDBRecord::refresh",0);
     SDBCampo *camp;
     for (int i =0; i < m_lista.size(); ++i) {
         camp = (SDBCampo *)m_lista.at(i);
         camp->refresh();
     }// end for
+    _depura("END SDBRecord::refresh",0);
 }
 
 
@@ -71,7 +73,7 @@ SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ,
 
 
 SDBCampo::~SDBCampo() {
-    _depura("SDBCampo::~SDBCampo()",1);
+    _depura("SDBCampo::~SDBCampo()",0);
     static int destrucciones = 0;
     destrucciones++;
     _depura("SDBCampo destruidos:"+QString::number(destrucciones),0);
@@ -79,17 +81,21 @@ SDBCampo::~SDBCampo() {
 
 
 void SDBCampo::refresh() {
+    _depura("SDBCampo::refresh",0);
     if(tipo() == DBCampo::DBboolean) {
         DBCampo::set
             (checkState()==Qt::Checked?"TRUE":"FALSE");
     } else
         DBCampo::set
             (text());
+    _depura("END SDBCampo::refresh",0);
 }
 
 
-int SDBCampo::set
-    (QString val) {
+int SDBCampo::set(QString val) {
+
+
+    _depura("SDBCampo::set",0);
     if(tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
             setCheckState(Qt::Checked);
@@ -98,8 +104,8 @@ int SDBCampo::set
     } else
         QTableWidgetItem2::setText(val);
 
-    DBCampo::set
-        (val);
+    DBCampo::set(val);
+    _depura("END SDBCampo::set",0);
     return 0;
 }
 

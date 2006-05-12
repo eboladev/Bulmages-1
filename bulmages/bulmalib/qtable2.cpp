@@ -81,6 +81,7 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
             return TRUE;
         }// end if
         if (key == Qt::Key_Enter || key == Qt::Key_Return) { // El enter
+	    _depura("pulsado enter",2);
             emit pulsadomas(currentRow(), currentColumn(), 4100);
             return TRUE;
         }// end if
