@@ -73,7 +73,7 @@ void SubForm2Bf::pressedSlash(int row, int col) {
 }
 
 void SubForm2Bf::editFinished(int row, int col) {
-    _depura("SubForm2Bf::editFinished",0);
+    _depura("SubForm2Bf::editFinished",4);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();
@@ -85,10 +85,11 @@ void SubForm2Bf::editFinished(int row, int col) {
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         }
     }
+    _depura("END SubForm2Bf::editFinished",5);
 }
 
 void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
-    _depura("SubForm2Bf::contextMenuEvent",0);
+    _depura("SubForm2Bf::contextMenuEvent",4);
     QAction *del= NULL;
     int row = currentRow();
     if ( row < 0)
@@ -127,6 +128,7 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     if(opcion == verconfig)
         showConfig();
 
+    _depura("END SubForm2Bf::contextMenuEvent",5);
     delete popup;
 }
 

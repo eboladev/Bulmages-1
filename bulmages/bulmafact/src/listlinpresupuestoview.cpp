@@ -66,7 +66,8 @@ void listlinpresupuestoview::editFinished(int row, int col) {
 	delete cur;
 
     }// end if
-};
+    _depura("END listlinpresupuestoview::editFinished",0);
+}
 
 
 
