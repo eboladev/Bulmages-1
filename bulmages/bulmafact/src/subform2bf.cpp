@@ -34,9 +34,11 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
 };
 
 void SubForm2Bf::pressedAsterisk(int row, int col) {
+    _depura("SubForm2Bf::pressedAsterisk",0);
     SDBRecord *rec = lineaat(row);
+	_depura("tenemos el registro rec",0);
     SDBCampo *camp = (SDBCampo *) item(row,col);
-
+	_depura("tenemos el campo camp",0);
 
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
@@ -56,6 +58,7 @@ void SubForm2Bf::pressedAsterisk(int row, int col) {
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
     }// end if
+    _depura("END SubForm2Bf::pressedAsterisk",0);
 }
 
 
@@ -105,7 +108,7 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
-	popup->addSeparator();
+    popup->addSeparator();
     QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
@@ -121,8 +124,8 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
         resizeRowToContents(row);
 
 
-   if(opcion == verconfig)
-	showConfig();
+    if(opcion == verconfig)
+        showConfig();
 
     delete popup;
 }
