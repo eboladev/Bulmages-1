@@ -38,7 +38,7 @@
 #include <qcheckbox.h>
 #include "asiento1view.h"
 #include "balanceview.h"
-#include "diarioview1.h"
+#include "diarioview.h"
 #include "listcuentasview1.h"
 
 #include "busquedafecha.h"

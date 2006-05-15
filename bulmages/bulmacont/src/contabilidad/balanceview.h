@@ -18,7 +18,7 @@
 #define BALANCEVIEW_H
 
 #include "balancedlg.h"
-#include "diarioview1.h"
+#include "diarioview.h"
 #include "extractoview1.h"
 #include "qtable1.h"
 #include "qlayout.h"

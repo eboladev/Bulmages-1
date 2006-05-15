@@ -249,6 +249,7 @@ int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp
 
 int DBRecord::borrar() {
     _depura("DBRecord::borrar",0);
+try {
     DBCampo *linea;
     QString separadorwhere = "";
     QString querywhere = "";
@@ -258,7 +259,7 @@ int DBRecord::borrar() {
             int err;
             QString lin = linea->valorcampoprep(err);
             if (err)
-                return -1;
+                throw -1;
             querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
             separadorwhere = " AND ";
         }// end if
@@ -267,7 +268,7 @@ int DBRecord::borrar() {
                 int err;
                 QString lin = linea->valorcampoprep(err);
                 if (err)
-                    return -1;
+                    throw -1;
                 querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
                 separadorwhere = " AND ";
             }// end if
@@ -275,13 +276,14 @@ int DBRecord::borrar() {
     }// end for
 
     if (m_nuevoCampo == FALSE) {
-        int error = m_conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
-        if (error) {
-            return -1;
-        }// end if
+        m_conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
         DBclear();
     }// end if
     return 0;
+} catch (...) {
+	_depura("se produjo un error al borrar el elemento");
+	return -1;
+}
 }
 
 int DBRecord::guardar() {

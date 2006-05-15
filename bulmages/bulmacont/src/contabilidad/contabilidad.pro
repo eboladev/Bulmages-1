@@ -184,7 +184,7 @@ HEADERS += splashscreen.h \
            empresa.h \
            listcuentasview1.h \
            cuentaview.h \
-           diarioview1.h \
+           diarioview.h \
            qlineedit1.h \
            filtrardiarioview.h \
            extractoview1.h \
@@ -250,7 +250,7 @@ SOURCES += main.cpp \
            empresa.cpp \
            listcuentasview1.cpp \
            cuentaview.cpp \
-           diarioview1.cpp \
+           diarioview.cpp \
            qlineedit1.cpp \
            filtrardiarioview.cpp \
            extractoview1.cpp \

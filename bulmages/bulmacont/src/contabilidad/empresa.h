@@ -26,7 +26,7 @@
 
 
 #include "balanceview.h"
-#include "diarioview1.h"
+#include "diarioview.h"
 #include "extractoview1.h"
 #include "bmodelo347.h"
 #include "postgresiface2.h"
