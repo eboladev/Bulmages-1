@@ -83,7 +83,7 @@ void ProveedorList::editar(int  row) {
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"),row);
     if (m_modo ==0 ) {
         ProveedorView *prov = new ProveedorView(m_companyact,0,theApp->translate("Edicion de proveedores", "company"));
-        if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
+        if (prov->cargar(mui_list->DBvalue(QString("idproveedor"),row))) {
             return;
         }
         m_companyact->m_pWorkspace->addWindow(prov);
@@ -112,7 +112,7 @@ void ProveedorList::on_mui_borrar_clicked() {
     _depura("ProveedorList::on_mui_borrar_clicked",0);
     int row = mui_list->currentRow();
     ProveedorView *prov = new ProveedorView(m_companyact, 0);
-    if (prov->chargeprovider(mui_list->DBvalue(QString("idproveedor"),row))) {
+    if (prov->cargar(mui_list->DBvalue(QString("idproveedor"),row))) {
         return;
     }
     prov->on_mui_borrar_clicked();

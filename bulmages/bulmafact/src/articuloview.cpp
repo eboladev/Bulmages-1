@@ -126,12 +126,15 @@ int ArticuloView::cargar(QString idarticulo) {
     int ret = cargarcomboiva(ivaType);
     if (ret)
         error = 1;
+
+    /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo
+    setCaption(tr("Articulo ")+DBvalue("codigocompletoarticulo"));
     ret = m_companyact->meteWindow(caption(), this);
     if (ret)
         error = 1;
     m_componentes->cargar(DBvalue("idarticulo"));
 
-    dialogChanges_cargaInicial();
+
     /// Tratamiento de excepciones
     if (error == 1) {
         _depura("ArticuloView::END_chargeArticle Error en la carga del articulo()\n", 0);
@@ -139,6 +142,7 @@ int ArticuloView::cargar(QString idarticulo) {
     } // end if
 
     pintar();
+    dialogChanges_cargaInicial();
     _depura("END ArticuloView::cargar()\n", 0);
     return 0;
 }

@@ -22,38 +22,32 @@
 #define PROVEDIT_H
 
 #include "ui_proveditbase.h"
+#include "dbrecord.h"
+#include "dialogchanges.h"
 
 
 class company;
 
 
-class ProveedorView : public QWidget, public Ui_ProveedorBase {
+class ProveedorView : public QWidget, public Ui_ProveedorBase, public DBRecord, public dialogChanges {
     Q_OBJECT
 
 private:
     company *m_companyact;
-    QString mdb_idproveedor;
-    /// Indica si se han producido cambios.
-    bool m_modificado;
-
+    void closeEvent(QCloseEvent *);
 public:
     ProveedorView(company *emp, QWidget *parent = 0, const char *name = 0);
     ~ProveedorView();
-
 public:
-    int chargeprovider(QString);
+    virtual int cargar(QString);
+    virtual int guardar();
 
 public slots:
-    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_guardar_clicked() {
+	guardar();
+    };
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void s_setModificado() {
-        m_modificado = TRUE;
-    };
-    virtual void s_releaseModificado() {
-        m_modificado = FALSE;
-    };
-    virtual void close();
     virtual void on_mui_aceptar_clicked();
 };
 

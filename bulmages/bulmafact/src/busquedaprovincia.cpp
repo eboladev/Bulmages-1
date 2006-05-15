@@ -42,7 +42,7 @@ void BusquedaProvincia::setProvincia(QString provincia) {
     _depura("BusquedaProvincia::setProvincia", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-    m_cursorcombo = companyact->cargacursor("SELECT * FROM provincia");
+    m_cursorcombo = companyact->cargacursor("SELECT * FROM provincia ORDER BY provincia");
 
     int i = 0;
     int i1 = 0;

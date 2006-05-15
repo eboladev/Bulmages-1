@@ -52,7 +52,6 @@ listventanas::listventanas( QWidget *a): QDockWidget (a) {
 void listventanas::dclicked() {
     _depura("listventanas::clicked()\n",0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
-
     if (widget != NULL) {
         widget->hide();
         widget->showMaximized();
@@ -62,14 +61,13 @@ void listventanas::dclicked() {
 
 void listventanas::clicked() {
     _depura("listventanas::clicked()\n",0);
-
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
-        QWidget *punt = bges->workspace()->activeWindow();
-        if (widget != punt) {
+//        QWidget *punt = bges->workspace()->activeWindow();
+//        if (widget != punt) {
             widget->hide();
             widget->showNormal();
-        }// end if
+//        }// end if
     }// end if
     _depura("END listventanas::clicked()\n",0);
 }
@@ -123,6 +121,7 @@ int  listventanas::meteWindow(QString nombre, QObject *obj) {
             QListWidgetItem1 *m = new QListWidgetItem1(m_listBox,icon);
             m->setObject(obj);
             m->setNombre(nombre);
+	    m_listBox->setCurrentItem(m);
         }// end if
     }// end if
     _depura("listventanas::END_meteWindow()\n",0);

@@ -17,23 +17,39 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-
-#include "provedit.h"
-#include "company.h"
 #include <QLineEdit>
 #include <QMessageBox>
 #include <Q3Table>
 
-#include <funcaux.h>
-
+#include "provedit.h"
+#include "company.h"
+#include "funcaux.h"
+#include "plugins.h"
 
 ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) {
+        : QWidget(parent, name, Qt::WDestructiveClose) , DBRecord(comp), dialogChanges(this) {
     _depura("ProveedorView::ProveedorView",0);
+
+    setDBTableName("proveedor");
+    setDBCampoId("idproveedor");
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, "ID Proveedor");
+    addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Nombre del Proveedor");
+    addDBCampo("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Nombre alternativo del Proveedor");
+    addDBCampo("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "C.I.F. del Proveedor");
+    addDBCampo("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Codigo Cliente");
+    addDBCampo("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Banco Proveedor");
+    addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Direccion");
+    addDBCampo("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Poblacion");
+    addDBCampo("provproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Provincia");
+    addDBCampo("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Codigo postal");
+    addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Numero de telefono");
+    addDBCampo("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Numero de fax");
+    addDBCampo("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Direccion electronica");
+    addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "URL");
+    addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios");
 
     setupUi(this);
     m_companyact = comp;
-    mdb_idproveedor = "0";
 
     m_provproveedor->setcompany(m_companyact);
     m_provproveedor->setProvincia("");
@@ -61,7 +77,8 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
 
     if (m_companyact->meteWindow(caption(),this))
         return;
-    s_releaseModificado();
+    dialogChanges_cargaInicial();
+
     _depura("END ProveedorView::ProveedorView",0);
 }
 
@@ -70,63 +87,50 @@ ProveedorView::~ProveedorView() {
 }
 
 
-/************************************************************************
+/** **********************************************************************
 * Esta funcion carga un proveedor de la base de datos y lo presenta.    *
 * Si el parametro pasado no es un identificador valido entonces se pone *
 * la ventana de edicion en modo de insercion                            *
-*************************************************************************/
-int ProveedorView::chargeprovider(QString idprov) {
-    _depura("ProveedorView::chargeprovider",0);
-    int error = 0;
-    mdb_idproveedor = idprov;
-    fprintf(stderr,"chargeprovider activado \n");
-    if (mdb_idproveedor != "0") {
-        QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+idprov;
-        cursor2 *cur= m_companyact->cargacursor(SQLQuery);
-        if (!cur->eof()) {
-            mdb_idproveedor = idprov;
-            m_nomproveedor->setText(cur->valor("nomproveedor"));
-            m_nomaltproveedor->setText(cur->valor("nomaltproveedor"));
-            m_cifproveedor->setText(cur->valor("cifproveedor"));
-            m_codicliproveedor->setText(cur->valor("codicliproveedor"));
-            m_cbancproveedor->setText(cur->valor("cbancproveedor"));
-            m_dirproveedor->setText(cur->valor("dirproveedor"));
-            m_poblproveedor->setText(cur->valor("poblproveedor"));
-            m_cpproveedor->setText(cur->valor("cpproveedor"));
-            m_telproveedor->setText(cur->valor("telproveedor"));
-            m_faxproveedor->setText(cur->valor("faxproveedor"));
-            m_emailproveedor->setText(cur->valor("emailproveedor"));
-            m_urlproveedor->setText(cur->valor("urlproveedor"));
-            m_provproveedor->setProvincia(cur->valor("provproveedor"));
-            m_comentproveedor->setText(cur->valor("comentproveedor"));
+************************************************************************ */
+int ProveedorView::cargar(QString idprov) {
+    _depura("ProveedorView::cargar", 0);
+    QString query = "SELECT * FROM proveedor WHERE idproveedor=" + idprov;
+    cursor2 * cur= m_companyact->cargacursor(query);
+    if (!cur->eof()) {
+        DBload(cur);
+    } // end if
+    delete cur;
+    m_nomproveedor->setText(   DBvalue("nomproveedor"));
+    m_nomaltproveedor->setText(DBvalue("nomaltproveedor"));
+    m_cifproveedor->setText(DBvalue("cifproveedor" ));
+    m_codicliproveedor->setText(DBvalue("codicliproveedor" ));
+    m_cbancproveedor->setText(DBvalue("cbancproveedor" ));
+    m_dirproveedor->setText(DBvalue("dirproveedor"));
+    m_poblproveedor->setText( DBvalue("poblproveedor" ));
+    m_cpproveedor->setText(DBvalue("cpproveedor"));
+    m_telproveedor->setText(DBvalue("telproveedor"));
+    m_faxproveedor->setText(DBvalue("faxproveedor"));
+    m_emailproveedor->setText(DBvalue("emailproveedor"));
+    m_urlproveedor->setText(DBvalue("urlproveedor"));
+    m_comentproveedor->setText(DBvalue("comentproveedor" ));
+    m_provproveedor->setProvincia(DBvalue("provproveedor"));
+    dialogChanges_cargaInicial();
 
+    /// Cargamos las ventanas auxiliares.
+    m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
+    m_listpedidosprov->presenta();
+    m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
+    m_albaranesprov->presenta();
+    m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
+    m_listfacturasprov->presenta();
+    m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
+    m_listpagosprov->presentar();
 
-            /// Inicializamos el listado
-            _depura("Vamos a cargar el proveedor",0);
-            m_listpedidosprov->setidproveedor(cur->valor("idproveedor"));
-            m_listpedidosprov->presenta();
-            m_albaranesprov->setidproveedor(cur->valor("idproveedor"));
-            m_albaranesprov->presenta();
-            m_listfacturasprov->setidproveedor(cur->valor("idproveedor"));
-            m_listfacturasprov->presenta();
-            m_listpagosprov->setidproveedor(cur->valor("idproveedor"));
-            m_listpagosprov->presentar();
+    /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
+    setCaption("Proveedor "+DBvalue("nomproveedor"));
+    m_companyact->meteWindow(caption(),this);
 
-            /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
-            setCaption("Proveedor "+cur->valor("nomproveedor"));
-            error = m_companyact->meteWindow(caption(),this);
-
-        } else {
-            mdb_idproveedor="0";
-        }// end if
-        delete cur;
-    }// end if
-
-    if (error)
-        return 1;
-
-    s_releaseModificado();
-    _depura("END ProveedorView::chargeprovider",0);
+    _depura("END ProveedorView::cargar", 0);
     return 0;
 }
 
@@ -135,15 +139,18 @@ int ProveedorView::chargeprovider(QString idprov) {
 * Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo  *
 *************************************************************************/
 void ProveedorView::on_mui_crear_clicked() {
-    if (m_modificado  ) {
-        if ( QMessageBox::warning( this, tr("Guardar proveedor"),
-                                   tr("Desea guardar los cambios?"),
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
-            on_mui_guardar_clicked();
+
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, tr("Guardar proveedor"),
+                                        tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+        if (val == 0)
+            if (guardar())
+                return;
+        if (val == 2)
+            return;
     }// end if
 
-    mdb_idproveedor = "0";
+    DBRecord::DBclear();
     m_nomproveedor->setText("");
     m_nomaltproveedor->setText("");
     m_cifproveedor->setText("");
@@ -157,7 +164,7 @@ void ProveedorView::on_mui_crear_clicked() {
     m_emailproveedor->setText("");
     m_urlproveedor->setText("");
     m_comentproveedor->setText("");
-    s_releaseModificado();
+    dialogChanges_cargaInicial();
 }
 
 /*************************************************************************
@@ -165,98 +172,70 @@ void ProveedorView::on_mui_crear_clicked() {
 * Comprueba si es una insercion o una modificacion y hace los pasos      *
 * pertinentes                                                            *
 **************************************************************************/
-void ProveedorView::on_mui_guardar_clicked() {
-    if (mdb_idproveedor != "0") {
-        QString SQLQuery = "UPDATE proveedor SET urlproveedor='"+m_companyact->sanearCadena(m_urlproveedor->text())+"'";
-        SQLQuery += " , nomproveedor='"+m_companyact->sanearCadena(m_nomproveedor->text())+"'";
-        SQLQuery += " , nomaltproveedor='"+m_companyact->sanearCadena(m_nomaltproveedor->text())+"'";
-        SQLQuery += " , cifproveedor='"+m_companyact->sanearCadena(m_cifproveedor->text())+"'";
-        SQLQuery += " , codicliproveedor='"+m_companyact->sanearCadena(m_codicliproveedor->text())+"'";
-        SQLQuery += " , cbancproveedor='"+m_companyact->sanearCadena(m_cbancproveedor->text())+"'";
-        SQLQuery += " , dirproveedor='"+m_companyact->sanearCadena(m_dirproveedor->text())+"'";
-        SQLQuery += " , poblproveedor='"+m_companyact->sanearCadena(m_poblproveedor->text())+"'";
-        SQLQuery += " , cpproveedor='"+m_companyact->sanearCadena(m_cpproveedor->text())+"'";
-        SQLQuery += " , telproveedor='"+m_companyact->sanearCadena(m_telproveedor->text())+"'";
-        SQLQuery += " , faxproveedor='"+m_companyact->sanearCadena(m_faxproveedor->text())+"'";
-        SQLQuery += " , emailproveedor='"+m_companyact->sanearCadena(m_emailproveedor->text())+"'";
-        SQLQuery += " , provproveedor='"+m_companyact->sanearCadena(m_provproveedor->currentText())+"'";
-        SQLQuery += " , comentproveedor='"+m_companyact->sanearCadena(m_comentproveedor->text())+"'";
-        SQLQuery += " WHERE idproveedor ="+mdb_idproveedor;
-        m_companyact->begin();
-        int error = m_companyact->ejecuta(SQLQuery);
-        if (error) {
-            m_companyact->rollback();
-            return;
-        }// end if
+int ProveedorView::guardar() {
+    _depura("ProveedorView::guardar", 0);
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    int res = g_plugins->lanza("ProveedorView_guardar", this);
+    if (res != 0)
+        return 0;
+    setDBvalue("nomproveedor",m_nomproveedor->text());
+    setDBvalue("nomaltproveedor",m_nomaltproveedor->text());
+    setDBvalue("cifproveedor", m_cifproveedor->text());
+    setDBvalue("codicliproveedor", m_codicliproveedor->text());
+    setDBvalue("cbancproveedor", m_cbancproveedor->text());
+    setDBvalue("dirproveedor", m_dirproveedor->text());
+    setDBvalue("poblproveedor", m_poblproveedor->text());
+    setDBvalue("cpproveedor", m_cpproveedor->text());
+    setDBvalue("telproveedor", m_telproveedor->text());
+    setDBvalue("faxproveedor", m_faxproveedor->text());
+    setDBvalue("emailproveedor", m_emailproveedor->text());
+    setDBvalue("urlproveedor", m_urlproveedor->text());
+    setDBvalue("comentproveedor", m_comentproveedor->text());
+    setDBvalue("provproveedor", m_provproveedor->currentText());
+
+    QString id;
+    m_companyact->begin();
+    try {
+        DBRecord::guardar();
         m_companyact->commit();
-    } else {
-        QString SQLQuery = " INSERT INTO proveedor (nomproveedor, nomaltproveedor, cifproveedor, codicliproveedor, cbancproveedor, dirproveedor, poblproveedor, cpproveedor, telproveedor, faxproveedor, urlproveedor, emailproveedor, provproveedor, comentproveedor)";
-        SQLQuery += " VALUES (";
-        SQLQuery += "'"+m_companyact->sanearCadena(m_nomproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_nomaltproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_cifproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_codicliproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_cbancproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_dirproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_poblproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_cpproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_telproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_faxproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_urlproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_emailproveedor->text())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_provproveedor->currentText())+"'";
-        SQLQuery += ",'"+m_companyact->sanearCadena(m_comentproveedor->text())+"'";
-        SQLQuery += ")";
-        m_companyact->begin();
-        int error = m_companyact->ejecuta(SQLQuery);
-        if (error) {
-            m_companyact->rollback();
-            return;
-        }// end if
-        cursor2 * cur = m_companyact->cargacursor("SELECT max(idproveedor) AS id FROM proveedor");
-        mdb_idproveedor = cur->valor("id");
-        delete cur;
-        m_companyact->commit();
-    }// end if
-    s_releaseModificado();
+        dialogChanges_cargaInicial();
+        _depura("END ProveedorView::guardar", 0);
+        return 0;
+    } catch(...) {
+        _depura("error al guardar el proveedor",1);
+        m_companyact->rollback();
+        return -1;
+    }
 }
 
 /************************************************************************
 * Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar *
 *************************************************************************/
 void ProveedorView::on_mui_borrar_clicked() {
-    if (mdb_idproveedor != "0") {
-        if ( QMessageBox::Yes == QMessageBox::question(this,tr("Borrar proveedor"),tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),QMessageBox::Yes, QMessageBox::No)) {
-            QString SQLQuery="DELETE FROM proveedor WHERE idproveedor="+mdb_idproveedor;
-            m_companyact->begin();
-            int error = m_companyact->ejecuta(SQLQuery);
-            if (error) {
-                m_companyact->rollback();
-                return;
-            }// end if
-            m_companyact->commit();
-            close();
-        }// end if
-    }// end if
+    if (DBvalue("idproveedor") != "")
+        if ( QMessageBox::Yes == QMessageBox::question(this,tr("Borrar proveedor"),tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),QMessageBox::Yes, QMessageBox::No))
+            if (!DBRecord::borrar())
+                close();
 }
 
 
 
-void ProveedorView::close() {
-    if (m_modificado  ) {
-        if ( QMessageBox::warning( this, tr("Guardar proveedor"),
-                                   tr("Desea guardar los cambios?"),
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
-            on_mui_guardar_clicked();
+void ProveedorView::closeEvent( QCloseEvent *e) {
+    _depura("ProveedorView::closeEvent",0);
+    if (dialogChanges_hayCambios())  {
+        int val = QMessageBox::warning( this, tr("Guardar proveedor"),
+                                        tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+        if (val == 0)
+            if (guardar())
+                e->ignore();
+        if (val == 2)
+            e->ignore();
     }// end if
-    QWidget::close();
-    delete this;
 }
 
 
 void ProveedorView::on_mui_aceptar_clicked() {
-	on_mui_guardar_clicked();
-	close();
+    if (!guardar())
+        close();
 }
 
