@@ -87,7 +87,7 @@ listventanas::~listventanas() {
  */
 int  listventanas::meteWindow(QString nombre, QObject *obj) {
     _depura("listventanas::INIT_meteWindow()",0);
-    uint i=0;
+    int i=0;
     while (i < m_listBox->count())  {
         QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
         /// si la ventana ya esta en la lista
@@ -133,7 +133,7 @@ int  listventanas::meteWindow(QString nombre, QObject *obj) {
 void listventanas::sacaWindow(QObject *obj) {
     _depura("listventanas::INIT_sacaWindow()\n",0);
     /// Buscamos la ventana correspondiente y la borramos.
-    uint i=0;
+    int i=0;
     while (i < m_listBox->count())  {
         QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
         if (m->object() == obj) {

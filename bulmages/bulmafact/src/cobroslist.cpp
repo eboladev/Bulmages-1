@@ -179,7 +179,6 @@ void CobrosList::imprimir() {
 
 
 void CobrosList::on_mui_borrar_clicked() {
-    int a = mui_list->currentRow();
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo ==0 && mdb_idcobro != "") {
         CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de presupuestos", "company"));
@@ -190,7 +189,7 @@ void CobrosList::on_mui_borrar_clicked() {
 }
 
 
-void CobrosList::on_mui_list_cellDoubleClicked(int a, int ) {
+void CobrosList::on_mui_list_cellDoubleClicked(int, int ) {
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo ==0 && mdb_idcobro != "") {
         CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de cobros", "company"));

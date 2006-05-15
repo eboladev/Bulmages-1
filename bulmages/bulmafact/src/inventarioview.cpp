@@ -48,4 +48,4 @@ void InventarioView::on_mui_borrar_clicked() {
             borrar();
         }// end if
     }// end if
-}// end boton_borrar
+}

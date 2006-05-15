@@ -136,11 +136,11 @@ void ClienteView::emptyForm() {
 * if it is a new client that needs to be added or if
 * it is an existing one that has to be modified
 */
-void ClienteView::saveClient() {
+int ClienteView::guardar() {
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("ClienteView_saveClient", this);
     if (res != 0)
-        return;
+        return 0;
     setDBvalue("nomcliente",m_nomcliente->text());
     setDBvalue("nomaltcliente",m_nomaltcliente->text());
     setDBvalue("cifcliente", m_cifcliente->text());
@@ -154,9 +154,10 @@ void ClienteView::saveClient() {
     setDBvalue("urlcliente", m_urlcliente->text());
     setDBvalue("comentcliente", m_comentcliente->text());
     setDBvalue("provcliente", m_provcliente->currentText());
-
-    guardaCliente();
-    dialogChanges_cargaInicial();
+    int err = Cliente::guardar();
+    if (!err)
+        dialogChanges_cargaInicial();
+    return err;
 }
 
 
@@ -175,7 +176,7 @@ void ClienteView::deleteClient() {
 
 void ClienteView::on_mui_guardar_clicked() {
     _depura("ClienteView::on_mui_guardar_clicked",0);
-    saveClient();
+    guardar();
 }
 
 
@@ -197,7 +198,7 @@ void ClienteView::closeEvent( QCloseEvent *e) {
         int val = QMessageBox::warning( this, tr("Guardar cliente"),
                                         tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
         if (val == 0)
-            saveClient();
+            if (guardar()) e->ignore();
         if (val == 2)
             e->ignore();
     }// end if

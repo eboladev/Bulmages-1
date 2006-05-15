@@ -65,11 +65,9 @@ void SubForm2Bf::pressedAsterisk(int row, int col) {
 
 void SubForm2Bf::pressedSlash(int row, int col) {
     _depura("SubForm2Bf::pressedSlash",2);
-    SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     QString text = editaTexto(camp->text());
-    camp->set
-    (text);
+    camp->set(text);
 }
 
 void SubForm2Bf::editFinished(int row, int col) {

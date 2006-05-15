@@ -115,7 +115,7 @@ void PagosList::on_mui_editar_clicked() {
 }
 
 
-void PagosList::on_mui_list_cellDoubleClicked(int a, int ) {
+void PagosList::on_mui_list_cellDoubleClicked(int , int ) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo ==0 && mdb_idpago != "") {
         PagoView *bud = new PagoView(m_companyact,NULL,theApp->translate("Edicion de pagos", "company"));

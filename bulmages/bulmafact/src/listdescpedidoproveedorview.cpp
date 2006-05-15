@@ -29,3 +29,4 @@ ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView(QWidget *pare
     addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idpedidoproveedor");
     setinsercion(TRUE);
 };
+

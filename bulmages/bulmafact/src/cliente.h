@@ -39,7 +39,7 @@ public:
     };
     virtual ~Cliente();
     virtual void pintaCliente();
-    virtual void guardaCliente();
+    virtual int guardar();
     virtual void borraCliente();
     virtual void vaciaCliente();
     virtual int cargar(QString);

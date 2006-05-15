@@ -122,30 +122,23 @@ int AlbaranCliente::cargar(QString idalbaran)  {
 int AlbaranCliente::guardar() {
     _depura("AlbaranCliente::guardar",0);
     /// Todo el guardado es una transaccion.
-    QString id;
     companyact->begin();
-    int error = DBsave(id);
-    if (error)  {
-        companyact->rollback();
-        return -1;
-    }
+try {
+    QString id;
+    DBsave(id);
     setidalbaran(id);
-    error = listalineas->guardar();
-    if (error) {
-        companyact->rollback();
-        return -1;
-    }// end if
-    error = listadescuentos->guardar();
-    if (error) {
-        companyact->rollback();
-        return -1;
-    }// end if
-
+    listalineas->guardar();
+    listadescuentos->guardar();
     companyact->commit();
-
     _depura("END AlbaranCliente::guardar",0);
-
     return 0;
+}// end try
+
+catch(...) {
+	_depura("AlbaranCliente::guardar error al guardar albaran cliente",1);
+	companyact->rollback();
+	return -1;
+}
 }
 
 

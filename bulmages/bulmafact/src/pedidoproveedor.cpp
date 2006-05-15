@@ -191,8 +191,6 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     fitxersortidatxt += "</tr>";
 
     QString l;
-    uint i = 0;
-
 	_depura("vamos a recorrer el listado de lineas",2);
     for (int i=0; i < listalineas->rowCount()-1; i++) {
         fitxersortidatxt += "<tr>";

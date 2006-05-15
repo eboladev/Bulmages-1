@@ -132,15 +132,16 @@ void AlbaranProveedorView::generarFactura()  {
     SDBRecord *linea, *linea1;
 
     for ( int i  = 0; i < listalineas->rowCount(); ++i) {
+	linea = getlistalineas()->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
-        linea->setDBvalue("desclfacturap",linea->DBvalue("desclalbaranp"));
-        linea->setDBvalue("cantlfacturap",linea->DBvalue("cantlalbaranp"));
-        linea->setDBvalue("pvplfacturap",linea->DBvalue("pvplalbaranp"));
-        linea->setDBvalue("descuentolfacturap",linea->DBvalue("descontlalbaranp"));
-        linea->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
-        linea->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
-        linea->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
-        linea->setDBvalue("ivalfacturap",linea->DBvalue("ivalalbaranp"));
+        linea1->setDBvalue("desclfacturap",linea->DBvalue("desclalbaranp"));
+        linea1->setDBvalue("cantlfacturap",linea->DBvalue("cantlalbaranp"));
+        linea1->setDBvalue("pvplfacturap",linea->DBvalue("pvplalbaranp"));
+        linea1->setDBvalue("descuentolfacturap",linea->DBvalue("descontlalbaranp"));
+        linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
+        linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
+        linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
+        linea1->setDBvalue("ivalfacturap",linea->DBvalue("ivalalbaranp"));
     } // end for
 
     bud->pintar();

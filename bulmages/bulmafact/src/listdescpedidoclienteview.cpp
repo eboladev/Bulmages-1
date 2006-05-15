@@ -29,3 +29,5 @@ ListDescuentoPedidoClienteView::ListDescuentoPedidoClienteView(QWidget *parent) 
     addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idpedidocliente");
     setinsercion(TRUE);
 };
+
+

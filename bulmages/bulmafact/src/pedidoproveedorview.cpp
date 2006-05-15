@@ -180,7 +180,6 @@ void PedidoProveedorView::generarAlbaran() {
 
     QString l;
     SDBRecord *linea, *linea1;
-    uint i = 0;
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
 	linea = listalineas->lineaat(i);
 	linea1 = bud->getlistalineas()->newSDBRecord();

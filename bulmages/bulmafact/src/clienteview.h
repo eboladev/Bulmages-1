@@ -37,7 +37,7 @@ public:
 
 public:
     int cargar(QString client);
-    void saveClient();
+    virtual int guardar();
     void deleteClient();
     void closeEvent(QCloseEvent *);
     void emptyForm();
@@ -93,7 +93,7 @@ public slots:
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked() {
-        saveClient();
+        if (!guardar())
         close();
     };
 };

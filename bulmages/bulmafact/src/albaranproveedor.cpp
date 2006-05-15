@@ -102,19 +102,21 @@ int AlbaranProveedor::guardar() {
     _depura("AlbaranProveedor::guardar", 0);
     QString id;
     companyact->begin();
-    int error = DBsave(id);
-
-    if (error) {
+    try {
+        DBsave(id);
+        companyact->commit();
+        setidalbaranp(id);
+        listalineas->guardar();
+        listadescuentos->guardar();
+        companyact->commit();
+    _depura("END AlbaranProveedor::guardar", 0);
+        return 0;
+    }// end try
+    catch(...) {
+        _depura("AlbaranProveedor::guardar error al guardar",1);
         companyact->rollback();
         return - 1;
-    }
-
-    companyact->commit();
-    setidalbaranp(id);
-    listalineas->guardar();
-    listadescuentos->guardar();
-    companyact->commit();
-    return 0;
+    }// end catch
 }
 
 

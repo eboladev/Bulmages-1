@@ -123,20 +123,23 @@ int presupuesto::cargar(QString idbudget) {
 
 
 int presupuesto::guardar() {
-	_depura("presupuesto::guardar",0);
+    _depura("presupuesto::guardar",0);
     QString id;
     companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
+    try {
+        DBsave(id);
+        setidpresupuesto(id);
+        listalineas->guardar();
+        listadescuentos->guardar();
+        companyact->commit();
+        _depura("END presupuesto::guardar",0);
+        return 0;
+    }// end try
+    catch(...) {
+	_depura("Error guardando, se cancela la operacion",1);
         companyact->rollback();
         return -1;
-    }// end if
-    setidpresupuesto(id);
-    listalineas->guardar();
-    listadescuentos->guardar();
-    companyact->commit();
-	_depura("END presupuesto::guardar",0);
-    return 0;
+    }// end catch
 }
 
 

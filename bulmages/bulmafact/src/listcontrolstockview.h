@@ -24,9 +24,7 @@
 #include <Q3Table>
 #include <QEvent>
 
-#include "listcontrolstock.h"
 #include "company.h"
-#include "controlstock.h"
 #include "subform2bf.h"
 
 

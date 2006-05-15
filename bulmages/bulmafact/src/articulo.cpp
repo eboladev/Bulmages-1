@@ -51,6 +51,7 @@ Articulo::Articulo(company *comp) : DBRecord(comp) {
 Articulo::~Articulo() {}
 
 
+
 void Articulo::pintar() {
     _depura("Articulo::pintar", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto

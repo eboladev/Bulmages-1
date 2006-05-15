@@ -9,11 +9,12 @@
 // Copyright: See COPYING file that comes with this distribution
 //
 //
+
+#include <QFile>
+#include <QTextStream>
+
 #include "inventario.h"
 #include "company.h"
-#include <QFile>
-//Added by qt3to4:
-#include <QTextStream>
 #include "funcaux.h"
 
 
@@ -59,7 +60,7 @@ void Inventario::pintaInventario() {
     pintanominventario(DBvalue("nominventario"));
     pintafechainventario(DBvalue("fechainventario"));
     // Pinta el subformulario de detalle del Inventario.
-//    listalineas->pintaListControlStock();
+    //    listalineas->pintaListControlStock();
 }
 
 
@@ -78,29 +79,28 @@ int Inventario::cargar(QString idbudget) {
 
 
 int  Inventario::guardar() {
-    _depura("Inventario::guardaInventario()",0);
-    QString id;
-    companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
+    _depura("Inventario::guardar()",0);
+    try {
+        QString id;
+        companyact->begin();
+        DBsave(id);
+        setidinventario(id);
+        listalineas->guardar();
+        companyact->commit();
+        _depura("END Inventario::guardar()",0);
+        return 0;
+    } catch (...) {
+        _depura("error guardando el inventario",1);
         companyact->rollback();
         return -1;
-    }// end if
-    setidinventario(id);
-    error = listalineas->guardar();
-    if (error) {
-	companyact->rollback();
-	return -1;
-    }// end if
-    companyact->commit();
-    return 0;
+    }
 }
 
 
 
 void Inventario::pregenerar() {
     _depura("Inventario::pregenerar",0);
-//    listalineas->pregenerar();
+    //    listalineas->pregenerar();
 }
 
 void Inventario::imprimirInventario() {

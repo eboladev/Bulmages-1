@@ -158,8 +158,6 @@ HEADERS += bulmafact.h \
 	   inventariosview.h \
 	   inventarioview.h \
 	   inventario.h \
-	   controlstock.h \
-	   listcontrolstock.h \
 	   listcontrolstockview.h \
 	   cliente.h \
 	   clienteview.h \
@@ -245,8 +243,6 @@ SOURCES += bulmafact.cpp \
 	   inventariosview.cpp \
 	   inventarioview.cpp \
 	   inventario.cpp \
-	   controlstock.cpp \
-	   listcontrolstock.cpp \
 	   listcontrolstockview.cpp \
 	   cliente.cpp \
 	   clienteview.cpp \

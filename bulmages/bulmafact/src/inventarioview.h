@@ -51,11 +51,12 @@ public slots:
     virtual void on_mui_guardar_clicked() {
         setfechainventario(m_fechainventario->text());
         setnominventario(m_nominventario->text());
-        guardar();
+	guardar();
     };
     virtual void on_mui_aceptar_clicked() {
-        on_mui_aceptar_clicked();
-        close();
+        setfechainventario(m_fechainventario->text());
+        setnominventario(m_nominventario->text());
+        if(!guardar()) close();
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_pregenerar_clicked() {

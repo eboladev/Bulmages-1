@@ -22,7 +22,7 @@
 
 
 void CompArticulo::definetabla() {
-	_depura("CompArticulo::definetabla",0);
+    _depura("CompArticulo::definetabla",0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
     addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID articulo", "comparticulo"));
@@ -34,14 +34,14 @@ void CompArticulo::definetabla() {
 
 
 CompArticulo::CompArticulo(company *comp) : DBRecord(comp) {
-	_depura("CompArticulo::CompArticulo",0);
+    _depura("CompArticulo::CompArticulo",0);
     companyact = comp;
     definetabla();
 }
 
 
 CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponente) : DBRecord(comp) {
-	_depura("CompArticulo::CompArticulo",0);
+    _depura("CompArticulo::CompArticulo",0);
     companyact = comp;
     definetabla();
     QString SQLQuery = "SELECT * FROM comparticulo, articulo WHERE comparticulo.idcomponente=articulo.idarticulo AND idarticulo="+idarticulo+" AND idcomponente="+idcomponente;
@@ -55,7 +55,7 @@ CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponen
 
 
 CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QString d, QString e) : DBRecord(comp) {
-	_depura("CompArticulo::CompArticulo",0);
+    _depura("CompArticulo::CompArticulo",0);
     companyact = comp;
     definetabla();
     setDBvalue("idarticulo", a);
@@ -76,24 +76,21 @@ void CompArticulo::vaciaCompArticulo() {
 
 void CompArticulo::guardaCompArticulo() {
     /// Segun esta la linea en la base de datos o no se hace una cosa u otra.
-    if (DBvalue("idarticulo") != "" && DBvalue("idcomponente") != "") {
-        QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES ("+
-                           DBvalueprep("idarticulo")+","+
-                           DBvalueprep("idcomponente")+","+
-                           DBvalueprep("cantcomparticulo")+")";
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+DBvalueprep("idarticulo")+" AND idcomponente="+DBvalueprep("idcomponente"));
-        if (error) {
-            companyact->rollback();
-            return;
+    try {
+        if (DBvalue("idarticulo") != "" && DBvalue("idcomponente") != "") {
+            QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES ("+
+                               DBvalueprep("idarticulo")+","+
+                               DBvalueprep("idcomponente")+","+
+                               DBvalueprep("cantcomparticulo")+")";
+            companyact->begin();
+            companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+DBvalueprep("idarticulo")+" AND idcomponente="+DBvalueprep("idcomponente"));
+            companyact->ejecuta(SQLQuery);
+            companyact->commit();
         }// end if
-        error = companyact->ejecuta(SQLQuery);
-        if (error) {
-            companyact->rollback();
-            return;
-        }// end if
-        companyact->commit();
-    }// end if
+    } catch(...) {
+	_depura("se produjo un error al guardar componentes del articulo",1);
+        companyact->rollback();
+    }
 }
 
 

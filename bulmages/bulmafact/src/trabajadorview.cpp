@@ -66,7 +66,7 @@ TrabajadorView::~TrabajadorView() {
 }
 
 
-void TrabajadorView::on_mui_lista_currentItemChanged( QListWidgetItem *cur, QListWidgetItem *prev ) {
+void TrabajadorView::on_mui_lista_currentItemChanged( QListWidgetItem *cur, QListWidgetItem * ) {
     _depura( "on_mui_lista_currentItemChanged", 0 );
 
     int row = mui_lista->row( cur );

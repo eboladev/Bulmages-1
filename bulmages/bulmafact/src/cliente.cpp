@@ -119,15 +119,20 @@ int Cliente::cargar(QString idcliente) {
 }
 
 
-void Cliente::guardaCliente() {
+int Cliente::guardar() {
+    _depura("Cliente::guardar", 0);
     QString id;
     m_companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
+    try {
+        DBsave(id);
+        setidcliente(id);
+        m_companyact->commit();
+        _depura("END Cliente::guardar", 0);
+        return 0;
+    } catch(...) {
+        _depura("error al guardar el cliente",1);
         m_companyact->rollback();
-        return;
-    } // end if
-    setidcliente(id);
-    m_companyact->commit();
+        return -1;
+    }
 }
 

@@ -29,3 +29,4 @@ ListDescuentoAlbaranProvView::ListDescuentoAlbaranProvView(QWidget *parent) : Su
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idalbaranp");
     setinsercion(TRUE);
 };
+

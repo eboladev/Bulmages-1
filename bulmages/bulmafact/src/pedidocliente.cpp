@@ -85,7 +85,6 @@ void PedidoCliente::pintar() {
     pintacontactpedidocliente(DBvalue("contactpedidocliente"));
     pintatelpedidocliente(DBvalue("telpedidocliente"));
     pintaidtrabajador(DBvalue("idtrabajador"));
-
     calculaypintatotales();
     _depura("FIN PedidoCliente::pintaPedidoCliente()\n",0);
 }
@@ -111,25 +110,20 @@ int PedidoCliente::guardar() {
     _depura("PedidoCliente::guardar",0);
     QString id;
     companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
+    try {
+        DBsave(id);
+        setidpedidocliente(id);
+        listalineas->guardar();
+        listadescuentos->guardar();
+        companyact->commit();
+        _depura("END PedidoCliente::guardar",0);
+        return 0;
+    }// end try
+    catch(...) {
+        _depura("se produjo un error al guardar, cancelamos la operacion",1);
         companyact->rollback();
         return -1;
-    }// end if
-    setidpedidocliente(id);
-    error = listalineas->guardar();
-    if (error ) {
-        companyact->rollback();
-        return -1;
-    }// end if
-    error = listadescuentos->guardar();
-    if (error ) {
-        companyact->rollback();
-        return -1;
-    }// end if
-    companyact->commit();
-    _depura("END PedidoCliente::guardar",0);
-    return 0;
+    }// end catch
 }
 
 
@@ -215,7 +209,7 @@ void PedidoCliente::imprimirPedidoCliente() {
 
     SDBRecord *linea;
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
-	linea = listalineas->lineaat(i);
+        linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpedidocliente").ascii()) * Fixed(linea->DBvalue("pvplpedidocliente").ascii());
         basesimp[linea->DBvalue("ivalpedidocliente")] = basesimp[linea->DBvalue("ivalpedidocliente")] + base - base * Fixed(linea->DBvalue("descuentolpedidocliente").ascii()) /100;
         fitxersortidatxt += "<tr>\n";
@@ -323,7 +317,7 @@ void PedidoCliente::calculaypintatotales() {
     QString l;
     SDBRecord *linea;
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
-	linea = listalineas->lineaat(i);
+        linea = listalineas->lineaat(i);
         Fixed cant(linea->DBvalue("cantlpedidocliente").ascii());
         Fixed pvpund(linea->DBvalue("pvplpedidocliente").ascii());
         Fixed desc1(linea->DBvalue("descuentolpedidocliente").ascii());
@@ -342,8 +336,8 @@ void PedidoCliente::calculaypintatotales() {
     Fixed porcentt("0.00");
     SDBRecord *linea1;
     if (listadescuentos->rowCount()) {
-	for ( int i = 0; i < listadescuentos->rowCount() ; ++i) {
-		linea1 = listadescuentos->lineaat(i);
+        for ( int i = 0; i < listadescuentos->rowCount() ; ++i) {
+            linea1 = listadescuentos->lineaat(i);
             Fixed propor(linea1->DBvalue("proporciondpedidocliente").ascii());
             porcentt = porcentt + propor;
         }// end for

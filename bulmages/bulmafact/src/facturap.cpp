@@ -80,7 +80,7 @@ void FacturaProveedor::pintar() {
     pintaidforma_pago(DBvalue("idforma_pago"));
     pintadescfacturap(DBvalue("descfacturap"));
     pintatotales(listalineas->calculabase(), listalineas->calculaiva());
-}// end pintaFacturaProveedor
+}
 
 
 // Esta funcion carga un FacturaProveedor.
@@ -96,28 +96,26 @@ int FacturaProveedor::cargar(QString idfacturap) {
     listadescuentos->cargar(idfacturap);
     pintar();
     return 0;
-}// end chargeBudget
-
+}
 
 int FacturaProveedor::guardar() {
-    QString id;
+    _depura("FacturaProveedor::guardar()",0);
     companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
+    try {
+        QString id;
+        DBsave(id);
+        setidfacturap(id);
+        listalineas->guardar();
+        listadescuentos->guardar();
+        companyact->commit();
+        _depura("END FacturaProveedor::guardar()",0);
+        return 0;
+    } catch (...) {
+        _depura("FacturaProveedor::guardar() se produjo un error al guardar",1);
         companyact->rollback();
         return -1;
-    }// end if
-    setidfacturap(id);
-
-    error = listalineas->guardar();
-    error += listadescuentos->guardar();
-    if (error)
-        companyact->rollback();
-    else
-        companyact->commit();
-
-    return error;
-}// end guardaFacturaProveedor
+    }
+}
 
 
 

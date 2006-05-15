@@ -121,7 +121,7 @@ public:
     void editar(int);
 
 public slots:
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_editar_clicked();

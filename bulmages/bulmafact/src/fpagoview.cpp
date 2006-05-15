@@ -64,7 +64,7 @@ FPagoView::~FPagoView() {
 
 
 
-void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev) {
+void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura("on_mui_lista_currentItemChanged",0);
 
     int row = mui_lista->row(cur);
@@ -78,21 +78,18 @@ void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidge
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
 
-}// end if
+}
 
 
 
 
 void FPagoView::on_mui_guardar_clicked() {
+try {
     QString query = "UPDATE forma_pago SET descforma_pago='"+
                     m_companyact->sanearCadena(m_descforma_pago->text())+"', dias1tforma_pago= "+
                     m_companyact->sanearCadena(m_dias1tforma_pago->text())+" , descuentoforma_pago = "+
                     m_companyact->sanearCadena(m_descuentoforma_pago->text())+" WHERE idforma_pago="+mdb_idforma_pago;
-    int error = m_companyact->ejecuta(query);
-    if (error) {
-        m_companyact->rollback();
-        return;
-    }// end if
+    m_companyact->ejecuta(query);
     if (m_cursorFPagoView != NULL)
         delete m_cursorFPagoView;
     m_cursorFPagoView = m_companyact->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
@@ -101,7 +98,11 @@ void FPagoView::on_mui_guardar_clicked() {
 
 
     dialogChanges_cargaInicial();
-
+} catch(...) {
+	_depura ("error guardando la forma de pago",1);
+	return;
+}
+	
 }// end if
 
 
