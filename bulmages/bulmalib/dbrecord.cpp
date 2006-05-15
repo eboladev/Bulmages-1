@@ -101,79 +101,83 @@ void DBRecord::DBclear() {
 
 int DBRecord::DBsave(QString &id) {
     _depura("DBRecord::DBsave",0);
-    DBCampo *linea;
-    QString listcampos="";
-    QString listvalores="";
-    QString queryupdate="";
-    QString separador = "";
-    QString separador1 = "";
-    QString separadorwhere = "";
-    QString querywhere = "";
-    int err=0;
-    for(int i=0; i < m_lista.size(); ++i) {
-        linea = m_lista.at(i);
-        if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
-            QString lin = linea->valorcampoprep(err);
-            if (err)
-                return -1;
-            querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
-            separadorwhere = " AND ";
-        }// end if
-        if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
-            /// Si el campo es requerido y no está entonces salimos sin dar error.
-            /// No es lo mismo que los not null ya que estos si dan error
-            if (linea->restrictcampo() & DBCampo::DBRequired) {
-                if (linea->valorcampo() == "")
-                    return 0;
-            }// end if
-            if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
+    try {
+        DBCampo *linea;
+        QString listcampos="";
+        QString listvalores="";
+        QString queryupdate="";
+        QString separador = "";
+        QString separador1 = "";
+        QString separadorwhere = "";
+        QString querywhere = "";
+        int err=0;
+        for(int i=0; i < m_lista.size(); ++i) {
+            linea = m_lista.at(i);
+            if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
                 QString lin = linea->valorcampoprep(err);
                 if (err)
-                    return -1;
-                querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
+                    throw (-1);
+                querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
                 separadorwhere = " AND ";
             }// end if
+            if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
+                /// Si el campo es requerido y no está entonces salimos sin dar error.
+                /// No es lo mismo que los not null ya que estos si dan error
+                if (linea->restrictcampo() & DBCampo::DBRequired) {
+                    if (linea->valorcampo() == "")
+                        return 0;
+                }// end if
+                if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
+                    QString lin = linea->valorcampoprep(err);
+                    if (err)
+                        throw (-1);
+                    querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
+                    separadorwhere = " AND ";
+                }// end if
 
-            if (linea->valorcampoprep( err) != "") {
-                queryupdate += separador1 + linea->nomcampo() + "=" + linea->valorcampoprep(err);
-                separador1 = ", ";
-            }// end if
-            if (err)
-                return -1;
-
-            if ( (linea->valorcampoprep(err) != "NULL") && (linea->valorcampoprep( err) != "")) {
-                listcampos += separador + linea->nomcampo();
-                listvalores += separador + linea->valorcampoprep(err);
+                if (linea->valorcampoprep( err) != "") {
+                    queryupdate += separador1 + linea->nomcampo() + "=" + linea->valorcampoprep(err);
+                    separador1 = ", ";
+                }// end if
                 if (err)
-                    return -1;
-                separador = ", ";
-            }// end if
+                    throw (-1);
 
-            /// Si es el id entonces lo asignamos pq ya tiene el valor correspondiente
-            if (m_campoid == linea->nomcampo()) {
-                id = linea->valorcampo();
+                if ( (linea->valorcampoprep(err) != "NULL") && (linea->valorcampoprep( err) != "")) {
+                    listcampos += separador + linea->nomcampo();
+                    listvalores += separador + linea->valorcampoprep(err);
+                    if (err)
+                        throw (-1);
+                    separador = ", ";
+                }// end if
+
+                /// Si es el id entonces lo asignamos pq ya tiene el valor correspondiente
+                if (m_campoid == linea->nomcampo()) {
+                    id = linea->valorcampo();
+                }// end if
             }// end if
+        }// end for
+        if (m_nuevoCampo) {
+            QString query = "INSERT INTO "+m_tablename+" ("+listcampos+") VALUES ("+listvalores+")";
+            m_conexionbase->ejecuta(query);
+            _depura(query,0);
+            cursor2 *cur = m_conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
+            id = cur->valor(m_campoid);
+            delete cur;
+        } else {
+            QString query = "UPDATE "+m_tablename+" SET "+queryupdate + " WHERE "+ querywhere;
+            _depura(query,0);
+            m_conexionbase->ejecuta(query);
         }// end if
-    }// end for
-    if (m_nuevoCampo) {
-        QString query = "INSERT INTO "+m_tablename+" ("+listcampos+") VALUES ("+listvalores+")";
-        int error = m_conexionbase->ejecuta(query);
-        _depura(query,0);
-        if (error)
-            return -1;
-        cursor2 *cur = m_conexionbase->cargacursor("SELECT "+m_campoid+" FROM "+m_tablename+" ORDER BY "+m_campoid+" DESC LIMIT 1");
-        id = cur->valor(m_campoid);
-        delete cur;
-    } else {
-        QString query = "UPDATE "+m_tablename+" SET "+queryupdate + " WHERE "+ querywhere;
-        _depura(query,0);
-        int error = m_conexionbase->ejecuta(query);
-        if (error)
-            return -1;
-    }// end if
-    m_nuevoCampo = FALSE;
-    _depura("END DBRecord::DBSave",0);
-    return 0;
+        m_nuevoCampo = FALSE;
+        _depura("END DBRecord::DBSave",0);
+        return 0;
+    }// end try
+
+    catch(...) {
+        _depura("DBRecord::DBsave Problemas en el guardado",1);
+        throw(-1);
+    }// end catch
+
 }
 
 int DBRecord::setDBvalue(QString nomb, QString valor) {
@@ -278,22 +282,22 @@ int DBRecord::borrar() {
         DBclear();
     }// end if
     return 0;
-}// end borrar
-
+}
 
 int DBRecord::guardar() {
     _depura("DBRecord::guardar",0);
     QString id;
-    //    m_conexionbase->begin();
-    int error = DBsave(id);
-    if (error ) {
-        //        m_conexionbase->rollback();
+    try {
+        DBsave(id);
+        setDBvalue(m_campoid,id);
+        _depura("DBRecord::guardar",0);
+        return 0;
+    }// end try
+    catch(...) {
+        _depura ("DBRecord::guardar error en el guardado",1);
         return -1;
-    }// end if
-    setDBvalue(m_campoid,id);
-    //    m_conexionbase->commit();
-    return 0;
-}// end guardar
+    }// end catch
+}
 
 
 
@@ -308,4 +312,4 @@ int DBRecord::cargar(QString id) {
     delete cur;
     _depura("END DBRecord::cargar",0);
     return 0;
-}// end chargeBudget
+}

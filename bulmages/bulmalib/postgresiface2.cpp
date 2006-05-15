@@ -369,25 +369,31 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 */
 #include <qtextcodec.h>
 int postgresiface2::ejecuta(QString Query) {
+    _depura("postgresiface2::ejecuta",0);
+    PGresult *result=NULL;
+    try {
+        //Prova de control de permisos
+        if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))
+            throw (42501);
+        //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
+        result = PQexec(conn,  (const char *) Query.utf8());
+        if (!result || PQresultStatus(result) != PGRES_COMMAND_OK)
+            throw -1;
+        PQclear(result);
+        _depura("postgresiface2::ejecuta",0);
+        return 0;
+    }// end try
 
-    PGresult *result;
-
-    //Prova de control de permisos
-    if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))
-        return (42501);
-    //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
-    result = PQexec(conn,  (const char *) Query.utf8());
-    if (!result || PQresultStatus(result) != PGRES_COMMAND_OK) {
+    catch (...) {
         _depura("SQL command failed: "+Query);
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
         QString mensaje = "Error al intentar modificar la base de datos:\n";
         msgError(mensaje+(QString)PQerrorMessage(conn),Query+"\n"+(QString)PQerrorMessage(conn));
         PQclear(result);
-        return(1);
-    }// end if
-    PQclear(result);
-    return(0);
-}// end ejecuta
+        throw -1;
+    }// end catch
+}
+
 
 
 

@@ -115,7 +115,6 @@ void SubForm3::pintaCabeceras() {
     _depura("SubForm3::pintaCabeceras",0);
     QStringList headers;
     SHeader * linea;
-    int i=0;
     for ( int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         headers << linea->nompresentacion();
@@ -129,7 +128,7 @@ void SubForm3::pintaCabeceras() {
 
 void SubForm3::situarse(unsigned int row, unsigned int col) {
     unsigned int nrow=row;
-    unsigned int ncol = col;
+    int ncol = col;
     SHeader *linea= m_lcabecera.at(ncol);
     bool invalido=TRUE;
     while(invalido) {
@@ -323,22 +322,26 @@ QString SubForm3::DBvalue(QString campo, int row) {
 
 int SubForm3::guardar() {
     _depura("SubForm3::guardar",0);
-    SDBRecord *rec;
-    int i=0;
-    int error=0;
-    for (int j=0; j < mui_list->rowCount()-1; ++j) {
-        rec = lineaat(j);
-        rec->refresh();
-        error = rec->guardar();
-        if (error)
-            return -1;
-    }// end for
-    if(!m_insercion) {
-        rec = lineaat(mui_list->rowCount()-1);
-        error = rec->guardar();
-    }// end if
-    _depura("END SubForm3::guardar",0);
-    return error;
+    try {
+        SDBRecord *rec;
+        int error=0;
+        for (int j=0; j < mui_list->rowCount()-1; ++j) {
+            rec = lineaat(j);
+            rec->refresh();
+            error = rec->guardar();
+            if (error)
+                throw(-1);
+        }// end for
+        if(!m_insercion) {
+            rec = lineaat(mui_list->rowCount()-1);
+            error = rec->guardar();
+        }// end if
+        _depura("END SubForm3::guardar",0);
+        return error;
+    } catch(...) {
+        _depura("error inesperado en el guardado, se cancela la operacion",1);
+	throw -1;
+    }
 }
 
 int SubForm3::borrar() {
@@ -414,7 +417,7 @@ void SubForm3::cargaconfig() {
             if (linea.toInt() > 0)
                 mui_list->setColumnWidth(i, linea.toInt());
             else
-                mui_list->setColumnWidth(i, 2.5);
+                mui_list->setColumnWidth(i, 3);
         }// end for
 
         for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
