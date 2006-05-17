@@ -14,8 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef DIARIOVIEW1_H
-#define DIARIOVIEW1_H
+#ifndef DIARIOVIEW12_H
+#define DIARIOVIEW12_H
 
 /**
  * \author Tomeu Borrás Riera
@@ -25,14 +25,10 @@
  * Clase que muestra el libro diario de la empresa entre dos fechas.
  */
 
-
-
 #include "qlineedit1.h"
 #include "qtable1.h"
 #include "postgresiface2.h"
-
-
-
+#include "diariosubform.h"
 #include "ui_diariobase.h"
 
 class empresa;
@@ -41,17 +37,11 @@ class filtrardiarioview;
 class DiarioView : public QWidget, public Ui_DiarioBase  {
    Q_OBJECT
 private:
-/// Estas tres variables son las clases sobre las que trabaja. Deberian estar en la empresa.
-/*
-   intapunts3view *introapunts;
-   extractoview1 *extracto;
-   balanceview *balance;
-*/
 
 /// Clase adyacente a esta que se encarga de toda la parte de filtrado y que ayuda en la composición del query del listado pasandole parámetros.
    filtrardiarioview *filt;
 /// Empresa con la que esta trabajando esta clase.
-   empresa *companyact;
+   empresa *m_companyact;
 public:
    DiarioView(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
    ~DiarioView();
@@ -61,6 +51,7 @@ public:
 private:
 /// Muestra en pantalla los resultados para los datos introducidos.
    void presentar();
+   void presenta();
 public slots:
 /// SLOT que responde a la pulsación del botón imprimir. Es invocado desde la clase \ref empresa
    virtual void boton_imprimir();

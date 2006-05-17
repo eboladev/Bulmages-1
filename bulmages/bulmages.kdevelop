@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmafact/privatecode/../src/gorgblau</activedir>
+      <activedir>bulmacont/src/contabilidad</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

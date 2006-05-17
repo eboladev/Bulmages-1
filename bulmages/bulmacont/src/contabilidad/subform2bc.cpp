@@ -24,6 +24,7 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+#include "subform3.h"
 #include "subform2bc.h"
 #include "funcaux.h"
 
@@ -32,6 +33,9 @@ SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
     setDelete(TRUE);
 };
 
+
+
+
 void SubForm2Bc::pressedAsterisk(int row, int col) {
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
@@ -39,24 +43,6 @@ void SubForm2Bc::pressedAsterisk(int row, int col) {
 
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
-/*
-    _depura("ListCompArticuloView::searchArticle",0);
-    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, theApp->translate("Seleccione articulo","company"),0,ArticuloList::SelectMode);
-    // Esto es convertir un QWidget en un sistema modal de dialogo.
-    this->setEnabled(false);
-    artlist->show();
-    while(!artlist->isHidden())
-        theApp->processEvents();
-    this->setEnabled(true);
-    QString idArticle = artlist->idArticle();
-    delete artlist;
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo="+idArticle);
-    if (!cur->eof() ) {
-        rec->setDBvalue("idarticulo",idArticle);
-        rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-        rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-    }// end if
-*/
 }
 
 
@@ -75,16 +61,7 @@ void SubForm2Bc::editFinished(int row, int col) {
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();
-/*
-    if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
-        if (!cur->eof() ) {
-            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
-            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-        }
-    }
-*/
+
 }
 
 void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {

@@ -66,7 +66,8 @@
 DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) : QWidget(parent,name) {
 	setupUi(this);
 
-    companyact = emp;
+    m_companyact = emp;
+	mui_list->setcompany( emp);
 
     m_listado->setSorting( FALSE );
     m_listado->setSelectionMode( Q3Table::SingleRow );
@@ -131,7 +132,7 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) :
     m_fechafinal1->setText(cadena);
 
     //Inicializamos el filtro
-    filt = new filtrardiarioview(companyact,0,0);
+    filt = new filtrardiarioview(m_companyact,0,0);
 }// end DiarioView
 
 DiarioView::~DiarioView() {
@@ -173,7 +174,7 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
  * Muestra el formulario de impresión de diario y lo ejecuta \ref DiarioPrintView
  */
 void DiarioView::boton_imprimir() {
-    DiarioPrintView *print = new DiarioPrintView(companyact,0,0);
+    DiarioPrintView *print = new DiarioPrintView(m_companyact,0,0);
     print->setFiltro(filt);
     print->inicializa1(m_fechainicial1->text(), m_fechafinal1->text());
     print->exec();
@@ -188,10 +189,10 @@ void DiarioView::boton_guardar() {
     if (!fn.isEmpty()) {
         // Si se ha proporcionado un nombre de archivo valido
         // invocamos la clase diarioprint y hacemos que guarde el archivo.
-        diarioprint diariop(companyact);
+        diarioprint diariop(m_companyact);
         QString finicial = m_fechainicial1->text();
         QString ffinal = m_fechafinal1->text();
-        diariop.inicializa(companyact);
+        diariop.inicializa(m_companyact);
         diariop.inicializa1((char *) finicial.ascii(), (char *)ffinal.ascii());
         diariop.inicializa2((char *) fn.ascii());
         diariop.accept();
@@ -228,10 +229,10 @@ void DiarioView::boton_extracto1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        companyact->extractoempresa()->inicializa1(m_listado->text(m_listado->currentRow(),COL_CUENTA),m_listado->text(m_listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        m_companyact->extractoempresa()->inicializa1(m_listado->text(m_listado->currentRow(),COL_CUENTA),m_listado->text(m_listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
-    companyact->extractoempresa()->accept();
-    companyact->libromayor();
+    m_companyact->extractoempresa()->accept();
+    m_companyact->libromayor();
 }// end boton_extracto1
 
 
@@ -258,10 +259,10 @@ void DiarioView::boton_balance1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         }// end switch
-        companyact->balanceempresa()->inicializa1(m_listado->text(m_listado->currentRow(),COL_CUENTA), m_listado->text(m_listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        m_companyact->balanceempresa()->inicializa1(m_listado->text(m_listado->currentRow(),COL_CUENTA), m_listado->text(m_listado->currentRow(),COL_CUENTA), fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
     }// end if
-    companyact->balanceempresa()->accept();
-    companyact->librobalance();
+    m_companyact->balanceempresa()->accept();
+    m_companyact->librobalance();
 }// end boton_balance1
 
 
@@ -271,15 +272,30 @@ void DiarioView::boton_asiento() {
         QString text = m_listado->text(m_listado->currentRow(),COL_NUMASIENTO);
         int numasiento = atoi((char *)text.ascii());
         if (numasiento != 0) {
-            companyact->intapuntsempresa()->muestraasiento(numasiento);
+            m_companyact->intapuntsempresa()->muestraasiento(numasiento);
         }// end if
     }// end if
-    companyact->muestraapuntes1();
+    m_companyact->muestraapuntes1();
 	_depura("END DiarioView::boton_asiento",0);
 }// end if
 
 
+/**
+  * Hacemos la carga de mui_list
+  * Hacemos la consulta a la base de datos y presentamos el listado.
+  */
+void DiarioView::presenta() {
+    _depura("DiarioView::presenta",0);
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM borrador");
+    mui_list->cargar(cur);
+    delete cur;
+    _depura("END DiarioView::presenta",0);
+}
+
 void DiarioView::presentar() {
+
+	presenta();
+
     float debe, haber;
     float totaldebe1, totalhaber1;
     int idcuenta;
@@ -304,8 +320,8 @@ void DiarioView::presentar() {
     cursor2 *cursoraux;
 
     // Consideraciones para centros de coste y canales
-    selectcanalview *scanal=companyact->getselcanales();
-    selectccosteview *scoste=companyact->getselccostes();
+    selectcanalview *scanal=m_companyact->getselcanales();
+    selectccosteview *scoste=m_companyact->getselccostes();
     QString ccostes = scoste->cadcoste();
     if (ccostes != "")
         ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.ascii());
@@ -324,9 +340,9 @@ void DiarioView::presentar() {
 
     query= "SELECT asiento.ordenasiento, "+tabla+".contrapartida, "+tabla+".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, "+tabla+".conceptocontable,"+tabla+".descripcion AS descapunte, "+tabla+".debe, "+tabla+".haber, cuenta.idcuenta, asiento.idasiento, "+tabla+".idc_coste, "+tabla+".idcanal, cuenta.codigo FROM asiento, "+tabla+", cuenta WHERE asiento.idasiento="+tabla+".idasiento AND "+tabla+".idcuenta = cuenta.idcuenta AND "+tabla+".fecha >= '"+finicial+"' AND "+tabla+".fecha <= '"+ffinal+"' "+ccostes+" "+ccanales+" ORDER BY "+tabla+".fecha, asiento.idasiento, "+tabla+".orden";
 
-    //   companyact->begin();
-    cursoraux = companyact->cargacursor(query,"cursorapuntes");
-    //   companyact->commit();
+    //   m_companyact->begin();
+    cursoraux = m_companyact->cargacursor(query,"cursorapuntes");
+    //   m_companyact->commit();
     m_listado->setNumRows(cursoraux->numregistros());
     int i =0;
     int modo=0;
@@ -355,7 +371,7 @@ void DiarioView::presentar() {
         if (cursoraux->valor("idc_coste") != "") {
             QString query1;
             query1 = "SELECT * FROM c_coste WHERE idc_coste=" + cursoraux->valor("idc_coste");
-            cursorcoste=companyact->cargacursor(query1,"ccoste");
+            cursorcoste=m_companyact->cargacursor(query1,"ccoste");
             if (!cursorcoste->eof()) {
                 m_listado->setItem(i,COL_CCOSTE, new QTableItem1(m_listado, Q3TableItem::OnTyping,cadaux, modo));
                 m_listado->setText(i,COL_CCOSTE,cursorcoste->valor("nombre"));
@@ -366,7 +382,7 @@ void DiarioView::presentar() {
         // Sacamos el canal si existe
         if (cursoraux->valor("idcanal") != "") {
             QString query2 = "SELECT * FROM canal WHERE idcanal=" + cursoraux->valor("idcanal");
-            cursorcanal=companyact->cargacursor(query2,"canal");
+            cursorcanal=m_companyact->cargacursor(query2,"canal");
             if (!cursorcanal->eof()) {
                 m_listado->setItem(i,COL_CANAL, new QTableItem1(m_listado, Q3TableItem::OnTyping,cadaux, modo));
                 m_listado->setText(i,COL_CANAL,cursorcanal->valor("nombre"));
@@ -378,7 +394,7 @@ void DiarioView::presentar() {
         if (cursoraux->valor("contrapartida") != "") {
             QString querycontrapartida;
             querycontrapartida.sprintf("SELECT codigo FROM cuenta WHERE idcuenta=%s",cursoraux->valor("contrapartida").ascii());
-            cursoraux1=companyact->cargacursor(querycontrapartida,"contrapartida");
+            cursoraux1=m_companyact->cargacursor(querycontrapartida,"contrapartida");
             if (!cursoraux1->eof()) {
                 m_listado->setItem(i,COL_CONTRAPARTIDA, new QTableItem1(m_listado, Q3TableItem::OnTyping,cadaux, modo));
                 m_listado->setText(i,COL_CONTRAPARTIDA,cursoraux1->valor("codigo"));
@@ -499,5 +515,6 @@ void DiarioView::textChanged(const QString &texto) {
     if (texto=="*")
         fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
 }// end fecha_textChanged
+
 
 

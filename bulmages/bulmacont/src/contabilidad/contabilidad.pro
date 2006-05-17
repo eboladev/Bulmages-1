@@ -191,14 +191,11 @@ HEADERS += splashscreen.h \
            balance1view.h \
            qlistviewitem1.h \
            balanceview.h \
-#           intapunts3view.h \
            asientoview.h \
            aplinteligentesview.h \
            filtrarasientosview.h \
            asientosview.h \
-#           listivaview.h \
            regivaprintview.h \
-#           ivaview.h \
            compbalanceview.h \
            mpatrimonialview.h \
            mpatrimonialesview.h \
@@ -227,21 +224,18 @@ HEADERS += splashscreen.h \
            modelo300.h \
            importainteligente.h \
            importbalance.h \
-#           cobropagoview.h \
            bbloqfecha.h \
            tipoivaview.h \
            fpagoview.h \
            arbol.h \
 	   busquedacuenta.h \
-#	   listlinprevcobro.h \
-#	   listlinprevcobroview.h \
-#	   linprevcobro.h \
 	   asiento1.h \
 	   asiento1view.h \
 	   linasiento1.h \
 	   listlinasiento1.h \
 	   listlinasiento1view.h \
-	   subform2bc.h
+	   subform2bc.h \
+	   diariosubform.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -257,14 +251,11 @@ SOURCES += main.cpp \
            balance1view.cpp \
            qlistviewitem1.cpp \
            balanceview.cpp \
-#           intapunts3view.cpp \
            asientoview.cpp \
            aplinteligentesview.cpp \
            filtrarasientosview.cpp \
            asientosview.cpp \
-#           listivaview.cpp \
            regivaprintview.cpp \
-#           ivaview.cpp \
            compbalanceview.cpp \
            mpatrimonialview.cpp \
            mpatrimonialesview.cpp \
@@ -293,21 +284,18 @@ SOURCES += main.cpp \
            modelo300.cpp \
            importainteligente.cpp \
            importbalance.cpp \
-#           cobropagoview.cpp \
            bbloqfecha.cpp \
            tipoivaview.cpp \
            fpagoview.cpp \
            arbol.cpp \
 	   busquedacuenta.cpp \
-#	   listlinprevcobro.cpp \
-#	   listlinprevcobroview.cpp \
-#	   linprevcobro.cpp \
 	   asiento1.cpp \
 	   asiento1view.cpp \
 	   linasiento1.cpp \
 	   listlinasiento1.cpp \
 	   listlinasiento1view.cpp \
-	   subform2bc.cpp
+	   subform2bc.cpp \
+	   diariosubform.cpp
 	 
 	 
 

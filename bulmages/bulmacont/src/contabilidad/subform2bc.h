@@ -18,21 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef SUBFORM2BC_H
-#define SUBFORM2BC_H
+#ifndef SUBFORM2BC1_H
+#define SUBFORM2BC1_H
 
 #include <Q3Table>
 #include <QEvent>
 
-#include "empresa.h"
 #include "qtable2.h"
 #include "subform.h"
 #include "subform3.h"
 
 
 class SubForm2Bc : public SubForm3 {
-    Q_OBJECT
-
+Q_OBJECT
 private:
     bool m_delete;
 
@@ -40,6 +38,8 @@ public:
     SubForm2Bc(QWidget *parent = 0);
     virtual ~SubForm2Bc() {}
     ;
+
+
     void setDelete(bool f) {
         m_delete=f;
     };
@@ -49,6 +49,9 @@ public slots:
     virtual void editFinished(int row, int col);
     virtual void pressedSlash(int row, int col);
     virtual void pressedAsterisk(int row, int col);
+
+
+
 };
 
 #endif

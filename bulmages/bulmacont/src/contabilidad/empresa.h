@@ -36,6 +36,8 @@ class selectccosteview;
 class selectcanalview;
 class balance1view;
 class Asiento1View;
+class DiarioView;
+class balanceview;
 
 /**
  * @author Tomeu Borras Riera
