@@ -149,7 +149,7 @@ void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
     m_colorden = col;
 
 
-    if (m_colorden > rowCount()) {
+    if (m_colorden > columnCount() | m_colorden < 0) {
         m_colorden = 0;
         col = 0;
     }// end if
@@ -161,18 +161,25 @@ void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
 
     int lastcol = columnCount();
 
+    _depura("insercion de columnas",0);
     insertColumn(lastcol);
     insertColumn(lastcol+1);
     insertColumn(lastcol+2);
 
+
+    _depura("ocultacion de columnas",0);
     hideColumn(lastcol);
     hideColumn(lastcol + 1);
     hideColumn(lastcol + 2);
     bool oknumero = TRUE;
     bool okfecha = TRUE;
 
+    _depura("comienza el bucle",0);
+
     for (int x = 0; x < rowCount(); x++) {
+	_depura("tratamos un elemento "+QString::number(x)+" "+QString::number(col),0);
         QString cad = item(x,col)->text();
+	_depura("comprobamos "+cad,0);
         if (cad != "") {
             setText(x,lastcol+0,cad);
             /// Comprobamos si es un número.
