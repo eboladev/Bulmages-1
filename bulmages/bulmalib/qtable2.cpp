@@ -17,16 +17,14 @@
 #include <QKeyEvent>
 #include <QEvent>
 
-/*
-#include <qfont.h>
-#include <qpainter.h>
-#include <qcolor.h>
-#include <qdatetime.h>
-*/
-
 #include "qtable2.h"
 #include "configuracion.h"
 #include "funcaux.h"
+
+QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {
+
+    installEventFilter(this);
+}
 
 
 bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
@@ -63,15 +61,16 @@ bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
 
 
 
-QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {}
+
 
 bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
     _depura("QTableWidget2::INIT_eventFilter()\n",0);
     static bool ctrlpulsado= FALSE;
+	_depura("event->type",0);
     if ( event->type() == QEvent::KeyPress ) {
-        QKeyEvent *keyEvent = (QKeyEvent *) event;
+        QKeyEvent *keyEvent =static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
-
+        // -----------------------------------------------------------
         if ( key == Qt::Key_Plus) {
             emit pulsadomas(currentRow(), currentColumn(), key);
             return TRUE;
@@ -81,7 +80,7 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
             return TRUE;
         }// end if
         if (key == Qt::Key_Enter || key == Qt::Key_Return) { // El enter
-	    _depura("pulsado enter",2);
+            _depura("pulsado enter",2);
             emit pulsadomas(currentRow(), currentColumn(), 4100);
             return TRUE;
         }// end if
@@ -106,8 +105,31 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
         }// end if
     }// end if
     if (event->type() == QEvent::KeyRelease) {
-        QKeyEvent *keyEvent = (QKeyEvent *) event;
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
+        int col = currentColumn();
+        int row = currentRow();
+        // ------------------ EL CAMBIO ------------------------------
+        switch( key) {
+        case Qt::Key_Slash:
+            pressedSlash(row, col);
+            return TRUE;
+            break;
+        case Qt::Key_Plus:
+            emit pressedPlus(row, col);
+            return TRUE;
+            break;
+        case Qt::Key_Asterisk:
+            emit pressedAsterisk(row, col);
+            return TRUE;
+            break;
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            emit editFinished( row, col);
+            return TRUE;
+            break;
+        }
+
         if (key == 4129) {
             ctrlpulsado = FALSE;
         }// end if
@@ -119,13 +141,6 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
 
 void QTableWidget2::ordenar () {
     _depura("QTableWidget2::ordenar ",0);
-
-    /* A TENER EN CUENTA QUE PUEDE DAR PROBLEMAS
-        if (m_insercion)
-            mui_list->removeRow(mui_list->rowCount()-1);
-        mui_list->sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
-    */
-
     sortColumn(m_colorden,(Qt::SortOrder) m_tipoorden);
     _depura("END QTableWidget2::ordenar",0);
 }
@@ -177,9 +192,9 @@ void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
     _depura("comienza el bucle",0);
 
     for (int x = 0; x < rowCount(); x++) {
-	_depura("tratamos un elemento "+QString::number(x)+" "+QString::number(col),0);
+        _depura("tratamos un elemento "+QString::number(x)+" "+QString::number(col),0);
         QString cad = item(x,col)->text();
-	_depura("comprobamos "+cad,0);
+        _depura("comprobamos "+cad,0);
         if (cad != "") {
             setText(x,lastcol+0,cad);
             /// Comprobamos si es un número.
@@ -217,7 +232,12 @@ void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
 }
 
 
-
+void QTableWidget2::setText( int x, int y, const QString & val) {
+	_depura("QTableWidget::setText",0);
+        QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
+        setItem(x, y, newitem);
+	_depura("END QTableWidget::setText",0);
+}
 
 
 

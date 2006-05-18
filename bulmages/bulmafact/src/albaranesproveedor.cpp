@@ -51,6 +51,7 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const cha
     m_companyact = comp;
     m_proveedor->setcompany(comp);
     m_articulo->setcompany(comp);
+    mui_list->setcompany(comp);
     presenta();
     m_modo = 0;
     mdb_idalbaranp = "";
@@ -150,8 +151,10 @@ void AlbaranesProveedor::imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -159,8 +162,10 @@ void AlbaranesProveedor::imprimir() {
 
     /// Copiamos el logo
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 

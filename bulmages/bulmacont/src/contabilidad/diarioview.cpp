@@ -293,9 +293,7 @@ void DiarioView::presenta() {
 }
 
 void DiarioView::presentar() {
-
-	presenta();
-
+    presenta();
     float debe, haber;
     float totaldebe1, totalhaber1;
     int idcuenta;

@@ -77,6 +77,7 @@ public:
         m_companyact = comp;
         m_proveedor->setcompany(comp);
         m_articulo->setcompany(comp);
+	mui_list->setcompany(comp);
     };
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {

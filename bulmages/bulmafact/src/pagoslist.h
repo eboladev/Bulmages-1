@@ -67,6 +67,7 @@ public:
     void setcompany (company *comp)	{
         m_companyact = comp;
         m_proveedor->setcompany(comp);
+	mui_list->setcompany(comp);
     };
     QString idpago() {
         return mdb_idpago;

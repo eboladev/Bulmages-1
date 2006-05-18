@@ -42,7 +42,7 @@ public slots:
     virtual void cargar(QString idpedidoproveedor);
     Fixed calculabase();
     Fixed calculaiva();
-    virtual void editFinished(int, int);
+    virtual void on_mui_list_editFinished(int, int);
 
 };
 

@@ -37,7 +37,6 @@ class filtrardiarioview;
 class DiarioView : public QWidget, public Ui_DiarioBase  {
    Q_OBJECT
 private:
-
 /// Clase adyacente a esta que se encarga de toda la parte de filtrado y que ayuda en la composición del query del listado pasandole parámetros.
    filtrardiarioview *filt;
 /// Empresa con la que esta trabajando esta clase.

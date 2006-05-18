@@ -50,6 +50,7 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *nam
     m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
+    mui_list->setcompany(comp);
     presenta();
     m_modo=0;
     m_idpresupuesto="";
@@ -142,8 +143,10 @@ void PresupuestoList::imprimir() {
 
     /// Copiamos el archivo
 #ifdef WINDOWS
+
     archivo = "copy "+archivo+" "+archivod;
 #else
+
     archivo = "cp "+archivo+" "+archivod;
 #endif
 
@@ -152,8 +155,10 @@ void PresupuestoList::imprimir() {
     /// Copiamos el logo
 
 #ifdef WINDOWS
+
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
+
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
 

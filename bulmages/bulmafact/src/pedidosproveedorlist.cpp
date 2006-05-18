@@ -43,12 +43,13 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, Qt
 }
 
 
-PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag) 
-  : QWidget(parent, name, flag) {
+PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
+        : QWidget(parent, name, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
     m_articulo->setcompany(comp);
+    mui_list->setcompany(comp);
     presenta();
     m_modo=0;
     mdb_idpedidoproveedor="";
@@ -57,14 +58,13 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const
 }
 
 
-PedidosProveedorList::~PedidosProveedorList() {
-}
+PedidosProveedorList::~PedidosProveedorList() {}
 
 
 void PedidosProveedorList::presenta() {
     cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalpedpro(idpedidoproveedor) AS total, calcbimppedpro(idpedidoproveedor) AS base, calcimpuestospedpro(idpedidoproveedor) AS impuestos FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
-	mui_list->cargar(cur);
-	delete cur;
+    mui_list->cargar(cur);
+    delete cur;
     /// Hacemos el calculo del total.
     cur = m_companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  "+generarFiltro());
     m_total->setText(cur->valor("total"));
@@ -162,11 +162,11 @@ void PedidosProveedorList::imprimir() {
 void PedidosProveedorList::on_mui_borrar_clicked() {
     _depura("PedidosProveedorList::on_mui_borrar_clicked",0);
     mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
-        PedidoProveedorView *prov = new PedidoProveedorView(m_companyact,0,theApp->translate("Edicion de Facturas a Cliente", "company"));
-        if (prov->cargar(mdb_idpedidoproveedor)) {
-            return;
-        }
-        prov->borrar();
+    PedidoProveedorView *prov = new PedidoProveedorView(m_companyact,0,theApp->translate("Edicion de Facturas a Cliente", "company"));
+    if (prov->cargar(mdb_idpedidoproveedor)) {
+        return;
+    }
+    prov->borrar();
     presenta();
 }
 
@@ -190,10 +190,10 @@ void PedidosProveedorList::editar(int  row) {
 
 void PedidosProveedorList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-	if (a >=0 ) 
-    	editar(a);
-	else
-	_depura("Debe seleccionar una linea",2);
+    if (a >=0 )
+        editar(a);
+    else
+        _depura("Debe seleccionar una linea",2);
 }
 
 

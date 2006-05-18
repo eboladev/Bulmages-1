@@ -48,9 +48,9 @@ public:
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);
-    virtual void editFinished(int row, int col);
-    virtual void pressedSlash(int row, int col);
-    virtual void pressedAsterisk(int row, int col);
+    virtual void on_mui_list_editFinished(int row, int col);
+    virtual void on_mui_list_pressedSlash(int row, int col);
+    virtual void on_mui_list_pressedAsterisk(int row, int col);
 };
 
 #endif

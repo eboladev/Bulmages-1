@@ -52,7 +52,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>0</number>
         </property>
         <item>
          <spacer>
@@ -91,7 +91,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+           <iconset/>
           </property>
           <property name="iconSize" >
            <size>
@@ -132,14 +132,20 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QTableWidget" name="mui_listcolumnas" />
-          </item>
-          <item>
            <widget class="QToolButton" name="mui_confcol" >
             <property name="text" >
-             <string>Actualizar</string>
+             <string>Aplicar Cambios</string>
+            </property>
+            <property name="icon" >
+             <iconset resource="../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
            </widget>
+          </item>
+          <item>
+           <widget class="QTableWidget" name="mui_listcolumnas" />
           </item>
          </layout>
         </widget>
@@ -155,19 +161,54 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QTextEdit" name="mui_query" >
-            <property name="autoFormatting" >
-             <set>QTextEdit::AutoAll</set>
+           <widget class="QToolButton" name="mui_confquery" >
+            <property name="text" >
+             <string>Aplicar Cambios</string>
             </property>
-            <property name="readOnly" >
-             <bool>false</bool>
+            <property name="icon" >
+             <iconset resource="../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+            </property>
+            <property name="toolButtonStyle" >
+             <enum>Qt::ToolButtonTextBesideIcon</enum>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="mui_confquery" >
-            <property name="text" >
-             <string>Actualizar</string>
+           <widget class="QTextEdit" name="mui_query" >
+            <property name="font" >
+             <font>
+              <family>Sans Serif</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+              <underline>false</underline>
+              <strikeout>false</strikeout>
+             </font>
+            </property>
+            <property name="cursor" >
+             <cursor>4</cursor>
+            </property>
+            <property name="contextMenuPolicy" >
+             <enum>Qt::NoContextMenu</enum>
+            </property>
+            <property name="acceptDrops" >
+             <bool>false</bool>
+            </property>
+            <property name="autoFormatting" >
+             <set>QTextEdit::AutoAll</set>
+            </property>
+            <property name="tabChangesFocus" >
+             <bool>true</bool>
+            </property>
+            <property name="documentTitle" >
+             <string comment="Consulta SQL" >Query</string>
+            </property>
+            <property name="readOnly" >
+             <bool>false</bool>
+            </property>
+            <property name="acceptRichText" >
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -190,7 +231,9 @@
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../bulmages-recursos-graficos.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_detalles</sender>

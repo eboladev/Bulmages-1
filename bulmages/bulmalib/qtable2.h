@@ -50,11 +50,19 @@ private:
     int m_tipoorden;
     int m_colorden;
 public:
-    int tipoorden() {return m_tipoorden;};
-    int colorden() {return m_colorden;};
+    int tipoorden() {
+        return m_tipoorden;
+    };
+    int colorden() {
+        return m_colorden;
+    };
 
-    void settipoorden(int t) { m_tipoorden = t;};
-    void setcolorden(int t) { m_colorden = t;};
+    void settipoorden(int t) {
+        m_tipoorden = t;
+    };
+    void setcolorden(int t) {
+        m_colorden = t;
+    };
 
 
     QTableWidget2(QWidget * parent = 0 );
@@ -63,18 +71,17 @@ public:
     };
 
     virtual bool eventFilter( QObject *obj, QEvent *event );
-    void setText( int x, int y, const QString & val) {
-	_depura("QTableWidget::setText",0);
-        QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
-        setItem(x, y, newitem);
-    }// end setText
-	void sortColumn ( int col, Qt::SortOrder tipoorden);
-	virtual void ordenar();
+    void setText( int x, int y, const QString & val);
+    void sortColumn ( int col, Qt::SortOrder tipoorden);
+    virtual void ordenar();
 public slots:
-	virtual void sortByColumn(int col);
-
+    virtual void sortByColumn(int col);
 signals:
     void pulsadomas(int, int, int);
+    void editFinished(int, int);
+    void pressedAsterisk(int, int);
+    void pressedPlus(int, int);
+    void pressedSlash(int, int);
 };
 
 #endif

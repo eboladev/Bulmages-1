@@ -52,6 +52,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFl
     _depura("CobrosList::CobrosList",0);
     m_companyact = comp;
     m_cliente->setcompany(comp);
+    mui_list->setcompany(comp);
     presentar();
     m_modo=0;
     mdb_idcobro="";

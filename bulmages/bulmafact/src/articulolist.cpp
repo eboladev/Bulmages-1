@@ -44,6 +44,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     m_companyact = comp;
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
+    mui_list->setcompany(comp);
     presenta();
     m_modo=editmodo;
     if (m_modo == EditMode)

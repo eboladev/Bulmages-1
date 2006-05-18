@@ -81,6 +81,7 @@ public:
     void setcompany(company *comp) {
         m_companyact = comp;
         m_proveedor->setcompany(comp);
+	mui_list->setcompany(comp);
     };
     void hideBotonera() {
         m_botonera->hide();
@@ -89,7 +90,6 @@ public:
         m_botonera->show();
     };
     void hideBusqueda() {
-        _depura("Ocultar busqueda.", 0);
         m_busqueda->hide();
     };
     void showBusqueda() {

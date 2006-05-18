@@ -42,7 +42,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
 
 
 
-void ListLinPedidoProveedorView::editFinished(int row, int col) {
+void ListLinPedidoProveedorView::on_mui_list_editFinished(int row, int col) {
     _depura("ListLinPedidoProveedorView::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);

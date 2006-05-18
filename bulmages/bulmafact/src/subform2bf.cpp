@@ -33,12 +33,12 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     setDelete(TRUE);
 };
 
-void SubForm2Bf::pressedAsterisk(int row, int col) {
+void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     _depura("SubForm2Bf::pressedAsterisk",0);
     SDBRecord *rec = lineaat(row);
-	_depura("tenemos el registro rec",0);
+    _depura("tenemos el registro rec",0);
     SDBCampo *camp = (SDBCampo *) item(row,col);
-	_depura("tenemos el campo camp",0);
+    _depura("tenemos el campo camp",0);
 
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
@@ -63,15 +63,16 @@ void SubForm2Bf::pressedAsterisk(int row, int col) {
 
 
 
-void SubForm2Bf::pressedSlash(int row, int col) {
-    _depura("SubForm2Bf::pressedSlash",2);
+void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
+    _depura("SubForm2Bf::pressedSlash",0);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     QString text = editaTexto(camp->text());
-    camp->set(text);
+    camp->set
+    (text);
 }
 
-void SubForm2Bf::editFinished(int row, int col) {
-    _depura("SubForm2Bf::editFinished",4);
+void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
+    _depura("SubForm2Bf::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();
@@ -83,11 +84,12 @@ void SubForm2Bf::editFinished(int row, int col) {
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         }
     }
-    _depura("END SubForm2Bf::editFinished",5);
+    SubForm3::on_mui_list_editFinished(row, col);
+    _depura("END SubForm2Bf::editFinished",0);
 }
 
 void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
-    _depura("SubForm2Bf::contextMenuEvent",4);
+    _depura("SubForm2Bf::contextMenuEvent",0);
     QAction *del= NULL;
     int row = currentRow();
     if ( row < 0)
@@ -126,7 +128,7 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     if(opcion == verconfig)
         showConfig();
 
-    _depura("END SubForm2Bf::contextMenuEvent",5);
+    _depura("END SubForm2Bf::contextMenuEvent",0);
     delete popup;
 }
 

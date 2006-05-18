@@ -153,14 +153,14 @@ public:
     virtual int guardar();
     virtual int cargar(cursor2 *cur);
     virtual void pintar();
-    virtual bool eventFilter(QObject *obj, QEvent *ev);
-    virtual void pressedSlash(int row, int col);
-    virtual void pressedAsterisk(int row, int col);
-    virtual void pressedPlus(int row, int col);
-    virtual void editFinished(int row, int col);
+
 public slots:
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
+    virtual void on_mui_list_editFinished(int row, int col);
+    virtual void on_mui_list_pressedSlash(int row, int col);
+    virtual void on_mui_list_pressedAsterisk(int row, int col);
+    virtual void on_mui_list_pressedPlus(int row, int col);
 signals:
     void editFinish(int, int);
 };

@@ -30,11 +30,12 @@
 SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     setupUi(this);
     _depura("SubForm3::SubForm3",0);
+    m_companyact = NULL;
     mui_list->setSelectionMode( QAbstractItemView::SingleSelection );
     mui_list->setSelectionBehavior( QAbstractItemView::SelectRows);
     mui_list->setAlternatingRowColors(TRUE);
     mui_list->setSortingEnabled(TRUE);
-    installEventFilter(this);
+
     m_insercion = FALSE;
     m_primero = TRUE;
 
@@ -234,38 +235,13 @@ SDBRecord *SubForm3::lineaat(int row) {
 }
 
 
-bool SubForm3::eventFilter( QObject *obj, QEvent *ev ) {
-    _depura("SubForm3::INIT_eventFilter()\n",1);
-    if ( ev->type() == QEvent::KeyRelease ) {
-        QKeyEvent *k = (QKeyEvent *)ev;
-        int col=mui_list->currentColumn();
-        int row=mui_list->currentRow();
-        switch (k->key()) {
-        case Qt::Key_Slash:
-            pressedSlash(row, col);
-            return TRUE;
-            break;
-        case Qt::Key_Plus:
-            pressedPlus(row, col);
-            return TRUE;
-            break;
-        case Qt::Key_Asterisk:
-            pressedAsterisk(row, col);
-            return TRUE;
-            break;
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            editFinished(row, col);
-            emit editFinish( row, col);
-            if (row == mui_list->rowCount()-1)
-                nuevoRegistro();
-            situarse(row,col);
-            return TRUE;
-            break;
-        }// end switch
-    }// end if
-    _depura("END SubForm3::cargar()\n",1);
-    return QWidget::eventFilter( obj, ev );
+void SubForm3::on_mui_list_editFinished(int row, int col) {
+    _depura("SubForm3::on_mui_list_editFinished",0);
+    emit editFinish( row, col);
+    if (row == mui_list->rowCount()-1)
+        nuevoRegistro();
+    situarse(row,col);
+    _depura("END SubForm3::on_mui_list_editFinished",0);
 }
 
 
@@ -340,7 +316,7 @@ int SubForm3::guardar() {
         return error;
     } catch(...) {
         _depura("error inesperado en el guardado, se cancela la operacion",1);
-	throw -1;
+        throw -1;
     }
 }
 
@@ -394,8 +370,6 @@ void SubForm3::guardaconfig() {
             else
                 stream << "0" << "\n";
         }// end for
-
-
         file.close();
     }// end if
 }
@@ -446,24 +420,18 @@ void SubForm3::on_mui_confcol_clicked() {
 }
 
 
-void SubForm3::pressedSlash(int , int ) {
+void SubForm3::on_mui_list_pressedSlash(int , int ) {
     _depura ("pulsadoSlash aun no implementado",2);
 }
 
 
-void SubForm3::pressedAsterisk(int , int ) {
+void SubForm3::on_mui_list_pressedAsterisk(int , int ) {
     _depura ("pressedAsterisk aun no implementado",1);
 }
 
 
-void SubForm3::pressedPlus(int , int ) {
+void SubForm3::on_mui_list_pressedPlus(int , int ) {
     _depura ("pulsadoPlus aun no implementado",1);
-}
-
-
-void SubForm3::editFinished(int row, int col) {
-    _depura ("editFinished aun no implementado",1);
-    emit(editFinish(row, col));
 }
 
 
@@ -490,6 +458,10 @@ QString SubForm3::imprimir() {
 
 void SubForm3::on_mui_confquery_clicked() {
     _depura("SubForm3::on_mui_confquery_clicked ",0);
+    if (m_companyact == NULL) {
+        _depura("no se ha inicializado bien la clase",2);
+        return;
+    }// end if
     cursor2 *cur = m_companyact->cargacursor(mui_query->text());
     cargar(cur);
     delete cur;

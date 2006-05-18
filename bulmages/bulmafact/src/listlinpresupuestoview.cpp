@@ -41,7 +41,7 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(par
 
 
 
-void listlinpresupuestoview::editFinished(int row, int col) {
+void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
     _depura("listlinpresupuestoview::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);

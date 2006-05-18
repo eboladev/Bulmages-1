@@ -83,6 +83,7 @@ public:
         m_companyact=comp;
         m_proveedor->setcompany(comp);
         m_articulo->setcompany(comp);
+	mui_list->setcompany(comp);
     };
     QString idalbaranp() {
         return mdb_idalbaranp;

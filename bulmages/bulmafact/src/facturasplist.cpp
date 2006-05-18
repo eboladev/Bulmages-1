@@ -39,6 +39,7 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, con
     m_companyact = comp;
     m_proveedor->setcompany(m_companyact);
     m_articulo->setcompany(m_companyact);
+    mui_list->setcompany(comp);
     presenta();
     m_modo=0;
     mdb_idfacturap="";
@@ -47,8 +48,7 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, con
 }
 
 
-FacturasProveedorList::~FacturasProveedorList() {
-}
+FacturasProveedorList::~FacturasProveedorList() {}
 
 
 

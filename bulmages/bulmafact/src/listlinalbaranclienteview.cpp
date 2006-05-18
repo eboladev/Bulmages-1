@@ -40,7 +40,7 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent) : SubForm2
 
 
 
-void ListLinAlbaranClienteView::editFinished(int row, int col) {
+void ListLinAlbaranClienteView::on_mui_list_editFinished(int row, int col) {
     _depura("ListLinAlbaranClienteView::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);

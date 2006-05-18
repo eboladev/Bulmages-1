@@ -49,6 +49,7 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
     m_companyact = comp;
     setupUi(this);
     m_proveedor->setcompany(comp);
+    mui_list->setcompany(comp);
     presentar();
     m_modo=0;
     mdb_idpago="";

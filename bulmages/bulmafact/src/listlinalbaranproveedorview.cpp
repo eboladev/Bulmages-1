@@ -40,7 +40,7 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubF
 
 
 
-void ListLinAlbaranProveedorView::editFinished(int row, int col) {
+void ListLinAlbaranProveedorView::on_mui_list_editFinished(int row, int col) {
     _depura("ListLinAlbaranProveedorView::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
