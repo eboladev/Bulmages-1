@@ -10,20 +10,6 @@
 //
 //
 
-/*
-CREATE TABLE lpedidocliente (
-   numlpedidocliente serial PRIMARY KEY,
-   desclpedidocliente character varying(150),
-   cantlpedidocliente float,
-   pvplpedidocliente float,
-   prevlpedidocliente date,
-   ivalpedidocliente numeric(5,2),
-   descuentolpedidocliente float,   
-   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
-   idarticulo integer REFERENCES articulo(idarticulo)
-);
-*/
-
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QKeyEvent>
@@ -58,6 +44,7 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
 
 void ListLinPedidoClienteView::on_mui_list_editFinished(int row, int col) {
     _depura("ListLinPedidoClienteView::editFinished",0);
+    SubForm3::on_mui_list_editFinished(row, col);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();

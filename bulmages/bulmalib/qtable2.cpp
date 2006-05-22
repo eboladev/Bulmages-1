@@ -64,53 +64,59 @@ bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
 
 
 bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
-    _depura("QTableWidget2::INIT_eventFilter()\n",0);
+//    _depura("QTableWidget2::INIT_eventFilter()\n",0);
     static bool ctrlpulsado= FALSE;
-	_depura("event->type",0);
-    if ( event->type() == QEvent::KeyPress ) {
-        QKeyEvent *keyEvent =static_cast<QKeyEvent *>(event);
-        int key = keyEvent->key();
-        // -----------------------------------------------------------
-        if ( key == Qt::Key_Plus) {
-            emit pulsadomas(currentRow(), currentColumn(), key);
-            return TRUE;
-        }// end if
-        if (key == Qt::Key_Asterisk) {
-            emit pulsadomas(currentRow(), currentColumn(), key);
-            return TRUE;
-        }// end if
-        if (key == Qt::Key_Enter || key == Qt::Key_Return) { // El enter
-            _depura("pulsado enter",2);
-            emit pulsadomas(currentRow(), currentColumn(), 4100);
-            return TRUE;
-        }// end if
-        if (key == 4115) {// La tecla hacia arriba
-            if (ctrlpulsado)   // Solo en combinacion con el ctrl
+    /*
+        if ( event->type() == QEvent::KeyPress ) {
+            QKeyEvent *keyEvent =static_cast<QKeyEvent *>(event);
+            int key = keyEvent->key();
+            // -----------------------------------------------------------
+            if ( key == Qt::Key_Plus) {
                 emit pulsadomas(currentRow(), currentColumn(), key);
-        }// end if
-        if (key == Qt::Key_Delete) {
-            if (ctrlpulsado)   // Solo en combinacion con el ctrl
+                return TRUE;
+            }// end if
+            if (key == Qt::Key_Asterisk) {
                 emit pulsadomas(currentRow(), currentColumn(), key);
-        }// end if
-        if (key == 4117) {// La tecla hacia arriba
-            if (ctrlpulsado)   // Solo en combinacion con el ctrl
+                return TRUE;
+            }// end if
+            if (key == Qt::Key_Enter || key == Qt::Key_Return) { // El enter
+                emit pulsadomas(currentRow(), currentColumn(), 4100);
+                return TRUE;
+            }// end if
+            if (key == 4115) {// La tecla hacia arriba
+                if (ctrlpulsado)   // Solo en combinacion con el ctrl
+                    emit pulsadomas(currentRow(), currentColumn(), key);
+            }// end if
+            if (key == Qt::Key_Delete) {
+                if (ctrlpulsado)   // Solo en combinacion con el ctrl
+                    emit pulsadomas(currentRow(), currentColumn(), key);
+            }// end if
+            if (key == 4117) {// La tecla hacia arriba
+                if (ctrlpulsado)   // Solo en combinacion con el ctrl
+                    emit pulsadomas(currentRow(), currentColumn(), key);
+            }// end if
+            if (key == 4129) { // el Control
+                ctrlpulsado = TRUE;
+            }// end if
+            if (key == 47) {  // El dividir /
                 emit pulsadomas(currentRow(), currentColumn(), key);
+                return TRUE;
+            }// end if
         }// end if
-        if (key == 4129) { // el Control
-            ctrlpulsado = TRUE;
-        }// end if
-        if (key == 47) {  // El dividir /
-            emit pulsadomas(currentRow(), currentColumn(), key);
-            return TRUE;
-        }// end if
-    }// end if
-    if (event->type() == QEvent::KeyRelease) {
+    */
+    if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         int col = currentColumn();
         int row = currentRow();
         // ------------------ EL CAMBIO ------------------------------
         switch( key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+		_depura("pusado el enter",0);
+            emit editFinished( row, col);
+            return TRUE;
+            break;
         case Qt::Key_Slash:
             pressedSlash(row, col);
             return TRUE;
@@ -123,18 +129,13 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
             emit pressedAsterisk(row, col);
             return TRUE;
             break;
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            emit editFinished( row, col);
-            return TRUE;
-            break;
-        }
+        }// end switch
 
         if (key == 4129) {
             ctrlpulsado = FALSE;
         }// end if
     }// end if
-    _depura("QTableWidget2::END_eventFilter()\n",0);
+//    _depura("END QTableWidget2::eventFilter()\n",0);
     return QTableWidget::eventFilter(obj, event);
 }// end eventFilter
 
@@ -233,10 +234,10 @@ void QTableWidget2::sortColumn ( int col, Qt::SortOrder tipoorden) {
 
 
 void QTableWidget2::setText( int x, int y, const QString & val) {
-	_depura("QTableWidget::setText",0);
-        QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
-        setItem(x, y, newitem);
-	_depura("END QTableWidget::setText",0);
+    _depura("QTableWidget::setText",0);
+    QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);
+    setItem(x, y, newitem);
+    _depura("END QTableWidget::setText",0);
 }
 
 

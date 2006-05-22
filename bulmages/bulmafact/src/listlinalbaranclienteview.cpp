@@ -23,16 +23,16 @@
 ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("lalbaran");
     setDBCampoId("numlalbaran");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "");
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "");
-    addSHeader("numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "");
-    addSHeader("desclalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "");
-    addSHeader("cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
-    addSHeader("pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
-    addSHeader("ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
-    addSHeader("descontlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "");
-    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idarticulo");
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "codigocompletoarticulo");
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "nomarticulo");
+    addSHeader("numlalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "numlalbaran");
+    addSHeader("desclalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "desclalbaran");
+    addSHeader("cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "cantlalbaran");
+    addSHeader("pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "pvplalbaran");
+    addSHeader("ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "ivalalbaran");
+    addSHeader("descontlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "descontlalbaran");
+    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idalbaran");
 
     setinsercion(TRUE);
 }
@@ -42,6 +42,7 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent) : SubForm2
 
 void ListLinAlbaranClienteView::on_mui_list_editFinished(int row, int col) {
     _depura("ListLinAlbaranClienteView::editFinished",0);
+    SubForm3::on_mui_list_editFinished(row, col);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();

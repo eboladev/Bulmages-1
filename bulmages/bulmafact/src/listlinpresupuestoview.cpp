@@ -43,6 +43,7 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(par
 
 void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
     _depura("listlinpresupuestoview::editFinished",0);
+    SubForm3::on_mui_list_editFinished(row, col);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     camp->refresh();
@@ -57,14 +58,12 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
 	    rec->setDBvalue("descuentolpresupuesto","0.00");
 	    rec->setDBvalue("pvplpresupuesto",cur->valor("pvparticulo"));
         }// end if
-
         cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
 	    rec->setDBvalue("ivalpresupuesto",cur1->valor("porcentasa_iva"));		
         }// end if
 	delete cur1;
 	delete cur;
-
     }// end if
     _depura("END listlinpresupuestoview::editFinished",0);
 }
