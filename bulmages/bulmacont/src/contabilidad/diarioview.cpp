@@ -286,7 +286,7 @@ void DiarioView::boton_asiento() {
   */
 void DiarioView::presenta() {
     _depura("DiarioView::presenta",0);
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM borrador");
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta");
     mui_list->cargar(cur);
     delete cur;
     _depura("END DiarioView::presenta",0);

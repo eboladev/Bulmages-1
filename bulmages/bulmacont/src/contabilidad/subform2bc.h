@@ -21,7 +21,7 @@
 #ifndef SUBFORM2BC1_H
 #define SUBFORM2BC1_H
 
-#include <Q3Table>
+//#include <Q3Table>
 #include <QEvent>
 
 #include "qtable2.h"
@@ -31,27 +31,28 @@
 
 class SubForm2Bc : public SubForm3 {
 Q_OBJECT
-private:
+protected:
     bool m_delete;
 
 public:
     SubForm2Bc(QWidget *parent = 0);
     virtual ~SubForm2Bc() {}
     ;
-
+	virtual int cargar(cursor2 *);
 
     void setDelete(bool f) {
         m_delete=f;
     };
 
+
+
+   virtual void boton_asiento();
+
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);
-    virtual void editFinished(int row, int col);
-    virtual void pressedSlash(int row, int col);
-    virtual void pressedAsterisk(int row, int col);
-
-
-
+    virtual void on_mui_list_editFinished(int row, int col);
+    virtual void on_mui_list_pressedSlash(int row, int col);
+    virtual void on_mui_list_pressedAsterisk(int row, int col);
 };
 
 #endif

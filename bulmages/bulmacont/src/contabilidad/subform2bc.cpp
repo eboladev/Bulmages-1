@@ -27,16 +27,24 @@
 #include "subform3.h"
 #include "subform2bc.h"
 #include "funcaux.h"
+#include "empresa.h"
+#include "asiento1view.h"
 
+// Incluimos las imagenes que catalogan los tipos de cuentas.
+#include "images/cactivo.xpm"
+#include "images/cpasivo.xpm"
+#include "images/cneto.xpm"
+#include "images/cingresos.xpm"
+#include "images/cgastos.xpm"
 
 SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
     setDelete(TRUE);
-};
+}
 
 
 
 
-void SubForm2Bc::pressedAsterisk(int row, int col) {
+void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
 
@@ -47,8 +55,8 @@ void SubForm2Bc::pressedAsterisk(int row, int col) {
 
 
 
-void SubForm2Bc::pressedSlash(int row, int col) {
-    _depura("SubForm2Bc::pressedSlash",2);
+void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
+    _depura("SubForm2Bc::pressedSlash",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     QString text = editaTexto(camp->text());
@@ -56,7 +64,7 @@ void SubForm2Bc::pressedSlash(int row, int col) {
     (text);
 }
 
-void SubForm2Bc::editFinished(int row, int col) {
+void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
     _depura("SubForm2Bc::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
@@ -85,7 +93,7 @@ void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
-	popup->addSeparator();
+    popup->addSeparator();
     QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
@@ -99,11 +107,57 @@ void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {
         resizeColumnToContents(col);
     if (opcion == ajustac)
         resizeRowToContents(row);
-
-
-   if(opcion == verconfig)
-	showConfig();
-
+    if(opcion == verconfig)
+        showConfig();
     delete popup;
 }
 
+
+
+int SubForm2Bc::cargar(cursor2 *cur) {
+    _depura("SubForm2Bc::cargar",0);
+    SubForm3::cargar(cur);
+
+    SDBRecord *reg;
+    for ( int i = 0; i < m_lista.size(); ++i) {
+        reg = m_lista.at(i);
+        _depura("pintamos un SDBRecord",0);
+        SDBCampo *camp, *cemp=NULL;
+        QIcon icon;
+        for ( int j =0; j < reg->lista()->size(); ++j) {
+            camp = (SDBCampo *) reg->lista()->at(j);
+            if (camp->nomcampo() == "tipocuenta") {
+                if (camp->valorcampo() == "1")
+                    icon =  QPixmap(cactivo);
+                else if (camp->valorcampo() == "2")
+                    icon =   QPixmap(cpasivo);
+                else if (camp->valorcampo() == "3")
+                    icon =   QPixmap(cneto);
+                else if (camp->valorcampo() == "4")
+                    icon =   QPixmap(cingresos);
+                else if (camp->valorcampo() == "5")
+                    icon =   QPixmap(cgastos);
+            }// end if
+            if (camp->nomcampo() == "codigo") {
+                cemp = camp;
+            }// end if
+        }// end for
+        if (cemp != NULL) {
+            cemp->setIcon(icon);
+        }
+    }// end for
+    _depura("END SubForm2Bc::cargar",0);
+    return 0;
+}
+
+
+void SubForm2Bc::boton_asiento() {
+    _depura("SubForm2Bc::boton_asiento",0);
+    empresa *companyact = (empresa *) m_companyact;
+    QString numasiento = DBvalue("idasiento");
+    if (numasiento != "") {
+        companyact->intapuntsempresa()->muestraasiento(numasiento.toInt());
+        companyact->muestraapuntes1();
+    }// end if
+    _depura("END SubForm2Bc::boton_asiento",0);
+}

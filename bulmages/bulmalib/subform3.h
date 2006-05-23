@@ -34,7 +34,7 @@
 
 class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
-private:
+protected:
     QList<SHeader *>   m_lcabecera;
     QList<SDBRecord *> m_lista;
     postgresiface2 *m_companyact;
@@ -43,7 +43,7 @@ private:
     bool m_insercion;
     bool m_primero;
 
-private:
+protected:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();
