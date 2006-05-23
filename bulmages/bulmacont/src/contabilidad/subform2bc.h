@@ -47,6 +47,9 @@ public:
 
 
    virtual void boton_asiento();
+   virtual void boton_extracto1(int);
+   virtual void boton_balance1(int);
+   virtual void boton_balancetree(int);
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);

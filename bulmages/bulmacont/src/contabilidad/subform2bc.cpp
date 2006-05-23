@@ -29,6 +29,9 @@
 #include "funcaux.h"
 #include "empresa.h"
 #include "asiento1view.h"
+#include "extractoview1.h"
+#include "balance1view.h"
+
 
 // Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -161,3 +164,109 @@ void SubForm2Bc::boton_asiento() {
     }// end if
     _depura("END SubForm2Bc::boton_asiento",0);
 }
+
+
+
+// Si el parametro pasado es un:
+// 0 -> del dia actual
+// 1 -> del mes actual
+// 2 -> del año actual
+void SubForm2Bc::boton_extracto1(int tipo) {
+    _depura("SubForm2Bc::boton_extracto1",0);
+    empresa *companyact = (empresa *) m_companyact;
+    QDate fecha1, fecha2, fechaact;
+    QString fecha = DBvalue("fecha").left(10);
+    QString codigo = DBvalue("codigo");
+    if(fecha != "" && codigo != "") {
+        fechaact = normalizafecha(fecha);
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->extractoempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        companyact->extractoempresa()->accept();
+        companyact->libromayor();
+    }// end if
+    _depura("END SubForm2Bc::boton_extracto1",0);
+}
+
+
+
+// Si el parametro pasado es un:
+// 0 -> del periodo actual.
+// 1 -> del mes actual mirado a partir de la fecha de inicio.
+// 2 -> del año actual mirado a partir de la fecha de inicio.
+void SubForm2Bc::boton_balance1(int tipo) {
+    _depura("SubForm2Bc::boton_balance1",0);
+    empresa *companyact = (empresa *) m_companyact;
+    QString fecha = DBvalue("fecha").left(10);
+    QString codigo = DBvalue("codigo");
+    QDate fecha1, fecha2, fechaact, fechaact1;
+    if(fecha != "" && codigo != "") {
+        fechaact = normalizafecha(fecha);
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact1.year(), fechaact.month(), fechaact.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+    companyact->balanceempresa()->accept();
+    companyact->librobalance();
+    }// end if
+    _depura("END SubForm2Bc::boton_balance1",0);
+}
+
+
+// Si el parametro pasado es un:
+// 0 -> del periodo actual.
+// 1 -> del mes actual mirado a partir de la fecha de inicio.
+// 2 -> del año actual mirado a partir de la fecha de inicio.
+void SubForm2Bc::boton_balancetree(int tipo) {
+    _depura("SubForm2Bc::boton_balance2",0);
+    empresa *companyact = (empresa *) m_companyact;
+    QString fecha = DBvalue("fecha").left(10);
+    QString codigo = DBvalue("codigo");
+    QDate fecha1, fecha2, fechaact, fechaact1;
+    if(fecha != "" && codigo != "") {
+        fechaact = normalizafecha(fecha);
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact1.year(), fechaact.month(), fechaact.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->balance1empresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+    companyact->balance1empresa()->accept();
+    companyact->librobalancetree();
+    }// end if
+    _depura("END SubForm2Bc::boton_balance2",0);
+}
+
+

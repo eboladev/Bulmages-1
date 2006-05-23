@@ -81,24 +81,19 @@ public:
         return (this);
     }
 
-	balanceview *balanceempresa() {
-		return balance;
-	}
-	extractoview1 *extractoempresa() {
-		return extracto;
-	}
-	DiarioView *diarioempresa() {
-		return diario;
-	}
-	balance1view *balnace1empresa() {
-		return balance1;
-	}
-
-/*
-    intapunts3view *intapuntsempresa() {
-        return(introapunts1);
+    balanceview *balanceempresa() {
+        return balance;
     }
-*/
+    extractoview1 *extractoempresa() {
+        return extracto;
+    }
+    DiarioView *diarioempresa() {
+        return diario;
+    }
+    balance1view *balance1empresa() {
+        return balance1;
+    }
+
     Asiento1View *intapuntsempresa() {
         return(introapunts2);
     }

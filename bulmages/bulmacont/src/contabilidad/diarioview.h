@@ -58,17 +58,8 @@ public slots:
    virtual void boton_guardar();
 /// SLOT que responde a la pulsación del botón de filtrado. El SLOT muestra la pantalla de filtrado \ref filtrardiarioview .Es invocado desde \ref empresa 
    virtual void boton_filtrar();
-private slots:
-/// SLOT que responde a la petición del extracto de una cuenta determinada.
-   virtual void boton_extracto1(int);
-/// SLOT que responde a la petición de un balance de sumas y saldos de una cuenta determinada
-   virtual void boton_balance1(int);
-/// SLOT que responde a la petición de mostrar un asiento determinado.
-   virtual void boton_asiento();
 
-/// SLOT que responde a la petición de menu contextual sobre un elemento proporcionado del listado.
-   virtual void contextmenu(int , int , const QPoint &);   
-/// SLOT que responde al cambio del texto en alguno de los input boxes. Se usa para detectar las pulsaciones de + y de *
-   virtual void textChanged(const QString &);
+
+
 };
 #endif
