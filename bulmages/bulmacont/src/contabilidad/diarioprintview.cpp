@@ -22,9 +22,10 @@
 #include <qcheckbox.h>
 #include "selectccosteview.h"
 #include "selectcanalview.h"
+#include "diarioview.h"
 
-
-DiarioPrintView::DiarioPrintView(empresa *emp,QWidget *parent, const char *name ) : DiarioPrintDlg(parent,name) {
+DiarioPrintView::DiarioPrintView(empresa *emp,QWidget *parent, const char *name ) : QDialog(parent,name) {
+    setupUi(this);
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     numdigitos = empresaactual->numdigitosempresa();
@@ -34,38 +35,13 @@ DiarioPrintView::DiarioPrintView(empresa *emp,QWidget *parent, const char *name 
 
 DiarioPrintView::~DiarioPrintView() {}
 
-
-// *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
-void DiarioPrintView::pruebasRTK() {
-    	/// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
-	QString cadena;
-	// ACORDARSE DE CAMBIAR LAS RUTAS POR LAS DEL ARCHIVO DE CONFIGURACION.
-	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
-	system (cadena.ascii());	
-	cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"diario.rtk   /tmp/diario.rtk" ;
-	system (cadena.ascii());
-	cadena = " sed -e \"s&###fechainicial###&"+m_fechainicial->text()+"&g\"  /tmp/diario.rtk > /tmp/diario1.rtk";
-	system (cadena.ascii());
-	cadena = " sed -e \"s&###fechafinal###&"+m_fechafinal->text()+"&g\"  /tmp/diario1.rtk > /tmp/diario.rtk";
-	system (cadena.ascii());
-	
-	cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
-	cadena += conexionbase->nameDB()+" ";
-	cadena += "/tmp/diario.rtk &";
-	fprintf(stderr,"%s\n",cadena.ascii());
-	system (cadena.ascii()); 
-}// end pruebasRTK
-
-// *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
-void DiarioPrintView::pruebasRTKoo() {
-}// end pruebasRTKoo
-
-
 /** \brief Esta función monta la consulta que se va a realizar contra la base de datos
   * La consulta es de bastante detalle y por eso es conveniente dedicar una función a realizarla
   * Además dicha consulta puede ser invocada desde distintos sitios
   */
 QString DiarioPrintView::montaQuery() {
+    DiarioView *diario = empresaactual->diarioempresa();
+
     QString query;
     QString fecha;
     QString fechaasiento;
@@ -75,8 +51,8 @@ QString DiarioPrintView::montaQuery() {
     QString nomcuenta;
     QString cadaux;
 
-    QString finicial = m_fechainicial->text();
-    QString ffinal = m_fechafinal->text();
+    QString finicial = diario->m_fechainicial1->text();
+    QString ffinal = diario->m_fechafinal1->text();
     QString cad;
 
     // Consideraciones para centros de coste y canales
@@ -90,7 +66,7 @@ QString DiarioPrintView::montaQuery() {
         ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.ascii());
 
     QString tabla;
-    if (m_filt->m_asAbiertos->isChecked()) {
+    if (diario->mui_asAbiertos->isChecked()) {
         tabla = "borrador";
     } else {
         tabla = "apunte";
@@ -99,11 +75,6 @@ QString DiarioPrintView::montaQuery() {
     query= "SELECT asiento.ordenasiento, "+tabla+".contrapartida, "+tabla+".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, "+tabla+".conceptocontable,"+tabla+".descripcion AS descapunte, to_char("+tabla+".debe,'MI999G999G990D99') AS debe, to_char("+tabla+".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, "+tabla+".idc_coste, "+tabla+".idcanal, cuenta.codigo AS codigocuenta FROM asiento, "+tabla+", cuenta WHERE asiento.idasiento="+tabla+".idasiento AND "+tabla+".idcuenta = cuenta.idcuenta AND "+tabla+".fecha >= '"+finicial+"' AND "+tabla+".fecha <= '"+ffinal+"' "+ccostes+" "+ccanales+" ORDER BY asiento.ordenasiento, "+tabla+".orden";
     return query;
 }// end montaQuery
-
-void DiarioPrintView::inicializa1(QString fechai, QString fechaf) {
-    m_fechainicial->setText(fechai);
-    m_fechafinal->setText(fechaf);
-}// end inicializa1
 
 /**************************************************************
  * Se ha pulsado sobre el boton aceptar del formulario
@@ -122,107 +93,14 @@ void DiarioPrintView::accept() {
         } else if (radioaprendizaje->isChecked()) {
             presentar("htmlapren");
         }// end if
-    } else if (radiopropietario->isChecked()) {
-        // El formato propietario es de momento el de RTK.
-        pruebasRTK();
-        //     pruebasRTKoo();
-    } else if (radiokugar->isChecked()) {
-        presentakugar();
-    }// end if
+    }
 }// end accept
 
-void DiarioPrintView::presentakugar() {
-    int txt=1;
-    QString debe, haber, p_entera, p_decimal;
-    QString idasiento, fecha, fechaasiento, concepto, codigocuenta, descripcion;
-    cursor2 *cursoraux;
-
-    // Cogemos los valores del formulario.
-    QString finicial = m_fechainicial->text();
-    QString ffinal = m_fechafinal->text();
-
-
-    char *argstxt[]={"diari.kud","diari.kud",NULL};      //presentació txt normal
-    ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
-    if (!fitxersortidatxt)
-        txt=0;    // verifiquem que s'hagin creat correctament els fitxers
-
-    if (txt) {
-        //presentació txt normal
-        fitxersortidatxt.setf(ios::fixed);
-        fitxersortidatxt.precision(2);
-        fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
-        fitxersortidatxt << "<!DOCTYPE KugarData [\n" ;
-        fitxersortidatxt << "\t<!ELEMENT KugarData (Row* )>\n" ;
-        fitxersortidatxt << "\t\t<!ATTLIST KugarData\n";
-        fitxersortidatxt << "\t\tTemplate CDATA #REQUIRED>\n";
-        fitxersortidatxt << "\t<!ELEMENT Row EMPTY>\n";
-        fitxersortidatxt << "\t<!ATTLIST Row \n";
-        fitxersortidatxt << "\t\tlevel CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tasiento CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tfecha CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tcuenta CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tdescripcion CDATA #REQUIRED\n";
-	fitxersortidatxt << "\t\tconcepto CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
-        fitxersortidatxt << "]>\n\n";
-        fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).ascii()<<"diari.kut\">\n";
-    }// end if
-
-    QString query = montaQuery();
-    conexionbase->begin();
-    cursoraux = conexionbase->cargacursor(query,"elquery");
-    conexionbase->commit();
-    for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
-        fechaasiento = cursoraux->valor("fechaasiento");
-        idasiento = cursoraux->valor("ordenasiento");
-        fecha = cursoraux->valor("fecha").mid(0,10);
-        descripcion = cursoraux->valor("descripcion");
-        concepto = cursoraux->valor("conceptocontable");
-	codigocuenta = cursoraux->valor("codigocuenta");
-        debe = cursoraux->valor("debe");
-	// extraemos la parte entera y la parte decimal (Ej: 1,950.35 -> 1,950 y .35)
-	p_entera = debe.mid(0, debe.length()-3);
-	p_decimal = debe.mid(debe.length()-3, 3);
-	// ahora a la parte entera cambiamos el la coma por punto y a la decimal al revés
-	p_entera.replace(",", ".");
-	p_decimal.replace(".", ",");
-	debe = p_entera.ascii();
-	debe += p_decimal.ascii();
-	// IDEM para el haber
-	haber = cursoraux->valor("haber");
-	p_entera = haber.mid(0, haber.length()-3);
-	p_decimal = haber.mid(haber.length()-3, 3);
-	p_entera.replace(",", ".");
-	p_decimal.replace(".", ",");
-	haber = p_entera.ascii();
-	haber += p_decimal.ascii();
-
-        if (txt) {
-            //presentació txt normal
-	    // OJO!! Se han tenido que cambiar las \" por ' porque petan algunas asignaciones de
-	    // strings que contienen \" cuando se entrecomilla algún texto descriptivo o las pulgadas.
-            fitxersortidatxt << "\t<Row level=\"0\" asiento='"<< idasiento.ascii() <<"'";
-            fitxersortidatxt << " fecha='"<< fecha.ascii() <<"'";
-            fitxersortidatxt << " cuenta='"<< codigocuenta.ascii() <<"'";
-            fitxersortidatxt << " descripcion ='"<< descripcion.ascii() <<"'";	    
-            fitxersortidatxt << " concepto ='"<< concepto.ascii() <<"'";
-            fitxersortidatxt << " debe='"<< debe.ascii() <<"'";
-            fitxersortidatxt << " haber='"<< haber.ascii() <<"'/>\n" ;
-        }
-    }// end for
-
-    delete cursoraux;
-    fitxersortidatxt <<"</KugarData>\n";
-    fitxersortidatxt.close();
-
-    system("kugar diari.kud");
-}// end presentakugar
 
 
 
 void DiarioPrintView::presentar(char * tipus) {
+    DiarioView *diario = empresaactual->diarioempresa();
     int txt, html, txtapren, htmlapren;
 
     float debe, haber;
@@ -237,15 +115,15 @@ void DiarioPrintView::presentar(char * tipus) {
     string cad;
     cursor2 *cursoraux;
 
-    // tipus de presentació   
+    // tipus de presentació
     txt=!strcmp(tipus,"txt");
     html=!strcmp(tipus,"html");
     txtapren=!strcmp(tipus,"txtapren");
     htmlapren=!strcmp(tipus,"htmlapren");
 
     // Cogemos los valores del formulario.
-    QString finicial = m_fechainicial->text();
-    QString ffinal = m_fechafinal->text();
+    QString finicial = diario->m_fechainicial1->text();
+    QString ffinal = diario->m_fechafinal1->text();
 
     if (txt | html) {
         ofstream fitxersortidatxt("diario.txt");     // creem els fitxers de sordida
@@ -255,12 +133,13 @@ void DiarioPrintView::presentar(char * tipus) {
             txt=0;    // verifiquem que s'hagin creat correctament els fitxers
         if (!fitxersortidahtml)
             html=0;  // es pot millorar el tractament d'erro
-	    
+
         if (txt | html) {                // només continuem si hem pogut crear algun fitxer
             if (txt) {
                 //presentació txt normal
 
-                fitxersortidatxt.setf(ios::fixed);
+                fitxersortidatxt.setf(ios::fixed)
+                    ;
                 fitxersortidatxt.precision(2);
 
                 fitxersortidatxt << "                                        LLIBRE DIARI \n" ;
@@ -270,7 +149,8 @@ void DiarioPrintView::presentar(char * tipus) {
             }// end if
             if (html) {
                 //presentació html normal
-                fitxersortidahtml.setf(ios::fixed);
+                fitxersortidahtml.setf(ios::fixed)
+                    ;
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";
@@ -325,13 +205,13 @@ void DiarioPrintView::presentar(char * tipus) {
 
         if (txt) {
             //presentació txt normal
-	QString cadaux = confpr->valor(CONF_EDITOR)+" diairo.txt";
-	system (cadaux.ascii());
+            QString cadaux = confpr->valor(CONF_EDITOR)+" diairo.txt";
+            system (cadaux.ascii());
         }
         if (html) {
             //presentació html normal
-	QString cadaux = confpr->valor(CONF_NAVEGADOR)+" diario.html";
-	system (cadaux.ascii());
+            QString cadaux = confpr->valor(CONF_NAVEGADOR)+" diario.html";
+            system (cadaux.ascii());
         }// end if
     }
     if (txtapren | htmlapren ) {
@@ -351,7 +231,8 @@ void DiarioPrintView::presentar(char * tipus) {
             if (txtapren) {
                 //presentació txt format aprenentatge
 
-                fitxersortidatxt.setf(ios::fixed);
+                fitxersortidatxt.setf(ios::fixed)
+                    ;
                 fitxersortidatxt.precision(2);
 
                 fitxersortidatxt << "                                                      LLIBRE DIARI \n" ;
@@ -453,46 +334,21 @@ void DiarioPrintView::presentar(char * tipus) {
 
             if (txtapren) {
                 //presentació txt format aprenentatge
- 	QString cadaux = confpr->valor(CONF_EDITOR)+" diario.txt";
-	system (cadaux.ascii());
+                QString cadaux = confpr->valor(CONF_EDITOR)+" diario.txt";
+                system (cadaux.ascii());
             }// end if
 
             if (htmlapren) {
                 //presentació html format aprenentatge
-	QString cadaux = confpr->valor(CONF_NAVEGADOR)+" diario.txt";
-	system (cadaux.ascii());
+                QString cadaux = confpr->valor(CONF_NAVEGADOR)+" diario.txt";
+                system (cadaux.ascii());
             }// end if
         }// end if
     }// end if
 }// end presentar
 
 
-/** \brief SLOT que responde a la pulsación del botón de canales.
-  * Sirve para que se puedan establecer en las opciones de filtrado los canales.
-  * En realidad no hace una nueva intancia de los canales sino que llama a una clase global.
-  */
-void DiarioPrintView::boton_canales() {
-    fprintf(stderr,"Boton canales\n");
-    selectcanalview *selcanales = empresaactual->getselcanales();
-    selcanales->exec();
-    selcanales->firstcanal();
-}// end boton_canales
 
 
-/** \brief SLOT que responde a la pulsación del botón de centros de coste.
-  */
-void DiarioPrintView::boton_ccostes() {
-    fprintf(stderr,"Boton ccostes\n");
-    selectccosteview *selccostes = empresaactual->getselccostes();
-    selccostes->exec();
-    selccostes->firstccoste();
-}// end boton_ccostes
-
-/** \brief SLOT que responde a la pulsación del botón de filtrado
-  * Muestra la ventana de filtrado.
-  */
-void DiarioPrintView::s_botonFiltrar() {
-    m_filt->exec();
-}// end s_botonFiltrar
 
 

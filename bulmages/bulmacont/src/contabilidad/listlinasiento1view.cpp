@@ -541,7 +541,7 @@ void ListLinAsiento1View::pintalinListLinAsiento1(int pos) {
 
 
 bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
-    _depura("eventFilter()\n",0);
+    _depura("ListLinAsiento1View::eventFilter()\n",1);
     int dia, mes, ano;
     calendario *cal;
     LinAsiento1 *linea;
@@ -608,7 +608,7 @@ bool ListLinAsiento1View::eventFilter( QObject *obj, QEvent *ev ) {
             break;
         }// end switch
     }// end if
-    _depura("fin del eventFilter");
+    _depura("END ListLinAsiento1View::eventFilter",1);
     return Q3Table::eventFilter( obj, ev );
 } //end eventFilter
 

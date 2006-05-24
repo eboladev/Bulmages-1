@@ -36,14 +36,15 @@ TEMPLATE = app
 TARGET = ../../../installbulmages/bulmacont
 
 FORMS += bulmacontbase.ui \
-	 diariobase.ui
+	 diariobase.ui \
+	 extractobase.ui \
+	 extractoprintbase.ui \
+	 diarioprintbase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
          listcuentasdlg1.ui \
          cuentadlg.ui \
-         filtrardiariodlg.ui \
-         extractodlg1.ui \
          balance1dlg.ui \
          balancedlg.ui \
          int_apunts3.ui \
@@ -51,9 +52,7 @@ FORMS3 += uiselector.ui \
          aplinteligentesdlg.ui \
          filtrarasientosdlg.ui \
          asientosdlg.ui \
-#         listivadlg.ui \
          regivaprintdlg.ui \
-#         ivadlg.ui \
          compbalancedlg.ui \
          mpatrimonialdlg.ui \
          mpatrimonialesdlg.ui \
@@ -64,10 +63,7 @@ FORMS3 += uiselector.ui \
          ccostedlg.ui \
          ainteligentesdlg.ui \
          propiedemp.ui \
-         filtrarextractosdlg.ui \
-         extractoprintdlg.ui \
          actualizacionesdlg.ui \
-         diarioprintdlg.ui \
          cambiactadlg.ui \
          duplicaasientodlg.ui \
          amortizaciondlg.ui \
@@ -186,7 +182,6 @@ HEADERS += splashscreen.h \
            cuentaview.h \
            diarioview.h \
            qlineedit1.h \
-           filtrardiarioview.h \
            extractoview1.h \
            balance1view.h \
            qlistviewitem1.h \
@@ -206,7 +201,6 @@ HEADERS += splashscreen.h \
            ccosteview.h \
            ainteligentesview.h \
            propiedadesempresa.h \
-           filtrarextractosview.h \
            extractoprintview.h \
            libromayorprint.h \
            diarioprint.h \
@@ -235,7 +229,8 @@ HEADERS += splashscreen.h \
 	   listlinasiento1.h \
 	   listlinasiento1view.h \
 	   subform2bc.h \
-	   diariosubform.h
+	   diariosubform.h \
+	   extractosubform.h 
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -246,7 +241,6 @@ SOURCES += main.cpp \
            cuentaview.cpp \
            diarioview.cpp \
            qlineedit1.cpp \
-           filtrardiarioview.cpp \
            extractoview1.cpp \
            balance1view.cpp \
            qlistviewitem1.cpp \
@@ -266,7 +260,6 @@ SOURCES += main.cpp \
            ccosteview.cpp \
            ainteligentesview.cpp \
            propiedadesempresa.cpp \
-           filtrarextractosview.cpp \
            extractoprintview.cpp \
            libromayorprint.cpp \
            diarioprint.cpp \
@@ -295,7 +288,8 @@ SOURCES += main.cpp \
 	   listlinasiento1.cpp \
 	   listlinasiento1view.cpp \
 	   subform2bc.cpp \
-	   diariosubform.cpp
+	   diariosubform.cpp \
+	   extractosubform.cpp
 	 
 	 
 

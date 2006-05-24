@@ -62,6 +62,8 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 }
 
 
+
+
 SDBRecord *SubForm3::newSDBRecord() {
     _depura("SubForm3::newSDBRecord\n",0);
     SDBRecord *rec = new SDBRecord(m_companyact);
@@ -297,7 +299,7 @@ QString SubForm3::DBvalue(QString campo, int row) {
 
 
 int SubForm3::guardar() {
-    _depura("SubForm3::guardar",0);
+    _depura("SubForm3::guardar",4);
     try {
         SDBRecord *rec;
         int error=0;
@@ -312,7 +314,7 @@ int SubForm3::guardar() {
             rec = lineaat(mui_list->rowCount()-1);
             error = rec->guardar();
         }// end if
-        _depura("END SubForm3::guardar",0);
+        _depura("END SubForm3::guardar",5);
         return error;
     } catch(...) {
         _depura("error inesperado en el guardado, se cancela la operacion",1);

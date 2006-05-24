@@ -201,6 +201,38 @@ void SubForm2Bc::boton_extracto1(int tipo) {
 }
 
 
+// Si el parametro pasado es un:
+// 0 -> del día actual
+// 1 -> del mes actual
+// 2 -> del año actual
+void SubForm2Bc::boton_diario1(int tipo) {
+    _depura("SubForm2Bc::boton_diario1",0);
+    empresa *companyact = (empresa *) m_companyact;
+    QDate fecha1, fecha2, fechaact, fechaact1;
+        fechaact = normalizafecha(DBvalue("fecha").left(10));
+        fechaact1 = normalizafecha(DBvalue("fecha").left(10));
+    if(DBvalue("fecha").left(10) != "") {
+        switch(tipo) {
+        case 0:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha2.setYMD(fechaact1.year(), fechaact1.month(), fechaact1.day());
+            break;
+        case 1:
+            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
+            break;
+        case 2:
+            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha2.setYMD(fechaact.year(), 12, 31);
+            break;
+        }// end switch
+        companyact->diarioempresa()->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
+    }// end if
+    companyact->diarioempresa()->accept();
+    companyact->librodiario();
+    _depura("SubForm2Bc::boton_diario1",0);
+}
+
 
 // Si el parametro pasado es un:
 // 0 -> del periodo actual.

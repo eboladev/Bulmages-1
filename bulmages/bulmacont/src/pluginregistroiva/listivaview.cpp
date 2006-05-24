@@ -164,7 +164,7 @@ void ListIvaView::pintaIva(int pos) {
 
 
 bool ListIvaView::eventFilter( QObject *obj, QEvent *ev ) {
-    _depura("eventFilter()\n",0);
+    _depura("ListIvaView::eventFilter()\n",1);
     /*
         QString idArticle;
         //    linpresupuesto *linea=lineaact();

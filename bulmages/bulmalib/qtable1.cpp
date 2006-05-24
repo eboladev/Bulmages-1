@@ -82,7 +82,7 @@ QWidget *QTable1::beginEdit(int row, int col, bool type) {
 }
 
 bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
-    _depura("QTable1::INIT_eventFilter()\n",0);
+    _depura("QTable1::INIT_eventFilter()\n",1);
     static bool ctrlpulsado= FALSE;
     if ( event->type() == QEvent::KeyPress ) {
         QKeyEvent *keyEvent = (QKeyEvent *) event;
@@ -127,7 +127,7 @@ bool QTable1::eventFilter( QObject *obj, QEvent *event ) {
             ctrlpulsado = FALSE;
         }// end if
     }// end if
-    _depura("QTable1::END_eventFilter()\n",0);
+    _depura("QTable1::END_eventFilter()\n",1);
     return Q3Table::eventFilter(obj, event);
 }// end eventFilter
 

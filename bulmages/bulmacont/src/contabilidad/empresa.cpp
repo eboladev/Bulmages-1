@@ -62,7 +62,7 @@ empresa::empresa(){
    selcanales = NULL;
    introapunts2 = NULL;
    nombre = "";
-}// end empresa
+}
 
 
 empresa::~empresa(){
@@ -119,7 +119,7 @@ int empresa::inicializa1() {
   pWorkspace->addWindow(introapunts2);
   
   return(0);
-}// end inicializa1
+}
 
 /** \brief Maximiza todas las ventanas que est� en el workspace de la aplicaci�
   * 
@@ -131,14 +131,14 @@ void empresa::maximiza() {
   balance1->showMaximized();
   balance->showMaximized();
 //  introapunts1->showMaximized();
-}// end maximiza
+}
 
 
 void empresa::init(QString bd) {
     if (bd == "")
         bd = searchCompany();
     inicializa(bd);
-}// end init
+}
 
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
@@ -157,7 +157,7 @@ QString empresa::searchCompany() {
     if (bd == "")
         exit(1);
     return(bd);
-}// end searchCompany
+}
 
 
 /** 
@@ -169,7 +169,7 @@ int empresa::muestracuentas() 	{
   nuevae->exec();
   delete nuevae;
   return(0);
-}// end muestracuentas
+}
 
 
 /**
@@ -182,7 +182,7 @@ int empresa::ccostes() {
   delete ccoste;
   balance->cargacostes();
   return(0);
-}// end ccostes
+}
 
 
 /**
@@ -195,7 +195,7 @@ int empresa::canales() {
   canal->exec();
   delete canal;
   return(0);
-}// end ccostes
+}
 
 
 /** Crea la ventana de tipos de IVA y la presenta en modo modal
@@ -206,7 +206,7 @@ int empresa::tiposIVA() {
    tip->exec();
    delete tip;
    return(0);
-}// end tiposiva
+}
 
 
 /** Crea la ventana de Formas de Pago y la presenta en modo modal
@@ -217,7 +217,7 @@ int empresa::fPago() {
    tip->exec();
    delete tip;
    return(0);
-}// end tiposiva
+}
 
 
 int empresa::cambioejercicio() {
@@ -225,13 +225,13 @@ int empresa::cambioejercicio() {
   introapunts2->cargaasientos();
   introapunts2->boton_fin();
   return(0);
-}// end cambioejercicio
+}
 
 
 int empresa::nuevaempresa() {
 //La creaci� de una nueva empresa ha pasado al selector.
   return(0);
-}// end nuevaempresa
+}
 
 
 
@@ -242,18 +242,18 @@ int empresa::nuevacuenta() {
    nuevae->exec();
    delete nuevae;
    return(0);
-}// end nuevacuenta
+}
 
 
 int empresa::muestraapuntes() {
   return(0);
-}// end muestraapuntes
+}
 
 
 int empresa::muestraapuntes1() {
   introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
   return(0);
-}// end muestraapuntes1
+}
 
 
 int empresa::muestraasientos() {
@@ -262,7 +262,7 @@ int empresa::muestraasientos() {
   nuevae->exec();
   delete nuevae;
   return(0);
-}// end muestraapuntes
+}
 
 
 int empresa::propiedadempresa() {
@@ -271,7 +271,7 @@ int empresa::propiedadempresa() {
    nuevae->exec();
    delete nuevae;
    return(0);
-}// end propiedadempresa
+}
 
 
 int empresa::amortizaciones(){
@@ -279,7 +279,7 @@ int empresa::amortizaciones(){
     amors->exec();
     delete amors;
     return(0);
-}// end amortizaciones
+}
 
 
 /*******************************************************************
@@ -291,7 +291,7 @@ int empresa::ainteligentes() {
    nuevae->exec();
    delete nuevae;
   return(0);
-}// end ainteligentes
+}
 
 
 
@@ -305,7 +305,7 @@ int empresa::mpatrimoniales() {
    nuevae->exec();
    delete nuevae;
   return(0);
-}// end mpatrimoniales
+}
 
 
 /*******************************************************************
@@ -319,14 +319,14 @@ int empresa::compbalance() {
    delete nueva;   
    return(0);
 
-}// end mpatrimoniales
+}
 
 
 
 int empresa::libromayor() {
   extracto->setWindowState(extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
   return(0);
-}//end libromayor
+}
 
 
 int empresa::boton_siguiente() {
@@ -345,7 +345,7 @@ int empresa::boton_siguiente() {
     introapunts2->boton_siguiente();
   }// end if
   return(0);  
-}// end boton_siguiente
+}
 
 
 int empresa::boton_anterior() {
@@ -367,7 +367,7 @@ if (widget == diario){
     introapunts2->boton_anterior();
   }// end if
   return(0);
-}// end boton_siguiente
+}
 
 
 int empresa::boton_guardar() {
@@ -383,7 +383,7 @@ if (widget == diario){
     extracto->boton_guardar();
   }// end if
   return(0);
-}// end boton_siguiente
+}
 
 int empresa::boton_imprimir() {
   QWidget *widget = pWorkspace->activeWindow ();
@@ -401,7 +401,7 @@ if (widget == diario){
     extracto->boton_imprimir();
   }// end if
   return(0);
-}// end boton_siguiente
+}
 
 int empresa::boton_reload() {
   QWidget *widget;
@@ -420,7 +420,7 @@ if (widget == diario){
      balance1->accept();
   }// end if
   return(0);
-}// end boton_reload
+}
 
 int empresa::boton_primero() {
   QWidget *widget;
@@ -438,7 +438,7 @@ if (widget == introapunts2) {
     extracto->boton_inicio();
   }// end if
   return(0);
-}// end boton_primero
+}
 
 int empresa::boton_ultimo() {
   QWidget *widget;
@@ -455,25 +455,24 @@ if (widget == introapunts2) {
     extracto->boton_fin();
   }// end if
   return(0);
-}// end boton_ultimo
+}
 
 
 int empresa::librodiario() {
   diario->setWindowState(diario->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
   return(0);
-}//end librodiario
-
+}
 
 int empresa::librobalance() {
    balance->setWindowState(balance->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
    return(0);
-}//end librobalance
+}
 
 
 int empresa::librobalancetree() {
    balance1->setWindowState(balance1->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
    return(0);
-}// end librobalancetree
+}
 
 
 void empresa::Abrirasientos() {
@@ -482,7 +481,7 @@ void empresa::Abrirasientos() {
    introapunts2->cargaasientos();
    introapunts2->boton_fin();
    introapunts2->show();
-}// end Abrirasientos
+}
 
 
 void empresa::Ordenarasientos() {
@@ -492,7 +491,7 @@ void empresa::Ordenarasientos() {
    introapunts2->cargaasientos();
    introapunts2->boton_fin();
    introapunts2->show();
-}// end Abrirasientos
+}
 
 
 int empresa::registroiva() {
@@ -507,14 +506,14 @@ int empresa::registroiva() {
    delete perd;
 */
    return 0;
-}// end registroiva
+}
 
 int empresa::modelo347() {
    BModelo347 *dlg347 = new BModelo347(this,"0");
    dlg347->exec();
    delete dlg347;
    return(0);
-}// end modelo347
+}
 
 /*************************************************************
  * Esta funcion borra la empresa actual
@@ -523,58 +522,52 @@ int empresa::modelo347() {
 int empresa::borrarempresa() {
 //El proceso de borrado se realiza desde las herramientas el selector.
   return(0);
-}// end borrarrempresa
+}
 
 
 // Esta funci� es la que se encarga de cerrar al empresa
 // Y de crear un nuevo ejercicio para dicha empresa
 void empresa::nuevoejercicio() {
-}// end nuevoejercicio
+}
 
 void empresa::cierraempresa() {
   introapunts2->show();
   introapunts2->asiento_cierre();
-}// end cierraempresa
+}
 
 
 void empresa::abreempresa() {
   introapunts2->show();
   introapunts2->asiento_apertura();
-}// end abreempresa
+}
 
 
 void empresa::regularizaempresa() {
   introapunts2->show();
   introapunts2->asiento_regularizacion();
-}// end regularizaempresa
+}
 
 
 void empresa::Filtro() {
   QWidget *widget;
   widget = pWorkspace->activeWindow ();
-if (widget == extracto){
-     extracto->boton_filtrar();
-  } else if (widget == diario) {
-     diario->boton_filtrar();
-  } else if (widget == introapunts2) {
+ if (widget == introapunts2) {
 	introapunts2->boton_filtrar();
   }// end if
-}// end Filtro
+}
 
 // Esta funci� reemplaza en los apuntes todas las ocurrencias de una determinada cuenta por
 // Otra cuenta.
 void empresa::reemplazacuentaenasientos() {
     cambiactaview *ctac = new  cambiactaview(this,0,0, false);
     ctac->exec();
-}// end reemplazacuentasenasientos
+}
 
 
 // Esta funci� recalcula los saldos parciales del plan contable.
 void empresa::recalculasaldos() {
    ejecuta("SELECT recalculasaldos()");
-}// end recalculasaldos
-
-
+}
 
 
 

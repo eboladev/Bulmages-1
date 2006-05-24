@@ -37,8 +37,7 @@ class filtrardiarioview;
 class DiarioView : public QWidget, public Ui_DiarioBase  {
    Q_OBJECT
 private:
-/// Clase adyacente a esta que se encarga de toda la parte de filtrado y que ayuda en la composición del query del listado pasandole parámetros.
-   filtrardiarioview *filt;
+
 /// Empresa con la que esta trabajando esta clase.
    empresa *m_companyact;
 public:
@@ -50,14 +49,15 @@ public:
 private:
 /// Muestra en pantalla los resultados para los datos introducidos.
    void presentar();
-   void presenta();
 public slots:
+
+   virtual void on_mui_actualizar_clicked() {accept();};
+   virtual void on_mui_imprimir_clicked();
+
 /// SLOT que responde a la pulsación del botón imprimir. Es invocado desde la clase \ref empresa
    virtual void boton_imprimir();
 /// SLOT que responde a la pulsación del botón guardar listado. Es invocado desde la clase \ref empresa
    virtual void boton_guardar();
-/// SLOT que responde a la pulsación del botón de filtrado. El SLOT muestra la pantalla de filtrado \ref filtrardiarioview .Es invocado desde \ref empresa 
-   virtual void boton_filtrar();
 
 
 

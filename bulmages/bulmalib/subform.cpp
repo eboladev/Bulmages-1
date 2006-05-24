@@ -41,6 +41,13 @@ SDBRecord::~SDBRecord() {
 }
 
 
+
+
+int SDBRecord::DBsave(QString &id) {
+	refresh();
+	return DBRecord::DBsave(id);
+}
+
 void SDBRecord::refresh() {
     _depura("SDBRecord::refresh",0);
     SDBCampo *camp;
@@ -83,18 +90,14 @@ SDBCampo::~SDBCampo() {
 void SDBCampo::refresh() {
     _depura("SDBCampo::refresh",0);
     if(tipo() == DBCampo::DBboolean) {
-        DBCampo::set
-            (checkState()==Qt::Checked?"TRUE":"FALSE");
+        DBCampo::set(checkState()==Qt::Checked?"TRUE":"FALSE");
     } else
-        DBCampo::set
-            (text());
+        DBCampo::set(text());
     _depura("END SDBCampo::refresh",0);
 }
 
 
 int SDBCampo::set(QString val) {
-
-
     _depura("SDBCampo::set",0);
     if(tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
@@ -103,7 +106,6 @@ int SDBCampo::set(QString val) {
             setCheckState(Qt::Unchecked);
     } else
         QTableWidgetItem2::setText(val);
-
     DBCampo::set(val);
     _depura("END SDBCampo::set",0);
     return 0;

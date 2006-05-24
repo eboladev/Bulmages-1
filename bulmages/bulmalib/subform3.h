@@ -154,6 +154,7 @@ public:
     virtual int cargar(cursor2 *cur);
     virtual void pintar();
 
+
 public slots:
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();

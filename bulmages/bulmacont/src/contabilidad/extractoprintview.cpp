@@ -34,29 +34,14 @@
   * @param name Nombre de la ventana
   * Aqui también se inicializa la variable global conexionbase.
   */
-ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char *name=0 ) : ExtractoPrintDlg(parent,name) {
+ExtractoPrintView::ExtractoPrintView(empresa *emp, QWidget *parent=0, const char *name=0 ) : QDialog(parent,name) {
+    setupUi(this);
     fichero=NULL;
     empresaactual=emp;
     conexionbase = emp->bdempresa();
-    m_codigoinicial->setempresa(emp);
-    m_codigofinal->setempresa(emp);
-    m_filt = NULL;
 }// end ExtractoPrintView
 
 ExtractoPrintView::~ExtractoPrintView() {}
-
-/** \brief Inicializa la clase con algunos parámetros por defecto
-  * @param fechainicial Fecha para empezar el extracto
-  * @param fechafinal  Fecha para terminar el extracto
-  * @param codi Código de cuenta inicial del extracto
-  * @param codf Código de cuenta final del extracto
-  */
-void ExtractoPrintView::inicializa1(QString fechainicial, QString fechafinal, QString codi, QString codf) {
-    m_fechainicial->setText(fechainicial);
-    m_fechafinal->setText(fechafinal);
-    m_codigoinicial->setText(codi);
-    m_codigofinal->setText(codf);
-}// end inicializa1
 
 /**************************************************************
  * Se ha pulsado sobre el botón aceptar del formulario
@@ -67,119 +52,8 @@ void ExtractoPrintView::accept() {
         presentar("txt");
     else if (radiohtml->isChecked())
         presentar("html");
-    else if (radiokugar->isChecked())
-        presentakugar();
-    else
-        pruebasRTK();
 }
 
-/** \brief se va a hacer una impresión de Libro Mayor con kugar
-  */
-void ExtractoPrintView::presentakugar() {
-    int txt=1;
-    float debe, haber;
-    int idasiento=0;
-    string fecha;
-    string fechaasiento;
-    string descripcion;
-    string conceptocontable;
-    string codigo;
-    string ordenasiento;
-    string cad;
-    string desc1;
-    string codcontrapartida;
-    string codigoant="0";
-    string desccontrapartida;
-    cursor2 *cursoraux;
-
-
-
-    /// La impresión siempre se hace en el archivo extracte.kud situado en el directorio de trabajo
-    char *argstxt[]={"extracte.kud","extracte.kud",NULL};      //presentació txt normal
-    ofstream fitxersortidatxt(argstxt[0]);     // creem els fitxers de sordida
-    if (!fitxersortidatxt)
-        txt=0;    // verifiquem que s'hagin creat correctament els fitxers
-
-    if (txt) {
-        /// Sacamos la cabecera del documento de kugar.
-        fitxersortidatxt.setf(ios::fixed)
-            ;
-        fitxersortidatxt.precision(2);
-        fitxersortidatxt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" ;
-        fitxersortidatxt << "<!DOCTYPE KugarData [\n" ;
-        fitxersortidatxt << "\t<!ELEMENT KugarData (Row* )>\n" ;
-        fitxersortidatxt << "\t\t<!ATTLIST KugarData\n";
-        fitxersortidatxt << "\t\tTemplate CDATA #REQUIRED>\n";
-        fitxersortidatxt << "\t<!ELEMENT Row EMPTY>\n";
-        fitxersortidatxt << "\t<!ATTLIST Row \n";
-        fitxersortidatxt << "\t\tlevel CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tdescripcion CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tfecha CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tcodigo CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tconceptocontable CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tdesc1 CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tordenasiento CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\tdebe CDATA #REQUIRED\n";
-        fitxersortidatxt << "\t\thaber CDATA #REQUIRED>\n";
-        fitxersortidatxt << "]>\n\n";
-        fitxersortidatxt << "<KugarData Template=\"" << confpr->valor(CONF_DIR_KUGAR).ascii() <<"extracte.kut\">\n";
-    }// end if
-
-    /// Montamos la consulta que genera el listado
-    QString query = montaQuery();
-    /// Cargamos el query
-    conexionbase->begin();
-    cursoraux = conexionbase->cargacursor(query,"elquery");
-    conexionbase->commit();
-    for(;!cursoraux->eof();cursoraux->siguienteregistro()) {
-        ordenasiento = atoi(cursoraux->valor("ordenasiento").ascii());
-        descripcion = cursoraux->valor("descripcion").ascii();
-        fecha = cursoraux->valor("fecha").left(10).ascii();
-        codigo = cursoraux->valor("codigo").ascii();
-        conceptocontable = cursoraux->valor("conceptocontable").ascii();
-        desc1 = cursoraux->valor("desc1").ascii();
-        ordenasiento = cursoraux->valor("ordenasiento").ascii();
-        debe = atof(cursoraux->valor("debe").ascii());
-        haber = atof(cursoraux->valor("haber").ascii());
-        codcontrapartida = cursoraux->valor("codcontrapartida").ascii();
-        desccontrapartida = cursoraux->valor("desccontrapartida").ascii();
-        if (codigoant != codigo) {
-            /// Ponemos el row de nivel 0 ya que es por donde se agrupa.
-            /// Asi que kugar pide que se ponga el row dos veces por los agrupamientos.
-            fitxersortidatxt << "\t<Row level=\"0\" asiento=\""<< idasiento <<"\"";
-            fitxersortidatxt << " descripcion =\""<< conceptocontable.c_str() <<"\"";
-            fitxersortidatxt << " fecha=\""<< fecha <<"\"";
-            fitxersortidatxt << " codigo=\""<< codigo.c_str() <<"\"";
-            fitxersortidatxt << " conceptocontable=\""<< conceptocontable.c_str() <<"\"";
-            fitxersortidatxt << " desc1=\""<< desc1.c_str() <<"\"";
-            fitxersortidatxt << " ordenasiento=\""<< ordenasiento.c_str() <<"\"";
-            fitxersortidatxt << " debe=\""<< debe <<"\"";
-            fitxersortidatxt << " haber=\""<< haber <<"\"\n" ;
-            fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ;
-            fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ;
-        }// end if
-        if (txt) {
-            //presentaci�txt normal
-            fitxersortidatxt << "\t<Row level=\"1\" asiento=\""<< idasiento <<"\"";
-            fitxersortidatxt << " descripcion =\""<< conceptocontable.c_str() <<"\"";
-            fitxersortidatxt << " fecha=\""<< fecha <<"\"";
-            fitxersortidatxt << " codigo=\""<< codigo.c_str() <<"\"";
-            fitxersortidatxt << " conceptocontable=\""<< conceptocontable.c_str() <<"\"";
-            fitxersortidatxt << " desc1=\""<< desc1.c_str() <<"\"";
-            fitxersortidatxt << " ordenasiento=\""<< ordenasiento.c_str() <<"\"";
-            fitxersortidatxt << " debe=\""<< debe <<"\"";
-            fitxersortidatxt << " haber=\""<< haber <<"\"\n" ;
-            fitxersortidatxt << " codcontrapartida=\""<< codcontrapartida <<"\"\n" ;
-            fitxersortidatxt << " desccontrapartida=\""<< desccontrapartida <<"\"/>\n" ;
-        }// end if
-        codigoant = codigo;
-    }// end for
-    delete cursoraux;
-    fitxersortidatxt <<"</KugarData>\n";
-    fitxersortidatxt.close();
-
-    system("kugar extracte.kud");
-}// end presentakugar
 
 
 /** \brief Esta función monta la consulta que se va a realizar contra la base de datos
@@ -187,20 +61,22 @@ void ExtractoPrintView::presentakugar() {
   * Además dicha consulta puede ser invocada desde distintos sitios
   */
 QString ExtractoPrintView::montaQuery() {
-    fprintf(stderr,"Presentar\n");
+    _depura("ExtractoPrintView::montaQuery",0);
+
+    extractoview1 *extracto = empresaactual->extractoempresa();
     /// Cogemos los valores del formulario para poder hacer un filtraje adecuado
-    QString finicial = m_fechainicial->text();
-    QString ffinal = m_fechafinal->text();
-    QString cinicial = m_codigoinicial->text();
-    QString cfinal = m_codigofinal->text();
-    QString contra = m_filt->codigocontrapartida();
+    QString finicial = extracto->m_fechainicial1->text();
+    QString ffinal = extracto->m_fechafinal1->text();
+    QString cinicial = extracto->m_codigoinicial->text();
+    QString cfinal = extracto->m_codigofinal->text();
+    QString contra = extracto->mui_codigocontrapartida->text();
 
     // Preparamos el string para que aparezca una u otra cosa según el punteo.
     QString tipopunteo;
     tipopunteo="";
-    if (m_filt->punteotodos->isChecked()) {
+    if (extracto->mui_punteotodos->isChecked()) {
         tipopunteo = "";
-    } else if (m_filt->punteopunteado->isChecked()) {
+    } else if (extracto->mui_punteopunteado->isChecked()) {
         tipopunteo = " AND apunte.punteo=TRUE ";
     } else {
         tipopunteo = " AND apunte.punteo=FALSE ";
@@ -219,7 +95,7 @@ QString ExtractoPrintView::montaQuery() {
         ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.ascii());
 
     QString tabla;
-    if (m_filt->m_asAbiertos->isChecked()) {
+    if (extracto->mui_asAbiertos->isChecked()) {
         tabla= "borrador";
     } else {
         tabla = "apunte";
@@ -239,29 +115,6 @@ QString ExtractoPrintView::montaQuery() {
 }// end montaQuery
 
 
-// *********************** PRUEBAS CON LA LIBRERIA DE REPORTS DE S.CAPEL
-void ExtractoPrintView::pruebasRTK() {
-    /// Mediante comandos de sistema reemplazamos lo que necesitamos para obtener un fichero deseable.
-    QString cadena;
-    cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"bulma-styles.xml   /tmp/bulma-styles.xml" ;
-    system (cadena.ascii());
-    cadena = "cp "+confpr->valor(CONF_DIR_REPORTS)+"extracto1.rtk   /tmp/extracto1.rtk" ;
-    system (cadena.ascii());
-    cadena = "sed -e \"s/###codigoinicial###/"+m_codigoinicial->text()+"/g\" /tmp/extracto1.rtk > /tmp/extracto2.rtk";
-    system (cadena.ascii());
-    cadena = " sed -e \"s/###codigofinal###/"+m_codigofinal->text()+"/g\"  /tmp/extracto2.rtk > /tmp/extracto1.rtk";
-    system (cadena.ascii());
-    cadena = " sed -e \"s&###fechainicial###&"+m_fechainicial->text()+"&g\"  /tmp/extracto1.rtk > /tmp/extracto2.rtk";
-    system (cadena.ascii());
-    cadena = " sed -e \"s&###fechafinal###&"+m_fechafinal->text()+"&g\"  /tmp/extracto2.rtk > /tmp/extracto1.rtk";
-    system (cadena.ascii());
-
-    cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
-    cadena += conexionbase->nameDB()+" ";
-    cadena += "/tmp/extracto1.rtk &";
-    fprintf(stderr,"%s\n",cadena.ascii());
-    system (cadena.ascii());
-}// end pruebasRTK
 
 
 void ExtractoPrintView::presentar(char *tipus) {
@@ -278,10 +131,13 @@ void ExtractoPrintView::presentar(char *tipus) {
     string cad;
     cursor2 *cursoraux, *cursoraux1, *cursoraux2, *cursoraux3;
 
-    QString finicial = m_fechainicial->text();
-    QString ffinal = m_fechafinal->text();
-    QString cinicial = m_codigoinicial->text();
-    QString cfinal = m_codigofinal->text();
+
+    extractoview1 *extracto = empresaactual->extractoempresa();
+
+    QString finicial = extracto->m_fechainicial1->text();
+    QString ffinal = extracto->m_fechafinal1->text();
+    QString cinicial = extracto->m_codigoinicial->text();
+    QString cfinal = extracto->m_codigofinal->text();
 
     // tipus de presentació
     txt=!strcmp(tipus,"txt");
@@ -448,23 +304,6 @@ void ExtractoPrintView::presentar(char *tipus) {
 	system (cad.ascii());
     }
 }
-
-
-
-void ExtractoPrintView::boton_ccostes() {
-    selectccosteview *selccostes = empresaactual->getselccostes();
-    selccostes->exec();
-}// end boton_ccostes
-
-
-void ExtractoPrintView::boton_canales() {
-    selectcanalview *selcanales = empresaactual->getselcanales();
-    selcanales->exec();
-}// end boton_ccostes
-
-void ExtractoPrintView::s_botonFiltrar() {
-    m_filt->exec();
-}// end s_botonFiltrar();
 
 
 

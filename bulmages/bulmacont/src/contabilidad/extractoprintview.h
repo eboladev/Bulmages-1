@@ -22,7 +22,7 @@
 #include <errno.h>
 
 #include <qwidget.h>
-#include <extractoprintdlg.h>
+#include "ui_extractoprintbase.h"
 #include <qlineedit.h>
 #include <q3datetimeedit.h>
 #include <q3filedialog.h>
@@ -31,8 +31,6 @@
 #include <qtoolbutton.h>
 #include <qradiobutton.h>
 
-
-#include "filtrarextractosview.h"
 #include "postgresiface2.h"
 /** @author Tomeu Borrás Riera
   * \class ExtractoPrintView extractoprintview.h
@@ -43,28 +41,20 @@
 
 class empresa;
 
-class ExtractoPrintView : public ExtractoPrintDlg  {
+class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase  {
    Q_OBJECT
 public:
    char *fichero;
    postgresiface2 *conexionbase;
    empresa *empresaactual;
-   filtrarextractosview *m_filt;
-   
-   void setFiltro(filtrarextractosview *filtro) {m_filt = filtro;};
-   void inicializa1(QString , QString , QString , QString );
+
    ExtractoPrintView(empresa *, QWidget *, const char *);
    void presentar(char *tipus);
    ~ExtractoPrintView();
-   void pruebasRTK();
-   void presentakugar();
 private:
    QString montaQuery();
 public slots:
    virtual void accept();
-   virtual void boton_ccostes();
-   virtual void boton_canales();
-   virtual void s_botonFiltrar();
 };
 
 #endif

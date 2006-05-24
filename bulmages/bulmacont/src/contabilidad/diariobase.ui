@@ -31,7 +31,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>6</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -81,7 +81,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_guardar" >
+         <widget class="QToolButton" name="mui_filtrar_4" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -89,16 +89,16 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar albaran</string>
+           <string>Imprimir albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar albaran</string>
+           <string>Imprimir albaran</string>
           </property>
           <property name="text" >
            <string/>
           </property>
           <property name="icon" >
-           <iconset/>
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -106,10 +106,16 @@
             <height>22</height>
            </size>
           </property>
+          <property name="checkable" >
+           <bool>false</bool>
+          </property>
+          <property name="checked" >
+           <bool>false</bool>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
+         <widget class="QToolButton" name="mui_imprimir" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -126,7 +132,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset/>
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -171,6 +177,136 @@
          </widget>
         </item>
         <item>
+         <widget class="QToolButton" name="mui_filtrar_3" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="checkable" >
+           <bool>false</bool>
+          </property>
+          <property name="checked" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_guardar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Guardar albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Guardar albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_immportar.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_filtrar_5" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_exportar.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="checkable" >
+           <bool>false</bool>
+          </property>
+          <property name="checked" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir albaran</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="checkable" >
+           <bool>false</bool>
+          </property>
+          <property name="checked" >
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer>
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
@@ -180,135 +316,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>154</width>
-            <height>36</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_verpedidocliente" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Ver pedido de cliente</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Ver pedido de cliente</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_facturar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Pasar a factura</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Pasar a factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_agregarafactura" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Agregar a factura</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Agregar a factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_cobrar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Agregar a factura existente</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Agregar a factura existente</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset/>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>16</width>
+            <width>421</width>
             <height>26</height>
            </size>
           </property>
@@ -327,14 +335,14 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QGridLayout" >
+     <layout class="QVBoxLayout" >
       <property name="margin" >
        <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item row="0" column="0" >
+      <item>
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -398,6 +406,93 @@
         </item>
        </layout>
       </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_3_2" >
+            <property name="text" >
+             <string>Apuntes con saldo inferior a</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mui_saldoinferior" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_3" >
+            <property name="text" >
+             <string>Apuntes con saldo superior a</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="mui_saldosuperior" />
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QCheckBox" name="mui_asAbiertos" >
+          <property name="text" >
+           <string>&amp;Incluir asientos abiertos</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_3_2_2" >
+            <property name="text" >
+             <string>Apuntes con contrapartida:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaCuenta" name="mui_contrapartida" />
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
      </layout>
     </widget>
    </item>
@@ -447,7 +542,7 @@
      <item>
       <widget class="QLineEdit" name="totaldebe" >
        <property name="enabled" >
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="sizePolicy" >
         <sizepolicy>
@@ -508,7 +603,7 @@
           <color>
            <red>255</red>
            <green>255</green>
-           <blue>255</blue>
+           <blue>127</blue>
           </color>
           <color>
            <red>255</red>
@@ -595,7 +690,7 @@
           <color>
            <red>255</red>
            <green>255</green>
-           <blue>255</blue>
+           <blue>127</blue>
           </color>
           <color>
            <red>255</red>
@@ -721,6 +816,17 @@
           </color>
          </disabled>
         </palette>
+       </property>
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
        </property>
        <property name="focusPolicy" >
         <enum>Qt::NoFocus</enum>
@@ -736,7 +842,7 @@
      <item>
       <widget class="QLineEdit" name="totalhaber" >
        <property name="enabled" >
-        <bool>false</bool>
+        <bool>true</bool>
        </property>
        <property name="sizePolicy" >
         <sizepolicy>
@@ -797,7 +903,7 @@
           <color>
            <red>255</red>
            <green>255</green>
-           <blue>255</blue>
+           <blue>127</blue>
           </color>
           <color>
            <red>255</red>
@@ -884,7 +990,7 @@
           <color>
            <red>255</red>
            <green>255</green>
-           <blue>255</blue>
+           <blue>127</blue>
           </color>
           <color>
            <red>255</red>
@@ -1010,6 +1116,17 @@
           </color>
          </disabled>
         </palette>
+       </property>
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>11</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
        </property>
        <property name="focusPolicy" >
         <enum>Qt::NoFocus</enum>
@@ -1027,6 +1144,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>DiarioSubForm</class>
+   <extends>QFrame</extends>
+   <header>diariosubform.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1034,9 +1158,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>DiarioSubForm</class>
-   <extends>QFrame</extends>
-   <header>diariosubform.h</header>
+   <class>BusquedaCuenta</class>
+   <extends></extends>
+   <header>busquedacuenta.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

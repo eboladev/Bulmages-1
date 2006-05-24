@@ -20,7 +20,7 @@
 #ifndef EXTRACTOVIEW1_H
 #define EXTRACTOVIEW1_H
 
-#include "extractodlg1.h"
+#include "ui_extractobase.h"
 #include "qtable1.h"
 #include "postgresiface2.h"
 
@@ -35,7 +35,7 @@ class filtrarextractosview;
   * Y acceso a filtrado. También desde esta pantalla se puede pedir más información de una cuenta
   * determinada.
   */
-class extractoview1 : public extractodlg1  {
+class extractoview1 : public QWidget, public Ui_ExtractoBase  {
     Q_OBJECT
 public:
     /// Indica el número de registros que estamos viendo.
@@ -62,6 +62,9 @@ public:
     void boton_filtrar();
 
 public slots:
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_actualizar_clicked() {accept();};
+    virtual void on_mui_imprimir_clicked();
     virtual void accept();
     virtual void boton_siguiente();
     virtual void boton_anterior();
@@ -70,11 +73,6 @@ public slots:
     virtual void boton_borrapunteo();
     virtual void boton_imprimir();
     virtual void boton_guardar();
-    virtual void boton_asiento();
-    virtual void boton_diario1(int);
-    virtual void boton_balance1(int);
-    virtual void contextmenu(int , int , const QPoint &);
-    virtual void apuntecambiadogrid (int, int);
     virtual void boton_casacion();
     virtual void boton_guardarpunteo();
     virtual void boton_cargarpunteos();

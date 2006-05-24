@@ -67,6 +67,7 @@ public:
     ~SDBRecord();
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp="");
     void refresh();
+    virtual int DBsave(QString &);
 };
 
 

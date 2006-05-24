@@ -46,7 +46,7 @@ public:
 	void setconexionbase(postgresiface2 *comp) {m_conexionbase=comp;};
 	postgresiface2 *conexionbase() {return m_conexionbase;};
 	int DBload(cursor2 *);
-	int DBsave(QString &id);
+	virtual int DBsave(QString &id);
 	int setDBvalue(QString, QString);
 	QString DBvalue(QString);
 	QString DBvalueprep(QString);

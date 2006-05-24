@@ -21,7 +21,7 @@
 #include <errno.h>
 
 #include <qwidget.h>
-#include "diarioprintdlg.h"
+#include "ui_diarioprintbase.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
 #include <q3datetimeedit.h>
@@ -31,7 +31,6 @@
 #include <qtoolbutton.h>
 #include <qradiobutton.h>
 
-#include "filtrardiarioview.h"
 
 /** @author Tomeu Borr� Riera
   * @brief Ventana de impresi� de diario
@@ -42,7 +41,7 @@
 /// Declaramos la clase empresa como amiga para que la compilaci� no sea complicada.
 #include "empresa.h"
 
-class DiarioPrintView : public DiarioPrintDlg  {
+class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase  {
    Q_OBJECT
 public:
    /// La base de datos con la que trabaja esta clase
@@ -51,26 +50,16 @@ public:
    empresa *empresaactual;
    int numdigitos;
    /// Puntero al filtrado de datos
-   filtrardiarioview *m_filt;
    
 public:
    /// Establece cual es la ventana de filtro de diario. Es imprescindible inicializar el filtro antes de mostrar la ventana o el bot� de filtro no funcionar�
-   void setFiltro(filtrardiarioview *filtro) {m_filt = filtro;};
-   void inicializa1(QString, QString);
    DiarioPrintView(empresa *emp, QWidget *parent, const char *name);
    ~DiarioPrintView();
    void presentar(char *tipus="html");
-   // OJO con esta funci� que es una funci� para probar el Report Tool Kit
-   void pruebasRTK();
-   void pruebasRTKoo();
-   void presentakugar();
 private:
    QString montaQuery();
 public slots:
    virtual void accept();
-   virtual void boton_canales();
-   virtual void boton_ccostes();
-   virtual void s_botonFiltrar();
 };
 
 #endif

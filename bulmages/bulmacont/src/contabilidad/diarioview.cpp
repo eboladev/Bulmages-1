@@ -15,7 +15,6 @@
  ***************************************************************************/
 
 #include <qwidget.h>
-#include <q3table.h>
 #include <qlineedit.h>
 #include <q3datetimeedit.h>
 #include <q3filedialog.h>
@@ -23,7 +22,6 @@
 #include <q3popupmenu.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
-//Added by qt3to4:
 #include <QPixmap>
 
 #include "empresa.h"
@@ -33,46 +31,18 @@
 #include "diarioprint.h"
 #include "configuracion.h"
 #include "calendario.h"
-
-#include "filtrardiarioview.h"
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "balanceview.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
-
-// Incluimos las imagenes que catalogan los tipos de cuentas.
-#include "images/cactivo.xpm"
-#include "images/cpasivo.xpm"
-#include "images/cneto.xpm"
-#include "images/cingresos.xpm"
-#include "images/cgastos.xpm"
-
 #include "busquedafecha.h"
-#include "qtable1.h"
-
-#define COL_FECHA 0
-#define COL_ORDENASIENTO 1
-#define COL_CUENTA 2
-#define COL_DENOMINACION 3
-#define COL_DEBE 4
-#define COL_HABER 5
-#define COL_CONCEPTO 6
-#define COL_CCOSTE 7
-#define COL_CANAL 8
-#define COL_CONTRAPARTIDA 9
-#define COL_NUMASIENTO 10
 
 DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) : QWidget(parent,name) {
-	setupUi(this);
+    setupUi(this);
 
     m_companyact = emp;
-	mui_list->setcompany( emp);
-
-
-
-
-
+    mui_list->setcompany( emp);
     // Iniciamos los componentes de la fecha para que al principio aparezcan
     // Como el año inicial.
     char cadena[10];
@@ -81,13 +51,11 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) :
     sprintf(cadena,"%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
 
-    //Inicializamos el filtro
-    filt = new filtrardiarioview(m_companyact,0,0);
-}// end DiarioView
+}
+
 
 DiarioView::~DiarioView() {
-    delete filt;
-}// end ~DiarioView
+}
 
 
 void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
@@ -117,7 +85,7 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
     fecha1aux.setYMD(ano,mes,dia);
     cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
     m_fechafinal1->setText(cadena2);
-}// end inicializa1
+}
 
 
 /** \brief SLOT que responde a la pulsación del botón de imprimir.
@@ -125,10 +93,8 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
  */
 void DiarioView::boton_imprimir() {
     DiarioPrintView *print = new DiarioPrintView(m_companyact,0,0);
-    print->setFiltro(filt);
-    print->inicializa1(m_fechainicial1->text(), m_fechafinal1->text());
     print->exec();
-}// end boton_imprimir
+}
 
 
 /**************************************************************
@@ -147,7 +113,7 @@ void DiarioView::boton_guardar() {
         diariop.inicializa2((char *) fn.ascii());
         diariop.accept();
     }// end if
-}// end boton_guardar
+}
 
 
 /**************************************************************
@@ -155,38 +121,71 @@ void DiarioView::boton_guardar() {
  **************************************************************/
 void DiarioView::accept() {
     presentar();
-}// end diarioview
+}
 
 
-/**
-  * Hacemos la carga de mui_list
-  * Hacemos la consulta a la base de datos y presentamos el listado.
-  */
-void DiarioView::presenta() {
-    _depura("DiarioView::presenta",0);
+
+void DiarioView::presentar() {
+    _depura("DiarioView::presentar",0);
     cursor2 * cur= m_companyact->cargacursor("SELECT * FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta");
     mui_list->cargar(cur);
     delete cur;
 
-     cur = m_companyact->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador");
-     if(! cur->eof() ) {
-	totaldebe->setText(cur->valor("totaldebe"));
-	totalhaber->setText(cur->valor("totalhaber"));
-     }// end if
-     delete cur;
-    _depura("END DiarioView::presenta",0);
-}
-
-void DiarioView::presentar() {
-    presenta();
+    cur = m_companyact->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador");
+    if(! cur->eof() ) {
+        totaldebe->setText(cur->valor("totaldebe"));
+        totalhaber->setText(cur->valor("totalhaber"));
+    }// end if
+    delete cur;
+    _depura("END DiarioView::presentar",0);
 }
 
 
 
+void DiarioView::on_mui_imprimir_clicked() {
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"diario.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER)+"diario.rml";
+    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
 
-void DiarioView::boton_filtrar() {
-    filt->exec();
-    accept();
-}// end boton_filtrar
+    /// Copiamos el archivo
+#ifdef WINDOWS
+    archivo = "copy "+archivo+" "+archivod;
+#else
+    archivo = "cp "+archivo+" "+archivod;
+#endif
 
+    system (archivo.ascii());
+    /// Copiamos el logo
+
+#ifdef WINDOWS
+    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+#else
+    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+#endif
+
+    system (archivologo.ascii());
+
+    QFile file;
+    file.setName( archivod );
+    file.open( QIODevice::ReadOnly );
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+    // Linea de totales del presupuesto
+    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
+    fitxersortidatxt += mui_list->imprimir();
+    fitxersortidatxt += "</blockTable>";
+
+    buff.replace("[story]",fitxersortidatxt);
+
+    if ( file.open( QIODevice::WriteOnly ) ) {
+        QTextStream stream( &file );
+        stream << buff;
+        file.close();
+    }// end if
+
+    // Crea el pdf  y lo muestra.
+    invocaPDF("diario");
+}
 
