@@ -10,15 +10,13 @@
 //
 //
 #include "asiento1.h"
-
 #include <qfile.h>
-//Added by qt3to4:
 #include <QTextStream>
 #include <qmessagebox.h>
 #include "fixed.h"
 #include "funcaux.h"
 #include "plugins.h"
-
+#include "empresa.h"
 
 Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
     _depura("Asiento1::Asiento1(empresa *)",0);
@@ -63,14 +61,14 @@ void Asiento1::borraAsiento1() {
             break;
         }// end switch
     }// end if
-}// end borraAlbaranCliente
+}
 
 
 void Asiento1::vaciaAsiento1() {
     _depura("Asiento1::vaciaAsiento1",0);
     DBclear();
-    listalineas->vaciar();
-}// end vaciaAlbaranCliente
+    listalineas->cargar("0");
+}
 
 
 
@@ -83,31 +81,29 @@ void Asiento1::pintaAsiento1() {
     pintaordenasiento(DBvalue("ordenasiento"));
     pintaclase(DBvalue("clase"));
     /// Pinta el subformulario de detalle del AlbaranCliente.
-    listalineas->pintaListLinAsiento1();
+    //    listalineas->pintaListLinAsiento1();
+    // La carga ya pinta
     /// Pintamos los totales
     calculaypintatotales();
     trataestadoAsiento1();
-}// end pintaAlbaranCliente
+}
 
 
 // Esta funci� carga un Asiento.
-int Asiento1::cargaAsiento1(QString idbudget) {
-    _depura("Asiento1::cargaAsiento1("+idbudget+")\n",0);
+int Asiento1::cargar(QString idbudget) {
+    _depura("Asiento1::cargar("+idbudget+")\n",0);
     QString query = "SELECT * FROM asiento WHERE idasiento="+idbudget;
     cursor2 * cur= m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     }// end if
     delete cur;
-    /// Si no existe lista de lineas se crea una.
-    if (listalineas == NULL)
-        listalineas = new ListLinAsiento1(m_companyact);
-    listalineas->cargaListLinAsiento1(idbudget);
+    listalineas->cargar(idbudget);
     /// Si no existe lista de descuentos se crea una.
     pintaAsiento1();
-    _depura("Fin AlbaranCliente::cargaAlbaranCliente("+idbudget+")\n",0);
+    _depura("END Asiento1::cargar("+idbudget+")\n",0);
     return 0;
-}// end chargeBudget
+}
 
 
 void Asiento1::abreAsiento1() {
@@ -123,7 +119,7 @@ void Asiento1::abreAsiento1() {
 
 void Asiento1::cierraAsiento1() {
     _depura("Asiento1::cierraAsiento1",0);
-    if (guardaAsiento1())
+    if (guardar())
         return;
     QString id= DBvalue("idasiento");
     if (id == "") {
@@ -133,9 +129,9 @@ void Asiento1::cierraAsiento1() {
     m_companyact->cierraasiento(id.toInt());
     QString idasiento = DBvalue("idasiento");
     vaciaAsiento1();
-    cargaAsiento1(idasiento);
+    cargar(idasiento);
     _depura("END Asiento1::cierraasiento1",0);
-}// end cierraAsiento1
+}
 
 Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
     if (DBvalue("idasiento") == "")
@@ -159,26 +155,27 @@ Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
 }
 
 
-int Asiento1::guardaAsiento1() {
-	_depura("Asiento1::guardaAsiento1",0);
-    /// Todo el guardado es una transacci�
+int Asiento1::guardar() {
+    _depura("Asiento1::guardar",2);
     QString id;
     m_companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
+    try {
+        DBsave(id);
+        setidasiento(id);
+        listalineas->guardar();
+        m_companyact->commit();
+
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+        int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
+        _depura("END Asiento1::guardar",2);
+
+        return 0;
+    } catch(...) {
+        _depura("Error guardando, se cancela la operacion",1);
         m_companyact->rollback();
         return -1;
-    }// end if
-    setidasiento(id);
-    m_companyact->commit();
-    error = listalineas->guardaListLinAsiento1();
-    if (error)
-        return -1;
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
-    int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
-	_depura("END Asiento1::guardaAsiento1",0);
-    return 0;
-}// end guardaAlbaranCliente
+    }
+}
 
 
 

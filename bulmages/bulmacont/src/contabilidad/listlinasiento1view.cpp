@@ -10,37 +10,164 @@
 //
 //
 
-#define COL_FECHA       0
-#define COL_CODIGO   1
-#define COL_CONCEPTO    6
-#define COL_DEBE        4
-#define COL_HABER       5
-#define COL_NOMCUENTA   2
-#define COL_CONTRAPARTIDA 3
-#define COL_IDBORRADOR    7
-#define COL_IDREGISTROIVA       8
-#define COL_IVA           9
-#define COL_NOMBREC_COSTE       10
-#define COL_NOMBRECANAL        11
-#define COL_IDCUENTA     12
-#define COL_IDCONTRAPARTIDA 13
-#define COL_IDCANAL         14
-#define COL_IDCCOSTE        15
-#define COL_ORDEN	    16
 
-#include "calendario.h"
+
 #include "listlinasiento1view.h"
-#include "funcaux.h"
-#include "asiento1view.h"
-#include "cuentaview.h"
+#include <QMenu>
+
 #include "plugins.h"
 
-#include <q3table.h>
-#include <qmessagebox.h>
-#include <q3popupmenu.h>
-//Added by qt3to4:
-#include <QKeyEvent>
-#include <QEvent>
+
+
+ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *) : SubForm2Bc(parent) {
+    setDBTableName("borrador");
+    setDBCampoId("idborrador");
+    addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , tr("Fecha"));
+    addSHeader("conceptocontable", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("Concepto Contable"));
+    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("idcuenta"));
+    addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("codigo"));
+    addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("tipocuenta"));
+    addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("descripcioncuenta"));
+    addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("descripcion"));
+    addSHeader("debe", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Debe"));
+    addSHeader("haber", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Haber"));
+
+    addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Contrapartida"));
+    addSHeader("comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Comentario"));
+    addSHeader("idcanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("ID Canal"));
+    addSHeader("marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Conciliacion"));
+    addSHeader("idc_coste", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idc_coste"));
+    addSHeader("idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idapunte"));
+    addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idtipoiva"));
+    addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("orden"));
+
+    addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoView , tr("idborrador"));
+    addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , tr("idasiento"));
+
+    setinsercion(TRUE);
+}
+
+
+void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
+    _depura("SubForm2Bc::contextMenuEvent",0);
+    QAction *del= NULL;
+    int row = currentRow();
+    if ( row < 0)
+        return;
+
+    int col = currentColumn();
+    if ( row < 0)
+        return;
+
+    QMenu *popup = new QMenu(this);
+
+    QAction *mostapunte = popup->addAction("Mostrar Asiento");
+    popup->addSeparator();
+    QAction *mostextractodia = popup->addAction("Mostrar Extracto (dia)");
+    QAction *mostextractomes = popup->addAction("Mostrar Extracto (mes)");
+    QAction *mostextractoano = popup->addAction("Mostrar Extracto (ano)");
+    popup->addSeparator();
+    QAction *mostbalancedia = popup->addAction("Mostrar Balance (dia)");
+    QAction *mostbalancemes = popup->addAction("Mostrar Balance (mes)");
+    QAction *mostbalanceano = popup->addAction("Mostrar Balance (ano)");
+    popup->addSeparator();
+    QAction *mostbalancejdia = popup->addAction("Mostrar Balance Jerarquico (dia)");
+    QAction *mostbalancejmes = popup->addAction("Mostrar Balance Jerarquico (mes)");
+    QAction *mostbalancejano = popup->addAction("Mostrar Balance Jerarquico (ano)");
+
+
+    if(m_delete)
+        del = popup->addAction(tr("Borrar registro"));
+    popup->addSeparator();
+    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
+    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
+
+    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
+    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
+
+    popup->addSeparator();
+    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
+
+    QAction *opcion = popup->exec(QCursor::pos());
+
+    if (opcion == mostapunte)
+	boton_asiento();
+
+    if (opcion == del)
+        borrar(row);
+
+    if (opcion == ajust)
+        resizeColumnsToContents();
+
+    if (opcion == ajusta)
+        resizeRowsToContents();
+
+    if (opcion == ajustc)
+        resizeColumnToContents(col);
+
+    if (opcion == ajustac)
+        resizeRowToContents(row);
+
+    if(opcion == verconfig)
+        showConfig();
+
+
+
+    if (opcion == mostextractodia)
+	boton_extracto1(0);
+    if (opcion == mostextractomes)
+	boton_extracto1(1);
+    if (opcion == mostextractoano)
+	boton_extracto1(2);
+
+
+
+    if (opcion == mostbalancedia)
+	boton_balance1(0);
+    if (opcion == mostbalancemes)
+	boton_balance1(1);
+    if (opcion == mostbalanceano)
+	boton_balance1(2);
+
+
+    if (opcion == mostbalancejdia)
+	boton_balancetree(0);
+    if (opcion == mostbalancejmes)
+	boton_balancetree(1);
+    if (opcion == mostbalancejano)
+	boton_balancetree(2);
+
+
+    delete popup;
+}
+
+
+
+// Carga l�eas de Factura
+void ListLinAsiento1View::cargar(QString idbudget) {
+    _depura("AsientoSubForm::cargar",0);
+    QString SQLQuery = "SELECT * FROM borrador ";
+    SQLQuery+= " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta ";
+    SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
+    SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
+    SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
+    SQLQuery+= "WHERE idasiento="+idbudget+" ORDER BY orden";
+    cursor2 * cur= m_companyact->cargacursor(SQLQuery);
+    SubForm2Bc::cargar(cur);
+    delete cur;
+    _depura("END AsientoSubForm::cargar",0);
+}
+
+
+
+void ListLinAsiento1View::boton_iva() {
+    int res = g_plugins->lanza("ListLinAsiento1View_boton_iva", this);
+}
+
+
+
+/*
+
 
 void ListLinAsiento1View::guardaconfig() {
     _depura("ListLinAsiento1View::guardaconfig",0);
@@ -260,171 +387,6 @@ void ListLinAsiento1View::contextMenu ( int row, int col, const QPoint & pos ) {
 }// end contextMenuRequested
 
 
-/*
-        QString query;
-        popup = new Q3PopupMenu;
-        popup->insertItem(tr(tr("Igual que la anterior (*)")),4);
-        switch (col) {
-        case COL_CANAL:
-            query = "SELECT * FROM canal";
-            conexionbase->begin();
-            cur = conexionbase->cargacursor(query,"canales");
-            menucanal->insertItem(tr("Ninguno"), 1000);
-            conexionbase->commit();
-            while (!cur->eof()) {
-                menucanal->insertItem(cur->valor("nombre"),1000+atoi(cur->valor("idcanal").ascii()));
-                cur->siguienteregistro();
-            }// end while
-            delete cur;
-            popup->insertItem(tr("&Seleccionar Canal"),menucanal);
-            break;
-        case COL_CCOSTE:
-            query = "SELECT * FROM c_coste";
-            conexionbase->begin();
-            cur  = conexionbase->cargacursor(query,"costes");
-            menucoste->insertItem(tr("Ninguno"), 1000);
-            conexionbase->commit();
-            while (!cur->eof()) {
-                menucoste->insertItem(cur->valor("nombre"), 1000+atoi(cur->valor("idc_coste").ascii()));
-                cur->siguienteregistro();
-            }// end while
-            delete cur;
-            popup->insertItem(tr("&Seleccionar Centro de Coste"),menucoste);
-            break;
-        case COL_SUBCUENTA:
-        case COL_CONTRAPARTIDA:
-        case COL_FECHA:
-        case COL_NOMCUENTA:
-            popup->insertItem(tr("Seleccionar Valor (+)"),5);
-            break;
-        case COL_DEBE:
-        case COL_HABER:
-            popup->insertItem(tr("Introducir Descuadre (+)"),5);
-            break;
-        }// end switch
-        popup->insertSeparator();
-        popup->insertItem(tr("Duplicar Apunte"),1);
-        popup->insertItem(tr("Borrar Apunte"),6);
-        popup->insertItem(tr("Vaciar Asiento"),7);
-        popup->insertSeparator();
-        popup->insertItem(tr("Subir (Ctrl Arriba)"),2);
-        popup->insertItem(tr("Bajar (Ctrl Abajo)"),3);
-        opcion = popup->exec(poin);
-        delete popup;
-        delete menucanal;
-        delete menucoste;
- 
-        switch(opcion) {
-        case 1:
-            duplicarapunte();
-            break;
-        case 2:
-            subirapunte(row);
-            repinta(idAsiento().toInt());
-            tapunts3->setCurrentCell(row-1,col);
-            break;
-        case 3:
-            bajarapunte(row);
-            repinta(idAsiento().toInt());
-            tapunts3->setCurrentCell(row+1,col);
-            break;
-        case 4:
-            duplicar(col);
-            break;
-        case 5:
-            switch(col) {
-            case COL_FECHA: {
-                    int dia, mes, ano;
-                    Q3PtrList<QDate> a;
-                    QString cadena;
-                    calendario *cal = new calendario(0,0);
-                    cal->exec();
-                    a = cal->dn->selectedDates();
-                    dia = a.first()->day();
-                    mes = a.first()->month();
-                    ano = a.first()->year();
-                    cadena.sprintf("%2.2d/%2.2d/%d",dia, mes, ano);
-                    fprintf(stderr,"Se ha pulsado:%s\n", cadena.ascii());
-                    tapunts3->setText(row, COL_FECHA, cadena);
-                    delete cal;
-                    break;
-                }// end case
-            case COL_NOMCUENTA:
-            case COL_SUBCUENTA:
-                // Hacemos aparecer la ventana de cuentas
-                tapunts3->setText(row,COL_SUBCUENTA,"");
-                cambiadasubcuenta(row);
-                break;
-            case COL_CONTRAPARTIDA:
-                tapunts3->setText(row,COL_CONTRAPARTIDA,"");
-                cambiadacontrapartida(row);
-                break;
-            case COL_DEBE:
-                tapunts3->setText(row,COL_DEBE, descuadre->text());
-                calculadescuadre();
-                break;
-            case COL_HABER:
-                tapunts3->setText(row,COL_HABER, descuadre->text());
-                calculadescuadre();
-                break;
-            }// end switch
-            break;
-        case 6:
-            borraborrador(row);
-            break;
-        case 7:
-            if(QMessageBox::question(this, tr("Cuidado!"), tr("Seguro que quiere borrar todos los apuntes del asiento?"),tr("&NO"), tr("&SI"), QString::null, 1, 0)) {
-                for(; tapunts3->text(0,COL_IDBORRADOR) != ""; borraborrador(0))
-                    ;
-            }// end if
-            break;
-        default:
-            switch(col) {
-            case COL_CANAL:
-                if (opcion == 1000) {
-                    tapunts3->setText(row, COL_CANAL, "");
-                    tapunts3->setText(row, COL_IDCANAL, "");
-                }// end if
-                if (opcion > 1000) {
-                    QString query1;
-                    opcion -= 1000;
-                    query1.sprintf("SELECT * FROM canal WHERE idcanal=%d", opcion);
-                    conexionbase->begin();
-                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
-                    conexionbase->commit();
-                    if (!cur->eof()) {
-                        tapunts3->setText(row,COL_CANAL, cur->valor("nombre"));
-                        tapunts3->setText(row,COL_IDCANAL, cur->valor("idcanal"));
-                    }// end if
-                    delete cur;
-                }// end if
-                break;
-            case COL_CCOSTE:
-                if (opcion == 1000) {
-                    tapunts3->setText(row, COL_CCOSTE, "");
-                    tapunts3->setText(row, COL_IDCCOSTE, "");
-                }// end if
-                if (opcion > 1000) {
-                    QString query1;
-                    opcion -= 1000;
-                    query1.sprintf("SELECT * FROM c_coste WHERE idc_coste=%d", opcion);
-                    conexionbase->begin();
-                    cur = conexionbase->cargacursor(query1.ascii(),"canales1");
-                    conexionbase->commit();
-                    if (!cur->eof()) {
-                        tapunts3->setText(row,COL_CCOSTE, cur->valor("nombre"));
-                        tapunts3->setText(row,COL_IDCCOSTE, cur->valor("idc_coste"));
-                    }// end if
-                    delete cur;
-                }// end if
-                break;
-            }// end switch
-            break;
-        }// end switch
-    } else {
- 
- 
-*/
 
 void ListLinAsiento1View::contextMenuCerrado ( int , int col, const QPoint & pos ) {
     LinAsiento1 *linea = lineaact();
@@ -756,9 +718,9 @@ LinAsiento1 *ListLinAsiento1View::lineaat(int row) {
     }// end if
 }// end lineaat
 
-/**
- * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
- */
+///
+/// Esta función se encarga de hacer las inicializaciones en un asiento nuevo
+///
 void ListLinAsiento1View::iniciar_asiento_nuevo(QString fecha) {
     LinAsiento1 *linea = lineaat(0);
     linea->setDBvalue("fecha",fecha);
@@ -781,35 +743,10 @@ void ListLinAsiento1View::iniciar_asiento_nuevo(QString fecha) {
 }// end iniciar_asiento_nuevo
 
 
-/** \brief SLOT que responde a la pulsación del botón de iva.
-  * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
-  * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
-  */
-void ListLinAsiento1View::boton_iva() {
-    int res = g_plugins->lanza("ListLinAsiento1View_boton_iva", this);
-/*
-    guardaListLinAsiento1();
-    LinAsiento1 *linea = lineaact();
-    if (linea->DBvalue("idborrador") != "") {
-        int idborrador = linea->DBvalue("idborrador").toInt();
-        ivaview *nuevae=new ivaview(companyact, 0,"");
-        nuevae->inicializa1(idborrador);
-        nuevae->exec();
-        delete nuevae;
-        pintaListLinAsiento1();
-    }// end if
-*/
-}// end boton_iva
 
 
 
 
-/**
-  * Si el parametro pasado es un:
-  * 0 -> del día actual
-  * 1 -> del mes actual
-  * 2 -> del año actual
-  */
 void ListLinAsiento1View::boton_extracto1(int tipo) {
     _depura("ListLinAsiento1View::boton_extracto1",0);
     QDate fecha1, fecha2, fechaact;
@@ -838,12 +775,7 @@ void ListLinAsiento1View::boton_extracto1(int tipo) {
 }// end boton_extracto1
 
 
-/**
-  * Si el parametro pasado es un:
-  * 0 -> del día actual
-  * 1 -> del mes actual
-  * 2 -> del año actual
-  */
+
 void ListLinAsiento1View::boton_diario1(int tipo) {
     QDate fecha1, fecha2, fechaact;
     LinAsiento1 *linea = lineaact();
@@ -871,12 +803,7 @@ void ListLinAsiento1View::boton_diario1(int tipo) {
 }// end boton_diario1
 
 
-/**
-  * Si el parametro pasado es un:
-  * 0 -> del día actual
-  * 1 -> del mes actual
-  * 2 -> del año actual
-  */
+
 void ListLinAsiento1View::boton_balance1(int tipo) {
     QDate fecha1, fecha2, fechaact;
     LinAsiento1 *linea = lineaact();
@@ -904,3 +831,6 @@ void ListLinAsiento1View::boton_balance1(int tipo) {
 
 }// end boton_balance1
 
+
+
+*/

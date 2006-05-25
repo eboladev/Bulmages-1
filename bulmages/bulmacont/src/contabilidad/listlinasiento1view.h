@@ -16,17 +16,26 @@
 @author Tomeu Borras
 */
 
-#include <q3table.h>
-//Added by qt3to4:
-#include <QEvent>
+#include "subform2bc.h"
+#include "fixed.h"
 
-#include "listlinasiento1.h"
-#include "linasiento1.h"
+class ListLinAsiento1View : public SubForm2Bc {
+    Q_OBJECT
+public:
+    ListLinAsiento1View(QWidget *parent=0, const char *name=0);
+    ~ListLinAsiento1View() {};
+    virtual void cargar(QString);
+    Fixed totaldebe() {return Fixed("0");};
+    Fixed totalhaber() {return Fixed("0");};
 
-#include "selectccosteview.h"
-#include "selectcanalview.h"
+public slots:
+    virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void boton_iva();
+};
 
 
+
+/*
 class ListLinAsiento1View : public Q3Table , public ListLinAsiento1 {
     Q_OBJECT
 public:
@@ -47,10 +56,9 @@ public slots:
     virtual void contextMenu ( int , int , const QPoint &  );
     virtual void contextMenuCerrado ( int , int , const QPoint &  );
     virtual void borraLinAsiento1act();
-
     virtual void boton_extracto1(int);
     virtual void boton_diario1(int);
     virtual void boton_balance1(int);
 };
-
+*/
 #endif

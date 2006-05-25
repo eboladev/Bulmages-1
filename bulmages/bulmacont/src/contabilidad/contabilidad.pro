@@ -39,7 +39,8 @@ FORMS += bulmacontbase.ui \
 	 diariobase.ui \
 	 extractobase.ui \
 	 extractoprintbase.ui \
-	 diarioprintbase.ui
+	 diarioprintbase.ui \
+	 asientobase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
@@ -77,8 +78,7 @@ FORMS3 += uiselector.ui \
 #         cobropagodlg.ui \
          tipoivadlg.ui \
          fpagodlg.ui \
-	 busquedacuentabase.ui \
-	 asiento1dlg.ui
+	 busquedacuentabase.ui 
 
 TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \
@@ -225,12 +225,10 @@ HEADERS += splashscreen.h \
 	   busquedacuenta.h \
 	   asiento1.h \
 	   asiento1view.h \
-	   linasiento1.h \
-	   listlinasiento1.h \
 	   listlinasiento1view.h \
 	   subform2bc.h \
 	   diariosubform.h \
-	   extractosubform.h 
+	   extractosubform.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -284,13 +282,10 @@ SOURCES += main.cpp \
 	   busquedacuenta.cpp \
 	   asiento1.cpp \
 	   asiento1view.cpp \
-	   linasiento1.cpp \
-	   listlinasiento1.cpp \
 	   listlinasiento1view.cpp \
 	   subform2bc.cpp \
 	   diariosubform.cpp \
-	   extractosubform.cpp
-	 
+	   extractosubform.cpp	 
 	 
 
 

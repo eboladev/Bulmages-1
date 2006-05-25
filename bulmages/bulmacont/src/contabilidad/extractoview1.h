@@ -27,7 +27,6 @@
 
 
 class empresa;
-class filtrarextractosview;
 
 /** @brief Esta clase Mantiene la generación de extractos contables
   * 
@@ -40,18 +39,16 @@ class extractoview1 : public QWidget, public Ui_ExtractoBase  {
 public:
     /// Indica el número de registros que estamos viendo.
     int numregistro;
-    /// Indica el número de registros que tiene el cursor2 \ref cursorcta
+    /// Indica el número de registros que tiene el cursor2 \ref m_cursorcta
     int numregistros;
     /// Indica el número de dígitos que tienen las cuentas. (TAL VEZ DEBERIA ESTAR EN CONFPR)
     int numdigitos;
     /// El extracto se realiza sobre un cursor que siempre esté en memoria.
-    cursor2 *cursorcta;
+    cursor2 *m_cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
-    empresa *companyact;
+    empresa *m_companyact;
     /// Tabla auxiliar que almacena los centros de coste (DEBERIA CAMBIARSE POR UN QMap)
     int ccostes[200];
-    /// Esta clase es el filtro que se puede aplicar sobre los extractos. Es un dialog Qt separado
-    filtrarextractosview *filt;
 public:
     extractoview1(empresa *,QWidget *parent=0, const char *name=0, int flags=0);
     ~extractoview1();
@@ -70,12 +67,16 @@ public slots:
     virtual void boton_anterior();
     virtual void boton_fin();
     virtual void boton_inicio();
-    virtual void boton_borrapunteo();
     virtual void boton_imprimir();
     virtual void boton_guardar();
-    virtual void boton_casacion();
-    virtual void boton_guardarpunteo();
-    virtual void boton_cargarpunteos();
+
+    virtual void on_mui_borrapunteo_clicked();
+    virtual void on_mui_casacion_clicked();
+    virtual void on_mui_guardarpunteo_clicked();
+    virtual void on_mui_cargarpunteos_clicked();
+    virtual void on_mui_configurar_clicked() {
+            mui_list->showConfig();
+	};
 };
 
 #endif

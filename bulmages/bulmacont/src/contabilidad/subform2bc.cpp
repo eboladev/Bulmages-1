@@ -44,19 +44,30 @@ SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
     setDelete(TRUE);
 }
 
-
-
-
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
+    _depura ("SubForm2Bc::on_mui_list_pressedAsterisk",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
-
-
-    if (camp->nomcampo() != "codigocompletoarticulo")
+    if (camp->nomcampo() != "codigo")
         return;
+    listcuentasview1 *listcuentas = new listcuentasview1((empresa *)m_companyact);
+    listcuentas->setModoLista();
+    listcuentas->inicializa();
+    listcuentas->exec();
+
+    if (listcuentas->codcuenta() != "")  {
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo='"+listcuentas->codcuenta()+"'");
+        if (!cur->eof() ) {
+            rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
+            rec->setDBvalue("codigo", cur->valor("codigo"));
+            rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
+            rec->setDBvalue("descripcion", cur->valor("descripcion"));
+        }// end if
+        delete cur;
+    }// end if
+    delete listcuentas;
+    _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk",0);
 }
-
-
 
 void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bc::pressedSlash",0);
@@ -71,8 +82,19 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
     _depura("SubForm2Bc::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
-    camp->refresh();
-
+    if (camp->nomcampo() == "codigo") {
+        QString codigoext = extiendecodigo( camp->text(),((empresa *) m_companyact)->numdigitosempresa() );
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo='"+codigoext+"'");
+        if (!cur->eof() ) {
+            rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
+            rec->setDBvalue("codigo", cur->valor("codigo"));
+            rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
+            rec->setDBvalue("descripcioncuenta", cur->valor("descripcion"));
+        }// end if
+	delete cur;
+    }// end if
+    SubForm3::on_mui_list_editFinished(row, col);
+    _depura("END SubForm2Bc::editFinished",0);
 }
 
 void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {
@@ -145,9 +167,8 @@ int SubForm2Bc::cargar(cursor2 *cur) {
                 cemp = camp;
             }// end if
         }// end for
-        if (cemp != NULL) {
+        if (cemp != NULL)
             cemp->setIcon(icon);
-        }
     }// end for
     _depura("END SubForm2Bc::cargar",0);
     return 0;
@@ -209,8 +230,8 @@ void SubForm2Bc::boton_diario1(int tipo) {
     _depura("SubForm2Bc::boton_diario1",0);
     empresa *companyact = (empresa *) m_companyact;
     QDate fecha1, fecha2, fechaact, fechaact1;
-        fechaact = normalizafecha(DBvalue("fecha").left(10));
-        fechaact1 = normalizafecha(DBvalue("fecha").left(10));
+    fechaact = normalizafecha(DBvalue("fecha").left(10));
+    fechaact1 = normalizafecha(DBvalue("fecha").left(10));
     if(DBvalue("fecha").left(10) != "") {
         switch(tipo) {
         case 0:
@@ -261,8 +282,8 @@ void SubForm2Bc::boton_balance1(int tipo) {
             break;
         }// end switch
         companyact->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
-    companyact->balanceempresa()->accept();
-    companyact->librobalance();
+        companyact->balanceempresa()->accept();
+        companyact->librobalance();
     }// end if
     _depura("END SubForm2Bc::boton_balance1",0);
 }
@@ -295,8 +316,8 @@ void SubForm2Bc::boton_balancetree(int tipo) {
             break;
         }// end switch
         companyact->balance1empresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
-    companyact->balance1empresa()->accept();
-    companyact->librobalancetree();
+        companyact->balance1empresa()->accept();
+        companyact->librobalancetree();
     }// end if
     _depura("END SubForm2Bc::boton_balance2",0);
 }

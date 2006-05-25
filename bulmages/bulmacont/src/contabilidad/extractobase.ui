@@ -177,7 +177,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_filtrar_3" >
+         <widget class="QToolButton" name="mui_configurar" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -195,68 +195,6 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="checkable" >
-           <bool>false</bool>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Guardar albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Guardar albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_immportar.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_filtrar_5" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Imprimir albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_exportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -323,11 +261,11 @@
          </spacer>
         </item>
         <item>
-         <widget class="QToolButton" name="casacion" >
+         <widget class="QToolButton" name="mui_casacion" >
           <property name="minimumSize" >
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="text" >
@@ -336,14 +274,20 @@
           <property name="icon" >
            <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_casacion.xpm</iconset>
           </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="casacion_2" >
+         <widget class="QToolButton" name="mui_guardarpunteo" >
           <property name="minimumSize" >
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="text" >
@@ -352,14 +296,20 @@
           <property name="icon" >
            <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
           </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="casacion_2_2" >
+         <widget class="QToolButton" name="mui_cargarpunteos" >
           <property name="minimumSize" >
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="text" >
@@ -368,14 +318,20 @@
           <property name="icon" >
            <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_fileOpen2.png</iconset>
           </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="casacion_2_2_2" >
+         <widget class="QToolButton" name="mui_borrapunteo" >
           <property name="minimumSize" >
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="text" >
@@ -383,6 +339,12 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -3129,16 +3091,23 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ExtractoSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>extractosubform.h</header>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaCuenta</class>
    <extends></extends>
-   <header>../../bulmalib/busquedafecha.h</header>
+   <header>busquedacuenta.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ExtractoSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>extractosubform.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -3147,13 +3116,6 @@
    <extends></extends>
    <header>Qt3Support/Q3ButtonGroup</header>
    <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCuenta</class>
-   <extends></extends>
-   <header>busquedacuenta.h</header>
-   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

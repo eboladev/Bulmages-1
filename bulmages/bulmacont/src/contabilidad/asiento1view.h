@@ -17,21 +17,17 @@
 #ifndef ASIENTO1VIEW_H
 #define ASIENTO1VIEW_H
 
-#include "asiento1.h"
+#include "ui_asientobase.h"
 
-#include <qwidget.h>
-#include <q3table.h>
+#include <QWidget>
 #include <qstring.h>
-//Added by qt3to4:
 #include <QHBoxLayout>
 
 #include "qtable1.h"
 #include "postgresiface2.h"
 #include "configuracion.h"
-
 #include "fixed.h"
 #include "busquedafecha.h"
-#include "asiento1dlg.h"
 #include "asiento1.h"
 #include "filtrarasientosview.h"
 
@@ -48,7 +44,7 @@ class empresa;
 class ListAsientos {
 
 private:
-    empresa *companyact;
+    empresa *m_companyact;
     /// Este es el cursor que se usará para recorrer la lista de asientos.
     cursor2 *cursorasientos;
     /// Este objeto contiene todas las opciones de filtraje necesarias para funcionar. es un objeto del tipo \ref filtrarasientosview
@@ -74,7 +70,7 @@ public:
         _depura("Funcion no implementada."+v);
     };
     virtual void pintaasiento(QString v) {
-        _depura("Funcion no implementada."+v);
+        _depura("Funcion no implementada."+v, 2);
     };
     void situarasiento(QString);
     bool esprimerasiento() {
@@ -109,12 +105,12 @@ public:
 };
 
 
-class Asiento1View : public Asiento1Dlg,  public Asiento1, public ListAsientos {
+class Asiento1View : public QWidget, public Ui_AsientoBase,  public Asiento1, public ListAsientos {
     Q_OBJECT
 private:
 
     /// ESte puntero del tipo \ref empresa contiene la referencia a la clase que ha inicializado este objeto.
-    empresa *companyact;
+    empresa *m_companyact;
 
 
     void pintafecha(QString val) {
@@ -127,19 +123,22 @@ private:
 
 public:
     void pintaasiento(QString v) {
-        _depura("muestraasiento"+v,0);
-        cargaAsiento1(v);
+        _depura("Asiento1View::pintaasiento "+v,0);
+        cargar(v);
+        _depura("END Asiento1View::pintaasiento "+v,0);
+
     };
 
     void muestraasiento(QString v) {
-        _depura("muestraasiento"+v,0);
+        _depura("Asiento1View::muestraasiento "+v,0);
         situarasiento(v);
         pintaasiento(v);
+        _depura("END Asiento1View::muestraasiento "+v,0);
     };
 
     void muestraasiento(int v) {
         muestraasiento(QString::number(v));
-    }// end muestraasiento
+    };
 
     ///Para poder enganchar plugins a esta ventana se ha habilitado este layout.
     QHBoxLayout *layoutPlugins;
@@ -158,15 +157,14 @@ public:
     Asiento1View(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~Asiento1View();
 public slots:
+	virtual void on_mui_abrirasiento_clicked() {abreAsiento1();};
+	virtual void on_mui_cerrarasiento_clicked() {cierraAsiento1();};
+
+
     virtual void s_lineaValueChanged() {
         calculaypintatotales();
     };
-    virtual void boton_abrirasiento() {
-        abreAsiento1();
-    };
-    virtual void boton_cerrarasiento() {
-        cierraAsiento1();
-    };
+
     virtual void boton_nuevoasiento();
     virtual void eturn_fechaasiento();
     virtual void boton_borrar_asiento() {
@@ -188,15 +186,15 @@ public slots:
       * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
       */
     virtual void boton_iva() {
-        subform2->boton_iva();
-    }// end boton_iva
+        mui_list->boton_iva();
+    };
 
     /** Al pulsar return sobre el número de asiento se procede como si fuese una
       * carga de dicho asiento.
       */
     void eturn_numasiento() {
         boton_cargarasiento();
-    }// end return_cuenta
+    };
     virtual void boton_cargarasiento();
 };
 

@@ -83,6 +83,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         }
+	delete cur;
     }
     SubForm3::on_mui_list_editFinished(row, col);
     _depura("END SubForm2Bf::editFinished",0);

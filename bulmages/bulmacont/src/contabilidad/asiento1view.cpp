@@ -18,7 +18,6 @@
 #include <q3listview.h>
 #include <qtoolbutton.h>
 #include <qpushbutton.h>
-//Added by qt3to4:
 #include <QHBoxLayout>
 #include <stdlib.h>
 #include <qinputdialog.h>
@@ -27,13 +26,11 @@
 #include <qstringlist.h>
 #include <qlayout.h>
 #include <qlabel.h>
-
 #include "asiento1view.h"
 #include "busquedafecha.h"
 #include "asientoview.h"
 #include "duplicarasientoview.h"
 #include "aplinteligentesview.h"
-
 #include "listlinasiento1view.h"
 #include "empresa.h"
 
@@ -48,40 +45,38 @@
 #define ROWACTUAL tapunts3->currentRow()
 */
 
-/// Define el numero de filas que va a tener la tabla de apuntes.
-#define TAPUNTS_NUM_ROWS 10000
-
 /** \brief Constructor de la clase, inicializa los componentes
   * \param emp empresa que llama al objeto 
   * \param parent widget padre de éste
   * \param nam Nombre que recibe el widget o ventana
   */
-Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  ) : Asiento1Dlg (parent,name) ,  Asiento1(emp) , ListAsientos(emp) {
+Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  ) : QWidget (parent,name) ,  Asiento1(emp) , ListAsientos(emp) {
+    setupUi(this);
     _depura("Constructor de Asiento1View\n",0);
-    companyact = emp;
-    setListLinAsiento1(subform2);
+    m_companyact = emp;
+
+    mui_list->setcompany(m_companyact);
+    setListLinAsiento1( mui_list );
+
     /// Hacemos la carga del listado de asientos.
     cargaasientos();
     /// Desplazamos hasta el último asiento.
     boton_fin();
     _depura("FIN del Constructor de Asiento1View\n",0);
-}// end intapunts3view
-
+}
 
 /** \brief Destructor de la clase
   *
   * Destruye los objetos creados y libera la memoria
   */
-Asiento1View::~Asiento1View() {
-}// end intapunts3view
+Asiento1View::~Asiento1View() {}
 
 void Asiento1View::calculaypintatotales() {
     m_totaldebe->setText(totaldebe().toQString());
     m_totalhaber->setText(totalhaber().toQString());
     Fixed desc = totaldebe() - totalhaber();
     m_descuadre->setText(desc.toQString());
-}// end calculaypintatotales
-
+}
 
 void Asiento1View::trataestadoAsiento1() {
     _depura("Asiento1View::trataestadoAsiento1",0);
@@ -91,9 +86,7 @@ void Asiento1View::trataestadoAsiento1() {
         asientoabiertop();
     }// end if
     _depura("END Asiento1View::trataestadoAsiento1",0);
-}// end calculaypintatotales
-
-
+}
 
 /** \brief Pone la pantalla en el modo de asiento abierto
   * Activa los botones de cierre y pone los elementos como estan configurados
@@ -102,16 +95,17 @@ void Asiento1View::asientoabiertop() {
     _depura("Asiento1View::asientoabiertop",0);
     m_descuadre->setEnabled(TRUE);
     nuevoasiento->setEnabled(TRUE);
-    botonabrirasiento->setEnabled(FALSE);
-    botoncerrarasiento->setEnabled(TRUE);
-    subform2->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA));
-    subform2->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA));
-    subform2->setReadOnly(FALSE);
+    mui_abrirasiento->setEnabled(FALSE);
+    mui_cerrarasiento->setEnabled(TRUE);
+    /*
+        mui_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA));
+        mui_list->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA));
+        mui_list->setReadOnly(FALSE);
+    */
     botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
-}// end asientoabiertop
-
+}
 
 /** \brief Pone la pantalla en el modo de asiento cerrado
   * Activa los botones de apertura y pone los elementos como estan configurados
@@ -120,18 +114,17 @@ void Asiento1View::asientocerradop() {
     _depura("Asiento1View::asientocerradop",0);
     m_descuadre->setEnabled(TRUE);
     nuevoasiento->setEnabled(TRUE);
-    botonabrirasiento->setEnabled(TRUE);
-    botoncerrarasiento->setEnabled(FALSE);
-    subform2->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES));
-    subform2->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES));
-    subform2->setReadOnly(TRUE);
+    mui_abrirasiento->setEnabled(TRUE);
+    mui_cerrarasiento->setEnabled(FALSE);
+    /*
+        mui_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES));
+        mui_list->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES));
+        mui_list->setReadOnly(TRUE);
+    */
     botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(TRUE);
-}// end asientocerradop
-
-
-
+}
 
 /**
  * Esta funcion se activa cuando se pulsa sobre el boton nuevo asiento del
@@ -140,36 +133,35 @@ void Asiento1View::asientocerradop() {
 void Asiento1View::boton_nuevoasiento() {
     m_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
     iniciar_asiento_nuevo();
-}// end boton_nuevoasiento
+}
 
 /**
  * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
  */
 void Asiento1View::iniciar_asiento_nuevo() {
-    asientoview *nuevoasiento = new asientoview(companyact);
-    nuevoasiento->inicializa(companyact);
+    asientoview *nuevoasiento = new asientoview(m_companyact);
+    nuevoasiento->inicializa(m_companyact);
     int idasiento = nuevoasiento->creaasiento( m_fecha->text(), m_fecha->text(),0,1);
     delete nuevoasiento;
-	if (idasiento <= 0) {
-		_depura("No se pudo crear el asiento",2);
-		return;
-	}// end if
+    if (idasiento <= 0) {
+        _depura("No se pudo crear el asiento",2);
+        return;
+    }// end if
     cargaasientos();
     muestraasiento(idasiento);
-    boton_abrirasiento();
-    subform2->iniciar_asiento_nuevo(m_fecha->text());
-}// end iniciar_asiento_nuevo
+    abreAsiento1();
+    mui_list->cargar(QString::number(idasiento));
+}
 
 void Asiento1View::eturn_fechaasiento() {
     QString query;
     if (estadoAsiento1() != Asiento1::ASCerrado) { //cambiar la fecha del asiento
         setDBvalue("fecha",m_fecha->text());
-        guardaAsiento1();
+        guardar();
     } else {
         iniciar_asiento_nuevo();
     }
-}// end return_fechaasiento
-
+}
 
 /** \brief Se ha pulsado sobre el botón de duplicar asiento
   *
@@ -178,32 +170,29 @@ void Asiento1View::eturn_fechaasiento() {
   * para que actualize los cambios
   */
 void Asiento1View::boton_duplicarasiento() {
-    duplicarasientoview *dupli= new duplicarasientoview(companyact,0,"",true);
+    duplicarasientoview *dupli= new duplicarasientoview(m_companyact,0,"",true);
     // Establecemos los parametros para el nuevo asiento a duplicar
     dupli->inicializa(idasiento(), idasiento());
     dupli->exec();
     cargaasientos();
     boton_fin();
     delete dupli;
-}// end boton_duplicarasiento
-
+}
 
 /**
   * Esta se encarga de la edicion de asientos.
   */
 void Asiento1View::editarasiento() {
-	_depura("editarasiento",2);
-    guardaAsiento1();
-    asientoview *nuevoasiento= new asientoview(companyact,0,"",true);
-    nuevoasiento->inicializa(companyact);
+    _depura("editarasiento",2);
+    guardar();
+    asientoview *nuevoasiento= new asientoview(m_companyact,0,"",true);
+    nuevoasiento->inicializa(m_companyact);
     nuevoasiento->cargaasiento(idasiento().toInt());
     nuevoasiento->exec();
     cargaasientos();
-//    repinta(idAsiento().toInt());
-	pintaAsiento1();
-}// end editarasiento
-
-
+    //    repinta(idAsiento().toInt());
+    pintaAsiento1();
+}
 
 /** Se ha pulsado sobre el botón de generar asientos inteligentes. Se inicializa la clase \ref aplinteligentesview y se muestra ese diálogo para que se opere con los asientos plantilla
 */
@@ -216,11 +205,11 @@ void Asiento1View::boton_inteligente() {
     } else {
         numasiento = 0;
     }// end if
-    aplinteligentesview *nueva=new aplinteligentesview(companyact, 0,"");
+    aplinteligentesview *nueva=new aplinteligentesview(m_companyact, 0,"");
     nueva->inicializa(numasiento);
     nueva->exec();
     delete nueva;
-}// end boton_inteligente
+}
 
 /**
   * Se ha pulsado sobre el boton de cargar asiento con lo
@@ -229,19 +218,22 @@ void Asiento1View::boton_inteligente() {
   * pantalla o crearlo si hace falta.
   */
 void Asiento1View::boton_cargarasiento() {
+    _depura("Asiento1View::boton_cargarasiento",2);
     QString idas="";
     QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = "+m_ordenasiento->text()+" ORDER BY ordenasiento DESC";
-    cursor2 *curs = companyact->cargacursor(query);
+    cursor2 *curs = m_companyact->cargacursor(query);
     if (!curs->eof()) {
         idas = curs->valor("idasiento");
-        cargaasientos();
-        muestraasiento(idas);
+        cargar(idas);
     } else {
-	_depura("Asiento inexistente",2);
-	pintaAsiento1();
-	}// end if
+        _depura("Asiento inexistente",2);
+        pintaAsiento1();
+    }// end if
     delete curs;
-}// end boton_cargarasiento
+    _depura("END Asiento1View::boton_cargarasiento",2);
+}
+
+
 
 
 
@@ -251,19 +243,19 @@ void Asiento1View::boton_cargarasiento() {
 ***************************************************************************************************************************/
 
 ListAsientos::ListAsientos(empresa *emp) {
-    companyact = emp;
+    m_companyact = emp;
     cursorasientos = NULL;
     /// Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien desde esta ventana.
-    filt = new filtrarasientosview(companyact,0,"");
+    filt = new filtrarasientosview(m_companyact,0,"");
 
-}// end ListAsientos
+}
 
 ListAsientos::~ListAsientos() {
     delete filt;
     if (cursorasientos != NULL ) {
         delete cursorasientos;
     }// end if
-}// end ~ListAsientos
+}
 
 /** \brief Prepara el cursor que sirve para recorrer los asientos uno a uno.
  * Carga el cursor que sirve para hacer todo *
@@ -288,10 +280,10 @@ void ListAsientos::cargaasientos() {
     QString textejercicio="";
     QString ejercicio = "";
 
-    cantapunt = companyact->sanearCadena(filt->cantidadapunte->text());
-    saldototal = companyact->sanearCadena(filt->saldoasiento->text());
-    nombreasiento = companyact->sanearCadena(filt->nombreasiento->text());
-    ejercicio = companyact->sanearCadena(filt->ejercicio());
+    cantapunt = m_companyact->sanearCadena(filt->cantidadapunte->text());
+    saldototal = m_companyact->sanearCadena(filt->saldoasiento->text());
+    nombreasiento = m_companyact->sanearCadena(filt->nombreasiento->text());
+    ejercicio = m_companyact->sanearCadena(filt->ejercicio());
 
 
     if (cursorasientos != NULL ) {
@@ -332,17 +324,13 @@ void ListAsientos::cargaasientos() {
     query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
     //   }// end if
 
-    cursorasientos = companyact->cargacursor(query);
+    cursorasientos = m_companyact->cargacursor(query);
     if (cursorasientos->eof()) {
         QMessageBox::warning(0, "No existe asiento", "No existe ningun asiento para mostrar.", "Cerrar",0,0,0);
         return;
     }// end if
     _depura("End cargaasientos\n",0);
 }// end cargaasientos
-
-
-
-
 
 /** \brief Slot que responde a la pulsación del botón de inicio
   *
@@ -403,10 +391,10 @@ void ListAsientos::boton_anterior() {
 
 
 void ListAsientos::situarasiento(QString numasiento) {
-	_depura("ListAsientos::situarasiento"+numasiento,0);
+    _depura("ListAsientos::situarasiento "+numasiento,0);
     cursorasientos->primerregistro();
     while (cursorasientos->valor("idasiento") != numasiento && !cursorasientos->esultimoregistro())
         cursorasientos->siguienteregistro();
-	_depura("ListAsientos::situarasiento"+cursorasientos->valor("idasiento"),0);
-}// end situarasiento
+    _depura("END ListAsientos::situarasiento",0);
+}
 

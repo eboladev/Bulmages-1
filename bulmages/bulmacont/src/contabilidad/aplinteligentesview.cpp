@@ -250,7 +250,6 @@ void aplinteligentesview::boton_crear() {
     if (numasiento != 0) {
         recogevalores();
         creaasiento();
-//        companyact->intapuntsempresa()->repinta(numasiento);
         companyact->intapuntsempresa()->muestraasiento(numasiento);
         selectfirst();
     } else {
@@ -258,12 +257,11 @@ void aplinteligentesview::boton_crear() {
         // Asi que debemos facilitar las cosas al máximo.
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1]=fechaasiento->text().ascii();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
-//        companyact->intapuntsempresa()->iniciar_asiento_nuevo();
         companyact->intapuntsempresa()->vaciaAsiento1();
         numasiento= companyact->intapuntsempresa()->idasiento().toInt();
         recogevalores();
         creaasiento();
-        companyact->intapuntsempresa()->boton_cerrarasiento();
+        companyact->intapuntsempresa()->cierraAsiento1();
         numasiento = 0;
         fechaasiento->selectAll();
         fechaasiento->setFocus();

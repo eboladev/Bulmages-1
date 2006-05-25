@@ -41,6 +41,9 @@
 #include "diarioview.h"
 #include "listcuentasview1.h"
 
+#include "selectccosteview.h"
+#include "selectcanalview.h"
+
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 
@@ -54,13 +57,12 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
 
     mui_list->setcompany(emp);
 
-    companyact = emp;
-    numdigitos = companyact->numdigitosempresa();
+    m_companyact = emp;
+    numdigitos = m_companyact->numdigitosempresa();
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
-
 
     // Iniciamos los componentes de la fecha para que al principio aparezcan
     // Como el año inicial.
@@ -69,7 +71,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     m_fechainicial1->setText(cadena);
     cadena.sprintf("%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
-    cursorcta=NULL;
+    m_cursorcta=NULL;
 
     _depura("END extractoview1::extractoview1",0);
 }
@@ -77,7 +79,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
 
 
 extractoview1::~extractoview1() {
-    delete cursorcta;
+    delete m_cursorcta;
 }
 
 
@@ -97,10 +99,10 @@ void extractoview1::accept() {
         codfinal = "9999999";
     query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT idcuenta FROM apunte) AND codigo >='"+codinicial+"' AND codigo <= '"+codfinal+"'  ORDER BY codigo";
 
-    if (cursorcta != NULL) {
-        delete cursorcta;
+    if (m_cursorcta != NULL) {
+        delete m_cursorcta;
     }// end if
-    cursorcta = companyact->cargacursor(query,"cursorcuenta");
+    m_cursorcta = m_companyact->cargacursor(query,"cursorcuenta");
     presentar();
     _depura("END extractoview1::accept",0);
 }
@@ -110,9 +112,9 @@ void extractoview1::accept() {
  * Esta es la funcion que avanza un registro entre las cuentas *
  ***************************************************************/
 void extractoview1::boton_siguiente() {
-    if (cursorcta != NULL) {
-        if (!cursorcta->esultimoregistro()) {
-            cursorcta->siguienteregistro();
+    if (m_cursorcta != NULL) {
+        if (!m_cursorcta->esultimoregistro()) {
+            m_cursorcta->siguienteregistro();
             presentar();
         }// end if
     }// end if
@@ -123,9 +125,9 @@ void extractoview1::boton_siguiente() {
  * Esta es la funcion que retrocede un registro entre las cuentas *
  ******************************************************************/
 void extractoview1::boton_anterior() {
-    if (cursorcta != NULL) {
-        if (!cursorcta->esprimerregistro()) {
-            cursorcta->registroanterior();
+    if (m_cursorcta != NULL) {
+        if (!m_cursorcta->esprimerregistro()) {
+            m_cursorcta->registroanterior();
             presentar();
         }// end if
     }// end if
@@ -133,23 +135,23 @@ void extractoview1::boton_anterior() {
 
 
 void extractoview1::boton_inicio() {
-    if (cursorcta != NULL) {
-        cursorcta->primerregistro();
+    if (m_cursorcta != NULL) {
+        m_cursorcta->primerregistro();
         presentar();
     }// end if
 }
 
 
 void extractoview1::boton_fin() {
-    if (cursorcta != NULL) {
-        cursorcta->ultimoregistro();
+    if (m_cursorcta != NULL) {
+        m_cursorcta->ultimoregistro();
         presentar();
     }// end if
 }
 
 
 void extractoview1::boton_imprimir() {
-    ExtractoPrintView *print = new ExtractoPrintView(companyact, 0,0);
+    ExtractoPrintView *print = new ExtractoPrintView(m_companyact, 0,0);
     print->exec();
 }
 
@@ -160,7 +162,7 @@ void extractoview1::boton_guardar() {
         libromayorprint libromayor;
         QString finicial = m_fechainicial1->text().ascii();
         QString ffinal = m_fechafinal1->text().ascii();
-        libromayor.inicializa(companyact);
+        libromayor.inicializa(m_companyact);
         libromayor.inicializa1(m_codigoinicial->text(), m_codigofinal->text(), finicial, ffinal);
         libromayor.inicializa2((char *) fn.ascii());
         libromayor.accept();
@@ -222,18 +224,18 @@ void extractoview1::presentar() {
     cursor2 *cursorcanal;
     cursor2 *cursoraux1;
 
-    if (cursorcta->eof() || cursorcta->bof())
+    if (m_cursorcta->eof() || m_cursorcta->bof())
         return;
 
-    idcuenta = cursorcta->valor("idcuenta");
+    idcuenta = m_cursorcta->valor("idcuenta");
     // Escribimos el nombre de la cuenta y el código de la misma.
-    codigocuenta->setText(cursorcta->valor("codigo"));
-    nombrecuenta->setText(cursorcta->valor("descripcion"));
+    codigocuenta->setText(m_cursorcta->valor("codigo"));
+    nombrecuenta->setText(m_cursorcta->valor("descripcion"));
     // Hacemos la consulta de los apuntes a listar en la base de datos.
     QString query="";
     // Al igual que en el caso anterior los centros de coste han cambiado y aun no se pueden implementar.
-    selectcanalview *scanal=companyact->getselcanales();
-    selectccosteview *scoste=companyact->getselccostes();
+    selectcanalview *scanal=m_companyact->getselcanales();
+    selectccosteview *scoste=m_companyact->getselccostes();
     QString ccostes = scoste->cadcoste();
     if (ccostes != "")
         ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.ascii());
@@ -250,7 +252,7 @@ void extractoview1::presentar() {
 
     query="SELECT * FROM ( (SELECT * FROM "+tabla+" WHERE  idcuenta="+idcuenta+" AND fecha>='"+finicial+"' AND fecha<='"+ffinal+"' "+ccostes+" "+ccanales+" "+tipopunteo+") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ORDER BY t1.fecha, ordenasiento, t1.orden";
 
-    cursorapt=companyact->cargacursor(query);
+    cursorapt=m_companyact->cargacursor(query);
     mui_list->cargar(cursorapt);
 
     cursorapt->primerregistro();
@@ -258,7 +260,7 @@ void extractoview1::presentar() {
         // Cargamos los saldos iniciales.
         cursor2* cursoraux;
         query = "SELECT sum(debe) AS tdebe, sum(haber) AS thaber FROM apunte WHERE idcuenta="+idcuenta+" AND fecha <'"+finicial+"'";
-        cursoraux = companyact->cargacursor(query);
+        cursoraux = m_companyact->cargacursor(query);
         if (!cursoraux->eof()) {
             debeinicial = atof(cursoraux->valor("tdebe").ascii());
             haberinicial = atof(cursoraux->valor("thaber").ascii());
@@ -308,24 +310,24 @@ void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fe
 
 
 
-void extractoview1::boton_casacion() {
+void extractoview1::on_mui_casacion_clicked() {
     QString query;
-    query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",cursorcta->valor("idcuenta").ascii());
-    companyact->begin();
-    cursor2 *curshaber = companyact->cargacursor(query, "curshaber");
-    companyact->commit();
+    query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND haber <>0  AND idcuenta=%s ORDER BY fecha",m_cursorcta->valor("idcuenta").ascii());
+    m_companyact->begin();
+    cursor2 *curshaber = m_companyact->cargacursor(query, "curshaber");
+    m_companyact->commit();
     while (!curshaber->eof()) {
-        query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").ascii(), cursorcta->valor("idcuenta").ascii());
-        companyact->begin();
-        cursor2 *cursdebe = companyact->cargacursor(query.ascii(), "cursdebe");
-        companyact->commit();
+        query.sprintf("SELECT * FROM apunte WHERE punteo=FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").ascii(), m_cursorcta->valor("idcuenta").ascii());
+        m_companyact->begin();
+        cursor2 *cursdebe = m_companyact->cargacursor(query.ascii(), "cursdebe");
+        m_companyact->commit();
         if (!cursdebe->eof()) {
             query.sprintf("UPDATE apunte set punteo=TRUE WHERE idapunte=%s",curshaber->valor("idapunte").ascii());
-            companyact->begin();
-            companyact->ejecuta(query);
+            m_companyact->begin();
+            m_companyact->ejecuta(query);
             query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",cursdebe->valor("idapunte").ascii());
-            companyact->ejecuta(query);
-            companyact->commit();
+            m_companyact->ejecuta(query);
+            m_companyact->commit();
         }// end if
         delete cursdebe;
         curshaber->siguienteregistro();
@@ -334,7 +336,7 @@ void extractoview1::boton_casacion() {
     presentar();
 }
 
-void extractoview1::boton_guardarpunteo() {
+void extractoview1::on_mui_guardarpunteo_clicked() {
     QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Guardar Punteo"),tr("Elige el nombre de archivo"));
     if (!fn.isEmpty()) {
         FILE *mifile;
@@ -342,7 +344,7 @@ void extractoview1::boton_guardarpunteo() {
         if (mifile != NULL) {
             QString query;
             query = "SELECT * FROM apunte WHERE punteo=TRUE";
-            cursor2 *cursp = companyact->cargacursor(query,"punteos");
+            cursor2 *cursp = m_companyact->cargacursor(query,"punteos");
             while (!cursp->eof()) {
                 fprintf(mifile,"%s\n", cursp->valor("idapunte").ascii());
                 cursp->siguienteregistro();
@@ -358,12 +360,12 @@ void extractoview1::boton_guardarpunteo() {
   * Esta función se activa justo cuando se pulsa sobre el botón de resetear el punteo.
   * Por supuesto cuando se pulsa dicho boton se borra el punteo.
   */
-void extractoview1::boton_borrapunteo() {
+void extractoview1::on_mui_borrapunteo_clicked() {
     int valor = QMessageBox::warning( 0, tr("Borrar Punteo"), "Se dispone a borrar el punteo. Este cambio es irrecuperable si no ha guardado su el punte. Desea continuar?", QMessageBox::Yes, QMessageBox::No);
     if (valor == QMessageBox::Yes) {
-        companyact->begin();
-        companyact->ejecuta("UPDATE apunte SET punteo=FALSE");
-        companyact->commit();
+        m_companyact->begin();
+        m_companyact->ejecuta("UPDATE apunte SET punteo=FALSE");
+        m_companyact->commit();
         presentar();
     }// end if
 }
@@ -374,21 +376,17 @@ void extractoview1::boton_borrapunteo() {
   * Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes ya que en dicho caso
   * La carga del punteo no funciona correctamente.
   */
-void extractoview1::boton_cargarpunteos() {
+void extractoview1::on_mui_cargarpunteos_clicked() {
     QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), tr("Punteos (*.pto)"), 0,tr("Cargar Punteo"),tr("Elige el nombre de archivo"));
     if (!fn.isEmpty()) {
         ifstream filestr((char *) fn.ascii());
         string a;
-        companyact->begin();
-        companyact->ejecuta("UPDATE apunte SET punteo=FALSE");
-        companyact->commit();
+        m_companyact->ejecuta("UPDATE apunte SET punteo=FALSE");
         while (filestr.good()) {
             filestr >> a;
             QString query;
             query.sprintf("UPDATE apunte SET punteo=TRUE WHERE idapunte=%s",a.c_str());
-            companyact->begin();
-            companyact->ejecuta(query);
-            companyact->commit();
+            m_companyact->ejecuta(query);
         }// end while
         filestr.close();
     }// end if
@@ -399,25 +397,20 @@ void extractoview1::on_mui_imprimir_clicked() {
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"extracto.rml";
     QString archivod = confpr->valor(CONF_DIR_USER)+"extracto.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
-
     /// Copiamos el archivo
 #ifdef WINDOWS
     archivo = "copy "+archivo+" "+archivod;
 #else
     archivo = "cp "+archivo+" "+archivod;
 #endif
-
     system (archivo.ascii());
     /// Copiamos el logo
-
 #ifdef WINDOWS
     archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #else
     archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
 #endif
-
     system (archivologo.ascii());
-
     QFile file;
     file.setName( archivod );
     file.open( QIODevice::ReadOnly );
@@ -429,15 +422,12 @@ void extractoview1::on_mui_imprimir_clicked() {
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
-
     buff.replace("[story]",fitxersortidatxt);
-
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << buff;
         file.close();
     }// end if
-
     // Crea el pdf  y lo muestra.
     invocaPDF("extracto");
 }

@@ -59,12 +59,8 @@ bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
     _depura("END QTableWidgetItem2::operator<",2);
 }
 
-
-
-
-
 bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
-//    _depura("QTableWidget2::INIT_eventFilter()\n",0);
+    _depura("QTableWidget2::INIT_eventFilter() \n" + QString::number(event->type()),1);
     static bool ctrlpulsado= FALSE;
     /*
         if ( event->type() == QEvent::KeyPress ) {
@@ -104,7 +100,7 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
             }// end if
         }// end if
     */
-    if (event->type() == QEvent::KeyPress) {
+    if (event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
         int col = currentColumn();
@@ -113,7 +109,6 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
         switch( key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-		_depura("pusado el enter",0);
             emit editFinished( row, col);
             return TRUE;
             break;
@@ -130,14 +125,13 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
             return TRUE;
             break;
         }// end switch
-
         if (key == 4129) {
             ctrlpulsado = FALSE;
         }// end if
     }// end if
-//    _depura("END QTableWidget2::eventFilter()\n",0);
+    _depura("END QTableWidget2::eventFilter()\n",1);
     return QTableWidget::eventFilter(obj, event);
-}// end eventFilter
+}
 
 
 void QTableWidget2::ordenar () {

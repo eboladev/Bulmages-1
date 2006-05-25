@@ -32,7 +32,6 @@
 #include "ui_diariobase.h"
 
 class empresa;
-class filtrardiarioview;
 
 class DiarioView : public QWidget, public Ui_DiarioBase  {
    Q_OBJECT
@@ -58,8 +57,8 @@ public slots:
    virtual void boton_imprimir();
 /// SLOT que responde a la pulsación del botón guardar listado. Es invocado desde la clase \ref empresa
    virtual void boton_guardar();
-
-
-
+    virtual void on_mui_configurar_clicked() {
+            mui_list->showConfig();
+	};
 };
 #endif
