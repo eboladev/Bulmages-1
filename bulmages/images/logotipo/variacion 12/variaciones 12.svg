@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/raul/Documents/iglues/propuestas nuevo logo/variaciones 12"
+   sodipodi:docname="variaciones 12.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.27149178"
+     inkscape:cx="934.9961"
+     inkscape:cy="244.73215"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1024"
+     inkscape:window-height="699"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="opacity:1;fill:#bf0000;fill-opacity:1;stroke:none;stroke-width:4.00000143;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 569.21875 845.15625 C 543.38135 845.96957 522.71875 867.18069 522.71875 893.21875 C 522.71873 919.77213 544.22783 941.28125 570.78125 941.28125 C 597.33464 941.28125 618.84375 919.7721 618.84375 893.21875 C 618.84372 866.66527 597.33466 845.15625 570.78125 845.15625 C 570.54845 845.15622 570.33723 845.15391 570.15625 845.15625 C 569.95106 845.15885 569.73581 845.15109 569.53125 845.15625 C 569.42977 845.15881 569.32007 845.15306 569.21875 845.15625 z M 519.21875 897.96875 C 491.83765 908.56788 472.40625 935.17461 472.40625 966.28125 C 472.40623 1006.6915 505.18357 1039.4687 545.59375 1039.4688 C 564.80673 1039.4688 582.30788 1032.0538 595.375 1019.9375 C 582.58192 1016.7975 572.31396 1007.1744 568.21875 994.78125 C 562.00746 999.7296 554.14592 1002.6875 545.59375 1002.6875 C 525.5079 1002.6875 509.1875 986.36709 509.1875 966.28125 C 509.18749 949.69821 520.3213 935.69366 535.5 931.3125 C 526.41196 922.80388 520.38585 911.07806 519.21875 897.96875 z M 608.75 929.21875 C 600.17154 938.21565 588.40318 944.13313 575.28125 945.1875 C 577.14352 947.8028 578.63389 950.68018 579.75 953.75 C 586.29802 948.17441 594.74137 944.77323 603.96875 944.65625 C 604.15859 944.65383 604.32985 944.65625 604.46875 944.65625 C 608.52279 944.65627 612.42666 945.29262 616.09375 946.46875 C 614.38015 940.35935 611.8992 934.56982 608.75 929.21875 z M 603.0625 948.5625 C 584.68336 949.14181 569.96875 964.22711 569.96875 982.75 C 569.96877 1001.64 585.2662 1016.9063 604.15625 1016.9062 C 623.04626 1016.9062 638.34375 1001.6399 638.34375 982.75 C 638.34372 963.85987 623.04629 948.5625 604.15625 948.5625 C 603.98325 948.56249 603.84012 948.56094 603.71875 948.5625 C 603.4998 948.56528 603.28043 948.55563 603.0625 948.5625 z "
+       id="path4019"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-f-1.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <image
+       id="image1399"
+       height="677"
+       width="567"
+       sodipodi:absref="/home/raul/Documents/iglues/propuestas nuevo logo/variaciones 12/prova8-f-2.jpg"
+       xlink:href="prova8-f-2.jpg"
+       x="36.951725"
+       y="25.075243" />
+  </g>
+</svg>

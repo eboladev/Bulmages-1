@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/raul/Documents/iglues/propuestas nuevo logo/variaciones 08"
+   sodipodi:docname="prova08.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.27149178"
+     inkscape:cx="934.9961"
+     inkscape:cy="244.73215"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1024"
+     inkscape:window-height="699"
+     inkscape:window-x="0"
+     inkscape:window-y="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       transform="matrix(1.356806,0,0,1.356806,317.8358,145.4042)"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       sodipodi:ry="89.493431"
+       sodipodi:rx="89.493431"
+       sodipodi:cy="277.31528"
+       sodipodi:cx="187.42964"
+       id="path4020"
+       style="opacity:1;fill:#0000ff;fill-opacity:0.23295456;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-d.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path1307"
+       id="use2196"
+       transform="matrix(-1,0,0,-1,475.0388,391.615)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-a.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path1307"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4.00000048;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+       d="M 291.78843,221.72583 C 264.73324,226.97998 217.89082,224.6022 217.89082,224.6022 L 229.99228,195.70694 L 158.73524,249.64423 L 224.36376,308.17009 L 217.48725,279.54913 C 217.48725,279.54913 259.97116,285.58477 303.94814,277.18595 C 424.62424,254.13898 448.19641,182.42511 432.31361,124.10182 C 406.07511,27.382233 216.80813,-24.708247 110.23601,108.18013 C 203.85428,6.146343 355.92118,46.330503 365.18857,134.1582 C 370.3523,183.09518 329.73737,214.35611 291.78843,221.72583 z "
+       sodipodi:nodetypes="ccccccsscss"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-a.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#0000ff;fill-opacity:0.23295456;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path2218"
+       sodipodi:cx="187.42964"
+       sodipodi:cy="277.31528"
+       sodipodi:rx="89.493431"
+       sodipodi:ry="89.493431"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       transform="matrix(1.356806,0,0,1.356806,-18.07306,-180.9527)"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-a.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       sodipodi:nodetypes="cccssscss"
+       d="M 607.02039,535.39767 C 588.1705,539.79751 571.45432,537.80636 571.45432,537.80636 C 571.45432,537.80636 566.12943,507.47382 538.19939,522.16098 C 507.08538,543.21608 521.60219,559.3474 540.92542,574.2672 C 560.24865,589.187 584.85266,588.87338 615.4923,581.84017 C 699.56971,562.54055 696.88908,529.55085 685.82323,480.71072 C 667.54234,399.71739 535.67632,356.09663 461.42542,467.37785 C 526.65111,381.93437 632.59911,415.58474 639.05589,489.13197 C 642.65356,530.11198 633.46016,529.22624 607.02039,535.39767 z "
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4.00000143;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+       id="path4018"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-d.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4022"
+       sodipodi:cx="187.42964"
+       sodipodi:cy="277.31528"
+       sodipodi:rx="89.493431"
+       sodipodi:ry="89.493431"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       transform="matrix(0.21675,-0.407039,0.407039,0.21675,355.4092,588.7928)"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-d.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       transform="matrix(0.21675,-0.407039,0.407039,0.21675,481.8669,488.0331)"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       sodipodi:ry="89.493431"
+       sodipodi:rx="89.493431"
+       sodipodi:cy="277.31528"
+       sodipodi:cx="187.42964"
+       id="path4024"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-d.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#0000ff;fill-opacity:0.23295456;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4028"
+       sodipodi:cx="187.42964"
+       sodipodi:cy="277.31528"
+       sodipodi:rx="89.493431"
+       sodipodi:ry="89.493431"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       transform="matrix(1.356806,0,0,1.356806,348.0836,-201.6485)"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-b.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path4030"
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:4.00000143;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1"
+       d="M 637.26811,188.34488 C 618.41822,192.74472 585.78219,190.75357 585.78219,190.75357 L 594.21351,166.55656 L 544.56733,211.72385 L 590.29201,260.73361 L 585.50101,236.76632 C 585.50101,236.76632 615.10038,241.82059 645.74002,234.78738 C 729.81743,215.48776 727.1368,182.49806 716.07095,133.65793 C 697.79006,52.664601 565.92404,9.0438411 491.67314,120.32506 C 556.89883,34.881581 662.84683,68.531951 669.30361,142.07918 C 672.90128,183.05919 663.70788,182.17345 637.26811,188.34488 z "
+       sodipodi:nodetypes="ccccccsscss"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-b.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       transform="matrix(0.176574,-0.331591,0.331591,0.176574,409.537,245.6951)"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       sodipodi:ry="89.493431"
+       sodipodi:rx="89.493431"
+       sodipodi:cy="277.31528"
+       sodipodi:cx="187.42964"
+       id="path4032"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:type="arc"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-b.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       sodipodi:type="arc"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.94810033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path4034"
+       sodipodi:cx="187.42964"
+       sodipodi:cy="277.31528"
+       sodipodi:rx="89.493431"
+       sodipodi:ry="89.493431"
+       d="M 276.92307 277.31528 A 89.493431 89.493431 0 1 1  97.936211,277.31528 A 89.493431 89.493431 0 1 1  276.92307 277.31528 z"
+       transform="matrix(0.176574,-0.331591,0.331591,0.176574,545.1406,131.0262)"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-b.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path4030"
+       id="use1323"
+       transform="matrix(-1,0,0,-1,1204.639,347.3915)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-b.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <use
+       x="0"
+       y="0"
+       xlink:href="#path4018"
+       id="use1325"
+       transform="matrix(-1,0,0,-1,1144.143,1041.497)"
+       width="744.09448"
+       height="1052.3622"
+       inkscape:export-filename="/home/raul/Documents/iglues/blender/prova8-d.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+  </g>
+</svg>
