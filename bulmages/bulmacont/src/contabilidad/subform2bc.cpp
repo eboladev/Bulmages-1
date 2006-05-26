@@ -73,6 +73,9 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bc::pressedSlash",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
+    if (camp->nomcampo() == "fecha")
+        return;
+
     QString text = editaTexto(camp->text());
     camp->set
     (text);
@@ -91,8 +94,14 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
             rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
             rec->setDBvalue("descripcioncuenta", cur->valor("descripcion"));
         }// end if
-	delete cur;
+        delete cur;
     }// end if
+
+    if (camp->nomcampo() == "fecha") {
+        QString nfecha = normalizafecha( camp->text()).toString("dd/MM/yyyy");
+        rec->setDBvalue( "fecha", nfecha);
+    }// end if
+
     SubForm3::on_mui_list_editFinished(row, col);
     _depura("END SubForm2Bc::editFinished",0);
 }

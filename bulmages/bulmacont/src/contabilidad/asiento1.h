@@ -49,6 +49,7 @@ public:
     void cierraAsiento1();
     estadoasiento  estadoAsiento1();
     int guardar();
+
     void setidasiento(QString val) {
         setDBvalue("idasiento",val);
 	listalineas->setColumnValue("idasiento",val);

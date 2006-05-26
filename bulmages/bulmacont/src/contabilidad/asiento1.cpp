@@ -108,6 +108,8 @@ int Asiento1::cargar(QString idbudget) {
 
 void Asiento1::abreAsiento1() {
     _depura("Asiento1::abreAsiento1",0);
+    if (estadoAsiento1() != ASCerrado)
+        return;
     QString id= DBvalue("idasiento");
     if (id == "") {
         _depura("No hay asiento");
@@ -119,6 +121,9 @@ void Asiento1::abreAsiento1() {
 
 void Asiento1::cierraAsiento1() {
     _depura("Asiento1::cierraAsiento1",0);
+    if (estadoAsiento1() != ASAbierto)
+        return;
+
     if (guardar())
         return;
     QString id= DBvalue("idasiento");
@@ -132,6 +137,7 @@ void Asiento1::cierraAsiento1() {
     cargar(idasiento);
     _depura("END Asiento1::cierraasiento1",0);
 }
+
 
 Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
     if (DBvalue("idasiento") == "")
@@ -149,14 +155,14 @@ Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
 
     if (numborr == "0")
         return ASVacio;
-    if (numborr == numap)
+    if (numap != "0")
         return ASCerrado;
     return ASAbierto;
 }
 
 
 int Asiento1::guardar() {
-    _depura("Asiento1::guardar",2);
+    _depura("Asiento1::guardar",0);
     QString id;
     m_companyact->begin();
     try {
@@ -167,7 +173,11 @@ int Asiento1::guardar() {
 
         /// Disparamos los plugins con presupuesto_imprimirPresupuesto
         int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
-        _depura("END Asiento1::guardar",2);
+        _depura("END Asiento1::guardar",0);
+
+        if (estadoAsiento1() == ASCerrado)
+   		 m_companyact->cierraasiento(id.toInt());
+
 
         return 0;
     } catch(...) {

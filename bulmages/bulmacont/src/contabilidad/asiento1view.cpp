@@ -94,14 +94,8 @@ void Asiento1View::trataestadoAsiento1() {
 void Asiento1View::asientoabiertop() {
     _depura("Asiento1View::asientoabiertop",0);
     m_descuadre->setEnabled(TRUE);
-    nuevoasiento->setEnabled(TRUE);
     mui_abrirasiento->setEnabled(FALSE);
     mui_cerrarasiento->setEnabled(TRUE);
-    /*
-        mui_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTESA));
-        mui_list->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTESA));
-        mui_list->setReadOnly(FALSE);
-    */
     botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
@@ -112,15 +106,8 @@ void Asiento1View::asientoabiertop() {
   */
 void Asiento1View::asientocerradop() {
     _depura("Asiento1View::asientocerradop",0);
-    m_descuadre->setEnabled(TRUE);
-    nuevoasiento->setEnabled(TRUE);
     mui_abrirasiento->setEnabled(TRUE);
     mui_cerrarasiento->setEnabled(FALSE);
-    /*
-        mui_list->setPaletteBackgroundColor(confpr->valor(CONF_BG_APUNTES));
-        mui_list->setPaletteForegroundColor(confpr->valor(CONF_FG_APUNTES));
-        mui_list->setReadOnly(TRUE);
-    */
     botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(TRUE);

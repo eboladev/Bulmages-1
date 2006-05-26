@@ -1,0 +1,1454 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>AsientoBase</class>
+ <widget class="QWidget" name="AsientoBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>724</width>
+    <height>631</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>9</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="pixmapLabel1" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="pixmap" >
+        <pixmap resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_lapiz.xpm</pixmap>
+       </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame_3" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>7</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>42</width>
+         <height>42</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>16777215</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
+        <property name="spacing" >
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_abrirasiento" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Abrir Asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Abrir Asiento Ctrl + A</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+A</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_cerrarasiento" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Cerrar Asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Cerrar Asiento Ctrl + C</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+C</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_guardarasiento" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Cerrar Asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Cerrar Asiento Ctrl + C</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+C</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_nuevoasiento" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Nuevo Asiento Ctrl+N</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="ToolButton11_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Editar Atributos</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="botoninteligente_2" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Duplicar Asiento</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset>image5</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="ToolButton17" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Cargar Asiento</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset>image6</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="botonborrarasiento" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Borrar Asiento</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="botoniva" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Registro de IVA</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+I</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="botoninteligente" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Asientos Inteligentes</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+M</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>221</width>
+            <height>26</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="TextLabel2" >
+         <property name="text" >
+          <string>Fecha</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="BusquedaFecha" name="m_fecha" />
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="TextLabel1" >
+         <property name="text" >
+          <string>Num. Asiento</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_ordenasiento" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>0</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize" >
+          <size>
+           <width>50</width>
+           <height>32767</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="TextLabel1_3" >
+         <property name="text" >
+          <string>Descuadre</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_descuadre" >
+         <property name="enabled" >
+          <bool>false</bool>
+         </property>
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>0</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize" >
+          <size>
+           <width>150</width>
+           <height>32767</height>
+          </size>
+         </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>197</red>
+             <green>194</green>
+             <blue>197</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>226</red>
+             <green>224</green>
+             <blue>226</blue>
+            </color>
+            <color>
+             <red>98</red>
+             <green>96</green>
+             <blue>98</blue>
+            </color>
+            <color>
+             <red>131</red>
+             <green>129</green>
+             <blue>131</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>127</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>128</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>231</red>
+             <green>231</green>
+             <blue>231</blue>
+            </color>
+           </active>
+           <inactive>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>197</red>
+             <green>194</green>
+             <blue>197</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>226</red>
+             <green>222</green>
+             <blue>226</blue>
+            </color>
+            <color>
+             <red>98</red>
+             <green>96</green>
+             <blue>98</blue>
+            </color>
+            <color>
+             <red>131</red>
+             <green>129</green>
+             <blue>131</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>127</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>128</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>0</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>231</red>
+             <green>231</green>
+             <blue>231</blue>
+            </color>
+           </inactive>
+           <disabled>
+            <color>
+             <red>128</red>
+             <green>128</green>
+             <blue>128</blue>
+            </color>
+            <color>
+             <red>197</red>
+             <green>194</green>
+             <blue>197</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>226</red>
+             <green>222</green>
+             <blue>226</blue>
+            </color>
+            <color>
+             <red>98</red>
+             <green>96</green>
+             <blue>98</blue>
+            </color>
+            <color>
+             <red>131</red>
+             <green>129</green>
+             <blue>131</blue>
+            </color>
+            <color>
+             <red>128</red>
+             <green>128</green>
+             <blue>128</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>128</red>
+             <green>128</green>
+             <blue>128</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>127</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>128</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>255</red>
+             <green>0</green>
+             <blue>255</blue>
+            </color>
+            <color>
+             <red>231</red>
+             <green>231</green>
+             <blue>231</blue>
+            </color>
+           </disabled>
+          </palette>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignLeading</set>
+         </property>
+         <property name="readOnly" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="ListLinAsiento1View" name="mui_list" />
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>0</number>
+     </property>
+     <item>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>0</number>
+       </property>
+      </layout>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>246</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="textLabel1" >
+       <property name="text" >
+        <string>Saldo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_saldoCuenta" >
+       <property name="enabled" >
+        <bool>true</bool>
+       </property>
+       <property name="mouseTracking" >
+        <bool>false</bool>
+       </property>
+       <property name="focusPolicy" >
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="acceptDrops" >
+        <bool>false</bool>
+       </property>
+       <property name="echoMode" >
+        <enum>QLineEdit::Normal</enum>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
+       </property>
+       <property name="dragEnabled" >
+        <bool>false</bool>
+       </property>
+       <property name="readOnly" >
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="TextLabel1_2" >
+       <property name="text" >
+        <string>Totales</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_totaldebe" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>300</width>
+         <height>32767</height>
+        </size>
+       </property>
+       <property name="palette" >
+        <palette>
+         <active>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>197</red>
+           <green>194</green>
+           <blue>197</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>226</red>
+           <green>224</green>
+           <blue>226</blue>
+          </color>
+          <color>
+           <red>98</red>
+           <green>96</green>
+           <blue>98</blue>
+          </color>
+          <color>
+           <red>131</red>
+           <green>129</green>
+           <blue>131</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </active>
+         <inactive>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>197</red>
+           <green>194</green>
+           <blue>197</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>226</red>
+           <green>222</green>
+           <blue>226</blue>
+          </color>
+          <color>
+           <red>98</red>
+           <green>96</green>
+           <blue>98</blue>
+          </color>
+          <color>
+           <red>131</red>
+           <green>129</green>
+           <blue>131</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </inactive>
+         <disabled>
+          <color>
+           <red>128</red>
+           <green>128</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>197</red>
+           <green>194</green>
+           <blue>197</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>226</red>
+           <green>222</green>
+           <blue>226</blue>
+          </color>
+          <color>
+           <red>98</red>
+           <green>96</green>
+           <blue>98</blue>
+          </color>
+          <color>
+           <red>131</red>
+           <green>129</green>
+           <blue>131</blue>
+          </color>
+          <color>
+           <red>128</red>
+           <green>128</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>128</red>
+           <green>128</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </disabled>
+        </palette>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="m_totalhaber" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>350</width>
+         <height>32767</height>
+        </size>
+       </property>
+       <property name="palette" >
+        <palette>
+         <active>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>197</red>
+           <green>194</green>
+           <blue>197</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>226</red>
+           <green>224</green>
+           <blue>226</blue>
+          </color>
+          <color>
+           <red>98</red>
+           <green>96</green>
+           <blue>98</blue>
+          </color>
+          <color>
+           <red>131</red>
+           <green>129</green>
+           <blue>131</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </active>
+         <inactive>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>197</red>
+           <green>194</green>
+           <blue>197</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>226</red>
+           <green>222</green>
+           <blue>226</blue>
+          </color>
+          <color>
+           <red>98</red>
+           <green>96</green>
+           <blue>98</blue>
+          </color>
+          <color>
+           <red>131</red>
+           <green>129</green>
+           <blue>131</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </inactive>
+         <disabled>
+          <color>
+           <red>128</red>
+           <green>128</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>197</red>
+           <green>194</green>
+           <blue>197</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>226</red>
+           <green>222</green>
+           <blue>226</blue>
+          </color>
+          <color>
+           <red>98</red>
+           <green>96</green>
+           <blue>98</blue>
+          </color>
+          <color>
+           <red>131</red>
+           <green>129</green>
+           <blue>131</blue>
+          </color>
+          <color>
+           <red>128</red>
+           <green>128</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>128</red>
+           <green>128</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>127</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>128</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>0</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>255</blue>
+          </color>
+          <color>
+           <red>231</red>
+           <green>231</green>
+           <blue>231</blue>
+          </color>
+         </disabled>
+        </palette>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListLinAsiento1View</class>
+   <extends>QTableWidget</extends>
+   <header>listlinasiento1view.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections/>
+</ui>

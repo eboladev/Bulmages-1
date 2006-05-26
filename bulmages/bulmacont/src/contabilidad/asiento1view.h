@@ -157,8 +157,14 @@ public:
     Asiento1View(empresa *, QWidget *parent=0, const char *name=0, int flags=0);
     ~Asiento1View();
 public slots:
-	virtual void on_mui_abrirasiento_clicked() {abreAsiento1();};
-	virtual void on_mui_cerrarasiento_clicked() {cierraAsiento1();};
+    virtual void on_mui_abrirasiento_clicked() {
+        abreAsiento1();
+    };
+    virtual void on_mui_cerrarasiento_clicked() {
+        cierraAsiento1();
+    };
+    virtual void on_mui_guardarasiento_clicked() { guardar();};
+    virtual void on_mui_nuevoasiento_clicked() {boton_nuevoasiento();};
 
 
     virtual void s_lineaValueChanged() {
