@@ -3840,6 +3840,18 @@ Esta seguro que desea borrarlo?</source>
         <source>Esta a punto de borrar un proveedor. Estos datos pueden dar problemas.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Si</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;No</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Proveedores</name>
@@ -4105,11 +4117,7 @@ v 0.5.9</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Seleccione archivo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imagenes (*.jpg)</source>
+        <source>Buscar en:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

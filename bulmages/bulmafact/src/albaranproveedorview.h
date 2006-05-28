@@ -110,16 +110,16 @@ public slots:
     virtual void m_guardar_clicked();
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar albaran del proveedor."),
-                                        tr("Desea eliminar el albaran del proveedor?"),
-                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this, tr("Borrar albaran del proveedor."),
+                                       tr("Desea eliminar el albaran del proveedor?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
             if (!borrar()) {
                 dialogChanges_cargaInicial();
                 _depura("Albaran del proveedor borrado satisfactoriamente", 2);
                 close();
-            }// end if
-        }// end if
+            } // end if
+        } // end if
     };
     virtual void s_printAlbaranProveedor() {}
     ;

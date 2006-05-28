@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-// Implementacion del listado de presupuestos.
 #include <QMessageBox>
 #include <Q3PopupMenu>
 #include <QCheckBox>
@@ -34,15 +33,17 @@
 #include "plugins.h"
 #include "configuracion.h"
 
+
 PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags flag)
         : QWidget(parent, name, flag) {
     setupUi(this);
     m_companyact = NULL;
-    m_modo=0;
-    m_idpresupuesto="";
-    meteWindow(caption(),this);
+    m_modo = 0;
+    m_idpresupuesto = "";
+    meteWindow(caption(), this);
     hideBusqueda();
 }
+
 
 PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
         : QWidget(parent, name, flag) {
@@ -52,27 +53,29 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *nam
     m_articulo->setcompany(comp);
     mui_list->setcompany(comp);
     presenta();
-    m_modo=0;
-    m_idpresupuesto="";
-    meteWindow(caption(),this);
+    m_modo = 0;
+    m_idpresupuesto = "";
+    meteWindow(caption(), this);
     hideBusqueda();
 }
 
+
 PresupuestoList::~PresupuestoList() {
-    _depura("PresupuestoList::~PresupuestoList",0);
+    _depura("PresupuestoList::~PresupuestoList", 0);
     m_companyact->sacaWindow(this);
 }
+
 
 void PresupuestoList::presenta() {
     _depura("PresupuestoList::presenta()\n");
 
     /// Hacemos el listado y lo presentamos.
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1  "+generaFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1  " + generaFiltro());
     mui_list->cargar(cur);
     delete cur;
 
     /// Hacemos el calculo del total.
-    cur = m_companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1"+generaFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(totalpresupuesto) AS total FROM presupuesto LEFT JOIN cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1" + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 
@@ -80,37 +83,41 @@ void PresupuestoList::presenta() {
 }
 
 
-
 QString PresupuestoList::generaFiltro() {
     /// Tratamiento de los filtros.
-    QString filtro="";
+    QString filtro = "";
+
     if (m_filtro->text() != "") {
-        filtro = " AND ( descpresupuesto LIKE '%"+m_filtro->text()+"%' ";
-        filtro +=" OR nomcliente LIKE '%"+m_filtro->text()+"%') ";
+        filtro = " AND (descpresupuesto LIKE '%" + m_filtro->text() + "%' ";
+        filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
-    }// end if
+    } // end if
+
     if (m_cliente->idcliente() != "") {
-        filtro += " AND presupuesto.idcliente="+m_cliente->idcliente();
-    }// end if
+        filtro += " AND presupuesto.idcliente=" + m_cliente->idcliente();
+    } // end if
+
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT procesadopresupuesto";
-    }// end if
+    } // end if
+
     if (m_articulo->idarticulo() != "") {
-        filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='"+m_articulo->idarticulo()+"')";
+        filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='" + m_articulo->idarticulo() + "')";
     }// end if
+
     if (m_fechain->text() != "")
-        filtro += " AND fpresupuesto >= '"+m_fechain->text()+"' ";
+        filtro += " AND fpresupuesto >= '"+m_fechain->text() + "' ";
     if (m_fechafin->text() != "")
-        filtro += " AND fpresupuesto <= '"+m_fechafin->text()+"' ";
+        filtro += " AND fpresupuesto <= '"+m_fechafin->text() + "' ";
     return (filtro);
 }
 
 
-void PresupuestoList::editar(int  row) {
-    _depura("PresupuestoList::editar",0);
-    m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"),row);
-    if (m_modo ==0 ) {
+void PresupuestoList::editar(int row) {
+    _depura("PresupuestoList::editar", 0);
+    m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
+    if (m_modo == 0) {
         PresupuestoView *prov = m_companyact->newBudget();
         if (prov->cargar(m_idpresupuesto)) {
             return;
@@ -119,59 +126,52 @@ void PresupuestoList::editar(int  row) {
         prov->show();
     } else {
         emit(selected(m_idpresupuesto));
-    }// end if
-    _depura("END PresupuestoList::editar",0);
+    } // end if
+    _depura("END PresupuestoList::editar", 0);
 }
 
 
 void PresupuestoList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >=0 )
+    if (a >= 0)
         editar(a);
     else
-        _depura("Debe seleccionar una linea",2);
+        _depura("Debe seleccionar una linea", 2);
 }
 
 
-
-
 void PresupuestoList::imprimir() {
-    _depura("PresupuestoList::imprimir",0);
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"presupuestos.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"presupuestos.rml";
-    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    _depura("PresupuestoList::imprimir", 0);
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "presupuestos.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "presupuestos.rml";
+    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
     /// Copiamos el archivo
 #ifdef WINDOWS
-
-    archivo = "copy "+archivo+" "+archivod;
+    archivo = "copy " + archivo + " " + archivod;
 #else
-
-    archivo = "cp "+archivo+" "+archivod;
+    archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system (archivo.ascii());
 
     /// Copiamos el logo
-
 #ifdef WINDOWS
-
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
-
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system (archivologo.ascii());
 
     QFile file;
-    file.setName( archivod );
-    file.open( QIODevice::ReadOnly );
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Linea de totales del presupuesto
+    /// Linea de totales del presupuesto.
 
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
@@ -179,37 +179,33 @@ void PresupuestoList::imprimir() {
 
     buff.replace("[story]",fitxersortidatxt);
 
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
         stream << buff;
         file.close();
-    }// end if
+    } // end if
     invocaPDF("presupuestos");
 }
 
 
 void PresupuestoList::on_mui_borrar_clicked() {
-    _depura("PresupuestoList::on_mui_borrar_clicked",0);
+    _depura("PresupuestoList::on_mui_borrar_clicked", 0);
     m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
-    if (m_modo ==0 ) {
+    if (m_modo == 0) {
         PresupuestoView *prov = m_companyact->newBudget();
         if (prov->cargar(m_idpresupuesto))
             return;
         prov->borrar();
         delete prov;
-    }// end if
-    _depura("END PresupuestoList::on_mui_borrar_clicked",0);
+    } // end if
+    _depura("END PresupuestoList::on_mui_borrar_clicked", 0);
     presenta();
-}// end boton_borrar
-
-
-
+}
 
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
@@ -230,6 +226,5 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total impuestos"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total pedido"));
     setinsercion(FALSE);
-};
-
+}
 

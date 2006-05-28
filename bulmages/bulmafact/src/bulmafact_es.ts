@@ -2337,7 +2337,7 @@ Esta seguro que desea borrarlo?</source>
     <name>Familia</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
@@ -2432,28 +2432,28 @@ Esta seguro que desea borrarlo?</source>
     <name>Identificador</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
     <name>Inactivo</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
     <name>Incluir en control de stock</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
     <name>Incluir en presentaciones</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
@@ -2704,7 +2704,7 @@ Esta seguro que desea borrarlo?</source>
     <name>Nombre</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
@@ -2739,14 +2739,14 @@ Esta seguro que desea borrarlo?</source>
     <name>Observaciones</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
     <name>P.V.P. base</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
@@ -3241,7 +3241,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>ID articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ID artículo</translation>
     </message>
     <message>
         <source>Codigo completo articulo</source>
@@ -3249,7 +3249,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Nombre del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nombre del artículo</translation>
     </message>
     <message>
         <source>I.V.A.</source>
@@ -3261,7 +3261,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">¿Desea guardar los cambios?</translation>
     </message>
 </context>
 <context>
@@ -3426,7 +3426,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Codigo de almacen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Código de almacén</translation>
     </message>
     <message>
         <source>Numero de pedido</source>
@@ -3454,7 +3454,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Número de teléfono</translation>
     </message>
     <message>
         <source>Comentarios</source>
@@ -3470,7 +3470,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>ID almacen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">ID almacén</translation>
     </message>
     <message>
         <source>Total Base imponible</source>
@@ -3513,7 +3513,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">¿Desea guardar los cambios?</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
@@ -3775,7 +3775,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>C.I.F.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">C.I.F.</translation>
     </message>
     <message>
         <source>Codigo</source>
@@ -3791,7 +3791,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Direccion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dirección</translation>
     </message>
     <message>
         <source>Poblacion</source>
@@ -3799,19 +3799,19 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Codigo postal</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Código postal</translation>
     </message>
     <message>
         <source>Numero de telefono</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Número de teléfono</translation>
     </message>
     <message>
         <source>Numero de fax</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Número de fax</translation>
     </message>
     <message>
         <source>Direccion de correo electronico</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dirección de correo electrónica</translation>
     </message>
     <message>
         <source>Direccion de URL</source>
@@ -3830,7 +3830,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">¿Desea guardar los cambios?</translation>
     </message>
     <message>
         <source>Borrar proveedor</source>
@@ -3839,6 +3839,18 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <source>Esta a punto de borrar un proveedor. Estos datos pueden dar problemas.</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Si</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;No</source>
+        <translation type="unfinished">&amp;No</translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished">&amp;Cancelar</translation>
     </message>
 </context>
 <context>
@@ -3945,7 +3957,7 @@ v 0.5.9</source>
     <name>Stock</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
@@ -3979,14 +3991,14 @@ v 0.5.9</source>
     <name>Tipo de I.V.A.</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
     <name>Tipo de articulo</name>
     <message>
         <source>articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Artículo</translation>
     </message>
 </context>
 <context>
@@ -4105,12 +4117,8 @@ v 0.5.9</source>
         <translation>&amp;No</translation>
     </message>
     <message>
-        <source>Seleccione archivo</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Imagenes (*.jpg)</source>
-        <translation></translation>
+        <source>Buscar en:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4384,7 +4392,7 @@ QMenuBar and QToolBar.</translation>
     </message>
     <message>
         <source>BulmaFact - Facturacion GPL</source>
-        <translation></translation>
+        <translation type="unfinished">BulmaFact - Facturación GPL</translation>
     </message>
     <message>
         <source>E&amp;mpresa</source>
