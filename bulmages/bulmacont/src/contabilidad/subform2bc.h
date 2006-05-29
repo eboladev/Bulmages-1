@@ -21,11 +21,8 @@
 #ifndef SUBFORM2BC1_H
 #define SUBFORM2BC1_H
 
-//#include <Q3Table>
 #include <QEvent>
 
-#include "qtable2.h"
-#include "subform.h"
 #include "subform3.h"
 
 
