@@ -358,6 +358,7 @@ void presupuesto::imprimirPresupuesto() {
 
     /// En la version para windows hay problemas con las imagenes, por eso de momento lo dejamos asi.
 #ifndef WINDOWS
+
     buff.replace("[detallearticulos]", detalleArticulos());
 #endif
 
@@ -383,7 +384,7 @@ void presupuesto::calculaypintatotales() {
     SDBRecord *linea;
     /// Impresion de los contenidos.
     QString l;
-    for (int i =0; i < listalineas->rowCount(); ++i) {
+    for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
         Fixed cant(linea->DBvalue("cantlpresupuesto").ascii());
         Fixed pvpund(linea->DBvalue("pvplpresupuesto").ascii());
@@ -406,7 +407,7 @@ void presupuesto::calculaypintatotales() {
     Fixed porcentt("0.00");
     SDBRecord *linea1;
     if (listadescuentos->rowCount()) {
-        for (int i =0; i < listadescuentos->rowCount(); ++i) {
+        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
             linea1 = listadescuentos->lineaat(i);
             Fixed propor(linea1->DBvalue("proporciondpresupuesto").ascii());
             porcentt = porcentt + propor;
