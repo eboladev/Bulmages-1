@@ -188,8 +188,8 @@ CREATE TABLE adocumental (
     idadocumental serial PRIMARY KEY,
     idasiento integer REFERENCES asiento(idasiento),
     descripcionadocumental character varying(200),
-    fechaintadocumental timestamp with time zone,
-    fechaasadocumental timestamp with time zone,
+    fechaintadocumental date,
+    fechaasadocumental date,
     archivoadocumental character varying(300)
 );
 
@@ -200,7 +200,7 @@ CREATE TABLE apunte (
     codigoborrador integer,
     idasiento integer NOT NULL REFERENCES asiento(idasiento),
     iddiario integer REFERENCES diario(iddiario),
-    fecha timestamp with time zone,
+    fecha date,
     conceptocontable character varying(50),
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     descripcion character varying(100),
@@ -223,7 +223,7 @@ CREATE TABLE borrador (
     codigoborrador integer,
     idasiento integer NOT NULL REFERENCES asiento(idasiento),
     iddiario integer REFERENCES diario(iddiario),
-    fecha timestamp with time zone,
+    fecha date,
     conceptocontable character varying(50),
     idcuenta integer NOT NULL REFERENCES cuenta(idcuenta),
     descripcion character varying(100),
@@ -938,7 +938,7 @@ END;
 -- TOC entry 93 (OID 1346055)
 -- Name: saldompatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
-CREATE OR REPLACE FUNCTION saldompatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+CREATE OR REPLACE FUNCTION saldompatrimonial(integer, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
     identmpatrimonial ALIAS FOR $1;
@@ -1019,7 +1019,7 @@ END;
 -- Name: debempatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION debempatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+CREATE FUNCTION debempatrimonial(integer, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
     identmpatrimonial ALIAS FOR $1;
@@ -1056,7 +1056,7 @@ END;
 -- Name: habermpatrimonial(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION habermpatrimonial(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+CREATE FUNCTION habermpatrimonial(integer, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
     identmpatrimonial ALIAS FOR $1;
@@ -1093,7 +1093,7 @@ END;
 -- Name: saldototal(character varying, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION saldototal(character varying, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+CREATE FUNCTION saldototal(character varying, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
     codcuenta ALIAS FOR $1;
@@ -1127,7 +1127,7 @@ END;
 -- Name: debetotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION debetotal(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+CREATE FUNCTION debetotal(integer, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
     mcuenta ALIAS FOR $1;
@@ -1196,7 +1196,7 @@ END;
 -- Name: habertotal(integer, timestamp without time zone, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
-CREATE FUNCTION habertotal(integer, timestamp without time zone, timestamp without time zone) RETURNS numeric(12,2)
+CREATE FUNCTION habertotal(integer, date, date) RETURNS numeric(12,2)
     AS '
 DECLARE
     mcuenta ALIAS FOR $1;
