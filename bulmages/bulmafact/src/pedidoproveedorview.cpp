@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QWidget>
@@ -44,7 +43,7 @@ using namespace std;
 
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) , PedidoProveedor (comp),dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose) , PedidoProveedor (comp), dialogChanges(this) {
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform3->setcompany(comp);
@@ -57,7 +56,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
     setListDescuentoPedidoProveedor(m_descuentos);
     inicialize();
     dialogChanges_cargaInicial();
-    comp->meteWindow(caption(),this);
+    comp->meteWindow(caption(), this);
     _depura("Fin de la inicializacion de PedidoProveedor\n");
 }
 
@@ -86,11 +85,10 @@ void PedidoProveedorView::inicialize() {
 }
 
 
-
 int PedidoProveedorView::cargar(QString id) {
     PedidoProveedor::cargar(id);
     setCaption(tr("Pedido a proveedor  ") + DBvalue("refpedidoproveedor"));
-    if (companyact->meteWindow(caption(),this))
+    if (companyact->meteWindow(caption(), this))
         return -1;
     dialogChanges_cargaInicial();
     return 0;
@@ -109,17 +107,16 @@ int PedidoProveedorView::guardar() {
     setdescpedidoproveedor(m_descpedidoproveedor->text());
     setcontactpedidoproveedor(m_contactpedidoproveedor->text());
     settelpedidoproveedor(m_telpedidoproveedor->text());
-    setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked()?"TRUE":"FALSE");
+    setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked() ? "TRUE" : "FALSE");
     int error = PedidoProveedor::guardar();
     if (error == 0) {
-    dialogChanges_cargaInicial();
+        dialogChanges_cargaInicial();
     } //endif
     return error;
 }
 
 
-
-void   PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalpedidoproveedor->setText(total.toQString());
@@ -128,7 +125,7 @@ void   PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fix
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
-    PagoView *bud = new PagoView(companyact,NULL,theApp->translate("Edicion de pagos", "company"));
+    PagoView *bud = new PagoView(companyact,NULL, theApp->translate("Edicion de pagos", "company"));
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
@@ -138,36 +135,31 @@ void PedidoProveedorView::on_mui_pagar_clicked() {
 }
 
 
-
-
 /// Se encarga de generar un albaran a partir del pedido.
 void PedidoProveedorView::generarAlbaran() {
-
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funci�.
-    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("refpedidoproveedor")+"'";
+    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
+    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, theApp->translate("Edicion de Albaranes de Proveedores", "company"));
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));
         bud->show();
         return;
-    }// end if
+    } // end if
     delete cur;
 
-
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funci�.
-    if (QMessageBox::question(
-                this,
-                tr("Albaran de proveedor inexistente"),
-                tr("No existe un albaran asociado a este pedido.\n Desea crearlo?"),
-                tr("&Si"), tr("&No"),
-                QString::null, 0, 1 ) )
+    /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
+    /// Si no salimos de la funcion.
+    if (QMessageBox::question(this,
+                              tr("Albaran de proveedor inexistente"),
+                              tr("No existe un albaran asociado a este pedido.\n Desea crearlo?"),
+                              tr("&Si"), tr("&No"),
+                              QString::null, 0, 1))
         return;
 
-
     /// Creamos el pedido.
-    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact,NULL,theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, theApp->translate("Edicion de Albaranes de Proveedores", "company"));
     companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
 
@@ -181,39 +173,40 @@ void PedidoProveedorView::generarAlbaran() {
     QString l;
     SDBRecord *linea, *linea1;
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
-	linea = listalineas->lineaat(i);
-	linea1 = bud->getlistalineas()->newSDBRecord();
-	linea1->setDBvalue("desclalbaranp",linea->DBvalue(tr("Descripcion del albaran")));
-	linea1->setDBvalue("cantlalbaranp",linea->DBvalue(tr("Cantidad del pedido")));
-	linea1->setDBvalue("pvplalbaranp",linea->DBvalue(tr("P.V.P.")));
-	linea1->setDBvalue("descontlalbaranp",linea->DBvalue(tr("Descuento")));
-	linea1->setDBvalue("idarticulo",linea->DBvalue(tr("ID articulo")));
-	linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue(tr("Codigo completo articulo")));
-	linea1->setDBvalue("nomarticulo",linea->DBvalue(tr("Nombre del articulo")));
-	linea1->setDBvalue("ivalalbaranp",linea->DBvalue(tr("I.V.A.")));
+        linea = listalineas->lineaat(i);
+        linea1 = bud->getlistalineas()->newSDBRecord();
+        linea1->setDBvalue("desclalbaranp",linea->DBvalue(tr("Descripcion del albaran")));
+        linea1->setDBvalue("cantlalbaranp",linea->DBvalue(tr("Cantidad del pedido")));
+        linea1->setDBvalue("pvplalbaranp",linea->DBvalue(tr("P.V.P.")));
+        linea1->setDBvalue("descontlalbaranp",linea->DBvalue(tr("Descuento")));
+        linea1->setDBvalue("idarticulo",linea->DBvalue(tr("ID articulo")));
+        linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue(tr("Codigo completo articulo")));
+        linea1->setDBvalue("nomarticulo",linea->DBvalue(tr("Nombre del articulo")));
+        linea1->setDBvalue("ivalalbaranp",linea->DBvalue(tr("I.V.A.")));
         i++;
-    }// end for
+    } // end for
 
     for (int i=0; i < listadescuentos->rowCount()-1; i++) {
-//        Fixed propor(listadescuentos->DBvalue( "proporciondpedidoproveedor",i).ascii());
-	linea1 = bud->getlistadescuentos()->newSDBRecord();
-	linea1->setDBvalue("conceptdalbaranp",listadescuentos->DBvalue("conceptdpedidoproveedor",i));
-	linea1->setDBvalue("proporciondalbaranp",listadescuentos->DBvalue("proporciondpedidoproveedor",i));
-    }// end for
+        //Fixed propor(listadescuentos->DBvalue( "proporciondpedidoproveedor",i).ascii());
+        linea1 = bud->getlistadescuentos()->newSDBRecord();
+        linea1->setDBvalue("conceptdalbaranp", listadescuentos->DBvalue("conceptdpedidoproveedor", i));
+        linea1->setDBvalue("proporciondalbaranp", listadescuentos->DBvalue("proporciondpedidoproveedor", i));
+    } // end for
     bud->show();
 }
 
 
-
-void PedidoProveedorView::closeEvent( QCloseEvent *e) {
-    _depura("closeEvent",0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this, tr("Guardar pedido a proveedor"),
-						tr("Desea guardar los cambios?"),
-						tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+void PedidoProveedorView::closeEvent(QCloseEvent *e) {
+    _depura("closeEvent", 0);
+    if (dialogChanges_hayCambios()) {
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar pedido a proveedor"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
             guardar();
         if (val == 2)
             e->ignore();
-    }// end if
+    } // end if
 }
+

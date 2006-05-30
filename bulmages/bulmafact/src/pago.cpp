@@ -18,24 +18,27 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QFile>
+#include <QTextStream>
+
 #include "pago.h"
 #include "company.h"
 #include "configuracion.h"
-#include <QFile>
-#include <QTextStream>
+
 
 Pago::Pago(company *comp) : DBRecord(comp) {
     companyact=comp;
     setDBTableName("pago");
     setDBCampoId("idpago");
-    addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id pago", "pago"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id proveedot", "pago"));
+    addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Previcion de pago", "pago"));
+    addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de pago", "pago"));
+    addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia de pago", "pago"));
+    addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cantidad", "pago"));
+    addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario del pago", "pago"));
 }
+
 
 Pago::~Pago() {}
 
@@ -43,21 +46,22 @@ Pago::~Pago() {}
 void Pago::borraPago() {
     if (DBvalue("idpago") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago="+DBvalue("idpago"));
-	if (error) {
-		companyact->rollback();
-		return;
-	}// en dif
+        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago=" + DBvalue("idpago"));
+        if (error) {
+            companyact->rollback();
+            return;
+        } // end if
         companyact->commit();
         vaciar();
         pintar();
-    }// end if
+    } // end if
 }
 
 
 void Pago::vaciar() {
     DBclear();
 }
+
 
 void Pago::pintar() {
     pintaidpago(DBvalue("idpago"));
@@ -70,16 +74,16 @@ void Pago::pintar() {
 }
 
 
-// Esta funcion carga un Pago.
+/// Esta funcion carga un pago.
 int Pago::cargar(QString idpago) {
-    QString query = "SELECT * FROM pago WHERE idPago="+idpago;
-    cursor2 * cur= companyact->cargacursor(query);
+    QString query = "SELECT * FROM pago WHERE idPago=" + idpago;
+    cursor2 * cur = companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
-    }// end if
+    } // end if
     delete cur;
     pintar();
-	return 0;
+    return 0;
 }
 
 
@@ -87,12 +91,11 @@ void Pago::guardaPago() {
     QString id;
     companyact->begin();
     int error = DBsave(id);
-    if (error ) {
+    if (error) {
         companyact->rollback();
         return;
-    }// end if
+    } // end if
     setidpago(id);
     companyact->commit();
 }
-
 

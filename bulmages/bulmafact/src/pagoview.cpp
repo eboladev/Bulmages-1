@@ -18,14 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "pagoview.h"
-
-#include "company.h"
-#include "configuracion.h"
-#include "busquedaproveedor.h"
-#include "busquedafecha.h"
 #include <QMessageBox>
-
 #include <Q3Table>
 #include <QWidget>
 #include <QObject>
@@ -36,10 +29,15 @@
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
-
 #include <QCloseEvent>
 
+#include "pagoview.h"
+#include "company.h"
+#include "configuracion.h"
+#include "busquedaproveedor.h"
+#include "busquedafecha.h"
 #include <fstream>
+
 using namespace std;
 
 #include "funcaux.h"
@@ -64,12 +62,14 @@ using namespace std;
 
 #define coma "'"
 
-PagoView::PagoView( company *comp , QWidget *parent, const char *name) : QDialog (parent, name, Qt::WDestructiveClose) , Pago(comp) ,dialogChanges(this) {
-	setupUi(this);
+
+PagoView::PagoView( company *comp , QWidget *parent, const char *name)
+        : QDialog (parent, name, Qt::WDestructiveClose), Pago(comp), dialogChanges(this) {
+    setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_proveedor->setcompany(comp);
     dialogChanges_cargaInicial();
-    _depura("Fin de la inicializacion de PagoView\n",0);
+    _depura("Fin de la inicializacion de PagoView\n", 0);
 }
 
 
@@ -78,23 +78,28 @@ PagoView::~PagoView() {
 }
 
 
-
 void PagoView::on_mui_borrar_clicked() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
-    if (QMessageBox::warning( this, tr("BulmaFact - Presupuestos"), tr("Desea borrar este presupuesto?"), tr("&Si"), tr("&No")) == 0) {
+    fprintf(stderr, "Iniciamos el boton_borrar\n");
+    if (QMessageBox::warning(this,
+                             tr("BulmaFact - Presupuestos"),
+                             tr("Desea borrar este presupuesto?"),
+                             tr("&Si"), tr("&No")) == 0) {
         borraPago();
-    }// end if
+    } // end if
 }
 
 
-void PagoView::closeEvent( QCloseEvent *e) {
-	_depura("closeEvent",0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, tr("Guardar pago"),
-                                   tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
-	if (val == 0) 
+void PagoView::closeEvent(QCloseEvent *e) {
+    _depura("closeEvent", 0);
+    if (dialogChanges_hayCambios()) {
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar pago"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        if (val == 0)
             guardaPago();
-	if (val == 2)
-	    e->ignore();
-    }// end if	
+        if (val == 2)
+            e->ignore();
+    } // end if
 }
+

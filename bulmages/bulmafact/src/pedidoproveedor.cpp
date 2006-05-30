@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QFile>
 #include <QTextStream>
 
@@ -27,26 +26,28 @@
 #include "fixed.h"
 #include "funcaux.h"
 
+
 typedef QMap<QString, Fixed> base;
 
 PedidoProveedor::PedidoProveedor(company *comp) : DBRecord(comp) {
-    companyact=comp;
+    companyact = comp;
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
-    addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("numpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("procesadopedidoproveedor", DBCampo::DBboolean, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id pedido proveedor", "pedidoproveedor"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id proveedor", "pedidoproveedor"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id almacen", "pedidoproveedor"));
+    addDBCampo("numpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero pedido proveedor", "pedidoproveedor"));
+    addDBCampo("fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha pedido proveedor", "pedidoproveedor"));
+    addDBCampo("comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario pedido", "pedidoproveedor"));
+    addDBCampo("procesadopedidoproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Pedido procesado", "pedidoproveedor"));
+    addDBCampo("descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descripcion pedido", "pedidoproveedor"));
+    addDBCampo("refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia pedido", "pedidoproveedor"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id forma de pago", "pedidoproveedor"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id trabajador", "pedidoproveedor"));
+    addDBCampo("contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Persona de contacto proveedor", "pedidoproveedor"));
+    addDBCampo("telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Telefono proveedor", "pedidoproveedor"));
 }
+
 
 PedidoProveedor::~PedidoProveedor() {}
 
@@ -56,15 +57,15 @@ int PedidoProveedor::borrar() {
         listalineas->borrar();
         listadescuentos->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor="+DBvalue("idpedidoproveedor"));
+        int error = companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor=" + DBvalue("idpedidoproveedor"));
         if (error) {
             companyact->rollback();
             return -1;
-        }// end if
+        } // end if
         companyact->commit();
         vaciaPedidoProveedor();
         pintar();
-    }// end if
+    } // end if
     return 0;
 }
 
@@ -75,7 +76,7 @@ void PedidoProveedor::vaciaPedidoProveedor() {
 
 
 void PedidoProveedor::pintar() {
-    _depura("PedidoProveedor::pintar",0);
+    _depura("PedidoProveedor::pintar", 0);
     pintaidproveedor(DBvalue("idproveedor"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaidpedidoproveedor(DBvalue("idpedidoproveedor"));
@@ -90,21 +91,21 @@ void PedidoProveedor::pintar() {
     pintatelpedidoproveedor(DBvalue("telpedidoproveedor"));
     pintaidtrabajador(DBvalue("idtrabajador"));
     /// Pinta el subformulario de detalle del PedidoProveedor.
-    //    listalineas->pintaListLinPedidoProveedor();
-    // Pinta el subformulario de descuentos del pedidoproveedor
+    // listalineas->pintaListLinPedidoProveedor();
+    /// Pinta el subformulario de descuentos del pedidoproveedor
     calculaypintatotales();
-    _depura("FIN PedidoProveedor::pintaPedidoProveedor()\n",0);
+    _depura("FIN PedidoProveedor::pintaPedidoProveedor()\n", 0);
 }
 
 
-// Esta funcion carga un PedidoProveedor.
+/// Esta funcion carga un PedidoProveedor.
 int PedidoProveedor::cargar(QString idbudget) {
-    _depura("PedidoProveedor::cargar",0);
-    QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor="+idbudget;
+    _depura("PedidoProveedor::cargar", 0);
+    QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor=" + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
-    }// end if
+    } // end if
     delete cur;
     listalineas->cargar(idbudget);
     listadescuentos->cargar(idbudget);
@@ -114,73 +115,68 @@ int PedidoProveedor::cargar(QString idbudget) {
 
 
 int PedidoProveedor::guardar() {
-    _depura("PedidoProveedor::guardar",0);
+    _depura("PedidoProveedor::guardar", 0);
     QString id;
     companyact->begin();
     int error = DBsave(id);
-    if (error ) {
+    if (error) {
         companyact->rollback();
         return -1;
-    }// end if
+    } // end if
     setidpedidoproveedor(id);
 
     error = listalineas->guardar();
-    if (error ) {
+    if (error) {
         companyact->rollback();
         return -1;
-    }// end if
-
-
+    } // end if
 
     error = listadescuentos->guardar();
-    if (error ) {
+    if (error) {
         companyact->rollback();
         return -1;
-    }// end if
+    } // end if
     companyact->commit();
     return 0;
 }
 
 
-
-
-
 void PedidoProveedor::imprimirPedidoProveedor() {
-	_depura("PedidoProveedor::imprimirPedidoProveedor",2);
-    /// Copiamos el archivo
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"pedidoproveedor.rml";
-    archivo = "cp "+archivo+" /tmp/pedidoproveedor.rml";
+    _depura("PedidoProveedor::imprimirPedidoProveedor", 2);
+    /// Copiamos el archivo.
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "pedidoproveedor.rml";
+    archivo = "cp " + archivo + " /tmp/pedidoproveedor.rml";
     system (archivo.ascii());
 
-    /// Copiamos el logo
-    archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
-    archivo = "cp "+archivo+" /tmp/logo.jpg";
+    /// Copiamos el logo.
+    archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    archivo = "cp " + archivo + " /tmp/logo.jpg";
     system (archivo.ascii());
 
     QFile file;
-    file.setName( "/tmp/pedidoproveedor.rml" );
-    file.open( QIODevice::ReadOnly );
+    file.setName("/tmp/pedidoproveedor.rml");
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Linea de totales del pedidoproveedor
 
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+DBvalue("idproveedor");
+    /// Linea de totales del pedidoproveedor
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor=" + DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        buff.replace("[dirproveedor]",cur->valor("dirproveedor"));
-        buff.replace("[poblproveedor]",cur->valor("poblproveedor"));
-        buff.replace("[telproveedor]",cur->valor("telproveedor"));
-        buff.replace("[nomproveedor]",cur->valor("nomproveedor"));
-        buff.replace("[cifproveedor]",cur->valor("cifproveedor"));
-    }// end if
+        buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
+        buff.replace("[poblproveedor]", cur->valor("poblproveedor"));
+        buff.replace("[telproveedor]", cur->valor("telproveedor"));
+        buff.replace("[nomproveedor]", cur->valor("nomproveedor"));
+        buff.replace("[cifproveedor]", cur->valor("cifproveedor"));
+    } // end if
 
-    buff.replace("[numpedidoproveedor]",DBvalue("numpedidoproveedor"));
-    buff.replace("[fechapedidoproveedor]",DBvalue("fechapedidoproveedor"));
-    buff.replace("[comentpedidoproveedor]",DBvalue("comentpedidoproveedor"));
-    buff.replace("[descpedidoproveedor]",DBvalue("descpedidoproveedor"));
-    buff.replace("[refpedidoproveedor]",DBvalue("refpedidoproveedor"));
+    buff.replace("[numpedidoproveedor]", DBvalue("numpedidoproveedor"));
+    buff.replace("[fechapedidoproveedor]", DBvalue("fechapedidoproveedor"));
+    buff.replace("[comentpedidoproveedor]", DBvalue("comentpedidoproveedor"));
+    buff.replace("[descpedidoproveedor]", DBvalue("descpedidoproveedor"));
+    buff.replace("[refpedidoproveedor]", DBvalue("refpedidoproveedor"));
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
@@ -191,119 +187,111 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     fitxersortidatxt += "</tr>";
 
     QString l;
-	_depura("vamos a recorrer el listado de lineas",2);
-    for (int i=0; i < listalineas->rowCount()-1; i++) {
+    _depura("vamos a recorrer el listado de lineas", 2);
+    for (int i = 0; i < listalineas->rowCount() - 1; i++) {
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>"+listalineas->DBvalue("desclpedidoproveedor",i)+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor",i).toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->DBvalue("pvplpedidoproveedor",i).toFloat())+"</td>";
-        fitxersortidatxt += "	<td>"+l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor",i).toFloat() * listalineas->DBvalue("pvplpedidoproveedor",i).toFloat())+"</td>";
+        fitxersortidatxt += "	<td>" + listalineas->DBvalue("desclpedidoproveedor", i) + "</td>";
+        fitxersortidatxt += "	<td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat()) + "</td>";
+        fitxersortidatxt += "	<td>" + l.sprintf("%2.2f",listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
+        fitxersortidatxt += "	<td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat() * listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
         fitxersortidatxt += "</tr>";
-    }// end for
-	_depura("Fin de vamos a recorrer el listado de lineas",2);
-
+    } // end for
+    _depura("Fin de vamos a recorrer el listado de lineas", 2);
 
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>"+listalineas->calculabase().toQString()+"</td>";
+    fitxersortidatxt += "	<td>" + listalineas->calculabase().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>"+listalineas->calculaiva().toQString()+"</td>";
+    fitxersortidatxt += "	<td>" + listalineas->calculaiva().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td></td>";
     fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>"+(listalineas->calculabase()+listalineas->calculaiva()).toQString()+"</td>";
+    fitxersortidatxt += "	<td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "</blockTable>";
 
     buff.replace("[story]",fitxersortidatxt);
 
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
+    if (file.open( QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
         stream << buff;
         file.close();
     }
-	_depura("Vamos a ejecutar el trml2pdf",2);
+    _depura("Vamos a ejecutar el trml2pdf", 2);
     system("trml2pdf.py /tmp/pedidoproveedor.rml > /tmp/pedidoproveedor.pdf");
     system("kpdf /tmp/pedidoproveedor.pdf");
 }
 
 
-
-
-
-
-
 void PedidoProveedor::calculaypintatotales() {
-    _depura("calculaypintatotales \n",0);
+    _depura("calculaypintatotales \n", 0);
     base basesimp;
 
-
-    /// Impresion de los contenidos
+    /// Impresion de los contenidos.
     QString l;
-    for (int i=0; i < listalineas->rowCount()-1; i++) {
-        Fixed cant(listalineas->DBvalue("cantlpedidoproveedor",i ));
-        Fixed pvpund(listalineas->DBvalue("pvplpedidoproveedor",i ));
-        Fixed desc1(listalineas->DBvalue("descuentolpedidoproveedor",i ));
+    for (int i = 0; i < listalineas->rowCount() - 1; i++) {
+        Fixed cant(listalineas->DBvalue("cantlpedidoproveedor", i));
+        Fixed pvpund(listalineas->DBvalue("pvplpedidoproveedor", i));
+        Fixed desc1(listalineas->DBvalue("descuentolpedidoproveedor", i));
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
-        basesimp[listalineas->DBvalue("ivalpedidoproveedor",i )] =  basesimp[listalineas->DBvalue("ivalpedidoproveedor",i )]+ base;
-    }// end for
+        basesimp[listalineas->DBvalue("ivalpedidoproveedor", i)] = basesimp[listalineas->DBvalue("ivalpedidoproveedor", i)] + base;
+    } // end for
 
-
-/*
-    for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-        Fixed cant(linea->cantlpedidoproveedor().ascii());
-        Fixed pvpund(linea->pvplpedidoproveedor().ascii());
-        Fixed desc1(linea->descuentolpedidoproveedor().ascii());
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        basesimp[linea->ivalpedidoproveedor()] =  basesimp[linea->ivalpedidoproveedor()]+ base;
-    }// end for
-*/
+    /*
+        for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
+            Fixed cant(linea->cantlpedidoproveedor().ascii());
+            Fixed pvpund(linea->pvplpedidoproveedor().ascii());
+            Fixed desc1(linea->descuentolpedidoproveedor().ascii());
+            Fixed cantpvp = cant * pvpund;
+            Fixed base = cantpvp - cantpvp * desc1 / 100;
+            basesimp[linea->ivalpedidoproveedor()] =  basesimp[linea->ivalpedidoproveedor()]+ base;
+        }// end for
+    */
 
     Fixed basei("0.00");
     base::Iterator it;
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         basei = basei + it.data();
-    }// end for
-    /// Impresion de los descuentos
+    } // end for
+    /// Impresion de los descuentos.
     Fixed porcentt("0.00");
 
-    for (int i=0; i < listadescuentos->rowCount()-1; i++) {
-        Fixed propor(listadescuentos->DBvalue("proporciondpedidoproveedor",i).ascii());
+    for (int i = 0; i < listadescuentos->rowCount() - 1; i++) {
+        Fixed propor(listadescuentos->DBvalue("proporciondpedidoproveedor", i).ascii());
         porcentt = porcentt + propor;
-    }// end for
-
+    } // end for
 
     Fixed totbaseimp("0.00");
     Fixed parbaseimp("0.00");
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
-        if (porcentt > Fixed("0.00") ) {
-            parbaseimp = it.data()-it.data()*porcentt / 100;
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        if (porcentt > Fixed("0.00")) {
+            parbaseimp = it.data() - it.data() * porcentt / 100;
         } else {
             parbaseimp = it.data();
-        }// end if
+        } // end if
         totbaseimp = totbaseimp + parbaseimp;
-    }// end for
+    } // end for
 
     Fixed totiva("0.00");
     Fixed pariva("0.00");
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it ) {
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         Fixed piva(it.key().ascii());
         if (porcentt > Fixed("0.00")) {
-            pariva = (it.data()-it.data()*porcentt/100)* piva/100;
+            pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
         } else {
-            pariva = it.data()* piva/100;
-        }// end if
+            pariva = it.data() * piva / 100;
+        } // end if
         totiva = totiva + pariva;
-    }// end for
-    pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei*porcentt/100);
+    } // end for
+    pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
 }
+
