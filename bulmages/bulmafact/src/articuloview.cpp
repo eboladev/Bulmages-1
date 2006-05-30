@@ -43,10 +43,8 @@
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), Articulo(comp) {
-
     _depura("ArticuloView::INIT_constructor()\n",0);
     m_companyact = comp;
-
     setupUi(this);
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
@@ -58,6 +56,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
     m_tipoarticulo->setcompany(comp);
     m_componentes->setcompany(comp);
     m_archivoimagen = "";
+    cargarcomboiva("0");
 
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
     if (m_companyact->meteWindow(tr("Edicion del articulo"), this))
@@ -220,7 +219,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 
 
 int ArticuloView::guardar() {
-    _depura("ArticuloView::INIT_s_grabarClicked()\n", 0);
+    _depura("ArticuloView::guardar()\n", 0);
     setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("controlstockarticulo", m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("idtipo_articulo", m_tipoarticulo->idtipo_articulo());
@@ -252,7 +251,7 @@ int ArticuloView::guardar() {
 
     dialogChanges_cargaInicial();
 
-    _depura("ArticuloView::END_s_grabarClicked()\n", 0);
+    _depura("ArticuloView::guardar()\n", 0);
     return 0;
 }
 
