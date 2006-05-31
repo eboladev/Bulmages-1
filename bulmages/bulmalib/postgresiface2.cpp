@@ -220,7 +220,9 @@ bool cursor2::esprimerregistro() {
 // -----------------------------------------------------------------
 
 /** Constructor de la clase, no hace nada de nada de nada */
-postgresiface2::postgresiface2() {}// end postgresiface2
+postgresiface2::postgresiface2() {
+    m_transaccion= FALSE;
+}
 
 /** Finaliza la conexi� con la base de datos */
 void postgresiface2::terminar() {
@@ -287,7 +289,6 @@ int postgresiface2::inicializa(QString nomdb) {
 int postgresiface2::formatofecha() {
     QString query="";
     PGresult   *res;
-    //    begin();
     query= "SET DATESTYLE TO SQL,European";
     res = PQexec(conn, query.toAscii().data());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
@@ -297,17 +298,14 @@ int postgresiface2::formatofecha() {
 
     /// Establecemos la codificación por defecto a UNICODE.
     /// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en SQL_ASCII QUE funciona bastante mejor.
-
     query = "SET client_encoding = 'UTF8'";
     res = PQexec(conn, query.toAscii().data());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura( "Cambio del formato de Codificación");
     }// end if
     PQclear(res);
-
-    //    commit();
     return(0);
-}// end formatofecha
+}
 
 
 /** Con esta sentencia se inicia una transacci� en la base de datos
@@ -316,38 +314,59 @@ int postgresiface2::formatofecha() {
   * \return Si todo ha funcionado bien devuelve un 0, en caso contrario devuelve un 1
   */
 int postgresiface2::begin() {
+    _depura("postgresiface2::begin",0);
+    if (m_transaccion) {
+        _depura("Ya estamos dentro de una transaccion",2);
+        return -1;
+    }// end if
     PGresult   *res;
     res = PQexec(conn, "BEGIN");
     _depura("-- BEGIN TRANSACTION --");
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)  {
         _depura( "BEGIN command failed");
         PQclear(res);
-        return (1);
+        return (-1);
     }// end if
     PQclear(res);
+    m_transaccion = TRUE;
+    _depura("END postgresiface2::begin",0);
     return(0);
-}// end begin
+}
 
 
 /** Con esta sentencia se termina un bloque de transacci� dando por buenos todos los resultados que
   * Se han almacenado dentro de �te. Y quedando almacenados en la base de datos de forma definitiva.
   */
 void postgresiface2::commit() {
+    _depura("postgresiface2::commit",0);
+    if (!m_transaccion) {
+        _depura("No estamos en ninguna transaccion",2);
+        return;
+    }// end if
     PGresult   *res;
     _depura("-- COMMIT TRANSACTION --");
     res = PQexec(conn, "COMMIT");
     PQclear(res);
-}// end commit
+    m_transaccion=FALSE;
+    _depura("postgresiface2::commit",0);
+}
 
 
 /** Con esta sentencia se termina un bloque de transacci� dando por malos los resultados de la operaci�
   * Y dejandose la base de datos en el mismo estado que cuando se inici�la transacci�.
   */
 void postgresiface2::rollback() {
+    _depura("postgresiface2::rollback",0);
+    if (!m_transaccion) {
+        _depura("No estamos en ninguna transaccion",2);
+        return;
+    }// end if
     PGresult   *res;
     res = PQexec(conn, "ROLLBACK");
     PQclear(res);
-}// end rollback
+    m_transaccion=FALSE;
+    _depura("END postgresiface2::rollback",0);
+}
 
 
 /** Se encarga de generar un objeto del tipo cursor2 y de iniciarlo con un query concreto

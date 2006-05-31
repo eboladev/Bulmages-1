@@ -15,70 +15,47 @@
  ***************************************************************************/
 
 #include "asientosview.h"
-//#include <qsqldatabase.h>
 #include "asiento1view.h"
-
-
-#define COL_IDASIENTO 5
-#define COL_FECHA 1
-#define COL_DEBE 2
-#define COL_HABER 3
-#define COL_CERRADO 4
-#define COL_ORDENASIENTO 0
-
 
 /** El constructor de la clase inicializa algunas estructuras y configura la visi�
   * de la pantalla.
   */
-asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : asientosdlg(parent,name,modal) {
-    companyact=emp;
-    tablaasientos->setNumCols(6);
-    tablaasientos->horizontalHeader()->setLabel( COL_IDASIENTO, tr( "Num." ) );
-    tablaasientos->horizontalHeader()->setLabel( COL_FECHA, tr( "Fecha" ) );
-    tablaasientos->horizontalHeader()->setLabel( COL_DEBE, tr( "Debe" ) );
-    tablaasientos->horizontalHeader()->setLabel( COL_HABER, tr( "Haber" ) );
-    tablaasientos->horizontalHeader()->setLabel( COL_CERRADO, tr( "Cerrado" ) );
-    tablaasientos->horizontalHeader()->setLabel( COL_ORDENASIENTO, tr( "Orden" ) );
-    tablaasientos->setColumnWidth(COL_IDASIENTO,75);
-    tablaasientos->setColumnWidth(COL_FECHA,100);
-    tablaasientos->setColumnWidth(COL_DEBE,75);
-    tablaasientos->setColumnWidth(COL_HABER,75);
-    tablaasientos->setColumnWidth(COL_CERRADO,75);
-    tablaasientos->setColumnWidth(COL_ORDENASIENTO,75);
-    tablaasientos->hideColumn(COL_IDASIENTO);
-    tablaasientos->setRowMovingEnabled( TRUE );
-    tablaasientos->setColumnMovingEnabled( TRUE );
-    tablaasientos->setSorting( TRUE );
-    tablaasientos->setSelectionMode( Q3Table::SingleRow );
+asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : QDialog(parent,name,modal) {
+    setupUi(this);
+    m_companyact=emp;
+    mui_list->setcompany(emp);
 
-}// end asientosview
+   mui_ejercicio->insertItem("--",0);
+   QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
+   cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+   while (! cur->eof()) {
+   	mui_ejercicio->insertItem(cur->valor("ano"));
+	cur->siguienteregistro();
+   }// end while
+   delete cur;
+}
 
 
-asientosview::~asientosview() {}// end ~asientosview
+asientosview::~asientosview() {}
 
-
-/** Se ha pulsado sobre la tabla de asientos, con lo que se carga en companyact->intapuntsempresa()
-  * el asiento seleccionado y se cierra la ventana.
-  */
-void asientosview::pulsado(int a, int , int ,const QPoint &) {
-    QString idasiento = tablaasientos->text(a,COL_IDASIENTO);
-    companyact->intapuntsempresa()->muestraasiento(idasiento);
-    companyact->intapuntsempresa()->show();
-    companyact->intapuntsempresa()->setFocus();
+void asientosview::on_mui_list_cellDoubleClicked(int, int) {
+    QString idasiento = mui_list->DBvalue("idasiento");
+    m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+    m_companyact->intapuntsempresa()->show();
+    m_companyact->intapuntsempresa()->setFocus();
     done(1);
-}// end pulsado
+}
+
 
 
 /** Inicializa la ventana, haciendo la consulta pertinente a la base de datos
   * y presentando los resultados en pantalla.
   */
 void asientosview::inicializa() {
-    /// Hacemos que tengan tanto introapuntes como asientosview el mismo filtro asi son compatibles uno con otro.
-    filt = companyact->intapuntsempresa()->filtro();
-    QString cantapunt = filt->cantidadapunte->text().ascii();
-    QString saldototal = filt->saldoasiento->text().ascii();
-    QString nombreasiento = filt->nombreasiento->text().ascii();
-    QString ejercicio = filt->ejercicio();
+    QString cantapunt = mui_cantidadapunte->text();
+    QString saldototal = mui_saldoasiento->text();
+    QString nombreasiento = mui_nombreasiento->text();
+    QString ejercicio = mui_ejercicio->currentText();
     QString query;
     QString cadwhere;
     QString textsaldototal = "";
@@ -112,40 +89,16 @@ void asientosview::inicializa() {
         else
             textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
     }// end if
+
     query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
-    cursor2 *cursoraux= companyact->cargacursor(query);
-    int numreg = cursoraux->numregistros();
-    tablaasientos->setNumRows(numreg);
-    int i =0;
-    while (!cursoraux->eof()) {
-        tablaasientos->setText(i,COL_ORDENASIENTO,cursoraux->valor("ordenasiento"));
-        tablaasientos->setText(i,COL_IDASIENTO,cursoraux->valor("idasiento"));
-        tablaasientos->setText(i,COL_FECHA,cursoraux->valor("fecha").mid(0,10));
-        tablaasientos->setText(i,COL_DEBE,cursoraux->valor("totaldebe"));
-        tablaasientos->setText(i,COL_HABER,cursoraux->valor("totalhaber"));
 
-        /// Para determinar si un asiento est�abierto o no hay que saber que el nmero de apuntes de un asiento abierto es cero.
-        if (cursoraux->valor("numap").toInt() > 0 ) {
-            tablaasientos->setText(i,COL_CERRADO,tr("Cerrado"));
-        } else {
-            tablaasientos->setText(i,COL_CERRADO,tr("Abierto"));
-        }// end if
-        i++;
-        cursoraux->siguienteregistro();
-    }// end while
+    cursor2 *cursoraux= m_companyact->cargacursor(query);
+    mui_list->cargar(cursoraux);
     delete cursoraux;
-}// end inicializa
+}
 
 
 
-/****************************************************************
- * Esta funcion se invoca al pulsar sobre el boton de filtrado
- * Sirve para filtrar los asientos introducidos
- * El objeto filt se crea con el constructor de intapuntsview.
- ****************************************************************/
-void asientosview::boton_filtrar() {
-    //   char *cadena;
-    filt->exec();
-    //   cadena = (char *) filt->cantidadapunte->text().ascii();
-    inicializa();
-}// end boton_filtrar
+
+
+

@@ -89,6 +89,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
     ListLTarifaView *l = new ListLTarifaView(art);
     l->setObjectName(QString::fromUtf8("ltarifas"));
     l->setcompany( art->companyact());
+    l->cargar("0");
     art->mui_tab->addTab(l, "Tarifas");
     _depura("END ArticuloView_ArticuloView",0);
     return 0;
@@ -106,8 +107,27 @@ int ArticuloView_cargar(ArticuloView *art) {
 
 int ArticuloView_guardar_post(ArticuloView *art) {
     _depura("ArticuloView_guardar_post",0);
+try {
     ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
 	l->setColumnValue( "idarticulo", art->DBvalue("idarticulo"));
     l->guardar();
     return 0;
+} catch (...) {
+	_depura("Hubo un al el guardar de las tarifas",2);
+	return 0;
 }
+}
+
+
+int ArticuloView_borrar(ArticuloView *art) {
+    _depura("ArticuloView_borrar",0);
+try {
+    ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
+    l->borrar();
+    return 0;
+} catch (...) {
+	_depura("Hubo un al el guardar de las tarifas",0);
+	throw -1;
+}
+}
+

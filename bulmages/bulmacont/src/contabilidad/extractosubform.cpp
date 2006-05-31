@@ -7,6 +7,7 @@
 
 ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
     setDBTableName("apunte");
+    setFileConfig( "ExtractoSubForm");
     setDBCampoId("idapunte");
     addSHeader("punteo", DBCampo::DBboolean, DBCampo::DBNotNull,SHeader::DBNone, tr("P"));
     addSHeader("idapunte", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cliente"));

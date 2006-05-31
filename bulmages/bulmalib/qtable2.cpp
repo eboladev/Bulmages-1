@@ -103,6 +103,21 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
                 return TRUE;
             }// end if
             break;
+        case Qt::Key_Left:
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {// La tecla hacia arriba
+		_depura("Qt::Key_Left",0);
+                emit ctrlIzquierda(row, col );
+                return TRUE;
+            }// end if
+            break;        
+	case Qt::Key_Right:
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {// La tecla hacia arriba
+		_depura("Qt::Key_Right",0);
+                emit ctrlDerecha(row, col );
+                return TRUE;
+            }// end if
+            break;
+
         }// end switch
     }// end if
     _depura("END QTableWidget2::eventFilter()\n",1);

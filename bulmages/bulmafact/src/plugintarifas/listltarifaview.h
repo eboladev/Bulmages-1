@@ -40,21 +40,14 @@ public slots:
 
         mdb_idarticulo=idarticulo;
 
-        QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa, (SELECT * FROM articulo WHERE idarticulo = "+mdb_idarticulo+") AS t2) AS t3 ";
-        SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=t3.idtarifa AND t1.idalmacen=t3.idalmacen ";
-
+        QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa) AS t2 LEFT JOIN (SELECT * FROM articulo WHERE idarticulo = "+mdb_idarticulo+") AS t3 ON 1=1 ";
+        SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo="+mdb_idarticulo+") as t1 ON t1.idtarifa=t2.idtarifa AND t1.idalmacen=t2.idalmacen ";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm2Bf::cargar(cur);
         delete cur;
         _depura("END ListLTarifaView::cargaListCompArticulo\n",0);
     };
-
-
-
 };
-
-
-
 
 class ListLTarifaView1 : public SubForm2Bf {
     Q_OBJECT

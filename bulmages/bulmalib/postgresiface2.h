@@ -116,6 +116,8 @@ private:
     int          nFields;	/// Indica el nmero de campos que tiene algo (no se que)
     PGconn       *conn;		/// Representa la conexi�.
     int          open; 		/// indica si el postgresiface esta abierto o no.
+    bool         m_transaccion; /// Indica si estamos dentro de una transaccion.
+
 private:
   /// Establece en la base de datos cual va a ser el formato de fecha a utilizar.
   int formatofecha();

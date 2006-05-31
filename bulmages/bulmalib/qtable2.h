@@ -64,6 +64,10 @@ public:
         m_colorden = t;
     };
 
+    void columnMoved(int column, int oldIndex, int newIndex) {
+        QTableWidget::columnMoved(column, oldIndex, newIndex);
+    };
+
 
     QTableWidget2(QWidget * parent = 0 );
     ~QTableWidget2() {
@@ -84,6 +88,8 @@ signals:
     void pressedSlash(int, int);
     void ctrlSubir(int, int);
     void ctrlBajar(int, int);
+    void ctrlDerecha(int, int);
+    void ctrlIzquierda(int, int);
 };
 
 #endif

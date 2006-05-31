@@ -40,7 +40,8 @@ FORMS += bulmacontbase.ui \
 	 extractobase.ui \
 	 extractoprintbase.ui \
 	 diarioprintbase.ui \
-	 asientobase.ui
+	 asientobase.ui \
+	 asientolistbase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
@@ -49,10 +50,9 @@ FORMS3 += uiselector.ui \
          balance1dlg.ui \
          balancedlg.ui \
          int_apunts3.ui \
-         asientodlg.ui \
          aplinteligentesdlg.ui \
          filtrarasientosdlg.ui \
-         asientosdlg.ui \
+         asientodlg.ui \
          regivaprintdlg.ui \
          compbalancedlg.ui \
          mpatrimonialdlg.ui \
@@ -228,7 +228,8 @@ HEADERS += splashscreen.h \
 	   listlinasiento1view.h \
 	   subform2bc.h \
 	   diariosubform.h \
-	   extractosubform.h
+	   extractosubform.h \
+	   asientolistsubform.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -285,7 +286,8 @@ SOURCES += main.cpp \
 	   listlinasiento1view.cpp \
 	   subform2bc.cpp \
 	   diariosubform.cpp \
-	   extractosubform.cpp	 
+	   extractosubform.cpp \
+	   asientolistsubform.cpp
 	 
 
 

@@ -48,6 +48,7 @@ public:
     void pintar();
     int cargar(QString);
     int guardar();
+    int borrar();
     int ArticuloView::cargarcomboiva(QString);
     void closeEvent( QCloseEvent *);
 
@@ -55,7 +56,6 @@ public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-    virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_m_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_clicked();

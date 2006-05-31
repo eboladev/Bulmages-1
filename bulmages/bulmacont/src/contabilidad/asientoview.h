@@ -2,7 +2,7 @@
                           asientoview.h  -  description
                              -------------------
     begin                : Thu Dec 19 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
+    copyright            : (C) 2002 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -29,7 +29,7 @@
 #include "empresa.h"
 #include "dialogchanges.h"
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrï¿½ Riera */
 
 class asientoview : public asientodlg , dialogChanges {
    Q_OBJECT

@@ -22,4 +22,4 @@ extern "C" MY_EXPORT int Cliente_pintaCliente(Cliente *);
 extern "C" MY_EXPORT int ArticuloView_ArticuloView(ArticuloView *);
 extern "C" MY_EXPORT int ArticuloView_cargar(ArticuloView *);
 extern "C" MY_EXPORT int ArticuloView_guardar_post(ArticuloView *);
-
+extern "C" MY_EXPORT int ArticuloView_borrar(ArticuloView *);

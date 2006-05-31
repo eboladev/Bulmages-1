@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #ifndef SUBFORM3_H
 #define SUBFORM3_H
 
@@ -39,6 +38,7 @@ protected:
     QList<SDBRecord *> m_lista;
     postgresiface2 *m_companyact;
     QString m_tablename;
+    QString m_fileconfig;
     QString m_campoid;
     bool m_insercion;
     bool m_primero;
@@ -122,7 +122,13 @@ public:
     };
     void setDBTableName(QString nom) {
         m_tablename=nom;
+	m_fileconfig=nom;
     };
+
+    void setFileConfig(QString nom) {
+	m_fileconfig=nom;
+    };
+
     void setDBCampoId(QString nom) {
         m_campoid = nom;
     };
@@ -153,7 +159,6 @@ public:
     virtual int cargar(cursor2 *cur);
     virtual void pintar();
 
-
 public slots:
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
@@ -163,7 +168,6 @@ public slots:
     virtual void on_mui_list_pressedPlus(int row, int col);
     virtual void on_mui_list_ctrlSubir(int row, int col);
     virtual void on_mui_list_ctrlBajar(int row, int col);
-
 signals:
     void editFinish(int, int);
 };

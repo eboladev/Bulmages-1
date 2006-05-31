@@ -35,6 +35,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_list->setSelectionBehavior( QAbstractItemView::SelectRows);
     mui_list->setAlternatingRowColors(TRUE);
     mui_list->setSortingEnabled(TRUE);
+    mui_list->horizontalHeader()->setMovable(TRUE);
 
     m_insercion = FALSE;
     m_primero = TRUE;
@@ -309,7 +310,7 @@ int SubForm3::guardar() {
         _depura("END SubForm3::guardar",0);
         return error;
     } catch(...) {
-        _depura("error inesperado en el guardado, se cancela la operacion",1);
+        _depura("error inesperado en el guardado, salimos devolviento -1",1);
         throw -1;
     }
 }
@@ -345,7 +346,7 @@ int SubForm3::borrar(int row) {
 void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig",0);
     QString aux = "";
-    QFile file( confpr->valor(CONF_DIR_USER)+m_tablename+"tablecfn.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+m_fileconfig+"tablecfn.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
         stream << mui_list->colorden() << "\n";
@@ -368,7 +369,7 @@ void SubForm3::guardaconfig() {
 
 void SubForm3::cargaconfig() {
     _depura("SubForm3::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+m_tablename+"tablecfn.cfn" );
+    QFile file( confpr->valor(CONF_DIR_USER)+m_fileconfig+"tablecfn.cfn" );
     QString line;
     if ( file.open( QIODevice::ReadOnly ) ) {
         QTextStream stream( &file );
@@ -484,4 +485,3 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     mui_list->setCurrentCell(row+1,col);
     _depura("END SubForm3::on_mui_list_ctrlBajar",0);
 }
-

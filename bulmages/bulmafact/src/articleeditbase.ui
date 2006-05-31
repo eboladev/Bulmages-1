@@ -70,34 +70,6 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="minimumSize" >
-           <size>
-            <width>1</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Crear </string>
-          </property>
-          <property name="whatsThis" >
-           <string>Crear</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QToolButton" name="mui_guardar" >
           <property name="toolTip" >
            <string>Guardar</string>
@@ -879,6 +851,20 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaTipoArticulo</class>
+   <extends></extends>
+   <header>busquedatipoarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFamilia</class>
    <extends></extends>
    <header>busquedafamilia.h</header>
@@ -893,23 +879,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>ListCompArticuloView</class>
    <extends></extends>
    <header>comparticulolistview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTipoArticulo</class>
-   <extends></extends>
-   <header>busquedatipoarticulo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
