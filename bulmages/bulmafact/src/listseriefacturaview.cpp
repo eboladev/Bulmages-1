@@ -31,7 +31,6 @@
 #include <QMessageBox>
 #include <fstream>
 
-
 #include "listseriefacturaview.h"
 #include "company.h"
 #include "configuracion.h"
@@ -40,32 +39,28 @@
 using namespace std;
 #include "funcaux.h"
 
-// DEBUGMODE => 0 = Disabled; 1 = Enabled;
-#define DEBUGMODE 1
 
-
-ListSerieFacturaView::ListSerieFacturaView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) {
-	_depura("INIT_ListSerieFacturaView::ListSerieFacturaView", DEBUGMODE);
-	setupUi(this);
-	companyact = comp;
-	mui_listado->setcompany(comp);
-	mui_listado->cargar();
-	_depura("END_ListSerieFacturaView::ListSerieFacturaView", DEBUGMODE);
+ListSerieFacturaView::ListSerieFacturaView( company *comp , QWidget *parent, const char *name)
+        : QDialog(parent, name, Qt::WDestructiveClose) {
+    _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
+    setupUi(this);
+    companyact = comp;
+    mui_listado->setcompany(comp);
+    mui_listado->cargar();
+    _depura("END_ListSerieFacturaView::ListSerieFacturaView", 1);
 }
 
 
-ListSerieFacturaView::~ListSerieFacturaView() {
-}
-
-
+ListSerieFacturaView::~ListSerieFacturaView() {}
 
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("serie_factura");
     setDBCampoId("codigoserie_factura");
-    addSHeader("codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "codigoserie_factura");
-    addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "codigoserie_factura");
-    addSHeader("descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "descserie_factura");
-	setinsercion(TRUE);
+    addSHeader("codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("Codigo serie factura ig"));
+    addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo serie factura"));
+    addSHeader("descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion serie factura"));
+    setinsercion(TRUE);
 }
+

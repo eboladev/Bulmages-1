@@ -1,14 +1,22 @@
-//
-// C++ Implementation: ListLinPedidoClienteView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include <QMessageBox>
 #include <Q3PopupMenu>
@@ -24,79 +32,74 @@
 ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("lpedidocliente");
     setDBCampoId("numlpedidocliente");
-    addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, "puntlpedidocliente");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idarticulo");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "codigocompletoarticulo");
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "nomarticulo");
-    addSHeader("numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "numlpedidocliente");
-    addSHeader("desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "desclpedidocliente");
-    addSHeader("cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "cantlpedidocliente");
-    addSHeader("pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "pvplpedidocliente");
-    addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "ivalpedidocliente");
-    addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, "descuentolpedidocliente");
-    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idpedidocliente");
-
+    addSHeader("puntlpedidocliente", DBCampo::DBboolean, DBCampo::DBNotNull, SHeader::DBNone, tr("Puntl pedido cliente"));
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
+    addSHeader("numlpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Numl pedido cliente"));
+    addSHeader("desclpedidocliente", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descl pedido cliente"));
+    addSHeader("cantlpedidocliente", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantl pedido cliente"));
+    addSHeader("pvplpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl pedido cliente"));
+    addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido cliente"));
+    addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido cliente"));
+    addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido cliente"));
     setinsercion(TRUE);
-};
-
-
+}
 
 
 void ListLinPedidoClienteView::on_mui_list_editFinished(int row, int col) {
-    _depura("ListLinPedidoClienteView::editFinished",0);
+    _depura("ListLinPedidoClienteView::editFinished", 0);
     SubForm3::on_mui_list_editFinished(row, col);
     SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
+    SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
         if (!cur->eof() ) {
-            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
+            rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
             rec->setDBvalue("desclpedidocliente", cur->valor("nomarticulo"));
             rec->setDBvalue("cantlpedidocliente", "1.00");
-	    rec->setDBvalue("descuentolpedidocliente","0.00");
-	    rec->setDBvalue("pvplpedidocliente",cur->valor("pvparticulo"));
-		
-        }// end if
+            rec->setDBvalue("descuentolpedidocliente","0.00");
+            rec->setDBvalue("pvplpedidocliente", cur->valor("pvparticulo"));
+        } // end if
 
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
-	    rec->setDBvalue("ivalpedidocliente",cur1->valor("porcentasa_iva"));		
-        }// end if
-	delete cur1;
-	delete cur;
-
-    }// end if
-};
-
+            rec->setDBvalue("ivalpedidocliente", cur1->valor("porcentasa_iva"));
+        } // end if
+        delete cur1;
+        delete cur;
+    } // end if
+}
 
 
 void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
-        _depura("ListLinPedidoClienteView::cargar\n",0);
-        mdb_idpedidocliente = idpedidocliente;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente="+mdb_idpedidocliente);
-        SubForm3::cargar(cur);
-        delete cur;
+    _depura("ListLinPedidoClienteView::cargar\n", 0);
+    mdb_idpedidocliente = idpedidocliente;
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente);
+    SubForm3::cargar(cur);
+    delete cur;
 }
 
+
 Fixed ListLinPedidoClienteView::calculabase() {
-	Fixed base("0.0");
-        for (int i=0; i < rowCount()-1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpedidocliente",i)) * Fixed(DBvalue("cantlpedidocliente",i));
-		base = base + totpar;
-        }// end for
-	return base;
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvplpedidocliente", i)) * Fixed(DBvalue("cantlpedidocliente", i));
+        base = base + totpar;
+    } // end for
+    return base;
 }
 
 
 Fixed ListLinPedidoClienteView::calculaiva() {
-	Fixed base("0.0");
-        for (int i=0; i < rowCount()-1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpedidocliente",i)) * Fixed(DBvalue("ivalpedidocliente",i));
-		base = base + totpar;
-        }// end for
-	return base;
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvplpedidocliente", i)) * Fixed(DBvalue("ivalpedidocliente", i));
+        base = base + totpar;
+    } // end for
+    return base;
 }
 

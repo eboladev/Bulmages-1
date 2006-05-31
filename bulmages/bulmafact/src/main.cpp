@@ -37,10 +37,10 @@
 #define CONFGLOBAL "/etc/bulmages_"
 #endif
 
+
 QApplication *theApp;
 bulmafact *bges;
 QTranslator *traductor;
-
 
 int main(int argc, char ** argv) {
     /// Leemos la configuracion que luego podremos usar siempre.
@@ -58,22 +58,22 @@ int main(int argc, char ** argv) {
     /// Cargamos el sistema de traducciones.
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load( QString("bulmalib_") + QTextCodec::locale(),
-                         confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+        traductor->load(QString("bulmalib_") + QTextCodec::locale(),
+                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
     } else {
         QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
         traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
-    }// end if
+    } // end if
     theApp->installTranslator(traductor);
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load( QString("bulmafact_") + QTextCodec::locale(),
+        traductor->load(QString("bulmafact_") + QTextCodec::locale(),
                          confpr->valor(CONF_DIR_TRADUCCION).ascii());
     } else {
         QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
         traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
-    }// end if
+    } // end if
     theApp->installTranslator(traductor);
 
     /// Cargamos el splashScreen.
@@ -104,7 +104,7 @@ int main(int argc, char ** argv) {
         }
         delete login1;
         bges = new bulmafact("");
-    }// end if
+    } // end if
 
     /// Leemos la configuracion especifica de la base de datos que se ha abierto.
     QString confesp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
