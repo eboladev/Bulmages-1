@@ -45,6 +45,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
     mui_list->setcompany(comp);
+m_usadoarticulo->setCheckState(Qt::Unchecked);
     presenta();
     m_modo=editmodo;
     if (m_modo == EditMode)
