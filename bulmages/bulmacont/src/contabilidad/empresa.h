@@ -20,7 +20,7 @@
 #include <qmessagebox.h>
 #include <q3filedialog.h>
 #include <qstring.h>
-#include <qworkspace.h>
+#include <QWorkspace>
 #include <qwidget.h>
 #include <qsizepolicy.h>
 
@@ -38,6 +38,7 @@ class balance1view;
 class Asiento1View;
 class DiarioView;
 class balanceview;
+class asientosview;
 
 /**
  * @author Tomeu Borras Riera
@@ -62,6 +63,7 @@ private:
     extractoview1 *extracto;
     balanceview *balance;
     Asiento1View *introapunts2;
+    asientosview *m_listasientos;
     unsigned int numdigitos;  // El numero de digitos que tienen las cuentas.
 
     // Hay unos selectores generales, que van a ser estos y que indican con que se trabaja, luego

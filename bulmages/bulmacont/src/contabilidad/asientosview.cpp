@@ -16,34 +16,39 @@
 
 #include "asientosview.h"
 #include "asiento1view.h"
+#include "empresa.h"
+
 
 /** El constructor de la clase inicializa algunas estructuras y configura la visi�
   * de la pantalla.
   */
-asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : QDialog(parent,name,modal) {
+asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : QWidget(parent) {
+    _depura("asientosview::asientosview",0);
     setupUi(this);
     m_companyact=emp;
     mui_list->setcompany(emp);
-
-   mui_ejercicio->insertItem("--",0);
-   QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
-   cursor2 *cur = m_companyact->cargacursor(SQLQuery);
-   while (! cur->eof()) {
-   	mui_ejercicio->insertItem(cur->valor("ano"));
-	cur->siguienteregistro();
-   }// end while
-   delete cur;
+    mui_ejercicio->insertItem("--",0);
+    QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    while (! cur->eof()) {
+        mui_ejercicio->insertItem(cur->valor("ano"));
+        cur->siguienteregistro();
+    }// end while
+    delete cur;
+    _depura("END asientosview::asientosview",0);
 }
 
 
 asientosview::~asientosview() {}
 
 void asientosview::on_mui_list_cellDoubleClicked(int, int) {
+    _depura("asientosview::on_mui_list_cellDoubleClicked",0);
     QString idasiento = mui_list->DBvalue("idasiento");
     m_companyact->intapuntsempresa()->muestraasiento(idasiento);
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
-    done(1);
+    m_companyact->muestraapuntes1();
+    _depura("END asientosview::on_mui_list_cellDoubleClicked",0);
 }
 
 
@@ -52,6 +57,7 @@ void asientosview::on_mui_list_cellDoubleClicked(int, int) {
   * y presentando los resultados en pantalla.
   */
 void asientosview::inicializa() {
+    _depura("asientosview::inicializa",0);
     QString cantapunt = mui_cantidadapunte->text();
     QString saldototal = mui_saldoasiento->text();
     QString nombreasiento = mui_nombreasiento->text();
@@ -90,11 +96,12 @@ void asientosview::inicializa() {
             textejercicio = " WHERE EXTRACT(YEAR FROM fecha)='"+ ejercicio +"'";
     }// end if
 
-    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
+    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr, comentariosasiento, clase   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento   "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
 
     cursor2 *cursoraux= m_companyact->cargacursor(query);
     mui_list->cargar(cursoraux);
     delete cursoraux;
+    _depura("END asientosview::inicializa",0);
 }
 
 

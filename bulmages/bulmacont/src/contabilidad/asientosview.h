@@ -18,23 +18,18 @@
 #ifndef ASIENTOSVIEW_H
 #define ASIENTOSVIEW_H
 
-#include <qwidget.h>
+#include <QWidget>
 
-#include <q3table.h>
 #include "postgresiface2.h"
-#include "filtrarasientosview.h"
-#include "empresa.h"
-
+#include "ui_asientolistbase.h"
 
 /** @author Tomeu Borr� Riera
   * \brief Muestra un listado de todos los asientos existentes e informa de si estan abiertos o cerrados.
 */
 
+class empresa;
 
-#include "ui_asientolistbase.h"
-
-
-class asientosview : public QDialog, public Ui_AsientoListBase  {
+class asientosview : public QWidget, public Ui_AsientoListBase  {
     Q_OBJECT
 public:
     empresa *m_companyact;

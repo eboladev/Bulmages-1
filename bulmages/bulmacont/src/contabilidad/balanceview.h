@@ -17,7 +17,7 @@
 #ifndef BALANCEVIEW_H
 #define BALANCEVIEW_H
 
-#include "balancedlg.h"
+#include "ui_balancebase.h"
 #include "diarioview.h"
 #include "extractoview1.h"
 #include "qtable1.h"
@@ -39,7 +39,7 @@ class empresa;
  ventana diseñada específicamente para ello.
  */
 
-class balanceview : public balancedlg  {
+class balanceview : public QWidget, public Ui_BalanceBase  {
   Q_OBJECT
 private:
 /// Empresa con la que se ha inicializado la clase
@@ -56,15 +56,11 @@ public:
   ~balanceview();
   void cargacostes();
 private:
-  void boton_extracto1(int);
-  void boton_asiento();
-  void boton_diario1(int);
   void presentar();
 public slots:
   virtual void accept();
   virtual void boton_imprimir();
 private slots:
-  virtual void contextmenu(int , int , const QPoint &);
   virtual void nivelactivated(int);
 };
 #endif

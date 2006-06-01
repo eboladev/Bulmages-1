@@ -42,29 +42,33 @@
 
 Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QString DB)
         : QMainWindow(parent,name,f) {
-	_depura("Bulmages01::Bulmages01",0);
-	setupUi(this);
+    _depura("Bulmages01::Bulmages01",0);
+    setupUi(this);
 
-	m_empresaactual = new empresa();
-	m_empresaactual->init(DB);
+    m_empresaactual = new empresa();
+    m_empresaactual->init(DB);
+
+    m_pWorkspace = new QWorkspace(this, "WorkSpace");
+    m_pWorkspace->setScrollBarsEnabled(TRUE);
+    setCentralWidget(m_pWorkspace);
+    m_empresaactual->setWorkspace(m_pWorkspace);
+
+    m_empresaactual->inicializa1();
+    showMaximized();
 
     setCaption(tr("BulmaCont -- ") + DBName +" --");
-    initView();
-    initActions();
-    initMenuBar();
-    initToolBar();
     initStatusBar();
-    showView();
 
     ctllog->setempresa(m_empresaactual);
-    ctllog->add(LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
+    ctllog->add
+    (LOG_SEG | LOG_TRA, 1,"BmgCtt001" , "El usuario ha entrado en bulmacont");
 
-	_depura("END Bulmages01::Bulmages01",0);
+    _depura("END Bulmages01::Bulmages01",0);
 }
 
 
 Bulmages01::~Bulmages01() {
-	_depura("~Bulmages01",0);
+    _depura("~Bulmages01",0);
     //En el constructor asignamos un puntero a empresa { ctllog->setempresa(&empresaactual); }
     //Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
     //es necesario eliminar la referencia a este objeto, por ejemplo aquí
@@ -75,44 +79,10 @@ Bulmages01::~Bulmages01() {
 }
 
 
-void Bulmages01::initActions() {
-}
-
-
-void Bulmages01::initMenuBar() {
-/*
-    Ayuda->insertItem(tr("Que es ??"), this, SLOT(whatsThis()), Qt::SHIFT+Qt::Key_F1);
-*/
-}
-
-
-// TOOLBAR
-void Bulmages01::initToolBar() {
-/*
-    Q3WhatsThis::whatsThisButton(fileToolbar);
-*/
-}
-
-
 void Bulmages01::initStatusBar() {
     statusBar()->message(tr("Listo."));
 }
 
-
-void Bulmages01::initView() {
-    m_view_back = new Q3VBox( this);
-    m_view_back->setFrameStyle( Q3Frame::StyledPanel | Q3Frame::Sunken );
-    m_pWorkspace = new QWorkspace( m_view_back );
-    setCentralWidget(m_view_back);
-}
-
-
-void Bulmages01::showView() {
-	m_empresaactual->setWorkspace(m_pWorkspace);
-	m_empresaactual->inicializa1();
-    showMaximized();
-    m_empresaactual->maximiza();
-}
 
 
 bool Bulmages01::eventFilter(QObject* object, QEvent* event)  {
@@ -153,23 +123,23 @@ void Bulmages01::slotEditPaste()  {
 
 
 void Bulmages01::slotViewToolBar(bool toggle)  {
-/*
-    statusBar()->message(tr("Toggle toolbar..."));
-    if (toggle== false) {
-        fileToolbar->hide();
-        empresaToolbar->hide();
-        ventToolbar->hide();
-        navegacionToolbar->hide();
-        gestionToolbar->hide();
-    } else {
-        fileToolbar->show();
-        empresaToolbar->show();
-        ventToolbar->show();
-        navegacionToolbar->show();
-        gestionToolbar->show();
-    }// end if
-    statusBar()->message(tr("Listo."));
-*/
+    /*
+        statusBar()->message(tr("Toggle toolbar..."));
+        if (toggle== false) {
+            fileToolbar->hide();
+            empresaToolbar->hide();
+            ventToolbar->hide();
+            navegacionToolbar->hide();
+            gestionToolbar->hide();
+        } else {
+            fileToolbar->show();
+            empresaToolbar->show();
+            ventToolbar->show();
+            navegacionToolbar->show();
+            gestionToolbar->show();
+        }// end if
+        statusBar()->message(tr("Listo."));
+    */
 }
 
 
@@ -243,9 +213,6 @@ void Bulmages01::windowMenuAboutToShow()  {}
 
 void Bulmages01::slotWindowNewWindow() {}
 
-
-
-
 void Bulmages01::slotTiposIVA() {
     m_empresaactual->tiposIVA();
 }
@@ -257,13 +224,14 @@ void Bulmages01::slotFPago() {
 
 
 void Bulmages01::closeEvent( QCloseEvent *) {
-	_depura("closeEvent",0);
+    _depura("closeEvent",0);
     delete m_empresaactual;
 #ifdef WINDOWS
+
     exit(0);
 #endif
+
     delete m_pWorkspace;
-    delete m_view_back;
 }
 
 

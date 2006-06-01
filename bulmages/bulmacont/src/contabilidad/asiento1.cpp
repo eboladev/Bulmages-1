@@ -26,9 +26,9 @@ Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
     addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Asiento");
     addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, "Descripcion Asiento");
     addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, "Fecha Asiento");
-    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, "Comentarios Asiento");
+    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios Asiento");
     addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, "Orden Asiento");
-    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNoSave, "Tipo Asiento");
+    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNothing, "Tipo Asiento");
     listalineas = NULL;
 }
 
@@ -80,9 +80,6 @@ void Asiento1::pintaAsiento1() {
     pintacomentariosasiento(DBvalue("comentariosasiento"));
     pintaordenasiento(DBvalue("ordenasiento"));
     pintaclase(DBvalue("clase"));
-    /// Pinta el subformulario de detalle del AlbaranCliente.
-    //    listalineas->pintaListLinAsiento1();
-    // La carga ya pinta
     /// Pintamos los totales
     calculaypintatotales();
     trataestadoAsiento1();

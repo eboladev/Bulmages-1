@@ -116,10 +116,22 @@ private:
     void pintafecha(QString val) {
         m_fecha->setText(val);
     };
+
     void pintaordenasiento(QString val) {
         m_ordenasiento->setText(val);
     };
+
+    void pintaclase(QString val) {
+	mui_claseAsiento->setCurrentIndex(val.toInt());
+    };
+
+    void pintacomentariosasiento(QString text) {
+	mui_comentariosAsiento->setText(text);
+    };
+
+
     virtual void calculaypintatotales();
+    void prepguardar();
 
 public:
     void pintaasiento(QString v) {
@@ -161,9 +173,10 @@ public slots:
         abreAsiento1();
     };
     virtual void on_mui_cerrarasiento_clicked() {
+	prepguardar();
         cierraAsiento1();
     };
-    virtual void on_mui_guardarasiento_clicked() { guardar();};
+    virtual void on_mui_guardarasiento_clicked() { prepguardar();guardar();};
     virtual void on_mui_nuevoasiento_clicked() {boton_nuevoasiento();};
 
 
@@ -185,7 +198,6 @@ public slots:
         }// end if
     };
     virtual void boton_duplicarasiento();
-    virtual void editarasiento();
     virtual void boton_inteligente();
     /** \brief SLOT que responde a la pulsación del botón de iva.
       * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.

@@ -3,17 +3,17 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>AsientoListBase</class>
- <widget class="QDialog" name="AsientoListBase" >
+ <widget class="QWidget" name="AsientoListBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>622</width>
-    <height>517</height>
+    <width>673</width>
+    <height>667</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Asientos</string>
+   <string>Form</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_asiento.xpm</iconset>
@@ -321,7 +321,6 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
@@ -350,12 +349,12 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>102</x>
-     <y>31</y>
+     <x>113</x>
+     <y>41</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>129</x>
-     <y>101</y>
+     <x>155</x>
+     <y>88</y>
     </hint>
    </hints>
   </connection>

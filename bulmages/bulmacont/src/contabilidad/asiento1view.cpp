@@ -28,7 +28,6 @@
 #include <qlabel.h>
 #include "asiento1view.h"
 #include "busquedafecha.h"
-#include "asientoview.h"
 #include "duplicarasientoview.h"
 #include "aplinteligentesview.h"
 #include "listlinasiento1view.h"
@@ -126,10 +125,9 @@ void Asiento1View::boton_nuevoasiento() {
  * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
  */
 void Asiento1View::iniciar_asiento_nuevo() {
-    asientoview *nuevoasiento = new asientoview(m_companyact);
-    nuevoasiento->inicializa(m_companyact);
-    int idasiento = nuevoasiento->creaasiento( m_fecha->text(), m_fecha->text(),0,1);
-    delete nuevoasiento;
+
+   int idasiento = m_companyact->nuevoasiento(m_fecha->text(), m_fecha->text(),0,1);
+
     if (idasiento <= 0) {
         _depura("No se pudo crear el asiento",2);
         return;
@@ -138,6 +136,7 @@ void Asiento1View::iniciar_asiento_nuevo() {
     muestraasiento(idasiento);
     abreAsiento1();
     mui_list->cargar(QString::number(idasiento));
+
 }
 
 void Asiento1View::eturn_fechaasiento() {
@@ -166,20 +165,7 @@ void Asiento1View::boton_duplicarasiento() {
     delete dupli;
 }
 
-/**
-  * Esta se encarga de la edicion de asientos.
-  */
-void Asiento1View::editarasiento() {
-    _depura("editarasiento",2);
-    guardar();
-    asientoview *nuevoasiento= new asientoview(m_companyact,0,"",true);
-    nuevoasiento->inicializa(m_companyact);
-    nuevoasiento->cargaasiento(idasiento().toInt());
-    nuevoasiento->exec();
-    cargaasientos();
-    //    repinta(idAsiento().toInt());
-    pintaAsiento1();
-}
+
 
 /** Se ha pulsado sobre el botón de generar asientos inteligentes. Se inicializa la clase \ref aplinteligentesview y se muestra ese diálogo para que se opere con los asientos plantilla
 */
@@ -220,7 +206,15 @@ void Asiento1View::boton_cargarasiento() {
     _depura("END Asiento1View::boton_cargarasiento",2);
 }
 
-
+/**
+  * Prepara para guardar.
+*/
+void Asiento1View::prepguardar() {
+	setDBvalue("fecha", m_fecha->text());
+	setDBvalue("ordenasiento", m_ordenasiento->text());
+	setDBvalue("comentariosasiento", mui_comentariosAsiento->text());
+	setDBvalue("clase", QString::number(mui_claseAsiento->currentIndex()));
+}
 
 
 

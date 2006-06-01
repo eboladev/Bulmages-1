@@ -41,18 +41,17 @@ FORMS += bulmacontbase.ui \
 	 extractoprintbase.ui \
 	 diarioprintbase.ui \
 	 asientobase.ui \
-	 asientolistbase.ui
+	 asientolistbase.ui \
+	 balancebase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
          listcuentasdlg1.ui \
          cuentadlg.ui \
          balance1dlg.ui \
-         balancedlg.ui \
          int_apunts3.ui \
          aplinteligentesdlg.ui \
          filtrarasientosdlg.ui \
-         asientodlg.ui \
          regivaprintdlg.ui \
          compbalancedlg.ui \
          mpatrimonialdlg.ui \
@@ -186,7 +185,6 @@ HEADERS += splashscreen.h \
            balance1view.h \
            qlistviewitem1.h \
            balanceview.h \
-           asientoview.h \
            aplinteligentesview.h \
            filtrarasientosview.h \
            asientosview.h \
@@ -229,7 +227,8 @@ HEADERS += splashscreen.h \
 	   subform2bc.h \
 	   diariosubform.h \
 	   extractosubform.h \
-	   asientolistsubform.h
+	   asientolistsubform.h \
+	   balancesubform.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -244,7 +243,6 @@ SOURCES += main.cpp \
            balance1view.cpp \
            qlistviewitem1.cpp \
            balanceview.cpp \
-           asientoview.cpp \
            aplinteligentesview.cpp \
            filtrarasientosview.cpp \
            asientosview.cpp \
@@ -287,10 +285,9 @@ SOURCES += main.cpp \
 	   subform2bc.cpp \
 	   diariosubform.cpp \
 	   extractosubform.cpp \
-	   asientolistsubform.cpp
+	   asientolistsubform.cpp \
+	   balancesubform.cpp
 	 
-
-
 
 unix{
   UI_DIR = .ui

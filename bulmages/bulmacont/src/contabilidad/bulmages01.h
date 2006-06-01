@@ -61,9 +61,8 @@ class Bulmages01 : public QMainWindow, Ui_BulmaContBase    {
     Q_OBJECT
 private:
     empresa *m_empresaactual;
-    Q3VBox *m_view_back;
+
     /** m_pWorkspace is the MDI frame widget that handles MDI child widgets. Inititalized in
-      * initView()
       */
     QWorkspace *m_pWorkspace;
 
@@ -126,18 +125,8 @@ private slots:
 private:
     /// the name used
     QString DBName;
-    /** initializes all QActions of the application */
-    void initActions();
-    /** initMenuBar creates the menu_bar and inserts the menuitems */
-    void initMenuBar();
-    /** this creates the toolbars. Change the toobar look and add new toolbars in this
-     * function */
-    void initToolBar();
     /** setup the statusbar */
     void initStatusBar();
-    /** setup the mainview*/
-    void initView();
-    void showView();
 
 
 public slots:
