@@ -1,15 +1,22 @@
-//
-// C++ Implementation: ListLinFacturaView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
-
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include <QMessageBox>
 #include <Q3PopupMenu>
@@ -25,77 +32,74 @@
 ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("lfactura");
     setDBCampoId("idlfactura");
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idarticulo");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "codigocompletoarticulo");
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, "nomarticulo");
-    addSHeader("idlfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "idlfactura");
-    addSHeader("desclfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "desclfactura");
-    addSHeader("cantlfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "cantlfactura");
-    addSHeader("pvplfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "pvplfactura");
-    addSHeader("ivalfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "ivalfactura");
-    addSHeader("descuentolfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "descuentolfactura");
-    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idfactura");
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
+    addSHeader("idlfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idl factura"));
+    addSHeader("desclfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcionl factura"));
+    addSHeader("cantlfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl factura"));
+    addSHeader("pvplfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl factura"));
+    addSHeader("ivalfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl factura"));
+    addSHeader("descuentolfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol factura"));
+    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id factura"));
     setinsercion(TRUE);
 }
 
 
-
-
 void ListLinFacturaView::on_mui_list_editFinished(int row, int col) {
-    _depura("ListLinFacturaView::editFinished",0);
+    _depura("ListLinFacturaView::editFinished", 0);
     SubForm3::on_mui_list_editFinished(row, col);
     SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
+    SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='"+camp->text()+"'");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
         if (!cur->eof() ) {
-            rec->setDBvalue("idarticulo",cur->valor("idarticulo"));
+            rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
             rec->setDBvalue("desclfactura", cur->valor("nomarticulo"));
             rec->setDBvalue("cantlfactura", "1.00");
-	    rec->setDBvalue("descuentolfactura","0.00");
-	    rec->setDBvalue("pvplfactura",cur->valor("pvparticulo"));
-        }// end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva="+cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+            rec->setDBvalue("descuentolfactura", "0.00");
+            rec->setDBvalue("pvplfactura", cur->valor("pvparticulo"));
+        } // end if
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
-	    rec->setDBvalue("ivalfactura",cur1->valor("porcentasa_iva"));		
-        }// end if
-	delete cur1;
-	delete cur;
-    }// end if
+            rec->setDBvalue("ivalfactura", cur1->valor("porcentasa_iva"));
+        } // end if
+        delete cur1;
+        delete cur;
+    } // end if
 }
 
 
 void ListLinFacturaView::cargar(QString idfactura) {
-        _depura("ListLinFacturaView::cargar\n",0);
-        mdb_idfactura = idfactura;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura="+mdb_idfactura);
-        SubForm3::cargar(cur);
-        delete cur;
+    _depura("ListLinFacturaView::cargar\n", 0);
+    mdb_idfactura = idfactura;
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura);
+    SubForm3::cargar(cur);
+    delete cur;
 }
 
 
 Fixed ListLinFacturaView::calculabase() {
-	Fixed base("0.0");
-        for (int i=0; i < rowCount()-1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplfactura",i)) * Fixed(DBvalue("cantlfactura",i));
-		base = base + totpar;
-        }// end for
-	return base;
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvplfactura", i)) * Fixed(DBvalue("cantlfactura", i));
+        base = base + totpar;
+    } // end for
+    return base;
 }
 
 
 Fixed ListLinFacturaView::calculaiva() {
-	Fixed base("0.0");
-        for (int i=0; i < rowCount()-1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplfactura",i)) * Fixed(DBvalue("ivalfactura",i));
-		base = base + totpar;
-        }// end for
-	return base;
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvplfactura", i)) * Fixed(DBvalue("ivalfactura", i));
+        base = base + totpar;
+    } // end for
+    return base;
 }
-
 
 
 /*
@@ -111,24 +115,24 @@ Fixed ListLinFacturaView::calculaiva() {
 #define COL_REMOVE 9
 #define COL_TASATIPO_IVA 10
 #define COL_TIPO_IVA 11
-
-
+ 
+ 
 #include "articulolist.h"
 #include "listlinfacturaview.h"
 #include "funcaux.h"
 #include "fixed.h"
-
+ 
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>
-
+ 
 void ListLinFacturaView::guardaconfig() {
     _depura("ListLinFacturaView::guardaconfig",0);
     QString aux = "";
-
+ 
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinfacturaview.cfn" );
     if ( file.open( QIODevice::WriteOnly ) ) {
         QTextStream stream( &file );
@@ -139,7 +143,7 @@ void ListLinFacturaView::guardaconfig() {
         file.close();
     }// end if
 }// end guardaconfig()
-
+ 
 void ListLinFacturaView::cargaconfig() {
     _depura("ListLinFacturaView::cargaconfig",0);
     QFile file( confpr->valor(CONF_DIR_USER)+"conflistlinfacturaview.cfn" );
@@ -153,7 +157,7 @@ void ListLinFacturaView::cargaconfig() {
         file.close();
     }
 }// end cargaconfig
-
+ 
 ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : Q3Table(parent, name), ListLinFactura() {
     /// Inicializamos la tabla de lineas de Factura
     setNumCols(12);
@@ -169,35 +173,35 @@ ListLinFacturaView::ListLinFacturaView(QWidget * parent, const char * name) : Q3
     horizontalHeader()->setLabel( COL_NOMARTICULO, tr( "Descripci� Art�ulo" ) );
     horizontalHeader()->setLabel( COL_TASATIPO_IVA, tr( "% IVA" ) );
     horizontalHeader()->setLabel( COL_TIPO_IVA, tr( "Tipo IVA" ) );
-
+ 
     hideColumn(COL_IDLFACTURA);
     hideColumn(COL_IDFACTURA);
     hideColumn(COL_IDARTICULO);
     hideColumn(COL_REMOVE);
     hideColumn(COL_TASATIPO_IVA);
     hideColumn(COL_TIPO_IVA);
-
+ 
     setSelectionMode( Q3Table::SingleRow );
-
+ 
     setColumnReadOnly(COL_NOMARTICULO,true);
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor("#DDAAAA");
-
+ 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
+ 
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-
+ 
     installEventFilter(this);
-
+ 
     cargaconfig();
 }
-
-
+ 
+ 
 ListLinFacturaView::~ListLinFacturaView() {
     guardaconfig();
 }
-
-
+ 
+ 
 void ListLinFacturaView::pintaListLinFactura() {
     fprintf(stderr,"INICIO de pintaListLinFactura\n");
     setNumRows(0);
@@ -223,9 +227,9 @@ void ListLinFacturaView::pintaListLinFactura() {
     }// end for
     fprintf(stderr,"FIN de pintaListLinFactura\n");
 }
-
-
-
+ 
+ 
+ 
 void ListLinFacturaView::contextMenu ( int row, int, const QPoint & pos ) {
     Q3PopupMenu *popup;
     int opcion;
@@ -238,13 +242,13 @@ void ListLinFacturaView::contextMenu ( int row, int, const QPoint & pos ) {
         borraLinFactura(row);
     }// end switch
 }// end contextMenuRequested
-
-
+ 
+ 
 void ListLinFacturaView::borraLinFacturaact() {
     borraLinFactura(currentRow());
 }// end borraLinFacturaact
-
-
+ 
+ 
 void ListLinFacturaView::pintalinListLinFactura(int pos) {
     fprintf(stderr,"pintalinListLinFactura(%d)\n",pos);
     LinFactura *linea;
@@ -262,10 +266,10 @@ void ListLinFacturaView::pintalinListLinFactura(int pos) {
     setText(pos, COL_TIPO_IVA, linea->idlfactura());
     setText(pos, COL_PVPLFACTURA, linea->pvplfactura());
     adjustRow(pos);
-
+ 
 }
-
-
+ 
+ 
 bool ListLinFacturaView::eventFilter( QObject *obj, QEvent *ev ) {
     fprintf(stderr,"eventFilter()\n");
     QString idArticle;
@@ -312,9 +316,9 @@ bool ListLinFacturaView::eventFilter( QObject *obj, QEvent *ev ) {
     }// end if
     return Q3Table::eventFilter( obj, ev );
 } //end eventFilter
-
-
-
+ 
+ 
+ 
 void ListLinFacturaView::valueBudgetLineChanged(int row, int col) {
     fprintf(stderr,"valueBudgetLineChanged \n");
     LinFactura *linea;
@@ -351,15 +355,15 @@ void ListLinFacturaView::valueBudgetLineChanged(int row, int col) {
         pintalinListLinFactura(row);
     }// end if
 } //end valueBudgetLineChanged
-
-
+ 
+ 
 /// Devuelve la linea que se esta tratando actualmente
 LinFactura *ListLinFacturaView::lineaact() {
     fprintf(stderr,"ListLinFacturaView::lineaact()\n");
     return lineaat(currentRow());
 }// end lineaact
-
-
+ 
+ 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 LinFactura *ListLinFacturaView::lineaat(int row) {
     fprintf(stderr,"ListLinFactura::lineaat(%d)\n", row);
@@ -377,8 +381,8 @@ LinFactura *ListLinFacturaView::lineaat(int row) {
         return NULL;
     }// end if
 }// end lineaat
-
-
+ 
+ 
 void ListLinFacturaView::manageArticle(int row) {
     fprintf(stderr,"manageArticle(%d)\n",row);
     LinFactura *linea= lineaat(row);
@@ -386,8 +390,8 @@ void ListLinFacturaView::manageArticle(int row) {
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
     pintalinListLinFactura(row);
 } //end manageArticle
-
-
+ 
+ 
 QString ListLinFacturaView::searchArticle() {
     fprintf(stderr,"Busqueda de un art�ulo\n");
     ArticuloList *artlist = new ArticuloList(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,ArticuloList::SelectMode);
@@ -401,6 +405,6 @@ QString ListLinFacturaView::searchArticle() {
     delete artlist;
     return idArticle;
 }// end searchArticle
-
-
+ 
+ 
 */
