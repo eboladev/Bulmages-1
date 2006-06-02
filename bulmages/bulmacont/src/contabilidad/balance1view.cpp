@@ -50,7 +50,8 @@ copyright            : (C) 2003 by Tomeu Borrás Riera
 #define PADRE           m_cpadre
 
 
-balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int  ) : balance1dlg(parent,name) {
+balance1view::balance1view(empresa *emp, QWidget *parent, const char *name, int  ) : QWidget (parent,name) {
+	setupUi(this);
    fprintf(stderr,"balance1view: Constructor\n");
    companyact = emp;
    numdigitos = companyact->numdigitosempresa();

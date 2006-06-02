@@ -34,7 +34,7 @@ class asientosview : public QWidget, public Ui_AsientoListBase  {
 public:
     empresa *m_companyact;
 public:
-    asientosview(empresa *emp, QWidget *parent=0, const char *name=0, bool=true);
+    asientosview(empresa *emp, QWidget *parent=0);
     ~asientosview();
     void inicializa();
 public slots:

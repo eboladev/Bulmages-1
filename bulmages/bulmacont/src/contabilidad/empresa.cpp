@@ -83,7 +83,7 @@ empresa::~empresa() {
         delete introapunts2;
     if (m_listasientos)
         delete m_listasientos;
-}// end ~empresa
+}
 
 /** \brief inicializa la clase con el nombre de la base de datos y con el workspace.
   */
@@ -116,10 +116,15 @@ int empresa::inicializa1() {
     pWorkspace->addWindow(diario);
     balance = new balanceview(this, 0,"balance");
     pWorkspace->addWindow(balance);
+
+    balance1 = new balance1view(this, 0,"balance1");
+    pWorkspace->addWindow(balance1);
+
+
     introapunts2 = new Asiento1View(this, 0,"introapunts2");
     pWorkspace->addWindow(introapunts2);
 
-    m_listasientos = new asientosview(this, 0,"listasientos",true);
+    m_listasientos = new asientosview(this, 0);
     m_listasientos->inicializa();
     pWorkspace->addWindow(m_listasientos);
 
@@ -177,7 +182,7 @@ int empresa::muestracuentas() 	{
     nuevae->inicializa();
     nuevae->exec();
     delete nuevae;
-    return(0);
+    return 0;
 }
 
 
@@ -190,7 +195,7 @@ int empresa::ccostes() {
     ccoste->exec();
     delete ccoste;
     balance->cargacostes();
-    return(0);
+    return 0;
 }
 
 
@@ -203,7 +208,7 @@ int empresa::canales() {
     canalview *canal = new canalview(this,0,"canales",true);
     canal->exec();
     delete canal;
-    return(0);
+    return 0;
 }
 
 
@@ -214,7 +219,7 @@ int empresa::tiposIVA() {
     tipoivaview *tip = new tipoivaview(this, 0, "tipos Iva");
     tip->exec();
     delete tip;
-    return(0);
+    return 0;
 }
 
 
@@ -225,7 +230,7 @@ int empresa::fPago() {
     fpagoview *tip = new fpagoview(this, 0, "Formas de Pago");
     tip->exec();
     delete tip;
-    return(0);
+    return 0;
 }
 
 
@@ -233,41 +238,37 @@ int empresa::cambioejercicio() {
     //El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
-    return(0);
+    return 0;
 }
 
 
 int empresa::nuevaempresa() {
     //La creaci� de una nueva empresa ha pasado al selector.
-    return(0);
+    return 0;
 }
-
-
-
-
 
 int empresa::nuevacuenta() {
     cuentaview * nuevae =new cuentaview(this,0,"nuevacuenta",true);
     nuevae->exec();
     delete nuevae;
-    return(0);
+    return 0;
 }
 
 
 int empresa::muestraapuntes() {
-    return(0);
+    return 0;
 }
 
 
 int empresa::muestraapuntes1() {
     introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-    return(0);
+    return 0;
 }
 
 
 int empresa::muestraasientos() {
     m_listasientos->setWindowState(m_listasientos->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-    return(0);
+    return 0;
 }
 
 
@@ -276,7 +277,7 @@ int empresa::propiedadempresa() {
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;
-    return(0);
+    return 0;
 }
 
 
@@ -284,7 +285,7 @@ int empresa::amortizaciones() {
     amortizacionesview * amors = new amortizacionesview(this,0,"",true);
     amors->exec();
     delete amors;
-    return(0);
+    return 0;
 }
 
 
@@ -296,7 +297,7 @@ int empresa::ainteligentes() {
     ainteligentesview * nuevae = new ainteligentesview(this, 0,"ainteligentes",true);
     nuevae->exec();
     delete nuevae;
-    return(0);
+    return 0;
 }
 
 
@@ -310,7 +311,7 @@ int empresa::mpatrimoniales() {
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;
-    return(0);
+    return 0;
 }
 
 
@@ -323,8 +324,7 @@ int empresa::compbalance() {
     balancesview * nueva = new balancesview(this,0,"balances");
     nueva->exec();
     delete nueva;
-    return(0);
-
+    return 0;
 }
 
 

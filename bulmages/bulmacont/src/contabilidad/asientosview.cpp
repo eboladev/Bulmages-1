@@ -22,7 +22,7 @@
 /** El constructor de la clase inicializa algunas estructuras y configura la visi�
   * de la pantalla.
   */
-asientosview::asientosview(empresa *emp,QWidget *parent, const char *name, bool modal) : QWidget(parent) {
+asientosview::asientosview(empresa *emp,QWidget *parent) : QWidget(parent) {
     _depura("asientosview::asientosview",0);
     setupUi(this);
     m_companyact=emp;

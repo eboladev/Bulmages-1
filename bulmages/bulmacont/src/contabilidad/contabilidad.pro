@@ -42,13 +42,14 @@ FORMS += bulmacontbase.ui \
 	 diarioprintbase.ui \
 	 asientobase.ui \
 	 asientolistbase.ui \
-	 balancebase.ui
+	 balancebase.ui \
+	 balancetreebase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
          listcuentasdlg1.ui \
          cuentadlg.ui \
-         balance1dlg.ui \
+#         balance1dlg.ui \
          int_apunts3.ui \
          aplinteligentesdlg.ui \
          filtrarasientosdlg.ui \

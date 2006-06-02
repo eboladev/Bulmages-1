@@ -49,8 +49,12 @@ private:
 /// Muestra en pantalla los resultados para los datos introducidos.
    void presentar();
 public slots:
-
+	/// Slot que responde a la pulsación del boton actualizar en el formulario. 
+	/// Supuestamente debe repintar el formulario con las nuevas opciones de filtrado que se hayan elegido.
    virtual void on_mui_actualizar_clicked() {accept();};
+
+	/// Slot que responde a la pulsación del boton imprimir en el formulario.
+	/// Realiza la impresión del listado que tenemos en pantalla.
    virtual void on_mui_imprimir_clicked();
 
 /// SLOT que responde a la pulsación del botón imprimir. Es invocado desde la clase \ref empresa

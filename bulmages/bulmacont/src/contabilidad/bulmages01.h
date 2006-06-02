@@ -111,8 +111,6 @@ private slots:
     };
     void closeEvent( QCloseEvent *);
 
-    /** toggle the toolbar*/
-    void slotViewToolBar(bool toggle);
     /** toggle the statusbar*/
     void slotViewStatusBar(bool toggle);
     /** creates a new view for the current document */

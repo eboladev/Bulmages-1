@@ -122,25 +122,7 @@ void Bulmages01::slotEditPaste()  {
 }
 
 
-void Bulmages01::slotViewToolBar(bool toggle)  {
-    /*
-        statusBar()->message(tr("Toggle toolbar..."));
-        if (toggle== false) {
-            fileToolbar->hide();
-            empresaToolbar->hide();
-            ventToolbar->hide();
-            navegacionToolbar->hide();
-            gestionToolbar->hide();
-        } else {
-            fileToolbar->show();
-            empresaToolbar->show();
-            ventToolbar->show();
-            navegacionToolbar->show();
-            gestionToolbar->show();
-        }// end if
-        statusBar()->message(tr("Listo."));
-    */
-}
+
 
 
 

@@ -18,7 +18,7 @@
 #define BALANCE1VIEW_H
 
 #include <qwidget.h>
-#include <balance1dlg.h>
+#include "ui_balancetreebase.h"
 
 #include <qlineedit.h>
 #include <q3datetimeedit.h>
@@ -50,7 +50,7 @@ class empresa;
   * Clase que sirve para presentar en balance de sumas y saldos  en forma de tabla. Permite presentar el balance entre unos rangos definidos y incluyendo las cuentas de un nivel determinado.
   */
   
-class balance1view : public balance1dlg  {
+class balance1view : public QWidget, public Ui_BalanceTreeBase  {
    Q_OBJECT
 private:
 /// Empresa con la que trabaja la clase.

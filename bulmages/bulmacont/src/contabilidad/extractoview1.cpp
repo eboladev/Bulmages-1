@@ -192,12 +192,10 @@ void extractoview1::on_mui_guardar_clicked() {
   */
 void extractoview1::presentar() {
     fprintf(stderr,"Presentar\n");
-    int j,num1;
     float debe, haber,saldo;
     float debeinicial=0, haberinicial=0, saldoinicial=0;
     float debefinal, haberfinal, saldofinal;
     QString  idcuenta;
-    int idasiento;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString contra = mui_codigocontrapartida->text();
@@ -220,8 +218,8 @@ void extractoview1::presentar() {
     QString cad;
     QString cadaux;
     cursor2 *cursorapt;
-    cursor2 *cursorcoste;
-    cursor2 *cursorcanal;
+//    cursor2 *cursorcoste;
+//    cursor2 *cursorcanal;
     cursor2 *cursoraux1;
 
     if (m_cursorcta->eof() || m_cursorcta->bof())
