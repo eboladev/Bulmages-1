@@ -26,7 +26,8 @@ DEFINES = REPORTS
 
 TARGET = ../../installbulmages/bulmafact 
 
-CONFIG += release 
+CONFIG += qt debug 
+#CONFIG += release 
 
 LIBS += -rdynamic
 

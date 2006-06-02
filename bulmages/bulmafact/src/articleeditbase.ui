@@ -9,7 +9,7 @@
     <x>0</x>
     <y>0</y>
     <width>709</width>
-    <height>416</height>
+    <height>431</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -403,6 +403,9 @@
             </disabled>
            </palette>
           </property>
+          <property name="focusPolicy" >
+           <enum>Qt::NoFocus</enum>
+          </property>
          </widget>
         </item>
        </layout>
@@ -565,7 +568,11 @@
             </widget>
            </item>
            <item>
-            <widget class="BusquedaTipoArticulo" name="m_tipoarticulo" />
+            <widget class="BusquedaTipoArticulo" name="m_tipoarticulo" >
+             <property name="focusPolicy" >
+              <enum>Qt::StrongFocus</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -593,7 +600,11 @@
             </widget>
            </item>
            <item>
-            <widget class="BusquedaFamilia" name="m_familia" />
+            <widget class="BusquedaFamilia" name="m_familia" >
+             <property name="focusPolicy" >
+              <enum>Qt::StrongFocus</enum>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -858,6 +869,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
@@ -872,13 +890,6 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>ListCompArticuloView</class>
    <extends></extends>
    <header>comparticulolistview.h</header>
@@ -887,12 +898,22 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>m_abrevarticulo</tabstop>
   <tabstop>m_codigoarticulo</tabstop>
   <tabstop>m_nombrearticulo</tabstop>
-  <tabstop>m_codigocompletoarticulo</tabstop>
-  <tabstop>mui_tab</tabstop>
-  <tabstop>m_abrevarticulo</tabstop>
+  <tabstop>m_tipoarticulo</tabstop>
+  <tabstop>m_familia</tabstop>
+  <tabstop>m_pvparticulo</tabstop>
+  <tabstop>mui_cambiarimagen</tabstop>
   <tabstop>m_combotipo_iva</tabstop>
+  <tabstop>m_presentablearticulo</tabstop>
+  <tabstop>m_controlstockarticulo</tabstop>
+  <tabstop>mui_tab</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_guardar</tabstop>
+  <tabstop>mui_borrar</tabstop>
+  <tabstop>m_obserarticulo</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
