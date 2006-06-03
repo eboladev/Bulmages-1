@@ -1,14 +1,22 @@
-//
-// C++ Implementation: ListDescuentoAlbaranClienteView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include <QMessageBox>
 #include <QMenu>
@@ -21,32 +29,33 @@
 #include "funcaux.h"
 
 
-ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget *parent) : SubForm2Bf(parent) {
+ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget *parent)
+        : SubForm2Bf(parent) {
     setDBTableName("dalbaran");
     setDBCampoId("iddalbaran");
-    addSHeader("iddalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddalbaran");
-    addSHeader("conceptdalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdalbaran");
-    addSHeader("proporciondalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondalbaran");
-    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idalbaran");
+    addSHeader("iddalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idd albaran"));
+    addSHeader("conceptdalbaran", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Conceptd albaran"));
+    addSHeader("proporciondalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Proporciond albaran"));
+    addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaran"));
     setinsercion(TRUE);
-};
+}
 
 
 /*
-
-
+ 
+ 
 #define COL_IDDALBARAN 0
 #define COL_CONCEPTDALBARAN 1
 #define COL_PROPORCIONDALBARAN 2
 #define COL_IDALBARAN 3
-
-
+ 
+ 
 #include "listdescalbaranclienteview.h"
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
-
-
+ 
+ 
 ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget * parent, const char * name) : Q3Table(parent, name), ListDescuentoAlbaranCliente() {
     /// Inicializamos la tabla de lineas de albaran
     setNumCols(4);
@@ -55,32 +64,32 @@ ListDescuentoAlbaranClienteView::ListDescuentoAlbaranClienteView(QWidget * paren
     horizontalHeader()->setLabel( COL_CONCEPTDALBARAN, tr( "Descripci�" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDALBARAN, tr( "Cantidad" ) );
     horizontalHeader()->setLabel( COL_IDALBARAN, tr( "Precio" ) );
-
-
+ 
+ 
     setColumnWidth(COL_IDDALBARAN,100);
     setColumnWidth(COL_CONCEPTDALBARAN,300);
     setColumnWidth(COL_PROPORCIONDALBARAN,100);
     setColumnWidth(COL_IDALBARAN,100);
-
-
+ 
+ 
     hideColumn(COL_IDDALBARAN);
     hideColumn(COL_IDALBARAN);
-
-
+ 
+ 
     setSelectionMode( Q3Table::SingleRow );
-
+ 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor(confpr->valor(CONF_BG_DESCALBARANESCLIENTE));
-
+ 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
+ 
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 }
-
-
+ 
+ 
 ListDescuentoAlbaranClienteView::~ListDescuentoAlbaranClienteView() {}
-
-
+ 
+ 
 void ListDescuentoAlbaranClienteView::pintaListDescuentoAlbaranCliente() {
     fprintf(stderr,"INICIO de pintaListDescuentoAlbaranCliente\n");
     setNumRows(0);
@@ -97,9 +106,9 @@ void ListDescuentoAlbaranClienteView::pintaListDescuentoAlbaranCliente() {
     }// end for
     fprintf(stderr,"FIN de pintaListDescuentoAlbaranCliente\n");
 }
-
-
-
+ 
+ 
+ 
 void ListDescuentoAlbaranClienteView::contextMenu ( int row, int, const QPoint & pos ) {
     Q3PopupMenu *popup;
     int opcion;
@@ -112,13 +121,13 @@ void ListDescuentoAlbaranClienteView::contextMenu ( int row, int, const QPoint &
         borraDescuentoAlbaranCliente(row);
     }// end switch
 }// end contextMenuRequested
-
-
+ 
+ 
 void ListDescuentoAlbaranClienteView::borradescalbaranact() {
     borraDescuentoAlbaranCliente(currentRow());
 }// end borralinalbaranact
-
-
+ 
+ 
 void ListDescuentoAlbaranClienteView::pintadescListDescuentoAlbaranCliente(int pos) {
 fprintf(stderr,"pintalinListDescuentoAlbaranCliente(%d)\n",pos);
     DescuentoAlbaranCliente *linea;
@@ -127,13 +136,13 @@ fprintf(stderr,"pintalinListDescuentoAlbaranCliente(%d)\n",pos);
         setText(pos, COL_CONCEPTDALBARAN, linea->conceptdalbaran());
         setText(pos, COL_PROPORCIONDALBARAN, linea->proporciondalbaran());
         setText(pos, COL_IDALBARAN, linea->idalbaran());
-
+ 
 }
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 void ListDescuentoAlbaranClienteView::valueBudgetLineChanged(int row, int col) {
     fprintf(stderr,"valueBudgetLineChanged \n");
     DescuentoAlbaranCliente *linea;
@@ -152,14 +161,14 @@ void ListDescuentoAlbaranClienteView::valueBudgetLineChanged(int row, int col) {
         pintadescListDescuentoAlbaranCliente(row);
     }// end if
 } //end valueBudgetLineChanged
-
-
+ 
+ 
 /// Devuelve la linea que se esta tratando actualmente
 DescuentoAlbaranCliente *ListDescuentoAlbaranClienteView::lineaact() {
     fprintf(stderr,"ListDescuentoAlbaranClienteView::lineaact()\n");
     return lineaat(currentRow());
 }// end lineaact
-
+ 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 DescuentoAlbaranCliente *ListDescuentoAlbaranClienteView::lineaat(int row) {
     fprintf(stderr,"ListDescuentoAlbaranCliente::lineaat(%d)\n", row);
@@ -176,7 +185,7 @@ DescuentoAlbaranCliente *ListDescuentoAlbaranClienteView::lineaat(int row) {
     	fprintf(stderr,"Linea inexistente\n");
         return NULL;
     }// end if
-
+ 
 }// end lineaat
-
+ 
 */

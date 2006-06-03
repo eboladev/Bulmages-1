@@ -1,14 +1,23 @@
-//
-// C++ Implementation: ListDescuentoFacturaView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <QMessageBox>
 #include <QMenu>
 #include <QKeyEvent>
@@ -20,31 +29,32 @@
 #include "funcaux.h"
 
 
-ListDescuentoFacturaView::ListDescuentoFacturaView(QWidget *parent) : SubForm2Bf(parent) {
+ListDescuentoFacturaView::ListDescuentoFacturaView(QWidget *parent)
+        : SubForm2Bf(parent) {
     setDBTableName("dfactura");
     setDBCampoId("iddfactura");
-    addSHeader("iddfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddfactura");
-    addSHeader("conceptdfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdfactura");
-    addSHeader("proporciondfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondfactura");
-    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idfactura");
+    addSHeader("iddfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("iddfactura"));
+    addSHeader("conceptdfactura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("conceptdfactura"));
+    addSHeader("proporciondfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("proporciondfactura"));
+    addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("idfactura"));
     setinsercion(TRUE);
 }
 
 
 /*
-
+ 
 #define COL_IDDFACTURA 0
 #define COL_CONCEPTDFACTURA 1
 #define COL_PROPORCIONDFACTURA 2
 #define COL_IDFACTURA 3
-
-
+ 
+ 
 #include "listdescfacturaview.h"
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
-
-
+ 
+ 
 ListDescuentoFacturaView::ListDescuentoFacturaView(QWidget * parent, const char * name) : Q3Table(parent, name), ListDescuentoFactura() {
     /// Inicializamos la tabla de lineas de factura
     setNumCols(4);
@@ -53,32 +63,32 @@ ListDescuentoFacturaView::ListDescuentoFacturaView(QWidget * parent, const char 
     horizontalHeader()->setLabel( COL_CONCEPTDFACTURA, tr( "Descripci�" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDFACTURA, tr( "Porcentaje" ) );
     horizontalHeader()->setLabel( COL_IDFACTURA, tr( "Factura" ) );
-
-
+ 
+ 
     setColumnWidth(COL_IDDFACTURA,100);
     setColumnWidth(COL_CONCEPTDFACTURA,300);
     setColumnWidth(COL_PROPORCIONDFACTURA,100);
     setColumnWidth(COL_IDFACTURA,100);
-
-
+ 
+ 
     hideColumn(COL_IDDFACTURA);
     hideColumn(COL_IDFACTURA);
-
-
+ 
+ 
     setSelectionMode( Q3Table::SingleRow );
-
+ 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor(confpr->valor(CONF_BG_DESCFACTURASCLIENTE));
-
+ 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
+ 
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 }
-
-
+ 
+ 
 ListDescuentoFacturaView::~ListDescuentoFacturaView() {}
-
-
+ 
+ 
 void ListDescuentoFacturaView::pintaListDescuentoFactura() {
     fprintf(stderr,"INICIO de pintaListDescuentoFactura\n");
     setNumRows(0);
@@ -95,9 +105,9 @@ void ListDescuentoFacturaView::pintaListDescuentoFactura() {
     }// end for
     fprintf(stderr,"FIN de pintaListDescuentoFactura\n");
 }
-
-
-
+ 
+ 
+ 
 void ListDescuentoFacturaView::contextMenu ( int row, int, const QPoint & pos ) {
     Q3PopupMenu *popup;
     int opcion;
@@ -110,13 +120,13 @@ void ListDescuentoFacturaView::contextMenu ( int row, int, const QPoint & pos ) 
         borraDescuentoFactura(row);
     }// end switch
 }// end contextMenuRequested
-
-
+ 
+ 
 void ListDescuentoFacturaView::borradescfacturaact() {
     borraDescuentoFactura(currentRow());
 }// end borralinfacturaact
-
-
+ 
+ 
 void ListDescuentoFacturaView::pintadescListDescuentoFactura(int pos) {
 fprintf(stderr,"pintalinListDescuentoFactura(%d)\n",pos);
     DescuentoFactura *linea;
@@ -125,13 +135,13 @@ fprintf(stderr,"pintalinListDescuentoFactura(%d)\n",pos);
         setText(pos, COL_CONCEPTDFACTURA, linea->conceptdfactura());
         setText(pos, COL_PROPORCIONDFACTURA, linea->proporciondfactura());
         setText(pos, COL_IDFACTURA, linea->idfactura());
-
+ 
 }
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 void ListDescuentoFacturaView::valueBudgetLineChanged(int row, int col) {
     fprintf(stderr,"valueBudgetLineChanged \n");
     DescuentoFactura *linea;
@@ -150,14 +160,14 @@ void ListDescuentoFacturaView::valueBudgetLineChanged(int row, int col) {
         pintadescListDescuentoFactura(row);
     }// end if
 } //end valueBudgetLineChanged
-
-
+ 
+ 
 /// Devuelve la linea que se esta tratando actualmente
 DescuentoFactura *ListDescuentoFacturaView::lineaact() {
     fprintf(stderr,"ListDescuentoFacturaView::lineaact()\n");
     return lineaat(currentRow());
 }// end lineaact
-
+ 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 DescuentoFactura *ListDescuentoFacturaView::lineaat(int row) {
     fprintf(stderr,"ListDescuentoFactura::lineaat(%d)\n", row);
@@ -174,7 +184,7 @@ DescuentoFactura *ListDescuentoFacturaView::lineaat(int row) {
     	fprintf(stderr,"Linea inexistente\n");
         return NULL;
     }// end if
-
+ 
 }// end lineaat
-
+ 
 */

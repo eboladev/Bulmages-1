@@ -1,14 +1,22 @@
-//
-// C++ Implementation: Inventario
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include <QFile>
 #include <QTextStream>
@@ -19,33 +27,33 @@
 
 
 Inventario::Inventario(company *comp) : DBRecord(comp) {
-    _depura("Inventario::Inventario",0);
+    _depura("Inventario::Inventario", 0);
     companyact=comp;
-
     setDBTableName("inventario");
     setDBCampoId("idinventario");
-    addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
-    addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Identificador inventario", "inventario"));
+    addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha inventario", "inventario"));
+    addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Nombre inventario", "inventario"));
 }
+
 
 Inventario::~Inventario() {}
 
 
 int Inventario::borrar() {
     if (DBvalue("idinventario") != "") {
-        _depura("vamos a borrar las lineas del inventario",0);
+        _depura("vamos a borrar las lineas del inventario", 0);
         companyact->begin();
 
         listalineas->borrar();
         _depura("Vamos a borrar el resto",0);
-        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario="+DBvalue("idinventario"));
+        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario=" + DBvalue("idinventario"));
         if (error) {
             companyact->rollback();
             return -1;
-        }// end if
+        } // end if
         companyact->commit();
-    }// end if
+    } // end if
     return 0;
 }
 
@@ -54,23 +62,24 @@ void Inventario::vaciaInventario() {
     DBclear();
 }
 
+
 void Inventario::pintaInventario() {
-    _depura("pintaInventario\n",0);
+    _depura("pintaInventario\n", 0);
     pintaidinventario(DBvalue("idinventario"));
     pintanominventario(DBvalue("nominventario"));
     pintafechainventario(DBvalue("fechainventario"));
-    // Pinta el subformulario de detalle del Inventario.
-    //    listalineas->pintaListControlStock();
+    /// Pinta el subformulario de detalle del Inventario.
+    //listalineas->pintaListControlStock();
 }
 
 
-// Esta funci� carga un Inventario.
+/// Esta funcion carga un Inventario.
 int Inventario::cargar(QString idbudget) {
-    QString query = "SELECT * FROM inventario  WHERE idinventario="+idbudget;
+    QString query = "SELECT * FROM inventario  WHERE idinventario=" + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
-    }// end if
+    } // end if
     delete cur;
     listalineas->cargar(idbudget);
     pintaInventario();
@@ -78,8 +87,8 @@ int Inventario::cargar(QString idbudget) {
 }
 
 
-int  Inventario::guardar() {
-    _depura("Inventario::guardar()",0);
+int Inventario::guardar() {
+    _depura("Inventario::guardar()", 0);
     try {
         QString id;
         companyact->begin();
@@ -87,21 +96,21 @@ int  Inventario::guardar() {
         setidinventario(id);
         listalineas->guardar();
         companyact->commit();
-        _depura("END Inventario::guardar()",0);
+        _depura("END Inventario::guardar()", 0);
         return 0;
     } catch (...) {
-        _depura("error guardando el inventario",1);
+        _depura("error guardando el inventario", 1);
         companyact->rollback();
         return -1;
     }
 }
 
 
-
 void Inventario::pregenerar() {
-    _depura("Inventario::pregenerar",0);
-    //    listalineas->pregenerar();
+    _depura("Inventario::pregenerar", 0);
+    //listalineas->pregenerar();
 }
+
 
 void Inventario::imprimirInventario() {
     /*
@@ -122,7 +131,7 @@ void Inventario::imprimirInventario() {
         QString buff = stream.read();
         file.close();
         QString fitxersortidatxt;
-        // L�ea de totales del presupuesto
+        // Linea de totales del presupuesto
      
         QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor="+mdb_idproveedor;
         cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -189,6 +198,4 @@ void Inventario::imprimirInventario() {
         system("kpdf /tmp/facturap.pdf");
     */
 } //end imprimirInventario
-
-
 

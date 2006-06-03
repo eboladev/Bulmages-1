@@ -1,37 +1,43 @@
-//
-// C++ Implementation: ListControlStockView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "listcontrolstockview.h"
 
-ListControlStockView::ListControlStockView(QWidget *parent, const char *) : SubForm2Bf(parent) {
+
+ListControlStockView::ListControlStockView(QWidget *parent, const char *)
+        : SubForm2Bf(parent) {
     setDBTableName("controlstock");
     setDBCampoId("idarticulo");
-    addSHeader("punteocontrolstock", DBCampo::DBboolean, DBCampo::DBNothing, SHeader::DBNone, "punteocontrolstock");
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, "codigoalmacen");
-    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomalmacen");
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "codigocompletoarticulo");
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, "nomalmacen");
-    addSHeader("stockantcontrolstock", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, "stockantcontrolstock");
-    addSHeader("stocknewcontrolstock", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, "stocknewcontrolstock");
-
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idarticulo");
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idalmacen");
-    addSHeader("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idinventario");
-
-
-    addSHeader("idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idarticulo");
-    addSHeader("idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idalmacen");
-    addSHeader("idinventariopk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idinventario");
-
-
+    addSHeader("punteocontrolstock", DBCampo::DBboolean, DBCampo::DBNothing, SHeader::DBNone, tr("Punteo control stock"));
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo almacen"));
+    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo completo articulo"));
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre almacen"));
+    addSHeader("stockantcontrolstock", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, tr("Stock ant control stock"));
+    addSHeader("stocknewcontrolstock", DBCampo::DBnumeric, DBCampo::DBRequired, SHeader::DBNone, tr("Stock new control stock"));
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id articulo"));
+    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id almacen"));
+    addSHeader("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id inventario"));
+    addSHeader("idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id articulo"));
+    addSHeader("idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id almacen"));
+    addSHeader("idinventariopk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id inventario"));
     setinsercion(FALSE);
 }
 
@@ -40,8 +46,8 @@ ListControlStockView::ListControlStockView(QWidget *parent, const char *) : SubF
 
 
 /*
-
-
+ 
+ 
 #define COL_PUNTEOCONTROLSTOCK 0
 #define COL_IDINVENTARIO 1
 #define COL_IDARTICULO 2
@@ -52,31 +58,31 @@ ListControlStockView::ListControlStockView(QWidget *parent, const char *) : SubF
 #define COL_NOMALMACEN 7
 #define COL_STOCKANTCONTROLSTOCK 8
 #define COL_STOCKNEWCONTROLSTOCK 9
-
-
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 #include "articulolist.h"
 #include "listcontrolstockview.h"
 #include "listcontrolstock.h"
 #include "funcaux.h"
-
+ 
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
 //Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>
-
-
+ 
+ 
 ListControlStockView::ListControlStockView(QWidget * parent, const char * name) : Q3Table(parent, name), ListControlStock() {
     /// Inicializamos la tabla de lineas de FacturaProveedor
     setNumCols(10);
     setNumRows(10000);
-
+ 
     horizontalHeader()->setLabel( COL_IDINVENTARIO, tr( "COL_IDINVENTARIO" ) );
     horizontalHeader()->setLabel( COL_IDARTICULO, tr( "COL_IDARTICULO" ) );
     horizontalHeader()->setLabel( COL_CODARTICULO, tr( "COL_CODARTICULO" ) );
@@ -86,11 +92,11 @@ ListControlStockView::ListControlStockView(QWidget * parent, const char * name) 
     horizontalHeader()->setLabel( COL_CODALMACEN, tr( "COL_CODALMACEN" ) );
     horizontalHeader()->setLabel( COL_STOCKANTCONTROLSTOCK, tr( "COL_STOCKANTCONTROLSTOCK" ) );
     horizontalHeader()->setLabel( COL_NOMALMACEN, tr( "COL_NOMALMACEN" ) );
-
+ 
     hideColumn(COL_IDINVENTARIO);
     hideColumn(COL_IDARTICULO);
     hideColumn(COL_IDALMACEN);
-
+ 
     setColumnWidth(COL_PUNTEOCONTROLSTOCK,15);
     setColumnWidth(COL_NOMARTICULO,250);
     setColumnWidth(COL_NOMALMACEN,250);
@@ -98,37 +104,37 @@ ListControlStockView::ListControlStockView(QWidget * parent, const char * name) 
     setColumnWidth(COL_CODALMACEN,70);
     setColumnWidth(COL_STOCKANTCONTROLSTOCK,100);
     setColumnWidth(COL_STOCKNEWCONTROLSTOCK,100);
-
+ 
     setSelectionMode( Q3Table::SingleRow );
-
+ 
     setColumnReadOnly(COL_NOMARTICULO,true);
     setColumnReadOnly(COL_NOMALMACEN,true);
     setColumnReadOnly(COL_STOCKANTCONTROLSTOCK,true);
-
+ 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor(confpr->valor(CONF_BG_LINFACTURASCLIENTE));
-
+ 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
-
+ 
     installEventFilter(this);
-
+ 
 }
-
-
+ 
+ 
 ListControlStockView::~ListControlStockView() {}
-
-
+ 
+ 
 void ListControlStockView::pintaListControlStock() {
     _depura("ListControlStockView::pintaListControlStock",0);
     setNumRows(0);
     setNumRows(10000);
-
+ 
    for (int j=0;j<10000;j++) {
 	Q3CheckTableItem *check = new Q3CheckTableItem(this,0);
         setItem(j,COL_PUNTEOCONTROLSTOCK,check);
    }// end for
-
+ 
     /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
     ControlStock *linea;
     uint i = 0;
@@ -149,9 +155,9 @@ void ListControlStockView::pintaListControlStock() {
     }// end for
     fprintf(stderr,"FIN de pintaListControlStock\n");
 }
-
-
-
+ 
+ 
+ 
 void ListControlStockView::contextMenu ( int row, int, const QPoint & pos ) {
     Q3PopupMenu *popup;
     int opcion;
@@ -164,7 +170,7 @@ void ListControlStockView::contextMenu ( int row, int, const QPoint & pos ) {
         borrarControlStock(row);
     }// end switch
 }// end contextMenuRequested
-
+ 
 void ListControlStockView::pintalinListControlStock(int pos) {
     fprintf(stderr,"pintalinListControlStock(%d)\n",pos);
     ControlStock *linea;
@@ -182,8 +188,8 @@ void ListControlStockView::pintalinListControlStock(int pos) {
             check->setChecked(TRUE);
 	adjustRow(pos);
 }
-
-
+ 
+ 
 bool ListControlStockView::eventFilter( QObject *obj, QEvent *ev ) {
     fprintf(stderr,"eventFilter()\n");
     QString idArticle;
@@ -200,7 +206,7 @@ bool ListControlStockView::eventFilter( QObject *obj, QEvent *ev ) {
             pintalinListControlStock(row);
             return TRUE;
             break;
-
+ 
         case Qt::Key_Return:
         case Qt::Key_Enter:
             // Esto se hace porque en la ultima linea del qtable tiene un comportamiento raro. Se reportar�como bug a trolltech.
@@ -217,14 +223,14 @@ bool ListControlStockView::eventFilter( QObject *obj, QEvent *ev ) {
             }// end switch
             return TRUE;
             break;
-
+ 
         }// end switch
     }// end if
     return Q3Table::eventFilter( obj, ev );
 } //end eventFilter
-
-
-
+ 
+ 
+ 
 void ListControlStockView::valueBudgetLineChanged(int row, int col) {
     fprintf(stderr,"valueBudgetLineChanged \n");
     ControlStock *linea;
@@ -234,7 +240,7 @@ void ListControlStockView::valueBudgetLineChanged(int row, int col) {
         case COL_CODARTICULO:
             manageArticle(row);
             break;
-
+ 
         case COL_STOCKNEWCONTROLSTOCK:
             linea->setstocknewcontrolstock(text(row,COL_STOCKNEWCONTROLSTOCK));
             break;
@@ -252,14 +258,14 @@ void ListControlStockView::valueBudgetLineChanged(int row, int col) {
         pintalinListControlStock(row);
     }// end if
 } //end valueBudgetLineChanged
-
-
+ 
+ 
 /// Devuelve la linea que se esta tratando actualmente
 ControlStock *ListControlStockView::lineaact() {
     return lineaat(currentRow());
 }// end lineaact
-
-
+ 
+ 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 ControlStock *ListControlStockView::lineaat(int row) {
     _depura("ListControlStock::lineaat()\n", 0);
@@ -277,8 +283,8 @@ ControlStock *ListControlStockView::lineaat(int row) {
         return NULL;
     }// end if
 }// end lineaat
-
-
+ 
+ 
 void ListControlStockView::manageArticle(int row) {
     _depura("manageArticle()\n",0);
     ControlStock *linea= lineaat(row);
@@ -286,8 +292,8 @@ void ListControlStockView::manageArticle(int row) {
     linea->setcodigocompletoarticulo(text(row,COL_CODARTICULO));
     pintalinListControlStock(row);
 } //end manageArticle
-
-
+ 
+ 
 QString ListControlStockView::searchArticle() {
     _depura("ListControlStockView::searchArticle",0);
     ArticuloList *artlist = new ArticuloList(companyact, NULL, theApp->translate("Seleccione Art�ulo","company"),0,ArticuloList::SelectMode);
@@ -301,14 +307,14 @@ QString ListControlStockView::searchArticle() {
     delete artlist;
     return idArticle;
 }// end searchArticle
-
+ 
 void ListControlStockView::manageAlmacen(int row) {
     _depura("manageAlmacen()\n",0);
     ControlStock *linea= lineaat(row);
     linea->setcodigoalmacen(text(row,COL_CODALMACEN));
     pintalinListControlStock(row);
 } //end manageArticle
-
-
-
+ 
+ 
+ 
 */

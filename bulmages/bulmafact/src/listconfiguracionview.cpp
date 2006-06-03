@@ -38,7 +38,8 @@ using namespace std;
 #include "funcaux.h"
 
 
-ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) {
+ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent, const char *name)
+        : QDialog(parent, name, Qt::WDestructiveClose) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
     companyact = comp;

@@ -1,14 +1,23 @@
-//
-// C++ Implementation: ListDescuentoPresupuestoView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <QMessageBox>
 #include <QMenu>
 #include <QKeyEvent>
@@ -20,30 +29,31 @@
 #include "funcaux.h"
 
 
-ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget *parent) : SubForm2Bf(parent) {
+ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget *parent)
+        : SubForm2Bf(parent) {
     setDBTableName("dpresupuesto");
     setDBCampoId("iddpresupuesto");
-    addSHeader("iddpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddpedidocliente");
-    addSHeader("conceptdpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdpresupuesto");
-    addSHeader("proporciondpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondpresupuesto");
-    addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idpresupuesto");
+    addSHeader("iddpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idd pedidocliente"));
+    addSHeader("conceptdpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Conceptod presupuesto"));
+    addSHeader("proporciondpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Proporciond presupuesto"));
+    addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id presupuesto"));
     setinsercion(TRUE);
-};
+}
 
 /*
-
+ 
 #define COL_IDDPRESUPUESTO 0
 #define COL_CONCEPTDPRESUPUESTO 1
 #define COL_PROPORCIONDPRESUPUESTO 2
 #define COL_IDPRESUPUESTO 3
-
-
+ 
+ 
 #include "listdescpresupuestoview.h"
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
-
-
+ 
+ 
 ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget * parent, const char * name) : Q3Table(parent, name), ListDescuentoPresupuesto() {
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(4);
@@ -52,32 +62,32 @@ ListDescuentoPresupuestoView::ListDescuentoPresupuestoView(QWidget * parent, con
     horizontalHeader()->setLabel( COL_CONCEPTDPRESUPUESTO, tr( "Descripci�" ) );
     horizontalHeader()->setLabel( COL_PROPORCIONDPRESUPUESTO, tr( "Porcentaje" ) );
     horizontalHeader()->setLabel( COL_IDPRESUPUESTO, tr( "Presupuesto" ) );
-
-
+ 
+ 
     setColumnWidth(COL_IDDPRESUPUESTO,100);
     setColumnWidth(COL_CONCEPTDPRESUPUESTO,300);
     setColumnWidth(COL_PROPORCIONDPRESUPUESTO,100);
     setColumnWidth(COL_IDPRESUPUESTO,100);
-
-
+ 
+ 
     hideColumn(COL_IDDPRESUPUESTO);
     hideColumn(COL_IDPRESUPUESTO);
-
-
+ 
+ 
     setSelectionMode( Q3Table::SingleRow );
-
+ 
     // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
     setPaletteBackgroundColor(confpr->valor(CONF_BG_DESCPRESUPUESTOS));
-
+ 
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
-
+ 
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
 }
-
-
+ 
+ 
 ListDescuentoPresupuestoView::~ListDescuentoPresupuestoView() {}
-
-
+ 
+ 
 void ListDescuentoPresupuestoView::pintaListDescuentoPresupuesto() {
     fprintf(stderr,"INICIO de pintaListDescuentoPresupuesto\n");
     setNumRows(0);
@@ -94,9 +104,9 @@ void ListDescuentoPresupuestoView::pintaListDescuentoPresupuesto() {
     }// end for
     fprintf(stderr,"FIN de pintaListDescuentoPresupuesto\n");
 }
-
-
-
+ 
+ 
+ 
 void ListDescuentoPresupuestoView::contextMenu ( int row, int, const QPoint & pos ) {
     Q3PopupMenu *popup;
     int opcion;
@@ -109,13 +119,13 @@ void ListDescuentoPresupuestoView::contextMenu ( int row, int, const QPoint & po
         borraDescuentoPresupuesto(row);
     }// end switch
 }// end contextMenuRequested
-
-
+ 
+ 
 void ListDescuentoPresupuestoView::borradescpresupuestoact() {
     borraDescuentoPresupuesto(currentRow());
 }// end borralinpresupuestoact
-
-
+ 
+ 
 void ListDescuentoPresupuestoView::pintadescListDescuentoPresupuesto(int pos) {
 fprintf(stderr,"pintalinListDescuentoPresupuesto(%d)\n",pos);
     DescuentoPresupuesto *linea;
@@ -124,13 +134,13 @@ fprintf(stderr,"pintalinListDescuentoPresupuesto(%d)\n",pos);
         setText(pos, COL_CONCEPTDPRESUPUESTO, linea->conceptdpresupuesto());
         setText(pos, COL_PROPORCIONDPRESUPUESTO, linea->proporciondpresupuesto());
         setText(pos, COL_IDPRESUPUESTO, linea->idpresupuesto());
-
+ 
 }
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 void ListDescuentoPresupuestoView::valueBudgetLineChanged(int row, int col) {
     fprintf(stderr,"valueBudgetLineChanged \n");
     DescuentoPresupuesto *linea;
@@ -149,14 +159,14 @@ void ListDescuentoPresupuestoView::valueBudgetLineChanged(int row, int col) {
         pintadescListDescuentoPresupuesto(row);
     }// end if
 } //end valueBudgetLineChanged
-
-
+ 
+ 
 /// Devuelve la linea que se esta tratando actualmente
 DescuentoPresupuesto *ListDescuentoPresupuestoView::lineaact() {
     fprintf(stderr,"ListDescuentoPresupuestoView::lineaact()\n");
     return lineaat(currentRow());
 }// end lineaact
-
+ 
 /// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
 DescuentoPresupuesto *ListDescuentoPresupuestoView::lineaat(int row) {
     fprintf(stderr,"ListDescuentoPresupuesto::lineaat(%d)\n", row);
@@ -173,7 +183,7 @@ DescuentoPresupuesto *ListDescuentoPresupuestoView::lineaat(int row) {
     	fprintf(stderr,"Linea inexistente\n");
         return NULL;
     }// end if
-
+ 
 }// end lineaat
 */
 

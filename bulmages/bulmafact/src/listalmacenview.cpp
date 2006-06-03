@@ -44,28 +44,27 @@ using namespace std;
 #define DEBUGMODE 1
 
 
-ListAlmacenView::ListAlmacenView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) {
-	_depura("ListAlmacenView::ListAlmacenView", DEBUGMODE);
-	setupUi(this);
-	companyact = comp;
-	mui_listado->setcompany(comp);
-	mui_listado->cargar();
-	_depura("END ListAlmacenView::ListAlmacenView", DEBUGMODE);
+ListAlmacenView::ListAlmacenView( company *comp , QWidget *parent, const char *name)
+        : QDialog(parent, name, Qt::WDestructiveClose) {
+    _depura("ListAlmacenView::ListAlmacenView", DEBUGMODE);
+    setupUi(this);
+    companyact = comp;
+    mui_listado->setcompany(comp);
+    mui_listado->cargar();
+    _depura("END ListAlmacenView::ListAlmacenView", DEBUGMODE);
 }
 
 
-ListAlmacenView::~ListAlmacenView() {
-}
-
-
+ListAlmacenView::~ListAlmacenView() {}
 
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("almacen");
     setDBCampoId("idalmacen");
-    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "idalmacen");
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "codigoalmacen");
-    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "nomalmacen");
-	setinsercion(TRUE);
+    addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id almacen"));
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo almacen"));
+    addSHeader("nomalmacen", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Nombre almacen"));
+    setinsercion(TRUE);
 }
+

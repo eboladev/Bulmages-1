@@ -1,14 +1,23 @@
-//
-// C++ Implementation: ListDescuentoPedidoProveedorView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <QMessageBox>
 #include <QMenu>
 #include <QKeyEvent>
@@ -20,13 +29,14 @@
 #include "funcaux.h"
 
 
-ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView(QWidget *parent) : SubForm2Bf(parent) {
+ListDescuentoPedidoProveedorView::ListDescuentoPedidoProveedorView(QWidget *parent)
+        : SubForm2Bf(parent) {
     setDBTableName("dpedidoproveedor");
     setDBCampoId("iddpedidoproveedor");
-    addSHeader("iddpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "iddpedidoproveedor");
-    addSHeader("conceptdpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "conceptdpedidoproveedor");
-    addSHeader("proporciondpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, "proporciondpedidoproveedor");
-    addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, "idpedidoproveedor");
+    addSHeader("iddpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idd pedido proveedor"));
+    addSHeader("conceptdpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Conceptd pedido proveedor"));
+    addSHeader("proporciondpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Proporciond pedido proveedor"));
+    addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido proveedor"));
     setinsercion(TRUE);
-};
+}
 

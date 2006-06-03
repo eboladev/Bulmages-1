@@ -17,8 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-//
-//
+
 #include "fpagoview.h"
 #include "company.h"
 #include "funcaux.h"
@@ -28,19 +27,19 @@
 #include <QCloseEvent>
 
 
-/** Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte */
+/// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 FPagoView::FPagoView(company *emp,QWidget *parent, const char *name)
         : QDialog(parent, name) , dialogChanges(this) {
     setupUi(this);
-    m_companyact=emp;
+    m_companyact = emp;
     setModoEdicion();
-    m_cursorFPagoView=NULL;
-    m_item=NULL;
+    m_cursorFPagoView = NULL;
+    m_item = NULL;
     pintar();
 }
 
 
-/** Carga el query de la base de datos y carga el qlistview */
+/// Carga el query de la base de datos y carga el qlistview.
 void FPagoView::pintar() {
     mui_lista->clear();
     if (m_cursorFPagoView != NULL)
@@ -49,11 +48,11 @@ void FPagoView::pintar() {
     mui_lista->clear();
     while (!m_cursorFPagoView->eof()) {
         new QListWidgetItem(m_cursorFPagoView->valor("descforma_pago"), mui_lista);
-        m_cursorFPagoView->siguienteregistro ();
-    }// end while
+        m_cursorFPagoView->siguienteregistro();
+    } // end while
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-}// end pintar
+}
 
 
 FPagoView::~FPagoView() {
@@ -62,111 +61,103 @@ FPagoView::~FPagoView() {
 }
 
 
-
-
 void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
-    _depura("on_mui_lista_currentItemChanged",0);
-
+    _depura("on_mui_lista_currentItemChanged", 0);
     int row = mui_lista->row(cur);
     trataModificado();
-    m_descforma_pago->setText(m_cursorFPagoView->valor("descforma_pago",row));
-    m_dias1tforma_pago->setText(m_cursorFPagoView->valor("dias1tforma_pago",row));
-    m_descuentoforma_pago->setText(m_cursorFPagoView->valor("descuentoforma_pago",row));
-    mdb_idforma_pago = m_cursorFPagoView->valor("idforma_pago",row);
+    m_descforma_pago->setText(m_cursorFPagoView->valor("descforma_pago", row));
+    m_dias1tforma_pago->setText(m_cursorFPagoView->valor("dias1tforma_pago", row));
+    m_descuentoforma_pago->setText(m_cursorFPagoView->valor("descuentoforma_pago", row));
+    mdb_idforma_pago = m_cursorFPagoView->valor("idforma_pago", row);
     m_item = cur;
 
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-
 }
-
-
 
 
 void FPagoView::on_mui_guardar_clicked() {
-try {
-    QString query = "UPDATE forma_pago SET descforma_pago='"+
-                    m_companyact->sanearCadena(m_descforma_pago->text())+"', dias1tforma_pago= "+
-                    m_companyact->sanearCadena(m_dias1tforma_pago->text())+" , descuentoforma_pago = "+
-                    m_companyact->sanearCadena(m_descuentoforma_pago->text())+" WHERE idforma_pago="+mdb_idforma_pago;
-    m_companyact->ejecuta(query);
-    if (m_cursorFPagoView != NULL)
-        delete m_cursorFPagoView;
-    m_cursorFPagoView = m_companyact->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
-    if(m_item)
-        m_item->setText(m_descforma_pago->text());
+    try {
+        QString query = "UPDATE forma_pago SET descforma_pago='" +
+                        m_companyact->sanearCadena(m_descforma_pago->text()) + "', dias1tforma_pago= " +
+                        m_companyact->sanearCadena(m_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
+                        m_companyact->sanearCadena(m_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
+        m_companyact->ejecuta(query);
+        if (m_cursorFPagoView != NULL)
+            delete m_cursorFPagoView;
+        m_cursorFPagoView = m_companyact->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
+        if(m_item)
+            m_item->setText(m_descforma_pago->text());
 
-
-    dialogChanges_cargaInicial();
-} catch(...) {
-	_depura ("error guardando la forma de pago",1);
-	return;
-}
-	
-}// end if
+        dialogChanges_cargaInicial();
+    } catch(...) {
+        _depura ("error guardando la forma de pago", 1);
+        return;
+    }
+} // end if
 
 
 bool FPagoView::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, "Guardar Forma de Pago",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+        if (QMessageBox::warning(this, tr("Guardar forma de pago"),
+                                 tr("Desea guardar los cambios."),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel ) == QMessageBox::Ok)
             on_mui_guardar_clicked();
         return (TRUE);
-    }// end if
+    } // end if
     return(FALSE);
-}// end trataModificado
+}
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
-  * Inserta en la tabla de ivas
-  */
+/// SLOT que responde a la pulsación del botón de nuevo tipo de iva
+/// Inserta en la tabla de IVAs.
 void FPagoView::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
-    QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO',0,0)";
+    QString query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('NUEVA FORMA DE PAGO', 0, 0)";
     m_companyact->begin();
     int error = m_companyact->ejecuta(query);
     if (error) {
         m_companyact->rollback();
         return;
-    }// end if
+    } // end if
     cursor2 *cur = m_companyact->cargacursor("SELECT max(idforma_pago) AS idFPagoView FROM forma_pago");
     m_companyact->commit();
     mdb_idforma_pago = cur->valor("idFPagoView");
     delete cur;
     pintar();
-}// end s_newTipoIVA
+}
 
 
-/** SLOT que responde a la pulsaci� del bot� de borrar la familia que se est�editando.
-  * Lo que hace es que se hace un update de todos los campos
-  */
+/// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
+/// Lo que hace es que se hace un update de todos los campos.
 void FPagoView::on_mui_borrar_clicked() {
     trataModificado();
     m_companyact->begin();
-    QString query = "DELETE FROM forma_pago WHERE idforma_pago="+mdb_idforma_pago;
+    QString query = "DELETE FROM forma_pago WHERE idforma_pago=" + mdb_idforma_pago;
     int error = m_companyact->ejecuta(query);
     if (error) {
         m_companyact->rollback();
         return;
-    }// end if
+    } // end if
     m_companyact->commit();
     pintar();
-}// end s_saveTipoIVA
+}
 
 
-
-void FPagoView::closeEvent( QCloseEvent *e) {
-    _depura("FPagoView::closeEvent",0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Forma de Pago",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
+void FPagoView::closeEvent(QCloseEvent *e) {
+    _depura("FPagoView::closeEvent", 0);
+    if (dialogChanges_hayCambios()) {
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar Forma de Pago"),
+                                       tr("Desea guardar los cambios."),
+                                       tr("&Si"), tr("&No"), tr("Cancelar"), 0, 2);
         if (val == 0)
             on_mui_guardar_clicked();
         if (val == 2)
             e->ignore();
-    }// end if
+    } // end if
 }
+
