@@ -37,18 +37,10 @@ class empresa;
 class extractoview1 : public QWidget, public Ui_ExtractoBase  {
     Q_OBJECT
 public:
-    /// Indica el número de registros que estamos viendo.
-    int numregistro;
-    /// Indica el número de registros que tiene el cursor2 \ref m_cursorcta
-    int numregistros;
-    /// Indica el número de dígitos que tienen las cuentas. (TAL VEZ DEBERIA ESTAR EN CONFPR)
-    int numdigitos;
     /// El extracto se realiza sobre un cursor que siempre esté en memoria.
     cursor2 *m_cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
     empresa *m_companyact;
-    /// Tabla auxiliar que almacena los centros de coste (DEBERIA CAMBIARSE POR UN QMap)
-    int ccostes[200];
 public:
     extractoview1(empresa *,QWidget *parent=0, const char *name=0, int flags=0);
     ~extractoview1();

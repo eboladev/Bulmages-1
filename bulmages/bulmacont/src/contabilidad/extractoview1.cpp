@@ -58,7 +58,7 @@ extractoview1::extractoview1(empresa * emp,QWidget *parent, const char *name, in
     mui_list->setcompany(emp);
 
     m_companyact = emp;
-    numdigitos = m_companyact->numdigitosempresa();
+//    numdigitos = m_companyact->numdigitosempresa();
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
     m_codigoinicial->hideNombre();
@@ -220,7 +220,7 @@ void extractoview1::presentar() {
     cursor2 *cursorapt;
 //    cursor2 *cursorcoste;
 //    cursor2 *cursorcanal;
-    cursor2 *cursoraux1;
+//    cursor2 *cursoraux1;
 
     if (m_cursorcta->eof() || m_cursorcta->bof())
         return;
