@@ -26,15 +26,15 @@
 ListCompArticulo::ListCompArticulo(company *comp) {
     companyact = comp;
     m_lista.setAutoDelete(TRUE);
-    mdb_idarticulo="";
+    mdb_idarticulo = "";
 }
 
 
 ListCompArticulo::ListCompArticulo() {
-    	   _depura("Constructor de ListCompArticulo\n",0);
-           companyact=NULL;
-           m_lista.setAutoDelete(TRUE);
-           mdb_idarticulo="";
+    _depura("Constructor de ListCompArticulo\n", 0);
+    companyact = NULL;
+    m_lista.setAutoDelete(TRUE);
+    mdb_idarticulo = "";
 }
 
 
@@ -42,41 +42,35 @@ ListCompArticulo::~ListCompArticulo() {}
 
 
 void ListCompArticulo::nuevalinea(QString idcomponente, QString cantcomparticulo, QString codigocompleto, QString nombre) {
-        CompArticulo *lin = new CompArticulo(companyact,
-                              mdb_idarticulo,
-                              idcomponente,
-                              cantcomparticulo,
-                              codigocompleto,
-                              nombre);
-	m_lista.append(lin);
+    CompArticulo *lin = new CompArticulo(companyact, mdb_idarticulo, idcomponente, cantcomparticulo, codigocompleto, nombre);
+    m_lista.append(lin);
 }
 
 
 CompArticulo *ListCompArticulo::linpos(int pos) {
-	return (m_lista.at(pos));
+    return (m_lista.at(pos));
 }
 
 
-// Carga lineas de presupuesto
+/// Carga lineas de presupuesto.
 void ListCompArticulo::cargar(QString idarticulo) {
     vaciar();
-    _depura("ListCompArticulo::cargaListCompArticulo\n",0);
+    _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
     mdb_idarticulo = idarticulo;
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo="+mdb_idarticulo+" AND articulo.idarticulo=comparticulo.idcomponente");
-    int i=0;
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo=comparticulo.idcomponente");
+    int i = 0;
     while (!cur->eof())   {
         /// Creamos un elemento del tipo CompArticulo y lo agregamos a la lista.
         CompArticulo *lin = new CompArticulo(companyact,
-                              cur->valor("idarticulo"),
-                              cur->valor("idcomponente"),
-                              cur->valor("cantcomparticulo"),
-                              cur->valor("codigocompletoarticulo"),
-                              cur->valor("nomarticulo")
-                                                );
+                                             cur->valor("idarticulo"),
+                                             cur->valor("idcomponente"),
+                                             cur->valor("cantcomparticulo"),
+                                             cur->valor("codigocompletoarticulo"),
+                                             cur->valor("nomarticulo"));
         m_lista.append(lin);
         i++;
         cur->siguienteregistro();
-    }// end while
+    } // end while
     delete cur;
     _depura("END ListCompArticulo::cargar");
 }
@@ -85,13 +79,13 @@ void ListCompArticulo::cargar(QString idarticulo) {
 void ListCompArticulo::guardaListCompArticulo() {
     CompArticulo *linea;
     uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
         linea->guardaCompArticulo();
         i++;
-    }// end for
+    } // end for
 }
 
- 
+
 void ListCompArticulo::vaciar() {
     mdb_idarticulo = "";
     m_lista.clear();
@@ -101,13 +95,13 @@ void ListCompArticulo::vaciar() {
 void ListCompArticulo::borrar() {
     if (mdb_idarticulo != "")  {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+mdb_idarticulo);
-	if (error) {
-		companyact->rollback();
-		return;
-	}// end if
+        int error = companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo=" + mdb_idarticulo);
+        if (error) {
+            companyact->rollback();
+            return;
+        } // end if
         companyact->commit();
-    }// end if
+    } // end if
 }
 
 
@@ -118,3 +112,4 @@ void ListCompArticulo::borrar(int pos) {
     m_lista.remove(pos);
     pintar();
 }
+

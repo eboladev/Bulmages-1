@@ -22,7 +22,7 @@
 
 
 void CompArticulo::definetabla() {
-    _depura("CompArticulo::definetabla",0);
+    _depura("CompArticulo::definetabla", 0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
     addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID articulo", "comparticulo"));
@@ -34,28 +34,29 @@ void CompArticulo::definetabla() {
 
 
 CompArticulo::CompArticulo(company *comp) : DBRecord(comp) {
-    _depura("CompArticulo::CompArticulo",0);
+    _depura("CompArticulo::CompArticulo", 0);
     companyact = comp;
     definetabla();
 }
 
 
 CompArticulo::CompArticulo(company *comp, QString idarticulo, QString idcomponente) : DBRecord(comp) {
-    _depura("CompArticulo::CompArticulo",0);
+    _depura("CompArticulo::CompArticulo", 0);
     companyact = comp;
     definetabla();
-    QString SQLQuery = "SELECT * FROM comparticulo, articulo WHERE comparticulo.idcomponente=articulo.idarticulo AND idarticulo="+idarticulo+" AND idcomponente="+idcomponente;
+    QString SQLQuery = "SELECT * FROM comparticulo, articulo WHERE comparticulo.idcomponente=articulo.idarticulo AND idarticulo=" + idarticulo + " AND idcomponente=" + idcomponente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         DBload(cur);
     } else {
         vaciaCompArticulo();
-    }// end if
+    } // end if
 }
 
 
-CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QString d, QString e) : DBRecord(comp) {
-    _depura("CompArticulo::CompArticulo",0);
+CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QString d, QString e)
+        : DBRecord(comp) {
+    _depura("CompArticulo::CompArticulo", 0);
     companyact = comp;
     definetabla();
     setDBvalue("idarticulo", a);
@@ -78,44 +79,44 @@ void CompArticulo::guardaCompArticulo() {
     /// Segun esta la linea en la base de datos o no se hace una cosa u otra.
     try {
         if (DBvalue("idarticulo") != "" && DBvalue("idcomponente") != "") {
-            QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES ("+
-                               DBvalueprep("idarticulo")+","+
-                               DBvalueprep("idcomponente")+","+
-                               DBvalueprep("cantcomparticulo")+")";
+            QString SQLQuery = "INSERT INTO comparticulo (idarticulo, idcomponente, cantcomparticulo) VALUES (" +
+                               DBvalueprep("idarticulo") + "," +
+                               DBvalueprep("idcomponente") + "," +
+                               DBvalueprep("cantcomparticulo") + ")";
             companyact->begin();
-            companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo="+DBvalueprep("idarticulo")+" AND idcomponente="+DBvalueprep("idcomponente"));
+            companyact->ejecuta("DELETE FROM comparticulo WHERE idarticulo=" + DBvalueprep("idarticulo") + " AND idcomponente=" + DBvalueprep("idcomponente"));
             companyact->ejecuta(SQLQuery);
             companyact->commit();
-        }// end if
+        } // end if
     } catch(...) {
-	_depura("se produjo un error al guardar componentes del articulo",1);
+        _depura("se produjo un error al guardar componentes del articulo", 1);
         companyact->rollback();
     }
 }
 
 
 void CompArticulo::setcodigocompletocomponente(QString val) {
-    _depura("setcodigocompletoarticulo()\n",0);
-    setDBvalue("codigocompletocomponente",val);
-    QString SQLQuery = "SELECT nomarticulo, idarticulo FROM articulo WHERE codigocompletoarticulo='"+val+"'";
+    _depura("setcodigocompletoarticulo()\n", 0);
+    setDBvalue("codigocompletocomponente", val);
+    QString SQLQuery = "SELECT nomarticulo, idarticulo FROM articulo WHERE codigocompletoarticulo='" + val + "'";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        setDBvalue("nomcomponente",cur->valor("nomarticulo"));
-        setDBvalue("idcomponente",cur->valor("idarticulo"));
-    }// end if
+        setDBvalue("nomcomponente", cur->valor("nomarticulo"));
+        setDBvalue("idcomponente", cur->valor("idarticulo"));
+    } // end if
     delete cur;
 }
 
 
 void CompArticulo::setidcomponente(QString val) {
     _depura("setidcomponente()\n", 0);
-    setDBvalue("idcomponente",val);
-    QString SQLQuery = "SELECT nomarticulo, codigocompletoarticulo FROM articulo WHERE idarticulo="+val+"";
+    setDBvalue("idcomponente", val);
+    QString SQLQuery = "SELECT nomarticulo, codigocompletoarticulo FROM articulo WHERE idarticulo=" + val + "";
     cursor2 *cur=companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
-        setDBvalue("nomcomponente",cur->valor("nomarticulo"));
+        setDBvalue("nomcomponente", cur->valor("nomarticulo"));
         setDBvalue("codigocompletocomponente", cur->valor("codigocompletoarticulo"));
-    }// end if
+    } // end if
     delete cur;
 }
 

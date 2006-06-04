@@ -75,10 +75,9 @@ void company::init(QString bd) {
 }
 
 
-/** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
-  * clases a partir de dicha inicializacion.
-  */
+/// Se utiliza para mostrar un selector de empresas abreempresaview
+/// Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
+/// clases a partir de dicha inicializacion.
 QString company::searchCompany() {
     /// El cambio de empresa se realiza desde el selector.
     _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n", 0);
@@ -120,10 +119,9 @@ void company::createMainWindows() {
     m_cobrosList->hide();
 
     _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
-    m_pagosList =  new PagosList (this, 0, theApp->translate("Pagos", "company"));
+    m_pagosList = new PagosList (this, 0, theApp->translate("Pagos", "company"));
     m_pWorkspace->addWindow(m_pagosList);
     m_pagosList->hide();
-
 
     m_budgetsList = new PresupuestoList(this, 0, theApp->translate("Presupuestos a clientes", "company"));
     m_pWorkspace->addWindow(m_budgetsList);
@@ -515,7 +513,7 @@ void company::s_newInventario() {
 AlbaranClienteView * company::newAlbaranClienteView() {
     /// Lanzamos los plugins necesarios.
     AlbaranClienteView *bud;
-    if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud))
         return bud;
     bud = new AlbaranClienteView(this, 0, theApp->translate("Edicion de albaranes a clientes", "company"));
     return bud;
@@ -533,9 +531,9 @@ void company::s_newAlbaranClienteView() {
 PedidoClienteView * company::newPedidoClienteView() {
     /// Lanzamos los plugins necesarios.
     PedidoClienteView *bud;
-    if (g_plugins->lanza("company_newPedidoClienteView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newPedidoClienteView", this, (void **)&bud))
         return bud;
-    bud = new PedidoClienteView(this , 0, theApp->translate("Edicion de pedidos a clientes", "company"));
+    bud = new PedidoClienteView(this, 0, theApp->translate("Edicion de pedidos a clientes", "company"));
     return bud;
 }
 
@@ -567,7 +565,7 @@ void company::s_newListConfiguracionView() {
 PagoView * company::newPagoView() {
     /// Lanzamos los plugins necesarios.
     PagoView *bud;
-    if (g_plugins->lanza("company_newPagoView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newPagoView", this, (void **)&bud))
         return bud;
     bud = new PagoView(this, 0, theApp->translate("Pago", "company"));
     return bud;
@@ -586,7 +584,7 @@ void company::s_newPagoView() {
 TipoArticuloList * company::newTipoArticuloList() {
     /// Lanzamos los plugins necesarios.
     TipoArticuloList *bud;
-    if (g_plugins->lanza("company_newTipoArticuloList", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newTipoArticuloList", this, (void **)&bud))
         return bud;
     bud = new TipoArticuloList(this, 0, theApp->translate("Tipos de articulo", "company"));
     return bud;
