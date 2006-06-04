@@ -31,6 +31,7 @@
 #include "fixed.h"
 #include "dbrecord.h"
 
+
 class AlbaranCliente : public DBRecord {
 protected:
     ListLinAlbaranClienteView *listalineas;

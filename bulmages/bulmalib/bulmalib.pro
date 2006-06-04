@@ -57,13 +57,14 @@ TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \
                 bulmalib_en.ts \
                 bulmalib_fr.ts \
-                bulmalib_de.ts 
+                bulmalib_de.ts \
+		bulmalib_zz.ts
 
 TEMPLATE = lib
 
 LANGUAGE = C++
 
-INCLUDEPATH += ../src \
+INCLUDEPATH += . \
 	/usr/include/qt4 \
 	/usr/include/qt4/Qt \
 	/usr/lib/qt4/include/Qt \

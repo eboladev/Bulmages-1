@@ -1132,6 +1132,13 @@
     </message>
 </context>
 <context>
+    <name>C.I.F. del cliente</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Cantidad</name>
     <message>
         <source>cobro</source>
@@ -1150,6 +1157,13 @@
     <name>Cliente</name>
     <message>
         <source>pedidocliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Cliente inactivo</name>
+    <message>
+        <source>cliente</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1611,10 +1625,6 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>CobrosListSubForm</name>
     <message>
-        <source>ID cobro&#xc2;&#xba;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>ID cliente</source>
         <translation></translation>
     </message>
@@ -1666,6 +1676,10 @@ Esta seguro que desea borrarlo?</source>
         <source>Apellidos del trabajador</source>
         <translation></translation>
     </message>
+    <message>
+        <source>ID cobro</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Codigo</name>
@@ -1689,9 +1703,23 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Codigo postal</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Codigo serie factura</name>
     <message>
         <source>factura</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Comentario albaran proveedor</name>
+    <message>
+        <source>albaranproveedor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1737,11 +1765,22 @@ Esta seguro que desea borrarlo?</source>
         <source>pedidocliente</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Contacto</name>
     <message>
         <source>pedidocliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Descripcion albaran proveedor</name>
+    <message>
+        <source>albaranproveedor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1771,6 +1810,20 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <source>presupuesto</source>
         <translation></translation>
+    </message>
+</context>
+<context>
+    <name>Direccion</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Direccion electronica</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2586,6 +2639,27 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Fecha albaran proveedor</name>
+    <message>
+        <source>albaranproveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Fecha de alta del cliente</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Fecha de baja del cliente</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Fecha de cobro</name>
     <message>
         <source>cobro</source>
@@ -2679,6 +2753,10 @@ Esta seguro que desea borrarlo?</source>
         <source>cobro</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ID cobro</name>
@@ -2716,6 +2794,13 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Id albaran proveedor</name>
+    <message>
+        <source>albaranproveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Id almacen</name>
     <message>
         <source>factura</source>
@@ -2723,6 +2808,10 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>pedidoproveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>albaranproveedor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2757,6 +2846,10 @@ Esta seguro que desea borrarlo?</source>
         <source>pedidoproveedor</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>albaranproveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>Id formad de pago</name>
@@ -2787,6 +2880,10 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>pedidoproveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>albaranproveedor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2820,6 +2917,13 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>pedidocliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Identificador Presupuesto</name>
+    <message>
+        <source>cliente</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3550,6 +3654,20 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Nombre alternativo del cliente</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Nombre del cliente</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Nombre del componente</name>
     <message>
         <source>comparticulo</source>
@@ -3571,6 +3689,27 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Numero albaran proveedor</name>
+    <message>
+        <source>albaranproveedor</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Numero cuenta corriente</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Numero de fax</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Numero de presupuesto</name>
     <message>
         <source>presupuesto</source>
@@ -3581,6 +3720,10 @@ Esta seguro que desea borrarlo?</source>
     <name>Numero de telefono</name>
     <message>
         <source>presupuesto</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>cliente</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4496,6 +4639,13 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Poblacion</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Presupuesto procesado</name>
     <message>
         <source>presupuesto</source>
@@ -5033,6 +5183,13 @@ Esta seguro que desea borrarlo?</source>
     </message>
 </context>
 <context>
+    <name>Provincia</name>
+    <message>
+        <source>cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Referencia</name>
     <message>
         <source>presupuesto</source>
@@ -5040,6 +5197,13 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>pedidocliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Referencia albaran proveedor</name>
+    <message>
+        <source>albaranproveedor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5228,11 +5392,11 @@ v 0.5.9</source>
     </message>
     <message>
         <source>Codigo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Código</translation>
     </message>
     <message>
         <source>Descripcion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Descripción</translation>
     </message>
 </context>
 <context>
@@ -5735,7 +5899,7 @@ QMenuBar and QToolBar.</translation>
     </message>
     <message>
         <source>Codigo completo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Código completo</translation>
     </message>
     <message>
         <source>Nombre del articulo</source>

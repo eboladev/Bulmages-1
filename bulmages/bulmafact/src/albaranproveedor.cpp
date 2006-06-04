@@ -111,12 +111,12 @@ int AlbaranProveedor::guardar() {
         companyact->commit();
         _depura("END AlbaranProveedor::guardar", 0);
         return 0;
-    }// end try
+    } // end try
     catch(...) {
-        _depura("AlbaranProveedor::guardar error al guardar",1);
+        _depura("AlbaranProveedor::guardar error al guardar", 1);
         companyact->rollback();
         return - 1;
-    }// end catch
+    } // end catch
 }
 
 
@@ -168,7 +168,7 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     SDBRecord *linea;
     uint i = 0;
 
-    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+    for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
         fitxersortidatxt += "<tr>";
         fitxersortidatxt += "<td>" + linea->DBvalue("desclalbaranp") + "</td>";

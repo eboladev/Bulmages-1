@@ -256,7 +256,8 @@ TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
                 bulmafact_fr.ts \
-                bulmafact_de.ts 
+                bulmafact_de.ts \
+		bulmafact_zz.ts
 
 unix{
 

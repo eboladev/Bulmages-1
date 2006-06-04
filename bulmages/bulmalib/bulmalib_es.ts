@@ -289,6 +289,38 @@
     </message>
 </context>
 <context>
+    <name>SubForm3Base</name>
+    <message>
+        <source>Configuracion Subformularios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imprimir pedido</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;asdf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Query</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Columnas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aplicar Cambios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Query</source>
+        <comment>Consulta SQL</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>abreempresadlg</name>
     <message>
         <source>Actualizar</source>

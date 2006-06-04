@@ -7,7 +7,7 @@
 #include "subform2bc.h"
 
 
-/** @author Tomeu Borr� Riera 
+/** @author Tomeu Borras Riera 
   * \brief Muestra un listado de todos los asientos existentes e informa de si estan abiertos o cerrados.
 */
 

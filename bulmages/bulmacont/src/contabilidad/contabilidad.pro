@@ -84,7 +84,8 @@ TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \
                 bulmages_en.ts \
                 bulmages_fr.ts \
-                bulmages_de.ts 
+                bulmages_de.ts \
+		bulmages_zz.ts
 
 IMAGES += images/kate.png \
           images/kfind.png \
@@ -342,14 +343,14 @@ win32{
 
   OBJECTS_DIR = .obj
 
-  LIBS += ../../../bulmalib/release/libbulmalib.a \
- 	C:\Qt\4.1.0\lib\libQtXml4.a \
-	C:\Qt\4.1.0\lib\libQtXmld4.a 
+  LIBS += ../../../bulmalib/release/libbulmalib0.a \
+ 	C:\Qt\4.1.1\lib\libQtXml4.a \
+#	C:\Qt\4.1.1\lib\libQtXmld4.a 
 
   INCLUDEPATH += ../../../bulmalib/libpq \
                  ../contabilidad \
 		 .. \
- 		 C:\Qt\4.1.0\include\QtXml
+ 		 C:\Qt\4.1.1\include\QtXml
 
 
   INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
