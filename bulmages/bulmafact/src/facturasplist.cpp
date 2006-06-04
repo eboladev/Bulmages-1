@@ -62,7 +62,7 @@ FacturasProveedorList::~FacturasProveedorList() {}
 
 
 void FacturasProveedorList::presenta() {
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
     mui_list->cargar(cur);
     delete cur;
 

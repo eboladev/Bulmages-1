@@ -36,29 +36,30 @@
 CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
         : QWidget (parent, name, flag) {
     setupUi(this);
-    _depura("CobrosList::CobrosList",0);
+    _depura("CobrosList::CobrosList", 0);
     m_companyact = NULL;
-    m_modo=0;
-    mdb_idcobro="";
-    meteWindow(caption(),this);
+    m_modo = 0;
+    mdb_idcobro = "";
+    meteWindow(caption(), this);
     hideBusqueda();
-    _depura("END CobrosList::CobrosList",0);
+    _depura("END CobrosList::CobrosList", 0);
 
 }
 
 
-CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)   : QWidget(parent, name, flag) {
+CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
+        : QWidget(parent, name, flag) {
     setupUi(this);
     _depura("CobrosList::CobrosList",0);
     m_companyact = comp;
     m_cliente->setcompany(comp);
     mui_list->setcompany(comp);
     presentar();
-    m_modo=0;
-    mdb_idcobro="";
-    meteWindow(caption(),this);
+    m_modo = 0;
+    mdb_idcobro = "";
+    meteWindow(caption(), this);
     hideBusqueda();
-    _depura("END CobrosList::CobrosList",0);
+    _depura("END CobrosList::CobrosList", 0);
 }
 
 
@@ -68,59 +69,59 @@ CobrosList::~CobrosList() {
 
 
 void CobrosList::presentar() {
-    _depura("CobrosList::presentar()\n",0);
-    if (m_companyact != NULL ) {
-        cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1"+generaFiltro());
+    _depura("CobrosList::presentar()\n", 0);
+    if (m_companyact != NULL) {
+        cursor2 * cur = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1" + generaFiltro());
         mui_list->cargar(cur);
         delete cur;
 
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1"+generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1" + generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
-    }// end if
-    _depura("END CobrosList::presentar()\n",0);
+    } // end if
+    _depura("END CobrosList::presentar()\n", 0);
 }
 
 
 QString CobrosList::generaFiltro() {
-    _depura("CobrosList::generaFiltro\n",0);
-    QString filtro="";
+    _depura("CobrosList::generaFiltro\n", 0);
+    QString filtro = "";
     if (m_filtro->text() != "") {
-        filtro = " AND ( desccobro LIKE '%"+m_filtro->text()+"%' ";
+        filtro = " AND ( desccobro LIKE '%" + m_filtro->text() + "%' ";
     } else {
         filtro = "";
-    }// end if
+    } // end if
     if (m_cliente->idcliente() != "") {
-        filtro += " AND cobro.idcliente="+m_cliente->idcliente();
-    }// end if
+        filtro += " AND cobro.idcliente=" + m_cliente->idcliente();
+    } // end if
     if (!m_procesados->isChecked() ) {
         filtro += " AND NOT previsioncobro";
-    }// end if
+    } // end if
 
     if (m_fechain->text() != "")
-        filtro += " AND fechacobro >= '"+m_fechain->text()+"' ";
+        filtro += " AND fechacobro >= '" + m_fechain->text() +"' ";
 
     if (m_fechafin->text() != "")
-        filtro += " AND fechacobro <= '"+m_fechafin->text()+"' ";
+        filtro += " AND fechacobro <= '" + m_fechafin->text() + "' ";
 
-    _depura("END CobrosList::generaFiltro\n",0);
+    _depura("END CobrosList::generaFiltro\n", 0);
     return (filtro);
 }
 
 
 void CobrosList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >=0 )
-        on_mui_list_cellDoubleClicked(a,0);
+    if (a >= 0)
+        on_mui_list_cellDoubleClicked(a, 0);
     else
-        _depura("Debe seleccionar una linea",2);
+        _depura("Debe seleccionar una linea", 2);
 }
 
 
 void CobrosList::on_mui_crear_clicked() {
-    _depura("CobrosList::on_mui_crear_clicked",0);
-    CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de cobros", "company"));
+    _depura("CobrosList::on_mui_crear_clicked", 0);
+    CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("Edicion de cobros", "company"));
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
@@ -128,81 +129,82 @@ void CobrosList::on_mui_crear_clicked() {
 
 
 void CobrosList::imprimir() {
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"cobros.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"cobros.rml";
-    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "cobros.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "cobros.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
-    /// Copiamos el archivo
+    /// Copiamos el archivo.
 #ifdef WINDOWS
 
-    archivo = "copy "+archivo+" "+archivod;
+    archivo = "copy " + archivo + " " + archivod;
 #else
 
-    archivo = "cp "+archivo+" "+archivod;
+    archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system (archivo.ascii());
 
-    /// Copiamos el logo
-
+    /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
 
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system (archivologo.ascii());
 
     QFile file;
-    file.setName( archivod );
-    file.open( QIODevice::ReadOnly );
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // L�ea de totales del presupuesto
+    /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
-    buff.replace("[story]",fitxersortidatxt);
+    buff.replace("[story]", fitxersortidatxt);
 
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
         stream << buff;
         file.close();
     }
-    // Crea el pdf  y lo muestra.
+
+    /// Crea el pdf y lo muestra.
     invocaPDF("cobros");
 }
 
 
 void CobrosList::on_mui_borrar_clicked() {
     mdb_idcobro = mui_list->DBvalue("idcobro");
-    if (m_modo ==0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de presupuestos", "company"));
+    if (m_modo == 0 && mdb_idcobro != "") {
+        CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("Edicion de presupuestos", "company"));
         bud->cargar(mdb_idcobro);
         bud->borrar();
-    }// end if
+    } // end if
     presentar();
 }
 
 
-void CobrosList::on_mui_list_cellDoubleClicked(int, int ) {
+void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     mdb_idcobro = mui_list->DBvalue("idcobro");
-    if (m_modo ==0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact,NULL,theApp->translate("Edicion de cobros", "company"));
+    if (m_modo == 0 && mdb_idcobro != "") {
+        CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("Edicion de cobros", "company"));
         bud->cargar(mdb_idcobro);
         bud->show();
     } else {
         close();
-    }// end if
+    } // end if
 }
 
+
 void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
-    _depura("PagosList::on_mui_list_customContextMenuRequested",0);
+    _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
     if ( a < 0)
         return;
@@ -221,11 +223,10 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 CobrosListSubForm::CobrosListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("cobro");
     setDBCampoId("idcobro");
-    addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobroº"));
+    addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobro"));
     addSHeader("idcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID cliente"));
     addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
     addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("C.I.F."));

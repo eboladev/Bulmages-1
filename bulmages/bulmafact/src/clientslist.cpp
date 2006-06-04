@@ -20,7 +20,6 @@
 
 #include <QLineEdit>
 #include <QTextStream>
-#include "pgimportfiles.h"
 #include <Q3FileDialog>
 #include <QCheckBox>
 #include <QMessageBox>
@@ -30,24 +29,25 @@
 #include "company.h"
 #include "qtable1.h"
 #include "funcaux.h"
+#include "pgimportfiles.h"
 
 #define EDIT_MODE 0
 
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, name, flag) , pgimportfiles(comp) {
+        : QWidget(parent, name, flag), pgimportfiles(comp) {
     setupUi(this);
     m_companyact = comp;
     mui_list->setcompany(comp);
-    mdb_idcliente="";
-    mdb_cifcliente="";
-    mdb_nomcliente="";
+    mdb_idcliente = "";
+    mdb_cifcliente = "";
+    mdb_nomcliente = "";
     m_modo = editmode;
     hideBusqueda();
     presenta();
     /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
-    if (m_modo==EditMode)
-        m_companyact->meteWindow(caption(),this);
+    if (m_modo == EditMode)
+        m_companyact->meteWindow(caption(), this);
 }
 
 
@@ -57,25 +57,23 @@ ClientsList::~ClientsList() {
 }
 
 
-/**
-  * Iniciamos los clientes.
-  * Hacemos la consulta a la base de datos y presentamos el listado.
-  */
+/// Iniciamos los clientes.
+/// Hacemos la consulta a la base de datos y presentamos el listado.
 void ClientsList::presenta() {
-    _depura("ClientsList::presenta",0);
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%"+m_findClient->text()+"%' ORDER BY nomcliente");
+    _depura("ClientsList::presenta", 0);
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
     mui_list->cargar(cur);
     delete cur;
-    _depura("END ClientsList::presenta",0);
+    _depura("END ClientsList::presenta", 0);
 }
 
 
-void ClientsList::editar(int  row) {
-    _depura("ClientsList::editar",0);
+void ClientsList::editar(int row) {
+    _depura("ClientsList::editar", 0);
     mdb_idcliente = mui_list->DBvalue("idcliente", row);
-    mdb_cifcliente = mui_list->DBvalue("cifcliente",row);
-    mdb_nomcliente = mui_list->DBvalue("nomcliente",row);
-    if (m_modo ==0 ) {
+    mdb_cifcliente = mui_list->DBvalue("cifcliente", row);
+    mdb_nomcliente = mui_list->DBvalue("nomcliente", row);
+    if (m_modo == 0) {
         ClienteView *prov = m_companyact->newClienteView();
         if (prov->cargar(mdb_idcliente))
             return;
@@ -83,71 +81,71 @@ void ClientsList::editar(int  row) {
         prov->show();
     } else {
         emit(selected(mdb_idcliente));
-    }// end if
-    _depura("END ClientsList::editar",0);
+    } // end if
+    _depura("END ClientsList::editar", 0);
 }
 
 
 void ClientsList::on_mui_editar_clicked() {
     if (mui_list->currentRow() < 0) {
-        _depura("Debe seleccionar un elemento",2);
+        _depura("Debe seleccionar un elemento", 2);
         return;
-    }// end if
+    } // end if
     editar(mui_list->currentRow());
 }
 
 
 void ClientsList::on_mui_imprimir_clicked() {
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS)+"clientes.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER)+"clientes.rml";
-    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS)+"logo.jpg";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "clientes.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "clientes.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
-    /// Copiamos el archivo
+    /// Copiamos el archivo.
 #ifdef WINDOWS
-    archivo = "copy "+archivo+" "+archivod;
+    archivo = "copy " + archivo + " " + archivod;
 #else
-    archivo = "cp "+archivo+" "+archivod;
+    archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system (archivo.ascii());
-    /// Copiamos el logo
-
+    /// Copiamos el logo.
 #ifdef WINDOWS
-    archivologo = "copy "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
-    archivologo = "cp "+archivologo+" "+confpr->valor(CONF_DIR_USER)+"logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system (archivologo.ascii());
 
     QFile file;
-    file.setName( archivod );
-    file.open( QIODevice::ReadOnly );
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    // Linea de totales del presupuesto
+
+    /// Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
-    buff.replace("[story]",fitxersortidatxt);
+    buff.replace("[story]", fitxersortidatxt);
 
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
         stream << buff;
         file.close();
-    }// end if
+    } // end if
 
-    // Crea el pdf  y lo muestra.
+    /// Crea el pdf y lo muestra.
     invocaPDF("clientes");
 }
 
 
 void ClientsList::on_mui_borrar_clicked() {
     mdb_idcliente = mui_list->DBvalue("idcliente");
-    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = "+mdb_idcliente;
+    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = " + mdb_idcliente;
     int error = m_companyact->ejecuta(SQLQuery);
     if (error)
         return;
@@ -156,32 +154,31 @@ void ClientsList::on_mui_borrar_clicked() {
 
 
 void ClientsList::on_mui_exportar_clicked() {
-    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_CLIENTES);
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n",2);
-    }// end if
+        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+    } // end if
 }
 
 
 void ClientsList::on_mui_importar_clicked() {
-    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Clientes (*.xml)", this, "select file", "Elija el Archivo"));
-    if (filexml.open(QIODevice::ReadOnly))  {
+    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_CLIENTES);
         filexml.close();
         presenta();
     }  else  {
-        _depura("ERROR AL ABRIR EL ARCHIVO\n",2);
-    }// end if
+        _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
+    } // end if
 }
 
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-
 ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("cliente");
     setDBCampoId("idcliente");

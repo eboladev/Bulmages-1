@@ -59,7 +59,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
     showMaximized();
 
-//    BusquedaPeriodo *bus = new BusquedaPeriodo(this);
+    // BusquedaPeriodo *bus = new BusquedaPeriodo(this);
 
     statusBar()->message(tr("Listo"), 2000);
     _depura("Fin de bulmafact constructor\n", 0);
@@ -71,6 +71,7 @@ bulmafact::~bulmafact() {
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef WINDOWS
+
     exit(0);
 #endif
 
@@ -80,20 +81,23 @@ bulmafact::~bulmafact() {
 
 void bulmafact::emitirfactura() {
     _depura("emitir factura activado", 0);
-    QMessageBox::information(this, tr("BulmaFact"),
-                                   tr("Pulse aceptar para emitir un monton de facturas"));
+    QMessageBox::information(this,
+                             tr("BulmaFact"),
+                             tr("Pulse aceptar para emitir un monton de facturas"));
 }
 
 
 void bulmafact::recibirfactura() {
     _depura("recibir factura activado", 0);
-    QMessageBox::critical(this, tr("BulmaFact"),
+    QMessageBox::critical(this,
+                          tr("BulmaFact"),
                           tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
 }
 
 
 void bulmafact::about() {
-    QMessageBox::about(this, tr("Qt Application Example"),
+    QMessageBox::about(this,
+                       tr("Qt Application Example"),
                        tr("This example demonstrates simple use of "
                           "QMainWindow,\nQMenuBar and QToolBar."));
 }
@@ -129,6 +133,7 @@ void bulmafact::closeEvent(QCloseEvent *) {
     delete m_company;
 
 #ifdef WINDOWS
+
     exit(0);
 #endif
 

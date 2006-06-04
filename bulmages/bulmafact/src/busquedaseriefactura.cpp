@@ -18,15 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QComboBox>
+
 #include "busquedaseriefactura.h"
 #include "company.h"
-#include <QComboBox>
 
 
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent, const char *name)
         : QComboBox(parent, name) {
-    companyact=NULL;
-    m_cursorcombo=NULL;
+    companyact = NULL;
+    m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
 

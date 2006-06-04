@@ -30,7 +30,6 @@
 #include "subform2bf.h"
 
 
-
 class FacturasProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
@@ -41,14 +40,14 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura("AlbaranesProveedorListSubform::cargar\n",0);
+        _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM facturap";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
     virtual int cargar(cursor2 *cur) {
-        _depura("AlbaranesProveedorListSubform::cargar\n",0);
+        _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         SubForm3::cargar(cur);
         return 0;
     };
@@ -77,7 +76,7 @@ public:
         m_companyact = comp;
         m_proveedor->setcompany(comp);
         m_articulo->setcompany(comp);
-	mui_list->setcompany(comp);
+        mui_list->setcompany(comp);
     };
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
@@ -118,7 +117,7 @@ public:
     void editar(int);
 
 public slots:
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_actualizar_clicked() {

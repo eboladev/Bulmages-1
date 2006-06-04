@@ -42,12 +42,12 @@
 
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), Articulo(comp) {
-    _depura("ArticuloView::INIT_constructor()\n",0);
+        : QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
+    _depura("ArticuloView::INIT_constructor()\n", 0);
     m_companyact = comp;
     setupUi(this);
 
-    /// Disparamos los plugins
+    /// Disparamos los plugins.
     int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
     if (res != 0)
         return;
@@ -85,7 +85,7 @@ void ArticuloView::pintar() {
     m_abrevarticulo->setText(DBvalue("abrevarticulo"));
 
     m_codigocompletoarticulo->setText(DBvalue("codigocompletoarticulo"));
-    /// Pintamos el stockable y el presentable
+    /// Pintamos el stockable y el presentable.
     if (DBvalue("presentablearticulo") == "t") {
         m_presentablearticulo->setChecked(TRUE);
     } else {
@@ -111,7 +111,7 @@ int ArticuloView::cargar(QString idarticulo) {
     int error = 0;
     setDBvalue("idarticulo", idarticulo);
 
-    /// Disparamos los plugins
+    /// Disparamos los plugins.
     int res = g_plugins->lanza("ArticuloView_cargar", this);
     if (res != 0)
         return res;
@@ -124,7 +124,7 @@ int ArticuloView::cargar(QString idarticulo) {
     if (ret)
         error = 1;
 
-    /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo
+    /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
     setCaption(tr("Articulo ")+DBvalue("codigocompletoarticulo"));
     ret = m_companyact->meteWindow(caption(), this);
     if (ret)
@@ -132,7 +132,7 @@ int ArticuloView::cargar(QString idarticulo) {
     m_componentes->cargar(DBvalue("idarticulo"));
 
 
-    /// Tratamiento de excepciones
+    /// Tratamiento de excepciones.
     if (error == 1) {
         _depura("ArticuloView::END_chargeArticle Error en la carga del articulo()\n", 0);
         return -1;
@@ -144,9 +144,10 @@ int ArticuloView::cargar(QString idarticulo) {
     return 0;
 }
 
+
 /// Hace la carga del combo-box de tipos de iva para el articulo.
 int ArticuloView::cargarcomboiva(QString idIva) {
-    _depura("ArticuloView::INIT_cargarcomboiva()\n",0);
+    _depura("ArticuloView::INIT_cargarcomboiva()\n", 0);
 
     m_cursorcombo = NULL;
     if (m_cursorcombo != NULL)
@@ -166,7 +167,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         m_combotipo_iva->insertItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
     } // end while
-    if (i1 != 0 ) {
+    if (i1 != 0) {
         m_combotipo_iva->setCurrentItem(i1 - 1);
     } // end if
 
@@ -174,12 +175,14 @@ int ArticuloView::cargarcomboiva(QString idIva) {
     return 0;
 }
 
+
 /// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
 void ArticuloView::on_mui_borrar_clicked() {
-    _depura("ArticuloView::INIT_boton_borrar()\n",0);
+    _depura("ArticuloView::INIT_boton_borrar()\n", 0);
 
     if (DBvalue("idarticulo") != "") {
-        if (QMessageBox::question(this, tr("Borrar articulo"),
+        if (QMessageBox::question(this,
+                                  tr("Borrar articulo"),
                                   tr("Esta a punto de borrar un articulo. Desea continuar?"),
                                   tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
             m_componentes->borrar();
@@ -189,6 +192,7 @@ void ArticuloView::on_mui_borrar_clicked() {
     } // end if
     _depura("ArticuloView::END_boton_borrar()\n", 0);
 }
+
 
 void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::INIT_s_findArticulo()\n", 0);
@@ -202,6 +206,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 
     _depura("ArticuloView::END_s_findArticulo()\n", 0);
 }
+
 
 int ArticuloView::guardar() {
     try {
@@ -240,32 +245,31 @@ int ArticuloView::guardar() {
         _depura("ArticuloView::guardar()\n", 0);
         return 0;
     } catch (...) {
-        _depura("Hubo un error al guardar el articulo",2);
+        _depura("Hubo un error al guardar el articulo", 2);
         return 0;
     }
 }
 
 
 int ArticuloView::borrar() {
-try {
-	_depura("ArticuloView::borrar",0);
-	m_companyact->begin();
+    try {
+        _depura("ArticuloView::borrar", 0);
+        m_companyact->begin();
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_borrar", this);
         if (res != 0)
             return res;
-	m_componentes->borrar();
-	Articulo::borrar();
-	m_companyact->commit();
-	close();
-	_depura("END ArticuloView::borrar",0);
-	return 0;
-}
-catch (...) {
-	_depura("error en el borrado del articulo",2);
-	m_companyact->rollback();
-	return 0;
-}
+        m_componentes->borrar();
+        Articulo::borrar();
+        m_companyact->commit();
+        close();
+        _depura("END ArticuloView::borrar", 0);
+        return 0;
+    } catch (...) {
+        _depura("error en el borrado del articulo", 2);
+        m_companyact->rollback();
+        return 0;
+    }
 }
 
 
@@ -282,10 +286,12 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
     _depura("ArticuloView::END_s_cambiarimagen()\n", 0);
 }
 
+
 void ArticuloView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this, tr("Guardar articulo"),
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar articulo"),
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
@@ -300,3 +306,4 @@ void ArticuloView::on_mui_aceptar_clicked() {
     on_mui_guardar_clicked();
     close();
 }
+

@@ -18,13 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QFile>
+#include <QTextStream>
+
 #include "articulo.h"
 #include "company.h"
 #include "configuracion.h"
 #include "plugins.h"
-
-#include <QFile>
-#include <QTextStream>
 
 
 Articulo::Articulo(company *comp) : DBRecord(comp) {
@@ -54,7 +54,7 @@ Articulo::~Articulo() {}
 
 void Articulo::pintar() {
     _depura("Articulo::pintar", 0);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("Articulo_pintar", this);
     if (res != 0)
         return;

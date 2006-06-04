@@ -18,9 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QComboBox>
+
 #include "busquedatrabajador.h"
 #include "company.h"
-#include <QComboBox>
 
 
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)

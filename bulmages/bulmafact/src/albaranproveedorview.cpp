@@ -115,9 +115,11 @@ void AlbaranProveedorView::generarFactura()  {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
-    if (QMessageBox::question(this, tr("Factura inexistente"),
+    if (QMessageBox::question(this,
+                              tr("Factura inexistente"),
                               tr("No existe una factura asociada a este albaran."
-                                 "Desea crearla?"), tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+                                 "Desea crearla?"),
+                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
         return;
     }
 
@@ -132,7 +134,7 @@ void AlbaranProveedorView::generarFactura()  {
     SDBRecord *linea, *linea1;
 
     for ( int i  = 0; i < listalineas->rowCount(); ++i) {
-	linea = getlistalineas()->lineaat(i);
+        linea = getlistalineas()->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
         linea1->setDBvalue("desclfacturap",linea->DBvalue("desclalbaranp"));
         linea1->setDBvalue("cantlfacturap",linea->DBvalue("cantlalbaranp"));
@@ -152,9 +154,10 @@ void AlbaranProveedorView::generarFactura()  {
 void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this, tr("Guardar albaran"),
-                                             tr("Desea guardar los cambios?"),
-                                             tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar albaran"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
             guardar();
         if (val == 2)

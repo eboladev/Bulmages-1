@@ -39,10 +39,11 @@
 
 
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
-        :  QWidget(parent, name, Qt::WDestructiveClose) , Cliente(comp), dialogChanges(this) {
-    _depura("ClienteView::ClienteView",0);
+        :  QWidget(parent, name, Qt::WDestructiveClose), Cliente(comp), dialogChanges(this) {
+    _depura("ClienteView::ClienteView", 0);
     setupUi(this);
-    /// Disparamos los plugins
+
+    /// Disparamos los plugins.
     int res = g_plugins->lanza("ClienteView_ClienteView", this);
     if (res != 0)
         return;
@@ -50,34 +51,33 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
     m_provcliente->setcompany(m_companyact);
     m_provcliente->setProvincia("");
 
-    /// Desabilitamos los tabs que aun no se usan
-    mui_tab->setTabEnabled(6,FALSE);
-    mui_tab->setTabEnabled(7,FALSE);
-    mui_tab->setTabEnabled(8,FALSE);
+    /// Desabilitamos los tabs que aun no se usan.
+    mui_tab->setTabEnabled(6, FALSE);
+    mui_tab->setTabEnabled(7, FALSE);
+    mui_tab->setTabEnabled(8, FALSE);
 
-
-    /// Inicializamos las pantallas auxiliares a esta
+    /// Inicializamos las pantallas auxiliares a esta.
     m_listpresupuestos->setcompany(m_companyact);
     m_listpedidos->setcompany(m_companyact);
     m_listalbaranes->setcompany(m_companyact);
     m_listfacturas->setcompany(m_companyact);
     m_listcobros->setcompany(m_companyact);
 
-    m_companyact->meteWindow(caption(),this);
+    m_companyact->meteWindow(caption(), this);
     dialogChanges_cargaInicial();
-    /// Disparamos los plugins
-    res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
-    _depura("ClienteView::ClienteView",0);
 
+    /// Disparamos los plugins.
+    res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
+    _depura("ClienteView::ClienteView", 0);
 }
 
 
 ClienteView::~ClienteView() {
-    _depura("ClienteView::~ClienteView\n",0);
+    _depura("ClienteView::~ClienteView\n", 0);
     m_companyact->sacaWindow(this);
-    /// Disparamos los plugins
+    /// Disparamos los plugins.
     g_plugins->lanza("ClienteView_Des_ClienteView", this);
-    _depura("END ClienteView::~ClienteView\n",0);
+    _depura("END ClienteView::~ClienteView\n", 0);
 }
 
 
@@ -91,12 +91,12 @@ ClienteView::~ClienteView() {
 * a new client
 */
 int ClienteView::cargar(QString idcliente) {
-    _depura("ClienteView::cargar",0);
-    int error=0;
+    _depura("ClienteView::cargar", 0);
+    int error = 0;
 
     Cliente::cargar(idcliente);
-    setCaption("Cliente  "+DBvalue("nomcliente"));
-    if(m_companyact->meteWindow(caption(),this))
+    setCaption("Cliente  " + DBvalue("nomcliente"));
+    if(m_companyact->meteWindow(caption(), this))
         return -1;
 
     /// Hacemos que el listado de presupuestos de un cliente se inicialize.
@@ -113,17 +113,13 @@ int ClienteView::cargar(QString idcliente) {
 
     pintaCliente();
     dialogChanges_cargaInicial();
-    _depura("ClienteView::cargar",0);
+    _depura("ClienteView::cargar", 0);
     return error;
 }
 
 
-/**
-* Empties the form.
-*
-*/
+/// Empties the form.
 void ClienteView::emptyForm() {
-
     m_provcliente->setCurrentItem(0);
     dialogChanges_cargaInicial();
 }
@@ -137,12 +133,12 @@ void ClienteView::emptyForm() {
 * it is an existing one that has to be modified
 */
 int ClienteView::guardar() {
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("ClienteView_saveClient", this);
     if (res != 0)
         return 0;
-    setDBvalue("nomcliente",m_nomcliente->text());
-    setDBvalue("nomaltcliente",m_nomaltcliente->text());
+    setDBvalue("nomcliente", m_nomcliente->text());
+    setDBvalue("nomaltcliente", m_nomaltcliente->text());
     setDBvalue("cifcliente", m_cifcliente->text());
     setDBvalue("bancocliente", m_bancocliente->text());
     setDBvalue("dircliente", m_dircliente->text());
@@ -175,13 +171,14 @@ void ClienteView::deleteClient() {
 
 
 void ClienteView::on_mui_guardar_clicked() {
-    _depura("ClienteView::on_mui_guardar_clicked",0);
+    _depura("ClienteView::on_mui_guardar_clicked", 0);
     guardar();
 }
 
 
 void ClienteView::on_mui_borrar_clicked() {
-    int ret = QMessageBox::warning(this,tr("Edicion de clientes"),
+    int ret = QMessageBox::warning(this,
+                                   tr("Edicion de clientes"),
                                    tr("Esta a punto de borrar un cliente.\n"
                                       "Esta seguro que desea borrarlo?"),
                                    QMessageBox::Yes | QMessageBox::Default,
@@ -192,15 +189,18 @@ void ClienteView::on_mui_borrar_clicked() {
 }
 
 
-void ClienteView::closeEvent( QCloseEvent *e) {
-    _depura("closeEvent",0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, tr("Guardar cliente"),
-                                        tr("Desea guardar los cambios?"),tr("&Si"),tr("&No"),tr("&Cancelar"),0,2);
+void ClienteView::closeEvent(QCloseEvent *e) {
+    _depura("closeEvent", 0);
+    if (dialogChanges_hayCambios()) {
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar cliente"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
-            if (guardar()) e->ignore();
+            if (guardar())
+                e->ignore();
         if (val == 2)
             e->ignore();
-    }// end if
+    } // end if
 }
 

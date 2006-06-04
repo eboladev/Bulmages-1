@@ -18,16 +18,16 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "cobro.h"
-#include "company.h"
-#include "configuracion.h"
 #include <QFile>
 #include <QTextStream>
 
+#include "cobro.h"
+#include "company.h"
+#include "configuracion.h"
+
 
 Cobro::Cobro(company *comp) : DBRecord(comp) {
-    companyact=comp;
-
+    companyact = comp;
     setDBTableName("cobro");
     setDBCampoId("idcobro");
     addDBCampo("idcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID cobro", "cobro"));

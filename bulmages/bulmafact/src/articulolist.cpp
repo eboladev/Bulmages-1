@@ -38,14 +38,15 @@
 #include "funcaux.h"
 
 
-ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)  : QWidget(parent, name, flag)  , pgimportfiles(comp) {
-    _depura("ArticuloList::INIT_ArticuloList()\n",0);
+ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
+        : QWidget(parent, name, flag), pgimportfiles(comp) {
+    _depura("ArticuloList::INIT_ArticuloList()\n", 0);
     setupUi(this);
     m_companyact = comp;
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
     mui_list->setcompany(comp);
-m_usadoarticulo->setCheckState(Qt::Unchecked);
+    m_usadoarticulo->setCheckState(Qt::Unchecked);
     presenta();
     m_modo=editmodo;
     if (m_modo == EditMode)
@@ -57,7 +58,7 @@ m_usadoarticulo->setCheckState(Qt::Unchecked);
 
 void ArticuloList::presenta() {
     _depura("ArticuloList::INIT_presenta()\n", 0);
-    cursor2 * cur= m_companyact->cargacursor(formaQuery());
+    cursor2 * cur = m_companyact->cargacursor(formaQuery());
     mui_list->cargar(cur);
     delete cur;
     _depura("ArticuloList::END_presenta()\n", 0);
@@ -68,8 +69,8 @@ void ArticuloList::editArticle(int  row) {
     _depura("ArticuloList::INIT_editArticle()\n", 0);
     mdb_idarticulo = mui_list->DBvalue("idarticulo", row);
     mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
-    mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo",row);
-    if (m_modo == EditMode ) {
+    mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
+    if (m_modo == EditMode) {
         ArticuloView *art = m_companyact->newArticuloView();
         m_companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
@@ -107,7 +108,8 @@ ArticuloList::~ArticuloList() {
 
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n", 0);
-    if ( QMessageBox::Yes == QMessageBox::question(this, tr("Borrar articulo"),
+    if (QMessageBox::Yes == QMessageBox::question(this,
+            tr("Borrar articulo"),
             tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
             QMessageBox::Yes, QMessageBox::No)) {
         QString SQLQuery = "DELETE FROM articulo WHERE idarticulo=" + mui_list->DBvalue("idarticulo");
@@ -145,7 +147,7 @@ QString ArticuloList::formaQuery() {
         query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
     } // end if
     if (m_tipoarticulo->idtipo_articulo() != "") {
-        query += " AND idtipo_articulo = "+m_tipoarticulo->idtipo_articulo();
+        query += " AND idtipo_articulo = " + m_tipoarticulo->idtipo_articulo();
     } // end if
     query +=" ORDER BY codigocompletoarticulo";
     return (query);
@@ -166,7 +168,7 @@ QString ArticuloList::detalleArticulos() {
         QFile f(file);
         if (f.exists()) {
             texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                     "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) + 
+                     "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) +
                      XMLProtect(cur->valor("codigocompletoarticulo")) +
                      ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
                      "</illustration></td>\n";
@@ -189,32 +191,36 @@ void ArticuloList::Imprimir() {
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
-    /// Copiamos el archivo
+    /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system (archivo.ascii());
 
-    /// Copiamos el logo
+    /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system (archivologo.ascii());
     QFile file;
-    file.setName( archivod );
-    file.open( QIODevice::ReadOnly );
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString texto;
-    /// Linea de totales del presupuesto
-    buff.replace("[detallearticulos]",detalleArticulos());
+    /// Linea de totales del presupuesto.
+    buff.replace("[detallearticulos]", detalleArticulos());
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << buff;
@@ -231,37 +237,43 @@ void ArticuloList::s_imprimir1() {
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos1.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
-    /// Copiamos el archivo
+    /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system (archivo.ascii());
 
-    /// Copiamos el logo
+    /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
     system (archivologo.ascii());
 
     QFile file;
-    file.setName( archivod );
-    file.open( QIODevice::ReadOnly );
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    /// Linea de totales del presupuesto
+
+    /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
     buff.replace("[story]", fitxersortidatxt);
-    if (file.open( QIODevice::WriteOnly)) {
+
+    if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << buff;
         file.close();
@@ -275,7 +287,7 @@ void ArticuloList::s_imprimir1() {
 void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::INIT_s_exportar()\n", 0);
 
-    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_ARTICULOS);
         filexml.close();
@@ -289,8 +301,8 @@ void ArticuloList::on_mui_exportar_clicked() {
 
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar()\n", 0);
-    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
-    if (filexml.open(QIODevice::ReadOnly))  {
+    QFile filexml(Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_ARTICULOS);
         filexml.close();
         presenta();
@@ -309,7 +321,7 @@ void ArticuloList::on_mui_list_cellDoubleClicked(int a, int) {
 void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
-    if ( a < 0)
+    if (a < 0)
         return;
     QMenu *popup = new QMenu(this);
     QAction *edit = popup->addAction(tr("Editar articulo"));

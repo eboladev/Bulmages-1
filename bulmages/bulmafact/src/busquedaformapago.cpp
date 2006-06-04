@@ -18,9 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QComboBox>
+
 #include "busquedaformapago.h"
 #include "company.h"
-#include <QComboBox>
 
 
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)

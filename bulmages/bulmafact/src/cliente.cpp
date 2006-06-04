@@ -17,6 +17,7 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include <QFile>
 #include <QTextStream>
 
@@ -31,23 +32,23 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     m_companyact = comp;
     setDBTableName("cliente");
     setDBCampoId("idcliente");
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, "ID cliente");
-    addDBCampo("nomcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Nombre del cliente");
-    addDBCampo("nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Nombre alternativo del cliente");
-    addDBCampo("cifcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "C.I.F. del cliente");
-    addDBCampo("bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Numero cuenta corriente");
-    addDBCampo("dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Direccion");
-    addDBCampo("poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Poblacion");
-    addDBCampo("provcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Provincia");
-    addDBCampo("cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Codigo postal");
-    addDBCampo("telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Numero de telefono");
-    addDBCampo("faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Numero de fax");
-    addDBCampo("mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Direccion electronica");
-    addDBCampo("urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("faltacliente", DBCampo::DBdate, DBCampo::DBNothing, "Fecha de alta del cliente");
-    addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, "Fecha de baja del cliente");
-    addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios");
-    addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, "Cliente inactivo");
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID cliente", "cliente"));
+    addDBCampo("nomcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Nombre del cliente", "cliente"));
+    addDBCampo("nomaltcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Nombre alternativo del cliente", "cliente"));
+    addDBCampo("cifcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("C.I.F. del cliente", "cliente"));
+    addDBCampo("bancocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Numero cuenta corriente", "cliente"));
+    addDBCampo("dircliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Direccion", "cliente"));
+    addDBCampo("poblcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Poblacion", "cliente"));
+    addDBCampo("provcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Provincia", "cliente"));
+    addDBCampo("cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Codigo postal", "cliente"));
+    addDBCampo("telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Numero de telefono", "cliente"));
+    addDBCampo("faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Numero de fax", "cliente"));
+    addDBCampo("mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Direccion electronica", "cliente"));
+    addDBCampo("urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Identificador Presupuesto", "cliente"));
+    addDBCampo("faltacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de alta del cliente", "cliente"));
+    addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de baja del cliente", "cliente"));
+    addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentarios", "cliente"));
+    addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente inactivo", "cliente"));
     _depura("END Cliente::Cliente", 0);
 }
 
@@ -105,7 +106,7 @@ void Cliente::pintaCliente() {
 }
 
 
-/// Esta funcion carga un Cliente.
+/// Esta funcion carga un cliente.
 int Cliente::cargar(QString idcliente) {
     _depura("Cliente::cargaCliente", 0);
     QString query = "SELECT * FROM cliente WHERE idcliente=" + idcliente;

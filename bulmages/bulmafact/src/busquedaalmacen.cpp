@@ -18,9 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <Q3ComboBox>
+
 #include "busquedaalmacen.h"
 #include "company.h"
-#include <Q3ComboBox>
+
 
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *name)
         : QComboBox(parent) {

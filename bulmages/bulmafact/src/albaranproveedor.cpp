@@ -28,15 +28,15 @@ AlbaranProveedor::AlbaranProveedor(company *comp) : DBRecord(comp) {
     companyact = comp;
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
-    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Presupuesto");
-    addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
-    addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
-    addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, "Identificador Presupuesto");
+    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id albaran proveedor", "albaranproveedor"));
+    addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero albaran proveedor", "albaranproveedor"));
+    addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha albaran proveedor", "albaranproveedor"));
+    addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario albaran proveedor", "albaranproveedor"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id proveedor", "albaranproveedor"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id forma de pago", "albaranproveedor"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id almacen", "albaranproveedor"));
+    addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia albaran proveedor", "albaranproveedor"));
+    addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descripcion albaran proveedor", "albaranproveedor"));
 }
 
 
@@ -109,7 +109,7 @@ int AlbaranProveedor::guardar() {
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
-    _depura("END AlbaranProveedor::guardar", 0);
+        _depura("END AlbaranProveedor::guardar", 0);
         return 0;
     }// end try
     catch(...) {
