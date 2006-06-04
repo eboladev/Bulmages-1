@@ -5605,11 +5605,11 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>A&amp;yuda</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Socooorro</translation>
     </message>
     <message>
         <source>Venta&amp;na</source>
-        <translation type="unfinished"></translation>
+        <translation>Venta&amp;nucos</translation>
     </message>
     <message>
         <source>Listados</source>
@@ -5621,7 +5621,7 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>&amp;Salir</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Quiero irme a la playa</translation>
     </message>
     <message>
         <source>Ctrl+Q</source>
