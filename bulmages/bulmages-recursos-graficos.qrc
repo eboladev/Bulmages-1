@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/BulmaCont32x32" >
+        <file>images/pendientes/decrypted.png</file>
+        <file>images/pendientes/encrypted.png</file>
         <file>images/pendientes/i_W.gif</file>
         <file>images/pendientes/i_arbolBalance.xpm</file>
         <file>images/pendientes/i_asiento.xpm</file>
@@ -103,6 +105,7 @@
         <file>images/pendientes/i_xClipboard.png</file>
         <file>images/pendientes/identity.png</file>
         <file>images/pendientes/igualant.xpm</file>
+        <file>images/pendientes/wizard.png</file>
     </qresource>
     <qresource prefix="/Bulmafact16x16" >
         <file>images/png/16x16/i_bulmages_almacen.16x16.png</file>
