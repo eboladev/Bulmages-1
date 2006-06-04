@@ -92,18 +92,7 @@ public slots:
     virtual void on_subform2_editFinish(int, int) {
         s_pintaTotales();
     };
-    virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar factura de proveedor."),
-                                              tr("Desea eliminar la factura?"),
-                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            if (!borrar()) {
-                dialogChanges_cargaInicial();
-                _depura("Factura de Proveedor borrado satisfactoriamente.", 2);
-                close();
-            }// end if
-        }// end if
-    };
+    virtual void on_mui_borrar_clicked();
 };
 
 #endif

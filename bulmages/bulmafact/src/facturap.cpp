@@ -54,6 +54,7 @@ FacturaProveedor::~FacturaProveedor() {}
 
 
 int FacturaProveedor::borrar() {
+    _depura("FacturaProveedor::borrar", 0);
     int error = 0;
     if (DBvalue("idfacturap") != "") {
         companyact->begin();
@@ -64,7 +65,9 @@ int FacturaProveedor::borrar() {
             companyact->rollback();
             return -1;
         } // end if
+        companyact->commit();
     } // end if
+    _depura("END FacturaProveedor::borrar", 0);
     return 0;
 }
 

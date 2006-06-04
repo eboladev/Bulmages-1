@@ -116,6 +116,7 @@ void ProveedorList::on_mui_borrar_clicked() {
     }
     prov->on_mui_borrar_clicked();
     delete prov;
+    presenta();
     _depura("END ProveedorList::on_mui_borrar_clicked", 0);
 }
 
@@ -129,8 +130,10 @@ void ProveedorList::on_mui_imprimir_clicked() {
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -138,8 +141,10 @@ void ProveedorList::on_mui_imprimir_clicked() {
 
     /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 

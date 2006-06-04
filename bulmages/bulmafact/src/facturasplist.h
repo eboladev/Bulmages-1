@@ -21,8 +21,6 @@
 #ifndef FACTURASPROVEEDORLIST_H
 #define FACTURASPROVEEDORLIST_H
 
-#include <Q3Frame>
-
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "company.h"

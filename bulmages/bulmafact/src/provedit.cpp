@@ -19,7 +19,6 @@
  ***************************************************************************/
 #include <QLineEdit>
 #include <QMessageBox>
-#include <Q3Table>
 
 #include "provedit.h"
 #include "company.h"
@@ -30,7 +29,6 @@
 ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), DBRecord(comp), dialogChanges(this) {
     _depura("ProveedorView::ProveedorView", 0);
-
     setDBTableName("proveedor");
     setDBCampoId("idproveedor");
     addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID Proveedor"));
@@ -207,10 +205,12 @@ int ProveedorView::guardar() {
 void ProveedorView::on_mui_borrar_clicked() {
     if (DBvalue("idproveedor") != "")
         if ( QMessageBox::Yes == QMessageBox::question(this, tr("Borrar proveedor"),
-                                                       tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),
-                                                       QMessageBox::Yes, QMessageBox::No))
-            if (!DBRecord::borrar())
+                tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),
+                QMessageBox::Yes, QMessageBox::No))
+            if (!DBRecord::borrar()) {
+                dialogChanges_cargaInicial();
                 close();
+            }// end if
 }
 
 

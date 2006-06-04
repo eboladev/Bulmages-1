@@ -62,7 +62,9 @@ FacturasProveedorList::~FacturasProveedorList() {}
 
 
 void FacturasProveedorList::presenta() {
-    cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    _depura("FacturasProveedorList::presenta",0);
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+
     mui_list->cargar(cur);
     delete cur;
 
@@ -70,6 +72,7 @@ void FacturasProveedorList::presenta() {
     cur = m_companyact->cargacursor("SELECT SUM(calctotalfacpro(idfacturap)) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
+    _depura("END FacturasProveedorList::presenta",0);
 }
 
 
@@ -130,6 +133,7 @@ void FacturasProveedorList::on_mui_editar_clicked() {
 
 
 void FacturasProveedorList::on_mui_borrar_clicked() {
+    _depura("FacturasProveedorList::on_mui_borrar_clicked",0);
     mdb_idfacturap = mui_list->DBvalue("idfacturap");
     if (mdb_idfacturap != "") {
         FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
@@ -138,6 +142,7 @@ void FacturasProveedorList::on_mui_borrar_clicked() {
         delete bud;
     } // end if
     presenta();
+    _depura("END FacturasProveedorList::on_mui_borrar_clicked",0);
 }
 
 

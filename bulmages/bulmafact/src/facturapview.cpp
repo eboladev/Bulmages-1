@@ -19,11 +19,9 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>
@@ -128,9 +126,24 @@ int FacturaProveedorView::guardar() {
     setreffacturap(m_reffacturap->text());
     setidforma_pago(m_forma_pago->idforma_pago());
     setprocesadafacturap(m_procesadafacturap->isChecked() ? "TRUE" : "FALSE");
-
     int err = FacturaProveedor::guardar();
     dialogChanges_cargaInicial();
     return err;
 }
+
+
+void FacturaProveedorView::on_mui_borrar_clicked() {
+    int val = QMessageBox::warning(this, tr("Borrar factura de proveedor."),
+                                   tr("Desea eliminar la factura?"),
+                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+    if (val == 0) {
+        if (!borrar()) {
+            dialogChanges_cargaInicial();
+            _depura("Factura de Proveedor borrado satisfactoriamente.", 2);
+            close();
+        } // end if
+    } // end if
+}
+
+
 

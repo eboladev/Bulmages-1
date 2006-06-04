@@ -18,10 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3ListView>
 #include <QMap>
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
@@ -199,6 +197,10 @@ bool familiasview::trataModificado() {
 /// Lo que hace es que se hace un update de todos los campos.
 void familiasview::on_mui_guardar_clicked() {
     _depura("familiasview::on_mui_guardar_clicked", 0);
+    if (m_idfamilia == "") {
+        _depura(tr("Debe seleccionar una Familia"),2);
+	return;
+    } // end if
     QString query = "UPDATE familia SET nombrefamilia='" +
                     companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia= '" +
                     companyact->sanearCadena(m_descFamilia->text()) + "' , codigofamilia = '" +
@@ -255,12 +257,18 @@ void familiasview::on_mui_crear_clicked() {
 /// SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
 /// Lo que hace es que se hace un update de todos los campos.
 void familiasview::on_mui_borrar_clicked() {
+    _depura("familiasview::on_mui_borrar_clicked",0);
+    if (m_idfamilia == "") {
+        _depura(tr("Debe seleccionar una Familia"),2);
+	return;
+    } // end if
     trataModificado();
     QString query = "DELETE FROM FAMILIA WHERE idfamilia=" + m_idfamilia;
     int error = companyact->ejecuta(query);
     if (error)
         return;
     pintar();
+    _depura("END familiasview::on_mui_borrar_clicked",0);
 }
 
 

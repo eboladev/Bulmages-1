@@ -24,8 +24,6 @@
 #include "qtable1.h"
 #include "postgresiface2.h"
 
-
-
 class empresa;
 
 /** @brief Esta clase Mantiene la generación de extractos contables
