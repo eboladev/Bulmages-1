@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QMessageBox>
 #include <QCheckBox>
 #include <QFile>
@@ -34,7 +33,8 @@
 #include "funcaux.h"
 
 
-CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag) : QWidget (parent, name, flag) {
+CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
+        : QWidget (parent, name, flag) {
     setupUi(this);
     _depura("CobrosList::CobrosList",0);
     m_companyact = NULL;
@@ -72,7 +72,7 @@ void CobrosList::presentar() {
     if (m_companyact != NULL ) {
         cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1"+generaFiltro());
         mui_list->cargar(cur);
-	delete cur;
+        delete cur;
 
         /// Hacemos el calculo del total.
         cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1"+generaFiltro());
