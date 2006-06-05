@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3Table>
 #include <QMessageBox>
 #include <QFile>
 #include <QLineEdit>
@@ -26,7 +25,7 @@
 #include <QComboBox>
 #include <QTextStream>
 #include <QMenu>
-#include <Q3FileDialog>
+#include <QFileDialog>
 
 #include "articulolist.h"
 #include "pgimportfiles.h"
@@ -286,8 +285,11 @@ void ArticuloList::s_imprimir1() {
 
 void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::INIT_s_exportar()\n", 0);
+    QFile filexml(QFileDialog::getSaveFileName(this,
+                  tr("Elija el archivo"),
+                  confpr->valor(CONF_DIR_USER),
+                  tr("Clientes (*.xml)")));
 
-    QFile filexml(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_ARTICULOS);
         filexml.close();
@@ -301,7 +303,11 @@ void ArticuloList::on_mui_exportar_clicked() {
 
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar()\n", 0);
-    QFile filexml(Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml(QFileDialog::getOpenFileName(this,
+                  tr("Elija el archivo"),
+                  confpr->valor(CONF_DIR_USER),
+                  tr("Clientes (*.xml)")));
+
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_ARTICULOS);
         filexml.close();

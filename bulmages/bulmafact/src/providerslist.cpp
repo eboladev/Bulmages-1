@@ -22,7 +22,7 @@
 #include <QMessageBox>
 #include <QCheckBox>
 #include <QFile>
-#include <Q3FileDialog>
+#include <QFileDialog>
 #include <QTextStream>
 
 #include "providerslist.h"
@@ -175,7 +175,12 @@ void ProveedorList::on_mui_imprimir_clicked() {
 
 
 void ProveedorList::on_mui_exportar_clicked() {
-    QFile filexml(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Proveedores (*.xml)"), this, tr("Seleccione el archivo"), tr("Elija el archivo")));
+    QFile filexml(QFileDialog::getSaveFileName(
+                      this,
+                      tr("Seleccione el archivo"),
+                      confpr->valor(CONF_DIR_USER),
+                      tr("Proveedores (*.xml)")));
+
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_PROVEEDORES);
         filexml.close();
@@ -186,7 +191,12 @@ void ProveedorList::on_mui_exportar_clicked() {
 
 
 void ProveedorList::on_mui_importar_clicked() {
-    QFile filexml(Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),tr("Proveedores (*.xml)"), this, tr("Seleccione el archivo"), tr("Elija el archivo")));
+    QFile filexml(QFileDialog::getOpenFileName(
+                      this,
+                      tr("Elija el archivo"),
+                      confpr->valor(CONF_DIR_USER),
+                      tr("Proveedores (*.xml)")));
+
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_PROVEEDORES);
         filexml.close();

@@ -20,7 +20,7 @@
 
 #include <QLineEdit>
 #include <QTextStream>
-#include <Q3FileDialog>
+#include <QFileDialog>
 #include <QCheckBox>
 #include <QMessageBox>
 
@@ -102,16 +102,20 @@ void ClientsList::on_mui_imprimir_clicked() {
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
     system (archivo.ascii());
     /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
@@ -154,7 +158,12 @@ void ClientsList::on_mui_borrar_clicked() {
 
 
 void ClientsList::on_mui_exportar_clicked() {
-    QFile filexml(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml(QFileDialog::getSaveFileName(
+                      this,
+                      tr("Elija el archivo"),
+                      confpr->valor(CONF_DIR_USER),
+                      tr("Clientes (*.xml)")));
+
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_CLIENTES);
         filexml.close();
@@ -165,7 +174,12 @@ void ClientsList::on_mui_exportar_clicked() {
 
 
 void ClientsList::on_mui_importar_clicked() {
-    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Clientes (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml(QFileDialog::getOpenFileName(
+                      this,
+                      tr("Elija el archivo"),
+                      confpr->valor(CONF_DIR_USER),
+                      tr("Clientes (*.xml)")));
+
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_CLIENTES);
         filexml.close();

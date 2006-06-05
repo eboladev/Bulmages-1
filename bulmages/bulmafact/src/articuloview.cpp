@@ -20,13 +20,11 @@
 
 #include <QLineEdit>
 #include <QMessageBox>
-#include <Q3Table>
 #include <QComboBox>
-#include <Q3TextEdit>
 #include <QLabel>
 #include <QPixmap>
 #include <QCheckBox>
-#include <Q3FileDialog>
+#include <QFileDialog>
 #include <QCloseEvent>
 
 #include "articuloview.h"
@@ -275,13 +273,12 @@ int ArticuloView::borrar() {
 
 void ArticuloView::on_mui_cambiarimagen_clicked() {
     _depura("ArticuloView::INIT_s_cambiarimagen()\n", 0);
-
-    m_archivoimagen = Q3FileDialog::getOpenFileName(
-                          "",
-                          tr("Imagenes (*.jpg)"),
+    m_archivoimagen = QFileDialog::getOpenFileName(
                           this,
                           tr("Abrir ventana de archivo"),
-                          tr("Elige un archivo"));
+                          "",
+                          tr("Imagenes (*.jpg)"));
+
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("ArticuloView::END_s_cambiarimagen()\n", 0);
 }
