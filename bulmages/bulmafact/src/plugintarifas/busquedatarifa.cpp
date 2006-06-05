@@ -17,27 +17,28 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-//
+
+#include <Q3ComboBox>
+
 #include "busquedatarifa.h"
 #include "company.h"
 #include "funcaux.h"
 
-#include <Q3ComboBox>
 
 BusquedaTarifa::BusquedaTarifa(QWidget *parent, const char *name)
-: Q3ComboBox(parent, name) {
-    companyact=NULL;
-    m_cursorcombo=NULL;
-    
-    connect(this,SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+        : Q3ComboBox(parent, name) {
+    companyact = NULL;
+    m_cursorcombo = NULL;
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
 }
 
 
 BusquedaTarifa::~BusquedaTarifa() {}
 
+
 void BusquedaTarifa::setidtarifa(QString idtarifa) {
-	_depura("BusquedaTarifa::setidtarifa",0);
-	mdb_idtarifa=idtarifa;
+    _depura("BusquedaTarifa::setidtarifa", 0);
+    mdb_idtarifa = idtarifa;
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM tarifa");
@@ -54,3 +55,4 @@ void BusquedaTarifa::setidtarifa(QString idtarifa) {
     }
     setCurrentItem(i1);
 }
+

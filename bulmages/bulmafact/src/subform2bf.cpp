@@ -38,7 +38,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     SDBRecord *rec = lineaat(row);
     _depura("tenemos el registro rec", 0);
     SDBCampo *camp = (SDBCampo *) item(row, col);
-    _depura("tenemos el campo camp",0 );
+    _depura("tenemos el campo camp", 0);
 
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;

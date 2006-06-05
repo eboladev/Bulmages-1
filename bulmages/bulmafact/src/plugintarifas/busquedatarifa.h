@@ -27,40 +27,39 @@
 #include "postgresiface2.h"
 
 
-class BusquedaTarifa : public Q3ComboBox
-{
-	Q_OBJECT
+class BusquedaTarifa : public Q3ComboBox {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	cursor2 *m_cursorcombo;
-	QString mdb_idtarifa;
+    company *companyact;
+    cursor2 *m_cursorcombo;
+    QString mdb_idtarifa;
 
 public:
-	BusquedaTarifa(QWidget *parent = 0, const char *name = 0);
-	~BusquedaTarifa();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setidtarifa(QString idtarifa);
-	QString idtarifa() {return mdb_idtarifa;};
+    BusquedaTarifa(QWidget *parent = 0, const char *name = 0);
+    ~BusquedaTarifa();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setidtarifa(QString idtarifa);
+    QString idtarifa() {
+        return mdb_idtarifa;
+    };
 
 public slots:
-	void m_activated(int index)
-	{
-		if (index > 0)
-		{
-			mdb_idtarifa=m_cursorcombo->valor("idtarifa", index - 1);
-			emit(valueChanged(m_cursorcombo->valor("idtarifa", index - 1)));
-		} else {
-			emit(valueChanged(""));
-			mdb_idtarifa="";
-		}
-	};
+    void m_activated(int index) {
+        if (index > 0) {
+            mdb_idtarifa=m_cursorcombo->valor("idtarifa", index - 1);
+            emit(valueChanged(m_cursorcombo->valor("idtarifa", index - 1)));
+        } else {
+            emit(valueChanged(""));
+            mdb_idtarifa = "";
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

@@ -26,39 +26,42 @@
 #include "dialogchanges.h"
 #include "dbrecord.h"
 
+
 class company;
 
-class TarifaView : public QWidget, public Ui_TarifaBase, public dialogChanges, public DBRecord
-{
-	Q_OBJECT
+class TarifaView : public QWidget, public Ui_TarifaBase, public dialogChanges, public DBRecord {
+    Q_OBJECT
 
 private:
-	QString m_idtarifa;
-	QString m_nomtarifa;
-	company *m_companyact;
-	cursor2 *m_cursorcombo;
+    QString m_idtarifa;
+    QString m_nomtarifa;
+    company *m_companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	TarifaView(company *emp, QWidget *parent = 0, const char *name = 0);
-	~TarifaView();
-	company *companyact() {return m_companyact;};
+    TarifaView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ~TarifaView();
+    company *companyact() {
+        return m_companyact;
+    };
+
 public:
-	void pintar();
-	int cargar(QString);
-	int guardar();
-	int TarifaView::cargarcomboiva(QString);
-	void closeEvent( QCloseEvent *);
-	QString formaQuery(QString);
+    void pintar();
+    int cargar(QString);
+    int guardar();
+    int TarifaView::cargarcomboiva(QString);
+    void closeEvent(QCloseEvent *);
+    QString formaQuery(QString);
 
 public slots:
-	virtual void on_mui_guardar_clicked(){guardar();};
-	virtual void on_mui_crear_clicked();
-	virtual void on_mui_borrar_clicked();
-	virtual void on_mui_aceptar_clicked();
-	virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    };
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_actualizar_clicked();
 };
 
-
-
-
 #endif
+

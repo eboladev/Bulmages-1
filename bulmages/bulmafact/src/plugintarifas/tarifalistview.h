@@ -26,33 +26,32 @@
 #include "pgimportfiles.h"
 
 
-
-class TarifaListView : public QWidget, private Ui_TarifaListBase, public pgimportfiles
-{
-	Q_OBJECT
+class TarifaListView : public QWidget, private Ui_TarifaListBase, public pgimportfiles {
+    Q_OBJECT
 
 public:
-	enum edmode
-	{
-		EditMode = 0, SelectMode = 1
-	};
+    enum edmode
+    {
+        EditMode = 0, SelectMode = 1
+    };
 
 private:
-	company *m_companyact;
-	edmode m_modo;
+    company *m_companyact;
+    edmode m_modo;
 
 public:
-	TarifaListView(company *, QWidget *parent = 0, const char *name = 0,
-		Qt::WFlags flag = 0, edmode editmodo = EditMode);
-	~TarifaListView();
-	void editar(int);
+    TarifaListView(company *, QWidget *parent = 0, const char *name = 0,
+                   Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ~TarifaListView();
+    void editar(int);
 public slots:
-	void on_mui_crear_clicked();
-	void on_mui_editar_clicked();
-	void on_mui_borrar_clicked();
-	void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
-		on_mui_editar_clicked();
-	};
+    void on_mui_crear_clicked();
+    void on_mui_editar_clicked();
+    void on_mui_borrar_clicked();
+    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+        on_mui_editar_clicked();
+    };
 };
 
 #endif
+
