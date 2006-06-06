@@ -77,9 +77,9 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
 /// Busqueda de articulos.
 void BusquedaArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaArticulo::on_mui_buscar_clicked", 0);
-    QDialog *diag=new QDialog(0);
+    QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    ArticuloList *articulos = new ArticuloList(companyact, diag, tr("Seleccione articulo","company"), 0, ArticuloList::SelectMode);
+    ArticuloList *articulos = new ArticuloList(companyact, diag, tr("Seleccione articulo", "company"), 0, ArticuloList::SelectMode);
     connect(articulos, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (articulos->codigocompletoarticulo() != "") {

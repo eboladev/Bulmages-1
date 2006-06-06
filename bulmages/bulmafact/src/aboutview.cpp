@@ -403,3 +403,4 @@ aboutview::aboutview(QDialog *parent) : QDialog(parent) {
 
 
 aboutview::~aboutview() {}
+

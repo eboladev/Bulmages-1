@@ -186,9 +186,9 @@ QString ArticuloList::detalleArticulos() {
 
 void ArticuloList::Imprimir() {
     _depura("ArticuloList::INIT_Imprimir()\n", 0);
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
-    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -218,6 +218,7 @@ void ArticuloList::Imprimir() {
     QString buff = stream.read();
     file.close();
     QString texto;
+
     /// Linea de totales del presupuesto.
     buff.replace("[detallearticulos]", detalleArticulos());
     if (file.open(QIODevice::WriteOnly)) {
@@ -344,7 +345,8 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
+        : SubForm2Bf(parent) {
     setDBTableName("articulo");
     setDBCampoId("idarticulo");
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID articulo"));

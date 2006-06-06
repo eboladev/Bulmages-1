@@ -99,8 +99,7 @@ void AlbaranProveedorView::generarFactura()  {
     _depura("AlbaranProveedorView::generarFactura", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap='" +
-                       DBvalue("refalbaranp") + "'";
+    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap='" + DBvalue("refalbaranp") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
@@ -136,14 +135,14 @@ void AlbaranProveedorView::generarFactura()  {
     for ( int i  = 0; i < listalineas->rowCount(); ++i) {
         linea = getlistalineas()->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
-        linea1->setDBvalue("desclfacturap",linea->DBvalue("desclalbaranp"));
-        linea1->setDBvalue("cantlfacturap",linea->DBvalue("cantlalbaranp"));
-        linea1->setDBvalue("pvplfacturap",linea->DBvalue("pvplalbaranp"));
-        linea1->setDBvalue("descuentolfacturap",linea->DBvalue("descontlalbaranp"));
-        linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
-        linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
-        linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
-        linea1->setDBvalue("ivalfacturap",linea->DBvalue("ivalalbaranp"));
+        linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
+        linea1->setDBvalue("cantlfacturap", linea->DBvalue("cantlalbaranp"));
+        linea1->setDBvalue("pvplfacturap", linea->DBvalue("pvplalbaranp"));
+        linea1->setDBvalue("descuentolfacturap", linea->DBvalue("descontlalbaranp"));
+        linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
+        linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
+        linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+        linea1->setDBvalue("ivalfacturap", linea->DBvalue("ivalalbaranp"));
     } // end for
 
     bud->pintar();

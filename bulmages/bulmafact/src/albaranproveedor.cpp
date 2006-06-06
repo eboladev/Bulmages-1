@@ -24,7 +24,8 @@
 #include "albaranproveedor.h"
 
 
-AlbaranProveedor::AlbaranProveedor(company *comp) : DBRecord(comp) {
+AlbaranProveedor::AlbaranProveedor(company *comp)
+        : DBRecord(comp) {
     companyact = comp;
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
@@ -48,8 +49,7 @@ int AlbaranProveedor::borrar() {
         listalineas->borrar();
         listadescuentos->borrar();
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp=" +
-                                        DBvalue("idalbaranp"));
+        int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp =" + DBvalue("idalbaranp"));
         if (error)  {
             companyact->rollback();
             return - 1;
@@ -84,7 +84,7 @@ void AlbaranProveedor::pintar()  {
 /// Esta funcion carga un AlbaranProveedor.
 int AlbaranProveedor::cargar(QString idbudget) {
     _depura("AlbaranProveedor::cargar()\n", 0);
-    QString query = "SELECT * FROM albaranp WHERE idalbaranp=" + idbudget;
+    QString query = "SELECT * FROM albaranp WHERE idalbaranp =" + idbudget;
     cursor2 * cur = companyact->cargacursor(query);
 
     if (!cur->eof())
@@ -122,7 +122,7 @@ int AlbaranProveedor::guardar() {
 
 void AlbaranProveedor::imprimirAlbaranProveedor() {
     /// Copiamos el archivo.
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "albaranpproveedor.rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranpproveedor.rml";
     archivo = "cp " + archivo + " /tmp/albaranpproveedor.rml";
     system(archivo.ascii());
     /// Copiamos el logo.
@@ -138,7 +138,7 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     file.close();
     QString fitxersortidatxt;
     /// Linea de totales del presupuesto.
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor=" + DBvalue("idproveedor");
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor =" + DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
@@ -158,10 +158,10 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, " \
                        "3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "<td>Concepto</td>";
-    fitxersortidatxt += "<td>Cantidad</td>";
-    fitxersortidatxt += "<td>Precio Und.</td>";
-    fitxersortidatxt += "<td>Total</td>";
+    fitxersortidatxt += "<td>" + QApplication::translate("Concepto", "albaranproveedor") + "</td>";
+    fitxersortidatxt += "<td>" + QApplication::translate("Cantidad", "albaranproveedor") + "</td>";
+    fitxersortidatxt += "<td>" + QApplication::translate("Precio Und.", "albaranproveedor") + "</td>";
+    fitxersortidatxt += "<td>" + QApplication::translate("Total", "albaranproveedor") + "</td>";
     fitxersortidatxt += "</tr>";
 
     QString l;
@@ -182,21 +182,20 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "<td></td>";
     fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td>Base imponible</td>";
+    fitxersortidatxt += "<td>" + QApplication::translate("Base imponible", "albaranproveedor") + "</td>";
     fitxersortidatxt += "<td>" + listalineas->calculabase().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "<td></td>";
     fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td>I.V.A.</td>";
+    fitxersortidatxt += "<td>" + QApplication::translate("I.V.A.", "albaranproveedor") + "</td>";
     fitxersortidatxt += "<td>" + listalineas->calculaiva().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "<td></td>";
     fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td>Total</td>";
-    fitxersortidatxt += "<td>" + (listalineas->calculabase() +
-                                  listalineas->calculaiva()).toQString() + "</td>";
+    fitxersortidatxt += "<td>"+ QApplication::translate("Total", "albaranproveedor") + "</td>";
+    fitxersortidatxt += "<td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "</blockTable>";
 

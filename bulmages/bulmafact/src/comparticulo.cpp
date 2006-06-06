@@ -62,7 +62,7 @@ CompArticulo::CompArticulo(company *comp, QString a, QString b, QString c, QStri
     setDBvalue("idarticulo", a);
     setDBvalue("idcomponente", b);
     setDBvalue("cantcomparticulo", c);
-    setDBvalue("codigocompletocomponente",d);
+    setDBvalue("codigocompletocomponente", d);
     setDBvalue("nomcomponente", e);
 }
 

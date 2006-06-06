@@ -95,6 +95,9 @@
    </item>
    <item>
     <widget class="Q3ListView" name="empresas" >
+     <property name="focusPolicy" >
+      <enum>Qt::TabFocus</enum>
+     </property>
      <property name="resizePolicy" >
       <enum>Q3ScrollView::Manual</enum>
      </property>

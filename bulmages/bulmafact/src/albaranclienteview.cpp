@@ -103,7 +103,7 @@ void AlbaranClienteView::s_verpresupuesto() {
 
         this->setEnabled(true);
 
-        if (list->idpresupuesto() != QString(""))  {
+        if (list->idpresupuesto() != QString("")) {
             PresupuestoView *bud = companyact->newBudget();
             bud->cargar(list->idpresupuesto());
             bud->show();
@@ -120,7 +120,7 @@ void AlbaranClienteView::s_verpresupuesto() {
 
 
 void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
-    _depura("on_mui_verpedidocliente_clicked",0);
+    _depura("on_mui_verpedidocliente_clicked", 0);
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" + DBvalue("refalbaran") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
@@ -133,7 +133,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
             cur->siguienteregistro();
         } // end while
     } else {
-        _depura("no hay pedidos con esta referencia",2);
+        _depura("no hay pedidos con esta referencia", 2);
     } // end if
     delete cur;
 }
@@ -143,8 +143,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
 void AlbaranClienteView::generarFactura() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='" +
-                       DBvalue("refalbaran") + "'";
+    QString SQLQuery = "SELECT * FROM factura WHERE reffactura='" + DBvalue("refalbaran") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
@@ -158,8 +157,9 @@ void AlbaranClienteView::generarFactura() {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
-    if (QMessageBox::question(this, tr("Factura inexistente"),
-                              tr("No existe una factura asociada a este albaran. Desea Crearla?"),
+    if (QMessageBox::question(this,
+                              tr("Factura inexistente"),
+                              tr("No existe una factura asociada a este albaran. Desea crearla?"),
                               tr("&Si"), tr("&No"), QString::null, 0, 1)) {
         return;
     }
@@ -184,14 +184,14 @@ void AlbaranClienteView::generarFactura() {
         linea = listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
-            linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
-            linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
-            linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));
-            linea1->setDBvalue("descuentolfactura",linea->DBvalue("descontlalbaran"));
-            linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
-            linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
-            linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
-            linea1->setDBvalue("ivalfactura",linea->DBvalue("ivalalbaran"));
+            linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
+            linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
+            linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
+            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
+            linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
+            linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+            linea1->setDBvalue("ivalfactura", linea->DBvalue("ivalalbaran"));
             bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
@@ -233,16 +233,16 @@ void AlbaranClienteView::agregarFactura() {
     SDBRecord *linea, *linea1;
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
-        if (linea->DBvalue( "idarticulo") != "") {
+        if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
-            linea1->setDBvalue("desclfactura",linea->DBvalue("desclalbaran"));
-            linea1->setDBvalue("cantlfactura",linea->DBvalue("cantlalbaran"));
-            linea1->setDBvalue("pvplfactura",linea->DBvalue("pvplalbaran"));
-            linea1->setDBvalue("descuentolfactura",linea->DBvalue("descontlalbaran"));
-            linea1->setDBvalue("idarticulo",linea->DBvalue("idarticulo"));
-            linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
-            linea1->setDBvalue("nomarticulo",linea->DBvalue("nomarticulo"));
-            linea1->setDBvalue("ivalfactura",linea->DBvalue("ivalalbaran"));
+            linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
+            linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
+            linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
+            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
+            linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
+            linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+            linea1->setDBvalue("ivalfactura", linea->DBvalue("ivalalbaran"));
             bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
@@ -278,9 +278,10 @@ void AlbaranClienteView::on_mui_informereferencia_clicked()  {
 void AlbaranClienteView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios())	{
-        int val = QMessageBox::warning(this, tr("Guardar albaran"),
-                                             tr("Desea guardar los cambios?"),
-                                             tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar albaran"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)  {
             guardar();
         }

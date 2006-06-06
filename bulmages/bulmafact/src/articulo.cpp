@@ -59,19 +59,19 @@ void Articulo::pintar() {
     if (res != 0)
         return;
     pintaidarticulo(DBvalue("idarticulo"));
-    pintacodarticulo (DBvalue("codarticulo"));
-    pintanomarticulo (DBvalue("nomarticulo"));
-    pintaabrevarticulo (DBvalue("abrevarticulo"));
-    pintaobservarticulo (DBvalue("observarticulo"));
-    pintapresentablearticulo (DBvalue("presentablearticulo"));
-    pintacontrolstockarticulo (DBvalue("controlstockarticulo"));
-    pintaidtipo_articulo (DBvalue("idtipo_articulo"));
-    pintaidtipo_iva (DBvalue("idtipo_iva"));
-    pintacodigocompletoarticulo (DBvalue("codigocompletoarticulo"));
-    pintaidfamilia (DBvalue("idfamilia"));
-    pintastockarticulo (DBvalue("stockarticulo"));
-    pintainactivoarticulo (DBvalue("inactivoarticulo"));
-    pintapvparticulo (DBvalue("pvparticulo"));
+    pintacodarticulo(DBvalue("codarticulo"));
+    pintanomarticulo(DBvalue("nomarticulo"));
+    pintaabrevarticulo(DBvalue("abrevarticulo"));
+    pintaobservarticulo(DBvalue("observarticulo"));
+    pintapresentablearticulo(DBvalue("presentablearticulo"));
+    pintacontrolstockarticulo(DBvalue("controlstockarticulo"));
+    pintaidtipo_articulo(DBvalue("idtipo_articulo"));
+    pintaidtipo_iva(DBvalue("idtipo_iva"));
+    pintacodigocompletoarticulo(DBvalue("codigocompletoarticulo"));
+    pintaidfamilia(DBvalue("idfamilia"));
+    pintastockarticulo(DBvalue("stockarticulo"));
+    pintainactivoarticulo(DBvalue("inactivoarticulo"));
+    pintapvparticulo(DBvalue("pvparticulo"));
     _depura("END Articulo::pintar", 0);
 }
 

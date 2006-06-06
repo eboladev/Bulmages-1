@@ -38,7 +38,7 @@ BusquedaFamilia::~BusquedaFamilia() {}
 
 void BusquedaFamilia::setidfamilia(QString val) {
     mdb_idfamilia = val;
-    QString SQLQuery = "SELECT * FROM familia WHERE idfamilia='" + mdb_idfamilia+"'";
+    QString SQLQuery = "SELECT * FROM familia WHERE idfamilia='" + mdb_idfamilia + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
@@ -65,8 +65,8 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
         mdb_idfamilia = cur->valor("idfamilia");
         mdb_nombrefamilia = cur->valor("nombrefamilia");
     } else {
-        mdb_idfamilia="";
-        mdb_nombrefamilia="";
+        mdb_idfamilia = "";
+        mdb_nombrefamilia = "";
     } // end if
 
     delete cur;
@@ -77,7 +77,7 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 
 /// Busqueda de familias.
 void BusquedaFamilia::on_mui_buscar_clicked() {
-    familiasview *fam = new familiasview(companyact, 0,0);
+    familiasview *fam = new familiasview(companyact, 0, 0);
     fam->setModoConsulta();
     if (fam->exec() == 1) {
         m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());

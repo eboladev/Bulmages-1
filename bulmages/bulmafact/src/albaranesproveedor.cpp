@@ -45,8 +45,8 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WF
 }
 
 
-AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name,
-                                       Qt::WFlags flag) : QWidget(parent,name, flag) {
+AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
+        : QWidget(parent,name, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
@@ -69,7 +69,9 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta().", 1);
     if (m_companyact != NULL ) {
-        cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalalbpro(idalbaranp) AS total, calcbimpalbpro(idalbaranp) AS base, calcimpuestosalbpro(idalbaranp) AS impuestos FROM albaranp LEFT " \
+        cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalalbpro(idalbaranp) AS total, " \
+                        "calcbimpalbpro(idalbaranp) AS base, calcimpuestosalbpro(idalbaranp) AS impuestos " \
+                        "FROM albaranp LEFT " \
                         "JOIN proveedor ON albaranp.idproveedor = " \
                         "proveedor.idproveedor LEFT JOIN almacen ON " \
                         "albaranp.idalmacen=almacen.idalmacen LEFT JOIN " \
@@ -97,7 +99,7 @@ QString AlbaranesProveedor::generaFiltro() {
     QString filtro = "";
 
     if (m_filtro->text() != "") {
-        filtro = " AND ( descalbaranp LIKE '%" + m_filtro->text() + "%' ";
+        filtro = " AND (descalbaranp LIKE '%" + m_filtro->text() + "%' ";
         filtro +=" OR nomproveedor LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
@@ -121,7 +123,7 @@ QString AlbaranesProveedor::generaFiltro() {
 void AlbaranesProveedor::editar(int  row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
-    if (m_modo ==0 ) {
+    if (m_modo == 0) {
         AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0, theApp->translate("Edicion de Albaranes a Proveedor", "company"));
         if (prov->cargar(mdb_idalbaranp)) {
             return;
@@ -149,7 +151,7 @@ void AlbaranesProveedor::imprimir() {
     QString archivod = confpr->valor(CONF_DIR_USER) + "albaranesproveedor.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
-    /// Copiamos el archivo
+    /// Copiamos el archivo.
 #ifdef WINDOWS
 
     archivo = "copy " + archivo + " " + archivod;
@@ -160,7 +162,7 @@ void AlbaranesProveedor::imprimir() {
 
     system(archivo.ascii());
 
-    /// Copiamos el logo
+    /// Copiamos el logo.
 #ifdef WINDOWS
 
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
@@ -178,7 +180,8 @@ void AlbaranesProveedor::imprimir() {
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
-    /// Linea de totales del presupuesto
+
+    /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
@@ -196,13 +199,12 @@ void AlbaranesProveedor::imprimir() {
 
 void AlbaranesProveedor::on_mui_borrar_clicked() {
     _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
-    mdb_idalbaranp =  mui_list->DBvalue(QString("idalbaranp"));
+    mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
 
     if (m_modo == 0 && mdb_idalbaranp != "") {
         AlbaranProveedorView *bud = new AlbaranProveedorView(m_companyact,
                                     m_companyact->m_pWorkspace,
-                                    theApp->translate("Edicion de albaranes de proveedores",
-                                                      "company"));
+                                    theApp->translate("Edicion de albaranes de proveedores", "company"));
         bud->cargar(mdb_idalbaranp);
         bud->borrar();
         delete bud;
@@ -215,7 +217,8 @@ void AlbaranesProveedor::on_mui_borrar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, const char *)
+        : SubForm2Bf(parent) {
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID albaran de proveedor"));

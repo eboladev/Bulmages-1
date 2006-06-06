@@ -41,7 +41,7 @@
 
 bulmafact::bulmafact(QString bd) : QMainWindow() {
     setupUi(this);
-    m_company=new company();
+    m_company = new company();
     m_company->init(bd);
 
     pWorkspace = new QWorkspace(this, "WorkSpace");

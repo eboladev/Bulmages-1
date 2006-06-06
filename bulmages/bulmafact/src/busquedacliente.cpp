@@ -81,10 +81,10 @@ void BusquedaCliente::setcifcliente(QString val) {
 /// Busqueda de clientes.
 void BusquedaCliente::on_mui_buscar_clicked() {
     _depura("BusquedaCliente::on_mui_buscar_clicked\n", 0);
-    QDialog *diag=new QDialog(0);
+    QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    ClientsList *clients = new ClientsList(companyact, diag, tr("Seleccione cliente","company"), 0, ClientsList::SelectMode);
+    ClientsList *clients = new ClientsList(companyact, diag, tr("Seleccione cliente", "company"), 0, ClientsList::SelectMode);
     connect(clients, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (clients->cifclient() != "") {

@@ -65,11 +65,13 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
     _depura("ArticuloView::END_constructor()\n", 0);
 }
 
+
 ArticuloView::~ArticuloView() {
     _depura("ArticuloView::INIT_destructor()\n", 0);
     m_companyact->sacaWindow(this);
     _depura("ArticuloView::END_destructor()\n", 0);
 }
+
 
 void ArticuloView::pintar() {
     _depura("ArticuloView::pintar", 0);
