@@ -212,7 +212,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     int i=0;
     SDBRecord *linea;
-    for (i = 0; i < listalineas->rowCount(); ++i) {
+    for (i = 0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlalbaran").ascii()) *
                      Fixed(linea->DBvalue("pvplalbaran").ascii());
@@ -229,7 +229,6 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
                                                Fixed(linea->DBvalue("descontlalbaran")) / 100).toQString().ascii())
                             + "</td>\n";
         fitxersortidatxt += "</tr>";
-        i++;
     }
 
     while (i++ < 15) {

@@ -208,7 +208,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     int i = 0;
 
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
+    for (int i = 0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpedidocliente").ascii()) * Fixed(linea->DBvalue("pvplpedidocliente").ascii());
         basesimp[linea->DBvalue("ivalpedidocliente")] = basesimp[linea->DBvalue("ivalpedidocliente")] + base - base * Fixed(linea->DBvalue("descuentolpedidocliente").ascii()) / 100;
@@ -220,7 +220,6 @@ void PedidoCliente::imprimirPedidoCliente() {
         fitxersortidatxt += "	<td>" + l.sprintf("%s", linea->DBvalue("descuentolpedidocliente").ascii()) + " %</td>\n";
         fitxersortidatxt += "	<td>" + l.sprintf("%s", (base - base * Fixed (linea->DBvalue("descuentolpedidocliente")) / 100).toQString().ascii()) + "</td>\n";
         fitxersortidatxt += "</tr>";
-        i++;
     } // end for
 
     while (i++ < 15)

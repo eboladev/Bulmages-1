@@ -268,7 +268,7 @@ void presupuesto::imprimirPresupuesto() {
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     int i = 0;
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
+    for (int i = 0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpresupuesto").ascii()) * Fixed(linea->DBvalue("pvplpresupuesto").ascii());
         basesimp[linea->DBvalue("ivalpresupuesto")] = basesimp[linea->DBvalue("ivalpresupuesto")] + base - base * Fixed(linea->DBvalue("descuentolpresupuesto").ascii()) / 100;
@@ -281,7 +281,6 @@ void presupuesto::imprimirPresupuesto() {
         fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("descuentolpresupuesto")).ascii()) + " %</td>\n";
         fitxersortidatxt += "	<td>" + l.sprintf("%s",(base - base * Fixed (linea->DBvalue("descuentolpresupuesto")) / 100).toQString().ascii()) + "</td>\n";
         fitxersortidatxt += "</tr>";
-        i++;
     } // end for
 
     while (i++ < 15)

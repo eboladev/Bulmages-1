@@ -226,11 +226,10 @@ void Factura::imprimirFactura() {
     /// Contador que sirve para poner lineas de más en caso de que sea preciso.
     int i=0;
 
-    for(int i=0; i < listalineas->rowCount(); ++i) {
+    for(int i=0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlfactura").ascii()) * Fixed(linea->DBvalue("pvplfactura").ascii());
         basesimp[linea->DBvalue("ivalfactura")] = basesimp[linea->DBvalue("ivalfactura")] + base - base * Fixed(linea->DBvalue("descuentolfactura").ascii()) / 100;
-
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "       <td>" + linea->DBvalue("codigocompletoarticulo") + "</td>\n";
         fitxersortidatxt += "       <td>" + linea->DBvalue("desclfactura")+"</td>\n";
@@ -239,7 +238,6 @@ void Factura::imprimirFactura() {
         fitxersortidatxt += "       <td>" + l.sprintf("%s", linea->DBvalue("descuentolfactura").ascii()) + " %</td>\n";
         fitxersortidatxt += "       <td>" + l.sprintf("%s", (base - base * Fixed (linea->DBvalue("descuentolfactura")) / 100).toQString().ascii()) + "</td>\n";
         fitxersortidatxt += "</tr>";
-        i++;
     } // end for
 
     while (i++ < 15)
