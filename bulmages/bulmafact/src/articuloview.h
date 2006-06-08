@@ -49,7 +49,7 @@ public:
     int cargar(QString);
     int guardar();
     int borrar();
-    int ArticuloView::cargarcomboiva(QString);
+    int cargarcomboiva(QString);
     void closeEvent( QCloseEvent *);
 
 public slots:
