@@ -129,7 +129,7 @@ void ClientsList::on_mui_imprimir_clicked() {
     file.close();
     QString fitxersortidatxt;
 
-    /// Linea de totales del presupuesto
+    /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";

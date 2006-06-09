@@ -32,7 +32,7 @@ typedef QMap<QString, Fixed> base;
 
 
 Factura::Factura(company *comp) : DBRecord(comp) {
-    companyact=comp;
+    companyact = comp;
     setDBTableName("factura");
     setDBCampoId("idfactura");
     addDBCampo("idfactura", DBCampo::DBint, DBCampo::DBPrimaryKey, theApp->translate("Id factura", "factura"));
@@ -121,7 +121,7 @@ int Factura::guardar() {
     _depura("Factura::guardar", 0);
     QString fecha;
     try {
-        /// Calculamos el proximo número de factura para poder insertarlo en caso de que este sea nulo.
+        /// Calculamos el proximo numero de factura para poder insertarlo en caso de que este sea nulo.
         if (DBvalue("numfactura") == "") {
             QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura";
             cursor2 *cur= companyact->cargacursor(SQLQueryn);
@@ -189,7 +189,7 @@ void Factura::imprimirFactura() {
     file.close();
     QString fitxersortidatxt = "";
 
-    /// Linea de totales del presupuesto
+    /// Linea de totales del presupuesto.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {

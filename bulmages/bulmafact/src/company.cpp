@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qnamespace.h>
 #include <Qt>
 #include <QObject>
+#include <qnamespace.h>
 
 #include "company.h"
 #include "stdio.h"
@@ -96,7 +96,7 @@ QString company::searchCompany() {
 
 void company::createMainWindows() {
     _depura("company::createMainWindows", 0);
-    m_articleslist = new ArticuloList(this, 0, theApp->translate("Articulos","company"), 0, ArticuloList::EditMode);
+    m_articleslist = new ArticuloList(this, 0, theApp->translate("Articulos", "company"), 0, ArticuloList::EditMode);
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 
@@ -263,7 +263,7 @@ void company::s_newFacturaPro() {
 CobroView * company::newCobroView() {
     _depura("company::newCobroView", 0);
     CobroView *bud;
-    if (g_plugins->lanza("company_newCobroView", this, (void **)&bud) )
+    if (g_plugins->lanza("company_newCobroView", this, (void **)&bud))
         return bud;
     bud = new CobroView(this, 0, theApp->translate("Edicion de cobros", "company"));
     return bud;
@@ -342,7 +342,7 @@ PresupuestoView * company::newBudget() {
     PresupuestoView *bud;
     if (g_plugins->lanza("company_newBudget", this, (void **)&bud))
         return bud;
-    bud = new PresupuestoView(this , 0, theApp->translate("Edicion de proveedores", "company"));
+    bud = new PresupuestoView(this, 0, theApp->translate("Edicion de proveedores", "company"));
     return bud;
 }
 

@@ -54,7 +54,7 @@ using namespace std;
 #define coma "'"
 
 
-CobroView::CobroView(company *comp , QWidget *parent, const char *name)
+CobroView::CobroView(company *comp, QWidget *parent, const char *name)
         : QDialog(parent, name, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
     _depura("CobroView::CobroView", 0);
     setupUi(this);
@@ -81,9 +81,9 @@ void CobroView::on_mui_borrar_clicked() {
 }
 
 
-void CobroView::closeEvent( QCloseEvent *e) {
+void CobroView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())  {
+    if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar cobro"),
                                        tr("Desea guardar los cambios?"),

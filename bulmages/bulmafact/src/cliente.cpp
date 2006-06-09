@@ -84,22 +84,22 @@ void Cliente::pintaCliente() {
         return;
 
     pintaidcliente(DBvalue("idcliente"));
-    pintanomcliente (DBvalue("nomcliente"));
-    pintanomaltcliente (DBvalue("nomaltcliente"));
-    pintacifcliente (DBvalue("cifcliente"));
-    pintabancocliente (DBvalue("bancocliente"));
-    pintadircliente (DBvalue("dircliente"));
-    pintapoblcliente (DBvalue("poblcliente"));
-    pintacpcliente (DBvalue("cpcliente"));
-    pintatelcliente (DBvalue("telcliente"));
-    pintafaxcliente (DBvalue("faxcliente"));
-    pintamailcliente (DBvalue("mailcliente"));
-    pintaurlcliente (DBvalue("urlcliente"));
-    pintafaltacliente (DBvalue("faltacliente"));
-    pintafbajacliente (DBvalue("fbajacliente"));
-    pintacomentcliente  (DBvalue("comentcliente"));
-    pintainactivocliente  (DBvalue("inactivocliente"));
-    pintaprovcliente  (DBvalue("provcliente"));
+    pintanomcliente(DBvalue("nomcliente"));
+    pintanomaltcliente(DBvalue("nomaltcliente"));
+    pintacifcliente(DBvalue("cifcliente"));
+    pintabancocliente(DBvalue("bancocliente"));
+    pintadircliente(DBvalue("dircliente"));
+    pintapoblcliente(DBvalue("poblcliente"));
+    pintacpcliente(DBvalue("cpcliente"));
+    pintatelcliente(DBvalue("telcliente"));
+    pintafaxcliente(DBvalue("faxcliente"));
+    pintamailcliente(DBvalue("mailcliente"));
+    pintaurlcliente(DBvalue("urlcliente"));
+    pintafaltacliente(DBvalue("faltacliente"));
+    pintafbajacliente(DBvalue("fbajacliente"));
+    pintacomentcliente(DBvalue("comentcliente"));
+    pintainactivocliente(DBvalue("inactivocliente"));
+    pintaprovcliente(DBvalue("provcliente"));
 
     _depura("END Cliente::pintaCliente", 0);
 
@@ -131,7 +131,7 @@ int Cliente::guardar() {
         _depura("END Cliente::guardar", 0);
         return 0;
     } catch(...) {
-        _depura("error al guardar el cliente",1);
+        _depura("error al guardar el cliente", 1);
         m_companyact->rollback();
         return -1;
     }

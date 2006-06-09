@@ -39,7 +39,7 @@
 
 
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
-        :  QWidget(parent, name, Qt::WDestructiveClose), Cliente(comp), dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose), Cliente(comp), dialogChanges(this) {
     _depura("ClienteView::ClienteView", 0);
     setupUi(this);
 
