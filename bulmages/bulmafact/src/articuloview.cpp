@@ -60,7 +60,6 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
     m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
     if (m_companyact->meteWindow(tr("Edicion del articulo"), this))
         return;
-
     dialogChanges_cargaInicial();
     _depura("ArticuloView::END_constructor()\n", 0);
 }
