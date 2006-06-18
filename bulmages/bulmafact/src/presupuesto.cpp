@@ -256,12 +256,12 @@ void presupuesto::imprimirPresupuesto() {
     /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.2cm, 1.5cm, 1.8cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>Cod.</td>\n";
-    fitxersortidatxt += "	<td>Concepto</td>\n";
-    fitxersortidatxt += "	<td>Cant.</td>\n";
-    fitxersortidatxt += "	<td>Precio</td>\n";
-    fitxersortidatxt += "	<td>Desc.</td>\n";
-    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Codigo") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Concepto") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Und") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Precio") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Dto") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
 
@@ -299,14 +299,14 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
+    if (listadescuentos->rowCount()-1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "	<td>Descuento</td>\n";
-        fitxersortidatxt += "	<td>Porcentaje</td>\n";
-        fitxersortidatxt += "	<td>Total</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Descuento") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
+        for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpresupuesto").ascii());
             fitxersortidatxt += "<tr>\n";
@@ -334,7 +334,7 @@ void presupuesto::imprimirPresupuesto() {
             parbaseimp = it.data();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "	<td>Base " + XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "	<td> "+ QApplication::translate("presupuesto", "Base ") + XMLProtect(it.key()) + " %</td>\n";
         tr2 += "	<td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
     } // end for
 
@@ -347,10 +347,10 @@ void presupuesto::imprimirPresupuesto() {
             pariva = it.data()* Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "	<td>Iva " + XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "	<td> "+ QApplication::translate("presupuesto", "Iva ") + XMLProtect(it.key()) + " %</td>\n";
         tr2 += "	<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
     } // end for
-    tr1 += "	<td>Total </td>\n";
+    tr1 += "	<td>" + QApplication::translate("presupuesto", "Total ") + "</td>\n";
     tr2 += "	<td>" + l.sprintf("%s", (totiva+totbaseimp).toQString().ascii()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);

@@ -201,12 +201,12 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, " \
                         "8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("Codigo", "albarancliente") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("Concepto", "albarancliente") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("Cantidad", "albarancliente") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("Precio", "albarancliente") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("Descripcion", "albarancliente") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("Total", "albarancliente") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Codigo") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Concepto") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Und") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Precio") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Dto") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
@@ -248,16 +248,16 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
+    if (listadescuentos->rowCount()-1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm," \
                             " 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("Descuento", "albarancliente") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("Porcentaje", "albarancliente") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("Total", "albarancliente") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Descuento") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
 
-        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
+        for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondalbaran").ascii());
             fitxersortidatxt += "<tr>\n";
@@ -292,7 +292,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         } // end if
 
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "<td>" + QApplication::translate("Base ", "albarancliente") + it.key() + " %</td>\n";
+        tr1 += "<td>" + QApplication::translate("albarancliente", "Base ") + it.key() + " %</td>\n";
         tr2 += "<td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
     }
 
@@ -308,11 +308,11 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         } // end if
 
         totiva = totiva + pariva;
-        tr1 += "<td>" + QApplication::translate("Iva ", "albarancliente") + it.key() + " %</td>\n";
+        tr1 += "<td>" + QApplication::translate("albarancliente", "Iva ") + it.key() + " %</td>\n";
         tr2 += "<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
     } // end for
 
-    tr1 += "<td>" + QApplication::translate("Total ", "albarancliente") + "</td>\n";
+    tr1 += "<td>" + QApplication::translate("albarancliente", "Total ") + "</td>\n";
     tr2 += "<td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]",fitxersortidatxt);

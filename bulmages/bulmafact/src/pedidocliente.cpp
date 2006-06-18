@@ -195,12 +195,12 @@ void PedidoCliente::imprimirPedidoCliente() {
     /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>Cod.</td>\n";
-    fitxersortidatxt += "	<td>Concepto</td>\n";
-    fitxersortidatxt += "	<td>Cant.</td>\n";
-    fitxersortidatxt += "	<td>Precio</td>\n";
-    fitxersortidatxt += "	<td>Desc.</td>\n";
-    fitxersortidatxt += "	<td>Total</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Codigo") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Concepto") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Und") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Precio") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Dto") + "</td>\n";
+    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
 
@@ -238,14 +238,14 @@ void PedidoCliente::imprimirPedidoCliente() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
+    if (listadescuentos->rowCount()-1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "	<td>Descuento</td>\n";
-        fitxersortidatxt += "	<td>Porcentaje</td>\n";
-        fitxersortidatxt += "	<td>Total</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Descuento") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
+        for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpedidocliente").ascii());
             fitxersortidatxt += "<tr>\n";
@@ -273,7 +273,7 @@ void PedidoCliente::imprimirPedidoCliente() {
             parbaseimp = it.data();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "	<td>Base " + it.key() + " %</td>\n";
+        tr1 += "	<td> " +QApplication::translate("PedidoCliente", "Base ")+ it.key() + " %</td>\n";
         tr2 += "	<td>" + l.sprintf("%s",parbaseimp.toQString().ascii()) + "</td>\n";
     } // end for
 
@@ -286,10 +286,10 @@ void PedidoCliente::imprimirPedidoCliente() {
             pariva = it.data() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "	<td>Iva " + it.key() + " %</td>\n";
+        tr1 += "	<td> "+ QApplication::translate("PedidoCliente", "Iva ") + it.key() + " %</td>\n";
         tr2 += "	<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
     } // end for
-    tr1 += "	<td>Total </td>\n";
+    tr1 += "	<td>"+QApplication::translate("PedidoCliente", "Total ")+" </td>\n";
     tr2 += "	<td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
