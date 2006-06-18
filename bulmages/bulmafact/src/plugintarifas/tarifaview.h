@@ -49,7 +49,7 @@ public:
     void pintar();
     int cargar(QString);
     int guardar();
-    int TarifaView::cargarcomboiva(QString);
+    int cargarcomboiva(QString);
     void closeEvent(QCloseEvent *);
     QString formaQuery(QString);
 
