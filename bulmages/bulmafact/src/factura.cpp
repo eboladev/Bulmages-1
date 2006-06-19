@@ -264,6 +264,7 @@ void Factura::imprimirFactura() {
         fitxersortidatxt += "<td>" + QApplication::translate("Factura", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         for (int i=0; i < listadescuentos->rowCount()-1; ++i) {
+	    linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfactura").ascii());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "   <td>" + linea1->DBvalue("conceptdfactura") + "</td>\n";
