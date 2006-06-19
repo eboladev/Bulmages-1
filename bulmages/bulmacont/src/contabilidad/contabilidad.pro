@@ -43,7 +43,8 @@ FORMS += bulmacontbase.ui \
 	 asientobase.ui \
 	 asientolistbase.ui \
 	 balancebase.ui \
-	 balancetreebase.ui
+	 balancetreebase.ui \
+	 ainteligentesbase.ui
 
 FORMS3 += uiselector.ui \
          about.ui \
@@ -62,7 +63,6 @@ FORMS3 += uiselector.ui \
          balancesdlg.ui \
          canaldlg.ui \
          ccostedlg.ui \
-         ainteligentesdlg.ui \
          propiedemp.ui \
          actualizacionesdlg.ui \
          cambiactadlg.ui \

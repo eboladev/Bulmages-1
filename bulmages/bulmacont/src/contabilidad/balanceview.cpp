@@ -28,14 +28,6 @@
 
 #include "balanceprintview.h"
 
-
-// Incluimos las imagenes que catalogan los tipos de cuentas.
-#include "images/cactivo.xpm"
-#include "images/cpasivo.xpm"
-#include "images/cneto.xpm"
-#include "images/cingresos.xpm"
-#include "images/cgastos.xpm"
-
 #include <qstring.h>
 
 #include "qtable1.h"
@@ -60,7 +52,7 @@
   * También se configura correctamente el objeto m_listado (que reemplaza al que está en el formulario
   * Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
   */
-balanceview::balanceview(empresa *emp, QWidget *parent, const char *name, int  ) : QWidget(parent) {
+balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int  ) : QWidget(parent) {
     setupUi(this);
     companyact = emp;
 

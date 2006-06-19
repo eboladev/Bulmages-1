@@ -166,7 +166,7 @@ public:
     selectccosteview *getselccostes();
     selectcanalview *getselcanales();
     void recalculasaldos();
-    void cobPag();  // Gestion de cobros y pagos
+    int cobPag();  // Gestion de cobros y pagos
     virtual void s_asiento1();
 
 };

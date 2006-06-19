@@ -294,9 +294,9 @@ int empresa::amortizaciones() {
  * de asientos inteligentes.                                       *
  *******************************************************************/
 int empresa::ainteligentes() {
-    ainteligentesview * nuevae = new ainteligentesview(this, 0,"ainteligentes",true);
-    nuevae->exec();
-    delete nuevae;
+    AInteligentesView * nuevae = new AInteligentesView(this, 0,"ainteligentes",true);
+    pWorkspace->addWindow(nuevae);
+    nuevae->show();
     return 0;
 }
 
@@ -468,10 +468,9 @@ void empresa::Ordenarasientos() {
 
 
 int empresa::registroiva() {
-
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("empresa_registroiva", this);
-    return 0;
+    return res;
 }
 
 int empresa::modelo347() {
@@ -538,9 +537,10 @@ void empresa::recalculasaldos() {
 
 /** Esta funci� se dispara para poner en marcha la gesti� de cobros y pagos
   */
-void empresa::cobPag() {
+int empresa::cobPag() {
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("empresa_cobPag", this);
+    return res;
 }
 
 selectccosteview *empresa::getselccostes() {

@@ -1,8 +1,8 @@
 /***************************************************************************
-                          ainteligentesview.h  -  description
+                          AInteligentesView.h  -  description
                              -------------------
     begin                : Thu Feb 6 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -18,49 +18,48 @@
 #define AINTELIGENTESVIEW_H
 
 #include <qwidget.h>
-#include "ainteligentesdlg.h"
+#include "ui_ainteligentesbase.h"
 #include "postgresiface2.h"
 
 
 /**
- * \author Tomeu Borrás Riera
- * \brief Edición de Asientos Inteligentes
+ * \author Tomeu Borrï¿½ Riera
+ * \brief Ediciï¿½ de Asientos Inteligentes
  * 
  * Clase que sirve para editar y crear asientos plantilla (inteligentes)
- * Los asientos intelignetes son un mecanismo mediante el cual podemos hacer la introducción de asientos de una forma mucho más rápida que la convencional.
+ * Los asientos intelignetes son un mecanismo mediante el cual podemos hacer la introducciï¿½ de asientos de una forma mucho mï¿½ rï¿½ida que la convencional.
  */
 class empresa;
 
 
-class ainteligentesview : public ainteligentesdlg  {
+class AInteligentesView : public QWidget, Ui_AInteligentesBase {
    Q_OBJECT
 private:
-/// La clase carga un cursor con todos los asientos inteligentes disponibles para hacer una navegación sobre éstos.
+/// La clase carga un cursor con todos los asientos inteligentes disponibles para hacer una navegaciï¿½ sobre ï¿½tos.
    cursor2 *m_cAInteligentes;
 /// La empresa con la que esta trabajando la clase.   
-   empresa *empresaactual;
-/// La base de datos con la que esta trabajando la clase.   
-   postgresiface2 *conexionbase;
+   empresa *m_companyact;
+
 /// El identificador del asiento inteligente con el que estamos trabajando.   
    int m_idAsientoInteligente;
 /// Listado de los centros de coste disponibles   
     QMap <int, int> m_cCostes; 
 /// Listado de los canales disponibles   
    QMap <int,int> m_cCanales;
-/// Para la generación de los centros de coste y canales en el listado hacen falta estos dos campos   
+/// Para la generaciï¿½ de los centros de coste y canales en el listado hacen falta estos dos campos   
    QComboBox *combocoste;
    QComboBox *combocanal;
 /// Indica cual es la columna anterior con la que se ha tratado   
    int m_oldRow;
   
 public: 
-  ainteligentesview(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
-  ~ainteligentesview();
+  AInteligentesView(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
+  ~AInteligentesView();
 private:
-/// Función que inicializa todos los controles del formulario a los valores adecuados
+/// Funciï¿½ que inicializa todos los controles del formulario a los valores adecuados
   void repinta();
   void return_asiento();
-/// Función que se encarga de rellenar los canales disponibles y el array \ref m_cCanales  
+/// Funciï¿½ que se encarga de rellenar los canales disponibles y el array \ref m_cCanales  
   void cargacanales();
 /// Se encarga de rellenar los centros de coste y el array \ref m_cCostes
   void cargacostes();

@@ -1,5 +1,5 @@
 /***************************************************************************
-                          ainteligentesview.cpp  -  description
+                          AInteligentesView.cpp  -  description
                              -------------------
     begin                : Thu Feb 6 2003
     copyright            : (C) 2003 by Tomeu Borrás Riera
@@ -26,6 +26,7 @@
 #include "importainteligente.h"
 #include "empresa.h"
 #include "postgresiface2.h"
+#include "subform2bc.h"
 
 
 // Estas son las columnas que van con la talba de apuntes.
@@ -65,13 +66,37 @@
 
 /** \brief El constructor de la clase debe inicializar todos los componentes de la pantalla
   *
-  * Inicializa la \brief conexionbase y \ref empresaactual
+  * Inicializa la \brief m_companyact y \ref m_companyact
   * Crea las filas y columnas en la tabla de detalle de los asientos inteligentes.
   * Inicializa las variables auxiliares que usa la clase
   */
-ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *name, bool modal ) : ainteligentesdlg(parent,name, modal) {
-   empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
+AInteligentesView::AInteligentesView(empresa *emp, QWidget *parent, const char *name, bool  ) : QWidget (parent,name, Qt::WDestructiveClose) {
+   setupUi(this);
+   m_companyact = emp;
+
+	/// Nos cuidamos del listado.
+   m_list->setcompany(m_companyact);
+    m_list->setDBTableName("binteligente");
+    m_list->setDBCampoId("idbinteligente");
+    m_list->addSHeader("idbinteligente", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone , tr("idbinteligente"));
+    m_list->addSHeader("idainteligente", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone , tr("idainteligente"));
+    m_list->addSHeader("iddiario", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone , tr("iddiario"));
+    m_list->addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("fecha"));
+    m_list->addSHeader("conceptocontable", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("conceptocontable"));
+    m_list->addSHeader("codcuenta", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("codcuenta"));
+    m_list->addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("descripcion"));
+    m_list->addSHeader("debe", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("debe"));
+    m_list->addSHeader("haber", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("haber"));
+    m_list->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("contrapartida"));
+    m_list->addSHeader("comentario", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("comentario"));
+    m_list->addSHeader("canal", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("canal"));
+    m_list->addSHeader("nomcanal", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("nomcanal"));
+    m_list->addSHeader("marcaconciliacion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("marcaconciliacion"));
+    m_list->addSHeader("idc_coste", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("idc_coste"));
+    m_list->addSHeader("nomcoste", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("nomcoste"));
+
+    m_list->setinsercion(TRUE);
+
    m_oldRow=-2;
 
    tapunts->setNumCols(16);
@@ -125,7 +150,7 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
    cargacombo();
    /// Llamamos a boton_fin para que la pantalla aparezca con un asiento inteligente inicial.
    boton_fin();
-}// end ainteligentesview
+}// end AInteligentesView
 
 
 /** \brief Cargar el combo box \ref m_ainteligente que contiene todos los asientos cargados
@@ -134,14 +159,14 @@ ainteligentesview::ainteligentesview(empresa *emp, QWidget *parent, const char *
   * Crea un query cargando todos los asientos inteligentes que haya en la base de datos
   * Agrega todos los componentes al comoboBox
   */
-void ainteligentesview::cargacombo() {
+void AInteligentesView::cargacombo() {
    m_ainteligente->clear();
    if (m_cAInteligentes != NULL) {
       delete m_cAInteligentes;
    }// end if
    /// Vamos a cargar el comboBox para que la cosa pinte mejor.
    QString SQLQuery = "SELECT * FROM ainteligente";
-   m_cAInteligentes = conexionbase->cargacursor(SQLQuery);
+   m_cAInteligentes = m_companyact->cargacursor(SQLQuery);
    while (!m_cAInteligentes->eof()) {
       m_ainteligente->insertItem(m_cAInteligentes->valor("idainteligente")+m_cAInteligentes->valor("descripcion"));
       m_cAInteligentes->siguienteregistro();
@@ -156,19 +181,19 @@ void ainteligentesview::cargacombo() {
   * llama a la función de repintar la pantalla.
   \todo No hay verificación ni control de cambios.
   */
-void ainteligentesview::comboActivated(const QString &) {
+void AInteligentesView::comboActivated(const QString &) {
    QString idasiento = m_cAInteligentes->valor("idainteligente",m_ainteligente->currentItem());
    m_idAsientoInteligente=idasiento.toInt();
    repinta();
 }// end comboActivated
 
 
-void ainteligentesview::cargacanales() {
+void AInteligentesView::cargacanales() {
    // Hacemos la carga de los canales. Rellenamos el combobox correspondiente.
    QString query1;
    combocanal->clear();
    query1="SELECT * FROM canal";
-   cursor2 *cursorcanals = conexionbase->cargacursor(query1);
+   cursor2 *cursorcanals = m_companyact->cargacursor(query1);
    combocanal->insertItem("--",-1);
    m_cCanales[0]=0;
    int j = 1;
@@ -181,11 +206,11 @@ void ainteligentesview::cargacanales() {
 }// end cargacanales
 
 
-void ainteligentesview::cargacostes() {
+void AInteligentesView::cargacostes() {
    // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
    combocoste->clear();
    string query="SELECT * FROM c_coste ORDER BY nombre";
-   cursor2 *cursorcoste = conexionbase->cargacursor(query.c_str(),"costes");
+   cursor2 *cursorcoste = m_companyact->cargacursor(query.c_str(),"costes");
    combocoste->insertItem("--",0);
    m_cCostes[0]=0;
    int i=1;
@@ -198,14 +223,14 @@ void ainteligentesview::cargacostes() {
 }// end cargacostes
 
 
-ainteligentesview::~ainteligentesview(){
+AInteligentesView::~AInteligentesView(){
    if (m_cAInteligentes != NULL) {
       delete m_cAInteligentes;
    }// end if
-}// end ~ainteligentesview
+}// end ~AInteligentesView
 
 
-void ainteligentesview::return_asiento() {
+void AInteligentesView::return_asiento() {
   QString cadena;
   cadena = idainteligenteedit->text();
   m_idAsientoInteligente = atoi(cadena.ascii());
@@ -217,15 +242,15 @@ void ainteligentesview::return_asiento() {
  * Se ha pulsado sobre el boton nuevo. Asi que creamos una nueva *
  * plantilla.                                                    *
  *****************************************************************/
-void ainteligentesview::boton_nuevo() {
+void AInteligentesView::boton_nuevo() {
   QString query;
   query.sprintf("INSERT INTO ainteligente (descripcion) VALUES ('%s')",tr("Nuevo Asiento Inteligente").ascii());
   fprintf(stderr,query.ascii());
-  conexionbase->begin();
-  conexionbase->ejecuta(query);
+  m_companyact->begin();
+  m_companyact->ejecuta(query);
   query.sprintf("SELECT max(idainteligente) AS id FROM ainteligente");
-  cursor2 *aux = conexionbase->cargacursor(query,"querysupersuper");
-  conexionbase->commit();
+  cursor2 *aux = m_companyact->cargacursor(query,"querysupersuper");
+  m_companyact->commit();
   if (!aux->eof()) {
     cargacombo();
     m_idAsientoInteligente= atoi(aux->valor(0).ascii());
@@ -235,10 +260,10 @@ void ainteligentesview::boton_nuevo() {
 }// end boton_nuevo
 
 
-void ainteligentesview::boton_inicio() {
+void AInteligentesView::boton_inicio() {
   QString query;
   query.sprintf("SELECT MIN(idainteligente) AS id FROM ainteligente");
-  cursor2 * cur = conexionbase->cargacursor(query,"miquery");
+  cursor2 * cur = m_companyact->cargacursor(query,"miquery");
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -246,10 +271,10 @@ void ainteligentesview::boton_inicio() {
 }// end boton_inicio
 
 
-void ainteligentesview::boton_fin() {
+void AInteligentesView::boton_fin() {
   QString query;
   query.sprintf("SELECT MAX(idainteligente) AS id FROM ainteligente");
-  cursor2 * cur = conexionbase->cargacursor(query,"miquery");
+  cursor2 * cur = m_companyact->cargacursor(query,"miquery");
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -257,10 +282,10 @@ void ainteligentesview::boton_fin() {
 }// end boton_inicio
 
 
-void ainteligentesview::boton_siguiente() {
+void AInteligentesView::boton_siguiente() {
   QString query;
   query.sprintf("SELECT MIN(idainteligente) AS id FROM ainteligente WHERE idainteligente > %d",m_idAsientoInteligente);
-  cursor2 * cur = conexionbase->cargacursor(query,"miquery");
+  cursor2 * cur = m_companyact->cargacursor(query,"miquery");
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -268,10 +293,10 @@ void ainteligentesview::boton_siguiente() {
 }// end boton_siguiente
 
 
-void ainteligentesview::boton_anterior() {
+void AInteligentesView::boton_anterior() {
   QString query;
   query.sprintf("SELECT MAX(idainteligente) AS id FROM ainteligente WHERE idainteligente < %d",m_idAsientoInteligente);
-  cursor2 * cur = conexionbase->cargacursor(query,"miquery");
+  cursor2 * cur = m_companyact->cargacursor(query,"miquery");
   if (atoi(cur->valor(0).ascii()) != 0) {
     m_idAsientoInteligente = atoi(cur->valor(0).ascii());
     repinta();
@@ -283,16 +308,16 @@ void ainteligentesview::boton_anterior() {
  * Se ha pulsado sobre el boton borrar, con lo que borraremos *
  * la plantilla actual.                                       *
  **************************************************************/
-void ainteligentesview::boton_borrar() {
+void AInteligentesView::boton_borrar() {
   fprintf(stderr,"Boton de Borrar\n");
   QString query;
   query.sprintf("DELETE FROM binteligente WHERE idainteligente=%d",m_idAsientoInteligente);
   fprintf(stderr,"%s\n",query.ascii());
-  conexionbase->begin();
-  conexionbase->ejecuta(query);
+  m_companyact->begin();
+  m_companyact->ejecuta(query);
   query.sprintf("DELETE FROM ainteligente WHERE idainteligente=%d",m_idAsientoInteligente);
-  conexionbase->ejecuta(query);
-  conexionbase->commit();
+  m_companyact->ejecuta(query);
+  m_companyact->commit();
   fprintf(stderr,"%s\n",query.ascii());
   repinta();
 }// end boton_borrar
@@ -302,7 +327,7 @@ void ainteligentesview::boton_borrar() {
  * Con esta funcion hacemos que el valor del campo de *
  * la posicion actual valga igual que el anterior.    *
  ******************************************************/
-void ainteligentesview::boton_igualant() {
+void AInteligentesView::boton_igualant() {
   fprintf(stderr,"currentPAgeIndes:%d",pestanas->currentPageIndex());
   if (pestanas->currentPageIndex() == 0) {
     int currow = tapunts->currentRow();
@@ -319,7 +344,7 @@ void ainteligentesview::boton_igualant() {
  * Esta función se activa cuando pulsamos sobre el    *
  * boton guardar                                      *
  ******************************************************/
-void ainteligentesview::boton_save() {
+void AInteligentesView::boton_save() {
   int i;
   
   QString codigocta;
@@ -344,26 +369,26 @@ void ainteligentesview::boton_save() {
   cursor2 *cur;
 
   query.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d",m_idAsientoInteligente);
-  cursor2 *asiento = conexionbase->cargacursor(query,"micursor");
+  cursor2 *asiento = m_companyact->cargacursor(query,"micursor");
   if (asiento->eof()) {
       query.sprintf("INSERT INTO ainteligente (idainteligente,descripcion, comenatiosasiento) VALUES   (%d,'%s', '%s')",
       m_idAsientoInteligente,
-      conexionbase->sanearCadena(descasiento->text()).ascii(), 
-      conexionbase->sanearCadena(comainteligente->text()).ascii());
-      conexionbase->ejecuta(query);
+      m_companyact->sanearCadena(descasiento->text()).ascii(), 
+      m_companyact->sanearCadena(comainteligente->text()).ascii());
+      m_companyact->ejecuta(query);
   } else {
     query.sprintf("UPDATE ainteligente SET descripcion='%s', comentariosasiento='%s' WHERE idainteligente=%d",
-    conexionbase->sanearCadena(descasiento->text()).ascii(),
-    conexionbase->sanearCadena(comainteligente->text()).ascii(),
+    m_companyact->sanearCadena(descasiento->text()).ascii(),
+    m_companyact->sanearCadena(comainteligente->text()).ascii(),
      m_idAsientoInteligente);
-    conexionbase->ejecuta(query);
+    m_companyact->ejecuta(query);
   }// end if
   delete asiento;
   
 
   // Hacemos la grabacion de los apuntes (tapunts)
   query.sprintf("DELETE FROM binteligente WHERE idainteligente=%d", m_idAsientoInteligente);
-  conexionbase->ejecuta(query);
+  m_companyact->ejecuta(query);
   // Cambiamos el foco de tapunts para que coja el ultimo cambio realizado.
   tapunts->setCurrentCell(0,0);
   for (i=0;i<tapunts->numRows();i++) {
@@ -434,27 +459,27 @@ void ainteligentesview::boton_save() {
 
 // AL SANEAR LAS CADENAS DE CARACTERES DA ALGUNOS ERRORES.
 /*
-	   cod = conexionbase->sanearCadena(cod);
-	   desc = conexionbase->sanearCadena(desc);
-	   fecha = conexionbase->sanearCadena(fecha);
-	   concontable = conexionbase->sanearCadena(concontable);
-	   debe = conexionbase->sanearCadena(debe);
-	   haber = conexionbase->sanearCadena(haber);
-	   contrapartida = conexionbase->sanearCadena(contrapartida);
-	   comentario = conexionbase->sanearCadena(comentario);
-	   canal = conexionbase->sanearCadena(canal);
-	   marcaconciliacion = conexionbase->sanearCadena(marcaconciliacion);
+	   cod = m_companyact->sanearCadena(cod);
+	   desc = m_companyact->sanearCadena(desc);
+	   fecha = m_companyact->sanearCadena(fecha);
+	   concontable = m_companyact->sanearCadena(concontable);
+	   debe = m_companyact->sanearCadena(debe);
+	   haber = m_companyact->sanearCadena(haber);
+	   contrapartida = m_companyact->sanearCadena(contrapartida);
+	   comentario = m_companyact->sanearCadena(comentario);
+	   canal = m_companyact->sanearCadena(canal);
+	   marcaconciliacion = m_companyact->sanearCadena(marcaconciliacion);
 */
 
            query.sprintf("INSERT INTO binteligente (idainteligente, codcuenta, descripcion, fecha, conceptocontable, debe, haber, contrapartida, comentario, canal, marcaconciliacion, idc_coste, iddiario) VALUES (%d,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",m_idAsientoInteligente, cod.ascii(), desc.ascii(), fecha.ascii(),concontable.ascii(), debe.ascii(), haber.ascii(), contrapartida.ascii(), comentario.ascii(), canal.ascii(), marcaconciliacion.ascii(), idc_coste.ascii(), iddiario.ascii());
-           conexionbase->begin();
-           conexionbase->ejecuta(query);
+           m_companyact->begin();
+           m_companyact->ejecuta(query);
            query.sprintf("SELECT max(idbinteligente) AS id FROM binteligente");
-           cur = conexionbase->cargacursor(query,"identificador");
+           cur = m_companyact->cargacursor(query,"identificador");
            if (atoi(cur->valor(0).ascii()) != 0) 
              tapunts->setText(i,COL_IDBINTELIGENTE, cur->valor(0));
            delete cur;
-           conexionbase->commit();
+           m_companyact->commit();
         }// end if
      }// end if
   }// end for
@@ -466,7 +491,7 @@ void ainteligentesview::boton_save() {
 /*********************************************************
  * Repintado del asiento inteligente                     *
  *********************************************************/
-void ainteligentesview::repinta() {
+void AInteligentesView::repinta() {
   int idainteligente = m_idAsientoInteligente;
   char query[300];
   char cadena[300];
@@ -497,9 +522,9 @@ void ainteligentesview::repinta() {
   sprintf(cadena,"%d",idainteligente);
   idainteligenteedit->setText(cadena);
   sprintf(query,"SELECT * FROM ainteligente WHERE idainteligente=%d",idainteligente);
-  conexionbase->begin();
-  cursor2 *cur = conexionbase->cargacursor(query,"supquery");
-  conexionbase->commit();
+  m_companyact->begin();
+  cursor2 *cur = m_companyact->cargacursor(query,"supquery");
+  m_companyact->commit();
   if (!cur->eof()) {
     descasiento->setText(cur->valor("descripcion"));
     comainteligente->setText(cur->valor("comentariosasiento"));
@@ -508,9 +533,9 @@ void ainteligentesview::repinta() {
 
   // Pintamos las entras de tapunts (apuntes)
   sprintf(query,"SELECT * FROM binteligente WHERE idainteligente=%d",idainteligente);
-  conexionbase->begin();
-  cur = conexionbase->cargacursor(query,"myquery1");
-  conexionbase->commit();
+  m_companyact->begin();
+  cur = m_companyact->cargacursor(query,"myquery1");
+  m_companyact->commit();
   int i=0;
   while (!cur->eof()) {
     tapunts->setText(i,COL_IDBINTELIGENTE,   cur->valor("idbinteligente"));
@@ -529,30 +554,35 @@ void ainteligentesview::repinta() {
     tapunts->setText(i,COL_IDDIARIO, cur->valor("iddiario"));
     if (cur->valor("canal") != "") {
       QString querycanal = "SELECT * FROM CANAL WHERE idcanal="+cur->valor("canal");
-      conexionbase->begin();
-      cur1 = conexionbase->cargacursor(querycanal,"canales");
-      conexionbase->commit();
+      m_companyact->begin();
+      cur1 = m_companyact->cargacursor(querycanal,"canales");
+      m_companyact->commit();
       tapunts->setText(i,COL_NOMCANAL,cur1->valor("nombre"));
       delete cur1;
     }// end if
     if (cur->valor("idc_coste") != "") {
       QString querycoste = "SELECT * FROM C_COSTE WHERE idc_coste="+cur->valor("idc_coste");
-      conexionbase->begin();
-      cur1 = conexionbase->cargacursor(querycoste,"costes");
-      conexionbase->commit();
+      m_companyact->begin();
+      cur1 = m_companyact->cargacursor(querycoste,"costes");
+      m_companyact->commit();
       tapunts->setText(i,COL_NOMCOSTE,cur1->valor("nombre"));
       delete cur1;
     }// end if
     cur->siguienteregistro();
     i++;
   }// end while
+
+   /// Cargamos el listado que nos interesa.
+   cur->primerregistro();
+   m_list->cargar(cur);
+
   delete cur;
   m_oldRow=-1;
 }// end repinta
 
 
 
-void ainteligentesview::currentChanged(int row, int) {
+void AInteligentesView::currentChanged(int row, int) {
   char cadena[50];
   int  coste, canal;
   int i;
@@ -608,19 +638,19 @@ void ainteligentesview::currentChanged(int row, int) {
 }// end currentChanged
 
 
-void ainteligentesview::selectionChanged(){
+void AInteligentesView::selectionChanged(){
   fprintf(stderr,"Selection changed \n");
 }// end selectionChanged
 
 
-void ainteligentesview::accept() {
+void AInteligentesView::accept() {
   boton_save();
-  done(1);
+  close();
 }// end accept
 
 
-void ainteligentesview::boton_cuentas() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
+void AInteligentesView::boton_cuentas() {
+   listcuentasview1 *listcuentas = new listcuentasview1(m_companyact);
    listcuentas->setModoLista();
    listcuentas->inicializa();
    listcuentas->exec();
@@ -630,7 +660,7 @@ void ainteligentesview::boton_cuentas() {
    delete listcuentas;  
 }// end boton_cuentas
 
-void ainteligentesview::boton_exportar() {
+void AInteligentesView::boton_exportar() {
    QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("AInteligente (*.xml)"), 0,tr("Guardar Asiento Inteligente"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {
       FILE *mifile;
@@ -638,9 +668,9 @@ void ainteligentesview::boton_exportar() {
       if (mifile != NULL) {
           QString SQlQuery;
           SQlQuery.sprintf("SELECT * FROM ainteligente WHERE idainteligente=%d", m_idAsientoInteligente);
-         conexionbase->begin();
-         cursor2 *cursp = conexionbase->cargacursor(SQlQuery,"asiento");
-         conexionbase->commit();
+         m_companyact->begin();
+         cursor2 *cursp = m_companyact->cargacursor(SQlQuery,"asiento");
+         m_companyact->commit();
          fprintf(mifile,"<?xml version=\"1.0\"?>\n");
          fprintf(mifile,"<DOCUMENT>\n");
          while (!cursp->eof()) {
@@ -649,9 +679,9 @@ void ainteligentesview::boton_exportar() {
             fprintf(mifile,"      <comentariosasiento>%s</comentariosasiento>\n", XMLProtect(cursp->valor("comentariosasiento")).ascii());
             QString SQlQuery1;
             SQlQuery1.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d", m_idAsientoInteligente);
-            conexionbase->begin();
-            cursor2 *cursp1 = conexionbase->cargacursor(SQlQuery1,"a1siento");
-            conexionbase->commit();
+            m_companyact->begin();
+            cursor2 *cursp1 = m_companyact->cargacursor(SQlQuery1,"a1siento");
+            m_companyact->commit();
             while (!cursp1->eof()) {
                fprintf(mifile,"      <binteligente>\n");
                fprintf(mifile,"         <fecha>%s</fecha>\n", XMLProtect(cursp1->valor("fecha")).ascii());
@@ -682,7 +712,7 @@ void ainteligentesview::boton_exportar() {
 }// end boton_exportar
 
 
-void ainteligentesview::boton_importar() {
+void AInteligentesView::boton_importar() {
    QString fn = Q3FileDialog::getOpenFileName("/usr/share/bulmages/ainteligentes", tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
    if (!fn.isEmpty()) {      
       // Hacemos el parsing del XML
@@ -690,7 +720,7 @@ void ainteligentesview::boton_importar() {
       QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como parámetro
       QXmlSimpleReader reader;            // Declaramos el lector
       
-      importainteligente * handler = new importainteligente( empresaactual );
+      importainteligente * handler = new importainteligente( m_companyact );
       reader.setContentHandler( handler );
       reader.parse( source );   
       
