@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Form</string>
+   <string>Introducción de asiento</string>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -1543,7 +1543,7 @@
   </customwidget>
   <customwidget>
    <class>Q3TextEdit</class>
-   <extends></extends>
+   <extends>Q3Frame</extends>
    <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
