@@ -33,9 +33,8 @@ protected:
 
 public:
     SubForm2Bc(QWidget *parent = 0);
-    virtual ~SubForm2Bc() {}
-    ;
-	virtual int cargar(cursor2 *);
+    virtual ~SubForm2Bc() {};
+    virtual int cargar(cursor2 *);
 
     void setDelete(bool f) {
         m_delete=f;

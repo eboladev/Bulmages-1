@@ -37,13 +37,9 @@ public:
     };
     Asiento1(empresa *);
     virtual ~Asiento1();
-    int cargar(QString );
-    Fixed totaldebe() {
-        return listalineas->totaldebe();
-    };
-    Fixed totalhaber() {
-        return listalineas->totalhaber();
-    };
+    int cargar(QString);
+    Fixed totaldebe(QString);
+    Fixed totalhaber(QString);
     void vaciaAsiento1();
     void abreAsiento1();
     void cierraAsiento1();
@@ -84,7 +80,7 @@ public:
     };
 
 
-    virtual void calculaypintatotales() {
+    virtual void calculaypintatotales(QString) {
         _depura("funcion no implementada calculaypintatotales");
     };
     virtual void pintaAsiento1();

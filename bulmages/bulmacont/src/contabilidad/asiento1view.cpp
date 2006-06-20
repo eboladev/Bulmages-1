@@ -70,10 +70,10 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
   */
 Asiento1View::~Asiento1View() {}
 
-void Asiento1View::calculaypintatotales() {
-    m_totaldebe->setText(totaldebe().toQString());
-    m_totalhaber->setText(totalhaber().toQString());
-    Fixed desc = totaldebe() - totalhaber();
+void Asiento1View::calculaypintatotales(QString idasiento) {
+    m_totaldebe->setText(totaldebe(idasiento).toQString());
+    m_totalhaber->setText(totalhaber(idasiento).toQString());
+    Fixed desc = totaldebe(idasiento) - totalhaber(idasiento);
     m_descuadre->setText(desc.toQString());
 }
 
@@ -125,9 +125,7 @@ void Asiento1View::boton_nuevoasiento() {
  * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
  */
 void Asiento1View::iniciar_asiento_nuevo() {
-
-   int idasiento = m_companyact->nuevoasiento(m_fecha->text(), m_fecha->text(),0,1);
-
+    int idasiento = m_companyact->nuevoasiento(m_fecha->text(), m_fecha->text(),0,1);
     if (idasiento <= 0) {
         _depura("No se pudo crear el asiento",2);
         return;
@@ -135,8 +133,7 @@ void Asiento1View::iniciar_asiento_nuevo() {
     cargaasientos();
     muestraasiento(idasiento);
     abreAsiento1();
-    mui_list->cargar(QString::number(idasiento));
-
+    mui_list->setDBTableName(QString::number(idasiento));
 }
 
 void Asiento1View::eturn_fechaasiento() {

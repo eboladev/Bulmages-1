@@ -72,7 +72,7 @@ public:
     void hideColumn(int i) {
         mui_list->hideColumn(i);
     };
-    int  currentRow() {
+    int currentRow() {
         return mui_list->currentRow();
     };
 

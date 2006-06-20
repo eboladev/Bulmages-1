@@ -129,8 +129,7 @@ private:
 	mui_comentariosAsiento->setText(text);
     };
 
-
-    virtual void calculaypintatotales();
+    virtual void calculaypintatotales(QString);
     void prepguardar();
 
 public:
@@ -181,7 +180,7 @@ public slots:
 
 
     virtual void s_lineaValueChanged() {
-        calculaypintatotales();
+        calculaypintatotales(idasiento());
     };
 
     virtual void boton_nuevoasiento();

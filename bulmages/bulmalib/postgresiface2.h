@@ -53,7 +53,7 @@ private:
    /// Estructura en la que se almacena el resultado
    PGresult *result;
    /// Estructura en la que se almacenan los datos de conexi�
-   PGconn     *conn;
+   PGconn *conn;
    /// Para recorrer un query simulamos una cola, esta variable global indica el registro en que nos encontramos situados.
    int registroactual;
    /// Indica el numero de registros que tiene el query. (La componente vertical del query)

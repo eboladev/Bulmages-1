@@ -25,8 +25,8 @@ public:
     ListLinAsiento1View(QWidget *parent=0, const char *name=0);
     ~ListLinAsiento1View() {};
     virtual void cargar(QString);
-    Fixed totaldebe() {return Fixed("0");};
-    Fixed totalhaber() {return Fixed("0");};
+    Fixed totaldebe(QString);
+    Fixed totalhaber(QString);
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);

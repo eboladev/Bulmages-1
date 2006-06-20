@@ -20,7 +20,7 @@
 
 Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
     _depura("Asiento1::Asiento1(empresa *)",0);
-    m_companyact=comp;
+    m_companyact = comp;
     setDBTableName("asiento");
     setDBCampoId("idasiento");
     addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador Asiento");
@@ -74,14 +74,14 @@ void Asiento1::vaciaAsiento1() {
 
 void Asiento1::pintaAsiento1() {
     _depura("pintaAlbaranCliente\n",0);
-    pintaidasiento(DBvalue("idasiento"));
+    pintaidasiento(idasiento());
     pintadescripcion(DBvalue("descripcion"));
     pintafecha(DBvalue("fecha"));
     pintacomentariosasiento(DBvalue("comentariosasiento"));
     pintaordenasiento(DBvalue("ordenasiento"));
     pintaclase(DBvalue("clase"));
     /// Pintamos los totales
-    calculaypintatotales();
+    calculaypintatotales(idasiento());
     trataestadoAsiento1();
 }
 
@@ -100,6 +100,15 @@ int Asiento1::cargar(QString idbudget) {
     pintaAsiento1();
     _depura("END Asiento1::cargar("+idbudget+")\n",0);
     return 0;
+}
+
+Fixed Asiento1::totaldebe(QString idbudget) {
+    return listalineas->totaldebe(idbudget);
+}
+
+
+Fixed Asiento1::totalhaber(QString idbudget) {
+    return listalineas->totalhaber(idbudget);
 }
 
 

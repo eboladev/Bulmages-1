@@ -72,15 +72,12 @@ int DBRecord::DBload(cursor2 *cur) {
     for (int i =0; i < m_lista.size(); ++i) {
         linea = m_lista.at(i);
         QString nom =linea->nomcampo();
-        QString val = cur->valor(nom);
-        if ((linea->restrictcampo() & DBCampo::DBPrimaryKey)
-                && (val == "") )
-            m_nuevoCampo = TRUE;
-        if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey)
-                && (val == "") )
-            m_nuevoCampo = TRUE;
-        error += linea->set
-                 (val);
+	QString val = cur->valor(nom);
+	if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) && (val == "") )
+	    m_nuevoCampo = TRUE;
+	if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == "") )
+	    m_nuevoCampo = TRUE;
+	error += linea->set(val);
     }// end for
     _depura("END DBRecord::DBload",0);
     return error;
