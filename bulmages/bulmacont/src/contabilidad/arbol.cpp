@@ -4,7 +4,7 @@
 // Description: 
 //
 //
-// Author: Ricardo Díaz <richard@galdi.es>, (C) 2005
+// Author: Ricardo Di�az <richard@galdi.es>, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -24,7 +24,7 @@ Arbol::Arbol()
 {
     unsigned int i;
     
-    raiz = new tipohoja*[70]; // una contabilidad podría tener hasta 70 cuentas de nivel 2, como mucho
+    raiz = new tipohoja*[70]; // una contabilidad podra tener hasta 70 cuentas de nivel 2 como mucho, creo
     for(i=0; i<70; i++){ // Vamos a hacer un recorrido por el array para inicializar los punteros a NULO
 	raiz[i] = NULL;
     }
@@ -47,7 +47,7 @@ void Arbol::nuevarama(cursor2* ramas)
 {
     unsigned int i;
     
-    // rellenamos los valores de inicialización para una hoja
+    // rellenamos los valores de inicializacion para una hoja
     hoja = new tipohoja;
     hoja->idcuenta = atoi(ramas->valor("idcuenta").ascii());
     hoja->codigo = QString(ramas->valor("codigo"));
@@ -55,7 +55,7 @@ void Arbol::nuevarama(cursor2* ramas)
     hoja->saldoant= hoja->debe= hoja->haber= hoja->saldo= hoja->debeej= hoja->haberej= hoja->saldoej= 0.00;
     hoja->numapuntes = 0;
     hoja->ramas = NULL;
-    // buscamos en qué rama hay que poner la hoja
+    // buscamos en que rama hay que poner la hoja
     for(i=0; i<70 && raiz[i]; i++){}
     raiz[i] = hoja;
 }
@@ -70,7 +70,7 @@ void Arbol::inicializa(cursor2* ramas)
     // Hay que construir el arbol con todas sus hojitas (cuentas)
     for(i=0; raiz[i] && i<70; i++){
 	padre = raiz[i]->codigo;
-	// Creamos las primeras hojas en la raiz y sintetizamos el resto recursivamente (si es que existen aún más hojas hijas)
+	// Creamos las primeras hojas en la raiz y sintetizamos el resto recursivamente (si es que existen aun mas hojas hijas)
 	while(!ramas->eof() && ramas->valor("codigo").startsWith(padre)){ 
 	    if(ramas->valor("nivel").toInt() > 2){
 		// Creamos una hoja
@@ -84,7 +84,7 @@ void Arbol::inicializa(cursor2* ramas)
 		rama = new tiporama;
 		rama->hoja = hoja;
 		rama->sgte = NULL;
-		if(!raiz[i]->ramas){ // Creamos la unión con la raíz
+		if(!raiz[i]->ramas){ // Creamos la union con la raiz
 		    raiz[i]->ramas = guia = rama;
 		}
 		else{ // Avanzamos el puntero a la sgte. supuesta rama
@@ -92,7 +92,7 @@ void Arbol::inicializa(cursor2* ramas)
 		    guia = guia->sgte;
 		}// end if
 		
-		// Buscamos si además de esta hoja hay más ramas que crezcan, en tal caso habrá que sintetizarlas
+		// Buscamos si ademas de esta hoja hay mas ramas que crezcan, en tal caso habra que sintetizarlas
 		SintetizarRamas(&ramas, &(hoja->ramas));
 	    }
 	    else{
@@ -130,7 +130,7 @@ void Arbol::SintetizarRamas(cursor2** cuentas, tiporama** ramas)
 	hoja->ramas = NULL;
 	guia->hoja = hoja;
 	guia->sgte = NULL;
-	// Pero aún puede haber más ramas que crezcan, en tal caso habrá que sintetizarlas
+	// Pero aun puede haber mas ramas que crezcan, en tal caso habra que sintetizarlas
 	SintetizarRamas(&ptrcuentas, &(hoja->ramas));
     } // end while
 }
@@ -335,6 +335,9 @@ QString Arbol::hojaactual(QString valor){
 }
 
 /*
+  
+// 2 funciones utiles para depurar; activar y usarlas si se quiere ver el arbol por la salida estandar
+  
 void Arbol::imprimir()
 {
     unsigned int i;

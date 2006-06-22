@@ -24,11 +24,11 @@
 #include "postgresiface2.h"
 
 /**
- @author Ricardo D√≠az
- * Fichero de definicion de las clase \ref arbol que crea una estructura de almacenaje
- * en memoria dinamica de las cuentas de la base de datos con saldos calculados previamente.
- * La potencia de esta estructura radica en la autoactualizacion de todas las hojas implicadas
- * cada vez que se modifica los valores de una hoja concreta.
+ @author Ricardo Di≠az
+ * Fichero de definicion de las clase \ref arbol que crea una estructura tipo arbol para el almacenaje
+ * en memoria dinamica de todas cuentas del plan contable de la base de datos que calcula sus saldos cuando se genera.
+ * La potencia de esta estructura radica en la actualizacion autom·tica de todas los estados de cada cuenta (las hojas)
+ * cada vez que se modifica los valores de alguna de ellas.
 */
 
 class Arbol{
@@ -48,7 +48,7 @@ private:
     };
     tipohoja** raiz;	// Raiz del arbol que contiene todas las cuentas de nivel 2
     tipohoja* hoja;	// Hoja que contiene los datos de una cuenta
-    tiporama* rama;	// Rama que contiene una hoja y m√°s ramas o no
+    tiporama* rama;	// Rama que contiene una hoja y mas ramas o no
     postgresiface2 *conexionbase;  // Para el acceso a la BD con la que estamos trabajando
     QString hojaactiva; // Codigo de la ultima hoja visitada (nos servira de indice)
     
@@ -61,7 +61,7 @@ private:
 public:    
     Arbol();
     ~Arbol();
-    /// \brief A√±ade una nueva rama al arbol con su hoja
+    /// \brief AÒade una nueva rama al arbol con su hoja
     void nuevarama(cursor2*);
     /// \brief Constituye el arbol inicializando los valores que corresponden a cada cuenta (hoja)
     void inicializa(cursor2*);
@@ -73,7 +73,7 @@ public:
     bool deshoja(unsigned int, bool);
     /// \brief Devuelve el contenido de valor solicitado como parametro
     QString hojaactual(QString);
-    /// Se recorre el arbol e imprime sus valores (util para mostrar por consola los valores de las hojas)
+    /// Se recorre el arbol e imprime sus valores (util para mostrar por salida estandar los valores de las hojas)
     //void imprimir();
 };
 
