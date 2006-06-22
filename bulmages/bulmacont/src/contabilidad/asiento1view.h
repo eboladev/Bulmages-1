@@ -23,7 +23,7 @@
 #include <qstring.h>
 #include <QHBoxLayout>
 
-#include "qtable1.h"
+#include "qtable2.h"
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "fixed.h"

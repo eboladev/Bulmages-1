@@ -11,14 +11,13 @@
 //
 
 
-
 #include "listlinasiento1view.h"
 #include <QMenu>
 
 #include "plugins.h"
 
 
-
+// Construye la cabecera del asiento (nombra cada columna de la tabla)
 ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *) : SubForm2Bc(parent) {
     setDBTableName("borrador");
     setDBCampoId("idborrador");
@@ -31,7 +30,6 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *) : SubFor
     addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("descripcion"));
     addSHeader("debe", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Debe"));
     addSHeader("haber", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Haber"));
-
     addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Contrapartida"));
     addSHeader("comentario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Comentario"));
     addSHeader("idcanal", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("ID Canal"));
@@ -40,14 +38,13 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *) : SubFor
     addSHeader("idapunte", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idapunte"));
     addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idtipoiva"));
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("orden"));
-
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoView , tr("idborrador"));
     addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , tr("idasiento"));
-
     setinsercion(TRUE);
 }
 
 
+// Fabrica el menu contextual
 void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
     _depura("SubForm2Bc::contextMenuEvent",0);
     QAction *del= NULL;
@@ -74,7 +71,6 @@ void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
     QAction *mostbalancejdia = popup->addAction("Mostrar Balance Jerarquico (dia)");
     QAction *mostbalancejmes = popup->addAction("Mostrar Balance Jerarquico (mes)");
     QAction *mostbalancejano = popup->addAction("Mostrar Balance Jerarquico (ano)");
-
 
     if(m_delete)
         del = popup->addAction(tr("Borrar registro"));
@@ -111,16 +107,12 @@ void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
     if(opcion == verconfig)
         showConfig();
 
-
-
     if (opcion == mostextractodia)
 	boton_extracto1(0);
     if (opcion == mostextractomes)
 	boton_extracto1(1);
     if (opcion == mostextractoano)
 	boton_extracto1(2);
-
-
 
     if (opcion == mostbalancedia)
 	boton_balance1(0);
@@ -129,7 +121,6 @@ void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
     if (opcion == mostbalanceano)
 	boton_balance1(2);
 
-
     if (opcion == mostbalancejdia)
 	boton_balancetree(0);
     if (opcion == mostbalancejmes)
@@ -137,21 +128,19 @@ void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
     if (opcion == mostbalancejano)
 	boton_balancetree(2);
 
-
     delete popup;
 }
 
 
-
-// Carga l�eas de Factura
-void ListLinAsiento1View::cargar(QString idbudget) {
+// Carga lineas de asiento (apuntes)
+void ListLinAsiento1View::cargar(QString idasiento) {
     _depura("AsientoSubForm::cargar",0);
     QString SQLQuery = "SELECT * FROM borrador ";
     SQLQuery+= " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta ";
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
     SQLQuery += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste ";
     SQLQuery += " LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador ";
-    SQLQuery+= "WHERE idasiento="+idbudget+" ORDER BY orden";
+    SQLQuery+= "WHERE idasiento="+idasiento+" ORDER BY orden";
     cursor2 * cur= m_companyact->cargacursor(SQLQuery);
     SubForm2Bc::cargar(cur);
     delete cur;
@@ -159,21 +148,28 @@ void ListLinAsiento1View::cargar(QString idbudget) {
 }
 
 
-
 void ListLinAsiento1View::boton_iva() {
     int res = g_plugins->lanza("ListLinAsiento1View_boton_iva", this);
 }
 
-Fixed ListLinAsiento1View::totaldebe(QString idbudget) {
-    QString SQLQuery = "SELECT  sum(debe) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento="+idbudget;
+
+// Devuelve el DEBE de un asiento
+Fixed ListLinAsiento1View::totaldebe(QString idasiento) {
+    QString SQLQuery = "SELECT  sum(debe) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento="+idasiento;
     cursor2 * cur= m_companyact->cargacursor(SQLQuery);
-    return Fixed(cur->valor(0));
+    QString resultado = cur->valor(0);
+    delete cur;
+    return Fixed(resultado);
 }
 
-Fixed ListLinAsiento1View::totalhaber(QString idbudget) {
-    QString SQLQuery = "SELECT  sum(haber) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento="+idbudget;
+
+// Devuelve el HABER de un asiento
+Fixed ListLinAsiento1View::totalhaber(QString idasiento) {
+    QString SQLQuery = "SELECT  sum(haber) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador  FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento="+idasiento;
     cursor2 * cur= m_companyact->cargacursor(SQLQuery);
-    return Fixed(cur->valor(0));
+    QString resultado = cur->valor(0);
+    delete cur;
+    return Fixed(resultado);
 }
 
 

@@ -40,7 +40,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     m_insercion = FALSE;
     m_primero = TRUE;
 
-    /// Para el listado de  columnas hacemos una inicializacionAlbaranCliente
+    /// Para el listado de  columnas hacemos una inicializacion
     QStringList headers;
     headers << "Orden" << "Nombre" << "Nombre Campo" << "Visible";
     mui_listcolumnas->setColumnCount(4);
@@ -54,7 +54,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_listcolumnas->verticalHeader()->hide();
 
 
-    /// Ocultamos la configuraciónAlbaranCliente
+    /// Ocultamos la configuracion
     hideConfig();
 
     /// Limpiamos la lista

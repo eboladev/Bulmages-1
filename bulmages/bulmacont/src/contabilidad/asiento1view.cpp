@@ -98,6 +98,14 @@ void Asiento1View::asientoabiertop() {
     botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
+    
+    // Los apuntes deben ser editables
+      for(int fila=0; fila < mui_list->rowCount(); fila++){
+	for(int columna=0; columna < mui_list->columnCount(); columna++){
+	    mui_list->item(fila,columna)->setFont(QFont("Decorative",-1,-1,false));
+	    mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
+	}
+    }  
 }
 
 /** \brief Pone la pantalla en el modo de asiento cerrado
@@ -110,6 +118,14 @@ void Asiento1View::asientocerradop() {
     botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(TRUE);
+    
+    // Los apuntes deben dejar de ser editables (aunque no se graben sus posibles modificaciones por estar en modo CERRADO)
+    for(int fila=0; fila < mui_list->rowCount(); fila++){
+	for(int columna=0; columna < mui_list->columnCount(); columna++){
+	    mui_list->item(fila,columna)->setFont(QFont("Courier",-1,-1,false));
+	    mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled);
+	}
+    }
 }
 
 /**
