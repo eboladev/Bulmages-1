@@ -3,7 +3,7 @@
 # Distribuido bajo la liencia GPL
 # Lo ejecuta un usuario con privilegios para crear bases de datos. Si no no funciona.
 #
-# Este script se encarga de crear bases de datos de bulmages.
+# Este script se encarga de crear bases de datos de bulmacont.
 # para ello precisa de dos parametros (el nombre de la base de datos a crear y el tipo de base de datos que ser�
 # Este script no se encarga de hacer las inserciones oportunas en la metabd.
 # Aunque es una tarea muy sencilla que puede hacer posteriormente.
@@ -12,7 +12,7 @@
 #               $2 Nombre Base de Datos
 #               $3 Tipo:  0.- Base (Vacia)
 #                         1.- Plan Contable.
-#                         2.- Juego de prueba de bulmages
+#                         2.- Juego de prueba de bulmacont
 #               $4 Nombre de la Empresa.
 #               $5 Ejercicio (ano)
 #
@@ -36,7 +36,7 @@ fi
 
 #Si el nmero de parametros no es el correcto salimos con un mensaje de error.
 if [ "$5" = "" ]; then
-   echo "creabulmages [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
+   echo "creabulmacont [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
    exit
 fi
 
@@ -113,7 +113,7 @@ createdb -E SQL_ASCII $2 2>> /tmp/errores.txt > /dev/null
 if [ "$3" = "1" -o "$3" = "2" -o "$3" = "0" ]; then
 	info "Importamos el esquema de base de datos de una empresa. \n"
 	tiempo
-	psql $2 < crear/bulmages/bulmages_schema.sql 2>> /tmp/errores.txt > /dev/null
+	psql $2 < crear/bulmacont/bulmacont_schema.sql 2>> /tmp/errores.txt > /dev/null
 fi
 
 
@@ -121,10 +121,10 @@ fi
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
    info "Cargamos el conjunto minimo de datos. \n Plan contable simple. \n"
-   psql $2 < crear/bulmages/t_configuracion_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_grupo_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_cuenta_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_configuracion_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_grupo_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_cuenta_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
 fi
 
@@ -132,23 +132,23 @@ fi
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n Ejemplo. \n"
-   psql $2 < crear/bulmages/t_ejercicios_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_cuenta_data1.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_tipoiva_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_canal_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_c_coste_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_diario_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_asiento_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_apunte_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_borrador_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_registroiva_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_ainteligente_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_binteligente_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_compmasap_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_compbalance_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_balance_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_amortizacion_data.sql 2>> /tmp/errores.txt > /dev/null
-   psql $2 < crear/bulmages/t_linamortizacion_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_ejercicios_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_cuenta_data1.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_tipoiva_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_canal_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_c_coste_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_diario_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_asiento_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_apunte_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_borrador_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_registroiva_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_ainteligente_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_binteligente_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_compmasap_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_compbalance_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_balance_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_amortizacion_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmacont/t_linamortizacion_data.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
 fi
 
@@ -168,8 +168,8 @@ else
   if [ -e /tmp/errores.txt ]; then
     rm -f /tmp/errores.txt
   fi
-  if [ -e /tmp/bulmages_generica.sql ]; then
-    rm -f /tmp/bulmages_generica.sql
+  if [ -e /tmp/bulmacont_generica.sql ]; then
+    rm -f /tmp/bulmacont_generica.sql
   fi
 fi
 
