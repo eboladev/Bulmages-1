@@ -62,7 +62,7 @@ FacturasProveedorList::~FacturasProveedorList() {}
 
 
 void FacturasProveedorList::presenta() {
-    _depura("FacturasProveedorList::presenta",0);
+    _depura("FacturasProveedorList::presenta", 0);
     cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
 
     mui_list->cargar(cur);
@@ -72,13 +72,13 @@ void FacturasProveedorList::presenta() {
     cur = m_companyact->cargacursor("SELECT SUM(calctotalfacpro(idfacturap)) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
-    _depura("END FacturasProveedorList::presenta",0);
+    _depura("END FacturasProveedorList::presenta", 0);
 }
 
 
 QString FacturasProveedorList::generaFiltro() {
     /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
+    _depura("Tratamos el filtro \n", 0);
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descfacturap LIKE '%" + m_filtro->text() + "%' ";
@@ -133,7 +133,7 @@ void FacturasProveedorList::on_mui_editar_clicked() {
 
 
 void FacturasProveedorList::on_mui_borrar_clicked() {
-    _depura("FacturasProveedorList::on_mui_borrar_clicked",0);
+    _depura("FacturasProveedorList::on_mui_borrar_clicked", 0);
     mdb_idfacturap = mui_list->DBvalue("idfacturap");
     if (mdb_idfacturap != "") {
         FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
@@ -142,7 +142,7 @@ void FacturasProveedorList::on_mui_borrar_clicked() {
         delete bud;
     } // end if
     presenta();
-    _depura("END FacturasProveedorList::on_mui_borrar_clicked",0);
+    _depura("END FacturasProveedorList::on_mui_borrar_clicked", 0);
 }
 
 
@@ -201,14 +201,14 @@ void FacturasProveedorList::on_mui_imprimir_clicked() {
 FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("facturap");
     setDBCampoId("idfacturap");
-    addSHeader("reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Ref facturap"));
-    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id facturap"));
-    addSHeader("numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero facturap"));
+    addSHeader("reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia factura"));
+    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id factura"));
+    addSHeader("numfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero factura"));
     addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre proveedor"));
-    addSHeader("ffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Ffacturap"));
-    addSHeader("contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Contact facturap"));
-    addSHeader("telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono facturap"));
-    addSHeader("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Coment facturap"));
+    addSHeader("ffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha factura"));
+    addSHeader("contactfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Persona de contacto"));
+    addSHeader("telfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono factura"));
+    addSHeader("comentfacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario factura"));
     addSHeader("idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
     addSHeader("idproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id proveedor"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));

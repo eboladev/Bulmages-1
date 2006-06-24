@@ -49,7 +49,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
     setListDescuentoFacturaProv(m_descuentos);
     inicialize();
     comp->meteWindow(caption(), this);
-    /// Hacemos una cargaa inicial falsa para que se inicializa bien la clase (una  chapucilla).
+    /// Hacemos una cargaa inicial falsa para que se inicializa bien la clase (una chapucilla).
     cargar("0");
     _depura("Fin de la inicializacion de FacturaProveedor\n");
 }
@@ -92,7 +92,7 @@ void FacturaProveedorView::s_nuevoCobro() {
 }
 
 
-void FacturaProveedorView::closeEvent( QCloseEvent *e) {
+void FacturaProveedorView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios())  {
         int val = QMessageBox::warning(this,
@@ -109,7 +109,7 @@ void FacturaProveedorView::closeEvent( QCloseEvent *e) {
 
 int FacturaProveedorView::cargar(QString id) {
     FacturaProveedor::cargar(id);
-    setCaption("FacturaProveedor   " + DBvalue("reffacturap"));
+    setCaption(tr("Factura de proveedor") + " - " + DBvalue("reffacturap"));
     if (companyact->meteWindow(caption(), this))
         return -1;
     dialogChanges_cargaInicial();
@@ -133,7 +133,8 @@ int FacturaProveedorView::guardar() {
 
 
 void FacturaProveedorView::on_mui_borrar_clicked() {
-    int val = QMessageBox::warning(this, tr("Borrar factura de proveedor."),
+    int val = QMessageBox::warning(this,
+                                   tr("Borrar factura de proveedor."),
                                    tr("Desea eliminar la factura?"),
                                    tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
     if (val == 0) {
@@ -144,6 +145,4 @@ void FacturaProveedorView::on_mui_borrar_clicked() {
         } // end if
     } // end if
 }
-
-
 

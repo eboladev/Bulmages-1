@@ -66,7 +66,7 @@ void familiasview::pintar() {
     cursor2 *cursoraux1, *cursoraux2;
 
     /// Vaciamos el arbol.
-    while (m_listFamilias->topLevelItemCount () > 0) {
+    while (m_listFamilias->topLevelItemCount() > 0) {
         it = m_listFamilias->takeTopLevelItem(0);
         delete it;
     } // end while
@@ -101,7 +101,7 @@ void familiasview::pintar() {
         cursoraux2->siguienteregistro();
     } // end while
     delete cursoraux2;
-    m_idfamilia="";
+    m_idfamilia = "";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
 }
@@ -170,8 +170,8 @@ void familiasview::mostrarplantilla() {
 }
 
 
-/// Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
-/// Esta función está dedicada a Francina, Bienvenida al mundo :))
+/// Antes de salir de la ventana debemos hacer la comprobacion de si se ha modificado algo
+/// Esta funcion esta dedicada a Francina, Bienvenida al mundo :))
 void familiasview::close() {
     trataModificado();
     done(0);
@@ -193,18 +193,18 @@ bool familiasview::trataModificado() {
 }
 
 
-/// SLOT que responde a la pulsacion del botón de guardar el tipo de iva que se esta editando.
+/// SLOT que responde a la pulsacion del boton de guardar el tipo de IVA que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
 void familiasview::on_mui_guardar_clicked() {
     _depura("familiasview::on_mui_guardar_clicked", 0);
     if (m_idfamilia == "") {
-        _depura(tr("Debe seleccionar una Familia"),2);
+        msgError(tr("Debe seleccionar una familia"));
 	return;
     } // end if
-    QString query = "UPDATE familia SET nombrefamilia='" +
-                    companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia= '" +
+    QString query = "UPDATE familia SET nombrefamilia ='" +
+                    companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
                     companyact->sanearCadena(m_descFamilia->text()) + "' , codigofamilia = '" +
-                    companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia=" + m_idfamilia;
+                    companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
     int error = companyact->ejecuta(query);
     if (error)
         return;
@@ -216,7 +216,7 @@ void familiasview::on_mui_guardar_clicked() {
 void familiasview::pintar(QTreeWidgetItem *it) {
     QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
-        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia=" + idfamilia);
+        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia =" + idfamilia);
         if (!cursoraux1->eof()) {
             it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
             it->setText(COL_CODFAMILIA, cursoraux1->valor("codigofamilia"));
@@ -229,7 +229,7 @@ void familiasview::pintar(QTreeWidgetItem *it) {
 }
 
 
-/// SLOT que responde a la pulsación del botón de nuevo tipo de IVA
+/// SLOT que responde a la pulsacion del boton de nuevo tipo de IVA
 /// Inserta en la tabla de IVAs.
 void familiasview::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -240,7 +240,7 @@ void familiasview::on_mui_crear_clicked() {
     else
         padrefamilia = "NULL";
 
-    QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA','Descripcion de la familia'," + padrefamilia + ",'XXX')";
+    QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA','Descripcion de la familia'," + padrefamilia + ", 'XXX')";
     companyact->begin();
     int error = companyact->ejecuta(query);
     if (error) {
@@ -254,12 +254,12 @@ void familiasview::on_mui_crear_clicked() {
     pintar();
 }
 
-/// SLOT que responde a la pulsación del botón de borrar la familia que se está editando.
+/// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
 /// Lo que hace es que se hace un update de todos los campos.
 void familiasview::on_mui_borrar_clicked() {
-    _depura("familiasview::on_mui_borrar_clicked",0);
+    _depura("familiasview::on_mui_borrar_clicked", 0);
     if (m_idfamilia == "") {
-        _depura(tr("Debe seleccionar una Familia"),2);
+        msgError(tr("Debe seleccionar una familia"));
 	return;
     } // end if
     trataModificado();
@@ -268,7 +268,7 @@ void familiasview::on_mui_borrar_clicked() {
     if (error)
         return;
     pintar();
-    _depura("END familiasview::on_mui_borrar_clicked",0);
+    _depura("END familiasview::on_mui_borrar_clicked", 0);
 }
 
 
@@ -278,7 +278,7 @@ void familiasview::on_mui_imprimir_clicked() {
     archivo = "cp " + archivo + " /tmp/familias.rml";
     system (archivo.ascii());
     /// Copiamos el logo.
-    archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+    archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     archivo = "cp " + archivo + " /tmp/logo.jpg";
     system (archivo.ascii());
     QFile file;
@@ -291,15 +291,15 @@ void familiasview::on_mui_imprimir_clicked() {
     /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 15cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "    <td>Código</td>";
-    fitxersortidatxt += "    <td>Nombre</td>";
+    fitxersortidatxt += "        <td>" + tr("Codigo") + "</td>";
+    fitxersortidatxt += "        <td>" + tr("Nombre") + "</td>";
     fitxersortidatxt += "</tr>";
 
     cursor2 *cur = companyact->cargacursor("SELECT * FROM familia ORDER BY codigocompletofamilia");
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "<td>" + cur->valor("codigocompletofamilia") + "</td>";
-        fitxersortidatxt += "<td>" + cur->valor("nombrefamilia") + "</td>";
+        fitxersortidatxt += "        <td>" + cur->valor("codigocompletofamilia") + "</td>";
+        fitxersortidatxt += "        <td>" + cur->valor("nombrefamilia") + "</td>";
         fitxersortidatxt += "</tr>";
         cur->siguienteregistro();
     } // end if

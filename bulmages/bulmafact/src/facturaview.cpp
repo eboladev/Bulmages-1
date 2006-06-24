@@ -28,6 +28,7 @@
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>
+
 using namespace std;
 
 #include "facturaview.h"
@@ -103,7 +104,7 @@ void FacturaView::on_mui_cobrar_clicked() {
 
 int FacturaView::cargar(QString id) {
     Factura::cargar(id);
-    setCaption("Factura   " + DBvalue("reffactura"));
+    setCaption(tr("Factura") + " - " + DBvalue("reffactura"));
     if (companyact->meteWindow(caption(), this))
         return 1;
     dialogChanges_cargaInicial();
@@ -145,7 +146,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
-    QString comm = DBvalue("comentfactura") + "(ALBARAN: Num " + bud->numalbaran() + "Ref: " + bud->refalbaran() + "Fecha: " + bud->fechaalbaran() + ")\n";
+    QString comm = DBvalue("comentfactura") + "(" + traductor("ALBARAN: Num ") + bud->numalbaran() + tr("Ref: ") + bud->refalbaran() + tr("Fecha: ") + bud->fechaalbaran() + ")\n";
 
     setDBvalue("comentfactura", comm);
     pintaComentFactura(comm);
