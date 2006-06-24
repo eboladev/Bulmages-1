@@ -41,7 +41,8 @@
 #include <qmap.h>
 
 
-listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : listcuentasdlg1(parent,name, modal), pgimportfiles(emp->bdempresa()) {
+listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : QDialog(parent,name, modal), pgimportfiles(emp->bdempresa()) {
+    setupUi(this);
     empresaactual = emp;
     modo=0;
     conexionbase= emp->bdempresa();
@@ -92,7 +93,7 @@ bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
             return TRUE;
         }// end if
     }// end if
-    return listcuentasdlg1::eventFilter(obj, event);
+    return QDialog::eventFilter(obj, event);
 }// end eventFilter
 
 

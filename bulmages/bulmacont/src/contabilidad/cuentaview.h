@@ -19,7 +19,7 @@
 
 #include <stdlib.h>
 
-#include "cuentadlg.h"
+#include "ui_cuentabase.h"
 #include <qmessagebox.h>
 #include <qlineedit.h>
 #include <qcombobox.h>
@@ -37,7 +37,7 @@
 class empresa;
 
 
-class cuentaview : public cuentadlg , dialogChanges  {
+class cuentaview : public QDialog, public Ui_CuentaBase , dialogChanges  {
 Q_OBJECT
 public:
 empresa *empresaactual;

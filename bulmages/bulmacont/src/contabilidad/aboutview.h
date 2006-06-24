@@ -19,7 +19,7 @@
 #define ABOUTVIEW_H
 
 #include <qwidget.h>
-#include <about.h>
+#include "ui_aboutbase.h"
 
 /**
   *@author Tomeu Borrás Riera
@@ -30,7 +30,7 @@
  * this class presents the about of the program.
  */
 
-class aboutview : public aboutdlg  {
+class aboutview : public QDialog,  public Ui_AboutBase  {
    Q_OBJECT
 public: 
 	aboutview(QWidget *parent=0, const char *name=0);	/// Constructor de la clase

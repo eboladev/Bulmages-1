@@ -44,12 +44,15 @@ FORMS += bulmacontbase.ui \
 	 asientolistbase.ui \
 	 balancebase.ui \
 	 balancetreebase.ui \
-	 ainteligentesbase.ui
+	 ainteligentesbase.ui \
+	 cuentabase.ui \
+	 listcuentasbase.ui \
+	 aboutbase.ui
 
 FORMS3 += uiselector.ui \
-         about.ui \
-         listcuentasdlg1.ui \
-         cuentadlg.ui \
+#         about.ui \
+#         listcuentasdlg1.ui \
+#         cuentadlg.ui \
 #         balance1dlg.ui \
          int_apunts3.ui \
          aplinteligentesdlg.ui \

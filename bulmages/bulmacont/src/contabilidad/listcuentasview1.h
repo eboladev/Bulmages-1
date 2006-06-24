@@ -20,7 +20,7 @@
 
 
 #include "postgresiface2.h"
-#include "listcuentasdlg1.h"
+#include "ui_listcuentasbase.h"
 
 #include "pgimportfiles.h"
 //Added by qt3to4:
@@ -34,7 +34,7 @@
 
 class empresa;
 
-class listcuentasview1 : public listcuentasdlg1 , public pgimportfiles  {
+class listcuentasview1 : public QDialog, public Ui_ListCuentasBase , public pgimportfiles  {
 Q_OBJECT
 
 private:

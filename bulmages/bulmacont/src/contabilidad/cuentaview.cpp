@@ -17,7 +17,8 @@
 #include "cuentaview.h"
 #include "empresa.h"
 
-cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl): cuentadlg(parent,name,fl) ,dialogChanges(this) {
+cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl): QDialog(parent,name,fl) ,dialogChanges(this) {
+    setupUi(this);
     idcuenta=0;
     empresaactual = emp;
     conexionbase = emp->bdempresa();

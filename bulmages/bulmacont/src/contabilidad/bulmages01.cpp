@@ -228,5 +228,4 @@ void Bulmages01::on_actionAyuda_triggered() {
 void Bulmages01::on_actionAcerca_de_triggered() {
     aboutview *about=new aboutview(0,0);
     about->exec();
-    delete about;
 }
