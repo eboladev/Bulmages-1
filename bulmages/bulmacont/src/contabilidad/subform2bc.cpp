@@ -50,12 +50,13 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     SDBCampo *camp = (SDBCampo *) item(row,col);
     if (camp->nomcampo() != "codigo")
         return;
-    listcuentasview1 *listcuentas = new listcuentasview1((empresa *)m_companyact);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
 
-    if (listcuentas->codcuenta() != "")  {
+    QDialog *diag = new QDialog(0);
+    diag->setModal(true);
+    listcuentasview1 *listcuentas = new listcuentasview1((empresa *) m_companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+    connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    diag->exec();
+    if (listcuentas->codcuenta() != "") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo='"+listcuentas->codcuenta()+"'");
         if (!cur->eof() ) {
             rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
@@ -64,14 +65,13 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
             rec->setDBvalue("descripcion", cur->valor("descripcion"));
         }// end if
         delete cur;
-    }// end if
-    delete listcuentas;
+    } // end if
+    delete diag;
     _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk",0);
 }
 
 void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bc::pressedSlash",0);
-    SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     if (camp->nomcampo() == "fecha")
         return;

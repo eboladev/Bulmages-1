@@ -41,10 +41,10 @@
 #include <qmap.h>
 
 
-listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, bool modal) : QDialog(parent,name, modal), pgimportfiles(emp->bdempresa()) {
+listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode) : QWidget(parent,name, flag), pgimportfiles(emp->bdempresa()) {
     setupUi(this);
     empresaactual = emp;
-    modo=0;
+    m_modo = editmode;
     conexionbase= emp->bdempresa();
     ccuenta=ListView1->addColumn("codigo cuenta",-1);
     cdesccuenta=ListView1->addColumn("nombre cuenta",-1);
@@ -67,7 +67,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     tablacuentas->setColumnWidth(0,100);
 
     installEventFilter(this);
-}// end listcuentasview
+}
 
 
 
@@ -93,8 +93,8 @@ bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
             return TRUE;
         }// end if
     }// end if
-    return QDialog::eventFilter(obj, event);
-}// end eventFilter
+    return QWidget::eventFilter(obj, event);
+}
 
 
 /**
@@ -163,7 +163,7 @@ int listcuentasview1::inicializa( ) {
 
     inicializatabla();
     return(0);
-}// end inicializa
+}
 
 
 
@@ -204,7 +204,7 @@ void listcuentasview1::inicializatabla()  {
     }// end while
     delete cursoraux1;
     tablacuentas->setReadOnly(TRUE);
-}// end inicializatabla
+}
 
 
 
@@ -214,7 +214,7 @@ void listcuentasview1::inicializatabla()  {
  * de la derecha del formulario con los valores almacenados en el
  * item que se acaba de pulsar.
  */
-void listcuentasview1::listpulsada(Q3ListViewItem *it) {
+void listcuentasview1::on_ListView1_clicked(Q3ListViewItem *it) {
     QString idcuenta = it->text(cidcuenta);
     QString cad;
     int i;
@@ -226,14 +226,14 @@ void listcuentasview1::listpulsada(Q3ListViewItem *it) {
             tablacuentas->ensureCellVisible(i,2);
         }// end if
     }// end for
-}// end listpulsada
+}
 
 
 /** La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
   * del QLineEdit del buscador se lanza esta función que hace una bsqueda sobre el árbol
   * de cuentas
   */
-void listcuentasview1::descripcioncambiada(const QString &string1) {
+void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
     Q3ListViewItem *it;
     QString cod = extiendecodigo(string1, (int) numdigitos);
 
@@ -248,7 +248,7 @@ void listcuentasview1::descripcioncambiada(const QString &string1) {
             ListView1->ensureItemVisible(it);
         }// end if
     }// end if
-}// end descripcioncambiada
+}
 
 
 /**
@@ -258,12 +258,12 @@ void listcuentasview1::descripcioncambiada(const QString &string1) {
   * y una vez terminado refresca el formulario para que aparezcan
   * los datos actualizados.
   */
-void listcuentasview1::listdblpulsada(Q3ListViewItem *it) {
-    listpulsada(it);
+void listcuentasview1::on_ListView1_doubleClicked(Q3ListViewItem *it) {
+    on_ListView1_clicked(it);
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    if (modo == 0) {
+    if (m_modo == EditMode) {
 
         cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
         nuevae->cargacuenta(atoi(idcuenta().ascii()));
@@ -276,9 +276,9 @@ void listcuentasview1::listdblpulsada(Q3ListViewItem *it) {
         ListView1->setCurrentItem(it);
         ListView1->ensureItemVisible(it);
     } else {
-        close();
+        emit(selected(mdb_idcuenta));
     }// end if
-}// end listdblpulsada
+}
 
 
 /**
@@ -289,7 +289,7 @@ void listcuentasview1::listdblpulsada(Q3ListViewItem *it) {
   * seleccionada por lo que se hace que la ventana que se habre tenga el campo
   * del padre de la cuenta rellenado.
   */
-void listcuentasview1::nuevacuenta()  {
+void listcuentasview1::on_mui_crear_clicked()  {
     QString cadena, codigo;
     int idcuenta, idgrupo=0;
     Q3ListViewItem *it;
@@ -312,7 +312,7 @@ void listcuentasview1::nuevacuenta()  {
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     delete nuevae;
-}// end nuevacuenta
+}
 
 
 /**
@@ -323,11 +323,11 @@ void listcuentasview1::nuevacuenta()  {
  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
  * del padre de la cuenta rellenado.
  */
-void listcuentasview1::editarcuenta()  {
+void listcuentasview1::on_mui_editar_clicked()  {
 
     Q3ListViewItem *it;
     it = ListView1->currentItem();
-    listpulsada(it);
+    on_ListView1_clicked(it);
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
@@ -341,7 +341,7 @@ void listcuentasview1::editarcuenta()  {
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
     delete nuevae;
-}// end editacuenta
+}
 
 
 
@@ -349,7 +349,7 @@ void listcuentasview1::editarcuenta()  {
   * Esta funcion es el slot que se activa al pulsar sobre el
   * boton borrar cuenta.
   */
-void listcuentasview1::borrarcuenta()  {
+void listcuentasview1::on_mui_borrar_clicked()  {
     Q3ListViewItem *it;
     int valor = QMessageBox::warning( 0, "Borrar Cuenta", "Se procedera a borrar la cuenta.", QMessageBox::Yes, QMessageBox::No);
     if (valor ==  QMessageBox::Yes) {
@@ -371,7 +371,7 @@ void listcuentasview1::borrarcuenta()  {
         }// end if
         conexionbase->commit();
     }// end if
-}// end borrarcuenta
+}
 
 
 /** \brief Se ha hecho una doble click sobre la tabla de cuentas
@@ -379,25 +379,25 @@ void listcuentasview1::borrarcuenta()  {
   * Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento análogo
   * en el arbol contable y se simula una doble pulsación sobre ese elemento.
   */
-void listcuentasview1::dbtabla(int row, int , int ,const QPoint &) {
+void listcuentasview1::on_tablacuentas_doubleClicked(int row, int , int ,const QPoint &) {
     string idcuenta = tablacuentas->text(row,2).ascii();
     Q3ListViewItem *it = ListView1->findItem(idcuenta.c_str(), cidcuenta, Q3ListView::ExactMatch);
     ListView1->setCurrentItem(it);
     ListView1->ensureItemVisible(it);
-    listdblpulsada(it);
-}// end dbtabla
+    on_ListView1_doubleClicked(it);
+}
 
 
 /** \brief Cuando se pulsa el Return sobre la bsqueda de cuentas
   * 
   * Actua como si fuese una doble pulsación con el ratón sobre la tabla de cuentas.
   */
-void listcuentasview1::eturn_descripcion() {
+void listcuentasview1::on_mui_busqueda_editFinished() {
     Q3ListViewItem *it = ListView1->currentItem();
     if (it != 0) {
-        listdblpulsada(it);
+        on_ListView1_doubleClicked(it);
     }// end if
-}// end return_codigo
+}
 
 
 /** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
@@ -407,17 +407,17 @@ void listcuentasview1::eturn_descripcion() {
   * \todo Esta funcion deberia implementarse con una clase nueva de Qt que solicitase 
   * el rango de cuentas entre el que se quiere el listado.
   */
-void listcuentasview1::s_PrintCuentas() {
+void listcuentasview1::on_mui_imprimir_clicked() {
     QString cadena;
     cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
     cadena += conexionbase->nameDB()+" ";
     cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
     fprintf(stderr,"%s\n",cadena.ascii());
     system (cadena.ascii());
-}// end s_PrintCuentas
+}
 
 
-void listcuentasview1::s_exportar() {
+void listcuentasview1::on_mui_exportar_clicked() {
     QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmages2XML(filexml, IMPORT_CUENTAS);
@@ -427,7 +427,7 @@ void listcuentasview1::s_exportar() {
     }// end if
 }
 
-void listcuentasview1::s_importar() {
+void listcuentasview1::on_mui_importar_clicked() {
     QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2Bulmages(filexml, IMPORT_CUENTAS);

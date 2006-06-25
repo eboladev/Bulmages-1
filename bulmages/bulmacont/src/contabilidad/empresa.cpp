@@ -178,10 +178,10 @@ QString empresa::searchCompany() {
   * Esta funcion abre la ventana que presenta las cuentas contables
   */
 int empresa::muestracuentas() 	{
-    listcuentasview1 *nuevae = new listcuentasview1(this, 0,"mostracuentas",true);
+    listcuentasview1 *nuevae = new listcuentasview1(this, 0,"mostracuentas");
     nuevae->inicializa();
-    nuevae->exec();
-    delete nuevae;
+    pWorkspace->addWindow(nuevae);
+    nuevae->show();
     return 0;
 }
 

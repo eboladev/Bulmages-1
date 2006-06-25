@@ -71,17 +71,20 @@ void BusquedaCuenta::setcodigocuenta(QString val) {
 
 // Bsqueda de Cuentas.
 void BusquedaCuenta::s_searchCuenta() {
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    mdb_idcuenta = listcuentas->idcuenta();
-    mdb_codigocuenta= listcuentas->codcuenta();
-    mdb_nomcuenta = listcuentas->desccuenta();
-    m_codigocuenta->setText(mdb_codigocuenta);
-    m_nomcuenta->setText(mdb_nomcuenta);
-    delete listcuentas;
-}// end searchClient
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
+	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+	if (listcuentas->codcuenta() != "") {
+	mdb_idcuenta = listcuentas->idcuenta();
+	mdb_codigocuenta= listcuentas->codcuenta();
+	mdb_nomcuenta = listcuentas->desccuenta();
+	m_codigocuenta->setText(mdb_codigocuenta);
+	m_nomcuenta->setText(mdb_nomcuenta);
+	} // end if
+	delete diag;
+}
 
 
 void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
@@ -89,7 +92,7 @@ void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
         s_searchCuenta();
         emit(valueChanged(m_codigocuenta->text()));
     }// end if
-}// end setCifClient
+}
 
 
 void BusquedaCuenta::s_lostFocus() {
@@ -116,5 +119,5 @@ void BusquedaCuenta::s_lostFocus() {
         delete cursorcta;
     }// end if
     emit(valueChanged(mdb_idcuenta));
-}// end setCifClient
+}
 

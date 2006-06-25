@@ -213,13 +213,17 @@ void aplinteligentesview::boton_buscacuenta() {
             lineaeditada = varcta[i];
         }// end if
     }// end for
-    listcuentasview1 *listcuentas = new listcuentasview1(companyact);
-    listcuentas->setModoLista();
-    listcuentas->inicializa();
-    listcuentas->exec();
-    if (lineaeditada != NULL)
+
+    QDialog *diag = new QDialog(0);
+    diag->setModal(true);
+
+    listcuentasview1 *listcuentas = new listcuentasview1(companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+    connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+    diag->exec();
+    if (listcuentas->codcuenta() != "") {
         lineaeditada->setText(listcuentas->codcuenta());
-    delete listcuentas;
+    } // end if
+    delete diag;
 }// end if
 
 
@@ -787,12 +791,16 @@ void aplinteligentesview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(companyact);
-        listcuentas->setModoLista();
-        listcuentas->inicializa();
-        listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta());
-        delete listcuentas;
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
+	
+	listcuentasview1 *listcuentas = new listcuentasview1(companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+	if (listcuentas->codcuenta() != "") {
+		codigo->setText(listcuentas->codcuenta());
+	} // end if
+	delete diag;
     }// end if
 }// end codigo_textChanged
 

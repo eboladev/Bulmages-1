@@ -650,15 +650,17 @@ void AInteligentesView::accept() {
 
 
 void AInteligentesView::boton_cuentas() {
-   listcuentasview1 *listcuentas = new listcuentasview1(m_companyact);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   if (pestanas->currentPageIndex() == 0) {
-     tapunts->setText(tapunts->currentRow(), tapunts->currentColumn(), listcuentas->codcuenta());
-   }// end if
-   delete listcuentas;  
-}// end boton_cuentas
+        // Hacemos aparecer la ventana de cuentas
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
+	listcuentasview1 *listcuentas = new listcuentasview1(m_companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+	if (listcuentas->codcuenta() != "") {
+		tapunts->setText(tapunts->currentRow(), tapunts->currentColumn(), listcuentas->codcuenta());
+	} // end if
+	delete diag;
+}
 
 void AInteligentesView::boton_exportar() {
    QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("AInteligente (*.xml)"), 0,tr("Guardar Asiento Inteligente"),tr("Elige el nombre de archivo"));

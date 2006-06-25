@@ -20,29 +20,36 @@
 
 cambiactaview::cambiactaview(empresa *emp, QWidget *parent, const char *name, bool flag ) : cambiactadlg(parent,name,flag,0) {
 	empresaactual = emp;
-}// end cambiactaview
+}
 
 cambiactaview::~cambiactaview() {
 }
 
 void cambiactaview::boton_buscactaorigen() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   codigoorigen->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end boton_buscacuentainicial
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
+	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+	if (listcuentas->codcuenta() != "") {
+		codigoorigen->setText(listcuentas->codcuenta());
+	} // end if
+	delete diag;
+}
 
 
 void cambiactaview::boton_buscactadestino() {
-   listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-   listcuentas->setModoLista();
-   listcuentas->inicializa();
-   listcuentas->exec();
-   codigodestino->setText(listcuentas->codcuenta());
-   delete listcuentas;
-}// end boton_buscacuentafinal
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
+	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+	if (listcuentas->codcuenta() != "") {
+		codigodestino->setText(listcuentas->codcuenta());
+	} // end if
+	delete diag;
+}
+
 
 void cambiactaview::accept() {
 	QString origen = codigoorigen->text();
@@ -138,7 +145,7 @@ void cambiactaview::accept() {
 	CONEXIONBASE->commit();
 	
 	done(1);
-}// end accept
+}
 
 
 void cambiactaview::return_codigoinicial() {
@@ -158,7 +165,7 @@ void cambiactaview::return_codigoinicial() {
       }// end if
       delete cursorcta;
    }// end if
-}// end return_codigoinicial
+}
 
 
 void cambiactaview::return_codigofinal() {
@@ -177,31 +184,34 @@ void cambiactaview::return_codigofinal() {
       }// end if
       delete cursorcta;
    }// end if
-}// end return_codigofinal
+}
 
 
 void cambiactaview::return_fechainicial() {
   fechainicial->setText(normalizafecha(fechainicial->text()).toString("dd/MM/yyyy"));
-}// end return_fechainicial
+}
 
 
 
 void cambiactaview::return_fechafinal() {
   fechafinal->setText(normalizafecha(fechafinal->text()).toString("dd/MM/yyyy"));
-}// end return_fechafinal
+}
 
 void cambiactaview::codigo_textChanged(const QString &texto) {
     QLineEdit *codigo = (QLineEdit *) sender();
     if (texto == "+") {
         // Hacemos aparecer la ventana de cuentas
-        listcuentasview1 *listcuentas = new listcuentasview1(empresaactual);
-        listcuentas->setModoLista();
-        listcuentas->inicializa();
-        listcuentas->exec();
-        codigo->setText(listcuentas->codcuenta());
-        delete listcuentas;
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
+	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
+	diag->exec();
+	if (listcuentas->codcuenta() != "") {
+	        codigo->setText(listcuentas->codcuenta());
+	} // end if
+	delete diag;
     }// end if
-}// end codigo_textChanged
+}
 
 void cambiactaview::fecha_textChanged( const QString & texto ) {
 	QLineEdit *fecha = (QLineEdit *) sender();
@@ -216,7 +226,7 @@ void cambiactaview::fecha_textChanged( const QString & texto ) {
     }
     if (texto=="*")
         fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged( const QString &texto )
+}
 
 
 
