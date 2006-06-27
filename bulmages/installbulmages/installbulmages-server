@@ -209,8 +209,8 @@ if [ -e /etc/bulmages-server.conf ]; then
       tiempo
 
       # Creamos las bases de datos para bulmacont.
-      su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bulmages 2 Bulmages 2005"
-      su - postgres -c "/usr/share/bulmages/dbmodels/creabulmages $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2005"
+      su - postgres -c "/usr/share/bulmages/dbmodels/creabulmacont $ptexto bulmages 2 Bulmages 2005"
+      su - postgres -c "/usr/share/bulmages/dbmodels/creabulmacont $ptexto bgplangcont 1 \"Plan Contable Vacio\" 2005"
       
       # Creamos las bases de datos para bulmafact.
       su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 1 \"Facturacion Vacia\" 2005 metabd"
