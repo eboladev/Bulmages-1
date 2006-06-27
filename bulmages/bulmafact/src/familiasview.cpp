@@ -198,7 +198,7 @@ bool familiasview::trataModificado() {
 void familiasview::on_mui_guardar_clicked() {
     _depura("familiasview::on_mui_guardar_clicked", 0);
     if (m_idfamilia == "") {
-        msgError(tr("Debe seleccionar una familia"));
+        mensajeInfo(tr("Debe seleccionar una familia"));
 	return;
     } // end if
     QString query = "UPDATE familia SET nombrefamilia ='" +
@@ -259,7 +259,7 @@ void familiasview::on_mui_crear_clicked() {
 void familiasview::on_mui_borrar_clicked() {
     _depura("familiasview::on_mui_borrar_clicked", 0);
     if (m_idfamilia == "") {
-        msgError(tr("Debe seleccionar una familia"));
+        mensajeInfo(tr("Debe seleccionar una familia"));
 	return;
     } // end if
     trataModificado();

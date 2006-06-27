@@ -136,7 +136,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     diag->exec();
     QString idalbaran = fac->idCliDelivNote();
     delete diag;
-
+ 
     /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
     if (idalbaran == "")
         return;
@@ -146,12 +146,12 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
-    QString comm = DBvalue("comentfactura") + "(" + traductor("ALBARAN: Num ") + bud->numalbaran() + tr("Ref: ") + bud->refalbaran() + tr("Fecha: ") + bud->fechaalbaran() + ")\n";
+    QString comm = DBvalue("comentfactura") + "(" + tr("ALBARAN: Num ") + bud->numalbaran() + tr("Ref: ") + bud->refalbaran() + tr("Fecha: ") + bud->fechaalbaran() + ")\n";
 
     setDBvalue("comentfactura", comm);
     pintaComentFactura(comm);
 
-    /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
+    /// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
     SDBRecord *linea, *linea1;
     for (int i = 0; i < bud->getlistalineas()->rowCount(); ++i) {
         linea = getlistalineas()->lineaat(i);
