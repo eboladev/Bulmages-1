@@ -43,7 +43,7 @@ using std::string;
 #include <QStatusBar>
 
 //extern Q3MainWindow *g_main;
-/// Con BulmaFAct ya no es  asi
+/// Con BulmaFact ya no es asi
 extern QMainWindow *g_main;
 
 
@@ -77,7 +77,7 @@ std::string Ttos(T arg) {
 
 void _depura(QString cad, int nivel=0);
 
-
+void mensajeInfo(QString cad);
 
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de la invocacion de trml2pdf
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio especificado por CONF_DIR_USER

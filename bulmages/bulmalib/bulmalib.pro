@@ -89,7 +89,8 @@ unix{
   LIBS += -lpq
 
 LIBS += -rdynamic
-CONFIG += release
+#CONFIG += release
+CONFIG += qt debug
 
 TARGET = bulmalib
 DESTDIR = ../installbulmages

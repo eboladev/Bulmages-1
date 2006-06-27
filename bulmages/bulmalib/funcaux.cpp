@@ -297,3 +297,8 @@ static int supnivel=0;
 
 }
 
+void mensajeInfo(QString cad)
+{
+	_depura(cad, 2);
+}
+
