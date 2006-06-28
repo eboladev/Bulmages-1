@@ -123,7 +123,7 @@ void bulmafact::s_ventanaCompleta() {
 
 
 void bulmafact::s_About() {
-    aboutview about;
+    AboutView about;
     about.exec();
 }
 
@@ -133,7 +133,6 @@ void bulmafact::closeEvent(QCloseEvent *) {
     delete m_company;
 
 #ifdef WINDOWS
-
     exit(0);
 #endif
 

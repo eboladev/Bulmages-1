@@ -26,12 +26,12 @@
 #include <ui_about.h>
 
 
-class aboutview : public QDialog, private Ui::aboutdlg {
+class AboutView : public QDialog, private Ui::aboutdlg {
     Q_OBJECT
 
 public:
-    aboutview(QDialog *parent = 0);
-    ~aboutview();
+    AboutView(QDialog *parent = 0);
+    ~AboutView();
 };
 
 #endif
