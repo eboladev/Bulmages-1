@@ -76,24 +76,34 @@ dropdb  $2 2>> /tmp/error.txt > /dev/null
 createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
 
 # Creamos la base
+info "Importamos el esquema de base de datos de una empresa. \n"
+tiempo
+psql $2 < crear/bulmafact/bulmafact_schema.sql 2>> /tmp/errores.txt > /dev/null
+tiempo
+
+psql $2 < crear/bulmafact/bulmafact_data.sql 2>> /tmp/errores.txt > /dev/null
+tiempo
+
+#Ponemos el nombre que corresponde
+info "Realizando configuraciones adicionales. \n"
+echo "UPDATE configuracion SET valor='$4' WHERE nombre='NombreEmpresa';" | psql $2 >/dev/null
+tiempo
+
+
+
 if [ "$3" = "1" -o "$3" = "2" ]; then
-   info "Importamos el esquema de base de datos de una empresa. \n"
+# Aquí se pondrian los scripts que carguen datos por defecto que puedan ser necesarios pero no imprescindibles
+# p.e. Codificacion de Surtido AECOC, lista de provincias espanyolas, codigos postales...
    tiempo
-   psql $2 < crear/bulmafact/bulmafact_schema.sql 2>> /tmp/errores.txt > /dev/null
 fi
 
-
-
-
-   info "Cargamos el conjunto minimo de datos. \n"
-   tiempo
-   psql $2 < crear/bulmafact/bulmafact_data.sql 2>> /tmp/errores.txt > /dev/null
 
 
 
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
+   psql $2 < crear/bulmafact/bulmafact_data.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
 fi
 
