@@ -103,7 +103,7 @@ fi
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n"
-   psql $2 < crear/bulmafact/bulmafact_data.sql 2>> /tmp/errores.txt > /dev/null
+   psql $2 < crear/bulmafact/bulmafact_data2.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
 fi
 
