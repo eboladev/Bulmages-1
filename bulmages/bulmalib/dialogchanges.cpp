@@ -11,28 +11,28 @@
 void dialogChanges::dialogChanges_cargaInicial()
 {
   _depura("dialogChanges::dialogChanges_cargaInicial",0);
-  m_maxQText=0;
-  m_maxQLine=0;
-  m_maxQTable=0;
+  m_maxQText = 0;
+  m_maxQLine = 0;
+  m_maxQTable = 0;
 
   /* ASI ES CON QT4 */
   QList<QTextEdit *> l1 = m_obje->findChildren<QTextEdit *>();
   QListIterator<QTextEdit *> it1 (l1);
-  while ( it1.hasNext() )
+  while (it1.hasNext())
   {
     m_listaQText[m_maxQText++] = it1.next();
   }
 
   QList<QLineEdit *> l2 = m_obje->findChildren<QLineEdit *>();
   QListIterator<QLineEdit *> it2 (l2);
-  while ( it2.hasNext() )
+  while (it2.hasNext())
   {
     m_listaQLine[m_maxQLine++] = it2.next();
   }
 
   QList<QTableWidget *> l3 = m_obje->findChildren<QTableWidget *>();
   QListIterator<QTableWidget *> it3 (l3);
-  while ( it3.hasNext() )
+  while (it3.hasNext())
   {
     m_listaQTable[m_maxQTable++] = it3.next();
   }
@@ -71,8 +71,6 @@ bool dialogChanges::dialogChanges_hayCambios()
   QString valorfinal = calculateValues();
   _depura(valorfinal.toAscii(),0);
   _depura(valorinicial.toAscii(),0);
-  qDebug(valorinicial.toAscii());
-  qDebug(valorfinal.toAscii());
   _depura("END dialogChanges::dialogChanges_hayCambios",0);
   return !(valorinicial == calculateValues());
 }
@@ -82,8 +80,8 @@ QString dialogChanges::calculateValues()
 {
   _depura("dialogChanges::calculateValues",0);
   QString values = retrieveValues("QTableWidget");
-  /*    values += retrieveValues("QLineEdit");
-      values += retrieveValues("QTextEdit"); */
+  values += retrieveValues("QLineEdit");
+  values += retrieveValues("QTextEdit");
   _depura("END dialogChanges::calculateValues",0);
   return values;
 }
@@ -92,23 +90,23 @@ QString dialogChanges::retrieveValues(QString qsWidget)
 {
   _depura("dialogChanges::retrieveValues",0);
   QString values="";
-  for (int i = 0; i<m_maxQLine; i++)
+  for (int i = 0; i < m_maxQLine; i++)
   {
-    if (m_listaQLine[i]!=NULL)
+    if (m_listaQLine[i] != NULL)
       values += ((QLineEdit*)m_listaQLine[i])->text();
   } //end for
 
-  for (int i = 0; i<m_maxQText; i++)
+  for (int i = 0; i < m_maxQText; i++)
   {
-    if (m_listaQText[i]!=NULL)
+    if (m_listaQText[i] != NULL)
       values += ((QTextEdit*)m_listaQText[i])->text();
   } // end for
 
-  if (qsWidget=="QTableWidget")
+  if (qsWidget == "QTableWidget")
   {
-    for (int i = 0; i<m_maxQTable; i++)
+    for (int i = 0; i < m_maxQTable; i++)
     {
-      if (m_listaQTable[i]!=NULL)
+      if (m_listaQTable[i] != NULL)
       {
         for (int k = 0; k < ((QTableWidget*)m_listaQTable[i])->rowCount(); k++)
         {
