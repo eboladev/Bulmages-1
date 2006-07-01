@@ -34,7 +34,9 @@
 #include "configuracion.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
+
 using namespace std;
+
 #include "funcaux.h"
 
 

@@ -27,16 +27,16 @@
 
 
 Pago::Pago(company *comp) : DBRecord(comp) {
-    companyact=comp;
+    companyact = comp;
     setDBTableName("pago");
     setDBCampoId("idpago");
-    addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id pago", "pago"));
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id proveedot", "pago"));
-    addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Previcion de pago", "pago"));
-    addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de pago", "pago"));
-    addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia de pago", "pago"));
-    addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cantidad", "pago"));
-    addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario del pago", "pago"));
+    addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Pago", "Id pago"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Pago", "Id proveedot"));
+    addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Pago", "Previcion de pago"));
+    addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Pago", "Fecha de pago"));
+    addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Referencia de pago"));
+    addDBCampo("cantpago", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Pago", "Cantidad"));
+    addDBCampo("comentpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Comentario del pago"));
 }
 
 

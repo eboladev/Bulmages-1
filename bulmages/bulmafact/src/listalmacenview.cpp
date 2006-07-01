@@ -21,37 +21,33 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
 #include <fstream>
 
-
 #include "listalmacenview.h"
 #include "company.h"
 #include "configuracion.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
-using namespace std;
-#include "funcaux.h"
 
-// DEBUGMODE => 0 = Disabled; 1 = Enabled;
-#define DEBUGMODE 1
+using namespace std;
+
+#include "funcaux.h"
 
 
 ListAlmacenView::ListAlmacenView( company *comp , QWidget *parent, const char *name)
         : QDialog(parent, name, Qt::WDestructiveClose) {
-    _depura("ListAlmacenView::ListAlmacenView", DEBUGMODE);
+    _depura("ListAlmacenView::ListAlmacenView", 1);
     setupUi(this);
     companyact = comp;
     mui_listado->setcompany(comp);
     mui_listado->cargar();
-    _depura("END ListAlmacenView::ListAlmacenView", DEBUGMODE);
+    _depura("END ListAlmacenView::ListAlmacenView", 1);
 }
 
 

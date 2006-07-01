@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QFile>
 #include <QTextStream>
 
@@ -61,7 +60,7 @@ void InventariosView::on_mui_editar_clicked() {
     int a = mui_listado->currentRow();
     QString idinventario = mui_listado->item(a,COL_IDINVENTARIO)->text();
     if ( idinventario != "") {
-        InventarioView *bud = new InventarioView(companyact, 0, theApp->translate("Edicion de inventario", "company"));
+        InventarioView *bud = new InventarioView(companyact, 0, QApplication::translate("InventariosView", "Edicion de inventario"));
         if (bud->cargar(idinventario))
             return;
         companyact->m_pWorkspace->addWindow(bud);
@@ -77,7 +76,7 @@ void InventariosView::on_mui_borrar_clicked() {
     if (a >= 0) {
         QString idinventario = mui_listado->item(a,COL_IDINVENTARIO)->text();
         if (idinventario != "") {
-            InventarioView *inv = new InventarioView(companyact, 0, theApp->translate("Edicion de inventario", "company"));
+            InventarioView *inv = new InventarioView(companyact, 0, QApplication::translate("InventariosView", "Edicion de inventario"));
             companyact->m_pWorkspace->addWindow(inv);
             inv->cargar(idinventario);
             /// Hacemos el borrado sin mostrar pantalla ni nada.

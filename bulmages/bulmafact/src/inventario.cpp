@@ -31,9 +31,9 @@ Inventario::Inventario(company *comp) : DBRecord(comp) {
     companyact=comp;
     setDBTableName("inventario");
     setDBCampoId("idinventario");
-    addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Identificador inventario", "inventario"));
-    addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha inventario", "inventario"));
-    addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Nombre inventario", "inventario"));
+    addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Inventario", "Identificador inventario"));
+    addDBCampo("fechainventario", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Inventario", "Fecha inventario"));
+    addDBCampo("nominventario", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Inventario", "Nombre inventario"));
 }
 
 
@@ -197,5 +197,5 @@ void Inventario::imprimirInventario() {
         system("trml2pdf.py /tmp/facturap.rml > /tmp/facturap.pdf");
         system("kpdf /tmp/facturap.pdf");
     */
-} //end imprimirInventario
+}
 

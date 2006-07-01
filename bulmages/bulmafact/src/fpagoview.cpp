@@ -100,7 +100,8 @@ void FPagoView::on_mui_guardar_clicked() {
 bool FPagoView::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this, tr("Guardar forma de pago"),
+        if (QMessageBox::warning(this,
+                                 tr("Guardar forma de pago"),
                                  tr("Desea guardar los cambios."),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel ) == QMessageBox::Ok)

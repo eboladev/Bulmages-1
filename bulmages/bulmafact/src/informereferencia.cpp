@@ -72,11 +72,11 @@ void InformeReferencia::generarinforme() {
     /// Linea de totales del presupuesto
     fitxersortidatxt += "<blockTable style=\"tablatotales\" colWidths=\"11cm, 2cm, 2cm, 2cm, 2cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>Articulo</td>\n";
-    fitxersortidatxt += "	<td>Pres.</td>\n";
-    fitxersortidatxt += "	<td>Pedido</td>\n";
-    fitxersortidatxt += "	<td>Entregado</td>\n";
-    fitxersortidatxt += "	<td>Facturado</td>\n";
+    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Articulo") + "</td>\n";
+    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Pres.") + "</td>\n";
+    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Pedido") + "</td>\n";
+    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Entregado") + "</td>\n";
+    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     fprintf(stderr, "GENERACION DEL INFORME \n");
@@ -109,11 +109,11 @@ void InformeReferencia::generarinforme() {
 
     fitxersortidatxt = "<blockTable style=\"tablatotales\" colWidths=\"3cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>Pres.</td>\n";
-    fitxersortidatxt += "    <td>Pedido</td>\n";
-    fitxersortidatxt += "    <td>Entregado</td>\n";
-    fitxersortidatxt += "    <td>Facturado</td>\n";
-    fitxersortidatxt += "    <td>Cobrado</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Pres.") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Pedido") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Entregado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Cobrado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     /// Calculo de las cantidades totales en moneda.

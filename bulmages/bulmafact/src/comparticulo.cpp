@@ -25,11 +25,11 @@ void CompArticulo::definetabla() {
     _depura("CompArticulo::definetabla", 0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
-    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID articulo", "comparticulo"));
-    addDBCampo("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID componente", "comparticulo"));
-    addDBCampo("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cantidad", "comparticulo"));
-    addDBCampo("codigocompletocomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Codigo completo del componente", "comparticulo"));
-    addDBCampo("nomcomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Nombre del componente", "comparticulo"));
+    addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("CompArticulo", "ID articulo"));
+    addDBCampo("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("CompArticulo", "ID componente"));
+    addDBCampo("cantcomparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("CompArticulo", "Cantidad"));
+    addDBCampo("codigocompletocomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("CompArticulo", "Codigo completo del componente"));
+    addDBCampo("nomcomponente", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("CompArticulo", "Nombre del componente"));
 }
 
 

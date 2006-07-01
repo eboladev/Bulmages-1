@@ -21,10 +21,8 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QTextStream>
 #include <QLayout>
@@ -36,11 +34,13 @@
 #include "configuracion.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
+
 using namespace std;
+
 #include "funcaux.h"
 
 
-ListSerieFacturaView::ListSerieFacturaView( company *comp , QWidget *parent, const char *name)
+ListSerieFacturaView::ListSerieFacturaView( company *comp, QWidget *parent, const char *name)
         : QDialog(parent, name, Qt::WDestructiveClose) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
     setupUi(this);

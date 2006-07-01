@@ -89,7 +89,7 @@ void FacturaProveedor::pintar() {
 /// Esta funcion carga un FacturaProveedor.
 int FacturaProveedor::cargar(QString idfacturap) {
     inicialize();
-    QString query = "SELECT * FROM facturap  WHERE idfacturap=" + idfacturap;
+    QString query = "SELECT * FROM facturap WHERE idfacturap=" + idfacturap;
     cursor2 * cur = companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);

@@ -33,7 +33,8 @@
 extern bulmafact *bges;
 using namespace std;
 
-listventanas::listventanas( QWidget *a): QDockWidget (a) {
+
+listventanas::listventanas(QWidget *a): QDockWidget(a) {
     _depura("listventanas::INIT_listventanas()\n", 0);
     m_listBox = new QListWidget1(this);
     m_listBox->setIconSize(QSize(32, 32));
@@ -65,11 +66,8 @@ void listventanas::clicked() {
     _depura("listventanas::clicked()\n", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
-        //QWidget *punt = bges->workspace()->activeWindow();
-        //if (widget != punt) {
         widget->hide();
         widget->showNormal();
-        //}// end if
     } // end if
     _depura("END listventanas::clicked()\n", 0);
 }
