@@ -29,6 +29,7 @@
 #include "splashscreen.h"
 #include "configuracion.h"
 
+
 Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customize) {
     QPixmap image0;
     image0.load(confpr->valor(CONF_SPLASH_BULMAFACT));
@@ -58,13 +59,13 @@ Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customi
     l2->setPaletteForegroundColor(QColor("#000066"));
     l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
 
-    QTimer timer(this); // = new QTimer(this);
+    QTimer timer(this);
     connect(&timer, SIGNAL(timeout()), SLOT(close()));
-    timer.start(10000); //timer->start( 10000);
+    timer.start(10000);
 
-    QTimer timer1(this); // = new QTimer(this);
+    QTimer timer1(this);
     connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
-    timer1.start(1750); //timer1->start( 1750);
+    timer1.start(1750);
     exec();
     delete l1;
 }
@@ -93,18 +94,18 @@ void Splash::paint() {
     static int a = 0;
     static QString cad;
     QString mensajes[] = {
-                           tr("Calibrando los lasers del lector de CD."),
-                           tr("Comprobando la disquetera y la memoria RAM."),
-                           tr("Induciendo energia cuantica, entre su RAM y su ROM."),
-                           tr("Pequenyos golpecitos de reajuste del HD."),
-                           tr("Probando la velocidad del ventilador de la CPU y su frecuencia."),
-                           tr("Haciendo PING contra el servidor de la MetaBase."),
-                           tr("Violando a Segmento."),
-                           tr("Dejando tiempo libre al sistema."),
-                           tr("Sincronizando fases Alfa Beta."),
-                           tr("Flusheando datos con vidas inteligentes superiores."),
-                           tr("Permutando las tablas de particiones del Sistema Operativo."),
-                           tr("Crackeando BulmaGes.")};
+                             tr("Calibrando los lasers del lector de CD."),
+                             tr("Comprobando la disquetera y la memoria RAM."),
+                             tr("Induciendo energia cuantica, entre su RAM y su ROM."),
+                             tr("Pequenyos golpecitos de reajuste del HD."),
+                             tr("Probando la velocidad del ventilador de la CPU y su frecuencia."),
+                             tr("Haciendo PING contra el servidor de la MetaBase."),
+                             tr("Violando a Segmento."),
+                             tr("Dejando tiempo libre al sistema."),
+                             tr("Sincronizando fases Alfa Beta."),
+                             tr("Flusheando datos con vidas inteligentes superiores."),
+                             tr("Permutando las tablas de particiones del Sistema Operativo."),
+                             tr("Crackeando BulmaGes.")};
     if (a) {
         cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
     } // end if

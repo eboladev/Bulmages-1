@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QFile>
 #include <QTextStream>
 
@@ -112,7 +111,7 @@ void PedidosClienteList::editar(int row) {
     _depura("ProveedorList::editar", 0);
     m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
     if (m_modo == 0) {
-        PedidoClienteView *prov = new PedidoClienteView(companyact, 0, theApp->translate("Edicion de Pedidos a Cliente", "company"));
+        PedidoClienteView *prov = new PedidoClienteView(companyact, 0, QApplication::translate("PedidosClienteList", "Edicion de pedidos a cliente"));
         if (prov->cargar(m_idpedidocliente)) {
             return;
         }
@@ -120,7 +119,6 @@ void PedidosClienteList::editar(int row) {
         prov->show();
     } else {
         emit(selected(m_idpedidocliente));
-        // close();
     } // end if
     _depura("END ProveedorList::editar", 0);
 }
@@ -184,7 +182,7 @@ void PedidosClienteList::on_mui_borrar_clicked() {
     _depura("PedidosClienteList::on_mui_borrar_clicked", 0);
     m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
     if (m_modo == 0) {
-        PedidoClienteView *prov = new PedidoClienteView(companyact, 0, theApp->translate("Edicion de Pedidos a Cliente", "company"));
+        PedidoClienteView *prov = new PedidoClienteView(companyact, 0, QApplication::translate("PedidosClienteList", "Edicion de pedidos a cliente"));
         if (prov->cargar(m_idpedidocliente))
             return;
         prov->borrar();

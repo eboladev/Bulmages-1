@@ -23,7 +23,7 @@
 #include <QFileDialog>
 #include <QPixmap>
 #include <QLabel>
-#include <qdialog.h>
+#include <QDialog>
 #include <QCheckBox>
 
 #include "trabajadorview.h"
@@ -136,7 +136,8 @@ bool TrabajadorView::trataModificado() {
     _depura( "TrabajadorView::trataModificado\n", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this, tr("Guardar datos del trabajador"),
+        if (QMessageBox::warning(this,
+                                 tr("Guardar datos del trabajador"),
                                  tr("Desea guardar los cambios?"),
                                  tr("&Si"), tr("&No"), 0, 0, 1 ) == 0)
             on_mui_guardar_clicked();
@@ -183,7 +184,10 @@ void TrabajadorView::on_mui_borrar_clicked() {
 
 
 void TrabajadorView::on_mui_imagen_clicked() {
-    m_archivoimagen = QFileDialog::getOpenFileName(this, tr("Seleccione archivo"), "", tr("Imagenes (*.jpg)"));
+    m_archivoimagen = QFileDialog::getOpenFileName(this,
+                      tr("Seleccione archivo"),
+                      "",
+                      tr("Imagenes (*.jpg)"));
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
 }
 

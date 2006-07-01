@@ -55,9 +55,9 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
     m_provproveedor->setProvincia("");
 
     /// Desabilitamos los tabs que aun no se usan
-    masdf->setTabEnabled(5,FALSE);
-    masdf->setTabEnabled(6,FALSE);
-    masdf->setTabEnabled(7,FALSE);
+    masdf->setTabEnabled(5, FALSE);
+    masdf->setTabEnabled(6, FALSE);
+    masdf->setTabEnabled(7, FALSE);
 
     /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
     _depura("inicializamos el listado de pedidos\n", 0);
@@ -124,7 +124,7 @@ int ProveedorView::cargar(QString idprov) {
     m_listpagosprov->presentar();
 
     /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
-    setCaption("Proveedor "+DBvalue("nomproveedor"));
+    setCaption("Proveedor " + DBvalue("nomproveedor"));
     m_companyact->meteWindow(caption(), this);
 
     _depura("END ProveedorView::cargar", 0);
@@ -136,7 +136,8 @@ int ProveedorView::cargar(QString idprov) {
 /// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo.
 void ProveedorView::on_mui_crear_clicked() {
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this, tr("Guardar proveedor"),
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar proveedor"),
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
@@ -172,8 +173,8 @@ int ProveedorView::guardar() {
     int res = g_plugins->lanza("ProveedorView_guardar", this);
     if (res != 0)
         return 0;
-    setDBvalue("nomproveedor",m_nomproveedor->text());
-    setDBvalue("nomaltproveedor",m_nomaltproveedor->text());
+    setDBvalue("nomproveedor", m_nomproveedor->text());
+    setDBvalue("nomaltproveedor", m_nomaltproveedor->text());
     setDBvalue("cifproveedor", m_cifproveedor->text());
     setDBvalue("codicliproveedor", m_codicliproveedor->text());
     setDBvalue("cbancproveedor", m_cbancproveedor->text());
@@ -205,7 +206,8 @@ int ProveedorView::guardar() {
 /// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
 void ProveedorView::on_mui_borrar_clicked() {
     if (DBvalue("idproveedor") != "")
-        if ( QMessageBox::Yes == QMessageBox::question(this, tr("Borrar proveedor"),
+        if (QMessageBox::Yes == QMessageBox::question(this,
+                tr("Borrar proveedor"),
                 tr("Esta a punto de borrar un proveedor. Estos datos pueden dar problemas."),
                 QMessageBox::Yes, QMessageBox::No))
             if (!DBRecord::borrar()) {
@@ -218,7 +220,8 @@ void ProveedorView::on_mui_borrar_clicked() {
 void ProveedorView::closeEvent(QCloseEvent *e) {
     _depura("ProveedorView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this, tr("Guardar proveedor"),
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar proveedor"),
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)

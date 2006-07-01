@@ -19,11 +19,9 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QFile>
 #include <QTextStream>
@@ -31,12 +29,14 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 
+#include <fstream>
+
 #include "pagoview.h"
 #include "company.h"
 #include "configuracion.h"
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
-#include <fstream>
+
 
 using namespace std;
 

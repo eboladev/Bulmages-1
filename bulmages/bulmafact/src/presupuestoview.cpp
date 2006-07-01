@@ -19,18 +19,18 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QFile>
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
 #include <QCloseEvent>
+
 #include <fstream>
+
 using namespace std;
 
 #include "funcaux.h"
@@ -80,8 +80,9 @@ PresupuestoView::PresupuestoView(company *comp , QWidget *parent, const char *na
 
 void PresupuestoView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this, tr("Guardar presupuesto"),
+    if (dialogChanges_hayCambios()) {
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar presupuesto"),
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
@@ -120,7 +121,8 @@ void PresupuestoView::on_mui_imprimir_clicked() {
 
 
 void PresupuestoView::on_mui_borrar_clicked() {
-    int val = QMessageBox::warning(this, tr("Borrar presupuesto."),
+    int val = QMessageBox::warning(this,
+                                   tr("Borrar presupuesto."),
                                    tr("Esta seguro que desea eliminar este presupuesto?"),
                                    tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
     if (val == 0) {
@@ -160,12 +162,11 @@ void PresupuestoView::generarPedidoCliente() {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Sino salimos de la funcion.
-    if (QMessageBox::question(
-                this,
-                tr("Pedido de cliente inexistente"),
-                tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
-                tr("&Si"), tr("&No"),
-                QString::null, 0, 1 ))
+    if (QMessageBox::question(this,
+                              tr("Pedido de cliente inexistente"),
+                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
+                              tr("&Si"), tr("&No"),
+                              QString::null, 0, 1 ))
         return;
 
     /// Creamos el pedido.
@@ -190,16 +191,16 @@ void PresupuestoView::generarPedidoCliente() {
     SDBRecord *linea2;
     for (int i = 0; i < listalineas->rowCount(); i++) {
         linea = listalineas->lineaat(i);
-        if (linea->DBvalue( "idarticulo") != "") {
+        if (linea->DBvalue("idarticulo") != "") {
             linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
-            linea2->setDBvalue( "desclpedidocliente",linea->DBvalue("desclpresupuesto"));
-            linea2->setDBvalue( "cantlpedidocliente",linea->DBvalue("cantlpresupuesto"));
-            linea2->setDBvalue( "pvplpedidocliente",linea->DBvalue("pvplpresupuesto"));
-            linea2->setDBvalue( "ivalpedidocliente",linea->DBvalue("ivalpresupuesto"));
-            linea2->setDBvalue( "descuentolpedidocliente",linea->DBvalue("descuentolpresupuesto"));
-            linea2->setDBvalue( "idarticulo",linea->DBvalue("idarticulo"));
-            linea2->setDBvalue( "codigocompletoarticulo",linea->DBvalue("codigocompletoarticulo"));
-            linea2->setDBvalue( "nomarticulo",linea->DBvalue("nomarticulo"));
+            linea2->setDBvalue("desclpedidocliente", linea->DBvalue("desclpresupuesto"));
+            linea2->setDBvalue("cantlpedidocliente", linea->DBvalue("cantlpresupuesto"));
+            linea2->setDBvalue("pvplpedidocliente", linea->DBvalue("pvplpresupuesto"));
+            linea2->setDBvalue("ivalpedidocliente", linea->DBvalue("ivalpresupuesto"));
+            linea2->setDBvalue("descuentolpedidocliente", linea->DBvalue("descuentolpresupuesto"));
+            linea2->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
+            linea2->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
+            linea2->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
             bud->getlistalineas()->nuevoRegistro();
         } // end if
     } // end for
@@ -209,10 +210,10 @@ void PresupuestoView::generarPedidoCliente() {
     SDBRecord *linea3;
     for (int i = 0; i < listadescuentos->rowCount(); i++) {
         linea1 = listadescuentos->lineaat(i);
-        if (linea1->DBvalue( "proporciondpresupuesto") != "") {
+        if (linea1->DBvalue("proporciondpresupuesto") != "") {
             linea3 = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
-            linea3->setDBvalue( "conceptdpedidocliente",linea1->DBvalue("conceptdpresupuesto"));
-            linea3->setDBvalue( "proporciondpedidocliente",linea1->DBvalue("proporciondpresupuesto"));
+            linea3->setDBvalue("conceptdpedidocliente", linea1->DBvalue("conceptdpresupuesto"));
+            linea3->setDBvalue("proporciondpedidocliente", linea1->DBvalue("proporciondpresupuesto"));
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for
@@ -229,7 +230,7 @@ int PresupuestoView::cargar(QString id) {
     if (error)
         return -1;
     setCaption("presupuesto " + DBvalue("refpresupuesto"));
-    if (companyact->meteWindow(caption(),this))
+    if (companyact->meteWindow(caption(), this))
         return -1;
     dialogChanges_cargaInicial();
     return 0;

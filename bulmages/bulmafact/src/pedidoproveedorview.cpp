@@ -23,7 +23,6 @@
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>
@@ -43,7 +42,7 @@ using namespace std;
 
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) , PedidoProveedor (comp), dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose), PedidoProveedor (comp), dialogChanges(this) {
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     subform3->setcompany(comp);
@@ -125,7 +124,7 @@ void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
-    PagoView *bud = new PagoView(companyact,NULL, theApp->translate("Edicion de pagos", "company"));
+    PagoView *bud = new PagoView(companyact,NULL, tr("Edicion de pagos"));
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
@@ -141,7 +140,7 @@ void PedidoProveedorView::generarAlbaran() {
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, tr("Edicion de Albaranes de Proveedores"));
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));
         bud->show();
@@ -159,7 +158,7 @@ void PedidoProveedorView::generarAlbaran() {
         return;
 
     /// Creamos el pedido.
-    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, theApp->translate("Edicion de Albaranes de Proveedores", "company"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, QApplication::translate("PedidoProveedorView", "Edicion de Albaranes de Proveedores"));
     companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
 
@@ -175,14 +174,14 @@ void PedidoProveedorView::generarAlbaran() {
     for ( int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
-        linea1->setDBvalue("desclalbaranp",linea->DBvalue(tr("Descripcion del albaran")));
-        linea1->setDBvalue("cantlalbaranp",linea->DBvalue(tr("Cantidad del pedido")));
-        linea1->setDBvalue("pvplalbaranp",linea->DBvalue(tr("P.V.P.")));
-        linea1->setDBvalue("descontlalbaranp",linea->DBvalue(tr("Descuento")));
-        linea1->setDBvalue("idarticulo",linea->DBvalue(tr("ID articulo")));
-        linea1->setDBvalue("codigocompletoarticulo",linea->DBvalue(tr("Codigo completo articulo")));
-        linea1->setDBvalue("nomarticulo",linea->DBvalue(tr("Nombre del articulo")));
-        linea1->setDBvalue("ivalalbaranp",linea->DBvalue(tr("I.V.A.")));
+        linea1->setDBvalue("desclalbaranp", linea->DBvalue(tr("Descripcion del albaran")));
+        linea1->setDBvalue("cantlalbaranp", linea->DBvalue(tr("Cantidad del pedido")));
+        linea1->setDBvalue("pvplalbaranp", linea->DBvalue(tr("P.V.P.")));
+        linea1->setDBvalue("descontlalbaranp", linea->DBvalue(tr("Descuento")));
+        linea1->setDBvalue("idarticulo", linea->DBvalue(tr("ID articulo")));
+        linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue(tr("Codigo completo articulo")));
+        linea1->setDBvalue("nomarticulo", linea->DBvalue(tr("Nombre del articulo")));
+        linea1->setDBvalue("ivalalbaranp", linea->DBvalue(tr("I.V.A.")));
         i++;
     } // end for
 

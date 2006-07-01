@@ -33,19 +33,19 @@ PedidoCliente::PedidoCliente(company *comp) : DBRecord(comp) {
     companyact = comp;
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
-    addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Identificador", "pedidocliente"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Cliente", "pedidocliente"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Almacen", "pedidocliente"));
-    addDBCampo("numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero pedido cliente", "pedidocliente"));
-    addDBCampo("fechapedidocliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Identificador presupuesto", "pedidocliente"));
-    addDBCampo("descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Fecha", "pedidocliente"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Forma pago", "pedidocliente"));
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Trabajador", "pedidocliente"));
-    addDBCampo("contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contacto", "pedidocliente"));
-    addDBCampo("telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Telefono", "pedidocliente"));
-    addDBCampo("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentarios", "pedidocliente"));
-    addDBCampo("procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Procesado", "pedidocliente"));
-    addDBCampo("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia", "pedidocliente"));
+    addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoCliente", "Identificador"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("PedidoCliente", "Cliente"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("PedidoCliente", "Almacen"));
+    addDBCampo("numpedidocliente", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Numero pedido cliente"));
+    addDBCampo("fechapedidocliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Identificador presupuesto"));
+    addDBCampo("descpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Fecha"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Forma pago"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Trabajador"));
+    addDBCampo("contactpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Contacto"));
+    addDBCampo("telpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Telefono"));
+    addDBCampo("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Comentarios"));
+    addDBCampo("procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Procesado"));
+    addDBCampo("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Referencia"));
 }
 
 
@@ -195,12 +195,12 @@ void PedidoCliente::imprimirPedidoCliente() {
     /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Codigo") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Concepto") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Und") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Precio") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Dto") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Codigo") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Concepto") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Und") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Precio") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Dto") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
 
@@ -208,7 +208,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     int i = 0;
 
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount()-1; ++i) {
+    for (int i = 0; i < listalineas->rowCount() - 1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpedidocliente").ascii()) * Fixed(linea->DBvalue("pvplpedidocliente").ascii());
         basesimp[linea->DBvalue("ivalpedidocliente")] = basesimp[linea->DBvalue("ivalpedidocliente")] + base - base * Fixed(linea->DBvalue("descuentolpedidocliente").ascii()) / 100;
@@ -238,20 +238,20 @@ void PedidoCliente::imprimirPedidoCliente() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount()-1) {
+    if (listadescuentos->rowCount() - 1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Descuento") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Porcentaje") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Descuento") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
+        for (int i = 0; i < listadescuentos->rowCount() - 1; ++i) {
             linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpedidocliente").ascii());
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "	<td>" + linea1->DBvalue("conceptdpedidocliente") + "</td>\n";
-            fitxersortidatxt += "	<td>" + l.sprintf("%s", linea1->DBvalue("proporciondpedidocliente").ascii()) + " %</td>\n";
-            fitxersortidatxt += "	<td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondpedidocliente")) * basei / 100).toQString().ascii()) + "</td>\n";
+            fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdpedidocliente") + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondpedidocliente").ascii()) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondpedidocliente")) * basei / 100).toQString().ascii()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -260,8 +260,8 @@ void PedidoCliente::imprimirPedidoCliente() {
 
     /// Impresion de los totales.
     fitxersortidatxt = "";
-    QString tr1 = "";/// Rellena el primer tr de titulares.
-    QString tr2 = "";/// Rellena el segundo tr de cantidades.
+    QString tr1 = ""; /// Rellena el primer tr de titulares.
+    QString tr2 = ""; /// Rellena el segundo tr de cantidades.
     fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
 
     Fixed totbaseimp("0.00");
@@ -273,8 +273,8 @@ void PedidoCliente::imprimirPedidoCliente() {
             parbaseimp = it.data();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "	<td> " +QApplication::translate("PedidoCliente", "Base ")+ it.key() + " %</td>\n";
-        tr2 += "	<td>" + l.sprintf("%s",parbaseimp.toQString().ascii()) + "</td>\n";
+        tr1 += "        <td>" + QApplication::translate("PedidoCliente", "Base ") + it.key() + " %</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
@@ -286,11 +286,11 @@ void PedidoCliente::imprimirPedidoCliente() {
             pariva = it.data() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "	<td> "+ QApplication::translate("PedidoCliente", "Iva ") + it.key() + " %</td>\n";
-        tr2 += "	<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
+        tr1 += "        <td>" + QApplication::translate("PedidoCliente", "Iva ") + it.key() + " %</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
     } // end for
-    tr1 += "	<td>"+QApplication::translate("PedidoCliente", "Total ")+" </td>\n";
-    tr2 += "	<td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
+    tr1 += "        <td>" + QApplication::translate("PedidoCliente", "Total ") + " </td>\n";
+    tr2 += "        <td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 

@@ -35,20 +35,20 @@ presupuesto::presupuesto(company *comp) : DBRecord(comp) {
     companyact = comp;
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
-    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("ID presupuesto", "presupuesto"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("ID cliente", "presupuesto"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("ID almacen", "presupuesto"));
-    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero de presupuesto", "presupuesto"));
-    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de creacion", "presupuesto"));
-    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha de vencimiento", "presupuesto"));
-    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Persona de contacto", "presupuesto"));
-    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Numero de telefono", "presupuesto"));
-    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentarios", "presupuesto"));
-    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Presupuesto procesado", "presupuesto"));
-    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descuento", "presupuesto"));
-    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia", "presupuesto"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("ID forma de pago", "presupuesto"));
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("ID trabajador", "presupuesto"));
+    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("presupuesto", "ID presupuesto"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("presupuesto", "ID cliente"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("presupuesto", "ID almacen"));
+    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("presupuesto", "Numero de presupuesto"));
+    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("presupuesto", "Fecha de creacion"));
+    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("presupuesto", "Fecha de vencimiento"));
+    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Persona de contacto"));
+    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Numero de telefono"));
+    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Comentarios"));
+    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("presupuesto", "Presupuesto procesado"));
+    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Descuento"));
+    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Referencia"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("presupuesto", "ID forma de pago"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("presupuesto", "ID trabajador"));
 }
 
 
@@ -171,9 +171,9 @@ QString presupuesto::detalleArticulos() {
         QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg";
         QFile f(file);
         if (f.exists()) {
-            texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                     "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
-                     "</illustration></td>\n";
+            texto += "        <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+                     "            <image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "            </illustration></td>\n";
         } else {
             texto += "<td></td>\n";
         }
@@ -206,8 +206,10 @@ void presupuesto::imprimirPresupuesto() {
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -215,8 +217,10 @@ void presupuesto::imprimirPresupuesto() {
 
     /// Copiamos el logo
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
@@ -228,7 +232,7 @@ void presupuesto::imprimirPresupuesto() {
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
-    QString fitxersortidatxt="";
+    QString fitxersortidatxt = "";
     /// Linea de totales del presupuesto.
 
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
@@ -256,12 +260,12 @@ void presupuesto::imprimirPresupuesto() {
     /// Impresion de la tabla de contenidos.
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.2cm, 1.5cm, 1.8cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Codigo") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Concepto") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Und") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Precio") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Dto") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Codigo") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Concepto") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Und") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Precio") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Dto") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
 
@@ -302,17 +306,17 @@ void presupuesto::imprimirPresupuesto() {
     if (listadescuentos->rowCount()-1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Descuento") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Porcentaje") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Descuento") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpresupuesto").ascii());
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "	<td>" + XMLProtect(linea1->DBvalue("conceptdpresupuesto")) + "</td>\n";
-            fitxersortidatxt += "	<td>" + l.sprintf("%s", linea1->DBvalue("proporciondpresupuesto").ascii()) + " %</td>\n";
-            fitxersortidatxt += "	<td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondpresupuesto")) * basei / 100).toQString().ascii()) + "</td>\n";
+            fitxersortidatxt += "        <td>" + XMLProtect(linea1->DBvalue("conceptdpresupuesto")) + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondpresupuesto").ascii()) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondpresupuesto")) * basei / 100).toQString().ascii()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -334,8 +338,8 @@ void presupuesto::imprimirPresupuesto() {
             parbaseimp = it.data();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "	<td> "+ QApplication::translate("presupuesto", "Base ") + XMLProtect(it.key()) + " %</td>\n";
-        tr2 += "	<td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
+        tr1 += "        <td>" + QApplication::translate("presupuesto", "Base ") + XMLProtect(it.key()) + " %</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
@@ -344,18 +348,20 @@ void presupuesto::imprimirPresupuesto() {
         if (porcentt > 0) {
             pariva = (it.data() - it.data()*porcentt / 100) * Fixed(it.key()) / 100;
         } else {
-            pariva = it.data()* Fixed(it.key()) / 100;
+            pariva = it.data() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "	<td> "+ QApplication::translate("presupuesto", "Iva ") + XMLProtect(it.key()) + " %</td>\n";
-        tr2 += "	<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
+        tr1 += "        <td>" + QApplication::translate("presupuesto", "I.V.A. ") + XMLProtect(it.key()) + " %</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
     } // end for
-    tr1 += "	<td>" + QApplication::translate("presupuesto", "Total ") + "</td>\n";
-    tr2 += "	<td>" + l.sprintf("%s", (totiva+totbaseimp).toQString().ascii()) + "</td>\n";
+    tr1 += "        <td>" + QApplication::translate("presupuesto", "Total ") + "</td>\n";
+    tr2 += "        <td>" + l.sprintf("%s", (totiva+totbaseimp).toQString().ascii()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 
-    /// En la version para windows hay problemas con las imagenes, por eso de momento lo dejamos asi.
+    /// En la version para windows hay problemas con las imagenes,
+    /// por eso de momento lo dejamos asi.
+
 #ifndef WINDOWS
 
     buff.replace("[detallearticulos]", detalleArticulos());

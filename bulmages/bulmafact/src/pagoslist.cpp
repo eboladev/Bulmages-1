@@ -114,7 +114,7 @@ void PagosList::on_mui_editar_clicked() {
 void PagosList::on_mui_list_cellDoubleClicked(int, int) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo == 0 && mdb_idpago != "") {
-        PagoView *bud = new PagoView(m_companyact, NULL, theApp->translate("Edicion de pagos", "company"));
+        PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de pagos"));
         bud->cargar(mdb_idpago);
         bud->show();
     } else {
@@ -141,8 +141,8 @@ void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 
 void PagosList::on_mui_crear_clicked() {
-    fprintf(stderr,"Iniciamos el boton_crear\n");
-    PagoView *bud = new PagoView(m_companyact, NULL, theApp->translate("Edicion de pagos", "company"));
+    fprintf(stderr, "Iniciamos el boton_crear\n");
+    PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de pagos"));
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
     bud->pintar();
@@ -206,7 +206,7 @@ void PagosList::imprimir() {
 void PagosList::on_mui_borrar_clicked() {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo == 0 && mdb_idpago != "") {
-        PagoView *bud = new PagoView(m_companyact, NULL, theApp->translate("Edicion de presupuestos", "company"));
+        PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de presupuestos"));
         bud->cargar(mdb_idpago);
         bud->borraPago();
     } // end if

@@ -64,7 +64,7 @@ void ProveedorList::presenta() {
 
 void ProveedorList::on_mui_crear_clicked() {
     fprintf(stderr, "Iniciamos el boton_crear\n");
-    ProveedorView *prov = new ProveedorView(m_companyact, 0, theApp->translate("Edicion de Proveedores", "company"));
+    ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de Proveedores"));
     m_companyact->m_pWorkspace->addWindow(prov);
     prov->show();
 }
@@ -81,7 +81,7 @@ void ProveedorList::editar(int row) {
     m_cifprovider = mui_list->DBvalue(QString("cifproveedor"), row);
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"), row);
     if (m_modo == 0) {
-        ProveedorView *prov = new ProveedorView(m_companyact, 0, theApp->translate("Edicion de proveedores", "company"));
+        ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de proveedores"));
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
             return;
         }
@@ -175,11 +175,10 @@ void ProveedorList::on_mui_imprimir_clicked() {
 
 
 void ProveedorList::on_mui_exportar_clicked() {
-    QFile filexml(QFileDialog::getSaveFileName(
-                      this,
-                      tr("Seleccione el archivo"),
-                      confpr->valor(CONF_DIR_USER),
-                      tr("Proveedores (*.xml)")));
+    QFile filexml(QFileDialog::getSaveFileName(this,
+                  tr("Seleccione el archivo"),
+                  confpr->valor(CONF_DIR_USER),
+                  tr("Proveedores (*.xml)")));
 
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_PROVEEDORES);
@@ -191,11 +190,10 @@ void ProveedorList::on_mui_exportar_clicked() {
 
 
 void ProveedorList::on_mui_importar_clicked() {
-    QFile filexml(QFileDialog::getOpenFileName(
-                      this,
-                      tr("Elija el archivo"),
-                      confpr->valor(CONF_DIR_USER),
-                      tr("Proveedores (*.xml)")));
+    QFile filexml(QFileDialog::getOpenFileName(this,
+                  tr("Elija el archivo"),
+                  confpr->valor(CONF_DIR_USER),
+                  tr("Proveedores (*.xml)")));
 
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2BulmaFact(filexml, IMPORT_PROVEEDORES);

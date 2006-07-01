@@ -18,10 +18,9 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <Q3ListView>
+//#include <Q3ListView>
 #include <QMap>
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QMessageBox>
 
 #include "tiposarticuloview.h"
@@ -33,7 +32,8 @@
 #define COL_DESCTIPOARTICULO  2
 
 
-TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, const char *name) : QDialog(parent, name), dialogChanges(this) {
+TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, const char *name)
+        : QDialog(parent, name), dialogChanges(this) {
     setupUi(this);
     companyact = comp;
     m_listTipos->setColumnCount(3);
@@ -117,7 +117,7 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged (QTreeWidgetItem *curre
 
 
 void TipoArticuloList::mostrarplantilla() {
-    fprintf(stderr, "mostramos la plantilla\n");
+    _depura("mostramos la plantilla\n", 2);
     QString query;
     query = "SELECT * from tipo_articulo WHERE idtipo_articulo=" + m_idtipo;
     cursor2 *cursortipo = companyact->cargacursor(query);
@@ -128,7 +128,7 @@ void TipoArticuloList::mostrarplantilla() {
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    fprintf(stderr, "Terminamos la ejecución de TipoArticuloList::mostrarplantilla\n");
+    _depura("Terminamos la ejecución de TipoArticuloList::mostrarplantilla\n", 2);
 }
 
 
@@ -143,7 +143,8 @@ void TipoArticuloList::close() {
 bool TipoArticuloList::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if (QMessageBox::warning(this, tr("Guardar familia"),
+        if (QMessageBox::warning(this,
+                                 tr("Guardar familia"),
                                  tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel) == QMessageBox::Ok)

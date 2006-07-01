@@ -18,11 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <stdio.h>
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QFile>
 #include <QTextStream>
+
+#include <stdio.h>
 
 #include "pedidosproveedorlist.h"
 #include "funcaux.h"
@@ -62,11 +62,11 @@ PedidosProveedorList::~PedidosProveedorList() {}
 
 
 void PedidosProveedorList::presenta() {
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalpedpro(idpedidoproveedor) AS total, calcbimppedpro(idpedidoproveedor) AS base, calcimpuestospedpro(idpedidoproveedor) AS impuestos FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  " + generarFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalpedpro(idpedidoproveedor) AS total, calcbimppedpro(idpedidoproveedor) AS base, calcimpuestospedpro(idpedidoproveedor) AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     mui_list->cargar(cur);
     delete cur;
     /// Hacemos el calculo del total.
-    cur = m_companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN  proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1  " + generarFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 }
@@ -113,8 +113,10 @@ void PedidosProveedorList::imprimir() {
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -122,8 +124,10 @@ void PedidosProveedorList::imprimir() {
 
     /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 

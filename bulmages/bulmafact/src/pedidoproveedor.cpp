@@ -33,19 +33,19 @@ PedidoProveedor::PedidoProveedor(company *comp) : DBRecord(comp) {
     companyact = comp;
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
-    addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id pedido proveedor", "pedidoproveedor"));
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id proveedor", "pedidoproveedor"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id almacen", "pedidoproveedor"));
-    addDBCampo("numpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero pedido proveedor", "pedidoproveedor"));
-    addDBCampo("fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha pedido proveedor", "pedidoproveedor"));
-    addDBCampo("comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario pedido", "pedidoproveedor"));
-    addDBCampo("procesadopedidoproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Pedido procesado", "pedidoproveedor"));
-    addDBCampo("descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descripcion pedido", "pedidoproveedor"));
-    addDBCampo("refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia pedido", "pedidoproveedor"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id forma de pago", "pedidoproveedor"));
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id trabajador", "pedidoproveedor"));
-    addDBCampo("contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Persona de contacto proveedor", "pedidoproveedor"));
-    addDBCampo("telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Telefono proveedor", "pedidoproveedor"));
+    addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoProveedor", "Id pedido proveedor"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("PedidoProveedor", "Id proveedor"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("PedidoProveedor", "Id almacen"));
+    addDBCampo("numpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Numero pedido proveedor"));
+    addDBCampo("fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Fecha pedido proveedor"));
+    addDBCampo("comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Comentario pedido"));
+    addDBCampo("procesadopedidoproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Pedido procesado"));
+    addDBCampo("descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Descripcion pedido"));
+    addDBCampo("refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Referencia pedido"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Id forma de pago"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Id trabajador"));
+    addDBCampo("contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Persona de contacto proveedor"));
+    addDBCampo("telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoProveedor", "Telefono proveedor"));
 }
 
 
@@ -180,41 +180,41 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, 3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td>Concepto</td>";
-    fitxersortidatxt += "	<td>Cantidad</td>";
-    fitxersortidatxt += "	<td>Precio Und.</td>";
-    fitxersortidatxt += "	<td>Total</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "Concepto") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "Cantidad") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "Precio/u.") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "Total") + "</td>";
     fitxersortidatxt += "</tr>";
 
     QString l;
     _depura("vamos a recorrer el listado de lineas", 2);
     for (int i = 0; i < listalineas->rowCount() - 1; i++) {
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "	<td>" + listalineas->DBvalue("desclpedidoproveedor", i) + "</td>";
-        fitxersortidatxt += "	<td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat()) + "</td>";
-        fitxersortidatxt += "	<td>" + l.sprintf("%2.2f",listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
-        fitxersortidatxt += "	<td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat() * listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
+        fitxersortidatxt += "        <td>" + listalineas->DBvalue("desclpedidoproveedor", i) + "</td>";
+        fitxersortidatxt += "        <td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat()) + "</td>";
+        fitxersortidatxt += "        <td>" + l.sprintf("%2.2f",listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
+        fitxersortidatxt += "        <td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat() * listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
         fitxersortidatxt += "</tr>";
     } // end for
     _depura("Fin de vamos a recorrer el listado de lineas", 2);
 
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Base</td>";
-    fitxersortidatxt += "	<td>" + listalineas->calculabase().toQString() + "</td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "Base") + "</td>";
+    fitxersortidatxt += "        <td>" + listalineas->calculabase().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Iva</td>";
-    fitxersortidatxt += "	<td>" + listalineas->calculaiva().toQString() + "</td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "I.V.A.") + "</td>";
+    fitxersortidatxt += "        <td>" + listalineas->calculaiva().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td></td>";
-    fitxersortidatxt += "	<td>Total</td>";
-    fitxersortidatxt += "	<td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoProveedor", "Total") + "</td>";
+    fitxersortidatxt += "        <td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "</blockTable>";
 
@@ -245,17 +245,6 @@ void PedidoProveedor::calculaypintatotales() {
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         basesimp[listalineas->DBvalue("ivalpedidoproveedor", i)] = basesimp[listalineas->DBvalue("ivalpedidoproveedor", i)] + base;
     } // end for
-
-    /*
-        for ( linea = listalineas->m_lista.first(); linea; linea = listalineas->m_lista.next() ) {
-            Fixed cant(linea->cantlpedidoproveedor().ascii());
-            Fixed pvpund(linea->pvplpedidoproveedor().ascii());
-            Fixed desc1(linea->descuentolpedidoproveedor().ascii());
-            Fixed cantpvp = cant * pvpund;
-            Fixed base = cantpvp - cantpvp * desc1 / 100;
-            basesimp[linea->ivalpedidoproveedor()] =  basesimp[linea->ivalpedidoproveedor()]+ base;
-        }// end for
-    */
 
     Fixed basei("0.00");
     base::Iterator it;
