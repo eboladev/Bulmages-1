@@ -34,6 +34,7 @@ using std::string;
 #include <qstring.h>
 
 
+
 #define __DEBUG__
 
 
@@ -75,7 +76,7 @@ std::string Ttos(T arg) {
 }// end Ttos
 
 
-void _depura(QString cad, int nivel=0);
+void _depura(QString cad, int nivel = 0, QString param = "");
 
 void mensajeInfo(QString cad);
 

@@ -22,21 +22,25 @@
 
 #include "busquedaalmacen.h"
 #include "company.h"
+#include "funcaux.h"
 
 
-BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *name)
-        : QComboBox(parent) {
+BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *) : QComboBox(parent) {
+    _depura("BusquedaAlmacen::BusquedaAlmacen",0);
     companyact = NULL;
     m_cursorcombo = NULL;
-
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaAlmacen::BusquedaAlmacen",0);
 }
 
 
-BusquedaAlmacen::~BusquedaAlmacen() {}
+BusquedaAlmacen::~BusquedaAlmacen() {
+	_depura("BusquedaAlmacen::~BusquedaAlmacen",0);
+}
 
 
 void BusquedaAlmacen::setidalmacen(QString idalmacen) {
+    _depura("BusquedaAlmacen::setidalmacen", 0, idalmacen);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM almacen");
@@ -50,7 +54,9 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
             i1 = i;
         insertItem(m_cursorcombo->valor("nomalmacen"));
         m_cursorcombo->siguienteregistro();
-    }
+    } //end while
     setCurrentItem(i1);
+    _depura("END BusquedaAlmacen::setidalmacen", 0, idalmacen);
+
 }
 

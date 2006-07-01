@@ -163,8 +163,7 @@ int ListProvinciasView::guardalinea(int row) {
     if (error)
         return 1;
 
-    return 0;
-
     _depura("END_ListProvinciasView::guardalinea", 1);
+    return 0;
 }
 

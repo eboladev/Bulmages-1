@@ -289,7 +289,7 @@ int DBRecord::guardar() {
     try {
         DBsave(id);
         setDBvalue(m_campoid,id);
-        _depura("DBRecord::guardar",0);
+        _depura("END DBRecord::guardar",0);
         return 0;
     }// end try
     catch(...) {

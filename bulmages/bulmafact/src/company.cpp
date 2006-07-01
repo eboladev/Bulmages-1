@@ -65,9 +65,31 @@
 #include "tiposarticuloview.h"
 
 
+/** El constructor de la clase company no hace nada */
 company::company() {}
 
 
+/** El destructor de la clase company borra toda la memoria almacenada */
+company::~company() {
+    _depura("Destructor de company", 0);
+
+    delete m_facturasproveedorlist;
+    delete m_albaranesproveedor;
+    delete m_pedidosproveedorList;
+    delete m_facturasList;
+    delete m_articleslist;
+    delete m_providerslist;
+    delete m_clientsList;
+    delete m_cobrosList;
+    delete m_pagosList;
+    delete m_budgetsList;
+    delete m_pedidosclienteList;
+    delete m_clientDelivNotesList;
+    _depura("END Destructor de company", 0);
+}
+
+
+/** Inicializa la base de datos que se pasa, si se pasa una cadena vacia entonces aparece el selector de empresa */
 void company::init(QString bd) {
     if (bd == "")
         bd = searchCompany();
@@ -158,23 +180,6 @@ void company::createMainWindows() {
     _depura("END company::createMainWindows\n", 0);
 }
 
-
-company::~company() {
-    _depura("Destructor de company", 0);
-    delete m_facturasproveedorlist;
-    delete m_albaranesproveedor;
-    delete m_pedidosproveedorList;
-    delete m_facturasList;
-    delete m_articleslist;
-    delete m_providerslist;
-    delete m_clientsList;
-    delete m_cobrosList;
-    delete m_pagosList;
-    delete m_budgetsList;
-    delete m_pedidosclienteList;
-    delete m_clientDelivNotesList;
-    _depura("END Destructor de company", 0);
-}
 
 
 void company::viewCobrosList () {

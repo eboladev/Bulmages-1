@@ -26,7 +26,8 @@
 
 #include "subform3.h"
 
-
+/** SubForm3, constructor de la clase base para subformularios
+  */
 SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     setupUi(this);
     _depura("SubForm3::SubForm3",0);
@@ -53,17 +54,27 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_listcolumnas->setSelectionBehavior ( QAbstractItemView::SelectRows );
     mui_listcolumnas->verticalHeader()->hide();
 
-
     /// Ocultamos la configuracion
     hideConfig();
 
     /// Limpiamos la lista
     m_lista.clear();
-    _depura("END SubForm3::SubForm3",0);
+    _depura("END SubForm3::SubForm3", 0);
 }
 
+
+/** Destructor de Clase que guarda la configuracion  */
+SubForm3::~SubForm3() {
+	_depura("SubForm3::~SubForm3",0);
+        guardaconfig();
+	_depura("END SubForm3::~SubForm3",0);
+}
+
+
+/** Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que tenga todos los elementos necesarios (columnas).
+  */
 SDBRecord *SubForm3::newSDBRecord() {
-    _depura("SubForm3::newSDBRecord\n",0);
+    _depura("SubForm3::newSDBRecord\n", 0);
     SDBRecord *rec = new SDBRecord(m_companyact);
     rec->setDBTableName( m_tablename);
     rec->setDBCampoId( m_campoid);
@@ -74,10 +85,10 @@ SDBRecord *SubForm3::newSDBRecord() {
     }// end for
 
     SDBCampo*camp;
-    for( int i =0; i < rec->lista()->size(); ++i) {
+    for( int i = 0; i < rec->lista()->size(); ++i) {
         camp = (SDBCampo *) rec->lista()->at(i);
         SHeader *head = m_lcabecera.at(i);
-        Qt::ItemFlags flags=0;
+        Qt::ItemFlags flags = 0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
         if (!(head->options() & SHeader::DBNoWrite))
             flags |= Qt::ItemIsEditable;
@@ -85,14 +96,13 @@ SDBRecord *SubForm3::newSDBRecord() {
             flags |= Qt::ItemIsUserCheckable;
         camp->setFlags(flags);
     }// end for
-    _depura("END SubForm3::newSDBRecord\n",0);
-
+    _depura("END SubForm3::newSDBRecord\n", 0);
     return rec;
 }
 
 
 /** Este metodo crea el registro final cuando se trata de subformularios con la opcion de insertar nuevos registros en el subformulario.
-**/
+*/
 void SubForm3::nuevoRegistro() {
     _depura("SubForm3::nuevoRegistro\n",0);
     if (!m_insercion)
@@ -103,7 +113,7 @@ void SubForm3::nuevoRegistro() {
 
     mui_list->insertRow(m_lista.size()-1);
     SDBCampo *camp;
-    for(int i=0; i < rec->lista()->size(); ++i) {
+    for(int i = 0; i < rec->lista()->size(); ++i) {
         camp = (SDBCampo *) rec->lista()->at(i);
         mui_list->setItem(m_lista.size()-1,i,camp);
     }// end for
@@ -111,26 +121,30 @@ void SubForm3::nuevoRegistro() {
 
 }
 
+/** Pinta los titulares en la tabla  */
 void SubForm3::pintaCabeceras() {
     _depura("SubForm3::pintaCabeceras",0);
     QStringList headers;
     SHeader * linea;
-    for ( int i = 0; i < m_lcabecera.size(); ++i) {
+    for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         headers << linea->nompresentacion();
         if (linea->options() & SHeader::DBNoView)
             mui_list->hideColumn(i);
         else
             mui_list->showColumn(i);
-    }// end for
-    mui_list->setHorizontalHeaderLabels (headers);
+    } // end for
+    mui_list->setHorizontalHeaderLabels(headers);
+    _depura("END SubForm3::pintaCabeceras",0);
 }
 
+/** Se situa en una celda especifica del subformulario */
 void SubForm3::situarse(unsigned int row, unsigned int col) {
-    unsigned int nrow=row;
+    _depura("SubForm3::situarse",0);
+    unsigned int nrow = row;
     int ncol = col;
-    SHeader *linea= m_lcabecera.at(ncol);
-    bool invalido=TRUE;
+    SHeader *linea = m_lcabecera.at(ncol);
+    bool invalido = TRUE;
     while(invalido) {
         ncol++;
         if (ncol == m_lcabecera.count()) {
@@ -145,6 +159,7 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
             invalido = TRUE;
     }// end while
     mui_list->setCurrentCell(nrow, ncol);
+    _depura("END SubForm3::situarse",0);
 }
 
 /** Cuando tenemos un registro que no se tiene que cargar (pq es nuevo o algo
@@ -155,14 +170,13 @@ void SubForm3::pintar() {
     _depura("SubForm3::pintar",0);
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (m_primero) {
+    if (m_primero)
         cargaconfig();
-        m_primero = FALSE;
-    }// end if
     nuevoRegistro();
     _depura("END SubForm3::pintar",0);
 }
 
+/** Carga una tabla a partir del recordset que se le ha pasado */
 int SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar",0);
     mui_query->setText(cur->query());
@@ -190,21 +204,17 @@ int SubForm3::cargar(cursor2 *cur) {
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (m_primero) {
+    if (m_primero) 
         cargaconfig();
-        m_primero = FALSE;
-    }// end if
 
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount(m_lista.count());
     SDBRecord *reg;
     for ( int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
-        _depura("pintamos un SDBRecord",0);
         SDBCampo *camp;
         for ( int j =0; j < reg->lista()->size(); ++j) {
             camp = (SDBCampo *) reg->lista()->at(j);
-            _depura("ponemos un item"+camp->valorcampo(),1);
             mui_list->setItem(i,j,camp);
         }// end for
     }// end for
@@ -268,26 +278,27 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount()-1, 3, it);
 
     return 0;
-};
+}
 
 void SubForm3::setColumnValue(QString campo, QString valor) {
-    _depura("SubForm3::setColumnValue",0);
+    _depura("SubForm3::setColumnValue", 0);
     SDBRecord *rec;
     for (int i = 0; i < mui_list->rowCount(); ++i) {
         rec =  lineaat(i);
         if (rec)
             rec->setDBvalue(campo,valor);
     }// end for
-    _depura("SubForm3::setColumnValue",0);
+    _depura("END SubForm3::setColumnValue", 0);
 }
 
 QString SubForm3::DBvalue(QString campo, int row) {
-    _depura("SubForm3::DBvalue",0);
+    _depura("SubForm3::DBvalue", 0);
     SDBRecord *rec;
     if (row == -1)
         rec = lineaact();
     else
         rec=lineaat(row);
+    _depura("END SubForm3::DBvalue", 0);
     return rec->DBvalue(campo);
 }
 
@@ -343,6 +354,8 @@ int SubForm3::borrar(int row) {
     return 0;
 }
 
+
+/** Guardamos el archivo de configuracion */
 void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig",0);
     QString aux = "";
@@ -365,6 +378,7 @@ void SubForm3::guardaconfig() {
         }// end for
         file.close();
     }// end if
+    _depura("END SubForm3::guardaconfig",0);
 }
 
 void SubForm3::cargaconfig() {
@@ -399,8 +413,10 @@ void SubForm3::cargaconfig() {
     } else {
         mui_list->resizeColumnsToContents();
     }// end if
+    m_primero = FALSE;
     _depura("END SubForm3::cargaconfig",0);
 }
+
 
 void SubForm3::on_mui_confcol_clicked() {
     for ( int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
@@ -446,15 +462,17 @@ QString SubForm3::imprimir() {
 void SubForm3::on_mui_confquery_clicked() {
     _depura("SubForm3::on_mui_confquery_clicked ",0);
     if (m_companyact == NULL) {
-        _depura("no se ha inicializado bien la clase",2);
+        mensajeInfo("no se ha inicializado bien la clase");
         return;
     }// end if
     cursor2 *cur = m_companyact->cargacursor(mui_query->text());
     cargar(cur);
     delete cur;
-    _depura("END SubForm3::on_mui_confquery_clicked ",0);
+    _depura("END SubForm3::on_mui_confquery_clicked ", 0);
 }
 
+/** Disparador que se activa al haber pulsado ctrl+Arriba en la tabla
+    Hace el intercambio con la fila inmediatamente superior */
 void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
     mui_list->setCurrentCell(0,0);
     row++;
@@ -471,6 +489,8 @@ void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
     _depura("END SubForm3::on_mui_list_ctrlSubir",0);
 }
 
+/** Disparador que se activa al haber pulsado ctrl+Abajo en la tabla 
+    Hace el intercambio con la fila inmediatamente inferior*/
 void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     mui_list->setCurrentCell(0,0);
     row--;
@@ -485,3 +505,5 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     mui_list->setCurrentCell(row+1,col);
     _depura("END SubForm3::on_mui_list_ctrlBajar",0);
 }
+      
+ 

@@ -74,7 +74,7 @@ int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nom
 SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp): QTableWidgetItem2(), DBCampo(com,  nom,  typ,  res,  nomp) {
     static int creaciones = 0;
     creaciones ++;
-    _depura("SDBCampo creados:"+QString::number(creaciones),0);
+    _depura("SDBCampo creados:",0,QString::number(creaciones));
     m_pare=par;
 }
 
@@ -83,7 +83,7 @@ SDBCampo::~SDBCampo() {
     _depura("SDBCampo::~SDBCampo()",0);
     static int destrucciones = 0;
     destrucciones++;
-    _depura("SDBCampo destruidos:"+QString::number(destrucciones),0);
+    _depura("SDBCampo destruidos:",0,QString::number(destrucciones));
 }
 
 

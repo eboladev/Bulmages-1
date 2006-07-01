@@ -44,11 +44,10 @@
 
 
 
-
+/** slot Muestra la ventana de asientos */
 void empresa::s_asiento1() {
     _depura("empresa::s_asiento1",0);
     introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-
 }
 
 

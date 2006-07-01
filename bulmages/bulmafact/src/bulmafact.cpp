@@ -40,6 +40,7 @@
 
 
 bulmafact::bulmafact(QString bd) : QMainWindow() {
+    _depura("bulmafact::bulmafact\n", 0);
     setupUi(this);
     m_company = new company();
     m_company->init(bd);
@@ -62,19 +63,18 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     // BusquedaPeriodo *bus = new BusquedaPeriodo(this);
 
     statusBar()->message(tr("Listo"), 2000);
-    _depura("Fin de bulmafact constructor\n", 0);
+    _depura("END bulmafact::bulmafact\n", 0);
 }
 
 
 bulmafact::~bulmafact() {
     _depura("Destructor de BulmaFact", 0);
+    delete pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef WINDOWS
-
     exit(0);
 #endif
-
     _depura("End Destructor de BulmaFact", 0);
 }
 
@@ -129,13 +129,13 @@ void bulmafact::s_About() {
 
 
 void bulmafact::closeEvent(QCloseEvent *) {
-    _depura("closeEvent", 0);
+    _depura("bulmafact::closeEvent", 0);
     delete m_company;
-
+    delete m_list;
 #ifdef WINDOWS
     exit(0);
 #endif
+    _depura("END bulmafact::closeEvent", 0);
 
-    delete pWorkspace;
 }
 

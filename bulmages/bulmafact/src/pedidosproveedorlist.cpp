@@ -58,7 +58,10 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const
 }
 
 
-PedidosProveedorList::~PedidosProveedorList() {}
+PedidosProveedorList::~PedidosProveedorList() {
+    _depura("PedidosProveedorList::~PedidosProveedorList", 0);
+    m_companyact->sacaWindow(this);
+}
 
 
 void PedidosProveedorList::presenta() {

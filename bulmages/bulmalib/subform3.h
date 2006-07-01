@@ -30,18 +30,18 @@
 #include "qtable2.h"
 #include "subform.h"
 
-
+/** SubForm3, constructor de la clase base para subformularios */
 class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
 protected:
-    QList<SHeader *>   m_lcabecera;
-    QList<SDBRecord *> m_lista;
-    postgresiface2 *m_companyact;
-    QString m_tablename;
-    QString m_fileconfig;
-    QString m_campoid;
-    bool m_insercion;
-    bool m_primero;
+    QList<SHeader *>   m_lcabecera;		/// Lista de encabezados del listado. Coord x de la tabla
+    QList<SDBRecord *> m_lista;			/// Filas y contenido. Coord y de la tabla
+    postgresiface2 *m_companyact;		/// Clase padre y acceso a base de datos
+    QString m_tablename;			/// Nombre de la tabla en la BD
+    QString m_fileconfig;			/// Fichero de configuracion del subformulario
+    QString m_campoid;				/// Campo Identificador de la tabla en la BD
+    bool m_insercion;				/// Indica si se pueden insertar nuevas filas o no
+    bool m_primero;				/// Indica si ya se ha cargado la configuracion o no
 
 protected:
     void guardaconfig();
@@ -52,6 +52,9 @@ protected:
     };
 
 public:
+    SubForm3(QWidget *parent);
+
+    virtual ~SubForm3();
 
     SDBCampo * item(int row, int col) {
         return (SDBCampo *) mui_list->item(row,col);
@@ -102,10 +105,7 @@ public:
     };
 
     QString imprimir();
-    SubForm3(QWidget *parent);
-    virtual ~SubForm3() {
-        guardaconfig();
-    };
+
 
     void sortItems(int col, Qt::SortOrder orden);
 

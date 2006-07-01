@@ -121,9 +121,11 @@ int main(int argc, char ** argv) {
 
     theApp->exec();
 
-    _depura("Se acabo la ejecucion en main", 1);
+    _depura("MAIN: Se acabo la ejecucion en main", 0);
 
-    /// Liberamos memora, aunque no sea necesario ya que va a acabar el programa.
+    /// Liberamos memoria.
+
+    delete bges;
     delete theApp;
     delete traductor;
     delete confpr;

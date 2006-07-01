@@ -6,8 +6,23 @@
 
 QT += qt3support
 
-
 LANGUAGE = C++ 
+
+#DEFINES += REPORTS 
+
+TARGET = ../../installbulmages/bulmafact 
+
+CONFIG += qt debug 
+#CONFIG += release 
+
+LIBS += -rdynamic
+
+TEMPLATE = app 
+
+RESOURCES += ../../bulmages-recursos-graficos.qrc
+
+
+
 
 INCLUDEPATH += ../../bulmalib  \
 	       ../../bulmalib/.ui \
@@ -22,21 +37,6 @@ INCLUDEPATH += ../../bulmalib  \
 	       ..
 	       
 	       
-DEFINES = REPORTS 
-
-TARGET = ../../installbulmages/bulmafact 
-
-#CONFIG += qt debug 
-CONFIG += release 
-
-LIBS += -rdynamic
-
-TEMPLATE = app 
-
-
-RESOURCES = ../../bulmages-recursos-graficos.qrc
-
-
 # Estos formularios hay que generarlos de forma manual porque, o se usa FORMS o FORMS3.
 # Mientras se hace la migracion se tiene que hacer: uic about.ui -o ./.ui/about.h
 # etc.
@@ -282,10 +282,7 @@ unix{
   exists(/usr/include/postgresql/pgsql/libpq-fe.h){
     DEFINES += DISTRO_GENTOO
   }
-  exists(/usr/include/no_se_que/pgsql/libpq-fe.h){
-    DEFINES += DISTRO_NO_SE_QUE
-  }
-}
+ }
 
 windows{
   DEFINES += WINDOWS

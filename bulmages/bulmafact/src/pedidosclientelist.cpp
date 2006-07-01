@@ -56,7 +56,10 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const cha
 }
 
 
-PedidosClienteList::~PedidosClienteList() {}
+PedidosClienteList::~PedidosClienteList() {
+    _depura("PedidosClienteList::~PedidosClienteList", 0);
+    companyact->sacaWindow(this);
+}
 
 
 void PedidosClienteList::presenta() {
@@ -74,7 +77,7 @@ void PedidosClienteList::presenta() {
 
 QString PedidosClienteList::generarFiltro() {
     /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
+    _depura("PedidosClienteList::generarFiltro \n", 0);
 
     QString filtro = "";
 

@@ -26,9 +26,10 @@ QTableWidget2::QTableWidget2(QWidget * parent ):QTableWidget(parent ) {
     installEventFilter(this);
 }
 
-
+/** Esta funcion ya es obsoleta y no se utiliza.
+  */
 bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
-    _depura("QTableWidgetItem2::operator<",2);
+    _depura("QTableWidgetItem2::operator<", 0);
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -41,22 +42,18 @@ bool QTableWidgetItem2::operator < ( const QTableWidgetItem & other) {
         if (oknumero && oknumero1) {
             return ncad < ncad1;
         }// end if
-
         QDate fcad = normalizafecha(cad);
         QString acad = fcad.toString(Qt::ISODate);
         QDate fcad1 = normalizafecha(cad1);
         QString acad1 = fcad1.toString(Qt::ISODate);
 
-
         if (acad[2] == '/' && acad1[2]== '/') {
             return fcad < fcad1;
         }// end if
         return cad < cad1;
-
-    } else {
-        return TRUE;
     }// end if
-    _depura("END QTableWidgetItem2::operator<",2);
+    _depura("END QTableWidgetItem2::operator<", 0);
+    return TRUE;
 }
 
 bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {

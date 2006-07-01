@@ -170,12 +170,16 @@ QDate normalizafecha(QString fechaintro) {
     if (!fecharesult.setYMD(y,M,d))
         fecharesult=QDate::currentDate();
     return(fecharesult);
-}// end normalizafecha
+}
 
 
-/** Esta funcion ajusta el codigo pasado al nmero de digitos especificado.
+/** Esta funcion ajusta el codigo pasado al numero de digitos especificado.
     Para ello bsca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
     Lo hace a partir del quinto digito por defecto. Aunque este parametro deberia ser configurable.
+    \param cod string con el codigo actual.
+    \param num1 numero de digitos que debe tener el codigo final.
+    \return devuelve un QString con el codigo ajustado
+    \bug Esta funcion tiene un uso específico de bulmacont y por eso no deberia esta en bulmalib.
   */
 QString ajustacodigo (QString cad, unsigned int num1) {
     QString cod=cad;
@@ -193,9 +197,10 @@ QString ajustacodigo (QString cad, unsigned int num1) {
         }// end if
     }// end if
     return(cod);
-}// end ajustacodigo
+}
 
 
+/** Sustituye cadenas en un archivo */
 void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString archivo2) {
     QString cadena = " sed -e \"s&"+texto1+"&"+texto2+"&g\"  "+archivo+" > "+archivo2+"";
     system (cadena.toAscii().data());
@@ -225,6 +230,9 @@ void generaPDF(const QString arch) {
 }
 
 
+/** Genera un PDF a partir de un RML usando trml2pdf y además lo muestra con el visor de PDF pasado en la configuracion
+    \param arch archivo RML
+  */
 void invocaPDF(const QString arch) {
     generaPDF(arch);
     QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
@@ -237,53 +245,64 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
     system(cadsys.ascii());
 }
 
-// Nivel 0 = normal
-// Nivel 1 = Bajo
-// Nivel 2 = Alto (sale un popup)
-// Nivel 4 = Comienza depuracion indiscriminada
-// Nivel 5 = Termina depuracion indiscriminada
+/**
+   \param cad String a presentar como texto de depuracion o como mensaje de error
+   \param nivel 0 = normal
+   \param nivel 1 = Bajo
+   \param nivel 2 = Alto (sale un popup)
+   \param nivel 4 = Comienza depuracion indiscriminada
+   \param nivel 5 = Termina depuracion indiscriminada
+*/
 
 #define __DEBUGMODE
-#undef __DEBUGMODE
+// #undef __DEBUGMODE
 
-void _depura(QString cad, int nivel) {
+void _depura(QString cad, int nivel, QString param) {
 
 #ifdef __DEBUGMODE
-static int supnivel=0;
+    static int supnivel=0;
+    static int indice=0;
+    static QString mensajesanulados[7000];
+
     if (nivel == 5) {
         supnivel = 0;
         nivel=2;
     }
     if (nivel ==4) {
         supnivel = 2;
-	nivel = 2;
- 	}
-
-
-    if (nivel == 0) {
-        if(g_main != NULL) {
-            g_main->statusBar()->message(cad);
-            fprintf(stderr,"%s\n", cad.toAscii().data());
-        } else
-            fprintf(stderr,"%s\n", cad.toAscii().data());
-    } else if (nivel == 1) {
-        fprintf(stderr,"%s\n",cad.toAscii().data());
+        nivel = 2;
     }
 
+    for (int i = 0; i < indice; i++) {
+	if (cad == mensajesanulados[i]) {
+		return;
+	} // end if
+    } // end for
 
+    if (nivel == 0) {
+        if(g_main != NULL) 
+            g_main->statusBar()->message(cad);
+//      fprintf(stderr,"%s\n", (cad+" "+param).toAscii().data());
+    } else if (nivel == 1) {
+//        fprintf(stderr,"%s\n",(cad+" "+param).toAscii().data());
+    }
 
- if (nivel == 2 || (supnivel==2 && nivel ==0) ) {
-        QMessageBox::question(
+    if (nivel == 2 || (supnivel==2 && nivel ==0) ) {
+	fprintf(stderr,"%s\n", (cad+" "+param).toAscii().data());
+ 	int err = QMessageBox::question(
             NULL,
             "Informacion de depuracion ",
-            cad,
-            "&Salir",
-            QString::null, 0);
+            cad+" "+param,
+            "&Salir", "&Omitir", 
+            QString::null, 0, 1);
+	if (err == 1) {
+		mensajesanulados[indice++] = cad;
+	} // end if
     }// end if
 
 #else
 
- if (nivel == 2 ) {
+    if (nivel == 2 ) {
         QMessageBox::question(
             NULL,
             "Informacion de depuracion ",
@@ -297,8 +316,10 @@ static int supnivel=0;
 
 }
 
-void mensajeInfo(QString cad)
-{
-	_depura(cad, 2);
+
+
+void mensajeInfo(QString cad) {
+    _depura(cad, 2);
 }
+
 

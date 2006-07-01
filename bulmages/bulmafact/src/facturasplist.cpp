@@ -58,7 +58,10 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, con
 }
 
 
-FacturasProveedorList::~FacturasProveedorList() {}
+FacturasProveedorList::~FacturasProveedorList() {
+    _depura("FacturasProveedorList::~FacturasProveedorList", 0);
+    m_companyact->sacaWindow(this);
+}
 
 
 void FacturasProveedorList::presenta() {
