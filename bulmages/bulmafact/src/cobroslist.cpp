@@ -71,12 +71,12 @@ CobrosList::~CobrosList() {
 void CobrosList::presentar() {
     _depura("CobrosList::presentar()\n", 0);
     if (m_companyact != NULL) {
-        cursor2 * cur = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1" + generaFiltro());
+        cursor2 * cur = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1 " + generaFiltro());
         mui_list->cargar(cur);
         delete cur;
 
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1" + generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1 " + generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     } // end if
@@ -100,7 +100,7 @@ QString CobrosList::generaFiltro() {
     } // end if
 
     if (m_fechain->text() != "")
-        filtro += " AND fechacobro >= '" + m_fechain->text() +"' ";
+        filtro += " AND fechacobro >= '" + m_fechain->text() + "' ";
 
     if (m_fechafin->text() != "")
         filtro += " AND fechacobro <= '" + m_fechafin->text() + "' ";
@@ -121,7 +121,7 @@ void CobrosList::on_mui_editar_clicked() {
 
 void CobrosList::on_mui_crear_clicked() {
     _depura("CobrosList::on_mui_crear_clicked", 0);
-    CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("Edicion de cobros", "company"));
+    CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("CobrosList", "Edicion de cobros"));
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
@@ -183,7 +183,7 @@ void CobrosList::imprimir() {
 void CobrosList::on_mui_borrar_clicked() {
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo == 0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("Edicion de presupuestos", "company"));
+        CobroView *bud = new CobroView(m_companyact, NULL, tr("Edicion de presupuestos"));
         bud->cargar(mdb_idcobro);
         bud->borrar();
     } // end if
@@ -194,7 +194,7 @@ void CobrosList::on_mui_borrar_clicked() {
 void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo == 0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("Edicion de cobros", "company"));
+        CobroView *bud = new CobroView(m_companyact, NULL, tr("Edicion de cobros"));
         bud->cargar(mdb_idcobro);
         bud->show();
     } else {

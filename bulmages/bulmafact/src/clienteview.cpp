@@ -89,7 +89,7 @@ ClienteView::~ClienteView() {
 * 
 * Otherwise it empties the form and sets it so that we can add
 * a new client
-*/
+**/
 int ClienteView::cargar(QString idcliente) {
     _depura("ClienteView::cargar", 0);
     int error = 0;
@@ -131,7 +131,7 @@ void ClienteView::emptyForm() {
 * This function saves the current client. It checks
 * if it is a new client that needs to be added or if
 * it is an existing one that has to be modified
-*/
+**/
 int ClienteView::guardar() {
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("ClienteView_saveClient", this);
@@ -163,7 +163,7 @@ int ClienteView::guardar() {
 *
 * In the future it should really delete the client, or better yet
 * mark it as deleted on an appropiate field in the DB
-*/
+**/
 void ClienteView::deleteClient() {
     borraCliente();
     emptyForm();
