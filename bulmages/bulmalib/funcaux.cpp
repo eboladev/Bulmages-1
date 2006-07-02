@@ -255,7 +255,9 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 */
 
 #define __DEBUGMODE
+
 // #undef __DEBUGMODE
+
 
 void _depura(QString cad, int nivel, QString param) {
 

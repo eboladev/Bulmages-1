@@ -64,6 +64,8 @@ bool QTableWidget2::eventFilter( QObject *obj, QEvent *event ) {
         int key = keyEvent->key();
         int col = currentColumn();
         int row = currentRow();
+	// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos casos abortamos la ejecucion del eventFilter para que no de fallos en la busqueda de que celda es.
+        if (row < 0) return TRUE;
         Qt::KeyboardModifiers mod =  keyEvent->modifiers();
         _depura("key release "+QString::number(key)+" mod "+QString::number(mod) ,0);
 
