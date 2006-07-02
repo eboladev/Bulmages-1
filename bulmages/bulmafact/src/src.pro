@@ -132,7 +132,8 @@ HEADERS += bulmafact.h \
            listalmacenview.h \
            listconfiguracionview.h \
            subform2bf.h \
-           listlinpresupuesto.h 
+           listlinpresupuesto.h \
+           linpresupuesto.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -216,11 +217,13 @@ SOURCES += bulmafact.cpp \
            listalmacenview.cpp \
            listconfiguracionview.cpp \
            subform2bf.cpp \
-           listlinpresupuesto.cpp 
+           listlinpresupuesto.cpp \
+           linpresupuesto.cpp 
 QT += qt3support
 LANGUAGE = C++
 TARGET = ../../installbulmages/bulmafact
 CONFIG += qt debug
+#CONFIG += release
 LIBS += -rdynamic
 TEMPLATE = app
 RESOURCES += ../../bulmages-recursos-graficos.qrc
@@ -263,7 +266,6 @@ windows{
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   LIBS += ../../bulmalib/release/bulmalib0.dll \
-  C:\Qt\4.1.0\lib\libQtXmld4.a
   INCLUDEPATH += ../../bulmalib/libpq \
   ../src \
   .. \
