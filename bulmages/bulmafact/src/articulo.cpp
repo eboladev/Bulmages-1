@@ -34,7 +34,7 @@ Articulo::Articulo(company *comp) : DBRecord(comp)
   setDBCampoId("idarticulo");
   addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Identificador", "articulo"));
   addDBCampo("codarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Codigo", "articulo"));
-  addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Nombre", "articulo"));
+  addDBCampo("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNotNull, QApplication::translate("Nombre", "Descripcion Articulo"));
   addDBCampo("abrevarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Abreviacion", "articulo"));
   addDBCampo("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Observaciones", "articulo"));
   addDBCampo("presentablearticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Incluir en presentaciones", "articulo"));
