@@ -208,6 +208,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 
 
 int ArticuloView::guardar() {
+	int guardarCorrecto = 0;
     try {
         _depura("ArticuloView::guardar()\n", 0);
         setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
@@ -220,7 +221,8 @@ int ArticuloView::guardar() {
         setDBvalue("abrevarticulo", m_abrevarticulo->text());
         setDBvalue("pvparticulo", m_pvparticulo->text());
         setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentItem()));
-        Articulo::guardar();
+
+        if (Articulo::guardar() !=0 ) guardarCorrecto = -1;
 
         /// Guardamos la imagen, si es que existe.
         if (m_archivoimagen != "") {
@@ -232,21 +234,26 @@ int ArticuloView::guardar() {
 
         /// Guardamos la lista de componentes.
         m_componentes->setColumnValue("idarticulo", DBvalue("idarticulo"));
-        m_componentes->guardar();
+        if (m_componentes->guardar() !=0 ) guardarCorrecto = -1;
 
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_guardar_post", this);
         if (res != 0)
             return res;
 
-        dialogChanges_cargaInicial();
-
+        if (guardarCorrecto == 0) {
+			dialogChanges_cargaInicial();
+		}
+		
         _depura("ArticuloView::guardar()\n", 0);
-        return 0;
+        //return 0;
     } catch (...) {
         _depura("Hubo un error al guardar el articulo", 2);
-        return 0;
+        //return 0;
     }
+
+	if (guardarCorrecto != 0) throw -1;
+	else return 0;
 }
 
 
@@ -301,7 +308,10 @@ void ArticuloView::closeEvent( QCloseEvent *e) {
 
 
 void ArticuloView::on_mui_aceptar_clicked() {
-    on_mui_guardar_clicked();
-    close();
+	try {
+    	on_mui_guardar_clicked();
+    	close();
+	}
+	catch (...){};
 }
 
