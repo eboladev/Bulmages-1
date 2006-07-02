@@ -133,7 +133,9 @@ HEADERS += bulmafact.h \
            listconfiguracionview.h \
            subform2bf.h \
            listlinpresupuesto.h \
-           linpresupuesto.h 
+           linpresupuesto.h \
+           listdescpresupuesto.h \
+           descpresupuesto.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -218,7 +220,9 @@ SOURCES += bulmafact.cpp \
            listconfiguracionview.cpp \
            subform2bf.cpp \
            listlinpresupuesto.cpp \
-           linpresupuesto.cpp 
+           linpresupuesto.cpp \
+           listdescpresupuesto.cpp \
+           descpresupuesto.cpp 
 QT += qt3support
 LANGUAGE = C++
 TARGET = ../../installbulmages/bulmafact
@@ -269,8 +273,6 @@ windows{
   INCLUDEPATH += ../../bulmalib/libpq \
   ../src \
   .. \
-  C:\Qt\4.1.0\include\QtXml
-  INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
   LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
   TARGET = ../../../installbulmages/bulmafact
 }

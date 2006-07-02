@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QFile>
 #include <QTextStream>
 

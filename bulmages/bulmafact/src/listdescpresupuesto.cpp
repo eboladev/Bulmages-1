@@ -1,31 +1,43 @@
-//
-// C++ Implementation: ListDescuentoPresupuesto
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "listdescpresupuesto.h"
 #include "company.h"
 #include "descpresupuesto.h"
 #include "funcaux.h"
 
+
 ListDescuentoPresupuesto::ListDescuentoPresupuesto(company *comp) {
     companyact = comp;
     m_lista.setAutoDelete(TRUE);
-    mdb_idpresupuesto="";
-}// end ListDescuentoPresupuesto
+    mdb_idpresupuesto = "";
+}
+
 
 ListDescuentoPresupuesto::ListDescuentoPresupuesto() {
-    fprintf(stderr,"Constructor de ListDescuentoPresupuesto\n");
-    companyact=NULL;
+    _depura("Constructor de ListDescuentoPresupuesto\n", 2);
+    companyact = NULL;
     m_lista.setAutoDelete(TRUE);
-    mdb_idpresupuesto="";
-}// end ListDescuentoPresupuesto
+    mdb_idpresupuesto = "";
+}
+
 
 ListDescuentoPresupuesto::~ListDescuentoPresupuesto() {}
 
@@ -37,25 +49,26 @@ void ListDescuentoPresupuesto::nuevalinea(QString concept, QString propor) {
                                 propor,
                                 mdb_idpresupuesto);
     m_lista.append(lin);
-}// end nuevalinea
+}
+
 
 DescuentoPresupuesto *ListDescuentoPresupuesto::linpos(int pos) {
     return (m_lista.at(pos));
-}// end linpos
+}
 
 
-// Carga l�eas de presupuesto
+/// Carga lineas de presupuesto.
 int ListDescuentoPresupuesto::cargaDescuentos(QString idbudget) {
-    int error=0;
+    int error = 0;
     vaciar();
-    _depura("ListDescuentoPresupuesto::chargeBudgetLines\n",0);
+    _depura("ListDescuentoPresupuesto::chargeBudgetLines\n", 0);
     mdb_idpresupuesto = idbudget;
-    fprintf(stderr,"Hacemos la carga del cursor\n");
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto="+idbudget,"unquery");
+    _depura("Hacemos la carga del cursor\n", 2);
+    cursor2 * cur = companyact->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto=" + idbudget, "unquery");
     if (cur->error())
         error = 1;
-    int i=0;
-    while (!cur->eof())   {
+    int i = 0;
+    while (!cur->eof()) {
         /// Creamos un elemento del tipo DescuentoPresupuesto y lo agregamos a la lista.
         DescuentoPresupuesto *lin = new DescuentoPresupuesto(companyact,
                                     cur->valor("iddpresupuesto"),
@@ -66,55 +79,56 @@ int ListDescuentoPresupuesto::cargaDescuentos(QString idbudget) {
         m_lista.append(lin);
         i++;
         cur->siguienteregistro();
-    }// end while
+    } // end while
     delete cur;
-    /// Tratamiento de excepciones
+    /// Tratamiento de excepciones.
     if (error) {
-        _depura("Error en la carga de la linea de presupuesto\n",0);
+        _depura("Error en la carga de la linea de presupuesto\n", 0);
         return 1;
-    }// end if
-    _depura("Fin de ListDescuentoPresupuesto::chargeBudgetLines\n",0);
+    } // end if
+    _depura("Fin de ListDescuentoPresupuesto::chargeBudgetLines\n", 0);
     return 0;
-}// end chargeBudgetLines
+}
 
 
 void ListDescuentoPresupuesto::guardaListDescuentoPresupuesto() {
     DescuentoPresupuesto *linea;
     uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
         linea->guardaDescuentoPresupuesto();
         i++;
-    }// end for
-}// en guardaListDescuentoPresupuesto
-
+    } // end for
+}
 
 
 void ListDescuentoPresupuesto::vaciar() {
     mdb_idpresupuesto = "";
     m_lista.clear();
-}// end guardaListDescuentoPresupuesto
+}
 
 
 int ListDescuentoPresupuesto::borrar() {
     if (mdb_idpresupuesto != "")  {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE idpresupuesto="+mdb_idpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM dpresupuesto WHERE idpresupuesto=" + mdb_idpresupuesto);
         if (error) {
             companyact->rollback();
             return -1;
-        }// end if
+        } // end if
         companyact->commit();
-    }// end if
-	return 0;
-}// end borrar
+    } // end if
+    return 0;
+}
 
 
 int ListDescuentoPresupuesto::borraDescuentoPresupuesto(int pos) {
     DescuentoPresupuesto *linea;
     linea = m_lista.at(pos);
     int err = linea->borrar();
-	if (err) return err;
+    if (err)
+        return err;
     m_lista.remove(pos);
     pintaListDescuentoPresupuesto();
     return 0;
-}// end borraDescuentoPresupuesto
+}
+

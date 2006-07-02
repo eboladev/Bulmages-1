@@ -28,12 +28,13 @@ class DescuentoPresupuesto : public DBRecord  {
 private:
 	company *companyact;
 	void definetabla();
+
 public:
 	DescuentoPresupuesto(company *);
-	DescuentoPresupuesto(company *, QString );
+	DescuentoPresupuesto(company *, QString);
 	/// La carga rapida tiene un comportamiento poco restrictivo para
 	/// aumentar la eficiencia.
-	DescuentoPresupuesto(company *, QString , QString , QString , QString);
+	DescuentoPresupuesto(company *, QString, QString, QString, QString);
 	virtual ~DescuentoPresupuesto();
 	virtual void pintaDescuentoPresupuesto()
 	{
@@ -58,20 +59,21 @@ public:
 	};
 	inline void setiddpresupuesto(QString val)
 	{
-		setDBvalue("iddpresupuesto",val);
+		setDBvalue("iddpresupuesto", val);
 	};
 	inline void setconceptdpresupuesto(QString val)
 	{
-		setDBvalue("conceptdpresupuesto",val);
+		setDBvalue("conceptdpresupuesto", val);
 	};
 	inline void setproporciondpresupuesto(QString val)
 	{
-		setDBvalue("proporciondpresupuesto",val);
+		setDBvalue("proporciondpresupuesto", val);
 	};
 	inline void setidpresupuesto(QString val)
 	{
-		setDBvalue("idpresupuesto",val);
+		setDBvalue("idpresupuesto", val);
 	};
 };
 
 #endif
+

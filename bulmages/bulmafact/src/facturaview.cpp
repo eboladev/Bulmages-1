@@ -20,11 +20,9 @@
 
 #include <QCloseEvent>
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>

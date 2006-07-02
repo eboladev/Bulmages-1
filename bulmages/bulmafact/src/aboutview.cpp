@@ -33,12 +33,15 @@ AboutView::AboutView(QDialog *parent) : QDialog(parent) {
     QString str_licencia;
     setupUi(this);
     str_sobre = "<br /><br /><br /><br /><center><h2>Facturaci&oacute;n GPL</h2></center>";
-    str_autores = "<center><h2>Autores de BulmaFact</h2></center>" \
-                  "<center><p>Programaci&oacute;n: <b>Tomeu Borr&aacute;s. </b>&nbsp;" \
-                  "<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a></p>" \
-                  "</center>" \
-                  "<center><p>Depuracion y manuales: <b>Cristina Marco. </b>&nbsp;" \
-                  "<a href=\"cmarco@conetxia.com\">cmarco@conetxia.com</a></p></center>";
+    str_autores = "<center><h2>Autores de BulmaFact</h2>" \
+                  "<p>" \
+                  "Programaci&oacute;n:<br/> " \
+                  "<b>Tomeu Borr&aacute;s.</b>&nbsp;<a href=\"mailto:tborras@conetxia.com\">tborras@conetxia.com</a><br/>" \
+                  "<b>Fco. Javier M. C. </b>&nbsp;<a href=\"mailto:fcojavmc@todo-redes.com\">fcojavmc@todo-redes.com</a><br/>" \
+                  "</p><p>" \
+                  "Depuracion y manuales:<br/>" \
+                  "<b>Cristina Marco.</b>&nbsp;<a href=\"cmarco@conetxia.com\">cmarco@conetxia.com</a>" \
+                  "</p></center>";
 
     str_soporte = "<center><p>" \
                   "<p><h2>Entidades que dan soporte al programa:</h2></p>" \

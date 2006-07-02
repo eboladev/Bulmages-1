@@ -1,30 +1,24 @@
-//
-// C++ Implementation: DescuentoPresupuesto
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
-#include "descpresupuesto.h"
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
-/*
--- Descuento de presupuesto.
--- Numero
---Concepte: Descripció del motiu de descompte.
---Proporcio: Percentatge a descomptar.
--- Descompte de pressupost a clients.
-CREATE TABLE dpresupuesto (
-   iddpresupuesto serial PRIMARY KEY,
-   conceptdpresupuesto character varying(2000),
-   proporciondpresupuesto numeric(5,2),
-   idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o después de ésta.
-);
-*/
+#include "descpresupuesto.h"
 
 
 void DescuentoPresupuesto::definetabla() {
@@ -34,7 +28,7 @@ void DescuentoPresupuesto::definetabla() {
     addDBCampo("conceptdpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, "Descripcion");
     addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, "Identificador Presupuesto");
     addDBCampo("proporciondpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, "Proporcion");
-}// end definetabla
+}
 
 
 DescuentoPresupuesto::DescuentoPresupuesto(company *comp) : DBRecord(comp) {
@@ -42,27 +36,29 @@ DescuentoPresupuesto::DescuentoPresupuesto(company *comp) : DBRecord(comp) {
     definetabla();
 }
 
+
 DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString id) : DBRecord(comp) {
     companyact = comp;
     definetabla();
-    QString SQLQuery = "SELECT * FROM dpresupuesto WHERE  iddpresupuesto="+id;
+    QString SQLQuery = "SELECT * FROM dpresupuesto WHERE  iddpresupuesto=" + id;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         DBload(cur);
     } else {
         vaciaDescuentoPresupuesto();
-    }// end if
-}// end DescuentoPresupuesto
+    } // end if
+}
 
 
-DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString a, QString b, QString c, QString d) : DBRecord(comp) {
+DescuentoPresupuesto::DescuentoPresupuesto(company *comp, QString a, QString b, QString c, QString d)
+        : DBRecord(comp) {
     companyact = comp;
     definetabla();
     setDBvalue("iddpresupuesto", a);
     setDBvalue("conceptdpresupuesto", b);
     setDBvalue("proporciondpresupuesto", c);
-    setDBvalue("idpresupuesto",d);
-}// end DescuentoPresupuesto
+    setDBvalue("idpresupuesto", d);
+}
 
 
 DescuentoPresupuesto::~DescuentoPresupuesto() {}
@@ -80,9 +76,8 @@ void DescuentoPresupuesto::guardaDescuentoPresupuesto() {
     if (error ) {
         companyact->rollback();
         return;
-    }// end if
-    setDBvalue("iddpresupuesto",id);
+    } // end if
+    setDBvalue("iddpresupuesto", id);
     companyact->commit();
-}// end guardaDescuentoPresupuesto
-
+}
 
