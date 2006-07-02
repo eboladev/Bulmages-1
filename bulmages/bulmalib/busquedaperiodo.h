@@ -22,36 +22,38 @@
 #define BUSQUEDAPERIODO_H
 
 #include <QComboBox>
+
 #include "funcaux.h"
 
 
-class BusquedaPeriodo : public QComboBox
-{
-	Q_OBJECT
+class BusquedaPeriodo : public QComboBox {
+    Q_OBJECT
+
 private:
-	QString m_textos[10];
-	QString m_valores[10];
+    QString m_textos[10];
+    QString m_valores[10];
+
 public:
-	BusquedaPeriodo(QWidget *parent = 0);
-	~BusquedaPeriodo();
-	virtual void setperiodo(QString periodo);
-	QString periodo() {
-		return m_valores[currentIndex()];
-	};
+    BusquedaPeriodo(QWidget *parent = 0);
+    ~BusquedaPeriodo();
+    virtual void setperiodo(QString periodo);
+    QString periodo() {
+        return m_valores[currentIndex()];
+    };
+
 public slots:
-	void s_activated(int index)
-	{
-	    	_depura("Activado el combo box", 0);
-		if (index > 0)
-		{
-			emit(valueChanged(m_valores[currentIndex()]));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void s_activated(int index) {
+        _depura("Activado el combo box.", 0);
+        if (index > 0) {
+            emit(valueChanged(m_valores[currentIndex()]));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
 #endif
+

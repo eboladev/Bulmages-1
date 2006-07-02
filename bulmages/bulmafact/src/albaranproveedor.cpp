@@ -29,15 +29,15 @@ AlbaranProveedor::AlbaranProveedor(company *comp)
     companyact = comp;
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
-    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id albaran proveedor", "albaranproveedor"));
-    addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero albaran proveedor", "albaranproveedor"));
-    addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha albaran proveedor", "albaranproveedor"));
-    addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario albaran proveedor", "albaranproveedor"));
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id proveedor", "albaranproveedor"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id forma de pago", "albaranproveedor"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id almacen", "albaranproveedor"));
-    addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia albaran proveedor", "albaranproveedor"));
-    addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descripcion albaran proveedor", "albaranproveedor"));
+    addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranProveedor", "Id albaran proveedor"));
+    addDBCampo("numalbaranp", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Numero albaran proveedor"));
+    addDBCampo("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Fecha albaran proveedor"));
+    addDBCampo("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Comentario albaran proveedor"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id proveedor"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Id forma de pago"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id almacen"));
+    addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Referencia albaran proveedor"));
+    addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Descripcion albaran proveedor"));
 }
 
 
@@ -158,10 +158,10 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, " \
                        "3cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "<td>" + QApplication::translate("Concepto", "albaranproveedor") + "</td>";
-    fitxersortidatxt += "<td>" + QApplication::translate("Cantidad", "albaranproveedor") + "</td>";
-    fitxersortidatxt += "<td>" + QApplication::translate("Precio Und.", "albaranproveedor") + "</td>";
-    fitxersortidatxt += "<td>" + QApplication::translate("Total", "albaranproveedor") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Concepto") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Cantidad") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Precio/u.") + "</td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Total") + "</td>";
     fitxersortidatxt += "</tr>";
 
     QString l;
@@ -170,31 +170,31 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
         fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "<td>" + linea->DBvalue("desclalbaranp") + "</td>";
-        fitxersortidatxt += "<td>" + linea->DBvalue("cantlalbaranp") +"</td>";
-        fitxersortidatxt += "<td>" + linea->DBvalue("pvplalbaranp") +"</td>";
-        fitxersortidatxt += "<td>" + (Fixed(linea->DBvalue("pvplalbaranp")) * Fixed(linea->DBvalue("pvplalbaranp"))).toQString() + "</td>";
+        fitxersortidatxt += "        <td>" + linea->DBvalue("desclalbaranp") + "</td>";
+        fitxersortidatxt += "        <td>" + linea->DBvalue("cantlalbaranp") +"</td>";
+        fitxersortidatxt += "        <td>" + linea->DBvalue("pvplalbaranp") +"</td>";
+        fitxersortidatxt += "        <td>" + (Fixed(linea->DBvalue("pvplalbaranp")) * Fixed(linea->DBvalue("pvplalbaranp"))).toQString() + "</td>";
         fitxersortidatxt += "</tr>";
         i++;
     }
 
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td>" + QApplication::translate("Base imponible", "albaranproveedor") + "</td>";
-    fitxersortidatxt += "<td>" + listalineas->calculabase().toQString() + "</td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Base imponible") + "</td>";
+    fitxersortidatxt += "        <td>" + listalineas->calculabase().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td>" + QApplication::translate("I.V.A.", "albaranproveedor") + "</td>";
-    fitxersortidatxt += "<td>" + listalineas->calculaiva().toQString() + "</td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "I.V.A.") + "</td>";
+    fitxersortidatxt += "        <td>" + listalineas->calculaiva().toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td></td>";
-    fitxersortidatxt += "<td>"+ QApplication::translate("Total", "albaranproveedor") + "</td>";
-    fitxersortidatxt += "<td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td></td>";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Total") + "</td>";
+    fitxersortidatxt += "        <td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "</blockTable>";
 

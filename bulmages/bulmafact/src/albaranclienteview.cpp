@@ -19,14 +19,11 @@
  ***************************************************************************/
 
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QMessageBox>
 #include <QLabel>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QCloseEvent>
 
@@ -93,7 +90,7 @@ void AlbaranClienteView::s_verpresupuesto() {
 
     if (cur->numregistros() > 1) {
         PresupuestoList *list = new PresupuestoList(companyact, NULL,
-                                theApp->translate("Edicion de presupuestos", "company"));
+                                QApplication::translate("AlbaranClienteView", "Edicion de presupuestos"));
         list->modoseleccion();
         list->show();
 
@@ -126,7 +123,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     if (!cur->eof()) {
         while (!cur->eof()) {
             PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
-                                     theApp->translate("Edicion de presupuestos", "company"));
+                                     QApplication::translate("AlbaranClienteView", "Edicion de presupuestos"));
             companyact->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idpedidocliente"));
             bud->show();

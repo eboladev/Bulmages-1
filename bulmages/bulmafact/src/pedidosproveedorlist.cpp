@@ -163,7 +163,7 @@ void PedidosProveedorList::imprimir() {
 void PedidosProveedorList::on_mui_borrar_clicked() {
     _depura("PedidosProveedorList::on_mui_borrar_clicked", 0);
     mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
-    PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, theApp->translate("Edicion de Facturas a Cliente", "company"));
+    PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de facturas a cliente"));
     if (prov->cargar(mdb_idpedidoproveedor)) {
         return;
     }
@@ -172,11 +172,11 @@ void PedidosProveedorList::on_mui_borrar_clicked() {
 }
 
 
-void PedidosProveedorList::editar(int  row) {
+void PedidosProveedorList::editar(int row) {
     _depura("PedidosProveedorList::editar", 0);
     mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
     if (m_modo == 0) {
-        PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, theApp->translate("Edicion de Facturas a Cliente", "company"));
+        PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de facturas a cliente"));
         if (prov->cargar(mdb_idpedidoproveedor)) {
             return;
         }
@@ -184,7 +184,6 @@ void PedidosProveedorList::editar(int  row) {
         prov->show();
     } else {
         emit(selected(mdb_idpedidoproveedor));
-        // close();
     } // end if
     _depura("END PedidosProveedorList::editar", 0);
 }

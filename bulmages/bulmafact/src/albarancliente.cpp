@@ -34,20 +34,20 @@ AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)  {
     companyact = comp;
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
-    addDBCampo("idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Id albaran", "albarancliente"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id cliente", "albarancliente"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Id almacen", "albarancliente"));
-    addDBCampo("numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Numero de albaran", "albarancliente"));
-    addDBCampo("fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Fecha albaran", "albarancliente"));
-    addDBCampo("contactalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Contacto albaran", "albarancliente"));
-    addDBCampo("telalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Telefono", "albarancliente"));
-    addDBCampo("comentalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario", "albarancliente"));
-    addDBCampo("comentprivalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Comentario priv albaran", "albarancliente"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id forma de pago", "albarancliente"));
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Id trabajador", "albarancliente"));
-    addDBCampo("procesadoalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Procesado albaran", "albarancliente"));
-    addDBCampo("descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Descripcion albaran", "albarancliente"));
-    addDBCampo("refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Referencia albaran", "albarancliente"));
+    addDBCampo("idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranCliente", "Id albaran"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranCliente", "Id cliente"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranCliente", "Id almacen"));
+    addDBCampo("numalbaran", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Numero de albaran"));
+    addDBCampo("fechaalbaran", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Fecha albaran"));
+    addDBCampo("contactalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Contacto albaran"));
+    addDBCampo("telalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Telefono"));
+    addDBCampo("comentalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Comentario"));
+    addDBCampo("comentprivalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Comentario priv albaran"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Id forma de pago"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Id trabajador"));
+    addDBCampo("procesadoalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Procesado albaran"));
+    addDBCampo("descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Descripcion albaran"));
+    addDBCampo("refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Referencia albaran"));
     listalineas = NULL;
     listadescuentos = NULL;
 }
@@ -201,12 +201,12 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, " \
                         "8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Codigo") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Concepto") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Und") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Precio") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Dto") + "</td>\n";
-    fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Total") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Codigo") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Concepto") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Und") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Precio") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Dto") + "</td>\n";
+    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
@@ -220,12 +220,12 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
                 base * Fixed(linea->DBvalue("descontlalbaran").ascii()) / 100;
 
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
-        fitxersortidatxt += "<td>" + XMLProtect(linea->DBvalue("desclalbaran")) + "</td>\n";
-        fitxersortidatxt += "<td>" + l.sprintf("%s",linea->DBvalue("cantlalbaran").ascii()) + "</td>\n";
-        fitxersortidatxt += "<td>" + l.sprintf("%s",linea->DBvalue("pvplalbaran").ascii()) + "</td>\n";
-        fitxersortidatxt += "<td>" + l.sprintf("%s",linea->DBvalue("descontlalbaran").ascii()) + " %</td>\n";
-        fitxersortidatxt += "<td>" + l.sprintf("%s",(base - base *
+        fitxersortidatxt += "        <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
+        fitxersortidatxt += "        <td>" + XMLProtect(linea->DBvalue("desclalbaran")) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("cantlalbaran").ascii()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("pvplalbaran").ascii()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("descontlalbaran").ascii()) + " %</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",(base - base *
                                                Fixed(linea->DBvalue("descontlalbaran")) / 100).toQString().ascii())
                             + "</td>\n";
         fitxersortidatxt += "</tr>";
@@ -252,18 +252,18 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm," \
                             " 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Descuento") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Porcentaje") + "</td>\n";
-        fitxersortidatxt += "<td>" + QApplication::translate("albarancliente", "Total") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Descuento") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
 
         for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondalbaran").ascii());
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "<td>" + linea1->DBvalue("conceptdalbaran") + "</td>\n";
-            fitxersortidatxt += "<td>" + l.sprintf("%s", linea1->DBvalue("proporciondalbaran").ascii()) + " %</td>\n";
-            fitxersortidatxt += "<td>" + l.sprintf("-%s",
+            fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdalbaran") + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondalbaran").ascii()) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("-%s",
                                                    (Fixed(linea1->DBvalue("proporciondalbaran")) * basei /
                                                     100).toQString().ascii()) + "</td>\n";
             fitxersortidatxt += "</tr>";
@@ -292,7 +292,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         } // end if
 
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "<td>" + QApplication::translate("albarancliente", "Base ") + it.key() + " %</td>\n";
+        tr1 += "<td>" + QApplication::translate("AlbaranCliente", "Base ") + it.key() + " %</td>\n";
         tr2 += "<td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
     }
 
@@ -308,11 +308,11 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         } // end if
 
         totiva = totiva + pariva;
-        tr1 += "<td>" + QApplication::translate("albarancliente", "Iva ") + it.key() + " %</td>\n";
+        tr1 += "<td>" + QApplication::translate("AlbaranCliente", "I.V.A. ") + it.key() + " %</td>\n";
         tr2 += "<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
     } // end for
 
-    tr1 += "<td>" + QApplication::translate("albarancliente", "Total ") + "</td>\n";
+    tr1 += "<td>" + QApplication::translate("AlbaranCliente", "Total ") + "</td>\n";
     tr2 += "<td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]",fitxersortidatxt);

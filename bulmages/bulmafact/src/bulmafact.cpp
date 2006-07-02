@@ -60,8 +60,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
     showMaximized();
 
-    // BusquedaPeriodo *bus = new BusquedaPeriodo(this);
-
     statusBar()->message(tr("Listo"), 2000);
     _depura("END bulmafact::bulmafact\n", 0);
 }

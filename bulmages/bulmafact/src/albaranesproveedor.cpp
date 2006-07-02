@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QCheckBox>
 #include <QFile>
 #include <QCheckBox>
@@ -124,7 +123,7 @@ void AlbaranesProveedor::editar(int  row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
     if (m_modo == 0) {
-        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0, theApp->translate("Edicion de Albaranes a Proveedor", "company"));
+        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0, QApplication::translate("AlbaranesProveedor", "Edicion de albaranes a proveedor"));
         if (prov->cargar(mdb_idalbaranp)) {
             return;
         }
@@ -204,7 +203,7 @@ void AlbaranesProveedor::on_mui_borrar_clicked() {
     if (m_modo == 0 && mdb_idalbaranp != "") {
         AlbaranProveedorView *bud = new AlbaranProveedorView(m_companyact,
                                     m_companyact->m_pWorkspace,
-                                    theApp->translate("Edicion de albaranes de proveedores", "company"));
+                                    QApplication::translate("AlbaranesProveedor", "Edicion de albaranes de proveedores"));
         bud->cargar(mdb_idalbaranp);
         bud->borrar();
         delete bud;

@@ -17,31 +17,35 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef LOGPASS_H
 #define LOGPASS_H
+
+#include <qdialog.h>
 
 #include "ui_logpassbase.h"
 #include "postgresiface2.h"
 
-#include <qdialog.h>
 
-/**
-@author Tomeu Borras
-*/
 class logpass : public QDialog, public Ui_logpassbase {
-Q_OBJECT
+    Q_OBJECT
+
 private:
-   bool m_authOK;
-   
+    bool m_authOK;
+
 private:
-   postgresiface2 *metabase;
+    postgresiface2 *metabase;
 
 public:
     logpass(QWidget *parent = 0, const char *name = 0);
     ~logpass();
-    bool authOK() {return m_authOK;};
+    bool authOK() {
+        return m_authOK;
+    };
+
 public slots:
-   virtual void validar();
+    virtual void validar();
 };
 
 #endif
+

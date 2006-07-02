@@ -1,40 +1,46 @@
 /***************************************************************************
-                          funcaux.cpp  -  description
-                             -------------------
-    begin                : Sun Jan 26 2003
-    copyright            : (C) 2003 by Josep Burcion and Tomeu Borras
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera and Josep Burcion            *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-/** \file funcaux.cpp
-  * Fichero de implementacion de funciones auxiliares que no es preciso encapsular<BR>
-  * <P>En este fichero se implementan todas aquellas funciones que por su brevedad o aislamiento son
-  * utilizadas de forma regular en el programa. Definidas en \ref funcaux.h </P>
-  * <P>Dichas funciones normalmente son de uso general, por lo que es normal ver este archivo incluido
-  * en la practica totalidad de los demas ficheros</P>
-  */
 
-#include "funcaux.h"
-#include "configuracion.h"
-#include <qstring.h>
+/**
+* Fichero de definicion de funciones auxiliares que no es preciso encapsular
+* En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
+* utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
+* Dichas funciones normalmente son de uso general, por lo que es normal ver este
+* archivo incluido en la practica totalidad de los demas ficheros.
+**/
+
+#include <QString>
 #include <QTextEdit>
 #include <QDir>
 
+#include "funcaux.h"
+#include "configuracion.h"
+
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
-QMainWindow *g_main=NULL;
+QMainWindow *g_main = NULL;
 
 
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto(QString texto) {
     QTextEdit *ed = new QTextEdit(0);
-    ed->setFixedSize(450,250);
+    ed->setFixedSize(450, 250);
     ed->setPlainText(texto);
     g_main->setEnabled(FALSE);
     ed->show();
@@ -45,197 +51,193 @@ QString editaTexto(QString texto) {
     return vuelta;
 }
 
-/** Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML
-  * \param string cadena que se va a proteger.
-  * \return cadena en formato protegido.
-  */
-QString XMLProtect( const QString& string ) {
+
+/// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
+QString XMLProtect(const QString& string) {
     QString s = string;
-    s.replace( "&", "&amp;" );
-    s.replace( ">", "&gt;" );
-    s.replace( "<", "&lt;" );
-    s.replace( "\"", "&quot;" );
-    s.replace( "\'", "&apos;" );
+    s.replace("&", "&amp;");
+    s.replace(">", "&gt;");
+    s.replace("<", "&lt;");
+    s.replace("\"", "&quot;");
+    s.replace("\'", "&apos;");
     return s;
 }
 
-/** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-  * \param cad Cadena inicial
-  * \param num1 Numero de digitos totales de la cuenta.
-  * \return Devuelve un string con el codigo de cuenta extendido al nmero de digitos indicado.
-  */
+
+/// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
+/// cad = Cadena inicial.
+/// num1 = Numero de digitos totales de la cuenta.
+/// Devuelve un string con el codigo de cuenta extendido al numero de digitos indicado.
 string extiendecodigo (string cad, unsigned int num1) {
-    string cod=cad;
-    unsigned int num=num1;
+    string cod = cad;
+    unsigned int num = num1;
     if (cod.length() < num) {
-        string str7 (num-cod.length()+1,'0');
-        int pos = cod.find(".",0);
+        string str7 (num - cod.length() + 1, '0');
+        int pos = cod.find(".", 0);
         if (pos > 0) {
-            cod.replace(pos,1,str7);
-        }// end if
-    }// end if
+            cod.replace(pos, 1, str7);
+        } // end if
+    } // end if
     return(cod);
 }
 
-/** Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-  * \param cad Cadena inicial
-  * \param num1 Numero de digitos totales de la cuenta.
-  * \return Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
-  */
+
+/// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
+/// cad = Cadena inicial
+/// num1 = Numero de digitos totales de la cuenta.
+/// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
 QString extiendecodigo (QString cad, unsigned int num1) {
-    QString cod=cad;
-    int num=num1;
+    QString cod = cad;
+    int num = num1;
     if (cod.length() < num) {
-        string str7 (num-cod.length()+1,'0');
-        int pos = cod.find(".",0);
+        string str7(num - cod.length() + 1, '0');
+        int pos = cod.find(".", 0);
         if (pos > 0) {
-            cod.replace(pos,1,str7.c_str());
-        }// end if
-    }// end if
+            cod.replace(pos, 1, str7.c_str());
+        } // end if
+    } // end if
     return(cod);
 }
 
 
-/** Redondeo de numeros en punto flotante.
-  * \param n Numero a redondear
-  * \param d Numero de decimales
-  * \return Numero redondeado
-  */
+/// Redondeo de numeros en punto flotante.
+/// n = Numero a redondear
+/// d = Numero de decimales
+/// Devuelve numero redondeado
 float fround(float n, unsigned d) {
-    return floor(n*pow(10., d) + .5) / pow (10., d);
-}// end fround
+    return floor(n * pow(10., d) + .5) / pow (10., d);
+}
 
 
-/** Esta funcion convierte un numero con decimales a un entero. Usando la regla
-  * que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.
-  * \param valor Numero a convertir
-  */
+/// Esta funcion convierte un numero con decimales a un entero. Usando la regla
+/// que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.AInteligentesView
+/// valor = Numero a convertir.
 int roundI(double valor) {
     int retorno;
-    double mayor=floor(valor);
-    if ((mayor-valor) >= 0.5)
-        retorno=(int)mayor-1;
+    double mayor = floor(valor);
+    if ((mayor - valor) >= 0.5)
+        retorno = (int)mayor - 1;
     else
-        retorno= (int)mayor;
+        retorno = (int)mayor;
     return retorno;
 }
 
-/** Procesa el string pasado como parametro y devuelve una estructura del tipo QDate
- * Esta funcion extiende la fecha pasada como parametro 
- * QString y devuelve la fecha en formato QDate.
- * \param fechaintro string con la fecha a ser normalizada.
- */
+
+/// Procesa el string pasado como parametro y devuelve una estructura del tipo QDate
+/// Esta funcion extiende la fecha pasada como parametro 
+/// QString y devuelve la fecha en formato QDate.
+/// fechaintro string con la fecha a ser normalizada.
 QDate normalizafecha(QString fechaintro) {
     QDate fecharesult;
     int d, M, y;
     switch(fechaintro.length()) {
-    case 4: // fecha tipo ddMM, sin // y sin a�.
-        d = fechaintro.mid(0,2).toInt();
-        M = fechaintro.mid(2,2).toInt();
+    case 4: /// fecha tipo ddMM
+        d = fechaintro.mid(0, 2).toInt();
+        M = fechaintro.mid(2, 2).toInt();
         y = QDate::currentDate().year();
         break;
-    case 5:// fecha tipo dd/MM
-        d = fechaintro.mid(0,2).toInt();
-        M = fechaintro.mid(3,2).toInt();
+    case 5:/// fecha tipo dd/MM
+        d = fechaintro.mid(0, 2).toInt();
+        M = fechaintro.mid(3, 2).toInt();
         y = QDate::currentDate().year();
         break;
-    case 6: // fecha tipo ddMMyy
-        d = fechaintro.mid(0,2).toInt();
-        M = fechaintro.mid(2,2).toInt();
-        y = 2000 + fechaintro.mid(4,2).toInt();
+    case 6: /// fecha tipo ddMMyy
+        d = fechaintro.mid(0, 2).toInt();
+        M = fechaintro.mid(2, 2).toInt();
+        y = 2000 + fechaintro.mid(4, 2).toInt();
         break;
     case 8:
-        if(fechaintro.contains("/",TRUE) || fechaintro.contains("-",TRUE)) {
-            // fecha tipo  dd/MM/yy o dd-MM-yy
-            d = fechaintro.mid(0,2).toInt();
-            M = fechaintro.mid(3,2).toInt();
-            y = 2000 + fechaintro.mid(6,2).toInt();
+        if(fechaintro.contains("/", TRUE) || fechaintro.contains("-", TRUE)) {
+            /// fecha tipo dd/MM/yy o dd-MM-yy
+            d = fechaintro.mid(0, 2).toInt();
+            M = fechaintro.mid(3, 2).toInt();
+            y = 2000 + fechaintro.mid(6, 2).toInt();
         } else {
-            // o bien tipo ddMMyyyy
+            /// o bien tipo ddMMyyyy
             d = fechaintro.mid(0,2).toInt();
             M = fechaintro.mid(2,2).toInt();
             y = fechaintro.mid(4,4).toInt();
-        }// end if
+        } // end if
         break;
-    case 10: // fecha tipo dd/MM/yyyy
-        d = fechaintro.mid(0,2).toInt();
-        M = fechaintro.mid(3,2).toInt();
-        y = fechaintro.mid(6,4).toInt();
+    case 10: /// fecha tipo dd/MM/yyyy
+        d = fechaintro.mid(0, 2).toInt();
+        M = fechaintro.mid(3, 2).toInt();
+        y = fechaintro.mid(6, 4).toInt();
         break;
     default:
         d = QDate::currentDate().day();
         M = QDate::currentDate().month();
         y = QDate::currentDate().year();
-    }// end switch
-    if (!fecharesult.setYMD(y,M,d))
-        fecharesult=QDate::currentDate();
+    } // end switch
+    if (!fecharesult.setYMD(y, M, d))
+        fecharesult = QDate::currentDate();
     return(fecharesult);
 }
 
 
-/** Esta funcion ajusta el codigo pasado al numero de digitos especificado.
-    Para ello bsca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
-    Lo hace a partir del quinto digito por defecto. Aunque este parametro deberia ser configurable.
-    \param cod string con el codigo actual.
-    \param num1 numero de digitos que debe tener el codigo final.
-    \return devuelve un QString con el codigo ajustado
-    \bug Esta funcion tiene un uso específico de bulmacont y por eso no deberia esta en bulmalib.
-  */
+/// Esta funcion ajusta el codigo pasado al numero de digitos especificado.
+/// Para ello bsca los ceros intermedios y los amplia hasta que el numero de caracteres sea el deseado.
+/// Lo hace a partir del quinto digito por defecto. Aunque este parametro deberia ser configurable.
+/// cod = string con el codigo actual.
+/// num1 = numero de digitos que debe tener el codigo final.
+/// Devuelve un QString con el codigo ajustado.
+
+/// BUG: --- Esta funcion tiene un uso específico de bulmacont y por eso no
+/// deberia esta en bulmalib.
 QString ajustacodigo (QString cad, unsigned int num1) {
-    QString cod=cad;
+    QString cod = cad;
     unsigned int longcad = cad.length();
     if (longcad > 4) {
         if (longcad < num1) {
-            string str7 (num1 -longcad,'0');
+            string str7 (num1 - longcad, '0');
             cod = cad.left(4);
             cod += QString(str7.c_str());
-            cod += cad.right(longcad-4);
-        }// end if
+            cod += cad.right(longcad - 4);
+        } // end if
         if (longcad > num1) {
             cod = cad.left(4);
-            cod += cad.right(num1-4);
-        }// end if
-    }// end if
+            cod += cad.right(num1 - 4);
+        } // end if
+    } // end if
     return(cod);
 }
 
 
-/** Sustituye cadenas en un archivo */
+/// Sustituye cadenas en un archivo.
 void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString archivo2) {
-    QString cadena = " sed -e \"s&"+texto1+"&"+texto2+"&g\"  "+archivo+" > "+archivo2+"";
+    QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
     system (cadena.toAscii().data());
 }
 
 
-
-/// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de la invocacion de trml2pdf
-/// Para evitar trabajo duplicado.
+/// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de
+/// la invocacion de trml2pdf para evitar trabajo duplicado.
 void generaPDF(const QString arch) {
-    _depura("generaPDF"+arch,0);
+    _depura("generaPDF" + arch, 0);
     QDir::setCurrent(confpr->valor(CONF_DIR_USER));
     QString cadsys;
 #ifdef WINDOWS
 
-    cadsys = confpr->valor(CONF_PYTHON)+" "+confpr->valor(CONF_PROGDATA)+"trml2pdf\\trml2pdf.py "+arch+".rml > "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
+    cadsys = confpr->valor(CONF_PYTHON) + " " + confpr->valor(CONF_PROGDATA) + "trml2pdf\\trml2pdf.py " + arch + ".rml > " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
     system (cadsys.ascii());
-    _depura(cadsys,0);
-    cadsys = confpr->valor(CONF_FLIP)+" -u "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
+    _depura(cadsys, 0);
+    cadsys = confpr->valor(CONF_FLIP) + " -u " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
     system (cadsys.ascii());
-    _depura(cadsys,0);
+    _depura(cadsys, 0);
 #else
 
-    cadsys = "trml2pdf.py "+arch+".rml > "+arch+".pdf";
+    cadsys = "trml2pdf.py " + arch + ".rml > " + arch + ".pdf";
     system(cadsys.ascii());
 #endif
 }
 
 
-/** Genera un PDF a partir de un RML usando trml2pdf y además lo muestra con el visor de PDF pasado en la configuracion
-    \param arch archivo RML
-  */
+/// Genera un PDF a partir de un RML usando trml2pdf y además lo muestra con el visor
+/// de PDF pasado en la configuracion.
+/// arch = Archivo RML.
 void invocaPDF(const QString arch) {
     generaPDF(arch);
-    QString cadsys = confpr->valor(CONF_PDF)+" "+confpr->valor(CONF_DIR_USER)+arch+".pdf";
+    QString cadsys = confpr->valor(CONF_PDF) + " " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
     system(cadsys.ascii());
 }
 
@@ -245,83 +247,72 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
     system(cadsys.ascii());
 }
 
-/**
-   \param cad String a presentar como texto de depuracion o como mensaje de error
-   \param nivel 0 = normal
-   \param nivel 1 = Bajo
-   \param nivel 2 = Alto (sale un popup)
-   \param nivel 4 = Comienza depuracion indiscriminada
-   \param nivel 5 = Termina depuracion indiscriminada
-*/
 
+/// cad = String a presentar como texto de depuracion o como mensaje de error.
+/// nivel 0 = normal.
+/// nivel 1 = Bajo.
+/// nivel 2 = Alto (sale un popup).
+/// nivel 4 = Comienza depuracion indiscriminada.
+/// nivel 5 = Termina depuracion indiscriminada.
 #define __DEBUGMODE
-
 // #undef __DEBUGMODE
-
-
 void _depura(QString cad, int nivel, QString param) {
 
 #ifdef __DEBUGMODE
-    static int supnivel=0;
-    static int indice=0;
+    static int supnivel = 0;
+    static int indice = 0;
     static QString mensajesanulados[7000];
 
     if (nivel == 5) {
         supnivel = 0;
-        nivel=2;
+        nivel = 2;
     }
+
     if (nivel ==4) {
         supnivel = 2;
         nivel = 2;
     }
 
     for (int i = 0; i < indice; i++) {
-	if (cad == mensajesanulados[i]) {
-		return;
-	} // end if
+        if (cad == mensajesanulados[i]) {
+            return;
+        } // end if
     } // end for
 
     if (nivel == 0) {
-        if(g_main != NULL) 
+        if(g_main != NULL)
             g_main->statusBar()->message(cad);
-//      fprintf(stderr,"%s\n", (cad+" "+param).toAscii().data());
+        // fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
     } else if (nivel == 1) {
-//        fprintf(stderr,"%s\n",(cad+" "+param).toAscii().data());
+        // fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
     }
 
-    if (nivel == 2 || (supnivel==2 && nivel ==0) ) {
-	fprintf(stderr,"%s\n", (cad+" "+param).toAscii().data());
- 	int err = QMessageBox::question(
-            NULL,
-            "Informacion de depuracion ",
-            cad+" "+param,
-            "&Salir", "&Omitir", 
-            QString::null, 0, 1);
-	if (err == 1) {
-		mensajesanulados[indice++] = cad;
-	} // end if
-    }// end if
-
+    if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
+        fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
+        int err = QMessageBox::question(NULL,
+                                        QApplication::translate("funcaux", "Informacion de depuracion "),
+                                        cad+" "+param,
+                                        QApplication::translate("funcaux", "&Salir"),
+                                        QApplication::translate("funcaux", "&Omitir"),
+                                        QString::null, 0, 1);
+        if (err == 1) {
+            mensajesanulados[indice++] = cad;
+        } // end if
+    } // end if
 #else
-
-    if (nivel == 2 ) {
-        QMessageBox::question(
-            NULL,
-            "Informacion de depuracion ",
-            cad,
-            "&Salir",
-            QString::null, 0);
-    }// end if
-
-
+    if (nivel == 2)
+    {
+        QMessageBox::question(NULL,
+                              QApplication::translate("funcaux", "Informacion de depuracion"),
+                              cad,
+                              QApplication::translate("funcaux", "&Salir"),
+                              QString::null, 0);
+    } // end if
 #endif
-
 }
-
 
 
 void mensajeInfo(QString cad) {
     _depura(cad, 2);
 }
-
 

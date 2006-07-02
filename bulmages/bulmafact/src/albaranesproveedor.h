@@ -22,7 +22,6 @@
 #define ALBARANESPROVEEDOR_H
 
 #include <QLineEdit>
-#include <Q3Table>
 
 #include "company.h"
 #include "busquedaproveedor.h"
