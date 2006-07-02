@@ -21,8 +21,8 @@
 #ifndef LISTCOMPARTICULO_H
 #define LISTCOMPARTICULO_H
 
-#include <QObject>
 #include <Q3PtrList>
+#include <QObject>
 
 #include "company.h"
 #include "comparticulo.h"

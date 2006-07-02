@@ -22,7 +22,6 @@
 #define INVENTARIOVIEW_H
 
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QLabel>
 #include <QCheckBox>
 

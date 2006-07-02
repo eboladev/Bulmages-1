@@ -21,8 +21,6 @@
 #ifndef FACTURASLIST_H
 #define FACTURASLIST_H
 
-#include <Q3Frame>
-
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"

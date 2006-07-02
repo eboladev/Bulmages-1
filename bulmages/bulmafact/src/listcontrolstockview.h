@@ -21,7 +21,6 @@
 #ifndef LISTCONTROLSTOCKVIEW_H
 #define LISTCONTROLSTOCKVIEW_H
 
-#include <Q3Table>
 #include <QEvent>
 
 #include "company.h"

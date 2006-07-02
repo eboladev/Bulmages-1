@@ -21,8 +21,8 @@
 #ifndef EVENTHANDLER_H
 #define EVENTHANDLER_H
 
-#include <QObject>
 #include <Q3Table>
+#include <QObject>
 #include <QEvent>
 
 #define QUANTITY 1

@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
 #include <Q3Table>
+#include <QWidget>
 #include <QLineEdit>
 #include <QKeyEvent>
 #include <QEvent>

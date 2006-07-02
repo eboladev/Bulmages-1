@@ -22,8 +22,6 @@
 #define ALBARANCLIENTE_H
 
 #include <QString>
-#include <Q3Table>
-#include <Q3PtrList>
 
 #include "company.h"
 #include "listlinalbaranclienteview.h"

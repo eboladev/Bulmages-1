@@ -22,8 +22,6 @@
 #define PEDIDOCLIENTE_H
 
 #include <QString>
-#include <Q3Table>
-#include <Q3PtrList>
 
 #include "listlinpedidoclienteview.h"
 #include "listdescpedidoclienteview.h"

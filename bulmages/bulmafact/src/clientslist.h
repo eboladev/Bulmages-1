@@ -21,8 +21,6 @@
 #ifndef clientslist_H
 #define clientslist_H
 
-#include <Q3Frame>
-
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"

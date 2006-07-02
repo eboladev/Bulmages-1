@@ -21,7 +21,6 @@
 #ifndef LISTCOMPARTICULOVIEW_H
 #define LISTCOMPARTICULOVIEW_H
 
-#include <Q3Table>
 #include <QEvent>
 
 #include "comparticulolist.h"

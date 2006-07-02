@@ -22,7 +22,6 @@
 #define BUDGETSLIST_H
 
 #include <QLineEdit>
-#include <Q3Table>
 
 #include "company.h"
 #include "busquedacliente.h"

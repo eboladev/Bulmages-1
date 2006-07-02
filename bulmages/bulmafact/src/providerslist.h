@@ -21,8 +21,6 @@
 #ifndef PROVIDERSLIST_H
 #define PROVIDERSLIST_H
 
-#include <Q3Frame>
-
 #include "pgimportfiles.h"
 #include "subform2bf.h"
 

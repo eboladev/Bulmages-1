@@ -3,50 +3,12 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmafact/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
-
-QT += qt3support
-
-LANGUAGE = C++ 
-
-#DEFINES += REPORTS 
-
-TARGET = ../../installbulmages/bulmafact 
-
-CONFIG += qt debug 
-#CONFIG += release 
-
-LIBS += -rdynamic
-
-TEMPLATE = app 
-
-RESOURCES += ../../bulmages-recursos-graficos.qrc
-
-
-
-
-INCLUDEPATH += ../../bulmalib  \
-	       ../../bulmalib/.ui \
-	       ../../bulmalib/.moc \
-	       /usr/include/qt4 \
-	       /usr/include/qt4/Qt \
-               /usr/include/qt4/QtXml \
-	       /usr/include/Qt \
-	       /usr/include/QtXml \
-               /usr/lib/qt4/include/Qt \
-               /usr/lib/qt4/include/QtXml \
-	       ..
-	       
-	       
-# Estos formularios hay que generarlos de forma manual porque, o se usa FORMS o FORMS3.
-# Mientras se hace la migracion se tiene que hacer: uic about.ui -o ./.ui/about.h
-# etc.
-#
 FORMS += about.ui \
- 	 pagobase.ui \
+         pagobase.ui \
          cobrobase.ui \
- 	 trabajadorbase.ui \
+         trabajadorbase.ui \
          fpagobase.ui \
-	 pagoslistbase.ui \
+         pagoslistbase.ui \
          cobroslistbase.ui \
          articleslistbase.ui \
          articleeditbase.ui \
@@ -56,11 +18,11 @@ FORMS += about.ui \
          clientslistbase.ui \
          albaranclientelistbase.ui \
          facturaslistbase.ui \
-	 pedidosproveedorlistbase.ui \
-	 listprovincias.ui \
+         pedidosproveedorlistbase.ui \
+         listprovincias.ui \
          facturasplistbase.ui \
          albaranesproveedorlistbase.ui \
-	 pedidoproveedorbase.ui \
+         pedidoproveedorbase.ui \
          albaranproveedorbase.ui \
          facturapbase.ui \
          pedidoclientebase.ui \
@@ -70,20 +32,24 @@ FORMS += about.ui \
          busquedaclientebase.ui \
          busquedaarticulobase.ui \
          busquedaproveedorbase.ui \
-	 busquedatipoarticulobase.ui \
+         busquedatipoarticulobase.ui \
          familiasdlg.ui \
          busquedafamiliabase.ui \
-	 listseriefacturabase.ui \
-	 inventariosbase.ui \
-	 inventariobase.ui \
-	 clientebase.ui \
+         listseriefacturabase.ui \
+         inventariosbase.ui \
+         inventariobase.ui \
+         clientebase.ui \
          budgetslistbase.ui \
          bulmafactbase.ui \
-	 listalmacenbase.ui \
-	 listconfiguracionbase.ui \
+         listalmacenbase.ui \
+         listconfiguracionbase.ui \
          budgetbase.ui 
-
-
+TRANSLATIONS += bulmafact_es.ts \
+                bulmafact_ca.ts \
+                bulmafact_en.ts \
+                bulmafact_fr.ts \
+                bulmafact_de.ts \
+                bulmafact_zz.ts 
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
@@ -133,41 +99,40 @@ HEADERS += bulmafact.h \
            facturapview.h \
            listdescpresupuestoview.h \
            listdescpedidoclienteview.h \
-           listdescalbaranclienteview.h  \
-	   listdescfacturaview.h \
-	   informereferencia.h \
-	   trabajadorview.h \
-	   busquedatrabajador.h \
-	   comparticulo.h \
-	   comparticulolist.h \
-	   comparticulolistview.h \
-	   pago.h \
-	   pagoview.h \
-	   pagoslist.h \
-	   pedidosproveedorlist.h \
-	   pedidoproveedor.h \
-	   pedidoproveedorview.h \
-	   listlinpedidoproveedorview.h \
-	   listdescpedidoproveedorview.h \
-	   listseriefacturaview.h \
-	   busquedaseriefactura.h \
-	   listdescalbaranprovview.h \
-	   listdescfacturaprovview.h \
-	   aboutview.h \
-	   busquedaprovincia.h \
-	   listprovinciasview.h \
-	   inventariosview.h \
-	   inventarioview.h \
-	   inventario.h \
-	   listcontrolstockview.h \
-	   cliente.h \
-	   clienteview.h \
-	   articulo.h \
-	   listalmacenview.h \
-	   listconfiguracionview.h \
-	   subform2bf.h
-
-	   
+           listdescalbaranclienteview.h \
+           listdescfacturaview.h \
+           informereferencia.h \
+           trabajadorview.h \
+           busquedatrabajador.h \
+           comparticulo.h \
+           comparticulolist.h \
+           comparticulolistview.h \
+           pago.h \
+           pagoview.h \
+           pagoslist.h \
+           pedidosproveedorlist.h \
+           pedidoproveedor.h \
+           pedidoproveedorview.h \
+           listlinpedidoproveedorview.h \
+           listdescpedidoproveedorview.h \
+           listseriefacturaview.h \
+           busquedaseriefactura.h \
+           listdescalbaranprovview.h \
+           listdescfacturaprovview.h \
+           aboutview.h \
+           busquedaprovincia.h \
+           listprovinciasview.h \
+           inventariosview.h \
+           inventarioview.h \
+           inventario.h \
+           listcontrolstockview.h \
+           cliente.h \
+           clienteview.h \
+           articulo.h \
+           listalmacenview.h \
+           listconfiguracionview.h \
+           subform2bf.h \
+           listlinpresupuesto.h 
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -219,52 +184,61 @@ SOURCES += bulmafact.cpp \
            listdescpresupuestoview.cpp \
            listdescpedidoclienteview.cpp \
            listdescalbaranclienteview.cpp \
-	   listdescfacturaview.cpp \
-	   informereferencia.cpp \
-	   trabajadorview.cpp \
-	   busquedatrabajador.cpp \
-	   comparticulo.cpp \
-	   comparticulolist.cpp \
-	   comparticulolistview.cpp \
-	   pago.cpp \
-	   pagoview.cpp \
-	   pagoslist.cpp \
-	   pedidosproveedorlist.cpp \
-	   pedidoproveedor.cpp \
-	   pedidoproveedorview.cpp \
-	   listlinpedidoproveedorview.cpp \
-	   listdescpedidoproveedorview.cpp \
-	   listseriefacturaview.cpp \
-	   busquedaseriefactura.cpp \
-	   listdescalbaranprovview.cpp \
-	   listdescfacturaprovview.cpp \
-	   aboutview.cpp \
-	   busquedaprovincia.cpp \
-	   listprovinciasview.cpp \
-	   inventariosview.cpp \
-	   inventarioview.cpp \
-	   inventario.cpp \
-	   listcontrolstockview.cpp \
-	   cliente.cpp \
-	   clienteview.cpp \
-	   articulo.cpp \
-	   listalmacenview.cpp \
-	   listconfiguracionview.cpp \
-	   subform2bf.cpp 
-
-TRANSLATIONS += bulmafact_es.ts \
-                bulmafact_ca.ts \
-                bulmafact_en.ts \
-                bulmafact_fr.ts \
-                bulmafact_de.ts \
-		bulmafact_zz.ts
-
+           listdescfacturaview.cpp \
+           informereferencia.cpp \
+           trabajadorview.cpp \
+           busquedatrabajador.cpp \
+           comparticulo.cpp \
+           comparticulolist.cpp \
+           comparticulolistview.cpp \
+           pago.cpp \
+           pagoview.cpp \
+           pagoslist.cpp \
+           pedidosproveedorlist.cpp \
+           pedidoproveedor.cpp \
+           pedidoproveedorview.cpp \
+           listlinpedidoproveedorview.cpp \
+           listdescpedidoproveedorview.cpp \
+           listseriefacturaview.cpp \
+           busquedaseriefactura.cpp \
+           listdescalbaranprovview.cpp \
+           listdescfacturaprovview.cpp \
+           aboutview.cpp \
+           busquedaprovincia.cpp \
+           listprovinciasview.cpp \
+           inventariosview.cpp \
+           inventarioview.cpp \
+           inventario.cpp \
+           listcontrolstockview.cpp \
+           cliente.cpp \
+           clienteview.cpp \
+           articulo.cpp \
+           listalmacenview.cpp \
+           listconfiguracionview.cpp \
+           subform2bf.cpp \
+           listlinpresupuesto.cpp 
+QT += qt3support
+LANGUAGE = C++
+TARGET = ../../installbulmages/bulmafact
+CONFIG += qt debug
+LIBS += -rdynamic
+TEMPLATE = app
+RESOURCES += ../../bulmages-recursos-graficos.qrc
+INCLUDEPATH += ../../bulmalib \
+../../bulmalib/.ui \
+../../bulmalib/.moc \
+/usr/include/qt4 \
+/usr/include/qt4/Qt \
+/usr/include/qt4/QtXml \
+/usr/include/Qt \
+/usr/include/QtXml \
+/usr/lib/qt4/include/Qt \
+/usr/lib/qt4/include/QtXml \
+..
 unix{
-
   TARGETDEPS += ../../installbulmages/libbulmalib.so
   LIBS += -lbulmalib \
-	  -lpq
-
+  -lpq
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
@@ -282,29 +256,19 @@ unix{
   exists(/usr/include/postgresql/pgsql/libpq-fe.h){
     DEFINES += DISTRO_GENTOO
   }
- }
-
+}
 windows{
   DEFINES += WINDOWS
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
-#  LIBS += ../../bulmalib/release/libbulmalib.a \
-
-
   LIBS += ../../bulmalib/release/bulmalib0.dll \
- 	C:\Qt\4.1.0\lib\libQtXml4.a \
-	C:\Qt\4.1.0\lib\libQtXmld4.a
-
+  C:\Qt\4.1.0\lib\libQtXmld4.a
   INCLUDEPATH += ../../bulmalib/libpq \
-                 ../src \
-		 .. \
- 		 C:\Qt\4.1.0\include\QtXml
-
-
+  ../src \
+  .. \
+  C:\Qt\4.1.0\include\QtXml
   INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
   LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
-
-TARGET = ../../../installbulmages/bulmafact 
+  TARGET = ../../../installbulmages/bulmafact
 }
-

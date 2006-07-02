@@ -24,8 +24,6 @@
 #define INVENTARIO_H
 
 #include <QString>
-#include <Q3Table>
-#include <Q3PtrList>
 
 #include "listcontrolstockview.h"
 #include "company.h"

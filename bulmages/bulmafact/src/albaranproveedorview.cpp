@@ -19,14 +19,11 @@
  ***************************************************************************/
 
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QMessageBox>
 #include <QLabel>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QCloseEvent>
 

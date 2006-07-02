@@ -24,8 +24,6 @@
 #define FACTURAP_H
 
 #include <QString>
-#include <Q3Table>
-#include <Q3PtrList>
 
 #include "listlinfacturapview.h"
 #include "company.h"

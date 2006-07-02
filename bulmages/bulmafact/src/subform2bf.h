@@ -21,7 +21,6 @@
 #ifndef SUBFORM2BF_H
 #define SUBFORM2BF_H
 
-#include <Q3Table>
 #include <QEvent>
 
 #include "comparticulolist.h"

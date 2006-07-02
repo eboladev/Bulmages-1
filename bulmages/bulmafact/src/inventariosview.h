@@ -21,8 +21,6 @@
 #ifndef INVENTARIOSVIEW_H
 #define INVENTARIOSVIEW_H
 
-#include <Q3Frame>
-
 #include "company.h"
 #include "subform2bf.h"
 

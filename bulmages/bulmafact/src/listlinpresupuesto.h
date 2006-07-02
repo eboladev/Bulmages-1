@@ -21,56 +21,51 @@
 #ifndef LISTLINPRESUPUESTO_H
 #define LISTLINPRESUPUESTO_H
 
-#include <QObject>
 #include <Q3PtrList>
+#include <QObject>
 
 #include "company.h"
 #include "linpresupuesto.h"
 #include "funcaux.h"
 
 
-class listlinpresupuesto
-{
+class listlinpresupuesto {
 
 public:
-	company *companyact;
-	QString mdb_idpresupuesto;
-	Q3PtrList<linpresupuesto> m_lista;
+    company *companyact;
+    QString mdb_idpresupuesto;
+    Q3PtrList<linpresupuesto> m_lista;
 
 public:
-	listlinpresupuesto(company *comp);
-	listlinpresupuesto();
-	virtual ~listlinpresupuesto();
-	void setcompany(company *c)
-	{
-		_depura("listlinpresupuesto setCompany.", 0);
-		companyact = c;
-		_depura("listlinpresupuesto fin de setCompany.", 0);
-	};
-	void guardalistlinpresupuesto();
-	void vaciar();
-	virtual void pintalistlinpresupuesto()
-	{
-		_depura("Esta funcion aun no ha sido implementada\n", 2);
-	};
-	int chargeBudgetLines(QString);
-	void borrar();
-	void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString);
-	linpresupuesto *linpos(int);
-	float calculabase();
-	float calculaiva();
-	void borralinpresupuesto(int);
-	void setidpresupuesto(QString id)
-	{
-		mdb_idpresupuesto = id;
-		linpresupuesto *linea;
-		uint i = 0;
-		for (linea = m_lista.first(); linea; linea = m_lista.next())
-		{
-			linea->setidpresupuesto(mdb_idpresupuesto);
-			i++;
-		};
-	};
+    listlinpresupuesto(company *comp);
+    listlinpresupuesto();
+    virtual ~listlinpresupuesto();
+    void setcompany(company *c) {
+        _depura("listlinpresupuesto setCompany.", 0);
+        companyact = c;
+        _depura("listlinpresupuesto fin de setCompany.", 0);
+    };
+    void guardalistlinpresupuesto();
+    void vaciar();
+    virtual void pintalistlinpresupuesto() {
+        _depura("Esta funcion aun no ha sido implementada\n", 2);
+    };
+    int chargeBudgetLines(QString);
+    void borrar();
+    void nuevalinea(QString, QString, QString, QString, QString, QString, QString, QString);
+    linpresupuesto *linpos(int);
+    float calculabase();
+    float calculaiva();
+    void borralinpresupuesto(int);
+    void setidpresupuesto(QString id) {
+        mdb_idpresupuesto = id;
+        linpresupuesto *linea;
+        uint i = 0;
+        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+            linea->setidpresupuesto(mdb_idpresupuesto);
+            i++;
+        };
+    };
 };
 
 #endif

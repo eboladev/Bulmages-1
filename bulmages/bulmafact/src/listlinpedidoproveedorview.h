@@ -21,7 +21,6 @@
 #ifndef LISTLINPEDIDOPROVEEDORVIEW_H
 #define LISTLINPEDIDOPROVEEDORVIEW_H
 
-#include <Q3Table>
 #include <QEvent>
 
 #include "company.h"

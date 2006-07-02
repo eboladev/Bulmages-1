@@ -24,8 +24,6 @@
 #define PRESUPUESTO_H
 
 #include <QString>
-#include <Q3Table>
-#include <Q3PtrList>
 
 #include "fixed.h"
 #include "listlinpresupuestoview.h"
