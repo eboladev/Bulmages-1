@@ -292,7 +292,7 @@ void _depura(QString cad, int nivel, QString param) {
         int err = QMessageBox::question(NULL,
                                         QApplication::translate("funcaux", "Informacion de depuracion "),
                                         cad+" "+param,
-                                        QApplication::translate("funcaux", "&Salir"),
+                                        QApplication::translate("funcaux", "&Continuar"),
                                         QApplication::translate("funcaux", "&Omitir"),
                                         QString::null, 0, 1);
         if (err == 1) {
@@ -305,7 +305,7 @@ void _depura(QString cad, int nivel, QString param) {
         QMessageBox::question(NULL,
                               QApplication::translate("funcaux", "Informacion de depuracion"),
                               cad,
-                              QApplication::translate("funcaux", "&Salir"),
+                              QApplication::translate("funcaux", "&Continuar"),
                               QString::null, 0);
     } // end if
 #endif
