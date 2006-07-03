@@ -101,7 +101,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_botonfiltrar" >
+         <widget class="QToolButton" name="mui_filtrar" >
           <property name="toolTip" >
            <string>Filtrar</string>
           </property>
@@ -352,7 +352,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>mui_botonfiltrar</sender>
+   <sender>mui_filtrar</sender>
    <signal>toggled(bool)</signal>
    <receiver>frame</receiver>
    <slot>setShown(bool)</slot>

@@ -105,30 +105,34 @@ int empresa::inicializa1() {
     }// end if
 
     /// Inicializamos los selectores de centros de coste y canales
-    selccostes=new selectccosteview(this,0,"selccostes");
-    selcanales=new selectcanalview(this,0,"selcanales");
+    selccostes=new selectccosteview(this, 0, "selccostes");
+    selcanales=new selectcanalview(this, 0, "selcanales");
 
     /// Inicializamos las ventanas de uso generalizado
-    extracto = new extractoview1(this, 0,"extracto");
+    extracto = new extractoview1(this, 0, "extracto");
     pWorkspace->addWindow(extracto);
-    diario = new DiarioView(this,0,"diario");
+
+    diario = new DiarioView(this, 0, "diario");
     pWorkspace->addWindow(diario);
-    balance = new balanceview(this, 0,"balance");
+
+    balance = new balanceview(this, 0, "balance");
     pWorkspace->addWindow(balance);
 
-    balance1 = new balance1view(this, 0,"balance1");
+    balance1 = new balance1view(this, 0, "balance1");
     pWorkspace->addWindow(balance1);
 
-
-    introapunts2 = new Asiento1View(this, 0,"introapunts2");
+    introapunts2 = new Asiento1View(this, 0, "introapunts2");
     pWorkspace->addWindow(introapunts2);
 
     m_listasientos = new asientosview(this, 0);
     m_listasientos->inicializa();
     pWorkspace->addWindow(m_listasientos);
 
+    m_listcuentas = new listcuentasview1(this, 0, "Cuentas");
+    m_listcuentas->inicializa();
+    pWorkspace->addWindow(m_listcuentas);
 
-    _depura("END empresa::inicializa1",0);
+    _depura("END empresa::inicializa1", 0);
     return(0);
 }
 
@@ -138,7 +142,6 @@ int empresa::inicializa1() {
   */
 void empresa::maximiza() {
     _depura("empresa::maximiza",0);
-//    m_listasientos->showMaximized();
     diario->showMaximized();
     extracto->showMaximized();
     balance1->showMaximized();
@@ -155,16 +158,16 @@ void empresa::init(QString bd) {
 
 
 /** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de clases a partir de dicha inicializaci�.
+  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de clases a partir de dicha inicializacion.
   */
 QString empresa::searchCompany() {
     //El cambio de empresa se realiza desde el selector.
-    _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n",0);
-    abreempresaview *nuevae = new abreempresaview(0,"BulmaCont" );
+    _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n", 0);
+    abreempresaview *nuevae = new abreempresaview(0, "BulmaCont" );
     nuevae->exec();
-    _depura("Vamos a cambiar la empresa \n",0);
+    _depura("Vamos a cambiar la empresa \n", 0);
     QString bd= nuevae->nomDB();
-    _depura("Empresa cambiada a"+bd,0);
+    _depura("Empresa cambiada a"+bd, 0);
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
     if (bd == "")
@@ -177,10 +180,7 @@ QString empresa::searchCompany() {
   * Esta funcion abre la ventana que presenta las cuentas contables
   */
 int empresa::muestracuentas() 	{
-    listcuentasview1 *nuevae = new listcuentasview1(this, 0,"mostracuentas");
-    nuevae->inicializa();
-    pWorkspace->addWindow(nuevae);
-    nuevae->show();
+    m_listcuentas->show();
     return 0;
 }
 
@@ -190,7 +190,7 @@ int empresa::muestracuentas() 	{
   * comboboxes de todo el resto de pantallas para que se actualizen
   */
 int empresa::ccostes() {
-    ccosteview *ccoste = new ccosteview(this, 0,"ccostes", true);
+    ccosteview *ccoste = new ccosteview(this, 0, "ccostes", true);
     ccoste->exec();
     delete ccoste;
     balance->cargacostes();
@@ -204,7 +204,7 @@ int empresa::ccostes() {
   * actualizen.
   */
 int empresa::canales() {
-    canalview *canal = new canalview(this,0,"canales",true);
+    canalview *canal = new canalview(this, 0, "canales", true);
     canal->exec();
     delete canal;
     return 0;
@@ -247,7 +247,7 @@ int empresa::nuevaempresa() {
 }
 
 int empresa::nuevacuenta() {
-    cuentaview * nuevae =new cuentaview(this,0,"nuevacuenta",true);
+    cuentaview * nuevae =new cuentaview(this, 0, "nuevacuenta", true);
     nuevae->exec();
     delete nuevae;
     return 0;
@@ -272,7 +272,7 @@ int empresa::muestraasientos() {
 
 
 int empresa::propiedadempresa() {
-    propiedadesempresa * nuevae = new propiedadesempresa(0,"",true);
+    propiedadesempresa * nuevae = new propiedadesempresa(0, "", true);
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;
@@ -281,7 +281,7 @@ int empresa::propiedadempresa() {
 
 
 int empresa::amortizaciones() {
-    amortizacionesview * amors = new amortizacionesview(this,0,"",true);
+    amortizacionesview * amors = new amortizacionesview(this, 0, "", true);
     amors->exec();
     delete amors;
     return 0;
@@ -293,7 +293,7 @@ int empresa::amortizaciones() {
  * de asientos inteligentes.                                       *
  *******************************************************************/
 int empresa::ainteligentes() {
-    AInteligentesView * nuevae = new AInteligentesView(this, 0,"ainteligentes",true);
+    AInteligentesView * nuevae = new AInteligentesView(this, 0, "ainteligentes", true);
     pWorkspace->addWindow(nuevae);
     nuevae->show();
     return 0;
@@ -306,7 +306,7 @@ int empresa::ainteligentes() {
  * de masas patrimoniales.                                         *
  *******************************************************************/
 int empresa::mpatrimoniales() {
-    mpatrimonialesview * nuevae = new mpatrimonialesview(0,"mpatrimoniales",true);
+    mpatrimonialesview * nuevae = new mpatrimonialesview(0, "mpatrimoniales", true);
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;
@@ -320,7 +320,7 @@ int empresa::mpatrimoniales() {
  *******************************************************************/
 int empresa::compbalance() {
     // Esto es lo m� correcto, lo anterior se llamar�desde esta nueva ventana.
-    balancesview * nueva = new balancesview(this,0,"balances");
+    balancesview * nueva = new balancesview(this, 0, "balances");
     nueva->exec();
     delete nueva;
     return 0;

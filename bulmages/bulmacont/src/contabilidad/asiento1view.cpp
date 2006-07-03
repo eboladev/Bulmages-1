@@ -57,6 +57,8 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
     mui_list->setcompany(m_companyact);
     setListLinAsiento1( mui_list );
 
+    /// Ocultamos los detalles del asiento
+    mui_detalles->toggle();
     /// Hacemos la carga del listado de asientos.
     cargaasientos();
     /// Desplazamos hasta el último asiento.
@@ -100,16 +102,16 @@ void Asiento1View::asientoabiertop() {
     m_descuadre->setEnabled(TRUE);
     mui_abrirasiento->setEnabled(FALSE);
     mui_cerrarasiento->setEnabled(TRUE);
-    botoniva->setEnabled(TRUE);
-    botoninteligente->setEnabled(TRUE);
+    mui_iva->setEnabled(TRUE);
+    mui_inteligente->setEnabled(TRUE);
 
     // Los apuntes deben ser editables
-    for(int fila=0; fila < mui_list->rowCount(); fila++) {
-        for(int columna=0; columna < mui_list->columnCount(); columna++) {
-            mui_list->item(fila,columna)->setFont(QFont("Decorative",-1,-1,false));
+    for(int fila = 0; fila < mui_list->rowCount(); fila++) {
+        for(int columna = 0; columna < mui_list->columnCount(); columna++) {
+            mui_list->item(fila,columna)->setFont(QFont("Decorative", -1, -1, false));
             mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
-        }
-    }
+        } // end for
+    } // end for
 }
 
 /** \brief Pone la pantalla en el modo de asiento cerrado
@@ -119,23 +121,23 @@ void Asiento1View::asientocerradop() {
     _depura("Asiento1View::asientocerradop",0);
     mui_abrirasiento->setEnabled(TRUE);
     mui_cerrarasiento->setEnabled(FALSE);
-    botoniva->setEnabled(FALSE);
-    botoninteligente->setEnabled(TRUE);
+    mui_iva->setEnabled(FALSE);
+    mui_inteligente->setEnabled(TRUE);
 
-    // Los apuntes deben dejar de ser editables (aunque no se graben sus posibles modificaciones por estar en modo CERRADO)
-    for(int fila=0; fila < mui_list->rowCount(); fila++) {
-        for(int columna=0; columna < mui_list->columnCount(); columna++) {
-            mui_list->item(fila,columna)->setFont(QFont("Courier",-1,-1,false));
-            mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled);
-        }
-    }
+    /// Los apuntes deben dejar de ser editables (aunque no se graben sus posibles modificaciones por estar en modo CERRADO)
+    for(int fila = 0; fila < mui_list->rowCount(); fila++) {
+        for(int columna = 0; columna < mui_list->columnCount(); columna++) {
+            mui_list->item(fila, columna)->setFont(QFont("Courier", -1, -1, false));
+            mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
+        } // end for
+    } // end for
 }
 
 /**
  * Esta funcion se activa cuando se pulsa sobre el boton nuevo asiento del
  * formulario
  */
-void Asiento1View::boton_nuevoasiento() {
+void Asiento1View::on_mui_nuevoasiento_clicked() {
     m_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
     iniciar_asiento_nuevo();
 }
@@ -194,7 +196,8 @@ void Asiento1View::on_mui_duplicar_clicked() {
 
 /** Se ha pulsado sobre el botón de generar asientos inteligentes. Se inicializa la clase \ref aplinteligentesview y se muestra ese diálogo para que se opere con los asientos plantilla
 */
-void Asiento1View::boton_inteligente() {
+void Asiento1View::on_mui_inteligente_clicked() {
+    _depura("Asiento1View::on_mui_inteligente_clicked", 0);
     int numasiento;
     if (estadoasiento() != Asiento1::ASCerrado) {
         // El asiento esta abierto y por tanto se muestra como abierto
@@ -207,6 +210,7 @@ void Asiento1View::boton_inteligente() {
     nueva->inicializa(numasiento);
     nueva->exec();
     delete nueva;
+    _depura("END Asiento1View::on_mui_inteligente_clicked", 0);
 }
 
 /**

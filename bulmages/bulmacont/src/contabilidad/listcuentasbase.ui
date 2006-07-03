@@ -100,10 +100,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Cerrar Asiento</string>
+           <string>Editar Cuenta</string>
           </property>
           <property name="whatsThis" >
-           <string>Cerrar Asiento Ctrl + C</string>
+           <string>Editar Cuenta </string>
           </property>
           <property name="text" >
            <string/>
@@ -133,7 +133,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Nuevo Asiento Ctrl+N</string>
+           <string>Nueva Cuenta</string>
           </property>
           <property name="text" >
            <string/>
@@ -163,7 +163,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Borrar Asiento</string>
+           <string>Borrar Cuenta</string>
           </property>
           <property name="text" >
            <string/>
@@ -193,7 +193,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Borrar Asiento</string>
+           <string>Imprimir Cuentas</string>
           </property>
           <property name="text" >
            <string/>
@@ -223,7 +223,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Duplicar Asiento</string>
+           <string>Exportar</string>
           </property>
           <property name="text" >
            <string/>
@@ -250,7 +250,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Cargar Asiento</string>
+           <string>Importar</string>
           </property>
           <property name="text" >
            <string/>
@@ -316,36 +316,15 @@
       <attribute name="title" >
        <string>Plan &amp;Contable</string>
       </attribute>
-      <layout class="QGridLayout" >
+      <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>11</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="0" column="0" >
-        <widget class="Q3ListView" name="ListView1" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="resizePolicy" >
-          <enum>Q3ScrollView::Manual</enum>
-         </property>
-         <property name="allColumnsShowFocus" >
-          <bool>true</bool>
-         </property>
-         <property name="showSortIndicator" >
-          <bool>true</bool>
-         </property>
-         <property name="rootIsDecorated" >
-          <bool>true</bool>
-         </property>
-        </widget>
+       <item>
+        <widget class="QTreeWidget" name="ListView1" />
        </item>
       </layout>
      </widget>
@@ -427,13 +406,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3ListView</class>
-   <extends></extends>
-   <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Table</class>
    <extends></extends>
    <header>q3table.h</header>
@@ -443,7 +415,6 @@
  </customwidgets>
  <tabstops>
   <tabstop>mui_busqueda</tabstop>
-  <tabstop>ListView1</tabstop>
   <tabstop>TabWidget2</tabstop>
   <tabstop>tablacuentas</tabstop>
  </tabstops>
@@ -455,15 +426,15 @@
    <sender>mui_aceptar</sender>
    <signal>clicked()</signal>
    <receiver>ListCuentasBase</receiver>
-   <slot>accept()</slot>
+   <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>607</x>
-     <y>472</y>
+     <x>625</x>
+     <y>469</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>433</x>
-     <y>476</y>
+     <x>659</x>
+     <y>460</y>
     </hint>
    </hints>
   </connection>

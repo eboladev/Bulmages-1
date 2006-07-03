@@ -216,7 +216,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="ToolButton11_2" >
+         <widget class="QToolButton" name="mui_detalles" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -226,7 +226,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Editar Atributos</string>
+           <string>Extender Asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -319,7 +319,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Duplicar Asiento</string>
+           <string>Exportar Asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -346,7 +346,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Cargar Asiento</string>
+           <string>Importar Asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -363,7 +363,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="botoniva" >
+         <widget class="QToolButton" name="mui_iva" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -393,7 +393,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="botoninteligente" >
+         <widget class="QToolButton" name="mui_inteligente" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -1561,9 +1561,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QLineEdit</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <class>ListLinAsiento1View</class>
+   <extends>QTableWidget</extends>
+   <header>listlinasiento1view.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1575,9 +1575,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ListLinAsiento1View</class>
-   <extends>QTableWidget</extends>
-   <header>listlinasiento1view.h</header>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1587,7 +1587,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>ToolButton11_2</sender>
+   <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
    <receiver>frame</receiver>
    <slot>setShown(bool)</slot>

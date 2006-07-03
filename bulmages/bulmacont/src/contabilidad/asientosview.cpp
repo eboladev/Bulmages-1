@@ -35,6 +35,7 @@ asientosview::asientosview(empresa *emp,QWidget *parent) : QWidget(parent) {
         cur->siguienteregistro();
     }// end while
     delete cur;
+    mui_filtrar->toggle();
     m_companyact->meteWindow(caption(), this);
     _depura("END asientosview::asientosview",0);
 }

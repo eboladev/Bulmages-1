@@ -176,25 +176,24 @@ public slots:
         cierraAsiento1();
     };
     virtual void on_mui_guardarasiento_clicked() { prepguardar();guardar();};
-    virtual void on_mui_nuevoasiento_clicked() {boton_nuevoasiento();};
+    virtual void on_mui_nuevoasiento_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();
+    virtual void on_mui_inteligente_clicked();
 
-    virtual void s_lineaValueChanged() {
-        calculaypintatotales(idasiento());
-    };
-
-    virtual void boton_nuevoasiento();
     virtual void eturn_fechaasiento();
 
-    virtual void boton_inteligente();
 
     /** \brief SLOT que responde a la pulsación del botón de iva.
       * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
       * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
       */
-    virtual void boton_iva() {
+    virtual void on_mui_iva_clicked() {
         mui_list->boton_iva();
+    };
+
+    virtual void s_lineaValueChanged() {
+        calculaypintatotales(idasiento());
     };
 
     /** Al pulsar return sobre el número de asiento se procede como si fuese una

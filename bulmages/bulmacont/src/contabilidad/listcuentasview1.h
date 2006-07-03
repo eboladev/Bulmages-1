@@ -92,8 +92,8 @@ private:
     void inicializatabla();
 
 private slots:
-    virtual void on_ListView1_clicked(Q3ListViewItem *);
-    virtual void on_ListView1_doubleClicked(Q3ListViewItem *);
+    virtual void on_ListView1_itemClicked(QTreeWidgetItem *, int);
+    virtual void on_ListView1_itemDoubleClicked(QTreeWidgetItem *, int);
 
 public slots:
     virtual void on_tablacuentas_doubleClicked(int, int, int, const QPoint &);

@@ -68,6 +68,8 @@ private:
     balanceview *balance;
     Asiento1View *introapunts2;
     asientosview *m_listasientos;
+    listcuentasview1 *m_listcuentas;
+
     unsigned int numdigitos;  // El numero de digitos que tienen las cuentas.
 
     // Hay unos selectores generales, que van a ser estos y que indican con que se trabaja, luego
