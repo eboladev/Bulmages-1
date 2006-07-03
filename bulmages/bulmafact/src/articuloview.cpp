@@ -205,9 +205,9 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::END_s_findArticulo()\n", 0);
 }
 
-/** Método de guardar la ficha. Guarda todos los componentes de la ficha. Si todo ha ido bien devuelve 0
-    \note Si hay algún error debe ser tratado con el manejo de execpciones catch.
-*/
+/// Metodo de guardar la ficha. Guarda todos los componentes de la ficha.
+/// Si todo ha ido bien devuelve 0
+/// Si hay algun error debe ser tratado con el manejo de excepciones catch.
 int ArticuloView::guardar() {
     try {
         _depura("ArticuloView::guardar()\n", 0);
