@@ -2,7 +2,7 @@
                           libromayorprint.cpp  -  description
                              -------------------
     begin                : Tue Jan 7 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -90,7 +90,7 @@ void libromayorprint::accept() {
                   saldoinicial = haberinicial-debeinicial;
                }// end if
                fprintf(mifile,"%5.5s %10.10s %10.10s %-40.40s %10.10s %10.10s %10.10s\n","Asiento","Fecha","Asiento","Descripcion","Debe","Haber","Saldo");
-               fprintf(mifile, "                                                 SUMAS ANTERIORES... %10.2f %10.2f %10.2f\n",debeinicial, haberinicial, saldoinicial);
+               fprintf(mifile, "                                                 SUMAS ANTERIORES... %10.2s %10.2s %10.2s\n",debeinicial.toQString().ascii(), haberinicial.toQString().ascii(), saldoinicial.toQString().ascii());
                fprintf(mifile,"---------------------------------------------------------------------------------------------------------\n");
             }// end if
             saldo = saldoinicial;
@@ -109,7 +109,7 @@ void libromayorprint::accept() {
                debefinal = debefinal + debe;
                haberfinal = haberfinal + haber;
                cad = cursoraux1->valor(4).ascii();
-               fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2f %10.2f %10.2f\n",idasiento, cad.substr(1,10).c_str(),textasiento, cursoraux1->valor(5).ascii(),debe.toQString().ascii(),haber.toQString().ascii(),saldo.toQString().ascii());
+               fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2s %10.2s %10.2s\n", idasiento, cad.substr(1,10).c_str(), textasiento, cursoraux1->valor(5).ascii(), debe.toQString().ascii(), haber.toQString().ascii(), saldo.toQString().ascii());
             }// end for
             if (activo) {
                saldofinal = debefinal - haberfinal;
@@ -117,7 +117,7 @@ void libromayorprint::accept() {
                saldofinal = haberfinal -debefinal;
             }// end if
             fprintf(mifile,"                                       -----------------------------------------------------------------\n");
-            fprintf(mifile, "                                                  TOTAL SUBCUENTA... %10.2f %10.2f %10.2f\n",debefinal.toQString().ascii(), haberfinal.toQString().ascii(), saldofinal.toQString().ascii());
+            fprintf(mifile, "                                                  TOTAL SUBCUENTA... %10.2s %10.2s %10.2s\n", debefinal.toQString().ascii(), haberfinal.toQString().ascii(), saldofinal.toQString().ascii());
             cursoraux2->cerrar();
             delete cursoraux2;
          }// end if

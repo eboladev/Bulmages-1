@@ -54,7 +54,9 @@ public:
 
 public slots:
     virtual void on_mui_guardar_clicked() {
-        guardar();
+	try {
+   	     guardar();
+	} catch (...) {}
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_m_codigocompletoarticulo_editingFinished();

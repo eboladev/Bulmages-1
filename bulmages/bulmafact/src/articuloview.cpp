@@ -184,7 +184,6 @@ void ArticuloView::on_mui_borrar_clicked() {
                                   tr("Borrar articulo"),
                                   tr("Esta a punto de borrar un articulo. Desea continuar?"),
                                   tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
-            m_componentes->borrar();
             borrar();
             dialogChanges_cargaInicial();
         } // end if
@@ -206,9 +205,10 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::END_s_findArticulo()\n", 0);
 }
 
-
+/** Método de guardar la ficha. Guarda todos los componentes de la ficha. Si todo ha ido bien devuelve 0
+    \note Si hay algún error debe ser tratado con el manejo de execpciones catch.
+*/
 int ArticuloView::guardar() {
-	int guardarCorrecto = 0;
     try {
         _depura("ArticuloView::guardar()\n", 0);
         setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
@@ -222,7 +222,8 @@ int ArticuloView::guardar() {
         setDBvalue("pvparticulo", m_pvparticulo->text());
         setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentItem()));
 
-        if (Articulo::guardar() !=0 ) guardarCorrecto = -1;
+        if (Articulo::guardar() !=0 )
+            throw -1;
 
         /// Guardamos la imagen, si es que existe.
         if (m_archivoimagen != "") {
@@ -234,30 +235,27 @@ int ArticuloView::guardar() {
 
         /// Guardamos la lista de componentes.
         m_componentes->setColumnValue("idarticulo", DBvalue("idarticulo"));
-        if (m_componentes->guardar() !=0 ) guardarCorrecto = -1;
+        if (m_componentes->guardar() !=0 )
+            throw -1;
 
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_guardar_post", this);
         if (res != 0)
             return res;
 
-        if (guardarCorrecto == 0) {
-			dialogChanges_cargaInicial();
-		}
-		
-        _depura("ArticuloView::guardar()\n", 0);
-        //return 0;
-    } catch (...) {
-        _depura("Hubo un error al guardar el articulo", 2);
-        //return 0;
-    }
+        dialogChanges_cargaInicial();
 
-	if (guardarCorrecto != 0) throw -1;
-	else return 0;
+        _depura("END ArticuloView::guardar()\n", 0);
+        return 0;
+    } catch (...) {
+        mensajeInfo("Hubo un error al guardar el articulo");
+        throw -1;
+    } // end catch
 }
 
 
 int ArticuloView::borrar() {
+    _depura ("ArticuloView::borrar", 0);
     try {
         _depura("ArticuloView::borrar", 0);
         m_companyact->begin();
@@ -272,7 +270,7 @@ int ArticuloView::borrar() {
         _depura("END ArticuloView::borrar", 0);
         return 0;
     } catch (...) {
-        _depura("error en el borrado del articulo", 2);
+        mensajeInfo("Error en el borrado del articulo");
         m_companyact->rollback();
         return 0;
     }
@@ -293,25 +291,29 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 
 
 void ArticuloView::closeEvent( QCloseEvent *e) {
-    _depura("closeEvent", 0);
+    _depura("ArticuloView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar articulo"),
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
-            on_mui_guardar_clicked();
+		try {
+			guardar();
+		} catch (...) {
+			e->ignore();
+		} // end catch
         if (val == 2)
             e->ignore();
     } // end if
+    _depura("END ArticuloView::closeEvent", 0);
 }
 
 
 void ArticuloView::on_mui_aceptar_clicked() {
-	try {
-    	on_mui_guardar_clicked();
-    	close();
-	}
-	catch (...){};
+    try {
+        guardar();
+        close();
+    } catch (...) {}
 }
 
