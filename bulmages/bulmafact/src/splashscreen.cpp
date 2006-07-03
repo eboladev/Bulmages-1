@@ -82,7 +82,7 @@ bool Splash::event(QEvent *evt) {
         close();
     } // end if
 
-    if (evt->type() == QEvent::MouseButtonPress) {
+    if (evt->type() == QEvent::MouseButtonRelease) {
         close();
     } // end if
 
