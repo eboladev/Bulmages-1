@@ -40,7 +40,7 @@
 
 DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) : QWidget(parent,name) {
     setupUi(this);
-
+    _depura("DiarioView::DiarioView\n", 0);
     m_companyact = emp;
     mui_list->setcompany( emp);
     // Iniciamos los componentes de la fecha para que al principio aparezcan
@@ -50,11 +50,15 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) :
     m_fechainicial1->setText(cadena);
     sprintf(cadena,"%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
-
+    m_companyact->meteWindow(caption(), this);
+    _depura("END DiarioView::DiarioView\n", 0);
 }
 
 
 DiarioView::~DiarioView() {
+    _depura("DiarioView::~DiarioView\n", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END DiarioView::~DiarioView\n", 0);
 }
 
 

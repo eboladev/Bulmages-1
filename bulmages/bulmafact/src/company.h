@@ -56,6 +56,8 @@ class TipoArticuloList;
 class company : public postgresiface2 {
 
 private:
+    listventanas *m_listventanas;
+
     ProveedorList *m_providerslist;
     ClientsList *m_clientsList;
     ArticuloList *m_articleslist;
@@ -64,7 +66,6 @@ private:
     FacturasList *m_facturasList;
     PedidosClienteList *m_pedidosclienteList;
     PedidosProveedorList *m_pedidosproveedorList;
-    listventanas *m_listventanas;
     AlbaranesProveedor *m_albaranesproveedor;
     CobrosList *m_cobrosList;
     FacturasProveedorList *m_facturasproveedorlist;

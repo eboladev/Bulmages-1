@@ -51,7 +51,7 @@
   */
 Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  ) : QWidget (parent,name) ,  Asiento1(emp) , ListAsientos(emp) {
     setupUi(this);
-    _depura("Constructor de Asiento1View\n",0);
+    _depura("Asiento1View::Asiento1View\n", 0);
     m_companyact = emp;
 
     mui_list->setcompany(m_companyact);
@@ -61,14 +61,19 @@ Asiento1View::Asiento1View(empresa *emp,QWidget *parent, const char *name, int  
     cargaasientos();
     /// Desplazamos hasta el último asiento.
     boton_fin();
-    _depura("FIN del Constructor de Asiento1View\n",0);
+    m_companyact->meteWindow(caption(), this);
+    _depura("END Asiento1View::Asiento1View\n", 0);
 }
 
 /** \brief Destructor de la clase
   *
   * Destruye los objetos creados y libera la memoria
   */
-Asiento1View::~Asiento1View() {}
+Asiento1View::~Asiento1View() {
+    _depura("Asiento1View::~Asiento1View\n", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END Asiento1View::~Asiento1View\n", 0);
+}
 
 void Asiento1View::calculaypintatotales(QString idasiento) {
     m_totaldebe->setText(totaldebe(idasiento).toQString());
@@ -95,17 +100,16 @@ void Asiento1View::asientoabiertop() {
     m_descuadre->setEnabled(TRUE);
     mui_abrirasiento->setEnabled(FALSE);
     mui_cerrarasiento->setEnabled(TRUE);
-    botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(TRUE);
     botoninteligente->setEnabled(TRUE);
-    
+
     // Los apuntes deben ser editables
-      for(int fila=0; fila < mui_list->rowCount(); fila++){
-	for(int columna=0; columna < mui_list->columnCount(); columna++){
-	    mui_list->item(fila,columna)->setFont(QFont("Decorative",-1,-1,false));
-	    mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
-	}
-    }  
+    for(int fila=0; fila < mui_list->rowCount(); fila++) {
+        for(int columna=0; columna < mui_list->columnCount(); columna++) {
+            mui_list->item(fila,columna)->setFont(QFont("Decorative",-1,-1,false));
+            mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
+        }
+    }
 }
 
 /** \brief Pone la pantalla en el modo de asiento cerrado
@@ -115,16 +119,15 @@ void Asiento1View::asientocerradop() {
     _depura("Asiento1View::asientocerradop",0);
     mui_abrirasiento->setEnabled(TRUE);
     mui_cerrarasiento->setEnabled(FALSE);
-    botonborrarasiento->setEnabled(TRUE);
     botoniva->setEnabled(FALSE);
     botoninteligente->setEnabled(TRUE);
-    
+
     // Los apuntes deben dejar de ser editables (aunque no se graben sus posibles modificaciones por estar en modo CERRADO)
-    for(int fila=0; fila < mui_list->rowCount(); fila++){
-	for(int columna=0; columna < mui_list->columnCount(); columna++){
-	    mui_list->item(fila,columna)->setFont(QFont("Courier",-1,-1,false));
-	    mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled);
-	}
+    for(int fila=0; fila < mui_list->rowCount(); fila++) {
+        for(int columna=0; columna < mui_list->columnCount(); columna++) {
+            mui_list->item(fila,columna)->setFont(QFont("Courier",-1,-1,false));
+            mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled);
+        }
     }
 }
 
@@ -141,15 +144,22 @@ void Asiento1View::boton_nuevoasiento() {
  * Esta función se encarga de hacer las inicializaciones en un asiento nuevo
  */
 void Asiento1View::iniciar_asiento_nuevo() {
-    int idasiento = m_companyact->nuevoasiento(m_fecha->text(), m_fecha->text(),0,1);
-    if (idasiento <= 0) {
-        _depura("No se pudo crear el asiento",2);
+    _depura("Asiento1View::iniciar_asiento_nuevo", 0);
+    try {
+        int idasiento = m_companyact->nuevoasiento(m_fecha->text(), m_fecha->text(),0,1);
+        if (idasiento <= 0) {
+            throw -1;
+        }// end if
+        cargaasientos();
+        muestraasiento(idasiento);
+        abreAsiento1();
+        mui_list->setDBTableName(QString::number(idasiento));
+        _depura("END Asiento1View::iniciar_asiento_nuevo", 0);
         return;
-    }// end if
-    cargaasientos();
-    muestraasiento(idasiento);
-    abreAsiento1();
-    mui_list->setDBTableName(QString::number(idasiento));
+    } catch (...) {
+        mensajeInfo("Asiento no pudo crearse");
+    } // end catch
+
 }
 
 void Asiento1View::eturn_fechaasiento() {
@@ -168,14 +178,16 @@ void Asiento1View::eturn_fechaasiento() {
   * Cuando se ha terminado carga el cursor de presentación y repinta el asiento
   * para que actualize los cambios
   */
-void Asiento1View::boton_duplicarasiento() {
+void Asiento1View::on_mui_duplicar_clicked() {
+    _depura("Asiento1View::on_mui_duplicar_clicked", 0);
     duplicarasientoview *dupli= new duplicarasientoview(m_companyact,0,"",true);
     // Establecemos los parametros para el nuevo asiento a duplicar
-    dupli->inicializa(idasiento(), idasiento());
+    dupli->inicializa(m_ordenasiento->text(), m_ordenasiento->text());
     dupli->exec();
     cargaasientos();
     boton_fin();
     delete dupli;
+    _depura("END Asiento1View::on_mui_duplicar_clicked", 0);
 }
 
 
@@ -223,12 +235,26 @@ void Asiento1View::boton_cargarasiento() {
   * Prepara para guardar.
 */
 void Asiento1View::prepguardar() {
-	setDBvalue("fecha", m_fecha->text());
-	setDBvalue("ordenasiento", m_ordenasiento->text());
-	setDBvalue("comentariosasiento", mui_comentariosAsiento->text());
-	setDBvalue("clase", QString::number(mui_claseAsiento->currentIndex()));
+    setDBvalue("fecha", m_fecha->text());
+    setDBvalue("ordenasiento", m_ordenasiento->text());
+    setDBvalue("comentariosasiento", mui_comentariosAsiento->text());
+    setDBvalue("clase", QString::number(mui_claseAsiento->currentIndex()));
 }
 
+
+void Asiento1View::on_mui_borrar_clicked() {
+    _depura("Asiento1View::on_mui_borrar_clicked", 0);
+    QString idasiento = idasientosiguiente();
+    borraAsiento1();
+    cargaasientos();
+    if (idasiento != "")
+        muestraasiento(idasiento);
+    else {
+        vaciaAsiento1();
+        pintaAsiento1();
+    }// end if
+    _depura("END Asiento1View::on_mui_borrar_clicked", 0);
+}
 
 
 /**************************************************************************************************************************

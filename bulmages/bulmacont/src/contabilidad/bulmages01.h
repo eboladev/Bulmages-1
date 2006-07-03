@@ -46,7 +46,7 @@
 #include "empresa.h"
 #include "bbloqfecha.h"
 #include "configuracion.h"
-
+#include "listventanas.h"
 
 /**
   * This Class is the base class for your application. It sets up the main
@@ -65,6 +65,7 @@ private:
     /** m_pWorkspace is the MDI frame widget that handles MDI child widgets. Inititalized in
       */
     QWorkspace *m_pWorkspace;
+    listventanas *m_list;
 
 public:
     Bulmages01(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel, QString  DB="");

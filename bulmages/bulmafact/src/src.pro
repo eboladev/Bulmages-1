@@ -63,7 +63,6 @@ HEADERS += bulmafact.h \
            EventHandler.h \
            albaranclientelist.h \
            albaranclienteview.h \
-           listventanas.h \
            fpagoview.h \
            familiasview.h \
            tiposarticuloview.h \
@@ -150,7 +149,6 @@ SOURCES += bulmafact.cpp \
            EventHandler.cpp \
            albaranclientelist.cpp \
            albaranclienteview.cpp \
-           listventanas.cpp \
            fpagoview.cpp \
            familiasview.cpp \
            tiposarticuloview.cpp \

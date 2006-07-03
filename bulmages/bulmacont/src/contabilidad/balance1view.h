@@ -54,7 +54,7 @@ class balance1view : public QWidget, public Ui_BalanceTreeBase  {
    Q_OBJECT
 private:
 /// Empresa con la que trabaja la clase.
-  empresa *companyact;
+  empresa *m_companyact;
 /// Indica el número de dígitos que tienen por defecto las cuentas.
   int numdigitos;
   

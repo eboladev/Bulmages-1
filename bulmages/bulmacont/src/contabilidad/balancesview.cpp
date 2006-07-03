@@ -29,13 +29,18 @@
 #define COL_NOMBRE 1
 
 balancesview::balancesview(empresa *emp, QWidget *parent, const char *name ) : balancesdlg(parent,name) {
-    empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
+    m_companyact = emp;
     m_modo = 0;
     inicializatabla();
-}// end balancesview
+    m_companyact->meteWindow(caption(), this);
+}
 
-balancesview::~balancesview() {}
+
+balancesview::~balancesview() {
+    _depura("balancesview::~balancesview\n", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END balancesview::~balancesview\n", 0);
+}
 
 
 void balancesview::inicializatabla()  {
@@ -47,9 +52,9 @@ void balancesview::inicializatabla()  {
     listado->hideColumn(0);
     listado->setColumnWidth(1,400);
     string query = "SELECT * FROM balance";
-    conexionbase->begin();
-    cursor2 *cursoraux1=conexionbase->cargacursor(query.c_str(),"elquery");
-    conexionbase->commit();
+    m_companyact->begin();
+    cursor2 *cursoraux1=m_companyact->cargacursor(query.c_str(),"elquery");
+    m_companyact->commit();
     listado->setNumRows(cursoraux1->numregistros());
     int i=0;
     while (!cursoraux1->eof()) {
@@ -67,16 +72,16 @@ void balancesview::nuevo() {
     QString query;
     // Insertamos el balance en su sitio
     query.sprintf("INSERT INTO balance (nombrebalance) VALUES ('Nuevo Balance')");
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
+    m_companyact->begin();
+    m_companyact->ejecuta(query);
+    m_companyact->commit();
     // Cogemos el identificador del balance insertado y abrimos la ventana de edici� de balances.
     query.sprintf("SELECT max(idbalance) AS idbalance FROM balance");
-    conexionbase->begin();
-    cursor2 *cursoraux = conexionbase->cargacursor(query, "cursor1");
-    conexionbase->commit();
+    m_companyact->begin();
+    cursor2 *cursoraux = m_companyact->cargacursor(query, "cursor1");
+    m_companyact->commit();
 
-    compbalanceview * nuevae = new compbalanceview(empresaactual,this,"compbalance");
+    compbalanceview * nuevae = new compbalanceview(m_companyact,this,"compbalance");
     nuevae->inicializa1(cursoraux->valor("idbalance").ascii());
     nuevae->exec();
     delete nuevae;
@@ -91,16 +96,16 @@ void balancesview::borrar() {
     // Borramos primero todas las compbalance y luego la entrada en balance.
     QString idbalance = listado->text(listado->currentRow(), COL_CODIGO);
     QString query;
-    conexionbase->begin();
+    m_companyact->begin();
     query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial IN (SELECT idmpatrimonial FROM mpatrimonial WHERE idbalance = %s)",idbalance.ascii());
-    conexionbase->ejecuta(query.ascii());
+    m_companyact->ejecuta(query.ascii());
     query.sprintf("DELETE FROM mpatrimonial WHERE idbalance = %s",idbalance.ascii());
-    conexionbase->ejecuta(query);
+    m_companyact->ejecuta(query);
     query.sprintf("DELETE FROM compbalance WHERE idbalance=%s", idbalance.ascii());
-    conexionbase->ejecuta(query.ascii());
+    m_companyact->ejecuta(query.ascii());
     query.sprintf("DELETE FROM balance WHERE idbalance=%s",idbalance.ascii());
-    conexionbase->ejecuta(query);
-    conexionbase->commit();
+    m_companyact->ejecuta(query);
+    m_companyact->commit();
     inicializatabla();
 }// end borrar
 
@@ -113,7 +118,7 @@ void balancesview::s_abrirBalance() {
         QString idbalance = listado->text(row,COL_CODIGO);
         if (idbalance != "") {
             // Creamos el objeto mpatrimonialview, y lo lanzamos.
-            compbalanceview *bal=new compbalanceview(empresaactual,this,0);
+            compbalanceview *bal=new compbalanceview(m_companyact,this,0);
             bal->inicializa1(idbalance);
             bal->exec();
             delete bal;
@@ -135,7 +140,7 @@ void balancesview::dbtabla(int , int , int ,const QPoint &) {
 void balancesview::imprimir() {
     QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
     fprintf(stderr,"Balance print\n");
-    balancesprintview *b = new balancesprintview(empresaactual,0,0);
+    balancesprintview *b = new balancesprintview(m_companyact,0,0);
     b->setidbalance(idbalance);
     b->exec();
     delete b;
@@ -152,9 +157,9 @@ void balancesview::boton_exportar() {
         if (mifile != NULL) {
             QString SQlQuery;
             SQlQuery.sprintf("SELECT * FROM balance WHERE idbalance=%s", idbalance.ascii());
-            conexionbase->begin();
-            cursor2 *cursp = conexionbase->cargacursor(SQlQuery,"balance");
-            conexionbase->commit();
+            m_companyact->begin();
+            cursor2 *cursp = m_companyact->cargacursor(SQlQuery,"balance");
+            m_companyact->commit();
             fprintf(mifile,"<?xml version=\"1.0\"?>\n");
             fprintf(mifile,"<DOCUMENT>\n");
             while (!cursp->eof()) {
@@ -163,9 +168,9 @@ void balancesview::boton_exportar() {
                 // ----------------------
                 QString SQlQuery;
                 SQlQuery.sprintf("SELECT * FROM mpatrimonial WHERE idbalance=%s", idbalance.ascii());
-                conexionbase->begin();
-                cursor2 *cursp5 = conexionbase->cargacursor(SQlQuery,"balance5");
-                conexionbase->commit();
+                m_companyact->begin();
+                cursor2 *cursp5 = m_companyact->cargacursor(SQlQuery,"balance5");
+                m_companyact->commit();
                 while (!cursp5->eof()) {
                     fprintf(mifile,"      <mpatrimonial>\n");
                     fprintf(mifile,"         <idmasa>%s</idmasa>\n", XMLProtect(cursp5->valor("idmpatrimonial")).ascii());
@@ -178,9 +183,9 @@ void balancesview::boton_exportar() {
                     fprintf(mifile,"         <opdesc>%s</opdesc>\n", XMLProtect(cursp5->valor("opdesc")).ascii());
                     QString SQlQuery1;
                     SQlQuery1.sprintf("SELECT * FROM compmasap LEFT JOIN cuenta ON cuenta.idcuenta=compmasap.idcuenta WHERE masaperteneciente=%s", cursp5->valor("idmpatrimonial").ascii());
-                    conexionbase->begin();
-                    cursor2 *cursp6 = conexionbase->cargacursor(SQlQuery1,"compabalance6");
-                    conexionbase->commit();
+                    m_companyact->begin();
+                    cursor2 *cursp6 = m_companyact->cargacursor(SQlQuery1,"compabalance6");
+                    m_companyact->commit();
                     while (!cursp6->eof()) {
                         fprintf(mifile,"         <compmasap>\n");
                         fprintf(mifile,"            <masaperteneciente>%s</masaperteneciente>\n", XMLProtect(cursp6->valor("masaperteneciente")).ascii());
@@ -201,9 +206,9 @@ void balancesview::boton_exportar() {
                 // --------------
                 QString SQlQuery1;
                 SQlQuery1.sprintf("SELECT * FROM compbalance WHERE idbalance=%s", idbalance.ascii());
-                conexionbase->begin();
-                cursor2 *cursp1 = conexionbase->cargacursor(SQlQuery1,"compabalance");
-                conexionbase->commit();
+                m_companyact->begin();
+                cursor2 *cursp1 = m_companyact->cargacursor(SQlQuery1,"compabalance");
+                m_companyact->commit();
                 while (!cursp1->eof()) {
                     fprintf(mifile,"      <compbalance>\n");
                     fprintf(mifile,"         <idmpatrimonial>%s</idmpatrimonial>\n", XMLProtect(cursp1->valor("idmpatrimonial")).ascii());
@@ -234,7 +239,7 @@ void balancesview::boton_importar() {
         QXmlInputSource source( &xmlFile ); // Declaramos el inputsource, con el fichero como par�etro
         QXmlSimpleReader reader;            // Declaramos el lector
 
-        importbalance * handler = new importbalance( empresaactual );
+        importbalance * handler = new importbalance( m_companyact );
         reader.setContentHandler( handler );
         reader.parse( source );
         handler->cambiapaso();

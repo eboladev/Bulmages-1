@@ -37,9 +37,7 @@ class balancesview : public balancesdlg  {
    Q_OBJECT
 private:
 /// Empresa con la que se trabaja (inicializada con el constructor de clase)
-   empresa *empresaactual;
-/// Base de datos con la que trabaja toda la clase (Inicializada con el constructor de clase)
-   postgresiface2 *conexionbase;
+   empresa *m_companyact;
 /// Esta variable indica si se abre para busqueda o para edici�.  (edici� =0; seleccion = 1 )  
    int m_modo;
 /// Indica el nombre del balance seleccionado

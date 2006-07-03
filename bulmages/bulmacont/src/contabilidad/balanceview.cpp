@@ -82,9 +82,15 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int  ) : Q
     m_fechafinal1->setText(cadena);
     // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
     cargacostes();
-}// end balanceview
 
-balanceview::~balanceview() {}
+    companyact->meteWindow( caption(), this);
+}
+
+balanceview::~balanceview() {
+	_depura("balanceview::~balanceview", 0);
+	companyact->sacaWindow(this);
+	_depura("END balanceview::~balanceview", 0);
+}
 
 
 

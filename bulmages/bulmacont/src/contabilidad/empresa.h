@@ -31,6 +31,8 @@
 #include "bmodelo347.h"
 #include "postgresiface2.h"
 #include "log.h"
+#include "listventanas.h"
+
 
 class selectccosteview;
 class selectcanalview;
@@ -53,6 +55,8 @@ class asientosview;
  */
 class empresa  : public postgresiface2 {
 private:
+    listventanas *m_listventanas;
+
     QString nombre;
     int ano;
     QString contrasenya;
@@ -117,7 +121,19 @@ public:
 
     void setWorkspace(QWorkspace *qw) {
         pWorkspace=qw;
-    }
+    };
+
+    void setListVentanas(listventanas *doc) {
+        m_listventanas = doc;
+    };
+
+    int meteWindow(QString nom, QObject *obj) {
+        return m_listventanas->meteWindow(nom, obj);
+    };
+
+    void sacaWindow(QObject *nom) {
+        m_listventanas->sacaWindow(nom);
+    };
 
     int muestracuentas();
     int nuevacuenta();

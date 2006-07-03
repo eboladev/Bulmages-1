@@ -26,11 +26,9 @@
 #include <QVBoxLayout>
 
 #include "listventanas.h"
-#include "bulmafact.h"
 #include "funcaux.h"
 
 
-extern bulmafact *bges;
 using namespace std;
 
 

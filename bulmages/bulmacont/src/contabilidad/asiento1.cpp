@@ -179,6 +179,8 @@ int Asiento1::guardar() {
 
         /// Disparamos los plugins con presupuesto_imprimirPresupuesto
         int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
+	if (res != 0 )
+		return 0;
         _depura("END Asiento1::guardar",0);
 
         if (estadoAsiento1() == ASCerrado)

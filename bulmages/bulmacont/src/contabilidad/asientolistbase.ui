@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Form</string>
+   <string>Listado de Asientos</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_asiento.xpm</iconset>
@@ -71,6 +71,9 @@
         </property>
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -78,10 +81,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
@@ -98,7 +101,13 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_botonfiltrar_2" >
+         <widget class="QToolButton" name="mui_botonfiltrar" >
+          <property name="toolTip" >
+           <string>Filtrar</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Filtrar</string>
+          </property>
           <property name="text" >
            <string/>
           </property>
@@ -128,10 +137,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Configurar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Configurar</string>
           </property>
           <property name="text" >
            <string/>
@@ -162,10 +171,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Actualizar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Actualizar</string>
           </property>
           <property name="text" >
            <string/>
@@ -324,17 +333,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>AsientoListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>asientolistsubform.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>AsientoListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>asientolistsubform.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
@@ -343,7 +352,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>mui_botonfiltrar_2</sender>
+   <sender>mui_botonfiltrar</sender>
    <signal>toggled(bool)</signal>
    <receiver>frame</receiver>
    <slot>setShown(bool)</slot>

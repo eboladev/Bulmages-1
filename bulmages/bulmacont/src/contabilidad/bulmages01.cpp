@@ -53,6 +53,15 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     setCentralWidget(m_pWorkspace);
     m_empresaactual->setWorkspace(m_pWorkspace);
 
+
+    /// Aqui creamos la ventana dock para meter las distintas ventanas.
+    m_list = new listventanas(0);
+
+    addDockWidget(Qt::LeftDockWidgetArea, m_list);
+
+
+    m_empresaactual->setListVentanas(m_list);
+
     m_empresaactual->inicializa1();
     showMaximized();
 

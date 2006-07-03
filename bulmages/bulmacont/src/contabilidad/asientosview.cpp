@@ -19,7 +19,7 @@
 #include "empresa.h"
 
 
-/** El constructor de la clase inicializa algunas estructuras y configura la visi�
+/** El constructor de la clase inicializa algunas estructuras y configura la vision
   * de la pantalla.
   */
 asientosview::asientosview(empresa *emp,QWidget *parent) : QWidget(parent) {
@@ -35,11 +35,17 @@ asientosview::asientosview(empresa *emp,QWidget *parent) : QWidget(parent) {
         cur->siguienteregistro();
     }// end while
     delete cur;
+    m_companyact->meteWindow(caption(), this);
     _depura("END asientosview::asientosview",0);
 }
 
 
-asientosview::~asientosview() {}
+asientosview::~asientosview() {
+    _depura("asientosview::~asientosview\n", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END asientosview::~asientosview\n", 0);
+}
+
 
 void asientosview::on_mui_list_cellDoubleClicked(int, int) {
     _depura("asientosview::on_mui_list_cellDoubleClicked",0);

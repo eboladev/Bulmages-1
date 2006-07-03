@@ -13,10 +13,10 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Balance de Cuentas</string>
+   <string>Balance Jerarquico de Cuentas</string>
   </property>
   <property name="windowIcon" >
-   <iconset/>
+   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_arbolBalance.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -1621,16 +1621,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaCuenta</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedacuenta.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaCuenta</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedacuenta.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

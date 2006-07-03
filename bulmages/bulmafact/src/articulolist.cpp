@@ -49,7 +49,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     presenta();
     m_modo = editmodo;
     if (m_modo == EditMode)
-        comp->meteWindow(tr("Articulos"), this);
+        comp->meteWindow(caption(), this);
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
 }

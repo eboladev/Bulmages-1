@@ -30,7 +30,8 @@ HEADERS += postgresiface2.h \
 	   busquedaperiodo.h \
 	   dbrecord.h \
 	   subform.h \
-	   subform3.h
+	   subform3.h \
+	   listventanas.h
 	   
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
@@ -51,7 +52,8 @@ SOURCES += postgresiface2.cpp \
 	   busquedaperiodo.cpp \
 	   dbrecord.cpp \
 	   subform.cpp \
-	   subform3.cpp
+	   subform3.cpp \
+	   listventanas.cpp
 
 TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \

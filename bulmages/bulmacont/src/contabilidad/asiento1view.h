@@ -177,7 +177,8 @@ public slots:
     };
     virtual void on_mui_guardarasiento_clicked() { prepguardar();guardar();};
     virtual void on_mui_nuevoasiento_clicked() {boton_nuevoasiento();};
-
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_duplicar_clicked();
 
     virtual void s_lineaValueChanged() {
         calculaypintatotales(idasiento());
@@ -185,19 +186,9 @@ public slots:
 
     virtual void boton_nuevoasiento();
     virtual void eturn_fechaasiento();
-    virtual void boton_borrar_asiento() {
-        QString idasiento = idasientosiguiente();
-        borraAsiento1();
-        cargaasientos();
-        if (idasiento != "")
-            muestraasiento(idasiento);
-        else {
-            vaciaAsiento1();
-            pintaAsiento1();
-        }// end if
-    };
-    virtual void boton_duplicarasiento();
+
     virtual void boton_inteligente();
+
     /** \brief SLOT que responde a la pulsación del botón de iva.
       * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se presente con los datos ya introducidos.
       * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
