@@ -21,9 +21,8 @@
 
 #include "postgresiface2.h"
 #include "ui_listcuentasbase.h"
-
 #include "pgimportfiles.h"
-//Added by qt3to4:
+
 #include <QEvent>
 
 /** @author Tomeu Borrás Riera
@@ -46,7 +45,7 @@ private:
     /// La base de datos con la que se trabaja
     postgresiface2 *conexionbase;
     /// La empresa que ha construido todo el tema.
-    empresa *m_companyact;
+    empresa *empresaactual;
     int ccuenta,cdesccuenta;
     int cidcuenta, cbloqueada, cnodebe, cnohaber, cregularizacion, cimputacion, ctipocuenta;
     /// Indice para la QListView de la columna que indica el debe actual de la cuenta

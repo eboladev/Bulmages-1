@@ -14,12 +14,15 @@
  *                                                                         *
  ***************************************************************************/
 #include "listcuentasview1.h"
+#include "funcaux.h"
+#include "cuentaview.h"
+#include "empresa.h"
 
-#include <q3listview.h>
-//Added by qt3to4:
+#include <stdlib.h>
+#include <QMap>
 #include <QPixmap>
 #include <QKeyEvent>
-#include <QEvent>
+#include <QFileDialog>
 
 // Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -28,32 +31,20 @@
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
 
-#include "funcaux.h"
-#include "cuentaview.h"
-#include "empresa.h"
-
-#include <stdlib.h>
-#include <qmessagebox.h>
-#include <qlineedit.h>
-#include <qcheckbox.h>
-#include <q3table.h>
-#include <qstring.h>
-#include <qmap.h>
-
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode) : QWidget(parent,name, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
-    m_companyact = emp;
+    empresaactual = emp;
     m_modo = editmode;
     conexionbase= emp->bdempresa();
 
 
     /// Para el listado de  columnas hacemos una inicializacion
     QStringList headers;
-    headers << "codigo cuenta" << "nombre cuenta" << "debe" << "haber" << "id cuenta" << "bloqueada" << "nodebe" << "nohaber" << "regularizacion" << "imputacion" << "grupo" "tipo cuenta";
-
+    headers << "codigo cuenta" << "nombre cuenta" << "debe" << "haber" << "id cuenta" << "bloqueada" << "nodebe" << "nohaber" << "regularizacion" << "imputacion" << "grupo" << "tipo cuenta";
     ListView1->setHeaderLabels(headers);
+
     /*
         mui_listcolumnas->setColumnCount(4);
         mui_listcolumnas->setHorizontalHeaderLabels (headers);
@@ -79,17 +70,20 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     cgrupo = 10;
     ctipocuenta = 11;
 
-    tablacuentas->setNumCols(3);
+    tablacuentas->setColumnCount(3);
+    headers << "CODIGO" << "NOMBRE";
+    tablacuentas->setHorizontalHeaderLabels(headers);
+/*
     tablacuentas->horizontalHeader()->setLabel( 0, tr( "CODIGO" ) );
     tablacuentas->horizontalHeader()->setLabel( 1, tr( "NOMBRE" ) );
-
+*/
     tablacuentas->hideColumn(2);
     tablacuentas->setColumnWidth(1,400);
     tablacuentas->setColumnWidth(0,100);
 
     installEventFilter(this);
     if (m_modo == EditMode)
-        m_companyact->meteWindow( caption(), this);
+        empresaactual->meteWindow( caption(), this);
     _depura("END listcuentasview1::listcuentasview1", 0);
 
 }
@@ -97,7 +91,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
 listcuentasview1::~listcuentasview1() {
     _depura("listcuentasview1::~listcuentasview1", 0);
     if (m_modo == EditMode)
-        m_companyact->sacaWindow(this);
+        empresaactual->sacaWindow(this);
     _depura("END listcuentasview1::~listcuentasview1", 0);
 }
 
@@ -130,37 +124,33 @@ bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
  * Se llama asi y no desde el constructor pq asi la podemos llamar desde dentro
  * de la misma clase, etc etc etc
  */
-int listcuentasview1::inicializa( ) {
-    QTreeWidgetItem * it;
+int listcuentasview1::inicializa( ) { 
+    QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int idcuenta;
     int padre;
-    int idcuenta1;
     ListView1->clear();
 
     /// Cargamos y pintamos las cuentas hijas.
-    /// OJO AQUI, Hay que crear la restricción pertinente en la base de datos para hacer el campo padre NOT NULL y además hay que borrar este update que hace perder eficiencia.
-    conexionbase->ejecuta("UPDATE cuenta SET padre=0 WHERE padre IS NULL");
-    cursor2 *ctas = conexionbase->cargacursor("SELECT * FROM cuenta ORDER BY padre");
+    cursor2 *ctas = conexionbase->cargacursor("SELECT * FROM cuenta ORDER BY codigo");
     if (ctas->eof()) {
-        _depura("El query está vacio\n", 0);
+        _depura("El query esta vacio\n", 0);
     } else {
         fprintf(stderr,"El query tiene registros \n");
     }// end if
     while (!ctas->eof()) {
-        fprintf(stderr,"Cuentas de subnivel:%d\n",padre);
-        padre = ctas->valor("padre").toInt();
-        idcuenta1 = ctas->valor("idcuenta").toInt();
-        if (padre != 0) {
-            it = new QTreeWidgetItem(Lista1[padre]);
-            Lista1[idcuenta1]=it;
+        idcuenta = ctas->valor("idcuenta").toInt();
+	padre = ctas->valor("padre").toInt();
+        if (padre == 0) {
+	    it = new QTreeWidgetItem(ListView1);
+            Lista1[idcuenta] = it;
         } else {
-            it =new QTreeWidgetItem(ListView1);
-            Lista1[idcuenta1]=it;
+	    fprintf(stderr,"Cuentas de subnivel: %d\n",padre);
+            it = new QTreeWidgetItem(Lista1[padre]);
+            Lista1[idcuenta] = it;
         }// end if
         it->setText(ccuenta,ctas->valor("codigo"));
         it->setText(cdesccuenta, ctas->valor("descripcion"));
-        idcuenta = atoi(ctas->valor("idcuenta").ascii());
         it->setText(cidcuenta,ctas->valor("idcuenta"));
         it->setText(cbloqueada,ctas->valor("bloqueada"));
         it->setText(cnodebe,ctas->valor("nodebe"));
@@ -181,14 +171,13 @@ int listcuentasview1::inicializa( ) {
             it->setIcon(ccuenta, QPixmap(cingresos));
         else if (ctas->valor("tipocuenta") == "5")
             it->setIcon(ccuenta, QPixmap(cgastos));
-        //        it->setOpen(true);
         ListView1->setItemExpanded(it, TRUE);
         ctas->siguienteregistro();
     }// end while
     delete ctas;
 
-    /// Cargamos el número de digitos de cuenta para poder hacer una introducción de números de cuenta más práctica.
-    numdigitos = m_companyact->numdigitosempresa();
+    /// Cargamos el numero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
+    numdigitos = empresaactual->numdigitosempresa();
 
     inicializatabla();
     return(0);
@@ -200,16 +189,34 @@ int listcuentasview1::inicializa( ) {
   */
 void listcuentasview1::inicializatabla()  {
     QString query;
-    query = "SELECT * FROM cuenta ORDER BY padre";
+    query = "SELECT * FROM cuenta ORDER BY codigo";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query);
-    tablacuentas->setNumRows(cursoraux1->numregistros());
+    tablacuentas->setRowCount(cursoraux1->numregistros());
     int i=0;
+    QTableWidgetItem *dato;
     while (!cursoraux1->eof()) {
-        tablacuentas->setText(i,0,cursoraux1->valor("codigo"));
-        tablacuentas->setText(i,1,cursoraux1->valor("descripcion"));
-        tablacuentas->setText(i,2,cursoraux1->valor("idcuenta"));
+	dato = new QTableWidgetItem(cursoraux1->valor("codigo"));
+	dato->setFlags(Qt::ItemIsEnabled);
+	/// Ponemos los iconos.
+        if (cursoraux1->valor("tipocuenta") == "1")
+            dato->setIcon(QPixmap(cactivo));
+        else if (cursoraux1->valor("tipocuenta") == "2")
+            dato->setIcon(QPixmap(cpasivo));
+        else if (cursoraux1->valor("tipocuenta") == "3")
+            dato->setIcon(QPixmap(cneto));
+        else if (cursoraux1->valor("tipocuenta") == "4")
+            dato->setIcon(QPixmap(cingresos));
+        else if (cursoraux1->valor("tipocuenta") == "5")
+            dato->setIcon(QPixmap(cgastos));
+        tablacuentas->setItem(i, 0, dato);
+	dato = new QTableWidgetItem(cursoraux1->valor("descripcion"));
+	dato->setFlags(Qt::ItemIsEnabled);
+        tablacuentas->setItem(i, 1, dato);
+	dato->setFlags(Qt::ItemIsEnabled);
+	dato = new QTableWidgetItem(cursoraux1->valor("idcuenta"));
+        tablacuentas->setItem(i, 2, dato);
 
-
+	/*
         /// Ponemos los iconos.
         if (cursoraux1->valor("tipocuenta") == "1")
             tablacuentas->setPixmap(i,0, QPixmap(cactivo));
@@ -221,7 +228,8 @@ void listcuentasview1::inicializatabla()  {
             tablacuentas->setPixmap(i,0, QPixmap(cingresos));
         else if (cursoraux1->valor("tipocuenta") == "5")
             tablacuentas->setPixmap(i,0, QPixmap(cgastos));
-
+	    */
+	
         QString codigo = cursoraux1->valor("codigo");
         if ((unsigned int)codigo.length() != numdigitos) {
             tablacuentas->hideRow(i);
@@ -230,7 +238,8 @@ void listcuentasview1::inicializatabla()  {
         i++;
     }// end while
     delete cursoraux1;
-    tablacuentas->setReadOnly(TRUE);
+    delete dato;
+//    tablacuentas->setReadOnly(TRUE);
 }
 
 /**
@@ -243,12 +252,12 @@ void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
     QString idcuenta = it->text(cidcuenta);
     QString cad;
     int i;
-    for (i=0;i< tablacuentas->numRows();i++) {
-        cad= tablacuentas->text(i,2);
+    for (i=0;i< tablacuentas->rowCount();i++) {
+        cad = tablacuentas->item(i,2)->text();
         if (cad == idcuenta) {
             fprintf(stderr,"Lo he encontrado\n");
             tablacuentas->setCurrentCell(i,2);
-            tablacuentas->ensureCellVisible(i,2);
+            tablacuentas->scrollToItem(tablacuentas->item(i,2), QAbstractItemView::EnsureVisible);
         }// end if
     }// end for
 }
@@ -288,10 +297,16 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
-        cuentaview *nuevae = m_companyact->newcuentaview();
+        cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
         nuevae->cargacuenta(atoi(idcuenta().ascii()));
-	m_companyact->pWorkspace()->addWindow(nuevae);
-	nuevae->show();
+//        nuevae->exec();
+        inicializa();
+        delete nuevae;
+        // Para no perder el foco del elemento, al mismo tiempo que se
+        // actualizan los cambios luego buscamos y enfocamos el item
+        ///        it = ListView1->findItem(mdb_idcuenta, cidcuenta, Q3ListView::ExactMatch);
+        ///        ListView1->setCurrentItem(it);
+        ///        ListView1->ensureItemVisible(it);
     } else {
         emit(selected(mdb_idcuenta));
     }// end if
@@ -310,17 +325,27 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
 void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
     QString cadena, codigo;
-    int  idgrupo=0;
+    int idcuenta, idgrupo=0;
     QTreeWidgetItem *it;
-    cuentaview *nuevae = m_companyact->newcuentaview();
 
+    cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
     codigo = it->text(ccuenta);
     cadena = it->text(cgrupo);
     idgrupo = cadena.toInt();
     nuevae->nuevacuenta(codigo,idgrupo);
-    m_companyact->pWorkspace()->addWindow(nuevae);
-    nuevae->show();
+
+//    nuevae->exec();
+
+    inicializa();
+    idcuenta = nuevae->idcuenta;
+    cadena.setNum(idcuenta);
+    /// Para no perder el foco del elemento, al mismo tiempo que se
+    /// actualizan los cambios luego buscamos y enfocamos el item
+    //    it = ListView1->findItem(cadena, cidcuenta, Q3ListView::ExactMatch);
+    //    ListView1->setCurrentItem(it);
+    //    ListView1->ensureItemVisible(it);
+    delete nuevae;
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
 }
 
@@ -340,10 +365,16 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    cuentaview *nuevae = m_companyact->newcuentaview();
+    cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
     nuevae->cargacuenta(atoi(idcuenta().ascii()));
-    m_companyact->pWorkspace()->addWindow(nuevae);
-    nuevae->show();
+//    nuevae->exec();
+    inicializa();
+    /// Para no perder el foco del elemento, al mismo tiempo que se
+    /// actualizan los cambios luego buscamos y enfocamos el item
+    //    it = ListView1->findItem(mdb_idcuenta, cidcuenta, Q3ListView::ExactMatch);
+    //    ListView1->setCurrentItem(it);
+    //    ListView1->ensureItemVisible(it);
+    delete nuevae;
 }
 
 /**
@@ -386,7 +417,7 @@ void listcuentasview1::on_mui_borrar_clicked()  {
   */
 void listcuentasview1::on_tablacuentas_doubleClicked(int row, int , int ,const QPoint &) {
     _depura("listcuentasview1::on_tablacuentas_doubleClicked", 0);
-    QString idcuenta = tablacuentas->text(row,2);
+    QString idcuenta = tablacuentas->item(row,2)->text();
     QList <QTreeWidgetItem *> it;
     it = ListView1->findItems(idcuenta, Qt::MatchExactly, cidcuenta);
     ListView1->setCurrentItem(it.first());
@@ -395,9 +426,9 @@ void listcuentasview1::on_tablacuentas_doubleClicked(int row, int , int ,const Q
 }
 
 
-/** \brief Cuando se pulsa el Return sobre la bsqueda de cuentas
+/** \brief Cuando se pulsa el Return sobre la busqueda de cuentas
   * 
-  * Actua como si fuese una doble pulsación con el ratón sobre la tabla de cuentas.
+  * Actua como si fuese una doble pulsacion con el raton sobre la tabla de cuentas.
   */
 void listcuentasview1::on_mui_busqueda_editFinished() {
     QTreeWidgetItem *it = ListView1->currentItem();
@@ -424,8 +455,8 @@ void listcuentasview1::on_mui_imprimir_clicked() {
 }
 
 
-void listcuentasview1::on_mui_exportar_clicked() {
-    QFile filexml (Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
+void listcuentasview1::on_mui_exportar_clicked() {   
+    QFile filexml (QFileDialog::getSaveFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmages2XML(filexml, IMPORT_CUENTAS);
         filexml.close();
@@ -435,7 +466,7 @@ void listcuentasview1::on_mui_exportar_clicked() {
 }
 
 void listcuentasview1::on_mui_importar_clicked() {
-    QFile filexml (Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),"Plan Contable (*.xml)", this, "select file", "Elija el Archivo"));
+    QFile filexml (QFileDialog::getOpenFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2Bulmages(filexml, IMPORT_CUENTAS);
         filexml.close();
