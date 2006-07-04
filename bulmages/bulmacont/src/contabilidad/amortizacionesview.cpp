@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borrás                                    *
+ *   Copyright (C) 2003 by Tomeu Borrï¿½                                    *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -25,88 +25,90 @@
 #define COL_CODIGO 0
 #define COL_NOMBRE 1
 
-amortizacionesview::amortizacionesview(empresa *emp,QWidget *parent, const char *name, bool flag ) : amortizacionesdlg(parent,name,flag) {
-   empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
-   inicializatabla();
-   modo = 0;
-}// end amortizacionesview
+amortizacionesview::amortizacionesview(empresa *emp,QWidget *parent, const char *name ) : QWidget(parent, name, Qt::WDestructiveClose) {
+    setupUi(this);
+    m_companyact = emp;
+    inicializatabla();
+    modo = 0;
+    m_companyact->meteWindow( caption(), this);
+}
+
 
 
 amortizacionesview::~amortizacionesview() {
-}// end ~amortizacionesview
+   m_companyact->sacaWindow(this);
+}
+
 
 
 void amortizacionesview::inicializatabla()  {
-  listado->setNumRows(0);
-  listado->setNumCols(2);
-  listado->horizontalHeader()->setLabel( COL_CODIGO, tr( "CODIGO" ) );
-  listado->horizontalHeader()->setLabel( COL_NOMBRE, tr( "Nombre Bien Amortizado" ) );
-  listado->hideColumn(2);
-  listado->hideColumn(0);
-  listado->setColumnWidth(1,400);
-  string query = "SELECT * FROM amortizacion ORDER BY nomamortizacion";
-  conexionbase->begin();
-  cursor2 *cursoraux1=conexionbase->cargacursor(query.c_str(),"elquery");
-  conexionbase->commit();
-  listado->setNumRows(cursoraux1->numregistros());
-  int i=0;
-   while (!cursoraux1->eof()) {
-      listado->setText(i,COL_CODIGO, cursoraux1->valor("idamortizacion"));
-      listado->setText(i,COL_NOMBRE, cursoraux1->valor("nomamortizacion"));
-      cursoraux1->siguienteregistro ();
-      i++;
-   }// end while
-   delete cursoraux1;
-   listado->setReadOnly(TRUE);
-}// end inicializatabla
 
 
-void amortizacionesview::dbtabla(int row, int colummn, int button,const QPoint &mouse) {
-  fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
-  // Dependiendo del modo hacemos una cosa u otra
-  if (modo == 0) {
-     idamortizacion = listado->text(row,COL_CODIGO);
-     // Creamos el objeto mpatrimonialview, y lo lanzamos.
-     amortizacionview *amor=new amortizacionview(empresaactual, 0,"", true);
-     amor->inicializa(idamortizacion);
-     amor->exec();
-     delete amor;
-     // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
-     inicializatabla();
-   } else {
-      idamortizacion = listado->text(listado->currentRow(),COL_CODIGO);
-      nomamortizacion = listado->text(listado->currentRow(),COL_NOMBRE);
-      close();
-   }// end if
-   
-   // Para quitar el warning
-   colummn=button=0;
-   mouse.isNull();
-}// end dbtabla
+    /// Para el listado de  columnas hacemos una inicializacion
+    QStringList headers;
+    headers << "codigo cuenta" << "nombre cuenta" << "debe" << "haber" << "id cuenta" << "bloqueada" << "nodebe" << "nohaber" << "regularizacion" << "imputacion" << "grupo" "tipo cuenta";
 
-void amortizacionesview::nuevo() {
-  amortizacionview *amor=new amortizacionview(empresaactual, 0,"", true);
-     amor->exec();
-     delete amor;
-     // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
-     inicializatabla();
-}// end nuevo   
+    listado->setHorizontalHeaderLabels(headers);
 
-// Esta función se encarga de borrar una amortización
-// La que está seleccionada en el listado.
-void amortizacionesview::borrar() {
-   QString codigo = listado->text(listado->currentRow(),COL_CODIGO);
-   if (codigo != "") {
-      QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
-      conexionbase->begin();
-      conexionbase->ejecuta(query);
-      conexionbase->commit();
-      query = "DELETE FROM amortizacion WHERE idamortizacion="+codigo;
-      conexionbase->begin();
-      conexionbase->ejecuta(query);
-      conexionbase->commit();
-      inicializatabla();
-   }// end if
-}// end borrar
+    listado->setColumnCount(5);
+
+    string query = "SELECT * FROM amortizacion ORDER BY nomamortizacion";
+    cursor2 *cursoraux1=m_companyact->cargacursor(query.c_str(),"elquery");
+    listado->setRowCount(cursoraux1->numregistros());
+    int i=0;
+    while (!cursoraux1->eof()) {
+        QTableWidgetItem *it = new QTableWidgetItem(cursoraux1->valor("idamortizacion"));
+        listado->setItem(i, COL_CODIGO, it);
+        it = new QTableWidgetItem(cursoraux1->valor("nomamortizacion"));
+        listado->setItem(i, COL_NOMBRE, it);
+        cursoraux1->siguienteregistro ();
+        i++;
+    }// end while
+    delete cursoraux1;
+}
+
+
+void amortizacionesview::on_listado_cellDoubleClicked(int row, int ) {
+    fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
+    // Dependiendo del modo hacemos una cosa u otra
+    if (modo == 0) {
+        idamortizacion = listado->item(row,COL_CODIGO)->text();
+        // Creamos el objeto mpatrimonialview, y lo lanzamos.
+        amortizacionview *amor=new amortizacionview(m_companyact, 0,"", true);
+        amor->inicializa(idamortizacion);
+        amor->exec();
+        delete amor;
+        // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
+        inicializatabla();
+    } else {
+        idamortizacion = listado->item(listado->currentRow(),COL_CODIGO)->text();
+        nomamortizacion = listado->item(listado->currentRow(),COL_NOMBRE)->text();
+        close();
+    }// end if
+}
+
+void amortizacionesview::on_mui_crear_clicked() {
+    amortizacionview *amor=new amortizacionview(m_companyact, 0,"", true);
+    amor->exec();
+    delete amor;
+    // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
+    inicializatabla();
+}
+
+// Esta funciï¿½ se encarga de borrar una amortizaciï¿½
+// La que estï¿½seleccionada en el listado.
+void amortizacionesview::on_mui_borrar_clicked() {
+    QString codigo = listado->item(listado->currentRow(),COL_CODIGO)->text();
+    if (codigo != "") {
+        QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
+        m_companyact->begin();
+        m_companyact->ejecuta(query);
+        m_companyact->commit();
+        query = "DELETE FROM amortizacion WHERE idamortizacion="+codigo;
+        m_companyact->begin();
+        m_companyact->ejecuta(query);
+        m_companyact->commit();
+        inicializatabla();
+    }// end if
+}
 

@@ -17,7 +17,7 @@
 #include "cuentaview.h"
 #include "empresa.h"
 
-cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl): QDialog(parent,name,fl) ,dialogChanges(this) {
+cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int ): QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this) {
     setupUi(this);
     idcuenta=0;
     empresaactual = emp;
@@ -25,7 +25,8 @@ cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int fl):
     numdigitos = emp->numdigitosempresa();
     inicializa();
     dialogChanges_cargaInicial();
-}// end cuentaview
+    empresaactual->meteWindow(caption(), this);
+}
 
 
 /** Saca el formulario, crea una cuenta y devuelve su identificador
@@ -99,11 +100,13 @@ void cuentaview::cuentanueva(QString cod) {
         combogrupos->setCurrentItem(i);
         delete cur;
     }// end if
-}// end cuentanueva
+}
 
 
 cuentaview::~cuentaview() {
-}// end ~cuentaview
+
+	empresaactual->sacaWindow(this);
+}
 
 
 /*********************************************************************
@@ -137,19 +140,27 @@ void cuentaview::cambiapadre(const QString &cadena) {
  * Lo que hace es recoger los datos del formulario y hacer una insercion
  * o una modificacion de la tabla de cuentas.
  */
-void cuentaview::done(int r) {
+void cuentaview::closeEvent( QCloseEvent *e) {
+    _depura("cuentaview::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning( this, "Guardar Cuenta",
-                                   "Desea guardar los cambios.",
-                                   "Si","No" ,0
-                                   ) ;
-	if (val == 0) {
-            saveAccount();
-	}
-    }// end if
-    // Liberamos memoria y terminamos.
-    QDialog::done(r);
-}// end accept
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar Cuenta"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        if (val == 0)
+		try {
+			saveAccount();
+		} catch (...) {
+			e->ignore();
+		} // end catch
+        if (val == 2)
+            e->ignore();
+    } // end if
+    _depura("END cuentaview::closeEvent", 0);
+}
+
+
+
 
 
 int cuentaview::inicializa() {
@@ -179,6 +190,12 @@ int cuentaview::cargacuenta(int idcuenta1) {
     cursorcuenta = conexionbase->cargacuenta(idcuenta1);
     conexionbase->commit();
     codigo->setText(cursorcuenta->valor("codigo"));
+
+    /// Cambiamos el título de la ventana con el codigo
+    setCaption(tr("Cuenta")+codigo->text());
+    empresaactual->meteWindow( caption(), this);
+
+
     descripcion->setText(cursorcuenta->valor("descripcion"));
     debe->setText(cursorcuenta->valor("debe"));
     haber->setText(cursorcuenta->valor("haber"));
@@ -415,7 +432,7 @@ void cuentaview::saveAccount() {
 
     // Estamos probando la nueva forma de almacenar cambios
     dialogChanges_cargaInicial();
-}// end saveAccount
+}
 
 void cuentaview::deleteAccount() {
     switch( QMessageBox::warning( this, "Borrar Cuenta",
@@ -427,12 +444,12 @@ void cuentaview::deleteAccount() {
                                   QMessageBox::Cancel )) {
     case QMessageBox::Ok: // Retry clicked or Enter pressed
         conexionbase->ejecuta("DELETE FROM cuenta WHERE idcuenta ="+QString::number(idcuenta));
-        done(1);
+        close();
         break;
     case QMessageBox::Cancel: // Abort clicked or Escape pressed
         break;
     }// end switch
-}// end deleteAccount
+}
 
 
 

@@ -47,7 +47,8 @@ FORMS += bulmacontbase.ui \
 	 ainteligentesbase.ui \
 	 cuentabase.ui \
 	 listcuentasbase.ui \
-	 aboutbase.ui
+	 aboutbase.ui \
+	 amortizacionesbase.ui
 
 FORMS3 += uiselector.ui \
 #         about.ui \
@@ -72,7 +73,7 @@ FORMS3 += uiselector.ui \
          duplicaasientodlg.ui \
          amortizaciondlg.ui \
          uimodelo347.ui \
-         amortizacionesdlg.ui \
+#         amortizacionesdlg.ui \
          uivisorempresas.ui \
          uibloqfecha.ui \
          selectccostedlg.ui \

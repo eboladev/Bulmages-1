@@ -13,9 +13,8 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#include <q3popupmenu.h>
+
 #include <qlineedit.h>
-#include <q3listview.h>
 #include <qtoolbutton.h>
 #include <qpushbutton.h>
 #include <QHBoxLayout>
@@ -33,16 +32,6 @@
 #include "listlinasiento1view.h"
 #include "empresa.h"
 
-
-
-/*
-/// Usar esta macro es peligroso ya que el cursor puede estar vacio.
-/// es preferible usar la función idAsiento() que hace la comprobación.
-#define IDASIENTO cursorasientos->valor("idasiento").ascii()
-#define QS_IDASIENTO cursorasientos->valor("idasiento")
-#define ORDENASIENTO cursorasientos->valor("ordenasiento").ascii()
-#define ROWACTUAL tapunts3->currentRow()
-*/
 
 /** \brief Constructor de la clase, inicializa los componentes
   * \param emp empresa que llama al objeto 
@@ -78,27 +67,29 @@ Asiento1View::~Asiento1View() {
 }
 
 void Asiento1View::calculaypintatotales(QString idasiento) {
+    _depura("Asiento1View::calculaypintatotales", 0);
     m_totaldebe->setText(totaldebe(idasiento).toQString());
     m_totalhaber->setText(totalhaber(idasiento).toQString());
     Fixed desc = totaldebe(idasiento) - totalhaber(idasiento);
     m_descuadre->setText(desc.toQString());
+    _depura("END Asiento1View::calculaypintatotales", 0);
 }
 
 void Asiento1View::trataestadoAsiento1() {
-    _depura("Asiento1View::trataestadoAsiento1",0);
+    _depura("Asiento1View::trataestadoAsiento1", 0);
     if (estadoAsiento1() == ASCerrado) {
         asientocerradop();
     } else {
         asientoabiertop();
     }// end if
-    _depura("END Asiento1View::trataestadoAsiento1",0);
+    _depura("END Asiento1View::trataestadoAsiento1", 0);
 }
 
 /** \brief Pone la pantalla en el modo de asiento abierto
   * Activa los botones de cierre y pone los elementos como estan configurados
   */
 void Asiento1View::asientoabiertop() {
-    _depura("Asiento1View::asientoabiertop",0);
+    _depura("Asiento1View::asientoabiertop", 0);
     m_descuadre->setEnabled(TRUE);
     mui_abrirasiento->setEnabled(FALSE);
     mui_cerrarasiento->setEnabled(TRUE);
@@ -112,13 +103,14 @@ void Asiento1View::asientoabiertop() {
             mui_list->item(fila,columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
         } // end for
     } // end for
+    _depura("END Asiento1View::asientoabiertop", 0);
 }
 
 /** \brief Pone la pantalla en el modo de asiento cerrado
   * Activa los botones de apertura y pone los elementos como estan configurados
   */
 void Asiento1View::asientocerradop() {
-    _depura("Asiento1View::asientocerradop",0);
+    _depura("Asiento1View::asientocerradop", 0);
     mui_abrirasiento->setEnabled(TRUE);
     mui_cerrarasiento->setEnabled(FALSE);
     mui_iva->setEnabled(FALSE);
@@ -131,6 +123,7 @@ void Asiento1View::asientocerradop() {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
         } // end for
     } // end for
+    _depura("END Asiento1View::asientocerradop", 0);
 }
 
 /**
@@ -138,8 +131,10 @@ void Asiento1View::asientocerradop() {
  * formulario
  */
 void Asiento1View::on_mui_nuevoasiento_clicked() {
+    _depura("Asiento1View::on_mui_nuevoasiento_clicked" ,0);
     m_fecha->setText(QDate::currentDate().toString("dd/MM/yyyy"));
     iniciar_asiento_nuevo();
+    _depura("END Asiento1View::on_mui_nuevoasiento_clicked" ,0);
 }
 
 /**
@@ -149,9 +144,8 @@ void Asiento1View::iniciar_asiento_nuevo() {
     _depura("Asiento1View::iniciar_asiento_nuevo", 0);
     try {
         int idasiento = m_companyact->nuevoasiento(m_fecha->text(), m_fecha->text(),0,1);
-        if (idasiento <= 0) {
+        if (idasiento <= 0)
             throw -1;
-        }// end if
         cargaasientos();
         muestraasiento(idasiento);
         abreAsiento1();
@@ -165,6 +159,7 @@ void Asiento1View::iniciar_asiento_nuevo() {
 }
 
 void Asiento1View::eturn_fechaasiento() {
+    _depura("Asiento1View::eturn_fechaasiento", 0);
     QString query;
     if (estadoAsiento1() != Asiento1::ASCerrado) { //cambiar la fecha del asiento
         setDBvalue("fecha",m_fecha->text());
@@ -172,6 +167,7 @@ void Asiento1View::eturn_fechaasiento() {
     } else {
         iniciar_asiento_nuevo();
     }
+    _depura("END Asiento1View::eturn_fechaasiento", 0);
 }
 
 /** \brief Se ha pulsado sobre el botón de duplicar asiento
@@ -239,10 +235,12 @@ void Asiento1View::boton_cargarasiento() {
   * Prepara para guardar.
 */
 void Asiento1View::prepguardar() {
+    _depura("Asiento1View::prepguardar", 0);
     setDBvalue("fecha", m_fecha->text());
     setDBvalue("ordenasiento", m_ordenasiento->text());
     setDBvalue("comentariosasiento", mui_comentariosAsiento->text());
     setDBvalue("clase", QString::number(mui_claseAsiento->currentIndex()));
+    _depura("END Asiento1View::prepguardar", 0);
 }
 
 
@@ -267,18 +265,22 @@ void Asiento1View::on_mui_borrar_clicked() {
 ***************************************************************************************************************************/
 
 ListAsientos::ListAsientos(empresa *emp) {
+    _depura("ListAsientos::ListAsientos", 0);
     m_companyact = emp;
     cursorasientos = NULL;
     /// Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien desde esta ventana.
     filt = new filtrarasientosview(m_companyact,0,"");
+    _depura("END ListAsientos::ListAsientos", 0);
 
 }
 
 ListAsientos::~ListAsientos() {
+    _depura("ListAsientos::~ListAsientos", 0);
     delete filt;
     if (cursorasientos != NULL ) {
         delete cursorasientos;
     }// end if
+    _depura("END ListAsientos::~ListAsientos", 0);
 }
 
 /** \brief Prepara el cursor que sirve para recorrer los asientos uno a uno.
@@ -353,7 +355,7 @@ void ListAsientos::cargaasientos() {
         QMessageBox::warning(0, "No existe asiento", "No existe ningun asiento para mostrar.", "Cerrar",0,0,0);
         return;
     }// end if
-    _depura("End cargaasientos\n",0);
+    _depura("End ListAsientos::cargaasientos\n",0);
 }// end cargaasientos
 
 /** \brief Slot que responde a la pulsación del botón de inicio
@@ -362,10 +364,12 @@ void ListAsientos::cargaasientos() {
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
   */
 void ListAsientos::boton_inicio() {
+    _depura("ListAsientos::boton_inicio", 0);
     if (cursorasientos->numregistros() != 0) {
         cursorasientos->primerregistro();
         pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
+    _depura("END ListAsientos::boton_inicio", 0);
 }
 
 
@@ -375,10 +379,12 @@ void ListAsientos::boton_inicio() {
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
   */
 void ListAsientos::boton_fin() {
+    _depura("ListAsientos::boton_fin", 0);
     if (cursorasientos->numregistros() != 0 ) {
         cursorasientos->ultimoregistro();
         pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
+    _depura("END ListAsientos::boton_fin", 0);
 }
 
 /** \brief Slot que responde a la pulsación del botón de siguiente registro
@@ -387,6 +393,7 @@ void ListAsientos::boton_fin() {
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
   */
 void ListAsientos::boton_siguiente() {
+    _depura("ListAsientos::boton_siguiente", 0);
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
     if (cursorasientos->numregistros() == 0) {
         return;
@@ -395,6 +402,7 @@ void ListAsientos::boton_siguiente() {
         cursorasientos->siguienteregistro();
         pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
+    _depura("END ListAsientos::boton_siguiente", 0);
 }
 
 /** \brief Slot que responde a la pulsación del botón de anterior registro
@@ -403,6 +411,7 @@ void ListAsientos::boton_siguiente() {
   * En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura.
   */
 void ListAsientos::boton_anterior() {
+    _depura("ListAsientos::boton_anterior", 0);
     ///  Si no hay nada que mostrar vacia la pantalla para que no queden resto.
     if (cursorasientos->numregistros() == 0) {
         return;
@@ -411,14 +420,15 @@ void ListAsientos::boton_anterior() {
         cursorasientos->registroanterior();
         pintaasiento(cursorasientos->valor("idasiento"));
     }// end if
+    _depura("END ListAsientos::boton_anterior", 0);
 }
 
 
 void ListAsientos::situarasiento(QString numasiento) {
-    _depura("ListAsientos::situarasiento "+numasiento,0);
+    _depura("ListAsientos::situarasiento ", 0, numasiento);
     cursorasientos->primerregistro();
     while (cursorasientos->valor("idasiento") != numasiento && !cursorasientos->esultimoregistro())
         cursorasientos->siguienteregistro();
-    _depura("END ListAsientos::situarasiento",0);
+    _depura("END ListAsientos::situarasiento", 0, numasiento);
 }
 

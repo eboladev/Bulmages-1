@@ -37,7 +37,7 @@
 class empresa;
 
 
-class cuentaview : public QDialog, public Ui_CuentaBase , dialogChanges  {
+class cuentaview : public QWidget, public Ui_CuentaBase , dialogChanges  {
 Q_OBJECT
 public:
 empresa *empresaactual;
@@ -54,10 +54,9 @@ public:
   void cuentanueva(QString);
   int cargacuenta(int);
   void cambiapadre( const QString &);  
-  
+  void closeEvent( QCloseEvent *);
 public slots:
   virtual void codigo_ret();
-  virtual void done(int);
   virtual void saveAccount();
   virtual void deleteAccount();
 };

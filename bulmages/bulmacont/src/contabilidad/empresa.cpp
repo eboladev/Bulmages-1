@@ -17,23 +17,23 @@
 #include "empresa.h"
 #include "abreempresaview.h"
 #include "listcuentasview1.h"
-#include "cuentaview.h"
+#include "asiento1view.h"
 #include "asientosview.h"
+#include "ainteligentesview.h"
+#include "amortizacionesview.h"
 #include "balancesview.h"
-#include "mpatrimonialesview.h"
+#include "balance1view.h"
+#include "cuentaview.h"
 #include "canalview.h"
 #include "ccosteview.h"
-#include "ainteligentesview.h"
+#include "mpatrimonialesview.h"
 #include "propiedadesempresa.h"
 #include "cambiactaview.h"
-#include "amortizacionesview.h"
 #include "tipoivaview.h"
 #include "fpagoview.h"
-#include "balance1view.h"
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 #include "plugins.h"
-#include "asiento1view.h"
 
 #include <qobject.h>
 #ifndef WIN32
@@ -110,27 +110,27 @@ int empresa::inicializa1() {
 
     /// Inicializamos las ventanas de uso generalizado
     extracto = new extractoview1(this, 0, "extracto");
-    pWorkspace->addWindow(extracto);
+    m_pWorkspace->addWindow(extracto);
 
     diario = new DiarioView(this, 0, "diario");
-    pWorkspace->addWindow(diario);
+    m_pWorkspace->addWindow(diario);
 
     balance = new balanceview(this, 0, "balance");
-    pWorkspace->addWindow(balance);
+    m_pWorkspace->addWindow(balance);
 
     balance1 = new balance1view(this, 0, "balance1");
-    pWorkspace->addWindow(balance1);
+    m_pWorkspace->addWindow(balance1);
 
     introapunts2 = new Asiento1View(this, 0, "introapunts2");
-    pWorkspace->addWindow(introapunts2);
+    m_pWorkspace->addWindow(introapunts2);
 
     m_listasientos = new asientosview(this, 0);
     m_listasientos->inicializa();
-    pWorkspace->addWindow(m_listasientos);
+    m_pWorkspace->addWindow(m_listasientos);
 
     m_listcuentas = new listcuentasview1(this, 0, "Cuentas");
     m_listcuentas->inicializa();
-    pWorkspace->addWindow(m_listcuentas);
+    m_pWorkspace->addWindow(m_listcuentas);
 
     _depura("END empresa::inicializa1", 0);
     return(0);
@@ -246,10 +246,17 @@ int empresa::nuevaempresa() {
     return 0;
 }
 
+
+/** \brief Crea la ventana de edicion de cuentas y devuelve un puntero a esta*/
+cuentaview* empresa::newcuentaview() {
+	cuentaview * nuevae =new cuentaview(this, 0, "nuevacuenta", true);
+	return nuevae;
+}
+
 int empresa::nuevacuenta() {
-    cuentaview * nuevae =new cuentaview(this, 0, "nuevacuenta", true);
-    nuevae->exec();
-    delete nuevae;
+    cuentaview * nuevae = newcuentaview();
+    m_pWorkspace->addWindow(nuevae);
+    nuevae->show();
     return 0;
 }
 
@@ -281,9 +288,9 @@ int empresa::propiedadempresa() {
 
 
 int empresa::amortizaciones() {
-    amortizacionesview * amors = new amortizacionesview(this, 0, "", true);
-    amors->exec();
-    delete amors;
+    amortizacionesview * amors = new amortizacionesview(this, 0, "");
+    m_pWorkspace->addWindow(amors);
+    amors->show();
     return 0;
 }
 
@@ -294,7 +301,7 @@ int empresa::amortizaciones() {
  *******************************************************************/
 int empresa::ainteligentes() {
     AInteligentesView * nuevae = new AInteligentesView(this, 0, "ainteligentes", true);
-    pWorkspace->addWindow(nuevae);
+    m_pWorkspace->addWindow(nuevae);
     nuevae->show();
     return 0;
 }
@@ -336,7 +343,7 @@ int empresa::libromayor() {
 
 int empresa::boton_siguiente() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
     if (widget == extracto) {
         extracto->boton_siguiente();
     } else if (widget == introapunts2) {
@@ -348,7 +355,7 @@ int empresa::boton_siguiente() {
 
 int empresa::boton_anterior() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
 
 
     if (widget == extracto) {
@@ -362,7 +369,7 @@ int empresa::boton_anterior() {
 
 int empresa::boton_guardar() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
     if (widget == diario) {
         diario->boton_guardar();
     } else {
@@ -372,7 +379,7 @@ int empresa::boton_guardar() {
 }
 
 int empresa::boton_imprimir() {
-    QWidget *widget = pWorkspace->activeWindow ();
+    QWidget *widget = m_pWorkspace->activeWindow ();
 
     if (widget == diario) {
         diario->boton_imprimir();
@@ -388,7 +395,7 @@ int empresa::boton_imprimir() {
 
 int empresa::boton_reload() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
 
     if (widget == diario) {
         diario->accept();
@@ -404,7 +411,7 @@ int empresa::boton_reload() {
 
 int empresa::boton_primero() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
 
 
     if (widget == introapunts2) {
@@ -418,7 +425,7 @@ int empresa::boton_primero() {
 
 int empresa::boton_ultimo() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
 
     if (widget == introapunts2) {
         introapunts2->boton_fin();
@@ -513,7 +520,7 @@ void empresa::regularizaempresa() {
 
 void empresa::Filtro() {
     QWidget *widget;
-    widget = pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow ();
     if (widget == introapunts2) {
         introapunts2->boton_filtrar();
     }// end if

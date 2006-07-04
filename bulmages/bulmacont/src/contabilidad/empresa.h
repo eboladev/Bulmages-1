@@ -41,6 +41,7 @@ class Asiento1View;
 class DiarioView;
 class balanceview;
 class asientosview;
+class cuentaview;
 
 /**
  * @author Tomeu Borras Riera
@@ -60,7 +61,7 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-    QWorkspace *pWorkspace;
+    QWorkspace *m_pWorkspace;
 
     balance1view *balance1;
     DiarioView *diario;
@@ -121,8 +122,9 @@ public:
         return(nombre);
     }
 
+    QWorkspace * pWorkspace() { return m_pWorkspace; };
     void setWorkspace(QWorkspace *qw) {
-        pWorkspace=qw;
+        m_pWorkspace=qw;
     };
 
     void setListVentanas(listventanas *doc) {
@@ -187,5 +189,6 @@ public:
     int cobPag();  // Gestion de cobros y pagos
     virtual void s_asiento1();
 
+    cuentaview* newcuentaview();
 };
 #endif

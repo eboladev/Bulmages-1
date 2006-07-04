@@ -46,7 +46,7 @@ private:
     /// La base de datos con la que se trabaja
     postgresiface2 *conexionbase;
     /// La empresa que ha construido todo el tema.
-    empresa *empresaactual;
+    empresa *m_companyact;
     int ccuenta,cdesccuenta;
     int cidcuenta, cbloqueada, cnodebe, cnohaber, cregularizacion, cimputacion, ctipocuenta;
     /// Indice para la QListView de la columna que indica el debe actual de la cuenta

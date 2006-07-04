@@ -44,7 +44,7 @@
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode) : QWidget(parent,name, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
-    empresaactual = emp;
+    m_companyact = emp;
     m_modo = editmode;
     conexionbase= emp->bdempresa();
 
@@ -89,7 +89,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
 
     installEventFilter(this);
     if (m_modo == EditMode)
-        empresaactual->meteWindow( caption(), this);
+        m_companyact->meteWindow( caption(), this);
     _depura("END listcuentasview1::listcuentasview1", 0);
 
 }
@@ -97,7 +97,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
 listcuentasview1::~listcuentasview1() {
     _depura("listcuentasview1::~listcuentasview1", 0);
     if (m_modo == EditMode)
-        empresaactual->sacaWindow(this);
+        m_companyact->sacaWindow(this);
     _depura("END listcuentasview1::~listcuentasview1", 0);
 }
 
@@ -188,7 +188,7 @@ int listcuentasview1::inicializa( ) {
     delete ctas;
 
     /// Cargamos el número de digitos de cuenta para poder hacer una introducción de números de cuenta más práctica.
-    numdigitos = empresaactual->numdigitosempresa();
+    numdigitos = m_companyact->numdigitosempresa();
 
     inicializatabla();
     return(0);
@@ -288,16 +288,10 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
-        cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
+        cuentaview *nuevae = m_companyact->newcuentaview();
         nuevae->cargacuenta(atoi(idcuenta().ascii()));
-        nuevae->exec();
-        inicializa();
-        delete nuevae;
-        // Para no perder el foco del elemento, al mismo tiempo que se
-        // actualizan los cambios luego buscamos y enfocamos el item
-        ///        it = ListView1->findItem(mdb_idcuenta, cidcuenta, Q3ListView::ExactMatch);
-        ///        ListView1->setCurrentItem(it);
-        ///        ListView1->ensureItemVisible(it);
+	m_companyact->pWorkspace()->addWindow(nuevae);
+	nuevae->show();
     } else {
         emit(selected(mdb_idcuenta));
     }// end if
@@ -316,27 +310,17 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
 void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
     QString cadena, codigo;
-    int idcuenta, idgrupo=0;
+    int  idgrupo=0;
     QTreeWidgetItem *it;
+    cuentaview *nuevae = m_companyact->newcuentaview();
 
-    cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
     codigo = it->text(ccuenta);
     cadena = it->text(cgrupo);
     idgrupo = cadena.toInt();
     nuevae->nuevacuenta(codigo,idgrupo);
-
-    nuevae->exec();
-
-    inicializa();
-    idcuenta = nuevae->idcuenta;
-    cadena.setNum(idcuenta);
-    /// Para no perder el foco del elemento, al mismo tiempo que se
-    /// actualizan los cambios luego buscamos y enfocamos el item
-    //    it = ListView1->findItem(cadena, cidcuenta, Q3ListView::ExactMatch);
-    //    ListView1->setCurrentItem(it);
-    //    ListView1->ensureItemVisible(it);
-    delete nuevae;
+    m_companyact->pWorkspace()->addWindow(nuevae);
+    nuevae->show();
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
 }
 
@@ -356,16 +340,10 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
+    cuentaview *nuevae = m_companyact->newcuentaview();
     nuevae->cargacuenta(atoi(idcuenta().ascii()));
-    nuevae->exec();
-    inicializa();
-    /// Para no perder el foco del elemento, al mismo tiempo que se
-    /// actualizan los cambios luego buscamos y enfocamos el item
-    //    it = ListView1->findItem(mdb_idcuenta, cidcuenta, Q3ListView::ExactMatch);
-    //    ListView1->setCurrentItem(it);
-    //    ListView1->ensureItemVisible(it);
-    delete nuevae;
+    m_companyact->pWorkspace()->addWindow(nuevae);
+    nuevae->show();
 }
 
 /**

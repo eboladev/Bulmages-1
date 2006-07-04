@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borrás                                    *
+ *   Copyright (C) 2004 by Tomeu Borrï¿½                                    *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -20,31 +20,28 @@
 #ifndef AMORTIZACIONESVIEW_H
 #define AMORTIZACIONESVIEW_H
 
-#include <amortizacionesdlg.h>
-
-#include "postgresiface2.h"
+#include "ui_amortizacionesbase.h"
 
 /**@author Tomeu Borras */
 class empresa;
 
-class amortizacionesview : public amortizacionesdlg
+class amortizacionesview : public QWidget, public Ui_AmortizacionesBase
 {
 Q_OBJECT
 public:
-	empresa *empresaactual;
-   postgresiface2 *conexionbase;
+	empresa *m_companyact;
    QString idamortizacion;		// Esta variable contiene el idamortizacion cuando se devuelve un parametro
    QString nomamortizacion;	// Esta variable contiene el nomamortizacion cuando se devuelve un parametro
    int modo;
 public:
-	amortizacionesview(empresa *,QWidget *, const char *, bool );
+	amortizacionesview(empresa *,QWidget *, const char * );
 	~amortizacionesview();
    void inicializatabla();
    
 public slots:
-   virtual void dbtabla(int, int, int, const QPoint &);
-   virtual void nuevo();
-   virtual void borrar();
+   virtual void on_listado_cellDoubleClicked(int, int);
+   virtual void on_mui_crear_clicked();
+   virtual void on_mui_borrar_clicked();
 
 };
 
