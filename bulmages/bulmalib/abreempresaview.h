@@ -24,14 +24,15 @@
 #include <QString>
 #include <QDialog>
 
-#include "ui_abreempresadlg.h"
+#include "ui_abreempresabase.h"
+
 
 /// Esta clase muestra el dialogo de seleccionar una empresa y espera a que se haga doble click sobre uno de los
 /// elementos que contiene, se haga click en aceptar o se de la accion de cancelar.
 /// La ventan siempre se abre en modo modal y detiene la ejecucion del programa.
 /// Se puede especificar, si es preciso, un tipo de empresas a mostrar (bulmacont o bulmafact)
 /// para facilitar la seleccion de elementos.
-class abreempresaview : public QDialog, public Ui_abreempresadlg {
+class abreempresaview : public QDialog, public Ui_abreempresabase {
     Q_OBJECT
 
 private:
@@ -83,6 +84,7 @@ private:
 private:
     /// Inserta una companya en el QList empresas definido en el dialogo.
     void insertCompany(QString, QString, QString, QString);
+    void preparaempresas();
 
 private slots:
     /// Al pulsar el boton de cancelar se aborta la ejecucion del programa.
@@ -96,6 +98,7 @@ private slots:
         s_botonCancelar();
         return true;
     }
+    void abreempresaview::empresasdobleclick();
 
 public slots:
     /// This SLOT is activated to select a company and to press enter.

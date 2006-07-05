@@ -2,8 +2,8 @@
  <author></author>
  <comment></comment>
  <exportmacro></exportmacro>
- <class>abreempresadlg</class>
- <widget class="QDialog" name="abreempresadlg" >
+ <class>abreempresabase</class>
+ <widget class="QDialog" name="abreempresabase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -94,45 +94,22 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3ListView" name="empresas" >
-     <property name="focusPolicy" >
-      <enum>Qt::TabFocus</enum>
+    <widget class="QTableWidget" name="empresas" >
+     <property name="verticalScrollBarPolicy" >
+      <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>
-     <property name="resizePolicy" >
-      <enum>Q3ScrollView::Manual</enum>
+     <property name="editTriggers" >
+      <set>QAbstractItemView::NoEditTriggers</set>
      </property>
      <property name="selectionMode" >
-      <enum>Q3ListView::Single</enum>
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
-     <property name="allColumnsShowFocus" >
+     <property name="selectionBehavior" >
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <property name="showGrid" >
       <bool>true</bool>
      </property>
-     <property name="itemMargin" >
-      <number>0</number>
-     </property>
-     <property name="resizeMode" >
-      <enum>Q3ListView::AllColumns</enum>
-     </property>
-     <column>
-      <property name="text" >
-       <string>Nombre</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Año</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Archivo</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Tipo</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item>
@@ -169,15 +146,6 @@
  </widget>
  <layoutdefault spacing="2" margin="5" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListView</class>
-   <extends></extends>
-   <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <tabstops>
   <tabstop>botonAceptar</tabstop>
   <tabstop>botonCancelar</tabstop>
