@@ -20,7 +20,7 @@
 #ifndef ARBOL_H
 #define ARBOL_H
 
-#include <qstring.h>
+#include <QString>
 #include "postgresiface2.h"
 
 /**

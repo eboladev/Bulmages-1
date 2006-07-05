@@ -334,8 +334,7 @@ QString Arbol::hojaactual(QString valor){
     return resultado;
 }
 
-/*
-  
+/*  
 // 2 funciones utiles para depurar; activar y usarlas si se quiere ver el arbol por la salida estandar
   
 void Arbol::imprimir()
@@ -343,7 +342,7 @@ void Arbol::imprimir()
     unsigned int i;
     
     for(i=0; raiz[i] && i<70; i++){
-	fprintf(stderr, "\n%s:\n", raiz[i]->codigo.ascii());
+	fprintf(stderr, "\n%s:\n", raiz[i]->codigo.toAscii().data());
 	if(raiz[i]->ramas)
 	    ImprimirRama(raiz[i]->ramas);
     } // end for
@@ -351,7 +350,7 @@ void Arbol::imprimir()
 
 void Arbol::ImprimirRama(tiporama* rama)
 {
-    fprintf(stderr, "%s.", rama->hoja->codigo.ascii());
+    fprintf(stderr, "%s.", rama->hoja->codigo.toAscii().data());
     if(rama->sgte){
 	ImprimirRama(rama->sgte);
     }// end if
@@ -360,4 +359,3 @@ void Arbol::ImprimirRama(tiporama* rama)
     }// end if
 }
 */
-
