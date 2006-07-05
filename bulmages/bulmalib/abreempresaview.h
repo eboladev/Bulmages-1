@@ -98,7 +98,7 @@ private slots:
         s_botonCancelar();
         return true;
     }
-    void abreempresaview::empresasdobleclick();
+    void empresasdobleclick();
 
 public slots:
     /// This SLOT is activated to select a company and to press enter.
