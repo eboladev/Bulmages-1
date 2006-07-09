@@ -60,7 +60,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QToolButton" name="toolButton1" >
+      <widget class="QToolButton" name="mui_actualizar" >
        <property name="toolTip" >
         <string>Actualizar</string>
        </property>
@@ -94,7 +94,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="empresas" >
+    <widget class="QTableWidget" name="mui_empresas" >
      <property name="verticalScrollBarPolicy" >
       <enum>Qt::ScrollBarAlwaysOn</enum>
      </property>

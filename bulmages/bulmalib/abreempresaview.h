@@ -30,7 +30,7 @@
 /// Esta clase muestra el dialogo de seleccionar una empresa y espera a que se haga doble click sobre uno de los
 /// elementos que contiene, se haga click en aceptar o se de la accion de cancelar.
 /// La ventan siempre se abre en modo modal y detiene la ejecucion del programa.
-/// Se puede especificar, si es preciso, un tipo de empresas a mostrar (bulmacont o bulmafact)
+/// Se puede especificar, si es preciso, un tipo de mui_empresas a mostrar (bulmacont o bulmafact)
 /// para facilitar la seleccion de elementos.
 class abreempresaview : public QDialog, public Ui_abreempresabase {
     Q_OBJECT
@@ -76,15 +76,15 @@ public:
         return m_tipoempresa;
     };
 private:
-    /// Guarda en el archivo especificado en LISTEMPRESAS la lista de empresas disponibles.
+    /// Guarda en el archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
     void guardaArchivo();
-    /// Carga del archivo especificado en LISTEMPRESAS la lista de empresas disponibles.
+    /// Carga del archivo especificado en LISTEMPRESAS la lista de mui_empresas disponibles.
     void cargaArchivo();
 
 private:
-    /// Inserta una companya en el QList empresas definido en el dialogo.
+    /// Inserta una companya en el QList mui_empresas definido en el dialogo.
     void insertCompany(QString, QString, QString, QString);
-    void preparaempresas();
+    void preparamui_empresas();
 
 private slots:
     /// Al pulsar el boton de cancelar se aborta la ejecucion del programa.
@@ -98,13 +98,13 @@ private slots:
         s_botonCancelar();
         return true;
     }
-    void empresasdobleclick();
+    void mui_empresasdobleclick();
 
 public slots:
     /// This SLOT is activated to select a company and to press enter.
     virtual void accept();
     /// This SLOT searches in the databases of postgres all the companyes needed.
-    virtual void s_reloadButton();
+    virtual void on_mui_actualizar_clicked();
 };
 
 #endif
