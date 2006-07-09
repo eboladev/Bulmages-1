@@ -26,31 +26,35 @@
 #define COL_NOMBRE 1
 
 amortizacionesview::amortizacionesview(empresa *emp,QWidget *parent, const char *name ) : QWidget(parent, name, Qt::WDestructiveClose) {
+    _depura("amortizacionesview::amortizacionesview", 0);
     setupUi(this);
     m_companyact = emp;
     inicializatabla();
     modo = 0;
     m_companyact->meteWindow( caption(), this);
+    _depura("END amortizacionesview::amortizacionesview", 0);
 }
 
 
 
 amortizacionesview::~amortizacionesview() {
-   m_companyact->sacaWindow(this);
+    _depura("amortizacionesview::~amortizacionesview", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END amortizacionesview::~amortizacionesview", 0);
 }
 
 
 
 void amortizacionesview::inicializatabla()  {
-
+    _depura("amortizacionesview::inicializatabla", 0);
 
     /// Para el listado de  columnas hacemos una inicializacion
     QStringList headers;
-    headers << "codigo cuenta" << "nombre cuenta" << "debe" << "haber" << "id cuenta" << "bloqueada" << "nodebe" << "nohaber" << "regularizacion" << "imputacion" << "grupo" "tipo cuenta";
+    headers << "id" << "nombre" ;
 
     listado->setHorizontalHeaderLabels(headers);
 
-    listado->setColumnCount(5);
+    listado->setColumnCount(2);
 
     string query = "SELECT * FROM amortizacion ORDER BY nomamortizacion";
     cursor2 *cursoraux1=m_companyact->cargacursor(query.c_str(),"elquery");
@@ -65,12 +69,14 @@ void amortizacionesview::inicializatabla()  {
         i++;
     }// end while
     delete cursoraux1;
+    _depura("END amortizacionesview::inicializatabla", 0);
+
 }
 
 
 void amortizacionesview::on_listado_cellDoubleClicked(int row, int ) {
-    fprintf(stderr,"Se ha hecho doble click sobre la tabla\n");
-    // Dependiendo del modo hacemos una cosa u otra
+    _depura("amortizacionesview::on_listado_cellDoubleClicked", 0);
+    /// Dependiendo del modo hacemos una cosa u otra
     if (modo == 0) {
         idamortizacion = listado->item(row,COL_CODIGO)->text();
         // Creamos el objeto mpatrimonialview, y lo lanzamos.
@@ -85,19 +91,24 @@ void amortizacionesview::on_listado_cellDoubleClicked(int row, int ) {
         nomamortizacion = listado->item(listado->currentRow(),COL_NOMBRE)->text();
         close();
     }// end if
+    _depura("END amortizacionesview::on_listado_cellDoubleClicked", 0);
 }
 
 void amortizacionesview::on_mui_crear_clicked() {
+    _depura("amortizacionesview::on_mui_crear_clicked", 0);
     amortizacionview *amor=new amortizacionview(m_companyact, 0,"", true);
     amor->exec();
     delete amor;
-    // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
+    /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
     inicializatabla();
+    _depura("END amortizacionesview::on_mui_crear_clicked", 0);
+
 }
 
-// Esta funci� se encarga de borrar una amortizaci�
-// La que est�seleccionada en el listado.
+/// Esta funcion se encarga de borrar una amortizacion
+/// La que esta seleccionada en el listado.
 void amortizacionesview::on_mui_borrar_clicked() {
+    _depura("amortizacionesview::on_mui_borrar_clicked", 0);
     QString codigo = listado->item(listado->currentRow(),COL_CODIGO)->text();
     if (codigo != "") {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
@@ -110,5 +121,6 @@ void amortizacionesview::on_mui_borrar_clicked() {
         m_companyact->commit();
         inicializatabla();
     }// end if
+    _depura("END amortizacionesview::on_mui_borrar_clicked", 0);
 }
 

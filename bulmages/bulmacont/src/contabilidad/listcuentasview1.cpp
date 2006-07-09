@@ -188,6 +188,7 @@ int listcuentasview1::inicializa( ) {
   * ocultos.
   */
 void listcuentasview1::inicializatabla()  {
+    _depura("listcuentasview1::inicializatabla", 0);
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query);
@@ -238,8 +239,11 @@ void listcuentasview1::inicializatabla()  {
         i++;
     }// end while
     delete cursoraux1;
-    delete dato;
+
+//    delete dato;
 //    tablacuentas->setReadOnly(TRUE);
+    _depura("END listcuentasview1::inicializatabla", 0);
+
 }
 
 /**
@@ -249,17 +253,18 @@ void listcuentasview1::inicializatabla()  {
  * item que se acaba de pulsar.
  */
 void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
+    _depura("listcuentasview1::on_ListView1_itemClicked", 0);
     QString idcuenta = it->text(cidcuenta);
     QString cad;
-    int i;
-    for (i=0;i< tablacuentas->rowCount();i++) {
+    for (int i = 0; i < tablacuentas->rowCount() - 1; i++) {
         cad = tablacuentas->item(i,2)->text();
         if (cad == idcuenta) {
-            fprintf(stderr,"Lo he encontrado\n");
             tablacuentas->setCurrentCell(i,2);
             tablacuentas->scrollToItem(tablacuentas->item(i,2), QAbstractItemView::EnsureVisible);
+	    break;
         }// end if
     }// end for
+    _depura("END listcuentasview1::on_ListView1_itemClicked", 0);
 }
 
 /** La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
@@ -299,19 +304,12 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     if (m_modo == EditMode) {
         cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
         nuevae->cargacuenta(atoi(idcuenta().ascii()));
-//        nuevae->exec();
         inicializa();
         delete nuevae;
-        // Para no perder el foco del elemento, al mismo tiempo que se
-        // actualizan los cambios luego buscamos y enfocamos el item
-        ///        it = ListView1->findItem(mdb_idcuenta, cidcuenta, Q3ListView::ExactMatch);
-        ///        ListView1->setCurrentItem(it);
-        ///        ListView1->ensureItemVisible(it);
     } else {
         emit(selected(mdb_idcuenta));
     }// end if
     _depura("listcuentasview1::on_ListView1_doubleClicked", 0);
-
 }
 
 /**
@@ -358,7 +356,7 @@ void listcuentasview1::on_mui_crear_clicked()  {
  * del padre de la cuenta rellenado.
  */
 void listcuentasview1::on_mui_editar_clicked()  {
-
+    _depura("listcuentasview1::on_mui_editar_clicked", 0);
     QTreeWidgetItem *it;
     it = ListView1->currentItem();
     on_ListView1_itemClicked(it, 0);
@@ -367,14 +365,9 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_desccuenta = it->text(cdesccuenta);
     cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
     nuevae->cargacuenta(atoi(idcuenta().ascii()));
-//    nuevae->exec();
     inicializa();
-    /// Para no perder el foco del elemento, al mismo tiempo que se
-    /// actualizan los cambios luego buscamos y enfocamos el item
-    //    it = ListView1->findItem(mdb_idcuenta, cidcuenta, Q3ListView::ExactMatch);
-    //    ListView1->setCurrentItem(it);
-    //    ListView1->ensureItemVisible(it);
     delete nuevae;
+    _depura("END listcuentasview1::on_mui_editar_clicked", 0);
 }
 
 /**
@@ -390,18 +383,6 @@ void listcuentasview1::on_mui_borrar_clicked()  {
         conexionbase->begin();
         if (conexionbase->borrarcuenta(idcuenta) == 0) {
             delete it;
-
-            /*
-                        Q3ListViewItem *ot = it->itemAbove();
-                        if (ot)
-                            idcuenta =atoi((char *) ot->text(cidcuenta).ascii());
-                        inicializa();
-                        QString cadena;
-                        cadena.sprintf("%d",idcuenta);
-                        it = ListView1->findItem(cadena, cidcuenta, Q3ListView::ExactMatch);
-                        ListView1->setCurrentItem(it);
-                        ListView1->ensureItemVisible(it);
-            */
         } else {
             mensajeInfo("No se ha podido borrar la cuenta" );
         }// end if
@@ -425,18 +406,18 @@ void listcuentasview1::on_tablacuentas_doubleClicked(int row, int , int ,const Q
     _depura("END listcuentasview1::on_tablacuentas_doubleClicked", 0);
 }
 
-
 /** \brief Cuando se pulsa el Return sobre la busqueda de cuentas
   * 
   * Actua como si fuese una doble pulsacion con el raton sobre la tabla de cuentas.
   */
 void listcuentasview1::on_mui_busqueda_editFinished() {
+    _depura("listcuentasview1::on_mui_busqueda_editFinished", 0);
     QTreeWidgetItem *it = ListView1->currentItem();
     if (it != 0) {
         on_ListView1_itemDoubleClicked(it, 0);
     }// end if
+    _depura("END listcuentasview1::on_mui_busqueda_editFinished", 0);
 }
-
 
 /** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
   * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
@@ -446,34 +427,41 @@ void listcuentasview1::on_mui_busqueda_editFinished() {
   * el rango de cuentas entre el que se quiere el listado.
   */
 void listcuentasview1::on_mui_imprimir_clicked() {
+    _depura("listcuentasview1::on_mui_imprimir_clicked", 0);
     QString cadena;
     cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
     cadena += conexionbase->nameDB()+" ";
     cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
     fprintf(stderr,"%s\n",cadena.ascii());
     system (cadena.ascii());
+    _depura("END listcuentasview1::on_mui_imprimir_clicked", 0);
+
 }
 
 
-void listcuentasview1::on_mui_exportar_clicked() {   
+void listcuentasview1::on_mui_exportar_clicked() {
+    _depura("listcuentasview1::on_mui_exportar_clicked", 0);
     QFile filexml (QFileDialog::getSaveFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));
     if(filexml.open(QIODevice::WriteOnly)) {
         bulmages2XML(filexml, IMPORT_CUENTAS);
         filexml.close();
     } else {
-        _depura("ERROR AL ABRIR ARCHIVO\n");
+        mensajeInfo("Error al abrir archivo\n");
     }// end if
+    _depura("END listcuentasview1::on_mui_exportar_clicked", 0);
 }
 
 void listcuentasview1::on_mui_importar_clicked() {
+    _depura("listcuentasview1::on_mui_importar_clicked", 0);
     QFile filexml (QFileDialog::getOpenFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2Bulmages(filexml, IMPORT_CUENTAS);
         filexml.close();
         inicializa();
     } else {
-        _depura("ERROR AL ABRIR ARCHIVO\n");
+        mensajeInfo("Error al abrir archivo\n");
     }// end if
+    _depura("END listcuentasview1::on_mui_importar_clicked", 0);
 }
 
 
