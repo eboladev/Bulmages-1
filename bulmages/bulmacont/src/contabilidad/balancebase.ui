@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>637</height>
+    <width>1000</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -39,6 +39,377 @@
    <property name="spacing" >
     <number>6</number>
    </property>
+   <item row="1" column="0" colspan="2" >
+    <widget class="QFrame" name="frame_2" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>16777215</width>
+       <height>129</height>
+      </size>
+     </property>
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QWidget" name="layoutWidget" >
+      <property name="geometry" >
+       <rect>
+        <x>11</x>
+        <y>91</y>
+        <width>421</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="2" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>360</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="3" >
+        <widget class="QCheckBox" name="checksuperiores" >
+         <property name="text" >
+          <string>Balance Jerárquico</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="textLabel1" >
+           <property name="text" >
+            <string>C. Coste</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combocoste" />
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="textLabel1_2" >
+           <property name="text" >
+            <string>Nivel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="combonivel" />
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QGroupBox" name="groupBox" >
+      <property name="geometry" >
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>421</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="title" >
+       <string>Tipo de balance</string>
+      </property>
+      <widget class="QRadioButton" name="abreviadoButton" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="geometry" >
+        <rect>
+         <x>146</x>
+         <y>31</y>
+         <width>91</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text" >
+        <string>Abreviado</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="sumasysaldosButton" >
+       <property name="geometry" >
+        <rect>
+         <x>12</x>
+         <y>31</y>
+         <width>121</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text" >
+        <string>Sumas y Saldos</string>
+       </property>
+       <property name="checked" >
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="resultadosButton" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="geometry" >
+        <rect>
+         <x>240</x>
+         <y>31</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text" >
+        <string>Pérdidas y Ganancias</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="layoutWidget" >
+      <property name="geometry" >
+       <rect>
+        <x>440</x>
+        <y>12</y>
+        <width>531</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item row="0" column="1" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="TextLabel1_3" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>7</hsizetype>
+             <vsizetype>7</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text" >
+            <string>Cuenta inicial</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="BusquedaCuenta" name="m_codigoinicial" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="0" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="TextLabel1_2_2" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>7</hsizetype>
+             <vsizetype>7</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>175</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>Fecha inicial</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="BusquedaFecha" name="m_fechainicial1" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>100</width>
+             <height>32767</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="TextLabel1_2_2_2" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>7</hsizetype>
+             <vsizetype>7</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>175</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>Fecha final</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="BusquedaFecha" name="m_fechafinal1" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize" >
+            <size>
+             <width>100</width>
+             <height>32767</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="1" >
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="TextLabel1_3_2" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>7</hsizetype>
+             <vsizetype>7</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text" >
+            <string>Cuenta final</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="BusquedaCuenta" name="m_codigofinal" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>100</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
    <item row="0" column="1" >
     <widget class="QFrame" name="frame_3" >
      <property name="sizePolicy" >
@@ -64,150 +435,20 @@
      <widget class="QWidget" name="layoutWidget" >
       <property name="geometry" >
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>681</width>
+        <x>11</x>
+        <y>11</y>
+        <width>903</width>
         <height>34</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" >
+      <layout class="QGridLayout" >
        <property name="margin" >
         <number>0</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item>
-        <widget class="QToolButton" name="mui_guardar" >
-         <property name="minimumSize" >
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="toolTip" >
-          <string>Guardar balance</string>
-         </property>
-         <property name="whatsThis" >
-          <string>Guardar balance</string>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-         </property>
-         <property name="iconSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="checkable" >
-          <bool>false</bool>
-         </property>
-         <property name="checked" >
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_imprimir" >
-         <property name="minimumSize" >
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="toolTip" >
-          <string>Imprimir balance</string>
-         </property>
-         <property name="whatsThis" >
-          <string>Imprimir balance</string>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
-         </property>
-         <property name="iconSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_filtrar" >
-         <property name="minimumSize" >
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="toolTip" >
-          <string>Filtrar balance</string>
-         </property>
-         <property name="whatsThis" >
-          <string>Filtrar balance</string>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
-         </property>
-         <property name="iconSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="checkable" >
-          <bool>true</bool>
-         </property>
-         <property name="checked" >
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_configurar" >
-         <property name="minimumSize" >
-          <size>
-           <width>32</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="toolTip" >
-          <string>Configurar</string>
-         </property>
-         <property name="whatsThis" >
-          <string>Configurar</string>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
-         </property>
-         <property name="iconSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="checkable" >
-          <bool>false</bool>
-         </property>
-         <property name="checked" >
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
+       <item row="0" column="4" >
         <widget class="QToolButton" name="mui_actualizar" >
          <property name="minimumSize" >
           <size>
@@ -241,7 +482,137 @@
          </property>
         </widget>
        </item>
-       <item>
+       <item row="0" column="3" >
+        <widget class="QToolButton" name="mui_configurar" >
+         <property name="minimumSize" >
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="toolTip" >
+          <string>Configurar</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Configurar</string>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="icon" >
+          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="checkable" >
+          <bool>false</bool>
+         </property>
+         <property name="checked" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <widget class="QToolButton" name="mui_filtrar" >
+         <property name="minimumSize" >
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="toolTip" >
+          <string>Filtrar balance</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Filtrar balance</string>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="icon" >
+          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="checkable" >
+          <bool>true</bool>
+         </property>
+         <property name="checked" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QToolButton" name="mui_guardar" >
+         <property name="minimumSize" >
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="toolTip" >
+          <string>Guardar balance</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Guardar balance</string>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="icon" >
+          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="checkable" >
+          <bool>false</bool>
+         </property>
+         <property name="checked" >
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <widget class="QToolButton" name="mui_imprimir" >
+         <property name="minimumSize" >
+          <size>
+           <width>32</width>
+           <height>32</height>
+          </size>
+         </property>
+         <property name="toolTip" >
+          <string>Imprimir balance</string>
+         </property>
+         <property name="whatsThis" >
+          <string>Imprimir balance</string>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="icon" >
+          <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="5" >
         <spacer>
          <property name="orientation" >
           <enum>Qt::Horizontal</enum>
@@ -251,8 +622,8 @@
          </property>
          <property name="sizeHint" >
           <size>
-           <width>489</width>
-           <height>20</height>
+           <width>711</width>
+           <height>32</height>
           </size>
          </property>
         </spacer>
@@ -1421,267 +1792,6 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2" >
-    <widget class="QFrame" name="frame_2" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize" >
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize" >
-      <size>
-       <width>16777215</width>
-       <height>129</height>
-      </size>
-     </property>
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QWidget" name="layoutWidget" >
-      <property name="geometry" >
-       <rect>
-        <x>13</x>
-        <y>90</y>
-        <width>751</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_2_2" >
-           <property name="text" >
-            <string>Fecha inicial</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="BusquedaFecha" name="m_fechainicial1" >
-           <property name="maximumSize" >
-            <size>
-             <width>100</width>
-             <height>32767</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_2_2_2" >
-           <property name="text" >
-            <string>Fecha final</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="BusquedaFecha" name="m_fechafinal1" >
-           <property name="maximumSize" >
-            <size>
-             <width>100</width>
-             <height>32767</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="textLabel1_2" >
-           <property name="text" >
-            <string>Nivel</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="combonivel" />
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="textLabel1" >
-           <property name="text" >
-            <string>C. Coste</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QComboBox" name="combocoste" />
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget" >
-      <property name="geometry" >
-       <rect>
-        <x>390</x>
-        <y>10</y>
-        <width>381</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>6</number>
-       </property>
-       <item>
-        <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_3" >
-           <property name="text" >
-            <string>Cuenta inicial</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="TextLabel1_3_2" >
-           <property name="text" >
-            <string>Cuenta final</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="BusquedaCuenta" name="m_codigoinicial" />
-         </item>
-         <item>
-          <widget class="BusquedaCuenta" name="m_codigofinal" />
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QGroupBox" name="groupBox" >
-      <property name="geometry" >
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>371</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="title" >
-       <string>Tipo de balance</string>
-      </property>
-      <widget class="QWidget" name="layoutWidget" >
-       <property name="geometry" >
-        <rect>
-         <x>11</x>
-         <y>30</y>
-         <width>351</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QRadioButton" name="sumasysaldosButton" >
-          <property name="text" >
-           <string>Sumas y Saldos</string>
-          </property>
-          <property name="checked" >
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="abreviadoButton" >
-          <property name="enabled" >
-           <bool>false</bool>
-          </property>
-          <property name="text" >
-           <string>Abreviado</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="resultadosButton" >
-          <property name="enabled" >
-           <bool>false</bool>
-          </property>
-          <property name="text" >
-           <string>Pérdidas y Ganancias</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </widget>
-   </item>
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="3" />
@@ -1703,20 +1813,22 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>sumasysaldosButton</tabstop>
-  <tabstop>abreviadoButton</tabstop>
-  <tabstop>resultadosButton</tabstop>
-  <tabstop>combonivel</tabstop>
-  <tabstop>combocoste</tabstop>
-  <tabstop>totalsaldoant</tabstop>
-  <tabstop>totaldebe</tabstop>
-  <tabstop>totalhaber</tabstop>
-  <tabstop>totalsaldo</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_filtrar</tabstop>
   <tabstop>mui_configurar</tabstop>
   <tabstop>mui_actualizar</tabstop>
+  <tabstop>sumasysaldosButton</tabstop>
+  <tabstop>abreviadoButton</tabstop>
+  <tabstop>resultadosButton</tabstop>
+  <tabstop>combonivel</tabstop>
+  <tabstop>combocoste</tabstop>
+  <tabstop>checksuperiores</tabstop>
+  <tabstop>mui_list</tabstop>
+  <tabstop>totalsaldoant</tabstop>
+  <tabstop>totaldebe</tabstop>
+  <tabstop>totalhaber</tabstop>
+  <tabstop>totalsaldo</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages-recursos-graficos.qrc" />

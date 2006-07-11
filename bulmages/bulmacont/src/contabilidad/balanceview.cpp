@@ -145,16 +145,15 @@ void balanceview::inicializa1(QString codinicial, QString codfinal, QString fech
   * Crea una tabla auxiliar de balance y hace en ella todos los calculos necesarios para concretar los resultados
   */
 void balanceview::presentar() {
-//    int j,num1;
     double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
     QString query;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
-    QString cinicial = m_codigoinicial->codigocuenta();
+    QString cinicial = m_codigoinicial->codigocuenta().left(2);
     QString cfinal = m_codigofinal->codigocuenta();
     QString ejercicio = ffinal.right(4);
     int nivel = combonivel->currentText().toInt();
-    bool superiores = false; //checksuperiores->isChecked();
+    bool superiores = checksuperiores->isChecked();
     QLocale spanish(QLocale::Spanish); // vamos a formatear los numeros con punto para los millares y coma para los decimales
 
     // Hacemos la consulta de los apuntes a listar en la base de datos.
@@ -207,6 +206,10 @@ void balanceview::presentar() {
     mui_list->clear();
     
     QTreeWidgetItem *it; // cada hoja del arbol usara uno de estos Widgets para mostrarse
+    int nivelActual;
+    QMap <int, QTreeWidgetItem *> ptrList; // mantenemos una tabla con indices de niveles del arbol
+    QMap <int, QTreeWidgetItem *>::const_iterator ptrIt, i; // y el iterador para controlar donde accedemos, asi como un indice adicional
+    ptrList.clear();
     while (arbol->deshoja(nivel, superiores)) {
 	QString lcuenta = arbol->hojaactual("codigo");
 	QString ldenominacion = arbol->hojaactual("descripcion");
@@ -237,9 +240,32 @@ void balanceview::presentar() {
 	    lhaberej = spanish.toString(lhaberej.toDouble(),'f',2);
 	    lsaldoej = spanish.toString(lsaldoej.toDouble(),'f',2);
 	    
-	    // Ahora, pintamos en el Widget cada linea
+	    /// Ahora, vamos a pintar en el Widget cada linea
+	    
+	    // Formamos la linea
 	    datos << lcuenta << ldenominacion << lsaldoant << ldebe << lhaber << lsaldo << ldebeej << lhaberej << lsaldoej;
-	    it = new QTreeWidgetItem(mui_list, datos);
+
+	    // Si se van mostrar tambien las cuentas superiores, habra que jerarquizar el arbol. Sino, se pinta cada linea al mismo nivel
+	    if(superiores) { // jerarquizando...
+		nivelActual = lcuenta.length();
+		if(nivelActual == 2) {
+		    it = new QTreeWidgetItem(mui_list, datos);	// la hoja cuelga de la raiz principal
+		} else {
+		    while(ptrIt.key() >= nivelActual) 
+			ptrIt--; // Ascendemos por el arbol para colgar la hoja en el lugar correcto 
+		    it = new QTreeWidgetItem(ptrIt.value(), datos);
+		} // end if
+		ptrIt = ptrList.insert(nivelActual, it); // insertamos el widget (hoja actual) en la tabla controlada y obtenemos su puntero iterador
+		mui_list->setItemExpanded(it, true);
+		// Borramos el resto de niveles que cuelgan, para no seguir colgando por esa rama
+		i = ptrIt+1;
+		while(i!=ptrList.constEnd()) {
+		    ptrList.erase(i.key());
+		    ++i;
+		}
+	    } else { // sin jerarquizar...
+		it = new QTreeWidgetItem(mui_list, datos);
+	    } // end if
 	    datos.clear();
 	    
 	    // Formateamos un poquito la informacion mostrada
@@ -248,16 +274,18 @@ void balanceview::presentar() {
 		tamanyo -= 1;
 	    else if(ldenominacion.length() > 50)
 		tamanyo -= 2;
-	    it->setFont(DENOMINACION, QFont("SansSerif", tamanyo, -1, false));
+	    it->setFont(DENOMINACION, QFont("Serif", tamanyo, -1, false));
 	    for(int col=SALDO_ANT; col < it->columnCount(); col++) {
-		it->setFont(DENOMINACION, QFont("SansSerif", 10, -1, false));
+		if(col == DEBE or col == HABER or col == SALDO)
+		    it->setFont(col, QFont("SansSerif", 10, QFont::DemiBold, false));
+		else
+		    it->setFont(col, QFont("SansSerif", 10, QFont::Normal, false));	
 		it->setTextAlignment(col, Qt::AlignRight);
 		if(it->text(col).left(1) == "-")
 		    it->setTextColor(col, Qt::darkRed);	// para los valores negativos la fuente en rojo
 		else
 		    it->setTextColor(col, Qt::darkBlue);	// para los valores negativos la fuente en azul
 	    } // end for	
-	    //mui_list->setItemExpanded(it, true);
 	} // end if
     } // end while
     mui_list->resizeColumnToContents(1);

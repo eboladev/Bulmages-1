@@ -4,7 +4,7 @@
 // Description: 
 //
 //
-// Author: Ricardo DÃ­az <richard@galdi.es>, (C) 2005
+// Author: Ricardo Di­az <richard@galdi.es>, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
 //
