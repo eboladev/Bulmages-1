@@ -56,7 +56,10 @@ public:
   ~balanceview();
   void cargacostes();
 private:
+  /// Presenta el Balance
   void presentar();
+  /// Presenta el Balance de Sumas y Saldos
+  void presentarSyS(QString, QString, QString, QString, int, int, bool);
 public slots:
   virtual void accept();
   virtual void boton_imprimir();

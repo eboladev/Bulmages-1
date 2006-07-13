@@ -145,30 +145,39 @@ void balanceview::inicializa1(QString codinicial, QString codfinal, QString fech
   * Crea una tabla auxiliar de balance y hace en ella todos los calculos necesarios para concretar los resultados
   */
 void balanceview::presentar() {
-    double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
-    QString query;
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString cinicial = m_codigoinicial->codigocuenta().left(2);
     QString cfinal = m_codigofinal->codigocuenta();
-    QString ejercicio = ffinal.right(4);
     int nivel = combonivel->currentText().toInt();
-    bool superiores = checksuperiores->isChecked();
-    QLocale spanish(QLocale::Spanish); // vamos a formatear los numeros con punto para los millares y coma para los decimales
-
-    // Hacemos la consulta de los apuntes a listar en la base de datos.
-    int idc_coste;
-    idc_coste = ccostes[combocoste->currentItem()];
+    bool jerarquico = checksuperiores->isChecked();
+    // Extraemos el centro de coste
+    int idc_coste = ccostes[combocoste->currentItem()];
+    /*
     QString querycoste= "";
     if(idc_coste > 0)
         querycoste = " AND idc_coste = "+QString::number(idc_coste)+" ";
+    */
     
-    // A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la ejecucion del programa
-    // Se genera un Arbol dinamico en la memoria RAM que contendra todas y cada una de las cuentas del PGC con sus saldos
+    /// A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la ejecucion del programa
+    /// Se genera un Arbol dinamico en la memoria RAM que contendra todas y cada una de las cuentas del PGC con sus saldos
+    if(sumasysaldosButton->isChecked())
+	presentarSyS(finicial, ffinal, cinicial, cfinal, nivel, idc_coste, jerarquico);	// Balance de Sumas y Saldos
+    /*
+    else if(abreviadoButton->isChecked())
+	presentarAbreviado(); // Balance de situacion Abreviado
+    else
+	presentarResultados(); // Cuenta de perdidas y ganancias
+    */
+}// end presentar
+
+void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int idc_coste, bool jerarquico) {
+    QLocale spanish(QLocale::Spanish); // vamos a formatear los numeros con punto para los millares y coma para los decimales
+    double tsaldoant, tdebe, thaber, tsaldo; //, debeej, haberej, saldoej;
     
     // Primero, averiguaremos la cantidad de ramas iniciales que nacen de la raiz (tantas como numero de cuentas de nivel 2) y las vamos creando
     companyact->begin();
-    query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
+    QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
     ramas = companyact->cargacursor(query,"Ramas");
     Arbol *arbol;
@@ -180,13 +189,12 @@ void balanceview::presentar() {
     }
     arbol->inicializa(ramas);
     delete ramas;
- 
+    
     // Ahora, usaremos el arbol para poner los datos a cada hoja (cuenta) segun los periodos que necesitemos acotar.
     // Para ello, vamos a recopilar todos los apuntes introducidos agrupados por cuenta para poder averiguar el estado contable de cada cuenta
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '" + finicial + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
-    
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = '" + ffinal.right(4) + "') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '" + finicial + "' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     fprintf(stderr,"Query: %s\n", query.toAscii().data());
-    // OJO!! falta usar el querycoste
+    ///// OJO!! falta usar el querycoste
     
     // Poblamos el arbol de hojas (cuentas)
     cursor2 *hojas;
@@ -210,7 +218,7 @@ void balanceview::presentar() {
     QMap <int, QTreeWidgetItem *> ptrList; // mantenemos una tabla con indices de niveles del arbol
     QMap <int, QTreeWidgetItem *>::const_iterator ptrIt, i; // y el iterador para controlar donde accedemos, asi como un indice adicional
     ptrList.clear();
-    while (arbol->deshoja(nivel, superiores)) {
+    while (arbol->deshoja(nivel, jerarquico)) {
 	QString lcuenta = arbol->hojaactual("codigo");
 	QString ldenominacion = arbol->hojaactual("descripcion");
 	QString lsaldoant = arbol->hojaactual("saldoant");
@@ -227,9 +235,9 @@ void balanceview::presentar() {
 	    tsaldo += lsaldo.toDouble();
 	    tdebe += ldebe.toDouble();
 	    thaber += lhaber.toDouble();
-	    debeej += ldebeej.toDouble();
-	    haberej += lhaberej.toDouble();
-	    saldoej += lsaldoej.toDouble();
+//	    debeej += ldebeej.toDouble();
+//	    haberej += lhaberej.toDouble();
+//	    saldoej += lsaldoej.toDouble();
 	
 	    // Las variables de las filas en formato español
 	    lsaldoant = spanish.toString(lsaldoant.toDouble(),'f',2);
@@ -246,7 +254,7 @@ void balanceview::presentar() {
 	    datos << lcuenta << ldenominacion << lsaldoant << ldebe << lhaber << lsaldo << ldebeej << lhaberej << lsaldoej;
 
 	    // Si se van mostrar tambien las cuentas superiores, habra que jerarquizar el arbol. Sino, se pinta cada linea al mismo nivel
-	    if(superiores) { // jerarquizando...
+	    if(jerarquico) { // jerarquizando...
 		nivelActual = lcuenta.length();
 		if(nivelActual == 2) {
 		    it = new QTreeWidgetItem(mui_list, datos);	// la hoja cuelga de la raiz principal
@@ -306,8 +314,7 @@ void balanceview::presentar() {
      // Eliminamos el arbol de la memoria y cerramos la conexion con la BD
     delete arbol;
     companyact->commit();
-}// end presentar
-
+}
 
 void balanceview::accept() {
     presentar();
