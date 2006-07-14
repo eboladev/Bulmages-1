@@ -107,21 +107,21 @@ ArticuloList::~ArticuloList() {
 
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n", 0);
-    if (QMessageBox::Yes == QMessageBox::question(this,
-            tr("Borrar articulo"),
-            tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
-            QMessageBox::Yes, QMessageBox::No)) {
-        QString SQLQuery = "DELETE FROM articulo WHERE idarticulo=" + mui_list->DBvalue("idarticulo");
-        m_companyact->begin();
-        int error = m_companyact->ejecuta(SQLQuery);
-        if (error) {
-            m_companyact->rollback();
-            return;
+    try {
+        if (QMessageBox::Yes == QMessageBox::question(this,
+                tr("Borrar articulo"),
+                tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
+                QMessageBox::Yes, QMessageBox::No)) {
+            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo=" + mui_list->DBvalue("idarticulo");
+            int error = m_companyact->ejecuta(SQLQuery);
+            if (error)
+                throw -1;
+            presenta();
         } // end if
-        m_companyact->commit();
-        presenta();
-    } // end if
-    _depura("ArticuloList::END_removeArticle()\n", 0);
+        _depura("ArticuloList::END_removeArticle()\n", 0);
+    } catch(...) {
+        mensajeInfo( tr("Error al Borrar el Articulo"));
+    } // end catch
 }
 
 

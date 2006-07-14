@@ -37,6 +37,8 @@ private:
     QString mdb_idproveedor;
     QString mdb_nomproveedor;
     QString mdb_cifproveedor;
+    QString mdb_codproveedor;
+    bool m_semaforo;
 
 public:
     BusquedaProveedor(QWidget *parent = 0, const char *name = 0);
@@ -44,6 +46,8 @@ public:
     void setcompany(company *comp) {
         companyact = comp;
     };
+    void pinta();
+
     virtual void setidproveedor(QString val);
     virtual void setcifproveedor(QString val);
     virtual QString cifproveedor() {
@@ -59,6 +63,7 @@ public:
 public slots:
     virtual void on_mui_buscar_clicked();
     virtual void on_m_cifproveedor_textChanged(const QString &);
+    virtual void on_m_cifproveedor_editingFinished();
 
 signals:
     void valueChanged(QString);

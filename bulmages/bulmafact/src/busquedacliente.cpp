@@ -26,6 +26,7 @@
 
 BusquedaCliente::BusquedaCliente(QWidget *parent, const char *name)
         : QWidget(parent, name) {
+    _depura("BusquedaCliente::BusquedaCliente", 0);
     setupUi(this);
     companyact = NULL;
     mdb_idcliente = "";
@@ -33,6 +34,7 @@ BusquedaCliente::BusquedaCliente(QWidget *parent, const char *name)
     mdb_cifcliente = "";
     mdb_codcliente = "";
     m_semaforo = FALSE;
+    _depura("END BusquedaCliente::BusquedaCliente", 0);
 }
 
 
@@ -40,10 +42,13 @@ BusquedaCliente::~BusquedaCliente() {}
 
 
 void BusquedaCliente::pinta() {
+    _depura ("BusquedaCliente::pinta", 0);
     m_semaforo = TRUE;
     m_cifcliente->setText(mdb_cifcliente);
     m_nomcliente->setText(mdb_codcliente+".- "+mdb_nomcliente);
     m_semaforo = FALSE;
+    _depura ("END BusquedaCliente::pinta", 0);
+
 }
 
 void BusquedaCliente::setidcliente(QString val) {
@@ -70,6 +75,7 @@ void BusquedaCliente::setidcliente(QString val) {
 
 
 void BusquedaCliente::setcifcliente(QString val) {
+    _depura("BusquedaCliente::setcifcliente", 0, val);
     mdb_cifcliente = val;
     QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='" + mdb_cifcliente + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -86,6 +92,8 @@ void BusquedaCliente::setcifcliente(QString val) {
 
     delete cur;
     pinta();
+    _depura("END BusquedaCliente::setcifcliente", 0, val);
+
 }
 
 
@@ -102,16 +110,21 @@ void BusquedaCliente::on_mui_buscar_clicked() {
         setcifcliente(clients->cifclient());
     } // end if
     delete diag;
+    _depura("END BusquedaCliente::on_mui_buscar_clicked\n", 0);
+
 }
 
 
 void BusquedaCliente::on_m_cifcliente_editingFinished() {
+    _depura("BusquedaCliente::on_m_cifcliente_editingFinished", 0);
     pinta();
     emit(valueChanged(mdb_idcliente));
+    _depura("END BusquedaCliente::on_m_cifcliente_editingFinished", 0);
+
 }
 
 void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
-
+    _depura("BusquedaCliente::on_m_cifcliente_textChanged", 0);
     if (m_semaforo)
         return;
 
@@ -157,10 +170,16 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
 
     if(!encontrado) {
         m_nomcliente->setText("");
+        mdb_idcliente = "";
+        mdb_cifcliente = "";
+        mdb_codcliente = "";
+        mdb_nomcliente = "";
     } // end if
 
     if (encontrado) {
         m_nomcliente->setText(mdb_codcliente+".- "+mdb_nomcliente);
     } // end if
+    _depura("END BusquedaCliente::on_m_cifcliente_textChanged", 0);
+
 }
 

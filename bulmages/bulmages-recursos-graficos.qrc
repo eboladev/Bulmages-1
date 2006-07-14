@@ -771,6 +771,7 @@
         <file>images/pendientes/i_packageSettings.png</file>
         <file>images/pendientes/i_reload.png</file>
         <file>images/pendientes/i_save.xpm</file>
+        <file>images/pendientes/i_tuxPeq.png</file>
     </qresource>
     <qresource prefix="/Genericos48x48" />
 </RCC>

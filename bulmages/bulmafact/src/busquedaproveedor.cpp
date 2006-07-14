@@ -33,6 +33,15 @@ BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
     mdb_idproveedor = "";
     mdb_nomproveedor = "";
     mdb_cifproveedor = "";
+    mdb_codproveedor = "";
+    m_semaforo = FALSE;
+}
+
+void BusquedaProveedor::pinta() {
+    m_semaforo = TRUE;
+    m_cifproveedor->setText(mdb_cifproveedor);
+    m_nomproveedor->setText(mdb_codproveedor+".- "+mdb_nomproveedor);
+    m_semaforo = FALSE;
 }
 
 
@@ -46,14 +55,15 @@ void BusquedaProveedor::setidproveedor(QString val) {
     if(!cur->eof()) {
         mdb_cifproveedor = cur->valor("cifproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
+	mdb_codproveedor = cur->valor("codproveedor");
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
         mdb_cifproveedor = "";
+	mdb_codproveedor = "";
     } // end if
     delete cur;
-    m_cifproveedor->setText(mdb_cifproveedor);
-    m_nomproveedor->setText(mdb_nomproveedor);
+    pinta();
 }
 
 
@@ -65,14 +75,15 @@ void BusquedaProveedor::setcifproveedor(QString val) {
     if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
+	mdb_codproveedor = cur->valor("codproveedor");
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
+	mdb_codproveedor = "";
     } // end if
 
     delete cur;
-    m_cifproveedor->setText(mdb_cifproveedor);
-    m_nomproveedor->setText(mdb_nomproveedor);
+    pinta();
 }
 
 
@@ -90,11 +101,7 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     diag->exec();
 
     if (providers->cifprovider() != "") {
-        m_cifproveedor->setText(providers->cifprovider());
-        mdb_cifproveedor = providers->cifprovider();
-        m_nomproveedor->setText(providers->nomprovider());
-        mdb_nomproveedor = providers->nomprovider();
-        mdb_idproveedor = providers->idprovider();
+	setidproveedor(providers->idprovider());
     } // end if
 
     delete providers;
@@ -102,22 +109,62 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
 }
 
 
-void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
-    mdb_cifproveedor = val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='" + mdb_cifproveedor + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+void BusquedaProveedor::on_m_cifproveedor_editingFinished() {
+    pinta();
+    emit(valueChanged(mdb_idproveedor));
+}
 
-    if (!cur->eof()) {
+void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
+
+    if (m_semaforo)
+        return;
+
+    bool encontrado = FALSE;
+    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='" + val + "'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
-    } else {
-        mdb_idproveedor = "";
-        mdb_nomproveedor = "";
+        mdb_cifproveedor = cur->valor("cifproveedor");
+        mdb_codproveedor = cur->valor("codproveedor");
+        encontrado = TRUE;
+    }
+    delete cur;
+
+    if (! encontrado) {
+        QString SQLQuery = "SELECT * FROM proveedor WHERE codproveedor='" + val + "'";
+        cur = companyact->cargacursor(SQLQuery);
+        if(!cur->eof()) {
+            mdb_idproveedor = cur->valor("idproveedor");
+            mdb_nomproveedor = cur->valor("nomproveedor");
+            mdb_cifproveedor = cur->valor("cifproveedor");
+            mdb_codproveedor = cur->valor("codproveedor");
+            encontrado = TRUE;
+        } // end if
+        delete cur;
     } // end if
 
-    delete cur;
-    m_cifproveedor->setText(mdb_cifproveedor);
-    m_nomproveedor->setText(mdb_nomproveedor);
-    emit(valueChanged(mdb_idproveedor));
+
+    if (! encontrado) {
+        QString SQLQuery = "SELECT * FROM proveedor WHERE upper(nomproveedor) LIKE upper('%" + val + "%')";
+        cur = companyact->cargacursor(SQLQuery);
+        if(cur->numregistros() == 1) {
+            mdb_idproveedor = cur->valor("idproveedor");
+            mdb_nomproveedor = cur->valor("nomproveedor");
+            mdb_cifproveedor = cur->valor("cifproveedor");
+            mdb_codproveedor = cur->valor("codproveedor");
+            encontrado = TRUE;
+        } // end if
+        delete cur;
+    } // end if
+
+
+    if(!encontrado) {
+        m_nomproveedor->setText("");
+    } // end if
+
+    if (encontrado) {
+        m_nomproveedor->setText(mdb_codproveedor+".- "+mdb_nomproveedor);
+    } // end if
 }
 

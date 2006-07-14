@@ -54,6 +54,9 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_listcolumnas->setSelectionBehavior ( QAbstractItemView::SelectRows );
     mui_listcolumnas->verticalHeader()->hide();
 
+    /// Siempre que arrancamos mostramos la pagina 0
+    mui_paginaact->setText("1");
+
     /// Ocultamos la configuracion
     hideConfig();
 
@@ -65,9 +68,9 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
 /** Destructor de Clase que guarda la configuracion  */
 SubForm3::~SubForm3() {
-	_depura("SubForm3::~SubForm3",0);
-        guardaconfig();
-	_depura("END SubForm3::~SubForm3",0);
+    _depura("SubForm3::~SubForm3",0);
+    guardaconfig();
+    _depura("END SubForm3::~SubForm3",0);
 }
 
 
@@ -182,6 +185,14 @@ int SubForm3::cargar(cursor2 *cur) {
     mui_query->setText(cur->query());
     SDBRecord *rec;
 
+    int filpag = mui_filaspagina->text().toInt();
+    if (filpag <= 0)
+        filpag = 500;
+
+    int pagact = mui_paginaact->text().toInt();
+    if (pagact <= 0)
+        pagact = 1;
+
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
     mui_list->setRowCount(0);
@@ -193,8 +204,20 @@ int SubForm3::cargar(cursor2 *cur) {
             delete rec;
     }// end while
 
+    /// Ponemos los datos sobre el query
+    mui_numfilas->setText(QString::number(cur->numregistros()));
+    int numpag = cur->numregistros() / filpag + 1;
+    mui_numpaginas->setText(QString::number(numpag));
+
+    /// Desplazamos hasta encontrar la página adecuada.
+    int nr = filpag * (pagact - 1);
+    while (nr > 0  && !cur->eof()) {
+        cur->siguienteregistro();
+	nr--;
+    }// end while
+
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
-    while (!cur->eof()) {
+    while (!cur->eof() && m_lista.count() < filpag) {
         SDBRecord *rec = newSDBRecord();
         rec->DBload(cur);
         m_lista.append(rec);
@@ -204,7 +227,7 @@ int SubForm3::cargar(cursor2 *cur) {
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
-    if (m_primero) 
+    if (m_primero)
         cargaconfig();
 
     /// Inicializamos la tabla con las filas necesarias.
@@ -364,6 +387,7 @@ void SubForm3::guardaconfig() {
         QTextStream stream( &file );
         stream << mui_list->colorden() << "\n";
         stream << mui_list->tipoorden() << "\n";
+        stream << mui_filaspagina->text() << "\n";
 
         for (int i = 0; i < mui_list->columnCount(); i++) {
             mui_list->showColumn(i);
@@ -392,6 +416,9 @@ void SubForm3::cargaconfig() {
 
         linea = stream.readLine();
         mui_list->settipoorden ( linea.toInt());
+
+        linea = stream.readLine();
+        mui_filaspagina->setText(linea);
 
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
@@ -489,7 +516,7 @@ void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
     _depura("END SubForm3::on_mui_list_ctrlSubir",0);
 }
 
-/** Disparador que se activa al haber pulsado ctrl+Abajo en la tabla 
+/** Disparador que se activa al haber pulsado ctrl+Abajo en la tabla
     Hace el intercambio con la fila inmediatamente inferior*/
 void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     mui_list->setCurrentCell(0,0);
@@ -505,5 +532,4 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     mui_list->setCurrentCell(row+1,col);
     _depura("END SubForm3::on_mui_list_ctrlBajar",0);
 }
-      
- 
+

@@ -197,19 +197,27 @@ bool familiasview::trataModificado() {
 /// Lo que hace es que se hace un update de todos los campos.
 void familiasview::on_mui_guardar_clicked() {
     _depura("familiasview::on_mui_guardar_clicked", 0);
-    if (m_idfamilia == "") {
-        mensajeInfo(tr("Debe seleccionar una familia"));
-	return;
-    } // end if
-    QString query = "UPDATE familia SET nombrefamilia ='" +
-                    companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
-                    companyact->sanearCadena(m_descFamilia->text()) + "' , codigofamilia = '" +
-                    companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
-    int error = companyact->ejecuta(query);
-    if (error)
+    try {
+        if (m_idfamilia == "") {
+            mensajeInfo(tr("Debe seleccionar una familia"));
+            return;
+        } // end if
+        QString query = "UPDATE familia SET nombrefamilia ='" +
+                        companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
+                        companyact->sanearCadena(m_descFamilia->text()) + "' , codigofamilia = '" +
+                        companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
+        int error = companyact->ejecuta(query);
+        if (error)
+            throw -1;
+        dialogChanges_cargaInicial();
+        _depura("END familiasview::on_mui_guardar_clicked", 0);
+    } // end try
+    catch(...) {
+        mensajeInfo( "Error al guardar la familia");
         return;
-    dialogChanges_cargaInicial();
-    _depura("END familiasview::on_mui_guardar_clicked", 0);
+    } // end catch
+
+
 }
 
 
@@ -232,45 +240,58 @@ void familiasview::pintar(QTreeWidgetItem *it) {
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de IVA
 /// Inserta en la tabla de IVAs.
 void familiasview::on_mui_crear_clicked() {
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    trataModificado();
-    QString padrefamilia;
-    if (m_idfamilia != "")
-        padrefamilia = m_idfamilia;
-    else
-        padrefamilia = "NULL";
+    _depura("familiasview::on_mui_crear_clicked", 0);
+    try {
+        companyact->begin();
+        /// Si se ha modificado el contenido advertimos y guardamos.
+        trataModificado();
+        QString padrefamilia;
+        if (m_idfamilia != "")
+            padrefamilia = m_idfamilia;
+        else
+            padrefamilia = "NULL";
 
-    QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA','Descripcion de la familia'," + padrefamilia + ", 'XXX')";
-    companyact->begin();
-    int error = companyact->ejecuta(query);
-    if (error) {
+        QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA','Descripcion de la familia'," + padrefamilia + ", 'XXX')";
+
+        int error = companyact->ejecuta(query);
+        if (error) {
+            throw -1;
+        } // end if
+        cursor2 *cur = companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
+        companyact->commit();
+        m_idfamilia = cur->valor("idfamilia");
+        delete cur;
+        pintar();
+        _depura("END familiasview::on_mui_crear_clicked", 0);
+    } // end try
+    catch(...) {
         companyact->rollback();
-        return;
-    } // end if
-    cursor2 *cur = companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
-    companyact->commit();
-    m_idfamilia = cur->valor("idfamilia");
-    delete cur;
-    pintar();
+        mensajeInfo( "Error al crear la familia");
+    } // end catch
+
 }
 
 /// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
 /// Lo que hace es que se hace un update de todos los campos.
 void familiasview::on_mui_borrar_clicked() {
     _depura("familiasview::on_mui_borrar_clicked", 0);
-    if (m_idfamilia == "") {
-        mensajeInfo(tr("Debe seleccionar una familia"));
-	return;
-    } // end if
-    trataModificado();
-    QString query = "DELETE FROM FAMILIA WHERE idfamilia=" + m_idfamilia;
-    int error = companyact->ejecuta(query);
-    if (error)
-        return;
-    pintar();
-    _depura("END familiasview::on_mui_borrar_clicked", 0);
+    try {
+        if (m_idfamilia == "") {
+            mensajeInfo(tr("Debe seleccionar una familia"));
+            return;
+        } // end if
+        trataModificado();
+        QString query = "DELETE FROM FAMILIA WHERE idfamilia=" + m_idfamilia;
+        int error = companyact->ejecuta(query);
+        if (error)
+            throw -1;
+        pintar();
+        _depura("END familiasview::on_mui_borrar_clicked", 0);
+    } // end try
+    catch(...) {
+        mensajeInfo( "Error al borrar la familia");
+    } // enc catch
 }
-
 
 void familiasview::on_mui_imprimir_clicked() {
     /// Copiamos el archivo.

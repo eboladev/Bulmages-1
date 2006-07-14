@@ -509,13 +509,6 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>AlbaranClienteListSubform</class>
    <extends>QTableWidget</extends>
    <header>albaranclientelist.h</header>
@@ -527,6 +520,13 @@
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
@@ -545,8 +545,24 @@
      <y>33</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>69</x>
-     <y>69</y>
+     <x>78</x>
+     <y>141</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>590</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>294</x>
+     <y>34</y>
     </hint>
    </hints>
   </connection>

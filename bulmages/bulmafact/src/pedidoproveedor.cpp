@@ -117,27 +117,29 @@ int PedidoProveedor::cargar(QString idbudget) {
 int PedidoProveedor::guardar() {
     _depura("PedidoProveedor::guardar", 0);
     QString id;
+
+    try {
     companyact->begin();
     int error = DBsave(id);
-    if (error) {
-        companyact->rollback();
-        return -1;
-    } // end if
+    if (error)         throw -1;
+
     setidpedidoproveedor(id);
 
     error = listalineas->guardar();
-    if (error) {
-        companyact->rollback();
-        return -1;
-    } // end if
+    if (error)   throw -1;
 
     error = listadescuentos->guardar();
-    if (error) {
-        companyact->rollback();
-        return -1;
-    } // end if
+    if (error)    throw -1;
+
     companyact->commit();
+    _depura("END PedidoProveedor::guardar", 0);
     return 0;
+
+   } catch(...) {
+	companyact->rollback();
+	mensajeInfo( "Error al guardar el pedido");
+	return -1;
+  } // end catch
 }
 
 
