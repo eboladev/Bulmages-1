@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>877</width>
-    <height>675</height>
+    <width>613</width>
+    <height>711</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -167,10 +167,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -178,17 +178,47 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>2</number>
+          <number>6</number>
          </property>
          <item>
-          <widget class="QLabel" name="textLabel2_5" >
-           <property name="text" >
-            <string>C.I.F.:</string>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
            </property>
-          </widget>
+           <property name="spacing" >
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel2_5" >
+             <property name="text" >
+              <string>C.I.F.:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="m_cifcliente" />
+           </item>
+          </layout>
          </item>
          <item>
-          <widget class="QLineEdit" name="m_cifcliente" />
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>2</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel2_10" >
+             <property name="text" >
+              <string>Código:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="mui_codcliente" />
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -228,7 +258,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="m_divisionid" />
+          <widget class="QLineEdit" name="mui_corpcliente" />
          </item>
          <item>
           <widget class="QComboBox" name="comboBox3" />
@@ -482,6 +512,9 @@
          </property>
          <property name="frameShadow" >
           <enum>QFrame::Raised</enum>
+         </property>
+         <property name="margin" >
+          <number>0</number>
          </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
@@ -1064,34 +1097,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>FacturasList</class>
-   <extends></extends>
-   <header>facturaslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>CobrosList</class>
-   <extends></extends>
-   <header>cobroslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends></extends>
-   <header>busquedaprovincia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>PedidosClienteList</class>
    <extends></extends>
    <header>pedidosclientelist.h</header>
@@ -1106,9 +1111,37 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>AlbaranClienteList</class>
+   <extends></extends>
+   <header>albaranclientelist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>FacturasList</class>
+   <extends></extends>
+   <header>facturaslist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3Table</class>
    <extends></extends>
    <header>q3table.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>CobrosList</class>
+   <extends></extends>
+   <header>cobroslist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1120,9 +1153,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>AlbaranClienteList</class>
+   <class>BusquedaProvincia</class>
    <extends></extends>
-   <header>albaranclientelist.h</header>
+   <header>busquedaprovincia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1131,7 +1164,7 @@
   <tabstop>mui_tab</tabstop>
   <tabstop>m_cifcliente</tabstop>
   <tabstop>m_nomcliente</tabstop>
-  <tabstop>m_divisionid</tabstop>
+  <tabstop>mui_corpcliente</tabstop>
   <tabstop>comboBox3</tabstop>
   <tabstop>m_nomaltcliente</tabstop>
   <tabstop>m_dircliente</tabstop>

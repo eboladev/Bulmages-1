@@ -47,6 +47,7 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
     addDBCampo("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion electronica"));
     addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
     addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
+    addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
 
     setupUi(this);
     m_companyact = comp;
@@ -111,6 +112,7 @@ int ProveedorView::cargar(QString idprov) {
     m_urlproveedor->setText(DBvalue("urlproveedor"));
     m_comentproveedor->setText(DBvalue("comentproveedor" ));
     m_provproveedor->setProvincia(DBvalue("provproveedor"));
+    mui_codproveedor->setText(DBvalue("codproveedor"));
     dialogChanges_cargaInicial();
 
     /// Cargamos las ventanas auxiliares.
@@ -161,6 +163,7 @@ void ProveedorView::on_mui_crear_clicked() {
     m_emailproveedor->setText("");
     m_urlproveedor->setText("");
     m_comentproveedor->setText("");
+    mui_codproveedor->setText("");
     dialogChanges_cargaInicial();
 }
 
@@ -187,6 +190,7 @@ int ProveedorView::guardar() {
     setDBvalue("urlproveedor", m_urlproveedor->text());
     setDBvalue("comentproveedor", m_comentproveedor->text());
     setDBvalue("provproveedor", m_provproveedor->currentText());
+    setDBvalue("codproveedor", mui_codproveedor->text());
 
     QString id;
     m_companyact->begin();

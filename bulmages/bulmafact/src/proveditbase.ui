@@ -216,10 +216,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -227,7 +227,7 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>2</number>
+          <number>6</number>
          </property>
          <item>
           <layout class="QHBoxLayout" >
@@ -235,7 +235,7 @@
             <number>0</number>
            </property>
            <property name="spacing" >
-            <number>2</number>
+            <number>6</number>
            </property>
            <item>
             <widget class="QLabel" name="textLabel2_5" >
@@ -246,6 +246,26 @@
            </item>
            <item>
             <widget class="QLineEdit" name="m_cifproveedor" />
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel2_10" >
+             <property name="text" >
+              <string>Codigo:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="mui_codproveedor" />
            </item>
           </layout>
          </item>
@@ -1163,9 +1183,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>FacturasProveedorList</class>
+   <class>BusquedaProvincia</class>
    <extends></extends>
-   <header>facturasplist.h</header>
+   <header>busquedaprovincia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1174,20 +1194,6 @@
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>PedidosProveedorList</class>
-   <extends></extends>
-   <header>pedidosproveedorlist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends></extends>
-   <header>busquedaprovincia.h</header>
-   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -1218,7 +1224,22 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>FacturasProveedorList</class>
+   <extends></extends>
+   <header>facturasplist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>PedidosProveedorList</class>
+   <extends></extends>
+   <header>pedidosproveedorlist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
+ <includes/>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>

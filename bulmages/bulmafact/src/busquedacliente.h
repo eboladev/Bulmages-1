@@ -37,6 +37,8 @@ private:
     QString mdb_idcliente;
     QString mdb_nomcliente;
     QString mdb_cifcliente;
+    QString mdb_codcliente;
+    bool m_semaforo;
 
 public:
     BusquedaCliente(QWidget *parent = 0, const char *name = 0);
@@ -44,6 +46,7 @@ public:
     void setcompany(company *comp) {
         companyact = comp;
     };
+    void pinta();
     virtual QString cifcliente() {
         return m_cifcliente->text();
     };
@@ -59,7 +62,7 @@ public:
 public slots:
     virtual void on_mui_buscar_clicked();
     virtual void on_m_cifcliente_textChanged(const QString &);
-
+    virtual void on_m_cifcliente_editingFinished();
 signals:
     void valueChanged(QString);
 };

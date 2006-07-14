@@ -52,6 +52,12 @@ public:
     void pintacifcliente(QString val) {
         m_cifcliente->setText(val);
     };
+    void pintacodcliente(QString val) {
+        mui_codcliente->setText(val);
+    };
+    void pintacorpcliente(QString val) {
+        mui_corpcliente->setText(val);
+    };
     void pintabancocliente(QString val) {
         m_bancocliente->setText(val);
     };

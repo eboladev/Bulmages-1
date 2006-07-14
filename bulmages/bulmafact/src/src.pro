@@ -3,6 +3,16 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmafact/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
+QT += qt3support
+LANGUAGE = C++
+TARGET = ../../installbulmages/bulmafact
+#CONFIG += qt debug
+CONFIG += release
+LIBS += -rdynamic
+TEMPLATE = app
+RESOURCES += ../../bulmages-recursos-graficos.qrc
+
+
 FORMS += about.ui \
          pagobase.ui \
          cobrobase.ui \
@@ -221,14 +231,6 @@ SOURCES += bulmafact.cpp \
            linpresupuesto.cpp \
            listdescpresupuesto.cpp \
            descpresupuesto.cpp 
-QT += qt3support
-LANGUAGE = C++
-TARGET = ../../installbulmages/bulmafact
-CONFIG += qt debug
-#CONFIG += release
-LIBS += -rdynamic
-TEMPLATE = app
-RESOURCES += ../../bulmages-recursos-graficos.qrc
 INCLUDEPATH += ../../bulmalib \
 ../../bulmalib/.ui \
 ../../bulmalib/.moc \

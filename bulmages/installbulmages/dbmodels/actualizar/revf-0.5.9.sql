@@ -48,6 +48,29 @@ language 'plpgsql';
 
 -- SELECT drop_if_exists_proc ('calculacodigocompletoarticulo','');
 
+-- ======================== COMPROBACION DE CUAL ES LA ULTIMA VERSION ==================================
+
+CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.5.9%'' OR valor = ''0.5.3'');
+	IF FOUND THEN
+		RETURN 0;
+	ELSE
+		RETURN -1;		 
+	END IF;
+END;
+'   LANGUAGE plpgsql;
+SELECT compruebarevision();
+DROP FUNCTION compruebarevision() CASCADE;
+\echo "Comprobada la revision"
+
+-- ========================  FIN DE LA COMPROBACION ============================
+
+
+
+
 SELECT drop_if_exists_proc ('narticulo','');
 CREATE FUNCTION narticulo () RETURNS "trigger"
 AS '
@@ -386,6 +409,23 @@ BEGIN
 	ALTER TABLE presupuesto ALTER COLUMN fpresupuesto SET DEFAULT now();
 	ALTER TABLE factura ALTER COLUMN ffactura SET DEFAULT now();
 
+	SELECT INTO as * FROM pg_attribute WHERE attname=''codcliente'';
+	IF NOT FOUND THEN
+		ALTER TABLE cliente ADD COLUMN codcliente character varying(12);
+		ALTER TABLE cliente ADD CONSTRAINT ucodclient UNIQUE(codcliente);
+	END IF;
+
+	SELECT INTO as * FROM pg_attribute WHERE attname=''corpcliente'';
+	IF NOT FOUND THEN
+		ALTER TABLE cliente ADD COLUMN corpcliente character varying(200);
+	END IF;
+
+
+	SELECT INTO as * FROM pg_attribute WHERE attname=''codproveedor'';
+	IF NOT FOUND THEN
+		ALTER TABLE proveedor ADD COLUMN codproveedor character varying(12);
+		ALTER TABLE proveedor ADD CONSTRAINT ucodprov UNIQUE(codproveedor);
+	END IF;
 
 	RETURN 0;
 END;
@@ -820,9 +860,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.5.9'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.5.9-0001'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0001''); 		 
 	END IF;
 	RETURN 0;
 END;

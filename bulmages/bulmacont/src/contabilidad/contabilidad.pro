@@ -23,10 +23,6 @@ images \
 
 CONFIG += release 
 
-#warn_on \
-#qt4
-#rdynamic
-
 LIBS += -rdynamic \
 	-lbulmalib
 

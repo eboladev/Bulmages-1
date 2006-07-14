@@ -255,7 +255,7 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 #define __DEBUGMODE
-// #undef __DEBUGMODE
+#undef __DEBUGMODE
 void _depura(QString cad, int nivel, QString param) {
 
 #ifdef __DEBUGMODE

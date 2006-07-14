@@ -49,6 +49,8 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de baja del cliente"));
     addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Comentarios"));
     addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Cliente inactivo"));
+    addDBCampo("codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo"));
+    addDBCampo("corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Corporacion"));
     _depura("END Cliente::Cliente", 0);
 }
 
@@ -100,6 +102,8 @@ void Cliente::pintaCliente() {
     pintacomentcliente(DBvalue("comentcliente"));
     pintainactivocliente(DBvalue("inactivocliente"));
     pintaprovcliente(DBvalue("provcliente"));
+    pintacodcliente(DBvalue("codcliente"));
+    pintacorpcliente(DBvalue("corpcliente"));
 
     _depura("END Cliente::pintaCliente", 0);
 

@@ -94,6 +94,13 @@ public:
     void setprovcliente(QString val) {
         setDBvalue("provcliente", val);
     };
+    void setcodcliente(QString val) {
+        setDBvalue("codcliente", val);
+    };
+    void setcorpcliente(QString val) {
+        setDBvalue("corpcliente", val);
+    };
+
     virtual void pintaidcliente (QString) {}
     ;
     virtual void pintanomcliente (QString) {}
@@ -127,6 +134,10 @@ public:
     virtual void pintainactivocliente (QString) {}
     ;
     virtual void pintaprovcliente (QString) {}
+    ;
+    virtual void pintacodcliente (QString) {}
+    ;
+    virtual void pintacorpcliente (QString) {}
     ;
 };
 

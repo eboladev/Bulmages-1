@@ -14,6 +14,7 @@ DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString 
 
 
 QString DBCampo::valorcampoprep(int &error) {
+	_depura("DBCampo::valorcampoprep", 0);
     error = 0;
     if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
         if (m_valorcampo == "") {
@@ -28,6 +29,8 @@ QString DBCampo::valorcampoprep(int &error) {
             return "NULL";
         return m_conexionbase->sanearCadena(m_valorcampo);
     case DBvarchar:
+	if (m_valorcampo == "")
+		return "NULL";
         return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
     case DBdate:
         if (m_valorcampo == "")
@@ -47,6 +50,7 @@ QString DBCampo::valorcampoprep(int &error) {
     error = -1;
     _depura("Error en la conversion de tipos",2);
     return "";
+	_depura("END DBCampo::valorcampoprep", 0);
 }
 
 

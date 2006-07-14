@@ -149,6 +149,8 @@ int ClienteView::guardar() {
     setDBvalue("urlcliente", m_urlcliente->text());
     setDBvalue("comentcliente", m_comentcliente->text());
     setDBvalue("provcliente", m_provcliente->currentText());
+    setDBvalue("codcliente", mui_codcliente->text());
+    setDBvalue("corpcliente", mui_corpcliente->text());
     int err = Cliente::guardar();
     if (!err)
         dialogChanges_cargaInicial();
