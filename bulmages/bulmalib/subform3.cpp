@@ -121,7 +121,6 @@ void SubForm3::nuevoRegistro() {
         mui_list->setItem(m_lista.size()-1,i,camp);
     }// end for
     _depura("END SubForm3::nuevoRegistro\n",0);
-
 }
 
 /** Pinta los titulares en la tabla  */

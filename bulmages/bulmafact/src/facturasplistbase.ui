@@ -501,16 +501,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaArticulo</class>
+   <class>BusquedaProveedor</class>
    <extends></extends>
-   <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>FacturasProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>facturasplist.h</header>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -522,16 +515,23 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>busquedaproveedor.h</header>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaArticulo</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedaarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>FacturasProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>facturasplist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -553,6 +553,22 @@
     <hint type="destinationlabel" >
      <x>160</x>
      <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>623</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>287</x>
+     <y>37</y>
     </hint>
    </hints>
   </connection>

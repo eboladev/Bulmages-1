@@ -491,20 +491,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>AlbaranesProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>albaranesproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProveedor</class>
    <extends></extends>
    <header>busquedaproveedor.h</header>
@@ -525,6 +511,20 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>AlbaranesProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>albaranesproveedor.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -541,8 +541,24 @@
      <y>31</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>159</x>
-     <y>59</y>
+     <x>168</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>620</x>
+     <y>33</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>293</x>
+     <y>44</y>
     </hint>
    </hints>
   </connection>

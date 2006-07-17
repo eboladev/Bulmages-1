@@ -541,17 +541,17 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProveedor</class>
    <extends></extends>
    <header>busquedaproveedor.h</header>
    <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -579,6 +579,22 @@
     <hint type="destinationlabel" >
      <x>127</x>
      <y>77</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>595</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>284</x>
+     <y>36</y>
     </hint>
    </hints>
   </connection>

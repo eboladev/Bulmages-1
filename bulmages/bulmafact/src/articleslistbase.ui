@@ -512,5 +512,21 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>602</x>
+     <y>39</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>293</x>
+     <y>49</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

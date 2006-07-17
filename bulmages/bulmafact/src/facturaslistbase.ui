@@ -520,17 +520,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaArticulo</class>
    <extends></extends>
    <header>busquedaarticulo.h</header>
    <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -548,10 +548,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
+   <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
@@ -572,6 +572,22 @@
     <hint type="destinationlabel" >
      <x>120</x>
      <y>74</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>628</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>290</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>

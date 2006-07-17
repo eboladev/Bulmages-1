@@ -90,6 +90,7 @@ QString FacturasList::generaFiltro() {
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descfactura LIKE '%" + m_filtro->text() + "%' ";
+	filtro +=" OR reffactura LIKE '"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";

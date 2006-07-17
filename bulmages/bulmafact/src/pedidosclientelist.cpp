@@ -83,6 +83,7 @@ QString PedidosClienteList::generarFiltro() {
 
     if (m_filtro->text() != "") {
         filtro = " AND ( descpedidocliente LIKE '%" + m_filtro->text() + "%' ";
+	filtro +=" OR refpedidocliente LIKE '"+m_filtro->text()+"%' ";
         filtro += " OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";

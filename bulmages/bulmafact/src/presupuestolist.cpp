@@ -88,6 +88,7 @@ QString PresupuestoList::generaFiltro() {
 
     if (m_filtro->text() != "") {
         filtro = " AND (descpresupuesto LIKE '%" + m_filtro->text() + "%' ";
+	filtro +=" OR refpresupuesto LIKE '"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";

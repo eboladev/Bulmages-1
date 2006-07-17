@@ -94,6 +94,10 @@ public:
     };
 
 public slots:
+    virtual void on_m_filtro_textChanged(const QString &text) {
+	if(text.size() >=3) 
+		on_mui_actualizar_clicked();
+    };
     virtual void on_mui_list_cellDoubleClicked(int, int);
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);
     virtual void s_imprimir1();

@@ -538,11 +538,27 @@
    <hints>
     <hint type="sourcelabel" >
      <x>236</x>
-     <y>90</y>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>57</x>
-     <y>169</y>
+     <x>66</x>
+     <y>138</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>631</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>295</x>
+     <y>38</y>
     </hint>
    </hints>
   </connection>

@@ -498,9 +498,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaCliente</class>
    <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -509,6 +509,13 @@
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -525,13 +532,6 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -544,12 +544,28 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>239</x>
-     <y>29</y>
+     <x>236</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>209</x>
-     <y>64</y>
+     <x>218</x>
+     <y>130</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_filtro</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mui_actualizar</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>641</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>291</x>
+     <y>38</y>
     </hint>
    </hints>
   </connection>
