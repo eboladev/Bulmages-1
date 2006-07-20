@@ -65,11 +65,11 @@ PedidosProveedorList::~PedidosProveedorList() {
 
 
 void PedidosProveedorList::presenta() {
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalpedpro(idpedidoproveedor) AS total, calcbimppedpro(idpedidoproveedor) AS base, calcimpuestospedpro(idpedidoproveedor) AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalpedidoproveedor AS total, bimppedidoproveedor AS base, imppedidoproveedor AS impuestos FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     mui_list->cargar(cur);
     delete cur;
     /// Hacemos el calculo del total.
-    cur = m_companyact->cargacursor("SELECT SUM(calctotalpedpro(idpedidoproveedor)) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(totalpedidoproveedor) AS total FROM pedidoproveedor LEFT JOIN proveedor ON pedidoproveedor.idproveedor=proveedor.idproveedor LEFT JOIN almacen ON pedidoproveedor.idalmacen=almacen.idalmacen WHERE 1=1 " + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 }

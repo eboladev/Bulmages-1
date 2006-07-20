@@ -67,12 +67,12 @@ AlbaranClienteList::~AlbaranClienteList() {
 void AlbaranClienteList::presenta() {
     _depura("AlbaranClienteList::presenta\n");
 
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalalbaran(idalbaran) AS total, calcbimpalbaran(idalbaran) AS base, calcimpuestosalbaran(idalbaran) AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
     mui_list->cargar(cur);
     delete cur;
 
     /// Hacemos el calculo del total.
-    cur = m_companyact->cargacursor("SELECT SUM(calctotalalbaran(idalbaran)) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 

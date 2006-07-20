@@ -65,13 +65,13 @@ FacturasProveedorList::~FacturasProveedorList() {
 
 void FacturasProveedorList::presenta() {
     _depura("FacturasProveedorList::presenta", 0);
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, calctotalfacpro(idfacturap) AS total, calcbimpfacpro(idfacturap) AS base, calcimpuestosfacpro(idfacturap) AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
 
     mui_list->cargar(cur);
     delete cur;
 
     /// Hacemos el calculo del total.
-    cur = m_companyact->cargacursor("SELECT SUM(calctotalfacpro(idfacturap)) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
+    cur = m_companyact->cargacursor("SELECT SUM(totalfacturap) AS total FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
     _depura("END FacturasProveedorList::presenta", 0);

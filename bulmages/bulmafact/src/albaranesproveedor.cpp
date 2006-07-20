@@ -68,8 +68,8 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta().", 1);
     if (m_companyact != NULL ) {
-        cursor2 * cur = m_companyact->cargacursor("SELECT *, calctotalalbpro(idalbaranp) AS total, " \
-                        "calcbimpalbpro(idalbaranp) AS base, calcimpuestosalbpro(idalbaranp) AS impuestos " \
+        cursor2 * cur = m_companyact->cargacursor("SELECT *, totalalbaranp AS total, " \
+                        "bimpalbaranp AS base, impalbaranp AS impuestos " \
                         "FROM albaranp LEFT " \
                         "JOIN proveedor ON albaranp.idproveedor = " \
                         "proveedor.idproveedor LEFT JOIN almacen ON " \
@@ -80,7 +80,7 @@ void AlbaranesProveedor::presenta() {
         delete cur;
 
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(calctotalalbpro(idalbaranp)) " \
+        cur = m_companyact->cargacursor("SELECT SUM(totalalbaranp) " \
                                         "AS total FROM albaranp LEFT JOIN proveedor ON " \
                                         "albaranp.idproveedor = proveedor.idproveedor LEFT " \
                                         "JOIN almacen ON albaranp.idalmacen=almacen.idalmacen " \

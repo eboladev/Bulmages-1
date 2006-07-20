@@ -64,12 +64,12 @@ PedidosClienteList::~PedidosClienteList() {
 
 void PedidosClienteList::presenta() {
     /// Hacemos el listado y lo presentamos.
-    cursor2 * cur= companyact->cargacursor("SELECT *, calctotalpedcli(idpedidocliente) AS total, calcbimppedcli(idpedidocliente) AS base, calcimpuestospedcli(idpedidocliente) AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  " + generarFiltro());
+    cursor2 * cur= companyact->cargacursor("SELECT *, totalpedidocliente AS total, bimppedidocliente AS base, impedidocliente AS impuestos FROM pedidocliente LEFT JOIN  cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1  " + generarFiltro());
     mui_list->cargar(cur);
     delete cur;
 
     /// Hacemos el calculo del total.
-    cur = companyact->cargacursor("SELECT SUM(calctotalpedcli(idpedidocliente)) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1" + generarFiltro());
+    cur = companyact->cargacursor("SELECT SUM(totalpedidocliente) AS total FROM pedidocliente LEFT JOIN cliente ON pedidocliente.idcliente=cliente.idcliente LEFT JOIN almacen ON pedidocliente.idalmacen=almacen.idalmacen WHERE 1=1" + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 }

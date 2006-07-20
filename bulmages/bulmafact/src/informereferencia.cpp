@@ -120,25 +120,25 @@ void InformeReferencia::generarinforme() {
     fitxersortidatxt += "<tr>\n";
 
     /// Total presupuestado.
-    SQLQuery = "SELECT SUM(calctotalpres(idpresupuesto)) AS tpres FROM presupuesto WHERE refpresupuesto='" + m_referencia + "' ";
+    SQLQuery = "SELECT SUM(totalpresupuesto) AS tpres FROM presupuesto WHERE refpresupuesto='" + m_referencia + "' ";
     cur = companyact->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tpres") + "</td>\n";
     delete cur;
 
     /// Total pedido.
-    SQLQuery = "SELECT SUM(calctotalpedcli(idpedidocliente)) AS tpedcli FROM pedidocliente WHERE refpedidocliente='" + m_referencia + "' ";
+    SQLQuery = "SELECT SUM(totalpedidocliente) AS tpedcli FROM pedidocliente WHERE refpedidocliente='" + m_referencia + "' ";
     cur = companyact->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tpedcli") + "</td>\n";
     delete cur;
 
     /// Total trabajado.
-    SQLQuery = "SELECT SUM(calctotalalbaran(idalbaran)) AS talb FROM albaran WHERE refalbaran='" + m_referencia + "' ";
+    SQLQuery = "SELECT SUM(totalalbaran) AS talb FROM albaran WHERE refalbaran='" + m_referencia + "' ";
     cur = companyact->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("talb") + "</td>\n";
     delete cur;
 
     /// Total facturado.
-    SQLQuery = "SELECT SUM(calctotalfactura(idfactura)) AS tfact FROM factura WHERE reffactura='" + m_referencia + "' ";
+    SQLQuery = "SELECT SUM(totalfactura) AS tfact FROM factura WHERE reffactura='" + m_referencia + "' ";
     cur = companyact->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tfact") + "</td>\n";
     delete cur;
