@@ -2,6 +2,11 @@
 -- Modificación de campos y funciones de la BD para la adaptaci� al tipo de datos monetario
 --
 
+
+-- Ocultamos las noticias
+SET client_min_messages TO warning;
+
+
 BEGIN;
 
 --
@@ -846,6 +851,461 @@ END;
 \echo "Aderezamos las tablas de tarifas."
 
 
+-- ============= METEMOS LOS TOTALES EN PEDIDOS A CLIENTE  =============================
+-- =====================================================================================
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''totalpedidocliente'';
+	IF NOT FOUND THEN
+		ALTER TABLE pedidocliente ADD COLUMN totalpedidocliente NUMERIC(12,2);
+		ALTER TABLE pedidocliente ADD COLUMN bimppedidocliente NUMERIC(12,2);
+		ALTER TABLE pedidocliente ADD COLUMN imppedidocliente NUMERIC(12,2);
+		ALTER TABLE pedidocliente ALTER COLUMN totalpedidocliente SET DEFAULT 0;
+		ALTER TABLE pedidocliente ALTER COLUMN bimppedidocliente SET DEFAULT 0;
+		ALTER TABLE pedidocliente ALTER COLUMN imppedidocliente SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos los campos de totales para los pedidos a cliente"
+
+SELECT drop_if_exists_proc ('actualizatotpedcli','');
+CREATE OR REPLACE FUNCTION actualizatotpedcli() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalpedcli(NEW.idpedidocliente);
+	bimp := calcbimppedcli(NEW.idpedidocliente);
+	imp := calcimpuestospedcli(NEW.idpedidocliente);
+	UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = NEW.idpedidocliente;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticospedidoclientetrigger
+    AFTER INSERT OR UPDATE ON lpedidocliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedcli();
+
+CREATE TRIGGER totalesautomaticospedidoclientetrigger1
+    AFTER INSERT OR UPDATE ON dpedidocliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedcli();
+
+SELECT drop_if_exists_proc ('actualizatotpedclib','');
+CREATE OR REPLACE FUNCTION actualizatotpedclib() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalpedcli(OLD.idpedidocliente);
+	bimp := calcbimppedcli(OLD.idpedidocliente);
+	imp := calcimpuestospedcli(OLD.idpedidocliente);
+	UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = OLD.idpedidocliente;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticospedidoclientetriggerd
+    AFTER DELETE OR UPDATE ON lpedidocliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedclib();
+
+CREATE TRIGGER totalesautomaticospedidoclientetriggerd1
+    AFTER DELETE OR UPDATE ON dpedidocliente
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedclib();
+
+
+-- ============= METEMOS LOS TOTALES EN ALBARANES A CLIENTE  ===========================
+-- =====================================================================================
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''totalalbaran'';
+	IF NOT FOUND THEN
+		ALTER TABLE albaran ADD COLUMN totalalbaran NUMERIC(12,2);
+		ALTER TABLE albaran ADD COLUMN bimpalbaran NUMERIC(12,2);
+		ALTER TABLE albaran ADD COLUMN impalbaran NUMERIC(12,2);
+		ALTER TABLE albaran ALTER COLUMN totalalbaran SET DEFAULT 0;
+		ALTER TABLE albaran ALTER COLUMN bimpalbaran SET DEFAULT 0;
+		ALTER TABLE albaran ALTER COLUMN impalbaran SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos los campos de totales para los albaranes"
+
+SELECT drop_if_exists_proc ('actualizatotalbaran','');
+CREATE OR REPLACE FUNCTION actualizatotalbaran() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalalbaran(NEW.idalbaran);
+	bimp := calcbimpalbaran(NEW.idalbaran);
+	imp := calcimpuestosalbaran(NEW.idalbaran);
+	UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = NEW.idalbaran;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosalbarantrigger
+    AFTER INSERT OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaran();
+
+CREATE TRIGGER totalesautomaticosalbarantrigger1
+    AFTER INSERT OR UPDATE ON dalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaran();
+
+SELECT drop_if_exists_proc ('actualizatotalbaranb','');
+CREATE OR REPLACE FUNCTION actualizatotalbaranb() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalalbaran(OLD.idalbaran);
+	bimp := calcbimpalbaran(OLD.idalbaran);
+	imp := calcimpuestosalbaran(OLD.idalbaran);
+	UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = OLD.idalbaran;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosalbarantriggerd
+    AFTER DELETE OR UPDATE ON lalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaranb();
+
+CREATE TRIGGER totalesautomaticosalbarantriggerd1
+    AFTER DELETE OR UPDATE ON dalbaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaranb();
+
+
+-- ============= METEMOS LOS TOTALES EN FACTURAS A CLIENTE  ===========================
+-- =====================================================================================
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''totalfactura'';
+	IF NOT FOUND THEN
+		ALTER TABLE factura ADD COLUMN totalfactura NUMERIC(12,2);
+		ALTER TABLE factura ADD COLUMN bimpfactura NUMERIC(12,2);
+		ALTER TABLE factura ADD COLUMN impfactura NUMERIC(12,2);
+		ALTER TABLE factura ALTER COLUMN totalfactura SET DEFAULT 0;
+		ALTER TABLE factura ALTER COLUMN bimpfactura SET DEFAULT 0;
+		ALTER TABLE factura ALTER COLUMN impfactura SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos los campos de totales para las facturas a cliente"
+
+SELECT drop_if_exists_proc ('actualizatotfactura','');
+CREATE OR REPLACE FUNCTION actualizatotfactura() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalfactura(NEW.idfactura);
+	bimp := calcbimpfactura(NEW.idfactura);
+	imp := calcimpuestosfactura(NEW.idfactura);
+	UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = NEW.idfactura;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosfacturatrigger
+    AFTER INSERT OR UPDATE ON lfactura
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfactura();
+
+CREATE TRIGGER totalesautomaticosfacturatrigger1
+    AFTER INSERT OR UPDATE ON dfactura
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfactura();
+
+SELECT drop_if_exists_proc ('actualizatotfacturab','');
+CREATE OR REPLACE FUNCTION actualizatotfacturab() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalfactura(OLD.idfactura);
+	bimp := calcbimpfactura(OLD.idfactura);
+	imp := calcimpuestosfactura(OLD.idfactura);
+	UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = OLD.idfactura;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosfacturatriggerd
+    AFTER DELETE OR UPDATE ON lfactura
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfacturab();
+
+CREATE TRIGGER totalesautomaticosfacturatriggerd1
+    AFTER DELETE OR UPDATE ON dfactura
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfacturab();
+
+-- ============= METEMOS LOS TOTALES EN PEDIDOS A PROVEEDOR  ===========================
+-- =====================================================================================
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''totalpedidoproveedor'';
+	IF NOT FOUND THEN
+		ALTER TABLE pedidoproveedor ADD COLUMN totalpedidoproveedor NUMERIC(12,2);
+		ALTER TABLE pedidoproveedor ADD COLUMN bimppedidoproveedor NUMERIC(12,2);
+		ALTER TABLE pedidoproveedor ADD COLUMN imppedidoproveedor NUMERIC(12,2);
+		ALTER TABLE pedidoproveedor ALTER COLUMN totalpedidoproveedor SET DEFAULT 0;
+		ALTER TABLE pedidoproveedor ALTER COLUMN bimppedidoproveedor SET DEFAULT 0;
+		ALTER TABLE pedidoproveedor ALTER COLUMN imppedidoproveedor SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos los campos de totales para los pedidos a proveedor"
+
+SELECT drop_if_exists_proc ('actualizatotpedidoproveedor','');
+CREATE OR REPLACE FUNCTION actualizatotpedidoproveedor() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalpedpro(NEW.idpedidoproveedor);
+	bimp := calcbimppedpro(NEW.idpedidoproveedor);
+	imp := calcimpuestospedpro(NEW.idpedidoproveedor);
+	UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = NEW.idpedidoproveedor;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticospedidoproveedortrigger
+    AFTER INSERT OR UPDATE ON lpedidoproveedor
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedidoproveedor();
+
+CREATE TRIGGER totalesautomaticospedidoproveedortrigger1
+    AFTER INSERT OR UPDATE ON dpedidoproveedor
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedidoproveedor();
+
+SELECT drop_if_exists_proc ('actualizatotpedidoproveedorb','');
+CREATE OR REPLACE FUNCTION actualizatotpedidoproveedorb() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalpedpro(OLD.idpedidoproveedor);
+	bimp := calcbimppedpro(OLD.idpedidoproveedor);
+	imp := calcimpuestospedpro(OLD.idpedidoproveedor);
+	UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = OLD.idpedidoproveedor;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticospedidoproveedortriggerd
+    AFTER DELETE OR UPDATE ON lpedidoproveedor
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedidoproveedorb();
+
+CREATE TRIGGER totalesautomaticospedidoproveedortriggerd1
+    AFTER DELETE OR UPDATE ON dpedidoproveedor
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotpedidoproveedorb();
+
+
+
+-- ============= METEMOS LOS TOTALES EN ALBARANES A PROVEEDOR  =========================
+-- =====================================================================================
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''totalalbaranp'';
+	IF NOT FOUND THEN
+		ALTER TABLE albaranp ADD COLUMN totalalbaranp NUMERIC(12,2);
+		ALTER TABLE albaranp ADD COLUMN bimpalbaranp NUMERIC(12,2);
+		ALTER TABLE albaranp ADD COLUMN impalbaranp NUMERIC(12,2);
+		ALTER TABLE albaranp ALTER COLUMN totalalbaranp SET DEFAULT 0;
+		ALTER TABLE albaranp ALTER COLUMN bimpalbaranp SET DEFAULT 0;
+		ALTER TABLE albaranp ALTER COLUMN impalbaranp SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos los campos de totales para los albaranes a proveedor"
+
+SELECT drop_if_exists_proc ('actualizatotalbaranp','');
+CREATE OR REPLACE FUNCTION actualizatotalbaranp() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalalbpro(NEW.idalbaranp);
+	bimp := calcbimpalbpro(NEW.idalbaranp);
+	imp := calcimpuestosalbpro(NEW.idalbaranp);
+	UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = NEW.idalbaranp;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosalbaranptrigger
+    AFTER INSERT OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaranp();
+
+CREATE TRIGGER totalesautomaticosalbaranptrigger1
+    AFTER INSERT OR UPDATE ON dalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaranp();
+
+SELECT drop_if_exists_proc ('actualizatotalbaranpb','');
+CREATE OR REPLACE FUNCTION actualizatotalbaranpb() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalalbpro(OLD.idalbaranp);
+	bimp := calcbimpalbpro(OLD.idalbaranp);
+	imp := calcimpuestosalbpro(OLD.idalbaranp);
+	UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = OLD.idalbaranp;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosalbaranptriggerd
+    AFTER DELETE OR UPDATE ON lalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaranpb();
+
+CREATE TRIGGER totalesautomaticosalbaranptriggerd1
+    AFTER DELETE OR UPDATE ON dalbaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotalbaranpb();
+
+
+
+-- ============= METEMOS LOS TOTALES EN FACTURAS A PROVEEDOR  ==========================
+-- =====================================================================================
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''totalfacturap'';
+	IF NOT FOUND THEN
+		ALTER TABLE facturap ADD COLUMN totalfacturap NUMERIC(12,2);
+		ALTER TABLE facturap ADD COLUMN bimpfacturap NUMERIC(12,2);
+		ALTER TABLE facturap ADD COLUMN impfacturap NUMERIC(12,2);
+		ALTER TABLE facturap ALTER COLUMN totalfacturap SET DEFAULT 0;
+		ALTER TABLE facturap ALTER COLUMN bimpfacturap SET DEFAULT 0;
+		ALTER TABLE facturap ALTER COLUMN impfacturap SET DEFAULT 0;
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Agregamos los campos de totales para las facturas a proveedor"
+
+SELECT drop_if_exists_proc ('actualizatotfacturap','');
+CREATE OR REPLACE FUNCTION actualizatotfacturap() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalfacpro(NEW.idfacturap);
+	bimp := calcbimpfacpro(NEW.idfacturap);
+	imp := calcimpuestosfacpro(NEW.idfacturap);
+	UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = NEW.idfacturap;
+	RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosfacturaptrigger
+    AFTER INSERT OR UPDATE ON lfacturap
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfacturap();
+
+CREATE TRIGGER totalesautomaticosfacturaptrigger1
+    AFTER INSERT OR UPDATE ON dfacturap
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfacturap();
+
+SELECT drop_if_exists_proc ('actualizatotfacturapb','');
+CREATE OR REPLACE FUNCTION actualizatotfacturapb() returns TRIGGER
+AS '
+DECLARE
+	tot NUMERIC(12,2);
+	bimp NUMERIC(12,2);
+	imp NUMERIC(12,2);
+BEGIN
+	tot := calctotalfacpro(OLD.idfacturap);
+	bimp := calcbimpfacpro(OLD.idfacturap);
+	imp := calcimpuestosfacpro(OLD.idfacturap);
+	UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = OLD.idfacturap;
+	RETURN OLD;
+END;
+' LANGUAGE plpgsql;
+
+CREATE TRIGGER totalesautomaticosfacturaptriggerd
+    AFTER DELETE OR UPDATE ON lfacturap
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfacturapb();
+
+CREATE TRIGGER totalesautomaticosfacturaptriggerd1
+    AFTER DELETE OR UPDATE ON dfacturap
+    FOR EACH ROW
+    EXECUTE PROCEDURE actualizatotfacturapb();
 
 
 
