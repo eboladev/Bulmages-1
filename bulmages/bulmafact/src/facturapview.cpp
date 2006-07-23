@@ -45,6 +45,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
     m_forma_pago->setcompany(comp);
     m_proveedor->setcompany(comp);
     m_descuentos->setcompany(comp);
+    m_reffacturap->setcompany(comp);
     setListLinFacturaProveedor(subform2);
     setListDescuentoFacturaProv(m_descuentos);
     inicialize();

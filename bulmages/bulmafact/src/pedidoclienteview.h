@@ -123,7 +123,6 @@ public slots:
         generarAlbaran();
     };
     virtual void on_mui_cobrar_clicked();
-    virtual void on_mui_informereferencia_clicked();
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
     };

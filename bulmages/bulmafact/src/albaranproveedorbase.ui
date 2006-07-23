@@ -283,7 +283,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_refalbaranp" />
+         <widget class="BusquedaReferencia" name="m_refalbaranp" />
         </item>
        </layout>
       </widget>
@@ -2007,9 +2007,23 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3TextEdit</class>
+   <class>ListDescuentoAlbaranProvView</class>
    <extends></extends>
-   <header>q3textedit.h</header>
+   <header>listdescalbaranprovview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends></extends>
+   <header>busquedaalmacen.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2028,6 +2042,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -2042,23 +2063,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
+   <class>Q3TextEdit</class>
    <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoAlbaranProvView</class>
-   <extends></extends>
-   <header>listdescalbaranprovview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
+   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

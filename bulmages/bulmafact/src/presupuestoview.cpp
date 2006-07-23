@@ -65,6 +65,7 @@ PresupuestoView::PresupuestoView(company *comp , QWidget *parent, const char *na
     m_forma_pago->setcompany(comp);
     m_almacen->setcompany(comp);
     m_trabajador->setcompany(comp);
+    m_refpresupuesto->setcompany(comp);
     setlislinpresupuesto(subform2);
     setlisdescpresupuesto(m_descuentos);
     inicialize();
@@ -234,15 +235,6 @@ int PresupuestoView::cargar(QString id) {
         return -1;
     dialogChanges_cargaInicial();
     return 0;
-}
-
-
-void PresupuestoView::on_mui_informereferencia_clicked() {
-    InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(DBvalue("refpresupuesto"));
-    inf->generarinforme();
-    delete inf;
-
 }
 
 

@@ -104,7 +104,6 @@ private:
     virtual int guardar();
 
 public slots:
-    virtual void on_mui_informereferencia_clicked();
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();

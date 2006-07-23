@@ -53,11 +53,11 @@ AlbaranCliente(comp), dialogChanges(this) {
     setupUi(this);
     subform2->setcompany(comp);
     m_descuentos->setcompany(comp);
-
     m_almacen->setcompany(comp);
     m_forma_pago->setcompany(comp);
     m_cliente->setcompany(comp);
     m_trabajador->setcompany(comp);
+    m_refalbaran->setcompany(comp);
 
     setListLinAlbaranCliente(subform2);
     setListDescuentoAlbaranCliente(m_descuentos);
@@ -261,14 +261,6 @@ int AlbaranClienteView::cargar(QString id)  {
     _depura("AlbaranClienteView::cargar", 0);
 
     return 0;
-}
-
-
-void AlbaranClienteView::on_mui_informereferencia_clicked()  {
-    InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(DBvalue("refalbaran"));
-    inf->generarinforme();
-    delete inf;
 }
 
 

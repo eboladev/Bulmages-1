@@ -238,35 +238,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="m_reffacturap" />
-          </item>
-          <item>
-           <widget class="QToolButton" name="mui_informeref" >
-            <property name="minimumSize" >
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-            <property name="toolTip" >
-             <string>Informe por referencia</string>
-            </property>
-            <property name="whatsThis" >
-             <string>Informe por referencia</string>
-            </property>
-            <property name="text" >
-             <string/>
-            </property>
-            <property name="icon" >
-             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</iconset>
-            </property>
-            <property name="iconSize" >
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-           </widget>
+           <widget class="BusquedaReferencia" name="m_reffacturap" />
           </item>
          </layout>
         </item>
@@ -2010,6 +1982,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends></extends>
    <header>busquedaformapago.h</header>
@@ -2024,6 +2003,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaProveedor</class>
    <extends></extends>
    <header>busquedaproveedor.h</header>
@@ -2031,10 +2017,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
+   <class>Q3TextEdit</class>
    <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
+   <header>q3textedit.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -2048,13 +2034,6 @@
    <class>ListDescuentoFacturaProvView</class>
    <extends></extends>
    <header>listdescfacturaprovview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

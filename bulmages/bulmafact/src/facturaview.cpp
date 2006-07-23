@@ -53,6 +53,7 @@ FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
     m_cliente->setcompany(comp);
     m_descuentos->setcompany(comp);
     m_codigoserie_factura->setcompany(comp);
+    m_reffactura->setcompany(comp);
     setListLinFactura(subform2);
     setListDescuentoFactura(m_descuentos);
     inicialize();
@@ -107,15 +108,6 @@ int FacturaView::cargar(QString id) {
         return 1;
     dialogChanges_cargaInicial();
     return 0;
-}
-
-
-/// Imprime el informe de referencia.
-void FacturaView::on_mui_informereferencia_clicked() {
-    InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(DBvalue("reffactura"));
-    inf->generarinforme();
-    delete inf;
 }
 
 

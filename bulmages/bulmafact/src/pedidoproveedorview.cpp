@@ -51,6 +51,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
     m_descuentos->setcompany(comp);
     m_almacen->setcompany(comp);
     m_trabajador->setcompany(comp);
+    m_refpedidoproveedor->setcompany(comp);
     setListLinPedidoProveedor(subform3);
     setListDescuentoPedidoProveedor(m_descuentos);
     inicialize();

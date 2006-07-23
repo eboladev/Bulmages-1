@@ -135,7 +135,6 @@ public slots:
     virtual void on_mui_facturar_clicked() {
         generarFactura();
     };
-    virtual void on_mui_informereferencia_clicked();
     virtual void on_mui_agregarafactura_clicked() {
         agregarFactura();
     };

@@ -53,13 +53,16 @@ FORMS += about.ui \
          bulmafactbase.ui \
          listalmacenbase.ui \
          listconfiguracionbase.ui \
-         budgetbase.ui 
+         budgetbase.ui  \
+         busquedareferenciabase.ui
+
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
                 bulmafact_en.ts \
                 bulmafact_fr.ts \
                 bulmafact_de.ts \
                 bulmafact_zz.ts 
+
 HEADERS += bulmafact.h \
            company.h \
            providerslist.h \
@@ -144,7 +147,9 @@ HEADERS += bulmafact.h \
            listlinpresupuesto.h \
            linpresupuesto.h \
            listdescpresupuesto.h \
-           descpresupuesto.h 
+           descpresupuesto.h \
+           busquedareferencia.h
+
 SOURCES += bulmafact.cpp \
            main.cpp \
            company.cpp \
@@ -230,7 +235,9 @@ SOURCES += bulmafact.cpp \
            listlinpresupuesto.cpp \
            linpresupuesto.cpp \
            listdescpresupuesto.cpp \
-           descpresupuesto.cpp 
+           descpresupuesto.cpp \
+           busquedareferencia.cpp
+
 INCLUDEPATH += ../../bulmalib \
 ../../bulmalib/.ui \
 ../../bulmalib/.moc \

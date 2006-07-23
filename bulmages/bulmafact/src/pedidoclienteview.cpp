@@ -52,6 +52,7 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
     m_descuentos->setcompany(comp);
     m_almacen->setcompany(comp);
     m_trabajador->setcompany(comp);
+    m_refpedidocliente->setcompany(comp);
     setListLinPedidoCliente(subform3);
     setListDescuentoPedidoCliente(m_descuentos);
     comp->meteWindow(caption(), this);
@@ -202,17 +203,6 @@ int PedidoClienteView::guardar() {
     int err = PedidoCliente::guardar();
     dialogChanges_cargaInicial();
     return err;
-}
-
-
-/// Imprime el informe de referencia.
-void PedidoClienteView::on_mui_informereferencia_clicked() {
-    _depura("PedidoClienteView::on_mui_informereferencia_clicked", 0);
-    InformeReferencia *inf = new InformeReferencia(companyact);
-    inf->setreferencia(DBvalue("refpedidocliente"));
-    inf->generarinforme();
-    delete inf;
-    _depura("END PedidoClienteView::on_mui_informereferencia_clicked", 0);
 }
 
 

@@ -115,7 +115,6 @@ public slots:
         calculaypintatotales();
     };
     virtual void on_mui_cobrar_clicked();
-    virtual void on_mui_informereferencia_clicked();
     virtual void on_mui_aceptar_clicked() {
         if (!guardar() )
             close();

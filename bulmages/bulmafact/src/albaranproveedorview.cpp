@@ -49,6 +49,7 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const
     m_forma_pago->setcompany(comp);
     m_proveedor->setcompany(comp);
     m_descuentos->setcompany(comp);
+    m_refalbaranp->setcompany(comp);
     setListLinAlbaranProveedor(subform2);
     setListDescuentoAlbaranProveedor(m_descuentos);
     inicialize();

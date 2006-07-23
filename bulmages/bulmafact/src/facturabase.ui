@@ -285,35 +285,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_reffactura" />
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_informereferencia" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Informe por referencia</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Informe por referencia</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_informexreferencia.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="BusquedaReferencia" name="m_reffactura" />
         </item>
        </layout>
       </widget>
@@ -2163,13 +2135,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaSerieFactura</class>
    <extends></extends>
    <header>busquedaseriefactura.h</header>
@@ -2184,9 +2149,23 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>ListDescuentoFacturaView</class>
    <extends></extends>
    <header>listdescfacturaview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
