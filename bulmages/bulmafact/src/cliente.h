@@ -70,6 +70,13 @@ public:
     void settelcliente(QString val) {
         setDBvalue("telcliente", val);
     };
+    void setteltrabcliente(QString val) {
+        setDBvalue("teltrabcliente", val);
+    };    
+    void setmovilcliente(QString val) {
+        setDBvalue("movilcliente", val);
+    };
+
     void setfaxcliente(QString val) {
         setDBvalue("faxcliente", val);
     };
@@ -117,8 +124,12 @@ public:
     ;
     virtual void pintacpcliente (QString) {}
     ;
-    virtual void pintatelcliente (QString) {}
-    ;
+    virtual void pintatelcliente (QString) {};
+
+    virtual void pintateltrabcliente (QString) {};
+
+    virtual void pintamovilcliente (QString) {};
+
     virtual void pintafaxcliente (QString) {}
     ;
     virtual void pintamailcliente (QString) {}

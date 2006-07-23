@@ -71,12 +71,7 @@ public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-    virtual int cargar(QString id) {
-        int err = Cobro::cargar(id);
-        setCaption("Cobro " + DBvalue("refcobro"));
-        dialogChanges_cargaInicial();
-        return err;
-    };
+    virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_comentcobro_textChanged(const QString &str) {
         setcomentcobro(str);

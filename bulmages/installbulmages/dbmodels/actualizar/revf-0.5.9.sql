@@ -426,6 +426,12 @@ BEGIN
 	END IF;
 
 
+	SELECT INTO as * FROM pg_attribute WHERE attname=''teltrabcliente'';
+	IF NOT FOUND THEN
+		ALTER TABLE cliente ADD COLUMN teltrabcliente character varying(25);
+		ALTER TABLE cliente ADD COLUMN movilcliente character varying(25);
+	END IF;
+
 	SELECT INTO as * FROM pg_attribute WHERE attname=''codproveedor'';
 	IF NOT FOUND THEN
 		ALTER TABLE proveedor ADD COLUMN codproveedor character varying(12);
@@ -1308,6 +1314,27 @@ CREATE TRIGGER totalesautomaticosfacturaptriggerd1
     EXECUTE PROCEDURE actualizatotfacturapb();
 
 
+-- ================================== DISPARAMOS TRIGGERS  =============================
+-- =====================================================================================
+
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+BEGIN
+	UPDATE lpresupuesto SET cantlpresupuesto = cantlpresupuesto;
+	UPDATE lpedidocliente SET cantlpedidocliente = cantlpedidocliente;
+	UPDATE lalbaran SET cantlalbaran = cantlalbaran;
+	UPDATE lfactura SET cantlfactura = cantlfactura;
+	UPDATE lpedidoproveedor SET cantlpedidoproveedor = cantlpedidoproveedor;
+	UPDATE lalbaranp SET cantlalbaranp = cantlalbaranp;
+	UPDATE lfacturap SET cantlfacturap = cantlfacturap;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+\echo "Disparamos los triggers para que se actualicen los totales."
+
+
 
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
@@ -1322,7 +1349,7 @@ BEGIN
 	IF FOUND THEN
 		UPDATE CONFIGURACION SET valor=''0.5.9-0001'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0001''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0003''); 		 
 	END IF;
 	RETURN 0;
 END;

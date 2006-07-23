@@ -73,6 +73,13 @@ public:
     void pintatelcliente(QString val) {
         m_telcliente->setText(val);
     };
+    void pintateltrabcliente(QString val) {
+        mui_teltrabcliente->setText(val);
+    };
+    void pintamovilcliente(QString val) {
+        mui_movilcliente->setText(val);
+    };
+
     void pintafaxcliente(QString val) {
         m_faxcliente->setText(val);
     };

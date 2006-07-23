@@ -33,26 +33,6 @@ using namespace std;
 
 #include "funcaux.h"
 
-#define COL_IDLPRESUPUESTO 0
-#define COL_IDARTICULO 1
-#define COL_CODARTICULO 2
-#define COL_NOMARTICULO 3
-#define COL_DESCLPRESUPUESTO 4
-#define COL_CANTLPRESUPUESTO 5
-#define COL_PVPLPRESUPUESTO 6
-#define COL_DESCUENTOLPRESUPUESTO 7
-#define COL_IDPRESUPUESTO 8
-#define COL_REMOVE 9
-#define COL_TASATIPO_IVA 10
-#define COL_TIPO_IVA 11
-
-#define COL_DESCUENTO_IDDPRESUPUESTO 0
-#define COL_DESCUENTO_CONCEPTDPRESUPUESTO 1
-#define COL_DESCUENTO_PROPORCIONDPRESUPUESTO 2
-#define COL_DESCUENTO_REMOVE 3
-
-#define coma "'"
-
 
 CobroView::CobroView(company *comp, QWidget *parent, const char *name)
         : QDialog(parent, name, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
@@ -80,6 +60,16 @@ void CobroView::on_mui_borrar_clicked() {
     } // end if
 }
 
+
+int CobroView::cargar(QString id) {
+	_depura("CobroView::cargar", 0);
+        int err = Cobro::cargar(id);
+        setCaption("Cobro " + DBvalue("refcobro"));
+	pintar();
+        dialogChanges_cargaInicial();
+	_depura("END CobroView::cargar", 0);
+        return err;
+    }
 
 void CobroView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);

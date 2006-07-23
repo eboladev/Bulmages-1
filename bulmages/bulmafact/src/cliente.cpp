@@ -42,6 +42,8 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("provcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Provincia"));
     addDBCampo("cpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo postal"));
     addDBCampo("telcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono"));
+    addDBCampo("teltrabcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono en el trabajo"));
+    addDBCampo("movilcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono movil"));
     addDBCampo("faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de fax"));
     addDBCampo("mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Direccion electronica"));
     addDBCampo("urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Identificador Presupuesto"));
@@ -94,6 +96,8 @@ void Cliente::pintaCliente() {
     pintapoblcliente(DBvalue("poblcliente"));
     pintacpcliente(DBvalue("cpcliente"));
     pintatelcliente(DBvalue("telcliente"));
+    pintateltrabcliente(DBvalue("teltrabcliente"));
+    pintamovilcliente(DBvalue("movilcliente"));
     pintafaxcliente(DBvalue("faxcliente"));
     pintamailcliente(DBvalue("mailcliente"));
     pintaurlcliente(DBvalue("urlcliente"));

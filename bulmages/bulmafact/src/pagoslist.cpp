@@ -90,9 +90,19 @@ QString PagosList::generaFiltro() {
     if (m_proveedor->idproveedor() != "") {
         filtro += " AND pago.idproveedor=" + m_proveedor->idproveedor();
     } // end if
-    if (!m_procesados->isChecked() ) {
+
+    QString subfiltro = " AND ";
+    if (mui_efectivos->isChecked() ) {
         filtro += " AND NOT previsionpago";
+	subfiltro = " OR ";
     } // end if
+
+    if (mui_previsiones->isChecked() ) {
+        filtro += subfiltro + " previsionpago";
+    } // end if
+
+
+
     if (m_fechain->text() != "")
         filtro += " AND fechapago >= '" + m_fechain->text() + "' ";
     if (m_fechafin->text() != "")

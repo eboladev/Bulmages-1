@@ -95,8 +95,15 @@ QString CobrosList::generaFiltro() {
     if (m_cliente->idcliente() != "") {
         filtro += " AND cobro.idcliente=" + m_cliente->idcliente();
     } // end if
-    if (!m_procesados->isChecked() ) {
+
+    QString subfiltro = " AND ";
+    if (mui_efectivos->isChecked() ) {
         filtro += " AND NOT previsioncobro";
+	subfiltro = " OR ";
+    } // end if
+
+    if (mui_previsiones->isChecked() ) {
+        filtro += subfiltro + " previsioncobro";
     } // end if
 
     if (m_fechain->text() != "")
@@ -192,6 +199,7 @@ void CobrosList::on_mui_borrar_clicked() {
 
 
 void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
+    _depura("CobrosList::on_mui_list_cellDoubleClicked", 0);
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo == 0 && mdb_idcobro != "") {
         CobroView *bud = new CobroView(m_companyact, NULL, tr("Edicion de cobros"));
@@ -200,6 +208,8 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     } else {
         close();
     } // end if
+    _depura("END CobrosList::on_mui_list_cellDoubleClicked", 0);
+
 }
 
 
