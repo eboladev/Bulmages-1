@@ -72,7 +72,6 @@ company::company() {}
 /** El destructor de la clase company borra toda la memoria almacenada */
 company::~company() {
     _depura("Destructor de company", 0);
-
     delete m_facturasproveedorlist;
     delete m_albaranesproveedor;
     delete m_pedidosproveedorList;
@@ -182,28 +181,28 @@ void company::createMainWindows() {
 
 
 
-void company::viewCobrosList () {
+void company::viewCobrosList() {
     m_cobrosList->hide();
     m_cobrosList->showMaximized();
     m_cobrosList->setActiveWindow();
 }
 
 
-void company::viewPagosList () {
+void company::viewPagosList() {
     m_pagosList->hide();
     m_pagosList->showMaximized();
     m_pagosList->setActiveWindow();
 }
 
 
-void company::listproviders () {
+void company::listproviders() {
     m_providerslist->hide();
     m_providerslist->showMaximized();
     m_providerslist->setActiveWindow();
 }
 
 
-void company::listClients () {
+void company::listClients() {
     m_clientsList->hide();
     m_clientsList->showMaximized();
     m_clientsList->setActiveWindow();
@@ -217,7 +216,7 @@ void company::s_newProveedor() {
 }
 
 
-void company::listarticles () {
+void company::listarticles() {
     m_articleslist->hide();
     m_articleslist->showMaximized();
     m_articleslist->setActiveWindow();
@@ -300,35 +299,35 @@ void company::s_newPedidoPro() {
 }
 
 
-void company::lAlbaranesProveedor () {
+void company::lAlbaranesProveedor() {
     m_albaranesproveedor->hide();
     m_albaranesproveedor->showMaximized();
     m_albaranesproveedor->setActiveWindow();
 }
 
 
-void company::s_listPedidosCli () {
+void company::s_listPedidosCli() {
     m_pedidosclienteList->hide();
     m_pedidosclienteList->showMaximized();
     m_pedidosclienteList->setActiveWindow();
 }
 
 
-void company::s_listPedidosPro () {
+void company::s_listPedidosPro() {
     m_pedidosproveedorList->hide();
     m_pedidosproveedorList->showMaximized();
     m_pedidosproveedorList->setActiveWindow();
 }
 
 
-void company::s_listFacturasCli () {
+void company::s_listFacturasCli() {
     m_facturasList->hide();
     m_facturasList->showMaximized();
     m_facturasList->setActiveWindow();
 }
 
 
-void company::s_listFacturasPro () {
+void company::s_listFacturasPro() {
     m_facturasproveedorlist->hide();
     m_facturasproveedorlist->showMaximized();
     m_facturasproveedorlist->setActiveWindow();
@@ -577,7 +576,7 @@ PagoView * company::newPagoView() {
 
 void company::s_newPagoView() {
     _depura("INIT_company::s_newPagoView", 1);
-    PagoView *pag =  newPagoView();
+    PagoView *pag = newPagoView();
     pag->exec();
     delete pag;
     _depura("END_company::s_newPagoView", 1);
@@ -596,9 +595,13 @@ TipoArticuloList * company::newTipoArticuloList() {
 
 void company::s_newTipoArticuloList() {
     _depura("INIT_company::s_newPagoView", 1);
-    TipoArticuloList *pag =  newTipoArticuloList();
+    TipoArticuloList *pag = newTipoArticuloList();
     pag->exec();
     delete pag;
     _depura("END_company::s_newPagoView", 1);
 }
 
+
+void company::s_indexadorCambiaEstado() {
+    m_listventanas->cambiaVisible();
+}

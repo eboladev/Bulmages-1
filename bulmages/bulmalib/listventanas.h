@@ -29,8 +29,8 @@ class QListWidget1 : public QListWidget {
     Q_OBJECT
 
 public:
-    QListWidget1 (QWidget * parent = 0):
-    QListWidget (parent) {}
+    QListWidget1(QWidget * parent = 0):
+    QListWidget(parent) {}
     ;
     ~QListWidget1() {}
     ;
@@ -45,7 +45,7 @@ private:
     QListWidget1 *m_list;
 
 public:
-    QListWidgetItem1(QListWidget1 *l, QPixmap &p): QListWidgetItem(l) {
+    QListWidgetItem1(QListWidget1 *l, QPixmap &p) : QListWidgetItem(l) {
         setIcon(QIcon(p));
         m_list = l;
     };
@@ -84,6 +84,7 @@ public:
 public:
     int meteWindow(QString, QObject *);
     void sacaWindow(QObject *);
+    void cambiaVisible();
 
 public slots:
     virtual void dclicked();

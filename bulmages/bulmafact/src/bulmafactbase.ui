@@ -25,32 +25,9 @@
      <x>0</x>
      <y>0</y>
      <width>702</width>
-     <height>24</height>
+     <height>29</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>E&amp;mpresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
-   </widget>
-   <widget class="QMenu" name="menuCompras" >
-    <property name="title" >
-     <string>Com&amp;pras</string>
-    </property>
-    <addaction name="actionNuevo_Pedido_Proveedor" />
-    <addaction name="actionListado_Pedidos_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Albaran_Proveedor" />
-    <addaction name="actionListado_Albaranes_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNueva_Factura_Proveedor" />
-    <addaction name="actionListado_Facturas_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Pago" />
-    <addaction name="actionListado_de_Pagos" />
-   </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
      <string>&amp;Ventas</string>
@@ -70,6 +47,22 @@
     <addaction name="actionNuevo_Cobro" />
     <addaction name="actionListado_de_Cobros" />
    </widget>
+   <widget class="QMenu" name="menuCompras" >
+    <property name="title" >
+     <string>Com&amp;pras</string>
+    </property>
+    <addaction name="actionNuevo_Pedido_Proveedor" />
+    <addaction name="actionListado_Pedidos_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Albaran_Proveedor" />
+    <addaction name="actionListado_Albaranes_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNueva_Factura_Proveedor" />
+    <addaction name="actionListado_Facturas_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Pago" />
+    <addaction name="actionListado_de_Pagos" />
+   </widget>
    <widget class="QMenu" name="menuArticulos" >
     <property name="title" >
      <string>Articulo&amp;s</string>
@@ -80,6 +73,14 @@
     <addaction name="actionListado_de_Articulos" />
     <addaction name="separator" />
     <addaction name="actionInventarios" />
+   </widget>
+   <widget class="QMenu" name="menuAcerca_de" >
+    <property name="title" >
+     <string>A&amp;yuda</string>
+    </property>
+    <addaction name="actionDocumentacion" />
+    <addaction name="separator" />
+    <addaction name="actionAcerta_de" />
    </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
@@ -101,20 +102,19 @@
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
    </widget>
-   <widget class="QMenu" name="menuAcerca_de" >
+   <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
-     <string>A&amp;yuda</string>
+     <string>E&amp;mpresa</string>
     </property>
-    <addaction name="actionDocumentacion" />
-    <addaction name="separator" />
-    <addaction name="actionAcerta_de" />
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
    </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
      <string>Venta&amp;na</string>
     </property>
     <addaction name="actionVentana_Completa" />
-    <addaction name="actionIndexador_2" />
+    <addaction name="actionIndexador" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -128,9 +128,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>478</y>
+     <y>475</y>
      <width>702</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -245,7 +245,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Salir</string>
+    <string>&amp;Cierra el programa</string>
    </property>
    <property name="shortcut" >
     <string>Ctrl+Q</string>
@@ -256,7 +256,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Configurar &amp;BulmaFact</string>
+    <string>Configura &amp;BulmaFact...</string>
    </property>
   </action>
   <action name="actionNuevo_Pedido_Proveedor" >
@@ -264,7 +264,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo pe&amp;dido a proveedor</string>
+    <string>Nuevo pe&amp;dido a proveedor...</string>
    </property>
   </action>
   <action name="actionListado_Pedidos_Proveedor" >
@@ -280,7 +280,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo &amp;albaran de proveedor</string>
+    <string>Nuevo &amp;albaran de proveedor...</string>
    </property>
   </action>
   <action name="actionListado_Albaranes_Proveedor" >
@@ -296,7 +296,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nueva &amp;factura de proveedor</string>
+    <string>Nueva &amp;factura de proveedor...</string>
    </property>
   </action>
   <action name="actionListado_Facturas_Proveedor" >
@@ -312,7 +312,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo &amp;presupuesto a cliente</string>
+    <string>Nuevo &amp;presupuesto a cliente...</string>
    </property>
    <property name="shortcut" >
     <string>F5</string>
@@ -331,7 +331,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo pe&amp;dido de cliente</string>
+    <string>Nuevo pe&amp;dido de cliente...</string>
    </property>
   </action>
   <action name="actionListado_Pedidos_Cliente" >
@@ -347,7 +347,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo &amp;albaran a cliente</string>
+    <string>Nuevo &amp;albaran a cliente...</string>
    </property>
   </action>
   <action name="actionListado_Albaranes_Cliente" >
@@ -363,7 +363,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nueva &amp;factura a cliente</string>
+    <string>Nueva &amp;factura a cliente...</string>
    </property>
    <property name="shortcut" >
     <string>F6</string>
@@ -392,7 +392,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo &amp;articulo</string>
+    <string>Nuevo &amp;articulo...</string>
    </property>
    <property name="shortcut" >
     <string>F2</string>
@@ -416,7 +416,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_proveedores.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo &amp;proveedor</string>
+    <string>Nuevo &amp;proveedor...</string>
    </property>
   </action>
   <action name="actionListado_Proveedores" >
@@ -432,7 +432,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo &amp;cliente</string>
+    <string>Nuevo &amp;cliente...</string>
    </property>
    <property name="shortcut" >
     <string>F4</string>
@@ -469,14 +469,9 @@
     <string>F11</string>
    </property>
   </action>
-  <action name="actionIndexador" >
-   <property name="text" >
-    <string>Indexador</string>
-   </property>
-  </action>
   <action name="actionAcerta_de" >
    <property name="text" >
-    <string>&amp;Acerta de BulmaFact</string>
+    <string>&amp;Acerca de BulmaFact</string>
    </property>
   </action>
   <action name="actionListado_de_Pagos" >
@@ -492,7 +487,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo pa&amp;go a proveedor</string>
+    <string>Nuevo pa&amp;go a proveedor...</string>
    </property>
   </action>
   <action name="actionNuevo_Cobro" >
@@ -500,7 +495,7 @@
     <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
    </property>
    <property name="text" >
-    <string>Nuevo co&amp;bro a cliente</string>
+    <string>Nuevo co&amp;bro a cliente...</string>
    </property>
   </action>
   <action name="actionListado_de_Cobros" >
@@ -540,9 +535,9 @@
     <string>F1</string>
    </property>
   </action>
-  <action name="actionIndexador_2" >
+  <action name="actionIndexador" >
    <property name="text" >
-    <string>&amp;Indexador</string>
+    <string>Muestra/oculta &amp;Indexador</string>
    </property>
    <property name="shortcut" >
     <string>Ctrl+I</string>

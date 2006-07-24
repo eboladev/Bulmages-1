@@ -362,6 +362,10 @@
         <source>Total</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Descripcion</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>AlbaranClienteView</name>
@@ -898,10 +902,6 @@
 <context>
     <name>ArticuloList</name>
     <message>
-        <source>Articulos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Borrar articulo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -919,6 +919,10 @@
     </message>
     <message>
         <source>Clientes (*.xml)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Error al Borrar el Articulo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1410,6 +1414,14 @@
         <source>Cliente inactivo</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Codigo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Corporacion</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ClienteBase</name>
@@ -1553,6 +1565,10 @@
         <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
+    <message encoding="UTF-8">
+        <source>Código:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ClienteListSubform</name>
@@ -1614,6 +1630,14 @@
     </message>
     <message>
         <source>Comentarios</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Corporacion</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4858,6 +4882,10 @@ Esta seguro que desea borrarlo?</source>
         <source>&amp;Aceptar</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Codigo:</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ProveedorList</name>
@@ -5092,6 +5120,10 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Esta a punto de borrar un proveedor. Estos datos pueden dar problemas.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Codigo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5858,13 +5890,6 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>Id presupuesto</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>listventanas</name>
-    <message>
-        <source>Indexador</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

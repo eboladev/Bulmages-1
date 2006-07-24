@@ -165,6 +165,9 @@ public slots:
     virtual void on_actionFormas_de_Pago_triggered() {
         s_FPago();
     };
+    virtual void on_actionIndexador_triggered() {
+        m_company->s_indexadorCambiaEstado();
+    }
 };
 
 #endif

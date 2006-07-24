@@ -90,7 +90,7 @@ listventanas::~listventanas() {
 /// This function provides the ability of push a window in the dock window
 /// nombre This QString is the name of the window that was shown in the listbox
 /// obj This QObject * contains the pointer of the window for furtner reference.
-int  listventanas::meteWindow(QString nombre, QObject *obj) {
+int listventanas::meteWindow(QString nombre, QObject *obj) {
     _depura("listventanas::meteWindow()", 0);
     int i = 0;
     while (i < m_listBox->count())  {
@@ -151,5 +151,14 @@ void listventanas::sacaWindow(QObject *obj) {
         i++;
     } // end while
     _depura("END listventanas::sacaWindow()\n", 0);
+}
+
+
+void listventanas::cambiaVisible() {
+    if (this->isVisible() == TRUE) {
+        this->hide();
+    } else {
+        this->show();
+    }
 }
 

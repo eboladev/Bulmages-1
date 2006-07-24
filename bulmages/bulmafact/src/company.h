@@ -57,7 +57,6 @@ class company : public postgresiface2 {
 
 private:
     listventanas *m_listventanas;
-
     ProveedorList *m_providerslist;
     ClientsList *m_clientsList;
     ArticuloList *m_articleslist;
@@ -140,11 +139,12 @@ public:
     void s_newInventario();
     void viewPagosList();
     void viewCobrosList();
+    void s_indexadorCambiaEstado();
     QString searchCompany();
     FacturaProveedorView *newFacturaProveedorView();
     PresupuestoView *newBudget();
     FacturaView *newFacturaView();
-    CobroView   *newCobroView();
+    CobroView *newCobroView();
     PagoView *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();
     PedidoClienteView *newPedidoClienteView();

@@ -252,14 +252,14 @@ void abreempresaview::guardaArchivo() {
         delete curs1;
 
         curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='NombreEmpresa'");
-        if (!curs1->eof() ) {
+        if (!curs1->eof()) {
             nombre = curs1->valor("valor");
         } // end if
 
         delete curs1;
 
         curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre='Ejercicio'");
-        if (!curs1->eof() ) {
+        if (!curs1->eof()) {
             ano = curs1->valor("valor");
         } // end if
         delete curs1;
