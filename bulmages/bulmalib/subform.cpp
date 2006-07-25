@@ -18,11 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-
 #include <QKeyEvent>
 #include <QEvent>
 #include <QFile>
-
 
 #include "subform.h"
 
@@ -30,75 +28,79 @@
 SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
     static int creaciones = 0;
     creaciones ++;
-    _depura("SDBrecord creados:"+QString::number(creaciones),0);
+    _depura("SDBrecord creados:" + QString::number(creaciones), 0);
 }
+
 
 SDBRecord::~SDBRecord() {
     static int destrucciones = 0;
-    _depura("SDBRecord::~SDBRecord",0);
+    _depura("SDBRecord::~SDBRecord", 0);
     destrucciones++;
-    _depura("SDBrecord destruidos:"+QString::number(destrucciones),0);
+    _depura("SDBrecord destruidos:" + QString::number(destrucciones), 0);
 }
-
-
 
 
 int SDBRecord::DBsave(QString &id) {
-	refresh();
-	return DBRecord::DBsave(id);
+    refresh();
+    return DBRecord::DBsave(id);
 }
 
+
 void SDBRecord::refresh() {
-    _depura("SDBRecord::refresh",0);
+    _depura("SDBRecord::refresh", 0);
     SDBCampo *camp;
-    for (int i =0; i < m_lista.size(); ++i) {
-        camp = (SDBCampo *)m_lista.at(i);
+    for (int i = 0; i < m_lista.size(); ++i) {
+        camp = (SDBCampo *) m_lista.at(i);
         camp->refresh();
-    }// end for
-    _depura("END SDBRecord::refresh",0);
+    } // end for
+    _depura("END SDBRecord::refresh", 0);
 }
 
 
 int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
-    _depura("SDBRecord::addDBCampo",0);
+    _depura("SDBRecord::addDBCampo", 0);
     SDBCampo *camp = new SDBCampo(this, m_conexionbase, nom, typ, res, nomp);
     camp->set
     ("");
     m_lista.append(camp);
-    _depura("END SDBRecord::addDBCampo",0);
+    _depura("END SDBRecord::addDBCampo", 0);
     return 0;
 }
 
-/// -------------------------------------------
 
-SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp): QTableWidgetItem2(), DBCampo(com,  nom,  typ,  res,  nomp) {
+/// -------------------------------------------
+SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp)
+        : QTableWidgetItem2(), DBCampo(com, nom, typ, res, nomp) {
     static int creaciones = 0;
-    creaciones ++;
-    _depura("SDBCampo creados:",0,QString::number(creaciones));
-    m_pare=par;
+    creaciones++;
+    _depura("SDBCampo creados:", 0, QString::number(creaciones));
+    m_pare = par;
 }
 
 
 SDBCampo::~SDBCampo() {
-    _depura("SDBCampo::~SDBCampo()",0);
+    _depura("SDBCampo::~SDBCampo()", 0);
     static int destrucciones = 0;
     destrucciones++;
-    _depura("SDBCampo destruidos:",0,QString::number(destrucciones));
+    _depura("SDBCampo destruidos:", 0, QString::number(destrucciones));
 }
 
 
 void SDBCampo::refresh() {
-    _depura("SDBCampo::refresh",0);
+    _depura("SDBCampo::refresh", 0);
     if(tipo() == DBCampo::DBboolean) {
-        DBCampo::set(checkState()==Qt::Checked?"TRUE":"FALSE");
+        DBCampo::set
+            (checkState() == Qt::Checked ? "TRUE" : "FALSE");
     } else
-        DBCampo::set(text());
-    _depura("END SDBCampo::refresh",0);
+        DBCampo::set
+            (text());
+    _depura("END SDBCampo::refresh", 0);
 }
 
 
-int SDBCampo::set(QString val) {
-    _depura("SDBCampo::set",0);
+int SDBCampo::set
+    (QString val) {
+    _depura("SDBCampo::set", 0);
     if(tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
             setCheckState(Qt::Checked);
@@ -106,18 +108,17 @@ int SDBCampo::set(QString val) {
             setCheckState(Qt::Unchecked);
     } else
         QTableWidgetItem2::setText(val);
-    DBCampo::set(val);
-    _depura("END SDBCampo::set",0);
+    DBCampo::set
+        (val);
+    _depura("END SDBCampo::set", 0);
     return 0;
 }
 
 
-
 /// ------------------------------------------------------------
-
 SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     m_nomcampo = nom;
-    m_valorcampo="";
+    m_valorcampo = "";
     m_nompresentacion = nomp;
     m_restricciones = res;
     m_options = opt;

@@ -30,16 +30,17 @@
 #include "qtable2.h"
 #include "subform.h"
 
-/** SubForm3, constructor de la clase base para subformularios */
+
+/// SubForm3, constructor de la clase base para subformularios.
 class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
 protected:
-    QList<SHeader *>   m_lcabecera;		/// Lista de encabezados del listado. Coord x de la tabla
-    QList<SDBRecord *> m_lista;			/// Filas y contenido. Coord y de la tabla
+    QList<SHeader *> m_lcabecera;		/// Lista de encabezados del listado. Coord x de la tabla
+    QList<SDBRecord *> m_lista;		/// Filas y contenido. Coord y de la tabla
     postgresiface2 *m_companyact;		/// Clase padre y acceso a base de datos
     QString m_tablename;			/// Nombre de la tabla en la BD
     QString m_fileconfig;			/// Fichero de configuracion del subformulario
-    QString m_campoid;				/// Campo Identificador de la tabla en la BD
+    QString m_campoid;			/// Campo Identificador de la tabla en la BD
     bool m_insercion;				/// Indica si se pueden insertar nuevas filas o no
     bool m_primero;				/// Indica si ya se ha cargado la configuracion o no
 
@@ -53,13 +54,10 @@ protected:
 
 public:
     SubForm3(QWidget *parent);
-
     virtual ~SubForm3();
-
     SDBCampo * item(int row, int col) {
         return (SDBCampo *) mui_list->item(row,col);
     };
-
     int columnCount() {
         return mui_list->columnCount();
     };
@@ -78,7 +76,6 @@ public:
     int currentRow() {
         return mui_list->currentRow();
     };
-
     int rowCount() {
         return mui_list->rowCount();
     };
@@ -103,36 +100,28 @@ public:
     void showConfig() {
         mui_configurador->show();
     };
-
     QString imprimir();
-
-
     void sortItems(int col, Qt::SortOrder orden);
 
     void setinsercion(bool b) {
-        m_insercion=b;
+        m_insercion = b;
     };
-
     void setcompany(postgresiface2 *c) {
         m_companyact = c;
     };
-
     postgresiface2 *companyact() {
         return m_companyact;
     };
     void setDBTableName(QString nom) {
-        m_tablename=nom;
-	m_fileconfig=nom;
+        m_tablename = nom;
+        m_fileconfig = nom;
     };
-
     void setFileConfig(QString nom) {
-	m_fileconfig=nom;
+        m_fileconfig = nom;
     };
-
     void setDBCampoId(QString nom) {
         m_campoid = nom;
     };
-
     void clear() {
         mui_list->clear();
     };
@@ -142,16 +131,13 @@ public:
     void setColumnCount(int i) {
         mui_list->setColumnCount(i);
     };
-
     void situarse(unsigned int, unsigned int);
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
     SDBRecord *newSDBRecord();
-
     void setColumnValue(QString, QString);
-    QString DBvalue(QString campo, int row=-1);
+    QString DBvalue(QString campo, int row = -1);
     SDBRecord *lineaact();
     SDBRecord *lineaat(int row);
-
     virtual void nuevoRegistro();
     virtual int borrar();
     virtual int borrar(int);
@@ -162,7 +148,9 @@ public:
 public slots:
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
-    virtual void on_mui_appag_clicked() {on_mui_confquery_clicked();};
+    virtual void on_mui_appag_clicked() {
+        on_mui_confquery_clicked();
+    };
     virtual void on_mui_list_editFinished(int row, int col);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
@@ -170,17 +158,17 @@ public slots:
     virtual void on_mui_list_ctrlSubir(int row, int col);
     virtual void on_mui_list_ctrlBajar(int row, int col);
     virtual void on_mui_pagsiguiente_clicked() {
-	int pag= mui_paginaact->text().toInt();
-	pag++;
-	mui_paginaact->setText(QString::number(pag));
-	on_mui_appag_clicked();
+        int pag = mui_paginaact->text().toInt();
+        pag++;
+        mui_paginaact->setText(QString::number(pag));
+        on_mui_appag_clicked();
     };
     virtual void on_mui_paganterior_clicked() {
-	int pag= mui_paginaact->text().toInt();
-	if (pag > 1)
-		pag--;
-	mui_paginaact->setText(QString::number(pag));
-	on_mui_appag_clicked();
+        int pag = mui_paginaact->text().toInt();
+        if (pag > 1)
+            pag--;
+        mui_paginaact->setText(QString::number(pag));
+        on_mui_appag_clicked();
     };
 
 signals:
