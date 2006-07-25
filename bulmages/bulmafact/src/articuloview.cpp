@@ -151,6 +151,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
     m_cursorcombo = NULL;
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
+    m_combotipo_iva->clear();
     m_cursorcombo = m_companyact->cargacursor("SELECT * FROM tipo_iva");
     if (m_cursorcombo->error()) {
         delete m_cursorcombo;

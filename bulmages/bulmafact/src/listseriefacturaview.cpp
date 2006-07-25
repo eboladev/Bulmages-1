@@ -58,7 +58,7 @@ ListSerieFacturaView::~ListSerieFacturaView() {}
 ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("serie_factura");
     setDBCampoId("codigoserie_factura");
-    addSHeader("codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("Codigo serie factura ig"));
+    addSHeader("codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "codigoserie_factura");
     addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Codigo serie factura"));
     addSHeader("descserie_factura", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion serie factura"));
     setinsercion(TRUE);
