@@ -58,7 +58,7 @@ public:
 
 public slots:
     virtual void on_mui_buscar_clicked();
-    virtual void on_m_codigofamilia_textChanged(const QString &);
+    virtual void on_m_codigocompletofamilia_textChanged(const QString &);
 
 signals:
     void valueChanged(QString);

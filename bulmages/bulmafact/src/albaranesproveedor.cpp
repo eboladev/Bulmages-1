@@ -119,7 +119,7 @@ QString AlbaranesProveedor::generaFiltro() {
 }
 
 
-void AlbaranesProveedor::editar(int  row) {
+void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
     if (m_modo == 0) {

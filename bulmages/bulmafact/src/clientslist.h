@@ -93,10 +93,10 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
+	if(text.size() >= 3) 
 		on_mui_actualizar_clicked();
     };
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_crear_clicked() {
@@ -110,7 +110,6 @@ public slots:
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
     virtual void on_mui_borrar_clicked();
-
     virtual void on_mui_configurar_toggled(bool checked) {
         if (checked)
             mui_list->showConfig();

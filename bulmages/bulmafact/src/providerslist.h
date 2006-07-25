@@ -106,7 +106,7 @@ public:
     };
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
+    virtual void on_mui_filtro_textChanged(const QString &text) {
 	if(text.size() >=3) 
 		on_mui_actualizar_clicked();
     };

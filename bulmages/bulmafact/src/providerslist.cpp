@@ -56,7 +56,7 @@ ProveedorList::~ProveedorList() {
 
 
 void ProveedorList::presenta() {
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%" + m_filtro->text() + "%'");
+    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%" + mui_filtro->text() + "%'");
     mui_list->cargar(cur);
     delete cur;
 }

@@ -255,7 +255,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="m_importar" >
+         <widget class="QToolButton" name="mui_importar" >
           <property name="toolTip" >
            <string>Importar proveedores</string>
           </property>
@@ -300,7 +300,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_filtro" />
+         <widget class="QLineEdit" name="mui_filtro" />
         </item>
        </layout>
       </widget>
@@ -405,7 +405,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>m_filtro</sender>
+   <sender>mui_filtro</sender>
    <signal>editingFinished()</signal>
    <receiver>mui_actualizar</receiver>
    <slot>click()</slot>

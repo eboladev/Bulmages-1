@@ -3,31 +3,31 @@
     <name>AlbaranCliente</name>
     <message>
         <source>Id albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Id albará</translation>
     </message>
     <message>
         <source>Id cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Id client</translation>
     </message>
     <message>
         <source>Id almacen</source>
-        <translation type="unfinished"></translation>
+        <translation>Id magatzem</translation>
     </message>
     <message>
         <source>Numero de albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre d&apos;albará</translation>
     </message>
     <message>
         <source>Fecha albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Data d&apos;albará</translation>
     </message>
     <message>
         <source>Contacto albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari d&apos;albará</translation>
     </message>
     <message>
         <source>Telefono</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon</translation>
     </message>
     <message>
         <source>Comentario</source>
@@ -35,31 +35,31 @@
     </message>
     <message>
         <source>Comentario priv albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari privat d&apos;albará</translation>
     </message>
     <message>
         <source>Id forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation>Id forma de pagament</translation>
     </message>
     <message>
         <source>Id trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation>Id trabajador</translation>
     </message>
     <message>
         <source>Procesado albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Albará processat</translation>
     </message>
     <message>
         <source>Descripcion albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripció d&apos;albará</translation>
     </message>
     <message>
         <source>Referencia albaran</source>
-        <translation type="unfinished">Ref.</translation>
+        <translation>Referència d&apos;albará</translation>
     </message>
     <message>
         <source>Codigo</source>
-        <translation>Concepte</translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <source>Concepto</source>
@@ -75,7 +75,7 @@
     </message>
     <message>
         <source>Dto</source>
-        <translation type="unfinished">Dte.</translation>
+        <translation>Dte</translation>
     </message>
     <message>
         <source>Total</source>
@@ -87,7 +87,7 @@
     </message>
     <message>
         <source>Porcentaje</source>
-        <translation>Porcentatge</translation>
+        <translation>Percentatge</translation>
     </message>
     <message>
         <source>Base </source>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>I.V.A. </source>
-        <translation type="unfinished">Iva</translation>
+        <translation>I.V.A.</translation>
     </message>
     <message>
         <source>Total </source>
@@ -106,194 +106,198 @@
     <name>AlbaranClienteBase</name>
     <message>
         <source>Procesado</source>
-        <translation type="unfinished"></translation>
+        <translation>Procesat</translation>
     </message>
     <message>
         <source>&amp;Detalle</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Detall</translation>
     </message>
     <message>
         <source>0.00</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Pasar a factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Passar a factura</translation>
     </message>
     <message>
         <source>Agregar a factura</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrega a factura</translation>
     </message>
     <message>
         <source>Agregar a factura existente</source>
-        <translation type="unfinished"></translation>
+        <translation>Agrega a factura existent</translation>
+    </message>
+    <message>
+        <source>Informe por referencia</source>
+        <translation>Informe per referència</translation>
     </message>
     <message>
         <source>Descripcion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descipciò:</translation>
     </message>
     <message encoding="UTF-8">
         <source>Nº de albaran:</source>
-        <translation type="unfinished"></translation>
+        <translation>Nº d&apos;albará:</translation>
     </message>
     <message>
         <source>Cliente:</source>
-        <translation type="unfinished"></translation>
+        <translation>Client:</translation>
     </message>
     <message>
         <source>Almacen:</source>
-        <translation type="unfinished"></translation>
+        <translation>Magatzem:</translation>
     </message>
     <message>
         <source>Forma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma de pagament:</translation>
     </message>
     <message>
         <source>Trabajador:</source>
-        <translation type="unfinished"></translation>
+        <translation>Trebajador:</translation>
     </message>
     <message>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data de creaciò:</translation>
     </message>
     <message>
         <source>Persona de contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation>Persona de contacte:</translation>
     </message>
     <message>
         <source>Total base imponible:</source>
-        <translation type="unfinished"></translation>
+        <translation>Total base imponible:</translation>
     </message>
     <message>
         <source>Total descuentos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Total descontes:</translation>
     </message>
     <message>
         <source>Total impuestos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Total imposts:</translation>
     </message>
     <message>
         <source>Total pedido: </source>
-        <translation type="unfinished"></translation>
+        <translation>Total comanda:</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cancel·lar</translation>
     </message>
     <message>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aceptar</translation>
     </message>
     <message>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation>Telèfon de contacte:</translation>
     </message>
     <message>
         <source>Albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Albarà</translation>
     </message>
     <message>
         <source>Comentarios publicos:</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentaris públics:</translation>
     </message>
     <message>
         <source>Comentarios privados:</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentaris privats:</translation>
     </message>
     <message>
         <source>Imprimir pedido</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir comanda</translation>
     </message>
     <message>
         <source>Guardar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Salvar albará</translation>
     </message>
     <message>
         <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar albará</translation>
     </message>
     <message>
         <source>Imprimir albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir albará</translation>
     </message>
     <message>
         <source>Ver pedido de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Veure comanda de client</translation>
     </message>
     <message>
         <source>Referencia del albaran:</source>
-        <translation type="unfinished"></translation>
+        <translation>Referència d&apos;albará:</translation>
     </message>
     <message>
         <source>Descuen&amp;tos</source>
-        <translation type="unfinished"></translation>
+        <translation>Descon&amp;tes</translation>
     </message>
     <message>
         <source>Comentario&amp;s</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari&amp;s</translation>
     </message>
 </context>
 <context>
     <name>AlbaranClienteListBase</name>
     <message>
         <source>Procesados</source>
-        <translation type="unfinished"></translation>
+        <translation>Procesats</translation>
     </message>
     <message>
         <source>Nuevo albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Nou albará</translation>
     </message>
     <message>
         <source>Editar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar albará</translation>
     </message>
     <message>
         <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation>Esborrar albará</translation>
     </message>
     <message>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir llistat</translation>
     </message>
     <message>
         <source>Filtrar albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar albarans</translation>
     </message>
     <message>
         <source>Configurar listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurar llistat</translation>
     </message>
     <message>
         <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+        <translation>Actual·lizar llistat</translation>
     </message>
     <message>
         <source>Buscar:</source>
-        <translation type="unfinished"></translation>
+        <translation>Sercar:</translation>
     </message>
     <message>
         <source>Articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation>Articles:</translation>
     </message>
     <message>
         <source>Cliente:</source>
-        <translation type="unfinished"></translation>
+        <translation>Client:</translation>
     </message>
     <message>
         <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data inicial:</translation>
     </message>
     <message>
         <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+        <translation>Data final:</translation>
     </message>
     <message>
         <source>Total: </source>
-        <translation type="unfinished"></translation>
+        <translation>Total:</translation>
     </message>
     <message>
         <source>Albaranes a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation>Albarans a clients</translation>
     </message>
 </context>
 <context>
@@ -1347,7 +1351,7 @@
     <name>Cliente</name>
     <message>
         <source>ID cliente</source>
-        <translation type="unfinished"></translation>
+        <translation>Id client</translation>
     </message>
     <message>
         <source>Nombre del cliente</source>
@@ -1367,19 +1371,19 @@
     </message>
     <message>
         <source>Direccion</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció</translation>
     </message>
     <message>
         <source>Poblacion</source>
-        <translation type="unfinished"></translation>
+        <translation>Població</translation>
     </message>
     <message>
         <source>Provincia</source>
-        <translation type="unfinished"></translation>
+        <translation>Provincia</translation>
     </message>
     <message>
         <source>Codigo postal</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi postal</translation>
     </message>
     <message>
         <source>Numero de telefono</source>
@@ -1391,7 +1395,7 @@
     </message>
     <message>
         <source>Direccion electronica</source>
-        <translation type="unfinished"></translation>
+        <translation>Direcció electrónica</translation>
     </message>
     <message>
         <source>Identificador Presupuesto</source>
@@ -1407,7 +1411,7 @@
     </message>
     <message>
         <source>Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentaris</translation>
     </message>
     <message>
         <source>Cliente inactivo</source>
@@ -1423,7 +1427,7 @@
     </message>
     <message>
         <source>Codigo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <source>Corporacion</source>

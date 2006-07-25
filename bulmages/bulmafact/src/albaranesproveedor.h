@@ -53,6 +53,7 @@ public slots:
     };
 };
 
+
 #include "ui_albaranesproveedorlistbase.h"
 
 
@@ -116,7 +117,7 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
+	if(text.size() >= 3)
 		on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {

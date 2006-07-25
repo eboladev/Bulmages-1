@@ -91,7 +91,7 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
 }
 
 
-void BusquedaFamilia::on_m_codigofamilia_textChanged(const QString &val) {
+void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val) {
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);

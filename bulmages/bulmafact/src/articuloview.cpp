@@ -124,7 +124,7 @@ int ArticuloView::cargar(QString idarticulo) {
         error = 1;
 
     /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
-    setCaption(tr("Articulo ")+DBvalue("codigocompletoarticulo"));
+    setCaption(tr("Articulo ") + DBvalue("codigocompletoarticulo"));
     ret = m_companyact->meteWindow(caption(), this);
     if (ret)
         error = 1;
@@ -236,7 +236,7 @@ int ArticuloView::guardar() {
 
         /// Guardamos la lista de componentes.
         m_componentes->setColumnValue("idarticulo", DBvalue("idarticulo"));
-        if (m_componentes->guardar() !=0 )
+        if (m_componentes->guardar() != 0)
             throw -1;
 
         /// Disparamos los plugins

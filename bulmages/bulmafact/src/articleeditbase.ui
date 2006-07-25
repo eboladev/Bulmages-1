@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
-    <height>431</height>
+    <width>1016</width>
+    <height>691</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,7 +18,7 @@
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QHBoxLayout" >
    <property name="margin" >
     <number>9</number>
    </property>
@@ -26,7 +26,7 @@
     <number>6</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
+    <layout class="QVBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
@@ -34,417 +34,407 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="pixmap" >
-        <pixmap resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</pixmap>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Q3Frame" name="frame3" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="frameShape" >
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Raised</enum>
-       </property>
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>9</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QToolButton" name="mui_guardar" >
-          <property name="toolTip" >
-           <string>Guardar</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Guardar</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="toolTip" >
-           <string>Borrar</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>164</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
-           <string>Codigo completo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_codigocompletoarticulo" >
-          <property name="palette" >
-           <palette>
-            <active>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>237</red>
-              <green>237</green>
-              <blue>237</blue>
-             </color>
-             <color>
-              <red>231</red>
-              <green>231</green>
-              <blue>231</blue>
-             </color>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>166</red>
-              <green>166</green>
-              <blue>166</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>127</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>0</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>231</red>
-              <green>231</green>
-              <blue>231</blue>
-             </color>
-            </active>
-            <inactive>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>237</red>
-              <green>237</green>
-              <blue>237</blue>
-             </color>
-             <color>
-              <red>231</red>
-              <green>231</green>
-              <blue>231</blue>
-             </color>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>166</red>
-              <green>166</green>
-              <blue>166</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>127</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>0</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>231</red>
-              <green>231</green>
-              <blue>231</blue>
-             </color>
-            </inactive>
-            <disabled>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>237</red>
-              <green>237</green>
-              <blue>237</blue>
-             </color>
-             <color>
-              <red>231</red>
-              <green>231</green>
-              <blue>231</blue>
-             </color>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>166</red>
-              <green>166</green>
-              <blue>166</blue>
-             </color>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-             <color>
-              <red>121</red>
-              <green>125</green>
-              <blue>121</blue>
-             </color>
-             <color>
-              <red>207</red>
-              <green>207</green>
-              <blue>207</blue>
-             </color>
-             <color>
-              <red>0</red>
-              <green>0</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>255</red>
-              <green>0</green>
-              <blue>255</blue>
-             </color>
-             <color>
-              <red>231</red>
-              <green>231</green>
-              <blue>231</blue>
-             </color>
-            </disabled>
-           </palette>
-          </property>
-          <property name="focusPolicy" >
-           <enum>Qt::NoFocus</enum>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="pixmapLabel1" >
-     <property name="pixmap" >
-      <pixmap/>
-     </property>
-     <property name="scaledContents" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QTabWidget" name="mui_tab" >
-     <widget class="QWidget" name="tab" >
-      <attribute name="title" >
-       <string>&amp;Datos generales</string>
-      </attribute>
       <layout class="QHBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>0</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
        <item>
-        <layout class="QVBoxLayout" >
+        <widget class="QLabel" name="label" >
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="pixmap" >
+          <pixmap resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</pixmap>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Q3Frame" name="frame3" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
          <property name="margin" >
           <number>0</number>
+         </property>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>9</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QToolButton" name="mui_guardar" >
+            <property name="toolTip" >
+             <string>Guardar</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Guardar</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="mui_borrar" >
+            <property name="toolTip" >
+             <string>Borrar</string>
+            </property>
+            <property name="whatsThis" >
+             <string>Borrar</string>
+            </property>
+            <property name="text" >
+             <string/>
+            </property>
+            <property name="icon" >
+             <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+            </property>
+            <property name="iconSize" >
+             <size>
+              <width>22</width>
+              <height>22</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" >
+             <size>
+              <width>164</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="textLabel1" >
+            <property name="text" >
+             <string>Codigo completo:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="m_codigocompletoarticulo" >
+            <property name="palette" >
+             <palette>
+              <active>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>237</red>
+                <green>237</green>
+                <blue>237</blue>
+               </color>
+               <color>
+                <red>231</red>
+                <green>231</green>
+                <blue>231</blue>
+               </color>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>166</red>
+                <green>166</green>
+                <blue>166</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>127</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>231</red>
+                <green>231</green>
+                <blue>231</blue>
+               </color>
+              </active>
+              <inactive>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>237</red>
+                <green>237</green>
+                <blue>237</blue>
+               </color>
+               <color>
+                <red>231</red>
+                <green>231</green>
+                <blue>231</blue>
+               </color>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>166</red>
+                <green>166</green>
+                <blue>166</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>127</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>231</red>
+                <green>231</green>
+                <blue>231</blue>
+               </color>
+              </inactive>
+              <disabled>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>237</red>
+                <green>237</green>
+                <blue>237</blue>
+               </color>
+               <color>
+                <red>231</red>
+                <green>231</green>
+                <blue>231</blue>
+               </color>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>166</red>
+                <green>166</green>
+                <blue>166</blue>
+               </color>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>255</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
+               <color>
+                <red>121</red>
+                <green>125</green>
+                <blue>121</blue>
+               </color>
+               <color>
+                <red>207</red>
+                <green>207</green>
+                <blue>207</blue>
+               </color>
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>255</red>
+                <green>0</green>
+                <blue>255</blue>
+               </color>
+               <color>
+                <red>231</red>
+                <green>231</green>
+                <blue>231</blue>
+               </color>
+              </disabled>
+             </palette>
+            </property>
+            <property name="focusPolicy" >
+             <enum>Qt::NoFocus</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTabWidget" name="mui_tab" >
+       <widget class="QWidget" name="tab" >
+        <attribute name="title" >
+         <string>&amp;Datos generales</string>
+        </attribute>
+        <layout class="QGridLayout" >
+         <property name="margin" >
+          <number>9</number>
          </property>
          <property name="spacing" >
           <number>6</number>
          </property>
-         <item>
+         <item row="0" column="0" >
           <layout class="QHBoxLayout" >
            <property name="margin" >
             <number>0</number>
@@ -453,268 +443,354 @@
             <number>6</number>
            </property>
            <item>
-            <widget class="QLabel" name="textLabel12" >
-             <property name="enabled" >
-              <bool>true</bool>
+            <layout class="QVBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
              </property>
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
+             <property name="spacing" >
+              <number>6</number>
              </property>
-             <property name="text" >
-              <string>Descripcion abreviada:</string>
-             </property>
-            </widget>
+             <item>
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <layout class="QVBoxLayout" >
+                 <property name="margin" >
+                  <number>0</number>
+                 </property>
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="textLabel12" >
+                   <property name="enabled" >
+                    <bool>true</bool>
+                   </property>
+                   <property name="sizePolicy" >
+                    <sizepolicy>
+                     <hsizetype>0</hsizetype>
+                     <vsizetype>5</vsizetype>
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text" >
+                    <string>Descripcion abreviada:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="textLabel1_2" >
+                   <property name="sizePolicy" >
+                    <sizepolicy>
+                     <hsizetype>0</hsizetype>
+                     <vsizetype>5</vsizetype>
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text" >
+                    <string>Subcodigo:</string>
+                   </property>
+                   <property name="textFormat" >
+                    <enum>Qt::AutoText</enum>
+                   </property>
+                   <property name="scaledContents" >
+                    <bool>false</bool>
+                   </property>
+                   <property name="alignment" >
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="textLabel2" >
+                   <property name="sizePolicy" >
+                    <sizepolicy>
+                     <hsizetype>0</hsizetype>
+                     <vsizetype>5</vsizetype>
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="text" >
+                    <string>Nombre:</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" >
+                 <property name="margin" >
+                  <number>0</number>
+                 </property>
+                 <property name="spacing" >
+                  <number>6</number>
+                 </property>
+                 <item>
+                  <widget class="QLineEdit" name="m_abrevarticulo" >
+                   <property name="enabled" >
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="m_codigoarticulo" >
+                   <property name="sizePolicy" >
+                    <sizepolicy>
+                     <hsizetype>5</hsizetype>
+                     <vsizetype>0</vsizetype>
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="m_nombrearticulo" />
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="textLabel3_2_2" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>0</hsizetype>
+                   <vsizetype>5</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text" >
+                  <string>Tipo de articulo:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="BusquedaTipoArticulo" name="m_tipoarticulo" >
+                 <property name="focusPolicy" >
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="m_nombrefamilia" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>0</hsizetype>
+                   <vsizetype>0</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text" >
+                  <string>Familia:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="BusquedaFamilia" name="m_familia" >
+                 <property name="focusPolicy" >
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="textLabel3_2_3" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>0</hsizetype>
+                   <vsizetype>5</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text" >
+                  <string>P.V.P. recomendado:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="m_pvparticulo" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>0</hsizetype>
+                   <vsizetype>0</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="focusPolicy" >
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
+               </property>
+               <property name="spacing" >
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="textLabel10" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>0</hsizetype>
+                   <vsizetype>5</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text" >
+                  <string>Tipo de I.V.A.:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="m_combotipo_iva" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>5</hsizetype>
+                   <vsizetype>0</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="m_presentablearticulo" >
+               <property name="text" >
+                <string>&amp;Incluir en detalles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="m_controlstockarticulo" >
+               <property name="text" >
+                <string>&amp;Control de stock</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QLineEdit" name="m_abrevarticulo" >
-             <property name="enabled" >
-              <bool>true</bool>
+            <layout class="QVBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
              </property>
-            </widget>
+             <property name="spacing" >
+              <number>2</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="m_imagen" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>150</width>
+                 <height>150</height>
+                </size>
+               </property>
+               <property name="pixmap" >
+                <pixmap/>
+               </property>
+               <property name="scaledContents" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="mui_cambiarimagen" >
+               <property name="text" >
+                <string>Cam&amp;biar imagen</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer>
+               <property name="orientation" >
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" >
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
           </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="textLabel1_2" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text" >
-              <string>Subcodigo:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="m_codigoarticulo" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>5</hsizetype>
-               <vsizetype>0</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="textLabel2" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text" >
-              <string>Nombre:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="m_nombrearticulo" />
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="textLabel3_2_2" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text" >
-              <string>Tipo de articulo:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="BusquedaTipoArticulo" name="m_tipoarticulo" >
-             <property name="focusPolicy" >
-              <enum>Qt::StrongFocus</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="m_nombrefamilia" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>0</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text" >
-              <string>Familia:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="BusquedaFamilia" name="m_familia" >
-             <property name="focusPolicy" >
-              <enum>Qt::StrongFocus</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="textLabel3_2_3" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text" >
-              <string>P.V.P. recomendado:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="m_pvparticulo" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>0</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="focusPolicy" >
-              <enum>Qt::StrongFocus</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="textLabel10" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>0</hsizetype>
-               <vsizetype>5</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="text" >
-              <string>Tipo de I.V.A.:</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="m_combotipo_iva" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>5</hsizetype>
-               <vsizetype>0</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="m_presentablearticulo" >
-           <property name="text" >
-            <string>&amp;Incluir en detalles</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="m_controlstockarticulo" >
-           <property name="text" >
-            <string>&amp;Control de stock</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
-       </item>
-       <item>
+       </widget>
+       <widget class="QWidget" name="TabPage" >
+        <attribute name="title" >
+         <string>C&amp;omponentes</string>
+        </attribute>
         <layout class="QVBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -723,136 +799,79 @@
           <number>2</number>
          </property>
          <item>
-          <widget class="QLabel" name="m_imagen" >
+          <widget class="ListCompArticuloView" name="m_componentes" />
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="TabPage" >
+        <attribute name="title" >
+         <string>Descripcio&amp;n</string>
+        </attribute>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="Q3TextEdit" name="m_obserarticulo" >
            <property name="sizePolicy" >
             <sizepolicy>
-             <hsizetype>0</hsizetype>
-             <vsizetype>0</vsizetype>
+             <hsizetype>7</hsizetype>
+             <vsizetype>7</vsizetype>
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="minimumSize" >
             <size>
-             <width>150</width>
-             <height>150</height>
+             <width>300</width>
+             <height>0</height>
             </size>
            </property>
-           <property name="pixmap" >
-            <pixmap/>
-           </property>
-           <property name="scaledContents" >
-            <bool>true</bool>
-           </property>
           </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="mui_cambiarimagen" >
-           <property name="text" >
-            <string>Cam&amp;biar imagen</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
          </item>
         </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="TabPage" >
-      <attribute name="title" >
-       <string>C&amp;omponentes</string>
-      </attribute>
-      <layout class="QVBoxLayout" >
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" >
        <property name="margin" >
         <number>0</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
-        <widget class="ListCompArticuloView" name="m_componentes" />
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="TabPage" >
-      <attribute name="title" >
-       <string>Descripcio&amp;n</string>
-      </attribute>
-      <layout class="QVBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>2</number>
-       </property>
-       <item>
-        <widget class="Q3TextEdit" name="m_obserarticulo" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>7</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
          </property>
-         <property name="minimumSize" >
+         <property name="sizeHint" >
           <size>
-           <width>300</width>
-           <height>0</height>
+           <width>581</width>
+           <height>20</height>
           </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="mui_cancelar" >
+         <property name="text" >
+          <string>&amp;Cancelar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="mui_aceptar" >
+         <property name="text" >
+          <string>&amp;Aceptar</string>
          </property>
         </widget>
        </item>
       </layout>
-     </widget>
-    </widget>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>581</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>&amp;Cancelar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_aceptar" >
-       <property name="text" >
-        <string>&amp;Aceptar</string>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>
@@ -862,24 +881,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaTipoArticulo</class>
-   <extends></extends>
-   <header>busquedatipoarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTipoArticulo</class>
+   <extends></extends>
+   <header>busquedatipoarticulo.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -893,6 +905,13 @@
    <class>ListCompArticuloView</class>
    <extends></extends>
    <header>comparticulolistview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
