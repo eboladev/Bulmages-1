@@ -70,8 +70,12 @@ public:
 
 public slots:
     virtual void on_mui_aceptar_clicked() {
+	try {
         mui_listado->guardar();
         close();
+	} catch (...) {
+		mensajeInfo( "Error al guardar los almacenes");
+	} // end catch
     };
 };
 

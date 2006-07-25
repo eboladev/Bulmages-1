@@ -49,6 +49,7 @@ int main(int argc, char ** argv) {
     g_plugins = new Plugins();
     /// Iniciamos la clase QApplication para el uso de las Qt.
     theApp = new QApplication(argc, argv);
+
     /// Definimos la codificacion a Unicode.
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
 
@@ -109,6 +110,31 @@ int main(int argc, char ** argv) {
     /// Leemos la configuracion especifica de la base de datos que se ha abierto.
     QString confesp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
     confpr->leeconfig(confesp);
+
+
+    /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
+    traductor = new QTranslator(0);
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load(QString("bulmalib_") + QTextCodec::locale(),
+                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    } else {
+        QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    } // end if
+    theApp->installTranslator(traductor);
+
+    traductor = new QTranslator(0);
+    if (confpr->valor(CONF_TRADUCCION) == "locales") {
+        traductor->load(QString("bulmafact_") + QTextCodec::locale(),
+                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    } else {
+        QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
+        traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+    } // end if
+    theApp->installTranslator(traductor);
+
+
+
 
     /// Hacemos la carga de las librerias que contienen los plugins.
     g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));

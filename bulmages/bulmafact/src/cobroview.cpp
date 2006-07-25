@@ -40,6 +40,7 @@ CobroView::CobroView(company *comp, QWidget *parent, const char *name)
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_cliente->setcompany(comp);
+    mui_refcobro->setcompany(comp);
     dialogChanges_cargaInicial();
     _depura("END CobroView::CobroView", 0);
 }

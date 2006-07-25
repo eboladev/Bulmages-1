@@ -42,6 +42,7 @@ using namespace std;
 
 #include "funcaux.h"
 
+/*
 #define COL_IDLPRESUPUESTO 0
 #define COL_IDARTICULO 1
 #define COL_CODARTICULO 2
@@ -61,13 +62,14 @@ using namespace std;
 #define COL_DESCUENTO_REMOVE 3
 
 #define coma "'"
-
+*/
 
 PagoView::PagoView( company *comp , QWidget *parent, const char *name)
         : QDialog (parent, name, Qt::WDestructiveClose), Pago(comp), dialogChanges(this) {
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_proveedor->setcompany(comp);
+    mui_refpago->setcompany(comp);
     dialogChanges_cargaInicial();
     _depura("Fin de la inicializacion de PagoView\n", 0);
 }

@@ -163,11 +163,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="mui_refpago" >
+         <widget class="BusquedaReferencia" name="mui_refpago" >
           <property name="sizePolicy" >
            <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
+            <hsizetype>13</hsizetype>
+            <vsizetype>13</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -697,6 +697,13 @@
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

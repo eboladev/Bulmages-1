@@ -146,11 +146,11 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="mui_refcobro" >
+         <widget class="BusquedaReferencia" name="mui_refcobro" >
           <property name="sizePolicy" >
            <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
+            <hsizetype>13</hsizetype>
+            <vsizetype>13</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -662,6 +662,13 @@
  <layoutdefault spacing="4" margin="3" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>

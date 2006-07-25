@@ -31,7 +31,7 @@
     </message>
     <message>
         <source>Comentario</source>
-        <translation type="unfinished"></translation>
+        <translation>Comentari</translation>
     </message>
     <message>
         <source>Comentario priv albaran</source>
@@ -55,51 +55,51 @@
     </message>
     <message>
         <source>Referencia albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ref.</translation>
     </message>
     <message>
         <source>Codigo</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte</translation>
     </message>
     <message>
         <source>Concepto</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte</translation>
     </message>
     <message>
         <source>Und</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un.</translation>
     </message>
     <message>
         <source>Precio</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu</translation>
     </message>
     <message>
         <source>Dto</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dte.</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <source>Descuento</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <source>Porcentaje</source>
-        <translation type="unfinished"></translation>
+        <translation>Porcentatge</translation>
     </message>
     <message>
         <source>Base </source>
-        <translation type="unfinished"></translation>
+        <translation>Base Imponible</translation>
     </message>
     <message>
         <source>I.V.A. </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iva</translation>
     </message>
     <message>
         <source>Total </source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
 </context>
 <context>
@@ -126,10 +126,6 @@
     </message>
     <message>
         <source>Agregar a factura existente</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por referencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1130,10 +1126,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Informe por referencia</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Descripcion del presupuesto:</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1334,6 +1326,13 @@
     </message>
 </context>
 <context>
+    <name>BusquedaReferenciaBase</name>
+    <message>
+        <source>Form1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BusquedaTipoArticuloBase</name>
     <message>
         <source>Form1</source>
@@ -1412,6 +1411,14 @@
     </message>
     <message>
         <source>Cliente inactivo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de telefono en el trabajo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Numero de telefono movil</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1567,6 +1574,14 @@
     </message>
     <message encoding="UTF-8">
         <source>Código:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono Trabajo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Móvil:</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1874,10 +1889,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Procesa&amp;dos</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nuevo cobro</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1923,6 +1934,14 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Total:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cobros Previstos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cobros Efectivos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2142,47 +2161,47 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Codigo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <source>Concepto</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte</translation>
     </message>
     <message>
         <source>U.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un.</translation>
     </message>
     <message>
         <source>Precio</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu</translation>
     </message>
     <message>
         <source>Dto.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dte.</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <source>Descuento</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <source>Porcentaje</source>
-        <translation type="unfinished"></translation>
+        <translation>Porcentatge</translation>
     </message>
     <message>
         <source>Base </source>
-        <translation type="unfinished"></translation>
+        <translation>Base Imponible</translation>
     </message>
     <message>
         <source>Iva </source>
-        <translation type="unfinished"></translation>
+        <translation>Iva</translation>
     </message>
     <message>
         <source>Total </source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
 </context>
 <context>
@@ -2233,10 +2252,6 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Referencia:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por referencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2415,10 +2430,6 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Efectuar pago</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por referencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2861,6 +2872,10 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Cobrado</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pagado</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3694,10 +3709,6 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Pr&amp;ocesados</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Nuevo pago</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3743,6 +3754,14 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Total:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pagos Efectivos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Previsiones de Pago</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3956,10 +3975,6 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Referencia:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Informe por referencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5937,7 +5952,7 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>Descuento</source>
-        <translation type="unfinished"></translation>
+        <translation>Descompte</translation>
     </message>
     <message>
         <source>Referencia</source>
@@ -5953,43 +5968,43 @@ QMenuBar and QToolBar.</source>
     </message>
     <message>
         <source>Codigo</source>
-        <translation type="unfinished"></translation>
+        <translation>Codi</translation>
     </message>
     <message>
         <source>Concepto</source>
-        <translation type="unfinished"></translation>
+        <translation>Concepte</translation>
     </message>
     <message>
         <source>Und</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un.</translation>
     </message>
     <message>
         <source>Precio</source>
-        <translation type="unfinished"></translation>
+        <translation>Preu</translation>
     </message>
     <message>
         <source>Dto</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dte.</translation>
     </message>
     <message>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation>Total</translation>
     </message>
     <message>
         <source>Porcentaje</source>
-        <translation type="unfinished"></translation>
+        <translation>Porcentatge</translation>
     </message>
     <message>
         <source>Base </source>
-        <translation type="unfinished"></translation>
+        <translation>Base Imponible</translation>
     </message>
     <message>
         <source>I.V.A. </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Iva</translation>
     </message>
     <message>
         <source>Total </source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>

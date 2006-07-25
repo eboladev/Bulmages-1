@@ -58,9 +58,9 @@ ListConfiguracionView::~ListConfiguracionView() {}
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("configuracion");
     setDBCampoId("nombre");
-    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("Nombre origen"));
-    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
-    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
+    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("nombre"));
+    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("nombre"));
+    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("valor"));
     setinsercion(FALSE);
     setDelete(FALSE);
 }
