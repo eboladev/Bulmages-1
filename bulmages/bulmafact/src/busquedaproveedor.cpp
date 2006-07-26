@@ -89,7 +89,7 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 
 /// Busqueda de proveedor.
 void BusquedaProveedor::on_mui_buscar_clicked() {
-    _depura("Busqueda de un provider\n", 0);
+    _depura("BusquedaProveedor::on_mui_buscar_clicked", 0);
 
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     QDialog *diag=new QDialog(0);
@@ -101,21 +101,25 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     diag->exec();
 
     if (providers->cifprovider() != "") {
-	setidproveedor(providers->idprovider());
+	setcifproveedor( providers->cifprovider());
     } // end if
 
     delete providers;
     delete diag;
+
+    _depura("END BusquedaProveedor::on_mui_buscar_clicked", 0);
 }
 
 
 void BusquedaProveedor::on_m_cifproveedor_editingFinished() {
+    _depura("BusquedaProveedor::on_m_cifproveedor_editingFinished", 0);
     pinta();
     emit(valueChanged(mdb_idproveedor));
+    _depura("END BusquedaProveedor::on_m_cifproveedor_editingFinished", 0);
 }
 
 void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
-
+    _depura("BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
     if (m_semaforo)
         return;
 
@@ -166,5 +170,6 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     if (encontrado) {
         m_nomproveedor->setText(mdb_codproveedor+".- "+mdb_nomproveedor);
     } // end if
+    _depura("END BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
 }
 

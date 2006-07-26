@@ -973,7 +973,7 @@ BEGIN
 		NEW.ffactura := now();
 	END IF;
         IF NEW.numfactura IS NULL THEN
-                SELECT INTO asd max(numfactura) AS m FROM factura WHERE idserie_factura=NEW.idserie_factura AND idalmacen = NEW.idalmacen;
+                SELECT INTO asd max(numfactura) AS m FROM factura WHERE codigoserie_factura=NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
 		IF asd.m IS NOT NULL THEN
 			NEW.numfactura := asd.m + 1;
 		ELSE

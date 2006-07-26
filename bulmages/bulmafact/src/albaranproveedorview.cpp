@@ -77,15 +77,34 @@ void AlbaranProveedorView::inicialize()  {
     m_totalalbaranp->setReadOnly(TRUE);
     m_totalalbaranp->setAlignment(Qt::AlignRight);
     subform2->pintar();
+    pintaidforma_pago("0");
+    pintaidalmacen("0");
 }
 
 
 void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
+    _depura("AlbaranProveedorView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalalbaranp->setText((iva + base).toQString());
+    _depura("END AlbaranProveedorView::pintatotales", 0);
 }
 
+
+void AlbaranProveedorView::on_mui_borrar_clicked() {
+	_depura("AlbaranProveedorView::on_mui_borrar_clicked",0);
+        int val = QMessageBox::warning(this, tr("Borrar albaran del proveedor."),
+                                       tr("Desea eliminar el albaran del proveedor?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        if (val == 0) {
+            if (!borrar()) {
+                dialogChanges_cargaInicial();
+                _depura("Albaran del proveedor borrado satisfactoriamente", 2);
+                close();
+            } // end if
+        } // end if
+	_depura("END AlbaranProveedorView::on_mui_borrar_clicked",0);
+}
 
 void AlbaranProveedorView::s_verpedidoproveedor()  {
     _depura("Funcion aun no implementada", 2);
@@ -164,34 +183,42 @@ void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
 
 
 int AlbaranProveedorView::cargar(QString id) {
+    _depura("AlbaranProveedorView::cargar", 0);
     AlbaranProveedor::cargar(id);
-    setCaption(tr("Albaran de proveedor  ") + DBvalue("refalbaranp"));
+    setCaption(tr("Albaran proveedor ") + DBvalue("refalbaranp"));
     if (companyact->meteWindow(caption(), this)) {
-        return - 1;
+        return -1;
     } // end if
     dialogChanges_cargaInicial();
+    _depura("END AlbaranProveedorView::cargar", 0);
     return 0;
 }
 
 
 int AlbaranProveedorView::guardar() {
-
-    setcomentalbaranp(m_comentalbaranp->text());
-    setnumalbaranp(m_numalbaranp->text());
-    setidproveedor(m_proveedor->idproveedor());
-    setfechaalbaranp(m_fechaalbaranp->text());
-    setidalmacen(m_almacen->idalmacen());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setrefalbaranp(m_refalbaranp->text());
-    setdescalbaranp(m_descalbaranp->text());
-
-    int err = AlbaranProveedor::guardar();
-    dialogChanges_cargaInicial();
-    return err;
+    _depura("AlbaranProveedorView::guardar", 0);
+    try {
+	setcomentalbaranp(m_comentalbaranp->text());
+	setnumalbaranp(m_numalbaranp->text());
+	setidproveedor(m_proveedor->idproveedor());
+	setfechaalbaranp(m_fechaalbaranp->text());
+	setidalmacen(m_almacen->idalmacen());
+	setidforma_pago(m_forma_pago->idforma_pago());
+	setrefalbaranp(m_refalbaranp->text());
+	setdescalbaranp(m_descalbaranp->text());
+	int err = AlbaranProveedor::guardar();
+	dialogChanges_cargaInicial();
+        _depura("END AlbaranProveedorView::guardar", 0);
+	return err;
+    } catch (...) {
+	mensajeInfo( "Error inesperado al guardar");
+	return -1;
+    } // end catch
 }
 
 
-void AlbaranProveedorView::m_guardar_clicked() {
+void AlbaranProveedorView::on_mui_guardar_clicked() {
     guardar();
+    cargar(DBvalue("idalbaranp"));
 }
 

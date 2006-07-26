@@ -81,7 +81,7 @@ public slots:
     virtual void  on_mui_comentpago_textChanged(const QString &str) {
         setcomentpago(str);
     };
-    virtual void on_mui_refpago_textChanged(const QString &str)	{
+    virtual void on_mui_refpago_valueChanged(const QString &str)	{
         setrefpago(str);
     };
     virtual void on_mui_cantpago_textChanged(const QString &str) {

@@ -45,18 +45,22 @@ AlbaranProveedor::~AlbaranProveedor() {}
 
 
 int AlbaranProveedor::borrar() {
-    if (DBvalue("idalbaranp") != "")  {
-        listalineas->borrar();
-        listadescuentos->borrar();
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp =" + DBvalue("idalbaranp"));
-        if (error)  {
-            companyact->rollback();
-            return - 1;
+    _depura("AlbaranProveedor::borrar", 0);
+    try {
+        if (DBvalue("idalbaranp") != "")  {
+            companyact->begin();
+            listalineas->borrar();
+            listadescuentos->borrar();
+            companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp =" + DBvalue("idalbaranp"));
+            companyact->commit();
         } // end if
-        companyact->commit();
-    } // end if
-    return 0;
+        _depura("END AlbaranProveedor::borrar", 0);
+        return 0;
+    } catch (...) {
+        mensajeInfo( "Error al borrar el Albaran de Proveedor");
+        companyact->rollback();
+        return -1;
+    } // end catch
 }
 
 
@@ -101,19 +105,17 @@ int AlbaranProveedor::cargar(QString idbudget) {
 int AlbaranProveedor::guardar() {
     _depura("AlbaranProveedor::guardar", 0);
     QString id;
-    companyact->begin();
     try {
+        companyact->begin();
         DBsave(id);
-        companyact->commit();
         setidalbaranp(id);
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
         _depura("END AlbaranProveedor::guardar", 0);
         return 0;
-    } // end try
-    catch(...) {
-        _depura("AlbaranProveedor::guardar error al guardar", 1);
+    } catch(...) {
+        mensajeInfo("AlbaranProveedor::guardar error al guardar");
         companyact->rollback();
         return - 1;
     } // end catch

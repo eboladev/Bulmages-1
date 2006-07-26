@@ -155,6 +155,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
          </widget>
         </item>
        </layout>
@@ -609,6 +615,9 @@
        </property>
        <property name="text" >
         <string/>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
        </property>
       </widget>
      </item>

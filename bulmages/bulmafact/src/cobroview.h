@@ -76,7 +76,7 @@ public slots:
     virtual void on_mui_comentcobro_textChanged(const QString &str) {
         setcomentcobro(str);
     };
-    virtual void on_mui_refcobro_textChanged(const QString &str) {
+    virtual void on_mui_refcobro_valueChanged(const QString &str) {
         setrefcobro(str);
     };
     virtual void on_mui_cantcobro_textChanged(const QString &str) {

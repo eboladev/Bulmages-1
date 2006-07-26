@@ -106,20 +106,10 @@ public slots:
     virtual void s_descalbaranptextChanged(const QString &val) {
         setdescalbaranp(val);
     };
-    virtual void m_guardar_clicked();
+    virtual void on_mui_guardar_clicked();
+
     virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning(this, tr("Borrar albaran del proveedor."),
-                                       tr("Desea eliminar el albaran del proveedor?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            if (!borrar()) {
-                dialogChanges_cargaInicial();
-                _depura("Albaran del proveedor borrado satisfactoriamente", 2);
-                close();
-            } // end if
-        } // end if
-    };
+    virtual void on_mui_borrar_clicked();
     virtual void s_printAlbaranProveedor() {}
     ;
 
@@ -140,7 +130,7 @@ public slots:
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
     };
-    virtual void on_subform3_editFinish(int, int) {
+    virtual void on_subform2_editFinish(int, int) {
         calculaypintatotales();
     };
     virtual void on_mui_aceptar_clicked() {

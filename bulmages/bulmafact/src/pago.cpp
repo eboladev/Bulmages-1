@@ -31,7 +31,7 @@ Pago::Pago(company *comp) : DBRecord(comp) {
     setDBTableName("pago");
     setDBCampoId("idpago");
     addDBCampo("idpago", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Pago", "Id pago"));
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Pago", "Id proveedot"));
+    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Pago", "Id proveedor"));
     addDBCampo("previsionpago", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Pago", "Previcion de pago"));
     addDBCampo("fechapago", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Pago", "Fecha de pago"));
     addDBCampo("refpago", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Pago", "Referencia de pago"));
@@ -88,14 +88,15 @@ int Pago::cargar(QString idpago) {
 
 
 void Pago::guardaPago() {
+    try {
     QString id;
     companyact->begin();
-    int error = DBsave(id);
-    if (error) {
-        companyact->rollback();
-        return;
-    } // end if
+    DBsave(id);
     setidpago(id);
     companyact->commit();
+    } catch (...) {
+	mensajeInfo( "Error inesperado al guardar");
+	companyact->rollback();
+    } // end catch
 }
 
