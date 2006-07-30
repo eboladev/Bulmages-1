@@ -504,6 +504,7 @@ CREATE  TABLE cliente (
    faxcliente character varying(20),
    mailcliente character varying(100),
    urlcliente character varying(150),
+   corpcliente character varying(200),
    faltacliente date DEFAULT NOW(),
    fbajacliente date,
    comentcliente character varying(2000),
@@ -1971,7 +1972,11 @@ CREATE  TABLE pedidoproveedor (
    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),    
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idtrabajador integer REFERENCES trabajador(idtrabajador)   
+   idtrabajador integer REFERENCES trabajador(idtrabajador),
+   totalpedidoproveedor NUMERIC(12,2) DEFAULT 0,
+   bimppedidoproveedor NUMERIC(12,2) DEFAULT 0,
+   imppedidoproveedor NUMERIC(12,2) DEFAULT 0
+
 );
 
 CREATE  FUNCTION restriccionespedidoproveedor () RETURNS "trigger"
@@ -2036,11 +2041,7 @@ CREATE  TABLE lpedidoproveedor (
    descuentolpedidoproveedor numeric(12,2),   
    idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),
    puntlpedidoproveedor boolean DEFAULT FALSE,
-   idarticulo integer REFERENCES articulo(idarticulo),
-   totalpedidoproveedor NUMERIC(12,2) DEFAULT 0,
-   bimppedidoproveedor NUMERIC(12,2) DEFAULT 0,
-   imppedidoproveedor NUMERIC(12,2) DEFAULT 0
-
+   idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 -- ===========CALCULOS ACUMULADOS PEDIDOS A PROVEEDOR =============
