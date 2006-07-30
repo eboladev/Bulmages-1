@@ -21,6 +21,8 @@ images \
 ../../../bulmalib/.ui \
 /usr/include/QtXml
 
+LIBPATH += ../../../installbulmages
+
 CONFIG += release 
 
 LIBS += -rdynamic \

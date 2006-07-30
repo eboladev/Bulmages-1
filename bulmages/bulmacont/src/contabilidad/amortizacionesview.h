@@ -27,22 +27,19 @@ class empresa;
 
 class amortizacionesview : public QWidget, public Ui_AmortizacionesBase
 {
-Q_OBJECT
-public:
-	empresa *m_companyact;
-   QString idamortizacion;		// Esta variable contiene el idamortizacion cuando se devuelve un parametro
-   QString nomamortizacion;	// Esta variable contiene el nomamortizacion cuando se devuelve un parametro
-   int modo;
-public:
-	amortizacionesview(empresa *,QWidget *, const char * );
-	~amortizacionesview();
-   void inicializatabla();
-   
-public slots:
-   virtual void on_listado_cellDoubleClicked(int, int);
-   virtual void on_mui_crear_clicked();
-   virtual void on_mui_borrar_clicked();
-
+  Q_OBJECT
+    public:
+  empresa *m_companyact;
+  QString idamortizacion;		// Esta variable contiene el idamortizacion cuando se devuelve un parametro
+  QString nomamortizacion;	// Esta variable contiene el nomamortizacion cuando se devuelve un parametro
+  int modo;
+  amortizacionesview(empresa *,QWidget *, const char * );
+  ~amortizacionesview();
+  void inicializatabla();
+  public slots:
+    virtual void on_listado_cellDoubleClicked(int, int);
+  virtual void on_mui_crear_clicked();
+  virtual void on_mui_borrar_clicked();
 };
 
 #endif

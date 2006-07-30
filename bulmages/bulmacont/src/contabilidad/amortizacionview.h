@@ -26,30 +26,30 @@ class empresa;
   */
   
 class amortizacionview : public amortizaciondlg , dialogChanges {
-Q_OBJECT
-public:
-/// Empresa con la que se trabaja
-empresa *companyact;
-/// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-QString idctaactivo; 
- /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-QString idctaamortizacion;
-/// Esta variable indica cual es la amortizacion que se está enseñando. Si no tiene valor es que no se esta mostrando ninguna.
-QString idamortizacion;  
-/// Esta variable indica cual es el asiento plantilla de amortización.
-QString idainteligente;   
-public:
-    amortizacionview::amortizacionview(empresa *, QWidget *, const char *, bool );
-    ~amortizacionview();
-    void inicializa(QString);
-    void trataModificado();
-public slots:
-	virtual bool close(bool);
-	virtual void accept();
-        virtual void calculaamortizacion();
-        virtual void contextMenuRequested(int, int, const QPoint &);
-	virtual void s_saveAmortizacion();
-	virtual void s_newAmortizacion();
-	virtual void s_deleteAmortizacion();
+  Q_OBJECT
+    public:
+  // Empresa con la que se trabaja
+  empresa *companyact;
+  // Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+  QString idctaactivo; 
+  // Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+  QString idctaamortizacion;
+  // Esta variable indica cual es la amortizacion que se está enseñando. Si no tiene valor es que no se esta mostrando ninguna.
+  QString idamortizacion;  
+  // Esta variable indica cual es el asiento plantilla de amortización.
+  QString idainteligente;   
+  amortizacionview(empresa *, QWidget *, const char *, bool );
+  ~amortizacionview();
+  void inicializa(QString);
+  void trataModificado();
+  public slots:
+    virtual bool close(bool);
+  virtual void accept();
+  virtual void calculaamortizacion();
+  virtual void contextMenuRequested(int, int, const QPoint &);
+  virtual void s_saveAmortizacion();
+  virtual void s_newAmortizacion();
+  virtual void s_deleteAmortizacion();
 };
+
 #endif

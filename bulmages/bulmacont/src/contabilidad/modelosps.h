@@ -32,22 +32,21 @@
 
 enum {sleep10=1001,sleep3=1002,acabado=1003};
 
-
 class Genps_thread:public QThread
 {
-public:
-Genps_thread(QString,QString,Q3ProgressDialog *);
-void run();
+ public:
+  Genps_thread(QString,QString,Q3ProgressDialog *);
+  void run();
 
-QString m_pdfname,m_tempname;
-Q3ProgressDialog *m_progressdia;
+  QString m_pdfname,m_tempname;
+  Q3ProgressDialog *m_progressdia;
 };
  
 class Psprogressdialog:public Q3ProgressDialog
 {
-public:
-Psprogressdialog::Psprogressdialog(QWidget *a,const char * b,bool f,Qt::WFlags max);
-void customEvent(QCustomEvent *);
+ public:
+  Psprogressdialog(QWidget *a,const char * b,bool f,Qt::WFlags max);
+  void customEvent(QCustomEvent *);
 };
 
 /** Clase base para modelos de declaracion de la agencia tributaria en formato postscript.
@@ -55,35 +54,30 @@ void customEvent(QCustomEvent *);
       * funciona insertando codigo postscript para escribir los numeros en las casillas.
       * Usa la fuente Courier-Bold a 12 puntos. */
 class Modgenps: public QObject
-  {
-    
-// Q_OBJECT
-  public:
-    Modgenps()
-    {}
-    ;
-    ~Modgenps()
-    {}
-    ;
-    void download_form(QWidget *,QString ,QString );
-    Genps_thread *convierte_a_postscript;
-    void formatdigits(QString *,QString *,float); //genera 2 cadenas con parte entera y fraccionaria del float
-    void escrizq(QString,int,int);//escribe el texto "a la izquierda de" (o sea, alineado a la derecha)
-    void escrizq(float,int,int);//funcion sobrecargada, igual que antes pero primero convierte float en cadena
-    void escrder(QString,int,int);//igual que escrizq pero alineado a la izquierda
-    void escrder(float,int,int);//sobrecargada igual que la anterior
-    void escrizqder(QString,QString,int,int);//escribe primera cadena a la izquierda y segunda a la derecha del punto dado
-    void escrizqder(float,int,int); //igual, pero primero convierte float en 2 cadenas con formatdigits
-    void marca_casilla(QString,int,int); //pone una cruz en la casilla dada por sus coordenadas
-    void marcadeagua_borrador();//inserta una marca de agua en el documento con la palabra BORRADOR bien grande, que sea vea!!
-    QFile m_fichlec;
-    QFile m_fich;
-    QTextStream m_output;
-    bool m_es_borrador;//True si el documento a generar es un borrador (mucho mas rapido de generar, pero sin numero de serie valido)
-     /*
-     public slots:
+{
+  // Q_OBJECT
+ public:
+  Modgenps(){};
+  ~Modgenps(){};
+  void download_form(QWidget *,QString ,QString );
+  Genps_thread *convierte_a_postscript;
+  void formatdigits(QString *,QString *,float); //genera 2 cadenas con parte entera y fraccionaria del float
+  void escrizq(QString,int,int);//escribe el texto "a la izquierda de" (o sea, alineado a la derecha)
+  void escrizq(float,int,int);//funcion sobrecargada, igual que antes pero primero convierte float en cadena
+  void escrder(QString,int,int);//igual que escrizq pero alineado a la izquierda
+  void escrder(float,int,int);//sobrecargada igual que la anterior
+  void escrizqder(QString,QString,int,int);//escribe primera cadena a la izquierda y segunda a la derecha del punto dado
+  void escrizqder(float,int,int); //igual, pero primero convierte float en 2 cadenas con formatdigits
+  void marca_casilla(QString,int,int); //pone una cruz en la casilla dada por sus coordenadas
+  void marcadeagua_borrador();//inserta una marca de agua en el documento con la palabra BORRADOR bien grande, que sea vea!!
+  QFile m_fichlec;
+  QFile m_fich;
+  QTextStream m_output;
+  bool m_es_borrador;//True si el documento a generar es un borrador (mucho mas rapido de generar, pero sin numero de serie valido)
+  /*
+    public slots:
     void yata(bool);
-    */
-  };
+  */
+};
 
 #endif
