@@ -25,21 +25,22 @@
 #define COL_IDLINAMORTIZACION      4
 #define COL_ORDENASIENTO           5
 
-amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name, bool flag )
-        : amortizaciondlg(parent,name,flag,0), dialogChanges(this) {
-    companyact = emp;
+amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name )
+        : QWidget(parent,name, Qt::WDestructiveClose), dialogChanges(this) {
+	_depura("amortizacionview::amortizacionview", 0);
+    setupUi(this);
+    m_companyact = emp;
     idamortizacion = "";
     ctaactivo->setempresa(emp);
     ctaamortizacion->setempresa(emp);
 
     /// Buscamos cual es el asiento inteligente que realiza la amortización.
     QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion=valor AND configuracion.nombre='Amortizacion'";
-    companyact->begin();
-    cursor2 *cur = companyact->cargacursor(query,"hola");
-    companyact->commit();
+    m_companyact->begin();
+    cursor2 *cur = m_companyact->cargacursor(query,"hola");
+    m_companyact->commit();
     if (!cur->eof()) {
         idainteligente = cur->valor("idainteligente");
-        fprintf(stderr,"El asiento de amortización es:%s\n", idainteligente.ascii());
     }// end if
     delete cur;
     //      table1->hideColumn(COL_IDLINAMORTIZACION);
@@ -51,31 +52,38 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
     table1->hideColumn(COL_IDASIENTO);
     table1->hideColumn(COL_EJERCICIO);
     table1->hideColumn(COL_IDLINAMORTIZACION);
-}// end amortizacionview
+
+    m_companyact->meteWindow( caption(), this);
+	_depura("END amortizacionview::amortizacionview", 0);
+
+}
 
 
 void amortizacionview::s_newAmortizacion() {}
 
 void amortizacionview::s_deleteAmortizacion() {
+	_depura("amortizacionview::s_deleteAmortizacion", 0);
     trataModificado();
     QString codigo = idamortizacion;
     if (codigo != "") {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion ="+codigo;
-        companyact->begin();
-        companyact->ejecuta(query);
-        companyact->commit();
+        m_companyact->begin();
+        m_companyact->ejecuta(query);
+        m_companyact->commit();
         query = "DELETE FROM amortizacion WHERE idamortizacion="+codigo;
-        companyact->begin();
-        companyact->ejecuta(query);
-        companyact->commit();
-        done(1);
+        m_companyact->begin();
+        m_companyact->ejecuta(query);
+        m_companyact->commit();
+        close(0);
     }// end if
-}// end s_deleteAmortizacion
+	_depura("END amortizacionview::s_deleteAmortizacion", 0);
+}
 
 
 
 
 void amortizacionview::s_saveAmortizacion() {
+	_depura("amortizacionview::s_saveAmortizacion", 0);
     QString query;
     QString namortizacion = nomamortizacion->text();
     double valorcompradbl = valorcompra->text().toDouble();
@@ -89,18 +97,18 @@ void amortizacionview::s_saveAmortizacion() {
     if (idamortizacion == "") {
         fprintf(stderr,"Se trata de una inserción");
         query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra,fecha1cuota, idcuentaactivo, idcuentaamortizacion, agrupacion) VALUES ('%s', %f, %d, '%s','%s', id_cuenta('%s'), id_cuenta('%s'),'%s')", namortizacion.ascii(), valorcompradbl, numcuotasint, fechacomprastr.ascii(), fecha1cuotastr.ascii(), ctaactivostr.ascii(), ctaamortizacionstr.ascii(), agrupacionstr.ascii());
-        companyact->begin();
-        if (companyact->ejecuta(query)) {
+        m_companyact->begin();
+        if (m_companyact->ejecuta(query)) {
             // El mensaje de error lo deberia dar la funcion ejecuta, por tanto esto
             // Va a ser obsoleto.
             QMessageBox::warning(this, tr("Error..."), tr("Ocurrió un error con la Base de Datos"), tr("Aceptar"));
             return;
         }//  end if
-        companyact->commit();
+        m_companyact->commit();
         query.sprintf("SELECT max(idamortizacion) AS idamortizacion FROM amortizacion");
-        companyact->begin();
-        cursor2 *cur = companyact->cargacursor(query,"unquery");
-        companyact->commit();
+        m_companyact->begin();
+        cursor2 *cur = m_companyact->cargacursor(query,"unquery");
+        m_companyact->commit();
         if (!cur->eof()) {
             idamortizacion = cur->valor("idamortizacion");
         }// end if
@@ -108,35 +116,36 @@ void amortizacionview::s_saveAmortizacion() {
         for(int i=0; i<table1->numRows(); i++) {
             //Insertamos en la base de datos cada linea de amortizacion.
             query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, '%s', %s)", idamortizacion.ascii(), table1->text(i,COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii());
-            companyact->begin();
-            companyact->ejecuta(query);
-            companyact->commit();
+            m_companyact->begin();
+            m_companyact->ejecuta(query);
+            m_companyact->commit();
         }// end for
     } else {
         fprintf(stderr,"Se trata de una modificación\n");
         query.sprintf("UPDATE amortizacion SET nomamortizacion='%s', valorcompra=%f, numcuotas=%d, fechacompra='%s', idcuentaactivo=%s, idcuentaamortizacion=%s, fecha1cuota='%s', agrupacion='%s' WHERE idamortizacion=%s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(),fecha1cuotastr.ascii(),agrupacionstr.ascii(), idamortizacion.ascii());
-        companyact->begin();
-        companyact->ejecuta(query);
-        companyact->commit();
+        m_companyact->begin();
+        m_companyact->ejecuta(query);
+        m_companyact->commit();
         //Iteramos para cada linea en el subformulario.
         for(int i=0; i<table1->numRows(); i++) {
             if (table1->text(i,COL_IDLINAMORTIZACION) != "") {
                 //Modificamos las entradas en la linea de amortización.
                 query.sprintf("UPDATE linamortizacion SET fechaprevista='%s', cantidad=%s WHERE idlinamortizacion=%s", table1->text(i,COL_FECHA).ascii(), table1->text(i,COL_CUOTA).ascii(), table1->text(i,COL_IDLINAMORTIZACION).ascii());
-                companyact->begin();
-                companyact->ejecuta(query);
-                companyact->commit();
+                m_companyact->begin();
+                m_companyact->ejecuta(query);
+                m_companyact->commit();
             } else {
                 // AQUI VAMOS A PONER LA INSERCION DE NUEVAS ENTRADAS DE AMORTIZACION
                 query = "INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES ("+idamortizacion+",'"+table1->text(i,COL_FECHA)+"',"+table1->text(i,COL_CUOTA)+")";
-                companyact->begin();
-                companyact->ejecuta(query);
-                companyact->commit();
+                m_companyact->begin();
+                m_companyact->ejecuta(query);
+                m_companyact->commit();
             }// end if
         }// end for
     }// end if
     dialogChanges_cargaInicial();
-}// end s_saveAmortizacion
+	_depura("END amortizacionview::s_saveAmortizacion", 0);
+}
 
 
 void amortizacionview::accept() {
@@ -146,8 +155,10 @@ void amortizacionview::accept() {
 
 
 bool amortizacionview::close(bool ok) {
+	_depura("amortizacionview::close", 0);
     trataModificado();
-    return QDialog::close(ok);
+	_depura("END amortizacionview::close", 0);
+    return QWidget::close(ok);
 }// end close
 
 amortizacionview::~amortizacionview() {}
@@ -155,13 +166,14 @@ amortizacionview::~amortizacionview() {}
 
 // Esta funcion inicializa la clase, y además hace la presentación de una determinada amortizacion.
 void amortizacionview::inicializa(QString idamortiza) {
+	_depura("amortizacionview::inicializa", 0);
     idamortizacion = idamortiza;
     fprintf(stderr,"Inicializamos el formulario %s\n", idamortizacion.ascii());
     QString query = "SELECT * FROM amortizacion LEFT JOIN (SELECT idcuenta AS idcta, codigo AS codctaactivo FROM cuenta) AS t1 ON t1.idcta=amortizacion.idcuentaactivo LEFT JOIN (SELECT idcuenta AS idcta1, codigo AS codctaamortizacion FROM cuenta) AS t2 ON t2.idcta1=amortizacion.idcuentaamortizacion WHERE idamortizacion="+idamortizacion;
 
-    companyact->begin();
-    cursor2 *curs=companyact->cargacursor(query,"unquery");
-    companyact->commit();
+    m_companyact->begin();
+    cursor2 *curs=m_companyact->cargacursor(query,"unquery");
+    m_companyact->commit();
 
     // Si existe el registro que se pasa como parámetro.
     if (!curs->eof()) {
@@ -186,9 +198,9 @@ void amortizacionview::inicializa(QString idamortiza) {
 
     // Buscamos todos los plazos de amortizacion y los vamos poniendo.
     query = "SELECT *, fechaprevista<=now() AS ant FROM linamortizacion LEFT JOIN asiento ON linamortizacion.idasiento=asiento.idasiento WHERE idamortizacion ="+idamortizacion+" ORDER BY fechaprevista";
-    companyact->begin();
-    curs = companyact->cargacursor(query, "otroquery");
-    companyact->commit();
+    m_companyact->begin();
+    curs = m_companyact->cargacursor(query, "otroquery");
+    m_companyact->commit();
     table1->setNumRows(curs->numregistros());
     for (int i=0; i<curs->numregistros(); i++) {
         if ( curs->valor("idasiento")== "" && curs->valor("ant")=="t") {
@@ -211,9 +223,9 @@ void amortizacionview::inicializa(QString idamortiza) {
 
     // Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
     query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion="+idamortizacion;
-    companyact->begin();
-    curs = companyact->cargacursor(query,"amortizado");
-    companyact->commit();
+    m_companyact->begin();
+    curs = m_companyact->cargacursor(query,"amortizado");
+    m_companyact->commit();
     if(!curs->eof()) {
         amortizado->setText(curs->valor("amortizado"));
     }// end if
@@ -222,9 +234,9 @@ void amortizacionview::inicializa(QString idamortiza) {
 
     // Calculamos lo que nos falta por amortizar y lo presentamos en la pantalla.
     query = "SELECT sum(cantidad) AS pdte FROM linamortizacion WHERE idasiento IS NULL AND idamortizacion="+idamortizacion;
-    companyact->begin();
-    curs = companyact->cargacursor(query,"pdte");
-    companyact->commit();
+    m_companyact->begin();
+    curs = m_companyact->cargacursor(query,"pdte");
+    m_companyact->commit();
     if(!curs->eof()) {
         pendiente->setText(curs->valor("pdte"));
     }// end if
@@ -233,10 +245,13 @@ void amortizacionview::inicializa(QString idamortiza) {
     // Desabilitamos el boton de calcular, porque la amortizacion ya está hecha.
     botoncalcular->setDisabled(TRUE);
     dialogChanges_cargaInicial();
+    m_companyact->meteWindow( caption(), this);
+	_depura("END amortizacionview::inicializa", 0);
 }// end inicializa
 
 
 void amortizacionview::calculaamortizacion() {
+	_depura("amortizacionview::calculaamortizacion", 0);
     // Para hacer el círculo de los plazos de cada amortizacion
     // Hay que obtener diversos datos.
     QDate f1cuota = normalizafecha(fecha1cuota->text());
@@ -342,6 +357,7 @@ void amortizacionview::calculaamortizacion() {
             }// end if
         }// end for
     }// end if
+	_depura("amortizacionview::calculaamortizacion", 0);
 }// end calculaamortizacion
 
 
@@ -355,10 +371,11 @@ void amortizacionview::calculaamortizacion() {
   * $cuota$ Cuota a pagar.
   */
 void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin) {
+	_depura("amortizacionview::contextMenuRequested", 0);
     Q3PopupMenu *popup;
     popup = new Q3PopupMenu;
     int opcion;
-//    intapunts3view *intapunts = companyact->intapuntsempresa();
+//    intapunts3view *intapunts = m_companyact->intapuntsempresa();
     /// Generamos el menú contextual.
     popup->insertItem(tr("Generar Asiento"),4);
     popup->insertSeparator();
@@ -397,31 +414,31 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         QString idlinamortizacion = table1->text(row, COL_IDLINAMORTIZACION);
         QString query="DELETE FROM linamortizacion WHERE idlinamortizacion="+idlinamortizacion;
         if(idlinamortizacion != "") {
-            companyact->begin();
-            companyact->ejecuta(query);
-            companyact->commit();
+            m_companyact->begin();
+            m_companyact->ejecuta(query);
+            m_companyact->commit();
         }// end if
         table1->removeRow(row);
     }// end if
     if (opcion == 1 || opcion == 6) {
         /// Si se va a mostrar el asiento, o se va a borrar
         QString idasiento = table1->text(row, COL_IDASIENTO);
-        companyact->intapuntsempresa()->muestraasiento(idasiento.toInt());
+        m_companyact->intapuntsempresa()->muestraasiento(idasiento.toInt());
     }// end if
     if (opcion == 5 || opcion ==6) {
         /// Si se va a desvincular el asiento o se va a borrar.
         QString idasiento = table1->text(row, COL_IDASIENTO);
         QString idlinamortizacion = table1->text(row, COL_IDLINAMORTIZACION);
         QString query = "UPDATE linamortizacion SET idasiento=NULL WHERE idlinamortizacion="+idlinamortizacion;
-        companyact->begin();
-        companyact->ejecuta(query);
-        companyact->commit();
+        m_companyact->begin();
+        m_companyact->ejecuta(query);
+        m_companyact->commit();
         table1->setText(row,COL_IDASIENTO,"");
         table1->setText(row,COL_ORDENASIENTO, "");
     }// end if
     if (opcion ==6) {
         /// Si se va a borrar el asiento
-        companyact->intapuntsempresa()->borraAsiento1();
+        m_companyact->intapuntsempresa()->borraAsiento1();
     }// end if
     if (opcion == 4) {
         /// Se va a generar el asiento
@@ -430,7 +447,7 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         QString cant= table1->text(row, COL_CUOTA);
         fprintf(stderr,"Cuota: %s\n", cant.ascii());
         int numasiento = 0; //El asiento debe ser uno nuevo.
-        aplinteligentesview *nueva=new aplinteligentesview(companyact,0,"");
+        aplinteligentesview *nueva=new aplinteligentesview(m_companyact,0,"");
         QString cuenta = ctaactivo->text();
         QString cuentaamort = ctaamortizacion->text();
         nueva->inicializa(numasiento);
@@ -444,12 +461,12 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento.
         nueva->setmodo(1);
         nueva->exec();
-        int numasiento1=companyact->intapuntsempresa()->idasiento().toInt();
+        int numasiento1=m_companyact->intapuntsempresa()->idasiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento="+QString::number(numasiento1);
-        companyact->begin();
-        cursor2 *cur = companyact->cargacursor(SQLQuery,"hola");
-        companyact->commit();
+        m_companyact->begin();
+        cursor2 *cur = m_companyact->cargacursor(SQLQuery,"hola");
+        m_companyact->commit();
         if (!cur->eof()) {
             ordenasiento= cur->valor("ordenasiento");
         }// end if
@@ -461,16 +478,17 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         /// Debemos guardar la modificacion en la linea de amortizacion.
         QString idlinamortizacion = table1->text(row,COL_IDLINAMORTIZACION);
         SQLQuery = "UPDATE linamortizacion set idasiento="+QString::number(numasiento1)+" WHERE idlinamortizacion="+idlinamortizacion;
-        companyact->begin();
-        companyact->ejecuta(SQLQuery);
-        companyact->commit();
+        m_companyact->begin();
+        m_companyact->ejecuta(SQLQuery);
+        m_companyact->commit();
     }// end if
     col=0;
-}// end contextMenuRequested
+	_depura("END amortizacionview::contextMenuRequested", 0);
+}
 
 
 void amortizacionview::trataModificado() {
-    fprintf(stderr,"mostrarplantilla\n");
+    _depura("amortizacionview::trataModificado", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if ( QMessageBox::warning( this, "Guardar Amortizacion",
@@ -479,4 +497,5 @@ void amortizacionview::trataModificado() {
                                    QMessageBox::Cancel ) == QMessageBox::Ok)
             s_saveAmortizacion();
     }// end if
-}// end trataModificado
+    _depura("END amortizacionview::trataModificado", 0);
+}

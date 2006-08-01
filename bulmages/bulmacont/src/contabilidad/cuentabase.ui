@@ -1394,6 +1394,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends></extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3GroupBox</class>
    <extends></extends>
    <header>Qt3Support/Q3GroupBox</header>
@@ -1405,13 +1412,6 @@
    <extends></extends>
    <header>q3textedit.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
@@ -1447,5 +1447,22 @@
  <resources>
   <include location="../../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_cancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>CuentaBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>465</x>
+     <y>437</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>0</x>
+     <y>402</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

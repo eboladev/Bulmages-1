@@ -59,5 +59,9 @@ public slots:
   virtual void codigo_ret();
   virtual void saveAccount();
   virtual void deleteAccount();
+  virtual void on_mui_aceptar_clicked() {
+	saveAccount();
+	close();
+};
 };
 #endif

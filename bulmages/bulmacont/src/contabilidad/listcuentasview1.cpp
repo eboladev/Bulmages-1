@@ -305,7 +305,8 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
         cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
         nuevae->cargacuenta(atoi(idcuenta().ascii()));
         inicializa();
-        delete nuevae;
+	empresaactual->pWorkspace()->addWindow(nuevae);
+	nuevae->show();
     } else {
         emit(selected(mdb_idcuenta));
     }// end if
@@ -333,17 +334,18 @@ void listcuentasview1::on_mui_crear_clicked()  {
     idgrupo = cadena.toInt();
     nuevae->nuevacuenta(codigo,idgrupo);
 
-//    nuevae->exec();
+    empresaactual->pWorkspace()->addWindow(nuevae);
+    nuevae->show();
 
-    inicializa();
-    idcuenta = nuevae->idcuenta;
-    cadena.setNum(idcuenta);
+ //   inicializa();
+ //   idcuenta = nuevae->idcuenta;
+ //   cadena.setNum(idcuenta);
     /// Para no perder el foco del elemento, al mismo tiempo que se
     /// actualizan los cambios luego buscamos y enfocamos el item
     //    it = ListView1->findItem(cadena, cidcuenta, Q3ListView::ExactMatch);
     //    ListView1->setCurrentItem(it);
     //    ListView1->ensureItemVisible(it);
-    delete nuevae;
+//    delete nuevae;
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
 }
 
@@ -365,8 +367,8 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_desccuenta = it->text(cdesccuenta);
     cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
     nuevae->cargacuenta(atoi(idcuenta().ascii()));
-    inicializa();
-    delete nuevae;
+    empresaactual->pWorkspace()->addWindow(nuevae);
+    nuevae->show();
     _depura("END listcuentasview1::on_mui_editar_clicked", 0);
 }
 

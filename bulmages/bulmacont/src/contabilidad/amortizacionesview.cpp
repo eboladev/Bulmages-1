@@ -80,12 +80,10 @@ void amortizacionesview::on_listado_cellDoubleClicked(int row, int ) {
     if (modo == 0) {
         idamortizacion = listado->item(row,COL_CODIGO)->text();
         // Creamos el objeto mpatrimonialview, y lo lanzamos.
-        amortizacionview *amor=new amortizacionview(m_companyact, 0,"", true);
+        amortizacionview *amor=new amortizacionview(m_companyact, 0,"");
         amor->inicializa(idamortizacion);
-        amor->exec();
-        delete amor;
-        // Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
-        inicializatabla();
+	m_companyact->pWorkspace()->addWindow(amor);
+        amor->show();
     } else {
         idamortizacion = listado->item(listado->currentRow(),COL_CODIGO)->text();
         nomamortizacion = listado->item(listado->currentRow(),COL_NOMBRE)->text();
@@ -96,11 +94,9 @@ void amortizacionesview::on_listado_cellDoubleClicked(int row, int ) {
 
 void amortizacionesview::on_mui_crear_clicked() {
     _depura("amortizacionesview::on_mui_crear_clicked", 0);
-    amortizacionview *amor=new amortizacionview(m_companyact, 0,"", true);
-    amor->exec();
-    delete amor;
-    /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado
-    inicializatabla();
+    amortizacionview *amor=new amortizacionview(m_companyact, 0,"");
+	m_companyact->pWorkspace()->addWindow(amor);
+	amor->show();
     _depura("END amortizacionesview::on_mui_crear_clicked", 0);
 
 }

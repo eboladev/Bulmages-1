@@ -16,6 +16,7 @@
 #include "amortizaciondlg.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
+#include "ui_amortizacionbase.h"
 
 class empresa;
 
@@ -25,11 +26,11 @@ class empresa;
   * \brief Formulario de introducción y/o visión de amortizaciones.
   */
   
-class amortizacionview : public amortizaciondlg , dialogChanges {
+class amortizacionview : public QWidget, Ui_AmortizacionBase , dialogChanges {
   Q_OBJECT
     public:
   // Empresa con la que se trabaja
-  empresa *companyact;
+  empresa *m_companyact;
   // Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
   QString idctaactivo; 
   // Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
@@ -38,7 +39,7 @@ class amortizacionview : public amortizaciondlg , dialogChanges {
   QString idamortizacion;  
   // Esta variable indica cual es el asiento plantilla de amortización.
   QString idainteligente;   
-  amortizacionview(empresa *, QWidget *, const char *, bool );
+  amortizacionview(empresa *, QWidget *, const char * );
   ~amortizacionview();
   void inicializa(QString);
   void trataModificado();
