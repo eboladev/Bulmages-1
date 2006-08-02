@@ -228,5 +228,6 @@ ProveedorListSubform::ProveedorListSubform(QWidget *parent, const char *) : SubF
     addSHeader("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de URL"));
     addSHeader("clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clave de acceso a la web del proveedor"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

@@ -24,28 +24,28 @@ QString DBCampo::valorcampoprep(int &error) {
         }// end if
     }
     switch (m_tipo) {
-    case DBint:
-        if (m_valorcampo == "")
-            return "NULL";
-        return m_conexionbase->sanearCadena(m_valorcampo);
-    case DBvarchar:
-	if (m_valorcampo == "")
+	case DBint:
+		if (m_valorcampo == "")
 		return "NULL";
-        return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
-    case DBdate:
-        if (m_valorcampo == "")
-            return "NULL";
-        return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
-    case DBnumeric:
-        if (m_valorcampo == "")
-            return "NULL";
-        return m_valorcampo;
-    case DBboolean:
-        if (m_valorcampo == "")
-            return "NULL";
-        if (m_valorcampo == "f" || m_valorcampo == "t")
-            return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
-        return m_conexionbase->sanearCadena(m_valorcampo);
+		return m_conexionbase->sanearCadena(m_valorcampo);
+	case DBvarchar:
+		if (m_valorcampo == "")
+			return "NULL";
+		return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+	case DBdate:
+		if (m_valorcampo == "")
+		return "NULL";
+		return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+	case DBnumeric:
+		if (m_valorcampo == "")
+		return "NULL";
+		return m_valorcampo;
+	case DBboolean:
+		if (m_valorcampo == "")
+		return "NULL";
+		if (m_valorcampo == "f" || m_valorcampo == "t")
+		return "'"+m_conexionbase->sanearCadena(m_valorcampo)+"'";
+		return m_conexionbase->sanearCadena(m_valorcampo);
     }// end switch
     error = -1;
     _depura("Error en la conversion de tipos",2);
@@ -250,41 +250,43 @@ int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp
 
 int DBRecord::borrar() {
     _depura("DBRecord::borrar",0);
-try {
-    DBCampo *linea;
-    QString separadorwhere = "";
-    QString querywhere = "";
-    for(int i=0; i < m_lista.size(); ++i) {
-        linea = m_lista.at(i);
-        if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
-            int err;
-            QString lin = linea->valorcampoprep(err);
-            if (err)
-                throw -1;
-            querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
-            separadorwhere = " AND ";
-        }// end if
-        if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
-            if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
-                int err;
-                QString lin = linea->valorcampoprep(err);
-                if (err)
-                    throw -1;
-                querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
-                separadorwhere = " AND ";
-            }// end if
-        }// end if
-    }// end for
-
-    if (m_nuevoCampo == FALSE) {
-        m_conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
-        DBclear();
-    }// end if
-    return 0;
-} catch (...) {
-	_depura("se produjo un error al borrar el elemento");
-	return -1;
-}
+	try {
+		DBCampo *linea;
+		QString separadorwhere = "";
+		QString querywhere = "";
+		for(int i=0; i < m_lista.size(); ++i) {
+			linea = m_lista.at(i);
+			if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
+				int err;
+				QString lin = linea->valorcampoprep(err);
+				if (err)
+					throw -1;
+				querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
+				separadorwhere = " AND ";
+			}// end if
+			if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
+				if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
+					int err;
+					QString lin = linea->valorcampoprep(err);
+					if (err)
+						throw -1;
+					querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
+					separadorwhere = " AND ";
+				}// end if
+			}// end if
+		}// end for
+		
+		if (m_nuevoCampo == FALSE) {
+			m_conexionbase->ejecuta("DELETE FROM "+m_tablename+" WHERE "+querywhere);
+			DBclear();
+		}// end if
+		_depura("END DBRecord::borrar",0);
+	
+		return 0;
+	} catch (...) {
+		mensajeInfo("se produjo un error al borrar el elemento");
+		return -1;
+	}
 }
 
 int DBRecord::guardar() {

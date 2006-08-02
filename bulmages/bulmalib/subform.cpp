@@ -98,8 +98,7 @@ void SDBCampo::refresh() {
 }
 
 
-int SDBCampo::set
-    (QString val) {
+int SDBCampo::set(QString val) {
     _depura("SDBCampo::set", 0);
     if(tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")

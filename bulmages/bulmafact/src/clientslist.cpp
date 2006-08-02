@@ -214,5 +214,6 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     addSHeader("fbajacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de baja del cliente"));
     addSHeader("comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

@@ -773,5 +773,9 @@
         <file>images/pendientes/i_save.xpm</file>
         <file>images/pendientes/i_tuxPeq.png</file>
     </qresource>
-    <qresource prefix="/Genericos48x48" />
+    <qresource prefix="/Genericos48x48" >
+        <file>images/pendientes/bulmacont.png</file>
+        <file>images/pendientes/bulmafact.png</file>
+        <file>images/pendientes/bulmatpv.png</file>
+    </qresource>
 </RCC>

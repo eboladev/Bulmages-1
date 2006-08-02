@@ -57,6 +57,8 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
         rec->setDBvalue("idarticulo", idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+	on_mui_list_editFinished(row,col);
     } // end if
     _depura("END SubForm2Bf::pressedAsterisk", 0);
 }
@@ -115,7 +117,7 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
     QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == del)
+    if (opcion == del && m_delete)
         borrar(row);
     if (opcion == ajust)
         resizeColumnsToContents();
@@ -125,11 +127,10 @@ void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
         resizeColumnToContents(col);
     if (opcion == ajustac)
         resizeRowToContents(row);
-
     if(opcion == verconfig)
         showConfig();
 
-    _depura("END SubForm2Bf::contextMenuEvent", 0);
     delete popup;
+    _depura("END SubForm2Bf::contextMenuEvent", 0);
 }
 

@@ -222,5 +222,6 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent, const char
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

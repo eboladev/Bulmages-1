@@ -230,5 +230,6 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total impuestos"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total pedido"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

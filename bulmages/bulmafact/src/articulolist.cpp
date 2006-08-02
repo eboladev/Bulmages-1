@@ -359,5 +359,6 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     addSHeader("pvparticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("P.V.P. articulo"));
     addSHeader("stockarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

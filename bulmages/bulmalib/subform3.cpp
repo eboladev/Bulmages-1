@@ -60,6 +60,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
     /// Limpiamos la lista.
     m_lista.clear();
+    m_listaborrar.clear();
     _depura("END SubForm3::SubForm3", 0);
 }
 
@@ -335,6 +336,17 @@ int SubForm3::guardar() {
     try {
         SDBRecord *rec;
         int error = 0;
+	
+	/// Borramos los elementos marcados para ser borrados
+	while ( !m_listaborrar.isEmpty()) {
+		rec = m_listaborrar.takeFirst();
+		if (rec) {
+			if (rec->borrar()) throw -1;
+			delete rec;
+		} // end if
+	} // end while
+
+
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
             rec->refresh();
@@ -373,14 +385,26 @@ int SubForm3::borrar() {
 
 
 int SubForm3::borrar(int row) {
-    SDBRecord *rec;
-    rec = m_lista.at(row);
-    int error = rec->borrar();
-    if (error)
-        return error;
-    m_lista.takeAt(row);
-    mui_list->removeRow(row);
-    emit editFinish(row, 0);
+    _depura("SubForm3::borrar", 0);
+	try {
+		SDBRecord *rec;
+		rec = m_lista.at(row);
+		m_listaborrar.append(rec);
+		// int error = rec->borrar();
+		// if (error) throw -1;
+		m_lista.takeAt(row);
+//		mui_list->hideRow(row);
+		for( int i=0; i< mui_list->columnCount(); i++) {
+			mui_list->takeItem(row,i);
+		} // end for
+		mui_list->takeVerticalHeaderItem(row);
+		mui_list->removeRow(row);
+//		emit editFinish(row, 0);
+	} catch (...) {
+		mensajeInfo( "Error al intentar borrar");
+		throw -1;
+	} // end try
+    _depura("END SubForm3::borrar", 0);
     return 0;
 }
 

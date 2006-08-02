@@ -132,7 +132,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
         return;
 
     /// Creamos la factura.
-    AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, tr("albaran que no se vera"));
+    AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, tr("albaran"));
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
@@ -144,7 +144,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     /// EN TEORIA SE DEBERIA COMPROBAR QUE LA FACTURA Y EL ALBARAN SON DEL MISMO CLIENTE, pero por ahora no lo hacemos.
     SDBRecord *linea, *linea1;
     for (int i = 0; i < bud->getlistalineas()->rowCount(); ++i) {
-        linea = getlistalineas()->lineaat(i);
+        linea = bud->getlistalineas()->lineaat(i);
         /// Los registros vacios no se tienen en cuenta.
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = getlistalineas()->lineaat(getlistalineas()->rowCount() - 1);

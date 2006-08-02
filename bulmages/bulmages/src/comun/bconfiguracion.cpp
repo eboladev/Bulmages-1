@@ -222,7 +222,7 @@ void BConfiguracion::borrarEmpresa() {
                 system(sentencia.ascii());
                 /// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
                 abreempresaview *abre= new abreempresaview(NULL,"hola","hola");
-                abre->s_reloadButton();
+		abre->on_mui_actualizar_clicked();
                 delete abre;
                 done(1);
             }// end if

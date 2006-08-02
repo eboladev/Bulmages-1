@@ -68,7 +68,7 @@ void BNuevaEmpresa::accept() {
 
 	/// Hacemos una recarga de empresas pq sabemos a ciencia cierta que ha cambiado el listado.
 	abreempresaview *abre= new abreempresaview(NULL,"hola","hola");
-	abre->s_reloadButton();
+	abre->on_mui_actualizar_clicked();
 	delete abre;
     close();
 }// end accept

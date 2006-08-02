@@ -237,5 +237,6 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, co
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     addSHeader("total", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total albaran"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

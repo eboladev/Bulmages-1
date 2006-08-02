@@ -221,5 +221,6 @@ PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent, const 
     addSHeader("base", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
     addSHeader("impuestos", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
+    setDelete(FALSE);
 }
 

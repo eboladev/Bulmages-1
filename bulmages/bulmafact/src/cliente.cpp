@@ -142,6 +142,6 @@ int Cliente::guardar() {
         _depura("error al guardar el cliente", 1);
         m_companyact->rollback();
         return -1;
-    }
+    } // end try
 }
 

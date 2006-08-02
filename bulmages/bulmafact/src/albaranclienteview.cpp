@@ -200,7 +200,7 @@ void AlbaranClienteView::generarFactura() {
 /// Se encarga de agregar un albaran a una factura.
 void AlbaranClienteView::agregarFactura() {
     /// Pedimos la factura a la que agregar.
-    _depura("Busqueda de una factura.", 0);
+    _depura("AlbaranClienteView::agregarFactura", 0);
     QDialog *diag=new QDialog(0);
     diag->setModal(true);
     FacturasList *fac = new FacturasList(companyact, diag, tr("Seleccione factura","company"), 0, FacturasList::SelectMode);
@@ -222,6 +222,9 @@ void AlbaranClienteView::agregarFactura() {
     /// Creamos la factura.
     FacturaView *bud = companyact->newFacturaView();
     bud->cargar(idfactura);
+
+    /// Agregamos en los comentarios que se ha añadido este albaran
+    bud->pintaComentFactura(bud->DBvalue("comentfactura")+"Albaran Num."+DBvalue("numalbaran")+"\n" );
 
     companyact->m_pWorkspace->addWindow(bud);
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
@@ -246,7 +249,10 @@ void AlbaranClienteView::agregarFactura() {
     bud->calculaypintatotales();
     bud->show();
 
+
     m_procesadoalbaran->setChecked(TRUE);
+    _depura("END AlbaranClienteView::agregarFactura", 0);
+
 }
 
 

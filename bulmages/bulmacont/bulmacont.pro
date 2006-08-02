@@ -5,11 +5,13 @@
 
 TEMPLATE = subdirs
 SUBDIRS += src/contabilidad
-SUBDIRS += src/plugin
-SUBDIRS += src/plugincorrector
-SUBDIRS += src/pluginadocumental
+
+#Pendientes de migrar a Qt4 es preferible que no compilen
+#SUBDIRS += src/plugin
+#SUBDIRS += src/plugincorrector
+#SUBDIRS += src/pluginadocumental
 # SUBDIRS += src/pluginestadisticas
-SUBDIRS += src/pluginonline
-SUBDIRS += src/pluginpychart
-SUBDIRS += src/pluginregistroiva
+#SUBDIRS += src/pluginonline
+#SUBDIRS += src/pluginpychart
+#SUBDIRS += src/pluginregistroiva
 
