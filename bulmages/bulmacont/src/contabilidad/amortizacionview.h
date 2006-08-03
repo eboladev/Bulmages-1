@@ -13,7 +13,6 @@
 #ifndef AMORTIZACIONDLGAMORTIZACIONVIEW_H
 #define AMORTIZACIONDLGAMORTIZACIONVIEW_H
 
-#include "amortizaciondlg.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "ui_amortizacionbase.h"
