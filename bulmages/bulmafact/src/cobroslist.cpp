@@ -128,7 +128,8 @@ void CobrosList::on_mui_editar_clicked() {
 
 void CobrosList::on_mui_crear_clicked() {
     _depura("CobrosList::on_mui_crear_clicked", 0);
-    CobroView *bud = new CobroView(m_companyact, NULL, theApp->translate("CobrosList", "Edicion de cobros"));
+    CobroView *bud = m_companyact->newCobroView();
+    m_companyact->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
@@ -190,7 +191,7 @@ void CobrosList::imprimir() {
 void CobrosList::on_mui_borrar_clicked() {
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo == 0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact, NULL, tr("Edicion de presupuestos"));
+        CobroView *bud = m_companyact->newCobroView();
         bud->cargar(mdb_idcobro);
         bud->borrar();
     } // end if
@@ -202,7 +203,8 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     _depura("CobrosList::on_mui_list_cellDoubleClicked", 0);
     mdb_idcobro = mui_list->DBvalue("idcobro");
     if (m_modo == 0 && mdb_idcobro != "") {
-        CobroView *bud = new CobroView(m_companyact, NULL, tr("Edicion de cobros"));
+        CobroView *bud = m_companyact->newCobroView();
+        m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(mdb_idcobro);
         bud->show();
     } else {

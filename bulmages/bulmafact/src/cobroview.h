@@ -36,7 +36,7 @@
 
 class company;
 
-class CobroView : public QDialog, private Ui_CobroBase, public Cobro, public dialogChanges {
+class CobroView : public QWidget, private Ui_CobroBase, public Cobro, public dialogChanges {
     Q_OBJECT
 
 public:

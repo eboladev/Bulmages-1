@@ -36,7 +36,7 @@
 class company;
 
 
-class PagoView : public QDialog, private Ui_PagoBase, public Pago, public dialogChanges {
+class PagoView : public QWidget, private Ui_PagoBase, public Pago, public dialogChanges {
     Q_OBJECT
 
 public:
@@ -75,6 +75,7 @@ public slots:
         int err = Pago::cargar(id);
         setCaption("Pago " + DBvalue("refpago"));
         dialogChanges_cargaInicial();
+   	companyact->meteWindow(caption(), this);
         return err;
     };
     virtual void on_mui_borrar_clicked();

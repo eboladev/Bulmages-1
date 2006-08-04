@@ -35,13 +35,14 @@ using namespace std;
 
 
 CobroView::CobroView(company *comp, QWidget *parent, const char *name)
-        : QDialog(parent, name, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
     _depura("CobroView::CobroView", 0);
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     mui_cliente->setcompany(comp);
     mui_refcobro->setcompany(comp);
     dialogChanges_cargaInicial();
+    companyact->meteWindow(caption(), this);
     _depura("END CobroView::CobroView", 0);
 }
 
@@ -68,6 +69,7 @@ int CobroView::cargar(QString id) {
         setCaption("Cobro " + DBvalue("refcobro"));
 	pintar();
         dialogChanges_cargaInicial();
+	companyact->meteWindow( caption(), this);
 	_depura("END CobroView::cargar", 0);
         return err;
     }

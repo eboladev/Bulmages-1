@@ -124,7 +124,8 @@ void PagosList::on_mui_editar_clicked() {
 void PagosList::on_mui_list_cellDoubleClicked(int, int) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo == 0 && mdb_idpago != "") {
-        PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de pagos"));
+        PagoView *bud = m_companyact->newPagoView();
+	m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(mdb_idpago);
         bud->show();
     } else {
@@ -152,7 +153,8 @@ void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 
 void PagosList::on_mui_crear_clicked() {
     fprintf(stderr, "Iniciamos el boton_crear\n");
-    PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de pagos"));
+    PagoView *bud = m_companyact->newPagoView();
+    m_companyact->m_pWorkspace->addWindow(bud);
     bud->show();
     bud->setidproveedor(m_proveedor->idproveedor());
     bud->pintar();

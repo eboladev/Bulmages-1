@@ -16,7 +16,7 @@
    <string>Pago</string>
   </property>
   <property name="windowIcon" >
-   <iconset/>
+   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

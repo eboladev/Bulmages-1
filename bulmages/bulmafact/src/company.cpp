@@ -277,7 +277,8 @@ CobroView * company::newCobroView() {
 void company::s_newCobroView() {
     _depura("company::s_newCobroView", 0);
     CobroView *bud = newCobroView();
-    bud->exec();
+    m_pWorkspace->addWindow(bud);
+    bud->show();
 }
 
 
@@ -577,8 +578,8 @@ PagoView * company::newPagoView() {
 void company::s_newPagoView() {
     _depura("INIT_company::s_newPagoView", 1);
     PagoView *pag = newPagoView();
-    pag->exec();
-    delete pag;
+    m_pWorkspace->addWindow(pag);
+    pag->show();
     _depura("END_company::s_newPagoView", 1);
 }
 

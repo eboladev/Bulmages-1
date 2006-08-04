@@ -34,7 +34,7 @@ using namespace std;
 #include "listlinfacturapview.h"
 #include "facturap.h"
 #include "providerslist.h"
-#include "cobroview.h"
+#include "pagoview.h"
 #include "funcaux.h"
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
@@ -80,16 +80,18 @@ void   FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
 }
 
 
-void FacturaProveedorView::s_nuevoCobro() {
-    /*
-        CobroView *bud = new CobroView(companyact,NULL,theApp->translate("Edicion de Cobros", "company"));
-        bud->setidproveedor(mdb_idproveedor);
-        bud->setcantcobro(m_totalfacturap->text());
-        bud->setrefcobro(mdb_reffacturap);
-        bud->setcomentcobro(mdb_descfacturap);
-        bud->pintaCobro();
-        bud->show();
-    */
+void FacturaProveedorView::s_nuevoPago() {
+    _depura("FacturaProveedorView::s_nuevoPago", 0);
+    PagoView *bud = companyact->newPagoView();
+    companyact->m_pWorkspace->addWindow(bud);
+    bud->setidproveedor(DBvalue("idproveedor"));
+    bud->setcantpago(m_totalfacturap->text());
+    bud->setrefpago(DBvalue("reffacturap"));
+    bud->setcomentpago(DBvalue("descfacturap"));
+    bud->pintar();
+    bud->show();
+    _depura("END FacturaProveedorView::s_nuevoPago", 0);
+
 }
 
 

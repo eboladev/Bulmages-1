@@ -91,13 +91,16 @@ void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc)
 
 /// Crea un nuevo cobro para la factura seleccionada.
 void FacturaView::on_mui_cobrar_clicked() {
+    _depura("FacturaView::on_mui_cobrar_clicked", 0);
     CobroView *bud = companyact->newCobroView();
+    companyact->m_pWorkspace->addWindow(bud);
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalfactura->text());
     bud->setrefcobro(DBvalue("reffactura"));
     bud->setcomentcobro(DBvalue("descfactura"));
     bud->pintar();
     bud->show();
+    _depura("END FacturaView::on_mui_cobrar_clicked", 0);
 }
 
 

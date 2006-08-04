@@ -84,7 +84,10 @@ public slots:
     virtual void s_pintaTotales() {
         pintatotales(listalineas->calculabase(), listalineas->calculaiva());
     }
-    virtual void s_nuevoCobro();
+    virtual void on_mui_pagar_clicked() {
+	s_nuevoPago();
+    };
+    virtual void s_nuevoPago();
     virtual void on_m_descuentos_editFinish(int, int) {
         s_pintaTotales();
     };
