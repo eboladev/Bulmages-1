@@ -40,33 +40,37 @@
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), Cliente(comp), dialogChanges(this) {
     _depura("ClienteView::ClienteView", 0);
-    setupUi(this);
-
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("ClienteView_ClienteView", this);
-    if (res != 0)
-        return;
-
-    m_provcliente->setcompany(m_companyact);
-    m_provcliente->setProvincia("");
-
-    /// Desabilitamos los tabs que aun no se usan.
-    mui_tab->setTabEnabled(6, FALSE);
-    mui_tab->setTabEnabled(7, FALSE);
-    mui_tab->setTabEnabled(8, FALSE);
-
-    /// Inicializamos las pantallas auxiliares a esta.
-    m_listpresupuestos->setcompany(m_companyact);
-    m_listpedidos->setcompany(m_companyact);
-    m_listalbaranes->setcompany(m_companyact);
-    m_listfacturas->setcompany(m_companyact);
-    m_listcobros->setcompany(m_companyact);
-
-    m_companyact->meteWindow(caption(), this);
-    dialogChanges_cargaInicial();
-
-    /// Disparamos los plugins.
-    res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
+    try {
+	setupUi(this);
+	
+	/// Disparamos los plugins.
+	int res = g_plugins->lanza("ClienteView_ClienteView", this);
+	if (res != 0)
+		return;
+	
+	m_provcliente->setcompany(m_companyact);
+	m_provcliente->setProvincia("");
+	
+	/// Desabilitamos los tabs que aun no se usan.
+	mui_tab->setTabEnabled(6, FALSE);
+	mui_tab->setTabEnabled(7, FALSE);
+	mui_tab->setTabEnabled(8, FALSE);
+	
+	/// Inicializamos las pantallas auxiliares a esta.
+	m_listpresupuestos->setcompany(m_companyact);
+	m_listpedidos->setcompany(m_companyact);
+	m_listalbaranes->setcompany(m_companyact);
+	m_listfacturas->setcompany(m_companyact);
+	m_listcobros->setcompany(m_companyact);
+	
+	m_companyact->meteWindow(caption(), this, FALSE);
+	dialogChanges_cargaInicial();
+	
+	/// Disparamos los plugins.
+	res = g_plugins->lanza("ClienteView_ClienteView_Post", this);
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el cliente"));
+    } // end try
     _depura("ClienteView::ClienteView", 0);
 }
 
@@ -91,29 +95,30 @@ ClienteView::~ClienteView() {
 **/
 int ClienteView::cargar(QString idcliente) {
     _depura("ClienteView::cargar", 0);
-    int error = 0;
-
-    Cliente::cargar(idcliente);
-    setCaption("Cliente  " + DBvalue("nomcliente"));
-    if(m_companyact->meteWindow(caption(), this))
-        return -1;
-
-    /// Hacemos que el listado de presupuestos de un cliente se inicialize.
-    m_listpresupuestos->setidcliente(idcliente);
-    m_listpresupuestos->presenta();
-    m_listpedidos->setidcliente(idcliente);
-    m_listpedidos->presenta();
-    m_listalbaranes->setidcliente(idcliente);
-    m_listalbaranes->presenta();
-    m_listfacturas->setidcliente(idcliente);
-    m_listfacturas->presenta();
-    m_listcobros->setidcliente(idcliente);
-    m_listcobros->presentar();
-
-    pintaCliente();
-    dialogChanges_cargaInicial();
+    try {
+	Cliente::cargar(idcliente);
+	setCaption("Cliente  " + DBvalue("nomcliente"));
+	m_companyact->meteWindow(caption(), this);
+	
+	/// Hacemos que el listado de presupuestos de un cliente se inicialize.
+	m_listpresupuestos->setidcliente(idcliente);
+	m_listpresupuestos->presenta();
+	m_listpedidos->setidcliente(idcliente);
+	m_listpedidos->presenta();
+	m_listalbaranes->setidcliente(idcliente);
+	m_listalbaranes->presenta();
+	m_listfacturas->setidcliente(idcliente);
+	m_listfacturas->presenta();
+	m_listcobros->setidcliente(idcliente);
+	m_listcobros->presentar();
+	
+	pintaCliente();
+	dialogChanges_cargaInicial();
+    } catch(...) {
+	return -1;
+    } // end try
     _depura("ClienteView::cargar", 0);
-    return error;
+    return 0;
 }
 
 

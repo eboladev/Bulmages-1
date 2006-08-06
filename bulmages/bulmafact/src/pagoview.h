@@ -72,11 +72,15 @@ public slots:
         guardaPago();
     };
     virtual int cargar(QString id) {
-        int err = Pago::cargar(id);
-        setCaption("Pago " + DBvalue("refpago"));
-        dialogChanges_cargaInicial();
-   	companyact->meteWindow(caption(), this);
-        return err;
+	try {
+		if (Pago::cargar(id)) throw -1;
+		setCaption("Pago " + DBvalue("refpago"));
+		dialogChanges_cargaInicial();
+		companyact->meteWindow(caption(), this);
+	} catch(...) {
+		return -1;
+	} // end try
+        return 0;
     };
     virtual void on_mui_borrar_clicked();
     virtual void  on_mui_comentpago_textChanged(const QString &str) {

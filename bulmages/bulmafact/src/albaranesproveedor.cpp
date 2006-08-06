@@ -125,8 +125,9 @@ void AlbaranesProveedor::editar(int row) {
     if (m_modo == 0) {
         AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0, QApplication::translate("AlbaranesProveedor", "Edicion de albaranes a proveedor"));
         if (prov->cargar(mdb_idalbaranp)) {
+            delete prov;
             return;
-        }
+        } // end if
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
@@ -198,18 +199,20 @@ void AlbaranesProveedor::imprimir() {
 
 void AlbaranesProveedor::on_mui_borrar_clicked() {
     _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
-    mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
+    try {
+        mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
+        if (m_modo == 0) {
+            AlbaranProveedorView *bud = m_companyact->newAlbaranProveedorView();
+            bud->cargar(mdb_idalbaranp);
+            bud->borrar();
+            delete bud;
+        } // end if
+        presenta();
+    } catch(...) {
+        mensajeInfo(tr("Error al borrar albaran de proveedor"));
+    } // end try
+    _depura("END AlbaranesProveedor::on_mui_borrar_clicked", 0);
 
-    if (m_modo == 0 && mdb_idalbaranp != "") {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(m_companyact,
-                                    m_companyact->m_pWorkspace,
-                                    QApplication::translate("AlbaranesProveedor", "Edicion de albaranes de proveedores"));
-        bud->cargar(mdb_idalbaranp);
-        bud->borrar();
-        delete bud;
-    }
-
-    presenta();
 }
 
 

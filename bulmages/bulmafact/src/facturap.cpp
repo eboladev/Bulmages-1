@@ -73,7 +73,7 @@ int FacturaProveedor::borrar() {
 
 
 void FacturaProveedor::pintar() {
-    fprintf(stderr,"pintaFacturaProveedor\n");
+    _depura("FacturaProveedor::pintar", 0);
     pintaidproveedor(DBvalue("idproveedor"));
     pintanumfacturap(DBvalue("numfacturap"));
     pintafechafacturap(DBvalue("ffacturap"));
@@ -88,16 +88,28 @@ void FacturaProveedor::pintar() {
 
 /// Esta funcion carga un FacturaProveedor.
 int FacturaProveedor::cargar(QString idfacturap) {
-    inicialize();
-    QString query = "SELECT * FROM facturap WHERE idfacturap=" + idfacturap;
-    cursor2 * cur = companyact->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
-    } // end if
-    delete cur;
-    listalineas->cargar(idfacturap);
-    listadescuentos->cargar(idfacturap);
-    pintar();
+    _depura("FacturaProveedor::cargar", 0);
+    try {
+        inicialize();
+        QString query = "SELECT * FROM facturap WHERE idfacturap=" + idfacturap;
+        cursor2 * cur = companyact->cargacursor(query);
+	if (cur->eof()) {
+		delete cur;
+		throw -1;
+	} // end if
+        if (DBload(cur)) {
+		delete cur;
+                throw -1;
+	} // end if
+        delete cur;
+        listalineas->cargar(idfacturap);
+        listadescuentos->cargar(idfacturap);
+        pintar();
+    } catch (...) {
+	mensajeInfo("FacturaProveedor::cargar producida una excepcion");
+        throw -1;
+    } // end try
+    _depura("END FacturaProveedor::cargar", 0);
     return 0;
 }
 

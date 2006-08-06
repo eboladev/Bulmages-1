@@ -144,6 +144,7 @@ public:
     virtual int borrar(int);
     virtual int guardar();
     virtual int cargar(cursor2 *cur);
+    virtual int inicializar();
     virtual void pintar();
 
 public slots:

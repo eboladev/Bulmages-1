@@ -255,10 +255,21 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 #define __DEBUGMODE
-#undef __DEBUGMODE
+//#undef __DEBUGMODE
 void _depura(QString cad, int nivel, QString param) {
 
 #ifdef __DEBUGMODE
+	static bool semaforo = 0;
+        static QFile file("/tmp/bulmagesout.txt");
+	if (!semaforo) {
+		if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+		return;
+		semaforo = 1;
+	} // end if
+
+        static QTextStream out(&file);
+
+
     static int supnivel = 0;
     static int indice = 0;
     static QString mensajesanulados[7000];
@@ -279,13 +290,17 @@ void _depura(QString cad, int nivel, QString param) {
         } // end if
     } // end for
 
+
     if (nivel == 0) {
-        if(g_main != NULL)
-            g_main->statusBar()->message(cad);
-        // fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
+ //       if(g_main != NULL)
+ //          g_main->statusBar()->message(cad);
+    out << cad << " " << param << "\n";
+//    fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
     } else if (nivel == 1) {
-        // fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
+//    out << cad << " " << param << "\n";
+//         fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
     }
+
 
     if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
         fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());

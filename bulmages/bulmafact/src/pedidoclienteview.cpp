@@ -44,20 +44,24 @@
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), PedidoCliente (comp), dialogChanges(this) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    setupUi(this);
-    subform3->setcompany(comp);
-    m_cliente->setcompany(comp);
-    m_forma_pago->setcompany(comp);
-    m_descuentos->setcompany(comp);
-    m_almacen->setcompany(comp);
-    m_trabajador->setcompany(comp);
-    m_refpedidocliente->setcompany(comp);
-    setListLinPedidoCliente(subform3);
-    setListDescuentoPedidoCliente(m_descuentos);
-    comp->meteWindow(caption(), this);
-    /// Hacemos una carga inicial para que la clase quede bien inicializada. (una chapucilla).
-    cargar("0");
+    try {
+	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+	setupUi(this);
+	subform3->setcompany(comp);
+	m_cliente->setcompany(comp);
+	m_forma_pago->setcompany(comp);
+	m_descuentos->setcompany(comp);
+	m_almacen->setcompany(comp);
+	m_trabajador->setcompany(comp);
+	m_refpedidocliente->setcompany(comp);
+	setListLinPedidoCliente(subform3);
+	setListDescuentoPedidoCliente(m_descuentos);
+	comp->meteWindow(caption(), this, FALSE);
+	/// Hacemos una carga inicial para que la clase quede bien inicializada. (una chapucilla).
+	cargar("0");
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el pedido cliente"));
+    } // end try
     _depura("END PedidoClienteView::PedidoClienteView", 0);
 }
 
@@ -83,7 +87,10 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
         while (!cur->eof()) {
             PresupuestoView *bud = companyact->newBudget();
             companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idpresupuesto"));
+            if (bud->cargar(cur->valor("idpresupuesto"))) {
+		delete bud;
+		return;
+	    } // end if
             bud->show();
             cur->siguienteregistro();
         } // end while
@@ -178,11 +185,14 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
 
 
 int PedidoClienteView::cargar(QString id) {
-    PedidoCliente::cargar(id);
-    setCaption(tr("Pedido cliente ") + DBvalue("refpedidocliente"));
-    if (companyact->meteWindow(caption(), this))
-        return 1;
-    dialogChanges_cargaInicial();
+    try {
+	if (PedidoCliente::cargar(id)) throw -1;
+	setCaption(tr("Pedido cliente ") + DBvalue("refpedidocliente"));
+	companyact->meteWindow(caption(), this);
+	dialogChanges_cargaInicial();
+    } catch(...) {
+	return -1;
+    } // end try
     return 0;
 }
 

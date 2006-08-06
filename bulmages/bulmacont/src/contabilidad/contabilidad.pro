@@ -47,7 +47,9 @@ FORMS += bulmacontbase.ui \
 	 listcuentasbase.ui \
 	 aboutbase.ui \
 	 amortizacionesbase.ui \
-	 amortizacionbase.ui
+	 amortizacionbase.ui \
+	 busquedacuentabase.ui 
+
 
 FORMS3 += uiselector.ui \
 #         about.ui \
@@ -80,8 +82,7 @@ FORMS3 += uiselector.ui \
          mod300dlg.ui \
 #         cobropagodlg.ui \
          tipoivadlg.ui \
-         fpagodlg.ui \
-	 busquedacuentabase.ui 
+         fpagodlg.ui
 
 TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \

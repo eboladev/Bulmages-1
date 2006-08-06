@@ -83,6 +83,7 @@ void ProveedorList::editar(int row) {
     if (m_modo == 0) {
         ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de proveedores"));
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
+ 	    delete prov;
             return;
         }
         m_companyact->m_pWorkspace->addWindow(prov);
@@ -109,14 +110,16 @@ void ProveedorList::on_mui_editar_clicked() {
 /// Se procede a borrar el proveedor.
 void ProveedorList::on_mui_borrar_clicked() {
     _depura("ProveedorList::on_mui_borrar_clicked", 0);
-    int row = mui_list->currentRow();
-    ProveedorView *prov = new ProveedorView(m_companyact, 0);
-    if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
-        return;
-    }
-    prov->on_mui_borrar_clicked();
-    delete prov;
-    presenta();
+    try {
+	QString idprov = mui_list->DBvalue(QString("idproveedor"));
+	ProveedorView *prov = m_companyact->newProveedorView();
+	prov->cargar(idprov);
+	prov->on_mui_borrar_clicked();
+	delete prov;
+	presenta();
+    } catch (...) {
+        mensajeInfo(tr("Error al borrar el proveedor"));
+    } // end try
     _depura("END ProveedorList::on_mui_borrar_clicked", 0);
 }
 

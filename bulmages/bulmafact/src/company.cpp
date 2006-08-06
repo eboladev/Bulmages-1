@@ -72,18 +72,33 @@ company::company() {}
 /** El destructor de la clase company borra toda la memoria almacenada */
 company::~company() {
     _depura("Destructor de company", 0);
+    /// Primero cerramos todas las ventanas y las DestructiveClose se borran
+    m_listventanas->vaciar();
+    /// Borramos el resto de ventanas.
     delete m_facturasproveedorlist;
+    m_facturasproveedorlist = NULL;
     delete m_albaranesproveedor;
+    m_albaranesproveedor = NULL;
     delete m_pedidosproveedorList;
+    m_pedidosproveedorList = NULL;
     delete m_facturasList;
+    m_facturasList = NULL;
     delete m_articleslist;
+    m_articleslist = NULL;
     delete m_providerslist;
+    m_providerslist = NULL;
     delete m_clientsList;
+    m_clientsList = NULL;
     delete m_cobrosList;
+    m_cobrosList = NULL;
     delete m_pagosList;
+    m_pagosList = NULL;
     delete m_budgetsList;
+    m_budgetsList = NULL;
     delete m_pedidosclienteList;
+    m_pedidosclienteList = NULL;
     delete m_clientDelivNotesList;
+    m_clientDelivNotesList = NULL;
     _depura("END Destructor de company", 0);
 }
 
@@ -209,13 +224,6 @@ void company::listClients() {
 }
 
 
-void company::s_newProveedor() {
-    ProveedorView *prov = new ProveedorView(this, 0, QApplication::translate("company", "Editar/anyadir proveedor"));
-    m_pWorkspace->addWindow(prov);
-    prov->showMaximized();
-}
-
-
 void company::listarticles() {
     m_articleslist->hide();
     m_articleslist->showMaximized();
@@ -224,7 +232,8 @@ void company::listarticles() {
 
 
 void company::refreshArticles() {
-    m_articleslist->presenta();
+    if(m_articleslist != NULL) 
+    	m_articleslist->presenta();
 }
 
 
@@ -246,6 +255,24 @@ void company::s_newClienteView() {
 }
 
 
+ProveedorView * company::newProveedorView() {
+    /// Lanzamos los plugins necesarios.
+    ProveedorView *bud;
+    if (g_plugins->lanza("company_newProveedorView", this, (void **)&bud))
+        return bud;
+    bud = new ProveedorView(this, 0, QApplication::translate("company", "Edicion de proveedores"));
+    return bud;
+}
+
+
+void company::s_newProveedorView() {
+    ProveedorView *bud = newProveedorView();
+    m_pWorkspace->addWindow(bud);
+    bud->show();
+}
+
+
+
 FacturaProveedorView * company::newFacturaProveedorView() {
     /// Lanzamos los plugins necesarios.
     FacturaProveedorView *bud;
@@ -259,6 +286,7 @@ FacturaProveedorView * company::newFacturaProveedorView() {
 void company::s_newFacturaPro() {
     FacturaProveedorView *bud = newFacturaProveedorView();
     m_pWorkspace->addWindow(bud);
+    bud->inicializar();
     bud->pintar();
     bud->show();
 }
@@ -378,8 +406,8 @@ void company::s_newFacturaCli() {
         return;
     FacturaView *bud = newFacturaView();
     m_pWorkspace->addWindow(bud);
-    bud->cargar("0");
-    bud->pintaFactura();
+//    bud->cargar("0");
+//    bud->pintaFactura();
     bud->show();
 }
 
@@ -390,7 +418,8 @@ void company::refreshBudgets() {
 
 
 void company::refreshFacturas() {
-    m_facturasList->presenta();
+    if(m_facturasList != NULL)
+    	m_facturasList->presenta();
 }
 
 
@@ -409,22 +438,26 @@ void company::newClientDelivNote() {
 
 
 void company::refreshClientDelivNotes() {
-    m_clientDelivNotesList->presenta();
+    if (m_clientDelivNotesList != NULL) 
+    	m_clientDelivNotesList->presenta();
 }
 
 
 void company::refreshAlbaranesCliente() {
-    m_clientDelivNotesList->presenta();
+    if(m_clientDelivNotesList != NULL) 
+    	m_clientDelivNotesList->presenta();
 }
 
 
 void company::refreshAlbaranesProveedor() {
-    m_albaranesproveedor->presenta();
+    if(m_albaranesproveedor != NULL) 
+    	m_albaranesproveedor->presenta();
 }
 
 
 void company::refreshClientes() {
-    m_clientsList->presenta();
+    if(m_clientsList != NULL)
+    	m_clientsList->presenta();
 }
 
 
@@ -436,12 +469,14 @@ void company::newPedidoCliente() {
 
 
 void company::refreshPedidosCliente() {
-    m_pedidosclienteList->presenta();
+    if(m_pedidosclienteList != NULL) 
+    	m_pedidosclienteList->presenta();
 }
 
 
 void company::refreshPedidosProveedor() {
-    m_pedidosproveedorList->presenta();
+    if(m_pedidosproveedorList != NULL) 
+    	m_pedidosproveedorList->presenta();
 }
 
 
@@ -529,6 +564,26 @@ void company::s_newAlbaranClienteView() {
     bud->pintar();
     bud->show();
 }
+
+
+AlbaranProveedorView * company::newAlbaranProveedorView() {
+    /// Lanzamos los plugins necesarios.
+    AlbaranProveedorView *bud;
+    if (g_plugins->lanza("company_newAlbaranProveedorView", this, (void **)&bud))
+        return bud;
+    bud = new AlbaranProveedorView(this, 0, QApplication::translate("company", "Edicion de albaranes de proveedor"));
+    return bud;
+}
+
+
+void company::s_newAlbaranProveedorView() {
+    AlbaranProveedorView *bud = newAlbaranProveedorView();
+    m_pWorkspace->addWindow(bud);
+    bud->pintar();
+    bud->show();
+}
+
+
 
 
 PedidoClienteView * company::newPedidoClienteView() {

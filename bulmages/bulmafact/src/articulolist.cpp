@@ -73,8 +73,10 @@ void ArticuloList::editArticle(int row) {
         ArticuloView *art = m_companyact->newArticuloView();
         m_companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
-        if (art->cargar(mdb_idarticulo))
+        if (art->cargar(mdb_idarticulo)) {
+	    delete art;
             return;
+        } // end if
         art->hide();
         art->show();
     } else {
@@ -108,11 +110,12 @@ ArticuloList::~ArticuloList() {
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n", 0);
     try {
+	QString idarticulo = mui_list->DBvalue("idarticulo");
         if (QMessageBox::Yes == QMessageBox::question(this,
                 tr("Borrar articulo"),
                 tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
                 QMessageBox::Yes, QMessageBox::No)) {
-            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo=" + mui_list->DBvalue("idarticulo");
+            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo=" + idarticulo;
             int error = m_companyact->ejecuta(SQLQuery);
             if (error)
                 throw -1;

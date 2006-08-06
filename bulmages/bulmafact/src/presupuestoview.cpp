@@ -53,28 +53,32 @@ using namespace std;
 PresupuestoView::PresupuestoView(company *comp , QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), presupuesto(comp), dialogChanges(this) {
     _depura("Inicializacion de PresupuestoView\n", 0);
-    setupUi(this);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
-    if (res != 0)
-        return;
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    subform2->setcompany(comp);
-    m_descuentos->setcompany(comp);
-    m_cliente->setcompany(comp);
-    m_forma_pago->setcompany(comp);
-    m_almacen->setcompany(comp);
-    m_trabajador->setcompany(comp);
-    m_refpresupuesto->setcompany(comp);
-    setlislinpresupuesto(subform2);
-    setlisdescpresupuesto(m_descuentos);
-    inicialize();
-    comp->meteWindow(caption(), this);
-    /// Disparamos los plugins por flanco descendente.
-    g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
-
-    /// Hacemos una carga falsa para que la clase quede bien inicializada. (es una chapucilla).
-    cargar("0");
+    try {
+	setupUi(this);
+	/// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+	int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
+	if (res != 0)
+		return;
+	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+	subform2->setcompany(comp);
+	m_descuentos->setcompany(comp);
+	m_cliente->setcompany(comp);
+	m_forma_pago->setcompany(comp);
+	m_almacen->setcompany(comp);
+	m_trabajador->setcompany(comp);
+	m_refpresupuesto->setcompany(comp);
+	setlislinpresupuesto(subform2);
+	setlisdescpresupuesto(m_descuentos);
+	inicialize();
+	comp->meteWindow(caption(), this, FALSE);
+	/// Disparamos los plugins por flanco descendente.
+	g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
+	
+	/// Hacemos una carga falsa para que la clase quede bien inicializada. (es una chapucilla).
+	cargar("0");
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el presupuesto"));
+    } // end try
     _depura("Fin de la inicializacion de PresupuestoView\n", 0);
 }
 
@@ -226,14 +230,17 @@ void PresupuestoView::generarPedidoCliente() {
 
 
 int PresupuestoView::cargar(QString id) {
-    int error = 0;
-    error = presupuesto::cargar(id);
-    if (error)
-        return -1;
-    setCaption("presupuesto " + DBvalue("refpresupuesto"));
-    if (companyact->meteWindow(caption(), this))
-        return -1;
-    dialogChanges_cargaInicial();
+    _depura("PresupuestoView::cargar", 0);
+    try {
+	if (presupuesto::cargar(id))
+		throw -1;
+	setCaption("presupuesto " + DBvalue("refpresupuesto"));
+	companyact->meteWindow(caption(), this);
+	dialogChanges_cargaInicial();
+	_depura("END PresupuestoView::cargar", 0);
+    } catch(...) {
+       return -1;
+    } // end try
     return 0;
 }
 

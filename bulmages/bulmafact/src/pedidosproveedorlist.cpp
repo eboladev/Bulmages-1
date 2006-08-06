@@ -162,29 +162,40 @@ void PedidosProveedorList::imprimir() {
 
 void PedidosProveedorList::on_mui_borrar_clicked() {
     _depura("PedidosProveedorList::on_mui_borrar_clicked", 0);
-    mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
-    PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de facturas a cliente"));
-    if (prov->cargar(mdb_idpedidoproveedor)) {
-        return;
-    }
-    prov->borrar();
-    presenta();
+    try {
+	mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
+	if (mdb_idpedidoproveedor == "") return;
+	PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de pedidos a proveedor"));
+	if (prov->cargar(mdb_idpedidoproveedor)) {
+		throw -1;
+	} // end if
+	prov->borrar();
+	presenta();
+    } catch(...) {
+	mensajeInfo(tr("No se pudo borrar el pedido proveedor"));
+    } // end try
+    _depura("END PedidosProveedorList::on_mui_borrar_clicked", 0);
 }
 
 
 void PedidosProveedorList::editar(int row) {
     _depura("PedidosProveedorList::editar", 0);
-    mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
-    if (m_modo == 0) {
-        PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de facturas a cliente"));
-        if (prov->cargar(mdb_idpedidoproveedor)) {
-            return;
-        }
-        m_companyact->m_pWorkspace->addWindow(prov);
-        prov->show();
-    } else {
-        emit(selected(mdb_idpedidoproveedor));
-    } // end if
+    try {
+	mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
+	if (m_modo == 0) {
+		PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de facturas a cliente"));
+		if (prov->cargar(mdb_idpedidoproveedor)) {
+		delete prov;
+		return;
+		} // end if
+		m_companyact->m_pWorkspace->addWindow(prov);
+		prov->show();
+	} else {
+		emit(selected(mdb_idpedidoproveedor));
+	} // end if
+    } catch(...) {
+	mensajeInfo(tr("Error al cargar el pedido proveedor"));
+    } // end try
     _depura("END PedidosProveedorList::editar", 0);
 }
 

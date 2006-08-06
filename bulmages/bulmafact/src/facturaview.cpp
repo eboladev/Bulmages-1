@@ -46,20 +46,24 @@ FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), Factura (comp), dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     _depura("FacturaView::FacturaView", 0);
-    setupUi(this);
-    subform2->setcompany(comp);
-    m_almacen->setcompany(comp);
-    m_forma_pago->setcompany(comp);
-    m_cliente->setcompany(comp);
-    m_descuentos->setcompany(comp);
-    m_codigoserie_factura->setcompany(comp);
-    m_reffactura->setcompany(comp);
-    setListLinFactura(subform2);
-    setListDescuentoFactura(m_descuentos);
-    inicialize();
-    comp->meteWindow(caption(),this);
-    /// Hacemos una carga inicial para que quede bien inicializada la clase (una chapucilla)
-    cargar("0");
+    try {
+	setupUi(this);
+	subform2->setcompany(comp);
+	m_almacen->setcompany(comp);
+	m_forma_pago->setcompany(comp);
+	m_cliente->setcompany(comp);
+	m_descuentos->setcompany(comp);
+	m_codigoserie_factura->setcompany(comp);
+	m_reffactura->setcompany(comp);
+	setListLinFactura(subform2);
+	setListDescuentoFactura(m_descuentos);
+	inicialize();
+	comp->meteWindow(caption(),this, FALSE);
+	/// Hacemos una carga inicial para que quede bien inicializada la clase (una chapucilla)
+	cargar("0");
+    } catch(...) {
+	mensajeInfo(tr("Error al crear la factura"));
+    }
     _depura("END FacturaView::FacturaView");
 }
 
@@ -105,11 +109,18 @@ void FacturaView::on_mui_cobrar_clicked() {
 
 
 int FacturaView::cargar(QString id) {
-    Factura::cargar(id);
-    setCaption(tr("Factura") + " - " + DBvalue("reffactura"));
-    if (companyact->meteWindow(caption(), this))
-        return 1;
-    dialogChanges_cargaInicial();
+    _depura("FacturaView::cargar", 0);
+    try {
+	Factura::cargar(id);
+	if (DBvalue("idfactura") != "") {
+		setCaption(tr("Factura") + " " + DBvalue("reffactura"));
+		companyact->meteWindow(caption(), this);
+	} // end if
+	dialogChanges_cargaInicial();
+    } catch(...) {
+	return -1;
+    } // end try
+    _depura("END FacturaView::cargar", 0);
     return 0;
 }
 

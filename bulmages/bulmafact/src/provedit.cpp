@@ -30,53 +30,56 @@
 ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), DBRecord(comp), dialogChanges(this) {
     _depura("ProveedorView::ProveedorView", 0);
-    setDBTableName("proveedor");
-    setDBCampoId("idproveedor");
-    addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID Proveedor"));
-    addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre del Proveedor"));
-    addDBCampo("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre alternativo del Proveedor"));
-    addDBCampo("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("C.I.F. del Proveedor"));
-    addDBCampo("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo Cliente"));
-    addDBCampo("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Banco Proveedor"));
-    addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion"));
-    addDBCampo("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Poblacion"));
-    addDBCampo("provproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Provincia"));
-    addDBCampo("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo postal"));
-    addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de telefono"));
-    addDBCampo("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de fax"));
-    addDBCampo("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion electronica"));
-    addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
-    addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
-    addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
-
-    setupUi(this);
-    m_companyact = comp;
-
-    m_provproveedor->setcompany(m_companyact);
-    m_provproveedor->setProvincia("");
-
-    /// Desabilitamos los tabs que aun no se usan
-    masdf->setTabEnabled(5, FALSE);
-    masdf->setTabEnabled(6, FALSE);
-    masdf->setTabEnabled(7, FALSE);
-
-    /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
-    _depura("inicializamos el listado de pedidos\n", 0);
-    m_listpedidosprov->setcompany(m_companyact);
-    m_listpedidosprov->hideBusqueda();
-
-    m_albaranesprov->setcompany(m_companyact);
-    m_albaranesprov->hideBusqueda();
-
-    m_listfacturasprov->setcompany(m_companyact);
-    m_listfacturasprov->hideBusqueda();
-
-    m_listpagosprov->setcompany(m_companyact);
-    m_listpagosprov->hideBusqueda();
-
-    if (m_companyact->meteWindow(caption(), this))
-        return;
-    dialogChanges_cargaInicial();
+    try {
+	setDBTableName("proveedor");
+	setDBCampoId("idproveedor");
+	addDBCampo("idproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID Proveedor"));
+	addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre del Proveedor"));
+	addDBCampo("nomaltproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre alternativo del Proveedor"));
+	addDBCampo("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("C.I.F. del Proveedor"));
+	addDBCampo("codicliproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo Cliente"));
+	addDBCampo("cbancproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Banco Proveedor"));
+	addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion"));
+	addDBCampo("poblproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Poblacion"));
+	addDBCampo("provproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Provincia"));
+	addDBCampo("cpproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo postal"));
+	addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de telefono"));
+	addDBCampo("faxproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Numero de fax"));
+	addDBCampo("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion electronica"));
+	addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
+	addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
+	addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
+	
+	setupUi(this);
+	m_companyact = comp;
+	
+	m_provproveedor->setcompany(m_companyact);
+	m_provproveedor->setProvincia("");
+	
+	/// Desabilitamos los tabs que aun no se usan
+	masdf->setTabEnabled(5, FALSE);
+	masdf->setTabEnabled(6, FALSE);
+	masdf->setTabEnabled(7, FALSE);
+	
+	/// Cargamos el listado de pedidos del proveedor y dejamos presentable.
+	_depura("inicializamos el listado de pedidos\n", 0);
+	m_listpedidosprov->setcompany(m_companyact);
+	m_listpedidosprov->hideBusqueda();
+	
+	m_albaranesprov->setcompany(m_companyact);
+	m_albaranesprov->hideBusqueda();
+	
+	m_listfacturasprov->setcompany(m_companyact);
+	m_listfacturasprov->hideBusqueda();
+	
+	m_listpagosprov->setcompany(m_companyact);
+	m_listpagosprov->hideBusqueda();
+	
+	m_companyact->meteWindow(caption(), this, FALSE);
+ 	   dialogChanges_cargaInicial();
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el proveedor"));
+    } // end try
 
     _depura("END ProveedorView::ProveedorView", 0);
 }
@@ -92,42 +95,46 @@ ProveedorView::~ProveedorView() {
 /// la ventana de edicion en modo de insercion.
 int ProveedorView::cargar(QString idprov) {
     _depura("ProveedorView::cargar", 0);
-    QString query = "SELECT * FROM proveedor WHERE idproveedor=" + idprov;
-    cursor2 * cur= m_companyact->cargacursor(query);
-    if (!cur->eof()) {
-        DBload(cur);
-    } // end if
-    delete cur;
-    m_nomproveedor->setText(DBvalue("nomproveedor"));
-    m_nomaltproveedor->setText(DBvalue("nomaltproveedor"));
-    m_cifproveedor->setText(DBvalue("cifproveedor" ));
-    m_codicliproveedor->setText(DBvalue("codicliproveedor" ));
-    m_cbancproveedor->setText(DBvalue("cbancproveedor" ));
-    m_dirproveedor->setText(DBvalue("dirproveedor"));
-    m_poblproveedor->setText( DBvalue("poblproveedor" ));
-    m_cpproveedor->setText(DBvalue("cpproveedor"));
-    m_telproveedor->setText(DBvalue("telproveedor"));
-    m_faxproveedor->setText(DBvalue("faxproveedor"));
-    m_emailproveedor->setText(DBvalue("emailproveedor"));
-    m_urlproveedor->setText(DBvalue("urlproveedor"));
-    m_comentproveedor->setText(DBvalue("comentproveedor" ));
-    m_provproveedor->setProvincia(DBvalue("provproveedor"));
-    mui_codproveedor->setText(DBvalue("codproveedor"));
-    dialogChanges_cargaInicial();
+    try {
+	QString query = "SELECT * FROM proveedor WHERE idproveedor=" + idprov;
+	cursor2 * cur= m_companyact->cargacursor(query);
+	if (!cur->eof()) {
+		DBload(cur);
+	} // end if
+	delete cur;
+	m_nomproveedor->setText(DBvalue("nomproveedor"));
+	m_nomaltproveedor->setText(DBvalue("nomaltproveedor"));
+	m_cifproveedor->setText(DBvalue("cifproveedor" ));
+	m_codicliproveedor->setText(DBvalue("codicliproveedor" ));
+	m_cbancproveedor->setText(DBvalue("cbancproveedor" ));
+	m_dirproveedor->setText(DBvalue("dirproveedor"));
+	m_poblproveedor->setText( DBvalue("poblproveedor" ));
+	m_cpproveedor->setText(DBvalue("cpproveedor"));
+	m_telproveedor->setText(DBvalue("telproveedor"));
+	m_faxproveedor->setText(DBvalue("faxproveedor"));
+	m_emailproveedor->setText(DBvalue("emailproveedor"));
+	m_urlproveedor->setText(DBvalue("urlproveedor"));
+	m_comentproveedor->setText(DBvalue("comentproveedor" ));
+	m_provproveedor->setProvincia(DBvalue("provproveedor"));
+	mui_codproveedor->setText(DBvalue("codproveedor"));
+	dialogChanges_cargaInicial();
 
-    /// Cargamos las ventanas auxiliares.
-    m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
-    m_listpedidosprov->presenta();
-    m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
-    m_albaranesprov->presenta();
-    m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
-    m_listfacturasprov->presenta();
-    m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
-    m_listpagosprov->presentar();
+	/// Cargamos las ventanas auxiliares.
+	m_listpedidosprov->setidproveedor(DBvalue("idproveedor"));
+	m_listpedidosprov->presenta();
+	m_albaranesprov->setidproveedor(DBvalue("idproveedor"));
+	m_albaranesprov->presenta();
+	m_listfacturasprov->setidproveedor(DBvalue("idproveedor"));
+	m_listfacturasprov->presenta();
+	m_listpagosprov->setidproveedor(DBvalue("idproveedor"));
+	m_listpagosprov->presentar();
 
-    /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
-    setCaption("Proveedor " + DBvalue("nomproveedor"));
-    m_companyact->meteWindow(caption(), this);
+	/// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
+	setCaption("Proveedor " + DBvalue("nomproveedor"));
+	m_companyact->meteWindow(caption(), this);
+    } catch(...) {
+        return -1;
+    } // end try
 
     _depura("END ProveedorView::cargar", 0);
     return 0;

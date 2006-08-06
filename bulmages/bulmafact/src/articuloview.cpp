@@ -42,25 +42,28 @@
 ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
     _depura("ArticuloView::INIT_constructor()\n", 0);
-    m_companyact = comp;
-    setupUi(this);
-
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
-    if (res != 0)
-        return;
-
-    m_familia->setcompany(comp);
-    m_tipoarticulo->setcompany(comp);
-    m_componentes->setcompany(comp);
-    m_archivoimagen = "";
-    cargarcomboiva("0");
-    m_componentes->cargar("0");
-
-    m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-    if (m_companyact->meteWindow(tr("Edicion del articulo"), this))
-        return;
-    dialogChanges_cargaInicial();
+    try {
+	m_companyact = comp;
+	setupUi(this);
+	
+	/// Disparamos los plugins.
+	int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
+	if (res != 0)
+		return;
+	
+	m_familia->setcompany(comp);
+	m_tipoarticulo->setcompany(comp);
+	m_componentes->setcompany(comp);
+	m_archivoimagen = "";
+	cargarcomboiva("0");
+	m_componentes->cargar("0");
+	
+	m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
+	m_companyact->meteWindow(tr("Edicion del articulo"), this, FALSE);
+	dialogChanges_cargaInicial();
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el articulo"));
+    }// end try
     _depura("ArticuloView::END_constructor()\n", 0);
 }
 
@@ -107,36 +110,33 @@ void ArticuloView::pintar() {
 /// la ventana de edicion en modo de insercion.
 int ArticuloView::cargar(QString idarticulo) {
     _depura("ArticuloView::cargar()\n", 0);
-    int error = 0;
-    setDBvalue("idarticulo", idarticulo);
+    try {
+	setDBvalue("idarticulo", idarticulo);
+	
+	/// Disparamos los plugins.
+	int res = g_plugins->lanza("ArticuloView_cargar", this);
+	if (res != 0)
+		return res;
+	
+	QString ivaType = "";
+	Articulo::cargar(idarticulo);
+	ivaType = DBvalue("idtipo_iva");
+	
+	int ret = cargarcomboiva(ivaType);
+	if (ret)
+		throw -1;
+	
+	/// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
+	setCaption(tr("Articulo ") + DBvalue("codigocompletoarticulo"));
+	ret = m_companyact->meteWindow(caption(), this);
+	if (ret)
+		throw -1;
+	m_componentes->cargar(DBvalue("idarticulo"));
 
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("ArticuloView_cargar", this);
-    if (res != 0)
-        return res;
-
-    QString ivaType = "";
-    Articulo::cargar(idarticulo);
-    ivaType = DBvalue("idtipo_iva");
-
-    int ret = cargarcomboiva(ivaType);
-    if (ret)
-        error = 1;
-
-    /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
-    setCaption(tr("Articulo ") + DBvalue("codigocompletoarticulo"));
-    ret = m_companyact->meteWindow(caption(), this);
-    if (ret)
-        error = 1;
-    m_componentes->cargar(DBvalue("idarticulo"));
-
-
-    /// Tratamiento de excepciones.
-    if (error == 1) {
-        _depura("ArticuloView::END_chargeArticle Error en la carga del articulo()\n", 0);
-        return -1;
-    } // end if
-
+    } catch(...) {
+	mensajeInfo(tr("Error en la carga del articulo"));
+	return -1;
+    } // end try
     pintar();
     dialogChanges_cargaInicial();
     _depura("END ArticuloView::cargar()\n", 0);

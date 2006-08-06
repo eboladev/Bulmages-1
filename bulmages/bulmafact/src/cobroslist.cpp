@@ -189,27 +189,41 @@ void CobrosList::imprimir() {
 
 
 void CobrosList::on_mui_borrar_clicked() {
-    mdb_idcobro = mui_list->DBvalue("idcobro");
-    if (m_modo == 0 && mdb_idcobro != "") {
-        CobroView *bud = m_companyact->newCobroView();
-        bud->cargar(mdb_idcobro);
-        bud->borrar();
-    } // end if
-    presentar();
+    _depura("CobrosList::on_mui_borrar_clicked",0);
+    try {
+	mdb_idcobro = mui_list->DBvalue("idcobro");
+	if (m_modo == 0) {
+		CobroView *bud = m_companyact->newCobroView();
+		bud->cargar(mdb_idcobro);
+		bud->borrar();
+		delete bud;
+	} // end if
+	presentar();
+    } catch(...) {
+	mensajeInfo(tr("Error al borrar el cobro"));
+    } // end try
+    _depura("END:CobrosList::on_mui_borrar_clicked",0);
 }
 
 
 void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     _depura("CobrosList::on_mui_list_cellDoubleClicked", 0);
-    mdb_idcobro = mui_list->DBvalue("idcobro");
-    if (m_modo == 0 && mdb_idcobro != "") {
-        CobroView *bud = m_companyact->newCobroView();
-        m_companyact->m_pWorkspace->addWindow(bud);
-        bud->cargar(mdb_idcobro);
-        bud->show();
-    } else {
-        close();
-    } // end if
+    try {
+	mdb_idcobro = mui_list->DBvalue("idcobro");
+	if (m_modo == 0) {
+		CobroView *bud = m_companyact->newCobroView();
+		if (bud->cargar(mdb_idcobro)) {
+			delete bud;
+			return;
+		} // end if
+		m_companyact->m_pWorkspace->addWindow(bud);
+		bud->show();
+	} else {
+		close();
+	} // end if
+     } catch(...) {
+	mensajeInfo(tr("Debe seleccionar una fila primero"));
+     } // end try
     _depura("END CobrosList::on_mui_list_cellDoubleClicked", 0);
 
 }

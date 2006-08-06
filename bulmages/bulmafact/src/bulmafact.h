@@ -118,7 +118,7 @@ public slots:
         m_company->s_inventarios();
     };
     virtual void on_actionNuevo_Proveedor_triggered() {
-        m_company->s_newProveedor();
+        m_company->s_newProveedorView();
     };
     virtual void on_actionListado_Proveedores_triggered() {
         m_company->listproviders();

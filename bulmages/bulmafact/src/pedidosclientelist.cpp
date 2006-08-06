@@ -113,17 +113,22 @@ QString PedidosClienteList::generarFiltro() {
 
 void PedidosClienteList::editar(int row) {
     _depura("ProveedorList::editar", 0);
-    m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
-    if (m_modo == 0) {
-        PedidoClienteView *prov = new PedidoClienteView(companyact, 0, QApplication::translate("PedidosClienteList", "Edicion de pedidos a cliente"));
-        if (prov->cargar(m_idpedidocliente)) {
-            return;
-        }
-        companyact->m_pWorkspace->addWindow(prov);
-        prov->show();
-    } else {
-        emit(selected(m_idpedidocliente));
-    } // end if
+    try {
+	m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
+	if (m_modo == 0) {
+		PedidoClienteView *prov = new PedidoClienteView(companyact, 0, QApplication::translate("PedidosClienteList", "Edicion de pedidos a cliente"));
+		if (prov->cargar(m_idpedidocliente)) {
+			delete prov;
+			return;
+		} // end if
+		companyact->m_pWorkspace->addWindow(prov);
+		prov->show();
+	} else {
+		emit(selected(m_idpedidocliente));
+	} // end if
+    } catch(...) {
+	mensajeInfo(tr("Error al cargar el pedido cliente"));
+    } // end try
     _depura("END ProveedorList::editar", 0);
 }
 
@@ -184,16 +189,19 @@ void PedidosClienteList::imprimir() {
 
 void PedidosClienteList::on_mui_borrar_clicked() {
     _depura("PedidosClienteList::on_mui_borrar_clicked", 0);
-    m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
-    if (m_modo == 0) {
-        PedidoClienteView *prov = new PedidoClienteView(companyact, 0, QApplication::translate("PedidosClienteList", "Edicion de pedidos a cliente"));
-        if (prov->cargar(m_idpedidocliente))
-            return;
-        prov->borrar();
-        delete prov;
-    } // end if
-    _depura("END PedidosClienteList::on_mui_borrar_clicked", 0);
-    presenta();
+    try {
+	m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
+	if (m_modo == 0) {
+		PedidoClienteView *prov = companyact->newPedidoClienteView();
+		if (prov->cargar(m_idpedidocliente)) throw -1;
+		prov->borrar();
+		delete prov;
+	} // end if
+	presenta();
+    } catch(...) {
+	mensajeInfo(tr("Error al borrar el pedido cliente"));
+    } // end try
+	_depura("END PedidosClienteList::on_mui_borrar_clicked", 0);
 }
 
 

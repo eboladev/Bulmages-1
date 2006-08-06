@@ -125,8 +125,11 @@ void PagosList::on_mui_list_cellDoubleClicked(int, int) {
     mdb_idpago = mui_list->DBvalue("idpago");
     if (m_modo == 0 && mdb_idpago != "") {
         PagoView *bud = m_companyact->newPagoView();
+        if (bud->cargar(mdb_idpago)) {
+		delete bud;
+		return;
+	} // end if
 	m_companyact->m_pWorkspace->addWindow(bud);
-        bud->cargar(mdb_idpago);
         bud->show();
     } else {
         close();
@@ -216,13 +219,19 @@ void PagosList::imprimir() {
 
 
 void PagosList::on_mui_borrar_clicked() {
-    mdb_idpago = mui_list->DBvalue("idpago");
-    if (m_modo == 0 && mdb_idpago != "") {
-        PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de presupuestos"));
-        bud->cargar(mdb_idpago);
-        bud->borraPago();
-    } // end if
-    presentar();
+    _depura("PagosList::on_mui_borrar_clicked", 0);
+    try {
+	mdb_idpago = mui_list->DBvalue("idpago");
+	if (m_modo == 0 && mdb_idpago != "") {
+		PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de presupuestos"));
+		bud->cargar(mdb_idpago);
+		bud->borraPago();
+	} // end if
+	presentar();
+    } catch(...)  {
+	mensajeInfo(tr("Error al borrar el pago"));
+    } // end try
+    _depura("END PagosList::on_mui_borrar_clicked", 0);
 }
 
 

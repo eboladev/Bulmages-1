@@ -88,7 +88,7 @@ QString PresupuestoList::generaFiltro() {
 
     if (m_filtro->text() != "") {
         filtro = " AND (descpresupuesto LIKE '%" + m_filtro->text() + "%' ";
-	filtro +=" OR refpresupuesto LIKE '"+m_filtro->text()+"%' ";
+        filtro +=" OR refpresupuesto LIKE '"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
@@ -116,18 +116,23 @@ QString PresupuestoList::generaFiltro() {
 
 void PresupuestoList::editar(int row) {
     _depura("PresupuestoList::editar", 0);
-    m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
-    if (m_modo == 0) {
-        PresupuestoView *prov = m_companyact->newBudget();
-        if (prov->cargar(m_idpresupuesto)) {
-            return;
-        }
-        m_companyact->m_pWorkspace->addWindow(prov);
-        prov->show();
-    } else {
-        emit(selected(m_idpresupuesto));
-    } // end if
-    _depura("END PresupuestoList::editar", 0);
+    try {
+	m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
+	if (m_modo == 0) {
+		PresupuestoView *prov = m_companyact->newBudget();
+		if (prov->cargar(m_idpresupuesto)) {
+		delete prov;
+		return;
+		}
+		m_companyact->m_pWorkspace->addWindow(prov);
+		prov->show();
+	} else {
+		emit(selected(m_idpresupuesto));
+	} // end if
+	_depura("END PresupuestoList::editar", 0);
+    } catch(...) {
+	mensajeInfo(tr("Error al editar el presupuesto"));
+    } // end try
 }
 
 
@@ -194,16 +199,20 @@ void PresupuestoList::imprimir() {
 
 void PresupuestoList::on_mui_borrar_clicked() {
     _depura("PresupuestoList::on_mui_borrar_clicked", 0);
-    m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
-    if (m_modo == 0) {
-        PresupuestoView *prov = m_companyact->newBudget();
-        if (prov->cargar(m_idpresupuesto))
-            return;
-        prov->borrar();
-        delete prov;
-    } // end if
+    try {
+        m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
+        if (m_modo == 0) {
+            PresupuestoView *prov = m_companyact->newBudget();
+            if (prov->cargar(m_idpresupuesto))
+                return;
+            prov->borrar();
+            delete prov;
+        } // end if
+        presenta();
+    } catch(...) {
+        mensajeInfo(tr("Error al borrar el presupuesto"));
+    } // end try
     _depura("END PresupuestoList::on_mui_borrar_clicked", 0);
-    presenta();
 }
 
 

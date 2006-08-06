@@ -85,8 +85,10 @@ void AlbaranClienteList::editar(int  row) {
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
     if (m_modo == 0) {
         AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
-        if (prov->cargar(mdb_idalbaran))
+        if (prov->cargar(mdb_idalbaran)) {
+            delete prov;
             return;
+        } // end if
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
@@ -107,15 +109,20 @@ void AlbaranClienteList::on_mui_editar_clicked() {
 
 
 void AlbaranClienteList::on_mui_borrar_clicked() {
-    fprintf(stderr,"Iniciamos el boton_borrar\n");
-    mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
-    if (m_modo == 0) {
-        AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
-        if (prov->cargar(mdb_idalbaran))
-            return;
-        prov->borrar();
-    } // end if
-    presenta();
+    _depura("AlbaranClienteList::on_mui_borrar_clicked", 0);
+    try {
+        mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
+        if (m_modo == 0) {
+            AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
+            if (prov->cargar(mdb_idalbaran))
+                throw -1;
+            prov->borrar();
+        } // end if
+        presenta();
+    } catch(...) {
+        mensajeInfo(tr("Error al borrar el albaran cliente"));
+    } // end try
+    _depura("END AlbaranClienteList::on_mui_borrar_clicked", 0);
 }
 
 
@@ -126,8 +133,10 @@ void AlbaranClienteList::imprimir() {
 
     /// Copiamos el archivo.
 #ifdef WINDOWS
+
     archivo = "copy " + archivo + " " + archivod;
 #else
+
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
@@ -135,8 +144,10 @@ void AlbaranClienteList::imprimir() {
 
     /// Copiamos el logo.
 #ifdef WINDOWS
+
     archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
+
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
@@ -174,7 +185,7 @@ QString AlbaranClienteList::generarFiltro() {
 
     if (m_filtro->text() != "") {
         filtro = " AND ( descalbaran LIKE '%" + m_filtro->text() + "%' ";
-	filtro +=" OR refalbaran LIKE '"+m_filtro->text()+"%' ";
+        filtro +=" OR refalbaran LIKE '"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";

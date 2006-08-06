@@ -50,21 +50,25 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const cha
         : QWidget(parent, name, Qt::WDestructiveClose),
 AlbaranCliente(comp), dialogChanges(this) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
-    setupUi(this);
-    subform2->setcompany(comp);
-    m_descuentos->setcompany(comp);
-    m_almacen->setcompany(comp);
-    m_forma_pago->setcompany(comp);
-    m_cliente->setcompany(comp);
-    m_trabajador->setcompany(comp);
-    m_refalbaran->setcompany(comp);
+    try {
+        setupUi(this);
+        subform2->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_almacen->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_cliente->setcompany(comp);
+        m_trabajador->setcompany(comp);
+        m_refalbaran->setcompany(comp);
 
-    setListLinAlbaranCliente(subform2);
-    setListDescuentoAlbaranCliente(m_descuentos);
+        setListLinAlbaranCliente(subform2);
+        setListDescuentoAlbaranCliente(m_descuentos);
 
-    comp->meteWindow(caption(), this);
-    dialogChanges_cargaInicial();
-    cargar("0");
+        comp->meteWindow(caption(), this, FALSE);
+        dialogChanges_cargaInicial();
+        cargar("0");
+    } catch(...) {
+        mensajeInfo(tr("Error al crear el albaran cliente"));
+    } // end try
     _depura("END AlbaranClienteView::AlbaranClienteView\n", 0);
 }
 
@@ -256,16 +260,18 @@ void AlbaranClienteView::agregarFactura() {
 }
 
 
-int AlbaranClienteView::cargar(QString id)  {
+int AlbaranClienteView::cargar(QString id) {
     _depura("AlbaranClienteView::cargar", 0);
-    AlbaranCliente::cargar(id);
-    setCaption(tr("Albaran a cliente  ") + DBvalue("refalbaran"));
-    if (companyact->meteWindow(caption(), this))
-        return - 1;
-
-    dialogChanges_cargaInicial();
+    try {
+        if (AlbaranCliente::cargar(id))
+            throw -1;
+        setCaption(tr("Albaran a cliente  ") + DBvalue("refalbaran"));
+        companyact->meteWindow(caption(), this);
+        dialogChanges_cargaInicial();
+    } catch(...) {
+        return -1;
+    } // end try
     _depura("AlbaranClienteView::cargar", 0);
-
     return 0;
 }
 

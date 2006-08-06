@@ -43,27 +43,34 @@ using namespace std;
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), PedidoProveedor (comp), dialogChanges(this) {
-    setupUi(this);
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    subform3->setcompany(comp);
-    m_proveedor->setcompany(comp);
-    m_forma_pago->setcompany(comp);
-    m_descuentos->setcompany(comp);
-    m_almacen->setcompany(comp);
-    m_trabajador->setcompany(comp);
-    m_refpedidoproveedor->setcompany(comp);
-    setListLinPedidoProveedor(subform3);
-    setListDescuentoPedidoProveedor(m_descuentos);
-    inicialize();
-    dialogChanges_cargaInicial();
-    comp->meteWindow(caption(), this);
-    _depura("Fin de la inicializacion de PedidoProveedor\n");
+    _depura("PedidoProveedorView::PedidoProveedorView", 0);
+    try {
+	setupUi(this);
+	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+	subform3->setcompany(comp);
+	m_proveedor->setcompany(comp);
+	m_forma_pago->setcompany(comp);
+	m_descuentos->setcompany(comp);
+	m_almacen->setcompany(comp);
+	m_trabajador->setcompany(comp);
+	m_refpedidoproveedor->setcompany(comp);
+	setListLinPedidoProveedor(subform3);
+	setListDescuentoPedidoProveedor(m_descuentos);
+	inicialize();
+	dialogChanges_cargaInicial();
+	comp->meteWindow(caption(), this, FALSE);
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el pedido proveedor"));
+    } // end try
+    _depura("END PedidoProveedorView::PedidoProveedorView", 0);
 }
 
 
 PedidoProveedorView::~PedidoProveedorView() {
+    _depura("PedidoProveedorView::~PedidoProveedorView", 0);
     companyact->refreshPedidosProveedor();
     companyact->sacaWindow(this);
+    _depura("END PedidoProveedorView::~PedidoProveedorView", 0);
 }
 
 
@@ -86,11 +93,16 @@ void PedidoProveedorView::inicialize() {
 
 
 int PedidoProveedorView::cargar(QString id) {
-    PedidoProveedor::cargar(id);
-    setCaption(tr("Pedido a proveedor  ") + DBvalue("refpedidoproveedor"));
-    if (companyact->meteWindow(caption(), this))
-        return -1;
-    dialogChanges_cargaInicial();
+    _depura("PedidoProveedorView::cargar", 0);
+    try {
+	if (PedidoProveedor::cargar(id)) throw -1;
+	setCaption(tr("Pedido a proveedor  ") + DBvalue("refpedidoproveedor"));
+	companyact->meteWindow(caption(), this);
+	dialogChanges_cargaInicial();
+	_depura("END PedidoProveedorView::cargar", 0);
+    } catch (...) {
+	return -1;
+    } // end try
     return 0;
 }
 

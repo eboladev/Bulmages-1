@@ -49,8 +49,10 @@ class ArticuloView;
 class CobroView;
 class PagoView;
 class AlbaranClienteView;
+class AlbaranProveedorView;
 class PedidoClienteView;
 class TipoArticuloList;
+class ProveedorView;
 
 
 class company : public postgresiface2 {
@@ -85,7 +87,6 @@ public:
     }
     void listproviders();
     void listClients();
-    void s_newProveedor();
     void listarticles();
     void listorders();
     void lAlbaranesProveedor();
@@ -95,6 +96,7 @@ public:
     void newPedidoCliente();
     void newPedidoProveedor();
     ClienteView *newClienteView();
+    ProveedorView *newProveedorView();
     ArticuloView *newArticuloView();
     void createMainWindows();
     void refreshArticles();
@@ -106,8 +108,8 @@ public:
     void refreshAlbaranesProveedor();
     void refreshFacturas();
     void refreshClientes();
-    int meteWindow(QString nom, QObject *obj) {
-        return m_listventanas->meteWindow(nom, obj);
+    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
+        return m_listventanas->meteWindow(nom, obj, compdup);
     };
     void sacaWindow(QObject *nom) {
         m_listventanas->sacaWindow(nom);
@@ -126,11 +128,13 @@ public:
     void s_newPresupuestoCli();
     void s_newPedidoClienteView();
     void s_newAlbaranClienteView();
+    void s_newAlbaranProveedorView();
     void s_newFacturaCli();
     void s_newArticulo();
     void s_newCobroView();
     void s_newPagoView();
     void s_newClienteView();
+    void s_newProveedorView();
     void s_newListConfiguracionView();
     void s_newTipoArticuloList();
     void s_provincias();
@@ -147,6 +151,7 @@ public:
     CobroView *newCobroView();
     PagoView *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();
+    AlbaranProveedorView *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
     TipoArticuloList *newTipoArticuloList();
 };

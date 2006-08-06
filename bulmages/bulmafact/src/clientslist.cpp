@@ -75,8 +75,10 @@ void ClientsList::editar(int row) {
     mdb_nomcliente = mui_list->DBvalue("nomcliente", row);
     if (m_modo == 0) {
         ClienteView *prov = m_companyact->newClienteView();
-        if (prov->cargar(mdb_idcliente))
+        if (prov->cargar(mdb_idcliente)) {
+            delete prov;
             return;
+        } // end if
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
@@ -148,12 +150,21 @@ void ClientsList::on_mui_imprimir_clicked() {
 
 
 void ClientsList::on_mui_borrar_clicked() {
-    mdb_idcliente = mui_list->DBvalue("idcliente");
-    QString SQLQuery = "DELETE FROM cliente WHERE idcliente = " + mdb_idcliente;
-    int error = m_companyact->ejecuta(SQLQuery);
-    if (error)
-        return;
-    presenta();
+    _depura("ClientsList::on_mui_borrar_clicked", 0);
+    try {
+        QString idcliente = mui_list->DBvalue("idcliente");
+        ClienteView *cli = m_companyact->newClienteView();
+        if (cli->cargar(idcliente) ) {
+		delete cli;
+		throw -1;
+	} // end if
+        cli->on_mui_borrar_clicked();
+        delete cli;
+        presenta();
+    } catch(...) {
+        mensajeInfo(tr("Error al borrar un cliente"));
+    } // end try
+    _depura("END:ClientsList::on_mui_borrar_clicked", 0);
 }
 
 

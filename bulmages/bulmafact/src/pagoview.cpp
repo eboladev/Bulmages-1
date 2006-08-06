@@ -44,19 +44,26 @@ using namespace std;
 
 
 PagoView::PagoView( company *comp , QWidget *parent, const char *name)
-        : QWidget (parent, name, Qt::WDestructiveClose), Pago(comp), dialogChanges(this) {
-    setupUi(this);
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    mui_proveedor->setcompany(comp);
-    mui_refpago->setcompany(comp);
-    dialogChanges_cargaInicial();
-    companyact->meteWindow(caption(), this);
+        : QWidget (parent), Pago(comp), dialogChanges(this) {
+    try {
+	setAttribute(Qt::WA_DeleteOnClose);
+	setupUi(this);
+	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+	mui_proveedor->setcompany(comp);
+	mui_refpago->setcompany(comp);
+	dialogChanges_cargaInicial();
+	companyact->meteWindow(caption(), this, FALSE);
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el pago"));
+    } // end catch
     _depura("Fin de la inicializacion de PagoView\n", 0);
 }
 
 
 PagoView::~PagoView() {
+    _depura("PagoView::~PagoView", 0);
     companyact->sacaWindow(this);
+    _depura("END PagoView::~PagoView", 0);
 }
 
 

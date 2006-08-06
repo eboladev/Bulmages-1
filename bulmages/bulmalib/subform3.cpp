@@ -179,6 +179,55 @@ void SubForm3::pintar() {
 }
 
 
+// Carga una tabla a partir del recordset que se le ha pasado.
+int SubForm3::inicializar() {
+    _depura("SubForm3::inicializar", 0);
+    mui_query->setText("");
+    SDBRecord *rec;
+
+    int filpag = mui_filaspagina->text().toInt();
+    if (filpag <= 0)
+        filpag = 500;
+
+    int pagact = mui_paginaact->text().toInt();
+    if (pagact <= 0)
+        pagact = 1;
+
+    /// Vaciamos la tabla para que no contenga registros.
+    mui_list->clear();
+    mui_list->setRowCount(0);
+
+    /// Vaciamos el recordset para que no contenga registros.
+    while (m_lista.count()) {
+        rec = m_lista.takeFirst();
+        if (rec)
+            delete rec;
+    } // end while
+
+    /// Ponemos los datos sobre el query.
+    mui_numfilas->setText("0");
+    int numpag = 0;
+    mui_numpaginas->setText(QString::number(numpag));
+
+
+    /// Inicializamos las columnas y pintamos las cabeceras.
+    mui_list->setColumnCount(m_lcabecera.count());
+    pintaCabeceras();
+    if (m_primero)
+        cargaconfig();
+
+    nuevoRegistro();
+
+    /// Ordenamos la tabla.
+    mui_list->ordenar();
+
+    /// configuramos que registros son visibles y que registros no lo son.
+    on_mui_confcol_clicked();
+    _depura("END SubForm3::inicializar", 0);
+    return 0;
+}
+
+
 /// Carga una tabla a partir del recordset que se le ha pasado.
 int SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
@@ -260,10 +309,13 @@ SDBRecord *SubForm3::lineaact() {
 }
 
 
-/// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
+/// Devuelve la linea especificada
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()\n", 0);
     SDBCampo *camp =(SDBCampo*) mui_list->item(row, 0);
+    if (!camp) {
+	return NULL;
+    }
     SDBRecord *rec = (SDBRecord *) camp->pare();
     _depura("END SubForm3::lineaat()\n", 0);
     return rec;
@@ -321,13 +373,19 @@ void SubForm3::setColumnValue(QString campo, QString valor) {
 
 QString SubForm3::DBvalue(QString campo, int row) {
     _depura("SubForm3::DBvalue", 0);
-    SDBRecord *rec;
-    if (row == -1)
-        rec = lineaact();
-    else
-        rec=lineaat(row);
-    _depura("END SubForm3::DBvalue", 0);
-    return rec->DBvalue(campo);
+    try {
+	SDBRecord *rec;
+	if (row == -1)
+		rec = lineaact();
+	else
+		rec=lineaat(row);
+	if (rec == NULL) throw -1;
+	_depura("END SubForm3::DBvalue", 0);
+	return rec->DBvalue(campo);
+    } catch (...) {
+	mensajeInfo("Fila inexistente");
+	throw -1;
+    }
 }
 
 

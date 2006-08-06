@@ -73,6 +73,7 @@ void listventanas::clicked() {
 
 listventanas::~listventanas() {
     _depura("listventanas::~listventanas\n", 0);
+/*
     /// Buscamos la ventana correspondiente y la borramos.
     int i = 0;
     while (i < m_listBox->count())  {
@@ -82,55 +83,81 @@ listventanas::~listventanas() {
         delete m;
         i++;
     } // end while
+*/
     delete m_listBox;
+
     _depura("END listventanas::~listventanas\n", 0);
 }
+
+
+void listventanas::vaciar() {
+    _depura("listventanas::vaciar", 0);
+    /// Buscamos la ventana correspondiente y la borramos.
+    int i = 0;
+    while (i < m_listBox->count())  {
+        QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+        _depura("Vamos a destruir la ventana", 0, m->nombre());
+	if (((QWidget *)m->object())->testAttribute(Qt::WA_DeleteOnClose)) {
+		delete m->object();
+	} else {
+        	i++;
+	} // end if
+    } // end while
+    _depura("END listventanas::vaciar", 0);
+}
+
 
 
 /// This function provides the ability of push a window in the dock window
 /// nombre This QString is the name of the window that was shown in the listbox
 /// obj This QObject * contains the pointer of the window for furtner reference.
-int listventanas::meteWindow(QString nombre, QObject *obj) {
+int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
     _depura("listventanas::meteWindow()", 0);
-    int i = 0;
-    while (i < m_listBox->count())  {
-        QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
-        /// Si la ventana ya esta en la lista.
-        if (m->object() == obj) {
-            _depura("listventanas::Ventana ya existente ", 0,  nombre);
-            m->setNombre(nombre);
-            return 0;
-        } // end if
-
-        /// Comprobamos ventanas duplicadas.
-        if (m->nombre() == nombre) {
-            _depura("listventanas::hay una duplicada y la cerramos()\n", 0);
-            ((QWidget *)obj)->close();
-            _depura("listventanas::mostramos la original()\n", 0);
-            ((QWidget *)m->object())->hide();
-            ((QWidget *)m->object())->show();
-            _depura("listventanas::Establecemos la nueva primaria()\n", 0);
-            m_listBox->setCurrentItem(m);
-            return 1;
-        } // end if
-        i++;
-    } // end while
-
-    if(i >= m_listBox->count()) {
-        _depura("insercion", 0);
-        /// Solo se insertan ventanas con icono. Sino no se insertan.
-        if (((QWidget *)obj)->icon()) {
-            _depura("es posible insertar", 0,  nombre);
-            QPixmap icon = *((QWidget *)obj)->icon();
-            QImage imgicon = icon.convertToImage();
-            imgicon = imgicon.scaled(32, 32);
-            icon = imgicon;
-            QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
-            m->setObject(obj);
-            m->setNombre(nombre);
-            m_listBox->setCurrentItem(m);
-        } // end if
-    } // end if
+    try {
+	int i = 0;
+	while (i < m_listBox->count())  {
+		QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+		/// Si la ventana ya esta en la lista.
+		if (m->object() == obj) {
+			_depura("listventanas::Ventana ya existente ", 0,  nombre);
+			m->setNombre(nombre);
+			return 0;
+		} // end if
+	
+		/// Comprobamos ventanas duplicadas.
+		if (m->nombre() == nombre && compdup) {
+			_depura("listventanas::hay una duplicada y la cerramos()\n", 0);
+			// ((QWidget *)obj)->close();
+			//delete obj;
+			_depura("listventanas::mostramos la original()\n", 0);
+			((QWidget *)m->object())->hide();
+			((QWidget *)m->object())->show();
+			_depura("listventanas::Establecemos la nueva primaria()\n", 0);
+			m_listBox->setCurrentItem(m);
+			throw -1;
+		} // end if
+		i++;
+	} // end while
+	
+	if(i >= m_listBox->count()) {
+		_depura("insercion", 0);
+		/// Solo se insertan ventanas con icono. Sino no se insertan.
+		if (((QWidget *)obj)->icon()) {
+		_depura("es posible insertar", 0,  nombre);
+		QPixmap icon = *((QWidget *)obj)->icon();
+		QImage imgicon = icon.convertToImage();
+		imgicon = imgicon.scaled(32, 32);
+		icon = imgicon;
+		QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
+		m->setObject(obj);
+		m->setNombre(nombre);
+		m_listBox->setCurrentItem(m);
+		} // end if
+	} // end if
+    } catch(...) {
+	mensajeInfo(tr("listventanas::meteWindow Ventana Duplicada"));
+	throw -1;
+    } // end try
     _depura("END listventanas::meteWindow()\n", 0);
     return 0;
 }

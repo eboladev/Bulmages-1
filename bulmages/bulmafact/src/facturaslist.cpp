@@ -120,13 +120,13 @@ void FacturasList::editar(int row) {
     if (m_modo ==0 ) {
         FacturaView *prov = m_companyact->newFacturaView();
         if (prov->cargar(mdb_idfactura)) {
+	    delete prov;
             return;
         }
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idfactura));
-        // close();
     }// end if
     _depura("END FacturasList::editar", 0);
 }
@@ -190,6 +190,23 @@ void FacturasList::on_mui_imprimir_clicked() {
     } // end if
 
     invocaPDF("facturas");
+}
+
+
+void FacturasList::on_mui_borrar_clicked() {
+    _depura("FacturasList::on_mui_borrar_clicked", 0);
+    try {
+	mdb_idfactura = mui_list->DBvalue(QString("idfactura"));
+	if (m_modo == 0) {
+		FacturaView *fac = m_companyact->newFacturaView();
+		if (fac->cargar(mdb_idfactura)) throw -1;
+		fac->borrar();
+	} // end if
+	presenta();
+    } catch(...) {
+	mensajeInfo(tr("Error al borrar la factura cliente"));
+    } // end try
+    _depura("END FacturasList::on_mui_borrar_clicked", 0);
 }
 
 

@@ -42,7 +42,7 @@ class FacturaProveedorView : public QWidget,  public Ui_FacturaProveedorBase, pu
 public:
     FacturaProveedorView(company *, QWidget *parent = 0, const char *name = 0);
     virtual ~FacturaProveedorView();
-    void inicialize();
+    void inicializar();
     void pintaidproveedor(QString id) {
         m_proveedor->setidproveedor(id);
     };
@@ -78,6 +78,7 @@ public:
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
+	cargar(DBvalue("idfacturap"));
     };
     virtual int cargar(QString id);
     /// Este slot se activa cuando hay cambios en los subformularios.

@@ -43,19 +43,23 @@
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp), dialogChanges(this) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
-    setupUi(this);
-    subform2->setcompany(comp);
-    m_almacen->setcompany(comp);
-    m_forma_pago->setcompany(comp);
-    m_proveedor->setcompany(comp);
-    m_descuentos->setcompany(comp);
-    m_refalbaranp->setcompany(comp);
-    setListLinAlbaranProveedor(subform2);
-    setListDescuentoAlbaranProveedor(m_descuentos);
-    inicialize();
-    dialogChanges_cargaInicial();
-    if (companyact != NULL)
-        companyact->meteWindow(caption(), this);
+    try {
+	setupUi(this);
+	subform2->setcompany(comp);
+	m_almacen->setcompany(comp);
+	m_forma_pago->setcompany(comp);
+	m_proveedor->setcompany(comp);
+	m_descuentos->setcompany(comp);
+	m_refalbaranp->setcompany(comp);
+	setListLinAlbaranProveedor(subform2);
+	setListDescuentoAlbaranProveedor(m_descuentos);
+	inicialize();
+	dialogChanges_cargaInicial();
+	if (companyact != NULL)
+		companyact->meteWindow(caption(), this, FALSE);
+    } catch(...) {
+	mensajeInfo(tr("Error al crear el albaran proveedor"));
+    } // end try
     _depura("END AlbaranProveedorView::AlbaranProveedorView", 0);
 }
 
@@ -184,12 +188,16 @@ void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
 
 int AlbaranProveedorView::cargar(QString id) {
     _depura("AlbaranProveedorView::cargar", 0);
-    AlbaranProveedor::cargar(id);
-    setCaption(tr("Albaran proveedor ") + DBvalue("refalbaranp"));
-    if (companyact->meteWindow(caption(), this)) {
-        return -1;
-    } // end if
-    dialogChanges_cargaInicial();
+    try {
+	AlbaranProveedor::cargar(id);
+	if(DBvalue("idalbaranp") != "") {
+		setCaption(tr("Albaran proveedor ") + DBvalue("refalbaranp"));
+		companyact->meteWindow(caption(), this);
+		dialogChanges_cargaInicial();
+	} // end if
+    } catch(...) {
+	return -1;
+    } // end catch
     _depura("END AlbaranProveedorView::cargar", 0);
     return 0;
 }

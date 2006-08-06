@@ -82,9 +82,10 @@ public:
     ~listventanas();
 
 public:
-    int meteWindow(QString, QObject *);
+    int meteWindow(QString, QObject *, bool compdup=TRUE);
     void sacaWindow(QObject *);
     void cambiaVisible();
+    void vaciar();
 
 public slots:
     virtual void dclicked();

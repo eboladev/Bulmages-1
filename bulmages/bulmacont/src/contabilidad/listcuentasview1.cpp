@@ -45,18 +45,6 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     headers << "codigo cuenta" << "nombre cuenta" << "debe" << "haber" << "id cuenta" << "bloqueada" << "nodebe" << "nohaber" << "regularizacion" << "imputacion" << "grupo" << "tipo cuenta";
     ListView1->setHeaderLabels(headers);
 
-    /*
-        mui_listcolumnas->setColumnCount(4);
-        mui_listcolumnas->setHorizontalHeaderLabels (headers);
-        mui_listcolumnas->setShowGrid(FALSE);
-        mui_listcolumnas->setColumnWidth(0,25);
-        mui_listcolumnas->setColumnWidth(1,100);
-        mui_listcolumnas->setColumnWidth(2,175);
-        mui_listcolumnas->setColumnWidth(3,0);
-        mui_listcolumnas->setSelectionBehavior ( QAbstractItemView::SelectRows );
-        mui_listcolumnas->verticalHeader()->hide();
-    */
-
     ccuenta=0;
     cdesccuenta=1;
     cdebe = 2;
@@ -73,10 +61,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     tablacuentas->setColumnCount(3);
     headers << "CODIGO" << "NOMBRE";
     tablacuentas->setHorizontalHeaderLabels(headers);
-/*
-    tablacuentas->horizontalHeader()->setLabel( 0, tr( "CODIGO" ) );
-    tablacuentas->horizontalHeader()->setLabel( 1, tr( "NOMBRE" ) );
-*/
+
     tablacuentas->hideColumn(2);
     tablacuentas->setColumnWidth(1,400);
     tablacuentas->setColumnWidth(0,100);
