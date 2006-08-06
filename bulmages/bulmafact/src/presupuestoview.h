@@ -52,7 +52,7 @@ public:
     PresupuestoView(company *, QWidget *, const char *);
     ~PresupuestoView();
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
-    void inicialize();
+    void inicializar();
     void manageArticle(int);
     void pintaNumPresupuesto(QString id) {
         m_numpresupuesto->setText(id);

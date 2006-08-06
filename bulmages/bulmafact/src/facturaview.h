@@ -43,7 +43,7 @@ class FacturaView : public QWidget, public Ui_FacturaBase, public Factura, publi
 public:
     FacturaView(company *, QWidget *parent = 0, const char *name = 0);
     ~FacturaView();
-    void inicialize();
+    void inicializar();
     void pintaidcliente(QString id) {
         m_cliente->setidcliente(id);
     };

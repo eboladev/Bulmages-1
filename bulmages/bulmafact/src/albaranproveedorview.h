@@ -45,7 +45,7 @@ class AlbaranProveedorView : public QWidget, public Ui_AlbaranProveedorBase, pub
 public:
     AlbaranProveedorView(company *, QWidget *, const char *);
     ~AlbaranProveedorView();
-    void inicialize();
+    void inicializar();
     void pintaidalbaranp(QString) {}
     ;
     void pintanumalbaranp(QString val) {

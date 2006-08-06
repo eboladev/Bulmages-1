@@ -36,6 +36,7 @@
 
 ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
         : QWidget(parent, name, flag), pgimportfiles(comp) {
+    _depura("ClientsList::ClientsList", 0);
     setupUi(this);
     m_companyact = comp;
     mui_list->setcompany(comp);
@@ -46,8 +47,18 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::W
     hideBusqueda();
     presenta();
     /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
-    if (m_modo == EditMode)
+    if (m_modo == EditMode) {
         m_companyact->meteWindow(caption(), this);
+    } else {
+	setCaption(tr("Selector de Clientes"));
+	mui_editar->setHidden(TRUE);
+	mui_crear->setHidden(TRUE);
+	mui_borrar->setHidden(TRUE);
+	mui_exportar->setHidden(TRUE);
+	mui_importar->setHidden(TRUE);
+	mui_imprimir->setHidden(TRUE);
+    } // end if
+    _depura("END ClientsList::ClientsList", 0);
 }
 
 

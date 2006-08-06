@@ -57,23 +57,6 @@ FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
 	m_reffactura->setcompany(comp);
 	setListLinFactura(subform2);
 	setListDescuentoFactura(m_descuentos);
-	inicialize();
-	comp->meteWindow(caption(),this, FALSE);
-	/// Hacemos una carga inicial para que quede bien inicializada la clase (una chapucilla)
-	cargar("0");
-    } catch(...) {
-	mensajeInfo(tr("Error al crear la factura"));
-    }
-    _depura("END FacturaView::FacturaView");
-}
-
-
-FacturaView::~FacturaView() {
-    companyact->sacaWindow(this);
-}
-
-
-void FacturaView::inicialize() {
     m_totalBases->setReadOnly(TRUE);
     m_totalBases->setAlignment(Qt::AlignRight);
     m_totalTaxes->setReadOnly(TRUE);
@@ -82,6 +65,24 @@ void FacturaView::inicialize() {
     m_totalDiscounts->setAlignment(Qt::AlignRight);
     m_totalfactura->setReadOnly(TRUE);
     m_totalfactura->setAlignment(Qt::AlignRight);
+	comp->meteWindow(caption(),this, FALSE);
+    } catch(...) {
+	mensajeInfo(tr("Error al crear la factura"));
+    }
+    _depura("END FacturaView::FacturaView");
+}
+
+
+FacturaView::~FacturaView() {
+    companyact->refreshFacturas();
+    companyact->sacaWindow(this);
+}
+
+void FacturaView::inicializar() {
+	_depura("FacturaView::inicializar", 0);
+	subform2->inicializar();
+	m_descuentos->inicializar();
+	_depura("END FacturaView::inicializar", 0);
 }
 
 

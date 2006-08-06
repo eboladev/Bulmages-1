@@ -127,10 +127,10 @@ int FacturaProveedor::guardar() {
         _depura("END FacturaProveedor::guardar()", 0);
         return 0;
     } catch (...) {
-        _depura("FacturaProveedor::guardar() se produjo un error al guardar", 1);
+        mensajeInfo("FacturaProveedor::guardar() se produjo un error al guardar");
         companyact->rollback();
-        return -1;
-    }
+        throw -1;
+    } // end try
 }
 
 

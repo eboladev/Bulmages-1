@@ -53,7 +53,16 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const
 	m_refalbaranp->setcompany(comp);
 	setListLinAlbaranProveedor(subform2);
 	setListDescuentoAlbaranProveedor(m_descuentos);
-	inicialize();
+    m_totalBases->setReadOnly(TRUE);
+    m_totalBases->setAlignment(Qt::AlignRight);
+    m_totalTaxes->setReadOnly(TRUE);
+    m_totalTaxes->setAlignment(Qt::AlignRight);
+    m_totalDiscounts->setReadOnly(TRUE);
+    m_totalDiscounts->setAlignment(Qt::AlignRight);
+    m_totalalbaranp->setReadOnly(TRUE);
+    m_totalalbaranp->setAlignment(Qt::AlignRight);
+    pintaidforma_pago("0");
+    pintaidalmacen("0");
 	dialogChanges_cargaInicial();
 	if (companyact != NULL)
 		companyact->meteWindow(caption(), this, FALSE);
@@ -69,20 +78,11 @@ AlbaranProveedorView::~AlbaranProveedorView()  {
     companyact->sacaWindow(this);
 }
 
-
-void AlbaranProveedorView::inicialize()  {
-    _depura("AlbaranProveedorView::inicialize", 0);
-    m_totalBases->setReadOnly(TRUE);
-    m_totalBases->setAlignment(Qt::AlignRight);
-    m_totalTaxes->setReadOnly(TRUE);
-    m_totalTaxes->setAlignment(Qt::AlignRight);
-    m_totalDiscounts->setReadOnly(TRUE);
-    m_totalDiscounts->setAlignment(Qt::AlignRight);
-    m_totalalbaranp->setReadOnly(TRUE);
-    m_totalalbaranp->setAlignment(Qt::AlignRight);
-    subform2->pintar();
-    pintaidforma_pago("0");
-    pintaidalmacen("0");
+void AlbaranProveedorView::inicializar() {
+	_depura("AlbaranProveedorView::inicializar", 0);
+	subform2->inicializar();
+	m_descuentos->inicializar();
+	_depura("END AlbaranProveedorView::inicializar", 0);
 }
 
 

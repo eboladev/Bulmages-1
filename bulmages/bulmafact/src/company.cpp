@@ -232,8 +232,8 @@ void company::listarticles() {
 
 
 void company::refreshArticles() {
-    if(m_articleslist != NULL) 
-    	m_articleslist->presenta();
+    if(m_articleslist != NULL)
+        m_articleslist->presenta();
 }
 
 
@@ -314,6 +314,7 @@ void company::s_newAlbaranPro() {
     _depura ("company::s_newAlbaranPro", 0);
     AlbaranProveedorView *bud = new AlbaranProveedorView(this, 0, QApplication::translate("company", "Edicion de albaranes de proveedor"));
     m_pWorkspace->addWindow(bud);
+    bud->inicializar();
     bud->show();
     _depura ("END company::s_newAlbaranPro", 0);
 }
@@ -386,6 +387,7 @@ void company::s_newPresupuestoCli() {
         return;
     PresupuestoView *bud = newBudget();
     m_pWorkspace->addWindow(bud);
+    bud->inicializar();
     bud->show();
 }
 
@@ -406,8 +408,8 @@ void company::s_newFacturaCli() {
         return;
     FacturaView *bud = newFacturaView();
     m_pWorkspace->addWindow(bud);
-//    bud->cargar("0");
-//    bud->pintaFactura();
+    bud->inicializar();
+    bud->pintaFactura();
     bud->show();
 }
 
@@ -419,8 +421,17 @@ void company::refreshBudgets() {
 
 void company::refreshFacturas() {
     if(m_facturasList != NULL)
-    	m_facturasList->presenta();
+        m_facturasList->presenta();
 }
+
+void company::refreshFacturasProveedor() {
+    _depura("company::refreshFacturasProveedor", 0);
+    if(m_facturasproveedorlist != NULL)
+        m_facturasproveedorlist->presenta();
+    _depura("END company::refreshFacturasProveedor", 0);
+
+}
+
 
 
 void company::listClientDelivNotes() {
@@ -438,26 +449,26 @@ void company::newClientDelivNote() {
 
 
 void company::refreshClientDelivNotes() {
-    if (m_clientDelivNotesList != NULL) 
-    	m_clientDelivNotesList->presenta();
+    if (m_clientDelivNotesList != NULL)
+        m_clientDelivNotesList->presenta();
 }
 
 
 void company::refreshAlbaranesCliente() {
-    if(m_clientDelivNotesList != NULL) 
-    	m_clientDelivNotesList->presenta();
+    if(m_clientDelivNotesList != NULL)
+        m_clientDelivNotesList->presenta();
 }
 
 
 void company::refreshAlbaranesProveedor() {
-    if(m_albaranesproveedor != NULL) 
-    	m_albaranesproveedor->presenta();
+    if(m_albaranesproveedor != NULL)
+        m_albaranesproveedor->presenta();
 }
 
 
 void company::refreshClientes() {
     if(m_clientsList != NULL)
-    	m_clientsList->presenta();
+        m_clientsList->presenta();
 }
 
 
@@ -469,14 +480,14 @@ void company::newPedidoCliente() {
 
 
 void company::refreshPedidosCliente() {
-    if(m_pedidosclienteList != NULL) 
-    	m_pedidosclienteList->presenta();
+    if(m_pedidosclienteList != NULL)
+        m_pedidosclienteList->presenta();
 }
 
 
 void company::refreshPedidosProveedor() {
-    if(m_pedidosproveedorList != NULL) 
-    	m_pedidosproveedorList->presenta();
+    if(m_pedidosproveedorList != NULL)
+        m_pedidosproveedorList->presenta();
 }
 
 
@@ -559,10 +570,14 @@ AlbaranClienteView * company::newAlbaranClienteView() {
 
 
 void company::s_newAlbaranClienteView() {
+    _depura("company::s_newAlbaranClienteView", 0);
     AlbaranClienteView *bud = newAlbaranClienteView();
     m_pWorkspace->addWindow(bud);
+    bud->inicializar();
     bud->pintar();
     bud->show();
+    _depura("END company::s_newAlbaranClienteView", 0);
+
 }
 
 
@@ -599,6 +614,7 @@ PedidoClienteView * company::newPedidoClienteView() {
 void company::s_newPedidoClienteView() {
     PedidoClienteView *bud = newPedidoClienteView();
     m_pWorkspace->addWindow(bud);
+    bud->inicializar();
     bud->pintar();
     bud->show();
 }

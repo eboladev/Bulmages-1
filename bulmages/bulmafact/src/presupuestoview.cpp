@@ -54,34 +54,50 @@ PresupuestoView::PresupuestoView(company *comp , QWidget *parent, const char *na
         : QWidget(parent, name, Qt::WDestructiveClose), presupuesto(comp), dialogChanges(this) {
     _depura("Inicializacion de PresupuestoView\n", 0);
     try {
-	setupUi(this);
-	/// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-	int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
-	if (res != 0)
-		return;
-	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	subform2->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_cliente->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_almacen->setcompany(comp);
-	m_trabajador->setcompany(comp);
-	m_refpresupuesto->setcompany(comp);
-	setlislinpresupuesto(subform2);
-	setlisdescpresupuesto(m_descuentos);
-	inicialize();
-	comp->meteWindow(caption(), this, FALSE);
-	/// Disparamos los plugins por flanco descendente.
-	g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
-	
-	/// Hacemos una carga falsa para que la clase quede bien inicializada. (es una chapucilla).
-	cargar("0");
+        setupUi(this);
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
+        if (res != 0)
+            return;
+        /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+        subform2->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_cliente->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_almacen->setcompany(comp);
+        m_trabajador->setcompany(comp);
+        m_refpresupuesto->setcompany(comp);
+        setlislinpresupuesto(subform2);
+        setlisdescpresupuesto(m_descuentos);
+        m_totalBases->setReadOnly(TRUE);
+        m_totalBases->setAlignment(Qt::AlignRight);
+        m_totalTaxes->setReadOnly(TRUE);
+        m_totalTaxes->setAlignment(Qt::AlignRight);
+        m_totalDiscounts->setReadOnly(TRUE);
+        m_totalDiscounts->setAlignment(Qt::AlignRight);
+        m_totalBudget->setReadOnly(TRUE);
+        m_totalBudget->setAlignment(Qt::AlignRight);
+        /// Inicializamos la forma de pago para que no se quede sin ser pintada.
+        pintaidforma_pago("0");
+        pintaidalmacen("0");
+        pintaidtrabajador("0");
+        comp->meteWindow(caption(), this, FALSE);
+        /// Disparamos los plugins por flanco descendente.
+        g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
+
     } catch(...) {
-	mensajeInfo(tr("Error al crear el presupuesto"));
+        mensajeInfo(tr("Error al crear el presupuesto"));
     } // end try
     _depura("Fin de la inicializacion de PresupuestoView\n", 0);
 }
 
+/// Este metodo es llamado cuando hacemos un nuevo registro, pero no hay carga desde la base de datos.
+void PresupuestoView::inicializar() {
+    _depura("PresupuestoView::inicializar", 0);
+    subform2->inicializar();
+    m_descuentos->inicializar();
+    _depura("END PresupuestoView::inicializar", 0);
+}
 
 void PresupuestoView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
@@ -95,28 +111,13 @@ void PresupuestoView::closeEvent(QCloseEvent *e) {
         if (val == 2)
             e->ignore();
     } // end if
+    _depura("END closeEvent", 0);
 }
 
 
 PresupuestoView::~PresupuestoView() {
     companyact->refreshBudgets();
     companyact->sacaWindow(this);
-}
-
-
-void PresupuestoView::inicialize() {
-    m_totalBases->setReadOnly(TRUE);
-    m_totalBases->setAlignment(Qt::AlignRight);
-    m_totalTaxes->setReadOnly(TRUE);
-    m_totalTaxes->setAlignment(Qt::AlignRight);
-    m_totalDiscounts->setReadOnly(TRUE);
-    m_totalDiscounts->setAlignment(Qt::AlignRight);
-    m_totalBudget->setReadOnly(TRUE);
-    m_totalBudget->setAlignment(Qt::AlignRight);
-    /// Inicializamos la forma de pago para que no se quede sin ser pintada.
-    pintaidforma_pago("0");
-    pintaidalmacen("0");
-    pintaidtrabajador("0");
 }
 
 
@@ -133,7 +134,7 @@ void PresupuestoView::on_mui_borrar_clicked() {
     if (val == 0) {
         if (!borrar()) {
             dialogChanges_cargaInicial();
-            _depura("Pedido borrado satisfactoriamente", 2);
+            _depura("Presupuesto borrado satisfactoriamente", 2);
             close();
         } // end if
     } // end if
@@ -141,11 +142,12 @@ void PresupuestoView::on_mui_borrar_clicked() {
 
 
 void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
-    fprintf(stderr,"pintatotales()\n");
+    _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
     m_totalTaxes->setText(QString(iva.toQString()));
     m_totalBudget->setText(QString(total.toQString()));
     m_totalDiscounts->setText(QString(desc.toQString()));
+    _depura("END PresupuestoView::pintatotales", 0);
 }
 
 
@@ -232,14 +234,14 @@ void PresupuestoView::generarPedidoCliente() {
 int PresupuestoView::cargar(QString id) {
     _depura("PresupuestoView::cargar", 0);
     try {
-	if (presupuesto::cargar(id))
-		throw -1;
-	setCaption("presupuesto " + DBvalue("refpresupuesto"));
-	companyact->meteWindow(caption(), this);
-	dialogChanges_cargaInicial();
-	_depura("END PresupuestoView::cargar", 0);
+        if (presupuesto::cargar(id))
+            throw -1;
+        setCaption("presupuesto " + DBvalue("refpresupuesto"));
+        companyact->meteWindow(caption(), this);
+        dialogChanges_cargaInicial();
+        _depura("END PresupuestoView::cargar", 0);
     } catch(...) {
-       return -1;
+        return -1;
     } // end try
     return 0;
 }

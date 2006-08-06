@@ -65,7 +65,6 @@ AlbaranCliente(comp), dialogChanges(this) {
 
         comp->meteWindow(caption(), this, FALSE);
         dialogChanges_cargaInicial();
-        cargar("0");
     } catch(...) {
         mensajeInfo(tr("Error al crear el albaran cliente"));
     } // end try
@@ -78,6 +77,12 @@ AlbaranClienteView::~AlbaranClienteView() {
     companyact->sacaWindow(this);
 }
 
+void AlbaranClienteView::inicializar() {
+	_depura("AlbaranClienteView::inicializar", 0);
+	subform2->inicializar();
+	m_descuentos->inicializar();
+	_depura("END AlbaranClienteView::inicializar", 0);
+}
 
 void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     m_totalBases->setText(base.toQString());

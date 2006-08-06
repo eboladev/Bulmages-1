@@ -41,42 +41,46 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const
         : QWidget(parent, name, Qt::WDestructiveClose), FacturaProveedor (comp), dialogChanges(this) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
     try {
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	setupUi(this);
-	subform2->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_proveedor->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_reffacturap->setcompany(comp);
-	setListLinFacturaProveedor(subform2);
-	setListDescuentoFacturaProv(m_descuentos);
-    m_totalBases->setReadOnly(TRUE);
-    m_totalBases->setAlignment(Qt::AlignRight);
-    m_totalTaxes->setReadOnly(TRUE);
-    m_totalTaxes->setAlignment(Qt::AlignRight);
-    m_totalDiscounts->setReadOnly(TRUE);
-    m_totalDiscounts->setAlignment(Qt::AlignRight);
-    m_totalfacturap->setReadOnly(TRUE);
-    m_totalfacturap->setAlignment(Qt::AlignRight);
-	comp->meteWindow(caption(), this, FALSE);
+        /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+        setupUi(this);
+        subform2->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_proveedor->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_reffacturap->setcompany(comp);
+        setListLinFacturaProveedor(subform2);
+        setListDescuentoFacturaProv(m_descuentos);
+        m_totalBases->setReadOnly(TRUE);
+        m_totalBases->setAlignment(Qt::AlignRight);
+        m_totalTaxes->setReadOnly(TRUE);
+        m_totalTaxes->setAlignment(Qt::AlignRight);
+        m_totalDiscounts->setReadOnly(TRUE);
+        m_totalDiscounts->setAlignment(Qt::AlignRight);
+        m_totalfacturap->setReadOnly(TRUE);
+        m_totalfacturap->setAlignment(Qt::AlignRight);
+        comp->meteWindow(caption(), this, FALSE);
     } catch (...) {
-	mensajeInfo(tr("Error al crear la factura proveedor"));
+        mensajeInfo(tr("Error al crear la factura proveedor"));
     } // end try
     _depura("Fin de la inicializacion de FacturaProveedor\n");
 }
 
 
 FacturaProveedorView::~FacturaProveedorView() {
+    _depura("FacturaProveedorView::~FacturaProveedorView", 0);
+    companyact->refreshFacturasProveedor();
     companyact->sacaWindow(this);
+    _depura("END FacturaProveedorView::~FacturaProveedorView", 0);
+
 }
 
 /// inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
 /// Sirve para inicializar los componenetes sin necesidad de query alguno
 void FacturaProveedorView::inicializar() {
-	_depura("FacturaProveedorView::inicializar", 0);
-        subform2->inicializar();
-        m_descuentos->inicializar();
-	_depura("END FacturaProveedorView::inicializar", 0);
+    _depura("FacturaProveedorView::inicializar", 0);
+    subform2->inicializar();
+    m_descuentos->inicializar();
+    _depura("END FacturaProveedorView::inicializar", 0);
 }
 
 
@@ -120,12 +124,12 @@ void FacturaProveedorView::closeEvent(QCloseEvent *e) {
 int FacturaProveedorView::cargar(QString id) {
     _depura("FacturaProveedorView::cargar", 0);
     try {
-	FacturaProveedor::cargar(id);
-	setCaption(tr("Factura de proveedor") + " " + DBvalue("reffacturap") + "-" + DBvalue("numfacturap"));
-	companyact->meteWindow(caption(), this);
-	dialogChanges_cargaInicial();
+        FacturaProveedor::cargar(id);
+        setCaption(tr("Factura de proveedor") + " " + DBvalue("reffacturap") + "-" + DBvalue("numfacturap"));
+        companyact->meteWindow(caption(), this);
+        dialogChanges_cargaInicial();
     } catch(...) {
-	return -1;
+        return -1;
     } // end try
     _depura("END FacturaProveedorView::cargar");
     return 0;
@@ -133,17 +137,24 @@ int FacturaProveedorView::cargar(QString id) {
 
 
 int FacturaProveedorView::guardar() {
-    setidproveedor(m_proveedor->idproveedor());
-    setnumfacturap(m_numfacturap->text());
-    setfechafacturap(m_fechafacturap->text());
-    setdescfacturap(m_descfacturap->text());
-    setcomentfacturap(m_comentfacturap->text());
-    setreffacturap(m_reffacturap->text());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setprocesadafacturap(m_procesadafacturap->isChecked() ? "TRUE" : "FALSE");
-    int err = FacturaProveedor::guardar();
-    dialogChanges_cargaInicial();
-    return err;
+    _depura("FacturaProveedorView::guardar", 0);
+    try {
+        setidproveedor(m_proveedor->idproveedor());
+        setnumfacturap(m_numfacturap->text());
+        setfechafacturap(m_fechafacturap->text());
+        setdescfacturap(m_descfacturap->text());
+        setcomentfacturap(m_comentfacturap->text());
+        setreffacturap(m_reffacturap->text());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setprocesadafacturap(m_procesadafacturap->isChecked() ? "TRUE" : "FALSE");
+        FacturaProveedor::guardar();
+        dialogChanges_cargaInicial();
+    } catch(...) {
+        mensajeInfo(tr("Error al guardar la factura proveedor"));
+        return -1;
+    } // end try
+    _depura("END FacturaProveedorView::guardar", 0);
+    return 0;
 }
 
 

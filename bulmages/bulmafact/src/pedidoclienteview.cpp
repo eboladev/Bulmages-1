@@ -57,8 +57,6 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
 	setListLinPedidoCliente(subform3);
 	setListDescuentoPedidoCliente(m_descuentos);
 	comp->meteWindow(caption(), this, FALSE);
-	/// Hacemos una carga inicial para que la clase quede bien inicializada. (una chapucilla).
-	cargar("0");
     } catch(...) {
 	mensajeInfo(tr("Error al crear el pedido cliente"));
     } // end try
@@ -71,6 +69,13 @@ PedidoClienteView::~PedidoClienteView() {
     companyact->sacaWindow(this);
 }
 
+
+void PedidoClienteView::inicializar() {
+	_depura("PedidoClienteView::inicializar", 0);
+	subform3->inicializar();
+	m_descuentos->inicializar();
+	_depura("END PedidoClienteView::inicializar", 0);
+}
 
 void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     m_totalBases->setText(base.toQString());

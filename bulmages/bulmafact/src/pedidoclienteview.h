@@ -48,6 +48,7 @@ public:
     ~PedidoClienteView();
     void closeEvent(QCloseEvent *);
     void generarAlbaran();
+    void inicializar();
     void pintaidcliente(QString id) {
         m_cliente->setidcliente(id);
     };

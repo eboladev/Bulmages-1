@@ -48,8 +48,17 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     m_usadoarticulo->setCheckState(Qt::Unchecked);
     presenta();
     m_modo = editmodo;
-    if (m_modo == EditMode)
+    if (m_modo == EditMode) {
         comp->meteWindow(caption(), this);
+    } else {
+	setCaption(tr("Selector de Artículos"));
+	mui_editar->setHidden(TRUE);
+	mui_crear->setHidden(TRUE);
+	mui_borrar->setHidden(TRUE);
+	mui_exportar->setHidden(TRUE);
+	mui_importar->setHidden(TRUE);
+	mui_imprimir->setHidden(TRUE);
+    } // end if
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
 }

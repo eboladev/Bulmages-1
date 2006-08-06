@@ -107,6 +107,7 @@ public:
     void refreshAlbaranesCliente();
     void refreshAlbaranesProveedor();
     void refreshFacturas();
+    void refreshFacturasProveedor();
     void refreshClientes();
     int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
         return m_listventanas->meteWindow(nom, obj, compdup);

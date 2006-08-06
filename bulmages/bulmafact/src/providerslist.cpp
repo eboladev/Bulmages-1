@@ -35,6 +35,7 @@
 
 ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
         : QWidget (parent, name, flag) , pgimportfiles(comp) {
+    _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
     m_companyact = comp;
     mui_list->setcompany(comp);
@@ -43,9 +44,19 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Q
     m_idprovider = "";
     m_cifprovider = "";
     m_nomprovider = "";
-    if (m_modo == EditMode)
+    if (m_modo == EditMode) {
         m_companyact->meteWindow(caption(), this);
+    } else {
+	setCaption(tr("Selector de Proveedores"));
+	mui_editar->setHidden(TRUE);
+	mui_crear->setHidden(TRUE);
+	mui_borrar->setHidden(TRUE);
+	mui_exportar->setHidden(TRUE);
+	mui_importar->setHidden(TRUE);
+	mui_imprimir->setHidden(TRUE);
+    } // end if
     presenta();
+    _depura("END ProveedorList::ProveedorList", 0);
 }
 
 
@@ -90,7 +101,6 @@ void ProveedorList::editar(int row) {
         prov->show();
     } else {
         emit(selected(m_idprovider));
-        // close();
     } // end if
     _depura("END ProveedorList::editar", 0);
 }
