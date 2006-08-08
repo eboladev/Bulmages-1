@@ -3,14 +3,17 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmalib
 # Destiono es una biblioteca:  bulmalib
 
-QT += qt3support
-
 FORMS += logpassbase.ui \
-          abreempresabase.ui \
-          msgerrorbase.ui \
- 	  busquedafechabase.ui \
-	  subform3base.ui
-
+         abreempresabase.ui \
+         msgerrorbase.ui \
+         busquedafechabase.ui \
+         subform3base.ui 
+TRANSLATIONS += bulmalib_es.ts \
+                bulmalib_ca.ts \
+                bulmalib_en.ts \
+                bulmalib_fr.ts \
+                bulmalib_de.ts \
+                bulmalib_zz.ts 
 HEADERS += postgresiface2.h \
            configuracion.h \
            numerocuenta.h \
@@ -22,17 +25,17 @@ HEADERS += postgresiface2.h \
            dialogchanges.h \
            fixed.h \
            msgerror.h \
-	   busquedafecha.h \
-	   qtable1.h \
-	   qtable2.h \
-	   pgimportfiles.h  \
-	   plugins.h \
-	   busquedaperiodo.h \
-	   dbrecord.h \
-	   subform.h \
-	   subform3.h \
-	   listventanas.h
-	   
+           busquedafecha.h \
+           qtable1.h \
+           qtable2.h \
+           pgimportfiles.h \
+           plugins.h \
+           busquedaperiodo.h \
+           dbrecord.h \
+           subform.h \
+           subform3.h \
+           listventanas.h \
+           qworkspace2.h 
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -44,61 +47,43 @@ SOURCES += postgresiface2.cpp \
            dialogchanges.cpp \
            fixed.cpp \
            msgerror.cpp \
-	   busquedafecha.cpp \
-	   qtable1.cpp \
-	   qtable2.cpp \
-	   pgimportfiles.cpp \
-	   plugins.cpp \
-	   busquedaperiodo.cpp \
-	   dbrecord.cpp \
-	   subform.cpp \
-	   subform3.cpp \
-	   listventanas.cpp
-
-TRANSLATIONS += bulmalib_es.ts \
-                bulmalib_ca.ts \
-                bulmalib_en.ts \
-                bulmalib_fr.ts \
-                bulmalib_de.ts \
-		bulmalib_zz.ts
-
+           busquedafecha.cpp \
+           qtable1.cpp \
+           qtable2.cpp \
+           pgimportfiles.cpp \
+           plugins.cpp \
+           busquedaperiodo.cpp \
+           dbrecord.cpp \
+           subform.cpp \
+           subform3.cpp \
+           listventanas.cpp \
+           qworkspace2.cpp 
+QT += qt3support
 TEMPLATE = lib
-
 LANGUAGE = C++
-
 INCLUDEPATH += . \
-	/usr/include/qt4 \
-	/usr/include/qt4/Qt \
-	/usr/lib/qt4/include/Qt \
-	/usr/include/Qt \
-	/usr/include/QtXml
-	
-
+/usr/include/qt4 \
+/usr/include/qt4/Qt \
+/usr/lib/qt4/include/Qt \
+/usr/include/Qt \
+/usr/include/QtXml
 VERSION = 0.5.9
-
 TARGET = bulmalib
-
 OBJECTS_DIR = .obj
-
 UI_DIR = .ui
-
 MOC_DIR = .moc
-
+QT += xml
+CONFIG += uic
 unix{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   LIBS += -lpq
-
-LIBS += -rdynamic
-CONFIG += release
-#CONFIG += qt debug
-
-TARGET = bulmalib
-DESTDIR = ../installbulmages
-
+  LIBS += -rdynamic
+  CONFIG += release
+  TARGET = bulmalib
+  DESTDIR = ../installbulmages
   exists(/usr/include/postgresql/libpq-fe.h){
-
     DEFINES += DISTRO_DEBIAN
   }
   exists(/usr/include/postgresql/8.0/libpq-fe.h){
@@ -111,24 +96,14 @@ DESTDIR = ../installbulmages
     DEFINES += DISTRO_GENTOO
   }
 }
-
-
 windows{
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
-  INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
   LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
   DEFINES += WINDOWS
   DEFINES += WIN32
-
   CONFIG += release \
-		dll
-
+  dll
   VERSION += 0.5.9
 }
-
-#The following line was inserted by qt3to4
-QT += xml  
-#The following line was inserted by qt3to4
-CONFIG += uic
