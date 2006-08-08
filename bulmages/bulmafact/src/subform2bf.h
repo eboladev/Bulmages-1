@@ -42,11 +42,11 @@ public:
     virtual ~SubForm2Bf() {}
     ;
     void setDelete(bool f) {
-        m_delete=f;
+        m_delete = f;
     };
 
 public slots:
-    virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_list_editFinished(int row, int col);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);

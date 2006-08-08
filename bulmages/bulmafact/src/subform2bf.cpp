@@ -43,7 +43,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
     _depura("ListCompArticuloView::searchArticle", 0);
-    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, theApp->translate("Seleccione articulo", "company"), 0,ArticuloList::SelectMode);
+    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, theApp->translate("SubForm2Bf", "Seleccione articulo"), 0, ArticuloList::SelectMode);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
@@ -62,11 +62,11 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     } // end if
     _depura("END SubForm2Bf::pressedAsterisk", 0);
 }
- 
+
 
 void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
     _depura("SubForm2Bf::pressedSlash", 0);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
+    SDBCampo *camp = (SDBCampo *) item(row, col);
     QString text = editaTexto(camp->text());
     camp->set
     (text);
@@ -92,15 +92,15 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
 }
 
 
-void SubForm2Bf::contextMenuEvent (QContextMenuEvent *) {
+void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
     _depura("SubForm2Bf::contextMenuEvent", 0);
-    QAction *del= NULL;
+    QAction *del = NULL;
     int row = currentRow();
-    if ( row < 0)
+    if (row < 0)
         return;
 
     int col = currentColumn();
-    if ( row < 0)
+    if (row < 0)
         return;
 
     QMenu *popup = new QMenu(this);

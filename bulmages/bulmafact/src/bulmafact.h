@@ -24,6 +24,7 @@
 #include <QMainWindow>
 #include <QWorkspace>
 
+#include "qworkspace2.h"
 #include "ui_bulmafactbase.h"
 #include "company.h"
 #include "listventanas.h"
@@ -34,14 +35,14 @@ class bulmafact: public QMainWindow, public Ui_bulmafactbase {
     Q_OBJECT
 
 private:
-    QWorkspace *pWorkspace;
+    QWorkspace2 *pWorkspace;
     company *m_company;
     listventanas *m_list;
 
 public:
     bulmafact(QString bd);
     ~bulmafact();
-    QWorkspace *workspace() {
+    QWorkspace2 *workspace() {
         return pWorkspace;
     };
     company *getcompany() {

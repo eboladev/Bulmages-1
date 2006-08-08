@@ -8,9 +8,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1016</width>
-    <height>691</height>
+    <width>770</width>
+    <height>534</height>
    </rect>
+  </property>
+  <property name="focusPolicy" >
+   <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle" >
    <string>Articulo</string>
@@ -881,6 +884,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
@@ -908,13 +918,6 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_abrevarticulo</tabstop>
@@ -928,11 +931,10 @@
   <tabstop>m_presentablearticulo</tabstop>
   <tabstop>m_controlstockarticulo</tabstop>
   <tabstop>mui_tab</tabstop>
-  <tabstop>mui_cancelar</tabstop>
-  <tabstop>mui_aceptar</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
-  <tabstop>m_obserarticulo</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_aceptar</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -945,12 +947,12 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>691</x>
-     <y>618</y>
+     <x>667</x>
+     <y>522</y>
     </hint>
     <hint type="destinationlabel" >
      <x>647</x>
-     <y>573</y>
+     <y>533</y>
     </hint>
    </hints>
   </connection>

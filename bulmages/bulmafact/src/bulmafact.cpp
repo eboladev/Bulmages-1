@@ -32,6 +32,7 @@
 #include <QWorkspace>
 #include <QMainWindow>
 
+#include "qworkspace2.h"
 #include "bulmafact.h"
 #include "listventanas.h"
 #include "funcaux.h"
@@ -45,7 +46,8 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     m_company = new company();
     m_company->init(bd);
 
-    pWorkspace = new QWorkspace(this, "WorkSpace");
+    pWorkspace = new QWorkspace2(this);
+
     pWorkspace->setScrollBarsEnabled(TRUE);
     setCentralWidget(pWorkspace);
     m_company->setWorkspace(pWorkspace);

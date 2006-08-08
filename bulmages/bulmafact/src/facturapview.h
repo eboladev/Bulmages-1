@@ -36,9 +36,9 @@
 #include "funcaux.h"
 
 
-class FacturaProveedorView : public QWidget,  public Ui_FacturaProveedorBase, public FacturaProveedor,
-    public dialogChanges {
+class FacturaProveedorView : public QWidget, public Ui_FacturaProveedorBase, public FacturaProveedor, public dialogChanges {
     Q_OBJECT
+
 public:
     FacturaProveedorView(company *, QWidget *parent = 0, const char *name = 0);
     virtual ~FacturaProveedorView();

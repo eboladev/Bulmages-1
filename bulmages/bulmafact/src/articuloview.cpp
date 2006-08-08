@@ -63,7 +63,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
 	dialogChanges_cargaInicial();
     } catch(...) {
 	mensajeInfo(tr("Error al crear el articulo"));
-    }// end try
+    } // end try
     _depura("ArticuloView::END_constructor()\n", 0);
 }
 

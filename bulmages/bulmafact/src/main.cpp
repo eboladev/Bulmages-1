@@ -111,7 +111,6 @@ int main(int argc, char ** argv) {
     QString confesp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
     confpr->leeconfig(confesp);
 
-
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
@@ -132,9 +131,6 @@ int main(int argc, char ** argv) {
         traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
     } // end if
     theApp->installTranslator(traductor);
-
-
-
 
     /// Hacemos la carga de las librerias que contienen los plugins.
     g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMAFACT));

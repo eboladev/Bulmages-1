@@ -78,8 +78,8 @@ public:
     };
     void setidfacturap(QString val) {
         setDBvalue("idfacturap", val);
-        listalineas->setColumnValue("idfacturap",val);
-        listadescuentos->setColumnValue( "idfacturap",val);
+        listalineas->setColumnValue("idfacturap", val);
+        listadescuentos->setColumnValue("idfacturap", val);
     };
     void setidforma_pago(QString val) {
         setDBvalue("idforma_pago", val);

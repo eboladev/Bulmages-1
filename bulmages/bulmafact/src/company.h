@@ -26,6 +26,7 @@
 
 #include "postgresiface2.h"
 #include "listventanas.h"
+#include "qworkspace2.h"
 
 
 class ProveedorList;
@@ -73,7 +74,7 @@ private:
     PagosList *m_pagosList;
 
 public:
-    QWorkspace *m_pWorkspace;
+    QWorkspace2 *m_pWorkspace;
 
 public:
     company();
@@ -82,7 +83,7 @@ public:
     void setListVentanas(listventanas *doc) {
         m_listventanas = doc;
     };
-    void setWorkspace(QWorkspace *qw) {
+    void setWorkspace(QWorkspace2 *qw) {
         m_pWorkspace = qw;
     }
     void listproviders();
