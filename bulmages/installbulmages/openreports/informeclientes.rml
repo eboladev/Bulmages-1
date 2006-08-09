@@ -17,25 +17,11 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="14"/>
-		<drawString x="1.5cm" y="24.5cm">INFORME REFERENCIA</drawString>
-		<setFont name="Helvetica" size="16"/>
-		<drawString x="1.5cm" y="23.5cm">[referencia]</drawString>
-
-
-		<!-- EL RECUADRO DONDE VA EL CLIENTE -->
-		<stroke color="(0,0,0)"/>
-		<lineMode width="0.3mm"/>
-		<rect round="0.25cm" x="8cm" y="22.4cm" width="11cm" height="2.5cm" fill="no" stroke="yes"/>
-
-		<!-- LOS DATOS DEL CLIENTE -->
-		<setFont name="Helvetica" size="12"/>
-		<drawString x="8.5cm" y="24cm">[nomcliente] -- [telcliente]</drawString>
-		<drawString x="8.5cm" y="23.5cm">[dircliente]</drawString>
-		<drawString x="8.5cm" y="23cm">[poblcliente]</drawString>
-		</pageGraphics>
+		<drawString x="1.5cm" y="24.5cm">INFORME CLIENTE</drawString>
 
 		<!-- FRAME DE CONTENIDOS -->
-		<frame id="column" x1="1cm" y1="8cm" width="19cm" height="15cm"/>
+		<frame id="column" x1="1cm" y1="2cm" width="19cm" height="22cm"/>
+		</pageGraphics>
 	</pageTemplate>	
 </template>
 <stylesheet>
@@ -70,12 +56,6 @@
 </stylesheet>
 
 <story>
-
-	[story]
-
-<spacer length="15"/>
-
-	[totales]
-
+[story]
 </story>
 </document>

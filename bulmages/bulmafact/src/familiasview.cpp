@@ -341,7 +341,11 @@ void familiasview::on_mui_imprimir_clicked() {
 
 void familiasview::on_mui_aceptar_clicked() {
     trataModificado();
-    m_idfamilia = m_listFamilias->currentItem()->text(COL_IDFAMILIA);
+    QTreeWidgetItem *it = m_listFamilias->currentItem();
+    if (it)
+   	 m_idfamilia = it->text(COL_IDFAMILIA);
+    else
+	m_idfamilia ="";
     done(1);
 }
 

@@ -309,28 +309,18 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
 void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
     QString cadena, codigo;
-    int idcuenta, idgrupo=0;
+    int  idgrupo=0;
     QTreeWidgetItem *it;
-
     cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
     it = ListView1->currentItem();
-    codigo = it->text(ccuenta);
-    cadena = it->text(cgrupo);
-    idgrupo = cadena.toInt();
-    nuevae->nuevacuenta(codigo,idgrupo);
-
+    if (it) {
+	codigo = it->text(ccuenta);
+	cadena = it->text(cgrupo);
+	idgrupo = cadena.toInt();
+	nuevae->nuevacuenta(codigo,idgrupo);
+    } // end if
     empresaactual->pWorkspace()->addWindow(nuevae);
     nuevae->show();
-
- //   inicializa();
- //   idcuenta = nuevae->idcuenta;
- //   cadena.setNum(idcuenta);
-    /// Para no perder el foco del elemento, al mismo tiempo que se
-    /// actualizan los cambios luego buscamos y enfocamos el item
-    //    it = ListView1->findItem(cadena, cidcuenta, Q3ListView::ExactMatch);
-    //    ListView1->setCurrentItem(it);
-    //    ListView1->ensureItemVisible(it);
-//    delete nuevae;
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
 }
 
@@ -346,6 +336,10 @@ void listcuentasview1::on_mui_editar_clicked()  {
     _depura("listcuentasview1::on_mui_editar_clicked", 0);
     QTreeWidgetItem *it;
     it = ListView1->currentItem();
+    if (!it) {
+	mensajeInfo(tr("Debe seleccionar una cuenta"));
+	return;
+    }
     on_ListView1_itemClicked(it, 0);
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
@@ -363,9 +357,13 @@ void listcuentasview1::on_mui_editar_clicked()  {
   */
 void listcuentasview1::on_mui_borrar_clicked()  {
     QTreeWidgetItem *it;
+    it = ListView1->currentItem();
+    if (!it) {
+	mensajeInfo(tr("Debe seleccionar una cuenta"));
+	return;
+    } // end if
     int valor = QMessageBox::warning( 0, "Borrar Cuenta", "Se procedera a borrar la cuenta.", QMessageBox::Yes, QMessageBox::No);
     if (valor ==  QMessageBox::Yes) {
-        it = ListView1->currentItem();
         int idcuenta =atoi((char *) it->text(cidcuenta).ascii());
         conexionbase->begin();
         if (conexionbase->borrarcuenta(idcuenta) == 0) {
@@ -413,7 +411,8 @@ void listcuentasview1::on_mui_busqueda_editFinished() {
   * \todo Esta funcion deberia implementarse con una clase nueva de Qt que solicitase 
   * el rango de cuentas entre el que se quiere el listado.
   */
-void listcuentasview1::on_mui_imprimir_clicked() {
+/*
+void listcuentasview1::on_mui_imprimirrtk_clicked() {
     _depura("listcuentasview1::on_mui_imprimir_clicked", 0);
     QString cadena;
     cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
@@ -424,6 +423,88 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     _depura("END listcuentasview1::on_mui_imprimir_clicked", 0);
 
 }
+*/
+
+
+/** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
+  * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
+  * \todo La plantilla podria tener contenidos dinamicos mendiante marcas sustituibles por
+  * un egrep, o un sedit que aun no estan realizados.
+  * \todo Esta funcion deberia implementarse con una clase nueva de Qt que solicitase 
+  * el rango de cuentas entre el que se quiere el listado.
+  */
+void listcuentasview1::on_mui_imprimir_clicked() {
+    _depura("listcuentasview1::on_mui_imprimir_clicked", 0);
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
+    system (archivo.ascii());
+
+    /// Copiamos el logo.
+#ifdef WINDOWS
+
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    system (archivologo.ascii());
+
+    QFile file;
+    file.setName(archivod);
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    QString buff = stream.read();
+    file.close();
+    QString fitxersortidatxt;
+
+    QString query = "SELECT * FROM cuenta ORDER BY codigo";
+    cursor2 *cur = conexionbase->cargacursor(query);
+
+    /// Linea de totales del presupuesto.
+    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
+    fitxersortidatxt += "<tr><td>Codigo</td>\n";
+    fitxersortidatxt += "<td>Descripcion</td>\n";
+    fitxersortidatxt += "<td>Debe</td>\n";
+    fitxersortidatxt += "<td>Haber</td></tr>\n";
+    while(!cur->eof()) {
+        fitxersortidatxt += "<tr>\n";
+	fitxersortidatxt += "<td>"+cur->valor("codigo")+"</td>\n";
+	fitxersortidatxt += "<td>"+cur->valor("descripcion")+"</td>\n";
+	fitxersortidatxt += "<td>"+cur->valor("debe")+"</td>\n";
+	fitxersortidatxt += "<td>"+cur->valor("haber")+"</td>\n";
+        fitxersortidatxt += "</tr>\n";
+	cur->siguienteregistro();
+    } // end while
+//    fitxersortidatxt += mui_list->imprimir();
+    fitxersortidatxt += "</blockTable>";
+
+    delete cur;
+
+    buff.replace("[story]", fitxersortidatxt);
+    buff.replace("[titulo]", "Cuentas");
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    } // end if
+
+    invocaPDF("listado");
+    _depura("END listcuentasview1::on_mui_imprimir_clicked", 0);
+}
+
 
 
 void listcuentasview1::on_mui_exportar_clicked() {

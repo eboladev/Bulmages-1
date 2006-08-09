@@ -36,9 +36,7 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
 void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     _depura("SubForm2Bf::pressedAsterisk", 0);
     SDBRecord *rec = lineaat(row);
-    _depura("tenemos el registro rec", 0);
     SDBCampo *camp = (SDBCampo *) item(row, col);
-    _depura("tenemos el campo camp", 0);
 
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
@@ -60,6 +58,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
 	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
 	on_mui_list_editFinished(row,col);
     } // end if
+    delete cur;
     _depura("END SubForm2Bf::pressedAsterisk", 0);
 }
 
@@ -71,6 +70,25 @@ void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
     camp->set
     (text);
 }
+
+void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
+    _depura("SubForm2Bf::pressedMinus", 0);
+    SDBRecord *rec = lineaat(row);
+    SDBCampo *camp = (SDBCampo *) item(row, col);
+
+//    if (camp->nomcampo() != "codigocompletoarticulo")
+//        return;
+
+    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + rec->DBvalue("idarticulo"));
+    if (!cur->eof() ) {
+        rec->setDBvalue(camp->nomcampo(), cur->valor("obserarticulo"));
+	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+	on_mui_list_editFinished(row,col);
+    } // end if
+    delete cur;
+    _depura("END SubForm2Bf::pressedMinus", 0);
+}
+
 
 
 void SubForm2Bf::on_mui_list_editFinished(int row, int col) {

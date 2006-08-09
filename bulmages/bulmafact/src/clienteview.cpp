@@ -35,6 +35,7 @@
 #include "busquedaprovincia.h"
 #include "funcaux.h"
 #include "plugins.h"
+#include "informereferencia.h"
 
 
 ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
@@ -181,6 +182,7 @@ void ClienteView::deleteClient() {
 void ClienteView::on_mui_guardar_clicked() {
     _depura("ClienteView::on_mui_guardar_clicked", 0);
     guardar();
+    _depura("END ClienteView::on_mui_guardar_clicked", 0);
 }
 
 
@@ -196,6 +198,14 @@ void ClienteView::on_mui_borrar_clicked() {
         deleteClient();
 }
 
+
+void ClienteView::on_mui_informe_clicked() {
+	_depura("ClienteView::on_mui_informe_clicked", 0);
+	InformeCliente inf(companyact());
+	inf.setCliente(DBvalue("idcliente"));
+	inf.generarInforme();
+	_depura("END ClienteView::on_mui_informe_clicked", 0);
+}
 
 void ClienteView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);

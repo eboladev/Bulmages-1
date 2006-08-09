@@ -157,6 +157,7 @@ public slots:
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
     virtual void on_mui_list_pressedPlus(int row, int col);
+    virtual void on_mui_list_pressedMinus(int row, int col);
     virtual void on_mui_list_ctrlSubir(int row, int col);
     virtual void on_mui_list_ctrlBajar(int row, int col);
     virtual void on_mui_pagsiguiente_clicked() {

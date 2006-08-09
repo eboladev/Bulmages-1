@@ -95,7 +95,7 @@ Fixed ListLinAlbaranProveedorView::calculabase() {
 Fixed ListLinAlbaranProveedorView::calculaiva() {
     Fixed base("0.0");
     for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("ivalalbaranp", i));
+        Fixed totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("ivalalbaranp", i)) / 100;
         base = base + totpar;
     } // end for
     return base;

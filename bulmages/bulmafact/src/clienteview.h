@@ -109,6 +109,7 @@ public slots:
         if (!guardar())
         close();
     };
+    virtual void on_mui_informe_clicked();
 };
 
 #endif

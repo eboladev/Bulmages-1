@@ -30,6 +30,7 @@
 #include "qtable1.h"
 #include "funcaux.h"
 #include "pgimportfiles.h"
+#include "informereferencia.h"
 
 #define EDIT_MODE 0
 
@@ -157,6 +158,11 @@ void ClientsList::on_mui_imprimir_clicked() {
 
     /// Crea el pdf y lo muestra.
     invocaPDF("clientes");
+}
+
+void ClientsList::on_mui_informeclientes_clicked() {
+	InformeClientes info(m_companyact);
+	info.generarInforme();
 }
 
 

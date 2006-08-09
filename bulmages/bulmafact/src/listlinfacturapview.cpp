@@ -95,7 +95,7 @@ Fixed ListLinFacturaProveedorView::calculabase() {
 Fixed ListLinFacturaProveedorView::calculaiva() {
     Fixed base("0.0");
     for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplfacturap", i)) * Fixed(DBvalue("ivalfacturap", i));
+        Fixed totpar = Fixed(DBvalue("pvplfacturap", i)) * Fixed(DBvalue("ivalfacturap", i)) / 100;
         base = base + totpar;
     } // end for
     return base;

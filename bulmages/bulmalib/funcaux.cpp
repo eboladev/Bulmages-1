@@ -237,7 +237,7 @@ void generaPDF(const QString arch) {
 /// arch = Archivo RML.
 void invocaPDF(const QString arch) {
     generaPDF(arch);
-    QString cadsys = confpr->valor(CONF_PDF) + " " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
+    QString cadsys = confpr->valor(CONF_PDF) + " " + confpr->valor(CONF_DIR_USER) + arch + ".pdf &";
     system(cadsys.ascii());
 }
 

@@ -85,16 +85,27 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
             break;
         case Qt::Key_Slash:
-            pressedSlash(row, col);
-            return TRUE;
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// 
+		emit pressedSlash(row, col);
+		return TRUE;
+	    } // end if
             break;
+	case Qt::Key_Minus:
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// 
+//		_depura ("pressedMinus", 2);
+		emit pressedMinus(row, col);
+		return TRUE;
+	    } // end if
+	    break;
         case Qt::Key_Plus:
             emit pressedPlus(row, col);
             return TRUE;
             break;
         case Qt::Key_Asterisk:
-            emit pressedAsterisk(row, col);
-            return TRUE;
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// 
+		emit pressedAsterisk(row, col);
+		return TRUE;
+	    } // end if
             break;
         case Qt::Key_Up:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// La tecla hacia arriba

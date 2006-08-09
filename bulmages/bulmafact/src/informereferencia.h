@@ -41,5 +41,35 @@ public:
     void generarinforme();
 };
 
+
+
+class InformeCliente {
+
+private:
+    QString m_idcliente;
+    company* companyact;
+
+public:
+    InformeCliente(company *);
+    ~InformeCliente();
+    void setCliente(QString val) {
+        m_idcliente = val;
+    };
+    void generarInforme();
+};
+
+
+class InformeClientes {
+
+private:
+    company* companyact;
+
+public:
+    InformeClientes(company *);
+    ~InformeClientes();
+    void generarInforme();
+    QString generarCliente(QString);
+};
+
 #endif
 

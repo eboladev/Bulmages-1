@@ -97,7 +97,7 @@ Fixed ListLinPedidoProveedorView::calculabase() {
 Fixed ListLinPedidoProveedorView::calculaiva() {
 	Fixed base("0.0");
         for (int i = 0; i < rowCount() - 1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor", i)) * Fixed(DBvalue("ivalpedidoproveedor", i));
+		Fixed totpar = Fixed(DBvalue("pvplpedidoproveedor", i)) * Fixed(DBvalue("ivalpedidoproveedor", i)) / 100;
 		base = base + totpar;
         } // end for
 	return base;

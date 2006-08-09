@@ -104,6 +104,7 @@ public slots:
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_informeclientes_clicked();
     virtual void on_mui_actualizar_clicked() {
         presenta();
     };

@@ -86,6 +86,7 @@ signals:
     void editFinished(int, int);
     void pressedAsterisk(int, int);
     void pressedPlus(int, int);
+    void pressedMinus(int, int);
     void pressedSlash(int, int);
     void ctrlSubir(int, int);
     void ctrlBajar(int, int);

@@ -559,6 +559,9 @@ void SubForm3::on_mui_list_pressedPlus(int, int) {
     _depura ("pulsadoPlus aun no implementado", 1);
 }
 
+void SubForm3::on_mui_list_pressedMinus(int, int) {
+    _depura ("pressedMinus aun no implementado", 1);
+}
 
 QString SubForm3::imprimir() {
     QString fitxersortidatxt = "<tr>\n";
