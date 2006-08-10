@@ -1,6 +1,8 @@
 /***************************************************************************
 *   Copyright (C) 2005 by Tomeu Borras Riera                              *
 *   tborras@conetxia.com                                                  *
+*   Copyright (C) 2006 by Fco. Javier M. C.                               *
+*   fcojavmc@todo-redes.com                                               *
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
 *   it under the terms of the GNU General Public License as published by  *
@@ -18,62 +20,50 @@
 *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 ***************************************************************************/
 
-#include <QDialog>
-#include <QLayout>
-#include <QColor>
-#include <QObject>
-#include <QEvent>
-#include <QPixmap>
-#include <QLabel>
-
 #include "splashscreen.h"
 #include "configuracion.h"
 
 
-Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customize) {
+Splash::Splash() : QDialog(0, Qt::WStyle_NoBorder | Qt::WStyle_Customize) {
     QPixmap image0;
     image0.load(confpr->valor(CONF_SPLASH_BULMAFACT));
-    setBackgroundPixmap(image0);
+    /// Se modifica la paleta para que utilize la imagen como fondo.
+    QPalette p = this->palette();
+    p.setBrush(QPalette::Window, image0);
+    this->setPalette(p);
 
-    l = new QLabel(this);
     QLabel *l0 = new QLabel(this);
-    l0->setPaletteForegroundColor(QColor("#FF0000"));
-    l0->setAlignment(Qt::AlignVCenter);
+    l0->setTextFormat(Qt::RichText);
+    l0->setGeometry(0, 0, image0.width(), image0.height());
+
+    l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("\nv 0.5.9"));
-    l0->setGeometry(0, 0, 350, 55);
+    l0->setText(tr("<center><font size=+1 color=\"#0000ff\">BulmaFact</font>&nbsp;<font color=\"#ffcc00\">0.5.9</font></center>"));
 
-    QLabel *l1 = new QLabel(this);
-    l1->setGeometry(0, 0, 150, 55);
-    l1->setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-    l1->setFont(QFont("Arial", 20, QFont::Bold));
-    l1->setPaletteForegroundColor(QColor("#333388"));
-    l1->setText(tr("\nBulmaFact"));
+    l1 = new QTextBrowser(this);
+    l1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    l1->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    l2 = new Q3TextBrowser(this);
-    l2->setVScrollBarMode(Q3ScrollView::AlwaysOff);
-    l2->setAlignment(Qt::AlignBottom);
-    l2->setFont(QFont("helvetica", 11, QFont::Normal));
-    l2->setText(tr("BULMAGES"));
-    l2->setGeometry(0, image0.height() - 38, image0.width(), 58);
-    l2->setPaletteForegroundColor(QColor("#000066"));
-    l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
+    l1->setAlignment(Qt::AlignBottom);
+    l1->setFont(QFont("helvetica", 9, QFont::Normal));
+    l1->setGeometry(0, image0.height() - 38, image0.width(), 58);
 
-    QTimer timer(this);
-    connect(&timer, SIGNAL(timeout()), SLOT(close()));
-    timer.start(10000);
+    QPalette pl1 = l1->palette();
+    pl1.setBrush(QPalette::Base, QColor("#DDDDDD"));
+    l1->setPalette(pl1);
+
+    this->paint();
 
     QTimer timer1(this);
     connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
     timer1.start(1750);
+    /// Nos muestra la ventana en modo MODAL.
     exec();
-    delete l1;
 }
 
 
 Splash::~Splash() {
-    delete l;
-    delete l2;
+    delete l1;
 }
 
 
@@ -86,34 +76,44 @@ bool Splash::event(QEvent *evt) {
         close();
     } // end if
 
-    return QDialog::event( evt);
+    return QDialog::event(evt);
 }
 
 
 void Splash::paint() {
     static int a = 0;
-    static QString cad;
+    int cantidadmensajes;
+    QString cad = "";
     QString mensajes[] = {
-                             tr("Calibrando los lasers del lector de CD."),
-                             tr("Comprobando la disquetera y la memoria RAM."),
-                             tr("Induciendo energia cuantica, entre su RAM y su ROM."),
-                             tr("Pequenyos golpecitos de reajuste del HD."),
-                             tr("Probando la velocidad del ventilador de la CPU y su frecuencia."),
-                             tr("Haciendo PING contra el servidor de la MetaBase."),
-                             tr("Violando a Segmento."),
-                             tr("Dejando tiempo libre al sistema."),
-                             tr("Sincronizando fases Alfa Beta."),
-                             tr("Flusheando datos con vidas inteligentes superiores."),
-                             tr("Permutando las tablas de particiones del Sistema Operativo."),
-                             tr("Crackeando BulmaGes.")};
+                             tr("Calibrando los lasers del lector de CD"),
+                             tr("Comprobando la disquetera y la memoria RAM"),
+                             tr("Induciendo energia cuantica, entre su RAM y su ROM"),
+                             tr("Pequenyos golpecitos de reajuste del HD"),
+                             tr("Probando la velocidad del ventilador de la CPU"),
+                             tr("Haciendo PING contra el servidor de la MetaBase"),
+                             tr("Fallando a Segmento"),
+                             tr("Dejando tiempo libre al sistema"),
+                             tr("Sincronizando fases Alfa Beta"),
+                             tr("Flusheando datos con vidas inteligentes superiores"),
+                             tr("Permutando las particiones del Sistema Operativo"),
+                             tr("Crackeando BulmaGes")};
+
+    /// Cuenta el numero de mensajes.
+    cantidadmensajes = sizeof(mensajes) / sizeof(mensajes[0]);
+
     if (a) {
-        cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
+        cad = cad + "<FONT COLOR='#FF0000'>&nbsp;.......&nbsp;<B>OK</B></FONT><BR>";
     } // end if
-    cad = cad + " " + mensajes[a];
-    if(a >10)
-        a = 0;
+
+    /// Recorre todos los elementos del array de mensajes cada vez que se llama a la funcion.
+    /// Cuando termina de recorrerlos todos cierra la ventana y el programa continua.
+    if (a >= cantidadmensajes)
+        this->close();
+
+    cad = cad + "<FONT COLOR='#000066'>" + mensajes[a] + "</FONT>";
     a++;
-    l2->setText(cad);
-    l2->scrollBy(0, 400);
+    l1->insertHtml(cad);
+    /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
+    l1->ensureCursorVisible();
 }
 

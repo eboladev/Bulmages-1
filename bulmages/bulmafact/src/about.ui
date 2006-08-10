@@ -360,6 +360,9 @@
      </item>
      <item>
       <widget class="QTabWidget" name="TabWidget2" >
+       <property name="focusPolicy" >
+        <enum>Qt::StrongFocus</enum>
+       </property>
        <property name="layoutDirection" >
         <enum>Qt::LeftToRight</enum>
        </property>
@@ -376,6 +379,9 @@
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_sobre" >
+           <property name="focusPolicy" >
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="readOnly" >
             <bool>true</bool>
            </property>
@@ -396,6 +402,9 @@
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_autores" >
+           <property name="focusPolicy" >
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="autoFormatting" >
             <set>QTextEdit::AutoAll</set>
            </property>
@@ -422,6 +431,9 @@
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_soporte" >
+           <property name="focusPolicy" >
+            <enum>Qt::TabFocus</enum>
+           </property>
            <property name="readOnly" >
             <bool>true</bool>
            </property>
@@ -442,6 +454,9 @@
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_licencia" >
+           <property name="focusPolicy" >
+            <enum>Qt::StrongFocus</enum>
+           </property>
            <property name="readOnly" >
             <bool>true</bool>
            </property>

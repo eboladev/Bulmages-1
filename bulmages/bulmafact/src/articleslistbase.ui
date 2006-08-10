@@ -84,6 +84,9 @@
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
+          <property name="focusPolicy" >
+           <enum>Qt::TabFocus</enum>
+          </property>
           <property name="toolTip" >
            <string>Nuevo articulo</string>
           </property>
@@ -464,16 +467,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFamilia</class>
-   <extends></extends>
-   <header>busquedafamilia.h</header>
+   <class>ArticuloListSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>articulolist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaTipoArticulo</class>
+   <class>BusquedaFamilia</class>
    <extends></extends>
-   <header>busquedatipoarticulo.h</header>
+   <header>busquedafamilia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -485,13 +488,28 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ArticuloListSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>articulolist.h</header>
+   <class>BusquedaTipoArticulo</class>
+   <extends></extends>
+   <header>busquedatipoarticulo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_filtro</tabstop>
+  <tabstop>mui_crear</tabstop>
+  <tabstop>mui_editar</tabstop>
+  <tabstop>mui_borrar</tabstop>
+  <tabstop>mui_imprimir</tabstop>
+  <tabstop>mui_filtrar</tabstop>
+  <tabstop>mui_configurar</tabstop>
+  <tabstop>mui_actualizar</tabstop>
+  <tabstop>mui_exportar</tabstop>
+  <tabstop>mui_importar</tabstop>
+  <tabstop>m_usadoarticulo</tabstop>
+  <tabstop>m_presentablearticulo</tabstop>
+  <tabstop>mui_list</tabstop>
+ </tabstops>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
@@ -523,8 +541,8 @@
      <y>39</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>293</x>
-     <y>49</y>
+     <x>325</x>
+     <y>56</y>
     </hint>
    </hints>
   </connection>

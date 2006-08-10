@@ -146,7 +146,6 @@ int main(int argc, char ** argv) {
     _depura("MAIN: Se acabo la ejecucion en main", 0);
 
     /// Liberamos memoria.
-
     delete bges;
     delete theApp;
     delete traductor;

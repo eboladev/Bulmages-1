@@ -12,6 +12,7 @@ LIBS += -rdynamic
 TEMPLATE = app
 RESOURCES += ../../bulmages-recursos-graficos.qrc
 
+DEFINES += QT3_SUPPORT_WARNINGS
 
 FORMS += about.ui \
          pagobase.ui \

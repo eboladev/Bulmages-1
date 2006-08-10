@@ -542,6 +542,7 @@ void company::s_newArticulo() {
     ArticuloView *art = newArticuloView();
     m_pWorkspace->addWindow(art);
     art->show();
+    art->setFocus();
 }
 
 

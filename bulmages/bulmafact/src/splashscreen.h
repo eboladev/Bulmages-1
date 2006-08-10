@@ -21,30 +21,22 @@
 #ifndef _SPLASH_H
 #define _SPLASH_H
 
-#include <qdialog.h>
+#include <QDialog>
 #include <QPixmap>
-#include <QString>
-#include <q3progressbar.h>
 #include <QLabel>
-#include <QEvent>
-#include <stdio.h>
-#include <QLayout>
-#include <QLabel>
-#include <q3progressbar.h>
-#include <QMessageBox>
-#include <QPixmap>
-#include <qtimer.h>
-#include <q3textbrowser.h>
+#include <QTimer>
+#include <QTextBrowser>
+#include <QPalette>
+
 #include <stdlib.h>
+#include <stdio.h>
 
 
 class Splash : public QDialog {
     Q_OBJECT
 
 private:
-    QLabel *l;
-    //QLabel *l2;
-    Q3TextBrowser *l2;
+    QTextBrowser *l1;
 
 public:
     Splash();
