@@ -1,4 +1,4 @@
-/***************************************************************************
+/**************************************************************************
 *   Copyright (C) 2005 by Tomeu Borras Riera                              *
 *   tborras@conetxia.com                                                  *
 *   Copyright (C) 2006 by Fco. Javier M. C.                               *
@@ -46,11 +46,22 @@ Splash::Splash() : QDialog(0, Qt::WStyle_NoBorder | Qt::WStyle_Customize) {
 
     l1->setAlignment(Qt::AlignBottom);
     l1->setFont(QFont("helvetica", 9, QFont::Normal));
-    l1->setGeometry(0, image0.height() - 38, image0.width(), 58);
+    l1->setGeometry(0, image0.height() - 23, image0.width(), 58);
 
     QPalette pl1 = l1->palette();
     pl1.setBrush(QPalette::Base, QColor("#DDDDDD"));
     l1->setPalette(pl1);
+
+    QProgressBar *barra = new QProgressBar(this);
+    /// Poniendo el minimo y maximo a 0 hace el efecto especial.
+    barra->setRange(0, 0);
+    barra->setGeometry(0, image0.height() - 38, image0.width(), 15);
+    QPalette pbarra = barra->palette();
+    //pbarra.setBrush(QPalette::Base, Qt::transparent);
+    QColor colorbarra = QColor("#000000");
+    colorbarra.setAlpha(100);
+    pbarra.setBrush(QPalette::Base, colorbarra);
+    barra->setPalette(pbarra);
 
     this->paint();
 
