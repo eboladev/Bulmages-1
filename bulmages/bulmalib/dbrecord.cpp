@@ -101,7 +101,7 @@ void DBRecord::DBclear() {
 
 
 int DBRecord::DBsave(QString &id) {
-    _depura("DBRecord::DBsave",0);
+    _depura("DBRecord::DBsave", 0, id);
     try {
         DBCampo *linea;
         QString listcampos="";
@@ -170,12 +170,12 @@ int DBRecord::DBsave(QString &id) {
             m_conexionbase->ejecuta(query);
         }// end if
         m_nuevoCampo = FALSE;
-        _depura("END DBRecord::DBSave",0);
+        _depura("END DBRecord::DBSave", 0);
         return 0;
     }// end try
 
     catch(...) {
-        _depura("DBRecord::DBsave Problemas en el guardado",1);
+        _depura("EXCEPTION DBRecord::DBsave", 0);
         throw(-1);
     }// end catch
 

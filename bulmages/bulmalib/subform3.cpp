@@ -419,7 +419,7 @@ int SubForm3::guardar() {
         _depura("END SubForm3::guardar", 0);
         return error;
     } catch(...) {
-        _depura("error inesperado en el guardado, salimos devolviento -1", 1);
+        mensajeInfo("error inesperado en el guardado, salimos devolviento -1");
         throw -1;
     }
 }

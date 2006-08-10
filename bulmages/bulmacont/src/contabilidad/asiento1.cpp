@@ -67,13 +67,13 @@ void Asiento1::borraAsiento1() {
 void Asiento1::vaciaAsiento1() {
     _depura("Asiento1::vaciaAsiento1",0);
     DBclear();
-    listalineas->cargar("0");
+    listalineas->inicializar();
 }
 
 
 
 void Asiento1::pintaAsiento1() {
-    _depura("pintaAlbaranCliente\n",0);
+    _depura("Asiento1::pintaAsiento1",0);
     pintaidasiento(idasiento());
     pintadescripcion(DBvalue("descripcion"));
     pintafecha(DBvalue("fecha"));
@@ -83,27 +83,27 @@ void Asiento1::pintaAsiento1() {
     /// Pintamos los totales
     calculaypintatotales(idasiento());
     trataestadoAsiento1();
+    _depura("END Asiento1::pintaAsiento1",0);
 }
 
 
 // Esta funci� carga un Asiento.
-int Asiento1::cargar(QString idbudget) {
-    _depura("Asiento1::cargar("+idbudget+")\n",0);
-    QString query = "SELECT * FROM asiento WHERE idasiento="+idbudget;
+int Asiento1::cargar(QString idasiento) {
+    _depura("Asiento1::cargar",0, idasiento);
+    QString query = "SELECT * FROM asiento WHERE idasiento="+idasiento;
     cursor2 * cur= m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     }// end if
     delete cur;
-    listalineas->cargar(idbudget);
-    /// Si no existe lista de descuentos se crea una.
+    listalineas->cargar(idasiento);
     pintaAsiento1();
-    _depura("END Asiento1::cargar("+idbudget+")\n",0);
+    _depura("END Asiento1::cargar",0, idasiento);
     return 0;
 }
 
-Fixed Asiento1::totaldebe(QString idbudget) {
-    return listalineas->totaldebe(idbudget);
+Fixed Asiento1::totaldebe(QString idasiento) {
+    return listalineas->totaldebe(idasiento);
 }
 
 
@@ -177,7 +177,7 @@ int Asiento1::guardar() {
         listalineas->guardar();
         m_companyact->commit();
 
-        /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+        /// Disparamos los plugins
         int res = g_plugins->lanza("Asiento1_guardaAsiento1_post", this);
 	if (res != 0 )
 		return 0;

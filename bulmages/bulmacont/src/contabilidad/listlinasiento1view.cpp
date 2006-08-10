@@ -19,6 +19,7 @@
 
 // Construye la cabecera del asiento (nombra cada columna de la tabla)
 ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *) : SubForm2Bc(parent) {
+    _depura("ListLinAsiento1View::ListLinAsiento1View", 0);
     setDBTableName("borrador");
     setDBCampoId("idborrador");
     addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , tr("Fecha"));
@@ -41,6 +42,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *) : SubFor
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoView , tr("idborrador"));
     addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone , tr("idasiento"));
     setinsercion(TRUE);
+    _depura("END ListLinAsiento1View::ListLinAsiento1View", 0);
 }
 
 
@@ -132,9 +134,9 @@ void ListLinAsiento1View::contextMenuEvent (QContextMenuEvent *) {
 }
 
 
-// Carga lineas de asiento (apuntes)
+/// Carga lineas de asiento (apuntes)
 void ListLinAsiento1View::cargar(QString idasiento) {
-    _depura("AsientoSubForm::cargar",0);
+    _depura("AsientoSubForm::cargar", 0);
     QString SQLQuery = "SELECT * FROM borrador ";
     SQLQuery+= " LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta  FROM  cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta ";
     SQLQuery += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal ";
@@ -144,7 +146,7 @@ void ListLinAsiento1View::cargar(QString idasiento) {
     cursor2 * cur= m_companyact->cargacursor(SQLQuery);
     SubForm2Bc::cargar(cur);
     delete cur;
-    _depura("END AsientoSubForm::cargar",0);
+    _depura("END AsientoSubForm::cargar", 0);
 }
 
 

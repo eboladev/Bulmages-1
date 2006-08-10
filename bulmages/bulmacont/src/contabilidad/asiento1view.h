@@ -66,11 +66,11 @@ public:
         cargaasientos();
         boton_inicio();
     }
-    virtual void muestraasiento(QString v) {
-        _depura("Funcion no implementada."+v);
+    virtual void muestraasiento(QString ) {
+        _depura("Funcion no implementada.", 2);
     };
-    virtual void pintaasiento(QString v) {
-        _depura("Funcion no implementada."+v, 2);
+    virtual void pintaasiento(QString ) {
+        _depura("Funcion no implementada.", 2);
     };
     void situarasiento(QString);
     bool esprimerasiento() {
@@ -114,7 +114,7 @@ private:
 
 
     void pintafecha(QString val) {
-        m_fecha->setText(val);
+        mui_fecha->setText(val);
     };
 
     void pintaordenasiento(QString val) {
@@ -134,17 +134,17 @@ private:
 
 public:
     void pintaasiento(QString v) {
-        _depura("Asiento1View::pintaasiento "+v,0);
+        _depura("Asiento1View::pintaasiento ", 0);
         cargar(v);
-        _depura("END Asiento1View::pintaasiento "+v,0);
+        _depura("END Asiento1View::pintaasiento ", 0);
 
     };
 
     void muestraasiento(QString v) {
-        _depura("Asiento1View::muestraasiento "+v,0);
+        _depura("Asiento1View::muestraasiento ", 0);
         situarasiento(v);
         pintaasiento(v);
-        _depura("END Asiento1View::muestraasiento "+v,0);
+        _depura("END Asiento1View::muestraasiento ", 0);
     };
 
     void muestraasiento(int v) {
@@ -157,7 +157,7 @@ public:
 
 
     void setFecha(QString val) {
-        m_fecha->setText(val);
+        mui_fecha->setText(val);
     };
 
     virtual void trataestadoAsiento1();
@@ -180,8 +180,7 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
-
-    virtual void eturn_fechaasiento();
+    virtual void on_mui_fecha_returnPressed();
 
 
     /** \brief SLOT que responde a la pulsación del botón de iva.

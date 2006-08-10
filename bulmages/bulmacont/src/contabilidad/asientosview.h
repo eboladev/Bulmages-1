@@ -45,5 +45,6 @@ public slots:
     virtual void on_mui_configurar_clicked() {
         mui_list->showConfig();
     };
+    virtual void on_mui_imprimir_clicked();
 };
 #endif

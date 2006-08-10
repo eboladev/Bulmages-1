@@ -32,6 +32,7 @@
 #include "postgresiface2.h"
 #include "log.h"
 #include "listventanas.h"
+#include "qworkspace2.h"
 
 
 class selectccosteview;
@@ -61,7 +62,7 @@ private:
     QString nombre;
     int ano;
     QString contrasenya;
-    QWorkspace *m_pWorkspace;
+    QWorkspace2 *m_pWorkspace;
 
     balance1view *balance1;
     DiarioView *diario;
@@ -122,8 +123,8 @@ public:
         return(nombre);
     }
 
-    QWorkspace * pWorkspace() { return m_pWorkspace; };
-    void setWorkspace(QWorkspace *qw) {
+    QWorkspace2 * pWorkspace() { return m_pWorkspace; };
+    void setWorkspace(QWorkspace2 *qw) {
         m_pWorkspace=qw;
     };
 
@@ -147,7 +148,6 @@ public:
     int propiedadempresa();
     int nuevaempresa();
     int borrarempresa();
-    /// This function search for a comapany
     QString searchCompany();
     int libromayor();
     int librodiario();

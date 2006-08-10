@@ -48,7 +48,7 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     m_empresaactual = new empresa();
     m_empresaactual->init(DB);
 
-    m_pWorkspace = new QWorkspace(this, "WorkSpace");
+    m_pWorkspace = new QWorkspace2(this);
     m_pWorkspace->setScrollBarsEnabled(TRUE);
     setCentralWidget(m_pWorkspace);
     m_empresaactual->setWorkspace(m_pWorkspace);

@@ -124,7 +124,7 @@ int roundI(double valor) {
 
 
 /// Procesa el string pasado como parametro y devuelve una estructura del tipo QDate
-/// Esta funcion extiende la fecha pasada como parametro 
+/// Esta funcion extiende la fecha pasada como parametro
 /// QString y devuelve la fecha en formato QDate.
 /// fechaintro string con la fecha a ser normalizada.
 QDate normalizafecha(QString fechaintro) {
@@ -259,15 +259,15 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 void _depura(QString cad, int nivel, QString param) {
 
 #ifdef __DEBUGMODE
-	static bool semaforo = 0;
-        static QFile file("/tmp/bulmagesout.txt");
-	if (!semaforo) {
-		if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-		return;
-		semaforo = 1;
-	} // end if
+    static bool semaforo = 0;
+    static QFile file("/tmp/bulmagesout.txt");
+    if (!semaforo) {
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+            return;
+        semaforo = 1;
+    } // end if
 
-        static QTextStream out(&file);
+    static QTextStream out(&file);
 
 
     static int supnivel = 0;
@@ -284,6 +284,22 @@ void _depura(QString cad, int nivel, QString param) {
         nivel = 2;
     }
 
+
+
+
+    if (nivel == 0) {
+        //       if(g_main != NULL)
+        //          g_main->statusBar()->message(cad);
+        out << cad << " " << param << "\n";
+        //    fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
+    } else if (nivel == 1) {
+        //    out << cad << " " << param << "\n";
+        //         fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
+        out << cad << " " << param << "\n";
+
+    }
+
+
     for (int i = 0; i < indice; i++) {
         if (cad == mensajesanulados[i]) {
             return;
@@ -291,19 +307,8 @@ void _depura(QString cad, int nivel, QString param) {
     } // end for
 
 
-    if (nivel == 0) {
- //       if(g_main != NULL)
- //          g_main->statusBar()->message(cad);
-    out << cad << " " << param << "\n";
-//    fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
-    } else if (nivel == 1) {
-//    out << cad << " " << param << "\n";
-//         fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
-    }
-
-
     if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
-        fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
+        out << cad << " " << param << "\n";
         int err = QMessageBox::question(NULL,
                                         QApplication::translate("funcaux", "Informacion de depuracion "),
                                         cad+" "+param,
@@ -314,9 +319,12 @@ void _depura(QString cad, int nivel, QString param) {
             mensajesanulados[indice++] = cad;
         } // end if
     } // end if
+
+    file.flush();
 #else
     if (nivel == 2)
     {
+        out << cad << " " << param << "\n";
         QMessageBox::question(NULL,
                               QApplication::translate("funcaux", "Informacion de depuracion"),
                               cad,

@@ -467,7 +467,7 @@
         </widget>
        </item>
        <item>
-        <widget class="BusquedaFecha" name="m_fecha" />
+        <widget class="BusquedaFecha" name="mui_fecha" />
        </item>
       </layout>
      </item>
@@ -1561,16 +1561,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ListLinAsiento1View</class>
-   <extends>QTableWidget</extends>
-   <header>listlinasiento1view.h</header>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
+   <class>ListLinAsiento1View</class>
+   <extends>QTableWidget</extends>
+   <header>listlinasiento1view.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
