@@ -62,7 +62,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
     showMaximized();
 
-    statusBar()->message(tr("Listo"), 2000);
+    statusBar()->showMessage(tr("Listo"), 2000);
     _depura("END bulmafact::bulmafact\n", 0);
 }
 

@@ -57,10 +57,9 @@ Splash::Splash() : QDialog(0, Qt::WStyle_NoBorder | Qt::WStyle_Customize) {
     barra->setRange(0, 0);
     barra->setGeometry(0, image0.height() - 38, image0.width(), 15);
     QPalette pbarra = barra->palette();
-    //pbarra.setBrush(QPalette::Base, Qt::transparent);
-    QColor colorbarra = QColor("#000000");
-    colorbarra.setAlpha(100);
-    pbarra.setBrush(QPalette::Base, colorbarra);
+    QColor colorfondobarra = QColor("#000000");
+    colorfondobarra.setAlpha(100);
+    pbarra.setBrush(QPalette::Base, colorfondobarra);
     barra->setPalette(pbarra);
 
     this->paint();
