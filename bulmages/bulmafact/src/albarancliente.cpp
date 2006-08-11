@@ -157,7 +157,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -168,7 +168,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
     QFile file;
     file.setName(archivod);
     file.open(QIODevice::ReadOnly);
@@ -214,19 +214,19 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     SDBRecord *linea;
     for (i = 0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
-        Fixed base = Fixed(linea->DBvalue("cantlalbaran").ascii()) *
-                     Fixed(linea->DBvalue("pvplalbaran").ascii());
+        Fixed base = Fixed(linea->DBvalue("cantlalbaran").toAscii().constData()) *
+                     Fixed(linea->DBvalue("pvplalbaran").toAscii().constData());
         basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base -
-                base * Fixed(linea->DBvalue("descontlalbaran").ascii()) / 100;
+                base * Fixed(linea->DBvalue("descontlalbaran").toAscii().constData()) / 100;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
         fitxersortidatxt += "        <td>" + XMLProtect(linea->DBvalue("desclalbaran")) + "</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("cantlalbaran").ascii()) + "</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("pvplalbaran").ascii()) + "</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("descontlalbaran").ascii()) + " %</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("cantlalbaran").toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("pvplalbaran").toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("descontlalbaran").toAscii().constData()) + " %</td>\n";
         fitxersortidatxt += "        <td>" + l.sprintf("%s",(base - base *
-                                               Fixed(linea->DBvalue("descontlalbaran")) / 100).toQString().ascii())
+                                               Fixed(linea->DBvalue("descontlalbaran")) / 100).toQString().toAscii().constData())
                             + "</td>\n";
         fitxersortidatxt += "</tr>";
     }
@@ -259,13 +259,13 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
 
         for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
-            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondalbaran").ascii());
+            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondalbaran").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdalbaran") + "</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondalbaran").ascii()) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondalbaran").toAscii().constData()) + " %</td>\n";
             fitxersortidatxt += "        <td>" + l.sprintf("-%s",
                                                    (Fixed(linea1->DBvalue("proporciondalbaran")) * basei /
-                                                    100).toQString().ascii()) + "</td>\n";
+                                                    100).toQString().toAscii().constData()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
 
@@ -293,7 +293,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
 
         totbaseimp = totbaseimp + parbaseimp;
         tr1 += "<td>" + QApplication::translate("AlbaranCliente", "Base ") + it.key() + " %</td>\n";
-        tr2 += "<td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
+        tr2 += "<td>" + l.sprintf("%s", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     }
 
     Fixed totiva("0.0");
@@ -309,11 +309,11 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
 
         totiva = totiva + pariva;
         tr1 += "<td>" + QApplication::translate("AlbaranCliente", "I.V.A. ") + it.key() + " %</td>\n";
-        tr2 += "<td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
+        tr2 += "<td>" + l.sprintf("%s", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
     tr1 += "<td>" + QApplication::translate("AlbaranCliente", "Total ") + "</td>\n";
-    tr2 += "<td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
+    tr2 += "<td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]",fitxersortidatxt);
 
@@ -336,9 +336,9 @@ void AlbaranCliente::calculaypintatotales()  {
 
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlalbaran").ascii());
-        Fixed pvpund(linea->DBvalue("pvplalbaran").ascii());
-        Fixed desc1(linea->DBvalue("descontlalbaran").ascii());
+        Fixed cant(linea->DBvalue("cantlalbaran").toAscii().constData());
+        Fixed pvpund(linea->DBvalue("pvplalbaran").toAscii().constData());
+        Fixed desc1(linea->DBvalue("descontlalbaran").toAscii().constData());
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         Fixed val("0.00");
@@ -360,7 +360,7 @@ void AlbaranCliente::calculaypintatotales()  {
 
     for(int i = 0; i < listadescuentos->rowCount(); ++i) {
         linea1 = listadescuentos->lineaat(i);
-        Fixed propor(linea1->DBvalue("proporciondalbaran").ascii());
+        Fixed propor(linea1->DBvalue("proporciondalbaran").toAscii().constData());
         porcentt = porcentt + propor;
     } // end for
 
@@ -382,7 +382,7 @@ void AlbaranCliente::calculaypintatotales()  {
     Fixed pariva("0.00");
 
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().ascii());
+        Fixed piva(it.key().toAscii().constData());
 
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;

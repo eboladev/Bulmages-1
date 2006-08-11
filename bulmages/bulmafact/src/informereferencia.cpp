@@ -50,7 +50,7 @@ void InformeReferencia::generarinforme() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -151,7 +151,7 @@ void InformeReferencia::generarinforme() {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap = '" + m_referencia + "') GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
-    fprintf(stdout,"%s\n",SQLQuery.ascii());
+    fprintf(stdout,"%s\n",SQLQuery.toAscii().constData());
 
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
@@ -298,7 +298,7 @@ void InformeCliente::generarInforme() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -407,7 +407,7 @@ void InformeCliente::generarInforme() {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
-    fprintf(stdout,"%s\n",SQLQuery.ascii());
+    fprintf(stdout,"%s\n",SQLQuery.toAscii().constData());
 
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
@@ -747,7 +747,7 @@ void InformeClientes::generarInforme() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS

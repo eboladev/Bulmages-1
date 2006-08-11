@@ -53,27 +53,26 @@ int main(int argc, char ** argv) {
     /// Definimos la codificacion a Unicode.
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
 
-    theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),
-                          atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+    theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii().constData(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii().constData())));
 
     /// Cargamos el sistema de traducciones.
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
         traductor->load(QString("bulmalib_") + QTextCodec::locale(),
-                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
+                         confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     theApp->installTranslator(traductor);
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
         traductor->load(QString("bulmafact_") + QTextCodec::locale(),
-                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
+                         confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     theApp->installTranslator(traductor);
 
@@ -115,20 +114,20 @@ int main(int argc, char ** argv) {
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
         traductor->load(QString("bulmalib_") + QTextCodec::locale(),
-                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
+                         confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     theApp->installTranslator(traductor);
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
         traductor->load(QString("bulmafact_") + QTextCodec::locale(),
-                         confpr->valor(CONF_DIR_TRADUCCION).ascii());
+                         confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     theApp->installTranslator(traductor);
 

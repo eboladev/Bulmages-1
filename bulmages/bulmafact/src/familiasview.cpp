@@ -297,11 +297,11 @@ void familiasview::on_mui_imprimir_clicked() {
     /// Copiamos el archivo.
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "familias.rml";
     archivo = "cp " + archivo + " /tmp/familias.rml";
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
     /// Copiamos el logo.
     archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     archivo = "cp " + archivo + " /tmp/logo.jpg";
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
     QFile file;
     file.setName("/tmp/familias.rml");
     file.open(QIODevice::ReadOnly);

@@ -231,7 +231,7 @@ int ArticuloView::guardar() {
             cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo=" + DBvalue("idarticulo"));
             QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur1->valor("codigocompletoarticulo") + ".jpg";
             delete cur1;
-            system(cadena.ascii());
+            system(cadena.toAscii().constData());
         } // end if
 
         /// Guardamos la lista de componentes.

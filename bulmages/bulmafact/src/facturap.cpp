@@ -155,7 +155,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -166,7 +166,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);
@@ -212,8 +212,8 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     SDBRecord *linea;
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
-        Fixed base = Fixed(linea->DBvalue("cantlfacturap").ascii()) * Fixed(linea->DBvalue("pvplfacturap").ascii());
-        basesimp[linea->DBvalue("ivalfacturap")] = basesimp[linea->DBvalue("ivalfacturap")] + base - base * Fixed(linea->DBvalue("descuentolfacturap").ascii()) / 100;
+        Fixed base = Fixed(linea->DBvalue("cantlfacturap").toAscii().constData()) * Fixed(linea->DBvalue("pvplfacturap").toAscii().constData());
+        basesimp[linea->DBvalue("ivalfacturap")] = basesimp[linea->DBvalue("ivalfacturap")] + base - base * Fixed(linea->DBvalue("descuentolfacturap").toAscii().constData()) / 100;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + linea->DBvalue("codigocompletoarticulo") + "</td>\n";
@@ -251,11 +251,11 @@ void FacturaProveedor::imprimirFacturaProveedor() {
         fitxersortidatxt += "</tr>\n";
         for (int i = 0; i < listadescuentos->rowCount(); ++i) {
             linea1 = listadescuentos->lineaat(i);
-            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfacturap").ascii());
+            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfacturap").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdfacturap") + "</td>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("proporciondfacturap") + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf("-%s", ( Fixed(linea1->DBvalue("proporciondfacturap")) * basei / 100).toQString().ascii()) + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("-%s", ( Fixed(linea1->DBvalue("proporciondfacturap")) * basei / 100).toQString().toAscii().constData()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -278,7 +278,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
         tr1 += "        <td>" + QApplication::translate("FacturaProveedor", "Base ") + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s",parbaseimp.toQString().ascii()) + "</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s",parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
@@ -291,10 +291,10 @@ void FacturaProveedor::imprimirFacturaProveedor() {
         } // end if
         totiva = totiva + pariva;
         tr1 += "        <td>" + QApplication::translate("FacturaProveedor", "IVA ") + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
     tr1 += "        <td>" + QApplication::translate("FacturaProveedor", "Total ") + "</td>\n";
-    tr2 += "        <td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
+    tr2 += "        <td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 

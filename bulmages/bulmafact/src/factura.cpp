@@ -166,7 +166,7 @@ void Factura::imprimirFactura() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -177,7 +177,7 @@ void Factura::imprimirFactura() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);
@@ -226,15 +226,15 @@ void Factura::imprimirFactura() {
 
     for(int i=0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
-        Fixed base = Fixed(linea->DBvalue("cantlfactura").ascii()) * Fixed(linea->DBvalue("pvplfactura").ascii());
-        basesimp[linea->DBvalue("ivalfactura")] = basesimp[linea->DBvalue("ivalfactura")] + base - base * Fixed(linea->DBvalue("descuentolfactura").ascii()) / 100;
+        Fixed base = Fixed(linea->DBvalue("cantlfactura").toAscii().constData()) * Fixed(linea->DBvalue("pvplfactura").toAscii().constData());
+        basesimp[linea->DBvalue("ivalfactura")] = basesimp[linea->DBvalue("ivalfactura")] + base - base * Fixed(linea->DBvalue("descuentolfactura").toAscii().constData()) / 100;
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + linea->DBvalue("codigocompletoarticulo") + "</td>\n";
         fitxersortidatxt += "        <td>" + linea->DBvalue("desclfactura")+"</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s", linea->DBvalue("cantlfactura").ascii()) + "</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s", linea->DBvalue("pvplfactura").ascii()) + "</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s", linea->DBvalue("descuentolfactura").ascii()) + " %</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s", (base - base * Fixed (linea->DBvalue("descuentolfactura")) / 100).toQString().ascii()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s", linea->DBvalue("cantlfactura").toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s", linea->DBvalue("pvplfactura").toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s", linea->DBvalue("descuentolfactura").toAscii().constData()) + " %</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s", (base - base * Fixed (linea->DBvalue("descuentolfactura")) / 100).toQString().toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 
@@ -263,11 +263,11 @@ void Factura::imprimirFactura() {
         fitxersortidatxt += "</tr>\n";
         for (int i=0; i < listadescuentos->rowCount()-1; ++i) {
 	    linea1 = listadescuentos->lineaat(i);
-            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfactura").ascii());
+            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfactura").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdfactura") + "</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondfactura").ascii()) + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondfactura")) * basei / 100).toQString().ascii()) + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondfactura").toAscii().constData()) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondfactura")) * basei / 100).toQString().toAscii().constData()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -290,7 +290,7 @@ void Factura::imprimirFactura() {
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
         tr1 += "        <td>" + QApplication::translate("Factura", "Base ") + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
@@ -303,10 +303,10 @@ void Factura::imprimirFactura() {
         } // end if
         totiva = totiva + pariva;
         tr1 += "        <td>" + QApplication::translate("Factura", "Iva ") + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
     tr1 += "        <td>" + QApplication::translate("Factura", "Total ") + "</td>\n";
-    tr2 += "        <td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().ascii()) + "</td>\n";
+    tr2 += "        <td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 
@@ -327,9 +327,9 @@ void Factura::calculaypintatotales() {
 
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlfactura").ascii());
-        Fixed pvpund(linea->DBvalue("pvplfactura").ascii());
-        Fixed desc1(linea->DBvalue("descuentolfactura").ascii());
+        Fixed cant(linea->DBvalue("cantlfactura").toAscii().constData());
+        Fixed pvpund(linea->DBvalue("pvplfactura").toAscii().constData());
+        Fixed desc1(linea->DBvalue("descuentolfactura").toAscii().constData());
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         basesimp[linea->DBvalue("ivalfactura")] = basesimp[linea->DBvalue("ivalfactura")] + base;
@@ -347,7 +347,7 @@ void Factura::calculaypintatotales() {
     if (listadescuentos->rowCount()) {
         for (int i = 0; i < listadescuentos->rowCount(); ++i) {
             linea1 = listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporciondfactura").ascii());
+            Fixed propor(linea1->DBvalue("proporciondfactura").toAscii().constData());
             porcentt = porcentt + propor;
         } // end for
     } // end if
@@ -366,7 +366,7 @@ void Factura::calculaypintatotales() {
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().ascii());
+        Fixed piva(it.key().toAscii().constData());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
         } else {

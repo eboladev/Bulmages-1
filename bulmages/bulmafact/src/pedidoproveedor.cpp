@@ -148,12 +148,12 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     /// Copiamos el archivo.
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "pedidoproveedor.rml";
     archivo = "cp " + archivo + " /tmp/pedidoproveedor.rml";
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
     archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     archivo = "cp " + archivo + " /tmp/logo.jpg";
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     QFile file;
     file.setName("/tmp/pedidoproveedor.rml");
@@ -257,7 +257,7 @@ void PedidoProveedor::calculaypintatotales() {
     Fixed porcentt("0.00");
 
     for (int i = 0; i < listadescuentos->rowCount() - 1; i++) {
-        Fixed propor(listadescuentos->DBvalue("proporciondpedidoproveedor", i).ascii());
+        Fixed propor(listadescuentos->DBvalue("proporciondpedidoproveedor", i).toAscii().constData());
         porcentt = porcentt + propor;
     } // end for
 
@@ -275,7 +275,7 @@ void PedidoProveedor::calculaypintatotales() {
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().ascii());
+        Fixed piva(it.key().toAscii().constData());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
         } else {

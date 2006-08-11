@@ -125,7 +125,7 @@ void TrabajadorView::on_mui_guardar_clicked() {
 
     if (m_archivoimagen != "") {
         QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg";
-        system( cadena.ascii());
+        system( cadena.toAscii().constData());
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();

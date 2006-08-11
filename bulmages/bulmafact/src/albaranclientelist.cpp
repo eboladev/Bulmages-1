@@ -140,7 +140,7 @@ void AlbaranClienteList::imprimir() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -151,7 +151,7 @@ void AlbaranClienteList::imprimir() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);

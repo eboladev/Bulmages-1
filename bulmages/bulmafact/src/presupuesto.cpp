@@ -213,7 +213,7 @@ void presupuesto::imprimirPresupuesto() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo
 #ifdef WINDOWS
@@ -224,7 +224,7 @@ void presupuesto::imprimirPresupuesto() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);
@@ -274,16 +274,16 @@ void presupuesto::imprimirPresupuesto() {
     SDBRecord *linea;
     for (int i = 0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
-        Fixed base = Fixed(linea->DBvalue("cantlpresupuesto").ascii()) * Fixed(linea->DBvalue("pvplpresupuesto").ascii());
-        basesimp[linea->DBvalue("ivalpresupuesto")] = basesimp[linea->DBvalue("ivalpresupuesto")] + base - base * Fixed(linea->DBvalue("descuentolpresupuesto").ascii()) / 100;
+        Fixed base = Fixed(linea->DBvalue("cantlpresupuesto").toAscii().constData()) * Fixed(linea->DBvalue("pvplpresupuesto").toAscii().constData());
+        basesimp[linea->DBvalue("ivalpresupuesto")] = basesimp[linea->DBvalue("ivalpresupuesto")] + base - base * Fixed(linea->DBvalue("descuentolpresupuesto").toAscii().constData()) / 100;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
         fitxersortidatxt += "	<td>" + XMLProtect(linea->DBvalue("desclpresupuesto")) + "</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("cantlpresupuesto")).ascii()) + "</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("pvplpresupuesto")).ascii()) + "</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("descuentolpresupuesto")).ascii()) + " %</td>\n";
-        fitxersortidatxt += "	<td>" + l.sprintf("%s",(base - base * Fixed (linea->DBvalue("descuentolpresupuesto")) / 100).toQString().ascii()) + "</td>\n";
+        fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("cantlpresupuesto")).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("pvplpresupuesto")).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "	<td>" + l.sprintf("%s",XMLProtect(linea->DBvalue("descuentolpresupuesto")).toAscii().constData()) + " %</td>\n";
+        fitxersortidatxt += "	<td>" + l.sprintf("%s",(base - base * Fixed (linea->DBvalue("descuentolpresupuesto")) / 100).toQString().toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 
@@ -312,11 +312,11 @@ void presupuesto::imprimirPresupuesto() {
         fitxersortidatxt += "</tr>\n";
         for (int i = 0; i < listadescuentos->rowCount()-1; ++i) {
             linea1 = listadescuentos->lineaat(i);
-            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpresupuesto").ascii());
+            porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpresupuesto").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + XMLProtect(linea1->DBvalue("conceptdpresupuesto")) + "</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondpresupuesto").ascii()) + " %</td>\n";
-            fitxersortidatxt += "        <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondpresupuesto")) * basei / 100).toQString().ascii()) + "</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("%s", linea1->DBvalue("proporciondpresupuesto").toAscii().constData()) + " %</td>\n";
+            fitxersortidatxt += "        <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporciondpresupuesto")) * basei / 100).toQString().toAscii().constData()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -339,7 +339,7 @@ void presupuesto::imprimirPresupuesto() {
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
         tr1 += "        <td>" + QApplication::translate("presupuesto", "Base ") + XMLProtect(it.key()) + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().ascii()) + "</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
@@ -352,10 +352,10 @@ void presupuesto::imprimirPresupuesto() {
         } // end if
         totiva = totiva + pariva;
         tr1 += "        <td>" + QApplication::translate("presupuesto", "I.V.A. ") + XMLProtect(it.key()) + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().ascii()) + "</td>\n";
+        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
     tr1 += "        <td>" + QApplication::translate("presupuesto", "Total ") + "</td>\n";
-    tr2 += "        <td>" + l.sprintf("%s", (totiva+totbaseimp).toQString().ascii()) + "</td>\n";
+    tr2 += "        <td>" + l.sprintf("%s", (totiva+totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 
@@ -391,9 +391,9 @@ void presupuesto::calculaypintatotales() {
     QString l;
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlpresupuesto").ascii());
-        Fixed pvpund(linea->DBvalue("pvplpresupuesto").ascii());
-        Fixed desc1(linea->DBvalue("descuentolpresupuesto").ascii());
+        Fixed cant(linea->DBvalue("cantlpresupuesto").toAscii().constData());
+        Fixed pvpund(linea->DBvalue("pvplpresupuesto").toAscii().constData());
+        Fixed desc1(linea->DBvalue("descuentolpresupuesto").toAscii().constData());
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
         Fixed val("0.00");
@@ -414,7 +414,7 @@ void presupuesto::calculaypintatotales() {
     if (listadescuentos->rowCount()) {
         for (int i = 0; i < listadescuentos->rowCount(); ++i) {
             linea1 = listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporciondpresupuesto").ascii());
+            Fixed propor(linea1->DBvalue("proporciondpresupuesto").toAscii().constData());
             porcentt = porcentt + propor;
         } // end for
     } // end if
@@ -433,7 +433,7 @@ void presupuesto::calculaypintatotales() {
     Fixed totiva("0.00");
     Fixed pariva("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().ascii());
+        Fixed piva(it.key().toAscii().constData());
         if (porcentt > Fixed("0.00")) {
             pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
         } else {

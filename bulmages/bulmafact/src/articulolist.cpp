@@ -211,7 +211,7 @@ void ArticuloList::Imprimir() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -222,7 +222,7 @@ void ArticuloList::Imprimir() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
     QFile file;
     file.setName(archivod);
     file.open(QIODevice::ReadOnly);
@@ -258,7 +258,7 @@ void ArticuloList::s_imprimir1() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -269,7 +269,7 @@ void ArticuloList::s_imprimir1() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system (archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);
