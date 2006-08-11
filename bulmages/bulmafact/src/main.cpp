@@ -44,6 +44,7 @@ bulmafact *bges;
 QTranslator *traductor;
 
 int main(int argc, char ** argv) {
+    _depura("MAIN: Iniciando programa", 0);
     /// Leemos la configuracion que luego podremos usar siempre.
     confpr = new configuracion();
     /// Preparamos el sistema de plugins.
@@ -149,7 +150,6 @@ int main(int argc, char ** argv) {
     g_plugins->lanza("entryPoint", bges);
 
     g_main = bges;
-    theApp->setMainWidget(bges);
 
     theApp->exec();
 
