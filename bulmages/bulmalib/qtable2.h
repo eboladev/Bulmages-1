@@ -32,7 +32,7 @@ public:
     int modo;
 
 public:
-    QTableWidgetItem2(int type = Type, int mode = 0): QTableWidgetItem(type) {
+    QTableWidgetItem2(int type = Type, int mode = 0) : QTableWidgetItem(type) {
         modo = mode;
     }
     QTableWidgetItem2(const QString & text, int type = Type, int mode = 0) : QTableWidgetItem(text, type) {

@@ -18,14 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/**
-* Fichero de definicion de funciones auxiliares que no es preciso encapsular
-* En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
-* utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
-* Dichas funciones normalmente son de uso general, por lo que es normal ver este
-* archivo incluido en la practica totalidad de los demas ficheros.
-**/
-
+/// Fichero de definicion de funciones auxiliares que no es preciso encapsular
+/// En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
+/// utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
+/// Dichas funciones normalmente son de uso general, por lo que es normal ver este
+/// archivo incluido en la practica totalidad de los demas ficheros.
 #ifndef FUNCAUX_H
 #define FUNCAUX_H
 
@@ -41,8 +38,6 @@ using std::string;
 #include <QString>
 #include <math.h>
 
-
-
 #define __DEBUG__
 
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al
@@ -56,9 +51,8 @@ using std::string;
 /// Con BulmaFact ya no es asi
 extern QMainWindow *g_main;
 
-
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
-string extiendecodigo (string , unsigned int );
+string extiendecodigo (string, unsigned int);
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
 QString extiendecodigo (QString, unsigned int);
 /// Redondeo de numeros en punto flotante.
@@ -68,27 +62,27 @@ int roundI(double);
 /// Procesa el string pasado como parametro y devuelve una estructura del tipo QDate.
 QDate normalizafecha(QString);
 /// Proteje cadenas de texto pasandoles una sustitucion de codigos especiales de XML.
-QString XMLProtect( const QString& );
+QString XMLProtect(const QString&);
 /// Ajusta un codigo de cuenta a una longitud determinada pasada como parametro.
-QString ajustacodigo( QString, unsigned int);
+QString ajustacodigo(QString, unsigned int);
 void reemplazaarchivo(QString, QString, QString, QString);
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto(QString texto);
 
+
 template <typename T>
 std::string Ttos(T arg) {
-   std::ostringstream buffer;
-   buffer << arg; /// send to the ostringstream.
-   return buffer.str(); /// capture the string.
+    std::ostringstream buffer;
+    buffer << arg; /// send to the ostringstream.
+    return buffer.str(); /// capture the string.
 }
 
 void _depura(QString cad, int nivel = 0, QString param = "");
-
 void mensajeInfo(QString cad);
 
-/// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo
+/// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
 /// de la invocacion de trml2pdf.
-/// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio
+/// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.
 /// especificado por CONF_DIR_USER.
 void invocaPDF(const QString arch);
 void generaPDF(const QString arch);

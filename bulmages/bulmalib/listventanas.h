@@ -82,7 +82,7 @@ public:
     ~listventanas();
 
 public:
-    int meteWindow(QString, QObject *, bool compdup=TRUE);
+    int meteWindow(QString, QObject *, bool compdup = TRUE);
     void sacaWindow(QObject *);
     void cambiaVisible();
     void vaciar();
@@ -90,7 +90,6 @@ public:
 public slots:
     virtual void dclicked();
     virtual void clicked();
-
 };
 
 #endif

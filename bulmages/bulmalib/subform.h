@@ -30,6 +30,7 @@
 
 
 class SHeader {
+
 public:
     enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4};
 

@@ -34,18 +34,19 @@
 /// SubForm3, constructor de la clase base para subformularios.
 class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
+
 private:
-    QString m_tablename;			/// Nombre de la tabla en la BD
+    QString m_tablename;			/// Nombre de la tabla en la BD.
 
 protected:
-    QList<SHeader *> m_lcabecera;		/// Lista de encabezados del listado. Coord x de la tabla
-    QList<SDBRecord *> m_lista;		/// Filas y contenido. Coord y de la tabla
-    QList<SDBRecord *> m_listaborrar;		/// Lista de subformularios marcados para ser borrados
-    postgresiface2 *m_companyact;		/// Clase padre y acceso a base de datos
-    QString m_fileconfig;			/// Fichero de configuracion del subformulario
-    QString m_campoid;			/// Campo Identificador de la tabla en la BD
-    bool m_insercion;				/// Indica si se pueden insertar nuevas filas o no
-    bool m_primero;				/// Indica si ya se ha cargado la configuracion o no
+    QList<SHeader *> m_lcabecera;		/// Lista de encabezados del listado. Coord x de la tabla.
+    QList<SDBRecord *> m_lista;		/// Filas y contenido. Coord y de la tabla.
+    QList<SDBRecord *> m_listaborrar;	/// Lista de subformularios marcados para ser borrados.
+    postgresiface2 *m_companyact;		/// Clase padre y acceso a base de datos.
+    QString m_fileconfig;			/// Fichero de configuracion del subformulario.
+    QString m_campoid;			/// Campo Identificador de la tabla en la BD.
+    bool m_insercion;				/// Indica si se pueden insertar nuevas filas o no.
+    bool m_primero;				/// Indica si ya se ha cargado la configuracion o no.
 
 protected:
     void guardaconfig();
@@ -59,7 +60,7 @@ public:
     SubForm3(QWidget *parent);
     virtual ~SubForm3();
     SDBCampo * item(int row, int col) {
-        return (SDBCampo *) mui_list->item(row,col);
+        return (SDBCampo *) mui_list->item(row, col);
     };
     int columnCount() {
         return mui_list->columnCount();
@@ -71,7 +72,7 @@ public:
         return mui_list->columnWidth(i);
     };
     void setColumnWidth(int i, int j) {
-        mui_list->setColumnWidth(i,j);
+        mui_list->setColumnWidth(i, j);
     };
     void hideColumn(int i) {
         mui_list->hideColumn(i);

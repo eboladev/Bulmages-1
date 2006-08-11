@@ -21,7 +21,7 @@
 #ifndef LOGPASS_H
 #define LOGPASS_H
 
-#include <qdialog.h>
+#include <QDialog>
 
 #include "ui_logpassbase.h"
 #include "postgresiface2.h"

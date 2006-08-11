@@ -67,7 +67,7 @@ private:
     QWidget *optionsWidget;
     QPushButton *optionsButton;
 
-    // Pages...
+    /// Pages...
     Q3VBox *generalOptions;
     Q3VBox *nwdOptions;
 
@@ -84,12 +84,9 @@ private:
 
     bool nonWorkDays[8];
 	 
-	 
-	 // TBR 12/06/03
-	// bool calendario::eventFilter( QObject *, QEvent * );
+    /// TBR 12/06/03
+    // bool calendario::eventFilter(QObject *, QEvent *);
 };
-
-
 
 #endif
 
