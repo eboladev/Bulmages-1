@@ -19,8 +19,9 @@
  ***************************************************************************/
 
 #include <QApplication>
-#include <qtranslator.h>
-#include "qtextcodec.h"
+#include <QTranslator>
+#include <QTextCodec>
+#include <QLocale>
 
 #include "configuracion.h"
 #include "plugins.h"
@@ -51,14 +52,24 @@ int main(int argc, char ** argv) {
     theApp = new QApplication(argc, argv);
 
     /// Definimos la codificacion a Unicode.
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("utf8"));
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
 
     theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii().constData(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii().constData())));
 
     /// Cargamos el sistema de traducciones.
     traductor = new QTranslator(0);
+
+    /// La funcion QLocale::system().name() devuelve el codigo en formato
+    /// 'es_ES' de idioma y pais.
+    /// El orden de busqueda del archivo de traduccion es:
+    /// 1) bulmalib_es_ES.qm
+    /// 2) bulmalib_es_ES
+    /// 3) bulmalib_es.qm
+    /// 4) bulmalib_es
+    /// 5) bulmalib_.qm
+    /// 6) bulmalib_
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmalib_") + QTextCodec::locale(),
+        traductor->load(QString("bulmalib_") + QLocale::system().name(),
                          confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
@@ -68,7 +79,7 @@ int main(int argc, char ** argv) {
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmafact_") + QTextCodec::locale(),
+        traductor->load(QString("bulmafact_") + QLocale::system().name(),
                          confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
@@ -113,7 +124,7 @@ int main(int argc, char ** argv) {
     /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmalib_") + QTextCodec::locale(),
+        traductor->load(QString("bulmalib_") + QLocale::system().name(),
                          confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
@@ -123,7 +134,7 @@ int main(int argc, char ** argv) {
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmafact_") + QTextCodec::locale(),
+        traductor->load(QString("bulmafact_") + QLocale::system().name(),
                          confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
