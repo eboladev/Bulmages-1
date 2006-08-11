@@ -118,7 +118,7 @@ int empresa::inicializa1() {
     balance = new balanceview(this, 0, "balance");
     m_pWorkspace->addWindow(balance);
 
-    balance1 = new balance1view(this, 0, "balance1");
+    balance1 = new BalanceTreeView(this, 0, "BalanceTree");
     m_pWorkspace->addWindow(balance1);
 
     introapunts2 = new Asiento1View(this, 0, "introapunts2");

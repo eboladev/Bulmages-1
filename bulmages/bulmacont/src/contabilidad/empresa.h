@@ -37,7 +37,7 @@
 
 class selectccosteview;
 class selectcanalview;
-class balance1view;
+class BalanceTreeView;
 class Asiento1View;
 class DiarioView;
 class balanceview;
@@ -64,7 +64,7 @@ private:
     QString contrasenya;
     QWorkspace2 *m_pWorkspace;
 
-    balance1view *balance1;
+    BalanceTreeView *balance1;
     DiarioView *diario;
     extractoview1 *extracto;
     balanceview *balance;
@@ -100,7 +100,7 @@ public:
     DiarioView *diarioempresa() {
         return diario;
     }
-    balance1view *balance1empresa() {
+    BalanceTreeView *balance1empresa() {
         return balance1;
     }
 

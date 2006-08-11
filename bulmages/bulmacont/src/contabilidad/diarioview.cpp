@@ -47,9 +47,9 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) :
     // Como el año inicial.
     char cadena[10];
     sprintf(cadena,"%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
-    m_fechainicial1->setText(cadena);
+    mui_fechainicial->setText(cadena);
     sprintf(cadena,"%2.2d/%2.2d/%4.4d",31, 12, QDate::currentDate().year());
-    m_fechafinal1->setText(cadena);
+    mui_fechafinal->setText(cadena);
     m_companyact->meteWindow(caption(), this);
     _depura("END DiarioView::DiarioView\n", 0);
 }
@@ -77,7 +77,7 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
     fecha1aux.setYMD(ano,mes,dia);
     QString cadena2;
     cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
-    m_fechainicial1->setText(cadena2);
+    mui_fechainicial->setText(cadena2);
 
     s1= ffinal;
     s2=s1.mid(0,2);
@@ -88,7 +88,7 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int ) {
     ano = atoi(s2.ascii());
     fecha1aux.setYMD(ano,mes,dia);
     cadena2.sprintf("%2.2d/%2.2d/%4.4d",fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
-    m_fechafinal1->setText(cadena2);
+    mui_fechafinal->setText(cadena2);
 }
 
 
@@ -110,8 +110,8 @@ void DiarioView::boton_guardar() {
         // Si se ha proporcionado un nombre de archivo valido
         // invocamos la clase diarioprint y hacemos que guarde el archivo.
         diarioprint diariop(m_companyact);
-        QString finicial = m_fechainicial1->text();
-        QString ffinal = m_fechafinal1->text();
+        QString finicial = mui_fechainicial->text();
+        QString ffinal = mui_fechafinal->text();
         diariop.inicializa(m_companyact);
         diariop.inicializa1((char *) finicial.ascii(), (char *)ffinal.ascii());
         diariop.inicializa2((char *) fn.ascii());
@@ -131,11 +131,31 @@ void DiarioView::accept() {
 
 void DiarioView::presentar() {
     _depura("DiarioView::presentar",0);
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta");
+    QString query = "SELECT * FROM borrador NATURAL LEFT JOIN cuenta ";
+
+    QString cad = "";
+    QString cadwhere=" WHERE ";
+    QString cadand = "";
+
+    if (mui_fechainicial->text() != "") {
+	cad += cadwhere+ cadand + "borrador.fecha >= '"+mui_fechainicial->text()+"'";
+	cadwhere = "";
+	cadand = " AND ";
+    } // end if
+
+    if (mui_fechafinal->text() != "") {
+	cad += cadwhere+ cadand + "borrador.fecha <= '"+mui_fechafinal->text()+"'";
+	cadwhere = "";
+	cadand = " AND ";
+    } // end if
+
+
+
+    cursor2 * cur= m_companyact->cargacursor(query + cad);
     mui_list->cargar(cur);
     delete cur;
 
-    cur = m_companyact->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador");
+    cur = m_companyact->cargacursor("SELECT sum(debe) as totaldebe, sum(haber) as totalhaber from borrador " + cad);
     if(! cur->eof() ) {
         totaldebe->setText(cur->valor("totaldebe"));
         totalhaber->setText(cur->valor("totalhaber"));

@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -75,45 +75,11 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>2</number>
         </property>
-        <item>
-         <widget class="QToolButton" name="mui_filtrar_4" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Imprimir albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="checkable" >
-           <bool>false</bool>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="minimumSize" >
@@ -275,10 +241,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>2</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -296,7 +262,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechainicial1" >
+         <widget class="BusquedaFecha" name="mui_fechainicial" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>5</hsizetype>
@@ -315,7 +281,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechafinal1" >
+         <widget class="BusquedaFecha" name="mui_fechafinal" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>5</hsizetype>
@@ -1082,13 +1048,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>DiarioSubForm</class>
-   <extends>QFrame</extends>
-   <header>diariosubform.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1099,6 +1058,13 @@
    <class>BusquedaCuenta</class>
    <extends></extends>
    <header>busquedacuenta.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>DiarioSubForm</class>
+   <extends>QFrame</extends>
+   <header>diariosubform.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

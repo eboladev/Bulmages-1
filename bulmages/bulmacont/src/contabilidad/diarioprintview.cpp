@@ -51,8 +51,8 @@ QString DiarioPrintView::montaQuery() {
     QString nomcuenta;
     QString cadaux;
 
-    QString finicial = diario->m_fechainicial1->text();
-    QString ffinal = diario->m_fechafinal1->text();
+    QString finicial = diario->mui_fechainicial->text();
+    QString ffinal = diario->mui_fechafinal->text();
     QString cad;
 
     // Consideraciones para centros de coste y canales
@@ -122,8 +122,8 @@ void DiarioPrintView::presentar(char * tipus) {
     htmlapren=!strcmp(tipus,"htmlapren");
 
     // Cogemos los valores del formulario.
-    QString finicial = diario->m_fechainicial1->text();
-    QString ffinal = diario->m_fechafinal1->text();
+    QString finicial = diario->mui_fechainicial->text();
+    QString ffinal = diario->mui_fechafinal->text();
 
     if (txt | html) {
         ofstream fitxersortidatxt("diario.txt");     // creem els fitxers de sordida

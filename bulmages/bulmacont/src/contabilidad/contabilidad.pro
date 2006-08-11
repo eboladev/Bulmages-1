@@ -234,7 +234,8 @@ HEADERS += splashscreen.h \
 	   diariosubform.h \
 	   extractosubform.h \
 	   asientolistsubform.h \
-	   balancesubform.h
+	   balancesubform.h \
+	   busquedaccoste.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -292,7 +293,8 @@ SOURCES += main.cpp \
 	   diariosubform.cpp \
 	   extractosubform.cpp \
 	   asientolistsubform.cpp \
-	   balancesubform.cpp
+	   balancesubform.cpp \
+	   busquedaccoste.cpp
 	 
 
 unix{
