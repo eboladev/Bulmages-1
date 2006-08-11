@@ -37,25 +37,24 @@
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
 
-
 using namespace std;
 
 #include "funcaux.h"
 
 
-PagoView::PagoView( company *comp , QWidget *parent, const char *name)
-        : QWidget (parent), Pago(comp), dialogChanges(this) {
+PagoView::PagoView(company *comp, QWidget *parent, const char *name)
+        : QWidget(parent), Pago(comp), dialogChanges(this) {
     try {
-	setAttribute(Qt::WA_DeleteOnClose);
-	setupUi(this);
-	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	mui_proveedor->setcompany(comp);
-	mui_refpago->setcompany(comp);
-	dialogChanges_cargaInicial();
-	companyact->meteWindow(caption(), this, FALSE);
+        setAttribute(Qt::WA_DeleteOnClose);
+        setupUi(this);
+        /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+        mui_proveedor->setcompany(comp);
+        mui_refpago->setcompany(comp);
+        dialogChanges_cargaInicial();
+        companyact->meteWindow(caption(), this, FALSE);
     } catch(...) {
-	mensajeInfo(tr("Error al crear el pago"));
-    } // end catch
+        mensajeInfo(tr("Error al crear el pago"));
+    } // end try
     _depura("Fin de la inicializacion de PagoView\n", 0);
 }
 
@@ -68,18 +67,19 @@ PagoView::~PagoView() {
 
 
 void PagoView::on_mui_borrar_clicked() {
-    fprintf(stderr, "Iniciamos el boton_borrar\n");
+    _depura("PagoView::on_mui_borrar_clicked", 0);
     if (QMessageBox::warning(this,
                              tr("BulmaFact - Presupuestos"),
                              tr("Desea borrar este presupuesto?"),
                              tr("&Si"), tr("&No")) == 0) {
         borraPago();
     } // end if
+    _depura("END PagoView::on_mui_borrar_clicked", 0);
 }
 
 
 void PagoView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
+    _depura("PagoView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar pago"),
@@ -90,5 +90,6 @@ void PagoView::closeEvent(QCloseEvent *e) {
         if (val == 2)
             e->ignore();
     } // end if
+    _depura("END PagoView::closeEvent", 0);
 }
 

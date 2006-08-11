@@ -42,23 +42,23 @@
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), PedidoCliente (comp), dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose), PedidoCliente(comp), dialogChanges(this) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
     try {
-	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	setupUi(this);
-	subform3->setcompany(comp);
-	m_cliente->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_almacen->setcompany(comp);
-	m_trabajador->setcompany(comp);
-	m_refpedidocliente->setcompany(comp);
-	setListLinPedidoCliente(subform3);
-	setListDescuentoPedidoCliente(m_descuentos);
-	comp->meteWindow(caption(), this, FALSE);
+        /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+        setupUi(this);
+        subform3->setcompany(comp);
+        m_cliente->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_almacen->setcompany(comp);
+        m_trabajador->setcompany(comp);
+        m_refpedidocliente->setcompany(comp);
+        setListLinPedidoCliente(subform3);
+        setListDescuentoPedidoCliente(m_descuentos);
+        comp->meteWindow(caption(), this, FALSE);
     } catch(...) {
-	mensajeInfo(tr("Error al crear el pedido cliente"));
+        mensajeInfo(tr("Error al crear el pedido cliente"));
     } // end try
     _depura("END PedidoClienteView::PedidoClienteView", 0);
 }
@@ -71,10 +71,10 @@ PedidoClienteView::~PedidoClienteView() {
 
 
 void PedidoClienteView::inicializar() {
-	_depura("PedidoClienteView::inicializar", 0);
-	subform3->inicializar();
-	m_descuentos->inicializar();
-	_depura("END PedidoClienteView::inicializar", 0);
+    _depura("PedidoClienteView::inicializar", 0);
+    subform3->inicializar();
+    m_descuentos->inicializar();
+    _depura("END PedidoClienteView::inicializar", 0);
 }
 
 void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
@@ -86,16 +86,16 @@ void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed d
 
 
 void PedidoClienteView::on_mui_verpresupuesto_clicked() {
-    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto='" + DBvalue("refpedidocliente") + "'";
+    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
             PresupuestoView *bud = companyact->newBudget();
             companyact->m_pWorkspace->addWindow(bud);
             if (bud->cargar(cur->valor("idpresupuesto"))) {
-		delete bud;
-		return;
-	    } // end if
+                delete bud;
+                return;
+            } // end if
             bud->show();
             cur->siguienteregistro();
         } // end while
@@ -113,7 +113,7 @@ void PedidoClienteView::generarAlbaran() {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='" + DBvalue("refpedidocliente") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, QApplication::translate("PedidoClienteView", "Edicion de Albaranes de Clientes"));
+        AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, QApplication::translate("PedidoClienteView", "Edicion de albaranes de clientes"));
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaran"));
         bud->show();
@@ -132,7 +132,7 @@ void PedidoClienteView::generarAlbaran() {
         return;
 
     /// Creamos el albaran.
-    AlbaranClienteView *bud =companyact->newAlbaranClienteView();
+    AlbaranClienteView *bud = companyact->newAlbaranClienteView();
     companyact->m_pWorkspace->addWindow(bud);
     bud->cargar("0");
 
@@ -150,7 +150,7 @@ void PedidoClienteView::generarAlbaran() {
     SDBRecord *linea, *linea1;
     for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
-        if (linea->DBvalue( "idarticulo") != "") {
+        if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             linea1->setDBvalue("desclalbaran", linea->DBvalue("desclpedidocliente"));
             linea1->setDBvalue("cantlalbaran", linea->DBvalue("cantlpedidocliente"));
@@ -191,12 +191,13 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
 
 int PedidoClienteView::cargar(QString id) {
     try {
-	if (PedidoCliente::cargar(id)) throw -1;
-	setCaption(tr("Pedido cliente ") + DBvalue("refpedidocliente"));
-	companyact->meteWindow(caption(), this);
-	dialogChanges_cargaInicial();
+        if (PedidoCliente::cargar(id))
+            throw -1;
+        setWindowTitle(tr("Pedido de cliente") + " " + DBvalue("refpedidocliente"));
+        companyact->meteWindow(caption(), this);
+        dialogChanges_cargaInicial();
     } catch(...) {
-	return -1;
+        return -1;
     } // end try
     return 0;
 }

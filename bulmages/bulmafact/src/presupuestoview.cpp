@@ -84,12 +84,12 @@ PresupuestoView::PresupuestoView(company *comp , QWidget *parent, const char *na
         comp->meteWindow(caption(), this, FALSE);
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
-
     } catch(...) {
         mensajeInfo(tr("Error al crear el presupuesto"));
     } // end try
     _depura("Fin de la inicializacion de PresupuestoView\n", 0);
 }
+
 
 /// Este metodo es llamado cuando hacemos un nuevo registro, pero no hay carga desde la base de datos.
 void PresupuestoView::inicializar() {
@@ -98,6 +98,7 @@ void PresupuestoView::inicializar() {
     m_descuentos->inicializar();
     _depura("END PresupuestoView::inicializar", 0);
 }
+
 
 void PresupuestoView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
@@ -153,9 +154,9 @@ void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed des
 
 /// Se encarga de generar un pedido a partir del presupuesto.
 void PresupuestoView::generarPedidoCliente() {
-    _depura("PresupuestoView::generarPedidoCliente",0);
+    _depura("PresupuestoView::generarPedidoCliente", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
-    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente='" + DBvalue("refpresupuesto") + "'";
+    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refpresupuesto") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         PedidoClienteView *bud = companyact->newPedidoClienteView();
@@ -173,7 +174,7 @@ void PresupuestoView::generarPedidoCliente() {
                               tr("Pedido de cliente inexistente"),
                               tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
                               tr("&Si"), tr("&No"),
-                              QString::null, 0, 1 ))
+                              QString::null, 0, 1))
         return;
 
     /// Creamos el pedido.
@@ -236,7 +237,7 @@ int PresupuestoView::cargar(QString id) {
     try {
         if (presupuesto::cargar(id))
             throw -1;
-        setCaption("presupuesto " + DBvalue("refpresupuesto"));
+        setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto"));
         companyact->meteWindow(caption(), this);
         dialogChanges_cargaInicial();
         _depura("END PresupuestoView::cargar", 0);

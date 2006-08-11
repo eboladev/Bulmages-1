@@ -38,7 +38,7 @@ using namespace std;
 #include "funcaux.h"
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), FacturaProveedor (comp), dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose), FacturaProveedor(comp), dialogChanges(this) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -74,6 +74,7 @@ FacturaProveedorView::~FacturaProveedorView() {
 
 }
 
+
 /// inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
 /// Sirve para inicializar los componenetes sin necesidad de query alguno
 void FacturaProveedorView::inicializar() {
@@ -84,7 +85,7 @@ void FacturaProveedorView::inicializar() {
 }
 
 
-void   FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
+void FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalfacturap->setText((iva + base).toQString());
@@ -125,10 +126,10 @@ int FacturaProveedorView::cargar(QString id) {
     _depura("FacturaProveedorView::cargar", 0);
     try {
         FacturaProveedor::cargar(id);
-        setCaption(tr("Factura de proveedor") + " " + DBvalue("reffacturap") + "-" + DBvalue("numfacturap"));
+        setWindowTitle(tr("Factura de proveedor") + " " + DBvalue("reffacturap") + " - " + DBvalue("numfacturap"));
         companyact->meteWindow(caption(), this);
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         return -1;
     } // end try
     _depura("END FacturaProveedorView::cargar");
@@ -149,7 +150,7 @@ int FacturaProveedorView::guardar() {
         setprocesadafacturap(m_procesadafacturap->isChecked() ? "TRUE" : "FALSE");
         FacturaProveedor::guardar();
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al guardar la factura proveedor"));
         return -1;
     } // end try

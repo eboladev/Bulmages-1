@@ -40,20 +40,20 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Q
     m_companyact = comp;
     mui_list->setcompany(comp);
     hideBusqueda();
-    m_modo=editmode;
+    m_modo = editmode;
     m_idprovider = "";
     m_cifprovider = "";
     m_nomprovider = "";
     if (m_modo == EditMode) {
         m_companyact->meteWindow(caption(), this);
     } else {
-	setCaption(tr("Selector de Proveedores"));
-	mui_editar->setHidden(TRUE);
-	mui_crear->setHidden(TRUE);
-	mui_borrar->setHidden(TRUE);
-	mui_exportar->setHidden(TRUE);
-	mui_importar->setHidden(TRUE);
-	mui_imprimir->setHidden(TRUE);
+        setWindowTitle(tr("Selector de proveedores"));
+        mui_editar->setHidden(TRUE);
+        mui_crear->setHidden(TRUE);
+        mui_borrar->setHidden(TRUE);
+        mui_exportar->setHidden(TRUE);
+        mui_importar->setHidden(TRUE);
+        mui_imprimir->setHidden(TRUE);
     } // end if
     presenta();
     _depura("END ProveedorList::ProveedorList", 0);
@@ -67,17 +67,18 @@ ProveedorList::~ProveedorList() {
 
 
 void ProveedorList::presenta() {
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%" + mui_filtro->text() + "%'");
+    cursor2 * cur = m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%" + mui_filtro->text() + "%'");
     mui_list->cargar(cur);
     delete cur;
 }
 
 
 void ProveedorList::on_mui_crear_clicked() {
-    fprintf(stderr, "Iniciamos el boton_crear\n");
-    ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de Proveedores"));
+    _depura("ProveedorList::on_mui_crear_clicked", 0);
+    ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de proveedores"));
     m_companyact->m_pWorkspace->addWindow(prov);
     prov->show();
+    _depura("END ProveedorList::on_mui_crear_clicked", 0);
 }
 
 
@@ -94,7 +95,7 @@ void ProveedorList::editar(int row) {
     if (m_modo == 0) {
         ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de proveedores"));
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
- 	    delete prov;
+            delete prov;
             return;
         }
         m_companyact->m_pWorkspace->addWindow(prov);
@@ -121,12 +122,12 @@ void ProveedorList::on_mui_editar_clicked() {
 void ProveedorList::on_mui_borrar_clicked() {
     _depura("ProveedorList::on_mui_borrar_clicked", 0);
     try {
-	QString idprov = mui_list->DBvalue(QString("idproveedor"));
-	ProveedorView *prov = m_companyact->newProveedorView();
-	prov->cargar(idprov);
-	prov->on_mui_borrar_clicked();
-	delete prov;
-	presenta();
+        QString idprov = mui_list->DBvalue(QString("idproveedor"));
+        ProveedorView *prov = m_companyact->newProveedorView();
+        prov->cargar(idprov);
+        prov->on_mui_borrar_clicked();
+        delete prov;
+        presenta();
     } catch (...) {
         mensajeInfo(tr("Error al borrar el proveedor"));
     } // end try
@@ -161,7 +162,7 @@ void ProveedorList::on_mui_imprimir_clicked() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);
@@ -181,7 +182,7 @@ void ProveedorList::on_mui_imprimir_clicked() {
         QTextStream stream(&file);
         stream << buff;
         file.close();
-    }
+    } // end if
 
     invocaPDF("proveedores");
 }

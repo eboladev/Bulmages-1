@@ -51,20 +51,20 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::W
     if (m_modo == EditMode) {
         m_companyact->meteWindow(caption(), this);
     } else {
-	setCaption(tr("Selector de Clientes"));
-	mui_editar->setHidden(TRUE);
-	mui_crear->setHidden(TRUE);
-	mui_borrar->setHidden(TRUE);
-	mui_exportar->setHidden(TRUE);
-	mui_importar->setHidden(TRUE);
-	mui_imprimir->setHidden(TRUE);
+        setWindowTitle(tr("Selector de clientes"));
+        mui_editar->setHidden(TRUE);
+        mui_crear->setHidden(TRUE);
+        mui_borrar->setHidden(TRUE);
+        mui_exportar->setHidden(TRUE);
+        mui_importar->setHidden(TRUE);
+        mui_imprimir->setHidden(TRUE);
     } // end if
     _depura("END ClientsList::ClientsList", 0);
 }
 
 
 ClientsList::~ClientsList() {
-    if (m_modo==EditMode)
+    if (m_modo == EditMode)
         m_companyact->sacaWindow(this);
 }
 
@@ -73,7 +73,7 @@ ClientsList::~ClientsList() {
 /// Hacemos la consulta a la base de datos y presentamos el listado.
 void ClientsList::presenta() {
     _depura("ClientsList::presenta", 0);
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
+    cursor2 * cur = m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
     mui_list->cargar(cur);
     delete cur;
     _depura("END ClientsList::presenta", 0);
@@ -161,8 +161,8 @@ void ClientsList::on_mui_imprimir_clicked() {
 }
 
 void ClientsList::on_mui_informeclientes_clicked() {
-	InformeClientes info(m_companyact);
-	info.generarInforme();
+    InformeClientes info(m_companyact);
+    info.generarInforme();
 }
 
 
@@ -172,9 +172,9 @@ void ClientsList::on_mui_borrar_clicked() {
         QString idcliente = mui_list->DBvalue("idcliente");
         ClienteView *cli = m_companyact->newClienteView();
         if (cli->cargar(idcliente) ) {
-		delete cli;
-		throw -1;
-	} // end if
+            delete cli;
+            throw -1;
+        } // end if
         cli->on_mui_borrar_clicked();
         delete cli;
         presenta();

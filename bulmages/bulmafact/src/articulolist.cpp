@@ -51,13 +51,13 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     if (m_modo == EditMode) {
         comp->meteWindow(caption(), this);
     } else {
-	setCaption(tr("Selector de Artículos"));
-	mui_editar->setHidden(TRUE);
-	mui_crear->setHidden(TRUE);
-	mui_borrar->setHidden(TRUE);
-	mui_exportar->setHidden(TRUE);
-	mui_importar->setHidden(TRUE);
-	mui_imprimir->setHidden(TRUE);
+        setWindowTitle(tr("Selector de articulos"));
+        mui_editar->setHidden(TRUE);
+        mui_crear->setHidden(TRUE);
+        mui_borrar->setHidden(TRUE);
+        mui_exportar->setHidden(TRUE);
+        mui_importar->setHidden(TRUE);
+        mui_imprimir->setHidden(TRUE);
     } // end if
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
@@ -83,7 +83,7 @@ void ArticuloList::editArticle(int row) {
         m_companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
         if (art->cargar(mdb_idarticulo)) {
-	    delete art;
+            delete art;
             return;
         } // end if
         art->hide();
@@ -119,7 +119,7 @@ ArticuloList::~ArticuloList() {
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n", 0);
     try {
-	QString idarticulo = mui_list->DBvalue("idarticulo");
+        QString idarticulo = mui_list->DBvalue("idarticulo");
         if (QMessageBox::Yes == QMessageBox::question(this,
                 tr("Borrar articulo"),
                 tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
@@ -178,7 +178,7 @@ QString ArticuloList::detalleArticulos() {
         QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + XMLProtect(cur->valor("codigocompletoarticulo")) + ".jpg";
         QFile f(file);
         if (f.exists()) {
-            texto += "	<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+            texto += "<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
                      "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) +
                      XMLProtect(cur->valor("codigocompletoarticulo")) +
                      ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
@@ -222,7 +222,7 @@ void ArticuloList::Imprimir() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
     QFile file;
     file.setName(archivod);
     file.open(QIODevice::ReadOnly);
@@ -258,7 +258,7 @@ void ArticuloList::s_imprimir1() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -269,7 +269,7 @@ void ArticuloList::s_imprimir1() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);

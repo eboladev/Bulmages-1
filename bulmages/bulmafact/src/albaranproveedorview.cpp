@@ -44,30 +44,30 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const
         : QWidget(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp), dialogChanges(this) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
     try {
-	setupUi(this);
-	subform2->setcompany(comp);
-	m_almacen->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_proveedor->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_refalbaranp->setcompany(comp);
-	setListLinAlbaranProveedor(subform2);
-	setListDescuentoAlbaranProveedor(m_descuentos);
-    m_totalBases->setReadOnly(TRUE);
-    m_totalBases->setAlignment(Qt::AlignRight);
-    m_totalTaxes->setReadOnly(TRUE);
-    m_totalTaxes->setAlignment(Qt::AlignRight);
-    m_totalDiscounts->setReadOnly(TRUE);
-    m_totalDiscounts->setAlignment(Qt::AlignRight);
-    m_totalalbaranp->setReadOnly(TRUE);
-    m_totalalbaranp->setAlignment(Qt::AlignRight);
-    pintaidforma_pago("0");
-    pintaidalmacen("0");
-	dialogChanges_cargaInicial();
-	if (companyact != NULL)
-		companyact->meteWindow(caption(), this, FALSE);
+        setupUi(this);
+        subform2->setcompany(comp);
+        m_almacen->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_proveedor->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_refalbaranp->setcompany(comp);
+        setListLinAlbaranProveedor(subform2);
+        setListDescuentoAlbaranProveedor(m_descuentos);
+        m_totalBases->setReadOnly(TRUE);
+        m_totalBases->setAlignment(Qt::AlignRight);
+        m_totalTaxes->setReadOnly(TRUE);
+        m_totalTaxes->setAlignment(Qt::AlignRight);
+        m_totalDiscounts->setReadOnly(TRUE);
+        m_totalDiscounts->setAlignment(Qt::AlignRight);
+        m_totalalbaranp->setReadOnly(TRUE);
+        m_totalalbaranp->setAlignment(Qt::AlignRight);
+        pintaidforma_pago("0");
+        pintaidalmacen("0");
+        dialogChanges_cargaInicial();
+        if (companyact != NULL)
+            companyact->meteWindow(caption(), this, FALSE);
     } catch(...) {
-	mensajeInfo(tr("Error al crear el albaran proveedor"));
+        mensajeInfo(tr("Error al crear el albaran proveedor"));
     } // end try
     _depura("END AlbaranProveedorView::AlbaranProveedorView", 0);
 }
@@ -78,11 +78,12 @@ AlbaranProveedorView::~AlbaranProveedorView()  {
     companyact->sacaWindow(this);
 }
 
+
 void AlbaranProveedorView::inicializar() {
-	_depura("AlbaranProveedorView::inicializar", 0);
-	subform2->inicializar();
-	m_descuentos->inicializar();
-	_depura("END AlbaranProveedorView::inicializar", 0);
+    _depura("AlbaranProveedorView::inicializar", 0);
+    subform2->inicializar();
+    m_descuentos->inicializar();
+    _depura("END AlbaranProveedorView::inicializar", 0);
 }
 
 
@@ -96,19 +97,20 @@ void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
 
 
 void AlbaranProveedorView::on_mui_borrar_clicked() {
-	_depura("AlbaranProveedorView::on_mui_borrar_clicked",0);
-        int val = QMessageBox::warning(this, tr("Borrar albaran del proveedor."),
-                                       tr("Desea eliminar el albaran del proveedor?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            if (!borrar()) {
-                dialogChanges_cargaInicial();
-                _depura("Albaran del proveedor borrado satisfactoriamente", 2);
-                close();
-            } // end if
+    _depura("AlbaranProveedorView::on_mui_borrar_clicked", 0);
+    int val = QMessageBox::warning(this, tr("Borrar albaran del proveedor."),
+                                   tr("Desea eliminar el albaran del proveedor?"),
+                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+    if (val == 0) {
+        if (!borrar()) {
+            dialogChanges_cargaInicial();
+            _depura("Albaran del proveedor borrado satisfactoriamente", 2);
+            close();
         } // end if
-	_depura("END AlbaranProveedorView::on_mui_borrar_clicked",0);
+    } // end if
+    _depura("END AlbaranProveedorView::on_mui_borrar_clicked", 0);
 }
+
 
 void AlbaranProveedorView::s_verpedidoproveedor()  {
     _depura("Funcion aun no implementada", 2);
@@ -120,7 +122,7 @@ void AlbaranProveedorView::generarFactura()  {
     _depura("AlbaranProveedorView::generarFactura", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap='" + DBvalue("refalbaranp") + "'";
+    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue("refalbaranp") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
@@ -129,8 +131,7 @@ void AlbaranProveedorView::generarFactura()  {
         bud->cargar(cur->valor("idfacturap"));
         bud->show();
         return;
-    }
-
+    } // end if
     delete cur;
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
@@ -141,7 +142,7 @@ void AlbaranProveedorView::generarFactura()  {
                                  "Desea crearla?"),
                               tr("&Si"), tr("&No"), QString::null, 0, 1)) {
         return;
-    }
+    } // end if
 
     /// Creamos la factura.
     FacturaProveedorView *bud = companyact->newFacturaProveedorView();
@@ -153,7 +154,7 @@ void AlbaranProveedorView::generarFactura()  {
     bud->setidproveedor(DBvalue("idproveedor"));
     SDBRecord *linea, *linea1;
 
-    for ( int i  = 0; i < listalineas->rowCount(); ++i) {
+    for (int i  = 0; i < listalineas->rowCount(); ++i) {
         linea = getlistalineas()->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
         linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
@@ -171,7 +172,7 @@ void AlbaranProveedorView::generarFactura()  {
 }
 
 
-void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
+void AlbaranProveedorView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);
     if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
@@ -189,14 +190,14 @@ void AlbaranProveedorView::closeEvent(QCloseEvent *e)  {
 int AlbaranProveedorView::cargar(QString id) {
     _depura("AlbaranProveedorView::cargar", 0);
     try {
-	AlbaranProveedor::cargar(id);
-	if(DBvalue("idalbaranp") != "") {
-		setCaption(tr("Albaran proveedor ") + DBvalue("refalbaranp"));
-		companyact->meteWindow(caption(), this);
-		dialogChanges_cargaInicial();
-	} // end if
+        AlbaranProveedor::cargar(id);
+        if(DBvalue("idalbaranp") != "") {
+            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp"));
+            companyact->meteWindow(caption(), this);
+            dialogChanges_cargaInicial();
+        } // end if
     } catch(...) {
-	return -1;
+        return -1;
     } // end catch
     _depura("END AlbaranProveedorView::cargar", 0);
     return 0;
@@ -206,21 +207,21 @@ int AlbaranProveedorView::cargar(QString id) {
 int AlbaranProveedorView::guardar() {
     _depura("AlbaranProveedorView::guardar", 0);
     try {
-	setcomentalbaranp(m_comentalbaranp->text());
-	setnumalbaranp(m_numalbaranp->text());
-	setidproveedor(m_proveedor->idproveedor());
-	setfechaalbaranp(m_fechaalbaranp->text());
-	setidalmacen(m_almacen->idalmacen());
-	setidforma_pago(m_forma_pago->idforma_pago());
-	setrefalbaranp(m_refalbaranp->text());
-	setdescalbaranp(m_descalbaranp->text());
-	int err = AlbaranProveedor::guardar();
-	dialogChanges_cargaInicial();
+        setcomentalbaranp(m_comentalbaranp->text());
+        setnumalbaranp(m_numalbaranp->text());
+        setidproveedor(m_proveedor->idproveedor());
+        setfechaalbaranp(m_fechaalbaranp->text());
+        setidalmacen(m_almacen->idalmacen());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setrefalbaranp(m_refalbaranp->text());
+        setdescalbaranp(m_descalbaranp->text());
+        int err = AlbaranProveedor::guardar();
+        dialogChanges_cargaInicial();
         _depura("END AlbaranProveedorView::guardar", 0);
-	return err;
+        return err;
     } catch (...) {
-	mensajeInfo( "Error inesperado al guardar");
-	return -1;
+        mensajeInfo( "Error inesperado al guardar");
+        return -1;
     } // end catch
 }
 

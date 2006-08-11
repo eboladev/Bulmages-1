@@ -43,26 +43,26 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
     _depura("ArticuloView::INIT_constructor()\n", 0);
     try {
-	m_companyact = comp;
-	setupUi(this);
-	
-	/// Disparamos los plugins.
-	int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
-	if (res != 0)
-		return;
-	
-	m_familia->setcompany(comp);
-	m_tipoarticulo->setcompany(comp);
-	m_componentes->setcompany(comp);
-	m_archivoimagen = "";
-	cargarcomboiva("0");
-	m_componentes->cargar("0");
-	
-	m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-	m_companyact->meteWindow(tr("Edicion del articulo"), this, FALSE);
-	dialogChanges_cargaInicial();
+        m_companyact = comp;
+        setupUi(this);
+
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("ArticuloView_ArticuloView", this);
+        if (res != 0)
+            return;
+
+        m_familia->setcompany(comp);
+        m_tipoarticulo->setcompany(comp);
+        m_componentes->setcompany(comp);
+        m_archivoimagen = "";
+        cargarcomboiva("0");
+        m_componentes->cargar("0");
+
+        m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
+        m_companyact->meteWindow(tr("Edicion del articulo"), this, FALSE);
+        dialogChanges_cargaInicial();
     } catch(...) {
-	mensajeInfo(tr("Error al crear el articulo"));
+        mensajeInfo(tr("Error al crear el articulo"));
     } // end try
     _depura("ArticuloView::END_constructor()\n", 0);
 }
@@ -101,7 +101,7 @@ void ArticuloView::pintar() {
 
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES) + m_codigocompletoarticulo->text() + ".jpg"));
 
-    setCaption(tr("Articulo ") + m_codigocompletoarticulo->text());
+    setWindowTitle(tr("Articulo") + " " + m_codigocompletoarticulo->text());
     _depura("END ArticuloView::pintar", 1);
 }
 
@@ -111,31 +111,31 @@ void ArticuloView::pintar() {
 int ArticuloView::cargar(QString idarticulo) {
     _depura("ArticuloView::cargar()\n", 0);
     try {
-	setDBvalue("idarticulo", idarticulo);
-	
-	/// Disparamos los plugins.
-	int res = g_plugins->lanza("ArticuloView_cargar", this);
-	if (res != 0)
-		return res;
-	
-	QString ivaType = "";
-	Articulo::cargar(idarticulo);
-	ivaType = DBvalue("idtipo_iva");
-	
-	int ret = cargarcomboiva(ivaType);
-	if (ret)
-		throw -1;
-	
-	/// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
-	setCaption(tr("Articulo ") + DBvalue("codigocompletoarticulo"));
-	ret = m_companyact->meteWindow(caption(), this);
-	if (ret)
-		throw -1;
-	m_componentes->cargar(DBvalue("idarticulo"));
+        setDBvalue("idarticulo", idarticulo);
+
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("ArticuloView_cargar", this);
+        if (res != 0)
+            return res;
+
+        QString ivaType = "";
+        Articulo::cargar(idarticulo);
+        ivaType = DBvalue("idtipo_iva");
+
+        int ret = cargarcomboiva(ivaType);
+        if (ret)
+            throw -1;
+
+        /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
+        setWindowTitle(tr("Articulo") + " " + DBvalue("codigocompletoarticulo"));
+        ret = m_companyact->meteWindow(caption(), this);
+        if (ret)
+            throw -1;
+        m_componentes->cargar(DBvalue("idarticulo"));
 
     } catch(...) {
-	mensajeInfo(tr("Error en la carga del articulo"));
-	return -1;
+        mensajeInfo(tr("Error en la carga del articulo"));
+        return -1;
     } // end try
     pintar();
     dialogChanges_cargaInicial();
@@ -206,6 +206,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     _depura("ArticuloView::END_s_findArticulo()\n", 0);
 }
 
+
 /// Metodo de guardar la ficha. Guarda todos los componentes de la ficha.
 /// Si todo ha ido bien devuelve 0
 /// Si hay algun error debe ser tratado con el manejo de excepciones catch.
@@ -228,7 +229,7 @@ int ArticuloView::guardar() {
 
         /// Guardamos la imagen, si es que existe.
         if (m_archivoimagen != "") {
-            cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo=" + DBvalue("idarticulo"));
+            cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
             QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur1->valor("codigocompletoarticulo") + ".jpg";
             delete cur1;
             system(cadena.toAscii().constData());
@@ -299,11 +300,11 @@ void ArticuloView::closeEvent( QCloseEvent *e) {
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
-		try {
-			guardar();
-		} catch (...) {
-			e->ignore();
-		} // end catch
+            try {
+                guardar();
+            } catch (...) {
+                e->ignore();
+            } // end catch
         if (val == 2)
             e->ignore();
     } // end if

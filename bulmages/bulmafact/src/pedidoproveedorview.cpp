@@ -45,22 +45,22 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
         : QWidget(parent, name, Qt::WDestructiveClose), PedidoProveedor (comp), dialogChanges(this) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
     try {
-	setupUi(this);
-	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	subform3->setcompany(comp);
-	m_proveedor->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_almacen->setcompany(comp);
-	m_trabajador->setcompany(comp);
-	m_refpedidoproveedor->setcompany(comp);
-	setListLinPedidoProveedor(subform3);
-	setListDescuentoPedidoProveedor(m_descuentos);
-	inicialize();
-	dialogChanges_cargaInicial();
-	comp->meteWindow(caption(), this, FALSE);
+        setupUi(this);
+        /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+        subform3->setcompany(comp);
+        m_proveedor->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_almacen->setcompany(comp);
+        m_trabajador->setcompany(comp);
+        m_refpedidoproveedor->setcompany(comp);
+        setListLinPedidoProveedor(subform3);
+        setListDescuentoPedidoProveedor(m_descuentos);
+        inicialize();
+        dialogChanges_cargaInicial();
+        comp->meteWindow(caption(), this, FALSE);
     } catch(...) {
-	mensajeInfo(tr("Error al crear el pedido proveedor"));
+        mensajeInfo(tr("Error al crear el pedido proveedor"));
     } // end try
     _depura("END PedidoProveedorView::PedidoProveedorView", 0);
 }
@@ -95,13 +95,14 @@ void PedidoProveedorView::inicialize() {
 int PedidoProveedorView::cargar(QString id) {
     _depura("PedidoProveedorView::cargar", 0);
     try {
-	if (PedidoProveedor::cargar(id)) throw -1;
-	setCaption(tr("Pedido a proveedor  ") + DBvalue("refpedidoproveedor"));
-	companyact->meteWindow(caption(), this);
-	dialogChanges_cargaInicial();
-	_depura("END PedidoProveedorView::cargar", 0);
+        if (PedidoProveedor::cargar(id))
+            throw -1;
+        setWindowTitle(tr("Pedido a proveedor") + " " + DBvalue("refpedidoproveedor"));
+        companyact->meteWindow(caption(), this);
+        dialogChanges_cargaInicial();
+        _depura("END PedidoProveedorView::cargar", 0);
     } catch (...) {
-	return -1;
+        return -1;
     } // end try
     return 0;
 }
@@ -137,7 +138,7 @@ void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
-    PagoView *bud = new PagoView(companyact,NULL, tr("Edicion de pagos"));
+    PagoView *bud = new PagoView(companyact, NULL, tr("Edicion de pagos"));
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
@@ -150,10 +151,10 @@ void PedidoProveedorView::on_mui_pagar_clicked() {
 /// Se encarga de generar un albaran a partir del pedido.
 void PedidoProveedorView::generarAlbaran() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp='" + DBvalue("refpedidoproveedor") + "'";
+    QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, tr("Edicion de Albaranes de Proveedores"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, tr("Edicion de albaranes de proveedores"));
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));
         bud->show();
@@ -171,7 +172,7 @@ void PedidoProveedorView::generarAlbaran() {
         return;
 
     /// Creamos el pedido.
-    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, QApplication::translate("PedidoProveedorView", "Edicion de Albaranes de Proveedores"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, QApplication::translate("PedidoProveedorView", "Edicion de albaranes de proveedores"));
     companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
 
@@ -184,7 +185,7 @@ void PedidoProveedorView::generarAlbaran() {
 
     QString l;
     SDBRecord *linea, *linea1;
-    for ( int i = 0; i < listalineas->rowCount(); ++i) {
+    for (int i = 0; i < listalineas->rowCount(); ++i) {
         linea = listalineas->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
         linea1->setDBvalue("desclalbaranp", linea->DBvalue(tr("Descripcion del albaran")));
@@ -198,8 +199,7 @@ void PedidoProveedorView::generarAlbaran() {
         i++;
     } // end for
 
-    for (int i=0; i < listadescuentos->rowCount()-1; i++) {
-        //Fixed propor(listadescuentos->DBvalue( "proporciondpedidoproveedor",i).ascii());
+    for (int i = 0; i < listadescuentos->rowCount() - 1; i++) {
         linea1 = bud->getlistadescuentos()->newSDBRecord();
         linea1->setDBvalue("conceptdalbaranp", listadescuentos->DBvalue("conceptdpedidoproveedor", i));
         linea1->setDBvalue("proporciondalbaranp", listadescuentos->DBvalue("proporciondpedidoproveedor", i));

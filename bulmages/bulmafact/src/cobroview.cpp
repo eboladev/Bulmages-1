@@ -38,14 +38,14 @@ CobroView::CobroView(company *comp, QWidget *parent, const char *name)
         : QWidget(parent, name, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
     _depura("CobroView::CobroView", 0);
     try {
-	setupUi(this);
-	/// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-	mui_cliente->setcompany(comp);
-	mui_refcobro->setcompany(comp);
-	dialogChanges_cargaInicial();
-	companyact->meteWindow(caption(), this, FALSE);
+        setupUi(this);
+        /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+        mui_cliente->setcompany(comp);
+        mui_refcobro->setcompany(comp);
+        dialogChanges_cargaInicial();
+        companyact->meteWindow(caption(), this, FALSE);
     } catch(...) {
-	mensajeInfo(tr("Error al crear el cobro"));
+        mensajeInfo(tr("Error al crear el cobro"));
     } // end try
     _depura("END CobroView::CobroView", 0);
 }
@@ -68,19 +68,21 @@ void CobroView::on_mui_borrar_clicked() {
 
 
 int CobroView::cargar(QString id) {
-	_depura("CobroView::cargar", 0);
-	try {
-		if (Cobro::cargar(id)) throw -1;
-		setCaption("Cobro " + DBvalue("refcobro"));
-		pintar();
-		dialogChanges_cargaInicial();
-		companyact->meteWindow( caption(), this);
-        } catch(...) {
-		return -1;
-	}
-	_depura("END CobroView::cargar", 0);
-        return 0;
-    }
+    _depura("CobroView::cargar", 0);
+    try {
+        if (Cobro::cargar(id))
+            throw -1;
+        setWindowTitle(tr("Cobro") + " " + DBvalue("refcobro"));
+        pintar();
+        dialogChanges_cargaInicial();
+        companyact->meteWindow(caption(), this);
+    } catch(...) {
+        return -1;
+    } // end try
+    _depura("END CobroView::cargar", 0);
+    return 0;
+}
+
 
 void CobroView::closeEvent(QCloseEvent *e) {
     _depura("closeEvent", 0);

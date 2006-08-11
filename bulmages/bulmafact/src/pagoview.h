@@ -64,7 +64,7 @@ public:
             mui_previsionpago->setChecked(TRUE);
         } else {
             mui_previsionpago->setChecked(FALSE);
-        }
+        } // end if
     };
 
 public slots:
@@ -72,21 +72,22 @@ public slots:
         guardaPago();
     };
     virtual int cargar(QString id) {
-	try {
-		if (Pago::cargar(id)) throw -1;
-		setCaption("Pago " + DBvalue("refpago"));
-		dialogChanges_cargaInicial();
-		companyact->meteWindow(caption(), this);
-	} catch(...) {
-		return -1;
-	} // end try
+        try {
+            if (Pago::cargar(id))
+                throw -1;
+            setWindowTitle(tr("Pago") + " " + DBvalue("refpago"));
+            dialogChanges_cargaInicial();
+            companyact->meteWindow(caption(), this);
+        } catch(...) {
+            return -1;
+        } // end try
         return 0;
     };
     virtual void on_mui_borrar_clicked();
     virtual void  on_mui_comentpago_textChanged(const QString &str) {
         setcomentpago(str);
     };
-    virtual void on_mui_refpago_valueChanged(const QString &str)	{
+    virtual void on_mui_refpago_valueChanged(const QString &str) {
         setrefpago(str);
     };
     virtual void on_mui_cantpago_textChanged(const QString &str) {
@@ -97,7 +98,7 @@ public slots:
             setprevisionpago("TRUE");
         } else {
             setprevisionpago("FALSE");
-        }
+        } // end if
     }
     virtual void on_mui_proveedor_valueChanged(QString id) {
         setidproveedor(id);

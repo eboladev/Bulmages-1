@@ -25,6 +25,7 @@
 #include <QComboBox>
 #include <QToolButton>
 #include <QLayout>
+
 #include <fstream>
 
 using namespace std;
@@ -43,31 +44,31 @@ using namespace std;
 
 
 FacturaView::FacturaView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), Factura (comp), dialogChanges(this) {
+        : QWidget(parent, name, Qt::WDestructiveClose), Factura(comp), dialogChanges(this) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     _depura("FacturaView::FacturaView", 0);
     try {
-	setupUi(this);
-	subform2->setcompany(comp);
-	m_almacen->setcompany(comp);
-	m_forma_pago->setcompany(comp);
-	m_cliente->setcompany(comp);
-	m_descuentos->setcompany(comp);
-	m_codigoserie_factura->setcompany(comp);
-	m_reffactura->setcompany(comp);
-	setListLinFactura(subform2);
-	setListDescuentoFactura(m_descuentos);
-    m_totalBases->setReadOnly(TRUE);
-    m_totalBases->setAlignment(Qt::AlignRight);
-    m_totalTaxes->setReadOnly(TRUE);
-    m_totalTaxes->setAlignment(Qt::AlignRight);
-    m_totalDiscounts->setReadOnly(TRUE);
-    m_totalDiscounts->setAlignment(Qt::AlignRight);
-    m_totalfactura->setReadOnly(TRUE);
-    m_totalfactura->setAlignment(Qt::AlignRight);
-	comp->meteWindow(caption(),this, FALSE);
+        setupUi(this);
+        subform2->setcompany(comp);
+        m_almacen->setcompany(comp);
+        m_forma_pago->setcompany(comp);
+        m_cliente->setcompany(comp);
+        m_descuentos->setcompany(comp);
+        m_codigoserie_factura->setcompany(comp);
+        m_reffactura->setcompany(comp);
+        setListLinFactura(subform2);
+        setListDescuentoFactura(m_descuentos);
+        m_totalBases->setReadOnly(TRUE);
+        m_totalBases->setAlignment(Qt::AlignRight);
+        m_totalTaxes->setReadOnly(TRUE);
+        m_totalTaxes->setAlignment(Qt::AlignRight);
+        m_totalDiscounts->setReadOnly(TRUE);
+        m_totalDiscounts->setAlignment(Qt::AlignRight);
+        m_totalfactura->setReadOnly(TRUE);
+        m_totalfactura->setAlignment(Qt::AlignRight);
+        comp->meteWindow(caption(), this, FALSE);
     } catch(...) {
-	mensajeInfo(tr("Error al crear la factura"));
+        mensajeInfo(tr("Error al crear la factura"));
     }
     _depura("END FacturaView::FacturaView");
 }
@@ -78,11 +79,12 @@ FacturaView::~FacturaView() {
     companyact->sacaWindow(this);
 }
 
+
 void FacturaView::inicializar() {
-	_depura("FacturaView::inicializar", 0);
-	subform2->inicializar();
-	m_descuentos->inicializar();
-	_depura("END FacturaView::inicializar", 0);
+    _depura("FacturaView::inicializar", 0);
+    subform2->inicializar();
+    m_descuentos->inicializar();
+    _depura("END FacturaView::inicializar", 0);
 }
 
 
@@ -112,14 +114,14 @@ void FacturaView::on_mui_cobrar_clicked() {
 int FacturaView::cargar(QString id) {
     _depura("FacturaView::cargar", 0);
     try {
-	Factura::cargar(id);
-	if (DBvalue("idfactura") != "") {
-		setCaption(tr("Factura") + " " + DBvalue("reffactura"));
-		companyact->meteWindow(caption(), this);
-	} // end if
-	dialogChanges_cargaInicial();
+        Factura::cargar(id);
+        if (DBvalue("idfactura") != "") {
+            setWindowTitle(tr("Factura") + " " + DBvalue("reffactura"));
+            companyact->meteWindow(caption(), this);
+        } // end if
+        dialogChanges_cargaInicial();
     } catch(...) {
-	return -1;
+        return -1;
     } // end try
     _depura("END FacturaView::cargar", 0);
     return 0;
@@ -128,9 +130,9 @@ int FacturaView::cargar(QString id) {
 
 void FacturaView::on_mui_agregaralbaran_clicked() {
     _depura("FacturaView::on_mui_agregaralbaran_clicked\n", 0);
-    QDialog *diag=new QDialog(0);
+    QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    AlbaranClienteList *fac = new AlbaranClienteList(companyact, diag, tr("Seleccione albaran","company"), 0, AlbaranClienteList::SelectMode);
+    AlbaranClienteList *fac = new AlbaranClienteList(companyact, diag, tr("Seleccione albaran"), 0, AlbaranClienteList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.
@@ -141,17 +143,17 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     diag->exec();
     QString idalbaran = fac->idCliDelivNote();
     delete diag;
- 
+
     /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
     if (idalbaran == "")
         return;
 
     /// Creamos la factura.
-    AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, tr("albaran"));
+    AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, tr("Albaran"));
     bud->cargar(idalbaran);
 
     /// Agregamos a comentarios que albaran se corresponde.
-    QString comm = DBvalue("comentfactura") + "(" + tr("ALBARAN: Num ") + bud->numalbaran() + tr("Ref: ") + bud->refalbaran() + tr("Fecha: ") + bud->fechaalbaran() + ")\n";
+    QString comm = DBvalue("comentfactura") + "(" + tr("ALBARAN: Num ") + bud->numalbaran() + tr("Ref:") + " " + bud->refalbaran() + tr("Fecha:") + " " + bud->fechaalbaran() + ")\n";
 
     setDBvalue("comentfactura", comm);
     pintaComentFactura(comm);
@@ -161,7 +163,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     for (int i = 0; i < bud->getlistalineas()->rowCount(); ++i) {
         linea = bud->getlistalineas()->lineaat(i);
         /// Los registros vacios no se tienen en cuenta.
-        if (linea->DBvalue( "idarticulo") != "") {
+        if (linea->DBvalue("idarticulo") != "") {
             linea1 = getlistalineas()->lineaat(getlistalineas()->rowCount() - 1);
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
