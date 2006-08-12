@@ -57,6 +57,9 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
 
+    /// Indicamos a listventanas cual es el workspace para que pueda operar con el
+    m_list->setWorkspace(m_pWorkspace);
+
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
 

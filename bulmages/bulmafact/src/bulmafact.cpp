@@ -55,6 +55,9 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
 
+    /// Iniciamos el listventanas con el workspace para que pueda operar con el
+    m_list->setWorkspace(pWorkspace);
+
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
     m_company->setListVentanas(m_list);

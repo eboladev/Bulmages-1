@@ -23,7 +23,7 @@
 
 #include <QDockWidget>
 #include <QListWidget>
-
+#include "qworkspace2.h"
 
 class QListWidget1 : public QListWidget {
     Q_OBJECT
@@ -76,8 +76,10 @@ class listventanas : public QDockWidget {
 
 private:
     QListWidget1 *m_listBox;
+    QWorkspace2 *m_pWorkspace;
 
 public:
+    void setWorkspace(QWorkspace2 *w) {m_pWorkspace = w;};
     listventanas(QWidget *a = 0);
     ~listventanas();
 
