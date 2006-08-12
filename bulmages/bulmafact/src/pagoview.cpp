@@ -51,7 +51,7 @@ PagoView::PagoView(company *comp, QWidget *parent, const char *name)
         mui_proveedor->setcompany(comp);
         mui_refpago->setcompany(comp);
         dialogChanges_cargaInicial();
-        companyact->meteWindow(caption(), this, FALSE);
+        companyact->meteWindow(windowTitle(), this, FALSE);
     } catch(...) {
         mensajeInfo(tr("Error al crear el pago"));
     } // end try

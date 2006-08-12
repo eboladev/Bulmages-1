@@ -40,7 +40,7 @@ CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
     m_companyact = NULL;
     m_modo = 0;
     mdb_idcobro = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END CobrosList::CobrosList", 0);
 
@@ -57,7 +57,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFl
     presentar();
     m_modo = 0;
     mdb_idcobro = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
     _depura("END CobrosList::CobrosList", 0);
 }

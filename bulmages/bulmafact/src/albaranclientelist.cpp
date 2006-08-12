@@ -37,7 +37,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WF
     m_modo=editmodo;
     mdb_idalbaran = "";
     if (m_modo == EditMode)
-        meteWindow(caption(), this);
+        meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -53,7 +53,7 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, const cha
     m_modo = editmodo;
     mdb_idalbaran = "";
     if (m_modo == EditMode)
-        m_companyact->meteWindow(caption(), this);
+        m_companyact->meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

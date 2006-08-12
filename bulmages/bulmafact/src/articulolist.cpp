@@ -49,7 +49,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt:
     presenta();
     m_modo = editmodo;
     if (m_modo == EditMode) {
-        comp->meteWindow(caption(), this);
+        comp->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de articulos"));
         mui_editar->setHidden(TRUE);

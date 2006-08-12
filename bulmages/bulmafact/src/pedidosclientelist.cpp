@@ -36,7 +36,7 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WF
     companyact = NULL;
     m_modo = 0;
     m_idpedidocliente = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -51,7 +51,7 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const cha
     presenta();
     m_modo = 0;
     m_idpedidocliente = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

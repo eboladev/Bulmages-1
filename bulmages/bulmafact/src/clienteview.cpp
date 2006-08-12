@@ -64,7 +64,7 @@ ClienteView::ClienteView(company *comp, QWidget *parent, const char *name)
         m_listfacturas->setcompany(m_companyact);
         m_listcobros->setcompany(m_companyact);
 
-        m_companyact->meteWindow(caption(), this, FALSE);
+        m_companyact->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
 
         /// Disparamos los plugins.
@@ -99,7 +99,7 @@ int ClienteView::cargar(QString idcliente) {
     try {
         Cliente::cargar(idcliente);
         setWindowTitle(tr("Cliente") + " " + DBvalue("nomcliente"));
-        m_companyact->meteWindow(caption(), this);
+        m_companyact->meteWindow(windowTitle(), this);
 
         /// Hacemos que el listado de presupuestos de un cliente se inicialize.
         m_listpresupuestos->setidcliente(idcliente);

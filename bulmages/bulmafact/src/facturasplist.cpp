@@ -37,7 +37,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, const char *name, 
     m_companyact = NULL;
     m_modo = 0;
     mdb_idfacturap = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -52,7 +52,7 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, con
     presenta();
     m_modo = 0;
     mdb_idfacturap = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

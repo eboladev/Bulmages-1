@@ -37,7 +37,7 @@ InventariosView::InventariosView(QWidget *parent, const char *name, Qt::WFlags f
         : QWidget(parent, name, flag) {
     setupUi(this);
     companyact = NULL;
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
 }
 
 
@@ -47,7 +47,7 @@ InventariosView::InventariosView(company *comp, QWidget *parent, const char *nam
     companyact = comp;
     mui_listado->setcompany(comp);
     mui_listado->cargar();
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
 }
 
 

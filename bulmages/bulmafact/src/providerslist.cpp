@@ -45,7 +45,7 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Q
     m_cifprovider = "";
     m_nomprovider = "";
     if (m_modo == EditMode) {
-        m_companyact->meteWindow(caption(), this);
+        m_companyact->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de proveedores"));
         mui_editar->setHidden(TRUE);

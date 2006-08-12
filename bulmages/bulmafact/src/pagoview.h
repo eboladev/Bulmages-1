@@ -77,7 +77,7 @@ public slots:
                 throw -1;
             setWindowTitle(tr("Pago") + " " + DBvalue("refpago"));
             dialogChanges_cargaInicial();
-            companyact->meteWindow(caption(), this);
+            companyact->meteWindow(windowTitle(), this);
         } catch(...) {
             return -1;
         } // end try

@@ -39,7 +39,7 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WF
     m_companyact = NULL;
     m_modo = 0;
     mdb_idalbaranp = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -54,7 +54,7 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const cha
     presenta();
     m_modo = 0;
     mdb_idalbaranp = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

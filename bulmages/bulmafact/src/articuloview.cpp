@@ -128,7 +128,7 @@ int ArticuloView::cargar(QString idarticulo) {
 
         /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
         setWindowTitle(tr("Articulo") + " " + DBvalue("codigocompletoarticulo"));
-        ret = m_companyact->meteWindow(caption(), this);
+        ret = m_companyact->meteWindow(windowTitle(), this);
         if (ret)
             throw -1;
         m_componentes->cargar(DBvalue("idarticulo"));

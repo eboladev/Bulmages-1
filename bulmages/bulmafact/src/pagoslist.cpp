@@ -39,7 +39,7 @@ PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
     setupUi(this);
     m_modo = 0;
     mdb_idpago = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -53,7 +53,7 @@ PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlag
     presentar();
     m_modo = 0;
     mdb_idpago = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

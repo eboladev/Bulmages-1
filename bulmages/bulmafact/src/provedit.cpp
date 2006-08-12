@@ -75,7 +75,7 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
         m_listpagosprov->setcompany(m_companyact);
         m_listpagosprov->hideBusqueda();
 
-        m_companyact->meteWindow(caption(), this, FALSE);
+        m_companyact->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch(...) {
         mensajeInfo(tr("Error al crear el proveedor"));
@@ -131,7 +131,7 @@ int ProveedorView::cargar(QString idprov) {
 
         /// Cambiamos el titulo de la ventana para que salga reflejado donde toca.
         setWindowTitle(tr("Proveedor") + " " + DBvalue("nomproveedor"));
-        m_companyact->meteWindow(caption(), this);
+        m_companyact->meteWindow(windowTitle(), this);
     } catch(...) {
         return -1;
     } // end try

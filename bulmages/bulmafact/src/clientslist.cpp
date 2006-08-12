@@ -49,7 +49,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::W
     presenta();
     /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
     if (m_modo == EditMode) {
-        m_companyact->meteWindow(caption(), this);
+        m_companyact->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de clientes"));
         mui_editar->setHidden(TRUE);

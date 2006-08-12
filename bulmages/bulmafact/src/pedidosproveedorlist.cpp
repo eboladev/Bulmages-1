@@ -38,7 +38,7 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, Qt
     m_companyact = NULL;
     m_modo = 0;
     mdb_idpedidoproveedor = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -53,7 +53,7 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const
     presenta();
     m_modo = 0;
     mdb_idpedidoproveedor = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

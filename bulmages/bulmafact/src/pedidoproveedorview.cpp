@@ -58,7 +58,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
         setListDescuentoPedidoProveedor(m_descuentos);
         inicialize();
         dialogChanges_cargaInicial();
-        comp->meteWindow(caption(), this, FALSE);
+        comp->meteWindow(windowTitle(), this, FALSE);
     } catch(...) {
         mensajeInfo(tr("Error al crear el pedido proveedor"));
     } // end try
@@ -98,7 +98,7 @@ int PedidoProveedorView::cargar(QString id) {
         if (PedidoProveedor::cargar(id))
             throw -1;
         setWindowTitle(tr("Pedido a proveedor") + " " + DBvalue("refpedidoproveedor"));
-        companyact->meteWindow(caption(), this);
+        companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
         _depura("END PedidoProveedorView::cargar", 0);
     } catch (...) {

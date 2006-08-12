@@ -41,7 +41,7 @@ FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag, e
     m_modo = editmodo;
     mdb_idfactura = "";
     if (m_modo == EditMode)
-        meteWindow(caption(), this);
+        meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -57,7 +57,7 @@ FacturasList::FacturasList(company *comp, QWidget *parent, const char *name, Qt:
     m_modo = editmodo;
     mdb_idfactura = "";
     if (m_modo == EditMode)
-        meteWindow(caption(), this);
+        meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 

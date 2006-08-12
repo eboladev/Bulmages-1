@@ -39,7 +39,7 @@ PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags f
     m_companyact = NULL;
     m_modo = 0;
     m_idpresupuesto = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
@@ -54,7 +54,7 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *nam
     presenta();
     m_modo = 0;
     m_idpresupuesto = "";
-    meteWindow(caption(), this);
+    meteWindow(windowTitle(), this);
     hideBusqueda();
 }
 
