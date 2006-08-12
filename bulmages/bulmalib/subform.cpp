@@ -60,15 +60,13 @@ void SDBRecord::refresh() {
 int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp) {
     _depura("SDBRecord::addDBCampo", 0);
     SDBCampo *camp = new SDBCampo(this, m_conexionbase, nom, typ, res, nomp);
-    camp->set
-    ("");
+    camp->set("");
     m_lista.append(camp);
     _depura("END SDBRecord::addDBCampo", 0);
     return 0;
 }
 
 
-/// -------------------------------------------
 SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp)
         : QTableWidgetItem2(), DBCampo(com, nom, typ, res, nomp) {
     static int creaciones = 0;
@@ -88,33 +86,32 @@ SDBCampo::~SDBCampo() {
 
 void SDBCampo::refresh() {
     _depura("SDBCampo::refresh", 0);
-    if(tipo() == DBCampo::DBboolean) {
+    if (tipo() == DBCampo::DBboolean) {
         DBCampo::set
             (checkState() == Qt::Checked ? "TRUE" : "FALSE");
-    } else
-        DBCampo::set
-            (text());
+    } else {
+        DBCampo::set(text());
+    } // end if
     _depura("END SDBCampo::refresh", 0);
 }
 
 
 int SDBCampo::set(QString val) {
     _depura("SDBCampo::set", 0);
-    if(tipo() == DBCampo::DBboolean) {
+    if (tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
             setCheckState(Qt::Checked);
         else
             setCheckState(Qt::Unchecked);
-    } else
+    } else {
         QTableWidgetItem2::setText(val);
-    DBCampo::set
-        (val);
+    } // end if
+    DBCampo::set(val);
     _depura("END SDBCampo::set", 0);
     return 0;
 }
 
 
-/// ------------------------------------------------------------
 SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     m_nomcampo = nom;
     m_valorcampo = "";

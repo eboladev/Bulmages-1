@@ -85,51 +85,50 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
             break;
         case Qt::Key_Slash:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// 
-		emit pressedSlash(row, col);
-		return TRUE;
-	    } // end if
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+                emit pressedSlash(row, col);
+                return TRUE;
+            } // end if
             break;
-	case Qt::Key_Minus:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// 
-//		_depura ("pressedMinus", 2);
-		emit pressedMinus(row, col);
-		return TRUE;
-	    } // end if
-	    break;
+        case Qt::Key_Minus:
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+                emit pressedMinus(row, col);
+                return TRUE;
+            } // end if
+            break;
         case Qt::Key_Plus:
             emit pressedPlus(row, col);
             return TRUE;
             break;
         case Qt::Key_Asterisk:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// 
-		emit pressedAsterisk(row, col);
-		return TRUE;
-	    } // end if
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+                emit pressedAsterisk(row, col);
+                return TRUE;
+            } // end if
             break;
         case Qt::Key_Up:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) { /// La tecla hacia arriba
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
                 _depura("Qt::Key_Up", 0);
                 emit ctrlSubir(row, col);
                 return TRUE;
             } // end if
             break;
         case Qt::Key_Down:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) { /// La tecla hacia arriba
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 _depura("Qt::Key_Down", 0);
                 emit ctrlBajar(row, col);
                 return TRUE;
             } // end if
             break;
         case Qt::Key_Left:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) { /// La tecla hacia arriba
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 _depura("Qt::Key_Left", 0);
                 emit ctrlIzquierda(row, col);
                 return TRUE;
             } // end if
             break;
         case Qt::Key_Right:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) { /// La tecla hacia arriba
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 _depura("Qt::Key_Right", 0);
                 emit ctrlDerecha(row, col);
                 return TRUE;

@@ -25,6 +25,7 @@
 
 #include "subform3.h"
 
+
 /// SubForm3, constructor de la clase base para subformularios.
 SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     setupUi(this);
@@ -41,7 +42,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
     /// Para el listado de  columnas hacemos una inicializacion.
     QStringList headers;
-    headers << "Orden" << "Nombre" << "Nombre Campo" << "Visible";
+    headers << tr("Orden") << tr("Nombre") << tr("Nombre de campo") << tr("Visible");
     mui_listcolumnas->setColumnCount(4);
     mui_listcolumnas->setHorizontalHeaderLabels(headers);
     mui_listcolumnas->setShowGrid(FALSE);
@@ -73,7 +74,8 @@ SubForm3::~SubForm3() {
 }
 
 
-/// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que tenga todos los elementos necesarios (columnas).
+/// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
+/// tenga todos los elementos necesarios (columnas).
 SDBRecord *SubForm3::newSDBRecord() {
     _depura("SubForm3::newSDBRecord\n", 0);
     SDBRecord *rec = new SDBRecord(m_companyact);
@@ -166,7 +168,7 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
 
 
 /// Cuando tenemos un registro que no se tiene que cargar (pq es nuevo o algo
-/// así) de la base de datos, con la funcion pintar lo dejamos en un estado que
+/// asi) de la base de datos, con la funcion pintar lo dejamos en un estado que
 /// se podria considerar presentable para poder operar con el subformulario.
 void SubForm3::pintar() {
     _depura("SubForm3::pintar", 0);
@@ -179,7 +181,7 @@ void SubForm3::pintar() {
 }
 
 
-// Carga una tabla a partir del recordset que se le ha pasado.
+/// Carga una tabla a partir del recordset que se le ha pasado.
 int SubForm3::inicializar() {
     _depura("SubForm3::inicializar", 0);
     mui_query->setText("");
@@ -314,7 +316,7 @@ SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()\n", 0);
     SDBCampo *camp =(SDBCampo*) mui_list->item(row, 0);
     if (!camp) {
-	return NULL;
+        return NULL;
     }
     SDBRecord *rec = (SDBRecord *) camp->pare();
     _depura("END SubForm3::lineaat()\n", 0);
@@ -335,14 +337,14 @@ void SubForm3::on_mui_list_editFinished(int row, int col) {
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
-    camp->set
-    ("");
+    camp->set("");
     m_lcabecera.append(camp);
 
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
 
     QTableWidgetItem * it = new QTableWidgetItem("");
     it->setFlags(Qt::ItemIsUserCheckable |Qt::ItemIsEnabled |Qt::ItemIsSelectable | Qt::ItemIsEditable);
+
     it->setCheckState(Qt::Checked);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
 
@@ -374,17 +376,18 @@ void SubForm3::setColumnValue(QString campo, QString valor) {
 QString SubForm3::DBvalue(QString campo, int row) {
     _depura("SubForm3::DBvalue", 0);
     try {
-	SDBRecord *rec;
-	if (row == -1)
-		rec = lineaact();
-	else
-		rec=lineaat(row);
-	if (rec == NULL) throw -1;
-	_depura("END SubForm3::DBvalue", 0);
-	return rec->DBvalue(campo);
+        SDBRecord *rec;
+        if (row == -1)
+            rec = lineaact();
+        else
+            rec=lineaat(row);
+        if (rec == NULL)
+            throw -1;
+        _depura("END SubForm3::DBvalue", 0);
+        return rec->DBvalue(campo);
     } catch (...) {
-	mensajeInfo("Fila inexistente");
-	throw -1;
+        mensajeInfo("Fila inexistente");
+        throw -1;
     }
 }
 
@@ -394,17 +397,15 @@ int SubForm3::guardar() {
     try {
         SDBRecord *rec;
         int error = 0;
-	
-	/// Borramos los elementos marcados para ser borrados
-	while ( !m_listaborrar.isEmpty()) {
-		rec = m_listaborrar.takeFirst();
-		if (rec) {
-			if (rec->borrar()) throw -1;
-			delete rec;
-		} // end if
-	} // end while
-
-
+        /// Borramos los elementos marcados para ser borrados
+        while ( !m_listaborrar.isEmpty()) {
+            rec = m_listaborrar.takeFirst();
+            if (rec) {
+                if (rec->borrar())
+                    throw -1;
+                delete rec;
+            } // end if
+        } // end while
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
             rec->refresh();
@@ -421,7 +422,7 @@ int SubForm3::guardar() {
     } catch(...) {
         mensajeInfo("error inesperado en el guardado, salimos devolviento -1");
         throw -1;
-    }
+    } // end try
 }
 
 
@@ -429,12 +430,12 @@ int SubForm3::borrar() {
     SDBRecord *rec;
     int i = 0;
     int error = 0;
-    for(rec = m_lista.at(i++); i<m_lista.count(); rec=m_lista.at(i++)) {
+    for (rec = m_lista.at(i++); i < m_lista.count(); rec = m_lista.at(i++)) {
         error = rec->borrar();
         if (error)
             return -1;
     } // end for
-    if(!m_insercion) {
+    if (!m_insercion) {
         rec = m_lista.at(m_lista.count() - 1);
         error = rec->borrar();
     } // end if
@@ -444,24 +445,20 @@ int SubForm3::borrar() {
 
 int SubForm3::borrar(int row) {
     _depura("SubForm3::borrar", 0);
-	try {
-		SDBRecord *rec;
-		rec = m_lista.at(row);
-		m_listaborrar.append(rec);
-		// int error = rec->borrar();
-		// if (error) throw -1;
-		m_lista.takeAt(row);
-//		mui_list->hideRow(row);
-		for( int i=0; i< mui_list->columnCount(); i++) {
-			mui_list->takeItem(row,i);
-		} // end for
-		mui_list->takeVerticalHeaderItem(row);
-		mui_list->removeRow(row);
-//		emit editFinish(row, 0);
-	} catch (...) {
-		mensajeInfo( "Error al intentar borrar");
-		throw -1;
-	} // end try
+    try {
+        SDBRecord *rec;
+        rec = m_lista.at(row);
+        m_listaborrar.append(rec);
+        m_lista.takeAt(row);
+        for (int i = 0; i < mui_list->columnCount(); i++) {
+            mui_list->takeItem(row,i);
+        } // end for
+        mui_list->takeVerticalHeaderItem(row);
+        mui_list->removeRow(row);
+    } catch (...) {
+        mensajeInfo( "Error al intentar borrar");
+        throw -1;
+    } // end try
     _depura("END SubForm3::borrar", 0);
     return 0;
 }
@@ -471,7 +468,7 @@ int SubForm3::borrar(int row) {
 void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig", 0);
     QString aux = "";
-    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "tablecfn.cfn" );
+    QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "tablecfn.cfn");
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << mui_list->colorden() << "\n";
@@ -559,9 +556,11 @@ void SubForm3::on_mui_list_pressedPlus(int, int) {
     _depura ("pulsadoPlus aun no implementado", 1);
 }
 
+
 void SubForm3::on_mui_list_pressedMinus(int, int) {
     _depura ("pressedMinus aun no implementado", 1);
 }
+
 
 QString SubForm3::imprimir() {
     QString fitxersortidatxt = "<tr>\n";
@@ -595,6 +594,7 @@ void SubForm3::on_mui_confquery_clicked() {
     delete cur;
     _depura("END SubForm3::on_mui_confquery_clicked ", 0);
 }
+
 
 /// Disparador que se activa al haber pulsado ctrl+Arriba en la tabla
 /// Hace el intercambio con la fila inmediatamente superior.

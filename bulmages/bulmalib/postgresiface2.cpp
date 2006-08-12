@@ -1,26 +1,31 @@
 /***************************************************************************
-                          postgresiface2.cpp  -  description
-                             -------------------
-    begin                : Tue Nov 26 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras                                    *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 /** \file postgresifac2.cpp
-  * Contiene la implementaci� de las clases \ref cursor2 y \ref postgresiface2 que proveen acceso a las bases de datos
+  * Contiene la implementacion de las clases \ref cursor2 y \ref postgresiface2 que proveen acceso a las bases de datos
   * de postgres de forma sencilla y eficiente.
   */
+#include <QMessageBox>
+#include <QApplication>
 
 #include "postgresiface2.h"
-#include <qmessagebox.h>
-#include <qapplication.h>
 
 #include "msgerror.h"
 #include "funcaux.h"
@@ -34,91 +39,90 @@
   * \param conn1 Conexi� con la base de datos (Inicializada en \ref postgresiface2
   * \param SQLQuery Query en formato SQL a realizar en la base de datos.
   */
-cursor2::cursor2(QString nombre,PGconn *conn1, QString SQLQuery) {
-    _depura("cursor2::cursor2",0);
+cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
+    _depura("cursor2::cursor2", 0);
     conn = conn1;
     m_error = FALSE;
     m_query = SQLQuery;
     nomcursor = nombre;
-    nregistros=0;
-    registroactual=0;
-    _depura(SQLQuery,0);
+    nregistros = 0;
+    registroactual = 0;
+    _depura(SQLQuery, 0);
     result = PQexec(conn, SQLQuery.toAscii().data());
-    if (!result ) {
+    if (!result) {
         m_error = TRUE;
-        _depura( PQerrorMessage(conn));
-        _depura( "QUERY command failed ["+SQLQuery+"]");
+        _depura(PQerrorMessage(conn));
+        _depura("QUERY command failed [" + SQLQuery + "]");
         if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-            msgError(QString("Ha ocurrido un error al hacer una consulta con la base de datos."),SQLQuery+QString("\n")+(QString)PQerrorMessage(conn));
+            msgError(QString("Ha ocurrido un error al hacer una consulta con la base de datos."), SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
         PQclear(result);
         return;
-    }// end if
+    } // end if
     nregistros = PQntuples(result);
     ncampos = PQnfields(result);
-    registroactual=0;
-    /// Depuramos todo
+    registroactual = 0;
+    /// Depuramos todo.
     _depura("--------- RESULTADO DE QUERY ----------------");
     QString err;
-    err.sprintf("Num. Registros: %d, Num. Campos: %d",nregistros, ncampos);
+    err.sprintf("Num. Registros: %d, Num. Campos: %d", nregistros, ncampos);
     _depura(err);
     _depura("--------- FIN RESULTADO DE QUERY ----------------");
-    _depura("END cursor2::cursor2",0);
-}// end cursor2
+    _depura("END cursor2::cursor2", 0);
+} // end cursor2
 
 
-/** Destructor de clase, antes de destruirse limpia los posibles buffers intermedios
-  */
+/// Destructor de clase, antes de destruirse limpia los posibles buffers intermedios.
 cursor2::~cursor2() {
     cerrar();
 }
 
 
-/** Limpia los buffers intermedios que puedan estar chupando memoria
-  */
+/// Limpia los buffers intermedios que puedan estar chupando memoria.
 void cursor2::cerrar() {
     PQclear(result);
-}// end cerrar
+}
 
 
-/** \return Devuelve el nmero de registros de la consulta.
-  */
+/// Devuelve el nmero de registros de la consulta.
 int cursor2::numregistros() {
     return (nregistros);
-}// end numregistros
+}
 
 
-/** \return Devuelve el nmero de campos de la consulta
-  */
+/// Devuelve el nmero de campos de la consulta.
 int cursor2::numcampos() {
     return(ncampos);
 }
 
-/** \return Devuelve el nombre del campo de una posici� determinada.
-  * \param campo Posici� de la que se quiere que devuelva el nombre.
+
+/** \return Devuelve el nombre del campo de una posicion determinada.
+  * \param campo Posicion de la que se quiere que devuelva el nombre.
   */
 QString cursor2::nomcampo(int campo) {
-    return((QString) PQfname(result, campo));
-}// end if
+    return ((QString) PQfname(result, campo));
+}
 
 
 /**
-  * Dado un campo esta funci� devuelve devuelve la posici� que le
+  * Dado un campo esta funcion devuelve devuelve la posicion que le
   * corresponde, y si no le corresponde ninguno devuelve -1
   * \param campo Nombre del campo.
-  * \return Devuelve la posici� si el nombre del campo existe, y si no devuelve -1
-  * \todo Tal vez deber� crearse una estructura intermedia que indexe los nombres con las posiciones para hacer la bsqueda m� r�ida, pero al ser el nmero de registros siempre muy reducido seguramente no arreglariamos nada de nada.
+  * \return Devuelve la posicion si el nombre del campo existe, y si no devuelve -1
+  * \todo Tal vez deberia crearse una estructura intermedia que indexe los nombres con
+  * las posiciones para hacer la busqueda mas rapida, pero al ser el numero de registros
+  * siempre muy reducido seguramente no arreglariamos nada de nada.
   */
 int cursor2::numcampo(QString campo) {
-    int i=0;
-    while (i<numcampos() && campo != nomcampo(i) ) {
+    int i = 0;
+    while (i < numcampos() && campo != nomcampo(i)) {
         i++;
-    }// end while
-    if (i== numcampos()) {
-        _depura("Campo: "+campo+" no existe en la consulta: "+m_query, 2);
-        return(-1);
-    }
-    return(i);
-}// end numcampo
+    } // end while
+    if (i == numcampos()) {
+        _depura("Campo: " + campo + " no existe en la consulta: " + m_query, 2);
+        return (-1);
+    } // end if
+    return (i);
+}
 
 
 /** Esta funcion devuelve el valor del campo posicion del registro
@@ -130,11 +134,9 @@ int cursor2::numcampo(QString campo) {
 QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
         registro = registroactual;
-    }// end if
-    //    return (QString::fromLatin1(PQgetvalue(result, registro, posicion)));
+    } // end if
     return (QString::fromUtf8(PQgetvalue(result, registro, posicion)));
-
-}// end valor
+}
 
 
 /** Esta funcion devuelve el valor del campo especificado (por nombre) del registro
@@ -144,228 +146,222 @@ QString cursor2::valor(int posicion, int registro) {
   * \return El valor de la posicion.
   */
 QString cursor2::valor(QString campo, int registro) {
-    int i=0;
+    int i = 0;
     if (registro == -1) {
         registro = registroactual;
-    }// end if
+    } // end if
 
     i = numcampo(campo);
-    if ( i == -1)
+    if (i == -1)
         return "";
 
-    return(QString::fromUtf8(PQgetvalue(result, registro, i)));
-}// end valor
+    return (QString::fromUtf8(PQgetvalue(result, registro, i)));
+}
 
 
-/** \return Devuelve la posicion siguiente al registro que se est�recorriendo
-  */
+/// Devuelve la posicion siguiente al registro que se esta recorriendo.
 int cursor2::siguienteregistro() {
     return (++registroactual);
 }
 
-/** \return Devuelve la posicion anterior al registro que se est�recorriendo
-  */
+/// Devuelve la posicion anterior al registro que se esta recorriendo.
 int cursor2::registroanterior() {
     return (--registroactual);
 }
 
-/** \return Devuelve la posicion del primer registro de la tabla de registros
-  */
+/// Devuelve la posicion del primer registro de la tabla de registros.
 int cursor2::primerregistro() {
-    registroactual=0;
+    registroactual = 0;
     return (0);
-}// end primerregistro
+}
 
 
-/** \return Devuelve el ultimo registro de la tabla de registros
-  */
+/// Devuelve el ultimo registro de la tabla de registros.
 int cursor2::ultimoregistro() {
-    registroactual = nregistros-1;
+    registroactual = nregistros - 1;
     return (registroactual);
-}// end ultimoregistro
+}
 
 
-/** \return Devuelve TRUE si el registro est�en la posicion final, o si esta vacio
-  */
+/// Devuelve TRUE si el registro esta en la posicion final, o si esta vacio.
 bool cursor2::eof() {
     if (nregistros == 0) {
-        return(true);
-    }// end if
-    return(registroactual >= nregistros);
-}// end if
+        return (true);
+    } // end if
+    return (registroactual >= nregistros);
+}
 
 
-/** \return Devuelve TRUE si el registro esta en la posicion inicial, o si esta vacio
-  */
+/// Devuelve TRUE si el registro esta en la posicion inicial, o si esta vacio.
 bool cursor2::bof() {
     if (nregistros == 0) {
         return(true);
-    }// end if
+    } // end if
     return(registroactual < 0);
-}// end if
-
-/** \return devuelve TRUE si es el ltimo registro a considerar */
-bool cursor2::esultimoregistro() {
-    return (registroactual == nregistros-1);
-}// end ultimoregistro
-
-/** \return devuelve TRUE si es el primer registro a consear e el query. */
-bool cursor2::esprimerregistro() {
-    return (registroactual == 0);
-}// end ultimoregistro
-
-
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
-// -----------------------------------------------------------------
-
-/** Constructor de la clase, no hace nada de nada de nada */
-postgresiface2::postgresiface2() {
-    m_transaccion= FALSE;
 }
 
-/** Finaliza la conexi� con la base de datos */
+
+/// devuelve TRUE si es el ltimo registro a considerar.
+bool cursor2::esultimoregistro() {
+    return (registroactual == nregistros - 1);
+}
+
+
+/// devuelve TRUE si es el primer registro a consear e el query.
+bool cursor2::esprimerregistro() {
+    return (registroactual == 0);
+}
+
+
+/// Constructor de la clase, no hace nada de nada de nada.
+postgresiface2::postgresiface2() {
+    m_transaccion = FALSE;
+}
+
+/// Finaliza la conexion con la base de datos.
 void postgresiface2::terminar() {
     PQfinish(conn);
-}// end terminar
+}
 
-/** Destructor de la clase que al igual que \ref terminar termina la conexi� con la base de datos */
+
+/// Destructor de la clase que al igual que \ref terminar termina la conexion
+/// con la base de datos.
 postgresiface2::~postgresiface2() {
-    /** close the connection to the database and cleanup */
+    /// close the connection to the database and cleanup.
     PQfinish(conn);
-}// end -postgresiface2
+}
 
-/** Inicializa la conexi� con la base de datos mediante los par�etro especificados
+
+/** Inicializa la conexion con la base de datos mediante los parametro especificados
   * Precisamente no lo hace el constructor debido a la ausencia de dichos datos.
   * \param nomdb Indica el nombre de la base de datos
-  * \param user Indica el usuario que hace la operaci� a ojos de la base de datos.
-  * \param passwd Indica la contrase� que utiliza el usuario para autentificarse
+  * \param user Indica el usuario que hace la operacion a ojos de la base de datos.
+  * \param passwd Indica la contrasenya que utiliza el usuario para autentificarse
   * \return Si todo va bien devuelve 0, en caso contrario devuelve 1
   */
 int postgresiface2::inicializa(QString nomdb) {
-    dbName=nomdb;
-    pghost = confpr->valor(CONF_SERVIDOR);             /** host name of the backend server */
-    pgport = confpr->valor(CONF_PUERTO);              /** port of the backend server */
-    pgoptions = "";           /** special options to start up the backend server */
-    pgtty = "";               /** debugging tty for the backend server */
+    dbName = nomdb;
+    pghost = confpr->valor(CONF_SERVIDOR); /// host name of the backend server.
+    pgport = confpr->valor(CONF_PUERTO); /// port of the backend server.
+    pgoptions = ""; /// special options to start up the backend server.
+    pgtty = ""; /// debugging tty for the backend server.
     QString conexion;
 
     QString user = confpr->valor(CONF_LOGIN_USER);
     QString passwd = confpr->valor(CONF_PASSWORD_USER);
 
-
-
     /// Antes no resolvia bien en caso de querer hacer conexiones al ordenador local.
-    /// Ahora si se pone -- se considera conexion� local.
+    /// Ahora si se pone -- se considera conexion local.
     if (pghost != "--")
-        conexion = "host="+pghost;
-    conexion += " port="+pgport;
-    conexion += " dbname="+dbName;
+        conexion = "host = " + pghost;
+    conexion += " port = " + pgport;
+    conexion += " dbname = " + dbName;
     if (user != "")
-        conexion += " user="+user;
+        conexion += " user = " + user;
     if (passwd != "")
-        conexion += " password="+passwd;
+        conexion += " password = " + passwd;
 
-    _depura(conexion,0);
+    _depura(conexion, 0);
     conn = PQconnectdb(conexion.toAscii().data());
     if (PQstatus(conn) == CONNECTION_BAD)  {
-        _depura("Connection to database '"+dbName+"' failed.\n",0);
-        if (passwd != "" && confpr->valor(CONF_ALERTAS_DB)== "Yes")
-            _depura(PQerrorMessage(conn),2);
+        _depura("Connection to database '" + dbName + "' failed.\n", 0);
+        if (passwd != "" && confpr->valor(CONF_ALERTAS_DB) == "Yes")
+            _depura(PQerrorMessage(conn), 2);
         else
-            _depura(PQerrorMessage(conn),0);
-        return(1);
-    }// end if
-    _depura("La conexion con la base de datos ha ido bien, ahora vamos a por la fecha",0);
+            _depura(PQerrorMessage(conn), 0);
+        return (1);
+    } // end if
+    _depura("La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0);
     formatofecha();
     return(0);
-}// end inicializa
+}
 
 
 /** Cambia el formato de fecha de la base de datos para que usemos la
-  * fecha espa�la dd/mm/yyyy
+  * fecha espayola dd/mm/yyyy
   * \return Devuelve 0 si no ha habido problemas, en caso contrario devuelve 1
   */
 int postgresiface2::formatofecha() {
-    QString query="";
-    PGresult   *res;
-    query= "SET DATESTYLE TO SQL,European";
+    QString query = "";
+    PGresult *res;
+    query = "SET DATESTYLE TO SQL, European";
     res = PQexec(conn, query.toAscii().data());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
         _depura( "Cambio del formato de fecha command failed");
-    }// end if
+    } // end if
     PQclear(res);
 
     /// Establecemos la codificación por defecto a UNICODE.
-    /// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en SQL_ASCII QUE funciona bastante mejor.
+    /// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en
+    /// SQL_ASCII QUE funciona bastante mejor.
     query = "SET client_encoding = 'UTF8'";
     res = PQexec(conn, query.toAscii().data());
     if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
-        _depura( "Cambio del formato de Codificación");
-    }// end if
+        _depura( "Cambio del formato de codificacion");
+    } // end if
     PQclear(res);
-    return(0);
+    return (0);
 }
 
 
-/** Con esta sentencia se inicia una transacci� en la base de datos
+/** Con esta sentencia se inicia una transaccion en la base de datos
   * Las transacciones lo que indican es que el usuario se ha apoderado de la base de datos durante
-  * un tiempo y que la operaci� que va a transcurrir debe hacerse sin concurrencia.
+  * un tiempo y que la operacion que va a transcurrir debe hacerse sin concurrencia.
   * \return Si todo ha funcionado bien devuelve un 0, en caso contrario devuelve un 1
   */
 int postgresiface2::begin() {
-    _depura("postgresiface2::begin",0);
+    _depura("postgresiface2::begin", 0);
     if (m_transaccion) {
-        _depura("Ya estamos dentro de una transaccion",2);
+        _depura("Ya estamos dentro de una transaccion", 2);
         return -1;
-    }// end if
-    PGresult   *res;
+    } // end if
+    PGresult *res;
     res = PQexec(conn, "BEGIN");
     _depura("-- BEGIN TRANSACTION --");
-    if (!res || PQresultStatus(res) != PGRES_COMMAND_OK)  {
-        _depura( "BEGIN command failed");
+    if (!res || PQresultStatus(res) != PGRES_COMMAND_OK) {
+        _depura("BEGIN command failed");
         PQclear(res);
         return (-1);
-    }// end if
+    } // end if
     PQclear(res);
     m_transaccion = TRUE;
-    _depura("END postgresiface2::begin",0);
+    _depura("END postgresiface2::begin", 0);
     return(0);
 }
 
 
-/** Con esta sentencia se termina un bloque de transacci� dando por buenos todos los resultados que
-  * Se han almacenado dentro de �te. Y quedando almacenados en la base de datos de forma definitiva.
-  */
+/// Con esta sentencia se termina un bloque de transaccion dando por buenos todos los
+/// resultados que se han almacenado dentro. Y quedando almacenados en la base
+/// de datos de forma definitiva.
 void postgresiface2::commit() {
-    _depura("postgresiface2::commit",0);
+    _depura("postgresiface2::commit", 0);
     if (!m_transaccion) {
-        _depura("No estamos en ninguna transaccion",2);
+        _depura("No estamos en ninguna transaccion", 2);
         return;
-    }// end if
-    PGresult   *res;
+    } // end if
+    PGresult *res;
     _depura("-- COMMIT TRANSACTION --");
     res = PQexec(conn, "COMMIT");
     PQclear(res);
-    m_transaccion=FALSE;
-    _depura("postgresiface2::commit",0);
+    m_transaccion = FALSE;
+    _depura("postgresiface2::commit", 0);
 }
 
 
-/** Con esta sentencia se termina un bloque de transacci� dando por malos los resultados de la operaci�
-  * Y dejandose la base de datos en el mismo estado que cuando se inici�la transacci�.
-  */
+/// Con esta sentencia se termina un bloque de transaccion dando por malos los resultados
+/// de la operacion y dejandose la base de datos en el mismo estado que cuando se
+/// inicio la transaccion.
 void postgresiface2::rollback() {
-    _depura("postgresiface2::rollback",0);
+    _depura("postgresiface2::rollback", 0);
     if (!m_transaccion) {
-        _depura("No estamos en ninguna transaccion",2);
+        _depura("No estamos en ninguna transaccion", 2);
         return;
-    }// end if
-    PGresult   *res;
+    } // end if
+    PGresult *res;
     res = PQexec(conn, "ROLLBACK");
     PQclear(res);
-    m_transaccion=FALSE;
-    _depura("END postgresiface2::rollback",0);
+    m_transaccion = FALSE;
+    _depura("END postgresiface2::rollback", 0);
 }
 
 
@@ -401,16 +397,14 @@ int postgresiface2::ejecuta(QString Query) {
         PQclear(result);
         _depura("postgresiface2::ejecuta",0);
         return 0;
-    }// end try
-
-    catch (...) {
+    } catch (...) {
         _depura("SQL command failed: "+Query);
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
         QString mensaje = "Error al intentar modificar la base de datos:\n";
         msgError(mensaje+(QString)PQerrorMessage(conn),Query+"\n"+(QString)PQerrorMessage(conn));
         PQclear(result);
         throw -1;
-    }// end catch
+    } // end try
 }
 
 
@@ -760,57 +754,16 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
                   sanearCadena(nodebe).toAscii().data(),
                   sanearCadena(nohaber).toAscii().data() );
     return(ejecuta(query));
-}// end nuevacuenta
-
-/*
-
-int postgresiface2::nuevoasiento(QString nombre, QString fecha, int numasiento, int clase) {
-    // clase => 0=Apertura, 1=Normal, 98=Regularizaci� 99=Cierre
-    QString query="";
-    int val;
-    int ordenasiento;
-    //0=Apertura, 1=Normal, 98=Regularizaci� 99=Cierre
-    if (numasiento == 0) {
-        query="SELECT max(idasiento) FROM asiento";
-        cursor2 *cur=cargacursor(query,"cargaasientoseq");
-        if (!cur->eof())
-            val = atoi(cur->valor(0).toAscii().data());
-        else
-            val=0;
-        val++;
-        delete cur;
-    } else {
-        val = numasiento;
-    }// end if
-    query.sprintf("SELECT MAX(ordenasiento) FROM asiento WHERE EXTRACT(YEAR FROM fecha)='%s'",fecha.right(4).toAscii().data());
-    cursor2 *cur=cargacursor(query,"cargaasientos");
-    if (!cur->eof())
-        ordenasiento = atoi(cur->valor(0).toAscii().data());
-    else
-        ordenasiento=0;
-    ordenasiento++;
-    delete cur;
-    query.sprintf("INSERT INTO asiento (idasiento,descripcion, fecha, ordenasiento, clase) VALUES (%d,'%s','%s', %d, %d)",
-                  val,
-                  sanearCadena(nombre).toAscii().data(),
-                  sanearCadena(fecha).toAscii().data(),
-                  ordenasiento,
-                  clase);
-    int error = ejecuta(query);
-    if (error)
-        return -1;
-    return(val);
-}// end nuevoasiento
+}
 
 
-*/
 
 cursor2 *postgresiface2::cargaempresas() {
     QString query;
     query= "SELECT * FROM empresa";
     cursor2 *cur=cargacursor(query,"cargaempresas");
     return(cur);
-}// end cargaempresas
+}
 
 
 
@@ -831,6 +784,7 @@ QString postgresiface2::sanearCadena(QString cadena) {
     free(buffer);
     return cadenaLimpia;
 }
+
 
 /** Devuelve el valor de una propiedad de la empresa
   * Las propiedades de la empresa son valores asociados a �ta de la forma Nombre=Valor. 
@@ -860,6 +814,5 @@ QString postgresiface2::propiedadempresa(QString nombre) {
         value= PQgetvalue(result, 0, 2);
     PQclear(result);
     return(value);
-}// end propiedadempresa
-
+}
 

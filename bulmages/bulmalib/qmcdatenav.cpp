@@ -1,48 +1,50 @@
-/* -*- mode: C++ -*-
- *
- * $Id$
- *
- * Copyright (c) 1998 - 2000, Michael van der Westhuizen.
- * All rights reserved.
- *
- * See LICENSE.BSD for details.
- *
- * If this file is being built with or linked against any part of the
- * K Desktop Environment, KOffice Office Suite, KDE Libraries or KDE core
- * applications, the licensing model that may, at the developers
- * discretion, apply is LGPL.
- */
-#include <qpixmap.h>
-#include <qpainter.h>
-#include <qrect.h>
-#include <q3popupmenu.h>
-#include <qcursor.h>
-#include "qmcdatenav.h"
-//Added by qt3to4:
+/***************************************************************************
+ *   Copyright (c) 1998 - 2000, Michael van der Westhuizen.                *
+ *   All rights reserved.                                                  *
+ *                                                                         *
+ *   See LICENSE.BSD for details.                                          *
+ *                                                                         *
+ * If this file is being built with or linked against any part of the      *
+ * K Desktop Environment, KOffice Office Suite, KDE Libraries or KDE core  * 
+ * applications, the licensing model that may, at the developers           *
+ * discretion, apply is LGPL.                                              *
+ *                                                                         *
+ *   Modified by:                                                          *
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ ***************************************************************************/
+
+#include <QPixmap>
+#include <QPainter>
+#include <QRect>
+#include <Q3PopupMenu>
+#include <QCursor>
 #include <QPaintEvent>
 #include <QKeyEvent>
 #include <QMouseEvent>
 
+#include "qmcdatenav.h"
+
 
 struct QmcDate {
-    QDate d;	// Date
-    QRect r;	// Rect
-    bool s;	// Selected
-    bool t;	// Today
+    QDate d;  /// Date
+    QRect r;  /// Rect
+    bool s;   /// Selected
+    bool t;   /// Today
 };
 
-Q3PtrList<QmcDate> dateList;	// All visible days
+Q3PtrList<QmcDate> dateList; /// All visible days
 
-Q3PtrList<QDate> *eventDayList;	// Only ever a pointer to a list
-Q3PtrList<QDate> *nonWorkingDayList;// Ditto
+Q3PtrList<QDate> *eventDayList;      /// Only ever a pointer to a list
+Q3PtrList<QDate> *nonWorkingDayList; /// Ditto
 
-bool doOutlook; // Are we to paint in outlook compatible mode?
+bool doOutlook; /// Are we to paint in outlook compatible mode?
 
-// All QRects below are for finding where a click really was.
+/// All QRects below are for finding where a click really was.
 QRect captionRect;
 QRect leftArrowRect;
 QRect rightArrowRect;
-
 
 QRect sunBR;
 QRect monBR;
@@ -55,51 +57,51 @@ QRect satBR;
 QRect daysRect;
 
 
-QmcDateNav::QmcDateNav( class QWidget * parent, const char * name )
-        : QWidget( parent, name ) {
-    currentMonth = QDate( QDate::currentDate() );
+QmcDateNav::QmcDateNav(class QWidget * parent, const char * name)
+        : QWidget(parent, name) {
+    currentMonth = QDate(QDate::currentDate());
     init();
     setFocusPolicy(Qt::StrongFocus);
 }
 
 
-QmcDateNav::QmcDateNav( const class QDate & d, class QWidget * parent, const char * name )
-        : QWidget( parent, name ) {
-    currentMonth = QDate( d );
-    if( !currentMonth.isValid() ) {
-        currentMonth = QDate( QDate::currentDate() );
+QmcDateNav::QmcDateNav(const class QDate & d, class QWidget * parent, const char * name)
+        : QWidget(parent, name) {
+    currentMonth = QDate(d);
+    if(!currentMonth.isValid()) {
+        currentMonth = QDate(QDate::currentDate());
     }
     init();
 }
 
 
 QmcDateNav::~QmcDateNav() {
-    if( pm )
+    if (pm)
         delete pm;
-    if( sevenMonthPopup )
+    if (sevenMonthPopup)
         delete sevenMonthPopup;
-    if( rbPopup )
+    if (rbPopup)
         delete rbPopup;
-    dateList.setAutoDelete( true );	// Ensures the next line works
-    dateList.clear();			// will delete all QmcDate objects
+    dateList.setAutoDelete(true);   /// Ensures the next line works
+    dateList.clear();               /// will delete all QmcDate objects
 
-    // Do NOT delete these - that's the job of the app programmer
+    /// Do NOT delete these - that's the job of the app programmer
     eventDayList = 0;
     nonWorkingDayList = 0;
 }
 
 
 void QmcDateNav::init() {
-    sevenMonthPopup = new Q3PopupMenu( this, "sevenMonthPopup" );
-    connect( sevenMonthPopup, SIGNAL( activated( int ) ), this, SLOT( monthMenuClicked( int ) ) );
+    sevenMonthPopup = new Q3PopupMenu(this, "sevenMonthPopup");
+    connect(sevenMonthPopup, SIGNAL(activated(int)), this, SLOT(monthMenuClicked(int)));
 
-    rbPopup = new Q3PopupMenu( this, "rbPopup" );
-    connect( rbPopup, SIGNAL( activated( int ) ), this, SLOT( rbMenuClicked( int ) ) );
+    rbPopup = new Q3PopupMenu(this, "rbPopup");
+    connect(rbPopup, SIGNAL(activated(int)), this, SLOT(rbMenuClicked(int)));
 
-    dateList.setAutoDelete( true );
+    dateList.setAutoDelete(true);
     dateList.clear();
 
-    // Initialise to 0 to prevent crashes
+    /// Initialise to 0 to prevent crashes.
     eventDayList = 0;
     nonWorkingDayList = 0;
 
@@ -108,13 +110,12 @@ void QmcDateNav::init() {
     doOutlook = false;
     pm = 0;
 
-    setMouseTracking( true ); // So we can do the cursor changes properly
-    //setFocusPolicy( QWidget::NoFocus ); // Trust me...
+    setMouseTracking(true); /// So we can do the cursor changes properly
 }
 
 
 QSizePolicy QmcDateNav::sizePolicy() const {
-    return QSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed, false );
+    return QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed, false);
 }
 
 
@@ -129,72 +130,70 @@ QSize QmcDateNav::minimumSizeHint() const {
     int h = 0;
     int fw = frame() ? 1 : 0;
 
-    w1 = ( ( fontMetrics().width( "00" ) + 6 ) * 7 ) + 12 + ( fw * 2 );
-    w2 = fontMetrics().width( tr( "SEPTEMBER" ) ) + fontMetrics().width( " 0000" ) + 12 + 6 + ( fw * 2 );
+    w1 = ((fontMetrics().width("00") + 6 ) * 7 ) + 12 + (fw * 2);
+    w2 = fontMetrics().width(tr("SEPTEMBER")) + fontMetrics().width(" 0000") + 12 + 6 + (fw * 2);
 
     w = w1 > w2 ? w1 : w2;
 
-    h = fw + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect( QChar( 'S' ) ).height() + 3 + 1;
-    h += ( ( fontMetrics().boundingRect( QChar( '0' ) ).height() ) * 6 ) + 30 + 8 + fw + 1;
+    h = fw + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect(QChar('S')).height() + 3 + 1;
+    h += ((fontMetrics().boundingRect(QChar('0')).height()) * 6 ) + 30 + 8 + fw + 1;
 
-    return QSize( w, h );
+    return QSize(w, h);
 }
 
 
-void QmcDateNav::paintEvent( QPaintEvent * ) {
-    if( pmDirty || pm == 0 )
+void QmcDateNav::paintEvent(QPaintEvent *) {
+    if (pmDirty || pm == 0)
         makePixmap();
     QPainter p;
 
-    p.begin( pm, this );
-    if( pmDirty && pm != 0 ) {
-        p.fillRect( 0, 0, width(), height(), colorGroup().base() );
-        if( frame() )
-            drawFrame( p );
-        drawCaption( p );
-        drawDays( p );
-        drawDates( p );
+    p.begin(pm, this);
+    if (pmDirty && pm != 0) {
+        p.fillRect(0, 0, width(), height(), colorGroup().base());
+        if (frame())
+            drawFrame(p);
+        drawCaption(p);
+        drawDays(p);
+        drawDates(p);
     }
     p.end();
 
-    p.begin( this );
-    p.drawPixmap( 0, 0, *pm );
+    p.begin(this);
+    p.drawPixmap(0, 0, *pm);
     p.end();
     pmDirty = false;
 
     drawSelections();
 
-    // The 'today' indicator - a red box around todays date.
-    if( currentMonth.month() == QDate::currentDate().month() ) {
-        for( int i = 0; i <= 41; i++ ) {
-            if( dateList.at( i )->t ) {
-                drawToday( i );
+    /// The 'today' indicator - a red box around todays date.
+    if (currentMonth.month() == QDate::currentDate().month()) {
+        for (int i = 0; i <= 41; i++) {
+            if (dateList.at(i)->t) {
+                drawToday(i);
                 break;
-            }
-        }
-    }
+            } // end if
+        } // end for
+    } // end if
 
-    // If we set this in init(), the widget is black before the first paint event, which is not cool.
-    // Once we've done the initial paint, this will reduce flicker.
-    
-//Esto se ha comentado para evitar que el calendario parpadee
-//     setBackgroundMode( NoBackground );
+    /// If we set this in init(), the widget is black before the first paint event,
+    /// which is not cool.
+    /// Once we've done the initial paint, this will reduce flicker.
 }
 
 
 void QmcDateNav::makePixmap() {
-    if( !pmDirty )
+    if (!pmDirty)
         return;
 
-    if( pm != 0 )
+    if (pm != 0)
         delete pm;
 
-    pm = new QPixmap( width(), height() );
+    pm = new QPixmap(width(), height());
 }
 
 
-void QmcDateNav::setFrame( bool f ) {
-    if( f == doFrame )
+void QmcDateNav::setFrame(bool f) {
+    if (f == doFrame)
         return;
     doFrame = f;
     updateGeometry();
@@ -206,24 +205,24 @@ bool QmcDateNav::frame() const {
 }
 
 
-void QmcDateNav::drawArrows( QPainter & p ) {
-    QRect * tbr = drawCaptionText( p );
-    int topBase = ( ( tbr->bottom() + 2 ) - ( frame() ? 1 : 0 ) ) / 2;
+void QmcDateNav::drawArrows(QPainter & p) {
+    QRect * tbr = drawCaptionText(p);
+    int topBase = ((tbr->bottom() + 2) - (frame() ? 1 : 0)) / 2;
     delete tbr;
     tbr = 0;
-    int leftBase = 4 + ( frame() ? 1 : 0 );
-    captionRect.setLeft( leftBase + 1 + 4 + 2 );
-    leftArrowRect.setLeft( leftBase );
-    leftArrowRect.setRight( leftBase + 1 + 4 + 1 );
-    leftArrowRect.setTop( topBase + 1 - 4 - 1 );
-    leftArrowRect.setBottom( topBase + 1 + 4 + 1 );
+    int leftBase = 4 + (frame() ? 1 : 0);
+    captionRect.setLeft(leftBase + 1 + 4 + 2);
+    leftArrowRect.setLeft(leftBase);
+    leftArrowRect.setRight(leftBase + 1 + 4 + 1);
+    leftArrowRect.setTop(topBase + 1 - 4 - 1);
+    leftArrowRect.setBottom(topBase + 1 + 4 + 1);
 
-    p.setPen( colorGroup().text() );
+    p.setPen(colorGroup().text());
 
-    // left triangle - outline
-    p.drawLine( leftBase + 1, topBase + 1, leftBase + 1 + 4, topBase + 1 - 4 );
-    p.drawLine( leftBase + 1, topBase + 1, leftBase + 1 + 4, topBase + 1 + 4 );
-    p.drawLine( leftBase + 1 + 4, topBase + 1 - 4, leftBase + 1 + 4, topBase + 1 + 4 );
+    /// left triangle - outline.
+    p.drawLine(leftBase + 1, topBase + 1, leftBase + 1 + 4, topBase + 1 - 4);
+    p.drawLine(leftBase + 1, topBase + 1, leftBase + 1 + 4, topBase + 1 + 4);
+    p.drawLine(leftBase + 1 + 4, topBase + 1 - 4, leftBase + 1 + 4, topBase + 1 + 4);
 
     // left triangle - fill
     p.drawLine( leftBase + 1 + 3, topBase + 1 - 3, leftBase + 1 + 3, topBase + 1 + 3 );
@@ -1435,8 +1434,3 @@ void QmcDateNav::rbMenuClicked( int id ) {
  *
  * \reimp
  */
-
-
-
-
-

@@ -110,15 +110,15 @@ float fround(float n, unsigned d) {
 
 
 /// Esta funcion convierte un numero con decimales a un entero. Usando la regla
-/// que si el el primer decimal es mayor o igual  a 5 se devuelve el entero superior.AInteligentesView
+/// que si el el primer decimal es mayor o igual a 5 se devuelve el entero superior. AInteligentesView
 /// valor = Numero a convertir.
 int roundI(double valor) {
     int retorno;
     double mayor = floor(valor);
     if ((mayor - valor) >= 0.5)
-        retorno = (int)mayor - 1;
+        retorno = (int) mayor - 1;
     else
-        retorno = (int)mayor;
+        retorno = (int) mayor;
     return retorno;
 }
 
@@ -183,7 +183,7 @@ QDate normalizafecha(QString fechaintro) {
 /// Devuelve un QString con el codigo ajustado.
 
 /// BUG: --- Esta funcion tiene un uso específico de bulmacont y por eso no
-/// deberia esta en bulmalib.
+/// deberia estar en bulmalib.
 QString ajustacodigo (QString cad, unsigned int num1) {
     QString cod = cad;
     unsigned int longcad = cad.length();
@@ -206,7 +206,7 @@ QString ajustacodigo (QString cad, unsigned int num1) {
 /// Sustituye cadenas en un archivo.
 void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString archivo2) {
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
-    system (cadena.toAscii().data());
+    system(cadena.toAscii().data());
 }
 
 
@@ -219,10 +219,10 @@ void generaPDF(const QString arch) {
 #ifdef WINDOWS
 
     cadsys = confpr->valor(CONF_PYTHON) + " " + confpr->valor(CONF_PROGDATA) + "trml2pdf\\trml2pdf.py " + arch + ".rml > " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
-    system (cadsys.ascii());
+    system(cadsys.ascii());
     _depura(cadsys, 0);
     cadsys = confpr->valor(CONF_FLIP) + " -u " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
-    system (cadsys.ascii());
+    system(cadsys.ascii());
     _depura(cadsys, 0);
 #else
 
@@ -241,6 +241,7 @@ void invocaPDF(const QString arch) {
     system(cadsys.ascii());
 }
 
+
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
     QString cadsys = "mailsend -h mail.iglues.org -d iglues.org -f bulmages@iglues.org -t test@iglues.org -sub test -m test";
@@ -255,7 +256,6 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
 #define __DEBUGMODE
-//#undef __DEBUGMODE
 void _depura(QString cad, int nivel, QString param) {
 
 #ifdef __DEBUGMODE
@@ -268,8 +268,6 @@ void _depura(QString cad, int nivel, QString param) {
     } // end if
 
     static QTextStream out(&file);
-
-
     static int supnivel = 0;
     static int indice = 0;
     static QString mensajesanulados[7000];
@@ -277,41 +275,26 @@ void _depura(QString cad, int nivel, QString param) {
     if (nivel == 5) {
         supnivel = 0;
         nivel = 2;
-    }
-
+    } // end if
     if (nivel ==4) {
         supnivel = 2;
         nivel = 2;
-    }
-
-
-
-
+    } // end if
     if (nivel == 0) {
-        //       if(g_main != NULL)
-        //          g_main->statusBar()->message(cad);
         out << cad << " " << param << "\n";
-        //    fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
     } else if (nivel == 1) {
-        //    out << cad << " " << param << "\n";
-        //         fprintf(stderr, "%s\n", (cad + " " + param).toAscii().data());
         out << cad << " " << param << "\n";
-
-    }
-
-
+    } // end if
     for (int i = 0; i < indice; i++) {
         if (cad == mensajesanulados[i]) {
             return;
         } // end if
     } // end for
-
-
     if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
         out << cad << " " << param << "\n";
         int err = QMessageBox::question(NULL,
                                         QApplication::translate("funcaux", "Informacion de depuracion "),
-                                        cad+" "+param,
+                                        cad + " " + param,
                                         QApplication::translate("funcaux", "&Continuar"),
                                         QApplication::translate("funcaux", "&Omitir"),
                                         QString::null, 0, 1);
@@ -322,13 +305,12 @@ void _depura(QString cad, int nivel, QString param) {
 
     file.flush();
 #else
-    if (nivel == 2)
-    {
+
+    if (nivel == 2) {
         out << cad << " " << param << "\n";
         QMessageBox::question(NULL,
                               QApplication::translate("funcaux", "Informacion de depuracion"),
-                              cad,
-                              QApplication::translate("funcaux", "&Continuar"),
+                              cad, QApplication::translate("funcaux", "&Continuar"),
                               QString::null, 0);
     } // end if
 #endif
