@@ -40,7 +40,7 @@ private:
     bool m_modoConsulta;
 
 public:
-    familiasview(company *, QWidget *parent = 0, const char *name = 0);
+    familiasview(company *, QWidget *parent = 0);
     ~familiasview();
     bool trataModificado();
     void mostrarplantilla();

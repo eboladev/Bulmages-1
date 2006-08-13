@@ -32,7 +32,7 @@ class ClienteView :  public QWidget, public Ui_ClienteBase, public Cliente, publ
     Q_OBJECT
 
 public:
-    ClienteView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ClienteView(company *emp, QWidget *parent = 0);
     ~ClienteView();
 
 public:
@@ -41,7 +41,7 @@ public:
     void deleteClient();
     void closeEvent(QCloseEvent *);
     void emptyForm();
-    void pintaidcliente(QString ) {}
+    void pintaidcliente(QString) {}
     ;
     void pintanomcliente(QString val) {
         m_nomcliente->setText(val);
@@ -79,7 +79,6 @@ public:
     void pintamovilcliente(QString val) {
         mui_movilcliente->setText(val);
     };
-
     void pintafaxcliente(QString val) {
         m_faxcliente->setText(val);
     };
@@ -89,14 +88,14 @@ public:
     void pintaurlcliente(QString val) {
         m_urlcliente->setText(val);
     };
-    void pintafaltacliente(QString ) {}
+    void pintafaltacliente(QString) {}
     ;
-    void pintafbajacliente(QString ) {}
+    void pintafbajacliente(QString) {}
     ;
     void pintacomentcliente(QString val) {
         m_comentcliente->setText(val);
     };
-    void pintainactivocliente(QString ) {}
+    void pintainactivocliente(QString) {}
     ;
     void pintaprovcliente(QString val) {
         m_provcliente->setProvincia(val);

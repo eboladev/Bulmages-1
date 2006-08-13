@@ -34,7 +34,7 @@ class CobrosListSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    CobrosListSubForm(QWidget *parent = 0, const char *name = 0);
+    CobrosListSubForm(QWidget *parent = 0);
     ~CobrosListSubForm() {}
     ;
 };
@@ -54,9 +54,8 @@ private:
     QString mdb_idcobro;
 
 public:
-    CobrosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    CobrosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-               Qt::WFlags flag = 0);
+    CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0);
+    CobrosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~CobrosList();
     void presentar();
     void modoseleccion() {

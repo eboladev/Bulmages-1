@@ -31,8 +31,8 @@
 #define COL_DESCTIPOARTICULO  2
 
 
-TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, const char *name)
-        : QDialog(parent, name), dialogChanges(this) {
+TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent)
+        : QDialog(parent), dialogChanges(this) {
     setupUi(this);
     companyact = comp;
     m_listTipos->setColumnCount(3);

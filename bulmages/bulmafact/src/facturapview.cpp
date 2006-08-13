@@ -37,8 +37,8 @@ using namespace std;
 #include "pagoview.h"
 #include "funcaux.h"
 
-FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), FacturaProveedor(comp), dialogChanges(this) {
+FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), FacturaProveedor(comp), dialogChanges(this) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.

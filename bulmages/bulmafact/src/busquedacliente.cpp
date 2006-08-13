@@ -24,8 +24,8 @@
 #include "funcaux.h"
 
 
-BusquedaCliente::BusquedaCliente(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaCliente::BusquedaCliente(QWidget *parent)
+        : QWidget(parent) {
     _depura("BusquedaCliente::BusquedaCliente", 0);
     setupUi(this);
     companyact = NULL;
@@ -103,7 +103,7 @@ void BusquedaCliente::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-    ClientsList *clients = new ClientsList(companyact, diag, tr("Seleccione cliente", "company"), 0, ClientsList::SelectMode);
+    ClientsList *clients = new ClientsList(companyact, diag, 0, ClientsList::SelectMode);
     connect(clients, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (clients->cifclient() != "") {

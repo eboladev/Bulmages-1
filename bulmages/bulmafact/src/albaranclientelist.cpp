@@ -18,23 +18,23 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QFile>
 #include <QCheckBox>
+#include <QFile>
+#include <QMessageBox>
 #include <QTextStream>
 
 #include "albaranclientelist.h"
-#include "company.h"
 #include "albaranclienteview.h"
-#include "qtable1.h"
+#include "company.h"
 #include "funcaux.h"
+#include "qtable1.h"
 
 
-AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, name, flag) {
+AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
-    m_modo=editmodo;
+    m_modo = editmodo;
     mdb_idalbaran = "";
     if (m_modo == EditMode)
         meteWindow(windowTitle(), this);
@@ -42,8 +42,8 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, const char *name, Qt::WF
 }
 
 
-AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget (parent, name, flag) {
+AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
@@ -67,7 +67,7 @@ AlbaranClienteList::~AlbaranClienteList() {
 void AlbaranClienteList::presenta() {
     _depura("AlbaranClienteList::presenta\n");
 
-    cursor2 * cur= m_companyact->cargacursor("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
+    cursor2 * cur = m_companyact->cargacursor("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
     mui_list->cargar(cur);
     delete cur;
 
@@ -80,7 +80,7 @@ void AlbaranClienteList::presenta() {
 }
 
 
-void AlbaranClienteList::editar(int  row) {
+void AlbaranClienteList::editar(int row) {
     _depura("AlbaranClienteList::editar", 0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
     if (m_modo == 0) {
@@ -213,7 +213,7 @@ QString AlbaranClienteList::generarFiltro() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
     addSHeader("refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Referencia de albaran"));

@@ -37,8 +37,8 @@
 #include "funcaux.h"
 
 
-ArticuloList::ArticuloList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, name, flag), pgimportfiles(comp) {
+ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : QWidget(parent, flag), pgimportfiles(comp) {
     _depura("ArticuloList::INIT_ArticuloList()\n", 0);
     setupUi(this);
     m_companyact = comp;

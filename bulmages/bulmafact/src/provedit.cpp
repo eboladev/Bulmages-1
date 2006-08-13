@@ -21,14 +21,14 @@
 #include <QLineEdit>
 #include <QMessageBox>
 
-#include "provedit.h"
 #include "company.h"
 #include "funcaux.h"
 #include "plugins.h"
+#include "provedit.h"
 
 
-ProveedorView::ProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), DBRecord(comp), dialogChanges(this) {
+ProveedorView::ProveedorView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), DBRecord(comp), dialogChanges(this) {
     _depura("ProveedorView::ProveedorView", 0);
     try {
         setDBTableName("proveedor");

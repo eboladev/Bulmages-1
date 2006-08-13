@@ -41,7 +41,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     if (camp->nomcampo() != "codigocompletoarticulo")
         return;
     _depura("ListCompArticuloView::searchArticle", 0);
-    ArticuloList *artlist = new ArticuloList((company *)companyact(), NULL, theApp->translate("SubForm2Bf", "Seleccione articulo"), 0, ArticuloList::SelectMode);
+    ArticuloList *artlist = new ArticuloList((company *) companyact(), NULL, 0, ArticuloList::SelectMode);
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
@@ -50,13 +50,13 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     this->setEnabled(true);
     QString idArticle = artlist->idArticle();
     delete artlist;
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + idArticle);
+    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + idArticle);
     if (!cur->eof() ) {
         rec->setDBvalue("idarticulo", idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
 	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-	on_mui_list_editFinished(row,col);
+	on_mui_list_editFinished(row, col);
     } // end if
     delete cur;
     _depura("END SubForm2Bf::pressedAsterisk", 0);
@@ -71,24 +71,20 @@ void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
     (text);
 }
 
+
 void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
     _depura("SubForm2Bf::pressedMinus", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
-
-//    if (camp->nomcampo() != "codigocompletoarticulo")
-//        return;
-
     cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + rec->DBvalue("idarticulo"));
     if (!cur->eof() ) {
         rec->setDBvalue(camp->nomcampo(), cur->valor("obserarticulo"));
 	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-	on_mui_list_editFinished(row,col);
+	on_mui_list_editFinished(row, col);
     } // end if
     delete cur;
     _depura("END SubForm2Bf::pressedMinus", 0);
 }
-
 
 
 void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
@@ -97,7 +93,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof() ) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -125,7 +121,7 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
     if(m_delete)
         del = popup->addAction(tr("Borrar registro"));
     popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
+    QAction *ajustc = popup->addAction(tr("Ajustar columna"));
     QAction *ajustac = popup->addAction(tr("Ajustar altura"));
 
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));

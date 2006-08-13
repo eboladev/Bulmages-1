@@ -32,8 +32,8 @@
 
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
-TrabajadorView::TrabajadorView(company *emp, QWidget *parent, const char *name)
-        : QDialog(parent, name), dialogChanges(this) {
+TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
+        : QDialog(parent), dialogChanges(this) {
     m_companyact = emp;
     setupUi(this);
     m_archivoimagen = "";
@@ -113,20 +113,18 @@ void TrabajadorView::on_mui_guardar_clicked() {
         return;
     } // end if
 
-
     if (m_cursortrabajadores != NULL)
         delete m_cursortrabajadores;
     m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
 
-
     if (m_item)
         m_item->setText(m_apellidostrabajador->text() + m_nomtrabajador->text());
-
 
     if (m_archivoimagen != "") {
         QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg";
         system( cadena.toAscii().constData());
     } // end if
+
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
 }

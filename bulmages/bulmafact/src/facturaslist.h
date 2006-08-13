@@ -70,8 +70,8 @@ private:
     QString mdb_idfactura;
 
 public:
-    FacturasList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    FacturasList(company *,QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    FacturasList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    FacturasList(company *,QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~FacturasList();
     void setcompany (company *comp) {
         m_companyact = comp;

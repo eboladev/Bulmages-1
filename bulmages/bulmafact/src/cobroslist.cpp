@@ -33,8 +33,8 @@
 #include "funcaux.h"
 
 
-CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget (parent, name, flag) {
+CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
+        : QWidget (parent, flag) {
     setupUi(this);
     _depura("CobrosList::CobrosList", 0);
     m_companyact = NULL;
@@ -47,8 +47,8 @@ CobrosList::CobrosList(QWidget *parent, const char *name, Qt::WFlags flag)
 }
 
 
-CobrosList::CobrosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     _depura("CobrosList::CobrosList",0);
     m_companyact = comp;
@@ -249,7 +249,7 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-CobrosListSubForm::CobrosListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("cobro");
     setDBCampoId("idcobro");
     addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobro"));

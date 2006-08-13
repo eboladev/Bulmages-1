@@ -38,7 +38,7 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    ArticuloView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ArticuloView(company *emp, QWidget *parent = 0);
     ~ArticuloView();
     company *companyact() {
         return m_companyact;
@@ -50,14 +50,15 @@ public:
     int guardar();
     int borrar();
     int cargarcomboiva(QString);
-    void closeEvent( QCloseEvent *);
+    void closeEvent(QCloseEvent *);
 
 public slots:
     virtual void on_mui_guardar_clicked() {
-	try {
-   	     guardar();
-	} catch (...) {}
-    };
+        try {
+            guardar();
+        } catch (...) {}
+    }
+    ;
     virtual void on_mui_borrar_clicked();
     virtual void on_m_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_clicked();

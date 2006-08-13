@@ -28,7 +28,7 @@
 
 Inventario::Inventario(company *comp) : DBRecord(comp) {
     _depura("Inventario::Inventario", 0);
-    companyact=comp;
+    companyact = comp;
     setDBTableName("inventario");
     setDBCampoId("idinventario");
     addDBCampo("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Inventario", "Identificador inventario"));
@@ -75,7 +75,7 @@ void Inventario::pintaInventario() {
 
 /// Esta funcion carga un Inventario.
 int Inventario::cargar(QString idbudget) {
-    QString query = "SELECT * FROM inventario  WHERE idinventario=" + idbudget;
+    QString query = "SELECT * FROM inventario  WHERE idinventario = " + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);

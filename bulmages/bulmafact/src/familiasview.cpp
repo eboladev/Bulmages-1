@@ -35,8 +35,8 @@
 #define COL_CODFAMILIA 4
 
 
-familiasview::familiasview(company *comp, QWidget *parent, const char *name)
-        : QDialog(parent, name), dialogChanges(this) {
+familiasview::familiasview(company *comp, QWidget *parent)
+        : QDialog(parent), dialogChanges(this) {
     setupUi(this);
     companyact = comp;
 

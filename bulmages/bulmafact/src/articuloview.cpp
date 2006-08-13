@@ -39,8 +39,8 @@
 #include "plugins.h"
 
 
-ArticuloView::ArticuloView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
+ArticuloView::ArticuloView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
     _depura("ArticuloView::INIT_constructor()\n", 0);
     try {
         m_companyact = comp;

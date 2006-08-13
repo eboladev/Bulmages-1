@@ -27,6 +27,7 @@
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
+
 #include <fstream>
 
 #include "listalmacenview.h"
@@ -40,8 +41,8 @@ using namespace std;
 #include "funcaux.h"
 
 
-ListAlmacenView::ListAlmacenView( company *comp , QWidget *parent, const char *name)
-        : QDialog(parent, name, Qt::WDestructiveClose) {
+ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
+        : QDialog(parent, Qt::WDestructiveClose) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
     setupUi(this);
     companyact = comp;
@@ -55,7 +56,7 @@ ListAlmacenView::~ListAlmacenView() {}
 
 
 /// ===================================== SUBFORMULARIO ===============================================
-ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("almacen");
     setDBCampoId("idalmacen");
     addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Id almacen"));

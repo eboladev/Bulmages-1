@@ -33,8 +33,8 @@
 #include "configuracion.h"
 
 
-PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
@@ -44,8 +44,8 @@ PresupuestoList::PresupuestoList(QWidget *parent, const char *name, Qt::WFlags f
 }
 
 
-PresupuestoList::PresupuestoList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);

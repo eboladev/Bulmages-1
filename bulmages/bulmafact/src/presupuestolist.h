@@ -65,9 +65,8 @@ private:
     QString m_idpresupuesto;
 
 public:
-    PresupuestoList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    PresupuestoList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-                    Qt::WFlags flag = 0);
+    PresupuestoList(QWidget *parent = 0, Qt::WFlags flag = 0);
+    PresupuestoList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PresupuestoList();
     void presenta();
     int modo() {

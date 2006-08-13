@@ -28,7 +28,7 @@
 class InventariosSubForm : public SubForm2Bf {
     Q_OBJECT
 public:
-    InventariosSubForm(QWidget *parent = 0, const char *name = 0);
+    InventariosSubForm(QWidget *parent = 0);
     ~InventariosSubForm() {}
     ;
 public slots:
@@ -52,11 +52,11 @@ private:
     company *companyact;
 
 public:
-    InventariosView(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    InventariosView(company *,QWidget *parent = 0, const char *name = 0);
+    InventariosView(QWidget *parent = 0, Qt::WFlags flag = 0);
+    InventariosView(company *,QWidget *parent = 0);
     ~InventariosView();
     void inicializa();
-    void setcompany (company *comp) {
+    void setcompany(company *comp) {
         companyact = comp;
         mui_listado->setcompany(comp);
     };
@@ -67,14 +67,16 @@ public:
     };
 
 public slots:
-    virtual void on_mui_listado_itemDoubleClicked( QTableWidgetItem *) {
+    virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_crear_clicked() {
         companyact->s_newInventario();
     };
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_listado_itemDoubleClicked() {on_mui_editar_clicked();};
+    virtual void on_mui_listado_itemDoubleClicked() {
+        on_mui_editar_clicked();
+    };
     virtual void on_mui_borrar_clicked();
 };
 

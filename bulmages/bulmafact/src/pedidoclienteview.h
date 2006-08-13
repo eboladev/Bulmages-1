@@ -44,7 +44,7 @@ class PedidoClienteView : public QWidget, public Ui_PedidoClienteBase, public Pe
     Q_OBJECT
 
 public:
-    PedidoClienteView(company *, QWidget *parent = 0, const char *name = 0);
+    PedidoClienteView(company *, QWidget *parent = 0);
     ~PedidoClienteView();
     void closeEvent(QCloseEvent *);
     void generarAlbaran();
@@ -99,9 +99,10 @@ public slots:
     };
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar pedido de cliente."),
-                                              tr("Desea eliminar este pedido?"),
-                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this,
+                                       tr("Borrar pedido de cliente."),
+                                       tr("Desea eliminar este pedido?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
             if (!borrar()) {
                 dialogChanges_cargaInicial();

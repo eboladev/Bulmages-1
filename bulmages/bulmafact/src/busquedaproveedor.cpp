@@ -26,8 +26,8 @@
 #include "funcaux.h"
 
 
-BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaProveedor::BusquedaProveedor(QWidget *parent)
+        : QWidget(parent) {
     setupUi(this);
     companyact = NULL;
     mdb_idproveedor = "";
@@ -40,7 +40,7 @@ BusquedaProveedor::BusquedaProveedor(QWidget *parent, const char *name)
 void BusquedaProveedor::pinta() {
     m_semaforo = TRUE;
     m_cifproveedor->setText(mdb_cifproveedor);
-    m_nomproveedor->setText(mdb_codproveedor+".- "+mdb_nomproveedor);
+    m_nomproveedor->setText(mdb_codproveedor + ".- " + mdb_nomproveedor);
     m_semaforo = FALSE;
 }
 
@@ -50,7 +50,7 @@ BusquedaProveedor::~BusquedaProveedor() {}
 
 void BusquedaProveedor::setidproveedor(QString val) {
     mdb_idproveedor = val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor='" + mdb_idproveedor + "'";
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_cifproveedor = cur->valor("cifproveedor");
@@ -69,7 +69,7 @@ void BusquedaProveedor::setidproveedor(QString val) {
 
 void BusquedaProveedor::setcifproveedor(QString val) {
     mdb_cifproveedor = val;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='" + mdb_cifproveedor + "'";
+    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + mdb_cifproveedor + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
@@ -95,7 +95,7 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     QDialog *diag=new QDialog(0);
     diag->setModal(true);
 
-    ProveedorList *providers = new ProveedorList(companyact, diag, tr("Seleccione proveedor","company"), 0, ProveedorList::SelectMode);
+    ProveedorList *providers = new ProveedorList(companyact, diag, 0, ProveedorList::SelectMode);
 
     connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();

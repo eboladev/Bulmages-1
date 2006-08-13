@@ -41,7 +41,7 @@ class FacturaView : public QWidget, public Ui_FacturaBase, public Factura, publi
     Q_OBJECT
 
 public:
-    FacturaView(company *, QWidget *parent = 0, const char *name = 0);
+    FacturaView(company *, QWidget *parent = 0);
     ~FacturaView();
     void inicializar();
     void pintaidcliente(QString id) {
@@ -78,8 +78,8 @@ public:
             m_procesadafactura->setChecked(FALSE);
         }
     };
-    void pintatotales(Fixed , Fixed , Fixed , Fixed);
-    void closeEvent( QCloseEvent *);
+    void pintatotales(Fixed, Fixed, Fixed, Fixed);
+    void closeEvent(QCloseEvent *);
     virtual int guardar();
 
 public slots:
@@ -87,11 +87,11 @@ public slots:
         guardar();
     };
     virtual int cargar(QString id);
-
     virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar factura cliente."),
-                                              tr("Desea eliminar la factura de este cliente?"),
-                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this,
+                                       tr("Borrar factura cliente."),
+                                       tr("Desea eliminar la factura de este cliente?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
             if (!borrar()) {
                 dialogChanges_cargaInicial();

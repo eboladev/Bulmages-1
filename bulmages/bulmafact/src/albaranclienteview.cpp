@@ -18,36 +18,36 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QLabel>
-#include <QWidget>
 #include <QObject>
-#include <QComboBox>
 #include <QToolButton>
-#include <QCloseEvent>
+#include <QWidget>
 
 #include "albaranclienteview.h"
-#include "company.h"
-#include "clientslist.h"
 #include "articulolist.h"
+#include "clientslist.h"
+#include "cobroview.h"
+#include "company.h"
 #include "configuracion.h"
+#include "facturaslist.h"
+#include "facturaview.h"
+#include "funcaux.h"
+#include "informereferencia.h"
+#include "listdescalbaranclienteview.h"
+#include "listlinalbaranclienteview.h"
+#include "pedidoclienteview.h"
+#include "pedidosclientelist.h"
+#include "postgresiface2.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
-#include "pedidosclientelist.h"
-#include "pedidoclienteview.h"
-#include "facturaview.h"
-#include "informereferencia.h"
-#include "funcaux.h"
-#include "postgresiface2.h"
-#include "listlinalbaranclienteview.h"
-#include "listdescalbaranclienteview.h"
-#include "facturaslist.h"
-#include "cobroview.h"
 
 
-AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), AlbaranCliente(comp), dialogChanges(this) {
+AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), AlbaranCliente(comp), dialogChanges(this) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
     try {
         setupUi(this);
@@ -97,8 +97,7 @@ void AlbaranClienteView::s_verpresupuesto() {
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (cur->numregistros() > 1) {
-        PresupuestoList *list = new PresupuestoList(companyact, NULL,
-                                QApplication::translate("AlbaranClienteView", "Edicion de presupuestos"));
+        PresupuestoList *list = new PresupuestoList(companyact, NULL);
         list->modoseleccion();
         list->show();
 
@@ -128,8 +127,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            PedidoClienteView *bud = new PedidoClienteView(companyact, NULL,
-                                     QApplication::translate("AlbaranClienteView", "Edicion de presupuestos"));
+            PedidoClienteView *bud = new PedidoClienteView(companyact, NULL);
             companyact->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idpedidocliente"));
             bud->show();
@@ -209,7 +207,7 @@ void AlbaranClienteView::agregarFactura() {
     _depura("AlbaranClienteView::agregarFactura", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    FacturasList *fac = new FacturasList(companyact, diag, tr("Seleccione factura"), 0, FacturasList::SelectMode);
+    FacturasList *fac = new FacturasList(companyact, diag, 0, FacturasList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Hacemos que las opciones de filtrado del listado ya esten bien.

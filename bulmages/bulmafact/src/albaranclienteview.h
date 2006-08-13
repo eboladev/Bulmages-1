@@ -46,7 +46,7 @@ class AlbaranClienteView : public QWidget, public Ui_AlbaranClienteBase, public 
     Q_OBJECT
 
 public:
-    AlbaranClienteView(company *, QWidget *, const char *);
+    AlbaranClienteView(company *, QWidget *);
     ~AlbaranClienteView();
     void inicializar();
     void pintaIdAlbaran(QString) {}

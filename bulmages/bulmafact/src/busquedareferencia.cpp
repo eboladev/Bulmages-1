@@ -24,8 +24,8 @@
 #include "informereferencia.h"
 
 
-BusquedaReferencia::BusquedaReferencia(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaReferencia::BusquedaReferencia(QWidget *parent)
+        : QWidget(parent) {
     _depura("BusquedaReferencia::BusquedaReferencia", 0);
     setupUi(this);
     m_companyact = NULL;
@@ -35,10 +35,6 @@ BusquedaReferencia::BusquedaReferencia(QWidget *parent, const char *name)
 
 
 BusquedaReferencia::~BusquedaReferencia() {}
-
-
-
-
 
 
 /// Busqueda de clientes.
@@ -59,5 +55,4 @@ void BusquedaReferencia::on_mui_referencia_editingFinished() {
     _depura("END BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
 
 }
-
 

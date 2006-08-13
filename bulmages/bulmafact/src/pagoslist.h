@@ -34,7 +34,7 @@ class PagosListSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    PagosListSubForm(QWidget *parent = 0, const char *name = 0);
+    PagosListSubForm(QWidget *parent = 0);
     ~PagosListSubForm() {}
     ;
 };
@@ -53,9 +53,8 @@ private:
     QString mdb_idpago;
 
 public:
-    PagosList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    PagosList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-              Qt::WFlags flag = 0);
+    PagosList(QWidget *parent = 0, Qt::WFlags flag = 0);
+    PagosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PagosList();
     void presentar();
     void modoseleccion() {
@@ -96,7 +95,7 @@ public:
     QString generaFiltro();
 
 public slots:
-    virtual void on_mui_list_cellDoubleClicked(int , int);
+    virtual void on_mui_list_cellDoubleClicked(int, int);
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();

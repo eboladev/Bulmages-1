@@ -41,7 +41,7 @@ private:
     bool m_semaforo;
 
 public:
-    BusquedaCliente(QWidget *parent = 0, const char *name = 0);
+    BusquedaCliente(QWidget *parent = 0);
     ~BusquedaCliente();
     void setcompany(company *comp) {
         companyact = comp;

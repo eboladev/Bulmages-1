@@ -40,7 +40,7 @@ class CobroView : public QWidget, private Ui_CobroBase, public Cobro, public dia
     Q_OBJECT
 
 public:
-    CobroView(company *, QWidget *, const char *);
+    CobroView(company *, QWidget *);
     ~CobroView();
     void manageArticle(int);
     void closeEvent(QCloseEvent *);

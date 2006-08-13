@@ -41,7 +41,7 @@ class ListAlmacenSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    ListAlmacenSubForm(QWidget *parent = 0, const char *name = 0);
+    ListAlmacenSubForm(QWidget *parent = 0);
     ~ListAlmacenSubForm() {}
     ;
 
@@ -65,17 +65,17 @@ public:
     company *companyact;
 
 public:
-    ListAlmacenView(company *comp , QWidget *parent, const char *name = "");
+    ListAlmacenView(company *comp, QWidget *parent);
     ~ListAlmacenView();
 
 public slots:
     virtual void on_mui_aceptar_clicked() {
-	try {
-        mui_listado->guardar();
-        close();
-	} catch (...) {
-		mensajeInfo( "Error al guardar los almacenes");
-	} // end catch
+        try {
+            mui_listado->guardar();
+            close();
+        } catch (...) {
+            mensajeInfo("Error al guardar los almacenes");
+        } // end try
     };
 };
 

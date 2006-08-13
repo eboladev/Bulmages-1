@@ -24,8 +24,8 @@
 #include "company.h"
 
 
-BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent, const char *name)
-        : QComboBox(parent, name) {
+BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent)
+        : QComboBox(parent) {
     companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));

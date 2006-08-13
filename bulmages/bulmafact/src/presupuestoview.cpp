@@ -50,8 +50,8 @@ using namespace std;
 #define coma "'"
 
 
-PresupuestoView::PresupuestoView(company *comp , QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), presupuesto(comp), dialogChanges(this) {
+PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), presupuesto(comp), dialogChanges(this) {
     _depura("Inicializacion de PresupuestoView\n", 0);
     try {
         setupUi(this);

@@ -36,7 +36,7 @@ private:
     company *m_companyact;
     void closeEvent(QCloseEvent *);
 public:
-    ProveedorView(company *emp, QWidget *parent = 0, const char *name = 0);
+    ProveedorView(company *emp, QWidget *parent = 0);
     ~ProveedorView();
 public:
     virtual int cargar(QString);

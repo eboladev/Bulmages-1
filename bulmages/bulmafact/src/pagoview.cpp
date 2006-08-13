@@ -42,7 +42,7 @@ using namespace std;
 #include "funcaux.h"
 
 
-PagoView::PagoView(company *comp, QWidget *parent, const char *name)
+PagoView::PagoView(company *comp, QWidget *parent)
         : QWidget(parent), Pago(comp), dialogChanges(this) {
     try {
         setAttribute(Qt::WA_DeleteOnClose);
@@ -52,7 +52,7 @@ PagoView::PagoView(company *comp, QWidget *parent, const char *name)
         mui_refpago->setcompany(comp);
         dialogChanges_cargaInicial();
         companyact->meteWindow(windowTitle(), this, FALSE);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el pago"));
     } // end try
     _depura("Fin de la inicializacion de PagoView\n", 0);

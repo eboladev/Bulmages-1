@@ -40,7 +40,7 @@ class company;
 class ListConfiguracionSubForm : public SubForm2Bf {
     Q_OBJECT
 public:
-    ListConfiguracionSubForm(QWidget *parent = 0, const char *name = 0);
+    ListConfiguracionSubForm(QWidget *parent = 0);
     ~ListConfiguracionSubForm() {}
     ;
 public slots:
@@ -63,7 +63,7 @@ public:
     company *companyact;
 
 public:
-    ListConfiguracionView(company *comp, QWidget *parent = 0, const char *name = "");
+    ListConfiguracionView(company *comp, QWidget *parent = 0);
     ~ListConfiguracionView();
 
 public slots:

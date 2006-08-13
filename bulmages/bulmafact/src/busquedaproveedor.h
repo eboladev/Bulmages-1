@@ -41,7 +41,7 @@ private:
     bool m_semaforo;
 
 public:
-    BusquedaProveedor(QWidget *parent = 0, const char *name = 0);
+    BusquedaProveedor(QWidget *parent = 0);
     ~BusquedaProveedor();
     void setcompany(company *comp) {
         companyact = comp;

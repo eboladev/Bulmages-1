@@ -35,8 +35,8 @@
 #define EDIT_MODE 0
 
 
-ClientsList::ClientsList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, name, flag), pgimportfiles(comp) {
+ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+        : QWidget(parent, flag), pgimportfiles(comp) {
     _depura("ClientsList::ClientsList", 0);
     setupUi(this);
     m_companyact = comp;

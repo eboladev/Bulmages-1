@@ -31,8 +31,8 @@
 #include "facturapview.h"
 
 
-FacturasProveedorList::FacturasProveedorList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
@@ -42,8 +42,8 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, const char *name, 
 }
 
 
-FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
+        : QWidget(parent) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(m_companyact);
@@ -207,7 +207,7 @@ void FacturasProveedorList::on_mui_imprimir_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("facturap");
     setDBCampoId("idfacturap");
     addSHeader("reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia factura"));

@@ -18,18 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "fpagoview.h"
-#include "company.h"
-#include "funcaux.h"
-
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QCloseEvent>
 
+#include "fpagoview.h"
+#include "company.h"
+#include "funcaux.h"
+
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
-FPagoView::FPagoView(company *emp,QWidget *parent, const char *name)
-        : QDialog(parent, name) , dialogChanges(this) {
+FPagoView::FPagoView(company *emp,QWidget *parent)
+        : QDialog(parent), dialogChanges(this) {
     setupUi(this);
     m_companyact = emp;
     setModoEdicion();
@@ -78,7 +78,7 @@ void FPagoView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidge
 
 void FPagoView::on_mui_guardar_clicked() {
     try {
-        QString query = "UPDATE forma_pago SET descforma_pago='" +
+        QString query = "UPDATE forma_pago SET descforma_pago = '" +
                         m_companyact->sanearCadena(m_descforma_pago->text()) + "', dias1tforma_pago= " +
                         m_companyact->sanearCadena(m_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
                         m_companyact->sanearCadena(m_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
@@ -137,7 +137,7 @@ void FPagoView::on_mui_crear_clicked() {
 void FPagoView::on_mui_borrar_clicked() {
     trataModificado();
     m_companyact->begin();
-    QString query = "DELETE FROM forma_pago WHERE idforma_pago=" + mdb_idforma_pago;
+    QString query = "DELETE FROM forma_pago WHERE idforma_pago = " + mdb_idforma_pago;
     int error = m_companyact->ejecuta(query);
     if (error) {
         m_companyact->rollback();

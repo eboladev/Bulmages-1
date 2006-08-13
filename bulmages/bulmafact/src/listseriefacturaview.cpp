@@ -40,8 +40,8 @@ using namespace std;
 #include "funcaux.h"
 
 
-ListSerieFacturaView::ListSerieFacturaView( company *comp, QWidget *parent, const char *name)
-        : QDialog(parent, name, Qt::WDestructiveClose) {
+ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
+        : QDialog(parent, Qt::WDestructiveClose) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
     setupUi(this);
     companyact = comp;
@@ -55,7 +55,7 @@ ListSerieFacturaView::~ListSerieFacturaView() {}
 
 
 /// ===================================== SUBFORMULARIO ===============================================
-ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("serie_factura");
     setDBCampoId("codigoserie_factura");
     addSHeader("codigoserie_facturaorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "codigoserie_factura");

@@ -18,20 +18,20 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
 #include <QFile>
+#include <QMessageBox>
 #include <QTextStream>
 
-#include "pedidosclientelist.h"
 #include "company.h"
-#include "qtable1.h"
-#include "funcaux.h"
 #include "configuracion.h"
+#include "funcaux.h"
 #include "pedidoclienteview.h"
+#include "pedidosclientelist.h"
+#include "qtable1.h"
 
 
-PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     companyact = NULL;
     m_modo = 0;
@@ -41,8 +41,8 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, const char *name, Qt::WF
 }
 
 
-PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     companyact = comp;
     m_cliente->setcompany(comp);
@@ -116,7 +116,7 @@ void PedidosClienteList::editar(int row) {
     try {
 	m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
 	if (m_modo == 0) {
-		PedidoClienteView *prov = new PedidoClienteView(companyact, 0, QApplication::translate("PedidosClienteList", "Edicion de pedidos a cliente"));
+		PedidoClienteView *prov = new PedidoClienteView(companyact, 0);
 		if (prov->cargar(m_idpedidocliente)) {
 			delete prov;
 			return;

@@ -23,8 +23,8 @@
 #include "company.h"
 
 
-BusquedaFamilia::BusquedaFamilia(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaFamilia::BusquedaFamilia(QWidget *parent)
+        : QWidget(parent) {
     setupUi(this);
     companyact = NULL;
     mdb_idfamilia = "";
@@ -77,7 +77,7 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 
 /// Busqueda de familias.
 void BusquedaFamilia::on_mui_buscar_clicked() {
-    familiasview *fam = new familiasview(companyact, 0, 0);
+    familiasview *fam = new familiasview(companyact, 0);
     fam->setModoConsulta();
     if (fam->exec() == 1) {
         m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());

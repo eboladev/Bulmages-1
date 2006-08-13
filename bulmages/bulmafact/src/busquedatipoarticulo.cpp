@@ -23,8 +23,8 @@
 #include "company.h"
 
 
-BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
+        : QWidget(parent) {
     setupUi(this);
     m_companyact = NULL;
     mdb_idtipo_articulo = "";
@@ -38,7 +38,7 @@ BusquedaTipoArticulo::~BusquedaTipoArticulo() {}
 
 void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     mdb_idtipo_articulo = val;
-    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo='" + mdb_idtipo_articulo + "'";
+    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
@@ -58,7 +58,7 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
 
 void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
     mdb_codtipo_articulo = val;
-    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo='" + mdb_codtipo_articulo + "'";
+    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
@@ -94,7 +94,7 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
 
 void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
     mdb_codtipo_articulo = val;
-    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo='" + mdb_codtipo_articulo + "'";
+    QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if(!cur->eof()) {

@@ -32,7 +32,7 @@
 class AlbaranClienteListSubform : public SubForm2Bf {
     Q_OBJECT
 public:
-    AlbaranClienteListSubform(QWidget *parent = 0, const char *name = 0);
+    AlbaranClienteListSubform(QWidget *parent = 0);
     ~AlbaranClienteListSubform() {}
     ;
 public slots:
@@ -71,10 +71,8 @@ private:
     QString mdb_idalbaran;
 
 public:
-    AlbaranClienteList(QWidget *parent = 0, const char *name = 0,
-                       Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    AlbaranClienteList(company *, QWidget *parent = 0, const char *name = 0,
-                       Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    AlbaranClienteList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    AlbaranClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~AlbaranClienteList();
     void presenta();
     void modoseleccion() {
@@ -84,7 +82,7 @@ public:
         m_modo=0;
     };
     void imprimir();
-    void setcompany (company *comp) {
+    void setcompany(company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
@@ -120,7 +118,7 @@ public slots:
 	if(text.size() >=3) 
 		on_mui_actualizar_clicked();
     };
-    virtual void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_crear_clicked() {

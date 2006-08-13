@@ -27,6 +27,7 @@
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
+
 #include <fstream>
 
 #include "listconfiguracionview.h"
@@ -40,8 +41,8 @@ using namespace std;
 #include "funcaux.h"
 
 
-ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent, const char *name)
-        : QDialog(parent, name, Qt::WDestructiveClose) {
+ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent)
+        : QDialog(parent, Qt::WDestructiveClose) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
     companyact = comp;
@@ -55,7 +56,7 @@ ListConfiguracionView::~ListConfiguracionView() {}
 
 
 /// ===================================== SUBFORMULARIO ===============================================
-ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("configuracion");
     setDBCampoId("nombre");
     addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("nombre"));

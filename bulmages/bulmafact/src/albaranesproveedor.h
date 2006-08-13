@@ -34,7 +34,7 @@ class AlbaranesProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    AlbaranesProveedorListSubform(QWidget *parent = 0, const char *name = 0);
+    AlbaranesProveedorListSubform(QWidget *parent = 0);
     ~AlbaranesProveedorListSubform() {}
     ;
 
@@ -68,9 +68,8 @@ private:
     QString mdb_idalbaranp;
 
 public:
-    AlbaranesProveedor(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-                       Qt::WFlags flag = 0);
+    AlbaranesProveedor(QWidget *parent = 0, Qt::WFlags flag = 0);
+    AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
     void presenta();
     void modoseleccion() {

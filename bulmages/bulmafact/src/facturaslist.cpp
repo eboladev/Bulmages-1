@@ -18,24 +18,24 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
 #include <QFile>
+#include <QMessageBox>
 #include <QTextStream>
 
-#include "facturaslist.h"
-#include "company.h"
-#include "qtable1.h"
-#include "busquedacliente.h"
 #include "busquedaarticulo.h"
+#include "busquedacliente.h"
 #include "busquedafecha.h"
+#include "company.h"
 #include "configuracion.h"
+#include "facturaslist.h"
 #include "facturaview.h"
 #include "funcaux.h"
 #include "plugins.h"
+#include "qtable1.h"
 
 
-FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, name, flag) {
+FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = editmodo;
@@ -46,8 +46,8 @@ FacturasList::FacturasList(QWidget *parent, const char *name, Qt::WFlags flag, e
 }
 
 
-FacturasList::FacturasList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, name, flag) {
+FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(m_companyact);

@@ -22,47 +22,46 @@
 #include <QObject>
 #include <qnamespace.h>
 
-#include "company.h"
 #include "stdio.h"
-#include "presupuestoview.h"
-#include "albaranclienteview.h"
-#include "providerslist.h"
-#include "provedit.h"
-#include "clientslist.h"
-#include "clienteview.h"
-#include "articulolist.h"
-#include "presupuestolist.h"
-#include "albaranclientelist.h"
+
 #include "abreempresaview.h"
-#include "fpagoview.h"
-#include "familiasview.h"
-#include "facturaslist.h"
-#include "pedidosclientelist.h"
-#include "pedidosproveedorlist.h"
-#include "pedidoclienteview.h"
-#include "pedidoproveedorview.h"
-#include "albaranesproveedor.h"
-#include "facturasplist.h"
-#include "cobroslist.h"
-#include "trabajadorview.h"
-#include "pagoslist.h"
-#include "listseriefacturaview.h"
-#include "listprovinciasview.h"
-#include "facturapview.h"
-#include "albaranproveedorview.h"
-#include "pedidoclienteview.h"
+#include "albaranclientelist.h"
 #include "albaranclienteview.h"
-#include "facturaview.h"
+#include "albaranesproveedor.h"
+#include "albaranproveedorview.h"
+#include "articulolist.h"
 #include "articuloview.h"
+#include "clienteview.h"
+#include "clientslist.h"
+#include "cobroslist.h"
+#include "cobroview.h"
+#include "company.h"
+#include "facturapview.h"
+#include "facturaslist.h"
+#include "facturasplist.h"
+#include "facturaview.h"
+#include "familiasview.h"
+#include "fpagoview.h"
 #include "funcaux.h"
 #include "inventariosview.h"
 #include "inventarioview.h"
-#include "plugins.h"
-#include "cobroview.h"
-#include "pagoview.h"
 #include "listalmacenview.h"
 #include "listconfiguracionview.h"
+#include "listprovinciasview.h"
+#include "listseriefacturaview.h"
+#include "pagoslist.h"
+#include "pagoview.h"
+#include "pedidoclienteview.h"
+#include "pedidoproveedorview.h"
+#include "pedidosclientelist.h"
+#include "pedidosproveedorlist.h"
+#include "plugins.h"
+#include "presupuestolist.h"
+#include "presupuestoview.h"
+#include "provedit.h"
+#include "providerslist.h"
 #include "tiposarticuloview.h"
+#include "trabajadorview.h"
 
 
 /// El constructor de la clase company no hace nada.
@@ -133,68 +132,67 @@ QString company::searchCompany() {
 
 void company::createMainWindows() {
     _depura("company::createMainWindows", 0);
-    m_articleslist = new ArticuloList(this, 0, QApplication::translate("company", "Listado de articulos"), 0, ArticuloList::EditMode);
+    m_articleslist = new ArticuloList(this, 0, 0, ArticuloList::EditMode);
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 
     _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
 
-    m_providerslist = new ProveedorList(this, 0, QApplication::translate("company", "Listado de proveedores"));
+    m_providerslist = new ProveedorList(this, 0);
     m_pWorkspace->addWindow(m_providerslist);
     m_providerslist->hide();
 
     _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
 
-    m_clientsList = new ClientsList(this, 0, QApplication::translate("company", "Listado de clientes"));
+    m_clientsList = new ClientsList(this, 0);
     m_pWorkspace->addWindow(m_clientsList);
     m_clientsList->hide();
 
     _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
 
-    m_cobrosList = new CobrosList(this, 0, QApplication::translate("company", "Listado de cobros"));
+    m_cobrosList = new CobrosList(this, 0);
     m_pWorkspace->addWindow(m_cobrosList);
     m_cobrosList->hide();
 
     _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
-    m_pagosList = new PagosList (this, 0, QApplication::translate("company", "Listado de pagos"));
+    m_pagosList = new PagosList(this, 0);
     m_pWorkspace->addWindow(m_pagosList);
     m_pagosList->hide();
 
-    m_budgetsList = new PresupuestoList(this, 0, QApplication::translate("company", "Listado de presupuestos a clientes"));
+    m_budgetsList = new PresupuestoList(this, 0);
     m_pWorkspace->addWindow(m_budgetsList);
     m_budgetsList->hide();
 
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
 
-    m_pedidosclienteList = new PedidosClienteList(this, 0, QApplication::translate("company", "Listado de pedidos de clientes"));
+    m_pedidosclienteList = new PedidosClienteList(this, 0);
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
-    m_clientDelivNotesList = new AlbaranClienteList(this, 0, QApplication::translate("company", "Listado de albaranes de clientes"));
+    m_clientDelivNotesList = new AlbaranClienteList(this, 0);
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 
     _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
 
-    m_facturasList = new FacturasList(this, 0, QApplication::translate("company", "Listador de facturas a cliente"));
+    m_facturasList = new FacturasList(this, 0);
     m_pWorkspace->addWindow(m_facturasList);
     m_facturasList->hide();
 
-    m_pedidosproveedorList = new PedidosProveedorList(this, 0, QApplication::translate("company", "Listador de pedidos a proveedor"));
+    m_pedidosproveedorList = new PedidosProveedorList(this, 0);
     m_pWorkspace->addWindow(m_pedidosproveedorList);
     m_pedidosproveedorList->hide();
 
-    m_albaranesproveedor = new AlbaranesProveedor(this, 0, QApplication::translate("company", "Listado de albaranes de proveedor"));
+    m_albaranesproveedor = new AlbaranesProveedor(this, 0);
     m_pWorkspace->addWindow(m_albaranesproveedor);
     m_albaranesproveedor->hide();
 
-    m_facturasproveedorlist = new FacturasProveedorList(this, 0, QApplication::translate("company", "Listado de facturas de proveedor"));
+    m_facturasproveedorlist = new FacturasProveedorList(this, 0);
     m_pWorkspace->addWindow(m_facturasproveedorlist);
     m_facturasproveedorlist->hide();
 
     _depura("END company::createMainWindows\n", 0);
 }
-
 
 
 void company::viewCobrosList() {
@@ -243,7 +241,7 @@ ClienteView * company::newClienteView() {
     ClienteView *bud;
     if (g_plugins->lanza("company_newClienteView", this, (void **)&bud))
         return bud;
-    bud = new ClienteView(this, 0, QApplication::translate("company", "Edicion de clientes"));
+    bud = new ClienteView(this, 0);
     return bud;
 }
 
@@ -261,7 +259,7 @@ ProveedorView * company::newProveedorView() {
     ProveedorView *bud;
     if (g_plugins->lanza("company_newProveedorView", this, (void **)&bud))
         return bud;
-    bud = new ProveedorView(this, 0, QApplication::translate("company", "Edicion de proveedores"));
+    bud = new ProveedorView(this, 0);
     return bud;
 }
 
@@ -273,13 +271,12 @@ void company::s_newProveedorView() {
 }
 
 
-
 FacturaProveedorView * company::newFacturaProveedorView() {
     /// Lanzamos los plugins necesarios.
     FacturaProveedorView *bud;
     if (g_plugins->lanza("company_newFacturaProveedorView", this, (void **)&bud))
         return bud;
-    bud = new FacturaProveedorView(this, 0, QApplication::translate("company", "Edicion de facturas de proveedor"));
+    bud = new FacturaProveedorView(this, 0);
     return bud;
 }
 
@@ -298,7 +295,7 @@ CobroView * company::newCobroView() {
     CobroView *bud;
     if (g_plugins->lanza("company_newCobroView", this, (void **)&bud))
         return bud;
-    bud = new CobroView(this, 0, QApplication::translate("company", "Edicion de cobros"));
+    bud = new CobroView(this, 0);
     return bud;
 }
 
@@ -313,7 +310,7 @@ void company::s_newCobroView() {
 
 void company::s_newAlbaranPro() {
     _depura ("company::s_newAlbaranPro", 0);
-    AlbaranProveedorView *bud = new AlbaranProveedorView(this, 0, QApplication::translate("company", "Edicion de albaranes de proveedor"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(this, 0);
     m_pWorkspace->addWindow(bud);
     bud->inicializar();
     bud->show();
@@ -323,7 +320,7 @@ void company::s_newAlbaranPro() {
 
 void company::s_newPedidoPro() {
     _depura ("company::s_newPedidoPro",0);
-    PedidoProveedorView *bud = new PedidoProveedorView(this, 0, QApplication::translate("company", "Edicion de pedidos de proveedor"));
+    PedidoProveedorView *bud = new PedidoProveedorView(this, 0);
     m_pWorkspace->addWindow(bud);
     bud->pintar();
     bud->show();
@@ -377,7 +374,7 @@ PresupuestoView * company::newBudget() {
     PresupuestoView *bud;
     if (g_plugins->lanza("company_newBudget", this, (void **)&bud))
         return bud;
-    bud = new PresupuestoView(this, 0, QApplication::translate("company", "Edicion de proveedores"));
+    bud = new PresupuestoView(this, 0);
     return bud;
 }
 
@@ -398,7 +395,7 @@ FacturaView * company::newFacturaView() {
     FacturaView *bud;
     if (g_plugins->lanza("company_newFacturaView", this, (void **)&bud))
         return bud;
-    bud = new FacturaView(this, 0, QApplication::translate("company", "Edicion de factura"));
+    bud = new FacturaView(this, 0);
     return bud;
 }
 
@@ -443,7 +440,7 @@ void company::listClientDelivNotes() {
 
 
 void company::newClientDelivNote() {
-    AlbaranClienteView *cDelivNote = new AlbaranClienteView(this, 0, QApplication::translate("company", "Edicion de albaranes"));
+    AlbaranClienteView *cDelivNote = new AlbaranClienteView(this, 0);
     m_pWorkspace->addWindow(cDelivNote);
     cDelivNote->showMaximized();
 }
@@ -474,7 +471,7 @@ void company::refreshClientes() {
 
 
 void company::newPedidoCliente() {
-    PedidoClienteView *bud = new PedidoClienteView(this, 0, QApplication::translate("company", "Edicion de pedidos de cliente"));
+    PedidoClienteView *bud = new PedidoClienteView(this, 0);
     m_pWorkspace->addWindow(bud);
     bud->show();
 }
@@ -494,28 +491,28 @@ void company::refreshPedidosProveedor() {
 
 /// Presenta la ventana de formas de pago y espera la ejecucion de la misma.
 void company::s_FPago() {
-    FPagoView *f = new FPagoView(this, NULL, QApplication::translate("company", "Formas de pago"));
+    FPagoView *f = new FPagoView(this, NULL);
     f->exec();
     delete f;
 }
 
 
 void company::s_trabajadores() {
-    TrabajadorView *t = new TrabajadorView(this, NULL, QApplication::translate("company", "Trabajadores"));
+    TrabajadorView *t = new TrabajadorView(this, NULL);
     t->exec();
     delete t;
 }
 
 
 void company::s_Familias() {
-    familiasview *fam = new familiasview(this, 0, 0);
+    familiasview *fam = new familiasview(this, 0);
     fam->exec();
     delete fam;
 }
 
 
 void company::s_seriesFactura() {
-    ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0, 0);
+    ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0);
     lser->exec();
     delete lser;
 }
@@ -534,7 +531,7 @@ ArticuloView * company::newArticuloView() {
     ArticuloView *bud;
     if (g_plugins->lanza("company_newArticuloView", this, (void **)&bud))
         return bud;
-    bud = new ArticuloView(this, 0, QApplication::translate("company", "Edicion de articulos"));
+    bud = new ArticuloView(this, 0);
     return bud;
 }
 
@@ -548,14 +545,14 @@ void company::s_newArticulo() {
 
 
 void company::s_inventarios() {
-    InventariosView *bud = new InventariosView(this, 0, QApplication::translate("company", "Listado de inventarios"));
+    InventariosView *bud = new InventariosView(this, 0);
     m_pWorkspace->addWindow(bud);
     bud->show();
 }
 
 
 void company::s_newInventario() {
-    InventarioView *bud = new InventarioView(this, 0, QApplication::translate("company", "Nuevo inventario"));
+    InventarioView *bud = new InventarioView(this, 0);
     m_pWorkspace->addWindow(bud);
     bud->show();
 }
@@ -566,7 +563,7 @@ AlbaranClienteView * company::newAlbaranClienteView() {
     AlbaranClienteView *bud;
     if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud))
         return bud;
-    bud = new AlbaranClienteView(this, 0, QApplication::translate("company", "Edicion de albaranes a clientes"));
+    bud = new AlbaranClienteView(this, 0);
     return bud;
 }
 
@@ -588,7 +585,7 @@ AlbaranProveedorView * company::newAlbaranProveedorView() {
     AlbaranProveedorView *bud;
     if (g_plugins->lanza("company_newAlbaranProveedorView", this, (void **)&bud))
         return bud;
-    bud = new AlbaranProveedorView(this, 0, QApplication::translate("company", "Edicion de albaranes de proveedor"));
+    bud = new AlbaranProveedorView(this, 0);
     return bud;
 }
 
@@ -606,7 +603,7 @@ PedidoClienteView * company::newPedidoClienteView() {
     PedidoClienteView *bud;
     if (g_plugins->lanza("company_newPedidoClienteView", this, (void **)&bud))
         return bud;
-    bud = new PedidoClienteView(this, 0, QApplication::translate("company", "Edicion de pedidos a clientes"));
+    bud = new PedidoClienteView(this, 0);
     return bud;
 }
 
@@ -641,7 +638,7 @@ PagoView * company::newPagoView() {
     PagoView *bud;
     if (g_plugins->lanza("company_newPagoView", this, (void **)&bud))
         return bud;
-    bud = new PagoView(this, 0, QApplication::translate("company", "Pago"));
+    bud = new PagoView(this, 0);
     return bud;
 }
 
@@ -660,7 +657,7 @@ TipoArticuloList * company::newTipoArticuloList() {
     TipoArticuloList *bud;
     if (g_plugins->lanza("company_newTipoArticuloList", this, (void **)&bud))
         return bud;
-    bud = new TipoArticuloList(this, 0, QApplication::translate("company", "Tipos de articulo"));
+    bud = new TipoArticuloList(this, 0);
     return bud;
 }
 

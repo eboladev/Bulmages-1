@@ -32,7 +32,7 @@ class PedidosProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    PedidosProveedorListSubform(QWidget *parent = 0, const char *name = 0);
+    PedidosProveedorListSubform(QWidget *parent = 0);
     ~PedidosProveedorListSubform() {}
     ;
 
@@ -66,9 +66,8 @@ private:
     QString mdb_idpedidoproveedor;
 
 public:
-    PedidosProveedorList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    PedidosProveedorList(company *, QWidget *parent = 0, const char *name = 0,
-                         Qt::WFlags flag = 0);
+    PedidosProveedorList(QWidget *parent = 0, Qt::WFlags flag = 0);
+    PedidosProveedorList(company *, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PedidosProveedorList();
     void presenta();
     void modoseleccion() {
@@ -114,7 +113,7 @@ public slots:
 	if(text.size() >=3) 
 		on_mui_actualizar_clicked();
     };
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_imprimir_clicked() {

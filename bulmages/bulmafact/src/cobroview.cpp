@@ -34,8 +34,8 @@ using namespace std;
 #include "funcaux.h"
 
 
-CobroView::CobroView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
+CobroView::CobroView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
     _depura("CobroView::CobroView", 0);
     try {
         setupUi(this);
@@ -44,7 +44,7 @@ CobroView::CobroView(company *comp, QWidget *parent, const char *name)
         mui_refcobro->setcompany(comp);
         dialogChanges_cargaInicial();
         companyact->meteWindow(windowTitle(), this, FALSE);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el cobro"));
     } // end try
     _depura("END CobroView::CobroView", 0);

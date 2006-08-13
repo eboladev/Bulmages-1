@@ -58,8 +58,7 @@ public:
     company *m_companyact;
 
 public:
-    ClientsList(company *, QWidget *parent = 0, const char *name = 0,
-                Qt::WFlags flag = 0, edmode editmode = EditMode);
+    ClientsList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~ClientsList();
     void selectMode() {
         m_modo = SelectMode;

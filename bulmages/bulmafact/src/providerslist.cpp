@@ -33,8 +33,8 @@
 #include "pgimportfiles.h"
 
 
-ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, name, flag), pgimportfiles(comp) {
+ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+        : QWidget(parent, flag), pgimportfiles(comp) {
     _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
     m_companyact = comp;
@@ -67,7 +67,7 @@ ProveedorList::~ProveedorList() {
 
 
 void ProveedorList::presenta() {
-    cursor2 * cur = m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE'%" + mui_filtro->text() + "%'");
+    cursor2 * cur = m_companyact->cargacursor("SELECT * FROM proveedor WHERE nomproveedor LIKE '%" + mui_filtro->text() + "%'");
     mui_list->cargar(cur);
     delete cur;
 }
@@ -75,7 +75,7 @@ void ProveedorList::presenta() {
 
 void ProveedorList::on_mui_crear_clicked() {
     _depura("ProveedorList::on_mui_crear_clicked", 0);
-    ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de proveedores"));
+    ProveedorView *prov = new ProveedorView(m_companyact, 0);
     m_companyact->m_pWorkspace->addWindow(prov);
     prov->show();
     _depura("END ProveedorList::on_mui_crear_clicked", 0);
@@ -93,7 +93,7 @@ void ProveedorList::editar(int row) {
     m_cifprovider = mui_list->DBvalue(QString("cifproveedor"), row);
     m_nomprovider = mui_list->DBvalue(QString("nomproveedor"), row);
     if (m_modo == 0) {
-        ProveedorView *prov = new ProveedorView(m_companyact, 0, QApplication::translate("ProveedorList", "Edicion de proveedores"));
+        ProveedorView *prov = new ProveedorView(m_companyact, 0);
         if (prov->cargar(mui_list->DBvalue(QString("idproveedor"), row))) {
             delete prov;
             return;
@@ -222,7 +222,7 @@ void ProveedorList::on_mui_importar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-ProveedorListSubform::ProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("proveedor");
     setDBCampoId("idproveedor");
     addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID proveedor"));

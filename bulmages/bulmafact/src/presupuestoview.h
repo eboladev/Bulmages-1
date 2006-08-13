@@ -49,7 +49,7 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    PresupuestoView(company *, QWidget *, const char *);
+    PresupuestoView(company *, QWidget *);
     ~PresupuestoView();
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
     void inicializar();

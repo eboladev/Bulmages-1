@@ -41,8 +41,8 @@
 #include "funcaux.h"
 
 
-PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), PedidoCliente(comp), dialogChanges(this) {
+PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), PedidoCliente(comp), dialogChanges(this) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -57,7 +57,7 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent, const char 
         setListLinPedidoCliente(subform3);
         setListDescuentoPedidoCliente(m_descuentos);
         comp->meteWindow(windowTitle(), this, FALSE);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el pedido cliente"));
     } // end try
     _depura("END PedidoClienteView::PedidoClienteView", 0);
@@ -113,7 +113,7 @@ void PedidoClienteView::generarAlbaran() {
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='" + DBvalue("refpedidocliente") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL, QApplication::translate("PedidoClienteView", "Edicion de albaranes de clientes"));
+        AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL);
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaran"));
         bud->show();
@@ -196,7 +196,7 @@ int PedidoClienteView::cargar(QString id) {
         setWindowTitle(tr("Pedido de cliente") + " " + DBvalue("refpedidocliente"));
         companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         return -1;
     } // end try
     return 0;

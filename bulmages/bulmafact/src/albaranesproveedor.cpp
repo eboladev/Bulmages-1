@@ -33,8 +33,8 @@
 #include "funcaux.h"
 
 
-AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
@@ -44,8 +44,8 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, const char *name, Qt::WF
 }
 
 
-AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent,name, flag) {
+AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
@@ -73,9 +73,9 @@ void AlbaranesProveedor::presenta() {
                         "FROM albaranp LEFT " \
                         "JOIN proveedor ON albaranp.idproveedor = " \
                         "proveedor.idproveedor LEFT JOIN almacen ON " \
-                        "albaranp.idalmacen=almacen.idalmacen LEFT JOIN " \
+                        "albaranp.idalmacen = almacen.idalmacen LEFT JOIN " \
                         "forma_pago ON albaranp.idforma_pago = " \
-                        "forma_pago.idforma_pago WHERE 1=1 " + generaFiltro());
+                        "forma_pago.idforma_pago WHERE 1 = 1 " + generaFiltro());
         mui_list->cargar(cur);
         delete cur;
 
@@ -83,8 +83,8 @@ void AlbaranesProveedor::presenta() {
         cur = m_companyact->cargacursor("SELECT SUM(totalalbaranp) " \
                                         "AS total FROM albaranp LEFT JOIN proveedor ON " \
                                         "albaranp.idproveedor = proveedor.idproveedor LEFT " \
-                                        "JOIN almacen ON albaranp.idalmacen=almacen.idalmacen " \
-                                        "WHERE 1=1 " + generaFiltro());
+                                        "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \
+                                        "WHERE 1 = 1 " + generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     }
@@ -105,12 +105,12 @@ QString AlbaranesProveedor::generaFiltro() {
     }
 
     if (m_proveedor->idproveedor() != "")
-        filtro += " AND albaranp.idproveedor=" + m_proveedor->idproveedor();
+        filtro += " AND albaranp.idproveedor = " + m_proveedor->idproveedor();
     if (!m_procesados->isChecked())
         filtro += " AND NOT procesadoalbaranp";
     if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp " \
-                  "WHERE idarticulo='" + m_articulo->idarticulo() + "')";
+                  "WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     if (m_fechain->text() != "")
         filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
     if (m_fechafin->text() != "")
@@ -123,7 +123,7 @@ void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
     if (m_modo == 0) {
-        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0, QApplication::translate("AlbaranesProveedor", "Edicion de albaranes a proveedor"));
+        AlbaranProveedorView *prov = new AlbaranProveedorView(m_companyact, 0);
         if (prov->cargar(mdb_idalbaranp)) {
             delete prov;
             return;
@@ -219,8 +219,7 @@ void AlbaranesProveedor::on_mui_borrar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent, const char *)
-        : SubForm2Bf(parent) {
+AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID albaran de proveedor"));

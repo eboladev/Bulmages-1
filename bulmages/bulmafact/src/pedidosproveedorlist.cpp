@@ -32,8 +32,8 @@
 #include "pedidoproveedorview.h"
 
 
-PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
@@ -43,8 +43,8 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, const char *name, Qt
 }
 
 
-PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
@@ -87,7 +87,7 @@ QString PedidosProveedorList::generarFiltro() {
     } // end if
 
     if (m_proveedor->idproveedor() != "") {
-        filtro += " AND pedidoproveedor.idproveedor=" + m_proveedor->idproveedor();
+        filtro += " AND pedidoproveedor.idproveedor = " + m_proveedor->idproveedor();
     } // end if
 
     if (!m_procesados->isChecked() ) {
@@ -95,7 +95,7 @@ QString PedidosProveedorList::generarFiltro() {
     } // end if
 
     if (m_articulo->idarticulo() != "") {
-        filtro += " AND idpedidoproveedor IN (SELECT DISTINCT idpedidoproveedor FROM lpedidoproveedor WHERE idarticulo='" + m_articulo->idarticulo() + "')";
+        filtro += " AND idpedidoproveedor IN (SELECT DISTINCT idpedidoproveedor FROM lpedidoproveedor WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if
 
     if (m_fechain->text() != "")
@@ -165,7 +165,7 @@ void PedidosProveedorList::on_mui_borrar_clicked() {
     try {
 	mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
 	if (mdb_idpedidoproveedor == "") return;
-	PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de pedidos a proveedor"));
+	PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
 	if (prov->cargar(mdb_idpedidoproveedor)) {
 		throw -1;
 	} // end if
@@ -183,7 +183,7 @@ void PedidosProveedorList::editar(int row) {
     try {
 	mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
 	if (m_modo == 0) {
-		PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0, QApplication::translate("PedidosProveedorList", "Edicion de facturas a cliente"));
+		PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
 		if (prov->cargar(mdb_idpedidoproveedor)) {
 		delete prov;
 		return;
@@ -212,7 +212,7 @@ void PedidosProveedorList::on_mui_editar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
     addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido proveedor"));

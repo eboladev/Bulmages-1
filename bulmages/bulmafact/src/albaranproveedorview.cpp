@@ -40,8 +40,8 @@
 #include "facturaview.h"
 
 
-AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), AlbaranProveedor(comp), dialogChanges(this) {
+AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), AlbaranProveedor(comp), dialogChanges(this) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
     try {
         setupUi(this);
@@ -66,14 +66,14 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent, const
         dialogChanges_cargaInicial();
         if (companyact != NULL)
             companyact->meteWindow(windowTitle(), this, FALSE);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el albaran proveedor"));
     } // end try
     _depura("END AlbaranProveedorView::AlbaranProveedorView", 0);
 }
 
 
-AlbaranProveedorView::~AlbaranProveedorView()  {
+AlbaranProveedorView::~AlbaranProveedorView() {
     companyact->refreshAlbaranesProveedor();
     companyact->sacaWindow(this);
 }
@@ -98,7 +98,8 @@ void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
 
 void AlbaranProveedorView::on_mui_borrar_clicked() {
     _depura("AlbaranProveedorView::on_mui_borrar_clicked", 0);
-    int val = QMessageBox::warning(this, tr("Borrar albaran del proveedor."),
+    int val = QMessageBox::warning(this,
+                                   tr("Borrar albaran del proveedor."),
                                    tr("Desea eliminar el albaran del proveedor?"),
                                    tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
     if (val == 0) {

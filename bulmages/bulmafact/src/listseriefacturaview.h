@@ -42,7 +42,7 @@ class ListSerieFacturaSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    ListSerieFacturaSubForm(QWidget *parent = 0, const char *name = 0);
+    ListSerieFacturaSubForm(QWidget *parent = 0);
     ~ListSerieFacturaSubForm() {}
     ;
 
@@ -66,7 +66,7 @@ public:
     company *companyact;
 
 public:
-    ListSerieFacturaView(company *, QWidget *, const char *);
+    ListSerieFacturaView(company *, QWidget *);
     ~ListSerieFacturaView();
 
 public slots:

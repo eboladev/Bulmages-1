@@ -39,7 +39,7 @@ private:
     QString mdb_codigocompletofamilia;
 
 public:
-    BusquedaFamilia(QWidget *parent = 0, const char *name = 0);
+    BusquedaFamilia(QWidget *parent = 0);
     ~BusquedaFamilia();
     void setcompany(company *comp) {
         companyact = comp;

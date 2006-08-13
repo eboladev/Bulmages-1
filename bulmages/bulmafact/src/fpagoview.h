@@ -47,7 +47,7 @@ private:
     void pintar();
 
 public:
-    FPagoView(company * emp, QWidget *parent = 0, const char *name = 0);
+    FPagoView(company * emp, QWidget *parent = 0);
     ~FPagoView();
     void setModoConsulta() {
         m_modoConsulta = TRUE;

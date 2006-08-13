@@ -41,8 +41,8 @@ using namespace std;
 #include "funcaux.h"
 
 
-PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), PedidoProveedor (comp), dialogChanges(this) {
+PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), PedidoProveedor(comp), dialogChanges(this) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
     try {
         setupUi(this);
@@ -59,7 +59,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent, const c
         inicialize();
         dialogChanges_cargaInicial();
         comp->meteWindow(windowTitle(), this, FALSE);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el pedido proveedor"));
     } // end try
     _depura("END PedidoProveedorView::PedidoProveedorView", 0);
@@ -124,7 +124,7 @@ int PedidoProveedorView::guardar() {
     int error = PedidoProveedor::guardar();
     if (error == 0) {
         dialogChanges_cargaInicial();
-    } //endif
+    } //end if
     return error;
 }
 
@@ -138,7 +138,7 @@ void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
-    PagoView *bud = new PagoView(companyact, NULL, tr("Edicion de pagos"));
+    PagoView *bud = new PagoView(companyact, NULL);
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
@@ -154,7 +154,7 @@ void PedidoProveedorView::generarAlbaran() {
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, tr("Edicion de albaranes de proveedores"));
+        AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL);
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));
         bud->show();
@@ -172,7 +172,7 @@ void PedidoProveedorView::generarAlbaran() {
         return;
 
     /// Creamos el pedido.
-    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL, QApplication::translate("PedidoProveedorView", "Edicion de albaranes de proveedores"));
+    AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL);
     companyact->m_pWorkspace->addWindow(bud);
     bud->vaciaAlbaranProveedor();
 

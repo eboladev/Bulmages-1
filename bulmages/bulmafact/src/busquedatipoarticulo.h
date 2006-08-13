@@ -39,7 +39,7 @@ private:
     QString mdb_codtipo_articulo;
 
 public:
-    BusquedaTipoArticulo(QWidget *parent = 0, const char *name = 0);
+    BusquedaTipoArticulo(QWidget *parent = 0);
     ~BusquedaTipoArticulo();
     void setcompany(company *comp) {
         m_companyact = comp;

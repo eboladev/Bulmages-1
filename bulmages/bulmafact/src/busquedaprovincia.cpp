@@ -25,8 +25,8 @@
 #include "funcaux.h"
 
 
-BusquedaProvincia::BusquedaProvincia(QWidget *parent, const char *name)
-        : QComboBox(parent, name) {
+BusquedaProvincia::BusquedaProvincia(QWidget *parent)
+        : QComboBox(parent) {
     _depura("BusquedaProvincia::BusquedaProvincia", 0);
     companyact = NULL;
     m_cursorcombo = NULL;

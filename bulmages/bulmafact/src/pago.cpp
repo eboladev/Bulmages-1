@@ -46,7 +46,7 @@ Pago::~Pago() {}
 void Pago::borraPago() {
     if (DBvalue("idpago") != "") {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago=" + DBvalue("idpago"));
+        int error = companyact->ejecuta("DELETE FROM pago WHERE idpago = " + DBvalue("idpago"));
         if (error) {
             companyact->rollback();
             return;
@@ -76,7 +76,7 @@ void Pago::pintar() {
 
 /// Esta funcion carga un pago.
 int Pago::cargar(QString idpago) {
-    QString query = "SELECT * FROM pago WHERE idPago=" + idpago;
+    QString query = "SELECT * FROM pago WHERE idPago = " + idpago;
     cursor2 * cur = companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
@@ -89,14 +89,14 @@ int Pago::cargar(QString idpago) {
 
 void Pago::guardaPago() {
     try {
-    QString id;
-    companyact->begin();
-    DBsave(id);
-    setidpago(id);
-    companyact->commit();
+        QString id;
+        companyact->begin();
+        DBsave(id);
+        setidpago(id);
+        companyact->commit();
     } catch (...) {
-	mensajeInfo( "Error inesperado al guardar");
-	companyact->rollback();
-    } // end catch
+        mensajeInfo("Error inesperado al guardar");
+        companyact->rollback();
+    } // end try
 }
 

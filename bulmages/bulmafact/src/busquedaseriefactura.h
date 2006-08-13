@@ -35,14 +35,14 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaSerieFactura(QWidget *parent = 0, const char *name = 0);
+    BusquedaSerieFactura(QWidget *parent = 0);
     ~BusquedaSerieFactura();
     void setcompany(company *comp) {
         companyact = comp;
     };
     virtual void setcodigoserie_factura(QString);
     QString codigoserie_factura() {
-        int index= currentIndex();
+        int index = currentIndex();
         if (index > 0) {
             return(m_cursorcombo->valor("codigoserie_factura", index - 1));
         } else {

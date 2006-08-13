@@ -33,16 +33,16 @@
 #define COL_FECHAINVENTARIO 2
 
 
-InventariosView::InventariosView(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     setupUi(this);
     companyact = NULL;
     meteWindow(windowTitle(), this);
 }
 
 
-InventariosView::InventariosView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) {
+InventariosView::InventariosView(company *comp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose) {
     setupUi(this);
     companyact = comp;
     mui_listado->setcompany(comp);
@@ -58,9 +58,9 @@ InventariosView::~InventariosView() {
 
 void InventariosView::on_mui_editar_clicked() {
     int a = mui_listado->currentRow();
-    QString idinventario = mui_listado->item(a,COL_IDINVENTARIO)->text();
+    QString idinventario = mui_listado->item(a, COL_IDINVENTARIO)->text();
     if ( idinventario != "") {
-        InventarioView *bud = new InventarioView(companyact, 0, QApplication::translate("InventariosView", "Edicion de inventario"));
+        InventarioView *bud = new InventarioView(companyact, 0);
         if (bud->cargar(idinventario))
             return;
         companyact->m_pWorkspace->addWindow(bud);
@@ -74,9 +74,9 @@ void InventariosView::on_mui_editar_clicked() {
 void InventariosView::on_mui_borrar_clicked() {
     int a = mui_listado->currentRow();
     if (a >= 0) {
-        QString idinventario = mui_listado->item(a,COL_IDINVENTARIO)->text();
+        QString idinventario = mui_listado->item(a, COL_IDINVENTARIO)->text();
         if (idinventario != "") {
-            InventarioView *inv = new InventarioView(companyact, 0, QApplication::translate("InventariosView", "Edicion de inventario"));
+            InventarioView *inv = new InventarioView(companyact, 0);
             companyact->m_pWorkspace->addWindow(inv);
             inv->cargar(idinventario);
             /// Hacemos el borrado sin mostrar pantalla ni nada.
@@ -90,7 +90,7 @@ void InventariosView::on_mui_borrar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-InventariosSubForm::InventariosSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+InventariosSubForm::InventariosSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("inventario");
     setDBCampoId("idinventario");
     addSHeader("idinventario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoView, tr("idalbaran"));

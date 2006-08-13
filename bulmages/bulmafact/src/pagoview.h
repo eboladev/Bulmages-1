@@ -40,7 +40,7 @@ class PagoView : public QWidget, private Ui_PagoBase, public Pago, public dialog
     Q_OBJECT
 
 public:
-    PagoView(company *, QWidget *, const char *);
+    PagoView(company *, QWidget *);
     ~PagoView();
     void manageArticle(int);
     void closeEvent(QCloseEvent *);
@@ -78,7 +78,7 @@ public slots:
             setWindowTitle(tr("Pago") + " " + DBvalue("refpago"));
             dialogChanges_cargaInicial();
             companyact->meteWindow(windowTitle(), this);
-        } catch(...) {
+        } catch (...) {
             return -1;
         } // end try
         return 0;

@@ -65,9 +65,8 @@ private:
     QString m_idpedidocliente;
 
 public:
-    PedidosClienteList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    PedidosClienteList(company *, QWidget *parent = 0, const char *name = 0,
-                       Qt::WFlags flag = 0);
+    PedidosClienteList(QWidget *parent = 0, Qt::WFlags flag = 0);
+    PedidosClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~PedidosClienteList();
     void presenta();
     void modoseleccion() {

@@ -41,7 +41,7 @@ private:
     bool m_modoConsulta;
 
 public:
-    TipoArticuloList(company *, QWidget *parent = 0, const char *name = 0);
+    TipoArticuloList(company *, QWidget *parent = 0);
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();
@@ -57,12 +57,12 @@ public:
 
 public slots:
     virtual void pintar();
-    virtual void on_m_listTipos_itemDoubleClicked ( QTreeWidgetItem * item, int column);
+    virtual void on_m_listTipos_itemDoubleClicked(QTreeWidgetItem * item, int column);
     virtual void close();
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_m_listTipos_currentItemChanged ( QTreeWidgetItem * current, QTreeWidgetItem * previous);
+    virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
     virtual void on_mui_aceptar_clicked() {
         close();
     };

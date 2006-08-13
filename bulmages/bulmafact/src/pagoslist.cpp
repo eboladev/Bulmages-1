@@ -33,8 +33,8 @@
 #include "configuracion.h"
 
 
-PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PagosList::PagosList(QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     m_companyact = NULL;
     setupUi(this);
     m_modo = 0;
@@ -44,8 +44,8 @@ PagosList::PagosList(QWidget *parent, const char *name, Qt::WFlags flag)
 }
 
 
-PagosList::PagosList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag)
-        : QWidget(parent, name, flag) {
+PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
+        : QWidget(parent, flag) {
     m_companyact = comp;
     setupUi(this);
     m_proveedor->setcompany(comp);
@@ -66,12 +66,12 @@ PagosList::~PagosList() {
 void PagosList::presentar() {
     _depura("PagosList::presentar()\n", 0);
     if (m_companyact != NULL ) {
-        cursor2 *cur = m_companyact->cargacursor("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador WHERE 1=1" + generaFiltro());
+        cursor2 *cur = m_companyact->cargacursor("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador WHERE 1 = 1 " + generaFiltro());
         mui_list->cargar(cur);
         delete cur;
 
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago WHERE 1=1" + generaFiltro());
+        cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago WHERE 1 = 1 " + generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     } // end if
@@ -88,7 +88,7 @@ QString PagosList::generaFiltro() {
         filtro = "";
     } // end if
     if (m_proveedor->idproveedor() != "") {
-        filtro += " AND pago.idproveedor=" + m_proveedor->idproveedor();
+        filtro += " AND pago.idproveedor = " + m_proveedor->idproveedor();
     } // end if
 
     QString subfiltro = " AND ";
@@ -223,7 +223,7 @@ void PagosList::on_mui_borrar_clicked() {
     try {
 	mdb_idpago = mui_list->DBvalue("idpago");
 	if (m_modo == 0 && mdb_idpago != "") {
-		PagoView *bud = new PagoView(m_companyact, NULL, QApplication::translate("PagosList", "Edicion de presupuestos"));
+		PagoView *bud = new PagoView(m_companyact, NULL);
 		bud->cargar(mdb_idpago);
 		bud->borraPago();
 	} // end if
@@ -238,7 +238,7 @@ void PagosList::on_mui_borrar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
-PagosListSubForm::PagosListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+PagosListSubForm::PagosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("pago");
     setDBCampoId("idpago");
     addSHeader("idpago", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pago"));

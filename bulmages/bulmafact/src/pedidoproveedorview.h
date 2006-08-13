@@ -45,7 +45,7 @@ class PedidoProveedorView : public QWidget, public Ui_PedidoProveedorBase, publi
     Q_OBJECT
 
 public:
-    PedidoProveedorView(company *, QWidget *parent = 0, const char *name = 0);
+    PedidoProveedorView(company *, QWidget *parent = 0);
     ~PedidoProveedorView();
     void closeEvent(QCloseEvent *);
     void generarAlbaran();
@@ -97,9 +97,10 @@ public:
 
 public slots:
     virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar pedido al proveedor."),
-                                              tr("Desea eliminar el pedido al proveedor?."),
-                                              tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        int val = QMessageBox::warning(this,
+                                       tr("Borrar pedido al proveedor."),
+                                       tr("Desea eliminar el pedido al proveedor?."),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0) {
             borrar();
             dialogChanges_cargaInicial();

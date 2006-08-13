@@ -56,8 +56,7 @@ private:
     void inicializar();
 
 public:
-    ArticuloList(company *, QWidget *parent = 0, const char *name = 0,
-                 Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~ArticuloList();
     QString formaQuery();
     QString detalleArticulos();

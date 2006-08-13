@@ -49,7 +49,7 @@ private:
     void pintar();
 
 public:
-    TrabajadorView(company * emp, QWidget *parent = 0, const char *name = 0);
+    TrabajadorView(company * emp, QWidget *parent = 0);
     ~TrabajadorView();
     void setModoConsulta() {
         m_modoConsulta = TRUE;

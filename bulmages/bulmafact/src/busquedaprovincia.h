@@ -35,7 +35,7 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    BusquedaProvincia(QWidget *parent = 0, const char *name = 0);
+    BusquedaProvincia(QWidget *parent = 0);
     ~BusquedaProvincia();
     void setcompany(company *comp) {
         companyact = comp;
