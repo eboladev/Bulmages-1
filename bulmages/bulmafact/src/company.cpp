@@ -65,11 +65,11 @@
 #include "tiposarticuloview.h"
 
 
-/** El constructor de la clase company no hace nada */
+/// El constructor de la clase company no hace nada.
 company::company() {}
 
 
-/** El destructor de la clase company borra toda la memoria almacenada */
+/// El destructor de la clase company borra toda la memoria almacenada.
 company::~company() {
     _depura("Destructor de company", 0);
     /// Primero cerramos todas las ventanas y las DestructiveClose se borran
@@ -103,7 +103,8 @@ company::~company() {
 }
 
 
-/** Inicializa la base de datos que se pasa, si se pasa una cadena vacia entonces aparece el selector de empresa */
+/// Inicializa la base de datos que se pasa, si se pasa una cadena vacia entonces aparece
+/// el selector de empresa.
 void company::init(QString bd) {
     if (bd == "")
         bd = searchCompany();
@@ -132,62 +133,62 @@ QString company::searchCompany() {
 
 void company::createMainWindows() {
     _depura("company::createMainWindows", 0);
-    m_articleslist = new ArticuloList(this, 0, QApplication::translate("company", "Articulos"), 0, ArticuloList::EditMode);
+    m_articleslist = new ArticuloList(this, 0, QApplication::translate("company", "Listado de articulos"), 0, ArticuloList::EditMode);
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 
     _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
 
-    m_providerslist = new ProveedorList(this, 0, QApplication::translate("company", "Proveedores"));
+    m_providerslist = new ProveedorList(this, 0, QApplication::translate("company", "Listado de proveedores"));
     m_pWorkspace->addWindow(m_providerslist);
     m_providerslist->hide();
 
     _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
 
-    m_clientsList = new ClientsList(this, 0, QApplication::translate("company", "Clientes"));
+    m_clientsList = new ClientsList(this, 0, QApplication::translate("company", "Listado de clientes"));
     m_pWorkspace->addWindow(m_clientsList);
     m_clientsList->hide();
 
     _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
 
-    m_cobrosList = new CobrosList(this, 0, QApplication::translate("company", "Cobros"));
+    m_cobrosList = new CobrosList(this, 0, QApplication::translate("company", "Listado de cobros"));
     m_pWorkspace->addWindow(m_cobrosList);
     m_cobrosList->hide();
 
     _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
-    m_pagosList = new PagosList (this, 0, QApplication::translate("company", "Pagos"));
+    m_pagosList = new PagosList (this, 0, QApplication::translate("company", "Listado de pagos"));
     m_pWorkspace->addWindow(m_pagosList);
     m_pagosList->hide();
 
-    m_budgetsList = new PresupuestoList(this, 0, QApplication::translate("company", "Presupuestos a clientes"));
+    m_budgetsList = new PresupuestoList(this, 0, QApplication::translate("company", "Listado de presupuestos a clientes"));
     m_pWorkspace->addWindow(m_budgetsList);
     m_budgetsList->hide();
 
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
 
-    m_pedidosclienteList = new PedidosClienteList(this, 0, QApplication::translate("company", "Pedidos de clientes"));
+    m_pedidosclienteList = new PedidosClienteList(this, 0, QApplication::translate("company", "Listado de pedidos de clientes"));
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
-    m_clientDelivNotesList = new AlbaranClienteList(this, 0, QApplication::translate("company", "Albaranes de clientes"));
+    m_clientDelivNotesList = new AlbaranClienteList(this, 0, QApplication::translate("company", "Listado de albaranes de clientes"));
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 
     _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
 
-    m_facturasList = new FacturasList(this, 0, QApplication::translate("company", "Facturas a cliente"));
+    m_facturasList = new FacturasList(this, 0, QApplication::translate("company", "Listador de facturas a cliente"));
     m_pWorkspace->addWindow(m_facturasList);
     m_facturasList->hide();
 
-    m_pedidosproveedorList = new PedidosProveedorList(this, 0, QApplication::translate("company", "Pedidos a proveedor"));
+    m_pedidosproveedorList = new PedidosProveedorList(this, 0, QApplication::translate("company", "Listador de pedidos a proveedor"));
     m_pWorkspace->addWindow(m_pedidosproveedorList);
     m_pedidosproveedorList->hide();
 
-    m_albaranesproveedor = new AlbaranesProveedor(this, 0, QApplication::translate("company", "Albaranes de proveedor"));
+    m_albaranesproveedor = new AlbaranesProveedor(this, 0, QApplication::translate("company", "Listado de albaranes de proveedor"));
     m_pWorkspace->addWindow(m_albaranesproveedor);
     m_albaranesproveedor->hide();
 
-    m_facturasproveedorlist = new FacturasProveedorList(this, 0, QApplication::translate("company", "Facturas de proveedor"));
+    m_facturasproveedorlist = new FacturasProveedorList(this, 0, QApplication::translate("company", "Listado de facturas de proveedor"));
     m_pWorkspace->addWindow(m_facturasproveedorlist);
     m_facturasproveedorlist->hide();
 
@@ -197,37 +198,37 @@ void company::createMainWindows() {
 
 
 void company::viewCobrosList() {
-    m_cobrosList->hide();
-    m_cobrosList->showMaximized();
-    m_cobrosList->setActiveWindow();
+    m_cobrosList->show();
+    m_cobrosList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_cobrosList);
 }
 
 
 void company::viewPagosList() {
-    m_pagosList->hide();
-    m_pagosList->showMaximized();
-    m_pagosList->setActiveWindow();
+    m_pagosList->show();
+    m_pagosList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_pagosList);
 }
 
 
 void company::listproviders() {
-    m_providerslist->hide();
-    m_providerslist->showMaximized();
-    m_providerslist->setActiveWindow();
+    m_providerslist->show();
+    m_providerslist->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_providerslist);
 }
 
 
 void company::listClients() {
-    m_clientsList->hide();
-    m_clientsList->showMaximized();
-    m_clientsList->setActiveWindow();
+    m_clientsList->show();
+    m_clientsList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_clientsList);
 }
 
 
 void company::listarticles() {
-    m_articleslist->hide();
-    m_articleslist->showMaximized();
-    m_articleslist->setActiveWindow();
+    m_articleslist->show();
+    m_articleslist->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_articleslist);
 }
 
 
@@ -330,44 +331,44 @@ void company::s_newPedidoPro() {
 
 
 void company::lAlbaranesProveedor() {
-    m_albaranesproveedor->hide();
-    m_albaranesproveedor->showMaximized();
-    m_albaranesproveedor->setActiveWindow();
+    m_albaranesproveedor->show();
+    m_albaranesproveedor->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_albaranesproveedor);
 }
 
 
 void company::s_listPedidosCli() {
-    m_pedidosclienteList->hide();
-    m_pedidosclienteList->showMaximized();
-    m_pedidosclienteList->setActiveWindow();
+    m_pedidosclienteList->show();
+    m_pedidosclienteList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_pedidosclienteList);
 }
 
 
 void company::s_listPedidosPro() {
-    m_pedidosproveedorList->hide();
-    m_pedidosproveedorList->showMaximized();
-    m_pedidosproveedorList->setActiveWindow();
+    m_pedidosproveedorList->show();
+    m_pedidosproveedorList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_pedidosproveedorList);
 }
 
 
 void company::s_listFacturasCli() {
-    m_facturasList->hide();
-    m_facturasList->showMaximized();
-    m_facturasList->setActiveWindow();
+    m_facturasList->show();
+    m_facturasList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_facturasList);
 }
 
 
 void company::s_listFacturasPro() {
-    m_facturasproveedorlist->hide();
-    m_facturasproveedorlist->showMaximized();
-    m_facturasproveedorlist->setActiveWindow();
+    m_facturasproveedorlist->show();
+    m_facturasproveedorlist->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_facturasproveedorlist);
 }
 
 
 void company::listBudgets() {
-    m_budgetsList->hide();
-    m_budgetsList->showMaximized();
-    m_budgetsList->setActiveWindow();
+    m_budgetsList->show();
+    m_budgetsList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_budgetsList);
 }
 
 
@@ -424,6 +425,7 @@ void company::refreshFacturas() {
         m_facturasList->presenta();
 }
 
+
 void company::refreshFacturasProveedor() {
     _depura("company::refreshFacturasProveedor", 0);
     if(m_facturasproveedorlist != NULL)
@@ -433,11 +435,10 @@ void company::refreshFacturasProveedor() {
 }
 
 
-
 void company::listClientDelivNotes() {
-    m_clientDelivNotesList->hide();
-    m_clientDelivNotesList->showMaximized();
-    m_clientDelivNotesList->setActiveWindow();
+    m_clientDelivNotesList->show();
+    m_clientDelivNotesList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_clientDelivNotesList);
 }
 
 
@@ -600,8 +601,6 @@ void company::s_newAlbaranProveedorView() {
 }
 
 
-
-
 PedidoClienteView * company::newPedidoClienteView() {
     /// Lanzamos los plugins necesarios.
     PedidoClienteView *bud;
@@ -678,3 +677,4 @@ void company::s_newTipoArticuloList() {
 void company::s_indexadorCambiaEstado() {
     m_listventanas->cambiaVisible();
 }
+

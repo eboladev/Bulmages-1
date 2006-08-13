@@ -79,7 +79,9 @@ private:
     QWorkspace2 *m_pWorkspace;
 
 public:
-    void setWorkspace(QWorkspace2 *w) {m_pWorkspace = w;};
+    void setWorkspace(QWorkspace2 *w) {
+        m_pWorkspace = w;
+    };
     listventanas(QWidget *a = 0);
     ~listventanas();
 

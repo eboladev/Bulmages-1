@@ -34,7 +34,7 @@
 
 
 ProveedorList::ProveedorList(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : QWidget (parent, name, flag) , pgimportfiles(comp) {
+        : QWidget(parent, name, flag), pgimportfiles(comp) {
     _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
     m_companyact = comp;

@@ -54,8 +54,10 @@ void listventanas::dclicked() {
     _depura("listventanas::dclicked()\n", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
-        widget->hide();
-        widget->showMaximized();
+        if (widget->isMaximized() == TRUE)
+            widget->showNormal();
+        else
+            widget->showMaximized();
     } // end if
     _depura("END listventanas::dclicked()\n", 0);
 }
@@ -65,8 +67,9 @@ void listventanas::clicked() {
     _depura("listventanas::clicked()\n", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
-        widget->hide();
-        widget->showNormal();
+        widget->show();
+        widget->parentWidget()->raise();
+        m_pWorkspace->setActiveWindow(widget);
     } // end if
     _depura("END listventanas::clicked()\n", 0);
 }
