@@ -74,7 +74,6 @@ HEADERS += bulmafact.h \
            presupuestoview.h \
            presupuestolist.h \
            articuloview.h \
-           EventHandler.h \
            albaranclientelist.h \
            albaranclienteview.h \
            fpagoview.h \
@@ -162,7 +161,6 @@ SOURCES += bulmafact.cpp \
            presupuestoview.cpp \
            presupuestolist.cpp \
            articuloview.cpp \
-           EventHandler.cpp \
            albaranclientelist.cpp \
            albaranclienteview.cpp \
            fpagoview.cpp \
