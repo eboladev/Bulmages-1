@@ -102,11 +102,11 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
 
     if (providers->cifprovider() != "") {
 	setcifproveedor( providers->cifprovider());
+ 	emit(valueChanged(mdb_idproveedor));
     } // end if
 
     delete providers;
     delete diag;
-
     _depura("END BusquedaProveedor::on_mui_buscar_clicked", 0);
 }
 

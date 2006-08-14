@@ -451,7 +451,10 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         QString cuenta = ctaactivo->text();
         QString cuentaamort = ctaamortizacion->text();
         nueva->inicializa(numasiento);
-        nueva->muestraplantilla(idainteligente.toInt());
+
+        nueva->muestraplantilla("amortizacion.xml");
+
+
         nueva->setvalores("$cuenta$",cuentaamort);
         nueva->setvalores("$cuentabien$",cuenta);
         nueva->setvalores("$fechaasiento$",table1->text(row,COL_FECHA));

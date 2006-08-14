@@ -43,6 +43,7 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int  ) :
     _depura("DiarioView::DiarioView\n", 0);
     m_companyact = emp;
     mui_list->setcompany( emp);
+    mui_contrapartida->setempresa(emp);
     // Iniciamos los componentes de la fecha para que al principio aparezcan
     // Como el año inicial.
     char cadena[10];

@@ -17,8 +17,9 @@
 #ifndef APLINTELIGENTESVIEW_H
 #define APLINTELIGENTESVIEW_H
 
+#include "ui_aplinteligentesbase.h"
+
 #include <qwidget.h>
-#include <aplinteligentesdlg.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <qlineedit.h>
@@ -35,6 +36,10 @@
 #include "funcaux.h"
 #include "postgresiface2.h"
 
+#include <QDomDocument>
+#include "busquedafecha.h"
+#include "busquedacuenta.h"
+
 class empresa;
 /** 
   * @author Tomeu Borr� Riera 
@@ -48,11 +53,14 @@ class empresa;
 	En el segundo caso se genera un asiento nuevo por cada introducci� de plantilla.
   */
 
-class aplinteligentesview : public aplinteligentesdlg  {
+class aplinteligentesview : public QDialog,  public Ui_AplInteligentesBase  {
    Q_OBJECT
 private:
 /// LA empresa del programa.
   empresa *companyact;
+
+ QDomDocument m_doc;
+
 
   QString variablescta[100][3];
   QString variablesfecha[100][3];
@@ -74,19 +82,18 @@ private:
            // Por defecto el modo es 0.
 
   QLabel    *labelcta[100];
-  QLabel    *nomcta[100];
   QLabel    *labelfecha[100];
   QLabel    *labelnumero[100];
   QLabel    *labeltexto[100];
-  QLineEdit *varcta[100];
-  QLineEdit *varfecha[100];
+  BusquedaCuenta *varcta[100];
+  BusquedaFecha *varfecha[100];
   QLineEdit *varnumero[100];
   QLineEdit *vartexto[100];
-  QToolButton *boton_cta[100];
+/*  QToolButton *boton_cta[100];*/
   
   int numainteligente; // Esta variable indica el idainteligente que estamos usando como plantilla.
   int numasiento;       // Esta variable indica en que asiento se va a introducir el asiento inteligente.
-  int listasientos[100];  // Esta lista se usa en conjuncion con el combo-box para saber los incices de las plantillas de asientos inteligentes.
+  QString listasientos[100];  // Esta lista se usa en conjuncion con el combo-box para saber los incices de las plantillas de asientos inteligentes.
   int idainteligente;
   unsigned int numdigitos;
 public: 
@@ -99,12 +106,12 @@ public:
   void recogevariables(QString, int);
   QString aplicavariable(QString);
   void borrawidgets();
-  void selectsiguiente(QLineEdit *);
+  void selectsiguiente(QObject *);
   void inicializavariables();
 //  void inicializavariablesapunte(int);
   void cifcuenta(int);
   void selectfirst();
-  void muestraplantilla(int);
+  void muestraplantilla(QString);
   void setvalores(QString, QString);
   void setfechaasiento(QString fecha) {fechaasiento->setText(fecha);}
   
@@ -114,14 +121,9 @@ public:
   
 public slots:
   virtual void boton_crear();
-  virtual void cambiada_plantilla(int);
-  virtual void return_cta();
-  virtual void return_fecha();
   virtual void return_numero();
   virtual void return_texto();
-  virtual void boton_buscacuenta();  
-  virtual void fecha_textChanged(const QString &);
-  virtual void codigo_textChanged(const QString &);
+  virtual void on_mui_comboainteligentes_activated(int index);
 };
 
 #endif

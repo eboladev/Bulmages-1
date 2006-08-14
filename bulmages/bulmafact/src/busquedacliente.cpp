@@ -93,7 +93,6 @@ void BusquedaCliente::setcifcliente(QString val) {
     delete cur;
     pinta();
     _depura("END BusquedaCliente::setcifcliente", 0, val);
-
 }
 
 
@@ -108,6 +107,7 @@ void BusquedaCliente::on_mui_buscar_clicked() {
     diag->exec();
     if (clients->cifclient() != "") {
         setcifcliente(clients->cifclient());
+	emit(valueChanged(mdb_idcliente));
     } // end if
     delete diag;
     _depura("END BusquedaCliente::on_mui_buscar_clicked\n", 0);

@@ -48,7 +48,8 @@ FORMS += bulmacontbase.ui \
 	 aboutbase.ui \
 	 amortizacionesbase.ui \
 	 amortizacionbase.ui \
-	 busquedacuentabase.ui 
+	 busquedacuentabase.ui \
+	 aplinteligentesbase.ui
 
 
 FORMS3 += uiselector.ui \
@@ -57,7 +58,6 @@ FORMS3 += uiselector.ui \
 #         cuentadlg.ui \
 #         balance1dlg.ui \
          int_apunts3.ui \
-         aplinteligentesdlg.ui \
          filtrarasientosdlg.ui \
          regivaprintdlg.ui \
          compbalancedlg.ui \

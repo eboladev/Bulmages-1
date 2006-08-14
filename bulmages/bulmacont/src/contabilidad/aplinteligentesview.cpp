@@ -14,7 +14,6 @@
  *                                                                         *
  ***************************************************************************/
 #include "aplinteligentesview.h"
-#include "images/find.xpm"
 #include "calendario.h"
 #include "empresa.h"
 #include "asiento1view.h"
@@ -22,6 +21,8 @@
 //Added by qt3to4:
 #include <QPixmap>
 #include <QLabel>
+
+#include <QDomDocument>
 
 #define TIPO_CTA 0
 #define TIPO_FECHA 1
@@ -38,7 +39,8 @@
 #define VAR_PRED_FECHAACTUAL 0
 #define VAR_PRED_FECHAASIENTO 1
 
-aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const char *name ) : aplinteligentesdlg(parent,name) {
+aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const char *name ) : QDialog( parent,name) {
+    setupUi(this);
     companyact = emp;
     // iniciamos los contadores de variables para que no haya problemas.
     indvariablescta=0;
@@ -49,31 +51,28 @@ aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const ch
     indvariablesapunte=1;  // Cada apunte la tiene o no la tiene, pero no se debe aplicar.
     variablesapunte[VAR_APUNT_CIFCUENTA][0] ="$cifcuenta$";
     setmodo(0);
-}// end aplinteligentesview
+}
 
 
 aplinteligentesview::~aplinteligentesview() {
     borrawidgets();
-}// end aplinteligentesview
+}
 
 
 void aplinteligentesview::inicializa(int idasiento) {
-    int i=0;
     numasiento = idasiento;
     inicializavariables();
-    QString query;
-    //Cargamos el combobox con la lista de asientos inteligentes.
-    query.sprintf("SELECT * FROM ainteligente");
-    companyact->begin();
-    cursor2 *cur = companyact->cargacursor(query,"unsuperquery");
-    companyact->commit();
-    while (!cur->eof()) {
-        fprintf(stderr,"%2.2s %s\n",cur->valor("idainteligente").ascii(), cur->valor("descripcion").ascii());
-        comboainteligentes->insertItem(cur->valor("descripcion").ascii(),-1);
-        listasientos[i++]= atoi(cur->valor("idainteligente").ascii());
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
+
+        QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes");
+        dir.setFilter(QDir::Files );
+        dir.setSorting(QDir::Size | QDir::Reversed);
+
+        QFileInfoList list = dir.entryInfoList();
+        for (int i = 0; i < list.size(); ++i) {
+            QFileInfo fileInfo = list.at(i);
+            mui_comboainteligentes->insertItem(fileInfo.fileName(),-1);
+            listasientos[i++]= fileInfo.filePath();
+        } // end for
     // Calculamos el número de dígitos que tiene una cuenta.
     companyact->begin();
     QString query1 = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
@@ -81,8 +80,8 @@ void aplinteligentesview::inicializa(int idasiento) {
     numdigitos=cursoraux1->valor(2).length();
     companyact->commit();
     delete cursoraux1;
-    cambiada_plantilla(0);
-}// end inicializa
+    on_mui_comboainteligentes_activated(0);
+}
 
 // Las variables predefinidas se declaran aqui.
 // De momento tenemos dos fariables fechaactual y fechaasiento
@@ -109,7 +108,7 @@ void aplinteligentesview::inicializavariables() {
     delete cur;
     indvariablespredefinidas=2;
 //    inicializavariablesapunte(0);
-}// end inicializavariables
+}
 
 /*
 // Existen variables de asientos inteligentes que cambian con la inserción
@@ -157,33 +156,8 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = "";
     }// end if
     delete cur;
-}// end cifcuenta
+}
 
-void aplinteligentesview::return_cta() {
-    QLineEdit *cuenta;
-    cuenta = (QLineEdit *) sender();
-    fprintf(stderr,"Se ha pulsado return sobre una cuenta\n");
-    fprintf(stderr,"Texto de la cuenta: %s\n",cuenta->text().ascii());
-
-	 // Buscamos el label correspondiente para esta cuenta.
-	 int i;
-	 for (i=0; i<indvariablescta && varcta[i]!=cuenta;i++);
-	 
-    QString cad = cuenta->text();
-    if (cad != "") {
-        cad = extiendecodigo(cad,numdigitos);
-        companyact->begin();
-        cursor2 *cursorcta = companyact->cargacuenta(0, cad );
-        companyact->commit();
-        int num = cursorcta->numregistros();
-        if (num >0) {
-            cuenta->setText(cursorcta->valor("codigo"));
-				nomcta[i]->setText(cursorcta->valor("descripcion"));
-            selectsiguiente(cuenta);
-        }// end if
-        delete cursorcta;
-    }// end if
-}// end return_cta
 
 
 void aplinteligentesview::return_numero() {
@@ -191,7 +165,7 @@ void aplinteligentesview::return_numero() {
     numero = (QLineEdit *) sender();
     fprintf (stderr,"Se ha pulsado return sobre el número: %s\n",numero->text().ascii());
     selectsiguiente(numero);
-}// end return_numero
+}
 
 
 void aplinteligentesview::return_texto() {
@@ -199,52 +173,29 @@ void aplinteligentesview::return_texto() {
     texto = (QLineEdit *) sender();
     fprintf (stderr,"Se ha pulsado return sobre el texto: %s\n",texto->text().ascii());
     selectsiguiente(texto);
-}// end return_numero
+}
 
-
-void aplinteligentesview::boton_buscacuenta() {
-    QToolButton *boton;
-    QLineEdit *lineaeditada;
-    lineaeditada = NULL;
-    boton = (QToolButton *) sender();
-    fprintf(stderr,"Se esta intentando buscar una cuenta\n");
-    for(int i=0;i<indvariablescta;i++) {
-        if (boton == boton_cta[i]) {
-            lineaeditada = varcta[i];
-        }// end if
-    }// end for
-
-    QDialog *diag = new QDialog(0);
-    diag->setModal(true);
-
-    listcuentasview1 *listcuentas = new listcuentasview1(companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
-    connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
-    diag->exec();
-    if (listcuentas->codcuenta() != "") {
-        lineaeditada->setText(listcuentas->codcuenta());
-    } // end if
-    delete diag;
-}// end if
 
 
 // Esta función se llama a través del array de asientos inteligentes.
 // El valor que se pasa es un valor numérico del combo-box
-// Seguro que la función que interesa es muestraplantilla.
-void aplinteligentesview::cambiada_plantilla(int num) {
-    idainteligente = listasientos[num];
+void aplinteligentesview::on_mui_comboainteligentes_activated(int ) {
+    _depura("aplinteligentesview::on_mui_comboainteligentes_activated", 0);
     mostrarplantilla();
-}// end cambiada_plantilla
+    _depura("END aplinteligentesview::on_mui_comboainteligentes_activated", 0);
+}
 
 // Esta función muestra la plantilla correspondiente con el idainteligente.
 // También pone el combo box en la posición adecuada.
 // Si la plantilla no existe el resultado es indefinido.
-void aplinteligentesview::muestraplantilla(int numplantilla) {
-   int i;
-   for (i=0; numplantilla != listasientos[i] && i<100;i++);
-   comboainteligentes->setCurrentItem(i);
-   idainteligente = numplantilla;
+
+void aplinteligentesview::muestraplantilla(QString plantilla) {
+   int i=0;
+   while ( mui_comboainteligentes->currentText() != plantilla && i < 100)
+   	mui_comboainteligentes->setCurrentItem(i++);
    mostrarplantilla();
-}// end muestraplantilla
+}
+
 
 
 // La pulsación sobre el boton de creación del asiento.
@@ -274,7 +225,7 @@ void aplinteligentesview::boton_crear() {
     if (modo == 1) {
        close();
     }// end if
-}// end boton_crear
+}
 
 
 /*****************************************************************************
@@ -285,6 +236,8 @@ void aplinteligentesview::boton_crear() {
  * desarrollo de Bulmages y me hace mucha ilusion tenerlo listo pronto.      *
  *****************************************************************************/
 void aplinteligentesview::mostrarplantilla() {
+    _depura("aplinteligentesview::mostrarplantilla", 0);
+
     QString query;
     int i;
     int j=0;
@@ -297,22 +250,96 @@ void aplinteligentesview::mostrarplantilla() {
     borrawidgets();
     fprintf(stderr,"Hemos borrado los datos anteriores\n");
 
-    // Vamos a ver que tal se nos da el recoger variables de la plantilla apuntes
-    query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
-    companyact->begin();
-    cursor2 *cur= companyact->cargacursor(query,"superquery");
-    companyact->commit();
-    while (!cur->eof()) {
-        recogevariables(cur->valor("codcuenta"),TIPO_CTA);
-        recogevariables(cur->valor("contrapartida"),TIPO_CTA);
-        recogevariables(cur->valor("fecha"),TIPO_FECHA);
-        recogevariables(cur->valor("debe"),TIPO_NUMERO);
-        recogevariables(cur->valor("haber"), TIPO_NUMERO);
-        recogevariables(cur->valor("conceptocontable"), TIPO_TEXTO);
-        recogevariables(cur->valor("descripcion"), TIPO_TEXTO);
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
+
+
+/*
+   PRIMERAS PRUEBAS CON DOM
+*/
+//  QFile f( "/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes/pago.xml" );
+  QFile f(listasientos[mui_comboainteligentes->currentIndex()]);
+  if ( !f.open( IO_ReadOnly ) )
+      return;
+  if ( !m_doc.setContent( &f ) ) {
+      f.close();
+      return;
+  }
+  f.close();
+
+   /// Recogemos los valores de cuenta
+   QDomNodeList litems = m_doc.elementsByTagName("codcuenta");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_CTA);
+	} // end if
+   } // end for
+
+
+
+   /// Recogemos los valores de contrapartida
+   litems = m_doc.elementsByTagName("contrapartida");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_CTA);
+	} // end if
+   } // end for
+
+
+   /// Recogemos los valores de fecha
+   litems = m_doc.elementsByTagName("fecha");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_FECHA);
+	} // end if
+   } // end for
+
+   /// Recogemos los valores de debe
+   litems = m_doc.elementsByTagName("debe");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_NUMERO);
+	} // end if
+   } // end for
+
+
+   /// Recogemos los valores de haber
+   litems = m_doc.elementsByTagName("haber");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_NUMERO);
+	} // end if
+   } // end for
+
+   /// Recogemos los valores de conceptocontable
+   litems = m_doc.elementsByTagName("conceptocontable");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_TEXTO);
+	} // end if
+   } // end for
+
+
+   /// Recogemos los valores de descripcion
+   litems = m_doc.elementsByTagName("descripcion");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+	QDomElement e1 = item.toElement(); // try to convert the node to an element.
+	if( !e1.isNull() ) { // the node was really an element.
+ 	       recogevariables(e1.text(),TIPO_TEXTO);
+	} // end if
+   } // end for
+
 
 
 
@@ -322,19 +349,12 @@ void aplinteligentesview::mostrarplantilla() {
         labelcta[i]->setGeometry( QRect( 5, inc+32*(j), 150, 25 ) );
         labelcta[i]->setText(variablescta[i][2]);
         labelcta[i]->show();
-        varcta[i] = new QLineEdit(groupBox1,"");
-        varcta[i]->setGeometry( QRect( 150, inc+32*(j), 120, 25 ) );
+        varcta[i] = new BusquedaCuenta(groupBox1);
+        varcta[i]->setGeometry( QRect( 150, inc+32*(j++), 300, 25 ) );
+        varcta[i]->setempresa(companyact);
         connect( varcta[i], SIGNAL( returnPressed() ), this, SLOT( return_cta() ) );
         connect( varcta[i], SIGNAL( textChanged(const QString &)), this, SLOT(codigo_textChanged(const QString &)));
         varcta[i]->show();
-        boton_cta[i] = new QToolButton( groupBox1, "" );
-        boton_cta[i]->setPixmap( QPixmap(find1));
-        boton_cta[i]->setGeometry( QRect( 275, inc+32*(j), 25, 25 ) );
-        connect( boton_cta[i], SIGNAL( clicked() ), this, SLOT( boton_buscacuenta() ) );
-        boton_cta[i]->show();
-        nomcta[i] = new QLabel(groupBox1,"");
-        nomcta[i]->setGeometry( QRect (310, inc+32*(j++), 350, 25) );
-        nomcta[i]->show();
     }// end for
 
     for (i=0;i<indvariablesfecha;i++) {
@@ -342,8 +362,10 @@ void aplinteligentesview::mostrarplantilla() {
         labelfecha[i]->setGeometry( QRect( 5, inc+32*(j), 150, 25 ) );
         labelfecha[i]->setText(variablesfecha[i][2]);
         labelfecha[i]->show();
-        varfecha[i] = new QLineEdit(groupBox1,"");
+
+	varfecha[i] = new BusquedaFecha(groupBox1);
         varfecha[i]->setGeometry( QRect( 150, inc+32*(j++), 150, 25 ) );
+
         connect( varfecha[i], SIGNAL( returnPressed() ), this, SLOT( return_fecha() ) );
         connect( varfecha[i], SIGNAL( textChanged(const QString &)), this, SLOT(fecha_textChanged(const QString &)));
         varfecha[i]->show();
@@ -370,7 +392,9 @@ void aplinteligentesview::mostrarplantilla() {
         connect( vartexto[i], SIGNAL( returnPressed() ), this, SLOT( return_texto() ) );
         vartexto[i]->show();
     }// end for
-}// end mostrarplantilla
+
+    _depura("END aplinteligentesview::mostrarplantilla", 0);
+}
 
 
 // Esta función permite establecer los valores de las variables.
@@ -401,9 +425,7 @@ void aplinteligentesview::setvalores(QString var, QString val) {
            vartexto[i]->setText(val);
         }// end if
     }// end for
-
-
-}// end setvalores
+}
 
 /***************************************************************
  * Esta función recoge los valores de los cuadros de texto y   *
@@ -423,7 +445,7 @@ void aplinteligentesview::recogevalores() {
     for (i=0;i<indvariablescta;i++) {
         variablescta[i][1]=varcta[i]->text();
     }// end for
-}// end recogevalores
+}
 
 
 
@@ -442,11 +464,7 @@ void aplinteligentesview::creaasiento() {
     int idcuenta=0;
     QString idcontrapartida;
     QString query;
-    cursor2 *cur;
     cursor2 *cur1;
-    
-    query.sprintf("SELECT * FROM binteligente WHERE idainteligente=%d",numainteligente);
-    cur= companyact->cargacursor(query);
 
     /// Calculamos a partir de que orden debemos empezar.
     int orden=0;
@@ -458,41 +476,37 @@ void aplinteligentesview::creaasiento() {
     delete cur1;
 
 
-    while (!cur->eof()) {
-        codcuenta = aplicavariable(cur->valor("codcuenta"));
+   QDomNodeList litems = m_doc.elementsByTagName("binteligente");
+   for (int i = 0; i < litems.count(); i++) {
+   	QDomNode item = litems.item(i);
+
+        codcuenta = aplicavariable(item.firstChildElement("codcuenta").text());
         query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
-        companyact->begin();
         cur1 = companyact->cargacursor(query,"buscacodigo");
-        companyact->commit();
         if (!cur1->eof()) {
             idcuenta = atoi(cur1->valor("idcuenta").ascii());
         }// end if
         delete cur1;
-        contrapartida = aplicavariable(cur->valor("contrapartida"));
+        contrapartida = aplicavariable(item.firstChildElement("contrapartida").text());
         query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
-        companyact->begin();
         cur1 = companyact->cargacursor(query,"buscacodigo");
-        companyact->commit();
         if (!cur1->eof()) {
             idcontrapartida = cur1->valor("idcuenta");
         } else {
             idcontrapartida = "NULL";
         }// end if
         delete cur1;
-        debe = aplicavariable(cur->valor("debe"));
-        haber = aplicavariable(cur->valor("haber"));
-        fecha = aplicavariable(cur->valor("fecha"));
-        conceptocontable = aplicavariable(cur->valor("conceptocontable"));
-        descripcion = aplicavariable(cur->valor("descripcion"));
+        debe = aplicavariable(item.firstChildElement("debe").text());
+        haber = aplicavariable(item.firstChildElement("haber").text());
+        fecha = aplicavariable(item.firstChildElement("fecha").text());
+        conceptocontable = aplicavariable(item.firstChildElement("conceptocontable").text());
+        descripcion = aplicavariable(item.firstChildElement("descripcion").text());
         query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii(), orden++);
         companyact->begin();
         companyact->ejecuta(query);
         companyact->commit();
-        // Borramos las variables creadas para este apunte
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
-}// end creaasiento
+    }// end for
+}
 
 
 // Esta funcion busca variables en una cadena de texto y la coloca en los arrays de variables que forman el asiento 
@@ -590,7 +604,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
             }// end if
         }// end if
     }// end if
-}// end recogevariables
+}
 
 
 // Se hace un repaso que hace que se aplique una variable.
@@ -658,7 +672,7 @@ QString aplinteligentesview::aplicavariable(QString texto) {
         }// end if
     }// end for
     return (cadena);
-}// end aplicavariable
+}
 
 
 
@@ -667,9 +681,7 @@ void aplinteligentesview::borrawidgets() {
     // Vamos a intentar borrar todos los datos antes de empezar.
     for (i=0;i<indvariablescta;i++) {
         delete varcta[i];
-        delete boton_cta[i];
         delete labelcta[i];
-		  delete nomcta[i];
     }// end for
     for (i=0;i<indvariablesfecha;i++) {
         delete varfecha[i];
@@ -687,7 +699,7 @@ void aplinteligentesview::borrawidgets() {
     indvariablesfecha = 0;
     indvariablesnumero = 0;
     indvariablestexto = 0;
-}// end borrawidgets
+}
 
 
 void aplinteligentesview::selectfirst() {
@@ -704,11 +716,11 @@ void aplinteligentesview::selectfirst() {
         vartexto[0]->selectAll();
         vartexto[0]->setFocus();
     }// end if
-}// end selectfirst
+}
 
 // Esta funcion sirve para cambiar de un widget a otro dentro de la pantalla creada virtualmente.
 // Si el widget es el ltimo de la lista se hace un aceptar.
-void aplinteligentesview::selectsiguiente(QLineEdit *edit) {
+void aplinteligentesview::selectsiguiente(QObject *edit) {
     int encontrado=0;
     int i=0;
     for (i=0; i<indvariablescta;i++) {
@@ -756,52 +768,10 @@ void aplinteligentesview::selectsiguiente(QLineEdit *edit) {
     if (encontrado == 1) {
         boton_crear();
     }// end if
-}// end selectsiguiente
-
-void aplinteligentesview::return_fecha() {
-    QLineEdit *fecha;
-    fecha = (QLineEdit *) sender();
-    fecha->setText(normalizafecha(fecha->text()).toString("dd/MM/yyyy"));
-    if (fecha == fechaasiento) {
-        selectfirst();
-    } else {
-        selectsiguiente(fecha);
-    }
-}// end return_fecha
-
-void aplinteligentesview::fecha_textChanged( const QString & texto ) {
-    QLineEdit *fecha;
-    fecha = (QLineEdit *) sender();
-
-    if (texto=="+") {
-        Q3PtrList<QDate> a;
-        fecha->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        fecha->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }
-    if (texto=="*")
-        fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged( const QString &texto )
+}
 
 
-void aplinteligentesview::codigo_textChanged(const QString &texto) {
-    QLineEdit *codigo = (QLineEdit *) sender();
-    if (texto == "+") {
-        // Hacemos aparecer la ventana de cuentas
-	QDialog *diag = new QDialog(0);
-	diag->setModal(true);
-	
-	listcuentasview1 *listcuentas = new listcuentasview1(companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
-	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
-	diag->exec();
-	if (listcuentas->codcuenta() != "") {
-		codigo->setText(listcuentas->codcuenta());
-	} // end if
-	delete diag;
-    }// end if
-}// end codigo_textChanged
+
+
 
 
