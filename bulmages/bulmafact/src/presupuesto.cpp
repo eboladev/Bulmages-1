@@ -91,10 +91,6 @@ void presupuesto::pintaPresupuesto() {
     pintaidforma_pago(DBvalue("idforma_pago"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaidtrabajador(DBvalue("idtrabajador"));
-    // Pinta el subformulario de detalle del presupuesto.
-    //    listalineas->pintalistlinpresupuesto();
-    // Pinta el subformulario de descuentos del presupuesto
-    //    listadescuentos->pintaListDescuentoPresupuesto();
     calculaypintatotales();
 }
 
@@ -102,7 +98,7 @@ void presupuesto::pintaPresupuesto() {
 /// Esta funcion carga un presupuesto.
 int presupuesto::cargar(QString idbudget) {
     int error = 0;
-    QString query = "SELECT * FROM presupuesto WHERE idpresupuesto=" + idbudget;
+    QString query = "SELECT * FROM presupuesto WHERE idpresupuesto = " + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (cur->error())
         error = 1;
@@ -149,40 +145,33 @@ int presupuesto::guardar() {
 
 QString presupuesto::detalleArticulos() {
     QString texto = "";
-
     cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
     int i = 0;
     while(!cur->eof()) {
         i = !i;
-
         if (i) {
             texto += "<blockTable style=\"tabladetalle1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
         } else {
             texto += "<blockTable style=\"tabladetalle2\" colWidths=\"8cm, 5cm\" rowHeights=\"5.5cm\">\n";
         } // end if
-
         texto += "<tr>\n";
-
         if (i) {
             texto += "<td><h1>" + cur->valor("nomarticulo") + "</h1>";
             texto += "<para><pre>" + cur->valor("obserarticulo") + "</pre></para></td>\n";
         } // end if
-
         QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg";
         QFile f(file);
         if (f.exists()) {
-            texto += "        <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
-                     "            <image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
-                     "            </illustration></td>\n";
+            texto += "    <td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+                     "        <image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) + cur->valor("codigocompletoarticulo") + ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
+                     "        </illustration></td>\n";
         } else {
             texto += "<td></td>\n";
-        }
-
+        } // end if
         if (!i) {
             texto += "<td><h1>" + cur->valor("nomarticulo") + "</h1>";
             texto += "<para><pre>" + cur->valor("obserarticulo") + "</pre></para></td>\n";
         } // end if
-
         texto += "</tr>\n";
         texto += "</blockTable>";
         cur->siguienteregistro();
@@ -197,13 +186,10 @@ void presupuesto::imprimirPresupuesto() {
     int res = g_plugins->lanza("presupuesto_imprimirPresupuesto", this);
     if (res != 0)
         return;
-
     base basesimp;
-
     QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "presupuesto.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "presupuesto.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -214,7 +200,6 @@ void presupuesto::imprimirPresupuesto() {
 #endif
 
     system (archivo.toAscii().constData());
-
     /// Copiamos el logo
 #ifdef WINDOWS
 
@@ -225,16 +210,14 @@ void presupuesto::imprimirPresupuesto() {
 #endif
 
     system(archivologo.toAscii().constData());
-
     QFile file;
     file.setFileName(archivod);
     file.open( QIODevice::ReadOnly );
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
     /// Linea de totales del presupuesto.
-
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -247,7 +230,6 @@ void presupuesto::imprimirPresupuesto() {
         buff.replace("[cpcliente]", cur->valor("cpcliente"));
     } // end if
     delete cur;
-
     buff.replace("[numpresupuesto]", DBvalue("numpresupuesto"));
     buff.replace("[fpresupuesto]", DBvalue("fpresupuesto"));
     buff.replace("[vencpresupuesto]", DBvalue("vencpresupuesto"));
@@ -276,7 +258,6 @@ void presupuesto::imprimirPresupuesto() {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpresupuesto").toAscii().constData()) * Fixed(linea->DBvalue("pvplpresupuesto").toAscii().constData());
         basesimp[linea->DBvalue("ivalpresupuesto")] = basesimp[linea->DBvalue("ivalpresupuesto")] + base - base * Fixed(linea->DBvalue("descuentolpresupuesto").toAscii().constData()) / 100;
-
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "	<td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
         fitxersortidatxt += "	<td>" + XMLProtect(linea->DBvalue("desclpresupuesto")) + "</td>\n";
@@ -323,10 +304,10 @@ void presupuesto::imprimirPresupuesto() {
     } // end if
     buff.replace("[descuentos]", fitxersortidatxt);
 
-    /// Impresión de los totales.
+    /// Impresion de los totales.
     fitxersortidatxt = "";
-    QString tr1 = ""; /// Rellena el primer tr de titulares
-    QString tr2 = ""; /// Rellena el segundo tr de cantidades
+    QString tr1 = ""; /// Rellena el primer tr de titulares.
+    QString tr2 = ""; /// Rellena el segundo tr de cantidades.
     fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
 
     Fixed totbaseimp("0.00");

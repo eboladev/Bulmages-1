@@ -177,7 +177,7 @@ void PresupuestoList::imprimir() {
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
     /// Linea de totales del presupuesto.

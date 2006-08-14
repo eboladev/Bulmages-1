@@ -304,7 +304,7 @@ void familiasview::on_mui_borrar_clicked() {
             return;
         } // end if
         trataModificado();
-        QString query = "DELETE FROM FAMILIA WHERE idfamilia=" + m_idfamilia;
+        QString query = "DELETE FROM FAMILIA WHERE idfamilia = " + m_idfamilia;
         int error = companyact->ejecuta(query);
         if (error)
             throw -1;
@@ -329,7 +329,7 @@ void familiasview::on_mui_imprimir_clicked() {
     file.setFileName("/tmp/familias.rml");
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
     /// Linea de totales del presupuesto.

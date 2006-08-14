@@ -65,23 +65,22 @@ void InformeReferencia::generarinforme() {
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
 
     buff.replace("[referencia]", m_referencia);
 
-
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente IN (";
-    SQLQuery += "SELECT idcliente FROM presupuesto WHERE refpresupuesto = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM pedidocliente   WHERE refpedidocliente = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM albaran         WHERE refalbaran       = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM factura         WHERE reffactura       = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM pedidoproveedor WHERE refpedidoproveedor = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM albaranp        WHERE refalbaranp = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM facturap        WHERE reffacturap = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM cobro           WHERE refcobro    = '" +m_referencia+ "'";
-    SQLQuery += "UNION SELECT idcliente FROM pago            WHERE refpago    = '" +m_referencia+ "'";
+    SQLQuery += "SELECT idcliente FROM presupuesto WHERE refpresupuesto = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM pedidocliente   WHERE refpedidocliente = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM albaran         WHERE refalbaran       = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM factura         WHERE reffactura       = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM pedidoproveedor WHERE refpedidoproveedor = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM albaranp        WHERE refalbaranp = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM facturap        WHERE reffacturap = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM cobro           WHERE refcobro    = '" + m_referencia + "'";
+    SQLQuery += "UNION SELECT idcliente FROM pago            WHERE refpago    = '" + m_referencia + "'";
     SQLQuery += ")";  
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
@@ -92,7 +91,6 @@ void InformeReferencia::generarinforme() {
         cur->siguienteregistro();
     } // end while
     delete cur;
-
 
     /// Generacion del informe de ventas.
     fitxersortidatxt = "<spacer length=\"15\"/>";
@@ -106,8 +104,6 @@ void InformeReferencia::generarinforme() {
     fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
- 
-
     SQLQuery = " SELECT * FROM articulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot  FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto = '" + m_referencia + "') GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet  FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente = '" + m_referencia + "') GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
@@ -118,11 +114,11 @@ void InformeReferencia::generarinforme() {
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlpresupuestot") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlpedidoclientet") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlalbarant") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlfacturat") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlpresupuestot") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoclientet") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlalbarant") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturat") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
@@ -137,18 +133,18 @@ void InformeReferencia::generarinforme() {
     /// Generacion del informe de compras.
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Articulo") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Pedido") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Entregado") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeReferencia", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Articulo") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Pedido") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Entregado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidoproveedor) AS cantlpedidoproveedort  FROM lpedidoproveedor WHERE idpedidoproveedor IN (SELECT idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = '" + m_referencia + "') GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidoproveedor) AS cantlpedidoproveedort FROM lpedidoproveedor WHERE idpedidoproveedor IN (SELECT idpedidoproveedor FROM pedidoproveedor WHERE refpedidoproveedor = '" + m_referencia + "') GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
 
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt  FROM lalbaranp WHERE idalbaranp IN (SELECT idalbaranp FROM albaranp WHERE refalbaranp = '" + m_referencia + "') GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaranp) AS cantlalbaranpt FROM lalbaranp WHERE idalbaranp IN (SELECT idalbaranp FROM albaranp WHERE refalbaranp = '" + m_referencia + "') GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
 
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap = '" + m_referencia + "') GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap = '" + m_referencia + "') GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
     fprintf(stdout,"%s\n",SQLQuery.toAscii().constData());
@@ -166,7 +162,6 @@ void InformeReferencia::generarinforme() {
     delete cur;
 
     fitxersortidatxt += "</blockTable>\n";
-
 
     buff.replace("[story]", fitxersortidatxt);
 
@@ -245,7 +240,7 @@ void InformeReferencia::generarinforme() {
     delete cur;
 
     /// Total facturado.
-    SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap='" + m_referencia + "' ";
+    SQLQuery = "SELECT SUM(totalfacturap) AS tfactp FROM facturap WHERE reffacturap = '" + m_referencia + "' ";
     cur = companyact->cargacursor(SQLQuery);
     fitxersortidatxt += "    <td>" + cur->valor("tfactp") + "</td>\n";
     delete cur;
@@ -259,9 +254,7 @@ void InformeReferencia::generarinforme() {
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
 
-
     buff.replace("[totales]", fitxersortidatxt);
-
 
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
@@ -312,10 +305,9 @@ void InformeCliente::generarInforme() {
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
-
 
     /// Sacamos los datos del cliente
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + m_idcliente;
@@ -745,7 +737,7 @@ void InformeClientes::generarInforme() {
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
 

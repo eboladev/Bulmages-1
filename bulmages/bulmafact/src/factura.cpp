@@ -152,11 +152,9 @@ void Factura::imprimirFactura() {
         return;
 
     base basesimp;
-
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "facturacliente.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "facturacliente.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -167,7 +165,6 @@ void Factura::imprimirFactura() {
 #endif
 
     system (archivo.toAscii().constData());
-
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -178,12 +175,11 @@ void Factura::imprimirFactura() {
 #endif
 
     system(archivologo.toAscii().constData());
-
     QFile file;
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
 
@@ -262,7 +258,7 @@ void Factura::imprimirFactura() {
         fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         for (int i=0; i < listadescuentos->rowCount()-1; ++i) {
-	    linea1 = listadescuentos->lineaat(i);
+            linea1 = listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfactura").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdfactura") + "</td>\n";

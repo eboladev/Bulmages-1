@@ -157,12 +157,12 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     file.setFileName("/tmp/pedidoproveedor.rml");
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
 
     /// Linea de totales del pedidoproveedor.
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor=" + DBvalue("idproveedor");
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
