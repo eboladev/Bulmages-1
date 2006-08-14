@@ -117,29 +117,27 @@ int PedidoProveedor::cargar(QString idbudget) {
 int PedidoProveedor::guardar() {
     _depura("PedidoProveedor::guardar", 0);
     QString id;
-
     try {
-    companyact->begin();
-    int error = DBsave(id);
-    if (error)         throw -1;
-
-    setidpedidoproveedor(id);
-
-    error = listalineas->guardar();
-    if (error)   throw -1;
-
-    error = listadescuentos->guardar();
-    if (error)    throw -1;
-
-    companyact->commit();
+        companyact->begin();
+        int error = DBsave(id);
+        if (error)
+            throw -1;
+        setidpedidoproveedor(id);
+        error = listalineas->guardar();
+        if (error)
+            throw -1;
+        error = listadescuentos->guardar();
+        if (error)
+            throw -1;
+        companyact->commit();
+        _depura("END PedidoProveedor::guardar", 0);
+        return 0;
+    } catch (...) {
+        companyact->rollback();
+        mensajeInfo( "Error al guardar el pedido");
+        return -1;
+    } // end try
     _depura("END PedidoProveedor::guardar", 0);
-    return 0;
-
-   } catch(...) {
-	companyact->rollback();
-	mensajeInfo( "Error al guardar el pedido");
-	return -1;
-  } // end catch
 }
 
 
@@ -148,22 +146,22 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     /// Copiamos el archivo.
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "pedidoproveedor.rml";
     archivo = "cp " + archivo + " /tmp/pedidoproveedor.rml";
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
     archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     archivo = "cp " + archivo + " /tmp/logo.jpg";
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     QFile file;
-    file.setName("/tmp/pedidoproveedor.rml");
+    file.setFileName("/tmp/pedidoproveedor.rml");
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
 
-    /// Linea de totales del pedidoproveedor
+    /// Linea de totales del pedidoproveedor.
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor=" + DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -220,7 +218,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     fitxersortidatxt += "</tr>";
     fitxersortidatxt += "</blockTable>";
 
-    buff.replace("[story]",fitxersortidatxt);
+    buff.replace("[story]", fitxersortidatxt);
 
     if (file.open( QIODevice::WriteOnly)) {
         QTextStream stream(&file);

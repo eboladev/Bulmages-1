@@ -133,14 +133,14 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
     system(archivo.toAscii().constData());
 
     QFile file;
-    file.setName("/tmp/albaranpproveedor.rml");
+    file.setFileName("/tmp/albaranpproveedor.rml");
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt;
     /// Linea de totales del presupuesto.
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor =" + DBvalue("idproveedor");
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {

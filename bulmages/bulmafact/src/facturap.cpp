@@ -155,7 +155,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -166,10 +166,10 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -177,7 +177,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     QString fitxersortidatxt="";
 
     /// Linea de totales del presupuesto
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor=" + DBvalue("idproveedor");
+    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));

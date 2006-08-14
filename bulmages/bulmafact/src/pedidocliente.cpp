@@ -160,18 +160,18 @@ void PedidoCliente::imprimirPedidoCliente() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
-    QString fitxersortidatxt="";
+    QString fitxersortidatxt = "";
 
     /// Linea de totales del presupuesto.
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));

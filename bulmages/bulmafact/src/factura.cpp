@@ -177,10 +177,10 @@ void Factura::imprimirFactura() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();

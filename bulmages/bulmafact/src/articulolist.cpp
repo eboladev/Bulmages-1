@@ -224,7 +224,7 @@ void ArticuloList::Imprimir() {
 
     system(archivologo.toAscii().constData());
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -272,7 +272,7 @@ void ArticuloList::s_imprimir1() {
     system(archivologo.toAscii().constData());
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();

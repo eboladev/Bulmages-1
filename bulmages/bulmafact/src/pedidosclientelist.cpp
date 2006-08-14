@@ -164,7 +164,7 @@ void PedidosClienteList::imprimir() {
 #endif
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -176,9 +176,9 @@ void PedidosClienteList::imprimir() {
     fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
-    buff.replace("[story]",fitxersortidatxt);
+    buff.replace("[story]", fitxersortidatxt);
 
-    if (file.open( QIODevice::WriteOnly)) {
+    if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << buff;
         file.close();

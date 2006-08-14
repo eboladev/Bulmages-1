@@ -178,7 +178,7 @@ void PagosList::imprimir() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -189,10 +189,10 @@ void PagosList::imprimir() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.toAscii().constData());
+    system(archivologo.toAscii().constData());
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -228,7 +228,7 @@ void PagosList::on_mui_borrar_clicked() {
 		bud->borraPago();
 	} // end if
 	presentar();
-    } catch(...)  {
+    } catch (...)  {
 	mensajeInfo(tr("Error al borrar el pago"));
     } // end try
     _depura("END PagosList::on_mui_borrar_clicked", 0);

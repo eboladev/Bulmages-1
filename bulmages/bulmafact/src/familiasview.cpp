@@ -51,18 +51,18 @@ familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
 
     m_idfamilia = "";
     if (modoConsulta) {
-	setModoConsulta();
-	groupBox1->hide();
-	mui_detalles->hide();
-	mui_crear->hide();
-	mui_guardar->hide();
-	mui_borrar->hide();
-	mui_cancelar->hide();
-	mui_aceptar->hide();
-	mui_imprimir->hide();
+        setModoConsulta();
+        groupBox1->hide();
+        mui_detalles->hide();
+        mui_crear->hide();
+        mui_guardar->hide();
+        mui_borrar->hide();
+        mui_cancelar->hide();
+        mui_aceptar->hide();
+        mui_imprimir->hide();
     } else {
-    	setModoEdicion();
-	setWindowFlags(Qt::WDestructiveClose);
+        setModoEdicion();
+        setWindowFlags(Qt::WDestructiveClose);
         companyact->meteWindow(windowTitle(), this);
     } // end if
     pintar();
@@ -71,7 +71,7 @@ familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
 
 
 familiasview::~familiasview() {
-	companyact->sacaWindow(this);
+    companyact->sacaWindow(this);
 }
 
 
@@ -127,10 +127,10 @@ void familiasview::pintar() {
 
 QString familiasview::codigoCompletoFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
-    if (it) 
-    	return it->text(COL_CODCOMPLETOFAMILIA);
+    if (it)
+        return it->text(COL_CODCOMPLETOFAMILIA);
     else
-	return "";
+        return "";
 }
 
 
@@ -139,7 +139,7 @@ QString familiasview::idFamilia() {
     if (it)
         return it->text(COL_IDFAMILIA);
     else
-	return "";
+        return "";
 }
 
 
@@ -182,7 +182,7 @@ void familiasview::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * curren
 void familiasview::mostrarplantilla() {
     _depura("mostramos la plantilla\n", 0);
     QString query;
-    query= "SELECT * from familia WHERE idfamilia=" + m_idfamilia;
+    query= "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
     cursor2 *cursorfamilia = companyact->cargacursor(query);
     if (!cursorfamilia->eof()) {
         m_nomFamilia->setText(cursorfamilia->valor("nombrefamilia"));
@@ -229,7 +229,7 @@ void familiasview::on_mui_guardar_clicked() {
             mensajeInfo(tr("Debe seleccionar una familia"));
             return;
         } // end if
-        QString query = "UPDATE familia SET nombrefamilia ='" +
+        QString query = "UPDATE familia SET nombrefamilia = '" +
                         companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
                         companyact->sanearCadena(m_descFamilia->text()) + "' , codigofamilia = '" +
                         companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
@@ -238,20 +238,17 @@ void familiasview::on_mui_guardar_clicked() {
             throw -1;
         dialogChanges_cargaInicial();
         _depura("END familiasview::on_mui_guardar_clicked", 0);
-    } // end try
-    catch(...) {
-        mensajeInfo( "Error al guardar la familia");
+    } catch (...) {
+        mensajeInfo("Error al guardar la familia");
         return;
-    } // end catch
-
-
+    } // end try
 }
 
 
 void familiasview::pintar(QTreeWidgetItem *it) {
     QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
-        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia =" + idfamilia);
+        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia = " + idfamilia);
         if (!cursoraux1->eof()) {
             it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
             it->setText(COL_CODFAMILIA, cursoraux1->valor("codigofamilia"));
@@ -278,7 +275,7 @@ void familiasview::on_mui_crear_clicked() {
         else
             padrefamilia = "NULL";
 
-        QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA','Descripcion de la familia'," + padrefamilia + ", 'XXX')";
+        QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia', " + padrefamilia + ", 'XXX')";
 
         int error = companyact->ejecuta(query);
         if (error) {
@@ -290,13 +287,12 @@ void familiasview::on_mui_crear_clicked() {
         delete cur;
         pintar();
         _depura("END familiasview::on_mui_crear_clicked", 0);
-    } // end try
-    catch(...) {
+    } catch (...) {
         companyact->rollback();
-        mensajeInfo( "Error al crear la familia");
-    } // end catch
-
+        mensajeInfo("Error al crear la familia");
+    } // end try
 }
+
 
 /// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
 /// Lo que hace es que se hace un update de todos los campos.
@@ -314,11 +310,11 @@ void familiasview::on_mui_borrar_clicked() {
             throw -1;
         pintar();
         _depura("END familiasview::on_mui_borrar_clicked", 0);
+    } catch (...) {
+        mensajeInfo("Error al borrar la familia");
     } // end try
-    catch(...) {
-        mensajeInfo( "Error al borrar la familia");
-    } // enc catch
 }
+
 
 void familiasview::on_mui_imprimir_clicked() {
     /// Copiamos el archivo.
@@ -328,9 +324,9 @@ void familiasview::on_mui_imprimir_clicked() {
     /// Copiamos el logo.
     archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     archivo = "cp " + archivo + " /tmp/logo.jpg";
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
     QFile file;
-    file.setName("/tmp/familias.rml");
+    file.setFileName("/tmp/familias.rml");
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -370,9 +366,9 @@ void familiasview::on_mui_aceptar_clicked() {
     trataModificado();
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
-   	 m_idfamilia = it->text(COL_IDFAMILIA);
+        m_idfamilia = it->text(COL_IDFAMILIA);
     else
-	m_idfamilia ="";
+        m_idfamilia = "";
     close();
 }
 

@@ -50,7 +50,7 @@ void InformeReferencia::generarinforme() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -62,7 +62,7 @@ void InformeReferencia::generarinforme() {
 #endif
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -272,10 +272,9 @@ void InformeReferencia::generarinforme() {
 }
 
 
-// ================================================================
-// =================== INFORME CLIENTE ============================
-// ================================================================
-
+/// ================================================================
+/// =================== INFORME CLIENTE ============================
+/// ================================================================
 InformeCliente::InformeCliente (company *comp) {
     companyact = comp;
 }
@@ -298,7 +297,7 @@ void InformeCliente::generarInforme() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS
@@ -310,7 +309,7 @@ void InformeCliente::generarInforme() {
 #endif
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
@@ -319,7 +318,7 @@ void InformeCliente::generarInforme() {
 
 
     /// Sacamos los datos del cliente
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = "+m_idcliente;
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + m_idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         buff.replace("[nomcliente]", cur->valor("nomcliente"));
@@ -330,14 +329,14 @@ void InformeCliente::generarInforme() {
     } // end while
     delete cur;
 
-    /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias
+    /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias.
     QString referencias = "(";
     QString coma = "";
-    SQLQuery = "SELECT refpresupuesto AS referencia FROM presupuesto WHERE idcliente =" +m_idcliente;
-    SQLQuery += " UNION SELECT refpedidocliente AS referencia FROM pedidocliente WHERE idcliente =" +m_idcliente;
-    SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " +m_idcliente;
-    SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " +m_idcliente;
-    SQLQuery += " UNION SELECT refcobro   FROM cobro   AS referencia WHERE idcliente = " +m_idcliente;
+    SQLQuery = "SELECT refpresupuesto AS referencia FROM presupuesto WHERE idcliente = " + m_idcliente;
+    SQLQuery += " UNION SELECT refpedidocliente AS referencia FROM pedidocliente WHERE idcliente = " + m_idcliente;
+    SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " + m_idcliente;
+    SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " + m_idcliente;
+    SQLQuery += " UNION SELECT refcobro   FROM cobro   AS referencia WHERE idcliente = " + m_idcliente;
     cur = companyact->cargacursor(SQLQuery);
     if (cur->eof()) {
 	delete cur;
@@ -351,7 +350,6 @@ void InformeCliente::generarInforme() {
     delete cur;
     referencias += ")";
 
-
     /// Generacion del informe de ventas.
     fitxersortidatxt = "<spacer length=\"15\"/>";
     fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
@@ -364,14 +362,12 @@ void InformeCliente::generarInforme() {
     fitxersortidatxt += "	<td>" + QApplication::translate("InformeCliente", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
- 
-
     SQLQuery = " SELECT * FROM articulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot  FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto IN " + referencias + ") GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet  FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente IN " + referencias + ") GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant  FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
-    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat  FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
-    SQLQuery += " WHERE  (cantlpresupuestot <>0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto IN " + referencias + ") GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpedidocliente) AS cantlpedidoclientet FROM lpedidocliente WHERE idpedidocliente IN (SELECT idpedidocliente FROM pedidocliente WHERE refpedidocliente IN " + referencias + ") GROUP BY idarticulo) AS t2 ON t2.idarticulo = articulo.idarticulo ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlalbaran) AS cantlalbarant FROM lalbaran WHERE idalbaran IN (SELECT idalbaran FROM albaran WHERE refalbaran IN " + referencias + ") GROUP BY idarticulo) AS t3 ON t3.idarticulo = articulo.idarticulo ";
+    SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfactura) AS cantlfacturat FROM lfactura WHERE idfactura IN (SELECT idfactura FROM factura WHERE reffactura IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
+    SQLQuery += " WHERE (cantlpresupuestot <> 0 OR cantlpedidoclientet <> 0 OR cantlalbarant <> 0 OR cantlfacturat <> 0) ";
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
@@ -387,16 +383,15 @@ void InformeCliente::generarInforme() {
 
     fitxersortidatxt += "</blockTable>\n";
 
-
     /// Generacion del informe de compras.
     fitxersortidatxt += "<spacer length=\"15\"/>";
     fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeCliente", "Articulo") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeCliente", "Pedido") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeCliente", "Entregado") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeCliente", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeCliente", "Articulo") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeCliente", "Pedido") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeCliente", "Entregado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeCliente", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -412,10 +407,10 @@ void InformeCliente::generarInforme() {
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlpedidoproveedort") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlalbaranpt") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlfacturapt") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoproveedort") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlalbaranpt") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturapt") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
@@ -528,12 +523,9 @@ void InformeCliente::generarInforme() {
 }
 
 
-
-
-// ================================================================
-// =================== INFORME CLIENTES ============================
-// ================================================================
-
+/// ================================================================
+/// =================== INFORME CLIENTES ============================
+/// ================================================================
 InformeClientes::InformeClientes (company *comp) {
     companyact = comp;
 }
@@ -547,11 +539,11 @@ QString InformeClientes::generarCliente(QString idcliente) {
     /// Sacamos todas las referencias de este cliente y las guardamos en el string referencias
     QString referencias = "(";
     QString coma = "";
-    QString SQLQuery = "SELECT refpresupuesto AS referencia FROM presupuesto WHERE idcliente =" +idcliente;
-    SQLQuery += " UNION SELECT refpedidocliente AS referencia FROM pedidocliente WHERE idcliente =" +idcliente;
-    SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " +idcliente;
-    SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " +idcliente;
-    SQLQuery += " UNION SELECT refcobro   FROM cobro   AS referencia WHERE idcliente = " +idcliente;
+    QString SQLQuery = "SELECT refpresupuesto AS referencia FROM presupuesto WHERE idcliente = " + idcliente;
+    SQLQuery += " UNION SELECT refpedidocliente AS referencia FROM pedidocliente WHERE idcliente = " + idcliente;
+    SQLQuery += " UNION SELECT refalbaran FROM albaran AS referencia WHERE idcliente = " + idcliente;
+    SQLQuery += " UNION SELECT reffactura FROM factura AS referencia WHERE idcliente = " + idcliente;
+    SQLQuery += " UNION SELECT refcobro FROM cobro AS referencia WHERE idcliente = " + idcliente;
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (cur->eof()) {
 	delete cur;
@@ -565,20 +557,17 @@ QString InformeClientes::generarCliente(QString idcliente) {
     delete cur;
     referencias += ")";
 
-
     /// Generacion del informe de ventas.
     fitxersortidatxt = "<spacer length=\"15\"/>";
     fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"9cm, 2.5cm, 2.5cm, 2.5cm, 2.5cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Pres.") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pres.") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
-
- 
 
     SQLQuery = " SELECT * FROM articulo ";
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlpresupuesto) AS cantlpresupuestot  FROM lpresupuesto WHERE idpresupuesto IN (SELECT idpresupuesto FROM presupuesto WHERE refpresupuesto IN " + referencias + ") GROUP BY idarticulo) AS t1 ON t1.idarticulo = articulo.idarticulo ";
@@ -589,11 +578,11 @@ QString InformeClientes::generarCliente(QString idcliente) {
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlpresupuestot") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlpedidoclientet") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlalbarant") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlfacturat") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlpresupuestot") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoclientet") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlalbarant") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturat") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
@@ -601,16 +590,15 @@ QString InformeClientes::generarCliente(QString idcliente) {
 
     fitxersortidatxt += "</blockTable>\n";
 
-
     /// Generacion del informe de compras.
     fitxersortidatxt += "<spacer length=\"15\"/>";
     fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
-    fitxersortidatxt += "	<td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Articulo") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Pedido") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Entregado") + "</td>\n";
+    fitxersortidatxt += "    <td>" + QApplication::translate("InformeClientes", "Facturado") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
 
     SQLQuery = " SELECT * FROM articulo ";
@@ -621,22 +609,19 @@ QString InformeClientes::generarCliente(QString idcliente) {
     SQLQuery += " LEFT JOIN (SELECT idarticulo, SUM(cantlfacturap) AS cantlfacturapt  FROM lfacturap WHERE idfacturap IN (SELECT idfacturap FROM facturap WHERE reffacturap IN " + referencias + ") GROUP BY idarticulo) AS t4 ON t4.idarticulo = articulo.idarticulo ";
     SQLQuery += " WHERE  ( cantlpedidoproveedort <> 0 OR cantlalbaranpt <> 0 OR cantlfacturapt <> 0) ";
 
-
     cur = companyact->cargacursor(SQLQuery);
     while (!cur->eof() ) {
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "<td>" + cur->valor("nomarticulo") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlpedidoproveedort") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlalbaranpt") + "</td>\n";
-        fitxersortidatxt += "<td>" + cur->valor("cantlfacturapt") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("nomarticulo") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlpedidoproveedort") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlalbaranpt") + "</td>\n";
+        fitxersortidatxt += "    <td>" + cur->valor("cantlfacturapt") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         cur->siguienteregistro();
     } // end while
     delete cur;
 
     fitxersortidatxt += "</blockTable>\n";
-
-
 
     fitxersortidatxt += "<spacer length=\"15\"/>";
     /// Generacion del informe de totales de ventas.
@@ -727,9 +712,7 @@ QString InformeClientes::generarCliente(QString idcliente) {
     fitxersortidatxt += "</tr>\n";
     fitxersortidatxt += "</blockTable>\n";
 
-
     return fitxersortidatxt;
-
 }
 
 
@@ -759,18 +742,17 @@ void InformeClientes::generarInforme() {
 #endif
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.read();
     file.close();
     QString fitxersortidatxt = "";
 
-
-    /// Sacamos los datos del cliente
+    /// Sacamos los datos del cliente.
     QString SQLQuery = "SELECT * FROM cliente ";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
-    while (!cur->eof() ) {
+    while (!cur->eof()) {
 	QString gen = generarCliente(cur->valor("idcliente"));
 	if (gen != "") {
 		fitxersortidatxt += "<h1>Cliente: " + cur->valor("nomcliente");
@@ -785,7 +767,6 @@ void InformeClientes::generarInforme() {
 
     buff.replace("[story]", fitxersortidatxt);
 
-
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << buff;
@@ -793,5 +774,4 @@ void InformeClientes::generarInforme() {
     } // end if
     invocaPDF("informeclientes");
 }
-
 
