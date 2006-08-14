@@ -77,16 +77,27 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 
 /// Busqueda de familias.
 void BusquedaFamilia::on_mui_buscar_clicked() {
-    familiasview *fam = new familiasview(companyact, 0);
-    fam->setModoConsulta();
-    if (fam->exec() == 1) {
+
+    QDialog *diag = new QDialog(0);
+    diag->setModal(true);
+
+
+    familiasview *fam = companyact->newfamiliasview(diag, TRUE);
+
+    connect(fam, SIGNAL(selected(QString)), diag, SLOT(accept()));
+
+
+    diag->exec();
+
+
+    if (fam->codigoCompletoFamilia() != "") {
         m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());
         mdb_codigocompletofamilia = fam->codigoCompletoFamilia();
         m_nombrefamilia->setText(fam->nombreFamilia());
         mdb_nombrefamilia = fam->nombreFamilia();
         mdb_idfamilia = fam->idFamilia();
     } // end if
-    delete fam;
+    delete diag;
     emit(valueChanged(mdb_idfamilia));
 }
 

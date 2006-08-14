@@ -504,11 +504,7 @@ void company::s_trabajadores() {
 }
 
 
-void company::s_Familias() {
-    familiasview *fam = new familiasview(this, 0);
-    fam->exec();
-    delete fam;
-}
+
 
 
 void company::s_seriesFactura() {
@@ -652,12 +648,14 @@ void company::s_newPagoView() {
 }
 
 
-TipoArticuloList * company::newTipoArticuloList() {
+TipoArticuloList * company::newTipoArticuloList(QWidget *parent, bool modoConsulta) {
+    _depura("company::newTipoArticuloList", 0);
     /// Lanzamos los plugins necesarios.
     TipoArticuloList *bud;
     if (g_plugins->lanza("company_newTipoArticuloList", this, (void **)&bud))
         return bud;
-    bud = new TipoArticuloList(this, 0);
+    bud = new TipoArticuloList(this, parent, modoConsulta);
+    _depura("END company::newTipoArticuloList", 0);
     return bud;
 }
 
@@ -665,11 +663,31 @@ TipoArticuloList * company::newTipoArticuloList() {
 void company::s_newTipoArticuloList() {
     _depura("INIT_company::s_newPagoView", 1);
     TipoArticuloList *pag = newTipoArticuloList();
-    pag->exec();
-    delete pag;
+    m_pWorkspace->addWindow(pag);
+    pag->show();
     _depura("END_company::s_newPagoView", 1);
 }
 
+
+familiasview * company::newfamiliasview(QWidget *parent, bool modoConsulta) {
+    _depura("company::newfamiliasview", 0);
+    /// Lanzamos los plugins necesarios.
+    familiasview *bud;
+    if (g_plugins->lanza("company_newfamiliasview", this, (void **)&bud))
+        return bud;
+    bud = new familiasview(this, parent, modoConsulta);
+    _depura("END company::newfamiliasview", 0);
+    return bud;
+}
+
+
+void company::s_newfamiliasview() {
+    _depura("INIT_company::s_newfamiliasview", 1);
+    familiasview *pag = newfamiliasview();
+    m_pWorkspace->addWindow(pag);
+    pag->show();
+    _depura("END_company::s_newfamiliasview", 1);
+}
 
 void company::s_indexadorCambiaEstado() {
     m_listventanas->cambiaVisible();

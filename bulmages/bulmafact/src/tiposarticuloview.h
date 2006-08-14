@@ -28,7 +28,7 @@
 class company;
 
 
-class TipoArticuloList : public QDialog, public Ui_tiposarticulodlg, dialogChanges {
+class TipoArticuloList : public QWidget, public Ui_tiposarticulodlg, dialogChanges {
     Q_OBJECT
 
 private:
@@ -41,7 +41,7 @@ private:
     bool m_modoConsulta;
 
 public:
-    TipoArticuloList(company *, QWidget *parent = 0);
+    TipoArticuloList(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
     ~TipoArticuloList();
     bool trataModificado();
     void mostrarplantilla();
@@ -66,6 +66,9 @@ public slots:
     virtual void on_mui_aceptar_clicked() {
         close();
     };
+signals:
+    void selected(QString);
+
 };
 
 #endif

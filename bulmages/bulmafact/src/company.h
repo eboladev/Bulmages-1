@@ -54,6 +54,7 @@ class AlbaranProveedorView;
 class PedidoClienteView;
 class TipoArticuloList;
 class ProveedorView;
+class familiasview;
 
 
 class company : public postgresiface2 {
@@ -139,6 +140,7 @@ public:
     void s_newProveedorView();
     void s_newListConfiguracionView();
     void s_newTipoArticuloList();
+    void s_newfamiliasview();
     void s_provincias();
     void s_almacenes();
     void s_inventarios();
@@ -155,7 +157,9 @@ public:
     AlbaranClienteView *newAlbaranClienteView();
     AlbaranProveedorView *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
-    TipoArticuloList *newTipoArticuloList();
+    TipoArticuloList *newTipoArticuloList(QWidget *parent = 0, bool modoConsulta = FALSE);
+    familiasview *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
+
 };
 
 #endif

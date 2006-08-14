@@ -104,7 +104,7 @@ public slots:
         m_company->s_listFacturasCli();
     };
     virtual void on_actionGestion_Familias_triggered() {
-        m_company->s_Familias();
+        m_company->s_newfamiliasview();
     };
     virtual void on_actionGestion_Tipos_Articulo_triggered() {
         m_company->s_newTipoArticuloList();

@@ -27,7 +27,7 @@
 
 class company;
 
-class familiasview : public QDialog, public Ui_familiasdlg, dialogChanges {
+class familiasview : public QWidget, public Ui_familiasdlg, dialogChanges {
     Q_OBJECT
 
 private:
@@ -40,7 +40,7 @@ private:
     bool m_modoConsulta;
 
 public:
-    familiasview(company *, QWidget *parent = 0);
+    familiasview(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
     ~familiasview();
     bool trataModificado();
     void mostrarplantilla();
@@ -65,6 +65,9 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
     virtual void on_mui_imprimir_clicked();
+signals:
+    void selected(QString);
+
 };
 
 #endif

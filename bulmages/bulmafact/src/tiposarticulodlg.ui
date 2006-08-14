@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>tiposarticulodlg</class>
- <widget class="QDialog" name="tiposarticulodlg" >
+ <widget class="QWidget" name="tiposarticulodlg" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -14,6 +14,9 @@
   </property>
   <property name="windowTitle" >
    <string>Tipos de articulo</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -306,17 +309,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>Q3TextEdit</class>
    <extends></extends>
    <header>q3textedit.h</header>
    <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends></extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

@@ -35,8 +35,9 @@
 #define COL_CODFAMILIA 4
 
 
-familiasview::familiasview(company *comp, QWidget *parent)
-        : QDialog(parent), dialogChanges(this) {
+familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
+        : QWidget(parent), dialogChanges(this) {
+    _depura("familiasview::familiasview", 0);
     setupUi(this);
     companyact = comp;
 
@@ -49,12 +50,29 @@ familiasview::familiasview(company *comp, QWidget *parent)
     m_listFamilias->setColumnHidden(COL_CODFAMILIA, TRUE);
 
     m_idfamilia = "";
-    setModoEdicion();
+    if (modoConsulta) {
+	setModoConsulta();
+	groupBox1->hide();
+	mui_detalles->hide();
+	mui_crear->hide();
+	mui_guardar->hide();
+	mui_borrar->hide();
+	mui_cancelar->hide();
+	mui_aceptar->hide();
+	mui_imprimir->hide();
+    } else {
+    	setModoEdicion();
+	setWindowFlags(Qt::WDestructiveClose);
+        companyact->meteWindow(windowTitle(), this);
+    } // end if
     pintar();
+    _depura("END familiasview::familiasview", 0);
 }
 
 
-familiasview::~familiasview() {}
+familiasview::~familiasview() {
+	companyact->sacaWindow(this);
+}
 
 
 void familiasview::pintar() {
@@ -109,19 +127,28 @@ void familiasview::pintar() {
 
 QString familiasview::codigoCompletoFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
-    return it->text(COL_CODCOMPLETOFAMILIA);
+    if (it) 
+    	return it->text(COL_CODCOMPLETOFAMILIA);
+    else
+	return "";
 }
 
 
 QString familiasview::idFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
-    return it->text(COL_IDFAMILIA);
+    if (it)
+        return it->text(COL_IDFAMILIA);
+    else
+	return "";
 }
 
 
 QString familiasview::nombreFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
-    return it->text(COL_NOMFAMILIA);
+    if (it)
+        return it->text(COL_NOMFAMILIA);
+    else
+        return "";
 }
 
 
@@ -131,7 +158,7 @@ QString familiasview::nombreFamilia() {
 void familiasview::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
     if (m_modoConsulta) {
         m_idfamilia = it->text(COL_IDFAMILIA);
-        done(1);
+        emit selected(m_idfamilia);
     } // end if
 }
 
@@ -174,7 +201,7 @@ void familiasview::mostrarplantilla() {
 /// Esta funcion esta dedicada a Francina, Bienvenida al mundo :))
 void familiasview::close() {
     trataModificado();
-    done(0);
+    QWidget::close();
 }
 
 
@@ -346,6 +373,6 @@ void familiasview::on_mui_aceptar_clicked() {
    	 m_idfamilia = it->text(COL_IDFAMILIA);
     else
 	m_idfamilia ="";
-    done(1);
+    close();
 }
 

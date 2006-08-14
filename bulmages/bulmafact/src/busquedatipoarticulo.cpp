@@ -77,10 +77,19 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
 
 /// Busqueda de TipoArticulos.
 void BusquedaTipoArticulo::on_mui_buscar_clicked() {
-    TipoArticuloList *tip = m_companyact->newTipoArticuloList();
-    tip->setModoConsulta();
+    _depura("BusquedaTipoArticulo::on_mui_buscar_clicked", 0);
+    QDialog *diag = new QDialog(0);
+    diag->setModal(true);
 
-    if (tip->exec() == 1) {
+
+    TipoArticuloList *tip = m_companyact->newTipoArticuloList(diag, TRUE);
+
+    connect(tip, SIGNAL(selected(QString)), diag, SLOT(accept()));
+
+
+    diag->exec();
+
+    if (tip->codtipo_articulo() != "") {
         m_codtipo_articulo->setText(tip->codtipo_articulo());
         mdb_codtipo_articulo = tip->codtipo_articulo();
         m_desctipo_articulo->setText(tip->desctipo_articulo());
@@ -88,7 +97,10 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
         mdb_idtipo_articulo = tip->idtipo_articulo();
     } // end if
 
-    delete tip;
+
+    delete diag;
+    _depura("END BusquedaTipoArticulo::on_mui_buscar_clicked", 0);
+
 }
 
 

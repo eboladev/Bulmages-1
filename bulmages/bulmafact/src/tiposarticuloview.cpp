@@ -31,22 +31,41 @@
 #define COL_DESCTIPOARTICULO  2
 
 
-TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent)
-        : QDialog(parent), dialogChanges(this) {
+
+TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoConsulta)
+        : QWidget(parent), dialogChanges(this) {
+    _depura("TipoArticuloList::TipoArticuloList", 0);
     setupUi(this);
     companyact = comp;
     m_listTipos->setColumnCount(3);
     QStringList headers;
     headers << tr("Id") << tr("Codigo") << tr("Descripcion");
     m_listTipos->setHeaderLabels(headers);
-
     m_idtipo = "";
-    setModoEdicion();
+    if (modoConsulta) {
+	setModoConsulta();
+	groupBox1->hide();
+	mui_detalles->hide();
+	mui_crear->hide();
+	mui_guardar->hide();
+	mui_borrar->hide();
+	mui_cancelar->hide();
+	mui_aceptar->hide();
+    } else {
+    	setModoEdicion();
+	setWindowFlags(Qt::WDestructiveClose);
+        companyact->meteWindow(windowTitle(), this);
+    } // end if
     pintar();
+    _depura("END TipoArticuloList::TipoArticuloList", 0);
 }
 
 
-TipoArticuloList::~TipoArticuloList() {}
+TipoArticuloList::~TipoArticuloList() {
+    _depura("TipoArticuloList::~TipoArticuloList", 0);
+    companyact->sacaWindow(this);
+    _depura("END TipoArticuloList::~TipoArticuloList", 0);
+}
 
 void TipoArticuloList::pintar() {
     QTreeWidgetItem * it;
@@ -74,19 +93,34 @@ void TipoArticuloList::pintar() {
 
 
 QString TipoArticuloList::codtipo_articulo() {
+    _depura("TipoArticuloList::codtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
-    return it->text(COL_CODTIPOARTICULO);
-};
+    if (it)
+    	return it->text(COL_CODTIPOARTICULO);
+    else
+	return "";
+    _depura("END TipoArticuloList::codtipo_articulo", 0);
+}
 
 QString TipoArticuloList::idtipo_articulo() {
+    _depura("TipoArticuloList::idtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
-    return it->text(COL_IDTIPOARTICULO);
-};
+    if (it) 
+    	return it->text(COL_IDTIPOARTICULO);
+    else
+	return "";
+    _depura("TipoArticuloList::idtipo_articulo", 0);
+}
 
 QString TipoArticuloList::desctipo_articulo() {
+    _depura("TipoArticuloList::desctipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
-    return it->text(COL_DESCTIPOARTICULO);
-};
+    if (it)
+	return it->text(COL_DESCTIPOARTICULO);
+    else
+	return "";
+    _depura("END TipoArticuloList::desctipo_articulo", 0);
+}
 
 
 /// Se ha seleccionado un item en la lista
@@ -95,7 +129,7 @@ QString TipoArticuloList::desctipo_articulo() {
 void TipoArticuloList::on_m_listTipos_itemDoubleClicked(QTreeWidgetItem * item, int) {
     if (m_modoConsulta) {
         m_idtipo = item->text(COL_IDTIPOARTICULO);
-        done(1);
+        emit selected(m_idtipo);
     } // end if
 }
 
@@ -135,7 +169,7 @@ void TipoArticuloList::mostrarplantilla() {
 /// Esta funcion esta dedicada a Francina, Bienvenida al mundo
 void TipoArticuloList::close() {
     trataModificado();
-    done(0);
+    QWidget::close();
 }
 
 
@@ -206,12 +240,18 @@ void TipoArticuloList::on_mui_crear_clicked() {
 /// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
 void TipoArticuloList::on_mui_borrar_clicked() {
+    _depura("TipoArticuloList::on_mui_borrar_clicked", 0);
+    QTreeWidgetItem *it = m_listTipos->currentItem();
+    if (!it)
+        return;
     trataModificado();
     QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo=" + m_idtipo;
     int error = companyact->ejecuta(query);
     if (error)
         return;
-    QTreeWidgetItem *it = m_listTipos->takeTopLevelItem(m_listTipos->indexOfTopLevelItem(m_listTipos->currentItem()));
+    it = m_listTipos->takeTopLevelItem(m_listTipos->indexOfTopLevelItem(m_listTipos->currentItem()));
     delete it;
+    _depura("END TipoArticuloList::on_mui_borrar_clicked", 0);
+
 }
 
