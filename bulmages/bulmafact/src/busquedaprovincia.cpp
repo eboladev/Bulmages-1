@@ -57,7 +57,7 @@ void BusquedaProvincia::setProvincia(QString provincia) {
         m_cursorcombo->siguienteregistro();
     } // end while
 
-    setCurrentItem(i1);
+    setCurrentIndex(i1);
     _depura("END BusquedaProvincia::setProvincia", 0);
 }
 

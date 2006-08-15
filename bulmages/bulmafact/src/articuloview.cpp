@@ -168,7 +168,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         m_cursorcombo->siguienteregistro();
     } // end while
     if (i1 != 0) {
-        m_combotipo_iva->setCurrentItem(i1 - 1);
+        m_combotipo_iva->setCurrentIndex(i1 - 1);
     } // end if
 
     _depura("ArticuloView::END_cargarcomboiva()\n", 0);
@@ -222,7 +222,7 @@ int ArticuloView::guardar() {
         setDBvalue("obserarticulo", m_obserarticulo->text());
         setDBvalue("abrevarticulo", m_abrevarticulo->text());
         setDBvalue("pvparticulo", m_pvparticulo->text());
-        setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentItem()));
+        setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentIndex()));
 
         if (Articulo::guardar() !=0 )
             throw -1;

@@ -125,7 +125,7 @@ int ClienteView::cargar(QString idcliente) {
 
 /// Empties the form.
 void ClienteView::emptyForm() {
-    m_provcliente->setCurrentItem(0);
+    m_provcliente->setCurrentIndex(0);
     dialogChanges_cargaInicial();
 }
 

@@ -50,6 +50,6 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
         addItem(m_cursorcombo->valor("codigoserie_factura") + ".-" + m_cursorcombo->valor("descserie_factura"));
         m_cursorcombo->siguienteregistro();
     }
-    setCurrentItem(i1);
+    setCurrentIndex(i1);
 }
 

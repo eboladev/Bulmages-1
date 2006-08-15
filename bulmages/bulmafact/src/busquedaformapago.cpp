@@ -53,6 +53,6 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
         addItem(m_cursorcombo->valor("descforma_pago"));
         m_cursorcombo->siguienteregistro();
     }
-    setCurrentItem(i1);
+    setCurrentIndex(i1);
 }
 

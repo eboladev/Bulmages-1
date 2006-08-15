@@ -52,7 +52,7 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
             i1 = i;
         addItem(m_cursorcombo->valor("apellidostrabajador") + ", " + m_cursorcombo->valor("nomtrabajador"));
         m_cursorcombo->siguienteregistro();
-    }
-    setCurrentItem(i1);
+    } // end while
+    setCurrentIndex(i1);
 }
 

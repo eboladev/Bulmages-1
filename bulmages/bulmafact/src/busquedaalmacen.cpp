@@ -56,7 +56,7 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
         addItem(m_cursorcombo->valor("nomalmacen"));
         m_cursorcombo->siguienteregistro();
     } //end while
-    setCurrentItem(i1);
+    setCurrentIndex(i1);
     _depura("END BusquedaAlmacen::setidalmacen", 0, idalmacen);
 
 }
