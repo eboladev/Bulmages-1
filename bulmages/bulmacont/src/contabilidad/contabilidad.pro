@@ -42,14 +42,15 @@ FORMS += bulmacontbase.ui \
 	 asientolistbase.ui \
 	 balancebase.ui \
 	 balancetreebase.ui \
-	 ainteligentesbase.ui \
+#	 ainteligentesbase.ui \
 	 cuentabase.ui \
 	 listcuentasbase.ui \
 	 aboutbase.ui \
 	 amortizacionesbase.ui \
 	 amortizacionbase.ui \
 	 busquedacuentabase.ui \
-	 aplinteligentesbase.ui
+	 aplinteligentesbase.ui \
+	 canualesbase.ui
 
 
 FORMS3 += uiselector.ui \
@@ -65,7 +66,7 @@ FORMS3 += uiselector.ui \
          mpatrimonialesdlg.ui \
          balanceprintdlg.ui \
          balancesprintdlg.ui \
-         balancesdlg.ui \
+#         balancesdlg.ui \
          canaldlg.ui \
          ccostedlg.ui \
          propiedemp.ui \
@@ -203,7 +204,6 @@ HEADERS += splashscreen.h \
            balancesview.h \
            canalview.h \
            ccosteview.h \
-           ainteligentesview.h \
            propiedadesempresa.h \
            extractoprintview.h \
            libromayorprint.h \
@@ -262,7 +262,6 @@ SOURCES += main.cpp \
            balancesview.cpp \
            canalview.cpp \
            ccosteview.cpp \
-           ainteligentesview.cpp \
            propiedadesempresa.cpp \
            extractoprintview.cpp \
            libromayorprint.cpp \

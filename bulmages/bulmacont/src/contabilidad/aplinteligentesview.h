@@ -120,7 +120,7 @@ public:
   void setmodo(int i) { modo=i;}
   
 public slots:
-  virtual void boton_crear();
+  virtual void on_mui_aceptar_clicked();
   virtual void return_numero();
   virtual void return_texto();
   virtual void on_mui_comboainteligentes_activated(int index);

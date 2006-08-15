@@ -163,7 +163,6 @@ public:
     int boton_guardar();
     int boton_imprimir();
     int boton_reload();
-    int ainteligentes();
     int ccostes();
     int canales();
     int tiposIVA();

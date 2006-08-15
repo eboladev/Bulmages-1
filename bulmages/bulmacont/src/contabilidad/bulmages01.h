@@ -163,10 +163,6 @@ public slots:
         m_empresaactual->librobalancetree();
     };
 
-    virtual void on_actionAsientos_Inteligentes_triggered() {
-        m_empresaactual->ainteligentes();
-    };
-
     virtual void on_actionImprimir_triggered() {
         m_empresaactual->boton_imprimir();
     };
@@ -234,8 +230,9 @@ public slots:
         m_empresaactual->cierraempresa();
     };
     virtual void on_actionCuentas_Anuales_triggered() {
-        _depura("Funcion aun no implementada",2);
+        m_empresaactual->compbalance();
     };
+
     virtual void on_actionMasas_Patrimoniales_triggered() {
         m_empresaactual->mpatrimoniales();
     };
@@ -266,10 +263,6 @@ public slots:
    virtual void on_actionAnterior_triggered() {    m_empresaactual->boton_anterior();};
    virtual void on_actionInicio_triggered() {    m_empresaactual->boton_primero();};
    virtual void on_actionFin_triggered() {    m_empresaactual->boton_ultimo();};
-
-
-
-
 };
 #endif
 

@@ -19,7 +19,6 @@
 #include "listcuentasview1.h"
 #include "asiento1view.h"
 #include "asientosview.h"
-#include "ainteligentesview.h"
 #include "amortizacionesview.h"
 #include "balancesview.h"
 #include "balance1view.h"
@@ -295,16 +294,6 @@ int empresa::amortizaciones() {
 }
 
 
-/*******************************************************************
- * Esta funcion llama a la pantalla de creacion, modificacion      *
- * de asientos inteligentes.                                       *
- *******************************************************************/
-int empresa::ainteligentes() {
-    AInteligentesView * nuevae = new AInteligentesView(this, 0, "ainteligentes", true);
-    m_pWorkspace->addWindow(nuevae);
-    nuevae->show();
-    return 0;
-}
 
 
 
@@ -326,10 +315,11 @@ int empresa::mpatrimoniales() {
  * de masas patrimoniales.                                         *
  *******************************************************************/
 int empresa::compbalance() {
-    // Esto es lo m� correcto, lo anterior se llamar�desde esta nueva ventana.
-    balancesview * nueva = new balancesview(this, 0, "balances");
-    nueva->exec();
-    delete nueva;
+    _depura("empresa::compbalance", 0);
+    CAnualesView * nueva = new CAnualesView(this, 0, "balances");
+    m_pWorkspace->addWindow(nueva);
+    nueva->show();
+    _depura("END empresa::compbalance", 0);
     return 0;
 }
 

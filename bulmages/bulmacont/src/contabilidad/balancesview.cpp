@@ -1,5 +1,5 @@
 /***************************************************************************
-                          balancesview.cpp  -  description
+                          CAnualesView.cpp  -  description
                              -------------------
     begin                : s� oct 18 2003
     copyright            : (C) 2003 by Tomeu Borr� Riera
@@ -28,7 +28,8 @@
 #define COL_CODIGO 0
 #define COL_NOMBRE 1
 
-balancesview::balancesview(empresa *emp, QWidget *parent, const char *name ) : balancesdlg(parent,name) {
+CAnualesView::CAnualesView(empresa *emp, QWidget *parent, const char *name ) : QWidget(parent,name, Qt::WDestructiveClose) {
+    setupUi(this);
     m_companyact = emp;
     m_modo = 0;
     inicializatabla();
@@ -36,14 +37,14 @@ balancesview::balancesview(empresa *emp, QWidget *parent, const char *name ) : b
 }
 
 
-balancesview::~balancesview() {
-    _depura("balancesview::~balancesview\n", 0);
+CAnualesView::~CAnualesView() {
+    _depura("CAnualesView::~CAnualesView\n", 0);
     m_companyact->sacaWindow(this);
-    _depura("END balancesview::~balancesview\n", 0);
+    _depura("END CAnualesView::~CAnualesView\n", 0);
 }
 
 
-void balancesview::inicializatabla()  {
+void CAnualesView::inicializatabla()  {
     listado->setNumRows(0);
     listado->setNumCols(2);
     listado->horizontalHeader()->setLabel( COL_CODIGO, tr( "CODIGO" ) );
@@ -68,7 +69,7 @@ void balancesview::inicializatabla()  {
 }// end inicializatabla
 
 
-void balancesview::nuevo() {
+void CAnualesView::nuevo() {
     QString query;
     // Insertamos el balance en su sitio
     query.sprintf("INSERT INTO balance (nombrebalance) VALUES ('Nuevo Balance')");
@@ -91,7 +92,7 @@ void balancesview::nuevo() {
 }// end nuevo
 
 
-void balancesview::borrar() {
+void CAnualesView::borrar() {
     // Borrar un balance es borrar tanto la entrada de balance como todas las lineas asociadas a �te.
     // Borramos primero todas las compbalance y luego la entrada en balance.
     QString idbalance = listado->text(listado->currentRow(), COL_CODIGO);
@@ -110,7 +111,7 @@ void balancesview::borrar() {
 }// end borrar
 
 
-void balancesview::s_abrirBalance() {
+void CAnualesView::s_abrirBalance() {
 
     int row = listado->currentRow();
     // Dependiendo del modo hacemos una cosa u otra
@@ -133,11 +134,11 @@ void balancesview::s_abrirBalance() {
 }// end dbtabla
 
 
-void balancesview::dbtabla(int , int , int ,const QPoint &) {
+void CAnualesView::dbtabla(int , int , int ,const QPoint &) {
     s_abrirBalance();
 }// end dbtabla
 
-void balancesview::imprimir() {
+void CAnualesView::imprimir() {
     QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
     fprintf(stderr,"Balance print\n");
     balancesprintview *b = new balancesprintview(m_companyact,0,0);
@@ -147,7 +148,7 @@ void balancesview::imprimir() {
 }// end imprimir
 
 
-void balancesview::boton_exportar() {
+void CAnualesView::boton_exportar() {
     fprintf(stderr,"Boton de Exportar\n");
     QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
     QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), tr("Balances (*.xml)"), 0,tr("Guardar Balance"),tr("Elige el nombre de archivo"));
@@ -230,7 +231,7 @@ void balancesview::boton_exportar() {
     QMessageBox::warning( this,"BulmaG�", "Se ha exportado el Balance.", "OK",  "No OK", 0, 0, 1 );
 }// end boton_exportar
 
-void balancesview::boton_importar() {
+void CAnualesView::boton_importar() {
     fprintf(stderr,"Boton de Importar\n");
     QString fn = Q3FileDialog::getOpenFileName("/usr/share/bulmages/balances", tr("Asientos Inteligentes (*.xml)"), 0,tr("Cargar Asientos Inteligentes"),tr("Elige el nombre de archivo"));
     if (!fn.isEmpty()) {

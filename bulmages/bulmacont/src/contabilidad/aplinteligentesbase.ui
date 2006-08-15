@@ -47,7 +47,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
         <string>Aceptar</string>
        </property>
@@ -57,7 +57,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1_2" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
         <string>Cerrar</string>
        </property>

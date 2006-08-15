@@ -18,7 +18,7 @@
 #define BALANCESVIEW_H
 
 #include <qwidget.h>
-#include <balancesdlg.h>
+#include "ui_canualesbase.h"
 
 #include "postgresiface2.h"
 
@@ -33,7 +33,7 @@
 
 #include "empresa.h"
 
-class balancesview : public balancesdlg  {
+class CAnualesView : public QWidget, public Ui_CAnualesBase  {
    Q_OBJECT
 private:
 /// Empresa con la que se trabaja (inicializada con el constructor de clase)
@@ -46,8 +46,8 @@ private:
    QString m_idBalance;
    
 public: 
-   balancesview(empresa *, QWidget *parent=0, const char *name=0);
-   ~balancesview();
+   CAnualesView(empresa *, QWidget *parent=0, const char *name=0);
+   ~CAnualesView();
    void inicializatabla();
 /// Establece el funcionamiento de la ventana como selector (afecta sobre el dobleclick en el listado)   
    void setmodoselector() {m_modo = 1;}

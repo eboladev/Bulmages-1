@@ -199,7 +199,7 @@ void aplinteligentesview::muestraplantilla(QString plantilla) {
 
 
 // La pulsación sobre el boton de creación del asiento.
-void aplinteligentesview::boton_crear() {
+void aplinteligentesview::on_mui_aceptar_clicked() {
     // Se está insertando sobre un asiento abierto, con lo que debemos
     // Cerrar la ventana, ya que es un introduccion de asiento normal
     if (numasiento != 0) {
@@ -766,7 +766,7 @@ void aplinteligentesview::selectsiguiente(QObject *edit) {
     // En caso de que se haya encontrado el edit, y sea el último
     // Se hace un accept
     if (encontrado == 1) {
-        boton_crear();
+        on_mui_aceptar_clicked();
     }// end if
 }
 
