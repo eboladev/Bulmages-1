@@ -59,20 +59,11 @@ public:
    QString idBalance() {return m_idBalance;}
 
 private slots:
-/// SLOT que responde a la pulsaci� del bot� de nuevo Balance
-   virtual void nuevo();
-/// SLOT que responde a la pulsaci� del bot� de borrar Balance   
-   virtual void borrar();
 /// SLOT que responde a la pulsaci� del bot� de imprimir Balance   
    virtual void imprimir();
 /// SLOT que responde a la acci� de hacer doble click sobre el listado   
    virtual void dbtabla(int, int, int, const QPoint &);
 /// SLOT que responde a la pulsaci� del bot� de exportaci� de balances   
-   virtual void boton_exportar();
-/// SLOT que responde a la pulsaci� del bot� de importaci� de balances   
-   virtual void boton_importar();
-/// SLOT que responde a la pulsaci� del bot� de abrir balance
-   virtual void s_abrirBalance();
    
 };
 

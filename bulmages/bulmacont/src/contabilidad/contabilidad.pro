@@ -201,7 +201,7 @@ HEADERS += splashscreen.h \
            mpatrimonialesview.h \
            balanceprintview.h \
            balancesprintview.h \
-           balancesview.h \
+           canualesview.h \
            canalview.h \
            ccosteview.h \
            propiedadesempresa.h \
@@ -259,7 +259,7 @@ SOURCES += main.cpp \
            mpatrimonialesview.cpp \
            balanceprintview.cpp \
            balancesprintview.cpp \
-           balancesview.cpp \
+           canualesview.cpp \
            canalview.cpp \
            ccosteview.cpp \
            propiedadesempresa.cpp \
