@@ -237,7 +237,7 @@ int PresupuestoView::cargar(QString id) {
     try {
         if (presupuesto::cargar(id))
             throw -1;
-        setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto"));
+        setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto") + " " + DBvalue("idpresupuesto"));
         companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
         _depura("END PresupuestoView::cargar", 0);

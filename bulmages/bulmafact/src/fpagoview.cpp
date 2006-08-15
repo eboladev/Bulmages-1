@@ -29,13 +29,16 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 FPagoView::FPagoView(company *emp,QWidget *parent)
-        : QDialog(parent), dialogChanges(this) {
+        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+    _depura("FPagoView::FPagoView", 0);
     setupUi(this);
     m_companyact = emp;
     setModoEdicion();
     m_cursorFPagoView = NULL;
     m_item = NULL;
+    m_companyact->meteWindow(caption(), this);
     pintar();
+    _depura("END FPagoView::FPagoView", 0);
 }
 
 
@@ -56,8 +59,12 @@ void FPagoView::pintar() {
 
 
 FPagoView::~FPagoView() {
+    _depura("FPagoView::~FPagoView", 0);
     if (m_cursorFPagoView != NULL)
         delete m_cursorFPagoView;
+    m_companyact->sacaWindow( this);
+    _depura("END FPagoView::~FPagoView", 0);
+
 }
 
 

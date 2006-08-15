@@ -30,7 +30,7 @@ FORMS += about.ui \
          albaranclientelistbase.ui \
          facturaslistbase.ui \
          pedidosproveedorlistbase.ui \
-         listprovincias.ui \
+         listprovinciasbase.ui \
          facturasplistbase.ui \
          albaranesproveedorlistbase.ui \
          pedidoproveedorbase.ui \
@@ -237,6 +237,7 @@ SOURCES += bulmafact.cpp \
            descpresupuesto.cpp \
            busquedareferencia.cpp
 
+
 INCLUDEPATH += ../../bulmalib \
 ../../bulmalib/.ui \
 ../../bulmalib/.moc \
@@ -248,6 +249,7 @@ INCLUDEPATH += ../../bulmalib \
 /usr/lib/qt4/include/Qt \
 /usr/lib/qt4/include/QtXml \
 ..
+
 unix{
   TARGETDEPS += ../../installbulmages/libbulmalib.so
   LIBS += -lbulmalib \
@@ -270,6 +272,7 @@ unix{
     DEFINES += DISTRO_GENTOO
   }
 }
+
 windows{
   DEFINES += WINDOWS
   UI_DIR = .ui

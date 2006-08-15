@@ -53,6 +53,7 @@ public:
 public slots:
     virtual void on_mui_informe_clicked();
     virtual void on_mui_referencia_editingFinished();
+    virtual void on_mui_abrirtodo_clicked();
 
 signals:
     void valueChanged(QString);

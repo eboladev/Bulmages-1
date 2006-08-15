@@ -58,7 +58,7 @@ public slots:
 #include "ui_listalmacenbase.h"
 
 
-class ListAlmacenView : public QDialog, public Ui_ListAlmacenBase {
+class ListAlmacenView : public QWidget, public Ui_ListAlmacenBase {
     Q_OBJECT
 
 public:
@@ -69,14 +69,7 @@ public:
     ~ListAlmacenView();
 
 public slots:
-    virtual void on_mui_aceptar_clicked() {
-        try {
-            mui_listado->guardar();
-            close();
-        } catch (...) {
-            mensajeInfo("Error al guardar los almacenes");
-        } // end try
-    };
+    virtual void on_mui_aceptar_clicked();
 };
 
 #endif

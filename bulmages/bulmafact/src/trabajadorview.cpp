@@ -33,7 +33,8 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
-        : QDialog(parent), dialogChanges(this) {
+        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+    _depura("TrabajadorView::TrabajadorView", 0);
     m_companyact = emp;
     setupUi(this);
     m_archivoimagen = "";
@@ -41,6 +42,8 @@ TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
     m_cursortrabajadores = NULL;
     m_item = NULL;
     pintar();
+    m_companyact->meteWindow(caption(), this);
+    _depura("END TrabajadorView::TrabajadorView", 0);
 }
 
 
@@ -61,8 +64,11 @@ void TrabajadorView::pintar() {
 
 
 TrabajadorView::~TrabajadorView() {
+    _depura("TrabajadorView::~TrabajadorView", 0);
     if (m_cursortrabajadores != NULL)
         delete m_cursortrabajadores;
+    m_companyact->sacaWindow(this);
+    _depura("END TrabajadorView::~TrabajadorView", 0);
 }
 
 

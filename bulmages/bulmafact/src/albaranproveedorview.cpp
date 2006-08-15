@@ -38,6 +38,8 @@
 #include "listlinalbaranproveedorview.h"
 #include "facturapview.h"
 #include "facturaview.h"
+#include "pagoview.h"
+#include "pedidoproveedorview.h"
 
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
@@ -174,7 +176,7 @@ void AlbaranProveedorView::generarFactura()  {
 
 
 void AlbaranProveedorView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
+    _depura("AlbaranProveedorView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar albaran"),
@@ -185,6 +187,8 @@ void AlbaranProveedorView::closeEvent(QCloseEvent *e) {
         if (val == 2)
             e->ignore();
     } // end if
+    _depura("END AlbaranProveedorView::closeEvent", 0);
+
 }
 
 
@@ -193,7 +197,7 @@ int AlbaranProveedorView::cargar(QString id) {
     try {
         AlbaranProveedor::cargar(id);
         if(DBvalue("idalbaranp") != "") {
-            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp"));
+            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") +" " +DBvalue("idalbaranp"));
             companyact->meteWindow(windowTitle(), this);
             dialogChanges_cargaInicial();
         } // end if
@@ -232,3 +236,32 @@ void AlbaranProveedorView::on_mui_guardar_clicked() {
     cargar(DBvalue("idalbaranp"));
 }
 
+
+void AlbaranProveedorView::on_mui_pagar_clicked() {
+    _depura("AlbaranProveedorView::on_mui_pagar_clicked", 0);
+    PagoView *bud = companyact->newPagoView();
+    companyact->m_pWorkspace->addWindow(bud);
+    bud->setidproveedor(DBvalue("idproveedor"));
+    bud->setcantpago(m_totalalbaranp->text());
+    bud->setrefpago(DBvalue("refalbaranp"));
+    bud->setcomentpago(DBvalue("descalbaranp"));
+    bud->pintar();
+    bud->show();
+    _depura("END AlbaranProveedorView::on_mui_pagar_clicked", 0);
+}
+
+
+void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
+	_depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
+	QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor='"+DBvalue("refalbaranp")+"'";
+	cursor2 *cur = companyact->cargacursor(query);
+	while (!cur->eof()) {
+		PedidoProveedorView *pedpro = companyact->newPedidoProveedorView();
+		pedpro->cargar(cur->valor("idpedidoproveedor"));
+		companyact->m_pWorkspace->addWindow( pedpro);
+		pedpro->show();
+		cur->siguienteregistro();
+	} // end while
+	delete cur;	
+	_depura("END AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
+}

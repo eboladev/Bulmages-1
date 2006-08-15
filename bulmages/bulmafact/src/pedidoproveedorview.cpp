@@ -97,7 +97,7 @@ int PedidoProveedorView::cargar(QString id) {
     try {
         if (PedidoProveedor::cargar(id))
             throw -1;
-        setWindowTitle(tr("Pedido a proveedor") + " " + DBvalue("refpedidoproveedor"));
+        setWindowTitle(tr("Pedido a proveedor") + " " + DBvalue("refpedidoproveedor") +" "+ DBvalue("idpedidoproveedor"));
         companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
         _depura("END PedidoProveedorView::cargar", 0);
@@ -138,13 +138,16 @@ void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed
 
 
 void PedidoProveedorView::on_mui_pagar_clicked() {
-    PagoView *bud = new PagoView(companyact, NULL);
+    _depura("PedidoProveedorView::on_mui_pagar_clicked", 0);
+    PagoView *bud = companyact->newPagoView();
+    companyact->m_pWorkspace->addWindow(bud);
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalpedidoproveedor->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
     bud->setcomentpago(DBvalue("descpedidoproveedor"));
     bud->pintar();
     bud->show();
+    _depura("END PedidoProveedorView::on_mui_pagar_clicked", 0);
 }
 
 

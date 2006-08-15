@@ -145,7 +145,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QToolButton" name="mui_facturar" >
+           <widget class="QToolButton" name="mui_veralbaranes" >
             <property name="enabled" >
              <bool>true</bool>
             </property>
@@ -156,10 +156,10 @@
              </size>
             </property>
             <property name="toolTip" >
-             <string>Facturar</string>
+             <string>Ver Albaranes</string>
             </property>
             <property name="whatsThis" >
-             <string>Facturar</string>
+             <string>Ver Albaranes con la misma referenica</string>
             </property>
             <property name="text" >
              <string/>
@@ -1982,10 +1982,38 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends></extends>
+   <header>busquedaproveedor.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>Q3Frame</class>
    <extends></extends>
    <header>Qt3Support/Q3Frame</header>
    <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListLinFacturaProveedorView</class>
+   <extends></extends>
+   <header>listlinfacturapview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoFacturaProvView</class>
+   <extends></extends>
+   <header>listdescfacturaprovview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -2006,34 +2034,6 @@
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends></extends>
-   <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListLinFacturaProveedorView</class>
-   <extends></extends>
-   <header>listlinfacturapview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoFacturaProvView</class>
-   <extends></extends>
-   <header>listdescfacturaprovview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

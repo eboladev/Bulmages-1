@@ -23,20 +23,19 @@
 #ifndef LISTPROVINCIASVIEW_H
 #define LISTPROVINCIASVIEW_H
 
-#include "ui_listprovincias.h"
+#include "ui_listprovinciasbase.h"
 
 
 class company;
 
 
-class ListProvinciasView : public QDialog, private Ui::ListProvinciasBase {
+class ListProvinciasView : public QWidget, public Ui_ListProvinciasBase {
     Q_OBJECT
-
 public:
     company *companyact;
 
 public:
-    ListProvinciasView(company *, QDialog *parent = 0);
+    ListProvinciasView(company *, QWidget *parent = 0);
     ~ListProvinciasView();
     void inicializa();
     int guardalinea(int);

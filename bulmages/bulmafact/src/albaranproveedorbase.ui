@@ -50,7 +50,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>2</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -170,11 +170,47 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>193</width>
-            <height>21</height>
+            <width>131</width>
+            <height>36</height>
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_verpedidosproveedor" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Ver pedidos de proveedor</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Ver pedidos de proveedor</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_facturar" >
@@ -193,10 +229,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Ver pedido de proveedor</string>
+           <string>Pasar a Factura</string>
           </property>
           <property name="whatsThis" >
-           <string>Ver pedido de proveedor</string>
+           <string>Pasar a Factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -2007,24 +2043,10 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoAlbaranProvView</class>
+   <class>Q3Frame</class>
    <extends></extends>
-   <header>listdescalbaranprovview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-   <container>0</container>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -2039,13 +2061,6 @@
    <extends></extends>
    <header>busquedaformapago.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -2066,6 +2081,27 @@
    <class>Q3TextEdit</class>
    <extends></extends>
    <header>q3textedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoAlbaranProvView</class>
+   <extends></extends>
+   <header>listdescalbaranprovview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends></extends>
+   <header>busquedaalmacen.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

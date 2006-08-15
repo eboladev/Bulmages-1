@@ -36,6 +36,7 @@ using namespace std;
 #include "providerslist.h"
 #include "pagoview.h"
 #include "funcaux.h"
+#include "albaranproveedorview.h"
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         : QWidget(parent, Qt::WDestructiveClose), FacturaProveedor(comp), dialogChanges(this) {
@@ -103,7 +104,6 @@ void FacturaProveedorView::s_nuevoPago() {
     bud->pintar();
     bud->show();
     _depura("END FacturaProveedorView::s_nuevoPago", 0);
-
 }
 
 
@@ -173,3 +173,18 @@ void FacturaProveedorView::on_mui_borrar_clicked() {
     } // end if
 }
 
+
+void FacturaProveedorView::on_mui_veralbaranes_clicked() {
+	_depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
+	QString query = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("reffacturap")+"'";
+	cursor2 *cur = companyact->cargacursor(query);
+	while (!cur->eof()) {
+		AlbaranProveedorView *albpro = companyact->newAlbaranProveedorView();
+		albpro->cargar(cur->valor("idalbaranp"));
+		companyact->m_pWorkspace->addWindow( albpro);
+		albpro->show();
+		cur->siguienteregistro();
+	} // end while
+	delete cur;	
+	_depura("END FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
+}

@@ -78,7 +78,7 @@
          <number>9</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>2</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -174,11 +174,42 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>70</width>
-            <height>21</height>
+            <width>61</width>
+            <height>36</height>
            </size>
           </property>
          </spacer>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_veralbaranes" >
+          <property name="enabled" >
+           <bool>true</bool>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Ver Albaranes</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Ver Albaranes</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_agregaralbaran" >
@@ -192,10 +223,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Agregar al albaran</string>
+           <string>Agregar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Agregar al albaran</string>
+           <string>Agregar albaran a la Factura</string>
           </property>
           <property name="text" >
            <string/>
@@ -2135,9 +2166,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaSerieFactura</class>
+   <class>BusquedaFormaPago</class>
    <extends></extends>
-   <header>busquedaseriefactura.h</header>
+   <header>busquedaformapago.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -2170,6 +2201,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>Q3TextEdit</class>
+   <extends></extends>
+   <header>q3textedit.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaAlmacen</class>
    <extends></extends>
    <header>busquedaalmacen.h</header>
@@ -2184,13 +2222,6 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaCliente</class>
    <extends></extends>
    <header>busquedacliente.h</header>
@@ -2198,9 +2229,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFormaPago</class>
+   <class>BusquedaSerieFactura</class>
    <extends></extends>
-   <header>busquedaformapago.h</header>
+   <header>busquedaseriefactura.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

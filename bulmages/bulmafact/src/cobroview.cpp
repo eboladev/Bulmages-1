@@ -72,7 +72,7 @@ int CobroView::cargar(QString id) {
     try {
         if (Cobro::cargar(id))
             throw -1;
-        setWindowTitle(tr("Cobro") + " " + DBvalue("refcobro"));
+        setWindowTitle(tr("Cobro") + " " + DBvalue("refcobro") + " " + DBvalue("idcobro"));
         pintar();
         dialogChanges_cargaInicial();
         companyact->meteWindow(windowTitle(), this);

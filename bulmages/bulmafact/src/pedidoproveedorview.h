@@ -116,6 +116,7 @@ public slots:
     virtual void on_mui_imprimir_clicked() {
         imprimirPedidoProveedor();
     };
+
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         calculaypintatotales();

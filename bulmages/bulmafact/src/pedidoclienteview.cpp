@@ -193,7 +193,7 @@ int PedidoClienteView::cargar(QString id) {
     try {
         if (PedidoCliente::cargar(id))
             throw -1;
-        setWindowTitle(tr("Pedido de cliente") + " " + DBvalue("refpedidocliente"));
+        setWindowTitle(tr("Pedido de cliente") + " " + DBvalue("refpedidocliente") + " " + DBvalue("idpedidocliente"));
         companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch (...) {

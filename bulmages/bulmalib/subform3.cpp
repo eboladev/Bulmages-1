@@ -632,3 +632,19 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     _depura("END SubForm3::on_mui_list_ctrlBajar", 0);
 }
 
+void SubForm3::on_mui_pagsiguiente_clicked() {
+        int pag = mui_paginaact->text().toInt();
+        pag++;
+        mui_paginaact->setText(QString::number(pag));
+        on_mui_appag_clicked();
+}
+
+void SubForm3::on_mui_paganterior_clicked() {
+        int pag = mui_paginaact->text().toInt();
+        if (pag > 1)
+            pag--;
+        mui_paginaact->setText(QString::number(pag));
+        on_mui_appag_clicked();
+}
+
+

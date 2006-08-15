@@ -22,6 +22,15 @@
 #include "company.h"
 #include "funcaux.h"
 #include "informereferencia.h"
+#include "presupuestoview.h"
+#include "pedidoclienteview.h"
+#include "albaranclienteview.h"
+#include "facturaview.h"
+#include "cobroview.h"
+#include "pagoview.h"
+#include "pedidoproveedorview.h"
+#include "albaranproveedorview.h"
+#include "facturapview.h"
 
 
 BusquedaReferencia::BusquedaReferencia(QWidget *parent)
@@ -53,6 +62,111 @@ void BusquedaReferencia::on_mui_referencia_editingFinished() {
     _depura("BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
     emit(valueChanged(mui_referencia->text()));
     _depura("END BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
+}
 
+void BusquedaReferencia::on_mui_abrirtodo_clicked() {
+    _depura("BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
+    /// Empezamos con los presupuestos
+    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
+    while (!cur->eof()) {
+        PresupuestoView *bud = m_companyact->newBudget();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idpresupuesto"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+    while (!cur->eof()) {
+        PedidoClienteView *bud = m_companyact->newPedidoClienteView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idpedidocliente"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            AlbaranClienteView *bud = m_companyact->newAlbaranClienteView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idalbaran"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            FacturaView *bud = m_companyact->newFacturaView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idfactura"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            CobroView *bud = m_companyact->newCobroView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idcobro"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM pago WHERE refpago = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            PagoView *bud = m_companyact->newPagoView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idpago"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            PedidoProveedorView *bud = m_companyact->newPedidoProveedorView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idpedidoproveedor"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+    SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            AlbaranProveedorView *bud = m_companyact->newAlbaranProveedorView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idalbaranp"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+
+    SQLQuery = "SELECT * FROM facturap WHERE refacturap = '" + mui_referencia->text() + "'";
+    cur = m_companyact->cargacursor(SQLQuery);
+        while (!cur->eof()) {
+            FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+            m_companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idfacturap"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    delete cur;
+
+    _depura("END BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
 }
 

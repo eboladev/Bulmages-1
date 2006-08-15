@@ -96,6 +96,7 @@ public slots:
         s_pintaTotales();
     };
     virtual void on_mui_borrar_clicked();
+    virtual void on_mui_veralbaranes_clicked();
 };
 
 #endif

@@ -119,6 +119,7 @@ public slots:
         if (!guardar() )
             close();
     };
+    virtual void on_mui_veralbaranes_clicked();
 };
 
 #endif

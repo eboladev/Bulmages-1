@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>ListSerieFacturaBase</class>
- <widget class="QDialog" name="ListSerieFacturaBase" >
+ <widget class="QWidget" name="ListSerieFacturaBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -14,6 +14,9 @@
   </property>
   <property name="windowTitle" >
    <string>Series de factura</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >

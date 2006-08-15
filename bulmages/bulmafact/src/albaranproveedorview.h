@@ -135,6 +135,8 @@ public slots:
         if (!guardar())
             close();
     };
+    virtual void on_mui_pagar_clicked();
+    virtual void on_mui_verpedidosproveedor_clicked();
 };
 
 #endif

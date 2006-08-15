@@ -59,7 +59,7 @@ public slots:
 #include "ui_listseriefacturabase.h"
 
 
-class ListSerieFacturaView : public QDialog, public Ui_ListSerieFacturaBase {
+class ListSerieFacturaView : public QWidget, public Ui_ListSerieFacturaBase {
     Q_OBJECT
 
 public:

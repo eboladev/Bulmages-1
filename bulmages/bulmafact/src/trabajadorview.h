@@ -29,7 +29,7 @@
 class company;
 
 
-class TrabajadorView : public QDialog, private Ui_TrabajadorBase, dialogChanges {
+class TrabajadorView : public QWidget, private Ui_TrabajadorBase, dialogChanges {
     Q_OBJECT
 
 private:

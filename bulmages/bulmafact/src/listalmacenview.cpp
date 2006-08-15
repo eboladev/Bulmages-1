@@ -42,17 +42,30 @@ using namespace std;
 
 
 ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
-        : QDialog(parent, Qt::WDestructiveClose) {
+        : QWidget(parent, Qt::WDestructiveClose) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
     setupUi(this);
     companyact = comp;
     mui_listado->setcompany(comp);
     mui_listado->cargar();
+    companyact->meteWindow( caption(), this);
     _depura("END ListAlmacenView::ListAlmacenView", 1);
 }
 
+void ListAlmacenView::on_mui_aceptar_clicked() {
+        try {
+            mui_listado->guardar();
+            close();
+        } catch (...) {
+            mensajeInfo("Error al guardar los almacenes");
+        } // end try
+}
 
-ListAlmacenView::~ListAlmacenView() {}
+ListAlmacenView::~ListAlmacenView() {
+	_depura("ListAlmacenView::~ListAlmacenView", 0);
+	companyact->sacaWindow(this);
+	_depura("END ListAlmacenView::~ListAlmacenView", 0);
+}
 
 
 /// ===================================== SUBFORMULARIO ===============================================

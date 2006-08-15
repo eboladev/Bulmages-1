@@ -127,7 +127,7 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            PedidoClienteView *bud = new PedidoClienteView(companyact, NULL);
+            PedidoClienteView *bud = companyact->newPedidoClienteView();
             companyact->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idpedidocliente"));
             bud->show();
@@ -262,7 +262,7 @@ int AlbaranClienteView::cargar(QString id) {
     try {
         if (AlbaranCliente::cargar(id))
             throw -1;
-        setWindowTitle(tr("Albaran a cliente") + " " + DBvalue("refalbaran"));
+        setWindowTitle(tr("Albaran a cliente") + " " + DBvalue("refalbaran") + " " + DBvalue("idalbaran"));
         companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch(...) {

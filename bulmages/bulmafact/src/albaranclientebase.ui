@@ -31,10 +31,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -2302,6 +2302,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>ListDescuentoAlbaranClienteView</class>
+   <extends></extends>
+   <header>listdescalbaranclienteview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaAlmacen</class>
    <extends></extends>
    <header>busquedaalmacen.h</header>
@@ -2357,13 +2364,6 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>ListDescuentoAlbaranClienteView</class>
-   <extends></extends>
-   <header>listdescalbaranclienteview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -2376,12 +2376,28 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>597</x>
-     <y>587</y>
+     <x>631</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel" >
      <x>2</x>
      <y>481</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_detalles</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frame</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>14</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>14</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>

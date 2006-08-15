@@ -28,7 +28,7 @@
 
 class company;
 
-class FPagoView : public QDialog, private Ui_FPagoBase, dialogChanges {
+class FPagoView : public QWidget, private Ui_FPagoBase, dialogChanges {
     Q_OBJECT
 
 private:

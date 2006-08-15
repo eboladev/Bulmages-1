@@ -22,36 +22,35 @@
 
 #include "listprovinciasview.h"
 #include "company.h"
-
-using namespace std;
-
+#include <QWidget>
 #include "funcaux.h"
 
 #define COL_PROVINCIA 0
 #define COL_ORIGINALPROVINCIA 1
 
 
-ListProvinciasView::ListProvinciasView(company *comp, QDialog *parent) : QDialog (parent) {
-    _depura("INIT_ListProvinciasView::ListProvinciasView", 1);
-
+ListProvinciasView::ListProvinciasView(company *comp, QWidget *parent) : QWidget (parent, Qt::WDestructiveClose) {
+    _depura("INIT_ListProvinciasView::ListProvinciasView", 0);
     setupUi(this);
     companyact = comp;
-
     m_listado->setSelectionMode(QAbstractItemView::SingleSelection);
     m_listado->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_listado->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-
     inicializa();
-
-    _depura("END_ListProvinciasView::ListProvinciasView", 1);
+    companyact->meteWindow(caption(), this);
+    _depura("END_ListProvinciasView::ListProvinciasView", 0);
 }
 
 
-ListProvinciasView::~ListProvinciasView() {}
+ListProvinciasView::~ListProvinciasView() {
+	_depura("ListProvinciasView::~ListProvinciasView", 0);
+	companyact->sacaWindow(this);
+	_depura("END ListProvinciasView::~ListProvinciasView", 0);
+}
 
 
 void ListProvinciasView::inicializa() {
-    _depura("INIT_ListProvinciasView::inicializa", 1);
+    _depura("INIT_ListProvinciasView::inicializa", 0);
 
     m_listado->clear();
     m_listado->setColumnCount(2);
@@ -80,12 +79,12 @@ void ListProvinciasView::inicializa() {
         cur->siguienteregistro();
     } // end while
 
-    _depura("END_ListProvinciasView::inicializa", 1);
+    _depura("END_ListProvinciasView::inicializa", 0);
 }
 
 
 void ListProvinciasView::on_botonnew_clicked() {
-    _depura("INIT_ListProvinciasView::on_botonnew_clicked", 1);
+    _depura("INIT_ListProvinciasView::on_botonnew_clicked", 0);
 
     QString SQLQuery = "INSERT INTO provincia (provincia) VALUES ('--')";
 
@@ -96,12 +95,12 @@ void ListProvinciasView::on_botonnew_clicked() {
 
     inicializa();
 
-    _depura("END_ListProvinciasView::on_botonnew_clicked", 1);
+    _depura("END_ListProvinciasView::on_botonnew_clicked", 0);
 }
 
 
 void ListProvinciasView::on_botonsave_clicked() {
-    _depura("INIT_ListProvinciasView::on_botonsave_clicked", 1);
+    _depura("INIT_ListProvinciasView::on_botonsave_clicked", 0);
 
     companyact->begin();
 
@@ -118,12 +117,12 @@ void ListProvinciasView::on_botonsave_clicked() {
     companyact->commit();
     inicializa();
 
-    _depura("END_ListProvinciasView::on_botonsave_clicked", 1);
+    _depura("END_ListProvinciasView::on_botonsave_clicked", 0);
 }
 
 
 void ListProvinciasView::on_botondelete_clicked() {
-    _depura("INIT_ListProvinciasView::on_botondelete_clicked", 1);
+    _depura("INIT_ListProvinciasView::on_botondelete_clicked", 0);
 
     QTableWidgetItem *newItem = new QTableWidgetItem("", 0);
 
@@ -142,12 +141,12 @@ void ListProvinciasView::on_botondelete_clicked() {
 
     inicializa();
 
-    _depura("END_ListProvinciasView::on_botondelete_clicked", 1);
+    _depura("END_ListProvinciasView::on_botondelete_clicked", 0);
 }
 
 
 int ListProvinciasView::guardalinea(int row) {
-    _depura("INIT_ListProvinciasView::guardalinea", 1);
+    _depura("INIT_ListProvinciasView::guardalinea", 0);
 
     QTableWidgetItem *newItem1 = new QTableWidgetItem("", 0);
     QTableWidgetItem *newItem2 = new QTableWidgetItem("", 0);
@@ -163,7 +162,7 @@ int ListProvinciasView::guardalinea(int row) {
     if (error)
         return 1;
 
-    _depura("END_ListProvinciasView::guardalinea", 1);
+    _depura("END_ListProvinciasView::guardalinea", 0);
     return 0;
 }
 

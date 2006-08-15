@@ -46,6 +46,7 @@ class PagosList;
 class PresupuestoView;
 class FacturaView;
 class FacturaProveedorView;
+class PedidoProveedorView;
 class ArticuloView;
 class CobroView;
 class PagoView;
@@ -96,7 +97,6 @@ public:
     void listClientDelivNotes();
     void newClientDelivNote();
     void newPedidoCliente();
-    void newPedidoProveedor();
     ClienteView *newClienteView();
     ProveedorView *newProveedorView();
     ArticuloView *newArticuloView();
@@ -130,6 +130,7 @@ public:
     void s_newPedidoPro();
     void s_newPresupuestoCli();
     void s_newPedidoClienteView();
+    void s_newPedidoProveedorView();
     void s_newAlbaranClienteView();
     void s_newAlbaranProveedorView();
     void s_newFacturaCli();
@@ -157,6 +158,7 @@ public:
     AlbaranClienteView *newAlbaranClienteView();
     AlbaranProveedorView *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
+    PedidoProveedorView *newPedidoProveedorView();
     TipoArticuloList *newTipoArticuloList(QWidget *parent = 0, bool modoConsulta = FALSE);
     familiasview *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
 

@@ -8,7 +8,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>584</width>
+    <width>685</width>
     <height>22</height>
    </rect>
   </property>
@@ -22,7 +22,7 @@
   </property>
   <property name="minimumSize" >
    <size>
-    <width>48</width>
+    <width>100</width>
     <height>16</height>
    </size>
   </property>
@@ -67,6 +67,28 @@
      </property>
      <property name="icon" >
       <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_informexreferencia.32x32.png</iconset>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QToolButton" name="mui_abrirtodo" >
+     <property name="minimumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="maximumSize" >
+      <size>
+       <width>22</width>
+       <height>22</height>
+      </size>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="icon" >
+      <iconset resource="../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tuxPeq.png</iconset>
      </property>
     </widget>
    </item>

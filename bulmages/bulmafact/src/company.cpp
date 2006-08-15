@@ -491,16 +491,21 @@ void company::refreshPedidosProveedor() {
 
 /// Presenta la ventana de formas de pago y espera la ejecucion de la misma.
 void company::s_FPago() {
+    _depura("company::s_FPago", 0);
     FPagoView *f = new FPagoView(this, NULL);
-    f->exec();
-    delete f;
+    m_pWorkspace->addWindow(f);
+    f->show();
+    _depura("END company::s_FPago", 0);
+
 }
 
 
 void company::s_trabajadores() {
+    _depura("company::s_trabajadores", 0);
     TrabajadorView *t = new TrabajadorView(this, NULL);
-    t->exec();
-    delete t;
+    m_pWorkspace->addWindow(t);
+    t->show();
+    _depura("END company::s_trabajadores", 0);
 }
 
 
@@ -508,16 +513,19 @@ void company::s_trabajadores() {
 
 
 void company::s_seriesFactura() {
+    _depura("company::s_seriesFactura", 0);
     ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0);
-    lser->exec();
-    delete lser;
+    m_pWorkspace->addWindow( lser);
+    lser->show();
+    _depura("END company::s_seriesFactura", 0);
 }
 
 
 void company::s_provincias() {
     _depura("INIT_company::s_provincias", 1);
-    ListProvinciasView lser(this, 0);
-    lser.exec();
+    ListProvinciasView *lser =  new ListProvinciasView(this, 0);
+    m_pWorkspace->addWindow(lser);
+    lser->show();
     _depura("END_company::s_provincias", 1);
 }
 
@@ -613,10 +621,31 @@ void company::s_newPedidoClienteView() {
 }
 
 
+
+PedidoProveedorView * company::newPedidoProveedorView() {
+    /// Lanzamos los plugins necesarios.
+    PedidoProveedorView *bud;
+    if (g_plugins->lanza("company_newPedidoProveedorView", this, (void **)&bud))
+        return bud;
+    bud = new PedidoProveedorView(this, 0);
+    return bud;
+}
+
+
+void company::s_newPedidoProveedorView() {
+    PedidoProveedorView *bud = newPedidoProveedorView();
+    m_pWorkspace->addWindow(bud);
+//    bud->inicializar();
+    bud->pintar();
+    bud->show();
+}
+
+
 void company::s_almacenes() {
     _depura("INIT_company::s_almacenes", 1);
-    ListAlmacenView lser(this, 0);
-    lser.exec();
+    ListAlmacenView *lser = new ListAlmacenView(this, 0);
+    m_pWorkspace->addWindow(lser);
+    lser->show();
     _depura("END_company::s_almacenes", 1);
 }
 

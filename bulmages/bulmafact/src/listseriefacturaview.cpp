@@ -41,17 +41,22 @@ using namespace std;
 
 
 ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
-        : QDialog(parent, Qt::WDestructiveClose) {
+        : QWidget(parent, Qt::WDestructiveClose) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
     setupUi(this);
     companyact = comp;
     mui_listado->setcompany(comp);
     mui_listado->cargar();
+    companyact->meteWindow(caption(), this);
     _depura("END_ListSerieFacturaView::ListSerieFacturaView", 1);
 }
 
 
-ListSerieFacturaView::~ListSerieFacturaView() {}
+ListSerieFacturaView::~ListSerieFacturaView() {
+	_depura("ListSerieFacturaView::~ListSerieFacturaView", 0);
+	companyact->sacaWindow(this);
+	_depura("END ListSerieFacturaView::~ListSerieFacturaView", 0);
+}
 
 
 /// ===================================== SUBFORMULARIO ===============================================

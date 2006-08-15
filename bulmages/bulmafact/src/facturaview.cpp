@@ -75,8 +75,10 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
 
 
 FacturaView::~FacturaView() {
+    _depura("FacturaView::~FacturaView", 0);
     companyact->refreshFacturas();
     companyact->sacaWindow(this);
+    _depura("END FacturaView::~FacturaView", 0);
 }
 
 
@@ -116,7 +118,7 @@ int FacturaView::cargar(QString id) {
     try {
         Factura::cargar(id);
         if (DBvalue("idfactura") != "") {
-            setWindowTitle(tr("Factura") + " " + DBvalue("reffactura"));
+            setWindowTitle(tr("Factura") + " " + DBvalue("reffactura") + " " + DBvalue("idfactura"));
             companyact->meteWindow(windowTitle(), this);
         } // end if
         dialogChanges_cargaInicial();
@@ -219,3 +221,21 @@ int FacturaView::guardar() {
     return err;
 }
 
+
+void FacturaView::on_mui_veralbaranes_clicked() {
+    _depura("FacturaView::on_mui_veralbaranes_clicked", 0);
+    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue("reffactura") + "'";
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    if (!cur->eof()) {
+        while (!cur->eof()) {
+            AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL);
+            companyact->m_pWorkspace->addWindow(bud);
+            bud->cargar(cur->valor("idalbaran"));
+            bud->show();
+            cur->siguienteregistro();
+        } // end while
+    } else {
+        _depura("no hay albaranes con esta referencia", 2);
+    } // end if
+    delete cur;
+}
