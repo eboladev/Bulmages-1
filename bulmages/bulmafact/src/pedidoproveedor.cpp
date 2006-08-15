@@ -249,7 +249,7 @@ void PedidoProveedor::calculaypintatotales() {
     Fixed basei("0.00");
     base::Iterator it;
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.data();
+        basei = basei + it.value();
     } // end for
     /// Impresion de los descuentos.
     Fixed porcentt("0.00");
@@ -263,9 +263,9 @@ void PedidoProveedor::calculaypintatotales() {
     Fixed parbaseimp("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > Fixed("0.00")) {
-            parbaseimp = it.data() - it.data() * porcentt / 100;
+            parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
-            parbaseimp = it.data();
+            parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
     } // end for
@@ -275,9 +275,9 @@ void PedidoProveedor::calculaypintatotales() {
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         Fixed piva(it.key().toAscii().constData());
         if (porcentt > Fixed("0.00")) {
-            pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
+            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
         } else {
-            pariva = it.data() * piva / 100;
+            pariva = it.value() * piva / 100;
         } // end if
         totiva = totiva + pariva;
     } // end for

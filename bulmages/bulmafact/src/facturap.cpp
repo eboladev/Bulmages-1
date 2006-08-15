@@ -235,7 +235,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     Fixed basei("0.00");
     base::Iterator it;
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.data();
+        basei = basei + it.value();
     } // end for
 
     /// Impresion de los descuentos.
@@ -272,9 +272,9 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     Fixed parbaseimp("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > 0) {
-            parbaseimp = it.data() - it.data() * porcentt / 100;
+            parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
-            parbaseimp = it.data();
+            parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
         tr1 += "        <td>" + QApplication::translate("FacturaProveedor", "Base ") + it.key() + " %</td>\n";
@@ -285,9 +285,9 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     Fixed pariva("0.0");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > 0) {
-            pariva = (it.data() - it.data() * porcentt / 100) * Fixed(it.key()) / 100;
+            pariva = (it.value() - it.value() * porcentt / 100) * Fixed(it.key()) / 100;
         } else {
-            pariva = it.data() * Fixed(it.key()) / 100;
+            pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
         tr1 += "        <td>" + QApplication::translate("FacturaProveedor", "IVA ") + it.key() + " %</td>\n";

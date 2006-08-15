@@ -231,7 +231,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     Fixed basei("0.00");
     base::Iterator it;
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.data();
+        basei = basei + it.value();
     } // end for
 
     /// Impresion de los descuentos.
@@ -268,9 +268,9 @@ void PedidoCliente::imprimirPedidoCliente() {
     Fixed parbaseimp("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > 0) {
-            parbaseimp = it.data() - it.data() * porcentt / 100;
+            parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
-            parbaseimp = it.data();
+            parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
         tr1 += "        <td>" + QApplication::translate("PedidoCliente", "Base ") + it.key() + " %</td>\n";
@@ -281,9 +281,9 @@ void PedidoCliente::imprimirPedidoCliente() {
     Fixed pariva("0.0");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > 0) {
-            pariva = (it.data() - it.data() * porcentt / 100) * Fixed(it.key()) / 100;
+            pariva = (it.value() - it.value() * porcentt / 100) * Fixed(it.key()) / 100;
         } else {
-            pariva = it.data() * Fixed(it.key()) / 100;
+            pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
         tr1 += "        <td>" + QApplication::translate("PedidoCliente", "Iva ") + it.key() + " %</td>\n";
@@ -324,7 +324,7 @@ void PedidoCliente::calculaypintatotales() {
     Fixed basei("0.00");
     base::Iterator it;
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.data();
+        basei = basei + it.value();
     } // end for
 
     /// Impresion de los descuentos.
@@ -342,9 +342,9 @@ void PedidoCliente::calculaypintatotales() {
     Fixed parbaseimp("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         if (porcentt > Fixed("0.00")) {
-            parbaseimp = it.data() - it.data() * porcentt / 100;
+            parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
-            parbaseimp = it.data();
+            parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
     } // end for
@@ -354,9 +354,9 @@ void PedidoCliente::calculaypintatotales() {
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         Fixed piva(it.key().toAscii().constData());
         if (porcentt > Fixed("0.00")) {
-            pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
+            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
         } else {
-            pariva = it.data() * piva / 100;
+            pariva = it.value() * piva / 100;
         } // end if
         totiva = totiva + pariva;
     } // end for

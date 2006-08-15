@@ -57,10 +57,10 @@ public:
     listlinpresupuestoview* _listalineas() {
         return listalineas;
     };
-    ListDescuentoPresupuestoView * _listadescuentos() {
+    ListDescuentoPresupuestoView *_listadescuentos() {
         return listadescuentos;
     };
-    company * _company() {
+    company *_company() {
         return companyact;
     };
     QString idcliente() {

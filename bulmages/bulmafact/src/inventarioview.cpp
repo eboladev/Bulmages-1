@@ -43,7 +43,7 @@ InventarioView::InventarioView(company *comp, QWidget *parent)
     _depura("inicializamos el subformulario", 0);
     subform2->setcompany(comp);
     setListControlStock(subform2);
-    comp->meteWindow(caption(), this);
+    comp->meteWindow(windowTitle(), this);
     _depura("Fin de la inicializacion de Inventario\n");
 }
 

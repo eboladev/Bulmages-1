@@ -241,7 +241,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     base::Iterator it;
 
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.data();
+        basei = basei + it.value();
     }
 
     /// Impresion de los descuentos.
@@ -286,9 +286,9 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
 
         if (porcentt > 0) {
-            parbaseimp = it.data() - it.data() * porcentt / 100;
+            parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
-            parbaseimp = it.data();
+            parbaseimp = it.value();
         } // end if
 
         totbaseimp = totbaseimp + parbaseimp;
@@ -302,9 +302,9 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
 
         if (porcentt > 0) {
-            pariva = (it.data() - it.data() * porcentt / 100) * Fixed(it.key()) / 100;
+            pariva = (it.value() - it.value() * porcentt / 100) * Fixed(it.key()) / 100;
         } else {
-            pariva = it.data() * Fixed(it.key()) / 100;
+            pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
 
         totiva = totiva + pariva;
@@ -352,7 +352,7 @@ void AlbaranCliente::calculaypintatotales()  {
     base::Iterator it;
 
     for (it = basesimp.begin(); it != basesimp.end(); ++it)
-        basei = basei + it.data();
+        basei = basei + it.value();
 
     /// Impresion de los descuentos.
     Fixed porcentt("0.00");
@@ -370,9 +370,9 @@ void AlbaranCliente::calculaypintatotales()  {
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
 
         if (porcentt > Fixed("0.00")) {
-            parbaseimp = it.data() - it.data() * porcentt / 100;
+            parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
-            parbaseimp = it.data();
+            parbaseimp = it.value();
         } // end if
 
         totbaseimp = totbaseimp + parbaseimp;
@@ -385,9 +385,9 @@ void AlbaranCliente::calculaypintatotales()  {
         Fixed piva(it.key().toAscii().constData());
 
         if (porcentt > Fixed("0.00")) {
-            pariva = (it.data() - it.data() * porcentt / 100) * piva / 100;
+            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
         } else {
-            pariva = it.data() * piva / 100;
+            pariva = it.value() * piva / 100;
         } // end if
 
         totiva = totiva + pariva;
