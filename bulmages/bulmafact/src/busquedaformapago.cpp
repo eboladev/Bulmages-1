@@ -45,12 +45,12 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("idforma_pago") == idforma_pago)
             i1 = i;
-        insertItem(m_cursorcombo->valor("descforma_pago"));
+        addItem(m_cursorcombo->valor("descforma_pago"));
         m_cursorcombo->siguienteregistro();
     }
     setCurrentItem(i1);

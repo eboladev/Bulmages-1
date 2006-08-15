@@ -48,12 +48,12 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("idalmacen") == idalmacen)
             i1 = i;
-        insertItem(m_cursorcombo->valor("nomalmacen"));
+        addItem(m_cursorcombo->valor("nomalmacen"));
         m_cursorcombo->siguienteregistro();
     } //end while
     setCurrentItem(i1);

@@ -164,7 +164,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         if (idIva == m_cursorcombo->valor("idtipo_iva")) {
             i1 = i;
         }
-        m_combotipo_iva->insertItem(m_cursorcombo->valor("desctipo_iva"));
+        m_combotipo_iva->addItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
     } // end while
     if (i1 != 0) {

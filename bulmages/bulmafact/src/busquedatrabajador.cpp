@@ -45,12 +45,12 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("idtrabajador") == idtrabajador)
             i1 = i;
-        insertItem(m_cursorcombo->valor("apellidostrabajador") + ", " + m_cursorcombo->valor("nomtrabajador"));
+        addItem(m_cursorcombo->valor("apellidostrabajador") + ", " + m_cursorcombo->valor("nomtrabajador"));
         m_cursorcombo->siguienteregistro();
     }
     setCurrentItem(i1);

@@ -47,13 +47,13 @@ void BusquedaProvincia::setProvincia(QString provincia) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
 
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("provincia") == provincia)
             i1 = i;
-        insertItem(m_cursorcombo->valor("provincia"));
+        addItem(m_cursorcombo->valor("provincia"));
         m_cursorcombo->siguienteregistro();
     } // end while
 

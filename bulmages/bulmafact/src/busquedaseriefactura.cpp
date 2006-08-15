@@ -42,12 +42,12 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("codigoserie_factura") == codigo)
             i1 = i;
-        insertItem(m_cursorcombo->valor("codigoserie_factura") + ".-" + m_cursorcombo->valor("descserie_factura"));
+        addItem(m_cursorcombo->valor("codigoserie_factura") + ".-" + m_cursorcombo->valor("descserie_factura"));
         m_cursorcombo->siguienteregistro();
     }
     setCurrentItem(i1);
