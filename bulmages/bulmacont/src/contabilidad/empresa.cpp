@@ -20,7 +20,7 @@
 #include "asiento1view.h"
 #include "asientosview.h"
 #include "amortizacionesview.h"
-#include "balancesview.h"
+#include "canualesview.h"
 #include "balance1view.h"
 #include "cuentaview.h"
 #include "canalview.h"
