@@ -43,7 +43,7 @@ class amortizacionview : public QWidget, Ui_AmortizacionBase , dialogChanges {
   void inicializa(QString);
   void trataModificado();
   public slots:
-    virtual bool close(bool);
+  virtual bool close(bool);
   virtual void accept();
   virtual void calculaamortizacion();
   virtual void contextMenuRequested(int, int, const QPoint &);

@@ -447,7 +447,7 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         QString cant= table1->text(row, COL_CUOTA);
         fprintf(stderr,"Cuota: %s\n", cant.ascii());
         int numasiento = 0; //El asiento debe ser uno nuevo.
-        aplinteligentesview *nueva=new aplinteligentesview(m_companyact,0,"");
+        aplinteligentesview *nueva=new aplinteligentesview(m_companyact,0);
         QString cuenta = ctaactivo->text();
         QString cuentaamort = ctaamortizacion->text();
         nueva->inicializa(numasiento);
@@ -463,19 +463,20 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         nueva->setfechaasiento(table1->text(row,COL_FECHA));
         /// Ponemos los asientos plantilla en modo exclusivo, para poder recuperar el control en cuanto se haya hecho la inserción del asiento.
         nueva->setmodo(1);
-        nueva->exec();
+        m_companyact->pWorkspace()->addWindow(nueva);
+        nueva->show();
+
         int numasiento1=m_companyact->intapuntsempresa()->idasiento().toInt();
         QString ordenasiento;
         QString SQLQuery = "SELECT * FROM asiento where idasiento="+QString::number(numasiento1);
         m_companyact->begin();
-        cursor2 *cur = m_companyact->cargacursor(SQLQuery,"hola");
+        cursor2 *cur = m_companyact->cargacursor(SQLQuery);
         m_companyact->commit();
         if (!cur->eof()) {
             ordenasiento= cur->valor("ordenasiento");
         }// end if
         table1->setText(row,COL_IDASIENTO,QString::number(numasiento1));
         table1->setText(row,COL_ORDENASIENTO, ordenasiento);
-        delete nueva;
         delete cur;
 
         /// Debemos guardar la modificacion en la linea de amortizacion.

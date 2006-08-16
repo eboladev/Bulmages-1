@@ -44,17 +44,19 @@ using namespace std;
 #define DEBUGMODE 1
 
 
-ListZonaComercialView::ListZonaComercialView( company *comp , QWidget *parent, const char *name) : QDialog(parent, name, Qt::WDestructiveClose) {
+ListZonaComercialView::ListZonaComercialView( company *comp , QWidget *parent, const char *name) : QWidget (parent, name, Qt::WDestructiveClose) {
 	_depura("INIT_ListZonaComercialView::ListZonaComercialView", DEBUGMODE);
 	setupUi(this);
 	companyact = comp;
 	mui_listado->setcompany(comp);
 	mui_listado->cargar();
+	companyact->meteWindow(windowTitle(), this);
 	_depura("END_ListZonaComercialView::ListZonaComercialView", DEBUGMODE);
 }
 
 
 ListZonaComercialView::~ListZonaComercialView() {
+   companyact->sacaWindow(this);
 }
 
 

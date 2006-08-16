@@ -50,7 +50,8 @@ FORMS += bulmacontbase.ui \
 	 amortizacionbase.ui \
 	 busquedacuentabase.ui \
 	 aplinteligentesbase.ui \
-	 canualesbase.ui
+	 canualesbase.ui \
+	 ccostebase.ui
 
 
 FORMS3 += uiselector.ui \
@@ -68,7 +69,7 @@ FORMS3 += uiselector.ui \
          balancesprintdlg.ui \
 #         balancesdlg.ui \
          canaldlg.ui \
-         ccostedlg.ui \
+#         ccostedlg.ui \
          propiedemp.ui \
          actualizacionesdlg.ui \
          cambiactadlg.ui \

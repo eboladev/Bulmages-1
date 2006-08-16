@@ -39,7 +39,8 @@
 #define VAR_PRED_FECHAACTUAL 0
 #define VAR_PRED_FECHAASIENTO 1
 
-aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const char *name ) : QDialog( parent,name) {
+aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent ) : QWidget( parent, Qt::WDestructiveClose) {
+    _depura("aplinteligentesview::aplinteligentesview", 0);
     setupUi(this);
     companyact = emp;
     // iniciamos los contadores de variables para que no haya problemas.
@@ -50,12 +51,17 @@ aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent, const ch
     indvariablespredefinidas=0;  // Este array es estático, pero como no se modifica nunca se ponen los valores al principio y la parte dinámica queda igual.
     indvariablesapunte=1;  // Cada apunte la tiene o no la tiene, pero no se debe aplicar.
     variablesapunte[VAR_APUNT_CIFCUENTA][0] ="$cifcuenta$";
+    companyact->meteWindow(windowTitle(), this);
     setmodo(0);
+    _depura("END aplinteligentesview::aplinteligentesview", 0);
 }
 
 
 aplinteligentesview::~aplinteligentesview() {
+    _depura("aplinteligentesview::~aplinteligentesview", 0);
     borrawidgets();
+    companyact->sacaWindow(this);
+    _depura("END aplinteligentesview::~aplinteligentesview", 0);
 }
 
 
@@ -63,16 +69,16 @@ void aplinteligentesview::inicializa(int idasiento) {
     numasiento = idasiento;
     inicializavariables();
 
-        QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes");
-        dir.setFilter(QDir::Files );
-        dir.setSorting(QDir::Size | QDir::Reversed);
+    QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes");
+    dir.setFilter(QDir::Files );
+    dir.setSorting(QDir::Size | QDir::Reversed);
 
-        QFileInfoList list = dir.entryInfoList();
-        for (int i = 0; i < list.size(); ++i) {
-            QFileInfo fileInfo = list.at(i);
-            mui_comboainteligentes->insertItem(fileInfo.fileName(),-1);
-            listasientos[i++]= fileInfo.filePath();
-        } // end for
+    QFileInfoList list = dir.entryInfoList();
+    for (int i = 0; i < list.size(); ++i) {
+        QFileInfo fileInfo = list.at(i);
+        mui_comboainteligentes->insertItem(fileInfo.fileName(),-1);
+        listasientos[i++]= fileInfo.filePath();
+    } // end for
     // Calculamos el número de dígitos que tiene una cuenta.
     companyact->begin();
     QString query1 = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
@@ -107,7 +113,7 @@ void aplinteligentesview::inicializavariables() {
     }// end if
     delete cur;
     indvariablespredefinidas=2;
-//    inicializavariablesapunte(0);
+    //    inicializavariablesapunte(0);
 }
 
 /*
@@ -160,7 +166,7 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
 
 
 
-void aplinteligentesview::return_numero() {
+void aplinteligentesview::eturn_numero() {
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
     fprintf (stderr,"Se ha pulsado return sobre el número: %s\n",numero->text().ascii());
@@ -168,7 +174,7 @@ void aplinteligentesview::return_numero() {
 }
 
 
-void aplinteligentesview::return_texto() {
+void aplinteligentesview::eturn_texto() {
     QLineEdit *texto;
     texto = (QLineEdit *) sender();
     fprintf (stderr,"Se ha pulsado return sobre el texto: %s\n",texto->text().ascii());
@@ -190,10 +196,10 @@ void aplinteligentesview::on_mui_comboainteligentes_activated(int ) {
 // Si la plantilla no existe el resultado es indefinido.
 
 void aplinteligentesview::muestraplantilla(QString plantilla) {
-   int i=0;
-   while ( mui_comboainteligentes->currentText() != plantilla && i < 100)
-   	mui_comboainteligentes->setCurrentItem(i++);
-   mostrarplantilla();
+    int i=0;
+    while ( mui_comboainteligentes->currentText() != plantilla && i < 100)
+        mui_comboainteligentes->setCurrentItem(i++);
+    mostrarplantilla();
 }
 
 
@@ -223,7 +229,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
     }// end if
     // Si estamos en modo exclusivo cerramos la ventana. Y así devolvemos el control a la aplicacion principal.
     if (modo == 1) {
-       close();
+        close();
     }// end if
 }
 
@@ -252,93 +258,93 @@ void aplinteligentesview::mostrarplantilla() {
 
 
 
-/*
-   PRIMERAS PRUEBAS CON DOM
-*/
-//  QFile f( "/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes/pago.xml" );
-  QFile f(listasientos[mui_comboainteligentes->currentIndex()]);
-  if ( !f.open( IO_ReadOnly ) )
-      return;
-  if ( !m_doc.setContent( &f ) ) {
-      f.close();
-      return;
-  }
-  f.close();
+    /*
+       PRIMERAS PRUEBAS CON DOM
+    */
+    //  QFile f( "/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes/pago.xml" );
+    QFile f(listasientos[mui_comboainteligentes->currentIndex()]);
+    if ( !f.open( IO_ReadOnly ) )
+        return;
+    if ( !m_doc.setContent( &f ) ) {
+        f.close();
+        return;
+    }
+    f.close();
 
-   /// Recogemos los valores de cuenta
-   QDomNodeList litems = m_doc.elementsByTagName("codcuenta");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_CTA);
-	} // end if
-   } // end for
-
-
-
-   /// Recogemos los valores de contrapartida
-   litems = m_doc.elementsByTagName("contrapartida");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_CTA);
-	} // end if
-   } // end for
+    /// Recogemos los valores de cuenta
+    QDomNodeList litems = m_doc.elementsByTagName("codcuenta");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_CTA);
+        } // end if
+    } // end for
 
 
-   /// Recogemos los valores de fecha
-   litems = m_doc.elementsByTagName("fecha");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_FECHA);
-	} // end if
-   } // end for
 
-   /// Recogemos los valores de debe
-   litems = m_doc.elementsByTagName("debe");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_NUMERO);
-	} // end if
-   } // end for
+    /// Recogemos los valores de contrapartida
+    litems = m_doc.elementsByTagName("contrapartida");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_CTA);
+        } // end if
+    } // end for
 
 
-   /// Recogemos los valores de haber
-   litems = m_doc.elementsByTagName("haber");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_NUMERO);
-	} // end if
-   } // end for
+    /// Recogemos los valores de fecha
+    litems = m_doc.elementsByTagName("fecha");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_FECHA);
+        } // end if
+    } // end for
 
-   /// Recogemos los valores de conceptocontable
-   litems = m_doc.elementsByTagName("conceptocontable");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_TEXTO);
-	} // end if
-   } // end for
+    /// Recogemos los valores de debe
+    litems = m_doc.elementsByTagName("debe");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_NUMERO);
+        } // end if
+    } // end for
 
 
-   /// Recogemos los valores de descripcion
-   litems = m_doc.elementsByTagName("descripcion");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-	QDomElement e1 = item.toElement(); // try to convert the node to an element.
-	if( !e1.isNull() ) { // the node was really an element.
- 	       recogevariables(e1.text(),TIPO_TEXTO);
-	} // end if
-   } // end for
+    /// Recogemos los valores de haber
+    litems = m_doc.elementsByTagName("haber");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_NUMERO);
+        } // end if
+    } // end for
+
+    /// Recogemos los valores de conceptocontable
+    litems = m_doc.elementsByTagName("conceptocontable");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_TEXTO);
+        } // end if
+    } // end for
+
+
+    /// Recogemos los valores de descripcion
+    litems = m_doc.elementsByTagName("descripcion");
+    for (int i = 0; i < litems.count(); i++) {
+        QDomNode item = litems.item(i);
+        QDomElement e1 = item.toElement(); // try to convert the node to an element.
+        if( !e1.isNull() ) { // the node was really an element.
+            recogevariables(e1.text(),TIPO_TEXTO);
+        } // end if
+    } // end for
 
 
 
@@ -363,7 +369,7 @@ void aplinteligentesview::mostrarplantilla() {
         labelfecha[i]->setText(variablesfecha[i][2]);
         labelfecha[i]->show();
 
-	varfecha[i] = new BusquedaFecha(groupBox1);
+        varfecha[i] = new BusquedaFecha(groupBox1);
         varfecha[i]->setGeometry( QRect( 150, inc+32*(j++), 150, 25 ) );
 
         connect( varfecha[i], SIGNAL( returnPressed() ), this, SLOT( return_fecha() ) );
@@ -402,27 +408,27 @@ void aplinteligentesview::mostrarplantilla() {
 // De esta forma podemos establecer valores por defecto de determinados asientos de obligada
 // existencia. Como los de Amortizaciones.
 void aplinteligentesview::setvalores(QString var, QString val) {
-   int i;    
+    int i;
     for (i=0;i<indvariablescta;i++) {
         if (variablescta[i][0] == var) {
-           varcta[i]->setText(val);
+            varcta[i]->setText(val);
         }// end if
     }// end for
     for (i=0;i<indvariablesfecha;i++) {
         if (variablesfecha[i][0] == var) {
-           varfecha[i]->setText(val);
+            varfecha[i]->setText(val);
         }// end if
     }// end for
 
     for (i=0;i<indvariablesnumero;i++) {
         if (variablesnumero[i][0] == var) {
-           varnumero[i]->setText(val);
+            varnumero[i]->setText(val);
         }// end if
     }// end for
 
     for (i=0;i<indvariablestexto;i++) {
         if (variablestexto[i][0] == var) {
-           vartexto[i]->setText(val);
+            vartexto[i]->setText(val);
         }// end if
     }// end for
 }
@@ -454,6 +460,7 @@ void aplinteligentesview::recogevalores() {
  * de los datos introducidos                                  *
  **************************************************************/
 void aplinteligentesview::creaasiento() {
+    _depura("aplinteligentesview::creaasiento", 0);
     QString codcuenta;
     QString contrapartida;
     QString debe;
@@ -466,50 +473,59 @@ void aplinteligentesview::creaasiento() {
     QString query;
     cursor2 *cur1;
 
-    /// Calculamos a partir de que orden debemos empezar.
-    int orden=0;
-    query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento ="+QString::number(numasiento);
-    cur1 = companyact->cargacursor(query);
-    if (!cur1->eof()) {
-	orden = cur1->valor("ordmax").toInt() +1;
-    }// end if
-    delete cur1;
+    try {
 
-
-   QDomNodeList litems = m_doc.elementsByTagName("binteligente");
-   for (int i = 0; i < litems.count(); i++) {
-   	QDomNode item = litems.item(i);
-
-        codcuenta = aplicavariable(item.firstChildElement("codcuenta").text());
-        query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
-        cur1 = companyact->cargacursor(query,"buscacodigo");
+        /// Calculamos a partir de que orden debemos empezar.
+        int orden=0;
+        query = "SELECT max(orden) AS ordmax FROM borrador WHERE idasiento ="+QString::number(numasiento);
+        cur1 = companyact->cargacursor(query);
         if (!cur1->eof()) {
-            idcuenta = atoi(cur1->valor("idcuenta").ascii());
+            orden = cur1->valor("ordmax").toInt() +1;
         }// end if
         delete cur1;
-        contrapartida = aplicavariable(item.firstChildElement("contrapartida").text());
-        query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
-        cur1 = companyact->cargacursor(query,"buscacodigo");
-        if (!cur1->eof()) {
-            idcontrapartida = cur1->valor("idcuenta");
-        } else {
-            idcontrapartida = "NULL";
-        }// end if
-        delete cur1;
-        debe = aplicavariable(item.firstChildElement("debe").text());
-        haber = aplicavariable(item.firstChildElement("haber").text());
-        fecha = aplicavariable(item.firstChildElement("fecha").text());
-        conceptocontable = aplicavariable(item.firstChildElement("conceptocontable").text());
-        descripcion = aplicavariable(item.firstChildElement("descripcion").text());
-        query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii(), orden++);
-        companyact->begin();
-        companyact->ejecuta(query);
-        companyact->commit();
-    }// end for
+
+
+        QDomNodeList litems = m_doc.elementsByTagName("binteligente");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+
+            codcuenta = aplicavariable(item.firstChildElement("codcuenta").text());
+            query.sprintf("SELECT * FROM cuenta where codigo='%s'",codcuenta.ascii());
+            cur1 = companyact->cargacursor(query,"buscacodigo");
+            if (!cur1->eof()) {
+                idcuenta = atoi(cur1->valor("idcuenta").ascii());
+            }// end if
+            delete cur1;
+            contrapartida = aplicavariable(item.firstChildElement("contrapartida").text());
+            query.sprintf("SELECT * FROM cuenta where codigo='%s'",contrapartida.ascii());
+            cur1 = companyact->cargacursor(query,"buscacodigo");
+            if (!cur1->eof()) {
+                idcontrapartida = cur1->valor("idcuenta");
+            } else {
+                idcontrapartida = "NULL";
+            }// end if
+            delete cur1;
+            debe = aplicavariable(item.firstChildElement("debe").text());
+            haber = aplicavariable(item.firstChildElement("haber").text());
+            fecha = aplicavariable(item.firstChildElement("fecha").text());
+            conceptocontable = aplicavariable(item.firstChildElement("conceptocontable").text());
+            descripcion = aplicavariable(item.firstChildElement("descripcion").text());
+            query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)",numasiento,idcuenta,idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii(), orden++);
+            companyact->begin();
+            companyact->ejecuta(query);
+            companyact->commit();
+        }// end for
+
+
+    } catch(...) {
+        mensajeInfo(tr("Error al crear el asiento"));
+        return;
+    } // end try
+    _depura("END aplinteligentesview::creaasiento", 0);
 }
 
 
-// Esta funcion busca variables en una cadena de texto y la coloca en los arrays de variables que forman el asiento 
+// Esta funcion busca variables en una cadena de texto y la coloca en los arrays de variables que forman el asiento
 // inteligente.
 void aplinteligentesview::recogevariables(QString texto, int tipo) {
     int posinicial,posfinal, posaux, posaux1;

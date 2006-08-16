@@ -189,10 +189,12 @@ int empresa::muestracuentas() 	{
   * comboboxes de todo el resto de pantallas para que se actualizen
   */
 int empresa::ccostes() {
-    ccosteview *ccoste = new ccosteview(this, 0, "ccostes", true);
-    ccoste->exec();
-    delete ccoste;
+    _depura("empresa::ccostes", 0);
+    ccosteview *ccoste = new ccosteview(this, 0);
+    m_pWorkspace->addWindow(ccoste);
+    ccoste->show();
     balance->cargacostes();
+    _depura("END empresa::ccostes", 0);
     return 0;
 }
 

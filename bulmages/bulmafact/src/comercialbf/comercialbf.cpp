@@ -13,15 +13,12 @@
 
 
 int entryPoint(bulmafact *bges) {
-    _depura("Punto de Entrada del plugin ComercialBF\n",0);
+    _depura("Punto de Entrada del plugin ComercialBF", 0);
     mypluginbf *plug= new mypluginbf( );
     plug->inicializa(bges);
+    _depura("END Punto de Entrada del plugin ComercialBF", 0);
     return 0;
 }
-
-
-
-
 
 int ClienteView_ClienteView_Post(ClienteView *cli) {
     _depura("ClienteView_ClienteView_Post",0);

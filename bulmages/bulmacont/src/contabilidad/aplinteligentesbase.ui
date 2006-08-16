@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>AplInteligentesBase</class>
- <widget class="QDialog" name="AplInteligentesBase" >
+ <widget class="QWidget" name="AplInteligentesBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -14,6 +14,9 @@
   </property>
   <property name="windowTitle" >
    <string>Aplicar Asiento Inteligente</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/wizard.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -137,7 +140,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="fechaasiento" >
+      <widget class="BusquedaFecha" name="fechaasiento" >
        <property name="maximumSize" >
         <size>
          <width>150</width>
@@ -176,7 +179,33 @@
    <container>1</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
- <resources/>
- <connections/>
+ <resources>
+  <include location="../../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>mui_cancelar</sender>
+   <signal>clicked()</signal>
+   <receiver>AplInteligentesBase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>571</x>
+     <y>458</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>596</x>
+     <y>460</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

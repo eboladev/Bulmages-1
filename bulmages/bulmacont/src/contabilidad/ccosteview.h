@@ -1,8 +1,8 @@
 /***************************************************************************
                           ccosteview.h  -  description
                              -------------------
-    begin                : sáb mar 22 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : sï¿½ mar 22 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -19,39 +19,37 @@
 #define CCOSTEVIEW_H
 
 #include <qwidget.h>
-#include <ccostedlg.h>
+#include "ui_ccostebase.h"
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <q3textedit.h>
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borras Riera */
 class empresa;
 
-class ccosteview : public ccostedlg, dialogChanges  {
+class ccosteview : public QWidget, public Ui_ccostedlg, public dialogChanges  {
   Q_OBJECT
 public:
   postgresiface2 *conexionbase;
   int ccostes[100];
   int idc_coste;    // Indica cual es el centro de coste que se esta visualizando
-                    // Si su valor es 0 entonces es que no se está visualizando ningun centro de coste.
+                    // Si su valor es 0 entonces es que no se estï¿½visualizando ningun centro de coste.
   empresa *empresaactual;
-  
-  int col_idc_coste, col_desc_coste, col_nom_coste; // Los indices de las columnas de los items.
 public:
-  ccosteview(empresa *, QWidget *parent=0, const char *name=0, bool modal=true);
+  ccosteview(empresa *, QWidget *parent=0);
   ~ccosteview();
   void pintar();
   void mostrarplantilla();
   
 public slots:
 //  virtual void cambiacombo(int);
-  virtual void boton_guardar();
-  virtual void boton_nuevo();
-  virtual void boton_borrar();
-  virtual void seleccionado(Q3ListViewItem *);
-  virtual void close();
+  virtual void on_mui_guardar_clicked();
+  virtual void on_mui_crear_clicked();
+  virtual void on_mui_borrar_clicked();
+  virtual void on_mui_list_itemClicked(QTreeWidgetItem *, int);
+  virtual void closeEvent(QCloseEvent *);
 };
 
 #endif

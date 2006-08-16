@@ -1,8 +1,8 @@
 /***************************************************************************
                           ccosteview.cpp  -  description
                              -------------------
-    begin                : sáb mar 22 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : sï¿½ mar 22 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -15,47 +15,69 @@
  ***************************************************************************/
 /**************************************************************************
  * Esta clase se encarga de presentar los centros de coste, la ventana, y *
- * de controlar la inserción de nuevos centros de coste, borrarlos, etc   *
+ * de controlar la inserciï¿½ de nuevos centros de coste, borrarlos, etc   *
  **************************************************************************/
-#include <q3listview.h>
 #include "ccosteview.h"
 #include "empresa.h"
 #include "selectccosteview.h"
 
+
+#define COL_NOM_COSTE 0
+#define COL_DESC_COSTE 1
+#define COL_IDC_COSTE 2
+
 // El inicializador de la clase.
-ccosteview::ccosteview(empresa *emp, QWidget *parent, const char *name, bool modal) : ccostedlg(parent,name, modal) , dialogChanges(this) {
-    fprintf(stderr,"inicializador de ccosteview\n");
+ccosteview::ccosteview(empresa *emp, QWidget *parent) : QWidget (parent, Qt::WDestructiveClose) , dialogChanges(this) {
+    setupUi(this);
+    _depura("ccosteview::ccosteview", 0);
     empresaactual = emp;
     conexionbase=empresaactual->bdempresa();
     idc_coste=0;
-    col_nom_coste = listcoste->addColumn("nom_coste",-1);
-    col_desc_coste = listcoste->addColumn("desc_coste",-1);
-    col_idc_coste=listcoste->addColumn("idc_coste",0);
-    dialogChanges_cargaInicial();     
-    pintar();
-}// end ccosteview
 
-ccosteview::~ccosteview() {}// end ~ccosteview
+    mui_list->setColumnCount(3);
+    QStringList headers;
+    headers << tr("nom_coste") << tr("desc_coste") << tr("idc_coste") ;
+    mui_list->setHeaderLabels(headers);
+
+    mui_list->setColumnHidden(COL_IDC_COSTE, TRUE);
+
+    dialogChanges_cargaInicial();
+    empresaactual->meteWindow(windowTitle(), this);
+    pintar();
+    _depura("END ccosteview::ccosteview", 0);
+}
+
+ccosteview::~ccosteview() {
+    _depura("ccosteview::~ccosteview", 0);
+    empresaactual->sacaWindow(this);
+    _depura("END ccosteview::~ccosteview", 0);
+}
 
 
 void ccosteview::pintar() {
-    Q3ListViewItem * it;
-    QMap <int,Q3ListViewItem *>Lista;
+    QTreeWidgetItem * it;
+    QMap <int, QTreeWidgetItem*> Lista;
     int padre;
     int idc_coste1=0;
     cursor2 *cursoraux1, *cursoraux2;
 
-    listcoste->clear();
+    /// Vaciamos el arbol.
+    while (mui_list->topLevelItemCount() > 0) {
+        it = mui_list->takeTopLevelItem(0);
+        delete it;
+    } // end while
+
+
     cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
         idc_coste1 = atoi( cursoraux1->valor("idc_coste").ascii());
-        it =new Q3ListViewItem(listcoste);
+        it =new QTreeWidgetItem(mui_list);
         Lista[idc_coste1]=it;
-        it->setText(col_idc_coste, cursoraux1->valor("idc_coste"));
-        it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
-        it->setText(col_nom_coste, cursoraux1->valor("nombre"));
-        it->setOpen(true);
+        it->setText(COL_IDC_COSTE, cursoraux1->valor("idc_coste"));
+        it->setText(COL_DESC_COSTE,cursoraux1->valor("descripcion"));
+        it->setText(COL_NOM_COSTE, cursoraux1->valor("nombre"));
+        mui_list->expandItem(it);
         cursoraux1->siguienteregistro ();
     }// end while
     delete cursoraux1;
@@ -65,12 +87,12 @@ void ccosteview::pintar() {
         padre = atoi(cursoraux2->valor("padre").ascii());
         idc_coste1 = atoi(cursoraux2->valor("idc_coste").ascii());
         fprintf(stderr,"Cuentas de subnivel:%d",padre);
-        it = new Q3ListViewItem(Lista[padre]);
+        it = new QTreeWidgetItem(Lista[padre]);
         Lista[idc_coste1]=it;
-        it->setText(col_idc_coste,cursoraux2->valor("idc_coste"));
-        it->setText(col_desc_coste,cursoraux1->valor("descripcion"));
-        it->setText(col_nom_coste,cursoraux1->valor("nombre"));
-        it->setOpen(true);
+        it->setText(COL_IDC_COSTE,cursoraux2->valor("idc_coste"));
+        it->setText(COL_DESC_COSTE,cursoraux1->valor("descripcion"));
+        it->setText(COL_NOM_COSTE,cursoraux1->valor("nombre"));
+        mui_list->expandItem(it);
         cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
@@ -86,33 +108,22 @@ void ccosteview::pintar() {
     scoste->cargacostes();
 }// end pintar
 
-/*****************************************************
-  Esta funcion sirve para hacer el cambio sobre un
-  centro de coste .
-  ****************************************************/
-  /*
-void ccosteview::cambiacombo(int numcombo) {
-    idc_coste = ccostes[numcombo];
-    mostrarplantilla();
-}// end cambiacombo
-*/
 
-void ccosteview::seleccionado(Q3ListViewItem *it) {
-    int previdccoste = it->text(col_idc_coste).toInt();
+void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
+    int previdccoste = it->text(COL_IDC_COSTE).toInt();
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, tr("Guardar Centro de Coste"),
-		tr("Desea guardar los cambios."),
-		tr("Guardar"), tr("Cancelar"),0 , 0, 1) == 0)
-		boton_guardar();
-		fprintf(stderr,"Se ha guardado\n");	
-    }// end if 
+        if ( QMessageBox::warning( this, tr("Guardar Centro de Coste"),
+                                   tr("Desea guardar los cambios."),
+                                   tr("Guardar"), tr("Cancelar"),0 , 0, 1) == 0)
+            on_mui_guardar_clicked();
+    }// end if
     idc_coste = previdccoste;
     mostrarplantilla();
 }// end seleccionado
 
 
 void ccosteview::mostrarplantilla() {
-    fprintf(stderr,"mostramos la plantilla");
+    _depura("ccosteview::mostrarplantilla", 0);
     QString query;
     query.sprintf("SELECT * from c_coste WHERE idc_coste=%d",idc_coste);
     cursor2 *cursorcoste = conexionbase->cargacursor(query);
@@ -121,12 +132,12 @@ void ccosteview::mostrarplantilla() {
         desccoste->setText(cursorcoste->valor("descripcion"));
     }// end if
     delete cursorcoste;
-    dialogChanges_cargaInicial(); 
-    botondefault->setOn(TRUE);
-}// end mostrarplantilla
+    dialogChanges_cargaInicial();
+//    botondefault->setOn(TRUE);
+}
 
 
-void ccosteview::boton_guardar() {
+void ccosteview::on_mui_guardar_clicked() {
     QString nom = nomcentro->text();
     QString desc = desccoste->text();
     QString query;
@@ -135,26 +146,26 @@ void ccosteview::boton_guardar() {
     conexionbase->ejecuta(query);
     conexionbase->commit();
     fprintf(stderr,"Se ha guardado el centro de coste\n");
-    dialogChanges_cargaInicial(); 
+    dialogChanges_cargaInicial();
     pintar();
 }// end boton_guardar
 
 
-void ccosteview::boton_nuevo() {
+void ccosteview::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Centro de Coste",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		boton_guardar();	
+        if ( QMessageBox::warning( this, "Guardar Centro de Coste",
+                                   "Desea guardar los cambios.",
+                                   QMessageBox::Ok ,
+                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+            on_mui_guardar_clicked();
     }// end if
 
     QString query;
-    Q3ListViewItem *it;
-    it=listcoste->selectedItem();
+    QTreeWidgetItem *it;
+    it=mui_list->currentItem();
     if (it) {
-        idc_coste=atoi(it->text(col_idc_coste).ascii());
+        idc_coste=atoi(it->text(COL_IDC_COSTE).ascii());
         query.sprintf("INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo Centro de Coste', 'Escriba su descripcion')", idc_coste);
         conexionbase->begin();
         conexionbase->ejecuta(query);
@@ -172,34 +183,35 @@ void ccosteview::boton_nuevo() {
 }// end boton_nuevo
 
 
-void ccosteview::boton_borrar() {
+void ccosteview::on_mui_borrar_clicked() {
     switch( QMessageBox::warning( this, tr("Borrar Centro de Coste"),
                                   tr("Se va a borrar el Centro de Coste,\n"
-                                  "Esta operación puede ocasionar pérdida de datos\n"),
+                                     "Esta operaciï¿½ puede ocasionar pï¿½dida de datos\n"),
                                   tr("Borrar") , tr("Cancelar"), 0 , 0 , 1 )) {
     case 0: // Retry clicked or Enter pressed
-				  
-	QString query;
-	query.sprintf("DELETE FROM c_coste WHERE idc_coste=%d", idc_coste);
-	conexionbase->begin();
-	conexionbase->ejecuta(query);
-	conexionbase->commit();
-	idc_coste=0;
-	pintar();
+
+        QString query;
+        query.sprintf("DELETE FROM c_coste WHERE idc_coste=%d", idc_coste);
+        conexionbase->begin();
+        conexionbase->ejecuta(query);
+        conexionbase->commit();
+        idc_coste=0;
+        pintar();
     }// end switch
 }// end boton_borrar
 
 
-/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
-void ccosteview::close() {
-    /// Si se ha modificado el contenido advertimos y guardamos.
-    if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, tr("Guardar Centro de Coste"),
-		tr("Desea guardar los cambios."),
-		tr("Guardar") , tr("Cancelar"), 0, 0,1 ) == 0)
-		boton_guardar();	
-    }// end if
-    QDialog::close();
-}// end close
 
-
+void ccosteview::closeEvent(QCloseEvent *e) {
+    _depura("ccosteview::closeEvent", 0);
+    if (dialogChanges_hayCambios())	{
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar Centro de Coste"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        if (val == 0)
+            on_mui_guardar_clicked();
+        if (val == 2)
+            e->ignore();
+    } // end if
+}

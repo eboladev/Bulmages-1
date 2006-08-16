@@ -8,14 +8,19 @@ mypluginbf::mypluginbf() : QObject() {}
 mypluginbf::~mypluginbf() {}
 
 void mypluginbf::elslot() {
+    _depura("mypluginbf::elslot", 0);
     RutaComercialList *list  = new RutaComercialList(m_companyact, NULL);
     m_companyact->m_pWorkspace->addWindow(list);
     list->show();
+    _depura("END mypluginbf::elslot", 0);
 }
 
 void mypluginbf::elslot1() {
+    _depura("mypluginbf::elslot1", 0);
     ListZonaComercialView *list  = new ListZonaComercialView(m_companyact,NULL, NULL);
-    list->exec();
+    m_companyact->m_pWorkspace->addWindow(list);
+    list->show();
+    _depura("END mypluginbf::elslot1", 0);
 }
 
 

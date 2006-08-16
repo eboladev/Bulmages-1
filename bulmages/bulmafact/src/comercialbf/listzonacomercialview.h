@@ -60,7 +60,7 @@ public slots:
 #include "ui_listzonacomercialbase.h"
 
 
-class ListZonaComercialView : public QDialog, public Ui_ListZonaComercialBase {
+class ListZonaComercialView : public QWidget, public Ui_ListZonaComercialBase {
     Q_OBJECT
 
 public:

@@ -53,7 +53,7 @@ class empresa;
 	En el segundo caso se genera un asiento nuevo por cada introducci� de plantilla.
   */
 
-class aplinteligentesview : public QDialog,  public Ui_AplInteligentesBase  {
+class aplinteligentesview : public QWidget,  public Ui_AplInteligentesBase  {
    Q_OBJECT
 private:
 /// LA empresa del programa.
@@ -97,7 +97,7 @@ private:
   int idainteligente;
   unsigned int numdigitos;
 public: 
-  aplinteligentesview(empresa *, QWidget *parent=0, const char *name=0);
+  aplinteligentesview(empresa *, QWidget *parent=0);
   ~aplinteligentesview();
   void inicializa(int);
   void mostrarplantilla();
@@ -121,8 +121,8 @@ public:
   
 public slots:
   virtual void on_mui_aceptar_clicked();
-  virtual void return_numero();
-  virtual void return_texto();
+  virtual void eturn_numero();
+  virtual void eturn_texto();
   virtual void on_mui_comboainteligentes_activated(int index);
 };
 

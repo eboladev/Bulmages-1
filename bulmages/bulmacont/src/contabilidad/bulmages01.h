@@ -40,7 +40,6 @@
 #include <qpixmap.h>
 
 
-
 #include "ui_bulmacontbase.h"
 // include files de la aplicacion
 #include "empresa.h"
@@ -196,6 +195,14 @@ public slots:
         m_empresaactual->canaldefecto();
     };
 
+    virtual void on_actionCentros_de_Coste_triggered() {
+	m_empresaactual->ccostes();
+    };
+
+    virtual void on_actionCanales_triggered() {
+	m_empresaactual->canales();
+    };
+
     virtual void on_actionCentro_de_Coste_por_Defecto_triggered() {
         m_empresaactual->centrocostedefecto();
     };
@@ -257,7 +264,6 @@ public slots:
             showFullScreen();
         }// end if
     };
-
 
    virtual void on_actionSiguiente_triggered() {    m_empresaactual->boton_siguiente();};
    virtual void on_actionAnterior_triggered() {    m_empresaactual->boton_anterior();};

@@ -2,7 +2,7 @@
                           canalview.h  -  description
                              -------------------
     begin                : lun mar 24 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -19,14 +19,14 @@
 
 #include <canaldlg.h>
 #include <qwidget.h>
-#include <ccostedlg.h>
+#include "ui_ccostebase.h"
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <q3textedit.h>
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borrï¿½ Riera */
 
 class empresa;
 
@@ -36,7 +36,7 @@ public:
   postgresiface2 *conexionbase;
   int canales[100];
   int idcanal;    // Indica cual es el canal que se esta visualizando
-                    // Si su valor es 0 entonces es que no se está visualizando ningún centro de coste.
+                    // Si su valor es 0 entonces es que no se estï¿½visualizando ningn centro de coste.
   empresa *empresaactual;
 public: 
 	canalview(empresa *, QWidget *parent=0, const char *name=0,  bool modal=true);
