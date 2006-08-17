@@ -51,7 +51,8 @@ FORMS += bulmacontbase.ui \
 	 busquedacuentabase.ui \
 	 aplinteligentesbase.ui \
 	 canualesbase.ui \
-	 ccostebase.ui
+	 ccostebase.ui \
+	 canalbase.ui
 
 
 FORMS3 += uiselector.ui \
@@ -68,7 +69,7 @@ FORMS3 += uiselector.ui \
          balanceprintdlg.ui \
          balancesprintdlg.ui \
 #         balancesdlg.ui \
-         canaldlg.ui \
+#         canaldlg.ui \
 #         ccostedlg.ui \
          propiedemp.ui \
          actualizacionesdlg.ui \
@@ -236,7 +237,8 @@ HEADERS += splashscreen.h \
 	   extractosubform.h \
 	   asientolistsubform.h \
 	   balancesubform.h \
-	   busquedaccoste.h
+	   busquedaccoste.h \
+	   busquedacanal.h 
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -294,7 +296,8 @@ SOURCES += main.cpp \
 	   extractosubform.cpp \
 	   asientolistsubform.cpp \
 	   balancesubform.cpp \
-	   busquedaccoste.cpp
+	   busquedaccoste.cpp \
+	   busquedacanal.cpp
 	 
 
 unix{

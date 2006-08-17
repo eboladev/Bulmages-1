@@ -68,7 +68,10 @@ int main(int argc, char *argv[]) {
     /// Inicializamos el objeto global para uso de plugins
     g_plugins = new Plugins();
 
-    QTextCodec::setCodecForCStrings( QTextCodec::codecForName("latin1"));
+    /// Definimos la codificacion a Unicode.
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+
     QApplication * mainApp = new QApplication (argc, argv);
     theApp = mainApp;
     mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));

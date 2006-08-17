@@ -205,9 +205,11 @@ int empresa::ccostes() {
   * actualizen.
   */
 int empresa::canales() {
-    canalview *canal = new canalview(this, 0, "canales", true);
-    canal->exec();
-    delete canal;
+    _depura("empresa::canales", 0);
+    canalview *canal = new canalview(this, 0);
+    m_pWorkspace->addWindow(canal);
+    canal->show();
+    _depura("END empresa::canales", 0);
     return 0;
 }
 
@@ -250,8 +252,8 @@ int empresa::nuevaempresa() {
 
 /** \brief Crea la ventana de edicion de cuentas y devuelve un puntero a esta*/
 cuentaview* empresa::newcuentaview() {
-	cuentaview * nuevae =new cuentaview(this, 0, "nuevacuenta", true);
-	return nuevae;
+    cuentaview * nuevae =new cuentaview(this, 0, "nuevacuenta", true);
+    return nuevae;
 }
 
 int empresa::nuevacuenta() {

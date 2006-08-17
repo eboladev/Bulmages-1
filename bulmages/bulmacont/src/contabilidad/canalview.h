@@ -17,9 +17,8 @@
 #ifndef CANALVIEW_H
 #define CANALVIEW_H
 
-#include <canaldlg.h>
+#include "ui_canalbase.h"
 #include <qwidget.h>
-#include "ui_ccostebase.h"
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <q3textedit.h>
@@ -30,7 +29,7 @@
 
 class empresa;
 
-class canalview : public canaldlg , dialogChanges {
+class canalview : public QWidget, public Ui_canaldlg, public dialogChanges {
    Q_OBJECT
 public:
   postgresiface2 *conexionbase;
@@ -39,17 +38,17 @@ public:
                     // Si su valor es 0 entonces es que no se est�visualizando ningn centro de coste.
   empresa *empresaactual;
 public: 
-	canalview(empresa *, QWidget *parent=0, const char *name=0,  bool modal=true);
+	canalview(empresa *, QWidget *parent=0);
 	~canalview();
   void mostrarplantilla();
   void pintar();
 
 public slots:
-  virtual void cambiacombo(int);
-  virtual void boton_guardar();
-  virtual void boton_nuevo();
-  virtual void boton_borrar();  
-  virtual void close();
+  virtual void on_mui_idcanal_valueChanged(QString);
+  virtual void on_mui_guardar_clicked();
+  virtual void on_mui_crear_clicked();
+  virtual void on_mui_borrar_clicked();  
+  virtual void closeEvent(QCloseEvent *);
 };
 
 #endif
