@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>691</height>
+    <width>435</width>
+    <height>622</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -202,19 +202,16 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3GroupBox" name="groupBox1" >
+    <widget class="QGroupBox" name="groupBox1" >
      <property name="title" >
       <string>Contenido de la familia:</string>
      </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>0</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
-       <number>2</number>
+       <number>6</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -225,7 +222,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="labelalgo" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Codigo:</string>
           </property>
@@ -237,7 +234,7 @@
        </layout>
       </item>
       <item>
-       <widget class="QLabel" name="textLabel1_2" >
+       <widget class="QLabel" name="label" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -252,16 +249,7 @@
        </widget>
       </item>
       <item>
-       <widget class="Q3TextEdit" name="m_descTipo" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>7</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QTextEdit" name="m_descTipo" />
       </item>
      </layout>
     </widget>
@@ -307,22 +295,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
@@ -340,22 +312,6 @@
     <hint type="destinationlabel" >
      <x>77</x>
      <y>725</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_detalles</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox1</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>18</x>
-     <y>390</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>56</x>
-     <y>391</y>
     </hint>
    </hints>
   </connection>

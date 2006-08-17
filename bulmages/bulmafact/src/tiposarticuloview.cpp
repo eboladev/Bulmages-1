@@ -156,7 +156,7 @@ void TipoArticuloList::mostrarplantilla() {
     cursor2 *cursortipo = companyact->cargacursor(query);
     if (!cursortipo->eof()) {
         m_codTipo->setText(cursortipo->valor("codtipo_articulo"));
-        m_descTipo->setText(cursortipo->valor("desctipo_articulo"));
+        m_descTipo->setPlainText(cursortipo->valor("desctipo_articulo"));
     } // end if
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
@@ -193,7 +193,7 @@ bool TipoArticuloList::trataModificado() {
 void TipoArticuloList::on_mui_guardar_clicked() {
     QString query = "UPDATE tipo_articulo SET codtipo_articulo='" +
                     companyact->sanearCadena(m_codTipo->text()) + "', desctipo_articulo= '" +
-                    companyact->sanearCadena(m_descTipo->text()) + "' WHERE idtipo_articulo=" + m_idtipo;
+                    companyact->sanearCadena(m_descTipo->toPlainText()) + "' WHERE idtipo_articulo=" + m_idtipo;
     companyact->begin();
     int error = companyact->ejecuta(query);
     if (error) {

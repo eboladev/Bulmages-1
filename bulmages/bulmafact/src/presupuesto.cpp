@@ -262,7 +262,7 @@ void presupuesto::imprimirPresupuesto() {
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("cantlpresupuesto")).toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvplpresupuesto")).toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuentolpresupuesto")).toAscii().constData()) + " %</td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuentolpresupuesto")) / 100).toQString().toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuentolpresupuesto")) / 100).toQString().toAscii().data()) + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 

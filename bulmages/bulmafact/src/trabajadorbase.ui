@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>683</width>
-    <height>587</height>
+    <width>524</width>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -154,7 +154,7 @@
         <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
        </property>
        <widget class="QWidget" name="dockWidgetContents" >
-        <layout class="QVBoxLayout" >
+        <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>9</number>
          </property>
@@ -184,47 +184,32 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="Q3GroupBox" name="groupBox1" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QGroupBox" name="groupBox1" >
          <property name="title" >
           <string>Informacion del trabajador:</string>
          </property>
-         <property name="orientation" >
-          <enum>Qt::Vertical</enum>
-         </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
-           <number>5</number>
+           <number>9</number>
           </property>
           <property name="spacing" >
-           <number>2</number>
+           <number>6</number>
           </property>
           <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
+           <spacer>
+            <property name="orientation" >
+             <enum>Qt::Vertical</enum>
             </property>
-            <property name="spacing" >
-             <number>2</number>
+            <property name="sizeType" >
+             <enum>QSizePolicy::Expanding</enum>
             </property>
-            <item>
-             <widget class="QLabel" name="textLabel1" >
-              <property name="text" >
-               <string>Nombre:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_nomtrabajador" />
-            </item>
-           </layout>
+            <property name="sizeHint" >
+             <size>
+              <width>20</width>
+              <height>31</height>
+             </size>
+            </property>
+           </spacer>
           </item>
           <item>
            <layout class="QHBoxLayout" >
@@ -235,127 +220,7 @@
              <number>2</number>
             </property>
             <item>
-             <widget class="QLabel" name="textLabel1_2_2_2" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>7</hsizetype>
-                <vsizetype>5</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Apellidos:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_apellidostrabajador" />
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="textLabel1_2_2_2_2" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>7</hsizetype>
-                <vsizetype>5</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Direccion:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_dirtrabajador" />
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="textLabel1_2_2" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>7</hsizetype>
-                <vsizetype>5</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Telefono:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_teltrabajador" >
-              <property name="enabled" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="textLabel1_2_2_3" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>7</hsizetype>
-                <vsizetype>5</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Telefono movil:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_moviltrabajador" >
-              <property name="enabled" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="textLabel1_2_2_3_2" >
+             <widget class="QLabel" name="" >
               <property name="sizePolicy" >
                <sizepolicy>
                 <hsizetype>7</hsizetype>
@@ -387,7 +252,7 @@
              <number>2</number>
             </property>
             <item>
-             <widget class="QLabel" name="textLabel1_2_2_3_3" >
+             <widget class="QLabel" name="" >
               <property name="sizePolicy" >
                <sizepolicy>
                 <hsizetype>7</hsizetype>
@@ -397,12 +262,12 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>E-mail:</string>
+               <string>Telefono:</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="m_emailtrabajador" >
+             <widget class="QLineEdit" name="m_teltrabajador" >
               <property name="enabled" >
                <bool>true</bool>
               </property>
@@ -427,11 +292,71 @@
             </property>
             <property name="sizeHint" >
              <size>
-              <width>20</width>
-              <height>31</height>
+              <width>41</width>
+              <height>20</height>
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>7</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Telefono movil:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_moviltrabajador" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>7</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Apellidos:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_apellidostrabajador" />
+            </item>
+           </layout>
           </item>
           <item>
            <layout class="QHBoxLayout" >
@@ -517,20 +442,84 @@
            </layout>
           </item>
           <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Vertical</enum>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
             </property>
-            <property name="sizeType" >
-             <enum>QSizePolicy::Expanding</enum>
+            <property name="spacing" >
+             <number>2</number>
             </property>
-            <property name="sizeHint" >
-             <size>
-              <width>41</width>
-              <height>20</height>
-             </size>
+            <item>
+             <widget class="QLabel" name="" >
+              <property name="text" >
+               <string>Nombre:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_nomtrabajador" />
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
             </property>
-           </spacer>
+            <property name="spacing" >
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>7</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>E-mail:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_emailtrabajador" >
+              <property name="enabled" >
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>2</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>7</hsizetype>
+                <vsizetype>5</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text" >
+               <string>Direccion:</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_dirtrabajador" />
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>
@@ -573,34 +562,8 @@
  </widget>
  <layoutdefault spacing="2" margin="2" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>TrabajadorBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>632</x>
-     <y>551</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>528</x>
-     <y>576</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

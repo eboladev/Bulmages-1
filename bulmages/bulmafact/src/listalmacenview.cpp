@@ -48,23 +48,23 @@ ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
     companyact = comp;
     mui_listado->setcompany(comp);
     mui_listado->cargar();
-    companyact->meteWindow( caption(), this);
+    companyact->meteWindow(windowTitle(), this);
     _depura("END ListAlmacenView::ListAlmacenView", 1);
 }
 
 void ListAlmacenView::on_mui_aceptar_clicked() {
-        try {
-            mui_listado->guardar();
-            close();
-        } catch (...) {
-            mensajeInfo("Error al guardar los almacenes");
-        } // end try
+    try {
+        mui_listado->guardar();
+        close();
+    } catch (...) {
+        mensajeInfo("Error al guardar los almacenes");
+    } // end try
 }
 
 ListAlmacenView::~ListAlmacenView() {
-	_depura("ListAlmacenView::~ListAlmacenView", 0);
-	companyact->sacaWindow(this);
-	_depura("END ListAlmacenView::~ListAlmacenView", 0);
+    _depura("ListAlmacenView::~ListAlmacenView", 0);
+    companyact->sacaWindow(this);
+    _depura("END ListAlmacenView::~ListAlmacenView", 0);
 }
 
 

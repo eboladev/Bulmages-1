@@ -64,40 +64,40 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
         } // end if
         cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
-	    rec->setDBvalue("ivalpresupuesto", cur1->valor("porcentasa_iva"));		
+            rec->setDBvalue("ivalpresupuesto", cur1->valor("porcentasa_iva"));
         } // end if
-	delete cur1;
-	delete cur;
+        delete cur1;
+        delete cur;
     } // end if
     _depura("END listlinpresupuestoview::editFinished", 0);
 }
 
 
 void listlinpresupuestoview::cargar(QString idpresupuesto) {
-        _depura("listlinpresupuestoview::cargar\n", 0);
-        mdb_idpresupuesto = idpresupuesto;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto=" + mdb_idpresupuesto);
-        SubForm3::cargar(cur);
-        delete cur;
+    _depura("listlinpresupuestoview::cargar\n", 0);
+    mdb_idpresupuesto = idpresupuesto;
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto=" + mdb_idpresupuesto);
+    SubForm3::cargar(cur);
+    delete cur;
 }
 
 
 Fixed listlinpresupuestoview::calculabase() {
-	Fixed base("0.0");
-        for (int i = 0; i < rowCount() - 1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("cantlpresupuesto", i));
-		base = base + totpar;
-        } // end for
-	return base;
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("cantlpresupuesto", i));
+        base = base + totpar;
+    } // end for
+    return base;
 }
 
 
 Fixed listlinpresupuestoview::calculaiva() {
-	Fixed base("0.0");
-        for (int i = 0; i < rowCount() - 1; i++) {
-		Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("ivalpresupuesto", i));
-		base = base + totpar;
-        } // end for
-	return base;
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("ivalpresupuesto", i));
+        base = base + totpar;
+    } // end for
+    return base;
 }
 

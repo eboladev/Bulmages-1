@@ -37,7 +37,7 @@ ListProvinciasView::ListProvinciasView(company *comp, QWidget *parent) : QWidget
     m_listado->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_listado->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     inicializa();
-    companyact->meteWindow(caption(), this);
+    companyact->meteWindow(windowTitle(), this);
     _depura("END_ListProvinciasView::ListProvinciasView", 0);
 }
 

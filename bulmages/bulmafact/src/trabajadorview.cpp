@@ -42,7 +42,7 @@ TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
     m_cursortrabajadores = NULL;
     m_item = NULL;
     pintar();
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END TrabajadorView::TrabajadorView", 0);
 }
 

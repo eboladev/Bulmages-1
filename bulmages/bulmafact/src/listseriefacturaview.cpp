@@ -47,7 +47,7 @@ ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
     companyact = comp;
     mui_listado->setcompany(comp);
     mui_listado->cargar();
-    companyact->meteWindow(caption(), this);
+    companyact->meteWindow(windowTitle(), this);
     _depura("END_ListSerieFacturaView::ListSerieFacturaView", 1);
 }
 

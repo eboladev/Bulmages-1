@@ -186,7 +186,7 @@ void familiasview::mostrarplantilla() {
     cursor2 *cursorfamilia = companyact->cargacursor(query);
     if (!cursorfamilia->eof()) {
         m_nomFamilia->setText(cursorfamilia->valor("nombrefamilia"));
-        m_descFamilia->setText(cursorfamilia->valor("descfamilia"));
+        m_descFamilia->setPlainText(cursorfamilia->valor("descfamilia"));
         m_codCompletoFamilia->setText(cursorfamilia->valor("codigocompletofamilia"));
         m_codFamilia->setText(cursorfamilia->valor("codigofamilia"));
     } // end if
@@ -231,7 +231,7 @@ void familiasview::on_mui_guardar_clicked() {
         } // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
                         companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
-                        companyact->sanearCadena(m_descFamilia->text()) + "' , codigofamilia = '" +
+                        companyact->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
                         companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
         int error = companyact->ejecuta(query);
         if (error)
