@@ -73,7 +73,7 @@ public:
         m_trabajador->setidtrabajador(id);
     };
     void pintacomentpedidocliente(QString id) {
-        m_comentpedidocliente->setText(id);
+        m_comentpedidocliente->setPlainText(id);
     };
     void pintarefpedidocliente(QString id) {
         m_refpedidocliente->setText(id);

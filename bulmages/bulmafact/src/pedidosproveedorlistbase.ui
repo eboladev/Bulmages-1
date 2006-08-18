@@ -11,8 +11,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>729</width>
-    <height>548</height>
+    <width>557</width>
+    <height>456</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -23,10 +23,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -47,23 +47,12 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="m_botonera" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="m_botonera" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
-       </property>
-       <property name="margin" >
-        <number>0</number>
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
@@ -248,14 +237,14 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>160</width>
+            <width>51</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="textLabel1" >
+         <widget class="QLabel" name="" >
           <property name="text" >
            <string>Buscar:</string>
           </property>
@@ -270,15 +259,12 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_busqueda" >
+    <widget class="QFrame" name="m_busqueda" >
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
-     </property>
-     <property name="margin" >
-      <number>0</number>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
@@ -326,10 +312,72 @@
          <number>0</number>
         </property>
         <property name="spacing" >
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="" >
+          <property name="text" >
+           <string>Fecha inicial:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaFecha" name="m_fechain" />
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>200</width>
+            <height>21</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="" >
+          <property name="text" >
+           <string>Fecha final:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaFecha" name="m_fechafin" />
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>101</width>
+            <height>21</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="textLabel1_2" >
+         <widget class="QLabel" name="" >
           <property name="text" >
            <string>Proveedor:</string>
           </property>
@@ -372,7 +420,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="textLabel1_2_2" >
+         <widget class="QLabel" name="" >
           <property name="text" >
            <string>Articulo:</string>
           </property>
@@ -393,68 +441,6 @@
            <size>
             <width>136</width>
             <height>31</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_4" >
-          <property name="text" >
-           <string>Fecha inicial:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>200</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="textLabel1_4_2" >
-          <property name="text" >
-           <string>Fecha final:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" name="m_fechafin" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>101</width>
-            <height>21</height>
            </size>
           </property>
          </spacer>
@@ -492,7 +478,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="textLabel1_3" >
+      <widget class="QLabel" name="" >
        <property name="text" >
         <string>Total:</string>
        </property>
@@ -527,13 +513,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>PedidosProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>pedidosproveedorlist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaArticulo</class>
    <extends></extends>
    <header>busquedaarticulo.h</header>
@@ -548,16 +527,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>PedidosProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>pedidosproveedorlist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -565,38 +544,5 @@
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>222</x>
-     <y>33</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>127</x>
-     <y>77</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_filtro</sender>
-   <signal>returnPressed()</signal>
-   <receiver>mui_actualizar</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>595</x>
-     <y>30</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>284</x>
-     <y>36</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

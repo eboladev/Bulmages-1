@@ -109,7 +109,7 @@ int PedidoProveedorView::cargar(QString id) {
 
 
 int PedidoProveedorView::guardar() {
-    setcomentpedidoproveedor(m_comentpedidoproveedor->text());
+    setcomentpedidoproveedor(m_comentpedidoproveedor->toPlainText());
     setnumpedidoproveedor(m_numpedidoproveedor->text());
     setidproveedor(m_proveedor->idproveedor());
     setfechapedidoproveedor(m_fechapedidoproveedor->text());

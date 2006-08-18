@@ -74,7 +74,7 @@ public:
         m_trabajador->setidtrabajador(id);
     };
     void pintacomentpedidoproveedor(QString id) {
-        m_comentpedidoproveedor->setText(id);
+        m_comentpedidoproveedor->setPlainText(id);
     };
     void pintarefpedidoproveedor(QString id) {
         m_refpedidoproveedor->setText(id);

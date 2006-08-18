@@ -11,8 +11,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
-    <height>510</height>
+    <width>500</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -47,23 +47,12 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="m_botonera" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="m_botonera" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
-       </property>
-       <property name="margin" >
-        <number>0</number>
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
@@ -264,7 +253,7 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_busqueda" >
+    <widget class="QFrame" name="m_busqueda" >
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -273,10 +262,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
-       <number>3</number>
+       <number>6</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -498,17 +487,17 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
+   <class>BusquedaArticulo</class>
    <extends></extends>
-   <header>busquedacliente.h</header>
+   <header>busquedaarticulo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
+   <class>BusquedaCliente</class>
    <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
+   <header>busquedacliente.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
@@ -525,49 +514,9 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends></extends>
-   <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>236</x>
-     <y>47</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>218</x>
-     <y>130</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_filtro</sender>
-   <signal>returnPressed()</signal>
-   <receiver>mui_actualizar</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>641</x>
-     <y>38</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>291</x>
-     <y>38</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

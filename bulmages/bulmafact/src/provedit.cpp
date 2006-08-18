@@ -114,7 +114,7 @@ int ProveedorView::cargar(QString idprov) {
         m_faxproveedor->setText(DBvalue("faxproveedor"));
         m_emailproveedor->setText(DBvalue("emailproveedor"));
         m_urlproveedor->setText(DBvalue("urlproveedor"));
-        m_comentproveedor->setText(DBvalue("comentproveedor" ));
+        m_comentproveedor->setPlainText(DBvalue("comentproveedor" ));
         m_provproveedor->setProvincia(DBvalue("provproveedor"));
         mui_codproveedor->setText(DBvalue("codproveedor"));
         dialogChanges_cargaInicial();
@@ -168,7 +168,7 @@ void ProveedorView::on_mui_crear_clicked() {
     m_faxproveedor->setText("");
     m_emailproveedor->setText("");
     m_urlproveedor->setText("");
-    m_comentproveedor->setText("");
+    m_comentproveedor->setPlainText("");
     mui_codproveedor->setText("");
     dialogChanges_cargaInicial();
 }
@@ -195,7 +195,7 @@ int ProveedorView::guardar() {
     setDBvalue("faxproveedor", m_faxproveedor->text());
     setDBvalue("emailproveedor", m_emailproveedor->text());
     setDBvalue("urlproveedor", m_urlproveedor->text());
-    setDBvalue("comentproveedor", m_comentproveedor->text());
+    setDBvalue("comentproveedor", m_comentproveedor->toPlainText());
     setDBvalue("provproveedor", m_provproveedor->currentText());
     setDBvalue("codproveedor", mui_codproveedor->text());
 

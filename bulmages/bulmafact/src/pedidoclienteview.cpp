@@ -204,7 +204,7 @@ int PedidoClienteView::cargar(QString id) {
 
 
 int PedidoClienteView::guardar() {
-    setcomentpedidocliente(m_comentpedidocliente->text());
+    setcomentpedidocliente(m_comentpedidocliente->toPlainText());
     setnumpedidocliente(m_numpedidocliente->text());
     setidcliente(m_cliente->idcliente());
     setfechapedidocliente(m_fechapedidocliente->text());

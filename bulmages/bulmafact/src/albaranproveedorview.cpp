@@ -18,28 +18,28 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QCloseEvent>
+#include <QComboBox>
+#include <QLabel>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <QLabel>
-#include <QWidget>
 #include <QObject>
-#include <QComboBox>
 #include <QToolButton>
-#include <QCloseEvent>
+#include <QWidget>
 
 #include "albaranproveedorview.h"
-#include "company.h"
 #include "articulolist.h"
+#include "company.h"
 #include "configuracion.h"
-#include "presupuestolist.h"
-#include "presupuestoview.h"
-#include "funcaux.h"
-#include "postgresiface2.h"
-#include "listlinalbaranproveedorview.h"
 #include "facturapview.h"
 #include "facturaview.h"
+#include "funcaux.h"
+#include "listlinalbaranproveedorview.h"
 #include "pagoview.h"
 #include "pedidoproveedorview.h"
+#include "postgresiface2.h"
+#include "presupuestolist.h"
+#include "presupuestoview.h"
 
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
@@ -169,7 +169,6 @@ void AlbaranProveedorView::generarFactura()  {
         linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
         linea1->setDBvalue("ivalfacturap", linea->DBvalue("ivalalbaranp"));
     } // end for
-
     bud->pintar();
     bud->show();
 }
@@ -196,14 +195,14 @@ int AlbaranProveedorView::cargar(QString id) {
     _depura("AlbaranProveedorView::cargar", 0);
     try {
         AlbaranProveedor::cargar(id);
-        if(DBvalue("idalbaranp") != "") {
-            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") +" " +DBvalue("idalbaranp"));
+        if (DBvalue("idalbaranp") != "") {
+            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") +" " + DBvalue("idalbaranp"));
             companyact->meteWindow(windowTitle(), this);
             dialogChanges_cargaInicial();
         } // end if
-    } catch(...) {
+    } catch (...) {
         return -1;
-    } // end catch
+    } // end try
     _depura("END AlbaranProveedorView::cargar", 0);
     return 0;
 }
@@ -225,9 +224,9 @@ int AlbaranProveedorView::guardar() {
         _depura("END AlbaranProveedorView::guardar", 0);
         return err;
     } catch (...) {
-        mensajeInfo( "Error inesperado al guardar");
+        mensajeInfo("Error inesperado al guardar");
         return -1;
-    } // end catch
+    } // end try
 }
 
 
@@ -252,16 +251,17 @@ void AlbaranProveedorView::on_mui_pagar_clicked() {
 
 
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
-	_depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
-	QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor='"+DBvalue("refalbaranp")+"'";
-	cursor2 *cur = companyact->cargacursor(query);
-	while (!cur->eof()) {
-		PedidoProveedorView *pedpro = companyact->newPedidoProveedorView();
-		pedpro->cargar(cur->valor("idpedidoproveedor"));
-		companyact->m_pWorkspace->addWindow( pedpro);
-		pedpro->show();
-		cur->siguienteregistro();
-	} // end while
-	delete cur;	
-	_depura("END AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
+    _depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
+    QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue("refalbaranp") + "'";
+    cursor2 *cur = companyact->cargacursor(query);
+    while (!cur->eof()) {
+        PedidoProveedorView *pedpro = companyact->newPedidoProveedorView();
+        pedpro->cargar(cur->valor("idpedidoproveedor"));
+        companyact->m_pWorkspace->addWindow( pedpro);
+        pedpro->show();
+        cur->siguienteregistro();
+    } // end while
+    delete cur;
+    _depura("END AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
 }
+

@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>734</width>
-    <height>590</height>
+    <width>746</width>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -44,23 +44,12 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="frame3" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="frame" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
-       </property>
-       <property name="margin" >
-        <number>0</number>
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
@@ -131,28 +120,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
-          <property name="toolTip" >
-           <string>Imprimir proveedor</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir proveedor</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="enabled" >
            <bool>true</bool>
@@ -168,6 +135,28 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_imprimir" >
+          <property name="toolTip" >
+           <string>Imprimir proveedor</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir proveedor</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -197,16 +186,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item>
-    <widget class="QLabel" name="pixmapLabel1" >
-     <property name="pixmap" >
-      <pixmap/>
-     </property>
-     <property name="scaledContents" >
-      <bool>true</bool>
-     </property>
-    </widget>
    </item>
    <item>
     <widget class="QTabWidget" name="masdf" >
@@ -574,7 +553,7 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>2</number>
+          <number>6</number>
          </property>
          <item>
           <layout class="QVBoxLayout" >
@@ -582,7 +561,7 @@
             <number>0</number>
            </property>
            <property name="spacing" >
-            <number>2</number>
+            <number>6</number>
            </property>
            <item>
             <widget class="QLabel" name="textLabel2_4_2_2" >
@@ -592,7 +571,7 @@
             </widget>
            </item>
            <item>
-            <widget class="Q3TextEdit" name="m_comentproveedor" />
+            <widget class="QTextEdit" name="m_comentproveedor" />
            </item>
           </layout>
          </item>
@@ -602,7 +581,7 @@
             <number>0</number>
            </property>
            <property name="spacing" >
-            <number>2</number>
+            <number>6</number>
            </property>
            <item>
             <widget class="QLabel" name="textLabel2_4_2" >
@@ -626,16 +605,7 @@
             </widget>
            </item>
            <item>
-            <widget class="Q3TextEdit" name="m_clavewebproveedor" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>5</hsizetype>
-               <vsizetype>7</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
+            <widget class="QTextEdit" name="m_clavewebproveedor" />
            </item>
           </layout>
          </item>
@@ -829,19 +799,6 @@
          </item>
         </layout>
        </item>
-       <item>
-        <widget class="Q3Table" name="m_divisiones" >
-         <property name="enabled" >
-          <bool>true</bool>
-         </property>
-         <property name="numRows" >
-          <number>3</number>
-         </property>
-         <property name="numCols" >
-          <number>5</number>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="tab" >
@@ -921,46 +878,12 @@
          </item>
         </layout>
        </item>
-       <item>
-        <widget class="Q3Table" name="table1_3_2" >
-         <property name="numRows" >
-          <number>3</number>
-         </property>
-         <property name="numCols" >
-          <number>6</number>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="TabPage" >
       <attribute name="title" >
        <string>Contratos</string>
       </attribute>
-      <widget class="QLabel" name="textLabel5" >
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>240</y>
-         <width>150</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font" >
-        <font>
-         <family>Sans Serif</family>
-         <pointsize>15</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="text" >
-        <string>Resumen por articulos</string>
-       </property>
-      </widget>
       <widget class="QWidget" name="layout79" >
        <property name="geometry" >
         <rect>
@@ -1099,42 +1022,28 @@
         </item>
        </layout>
       </widget>
-      <widget class="Q3Table" name="table1_3_2_2" >
-       <property name="enabled" >
-        <bool>false</bool>
-       </property>
+      <widget class="QLabel" name="textLabel5" >
        <property name="geometry" >
         <rect>
          <x>10</x>
-         <y>270</y>
-         <width>687</width>
-         <height>200</height>
+         <y>240</y>
+         <width>281</width>
+         <height>25</height>
         </rect>
        </property>
-       <property name="numRows" >
-        <number>3</number>
+       <property name="font" >
+        <font>
+         <family>Sans Serif</family>
+         <pointsize>15</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+         <underline>false</underline>
+         <strikeout>false</strikeout>
+        </font>
        </property>
-       <property name="numCols" >
-        <number>6</number>
-       </property>
-      </widget>
-      <widget class="Q3Table" name="table1_3_2_2_2" >
-       <property name="enabled" >
-        <bool>false</bool>
-       </property>
-       <property name="geometry" >
-        <rect>
-         <x>10</x>
-         <y>50</y>
-         <width>687</width>
-         <height>180</height>
-        </rect>
-       </property>
-       <property name="numRows" >
-        <number>3</number>
-       </property>
-       <property name="numCols" >
-        <number>5</number>
+       <property name="text" >
+        <string>Resumen por articulos</string>
        </property>
       </widget>
      </widget>
@@ -1183,48 +1092,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends></extends>
-   <header>busquedaprovincia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>PagosList</class>
-   <extends></extends>
-   <header>pagoslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Table</class>
-   <extends></extends>
-   <header>q3table.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>AlbaranesProveedor</class>
-   <extends></extends>
-   <header>albaranesproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>FacturasProveedorList</class>
    <extends></extends>
    <header>facturasplist.h</header>
@@ -1238,8 +1105,28 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends></extends>
+   <header>busquedaprovincia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>PagosList</class>
+   <extends></extends>
+   <header>pagoslist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>AlbaranesProveedor</class>
+   <extends></extends>
+   <header>albaranesproveedor.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
- <includes/>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>

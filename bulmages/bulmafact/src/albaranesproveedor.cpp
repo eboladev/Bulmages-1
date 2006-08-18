@@ -18,19 +18,19 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
+#include <QCheckBox>
 #include <QCheckBox>
 #include <QFile>
-#include <QCheckBox>
+#include <QMessageBox>
 #include <QTextStream>
 
 #include "albaranesproveedor.h"
 #include "albaranproveedorview.h"
 #include "company.h"
-#include "presupuestoview.h"
-#include "qtable1.h"
 #include "configuracion.h"
 #include "funcaux.h"
+#include "presupuestoview.h"
+#include "qtable1.h"
 
 
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
