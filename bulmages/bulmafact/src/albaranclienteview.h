@@ -60,10 +60,10 @@ public:
     void pintaIdUsuario(QString) {}
     ;
     void pintaComentAlbaran(QString val) {
-        m_comentalbaran->setText(val);
+        m_comentalbaran->setPlainText(val);
     };
     void pintaComentPrivAlbaran(QString val) {
-        m_comentprivalbaran->setText(val);
+        m_comentprivalbaran->setPlainText(val);
     };
     void pintaidcliente(QString val) {
         m_cliente->setidcliente(val);

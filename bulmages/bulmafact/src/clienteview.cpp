@@ -155,7 +155,7 @@ int ClienteView::guardar() {
     setDBvalue("faxcliente", m_faxcliente->text());
     setDBvalue("mailcliente", m_mailcliente->text());
     setDBvalue("urlcliente", m_urlcliente->text());
-    setDBvalue("comentcliente", m_comentcliente->text());
+    setDBvalue("comentcliente", m_comentcliente->toPlainText());
     setDBvalue("provcliente", m_provcliente->currentText());
     setDBvalue("codcliente", mui_codcliente->text());
     setDBvalue("corpcliente", mui_corpcliente->text());

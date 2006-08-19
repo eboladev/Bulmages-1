@@ -93,7 +93,7 @@ public:
     void pintafbajacliente(QString) {}
     ;
     void pintacomentcliente(QString val) {
-        m_comentcliente->setText(val);
+        m_comentcliente->setPlainText(val);
     };
     void pintainactivocliente(QString) {}
     ;

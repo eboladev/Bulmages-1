@@ -291,8 +291,8 @@ void AlbaranClienteView::closeEvent(QCloseEvent *e) {
 int AlbaranClienteView::guardar() {
     _depura("AlbaranClienteView::guardar", 0);
     /// Cogemos todos los valores del formulario y actualizamos la clase.
-    setcomentalbaran(m_comentalbaran->text());
-    setcomentprivalbaran(m_comentprivalbaran->text());
+    setcomentalbaran(m_comentalbaran->toPlainText());
+    setcomentprivalbaran(m_comentprivalbaran->toPlainText());
     setidalmacen(m_almacen->idalmacen());
     setNumAlbaran(m_numalbaran->text());
     setidcliente(m_cliente->idcliente());

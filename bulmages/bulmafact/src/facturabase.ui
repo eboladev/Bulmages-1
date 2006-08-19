@@ -279,7 +279,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -361,7 +361,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLabel" name="" >
        <property name="font" >
         <font>
          <family>Sans Serif</family>
@@ -419,7 +419,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLabel" name="" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>1</hsizetype>
@@ -488,7 +488,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -527,7 +527,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -576,7 +576,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -622,7 +622,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -778,7 +778,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1100,7 +1100,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1422,7 +1422,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1746,7 +1746,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLabel" name="" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2127,20 +2127,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaSerieFactura</class>
-   <extends></extends>
-   <header>busquedaseriefactura.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>ListDescuentoFacturaView</class>
    <extends></extends>
    <header>listdescfacturaview.h</header>
@@ -2179,6 +2165,20 @@
    <class>BusquedaFormaPago</class>
    <extends></extends>
    <header>busquedaformapago.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaSerieFactura</class>
+   <extends></extends>
+   <header>busquedaseriefactura.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -82,7 +82,7 @@ void ArticuloView::pintar() {
     m_tipoarticulo->setidtipo_articulo(DBvalue("idtipo_articulo"));
     m_codigoarticulo->setText(DBvalue("codarticulo"));
     m_nombrearticulo->setText(DBvalue("nomarticulo"));
-    m_obserarticulo->setText(DBvalue("obserarticulo"));
+    m_obserarticulo->setPlainText(DBvalue("obserarticulo"));
     m_pvparticulo->setText(DBvalue("pvparticulo"));
     m_abrevarticulo->setText(DBvalue("abrevarticulo"));
 
@@ -219,7 +219,7 @@ int ArticuloView::guardar() {
         setDBvalue("codarticulo", m_codigoarticulo->text());
         setDBvalue("nomarticulo", m_nombrearticulo->text());
         setDBvalue("idfamilia", m_familia->idfamilia());
-        setDBvalue("obserarticulo", m_obserarticulo->text());
+        setDBvalue("obserarticulo", m_obserarticulo->toPlainText());
         setDBvalue("abrevarticulo", m_abrevarticulo->text());
         setDBvalue("pvparticulo", m_pvparticulo->text());
         setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentIndex()));

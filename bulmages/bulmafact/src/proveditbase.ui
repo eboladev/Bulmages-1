@@ -189,7 +189,7 @@
    </item>
    <item>
     <widget class="QTabWidget" name="masdf" >
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>Datos generales</string>
       </attribute>
@@ -633,7 +633,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab2" >
       <attribute name="title" >
        <string>Pedidos</string>
       </attribute>
@@ -649,7 +649,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab3" >
       <attribute name="title" >
        <string>Albaranes</string>
       </attribute>
@@ -665,7 +665,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab4" >
       <attribute name="title" >
        <string>Facturas</string>
       </attribute>
@@ -681,7 +681,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab5" >
       <attribute name="title" >
        <string>Pagos</string>
       </attribute>
@@ -697,7 +697,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab6" >
       <attribute name="title" >
        <string>Divisiones</string>
       </attribute>
@@ -801,7 +801,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab7" >
       <attribute name="title" >
        <string>Productos suministrados</string>
       </attribute>
@@ -880,7 +880,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab8" >
       <attribute name="title" >
        <string>Contratos</string>
       </attribute>
@@ -1092,13 +1092,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>FacturasProveedorList</class>
-   <extends></extends>
-   <header>facturasplist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>PedidosProveedorList</class>
    <extends></extends>
    <header>pedidosproveedorlist.h</header>
@@ -1123,6 +1116,13 @@
    <class>AlbaranesProveedor</class>
    <extends></extends>
    <header>albaranesproveedor.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>FacturasProveedorList</class>
+   <extends></extends>
+   <header>facturasplist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

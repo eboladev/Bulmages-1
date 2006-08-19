@@ -56,7 +56,7 @@ public:
     };
     void pintaIdUsuario(QString);
     void pintaComentAlbaran(QString val) {
-        m_comentalbaranp->setText(val);
+        m_comentalbaranp->setPlainText(val);
     };
     void pintaidproveedor(QString val) {
         m_proveedor->setidproveedor(val);
@@ -81,7 +81,7 @@ public:
 
 public slots:
     virtual void s_comentalbaranptextChanged() {
-        setcomentalbaranp(m_comentalbaranp->text());
+        setcomentalbaranp(m_comentalbaranp->toPlainText());
     };
     virtual void s_almacenvalueChanged(QString val) {
         setidalmacen(val);

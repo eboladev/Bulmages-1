@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>848</width>
-    <height>598</height>
+    <width>849</width>
+    <height>607</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -44,26 +44,12 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="frame3" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="frame" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
-       </property>
-       <property name="midLineWidth" >
-        <number>0</number>
-       </property>
-       <property name="margin" >
-        <number>0</number>
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
@@ -172,21 +158,11 @@
     </layout>
    </item>
    <item>
-    <widget class="QLabel" name="pixmapLabel1" >
-     <property name="pixmap" >
-      <pixmap/>
-     </property>
-     <property name="scaledContents" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="QTabWidget" name="mui_tab" >
      <property name="enabled" >
       <bool>true</bool>
      </property>
-     <widget class="QWidget" name="tab3" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
@@ -562,30 +538,13 @@
         </layout>
        </item>
        <item>
-        <widget class="Q3Frame" name="m_frameplugin" >
-         <property name="minimumSize" >
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
+        <widget class="QFrame" name="m_frameplugin" >
          <property name="frameShape" >
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow" >
           <enum>QFrame::Raised</enum>
          </property>
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>5</number>
-          </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-         </layout>
         </widget>
        </item>
        <item>
@@ -594,7 +553,7 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>2</number>
+          <number>6</number>
          </property>
          <item>
           <layout class="QVBoxLayout" >
@@ -602,7 +561,7 @@
             <number>0</number>
            </property>
            <property name="spacing" >
-            <number>2</number>
+            <number>6</number>
            </property>
            <item>
             <widget class="QLabel" name="textLabel2_4_2_2" >
@@ -612,7 +571,7 @@
             </widget>
            </item>
            <item>
-            <widget class="Q3TextEdit" name="m_comentcliente" />
+            <widget class="QTextEdit" name="m_comentcliente" />
            </item>
           </layout>
          </item>
@@ -622,7 +581,7 @@
             <number>0</number>
            </property>
            <property name="spacing" >
-            <number>2</number>
+            <number>6</number>
            </property>
            <item>
             <widget class="QLabel" name="textLabel2_4_2" >
@@ -646,16 +605,7 @@
             </widget>
            </item>
            <item>
-            <widget class="Q3TextEdit" name="m_clientEcomerceData" >
-             <property name="sizePolicy" >
-              <sizepolicy>
-               <hsizetype>5</hsizetype>
-               <vsizetype>7</vsizetype>
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-            </widget>
+            <widget class="QTextEdit" name="m_clientEcomerceData" />
            </item>
           </layout>
          </item>
@@ -683,7 +633,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="Tab2" >
       <attribute name="title" >
        <string>Pres&amp;upuestos</string>
       </attribute>
@@ -699,7 +649,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage1" >
+     <widget class="QWidget" name="Tab3" >
       <attribute name="title" >
        <string>Pedidos</string>
       </attribute>
@@ -715,7 +665,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage2" >
+     <widget class="QWidget" name="Tab4" >
       <attribute name="title" >
        <string>Albaranes</string>
       </attribute>
@@ -731,7 +681,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage3" >
+     <widget class="QWidget" name="Tab5" >
       <attribute name="title" >
        <string>&amp;Facturas</string>
       </attribute>
@@ -747,7 +697,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage4" >
+     <widget class="QWidget" name="Tab6" >
       <attribute name="title" >
        <string>Co&amp;bros</string>
       </attribute>
@@ -763,16 +713,16 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage5" >
+     <widget class="QWidget" name="Tab7" >
       <attribute name="title" >
        <string>Co&amp;ntratos</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -887,14 +837,7 @@
         </layout>
        </item>
        <item>
-        <widget class="Q3Table" name="table1_3_2_2_2" >
-         <property name="numRows" >
-          <number>3</number>
-         </property>
-         <property name="numCols" >
-          <number>5</number>
-         </property>
-        </widget>
+        <widget class="QTableWidget" name="tableWidget_2" />
        </item>
        <item>
         <widget class="QLabel" name="textLabel5" >
@@ -915,27 +858,20 @@
         </widget>
        </item>
        <item>
-        <widget class="Q3Table" name="table1_3_2_2" >
-         <property name="numRows" >
-          <number>3</number>
-         </property>
-         <property name="numCols" >
-          <number>6</number>
-         </property>
-        </widget>
+        <widget class="QTableWidget" name="tableWidget" />
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage6" >
+     <widget class="QWidget" name="Tab8" >
       <attribute name="title" >
        <string>D&amp;ivisiones</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -1014,27 +950,20 @@
         </layout>
        </item>
        <item>
-        <widget class="Q3Table" name="m_divisiones" >
-         <property name="numRows" >
-          <number>3</number>
-         </property>
-         <property name="numCols" >
-          <number>5</number>
-         </property>
-        </widget>
+        <widget class="QTableWidget" name="m_divisiones" />
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab2" >
+     <widget class="QWidget" name="tab9" >
       <attribute name="title" >
        <string>Produ&amp;ctos suministrados</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>6</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -1103,14 +1032,7 @@
         </layout>
        </item>
        <item>
-        <widget class="Q3Table" name="table1_3_2" >
-         <property name="numRows" >
-          <number>3</number>
-         </property>
-         <property name="numCols" >
-          <number>6</number>
-         </property>
-        </widget>
+        <widget class="QTableWidget" name="tableWidget_3" />
        </item>
       </layout>
      </widget>
@@ -1159,34 +1081,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>PresupuestoList</class>
-   <extends></extends>
-   <header>presupuestolist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>AlbaranClienteList</class>
-   <extends></extends>
-   <header>albaranclientelist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Table</class>
-   <extends></extends>
-   <header>q3table.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>FacturasList</class>
    <extends></extends>
    <header>facturaslist.h</header>
@@ -1201,13 +1095,6 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>CobrosList</class>
    <extends></extends>
    <header>cobroslist.h</header>
@@ -1218,6 +1105,20 @@
    <class>PedidosClienteList</class>
    <extends></extends>
    <header>pedidosclientelist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>PresupuestoList</class>
+   <extends></extends>
+   <header>presupuestolist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>AlbaranClienteList</class>
+   <extends></extends>
+   <header>albaranclientelist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1235,14 +1136,8 @@
   <tabstop>m_faxcliente</tabstop>
   <tabstop>m_urlcliente</tabstop>
   <tabstop>m_mailcliente</tabstop>
-  <tabstop>m_comentcliente</tabstop>
-  <tabstop>m_clientEcomerceData</tabstop>
   <tabstop>m_bancocliente</tabstop>
-  <tabstop>m_divisiones</tabstop>
-  <tabstop>table1_3_2</tabstop>
   <tabstop>comboBox3_2</tabstop>
-  <tabstop>table1_3_2_2_2</tabstop>
-  <tabstop>table1_3_2_2</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />

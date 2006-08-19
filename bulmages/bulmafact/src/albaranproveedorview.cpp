@@ -211,7 +211,7 @@ int AlbaranProveedorView::cargar(QString id) {
 int AlbaranProveedorView::guardar() {
     _depura("AlbaranProveedorView::guardar", 0);
     try {
-        setcomentalbaranp(m_comentalbaranp->text());
+        setcomentalbaranp(m_comentalbaranp->toPlainText());
         setnumalbaranp(m_numalbaranp->text());
         setidproveedor(m_proveedor->idproveedor());
         setfechaalbaranp(m_fechaalbaranp->text());
