@@ -63,7 +63,7 @@ public:
         m_descfactura->setText(id);
     };
     void pintaComentFactura(QString id) {
-        m_comentfactura->setText(id);
+        m_comentfactura->setPlainText(id);
     };
     void pintareffactura(QString id) {
         m_reffactura->setText(id);

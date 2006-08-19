@@ -23,141 +23,120 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <widget class="QFrame" name="m_botonera" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="spacing" >
-      <number>2</number>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
      </property>
-     <item>
-      <widget class="QLabel" name="pixmapLabel1" >
-       <property name="pixmap" >
-        <pixmap/>
-       </property>
-       <property name="scaledContents" >
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="Q3Frame" name="m_botonera" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="frameShape" >
-        <enum>QFrame::StyledPanel</enum>
-       </property>
-       <property name="frameShadow" >
-        <enum>QFrame::Raised</enum>
-       </property>
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>2</number>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QToolButton" name="mui_crear" >
+        <property name="toolTip" >
+         <string>Nuevo inventario</string>
         </property>
-        <property name="spacing" >
-         <number>2</number>
+        <property name="whatsThis" >
+         <string>Nuevo inventario</string>
         </property>
-        <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="toolTip" >
-           <string>Nuevo inventario</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Nuevo inventario</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_editar" >
-          <property name="toolTip" >
-           <string>Editar inventario</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Editar inventario</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_borrar" >
-          <property name="toolTip" >
-           <string>Borrar factura</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Borrar factura</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>150</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
-     </item>
-    </layout>
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_editar" >
+        <property name="toolTip" >
+         <string>Editar inventario</string>
+        </property>
+        <property name="whatsThis" >
+         <string>Editar inventario</string>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="mui_borrar" >
+        <property name="toolTip" >
+         <string>Borrar factura</string>
+        </property>
+        <property name="whatsThis" >
+         <string>Borrar factura</string>
+        </property>
+        <property name="text" >
+         <string/>
+        </property>
+        <property name="icon" >
+         <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+        </property>
+        <property name="iconSize" >
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>150</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="pixmapLabel1" >
+     <property name="pixmap" >
+      <pixmap/>
+     </property>
+     <property name="scaledContents" >
+      <bool>true</bool>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="InventariosSubForm" name="mui_listado" />
@@ -167,13 +146,6 @@
  <layoutdefault spacing="2" margin="2" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
   <customwidget>
    <class>InventariosSubForm</class>
    <extends>QTableWidget</extends>

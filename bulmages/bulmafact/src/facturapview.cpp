@@ -144,7 +144,7 @@ int FacturaProveedorView::guardar() {
         setnumfacturap(m_numfacturap->text());
         setfechafacturap(m_fechafacturap->text());
         setdescfacturap(m_descfacturap->text());
-        setcomentfacturap(m_comentfacturap->text());
+        setcomentfacturap(m_comentfacturap->toPlainText());
         setreffacturap(m_reffacturap->text());
         setidforma_pago(m_forma_pago->idforma_pago());
         setprocesadafacturap(m_procesadafacturap->isChecked() ? "TRUE" : "FALSE");

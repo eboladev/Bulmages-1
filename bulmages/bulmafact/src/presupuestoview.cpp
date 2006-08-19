@@ -254,7 +254,7 @@ int PresupuestoView::guardar() {
     int res = g_plugins->lanza("PresupuestoView_guardar", this);
     if (res != 0)
         return 0;
-    setcomentpresupuesto(m_comentpresupuesto->text());
+    setcomentpresupuesto(m_comentpresupuesto->toPlainText());
     setnumpresupuesto(m_numpresupuesto->text());
     setidcliente(m_cliente->idcliente());
     setfpresupuesto(m_fpresupuesto->text());

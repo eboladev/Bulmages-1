@@ -11,8 +11,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>782</width>
-    <height>404</height>
+    <width>674</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -23,29 +23,11 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
-   <item>
-    <widget class="QLabel" name="pixmapLabel1" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="pixmap" >
-      <pixmap/>
-     </property>
-     <property name="scaledContents" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
    <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
@@ -65,30 +47,19 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="m_botonera" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="m_botonera" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
        </property>
-       <property name="margin" >
-        <number>0</number>
-       </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>9</number>
         </property>
         <property name="spacing" >
-         <number>2</number>
+         <number>6</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -340,7 +311,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_findClient" />
+         <widget class="QLineEdit" name="m_findClient" >
+          <property name="minimumSize" >
+           <size>
+            <width>100</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -348,22 +326,19 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_busqueda" >
+    <widget class="QFrame" name="m_busqueda" >
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <property name="margin" >
-      <number>0</number>
-     </property>
      <layout class="QHBoxLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
-       <number>3</number>
+       <number>6</number>
       </property>
       <item>
        <widget class="QCheckBox" name="m_procesados" >
@@ -406,52 +381,9 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
- <tabstops>
-  <tabstop>m_findClient</tabstop>
- </tabstops>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>223</x>
-     <y>38</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>96</x>
-     <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>m_findClient</sender>
-   <signal>returnPressed()</signal>
-   <receiver>mui_actualizar</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>695</x>
-     <y>33</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>288</x>
-     <y>29</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -70,7 +70,7 @@ public:
         m_telpresupuesto->setText(id);
     };
     void pintaComentPresupuesto(QString id) {
-        m_comentpresupuesto->setText(id);
+        m_comentpresupuesto->setPlainText(id);
     };
     void pintaidcliente(QString id) {
         m_cliente->setidcliente(id);

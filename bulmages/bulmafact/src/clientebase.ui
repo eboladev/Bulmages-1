@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>711</height>
+    <width>848</width>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -1159,30 +1159,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>PresupuestoList</class>
+   <extends></extends>
+   <header>presupuestolist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>AlbaranClienteList</class>
    <extends></extends>
    <header>albaranclientelist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>FacturasList</class>
-   <extends></extends>
-   <header>facturaslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProvincia</class>
-   <extends></extends>
-   <header>busquedaprovincia.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1201,6 +1187,27 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>FacturasList</class>
+   <extends></extends>
+   <header>facturaslist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProvincia</class>
+   <extends></extends>
+   <header>busquedaprovincia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends></extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>CobrosList</class>
    <extends></extends>
    <header>cobroslist.h</header>
@@ -1211,13 +1218,6 @@
    <class>PedidosClienteList</class>
    <extends></extends>
    <header>pedidosclientelist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>PresupuestoList</class>
-   <extends></extends>
-   <header>presupuestolist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

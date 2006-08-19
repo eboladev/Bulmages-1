@@ -56,7 +56,7 @@ public:
         m_descfacturap->setText(id);
     };
     void pintaComentFacturaProveedor(QString id) {
-        m_comentfacturap->setText(id);
+        m_comentfacturap->setPlainText(id);
     };
     void pintareffacturap(QString id) {
         m_reffacturap->setText(id);

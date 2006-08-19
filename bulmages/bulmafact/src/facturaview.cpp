@@ -206,7 +206,7 @@ void FacturaView::closeEvent(QCloseEvent *e) {
 
 
 int FacturaView::guardar() {
-    setcomentfactura(m_comentfactura->text());
+    setcomentfactura(m_comentfactura->toPlainText());
     setidalmacen(m_almacen->idalmacen());
     setNumFactura(m_numfactura->text());
     setreffactura(m_reffactura->text());
