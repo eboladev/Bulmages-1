@@ -6,11 +6,12 @@
  *   Modified by: Tomeu Borras Riera.                                      *
  ***************************************************************************/
 
-#include "fixed.h"
+#include <QString>
+#include <QChar>
 
 #include "stdio.h"
-#include <qstring.h>
 
+#include "fixed.h"
 #include "funcaux.h"
 
 
@@ -64,7 +65,7 @@ QString Fixed::toQString() {
     bool negative;
     if (x < 0) {
         x = -x;
-        /// prevent buffer overflow if result is still negative
+        /// prevent buffer overflow if result is still negative.
         if (x < 0)
             x = x - 1;
         negative = true;
@@ -72,7 +73,40 @@ QString Fixed::toQString() {
         negative = false;
     Fixed_numerator n = 0;
     Fixed_numerator units = 0;
+/// ----------------
+/*
+    QString buffer;
+
+    do {
+        if (n == precision) {
+            if (n > 0 || options & DECIMAL)
+		  buffer = '.'+buffer;
+		  ++n;
+            units = n;
+        }
+        Fixed_numerator y;
+        y = (Fixed_numerator) x / 10;
+	   buffer = QString::number(x-y) + buffer;
+	   ++n;
+        x = y;
+    } while (n <= precision || x != 0);
+    if (negative)
+	 buffer = '-' + buffer;
+	 ++n;
+    if (options & ALIGN) {
+        while (n - units < MAX_FIXED_LENGTH - 2) {
+		buffer = ' ' + buffer;
+		++n;
+	} // end while
+    }
+	return buffer;
+
+*/
+/// -------------------
+
+
     unsigned char buffer[MAX_FIXED_LENGTH + MAX_FIXED_PRECISION];
+
     for (unsigned int i = 0; i <= sizeof(buffer); i++)
         buffer[i] = 0;
     do {
@@ -138,13 +172,13 @@ void Fixed::setprecision(int prec) {
         value = (Fixed_numerator) (value / 10);
         if ((aux % 10) >=5) {
             value++;
-        }// end if
+        } // end if
         precision--;
     } // end while
 }
 
 
-Fixed::Fixed(const char *s) {
+void Fixed::fromFixed(const char *s) {
     value = 0;
     precision = 0;
     int c;

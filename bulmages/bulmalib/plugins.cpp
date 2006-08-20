@@ -26,7 +26,8 @@ void Plugins::cargaLibs(QString libs) {
     /// Hacemos la carga de los plugins.
     QString cad=libs;
     _depura("Carga de plugins: "+cad,0);
-    QStringList plugins = QStringList::split( ";", cad );
+    QStringList plugins = cad.split(";");
+    //QStringList plugins = QStringList::split( ";", cad );
     for ( QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it ) {
         QLibrary *lib= new QLibrary(*it);
         _depura("Resolviendo la libreria: "+*it+"\n", 0);
@@ -39,7 +40,8 @@ void Plugins::cargaLibs(QString libs) {
     }// end for
 }
 
-int Plugins::lanza(QString func, void *clase) {
+//int Plugins::lanza(QString func, void *clase) {
+int Plugins::lanza(const char *func, void *clase) {
 
     int a=0;
 
@@ -57,7 +59,8 @@ int Plugins::lanza(QString func, void *clase) {
 }
 
 
-int Plugins::lanza(QString func, void *clase, void **ret) {
+//int Plugins::lanza(QString func, void *clase, void **ret) {
+int Plugins::lanza(const char *func, void *clase, void **ret) {
 
     int a=0;
 

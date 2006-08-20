@@ -56,19 +56,19 @@ public:
     /// Fija el numero de cuenta.
     /// Si el argumento tiene menos de 10 digitos, se rellena con ceros a la izquierda.
     void setnumcuenta(QString cad) {
-        numcuenta = cad.rightJustify(10, '0');
+        numcuenta = cad.rightJustified(10, '0');
     };
 
     /// Fija el numero de banco.
     /// Si el argumento tiene menos de 4 digitos, se rellena con ceros a la izquierda.
     void setbanco(QString cad) {
-        banco = cad.rightJustify(4, '0');
+        banco = cad.rightJustified(4, '0');
     };
 
     /// Fija el numero de entidad.
     /// Si el argumento tiene menos de 4 digitos, se rellena con ceros a la izquierda.
     void setentidad(QString cad) {
-        entidad = cad.rightJustify(4, '0');
+        entidad = cad.rightJustified(4, '0');
     };
 
 private:

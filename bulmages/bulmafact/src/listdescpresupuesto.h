@@ -22,53 +22,45 @@
 #define LISTDESCPRESUPUESTO_H
 
 #include <QObject>
-#include <Q3PtrList>
+#include <QList>
 
 #include "company.h"
 #include "descpresupuesto.h"
 #include "funcaux.h"
 
-class ListDescuentoPresupuesto
-{
+class ListDescuentoPresupuesto {
 
 public:
-	company *companyact;
-	QString mdb_idpresupuesto;
-	Q3PtrList<DescuentoPresupuesto> m_lista;
+    company *companyact;
+    QString mdb_idpresupuesto;
+    QList<DescuentoPresupuesto *> m_lista;
 
 public:
-	ListDescuentoPresupuesto(company *comp);
-	ListDescuentoPresupuesto();
-	virtual ~ListDescuentoPresupuesto();
-	void setcompany(company *c)
-	{
-		_depura("ListDescuentoPresupuesto setCompany.", 0);
-		companyact = c;
-		_depura("ListDescuentoPresupuesto fin de setCompany.", 0);
-	};
-	void guardaListDescuentoPresupuesto();
-	void vaciar();
-	virtual void pintaListDescuentoPresupuesto()
-	{
-		_depura("La funcion pintaListDescuentoPresupuesto aun \
-				no ha sido implementada.", 0);
-	};
-	int cargaDescuentos(QString);
-	int borrar();
-	void nuevalinea(QString concept, QString propor);
-	DescuentoPresupuesto *linpos(int);
-	int borraDescuentoPresupuesto(int);
-	void setidpresupuesto(QString id)
-	{
-		mdb_idpresupuesto = id;
-		DescuentoPresupuesto *linea;
-		uint i = 0;
-		for (linea = m_lista.first(); linea; linea = m_lista.next())
-		{
-			linea->setidpresupuesto(mdb_idpresupuesto);
-			i++;
-		};
-	};
+    ListDescuentoPresupuesto(company *comp);
+    ListDescuentoPresupuesto();
+    virtual ~ListDescuentoPresupuesto();
+    void setcompany(company *c) {
+        _depura("ListDescuentoPresupuesto setCompany.", 0);
+        companyact = c;
+        _depura("ListDescuentoPresupuesto fin de setCompany.", 0);
+    };
+    void guardaListDescuentoPresupuesto();
+    void vaciar();
+    virtual void pintaListDescuentoPresupuesto() {
+        _depura("La funcion pintaListDescuentoPresupuesto aun \
+                no ha sido implementada.", 0);
+    };
+    int cargaDescuentos(QString);
+    int borrar();
+    void nuevalinea(QString concept, QString propor);
+    DescuentoPresupuesto *linpos(int);
+    int borraDescuentoPresupuesto(int);
+    void setidpresupuesto(QString id) {
+        mdb_idpresupuesto = id;
+        for (int i = 0; i < m_lista.size(); ++i) {
+            m_lista.at(i)->setidpresupuesto(mdb_idpresupuesto);
+        } // end for
+    };
 };
 
 #endif

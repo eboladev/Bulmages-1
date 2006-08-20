@@ -68,8 +68,8 @@ QString DBCampo::valorcampoprep(int &error) {
     } // end switch
     error = -1;
     _depura("Error en la conversion de tipos", 2);
-    return "";
     _depura("END DBCampo::valorcampoprep", 0);
+    return "";
 }
 
 
@@ -184,12 +184,12 @@ int DBRecord::DBsave(QString &id) {
             m_conexionbase->ejecuta(query);
         } // end if
         m_nuevoCampo = FALSE;
-        _depura("END DBRecord::DBSave", 0);
         return 0;
     } catch(...) {
         _depura("EXCEPTION DBRecord::DBsave", 0);
         throw (-1);
     } // end try
+    _depura("END DBRecord::DBSave", 0);
 }
 
 

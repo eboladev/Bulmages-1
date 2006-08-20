@@ -29,6 +29,7 @@
 #include <QString>
 #include <QTextEdit>
 #include <QDir>
+#include <QTextStream>
 
 #include "funcaux.h"
 #include "configuracion.h"
@@ -222,12 +223,12 @@ void generaPDF(const QString arch) {
     system(cadsys.ascii());
     _depura(cadsys, 0);
     cadsys = confpr->valor(CONF_FLIP) + " -u " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
-    system(cadsys.ascii());
+    system(cadsys.toAscii().data());
     _depura(cadsys, 0);
 #else
 
     cadsys = "trml2pdf.py " + arch + ".rml > " + arch + ".pdf";
-    system(cadsys.ascii());
+    system(cadsys.toAscii().data());
 #endif
 }
 
@@ -238,14 +239,14 @@ void generaPDF(const QString arch) {
 void invocaPDF(const QString arch) {
     generaPDF(arch);
     QString cadsys = confpr->valor(CONF_PDF) + " " + confpr->valor(CONF_DIR_USER) + arch + ".pdf &";
-    system(cadsys.ascii());
+    system(cadsys.toAscii().data());
 }
 
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
     QString cadsys = "mailsend -h mail.iglues.org -d iglues.org -f bulmages@iglues.org -t test@iglues.org -sub test -m test";
-    system(cadsys.ascii());
+    system(cadsys.toAscii().data());
 }
 
 

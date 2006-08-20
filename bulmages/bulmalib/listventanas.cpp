@@ -39,7 +39,7 @@ listventanas::listventanas(QWidget *a): QDockWidget(a) {
     m_listBox->setIconSize(QSize(32, 32));
     m_listBox->setContentsMargins(0, 0, 0, 0);
     m_listBox->setSpacing(0);
-    m_listBox->setCaption(tr("Indexador"));
+    m_listBox->setWindowTitle(tr("Indexador"));
     setAccessibleName(tr("Indexador"));
     setAccessibleDescription(tr("Indexador"));
     setWindowTitle(tr("Indexador"));

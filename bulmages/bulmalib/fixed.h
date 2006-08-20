@@ -25,7 +25,7 @@ inline long long int integer(Fixed_numerator x) {
 class Fixed {
 
 private:
-
+    void fromFixed(const char *);
 public:
     Fixed_numerator value;
     int precision;
@@ -37,7 +37,12 @@ public:
         value = x;
         precision = p;
     }
-    Fixed(const char *);
+    Fixed(QString a) {
+        fromFixed(a.toAscii());
+    };
+    Fixed(const char *a) {
+        fromFixed(a);
+    };
     Fixed() {
         value = 0;
         precision = 1;
@@ -71,45 +76,56 @@ inline bool operator != (Fixed x, Fixed y) {
     return !(x == y);
 }
 
+
 inline bool operator != (Fixed x, int y) {
     return !(x == y);
 }
+
 
 inline bool operator != (int x, Fixed y) {
     return !(x == y);
 }
 
+
 inline bool operator >= (Fixed x, Fixed y) {
     return !(x < y);
 }
+
 
 inline bool operator >= (Fixed x, int y) {
     return !(x < y);
 }
 
+
 inline bool operator >= (int x, Fixed y) {
     return !(x < y);
 }
+
 
 inline bool operator > (Fixed x, Fixed y) {
     return y < x;
 }
 
+
 inline bool operator > (Fixed x, int y) {
     return y < x;
 }
+
 
 inline bool operator > (int x, Fixed y) {
     return y < x;
 }
 
+
 inline bool operator <= (Fixed x, Fixed y) {
     return !(y < x);
 }
 
+
 inline bool operator <= (Fixed x, int y) {
     return !(y < x);
 }
+
 
 inline bool operator <= (int x, Fixed y) {
     return !(y < x);

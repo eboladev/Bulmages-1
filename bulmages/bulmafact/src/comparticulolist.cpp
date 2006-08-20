@@ -25,7 +25,6 @@
 
 ListCompArticulo::ListCompArticulo(company *comp) {
     companyact = comp;
-    m_lista.setAutoDelete(TRUE);
     mdb_idarticulo = "";
 }
 
@@ -33,7 +32,6 @@ ListCompArticulo::ListCompArticulo(company *comp) {
 ListCompArticulo::ListCompArticulo() {
     _depura("Constructor de ListCompArticulo\n", 0);
     companyact = NULL;
-    m_lista.setAutoDelete(TRUE);
     mdb_idarticulo = "";
 }
 
@@ -77,11 +75,8 @@ void ListCompArticulo::cargar(QString idarticulo) {
 
 
 void ListCompArticulo::guardaListCompArticulo() {
-    CompArticulo *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        linea->guardaCompArticulo();
-        i++;
+    for (int i = 0; i < m_lista.size(); ++i) {
+        m_lista.at(i)->guardaCompArticulo();
     } // end for
 }
 
@@ -109,7 +104,8 @@ void ListCompArticulo::borrar(int pos) {
     CompArticulo *linea;
     linea = m_lista.at(pos);
     linea->borrar();
-    m_lista.remove(pos);
+    delete linea;
+    m_lista.removeAt(pos);
     pintar();
 }
 

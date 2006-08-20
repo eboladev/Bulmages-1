@@ -3,16 +3,14 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmafact/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
-QT += qt3support
 LANGUAGE = C++
+QT += qt3support
 TARGET = ../../installbulmages/bulmafact
 #CONFIG += qt debug
 CONFIG += release
 LIBS += -rdynamic
 TEMPLATE = app
 RESOURCES += ../../bulmages-recursos-graficos.qrc
-
-DEFINES += QT3_SUPPORT_WARNINGS
 
 FORMS += about.ui \
          pagobase.ui \
@@ -244,8 +242,8 @@ INCLUDEPATH += ../../bulmalib \
 /usr/include/qt4 \
 /usr/include/qt4/Qt \
 /usr/include/qt4/QtXml \
-/usr/include/Qt \
-/usr/include/QtXml \
+			        /usr/include/Qt \
+				/usr/include/QtXml \
 /usr/lib/qt4/include/Qt \
 /usr/lib/qt4/include/QtXml \
 ..

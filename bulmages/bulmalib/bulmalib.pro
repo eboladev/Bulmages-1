@@ -59,6 +59,7 @@ SOURCES += postgresiface2.cpp \
            listventanas.cpp \
            qworkspace2.cpp 
 QT += qt3support
+DEFINES += QT3_SUPPORT_WARNINGS
 TEMPLATE = lib
 LANGUAGE = C++
 INCLUDEPATH += . \

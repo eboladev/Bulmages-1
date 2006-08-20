@@ -26,7 +26,6 @@
 
 ListDescuentoPresupuesto::ListDescuentoPresupuesto(company *comp) {
     companyact = comp;
-    m_lista.setAutoDelete(TRUE);
     mdb_idpresupuesto = "";
 }
 
@@ -34,7 +33,6 @@ ListDescuentoPresupuesto::ListDescuentoPresupuesto(company *comp) {
 ListDescuentoPresupuesto::ListDescuentoPresupuesto() {
     _depura("Constructor de ListDescuentoPresupuesto\n", 2);
     companyact = NULL;
-    m_lista.setAutoDelete(TRUE);
     mdb_idpresupuesto = "";
 }
 
@@ -92,11 +90,8 @@ int ListDescuentoPresupuesto::cargaDescuentos(QString idbudget) {
 
 
 void ListDescuentoPresupuesto::guardaListDescuentoPresupuesto() {
-    DescuentoPresupuesto *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        linea->guardaDescuentoPresupuesto();
-        i++;
+    for (int i = 0; i < m_lista.size(); ++i) {
+        m_lista.at(i)->guardaDescuentoPresupuesto();
     } // end for
 }
 
@@ -127,7 +122,8 @@ int ListDescuentoPresupuesto::borraDescuentoPresupuesto(int pos) {
     int err = linea->borrar();
     if (err)
         return err;
-    m_lista.remove(pos);
+    delete linea;
+    m_lista.removeAt(pos);
     pintaListDescuentoPresupuesto();
     return 0;
 }

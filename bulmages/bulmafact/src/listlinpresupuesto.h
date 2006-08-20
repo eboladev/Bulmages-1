@@ -21,7 +21,7 @@
 #ifndef LISTLINPRESUPUESTO_H
 #define LISTLINPRESUPUESTO_H
 
-#include <Q3PtrList>
+#include <QList>
 #include <QObject>
 
 #include "company.h"
@@ -34,7 +34,7 @@ class listlinpresupuesto {
 public:
     company *companyact;
     QString mdb_idpresupuesto;
-    Q3PtrList<linpresupuesto> m_lista;
+    QList<linpresupuesto *> m_lista;
 
 public:
     listlinpresupuesto(company *comp);
@@ -59,12 +59,9 @@ public:
     void borralinpresupuesto(int);
     void setidpresupuesto(QString id) {
         mdb_idpresupuesto = id;
-        linpresupuesto *linea;
-        uint i = 0;
-        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-            linea->setidpresupuesto(mdb_idpresupuesto);
-            i++;
-        };
+        for (int i = 0; i < m_lista.size(); ++i) {
+            m_lista.at(i)->setidpresupuesto(mdb_idpresupuesto);
+        } // end for
     };
 };
 

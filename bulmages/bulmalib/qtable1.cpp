@@ -24,6 +24,8 @@
 #include <QDateTime>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QColorGroup>
+
 
 #include "qtable1.h"
 #include "configuracion.h"

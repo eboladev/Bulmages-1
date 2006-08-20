@@ -22,6 +22,7 @@
 #include <QEvent>
 #include <QFile>
 #include <QHeaderView>
+#include <QTextStream>
 
 #include "subform3.h"
 
@@ -184,7 +185,7 @@ void SubForm3::pintar() {
 /// Carga una tabla a partir del recordset que se le ha pasado.
 int SubForm3::inicializar() {
     _depura("SubForm3::inicializar", 0);
-    mui_query->setText("");
+    mui_query->setPlainText("");
     SDBRecord *rec;
 
     int filpag = mui_filaspagina->text().toInt();
@@ -233,7 +234,7 @@ int SubForm3::inicializar() {
 /// Carga una tabla a partir del recordset que se le ha pasado.
 int SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
-    mui_query->setText(cur->query());
+    mui_query->setPlainText(cur->query());
     SDBRecord *rec;
 
     int filpag = mui_filaspagina->text().toInt();
@@ -589,7 +590,7 @@ void SubForm3::on_mui_confquery_clicked() {
         mensajeInfo("no se ha inicializado bien la clase");
         return;
     } // end if
-    cursor2 *cur = m_companyact->cargacursor(mui_query->text());
+    cursor2 *cur = m_companyact->cargacursor(mui_query->toPlainText());
     cargar(cur);
     delete cur;
     _depura("END SubForm3::on_mui_confquery_clicked ", 0);

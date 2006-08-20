@@ -43,7 +43,7 @@ using std::string;
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al
 /// QMainWindow respectivo en cada caso. Se usa para acceder a determiandos elementos
 /// especificos de la ventana como el statusBar
-#include <Q3MainWindow>
+//#include <Q3MainWindow>
 #include <QMainWindow>
 #include <QStatusBar>
 

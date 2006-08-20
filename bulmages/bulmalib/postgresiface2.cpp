@@ -33,10 +33,10 @@
 
 /** Constructor de la clase
   * Realiza la consulta en la base de datos y almacena el resultado en las variables de clase para poder ser manupuladas.
-  * Tambi� almacena en variables globales algunos resultados para poder acelerar las consultas (nregistros y ncampos).
-  * Si todo falla (y en funci� de la configuraci�) Da un mensaje de alerta o no.
-  * \param nombre Nombre que obtendr�el query (OBSOLETO)
-  * \param conn1 Conexi� con la base de datos (Inicializada en \ref postgresiface2
+  * Tambien almacena en variables globales algunos resultados para poder acelerar las consultas (nregistros y ncampos).
+  * Si todo falla (y en funcion de la configuracion) Da un mensaje de alerta o no.
+  * \param nombre Nombre que obtendra el query (OBSOLETO)
+  * \param conn1 Conexion con la base de datos (Inicializada en \ref postgresiface2
   * \param SQLQuery Query en formato SQL a realizar en la base de datos.
   */
 cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
@@ -127,7 +127,7 @@ int cursor2::numcampo(QString campo) {
 
 /** Esta funcion devuelve el valor del campo posicion del registro
   * pasado, si se pasa -1 como registro se devuelve el registro actual
-  * \param posicion El nmero de campo del que se quiere la posici�.
+  * \param posicion El nmero de campo del que se quiere la posicion.
   * \param registro El registro del que se quiere devolver el campo. Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
   * \return El valor de la posicion.
   */
@@ -291,7 +291,7 @@ int postgresiface2::formatofecha() {
     } // end if
     PQclear(res);
 
-    /// Establecemos la codificación por defecto a UNICODE.
+    /// Establecemos la codificacion por defecto a UNICODE.
     /// Pero con los problemas que está teniendo el UNICODE lo vamos a dejar en
     /// SQL_ASCII QUE funciona bastante mejor.
     query = "SET client_encoding = 'UTF8'";
@@ -366,7 +366,7 @@ void postgresiface2::rollback() {
 
 
 /** Se encarga de generar un objeto del tipo cursor2 y de iniciarlo con un query concreto
-  * NOTA: Este m�odo crea mem�ia, con lo que �ta debe ser liberada posteriormente.
+  * NOTA: Este metodo crea mem�ia, con lo que �ta debe ser liberada posteriormente.
   * \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la respuesta al query.
   */
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
@@ -384,24 +384,24 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 */
 #include <qtextcodec.h>
 int postgresiface2::ejecuta(QString Query) {
-    _depura("postgresiface2::ejecuta",0);
+    _depura("postgresiface2::ejecuta", 0);
     PGresult *result=NULL;
     try {
         //Prova de control de permisos
-        if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6)=="DELETE" || Query.left(6)=="UPDATE" || Query.left(6)=="INSERT"))
+        if (confpr->valor(CONF_PRIVILEGIOS_USUARIO) != "1" && (Query.left(6) == "DELETE" || Query.left(6) == "UPDATE" || Query.left(6) == "INSERT"))
             throw (42501);
         //Fi prova. Nota: 42501 = INSUFFICIENT PRIVILEGE en SQL Standard
-        result = PQexec(conn,  (const char *) Query.utf8());
+        result = PQexec(conn, (const char *) Query.toUtf8());
         if (!result || PQresultStatus(result) != PGRES_COMMAND_OK)
             throw -1;
         PQclear(result);
-        _depura("postgresiface2::ejecuta",0);
+        _depura("postgresiface2::ejecuta", 0);
         return 0;
     } catch (...) {
-        _depura("SQL command failed: "+Query);
+        _depura("SQL command failed: " + Query);
         fprintf(stderr,"%s\n", PQerrorMessage(conn));
         QString mensaje = "Error al intentar modificar la base de datos:\n";
-        msgError(mensaje+(QString)PQerrorMessage(conn),Query+"\n"+(QString)PQerrorMessage(conn));
+        msgError(mensaje + (QString)PQerrorMessage(conn), Query + "\n" + (QString)PQerrorMessage(conn));
         PQclear(result);
         throw -1;
     } // end try
@@ -779,7 +779,7 @@ QString postgresiface2::sanearCadena(QString cadena) {
     // Reservamos (la funcion de postgres lo necesita) un buffer del
     // doble de caracteres + 1 que la cadena original
     buffer = (char *)malloc(sizeof(char)*longitud*3);
-    PQescapeString(buffer, cadena.utf8(), strlen(cadena.utf8()));
+    PQescapeString(buffer, cadena.toUtf8(), strlen(cadena.toUtf8()));
     cadenaLimpia = buffer;
     free(buffer);
     return cadenaLimpia;

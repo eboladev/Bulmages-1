@@ -26,7 +26,6 @@
 
 listlinpresupuesto::listlinpresupuesto(company *comp) {
     companyact = comp;
-    m_lista.setAutoDelete(TRUE);
     mdb_idpresupuesto = "";
 }
 
@@ -34,7 +33,6 @@ listlinpresupuesto::listlinpresupuesto(company *comp) {
 listlinpresupuesto::listlinpresupuesto() {
     _depura("Constructor de listlinpresupuesto\n", 2);
     companyact = NULL;
-    m_lista.setAutoDelete(TRUE);
     mdb_idpresupuesto = "";
 }
 
@@ -85,22 +83,16 @@ int listlinpresupuesto::chargeBudgetLines(QString idbudget) {
 
 
 void listlinpresupuesto::guardalistlinpresupuesto() {
-    linpresupuesto *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        linea->guardalinpresupuesto();
-        i++;
+    for (int i = 0; i < m_lista.size(); ++i) {
+        m_lista.at(i)->guardalinpresupuesto();
     } // end for
 }
 
 
 float listlinpresupuesto::calculabase() {
     float base = 0;
-    linpresupuesto *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        base += linea->calculabase();
-        i++;
+    for (int i = 0; i < m_lista.size(); ++i) {
+        base += m_lista.at(i)->calculabase();
     } // end for
     return base;
 }
@@ -108,11 +100,8 @@ float listlinpresupuesto::calculabase() {
 
 float listlinpresupuesto::calculaiva() {
     float iva = 0;
-    linpresupuesto *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        iva += linea->calculaiva();
-        i++;
+    for (int i = 0; i < m_lista.size(); ++i) {
+        iva += m_lista.at(i)->calculaiva();
     } // end for
     return iva;
 }
@@ -141,7 +130,8 @@ void listlinpresupuesto::borralinpresupuesto(int pos) {
     linpresupuesto *linea;
     linea = m_lista.at(pos);
     linea->borrar();
-    m_lista.remove(pos);
+    delete linea;
+    m_lista.removeAt(pos);
     pintalistlinpresupuesto();
 }
 

@@ -24,6 +24,11 @@
 #include <Q3Table>
 #include <QEvent>
 
+#include <Q3TableItem>
+#include <QColorGroup>
+#include <QPainter>
+#include <QRect>
+
 
 class QTableItem1 : public Q3TableItem {
 

@@ -27,6 +27,7 @@
 
 #include "configuracion.h"
 #include "funcaux.h"
+#include "QTextStream"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -278,7 +279,7 @@ void configuracion::saveconfig() {
 /// contains the configuration.
 /// Lee la configuracion del fichero de configuracion pasado y rellena la estructura.
 bool configuracion::leeconfig(QString fich) {
-    fprintf(stderr, "leeconfig(%s)\n", fich.ascii());
+    _depura("leeconfig(" + fich + ")\n", 0);
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
         QTextStream in(&arch);

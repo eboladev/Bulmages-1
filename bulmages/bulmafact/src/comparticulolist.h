@@ -21,7 +21,7 @@
 #ifndef LISTCOMPARTICULO_H
 #define LISTCOMPARTICULO_H
 
-#include <Q3PtrList>
+#include <QList>
 #include <QObject>
 
 #include "company.h"
@@ -34,7 +34,7 @@ class ListCompArticulo {
 public:
     company *companyact;
     QString mdb_idarticulo;
-    Q3PtrList<CompArticulo> m_lista;
+    QList<CompArticulo *> m_lista;
 
 public:
     ListCompArticulo(company *comp);
@@ -57,12 +57,9 @@ public:
     void borrar(int);
     void setidarticulo(QString id) {
         mdb_idarticulo = id;
-        CompArticulo *linea;
-        uint i = 0;
-        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-            linea->setidarticulo(mdb_idarticulo);
-            i++;
-        }
+        for (int i = 0; i < m_lista.size(); ++i) {
+            m_lista.at(i)->setidarticulo(mdb_idarticulo);
+        } // end for
     };
 };
 
