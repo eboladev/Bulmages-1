@@ -43,13 +43,19 @@ using std::string;
 /// g_main debe estar declarado en cada una de las aplicacioones y hace referencia al
 /// QMainWindow respectivo en cada caso. Se usa para acceder a determiandos elementos
 /// especificos de la ventana como el statusBar
-//#include <Q3MainWindow>
 #include <QMainWindow>
 #include <QStatusBar>
 
-//extern Q3MainWindow *g_main;
-/// Con BulmaFact ya no es asi
+
 extern QMainWindow *g_main;
+
+
+template <typename T>
+std::string Ttos(T arg) {
+    std::ostringstream buffer;
+    buffer << arg; /// send to the ostringstream.
+    return buffer.str(); /// capture the string.
+}
 
 /// Extiende un string a un numero de cuenta sustituyendo los '.' por ceros.
 string extiendecodigo (string, unsigned int);
@@ -68,18 +74,8 @@ QString ajustacodigo(QString, unsigned int);
 void reemplazaarchivo(QString, QString, QString, QString);
 /// Esta funcion permite editar un texto en un QTextEdit y devuelve el texto editado.
 QString editaTexto(QString texto);
-
-
-template <typename T>
-std::string Ttos(T arg) {
-    std::ostringstream buffer;
-    buffer << arg; /// send to the ostringstream.
-    return buffer.str(); /// capture the string.
-}
-
 void _depura(QString cad, int nivel = 0, QString param = "");
 void mensajeInfo(QString cad);
-
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
 /// de la invocacion de trml2pdf.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.

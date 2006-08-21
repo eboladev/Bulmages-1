@@ -18,46 +18,45 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/** \file configuracion.cpp
-  * Este fichero contiene la implementaci� de la clase \ref configuracion que se encarga
-  * de recoger todos los parametros de configuraci� de la aplicaci� y los centraliza 
-  * en un nico objeto que luego es instanciado como objeto global \ref confpr
-  * De este modo cualquier objeto de la aplicaci� puede consultar (sin demasiados problemas cual es la configuraci� que le corresponde).
-  */
+/// Este fichero contiene la implementacion de la clase 'configuracion' que se encarga
+/// de recoger todos los parametros de configuracion de la aplicacion y los centraliza
+/// en un unico objeto que luego es instanciado como objeto global 'confpr'
+/// De este modo cualquier objeto de la aplicacion puede consultar
+/// (sin demasiados problemas cual es la configuracion que le corresponde).
 
-#include "configuracion.h"
-#include "funcaux.h"
 #include "QTextStream"
-
-#ifndef WIN32
-#include <unistd.h>
-#endif
-
 #include <QDir>
 
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#ifndef WIN32
+    #include <unistd.h>
+#endif
+
+#include "configuracion.h"
+#include "funcaux.h"
+
 
 using namespace std;
+
 
 #include "abreempresaview.h"
 
 #ifdef WIN32
-#define CONFGLOBAL "C:\\bulmages.conf"
+    #define CONFGLOBAL "C:\\bulmages.conf"
 #else
-#define CONFGLOBAL "/etc/bulmages.conf"
+    #define CONFGLOBAL "/etc/bulmages.conf"
 #endif
 
 #define CONFLOCAL "bulmages.conf"
 
 
 /// The global object confpr is the instance of configuracion that is available to
-/// all BulmaGes aplications
+/// all BulmaGes aplicationlas
 /// El objeto global confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
 configuracion *confpr;
-
 
 /// Constructor de la clase que hace directamente la lectura de los dos posibles
 /// archivos que pueden tener informacion de configuracion de Bulmages:
@@ -65,7 +64,6 @@ configuracion *confpr;
 /// '~/bulmages.conf'.
 configuracion::configuracion() {
     _depura("configuracion::configuracion", 1);
-
     QDir homedir;
     /// Cambiamos a ~/.bulmages como directorio de trabajo.
     QString dir = getenv("HOME");
@@ -86,7 +84,7 @@ configuracion::configuracion() {
     chdir(dir.toAscii().data());
     /// Primero leemos la configuracion global.
     _depura("Vamos a llamar a leeconfig\n", 1);
-    leeconfig (CONFGLOBAL);
+    leeconfig(CONFGLOBAL);
     /// Y luego anyadimos la configuracion local, asi los valores por defecto son los globales.
     /// Y los que estan en local sustituyen a los existentes.
 
@@ -258,7 +256,8 @@ QString configuracion::nombre(int i) {
 
 
 /// This method writes the configuration of the system to the home bulmages.conf file
-/// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del 'home' del usuario.
+/// Este metodo escribe la configuracion del sistema en el fichero bulmages.conf del
+/// 'home' del usuario.
 void configuracion::saveconfig() {
     QString dir1 = getenv("HOME");
     dir1 = dir1 + "/" + CONFLOCAL;
@@ -301,19 +300,17 @@ bool configuracion::leeconfig(QString fich) {
 }
 
 
-/** Devuelve el valor de un campo determinado.
-  * \param i Parametro del que se quiere el valor.
-  * \return El valor que tiene dicho parametro.
-  */
+/// Devuelve el valor de un campo determinado.
+/// \param i Parametro del que se quiere el valor.
+/// \return El valor que tiene dicho parametro.
 QString configuracion::valor(int i) {
     return (m_valores[i]);
 }
 
 
-/** Establece el valor de un campo determinado con la tupla que se pasa como parametro.
-  * \param i El indice del parametro a cambiar.
-  * \param valor El valor que tomaria dicho parametro.
-  */
+/// Establece el valor de un campo determinado con la tupla que se pasa como parametro.
+/// \param i El indice del parametro a cambiar.
+/// \param valor El valor que tomaria dicho parametro.
 void configuracion::setValor(int i, QString valor) {
     m_valores[i] = valor;
 }

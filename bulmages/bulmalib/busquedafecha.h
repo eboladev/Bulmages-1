@@ -30,8 +30,6 @@
 class BusquedaFecha : public QWidget, public Ui_BusquedaFechaBase {
     Q_OBJECT
 
-private:
-
 public:
     BusquedaFecha(QWidget *parent = 0, const char *name = 0);
     ~BusquedaFecha();
@@ -42,7 +40,7 @@ public:
         m_fecha->setText(val);
     };
     virtual QString fecha() {
-        return(m_fecha->text());
+        return m_fecha->text();
     };
     virtual QString text() {
         return m_fecha->text();

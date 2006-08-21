@@ -37,7 +37,7 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="text" >
         <string/>
        </property>
@@ -238,7 +238,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Buscar:</string>
           </property>
@@ -306,7 +306,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Contiene articulo:</string>
           </property>
@@ -332,7 +332,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Proveedor:</string>
           </property>
@@ -368,7 +368,7 @@
          <number>3</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Fecha inicial:</string>
           </property>
@@ -394,7 +394,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Fecha final:</string>
           </property>
@@ -452,7 +452,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="text" >
         <string>Total: </string>
        </property>
@@ -518,5 +518,22 @@
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_filtrar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_busqueda</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>232</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>117</x>
+     <y>75</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

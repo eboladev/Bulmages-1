@@ -33,7 +33,6 @@ void QWorkspace2::addWindow(QWidget * w) {
     int margen = 10;
 
     QWorkspace::addWindow(w);
-
     /// Se comprueba el tamanyo de la ventana que esta disenyada con Designer:
     /// Solo si la ventana es mas grande que el espacio de representacion se ajusta
     /// para caber dentro.
@@ -50,7 +49,6 @@ void QWorkspace2::addWindow(QWidget * w) {
     tamventanaH = w->geometry().height();
 
     /// Comprobamos si es necesario cambiar el tamanyo a la ventana.
-
     if (tamventanadecoW > tamdispW)
         tamventanaW = tamdispW - (tamventanadecoW - tamventanaW);
     if (tamventanadecoH > tamdispH)

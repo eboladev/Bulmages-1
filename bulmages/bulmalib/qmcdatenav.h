@@ -35,23 +35,17 @@ public:
     QmcDateNav(class QWidget * parent = 0, const char * name = 0);
     QmcDateNav(const class QDate &, class QWidget * parent = 0, const char * name = 0);
     ~QmcDateNav();
-
     virtual QSizePolicy sizePolicy() const;
     virtual QSize sizeHint() const;
     virtual QSize minimumSizeHint() const;
-
     bool frame() const;
     void setFrame(bool);
-
     Q3PtrList<QDate> selectedDates() const;
     bool setDate(const QDate d);
-
     bool outlook() const;
     void setOutlook(bool);
-
     void installEventDayList(Q3PtrList<QDate> *);
     void removeEventDayList();
-
     void installNonWorkingDayList(Q3PtrList<QDate> *);
     void removeNonWorkingDayList();
 

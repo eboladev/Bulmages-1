@@ -28,15 +28,15 @@
 
 
 struct QmcDate {
-    QDate d;  /// Date
-    QRect r;  /// Rect
-    bool s;   /// Selected
-    bool t;   /// Today
+    QDate d; /// Date
+    QRect r; /// Rect
+    bool s; /// Selected
+    bool t; /// Today
 };
 
 Q3PtrList<QmcDate> dateList; /// All visible days
 
-Q3PtrList<QDate> *eventDayList;      /// Only ever a pointer to a list
+Q3PtrList<QDate> *eventDayList; /// Only ever a pointer to a list
 Q3PtrList<QDate> *nonWorkingDayList; /// Ditto
 
 bool doOutlook; /// Are we to paint in outlook compatible mode?
@@ -82,10 +82,10 @@ QmcDateNav::~QmcDateNav() {
         delete sevenMonthPopup;
     if (rbPopup)
         delete rbPopup;
-    dateList.setAutoDelete(true);   /// Ensures the next line works
-    dateList.clear();               /// will delete all QmcDate objects
+    dateList.setAutoDelete(true); /// Ensures the next line works.
+    dateList.clear(); /// will delete all QmcDate objects.
 
-    /// Do NOT delete these - that's the job of the app programmer
+    /// Do NOT delete these - that's the job of the app programmer.
     eventDayList = 0;
     nonWorkingDayList = 0;
 }
@@ -110,7 +110,7 @@ void QmcDateNav::init() {
     doOutlook = false;
     pm = 0;
 
-    setMouseTracking(true); /// So we can do the cursor changes properly
+    setMouseTracking(true); /// So we can do the cursor changes properly.
 }
 
 
@@ -157,14 +157,12 @@ void QmcDateNav::paintEvent(QPaintEvent *) {
         drawDates(p);
     }
     p.end();
-
     p.begin(this);
     p.drawPixmap(0, 0, *pm);
     p.end();
     pmDirty = false;
 
     drawSelections();
-
     /// The 'today' indicator - a red box around todays date.
     if (currentMonth.month() == QDate::currentDate().month()) {
         for (int i = 0; i <= 41; i++) {
@@ -174,7 +172,6 @@ void QmcDateNav::paintEvent(QPaintEvent *) {
             } // end if
         } // end for
     } // end if
-
     /// If we set this in init(), the widget is black before the first paint event,
     /// which is not cool.
     /// Once we've done the initial paint, this will reduce flicker.
@@ -184,7 +181,6 @@ void QmcDateNav::paintEvent(QPaintEvent *) {
 void QmcDateNav::makePixmap() {
     if (!pmDirty)
         return;
-
     if (pm != 0)
         delete pm;
 
@@ -223,131 +219,126 @@ void QmcDateNav::drawArrows(QPainter & p) {
     p.drawLine(leftBase + 1, topBase + 1, leftBase + 1 + 4, topBase + 1 - 4);
     p.drawLine(leftBase + 1, topBase + 1, leftBase + 1 + 4, topBase + 1 + 4);
     p.drawLine(leftBase + 1 + 4, topBase + 1 - 4, leftBase + 1 + 4, topBase + 1 + 4);
-
-    // left triangle - fill
-    p.drawLine( leftBase + 1 + 3, topBase + 1 - 3, leftBase + 1 + 3, topBase + 1 + 3 );
-    p.drawLine( leftBase + 1 + 2, topBase + 1 - 2, leftBase + 1 + 2, topBase + 1 + 2 );
-    p.drawLine( leftBase + 1 + 1, topBase + 1 - 1, leftBase + 1 + 1, topBase + 1 + 1 );
-
-    // adjust for right hand triangle
-    leftBase = width() - ( frame() ? 1 : 0 ) - 2 - 4;
-    captionRect.setRight( leftBase - 1 - 4 - 1 );
-    rightArrowRect.setLeft( leftBase - 1 - 4 );
-    rightArrowRect.setRight( leftBase + 1 );
-    rightArrowRect.setTop( topBase + 1 - 4 - 1 );
-    rightArrowRect.setBottom( topBase + 1 + 4 + 1 );
-
-    // right triangle - outline
-    p.drawLine( leftBase - 1, topBase + 1, leftBase - 1 - 4, topBase + 1 - 4 );
-    p.drawLine( leftBase - 1, topBase + 1, leftBase - 1 - 4, topBase + 1 + 4 );
-    p.drawLine( leftBase - 1 - 4, topBase + 1 - 4, leftBase - 1 - 4, topBase + 1 + 4 );
-
-    // right triangle - fill
-    p.drawLine( leftBase - 1 - 3, topBase + 1 - 3, leftBase - 1 - 3, topBase + 1 + 3 );
-    p.drawLine( leftBase - 1 - 2, topBase + 1 - 2, leftBase - 1 - 2, topBase + 1 + 2 );
-    p.drawLine( leftBase - 1 - 1, topBase + 1 - 1, leftBase - 1 - 1, topBase + 1 + 1 );
+    /// left triangle - fill.
+    p.drawLine(leftBase + 1 + 3, topBase + 1 - 3, leftBase + 1 + 3, topBase + 1 + 3);
+    p.drawLine(leftBase + 1 + 2, topBase + 1 - 2, leftBase + 1 + 2, topBase + 1 + 2);
+    p.drawLine(leftBase + 1 + 1, topBase + 1 - 1, leftBase + 1 + 1, topBase + 1 + 1);
+    /// adjust for right hand triangle.
+    leftBase = width() - (frame() ? 1 : 0) - 2 - 4;
+    captionRect.setRight(leftBase - 1 - 4 - 1);
+    rightArrowRect.setLeft(leftBase - 1 - 4);
+    rightArrowRect.setRight(leftBase + 1);
+    rightArrowRect.setTop(topBase + 1 - 4 - 1);
+    rightArrowRect.setBottom(topBase + 1 + 4 + 1);
+    /// right triangle - outline.
+    p.drawLine(leftBase - 1, topBase + 1, leftBase - 1 - 4, topBase + 1 - 4);
+    p.drawLine(leftBase - 1, topBase + 1, leftBase - 1 - 4, topBase + 1 + 4);
+    p.drawLine(leftBase - 1 - 4, topBase + 1 - 4, leftBase - 1 - 4, topBase + 1 + 4);
+    /// right triangle - fill.
+    p.drawLine(leftBase - 1 - 3, topBase + 1 - 3, leftBase - 1 - 3, topBase + 1 + 3);
+    p.drawLine(leftBase - 1 - 2, topBase + 1 - 2, leftBase - 1 - 2, topBase + 1 + 2);
+    p.drawLine(leftBase - 1 - 1, topBase + 1 - 1, leftBase - 1 - 1, topBase + 1 + 1);
 }
 
 
-QRect * QmcDateNav::drawCaptionText( QPainter & p ) {
-    QRect br( 0, 3, width(), height() );
-    p.setPen( colorGroup().text() );
-    QString cText = monthName( currentMonth.month() );
+QRect * QmcDateNav::drawCaptionText(QPainter & p) {
+    QRect br(0, 3, width(), height());
+    p.setPen(colorGroup().text());
+    QString cText = monthName(currentMonth.month());
     cText += " ";
-    cText += QString::number( currentMonth.year(), 10 );
-    p.drawText( br, Qt::AlignTop | Qt::AlignHCenter, cText, -1, &br );
-    captionRect.setTop( br.top() );
-    captionRect.setBottom( br.bottom() );
-    return new QRect( br );
+    cText += QString::number(currentMonth.year(), 10);
+    p.drawText(br, Qt::AlignTop | Qt::AlignHCenter, cText, -1, &br);
+    captionRect.setTop(br.top());
+    captionRect.setBottom(br.bottom());
+    return new QRect(br);
 }
 
 
-void QmcDateNav::drawCaption( QPainter & p ) {
-    QRect * tbr = drawCaptionText( p );
+void QmcDateNav::drawCaption(QPainter & p) {
+    QRect * tbr = drawCaptionText(p);
     int fw = frame() ? 1 : 0;
-    p.fillRect( fw, fw, width() - ( fw * 2 ), tbr->bottom() + 2 + ( frame() ? 0 : 1 ), colorGroup().background() );
-    drawCaptionText( p );
-    p.setPen( colorGroup().dark() );
-    p.drawLine( fw, tbr->bottom() + 3, width() - fw - 1, tbr->bottom() + 3 );
-    if( frame() )
-        p.drawLine( width() - fw - 1, tbr->bottom() + 3, width() - fw - 1, fw );
+    p.fillRect(fw, fw, width() - (fw * 2), tbr->bottom() + 2 + (frame() ? 0 : 1), colorGroup().background());
+    drawCaptionText(p);
+    p.setPen(colorGroup().dark());
+    p.drawLine(fw, tbr->bottom() + 3, width() - fw - 1, tbr->bottom() + 3);
+    if (frame())
+        p.drawLine(width() - fw - 1, tbr->bottom() + 3, width() - fw - 1, fw);
     delete tbr;
     tbr = 0;
-    drawArrows( p );
+    drawArrows(p);
 }
 
 
-void QmcDateNav::drawFrame( QPainter & p ) {
-    if( !doFrame )
+void QmcDateNav::drawFrame(QPainter & p) {
+    if(!doFrame)
         return;
-    p.setPen( colorGroup().dark() );
-    p.drawLine( 0, 0, width() - 2, 0 );
-    p.drawLine( 0, 0, 0, height() - 2 );
+    p.setPen(colorGroup().dark());
+    p.drawLine(0, 0, width() - 2, 0);
+    p.drawLine(0, 0, 0, height() - 2);
 }
 
 
-void QmcDateNav::drawDays( QPainter & p ) {
-    int dayTop = drawCaptionText( p )->bottom() + 4;
-    int colWidth = p.fontMetrics().width( "00" ) + 6;
-    int tableWidth = ( colWidth * 7 );
-    int leftBase = ( width() - tableWidth ) / 2;
+void QmcDateNav::drawDays(QPainter & p) {
+    int dayTop = drawCaptionText(p)->bottom() + 4;
+    int colWidth = p.fontMetrics().width("00") + 6;
+    int tableWidth = (colWidth * 7);
+    int leftBase = (width() - tableWidth) / 2;
 
-    sunBR = QRect( leftBase, dayTop, p.fontMetrics().width( "00" ) + 6, p.fontMetrics().height() );
-    monBR = QRect( sunBR.right() + 1, dayTop, sunBR.width(), sunBR.height() );
-    tueBR = QRect( monBR.right() + 1, dayTop, sunBR.width(), sunBR.height() );
-    wedBR = QRect( tueBR.right() + 1, dayTop, sunBR.width(), sunBR.height() );
-    thuBR = QRect( wedBR.right() + 1, dayTop, sunBR.width(), sunBR.height() );
-    friBR = QRect( thuBR.right() + 1, dayTop, sunBR.width(), sunBR.height() );
-    satBR = QRect( friBR.right() + 1, dayTop, sunBR.width(), sunBR.height() );
+    sunBR = QRect(leftBase, dayTop, p.fontMetrics().width "00") + 6, p.fontMetrics().height());
+    monBR = QRect(sunBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
+    tueBR = QRect(monBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
+    wedBR = QRect(tueBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
+    thuBR = QRect(wedBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
+    friBR = QRect(thuBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
+    satBR = QRect(friBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
     QRect tSatBR;
 
-    p.setPen( colorGroup().text() );
+    p.setPen(colorGroup().text());
 
-    p.drawText( sunBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Sunday"    )[0] ) );
-    p.drawText( monBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Monday"    )[0] ) );
-    p.drawText( tueBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Tuesday"   )[0] ) );
-    p.drawText( wedBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Wednesday" )[0] ) );
-    p.drawText( thuBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Thursday"  )[0] ) );
-    p.drawText( friBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Friday"    )[0] ) );
-    p.drawText( satBR, Qt::AlignTop | Qt::AlignHCenter, QString( tr( "Saturday"  )[0] ), -1, &tSatBR );
+    p.drawText(sunBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Sunday")[0]));
+    p.drawText(monBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Monday")[0]));
+    p.drawText(tueBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Tuesday")[0]));
+    p.drawText(wedBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Wednesday")[0]));
+    p.drawText(thuBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Thursday")[0]));
+    p.drawText(friBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Friday")[0]));
+    p.drawText(satBR, Qt::AlignTop | Qt::AlignHCenter, QString(tr("Saturday")[0]), -1, &tSatBR);
 
-    p.setPen( colorGroup().mid() );
+    p.setPen(colorGroup().mid());
 
-    p.drawLine( leftBase, tSatBR.bottom() + 1, leftBase + tableWidth, tSatBR.bottom() + 1 );
-    daysRect = QRect( sunBR.left(), sunBR.top(), satBR.right() - sunBR.left(), sunBR.height() );
+    p.drawLine(leftBase, tSatBR.bottom() + 1, leftBase + tableWidth, tSatBR.bottom() + 1);
+    daysRect = QRect(sunBR.left(), sunBR.top(), satBR.right() - sunBR.left(), sunBR.height());
 }
 
 
-void QmcDateNav::drawDates( QPainter & p ) {
+void QmcDateNav::drawDates(QPainter & p) {
     QDate *previousMonth;
     QDate *nextMonth;
     dateList.clear();
 
-    // We need to find out what day the first of this month was.
+    /// We need to find out what day the first of this month was.
     QDate *fdom = new QDate( currentMonth.year(), currentMonth.month(), 1 );
 
-    /* That value is assigned to the start position of our matrix.
-       The problem here is that Qt returns monday as 1, not 0, and Sunday
-       as 7! We count our matrix from 0, so we just turn a 7 into 0 */
+    /// That value is assigned to the start position of our matrix.
+    /// The problem here is that Qt returns monday as 1, not 0, and Sunday
+    /// as 7! We count our matrix from 0, so we just turn a 7 into 0.
     int matrixStartPos = fdom->dayOfWeek();
 
     if( matrixStartPos == 7 )
         matrixStartPos = 0;
 
-    /* If we are starting the month before thursday, we give the previous month
-       a little more space. */
+    /// If we are starting the month before thursday, we give the previous month
+    /// a little more space.
     if( matrixStartPos < 4 )
         matrixStartPos = matrixStartPos + 7;
-
-    if( !( currentMonth.month() == 1 ) )
-        previousMonth = new QDate( currentMonth.year(), currentMonth.month() - 1, 1 );
+    if(!(currentMonth.month() == 1))
+        previousMonth = new QDate(currentMonth.year(), currentMonth.month() - 1, 1);
     else
-        previousMonth = new QDate( currentMonth.year() - 1, 12, 1 );
+        previousMonth = new QDate(currentMonth.year() - 1, 12, 1);
 
-    if( !( currentMonth.month() == 12 ) )
-        nextMonth = new QDate( currentMonth.year(), currentMonth.month() + 1, 1 );
+    if(!( currentMonth.month() == 12))
+        nextMonth = new QDate(currentMonth.year(), currentMonth.month() + 1, 1);
     else
-        nextMonth = new QDate( currentMonth.year() + 1, 1, 1 );
+        nextMonth = new QDate(currentMonth.year() + 1, 1, 1);
 
     int leftBase = 0;
     int topBase = 0;
@@ -357,636 +348,605 @@ void QmcDateNav::drawDates( QPainter & p ) {
     int col = 0;
     int row = 0;
 
-    for( int i = 0; i <= 41; i++ ) {
-        if( !matrixStartPos == 0 ) {
-            //insertedDate = new QDate( QDate::QDate( previousMonth->year(), previousMonth->month(), previousMonth->daysInMonth() - matrixStartPos + 1 ) );
-            insertedDate = new QDate( previousMonth->year(), previousMonth->month(), previousMonth->daysInMonth() - matrixStartPos + 1 );
+    for (int i = 0; i <= 41; i++) {
+        if (!matrixStartPos == 0) {
+            insertedDate = new QDate(previousMonth->year(), previousMonth->month(), previousMonth->daysInMonth() - matrixStartPos + 1);
             matrixStartPos--;
         } else {
-            if( !( dayCounter == ( currentMonth.daysInMonth() + 1 ) ) ) {
-                //insertedDate = new QDate( QDate::QDate( currentMonth.year(), currentMonth.month(), dayCounter ) );
-                insertedDate = new QDate( currentMonth.year(), currentMonth.month(), dayCounter );
+            if (!(dayCounter == (currentMonth.daysInMonth() + 1))) {
+                insertedDate = new QDate(currentMonth.year(), currentMonth.month(), dayCounter);
                 dayCounter++;
             } else {
-                //insertedDate = new QDate( QDate::QDate( nextMonth->year(), nextMonth->month(), nextMonthDayCounter ) );
-                insertedDate = new QDate( nextMonth->year(), nextMonth->month(), nextMonthDayCounter );
+                insertedDate = new QDate(nextMonth->year(), nextMonth->month(), nextMonthDayCounter);
                 nextMonthDayCounter++;
-            }
-        }
+            } // end if
+        } // end if
 
-        if( col == 0 )
-            leftBase = ( frame() ? 1 : 0 ) + 6;
+        if (col == 0)
+            leftBase = (frame() ? 1 : 0) + 6;
         else
             leftBase = dateList.last()->r.right() + 1;
 
-        if( row == 0 )
-            topBase = ( frame() ? 1 : 0 ) + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect( QChar( 'S' ) ).height() + 3 + 1 + 3;
+        if (row == 0)
+            topBase = (frame() ? 1 : 0) + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect(QChar('S')).height() + 3 + 1 + 3;
         else {
-            topBase = ( frame() ? 1 : 0 ) + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect( QChar( 'S' ) ).height() + 3 + 1 + 3;
-            topBase += ( ( ( fontMetrics().boundingRect( QChar( '0' ) ).height() ) + 6 ) * row );
-        }
+            topBase = (frame() ? 1 : 0) + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect(QChar('S')).height() + 3 + 1 + 3;
+            topBase += (((fontMetrics().boundingRect(QChar('0')).height()) + 6) * row);
+        } // end if
 
-        if( insertedDate->month() != currentMonth.month() )
-            p.setPen( colorGroup().mid() );
+        if (insertedDate->month() != currentMonth.month())
+            p.setPen(colorGroup().mid());
         else
-            p.setPen( colorGroup().text() );
+            p.setPen(colorGroup().text());
 
-        bool he = hasEvent( *insertedDate );
-        bool nwd = isNonWorkingDay( *insertedDate );
+        bool he = hasEvent(*insertedDate);
+        bool nwd = isNonWorkingDay(*insertedDate);
         QFont nFont = p.font();
         QFont oFont = p.font();
-        if( he )
-            nFont.setBold( true );
-        if( nwd )
-            nFont.setItalic( true );
-        p.setFont( nFont );
-        p.drawText( leftBase, topBase, fontMetrics().width( "00" ) + 6, fontMetrics().boundingRect( QChar( '0' ) ).height() + 6, Qt::AlignCenter, QString::number( insertedDate->day(), 10 ) );
+        if(he)
+            nFont.setBold(true);
+        if(nwd)
+            nFont.setItalic(true);
+        p.setFont(nFont);
+        p.drawText(leftBase, topBase, fontMetrics().width("00") + 6, fontMetrics().boundingRect(QChar('0')).height() + 6, Qt::AlignCenter, QString::number(insertedDate->day(), 10));
 
-        if( he || nwd )
-            p.setFont( oFont );
+        if (he || nwd)
+            p.setFont(oFont);
 
         QmcDate * d = new QmcDate;
-        d->d = QDate( insertedDate->year(), insertedDate->month(), insertedDate->day() );
-        d->r = QRect( leftBase, topBase, fontMetrics().width( "00" ) + 6, fontMetrics().boundingRect( QChar( '0' ) ).height() + 6 );
+        d->d = QDate(insertedDate->year(), insertedDate->month(), insertedDate->day());
+        d->r = QRect(leftBase, topBase, fontMetrics().width("00") + 6, fontMetrics().boundingRect(QChar('0')).height() + 6);
         d->s = false;
         d->t = false;
-        if( d->d == QDate::currentDate() )
+        if (d->d == QDate::currentDate())
             d->t = true;
-        if( d->d == currentMonth )
+        if (d->d == currentMonth)
             d->s = true;
 
-        dateList.append( d );
+        dateList.append(d);
 
-        if( col != 6 )
+        if (col != 6)
             col++;
-        else if( col == 6 ) {
+        else if (col == 6) {
             col = 0;
             row++;
-        }
-    }
+        } // end if
+    } // end for
 
-    if( previousMonth )
+    if (previousMonth)
         delete previousMonth;
-    if( nextMonth )
+    if (nextMonth)
         delete nextMonth;
-    if( fdom )
+    if (fdom)
         delete fdom;
-    if( insertedDate )
+    if (insertedDate)
         delete insertedDate;
-    previousMonth = nextMonth = fdom = insertedDate =  0;
+    previousMonth = nextMonth = fdom = insertedDate = 0;
 }
 
 
 void QmcDateNav::keyPressEvent(QKeyEvent * e) {
-    switch(e->key()) {
+    switch (e->key()) {
     case 4100:
         emit close();
         break;
     case 4117:
-        for( int i = 0; i <= 41; i++ ) {
-            if( dateList.at( i )->t ) {
+        for (int i = 0; i <= 41; i++) {
+            if (dateList.at(i)->t) {
                 dateList.at(i)->t = false;
                 dateList.at(i)->s = false;
-                dateList.at(i+7)->t = true;
-                dateList.at(i+7)->s = true;
-                //	drawToday( i+7 );
+                dateList.at(i + 7)->t = true;
+                dateList.at(i + 7)->s = true;
                 break;
-            }// end if
-        }// end for
+            } // end if
+        } // end for
         break;
-
     case 4116:
-        for( int i = 0; i <= 41; i++ ) {
-            if( dateList.at( i )->t ) {
+        for (int i = 0; i <= 41; i++) {
+            if (dateList.at(i)->t) {
                 dateList.at(i)->t = false;
                 dateList.at(i)->s = false;
-                dateList.at(i+1)->t = true;
-                dateList.at(i+1)->s = true;
-                drawToday( i+1 );
+                dateList.at(i + 1)->t = true;
+                dateList.at(i + 1)->s = true;
+                drawToday(i + 1);
                 break;
-            }// end if
-        }// end for
+            } // end if
+        } // end for
         break;
     case 4114:
-        for( int i = 0; i <= 41; i++ ) {
-            if( dateList.at( i )->t ) {
+        for (int i = 0; i <= 41; i++) {
+            if (dateList.at(i)->t) {
                 dateList.at(i)->t = false;
                 dateList.at(i)->s = false;
-                dateList.at(i-1)->t = true;
-                dateList.at(i-1)->s = true;
-                drawToday( i-1 );
+                dateList.at(i - 1)->t = true;
+                dateList.at(i - 1)->s = true;
+                drawToday(i - 1);
                 break;
-            }// end if
-        }// end for
+            } // end if
+        } // end for
         break;
-
     case 4115:
-        for( int i = 0; i <= 41; i++ ) {
-            if( dateList.at( i )->t ) {
+        for (int i = 0; i <= 41; i++) {
+            if (dateList.at(i)->t) {
                 dateList.at(i)->t = false;
                 dateList.at(i)->s = false;
-                dateList.at(i-7)->t = true;
-                dateList.at(i-7)->s = true;
-                drawToday( i-7 );
+                dateList.at(i - 7)->t = true;
+                dateList.at(i - 7)->s = true;
+                drawToday(i - 7);
                 break;
-            }// end if
-        }// end for
+            } // end if
+        } // end for
         break;
-
-    }// end switch
+    } // end switch
     drawSelections();
     emit dateChanged();
 }
 
 
-void QmcDateNav::mouseDoubleClickEvent( QMouseEvent * e ) {
-    fprintf(stderr,"Doble click\n");
-    if( e->button() == Qt::RightButton ) {
+void QmcDateNav::mouseDoubleClickEvent(QMouseEvent * e) {
+    fprintf(stderr, "Doble click\n");
+    if (e->button() == Qt::RightButton) {
         prepRBPopup();
-        rbPopup->exec( QCursor::pos() );
-    }
-    if( e->button() != Qt::LeftButton )
+        rbPopup->exec(QCursor::pos());
+    } // end if
+    if (e->button() != Qt::LeftButton)
         return;
+    /// Mouse Rect.
+    QRect mr(e->x(), e->y(), 1, 1);
 
-    // Mouse Rect
-    QRect mr( e->x(), e->y(), 1, 1 );
-
-    if( captionRect.contains( mr, true ) ) {
+    if (captionRect.contains(mr, true)) {
         prepPopup();
-        QPoint pa = mapToGlobal( QPoint( captionRect.left(), captionRect.bottom() + 4 ) );
-        sevenMonthPopup->exec( pa, 4 );
+        QPoint pa = mapToGlobal(QPoint(captionRect.left(), captionRect.bottom() + 4));
+        sevenMonthPopup->exec(pa, 4);
         return;
-    }
-
-    if( leftArrowRect.contains( mr, true ) ) {
-        changeMonth( false, 1 );
-    }
-
-    if( rightArrowRect.contains( mr, true ) ) {
-        changeMonth( true, 1 );
-    }
-
-
-    if( daysRect.contains( mr, true ) ) {
+    } // end if
+    if (leftArrowRect.contains(mr, true)) {
+        changeMonth(false, 1);
+    } // end if
+    if (rightArrowRect.contains(mr, true)) {
+        changeMonth(true, 1);
+    } // end if
+    if (daysRect.contains(mr, true)) {
         int dayToSelect = 0;
-        if( sunBR.contains( mr, true ) )
+        if (sunBR.contains(mr, true))
             dayToSelect = 7;
-        if( monBR.contains( mr, true ) )
+        if (monBR.contains(mr, true))
             dayToSelect = 1;
-        if( tueBR.contains( mr, true ) )
+        if (tueBR.contains(mr, true))
             dayToSelect = 2;
-        if( wedBR.contains( mr, true ) )
+        if (wedBR.contains(mr, true))
             dayToSelect = 3;
-        if( thuBR.contains( mr, true ) )
+        if (thuBR.contains(mr, true))
             dayToSelect = 4;
-        if( friBR.contains( mr, true ) )
+        if (friBR.contains(mr, true))
             dayToSelect = 5;
-        if( satBR.contains( mr, true ) )
+        if (satBR.contains(mr, true))
             dayToSelect = 6;
-        if( dayToSelect == 0 )
+        if (dayToSelect == 0)
             return;
-        if( e->state() != Qt::ControlButton )
+        if (e->state() != Qt::ControlButton)
             clear();
-        for( int i = 0; i <= 41; i++ )
-            if( dateList.at( i )->d.dayOfWeek() == dayToSelect )
-                dateList.at( i )->s = true;
-        drawSelections();
-        emit dateChanged();
-        emit close();
-        return;
-    }
+        for (int i = 0; i <= 41; i++)
+            if (dateList.at(i)->d.dayOfWeek() == dayToSelect)
+                dateList.at(i ->s = true;
+                            drawSelections();
+                            emit dateChanged();
+                            emit close();
+                            return;
+                        } // end if
 
+                QRect weeksRect(frame() ? 1 : 0,
+                                dateList.at(0)->r.top(),
+                                dateList.at(0)->r.left() - (frame() ? 1 : 0),
+                                dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
 
-    QRect weeksRect( frame() ? 1 : 0,
-                     dateList.at( 0 )->r.top(),
-                     dateList.at( 0 )->r.left() - ( frame() ? 1 : 0 ),
-                     dateList.at( 41 )->r.bottom() - dateList.at( 0 )->r.top() );
-
-    if( weeksRect.contains( mr, true ) ) {
-        if( e->state() != Qt::ControlButton )
+    if (weeksRect.contains(mr, true)) {
+        if (e->state() != Qt::ControlButton)
             clear();
         int i = -1;
-        if( e->y() > dateList.at( 35 )->r.top() )
-            for( i = 35; i <= 41; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 28 )->r.top() )
-            for( i = 28; i <= 34; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 21 )->r.top() )
-            for( i = 21; i <= 27; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 14 )->r.top() )
-            for( i = 14; i <= 20; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 7 )->r.top() )
-            for( i = 7; i <= 13; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 0 )->r.top() )
-            for( i = 0; i <= 6; i++ )
-                dateList.at( i )->s = true;
+        if (e->y() > dateList.at(35)->r.top())
+            for (i = 35; i <= 41; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(28)->r.top())
+            for (i = 28; i <= 34; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(21)->r.top())
+            for (i = 21; i <= 27; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(14)->r.top())
+            for (i = 14; i <= 20; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(7)->r.top())
+            for (i = 7; i <= 13; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(0)->r.top())
+            for (i = 0; i <= 6; i++)
+                dateList.at(i)->s = true;
         drawSelections();
         emit dateChanged();
-        //	emit close();
         return;
-    }
-
-
-    for( int r = 0; r <= 41; r++ ) {
-        if( dateList.at( r )->r.contains( mr, true ) ) {
-            // Click outside the current month
-            if(  dateList.at( r )->d.month() != currentMonth.month() && e->state() != Qt::ControlButton && e->state() != Qt::ShiftButton ) {
-                QDate sd( dateList.at( r )->d.year(), dateList.at( r )->d.month(), dateList.at( r )->d.day() );
-                setDate( sd );
+    } // end if
+    for (int r = 0; r <= 41; r++) {
+        if (dateList.at(r)->r.contains(mr, true)) {
+            /// Click outside the current month.
+            if (dateList.at(r)->d.month() != currentMonth.month() && e->state() != Qt::ControlButton && e->state() != Qt::ShiftButton) {
+                QDate sd(dateList.at(r)->d.year(), dateList.at(r)->d.month(), dateList.at(r)->d.day());
+                setDate(sd);
                 return;
-            }
-
-            // MultiSelection : Control Button
-            if( e->state() & Qt::ControlButton ) {
-                drawSelectedDate( r );
+            } // end if
+            /// MultiSelection : Control Button.
+            if (e->state() & Qt::ControlButton) {
+                drawSelectedDate(r);
                 emit dateChanged();
                 return;
-            }
-
-            // MultiSelection : Shift Button
-            if( e->state() & Qt::ShiftButton ) {
-                // Always draw from the start of the selection
-                int markStart = findIndex( *selectedDates().at( 0 ) );
+            } // end if
+            /// MultiSelection : Shift Button.
+            if (e->state() & Qt::ShiftButton) {
+                /// Always draw from the start of the selection.
+                int markStart = findIndex(*selectedDates().at(0));
                 clear();
                 int markEnd = r;
                 int b = markStart < markEnd ? markStart : markEnd;
                 int e = markStart > markEnd ? markStart : markEnd;
-                for( ; b <= e; b++ ) {
-                    dateList.at( b )->s = true;
-                }
+                for (; b <= e; b++) {
+                    dateList.at(b)->s = true;
+                } // end for
                 drawSelections();
                 return;
             } else {
                 clear();
-                drawSelectedDate( r );
+                drawSelectedDate(r);
                 emit dateChanged();
                 emit close();
                 return;
-            }
-        }
-    }
+            } // end if
+        } // end if
+    } // end for
 }
 
 
-
-void QmcDateNav::mousePressEvent( QMouseEvent * e ) {
-    if( e->button() == Qt::RightButton ) {
+void QmcDateNav::mousePressEvent(QMouseEvent * e) {
+    if (e->button() == Qt::RightButton) {
         prepRBPopup();
-        rbPopup->exec( QCursor::pos() );
-    }
-    if( e->button() != Qt::LeftButton )
+        rbPopup->exec(QCursor::pos());
+    } // end if
+    if (e->button() != Qt::LeftButton)
         return;
-
-    // Mouse Rect
-    QRect mr( e->x(), e->y(), 1, 1 );
-
-    if( captionRect.contains( mr, true ) ) {
+    /// Mouse Rect.
+    QRect mr(e->x(), e->y(), 1, 1);
+    if (captionRect.contains(mr, true)) {
         prepPopup();
-        QPoint pa = mapToGlobal( QPoint( captionRect.left(), captionRect.bottom() + 4 ) );
-        sevenMonthPopup->exec( pa, 4 );
+        QPoint pa = mapToGlobal(QPoint(captionRect.left(), captionRect.bottom() + 4));
+        sevenMonthPopup->exec(pa, 4);
         return;
-    }
-
-    if( leftArrowRect.contains( mr, true ) ) {
-        changeMonth( false, 1 );
-    }
-
-    if( rightArrowRect.contains( mr, true ) ) {
-        changeMonth( true, 1 );
-    }
-
-
-    if( daysRect.contains( mr, true ) ) {
+    } // end if
+    if (leftArrowRect.contains(mr, true)) {
+        changeMonth(false, 1);
+    } // end if
+    if (rightArrowRect.contains(mr, true)) {
+        changeMonth(true, 1);
+    } // end if
+    if (daysRect.contains(mr, true)) {
         int dayToSelect = 0;
-        if( sunBR.contains( mr, true ) )
+        if (sunBR.contains(mr, true))
             dayToSelect = 7;
-        if( monBR.contains( mr, true ) )
+        if (monBR.contains(mr, true))
             dayToSelect = 1;
-        if( tueBR.contains( mr, true ) )
+        if (tueBR.contains( mr, true))
             dayToSelect = 2;
-        if( wedBR.contains( mr, true ) )
+        if (wedBR.contains(mr, true))
             dayToSelect = 3;
-        if( thuBR.contains( mr, true ) )
+        if (thuBR.contains(mr, true))
             dayToSelect = 4;
-        if( friBR.contains( mr, true ) )
+        if (friBR.contains(mr, true))
             dayToSelect = 5;
-        if( satBR.contains( mr, true ) )
+        if (satBR.contains(mr, true))
             dayToSelect = 6;
-        if( dayToSelect == 0 )
+        if (dayToSelect == 0)
             return;
-        if( e->state() != Qt::ControlButton )
+        if (e->state() != Qt::ControlButton)
             clear();
-        for( int i = 0; i <= 41; i++ )
-            if( dateList.at( i )->d.dayOfWeek() == dayToSelect )
-                dateList.at( i )->s = true;
+        for (int i = 0; i <= 41; i++)
+            if (dateList.at(i)->d.dayOfWeek() == dayToSelect)
+                dateList.at(i)->s = true;
         drawSelections();
         emit dateChanged();
         return;
     }
 
+    QRect weeksRect(frame() ? 1 : 0,
+                    dateList.at(0)->r.top(),
+                    dateList.at(0)->r.left() - (frame() ? 1 : 0),
+                    dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
 
-    QRect weeksRect( frame() ? 1 : 0,
-                     dateList.at( 0 )->r.top(),
-                     dateList.at( 0 )->r.left() - ( frame() ? 1 : 0 ),
-                     dateList.at( 41 )->r.bottom() - dateList.at( 0 )->r.top() );
-
-    if( weeksRect.contains( mr, true ) ) {
-        if( e->state() != Qt::ControlButton )
+    if (weeksRect.contains(mr, true)) {
+        if (e->state() != Qt::ControlButton)
             clear();
         int i = -1;
-        if( e->y() > dateList.at( 35 )->r.top() )
-            for( i = 35; i <= 41; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 28 )->r.top() )
-            for( i = 28; i <= 34; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 21 )->r.top() )
-            for( i = 21; i <= 27; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 14 )->r.top() )
-            for( i = 14; i <= 20; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 7 )->r.top() )
-            for( i = 7; i <= 13; i++ )
-                dateList.at( i )->s = true;
-        else if( e->y() > dateList.at( 0 )->r.top() )
-            for( i = 0; i <= 6; i++ )
-                dateList.at( i )->s = true;
+        if (e->y() > dateList.at( 35 )->r.top())
+            for (i = 35; i <= 41; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(28)->r.top())
+            for (i = 28; i <= 34; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(21)->r.top())
+            for (i = 21; i <= 27; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(14)->r.top())
+            for (i = 14; i <= 20; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(7)->r.top())
+            for (i = 7; i <= 13; i++)
+                dateList.at(i)->s = true;
+        else if (e->y() > dateList.at(0)->r.top())
+            for (i = 0; i <= 6; i++)
+                dateList.at(i)->s = true;
         drawSelections();
         emit dateChanged();
         return;
-    }
-
-
-    for( int r = 0; r <= 41; r++ ) {
-        if( dateList.at( r )->r.contains( mr, true ) ) {
-            // Click outside the current month
-            if(  dateList.at( r )->d.month() != currentMonth.month() && e->state() != Qt::ControlButton && e->state() != Qt::ShiftButton ) {
-                QDate sd( dateList.at( r )->d.year(), dateList.at( r )->d.month(), dateList.at( r )->d.day() );
+    } // end if
+    for (int r = 0; r <= 41; r++) {
+        if (dateList.at(r)->r.contains(mr, true)) {
+            /// Click outside the current month.
+            if (dateList.at(r)->d.month() != currentMonth.month() && e->state() != Qt::ControlButton && e->state() != Qt::ShiftButton) {
+                QDate sd(dateList.at(r)->d.year(), dateList.at(r)->d.month(), dateList.at(r)->d.day());
                 setDate( sd );
                 return;
-            }
-
-            // MultiSelection : Control Button
-            if( e->state() & Qt::ControlButton ) {
-                drawSelectedDate( r );
+            } // end if
+            /// MultiSelection : Control Button.
+            if (e->state() & Qt::ControlButton) {
+                drawSelectedDate(r);
                 emit dateChanged();
                 return;
-            }
-
-            // MultiSelection : Shift Button
-            if( e->state() & Qt::ShiftButton ) {
-                // Always draw from the start of the selection
-                int markStart = findIndex( *selectedDates().at( 0 ) );
+            } // end if
+            /// MultiSelection : Shift Button.
+            if (e->state() & Qt::ShiftButton) {
+                /// Always draw from the start of the selection.
+                int markStart = findIndex(*selectedDates().at(0));
                 clear();
                 int markEnd = r;
                 int b = markStart < markEnd ? markStart : markEnd;
                 int e = markStart > markEnd ? markStart : markEnd;
-                for( ; b <= e; b++ ) {
-                    dateList.at( b )->s = true;
-                }
+                for(; b <= e; b++) {
+                    dateList.at(b)->s = true;
+                } // end for
                 drawSelections();
                 return;
             } else {
                 clear();
-                drawSelectedDate( r );
+                drawSelectedDate(r);
                 emit dateChanged();
                 return;
-            }
-        }
-    }
+            } // end if
+        } // end if
+    } // end for
 }
 
-// i == the index of the date
-// pe == in paint event (shouldn't toggle selection)
-void QmcDateNav::drawSelectedDate( int i, bool pe ) {
-    if( dateList.at( i )->s && !pe ) {
-        if( numSelected() <= 1 )
+
+/// i == the index of the date.
+/// pe == in paint event (shouldn't toggle selection).
+void QmcDateNav::drawSelectedDate(int i, bool pe) {
+    if (dateList.at(i)->s && !pe) {
+        if (numSelected() <= 1)
             return;
-        undrawSelectedDate( i );
-        dateList.at( i )->s = false;
-        drawToday( i );
+        undrawSelectedDate(i);
+        dateList.at(i)->s = false;
+        drawToday(i);
         return;
-    }
-    dateList.at( i )->s = true;
+    } // end if
+    dateList.at(i)->s = true;
     QPainter p;
-    p.begin( this );
-    if( doOutlook )
-        p.fillRect( dateList.at( i )->r, colorGroup().background() );
+    p.begin(this);
+    if (doOutlook)
+        p.fillRect(dateList.at(i)->r, colorGroup().background());
     else
-        p.fillRect( dateList.at( i )->r, colorGroup().highlight() );
-    p.setPen( colorGroup().highlightedText() );
+        p.fillRect(dateList.at(i)->r, colorGroup().highlight());
+    p.setPen(colorGroup().highlightedText());
     QFont pFont = p.font();
-    if( hasEvent( dateList.at( i )->d ) )
-        pFont.setBold( true );
-    if( isNonWorkingDay( dateList.at( i )->d ) )
-        pFont.setItalic( true );
-    p.setFont( pFont );
-    p.drawText( dateList.at( i )->r, Qt::AlignCenter, QString::number( dateList.at( i )->d.day(), 10 ) );
+    if (hasEvent(dateList.at(i)->d))
+        pFont.setBold(true);
+    if (isNonWorkingDay(dateList.at(i)->d))
+        pFont.setItalic(true);
+    p.setFont(pFont);
+    p.drawText(dateList.at(i)->r, Qt::AlignCenter, QString::number(dateList.at(i)->d.day(), 10));
     p.end();
-    drawToday( i );
+    drawToday(i);
 }
 
 
-void QmcDateNav::undrawSelectedDate( int i ) {
+void QmcDateNav::undrawSelectedDate(int i) {
     QPainter p;
-    p.begin( this );
-    p.fillRect( dateList.at( i )->r, colorGroup().base() );
-    p.setPen( colorGroup().mid() );
-    if( dateList.at( i )->d.month() == currentMonth.month() )
-        p.setPen( colorGroup().text() );
+    p.begin(this);
+    p.fillRect(dateList.at(i)->r, colorGroup().base());
+    p.setPen(colorGroup().mid());
+    if (dateList.at(i)->d.month() == currentMonth.month())
+        p.setPen(colorGroup().text());
     QFont pFont = p.font();
-    if( hasEvent( dateList.at( i )->d ) )
-        pFont.setBold( true );
-    if( isNonWorkingDay( dateList.at( i )->d ) )
-        pFont.setItalic( true );
-    p.setFont( pFont );
-    p.drawText( dateList.at( i )->r, Qt::AlignCenter, QString::number( dateList.at( i )->d.day(), 10 ) );
+    if (hasEvent(dateList.at( i )->d))
+        pFont.setBold(true);
+    if (isNonWorkingDay(dateList.at(i)->d))
+        pFont.setItalic(true);
+    p.setFont(pFont);
+    p.drawText(dateList.at(i)->r, Qt::AlignCenter, QString::number(dateList.at(i)->d.day(), 10));
     p.end();
 }
 
 
 int QmcDateNav::numSelected() {
     int rv = 0;
-    for( int i = 0; i <= 41; i++ ) {
-        if( dateList.at( i )->s == true )
+    for (int i = 0; i <= 41; i++) {
+        if (dateList.at(i)->s == true)
             rv++;
     }
     return rv;
 }
 
 
-void QmcDateNav::drawToday( int i ) {
-    if( !dateList.at( i )->t )
+void QmcDateNav::drawToday(int i) {
+    if (!dateList.at(i)->t)
         return;
     QPainter p;
-    p.begin( this );
-    p.setPen( QColor( 255, 0, 0 ) );
-    p.drawRect( dateList.at( i )->r );
+    p.begin(this);
+    p.setPen(QColor(255, 0, 0));
+    p.drawRect(dateList.at(i)->r);
     p.end();
 }
 
 
 void QmcDateNav::drawSelections() {
-    for( int i = 0; i <= 41; i++ ) {
-        if( dateList.at( i )->s )
-            drawSelectedDate( i, true );
-    }
+    for (int i = 0; i <= 41; i++) {
+        if (dateList.at(i)->s)
+            drawSelectedDate(i, true);
+    } // end for
 }
 
 
 void QmcDateNav::clear() {
-    for( int i = 0; i <= 41; i++ ) {
-        if( dateList.at( i )->s ) {
-            undrawSelectedDate( i );
-            dateList.at( i )->s = false;
-            drawToday( i );
-        }
-    }
+    for (int i = 0; i <= 41; i++) {
+        if (dateList.at(i)->s) {
+            undrawSelectedDate(i);
+            dateList.at(i)->s = false;
+            drawToday(i);
+        } // end if
+    } // end for
 }
 
 
-void QmcDateNav::changeMonth( bool forward, int steps ) {
+void QmcDateNav::changeMonth(bool forward, int steps) {
     int cyn, cmn, cdn;
     cyn = cmn = cdn = 0;
     cmn = currentMonth.month();
     cyn = currentMonth.year();
-    for( int i = 0; i <= 41; i++ ) {
-        if( dateList.at( i )->s )
-            cdn = dateList.at( i )->d.day();
-    }
-
-    if( numSelected() > 1 || numSelected() < 1 )
+    for (int i = 0; i <= 41; i++) {
+        if (dateList.at( i )->s)
+            cdn = dateList.at(i)->d.day();
+    } // end for
+    if (numSelected() > 1 || numSelected() < 1)
         cdn = 1;
-
-    if( forward ) {
+    if (forward) {
         cmn += steps;
-        if( cmn > 12 ) {
+        if (cmn > 12) {
             cmn -= 12;
             cyn++;
-        }
+        } // end if
     } else {
         cmn -= steps;
-        if( cmn < 1 ) {
+        if (cmn < 1) {
             cmn += 12;
             cyn--;
-        }
-    }
+        } // end if
+    } // end if
 
-    QDate nd( cyn, cmn, fixDays( cyn, cmn, cdn ) );
+    QDate nd(cyn, cmn, fixDays(cyn, cmn, cdn));
 
     int py = currentMonth.year();
-    currentMonth = QDate( nd );
+    currentMonth = QDate(nd);
     emit dateChanged();
-    if( currentMonth.year() != py ) {
-        emit yearChanged( currentMonth.year() );
-    }
+    if (currentMonth.year() != py) {
+        emit yearChanged(currentMonth.year());
+    } // end if
     pmDirty = true;
     repaint();
 }
 
 
-QString QmcDateNav::monthName( int mn ) {
+QString QmcDateNav::monthName(int mn) {
     QString rv = QString::null;
-    switch( mn ) {
+    switch (mn) {
     case 1: {
-            rv += tr( "January" );
+            rv += tr("January");
             break;
         }
     case 2: {
-            rv += tr( "February" );
+            rv += tr("February");
             break;
         }
     case 3: {
-            rv += tr( "March" );
+            rv += tr("March");
             break;
         }
     case 4: {
-            rv += tr( "April" );
+            rv += tr("April");
             break;
         }
     case 5: {
-            rv += tr( "May" );
+            rv += tr("May");
             break;
         }
     case 6: {
-            rv += tr( "June" );
+            rv += tr("June");
             break;
         }
     case 7: {
-            rv += tr( "July" );
+            rv += tr("July");
             break;
         }
     case 8: {
-            rv += tr( "August" );
+            rv += tr("August");
             break;
         }
     case 9: {
-            rv += tr( "September" );
+            rv += tr("September");
             break;
         }
     case 10: {
-            rv += tr( "October" );
+            rv += tr("October");
             break;
         }
     case 11: {
-            rv += tr( "November" );
+            rv += tr("November");
             break;
         }
     case 12: {
-            rv += tr( "December" );
+            rv += tr("December");
             break;
         }
-    }
+    } // end switch
     return rv;
 }
 
 
-int QmcDateNav::fixDays( int tmpYear, int tmpMonth, int d ) {
+int QmcDateNav::fixDays(int tmpYear, int tmpMonth, int d) {
     int tmpDay = d;
 
-    switch( tmpMonth ) {
+    switch (tmpMonth) {
     case 2: {
-            if( tmpDay >= 29 ) {
-                if( QDate::leapYear( tmpYear ) )
+            if (tmpDay >= 29) {
+                if (QDate::leapYear(tmpYear))
                     tmpDay = 29;
                 else
                     tmpDay = 28;
-            }
+            } // end if
             break;
         }
     case 4: {
-            if( tmpDay == 31 )
+            if (tmpDay == 31)
                 tmpDay = 30;
             break;
         }
     case 6: {
-            if( tmpDay == 31 )
+            if (tmpDay == 31)
                 tmpDay = 30;
             break;
         }
     case 9: {
-            if( tmpDay == 31 )
+            if (tmpDay == 31)
                 tmpDay = 30;
             break;
         }
     case 11: {
-            if( tmpDay == 31 )
+            if (tmpDay == 31)
                 tmpDay = 30;
             break;
         }
-    }
+    } // end switch
     return tmpDay;
 }
 
 
 void QmcDateNav::prepRBPopup() {
     rbPopup->clear();
-    rbPopup->insertItem( "Go to Today", 1 );
+    rbPopup->insertItem("Go to Today", 1);
 }
 
 
@@ -1000,117 +960,117 @@ void QmcDateNav::prepPopup() {
     int newD = 15;
 
     newM -= 3;
-    if( newM < 1 ) {
+    if (newM < 1) {
         newM += 12;
         newY--;
-    }
-    backThree = QDate( newY, newM, newD );
+    } // end if
+    backThree = QDate(newY, newM, newD);
 
     newM++;
-    if( newM > 12 ) {
+    if (newM > 12) {
         newM -= 12;
         newY++;
-    }
-    backTwo = QDate( newY, newM, newD );
+    } // end if
+    backTwo = QDate(newY, newM, newD);
 
     newM++;
-    if( newM > 12 ) {
+    if (newM > 12) {
         newM -= 12;
         newY++;
-    }
-    backOne = QDate( newY, newM, newD );
+    } // end if
+    backOne = QDate(newY, newM, newD);
 
     newM += 2;
-    if( newM > 12 ) {
+    if (newM > 12) {
         newM -= 12;
         newY++;
-    }
-    forwardOne = QDate( newY, newM, newD );
+    } // end if
+    forwardOne = QDate(newY, newM, newD);
 
     newM++;
-    if( newM > 12 ) {
+    if (newM > 12) {
         newM -= 12;
         newY++;
-    }
-    forwardTwo = QDate( newY, newM, newD );
+    } // end if
+    forwardTwo = QDate(newY, newM, newD);
 
     newM++;
-    if( newM > 12 ) {
+    if (newM > 12) {
         newM -= 12;
         newY++;
-    }
-    forwardThree = QDate( newY, newM, newD );
+    } // end if
+    forwardThree = QDate(newY, newM, newD);
 
-    sevenMonthPopup->insertItem( QString( monthName( backThree.month() ) + " " + QString::number( backThree.year(), 10 ) ), 1 );
-    sevenMonthPopup->insertItem( QString( monthName( backTwo.month() ) + " " + QString::number( backTwo.year(), 10 ) ), 2 );
-    sevenMonthPopup->insertItem( QString( monthName( backOne.month() ) + " " + QString::number( backOne.year(), 10 ) ), 3 );
-    sevenMonthPopup->insertItem( QString( monthName( currentMonth.month() ) + " " + QString::number( currentMonth.year(), 10 ) ), 4 );
-    sevenMonthPopup->insertItem( QString( monthName( forwardOne.month() ) + " " + QString::number( forwardOne.year(), 10 ) ), 5 );
-    sevenMonthPopup->insertItem( QString( monthName( forwardTwo.month() ) + " " + QString::number( forwardTwo.year(), 10 ) ), 6 );
-    sevenMonthPopup->insertItem( QString( monthName( forwardThree.month() ) + " " + QString::number( forwardThree.year(), 10 ) ), 7 );
-    sevenMonthPopup->setFixedWidth( captionRect.width() );
+    sevenMonthPopup->insertItem(QString(monthName(backThree.month()) + " " + QString::number(backThree.year(), 10)), 1);
+    sevenMonthPopup->insertItem(QString(monthName(backTwo.month()) + " " + QString::number(backTwo.year(), 10)), 2);
+    sevenMonthPopup->insertItem(QString(monthName(backOne.month()) + " " + QString::number(backOne.year(), 10)), 3);
+    sevenMonthPopup->insertItem(QString(monthName(currentMonth.month()) + " " + QString::number(currentMonth.year(), 10)), 4);
+    sevenMonthPopup->insertItem(QString(monthName(forwardOne.month()) + " " + QString::number(forwardOne.year(), 10)), 5);
+    sevenMonthPopup->insertItem(QString(monthName(forwardTwo.month()) + " " + QString::number(forwardTwo.year(), 10)), 6);
+    sevenMonthPopup->insertItem(QString(monthName(forwardThree.month()) + " " + QString::number(forwardThree.year(), 10)), 7);
+    sevenMonthPopup->setFixedWidth(captionRect.width());
 }
 
 
-void QmcDateNav::monthMenuClicked( int id ) {
-    if( id < 4 && id > 0 ) {
+void QmcDateNav::monthMenuClicked(int id) {
+    if (id < 4 && id > 0) {
         if( id == 1 )
             id = 3;
-        else if( id == 3 )
+        else if (id == 3)
             id = 1;
-        changeMonth( false, id );
-    } else if( id > 4 && id < 8 ) {
-        changeMonth( true, id - 4 );
-    }
+        changeMonth(false, id);
+    } else if (id > 4 && id < 8) {
+        changeMonth(true, id - 4);
+    } // end if
 }
 
 
 Q3PtrList<QDate> QmcDateNav::selectedDates() const {
     Q3PtrList<QDate> rl;
     rl.clear();
-    for( int i = 0; i <= 41; i++ )
-        if( dateList.at( i )->s )
-            rl.append( new QDate( dateList.at( i )->d ) );
+    for (int i = 0; i <= 41; i++)
+        if (dateList.at(i)->s)
+            rl.append(new QDate(dateList.at(i)->d));
     return rl;
 }
 
 
-bool QmcDateNav::setDate( const QDate d ) {
-    if( !d.isValid() ) {
+bool QmcDateNav::setDate(const QDate d) {
+    if(!d.isValid()) {
         return false;
-    }
+    } // end if
     int py = currentMonth.year();
-    currentMonth = QDate( d );
+    currentMonth = QDate(d);
     pmDirty = true;
     repaint();
     emit dateChanged();
-    if( currentMonth.year() != py ) {
-        emit yearChanged( currentMonth.year() );
-    }
+    if (currentMonth.year() != py) {
+        emit yearChanged(currentMonth.year());
+    } // end if
     return true;
 }
 
 
-bool QmcDateNav::hasEvent( const QDate & d ) {
-    if( eventDayList == 0 )
+bool QmcDateNav::hasEvent(const QDate & d) {
+    if (eventDayList == 0)
         return false;
     QDate * ld;
-    for( ld = eventDayList->first(); ld != 0; ld = eventDayList->next() ) {
-        if( d.year() == ld->year() && d.month() == ld->month() && d.day() == ld->day() )
+    for (ld = eventDayList->first(); ld != 0; ld = eventDayList->next()) {
+        if (d.year() == ld->year() && d.month() == ld->month() && d.day() == ld->day())
             return true;
-    }
+    } // end for
     return false;
 }
 
 
-bool QmcDateNav::isNonWorkingDay( const QDate & d ) {
-    if( nonWorkingDayList == 0 )
+bool QmcDateNav::isNonWorkingDay(const QDate & d) {
+    if (nonWorkingDayList == 0)
         return false;
     QDate * ld;
-    for( ld = nonWorkingDayList->first(); ld != 0; ld = nonWorkingDayList->next() ) {
-        if( d.year() == ld->year() && d.month() == ld->month() && d.day() == ld->day() )
+    for (ld = nonWorkingDayList->first(); ld != 0; ld = nonWorkingDayList->next()) {
+        if (d.year() == ld->year() && d.month() == ld->month() && d.day() == ld->day())
             return true;
-    }
+    } // end for
     return false;
 }
 
@@ -1120,14 +1080,14 @@ bool QmcDateNav::outlook() const {
 }
 
 
-void QmcDateNav::setOutlook( bool on ) {
-    if( on == doOutlook )
+void QmcDateNav::setOutlook(bool on) {
+    if (on == doOutlook)
         return;
     doOutlook = on;
 }
 
 
-void QmcDateNav::installEventDayList( Q3PtrList<QDate> *n ) {
+void QmcDateNav::installEventDayList(Q3PtrList<QDate> *n) {
     eventDayList = n;
 }
 
@@ -1137,7 +1097,7 @@ void QmcDateNav::removeEventDayList() {
 }
 
 
-void QmcDateNav::installNonWorkingDayList( Q3PtrList<QDate> *n ) {
+void QmcDateNav::installNonWorkingDayList(Q3PtrList<QDate> *n) {
     nonWorkingDayList = n;
 }
 
@@ -1153,81 +1113,60 @@ void QmcDateNav::forceUpdate() {
 }
 
 
-// Returns the index of the passed rect, or -1 on failure.
-int QmcDateNav::findIndex( QRect & ir ) {
-    for( int i = 0; i <= 41; i++ ) {
-        if( dateList.at( i )->r == ir )
+/// Returns the index of the passed rect, or -1 on failure.
+int QmcDateNav::findIndex(QRect & ir) {
+    for (int i = 0; i <= 41; i++) {
+        if (dateList.at( i )->r == ir)
             return i;
     }
     return -1;
 }
 
 
-
-// Returns the index of the passed rect, or -1 on failure.
-int QmcDateNav::findIndex( QDate & id ) {
-    for( int i = 0; i <= 41; i++ ) {
-        if( dateList.at( i )->d == id )
+/// Returns the index of the passed rect, or -1 on failure.
+int QmcDateNav::findIndex(QDate & id) {
+    for (int i = 0; i <= 41; i++) {
+        if (dateList.at(i)->d == id)
             return i;
-    }
+    } // end for
     return -1;
 }
 
 
-// Handles cursor changing for mouse move events.
-// TODO: Correct pointer cursors for this stuff.
-// Notes: Cursors are system specific see $QTDIR/src/kernel/qcursor_x11.cpp
-// 	  I need to figure out how to get the system specific cursor, and
-//	  modify it for my use.
-void QmcDateNav::mouseMoveEvent( QMouseEvent * e ) {
-    QRect mr( e->x(), e->y(), 1, 1 );
+/// Handles cursor changing for mouse move events.
+/// TODO: Correct pointer cursors for this stuff.
+/// Notes: Cursors are system specific see $QTDIR/src/kernel/qcursor_x11.cpp
+/// I need to figure out how to get the system specific cursor, and
+/// modify it for my use.
+void QmcDateNav::mouseMoveEvent(QMouseEvent * e) {
+    QRect mr(e->x(), e->y(), 1, 1);
 
-    if( daysRect.contains( mr, true ) ) {
-        setCursor( Qt::pointingHandCursor );
+    if (daysRect.contains(mr, true)) {
+        setCursor(Qt::pointingHandCursor);
         return;
-    }
+    } // end if
 
-    QRect weeksRect( frame() ? 1 : 0,
-                     dateList.at( 0 )->r.top(),
-                     dateList.at( 0 )->r.left() - ( frame() ? 1 : 0 ),
-                     dateList.at( 41 )->r.bottom() - dateList.at( 0 )->r.top() );
+    QRect weeksRect(frame() ? 1 : 0,
+                     dateList.at(0)->r.top(),
+                     dateList.at(0)->r.left() - (frame() ? 1 : 0),
+                     dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
 
-    if( weeksRect.contains( mr, true ) ) {
-        setCursor( Qt::pointingHandCursor );
+    if (weeksRect.contains(mr, true)) {
+        setCursor(Qt::pointingHandCursor);
         return;
-    }
-
+    } // end if
     unsetCursor();
 }
 
 
-// Callback for an item on the right-mouse buttton menu being clicked.
-void QmcDateNav::rbMenuClicked( int id ) {
-    if( id == 1 )
-        setDate( QDate::currentDate() );
+/// Callback for an item on the right-mouse buttton menu being clicked.
+void QmcDateNav::rbMenuClicked(int id) {
+    if (id == 1)
+        setDate(QDate::currentDate());
 }
 
-//////////////////////////////////////////////////////////////////////////
-// Class Docs
-/////////////////////////////////////////////////////////////////////////
 
-/*!
- * \file qmcdatenav.h
- * \brief Date Navigator (Declarations)
- *
- * \author Michael van der Westhuizen
- */
-/*!
- * \file qmcdatenav.cpp
- * \brief Date Navigator (Definitions)
- *
- * \author Michael van der Westhuizen
- * \sa QmcDateNav
- */
-/*!
- * \class QmcDateNav qmcdatenav.h
- * \brief Date Navigation Widget.
- *
+/*
  * The QmcDateNav widget is visually similar to the calendar navigation
  * widgets found in many popular PIMs.
  *
@@ -1238,12 +1177,13 @@ void QmcDateNav::rbMenuClicked( int id ) {
  * A signal is emitted whenever the selection changes so that you can retrieve
  * the selection list and your application can react to that data.
  *
- * <b>Non-Working Days and Event Days</b>
+ * Non-Working Days and Event Days.
  *
  * A PIM application generally displays days that have events or are non-working days (such as weekends) in either
  * a different font or colour.
  *
  * %QmcDateNav paints non-working days with an italic font face, and days containing event with a bold font face.
+ *
  *
  * Event days and non-working days are two areas that will almost definitely cause headaches and grey hairs for an application developer.
  *
@@ -1434,3 +1374,4 @@ void QmcDateNav::rbMenuClicked( int id ) {
  *
  * \reimp
  */
+

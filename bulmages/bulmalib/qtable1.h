@@ -31,7 +31,6 @@
 
 
 class QTableItem1 : public Q3TableItem {
-
 public:
     int modo;
 
@@ -51,8 +50,8 @@ public:
 
 public:
     QTable1(QWidget * parent = 0, const char * name = 0);
-    void sortColumn (int col, bool ascending = TRUE, bool wholeRows = TRUE);
-    QWidget *beginEdit (int, int, bool);
+    void sortColumn(int col, bool ascending = TRUE, bool wholeRows = TRUE);
+    QWidget *beginEdit(int, int, bool);
     virtual bool eventFilter(QObject *obj, QEvent *event);
     virtual void setItem(int, int, Q3TableItem *);
     void paintCell (QPainter *, int, int, const QRect &, bool);

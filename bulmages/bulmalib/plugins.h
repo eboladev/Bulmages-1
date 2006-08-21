@@ -26,7 +26,6 @@
 
 
 class Plugins {
-
 private:
     QList<QLibrary *> m_lista;
 
@@ -34,8 +33,6 @@ public:
     Plugins();
     ~Plugins();
     void cargaLibs(QString libs);
-//    int lanza(QString func, void *clase);
-//    int lanza(QString func, void *clase, void **ret);
     int lanza(const char *func, void *clase);
     int lanza(const char *func, void *clase, void **ret);
 };

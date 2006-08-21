@@ -83,12 +83,10 @@ QString dialogChanges::retrieveValues(QString qsWidget) {
         if (m_listaQLine[i] != NULL)
             values += ((QLineEdit*)m_listaQLine[i])->text();
     } //end for
-
     for (int i = 0; i < m_maxQText; i++) {
         if (m_listaQText[i] != NULL)
             values += ((QTextEdit*)m_listaQText[i])->text();
     } // end for
-
     if (qsWidget == "QTableWidget") {
         for (int i = 0; i < m_maxQTable; i++) {
             if (m_listaQTable[i] != NULL) {
@@ -100,7 +98,6 @@ QString dialogChanges::retrieveValues(QString qsWidget) {
             } // end if
         } // end for
     } // end if
-
     _depura("END dialogChanges::retrieveValues", 0);
     return values;
 }

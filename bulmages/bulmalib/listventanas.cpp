@@ -33,7 +33,7 @@
 using namespace std;
 
 
-listventanas::listventanas(QWidget *a): QDockWidget(a) {
+listventanas::listventanas(QWidget *a) : QDockWidget(a) {
     _depura("listventanas::INIT_listventanas()\n", 0);
     m_listBox = new QListWidget1(this);
     m_listBox->setIconSize(QSize(32, 32));
@@ -127,7 +127,6 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
             } // end if
             i++;
         } // end while
-
         if (i >= m_listBox->count()) {
             _depura("insercion", 0);
             /// Solo se insertan ventanas con icono. Sino no se insertan.

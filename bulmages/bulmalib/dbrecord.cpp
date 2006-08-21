@@ -73,7 +73,6 @@ QString DBCampo::valorcampoprep(int &error) {
 }
 
 
-/// ----------------------------------------------
 DBRecord::DBRecord(postgresiface2 *con) {
     m_conexionbase = con;
     m_nuevoCampo = TRUE;
@@ -118,7 +117,7 @@ void DBRecord::DBclear() {
 
 
 int DBRecord::DBsave(QString &id) {
-    _depura("DBRecord::DBsave", 0, id);
+    _depura("DBRecord::DBsave - " + id, 0);
     try {
         DBCampo *linea;
         QString listcampos = "";
@@ -129,7 +128,7 @@ int DBRecord::DBsave(QString &id) {
         QString separadorwhere = "";
         QString querywhere = "";
         int err = 0;
-        for(int i = 0; i < m_lista.size(); ++i) {
+        for (int i = 0; i < m_lista.size(); ++i) {
             linea = m_lista.at(i);
             if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
                 QString lin = linea->valorcampoprep(err);
@@ -148,7 +147,7 @@ int DBRecord::DBsave(QString &id) {
                 if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
                     QString lin = linea->valorcampoprep(err);
                     if (err)
-                        throw (-1);
+                        throw -1;
                     querywhere += separadorwhere + linea->nomcampo() + " = " + lin;
                     separadorwhere = " AND ";
                 } // end if
@@ -157,12 +156,12 @@ int DBRecord::DBsave(QString &id) {
                     separador1 = ", ";
                 } // end if
                 if (err)
-                    throw (-1);
+                    throw -1;
                 if ((linea->valorcampoprep(err) != "NULL") && (linea->valorcampoprep(err) != "")) {
                     listcampos += separador + linea->nomcampo();
                     listvalores += separador + linea->valorcampoprep(err);
                     if (err)
-                        throw (-1);
+                        throw -1;
                     separador = ", ";
                 } // end if
                 /// Si es el id entonces lo asignamos pq ya tiene el valor correspondiente.
@@ -185,7 +184,7 @@ int DBRecord::DBsave(QString &id) {
         } // end if
         m_nuevoCampo = FALSE;
         return 0;
-    } catch(...) {
+    } catch (...) {
         _depura("EXCEPTION DBRecord::DBsave", 0);
         throw (-1);
     } // end try
@@ -266,7 +265,7 @@ int DBRecord::borrar() {
         DBCampo *linea;
         QString separadorwhere = "";
         QString querywhere = "";
-        for(int i = 0; i < m_lista.size(); ++i) {
+        for (int i = 0; i < m_lista.size(); ++i) {
             linea = m_lista.at(i);
             if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
                 int err;
@@ -287,7 +286,6 @@ int DBRecord::borrar() {
                 } // end if
             } // end if
         } // end for
-
         if (m_nuevoCampo == FALSE) {
             m_conexionbase->ejecuta("DELETE FROM " + m_tablename + " WHERE " + querywhere);
             DBclear();

@@ -56,10 +56,8 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
     /// Siempre que arrancamos mostramos la pagina 0.
     mui_paginaact->setText("1");
-
     /// Ocultamos la configuracion.
     hideConfig();
-
     /// Limpiamos la lista.
     m_lista.clear();
     m_listaborrar.clear();
@@ -211,8 +209,6 @@ int SubForm3::inicializar() {
     mui_numfilas->setText("0");
     int numpag = 0;
     mui_numpaginas->setText(QString::number(numpag));
-
-
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
@@ -220,10 +216,8 @@ int SubForm3::inicializar() {
         cargaconfig();
 
     nuevoRegistro();
-
     /// Ordenamos la tabla.
     mui_list->ordenar();
-
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     _depura("END SubForm3::inicializar", 0);
@@ -248,26 +242,22 @@ int SubForm3::cargar(cursor2 *cur) {
     /// Vaciamos la tabla para que no contenga registros.
     mui_list->clear();
     mui_list->setRowCount(0);
-
     /// Vaciamos el recordset para que no contenga registros.
     while (m_lista.count()) {
         rec = m_lista.takeFirst();
         if (rec)
             delete rec;
     } // end while
-
     /// Ponemos los datos sobre el query.
     mui_numfilas->setText(QString::number(cur->numregistros()));
     int numpag = cur->numregistros() / filpag + 1;
     mui_numpaginas->setText(QString::number(numpag));
-
     /// Desplazamos hasta encontrar la página adecuada.
     int nr = filpag * (pagact - 1);
     while (nr > 0  && !cur->eof()) {
         cur->siguienteregistro();
         nr--;
     } // end while
-
     /// Recorremos el recordset y ponemos los registros en un orden determinado.
     while (!cur->eof() && m_lista.count() < filpag) {
         SDBRecord *rec = newSDBRecord();
@@ -275,13 +265,11 @@ int SubForm3::cargar(cursor2 *cur) {
         m_lista.append(rec);
         cur->siguienteregistro();
     } // end while
-
     /// Inicializamos las columnas y pintamos las cabeceras.
     mui_list->setColumnCount(m_lcabecera.count());
     pintaCabeceras();
     if (m_primero)
         cargaconfig();
-
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount(m_lista.count());
     SDBRecord *reg;
@@ -294,10 +282,8 @@ int SubForm3::cargar(cursor2 *cur) {
         } // end for
     } // end for
     nuevoRegistro();
-
     /// Ordenamos la tabla.
     mui_list->ordenar();
-
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     _depura("END SubForm3::cargar", 0);
@@ -315,7 +301,7 @@ SDBRecord *SubForm3::lineaact() {
 /// Devuelve la linea especificada
 SDBRecord *SubForm3::lineaat(int row) {
     _depura("SubForm3::lineaat()\n", 0);
-    SDBCampo *camp =(SDBCampo*) mui_list->item(row, 0);
+    SDBCampo *camp = (SDBCampo*) mui_list->item(row, 0);
     if (!camp) {
         return NULL;
     }
@@ -340,24 +326,17 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
     camp->set("");
     m_lcabecera.append(camp);
-
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
-
     QTableWidgetItem * it = new QTableWidgetItem("");
     it->setFlags(Qt::ItemIsUserCheckable |Qt::ItemIsEnabled |Qt::ItemIsSelectable | Qt::ItemIsEditable);
-
     it->setCheckState(Qt::Checked);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
-
     it = new QTableWidgetItem2(nom);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 1, it);
-
     it = new QTableWidgetItem2(nomp);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 2, it);
-
     it = new QTableWidgetItem2("");
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 3, it);
-
     return 0;
 }
 
@@ -398,8 +377,8 @@ int SubForm3::guardar() {
     try {
         SDBRecord *rec;
         int error = 0;
-        /// Borramos los elementos marcados para ser borrados
-        while ( !m_listaborrar.isEmpty()) {
+        /// Borramos los elementos marcados para ser borrados.
+        while (!m_listaborrar.isEmpty()) {
             rec = m_listaborrar.takeFirst();
             if (rec) {
                 if (rec->borrar())
@@ -412,9 +391,9 @@ int SubForm3::guardar() {
             rec->refresh();
             error = rec->guardar();
             if (error)
-                throw(-1);
+                throw -1;
         } // end for
-        if(!m_insercion) {
+        if (!m_insercion) {
             rec = lineaat(mui_list->rowCount() - 1);
             error = rec->guardar();
         } // end if
@@ -475,12 +454,10 @@ void SubForm3::guardaconfig() {
         stream << mui_list->colorden() << "\n";
         stream << mui_list->tipoorden() << "\n";
         stream << mui_filaspagina->text() << "\n";
-
         for (int i = 0; i < mui_list->columnCount(); i++) {
             mui_list->showColumn(i);
             stream << mui_list->columnWidth(i) << "\n";
         } // end for
-
         for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
             if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked)
                 stream << "1" << "\n";
@@ -501,13 +478,10 @@ void SubForm3::cargaconfig() {
         QTextStream stream(&file);
         QString linea = stream.readLine();
         mui_list->setcolorden(linea.toInt());
-
         linea = stream.readLine();
         mui_list->settipoorden(linea.toInt());
-
         linea = stream.readLine();
         mui_filaspagina->setText(linea);
-
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
             if (linea.toInt() > 0)
@@ -515,7 +489,6 @@ void SubForm3::cargaconfig() {
             else
                 mui_list->setColumnWidth(i, 3);
         } // end for
-
         for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
             linea = stream.readLine();
             if (linea == "1")
@@ -567,15 +540,14 @@ QString SubForm3::imprimir() {
     QString fitxersortidatxt = "<tr>\n";
     for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
         if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked)
-            fitxersortidatxt += "        <td>" + XMLProtect(mui_listcolumnas->item(i, 2)->text()) + "</td>\n";
+            fitxersortidatxt += "    <td>" + XMLProtect(mui_listcolumnas->item(i, 2)->text()) + "</td>\n";
     } // end for
     fitxersortidatxt += "</tr>\n";
-
     for (int i = 0; i < mui_list->rowCount(); ++i) {
         fitxersortidatxt += "<tr>\n";
         for (int j = 0; j < mui_listcolumnas->rowCount(); ++j) {
             if (mui_listcolumnas->item(j, 0)->checkState() == Qt::Checked) {
-                fitxersortidatxt += "        <td>" + XMLProtect(mui_list->item(i, j)->text()) + "</td>\n";
+                fitxersortidatxt += "    <td>" + XMLProtect(mui_list->item(i, j)->text()) + "</td>\n";
             } // end if
         } // end for
         fitxersortidatxt += "</tr>\n";
@@ -633,19 +605,20 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     _depura("END SubForm3::on_mui_list_ctrlBajar", 0);
 }
 
+
 void SubForm3::on_mui_pagsiguiente_clicked() {
-        int pag = mui_paginaact->text().toInt();
-        pag++;
-        mui_paginaact->setText(QString::number(pag));
-        on_mui_appag_clicked();
+    int pag = mui_paginaact->text().toInt();
+    pag++;
+    mui_paginaact->setText(QString::number(pag));
+    on_mui_appag_clicked();
 }
+
 
 void SubForm3::on_mui_paganterior_clicked() {
-        int pag = mui_paginaact->text().toInt();
-        if (pag > 1)
-            pag--;
-        mui_paginaact->setText(QString::number(pag));
-        on_mui_appag_clicked();
+    int pag = mui_paginaact->text().toInt();
+    if (pag > 1)
+        pag--;
+    mui_paginaact->setText(QString::number(pag));
+    on_mui_appag_clicked();
 }
-
 

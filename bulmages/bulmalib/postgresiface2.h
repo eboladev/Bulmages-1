@@ -47,7 +47,6 @@
 /// Se carga normalmente a partir de la clase 'postgresiface2' con el metodo 'cargacursor'.
 /// Crea las estructuras necesarias para recorrer un recordset de postgres.
 class cursor2 {
-
 private:
     /// El nombre del cursor, (OBSOLETE).
     QString nomcursor;
@@ -93,7 +92,7 @@ public:
     /// Establece la posicion del puntero de recorrido de cola en el ltimo registro.
     int ultimoregistro();
     /// Devuelve la posicion del registro actual.
-    int regactual () {
+    int regactual() {
         return registroactual;
     };
     /// Libera la memoria que se ha ocupado en las consultas.
@@ -116,7 +115,6 @@ public:
 
 
 class postgresiface2 {
-
 private:
     QString pghost; /// Indica cual es el host de las bases de datos.
     QString pgport; /// Indica por que puerto acceder a dicho host.

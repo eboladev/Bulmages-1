@@ -18,14 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/**
-* Fichero de definicion de funciones auxiliares que no es preciso encapsular
-* En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
-* utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
-* Dichas funciones normalmente son de uso general, por lo que es normal ver este
-* archivo incluido en la practica totalidad de los demas ficheros.
-**/
-
+/// Fichero de definicion de funciones auxiliares que no es preciso encapsular
+/// En este fichero se definen todas aquellas funciones que por su brevedad o aislamiento son
+/// utilizadas de forma regular en el programa. Implementadas en funcaux.cpp
+/// Dichas funciones normalmente son de uso general, por lo que es normal ver este
+/// archivo incluido en la practica totalidad de los demas ficheros.
 #include <QString>
 #include <QTextEdit>
 #include <QDir>
@@ -33,6 +30,7 @@
 
 #include "funcaux.h"
 #include "configuracion.h"
+
 
 /// Definimos aqui la variable global g_main para que sea accesible desde esta libreria.
 QMainWindow *g_main = NULL;
@@ -69,7 +67,7 @@ QString XMLProtect(const QString& string) {
 /// cad = Cadena inicial.
 /// num1 = Numero de digitos totales de la cuenta.
 /// Devuelve un string con el codigo de cuenta extendido al numero de digitos indicado.
-string extiendecodigo (string cad, unsigned int num1) {
+string extiendecodigo(string cad, unsigned int num1) {
     string cod = cad;
     unsigned int num = num1;
     if (cod.length() < num) {
@@ -87,7 +85,7 @@ string extiendecodigo (string cad, unsigned int num1) {
 /// cad = Cadena inicial
 /// num1 = Numero de digitos totales de la cuenta.
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
-QString extiendecodigo (QString cad, unsigned int num1) {
+QString extiendecodigo(QString cad, unsigned int num1) {
     QString cod = cad;
     int num = num1;
     if (cod.length() < num) {
@@ -185,12 +183,12 @@ QDate normalizafecha(QString fechaintro) {
 
 /// BUG: --- Esta funcion tiene un uso específico de bulmacont y por eso no
 /// deberia estar en bulmalib.
-QString ajustacodigo (QString cad, unsigned int num1) {
+QString ajustacodigo(QString cad, unsigned int num1) {
     QString cod = cad;
     unsigned int longcad = cad.length();
     if (longcad > 4) {
         if (longcad < num1) {
-            string str7 (num1 - longcad, '0');
+            string str7(num1 - longcad, '0');
             cod = cad.left(4);
             cod += QString(str7.c_str());
             cod += cad.right(longcad - 4);
@@ -205,7 +203,7 @@ QString ajustacodigo (QString cad, unsigned int num1) {
 
 
 /// Sustituye cadenas en un archivo.
-void reemplazaarchivo (QString archivo, QString texto1, QString texto2, QString archivo2) {
+void reemplazaarchivo(QString archivo, QString texto1, QString texto2, QString archivo2) {
     QString cadena = " sed -e \"s&" + texto1 + "&" + texto2 + "&g\"  " + archivo + " > " + archivo2 + "";
     system(cadena.toAscii().data());
 }
@@ -217,6 +215,7 @@ void generaPDF(const QString arch) {
     _depura("generaPDF" + arch, 0);
     QDir::setCurrent(confpr->valor(CONF_DIR_USER));
     QString cadsys;
+
 #ifdef WINDOWS
 
     cadsys = confpr->valor(CONF_PYTHON) + " " + confpr->valor(CONF_PROGDATA) + "trml2pdf\\trml2pdf.py " + arch + ".rml > " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
@@ -267,17 +266,15 @@ void _depura(QString cad, int nivel, QString param) {
             return;
         semaforo = 1;
     } // end if
-
     static QTextStream out(&file);
     static int supnivel = 0;
     static int indice = 0;
     static QString mensajesanulados[7000];
-
     if (nivel == 5) {
         supnivel = 0;
         nivel = 2;
     } // end if
-    if (nivel ==4) {
+    if (nivel == 4) {
         supnivel = 2;
         nivel = 2;
     } // end if

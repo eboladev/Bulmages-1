@@ -102,7 +102,6 @@
 
 /// Indica que base de datos es la META (OBSOLETO=
 #define CONF_METABASE                180
-
 /// Indica por defecto que servidor de bases de datos utilizar.
 #define CONF_SERVIDOR                181
 /// Indica por defecto que puerto tiene el servidor de bases de datos para conectar con el.
@@ -116,7 +115,6 @@
 #define CONF_DIR_TMP                 194
 #define CONF_PYTHON                  193
 #define CONF_FLIP                    192
-
 /// Indica que imagen utilizar como splash de BulmaCont.
 #define CONF_SPLASH                  199
 /// Indica que imagen utilizar como Background.
@@ -127,59 +125,45 @@
 #define CONF_EJECUTABLES             300
 /// # Esto indica que CSS usar con los listados.
 #define CONF_PLANTILLA               301
-
 /// Esto indica que idioma utilizar (es ca en fr de o locales(coger el idioma de las locales)).
 #define CONF_TRADUCCION              305
 /// Indica en que directorio se encuentran los archivos de traduccion.
 #define CONF_DIR_TRADUCCION          306
 /// Indica cual va a ser el archivo de log del programa
 #define CONF_ARCHIVO_LOG             307
-
 /// Indica donde se hayan ubicados los archivos de formato de REPORTS
 #define CONF_DIR_REPORTS             308
 /// Indica la ruta donde se encuentran los archivos de formato de KUGAR
 #define CONF_DIR_KUGAR               309
-
 /// Indica cual va a ser el tipo de letra por defecto.
 #define CONF_FONTFAMILY_BULMAGES     310
 /// Indica cual va a ser el tamanyo de fuente por defecto.
 #define CONF_FONTSIZE_BULMAGES       311
-
 /// Indica cuales son los plugins para la contabilidad que se cargan.
 #define CONF_PLUGINS_BULMACONT       312
 #define CONF_PLUGINS_BULMAFACT       313
 #define CONF_PLUGINS_BULMAGES        314
-
 /// Indica donde estan los datos del programa. Por defecto /usr/share/bulmages.
 #define CONF_PROGDATA                320
-
 /// Determina el directorio donde se hayan ubicados los archivos de datos para OPENREPORTS.
 #define CONF_DIR_OPENREPORTS         330
-
 /// Dictamina cuales son los privilegios del usuario.
 #define CONF_PRIVILEGIOS_USUARIO     420
-
 /// ALERTAS_DB Determina si los errores de la base de datos deben ser alertados via messagebox o no.
 #define CONF_ALERTAS_DB              421
-
 /// CONF_LOGIN_USER    Determina el login de usuario. Inicialmente vale "".
 #define CONF_LOGIN_USER              422
-
 /// CONF_PASSWORD_USER     Determina el password del usuario. Inicialmente vale "".
 #define CONF_PASSWORD_USER           423
-
 /// ESta variable indica el directorio de trabajo del usuario.
 #define CONF_DIR_USER                424
-
 /// Esta variable indica donde se van a guardar los archivos de imagenes de los articulos en BulmaFact.
 #define CONF_DIR_IMG_ARTICLES        425
 #define CONF_DIR_IMG_PERSONAL        426
-
 /// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos, albaranes y facturas inicialmente vale "".
 #define CONF_NUM_AUT_PRESUP          500
 #define CONF_NUM_AUT_ALBARAN         501
 #define CONF_NUM_AUT_FACTURA         502
-
 /// CONF_MOSTRAR_ALMACEN determina si se visualizaran el almacen en los listados y si aparecera inhibido en las entradas de datos inicialmente vale "".
 #define CONF_MOSTRAR_ALMACEN         510
 
@@ -194,19 +178,19 @@ typedef QMap<int,QString> mapa;
 /// la aplicacion. Esto se traduce en que algunos parametros se pueden modificar en tiempo
 /// de ejecucion.
 class configuracion {
-    private:
-    	/// La forma de almacenar los campos va a ser mediante un mapa de valores.
-       /// De esta forma no tendremos memoria desaprovechada.
-    	QMap <int, QString> m_valores;
+private:
+    /// La forma de almacenar los campos va a ser mediante un mapa de valores.
+    /// De esta forma no tendremos memoria desaprovechada.
+    QMap<int, QString> m_valores;
 
-    public:
-        configuracion();
-        ~configuracion();
-        QString valor(int);
-        void setValor(int, QString);
-        bool leeconfig(QString);
-        void saveconfig();
-        QString nombre(int);
+public:
+    configuracion();
+    ~configuracion();
+    QString valor(int);
+    void setValor(int, QString);
+    bool leeconfig(QString);
+    void saveconfig();
+    QString nombre(int);
 };
 
 
@@ -217,7 +201,7 @@ extern configuracion *confpr;
 /// Existe una instancia del objeto global theApp.
 extern QApplication *theApp;
 /// Existe una instancia del objeto global traductor.
-extern QTranslator * traductor;
+extern QTranslator *traductor;
 
 #endif
 

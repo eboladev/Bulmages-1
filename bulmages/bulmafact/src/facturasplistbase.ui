@@ -238,7 +238,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Buscar:</string>
           </property>
@@ -276,7 +276,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Fecha inicial:</string>
           </property>
@@ -302,7 +302,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Fecha final:</string>
           </property>
@@ -364,7 +364,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Contiene articulo:</string>
           </property>
@@ -390,7 +390,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Proveedor:</string>
           </property>
@@ -455,7 +455,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="text" >
         <string>Total:</string>
        </property>
@@ -490,6 +490,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>FacturasProveedorListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>facturasplist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaProveedor</class>
    <extends></extends>
    <header>busquedaproveedor.h</header>
@@ -510,16 +517,26 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>FacturasProveedorListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>facturasplist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_filtrar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_busqueda</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>230</x>
+     <y>43</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>218</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

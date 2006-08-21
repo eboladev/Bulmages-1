@@ -26,7 +26,7 @@
 #include "funcaux.h"
 
 #define IMPORT_TODO 0xFFFFFFFF
-/// Tipos para BulmaCont
+/// Tipos para BulmaCont:
 #define IMPORT_CUENTAS 1
 #define IMPORT_TIPOSIVA 2
 #define IMPORT_ASIENTOS 4
@@ -34,7 +34,8 @@
 #define IMPORT_BALANCES 16
 #define IMPORT_COBROS 32
 #define IMPORT_FACTURAS 64
-/// Tipos para BulmaFact
+
+/// Tipos para BulmaFact:
 #define IMPORT_FAMILIAS 1
 #define IMPORT_ALBARANESCLIENTE 2
 #define IMPORT_CLIENTES 128
@@ -47,11 +48,8 @@
 #define IMPORT_PRESUPUESTOSCLIENTE 16384
 #define IMPORT_PEDIDOSCLIENTE  4
 
-/** @autor Tomeu Borras Riera
-  * @brief Clase para importacion y exportacion a distintos formatos de archivo de datos.
-  */
+/// Clase para importacion y exportacion a distintos formatos de archivo de datos.
 class pgimportfiles {
-
 private:
     /// Base de datos con la que trabaja la clase y de la que se hace importacion/exportacion.
     postgresiface2 *conexionbase;
@@ -87,7 +85,7 @@ public:
         m_modoTest = FALSE;
     };
     bool modoTest() {
-        return m_modoTest == TRUE;
+        return (m_modoTest == TRUE);
     };
     pgimportfiles(postgresiface2 *);
     virtual ~pgimportfiles() {}
@@ -104,12 +102,8 @@ public:
 };
 
 
-/** @autor Tomeu Borras Riera
-  * @class pgimportifles pgimportifles.h
-  * @brief Clase para leer archivos de XML y hacer la importacion de datos.
-  */
+/// Clase para leer archivos de XML y hacer la importacion de datos.
 class StructureParser : public QXmlDefaultHandler {
-
 private:
     postgresiface2 *conexionbase;
     QString cadintermedia; /// Esta variable va almacenando los valores que van saliendo en la clase.
@@ -158,7 +152,7 @@ public:
     bool startDocument();
     bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
     bool endElement(const QString&, const QString&, const QString&);
-    bool characters (const QString&);
+    bool characters(const QString&);
 
 private:
     QString indent;
@@ -166,19 +160,15 @@ private:
 };
 
 
-/** @autor Tomeu Borras Riera
-  * @class pgimportifles pgimportifles.h
-  * @brief Clase para leer archivos de XML y hacer la importacion de datos.
-  */
+/// Clase para leer archivos de XML y hacer la importacion de datos.
 /// Usamos este tipo para almacenar todos los valores que va recogiendo la clase.
 typedef QMap<QString, QString> tvalores;
 
 
 class ImportBulmaFact : public QXmlDefaultHandler {
-
 private:
     postgresiface2 *conexionbase;
-    QString cadintermedia; /// ESta variable va almacenando los valores que van saliendo en la clase.
+    QString cadintermedia; /// Esta variable va almacenando los valores que van saliendo en la clase.
     /// Variables usadas para almacenar los datos de un asiento.
     tvalores valores;
     /// El tagpadre indica en que posicion estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc.
@@ -200,7 +190,7 @@ public:
     bool startDocument();
     bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
     bool endElement(const QString&, const QString&, const QString&);
-    bool characters (const QString&);
+    bool characters(const QString&);
 
 private:
     QString indent;

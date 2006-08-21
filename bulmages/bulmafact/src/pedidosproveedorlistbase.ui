@@ -244,7 +244,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Buscar:</string>
           </property>
@@ -315,7 +315,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Fecha inicial:</string>
           </property>
@@ -341,7 +341,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Fecha final:</string>
           </property>
@@ -377,7 +377,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Proveedor:</string>
           </property>
@@ -420,7 +420,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Articulo:</string>
           </property>
@@ -478,7 +478,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="text" >
         <string>Total:</string>
        </property>
@@ -544,5 +544,22 @@
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_filtrar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_busqueda</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>231</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>227</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

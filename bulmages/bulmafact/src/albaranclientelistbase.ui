@@ -471,13 +471,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaArticulo</class>
    <extends></extends>
    <header>busquedaarticulo.h</header>
@@ -498,9 +491,33 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_filtrar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_busqueda</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>236</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>229</x>
+     <y>66</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

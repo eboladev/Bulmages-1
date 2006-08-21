@@ -25,6 +25,7 @@
 
 #include "funcaux.h"
 
+
 /// Esta clase se encarga de proporcionar algo de infraestructura al control de cambios.
 /// La idea original es de Alvaro de Miguel en la que lo que hace la funcion es
 /// coger todos los campos de un determinado formulario y formar una cadena.

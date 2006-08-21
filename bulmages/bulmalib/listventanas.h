@@ -25,6 +25,7 @@
 #include <QListWidget>
 #include "qworkspace2.h"
 
+
 class QListWidget1 : public QListWidget {
     Q_OBJECT
 
@@ -67,10 +68,9 @@ public:
 };
 
 
-/** \brief Provides the dock window to list all windows in BulmaFact
- ** \param m_listBox this variable is the listBox that contains all \
-			titles of the diferent windows.
-*/
+/// Provides the dock window to list all windows in BulmaFact
+/// \param m_listBox this variable is the listBox that contains all
+/// titles of the diferent windows.
 class listventanas : public QDockWidget {
     Q_OBJECT
 

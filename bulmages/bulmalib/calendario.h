@@ -36,44 +36,36 @@ class QPushButton;
 class QCheckBox;
 class Q3VBox;
 
-/** \bug Se produce una violacion de segmento si nos desplazamos con los cursores hacia otro mes.
-*/
-class calendario: public QDialog
-{
+/// \bug Se produce una violacion de segmento si nos desplazamos con los cursores
+/// hacia otro mes.
+class calendario: public QDialog {
     Q_OBJECT
 
 public:
-    calendario( class QDialog * parent = 0, const char * name = 0 );
+    calendario(class QDialog * parent = 0, const char * name = 0);
     ~calendario();
     QmcDateNav *dn;
     Q3PtrList<QDate> *eDays;
 
 public slots:
-    void updateEventDays( int );
-    void updateNWDs( int );
+    void updateEventDays(int);
+    void updateNWDs(int);
 
 private slots:
     void showOptions();
 
 private:
     void init();
-
     QHBoxLayout *mainLayout;
-
-
     Q3PtrList<QDate> *nwDays;
-
     Q3TabDialog *optionsDialog;
     QWidget *optionsWidget;
     QPushButton *optionsButton;
-
     /// Pages...
     Q3VBox *generalOptions;
     Q3VBox *nwdOptions;
-
     QCheckBox *qcbOutlook;
     QCheckBox *qcbFrame;
-
     QCheckBox *qcbWorkMon;
     QCheckBox *qcbWorkTue;
     QCheckBox *qcbWorkWed;
@@ -81,9 +73,7 @@ private:
     QCheckBox *qcbWorkFri;
     QCheckBox *qcbWorkSat;
     QCheckBox *qcbWorkSun;
-
     bool nonWorkDays[8];
-	 
     /// TBR 12/06/03
     // bool calendario::eventFilter(QObject *, QEvent *);
 };

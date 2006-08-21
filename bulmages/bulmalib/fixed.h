@@ -26,6 +26,7 @@ class Fixed {
 
 private:
     void fromFixed(const char *);
+
 public:
     Fixed_numerator value;
     int precision;

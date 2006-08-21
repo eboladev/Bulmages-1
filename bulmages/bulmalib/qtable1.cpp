@@ -26,7 +26,6 @@
 #include <QEvent>
 #include <QColorGroup>
 
-
 #include "qtable1.h"
 #include "configuracion.h"
 #include "funcaux.h"
@@ -53,16 +52,15 @@ void QTable1::sortColumn(int col, bool ascending, bool) {
             if (oknumero) {
                 while (cad.length() < 10)
                     cad.insert(0, "0");
-                setText(x,lastcol + 1, cad);
+                setText(x, lastcol + 1, cad);
             } // end if
-
             if (okfecha) {
                 if (cad[2] == '/') {
                     QDate fech = normalizafecha(cad);
                     cad = fech.toString(Qt::ISODate);
                 } else {
                     okfecha = FALSE;
-                }// end if
+                } // end if
                 setText(x, lastcol + 2, cad);
             } // end if
         } // end if
@@ -82,7 +80,7 @@ void QTable1::sortColumn(int col, bool ascending, bool) {
 
 
 QWidget *QTable1::beginEdit(int row, int col, bool type) {
-    return(Q3Table::beginEdit(row, col, type));
+    return (Q3Table::beginEdit(row, col, type));
 }
 
 
@@ -106,21 +104,21 @@ bool QTable1::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
         } // end if
         if (key == 4115) { /// La tecla hacia arriba.
-            if (ctrlpulsado)   /// Solo en combinacion con el ctrl.
+            if (ctrlpulsado) /// Solo en combinacion con el ctrl.
                 emit pulsadomas(currentRow(), currentColumn(), key);
         } // end if
         if (key == Qt::Key_Delete) {
-            if (ctrlpulsado)   /// Solo en combinacion con el ctrl.
+            if (ctrlpulsado) /// Solo en combinacion con el ctrl.
                 emit pulsadomas(currentRow(), currentColumn(), key);
         } // end if
         if (key == 4117) { /// La tecla hacia arriba.
-            if (ctrlpulsado)   /// Solo en combinacion con el ctrl.
+            if (ctrlpulsado) /// Solo en combinacion con el ctrl.
                 emit pulsadomas(currentRow(), currentColumn(), key);
         } // end if
         if (key == 4129) { /// el Control
             ctrlpulsado = TRUE;
         } // end if
-        if (key == 47) {  /// El dividir
+        if (key == 47) { /// El dividir
             emit pulsadomas(currentRow(), currentColumn(), key);
             return TRUE;
         } // end if
@@ -143,8 +141,8 @@ void QTable1::setItem(int row, int col, Q3TableItem *it) {
 }
 
 
-void QTable1::paintCell (QPainter * p, int row, int col, const QRect &cr, bool selected) {
-    Q3Table::paintCell (p, row, col, cr, selected);
+void QTable1::paintCell(QPainter * p, int row, int col, const QRect &cr, bool selected) {
+    Q3Table::paintCell(p, row, col, cr, selected);
 }
 
 
@@ -166,11 +164,11 @@ void QTableItem1::paint(QPainter *p, const QColorGroup &cg, const QRect &cr, boo
 
     /// MODO 10.
     if (modo == 10) {
-        g.setColor( QColorGroup::Base, QColor::QColor("#FFFFFF") );
+        g.setColor(QColorGroup::Base, QColor::QColor("#FFFFFF"));
         /// Establecemos la fuente segun las preferencias del diario.
         f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).toAscii().data()));
         f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).toAscii().data());
-        p->setFont( f );
+        p->setFont(f);
         g.setColor(QColorGroup::Text, QColor::QColor("#FF0000"));
     } // end if
     /// FIN DEL MODO 10.

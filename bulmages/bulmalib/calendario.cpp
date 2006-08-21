@@ -64,8 +64,8 @@ void calendario::init() {
     updateNWDs(QDate::currentDate().year());
     updateEventDays(QDate::currentDate().year());
 
-    mainLayout = new QHBoxLayout( this, 4, 4, "mainLayout" );
-    mainLayout->addWidget( dn );
+    mainLayout = new QHBoxLayout(this, 4, 4, "mainLayout");
+    mainLayout->addWidget(dn);
 
     connect(dn, SIGNAL(yearChanged(int)), this, SLOT(updateNWDs(int)));
     connect(dn, SIGNAL(yearChanged(int)), this, SLOT(updateEventDays(int)));
@@ -73,37 +73,35 @@ void calendario::init() {
 }
 
 
-/// \todo Hacer que el programa importe de un fichero los dias no laborables oficiales.
-void calendario::updateNWDs( int yr ) {
-    /// Note that there are a maximum of 10 days from the previous and next years that you need to cater for,
+/// TODO: Hacer que el programa importe de un fichero los dias no laborables oficiales.
+void calendario::updateNWDs(int yr) {
+    /// Note that there are a maximum of 10 days from the previous and next years that
+    /// you need to cater for,
     /// I don't worry about those here, but you should.
     nwDays->clear();
 
     for(int t = 1; t < 8; t++) {
         if(nonWorkDays[t] == false)
             continue;
-
         QDate d(yr, 1, 1);
         while(d.dayOfWeek() != t) {
             d = d.addDays(1);
         }
-
         int cd = d.dayOfYear();
         int maxDays = d.daysInYear();
-
         while(cd <= maxDays) {
             nwDays->append(new QDate(d));
             d = d.addDays(7);
             cd += 7;
         } // end while
     } // end for
-
     /// Add stuff from the diary here.
     dn->forceUpdate();
 }
 
 
-/// \todo Hacer que el programa importe de un fichero los eventos (como plazos de entrega de declaraciones, etc.).
+/// TODO: Hacer que el programa importe de un fichero los eventos
+/// (como plazos de entrega de declaraciones, etc.).
 void calendario::updateEventDays(int yr) {
     eDays->clear();
     eDays->append(new QDate(yr, 1, 1));
@@ -119,34 +117,24 @@ void calendario::showOptions() {
         optionsDialog->show();
     else
         return;
-
     if(qcbOutlook->isChecked() != dn->outlook())
         dn->setOutlook(! dn->outlook());
-
     if(qcbFrame->isChecked() != dn->frame())
         dn->setFrame(! dn->frame());
-
     if(qcbWorkMon->isChecked() != nonWorkDays[1])
         nonWorkDays[1] = qcbWorkMon->isChecked();
-
     if(qcbWorkTue->isChecked() != nonWorkDays[2])
         nonWorkDays[2] = qcbWorkTue->isChecked();
-
     if(qcbWorkWed->isChecked() != nonWorkDays[3])
         nonWorkDays[3] = qcbWorkWed->isChecked();
-
     if(qcbWorkThu->isChecked() != nonWorkDays[4])
         nonWorkDays[4] = qcbWorkThu->isChecked();
-
     if(qcbWorkFri->isChecked() != nonWorkDays[5])
         nonWorkDays[5] = qcbWorkFri->isChecked();
-
     if(qcbWorkSat->isChecked() != nonWorkDays[6])
         nonWorkDays[6] = qcbWorkSat->isChecked();
-
     if(qcbWorkSun->isChecked() != nonWorkDays[7])
         nonWorkDays[7] = qcbWorkSun->isChecked();
-
     updateNWDs(dn->selectedDates().at(0)->year());
     dn->forceUpdate();
 }

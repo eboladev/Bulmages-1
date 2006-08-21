@@ -85,13 +85,13 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
             break;
         case Qt::Key_Slash:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit pressedSlash(row, col);
                 return TRUE;
             } // end if
             break;
         case Qt::Key_Minus:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit pressedMinus(row, col);
                 return TRUE;
             } // end if
@@ -101,13 +101,13 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
             break;
         case Qt::Key_Asterisk:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit pressedAsterisk(row, col);
                 return TRUE;
             } // end if
             break;
         case Qt::Key_Up:
-            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier) ) {
+            if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 _depura("Qt::Key_Up", 0);
                 emit ctrlSubir(row, col);
                 return TRUE;
@@ -164,24 +164,19 @@ void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
 
     m_tipoorden = tipoorden;
     m_colorden = col;
-
     if (m_colorden > columnCount() | m_colorden < 0) {
         m_colorden = 0;
         col = 0;
     } // end if
-
     if (m_tipoorden >1) {
         m_tipoorden = 1;
         tipoorden = (Qt::SortOrder) 1;
     } // end if
-
     int lastcol = columnCount();
-
     _depura("insercion de columnas", 0);
     insertColumn(lastcol);
     insertColumn(lastcol + 1);
     insertColumn(lastcol + 2);
-
     _depura("ocultacion de columnas", 0);
     hideColumn(lastcol);
     hideColumn(lastcol + 1);
@@ -190,7 +185,6 @@ void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
     bool okfecha = TRUE;
 
     _depura("comienza el bucle", 0);
-
     for (int x = 0; x < rowCount(); x++) {
         _depura("tratamos un elemento " + QString::number(x) + " " + QString::number(col), 0);
         QString cad = item(x, col)->text();
@@ -204,7 +198,6 @@ void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
                     cad.insert(0, "0");
                 setText(x,lastcol + 1, cad);
             } // end if
-
             if (okfecha) {
                 if (cad[2] == '/') {
                     QDate fech = normalizafecha(cad);

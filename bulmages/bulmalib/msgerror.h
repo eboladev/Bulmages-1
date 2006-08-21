@@ -27,9 +27,6 @@
 #include <ui_msgerrorbase.h>
 
 
-/**
-@author Tomeu Borras
-*/
 class msgError : public QDialog, public Ui_msgErrorBase {
     Q_OBJECT
 

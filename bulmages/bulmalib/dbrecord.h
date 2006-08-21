@@ -109,11 +109,9 @@ public:
     };
     int addDBCampo(QString, DBCampo::dbtype, int, QString);
     void DBclear();
-
     QList<DBCampo *> *lista() {
         return &m_lista;
     };
-
     virtual int borrar();
     virtual int guardar();
     virtual void vaciar() {
