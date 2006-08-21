@@ -284,7 +284,7 @@ void QmcDateNav::drawDays(QPainter & p) {
     int tableWidth = (colWidth * 7);
     int leftBase = (width() - tableWidth) / 2;
 
-    sunBR = QRect(leftBase, dayTop, p.fontMetrics().width "00") + 6, p.fontMetrics().height());
+    sunBR = QRect(leftBase, dayTop, p.fontMetrics().width("00") + 6, p.fontMetrics().height());
     monBR = QRect(sunBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
     tueBR = QRect(monBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
     wedBR = QRect(tueBR.right() + 1, dayTop, sunBR.width(), sunBR.height());
@@ -528,13 +528,12 @@ void QmcDateNav::mouseDoubleClickEvent(QMouseEvent * e) {
             clear();
         for (int i = 0; i <= 41; i++)
             if (dateList.at(i)->d.dayOfWeek() == dayToSelect)
-                dateList.at(i ->s = true;
+                dateList.at(i)->s = true;
                             drawSelections();
                             emit dateChanged();
                             emit close();
                             return;
                         } // end if
-
                 QRect weeksRect(frame() ? 1 : 0,
                                 dateList.at(0)->r.top(),
                                 dateList.at(0)->r.left() - (frame() ? 1 : 0),
