@@ -250,7 +250,6 @@ void presupuesto::imprimirPresupuesto() {
     QString l;
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
-    int i = 0;
     SDBRecord *linea;
     for (int i = 0; i < (listalineas->rowCount() - 1); ++i) {
         linea = listalineas->lineaat(i);
@@ -266,8 +265,6 @@ void presupuesto::imprimirPresupuesto() {
         fitxersortidatxt += "</tr>";
     } // end for
 
-    while (i++ < 15)
-        fitxersortidatxt += "<tr></tr>";
 
     fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);

@@ -49,15 +49,14 @@ asientosview::~asientosview() {
 
 
 void asientosview::on_mui_list_cellDoubleClicked(int, int) {
-    _depura("asientosview::on_mui_list_cellDoubleClicked",0);
+    _depura("asientosview::on_mui_list_cellDoubleClicked", 0);
     QString idasiento = mui_list->DBvalue("idasiento");
     m_companyact->intapuntsempresa()->muestraasiento(idasiento);
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
     m_companyact->muestraapuntes1();
-    _depura("END asientosview::on_mui_list_cellDoubleClicked",0);
+    _depura("END asientosview::on_mui_list_cellDoubleClicked", 0);
 }
-
 
 
 /** Inicializa la ventana, haciendo la consulta pertinente a la base de datos

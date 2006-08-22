@@ -217,8 +217,6 @@ void Factura::imprimirFactura() {
     QString l;
 
     SDBRecord *linea;
-    /// Contador que sirve para poner lineas de más en caso de que sea preciso.
-    int i=0;
 
     for(int i=0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
@@ -234,8 +232,6 @@ void Factura::imprimirFactura() {
         fitxersortidatxt += "</tr>";
     } // end for
 
-    while (i++ < 15)
-        fitxersortidatxt += "<tr></tr>";
 
     fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);

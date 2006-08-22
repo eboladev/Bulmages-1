@@ -13,11 +13,12 @@
 #ifndef DUPLICARASIENTOVIEW_H
 #define DUPLICARASIENTOVIEW_H
 
-#include "duplicaasientodlg.h"
-#include "empresa.h"
+#include "ui_duplicarasientobase.h"
+
+class empresa;
 
 /**@author Tomeu Borras*/
-class duplicarasientoview : public duplicaasientodlg
+class duplicarasientoview : public QDialog, public Ui_DuplicarAsientoBase
 {
 Q_OBJECT
 public:

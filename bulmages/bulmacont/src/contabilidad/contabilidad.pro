@@ -42,7 +42,6 @@ FORMS += bulmacontbase.ui \
 	 asientolistbase.ui \
 	 balancebase.ui \
 	 balancetreebase.ui \
-#	 ainteligentesbase.ui \
 	 cuentabase.ui \
 	 listcuentasbase.ui \
 	 aboutbase.ui \
@@ -52,7 +51,12 @@ FORMS += bulmacontbase.ui \
 	 aplinteligentesbase.ui \
 	 canualesbase.ui \
 	 ccostebase.ui \
-	 canalbase.ui
+	 canalbase.ui \
+	 fpagobase.ui \
+	 tipoivabase.ui \
+	 bbloqfechabase.ui \
+	 actualizacionesbase.ui \
+	 duplicarasientobase.ui
 
 
 FORMS3 += uiselector.ui \
@@ -60,8 +64,8 @@ FORMS3 += uiselector.ui \
 #         listcuentasdlg1.ui \
 #         cuentadlg.ui \
 #         balance1dlg.ui \
-         int_apunts3.ui \
-         filtrarasientosdlg.ui \
+#         int_apunts3.ui \
+#         filtrarasientosdlg.ui \
          regivaprintdlg.ui \
          compbalancedlg.ui \
          mpatrimonialdlg.ui \
@@ -72,20 +76,20 @@ FORMS3 += uiselector.ui \
 #         canaldlg.ui \
 #         ccostedlg.ui \
          propiedemp.ui \
-         actualizacionesdlg.ui \
+#         actualizacionesdlg.ui \
          cambiactadlg.ui \
-         duplicaasientodlg.ui \
+#         duplicaasientodlg.ui \
 #         amortizaciondlg.ui \
          uimodelo347.ui \
 #         amortizacionesdlg.ui \
          uivisorempresas.ui \
-         uibloqfecha.ui \
+#         uibloqfecha.ui \
          selectccostedlg.ui \
          selectcanaldlg.ui \
          mod300dlg.ui \
 #         cobropagodlg.ui \
-         tipoivadlg.ui \
-         fpagodlg.ui
+#         tipoivadlg.ui
+#         fpagodlg.ui
 
 TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \
@@ -195,7 +199,7 @@ HEADERS += splashscreen.h \
            qlistviewitem1.h \
            balanceview.h \
            aplinteligentesview.h \
-           filtrarasientosview.h \
+#           filtrarasientosview.h \
            asientosview.h \
            regivaprintview.h \
            compbalanceview.h \
@@ -254,7 +258,7 @@ SOURCES += main.cpp \
            qlistviewitem1.cpp \
            balanceview.cpp \
            aplinteligentesview.cpp \
-           filtrarasientosview.cpp \
+#           filtrarasientosview.cpp \
            asientosview.cpp \
            regivaprintview.cpp \
            compbalanceview.cpp \

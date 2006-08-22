@@ -33,8 +33,10 @@
 #include "selectccosteview.h"
 #include "selectcanalview.h"
 #include "plugins.h"
-
+#include "bbloqfecha.h"
 #include <qobject.h>
+
+
 #ifndef WIN32
 #include <unistd.h>
 #include <sys/types.h>
@@ -217,10 +219,24 @@ int empresa::canales() {
 /** Crea la ventana de tipos de IVA y la presenta en modo modal
   * Es invocada desde la clase principal
   */
+void empresa::bloqueoFechas() {
+    _depura("empresa::bloqueoFechas", 0);
+    BbloqFecha *tip = new BbloqFecha(this, 0);
+    m_pWorkspace->addWindow(tip);
+    tip->show();
+    _depura("END empresa::bloqueoFechas", 0);
+}
+
+
+/** Crea la ventana de tipos de IVA y la presenta en modo modal
+  * Es invocada desde la clase principal
+  */
 int empresa::tiposIVA() {
-    tipoivaview *tip = new tipoivaview(this, 0, "tipos Iva");
-    tip->exec();
-    delete tip;
+    _depura("empresa::tiposIVA", 0);
+    tipoivaview *tip = new tipoivaview(this, 0);
+    m_pWorkspace->addWindow(tip);
+    tip->show();
+    _depura("END empresa::tiposIVA", 0);
     return 0;
 }
 
@@ -229,9 +245,11 @@ int empresa::tiposIVA() {
   * Es invocada desde la clase principal
   */
 int empresa::fPago() {
-    fpagoview *tip = new fpagoview(this, 0, "Formas de Pago");
-    tip->exec();
-    delete tip;
+    _depura("empresa::fPago", 0);
+    fpagoview *fp = new fpagoview(this, 0);
+    m_pWorkspace->addWindow(fp);
+    fp->show();
+    _depura("END empresa::fPago", 0);
     return 0;
 }
 

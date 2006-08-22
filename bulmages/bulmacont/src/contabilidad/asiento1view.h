@@ -29,7 +29,6 @@
 #include "fixed.h"
 #include "busquedafecha.h"
 #include "asiento1.h"
-#include "filtrarasientosview.h"
 
 class empresa;
 
@@ -47,13 +46,9 @@ private:
     empresa *m_companyact;
     /// Este es el cursor que se usará para recorrer la lista de asientos.
     cursor2 *cursorasientos;
-    /// Este objeto contiene todas las opciones de filtraje necesarias para funcionar. es un objeto del tipo \ref filtrarasientosview
-    filtrarasientosview *filt;
 
 public:
-    filtrarasientosview *filtro() {
-        return filt;
-    };
+
     ListAsientos(empresa *);
     virtual ~ListAsientos();
     void cargaasientos();
@@ -61,13 +56,13 @@ public:
     void boton_fin();
     void boton_siguiente();
     void boton_anterior();
+
     void boton_filtrar() {
-        filt->exec();
-        cargaasientos();
-        boton_inicio();
-    }
+	_depura("Funcion no implementada", 2);
+    };
+
     virtual void muestraasiento(QString ) {
-        _depura("Funcion no implementada.", 2);
+        mensajeInfo( "Funcion no implementada.");
     };
     virtual void pintaasiento(QString ) {
         _depura("Funcion no implementada.", 2);

@@ -182,6 +182,7 @@ public:
     int cambioejercicio();
     void centrocostedefecto();
     void canaldefecto();
+    void bloqueoFechas();
     selectccosteview *getselccostes();
     selectcanalview *getselcanales();
     void recalculasaldos();

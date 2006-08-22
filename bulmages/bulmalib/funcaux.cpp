@@ -90,7 +90,7 @@ QString extiendecodigo(QString cad, unsigned int num1) {
     int num = num1;
     if (cod.length() < num) {
         string str7(num - cod.length() + 1, '0');
-        int pos = cod.find(".", 0);
+        int pos = cod.indexOf(".", 0);
         if (pos > 0) {
             cod.replace(pos, 1, str7.c_str());
         } // end if
@@ -146,7 +146,7 @@ QDate normalizafecha(QString fechaintro) {
         y = 2000 + fechaintro.mid(4, 2).toInt();
         break;
     case 8:
-        if(fechaintro.contains("/", TRUE) || fechaintro.contains("-", TRUE)) {
+        if(fechaintro.contains("/", Qt::CaseSensitive) || fechaintro.contains("-", Qt::CaseSensitive)) {
             /// fecha tipo dd/MM/yy o dd-MM-yy
             d = fechaintro.mid(0, 2).toInt();
             M = fechaintro.mid(3, 2).toInt();
@@ -270,6 +270,8 @@ void _depura(QString cad, int nivel, QString param) {
     static int supnivel = 0;
     static int indice = 0;
     static QString mensajesanulados[7000];
+    static QString clasesanuladas[7000];
+    static int indiceclases = 0;
     if (nivel == 5) {
         supnivel = 0;
         nivel = 2;
@@ -278,27 +280,42 @@ void _depura(QString cad, int nivel, QString param) {
         supnivel = 2;
         nivel = 2;
     } // end if
+
     if (nivel == 0) {
         out << cad << " " << param << "\n";
     } else if (nivel == 1) {
         out << cad << " " << param << "\n";
     } // end if
+
     for (int i = 0; i < indice; i++) {
         if (cad == mensajesanulados[i]) {
             return;
         } // end if
     } // end for
+
+    for (int i = 0; i < indiceclases; i++) {
+        if (cad.left(cad.indexOf("::")) == clasesanuladas[i]) {
+            return;
+        } // end if
+    } // end for
+
+
+
     if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
         out << cad << " " << param << "\n";
-        int err = QMessageBox::question(NULL,
+        int err = QMessageBox::information(NULL,
                                         QApplication::translate("funcaux", "Informacion de depuracion "),
                                         cad + " " + param,
                                         QApplication::translate("funcaux", "&Continuar"),
                                         QApplication::translate("funcaux", "&Omitir"),
-                                        QString::null, 0, 1);
+					QApplication::translate("funcaux", "Omitir &Clase"),
+                                        0, 1);
         if (err == 1) {
             mensajesanulados[indice++] = cad;
         } // end if
+	if (err == 2) {
+	    clasesanuladas[indiceclases++] = cad.left(cad.indexOf("::"));
+	} // end if
     } // end if
 
     file.flush();

@@ -207,32 +207,23 @@ void Bulmages01::windowMenuAboutToShow()  {}
 
 void Bulmages01::slotWindowNewWindow() {}
 
-void Bulmages01::slotTiposIVA() {
-    m_empresaactual->tiposIVA();
-}
-
-
-void Bulmages01::slotFPago() {
-    m_empresaactual->fPago();
-}
-
-
 void Bulmages01::closeEvent( QCloseEvent *) {
     _depura("closeEvent",0);
     delete m_empresaactual;
 #ifdef WINDOWS
-
     exit(0);
 #endif
-
     delete m_pWorkspace;
 }
 
 
 void Bulmages01::on_actionAyuda_triggered() {
-    actualizacionesview *act = new actualizacionesview(0,0);
-    act->exec();
-    delete act;
+    _depura("Bulmages01::on_actionAyuda_triggered", 0);
+    actualizacionesview *act = new actualizacionesview(0);
+    m_pWorkspace->addWindow(act);
+    act->show();
+    _depura("END Bulmages01::on_actionAyuda_triggered", 0);
+
 }
 
 

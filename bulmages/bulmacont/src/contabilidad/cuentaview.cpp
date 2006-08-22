@@ -352,7 +352,7 @@ void cuentaview::codigo_ret() {
 }// end codigo_return
 
 void cuentaview::saveAccount() {
-    fprintf(stderr,"cuentaview::aceptar()\n");
+    _depura("cuentaview::saveAccount", 0);
     QString codigocuenta;
     int idpadre=0;
     cursor2 *cursoraux;

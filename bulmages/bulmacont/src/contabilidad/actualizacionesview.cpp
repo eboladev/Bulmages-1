@@ -2,7 +2,7 @@
                           actualizacionesview.cpp  -  description
                              -------------------
     begin                : mar jul 22 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -16,9 +16,11 @@
  ***************************************************************************/
 
 #include "actualizacionesview.h"
+#include <QWidget>
 #include <q3textbrowser.h>
 
-actualizacionesview::actualizacionesview(QWidget *parent, const char *name ) : actualizacionesdlg(parent,name) {
+actualizacionesview::actualizacionesview(QWidget *parent) : QWidget(parent,Qt::WDestructiveClose) {
+   setupUi(this);
    textBrowser1->setSource("/usr/share/bulmages/ayuda/index.htm");  
 }
 

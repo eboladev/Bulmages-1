@@ -166,6 +166,7 @@ public:
     int borrarcuenta(int idcuenta);
     int modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
     int nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
+
     /// Carga en un query las empresas especificadas.
     cursor2 *cargaempresas();
     /// Busca en una cadena codigo malicioso para SQL y lo elimina (previene el SQLInjection).

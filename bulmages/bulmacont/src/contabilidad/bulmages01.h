@@ -104,8 +104,6 @@ private slots:
     void slotCanales();
     void slotViewFullScreen(bool toggle);
     void slotCompBalance();
-    void slotTiposIVA();
-    void slotFPago();
 
     virtual void s_asiento1() {
         m_empresaactual->s_asiento1();
@@ -129,6 +127,14 @@ private:
 
 
 public slots:
+    virtual void on_actionTipos_de_IVA_triggered() {
+        m_empresaactual->tiposIVA();
+    };
+
+    virtual void on_actionFormas_de_Pago_triggered() {
+        m_empresaactual->fPago();
+    };
+
     virtual void on_actionAsientos_triggered() {
         m_empresaactual->muestraasientos();
     };
@@ -188,7 +194,7 @@ public slots:
     };
 
     virtual void on_actionBloquear_Fechas_triggered() {
-        (new BbloqFecha(&DBName, this))->exec();
+        m_empresaactual->bloqueoFechas();
     };
 
     virtual void on_actionCanal_por_Defecto_triggered() {

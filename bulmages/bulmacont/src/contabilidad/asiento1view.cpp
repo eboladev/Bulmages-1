@@ -173,7 +173,6 @@ void Asiento1View::iniciar_asiento_nuevo() {
     } catch (...) {
         mensajeInfo("Asiento no pudo crearse");
     } // end catch
-
 }
 
 void Asiento1View::on_mui_fecha_returnPressed() {
@@ -278,22 +277,19 @@ void Asiento1View::on_mui_borrar_clicked() {
 
 /**************************************************************************************************************************
 ***************************************************************************************************************************
-	IMPLEMENTACION DE LISTASIENTOS
+IMPLEMENTACION DE LISTASIENTOS
 ***************************************************************************************************************************/
 
 ListAsientos::ListAsientos(empresa *emp) {
 	_depura("ListAsientos::ListAsientos", 0);
 	m_companyact = emp;
 	cursorasientos = NULL;
-	/// Creamos el objeto de filtrado de asientos para que el filtro funcione siempre bien desde esta ventana.
-	filt = new filtrarasientosview(m_companyact,0,"");
 	_depura("END ListAsientos::ListAsientos", 0);
 
 }
 
 ListAsientos::~ListAsientos() {
 	_depura("ListAsientos::~ListAsientos", 0);
-	delete filt;
 	if (cursorasientos != NULL ) {
 	delete cursorasientos;
 	}// end if
@@ -305,7 +301,7 @@ ListAsientos::~ListAsientos() {
 * el recorrido a través de los asientos.                 *
 * numasiento: 0 indica el primer asiento
 *            -1 indica el último asiento.
-		otros indica el asiento o el inmediatamente más bajo
+	otros indica el asiento o el inmediatamente más bajo
 
 Esta función no hace cambios en la presentación, solo realiza una
 carga del cursor que sirve para recorrer los asientos.
@@ -321,13 +317,14 @@ void ListAsientos::cargaasientos() {
 	QString textcantapunt = "";
 	QString textnombreasiento= "";
 	QString textejercicio="";
-	QString ejercicio = "";
+	QString ejercicio = "--";
 
+	/*
 	cantapunt = m_companyact->sanearCadena(filt->cantidadapunte->text());
 	saldototal = m_companyact->sanearCadena(filt->saldoasiento->text());
 	nombreasiento = m_companyact->sanearCadena(filt->nombreasiento->text());
 	ejercicio = m_companyact->sanearCadena(filt->ejercicio());
-
+	*/
 
 	if (cursorasientos != NULL ) {
 	delete cursorasientos;
@@ -365,7 +362,7 @@ void ListAsientos::cargaasientos() {
 
 	/// Se ordenan los asientos por año y por numero de orden.
 	query = "SELECT * FROM asiento "+cadwhere+textsaldototal+textcantapunt+textnombreasiento+textejercicio+" ORDER BY EXTRACT (YEAR FROM fecha), ordenasiento";
-	//   }// end if
+
 
 	cursorasientos = m_companyact->cargacursor(query);
 	if (cursorasientos->eof()) {
@@ -442,11 +439,18 @@ void ListAsientos::boton_anterior() {
 }
 
 
-void ListAsientos::situarasiento(QString numasiento) {
-	_depura("ListAsientos::situarasiento ", 0, numasiento);
-	cursorasientos->primerregistro();
-	while (cursorasientos->valor("idasiento") != numasiento && !cursorasientos->esultimoregistro())
-	cursorasientos->siguienteregistro();
-	_depura("END ListAsientos::situarasiento", 0, numasiento);
+void ListAsientos::situarasiento(QString idasiento) {
+	_depura("ListAsientos::situarasiento ", 0, idasiento);
+	try {
+		if (cursorasientos == NULL) throw -1;
+		cursorasientos->primerregistro();
+		while (cursorasientos->valor("idasiento") != idasiento && !cursorasientos->esultimoregistro()) {
+			cursorasientos->siguienteregistro();
+		} // end while
+	} catch(...) {
+		mensajeInfo("Error al intentar situarse en el asiento");
+		throw -1;
+	} // end try
+	_depura("END ListAsientos::situarasiento", 0, idasiento);
 }
 

@@ -14,7 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 #include "bbloqfecha.h"
-
+#include <QWidget>
+#include "empresa.h"
 
 myQListViewItem::myQListViewItem(myQListViewItem *parent, QString label1):Q3ListViewItem(parent, label1) {
     return;
@@ -25,19 +26,19 @@ myQListViewItem::myQListViewItem(Q3ListView *parent, QString label1):Q3ListViewI
 };
 
 
-BbloqFecha::BbloqFecha(QString *NombreBaseDatos, QWidget * parent, const char * name, Qt::WFlags f) : UIbloqFecha(parent,name,f) {
+BbloqFecha::BbloqFecha(empresa *emp, QWidget * parent) : QWidget(parent, Qt::WDestructiveClose) {
+    _depura("BbloqFecha::BbloqFecha", 0);
+    setupUi(this);
     myQListViewItem *listMain, *listAux=0;
     QString query;
     listView1->setSorting(-1);
 
-    postgresiface2 *DBconn = new postgresiface2();
-    DBconn->inicializa(*NombreBaseDatos);
 
-    conexionbase = DBconn;
+    empresaactual = emp;
 
 
     query.sprintf("SELECT * FROM ejercicios WHERE periodo=0 ORDER BY ejercicio DESC");
-    cursor2 *curPeri,*curEjer = DBconn->cargacursor(query);
+    cursor2 *curPeri,*curEjer = empresaactual->cargacursor(query);
     while (!curEjer->eof()) {
         listMain = new myQListViewItem(listView1,curEjer->valor("ejercicio"));
 	listMain->ej = curEjer->valor("ejercicio");
@@ -52,7 +53,7 @@ BbloqFecha::BbloqFecha(QString *NombreBaseDatos, QWidget * parent, const char * 
 
 
         query.sprintf("SELECT * FROM ejercicios WHERE ejercicio='%s' ORDER BY periodo DESC",curEjer->valor("ejercicio").ascii());
-        curPeri = DBconn->cargacursor(query);
+        curPeri = empresaactual->cargacursor(query);
         while (!curPeri->eof()) {
             switch (curPeri->valor("periodo").toInt()) {
             case 12:
@@ -100,10 +101,16 @@ BbloqFecha::BbloqFecha(QString *NombreBaseDatos, QWidget * parent, const char * 
         }
         curEjer->siguienteregistro();
     }
+    empresaactual->meteWindow(windowTitle(), this);
+    _depura("ENd BbloqFecha::BbloqFecha", 0);
 
 }
 
-BbloqFecha::~BbloqFecha() {}
+BbloqFecha::~BbloqFecha() {
+   _depura("BbloqFecha::~BbloqFecha", 0);
+	empresaactual->sacaWindow(this);
+   _depura("ENd BbloqFecha::~BbloqFecha", 0);
+}
 
 void BbloqFecha::boto1_click() {
     delete this;
@@ -115,11 +122,11 @@ void BbloqFecha::dobleClick (Q3ListViewItem *item) {
     if (item->text(1)=="Bloqueado") {
         item->setText(1,"Abierto");
         QString Query = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = "+it->ej+" AND periodo = "+it->per;
-        error = conexionbase->ejecuta(Query);
+        error = empresaactual->ejecuta(Query);
     } else {
         item->setText(1,"Bloqueado");
         QString Query = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = "+it->ej+" AND periodo = "+it->per;
-        error = conexionbase->ejecuta(Query);
+        error = empresaactual->ejecuta(Query);
     }// end if
 }
 

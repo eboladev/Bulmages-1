@@ -78,7 +78,6 @@ void AsientoListSubform::contextMenuEvent (QContextMenuEvent *) {
     if(opcion == verconfig)
         showConfig();
 
-
     delete popup;
 }
 

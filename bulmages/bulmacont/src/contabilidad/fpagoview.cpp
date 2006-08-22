@@ -20,13 +20,16 @@
 
 /** El constructor de la clase prepara las variables globales y llama a la función pintar
   */
-fpagoview::fpagoview(empresa *emp, QWidget *parent, const char *name) : fpagodlg(parent, name) , dialogChanges(this) {
+fpagoview::fpagoview(empresa *emp, QWidget *parent) : QWidget(parent, Qt::WDestructiveClose) , dialogChanges(this) {	
+    _depura("fpagoview::fpagoview", 0);
+    setupUi(this);
     empresaactual=emp;
-    conexionbase = emp->bdempresa();
     m_curfpago = NULL;  
     dialogChanges_cargaInicial(); 
     pintar();
-}// end fpagoview
+    emp->meteWindow(windowTitle(), this);
+    _depura("END fpagoview::fpagoview", 0);
+}
 
 
 /** El destructor de la clase guarda los datos (por si ha habido cambios)
@@ -36,7 +39,8 @@ fpagoview::~fpagoview() {
     s_saveFPago();
     if (m_curfpago != NULL)
         delete m_curfpago;
-}// end ~fpagoview
+    empresaactual->sacaWindow(this);
+}
 
 
 /** Pinta la ventana, recarga el combo y si se pasa el parametro muestra el identificador indicado
@@ -47,7 +51,7 @@ void fpagoview::pintar(QString idfpago) {
     if (m_curfpago != NULL)
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
-    m_curfpago = conexionbase->cargacursor(query);
+    m_curfpago = empresaactual->cargacursor(query);
     m_comboFPago->clear();
     int i = 0;
     while (!m_curfpago->eof()) {
@@ -58,7 +62,7 @@ void fpagoview::pintar(QString idfpago) {
         i++;
     }// end while
     mostrarplantilla(posicion);
-}// end pintar
+}
 
 
 /**
@@ -66,7 +70,7 @@ void fpagoview::pintar(QString idfpago) {
   * \param pos si es distinto de cero se busca en el combo la posición indicada sino se usa la posición actual del combo.
   */
 void fpagoview::mostrarplantilla(int pos) {
-    fprintf(stderr,"mostrarplantilla\n");
+    _depura("fpagoview::mostrarplantilla", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
     	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
@@ -82,13 +86,14 @@ void fpagoview::mostrarplantilla(int pos) {
         m_nomFPago->setText(m_curfpago->valor("nomfpago", m_posactual));
         m_plazoPrimerPagoFPago->setText(m_curfpago->valor("plazoprimerpagofpago",m_posactual));
         m_nPlazosFPago->setText(m_curfpago->valor("nplazosfpago",m_posactual));
-        m_tipoPlazoPrimerPago->setText(m_curfpago->valor("tipoplazoprimerpago",m_posactual));
+        m_tipoPlazoPrimerPago->setText(m_curfpago->valor("tipoplazoprimerpagofpago",m_posactual));
         m_plazoEntreReciboFPago->setText(m_curfpago->valor("plazoentrerecibofpago",m_posactual));
         m_tipoPlazoEntreReciboFPago->setText(m_curfpago->valor("tipoplazoentrerecibofpago",m_posactual));
 	/// Comprobamos cual es la cadena inicial.
 	dialogChanges_cargaInicial();
     }// end if
-}// end mostrarplantilla
+    _depura("END fpagoview::mostrarplantilla", 0);
+}
 
 
 /**
@@ -96,9 +101,10 @@ void fpagoview::mostrarplantilla(int pos) {
   centro de coste .
   */
 void fpagoview::cambiacombo(int) {
-    fprintf(stderr,"cambiado el combo\n");
+    _depura("fpagoview::cambiacombo", 0);
     mostrarplantilla();
-}// end cambiacombo
+    _depura("END fpagoview::cambiacombo", 0);
+}
 
 
 /** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
@@ -107,10 +113,10 @@ void fpagoview::cambiacombo(int) {
 void fpagoview::s_saveFPago() {
     QString idfpago = m_curfpago->valor("idfpago",m_posactual);
     QString query = "UPDATE fpago SET nomfpago='"+m_nomFPago->text()+"', nplazosfpago= "+m_nPlazosFPago->text()+" , plazoprimerpagofpago = "+m_plazoPrimerPagoFPago->text()+", plazoentrerecibofpago="+m_plazoEntreReciboFPago->text()+" WHERE idfpago="+m_curfpago->valor("idfpago", m_posactual);
-    conexionbase->ejecuta(query);
+    empresaactual->ejecuta(query);
     dialogChanges_cargaInicial();    
     pintar(m_curfpago->valor("idfpago", m_posactual));
-}// end s_saveFPago
+}
 
 
 /** SLOT que responde a la pulsación del botón de nuevo tipo de iva
@@ -126,13 +132,13 @@ void fpagoview::s_newFPago() {
 		s_saveFPago();	
     }// end if
     QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('NUEVA FORMA DE PAGO',0,0,0)";
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    cursor2 *cur = conexionbase->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
-    conexionbase->commit();
+    empresaactual->begin();
+    empresaactual->ejecuta(query);
+    cursor2 *cur = empresaactual->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
+    empresaactual->commit();
     pintar(cur->valor("idfpago"));
     delete cur;
-}// end s_newTipoIVA
+}
 
 
 
@@ -148,13 +154,13 @@ void fpagoview::s_deleteFPago() {
                                   QMessageBox::Ok ,
                                   QMessageBox::Cancel )) {
     case QMessageBox::Ok: // Retry clicked or Enter pressed
-        conexionbase->ejecuta("DELETE FROM fpago WHERE idfpago ="+m_curfpago->valor("idfpago",m_comboFPago->currentItem()));
+        empresaactual->ejecuta("DELETE FROM fpago WHERE idfpago ="+m_curfpago->valor("idfpago",m_comboFPago->currentItem()));
         pintar();
         break;
     case QMessageBox::Cancel: // Abort clicked or Escape pressed
         break;
     }// end switch
-}// s_deleteTipoIVA
+}
 
 
 
@@ -168,7 +174,7 @@ bool fpagoview::close(bool ok) {
 		QMessageBox::Cancel ) == QMessageBox::Ok)
 		s_saveFPago();	
     }// end if
-    return QDialog::close(ok);
-}// end close
+    return QWidget::close(ok);
+}
 
 

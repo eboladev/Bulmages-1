@@ -18,22 +18,21 @@
 
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "tipoivadlg.h"
+#include "ui_tipoivabase.h"
 
-#include "empresa.h"
+class empresa;
 
 /** Esta clase hace el mantenimiento de la tabla de Tipos de IVA
   * Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales.
   */
-class tipoivaview : public tipoivadlg , dialogChanges {
+class tipoivaview : public QWidget, public Ui_TipoIvaBase , dialogChanges {
 Q_OBJECT
 private:
    empresa *empresaactual;
-   postgresiface2 *conexionbase;
    cursor2 *m_curtipoiva;
    int m_posactual; /// Indica la posición en el combobox que está seleccionada. Se usa para hacer saves en caso de modificaciones.
 public:
-    tipoivaview(empresa *, QWidget *parent = 0, const char *name = 0);
+    tipoivaview(empresa *, QWidget *parent = 0);
     ~tipoivaview();
 private:
     void pintar(QString idtipoiva="");

@@ -14,30 +14,38 @@
   * \author Tomeu Borrás Riera
   */
 
+#include <QWidget>
 #include "tipoivaview.h"
 #include "empresa.h"
 #include "busquedacuenta.h"
 
+
 /** El constructor de la clase prepara las variables globales y llama a la función pintar
   */
-tipoivaview::tipoivaview(empresa *emp,QWidget *parent, const char *name) : tipoivadlg(parent, name) , dialogChanges(this) {
+tipoivaview::tipoivaview(empresa *emp,QWidget *parent) : QWidget(parent, Qt::WDestructiveClose) , dialogChanges(this) {
+    _depura("tipoivaview::tipoivaview", 0);
+    setupUi(this);
     empresaactual = emp;
-    conexionbase = empresaactual->bdempresa();
     m_codigoCtaTipoIVA->setempresa(emp);
     m_curtipoiva = NULL;
     dialogChanges_cargaInicial();
     pintar();
-}// end tipoivaview
+    empresaactual->meteWindow(windowTitle(), this);
+    _depura("END tipoivaview::tipoivaview", 0);
+}
 
 
 /** El destructor de la clase guarda los datos (por si ha habido cambios)
   * y libera la memoria que se haya ocupado
   */
 tipoivaview::~tipoivaview() {
+    _depura("tipoivaview::~tipoivaview", 0);
     s_saveTipoIVA();
     if (m_curtipoiva != NULL)
         delete m_curtipoiva;
-}// end ~tipoivaview
+    empresaactual->sacaWindow(this);
+    _depura("END tipoivaview::~tipoivaview", 0);
+}
 
 
 /** Pinta la ventana, recarga el combo y si se pasa el parametro muestra el identificador indicado
@@ -48,7 +56,7 @@ void tipoivaview::pintar(QString idtipoiva) {
     if (m_curtipoiva != NULL)
         delete m_curtipoiva;
     QString query = "SELECT * from tipoiva left join cuenta ON tipoiva.idcuenta = cuenta.idcuenta ORDER BY nombretipoiva";
-    m_curtipoiva = conexionbase->cargacursor(query);
+    m_curtipoiva = empresaactual->cargacursor(query);
     m_comboTipoIVA->clear();
     int i = 0;
     while (!m_curtipoiva->eof()) {
@@ -59,7 +67,7 @@ void tipoivaview::pintar(QString idtipoiva) {
         i++;
     }// end while
     mostrarplantilla(posicion);
-}// end pintar
+}
 
 
 /**
@@ -85,7 +93,7 @@ void tipoivaview::mostrarplantilla(int pos) {
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     }// end if
-}// end mostrarplantilla
+}
 
 
 /*****************************************************
@@ -94,7 +102,7 @@ void tipoivaview::mostrarplantilla(int pos) {
   ****************************************************/
 void tipoivaview::cambiacombo(int) {
     mostrarplantilla();
-}// end cambiacombo
+}
 
 
 /** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
@@ -103,11 +111,11 @@ void tipoivaview::cambiacombo(int) {
 void tipoivaview::s_saveTipoIVA() {
     QString idtipoiva = m_curtipoiva->valor("idtipoiva",m_posactual);
     QString query = "UPDATE tipoiva SET nombretipoiva='"+m_nombreTipoIVA->text()+"', porcentajetipoiva= "+m_porcentTipoIVA->text()+" , idcuenta = id_cuenta('"+m_codigoCtaTipoIVA->text()+"') WHERE idtipoiva="+m_curtipoiva->valor("idtipoiva", m_posactual);
-    conexionbase->ejecuta(query);
+    empresaactual->ejecuta(query);
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     pintar(m_curtipoiva->valor("idtipoiva", m_posactual));
-}// end s_saveTipoIVA
+}
 
 
 /** SLOT que responde a la pulsación del botón de nuevo tipo de iva
@@ -123,13 +131,13 @@ void tipoivaview::s_newTipoIVA() {
             s_saveTipoIVA();
     }// end if
     QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('NUEVO TIPO IVA',0,id_cuenta('47'))";
-    conexionbase->begin();
-    conexionbase->ejecuta(query);
-    cursor2 *cur = conexionbase->cargacursor("SELECT max(idtipoiva) AS idtipoiva FROM tipoiva");
-    conexionbase->commit();
+    empresaactual->begin();
+    empresaactual->ejecuta(query);
+    cursor2 *cur = empresaactual->cargacursor("SELECT max(idtipoiva) AS idtipoiva FROM tipoiva");
+    empresaactual->commit();
     pintar(cur->valor("idtipoiva"));
     delete cur;
-}// end s_newTipoIVA
+}
 
 
 /** SLOT que responde a la pulsación del botón de borrar un tipo de IVA
@@ -145,13 +153,13 @@ void tipoivaview::s_deleteTipoIVA() {
                                   QMessageBox::Ok ,
                                   QMessageBox::Cancel )) {
     case QMessageBox::Ok: // Retry clicked or Enter pressed
-        conexionbase->ejecuta("DELETE FROM tipoiva WHERE idtipoiva ="+m_curtipoiva->valor("idtipoiva",m_comboTipoIVA->currentItem()));
+        empresaactual->ejecuta("DELETE FROM tipoiva WHERE idtipoiva ="+m_curtipoiva->valor("idtipoiva",m_comboTipoIVA->currentItem()));
         pintar();
         break;
     case QMessageBox::Cancel: // Abort clicked or Escape pressed
         break;
     }// end switch
-}// s_deleteTipoIVA
+}
 
 
 /** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo
@@ -167,7 +175,7 @@ bool tipoivaview::close(bool ok) {
             s_saveTipoIVA();
     }// end if
     return QWidget::close(ok);
-}// end close
+}
 
 
 

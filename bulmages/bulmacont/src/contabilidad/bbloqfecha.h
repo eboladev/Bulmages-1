@@ -15,14 +15,16 @@
 #ifndef BbloqFecha_H
 #define BbloqFecha_H
 
-#include "uibloqfecha.h"
+#include "ui_bbloqfechabase.h"
 #include "postgresiface2.h"
-
 #include <q3listview.h>
 
 /**
 @author Josep Burcion
 */
+
+
+class empresa;
 
 
 class myQListViewItem : public Q3ListViewItem {
@@ -35,12 +37,12 @@ public:
 };
 
 
-class BbloqFecha : public UIbloqFecha {
+class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
 private:
-	postgresiface2 *conexionbase;
+	empresa *empresaactual;
 
 public:
-    BbloqFecha(QString * NombreBaseDatos=0, QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel);
+    BbloqFecha(empresa *emp, QWidget * parent = 0);
     ~BbloqFecha();
 
 

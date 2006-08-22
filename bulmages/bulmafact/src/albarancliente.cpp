@@ -209,10 +209,9 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Total") + "</td>\n";
     fitxersortidatxt += "</tr>\n";
     QString l;
-    /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
-    int i=0;
+
     SDBRecord *linea;
-    for (i = 0; i < listalineas->rowCount()-1; ++i) {
+    for (int i = 0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlalbaran").toAscii().constData()) *
                      Fixed(linea->DBvalue("pvplalbaran").toAscii().constData());
@@ -230,10 +229,6 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
                             + "</td>\n";
         fitxersortidatxt += "</tr>";
     }
-
-    while (i++ < 15) {
-        fitxersortidatxt += "<tr></tr>";
-    } // end while
 
     fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);

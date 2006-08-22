@@ -39,32 +39,37 @@
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
 cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
     _depura("cursor2::cursor2", 0);
-    conn = conn1;
-    m_error = FALSE;
-    m_query = SQLQuery;
-    nomcursor = nombre;
-    nregistros = 0;
-    registroactual = 0;
-    _depura(SQLQuery, 0);
-    result = PQexec(conn, SQLQuery.toAscii().data());
-    if (!result) {
-        m_error = TRUE;
-        _depura(PQerrorMessage(conn));
-        _depura("QUERY command failed [" + SQLQuery + "]");
-        if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
-            msgError(QString("Ha ocurrido un error al hacer una consulta con la base de datos."), SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
-        PQclear(result);
-        return;
-    } // end if
-    nregistros = PQntuples(result);
-    ncampos = PQnfields(result);
-    registroactual = 0;
-    /// Depuramos todo.
-    _depura("--------- RESULTADO DE QUERY ----------------");
-    QString err;
-    err.sprintf("Num. Registros: %d, Num. Campos: %d", nregistros, ncampos);
-    _depura(err);
-    _depura("--------- FIN RESULTADO DE QUERY ----------------");
+    try {
+        conn = conn1;
+        m_error = FALSE;
+        m_query = SQLQuery;
+        nomcursor = nombre;
+        nregistros = 0;
+        registroactual = 0;
+        _depura(SQLQuery, 0);
+        result = PQexec(conn, SQLQuery.toAscii().data());
+        if (!result) {
+            m_error = TRUE;
+            _depura(PQerrorMessage(conn));
+            _depura("QUERY command failed [" + SQLQuery + "]");
+            if (confpr->valor(CONF_ALERTAS_DB) == "Yes")
+                msgError(QString("Ha ocurrido un error al hacer una consulta con la base de datos."), SQLQuery + QString("\n") + (QString) PQerrorMessage(conn));
+            PQclear(result);
+            throw -1;
+        } // end if
+        nregistros = PQntuples(result);
+        ncampos = PQnfields(result);
+        registroactual = 0;
+        /// Depuramos todo.
+        _depura("--------- RESULTADO DE QUERY ----------------");
+        QString err;
+        err.sprintf("Num. Registros: %d, Num. Campos: %d", nregistros, ncampos);
+        _depura(err);
+        _depura("--------- FIN RESULTADO DE QUERY ----------------");
+    } catch(...) {
+        mensajeInfo("Error con el query: "+SQLQuery );
+        throw -1;
+    } // end try
     _depura("END cursor2::cursor2", 0);
 }
 
@@ -127,6 +132,7 @@ int cursor2::numcampo(QString campo) {
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posicion.
 QString cursor2::valor(int posicion, int registro) {
+    _depura("cursor2::valor", 0, QString::number(posicion) + QString::number(registro));
     if (registro == -1) {
         registro = registroactual;
     } // end if
@@ -141,6 +147,7 @@ QString cursor2::valor(int posicion, int registro) {
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posicion.
 QString cursor2::valor(QString campo, int registro) {
+    _depura("cursor2::valor", 0, campo + " " + QString::number(registro));
     int i = 0;
     if (registro == -1) {
         registro = registroactual;
@@ -154,18 +161,21 @@ QString cursor2::valor(QString campo, int registro) {
 
 /// Devuelve la posicion siguiente al registro que se esta recorriendo.
 int cursor2::siguienteregistro() {
+    _depura("cursor2::siguienteregistro", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
     return ++registroactual;
 }
 
 
 /// Devuelve la posicion anterior al registro que se esta recorriendo.
 int cursor2::registroanterior() {
+    _depura("cursor2::registroanterior", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
     return --registroactual;
 }
 
 
 /// Devuelve la posicion del primer registro de la tabla de registros.
 int cursor2::primerregistro() {
+    _depura("cursor2::primerregistro", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
     registroactual = 0;
     return 0;
 }
@@ -173,6 +183,7 @@ int cursor2::primerregistro() {
 
 /// Devuelve el ultimo registro de la tabla de registros.
 int cursor2::ultimoregistro() {
+    _depura("cursor2::ultimoregistro", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
     registroactual = nregistros - 1;
     return registroactual;
 }
@@ -198,6 +209,7 @@ bool cursor2::bof() {
 
 /// devuelve TRUE si es el ltimo registro a considerar.
 bool cursor2::esultimoregistro() {
+    _depura("cursor2::esultimoregistro", 0);
     return (registroactual == nregistros - 1);
 }
 
@@ -363,7 +375,14 @@ void postgresiface2::rollback() {
 /// respuesta al query.
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     _depura ("postgresiface2::cargacursor", 0);
-    cursor2 *cur = new cursor2(nomcursor, conn, Query);
+	cursor2 *cur = NULL;
+    try {
+        cur = new cursor2(nomcursor, conn, Query);
+    } catch(...) {
+	mensajeInfo( "postgresiface2::cargacursor La base de datos generó un error: "+Query);
+        delete cur;
+        return NULL;
+    } // end try
     _depura ("END postgresiface2::cargacursor", 0);
     return cur;
 }
@@ -425,6 +444,7 @@ QString postgresiface2::searchParent(QString cod) {
     } // end while
     return padre;
 }
+
 
 
 int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal) {
@@ -668,6 +688,8 @@ int postgresiface2::abreasiento(int idasiento) {
 }
 
 
+
+
 int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
     QString cadena;
     cadena.sprintf("%d", idcuenta);
@@ -681,6 +703,7 @@ int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString cod
     _depura(query);
     return (ejecuta(query));
 }
+
 
 
 int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
@@ -713,6 +736,8 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
                   sanearCadena(nohaber).toAscii().data());
     return (ejecuta(query));
 }
+
+
 
 
 cursor2 *postgresiface2::cargaempresas() {

@@ -19,16 +19,16 @@
 #define ACTUALIZACIONESVIEW_H
 
 #include <qwidget.h>
-#include <actualizacionesdlg.h>
+#include <ui_actualizacionesbase.h>
 
 /**
   *@author Tomeu Borrás Riera
   */
 
-class actualizacionesview : public actualizacionesdlg  {
+class actualizacionesview : public QWidget, Ui_ActualizacionesBase  {
    Q_OBJECT
 public: 
-	actualizacionesview(QWidget *parent=0, const char *name=0);
+	actualizacionesview(QWidget *parent=0);
 	~actualizacionesview();
 };
 
