@@ -35,7 +35,8 @@ HEADERS += postgresiface2.h \
            subform.h \
            subform3.h \
            listventanas.h \
-           qworkspace2.h 
+           qworkspace2.h \
+	   qapplication2.h
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -57,7 +58,8 @@ SOURCES += postgresiface2.cpp \
            subform.cpp \
            subform3.cpp \
            listventanas.cpp \
-           qworkspace2.cpp 
+           qworkspace2.cpp \
+	   qapplication2.cpp
 QT += qt3support
 DEFINES += QT3_SUPPORT_WARNINGS
 TEMPLATE = lib

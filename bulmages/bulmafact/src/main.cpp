@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QApplication>
+#include "qapplication2.h"
 #include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
@@ -39,18 +39,19 @@
 #endif
 
 
-QApplication *theApp;
+QApplication2 *theApp;
 bulmafact *bges;
 QTranslator *traductor;
 
 int main(int argc, char ** argv) {
-    _depura("MAIN: Iniciando programa", 0);
+    try {
+    _depura("main:: Iniciando programa", 0);
     /// Leemos la configuracion que luego podremos usar siempre.
     confpr = new configuracion();
     /// Preparamos el sistema de plugins.
     g_plugins = new Plugins();
     /// Iniciamos la clase QApplication para el uso de las Qt.
-    theApp = new QApplication(argc, argv);
+    theApp = new QApplication2(argc, argv);
 
     /// Definimos la codificacion a Unicode.
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
@@ -153,6 +154,10 @@ int main(int argc, char ** argv) {
     g_main = bges;
 
     theApp->exec();
+
+   } catch(...) {
+	mensajeInfo( "Error inesperado en BulmaFact, el programa se cerrara");
+   } // end try
 
     _depura("MAIN: Se acabo la ejecucion en main", 0);
 

@@ -91,6 +91,8 @@ Bulmages01::~Bulmages01() {
 }
 
 
+
+
 void Bulmages01::initStatusBar() {
     statusBar()->message(tr("Listo."));
 }

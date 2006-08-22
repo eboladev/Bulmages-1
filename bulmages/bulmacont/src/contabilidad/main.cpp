@@ -33,7 +33,7 @@
 #include "log.h"
 #include "logpass.h"
 #include "plugins.h"
-
+#include "qapplication2.h"
 
 #ifdef WIN32
 #define CONFGLOBAL "C:\\bulmages_"
@@ -45,100 +45,107 @@
 
 /// Estas son las variables globales de la aplicación.
 /// El puntero de la aplicación
-QApplication * theApp;
+QApplication2 * theApp;
 /// El traductor.
 QTranslator * traductor;
 
 /// Faltan el configurador de parametros confpr y el sistema de log ctlog
 
-    
+
 /** \brief los datos de ejecución del programa son sencillos
   * La ejecución primero crea e inicializa los objetos configuración, idioma, splash, etc
   * luego intenta entrar en el sistema de base de datos
   * Y por último crea el objeto del tipo \ref Bulmages01 que es la aplicación de ventanas.
   */
 int main(int argc, char *argv[]) {
+    QApplication2 * mainApp;
     Bulmages01 *bges;
     int valorsalida=0;
     QString db= argv[2];
     QString us=argv[3];
     QString pass=argv[4];
-    /// Leemos la configuracion que luego podremos usar siempre
-    confpr = new configuracion();
-    /// Inicializamos el objeto global para uso de plugins
-    g_plugins = new Plugins();
+    try {
+        /// Leemos la configuracion que luego podremos usar siempre
+        confpr = new configuracion();
+        /// Inicializamos el objeto global para uso de plugins
+        g_plugins = new Plugins();
 
-    /// Definimos la codificacion a Unicode.
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+        /// Definimos la codificacion a Unicode.
+        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+        QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
 
-    QApplication * mainApp = new QApplication (argc, argv);
-    theApp = mainApp;
-    mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+        /// Creamos la aplicacion principal
+        mainApp = new QApplication2 (argc, argv);
+        theApp = mainApp;
+        mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+
+        /// Cargamos las primeras traducciones para bulmalib y para bulmacont
+        traductor = new QTranslator ( 0 );
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load( QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+        } else {
+            QString archivo = "bulmalib_"+confpr->valor(CONF_TRADUCCION);
+            traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        }// end if
+        theApp->installTranslator( traductor );
+
+        traductor = new QTranslator ( 0 );
+        if (confpr->valor(CONF_TRADUCCION) == "locales") {
+            traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+        } else {
+            QString archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
+            traductor->load(archivo.ascii(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        }// end if
+        theApp->installTranslator( traductor );
+
+        /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
+        ctllog = new bitacora();
+        ctllog->add
+        (LOG_SEG, 1,"MaiMai003", "---- Iniciacion del programa ----");
+
+        /// Cargamos el SplashScreen de BulmaCont
+        Splash *splashScr = new Splash();
+        delete splashScr;
+
+        /// Miramos en los parametros pasados al programa por si ya viene indicada la empresa y no hay que mostrar selector
+        if (argc == 5) {
+            confpr->setValor(CONF_LOGIN_USER, us);
+            confpr->setValor(CONF_PASSWORD_USER, pass);
+            bges = new Bulmages01(NULL, "bulmages",0, db);
+        } else if (argc == 3) {
+            QString db= argv[2];
+            bges = new Bulmages01(NULL, "bulmages",0, db);
+        } else {
+            logpass *login1 = new logpass(0,"");
+            if (!login1->authOK())
+                login1->exec();
+            if (!login1->authOK())
+                exit(1);
+            delete login1;
+            bges = new Bulmages01(NULL, "bulmages",0, "");
+        }// end if
+
+        /// Leemos la configuración específica de la base de datos que se ha abierto.
+        QString confesp = CONFGLOBAL+bges->empresaactual()->nameDB()+".conf";
+        confpr->leeconfig(confesp);
+
+        /// cargamos las librerias de g_plugins
+        g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
+
+        g_plugins->lanza("entryPoint", bges);
+
+        mainApp->setMainWidget(bges);
+        g_main = bges;
+        valorsalida = mainApp->exec();
 
 
-
-    traductor = new QTranslator ( 0 );
-    if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load( QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
-    } else {
-        QString archivo = "bulmalib_"+confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
-    }// end if
-    theApp->installTranslator( traductor );
-
-    traductor = new QTranslator ( 0 );
-    if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
-    } else {
-        QString archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.ascii(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
-    }// end if
-    theApp->installTranslator( traductor );
-
-    /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
-    ctllog = new bitacora();
-    ctllog->add(LOG_SEG, 1,"MaiMai003", "---- Iniciacion del programa ----");
-
-
-    Splash *splashScr = new Splash();
-    delete splashScr;
-
-    if (argc == 5) {
-        confpr->setValor(CONF_LOGIN_USER, us);
-        confpr->setValor(CONF_PASSWORD_USER, pass);
-        bges = new Bulmages01(NULL, "bulmages",0, db);
-    } else if (argc == 3) {
-        QString db= argv[2];
-        bges = new Bulmages01(NULL, "bulmages",0, db);
-    } else {
-        logpass *login1 = new logpass(0,"");
-        if (!login1->authOK())
-            login1->exec();
-	   if (!login1->authOK())
-		 exit(1);
-	   delete login1;
-        bges = new Bulmages01(NULL, "bulmages",0, "");
-    }// end if
-
-
-    /// Leemos la configuración específica de la base de datos que se ha abierto.
-    QString confesp = CONFGLOBAL+bges->empresaactual()->nameDB()+".conf";
-    confpr->leeconfig(confesp);
-
-    /// cargamos las librerias de g_plugins
-    g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
-
-	g_plugins->lanza("entryPoint", bges);
-	
-    mainApp->setMainWidget(bges);
-	g_main = bges;
-    valorsalida = mainApp->exec();
-
+    } catch(...) {
+        mensajeInfo( "Error inesperado en BulmaCont, el programa se cerrará");
+    } // end try
     /// No debe liberarse la memoria reservada por bges pq este ya se auto-destruye.
     delete confpr;
     delete mainApp;
     delete traductor;
 
     return valorsalida;
-}// end main
+}

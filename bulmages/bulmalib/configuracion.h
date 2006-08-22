@@ -21,7 +21,7 @@
 #ifndef _CONFIGURACION1_H_
 #define _CONFIGURACION1_H_
 
-#include <QApplication>
+#include "qapplication2.h"
 #include <QTranslator>
 #include <QString>
 #include <QMap>
@@ -199,7 +199,7 @@ public:
 /// Existe una instancia del objeto global confpr.
 extern configuracion *confpr;
 /// Existe una instancia del objeto global theApp.
-extern QApplication *theApp;
+extern QApplication2 *theApp;
 /// Existe una instancia del objeto global traductor.
 extern QTranslator *traductor;
 
