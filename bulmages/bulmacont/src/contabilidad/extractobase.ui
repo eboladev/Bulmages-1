@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -376,10 +376,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>2</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -387,47 +387,27 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>2</number>
+         <number>6</number>
         </property>
         <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
+         <widget class="QLabel" name="TextLabel1" >
+          <property name="text" >
+           <string>Cuenta inicial</string>
           </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="TextLabel1" >
-            <property name="text" >
-             <string>Cuenta inicial</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="BusquedaCuenta" name="m_codigoinicial" />
-          </item>
-         </layout>
+         </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
+         <widget class="BusquedaCuenta" name="m_codigoinicial" />
+        </item>
+        <item>
+         <widget class="QLabel" name="TextLabel1_2_2" >
+          <property name="text" >
+           <string>Cuenta final</string>
           </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="TextLabel1_2_2" >
-            <property name="text" >
-             <string>Cuenta final</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="BusquedaCuenta" name="m_codigofinal" />
-          </item>
-         </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="BusquedaCuenta" name="m_codigofinal" />
         </item>
         <item>
          <spacer>
@@ -439,51 +419,11 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>130</width>
+            <width>161</width>
             <height>20</height>
            </size>
           </property>
          </spacer>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1" >
-            <property name="text" >
-             <string>Fecha Inicial</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="BusquedaFecha" name="m_fechainicial1" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1_2" >
-            <property name="text" >
-             <string>Fecha Final</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="BusquedaFecha" name="m_fechafinal1" />
-          </item>
-         </layout>
         </item>
        </layout>
       </item>
@@ -496,55 +436,46 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="mui_asAbiertos" >
+         <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>&amp;Incluir asientos abiertos</string>
+           <string>Fecha Inicial</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="Q3ButtonGroup" name="buttonGroup1" >
-          <property name="title" >
-           <string>Punteo</string>
+         <widget class="BusquedaFecha" name="m_fechainicial1" />
+        </item>
+        <item>
+         <widget class="QLabel" name="textLabel1_2" >
+          <property name="text" >
+           <string>Fecha Final</string>
           </property>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
-          </property>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
-           </property>
-           <property name="spacing" >
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QRadioButton" name="mui_punteonopunteado" >
-             <property name="text" >
-              <string>Apuntes &amp;No Punteados</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="mui_punteotodos" >
-             <property name="text" >
-              <string>&amp;Todos</string>
-             </property>
-             <property name="checked" >
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="mui_punteopunteado" >
-             <property name="text" >
-              <string>Ap&amp;untes Punteados</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
          </widget>
         </item>
+        <item>
+         <widget class="BusquedaFecha" name="m_fechafinal1" />
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
        </layout>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="mui_asAbiertos" >
+        <property name="text" >
+         <string>&amp;Incluir asientos abiertos</string>
+        </property>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" >
@@ -575,64 +506,107 @@
          <number>6</number>
         </property>
         <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
+         <widget class="QLabel" name="textLabel1_3" >
+          <property name="text" >
+           <string>Apuntes con saldo superior a</string>
           </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1_3" >
-            <property name="text" >
-             <string>Apuntes con saldo superior a</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_saldosup" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
+         <widget class="QLineEdit" name="mui_saldosup" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-          <property name="spacing" >
-           <number>6</number>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="textLabel1_3_2" >
+          <property name="text" >
+           <string>Apuntes con saldo inferior a</string>
           </property>
-          <item>
-           <widget class="QLabel" name="textLabel1_3_2" >
-            <property name="text" >
-             <string>Apuntes con saldo inferior a</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_saldoinf" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="mui_saldoinf" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
+      </item>
+      <item>
+       <widget class="Q3ButtonGroup" name="buttonGroup1" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="title" >
+         <string>Punteo</string>
+        </property>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QRadioButton" name="mui_punteonopunteado" >
+           <property name="text" >
+            <string>Apuntes &amp;No Punteados</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mui_punteotodos" >
+           <property name="text" >
+            <string>&amp;Todos</string>
+           </property>
+           <property name="checked" >
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mui_punteopunteado" >
+           <property name="text" >
+            <string>Ap&amp;untes Punteados</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -3091,6 +3065,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>Q3ButtonGroup</class>
+   <extends></extends>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../bulmalib/busquedafecha.h</header>
@@ -3109,13 +3090,6 @@
    <extends>QTableWidget</extends>
    <header>extractosubform.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

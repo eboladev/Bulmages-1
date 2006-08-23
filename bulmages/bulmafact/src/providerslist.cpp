@@ -136,7 +136,6 @@ void ProveedorList::on_mui_borrar_clicked() {
 
 
 /// SLOT que se ejecuta al pulsar sobre el boton de imprimir en la ventana de proveedores
-/// La funcion llama a rtkview para generar el listado predefinido en reports/ProveedorList.rtk
 void ProveedorList::on_mui_imprimir_clicked() {
     _depura("ProveedorList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Proveedores"));
