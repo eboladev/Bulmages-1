@@ -113,6 +113,8 @@ void asientosview::inicializa() {
 
 void asientosview::on_mui_imprimir_clicked() {
     _depura("asientosview::on_mui_imprimir_clicked", 0);
+	mui_list->imprimirPDF(tr("Asientos"));
+/*
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -163,6 +165,7 @@ void asientosview::on_mui_imprimir_clicked() {
     } // end if
 
     invocaPDF("listado");
+*/
     _depura("END asientosview::on_mui_imprimir_clicked", 0);
 }
 

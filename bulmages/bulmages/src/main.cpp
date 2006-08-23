@@ -1,7 +1,7 @@
 #include "comun/bselector.h"
 
 
-#include <qapplication.h>
+#include "qapplication2.h"
 //Added by qt3to4:
 #include <QTranslator>
 #include "configuracion.h"
@@ -12,7 +12,7 @@
 
 
 /// Instancia de la aplicacion. Usada en algunos casos para acceder a determinadas funcionalidades como la traducci�.
-QApplication *theApp;
+QApplication2 *theApp;
 /// Instancia de la traduccion que se carga en tiempo de ejecuci� y que se usa de forma global.
 QTranslator * traductor;
 /** \author Tomeu Borras Riera
@@ -26,7 +26,7 @@ QTranslator * traductor;
 
 int main( int argc, char ** argv ) {
     confpr = new configuracion();
-    QApplication a( argc, argv );
+    QApplication2 a( argc, argv );
     theApp = &a;
 
 

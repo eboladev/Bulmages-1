@@ -27,10 +27,10 @@
   * Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa el programa
   * Luego llama al método cargacanales que hace la carga de los canales a partir de la base de datos
   */
-selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char *name) : selectcanaldlg(parent, name) {
-   fprintf(stderr,"Inicializacion del selector de canales\n");
+selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char *name) : QDialog(parent, name) {
+   _depura("selectcanalview::selectcanalview", 0);
+   setupUi(this);
    empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
    numdigitos = empresaactual->numdigitosempresa();
    m_iterador = new Q3ListViewItemIterator (m_listCanales);
    m_colNomCoste = m_listCanales->addColumn("nom_canal",-1);
@@ -39,13 +39,13 @@ selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char *name)
    m_colIdCoste = m_listCanales->addColumn("idcanal",0);
    m_colCheck = m_listCanales->addColumn("Seleccion",-1);
    cargacanales();
-   fprintf(stderr,"Fin del Inicializacion del selector de canales\n");
-}// end selectccsotedlg
+   _depura("END selectcanalview::selectcanalview", 0);
+}
 
 
 selectcanalview::~selectcanalview() {
    delete m_iterador;
-}// end selectccosteview
+}
 
 
 void selectcanalview::cargacanales() {
@@ -56,9 +56,9 @@ void selectcanalview::cargacanales() {
 
     // Cogemos los centros de coste principales y los ponemos donde toca.
     m_listCanales->clear();
-    conexionbase->begin();
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM canal","canalillos");
-    conexionbase->commit();
+    empresaactual->begin();
+    cursoraux1 = empresaactual->cargacursor("SELECT * FROM canal","canalillos");
+    empresaactual->commit();
     while (!cursoraux1->eof()) {
         idcanal = atoi( cursoraux1->valor("idcanal").ascii());
         it =new Q3CheckListItem(m_listCanales,"hola pepsi",Q3CheckListItem::CheckBox);
@@ -70,7 +70,7 @@ void selectcanalview::cargacanales() {
         cursoraux1->siguienteregistro ();
     }// end while
     delete cursoraux1;
-}// end cargacostes
+}
 
 
 // Esta función devuelve el primer centro de coste seleccionado de la vita.
@@ -80,7 +80,7 @@ int selectcanalview::firstcanal() {
    delete m_iterador;
    m_iterador = new Q3ListViewItemIterator (m_listCanales);
    return nextcanal();
-}// end firstccoste
+}
 
 // Esta función devuelve el siguiente centro de coste seleccionado de la vista.
 int selectcanalview::nextcanal() {
@@ -97,8 +97,7 @@ int selectcanalview::nextcanal() {
      (*m_iterador)++;
    }// end while
   return idcanal;
-}// end nextccoste
-
+}
 
 QString selectcanalview::cadcanal() {
    int idcanal;
@@ -113,7 +112,7 @@ QString selectcanalview::cadcanal() {
      idcanal= nextcanal();
   }// end while
   return ccanales; ;
-}// end cadcoste
+}
 
 
 // Esta función devuelve el nombre de un canal determinado
@@ -126,7 +125,7 @@ QString selectcanalview::nomcanal() {
    } else {
          return "";
    }// end if
-}// end nomcanal
+}
 
 
 void selectcanalview::boton_todo() {
@@ -139,7 +138,7 @@ void selectcanalview::boton_todo() {
      (*m_iterador)++;
    }// end while
    delete m_iterador;
-}// end boton_todo
+}
 
 void selectcanalview::boton_nada() {
    Q3ListViewItemIterator* m_iterador;
@@ -151,7 +150,7 @@ void selectcanalview::boton_nada() {
      (*m_iterador)++;
    }// end while
    delete m_iterador;
-}// end boton_todo
+}
 
 
 void selectcanalview::boton_invertir() {
@@ -167,4 +166,4 @@ void selectcanalview::boton_invertir() {
      (*m_iterador)++;
    }//end while
    delete m_iterador;
-}// end boton_invertir
+}

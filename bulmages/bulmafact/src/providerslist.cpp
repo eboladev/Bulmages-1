@@ -138,53 +138,9 @@ void ProveedorList::on_mui_borrar_clicked() {
 /// SLOT que se ejecuta al pulsar sobre el boton de imprimir en la ventana de proveedores
 /// La funcion llama a rtkview para generar el listado predefinido en reports/ProveedorList.rtk
 void ProveedorList::on_mui_imprimir_clicked() {
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "proveedores.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "proveedores.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
-    /// Copiamos el archivo.
-#ifdef WINDOWS
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system (archivo.toAscii().constData());
-
-    /// Copiamos el logo.
-#ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#endif
-
-    system(archivologo.toAscii().constData());
-
-    QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt;
-    /// Linea de totales del presupuesto.
-    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-    fitxersortidatxt += mui_list->imprimir();
-    fitxersortidatxt += "</blockTable>";
-
-    buff.replace("[story]", fitxersortidatxt);
-
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
-        stream << buff;
-        file.close();
-    } // end if
-
-    invocaPDF("proveedores");
+    _depura("ProveedorList::on_mui_imprimir_clicked", 0);
+    mui_list->imprimirPDF(tr("Listado de Proveedores"));
+    _depura("END ProveedorList::on_mui_imprimir_clicked", 0);
 }
 
 

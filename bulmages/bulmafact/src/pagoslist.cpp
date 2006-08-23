@@ -165,56 +165,9 @@ void PagosList::on_mui_crear_clicked() {
 
 
 void PagosList::imprimir() {
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "pagos.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "pagos.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
-    /// Copiamos el archivo.
-#ifdef WINDOWS
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system(archivo.toAscii().constData());
-
-    /// Copiamos el logo.
-#ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#endif
-
-    system(archivologo.toAscii().constData());
-
-    QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt;
-
-    /// Linea de totales del presupuesto.
-    fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-    fitxersortidatxt += mui_list->imprimir();
-    fitxersortidatxt += "</blockTable>";
-
-    buff.replace("[story]", fitxersortidatxt);
-
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
-        stream << buff;
-        file.close();
-    }
-
-    /// Crea el pdf y lo muestra.
-    _depura("Vamos a imprimir e listado de pagos", 0);
-    invocaPDF("pagos");
+    _depura("PagosList::imprimir", 0);
+     mui_list->imprimirPDF(tr("Listado de Pagos"));
+    _depura("END PagosList::imprimir", 0);
 }
 
 

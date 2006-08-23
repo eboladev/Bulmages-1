@@ -63,8 +63,6 @@ private slots:
    virtual void imprimir();
 /// SLOT que responde a la acci� de hacer doble click sobre el listado   
    virtual void dbtabla(int, int, int, const QPoint &);
-/// SLOT que responde a la pulsaci� del bot� de exportaci� de balances   
-   
 };
 
 #endif

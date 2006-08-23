@@ -1,5 +1,5 @@
 /***************************************************************************
-                          balancesprintview.cpp  -  description
+                          CAnualesPrintView.cpp  -  description
                              -------------------
     begin                : jue oct 9 2003
     copyright            : (C) 2003 by Tomeu Borrás Riera
@@ -29,13 +29,16 @@
 #include <sys/wait.h>
 #endif
 
-balancesprintview::balancesprintview(empresa *emp,QWidget *parent, const char *name ) : balancesprintdlg(parent,name) {
+CAnualesPrintView::CAnualesPrintView(empresa *emp,QWidget *parent ) : QDialog(parent) {
+    _depura("CAnualesPrintView::CAnualesPrintView", 0);
+    setupUi(this);
     empresaactual = emp;
-    conexionbase = emp->bdempresa();
     fichero = NULL;
-}// end balancesprintview
+    _depura("END CAnualesPrintView::CAnualesPrintView", 0);
 
-balancesprintview::~balancesprintview() {}// end ~balancesprintview
+}
+
+CAnualesPrintView::~CAnualesPrintView() {}
 
 
 
@@ -43,7 +46,7 @@ balancesprintview::~balancesprintview() {}// end ~balancesprintview
  * Se ha pulsado sobre el boton de aceptar del formulario con lo que podemos     *
  * pasar a hacer la impresión.                                                   *
  *********************************************************************************/
-void balancesprintview::accept() {
+void CAnualesPrintView::accept() {
     QString arch = confpr->valor(CONF_DIR_USER)+"balance.txt";
 
     string cad;
@@ -53,7 +56,6 @@ void balancesprintview::accept() {
     if (fechainicial == "") fechainicial = "01/01/1900";
 	/// Si no se especifica fecha final se pone una suficientemente futura.
     if (fechafinal == "") fechafinal = "31/12/2100";
-
 
     FILE *mifile;
     mifile = fopen(arch.ascii(),"wt");
@@ -65,14 +67,14 @@ void balancesprintview::accept() {
     if (mifile != NULL) {
 	/// Cargamos los componentes e itereamos para cada uno de ellos.
         QString query1 = "SELECT * FROM compbalance WHERE idbalance = "+idbalance+" ORDER BY orden";
-        cursor2 *cursor = conexionbase->cargacursor(query1);
+        cursor2 *cursor = empresaactual->cargacursor(query1);
         int numregistros = cursor->numregistros();
         progreso->reset();
         progreso->setTotalSteps(numregistros);
         progreso->setProgress(1);
         while (!cursor->eof()) {
             QString query = "SELECT saldompatrimonial("+cursor->valor("idmpatrimonial")+",'"+fechainicial+"','"+fechafinal+"') AS saldot";
-            cursor2 *mycursor = conexionbase->cargacursor(query);
+            cursor2 *mycursor = empresaactual->cargacursor(query);
             int i=0;
             Fixed valor("0");
             while (!mycursor->eof()) {
@@ -102,18 +104,18 @@ void balancesprintview::accept() {
 
     QString cadena = confpr->valor(CONF_EDITOR)+" "+confpr->valor(CONF_DIR_USER)+"balance.txt &";
     system(cadena.ascii());
-}// end accept
+}
 
 
-void balancesprintview::setidbalance(QString id) {
+void CAnualesPrintView::setidbalance(QString id) {
     idbalance = id;
     QString query ="SELECT * FROM balance WHERE idbalance="+idbalance;
-    cursor2 *cur = conexionbase->cargacursor(query, "micurs");
+    cursor2 *cur = empresaactual->cargacursor(query, "micurs");
     if (!cur->eof()) {
         m_nomBalance->setText(cur->valor("nombrebalance"));
     }// end if
     delete cur;
-}// end setidbalance
+}
 
 
 

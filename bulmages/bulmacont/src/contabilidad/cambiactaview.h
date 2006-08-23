@@ -13,29 +13,23 @@
 #ifndef CAMBIACTAVIEW_H
 #define CAMBIACTAVIEW_H
 
-#include "cambiactadlg.h"
-#include "empresa.h"
+#include "ui_cambiactabase.h"
 #include "postgresiface2.h"
 
 
 /**@ author Tomeu Borras */
-class cambiactaview : public cambiactadlg {
+
+class empresa;
+
+class cambiactaview : public QDialog, public Ui_CambiaCuentaBase {
 Q_OBJECT
-public:
+private:
 	empresa *empresaactual;
 public:
 	cambiactaview(empresa *, QWidget *, const char *, bool );
     ~cambiactaview();
 public slots:
-	virtual void boton_buscactaorigen();
-	virtual void boton_buscactadestino();
 	virtual void accept();
-	virtual void return_codigoinicial();
-	virtual void return_codigofinal();
-	virtual void return_fechainicial();
-	virtual void return_fechafinal();
-	virtual void codigo_textChanged(const QString &);
-	virtual void fecha_textChanged(const QString &);
 	
 };
 

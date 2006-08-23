@@ -56,40 +56,25 @@ FORMS += bulmacontbase.ui \
 	 tipoivabase.ui \
 	 bbloqfechabase.ui \
 	 actualizacionesbase.ui \
-	 duplicarasientobase.ui
+	 duplicarasientobase.ui \
+	 cambiactabase.ui \
+	 selectcanalbase.ui \
+	 selectccostebase.ui \
+	 propiedadesempresabase.ui \
+	 canualesprintbase.ui
 
 
 FORMS3 += uiselector.ui \
-#         about.ui \
-#         listcuentasdlg1.ui \
-#         cuentadlg.ui \
-#         balance1dlg.ui \
-#         int_apunts3.ui \
-#         filtrarasientosdlg.ui \
          regivaprintdlg.ui \
          compbalancedlg.ui \
          mpatrimonialdlg.ui \
          mpatrimonialesdlg.ui \
          balanceprintdlg.ui \
-         balancesprintdlg.ui \
-#         balancesdlg.ui \
-#         canaldlg.ui \
-#         ccostedlg.ui \
-         propiedemp.ui \
-#         actualizacionesdlg.ui \
-         cambiactadlg.ui \
-#         duplicaasientodlg.ui \
-#         amortizaciondlg.ui \
+#         balancesprintdlg.ui \
+#         propiedemp.ui \
          uimodelo347.ui \
-#         amortizacionesdlg.ui \
          uivisorempresas.ui \
-#         uibloqfecha.ui \
-         selectccostedlg.ui \
-         selectcanaldlg.ui \
-         mod300dlg.ui \
-#         cobropagodlg.ui \
-#         tipoivadlg.ui
-#         fpagodlg.ui
+         mod300dlg.ui 
 
 TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \

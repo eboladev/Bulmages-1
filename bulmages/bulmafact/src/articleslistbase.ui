@@ -16,7 +16,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Listado de articulos</string>
+   <string>Articulos</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</iconset>
@@ -444,6 +444,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaTipoArticulo</class>
+   <extends></extends>
+   <header>busquedatipoarticulo.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>ArticuloListSubForm</class>
    <extends>QTableWidget</extends>
    <header>articulolist.h</header>
@@ -454,13 +461,6 @@
    <class>BusquedaFamilia</class>
    <extends></extends>
    <header>busquedafamilia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTipoArticulo</class>
-   <extends></extends>
-   <header>busquedatipoarticulo.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

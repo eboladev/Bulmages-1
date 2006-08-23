@@ -20,11 +20,9 @@
 #ifndef SELECTCCOSTEVIEW_H
 #define SELECTCCOSTEVIEW_H
 
-#include <selectccostedlg.h>
-#include "postgresiface2.h"
+#include <ui_selectccostebase.h>
 #include <q3listview.h>
 
-#include "../contabilidad/empresa.h"
 /** @author Tomeu Borras
   * @brief Maneja la ventana de selector de centros de coste.
   *
@@ -36,8 +34,9 @@
   */
 
 
+class empresa;
 
-class selectccosteview : public selectccostedlg {
+class selectccosteview : public QDialog, public Ui_SelectCCosteBase {
     Q_OBJECT
 private:
     /// Empresa con la que se inicizlia la clase.
@@ -47,8 +46,6 @@ private:
     int m_colIdCoste;		/// Indice de la columna que indica el identificador del centro de coste en la lista del formulario
     int m_colStatusCoste;	/// Indica la columna del status del centro de coste.
     int m_colCheck;		/// Indica la columna que tiene el checkbos para el centro de coste.
-    /// Base de datos que va a utilizar la clase.
-    postgresiface2* conexionbase;
     /// Número de dígitos que tienen, por defecto, las cuentas
     int numdigitos;
     /// Iterador de la lista que se presenta en este formulario.

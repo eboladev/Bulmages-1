@@ -20,13 +20,14 @@
 #ifndef SELECTCANALVIEW_H
 #define SELECTCANALVIEW_H
 
-#include "selectcanaldlg.h"
-#include "postgresiface2.h"
+#include "ui_selectcanalbase.h"
 #include <q3listview.h>
-#include "../contabilidad/empresa.h"
 
 /**@author Tomeu Borras*/
-class selectcanalview : public selectcanaldlg {
+
+class empresa;
+
+class selectcanalview : public QDialog, public Ui_SelectCanalBase {
 Q_OBJECT
 public:
     selectcanalview(empresa *emp, QWidget *parent = 0, const char *name = 0);
@@ -38,7 +39,6 @@ private:
    int m_colIdCoste;
    int m_colStatusCoste;  
    int m_colCheck;
-   postgresiface2* conexionbase;
    int numdigitos;
    Q3ListViewItemIterator* m_iterador;
 public:

@@ -1,0 +1,415 @@
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>PropiedadesEmpresaBase</class>
+ <widget class="QWidget" name="PropiedadesEmpresaBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>619</width>
+    <height>396</height>
+   </rect>
+  </property>
+  <property name="acceptDrops" >
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle" >
+   <string>Propiedades Empresa</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_configuracion.xpm</iconset>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>4</number>
+   </property>
+   <property name="spacing" >
+    <number>4</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="toolButton1_2_2" >
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>441</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="TabWidget2" >
+     <property name="enabled" >
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="TabPage" >
+      <attribute name="title" >
+       <string>&amp;Datos Fiscales</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>4</number>
+       </property>
+       <item row="0" column="11" colspan="2" >
+        <widget class="QLineEdit" name="lineCIF" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2" >
+         <property name="text" >
+          <string>Tipo de vía:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2" >
+        <widget class="QLabel" name="textLabel2_2_2_2" >
+         <property name="text" >
+          <string>Nombre de la vía:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="textLabel2" >
+         <property name="text" >
+          <string>Nombre:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2" colspan="11" >
+        <widget class="QLineEdit" name="lineNombreVia" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3" >
+        <widget class="QLabel" name="textLabel2_2_2_4" >
+         <property name="text" >
+          <string>Escalera:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4" >
+        <widget class="QLineEdit" name="lineEscalera" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6" >
+        <widget class="QLineEdit" name="linePiso" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="9" colspan="2" >
+        <widget class="QLineEdit" name="linePuerta" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="12" >
+        <widget class="QLineEdit" name="lineCodPostal" >
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="maxLength" >
+          <number>5</number>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="7" colspan="2" >
+        <widget class="QLabel" name="textLabel2_2_2_3_2_2" >
+         <property name="text" >
+          <string>Provincia:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="5" >
+        <widget class="QLabel" name="textLabel2_2_2_6" >
+         <property name="text" >
+          <string>Piso:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="8" >
+        <widget class="QLabel" name="textLabel2_2_2_5" >
+         <property name="text" >
+          <string>Puerta:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="11" >
+        <widget class="QLabel" name="textLabel2_2_2_7" >
+         <property name="text" >
+          <string>C.P.:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1" colspan="3" >
+        <widget class="QLineEdit" name="lineTipoVia" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="10" >
+        <widget class="QLabel" name="textLabel2_2" >
+         <property name="text" >
+          <string>CIF:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="9" colspan="4" >
+        <widget class="QLineEdit" name="lineProvincia" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="2" >
+        <widget class="QLineEdit" name="lineNumeroVia" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" colspan="6" >
+        <widget class="QLineEdit" name="lineMunicipio" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1" colspan="7" >
+        <widget class="QLineEdit" name="linePais" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2_3_2_3" >
+         <property name="text" >
+          <string>País:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2_3_2" >
+         <property name="text" >
+          <string>Municipio:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2_3" >
+         <property name="text" >
+          <string>Número:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" colspan="9" >
+        <widget class="QLineEdit" name="m_nomEmpresa" >
+         <property name="text" >
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>D&amp;igitos de cuentas</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>4</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="TextLabel1" >
+         <property name="text" >
+          <string>Modelo de Código Cuenta</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>4</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>4</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="TextLabel1_2" >
+             <property name="text" >
+              <string>Digitos estandar</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="modcodigo" />
+           </item>
+           <item>
+            <widget class="QLabel" name="TextLabel2" >
+             <property name="text" >
+              <string>xxxx --> Dígitos de plan contable.
+yyyy --> Dígitos de cuenta.</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="PushButton3" >
+           <property name="text" >
+            <string>Modi&amp;ficar plan contable</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>41</width>
+           <height>71</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Propiedades &amp;Generales</string>
+      </attribute>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>4</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="Q3Table" name="tpropiedades" >
+         <property name="resizePolicy" >
+          <enum>Q3ScrollView::Default</enum>
+         </property>
+         <property name="dragAutoScroll" >
+          <bool>true</bool>
+         </property>
+         <property name="numRows" >
+          <number>3</number>
+         </property>
+         <property name="numCols" >
+          <number>3</number>
+         </property>
+         <property name="rowMovingEnabled" >
+          <bool>true</bool>
+         </property>
+         <property name="columnMovingEnabled" >
+          <bool>true</bool>
+         </property>
+         <property name="sorting" >
+          <bool>false</bool>
+         </property>
+         <property name="selectionMode" >
+          <enum>Q3Table::NoSelection</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="4" margin="4" />
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Table</class>
+   <extends></extends>
+   <header>q3table.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_nomEmpresa</tabstop>
+  <tabstop>lineCIF</tabstop>
+  <tabstop>lineTipoVia</tabstop>
+  <tabstop>lineNombreVia</tabstop>
+  <tabstop>lineNumeroVia</tabstop>
+  <tabstop>lineEscalera</tabstop>
+  <tabstop>linePiso</tabstop>
+  <tabstop>linePuerta</tabstop>
+  <tabstop>lineCodPostal</tabstop>
+  <tabstop>lineMunicipio</tabstop>
+  <tabstop>lineProvincia</tabstop>
+  <tabstop>linePais</tabstop>
+  <tabstop>TabWidget2</tabstop>
+  <tabstop>modcodigo</tabstop>
+  <tabstop>PushButton3</tabstop>
+  <tabstop>tpropiedades</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../bulmages-recursos-graficos.qrc" />
+ </resources>
+ <connections/>
+</ui>

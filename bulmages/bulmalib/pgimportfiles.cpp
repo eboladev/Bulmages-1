@@ -23,7 +23,7 @@
 #include <qdatetime.h>
 #include <stdio.h>
 #include <qstring.h>
-#include <qapplication.h>
+#include "qapplication2.h"
 
 #include <qmessagebox.h>
 #include <qobject.h>
@@ -78,7 +78,7 @@
 #define LEN_NUMEROINV  10
 
 
-extern QApplication *theApp;
+extern QApplication2 *theApp;
 
 
 pgimportfiles::pgimportfiles(postgresiface2 *con) {

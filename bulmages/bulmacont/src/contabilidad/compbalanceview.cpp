@@ -442,7 +442,7 @@ void compbalanceview::modificalinea() {
 
 
 void compbalanceview::botonimprimir() {
-    balancesprintview *b = new balancesprintview(empresaactual,this,0);
+    CAnualesPrintView *b = new CAnualesPrintView(empresaactual,this);
     b->setidbalance(idbalance);
     b->exec();
     delete b;

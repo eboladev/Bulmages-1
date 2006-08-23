@@ -29,11 +29,13 @@
 #define COL_NOMBRE 1
 
 CAnualesView::CAnualesView(empresa *emp, QWidget *parent, const char *name ) : QWidget(parent,name, Qt::WDestructiveClose) {
+    _depura("CAnualesView::CAnualesView", 0);
     setupUi(this);
     m_companyact = emp;
     m_modo = 0;
     inicializatabla();
     m_companyact->meteWindow(caption(), this);
+    _depura("END CAnualesView::CAnualesView", 0);
 }
 
 
@@ -76,7 +78,7 @@ void CAnualesView::dbtabla(int , int , int ,const QPoint &) {
 
 void CAnualesView::imprimir() {
     QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
-    balancesprintview *b = new balancesprintview(m_companyact,0,0);
+    CAnualesPrintView *b = new CAnualesPrintView(m_companyact,0);
     b->setidbalance(idbalance);
     b->exec();
     delete b;

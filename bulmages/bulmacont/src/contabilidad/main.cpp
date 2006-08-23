@@ -58,7 +58,6 @@ QTranslator * traductor;
   * Y por último crea el objeto del tipo \ref Bulmages01 que es la aplicación de ventanas.
   */
 int main(int argc, char *argv[]) {
-    QApplication2 * mainApp;
     Bulmages01 *bges;
     int valorsalida=0;
     QString db= argv[2];
@@ -75,9 +74,8 @@ int main(int argc, char *argv[]) {
         QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
 
         /// Creamos la aplicacion principal
-        mainApp = new QApplication2 (argc, argv);
-        theApp = mainApp;
-        mainApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+        theApp = new QApplication2 (argc, argv);
+        theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
 
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont
         traductor = new QTranslator ( 0 );
@@ -134,17 +132,18 @@ int main(int argc, char *argv[]) {
 
         g_plugins->lanza("entryPoint", bges);
 
-        mainApp->setMainWidget(bges);
+        theApp->setMainWidget(bges);
         g_main = bges;
-        valorsalida = mainApp->exec();
+        valorsalida = theApp->exec();
 
 
     } catch(...) {
         mensajeInfo( "Error inesperado en BulmaCont, el programa se cerrará");
     } // end try
-    /// No debe liberarse la memoria reservada por bges pq este ya se auto-destruye.
+
+    /// Liberamos memoria.
     delete confpr;
-    delete mainApp;
+    delete theApp;
     delete traductor;
 
     return valorsalida;

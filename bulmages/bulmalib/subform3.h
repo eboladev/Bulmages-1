@@ -142,6 +142,7 @@ public:
     QString DBvalue(QString campo, int row = -1);
     SDBRecord *lineaact();
     SDBRecord *lineaat(int row);
+    virtual void imprimirPDF(const QString &);
     virtual void nuevoRegistro();
     virtual int borrar();
     virtual int borrar(int);

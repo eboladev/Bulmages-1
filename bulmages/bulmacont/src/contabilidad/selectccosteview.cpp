@@ -19,16 +19,13 @@
  ***************************************************************************/
 #include "selectccosteview.h"
 #include "empresa.h"
-
-
 #include <q3listview.h>
 
 selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
-*name) : selectccostedlg(parent, name) {
-   fprintf(stderr,"Constructor de selectccosteview\n");
+*name) : QDialog (parent, name) {
+   _depura("selectccosteview::selectccosteview", 0);
+   setupUi(this);
    empresaactual = emp;
-   conexionbase = empresaactual->bdempresa();
-
    numdigitos = empresaactual->numdigitosempresa();
    m_iterador = new Q3ListViewItemIterator (m_listCostes);
 
@@ -40,12 +37,12 @@ selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char
 
    cargacostes();
    fprintf(stderr,"FIN de Constructor de selectccosteview\n");
-}// end selectccsotedlg
+}
 
 
 selectccosteview::~selectccosteview() {
    delete m_iterador;
-}// end selectccosteview
+}
 
 
 void selectccosteview::cargacostes() {
@@ -60,7 +57,7 @@ void selectccosteview::cargacostes() {
 
     // Cogemos los centros de coste principales y los ponemos donde toca.
     m_listCostes->clear();
-    cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
+    cursoraux1 = empresaactual->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         idc_coste = cursoraux1->valor("idc_coste").toInt();
         it =new Q3CheckListItem(m_listCostes,"hola",Q3CheckListItem::CheckBox);
@@ -75,7 +72,7 @@ void selectccosteview::cargacostes() {
     // Una vez que hemos puesto los centros de coste padre, todo lo demás es una
     // Tarea de ir colocando centros de coste a sus respectivos
     // deja de ser recursivo y pasa a ser lineal.
-    cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
+    cursoraux2= empresaactual->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
          padre = cursoraux2->valor("padre").toInt();
          idc_coste = cursoraux2->valor("idc_coste").toInt();
@@ -89,7 +86,7 @@ void selectccosteview::cargacostes() {
          cursoraux2->siguienteregistro();
     }// end while
     delete cursoraux2;
-}// end cargacostes
+}
 
 // Esta función devuelve el primer centro de coste seleccionado de la vita.
 // Devuelve el idc_coste. Si no hay ningún centro de coste seleccionado devuelve
@@ -110,7 +107,7 @@ int selectccosteview::firstccoste() {
      (*m_iterador)++;
    }// end while
   return idccoste;
-}// end firstccoste
+}
 
 // Esta función devuelve el siguiente centro de coste seleccionado de la vista.
 int selectccosteview::nextccoste() {
@@ -127,7 +124,7 @@ int selectccosteview::nextccoste() {
      (*m_iterador)++;
    }// end while
   return idccoste;
-}// end nextccoste
+}
 
 // Esta funcion prepara una lista separada por comas de los costes seleccionados.
 // Sirve para generar sentencias SQL
@@ -144,7 +141,7 @@ QString selectccosteview::cadcoste() {
   }// end while
   fprintf(stderr," cadcoste: %s\n",ccostes.ascii());
   return ccostes; ;
-}// end cadcoste
+}
 
 // Esta función devuelve el nombre del centro de coste actual
 // Si no existe devuelve ""
@@ -158,7 +155,7 @@ QString selectccosteview::nomcoste() {
    } else {
       return "";
    }// end if
-}// end nomcoste
+}
 
 
 void selectccosteview::boton_todo() {
@@ -171,7 +168,7 @@ void selectccosteview::boton_todo() {
      (*m_iterador)++;
    }
    delete m_iterador;
-}// end boton_todo
+}
 
 
 void selectccosteview::boton_nada() {
@@ -184,7 +181,7 @@ void selectccosteview::boton_nada() {
      (*m_iterador)++;
    }
    delete m_iterador;
-}// end boton_todo
+}
 
 
 void selectccosteview::boton_invertir() {
@@ -200,4 +197,4 @@ void selectccosteview::boton_invertir() {
      (*m_iterador)++;
    }//end while
    delete m_iterador;
-}// end boton_invertir
+}

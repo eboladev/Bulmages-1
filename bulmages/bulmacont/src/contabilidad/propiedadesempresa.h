@@ -17,8 +17,7 @@
 #ifndef PROPIEDADESEMPRESA_H
 #define PROPIEDADESEMPRESA_H
 
-#include <qwidget.h>
-#include <propiedemp.h>
+#include "ui_propiedadesempresabase.h"
 #include <qlineedit.h>
 #include <q3listview.h>
 #include <q3table.h>
@@ -28,22 +27,23 @@
 
 /** *@author Tomeu Borrás Riera */
 
-class propiedadesempresa : public propiedemp , dialogChanges {
+class empresa;
+
+class propiedadesempresa : public QWidget, Ui_PropiedadesEmpresaBase , dialogChanges {
    Q_OBJECT
 public:
    QString empresadb;
-   postgresiface2 *conexionbase;
+   empresa *m_companyact;
 public: 
-  propiedadesempresa(QWidget *parent=0, const char *name=0,bool modal=true);
+  propiedadesempresa(empresa *emp, QWidget *parent=0);
   ~propiedadesempresa();
-  int inicializa(postgresiface2 *);
-//  void modificacodcuenta(char *);
-//  void accept();
+  int inicializa();
+
 public slots:
   virtual void s_saveConfig();
   virtual bool close(bool);
   virtual void extiendeCuentas();
   private:
-  void update_value(postgresiface2 *,QString ,QString);
+  void update_value(QString ,QString);
 };
 #endif

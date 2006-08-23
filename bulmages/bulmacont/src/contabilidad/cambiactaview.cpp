@@ -13,47 +13,31 @@
 #include "cambiactaview.h"
 #include "listcuentasview1.h"
 #include "calendario.h"
-
+#include "empresa.h"
 
 #define CONEXIONBASE empresaactual->bdempresa()
 #define NUMDIGITOS   empresaactual->numdigitosempresa()
 
-cambiactaview::cambiactaview(empresa *emp, QWidget *parent, const char *name, bool flag ) : cambiactadlg(parent,name,flag,0) {
+cambiactaview::cambiactaview(empresa *emp, QWidget *parent, const char *name, bool flag ) : QDialog(parent,name,flag,0) {
+        _depura("cambiactaview::cambiactaview", 0);
+        setupUi(this);
 	empresaactual = emp;
+	mui_codigoorigen->setempresa(emp);
+	mui_codigodestino->setempresa(emp);
+
+
+        _depura("END cambiactaview::cambiactaview", 0);
 }
 
 cambiactaview::~cambiactaview() {
 }
 
-void cambiactaview::boton_buscactaorigen() {
-	QDialog *diag = new QDialog(0);
-	diag->setModal(true);
-	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
-	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
-	diag->exec();
-	if (listcuentas->codcuenta() != "") {
-		codigoorigen->setText(listcuentas->codcuenta());
-	} // end if
-	delete diag;
-}
-
-
-void cambiactaview::boton_buscactadestino() {
-	QDialog *diag = new QDialog(0);
-	diag->setModal(true);
-	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
-	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
-	diag->exec();
-	if (listcuentas->codcuenta() != "") {
-		codigodestino->setText(listcuentas->codcuenta());
-	} // end if
-	delete diag;
-}
 
 
 void cambiactaview::accept() {
-	QString origen = codigoorigen->text();
-	QString destino = codigodestino->text();
+	_depura("cambiactaview::accept", 0);
+	QString origen = mui_codigoorigen->text();
+	QString destino = mui_codigodestino->text();
 	QString ainicial = asientoinicial->text();
 	QString afinal = asientofinal->text();
 	QString finicial = fechainicial->text();
@@ -143,90 +127,12 @@ void cambiactaview::accept() {
 	CONEXIONBASE->ejecuta(query3);
 	CONEXIONBASE->ejecuta(query4);
 	CONEXIONBASE->commit();
-	
 	done(1);
-}
-
-
-void cambiactaview::return_codigoinicial() {
-   QString cad = codigoorigen->text();
-   if (cad != "") {
-      cad = extiendecodigo(cad,NUMDIGITOS);
-      CONEXIONBASE->begin();
-      cursor2 *cursorcta = CONEXIONBASE->cargacuenta(0, cad );
-      CONEXIONBASE->commit();
-      int num = cursorcta->numregistros();
-      if (num >0) {
-         codigoorigen->setText(cursorcta->valor(1));
-         // Simulamos la pulsacion del boton recargar.
-      } else {
-        codigoorigen->selectAll();
-        codigoorigen->setFocus();
-      }// end if
-      delete cursorcta;
-   }// end if
-}
-
-
-void cambiactaview::return_codigofinal() {
-   QString cad = codigodestino->text();
-   if (cad != "") {
-      cad = extiendecodigo(cad,NUMDIGITOS);
-      CONEXIONBASE->begin();
-      cursor2 *cursorcta = CONEXIONBASE->cargacuenta(0, cad );
-      CONEXIONBASE->commit();
-      int num = cursorcta->numregistros();
-      if (num >0) {
-         codigodestino->setText(cursorcta->valor(1));
-      } else {
-        codigodestino->selectAll();
-        codigodestino->setFocus();
-      }// end if
-      delete cursorcta;
-   }// end if
-}
-
-
-void cambiactaview::return_fechainicial() {
-  fechainicial->setText(normalizafecha(fechainicial->text()).toString("dd/MM/yyyy"));
+	_depura("END cambiactaview::accept", 0);
 }
 
 
 
-void cambiactaview::return_fechafinal() {
-  fechafinal->setText(normalizafecha(fechafinal->text()).toString("dd/MM/yyyy"));
-}
-
-void cambiactaview::codigo_textChanged(const QString &texto) {
-    QLineEdit *codigo = (QLineEdit *) sender();
-    if (texto == "+") {
-        // Hacemos aparecer la ventana de cuentas
-	QDialog *diag = new QDialog(0);
-	diag->setModal(true);
-	listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
-	connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
-	diag->exec();
-	if (listcuentas->codcuenta() != "") {
-	        codigo->setText(listcuentas->codcuenta());
-	} // end if
-	delete diag;
-    }// end if
-}
-
-void cambiactaview::fecha_textChanged( const QString & texto ) {
-	QLineEdit *fecha = (QLineEdit *) sender();
-    if (texto=="+") {
-        Q3PtrList<QDate> a;
-        fecha->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        fecha->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }
-    if (texto=="*")
-        fecha->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}
 
 
 
