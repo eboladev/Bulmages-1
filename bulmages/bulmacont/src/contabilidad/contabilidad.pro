@@ -70,8 +70,6 @@ FORMS3 += uiselector.ui \
          mpatrimonialdlg.ui \
          mpatrimonialesdlg.ui \
          balanceprintdlg.ui \
-#         balancesprintdlg.ui \
-#         propiedemp.ui \
          uimodelo347.ui \
          uivisorempresas.ui \
          mod300dlg.ui 
@@ -184,14 +182,13 @@ HEADERS += splashscreen.h \
            qlistviewitem1.h \
            balanceview.h \
            aplinteligentesview.h \
-#           filtrarasientosview.h \
            asientosview.h \
            regivaprintview.h \
            compbalanceview.h \
            mpatrimonialview.h \
            mpatrimonialesview.h \
            balanceprintview.h \
-           balancesprintview.h \
+           canualesprintview.h \
            canualesview.h \
            canalview.h \
            ccosteview.h \
@@ -243,14 +240,13 @@ SOURCES += main.cpp \
            qlistviewitem1.cpp \
            balanceview.cpp \
            aplinteligentesview.cpp \
-#           filtrarasientosview.cpp \
            asientosview.cpp \
            regivaprintview.cpp \
            compbalanceview.cpp \
            mpatrimonialview.cpp \
            mpatrimonialesview.cpp \
            balanceprintview.cpp \
-           balancesprintview.cpp \
+           canualesprintview.cpp \
            canualesview.cpp \
            canalview.cpp \
            ccosteview.cpp \

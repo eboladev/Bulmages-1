@@ -14,7 +14,7 @@
  *                                                                         *
  ***************************************************************************/
 
-#include "balancesprintview.h"
+#include "canualesprintview.h"
 #include <qlineedit.h>
 #include <q3datetimeedit.h>
 #include <q3progressbar.h>

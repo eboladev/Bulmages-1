@@ -20,7 +20,7 @@
 #include "mpatrimonialview.h"
 #include "empresa.h"
 
-#include "balancesprintview.h"
+#include "canualesprintview.h"
 
 #include <qlineedit.h>
 #include <q3table.h>

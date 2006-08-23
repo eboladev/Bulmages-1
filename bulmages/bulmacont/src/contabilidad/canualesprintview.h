@@ -14,8 +14,8 @@
  *                                                                         *
  ***************************************************************************/
 
-#ifndef BALANCESPRINTVIEW_H
-#define BALANCESPRINTVIEW_H
+#ifndef CANUALESSPRINTVIEW_H
+#define CANUALESPRINTVIEW_H
 
 #include <qwidget.h>
 #include "ui_canualesprintbase.h"

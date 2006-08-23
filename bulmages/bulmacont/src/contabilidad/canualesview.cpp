@@ -16,7 +16,7 @@
 
 #include "canualesview.h"
 #include "compbalanceview.h"
-#include "balancesprintview.h"
+#include "canualesprintview.h"
 #include <q3table.h>
 #include <q3filedialog.h>
 #include <qmessagebox.h>
