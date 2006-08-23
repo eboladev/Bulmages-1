@@ -17,13 +17,12 @@
 #ifndef BALANCESVIEW_H
 #define BALANCESVIEW_H
 
-#include <qwidget.h>
+#include <QWidget>
 #include "ui_canualesbase.h"
 
-#include "postgresiface2.h"
 
 /**
- * \author Tomeu Borr� Riera
+ * \author Tomeu Borras Riera
  * \class balancesview balancesview.h
  * \brief Listado de Balances Disponibles
  * 
@@ -31,7 +30,7 @@
  * Sirve como punto de entrada a la generaci� de los balances permitiendo la importaci� / exportaci� de los mismos, su modificaci� y su impresi�.
  */
 
-#include "empresa.h"
+class empresa;
 
 class CAnualesView : public QWidget, public Ui_CAnualesBase  {
    Q_OBJECT
@@ -62,7 +61,7 @@ private slots:
 /// SLOT que responde a la pulsaci� del bot� de imprimir Balance   
    virtual void imprimir();
 /// SLOT que responde a la acci� de hacer doble click sobre el listado   
-   virtual void dbtabla(int, int, int, const QPoint &);
+   virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);
 };
 
 #endif

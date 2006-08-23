@@ -41,17 +41,18 @@ Plugins::Plugins() {}
 Plugins::~Plugins() {}
 
 
-void Plugins::cargaLibs(QString libs) {
+void Plugins::cargaLibs(const QString libs) {
     /// Hacemos la carga de los plugins.
     QString cad = libs;
-    _depura("Carga de plugins: "+cad,0);
+    _depura("Plugins::cargaLibs", 0, cad);
+    if (cad == "") return;
     QStringList plugins = cad.split(";");
     for (QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it) {
         QLibrary *lib = new QLibrary(*it);
-        _depura("Resolviendo la libreria: " + *it + "\n", 0);
+        _depura("Plugins::Resolviendo la libreria: ", 0, *it);
         lib->load();
         if (!lib->isLoaded()) {
-            _depura("No se ha podido cargar la libreria: " + *it, 2);
+            mensajeInfo("Plugins::No se ha podido cargar la libreria: " + *it);
         } else {
             m_lista.append(lib);
         } // end if

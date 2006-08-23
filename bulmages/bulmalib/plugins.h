@@ -32,7 +32,7 @@ private:
 public:
     Plugins();
     ~Plugins();
-    void cargaLibs(QString libs);
+    void cargaLibs(const QString libs);
     int lanza(const char *func, void *clase);
     int lanza(const char *func, void *clase, void **ret);
 };

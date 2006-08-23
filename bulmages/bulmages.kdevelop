@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>bulmacont/src/contabilidad</activedir>
+      <activedir>bulmalib</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

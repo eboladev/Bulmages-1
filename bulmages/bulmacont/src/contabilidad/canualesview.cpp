@@ -25,7 +25,7 @@
 #include "empresa.h"
 
 
-#define COL_CODIGO 0
+#define COL_ARCHIVO 0
 #define COL_NOMBRE 1
 
 CAnualesView::CAnualesView(empresa *emp, QWidget *parent, const char *name ) : QWidget(parent,name, Qt::WDestructiveClose) {
@@ -48,36 +48,44 @@ CAnualesView::~CAnualesView() {
 
 void CAnualesView::inicializatabla()  {
     _depura("CAnualesView::inicializatabla", 0);
-    listado->setNumRows(0);
-    listado->setNumCols(2);
-    listado->horizontalHeader()->setLabel( COL_CODIGO, tr( "CODIGO" ) );
-    listado->horizontalHeader()->setLabel( COL_NOMBRE, tr( "Nombre Balance" ) );
-    listado->hideColumn(2);
-    listado->hideColumn(0);
-    listado->setColumnWidth(1,400);
+
+    mui_listado->clear();
+    mui_listado->setColumnCount(2);
+
+    QStringList headerlabels;
+    headerlabels << tr("Archivo") << tr("Archivo");
+
+    mui_listado->setHorizontalHeaderLabels(headerlabels);
+
+    mui_listado->setColumnWidth(COL_ARCHIVO, 290);
+    mui_listado->hideColumn(COL_NOMBRE);
+
     QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/balances");
     dir.setFilter(QDir::Files );
     dir.setSorting(QDir::Size | QDir::Reversed);
 
     QFileInfoList list = dir.entryInfoList();
-    listado->setNumRows(list.size());
+    mui_listado->setRowCount(list.size());
 
     for (int i = 0; i < list.size(); ++i) {
         QFileInfo fileInfo = list.at(i);
-        listado->setText(i,COL_CODIGO, fileInfo.filePath());
-        listado->setText(i,COL_NOMBRE, fileInfo.fileName());
+        QTableWidgetItem *newItem1 = new QTableWidgetItem(fileInfo.filePath(), 0);
+        QTableWidgetItem *newItem2 = new QTableWidgetItem(fileInfo.fileName(), 0);
+        mui_listado->setItem(i, COL_ARCHIVO, newItem1);
+        mui_listado->setItem(i, COL_NOMBRE, newItem2);
     } // end for
-    listado->setReadOnly(TRUE);
     _depura("END CAnualesView::inicializatabla", 0);
 }
 
 
-void CAnualesView::dbtabla(int , int , int ,const QPoint &) {
+void CAnualesView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
+    _depura("CAnualesView::on_listado_itemDoubleclicked", 0);
     imprimir();
+    _depura("END CAnualesView::on_listado_itemDoubleclicked", 0);
 }
 
 void CAnualesView::imprimir() {
-    QString idbalance = listado->text(listado->currentRow(),COL_CODIGO);
+    QString idbalance = mui_listado->item(mui_listado->currentRow(),COL_ARCHIVO)->text();
     CAnualesPrintView *b = new CAnualesPrintView(m_companyact,0);
     b->setidbalance(idbalance);
     b->exec();

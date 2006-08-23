@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -31,109 +31,122 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>6</number>
      </property>
      <item>
-      <widget class="QToolButton" name="toolButton1" >
-       <property name="text" >
-        <string/>
+      <widget class="QLabel" name="pixmapLabel1" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>0</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <property name="icon" >
-        <iconset>image0</iconset>
+       <property name="pixmap" >
+        <pixmap resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</pixmap>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="toolButton1_2" >
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset>image1</iconset>
+       <property name="scaledContents" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="toolButton1_2_2" >
-       <property name="text" >
-        <string/>
+      <widget class="QFrame" name="frame_3" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>7</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-       <property name="icon" >
-        <iconset>image2</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="toolButton1_2_2_2" >
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset>image3</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
+       <property name="minimumSize" >
         <size>
-         <width>310</width>
-         <height>21</height>
+         <width>42</width>
+         <height>42</height>
         </size>
        </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QToolButton" name="m_exportar" >
-       <property name="text" >
-        <string>Exportar</string>
+       <property name="maximumSize" >
+        <size>
+         <width>16777215</width>
+         <height>48</height>
+        </size>
        </property>
-       <property name="icon" >
-        <iconset>image4</iconset>
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="m_importar" >
-       <property name="text" >
-        <string>Importar</string>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
        </property>
-       <property name="icon" >
-        <iconset>image5</iconset>
-       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
+        <property name="spacing" >
+         <number>2</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_imprimir" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip" >
+           <string>Cerrar Asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Cerrar Asiento Ctrl + C</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+C</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>241</width>
+            <height>28</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
      </item>
     </layout>
    </item>
    <item>
-    <widget class="Q3Table" name="listado" >
-     <property name="numRows" >
-      <number>3</number>
-     </property>
-     <property name="numCols" >
-      <number>3</number>
-     </property>
-    </widget>
+    <widget class="QTableWidget" name="mui_listado" />
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3Table</class>
-   <extends></extends>
-   <header>q3table.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../bulmages-recursos-graficos.qrc" />
  </resources>
