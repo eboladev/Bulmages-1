@@ -8,25 +8,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>561</width>
-    <height>447</height>
+    <width>611</width>
+    <height>438</height>
    </rect>
   </property>
   <property name="focusPolicy" >
    <enum>Qt::StrongFocus</enum>
   </property>
   <property name="windowTitle" >
-   <string>Articulo</string>
+   <string>Nuevo articulo</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -56,10 +56,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -179,9 +179,9 @@
               <blue>0</blue>
              </color>
              <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>127</blue>
+              <red>239</red>
+              <green>239</green>
+              <blue>239</blue>
              </color>
              <color>
               <red>207</red>
@@ -266,9 +266,9 @@
               <blue>0</blue>
              </color>
              <color>
-              <red>255</red>
-              <green>255</green>
-              <blue>127</blue>
+              <red>239</red>
+              <green>239</green>
+              <blue>239</blue>
              </color>
              <color>
               <red>207</red>
@@ -411,14 +411,14 @@
       <attribute name="title" >
        <string>&amp;Datos generales</string>
       </attribute>
-      <layout class="QGridLayout" >
+      <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
-       <item row="0" column="0" >
+       <item>
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -435,124 +435,25 @@
             <number>6</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" >
+            <layout class="QGridLayout" >
              <property name="margin" >
               <number>0</number>
              </property>
              <property name="spacing" >
               <number>6</number>
              </property>
-             <item>
-              <layout class="QVBoxLayout" >
-               <property name="margin" >
-                <number>0</number>
+             <item row="1" column="1" >
+              <widget class="BusquedaFamilia" name="m_familia" >
+               <property name="focusPolicy" >
+                <enum>Qt::StrongFocus</enum>
                </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="textLabel12" >
-                 <property name="enabled" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="sizePolicy" >
-                  <sizepolicy>
-                   <hsizetype>0</hsizetype>
-                   <vsizetype>5</vsizetype>
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text" >
-                  <string>Descripcion abreviada:</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="textLabel1_2" >
-                 <property name="sizePolicy" >
-                  <sizepolicy>
-                   <hsizetype>0</hsizetype>
-                   <vsizetype>5</vsizetype>
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text" >
-                  <string>Subcodigo:</string>
-                 </property>
-                 <property name="textFormat" >
-                  <enum>Qt::AutoText</enum>
-                 </property>
-                 <property name="scaledContents" >
-                  <bool>false</bool>
-                 </property>
-                 <property name="alignment" >
-                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLabel" name="textLabel2" >
-                 <property name="sizePolicy" >
-                  <sizepolicy>
-                   <hsizetype>0</hsizetype>
-                   <vsizetype>5</vsizetype>
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text" >
-                  <string>Nombre:</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              </widget>
              </item>
-             <item>
-              <layout class="QVBoxLayout" >
-               <property name="margin" >
-                <number>0</number>
+             <item row="4" column="0" >
+              <widget class="QLabel" name="textLabel12" >
+               <property name="enabled" >
+                <bool>true</bool>
                </property>
-               <property name="spacing" >
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QLineEdit" name="m_abrevarticulo" >
-                 <property name="enabled" >
-                  <bool>true</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="m_codigoarticulo" >
-                 <property name="sizePolicy" >
-                  <sizepolicy>
-                   <hsizetype>5</hsizetype>
-                   <vsizetype>0</vsizetype>
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QLineEdit" name="m_nombrearticulo" />
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="textLabel3_2_2" >
                <property name="sizePolicy" >
                 <sizepolicy>
                  <hsizetype>0</hsizetype>
@@ -562,28 +463,29 @@
                 </sizepolicy>
                </property>
                <property name="text" >
-                <string>Tipo de articulo:</string>
+                <string>Descripcion corta:</string>
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="BusquedaTipoArticulo" name="m_tipoarticulo" >
-               <property name="focusPolicy" >
-                <enum>Qt::StrongFocus</enum>
+             <item row="6" column="1" >
+              <widget class="QComboBox" name="m_combotipo_iva" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>123</width>
+                 <height>0</height>
+                </size>
                </property>
               </widget>
              </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
+             <item row="1" column="0" >
               <widget class="QLabel" name="m_nombrefamilia" >
                <property name="sizePolicy" >
                 <sizepolicy>
@@ -598,24 +500,41 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="BusquedaFamilia" name="m_familia" >
+             <item row="2" column="1" >
+              <widget class="QLineEdit" name="m_codigoarticulo" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>5</hsizetype>
+                 <vsizetype>0</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1" >
+              <widget class="BusquedaTipoArticulo" name="m_tipoarticulo" >
                <property name="focusPolicy" >
                 <enum>Qt::StrongFocus</enum>
                </property>
               </widget>
              </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
+             <item row="0" column="0" >
+              <widget class="QLabel" name="textLabel3_2_2" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>5</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Tipo de articulo:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="0" >
               <widget class="QLabel" name="textLabel3_2_3" >
                <property name="sizePolicy" >
                 <sizepolicy>
@@ -630,7 +549,14 @@
                </property>
               </widget>
              </item>
-             <item>
+             <item row="4" column="1" >
+              <widget class="QLineEdit" name="m_abrevarticulo" >
+               <property name="enabled" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1" >
               <widget class="QLineEdit" name="m_pvparticulo" >
                <property name="sizePolicy" >
                 <sizepolicy>
@@ -645,17 +571,25 @@
                </property>
               </widget>
              </item>
-            </layout>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" >
-             <property name="margin" >
-              <number>0</number>
-             </property>
-             <property name="spacing" >
-              <number>6</number>
-             </property>
-             <item>
+             <item row="3" column="0" >
+              <widget class="QLabel" name="textLabel2" >
+               <property name="sizePolicy" >
+                <sizepolicy>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>5</vsizetype>
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Nombre:</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" >
+              <widget class="QLineEdit" name="m_nombrearticulo" />
+             </item>
+             <item row="6" column="0" >
               <widget class="QLabel" name="textLabel10" >
                <property name="sizePolicy" >
                 <sizepolicy>
@@ -670,33 +604,55 @@
                </property>
               </widget>
              </item>
-             <item>
-              <widget class="QComboBox" name="m_combotipo_iva" >
+             <item row="2" column="0" >
+              <widget class="QLabel" name="textLabel1_2" >
                <property name="sizePolicy" >
                 <sizepolicy>
-                 <hsizetype>5</hsizetype>
-                 <vsizetype>0</vsizetype>
+                 <hsizetype>0</hsizetype>
+                 <vsizetype>5</vsizetype>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="text" >
+                <string>Subcodigo:</string>
+               </property>
+               <property name="textFormat" >
+                <enum>Qt::AutoText</enum>
+               </property>
+               <property name="scaledContents" >
+                <bool>false</bool>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                </property>
               </widget>
              </item>
             </layout>
            </item>
            <item>
-            <widget class="QCheckBox" name="m_presentablearticulo" >
-             <property name="text" >
-              <string>&amp;Incluir en detalles</string>
+            <layout class="QVBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="m_controlstockarticulo" >
-             <property name="text" >
-              <string>&amp;Control de stock</string>
+             <property name="spacing" >
+              <number>6</number>
              </property>
-            </widget>
+             <item>
+              <widget class="QCheckBox" name="m_presentablearticulo" >
+               <property name="text" >
+                <string>&amp;Incluir en detalles</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="m_controlstockarticulo" >
+               <property name="text" >
+                <string>&amp;Control de stock</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <spacer>
@@ -736,6 +692,12 @@
                <width>150</width>
                <height>150</height>
               </size>
+             </property>
+             <property name="frameShape" >
+              <enum>QFrame::Box</enum>
+             </property>
+             <property name="frameShadow" >
+              <enum>QFrame::Sunken</enum>
              </property>
              <property name="pixmap" >
               <pixmap/>
@@ -777,10 +739,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="ListCompArticuloView" name="m_componentes" />
@@ -793,10 +755,10 @@
       </attribute>
       <layout class="QHBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="QTextEdit" name="m_obserarticulo" />
@@ -811,7 +773,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -870,19 +832,22 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>m_abrevarticulo</tabstop>
-  <tabstop>m_codigoarticulo</tabstop>
-  <tabstop>m_nombrearticulo</tabstop>
   <tabstop>m_tipoarticulo</tabstop>
   <tabstop>m_familia</tabstop>
+  <tabstop>m_codigoarticulo</tabstop>
+  <tabstop>m_nombrearticulo</tabstop>
+  <tabstop>m_abrevarticulo</tabstop>
   <tabstop>m_pvparticulo</tabstop>
-  <tabstop>mui_cambiarimagen</tabstop>
   <tabstop>m_combotipo_iva</tabstop>
   <tabstop>m_presentablearticulo</tabstop>
   <tabstop>m_controlstockarticulo</tabstop>
-  <tabstop>mui_tab</tabstop>
-  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_cambiarimagen</tabstop>
+  <tabstop>mui_guardar</tabstop>
+  <tabstop>mui_borrar</tabstop>
   <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_tab</tabstop>
+  <tabstop>m_obserarticulo</tabstop>
  </tabstops>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />

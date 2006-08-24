@@ -24,17 +24,17 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>Albaran</string>
+   <string>Nuevo albaran</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -80,10 +80,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -179,7 +179,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>154</width>
+            <width>50</width>
             <height>36</height>
            </size>
           </property>
@@ -307,7 +307,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>16</width>
+            <width>50</width>
             <height>44</height>
            </size>
           </property>
@@ -333,6 +333,19 @@
         </item>
         <item>
          <widget class="BusquedaReferencia" name="m_refalbaran" />
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -417,7 +430,7 @@
         <widget class="QLineEdit" name="m_descalbaran" >
          <property name="minimumSize" >
           <size>
-           <width>295</width>
+           <width>190</width>
            <height>0</height>
           </size>
          </property>
@@ -488,7 +501,7 @@
      <property name="minimumSize" >
       <size>
        <width>16</width>
-       <height>100</height>
+       <height>115</height>
       </size>
      </property>
      <property name="frameShape" >
@@ -499,10 +512,10 @@
      </property>
      <layout class="QHBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QVBoxLayout" >
@@ -679,7 +692,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="" >
+           <widget class="QLabel" name="label" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>1</hsizetype>
@@ -718,7 +731,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="" >
+           <widget class="QLabel" name="label" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -813,10 +826,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="ListLinAlbaranClienteView" name="subform2" />
@@ -829,10 +842,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="ListDescuentoAlbaranClienteView" name="m_descuentos" />
@@ -845,10 +858,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -876,7 +889,7 @@
            <property name="sizeHint" >
             <size>
              <width>371</width>
-             <height>21</height>
+             <height>9</height>
             </size>
            </property>
           </spacer>
@@ -912,7 +925,7 @@
            <property name="sizeHint" >
             <size>
              <width>351</width>
-             <height>21</height>
+             <height>9</height>
             </size>
            </property>
           </spacer>
@@ -1019,9 +1032,9 @@
              <blue>0</blue>
             </color>
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>127</blue>
+             <red>239</red>
+             <green>239</green>
+             <blue>239</blue>
             </color>
             <color>
              <red>207</red>
@@ -1106,9 +1119,9 @@
              <blue>0</blue>
             </color>
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>127</blue>
+             <red>239</red>
+             <green>239</green>
+             <blue>239</blue>
             </color>
             <color>
              <red>207</red>
@@ -1341,9 +1354,9 @@
              <blue>0</blue>
             </color>
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>127</blue>
+             <red>239</red>
+             <green>239</green>
+             <blue>239</blue>
             </color>
             <color>
              <red>207</red>
@@ -1428,9 +1441,9 @@
              <blue>0</blue>
             </color>
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>127</blue>
+             <red>239</red>
+             <green>239</green>
+             <blue>239</blue>
             </color>
             <color>
              <red>207</red>
@@ -1663,9 +1676,9 @@
              <blue>0</blue>
             </color>
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>127</blue>
+             <red>239</red>
+             <green>239</green>
+             <blue>239</blue>
             </color>
             <color>
              <red>207</red>
@@ -1750,9 +1763,9 @@
              <blue>0</blue>
             </color>
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>127</blue>
+             <red>239</red>
+             <green>239</green>
+             <blue>239</blue>
             </color>
             <color>
              <red>207</red>
@@ -1990,9 +2003,9 @@
            <blue>0</blue>
           </color>
           <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>127</blue>
+           <red>239</red>
+           <green>239</green>
+           <blue>239</blue>
           </color>
           <color>
            <red>207</red>
@@ -2077,9 +2090,9 @@
            <blue>0</blue>
           </color>
           <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>127</blue>
+           <red>239</red>
+           <green>239</green>
+           <blue>239</blue>
           </color>
           <color>
            <red>207</red>
@@ -2233,7 +2246,7 @@
       <number>5</number>
      </property>
      <property name="spacing" >
-      <number>2</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -2292,6 +2305,13 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends></extends>
+   <header>busquedaformapago.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -2337,13 +2357,6 @@
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends></extends>
-   <header>busquedaformapago.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
