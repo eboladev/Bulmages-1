@@ -290,7 +290,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -379,7 +379,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -410,7 +410,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -474,7 +474,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -505,7 +505,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -536,7 +536,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -575,7 +575,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -680,7 +680,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1002,7 +1002,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1324,7 +1324,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1648,7 +1648,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2029,20 +2029,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoAlbaranProvView</class>
-   <extends></extends>
-   <header>listdescalbaranprovview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -2077,6 +2063,20 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>ListDescuentoAlbaranProvView</class>
+   <extends></extends>
+   <header>listdescalbaranprovview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends></extends>
+   <header>busquedaalmacen.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -2095,22 +2095,6 @@
     <hint type="destinationlabel" >
      <x>57</x>
      <y>115</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>AlbaranProveedorBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>733</x>
-     <y>662</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>848</x>
-     <y>614</y>
     </hint>
    </hints>
   </connection>

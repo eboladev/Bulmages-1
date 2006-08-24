@@ -43,7 +43,7 @@
 
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), AlbaranProveedor(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), AlbaranProveedor(comp) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
     try {
         setupUi(this);
@@ -65,7 +65,6 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         m_totalalbaranp->setAlignment(Qt::AlignRight);
         pintaidforma_pago("0");
         pintaidalmacen("0");
-        dialogChanges_cargaInicial();
         if (companyact != NULL)
             companyact->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
@@ -85,6 +84,7 @@ void AlbaranProveedorView::inicializar() {
     _depura("AlbaranProveedorView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    dialogChanges_cargaInicial();
     _depura("END AlbaranProveedorView::inicializar", 0);
 }
 
@@ -95,23 +95,6 @@ void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
     m_totalTaxes->setText(iva.toQString());
     m_totalalbaranp->setText((iva + base).toQString());
     _depura("END AlbaranProveedorView::pintatotales", 0);
-}
-
-
-void AlbaranProveedorView::on_mui_borrar_clicked() {
-    _depura("AlbaranProveedorView::on_mui_borrar_clicked", 0);
-    int val = QMessageBox::warning(this,
-                                   tr("Borrar albaran del proveedor."),
-                                   tr("Desea eliminar el albaran del proveedor?"),
-                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-    if (val == 0) {
-        if (!borrar()) {
-            dialogChanges_cargaInicial();
-            _depura("Albaran del proveedor borrado satisfactoriamente", 2);
-            close();
-        } // end if
-    } // end if
-    _depura("END AlbaranProveedorView::on_mui_borrar_clicked", 0);
 }
 
 
@@ -174,23 +157,6 @@ void AlbaranProveedorView::generarFactura()  {
 }
 
 
-void AlbaranProveedorView::closeEvent(QCloseEvent *e) {
-    _depura("AlbaranProveedorView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar albaran"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
-    _depura("END AlbaranProveedorView::closeEvent", 0);
-
-}
-
-
 int AlbaranProveedorView::cargar(QString id) {
     _depura("AlbaranProveedorView::cargar", 0);
     try {
@@ -225,7 +191,7 @@ int AlbaranProveedorView::guardar() {
         return err;
     } catch (...) {
         mensajeInfo("Error inesperado al guardar");
-        return -1;
+        throw -1;
     } // end try
 }
 

@@ -32,14 +32,12 @@
 #include "busquedaalmacen.h"
 #include "ui_albaranproveedorbase.h"
 #include "albaranproveedor.h"
-#include "postgresiface2.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
 
-class AlbaranProveedorView : public QWidget, public Ui_AlbaranProveedorBase, public AlbaranProveedor,
-    public dialogChanges {
+class AlbaranProveedorView : public Ficha, public Ui_AlbaranProveedorBase, public AlbaranProveedor {
     Q_OBJECT
 
 public:
@@ -76,8 +74,11 @@ public:
     };
     void pintatotales(Fixed, Fixed);
     void generarFactura();
-    void closeEvent(QCloseEvent *);
+
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
+    virtual int cargar(QString id);
+    virtual int borrar() {return AlbaranProveedor::borrar();};
 
 public slots:
     virtual void s_comentalbaranptextChanged() {
@@ -105,10 +106,9 @@ public slots:
     virtual void s_descalbaranptextChanged(const QString &val) {
         setdescalbaranp(val);
     };
+
     virtual void on_mui_guardar_clicked();
 
-    virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked();
     virtual void s_printAlbaranProveedor() {}
     ;
     /// Este slot se activa cuando hay cambios en los subformularios.
@@ -130,10 +130,6 @@ public slots:
     };
     virtual void on_subform2_editFinish(int, int) {
         calculaypintatotales();
-    };
-    virtual void on_mui_aceptar_clicked() {
-        if (!guardar())
-            close();
     };
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_verpedidosproveedor_clicked();

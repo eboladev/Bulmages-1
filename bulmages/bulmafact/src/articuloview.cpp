@@ -41,7 +41,7 @@
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent)
         : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
-    _depura("ArticuloView::INIT_constructor()\n", 0);
+    _depura("ArticuloView::ArticuloView", 0);
     try {
         m_companyact = comp;
         setupUi(this);
@@ -64,7 +64,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
     } catch(...) {
         mensajeInfo(tr("Error al crear el articulo"));
     } // end try
-    _depura("ArticuloView::END_constructor()\n", 0);
+    _depura("END ArticuloView::ArticuloView", 0);
 }
 
 
