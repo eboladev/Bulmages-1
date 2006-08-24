@@ -18,19 +18,29 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
+#include "ficha.h"
 
-#include "qapplication2.h"
-#include "funcaux.h"
+Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {
+}
 
+void Ficha::on_mui_aceptar_clicked() {
+	_depura("Ficha::on_mui_aceptar_clicked", 2);
+	guardar();
+	close();
+}
 
-QApplication2::QApplication2( int & argc, char ** argv ) : QApplication(argc, argv){}
-
-bool QApplication2::notify( QObject *o, QEvent *e ) {
-        try {
-	    return QApplication::notify(o, e);
-	} catch(...) {
-	    mensajeInfo( tr("Error inesperado en BulmaFact") );
-	return FALSE;
-	}
+void Ficha::on_mui_borrar_clicked() {
+    _depura("Ficha::on_mui_borrar_clicked", 0);
+    int val = QMessageBox::warning(this,
+                                   tr("Borrar "+windowTitle()),
+                                   tr("Desea eliminar la "+windowTitle()),
+                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+    if (val == 0) {
+        if (!borrar()) {
+            dialogChanges_cargaInicial();
+            _depura(windowTitle()+" borrado satisfactoriamente.", 2);
+            close();
+        } // end if
+    } // end if
+    _depura("END Ficha::on_mui_borrar_clicked", 0);
 }

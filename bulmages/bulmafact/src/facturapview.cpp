@@ -39,7 +39,7 @@ using namespace std;
 #include "albaranproveedorview.h"
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), FacturaProveedor(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), FacturaProveedor(comp) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -157,22 +157,6 @@ int FacturaProveedorView::guardar() {
     _depura("END FacturaProveedorView::guardar", 0);
     return 0;
 }
-
-
-void FacturaProveedorView::on_mui_borrar_clicked() {
-    int val = QMessageBox::warning(this,
-                                   tr("Borrar factura de proveedor."),
-                                   tr("Desea eliminar la factura?"),
-                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-    if (val == 0) {
-        if (!borrar()) {
-            dialogChanges_cargaInicial();
-            _depura("Factura de Proveedor borrado satisfactoriamente.", 2);
-            close();
-        } // end if
-    } // end if
-}
-
 
 void FacturaProveedorView::on_mui_veralbaranes_clicked() {
 	_depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);

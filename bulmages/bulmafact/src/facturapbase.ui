@@ -201,7 +201,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -275,7 +275,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>1</hsizetype>
@@ -369,7 +369,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -423,7 +423,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -463,7 +463,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -494,7 +494,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -602,7 +602,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -924,7 +924,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1246,7 +1246,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1570,7 +1570,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2021,27 +2021,11 @@
    <hints>
     <hint type="sourcelabel" >
      <x>531</x>
-     <y>603</y>
+     <y>583</y>
     </hint>
     <hint type="destinationlabel" >
      <x>2</x>
      <y>567</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_aceptar</sender>
-   <signal>clicked()</signal>
-   <receiver>FacturaProveedorBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>609</x>
-     <y>597</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>621</x>
-     <y>566</y>
     </hint>
    </hints>
   </connection>

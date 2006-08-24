@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                               *
+ *   Copyright (C) 2006 by Tomeu Borr Riera                                *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,19 +18,25 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef FICHA_H
+#define FICHA_H
+
 #include <QWidget>
-
-#include "qapplication2.h"
 #include "funcaux.h"
+#include "dialogchanges.h"
 
+class Ficha : public QWidget, public dialogChanges {
+    Q_OBJECT
+public:
+    Ficha(QWidget *parent=0, Qt::WFlags f=0 );
+    ~Ficha() {};
+    virtual int guardar() {_depura("Ficha::guardar existe solo para ser derivado",2);return 0;};
+    virtual int borrar() {_depura("Ficha::borrar existe solo para ser derivado",2); return 0;};
 
-QApplication2::QApplication2( int & argc, char ** argv ) : QApplication(argc, argv){}
+public slots:
+     virtual void on_mui_aceptar_clicked();
+     virtual void on_mui_borrar_clicked();
+};
 
-bool QApplication2::notify( QObject *o, QEvent *e ) {
-        try {
-	    return QApplication::notify(o, e);
-	} catch(...) {
-	    mensajeInfo( tr("Error inesperado en BulmaFact") );
-	return FALSE;
-	}
-}
+#endif
+

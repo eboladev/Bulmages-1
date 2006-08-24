@@ -31,12 +31,11 @@
 #include "busquedafecha.h"
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
-#include "dialogchanges.h"
-#include "postgresiface2.h"
 #include "funcaux.h"
 
+#include "ficha.h"
 
-class FacturaProveedorView : public QWidget, public Ui_FacturaProveedorBase, public FacturaProveedor, public dialogChanges {
+class FacturaProveedorView : public Ficha, public Ui_FacturaProveedorBase, public FacturaProveedor {
     Q_OBJECT
 
 public:
@@ -73,7 +72,11 @@ public:
     };
     virtual void pintatotales(Fixed base, Fixed iva);
     void closeEvent(QCloseEvent *);
-    int guardar();
+
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+    virtual int guardar();
+    virtual int borrar() {return FacturaProveedor::borrar();};
+
 
 public slots:
     virtual void on_mui_guardar_clicked() {
@@ -95,7 +98,6 @@ public slots:
     virtual void on_subform2_editFinish(int, int) {
         s_pintaTotales();
     };
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_veralbaranes_clicked();
 };
 
