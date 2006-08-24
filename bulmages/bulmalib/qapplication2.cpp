@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                               *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -24,13 +24,14 @@
 #include "funcaux.h"
 
 
-QApplication2::QApplication2( int & argc, char ** argv ) : QApplication(argc, argv){}
+QApplication2::QApplication2(int & argc, char ** argv) : QApplication(argc, argv) {}
 
-bool QApplication2::notify( QObject *o, QEvent *e ) {
-        try {
-	    return QApplication::notify(o, e);
-	} catch(...) {
-	    mensajeInfo( tr("Error inesperado en BulmaFact") );
-	return FALSE;
-	}
+bool QApplication2::notify(QObject *o, QEvent *e) {
+    try {
+        return QApplication::notify(o, e);
+    } catch (...) {
+        mensajeInfo(tr("Error inesperado en BulmaFact"));
+        return FALSE;
+    }
 }
+

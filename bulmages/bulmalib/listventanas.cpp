@@ -43,6 +43,7 @@ listventanas::listventanas(QWidget *a) : QDockWidget(a) {
     setAccessibleName(tr("Indexador"));
     setAccessibleDescription(tr("Indexador"));
     setWindowTitle(tr("Indexador"));
+    setFocusPolicy(Qt::StrongFocus);
     setWidget(m_listBox);
     connect(m_listBox, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(dclicked()));
     connect(m_listBox, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(clicked()));

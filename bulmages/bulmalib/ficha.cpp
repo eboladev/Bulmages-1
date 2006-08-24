@@ -1,6 +1,6 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                               *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,14 +20,16 @@
 
 #include "ficha.h"
 
-Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {
-}
+
+Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {}
+
 
 void Ficha::on_mui_aceptar_clicked() {
-	_depura("Ficha::on_mui_aceptar_clicked", 2);
-	guardar();
-	close();
+    _depura("Ficha::on_mui_aceptar_clicked", 2);
+    guardar();
+    close();
 }
+
 
 void Ficha::on_mui_borrar_clicked() {
     _depura("Ficha::on_mui_borrar_clicked", 0);
@@ -44,3 +46,4 @@ void Ficha::on_mui_borrar_clicked() {
     } // end if
     _depura("END Ficha::on_mui_borrar_clicked", 0);
 }
+

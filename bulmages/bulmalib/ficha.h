@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borr Riera                                *
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -22,20 +22,30 @@
 #define FICHA_H
 
 #include <QWidget>
-#include "funcaux.h"
+
 #include "dialogchanges.h"
+#include "funcaux.h"
+
 
 class Ficha : public QWidget, public dialogChanges {
     Q_OBJECT
+
 public:
-    Ficha(QWidget *parent=0, Qt::WFlags f=0 );
-    ~Ficha() {};
-    virtual int guardar() {_depura("Ficha::guardar existe solo para ser derivado",2);return 0;};
-    virtual int borrar() {_depura("Ficha::borrar existe solo para ser derivado",2); return 0;};
+    Ficha(QWidget *parent = 0, Qt::WFlags f = 0);
+    ~Ficha() {}
+    ;
+    virtual int guardar() {
+        _depura("Ficha::guardar existe solo para ser derivado", 2);
+        return 0;
+    };
+    virtual int borrar() {
+        _depura("Ficha::borrar existe solo para ser derivado", 2);
+        return 0;
+    };
 
 public slots:
-     virtual void on_mui_aceptar_clicked();
-     virtual void on_mui_borrar_clicked();
+    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_borrar_clicked();
 };
 
 #endif

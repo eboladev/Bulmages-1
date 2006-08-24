@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2006 by Tomeu Borr Riera                                *
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -21,16 +21,18 @@
 #ifndef QAPPLICATION2_H
 #define QAPPLICATION2_H
 
-#include <QWidget>
 #include <QApplication>
+#include <QWidget>
 
 
 class QApplication2 : public QApplication {
     Q_OBJECT
+
 public:
-    QApplication2( int & argc, char ** argv );
-    ~QApplication2() {};
-    bool notify( QObject *o, QEvent *e );
+    QApplication2(int &argc, char **argv);
+    ~QApplication2() {}
+    ;
+    bool notify(QObject *o, QEvent *e);
 };
 
 #endif
