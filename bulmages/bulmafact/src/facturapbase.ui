@@ -1951,6 +1951,20 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends></extends>
+   <header>busquedaproveedor.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>ListLinFacturaProveedorView</class>
    <extends></extends>
    <header>listlinfacturapview.h</header>
@@ -1978,20 +1992,6 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends></extends>
-   <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
@@ -2010,22 +2010,6 @@
     <hint type="destinationlabel" >
      <x>73</x>
      <y>149</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>FacturaProveedorBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>531</x>
-     <y>583</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>2</x>
-     <y>567</y>
     </hint>
    </hints>
   </connection>

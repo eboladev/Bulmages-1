@@ -71,19 +71,18 @@ public:
         }
     };
     virtual void pintatotales(Fixed base, Fixed iva);
-    void closeEvent(QCloseEvent *);
 
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int borrar() {return FacturaProveedor::borrar();};
-
+    virtual int cargar(QString id);
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
 	cargar(DBvalue("idfacturap"));
     };
-    virtual int cargar(QString id);
+
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         pintatotales(listalineas->calculabase(), listalineas->calculaiva());

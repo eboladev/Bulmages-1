@@ -22,6 +22,7 @@
 #define FICHA_H
 
 #include <QWidget>
+#include <QCloseEvent>
 
 #include "dialogchanges.h"
 #include "funcaux.h"
@@ -42,10 +43,12 @@ public:
         _depura("Ficha::borrar existe solo para ser derivado", 2);
         return 0;
     };
+    virtual void closeEvent(QCloseEvent *);
 
 public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
+     virtual void on_mui_cancelar_clicked() {close();};
 };
 
 #endif

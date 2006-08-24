@@ -25,7 +25,7 @@
 #include <QToolButton>
 #include <QLayout>
 #include <fstream>
-#include <QCloseEvent>
+
 
 using namespace std;
 
@@ -63,7 +63,7 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
     } catch (...) {
         mensajeInfo(tr("Error al crear la factura proveedor"));
     } // end try
-    _depura("Fin de la inicializacion de FacturaProveedor\n");
+    _depura("END FacturaProveedorView::FacturaProveedorView");
 }
 
 
@@ -82,6 +82,7 @@ void FacturaProveedorView::inicializar() {
     _depura("FacturaProveedorView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    dialogChanges_cargaInicial();
     _depura("END FacturaProveedorView::inicializar", 0);
 }
 
@@ -104,21 +105,6 @@ void FacturaProveedorView::s_nuevoPago() {
     bud->pintar();
     bud->show();
     _depura("END FacturaProveedorView::s_nuevoPago", 0);
-}
-
-
-void FacturaProveedorView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar factura de proveedor."),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
 }
 
 
@@ -152,7 +138,7 @@ int FacturaProveedorView::guardar() {
         dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al guardar la factura proveedor"));
-        return -1;
+        throw -1;
     } // end try
     _depura("END FacturaProveedorView::guardar", 0);
     return 0;
