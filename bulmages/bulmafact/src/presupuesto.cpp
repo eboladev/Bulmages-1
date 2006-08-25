@@ -134,9 +134,9 @@ int presupuesto::guardar() {
         _depura("END presupuesto::guardar", 0);
         return 0;
     } catch (...) {
-        _depura("Error guardando, se cancela la operacion", 1);
+        _depura("Error guardando, se cancela la operacion", 0);
         companyact->rollback();
-        return -1;
+        throw -1;
     } // end try
 }
 

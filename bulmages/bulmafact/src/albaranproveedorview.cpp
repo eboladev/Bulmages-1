@@ -185,12 +185,12 @@ int AlbaranProveedorView::guardar() {
         setidforma_pago(m_forma_pago->idforma_pago());
         setrefalbaranp(m_refalbaranp->text());
         setdescalbaranp(m_descalbaranp->text());
-        int err = AlbaranProveedor::guardar();
+        AlbaranProveedor::guardar();
         dialogChanges_cargaInicial();
         _depura("END AlbaranProveedorView::guardar", 0);
-        return err;
+        return 0;
     } catch (...) {
-        mensajeInfo("Error inesperado al guardar");
+        _depura("AlbaranProveedorView::guardar Error inesperado al guardar", 2);
         throw -1;
     } // end try
 }

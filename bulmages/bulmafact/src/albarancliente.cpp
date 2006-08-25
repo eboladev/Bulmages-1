@@ -132,13 +132,11 @@ int AlbaranCliente::guardar() {
         companyact->commit();
         _depura("END AlbaranCliente::guardar", 0);
         return 0;
-    } // end try
-
-    catch(...) {
-        _depura("AlbaranCliente::guardar error al guardar albaran cliente", 1);
+    } catch(...) {
+        _depura("AlbaranCliente::guardar error al guardar albaran cliente", 0);
         companyact->rollback();
-        return -1;
-    }
+        throw -1;
+    } // end try
 }
 
 

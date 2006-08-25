@@ -36,13 +36,12 @@
 #include "busquedatrabajador.h"
 #include "ui_albaranclientebase.h"
 #include "albarancliente.h"
-#include "postgresiface2.h"
+#include "ficha.h"
 
 
 class company;
 
-class AlbaranClienteView : public QWidget, public Ui_AlbaranClienteBase, public AlbaranCliente,
-    public dialogChanges {
+class AlbaranClienteView : public Ficha, public Ui_AlbaranClienteBase, public AlbaranCliente {
     Q_OBJECT
 
 public:
@@ -103,25 +102,16 @@ public:
     void pintatotales(Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     void agregarFactura();
-    void closeEvent(QCloseEvent *);
+
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
+    virtual int cargar(QString id);
+    virtual int borrar() {return AlbaranCliente::borrar();};
+
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
-    };
-    virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning( this, tr("Borrar albaran de cliente."),
-                                        tr("Desea eliminar el albaran de cliente?"),
-                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            if (!borrar()) {
-                dialogChanges_cargaInicial();
-                _depura("Albaran borrado satisfactoriamente", 2);
-                close();
-            }// end if
-        }// end if
     };
 
     /// Este slot se activa cuando hay cambios en los subformularios.
@@ -145,10 +135,6 @@ public slots:
     };
     virtual void on_subform2_editFinish(int, int) {
         calculaypintatotales();
-    };
-    virtual void on_mui_aceptar_clicked() {
-        if (!guardar())
-            close();
     };
     virtual void on_mui_cobrar_clicked();
 };

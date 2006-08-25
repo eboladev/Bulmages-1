@@ -42,7 +42,7 @@
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), PedidoCliente(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), PedidoCliente(comp) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -74,6 +74,7 @@ void PedidoClienteView::inicializar() {
     _depura("PedidoClienteView::inicializar", 0);
     subform3->inicializar();
     m_descuentos->inicializar();
+    dialogChanges_cargaInicial();
     _depura("END PedidoClienteView::inicializar", 0);
 }
 
@@ -204,6 +205,7 @@ int PedidoClienteView::cargar(QString id) {
 
 
 int PedidoClienteView::guardar() {
+   try {
     setcomentpedidocliente(m_comentpedidocliente->toPlainText());
     setnumpedidocliente(m_numpedidocliente->text());
     setidcliente(m_cliente->idcliente());
@@ -216,23 +218,14 @@ int PedidoClienteView::guardar() {
     setcontactpedidocliente(m_contactpedidocliente->text());
     settelpedidocliente(m_telpedidocliente->text());
     setprocesadopedidocliente(m_procesadopedidocliente->isChecked() ? "TRUE" : "FALSE");
-    int err = PedidoCliente::guardar();
+    PedidoCliente::guardar();
     dialogChanges_cargaInicial();
-    return err;
+    } catch(...) {
+	_depura("", 0);
+	throw -1;
+    } // end try
+    return 0;
 }
 
 
-void PedidoClienteView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar pedido de cliente"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
-}
 

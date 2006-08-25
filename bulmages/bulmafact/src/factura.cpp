@@ -138,10 +138,11 @@ int Factura::guardar() {
         _depura("END Factura::guardar", 0);
         return 0;
     } catch (...) {
-        _depura("Factura::guardar() se produjo un error guardando la factura", 1);
+        _depura("Factura::guardar() se produjo un error guardando la factura", 0);
         companyact->rollback();
-        return -1;
-    }
+        throw  -1;
+    } // end try
+    _depura("END Factura::guardar", 0);
 }
 
 

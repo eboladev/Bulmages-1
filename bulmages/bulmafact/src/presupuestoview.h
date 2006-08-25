@@ -36,13 +36,13 @@
 #include "busquedaalmacen.h"
 #include "busquedatrabajador.h"
 #include "fixed.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
 
 
-class PresupuestoView : public QWidget, public Ui_BudgetBase , public presupuesto, public dialogChanges {
+class PresupuestoView : public Ficha, public Ui_BudgetBase , public presupuesto {
     Q_OBJECT
 
 private:
@@ -100,12 +100,14 @@ public:
 
 private:
     void generarPedidoCliente();
-    virtual void closeEvent(QCloseEvent *);
+
+public:
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
+    virtual int cargar(QString id);
+    virtual int borrar() {return presupuesto::borrar();};
 
 public slots:
-    virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_guardar_clicked() {
         guardar();
@@ -122,10 +124,6 @@ public slots:
     };
     virtual void on_subform2_editFinish(int, int) {
         calculaypintatotales();
-    };
-    virtual void on_mui_aceptar_clicked() {
-        if (!guardar())
-            close();
     };
 };
 

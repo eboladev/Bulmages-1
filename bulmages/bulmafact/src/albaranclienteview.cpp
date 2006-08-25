@@ -47,7 +47,7 @@
 
 
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), AlbaranCliente(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), AlbaranCliente(comp) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
     try {
         setupUi(this);
@@ -63,7 +63,7 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         setListDescuentoAlbaranCliente(m_descuentos);
 
         comp->meteWindow(windowTitle(), this, FALSE);
-        dialogChanges_cargaInicial();
+
     } catch(...) {
         mensajeInfo(tr("Error al crear el albaran cliente"));
     } // end try
@@ -80,6 +80,7 @@ void AlbaranClienteView::inicializar() {
     _depura("AlbaranClienteView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    dialogChanges_cargaInicial();
     _depura("END AlbaranClienteView::inicializar", 0);
 }
 
@@ -273,23 +274,9 @@ int AlbaranClienteView::cargar(QString id) {
 }
 
 
-void AlbaranClienteView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())	{
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar albaran"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
-}
-
-
 int AlbaranClienteView::guardar() {
     _depura("AlbaranClienteView::guardar", 0);
+    try {
     /// Cogemos todos los valores del formulario y actualizamos la clase.
     setcomentalbaran(m_comentalbaran->toPlainText());
     setcomentprivalbaran(m_comentprivalbaran->toPlainText());
@@ -304,12 +291,15 @@ int AlbaranClienteView::guardar() {
     setidtrabajador(m_trabajador->idtrabajador());
     setrefalbaran(m_refalbaran->text());
     setdescalbaran(m_descalbaran->text());
-
     /// Hacemos el guardado.
-    int err = AlbaranCliente::guardar();
+    AlbaranCliente::guardar();
     dialogChanges_cargaInicial();
+   } catch(...) {
+	_depura("AlbaranClienteView::guardar Error al guardar ", 0);
+	throw -1;
+	} // end try
     _depura("END AlbaranClienteView::guardar", 0);
-    return err;
+    return 0;
 }
 
 

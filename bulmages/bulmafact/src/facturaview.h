@@ -34,10 +34,11 @@
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
-#include "postgresiface2.h"
+#include "ficha.h"
 
+class company;
 
-class FacturaView : public QWidget, public Ui_FacturaBase, public Factura, public dialogChanges {
+class FacturaView : public Ficha, public Ui_FacturaBase, public Factura {
     Q_OBJECT
 
 public:
@@ -79,27 +80,18 @@ public:
         }
     };
     void pintatotales(Fixed, Fixed, Fixed, Fixed);
-    void closeEvent(QCloseEvent *);
+
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
+    virtual int cargar(QString id);
+    virtual int borrar() {return Factura::borrar();};
+
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-    virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning(this,
-                                       tr("Borrar factura cliente."),
-                                       tr("Desea eliminar la factura de este cliente?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            if (!borrar()) {
-                dialogChanges_cargaInicial();
-                _depura("Factura borrada satisfactoriamente", 2);
-                close();
-            }// end if
-        }// end if
-    };
+
     virtual void on_mui_imprimir_clicked() {
         imprimirFactura();
     };
@@ -115,10 +107,6 @@ public slots:
         calculaypintatotales();
     };
     virtual void on_mui_cobrar_clicked();
-    virtual void on_mui_aceptar_clicked() {
-        if (!guardar() )
-            close();
-    };
     virtual void on_mui_veralbaranes_clicked();
 };
 

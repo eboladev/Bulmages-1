@@ -214,7 +214,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -311,7 +311,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>1</hsizetype>
@@ -356,7 +356,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>1</hsizetype>
@@ -419,7 +419,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -450,7 +450,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -538,7 +538,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -569,7 +569,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -600,7 +600,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -631,7 +631,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -662,7 +662,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -782,7 +782,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1104,7 +1104,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1426,7 +1426,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1750,7 +1750,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2131,6 +2131,20 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends></extends>
+   <header>busquedaalmacen.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -2172,41 +2186,11 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
  <connections>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>BudgetBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>667</x>
-     <y>707</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>5</x>
-     <y>697</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
@@ -2214,8 +2198,8 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>18</x>
-     <y>87</y>
+     <x>25</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel" >
      <x>41</x>

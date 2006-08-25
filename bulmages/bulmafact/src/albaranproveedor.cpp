@@ -115,9 +115,9 @@ int AlbaranProveedor::guardar() {
         _depura("END AlbaranProveedor::guardar", 0);
         return 0;
     } catch(...) {
-        mensajeInfo("AlbaranProveedor::guardar error al guardar");
+        _depura("AlbaranProveedor::guardar error al guardar", 2);
         companyact->rollback();
-        return - 1;
+        throw -1;
     } // end catch
 }
 

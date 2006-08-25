@@ -37,16 +37,15 @@
 #include "dialogchanges.h"
 #include "fixed.h"
 #include "pedidocliente.h"
-#include "postgresiface2.h"
+#include "ficha.h"
 
 
-class PedidoClienteView : public QWidget, public Ui_PedidoClienteBase, public PedidoCliente, public dialogChanges {
+class PedidoClienteView : public Ficha, public Ui_PedidoClienteBase, public PedidoCliente{
     Q_OBJECT
 
 public:
     PedidoClienteView(company *, QWidget *parent = 0);
     ~PedidoClienteView();
-    void closeEvent(QCloseEvent *);
     void generarAlbaran();
     void inicializar();
     void pintaidcliente(QString id) {
@@ -93,29 +92,20 @@ public:
         }
     };
 
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+    virtual int guardar();
+    virtual int cargar(QString id);
+    virtual int borrar() {return PedidoCliente::borrar();};
+
+
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-    virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked() {
-        int val = QMessageBox::warning(this,
-                                       tr("Borrar pedido de cliente."),
-                                       tr("Desea eliminar este pedido?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0) {
-            if (!borrar()) {
-                dialogChanges_cargaInicial();
-                _depura("Pedido borrado satisfactoriamente",2);
-                close();
-            }// end if
-        }// end if
-    };
+
     virtual void on_mui_imprimir_clicked() {
         imprimirPedidoCliente();
     };
-    /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual int guardar();
     virtual void s_pintaTotales() {
         calculaypintatotales();
     };
@@ -130,10 +120,6 @@ public slots:
     };
     virtual void on_subform3_editFinish(int, int) {
         calculaypintatotales();
-    };
-    virtual void on_mui_aceptar_clicked() {
-        if (!guardar() )
-            close();
     };
 };
 

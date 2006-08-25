@@ -121,12 +121,10 @@ int PedidoCliente::guardar() {
         companyact->commit();
         _depura("END PedidoCliente::guardar", 0);
         return 0;
-    } // end try
-
-    catch(...) {
-        _depura("se produjo un error al guardar, cancelamos la operacion", 1);
+    } catch(...) {
+        _depura("PedidoCliente::guardar se produjo un error al guardar, cancelamos la operacion", 0);
         companyact->rollback();
-        return -1;
+        throw -1;
     } // end catch
 }
 

@@ -276,7 +276,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -375,7 +375,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>1</hsizetype>
@@ -414,7 +414,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>1</hsizetype>
@@ -497,7 +497,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -528,7 +528,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -566,7 +566,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -605,7 +605,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -644,7 +644,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -692,7 +692,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -723,7 +723,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -831,7 +831,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1153,7 +1153,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1475,7 +1475,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1799,7 +1799,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2180,27 +2180,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListLinPedidoClienteView</class>
-   <extends></extends>
-   <header>listlinpedidoclienteview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaTrabajador</class>
    <extends></extends>
    <header>busquedatrabajador.h</header>
@@ -2235,43 +2214,32 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends></extends>
+   <header>busquedaalmacen.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListLinPedidoClienteView</class>
+   <extends></extends>
+   <header>listlinpedidoclienteview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages-recursos-graficos.qrc" />
  </resources>
  <connections>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>PedidoClienteBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>656</x>
-     <y>727</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>2</x>
-     <y>516</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_aceptar</sender>
-   <signal>clicked()</signal>
-   <receiver>PedidoClienteBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>721</x>
-     <y>727</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>729</x>
-     <y>531</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
@@ -2279,8 +2247,8 @@
    <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>26</x>
-     <y>82</y>
+     <x>25</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel" >
      <x>64</x>

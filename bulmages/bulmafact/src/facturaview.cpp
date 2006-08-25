@@ -44,7 +44,7 @@ using namespace std;
 
 
 FacturaView::FacturaView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), Factura(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), Factura(comp) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     _depura("FacturaView::FacturaView", 0);
     try {
@@ -86,6 +86,7 @@ void FacturaView::inicializar() {
     _depura("FacturaView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    dialogChanges_cargaInicial();
     _depura("END FacturaView::inicializar", 0);
 }
 
@@ -190,35 +191,28 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
 }
 
 
-void FacturaView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar factura"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
-}
-
 
 int FacturaView::guardar() {
-    setcomentfactura(m_comentfactura->toPlainText());
-    setidalmacen(m_almacen->idalmacen());
-    setNumFactura(m_numfactura->text());
-    setreffactura(m_reffactura->text());
-    setidcliente(m_cliente->idcliente());
-    setfechafactura(m_fechafactura->text());
-    setdescfactura(m_descfactura->text());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setcodigoserie_factura(m_codigoserie_factura->codigoserie_factura());
-    setprocesadafactura( m_procesadafactura->isChecked() ? "TRUE" : "FALSE");
-    int err = Factura::guardar();
-    dialogChanges_cargaInicial();
-    return err;
+    _depura("FacturaView::guardar", 0);
+    try {
+        setcomentfactura(m_comentfactura->toPlainText());
+        setidalmacen(m_almacen->idalmacen());
+        setNumFactura(m_numfactura->text());
+        setreffactura(m_reffactura->text());
+        setidcliente(m_cliente->idcliente());
+        setfechafactura(m_fechafactura->text());
+        setdescfactura(m_descfactura->text());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setcodigoserie_factura(m_codigoserie_factura->codigoserie_factura());
+        setprocesadafactura( m_procesadafactura->isChecked() ? "TRUE" : "FALSE");
+        Factura::guardar();
+        dialogChanges_cargaInicial();
+    } catch(...) {
+        _depura("FacturaView::guardar error al guardar", 0);
+        throw -1;
+    } // end try
+    _depura("END FacturaView::guardar", 0);
+    return 0;
 }
 
 

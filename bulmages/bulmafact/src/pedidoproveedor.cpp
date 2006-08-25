@@ -134,8 +134,8 @@ int PedidoProveedor::guardar() {
         return 0;
     } catch (...) {
         companyact->rollback();
-        mensajeInfo( "Error al guardar el pedido");
-        return -1;
+        _depura("PedidoProveedor::guardar Error al guardar el pedido proveedor", 2);
+        throw -1;
     } // end try
     _depura("END PedidoProveedor::guardar", 0);
 }

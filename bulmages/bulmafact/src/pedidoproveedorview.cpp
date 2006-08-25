@@ -42,7 +42,7 @@ using namespace std;
 
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), PedidoProveedor(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), PedidoProveedor(comp) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
     try {
         setupUi(this);
@@ -109,23 +109,28 @@ int PedidoProveedorView::cargar(QString id) {
 
 
 int PedidoProveedorView::guardar() {
-    setcomentpedidoproveedor(m_comentpedidoproveedor->toPlainText());
-    setnumpedidoproveedor(m_numpedidoproveedor->text());
-    setidproveedor(m_proveedor->idproveedor());
-    setfechapedidoproveedor(m_fechapedidoproveedor->text());
-    setidalmacen(m_almacen->idalmacen());
-    setidtrabajador(m_trabajador->idtrabajador());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setrefpedidoproveedor(m_refpedidoproveedor->text());
-    setdescpedidoproveedor(m_descpedidoproveedor->text());
-    setcontactpedidoproveedor(m_contactpedidoproveedor->text());
-    settelpedidoproveedor(m_telpedidoproveedor->text());
-    setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked() ? "TRUE" : "FALSE");
-    int error = PedidoProveedor::guardar();
-    if (error == 0) {
+    _depura("PedidoProveedorView::guardar", 0);
+    try {
+        setcomentpedidoproveedor(m_comentpedidoproveedor->toPlainText());
+        setnumpedidoproveedor(m_numpedidoproveedor->text());
+        setidproveedor(m_proveedor->idproveedor());
+        setfechapedidoproveedor(m_fechapedidoproveedor->text());
+        setidalmacen(m_almacen->idalmacen());
+        setidtrabajador(m_trabajador->idtrabajador());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setrefpedidoproveedor(m_refpedidoproveedor->text());
+        setdescpedidoproveedor(m_descpedidoproveedor->text());
+        setcontactpedidoproveedor(m_contactpedidoproveedor->text());
+        settelpedidoproveedor(m_telpedidoproveedor->text());
+        setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked() ? "TRUE" : "FALSE");
+        PedidoProveedor::guardar();
         dialogChanges_cargaInicial();
-    } //end if
-    return error;
+    } catch(...) {
+        _depura("PedidoProveedorView::guardar Error al guardar el Pedido Proveedor", 0);
+        throw -1;
+    } // end try
+    _depura("END PedidoProveedorView::guardar", 0);
+    return 0;
 }
 
 
@@ -208,20 +213,5 @@ void PedidoProveedorView::generarAlbaran() {
         linea1->setDBvalue("proporciondalbaranp", listadescuentos->DBvalue("proporciondpedidoproveedor", i));
     } // end for
     bud->show();
-}
-
-
-void PedidoProveedorView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar pedido a proveedor"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
 }
 

@@ -51,7 +51,7 @@ using namespace std;
 
 
 PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), presupuesto(comp), dialogChanges(this) {
+        : Ficha(parent, Qt::WDestructiveClose), presupuesto(comp) {
     _depura("Inicializacion de PresupuestoView\n", 0);
     try {
         setupUi(this);
@@ -96,24 +96,10 @@ void PresupuestoView::inicializar() {
     _depura("PresupuestoView::inicializar", 0);
     subform2->inicializar();
     m_descuentos->inicializar();
+    dialogChanges_cargaInicial();
     _depura("END PresupuestoView::inicializar", 0);
 }
 
-
-void PresupuestoView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar presupuesto"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardar();
-        if (val == 2)
-            e->ignore();
-    } // end if
-    _depura("END closeEvent", 0);
-}
 
 
 PresupuestoView::~PresupuestoView() {
@@ -124,21 +110,6 @@ PresupuestoView::~PresupuestoView() {
 
 void PresupuestoView::on_mui_imprimir_clicked() {
     imprimirPresupuesto();
-}
-
-
-void PresupuestoView::on_mui_borrar_clicked() {
-    int val = QMessageBox::warning(this,
-                                   tr("Borrar presupuesto."),
-                                   tr("Esta seguro que desea eliminar este presupuesto?"),
-                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-    if (val == 0) {
-        if (!borrar()) {
-            dialogChanges_cargaInicial();
-            _depura("Presupuesto borrado satisfactoriamente", 2);
-            close();
-        } // end if
-    } // end if
 }
 
 
@@ -250,6 +221,7 @@ int PresupuestoView::cargar(QString id) {
 
 int PresupuestoView::guardar() {
     _depura("PresupuestoView::guardar", 0);
+    try {
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("PresupuestoView_guardar", this);
     if (res != 0)
@@ -267,9 +239,13 @@ int PresupuestoView::guardar() {
     setcontactpresupuesto(m_contactpresupuesto->text());
     settelpresupuesto(m_telpresupuesto->text());
     setprocesadopresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
-    int err = presupuesto::guardar();
+    presupuesto::guardar();
     dialogChanges_cargaInicial();
+    } catch (...) {
+	_depura("PresupuestoView::guardar error al guardar el presupuesto", 0);
+	throw -1;
+    } // end try
     _depura("END PresupuestoView::guardar", 0);
-    return err;
+    return 0;
 }
 

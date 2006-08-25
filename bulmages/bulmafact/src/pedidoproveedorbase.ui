@@ -386,7 +386,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>1</hsizetype>
@@ -566,7 +566,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="" >
+           <widget class="QLabel" name="label" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -716,7 +716,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="" >
+           <widget class="QLabel" name="label" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -826,7 +826,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1148,7 +1148,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1470,7 +1470,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="" >
+        <widget class="QLabel" name="label" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1794,7 +1794,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2236,22 +2236,6 @@
  </resources>
  <connections>
   <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>PedidoProveedorBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>737</x>
-     <y>580</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>846</x>
-     <y>490</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>mui_detalles</sender>
    <signal>toggled(bool)</signal>
    <receiver>frame</receiver>
@@ -2262,8 +2246,8 @@
      <y>74</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>37</x>
-     <y>99</y>
+     <x>46</x>
+     <y>199</y>
     </hint>
    </hints>
   </connection>

@@ -94,7 +94,6 @@ public slots:
         setidproveedor(val);
     };
     virtual void s_fechaalbaranpvalueChanged(QString val) {
-        _depura("s_fechaalbaranpvalueChanged()", 0);
         setfechaalbaranp(val);
     };
     virtual void s_forma_pagovalueChanged(QString val) {
