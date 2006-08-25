@@ -26,23 +26,36 @@
 #include <errno.h>
 #include <sys/types.h>
 
+#include <QDomNode>
+#include <QDomDocument>
+
+
 /** *@author Tomeu Borrás Riera */
 
 class empresa;
 
 class CAnualesPrintView : public QDialog, public Ui_CAnualesPrintBase  {
-   Q_OBJECT
+    Q_OBJECT
 private:
-   char *fichero;
-   QString idbalance;
-   empresa *empresaactual;
+    char *fichero;
+    QString idbalance;
+    empresa *empresaactual;
+    QDomDocument m_doc;
+
 public:
-	CAnualesPrintView(empresa *emp,QWidget *parent=0);
-	~CAnualesPrintView();
-   void setidbalance(QString);       // Establece cual será el balance a imprimir
+    CAnualesPrintView(empresa *emp,QWidget *parent=0);
+    ~CAnualesPrintView();
+    void setidbalance(QString);       // Establece cual será el balance a imprimir
+
+    bool procesaFormula(const QDomNode & );
+    bool procesaOperador(const QDomNode & );
+    bool valorItem(const QDomNode &, QString &, QString &);
+    void agregaValores(const QDomNode &, const QString &, const QString &);
+
+
 
 public slots:
-   virtual void accept();
+    virtual void accept();
 };
 
 #endif

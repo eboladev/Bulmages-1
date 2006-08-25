@@ -1,0 +1,28 @@
+<BALANCE>
+    <LBALANCE>
+        <CONCEPTO> Un concepto para la linea </CONCEPTO>
+	<NIVEL> 1 </NIVEL>
+	<FORMULA> 
+	    <OPERADOR>
+		<CUENTA>100</CUENTA>
+	    </OPERADOR>
+	    <OPERADOR>
+		<CUENTA>200</CUENTA>
+	    </OPERADOR>
+	</FORMULA>
+    </LBALANCE>
+    
+    <LBALANCE>
+        <CONCEPTO> Un segundo concepto para la linea </CONCEPTO>
+	<NIVEL> 1 </NIVEL>
+	<FORMULA> 
+	    <OPERADOR>
+		<CUENTA>300</CUENTA>
+	    </OPERADOR>
+	    <OPERADOR>
+		<CUENTA>400</CUENTA>
+	    </OPERADOR>
+	</FORMULA>
+    </LBALANCE>
+    
+</BALANCE>

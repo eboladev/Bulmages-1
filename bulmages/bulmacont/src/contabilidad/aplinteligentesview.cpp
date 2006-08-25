@@ -251,17 +251,11 @@ void aplinteligentesview::mostrarplantilla() {
     QString cadena;
     QString subcadena;
     numainteligente = idainteligente;
-    fprintf(stderr,"Mostrar plantilla %d\n",numainteligente);
+
     // Vamos a intentar borrar todos los datos antes de empezar.
     borrawidgets();
-    fprintf(stderr,"Hemos borrado los datos anteriores\n");
 
 
-
-    /*
-       PRIMERAS PRUEBAS CON DOM
-    */
-    //  QFile f( "/home/tborras/bulmages/trunk/bulmages/installbulmages/ainteligentes/pago.xml" );
     QFile f(listasientos[mui_comboainteligentes->currentIndex()]);
     if ( !f.open( IO_ReadOnly ) )
         return;

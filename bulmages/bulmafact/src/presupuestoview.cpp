@@ -29,10 +29,6 @@
 #include <QMessageBox>
 #include <QCloseEvent>
 
-#include <fstream>
-
-using namespace std;
-
 #include "funcaux.h"
 #include "listlinpresupuestoview.h"
 #include "presupuestoview.h"
