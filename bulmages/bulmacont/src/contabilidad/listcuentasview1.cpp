@@ -505,8 +505,6 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     _depura("END listcuentasview1::on_mui_imprimir_clicked", 0);
 }
 
-
-
 void listcuentasview1::on_mui_exportar_clicked() {
     _depura("listcuentasview1::on_mui_exportar_clicked", 0);
     QFile filexml (QFileDialog::getSaveFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));

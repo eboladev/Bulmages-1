@@ -1,4 +1,7 @@
 <BALANCE>
+    <TITULO> Balance de Situacion </TITULO>
+    <COMPONENTE>
+    <SUBTITULO>Debe</SUBTITULO>
     <LBALANCE>
         <CONCEPTO> Un concepto para la linea </CONCEPTO>
 	<NIVEL> 1 </NIVEL>
@@ -24,5 +27,22 @@
 	    </OPERADOR>
 	</FORMULA>
     </LBALANCE>
+    </COMPONENTE>
     
+    <COMPONENTE>
+    <SUBTITULO>Haber</SUBTITULO>
+    <LBALANCE>
+        <CONCEPTO> Un segundo concepto para la linea </CONCEPTO>
+	<NIVEL> 1 </NIVEL>
+	<FORMULA> 
+	    <OPERADOR>
+		<CUENTA>300</CUENTA>
+	    </OPERADOR>
+	    <OPERADOR>
+		<CUENTA>400</CUENTA>
+	    </OPERADOR>
+	</FORMULA>
+    </LBALANCE>
+
+    </COMPONENTE>
 </BALANCE>

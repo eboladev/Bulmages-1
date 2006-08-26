@@ -46,13 +46,11 @@ public:
     CAnualesPrintView(empresa *emp,QWidget *parent=0);
     ~CAnualesPrintView();
     void setidbalance(QString);       // Establece cual será el balance a imprimir
-
     bool procesaFormula(const QDomNode & );
     bool procesaOperador(const QDomNode & );
     bool valorItem(const QDomNode &, QString &, QString &);
     void agregaValores(const QDomNode &, const QString &, const QString &);
-
-
+    void imprimir();
 
 public slots:
     virtual void accept();

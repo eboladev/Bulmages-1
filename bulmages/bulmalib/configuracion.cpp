@@ -250,7 +250,8 @@ QString configuracion::nombre(int i) {
         return "CONF_BG_DESCFACTURASCLIENTE";
     if (i == CONF_BG_LISTARTICULOS )
         return "CONF_BG_LISTARTICULOS";
-
+    if (i == CONF_DIR_CANUALES )
+        return "CONF_DIR_CANUALES";
     return "";
 }
 

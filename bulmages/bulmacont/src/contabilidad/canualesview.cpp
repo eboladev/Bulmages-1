@@ -60,7 +60,9 @@ void CAnualesView::inicializatabla()  {
     mui_listado->setColumnWidth(COL_ARCHIVO, 290);
     mui_listado->hideColumn(COL_NOMBRE);
 
-    QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/balances");
+ //   QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/canuales");
+    QDir dir(confpr->valor(CONF_DIR_CANUALES));
+
     dir.setFilter(QDir::Files );
     dir.setSorting(QDir::Size | QDir::Reversed);
 
