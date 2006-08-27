@@ -172,6 +172,8 @@ bool CAnualesPrintView::procesaOperador(const QDomNode &operador) {
                     QDomNode formula = item.parentNode().firstChildElement("FORMULA");
                     QString valoract, valorant;
                     if (valorItem(formula, valoract, valorant)) {
+
+
                         agregaValores(operador, valoract, valorant);
                         return TRUE;
                     } else {
@@ -202,15 +204,59 @@ bool CAnualesPrintView::valorItem(const QDomNode &formula, QString &valoract, QS
 void CAnualesPrintView::agregaValores(const QDomNode &nodo, const QString &valoract, const QString &valorant) {
     _depura("CAnualesPrintView::agregaValores", 0, nodo.toElement().tagName()+" "+valoract);
     QDomElement enodo = nodo.toElement();
+	
+	Fixed fvaloract(valoract);
+	Fixed fvalorant(valorant);
+
+        /// Miramos las opciones pasadas
+    QDomNodeList opcs = enodo.elementsByTagName("OPCIONES");
+    for (int i = 0; i < opcs.count(); i++) {
+        QDomElement op = opcs.item(i).toElement();
+
+	QString opciones = op.text();
+	if (opciones == "POSITIVO") {
+		if (fvaloract < 0) 
+			fvaloract = fvaloract * -1;
+		if (fvalorant < 0)
+			fvalorant = fvalorant * -1;
+	} // end if
+
+	if (opciones == "NEGATIVO") {
+		if (fvaloract > 0) 
+			fvaloract = fvaloract * -1;
+		if (fvalorant > 0)
+			fvalorant = fvalorant * -1;
+	} // end if
+
+	if (opciones == "MAYORCERO") {
+		if (fvaloract < 0) 
+			fvaloract = 0;
+		if (fvalorant < 0)
+			fvalorant = 0;
+	} // end if
+
+	if (opciones == "MENORCERO") {
+		if (fvaloract > 0) 
+			fvaloract = 0;
+		if (fvalorant > 0)
+			fvalorant = 0;
+	} // end if
+
+	if (opciones == "RESTAR") {
+			fvaloract = fvaloract * -1;
+			fvalorant = fvalorant * -1;
+	} // end if
+     } // end for
+
 
     QDomElement valoract1 = m_doc.createElement("VALORACT");
     valoract1.setTagName("VALORACT");
-    QDomText etx = m_doc.createTextNode(valoract);
+    QDomText etx = m_doc.createTextNode(fvaloract.toQString());
     valoract1.appendChild(etx);
 
     QDomElement valorant1 = m_doc.createElement("VALORANT");
     valorant1.setTagName("VALORANT");
-    QDomText etc = m_doc.createTextNode(valorant);
+    QDomText etc = m_doc.createTextNode(fvalorant.toQString());
     valorant1.appendChild(etc);
 
     QDomNode n = nodo;
@@ -299,7 +345,8 @@ void CAnualesPrintView::imprimir() {
 
 
     buff.replace("[story]", fitxersortidatxt);
-    buff.replace("[titulo]", "Cuentas Anuales");
+    QDomElement nodo = m_doc.namedItem("BALANCE").namedItem("TITULO").toElement();	
+    buff.replace("[titulo]", nodo.text());
 
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);

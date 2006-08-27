@@ -58,9 +58,10 @@ void CAnualesView::inicializatabla()  {
     mui_listado->setHorizontalHeaderLabels(headerlabels);
 
     mui_listado->setColumnWidth(COL_ARCHIVO, 290);
-    mui_listado->hideColumn(COL_NOMBRE);
+    mui_listado->setColumnWidth(COL_NOMBRE, 290);
 
- //   QDir dir("/home/tborras/bulmages/trunk/bulmages/installbulmages/canuales");
+    mui_listado->hideColumn(COL_ARCHIVO);
+
     QDir dir(confpr->valor(CONF_DIR_CANUALES));
 
     dir.setFilter(QDir::Files );
@@ -72,8 +73,22 @@ void CAnualesView::inicializatabla()  {
     for (int i = 0; i < list.size(); ++i) {
         QFileInfo fileInfo = list.at(i);
         QTableWidgetItem *newItem1 = new QTableWidgetItem(fileInfo.filePath(), 0);
-        QTableWidgetItem *newItem2 = new QTableWidgetItem(fileInfo.fileName(), 0);
         mui_listado->setItem(i, COL_ARCHIVO, newItem1);
+
+	/// Cogemos el nombre y lo mostramos.
+	QDomDocument doc;
+	QFile f(newItem1->text());
+	if ( !f.open( IO_ReadOnly ) )
+		return;
+	if ( !doc.setContent( &f ) ) {
+		f.close();
+		return;
+	}
+	f.close();
+	QDomElement nodo = doc.namedItem("BALANCE").namedItem("TITULO").toElement();	
+        QTableWidgetItem *newItem2 = new QTableWidgetItem(nodo.text(), 0);
+	
+
         mui_listado->setItem(i, COL_NOMBRE, newItem2);
     } // end for
     _depura("END CAnualesView::inicializatabla", 0);
@@ -87,11 +102,14 @@ void CAnualesView::on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
 }
 
 void CAnualesView::imprimir() {
+    _depura("CAnualesView::imprimir", 0);
     QString idbalance = mui_listado->item(mui_listado->currentRow(),COL_ARCHIVO)->text();
     CAnualesPrintView *b = new CAnualesPrintView(m_companyact,0);
     b->setidbalance(idbalance);
     b->exec();
     delete b;
+    _depura("END CAnualesView::imprimir", 0);
+
 }
 
 
