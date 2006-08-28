@@ -1,8 +1,8 @@
 /***************************************************************************
                           mpatrimonialview.cpp  -  description
                              -------------------
-    begin                : mié sep 10 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : miï¿½sep 10 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -20,7 +20,8 @@
 #include <q3listview.h>
 //#include <qstring.h>
 
-mpatrimonialview::mpatrimonialview(QWidget *parent, const char *name ) : mpatrimonialdlg(parent,name) {
+mpatrimonialview::mpatrimonialview(QWidget *parent, const char *name ) : QDialog (parent,name) {
+  setupUi(this);
   conexionbase=NULL;
   idmpatrimonial = "";
 
@@ -128,12 +129,12 @@ void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
 
 
 /********************************************************************************
- * Se ha pulsado sobre el botón de agregar donde está la suma                   *
- * Tenemos que añadir la masa patrimonial o la cuenta a la suma                 *
+ * Se ha pulsado sobre el botï¿½ de agregar donde estï¿½la suma                   *
+ * Tenemos que aï¿½dir la masa patrimonial o la cuenta a la suma                 *
  ********************************************************************************/
 void mpatrimonialview::nuevasuma() {
    Q3ListViewItem *it;
-   // Lo primero de todo es coger el código de cuenta.
+   // Lo primero de todo es coger el cï¿½igo de cuenta.
    QString codcuenta = codigocta1->text();
    QString masapatrimonial = mpatrimonial->text();
 
@@ -175,12 +176,12 @@ void mpatrimonialview::borrasuma() {
 
 
 /********************************************************************************
- * Se ha pulsado sobre el botón de agregar donde está la suma                   *
- * Tenemos que añadir la masa patrimonial o la cuenta a la suma                 *
+ * Se ha pulsado sobre el botï¿½ de agregar donde estï¿½la suma                   *
+ * Tenemos que aï¿½dir la masa patrimonial o la cuenta a la suma                 *
  ********************************************************************************/
 void mpatrimonialview::nuevaresta() {
    Q3ListViewItem *it;
-   // Lo primero de todo es coger el código de cuenta.
+   // Lo primero de todo es coger el cï¿½igo de cuenta.
    QString codcuenta = codigocta1->text();
    QString masapatrimonial = mpatrimonial->text();
 
@@ -234,7 +235,7 @@ void mpatrimonialview::accept() {
    Q3ListViewItem *item;
    QString query;
 
-   // Si idmpatrimonial == NULL implica que es una inserción y no una modificacion
+   // Si idmpatrimonial == NULL implica que es una inserciï¿½ y no una modificacion
    if (idmpatrimonial == "") {
       conexionbase->begin();
       query.sprintf("INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')");

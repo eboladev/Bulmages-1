@@ -41,9 +41,9 @@ using namespace std;
 El constructor llama al cuadro de dialogo para seleccionar parametros adecuados para rellenar el modelo.
 Realiza una consulta para obtener las cuentas bancarias.
 */
-Mod300ps::Mod300ps(QWidget *parent) :mod300dlg(parent)
+Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent)
 {
-
+  setupUi(this);
   QString query="select descripcion,bancoent_cuenta,codigo from cuenta where codigo like '572%%' and codigo>572";
 
   postgresiface2 *metabase = new postgresiface2();

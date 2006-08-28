@@ -44,7 +44,8 @@
 
 
 
-BalancePrintView::BalancePrintView(empresa *emp) {
+BalancePrintView::BalancePrintView(empresa *emp) : QDialog(0) {
+    setupUi(this);
     empresaactual=emp;
     conexionbase = emp->bdempresa();
     m_codigoinicial->setempresa(emp);

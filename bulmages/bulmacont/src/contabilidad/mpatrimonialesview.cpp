@@ -1,8 +1,8 @@
 /***************************************************************************
                           mpatrimonialesview.cpp  -  description
                              -------------------
-    begin                : mié sep 10 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : miï¿½sep 10 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -18,7 +18,8 @@
 #include "mpatrimonialview.h"
 #include <q3table.h>
 
-mpatrimonialesview::mpatrimonialesview(QWidget *parent, const char *name, int fl ) : mpatrimonialesdlg(parent,name,fl) {
+mpatrimonialesview::mpatrimonialesview(QWidget *parent, const char *name, int fl ) : QDialog (parent,name,fl) {
+   setupUi(this);
    modo = 0;
 }
 
@@ -27,8 +28,8 @@ mpatrimonialesview::~mpatrimonialesview(){
 
 
 /*************************************************************
- * Esta función se encarga de hacer las inicializaciones de todo el formulario.
- * Se llama así y no desde el constructor pq así la podemos llamar desde dentro
+ * Esta funciï¿½ se encarga de hacer las inicializaciones de todo el formulario.
+ * Se llama asï¿½y no desde el constructor pq asï¿½la podemos llamar desde dentro
  * de la misma clase, etc etc etc
  *************************************************************/
 int mpatrimonialesview::inicializa(postgresiface2 *conn ) {
@@ -36,7 +37,7 @@ int mpatrimonialesview::inicializa(postgresiface2 *conn ) {
 
    conexionbase = conn;
    conexionbase->begin();
-   // Vamos a cargar el número de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
+   // Vamos a cargar el nmero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
    conexionbase->begin();
    QString query = "SELECT valor FROM configuracion WHERE nombre= 'CodCuenta'";
    cursoraux1 = conexionbase->cargacursor(query,"codcuenta");

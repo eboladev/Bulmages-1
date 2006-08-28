@@ -15,7 +15,7 @@
 #ifndef BModelo347_H
 #define BModelo347_H
 
-#include "uimodelo347.h"
+#include "ui_modelo347base.h"
 #include "funcaux.h"
 #include "postgresiface2.h"
 #include <qlineedit.h>
@@ -24,7 +24,7 @@
 
 /** @author Josep Burcion */
 
-class BModelo347 : public UImodelo347
+class BModelo347 : public QDialog, public Ui_Modelo347Base
 {
 
 public:

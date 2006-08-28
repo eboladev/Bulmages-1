@@ -15,8 +15,9 @@
 #include "bmodelo347.h"
 #include <errno.h>
 
-BModelo347::BModelo347(postgresiface2 *DBconnect,QString ejerActual, QWidget * parent, const char * name, Qt::WFlags f) : UImodelo347(parent,name,f) 
+BModelo347::BModelo347(postgresiface2 *DBconnect,QString ejerActual, QWidget * parent, const char * name, Qt::WFlags f) : QDialog(parent,name,f) 
 {
+  setupUi(this);
   importe->setText("3005.06");
   finicial->setText(normalizafecha("01/01/"+ejerActual).toString("dd/MM/yyyy"));
   ffinal->setText(normalizafecha("31/12/"+ejerActual).toString("dd/MM/yyyy"));

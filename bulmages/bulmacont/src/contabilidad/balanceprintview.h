@@ -19,7 +19,7 @@
 #define BALANCEPRINTVIEW_H
 
 #include <errno.h>
-#include "balanceprintdlg.h"
+#include "ui_balanceprintbase.h"
 #include "postgresiface2.h"
 
 
@@ -34,7 +34,7 @@
   * Clase que permite introducir los datos necesarios para la generación del balance (Fechas y rangos) y que se encarga de generar el balance en los formatos de impresión indicados.
   */
 
-class BalancePrintView : public BalancePrintDlg  {
+class BalancePrintView : public QDialog, public Ui_BalancePrintBase {
    Q_OBJECT
 private:
     /// La base de datos con la que la clase esta trabajando   

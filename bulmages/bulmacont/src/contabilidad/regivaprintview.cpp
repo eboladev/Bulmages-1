@@ -27,11 +27,11 @@
 #include <qlocale.h>
 #include "fixed.h"
 
-using namespace std;
 
 extern Mod300ps *modelo;
 
-regivaprintview::regivaprintview(empresa *emp, QWidget *parent, const char *name ) : regivaprintdlg(parent,name) {
+regivaprintview::regivaprintview(empresa *emp, QWidget *parent, const char *name ) : QDialog(parent,name) {
+    setupUi(this);
     fichero = NULL;
     empresaactual=emp;
     conexionbase=emp->bdempresa();

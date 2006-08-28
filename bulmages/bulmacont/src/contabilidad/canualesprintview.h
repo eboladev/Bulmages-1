@@ -19,18 +19,19 @@
 
 #include <qwidget.h>
 #include "ui_canualesprintbase.h"
-#ifndef WIN32
-#include <unistd.h>
-#include <sys/wait.h>
-#endif
+
 #include <errno.h>
 #include <sys/types.h>
 
 #include <QDomNode>
 #include <QDomDocument>
 
+#ifndef WIN32
+#include <unistd.h>
+#include <sys/wait.h>
+#endif
 
-/** *@author Tomeu Borrás Riera */
+/** *@author Tomeu Borras Riera */
 
 class empresa;
 

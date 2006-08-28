@@ -61,18 +61,15 @@ FORMS += bulmacontbase.ui \
 	 selectcanalbase.ui \
 	 selectccostebase.ui \
 	 propiedadesempresabase.ui \
-	 canualesprintbase.ui
+	 canualesprintbase.ui \
+	 regivaprintbase.ui \
+	 balanceprintbase.ui \
+	 mpatrimonialesbase.ui \
+	 mpatrimonialbase.ui \
+	 modelo347base.ui \
+	 modelo300base.ui
 
-
-FORMS3 += uiselector.ui \
-         regivaprintdlg.ui \
-         compbalancedlg.ui \
-         mpatrimonialdlg.ui \
-         mpatrimonialesdlg.ui \
-         balanceprintdlg.ui \
-         uimodelo347.ui \
-         uivisorempresas.ui \
-         mod300dlg.ui 
+#FORMS3 +=  mod300dlg.ui 
 
 TRANSLATIONS += bulmages_es.ts \
                 bulmages_ca.ts \
@@ -184,7 +181,6 @@ HEADERS += splashscreen.h \
            aplinteligentesview.h \
            asientosview.h \
            regivaprintview.h \
-           compbalanceview.h \
            mpatrimonialview.h \
            mpatrimonialesview.h \
            balanceprintview.h \
@@ -242,7 +238,6 @@ SOURCES += main.cpp \
            aplinteligentesview.cpp \
            asientosview.cpp \
            regivaprintview.cpp \
-           compbalanceview.cpp \
            mpatrimonialview.cpp \
            mpatrimonialesview.cpp \
            balanceprintview.cpp \
@@ -356,5 +351,5 @@ TARGET = ../../../../installbulmages/bulmacont
 #The following line was inserted by qt3to4
 QT += xml  
 #The following line was inserted by qt3to4
-CONFIG += uic3
+#CONFIG += uic3
 

@@ -2,9 +2,9 @@
                           regivaprintview.h  -  description
                              -------------------
     begin                : dom jul 13 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Terés - amirabet@biada.org
+    modificat per        : (C) 2003 Antoni Mirabete i Terï¿½ - amirabet@biada.org
  ***************************************************************************/
 
 /***************************************************************************
@@ -21,7 +21,7 @@
 
 #include <errno.h>
 #include <qwidget.h>
-#include <regivaprintdlg.h>
+#include "ui_regivaprintbase.h"
 #include <qlineedit.h>
 #include <qradiobutton.h>
 
@@ -30,10 +30,10 @@
 class empresa;
 
 /**
-  * Trata el formulario de impresión del registro de IVA
+  * Trata el formulario de impresiï¿½ del registro de IVA
   * y genera los listados pertinentes
   */
-class regivaprintview : public regivaprintdlg  {
+class regivaprintview : public QDialog, public Ui_RegIvaPrintBase  {
     Q_OBJECT
 public:
     char *fichero;

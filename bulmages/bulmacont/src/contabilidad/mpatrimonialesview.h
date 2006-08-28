@@ -1,8 +1,8 @@
 /***************************************************************************
                           mpatrimonialesview.h  -  description
                              -------------------
-    begin                : mié sep 10 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : miï¿½sep 10 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 
@@ -18,18 +18,17 @@
 #ifndef MPATRIMONIALESVIEW_H
 #define MPATRIMONIALESVIEW_H
 
-#include <qwidget.h>
-#include <mpatrimonialesdlg.h>
-
+#include <QWidget>
+#include "ui_mpatrimonialesbase.h"
 #include "postgresiface2.h"
 
-/***@author Tomeu Borrás Riera */
+/***@author Tomeu Borras Riera */
 
-class mpatrimonialesview : public mpatrimonialesdlg  {
+class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase  {
    Q_OBJECT
 public:
    postgresiface2 *conexionbase; // Esta variable indica cual es la base de datos con la que se trabaja.
-   int numdigitos;               // Esta variable indica el número de dítigos que tienen las cuentas de nivel más bajo.
+   int numdigitos;               // Esta variable indica el nmero de digitos que tienen las cuentas de nivel mas bajo.
    int modo;                     // Esta variable indica si se abre para busqueda o para edicion.
    QString nommasa;               // Esta variable indica el nombre de la masa, luego se usara
    QString idmasa;                // Esta variable indica el identificador de masa.
@@ -49,7 +48,6 @@ public slots:
    virtual void nuevamasa();
    virtual void borrarmasa();
    virtual void editarmasa();
-
 };
 
 #endif

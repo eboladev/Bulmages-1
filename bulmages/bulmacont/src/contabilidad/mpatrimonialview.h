@@ -1,8 +1,8 @@
 /***************************************************************************
                           mpatrimonialview.h  -  description
                              -------------------
-    begin                : mié sep 10 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
+    begin                : miï¿½sep 10 2003
+    copyright            : (C) 2003 by Tomeu Borrï¿½ Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************
@@ -18,25 +18,24 @@
 #define MPATRIMONIALVIEW_H
 
 #include <qwidget.h>
-#include <mpatrimonialdlg.h>
+#include "ui_mpatrimonialbase.h"
 
 #include "postgresiface2.h"
 
-/***@author Tomeu Borrás Riera */
+/***@author Tomeu Borras Riera */
 
-class mpatrimonialview : public mpatrimonialdlg  {
+class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase  {
    Q_OBJECT
 public:
    postgresiface2 *conexionbase;   // La base de la empresa con la que trabajamos
    QString idmpatrimonial;          // El identificador de masa patrimonial. (Lo guardamos en forma de string pq es una prueba en la que no hay que hacer convesiones de tipos)
 public: 
-	mpatrimonialview(QWidget *parent=0, const char *name=0);
-	~mpatrimonialview();
+   mpatrimonialview(QWidget *parent=0, const char *name=0);
+   ~mpatrimonialview();
    int inicializa(postgresiface2 *);
    void inicializa1(QString);
    QString getidmasa()  {return idmpatrimonial;}
    QString getnommasa();
-
 public slots:
    virtual void nuevasuma();
    virtual void nuevaresta();

@@ -1,0 +1,226 @@
+<ui version="4.0" >
+ <author>Josep Burcion</author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>Modelo347Base</class>
+ <widget class="QDialog" name="Modelo347Base" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>621</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Listado para el modelo 347</string>
+  </property>
+  <property name="sizeGripEnabled" >
+   <bool>false</bool>
+  </property>
+  <widget class="QLabel" name="textLabel1" >
+   <property name="geometry" >
+    <rect>
+     <x>210</x>
+     <y>30</y>
+     <width>90</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Fecha Final</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="textLabel3" >
+   <property name="geometry" >
+    <rect>
+     <x>440</x>
+     <y>30</y>
+     <width>60</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Importe</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="finicial" >
+   <property name="geometry" >
+    <rect>
+     <x>300</x>
+     <y>11</y>
+     <width>100</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="textLabel1_2" >
+   <property name="geometry" >
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>90</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Fecha Inicial</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ffinal" >
+   <property name="geometry" >
+    <rect>
+     <x>300</x>
+     <y>30</y>
+     <width>100</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="importe" >
+   <property name="geometry" >
+    <rect>
+     <x>500</x>
+     <y>30</y>
+     <width>104</width>
+     <height>18</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="TabWidget1" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>600</width>
+     <height>530</height>
+    </rect>
+   </property>
+   <widget class="QWidget" name="tab" >
+    <attribute name="title" >
+     <string>Ventas</string>
+    </attribute>
+    <widget class="Q3Table" name="tablaventas" >
+     <property name="geometry" >
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>580</width>
+       <height>480</height>
+      </rect>
+     </property>
+     <property name="numRows" >
+      <number>0</number>
+     </property>
+     <property name="numCols" >
+      <number>5</number>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+     <property name="sorting" >
+      <bool>false</bool>
+     </property>
+     <property name="selectionMode" >
+      <enum>Q3Table::SingleRow</enum>
+     </property>
+     <property name="focusStyle" >
+      <enum>Q3Table::SpreadSheet</enum>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab" >
+    <attribute name="title" >
+     <string>Compras</string>
+    </attribute>
+    <widget class="Q3Table" name="tablacompras" >
+     <property name="geometry" >
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>580</width>
+       <height>480</height>
+      </rect>
+     </property>
+     <property name="numRows" >
+      <number>0</number>
+     </property>
+     <property name="numCols" >
+      <number>5</number>
+     </property>
+     <property name="readOnly" >
+      <bool>true</bool>
+     </property>
+     <property name="sorting" >
+      <bool>false</bool>
+     </property>
+     <property name="selectionMode" >
+      <enum>Q3Table::SingleRow</enum>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="m_boton_recalcular" >
+   <property name="geometry" >
+    <rect>
+     <x>60</x>
+     <y>10</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string comment="Recalcular" />
+   </property>
+   <property name="icon" >
+    <iconset>image0</iconset>
+   </property>
+   <property name="flat" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="m_boton_imprimir" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string comment="Imprimir/Salvar" />
+   </property>
+   <property name="icon" >
+    <iconset>image1</iconset>
+   </property>
+   <property name="default" >
+    <bool>true</bool>
+   </property>
+   <property name="flat" >
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Table</class>
+   <extends></extends>
+   <header>q3table.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>finicial</tabstop>
+  <tabstop>ffinal</tabstop>
+  <tabstop>importe</tabstop>
+  <tabstop>TabWidget1</tabstop>
+  <tabstop>tablaventas</tabstop>
+  <tabstop>tablacompras</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
