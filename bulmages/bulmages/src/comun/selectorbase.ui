@@ -77,7 +77,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos48x48/images/pendientes/bulmafact.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/pendientes/bulmafact.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -122,7 +122,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos48x48/images/pendientes/bulmatpv.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/pendientes/bulmatpv.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -152,7 +152,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Genericos48x48/images/pendientes/bulmacont.png</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/Genericos48x48/images/pendientes/bulmacont.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -571,7 +571,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_empresa.xpm</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_empresa.xpm</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -590,7 +590,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_configuracion.xpm</iconset>
+         <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_configuracion.xpm</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -655,7 +655,7 @@
   <tabstop>nombreempresa</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../bulmages-recursos-graficos.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

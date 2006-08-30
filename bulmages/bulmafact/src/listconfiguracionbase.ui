@@ -16,7 +16,7 @@
    <string>Configuraciones</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -79,7 +79,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages-recursos-graficos.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

@@ -16,7 +16,7 @@
    <string>Impresión de Balances</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_estadisticas.xpm</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_estadisticas.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -198,7 +198,7 @@
   <tabstop>pushButton1_2</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../bulmages-recursos-graficos.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

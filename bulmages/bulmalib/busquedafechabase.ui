@@ -74,7 +74,7 @@
       <string/>
      </property>
      <property name="icon" >
-      <iconset resource="../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_diario.xpm</iconset>
+      <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_diario.xpm</iconset>
      </property>
     </widget>
    </item>
@@ -83,7 +83,7 @@
  <layoutdefault spacing="0" margin="0" />
  <pixmapfunction></pixmapfunction>
  <resources>
-  <include location="../bulmages-recursos-graficos.qrc" />
+  <include location="../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

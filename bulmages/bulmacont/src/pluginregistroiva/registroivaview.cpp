@@ -43,7 +43,8 @@ using namespace std;
 #include "funcaux.h"
 #define coma "'"
 
-RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent, const char *name) : registroivadlg(parent, name, Qt::WDestructiveClose) , RegistroIva(comp) ,dialogChanges(this) {
+RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : QDialog(parent, Qt::WDestructiveClose) , RegistroIva(comp) ,dialogChanges(this) {
+    setupUi(this);
     _depura("Inicializacion de RegistroIvaView\n",0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("RegistroIvaView_RegistroIvaView", this);
@@ -97,8 +98,6 @@ void RegistroIvaView::cargarComboFPago(QString idfpago) {
 }// end cargarComboFPago
 
 
-
-
 void RegistroIvaView::closeEvent( QCloseEvent *e) {
     _depura("closeEvent",0);
     if (dialogChanges_hayCambios())  {
@@ -112,21 +111,16 @@ void RegistroIvaView::closeEvent( QCloseEvent *e) {
 }
 
 
-RegistroIvaView::~RegistroIvaView() {}// end ~RegistroIvaView
+RegistroIvaView::~RegistroIvaView() {}
 
 
-
-
-void RegistroIvaView::s_removeRegistroIvaView() {
-    _depura("s_removeRegistroIvaView\n",0);
+void RegistroIvaView::on_mui_borrar_clicked() {
+    _depura("RegistroIvaView::on_mui_borrar_clicked",0);
     if (QMessageBox::warning( this, "BulmaCont - Registro Factura", "Desea borrar este registro", "Si", "No") == 0) {
         borraRegistroIva();
     }// end if
-}// end boton_borrar
-
-
-
-
+    _depura("END RegistroIvaView::on_mui_borrar_clicked",0);
+}
 
 
 int RegistroIvaView::chargeRegistroIvaView(QString id) {
@@ -158,10 +152,6 @@ int RegistroIvaView::guardaRegistroIva() {
     _depura("END RegistroIvaView::guardaRegistroIva",0);
     return error;
 }
-
-
-
-
 
 /**
   * \brief SLOT que se activa al pulsar sobre el botÃ³n de generar previsiones.

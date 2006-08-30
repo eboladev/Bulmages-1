@@ -10,16 +10,18 @@ QT +=  qt3support xml
 TEMPLATE = lib
 
 CONFIG += plugin \
-warn_on
+	  release
 
 TARGET = ../../../installbulmages/plugins/registroiva
+
+# RESOURCES = ../../../bulmagesp.qrc
 
 VERSION = 1.0.0
 
 DESTDIR = .
 
-LIBS += -lpq \
--rdynamic
+LIBS += -rdynamic \
+        -lbulmalib
 
 INCLUDEPATH = ../../../bulmalib \
 ../contabilidad \
@@ -33,11 +35,10 @@ INCLUDEPATH = ../../../bulmalib \
 .ui \
 ../.ui
 
-#The following line was changed from FORMS to FORMS3 by qt3to4
-FORMS += registroivadlg.ui \
-	 cobropagodlg.ui\
-	 listregistroivadlg.ui
-	 
+FORMS += registroivabase.ui \
+	 listregistroivabase.ui \
+	 cobropagobase.ui
+
 HEADERS += registroiva.h \
 	   iva.h \
 	   listiva.h \
@@ -90,5 +91,5 @@ unix{
 
 
 #The following line was inserted by qt3to4
-CONFIG += uic3
+#CONFIG += uic3
 

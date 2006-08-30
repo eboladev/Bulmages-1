@@ -16,7 +16,7 @@
    <string>Provincias</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -145,7 +145,7 @@
  <layoutdefault spacing="2" margin="6" />
  <pixmapfunction></pixmapfunction>
  <resources>
-  <include location="../../bulmages-recursos-graficos.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

@@ -16,7 +16,7 @@
    <string>Zonas Comerciales</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -79,8 +79,8 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../bulmages-recursos-graficos.qrc" />
-  <include location="../../../bulmages-recursos-graficos.qrc" />
+  <include location="../../bulmages.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

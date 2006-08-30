@@ -6,6 +6,7 @@
 #include "asiento1.h"
 #include "listlinasiento1view.h"
 #include "listregistroivaview.h"
+#include "registroivaview.h"
 
 #include <stdio.h>
 #include <q3popupmenu.h>
@@ -21,6 +22,20 @@
 #include <qapplication.h>
 #include <qobject.h>
 #include <q3dockwindow.h>
+
+int entryPoint(Bulmages01 *bges) {
+    _depura("Punto de Entrada del plugin registroIVA", 0);
+/*
+    mypluginbf *plug= new mypluginbf( );
+    plug->inicializa(bges);
+*/
+	/// Iniciamos las libreriasAboutView
+//	Q_CLEANUP_RESOURCE(bulmages);
+//	Q_INIT_RESOURCE(bulmages);
+
+    _depura("END Punto de Entrada del plugin registroIVA", 0);
+    return 0;
+}
 
 
 /**
@@ -46,7 +61,7 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
     cursor2 *cursborr= companyact->cargacursor(SQLQuery);
     while (!cursborr->eof()) {
         int idborrador = cursborr->valor("contra").toInt();
-        RegistroIvaView * reg = new RegistroIvaView(companyact,0,0);
+        RegistroIvaView * reg = new RegistroIvaView(companyact,0);
         reg->inicializa1( idborrador);
         reg->exec();
         delete reg;
@@ -58,10 +73,12 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
 
 
 
+
 int empresa_cobPag(empresa *emp) {
     cobropagoview *adoc= new cobropagoview(emp,0,"");
     adoc->exec();
     delete adoc;
+    return 0;
 }
 
 int empresa_registroiva(empresa *emp) {
@@ -69,18 +86,19 @@ int empresa_registroiva(empresa *emp) {
     perd->inicializa();
     perd->exec();
     delete perd;
+    return 0;
 }
 
 
 int ListLinAsiento1View_boton_iva(ListLinAsiento1View *as) {
-    as->guardaListLinAsiento1();
-    LinAsiento1 *linea = as->lineaact();
-    if (linea->DBvalue("idborrador") != "") {
-        int idborrador = linea->DBvalue("idborrador").toInt();
-        RegistroIvaView *nuevae=new RegistroIvaView(as->companyact, 0,"");
+    as->guardar();
+    if (as->DBvalue("idborrador") != "") {
+        int idborrador = as->DBvalue("idborrador").toInt();
+        RegistroIvaView *nuevae=new RegistroIvaView( (empresa *) as->companyact(), 0);
         nuevae->inicializa1(idborrador);
         nuevae->exec();
         delete nuevae;
-        as->pintaListLinAsiento1();
+        as->pintar();
     }// end if
+    return 0;
 }

@@ -17,7 +17,7 @@ INCLUDEPATH += ../../bulmalib  \
 
 TARGET = ../../installbulmages/bulmages 
 
-RESOURCES += ../../bulmages-recursos-graficos.qrc
+# RESOURCES += ../../bulmages-recursos-graficos.qrc
 
 CONFIG += release \
           warn_on \

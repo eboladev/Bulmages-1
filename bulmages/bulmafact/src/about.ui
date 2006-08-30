@@ -332,7 +332,7 @@
           <string/>
          </property>
          <property name="pixmap" >
-          <pixmap resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</pixmap>
+          <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</pixmap>
          </property>
         </widget>
        </item>
@@ -503,7 +503,7 @@
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <resources>
-  <include location="../../bulmages-recursos-graficos.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

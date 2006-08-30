@@ -272,7 +272,7 @@ QString query;
         query = "SELECT idborrador FROM registroiva WHERE idregistroiva = "+linea->idregistroiva();
         cur = m_companyact->cargacursor(query);
         if (linea->idregistroiva() != "") {
-            RegistroIvaView *iva = new RegistroIvaView(m_companyact, NULL, "iva");
+            RegistroIvaView *iva = new RegistroIvaView(m_companyact, 0);
             iva->inicializa1(cur->valor("idborrador").toInt());
             iva->exec();
             delete iva;
@@ -495,8 +495,9 @@ linprevcobro *ListLinPrevCobroView::lineaat(int row) {
 }// end lineaat
 
 QString ListLinPrevCobroView::searchCuenta() {
+    _depura("ListLinPrevCobroView::searchCuenta", 2, "Funcion no implementada");
+/*
     QString idcuenta;
-    fprintf(stderr,"Busqueda de una cuenta\n");
     listcuentasview1 *listcuentas = new listcuentasview1(m_companyact);
     listcuentas->setModoLista();
     listcuentas->inicializa();
@@ -504,7 +505,10 @@ QString ListLinPrevCobroView::searchCuenta() {
     idcuenta = listcuentas->idcuenta();
     delete listcuentas;
     return idcuenta;
-}// end searchArticle
+*/
+    _depura("END ListLinPrevCobroView::searchCuenta", 2, "Funcion no implementada");
+    return 0;
+}
 
 
 /**

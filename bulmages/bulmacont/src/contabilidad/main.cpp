@@ -127,8 +127,20 @@ int main(int argc, char *argv[]) {
         QString confesp = CONFGLOBAL+bges->empresaactual()->nameDB()+".conf";
         confpr->leeconfig(confesp);
 
+
+
         /// cargamos las librerias de g_plugins
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
+
+	/// Iniciamos las el sistema de recursos
+
+//	Q_CLEANUP_RESOURCE(bulmages);
+//	Q_INIT_RESOURCE(bulmages);
+
+        /// Cargamos el SplashScreen de BulmaCont
+//        splashScr = new Splash();
+//        delete splashScr;
+
 
         g_plugins->lanza("entryPoint", bges);
 

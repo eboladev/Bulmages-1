@@ -52,7 +52,7 @@
       <string/>
      </property>
      <property name="icon" >
-      <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</iconset>
+      <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</iconset>
      </property>
     </widget>
    </item>
@@ -76,7 +76,7 @@
  <layoutdefault spacing="0" margin="0" />
  <pixmapfunction></pixmapfunction>
  <resources>
-  <include location="../../../bulmages-recursos-graficos.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

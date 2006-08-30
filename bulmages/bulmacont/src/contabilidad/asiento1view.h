@@ -132,7 +132,6 @@ public:
         _depura("Asiento1View::pintaasiento ", 0);
         cargar(v);
         _depura("END Asiento1View::pintaasiento ", 0);
-
     };
 
     void muestraasiento(QString v) {
@@ -183,7 +182,9 @@ public slots:
       * La clase ivaview hace una inserción o una modificación segun exista o no una entrada de iva para dicho borrador.
       */
     virtual void on_mui_iva_clicked() {
+	_depura("on_mui_iva_clicked", 0);
         mui_list->boton_iva();
+	_depura("END on_mui_iva_clicked", 0);
     };
 
     virtual void s_lineaValueChanged() {

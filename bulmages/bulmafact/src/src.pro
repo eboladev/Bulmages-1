@@ -10,7 +10,8 @@ TARGET = ../../installbulmages/bulmafact
 CONFIG += release
 LIBS += -rdynamic
 TEMPLATE = app
-RESOURCES += ../../bulmages-recursos-graficos.qrc
+
+# RESOURCES += ../../bulmages-recursos-graficos.qrc
 
 FORMS += about.ui \
          pagobase.ui \

@@ -65,11 +65,12 @@
 #define RES_BASEREPERCUTIDO 2
 
 
-ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent, const char *name ) : ListRegistroIvaDlg(parent,name) {
+ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent, const char *name ) : QDialog(parent,name) {
+    setupUi(this);
     m_companyact = emp;
     finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
-}// end ListRegistroIvaView
+}
 
 
 ListRegistroIvaView::~ListRegistroIvaView() {}// end ~lisivaview
@@ -87,7 +88,7 @@ void ListRegistroIvaView::doble_click_soportado(int a, int, int, const QPoint &p
     m_companyact->intapuntsempresa()->setFocus();
     done(1);
     punto.isNull();
-}// end doble_click_soportado
+}
 
 
 /**
@@ -101,7 +102,7 @@ void ListRegistroIvaView::doble_click_repercutido(int a, int , int , const QPoin
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
     done(1);
-}// end doble_click_repercutido
+}
 
 
 void ListRegistroIvaView::boton_print() {
@@ -109,12 +110,12 @@ void ListRegistroIvaView::boton_print() {
     print->inicializa1(finicial->text(), ffinal->text());
     print->exec();
     delete print;
-}// end boton_imprimir
+}
 
 
 void ListRegistroIvaView::boton_reload() {
     inicializa();
-}// end boton_reload
+}
 
 
 /**
@@ -300,7 +301,7 @@ void ListRegistroIvaView::inicializa() {
         cursorreg->siguienteregistro();
     }// end While
     delete cursorreg;
-}// end inicializa
+}
 
 
 
@@ -328,7 +329,7 @@ void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
     case 101:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
             nuevae->inicializa1(idborrador);
             nuevae->exec();
             delete nuevae;
@@ -337,9 +338,9 @@ void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
     case 103:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
             nuevae->inicializa1(idborrador);
-            nuevae->boton_borrar();
+            nuevae->on_mui_borrar_clicked();
             delete nuevae;
 	    boton_reload();
         }// end if
@@ -348,8 +349,7 @@ void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
 
     }// end switch
     delete popup;
-
-}// end contextmenu
+}
 
 
 void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
@@ -373,7 +373,7 @@ void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
     case 101:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0);
             nuevae->inicializa1(idborrador);
             nuevae->exec();
             delete nuevae;
@@ -382,22 +382,22 @@ void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
     case 103:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0,"");
+            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0);
             nuevae->inicializa1(idborrador);
-            nuevae->boton_borrar();
+            nuevae->on_mui_borrar_clicked();
             delete nuevae;
 	    boton_reload();
         }// end if
         break;
     }// end switch
     delete popup;
-}// end contextmenu
+}
 
 /** \brief ESta funcion responde a la pulsaci� del bot� de busqueda de fecha inicial
 **/
 void ListRegistroIvaView::boton_finicial() {
     finicial->setText("+");
-}// end boton_finicial
+}
 
 
 void ListRegistroIvaView::finicial_textChanged( const QString & texto ) {
@@ -412,14 +412,14 @@ void ListRegistroIvaView::finicial_textChanged( const QString & texto ) {
     }// end if
     if (texto=="*")
         finicial->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged
+}
 
 
 /** Esta funci� responde a la pulsaci� del boton de busqueda de fecha final
 **/
 void ListRegistroIvaView::boton_ffinal() {
     ffinal->setText("+");
-}// end boton_ffinal
+}
 
 
 void ListRegistroIvaView::ffinal_textChanged( const QString & texto ) {
@@ -434,15 +434,15 @@ void ListRegistroIvaView::ffinal_textChanged( const QString & texto ) {
     }// end if
     if (texto=="*")
         ffinal->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}//fin fechaasiento1_textChanged
+}
 
 
 void ListRegistroIvaView::finicial_lostFocus() {
     finicial->setText(normalizafecha(finicial->text()).toString("dd/MM/yyyy"));
-}// end return_fechainicial
+}
 
 void ListRegistroIvaView::ffinal_lostFocus() {
     ffinal->setText(normalizafecha(ffinal->text()).toString("dd/MM/yyyy"));
-}// end return_fechainicial
+}
 
 

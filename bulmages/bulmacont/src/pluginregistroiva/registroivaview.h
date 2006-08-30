@@ -22,7 +22,7 @@
 
 // PRESUPUESTOS.
 
-#include "registroivadlg.h"
+#include "ui_registroivabase.h"
 #include "registroiva.h"
 #include "postgresiface2.h"
 
@@ -39,14 +39,14 @@
 /** @author Tomeu Borras Riera */
 class empresa;
 
-class RegistroIvaView : public registroivadlg , public RegistroIva, public dialogChanges  {
+class RegistroIvaView : public QDialog, public Ui_RegistroIvaBase , public RegistroIva, public dialogChanges  {
     Q_OBJECT
 private:
     cursor2 *m_cursorcombo;
     /// Cursor para las formas de pago.
     cursor2 *m_cursorFPago;
 public:
-    RegistroIvaView(empresa *, QWidget *, const char *);
+    RegistroIvaView(empresa *, QWidget *);
     ~RegistroIvaView();
     void manageArticle(int);
 
@@ -58,13 +58,13 @@ public:
         m_contrapartida->setidcuenta(val);
     };
     virtual void pintabaseimp(const QString &val) {
-        Fixed total(val.toAscii());
+        Fixed total(val);
         total = total + Fixed(iva());
         m_baseImponible->setText(val);
         m_totalFactura->setText(total.toQString());
     };
     virtual void pintaiva(const QString &val) {
-        Fixed total(val.toAscii());
+        Fixed total(val);
         total = total + Fixed(baseimp());
         m_totalFactura->setText(total.toQString());
         m_importeiva->setText(val);
@@ -126,7 +126,7 @@ public slots://
         guardaRegistroIva();
     };
     virtual int chargeRegistroIvaView(QString id);
-    virtual void s_removeRegistroIvaView();
+    virtual void on_mui_borrar_clicked();
     virtual void s_removeRegistroIvaViewLine() {
         m_listiva->borraIvaAct();
     };

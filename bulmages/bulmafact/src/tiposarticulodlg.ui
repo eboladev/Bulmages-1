@@ -16,7 +16,7 @@
    <string>Tipos de articulo</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -60,7 +60,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -82,7 +82,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -104,7 +104,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -170,7 +170,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
        </property>
        <property name="iconSize" >
         <size>
@@ -296,7 +296,7 @@
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <resources>
-  <include location="../../bulmages-recursos-graficos.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

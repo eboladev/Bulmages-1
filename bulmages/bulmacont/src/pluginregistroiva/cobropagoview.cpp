@@ -63,7 +63,8 @@ CREATE TABLE prevcobro (
 /**
   * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
   */
-cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : cobropagodlg(parent, name) {
+cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : QDialog(parent, name) {
+    setupUi(this);
     conexionbase = emp->bdempresa();
     empresaactual = emp;
 

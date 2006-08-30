@@ -83,7 +83,7 @@ Fixed ListIva::calculabase() {
     Iva *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        base = base + Fixed(linea->baseiva().toAscii());
+        base = base + Fixed(linea->baseiva());
         i++;
     }// end for
     return base;
@@ -94,7 +94,7 @@ Fixed ListIva::calculaiva() {
     Iva *linea;
     uint i = 0;
     for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
-        iva = iva + Fixed(linea->ivaiva().toAscii());
+        iva = iva + Fixed(linea->ivaiva());
         i++;
     }// end for
     return iva;

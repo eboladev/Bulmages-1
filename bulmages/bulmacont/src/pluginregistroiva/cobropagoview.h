@@ -20,7 +20,7 @@
 #ifndef COBROPAGOVIEW_H
 #define COBROPAGOVIEW_H
 
-#include "cobropagodlg.h"
+#include "ui_cobropagobase.h"
 
 /**
   * @author Tomeu Borrás Riera 
@@ -31,7 +31,7 @@
 #include "empresa.h"
 class postgresiface2;
 
-class cobropagoview : public cobropagodlg {
+class cobropagoview : public QDialog, public Ui_CobroPagoBase {
     Q_OBJECT
 public:
     postgresiface2 *conexionbase;

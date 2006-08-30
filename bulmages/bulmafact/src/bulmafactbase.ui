@@ -19,7 +19,7 @@
    <string>BulmaFact - Facturacion GPL</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_bulmages.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_bulmages.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -248,7 +248,7 @@
   </widget>
   <action name="actionSalir" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Cierra el programa</string>
@@ -259,7 +259,7 @@
   </action>
   <action name="actionParametros" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
     <string>Configura &amp;BulmaFact...</string>
@@ -267,7 +267,7 @@
   </action>
   <action name="actionNuevo_Pedido_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo pe&amp;dido a proveedor...</string>
@@ -275,7 +275,7 @@
   </action>
   <action name="actionListado_Pedidos_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_pedidos_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de pedidos a proveedores</string>
@@ -283,7 +283,7 @@
   </action>
   <action name="actionNuevo_Albaran_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;albaran de proveedor...</string>
@@ -291,7 +291,7 @@
   </action>
   <action name="actionListado_Albaranes_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de albaranes de proveedores</string>
@@ -299,7 +299,7 @@
   </action>
   <action name="actionNueva_Factura_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nueva &amp;factura de proveedor...</string>
@@ -307,7 +307,7 @@
   </action>
   <action name="actionListado_Facturas_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_facturas_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Listado de facturas de proveedores</string>
@@ -315,7 +315,7 @@
   </action>
   <action name="actionNuevo_Presupuesto" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;presupuesto a cliente...</string>
@@ -326,7 +326,7 @@
   </action>
   <action name="actionListado_Presupuestos" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de presupuestos a clientes</string>
@@ -334,7 +334,7 @@
   </action>
   <action name="actionNuevo_Pedido_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo pe&amp;dido de cliente...</string>
@@ -342,7 +342,7 @@
   </action>
   <action name="actionListado_Pedidos_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de ped&amp;idos de clientes</string>
@@ -350,7 +350,7 @@
   </action>
   <action name="actionNuevo_Albaran_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;albaran a cliente...</string>
@@ -358,7 +358,7 @@
   </action>
   <action name="actionListado_Albaranes_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_albaran_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de albaranes a clientes</string>
@@ -366,7 +366,7 @@
   </action>
   <action name="actionNueva_Factura_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nueva &amp;factura a cliente...</string>
@@ -377,7 +377,7 @@
   </action>
   <action name="actionListado_Facturas_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de facturas a clientes</string>
@@ -395,7 +395,7 @@
   </action>
   <action name="actionNuevo_Articulo" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;articulo...</string>
@@ -406,7 +406,7 @@
   </action>
   <action name="actionListado_de_Articulos" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Listado de articulos</string>
@@ -419,7 +419,7 @@
   </action>
   <action name="actionNuevo_Proveedor" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_proveedores.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_proveedores.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;proveedor...</string>
@@ -427,7 +427,7 @@
   </action>
   <action name="actionListado_Proveedores" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_proveedores_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_proveedores_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Listado de proveedores</string>
@@ -435,7 +435,7 @@
   </action>
   <action name="actionNuevo_Cliente" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo &amp;cliente...</string>
@@ -446,7 +446,7 @@
   </action>
   <action name="actionListado_Clientes" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_clientes_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de cliente&amp;s</string>
@@ -482,7 +482,7 @@
   </action>
   <action name="actionListado_de_Pagos" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de pagos a proveedores</string>
@@ -490,7 +490,7 @@
   </action>
   <action name="actionNuevo_Pago" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo pa&amp;go a proveedor...</string>
@@ -498,7 +498,7 @@
   </action>
   <action name="actionNuevo_Cobro" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Nuevo co&amp;bro a cliente...</string>
@@ -506,7 +506,7 @@
   </action>
   <action name="actionListado_de_Cobros" >
    <property name="icon" >
-    <iconset resource="../../bulmages-recursos-graficos.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros_listado.48x48.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros_listado.48x48.png</iconset>
    </property>
    <property name="text" >
     <string>Listado de cobros a clientes</string>
@@ -552,7 +552,7 @@
  </widget>
  <pixmapfunction></pixmapfunction>
  <resources>
-  <include location="../../bulmages-recursos-graficos.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>

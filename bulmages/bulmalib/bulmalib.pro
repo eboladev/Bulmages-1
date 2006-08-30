@@ -8,12 +8,14 @@ FORMS += logpassbase.ui \
          msgerrorbase.ui \
          busquedafechabase.ui \
          subform3base.ui 
+	 
 TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \
                 bulmalib_en.ts \
                 bulmalib_fr.ts \
                 bulmalib_de.ts \
                 bulmalib_zz.ts 
+		
 HEADERS += postgresiface2.h \
            configuracion.h \
            numerocuenta.h \
@@ -65,7 +67,7 @@ SOURCES += postgresiface2.cpp \
 	   qapplication2.cpp \
 	   ficha.cpp
 	   
-	   
+RESOURCES = ../bulmages.qrc
 QT += qt3support
 DEFINES += QT3_SUPPORT_WARNINGS
 TEMPLATE = lib

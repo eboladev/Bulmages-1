@@ -11,7 +11,7 @@ LANGUAGE = C++
 
 # TARGETDEPS += ../../../bulmalib/libbulmalib.a
 
-RESOURCES += ../../../bulmages-recursos-graficos.qrc
+# RESOURCES += ../../../bulmages-recursos-graficos.qrc
 
 
 INCLUDEPATH += ../../../bulmalib \
@@ -77,94 +77,6 @@ TRANSLATIONS += bulmages_es.ts \
                 bulmages_fr.ts \
                 bulmages_de.ts \
 		bulmages_zz.ts
-
-IMAGES += images/kate.png \
-          images/kfind.png \
-          images/clock.png \
-          images/hwinfo.png \
-          images/kdmconfig.png \
-          images/exit.png \
-          images/tux.png \
-          images/package_settings.png \
-          images/password.png \
-          images/ainteligente.xpm \
-          images/asiento.xpm \
-          images/back.png \
-          images/back.xpm \
-          images/balancetree.xpm \
-          images/balance.xpm \
-          images/bulmages.png \
-          images/bulmages.xpm \
-          images/cactivo.xpm \
-          images/canales.xpm \
-          images/cargaemp.xpm \
-          images/casacion.xpm \
-          images/ccoste.xpm \
-          images/cingresos.xpm \
-          images/cneto.xpm \
-          images/configuracion.xpm \
-          images/cpasivo.xpm \
-          images/cuentas.xpm \
-          images/diario.xpm \
-          images/empresa.xpm \
-          images/estadisticas.xpm \
-          images/filenew.xpm \
-          images/fileopen.xpm \
-          images/filesave.png \
-          images/filesave.xpm \
-          images/filter.png \
-          images/filter.xpm \
-          images/find.png \
-          images/find.xpm \
-          images/finish.png \
-          images/finish.xpm \
-          images/forward.png \
-          images/forward.xpm \
-          images/guardaemp.xpm \
-          images/help.png \
-          images/help.xpm \
-          images/igualant.xpm \
-          images/iva.xpm \
-          images/lapizp.xpm \
-          images/lapiz.xpm \
-          images/lo16-app-bulmages01.png \
-          images/lo32-app-bulmages01.png \
-          images/logofx.xpm \
-          images/mayor.xpm \
-          images/plancuentas.xpm \
-          images/print.xpm \
-          images/reload.png \
-          images/reload.xpm \
-          images/save.xpm \
-          images/start.png \
-          images/start.xpm \
-          images/usuario.xpm \
-          images/1leftarrow.png \
-          images/1rightarrow.png \
-          images/2leftarrow.png \
-          images/2rightarrow.png \
-          images/fileopen_4.png \
-          images/identity.png \
-          images/editdelete.png \
-          images/1downarrow.png \
-          images/folder_new.png \
-          images/fileprint.png \
-          images/compfile.png \
-          images/window_new.png \
-          images/edittrash.png \
-          images/package.png \
-          images/kcmkwm.png \
-          images/package_editors.png \
-          images/kmenuedit.png \
-          images/xclipboard.png \
-          images/button_ok.png \
-          images/globus.png \
-          images/kcmsystem.png \
-          images/plan.png \
-          images/pda_blue.png \
-          images/tux1.png \
-          images/filetypes.png \
-          images/edit.png 
 
 HEADERS += splashscreen.h \
            bulmages01.h \

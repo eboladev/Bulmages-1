@@ -233,27 +233,30 @@ if (tipo == "t") {
 	/// PAra saber si al final se ha hecho el asiento o no almacenamos el valor actual del asiento para ver después cual es el número de asiento y comprobar si ha cambiado o no.
     QString idasiento = empresaactual->intapuntsempresa()->idasiento();
 
-
+	QDialog *diag = new QDialog(0);
+	diag->setModal(true);
     /// Se va a generar el asiento
     int numasiento = 0;
-    aplinteligentesview *nueva=new aplinteligentesview(empresaactual, 0,"");
+    aplinteligentesview *nueva=new aplinteligentesview(empresaactual, diag);
     nueva->inicializa(numasiento);
-    nueva->muestraplantilla(idainteligente.toInt());
+    nueva->muestraplantilla(idainteligente);
     nueva->setfechaasiento(fecha);
     nueva->setvalores("$fecha$",fecha);
     nueva->setvalores("$codbanco$",codbanco);
     nueva->setvalores("$codcuenta$",codcuenta);
     nueva->setvalores("$total$",total);
     nueva->setmodo(1);
-    nueva->exec();
-    delete nueva;
+
+	diag->exec();
 
     QString idasiento1 = empresaactual->intapuntsempresa()->idasiento();
     if (idasiento1 == idasiento) {
+	delete diag;
         return 0;
     }// end if
     mdb_idasiento= idasiento1;
     guardalinprevcobro();
+    delete diag;
     return 1;
 }// end s_creaPago
 

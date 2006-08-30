@@ -33,14 +33,14 @@
 #include <qlineedit.h>
 #include <q3table.h>
 #include <q3popupmenu.h>
-#include "listregistroivadlg.h"
+#include "ui_listregistroivabase.h"
 
 #include "empresa.h"
 
 /** *@author Tomeu Borras� Riera */
 
 
-class ListRegistroIvaView : public ListRegistroIvaDlg  {
+class ListRegistroIvaView : public QDialog, public Ui_ListRegistroIvaBase  {
     Q_OBJECT
 public:
     empresa *m_companyact;

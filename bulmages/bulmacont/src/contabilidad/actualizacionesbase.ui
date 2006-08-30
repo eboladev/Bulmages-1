@@ -16,7 +16,7 @@
    <string>Ayuda</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
@@ -65,7 +65,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages-recursos-graficos.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections/>
 </ui>

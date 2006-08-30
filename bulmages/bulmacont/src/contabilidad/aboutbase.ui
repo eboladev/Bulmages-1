@@ -36,7 +36,7 @@
    <string>Acerca de Bulmages</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_bulmages.xpm</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_bulmages.xpm</iconset>
   </property>
   <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
@@ -113,7 +113,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages-recursos-graficos.qrc" >:/BulmaCont32x32/images/pendientes/i_bulmages.xpm</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_bulmages.xpm</pixmap>
        </property>
       </widget>
      </item>
@@ -596,7 +596,7 @@ Public License instead of this License.
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../../../bulmages-recursos-graficos.qrc" />
+  <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>
