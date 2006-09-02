@@ -43,7 +43,7 @@ using namespace std;
 #include "funcaux.h"
 #define coma "'"
 
-RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : QDialog(parent, Qt::WDestructiveClose) , RegistroIva(comp) ,dialogChanges(this) {
+RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(parent, Qt::WDestructiveClose) , RegistroIva(comp)  {
     setupUi(this);
     _depura("Inicializacion de RegistroIvaView\n",0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
@@ -66,9 +66,18 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : QDialog(par
     m_cursorFPago = NULL;
     cargarComboFPago("NULL");
 
+    m_companyact->meteWindow(windowTitle(), this);
+
     g_plugins->lanza("RegistroIvaView_RegistroIvaView_Post", this);
     _depura("Fin de la inicializacion de RegistroIvaView\n",0);
 }// end RegistroIvaView
+
+
+RegistroIvaView::~RegistroIvaView() {
+   _depura("RegistroIvaView::~RegistroIvaView", 0);
+   m_companyact->sacaWindow(this);
+   _depura("END RegistroIvaView::~RegistroIvaView", 0);
+}
 
 
 /**
@@ -111,7 +120,7 @@ void RegistroIvaView::closeEvent( QCloseEvent *e) {
 }
 
 
-RegistroIvaView::~RegistroIvaView() {}
+
 
 
 void RegistroIvaView::on_mui_borrar_clicked() {

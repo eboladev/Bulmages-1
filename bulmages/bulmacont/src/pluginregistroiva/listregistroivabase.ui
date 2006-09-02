@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>ListRegistroIvaBase</class>
- <widget class="QDialog" name="ListRegistroIvaBase" >
+ <widget class="QWidget" name="ListRegistroIvaBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>

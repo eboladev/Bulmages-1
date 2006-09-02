@@ -20,12 +20,10 @@
 #ifndef REGISTROIVAVIEW_H
 #define REGISTROIVAVIEW_H
 
-// PRESUPUESTOS.
-
 #include "ui_registroivabase.h"
 #include "registroiva.h"
 #include "postgresiface2.h"
-
+#include "ficha.h"
 #include "fixed.h"
 
 
@@ -39,7 +37,7 @@
 /** @author Tomeu Borras Riera */
 class empresa;
 
-class RegistroIvaView : public QDialog, public Ui_RegistroIvaBase , public RegistroIva, public dialogChanges  {
+class RegistroIvaView : public Ficha, public Ui_RegistroIvaBase , public RegistroIva  {
     Q_OBJECT
 private:
     cursor2 *m_cursorcombo;
@@ -116,7 +114,7 @@ private:
     virtual void closeEvent( QCloseEvent *);
     virtual void accept() {
         if(!guardaRegistroIva())
-            done(1);
+            close();
     };
     virtual int guardaRegistroIva();
     void cargarComboFPago(QString);

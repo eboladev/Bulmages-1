@@ -65,15 +65,22 @@
 #define RES_BASEREPERCUTIDO 2
 
 
-ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent, const char *name ) : QDialog(parent,name) {
+ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent, const char *name ) : QWidget(parent, Qt::WDestructiveClose) {
+    _depura("ListRegistroIvaView::ListRegistroIvaView", 0);
     setupUi(this);
     m_companyact = emp;
     finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
+    emp->meteWindow(windowTitle(), this);
+    _depura("END ListRegistroIvaView::ListRegistroIvaView", 0);
 }
 
 
-ListRegistroIvaView::~ListRegistroIvaView() {}// end ~lisivaview
+ListRegistroIvaView::~ListRegistroIvaView() {
+   _depura("ListRegistroIvaView::~ListRegistroIvaView", 0);
+   m_companyact->sacaWindow(this);
+   _depura("END ListRegistroIvaView::~ListRegistroIvaView", 0);
+}
 
 
 /**
@@ -86,7 +93,7 @@ void ListRegistroIvaView::doble_click_soportado(int a, int, int, const QPoint &p
     m_companyact->intapuntsempresa()->muestraasiento(idasiento);
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
-    done(1);
+    close();
     punto.isNull();
 }
 
@@ -101,7 +108,7 @@ void ListRegistroIvaView::doble_click_repercutido(int a, int , int , const QPoin
     m_companyact->intapuntsempresa()->muestraasiento(idasiento);
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
-    done(1);
+    close();
 }
 
 
@@ -304,9 +311,6 @@ void ListRegistroIvaView::inicializa() {
 }
 
 
-
-
-
 void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
     int idborrador =0;
@@ -324,15 +328,15 @@ void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
         m_companyact->intapuntsempresa()->muestraasiento(idasiento);
         m_companyact->intapuntsempresa()->show();
         m_companyact->intapuntsempresa()->setFocus();
-        done(1);
+        close();
         break;
     case 101:
         idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
             RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
             nuevae->inicializa1(idborrador);
-            nuevae->exec();
-            delete nuevae;
+	    m_companyact->pWorkspace()->addWindow(nuevae);
+	    nuevae->show();
         }// end if
         break;
     case 103:
@@ -368,15 +372,15 @@ void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
         m_companyact->intapuntsempresa()->muestraasiento(idasiento);
         m_companyact->intapuntsempresa()->show();
         m_companyact->intapuntsempresa()->setFocus();
-        done(1);
+        close();
         break;
     case 101:
         idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
         if (idborrador != 0) {
             RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0);
             nuevae->inicializa1(idborrador);
-            nuevae->exec();
-            delete nuevae;
+	    m_companyact->pWorkspace()->addWindow(nuevae);
+	    nuevae->show();
         }// end if
         break;
     case 103:

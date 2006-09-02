@@ -274,8 +274,8 @@ QString query;
         if (linea->idregistroiva() != "") {
             RegistroIvaView *iva = new RegistroIvaView(m_companyact, 0);
             iva->inicializa1(cur->valor("idborrador").toInt());
-            iva->exec();
-            delete iva;
+	    m_companyact->pWorkspace()->addWindow(iva);
+	    iva->show();
         }// end if
         delete cur;
         break;

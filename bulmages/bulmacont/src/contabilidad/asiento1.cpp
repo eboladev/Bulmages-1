@@ -185,8 +185,6 @@ int Asiento1::guardar() {
 
         if (estadoAsiento1() == ASCerrado)
    		 m_companyact->cierraasiento(id.toInt());
-
-
         return 0;
     } catch(...) {
         _depura("Error guardando, se cancela la operacion",1);

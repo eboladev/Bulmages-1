@@ -29,7 +29,7 @@
 #ifndef LISTREGISTROIVAVIEW_H
 #define LISTREGISTROIVAVIEW_H
 
-#include <qwidget.h>
+#include <QWidget>
 #include <qlineedit.h>
 #include <q3table.h>
 #include <q3popupmenu.h>
@@ -40,7 +40,7 @@
 /** *@author Tomeu Borras� Riera */
 
 
-class ListRegistroIvaView : public QDialog, public Ui_ListRegistroIvaBase  {
+class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase  {
     Q_OBJECT
 public:
     empresa *m_companyact;

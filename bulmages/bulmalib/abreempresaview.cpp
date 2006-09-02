@@ -225,22 +225,25 @@ void abreempresaview::guardaArchivo() {
     while (!curs->eof()) {
         db1 = new postgresiface2();
         db1->inicializa(curs->valor("datname"));
-        cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
-        if (!curs1->eof()) {
-            tipo = curs1->valor("valor");
-            nomdb = curs->valor("datname");
-        } // end if
-        delete curs1;
-        curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
-        if (!curs1->eof()) {
-            nombre = curs1->valor("valor");
-        } // end if
-        delete curs1;
-        curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
-        if (!curs1->eof()) {
-            ano = curs1->valor("valor");
-        } // end if
-        delete curs1;
+        try {
+		cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
+		if (!curs1->eof()) {
+		tipo = curs1->valor("valor");
+		nomdb = curs->valor("datname");
+		} // end if
+		delete curs1;
+		curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
+		if (!curs1->eof()) {
+		nombre = curs1->valor("valor");
+		} // end if
+		delete curs1;
+		curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
+		if (!curs1->eof()) {
+		ano = curs1->valor("valor");
+		} // end if
+		delete curs1;
+        } catch(...) {
+        }
         if (nomdb != "") {
             if (tipo == m_tipo || m_tipo == "") {
                 insertCompany(nombre, ano, nomdb, tipo);

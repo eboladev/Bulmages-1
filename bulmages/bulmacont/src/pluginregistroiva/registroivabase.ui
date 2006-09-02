@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>RegistroIvaBase</class>
- <widget class="QDialog" name="RegistroIvaBase" >
+ <widget class="QWidget" name="RegistroIvaBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -839,7 +839,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="PushButton2" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
         <string>Ca&amp;ncelar</string>
        </property>
@@ -852,7 +852,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="PushButton1" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="focusPolicy" >
         <enum>Qt::TabFocus</enum>
        </property>
@@ -875,16 +875,30 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCuenta</class>
+   <class>Q3ButtonGroup</class>
    <extends></extends>
-   <header>busquedacuenta.h</header>
-   <container>0</container>
+   <header>Qt3Support/Q3ButtonGroup</header>
+   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>ListLinPrevCobroView</class>
    <extends></extends>
    <header>listlinprevcobroview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListIvaView</class>
+   <extends></extends>
+   <header>listivaview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -896,23 +910,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>BusquedaCuenta</class>
    <extends></extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListIvaView</class>
-   <extends></extends>
-   <header>listivaview.h</header>
+   <header>busquedacuenta.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -921,8 +921,8 @@
   <tabstop>m_cif</tabstop>
   <tabstop>m_factura</tabstop>
   <tabstop>m_numorden</tabstop>
-  <tabstop>PushButton1</tabstop>
-  <tabstop>PushButton2</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />
