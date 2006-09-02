@@ -16,7 +16,7 @@ VERSION = 1.0.0
 # DESTDIR = .
 
 
-
+QMAKE_LIBDIR += ../../../installbulmages
 
 unix{
 TARGET = ../../../installbulmages/plugins/mypluginbf

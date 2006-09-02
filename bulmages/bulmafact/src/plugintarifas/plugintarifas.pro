@@ -12,6 +12,8 @@ CONFIG += release \
 LIBS +=	 -rdynamic \
 	 -lbulmalib
 
+QMAKE_LIBDIR += ../../../installbulmages
+
 VERSION = 1.0.0
 
 unix{

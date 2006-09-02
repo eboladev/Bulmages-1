@@ -15,6 +15,8 @@ LIBS +=	 -rdynamic \
 VERSION = 1.0.0
 
 
+QMAKE_LIBDIR += ../../../installbulmages
+
 
 unix{
 TARGET = ../../../installbulmages/plugins/comercialbf

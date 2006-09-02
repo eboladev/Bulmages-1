@@ -13,6 +13,8 @@ LANGUAGE = C++
 
 # RESOURCES += ../../../bulmages-recursos-graficos.qrc
 
+QMALE_LIBDIR += ../../../installbulmages
+
 
 INCLUDEPATH += ../../../bulmalib \
 images \

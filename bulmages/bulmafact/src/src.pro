@@ -11,6 +11,8 @@ CONFIG += release
 LIBS += -rdynamic
 TEMPLATE = app
 
+QMAKE_LIBDIR += ../../installbulmages
+
 # RESOURCES += ../../bulmages-recursos-graficos.qrc
 
 FORMS += about.ui \
