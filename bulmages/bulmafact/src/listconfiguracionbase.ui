@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>ListConfiguracionBase</class>
- <widget class="QDialog" name="ListConfiguracionBase" >
+ <widget class="QWidget" name="ListConfiguracionBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -81,22 +81,5 @@
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>ListConfiguracionBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>311</x>
-     <y>563</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>6</x>
-     <y>564</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

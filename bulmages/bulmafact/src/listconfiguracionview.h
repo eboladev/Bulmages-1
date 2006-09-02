@@ -27,6 +27,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
+#include "ficha.h"
 #include "postgresiface2.h"
 #include "cobro.h"
 #include "busquedacliente.h"
@@ -46,7 +47,7 @@ public:
 public slots:
     virtual void cargar() {
         _depura("ListConfiguracionSubForm::cargar\n", 0);
-        cursor2 * cur= companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
+        cursor2 *cur = companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -56,11 +57,11 @@ public slots:
 #include "ui_listconfiguracionbase.h"
 
 
-class ListConfiguracionView : public QDialog, public Ui_ListConfiguracionBase {
+class ListConfiguracionView : public Ficha, public Ui_ListConfiguracionBase {
     Q_OBJECT
 
 public:
-    company *companyact;
+    company *m_companyact;
 
 public:
     ListConfiguracionView(company *comp, QWidget *parent = 0);

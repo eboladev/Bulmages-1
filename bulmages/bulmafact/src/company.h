@@ -161,7 +161,6 @@ public:
     PedidoProveedorView *newPedidoProveedorView();
     TipoArticuloList *newTipoArticuloList(QWidget *parent = 0, bool modoConsulta = FALSE);
     familiasview *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
-
 };
 
 #endif

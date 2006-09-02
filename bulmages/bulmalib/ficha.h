@@ -48,7 +48,9 @@ public:
 public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
-     virtual void on_mui_cancelar_clicked() {close();};
+    virtual void on_mui_cancelar_clicked() {
+        close();
+    };
 };
 
 #endif

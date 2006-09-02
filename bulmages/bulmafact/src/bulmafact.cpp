@@ -43,13 +43,17 @@
 bulmafact::bulmafact(QString bd) : QMainWindow() {
     _depura("bulmafact::bulmafact\n", 0);
     setupUi(this);
-    m_company = new company();
-    m_company->init(bd);
 
     pWorkspace = new QWorkspace2(this);
 
     pWorkspace->setScrollBarsEnabled(TRUE);
+
     setCentralWidget(pWorkspace);
+    showMaximized();
+
+    m_company = new company();
+    m_company->init(bd);
+
     m_company->setWorkspace(pWorkspace);
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
@@ -62,8 +66,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
     m_company->setListVentanas(m_list);
     m_company->createMainWindows();
-
-    showMaximized();
 
     statusBar()->showMessage(tr("Listo"), 2000);
     _depura("END bulmafact::bulmafact\n", 0);

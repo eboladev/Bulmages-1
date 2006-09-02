@@ -316,7 +316,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <layout class="QHBoxLayout" >
@@ -372,10 +372,10 @@
         </attribute>
         <layout class="QHBoxLayout" >
          <property name="margin" >
-          <number>9</number>
+          <number>5</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_sobre" >
@@ -395,10 +395,10 @@
         </attribute>
         <layout class="QHBoxLayout" >
          <property name="margin" >
-          <number>9</number>
+          <number>5</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_autores" >
@@ -424,10 +424,10 @@
         </attribute>
         <layout class="QHBoxLayout" >
          <property name="margin" >
-          <number>9</number>
+          <number>5</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_soporte" >
@@ -447,10 +447,10 @@
         </attribute>
         <layout class="QHBoxLayout" >
          <property name="margin" >
-          <number>9</number>
+          <number>5</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QTextEdit" name="textEdit_licencia" >
@@ -472,7 +472,7 @@
         <number>0</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <spacer>
@@ -500,8 +500,9 @@
    </item>
   </layout>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="5" margin="5" />
  <pixmapfunction></pixmapfunction>
+ <includes/>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>

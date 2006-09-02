@@ -15,18 +15,16 @@
  ***************************************************************************/
 
 #include <qdatetime.h>
-#include "pgimportfiles.h"
-#include "funcaux.h"
 #include <qtextstream.h>
 #include <qobject.h>
 #include <qstring.h>
-#include <qdatetime.h>
 #include <stdio.h>
 #include <qstring.h>
-#include "qapplication2.h"
-
 #include <qmessagebox.h>
-#include <qobject.h>
+
+#include "qapplication2.h"
+#include "pgimportfiles.h"
+#include "funcaux.h"
 
 #define EURO  166.386
 #define S_EURO  "166.386"

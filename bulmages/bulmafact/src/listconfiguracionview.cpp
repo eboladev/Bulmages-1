@@ -42,17 +42,21 @@ using namespace std;
 
 
 ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent)
-        : QDialog(parent, Qt::WDestructiveClose) {
+        : Ficha(parent) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
-    companyact = comp;
-    mui_listado->setcompany(comp);
+    this->setAttribute(Qt::WA_DeleteOnClose);
+    m_companyact = comp;
+    mui_listado->setcompany(m_companyact);
     mui_listado->cargar();
     _depura("END ListConfiguracionView::ListConfiguracionView", 1);
 }
 
 
-ListConfiguracionView::~ListConfiguracionView() {}
+ListConfiguracionView::~ListConfiguracionView() {
+	_depura("ListConfiguracionView::~ListConfiguracionView", 0);
+	_depura("END ListConfiguracionView::~ListConfiguracionView", 0);
+}
 
 
 /// ===================================== SUBFORMULARIO ===============================================

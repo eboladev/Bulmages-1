@@ -21,7 +21,11 @@
 #include "ficha.h"
 
 
-Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {}
+Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {
+       _depura("Ficha::Ficha", 0);
+       dialogChanges_cargaInicial();
+       _depura("END Ficha::Ficha", 0);
+}
 
 
 void Ficha::on_mui_aceptar_clicked() {
@@ -37,13 +41,13 @@ void Ficha::on_mui_aceptar_clicked() {
 void Ficha::on_mui_borrar_clicked() {
     _depura("Ficha::on_mui_borrar_clicked", 0);
     int val = QMessageBox::warning(this,
-                                   tr("Borrar ")+windowTitle(),
-                                   tr("Desea eliminar la ")+windowTitle(),
+                                   tr("Borrar") + " " + windowTitle(),
+                                   tr("Desea eliminar la") + " " + windowTitle(),
                                    tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
     if (val == 0) {
         if (!borrar()) {
             dialogChanges_cargaInicial();
-            _depura(windowTitle()+" borrado satisfactoriamente.", 2);
+            _depura(windowTitle() + " " + "borrado satisfactoriamente.", 2);
             close();
         } // end if
     } // end if
@@ -54,9 +58,9 @@ void Ficha::on_mui_borrar_clicked() {
 void Ficha::closeEvent(QCloseEvent *e) {
     _depura("Ficha::closeEvent", 0);
     try {
-	if (dialogChanges_hayCambios())  {
+	if (dialogChanges_hayCambios()) {
 		int val = QMessageBox::warning(this,
-					tr("Guardar ")+windowTitle(),
+					tr("Guardar") + " " + windowTitle(),
 					tr("Desea guardar los cambios?"),
 					tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
 		if (val == 0)
@@ -64,9 +68,10 @@ void Ficha::closeEvent(QCloseEvent *e) {
 		if (val == 2)
 		e->ignore();
 	} // end if
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
 	e->ignore();
     } // end try
+    _depura("END Ficha::closeEvent", 0);
 }
 

@@ -509,9 +509,6 @@ void company::s_trabajadores() {
 }
 
 
-
-
-
 void company::s_seriesFactura() {
     _depura("company::s_seriesFactura", 0);
     ListSerieFacturaView *lser = new ListSerieFacturaView(this, 0);
@@ -542,9 +539,9 @@ ArticuloView * company::newArticuloView() {
 
 void company::s_newArticulo() {
     ArticuloView *art = newArticuloView();
+    art->setFocus();
     m_pWorkspace->addWindow(art);
     art->show();
-    art->setFocus();
 }
 
 
@@ -621,7 +618,6 @@ void company::s_newPedidoClienteView() {
 }
 
 
-
 PedidoProveedorView * company::newPedidoProveedorView() {
     /// Lanzamos los plugins necesarios.
     PedidoProveedorView *bud;
@@ -652,8 +648,9 @@ void company::s_almacenes() {
 
 void company::s_newListConfiguracionView() {
     _depura("INIT_company::s_newListConfiguracionView", 1);
-    ListConfiguracionView lser(this, 0);
-    lser.exec();
+    ListConfiguracionView *lser = new ListConfiguracionView(this, 0);
+    m_pWorkspace->addWindow(lser);
+    lser->show();
     _depura("END_company::s_newListConfiguracionView", 1);
 }
 
@@ -717,6 +714,7 @@ void company::s_newfamiliasview() {
     pag->show();
     _depura("END_company::s_newfamiliasview", 1);
 }
+
 
 void company::s_indexadorCambiaEstado() {
     m_listventanas->cambiaVisible();
