@@ -249,10 +249,8 @@ public:
     virtual void pintaRegistroIva();
     virtual int guardaRegistroIva();
     virtual void borraRegistroIva();
-    virtual void calculaypintatotales() {}
-    ;
+    virtual void calculaypintatotales() {};
     void vaciaRegistroIva();
-
     int buscaborradorservicio(int);
     int buscaborradorcliente(int);
     int buscaborradoriva(int);

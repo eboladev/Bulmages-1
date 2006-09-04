@@ -48,8 +48,6 @@ public:
     ~RegistroIvaView();
     void manageArticle(int);
 
-
-
     virtual void pintaidregistroiva(const QString &val) {}
     ;
     virtual void pintacontrapartida(const QString &val) {
@@ -111,7 +109,7 @@ virtual void pintarectificaaregistroiva(const QString &val) {}
 
 private:
     void generarPedidoCliente();
-    virtual void closeEvent( QCloseEvent *);
+//    virtual void closeEvent( QCloseEvent *);
     virtual void accept() {
         if(!guardaRegistroIva())
             close();

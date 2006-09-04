@@ -45,7 +45,7 @@ using namespace std;
 
 RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(parent, Qt::WDestructiveClose) , RegistroIva(comp)  {
     setupUi(this);
-    _depura("Inicializacion de RegistroIvaView\n",0);
+    _depura("Inicializacion de RegistroIvaView", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto
     int res = g_plugins->lanza("RegistroIvaView_RegistroIvaView", this);
     if (res != 0)
@@ -69,8 +69,8 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(paren
     m_companyact->meteWindow(windowTitle(), this);
 
     g_plugins->lanza("RegistroIvaView_RegistroIvaView_Post", this);
-    _depura("Fin de la inicializacion de RegistroIvaView\n",0);
-}// end RegistroIvaView
+    _depura("Fin de la inicializacion de RegistroIvaView", 0);
+}
 
 
 RegistroIvaView::~RegistroIvaView() {
@@ -88,6 +88,7 @@ RegistroIvaView::~RegistroIvaView() {
   Esta funciÃ³n se llama con la inicializaciÃ³n de clase y cuando se quieren cargar datos.
 */
 void RegistroIvaView::cargarComboFPago(QString idfpago) {
+    _depura("RegistroIvaView::cargarComboFPago", 0);
     if (m_cursorFPago != NULL)
         delete m_cursorFPago;
     m_cursorFPago = m_companyact->cargacursor("SELECT * FROM fpago");
@@ -104,23 +105,8 @@ void RegistroIvaView::cargarComboFPago(QString idfpago) {
     if (i1 != 0 ) {
         m_fPago->setCurrentItem(i1-1);
     }// end if
-}// end cargarComboFPago
-
-
-void RegistroIvaView::closeEvent( QCloseEvent *e) {
-    _depura("closeEvent",0);
-    if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Registro",
-                                        "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-        if (val == 0)
-            guardaRegistroIva();
-        if (val == 2)
-            e->ignore();
-    }// end if
+    _depura("RegistroIvaView::cargarComboFPago", 0);
 }
-
-
-
 
 
 void RegistroIvaView::on_mui_borrar_clicked() {
@@ -207,5 +193,5 @@ void RegistroIvaView::boton_generarPrevisiones() {
         fpcobro = fpcobro.addDays(plazoentrerecibo);
     }// end for
     m_listprevcobro->pintalistlinprevcobro();
-}// end boton_generarPrevisiones
+}
 

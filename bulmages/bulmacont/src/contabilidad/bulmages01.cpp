@@ -45,13 +45,18 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
     _depura("Bulmages01::Bulmages01",0);
     setupUi(this);
 
-    m_empresaactual = new empresa();
-    m_empresaactual->init(DB);
-
     m_pWorkspace = new QWorkspace2(this);
+
     m_pWorkspace->setScrollBarsEnabled(TRUE);
+
     setCentralWidget(m_pWorkspace);
+
+    //showMaximized();
+    show();
+
+    m_empresaactual = new empresa();
     m_empresaactual->setWorkspace(m_pWorkspace);
+    m_empresaactual->init(DB);
 
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
@@ -59,14 +64,10 @@ Bulmages01::Bulmages01(QWidget * parent, const char * name, Qt::WFlags f, QStrin
 
     /// Indicamos a listventanas cual es el workspace para que pueda operar con el
     m_list->setWorkspace(m_pWorkspace);
-
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
-
-
     m_empresaactual->setListVentanas(m_list);
-
     m_empresaactual->inicializa1();
-    showMaximized();
+
 
     setCaption(tr("BulmaCont -- ") + DBName +" --");
     initStatusBar();

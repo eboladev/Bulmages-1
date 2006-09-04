@@ -20,6 +20,7 @@
 #ifndef COBROPAGOVIEW_H
 #define COBROPAGOVIEW_H
 
+#include "ficha.h"
 #include "ui_cobropagobase.h"
 
 /**
@@ -31,14 +32,14 @@
 #include "empresa.h"
 class postgresiface2;
 
-class cobropagoview : public QDialog, public Ui_CobroPagoBase {
+class cobropagoview : public Ficha, public Ui_CobroPagoBase {
     Q_OBJECT
 public:
     postgresiface2 *conexionbase;
-    empresa *empresaactual;
+    empresa *m_companyact;
     int numdigitos;
 public:
-    cobropagoview(empresa *, QWidget *parent = 0, const char *name = 0);
+    cobropagoview(empresa *, QWidget *parent = 0);
     ~cobropagoview();
 public slots:
     virtual void s_actualizar();

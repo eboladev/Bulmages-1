@@ -63,23 +63,31 @@ CREATE TABLE prevcobro (
 /**
   * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
   */
-cobropagoview::cobropagoview(empresa * emp, QWidget *parent, const char *name) : QDialog(parent, name) {
+cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt::WDestructiveClose) {
+    _depura("cobropagoview::cobropagoview", 0);
     setupUi(this);
     conexionbase = emp->bdempresa();
-    empresaactual = emp;
+    m_companyact = emp;
 
     numdigitos = emp->numdigitosempresa();
-    m_listprevcobro->setcompany(empresaactual);
+    m_listprevcobro->setcompany(m_companyact);
 
     m_listprevcobro->chargeBudgetLines();
     m_listprevcobro->pintalistlinprevcobro();
 
     m_cuenta->setempresa(emp);
     s_recalculaSaldo();
-}// end cobropagoview
+
+    m_companyact->meteWindow(windowTitle(), this);
+    _depura("END cobropagoview::cobropagoview", 0);
+}
 
 
-cobropagoview::~cobropagoview() {}
+cobropagoview::~cobropagoview() {
+   _depura("cobropagoview::~cobropagoview", 0);
+   m_companyact->sacaWindow(this);
+   _depura("END cobropagoview::~cobropagoview", 0);
+}
 
 
 /**
@@ -104,19 +112,19 @@ void cobropagoview::s_actualizar() {
     m_listprevcobro->chargeBudgetLines();
     m_listprevcobro->pintalistlinprevcobro();
     s_recalculaSaldo();
-}// end s_actualizar
+}
 
 
 void cobropagoview::s_guardar() {
     m_listprevcobro->guardaListLinPrevCobro();
-}// end s_guardar
+}
 
 
 void cobropagoview::s_recalculaSaldo() {
     _depura("s_recalculaSaldo()");
     m_totalCobros->setText(m_listprevcobro->totalCobro().toQString());
     m_totalPagos->setText(m_listprevcobro->totalPago().toQString());
-}// end s_recalculaSaldo
+}
 
 
 

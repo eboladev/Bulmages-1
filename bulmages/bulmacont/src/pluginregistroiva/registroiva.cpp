@@ -44,6 +44,7 @@ CREATE TABLE registroiva (
 typedef QMap<QString, Fixed> base;
 
 RegistroIva::RegistroIva(empresa *comp) : DBRecord(comp) {
+    _depura("RegistroIva::RegistroIva", 0);
     m_companyact=comp;
     setDBTableName("registroiva");
     setDBCampoId("idregistroiva");
@@ -64,18 +65,17 @@ RegistroIva::RegistroIva(empresa *comp) : DBRecord(comp) {
     addDBCampo("factura", DBCampo::DBvarchar, DBCampo::DBNothing, "Factura");
     addDBCampo("femisionregistroiva", DBCampo::DBdate, DBCampo::DBNotNull, "Fecha Emision");
     addDBCampo("serieregistroiva", DBCampo::DBvarchar, DBCampo::DBNothing, "Serie");
-
-
-}// end presupuesto
+    _depura("END RegistroIva::RegistroIva", 0);
+}
 
 RegistroIva::~RegistroIva() {}
 
 
 void RegistroIva::borraRegistroIva() {
-	_depura("RegistroIva::borraRegistroIva",0);
+    _depura("RegistroIva::borraRegistroIva",0);
     if (DBvalue("idpresupuesto") != "") {
         m_listalineas->borrar();
-	m_listadescuentos->borrar();
+        m_listadescuentos->borrar();
         m_companyact->begin();
         int error = m_companyact->ejecuta("DELETE FROM registroiva WHERE idregistroiva="+DBvalue("idregistroiva"));
         if (error) {
@@ -86,14 +86,14 @@ void RegistroIva::borraRegistroIva() {
         vaciaRegistroIva();
         pintaRegistroIva();
     }// end if
-	_depura("END RegistroIva::borraRegistroIva",0);
+    _depura("END RegistroIva::borraRegistroIva",0);
 
-}// end borraPresupuesto
+}
 
 
 void RegistroIva::vaciaRegistroIva() {
     DBclear();
-}// end vaciaPresupuesto
+}
 
 void RegistroIva::pintaRegistroIva() {
     _depura("RegistroIva::pintaRegistroIva",0);
@@ -121,7 +121,7 @@ void RegistroIva::pintaRegistroIva() {
 
     calculaypintatotales();
     _depura("END RegistroIva::pintaRegistroIva",0);
-}// end pintaPresupuesto
+}
 
 
 // Esta funci� carga un presupuesto.
@@ -138,7 +138,7 @@ int RegistroIva::cargaRegistroIva(QString id) {
     delete cur;
 
     error += m_listalineas->cargaListIva(id);
-	m_listadescuentos->setidregistroiva(id);
+    m_listadescuentos->setidregistroiva(id);
     error += m_listadescuentos->chargeBudgetLines();
 
     /// Tratamiento de excepciones
@@ -151,7 +151,7 @@ int RegistroIva::cargaRegistroIva(QString id) {
 
     //    pintaRegistroIva();
     return 0;
-}// end chargeBudget
+}
 
 
 int RegistroIva::guardaRegistroIva() {
@@ -170,8 +170,8 @@ int RegistroIva::guardaRegistroIva() {
     m_listadescuentos->guardaListLinPrevCobro();
     //    cargaRegistroIva(id);
     _depura("END RegistroIva::guardaRegistroIva",0);
-	return 0;
-}// end guardapresupuesto
+    return 0;
+}
 
 
 
@@ -188,86 +188,81 @@ int RegistroIva::guardaRegistroIva() {
   * Si no ha encontrado el registro pero no hay errores devuelve 0
   */
 int RegistroIva::buscaborradorservicio(int idborrador) {
+    _depura("RegistroIva::buscaborradorservicio", 0);
     QString SQLQuery;
     int registro=0;
-    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe - borrador.haber AS baseimp FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
-    m_companyact->begin();
-    int error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return -1;
-    }// end if
-    SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
-    error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return -1;
-    }// end if
-    m_companyact->commit();
-
-    /// Cogemos de la configuracion las cuentas que queremos que se apunten.
-    /// Montamos los querys en base a la cadena cuentas.
-    QString cuentas="";
-    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasIngresos'";
-    cursor2 *cur=m_companyact->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        cuentas += cur->valor("valor");
-    }// end if
-    delete cur;
-    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasGastos'";
-    cur=m_companyact->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        cuentas += ";"+cur->valor("valor");
-    }// end if
-    delete cur;
-    cuentas.replace(';',"%|^");
-    cuentas = "'^"+cuentas+"%'";
-
-    /// Vamos a tener en cuenta también las cuentas de iva
-    QString cuentasIVA="";
-    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida'";
-    cur=m_companyact->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        cuentasIVA += cur->valor("valor");
-    }// end if
-    delete cur;
-    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='RegistroSoportada'";
-    cur=m_companyact->cargacursor(SQLQuery);
-    if (!cur->eof()) {
-        cuentasIVA += ";"+cur->valor("valor");
-    }// end if
-    delete cur;
-    cuentasIVA.replace(';',"%|^");
-    cuentasIVA = "'^"+cuentasIVA+"%'";
-
-    // Atentos que aquí es donde se incorpora el parametro.
-    SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO "+cuentas+" OR codigo SIMILAR TO "+cuentasIVA;
-    cur=m_companyact->cargacursor(SQLQuery);
-    m_companyact->commit();
-    while (! cur->eof() ) {
-        fprintf(stderr,"idborrador: %s contrapartida: %s cuenta: %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii());
-        registro = atoi(cur->valor("idborrador").ascii());
-        cur->siguienteregistro();
-    }//end while
-    delete cur;
-    /// se calcula el total
-    /// El cálculo se compara con el formato conocido de IVA (16, 7, 4: por tanto, formato de 2 dígitos con 0 decimales)
-    SQLQuery = "SELECT abs(sum(baseimp)) AS subtotal FROM lacosa, (SELECT baseimp AS iva FROM lacosa WHERE codigo SIMILAR TO "+cuentasIVA+") AS iva WHERE codigo SIMILAR TO "+cuentas+" AND (iva.iva*100/baseimp)::NUMERIC(2,0) IN (SELECT porcentajetipoiva FROM tipoiva)";
-    cur=m_companyact->cargacursor(SQLQuery);
-    if (! cur->eof() ) {
-        setbaseimp( cur->valor("subtotal"));
-    }// end while
-    delete cur;
-    m_companyact->begin();
-    SQLQuery = "DROP TABLE lacosa";
-    error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return -1;
-    }// end if
-    m_companyact->commit();
+    try {
+	SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.debe - borrador.haber AS baseimp FROM borrador, cuenta where borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
+	m_companyact->begin();
+	int error = m_companyact->ejecuta(SQLQuery);
+	SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
+	error = m_companyact->ejecuta(SQLQuery);
+	if (error) {
+		m_companyact->rollback();
+		return -1;
+	}// end if
+	/// Cogemos de la configuracion las cuentas que queremos que se apunten.
+	/// Montamos los querys en base a la cadena cuentas.
+	QString cuentas="";
+	SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasIngresos'";
+	cursor2 *cur=m_companyact->cargacursor(SQLQuery);
+	if (!cur->eof()) {
+		cuentas += cur->valor("valor");
+	}// end if
+	delete cur;
+	SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasGastos'";
+	cur=m_companyact->cargacursor(SQLQuery);
+	if (!cur->eof()) {
+		cuentas += ";"+cur->valor("valor");
+	}// end if
+	delete cur;
+	cuentas.replace(';',"%|^");
+	cuentas = "'^"+cuentas+"%'";
+	
+	/// Vamos a tener en cuenta también las cuentas de iva
+	QString cuentasIVA="";
+	SQLQuery = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida'";
+	cur=m_companyact->cargacursor(SQLQuery);
+	if (!cur->eof()) {
+		cuentasIVA += cur->valor("valor");
+	}// end if
+	delete cur;
+	SQLQuery = "SELECT valor FROM configuracion WHERE nombre='RegistroSoportada'";
+	cur=m_companyact->cargacursor(SQLQuery);
+	if (!cur->eof()) {
+		cuentasIVA += ";"+cur->valor("valor");
+	}// end if
+	delete cur;
+	cuentasIVA.replace(';',"%|^");
+	cuentasIVA = "'^"+cuentasIVA+"%'";
+	
+	// Atentos que aquí es donde se incorpora el parametro.
+	SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO "+cuentas+" OR codigo SIMILAR TO "+cuentasIVA;
+	cur=m_companyact->cargacursor(SQLQuery);
+	while (! cur->eof() ) {
+		fprintf(stderr,"idborrador: %s contrapartida: %s cuenta: %s\n",cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii());
+		registro = atoi(cur->valor("idborrador").ascii());
+		cur->siguienteregistro();
+	}//end while
+	delete cur;
+	/// se calcula el total
+	/// El cálculo se compara con el formato conocido de IVA (16, 7, 4: por tanto, formato de 2 dígitos con 0 decimales)
+	SQLQuery = "SELECT abs(sum(baseimp)) AS subtotal FROM lacosa, (SELECT baseimp AS iva FROM lacosa WHERE codigo SIMILAR TO "+cuentasIVA+") AS iva WHERE codigo SIMILAR TO "+cuentas+" AND (iva.iva*100/baseimp)::NUMERIC(2,0) IN (SELECT porcentajetipoiva FROM tipoiva)";
+	cur=m_companyact->cargacursor(SQLQuery);
+	if (! cur->eof() ) {
+		setbaseimp( cur->valor("subtotal"));
+	}// end while
+	delete cur;
+	SQLQuery = "DROP TABLE lacosa";
+	error = m_companyact->ejecuta(SQLQuery);
+	m_companyact->commit();
+    } catch(...) {
+	_depura("RegistroIva:: Error en transaccion", 2);
+	m_companyact->rollback();
+    } // end try
+    _depura("END RegistroIva::buscaborradorservicio", 0);
     return registro;
-}// end if
+}
 
 
 
@@ -277,71 +272,62 @@ int RegistroIva::buscaborradorservicio(int idborrador) {
   * Seguro que es el cliente.
   */
 int RegistroIva::buscaborradorcliente(int idborrador) {
-	_depura("RegistroIva::buscaborradorcliente",0);
+    _depura("RegistroIva::buscaborradorcliente", 0);
     QString SQLQuery;
     int registro=0;
-
-    m_companyact->begin();
-    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.cifent_cuenta, cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta where borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
-    int error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return -1;
-    }// end if
-    SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
-    error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return -1;
-    }// end if
-    m_companyact->commit();
-    /// Cogemos de la configuracion las cuentas que queremos que se apunten.
-    /// Montamos los querys en base a la cadena cuentas.
-    /// Se consideran cuentas de Derechos y de Obligaciones a Clientes y Proveedores, respectivamente.
-    /// Los campos sirven para encontrar la cuenta que corresponde a quien hace el pago de la factura.
-    QString cuentas="";
-    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasDerechos'";
-    cursor2 *cur1=m_companyact->cargacursor(SQLQuery);
-    if (!cur1->eof()) {
-        cuentas += cur1->valor("valor");
-    }// end if
-    delete cur1;
-    SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasObligaciones'";
-    cur1=m_companyact->cargacursor(SQLQuery);
-    if (!cur1->eof()) {
-        cuentas += ";"+cur1->valor("valor");
-    }// end if
-    delete cur1;
-    cuentas.replace(';',"%|^");
-    cuentas = "'^"+cuentas+"%'";
-
-    /// Atentos que aqui es donde se incorpora el parametro.
-    SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO "+cuentas;
-    cursor2 * cur=m_companyact->cargacursor(SQLQuery, "buscaapunte");
-    while (! cur->eof() ) {
-        /// Ponemos la cuenta de Cliente y los valores adyacentes
-        setcontrapartida(cur->valor("idcuenta"));
-	setcif(cur->valor("cifent_cuenta"));
-        /// Comprobamos si es un cliente o un proveedor y segun sea actuamos en consecuencia.
-        if (cur->valor("codigo").left(2) == "43") {
-            setfactemitida("t");
-        } else {
-            setfactemitida( "f");
+    try {
+        m_companyact->begin();
+        SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.cifent_cuenta, cuenta.idcuenta AS idcuenta, codigo, borrador.debe AS debe, borrador.haber AS haber, borrador.debe+borrador.haber AS totalfactura FROM borrador LEFT JOIN cuenta ON borrador.idcuenta=cuenta.idcuenta where borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
+        int error = m_companyact->ejecuta(SQLQuery);
+        SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
+        error = m_companyact->ejecuta(SQLQuery);
+        /// Cogemos de la configuracion las cuentas que queremos que se apunten.
+        /// Montamos los querys en base a la cadena cuentas.
+        /// Se consideran cuentas de Derechos y de Obligaciones a Clientes y Proveedores, respectivamente.
+        /// Los campos sirven para encontrar la cuenta que corresponde a quien hace el pago de la factura.
+        QString cuentas="";
+        SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasDerechos'";
+        cursor2 *cur1=m_companyact->cargacursor(SQLQuery);
+        if (!cur1->eof()) {
+            cuentas += cur1->valor("valor");
         }// end if
-        registro = cur->valor("idborrador").toInt();
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
-    SQLQuery = "DROP TABLE lacosa";
-    m_companyact->begin();
-    error = m_companyact->ejecuta(SQLQuery);
-    if (error ) {
+        delete cur1;
+        SQLQuery = "SELECT valor FROM configuracion WHERE nombre='CuentasObligaciones'";
+        cur1=m_companyact->cargacursor(SQLQuery);
+        if (!cur1->eof()) {
+            cuentas += ";"+cur1->valor("valor");
+        }// end if
+        delete cur1;
+        cuentas.replace(';',"%|^");
+        cuentas = "'^"+cuentas+"%'";
+
+        /// Atentos que aqui es donde se incorpora el parametro.
+        SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO "+cuentas;
+        cursor2 * cur=m_companyact->cargacursor(SQLQuery, "buscaapunte");
+        while (! cur->eof() ) {
+            /// Ponemos la cuenta de Cliente y los valores adyacentes
+            setcontrapartida(cur->valor("idcuenta"));
+            setcif(cur->valor("cifent_cuenta"));
+            /// Comprobamos si es un cliente o un proveedor y segun sea actuamos en consecuencia.
+            if (cur->valor("codigo").left(2) == "43") {
+                setfactemitida("t");
+            } else {
+                setfactemitida( "f");
+            }// end if
+            registro = cur->valor("idborrador").toInt();
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+        SQLQuery = "DROP TABLE lacosa";
+        error = m_companyact->ejecuta(SQLQuery);
+        m_companyact->commit();
+    } catch (...) {
+        _depura("RegistroIva:: Error en buscaborradorcliente", 2);
         m_companyact->rollback();
-        return -1;
-    }// end if
-    m_companyact->commit();
+    } // end try
+    _depura("ENd RegistroIva::buscaborradorcliente", 0);
     return registro;
-}// end if
+}
 
 
 
@@ -376,16 +362,16 @@ void RegistroIva::inicializa1(int idapunte1) {
         buscafecha(idapunte1);
         /// Buscamos la cuenta de servicio.
         buscaborradorservicio(idapunte1);
-	buscaNumFactura(idapunte1);
-	setidborrador(QString::number(idapunte1));
+        buscaNumFactura(idapunte1);
+        setidborrador(QString::number(idapunte1));
     }// end if
     delete cursoriva;
 
     pintaRegistroIva();
     // Hacemos la carga de los cobros.
     //    cargacobros();
-    _depura("END RegistroIva::inicializa1",0);
-}// end inicializa1
+    _depura("END RegistroIva::inicializa1", 0);
+}
 
 
 
@@ -397,135 +383,127 @@ void RegistroIva::inicializa1(int idapunte1) {
   * Devuelve 1 si ha ocurrido algún error.
   */
 int RegistroIva::buscaborradoriva(int idborrador) {
-    _depura("ivaview::buscaborradoriva",0);
-    QString SQLQuery;
-    SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
-    m_companyact->begin();
-    int error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
+    _depura("RegistroIva::buscaborradoriva", 0);
+    try {
+        m_companyact->begin();
+        QString SQLQuery;
+        SQLQuery.sprintf("CREATE TEMPORARY TABLE lacosa AS SELECT borrador.debe AS ivadebe, borrador.haber AS ivahaber, idborrador, bcontrapartidaborr(idborrador) AS contrapartida , cuenta.idcuenta AS idcuenta, codigo, borrador.fecha AS fecha  FROM borrador, cuenta WHERE borrador.idcuenta=cuenta.idcuenta AND borrador.idasiento IN (SELECT idasiento FROM borrador WHERE idborrador=%d)", idborrador);
+        int error = m_companyact->ejecuta(SQLQuery);
+
+        SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
+        error = m_companyact->ejecuta(SQLQuery);
+
+
+        /// Cargamos los registros que quedan pq seguro que son de IVA.
+        SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber::NUMERIC(12,1) ORDER BY codigo";
+
+
+        cursor2 * cur=m_companyact->cargacursor(SQLQuery);
+        while (! cur->eof() ) {
+            Iva *iva = new Iva(m_companyact);
+            iva->setidtipoiva(cur->valor("idtipoiva"));
+            if (cur->valor("debe") != "0.00") {
+                iva->setivaiva(cur->valor("ivadebe"));
+                iva->setbaseiva(cur->valor("debe"));
+            } else {
+                iva->setivaiva(cur->valor("ivahaber"));
+                iva->setbaseiva(cur->valor("haber"));
+            }// end if
+            m_listalineas->append(iva);
+            cur->siguienteregistro();
+        }// end while
+        delete cur;
+        _depura("limpiamos la base de datos");
+        SQLQuery = "DROP TABLE lacosa";
+        error = m_companyact->ejecuta(SQLQuery);
+        m_companyact->commit();
+    } catch(...) {
+        _depura("Error al buscar el borrador", 2);
         m_companyact->rollback();
-        return 1;
-    }// end if
-    SQLQuery.sprintf("DELETE FROM lacosa WHERE idborrador NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d) AND contrapartida NOT IN (SELECT idborrador FROM lacosa WHERE idborrador = %d UNION SELECT contrapartida AS idborrador FROM lacosa WHERE idborrador = %d)", idborrador, idborrador, idborrador, idborrador);
-    error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return 1;
-    }// end if
-    m_companyact->commit();
-
-    // Cargamos los registros que quedan pq seguro que son de IVA.
-    SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber::NUMERIC(12,1) ORDER BY codigo";
-
-
-    cursor2 * cur=m_companyact->cargacursor(SQLQuery);
-    while (! cur->eof() ) {
-        Iva *iva = new Iva(m_companyact);
-        iva->setidtipoiva(cur->valor("idtipoiva"));
-        if (cur->valor("debe") != "0.00") {
-            iva->setivaiva(cur->valor("ivadebe"));
-            iva->setbaseiva(cur->valor("debe"));
-        } else {
-            iva->setivaiva(cur->valor("ivahaber"));
-            iva->setbaseiva(cur->valor("haber"));
-        }// end if
-        m_listalineas->append(iva);
-        cur->siguienteregistro();
-    }// end while
-    delete cur;
-
-
-	_depura("limpiamos la base de datos");
-    m_companyact->begin();
-    SQLQuery = "DROP TABLE lacosa";
-    error = m_companyact->ejecuta(SQLQuery);
-    if (error) {
-        m_companyact->rollback();
-        return 1;
-    }// end if
-    m_companyact->commit();
-
-    _depura("END ivaview::buscaborradoriva",0);
+    } // end try
+    _depura("END RegistroIva::buscaborradoriva", 0);
     return 0;
-}// end buscaborradoriva
+}
 
 
 
 /** \brief SLOT que se dispara cuando se ha hecho el bot� de bsqueda de una fecha.
   */
 void RegistroIva::buscafecha(int idborrador) {
+    _depura("RegistroIva::buscafecha", 0);
     QString SQLQuery;
     cursor2 * cur = m_companyact->cargacursor("SELECT fecha from borrador WHERE idborrador = "+QString::number(idborrador));
     if (!cur->eof()) {
         setffactura(cur->valor("fecha").left(10));
     }// end if
     delete cur;
+    _depura("END RegistroIva::buscafecha", 0);
 }
 
 
 
-        //Proponemos un número de factura si se trata de una venta y proponemos un número de orden si se trata de una compra
-        //Realmente esto se tendria que implementar con contadores en la base de datos.
-        //Primero comprobamos si esta factura ya tiene un apunte de iva distinto y cojemos el mismo numero de factura
+//Proponemos un número de factura si se trata de una venta y proponemos un número de orden si se trata de una compra
+//Realmente esto se tendria que implementar con contadores en la base de datos.
+//Primero comprobamos si esta factura ya tiene un apunte de iva distinto y cojemos el mismo numero de factura
 
 void RegistroIva::buscaNumFactura(int idborrador) {
 
-	QString query;
-        cursor2 * recordset;
-	int numfact;
-	QString cadena;
-	int numord;
-        query.sprintf("SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador='%i'))",idborrador);
+    QString query;
+    cursor2 * recordset;
+    int numfact;
+    QString cadena;
+    int numord;
+    query.sprintf("SELECT factura, numorden FROM registroiva WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=(SELECT idasiento FROM borrador WHERE idborrador='%i'))",idborrador);
 
-        recordset = m_companyact->cargacursor(query);
+    recordset = m_companyact->cargacursor(query);
 
-        if (!recordset->eof()) {
-            if (factemitida() == "t") {  //Se trata de una Venta
-                setfactura( recordset->valor("factura"));
-            } else { //Se trata de una compra
-                setfactura(recordset->valor("factura"));
-                setnumorden( recordset->valor("numorden"));
-            }// end if
-        }  else {   //La factura no existe, entonces proponemos el siguiente número de factura
-            if (factemitida() == "t") {  //Se trata de una Venta
-                query.sprintf("SELECT MAX(to_number(factura,'99999')) AS factura FROM registroiva WHERE numorden=''");
-
-                recordset = m_companyact->cargacursor(query,"recordset");
-
-                if (!recordset->eof()) {
-                    numfact = 1 + atoi(recordset->valor("factura").ascii());
-                } else {
-                    numfact= 1;
-                }// end if
-                cadena.sprintf("%i",numfact);
-                setfactura(cadena);
-            } else { //Se trata de una compra
-                /// Vemos si podemos extraer de la descripción del apunte el número de fra.
-                query.sprintf("SELECT * FROM borrador WHERE idasiento IN (SELECT idasiento FROM borrador WHERE idborrador='%i') AND debe=0", idborrador);
-
-                recordset = m_companyact->cargacursor(query,"recordset");
-
-                QString num_fra = recordset->valor("conceptocontable");
-                QRegExp patron("^S/Fra\\. [0-9]+$");
-                if(num_fra.contains(patron) == 1) { // Si se cumple el patrón
-                    num_fra = num_fra.remove("S/Fra. ");
-                } else { // Si no saco el nº de fra. lo pongo a cero, por poner algo
-                    num_fra.sprintf("0");
-                }
-                setfactura("num_fra");
-                /// Buscamos qué número de orden poner
-                query.sprintf("SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden<>''");
-
-                recordset = m_companyact->cargacursor(query,"recordset");
-
-                if (!recordset->eof()) {
-                    numord = 1 + atoi(recordset->valor("numorden").ascii());
-                } else {
-                    numord = 1;
-                }// end if
-                setnumorden(QString::number(numord));
-            }// end if
+    if (!recordset->eof()) {
+        if (factemitida() == "t") {  //Se trata de una Venta
+            setfactura( recordset->valor("factura"));
+        } else { //Se trata de una compra
+            setfactura(recordset->valor("factura"));
+            setnumorden( recordset->valor("numorden"));
         }// end if
-        delete recordset;//Fin proposicion numeros factura y orden.
-}// end buscaNumFactura
+    }  else {   //La factura no existe, entonces proponemos el siguiente número de factura
+        if (factemitida() == "t") {  //Se trata de una Venta
+            query.sprintf("SELECT MAX(to_number(factura,'99999')) AS factura FROM registroiva WHERE numorden=''");
+
+            recordset = m_companyact->cargacursor(query,"recordset");
+
+            if (!recordset->eof()) {
+                numfact = 1 + atoi(recordset->valor("factura").ascii());
+            } else {
+                numfact= 1;
+            }// end if
+            cadena.sprintf("%i",numfact);
+            setfactura(cadena);
+        } else { //Se trata de una compra
+            /// Vemos si podemos extraer de la descripción del apunte el número de fra.
+            query.sprintf("SELECT * FROM borrador WHERE idasiento IN (SELECT idasiento FROM borrador WHERE idborrador='%i') AND debe=0", idborrador);
+
+            recordset = m_companyact->cargacursor(query,"recordset");
+
+            QString num_fra = recordset->valor("conceptocontable");
+            QRegExp patron("^S/Fra\\. [0-9]+$");
+            if(num_fra.contains(patron) == 1) { // Si se cumple el patrón
+                num_fra = num_fra.remove("S/Fra. ");
+            } else { // Si no saco el nº de fra. lo pongo a cero, por poner algo
+                num_fra.sprintf("0");
+            }
+            setfactura("num_fra");
+            /// Buscamos qué número de orden poner
+            query.sprintf("SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden<>''");
+
+            recordset = m_companyact->cargacursor(query,"recordset");
+
+            if (!recordset->eof()) {
+                numord = 1 + atoi(recordset->valor("numorden").ascii());
+            } else {
+                numord = 1;
+            }// end if
+            setnumorden(QString::number(numord));
+        }// end if
+    }// end if
+    delete recordset;//Fin proposicion numeros factura y orden.
+}
 

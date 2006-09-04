@@ -25,7 +25,6 @@
 
 int entryPoint(Bulmages01 *bges) {
     _depura("Punto de Entrada del plugin registroIVA", 0);
-
     _depura("END Punto de Entrada del plugin registroIVA", 0);
     return 0;
 }
@@ -36,13 +35,14 @@ int entryPoint(Bulmages01 *bges) {
   */
 
 int Asiento1_guardaAsiento1_post(Asiento1 *as) {
-    _depura("Asiento1_guardaAsiento1_post",0);
+    _depura("Asiento1_guardaAsiento1_post", 2);
     empresa *companyact = as->companyact();
     QString cuentas="";
     QString query = "SELECT valor FROM configuracion WHERE nombre='RegistroEmitida' OR nombre='RegistroSoportada'";
     cursor2 *curvalor = companyact->cargacursor(query);
     while (!curvalor->eof()) {
-        cuentas += curvalor->valor("valor")+"%|"; // Preparamos una expresión regular para usar en la consulta
+        /// Preparamos una expresión regular para usar en la consulta
+        cuentas += curvalor->valor("valor")+"%|"; 
         curvalor->siguienteregistro();
     }// end while
     delete curvalor;
@@ -61,16 +61,18 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
         cursborr->siguienteregistro();
     }// end while
     delete cursborr;
-
+    _depura("END Asiento1_guardaAsiento1_post", 2);
     return 0;
 }
 
 
 
 int empresa_cobPag(empresa *emp) {
-    cobropagoview *adoc= new cobropagoview(emp,0,"");
-    adoc->exec();
-    delete adoc;
+    _depura("empresa_cobPag", 0);
+    cobropagoview *adoc= new cobropagoview(emp,0);
+    emp->pWorkspace()->addWindow(adoc);
+    adoc->show();
+    _depura("END empresa_cobPag", 0);
     return 0;
 }
 
@@ -86,14 +88,18 @@ int empresa_registroiva(empresa *emp) {
 
 
 int ListLinAsiento1View_boton_iva(ListLinAsiento1View *as) {
+    _depura("ListLinAsiento1View_boton_iva", 0);
     as->guardar();
-    if (as->DBvalue("idborrador") != "") {
+    try {
         int idborrador = as->DBvalue("idborrador").toInt();
         RegistroIvaView *nuevae=new RegistroIvaView( (empresa *) as->companyact(), 0);
         nuevae->inicializa1(idborrador);
         ((empresa *) as->companyact())->pWorkspace()->addWindow(nuevae);
 	nuevae->show();
-        as->pintar();
-    }// end if
+    } catch(...) {
+       mensajeInfo("ListLinAsiento1View_boton_iva::Debe seleccionar un apunte");
+       return 0;
+    } // end try
+    _depura("END ListLinAsiento1View_boton_iva", 0);
     return 0;
 }

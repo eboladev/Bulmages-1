@@ -3,7 +3,7 @@
  <comment></comment>
  <exportmacro></exportmacro>
  <class>CobroPagoBase</class>
- <widget class="QDialog" name="CobroPagoBase" >
+ <widget class="QWidget" name="CobroPagoBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
