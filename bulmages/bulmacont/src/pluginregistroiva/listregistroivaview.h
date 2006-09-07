@@ -23,12 +23,10 @@
       dara ningun registro pq dia 31 no existe.
  ***************************************************************************/
 
-
-
-
 #ifndef LISTREGISTROIVAVIEW_H
 #define LISTREGISTROIVAVIEW_H
 
+// #include <QTableWidgetItem>
 #include <QWidget>
 #include <qlineedit.h>
 #include <q3table.h>
@@ -49,18 +47,13 @@ public:
     ~ListRegistroIvaView();
     void inicializa();
 public slots:
-    virtual void doble_click_soportado(int,int,int, const QPoint &);
-    virtual void doble_click_repercutido(int,int,int, const QPoint &);
-    virtual void boton_reload();
+    virtual void on_mui_tablasoportado_cellDoubleClicked(int, int);
+    virtual void on_mui_tablarepercutido_cellDoubleClicked(int, int);
+    virtual void on_mui_actualizar_clicked();
     virtual void boton_print();
     virtual void menu_contextual(int, int, const QPoint &);
     virtual void menu_contextual1(int, int, const QPoint &);
-    virtual void boton_finicial();
-    virtual void boton_ffinal();
-    virtual void finicial_textChanged(const QString &);
-    virtual void ffinal_textChanged(const QString &);
-    virtual void finicial_lostFocus();
-    virtual void ffinal_lostFocus();
+    virtual void on_mui_list_editFinished(int row, int col) {};
 };
 
 #endif

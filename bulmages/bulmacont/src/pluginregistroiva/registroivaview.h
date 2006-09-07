@@ -109,19 +109,19 @@ virtual void pintarectificaaregistroiva(const QString &val) {}
 
 private:
     void generarPedidoCliente();
-//    virtual void closeEvent( QCloseEvent *);
     virtual void accept() {
-        if(!guardaRegistroIva())
+        if(!guardar())
             close();
     };
-    virtual int guardaRegistroIva();
+    virtual int guardar();
     void cargarComboFPago(QString);
 
 public slots://
     virtual void s_saveRegistroIvaView() {
-        guardaRegistroIva();
+        guardar();
     };
-    virtual int chargeRegistroIvaView(QString id);
+    virtual int borrar() {return RegistroIva::borrar();};
+    virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked();
     virtual void s_removeRegistroIvaViewLine() {
         m_listiva->borraIvaAct();
@@ -140,5 +140,4 @@ public slots://
     };
 
 };
-
 #endif

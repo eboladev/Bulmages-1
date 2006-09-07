@@ -166,9 +166,13 @@ public slots:
     virtual void on_mui_list_ctrlBajar(int row, int col);
     virtual void on_mui_pagsiguiente_clicked();
     virtual void on_mui_paganterior_clicked();
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item);
+    virtual void on_mui_list_cellDoubleClicked(int row, int col);
 
 signals:
     void editFinish(int, int);
+    void itemDoubleClicked(QTableWidgetItem *);
+    void cellDoubleClicked(int row, int col);
 };
 
 #endif

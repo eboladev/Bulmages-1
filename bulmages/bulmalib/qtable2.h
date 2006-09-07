@@ -45,9 +45,10 @@ public:
 };
 
 
+
+
 class QTableWidget2 : public QTableWidget {
     Q_OBJECT
-
 private:
     int modo; /// Indica el modo de dibujo.
     int m_tipoorden;

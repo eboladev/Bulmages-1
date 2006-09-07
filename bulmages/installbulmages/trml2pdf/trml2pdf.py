@@ -35,9 +35,7 @@ import color
 #
 # Change this to UTF-8 if you plan tu use Reportlab's UTF-8 support
 #
-#encoding = 'latin1'
-encoding = 'cp1252'
-
+encoding = 'utf-8'
 
 def _child_get(node, childs):
 	clds = []
@@ -390,7 +388,10 @@ class _rml_flowable(object):
 		colwidths = None
 		rowheights = None
 		data = []
-		for tr in _child_get(node,'tr'):
+		childs = _child_get(node,'tr')
+		if not childs:
+			return None
+		for tr in childs:
 			data2 = []
 			for td in _child_get(tr, 'td'):
 				flow = []
@@ -437,6 +438,37 @@ class _rml_flowable(object):
 		if node.localName=='para':
 			style = self.styles.para_style_get(node)
 			return platypus.Paragraph(self._textual(node), style, **(utils.attr_get(node, [], {'bulletText':'str'})))
+		elif node.localName=='barCode':
+			try:
+				import barcode
+				from barcode import code128
+				from barcode import code39
+				from barcode import code93
+				from barcode import common
+				from barcode import fourstate
+				from barcode import usps
+			except:
+				print 'Warning: Reportlab barcode extension not installed !'
+				return None
+			args = utils.attr_get(node, [], {'ratio':'float','xdim':'unit','height':'unit','checksum':'bool','quiet':'bool'})
+			codes = {
+				'codabar': lambda x: common.Codabar(x, **args),
+				'code11': lambda x: common.Code11(x, **args),
+				'code128': lambda x: code128.Code128(x, **args),
+				'standard39': lambda x: code39.Standard39(x, **args),
+				'standard93': lambda x: code93.Standard93(x, **args),
+				'i2of5': lambda x: common.I2of5(x, **args),
+				'extended39': lambda x: code39.Extended39(x, **args),
+				'extended93': lambda x: code93.Extended93(x, **args),
+				'msi': lambda x: common.MSI(x, **args),
+				'fim': lambda x: usps.FIM(x, **args),
+				'postnet': lambda x: usps.POSTNET(x, **args),
+			}
+			code = 'code128'
+			if node.hasAttribute('code'):
+				code = node.getAttribute('code').lower()
+			return codes[code](self._textual(node))
+
 		elif node.localName=='name':
 			self.styles.names[ node.getAttribute('id')] = node.getAttribute('value')
 			return None
@@ -467,7 +499,25 @@ class _rml_flowable(object):
 			style = styles['Heading3']
 			return platypus.Paragraph(self._textual(node), style, **(utils.attr_get(node, [], {'bulletText':'str'})))
 		elif node.localName=='image':
-			return platypus.Image(node.getAttribute('file'), mask=(250,255,250,255,250,255), **(utils.attr_get(node, ['width','height'])))
+			from reportlab.lib.utils import ImageReader
+			name = str(node.getAttribute('file'))
+			img = ImageReader(name)
+			(sx,sy) = img.getSize()
+
+			args = {}
+			for tag in ('width','height'):
+				if node.hasAttribute(tag):
+					args[tag] = utils.unit_get(node.getAttribute(tag))
+			if ('width' in args) and (not 'height' in args):
+				args['height'] = sy * args['width'] / sx
+			elif ('height' in args) and (not 'width' in args):
+				args['width'] = sx * args['height'] / sy
+			elif ('width' in args) and ('height' in args):
+				if (float(args['width'])/args['height'])>(float(sx)>sy):
+					args['width'] = sx * args['height'] / sy
+				else:
+					args['height'] = sy * args['width'] / sx
+			return platypus.Image(name, mask=(250,255,250,255,250,255), **args)
 		elif node.localName=='spacer':
 			if node.hasAttribute('width'):
 				width = utils.unit_get(node.getAttribute('width'))
@@ -484,8 +534,7 @@ class _rml_flowable(object):
 		elif node.localName=='nextFrame':
 			return platypus.CondPageBreak(1000)           # TODO: change the 1000 !
 		else:
-			sys.stderr.write('Warning: flowable not yet implemented: %s !\n' % (node.localName,))
-			return None
+			return self.render(node)
 
 	def render(self, node_story):
 		story = []
@@ -494,7 +543,10 @@ class _rml_flowable(object):
 			if node.nodeType == node.ELEMENT_NODE:
 				flow = self._flowable(node) 
 				if flow:
-					story.append(flow)
+					if type(flow) == type([]):
+						story = story + flow
+					else:
+						story.append(flow)
 			node = node.nextSibling
 		return story
 
@@ -543,6 +595,7 @@ def parseString(data, fout=None):
 
 def trml2pdf_help():
 	print 'Usage: trml2pdf input.rml >output.pdf'
+	print '   or: trml2pdf input.rml output.pdf (required for windows users)'
 	print 'Render the standard input (RML) and output a PDF file'
 	sys.exit(0)
 
@@ -550,7 +603,10 @@ if __name__=="__main__":
 	if len(sys.argv)>1:
 		if sys.argv[1]=='--help':
 			trml2pdf_help()
-		print parseString(file(sys.argv[1], 'r').read()),
+		if len(sys.argv)==3:
+			parseString(file(sys.argv[1], 'r').read(), sys.argv[2])
+		else:
+			print parseString(file(sys.argv[1], 'r').read()),
 	else:
 		print 'Usage: trml2pdf input.rml >output.pdf'
 		print 'Try \'trml2pdf --help\' for more information.'

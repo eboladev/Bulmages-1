@@ -238,15 +238,7 @@ void presupuesto::imprimirPresupuesto() {
     buff.replace("[refpresupuesto]", DBvalue("refpresupuesto"));
 
     /// Impresion de la tabla de contenidos.
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.2cm, 1.5cm, 1.8cm, 2.25cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Codigo") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Concepto") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Und") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Precio") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Dto") + "</td>\n";
-    fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
+
     QString l;
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
@@ -265,8 +257,6 @@ void presupuesto::imprimirPresupuesto() {
         fitxersortidatxt += "</tr>";
     } // end for
 
-
-    fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);
 
     Fixed basei("0.00");

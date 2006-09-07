@@ -3,6 +3,14 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./bulmalib
 # Destiono es una biblioteca:  bulmalib
 
+#Probamos de usar distcc
+#!isEmpty( DISTCC_HOSTS ) {
+exists(/usr/bin/distcc) {
+   QMAKE_CXX = distcc g++
+}
+#}
+
+
 FORMS += logpassbase.ui \
          abreempresabase.ui \
          msgerrorbase.ui \

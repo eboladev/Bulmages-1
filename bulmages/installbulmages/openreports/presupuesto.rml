@@ -42,35 +42,46 @@
 		<drawString x="8.5cm" y="24cm">[nomcliente] -- [telcliente]</drawString>
 		<drawString x="8.5cm" y="23.5cm">[dircliente]</drawString>
 		<drawString x="8.5cm" y="23cm">[poblcliente]</drawString>
-		</pageGraphics>
 
+		<fill color="(0.7,0.7,0.7)"/>
+		<rect x="1.85cm" y="19.1cm" width="17.3cm" height="0.7cm" fill="yes" stroke="no"/>
+		<grid xs="1.85cm,3.75cm,12.5cm,13.7cm,15.2cm,17cm,19.15cm" ys="19.8cm,5cm"/>
+
+		<!-- Los datos del presupuesto -->
+		<fill color="(0.7,0.7,0.7)"/>
+		<rect x="4cm" y="21cm" width="15cm" height="0.8cm" fill="yes" stroke="no"/>
+		<grid xs="4cm,7cm,10cm,13cm,16cm,19cm" ys="20.2cm,21cm,21.8cm"/>
+		<setFont name="Helvetica" size="16"/>
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<drawCentredString x="5.5cm" y="21.2cm">NIF</drawCentredString>
+		<drawCentredString x="8.5cm" y="21.2cm">Cliente</drawCentredString>
+		<drawCentredString x="11.5cm" y="21.2cm">Fecha</drawCentredString>
+		<drawCentredString x="14.5cm" y="21.2cm">N. Pres</drawCentredString>
+		<drawCentredString x="17.5cm" y="21.2cm">Ref</drawCentredString>
+		<setFont name="Helvetica" size="12"/>
+		<drawCentredString x="5.5cm" y="20.4cm">[cifcliente]</drawCentredString>
+		<drawCentredString x="8.5cm" y="20.4cm">[idcliente]</drawCentredString>
+		<drawCentredString x="11.5cm" y="20.4cm">[fpresupuesto]</drawCentredString>
+		<drawCentredString x="14.5cm" y="20.4cm">[numpresupuesto]</drawCentredString>
+		<drawCentredString x="17.5cm" y="20.4cm">[refpresupuesto]</drawCentredString>
+<place x="4.2cm" y="2cm" width="15cm" height="2.5cm">
+<blockTable style="metatabla">
+<tr>
+<td align="left">
+	[totales]
+</td>
+</tr>
+</blockTable>
+</place>
+		</pageGraphics>
 		<!-- FRAME DE CONTENIDOS -->
-		<frame id="column" x1="1cm" y1="2cm" width="19cm" height="20cm"/>
+		<frame id="column" x1="1cm" y1="5cm" width="19cm" height="15cm"/>
 	</pageTemplate>
-	
-	
-	<pageTemplate id="others">
-		<pageGraphics>
-		<image x="0cm" y="27.5cm" width="10cm" file="/tmp/logo.jpg"/>
 
-		<!-- EL PIE DE PAGINA -->
-		<setFont name="Helvetica" size="8"/>		
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="1.2cm">www.conetxia.com -- info@conetxia.com -- 971.29.06.29</drawString>	
-		<drawString x="8cm" y="0.9cm">Joaquin Turina, 1 - 07004 - Palma de Mallorca</drawString>
-	
-		
-		
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<setFont name="Helvetica" size="22"/>
-		<drawString x="1.5cm" y="24.5cm">DETALLE DE COMPONENTES</drawString>
-		</pageGraphics>
-	<frame id="column" x1="0cm" y1="1cm" width="19cm" height="23cm"/>
-	</pageTemplate>	
-	
 </template>
+
+
 <stylesheet>
 	<blockTableStyle id="cabecera">	
 		<blockAlignment value="CENTER" start="0,0" stop="-1,-1"/>
@@ -84,11 +95,7 @@
 	<blockTableStyle id="tablacontenido">	
 		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
 		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
-		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
-		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
 		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
 		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
@@ -109,6 +116,7 @@
 		<blockAlignment value="RIGHT"/>
 		<blockAlignment value="RIGHT" start="0,0" stop="-1,-1"/>
 		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>	
+		<blockBackground colorName="(1,1,1)" start="0,0" stop="-1,-1"/>
 		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
 		<blockFont name="Helvetica-Bold" size="12" start="0,0" stop="-1,-1"/>
 		<blockFont name="Helvetica" size="12" start="0,-1" stop="-1,-1"/>
@@ -116,93 +124,32 @@
 		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>	
 	</blockTableStyle>	
 	<blockTableStyle id="tabladetalle1">
-		<!--lineStyle kind="OUTLINE" colorName="white"  start="0,0" stop="-1,-1"/-->
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
-		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>				
+		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-		<!--blockBackground colorName="(0.5,0.2,0.2)" start="0,0" stop="-1,0"/-->
 	</blockTableStyle>	
 	<blockTableStyle id="tabladetalle2">
-		<!--lineStyle kind="OUTLINE" colorName="white"  start="0,0" stop="-1,-1"/-->
 		<blockAlignment value="LEFT" start="0,0" stop="0,-1"/>
-		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>				
+		<blockAlignment value="RIGHT" start="-1,0" stop="-1,-1"/>	
 		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
-		<!--blockBackground colorName="(0.5,0.2,0.2)" start="0,0" stop="-1,0"/-->
 	</blockTableStyle>
 	<blockTableStyle id="metatabla">	
 		<blockAlignment value="RIGHT"/>
 	</blockTableStyle>
-		
 </stylesheet>
 
+
 <story>
-
-
-<blockTable style="metatabla">
+<blockTable style="tablacontenido" colWidths="1.75cm, 8.75cm, 1.2cm, 1.5cm, 1.8cm, 2.25cm" repeatRows="1">
 <tr>
-<td align="left">
-
-<blockTable style="cabecera" colWidths="4cm, 2.5cm, 3cm, 2cm, 3cm" >
-<tr>
-	<td>NIF</td>
-	<td>Cod. Client</td>
-	<td>Fecha</td>
-	<td>N. Pres</td>
-	<td>Ref</td>
+<td>Codigo</td>
+<td>Concepto</td>
+<td>Und</td>
+<td>Precio</td>
+<td>Dto</td>
+<td>Total</td>
 </tr>
-<tr>
-	<td>[cifcliente]</td>
-	<td>[idcliente]</td>
-	<td>[fpresupuesto]</td>
-	<td>[numpresupuesto]</td>
-	<td>[refpresupuesto]</td>
-</tr>
+[story]
 </blockTable>
-
-</td>
-</tr>
-</blockTable>
-
-
-<spacer length="15"/>
-	[story]
-<spacer length="15"/>
-
-<blockTable style="metatabla">
-<tr>
-<td align="left">
-	[totales]
-</td>
-</tr>
-</blockTable>
-
-<!--
-<spacer length="15"/>
-
-<blockTable style="metatabla">
-<tr>
-<td align="left">
-<para><pre>[comentpresupuesto]</pre></para>
-</td>
-</tr>
-</blockTable>
-
-<spacer length="15"/>
-<blockTable style="metatabla">
-<tr>
-<td align="left">
-[descuentos]
-</td>
-</tr>
-</blockTable>
--->
-
-<!--
-<setNextTemplate name="others"/>
-
-<nextFrame/>
-
-	[detallearticulos]
--->
 </story>
 </document>

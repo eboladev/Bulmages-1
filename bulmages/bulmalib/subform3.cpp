@@ -72,6 +72,19 @@ SubForm3::~SubForm3() {
     _depura("END SubForm3::~SubForm3", 0);
 }
 
+void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
+	_depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
+	emit itemDoubleClicked(item);
+	_depura("END SubForm3::on_mui_list_itemDoubleClicked", 0);
+
+}
+
+void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
+	_depura("SubForm3::on_mui_list_cellDoubleClicked", 0);
+	emit cellDoubleClicked(row, col);
+	_depura("END SubForm3::on_mui_list_cellDoubleClicked", 0);
+}
+
 
 /// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
 /// tenga todos los elementos necesarios (columnas).

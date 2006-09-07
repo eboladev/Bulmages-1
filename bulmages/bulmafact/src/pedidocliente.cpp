@@ -191,15 +191,6 @@ void PedidoCliente::imprimirPedidoCliente() {
     buff.replace("[refpedidocliente]", DBvalue("refpedidocliente"));
 
     /// Impresion de la tabla de contenidos.
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Codigo") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Concepto") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Und") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Precio") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Dto") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
     QString l;
 
     SDBRecord *linea;
@@ -218,7 +209,6 @@ void PedidoCliente::imprimirPedidoCliente() {
     } // end for
 
 
-    fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);
 
     Fixed basei("0.00");

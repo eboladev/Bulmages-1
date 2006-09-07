@@ -59,10 +59,8 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(paren
     setListIva(m_listiva);
     setListLinPrevCobro( m_listprevcobro);
 
-
     /// Preparamos la lista de cobros y pagos
     m_listprevcobro->presentacionFactura();
-    // CAlculamos las formas de pago.
     m_cursorFPago = NULL;
     cargarComboFPago("NULL");
 
@@ -112,15 +110,15 @@ void RegistroIvaView::cargarComboFPago(QString idfpago) {
 void RegistroIvaView::on_mui_borrar_clicked() {
     _depura("RegistroIvaView::on_mui_borrar_clicked",0);
     if (QMessageBox::warning( this, "BulmaCont - Registro Factura", "Desea borrar este registro", "Si", "No") == 0) {
-        borraRegistroIva();
+        borrar();
     }// end if
     _depura("END RegistroIvaView::on_mui_borrar_clicked",0);
 }
 
 
-int RegistroIvaView::chargeRegistroIvaView(QString id) {
+int RegistroIvaView::cargar(QString id) {
     int error = 0;
-    error = RegistroIva::cargaRegistroIva(id);
+    error = RegistroIva::cargar(id);
     if (error)
         return -1;
     setCaption("Registro FActura "+factura());
@@ -129,7 +127,9 @@ int RegistroIvaView::chargeRegistroIvaView(QString id) {
 }
 
 
-int RegistroIvaView::guardaRegistroIva() {
+
+
+int RegistroIvaView::guardar() {
     _depura("RegistroIvaView::guardaRegistroIva",0);
     setcontrapartida(m_contrapartida->idcuenta());
     setbaseimp(m_baseImponible->text());
@@ -142,7 +142,7 @@ int RegistroIvaView::guardaRegistroIva() {
     setfactemitida(m_factEmitida->isChecked()?"t":"f");
     setfemisionregistroiva(m_femisionregistroiva->text());
     setserieregistroiva(m_serieregistroiva->text());
-    int error = RegistroIva::guardaRegistroIva();
+    int error = RegistroIva::guardar();
     dialogChanges_cargaInicial();
     _depura("END RegistroIvaView::guardaRegistroIva",0);
     return error;

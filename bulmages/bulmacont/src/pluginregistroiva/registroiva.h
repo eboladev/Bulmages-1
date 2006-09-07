@@ -245,10 +245,10 @@ public:
 
 
     virtual ~RegistroIva();
-    virtual int cargaRegistroIva(QString );
+    virtual int cargar(QString );
     virtual void pintaRegistroIva();
-    virtual int guardaRegistroIva();
-    virtual void borraRegistroIva();
+    virtual int guardar();
+    virtual int borrar();
     virtual void calculaypintatotales() {};
     void vaciaRegistroIva();
     int buscaborradorservicio(int);

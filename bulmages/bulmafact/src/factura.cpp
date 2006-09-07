@@ -206,19 +206,8 @@ void Factura::imprimirFactura() {
     buff.replace("[codigoserie_factura]", DBvalue("codigoserie_factura"));
 
     /// Impresion de la tabla de contenidos.
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, 8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "Codigo") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "Concepto") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "U.") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "Precio") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "Dto.") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("Factura", "Total") + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
     QString l;
-
     SDBRecord *linea;
-
     for(int i=0; i < listalineas->rowCount()-1; ++i) {
         linea = listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlfactura").toAscii().constData()) * Fixed(linea->DBvalue("pvplfactura").toAscii().constData());
@@ -233,8 +222,6 @@ void Factura::imprimirFactura() {
         fitxersortidatxt += "</tr>";
     } // end for
 
-
-    fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);
 
     Fixed basei("0.00");

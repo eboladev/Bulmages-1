@@ -62,4 +62,8 @@ def attr_get(node, attrs, dict={}):
 				res[key] = bool_get(node.getAttribute(key))
 			elif dict[key]=='int':
 				res[key] = int(node.getAttribute(key))
+			elif dict[key]=='float':
+				res[key] = float(node.getAttribute(key))
+			elif dict[key]=='unit':
+				res[key] = unit_get(node.getAttribute(key))
 	return res

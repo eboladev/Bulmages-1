@@ -196,16 +196,6 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     buff.replace("[refalbaran]", DBvalue("refalbaran"));
 
     /// Impresion de la tabla de contenidos.
-    fitxersortidatxt += "<blockTable style=\"tablacontenido\" colWidths=\"1.75cm, " \
-                        "8.75cm, 1.5cm, 1.5cm, 1.5cm, 2.25cm\" repeatRows=\"1\">\n";
-    fitxersortidatxt += "<tr>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Codigo") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Concepto") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Und") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Precio") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Dto") + "</td>\n";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Total") + "</td>\n";
-    fitxersortidatxt += "</tr>\n";
     QString l;
 
     SDBRecord *linea;
@@ -228,7 +218,6 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         fitxersortidatxt += "</tr>";
     }
 
-    fitxersortidatxt += "</blockTable>\n";
     buff.replace("[story]", fitxersortidatxt);
     Fixed basei("0.00");
     base::Iterator it;

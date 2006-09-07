@@ -22,8 +22,6 @@
 #include <Q3PopupMenu>
 #include "asiento1view.h"
 
-
-
 //Tabla Soportado
 #define  S_COL_FECHA 0
 #define  S_COL_ORDEN 1
@@ -72,9 +70,57 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
     emp->meteWindow(windowTitle(), this);
+
+/// ============================================
+/// DEFINICIONES PARA LA TABLA DE IVAAboutView
+    mui_tablasoportado->setDBTableName("registroiva");
+    mui_tablasoportado->setDBCampoId("idregistroiva");
+    mui_tablasoportado->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id"));
+    mui_tablasoportado->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Concepto Contable"));
+    mui_tablasoportado->addSHeader("baseimp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("idcuenta"));
+    mui_tablasoportado->addSHeader("iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("codigo"));
+    mui_tablasoportado->addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("tipocuenta"));
+    mui_tablasoportado->addSHeader("femisionregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("descripcioncuenta"));
+    mui_tablasoportado->addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("descripcion"));
+    mui_tablasoportado->addSHeader("serieregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Debe"));
+    mui_tablasoportado->addSHeader("idborrador", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Haber"));
+    mui_tablasoportado->addSHeader("incregistro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Contrapartida"));
+    mui_tablasoportado->addSHeader("regularizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Comentario"));
+    mui_tablasoportado->addSHeader("plan349", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("ID Canal"));
+    mui_tablasoportado->addSHeader("numorden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Conciliacion"));
+    mui_tablasoportado->addSHeader("cif", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idc_coste"));
+    mui_tablasoportado->addSHeader("idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idapunte"));
+    mui_tablasoportado->addSHeader("factemitida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idtipoiva"));
+    mui_tablasoportado->addSHeader("rectificaaregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("orden"));
+    mui_tablasoportado->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
+    mui_tablasoportado->setinsercion(FALSE);
+
+
+    mui_tablarepercutido->setDBTableName("registroiva");
+    mui_tablarepercutido->setDBCampoId("idregistroiva");
+    mui_tablarepercutido->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id"));
+    mui_tablarepercutido->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Concepto Contable"));
+    mui_tablarepercutido->addSHeader("baseimp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("idcuenta"));
+    mui_tablarepercutido->addSHeader("iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("codigo"));
+    mui_tablarepercutido->addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("tipocuenta"));
+    mui_tablarepercutido->addSHeader("femisionregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("descripcioncuenta"));
+    mui_tablarepercutido->addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("descripcion"));
+    mui_tablarepercutido->addSHeader("serieregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Debe"));
+    mui_tablarepercutido->addSHeader("idborrador", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Haber"));
+    mui_tablarepercutido->addSHeader("incregistro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Contrapartida"));
+    mui_tablarepercutido->addSHeader("regularizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Comentario"));
+    mui_tablarepercutido->addSHeader("plan349", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("ID Canal"));
+    mui_tablarepercutido->addSHeader("numorden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Conciliacion"));
+    mui_tablarepercutido->addSHeader("cif", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idc_coste"));
+    mui_tablarepercutido->addSHeader("idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idapunte"));
+    mui_tablarepercutido->addSHeader("factemitida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idtipoiva"));
+    mui_tablarepercutido->addSHeader("rectificaaregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("orden"));
+    mui_tablarepercutido->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
+    mui_tablarepercutido->setinsercion(FALSE);
+/// END DEFINICIONES PARA LA TABLA DE IVAAboutViewAboutViewAboutViewAboutView
+/// =============================================
     _depura("END ListRegistroIvaView::ListRegistroIvaView", 0);
 }
-
 
 ListRegistroIvaView::~ListRegistroIvaView() {
    _depura("ListRegistroIvaView::~ListRegistroIvaView", 0);
@@ -82,35 +128,33 @@ ListRegistroIvaView::~ListRegistroIvaView() {
    _depura("END ListRegistroIvaView::~ListRegistroIvaView", 0);
 }
 
-
 /**
  * Al hacer doble click sobre la tabla de ivas se accede al asiento 
  * que tiene dicha entrada
  */
-void ListRegistroIvaView::doble_click_soportado(int a, int, int, const QPoint &punto) {
+void ListRegistroIvaView::on_mui_tablasoportado_cellDoubleClicked(int, int) {
+    _depura("ListRegistroIvaView::on_mui_tablasoportado_itemDoubleClicked", 2);
     int idasiento;
-    idasiento = atoi(tablasoportado->text(a,S_COL_IDASIENTO).ascii());
+    idasiento = mui_tablasoportado->DBvalue("idasiento").toInt();
     m_companyact->intapuntsempresa()->muestraasiento(idasiento);
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
-    close();
-    punto.isNull();
+    _depura("END ListRegistroIvaView::on_mui_tablasoportado_itemDoubleClicked", 2);
 }
-
 
 /**
  * Al hacer doble click sobre la tabla de ivas se accede al asiento
  * que tiene dicha entrada
  */
-void ListRegistroIvaView::doble_click_repercutido(int a, int , int , const QPoint &) {
+void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked(int, int) {
+    _depura("ListRegistroIvaView::on_mui_tablarepercutido_itemDoubleClicked", 2);
     int idasiento;
-    idasiento = atoi(tablarepercutido->text(a,R_COL_IDASIENTO).ascii());
+    idasiento = mui_tablarepercutido->DBvalue("idasiento").toInt();
     m_companyact->intapuntsempresa()->muestraasiento(idasiento);
     m_companyact->intapuntsempresa()->show();
     m_companyact->intapuntsempresa()->setFocus();
-    close();
+    _depura("END ListRegistroIvaView::on_mui_tablarepercutido_itemDoubleClicked", 2);
 }
-
 
 void ListRegistroIvaView::boton_print() {
     regivaprintview *print = new regivaprintview(m_companyact,0,0);
@@ -119,11 +163,9 @@ void ListRegistroIvaView::boton_print() {
     delete print;
 }
 
-
-void ListRegistroIvaView::boton_reload() {
+void ListRegistroIvaView::on_mui_actualizar_clicked() {
     inicializa();
 }
-
 
 /**
  * 
@@ -134,8 +176,8 @@ void ListRegistroIvaView::inicializa() {
     QString sbaseimp, siva;
     QString   cbaseimp, civa, ctotal;
 
-    // Inicializamos las tablas de RESUMEN
-    // Y empezamos a trabajar con las tablas de resumen.
+    /// Inicializamos las tablas de RESUMEN
+    /// Y empezamos a trabajar con las tablas de resumen.
     m_listSoportado->setNumCols(3);
     m_listSoportado->horizontalHeader()->setLabel( RES_NOMBRETIPOIVASOPORTADO, tr("NOMBRETIPOIVA"));
     m_listSoportado->horizontalHeader()->setLabel( RES_IVASOPORTADO, tr("IVASOPORTADO"));
@@ -147,9 +189,7 @@ void ListRegistroIvaView::inicializa() {
     m_listRepercutido->horizontalHeader()->setLabel( RES_BASEREPERCUTIDO, tr("BASESOPORTADO"));
 
     QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, sum(ivaiva) AS tivaiva FROM iva  WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    m_companyact->begin();
     cursor2 *cur = m_companyact->cargacursor(SQLQuery, "elcursor");
-    m_companyact->commit();
     m_listSoportado->setNumRows(cur->numregistros());
     int j =0;
     while (! cur->eof() ) {	
@@ -162,9 +202,7 @@ void ListRegistroIvaView::inicializa() {
     delete cur;
 
     SQLQuery = "SELECT * FROM cuenta, tipoiva  LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva, SUM(ivaiva) AS tivaiva FROM iva WHERE iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"' AND NOT factemitida) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta";
-    m_companyact->begin();
     cur = m_companyact->cargacursor(SQLQuery, "elcursor");
-    m_companyact->commit();
     m_listRepercutido->setNumRows(cur->numregistros());
     j =0;
     while (! cur->eof() ) {
@@ -214,10 +252,12 @@ void ListRegistroIvaView::inicializa() {
 
 
 
-    query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'",finicial->text().ascii(), ffinal->text().ascii());
-    m_companyact->begin();
-    cursor2 *cursorreg = m_companyact->cargacursor(query,"cmquery");
-    m_companyact->commit();
+    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento AND borrador.fecha >= '%s' AND borrador.fecha <= '%s') AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida ",finicial->text().ascii(), ffinal->text().ascii());
+    cursor2 *cursorreg = m_companyact->cargacursor(query);
+
+    /// El nuevo proceso de carga es distinto.
+    mui_tablasoportado->cargar(cursorreg);
+
     int i =0;
     cursor2 *cursorcontra;
     tablasoportado->setNumRows(cursorreg->numregistros());
@@ -235,7 +275,6 @@ void ListRegistroIvaView::inicializa() {
         tablasoportado->setText(i,S_COL_CUENTA_IVA,cursorreg->valor("codigo"));
         if (tablasoportado->text(i,S_COL_CUENTA_IVA).left(3)!="472")
             tablasoportado->setText(i,S_COL_CUENTA_IVA,tr("Exento"));
-
 
         tablasoportado->setText(i,S_COL_BASEIMP,cursorreg->valor("baseimp"));
         tablasoportado->setText(i,S_COL_PORCENT_IVA,cursorreg->valor("iva"));
@@ -275,10 +314,11 @@ void ListRegistroIvaView::inicializa() {
 
 
     // Hacemos el c�culo de los que no pertenecen a iva soportado pq as�entran todos.
-    query.sprintf("SELECT *, (registroiva.baseimp+registroiva.iva) AS totalfactura FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND NOT factemitida AND borrador.fecha>='%s' AND borrador.fecha<='%s'ORDER BY borrador.fecha",finicial->text().ascii(), ffinal->text().ascii());
-    m_companyact->begin();
+    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento AND borrador.fecha >= '%s' AND borrador.fecha <= '%s') AS t1 ON t1.idborrador = registroiva.idborrador AND NOT factemitida", finicial->text().ascii(), ffinal->text().ascii());
     cursorreg = m_companyact->cargacursor(query,"cmquery");
-    m_companyact->commit();
+    /// El nuevo proceso de carga es distinto.
+    mui_tablasoportado->cargar(cursorreg);
+
     i =0;
     tablarepercutido->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
@@ -309,7 +349,6 @@ void ListRegistroIvaView::inicializa() {
     }// end While
     delete cursorreg;
 }
-
 
 void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
@@ -346,7 +385,7 @@ void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
             nuevae->inicializa1(idborrador);
             nuevae->on_mui_borrar_clicked();
             delete nuevae;
-	    boton_reload();
+	    on_mui_actualizar_clicked();
         }// end if
         break;
 
@@ -354,7 +393,6 @@ void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
     }// end switch
     delete popup;
 }
-
 
 void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
     // Si el asiento esta cerrado el menu a mostrar es diferente
@@ -390,63 +428,10 @@ void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
             nuevae->inicializa1(idborrador);
             nuevae->on_mui_borrar_clicked();
             delete nuevae;
-	    boton_reload();
+	    on_mui_actualizar_clicked();
         }// end if
         break;
     }// end switch
     delete popup;
 }
-
-/** \brief ESta funcion responde a la pulsaci� del bot� de busqueda de fecha inicial
-**/
-void ListRegistroIvaView::boton_finicial() {
-    finicial->setText("+");
-}
-
-
-void ListRegistroIvaView::finicial_textChanged( const QString & texto ) {
-    if (texto=="+") {
-        Q3PtrList<QDate> a;
-        finicial->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        finicial->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }// end if
-    if (texto=="*")
-        finicial->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}
-
-
-/** Esta funci� responde a la pulsaci� del boton de busqueda de fecha final
-**/
-void ListRegistroIvaView::boton_ffinal() {
-    ffinal->setText("+");
-}
-
-
-void ListRegistroIvaView::ffinal_textChanged( const QString & texto ) {
-    if (texto=="+") {
-        Q3PtrList<QDate> a;
-        ffinal->setText("");
-        calendario *cal = new calendario(0,0);
-        cal->exec();
-        a = cal->dn->selectedDates();
-        ffinal->setText(a.first()->toString("dd/MM/yyyy"));
-        delete cal;
-    }// end if
-    if (texto=="*")
-        ffinal->setText(QDate::currentDate().toString("dd/MM/yyyy") );
-}
-
-
-void ListRegistroIvaView::finicial_lostFocus() {
-    finicial->setText(normalizafecha(finicial->text()).toString("dd/MM/yyyy"));
-}
-
-void ListRegistroIvaView::ffinal_lostFocus() {
-    ffinal->setText(normalizafecha(ffinal->text()).toString("dd/MM/yyyy"));
-}
-
 

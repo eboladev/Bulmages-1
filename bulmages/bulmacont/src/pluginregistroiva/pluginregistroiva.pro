@@ -3,6 +3,10 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./fuentes/src/plugincorrector
 # Destiono es una biblioteca:  ../../../installbulmages/plugins/corrector
 
+exists(/usr/bin/distcc) {
+QMAKE_CXX = distcc g++
+}
+
 
 #The following line was inserted by qt3to4
 QT +=  qt3support xml

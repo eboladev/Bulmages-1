@@ -13,6 +13,12 @@ TEMPLATE = app
 
 QMAKE_LIBDIR += ../../installbulmages
 
+#Si existe distcc hacemos compilacion distribuida
+exists( /usr/bin/distcc ) {
+   QMAKE_CXX = distcc g++
+}
+
+
 # RESOURCES += ../../bulmages-recursos-graficos.qrc
 
 FORMS += about.ui \
@@ -245,8 +251,8 @@ INCLUDEPATH += ../../bulmalib \
 /usr/include/qt4 \
 /usr/include/qt4/Qt \
 /usr/include/qt4/QtXml \
-			        /usr/include/Qt \
-				/usr/include/QtXml \
+/usr/include/Qt \
+/usr/include/QtXml \
 /usr/lib/qt4/include/Qt \
 /usr/lib/qt4/include/QtXml \
 ..

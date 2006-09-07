@@ -3,6 +3,11 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./fuentes/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmacont
 
+
+exists(/usr/bin/distcc) {
+QMAKE_CXX = distcc g++
+}
+
 QT += qt3support
 
 #QMAKE_CLEAN = Makefile

@@ -58,10 +58,10 @@ RegistroIva::RegistroIva(empresa *comp) : DBRecord(comp) {
     addDBCampo("cif", DBCampo::DBvarchar, DBCampo::DBNotNull, "CIF");
     addDBCampo("idfpago", DBCampo::DBint, DBCampo::DBNothing, "Forma de Pago");
     addDBCampo("incregistro", DBCampo::DBboolean, DBCampo::DBNotNull, "incregistro");
-    addDBCampo("regularizacion", DBCampo::DBboolean, DBCampo::DBNotNull, "regularizacion");
-    addDBCampo("plan349", DBCampo::DBboolean, DBCampo::DBNotNull, "plan 349");
+    addDBCampo("regularizacion", DBCampo::DBboolean, DBCampo::DBNothing, "regularizacion");
+    addDBCampo("plan349", DBCampo::DBboolean, DBCampo::DBNothing, "plan 349");
     addDBCampo("factemitida", DBCampo::DBboolean, DBCampo::DBNotNull, "Factura Emitida");
-    addDBCampo("rectificaaregistroiva", DBCampo::DBint, DBCampo::DBNotNull, "Rectifica a");
+    addDBCampo("rectificaaregistroiva", DBCampo::DBint, DBCampo::DBNothing, "Rectifica a");
     addDBCampo("factura", DBCampo::DBvarchar, DBCampo::DBNothing, "Factura");
     addDBCampo("femisionregistroiva", DBCampo::DBdate, DBCampo::DBNotNull, "Fecha Emision");
     addDBCampo("serieregistroiva", DBCampo::DBvarchar, DBCampo::DBNothing, "Serie");
@@ -71,7 +71,7 @@ RegistroIva::RegistroIva(empresa *comp) : DBRecord(comp) {
 RegistroIva::~RegistroIva() {}
 
 
-void RegistroIva::borraRegistroIva() {
+int RegistroIva::borrar() {
     _depura("RegistroIva::borraRegistroIva",0);
     if (DBvalue("idpresupuesto") != "") {
         m_listalineas->borrar();
@@ -80,14 +80,14 @@ void RegistroIva::borraRegistroIva() {
         int error = m_companyact->ejecuta("DELETE FROM registroiva WHERE idregistroiva="+DBvalue("idregistroiva"));
         if (error) {
             m_companyact->rollback();
-            return;
+            return -1;
         }// end if
         m_companyact->commit();
         vaciaRegistroIva();
         pintaRegistroIva();
     }// end if
     _depura("END RegistroIva::borraRegistroIva",0);
-
+    return 0;
 }
 
 
@@ -125,7 +125,7 @@ void RegistroIva::pintaRegistroIva() {
 
 
 // Esta funci� carga un presupuesto.
-int RegistroIva::cargaRegistroIva(QString id) {
+int RegistroIva::cargar(QString id) {
     _depura("RegistroIva::cargaRegistroIva",0);
     int error = 0;
     QString query = "SELECT * FROM registroiva WHERE idregistroiva="+id;
@@ -154,7 +154,7 @@ int RegistroIva::cargaRegistroIva(QString id) {
 }
 
 
-int RegistroIva::guardaRegistroIva() {
+int RegistroIva::guardar() {
     _depura("RegistroIva::guardaRegistroIva",0);
     QString id;
     m_companyact->begin();
@@ -265,7 +265,6 @@ int RegistroIva::buscaborradorservicio(int idborrador) {
 }
 
 
-
 /** \brief busca la cuenta del cliente o del proveedor en el apunte que se ha seleccionado
   *
   * Se basa en el supuesto de que si la cuenta no es el cliente entonces la contrapartida de la cuenta
@@ -330,7 +329,6 @@ int RegistroIva::buscaborradorcliente(int idborrador) {
 }
 
 
-
 /**
   * \brief Inicializa el registro de iva. Calculando los datos que son buscables (O encontrables a partir del asiento).
   * Esquema:
@@ -353,7 +351,7 @@ void RegistroIva::inicializa1(int idapunte1) {
     cursor2 *cursoriva = m_companyact->cargacursor(query);
     if (!cursoriva->eof()) {
         // El registro ya existe
-        cargaRegistroIva( cursoriva->valor("idregistroiva"));
+        cargar( cursoriva->valor("idregistroiva"));
     } else {
         // El registro no existe y hay que hacer la propuesta más acertada de registro.
         ///buscamos en todo el asiento las cuentas de IVA y lo reflejamos
@@ -372,7 +370,6 @@ void RegistroIva::inicializa1(int idapunte1) {
     //    cargacobros();
     _depura("END RegistroIva::inicializa1", 0);
 }
-
 
 
 /** \brief busca las cuenta de IVA en el apunte que se ha seleccionado.
@@ -424,7 +421,6 @@ int RegistroIva::buscaborradoriva(int idborrador) {
     _depura("END RegistroIva::buscaborradoriva", 0);
     return 0;
 }
-
 
 
 /** \brief SLOT que se dispara cuando se ha hecho el bot� de bsqueda de una fecha.
