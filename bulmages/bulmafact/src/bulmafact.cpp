@@ -45,21 +45,17 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     setupUi(this);
 
     pWorkspace = new QWorkspace2(this);
-
     pWorkspace->setScrollBarsEnabled(TRUE);
 
     setCentralWidget(pWorkspace);
-//    showMaximized();
     show();
 
     m_company = new company();
     m_company->init(bd);
-
     m_company->setWorkspace(pWorkspace);
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
-
     /// Iniciamos el listventanas con el workspace para que pueda operar con el
     m_list->setWorkspace(pWorkspace);
 
@@ -79,8 +75,10 @@ bulmafact::~bulmafact() {
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
 #ifdef WINDOWS
+
     exit(0);
 #endif
+
     _depura("End Destructor de BulmaFact", 0);
 }
 
@@ -139,9 +137,10 @@ void bulmafact::closeEvent(QCloseEvent *) {
     delete m_company;
     delete m_list;
 #ifdef WINDOWS
+
     exit(0);
 #endif
-    _depura("END bulmafact::closeEvent", 0);
 
+    _depura("END bulmafact::closeEvent", 0);
 }
 

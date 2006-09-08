@@ -299,23 +299,21 @@ void _depura(QString cad, int nivel, QString param) {
         } // end if
     } // end for
 
-
-
     if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
         out << cad << " " << param << "\n";
         int err = QMessageBox::information(NULL,
-                                        QApplication::translate("funcaux", "Informacion de depuracion "),
-                                        cad + " " + param,
-                                        QApplication::translate("funcaux", "&Continuar"),
-                                        QApplication::translate("funcaux", "&Omitir"),
-					QApplication::translate("funcaux", "Omitir &Clase"),
-                                        0, 1);
+                                           QApplication::translate("funcaux", "Informacion de depuracion"),
+                                           cad + " " + param,
+                                           QApplication::translate("funcaux", "&Continuar"),
+                                           QApplication::translate("funcaux", "&Omitir"),
+                                           QApplication::translate("funcaux", "Omitir &clase"),
+                                           0, 1);
         if (err == 1) {
             mensajesanulados[indice++] = cad;
         } // end if
-	if (err == 2) {
-	    clasesanuladas[indiceclases++] = cad.left(cad.indexOf("::"));
-	} // end if
+        if (err == 2) {
+            clasesanuladas[indiceclases++] = cad.left(cad.indexOf("::"));
+        } // end if
     } // end if
 
     file.flush();
@@ -333,6 +331,9 @@ void _depura(QString cad, int nivel, QString param) {
 
 
 void mensajeInfo(QString cad) {
-    _depura(cad, 2);
+    QMessageBox::information(NULL,
+                             QApplication::translate("funcaux", "Atencion"),
+                             cad, QApplication::translate("funcaux", "&Continuar"),
+                             QString::null, 0);
 }
 

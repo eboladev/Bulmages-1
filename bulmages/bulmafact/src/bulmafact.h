@@ -58,9 +58,6 @@ public slots:
     virtual void s_About();
     void about();
     void aboutQt();
-
-    /// Acciones autoconectadas QT4
-    /// ===========================
     virtual void on_actionNuevo_Pedido_Proveedor_triggered() {
         m_company->s_newPedidoPro();
     };

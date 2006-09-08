@@ -62,7 +62,7 @@ using namespace std;
 /// @param name nombre de la ventana.
 /// @param modal Indica si la ventana debe comportar de forma modal o no. (por defecto si).
 abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal)
-        : QDialog(parent,name,modal) {
+        : QDialog(parent, name, modal) {
     _depura("abreempresaview::abreempresaview", 0);
     setupUi(this);
     QObject::connect(botonCancelar, SIGNAL(clicked(bool)), this, SLOT(s_botonCancelar()));
@@ -71,6 +71,11 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
     m_tipo = tipo;
     m_tipoempresa = "";
     m_modo = 0;
+    /// si el m_modo es 0 (salir del programa si se cancela la ventana) entonces poner
+    /// un titulo adecuado al boton.
+    if (m_modo == 0) {
+        botonCancelar->setText(tr("&Cierra el programa"));
+    }
     cargaArchivo();
     _depura("END abreempresaview::abreempresaview", 0);
 }
@@ -78,7 +83,6 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
 
 abreempresaview::~abreempresaview() {
     _depura("abreempresaview::~abreempresaview", 0);
-
 }
 
 
@@ -137,7 +141,7 @@ void abreempresaview::accept() {
         m_tipoempresa = textoitem3;
         done(0);
     } else {
-        mensajeInfo(tr("Hay que seleccionar una empresa para entrar en el programa."));
+        mensajeInfo(tr("Tiene que seleccionar la empresa con la que quiere trabajar."));
     }
     _depura("abreempresaview::accept", 0);
 }
@@ -154,8 +158,6 @@ void abreempresaview::mui_empresasdobleclick() {
 /// Carga del archivo de mui_empresas las mui_empresas disponibles.
 void abreempresaview::cargaArchivo() {
     _depura("abreempresaview::cargaArchivo", 0);
-
-
 #ifndef WINDOWS
 
     QString dir1 = getenv("HOME");
@@ -164,7 +166,6 @@ void abreempresaview::cargaArchivo() {
 
     QString dir1 = "C:\\.bulmages\\" + LISTEMPRESAS;
 #endif
-
     /// Si el archivo no existe hacemos una recarga.
     _depura("Vamos a comprobar la existencia\n", 1);
     /// Comprobamos la existencia del directorio personalizado de bulmages. Y si no
@@ -196,7 +197,6 @@ void abreempresaview::cargaArchivo() {
 /// Tambien actualiza el listado de mui_empresas visibles.
 void abreempresaview::guardaArchivo() {
     _depura("abreempresaview::guardaArchivo", 0);
-
 #ifndef WINDOWS
 
     QString dir1 = getenv("HOME");
@@ -226,24 +226,23 @@ void abreempresaview::guardaArchivo() {
         db1 = new postgresiface2();
         db1->inicializa(curs->valor("datname"));
         try {
-		cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
-		if (!curs1->eof()) {
-		tipo = curs1->valor("valor");
-		nomdb = curs->valor("datname");
-		} // end if
-		delete curs1;
-		curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
-		if (!curs1->eof()) {
-		nombre = curs1->valor("valor");
-		} // end if
-		delete curs1;
-		curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
-		if (!curs1->eof()) {
-		ano = curs1->valor("valor");
-		} // end if
-		delete curs1;
-        } catch(...) {
-        }
+            cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
+            if (!curs1->eof()) {
+                tipo = curs1->valor("valor");
+                nomdb = curs->valor("datname");
+            } // end if
+            delete curs1;
+            curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
+            if (!curs1->eof()) {
+                nombre = curs1->valor("valor");
+            } // end if
+            delete curs1;
+            curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
+            if (!curs1->eof()) {
+                ano = curs1->valor("valor");
+            } // end if
+            delete curs1;
+        } catch (...) {}
         if (nomdb != "") {
             if (tipo == m_tipo || m_tipo == "") {
                 insertCompany(nombre, ano, nomdb, tipo);

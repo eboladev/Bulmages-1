@@ -7,7 +7,7 @@ LANGUAGE = C++
 QT += qt3support
 TARGET = ../../installbulmages/bulmafact
 #CONFIG += qt debug
-CONFIG += release
+CONFIG += release warn_on
 LIBS += -rdynamic
 TEMPLATE = app
 

@@ -93,7 +93,7 @@ int pgimportfiles::bulmages2Contaplus(QFile &subcuentas, QFile &asientos) {
     QTextStream stream(&subcuentas);
     QTextStream streamas(&asientos);
     /// Se supone que ho hay campos mayores de 100 caracteres para que el algoritmo funcione.
-    strblancomax.fill(' ',100);
+    strblancomax.fill(' ', 100);
     /// Solo se van a exportar las cuentas utilizadas, Ya que contaplus no hace
     /// ordenacion en arbol.
     QString query = "SELECT * FROM cuenta WHERE idcuenta IN (SELECT DISTINCT idcuenta FROM apunte)";
@@ -568,7 +568,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
             curc->siguienteregistro();
         }// end while
         delete curc;
-    }// end if
+    } // end if
 
     if (tipo & IMPORT_ARTICULOS) {
         QString query = "SELECT * FROM articulo LEFT JOIN familia ON familia.idfamilia = articulo.idfamilia ";
@@ -602,7 +602,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
             curc->siguienteregistro();
         }// end while
         delete curc;
-    }// end if
+    } // end if
 
     /// Hacemos la exportacion de facturas de clientes.
     if (tipo & IMPORT_FACTURASCLIENTE) {
@@ -762,41 +762,40 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
             cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + curc->valor("idpresupuesto"));
             while (!curlc->eof()) {
                 stream << "\t<LPRESUPUESTO>\n";
-                stream << "\t\t<IDLPRESUPUESTO>"    << XMLProtect(curlc->valor("idlpresupuesto"))   << "</IDLPRESUPUESTO>\n";
-                stream << "\t\t\t<DESCLPRESUPUESTO>"    << XMLProtect(curlc->valor("desclpresupuesto"))   << "</DESCLPRESUPUESTO>\n";
-                stream << "\t\t<CANTLPRESUPUESTO>"    << XMLProtect(curlc->valor("cantlpresupuesto"))   << "</CANTLPRESUPUESTO>\n";
-                stream << "\t\t<PVPLPRESUPUESTO>"    << XMLProtect(curlc->valor("pvplpresupuesto"))   << "</PVPLPRESUPUESTO>\n";
-                stream << "\t\t<IVALPRESUPUESTO>"    << XMLProtect(curlc->valor("ivalpresupuesto"))   << "</IVALPRESUPUESTO>\n";
-                stream << "\t\t<DESCUENTOLPRESUPUESTO>"    << XMLProtect(curlc->valor("descuentolpresupuesto"))   << "</DESCUENTOLPRESUPUESTO>\n";
-                stream << "\t\t<IDPRESUPUESTO>"    << XMLProtect(curlc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
-                stream << "\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
+                stream << "\t\t<IDLPRESUPUESTO>" << XMLProtect(curlc->valor("idlpresupuesto")) << "</IDLPRESUPUESTO>\n";
+                stream << "\t\t\t<DESCLPRESUPUESTO>" << XMLProtect(curlc->valor("desclpresupuesto")) << "</DESCLPRESUPUESTO>\n";
+                stream << "\t\t<CANTLPRESUPUESTO>" << XMLProtect(curlc->valor("cantlpresupuesto")) << "</CANTLPRESUPUESTO>\n";
+                stream << "\t\t<PVPLPRESUPUESTO>" << XMLProtect(curlc->valor("pvplpresupuesto")) << "</PVPLPRESUPUESTO>\n";
+                stream << "\t\t<IVALPRESUPUESTO>" << XMLProtect(curlc->valor("ivalpresupuesto")) << "</IVALPRESUPUESTO>\n";
+                stream << "\t\t<DESCUENTOLPRESUPUESTO>" << XMLProtect(curlc->valor("descuentolpresupuesto")) << "</DESCUENTOLPRESUPUESTO>\n";
+                stream << "\t\t<IDPRESUPUESTO>" << XMLProtect(curlc->valor("idpresupuesto")) << "</IDPRESUPUESTO>\n";
+                stream << "\t\t<IDARTICULO>" << XMLProtect(curlc->valor("idarticulo")) << "</IDARTICULO>\n";
                 /// Los datos relacionados con el articulo
-                stream << "\t\t<CODARTICULO>"    << XMLProtect(curlc->valor("codarticulo"))   << "</CODARTICULO>\n";
-                stream << "\t\t<NOMARTICULO>"    << XMLProtect(curlc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
-                stream << "\t\t<ABREVARTICULO>"    << XMLProtect(curlc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
-                stream << "\t\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curlc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t<CODARTICULO>" << XMLProtect(curlc->valor("codarticulo")) << "</CODARTICULO>\n";
+                stream << "\t\t<NOMARTICULO>" << XMLProtect(curlc->valor("nomarticulo")) << "</NOMARTICULO>\n";
+                stream << "\t\t<ABREVARTICULO>" << XMLProtect(curlc->valor("abrevarticulo")) << "</ABREVARTICULO>\n";
+                stream << "\t\t<CODIGOCOMPLETOARTICULO>" << XMLProtect(curlc->valor("codigocompletoarticulo")) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t</LPRESUPUESTO>\n";
                 curlc->siguienteregistro();
-            }// end while
+            } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = conexionbase->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto ="+curc->valor("idpresupuesto"));
+            curlc = conexionbase->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto = " + curc->valor("idpresupuesto"));
             while (!curlc->eof()) {
                 stream << "\t<DPRESUPUESTO>\n";
-                stream << "\t\t<IDDPRESUPUESTO>"    << XMLProtect(curlc->valor("iddpresupuesto"))   << "</IDDPRESUPUESTO>\n";
-                stream << "\t\t<CONCEPTDPRESUPUESTO>"    << XMLProtect(curlc->valor("conceptdpresupuesto"))   << "</CONCEPTDPRESUPUESTO>\n";
-                stream << "\t\t<PROPORCIONDPRESUPUESTO>"    << XMLProtect(curlc->valor("proporciondpresupuesto"))   << "</PROPORCIONDPRESUPUESTO>\n";
-                stream << "\t\t<IDPRESUPUESTO>"    << XMLProtect(curlc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
+                stream << "\t\t<IDDPRESUPUESTO>" << XMLProtect(curlc->valor("iddpresupuesto")) << "</IDDPRESUPUESTO>\n";
+                stream << "\t\t<CONCEPTDPRESUPUESTO>" << XMLProtect(curlc->valor("conceptdpresupuesto")) << "</CONCEPTDPRESUPUESTO>\n";
+                stream << "\t\t<PROPORCIONDPRESUPUESTO>" << XMLProtect(curlc->valor("proporciondpresupuesto")) << "</PROPORCIONDPRESUPUESTO>\n";
+                stream << "\t\t<IDPRESUPUESTO>" << XMLProtect(curlc->valor("idpresupuesto")) << "</IDPRESUPUESTO>\n";
                 stream << "\t</DPRESUPUESTO>\n";
                 curlc->siguienteregistro();
-            }// end while
+            } // end while
             delete curlc;
             stream << "</PRESUPUESTO>\n";
             curc->siguienteregistro();
-        }// end while
+        } // end while
         delete curc;
-    }// end if
-
+    } // end if
 
     /// Hacemos la exportacion de facturas de clientes.
     if (tipo & IMPORT_PEDIDOSCLIENTE) {
@@ -808,92 +807,91 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
         cursor2 *curc = conexionbase->cargacursor(query);
         while (!curc->eof()) {
             stream << "<PEDIDOCLIENTE>\n";
-            stream << "\t<IDPEDIDOCLIENTE>"    << XMLProtect(curc->valor("idpedidocliente"))   << "</IDPEDIDOCLIENTE>\n";
-            stream << "\t<NUMPEDIDOCLIENTE>"    << XMLProtect(curc->valor("numpedidocliente"))   << "</NUMPEDIDOCLIENTE>\n";
-            stream << "\t<FECHAPEDIDOCLIENTE>"    << XMLProtect(curc->valor("fechapedidocliente"))   << "</FECHAPEDIDOCLIENTE>\n";
-            stream << "\t<REFPEDIDOCLIENTE>"    << XMLProtect(curc->valor("refpedidocliente"))   << "</REFPEDIDOCLIENTE>\n";
-            stream << "\t<DESCPEDIDOCLIENTE>"    << XMLProtect(curc->valor("descpedidocliente"))   << "</DESCPEDIDOCLIENTE>\n";
-            stream << "\t<CONTACTPEDIDOCLIENTE>"    << XMLProtect(curc->valor("contactpedidocliente"))   << "</CONTACTPEDIDOCLIENTE>\n";
-            stream << "\t<TELPEDIDOCLIENTE>"    << XMLProtect(curc->valor("telpedidocliente"))   << "</TELPEDIDOCLIENTE>\n";
-            stream << "\t<IDPRESUPUESTO>"    << XMLProtect(curc->valor("idpresupuesto"))   << "</IDPRESUPUESTO>\n";
-            stream << "\t<COMENTPEDIDOCLIENTE>"    << XMLProtect(curc->valor("comentpedidocliente"))   << "</COMENTPEDIDOCLIENTE>\n";
-            stream << "\t<IDUSUARI>"    << XMLProtect(curc->valor("idusuari"))   << "</IDUSUARI>\n";
-            stream << "\t<PROCESADOPEDIDOCLIENTE>"    << XMLProtect(curc->valor("procesadopedidocliente"))   << "</PROCESADOPEDIDOCLIENTE>\n";
-            stream << "\t<IDCLIENTE>"    << XMLProtect(curc->valor("idcliente"))   << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>"    << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>"    << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>"    << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+            stream << "\t<IDPEDIDOCLIENTE>" << XMLProtect(curc->valor("idpedidocliente")) << "</IDPEDIDOCLIENTE>\n";
+            stream << "\t<NUMPEDIDOCLIENTE>" << XMLProtect(curc->valor("numpedidocliente")) << "</NUMPEDIDOCLIENTE>\n";
+            stream << "\t<FECHAPEDIDOCLIENTE>" << XMLProtect(curc->valor("fechapedidocliente")) << "</FECHAPEDIDOCLIENTE>\n";
+            stream << "\t<REFPEDIDOCLIENTE>" << XMLProtect(curc->valor("refpedidocliente")) << "</REFPEDIDOCLIENTE>\n";
+            stream << "\t<DESCPEDIDOCLIENTE>" << XMLProtect(curc->valor("descpedidocliente")) << "</DESCPEDIDOCLIENTE>\n";
+            stream << "\t<CONTACTPEDIDOCLIENTE>" << XMLProtect(curc->valor("contactpedidocliente")) << "</CONTACTPEDIDOCLIENTE>\n";
+            stream << "\t<TELPEDIDOCLIENTE>" << XMLProtect(curc->valor("telpedidocliente")) << "</TELPEDIDOCLIENTE>\n";
+            stream << "\t<IDPRESUPUESTO>" << XMLProtect(curc->valor("idpresupuesto")) << "</IDPRESUPUESTO>\n";
+            stream << "\t<COMENTPEDIDOCLIENTE>" << XMLProtect(curc->valor("comentpedidocliente")) << "</COMENTPEDIDOCLIENTE>\n";
+            stream << "\t<IDUSUARI>" << XMLProtect(curc->valor("idusuari")) << "</IDUSUARI>\n";
+            stream << "\t<PROCESADOPEDIDOCLIENTE>" << XMLProtect(curc->valor("procesadopedidocliente")) << "</PROCESADOPEDIDOCLIENTE>\n";
+            stream << "\t<IDCLIENTE>" << XMLProtect(curc->valor("idcliente")) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << XMLProtect(curc->valor("idalmacen")) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << XMLProtect(curc->valor("idforma_pago")) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << XMLProtect(curc->valor("idtrabajador")) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el presupuesto  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << XMLProtect(curc->valor("codigoalmacen")) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << XMLProtect(curc->valor("nomalmacen")) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << XMLProtect(curc->valor("diralmacen")) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << XMLProtect(curc->valor("poblalmacen")) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << XMLProtect(curc->valor("cpalmacen")) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << XMLProtect(curc->valor("telalmacen")) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
+            stream << "\t<NOMCLIENTE>" << XMLProtect(curc->valor("nomcliente")) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << XMLProtect(curc->valor("nomaltcliente")) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << XMLProtect(curc->valor("bancocliente")) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << XMLProtect(curc->valor("dircliente")) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << XMLProtect(curc->valor("poblcliente")) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << XMLProtect(curc->valor("faxcliente")) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << XMLProtect(curc->valor("mailcliente")) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << XMLProtect(curc->valor("urlcliente")) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << XMLProtect(curc->valor("provcliente")) << "</PROVCLIENTE>\n";
             /// Datos sobre el trabajador
-            stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
+            stream << "\t<NOMTRABAJADOR>" << XMLProtect(curc->valor("nomtrabajador")) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect(curc->valor("apellidostrabajador")) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << XMLProtect(curc->valor("dirtrabajador")) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << XMLProtect(curc->valor("nsstrabajador")) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << XMLProtect(curc->valor("teltrabajador")) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << XMLProtect(curc->valor("moviltrabajador")) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << XMLProtect(curc->valor("emailtrabajador")) << "</EMAILTRABAJADOR>\n";
             /// Datos sobre la forma de pago
-            stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<DESCFORMA_PAGO>" << XMLProtect(curc->valor("descforma_pago")) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect(curc->valor("dias1tforma_pago")) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect(curc->valor("descuentoforma_pago")) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente ="+curc->valor("idpedidocliente"));
+            cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente = " + curc->valor("idpedidocliente"));
             while (!curlc->eof()) {
                 stream << "\t\t<LPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("idlpedidocliente"))   << "</IDLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<DESCLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("desclpedidocliente"))   << "</DESCLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<CANTLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("cantlpedidocliente"))   << "</CANTLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<PVPLPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("pvplpedidocliente"))   << "</PVPLPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IVALPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("ivalpedidocliente"))   << "</IVALPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>"    << XMLProtect(curlc->valor("descuentolpedidocliente"))   << "</DESCUENTOLPEDIDOCLIENTEO>\n";
-                stream << "\t\t\t<IDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("idpresupuesto"))   << "</IDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
-                /// Los datos relacionados con el articulo
-                stream << "\t\t\t<CODARTICULO>"    << XMLProtect(curlc->valor("codarticulo"))   << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>"    << XMLProtect(curlc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>"    << XMLProtect(curlc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curlc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<IDLPEDIDOCLIENTE>" << XMLProtect(curlc->valor("idlpedidocliente")) << "</IDLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<DESCLPEDIDOCLIENTE>" << XMLProtect(curlc->valor("desclpedidocliente")) << "</DESCLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<CANTLPEDIDOCLIENTE>" << XMLProtect(curlc->valor("cantlpedidocliente")) << "</CANTLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<PVPLPEDIDOCLIENTE>" << XMLProtect(curlc->valor("pvplpedidocliente")) << "</PVPLPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IVALPEDIDOCLIENTE>" << XMLProtect(curlc->valor("ivalpedidocliente")) << "</IVALPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<DESCUENTOLPEDIDOCLIENTEO>" << XMLProtect(curlc->valor("descuentolpedidocliente")) << "</DESCUENTOLPEDIDOCLIENTEO>\n";
+                stream << "\t\t\t<IDPEDIDOCLIENTE>" << XMLProtect(curlc->valor("idpresupuesto")) << "</IDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDARTICULO>" << XMLProtect(curlc->valor("idarticulo")) << "</IDARTICULO>\n";
+                /// Los datos relacionados con el articulo.
+                stream << "\t\t\t<CODARTICULO>" << XMLProtect(curlc->valor("codarticulo")) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << XMLProtect(curlc->valor("nomarticulo")) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << XMLProtect(curlc->valor("abrevarticulo")) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << XMLProtect(curlc->valor("codigocompletoarticulo")) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LPRESUPUESTO>\n";
                 curlc->siguienteregistro();
-            }// end while
+            } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = conexionbase->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente ="+curc->valor("idpedidocliente"));
+            curlc = conexionbase->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente = " + curc->valor("idpedidocliente"));
             while (!curlc->eof()) {
                 stream << "\t\t<DPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("iddpedidocliente"))   << "</IDDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("conceptdpedidocliente"))   << "</CONCEPTDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("proporciondpedidocliente"))   << "</PROPORCIONDPEDIDOCLIENTE>\n";
-                stream << "\t\t\t<IDPEDIDOCLIENTE>"    << XMLProtect(curlc->valor("idpedidocliente"))   << "</IDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDDPEDIDOCLIENTE>" << XMLProtect(curlc->valor("iddpedidocliente")) << "</IDDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<CONCEPTDPEDIDOCLIENTE>" << XMLProtect(curlc->valor("conceptdpedidocliente")) << "</CONCEPTDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<PROPORCIONDPEDIDOCLIENTE>" << XMLProtect(curlc->valor("proporciondpedidocliente")) << "</PROPORCIONDPEDIDOCLIENTE>\n";
+                stream << "\t\t\t<IDPEDIDOCLIENTE>" << XMLProtect(curlc->valor("idpedidocliente")) << "</IDPEDIDOCLIENTE>\n";
                 stream << "\t\t</DPEDIDOCLIENTE>\n";
                 curlc->siguienteregistro();
-            }// end while
+            } // end while
             delete curlc;
             stream << "</PEDIDOCLIENTE>\n";
             curc->siguienteregistro();
-        }// end while
+        } // end while
         delete curc;
-    }// end if
-
+    } // end if
 
     /// Hacemos la exportacion de facturas de clientes.
     if (tipo & IMPORT_ALBARANESCLIENTE) {
@@ -905,106 +903,104 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
         cursor2 *curc = conexionbase->cargacursor(query);
         while (!curc->eof()) {
             stream << "<ALBARAN>\n";
-            stream << "\t<IDALBARAN>"    << XMLProtect(curc->valor("idalbaran"))   << "</IDALBARAN>\n";
-            stream << "\t<NUMALBARAN>"    << XMLProtect(curc->valor("numalbaran"))   << "</NUMALBARAN>\n";
-            stream << "\t<DESCALBARAN>"    << XMLProtect(curc->valor("descalbaran"))   << "</DESCALBARAN>\n";
-            stream << "\t<REFALBARAN>"    << XMLProtect(curc->valor("refalbaran"))   << "</REFALBARAN>\n";
-            stream << "\t<FECHAALBARAN>"    << XMLProtect(curc->valor("fechaalbaran"))   << "</FECHAALBARAN>\n";
-            stream << "\t<COMENTALBARAN>"    << XMLProtect(curc->valor("comentalbaran"))   << "</COMENTALBARAN>\n";
-            stream << "\t<PROCESADOALBARAN>"    << XMLProtect(curc->valor("procesadoalbaran"))   << "</PROCESADOALBARAN>\n";
-            stream << "\t<CONTACTALBARAN>"    << XMLProtect(curc->valor("contactalbaran"))   << "</CONTACTALBARAN>\n";
-            stream << "\t<TELALBARAN>"    << XMLProtect(curc->valor("telalbaran"))   << "</TELALBARAN>\n";
-            stream << "\t<IDUSUARI>"    << XMLProtect(curc->valor("idusuari"))   << "</IDUSUARI>\n";
-            stream << "\t<IDCLIENTE>"    << XMLProtect(curc->valor("idcliente"))   << "</IDCLIENTE>\n";
-            stream << "\t<IDALMACEN>"    << XMLProtect(curc->valor("idalmacen"))   << "</IDALMACEN>\n";
-            stream << "\t<IDFORMA_PAGO>"    << XMLProtect(curc->valor("idforma_pago"))   << "</IDFORMA_PAGO>\n";
-            stream << "\t<IDTRABAJADOR>"    << XMLProtect(curc->valor("idtrabajador"))   << "</IDTRABAJADOR>\n";
+            stream << "\t<IDALBARAN>" << XMLProtect(curc->valor("idalbaran")) << "</IDALBARAN>\n";
+            stream << "\t<NUMALBARAN>" << XMLProtect(curc->valor("numalbaran")) << "</NUMALBARAN>\n";
+            stream << "\t<DESCALBARAN>" << XMLProtect(curc->valor("descalbaran")) << "</DESCALBARAN>\n";
+            stream << "\t<REFALBARAN>" << XMLProtect(curc->valor("refalbaran")) << "</REFALBARAN>\n";
+            stream << "\t<FECHAALBARAN>" << XMLProtect(curc->valor("fechaalbaran")) << "</FECHAALBARAN>\n";
+            stream << "\t<COMENTALBARAN>" << XMLProtect(curc->valor("comentalbaran")) << "</COMENTALBARAN>\n";
+            stream << "\t<PROCESADOALBARAN>" << XMLProtect(curc->valor("procesadoalbaran")) << "</PROCESADOALBARAN>\n";
+            stream << "\t<CONTACTALBARAN>" << XMLProtect(curc->valor("contactalbaran")) << "</CONTACTALBARAN>\n";
+            stream << "\t<TELALBARAN>" << XMLProtect(curc->valor("telalbaran")) << "</TELALBARAN>\n";
+            stream << "\t<IDUSUARI>" << XMLProtect(curc->valor("idusuari")) << "</IDUSUARI>\n";
+            stream << "\t<IDCLIENTE>" << XMLProtect(curc->valor("idcliente")) << "</IDCLIENTE>\n";
+            stream << "\t<IDALMACEN>" << XMLProtect(curc->valor("idalmacen")) << "</IDALMACEN>\n";
+            stream << "\t<IDFORMA_PAGO>" << XMLProtect(curc->valor("idforma_pago")) << "</IDFORMA_PAGO>\n";
+            stream << "\t<IDTRABAJADOR>" << XMLProtect(curc->valor("idtrabajador")) << "</IDTRABAJADOR>\n";
             /// Datos iniciales para el albaran  que pueden ser de utilidad.
-            stream << "\t<CODIGOALMACEN>"   << XMLProtect(curc->valor("codigoalmacen"))   << "</CODIGOALMACEN>\n";
-            stream << "\t<NOMALMACEN>"   << XMLProtect(curc->valor("nomalmacen"))   << "</NOMALMACEN>\n";
-            stream << "\t<DIRALMACEN>"   << XMLProtect(curc->valor("diralmacen"))   << "</DIRALMACEN>\n";
-            stream << "\t<POBLALMACEN>"   << XMLProtect(curc->valor("poblalmacen"))   << "</POBLALMACEN>\n";
-            stream << "\t<CPALMACEN>"   << XMLProtect(curc->valor("cpalmacen"))   << "</CPALMACEN>\n";
-            stream << "\t<TELALMACEN>"   << XMLProtect(curc->valor("telalmacen"))   << "</TELALMACEN>\n";
+            stream << "\t<CODIGOALMACEN>" << XMLProtect(curc->valor("codigoalmacen")) << "</CODIGOALMACEN>\n";
+            stream << "\t<NOMALMACEN>" << XMLProtect(curc->valor("nomalmacen")) << "</NOMALMACEN>\n";
+            stream << "\t<DIRALMACEN>" << XMLProtect(curc->valor("diralmacen")) << "</DIRALMACEN>\n";
+            stream << "\t<POBLALMACEN>" << XMLProtect(curc->valor("poblalmacen")) << "</POBLALMACEN>\n";
+            stream << "\t<CPALMACEN>" << XMLProtect(curc->valor("cpalmacen")) << "</CPALMACEN>\n";
+            stream << "\t<TELALMACEN>" << XMLProtect(curc->valor("telalmacen")) << "</TELALMACEN>\n";
             /// Datos referentes al cliente.
-            stream << "\t<NOMCLIENTE>"      << XMLProtect(curc->valor("nomcliente"))        << "</NOMCLIENTE>\n";
-            stream << "\t<NOMALTCLIENTE>"   << XMLProtect(curc->valor("nomaltcliente"))   << "</NOMALTCLIENTE>\n";
-            stream << "\t<CIFCLIENTE>"  << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
-            stream << "\t<BANCOCLIENTE>"    << XMLProtect(curc->valor("bancocliente"))      << "</BANCOCLIENTE>\n";
-            stream << "\t<DIRCLIENTE>"     << XMLProtect(curc->valor("dircliente"))        << "</DIRCLIENTE>\n";
-            stream << "\t<POBLCLIENTE>"    << XMLProtect(curc->valor("poblcliente"))   << "</POBLCLIENTE>\n";
-            stream << "\t<CPCLIENTE>"  << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
-            stream << "\t<TELCLIENTE>"  << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
-            stream << "\t<FAXCLIENTE>"    << XMLProtect(curc->valor("faxcliente"))      << "</FAXCLIENTE>\n";
-            stream << "\t<MAILCLIENTE>"   << XMLProtect(curc->valor("mailcliente"))        << "</MAILCLIENTE>\n";
-            stream << "\t<URLCLIENTE>"    << XMLProtect(curc->valor("urlcliente"))   << "</URLCLIENTE>\n";
-            stream << "\t<PROVCLIENTE>"    << XMLProtect(curc->valor("provcliente"))   << "</PROVCLIENTE>\n";
-            /// Datos sobre el trabajador
-            stream << "\t<NOMTRABAJADOR>"   << XMLProtect(curc->valor("nomtrabajador"))   << "</NOMTRABAJADOR>\n";
-            stream << "\t<APELLIDOSTRABAJADOR>"   << XMLProtect(curc->valor("apellidostrabajador"))   << "</APELLIDOSTRABAJADOR>\n";
-            stream << "\t<DIRTRABAJADOR>"   << XMLProtect(curc->valor("dirtrabajador"))   << "</DIRTRABAJADOR>\n";
-            stream << "\t<NSSTRABAJADOR>"   << XMLProtect(curc->valor("nsstrabajador"))   << "</NSSTRABAJADOR>\n";
-            stream << "\t<TELTRABAJADOR>"   << XMLProtect(curc->valor("teltrabajador"))   << "</TELTRABAJADOR>\n";
-            stream << "\t<MOVILTRABAJADOR>"   << XMLProtect(curc->valor("moviltrabajador"))   << "</MOVILTRABAJADOR>\n";
-            stream << "\t<EMAILTRABAJADOR>"   << XMLProtect(curc->valor("emailtrabajador"))   << "</EMAILTRABAJADOR>\n";
-            /// Datos sobre la forma de pago
-            stream << "\t<DESCFORMA_PAGO>"   << XMLProtect(curc->valor("descforma_pago"))   << "</DESCFORMA_PAGO>\n";
-            stream << "\t<DIAS1TFORMA_PAGO>"   << XMLProtect(curc->valor("dias1tforma_pago"))   << "</DIAS1TFORMA_PAGO>\n";
-            stream << "\t<DESCUENTOFORMA_PAGO>"   << XMLProtect(curc->valor("descuentoforma_pago"))   << "</DESCUENTOFORMA_PAGO>\n";
+            stream << "\t<NOMCLIENTE>" << XMLProtect(curc->valor("nomcliente")) << "</NOMCLIENTE>\n";
+            stream << "\t<NOMALTCLIENTE>" << XMLProtect(curc->valor("nomaltcliente")) << "</NOMALTCLIENTE>\n";
+            stream << "\t<CIFCLIENTE>" << XMLProtect(curc->valor("cifcliente")) << "</CIFCLIENTE>\n";
+            stream << "\t<BANCOCLIENTE>" << XMLProtect(curc->valor("bancocliente")) << "</BANCOCLIENTE>\n";
+            stream << "\t<DIRCLIENTE>" << XMLProtect(curc->valor("dircliente")) << "</DIRCLIENTE>\n";
+            stream << "\t<POBLCLIENTE>" << XMLProtect(curc->valor("poblcliente")) << "</POBLCLIENTE>\n";
+            stream << "\t<CPCLIENTE>" << XMLProtect(curc->valor("cpcliente")) << "</CPCLIENTE>\n";
+            stream << "\t<TELCLIENTE>" << XMLProtect(curc->valor("telcliente")) << "</TELCLIENTE>\n";
+            stream << "\t<FAXCLIENTE>" << XMLProtect(curc->valor("faxcliente")) << "</FAXCLIENTE>\n";
+            stream << "\t<MAILCLIENTE>" << XMLProtect(curc->valor("mailcliente")) << "</MAILCLIENTE>\n";
+            stream << "\t<URLCLIENTE>" << XMLProtect(curc->valor("urlcliente")) << "</URLCLIENTE>\n";
+            stream << "\t<PROVCLIENTE>" << XMLProtect(curc->valor("provcliente")) << "</PROVCLIENTE>\n";
+            /// Datos sobre el trabajador.
+            stream << "\t<NOMTRABAJADOR>" << XMLProtect(curc->valor("nomtrabajador")) << "</NOMTRABAJADOR>\n";
+            stream << "\t<APELLIDOSTRABAJADOR>" << XMLProtect(curc->valor("apellidostrabajador")) << "</APELLIDOSTRABAJADOR>\n";
+            stream << "\t<DIRTRABAJADOR>" << XMLProtect(curc->valor("dirtrabajador")) << "</DIRTRABAJADOR>\n";
+            stream << "\t<NSSTRABAJADOR>" << XMLProtect(curc->valor("nsstrabajador")) << "</NSSTRABAJADOR>\n";
+            stream << "\t<TELTRABAJADOR>" << XMLProtect(curc->valor("teltrabajador")) << "</TELTRABAJADOR>\n";
+            stream << "\t<MOVILTRABAJADOR>" << XMLProtect(curc->valor("moviltrabajador")) << "</MOVILTRABAJADOR>\n";
+            stream << "\t<EMAILTRABAJADOR>" << XMLProtect(curc->valor("emailtrabajador")) << "</EMAILTRABAJADOR>\n";
+            /// Datos sobre la forma de pago.
+            stream << "\t<DESCFORMA_PAGO>" << XMLProtect(curc->valor("descforma_pago")) << "</DESCFORMA_PAGO>\n";
+            stream << "\t<DIAS1TFORMA_PAGO>" << XMLProtect(curc->valor("dias1tforma_pago")) << "</DIAS1TFORMA_PAGO>\n";
+            stream << "\t<DESCUENTOFORMA_PAGO>" << XMLProtect(curc->valor("descuentoforma_pago")) << "</DESCUENTOFORMA_PAGO>\n";
             /// Incorporamos las lineas de detalles del presupuesto.
-            cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran ="+curc->valor("idalbaran"));
+            cursor2 *curlc = conexionbase->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran = " + curc->valor("idalbaran"));
             while (!curlc->eof()) {
                 stream << "\t\t<LALBARAN>\n";
-                stream << "\t\t\t<IDLALBARAN>"    << XMLProtect(curlc->valor("idlalbaran"))   << "</IDLALBARAN>\n";
-                stream << "\t\t\t<DESCLALBARAN>"    << XMLProtect(curlc->valor("desclalbaran"))   << "</DESCLPRESUPUESTO>\n";
-                stream << "\t\t\t<CANTLALBARANE>"    << XMLProtect(curlc->valor("cantlalbaran"))   << "</CANTLALBARANE>\n";
-                stream << "\t\t\t<PVPLALBARAN>"    << XMLProtect(curlc->valor("pvplalbaran"))   << "</PVPLALBARAN>\n";
-                stream << "\t\t\t<IVALALBARAN>"    << XMLProtect(curlc->valor("ivalalbaran"))   << "</IVALALBARAN>\n";
-                stream << "\t\t\t<DESCUENTOLALBARAN>"    << XMLProtect(curlc->valor("descuentolalbaran"))   << "</DESCUENTOLALBARAN>\n";
-                stream << "\t\t\t<IDALBARAN>"    << XMLProtect(curlc->valor("idalbaran"))   << "</IDALBARAN>\n";
-                stream << "\t\t\t<IDARTICULO>"    << XMLProtect(curlc->valor("idarticulo"))   << "</IDARTICULO>\n";
-                /// Los datos relacionados con el articulo
-                stream << "\t\t\t<CODARTICULO>"    << XMLProtect(curlc->valor("codarticulo"))   << "</CODARTICULO>\n";
-                stream << "\t\t\t<NOMARTICULO>"    << XMLProtect(curlc->valor("nomarticulo"))   << "</NOMARTICULO>\n";
-                stream << "\t\t\t<ABREVARTICULO>"    << XMLProtect(curlc->valor("abrevarticulo"))   << "</ABREVARTICULO>\n";
-                stream << "\t<CODIGOCOMPLETOARTICULO>"    << XMLProtect(curlc->valor("codigocompletoarticulo"))   << "</CODIGOCOMPLETOARTICULO>\n";
+                stream << "\t\t\t<IDLALBARAN>" << XMLProtect(curlc->valor("idlalbaran")) << "</IDLALBARAN>\n";
+                stream << "\t\t\t<DESCLALBARAN>" << XMLProtect(curlc->valor("desclalbaran")) << "</DESCLPRESUPUESTO>\n";
+                stream << "\t\t\t<CANTLALBARANE>" << XMLProtect(curlc->valor("cantlalbaran")) << "</CANTLALBARANE>\n";
+                stream << "\t\t\t<PVPLALBARAN>" << XMLProtect(curlc->valor("pvplalbaran")) << "</PVPLALBARAN>\n";
+                stream << "\t\t\t<IVALALBARAN>" << XMLProtect(curlc->valor("ivalalbaran")) << "</IVALALBARAN>\n";
+                stream << "\t\t\t<DESCUENTOLALBARAN>" << XMLProtect(curlc->valor("descuentolalbaran")) << "</DESCUENTOLALBARAN>\n";
+                stream << "\t\t\t<IDALBARAN>" << XMLProtect(curlc->valor("idalbaran")) << "</IDALBARAN>\n";
+                stream << "\t\t\t<IDARTICULO>" << XMLProtect(curlc->valor("idarticulo")) << "</IDARTICULO>\n";
+                /// Los datos relacionados con el articulo.
+                stream << "\t\t\t<CODARTICULO>" << XMLProtect(curlc->valor("codarticulo")) << "</CODARTICULO>\n";
+                stream << "\t\t\t<NOMARTICULO>" << XMLProtect(curlc->valor("nomarticulo")) << "</NOMARTICULO>\n";
+                stream << "\t\t\t<ABREVARTICULO>" << XMLProtect(curlc->valor("abrevarticulo")) << "</ABREVARTICULO>\n";
+                stream << "\t<CODIGOCOMPLETOARTICULO>" << XMLProtect(curlc->valor("codigocompletoarticulo")) << "</CODIGOCOMPLETOARTICULO>\n";
                 stream << "\t\t</LALBARAN>\n";
                 curlc->siguienteregistro();
-            }// end while
+            } // end while
             delete curlc;
             /// Incorporamos los descuentos del presupuesto.
-            curlc = conexionbase->cargacursor("SELECT * FROM dalbaran WHERE idalbaran ="+curc->valor("idalbaran"));
+            curlc = conexionbase->cargacursor("SELECT * FROM dalbaran WHERE idalbaran = " + curc->valor("idalbaran"));
             while (!curlc->eof()) {
                 stream << "\t\t<DALBARAN>\n";
-                stream << "\t\t\t<IDDALBARAN>"    << XMLProtect(curlc->valor("iddalbaran"))   << "</IDDALBARAN>\n";
-                stream << "\t\t\t<CONCEPTDALBARAN>"    << XMLProtect(curlc->valor("conceptdalbaran"))   << "</CONCEPTDALBARAN>\n";
-                stream << "\t\t\t<PROPORCIONDALBARAN>"    << XMLProtect(curlc->valor("proporciondalbaran"))   << "</PROPORCIONDALBARAN>\n";
-                stream << "\t\t\t<IDALBARAN>"    << XMLProtect(curlc->valor("idalbaran"))   << "</IDALBARAN>\n";
+                stream << "\t\t\t<IDDALBARAN>" << XMLProtect(curlc->valor("iddalbaran")) << "</IDDALBARAN>\n";
+                stream << "\t\t\t<CONCEPTDALBARAN>" << XMLProtect(curlc->valor("conceptdalbaran")) << "</CONCEPTDALBARAN>\n";
+                stream << "\t\t\t<PROPORCIONDALBARAN>" << XMLProtect(curlc->valor("proporciondalbaran")) << "</PROPORCIONDALBARAN>\n";
+                stream << "\t\t\t<IDALBARAN>" << XMLProtect(curlc->valor("idalbaran")) << "</IDALBARAN>\n";
                 stream << "\t\t</DALBARAN>\n";
                 curlc->siguienteregistro();
-            }// end while
+            } // end while
             delete curlc;
             stream << "</ALBARAN>\n";
             curc->siguienteregistro();
-        }// end while
+        } // end while
         delete curc;
-    }// end if
+    } // end if
     stream << "</FUGIT>\n";
-    alerta (100,100);
+    alerta (100, 100);
     return 0;
 }
 
 
-/** \brief Esta funcion se encarga de pasar los datos de BulmaGes a XML
-  *
-  * Los datos pasados de esta forma son mucho mas sencillos de pasar.
-  */
+/// Esta funcion se encarga de pasar los datos de BulmaGes a XML.
+/// Los datos pasados de esta forma son mucho mas sencillos de pasar.
 int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
     QString codigo, descripcion;
     QString strblancomax;
     QString query;
-    int numreg=0;
-    QTextStream stream( &xmlfile );
+    int numreg = 0;
+    QTextStream stream(&xmlfile);
     stream << "<?xml version=\"1.0\" encoding = \"iso-8859-1\"?>\n"
     "<!DOCTYPE FUGIT>\n"
     "<FUGIT version='0.3.1' origen='BulmaGes'"
@@ -1017,201 +1013,190 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
         cursor2 *curcta = conexionbase->cargacursor(query);
         while (!curcta->eof()) {
             stream << "<CUENTA>\n";
-            stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
-            stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
-            stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
-            stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
-            stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
-            stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
-            stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
-            stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
-            stream << "\t<NOMBREENT_CUENTA>"    << XMLProtect(curcta->valor("nombreent_cuenta"))    << "</NOMBREENT_CUENTA>\n";
-            stream << "\t<TIPOCUENTA>"        << XMLProtect(curcta->valor("tipocuenta"))       << "</TIPOCUENTA>\n";
-            stream << "\t<WEBENT_CUENTA>"        << XMLProtect(curcta->valor("webent_cuenta"))       << "</WEBENT_CUENTA>\n";
-            stream << "\t<EMAILENT_CUENTA>"        << XMLProtect(curcta->valor("emailent_cuenta"))       << "</EMAILENT_CUENTA>\n";
-            stream << "\t<BANCOENT_CUENTA>"        << XMLProtect(curcta->valor("bancoent_cuenta"))       << "</BANCOENT_CUENTA>\n";
-            stream << "\t<COMENT_CUENTA>"        << XMLProtect(curcta->valor("coment_cuenta"))       << "</COMENT_CUENTA>\n";
-            stream << "\t<TELENT_CUENTA>"        << XMLProtect(curcta->valor("telent_cuenta"))       << "</TELENT_CUENTA>\n";
-            stream << "\t<CPENT_CUENTA>"        << XMLProtect(curcta->valor("cpent_cuenta"))       << "</CPENT_CUENTA>\n";
-            stream << "\t<IDGRUPO>"        << XMLProtect(curcta->valor("idgrupo"))       << "</IDGRUPO>\n";
-            stream << "\t<REGULARIZACION>"        << XMLProtect(curcta->valor("regularizacion"))     << "</REGULARIZACION>\n";
-            stream << "\t<IMPUTACION>"        << XMLProtect(curcta->valor("imputacion"))       << "</IMPUTACION>\n";
+            stream << "\t<IDCUENTA>" << XMLProtect(curcta->valor("idcuenta")) << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>" << XMLProtect(curcta->valor("codigo")) << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>" << XMLProtect(curcta->valor("descripcion")) << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>" << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>" << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+            stream << "\t<BLOQUEADA>" << XMLProtect(curcta->valor("bloqueada")) << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>" << XMLProtect(curcta->valor("nodebe")) << "</NODEBE>\n";
+            stream << "\t<NOHABER>" << XMLProtect(curcta->valor("nohaber")) << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>" << XMLProtect(curcta->valor("nombreent_cuenta")) << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>" << XMLProtect(curcta->valor("tipocuenta")) << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>" << XMLProtect(curcta->valor("webent_cuenta")) << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>" << XMLProtect(curcta->valor("emailent_cuenta")) << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>" << XMLProtect(curcta->valor("bancoent_cuenta")) << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>" << XMLProtect(curcta->valor("coment_cuenta")) << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>" << XMLProtect(curcta->valor("telent_cuenta")) << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>" << XMLProtect(curcta->valor("cpent_cuenta")) << "</CPENT_CUENTA>\n";
+            stream << "\t<IDGRUPO>" << XMLProtect(curcta->valor("idgrupo")) << "</IDGRUPO>\n";
+            stream << "\t<REGULARIZACION>" << XMLProtect(curcta->valor("regularizacion")) << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>" << XMLProtect(curcta->valor("imputacion")) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
             curcta->siguienteregistro();
-        }// end while
+        } // end while
         delete curcta;
-        query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta ) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
+        query = "SELECT * FROM cuenta LEFT JOIN (SELECT codigo AS codpadre, idcuenta as idpadre FROM cuenta) AS t1 ON cuenta.padre = t1.idpadre WHERE padre IS NOT NULL ORDER BY idpadre";
         conexionbase->begin();
-        curcta = conexionbase->cargacursor(query,"elquery");
+        curcta = conexionbase->cargacursor(query, "elquery");
         conexionbase->commit();
         while (!curcta->eof()) {
             stream << "<CUENTA>\n";
-            stream << "\t<IDCUENTA>"       << XMLProtect(curcta->valor("idcuenta"))      << "</IDCUENTA>\n";
-            stream << "\t<CODIGO>"         << XMLProtect(curcta->valor("codigo"))        << "</CODIGO>\n";
-            stream << "\t<DESCRIPCION>"    << XMLProtect(curcta->valor("descripcion"))   << "</DESCRIPCION>\n";
-            stream << "\t<CIFENT_CUENTA>"  << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
-            stream << "\t<DIRENT_CUENTA>"  << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
-            stream << "\t<CODPADRE>"       << XMLProtect(curcta->valor("codpadre"))      << "</CODPADRE>\n";
-            stream << "\t<BLOQUEADA>"      << XMLProtect(curcta->valor("bloqueada"))     << "</BLOQUEADA>\n";
-            stream << "\t<NODEBE>"         << XMLProtect(curcta->valor("nodebe"))        << "</NODEBE>\n";
-            stream << "\t<NOHABER>"        << XMLProtect(curcta->valor("nohaber"))       << "</NOHABER>\n";
-            stream << "\t<NOMBREENT_CUENTA>"    << XMLProtect(curcta->valor("nombreent_cuenta"))    << "</NOMBREENT_CUENTA>\n";
-            stream << "\t<TIPOCUENTA>"        << XMLProtect(curcta->valor("tipocuenta"))       << "</TIPOCUENTA>\n";
-            stream << "\t<WEBENT_CUENTA>"        << XMLProtect(curcta->valor("webent_cuenta"))       << "</WEBENT_CUENTA>\n";
-            stream << "\t<EMAILENT_CUENTA>"        << XMLProtect(curcta->valor("emailent_cuenta"))       << "</EMAILENT_CUENTA>\n";
-            stream << "\t<BANCOENT_CUENTA>"        << XMLProtect(curcta->valor("bancoent_cuenta"))       << "</BANCOENT_CUENTA>\n";
-            stream << "\t<COMENT_CUENTA>"        << XMLProtect(curcta->valor("coment_cuenta"))       << "</COMENT_CUENTA>\n";
-            stream << "\t<TELENT_CUENTA>"        << XMLProtect(curcta->valor("telent_cuenta"))       << "</TELENT_CUENTA>\n";
-            stream << "\t<CPENT_CUENTA>"        << XMLProtect(curcta->valor("cpent_cuenta"))       << "</CPENT_CUENTA>\n";
-            stream << "\t<IDGRUPO>"        << XMLProtect(curcta->valor("idgrupo"))       << "</IDGRUPO>\n";
-            stream << "\t<REGULARIZACION>"        << XMLProtect(curcta->valor("regularizacion"))       << "</REGULARIZACION>\n";
-            stream << "\t<IMPUTACION>"        << XMLProtect(curcta->valor("imputacion"))       << "</IMPUTACION>\n";
+            stream << "\t<IDCUENTA>" << XMLProtect(curcta->valor("idcuenta")) << "</IDCUENTA>\n";
+            stream << "\t<CODIGO>" << XMLProtect(curcta->valor("codigo")) << "</CODIGO>\n";
+            stream << "\t<DESCRIPCION>" << XMLProtect(curcta->valor("descripcion")) << "</DESCRIPCION>\n";
+            stream << "\t<CIFENT_CUENTA>" << XMLProtect(curcta->valor("cifent_cuenta")) << "</CIFENT_CUENTA>\n";
+            stream << "\t<DIRENT_CUENTA>" << XMLProtect(curcta->valor("dirent_cuenta")) << "</DIRENT_CUENTA>\n";
+            stream << "\t<CODPADRE>" << XMLProtect(curcta->valor("codpadre")) << "</CODPADRE>\n";
+            stream << "\t<BLOQUEADA>" << XMLProtect(curcta->valor("bloqueada")) << "</BLOQUEADA>\n";
+            stream << "\t<NODEBE>" << XMLProtect(curcta->valor("nodebe")) << "</NODEBE>\n";
+            stream << "\t<NOHABER>" << XMLProtect(curcta->valor("nohaber")) << "</NOHABER>\n";
+            stream << "\t<NOMBREENT_CUENTA>" << XMLProtect(curcta->valor("nombreent_cuenta")) << "</NOMBREENT_CUENTA>\n";
+            stream << "\t<TIPOCUENTA>" << XMLProtect(curcta->valor("tipocuenta")) << "</TIPOCUENTA>\n";
+            stream << "\t<WEBENT_CUENTA>" << XMLProtect(curcta->valor("webent_cuenta")) << "</WEBENT_CUENTA>\n";
+            stream << "\t<EMAILENT_CUENTA>" << XMLProtect(curcta->valor("emailent_cuenta")) << "</EMAILENT_CUENTA>\n";
+            stream << "\t<BANCOENT_CUENTA>" << XMLProtect(curcta->valor("bancoent_cuenta")) << "</BANCOENT_CUENTA>\n";
+            stream << "\t<COMENT_CUENTA>" << XMLProtect(curcta->valor("coment_cuenta")) << "</COMENT_CUENTA>\n";
+            stream << "\t<TELENT_CUENTA>" << XMLProtect(curcta->valor("telent_cuenta")) << "</TELENT_CUENTA>\n";
+            stream << "\t<CPENT_CUENTA>" << XMLProtect(curcta->valor("cpent_cuenta")) << "</CPENT_CUENTA>\n";
+            stream << "\t<IDGRUPO>" << XMLProtect(curcta->valor("idgrupo")) << "</IDGRUPO>\n";
+            stream << "\t<REGULARIZACION>" << XMLProtect(curcta->valor("regularizacion")) << "</REGULARIZACION>\n";
+            stream << "\t<IMPUTACION>" << XMLProtect(curcta->valor("imputacion")) << "</IMPUTACION>\n";
             stream << "</CUENTA>\n";
             curcta->siguienteregistro();
-        }// end while
+        } // end while
         delete curcta;
+    } // end if
 
-    }// end if
-
-    /// Se va a comprobar si hay que exportar los tipos de IVA
-
+    /// Se va a comprobar si hay que exportar los tipos de IVA.
     if (tipo & IMPORT_TIPOSIVA) {
-        /// Se vana exportar los tipos de IVA
+        /// Se vana exportar los tipos de IVA.
         query = "SELECT * from tipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idcuenta";
         cursor2 *curtiva = conexionbase->cargacursor(query);
         while (!curtiva->eof()) {
             stream << "<TIPOIVA>\n";
-            stream << "\t<IDTIPOIVA>"       << XMLProtect(curtiva->valor("idtipoiva"))      << "</IDTIPOIVA>\n";
-            stream << "\t<NOMBRETIPOIVA>"   << XMLProtect(curtiva->valor("nombretipoiva"))      << "</NOMBRETIPOIVA>\n";
-            stream << "\t<PORCENTAJETIPOIVA>"       << XMLProtect(curtiva->valor("porcentajetipoiva"))      << "</PORCENTAJETIPOIVA>\n";
-            stream << "\t<CUENTATIPOIVA>"       << XMLProtect(curtiva->valor("codigo"))      << "</CUENTATIPOIVA>\n";
-
+            stream << "\t<IDTIPOIVA>" << XMLProtect(curtiva->valor("idtipoiva")) << "</IDTIPOIVA>\n";
+            stream << "\t<NOMBRETIPOIVA>" << XMLProtect(curtiva->valor("nombretipoiva")) << "</NOMBRETIPOIVA>\n";
+            stream << "\t<PORCENTAJETIPOIVA>" << XMLProtect(curtiva->valor("porcentajetipoiva")) << "</PORCENTAJETIPOIVA>\n";
+            stream << "\t<CUENTATIPOIVA>" << XMLProtect(curtiva->valor("codigo")) << "</CUENTATIPOIVA>\n";
             stream << "</TIPOIVA>\n";
             curtiva->siguienteregistro();
-        }// end while
+        } // end while
         delete curtiva;
-    }// end if
+    } // end if
 
     if (tipo & IMPORT_ASIENTOS) {
         /// Hacemos la exportacion de asientos
         /// Montamos el query
-        query = "SELECT * FROM asiento WHERE 1=1 ";
+        query = "SELECT * FROM asiento WHERE 1 = 1 ";
         if (m_fInicial != "")
-            query += " AND asiento.fecha >= '"+m_fInicial+"'";
+            query += " AND asiento.fecha >= '" + m_fInicial + "'";
         if (m_fFinal != "")
-            query += " AND asiento.fecha <= '"+m_fFinal+"'";
+            query += " AND asiento.fecha <= '" + m_fFinal + "'";
         query +=" ORDER BY asiento.fecha, asiento.idasiento ";
         cursor2 *curas = conexionbase->cargacursor(query);
         int i =0;
-        /// Iteramos
-        numreg = curas->numregistros()+1;
+        /// Iteramos.
+        numreg = curas->numregistros() + 1;
         while (!curas->eof()) {
-            alerta(i++,numreg);
+            alerta(i++, numreg);
             stream << "<ASIENTO>\n";
             stream << "\t<ORDENASIENTO>" << curas->valor("ordenasiento") << "</ORDENASIENTO>\n";
             QString fechas = curas->valor("fecha");
-            fechas = fechas.mid(6,4)+fechas.mid(3,2)+fechas.mid(0,2);
+            fechas = fechas.mid(6, 4) + fechas.mid(3, 2) + fechas.mid(0, 2);
             stream << "\t<FECHA>" << fechas << "</FECHA>\n";
-            query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta=cuenta.idcuenta ";
+            query = "SELECT * FROM apunte LEFT JOIN cuenta ON apunte.idcuenta = cuenta.idcuenta ";
             query += "LEFT JOIN (SELECT nombre AS nomcanal, idcanal FROM canal) AS canal1 ON apunte.idcanal = canal1.idcanal ";
             query += "LEFT JOIN (SELECT nombre AS nc_coste, idc_coste FROM c_coste) AS c_coste1 ON c_coste1.idc_coste = apunte.idc_coste ";
-            query += "LEFT JOIN (SELECT codigo AS codcontrapartida,  idcuenta FROM cuenta) AS contra ON contra.idcuenta=apunte.contrapartida ";
-            query +=" WHERE "+curas->valor("idasiento")+"= apunte.idasiento ";
+            query += "LEFT JOIN (SELECT codigo AS codcontrapartida, idcuenta FROM cuenta) AS contra ON contra.idcuenta = apunte.contrapartida ";
+            query +=" WHERE " + curas->valor("idasiento") + " = apunte.idasiento ";
             conexionbase->begin();
             cursor2 *curap = conexionbase->cargacursor(query, "masquery1");
             conexionbase->commit();
             while (!curap->eof()) {
                 stream << "\t<APUNTE>\n";
                 QString fecha = curap->valor("fecha");
-                fecha = fecha.mid(6,4)+fecha.mid(3,2)+fecha.mid(0,2);
-                stream << "\t\t<FECHA>"               << XMLProtect(fecha) << "</FECHA>\n";
-                stream << "\t\t<CODIGO>"              << XMLProtect(curap->valor("codigo"))             << "</CODIGO>\n";
-                stream << "\t\t<DEBE>"                << XMLProtect(curap->valor("debe"))               << "</DEBE>\n";
-                stream << "\t\t<HABER>"               << XMLProtect(curap->valor("haber"))              << "</HABER>\n";
-                stream << "\t\t<CONCEPTOCONTABLE>"    << XMLProtect(curap->valor("conceptocontable"))   << "</CONCEPTOCONTABLE>\n";
-                stream << "\t\t<IDCANAL>"      << XMLProtect(curap->valor("idcanal"))     << "</IDCANAL>\n";
-                stream << "\t\t<CANAL>"        << XMLProtect(curap->valor("nomcanal"))    << "</CANAL>\n";
-                stream << "\t\t<IDC_COSTE>"    << XMLProtect(curap->valor("idc_coste"))   << "</IDC_COSTE>\n";
-                stream << "\t\t<C_COSTE>"      << XMLProtect(curap->valor("nc_coste"))    << "</C_COSTE>\n";
-                stream << "\t\t<PUNTEO>"       << XMLProtect(curap->valor("punteo"))      << "</PUNTEO>\n";
-                stream << "\t\t<ORDEN>"        << XMLProtect(curap->valor("orden"))       << "</ORDEN>\n";
-                stream << "\t\t<CONTRAPARTIDA>"<< XMLProtect(curap->valor("codcontrapartida"))<< "</CONTRAPARTIDA>\n";
-
-
-                /// Hacemos la exportacion de registros de IVA
+                fecha = fecha.mid(6, 4) + fecha.mid(3, 2) + fecha.mid(0, 2);
+                stream << "\t\t<FECHA>" << XMLProtect(fecha) << "</FECHA>\n";
+                stream << "\t\t<CODIGO>" << XMLProtect(curap->valor("codigo")) << "</CODIGO>\n";
+                stream << "\t\t<DEBE>" << XMLProtect(curap->valor("debe")) << "</DEBE>\n";
+                stream << "\t\t<HABER>" << XMLProtect(curap->valor("haber")) << "</HABER>\n";
+                stream << "\t\t<CONCEPTOCONTABLE>" << XMLProtect(curap->valor("conceptocontable")) << "</CONCEPTOCONTABLE>\n";
+                stream << "\t\t<IDCANAL>" << XMLProtect(curap->valor("idcanal")) << "</IDCANAL>\n";
+                stream << "\t\t<CANAL>" << XMLProtect(curap->valor("nomcanal")) << "</CANAL>\n";
+                stream << "\t\t<IDC_COSTE>" << XMLProtect(curap->valor("idc_coste")) << "</IDC_COSTE>\n";
+                stream << "\t\t<C_COSTE>" << XMLProtect(curap->valor("nc_coste")) << "</C_COSTE>\n";
+                stream << "\t\t<PUNTEO>" << XMLProtect(curap->valor("punteo")) << "</PUNTEO>\n";
+                stream << "\t\t<ORDEN>" << XMLProtect(curap->valor("orden")) << "</ORDEN>\n";
+                stream << "\t\t<CONTRAPARTIDA>" << XMLProtect(curap->valor("codcontrapartida")) << "</CONTRAPARTIDA>\n";
+                /// Hacemos la exportacion de registros de IVA.
                 query  = "SELECT * FROM registroiva";
                 query += " LEFT JOIN (SELECT codigo, idcuenta FROM cuenta) AS t1 ON registroiva.contrapartida = t1.idcuenta ";
-                query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento="+curas->valor("idasiento")+" AND orden = "+curap->valor("orden")+")";
+                query += " WHERE idborrador IN (SELECT idborrador FROM borrador WHERE idasiento=" + curas->valor("idasiento") + " AND orden = " + curap->valor("orden") + ")";
                 conexionbase->begin();
                 cursor2 *curreg = conexionbase->cargacursor(query, "queryregiva");
                 conexionbase->commit();
                 while (!curreg->eof()) {
                     stream << "\t\t<REGISTROIVA>\n";
-                    stream << "\t\t\t<CONTRAPARTIDA>"  << XMLProtect(curreg->valor("codigo"))  << "</CONTRAPARTIDA>\n";
-                    stream << "\t\t\t<BASEIMP>"        << XMLProtect(curreg->valor("baseimp"))        << "</BASEIMP>\n";
-                    stream << "\t\t\t<IVA>"            << XMLProtect(curreg->valor("iva"))            << "</IVA>\n";
-                    stream << "\t\t\t<FFACTURA>"       << XMLProtect(curreg->valor("ffactura"))       << "</FFACTURA>\n";
-                    stream << "\t\t\t<FACTURA>"        << XMLProtect(curreg->valor("factura"))        << "</FACTURA>\n";
-                    stream << "\t\t\t<NUMORDEN>"       << XMLProtect(curreg->valor("numorden"))       << "</NUMORDEN>\n";
-                    stream << "\t\t\t<CIF>"            << XMLProtect(curreg->valor("cif"))            << "</CIF>\n";
-                    stream << "\t\t\t<IDFPAGO>"        << XMLProtect(curreg->valor("idfpago"))        << "</IDFPAGO>\n";
-                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>"        << XMLProtect(curreg->valor("rectificaaregistroiva"))        << "</RECTIFICAAREGISTROIVA>\n";
-
-
-                    /// Hacemos la exportacion de IVAs
+                    stream << "\t\t\t<CONTRAPARTIDA>" << XMLProtect(curreg->valor("codigo")) << "</CONTRAPARTIDA>\n";
+                    stream << "\t\t\t<BASEIMP>" << XMLProtect(curreg->valor("baseimp")) << "</BASEIMP>\n";
+                    stream << "\t\t\t<IVA>" << XMLProtect(curreg->valor("iva")) << "</IVA>\n";
+                    stream << "\t\t\t<FFACTURA>" << XMLProtect(curreg->valor("ffactura")) << "</FFACTURA>\n";
+                    stream << "\t\t\t<FACTURA>" << XMLProtect(curreg->valor("factura")) << "</FACTURA>\n";
+                    stream << "\t\t\t<NUMORDEN>" << XMLProtect(curreg->valor("numorden")) << "</NUMORDEN>\n";
+                    stream << "\t\t\t<CIF>" << XMLProtect(curreg->valor("cif")) << "</CIF>\n";
+                    stream << "\t\t\t<IDFPAGO>" << XMLProtect(curreg->valor("idfpago")) << "</IDFPAGO>\n";
+                    stream << "\t\t\t<RECTIFICAAREGISTROIVA>" << XMLProtect(curreg->valor("rectificaaregistroiva")) << "</RECTIFICAAREGISTROIVA>\n";
+                    /// Hacemos la exportacion de IVAs.
                     query  = "SELECT * FROM iva ";
                     query += " LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva ";
-                    query += " WHERE idregistroiva = "+curreg->valor("idregistroiva");
+                    query += " WHERE idregistroiva = " + curreg->valor("idregistroiva");
                     conexionbase->begin();
                     cursor2 *curiva = conexionbase->cargacursor(query, "queryiva");
                     conexionbase->commit();
                     while (!curiva->eof()) {
                         stream << "\t\t\t<RIVA>\n";
-                        stream << "\t\t\t\t<IDTIPOIVA>"        << XMLProtect(curiva->valor("idtipoiva"))        << "</IDTIPOIVA>\n";
-                        stream << "\t\t\t\t<NOMBRETIPOIVA>"    << XMLProtect(curiva->valor("nombretipoiva"))    << "</NOMBRETIPOIVA>\n";
-                        stream << "\t\t\t\t<BASEIVA>"          << XMLProtect(curiva->valor("baseiva"))          << "</BASEIVA>\n";
+                        stream << "\t\t\t\t<IDTIPOIVA>" << XMLProtect(curiva->valor("idtipoiva")) << "</IDTIPOIVA>\n";
+                        stream << "\t\t\t\t<NOMBRETIPOIVA>" << XMLProtect(curiva->valor("nombretipoiva")) << "</NOMBRETIPOIVA>\n";
+                        stream << "\t\t\t\t<BASEIVA>" << XMLProtect(curiva->valor("baseiva")) << "</BASEIVA>\n";
                         stream << "\t\t\t</RIVA>\n";
                         curiva->siguienteregistro();
-                    }// end while
+                    } // end while
                     delete curiva;
                     stream << "\t\t</REGISTROIVA>\n";
                     curreg->siguienteregistro();
-                }// end while
+                } // end while
                 delete curreg;
-                mensajeria(theApp->translate("pgimportfiles","Exportando :")   + curap->valor("codigo")   + "--" +fecha+"\n");
+                mensajeria(theApp->translate("pgimportfiles", "Exportando :") + curap->valor("codigo") + "--" + fecha + "\n");
                 curap->siguienteregistro();
                 stream << "\t</APUNTE>\n";
-            }// end while
+            } // end while
             delete curap;
             stream << "</ASIENTO>\n";
             curas->siguienteregistro();
-        }// end while
+        } // end while
         delete curas;
-    }// end if
-
-
-
+    } // end if
     stream << "</FUGIT>\n";
     alerta (numreg,numreg);
     return 0;
-}// end if
+}
 
 
 /** \brief Funcion para pasar de un archivo XML a Bulmages.
   *
-  * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para 
-  * que haga la imporacion del archivo XML.
+  * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX)
+  * y lo ejecuta para que haga la imporacion del archivo XML.
   */
-int pgimportfiles::XML2Bulmages (QFile &fichero, unsigned long long int tip) {
+int pgimportfiles::XML2Bulmages(QFile &fichero, unsigned long long int tip) {
     StructureParser handler(conexionbase, tip);
-    QXmlInputSource source( &fichero );
+    QXmlInputSource source(&fichero);
     QXmlSimpleReader reader;
-    reader.setContentHandler( &handler );
-    reader.parse( source );
-    alerta(100,100);
+    reader.setContentHandler(&handler);
+    reader.parse(source);
+    alerta(100, 100);
     return 0;
-}// end XML2Bulmages
-
+}
 
 
 /** \brief Funcion para pasar de un archivo XML a BulmaFact.
@@ -1219,92 +1204,95 @@ int pgimportfiles::XML2Bulmages (QFile &fichero, unsigned long long int tip) {
   * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para 
   * que haga la imporacion del archivo XML
   */
-int pgimportfiles::XML2BulmaFact (QFile &fichero, unsigned long long int tip) {
+int pgimportfiles::XML2BulmaFact(QFile &fichero, unsigned long long int tip) {
     bool noerror = TRUE;
-    fprintf(stderr,"pgimportfiles::XML2BulmaFact()\n");
+    fprintf(stderr, "pgimportfiles::XML2BulmaFact()\n");
     ImportBulmaFact handler(this, conexionbase, tip);
-    QXmlInputSource source( &fichero );
+    QXmlInputSource source(&fichero);
     QXmlSimpleReader reader;
-    reader.setContentHandler( &handler );
-    noerror = reader.parse( source );
-    if (! noerror) {
-        QMessageBox::warning(0,theApp->translate("pgimportfiles","Application name"),theApp->translate("pgimportfiles","Error en el XML.\nDocumento mal formado."),"OK",0,0);
+    reader.setContentHandler(&handler);
+    noerror = reader.parse(source);
+    if (!noerror) {
+        QMessageBox::warning(0, theApp->translate("pgimportfiles", "Application name"), theApp->translate("pgimportfiles", "Error en el XML.\nDocumento mal formado."), "OK", 0, 0);
     }
-    alerta(100,100);
+    alerta(100, 100);
     return 0;
-}// end XML2Bulmages
+}
+
 
 StructureParser::StructureParser(postgresiface2 *con, unsigned int tip) {
     conexionbase = con;
     m_tipo = tip;
     conexionbase->begin();
-    QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX','Una descripcion auxiliar de cuenta', 1)";
+    QString query = "INSERT INTO cuenta (codigo, descripcion, idgrupo) VALUES ('AUX', 'Una descripcion auxiliar de cuenta', 1)";
     conexionbase->ejecuta(query);
-    for (int i=0; i<=12;i++) {
-        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, "+QString::number(i)+", FALSE)";
+    for (int i = 0; i <= 12; i++) {
+        QString query2 = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, " + QString::number(i) + ", FALSE)";
         conexionbase->ejecuta(query2);
-    }// end for
+    } // end for
     conexionbase->commit();
-}// end StructureParser
+}
+
 
 StructureParser::~StructureParser() {
-    QString query = "DELETE FROM cuenta WHERE codigo='AUX'";
+    QString query = "DELETE FROM cuenta WHERE codigo = 'AUX'";
     conexionbase->ejecuta(query);
-}// end StructureParser
+}
 
 
 bool StructureParser::startDocument() {
     indent = "";
     return TRUE;
-}// end startDocument
+}
 
-bool StructureParser::startElement( const QString&, const QString&, const QString& qName, const QXmlAttributes& ) {
-    fprintf( stderr, "%s<%s>\n", (const char*)indent, (const char*)qName);
+
+bool StructureParser::startElement(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
+    fprintf(stderr, "%s<%s>\n", (const char*)indent, (const char*)qName);
     indent += "..";
     if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
         tagpadre = "ASIENTO";
         QString query = "INSERT INTO ASIENTO (descripcion, fecha) VALUES ('un nuevo asiento', '01/01/2005')";
         conexionbase->begin();
         conexionbase->ejecuta(query);
-        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idasiento) AS max FROM asiento","otroquery");
+        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idasiento) AS max FROM asiento", "otroquery");
         conexionbase->commit();
         if (!cur->eof() ) {
             idasiento = cur->valor("max");
-            fprintf(stderr,"INSERCION DE ASIENTO:%s\n",idasiento.toAscii().data());
-        }// end if
-        // Iniciamos el orden para que los apuntes salgan en orden empezando desde cero
-        m_ordenapunte=0;
+            fprintf(stderr, "INSERCION DE ASIENTO:%s\n", idasiento.toAscii().data());
+        } // end if
+        /// Iniciamos el orden para que los apuntes salgan en orden empezando desde cero.
+        m_ordenapunte = 0;
         delete cur;
-    }// end if
+    } // end if
     if (qName == "APUNTE" && m_tipo & IMPORT_ASIENTOS) {
-        QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES ("+idasiento+",0,0,id_cuenta('AUX'), '01/01/2003', "+QString::number(m_ordenapunte++)+")";
+        QString query = "INSERT INTO borrador (idasiento, debe, haber, idcuenta, fecha, orden) VALUES (" + idasiento + ", 0, 0, id_cuenta('AUX'), '01/01/2003', " + QString::number(m_ordenapunte++) + ")";
         conexionbase->begin();
         conexionbase->ejecuta(query);
-        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idborrador) AS max FROM borrador","otroquery1");
+        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idborrador) AS max FROM borrador", "otroquery1");
         conexionbase->commit();
-        if (!cur->eof() ) {
+        if (!cur->eof()) {
             idborrador = cur->valor("max");
-            fprintf(stderr,"INSERCION DE APUNTE:%s\n",idborrador.toAscii().data());
-        }// end if
+            fprintf(stderr, "INSERCION DE APUNTE:%s\n", idborrador.toAscii().data());
+        } // end if
         delete cur;
         tagpadre = "APUNTE";
-    }// end if
+    } // end if
     if (qName == "REGISTROIVA" && m_tipo & IMPORT_FACTURAS) {
-        QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), "+idborrador+")";
+        QString query = "INSERT INTO registroiva (contrapartida, idborrador) VALUES (id_cuenta('AUX'), " + idborrador + ")";
         conexionbase->begin();
         conexionbase->ejecuta(query);
-        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idregistroiva) AS max FROM registroiva","otroquery13");
+        cursor2 *cur= conexionbase->cargacursor("SELECT MAX(idregistroiva) AS max FROM registroiva", "otroquery13");
         conexionbase->commit();
-        if (!cur->eof() ) {
+        if (!cur->eof()) {
             m_idRegistroIva = cur->valor("max");
-            fprintf(stderr,"INSERCION DE REGISTRO DE IVA:%s\n",idborrador.toAscii().data());
-        }// end if
+            fprintf(stderr, "INSERCION DE REGISTRO DE IVA:%s\n", idborrador.toAscii().data());
+        } // end if
         delete cur;
         tagpadre = "REGISTROIVA";
-    }// end if
+    } // end if
     if (qName == "RIVA" && m_tipo & IMPORT_FACTURAS) {
         tagpadre = "RIVA";
-    }// end if
+    } // end if
     if (qName == "CUENTA" && m_tipo & IMPORT_CUENTAS) {
         tagpadre = "CUENTA";
         /// Borramos todos los elementos para que no haya traspasos de informacion.
@@ -1315,37 +1303,38 @@ bool StructureParser::startElement( const QString&, const QString&, const QStrin
         m_nodebeCuenta = "";
         m_nohaberCuenta = "";
         m_tipoCuenta = "";
-    }// end if
+    } // end if
     cadintermedia = "";
     return TRUE;
-}// end startElement
+}
 
-bool StructureParser::endElement( const QString&, const QString&, const QString& qName) {
-    indent.remove( (uint)0, 2 );
-    //    fprintf( stderr,"<\\%s>\n", (const char*)qName);
-    /// Vamos a ir distinguiendo casos y actuando segun cada caso. En la mayoria de casos iremos actuando en consecuencia.
-    /// Ha terminado un asiento, por tanto hacemos el update de los campos de �te.
+
+bool StructureParser::endElement(const QString&, const QString&, const QString& qName) {
+    indent.remove((uint)0, 2);
+    /// Vamos a ir distinguiendo casos y actuando segun cada caso.
+    /// En la mayoria de casos iremos actuando en consecuencia.
+    /// Ha terminado un asiento, por tanto hacemos el update de los campos.
     if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
-        fprintf(stderr,"Fin de Asiento");
-        QString query = "UPDATE asiento set fecha='"+
-                        conexionbase->sanearCadena(fechaasiento)+"' WHERE idasiento="+
+        fprintf(stderr, "Fin de Asiento");
+        QString query = "UPDATE asiento set fecha = '" +
+                        conexionbase->sanearCadena(fechaasiento) + "' WHERE idasiento = " +
                         conexionbase->sanearCadena(idasiento);
         conexionbase->begin();
         conexionbase->ejecuta(query);
-        cursor2 *cur = conexionbase->cargacursor("SELECT cierraasiento("+idasiento+")");
+        cursor2 *cur = conexionbase->cargacursor("SELECT cierraasiento(" + idasiento + ")");
         conexionbase->commit();
         delete cur;
-    }// end if
+    } // end if
     /// Si es un apunte hacemos su insercion.
     if (qName == "APUNTE" && m_tipo & IMPORT_ASIENTOS) {
         QString query = "UPDATE borrador SET debe = "+
-                        conexionbase->sanearCadena(debeapunte)+", haber="+
-                        conexionbase->sanearCadena(haberapunte)+", idcuenta=id_cuenta('"+
-                        conexionbase->sanearCadena(codigocuentaapunte)+"'), fecha='"+
-                        conexionbase->sanearCadena(fechaapunte)+"', conceptocontable='"+
-                        conexionbase->sanearCadena(conceptocontableapunte)+"' WHERE idborrador="+idborrador;
+                        conexionbase->sanearCadena(debeapunte) + ", haber = "+
+                        conexionbase->sanearCadena(haberapunte) + ", idcuenta = id_cuenta('" +
+                        conexionbase->sanearCadena(codigocuentaapunte) + "'), fecha = '" +
+                        conexionbase->sanearCadena(fechaapunte) + "', conceptocontable = '" +
+                        conexionbase->sanearCadena(conceptocontableapunte) + "' WHERE idborrador = " + idborrador;
         conexionbase->ejecuta(query);
-    }// end if
+    } // end if
     if (qName == "FECHA" && tagpadre == "ASIENTO")
         fechaasiento = cadintermedia;
     if (qName == "FECHA" && tagpadre == "APUNTE")
@@ -1358,48 +1347,47 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
         codigocuentaapunte = cadintermedia;
     if (qName == "CONCEPTOCONTABLE" && tagpadre == "APUNTE")
         conceptocontableapunte = cadintermedia;
-
     if (qName == "CUENTA" && m_tipo & IMPORT_CUENTAS) {
         /// Ha terminado una cuenta, por tanto hacemos la insercion de la misma.
-        /// Podemos hacer la insercion y no un sistema de update pq la cuenta no tiene hijos en el XML
+        /// Podemos hacer la insercion y no un sistema de update pq la cuenta no tiene hijos en el XML.
         /// Nuevo Socio M.Mezo
         QString idgrupo = codigocuenta.left(1);
         /// Primero debemos determinar si existe o no dicha cuenta para hacer la insercion o la modificacion.
         QString vidcuenta;
         if (codigopadre != "")  {
-            vidcuenta = "id_cuenta('"+conexionbase->sanearCadena(codigopadre)+"')";
+            vidcuenta = "id_cuenta('" + conexionbase->sanearCadena(codigopadre) + "')";
         } else {
             vidcuenta = "NULL";
-        }// end if
-        // Si el tipo de cuenta esta vacio lo ponemos a NULL para que no haya error en la base de datos.
+        } // end if
+        /// Si el tipo de cuenta esta vacio lo ponemos a NULL para que no haya error en la base de datos.
         if (m_tipoCuenta == "")
-            m_tipoCuenta="NULL";
+            m_tipoCuenta = "NULL";
 
-        QString query = "SELECT * FROM cuenta WHERE codigo='"+codigocuenta+"'";
+        QString query = "SELECT * FROM cuenta WHERE codigo = '" + codigocuenta + "'";
         cursor2 *cur = conexionbase->cargacursor(query);
         if (cur->eof()) {
             QString query = "INSERT INTO cuenta (tipocuenta, codigo, descripcion, padre, idgrupo, bloqueada, nodebe, nohaber) VALUES ("+
-                            conexionbase->sanearCadena(m_tipoCuenta)+",'"+
-                            conexionbase->sanearCadena(codigocuenta)+"','"+
-                            conexionbase->sanearCadena(descripcioncuenta)+"', "+
-                            vidcuenta+", "+
-                            conexionbase->sanearCadena(idgrupo)+", '"+
-                            conexionbase->sanearCadena(m_bloqueadaCuenta)+"','"+
-                            conexionbase->sanearCadena(m_nodebeCuenta)+"','"+
-                            conexionbase->sanearCadena(m_nohaberCuenta)+"')";
+                            conexionbase->sanearCadena(m_tipoCuenta) + ",'" +
+                            conexionbase->sanearCadena(codigocuenta) + "','" +
+                            conexionbase->sanearCadena(descripcioncuenta) + "', " +
+                            vidcuenta + ", " +
+                            conexionbase->sanearCadena(idgrupo) + ", '" +
+                            conexionbase->sanearCadena(m_bloqueadaCuenta) + "','" +
+                            conexionbase->sanearCadena(m_nodebeCuenta) + "','" +
+                            conexionbase->sanearCadena(m_nohaberCuenta) + "')";
             conexionbase->ejecuta(query);
         } else {
             QString query = "UPDATE cuenta SET ";
-            query+="descripcion='"+conexionbase->sanearCadena(descripcioncuenta)+"'";
-            query+=", tipocuenta="+conexionbase->sanearCadena(m_tipoCuenta);
-            query+=", bloqueada='"+conexionbase->sanearCadena(m_bloqueadaCuenta)+"'";
-            query+=", nodebe='"+conexionbase->sanearCadena(m_nodebeCuenta)+"'";
-            query+=", nohaber='"+conexionbase->sanearCadena(m_nohaberCuenta)+"'";
-            query+=" WHERE codigo='"+conexionbase->sanearCadena(codigocuenta)+"'";
+            query += "descripcion = '" + conexionbase->sanearCadena(descripcioncuenta) + "'";
+            query += ", tipocuenta = " + conexionbase->sanearCadena(m_tipoCuenta);
+            query += ", bloqueada = '" + conexionbase->sanearCadena(m_bloqueadaCuenta)+"'";
+            query += ", nodebe = '" + conexionbase->sanearCadena(m_nodebeCuenta) + "'";
+            query += ", nohaber = '" + conexionbase->sanearCadena(m_nohaberCuenta) + "'";
+            query += " WHERE codigo = '" + conexionbase->sanearCadena(codigocuenta) + "'";
             conexionbase->ejecuta(query);
-        }//end if
+        } //end if
         delete cur;
-    }// end if
+    } // end if
     if (qName == "CODIGO" && tagpadre == "CUENTA")
         codigocuenta = cadintermedia;
     if (qName == "DESCRIPCION" && tagpadre == "CUENTA")
@@ -1414,18 +1402,16 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
         m_nohaberCuenta = cadintermedia;
     if (qName == "TIPOCUENTA" && tagpadre == "CUENTA")
         m_tipoCuenta = cadintermedia;
-
     /// Si es un registro de iva vamos a por el.
     if (qName == "REGISTROIVA" && m_tipo & IMPORT_FACTURAS) {
-        QString query = "UPDATE registroiva SET contrapartida=id_cuenta('"+m_rIvaContrapartida+"'), ffactura='"+m_rIvaFFactura+"'";
-
+        QString query = "UPDATE registroiva SET contrapartida = id_cuenta('" + m_rIvaContrapartida + "'), ffactura = '" + m_rIvaFFactura + "'";
         if (m_rIvaBaseImp != "")
-            query += ", baseimp="+m_rIvaBaseImp;
+            query += ", baseimp = " + m_rIvaBaseImp;
         if (m_rIvaIva != "")
-            query +=", iva="+m_rIvaIva;
-        query +="  WHERE idregistroiva="+m_idRegistroIva;
+            query += ", iva = " + m_rIvaIva;
+        query +=" WHERE idregistroiva = " + m_idRegistroIva;
         conexionbase->ejecuta(query);
-    }// end if
+    } // end if
     if (qName == "CONTRAPARTIDA" && tagpadre == "REGISTROIVA")
         m_rIvaContrapartida = cadintermedia;
     if (qName == "BASEIMP" && tagpadre == "REGISTROIVA")
@@ -1442,41 +1428,36 @@ bool StructureParser::endElement( const QString&, const QString&, const QString&
         m_rIvaIdFPago = cadintermedia;
     if (qName == "RECTIFICAAREGISTROIVA" && tagpadre == "REGISTROIVA")
         m_rIvRecRegIva = cadintermedia;
-
     /// Insercion de IVA's dentro del registro de IVA.
     if (qName == "RIVA" && m_tipo & IMPORT_FACTURAS) {
-        QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '"+m_nombreTipoIva+"'";
+        QString query1 = "SELECT idtipoiva FROM tipoiva WHERE nombretipoiva = '" + m_nombreTipoIva + "'";
         conexionbase->begin();
-        cursor2 * cur = conexionbase->cargacursor(query1,"elqueryd");
-        if ( !cur->eof() ) {
-            QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES ("+m_idRegistroIva+", "+cur->valor("idtipoiva")+", "+m_baseIva+")";
+        cursor2 * cur = conexionbase->cargacursor(query1, "elqueryd");
+        if (!cur->eof()) {
+            QString query = "INSERT INTO IVA (idregistroiva, idtipoiva, baseiva) VALUES (" + m_idRegistroIva + ", " + cur->valor("idtipoiva") + ", " + m_baseIva + ")";
             conexionbase->ejecuta(query);
-        }// end if
+        } // end if
         delete cur;
         conexionbase->commit();
-    }// end if
+    } // end if
     if (qName == "IDTIPOIVA" && tagpadre == "RIVA")
         m_idTipoIva = cadintermedia;
     if (qName == "NOMBRETIPOIVA" && tagpadre == "RIVA")
         m_nombreTipoIva = cadintermedia;
     if (qName == "BASEIVA" && tagpadre == "RIVA")
         m_baseIva = cadintermedia;
-
     cadintermedia = "";
     return TRUE;
-}// end endElement
+}
 
 
-bool StructureParser::characters( const QString& n1) {
+bool StructureParser::characters(const QString& n1) {
     cadintermedia += n1;
     return TRUE;
-}// end endElement
+}
 
 
-
-// ==================================================================================
-
-
+/// ==================================================================================
 ImportBulmaFact::ImportBulmaFact(pgimportfiles *imp, postgresiface2 *con, unsigned long long int tip) {
     conexionbase = con;
     pgimport = imp;
@@ -1489,24 +1470,28 @@ ImportBulmaFact::ImportBulmaFact(pgimportfiles *imp, postgresiface2 *con, unsign
     listadalbaran.setAutoDelete(TRUE);
     listalpedidocliente.setAutoDelete(TRUE);
     listadpedidocliente.setAutoDelete(TRUE);
-}// end StructureParser
+}
 
-ImportBulmaFact::~ImportBulmaFact() {}// end StructureParser
+
+ImportBulmaFact::~ImportBulmaFact() {}
+
 
 bool ImportBulmaFact::startDocument() {
     indent = "";
     return TRUE;
-}// end startDocument
+}
 
-bool ImportBulmaFact::startElement( const QString&, const QString&, const QString&, const QXmlAttributes& ) {
+
+bool ImportBulmaFact::startElement(const QString&, const QString&, const QString&, const QXmlAttributes&) {
     cadintermedia = "";
     return TRUE;
-}// end startElement
+}
 
-bool ImportBulmaFact::endElement( const QString&, const QString&, const QString& qName) {
-    valores[qName]= cadintermedia;
+
+bool ImportBulmaFact::endElement(const QString&, const QString&, const QString& qName) {
+    valores[qName] = cadintermedia;
     cadintermedia = "";
-    fprintf(stderr,"Tag de Cierre: %s\n", qName.toAscii().data());
+    fprintf(stderr, "Tag de Cierre: %s\n", qName.toAscii().data());
     if (qName == "CLIENTE")
         trataCliente();
     if (qName == "PROVEEDOR")
@@ -1537,7 +1522,6 @@ bool ImportBulmaFact::endElement( const QString&, const QString&, const QString&
         trataLAlbaran();
     if(qName == "DALBARAN")
         trataDAlbaran();
-
     if (qName == "PEDIDOCLIENTE")
         trataPedidoCliente();
     if(qName == "LPEDIDOCLIENTE")
@@ -1545,86 +1529,87 @@ bool ImportBulmaFact::endElement( const QString&, const QString&, const QString&
     if(qName == "DPEDIDOCLIENTE")
         trataDPedidoCliente();
     return TRUE;
-}// end endElement
+}
 
 
-bool ImportBulmaFact::characters( const QString& n1) {
-    QString val= n1;
+bool ImportBulmaFact::characters(const QString& n1) {
+    QString val = n1;
     if (val == "\n")
         val = "";
     cadintermedia += val;
     return TRUE;
-}// end endElement
+}
 
 
 void ImportBulmaFact::printcontents() {
-    fprintf(stderr,"Impresion de contenidos\n");
+    fprintf(stderr, "Impresion de contenidos\n");
     tvalores::Iterator it;
-    for ( it = valores.begin(); it != valores.end(); ++it ) {
+    for (it = valores.begin(); it != valores.end(); ++it) {
         fprintf(stderr, "Valores encontrados Clave: %s Valor:%s\n",
                 it.key().toAscii().data(),
                 it.data().toAscii().data());
-    }// end for
-    fprintf(stderr,"Fin de impresion de contenidos\n");
+    } // end for
+    fprintf(stderr, "Fin de impresion de contenidos\n");
 }
-
 
 
 int ImportBulmaFact::trataCliente() {
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando el cliente ")+valores["CIFCLIENTE"]+" "+valores["NOMCLIENTE"]+"</B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando el cliente ") + valores["CIFCLIENTE"] + " " + valores["NOMCLIENTE"] + "</B><BR>");
     /// En la importacion de un cliente hay que hacer la comprobacion del DNI para saber si existe o no.
     QString dcif = valores["CIFCLIENTE"];
     if (dcif != "") {
-        QString query = "SELECT * FROM cliente WHERE cifcliente SIMILAR TO '"+dcif+"'";
+        QString query = "SELECT * FROM cliente WHERE cifcliente SIMILAR TO '" + dcif + "'";
         cursor2 *cur = conexionbase->cargacursor(query);
         if (!cur->eof()) {
-            /// El cliente ya existe se pueden hacer modificaciones
-            pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"));
-            QString query1 = "UPDATE cliente SET nomcliente='"+valores["NOMCLIENTE"]+"' WHERE cifcliente='"+valores["CIFCLIENTE"]+"'";
+            /// El cliente ya existe se pueden hacer modificaciones.
+            pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> El cliente ya existe se pueden hacer modificaciones</LI>\n"));
+            QString query1 = "UPDATE cliente SET nomcliente = '" + valores["NOMCLIENTE"] + "' WHERE cifcliente = '" + valores["CIFCLIENTE"] + "'";
             conexionbase->ejecuta(query1);
         } else {
             /// El cliente no existe, se debe hacer una insercion de este.
-            pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"));
-            QString query1 = "INSERT INTO cliente (cifcliente, nomcliente) VALUES ('"+valores["CIFCLIENTE"]+"','"+valores["NOMCLIENTE"]+"')";
+            pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> El cliente no existe, se debe hacer una insercion de este</LI>\n"));
+            QString query1 = "INSERT INTO cliente (cifcliente, nomcliente) VALUES ('" + valores["CIFCLIENTE"] + "','" + valores["NOMCLIENTE"] + "')";
             conexionbase->ejecuta(query1);
-        }// end if
+        } // end if
         delete cur;
-    }// end if
+    } // end if
     pgimport->mensajeria("<HR>");
     valores.clear();
     return 0;
 }
 
+
 int ImportBulmaFact::trataProveedor() {
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando el proveedor ")+valores["CIFPROVEEDOR"]+"</b><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando el proveedor ") + valores["CIFPROVEEDOR"] + "</b><BR>");
     /// En la importacion de un proveedor hay que hacer la comprobacion del DNI para saber si existe o no.
     QString cifprov = valores["CIFPROVEEDOR"];
     if (cifprov != "") {
-        QString query = "SELECT * FROM proveedor WHERE cifproveedor SIMILAR TO '"+cifprov+"'";
+        QString query = "SELECT * FROM proveedor WHERE cifproveedor SIMILAR TO '" + cifprov + "'";
         cursor2 *cur = conexionbase->cargacursor(query);
         if (!cur->eof()) {
-            /// El cliente ya existe se pueden hacer modificaciones
-            pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"));
-            QString query1 = "UPDATE proveedor SET nomproveedor='"+valores["NOMPROVEEDOR"]+"' WHERE cifproveedor='"+valores["CIFPROVEEDOR"]+"'";
+            /// El cliente ya existe se pueden hacer modificaciones.
+            pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> El proveedor ya existe se pueden hacer modificaciones</LI>\n"));
+            QString query1 = "UPDATE proveedor SET nomproveedor = '" + valores["NOMPROVEEDOR"] + "' WHERE cifproveedor = '" + valores["CIFPROVEEDOR"] + "'";
             conexionbase->ejecuta(query1);
         } else {
             /// El cliente no existe, se debe hacer una insercion de este.
-            pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"));
-            QString query1 = "INSERT INTO proveedor (cifproveedor, nomproveedor) VALUES ('"+valores["CIFPROVEEDOR"]+"','"+valores["NOMPROVEEDOR"]+"')";
+            pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> El proveedor no existe, se debe hacer una insercion de este</LI>\n"));
+            QString query1 = "INSERT INTO proveedor (cifproveedor, nomproveedor) VALUES ('" + valores["CIFPROVEEDOR"] + "','" + valores["NOMPROVEEDOR"] + "')";
             conexionbase->ejecuta(query1);
-        }// end if
+        } // end if
         delete cur;
-    }// end if
+    } // end if
     pgimport->mensajeria("<HR>");
     valores.clear();
     return 0;
 }
 
+
 int ImportBulmaFact::trataFormaPago() {
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando la froma de pago ")+valores["DESCFORMA_PAGO"]+"</B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando la froma de pago ") + valores["DESCFORMA_PAGO"] + "</B><BR>");
     QString idforma_pago = valores["IDFORMA_PAGO"];
     QString descforma_pago = valores["DESCFORMA_PAGO"];
     QString dias1tforma_pago = valores["DIAS1TFORMA_PAGO"];
@@ -1632,36 +1617,35 @@ int ImportBulmaFact::trataFormaPago() {
 
     /// Comprobamos que hayan datos suficientes.
     if (descforma_pago == "" || dias1tforma_pago == "" || descuentoforma_pago == "" ) {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI>Datos insuficientes para tratar la forma de pago."));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI>Datos insuficientes para tratar la forma de pago."));
         valores.clear();
         return 1;
-    }// end if
+    } // end if
 
     /// Comprobamos que no este ya creada una forma de pago de este tipo.
-    QString query = "SELECT * FROM forma_pago WHERE dias1tforma_pago="+dias1tforma_pago+" AND descuentoforma_pago="+descuentoforma_pago;
+    QString query = "SELECT * FROM forma_pago WHERE dias1tforma_pago = " + dias1tforma_pago + " AND descuentoforma_pago = " + descuentoforma_pago;
     cursor2 *cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> Ya existe esta forma de pago."));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> Ya existe esta forma de pago."));
         delete cur;
         valores.clear();
         return 1;
-    }// end if
+    } // end if
     delete cur;
 
-    /// Hacemos la insercion de la forma de Pago
-    query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('"+descforma_pago+"',"+dias1tforma_pago+","+descuentoforma_pago+")";
+    /// Hacemos la insercion de la forma de Pago.
+    query = "INSERT INTO forma_pago (descforma_pago, dias1tforma_pago, descuentoforma_pago) VALUES ('" + descforma_pago + "'," + dias1tforma_pago + "," + descuentoforma_pago + ")";
     conexionbase->ejecuta(query);
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> Forma de pago <B>")+descforma_pago+theApp->translate("ImportBulmaFact","</B> Insertada"));
-
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> Forma de pago <B>") + descforma_pago + theApp->translate("ImportBulmaFact", "</B> Insertada"));
     pgimport->mensajeria("<HR>");
     valores.clear();
     return 0;
 }
 
-int ImportBulmaFact::trataAlmacen() {
-    /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando almacen ")+valores["CODIGOALMACEN"]+" "+valores["NOMALMACEN"]+"</B><BR>");
 
+int ImportBulmaFact::trataAlmacen() {
+    /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando almacen ") + valores["CODIGOALMACEN"] + " " + valores["NOMALMACEN"] + "</B><BR>");
     /// Primero hacemos la recoleccion de valores.
     QString idalmacen = valores["IDALMACEN"];
     QString codigoalmacen = valores["CODIGOALMACEN"];
@@ -1673,42 +1657,38 @@ int ImportBulmaFact::trataAlmacen() {
     QString faxalmacen = valores["FAXALMACEN"];
     QString emailalmacen = valores["EMAILALMACEN"];
     QString inactivoalmacen = valores["INACTIVOALMACEN"];
-
     /// Comprobamos que hayan suficientes datos para procesar.
     if(codigoalmacen == "" || nomalmacen == "" ) {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI>Datos insuficientes para tratar el almacen."));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI>Datos insuficientes para tratar el almacen."));
         valores.clear();
         return 1;
-    }// end if
-
+    } // end if
     /// Comprobamos que no este ya creada un almacen de este tipo.
-    QString query = "SELECT * FROM almacen WHERE codigoalmacen='"+codigoalmacen+"'";
+    QString query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cursor2 *cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> Ya existe este almacen."));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> Ya existe este almacen."));
         delete cur;
         valores.clear();
         return 1;
-    }// end if
+    } // end if
     delete cur;
-
-    /// Hacemos la insercion del almacen
-    query = "INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen) VALUES ('"+codigoalmacen+"','"+nomalmacen+"','"+diralmacen+"')";
+    /// Hacemos la insercion del almacen.
+    query = "INSERT INTO almacen (codigoalmacen, nomalmacen, diralmacen) VALUES ('" + codigoalmacen + "','" + nomalmacen + "','" + diralmacen + "')";
     conexionbase->ejecuta(query);
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<LI> Almacen <B>")+codigoalmacen+theApp->translate("ImportBulmaFact","</B> Insertado"));
-
-    /// Finalizamos
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<LI> Almacen <B>") + codigoalmacen + theApp->translate("ImportBulmaFact", "</B> Insertado"));
+    /// Finalizamos.
     pgimport->mensajeria("<HR>");
     valores.clear();
     return 0;
 }
 
+
 int ImportBulmaFact::trataFamilia() {
     QString query;
     cursor2 *cur;
-    /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando familia ")+valores["CODIGOCOMPLETOFAMILIA"]+" "+valores["NOMBREFAMILIA"]+"</B><BR>");
-
+    /// En el XML se ha encontrado un tag de almacen que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando familia ") + valores["CODIGOCOMPLETOFAMILIA"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>");
     /// Primero hacemos la recoleccion de valores.
     QString idfamilia = valores["IDFAMILIA"];
     QString codigofamilia = valores["CODIGOFAMILIA"];
@@ -1716,60 +1696,53 @@ int ImportBulmaFact::trataFamilia() {
     QString descfamilia = valores["DESCFAMILIA"];
     QString padrefamilia = valores["PADREFAMILIA"];
     QString codigocompletofamilia = valores["CODIGOCOMPLETOFAMILIA"];
-
     /// Comprobamos que hayan suficientes datos para procesar.
-
     /// Comprobamos quien es el padre de la familia.
     QString codigopadre = codigocompletofamilia.left(codigocompletofamilia.length() - codigofamilia.length());
-    QString idpadre="";
+    QString idpadre = "";
     if (codigopadre == "") {
         idpadre = "NULL";
     } else {
-        query = "SELECT * FROM familia WHERE codigocompletofamilia='"+codigopadre+"'";
+        query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigopadre + "'";
         cur = conexionbase->cargacursor(query);
         if (!cur->eof()) {
             idpadre = cur->valor("idfamilia");
         } else {
-            pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P> No se ha encontrado el padre de esta familia.</P>"));
-        }// end if
+            pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P> No se ha encontrado el padre de esta familia.</P>"));
+        } // end if
         delete cur;
-    }// end if
-
-
-    if(codigocompletofamilia == "" || nombrefamilia == "" || idpadre == "") {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P>Datos insuficientes para tratar la familia.</P>"));
+    } // end if
+    if (codigocompletofamilia == "" || nombrefamilia == "" || idpadre == "") {
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P>Datos insuficientes para tratar la familia.</P>"));
         valores.clear();
         return 1;
-    }// end if
-
+    } // end if
     /// Comprobamos que no este ya creada un familia de este tipo.
-    query = "SELECT * FROM familia WHERE codigocompletofamilia='"+codigocompletofamilia+"'";
+    query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigocompletofamilia + "'";
     cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P> Ya existe esta familia.</P>"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P> Ya existe esta familia.</P>"));
         delete cur;
         valores.clear();
         return 1;
-    }// end if
+    } // end if
     delete cur;
-
-
-    /// Hacemos la insercion del familia
-    query = "INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('"+codigofamilia+"','"+nombrefamilia+"',"+idpadre+")";
+    /// Hacemos la insercion del familia.
+    query = "INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('" + codigofamilia + "','" + nombrefamilia + "'," + idpadre + ")";
     conexionbase->ejecuta(query);
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P> Familia <B>")+codigocompletofamilia+theApp->translate("ImportBulmaFact","</B> Insertado</P>"));
-
-    /// Finalizamos
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P> Familia <B>") + codigocompletofamilia + theApp->translate("ImportBulmaFact", "</B> Insertado</P>"));
+    /// Finalizamos.
     pgimport->mensajeria("<HR>");
     valores.clear();
     return 0;
 }
 
+
 int ImportBulmaFact::trataArticulo() {
     QString query;
     cursor2 *cur;
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando Articulo ")+valores["CODIGOCOMPLETOARTICULO"]+" </B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando Articulo ") + valores["CODIGOCOMPLETOARTICULO"] + " </B><BR>");
     /// Primero hacemos la recoleccion de valores.
     QString idarticulo = valores["IDARTICULO"];
     QString codarticulo =  valores["CODARTICULO"];
@@ -1791,80 +1764,76 @@ int ImportBulmaFact::trataArticulo() {
     QString desctipo_articulo = valores["DESCTIPO_ARTICULO"];
     QString desctipo_iva = valores["DESCTIPO_IVA"];
 
-    query = "SELECT * FROM familia WHERE codigocompletofamilia='"+codigocompletofamilia+"'";
+    query = "SELECT * FROM familia WHERE codigocompletofamilia = '" + codigocompletofamilia + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
-        idfamilia= cur->valor("idfamilia");
+    if (!cur->eof()) {
+        idfamilia = cur->valor("idfamilia");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","La familia del articulo no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La familia del articulo no existe<BR>\n"));
         idfamilia = "";
-    }// end if
+    } // end if
     delete cur;
 
-    query = "SELECT * from tipo_articulo WHERE codtipo_articulo = '"+codtipo_articulo+"'";
+    query = "SELECT * from tipo_articulo WHERE codtipo_articulo = '" + codtipo_articulo + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         idtipo_articulo= cur->valor("idtipo_articulo");
     } else {
         idtipo_articulo = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
-
-    query = "SELECT * from tipo_iva WHERE desctipo_iva = '"+desctipo_iva+"'";
+    query = "SELECT * from tipo_iva WHERE desctipo_iva = '" + desctipo_iva + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         idtipo_iva= cur->valor("idtipo_iva");
     } else {
         idtipo_iva = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
     /// Comprobamos que hayan suficientes datos para procesar.
-    if(codigocompletoarticulo == "" || nomarticulo == "" || idfamilia == "") {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P>Datos insuficientes para tratar el articulo.</P>"));
+    if (codigocompletoarticulo == "" || nomarticulo == "" || idfamilia == "") {
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P>Datos insuficientes para tratar el articulo.</P>"));
         valores.clear();
         return 1;
-    }// end if
-
+    } // end if
 
     /// Comprobamos que no este ya creada un articulo de este tipo.
-    query = "SELECT * FROM articulo WHERE codigocompletoarticulo='"+codigocompletoarticulo+"'";
+    query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
     cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P> Ya existe este articulo.</P>"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P> Ya existe este articulo.</P>"));
         delete cur;
         valores.clear();
         return 1;
-    }// end if
+    } // end if
     delete cur;
 
-    /// Hacemos la insercion del articulo
-    query = "INSERT INTO articulo (codarticulo, nomarticulo, abrevarticulo, idfamilia, pvparticulo, idtipo_articulo,obserarticulo,presentablearticulo,inactivoarticulo,controlstockarticulo,idtipo_iva) VALUES (";
-    query += "'"+codarticulo+"'";
-    query += ",'"+nomarticulo+"'";
-    query += ",'"+abrevarticulo;
-    query += "',"+idfamilia;
-    query += ","+pvparticulo;
-    query += ","+idtipo_articulo;
-    query += ",'"+obserarticulo+"'";
-    query += ",'"+presentablearticulo+"'";
-    query += ",'"+inactivoarticulo+"'";
-    query += ",'"+controlstockarticulo+"'";
-    query += ","+idtipo_iva;
+    /// Hacemos la insercion del articulo.
+    query = "INSERT INTO articulo (codarticulo, nomarticulo, abrevarticulo, idfamilia, pvparticulo, idtipo_articulo, obserarticulo, presentablearticulo, inactivoarticulo, controlstockarticulo, idtipo_iva) VALUES (";
+    query += "'" + codarticulo + "'";
+    query += ",'" + nomarticulo + "'";
+    query += ",'" + abrevarticulo;
+    query += "'," + idfamilia;
+    query += "," + pvparticulo;
+    query += "," + idtipo_articulo;
+    query += ",'" + obserarticulo + "'";
+    query += ",'" + presentablearticulo + "'";
+    query += ",'" + inactivoarticulo + "'";
+    query += ",'" + controlstockarticulo + "'";
+    query += "," + idtipo_iva;
     query += ")";
     conexionbase->ejecuta(query);
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<P> Articulo <B>")+codigocompletoarticulo+theApp->translate("ImportBulmaFact","</B> Insertado</P>"));
-
-
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<P> Articulo <B>") + codigocompletoarticulo + theApp->translate("ImportBulmaFact", "</B> Insertado</P>"));
     valores.clear();
     return 0;
 }
 
 
 int ImportBulmaFact::trataLPedidoCliente() {
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando LPedidoCliente ")+valores["IDLPEDIDOCLIENTE"]+"</B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LPedidoCliente ") + valores["IDLPEDIDOCLIENTE"] + "</B><BR>");
     tvalores *lpedidoclientemap = new tvalores;
     lpedidoclientemap->insert("IDLPEDIDOCLIENTE", valores["IDLPEDIDOCLIENTE"]);
     lpedidoclientemap->insert("DESCLPEDIDOCLIENTE", valores["DESCLPEDIDOCLIENTE"]);
@@ -1880,27 +1849,26 @@ int ImportBulmaFact::trataLPedidoCliente() {
     lpedidoclientemap->insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
     listalpedidocliente.append(lpedidoclientemap);
     return 0;
-}// end trataLPedidoCliente
+}
 
 
 int ImportBulmaFact::trataDPedidoCliente() {
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando DPedidoCliente ")+valores["IDDPEDIDOCLIENTE"]+"</B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DPedidoCliente ") + valores["IDDPEDIDOCLIENTE"] + "</B><BR>");
     tvalores *dpedidoclientemap = new tvalores;
     dpedidoclientemap->insert("IDDPEDIDOCLIENTE", valores["IDDPEDIDOCLIENTE"]);
     dpedidoclientemap->insert("CONCEPTDPEDIDOCLIENTE", valores["CONCEPTDPEDIDOCLIENTE"]);
     dpedidoclientemap->insert("PROPORCIONDPEDIDOCLIENTE", valores["PROPORCIONDPEDIDOCLIENTE"]);
     listadpedidocliente.append(dpedidoclientemap);
     return 0;
-}// end trataDPedidoCliente
-
+}
 
 
 int ImportBulmaFact::trataPedidoCliente() {
     QString query;
     cursor2 *cur;
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando Pedido Cliente ")+valores["IDPEDIDOCLIENTE"]+" "+valores["NOMBREFAMILIA"]+"</B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando Pedido Cliente ") + valores["IDPEDIDOCLIENTE"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>");
     QString idpedidocliente = valores["IDPEDIDOCLIENTE"];
     QString numpedidocliente = valores["NUMPEDIDOCLIENTE"];
     QString refpedidocliente = valores["REFPEDIDOCLIENTE"];
@@ -1944,65 +1912,62 @@ int ImportBulmaFact::trataPedidoCliente() {
     QString dias1tforma_pago = valores["DIAS1TFORMA_PAGO"];
     QString descuentoforma_pago = valores["DESCUENTOFORMA_PAGO"];
 
-
     /// Completamos datos que puedan faltar.
-    query = "SELECT * FROM almacen WHERE codigoalmacen='"+codigoalmacen+"'";
+    query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
-        idalmacen= cur->valor("idalmacen");
+    if (!cur->eof()) {
+        idalmacen = cur->valor("idalmacen");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","El almaceń del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El almacen del presupuesto no existe<BR>\n"));
         idalmacen = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
-    query = "SELECT * FROM cliente WHERE cifcliente='"+cifcliente+"'";
+    query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
-        idcliente= cur->valor("idcliente");
+    if (!cur->eof()) {
+        idcliente = cur->valor("idcliente");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","El clienteń del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El cliente del presupuesto no existe<BR>\n"));
         idcliente = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
-
-    query = "SELECT * FROM forma_pago WHERE descforma_pago='"+descforma_pago+"'";
+    query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
-        idforma_pago= cur->valor("idforma_pago");
+    if (!cur->eof()) {
+        idforma_pago = cur->valor("idforma_pago");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","La forma de pagoń del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La forma de pago del presupuesto no existe<BR>\n"));
         idforma_pago = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
-    query = "SELECT * FROM trabajador WHERE nomtrabajador='"+nomtrabajador+"' AND nsstrabajador='"+nsstrabajador+"'";
+    query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
-        idtrabajador= cur->valor("idtrabajador");
+    if (!cur->eof()) {
+        idtrabajador = cur->valor("idtrabajador");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","El empleado del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El empleado del presupuesto no existe<BR>\n"));
         idtrabajador = "NULL";
-    }// end if
+    } // end if
     delete cur;
-
 
     /// Hacemos la insercion.
-    query = " INSERT INTO pedidocliente ( numpedidocliente , refpedidocliente , fechapedidocliente , descpedidocliente , contactpedidocliente , telpedidocliente  , comentpedidocliente , idusuari , procesadopedidocliente , idcliente , idalmacen , idforma_pago , idtrabajador) VALUES (";
+    query = " INSERT INTO pedidocliente (numpedidocliente, refpedidocliente, fechapedidocliente, descpedidocliente, contactpedidocliente, telpedidocliente, comentpedidocliente, idusuari, procesadopedidocliente, idcliente, idalmacen, idforma_pago, idtrabajador) VALUES (";
     query += "NULL";
-    query += ", '"+refpedidocliente+"'";
-    query += ", '"+fechapedidocliente+"'";
-    query += ", '"+descpedidocliente+"'";
-    query += ", '"+contactpedidocliente+"'";
-    query += ", '"+telpedidocliente+"'";
-    query += ", '"+comentpedidocliente+"'";
+    query += ", '" + refpedidocliente + "'";
+    query += ", '" + fechapedidocliente + "'";
+    query += ", '" + descpedidocliente + "'";
+    query += ", '" + contactpedidocliente + "'";
+    query += ", '" + telpedidocliente + "'";
+    query += ", '" + comentpedidocliente + "'";
     query += ", NULL";
-    query += ",'"+procesadopedidocliente+"'";
-    query += ","+idcliente;
-    query += ","+idalmacen;
-    query += ","+idforma_pago;
-    query += ","+idtrabajador;
+    query += ",'" + procesadopedidocliente + "'";
+    query += "," + idcliente;
+    query += "," + idalmacen;
+    query += "," + idforma_pago;
+    query += "," + idtrabajador;
     query += ")";
 
     conexionbase->begin();
@@ -2011,9 +1976,9 @@ int ImportBulmaFact::trataPedidoCliente() {
     idpedidocliente = cur->valor("id");
     delete cur;
     conexionbase->commit();
-    /// Tratamos la insercion de las lineas de albaran
+    /// Tratamos la insercion de las lineas de albaran.
     tvalores *lpedidoclientemap;
-    for ( lpedidoclientemap = listalpedidocliente.first(); lpedidoclientemap; lpedidoclientemap = listalpedidocliente.next() ) {
+    for (lpedidoclientemap = listalpedidocliente.first(); lpedidoclientemap; lpedidoclientemap = listalpedidocliente.next()) {
         QString idlpedidocliente = (*lpedidoclientemap)["IDLPEDIDOCLIENTE"];
         QString desclpedidocliente = (*lpedidoclientemap)["DESCLPEDIDOCLIENTE"];
         QString cantlpedidocliente = (*lpedidoclientemap)["CANTLPEDIDOCLIENTE"];
@@ -2025,48 +1990,48 @@ int ImportBulmaFact::trataPedidoCliente() {
         QString nomarticulo = (*lpedidoclientemap)["NOMARTICULO"];
         QString abrevarticulo = (*lpedidoclientemap)["ABREVARTICULO"];
         QString codigocompletoarticulo = (*lpedidoclientemap)["CODIGOCOMPLETOARTICULO"];
-        /// Completamos datos de la linea de presupuesto
-        query = "SELECT * FROM articulo WHERE codigocompletoarticulo='"+codigocompletoarticulo+"'";
+        /// Completamos datos de la linea de presupuesto.
+        query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
         cur = conexionbase->cargacursor(query);
-        if(!cur->eof()) {
-            idarticulo= cur->valor("idarticulo");
+        if (!cur->eof()) {
+            idarticulo = cur->valor("idarticulo");
         } else {
-            pgimport->mensajeria(theApp->translate("ImportBulmaFact","El articulo de la linea de presupuesto no existe<BR>\n"));
+            pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El articulo de la linea de presupuesto no existe<BR>\n"));
             idarticulo = "NULL";
-        }// end if
+        } // end if
         delete cur;
         /// Hacemos la insercion.
-        query = " INSERT INTO lpedidocliente (  desclpedidocliente , cantlpedidocliente , pvplpedidocliente , ivalpedidocliente , descuentolpedidocliente , idpedidocliente , idarticulo ) VALUES (";
-        query += "'"+desclpedidocliente+"'";
-        query += ", "+cantlpedidocliente;
-        query += ", "+pvplpedidocliente;
-        query += ", "+ivalpedidocliente;
-        query += ", "+descuentolpedidocliente;
-        query += ", "+idpedidocliente;
-        query += ", "+idarticulo;
+        query = " INSERT INTO lpedidocliente (desclpedidocliente, cantlpedidocliente, pvplpedidocliente, ivalpedidocliente, descuentolpedidocliente, idpedidocliente, idarticulo) VALUES (";
+        query += "'" + desclpedidocliente + "'";
+        query += ", " + cantlpedidocliente;
+        query += ", " + pvplpedidocliente;
+        query += ", " + ivalpedidocliente;
+        query += ", " + descuentolpedidocliente;
+        query += ", " + idpedidocliente;
+        query += ", " + idarticulo;
         query += ")";
         conexionbase->ejecuta(query);
-    }// end for
-    fprintf(stderr,"Terminamos la limpieza\n");
+    } // end for
+    fprintf(stderr, "Terminamos la limpieza\n");
     listalpedidocliente.clear();
-    /// Tratamos la insercion de los descuentos de presupuesto
+    /// Tratamos la insercion de los descuentos de presupuesto.
     tvalores *dpedidoclientemap;
-    for ( dpedidoclientemap = listadpedidocliente.first(); dpedidoclientemap; dpedidoclientemap = listadpedidocliente.next() ) {
+    for (dpedidoclientemap = listadpedidocliente.first(); dpedidoclientemap; dpedidoclientemap = listadpedidocliente.next()) {
         QString iddpedidocliente = (*dpedidoclientemap)["IDDPEDIDOCLIENTE"];
         QString conceptdpedidocliente = (*dpedidoclientemap)["CONCEPTDPEDIDOCLIENTE"];
         QString proporciondpedidocliente = (*dpedidoclientemap)["PROPORCIONDPEDIDOCLIENTE"];
         /// Hacemos la insercion.
-        query = " INSERT INTO dpedidocliente (  conceptdpedidocliente , proporciondpedidocliente , idpedidocliente ) VALUES (";
-        query += "'"+conceptdpedidocliente+"'";
-        query += ", "+proporciondpedidocliente;
-        query += ", "+idpedidocliente;
+        query = " INSERT INTO dpedidocliente (conceptdpedidocliente, proporciondpedidocliente, idpedidocliente) VALUES (";
+        query += "'" + conceptdpedidocliente + "'";
+        query += ", " + proporciondpedidocliente;
+        query += ", " + idpedidocliente;
         query += ")";
         conexionbase->ejecuta(query);
-    }// end for
+    } // end for
     listadpedidocliente.clear();
     valores.clear();
     return 0;
-}// end trataPedidoCliente
+}
 
 
 int ImportBulmaFact::trataLAlbaran() {
@@ -2087,7 +2052,7 @@ int ImportBulmaFact::trataLAlbaran() {
     lalbaranmap->insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
     listalalbaran.append(lalbaranmap);
     return 0;
-}// end trataLAlbaran
+}
 
 
 int ImportBulmaFact::trataDAlbaran() {
@@ -2099,16 +2064,14 @@ int ImportBulmaFact::trataDAlbaran() {
     dalbaranmap->insert("PROPORCIONDALBARAN", valores["PROPORCIONDALBARAN"]);
     listadalbaran.append(dalbaranmap);
     return 0;
-}// end trataDAlbaran
+}
 
 
 int ImportBulmaFact::trataAlbaran() {
     QString query;
     cursor2 *cur;
-
-
-    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
-    pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando Albaran ")+valores["IDALBARAN"]+" "+valores["NOMBREFAMILIA"]+"</B><BR>");
+    /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
+    pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando Albaran ") + valores["IDALBARAN"] + " " + valores["NOMBREFAMILIA"] + "</B><BR>");
     QString idalbaran = valores["IDALBARAN"];
     QString numalbaran = valores["NUMALBARAN"];
     QString refalbaran = valores["REFALBARAN"];
@@ -2154,22 +2117,21 @@ int ImportBulmaFact::trataAlbaran() {
     QString dias1tforma_pago = valores["DIAS1TFORMA_PAGO"];
     QString descuentoforma_pago = valores["DESCUENTOFORMA_PAGO"];
 
-
     /// Completamos datos que puedan faltar.
-    query = "SELECT * FROM almacen WHERE codigoalmacen='"+codigoalmacen+"'";
+    query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = conexionbase->cargacursor(query);
     if(!cur->eof()) {
-        idalmacen= cur->valor("idalmacen");
+        idalmacen = cur->valor("idalmacen");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact","El almaceń del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El almacen del presupuesto no existe<BR>\n"));
         idalmacen = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
-    query = "SELECT * FROM cliente WHERE cifcliente='" + cifcliente + "'";
+    query = "SELECT * FROM cliente WHERE cifcliente = '" + cifcliente + "'";
     cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        idcliente= cur->valor("idcliente");
+        idcliente = cur->valor("idcliente");
     } else {
         pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El cliente del presupuesto no existe<BR>\n"));
         idcliente = "NULL";
@@ -2178,7 +2140,7 @@ int ImportBulmaFact::trataAlbaran() {
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
-        idforma_pago= cur->valor("idforma_pago");
+        idforma_pago = cur->valor("idforma_pago");
     } else {
         pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La forma de pago del presupuesto no existe<BR>\n"));
         idforma_pago = "NULL";
@@ -2194,7 +2156,7 @@ int ImportBulmaFact::trataAlbaran() {
     } // end if
     delete cur;
     /// Hacemos la insercion.
-    query = " INSERT INTO albaran(numalbaran, refalbaran, fechaalbaran, descalbaran, contactalbaran , telalbaran  , comentalbaran , idusuari, procesadoalbaran, idcliente, idalmacen, idforma_pago, idtrabajador) VALUES (";
+    query = " INSERT INTO albaran (numalbaran, refalbaran, fechaalbaran, descalbaran, contactalbaran , telalbaran  , comentalbaran , idusuari, procesadoalbaran, idcliente, idalmacen, idforma_pago, idtrabajador) VALUES (";
     query += "NULL";
     query += ", '" + refalbaran + "'";
     query += ", '" + fechaalbaran + "'";
@@ -2377,12 +2339,12 @@ int ImportBulmaFact::trataFactura() {
     delete cur;
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         idforma_pago = cur->valor("idforma_pago");
     } else {
         pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La forma de pagoń del presupuesto no existe<BR>\n"));
         idforma_pago = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
@@ -2394,10 +2356,11 @@ int ImportBulmaFact::trataFactura() {
         idtrabajador = "NULL";
     } // end if
     delete cur;
+
     /// Hacemos comprobaciones de integridad para saber si la factura es insertable o no.
     query = "SELECT * FROM factura WHERE numfactura = '" + numfactura + "' AND codigoserie_factura = '" + codigoserie_factura + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         delete cur;
         pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La factura ya existe y no se va a insertar."));
         listalfactura.clear();
@@ -2406,6 +2369,7 @@ int ImportBulmaFact::trataFactura() {
         return 1;
     } // end if
     delete cur;
+
     /// Hacemos la insercion.
     query = " INSERT INTO factura(numfactura, reffactura, ffactura, descfactura, contactfactura, telfactura, comentfactura, idusuari, procesadafactura, idcliente, idalmacen, idforma_pago, idtrabajador, codigoserie_factura) VALUES (";
     query += numfactura;
@@ -2573,32 +2537,32 @@ int ImportBulmaFact::trataPresupuesto() {
     /// Completamos datos que puedan faltar.
     query = "SELECT * FROM almacen WHERE codigoalmacen = '" + codigoalmacen + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         idalmacen = cur->valor("idalmacen");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El almaceń del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El almacen del presupuesto no existe<BR>\n"));
         idalmacen = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
     query = "SELECT * FROM cliente WHERE cifcliente='" + cifcliente + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         idcliente = cur->valor("idcliente");
     } else {
-        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El clienteń del presupuesto no existe<BR>\n"));
+        pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El cliente del presupuesto no existe<BR>\n"));
         idcliente = "NULL";
     } // end if
     delete cur;
 
     query = "SELECT * FROM forma_pago WHERE descforma_pago = '" + descforma_pago + "'";
     cur = conexionbase->cargacursor(query);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         idforma_pago = cur->valor("idforma_pago");
     } else {
         pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La forma de pagoń del presupuesto no existe<BR>\n"));
         idforma_pago = "NULL";
-    }// end if
+    } // end if
     delete cur;
 
     query = "SELECT * FROM trabajador WHERE nomtrabajador = '" + nomtrabajador + "' AND nsstrabajador = '" + nsstrabajador + "'";
@@ -2630,7 +2594,7 @@ int ImportBulmaFact::trataPresupuesto() {
 
     conexionbase->begin();
     conexionbase->ejecuta(query);
-    cur= conexionbase->cargacursor("SELECT MAX(idpresupuesto) AS id FROM presupuesto");
+    cur = conexionbase->cargacursor("SELECT MAX(idpresupuesto) AS id FROM presupuesto");
     idpresupuesto = cur->valor("id");
     delete cur;
     conexionbase->commit();

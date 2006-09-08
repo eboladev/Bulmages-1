@@ -54,8 +54,8 @@ ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent)
 
 
 ListConfiguracionView::~ListConfiguracionView() {
-	_depura("ListConfiguracionView::~ListConfiguracionView", 0);
-	_depura("END ListConfiguracionView::~ListConfiguracionView", 0);
+    _depura("ListConfiguracionView::~ListConfiguracionView", 0);
+    _depura("END ListConfiguracionView::~ListConfiguracionView", 0);
 }
 
 

@@ -47,8 +47,6 @@ protected:
     QString m_campoid; /// Campo Identificador de la tabla en la BD.
     bool m_insercion; /// Indica si se pueden insertar nuevas filas o no.
     bool m_primero; /// Indica si ya se ha cargado la configuracion o no.
-
-protected:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();

@@ -28,10 +28,9 @@
 
 
 class QTableWidgetItem2 : public QTableWidgetItem {
-public:
-    int modo;
 
 public:
+    int modo;
     QTableWidgetItem2(int type = Type, int mode = 0) : QTableWidgetItem(type) {
         modo = mode;
     }
@@ -45,10 +44,9 @@ public:
 };
 
 
-
-
 class QTableWidget2 : public QTableWidget {
     Q_OBJECT
+
 private:
     int modo; /// Indica el modo de dibujo.
     int m_tipoorden;
