@@ -141,7 +141,7 @@ void abreempresaview::accept() {
         m_tipoempresa = textoitem3;
         done(0);
     } else {
-        mensajeInfo(tr("Tiene que seleccionar la empresa con la que quiere trabajar."));
+        mensajeInfo(tr("Para entrar, antes tiene que seleccionar una empresa."));
     }
     _depura("abreempresaview::accept", 0);
 }
@@ -283,6 +283,8 @@ void abreempresaview::preparamui_empresas() {
     QStringList nombrecolumnas;
     nombrecolumnas << tr("Nombre") << tr("Anyo") << tr("Archivo") << tr("Tipo");
     mui_empresas->setHorizontalHeaderLabels(nombrecolumnas);
+    mui_empresas->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
+
     mui_empresas->verticalHeader()->hide();
     mui_empresas->setShowGrid(FALSE);
     /// Si es el modo de facturacion ocultamos la fecha.
