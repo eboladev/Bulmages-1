@@ -71,8 +71,8 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
     emp->meteWindow(windowTitle(), this);
 
-/// ============================================
-/// DEFINICIONES PARA LA TABLA DE IVAAboutView
+    /// ============================================
+    /// DEFINICIONES PARA LA TABLA DE IVAAboutView
     mui_tablasoportado->setDBTableName("registroiva");
     mui_tablasoportado->setDBCampoId("idregistroiva");
     mui_tablasoportado->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id"));
@@ -117,15 +117,15 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     mui_tablarepercutido->addSHeader("rectificaaregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("orden"));
     mui_tablarepercutido->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
     mui_tablarepercutido->setinsercion(FALSE);
-/// END DEFINICIONES PARA LA TABLA DE IVAAboutViewAboutViewAboutViewAboutView
-/// =============================================
+    /// END DEFINICIONES PARA LA TABLA DE IVAAboutViewAboutViewAboutViewAboutView
+    /// =============================================
     _depura("END ListRegistroIvaView::ListRegistroIvaView", 0);
 }
 
 ListRegistroIvaView::~ListRegistroIvaView() {
-   _depura("ListRegistroIvaView::~ListRegistroIvaView", 0);
-   m_companyact->sacaWindow(this);
-   _depura("END ListRegistroIvaView::~ListRegistroIvaView", 0);
+    _depura("ListRegistroIvaView::~ListRegistroIvaView", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END ListRegistroIvaView::~ListRegistroIvaView", 0);
 }
 
 /**
@@ -192,7 +192,7 @@ void ListRegistroIvaView::inicializa() {
     cursor2 *cur = m_companyact->cargacursor(SQLQuery, "elcursor");
     m_listSoportado->setNumRows(cur->numregistros());
     int j =0;
-    while (! cur->eof() ) {	
+    while (! cur->eof() ) {
         m_listSoportado->setText(j, RES_NOMBRETIPOIVASOPORTADO,cur->valor("nombretipoiva"));
         m_listSoportado->setText(j, RES_IVASOPORTADO,cur->valor("tivaiva"));
         m_listSoportado->setText(j, RES_BASESOPORTADO, cur->valor("tbaseiva"));
@@ -214,42 +214,18 @@ void ListRegistroIvaView::inicializa() {
     }// end while
     delete cur;
 
-    SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'"; 
-    
+    SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'";
+
     cur = m_companyact->cargacursor(SQLQuery);
     m_baseimps->setText(cur->valor("tbaseimp"));
     m_ivas->setText(cur->valor("tbaseiva"));
     delete cur;
-    
-    SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE NOT factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'"; 
+
+    SQLQuery = "SELECT SUM(baseimp) AS tbaseimp, sum(iva) AS tbaseiva FROM registroiva WHERE NOT factemitida AND ffactura >='"+finicial->text()+"' AND ffactura <='"+ffinal->text()+"'";
     cur = m_companyact->cargacursor(SQLQuery);
     m_baseimpr->setText(cur->valor("tbaseimp"));
     m_ivar->setText(cur->valor("tbaseiva"));
     delete cur;
-    
-    // Vamos a cargar la lista de tablasoportado (COMPRAS)
-    tablasoportado->setNumCols(13);
-    tablasoportado->horizontalHeader()->setLabel( S_COL_FECHA, tr( "FECHA" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_CONTRAPARTIDA, tr( "CONTRAPARTIDA" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_DESCRIPCION, tr( "DESCRIPCION" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_BASEIMP, tr( "BASE IMPONIBLE" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_PORCENT_IVA, tr( "PORCENTAJE IVA" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_TOTAL, tr( "TOTAL" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_FACTURA, tr( "FACTURA PROVEEDOR" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_ORDEN, tr( "NUM ORDEN" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_CIF, tr( "CIF" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_NUMASIENTO, tr( "NUM ASIENTO" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_IDBORRADOR, tr("ID BORRADOR") );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_IDASIENTO, tr( "ID ASIENTO" ) );
-    tablasoportado->horizontalHeader()->setLabel( S_COL_CUENTA_IVA, tr( "CUENTA IVA" ) );
-
-    tablasoportado->hideColumn(S_COL_CUENTA_IVA);
-    tablasoportado->hideColumn(S_COL_IDASIENTO);
-    tablasoportado->hideColumn(S_COL_IDBORRADOR);
-    tablasoportado->hideColumn(S_COL_NUMASIENTO);
-    tablasoportado->hideColumn(S_COL_CONTRAPARTIDA);
-    tablasoportado->hideColumn(S_COL_PORCENT_IVA);
-
 
 
     query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento AND borrador.fecha >= '%s' AND borrador.fecha <= '%s') AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida ",finicial->text().ascii(), ffinal->text().ascii());
@@ -260,6 +236,7 @@ void ListRegistroIvaView::inicializa() {
 
     int i =0;
     cursor2 *cursorcontra;
+/*
     tablasoportado->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
         query.sprintf("SELECT * FROM cuenta WHERE cuenta.idcuenta=%s",cursorreg->valor("contrapartida").ascii());
@@ -288,8 +265,11 @@ void ListRegistroIvaView::inicializa() {
         i++;
         cursorreg->siguienteregistro();
     }// end for
+*/
+
     delete cursorreg;
 
+/*
     // Vamos a cargar la lista de tablarepercutido (VENTAS)
     tablarepercutido->setNumCols(12);
     tablarepercutido->horizontalHeader()->setLabel( R_COL_FECHA, tr( "FECHA" ) );
@@ -312,6 +292,7 @@ void ListRegistroIvaView::inicializa() {
     tablarepercutido->hideColumn(R_COL_CONTRAPARTIDA);
     tablarepercutido->hideColumn(R_COL_PORCENT_IVA);
 
+*/
 
     // Hacemos el c�culo de los que no pertenecen a iva soportado pq as�entran todos.
     query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento AND borrador.fecha >= '%s' AND borrador.fecha <= '%s') AS t1 ON t1.idborrador = registroiva.idborrador AND NOT factemitida", finicial->text().ascii(), ffinal->text().ascii());
@@ -319,6 +300,7 @@ void ListRegistroIvaView::inicializa() {
     /// El nuevo proceso de carga es distinto.
     mui_tablasoportado->cargar(cursorreg);
 
+/*
     i =0;
     tablarepercutido->setNumRows(cursorreg->numregistros());
     while (!cursorreg->eof()) {
@@ -347,91 +329,64 @@ void ListRegistroIvaView::inicializa() {
         i++;
         cursorreg->siguienteregistro();
     }// end While
+
+*/
     delete cursorreg;
 }
 
-void ListRegistroIvaView::menu_contextual(int row, int , const QPoint &poin) {
-    // Si el asiento esta cerrado el menu a mostrar es diferente
-    int idborrador =0;
-    Q3PopupMenu *popup = new Q3PopupMenu;
-    popup->insertItem(tr("Ver Asiento"), 0);
-    popup->insertSeparator();
-    popup->insertItem(tr("Editar Registro"),101);
-    popup->insertItem(tr("Borrar Registro"),103);
-    int opcion = popup->exec(poin);
-    switch(opcion) {
-    case 0:
-        int idasiento;
-        idasiento = atoi(tablasoportado->text(row,S_COL_IDASIENTO).ascii());
-//        m_companyact->intapuntsempresa()->flashAsiento(idasiento);
-        m_companyact->intapuntsempresa()->muestraasiento(idasiento);
-        m_companyact->intapuntsempresa()->show();
-        m_companyact->intapuntsempresa()->setFocus();
-        close();
-        break;
-    case 101:
-        idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
-        if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
-            nuevae->inicializa1(idborrador);
-	    m_companyact->pWorkspace()->addWindow(nuevae);
-	    nuevae->show();
-        }// end if
-        break;
-    case 103:
-        idborrador = atoi(tablasoportado->text(row,S_COL_IDBORRADOR).ascii());
-        if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
-            nuevae->inicializa1(idborrador);
-            nuevae->on_mui_borrar_clicked();
-            delete nuevae;
-	    on_mui_actualizar_clicked();
-        }// end if
-        break;
 
 
-    }// end switch
-    delete popup;
+void ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu(QMenu *menu) {
+    _depura("ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu", 0);
+    m_verreg = menu->addAction("Editar Registro");
+    m_verasiento = menu->addAction("Asiento Contable");
+    menu->addSeparator();
+    _depura("END ListRegistroIvaView::on_mui_tablarepercutido_pintaMenu", 0);
 }
 
-void ListRegistroIvaView::menu_contextual1(int row, int , const QPoint &poin) {
-    // Si el asiento esta cerrado el menu a mostrar es diferente
-    int idborrador=0;
-    Q3PopupMenu *popup = new Q3PopupMenu;
-    popup->insertItem(tr("Ver Asiento"), 0);
-    popup->insertSeparator();
-    popup->insertItem(tr("Editar entrada de IVA"),101);
-    popup->insertItem(tr("Borrar Registro"),103);
-    int opcion = popup->exec(poin);
-    switch(opcion) {
-    case 0:
+void ListRegistroIvaView::on_mui_tablasoportado_pintaMenu(QMenu *menu) {
+    _depura("ListRegistroIvaView::on_mui_tablasoportado_pintaMenu", 0);
+    m_verreg = menu->addAction("Editar Registro");
+    m_verasiento = menu->addAction("Asiento Contable");
+    menu->addSeparator();
+    _depura("END ListRegistroIvaView::on_mui_tablasoportado_pintaMenu", 0);
+}
+
+void ListRegistroIvaView::on_mui_tablasoportado_trataMenu(QAction *ac) {
+    _depura("ListRegistroIvaView::on_mui_tablasoportado_trataMenu", 0);
+    if (m_verreg == ac) {
+        QString idborrador = mui_tablasoportado->DBvalue("idborrador");
+        RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
+        nuevae->inicializa1(idborrador.toInt());
+        m_companyact->pWorkspace()->addWindow(nuevae);
+        nuevae->show();
+    } // end if
+    if (m_verasiento == ac) {
         int idasiento;
-        idasiento = atoi(tablarepercutido->text(row,R_COL_IDASIENTO).ascii());
+        idasiento = mui_tablasoportado->DBvalue("idasiento").toInt();
         m_companyact->intapuntsempresa()->muestraasiento(idasiento);
         m_companyact->intapuntsempresa()->show();
         m_companyact->intapuntsempresa()->setFocus();
-        close();
-        break;
-    case 101:
-        idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
-        if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0);
-            nuevae->inicializa1(idborrador);
-	    m_companyact->pWorkspace()->addWindow(nuevae);
-	    nuevae->show();
-        }// end if
-        break;
-    case 103:
-        idborrador = atoi(tablarepercutido->text(row,R_COL_IDBORRADOR).ascii());
-        if (idborrador != 0) {
-            RegistroIvaView *nuevae=new RegistroIvaView(m_companyact, 0);
-            nuevae->inicializa1(idborrador);
-            nuevae->on_mui_borrar_clicked();
-            delete nuevae;
-	    on_mui_actualizar_clicked();
-        }// end if
-        break;
-    }// end switch
-    delete popup;
+    } // end if
+    _depura("END ListRegistroIvaView::on_mui_tablasoportado_trataMenu", 0);
+}
+
+void ListRegistroIvaView::on_mui_tablarepercutido_trataMenu(QAction *ac) {
+    _depura("ListRegistroIvaView::on_mui_tablarepercutido_trataMenu", 0);
+    if (m_verreg == ac) {
+        QString idborrador = mui_tablarepercutido->DBvalue("idborrador");
+        RegistroIvaView *nuevae=new RegistroIvaView(m_companyact,0);
+        nuevae->inicializa1(idborrador.toInt());
+        m_companyact->pWorkspace()->addWindow(nuevae);
+        nuevae->show();
+    } // end if
+    if (m_verasiento == ac) {
+        int idasiento;
+        idasiento = mui_tablarepercutido->DBvalue("idasiento").toInt();
+        m_companyact->intapuntsempresa()->muestraasiento(idasiento);
+        m_companyact->intapuntsempresa()->show();
+        m_companyact->intapuntsempresa()->setFocus();
+    } // end if
+    _depura("END ListRegistroIvaView::on_mui_tablarepercutido_trataMenu", 0);
 }
 

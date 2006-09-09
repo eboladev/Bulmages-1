@@ -4,6 +4,9 @@
 # Target is a subdirs project
 
 TEMPLATE = subdirs
+
+CONFIG += ordered
+
 SUBDIRS += src/contabilidad
 SUBDIRS += src/pluginregistroiva
 

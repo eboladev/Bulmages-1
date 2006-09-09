@@ -28,26 +28,24 @@
 
 class SubForm2Bc : public SubForm3 {
 Q_OBJECT
-protected:
-    bool m_delete;
+
 
 public:
     SubForm2Bc(QWidget *parent = 0);
     virtual ~SubForm2Bc() {};
-    virtual int cargar(cursor2 *);
+//    virtual int cargar(cursor2 *);
 
-    void setDelete(bool f) {
-        m_delete=f;
-    };
 
    virtual void boton_asiento();
    virtual void boton_extracto1(int);
    virtual void boton_balance1(int);
    virtual void boton_balancetree(int);
    virtual void boton_diario1(int);
+   virtual void creaMenu(QMenu *);
+   virtual void procesaMenu(QAction *);
 
 public slots:
-    virtual void contextMenuEvent (QContextMenuEvent *);
+//    virtual void contextMenuEvent (QContextMenuEvent *);
     virtual void on_mui_list_editFinished(int row, int col);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);

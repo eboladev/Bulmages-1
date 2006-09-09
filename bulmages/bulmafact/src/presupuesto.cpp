@@ -293,8 +293,7 @@ void presupuesto::imprimirPresupuesto() {
     fitxersortidatxt = "";
     QString tr1 = ""; /// Rellena el primer tr de titulares.
     QString tr2 = ""; /// Rellena el segundo tr de cantidades.
-    fitxersortidatxt += "<blockTable style=\"tablatotales\">\n";
-
+    fitxersortidatxt += "<blockTable style=\"tabladescuento\" >\n";
     Fixed totbaseimp("0.00");
     Fixed parbaseimp("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {

@@ -41,7 +41,7 @@
 #include "images/cgastos.xpm"
 
 SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
-    setDelete(TRUE);
+
 }
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
@@ -106,7 +106,8 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
     _depura("END SubForm2Bc::editFinished",0);
 }
 
-void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {
+/*
+ void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {
     _depura("SubForm2Bc::contextMenuEvent",0);
     QAction *del= NULL;
     int row = currentRow();
@@ -183,6 +184,7 @@ int SubForm2Bc::cargar(cursor2 *cur) {
     return 0;
 }
 
+*/
 
 void SubForm2Bc::boton_asiento() {
     _depura("SubForm2Bc::boton_asiento",0);
@@ -332,3 +334,15 @@ void SubForm2Bc::boton_balancetree(int tipo) {
 }
 
 
+void SubForm2Bc::creaMenu(QMenu *menu) {
+	_depura("SubForm2Bc::pintaMenu", 0);
+	QAction *ac = menu->addAction("Submenu de Contabilidad");
+	menu->addSeparator();
+	_depura("END SubForm2Bc::pintaMenu", 0);
+}
+
+
+void SubForm2Bc::procesaMenu(QAction *ac) {
+	_depura("SubForm2Bc::procesaMenu", 0);
+	_depura("END SubForm2Bc::procesaMenu", 0);
+}

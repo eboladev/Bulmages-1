@@ -1,5 +1,7 @@
 TEMPLATE = subdirs 
 
+CONFIG += ordered
+
 SUBDIRS += src
 SUBDIRS += src/plugin
 SUBDIRS += src/plugintarifas

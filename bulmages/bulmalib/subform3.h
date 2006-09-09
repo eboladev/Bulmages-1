@@ -47,6 +47,9 @@ protected:
     QString m_campoid; /// Campo Identificador de la tabla en la BD.
     bool m_insercion; /// Indica si se pueden insertar nuevas filas o no.
     bool m_primero; /// Indica si ya se ha cargado la configuracion o no.
+    bool m_delete;
+
+protected:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();
@@ -55,6 +58,12 @@ protected:
     };
 
 public:
+
+    void setDelete(bool f) {
+        m_delete=f;
+    };
+
+
     SubForm3(QWidget *parent);
     virtual ~SubForm3();
     SDBCampo *item(int row, int col) {
@@ -148,8 +157,11 @@ public:
     virtual int cargar(cursor2 *cur);
     virtual int inicializar();
     virtual void pintar();
+    virtual void creaMenu(QMenu *) {_depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);};
+    virtual void procesaMenu(QAction *) {_depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);};
 
 public slots:
+    virtual void contextMenuEvent (QContextMenuEvent *);
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
     virtual void on_mui_appag_clicked() {
@@ -171,6 +183,8 @@ signals:
     void editFinish(int, int);
     void itemDoubleClicked(QTableWidgetItem *);
     void cellDoubleClicked(int row, int col);
+    void pintaMenu(QMenu *);
+    void trataMenu(QAction *);
 };
 
 #endif

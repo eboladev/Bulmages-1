@@ -65,15 +65,6 @@
 		<drawCentredString x="11.5cm" y="20.4cm">[fpresupuesto]</drawCentredString>
 		<drawCentredString x="14.5cm" y="20.4cm">[numpresupuesto]</drawCentredString>
 		<drawCentredString x="17.5cm" y="20.4cm">[refpresupuesto]</drawCentredString>
-<place x="4.2cm" y="2cm" width="15cm" height="2.5cm">
-<blockTable style="metatabla">
-<tr>
-<td align="left">
-	[totales]
-</td>
-</tr>
-</blockTable>
-</place>
 		</pageGraphics>
 		<!-- FRAME DE CONTENIDOS -->
 		<frame id="column" x1="1cm" y1="5cm" width="19cm" height="15cm"/>
@@ -151,5 +142,23 @@
 </tr>
 [story]
 </blockTable>
+
+
+
+<storyPlace x="0cm" y="0cm" width="15cm" height="1cm" origin="frame">
+<place x="10cm" y="2cm" width="18cm" height="2.5cm" origin="page">
+<blockTable>
+<tr>
+<td align="right">
+	[totales]
+</td>
+</tr>
+</blockTable>
+</place>
+</storyPlace>
 </story>
+
+
+
+
 </document>

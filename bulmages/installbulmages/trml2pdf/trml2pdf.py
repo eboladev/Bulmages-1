@@ -239,7 +239,8 @@ class _rml_canvas(object):
 		self.canvas.circle(x_cen=utils.unit_get(node.getAttribute('x')), y_cen=utils.unit_get(node.getAttribute('y')), r=utils.unit_get(node.getAttribute('radius')), **utils.attr_get(node, [], {'fill':'bool','stroke':'bool'}))
 
 	def _place(self, node):
-		flows = _rml_flowable(self.doc).render(node)
+		flows1 = _rml_flowable(self.doc)
+		flows = flows1.render(node)
 		infos = utils.attr_get(node, ['x','y','width','height'])
 
 		infos['y']+=infos['height']
@@ -348,14 +349,15 @@ class _rml_canvas(object):
 						break
 
 class _rml_draw(object):
-	def __init__(self, node, styles):
+	def __init__(self, node, styles, doc):
+		self.doc = doc
 		self.node = node
 		self.styles = styles
 		self.canvas = None
 
 	def render(self, canvas, doc):
 		canvas.saveState()
-		cnv = _rml_canvas(canvas, doc, self.styles)
+		cnv = _rml_canvas(canvas, doc, self.doc)
 		cnv.render(self.node)
 		canvas.restoreState()
 
@@ -363,6 +365,9 @@ class _rml_flowable(object):
 	def __init__(self, doc):
 		self.doc = doc
 		self.styles = doc.styles
+
+	def _setStyles(self, styles):
+		self.styles = styles
 
 	def _textual(self, node):
 		rc = ''
@@ -419,6 +424,26 @@ class _rml_flowable(object):
 			table.setStyle(self.styles.table_styles[node.getAttribute('style')])
 		return table
 
+        def _storyPlace(self, node):
+		class StoryPlace(platypus.flowables.Flowable):
+			def __init__(self, doc, node, styles):
+				self.doc = doc
+				self.node = node
+				self.styles = styles
+				self.width = utils.unit_get(node.getAttribute('width'))
+				self.height = utils.unit_get(node.getAttribute('height'))
+				self.x = utils.unit_get(node.getAttribute('x'))
+				self.y = utils.unit_get(node.getAttribute('y'))
+			def wrap(self, *args):
+				return (self.width, self.height)
+			def draw(self):
+				canvas = self.canv
+				canvas.restoreState()
+				drw = _rml_draw(self.node, self.styles, self.doc)
+				drw.render(self.canv, None)
+				canvas.saveState()
+		return StoryPlace(self.doc, node, self.styles)
+
 	def _illustration(self, node):
 		class Illustration(platypus.flowables.Flowable):
 			def __init__(self, node, styles):
@@ -430,7 +455,7 @@ class _rml_flowable(object):
 				return (self.width, self.height)
 			def draw(self):
 				canvas = self.canv
-				drw = _rml_draw(self.node, self.styles)
+				drw = _rml_draw(self.node, self.styles, None)
 				drw.render(self.canv, None)
 		return Illustration(node, self.styles)
 
@@ -480,6 +505,8 @@ class _rml_flowable(object):
 			return platypus.Preformatted(self._textual(node), style, **(utils.attr_get(node, [], {'bulletText':'str','dedent':'int'})))
 		elif node.localName=='illustration':
 			return  self._illustration(node)
+		elif node.localName=='storyPlace':
+			return  self._storyPlace(node)
 		elif node.localName=='blockTable':
 			return  self._table(node)
 		elif node.localName=='title':
@@ -570,7 +597,7 @@ class _rml_template(object):
 				frames.append( frame )
 			gr = pt.getElementsByTagName('pageGraphics')
 			if len(gr):
-				drw = _rml_draw(gr[0], self.doc)
+				drw = _rml_draw(gr[0], self.doc, self.doc)
 				self.page_templates.append( platypus.PageTemplate(frames=frames, onPage=drw.render, **utils.attr_get(pt, [], {'id':'str'}) ))
 			else:
 				self.page_templates.append( platypus.PageTemplate(frames=frames, **utils.attr_get(pt, [], {'id':'str'}) ))

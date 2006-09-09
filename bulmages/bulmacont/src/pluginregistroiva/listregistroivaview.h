@@ -40,6 +40,10 @@
 
 class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase  {
     Q_OBJECT
+private:
+	/// Opciones del menu contextual
+	QAction *m_verreg;
+	QAction *m_verasiento;
 public:
     empresa *m_companyact;
 public:
@@ -49,10 +53,12 @@ public:
 public slots:
     virtual void on_mui_tablasoportado_cellDoubleClicked(int, int);
     virtual void on_mui_tablarepercutido_cellDoubleClicked(int, int);
+    virtual void on_mui_tablarepercutido_pintaMenu(QMenu *menu);
+    virtual void on_mui_tablasoportado_pintaMenu(QMenu *menu);
+    virtual void on_mui_tablasoportado_trataMenu(QAction *ac);
+    virtual void on_mui_tablarepercutido_trataMenu(QAction *ac);
     virtual void on_mui_actualizar_clicked();
     virtual void boton_print();
-    virtual void menu_contextual(int, int, const QPoint &);
-    virtual void menu_contextual1(int, int, const QPoint &);
     virtual void on_mui_list_editFinished(int row, int col) {};
 };
 

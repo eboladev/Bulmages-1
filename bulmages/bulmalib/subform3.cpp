@@ -24,6 +24,8 @@
 #include <QHeaderView>
 #include <QTextStream>
 
+#include <QMenu>
+
 #include "subform3.h"
 
 
@@ -61,6 +63,8 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     /// Limpiamos la lista.
     m_lista.clear();
     m_listaborrar.clear();
+
+    setDelete(TRUE);
     _depura("END SubForm3::SubForm3", 0);
 }
 
@@ -690,4 +694,56 @@ void SubForm3::imprimirPDF(const QString & titular) {
 }
 
 
+void SubForm3::contextMenuEvent (QContextMenuEvent *) {
+    _depura("SubForm3::contextMenuEvent",0);
+    QAction *del= NULL;
+    int row = currentRow();
+    if ( row < 0)
+        return;
+    int col = currentColumn();
+    if ( row < 0)
+        return;
+
+    QMenu *popup = new QMenu(this);
+
+    /// Lanzamos el Evento parra que pueda ser capturado por terceros
+    emit pintaMenu(popup);
+
+    /// Lanzamos la propagacion del menu a través de las clases derivadasAboutViewAboutViewAboutView
+    creaMenu(popup);
+
+    if(m_delete)
+        del = popup->addAction(tr("Borrar registro"));
+    popup->addSeparator();
+    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
+    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
+
+    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
+    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
+
+    popup->addSeparator();
+    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
+
+    QAction *opcion = popup->exec(QCursor::pos());
+    if (opcion == del)
+        borrar(row);
+    if (opcion == ajust)
+        resizeColumnsToContents();
+    if (opcion == ajusta)
+        resizeRowsToContents();
+    if (opcion == ajustc)
+        resizeColumnToContents(col);
+    if (opcion == ajustac)
+        resizeRowToContents(row);
+    if(opcion == verconfig)
+        showConfig();
+
+    emit trataMenu(opcion);
+
+    /// Activamos las herederas
+    procesaMenu(opcion);
+    
+
+    delete popup;
+}
 

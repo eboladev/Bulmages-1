@@ -18,249 +18,15 @@
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</iconset>
   </property>
-  <widget class="QWidget" name="" >
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QLabel" name="label" >
-      <property name="text" >
-       <string/>
-      </property>
-      <property name="pixmap" >
-       <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</pixmap>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QFrame" name="frame" >
-      <property name="frameShape" >
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow" >
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
-       </property>
-       <property name="spacing" >
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QToolButton" name="mui_crear" >
-         <property name="minimumSize" >
-          <size>
-           <width>28</width>
-           <height>28</height>
-          </size>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_borrar" >
-         <property name="minimumSize" >
-          <size>
-           <width>28</width>
-           <height>28</height>
-          </size>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_dele.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_actualizar" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>0</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize" >
-          <size>
-           <width>28</width>
-           <height>28</height>
-          </size>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer>
-         <property name="orientation" >
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" >
-          <size>
-           <width>435</width>
-           <height>29</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="" >
-   <layout class="QHBoxLayout" >
-    <property name="margin" >
-     <number>0</number>
-    </property>
-    <property name="spacing" >
-     <number>6</number>
-    </property>
-    <item>
-     <widget class="QLabel" name="textLabel1_2_2" >
-      <property name="text" >
-       <string>Fecha Inicial</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="BusquedaFecha" name="finicial" />
-    </item>
-    <item>
-     <widget class="QLabel" name="textLabel1_4" >
-      <property name="text" >
-       <string>Fecha Final</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="BusquedaFecha" name="ffinal" />
-    </item>
-    <item>
-     <spacer>
-      <property name="orientation" >
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeType" >
-       <enum>QSizePolicy::Expanding</enum>
-      </property>
-      <property name="sizeHint" >
-       <size>
-        <width>71</width>
-        <height>21</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QTabWidget" name="TabWidget2" >
-   <property name="geometry" >
-    <rect>
-     <x>5</x>
-     <y>67</y>
-     <width>743</width>
-     <height>503</height>
-    </rect>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
    </property>
-   <widget class="QWidget" name="tab" >
-    <attribute name="title" >
-     <string>Sopotado</string>
-    </attribute>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>9</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="Q3Table" name="tablasoportado" >
-       <property name="numRows" >
-        <number>3</number>
-       </property>
-       <property name="numCols" >
-        <number>3</number>
-       </property>
-       <property name="readOnly" >
-        <bool>true</bool>
-       </property>
-       <property name="sorting" >
-        <bool>false</bool>
-       </property>
-       <property name="selectionMode" >
-        <enum>Q3Table::SingleRow</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="SubForm2Bc" name="mui_tablasoportado" />
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="tab" >
-    <attribute name="title" >
-     <string>Repercutido</string>
-    </attribute>
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>9</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="Q3Table" name="tablarepercutido" >
-       <property name="numRows" >
-        <number>3</number>
-       </property>
-       <property name="numCols" >
-        <number>3</number>
-       </property>
-       <property name="readOnly" >
-        <bool>true</bool>
-       </property>
-       <property name="sorting" >
-        <bool>false</bool>
-       </property>
-       <property name="selectionMode" >
-        <enum>Q3Table::SingleRow</enum>
-       </property>
-       <property name="focusStyle" >
-        <enum>Q3Table::SpreadSheet</enum>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="SubForm2Bc" name="mui_tablarepercutido" />
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="tab" >
-    <attribute name="title" >
-     <string>Res&amp;umen</string>
-    </attribute>
-    <layout class="QVBoxLayout" >
+   <property name="spacing" >
+    <number>2</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
@@ -268,294 +34,489 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="Q3GroupBox" name="GroupBox1" >
-       <property name="title" >
-        <string>IVA Repercutido</string>
+      <widget class="QLabel" name="label" >
+       <property name="text" >
+        <string/>
        </property>
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>11</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="Q3Table" name="m_listSoportado" >
-          <property name="numRows" >
-           <number>3</number>
-          </property>
-          <property name="numCols" >
-           <number>3</number>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType" >
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>70</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="textLabel1_3" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize" >
-             <size>
-              <width>120</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>IVA</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="m_ivas" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font" >
-             <font>
-              <family>Sans Serif</family>
-              <pointsize>18</pointsize>
-              <weight>75</weight>
-              <italic>false</italic>
-              <bold>true</bold>
-              <underline>false</underline>
-              <strikeout>false</strikeout>
-             </font>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="textLabel1_3_2" >
-            <property name="minimumSize" >
-             <size>
-              <width>120</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Total</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="m_baseimps" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font" >
-             <font>
-              <family>Sans Serif</family>
-              <pointsize>18</pointsize>
-              <weight>75</weight>
-              <italic>false</italic>
-              <bold>true</bold>
-              <underline>false</underline>
-              <strikeout>false</strikeout>
-             </font>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
+       <property name="pixmap" >
+        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</pixmap>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="Q3GroupBox" name="GroupBox2" >
-       <property name="title" >
-        <string>Iva Soportado</string>
+      <widget class="QFrame" name="frame" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
        </property>
-       <layout class="QVBoxLayout" >
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>11</number>
+         <number>0</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>0</number>
         </property>
         <item>
-         <widget class="Q3Table" name="m_listRepercutido" >
-          <property name="numRows" >
-           <number>3</number>
+         <widget class="QToolButton" name="mui_crear" >
+          <property name="minimumSize" >
+           <size>
+            <width>28</width>
+            <height>28</height>
+           </size>
           </property>
-          <property name="numCols" >
-           <number>3</number>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
           </property>
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
+         <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>28</width>
+            <height>28</height>
+           </size>
           </property>
-          <property name="spacing" >
-           <number>6</number>
+          <property name="text" >
+           <string/>
           </property>
-          <item>
-           <spacer>
-            <property name="orientation" >
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType" >
-             <enum>QSizePolicy::Expanding</enum>
-            </property>
-            <property name="sizeHint" >
-             <size>
-              <width>120</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="textLabel1_3_3" >
-            <property name="minimumSize" >
-             <size>
-              <width>120</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>IVA</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="m_ivar" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font" >
-             <font>
-              <family>Sans Serif</family>
-              <pointsize>18</pointsize>
-              <weight>75</weight>
-              <italic>false</italic>
-              <bold>true</bold>
-              <underline>false</underline>
-              <strikeout>false</strikeout>
-             </font>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="textLabel1_3_2_2" >
-            <property name="minimumSize" >
-             <size>
-              <width>120</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="text" >
-             <string>Total</string>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="m_baseimpr" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>0</hsizetype>
-              <vsizetype>0</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font" >
-             <font>
-              <family>Sans Serif</family>
-              <pointsize>18</pointsize>
-              <weight>75</weight>
-              <italic>false</italic>
-              <bold>true</bold>
-              <underline>false</underline>
-              <strikeout>false</strikeout>
-             </font>
-            </property>
-            <property name="alignment" >
-             <set>Qt::AlignRight</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_dele.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>28</width>
+            <height>28</height>
+           </size>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>435</width>
+            <height>29</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
      </item>
     </layout>
-   </widget>
-  </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="textLabel1_2_2" >
+       <property name="text" >
+        <string>Fecha Inicial</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="BusquedaFecha" name="finicial" />
+     </item>
+     <item>
+      <widget class="QLabel" name="textLabel1_4" >
+       <property name="text" >
+        <string>Fecha Final</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="BusquedaFecha" name="ffinal" />
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>71</width>
+         <height>21</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="TabWidget2" >
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Sopotado</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="SubForm2Bc" name="mui_tablasoportado" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Repercutido</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="SubForm2Bc" name="mui_tablarepercutido" />
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>Res&amp;umen</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="Q3GroupBox" name="GroupBox1" >
+         <property name="title" >
+          <string>IVA Repercutido</string>
+         </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="Q3Table" name="m_listSoportado" >
+            <property name="numRows" >
+             <number>3</number>
+            </property>
+            <property name="numCols" >
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>70</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="textLabel1_3" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize" >
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>IVA</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_ivas" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font" >
+               <font>
+                <family>Sans Serif</family>
+                <pointsize>18</pointsize>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="textLabel1_3_2" >
+              <property name="minimumSize" >
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>Total</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_baseimps" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font" >
+               <font>
+                <family>Sans Serif</family>
+                <pointsize>18</pointsize>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="Q3GroupBox" name="GroupBox2" >
+         <property name="title" >
+          <string>Iva Soportado</string>
+         </property>
+         <layout class="QVBoxLayout" >
+          <property name="margin" >
+           <number>11</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="Q3Table" name="m_listRepercutido" >
+            <property name="numRows" >
+             <number>3</number>
+            </property>
+            <property name="numCols" >
+             <number>3</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>120</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QLabel" name="textLabel1_3_3" >
+              <property name="minimumSize" >
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>IVA</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_ivar" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font" >
+               <font>
+                <family>Sans Serif</family>
+                <pointsize>18</pointsize>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="textLabel1_3_2_2" >
+              <property name="minimumSize" >
+               <size>
+                <width>120</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="text" >
+               <string>Total</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="m_baseimpr" >
+              <property name="sizePolicy" >
+               <sizepolicy>
+                <hsizetype>0</hsizetype>
+                <vsizetype>0</vsizetype>
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font" >
+               <font>
+                <family>Sans Serif</family>
+                <pointsize>18</pointsize>
+                <weight>75</weight>
+                <italic>false</italic>
+                <bold>true</bold>
+                <underline>false</underline>
+                <strikeout>false</strikeout>
+               </font>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>SubForm2Bc</class>
-   <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
+   <class>BusquedaFecha</class>
+   <extends></extends>
+   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -567,16 +528,16 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
+   <class>Q3Table</class>
    <extends></extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+   <header>q3table.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Table</class>
-   <extends></extends>
-   <header>q3table.h</header>
+   <class>SubForm2Bc</class>
+   <extends>QTableWidget</extends>
+   <header>subform2bc.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
