@@ -33,6 +33,8 @@ using namespace std;
 #include <QTableWidget>
 #include <QStringList>
 #include <QHeaderView>
+#include <QKeyEvent>
+#include <QEvent>
 
 #include <stdio.h>
 
@@ -65,9 +67,12 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
         : QDialog(parent, name, modal) {
     _depura("abreempresaview::abreempresaview", 0);
     setupUi(this);
+
+    mui_empresas->installEventFilter(this);
     QObject::connect(botonCancelar, SIGNAL(clicked(bool)), this, SLOT(s_botonCancelar()));
     QObject::connect(botonAceptar, SIGNAL(clicked(bool)), this, SLOT(accept()));
     QObject::connect(mui_empresas, SIGNAL(itemDoubleClicked(QTableWidgetItem *)), this, SLOT(mui_empresasdobleclick()));
+
     m_tipo = tipo;
     m_tipoempresa = "";
     m_modo = 0;
@@ -291,5 +296,30 @@ void abreempresaview::preparamui_empresas() {
     if (m_tipo == "BulmaFact")
         mui_empresas->hideColumn(ABRE_ANO);
     _depura("END abreempresaview::preparamui_empresas", 0);
+}
+
+
+bool abreempresaview::eventFilter(QObject *obj, QEvent *ev) {
+    if (obj == mui_empresas) {
+        if (ev->type() == QEvent::KeyPress) {
+            QKeyEvent *keyEvent = static_cast<QKeyEvent*>(ev);
+            switch (keyEvent->key()) {
+            case Qt::Key_Enter:
+            case Qt::Key_Return:
+                /// Se comprueba que se ha seleccionado una entrada en la lista mui_empresas.
+                if (mui_empresas->currentRow() != -1) {
+                    /// Entramos en el programa.
+                    this->accept();
+                }
+                break;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    } else {
+        /// Si no se ha tratado el evento, se deja pasar.
+        return QDialog::eventFilter(obj, ev);
+    }
 }
 

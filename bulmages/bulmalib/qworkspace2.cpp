@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QWidget>
+#include <QAction>
 
 #include "qworkspace2.h"
 
@@ -56,5 +57,11 @@ void QWorkspace2::addWindow(QWidget * w) {
 
     w->setGeometry(0, 0, tamventanaW, tamventanaH);
     w->parentWidget()->move(margen, margen);
+
+    /// Crea un QAction para manejar la tecla rapida ESC para cerrar la ventana.
+    QAction *accionEsc = new QAction(w);
+    accionEsc->setShortcut(tr("Esc"));
+    connect(accionEsc, SIGNAL(triggered()), w, SLOT(close()));
+    w->addAction(accionEsc);
 }
 

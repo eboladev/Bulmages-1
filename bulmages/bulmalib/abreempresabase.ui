@@ -155,7 +155,7 @@
      <item>
       <widget class="QPushButton" name="botonAceptar" >
        <property name="focusPolicy" >
-        <enum>Qt::TabFocus</enum>
+        <enum>Qt::StrongFocus</enum>
        </property>
        <property name="contextMenuPolicy" >
         <enum>Qt::NoContextMenu</enum>
@@ -164,14 +164,17 @@
         <string>&amp;Entra</string>
        </property>
        <property name="autoDefault" >
-        <bool>false</bool>
+        <bool>true</bool>
+       </property>
+       <property name="default" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="botonCancelar" >
        <property name="focusPolicy" >
-        <enum>Qt::TabFocus</enum>
+        <enum>Qt::StrongFocus</enum>
        </property>
        <property name="contextMenuPolicy" >
         <enum>Qt::NoContextMenu</enum>
@@ -191,8 +194,8 @@
  <layoutdefault spacing="2" margin="5" />
  <pixmapfunction></pixmapfunction>
  <tabstops>
-  <tabstop>mui_empresas</tabstop>
   <tabstop>mui_actualizar</tabstop>
+  <tabstop>mui_empresas</tabstop>
   <tabstop>botonAceptar</tabstop>
   <tabstop>botonCancelar</tabstop>
  </tabstops>

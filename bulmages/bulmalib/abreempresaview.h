@@ -105,6 +105,10 @@ private slots:
         return true;
     }
     void mui_empresasdobleclick();
+
+protected:
+    bool eventFilter(QObject *obj, QEvent *ev);
+
 };
 
 #endif
