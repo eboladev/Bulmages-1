@@ -137,6 +137,16 @@ class _rml_doc(object):
 	def __init__(self, data):
 		self.dom = xml.dom.minidom.parseString(data)
 		self.filename = self.dom.documentElement.getAttribute('filename')
+		#Permitimos includes
+		inc = self.dom.documentElement.getElementsByTagName('include')
+		for node in inc:
+			filename = node.getAttribute('src').encode('ascii')
+			dom1 = xml.dom.minidom.parse(filename)
+			chnod = dom1.documentElement.childNodes
+			for nnode in chnod:
+				nnnode = nnode.cloneNode(1)
+				node.parentNode.insertBefore(nnnode, node)
+			node.parentNode.removeChild(node)
 
 	def docinit(self, els):
 		from reportlab.lib.fonts import addMapping
