@@ -7,7 +7,7 @@
 TEMPLATE = lib
 
 CONFIG += release \
-         plugin
+          plugin
 	 
 LIBS +=	 -rdynamic 	 
 
@@ -80,5 +80,4 @@ windows {
 SOURCES = plugin.cpp
 
 HEADERS = plugin.h
-#The following line was inserted by qt3to4
-QT += qt3support
+

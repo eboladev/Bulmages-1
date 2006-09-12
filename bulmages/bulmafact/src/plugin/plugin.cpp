@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3PopupMenu>
+#include <QMenu>
 #include <QAction>
 #include <QObject>
 #include <QMessageBox>
@@ -30,16 +30,17 @@
 #include "funcaux.h"
 
 
-myplugin:: myplugin() {}
+myplugin::myplugin() {}
+
 
 myplugin::~myplugin() {}
 
 
 void myplugin::elslot() {
-    fprintf(stderr,"SE ha activado el slot\n");
+    fprintf(stderr,"Sa ha activado el slot\n");
     QMessageBox::warning(0,
-                         "Guardar Familia",
-                         "Desea guardar los cambios.",
+                         "Titulo de la ventana",
+                         "Mensaje.",
                          QMessageBox::Ok,
                          QMessageBox::Cancel);
 }
@@ -47,14 +48,14 @@ void myplugin::elslot() {
 
 void myplugin::inicializa(bulmafact *bges) {
     /// El menu de empresa.
-    Q3PopupMenu *pPluginMenu = new Q3PopupMenu();
-    pPluginMenu->setCheckable(true);
-    bges->menuBar()->insertItem("&Plugin", pPluginMenu);
-    QAction *planCuentas = new QAction("&Prueba de Plugin", 0);
-    planCuentas->setStatusTip("Muestra el plan contable");
-    planCuentas->setWhatsThis("Muestra el plan contable");
-    planCuentas->addTo(pPluginMenu);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+    QMenu *pPluginMenu = new QMenu("&Plugin");
+    QAction *accion = new QAction("&Prueba de plugin", 0);
+    accion->setStatusTip("Muestra statustip");
+    accion->setWhatsThis("Muestra que es esto");
+    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    pPluginMenu->addAction(accion);
+    /// Anyadimos la nueva opcion al menu principal del programa.
+    bges->menuBar()->addMenu(pPluginMenu);
 }
 
 
@@ -62,6 +63,6 @@ void entryPoint(bulmafact *bges) {
     _depura("Estoy dentro del plugin\n", 0);
     myplugin *plug = new myplugin();
     plug->inicializa(bges);
-    bges->setCaption("Prueba de plugin.");
+    bges->setWindowTitle("Prueba de plugin.");
 }
 
