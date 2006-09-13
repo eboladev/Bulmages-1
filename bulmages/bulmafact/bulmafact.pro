@@ -7,6 +7,6 @@ SUBDIRS += src/plugin
 SUBDIRS += src/plugintarifas
 #SUBDIRS += src/pluginstockmin
 SUBDIRS += src/comercialbf
-
+SUBDIRS += src/efacturabf
 
 include(privatecode.pro)
