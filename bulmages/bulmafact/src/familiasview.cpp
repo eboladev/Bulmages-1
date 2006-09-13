@@ -209,8 +209,8 @@ bool familiasview::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
-                                 tr("Guardar Familia"),
-                                 tr("Desea guardar los cambios."),
+                                 tr("Guardar familia"),
+                                 tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel) == QMessageBox::Ok)
             on_mui_guardar_clicked();

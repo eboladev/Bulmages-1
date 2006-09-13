@@ -51,7 +51,7 @@ int AlbaranProveedor::borrar() {
             companyact->begin();
             listalineas->borrar();
             listadescuentos->borrar();
-            companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp =" + DBvalue("idalbaranp"));
+            companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp = " + DBvalue("idalbaranp"));
             companyact->commit();
         } // end if
         _depura("END AlbaranProveedor::borrar", 0);

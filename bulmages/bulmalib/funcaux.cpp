@@ -244,7 +244,7 @@ void invocaPDF(const QString arch) {
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
-    QString cadsys = "mailsend -h mail.iglues.org -d iglues.org -f bulmages@iglues.org -t test@iglues.org -sub test -m test";
+    QString cadsys = "mailsend -h mail.iglues.org -d iglues.org -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
     system(cadsys.toAscii().data());
 }
 

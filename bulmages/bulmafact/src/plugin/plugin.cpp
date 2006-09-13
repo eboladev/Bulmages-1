@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -47,7 +49,7 @@ void myplugin::elslot() {
 
 
 void myplugin::inicializa(bulmafact *bges) {
-    /// El menu de empresa.
+    /// Creamos el menu.
     QMenu *pPluginMenu = new QMenu("&Plugin");
     QAction *accion = new QAction("&Prueba de plugin", 0);
     accion->setStatusTip("Muestra statustip");
@@ -63,6 +65,8 @@ void entryPoint(bulmafact *bges) {
     _depura("Estoy dentro del plugin\n", 0);
     myplugin *plug = new myplugin();
     plug->inicializa(bges);
+    /// SOLO A MODO DE EJEMPLO: se modifica el titulo de la ventana principal
+    /// del programa para indicar que el plugin se ha cargado.
     bges->setWindowTitle("Prueba de plugin.");
 }
 

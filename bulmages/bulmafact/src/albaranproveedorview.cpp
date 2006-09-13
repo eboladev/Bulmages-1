@@ -162,7 +162,7 @@ int AlbaranProveedorView::cargar(QString id) {
     try {
         AlbaranProveedor::cargar(id);
         if (DBvalue("idalbaranp") != "") {
-            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") +" " + DBvalue("idalbaranp"));
+            setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") + " " + DBvalue("idalbaranp"));
             companyact->meteWindow(windowTitle(), this);
             dialogChanges_cargaInicial();
         } // end if

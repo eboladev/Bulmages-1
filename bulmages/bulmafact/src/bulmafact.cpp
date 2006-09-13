@@ -48,7 +48,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     pWorkspace->setScrollBarsEnabled(TRUE);
 
     setCentralWidget(pWorkspace);
-    show();
+    showMaximized();
 
     m_company = new company();
     m_company->init(bd);

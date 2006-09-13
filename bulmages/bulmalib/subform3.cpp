@@ -40,12 +40,16 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_list->setSortingEnabled(TRUE);
     mui_list->horizontalHeader()->setMovable(TRUE);
 
+    /// Ocultamos el boton de actualizar del subForm porque esta repetido en cada
+    /// una de las ventanas.
+    //mui_confcol->setVisible(FALSE);
+
     m_insercion = FALSE;
     m_primero = TRUE;
 
     /// Para el listado de  columnas hacemos una inicializacion.
     QStringList headers;
-    headers << tr("Orden") << tr("Nombre") << tr("Nombre de campo") << tr("Visible");
+    headers << "" << tr("Nombre") << tr("Nombre de campo") << tr("Visible");
     mui_listcolumnas->setColumnCount(4);
     mui_listcolumnas->setHorizontalHeaderLabels(headers);
     mui_listcolumnas->setShowGrid(FALSE);
@@ -55,9 +59,11 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_listcolumnas->setColumnWidth(3, 0);
     mui_listcolumnas->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_listcolumnas->verticalHeader()->hide();
+    mui_listcolumnas->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    mui_listcolumnas->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
 
     /// Siempre que arrancamos mostramos la pagina 0.
-    mui_paginaact->setText("1");
+    mui_paginaact->setValue(1);
     /// Ocultamos la configuracion.
     hideConfig();
     /// Limpiamos la lista.
@@ -76,17 +82,18 @@ SubForm3::~SubForm3() {
     _depura("END SubForm3::~SubForm3", 0);
 }
 
-void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
-	_depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
-	emit itemDoubleClicked(item);
-	_depura("END SubForm3::on_mui_list_itemDoubleClicked", 0);
 
+void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
+    _depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
+    emit itemDoubleClicked(item);
+    _depura("END SubForm3::on_mui_list_itemDoubleClicked", 0);
 }
 
+
 void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
-	_depura("SubForm3::on_mui_list_cellDoubleClicked", 0);
-	emit cellDoubleClicked(row, col);
-	_depura("END SubForm3::on_mui_list_cellDoubleClicked", 0);
+    _depura("SubForm3::on_mui_list_cellDoubleClicked", 0);
+    emit cellDoubleClicked(row, col);
+    _depura("END SubForm3::on_mui_list_cellDoubleClicked", 0);
 }
 
 
@@ -416,7 +423,7 @@ int SubForm3::guardar() {
         } // end if
         _depura("END SubForm3::guardar", 0);
         return error;
-    } catch(...) {
+    } catch (...) {
         mensajeInfo("error inesperado en el guardado, salimos devolviento -1");
         throw -1;
     } // end try
@@ -498,7 +505,8 @@ void SubForm3::cargaconfig() {
         linea = stream.readLine();
         mui_list->settipoorden(linea.toInt());
         linea = stream.readLine();
-        mui_filaspagina->setText(linea);
+        //mui_filaspagina->setText(linea);
+        mui_filaspagina->setValue(linea.toInt());
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
             if (linea.toInt() > 0)
@@ -626,7 +634,8 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
 void SubForm3::on_mui_pagsiguiente_clicked() {
     int pag = mui_paginaact->text().toInt();
     pag++;
-    mui_paginaact->setText(QString::number(pag));
+    //mui_paginaact->setText(QString::number(pag));
+    mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
 }
 
@@ -635,7 +644,8 @@ void SubForm3::on_mui_paganterior_clicked() {
     int pag = mui_paginaact->text().toInt();
     if (pag > 1)
         pag--;
-    mui_paginaact->setText(QString::number(pag));
+    //mui_paginaact->setText(QString::number(pag));
+    mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
 }
 
@@ -644,7 +654,6 @@ void SubForm3::imprimirPDF(const QString & titular) {
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -655,7 +664,6 @@ void SubForm3::imprimirPDF(const QString & titular) {
 #endif
 
     system (archivo.ascii());
-
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -694,25 +702,25 @@ void SubForm3::imprimirPDF(const QString & titular) {
 }
 
 
-void SubForm3::contextMenuEvent (QContextMenuEvent *) {
-    _depura("SubForm3::contextMenuEvent",0);
-    QAction *del= NULL;
+void SubForm3::contextMenuEvent(QContextMenuEvent *) {
+    _depura("SubForm3::contextMenuEvent", 0);
+    QAction *del = NULL;
     int row = currentRow();
-    if ( row < 0)
+    if (row < 0)
         return;
     int col = currentColumn();
-    if ( row < 0)
+    if (row < 0)
         return;
 
     QMenu *popup = new QMenu(this);
 
-    /// Lanzamos el Evento parra que pueda ser capturado por terceros
+    /// Lanzamos el evento para que pueda ser capturado por terceros.
     emit pintaMenu(popup);
 
-    /// Lanzamos la propagacion del menu a través de las clases derivadasAboutViewAboutViewAboutView
+    /// Lanzamos la propagacion del menu a traves de las clases derivadas.
     creaMenu(popup);
 
-    if(m_delete)
+    if (m_delete)
         del = popup->addAction(tr("Borrar registro"));
     popup->addSeparator();
     QAction *ajustc = popup->addAction(tr("Ajustar columa"));
@@ -740,9 +748,8 @@ void SubForm3::contextMenuEvent (QContextMenuEvent *) {
 
     emit trataMenu(opcion);
 
-    /// Activamos las herederas
+    /// Activamos las herederas.
     procesaMenu(opcion);
-    
 
     delete popup;
 }

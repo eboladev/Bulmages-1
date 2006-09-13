@@ -53,7 +53,7 @@ void ListLinAlbaranProveedorView::on_mui_list_editFinished(int row, int col) {
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof() ) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -63,7 +63,7 @@ void ListLinAlbaranProveedorView::on_mui_list_editFinished(int row, int col) {
             rec->setDBvalue("descontlalbaranp","0.00");
             rec->setDBvalue("pvplalbaranp", cur->valor("pvparticulo"));
         } // end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
             rec->setDBvalue("ivalalbaranp", cur1->valor("porcentasa_iva"));
         } // end if
@@ -76,7 +76,7 @@ void ListLinAlbaranProveedorView::on_mui_list_editFinished(int row, int col) {
 void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
     _depura("ListLinPedidoProveedorView::cargar\n", 0);
     mdb_idalbaranp = idalbaranp;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp=" + mdb_idalbaranp);
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp);
     SubForm3::cargar(cur);
     delete cur;
 }

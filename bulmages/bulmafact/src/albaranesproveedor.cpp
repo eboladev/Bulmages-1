@@ -148,7 +148,7 @@ void AlbaranesProveedor::on_mui_editar_clicked() {
 
 void AlbaranesProveedor::imprimir() {
     _depura("AlbaranesProveedor::imprimir", 0);
-	mui_list->imprimirPDF(tr("Albaranes Proveedor"));
+	mui_list->imprimirPDF(tr("Albaranes de proveedor"));
     _depura("END AlbaranesProveedor::imprimir", 0);
 }
 

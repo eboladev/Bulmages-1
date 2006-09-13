@@ -124,26 +124,26 @@ void ArticuloList::on_mui_borrar_clicked() {
                 tr("Borrar articulo"),
                 tr("Esta a punto de borrar un articulo. Estos datos pueden dar problemas."),
                 QMessageBox::Yes, QMessageBox::No)) {
-            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo=" + idarticulo;
+            QString SQLQuery = "DELETE FROM articulo WHERE idarticulo = " + idarticulo;
             int error = m_companyact->ejecuta(SQLQuery);
             if (error)
                 throw -1;
             presenta();
         } // end if
         _depura("ArticuloList::END_removeArticle()\n", 0);
-    } catch(...) {
-        mensajeInfo( tr("Error al Borrar el Articulo"));
-    } // end catch
+    } catch (...) {
+        mensajeInfo(tr("Error al borrar el articulo"));
+    } // end try
 }
 
 
 QString ArticuloList::formaQuery() {
     _depura("ArticuloList::INIT_formaQuery()\n", 0);
     QString query = "";
-    query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1=1 ";
-    if(m_presentablearticulo->isChecked())
+    query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
+    if (m_presentablearticulo->isChecked())
         query += " AND presentablearticulo ";
-    if(m_usadoarticulo->isChecked())
+    if (m_usadoarticulo->isChecked())
         query += " AND idarticulo IN (SELECT DISTINCT idarticulo FROM lpresupuesto"
                  " UNION SELECT DISTINCT idarticulo FROM lpedidocliente"
                  " UNION SELECT DISTINCT idarticulo FROM lalbaran"
@@ -152,10 +152,10 @@ QString ArticuloList::formaQuery() {
                  " UNION SELECT DISTINCT idarticulo FROM lalbaranp"
                  " UNION SELECT DISTINCT idarticulo FROM lfacturap"
                  ") ";
-    if(m_filtro->text() != "")
+    if (m_filtro->text() != "")
         query += " AND lower(nomarticulo) LIKE lower('%" + m_filtro->text() + "%') ";
-    if(m_familia->idfamilia() != "" ) {
-        query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '"+m_familia->codigocompletofamilia()+"%')";
+    if (m_familia->idfamilia() != "" ) {
+        query += " AND idfamilia IN (SELECT idfamilia FROM familia WHERE codigocompletofamilia LIKE '" + m_familia->codigocompletofamilia() + "%')";
     } // end if
     if (m_tipoarticulo->idtipo_articulo() != "") {
         query += " AND idtipo_articulo = " + m_tipoarticulo->idtipo_articulo();
@@ -170,7 +170,7 @@ QString ArticuloList::detalleArticulos() {
     _depura("ArticuloList::INIT_detalleArticulos()\n", 0);
     QString texto = "";
     cursor2 *cur = m_companyact->cargacursor(formaQuery());
-    while(!cur->eof()) {
+    while (!cur->eof()) {
         texto += "<blockTable style=\"tabla1\">\n";
         texto += "<tr>\n";
         texto += "<td><h1>" + XMLProtect(cur->valor("nomarticulo")) + "</h1>";
@@ -201,7 +201,6 @@ void ArticuloList::Imprimir() {
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -212,7 +211,6 @@ void ArticuloList::Imprimir() {
 #endif
 
     system (archivo.toAscii().constData());
-
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -230,7 +228,6 @@ void ArticuloList::Imprimir() {
     QString buff = stream.readAll();
     file.close();
     QString texto;
-
     /// Linea de totales del presupuesto.
     buff.replace("[detallearticulos]", detalleArticulos());
     if (file.open(QIODevice::WriteOnly)) {
@@ -245,7 +242,7 @@ void ArticuloList::Imprimir() {
 
 void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::INIT_s_imprimir1()\n", 0);
-    mui_list->imprimirPDF(tr("Listado de Articulos"));
+    mui_list->imprimirPDF(tr("Listado de articulos"));
     _depura("ArticuloList::END_s_imprimir1()\n", 0);
 }
 

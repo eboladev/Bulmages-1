@@ -58,12 +58,9 @@ protected:
     };
 
 public:
-
     void setDelete(bool f) {
-        m_delete=f;
+        m_delete = f;
     };
-
-
     SubForm3(QWidget *parent);
     virtual ~SubForm3();
     SDBCampo *item(int row, int col) {
@@ -113,7 +110,6 @@ public:
     };
     QString imprimir();
     void sortItems(int col, Qt::SortOrder orden);
-
     void setinsercion(bool b) {
         m_insercion = b;
     };

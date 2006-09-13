@@ -156,7 +156,7 @@ int main(int argc, char ** argv) {
         theApp->exec();
 
     } catch (...) {
-        mensajeInfo("Error inesperado en BulmaFact, el programa se cerrara");
+        mensajeInfo("Error inesperado en BulmaFact. El programa se cerrara.");
     } // end try
 
     _depura("MAIN: Se acabo la ejecucion en main", 0);

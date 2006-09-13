@@ -110,10 +110,11 @@ void ClientsList::on_mui_editar_clicked() {
 
 
 void ClientsList::on_mui_imprimir_clicked() {
-	_depura("ClientsList::on_mui_imprimir_clicked", 0);
+    _depura("ClientsList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Clientes"));
-	_depura("ClientsList::on_mui_imprimir_clicked", 0);
+    _depura("ClientsList::on_mui_imprimir_clicked", 0);
 }
+
 
 void ClientsList::on_mui_informeclientes_clicked() {
     InformeClientes info(m_companyact);
@@ -133,7 +134,7 @@ void ClientsList::on_mui_borrar_clicked() {
         cli->on_mui_borrar_clicked();
         delete cli;
         presenta();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al borrar un cliente"));
     } // end try
     _depura("END:ClientsList::on_mui_borrar_clicked", 0);
@@ -147,7 +148,7 @@ void ClientsList::on_mui_exportar_clicked() {
                       confpr->valor(CONF_DIR_USER),
                       tr("Clientes (*.xml)")));
 
-    if(filexml.open(QIODevice::WriteOnly)) {
+    if (filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_CLIENTES);
         filexml.close();
     } else {
@@ -167,7 +168,7 @@ void ClientsList::on_mui_importar_clicked() {
         XML2BulmaFact(filexml, IMPORT_CLIENTES);
         filexml.close();
         presenta();
-    }  else  {
+    } else {
         _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
     } // end if
 }
@@ -192,7 +193,7 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     addSHeader("faxcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de fax"));
     addSHeader("mailcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion de correo electronica"));
     addSHeader("urlcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Direccion URL"));
-    addSHeader("corpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Corporacion"));
+    addSHeader("corpcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Empresa"));
     addSHeader("faltacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de alta del cliente"));
     addSHeader("fbajacliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de baja del cliente"));
     addSHeader("comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));

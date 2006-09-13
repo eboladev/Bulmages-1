@@ -46,13 +46,13 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("movilcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de telefono movil"));
     addDBCampo("faxcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Numero de fax"));
     addDBCampo("mailcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Direccion electronica"));
-    addDBCampo("urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Identificador Presupuesto"));
+    addDBCampo("urlcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Identificador de presupuesto"));
     addDBCampo("faltacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de alta del cliente"));
     addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de baja del cliente"));
     addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Comentarios"));
     addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Cliente inactivo"));
     addDBCampo("codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo"));
-    addDBCampo("corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Corporacion"));
+    addDBCampo("corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Empresa"));
     _depura("END Cliente::Cliente", 0);
 }
 
@@ -63,7 +63,7 @@ Cliente::~Cliente() {}
 void Cliente::borraCliente() {
     if (DBvalue("idcliente") != "") {
         m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente=" + DBvalue("idcliente"));
+        int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente = " + DBvalue("idcliente"));
         if (error) {
             m_companyact->rollback();
             return;
@@ -110,15 +110,14 @@ void Cliente::pintaCliente() {
     pintacorpcliente(DBvalue("corpcliente"));
 
     _depura("END Cliente::pintaCliente", 0);
-
 }
 
 
 /// Esta funcion carga un cliente.
 int Cliente::cargar(QString idcliente) {
     _depura("Cliente::cargaCliente", 0);
-    QString query = "SELECT * FROM cliente WHERE idcliente=" + idcliente;
-    cursor2 * cur= m_companyact->cargacursor(query);
+    QString query = "SELECT * FROM cliente WHERE idcliente = " + idcliente;
+    cursor2 *cur = m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -138,7 +137,7 @@ int Cliente::guardar() {
         m_companyact->commit();
         _depura("END Cliente::guardar", 0);
         return 0;
-    } catch(...) {
+    } catch (...) {
         _depura("error al guardar el cliente", 1);
         m_companyact->rollback();
         return -1;

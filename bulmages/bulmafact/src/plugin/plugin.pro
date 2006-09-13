@@ -1,7 +1,5 @@
 # Archivo generado por el gestor qmake de kdevelop. 
-# ------------------------------------------- 
-# Subdirectorio relativo al directorio principal del proyecto: ./fuentes/src
-# Destiono es una aplicaci??n: ../../installbulmages/bulmacont
+# -------------------------------------------------
 
 
 TEMPLATE = lib
@@ -12,9 +10,6 @@ CONFIG += release \
 LIBS +=	 -rdynamic 	 
 
 VERSION = 1.0.0
-
-# DESTDIR = .
-
 
 QMAKE_LIBDIR += ../../../installbulmages
 
@@ -33,7 +28,7 @@ UI_DIR = .ui
 MOC_DIR = .moc
 OBJECTS_DIR = .obj
   bulmages_install_script.path = .
-  bulmages_install_script.extra = echo; echo "**************************"; echo Para Instalar BULMAGES ejecute el script de instalaci�; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
+  bulmages_install_script.extra = echo; echo "**************************"; echo Para instalar BULMAGES ejecute el script de instalacion; echo "installbulmages"; echo que encontrara en la carpeta installbulmages.; echo Gracias.; echo "(El equipo de Bulmages)"; echo "**************************"; echo;
   exists(/usr/include/postgresql/libpq-fe.h){
     DEFINES += DISTRO_DEBIAN
     DEFINES += QT_THREAD_SUPPORT

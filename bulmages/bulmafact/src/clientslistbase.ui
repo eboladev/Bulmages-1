@@ -23,10 +23,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -56,10 +56,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -335,10 +335,10 @@
      </property>
      <layout class="QHBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <widget class="QCheckBox" name="m_procesados" >

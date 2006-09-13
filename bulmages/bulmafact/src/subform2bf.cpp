@@ -45,18 +45,18 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
     /// Esto es convertir un QWidget en un sistema modal de dialogo.
     this->setEnabled(false);
     artlist->show();
-    while(!artlist->isHidden())
+    while (!artlist->isHidden())
         theApp->processEvents();
     this->setEnabled(true);
     QString idArticle = artlist->idArticle();
     delete artlist;
     cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + idArticle);
-    if (!cur->eof() ) {
+    if (!cur->eof()) {
         rec->setDBvalue("idarticulo", idArticle);
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-	on_mui_list_editFinished(row, col);
+        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+        on_mui_list_editFinished(row, col);
     } // end if
     delete cur;
     _depura("END SubForm2Bf::pressedAsterisk", 0);
@@ -76,11 +76,11 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
     _depura("SubForm2Bf::pressedMinus", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
-    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo=" + rec->DBvalue("idarticulo"));
-    if (!cur->eof() ) {
+    cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo"));
+    if (!cur->eof()) {
         rec->setDBvalue(camp->nomcampo(), cur->valor("obserarticulo"));
-	/// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-	on_mui_list_editFinished(row, col);
+        /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
+        on_mui_list_editFinished(row, col);
     } // end if
     delete cur;
     _depura("END SubForm2Bf::pressedMinus", 0);
@@ -94,7 +94,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
-        if (!cur->eof() ) {
+        if (!cur->eof()) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
@@ -118,7 +118,7 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
         return;
 
     QMenu *popup = new QMenu(this);
-    if(m_delete)
+    if (m_delete)
         del = popup->addAction(tr("Borrar registro"));
     popup->addSeparator();
     QAction *ajustc = popup->addAction(tr("Ajustar columna"));
@@ -141,7 +141,7 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
         resizeColumnToContents(col);
     if (opcion == ajustac)
         resizeRowToContents(row);
-    if(opcion == verconfig)
+    if (opcion == verconfig)
         showConfig();
 
     delete popup;

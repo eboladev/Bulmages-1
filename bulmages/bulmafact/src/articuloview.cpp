@@ -61,7 +61,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
         m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
         m_companyact->meteWindow(tr("Edicion del articulo"), this, FALSE);
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el articulo"));
     } // end try
     _depura("END ArticuloView::ArticuloView", 0);
@@ -133,7 +133,7 @@ int ArticuloView::cargar(QString idarticulo) {
             throw -1;
         m_componentes->cargar(DBvalue("idarticulo"));
 
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error en la carga del articulo"));
         return -1;
     } // end try
@@ -252,7 +252,7 @@ int ArticuloView::guardar() {
     } catch (...) {
         mensajeInfo("Hubo un error al guardar el articulo");
         throw -1;
-    } // end catch
+    } // end try
 }
 
 
