@@ -177,16 +177,15 @@ void ListRegistroIvaView::inicializa() {
     delete cur;
 
 
-    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento AND borrador.fecha >= '%s' AND borrador.fecha <= '%s') AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida ",finicial->text().ascii(), ffinal->text().ascii());
+    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ",finicial->text().ascii(), ffinal->text().ascii());
     cursor2 *cursorreg = m_companyact->cargacursor(query);
-
     /// El nuevo proceso de carga es distinto.
     mui_tablasoportado->cargar(cursorreg);
     delete cursorreg;
 
 
     // Hacemos el c�culo de los que no pertenecen a iva soportado pq as�entran todos.
-    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento AND borrador.fecha >= '%s' AND borrador.fecha <= '%s') AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida", finicial->text().ascii(), ffinal->text().ascii());
+    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().ascii(), ffinal->text().ascii());
     cursorreg = m_companyact->cargacursor(query );
     /// El nuevo proceso de carga es distinto.
     mui_tablarepercutido->cargar(cursorreg);

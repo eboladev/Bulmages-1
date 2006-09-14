@@ -242,16 +242,6 @@
            <widget class="SubForm2Bc" name="mui_totalSoportado" />
           </item>
           <item>
-           <widget class="Q3Table" name="m_listRepercutido" >
-            <property name="numRows" >
-             <number>3</number>
-            </property>
-            <property name="numCols" >
-             <number>3</number>
-            </property>
-           </widget>
-          </item>
-          <item>
            <layout class="QHBoxLayout" >
             <property name="margin" >
              <number>0</number>
@@ -378,16 +368,6 @@
           </property>
           <item>
            <widget class="SubForm2Bc" name="mui_totalRepercutido" />
-          </item>
-          <item>
-           <widget class="Q3Table" name="m_listSoportado" >
-            <property name="numRows" >
-             <number>3</number>
-            </property>
-            <property name="numCols" >
-             <number>3</number>
-            </property>
-           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" >
@@ -520,16 +500,16 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>Q3Table</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>q3table.h</header>
+   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+   <class>SubForm2Bc</class>
+   <extends>QTableWidget</extends>
+   <header>subform2bc.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -538,13 +518,6 @@
    <extends></extends>
    <header>Qt3Support/Q3GroupBox</header>
    <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>SubForm2Bc</class>
-   <extends>QTableWidget</extends>
-   <header>subform2bc.h</header>
-   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

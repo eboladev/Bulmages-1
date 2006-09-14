@@ -6,14 +6,14 @@
 		<pageGraphics>
 		<image x="-2cm" y="24cm" file="logo.jpg"/>
 		
-			<setFont name="Helvetica" size="100"/>
+			<!--setFont name="Helvetica" size="100"/>
 			<fill color="(1,0.9,0.9)"/>
 			<stroke color="(1,0.9,0.9)"/>
 			<translate dx="15cm" dy="-5.5cm"/>
 			<rotate degrees="50"/>
 			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
 			<lineMode width="4mm"/>
-			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
+			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/-->	
 		
 		<rotate degrees="-50"/>
 		<translate dx="-15cm" dy="5.5cm"/>
