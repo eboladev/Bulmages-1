@@ -74,9 +74,13 @@ RegistroIva::~RegistroIva() {}
 int RegistroIva::borrar() {
     _depura("RegistroIva::borraRegistroIva",0);
     if (DBvalue("idpresupuesto") != "") {
-        m_listalineas->borrar();
-        m_listadescuentos->borrar();
         m_companyact->begin();
+        try {
+/*
+        m_listalineas->borrar();
+*/
+        m_listadescuentos->borrar();
+
         int error = m_companyact->ejecuta("DELETE FROM registroiva WHERE idregistroiva="+DBvalue("idregistroiva"));
         if (error) {
             m_companyact->rollback();
@@ -85,6 +89,10 @@ int RegistroIva::borrar() {
         m_companyact->commit();
         vaciaRegistroIva();
         pintaRegistroIva();
+        } catch(...) {
+		_depura("No se pudo borrar el registro de IVA", 2);
+		m_companyact->rollback();
+        } // end try
     }// end if
     _depura("END RegistroIva::borraRegistroIva",0);
     return 0;
@@ -116,7 +124,7 @@ void RegistroIva::pintaRegistroIva() {
     pintaserieregistroiva(DBvalue("serieregistroiva"));
 
     // Pinta el subformulario de detalle del presupuesto.
-    m_listalineas->pintaListIva();
+//    m_listalineas->pintaListIva();
     m_listadescuentos->pintaListLinPrevCobro();
 
     calculaypintatotales();
@@ -137,8 +145,11 @@ int RegistroIva::cargar(QString id) {
     }// end if
     delete cur;
 
-    error += m_listalineas->cargaListIva(id);
+
+//    error += m_listalineas->cargaListIva(id);
+
     m_listadescuentos->setidregistroiva(id);
+
     error += m_listadescuentos->chargeBudgetLines();
 
     /// Tratamiento de excepciones
@@ -157,17 +168,19 @@ int RegistroIva::cargar(QString id) {
 int RegistroIva::guardar() {
     _depura("RegistroIva::guardaRegistroIva",0);
     QString id;
-    m_companyact->begin();
-    int error = DBsave(id);
-    if (error ) {
-        m_companyact->rollback();
-        return -1;
-    }// end if
+    try {
+    DBsave(id);
     setidregistroiva(id);
+/*
     m_listalineas->setidregistroiva(id);
-    m_companyact->commit();
     m_listalineas->guardaListIva();
+*/
+
     m_listadescuentos->guardaListLinPrevCobro();
+    } catch(...) {
+	_depura("RegistroIva::guardar Error al guardar", 3);
+	throw -1;
+    } // end try
     //    cargaRegistroIva(id);
     _depura("END RegistroIva::guardaRegistroIva",0);
     return 0;
@@ -392,10 +405,15 @@ int RegistroIva::buscaborradoriva(int idborrador) {
 
 
         /// Cargamos los registros que quedan pq seguro que son de IVA.
-        SQLQuery = "SELECT * FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber::NUMERIC(12,1) ORDER BY codigo";
-
+        SQLQuery = "SELECT *, max(debe, haber) AS ivaiva, max (ivadebe, ivahaber) AS baseiva FROM tipoiva LEFT JOIN lacosa ON tipoiva.idcuenta=lacosa.idcuenta LEFT JOIN (SELECT idcuenta, contrapartida, IVAdebe AS debe, IVAhaber AS haber FROM lacosa) AS base ON (base.debe*porcentajetipoiva/100)::NUMERIC(12,1)=lacosa.ivadebe::NUMERIC(12,1) AND (base.haber*porcentajetipoiva/100)::NUMERIC(12,2)=lacosa.ivahaber::NUMERIC(12,1) ORDER BY codigo";
 
         cursor2 * cur=m_companyact->cargacursor(SQLQuery);
+
+	_depura("cargamos el iva", 3);
+        m_lineas->cargar(cur);
+	_depura("Fin de la carga del iva", 3);
+
+/*
         while (! cur->eof() ) {
             Iva *iva = new Iva(m_companyact);
             iva->setidtipoiva(cur->valor("idtipoiva"));
@@ -410,6 +428,7 @@ int RegistroIva::buscaborradoriva(int idborrador) {
             cur->siguienteregistro();
         }// end while
         delete cur;
+*/
         _depura("limpiamos la base de datos");
         SQLQuery = "DROP TABLE lacosa";
         error = m_companyact->ejecuta(SQLQuery);

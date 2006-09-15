@@ -29,6 +29,7 @@
 #include "funcaux.h"
 #include "qtable2.h"
 #include "subform.h"
+#include "fixed.h"
 
 
 /// SubForm3, constructor de la clase base para subformularios.
@@ -150,11 +151,13 @@ public:
     virtual int borrar();
     virtual int borrar(int);
     virtual int guardar();
-    virtual int cargar(cursor2 *cur);
+    virtual void cargar(cursor2 *cur);
+    virtual void cargar(QString query);
     virtual int inicializar();
     virtual void pintar();
     virtual void creaMenu(QMenu *) {_depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);};
     virtual void procesaMenu(QAction *) {_depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);};
+    virtual Fixed sumarCampo(QString);
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);

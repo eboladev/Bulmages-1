@@ -73,9 +73,7 @@ ClientsList::~ClientsList() {
 /// Hacemos la consulta a la base de datos y presentamos el listado.
 void ClientsList::presenta() {
     _depura("ClientsList::presenta", 0);
-    cursor2 * cur = m_companyact->cargacursor("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
-    mui_list->cargar(cur);
-    delete cur;
+    mui_list->cargar("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
     _depura("END ClientsList::presenta", 0);
 }
 

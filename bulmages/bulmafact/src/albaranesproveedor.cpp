@@ -68,7 +68,7 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 void AlbaranesProveedor::presenta() {
     _depura("AlbaranesProveedor::presenta().", 1);
     if (m_companyact != NULL ) {
-        cursor2 * cur = m_companyact->cargacursor("SELECT *, totalalbaranp AS total, " \
+        mui_list->cargar("SELECT *, totalalbaranp AS total, " \
                         "bimpalbaranp AS base, impalbaranp AS impuestos " \
                         "FROM albaranp LEFT " \
                         "JOIN proveedor ON albaranp.idproveedor = " \
@@ -76,11 +76,9 @@ void AlbaranesProveedor::presenta() {
                         "albaranp.idalmacen = almacen.idalmacen LEFT JOIN " \
                         "forma_pago ON albaranp.idforma_pago = " \
                         "forma_pago.idforma_pago WHERE 1 = 1 " + generaFiltro());
-        mui_list->cargar(cur);
-        delete cur;
 
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(totalalbaranp) " \
+        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalalbaranp) " \
                                         "AS total FROM albaranp LEFT JOIN proveedor ON " \
                                         "albaranp.idproveedor = proveedor.idproveedor LEFT " \
                                         "JOIN almacen ON albaranp.idalmacen = almacen.idalmacen " \

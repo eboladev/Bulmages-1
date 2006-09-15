@@ -94,6 +94,7 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     mui_totalSoportado->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("tbaseiva"));
     mui_totalSoportado->setinsercion(FALSE);
 
+
     /// END DEFINICIONES PARA LA TABLA DE IVAAboutViewAboutViewAboutViewAboutView
     /// =============================================
     _depura("END ListRegistroIvaView::ListRegistroIvaView", 0);

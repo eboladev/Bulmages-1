@@ -109,30 +109,24 @@ virtual void pintarectificaaregistroiva(const QString &val) {}
 
 private:
     void generarPedidoCliente();
-    virtual void accept() {
-        if(!guardar())
-            close();
-    };
-    virtual int guardar();
     void cargarComboFPago(QString);
 
 public slots://
-    virtual void s_saveRegistroIvaView() {
-        guardar();
-    };
+    virtual void on_mui_guardar_clicked();
     virtual int borrar() {return RegistroIva::borrar();};
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked();
-    virtual void s_removeRegistroIvaViewLine() {
-        m_listiva->borraIvaAct();
-    };
     virtual void boton_generarPrevisiones();
 
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_listIvaChanged() {
         _depura("s_listIvaChanged",0);
-        Fixed base = m_listalineas->calculabase();
-        Fixed iva = m_listalineas->calculaiva();
+//        Fixed base = m_listalineas->calculabase();
+	Fixed base = mui_listIva->sumarCampo("baseiva");
+
+//        Fixed iva = m_listalineas->calculaiva();
+	Fixed iva = mui_listIva->sumarCampo("ivaiva");
+
         setbaseimp(base.toQString());
         setiva(iva.toQString());
         pintabaseimp(base.toQString());

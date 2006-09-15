@@ -44,6 +44,9 @@ public:
     void setDelete(bool f) {
         m_delete = f;
     };
+    virtual void cargar(QString query) {
+	SubForm3::cargar(query);
+    };
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

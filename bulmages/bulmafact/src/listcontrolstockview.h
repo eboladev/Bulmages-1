@@ -47,10 +47,7 @@ public slots:
 
         SQLQuery += " LEFT JOIN (SELECT *, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = "+idinventario+") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
         SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
-
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
-        SubForm2Bf::cargar(cur);
-        delete cur;
+        SubForm2Bf::cargar(SQLQuery);
     };
     virtual int guardar() {
         SubForm2Bf::guardar();

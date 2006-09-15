@@ -250,7 +250,7 @@ int SubForm3::inicializar() {
 
 
 /// Carga una tabla a partir del recordset que se le ha pasado.
-int SubForm3::cargar(cursor2 *cur) {
+void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
     mui_query->setPlainText(cur->query());
     SDBRecord *rec;
@@ -311,9 +311,14 @@ int SubForm3::cargar(cursor2 *cur) {
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     _depura("END SubForm3::cargar", 0);
-    return 0;
 }
 
+
+void SubForm3::cargar(QString query) {
+    cursor2 *cur = m_companyact->cargacursor(query);
+    cargar(cur);
+    delete cur;
+}
 
 /// Devuelve la linea que se esta tratando actualmente.
 SDBRecord *SubForm3::lineaact() {
@@ -348,7 +353,8 @@ void SubForm3::on_mui_list_editFinished(int row, int col) {
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
-    camp->set("");
+    camp->set
+    ("");
     m_lcabecera.append(camp);
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
     QTableWidgetItem * it = new QTableWidgetItem("");
@@ -374,6 +380,21 @@ void SubForm3::setColumnValue(QString campo, QString valor) {
             rec->setDBvalue(campo, valor);
     } // end for
     _depura("END SubForm3::setColumnValue", 0);
+}
+
+Fixed SubForm3::sumarCampo(QString campo) {
+    _depura("SubForm3::sumarCampo", 0);
+    Fixed total;
+    SDBRecord *rec;
+    for (int i = 0; i < mui_list->rowCount(); ++i) {
+        rec =  lineaat(i);
+        if (rec) {
+            Fixed subtotal = Fixed(rec->DBvalue(campo));
+            total = total + subtotal;
+        } // end if
+    } // end for
+    _depura("END SubForm3::sumarCampo", 0);
+    return total;
 }
 
 

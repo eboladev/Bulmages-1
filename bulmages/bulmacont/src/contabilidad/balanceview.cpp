@@ -70,7 +70,7 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int  ) : Q
     combonivel->insertItem("7",5);
 
     // Iniciamos los componentes de la fecha para que al principio aparezcan
-    // Como el año inicial.
+    // Como el aï¿½ inicial.
     QString cadena;
     cadena.sprintf("%2.2d/%2.2d/%4.4d",1, 1, QDate::currentDate().year());
     m_fechainicial1->setText(cadena);
@@ -79,7 +79,7 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int  ) : Q
     // Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
     cargacostes();
     
-    // Activamos las señales
+    // Activamos las seï¿½les
     connect(mui_actualizar, SIGNAL(clicked()), this, SLOT(accept()));
 
     companyact->meteWindow( caption(), this);
@@ -179,7 +179,7 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
     companyact->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
-    ramas = companyact->cargacursor(query,"Ramas");
+    ramas = companyact->cargacursor(query);
     Arbol *arbol;
     arbol = new Arbol;
     while(!ramas->eof()) {
@@ -209,7 +209,7 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
     // Por fin, presentamos los valores
     // Aunque antes, prepararemos el Widget con la cabecera a mostrar
     QStringList headers, datos;
-    headers << "Código" << "Denominación" << "Saldo anterior" << "Debe" << "Haber" << "Saldo" << "Debe ejercicio" << "Haber ejercicio" << "Saldo ejercicio";
+    headers << "Cï¿½igo" << "Denominaciï¿½" << "Saldo anterior" << "Debe" << "Haber" << "Saldo" << "Debe ejercicio" << "Haber ejercicio" << "Saldo ejercicio";
     mui_list->setHeaderLabels(headers);
     mui_list->clear();
     
@@ -239,7 +239,7 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
 //	    haberej += lhaberej.toDouble();
 //	    saldoej += lsaldoej.toDouble();
 	
-	    // Las variables de las filas en formato español
+	    // Las variables de las filas en formato espaï¿½l
 	    lsaldoant = spanish.toString(lsaldoant.toDouble(),'f',2);
 	    ldebe = spanish.toString(ldebe.toDouble(),'f',2);
 	    lhaber = spanish.toString(lhaber.toDouble(),'f',2);
@@ -298,7 +298,7 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
     } // end while
     mui_list->resizeColumnToContents(1);
     
-    // Hacemos la actualizacion de los saldos totales en formato español y los ponemos en su Widget
+    // Hacemos la actualizacion de los saldos totales en formato espaï¿½l y los ponemos en su Widget
     QString totsaldoant = spanish.toString(tsaldoant,'f',2);
     QString totdebe = spanish.toString(tdebe,'f',2);
     QString tothaber = spanish.toString(thaber,'f',2);

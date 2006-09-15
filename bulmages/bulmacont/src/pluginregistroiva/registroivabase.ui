@@ -599,7 +599,7 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
         <number>6</number>
@@ -611,22 +611,13 @@
          </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
-           <number>11</number>
+           <number>0</number>
           </property>
           <property name="spacing" >
-           <number>6</number>
+           <number>0</number>
           </property>
           <item>
-           <widget class="ListIvaView" name="m_listiva" >
-            <property name="sizePolicy" >
-             <sizepolicy>
-              <hsizetype>5</hsizetype>
-              <vsizetype>7</vsizetype>
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-           </widget>
+           <widget class="SubForm2Bc" name="mui_listIva" />
           </item>
           <item>
            <layout class="QHBoxLayout" >
@@ -921,30 +912,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ListLinPrevCobroView</class>
-   <extends></extends>
-   <header>listlinprevcobroview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmages/bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListIvaView</class>
-   <extends></extends>
-   <header>listivaview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -959,6 +929,27 @@
    <class>BusquedaCuenta</class>
    <extends></extends>
    <header>busquedacuenta.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends></extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListLinPrevCobroView</class>
+   <extends></extends>
+   <header>listlinprevcobroview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>SubForm2Bc</class>
+   <extends>QTableWidget</extends>
+   <header>subform2bc.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

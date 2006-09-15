@@ -71,12 +71,10 @@ CobrosList::~CobrosList() {
 void CobrosList::presentar() {
     _depura("CobrosList::presentar()\n", 0);
     if (m_companyact != NULL) {
-        cursor2 * cur = m_companyact->cargacursor("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1 " + generaFiltro());
-        mui_list->cargar(cur);
-        delete cur;
+        mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1 " + generaFiltro());
 
         /// Hacemos el calculo del total.
-        cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1 " + generaFiltro());
+        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1 " + generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     } // end if

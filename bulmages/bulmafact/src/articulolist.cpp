@@ -66,9 +66,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
 
 void ArticuloList::presenta() {
     _depura("ArticuloList::INIT_presenta()\n", 0);
-    cursor2 * cur = m_companyact->cargacursor(formaQuery());
-    mui_list->cargar(cur);
-    delete cur;
+    mui_list->cargar(formaQuery());
     _depura("ArticuloList::END_presenta()\n", 0);
 }
 

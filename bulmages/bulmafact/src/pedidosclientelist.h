@@ -32,9 +32,7 @@ class PedidosClienteListSubform : public SubForm2Bf {
 
 public:
     PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
-    ~PedidosClienteListSubform() {}
-    ;
-
+    ~PedidosClienteListSubform() {};
 public slots:
     virtual void cargar() {
         _depura("PedidosClienteListSubform::cargar\n", 0);
@@ -43,10 +41,8 @@ public slots:
         SubForm3::cargar(cur);
         delete cur;
     };
-    virtual int cargar(cursor2 *cur) {
-        _depura("PedidosClienteListSubform::cargar\n", 0);
-        SubForm3::cargar(cur);
-        return 0;
+    virtual void cargar(QString query) {
+	SubForm3::cargar(query);
     };
 };
 

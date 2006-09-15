@@ -36,7 +36,6 @@ public:
     ~PedidosProveedorListSubform() {}
     ;
 
-public slots:
     virtual void cargar() {
         _depura("PedidosProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM pedidoproveedor";
@@ -44,11 +43,11 @@ public slots:
         SubForm3::cargar(cur);
         delete cur;
     };
-    virtual int cargar(cursor2 *cur) {
-        _depura("PedidosProveedorListSubform::cargar\n",0);
-        SubForm3::cargar(cur);
-        return 0;
+
+    virtual void cargar(QString query) {
+	SubForm3::cargar(query);
     };
+
 };
 
 

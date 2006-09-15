@@ -29,6 +29,7 @@
 #include "empresa.h"
 #include "dbrecord.h"
 
+
 /*
 CREATE TABLE registroiva (
     idregistroiva serial PRIMARY KEY,
@@ -54,16 +55,25 @@ CREATE TABLE registroiva (
 
 class RegistroIva : public DBRecord {
 protected:
-    ListIva *m_listalineas;
+//    ListIva *m_listalineas;
     ListLinPrevCobro *m_listadescuentos;
+
+    SubForm2Bc *m_lineas;
+
     empresa *m_companyact;
 public:
     /// Esta blece cual es la lista subformulario del presupuesto. Normalmente para apuntar listlinpresupuestoview.
 
+   void setLineas(SubForm2Bc *l) {
+	m_lineas = l;
+   };
+
+/*
     void setListIva ( ListIva *a) {
         m_listalineas =a;
         m_listalineas->setcompany(m_companyact);
     };
+*/
 
     void setListLinPrevCobro ( ListLinPrevCobro *a) {
         m_listadescuentos =a;
@@ -72,9 +82,11 @@ public:
 
     RegistroIva(empresa *);
 
+/*
     ListIva* listalineas() {
         return m_listalineas;
     };
+*/
 
     ListLinPrevCobro* mlistadescuentos() {
         return m_listadescuentos;
