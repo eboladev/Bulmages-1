@@ -1,6 +1,8 @@
 /***************************************************************************
  *   Copyright (C) 2005 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2006 by Fco. Javier M. C.                               *
+ *   fcojavmc@todo-redes.com                                               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -18,50 +20,57 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3PopupMenu>
+#include <QMenu>
 #include <QAction>
 #include <QObject>
 #include <QMessageBox>
 
 #include <stdio.h>
 
-#include "plugin.h"
+#include "efacturabf.h"
 #include "company.h"
 #include "funcaux.h"
 
 
-myplugin:: myplugin() {}
+// myplugin::myplugin() {}
+efacturabf::efacturabf() {}
 
-myplugin::~myplugin() {}
+// myplugin::~myplugin() {}
+efacturabf::~efacturabf() {}
 
-
-void myplugin::elslot() {
-    fprintf(stderr,"SE ha activado el slot\n");
+// void myplugin::elslot() {
+void efacturabf::elslot() {
+    fprintf(stderr,"Sa ha activado el slot\n");
     QMessageBox::warning(0,
-                         "Guardar Familia",
-                         "Desea guardar los cambios.",
+                         "Titulo de la ventana",
+                         "Mensaje.",
                          QMessageBox::Ok,
                          QMessageBox::Cancel);
 }
 
 
-void myplugin::inicializa(bulmafact *bges) {
-    /// El menu de empresa.
-    Q3PopupMenu *pPluginMenu = new Q3PopupMenu();
-    pPluginMenu->setCheckable(true);
-    bges->menuBar()->insertItem("&Plugin", pPluginMenu);
-    QAction *planCuentas = new QAction("&Prueba de Plugin", 0);
-    planCuentas->setStatusTip("Muestra el plan contable");
-    planCuentas->setWhatsThis("Muestra el plan contable");
-    planCuentas->addTo(pPluginMenu);
-    connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
+void efacturabf::inicializa(bulmafact *bges) {
+    /// Creamos el menu.
+    QMenu *pPluginMenu = new QMenu("&Factura Electronica");
+    QAction *accion = new QAction("&Prueba de e-factura", 0);
+    accion->setStatusTip("Muestra statustip");
+    accion->setWhatsThis("Muestra que es esto");
+    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+    pPluginMenu->addAction(accion);
+    /// Anyadimos la nueva opcion al menu principal del programa.
+    bges->menuBar()->addMenu(pPluginMenu);
 }
 
 
 void entryPoint(bulmafact *bges) {
-    _depura("Estoy dentro del plugin\n", 0);
-    myplugin *plug = new myplugin();
-    plug->inicializa(bges);
-    bges->setCaption("Prueba de plugin.");
+    _depura("Estoy dentro del plugin de e-factura\n", 0);
+//     myplugin *plug = new myplugin();
+//     plug->inicializa(bges);
+
+    efacturabf *efact = new efacturabf();
+    efact->inicializa(bges);
+    /// SOLO A MODO DE EJEMPLO: se modifica el titulo de la ventana principal
+    /// del programa para indicar que el plugin se ha cargado.
+    bges->setWindowTitle("Prueba de plugin e-factura.");
 }
 

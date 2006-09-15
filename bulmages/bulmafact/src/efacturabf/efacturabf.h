@@ -27,9 +27,9 @@
 #include <QStringList>
 #include <QWidget>
 #include <QIcon>
-#include "qapplication2.h"
 #include <QObject>
 
+#include "qapplication2.h"
 #include "bulmafact.h"
 #include "postgresiface2.h"
 
@@ -39,16 +39,15 @@ extern "C" MY_EXPORT void entryPoint(bulmafact *);
 extern QApplication2 *theApp;
 
 
-/// class QT_WIDGET_PLUGIN_EXPORT myplugin : public QObject {
-class myplugin : public QObject {
+class efacturabf : public QObject {
     Q_OBJECT
 
 public:
     postgresiface2 *conexionbase;
 
 public:
-    myplugin();
-    ~myplugin();
+    efacturabf();
+    ~efacturabf();
     void inicializa(bulmafact *);
 
 public slots:
