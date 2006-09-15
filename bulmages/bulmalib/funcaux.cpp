@@ -255,78 +255,82 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 2 = Alto (sale un popup).
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
-#define __DEBUGMODE
-void _depura(QString cad, int nivel, QString param) {
 
-#ifdef __DEBUGMODE
+void _depura(QString cad, int nivel, QString param) {
     static bool semaforo = 0;
     static QFile file("/tmp/bulmagesout.txt");
-    if (!semaforo) {
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
-        semaforo = 1;
-    } // end if
     static QTextStream out(&file);
-    static int supnivel = 0;
-    static int indice = 0;
-    static QString mensajesanulados[7000];
-    static QString clasesanuladas[7000];
-    static int indiceclases = 0;
-    if (nivel == 5) {
-        supnivel = 0;
-        nivel = 2;
-    } // end if
-    if (nivel == 4) {
-        supnivel = 2;
-        nivel = 2;
+
+    /// Si el objeto confpr no esta creado puede dar segmentation fault.
+    if (confpr == NULL) {
+        return;
     } // end if
 
-    if (nivel == 0) {
-        out << cad << " " << param << "\n";
-    } else if (nivel == 1) {
-        out << cad << " " << param << "\n";
-    } // end if
-
-    for (int i = 0; i < indice; i++) {
-        if (cad == mensajesanulados[i]) {
-            return;
+    if (confpr->valor(CONF_DEBUG) == "TRUE") {
+        if (!semaforo) {
+            if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+                return;
+            semaforo = 1;
         } // end if
-    } // end for
-
-    for (int i = 0; i < indiceclases; i++) {
-        if (cad.left(cad.indexOf("::")) == clasesanuladas[i]) {
-            return;
+        static int supnivel = 0;
+        static int indice = 0;
+        static QString mensajesanulados[7000];
+        static QString clasesanuladas[7000];
+        static int indiceclases = 0;
+        if (nivel == 5) {
+            supnivel = 0;
+            nivel = 2;
         } // end if
-    } // end for
-
-    if (nivel == 2 || (supnivel == 2 && nivel == 0)) {
-        out << cad << " " << param << "\n";
-        int err = QMessageBox::information(NULL,
-                                           QApplication::translate("funcaux", "Informacion de depuracion"),
-                                           cad + " " + param,
-                                           QApplication::translate("funcaux", "&Continuar"),
-                                           QApplication::translate("funcaux", "&Omitir"),
-                                           QApplication::translate("funcaux", "Omitir &clase"),
-                                           0, 1);
-        if (err == 1) {
-            mensajesanulados[indice++] = cad;
+        if (nivel == 4) {
+            supnivel = 2;
+            nivel = 2;
         } // end if
-        if (err == 2) {
-            clasesanuladas[indiceclases++] = cad.left(cad.indexOf("::"));
+
+        if (nivel == 0) {
+            out << cad << " " << param << "\n";
+        } else if (nivel == 1) {
+            out << cad << " " << param << "\n";
+        } // end if
+
+        for (int i = 0; i < indice; i++) {
+            if (cad == mensajesanulados[i]) {
+                return;
+            } // end if
+        } // end for
+
+        for (int i = 0; i < indiceclases; i++) {
+            if (cad.left(cad.indexOf("::")) == clasesanuladas[i]) {
+                return;
+            } // end if
+        } // end for
+
+        if (nivel == 2 || (supnivel == 2 && nivel == 0) || nivel == 3) {
+            out << cad << " " << param << "\n";
+            int err = QMessageBox::information(NULL,
+                                               QApplication::translate("funcaux", "Informacion de depuracion"),
+                                               cad + " " + param,
+                                               QApplication::translate("funcaux", "&Continuar"),
+                                               QApplication::translate("funcaux", "&Omitir"),
+                                               QApplication::translate("funcaux", "Omitir &clase"),
+                                               0, 1);
+            if (err == 1) {
+                mensajesanulados[indice++] = cad;
+            } // end if
+            if (err == 2) {
+                clasesanuladas[indiceclases++] = cad.left(cad.indexOf("::"));
+            } // end if
+        } // end if
+
+        file.flush();
+    } else {
+        if (nivel == 2) {
+            out << cad << " " << param << "\n";
+            QMessageBox::question(NULL,
+                                  QApplication::translate("funcaux", "Informacion de depuracion"),
+                                  cad, QApplication::translate("funcaux", "&Continuar"),
+                                  QString::null, 0);
         } // end if
     } // end if
-
-    file.flush();
-#else
-
-    if (nivel == 2) {
-        out << cad << " " << param << "\n";
-        QMessageBox::question(NULL,
-                              QApplication::translate("funcaux", "Informacion de depuracion"),
-                              cad, QApplication::translate("funcaux", "&Continuar"),
-                              QString::null, 0);
-    } // end if
-#endif
 }
 
 

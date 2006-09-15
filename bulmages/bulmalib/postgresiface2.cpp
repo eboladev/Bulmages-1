@@ -67,7 +67,7 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         _depura(err);
         _depura("--------- FIN RESULTADO DE QUERY ----------------");
     } catch(...) {
-        _depura("Error con el query: "+SQLQuery , 2);
+        _depura("cursor2::cursor2: Error con el query: "+SQLQuery , 3);
         throw -1;
     } // end try
     _depura("END cursor2::cursor2", 0);
@@ -379,7 +379,7 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     try {
         cur = new cursor2(nomcursor, conn, Query);
     } catch(...) {
-	_depura( "postgresiface2::cargacursor La base de datos generó un error: "+Query, 2);
+	_depura( "postgresiface2::cargacursor La base de datos generó un error: "+Query, 3);
         delete cur;
         throw -1;
     } // end try

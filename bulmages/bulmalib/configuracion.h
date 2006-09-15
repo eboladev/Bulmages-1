@@ -165,6 +165,8 @@
 #define CONF_NUM_AUT_PRESUP          500
 #define CONF_NUM_AUT_ALBARAN         501
 #define CONF_NUM_AUT_FACTURA         502
+/// COMNF_DEBUG indica el modo de debug.
+#define CONF_DEBUG                   550
 /// CONF_MOSTRAR_ALMACEN determina si se visualizaran el almacen en los listados y si aparecera inhibido en las entradas de datos inicialmente vale "".
 #define CONF_MOSTRAR_ALMACEN         510
 

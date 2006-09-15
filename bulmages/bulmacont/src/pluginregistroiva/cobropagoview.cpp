@@ -40,6 +40,7 @@ CREATE TABLE prevcobro (
     tipoprevcobro boolean,
     docprevcobro character varying(50)
 );
+
 */
 #define COL_SELECCION                  0
 #define COL_IDPREVCOBRO                1

@@ -58,14 +58,14 @@ QTranslator * traductor;
   * Y por último crea el objeto del tipo \ref Bulmages01 que es la aplicación de ventanas.
   */
 int main(int argc, char *argv[]) {
+        /// Leemos la configuracion que luego podremos usar siempre
+        confpr = new configuracion();
     Bulmages01 *bges;
     int valorsalida=0;
     QString db= argv[2];
     QString us=argv[3];
     QString pass=argv[4];
     try {
-        /// Leemos la configuracion que luego podremos usar siempre
-        confpr = new configuracion();
         /// Inicializamos el objeto global para uso de plugins
         g_plugins = new Plugins();
 

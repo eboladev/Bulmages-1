@@ -2,7 +2,7 @@
                           ListRegistroIvaView.h  -  description
                              -------------------
     begin                : Thu Jan 30 2003
-    copyright            : (C) 2003 by Tomeu Borras� Riera
+    copyright            : (C) 2003 by Tomeu Borras Riera
     email                : tborras@conetxia.com
  ***************************************************************************/
 /***************************************************************************

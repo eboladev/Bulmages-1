@@ -252,6 +252,8 @@ QString configuracion::nombre(int i) {
         return "CONF_BG_LISTARTICULOS";
     if (i == CONF_DIR_CANUALES )
         return "CONF_DIR_CANUALES";
+    if (i == CONF_DEBUG )
+        return "CONF_DEBUG";
     return "";
 }
 

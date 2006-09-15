@@ -4,7 +4,7 @@
 // Description: 
 //
 //
-// Author: Ricardo Di­az <richard@galdi.es>, (C) 2005
+// Author: Ricardo Diaz <richard@galdi.es>, (C) 2005
 //
 // Copyright: See COPYING file that comes with this distribution
 //
@@ -17,11 +17,9 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-
 #include "arbol.h"
 
-Arbol::Arbol()
-{
+Arbol::Arbol() {
     unsigned int i;
     
     raiz = new tipohoja*[70]; // una contabilidad podra tener hasta 70 cuentas de nivel 2 como mucho, creo
