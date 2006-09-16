@@ -58,8 +58,10 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(paren
     setLineas( mui_listIva);
     mui_listIva->setcompany(comp);
 
+    mui_listPrevCobro->setcompany(comp);
 
-    setListLinPrevCobro( m_listprevcobro);
+
+    setListLinPrevCobro(m_listprevcobro);
 
     /// Preparamos la lista de cobros y pagos
     m_listprevcobro->presentacionFactura();
@@ -79,6 +81,26 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(paren
     mui_listIva->addSHeader("ivaiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
     mui_listIva->setinsercion(FALSE);
 
+    ////////////////////////////////////////////////////////
+    mui_listPrevCobro->setDBTableName("prevcobro");
+    mui_listPrevCobro->setDBCampoId("idprevcobro");
+    mui_listPrevCobro->addSHeader("idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr("idiva"));
+    mui_listPrevCobro->addSHeader("fprevistaprevcobro", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("idtipoiva"));
+    mui_listPrevCobro->addSHeader("fcobroprevcobro", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("idcuenta"));
+    mui_listPrevCobro->addSHeader("idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("codigo"));
+    mui_listPrevCobro->addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("nombretipoiva"));
+    mui_listPrevCobro->addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone , tr("idregistroiva"));
+    mui_listPrevCobro->addSHeader("cantidadprevistaprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("baseiva"));
+    mui_listPrevCobro->addSHeader("cantidadprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("idregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("tipoprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("docprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("codigo", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("descripcion", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("idctacliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("codigoctacliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->addSHeader("nomctacliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("ivaiva"));
+    mui_listPrevCobro->setinsercion(TRUE);
 
     m_companyact->meteWindow(windowTitle(), this);
 
@@ -140,6 +162,11 @@ int RegistroIvaView::cargar(QString id) {
         return -1;
 
     mui_listIva->cargar("SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva="+id+" ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo");
+
+     mui_listPrevCobro->cargar("SELECT * FROM prevcobro "
+                   " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
+                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+                   " WHERE idregistroiva= "+id+" ORDER BY fcobroprevcobro ");
 
     setCaption("Registro FActura "+factura());
     dialogChanges_cargaInicial();
