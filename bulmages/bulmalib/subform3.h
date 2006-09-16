@@ -177,8 +177,16 @@ public slots:
     virtual void on_mui_paganterior_clicked();
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item);
     virtual void on_mui_list_cellDoubleClicked(int row, int col);
+    virtual void toogleConfig() { 
+	mui_configurador->setVisible(mui_configurador->isHidden());
+	emit toogledConfig(mui_configurador->isVisible());
+    };
+    virtual void on_mui_botonCerrar_clicked() {
+	toogleConfig();
+    };
 
 signals:
+    void toogledConfig(bool);
     void editFinish(int, int);
     void itemDoubleClicked(QTableWidgetItem *);
     void cellDoubleClicked(int row, int col);

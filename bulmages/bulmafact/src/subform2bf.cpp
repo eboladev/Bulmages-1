@@ -128,7 +128,7 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
     popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
+    QAction *verconfig = popup->addAction(tr("Ver/Ocultar configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del && m_delete)
@@ -142,7 +142,7 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
     if (opcion == ajustac)
         resizeRowToContents(row);
     if (opcion == verconfig)
-        showConfig();
+        toogleConfig();
 
     delete popup;
     _depura("END SubForm2Bf::contextMenuEvent", 0);

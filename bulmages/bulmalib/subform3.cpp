@@ -25,6 +25,7 @@
 #include <QTextStream>
 
 #include <QMenu>
+#include <QShortcut>
 
 #include "subform3.h"
 
@@ -42,8 +43,11 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
     /// Ocultamos el boton de actualizar del subForm porque esta repetido en cada
     /// una de las ventanas.
-    //mui_confcol->setVisible(FALSE);
-    mui_botonMostrar->setVisible(FALSE);
+//    mui_botonMostrar->setVisible(FALSE);
+
+    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+h"), this);
+    connect(shortcut, SIGNAL(activated()), this, SLOT(toogleConfig()));
+    
 
     m_insercion = FALSE;
     m_primero = TRUE;
@@ -752,7 +756,7 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
 
     popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
+    QAction *verconfig = popup->addAction(tr("Ver/Ocultar configurador de subformulario"));
 
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
@@ -766,7 +770,7 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     if (opcion == ajustac)
         resizeRowToContents(row);
     if(opcion == verconfig)
-        showConfig();
+        toogleConfig();
 
     emit trataMenu(opcion);
 

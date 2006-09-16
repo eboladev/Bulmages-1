@@ -59,6 +59,8 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         mui_importar->setHidden(TRUE);
         mui_imprimir->setHidden(TRUE);
     } // end if
+
+
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
 }
