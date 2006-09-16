@@ -32,8 +32,8 @@ class QmcDateNav : public QWidget {
     Q_OBJECT
 
 public:
-    QmcDateNav(class QWidget * parent = 0, const char * name = 0);
-    QmcDateNav(const class QDate &, class QWidget * parent = 0, const char * name = 0);
+    QmcDateNav(class QWidget * parent = 0);
+    QmcDateNav(const class QDate &, class QWidget * parent = 0);
     ~QmcDateNav();
     virtual QSizePolicy sizePolicy() const;
     virtual QSize sizeHint() const;

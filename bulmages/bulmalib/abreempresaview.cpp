@@ -64,8 +64,10 @@ using namespace std;
 /// @param name nombre de la ventana.
 /// @param modal Indica si la ventana debe comportar de forma modal o no. (por defecto si).
 abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal)
-        : QDialog(parent, name, modal) {
+        : QDialog(parent) {
     _depura("abreempresaview::abreempresaview", 0);
+    setModal(modal);
+    this->setWindowTitle(name);
     setupUi(this);
 
     mui_empresas->installEventFilter(this);

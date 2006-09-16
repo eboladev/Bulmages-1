@@ -37,7 +37,7 @@ BusquedaFecha::~BusquedaFecha() {}
 
 void BusquedaFecha::s_searchFecha() {
     Q3PtrList<QDate> a;
-    calendario *cal = new calendario(0, 0);
+    calendario *cal = new calendario(0);
     cal->exec();
     a = cal->dn->selectedDates();
     m_fecha->setText(a.first()->toString("dd/MM/yyyy"));

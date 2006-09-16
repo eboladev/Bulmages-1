@@ -57,18 +57,16 @@ QRect satBR;
 QRect daysRect;
 
 
-QmcDateNav::QmcDateNav(class QWidget * parent, const char * name)
-        : QWidget(parent, name) {
+QmcDateNav::QmcDateNav(class QWidget * parent) : QWidget(parent) {
     currentMonth = QDate(QDate::currentDate());
     init();
     setFocusPolicy(Qt::StrongFocus);
 }
 
 
-QmcDateNav::QmcDateNav(const class QDate & d, class QWidget * parent, const char * name)
-        : QWidget(parent, name) {
+QmcDateNav::QmcDateNav(const class QDate & d, class QWidget * parent) : QWidget(parent) {
     currentMonth = QDate(d);
-    if(!currentMonth.isValid()) {
+    if (!currentMonth.isValid()) {
         currentMonth = QDate(QDate::currentDate());
     }
     init();
@@ -115,7 +113,7 @@ void QmcDateNav::init() {
 
 
 QSizePolicy QmcDateNav::sizePolicy() const {
-    return QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed, false);
+    return QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
 
@@ -146,8 +144,11 @@ void QmcDateNav::paintEvent(QPaintEvent *) {
     if (pmDirty || pm == 0)
         makePixmap();
     QPainter p;
+    p.begin(pm);
+    p.setPen(this->foregroundColor());
+    p.setBackgroundColor(this->backgroundColor());
+    p.setFont(this->font());
 
-    p.begin(pm, this);
     if (pmDirty && pm != 0) {
         p.fillRect(0, 0, width(), height(), colorGroup().base());
         if (frame())
@@ -529,15 +530,15 @@ void QmcDateNav::mouseDoubleClickEvent(QMouseEvent * e) {
         for (int i = 0; i <= 41; i++)
             if (dateList.at(i)->d.dayOfWeek() == dayToSelect)
                 dateList.at(i)->s = true;
-                            drawSelections();
-                            emit dateChanged();
-                            emit close();
-                            return;
-                        } // end if
-                QRect weeksRect(frame() ? 1 : 0,
-                                dateList.at(0)->r.top(),
-                                dateList.at(0)->r.left() - (frame() ? 1 : 0),
-                                dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
+        drawSelections();
+        emit dateChanged();
+        emit close();
+        return;
+    } // end if
+    QRect weeksRect(frame() ? 1 : 0,
+                    dateList.at(0)->r.top(),
+                    dateList.at(0)->r.left() - (frame() ? 1 : 0),
+                    dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
 
     if (weeksRect.contains(mr, true)) {
         if (e->state() != Qt::ControlButton)
@@ -1146,9 +1147,9 @@ void QmcDateNav::mouseMoveEvent(QMouseEvent * e) {
     } // end if
 
     QRect weeksRect(frame() ? 1 : 0,
-                     dateList.at(0)->r.top(),
-                     dateList.at(0)->r.left() - (frame() ? 1 : 0),
-                     dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
+                    dateList.at(0)->r.top(),
+                    dateList.at(0)->r.left() - (frame() ? 1 : 0),
+                    dateList.at(41)->r.bottom() - dateList.at(0)->r.top());
 
     if (weeksRect.contains(mr, true)) {
         setCursor(Qt::pointingHandCursor);
@@ -1213,22 +1214,22 @@ void QmcDateNav::rbMenuClicked(int id) {
  * \date $Date$
  */
 /*!
- * \fn QmcDateNav::QmcDateNav( class QWidget * parent = 0, const char * name = 0 )
+ * \fn QmcDateNav::QmcDateNav(class QWidget * parent = 0)
  * \brief Default Constructor.
  *
  * This constructor creates a date navigation widget with todays date selected.
  *
- * The \c parent and \c name arguments are passed to the %QWidget constructor.
+ * The \c parent argument is passed to the %QWidget constructor.
  */
 /*!
- * \fn QmcDateNav::QmcDateNav( const class QDate & d, class QWidget * parent = 0, const char * name = 0 )
+ * \fn QmcDateNav::QmcDateNav(const class QDate & d, class QWidget * parent = 0)
  * \brief Alternate Constructor.
  *
  * This constructor creates a date navigation widget with the date specified by \c d selected.
  *
  * If \c d is an invalid date, todays date is selected.
  *
- * The \c parent and \c name arguments are passed to the %QWidget constructor.
+ * The \c parent argument is passed to the %QWidget constructor.
  *
  * \param d The date on which to base this widget.
  * \sa setDate()
@@ -1262,7 +1263,7 @@ void QmcDateNav::rbMenuClicked(int id) {
  * \sa setFrame()
  */
 /*!
- * \fn void QmcDateNav::setFrame( bool f )
+ * \fn void QmcDateNav::setFrame(bool f)
  *
  * Toggles the drawing of a frame.
  *

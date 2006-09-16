@@ -28,7 +28,8 @@
 #include "postgresiface2.h"
 
 
-logpass::logpass(QWidget *parent, const char *name) : QDialog(parent, name) {
+logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
+    setWindowTitle(name);
     setupUi(this);
     QObject::connect(pushButton24, SIGNAL(clicked()), this, SLOT(validar()));
     validar();

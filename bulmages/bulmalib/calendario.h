@@ -42,7 +42,7 @@ class calendario: public QDialog {
     Q_OBJECT
 
 public:
-    calendario(class QDialog * parent = 0, const char * name = 0);
+    calendario(class QDialog * parent = 0);
     ~calendario();
     QmcDateNav *dn;
     Q3PtrList<QDate> *eDays;

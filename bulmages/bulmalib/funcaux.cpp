@@ -71,13 +71,13 @@ string extiendecodigo(string cad, unsigned int num1) {
     string cod = cad;
     unsigned int num = num1;
     if (cod.length() < num) {
-        string str7 (num - cod.length() + 1, '0');
+        string str7(num - cod.length() + 1, '0');
         int pos = cod.find(".", 0);
         if (pos > 0) {
             cod.replace(pos, 1, str7);
         } // end if
     } // end if
-    return(cod);
+    return (cod);
 }
 
 
@@ -95,7 +95,7 @@ QString extiendecodigo(QString cad, unsigned int num1) {
             cod.replace(pos, 1, str7.c_str());
         } // end if
     } // end if
-    return(cod);
+    return (cod);
 }
 
 
@@ -129,7 +129,7 @@ int roundI(double valor) {
 QDate normalizafecha(QString fechaintro) {
     QDate fecharesult;
     int d, M, y;
-    switch(fechaintro.length()) {
+    switch (fechaintro.length()) {
     case 4: /// fecha tipo ddMM
         d = fechaintro.mid(0, 2).toInt();
         M = fechaintro.mid(2, 2).toInt();
@@ -146,7 +146,7 @@ QDate normalizafecha(QString fechaintro) {
         y = 2000 + fechaintro.mid(4, 2).toInt();
         break;
     case 8:
-        if(fechaintro.contains("/", Qt::CaseSensitive) || fechaintro.contains("-", Qt::CaseSensitive)) {
+        if (fechaintro.contains("/", Qt::CaseSensitive) || fechaintro.contains("-", Qt::CaseSensitive)) {
             /// fecha tipo dd/MM/yy o dd-MM-yy
             d = fechaintro.mid(0, 2).toInt();
             M = fechaintro.mid(3, 2).toInt();
@@ -170,7 +170,7 @@ QDate normalizafecha(QString fechaintro) {
     } // end switch
     if (!fecharesult.setYMD(y, M, d))
         fecharesult = QDate::currentDate();
-    return(fecharesult);
+    return (fecharesult);
 }
 
 
@@ -198,7 +198,7 @@ QString ajustacodigo(QString cad, unsigned int num1) {
             cod += cad.right(num1 - 4);
         } // end if
     } // end if
-    return(cod);
+    return (cod);
 }
 
 
@@ -244,7 +244,9 @@ void invocaPDF(const QString arch) {
 
 /// De momento no se usa, pero sirve para enviar documentos por e-mail a un destinatario.
 void mailsendPDF(const QString arch, const QString to, const QString subject, const QString message) {
-    QString cadsys = "mailsend -h mail.iglues.org -d iglues.org -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
+    //FIXME: REVISAR PARAMETROS de mailsend o la posibilidad de anyadir otros programas
+    //para enviar correo desde la ventana de configuracion del programa.
+    QString cadsys = "mailsend -h " + arch + " -d " + to + " -f bulmages@iglues.org -t test@iglues.org -sub " + subject + " -m " + message;
     system(cadsys.toAscii().data());
 }
 
@@ -260,7 +262,6 @@ void _depura(QString cad, int nivel, QString param) {
     static bool semaforo = 0;
     static QFile file("/tmp/bulmagesout.txt");
     static QTextStream out(&file);
-
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
     if (confpr == NULL) {
         return;

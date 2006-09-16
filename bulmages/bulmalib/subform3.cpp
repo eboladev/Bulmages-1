@@ -43,6 +43,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     /// Ocultamos el boton de actualizar del subForm porque esta repetido en cada
     /// una de las ventanas.
     //mui_confcol->setVisible(FALSE);
+    mui_botonMostrar->setVisible(FALSE);
 
     m_insercion = FALSE;
     m_primero = TRUE;

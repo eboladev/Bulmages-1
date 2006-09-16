@@ -28,8 +28,7 @@
 #include "calendario.h"
 
 
-calendario::calendario(class QDialog * parent, const char * name)
-        : QDialog(parent, name) {
+calendario::calendario(class QDialog * parent) : QDialog(parent) {
     init();
 }
 
@@ -46,12 +45,12 @@ calendario::~calendario() {
 
 
 void calendario::init() {
-    for(int t = 1; t < 6; t++)
+    for (int t = 1; t < 6; t++)
         nonWorkDays[t] = false;
     nonWorkDays[6] = true;
     nonWorkDays[7] = true;
 
-    dn = new QmcDateNav(this, "dn");
+    dn = new QmcDateNav(this);
 
     eDays = new Q3PtrList<QDate>;
     nwDays = new Q3PtrList<QDate>;
@@ -64,7 +63,10 @@ void calendario::init() {
     updateNWDs(QDate::currentDate().year());
     updateEventDays(QDate::currentDate().year());
 
-    mainLayout = new QHBoxLayout(this, 4, 4, "mainLayout");
+    mainLayout = new QHBoxLayout(this);
+    mainLayout->setMargin(4);
+    mainLayout->setSpacing(4);
+    mainLayout->setObjectName("mainLayout");
     mainLayout->addWidget(dn);
 
     connect(dn, SIGNAL(yearChanged(int)), this, SLOT(updateNWDs(int)));
@@ -80,16 +82,16 @@ void calendario::updateNWDs(int yr) {
     /// I don't worry about those here, but you should.
     nwDays->clear();
 
-    for(int t = 1; t < 8; t++) {
-        if(nonWorkDays[t] == false)
+    for (int t = 1; t < 8; t++) {
+        if (nonWorkDays[t] == false)
             continue;
         QDate d(yr, 1, 1);
-        while(d.dayOfWeek() != t) {
+        while (d.dayOfWeek() != t) {
             d = d.addDays(1);
         }
         int cd = d.dayOfYear();
         int maxDays = d.daysInYear();
-        while(cd <= maxDays) {
+        while (cd <= maxDays) {
             nwDays->append(new QDate(d));
             d = d.addDays(7);
             cd += 7;
@@ -113,27 +115,27 @@ void calendario::updateEventDays(int yr) {
 
 
 void calendario::showOptions() {
-    if(optionsDialog)
+    if (optionsDialog)
         optionsDialog->show();
     else
         return;
-    if(qcbOutlook->isChecked() != dn->outlook())
+    if (qcbOutlook->isChecked() != dn->outlook())
         dn->setOutlook(! dn->outlook());
-    if(qcbFrame->isChecked() != dn->frame())
+    if (qcbFrame->isChecked() != dn->frame())
         dn->setFrame(! dn->frame());
-    if(qcbWorkMon->isChecked() != nonWorkDays[1])
+    if (qcbWorkMon->isChecked() != nonWorkDays[1])
         nonWorkDays[1] = qcbWorkMon->isChecked();
-    if(qcbWorkTue->isChecked() != nonWorkDays[2])
+    if (qcbWorkTue->isChecked() != nonWorkDays[2])
         nonWorkDays[2] = qcbWorkTue->isChecked();
-    if(qcbWorkWed->isChecked() != nonWorkDays[3])
+    if (qcbWorkWed->isChecked() != nonWorkDays[3])
         nonWorkDays[3] = qcbWorkWed->isChecked();
-    if(qcbWorkThu->isChecked() != nonWorkDays[4])
+    if (qcbWorkThu->isChecked() != nonWorkDays[4])
         nonWorkDays[4] = qcbWorkThu->isChecked();
-    if(qcbWorkFri->isChecked() != nonWorkDays[5])
+    if (qcbWorkFri->isChecked() != nonWorkDays[5])
         nonWorkDays[5] = qcbWorkFri->isChecked();
-    if(qcbWorkSat->isChecked() != nonWorkDays[6])
+    if (qcbWorkSat->isChecked() != nonWorkDays[6])
         nonWorkDays[6] = qcbWorkSat->isChecked();
-    if(qcbWorkSun->isChecked() != nonWorkDays[7])
+    if (qcbWorkSun->isChecked() != nonWorkDays[7])
         nonWorkDays[7] = qcbWorkSun->isChecked();
     updateNWDs(dn->selectedDates().at(0)->year());
     dn->forceUpdate();
