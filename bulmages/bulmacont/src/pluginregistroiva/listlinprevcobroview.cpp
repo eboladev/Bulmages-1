@@ -316,7 +316,7 @@ bool ListLinPrevCobroView::eventFilter( QObject *obj, QEvent *ev ) {
         case Qt::Key_Plus:
             if ((col == COL_FCOBROPREVCOBRO)) {
                 Q3PtrList<QDate> a;
-                calendario *cal = new calendario(0,0);
+                calendario *cal = new calendario(0);
                 cal->exec();
                 a = cal->dn->selectedDates();
                 delete cal;
