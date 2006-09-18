@@ -21,10 +21,12 @@
 #ifndef TPVVIEW_H
 #define TPVVIEW_H
 
-#include <tpvdlg.h>
+#include <QDialog>
+
+#include ".ui/ui_tpvdlg.h"
 
 /** author BulmaGés Developer Team */
-class tpvview : public tpvdlg
+class tpvview : public QDialog, public Ui_tpvdlg
 {
 Q_OBJECT
 public:

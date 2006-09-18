@@ -22,9 +22,10 @@
 #include <qlcdnumber.h>
 
 tpvview::tpvview(QWidget *parent, const char *name)
- : tpvdlg(parent, name)
+ : QDialog(parent, name)
 {
-   display->display(0.00);
+  setupUi(this);
+  display->display(0.00);
 }
 
 
