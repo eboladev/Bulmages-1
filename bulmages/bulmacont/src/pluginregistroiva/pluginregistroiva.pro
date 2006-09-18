@@ -24,7 +24,7 @@ VERSION = 1.0.0
 
 DESTDIR = .
 
-QMALE_LIBDIR += ../../../installbulmages
+QMAKE_LIBDIR += ../../../installbulmages
 
 LIBS += -rdynamic \
         -lbulmalib
