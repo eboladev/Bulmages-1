@@ -282,11 +282,11 @@ void Factura::imprimirFactura() {
             pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "        <td>" + QApplication::translate("Factura", "Iva ") + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", pariva.toQString().toAscii().constData()) + "</td>\n";
+        tr1 += "        <td>" + QApplication::translate("Factura", "Iva ") +" "+ it.key() + " %</td>\n";
+        tr2 += "        <td>" + l.sprintf(" %s ", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
-    tr1 += "        <td>" + QApplication::translate("Factura", "Total ") + "</td>\n";
-    tr2 += "        <td>" + l.sprintf("%s", (totiva + totbaseimp).toQString().toAscii().constData()) + "</td>\n";
+    tr1 += "        <td>" + QApplication::translate("Factura", "Total ") +"</td>\n";
+    tr2 += "        <td>" + l.sprintf(" %s ", (totiva + totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 

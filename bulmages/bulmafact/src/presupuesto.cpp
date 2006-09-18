@@ -303,8 +303,8 @@ void presupuesto::imprimirPresupuesto() {
             parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "    <td>" + QApplication::translate("presupuesto", "Base ") + XMLProtect(it.key()) + " %</td>\n";
-        tr2 += "    <td>" + l.sprintf("%s", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
+        tr1 += "    <td>" + QApplication::translate("presupuesto", "Base ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr2 += "    <td>" + l.sprintf(" %s ", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
@@ -316,11 +316,11 @@ void presupuesto::imprimirPresupuesto() {
             pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "    <td>" + QApplication::translate("presupuesto", "I.V.A. ") + XMLProtect(it.key()) + " %</td>\n";
-        tr2 += "    <td>" + l.sprintf("%s", pariva.toQString().toAscii().constData()) + "</td>\n";
+        tr1 += "    <td>" + QApplication::translate("presupuesto", "I.V.A. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr2 += "    <td>" + l.sprintf(" %s ", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
     tr1 += "    <td>" + QApplication::translate("presupuesto", "Total ") + "</td>\n";
-    tr2 += "    <td>" + l.sprintf("%s", (totiva+totbaseimp).toQString().toAscii().constData()) + "</td>\n";
+    tr2 += "    <td>" + l.sprintf(" %s ", (totiva+totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 
