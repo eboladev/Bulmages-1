@@ -1,63 +1,60 @@
 #include "bulmatpv.h"
 
-#include <qimage.h>
-#include <qpixmap.h>
-#include <q3toolbar.h>
-#include <qtoolbutton.h>
-#include <q3popupmenu.h>
-#include <qmenubar.h>
 #include <q3textedit.h>
-#include <qfile.h>
-#include <q3filedialog.h>
-#include <qstatusbar.h>
-#include <qmessagebox.h>
-#include <qprinter.h>
-#include <qapplication.h>
-#include <q3accel.h>
-#include <qtextstream.h>
-#include <qpainter.h>
-#include <q3paintdevicemetrics.h>
-#include <q3whatsthis.h>
-//Added by qt3to4:
+#include <QFileDialog>
+#include <QPaintDevice>
+#include <QMenu>
+#include <QImage>
+#include <QPixmap>
+#include <QToolBar>
+#include <QToolButton>
+#include <QMenuBar>
+#include <QFile>
+#include <QStatusBar>
+#include <QMessageBox>
+#include <QPrinter>
+#include <QApplication>
+#include <QTextStream>
+#include <QPainter>
 #include <QCloseEvent>
+#include <QWhatsThis>
 
 #include "filesave.xpm"
 #include "fileopen.xpm"
 #include "fileprint.xpm"
 
 BulmaTPV::BulmaTPV()
-    : Q3MainWindow( 0, "BulmaTPV", Qt::WDestructiveClose )
+    : QMainWindow(0,Qt::Window)
 {
     printer = new QPrinter;
     QPixmap openIcon, saveIcon, printIcon;
 
-    Q3ToolBar * fileTools = new Q3ToolBar( this, "file operations" );
-    fileTools->setLabel( tr("File Operations") );
+    QToolBar *fileTools=new QToolBar("file operations",this);
 
-    openIcon = QPixmap( fileopen );
+    openIcon = QPixmap(fileopen);
     QToolButton * fileOpen
-	= new QToolButton( openIcon, tr("Open File"), QString::null,
+	= new QToolButton(openIcon, tr("Open File"), QString::null,
 			   this, SLOT(choose()), fileTools, "open file" );
 
-    saveIcon = QPixmap( filesave );
+    saveIcon = QPixmap(filesave);
     QToolButton * fileSave
 	= new QToolButton( saveIcon, tr("Save File"), QString::null,
 			   this, SLOT(save()), fileTools, "save file" );
 
-    printIcon = QPixmap( fileprint );
+    printIcon = QPixmap(fileprint);
     QToolButton * filePrint
 	= new QToolButton( printIcon, tr("Print File"), QString::null,
 			   this, SLOT(print()), fileTools, "print file" );
 
 
-    (void)Q3WhatsThis::whatsThisButton( fileTools );
+    (void)QWhatsThis::whatsThisButton(fileTools);
 
     QString fileOpenText = tr("<p><img source=\"fileopen\"> "
 	         "Click this button to open a <em>new file</em>. <br>"
                  "You can also select the <b>Open<Tomeu Borras,,,/b> command "
                  "from the <b>File</b> menu.</p>");
 
-    Q3WhatsThis::add( fileOpen, fileOpenText );
+    QWhatsThis::add(fileOpen,fileOpenText);
 
     Q3MimeSourceFactory::defaultFactory()->setPixmap( "fileopen", openIcon );
 
@@ -66,20 +63,20 @@ BulmaTPV::BulmaTPV()
                  "You can also select the <b>Save</b> command "
                  "from the <b>File</b> menu.</p>");
 
-    Q3WhatsThis::add( fileSave, fileSaveText );
+    QWhatsThis::add(fileSave,fileSaveText);
 
     QString filePrintText = tr("Click this button to print the file you "
                  "are editing.\n You can also select the Print "
                  "command from the File menu.");
 
-    Q3WhatsThis::add( filePrint, filePrintText );
+    QWhatsThis::add(filePrint,filePrintText);
 
 
-    Q3PopupMenu * file = new Q3PopupMenu( this );
-    menuBar()->insertItem( tr("&File"), file );
+    QMenu *file=new QMenu(this);
+    menuBar()->insertItem(tr("&File"),file);
 
 
-    file->insertItem( tr("&New"), this, SLOT(newDoc()), Qt::CTRL+Qt::Key_N );
+    file->insertItem(tr("&New"),this,SLOT(newDoc()),Qt::CTRL+Qt::Key_N );
 
     int id;
     id = file->insertItem( openIcon, tr("&Open..."),
@@ -107,7 +104,7 @@ BulmaTPV::BulmaTPV()
 
     menuBar()->insertSeparator();
 
-    Q3PopupMenu * help = new Q3PopupMenu( this );
+    QMenu *help=new QMenu(this);
     menuBar()->insertItem( tr("&Help"), help );
 
     help->insertItem( tr("&About"), this, SLOT(about()), Qt::Key_F1 );
@@ -115,7 +112,7 @@ BulmaTPV::BulmaTPV()
     help->insertSeparator();
     help->insertItem( tr("What's &This"), this, SLOT(whatsThis()), Qt::SHIFT+Qt::Key_F1 );
 
-    e = new Q3TextEdit( this, "editor" );
+    e=new Q3TextEdit(this,"editor");
     e->setFocus();
     setCentralWidget( e );
     statusBar()->message( tr("Ready"), 2000 );
@@ -140,10 +137,9 @@ void BulmaTPV::newDoc()
 
 void BulmaTPV::choose()
 {
-    QString fn = Q3FileDialog::getOpenFileName( QString::null, QString::null,
-					       this);
-    if ( !fn.isEmpty() )
-	load( fn );
+    QString fn=QFileDialog::getOpenFileName(QString::null,QString::null,this);
+    if(!fn.isEmpty())
+	load(fn);
     else
 	statusBar()->message( tr("Loading aborted"), 2000 );
 }
@@ -192,14 +188,12 @@ void BulmaTPV::save()
 
 void BulmaTPV::saveAs()
 {
-    QString fn = Q3FileDialog::getSaveFileName( QString::null, QString::null,
-					       this );
-    if ( !fn.isEmpty() ) {
-	filename = fn;
+    QString fn=QFileDialog::getSaveFileName(QString::null,QString::null,this);
+    if(!fn.isEmpty()){
+	filename=fn;
 	save();
-    } else {
-	statusBar()->message( tr("Saving aborted"), 2000 );
-    }
+    }else
+	statusBar()->message(tr("Saving aborted"),2000);
 }
 
 
@@ -209,28 +203,26 @@ void BulmaTPV::print()
     const int Margin = 10;
     int pageNo = 1;
 
-    if ( printer->setup(this) ) {		// printer dialog
+    if (printer->setup(this)){		// printer dialog
 	statusBar()->message( tr("Printing...") );
 	QPainter p;
-	if( !p.begin( printer ) )               // paint on printer
+	if(!p.begin(printer))               // paint on printer
 	    return;
 
 	p.setFont( e->font() );
 	int yPos	= 0;			// y-position for each line
 	QFontMetrics fm = p.fontMetrics();
-	Q3PaintDeviceMetrics metrics( printer ); // need width/height
-						// of printer surface
-	for( int i = 0 ; i < e->lines() ; i++ ) {
-	    if ( Margin + yPos > metrics.height() - Margin ) {
-		QString msg( "Printing (page " );
-		msg += QString::number( ++pageNo );
-		msg += ")...";
-		statusBar()->message( msg );
+	for(int i=0;i<e->lines();i++){
+	    if(Margin+yPos>printer->height()-Margin){
+		QString msg("Printing (page ");
+		msg+=QString::number(++pageNo);
+		msg+=")...";
+		statusBar()->message(msg);
 		printer->newPage();		// no more room on this page
-		yPos = 0;			// back to top of page
+		yPos=0;			// back to top of page
 	    }
 	    p.drawText( Margin, Margin + yPos,
-			metrics.width(), fm.lineSpacing(),
+			printer->width(), fm.lineSpacing(),
 			Qt::ExpandTabs | Qt::DontClip,
 			e->text( i ) );
 	    yPos = yPos + fm.lineSpacing();
