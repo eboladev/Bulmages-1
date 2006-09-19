@@ -93,6 +93,8 @@ unix{
 	LIBS += -lpq \
 	        -lbulmalib
 
+QMAKE_LIBDIR += ../../installbulmages
+
   UI_DIR = .ui
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
