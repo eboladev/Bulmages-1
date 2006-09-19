@@ -11,17 +11,20 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef BbloqFecha_H
 #define BbloqFecha_H
 
-#include "ui_bbloqfechabase.h"
-#include "postgresiface2.h"
 #include <q3listview.h>
 
-/**
-@author Josep Burcion
-*/
+#include "ui_bbloqfechabase.h"
+#include "postgresiface2.h"
 
 
 class empresa;
@@ -29,22 +32,23 @@ class empresa;
 
 class myQListViewItem : public Q3ListViewItem {
 public:
-	myQListViewItem(Q3ListView *parent, QString label1);
-	myQListViewItem(myQListViewItem *parent, QString label1);
-	~myQListViewItem() {return;};
-	QString ej;
-	QString per;
+    myQListViewItem(Q3ListView *parent, QString label1);
+    myQListViewItem(myQListViewItem *parent, QString label1);
+    ~myQListViewItem() {
+        return;
+    };
+    QString ej;
+    QString per;
 };
 
 
 class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
 private:
-	empresa *empresaactual;
+    empresa *empresaactual;
 
 public:
     BbloqFecha(empresa *emp, QWidget * parent = 0);
     ~BbloqFecha();
-
 
 public slots:
     virtual void dobleClick (Q3ListViewItem *item);
@@ -52,3 +56,4 @@ public slots:
 };
 
 #endif
+

@@ -1,15 +1,23 @@
-//
-//
-// C++ Interface: $MODULE$
-//
-// Description: 
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2003
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef AMORTIZACIONDLGAMORTIZACIONVIEW_H
 #define AMORTIZACIONDLGAMORTIZACIONVIEW_H
 
@@ -17,39 +25,45 @@
 #include "dialogchanges.h"
 #include "ui_amortizacionbase.h"
 
+
 class empresa;
 
-/** 
+/**
   * @author Tomeu Borrás Riera 
   * \class amortizacionview amortizacionview.h
   * \brief Formulario de introducción y/o visión de amortizaciones.
   */
-  
-class amortizacionview : public QWidget, Ui_AmortizacionBase , dialogChanges {
-  Q_OBJECT
-    public:
-  // Empresa con la que se trabaja
-  empresa *m_companyact;
-  // Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-  QString idctaactivo; 
-  // Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-  QString idctaamortizacion;
-  // Esta variable indica cual es la amortizacion que se está enseñando. Si no tiene valor es que no se esta mostrando ninguna.
-  QString idamortizacion;  
-  // Esta variable indica cual es el asiento plantilla de amortización.
-  QString idainteligente;   
-  amortizacionview(empresa *, QWidget *, const char * );
-  ~amortizacionview();
-  void inicializa(QString);
-  void trataModificado();
-  public slots:
-  virtual bool close(bool);
-  virtual void accept();
-  virtual void calculaamortizacion();
-  virtual void contextMenuRequested(int, int, const QPoint &);
-  virtual void s_saveAmortizacion();
-  virtual void s_newAmortizacion();
-  virtual void s_deleteAmortizacion();
+class amortizacionview : public QWidget, Ui_AmortizacionBase, dialogChanges {
+    Q_OBJECT
+
+public:
+    /// Empresa con la que se trabaja.
+    empresa *m_companyact;
+    /// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que
+    /// estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+    QString idctaactivo;
+    /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion
+    /// que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+    QString idctaamortizacion;
+    /// Esta variable indica cual es la amortizacion que se está enseñando. Si no tiene valor
+    /// es que no se esta mostrando ninguna.
+    QString idamortizacion;
+    /// Esta variable indica cual es el asiento plantilla de amortización.
+    QString idainteligente;
+    amortizacionview(empresa *, QWidget *, const char *);
+    ~amortizacionview();
+    void inicializa(QString);
+    void trataModificado();
+
+public slots:
+    virtual bool close(bool);
+    virtual void accept();
+    virtual void calculaamortizacion();
+    virtual void contextMenuRequested(int, int, const QPoint &);
+    virtual void s_saveAmortizacion();
+    virtual void s_newAmortizacion();
+    virtual void s_deleteAmortizacion();
 };
 
 #endif
+

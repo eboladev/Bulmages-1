@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr�                                    *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,29 +17,32 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef AMORTIZACIONESVIEW_H
 #define AMORTIZACIONESVIEW_H
 
 #include "ui_amortizacionesbase.h"
 
-/**@author Tomeu Borras */
+
 class empresa;
 
-class amortizacionesview : public QWidget, public Ui_AmortizacionesBase
-{
-  Q_OBJECT
-    public:
-  empresa *m_companyact;
-  QString idamortizacion;		// Esta variable contiene el idamortizacion cuando se devuelve un parametro
-  QString nomamortizacion;	// Esta variable contiene el nomamortizacion cuando se devuelve un parametro
-  int modo;
-  amortizacionesview(empresa *,QWidget *, const char * );
-  ~amortizacionesview();
-  void inicializatabla();
-  public slots:
+class amortizacionesview : public QWidget, public Ui_AmortizacionesBase {
+    Q_OBJECT
+
+public:
+    empresa *m_companyact;
+    QString idamortizacion; /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
+    QString nomamortizacion; /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
+    int modo;
+    amortizacionesview(empresa *, QWidget *, const char *);
+    ~amortizacionesview();
+    void inicializatabla();
+
+public slots:
     virtual void on_listado_cellDoubleClicked(int, int);
-  virtual void on_mui_crear_clicked();
-  virtual void on_mui_borrar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
 };
 
 #endif
+
