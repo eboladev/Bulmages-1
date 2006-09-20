@@ -1,18 +1,34 @@
-#include <qapplication.h>
+/********************************************************************************
+ *   Copyright (C) 2006 by IGLUES                                               *
+ *   info@bulmages.org                                                          *
+ *   Created by Pablo Álvarez de Sotomayor Posadillo <i02sopop@gmail.com>       *
+ *                                                                              *
+ *   This program is free software; you can redistribute it and/or modify       *
+ *   it under the terms of the GNU General Public License as published by       *
+ *   the Free Software Foundation; either version 2 of the License, or          *
+ *   (at your option) any later version.                                        *
+ *                                                                              *
+ *   This program is distributed in the hope that it will be useful,            *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of             *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              *
+ *   GNU General Public License for more details.                               *
+ *                                                                              *
+ *   You should have received a copy of the GNU General Public License          *
+ *   along with this program; if not, write to the                              *
+ *   Free Software Foundation, Inc.,                                            *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                  *
+ *******************************************************************************/
+
+#include <QApplication>
 #include "bulmatpv.h"
-#include "tpvview.h"
 
-
-int main( int argc, char ** argv ) {
-    QApplication a( argc, argv );
-/*
-    BulmaTPV * mw = new BulmaTPV();
-    mw->setCaption( "BulmaTPV" );
-    mw->show();
-*/
-   tpvview *mw = new tpvview();
-   mw->setCaption ( "BulmaTPV");
-   mw->show();
-    a.connect( &a, SIGNAL(lastWindowClosed()), &a, SLOT(quit()) );
-    return a.exec();
+int main(int argc,char **argv)
+{
+  QApplication a(argc,argv);
+  
+  bulmatpv *mw=new bulmatpv();
+  mw->show();
+  
+  a.connect(&a,SIGNAL(lastWindowClosed()),&a,SLOT(quit()));
+  return a.exec();
 }

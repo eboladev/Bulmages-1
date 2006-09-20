@@ -3,7 +3,6 @@
 ######################################################################
 
 LANGUAGE = C++
-QT += qt3support
 TARGET = ../../installbulmages/bulmatpv
 #CONFIG += qt debug
 CONFIG += release
@@ -16,9 +15,9 @@ OBJECTS_DIR = .obj
 QMAKE_LIBDIR += ../../installbulmages
 
 # Input
-HEADERS += bulmatpv.h tpvview.h filesave.xpm fileopen.xpm fileprint.xpm
+HEADERS += bulmatpv.h filesave.xpm fileopen.xpm fileprint.xpm
 FORMS += tpvdlg.ui
-SOURCES += bulmatpv.cpp main.cpp tpvview.cpp
+SOURCES += bulmatpv.cpp main.cpp
 
 unix{
   TARGETDEPS += ../../installbulmages/libbulmalib.so

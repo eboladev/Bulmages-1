@@ -1,275 +1,113 @@
-#include "bulmatpv.h"
+/********************************************************************************
+ *   Copyright (C) 2006 by IGLUES                                               *
+ *   info@bulmages.org                                                          *
+ *   Created by Fco. Javier M. C. <fcojavmc@todo-redes.com>                     *
+ *   Modified by Pablo Álvarez de Sotomayor Posadillo <i02sopop@gmail.com>      *
+ *                                                                              *
+ *   This program is free software; you can redistribute it and/or modify       *
+ *   it under the terms of the GNU General Public License as published by       *
+ *   the Free Software Foundation; either version 2 of the License, or          *
+ *   (at your option) any later version.                                        *
+ *                                                                              *
+ *   This program is distributed in the hope that it will be useful,            *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of             *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the              *
+ *   GNU General Public License for more details.                               *
+ *                                                                              *
+ *   You should have received a copy of the GNU General Public License          *
+ *   along with this program; if not, write to the                              *
+ *   Free Software Foundation, Inc.,                                            *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.                  *
+ *******************************************************************************/
 
-#include <q3textedit.h>
-#include <QFileDialog>
-#include <QPaintDevice>
-#include <QMenu>
-#include <QImage>
-#include <QPixmap>
-#include <QToolBar>
-#include <QToolButton>
-#include <QMenuBar>
-#include <QFile>
-#include <QStatusBar>
-#include <QMessageBox>
-#include <QPrinter>
-#include <QApplication>
-#include <QTextStream>
-#include <QPainter>
-#include <QCloseEvent>
-#include <QWhatsThis>
+#include <bulmatpv.h>
+#include <qlcdnumber.h>
 
-#include "filesave.xpm"
-#include "fileopen.xpm"
-#include "fileprint.xpm"
-
-BulmaTPV::BulmaTPV()
-    : QMainWindow(0,Qt::Window)
+bulmatpv::bulmatpv(QWidget *parent,Qt::WFlags flags)
+ :QDialog(parent,flags)
 {
-    printer = new QPrinter;
-    QPixmap openIcon, saveIcon, printIcon;
-
-    QToolBar *fileTools=new QToolBar("file operations",this);
-
-    openIcon = QPixmap(fileopen);
-    QToolButton * fileOpen
-	= new QToolButton(openIcon, tr("Open File"), QString::null,
-			   this, SLOT(choose()), fileTools, "open file" );
-
-    saveIcon = QPixmap(filesave);
-    QToolButton * fileSave
-	= new QToolButton( saveIcon, tr("Save File"), QString::null,
-			   this, SLOT(save()), fileTools, "save file" );
-
-    printIcon = QPixmap(fileprint);
-    QToolButton * filePrint
-	= new QToolButton( printIcon, tr("Print File"), QString::null,
-			   this, SLOT(print()), fileTools, "print file" );
-
-
-    (void)QWhatsThis::whatsThisButton(fileTools);
-
-    QString fileOpenText = tr("<p><img source=\"fileopen\"> "
-	         "Click this button to open a <em>new file</em>. <br>"
-                 "You can also select the <b>Open<Tomeu Borras,,,/b> command "
-                 "from the <b>File</b> menu.</p>");
-
-    QWhatsThis::add(fileOpen,fileOpenText);
-
-    Q3MimeSourceFactory::defaultFactory()->setPixmap( "fileopen", openIcon );
-
-    QString fileSaveText = tr("<p>Click this button to save the file you "
-                 "are editing. You will be prompted for a file name.\n"
-                 "You can also select the <b>Save</b> command "
-                 "from the <b>File</b> menu.</p>");
-
-    QWhatsThis::add(fileSave,fileSaveText);
-
-    QString filePrintText = tr("Click this button to print the file you "
-                 "are editing.\n You can also select the Print "
-                 "command from the File menu.");
-
-    QWhatsThis::add(filePrint,filePrintText);
-
-
-    QMenu *file=new QMenu(this);
-    menuBar()->insertItem(tr("&File"),file);
-
-
-    file->insertItem(tr("&New"),this,SLOT(newDoc()),Qt::CTRL+Qt::Key_N );
-
-    int id;
-    id = file->insertItem( openIcon, tr("&Open..."),
-			   this, SLOT(choose()), Qt::CTRL+Qt::Key_O );
-    file->setWhatsThis( id, fileOpenText );
-
-    id = file->insertItem( saveIcon, tr("&Save"),
-			   this, SLOT(save()), Qt::CTRL+Qt::Key_S );
-    file->setWhatsThis( id, fileSaveText );
-
-    id = file->insertItem( tr("Save &As..."), this, SLOT(saveAs()) );
-    file->setWhatsThis( id, fileSaveText );
-
-    file->insertSeparator();
-
-    id = file->insertItem( printIcon, tr("&Print..."),
-			   this, SLOT(print()), Qt::CTRL+Qt::Key_P );
-    file->setWhatsThis( id, filePrintText );
-
-    file->insertSeparator();
-
-    file->insertItem( tr("&Close"), this, SLOT(close()), Qt::CTRL+Qt::Key_W );
-
-    file->insertItem( tr("&Quit"), qApp, SLOT( closeAllWindows() ), Qt::CTRL+Qt::Key_Q );
-
-    menuBar()->insertSeparator();
-
-    QMenu *help=new QMenu(this);
-    menuBar()->insertItem( tr("&Help"), help );
-
-    help->insertItem( tr("&About"), this, SLOT(about()), Qt::Key_F1 );
-    help->insertItem( tr("About &Qt"), this, SLOT(aboutQt()) );
-    help->insertSeparator();
-    help->insertItem( tr("What's &This"), this, SLOT(whatsThis()), Qt::SHIFT+Qt::Key_F1 );
-
-    e=new Q3TextEdit(this,"editor");
-    e->setFocus();
-    setCentralWidget( e );
-    statusBar()->message( tr("Ready"), 2000 );
-
-    resize( 450, 600 );
+  setupUi(this);
+  display->display(0.00);
 }
 
 
-BulmaTPV::~BulmaTPV()
+bulmatpv::~bulmatpv()
 {
-    delete printer;
 }
 
 
-
-void BulmaTPV::newDoc()
-{
-    BulmaTPV *ed = new BulmaTPV;
-    ed->setCaption(tr("Qt Example - Application"));
-    ed->show();
+void bulmatpv::pseudo_teclado(int valor)
+{   
+   display_2->display((display_2->value()*10) + valor);
 }
 
-void BulmaTPV::choose()
+void bulmatpv::pseudo_teclado_si()
 {
-    QString fn=QFileDialog::getOpenFileName(QString::null,QString::null,this);
-    if(!fn.isEmpty())
-	load(fn);
-    else
-	statusBar()->message( tr("Loading aborted"), 2000 );
+
 }
 
-
-void BulmaTPV::load( const QString &fileName )
+void bulmatpv::pseudo_teclado_atras()
 {
-    QFile f( fileName );
-    if ( !f.open( QIODevice::ReadOnly ) )
-	return;
 
-    QTextStream ts( &f );
-    e->setText( ts.read() );
-    e->setModified( FALSE );
-    setCaption( fileName );
-    statusBar()->message( tr("Loaded document %1").arg(fileName), 2000 );
 }
 
-
-void BulmaTPV::save()
+void bulmatpv::pseudo_teclado_borrar()
 {
-    if ( filename.isEmpty() ) {
-	saveAs();
-	return;
-    }
-
-    QString text = e->text();
-    QFile f( filename );
-    if ( !f.open( QIODevice::WriteOnly ) ) {
-	statusBar()->message( tr("Could not write to %1").arg(filename),
-			      2000 );
-	return;
-    }
-
-    QTextStream t( &f );
-    t << text;
-    f.close();
-
-    e->setModified( FALSE );
-
-    setCaption( filename );
-
-    statusBar()->message( tr( "File %1 saved" ).arg( filename ), 2000 );
+   display_2->display(0);
 }
 
-
-void BulmaTPV::saveAs()
+void bulmatpv::pseudo_teclado_00()
 {
-    QString fn=QFileDialog::getSaveFileName(QString::null,QString::null,this);
-    if(!fn.isEmpty()){
-	filename=fn;
-	save();
-    }else
-	statusBar()->message(tr("Saving aborted"),2000);
+   pseudo_teclado(0);
+   pseudo_teclado(0);
 }
 
-
-void BulmaTPV::print()
+void bulmatpv::pseudo_teclado_0()
 {
-    // ###### Rewrite to use QSimpleRichText to print here as well
-    const int Margin = 10;
-    int pageNo = 1;
-
-    if (printer->setup(this)){		// printer dialog
-	statusBar()->message( tr("Printing...") );
-	QPainter p;
-	if(!p.begin(printer))               // paint on printer
-	    return;
-
-	p.setFont( e->font() );
-	int yPos	= 0;			// y-position for each line
-	QFontMetrics fm = p.fontMetrics();
-	for(int i=0;i<e->lines();i++){
-	    if(Margin+yPos>printer->height()-Margin){
-		QString msg("Printing (page ");
-		msg+=QString::number(++pageNo);
-		msg+=")...";
-		statusBar()->message(msg);
-		printer->newPage();		// no more room on this page
-		yPos=0;			// back to top of page
-	    }
-	    p.drawText( Margin, Margin + yPos,
-			printer->width(), fm.lineSpacing(),
-			Qt::ExpandTabs | Qt::DontClip,
-			e->text( i ) );
-	    yPos = yPos + fm.lineSpacing();
-	}
-	p.end();				// send job to printer
-	statusBar()->message( tr("Printing completed"), 2000 );
-    } else {
-	statusBar()->message( tr("Printing aborted"), 2000 );
-    }
+   pseudo_teclado(0);
 }
 
-void BulmaTPV::closeEvent( QCloseEvent* ce )
+void bulmatpv::pseudo_teclado_1()
 {
-    if ( !e->isModified() ) {
-	ce->accept();
-	return;
-    }
-
-    switch( QMessageBox::information( this, tr("Qt Application Example"),
-				      tr("Do you want to save the changes"
-				      " to the document?"),
-				      tr("Yes"), tr("No"), tr("Cancel"),
-				      0, 1 ) ) {
-    case 0:
-	save();
-	ce->accept();
-	break;
-    case 1:
-	ce->accept();
-	break;
-    case 2:
-    default: // just for sanity
-	ce->ignore();
-	break;
-    }
+   pseudo_teclado(1);
 }
 
-
-void BulmaTPV::about()
+void bulmatpv::pseudo_teclado_2()
 {
-    QMessageBox::about( this, tr("Qt Application Example"),
-			tr("This example demonstrates simple use of "
-			"QMainWindow,\nQMenuBar and QToolBar."));
+   pseudo_teclado(2);
 }
 
-
-void BulmaTPV::aboutQt()
+void bulmatpv::pseudo_teclado_3()
 {
-    QMessageBox::aboutQt( this, tr("Qt Application Example") );
+   pseudo_teclado(3);
+}
+
+void bulmatpv::pseudo_teclado_4()
+{
+   pseudo_teclado(4);
+}
+
+void bulmatpv::pseudo_teclado_5()
+{
+   pseudo_teclado(5);
+}
+
+void bulmatpv::pseudo_teclado_6()
+{
+   pseudo_teclado(6);
+}
+
+void bulmatpv::pseudo_teclado_7()
+{
+   pseudo_teclado(7);
+}
+
+void bulmatpv::pseudo_teclado_8()
+{
+   pseudo_teclado(8);
+}
+
+void bulmatpv::pseudo_teclado_9()
+{
+   pseudo_teclado(9);
 }
