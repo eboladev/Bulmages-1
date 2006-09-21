@@ -29,8 +29,11 @@
 class company;
 
 
+/// Muestra y administra la ventana con la lista de provincias.
+/** */
 class ListProvinciasView : public QWidget, public Ui_ListProvinciasBase {
     Q_OBJECT
+
 public:
     company *companyact;
 

@@ -29,8 +29,9 @@
 #include "funcaux.h"
 
 
+/// Administra las l&iacute;neas de detalle de un presupuesto.
+/** */
 class listlinpresupuesto {
-
 public:
     company *companyact;
     QString mdb_idpresupuesto;

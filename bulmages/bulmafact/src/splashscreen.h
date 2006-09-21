@@ -35,6 +35,8 @@
 #include <stdio.h>
 
 
+/// Muestra y administra la ventana de bienvenida al programa.
+/** */
 class Splash : public QDialog {
     Q_OBJECT
 

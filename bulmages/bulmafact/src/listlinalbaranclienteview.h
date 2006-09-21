@@ -28,6 +28,8 @@
 #include "fixed.h"
 
 
+/// Muestra y administra las l&iacute;neas de detalle de albaranes a un cliente.
+/** */
 class ListLinAlbaranClienteView : public SubForm2Bf {
     Q_OBJECT
 

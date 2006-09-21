@@ -41,8 +41,7 @@ using namespace std;
 #include "funcaux.h"
 
 
-ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent)
-        : Ficha(parent) {
+ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : Ficha(parent) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);

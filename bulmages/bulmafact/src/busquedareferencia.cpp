@@ -46,7 +46,7 @@ BusquedaReferencia::BusquedaReferencia(QWidget *parent)
 BusquedaReferencia::~BusquedaReferencia() {}
 
 
-/// Busqueda de clientes.
+/// B&uacute;squeda de clientes.
 void BusquedaReferencia::on_mui_informe_clicked() {
     _depura("BusquedaReferencia::on_mui_buscar_clicked\n", 0);
     InformeReferencia *inf = new InformeReferencia(m_companyact);
@@ -66,7 +66,7 @@ void BusquedaReferencia::on_mui_referencia_editingFinished() {
 
 void BusquedaReferencia::on_mui_abrirtodo_clicked() {
     _depura("BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
-    /// Empezamos con los presupuestos
+    /// Empezamos con los presupuestos.
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while (!cur->eof()) {

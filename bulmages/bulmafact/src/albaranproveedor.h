@@ -29,6 +29,8 @@
 #include "listdescalbaranprovview.h"
 
 
+/// Clase que almacena los datos de un albar&aacute;n de proveedor.
+/** */
 class AlbaranProveedor : public DBRecord {
 protected:
     ListLinAlbaranProveedorView *listalineas;

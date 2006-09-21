@@ -32,10 +32,9 @@
 #include "dbrecord.h"
 
 
-/// Clase que hace de intermediaria entre la tabla de factura de la base de datos y
-/// el programa.
+/// Almacena la informaci&oacute;n de un pedido a proveedor.
+/** */
 class PedidoProveedor : public DBRecord {
-
 protected:
     ListLinPedidoProveedorView *listalineas;
     ListDescuentoPedidoProveedorView *listadescuentos;
@@ -44,8 +43,6 @@ protected:
 public:
     PedidoProveedor(company *);
     virtual ~PedidoProveedor();
-    /// Establece cual es la lista subformulario del presupuesto. Normalmente
-    /// para apuntar listlinpresupuestoview.
     void setListLinPedidoProveedor(ListLinPedidoProveedorView *a) {
         listalineas = a;
         listalineas->setcompany(companyact);

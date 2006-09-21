@@ -1,0 +1,55 @@
+\section{Referencia de la Clase Splash}
+\label{classSplash}\index{Splash@{Splash}}
+Muestra y administra la ventana de bienvenida al programa.  
+
+
+{\tt \#include $<$splashscreen.h$>$}
+
+\subsection*{Slots p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+bool {\bf event} (QEvent $\ast$)\label{classSplash_i0}
+
+\item 
+void {\bf paint} ()
+\end{CompactItemize}
+\subsection*{M\'{e}todos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+{\bf Splash} ()
+\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Muestra y administra la ventana de bienvenida al programa. 
+
+
+
+\subsection{Documentaci\'{o}n del constructor y destructor}
+\index{Splash@{Splash}!Splash@{Splash}}
+\index{Splash@{Splash}!Splash@{Splash}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Splash::Splash ()}\label{classSplash_a0}
+
+
+Se modifica la paleta para que utilize la imagen como fondo.
+
+Poniendo el minimo y maximo a 0 hace el efecto especial.
+
+Nos muestra la ventana en modo MODAL. 
+
+\subsection{Documentaci\'{o}n de las funciones miembro}
+\index{Splash@{Splash}!paint@{paint}}
+\index{paint@{paint}!Splash@{Splash}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Splash::paint ()\hspace{0.3cm}{\tt  [slot]}}\label{classSplash_i1}
+
+
+Cuenta el numero de mensajes.
+
+Recorre todos los elementos del array de mensajes cada vez que se llama a la funcion. Cuando termina de recorrerlos todos cierra la ventana y el programa continua.
+
+Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario. 
+
+La documentaci\'{o}n para esta clase fu\'{e} generada a partir de los siguientes archivos:\begin{CompactItemize}
+\item 
+splashscreen.h\item 
+splashscreen.cpp\end{CompactItemize}

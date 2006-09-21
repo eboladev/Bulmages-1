@@ -39,9 +39,12 @@
 #include "ficha.h"
 #include "pedidoproveedor.h"
 
+
 class company;
 
 
+/// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
+/** */
 class PedidoProveedorView : public Ficha, public Ui_PedidoProveedorBase, public PedidoProveedor {
     Q_OBJECT
 
@@ -94,7 +97,6 @@ public:
         }
     };
 
-
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int cargar(QString id);
@@ -123,7 +125,6 @@ public slots:
     virtual void on_subform3_editFinish(int, int) {
         calculaypintatotales();
     };
-
 };
 
 #endif

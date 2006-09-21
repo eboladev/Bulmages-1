@@ -1,0 +1,3 @@
+base referer
+rect $classPedidoCliente.html 7,8 111,32
+rect $classPedidoClienteView.html 159,8 293,32

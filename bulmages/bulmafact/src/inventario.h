@@ -31,8 +31,9 @@
 #include "dbrecord.h"
 
 
+/// Administra los datos de inventario.
+/** */
 class Inventario : public DBRecord {
-
 protected:
     ListControlStockView *listalineas;
     company *companyact;
@@ -40,8 +41,6 @@ protected:
 public:
     Inventario(company *);
     virtual ~Inventario();
-    /// Establece cual es la lista subformulario del presupuesto. Normalmente
-    /// para apuntar listlinpresupuestoview.
     void setListControlStock(ListControlStockView *a) {
         _depura("Inventario::setListControlStock", 0);
         listalineas = a;
@@ -64,7 +63,7 @@ public:
     virtual void pregenerar();
     void setidinventario(QString val) {
         setDBvalue("idinventario", val);
-        listalineas->setColumnValue( "idinventario", val);
+        listalineas->setColumnValue("idinventario", val);
     };
     void setfechainventario(QString val) {
         setDBvalue("fechainventario", val);

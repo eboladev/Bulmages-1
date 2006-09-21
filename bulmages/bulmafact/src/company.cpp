@@ -369,7 +369,7 @@ void company::listBudgets() {
 }
 
 
-PresupuestoView * company::newBudget() {
+PresupuestoView *company::newBudget() {
     /// Lanzamos los plugins necesarios.
     PresupuestoView *bud;
     if (g_plugins->lanza("company_newBudget", this, (void **)&bud))
@@ -390,7 +390,7 @@ void company::s_newPresupuestoCli() {
 }
 
 
-FacturaView * company::newFacturaView() {
+FacturaView *company::newFacturaView() {
     /// Lanzamos los plugins necesarios.
     FacturaView *bud;
     if (g_plugins->lanza("company_newFacturaView", this, (void **)&bud))
@@ -527,7 +527,7 @@ void company::s_provincias() {
 }
 
 
-ArticuloView * company::newArticuloView() {
+ArticuloView *company::newArticuloView() {
     /// Lanzamos los plugins necesarios.
     ArticuloView *bud;
     if (g_plugins->lanza("company_newArticuloView", this, (void **)&bud))
@@ -559,7 +559,7 @@ void company::s_newInventario() {
 }
 
 
-AlbaranClienteView * company::newAlbaranClienteView() {
+AlbaranClienteView *company::newAlbaranClienteView() {
     /// Lanzamos los plugins necesarios.
     AlbaranClienteView *bud;
     if (g_plugins->lanza("company_newAlbaranClienteView", this, (void **)&bud))
@@ -581,7 +581,7 @@ void company::s_newAlbaranClienteView() {
 }
 
 
-AlbaranProveedorView * company::newAlbaranProveedorView() {
+AlbaranProveedorView *company::newAlbaranProveedorView() {
     /// Lanzamos los plugins necesarios.
     AlbaranProveedorView *bud;
     if (g_plugins->lanza("company_newAlbaranProveedorView", this, (void **)&bud))
@@ -599,7 +599,7 @@ void company::s_newAlbaranProveedorView() {
 }
 
 
-PedidoClienteView * company::newPedidoClienteView() {
+PedidoClienteView *company::newPedidoClienteView() {
     /// Lanzamos los plugins necesarios.
     PedidoClienteView *bud;
     if (g_plugins->lanza("company_newPedidoClienteView", this, (void **)&bud))
@@ -618,7 +618,7 @@ void company::s_newPedidoClienteView() {
 }
 
 
-PedidoProveedorView * company::newPedidoProveedorView() {
+PedidoProveedorView *company::newPedidoProveedorView() {
     /// Lanzamos los plugins necesarios.
     PedidoProveedorView *bud;
     if (g_plugins->lanza("company_newPedidoProveedorView", this, (void **)&bud))
@@ -631,7 +631,6 @@ PedidoProveedorView * company::newPedidoProveedorView() {
 void company::s_newPedidoProveedorView() {
     PedidoProveedorView *bud = newPedidoProveedorView();
     m_pWorkspace->addWindow(bud);
-//    bud->inicializar();
     bud->pintar();
     bud->show();
 }
@@ -655,7 +654,7 @@ void company::s_newListConfiguracionView() {
 }
 
 
-PagoView * company::newPagoView() {
+PagoView *company::newPagoView() {
     /// Lanzamos los plugins necesarios.
     PagoView *bud;
     if (g_plugins->lanza("company_newPagoView", this, (void **)&bud))
@@ -674,7 +673,7 @@ void company::s_newPagoView() {
 }
 
 
-TipoArticuloList * company::newTipoArticuloList(QWidget *parent, bool modoConsulta) {
+TipoArticuloList *company::newTipoArticuloList(QWidget *parent, bool modoConsulta) {
     _depura("company::newTipoArticuloList", 0);
     /// Lanzamos los plugins necesarios.
     TipoArticuloList *bud;
@@ -695,7 +694,7 @@ void company::s_newTipoArticuloList() {
 }
 
 
-familiasview * company::newfamiliasview(QWidget *parent, bool modoConsulta) {
+familiasview *company::newfamiliasview(QWidget *parent, bool modoConsulta) {
     _depura("company::newfamiliasview", 0);
     /// Lanzamos los plugins necesarios.
     familiasview *bud;

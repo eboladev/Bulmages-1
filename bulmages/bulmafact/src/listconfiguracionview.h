@@ -38,12 +38,16 @@
 class company;
 
 
+/// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
+/** */
 class ListConfiguracionSubForm : public SubForm2Bf {
     Q_OBJECT
+
 public:
     ListConfiguracionSubForm(QWidget *parent = 0);
     ~ListConfiguracionSubForm() {}
     ;
+
 public slots:
     virtual void cargar() {
         _depura("ListConfiguracionSubForm::cargar\n", 0);
@@ -57,6 +61,8 @@ public slots:
 #include "ui_listconfiguracionbase.h"
 
 
+/// Muestra y administra el listado de configuraci&oacute;nes.
+/** */
 class ListConfiguracionView : public Ficha, public Ui_ListConfiguracionBase {
     Q_OBJECT
 

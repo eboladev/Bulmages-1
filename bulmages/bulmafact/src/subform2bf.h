@@ -31,6 +31,8 @@
 #include "subform3.h"
 
 
+/// Clase SubForm2Bf
+/** */
 class SubForm2Bf : public SubForm3 {
     Q_OBJECT
 

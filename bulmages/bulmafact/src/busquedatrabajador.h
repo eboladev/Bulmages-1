@@ -28,6 +28,9 @@
 #include "funcaux.h"
 
 
+/// Permite buscar y seleccionar un trabajador.
+/** Muestra la parte del formulario que permite buscar y seleccionar un
+    trabajador. Aparece en forma de desplegable. */
 class BusquedaTrabajador : public QComboBox {
     Q_OBJECT
 

@@ -1,0 +1,1129 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 2.2 (Tue Sep 13 00:37:56 UTC 2005)
+%%For: (usuario) usuario
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: 35 35 597 1653
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+
+EncodingVector
+  dup 306 /AE
+  dup 301 /Aacute
+  dup 302 /Acircumflex
+  dup 304 /Adieresis
+  dup 300 /Agrave
+  dup 305 /Aring
+  dup 303 /Atilde
+  dup 307 /Ccedilla
+  dup 311 /Eacute
+  dup 312 /Ecircumflex
+  dup 313 /Edieresis
+  dup 310 /Egrave
+  dup 315 /Iacute
+  dup 316 /Icircumflex
+  dup 317 /Idieresis
+  dup 314 /Igrave
+  dup 334 /Udieresis
+  dup 335 /Yacute
+  dup 376 /thorn
+  dup 337 /germandbls
+  dup 341 /aacute
+  dup 342 /acircumflex
+  dup 344 /adieresis
+  dup 346 /ae
+  dup 340 /agrave
+  dup 345 /aring
+  dup 347 /ccedilla
+  dup 351 /eacute
+  dup 352 /ecircumflex
+  dup 353 /edieresis
+  dup 350 /egrave
+  dup 355 /iacute
+  dup 356 /icircumflex
+  dup 357 /idieresis
+  dup 354 /igrave
+  dup 360 /dcroat
+  dup 361 /ntilde
+  dup 363 /oacute
+  dup 364 /ocircumflex
+  dup 366 /odieresis
+  dup 362 /ograve
+  dup 365 /otilde
+  dup 370 /oslash
+  dup 372 /uacute
+  dup 373 /ucircumflex
+  dup 374 /udieresis
+  dup 371 /ugrave
+  dup 375 /yacute
+  dup 377 /ydieresis  
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+/alignedtext {			% width adj text
+	/text exch def
+	/adj exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			text stringwidth pop adj mul 0 rmoveto
+		} if
+		[] 0 setdash
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 36 36 597 1653
+%%PageOrientation: Portrait
+gsave
+35 35 562 1618 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+0 0 translate 0 rotate
+0.000 0.000 0.000 graphcolor
+10.00 /Helvetica set_font
+
+%	Node1
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+0.000 0.000 0.000 nodecolor
+newpath 205 0 moveto
+390 0 lineto
+390 563 lineto
+205 563 lineto
+closepath
+fill
+0.000 0.000 1.000 nodecolor
+newpath 205 0 moveto
+390 0 lineto
+390 563 lineto
+205 563 lineto
+closepath
+stroke
+gsave 10 dict begin
+258 550 moveto
+(PedidoProveedor)
+[6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+end grestore
+newpath 205 544 moveto
+390 544 lineto
+stroke
+gsave 10 dict begin
+213 531 moveto
+(# companyact)
+[5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+213 520 moveto
+(# listadescuentos)
+[5.52 2.88 2.16 2.16 5.04 2.88 5.52 5.52 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 5.04]
+xshow
+213 509 moveto
+(# listalineas)
+[5.52 2.88 2.16 2.16 5.04 2.88 5.52 2.16 2.16 5.52 5.52 5.52 5.04]
+xshow
+end grestore
+newpath 205 503 moveto
+390 503 lineto
+stroke
+gsave 10 dict begin
+213 490 moveto
+(+ borrar\(\))
+[5.76 2.88 5.52 5.52 3.36 3.36 5.52 3.36 3.36 3.36]
+xshow
+213 479 moveto
+(+ calculaypintatotales\(\))
+[5.76 2.88 5.04 5.52 2.16 5.04 5.52 2.16 5.28 5.04 5.52 2.16 5.52 2.88 5.52 2.88 5.52 2.88 5.52 2.16 5.52 5.04 3.36 3.36]
+xshow
+213 468 moveto
+(+ cargar\(\))
+[5.76 2.88 5.04 5.52 3.36 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 457 moveto
+(+ getlistadescuentos\(\))
+[5.76 2.88 5.52 5.52 2.88 2.16 2.16 5.04 2.88 5.52 5.52 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 5.04 3.36 3.36]
+xshow
+213 446 moveto
+(+ getlistalineas\(\))
+[5.76 2.88 5.52 5.52 2.88 2.16 2.16 5.04 2.88 5.52 2.16 2.16 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+213 435 moveto
+(+ guardar\(\))
+[5.76 2.88 5.52 5.52 5.52 3.36 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 424 moveto
+(+ imprimirPedidoProveedor\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 413 moveto
+(+ PedidoProveedor\(\))
+[5.76 2.88 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 402 moveto
+(+ pintacodigoalmacen\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.04 5.52 5.52 2.16 5.52 5.52 5.52 2.16 8.4 5.52 5.04 5.52 5.52 3.36 3.36]
+xshow
+213 391 moveto
+(+ pintacomentpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.04 5.52 8.4 5.52 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 380 moveto
+(+ pintacontactpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.04 5.52 5.52 2.88 5.52 5.04 2.88 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 369 moveto
+(+ pintadescpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.52 5.52 5.04 5.04 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 358 moveto
+(+ pintadescpresupuesto\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.52 5.52 5.04 5.04 5.52 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 3.36 3.36]
+xshow
+213 347 moveto
+(+ pintafechapedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.64 5.52 5.04 5.52 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 336 moveto
+(+ pintaidalmacen\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.16 5.52 5.52 2.16 8.4 5.52 5.04 5.52 5.52 3.36 3.36]
+xshow
+213 325 moveto
+(+ pintaidforma_pago\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.16 5.52 2.88 5.52 3.36 8.4 5.52 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+213 314 moveto
+(+ pintaidpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 303 moveto
+(+ pintaidpresupuesto\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.16 5.52 5.52 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 3.36 3.36]
+xshow
+213 292 moveto
+(+ pintaidproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.16 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 281 moveto
+(+ pintaidtrabajador\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.16 5.52 2.88 3.36 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 270 moveto
+(+ pintanomalmacen\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.52 5.52 8.4 5.52 2.16 8.4 5.52 5.04 5.52 5.52 3.36 3.36]
+xshow
+213 259 moveto
+(+ pintanumpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.52 5.52 8.4 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 248 moveto
+(+ pintaprocesadopedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 5.52 3.36 5.52 5.04 5.52 5.04 5.52 5.52 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 237 moveto
+(+ pintar\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 3.36 3.36 3.36]
+xshow
+213 226 moveto
+(+ pintarefpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 215 moveto
+(+ pintarefpresupuesto\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 3.36 5.52 2.88 5.52 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 3.36 3.36]
+xshow
+213 204 moveto
+(+ pintatelpedidoproveedor\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.64 5.52 2.16 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 193 moveto
+(+ pintatotales\(\))
+[5.76 2.88 5.52 2.16 5.52 2.88 5.52 2.88 5.52 2.88 5.52 2.16 5.52 5.04 3.36 3.36]
+xshow
+213 182 moveto
+(+ setcomentpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 171 moveto
+(+ setcontactpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 5.52 2.88 5.52 5.04 2.88 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 160 moveto
+(+ setdescpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 5.52 5.04 5.04 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 149 moveto
+(+ setfechapedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.64 5.52 5.04 5.52 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 138 moveto
+(+ setidalmacen\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 2.16 8.4 5.52 5.04 5.52 5.52 3.36 3.36]
+xshow
+213 127 moveto
+(+ setidforma_pago\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 2.88 5.52 3.36 8.4 5.52 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+213 116 moveto
+(+ setidpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 105 moveto
+(+ setidproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 94 moveto
+(+ setidtrabajador\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 2.88 3.36 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 83 moveto
+(+ setListDescuentoPedidoProveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 2.16 5.04 2.88 7.2 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 72 moveto
+(+ setListLinPedidoProveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 2.16 5.04 2.88 5.52 2.16 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 61 moveto
+(+ setnumpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 5.52 8.4 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 50 moveto
+(+ setprocesadopedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 3.36 5.52 5.04 5.52 5.04 5.52 5.52 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 39 moveto
+(+ setrefpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 28 moveto
+(+ settelpedidoproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.64 5.52 2.16 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 17 moveto
+(+ vaciaPedidoProveedor\(\))
+[5.76 2.88 4.8 5.52 5.04 2.16 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+213 6 moveto
+(+ ~PedidoProveedor\(\))
+[5.76 2.88 5.76 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node2
+[ /Rect [ 0 1075 198 1153 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classListDescuentoPedidoProveedorView.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 1.000 1.000 nodecolor
+0.000 0.000 1.000 nodecolor
+newpath 0 1074 moveto
+199 1074 lineto
+199 1153 lineto
+0 1153 lineto
+closepath
+fill
+0.000 1.000 1.000 nodecolor
+newpath 0 1074 moveto
+199 1074 lineto
+199 1153 lineto
+0 1153 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+18 1140 moveto
+(ListDescuentoPedidoProveedorView)
+[5.52 2.16 5.04 2.88 7.2 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2]
+xshow
+end grestore
+newpath 0 1134 moveto
+199 1134 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+8 1121 moveto
+(+ mdb_idpedidoproveedor)
+[5.76 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+end grestore
+newpath 0 1115 moveto
+199 1115 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+8 1102 moveto
+(+ ListDescuentoPedidoProveedorView\(\))
+[5.76 2.88 5.52 2.16 5.04 2.88 7.2 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+8 1091 moveto
+(+ ~ListDescuentoPedidoProveedorView\(\))
+[5.76 2.88 5.76 5.52 2.16 5.04 2.88 7.2 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+8 1080 moveto
+(+ cargar)
+[5.76 2.88 5.04 5.52 3.36 5.52 5.52 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node2 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 108 1064 moveto
+123 973 159 776 199 612 curveto
+203 596 207 580 212 563 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 106 1074 moveto
+104 1063 lineto
+107 1071 lineto
+108 1064 lineto
+107 1071 lineto
+112 1065 lineto
+106 1074 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 106 1074 moveto
+104 1063 lineto
+107 1071 lineto
+108 1064 lineto
+107 1071 lineto
+112 1065 lineto
+106 1074 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+208 585 moveto
+(listadescuentos)
+[2.16 2.16 5.04 2.88 5.52 5.52 5.52 5.04 5.04 5.52 5.52 5.52 2.88 5.52 5.04]
+xshow
+end grestore
+end grestore
+
+%	Node3
+[ /Rect [ 216 613 378 1615 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classcompany.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 1.000 1.000 nodecolor
+0.000 0.000 1.000 nodecolor
+newpath 216 612 moveto
+378 612 lineto
+378 1615 lineto
+216 1615 lineto
+closepath
+fill
+0.000 1.000 1.000 nodecolor
+newpath 216 612 moveto
+378 612 lineto
+378 1615 lineto
+216 1615 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+276 1602 moveto
+(company)
+[5.04 5.52 8.4 5.52 5.52 5.28 5.04]
+xshow
+end grestore
+newpath 216 1596 moveto
+378 1596 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+224 1583 moveto
+(+ m_pWorkspace)
+[5.76 2.88 8.4 5.52 5.52 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52]
+xshow
+224 1572 moveto
+(- m_albaranesproveedor)
+[3.36 2.88 8.4 5.52 5.52 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+224 1561 moveto
+(- m_articleslist)
+[3.36 2.88 8.4 5.52 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 2.16 2.16 5.04 2.88]
+xshow
+224 1550 moveto
+(- m_budgetsList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+224 1539 moveto
+(- m_clientDelivNotesList)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+224 1528 moveto
+(- m_clientsList)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+224 1517 moveto
+(- m_cobrosList)
+[3.36 2.88 8.4 5.52 5.04 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+224 1506 moveto
+(- m_facturasList)
+[3.36 2.88 8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+224 1495 moveto
+(- m_facturasproveedorlist)
+[3.36 2.88 8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 2.16 2.16 5.04 2.88]
+xshow
+224 1484 moveto
+(- m_listventanas)
+[3.36 2.88 8.4 5.52 2.16 2.16 5.04 2.88 4.8 5.52 5.52 2.88 5.52 5.52 5.52 5.04]
+xshow
+224 1473 moveto
+(- m_pagosList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+224 1462 moveto
+(- m_pedidosclienteList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.04 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88]
+xshow
+224 1451 moveto
+(- m_pedidosproveedorList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+224 1440 moveto
+(- m_providerslist)
+[3.36 2.88 8.4 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 2.16 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 216 1434 moveto
+378 1434 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+224 1421 moveto
+(+ company\(\))
+[5.76 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+224 1410 moveto
+(+ createMainWindows\(\))
+[5.76 2.88 5.04 3.36 5.52 5.52 2.64 5.52 8.4 5.52 2.16 5.52 9.36 2.16 5.52 5.52 5.52 7.2 5.04 3.36 3.36]
+xshow
+224 1399 moveto
+(+ init\(\))
+[5.76 2.88 2.16 5.52 2.16 2.88 3.36 3.36]
+xshow
+224 1388 moveto
+(+ lAlbaranesProveedor\(\))
+[5.76 2.88 2.16 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+224 1377 moveto
+(+ listarticles\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+224 1366 moveto
+(+ listBudgets\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 6.72 5.52 5.52 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+224 1355 moveto
+(+ listClientDelivNotes\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+224 1344 moveto
+(+ listClients\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 7.2 2.16 2.16 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+224 1333 moveto
+(+ listorders\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.36 5.52 5.52 3.36 5.04 3.36 3.36]
+xshow
+224 1322 moveto
+(+ listproviders\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 3.36 3.36]
+xshow
+224 1311 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+224 1300 moveto
+(+ newAlbaranClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1289 moveto
+(+ newAlbaranProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1278 moveto
+(+ newArticuloView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1267 moveto
+(+ newBudget\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 5.52 5.52 5.52 5.52 2.88 3.36 3.36]
+xshow
+224 1256 moveto
+(+ newClientDelivNote\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 3.36 3.36]
+xshow
+224 1245 moveto
+(+ newClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1234 moveto
+(+ newCobroView\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 5.52 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1223 moveto
+(+ newFacturaProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1212 moveto
+(+ newFacturaView\(\))
+[5.76 2.88 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1201 moveto
+(+ newfamiliasview\(\))
+[5.76 2.88 5.52 5.52 7.2 2.88 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.04 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1190 moveto
+(+ newPagoView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1179 moveto
+(+ newPedidoCliente\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+224 1168 moveto
+(+ newPedidoClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1157 moveto
+(+ newPedidoProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1146 moveto
+(+ newProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 1135 moveto
+(+ newTipoArticuloList\(\))
+[5.76 2.88 5.52 5.52 7.2 6 2.16 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+224 1124 moveto
+(+ refreshAlbaranesCliente\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+224 1113 moveto
+(+ refreshAlbaranesProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+224 1102 moveto
+(+ refreshArticles\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 3.6 2.88 2.16 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+224 1091 moveto
+(+ refreshBudgets\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 5.52 5.52 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+224 1080 moveto
+(+ refreshClientDelivNotes\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+224 1069 moveto
+(+ refreshClientes\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+224 1058 moveto
+(+ refreshFacturas\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 3.36 3.36]
+xshow
+224 1047 moveto
+(+ refreshFacturasProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+224 1036 moveto
+(+ refreshPedidosCliente\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+224 1025 moveto
+(+ refreshPedidosProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+224 1014 moveto
+(+ s_almacenes\(\))
+[5.76 2.88 5.04 5.52 5.52 2.16 8.4 5.52 5.04 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+224 1003 moveto
+(+ s_Familias\(\))
+[5.76 2.88 5.04 5.52 5.76 5.52 8.4 2.16 2.16 2.16 5.52 5.04 3.36 3.36]
+xshow
+224 992 moveto
+(+ s_FPago\(\))
+[5.76 2.88 5.04 5.52 6 6.48 5.52 5.52 5.52 3.36 3.36]
+xshow
+224 981 moveto
+(+ s_indexadorCambiaEstado\(\))
+[5.76 2.88 5.04 5.52 2.16 5.52 5.52 5.28 4.8 5.52 5.52 5.52 3.36 7.2 5.52 8.4 5.52 2.16 5.52 6.72 5.04 2.88 5.52 5.52 5.52 3.36 3.36]
+xshow
+224 970 moveto
+(+ s_inventarios\(\))
+[5.76 2.88 5.04 5.52 2.16 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 5.04 3.36 3.36]
+xshow
+224 959 moveto
+(+ s_listFacturasCli\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 7.2 2.16 2.16 3.36 3.36]
+xshow
+224 948 moveto
+(+ s_listFacturasPro\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.52 3.36 3.36]
+xshow
+224 937 moveto
+(+ s_listPedidosCli\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 3.36 3.36]
+xshow
+224 926 moveto
+(+ s_listPedidosPro\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.52 3.36 3.36]
+xshow
+224 915 moveto
+(+ s_newAlbaranClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 904 moveto
+(+ s_newAlbaranPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+224 893 moveto
+(+ s_newAlbaranProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 882 moveto
+(+ s_newArticulo\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+224 871 moveto
+(+ s_newClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 860 moveto
+(+ s_newCobroView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 7.2 5.52 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 849 moveto
+(+ s_newFacturaCli\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 7.2 2.16 2.16 3.36 3.36]
+xshow
+224 838 moveto
+(+ s_newFacturaPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+224 827 moveto
+(+ s_newfamiliasview\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 2.88 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.04 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 816 moveto
+(+ s_newInventario\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 2.88 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 3.36 3.36]
+xshow
+224 805 moveto
+(+ s_newListConfiguracionView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.52 2.16 5.04 2.88 7.2 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 5.04 2.16 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 794 moveto
+(+ s_newPagoView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 783 moveto
+(+ s_newPedidoClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 772 moveto
+(+ s_newPedidoPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+224 761 moveto
+(+ s_newPedidoProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 750 moveto
+(+ s_newPresupuestoCli\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 7.2 2.16 2.16 3.36 3.36]
+xshow
+224 739 moveto
+(+ s_newProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+224 728 moveto
+(+ s_newTipoArticuloList\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6 2.16 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+224 717 moveto
+(+ s_provincias\(\))
+[5.76 2.88 5.04 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+224 706 moveto
+(+ s_seriesFactura\(\))
+[5.76 2.88 5.04 5.52 5.04 5.52 3.36 2.16 5.52 5.04 5.76 5.52 5.04 2.88 5.52 3.36 5.52 3.36 3.36]
+xshow
+224 695 moveto
+(+ s_trabajadores\(\))
+[5.76 2.88 5.04 5.52 2.88 3.36 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.52 5.04 3.36 3.36]
+xshow
+224 684 moveto
+(+ sacaWindow\(\))
+[5.76 2.88 5.04 5.52 5.04 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+224 673 moveto
+(+ searchCompany\(\))
+[5.76 2.88 5.04 5.52 5.52 3.36 5.04 5.52 7.2 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+224 662 moveto
+(+ setListVentanas\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 2.16 5.04 2.88 6.24 5.52 5.52 2.88 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+224 651 moveto
+(+ setWorkspace\(\))
+[5.76 2.88 5.04 5.52 2.88 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52 3.36 3.36]
+xshow
+224 640 moveto
+(+ viewCobrosList\(\))
+[5.76 2.88 5.04 2.16 5.52 7.2 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+224 629 moveto
+(+ viewPagosList\(\))
+[5.76 2.88 5.04 2.16 5.52 7.2 6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+224 618 moveto
+(+ ~company\(\))
+[5.76 2.88 5.76 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node3 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 297 602 moveto
+297 589 297 576 297 563 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 297 612 moveto
+293 602 lineto
+297 609 lineto
+297 602 lineto
+297 609 lineto
+302 602 lineto
+297 612 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 297 612 moveto
+293 602 lineto
+297 609 lineto
+297 602 lineto
+297 609 lineto
+302 602 lineto
+297 612 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+297 585 moveto
+(companyact)
+[5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node4
+[ /Rect [ 396 1058 560 1170 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classListLinPedidoProveedorView.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 1.000 1.000 nodecolor
+0.000 0.000 1.000 nodecolor
+newpath 396 1058 moveto
+560 1058 lineto
+560 1170 lineto
+396 1170 lineto
+closepath
+fill
+0.000 1.000 1.000 nodecolor
+newpath 396 1058 moveto
+560 1058 lineto
+560 1170 lineto
+396 1170 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+414 1157 moveto
+(ListLinPedidoProveedorView)
+[5.52 2.16 5.04 2.88 5.52 2.16 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2]
+xshow
+end grestore
+newpath 396 1151 moveto
+560 1151 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+404 1138 moveto
+(+ mdb_idpedidoproveedor)
+[5.76 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+end grestore
+newpath 396 1132 moveto
+560 1132 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+404 1119 moveto
+(+ ListLinPedidoProveedorView\(\))
+[5.76 2.88 5.52 2.16 5.04 2.88 5.52 2.16 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+404 1108 moveto
+(+ ~ListLinPedidoProveedorView\(\))
+[5.76 2.88 5.76 5.52 2.16 5.04 2.88 5.52 2.16 5.52 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+404 1097 moveto
+(+ calculabase)
+[5.76 2.88 5.04 5.52 2.16 5.04 5.52 2.16 5.52 5.52 5.52 5.04 5.52]
+xshow
+404 1086 moveto
+(+ calculaiva)
+[5.76 2.88 5.04 5.52 2.16 5.04 5.52 2.16 5.52 2.16 4.8 5.52]
+xshow
+404 1075 moveto
+(+ cargar)
+[5.76 2.88 5.04 5.52 3.36 5.52 5.52 3.36]
+xshow
+404 1064 moveto
+(+ on_mui_list_editFinished)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.52 5.52 2.16 2.88 6 2.16 5.52 2.16 5.04 5.52 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node4 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 470 1048 moveto
+457 951 431 767 396 612 curveto
+392 596 388 580 384 563 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 471 1058 moveto
+466 1048 lineto
+471 1055 lineto
+470 1048 lineto
+471 1055 lineto
+474 1048 lineto
+471 1058 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 471 1058 moveto
+466 1048 lineto
+471 1055 lineto
+470 1048 lineto
+471 1055 lineto
+474 1048 lineto
+471 1058 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+390 585 moveto
+(listalineas)
+[2.16 2.16 5.04 2.88 5.52 2.16 2.16 5.52 5.52 5.52 5.04]
+xshow
+end grestore
+end grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

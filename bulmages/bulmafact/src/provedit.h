@@ -29,22 +29,26 @@
 class company;
 
 
+/// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
+/** */
 class ProveedorView : public QWidget, public Ui_ProveedorBase, public DBRecord, public dialogChanges {
     Q_OBJECT
 
 private:
     company *m_companyact;
     void closeEvent(QCloseEvent *);
+
 public:
     ProveedorView(company *emp, QWidget *parent = 0);
     ~ProveedorView();
+
 public:
     virtual int cargar(QString);
     virtual int guardar();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
-	guardar();
+        guardar();
     };
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();

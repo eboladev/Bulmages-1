@@ -28,6 +28,8 @@
 #include "dbrecord.h"
 
 
+/// Administra los datos de un cobro.
+/** */
 class Cobro : public DBRecord {
 
 protected:

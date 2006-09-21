@@ -29,6 +29,10 @@
 
 class company;
 
+
+/// Permite buscar y seleccionar un cliente.
+/** Muestra la parte del formulario que permite buscar y seleccionar un
+    cliente. */
 class BusquedaCliente : public QWidget, public Ui_BusquedaClienteBase {
     Q_OBJECT
 

@@ -30,6 +30,8 @@
 #include "subform2bf.h"
 
 
+/// Administra el detalle del listado de pagos.
+/** */
 class PagosListSubForm : public SubForm2Bf {
     Q_OBJECT
 
@@ -42,6 +44,9 @@ public:
 
 #include "ui_pagoslistbase.h"
 
+
+/// Muestra y administra el listado de pagos.
+/** */
 class PagosList : public QWidget, private Ui_PagosListBase {
     Q_OBJECT
 

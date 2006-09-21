@@ -25,6 +25,8 @@
 #include "dbrecord.h"
 
 
+/// Administra los datos de los componentes de un art&iacute;culo.
+/** */
 class CompArticulo : public DBRecord {
 
 private:
@@ -35,7 +37,7 @@ public:
     CompArticulo(company *);
     CompArticulo(company *, QString, QString);
 
-    /// La carga rapida tiene un comportamiento poco restrictivo para
+    /// La carga r&aacute;pida tiene un comportamiento poco restrictivo para
     /// aumentar la eficiencia.
     CompArticulo(company *, QString , QString , QString , QString , QString);
     virtual ~CompArticulo();

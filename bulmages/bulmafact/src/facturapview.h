@@ -32,9 +32,11 @@
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "funcaux.h"
-
 #include "ficha.h"
 
+
+/// Muestra y administra la ventana de factura de proveedor.
+/** */
 class FacturaProveedorView : public Ficha, public Ui_FacturaProveedorBase, public FacturaProveedor {
     Q_OBJECT
 
@@ -74,13 +76,15 @@ public:
 
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
-    virtual int borrar() {return FacturaProveedor::borrar();};
+    virtual int borrar() {
+        return FacturaProveedor::borrar();
+    };
     virtual int cargar(QString id);
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
-	cargar(DBvalue("idfacturap"));
+        cargar(DBvalue("idfacturap"));
     };
 
     /// Este slot se activa cuando hay cambios en los subformularios.
@@ -88,7 +92,7 @@ public slots:
         pintatotales(listalineas->calculabase(), listalineas->calculaiva());
     }
     virtual void on_mui_pagar_clicked() {
-	s_nuevoPago();
+        s_nuevoPago();
     };
     virtual void s_nuevoPago();
     virtual void on_m_descuentos_editFinish(int, int) {

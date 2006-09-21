@@ -42,6 +42,8 @@
 class company;
 
 
+/// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
+/** */
 class PresupuestoView : public Ficha, public Ui_BudgetBase , public presupuesto {
     Q_OBJECT
 

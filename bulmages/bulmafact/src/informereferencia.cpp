@@ -28,7 +28,7 @@
 #include "funcaux.h"
 
 
-InformeReferencia::InformeReferencia (company *comp) {
+InformeReferencia::InformeReferencia(company *comp) {
     companyact = comp;
 }
 
@@ -40,7 +40,6 @@ void InformeReferencia::generarinforme() {
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informereferencia.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "informereferencia.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -51,7 +50,6 @@ void InformeReferencia::generarinforme() {
 #endif
 
     system(archivo.toAscii().constData());
-
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -92,7 +90,7 @@ void InformeReferencia::generarinforme() {
     } // end while
     delete cur;
 
-    /// Generacion del informe de ventas.
+    /// Generaci&oacute;n del informe de ventas.
     fitxersortidatxt = "<spacer length=\"15\"/>";
     fitxersortidatxt += "<para>Resumen de ventas por articulo</para>\n";
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"7cm, 3cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
@@ -130,7 +128,7 @@ void InformeReferencia::generarinforme() {
 
     fitxersortidatxt += "<spacer length=\"15\"/>";
     fitxersortidatxt += "<para>Resumen de compras por articulo</para>\n";
-    /// Generacion del informe de compras.
+    /// Generaci&oacute;n del informe de compras.
     fitxersortidatxt += "<blockTable style=\"tablaresumen\" colWidths=\"10cm, 3cm, 3cm, 3cm\" repeatRows=\"1\">\n";
     fitxersortidatxt += "<tr>\n";
     fitxersortidatxt += "    <td>" + QApplication::translate("InformeReferencia", "Articulo") + "</td>\n";
@@ -280,7 +278,6 @@ void InformeCliente::generarInforme() {
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "informecliente.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "informecliente.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -291,7 +288,6 @@ void InformeCliente::generarInforme() {
 #endif
 
     system(archivo.toAscii().constData());
-
     /// Copiamos el logo.
 #ifdef WINDOWS
 

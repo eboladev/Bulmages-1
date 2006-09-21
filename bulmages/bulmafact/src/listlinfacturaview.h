@@ -28,6 +28,8 @@
 #include "fixed.h"
 
 
+/// Muestra y administra las l&iacute;neas de detalle de una factura a un cliente.
+/** */
 class ListLinFacturaView : public SubForm2Bf {
     Q_OBJECT
 

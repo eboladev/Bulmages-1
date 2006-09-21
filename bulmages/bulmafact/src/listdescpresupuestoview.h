@@ -25,6 +25,8 @@
 #include "company.h"
 
 
+/// Muestra y administra la ventana con la lista de descuentos por presupuesto.
+/** */
 class ListDescuentoPresupuestoView : public SubForm2Bf {
     Q_OBJECT
 
@@ -38,7 +40,7 @@ public slots:
     virtual void cargar(QString idpresupuesto) {
         _depura("ListDescuentoPresupuestoView::cargar\n", 0);
         mdb_idpresupuesto = idpresupuesto;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto=" + mdb_idpresupuesto);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto);
         SubForm3::cargar(cur);
         delete cur;
     };

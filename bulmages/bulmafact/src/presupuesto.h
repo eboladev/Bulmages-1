@@ -33,10 +33,9 @@
 #include "dbrecord.h"
 
 
-/// Clase que hace de intermediaria entre la tabla de presupuesto de la base de
-/// datos y el programa.
+/// Administra la informaci&oacute;n de un presupuesto.
+/** */
 class presupuesto : public DBRecord {
-
 protected:
     listlinpresupuestoview *listalineas;
     ListDescuentoPresupuestoView *listadescuentos;
@@ -44,8 +43,6 @@ protected:
 
 public:
     presupuesto(company *);
-    /// Establece cual es la lista subformulario del presupuesto. Normalmente
-    /// para apuntar listlinpresupuestoview.
     void setlislinpresupuesto(listlinpresupuestoview *a) {
         listalineas = a;
         listalineas->setcompany(companyact);

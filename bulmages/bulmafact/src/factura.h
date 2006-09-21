@@ -30,8 +30,9 @@
 #include "dbrecord.h"
 
 
+/// Administra los datos de una factura a cliente.
+/** */
 class Factura : public DBRecord {
-
 protected:
     ListLinFacturaView *listalineas;
     ListDescuentoFacturaView *listadescuentos;
@@ -40,7 +41,7 @@ protected:
 public:
     Factura(company *);
     virtual ~Factura();
-    /// Establece cual es la lista subformulario del presupuesto. Normalmente para
+    /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
     void setListLinFactura ( ListLinFacturaView *a) {
         listalineas = a;

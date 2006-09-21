@@ -25,6 +25,8 @@
 #include "company.h"
 
 
+/// Muestra y administra la ventana de lista de descuentos por factura de proveedor.
+/** */
 class ListDescuentoFacturaProvView : public SubForm2Bf {
     Q_OBJECT
 
@@ -38,7 +40,7 @@ public slots:
     virtual void cargar(QString idfacturap) {
         _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
         mdb_idfacturap = idfacturap;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfacturap WHERE idfacturap=" + mdb_idfacturap);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dfacturap WHERE idfacturap = " + mdb_idfacturap);
         SubForm3::cargar(cur);
         delete cur;
     };

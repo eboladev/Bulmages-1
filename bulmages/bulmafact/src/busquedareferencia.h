@@ -30,6 +30,9 @@
 class company;
 
 
+/// Permite buscar y seleccionar una referencia.
+/** Muestra la parte del formulario que permite buscar y seleccionar una
+    referencia en cualquier documento. */
 class BusquedaReferencia : public QWidget, public Ui_BusquedaReferenciaBase {
     Q_OBJECT
 

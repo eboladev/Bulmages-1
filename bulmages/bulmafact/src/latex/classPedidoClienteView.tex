@@ -1,0 +1,146 @@
+\section{Referencia de la Clase Pedido\-Cliente\-View}
+\label{classPedidoClienteView}\index{PedidoClienteView@{PedidoClienteView}}
+Muestra y administra la ventana con la informaci\'{o}n de un pedido de cliente.  
+
+
+{\tt \#include $<$pedidoclienteview.h$>$}
+
+Diagrama de herencias de Pedido\-Cliente\-View\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=103pt]{classPedidoClienteView__inherit__graph}
+\end{center}
+\end{figure}
+Diagrama de colaboraci\'{o}n para Pedido\-Cliente\-View:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=103pt]{classPedidoClienteView__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Slots p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+virtual void {\bf on\_\-m\_\-descuentos\_\-edit\-Finish} (int, int)\label{classPedidoClienteView_i0}
+
+\item 
+virtual void {\bf on\_\-mui\_\-cobrar\_\-clicked} ()\label{classPedidoClienteView_i1}
+
+\item 
+virtual void {\bf on\_\-mui\_\-guardar\_\-clicked} ()\label{classPedidoClienteView_i2}
+
+\item 
+virtual void {\bf on\_\-mui\_\-imprimir\_\-clicked} ()\label{classPedidoClienteView_i3}
+
+\item 
+virtual void {\bf on\_\-mui\_\-pasaraalbaran\_\-clicked} ()\label{classPedidoClienteView_i4}
+
+\item 
+virtual void {\bf on\_\-mui\_\-verpresupuesto\_\-clicked} ()\label{classPedidoClienteView_i5}
+
+\item 
+virtual void {\bf on\_\-subform3\_\-edit\-Finish} (int, int)\label{classPedidoClienteView_i6}
+
+\item 
+virtual void {\bf s\_\-pinta\-Totales} ()\label{classPedidoClienteView_i7}
+
+\end{CompactItemize}
+\subsection*{M\'{e}todos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+virtual int {\bf borrar} ()\label{classPedidoClienteView_a0}
+
+\item 
+virtual int {\bf cargar} (QString id)\label{classPedidoClienteView_a1}
+
+\begin{CompactList}\small\item\em Esta funcion carga un {\bf Pedido\-Cliente}{\rm (p.\,\pageref{classPedidoCliente})}. \item\end{CompactList}\item 
+void {\bf generar\-Albaran} ()
+\begin{CompactList}\small\item\em Se encarga de generar un albaran a partir del pedido. \item\end{CompactList}\item 
+virtual int {\bf guardar} ()\label{classPedidoClienteView_a3}
+
+\begin{CompactList}\small\item\em Estos metodos deben existir para poder trabajar con la clase Ficha. \item\end{CompactList}\item 
+void {\bf inicializar} ()\label{classPedidoClienteView_a4}
+
+\item 
+{\bf Pedido\-Cliente\-View} ({\bf company} $\ast$, QWidget $\ast$parent=0)
+\item 
+void {\bf pintacomentpedidocliente} (QString id)\label{classPedidoClienteView_a6}
+
+\item 
+void {\bf pintacontactpedidocliente} (QString id)\label{classPedidoClienteView_a7}
+
+\item 
+void {\bf pintadescpedidocliente} (QString id)\label{classPedidoClienteView_a8}
+
+\item 
+void {\bf pintafechapedidocliente} (QString id)\label{classPedidoClienteView_a9}
+
+\item 
+void {\bf pintaidalmacen} (QString id)\label{classPedidoClienteView_a10}
+
+\item 
+void {\bf pintaidcliente} (QString id)\label{classPedidoClienteView_a11}
+
+\item 
+void {\bf pintaidforma\_\-pago} (QString id)\label{classPedidoClienteView_a12}
+
+\item 
+void {\bf pintaidpedidocliente} (QString)\label{classPedidoClienteView_a13}
+
+\item 
+void {\bf pintaidtrabajador} (QString id)\label{classPedidoClienteView_a14}
+
+\item 
+void {\bf pintanumpedidocliente} (QString id)\label{classPedidoClienteView_a15}
+
+\item 
+void {\bf pintaprocesadopedidocliente} (QString id)\label{classPedidoClienteView_a16}
+
+\item 
+void {\bf pintarefpedidocliente} (QString id)\label{classPedidoClienteView_a17}
+
+\item 
+void {\bf pintatelpedidocliente} (QString id)\label{classPedidoClienteView_a18}
+
+\item 
+void {\bf pintatotales} (Fixed iva, Fixed base, Fixed total, Fixed desc)\label{classPedidoClienteView_a19}
+
+\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Muestra y administra la ventana con la informaci\'{o}n de un pedido de cliente. 
+
+
+
+\subsection{Documentaci\'{o}n del constructor y destructor}
+\index{PedidoClienteView@{Pedido\-Cliente\-View}!PedidoClienteView@{PedidoClienteView}}
+\index{PedidoClienteView@{PedidoClienteView}!PedidoClienteView@{Pedido\-Cliente\-View}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}Pedido\-Cliente\-View::Pedido\-Cliente\-View ({\bf company} $\ast$ {\em comp}, QWidget $\ast$ {\em parent} = {\tt 0})}\label{classPedidoClienteView_a5}
+
+
+Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas. 
+
+\subsection{Documentaci\'{o}n de las funciones miembro}
+\index{PedidoClienteView@{Pedido\-Cliente\-View}!generarAlbaran@{generarAlbaran}}
+\index{generarAlbaran@{generarAlbaran}!PedidoClienteView@{Pedido\-Cliente\-View}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void Pedido\-Cliente\-View::generar\-Albaran ()}\label{classPedidoClienteView_a2}
+
+
+Se encarga de generar un albaran a partir del pedido. 
+
+Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
+
+Informamos de que no existe el pedido y a ver si lo queremos realizar. Si no salimos de la funcion.
+
+Creamos el albaran.
+
+Traspasamos los datos del albaran.
+
+Traspasamos las lineas del albaran.
+
+Traspasamos los descuentos. 
+
+La documentaci\'{o}n para esta clase fu\'{e} generada a partir de los siguientes archivos:\begin{CompactItemize}
+\item 
+pedidoclienteview.h\item 
+pedidoclienteview.cpp\end{CompactItemize}

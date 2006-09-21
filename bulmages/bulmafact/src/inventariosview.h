@@ -25,12 +25,16 @@
 #include "subform2bf.h"
 
 
+/// Muestra y administra las l&iacute;neas de detalle del listado de inventarios.
+/** */
 class InventariosSubForm : public SubForm2Bf {
     Q_OBJECT
+
 public:
     InventariosSubForm(QWidget *parent = 0);
     ~InventariosSubForm() {}
     ;
+
 public slots:
     virtual void cargar() {
         _depura("InventariosSubform::cargar\n", 0);
@@ -45,6 +49,8 @@ public slots:
 #include "ui_inventariosbase.h"
 
 
+/// Muestra y administra el listado de inventarios.
+/** */
 class InventariosView : public QWidget, public Ui_InventariosBase {
     Q_OBJECT
 

@@ -1,0 +1,3319 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 2.2 (Tue Sep 13 00:37:56 UTC 2005)
+%%For: (usuario) usuario
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: 35 35 2438 1521
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+
+EncodingVector
+  dup 306 /AE
+  dup 301 /Aacute
+  dup 302 /Acircumflex
+  dup 304 /Adieresis
+  dup 300 /Agrave
+  dup 305 /Aring
+  dup 303 /Atilde
+  dup 307 /Ccedilla
+  dup 311 /Eacute
+  dup 312 /Ecircumflex
+  dup 313 /Edieresis
+  dup 310 /Egrave
+  dup 315 /Iacute
+  dup 316 /Icircumflex
+  dup 317 /Idieresis
+  dup 314 /Igrave
+  dup 334 /Udieresis
+  dup 335 /Yacute
+  dup 376 /thorn
+  dup 337 /germandbls
+  dup 341 /aacute
+  dup 342 /acircumflex
+  dup 344 /adieresis
+  dup 346 /ae
+  dup 340 /agrave
+  dup 345 /aring
+  dup 347 /ccedilla
+  dup 351 /eacute
+  dup 352 /ecircumflex
+  dup 353 /edieresis
+  dup 350 /egrave
+  dup 355 /iacute
+  dup 356 /icircumflex
+  dup 357 /idieresis
+  dup 354 /igrave
+  dup 360 /dcroat
+  dup 361 /ntilde
+  dup 363 /oacute
+  dup 364 /ocircumflex
+  dup 366 /odieresis
+  dup 362 /ograve
+  dup 365 /otilde
+  dup 370 /oslash
+  dup 372 /uacute
+  dup 373 /ucircumflex
+  dup 374 /udieresis
+  dup 371 /ugrave
+  dup 375 /yacute
+  dup 377 /ydieresis  
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+/alignedtext {			% width adj text
+	/text exch def
+	/adj exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			text stringwidth pop adj mul 0 rmoveto
+		} if
+		[] 0 setdash
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 36 36 2438 1521
+%%PageOrientation: Portrait
+gsave
+35 35 2403 1486 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+0 0 translate 0 rotate
+0.000 0.000 0.000 graphcolor
+10.00 /Helvetica set_font
+
+%	Node1
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+0.000 0.000 0.000 nodecolor
+newpath 1105 480 moveto
+1267 480 lineto
+1267 1483 lineto
+1105 1483 lineto
+closepath
+fill
+0.000 0.000 1.000 nodecolor
+newpath 1105 480 moveto
+1267 480 lineto
+1267 1483 lineto
+1105 1483 lineto
+closepath
+stroke
+gsave 10 dict begin
+1165 1470 moveto
+(company)
+[5.04 5.52 8.4 5.52 5.52 5.28 5.04]
+xshow
+end grestore
+newpath 1105 1464 moveto
+1267 1464 lineto
+stroke
+gsave 10 dict begin
+1113 1451 moveto
+(+ m_pWorkspace)
+[5.76 2.88 8.4 5.52 5.52 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52]
+xshow
+1113 1440 moveto
+(- m_albaranesproveedor)
+[3.36 2.88 8.4 5.52 5.52 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+1113 1429 moveto
+(- m_articleslist)
+[3.36 2.88 8.4 5.52 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 2.16 2.16 5.04 2.88]
+xshow
+1113 1418 moveto
+(- m_budgetsList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+1113 1407 moveto
+(- m_clientDelivNotesList)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+1113 1396 moveto
+(- m_clientsList)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+1113 1385 moveto
+(- m_cobrosList)
+[3.36 2.88 8.4 5.52 5.04 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+1113 1374 moveto
+(- m_facturasList)
+[3.36 2.88 8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+1113 1363 moveto
+(- m_facturasproveedorlist)
+[3.36 2.88 8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 2.16 2.16 5.04 2.88]
+xshow
+1113 1352 moveto
+(- m_listventanas)
+[3.36 2.88 8.4 5.52 2.16 2.16 5.04 2.88 4.8 5.52 5.52 2.88 5.52 5.52 5.52 5.04]
+xshow
+1113 1341 moveto
+(- m_pagosList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+1113 1330 moveto
+(- m_pedidosclienteList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.04 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88]
+xshow
+1113 1319 moveto
+(- m_pedidosproveedorList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+1113 1308 moveto
+(- m_providerslist)
+[3.36 2.88 8.4 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 2.16 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 1105 1302 moveto
+1267 1302 lineto
+stroke
+gsave 10 dict begin
+1113 1289 moveto
+(+ company\(\))
+[5.76 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+1113 1278 moveto
+(+ createMainWindows\(\))
+[5.76 2.88 5.04 3.36 5.52 5.52 2.64 5.52 8.4 5.52 2.16 5.52 9.36 2.16 5.52 5.52 5.52 7.2 5.04 3.36 3.36]
+xshow
+1113 1267 moveto
+(+ init\(\))
+[5.76 2.88 2.16 5.52 2.16 2.88 3.36 3.36]
+xshow
+1113 1256 moveto
+(+ lAlbaranesProveedor\(\))
+[5.76 2.88 2.16 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1113 1245 moveto
+(+ listarticles\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+1113 1234 moveto
+(+ listBudgets\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 6.72 5.52 5.52 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+1113 1223 moveto
+(+ listClientDelivNotes\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+1113 1212 moveto
+(+ listClients\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 7.2 2.16 2.16 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+1113 1201 moveto
+(+ listorders\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.36 5.52 5.52 3.36 5.04 3.36 3.36]
+xshow
+1113 1190 moveto
+(+ listproviders\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 3.36 3.36]
+xshow
+1113 1179 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+1113 1168 moveto
+(+ newAlbaranClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1157 moveto
+(+ newAlbaranProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1146 moveto
+(+ newArticuloView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1135 moveto
+(+ newBudget\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 5.52 5.52 5.52 5.52 2.88 3.36 3.36]
+xshow
+1113 1124 moveto
+(+ newClientDelivNote\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 3.36 3.36]
+xshow
+1113 1113 moveto
+(+ newClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1102 moveto
+(+ newCobroView\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 5.52 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1091 moveto
+(+ newFacturaProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1080 moveto
+(+ newFacturaView\(\))
+[5.76 2.88 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1069 moveto
+(+ newfamiliasview\(\))
+[5.76 2.88 5.52 5.52 7.2 2.88 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.04 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1058 moveto
+(+ newPagoView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1047 moveto
+(+ newPedidoCliente\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+1113 1036 moveto
+(+ newPedidoClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1025 moveto
+(+ newPedidoProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1014 moveto
+(+ newProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 1003 moveto
+(+ newTipoArticuloList\(\))
+[5.76 2.88 5.52 5.52 7.2 6 2.16 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1113 992 moveto
+(+ refreshAlbaranesCliente\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+1113 981 moveto
+(+ refreshAlbaranesProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1113 970 moveto
+(+ refreshArticles\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 3.6 2.88 2.16 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+1113 959 moveto
+(+ refreshBudgets\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 5.52 5.52 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+1113 948 moveto
+(+ refreshClientDelivNotes\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+1113 937 moveto
+(+ refreshClientes\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+1113 926 moveto
+(+ refreshFacturas\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 3.36 3.36]
+xshow
+1113 915 moveto
+(+ refreshFacturasProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1113 904 moveto
+(+ refreshPedidosCliente\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+1113 893 moveto
+(+ refreshPedidosProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1113 882 moveto
+(+ s_almacenes\(\))
+[5.76 2.88 5.04 5.52 5.52 2.16 8.4 5.52 5.04 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+1113 871 moveto
+(+ s_Familias\(\))
+[5.76 2.88 5.04 5.52 5.76 5.52 8.4 2.16 2.16 2.16 5.52 5.04 3.36 3.36]
+xshow
+1113 860 moveto
+(+ s_FPago\(\))
+[5.76 2.88 5.04 5.52 6 6.48 5.52 5.52 5.52 3.36 3.36]
+xshow
+1113 849 moveto
+(+ s_indexadorCambiaEstado\(\))
+[5.76 2.88 5.04 5.52 2.16 5.52 5.52 5.28 4.8 5.52 5.52 5.52 3.36 7.2 5.52 8.4 5.52 2.16 5.52 6.72 5.04 2.88 5.52 5.52 5.52 3.36 3.36]
+xshow
+1113 838 moveto
+(+ s_inventarios\(\))
+[5.76 2.88 5.04 5.52 2.16 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 5.04 3.36 3.36]
+xshow
+1113 827 moveto
+(+ s_listFacturasCli\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 7.2 2.16 2.16 3.36 3.36]
+xshow
+1113 816 moveto
+(+ s_listFacturasPro\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.52 3.36 3.36]
+xshow
+1113 805 moveto
+(+ s_listPedidosCli\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 3.36 3.36]
+xshow
+1113 794 moveto
+(+ s_listPedidosPro\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.52 3.36 3.36]
+xshow
+1113 783 moveto
+(+ s_newAlbaranClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 772 moveto
+(+ s_newAlbaranPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+1113 761 moveto
+(+ s_newAlbaranProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 750 moveto
+(+ s_newArticulo\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+1113 739 moveto
+(+ s_newClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 728 moveto
+(+ s_newCobroView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 7.2 5.52 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 717 moveto
+(+ s_newFacturaCli\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 7.2 2.16 2.16 3.36 3.36]
+xshow
+1113 706 moveto
+(+ s_newFacturaPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+1113 695 moveto
+(+ s_newfamiliasview\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 2.88 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.04 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 684 moveto
+(+ s_newInventario\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 2.88 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 3.36 3.36]
+xshow
+1113 673 moveto
+(+ s_newListConfiguracionView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.52 2.16 5.04 2.88 7.2 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 5.04 2.16 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 662 moveto
+(+ s_newPagoView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 651 moveto
+(+ s_newPedidoClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 640 moveto
+(+ s_newPedidoPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+1113 629 moveto
+(+ s_newPedidoProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 618 moveto
+(+ s_newPresupuestoCli\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 7.2 2.16 2.16 3.36 3.36]
+xshow
+1113 607 moveto
+(+ s_newProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+1113 596 moveto
+(+ s_newTipoArticuloList\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6 2.16 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1113 585 moveto
+(+ s_provincias\(\))
+[5.76 2.88 5.04 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+1113 574 moveto
+(+ s_seriesFactura\(\))
+[5.76 2.88 5.04 5.52 5.04 5.52 3.36 2.16 5.52 5.04 5.76 5.52 5.04 2.88 5.52 3.36 5.52 3.36 3.36]
+xshow
+1113 563 moveto
+(+ s_trabajadores\(\))
+[5.76 2.88 5.04 5.52 2.88 3.36 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.52 5.04 3.36 3.36]
+xshow
+1113 552 moveto
+(+ sacaWindow\(\))
+[5.76 2.88 5.04 5.52 5.04 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+1113 541 moveto
+(+ searchCompany\(\))
+[5.76 2.88 5.04 5.52 5.52 3.36 5.04 5.52 7.2 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+1113 530 moveto
+(+ setListVentanas\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 2.16 5.04 2.88 6.24 5.52 5.52 2.88 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+1113 519 moveto
+(+ setWorkspace\(\))
+[5.76 2.88 5.04 5.52 2.88 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52 3.36 3.36]
+xshow
+1113 508 moveto
+(+ viewCobrosList\(\))
+[5.76 2.88 5.04 2.16 5.52 7.2 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1113 497 moveto
+(+ viewPagosList\(\))
+[5.76 2.88 5.04 2.16 5.52 7.2 6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1113 486 moveto
+(+ ~company\(\))
+[5.76 2.88 5.76 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node2
+[ /Rect [ 0 34 164 398 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classFacturasProveedorList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 0 33 moveto
+164 33 lineto
+164 398 lineto
+0 398 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 0 33 moveto
+164 33 lineto
+164 398 lineto
+0 398 lineto
+closepath
+stroke
+gsave 10 dict begin
+32 385 moveto
+(FacturasProveedorList)
+[5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 0 379 moveto
+164 379 lineto
+stroke
+gsave 10 dict begin
+8 366 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+8 355 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+8 344 moveto
+(- mdb_idfacturap)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.52]
+xshow
+end grestore
+newpath 0 338 moveto
+164 338 lineto
+stroke
+gsave 10 dict begin
+8 325 moveto
+(+ cargaconfig\(\))
+[5.76 2.88 5.04 5.52 3.36 5.52 5.52 5.04 5.52 5.52 2.88 2.16 5.52 3.36 3.36]
+xshow
+8 314 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+8 303 moveto
+(+ FacturasProveedorList\(\))
+[5.76 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+8 292 moveto
+(+ FacturasProveedorList\(\))
+[5.76 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+8 281 moveto
+(+ generaFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+8 270 moveto
+(+ guardaconfig\(\))
+[5.76 2.88 5.52 5.52 5.52 3.36 5.52 5.52 5.04 5.52 5.52 2.88 2.16 5.52 3.36 3.36]
+xshow
+8 259 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+8 248 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+8 237 moveto
+(+ idfacturap\(\))
+[5.76 2.88 2.16 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.52 3.36 3.36]
+xshow
+8 226 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+8 215 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+8 204 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+8 193 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+8 182 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+8 171 moveto
+(+ setidarticulo\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+8 160 moveto
+(+ setidproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+8 149 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+8 138 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+8 127 moveto
+(+ ~FacturasProveedorList\(\))
+[5.76 2.88 5.76 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+8 116 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+8 105 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+8 94 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+8 83 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+8 72 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+8 61 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+8 50 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+8 39 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node2
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1105 594 moveto
+1101 532 1097 483 1089 480 curveto
+1085 478 787 478 783 478 curveto
+746 477 151 486 123 462 curveto
+104 445 91 422 83 398 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1105 604 moveto
+1101 594 lineto
+1105 601 lineto
+1105 594 lineto
+1105 601 lineto
+1110 594 lineto
+1105 604 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1105 604 moveto
+1101 594 lineto
+1105 601 lineto
+1105 594 lineto
+1105 601 lineto
+1110 594 lineto
+1105 604 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+131 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node3
+[ /Rect [ 202 39 422 393 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classCobrosList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 202 39 moveto
+423 39 lineto
+423 393 lineto
+202 393 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 202 39 moveto
+423 39 lineto
+423 393 lineto
+202 393 lineto
+closepath
+stroke
+gsave 10 dict begin
+288 380 moveto
+(CobrosList)
+[7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 202 374 moveto
+423 374 lineto
+stroke
+gsave 10 dict begin
+210 361 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+210 350 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+210 339 moveto
+(- mdb_idcobro)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.04 5.52 5.52 3.36 5.52]
+xshow
+end grestore
+newpath 202 333 moveto
+423 333 lineto
+stroke
+gsave 10 dict begin
+210 320 moveto
+(+ cargaconfig\(\))
+[5.76 2.88 5.04 5.52 3.36 5.52 5.52 5.04 5.52 5.52 2.88 2.16 5.52 3.36 3.36]
+xshow
+210 309 moveto
+(+ CobrosList\(\))
+[5.76 2.88 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+210 298 moveto
+(+ CobrosList\(\))
+[5.76 2.88 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+210 287 moveto
+(+ generaFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+210 276 moveto
+(+ guardaconfig\(\))
+[5.76 2.88 5.52 5.52 5.52 3.36 5.52 5.52 5.04 5.52 5.52 2.88 2.16 5.52 3.36 3.36]
+xshow
+210 265 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+210 254 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+210 243 moveto
+(+ idcobro\(\))
+[5.76 2.88 2.16 5.52 5.04 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+210 232 moveto
+(+ imprimir\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+210 221 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+210 210 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+210 199 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+210 188 moveto
+(+ presentar\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36 3.36]
+xshow
+210 177 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+210 166 moveto
+(+ setidcliente\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+210 155 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+210 144 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+210 133 moveto
+(+ ~CobrosList\(\))
+[5.76 2.88 5.76 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+210 122 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+210 111 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+210 100 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+210 89 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+210 78 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+210 67 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+210 56 moveto
+(+ on_mui_list_cellDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.04 5.52 2.16 2.16 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+210 45 moveto
+(+ on_mui_list_customContextMenuRequested)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.04 5.52 5.04 2.88 5.52 8.4 7.2 5.52 5.52 2.64 5.28 5.04 2.88 8.4 5.52 5.52 5.52 7.2 5.52 5.52 5.52 5.52 5.04 2.64 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node3
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1105 594 moveto
+1101 532 1097 483 1089 480 curveto
+1084 478 1006 478 1002 478 curveto
+967 477 410 483 383 462 curveto
+360 444 344 420 334 393 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1105 604 moveto
+1101 594 lineto
+1105 601 lineto
+1105 594 lineto
+1105 601 lineto
+1110 594 lineto
+1105 604 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1105 604 moveto
+1101 594 lineto
+1105 601 lineto
+1105 594 lineto
+1105 601 lineto
+1110 594 lineto
+1105 604 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+389 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node4
+[ /Rect [ 441 50 661 382 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classPagosList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 441 50 moveto
+662 50 lineto
+662 382 lineto
+441 382 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 441 50 moveto
+662 50 lineto
+662 382 lineto
+441 382 lineto
+closepath
+stroke
+gsave 10 dict begin
+529 369 moveto
+(PagosList)
+[6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 441 363 moveto
+662 363 lineto
+stroke
+gsave 10 dict begin
+449 350 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+449 339 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+449 328 moveto
+(- mdb_idpago)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.52 5.52 5.52 5.52]
+xshow
+end grestore
+newpath 441 322 moveto
+662 322 lineto
+stroke
+gsave 10 dict begin
+449 309 moveto
+(+ generaFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+449 298 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+449 287 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+449 276 moveto
+(+ idpago\(\))
+[5.76 2.88 2.16 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+449 265 moveto
+(+ imprimir\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+449 254 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+449 243 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+449 232 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+449 221 moveto
+(+ PagosList\(\))
+[5.76 2.88 6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+449 210 moveto
+(+ PagosList\(\))
+[5.76 2.88 6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+449 199 moveto
+(+ presentar\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36 3.36]
+xshow
+449 188 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+449 177 moveto
+(+ setidproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+449 166 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+449 155 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+449 144 moveto
+(+ ~PagosList\(\))
+[5.76 2.88 5.76 6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+449 133 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+449 122 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+449 111 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+449 100 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+449 89 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+449 78 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+449 67 moveto
+(+ on_mui_list_cellDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.04 5.52 2.16 2.16 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+449 56 moveto
+(+ on_mui_list_customContextMenuRequested)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.04 5.52 5.04 2.88 5.52 8.4 7.2 5.52 5.52 2.64 5.28 5.04 2.88 8.4 5.52 5.52 5.52 7.2 5.52 5.52 5.52 5.52 5.04 2.64 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node4
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1105 722 moveto
+1100 614 1094 486 1091 481 curveto
+1090 480 1089 480 1089 480 curveto
+1063 473 636 478 616 462 curveto
+591 442 574 413 564 382 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1105 732 moveto
+1101 722 lineto
+1105 729 lineto
+1105 722 lineto
+1105 729 lineto
+1110 722 lineto
+1105 732 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1105 732 moveto
+1101 722 lineto
+1105 729 lineto
+1105 722 lineto
+1105 729 lineto
+1110 722 lineto
+1105 732 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+623 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node5
+[ /Rect [ 682 45 846 387 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classPedidosClienteList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 682 44 moveto
+846 44 lineto
+846 387 lineto
+682 387 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 682 44 moveto
+846 44 lineto
+846 387 lineto
+682 387 lineto
+closepath
+stroke
+gsave 10 dict begin
+722 374 moveto
+(PedidosClienteList)
+[6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 682 368 moveto
+846 368 lineto
+stroke
+gsave 10 dict begin
+690 355 moveto
+(- companyact)
+[3.36 2.88 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+690 344 moveto
+(- m_idpedidocliente)
+[3.36 2.88 8.4 5.52 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52]
+xshow
+690 333 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+end grestore
+newpath 682 327 moveto
+846 327 lineto
+stroke
+gsave 10 dict begin
+690 314 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+690 303 moveto
+(+ generarFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 3.36 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+690 292 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+690 281 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+690 270 moveto
+(+ idpedidocliente\(\))
+[5.76 2.88 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+690 259 moveto
+(+ imprimir\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+690 248 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+690 237 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+690 226 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+690 215 moveto
+(+ PedidosClienteList\(\))
+[5.76 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+690 204 moveto
+(+ PedidosClienteList\(\))
+[5.76 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+690 193 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+690 182 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+690 171 moveto
+(+ setidcliente\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+690 160 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+690 149 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+690 138 moveto
+(+ ~PedidosClienteList\(\))
+[5.76 2.88 5.76 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+690 127 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+690 116 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+690 105 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+690 94 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+690 83 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+690 72 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+690 61 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+690 50 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node5
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1105 685 moveto
+1102 589 1098 491 1092 481 curveto
+1082 466 802 473 790 462 curveto
+769 442 757 415 751 387 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1105 695 moveto
+1101 685 lineto
+1105 692 lineto
+1105 685 lineto
+1105 692 lineto
+1110 685 lineto
+1105 695 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1105 695 moveto
+1101 685 lineto
+1105 692 lineto
+1105 685 lineto
+1105 692 lineto
+1110 685 lineto
+1105 695 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+798 453 moveto
+(companyact)
+[5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node6
+[ /Rect [ 869 28 1033 404 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classPresupuestoList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 869 28 moveto
+1033 28 lineto
+1033 404 lineto
+869 404 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 869 28 moveto
+1033 28 lineto
+1033 404 lineto
+869 404 lineto
+closepath
+stroke
+gsave 10 dict begin
+915 391 moveto
+(PresupuestoList)
+[6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 869 385 moveto
+1033 385 lineto
+stroke
+gsave 10 dict begin
+877 372 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+877 361 moveto
+(- m_idpresupuesto)
+[3.36 2.88 8.4 5.52 2.16 5.52 5.52 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52]
+xshow
+877 350 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+end grestore
+newpath 869 344 moveto
+1033 344 lineto
+stroke
+gsave 10 dict begin
+877 331 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+877 320 moveto
+(+ generaFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+877 309 moveto
+(+ getcompany\(\))
+[5.76 2.88 5.52 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+877 298 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+877 287 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+877 276 moveto
+(+ idpresupuesto\(\))
+[5.76 2.88 2.16 5.52 5.52 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 3.36 3.36]
+xshow
+877 265 moveto
+(+ imprimir\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+877 254 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+877 243 moveto
+(+ modo\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 3.36 3.36]
+xshow
+877 232 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+877 221 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+877 210 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+877 199 moveto
+(+ PresupuestoList\(\))
+[5.76 2.88 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+877 188 moveto
+(+ PresupuestoList\(\))
+[5.76 2.88 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+877 177 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+877 166 moveto
+(+ setidarticulo\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+877 155 moveto
+(+ setidcliente\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+877 144 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+877 133 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+877 122 moveto
+(+ ~PresupuestoList\(\))
+[5.76 2.88 5.76 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+877 111 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+877 100 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+877 89 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+877 78 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+877 67 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+877 56 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+877 45 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+877 34 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node6
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1104 548 moveto
+1103 510 1100 484 1096 480 curveto
+1059 439 1011 501 974 462 curveto
+958 446 948 426 942 404 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1105 558 moveto
+1100 548 lineto
+1105 555 lineto
+1104 548 lineto
+1105 555 lineto
+1108 548 lineto
+1105 558 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1105 558 moveto
+1100 548 lineto
+1105 555 lineto
+1104 548 lineto
+1105 555 lineto
+1108 548 lineto
+1105 558 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+974 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node7
+[ /Rect [ 1085 39 1249 393 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classPedidosProveedorList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 1085 39 moveto
+1249 39 lineto
+1249 393 lineto
+1085 393 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 1085 39 moveto
+1249 39 lineto
+1249 393 lineto
+1085 393 lineto
+closepath
+stroke
+gsave 10 dict begin
+1118 380 moveto
+(PedidosProveedorList)
+[6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 1085 374 moveto
+1249 374 lineto
+stroke
+gsave 10 dict begin
+1093 361 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+1093 350 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+1093 339 moveto
+(- mdb_idpedidoproveedor)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+end grestore
+newpath 1085 333 moveto
+1249 333 lineto
+stroke
+gsave 10 dict begin
+1093 320 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+1093 309 moveto
+(+ generarFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 3.36 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+1093 298 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+1093 287 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1093 276 moveto
+(+ idpedidoproveedor\(\))
+[5.76 2.88 2.16 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1093 265 moveto
+(+ imprimir\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+1093 254 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+1093 243 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1093 232 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1093 221 moveto
+(+ PedidosProveedorList\(\))
+[5.76 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1093 210 moveto
+(+ PedidosProveedorList\(\))
+[5.76 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1093 199 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+1093 188 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+1093 177 moveto
+(+ setidproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1093 166 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+1093 155 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1093 144 moveto
+(+ ~PedidosProveedorList\(\))
+[5.76 2.88 5.76 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1093 133 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+1093 122 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1093 111 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1093 100 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+1093 89 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1093 78 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1093 67 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1093 56 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1093 45 moveto
+(+ s_filtrar)
+[5.76 2.88 5.04 5.52 2.88 2.16 2.16 2.88 3.36 5.52 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node7
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1133 470 moveto
+1133 463 1133 457 1134 450 curveto
+1135 432 1137 412 1139 393 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1132 480 moveto
+1129 470 lineto
+1132 477 lineto
+1133 470 lineto
+1132 477 lineto
+1137 470 lineto
+1132 480 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1132 480 moveto
+1129 470 lineto
+1132 477 lineto
+1133 470 lineto
+1132 477 lineto
+1137 470 lineto
+1132 480 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1134 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node8
+[ /Rect [ 1302 45 1466 387 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classFacturasList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 1302 44 moveto
+1466 44 lineto
+1466 387 lineto
+1302 387 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 1302 44 moveto
+1466 44 lineto
+1466 387 lineto
+1302 387 lineto
+closepath
+stroke
+gsave 10 dict begin
+1356 374 moveto
+(FacturasList)
+[5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 1302 368 moveto
+1466 368 lineto
+stroke
+gsave 10 dict begin
+1310 355 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+1310 344 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+1310 333 moveto
+(- mdb_idfactura)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52]
+xshow
+end grestore
+newpath 1302 327 moveto
+1466 327 lineto
+stroke
+gsave 10 dict begin
+1310 314 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+1310 303 moveto
+(+ FacturasList\(\))
+[5.76 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1310 292 moveto
+(+ FacturasList\(\))
+[5.76 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1310 281 moveto
+(+ generaFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+1310 270 moveto
+(+ getcompany\(\))
+[5.76 2.88 5.52 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+1310 259 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1310 248 moveto
+(+ idfactura\(\))
+[5.76 2.88 2.16 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 3.36 3.36]
+xshow
+1310 237 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+1310 226 moveto
+(+ modo\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 3.36 3.36]
+xshow
+1310 215 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1310 204 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1310 193 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+1310 182 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+1310 171 moveto
+(+ setidarticulo\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+1310 160 moveto
+(+ setidcliente\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+1310 149 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1310 138 moveto
+(+ ~FacturasList\(\))
+[5.76 2.88 5.76 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1310 127 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+1310 116 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1310 105 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1310 94 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+1310 83 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1310 72 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1310 61 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1310 50 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node8
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1272 471 moveto
+1277 465 1285 465 1296 464 curveto
+1301 462 1315 465 1319 462 curveto
+1342 442 1357 416 1368 387 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1267 480 moveto
+1268 469 lineto
+1268 477 lineto
+1272 471 lineto
+1268 477 lineto
+1276 473 lineto
+1267 480 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1267 480 moveto
+1268 469 lineto
+1268 477 lineto
+1272 471 lineto
+1268 477 lineto
+1276 473 lineto
+1267 480 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1329 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node9
+[ /Rect [ 1487 1 1707 431 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classArticuloList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 1487 0 moveto
+1708 0 lineto
+1708 431 lineto
+1487 431 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 1487 0 moveto
+1708 0 lineto
+1708 431 lineto
+1487 431 lineto
+closepath
+stroke
+gsave 10 dict begin
+1571 418 moveto
+(ArticuloList)
+[6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 1487 412 moveto
+1708 412 lineto
+stroke
+gsave 10 dict begin
+1495 399 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+1495 388 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+1495 377 moveto
+(- mdb_codigocompletoarticulo)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.04 5.52 5.52 2.16 5.52 5.52 5.04 5.52 8.4 5.52 2.16 5.52 2.88 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52]
+xshow
+1495 366 moveto
+(- mdb_idarticulo)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52]
+xshow
+1495 355 moveto
+(- mdb_nomarticulo)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 8.4 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52]
+xshow
+end grestore
+newpath 1487 349 moveto
+1708 349 lineto
+stroke
+gsave 10 dict begin
+1495 336 moveto
+(+ ArticuloList\(\))
+[5.76 2.88 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1495 325 moveto
+(+ cargaconfig\(\))
+[5.76 2.88 5.04 5.52 3.36 5.52 5.52 5.04 5.52 5.52 2.88 2.16 5.52 3.36 3.36]
+xshow
+1495 314 moveto
+(+ codigocompletoarticulo\(\))
+[5.76 2.88 5.04 5.52 5.52 2.16 5.52 5.52 5.04 5.52 8.4 5.52 2.16 5.52 2.88 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+1495 303 moveto
+(+ detalleArticulos\(\))
+[5.76 2.88 5.52 5.52 2.88 5.52 2.16 2.16 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.04 3.36 3.36]
+xshow
+1495 292 moveto
+(+ editArticle\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 6.72 3.6 2.88 2.16 5.04 2.16 5.52 3.36 3.36]
+xshow
+1495 281 moveto
+(+ formaQuery\(\))
+[5.76 2.88 2.88 5.52 3.36 8.4 5.52 7.68 5.52 5.52 3.6 5.04 3.36 3.36]
+xshow
+1495 270 moveto
+(+ guardaconfig\(\))
+[5.76 2.88 5.52 5.52 5.52 3.36 5.52 5.52 5.04 5.52 5.52 2.88 2.16 5.52 3.36 3.36]
+xshow
+1495 259 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1495 248 moveto
+(+ idArticle\(\))
+[5.76 2.88 2.16 5.52 6.72 3.6 2.88 2.16 5.04 2.16 5.52 3.36 3.36]
+xshow
+1495 237 moveto
+(+ idarticulo\(\))
+[5.76 2.88 2.16 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+1495 226 moveto
+(+ Imprimir\(\))
+[5.76 2.88 2.88 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+1495 215 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1495 204 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1495 193 moveto
+(+ nomarticulo\(\))
+[5.76 2.88 5.52 5.52 8.4 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+1495 182 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+1495 171 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1495 160 moveto
+(+ ~ArticuloList\(\))
+[5.76 2.88 5.76 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1495 149 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+1495 138 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 127 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 116 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+1495 105 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 94 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 83 moveto
+(+ on_mui_exportar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.28 5.04 5.52 5.52 3.6 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 72 moveto
+(+ on_mui_importar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 5.52 3.6 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 61 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 50 moveto
+(+ on_mui_list_cellDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.04 5.52 2.16 2.16 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1495 39 moveto
+(+ on_mui_list_customContextMenuRequested)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 5.04 5.52 5.04 2.88 5.52 8.4 7.2 5.52 5.52 2.64 5.28 5.04 2.88 8.4 5.52 5.52 5.52 7.2 5.52 5.52 5.52 5.52 5.04 2.64 5.52 5.52]
+xshow
+1495 28 moveto
+(+ on_mui_list_toogledConfig)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52 7.2 5.52 5.52 2.88 2.16 5.52]
+xshow
+1495 17 moveto
+(+ s_imprimir1)
+[5.76 2.88 5.04 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52]
+xshow
+1495 6 moveto
+(- inicializar\(\))
+[3.36 2.88 2.16 5.52 2.16 5.04 2.16 5.52 2.16 2.16 5.04 5.52 3.36 3.36 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node9
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1268 531 moveto
+1269 503 1271 484 1274 480 curveto
+1280 470 1312 465 1324 464 curveto
+1326 463 1526 463 1529 462 curveto
+1540 453 1550 443 1558 431 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1267 541 moveto
+1264 531 lineto
+1267 538 lineto
+1268 531 lineto
+1267 538 lineto
+1272 531 lineto
+1267 541 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1267 541 moveto
+1264 531 lineto
+1267 538 lineto
+1268 531 lineto
+1267 538 lineto
+1272 531 lineto
+1267 541 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1540 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node10
+[ /Rect [ 1730 39 1894 393 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classProveedorList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 1730 39 moveto
+1894 39 lineto
+1894 393 lineto
+1730 393 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 1730 39 moveto
+1894 39 lineto
+1894 393 lineto
+1730 393 lineto
+closepath
+stroke
+gsave 10 dict begin
+1781 380 moveto
+(ProveedorList)
+[6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 1730 374 moveto
+1894 374 lineto
+stroke
+gsave 10 dict begin
+1738 361 moveto
+(- m_cifprovider)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.88 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36]
+xshow
+1738 350 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+1738 339 moveto
+(- m_idprovider)
+[3.36 2.88 8.4 5.52 2.16 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36]
+xshow
+1738 328 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+1738 317 moveto
+(- m_nomprovider)
+[3.36 2.88 8.4 5.52 5.52 5.52 8.4 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36]
+xshow
+end grestore
+newpath 1730 311 moveto
+1894 311 lineto
+stroke
+gsave 10 dict begin
+1738 298 moveto
+(+ cifprovider\(\))
+[5.76 2.88 5.04 2.16 2.88 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 3.36 3.36]
+xshow
+1738 287 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+1738 276 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1738 265 moveto
+(+ idprovider\(\))
+[5.76 2.88 2.16 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 3.36 3.36]
+xshow
+1738 254 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1738 243 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1738 232 moveto
+(+ nomprovider\(\))
+[5.76 2.88 5.52 5.52 8.4 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 3.36 3.36]
+xshow
+1738 221 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+1738 210 moveto
+(+ ProveedorList\(\))
+[5.76 2.88 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1738 199 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+1738 188 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1738 177 moveto
+(+ ~ProveedorList\(\))
+[5.76 2.88 5.76 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+1738 166 moveto
+(+ editar)
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36]
+xshow
+1738 155 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 144 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 133 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+1738 122 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 111 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 100 moveto
+(+ on_mui_exportar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.28 5.04 5.52 5.52 3.6 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 89 moveto
+(+ on_mui_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+1738 78 moveto
+(+ on_mui_importar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 5.52 3.6 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 67 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 56 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1738 45 moveto
+(+ s_findProvider)
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 6.72 3.36 5.28 5.04 2.16 5.52 5.52 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node10
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1267 560 moveto
+1270 516 1273 485 1277 480 curveto
+1285 469 1382 464 1396 464 curveto
+1398 463 1729 463 1731 462 curveto
+1755 445 1772 420 1784 393 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1267 570 moveto
+1263 560 lineto
+1267 567 lineto
+1267 560 lineto
+1267 567 lineto
+1272 560 lineto
+1267 570 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1267 570 moveto
+1263 560 lineto
+1267 567 lineto
+1267 560 lineto
+1267 567 lineto
+1272 560 lineto
+1267 570 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1743 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node11
+[ /Rect [ 1944 39 2108 393 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classAlbaranesProveedor.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 1944 39 moveto
+2108 39 lineto
+2108 393 lineto
+1944 393 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 1944 39 moveto
+2108 39 lineto
+2108 393 lineto
+1944 393 lineto
+closepath
+stroke
+gsave 10 dict begin
+1980 380 moveto
+(AlbaranesProveedor)
+[6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+end grestore
+newpath 1944 374 moveto
+2108 374 lineto
+stroke
+gsave 10 dict begin
+1952 361 moveto
+(- m_companyact)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+1952 350 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+1952 339 moveto
+(- mdb_idalbaranp)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.52 2.16 5.52 5.52 3.36 5.52 5.52 5.52]
+xshow
+end grestore
+newpath 1944 333 moveto
+2108 333 lineto
+stroke
+gsave 10 dict begin
+1952 320 moveto
+(+ AlbaranesProveedor\(\))
+[5.76 2.88 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1952 309 moveto
+(+ AlbaranesProveedor\(\))
+[5.76 2.88 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1952 298 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+1952 287 moveto
+(+ generaFiltro\(\))
+[5.76 2.88 5.52 5.52 5.52 5.52 3.36 5.52 6 2.16 2.16 2.88 3.36 5.52 3.36 3.36]
+xshow
+1952 276 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+1952 265 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1952 254 moveto
+(+ idalbaranp\(\))
+[5.76 2.88 2.16 5.52 5.52 2.16 5.52 5.52 3.36 5.52 5.52 5.52 3.36 3.36]
+xshow
+1952 243 moveto
+(+ imprimir\(\))
+[5.76 2.88 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 3.36 3.36]
+xshow
+1952 232 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+1952 221 moveto
+(+ modoedicion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.52 5.52 2.16 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1952 210 moveto
+(+ modoseleccion\(\))
+[5.76 2.88 8.4 5.52 5.52 5.52 5.04 5.52 2.16 5.52 5.04 5.04 2.16 5.52 5.52 3.36 3.36]
+xshow
+1952 199 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+1952 188 moveto
+(+ setcompany\(\))
+[5.76 2.88 5.04 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+1952 177 moveto
+(+ setidarticulo\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+1952 166 moveto
+(+ setidproveedor\(\))
+[5.76 2.88 5.04 5.52 2.88 2.16 5.52 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1952 155 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+1952 144 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+1952 133 moveto
+(+ ~AlbaranesProveedor\(\))
+[5.76 2.88 5.76 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+1952 122 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+1952 111 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1952 100 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1952 89 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+1952 78 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1952 67 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1952 56 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+1952 45 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node11
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1268 557 moveto
+1270 515 1273 485 1278 480 curveto
+1281 475 1373 474 1379 474 curveto
+1418 472 1427 472 1467 472 curveto
+1470 471 1936 463 1939 462 curveto
+1953 452 1966 425 1978 393 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1267 567 moveto
+1264 557 lineto
+1267 564 lineto
+1268 557 lineto
+1267 564 lineto
+1272 557 lineto
+1267 567 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1267 567 moveto
+1264 557 lineto
+1267 564 lineto
+1268 557 lineto
+1267 564 lineto
+1272 557 lineto
+1267 567 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1948 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node12
+[ /Rect [ 2208 39 2374 393 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classClientsList.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+newpath 2208 39 moveto
+2374 39 lineto
+2374 393 lineto
+2208 393 lineto
+closepath
+fill
+0.000 0.000 0.000 nodecolor
+newpath 2208 39 moveto
+2374 39 lineto
+2374 393 lineto
+2208 393 lineto
+closepath
+stroke
+gsave 10 dict begin
+2267 380 moveto
+(ClientsList)
+[7.2 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 2208 374 moveto
+2374 374 lineto
+stroke
+gsave 10 dict begin
+2216 361 moveto
+(+ m_companyact)
+[5.76 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+2216 350 moveto
+(- m_modo)
+[3.36 2.88 8.4 5.52 8.4 5.52 5.52 5.52]
+xshow
+2216 339 moveto
+(- mdb_cifcliente)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.04 2.16 2.88 5.04 2.16 2.16 5.52 5.52 2.64 5.52]
+xshow
+2216 328 moveto
+(- mdb_idcliente)
+[3.36 2.88 8.4 5.52 5.52 5.52 2.16 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52]
+xshow
+2216 317 moveto
+(- mdb_nomcliente)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 8.4 5.04 2.16 2.16 5.52 5.52 2.64 5.52]
+xshow
+end grestore
+newpath 2208 311 moveto
+2374 311 lineto
+stroke
+gsave 10 dict begin
+2216 298 moveto
+(+ cifclient\(\))
+[5.76 2.88 5.04 2.16 2.88 5.04 2.16 2.16 5.52 5.52 2.88 3.36 3.36]
+xshow
+2216 287 moveto
+(+ ClientsList\(\))
+[5.76 2.88 7.2 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+2216 276 moveto
+(+ editar\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 5.52 3.36 3.36 3.36]
+xshow
+2216 265 moveto
+(+ editMode\(\))
+[5.76 2.88 5.52 5.52 2.16 2.88 8.4 5.52 5.52 5.52 3.36 3.36]
+xshow
+2216 254 moveto
+(+ hideBotonera\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+2216 243 moveto
+(+ hideBusqueda\(\))
+[5.76 2.88 5.52 2.16 5.52 5.52 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+2216 232 moveto
+(+ idclient\(\))
+[5.76 2.88 2.16 5.52 5.04 2.16 2.16 5.52 5.52 2.88 3.36 3.36]
+xshow
+2216 221 moveto
+(+ nomclient\(\))
+[5.76 2.88 5.52 5.52 8.4 5.04 2.16 2.16 5.52 5.52 2.88 3.36 3.36]
+xshow
+2216 210 moveto
+(+ presenta\(\))
+[5.76 2.88 5.52 3.36 5.52 5.04 5.52 5.52 2.88 5.52 3.36 3.36]
+xshow
+2216 199 moveto
+(+ selectMode\(\))
+[5.76 2.88 5.04 5.52 2.16 5.52 5.04 2.88 8.4 5.52 5.52 5.52 3.36 3.36]
+xshow
+2216 188 moveto
+(+ showBotonera\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 2.88 5.52 5.52 5.52 3.36 5.52 3.36 3.36]
+xshow
+2216 177 moveto
+(+ showBusqueda\(\))
+[5.76 2.88 5.04 5.52 5.52 7.2 6.72 5.52 5.04 5.52 5.52 5.52 5.52 5.52 3.36 3.36]
+xshow
+2216 166 moveto
+(+ ~ClientsList\(\))
+[5.76 2.88 5.76 7.2 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+2216 155 moveto
+(+ on_m_filtro_textChanged)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.88 2.16 2.16 2.88 3.36 5.52 5.52 2.64 5.28 5.04 2.88 7.2 5.52 5.52 5.52 5.52 5.52 5.52]
+xshow
+2216 144 moveto
+(+ on_mui_actualizar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.04 2.88 5.52 5.52 2.16 2.16 5.04 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 133 moveto
+(+ on_mui_borrar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 3.36 3.36 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 122 moveto
+(+ on_mui_configurar_toggled)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 3.36 5.52 2.88 5.52 5.52 5.52 2.16 5.52 5.52]
+xshow
+2216 111 moveto
+(+ on_mui_crear_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.04 3.36 5.52 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 100 moveto
+(+ on_mui_editar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.52 5.52 2.16 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 89 moveto
+(+ on_mui_exportar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 5.28 5.04 5.52 5.52 3.6 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 78 moveto
+(+ on_mui_importar_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 5.52 3.6 2.88 5.52 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 67 moveto
+(+ on_mui_imprimir_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 8.4 5.52 3.36 2.16 8.4 2.16 3.36 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 56 moveto
+(+ on_mui_informeclientes_clicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 5.52 2.88 5.52 3.36 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.64 5.52 5.04 5.52 5.04 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+2216 45 moveto
+(+ on_mui_list_itemDoubleClicked)
+[5.76 2.88 5.52 5.52 5.52 8.4 5.52 2.16 5.52 2.16 2.16 5.04 2.88 5.52 2.16 2.64 5.52 8.4 7.2 5.52 5.52 5.52 2.16 5.52 7.2 2.16 2.16 5.04 4.8 5.52 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node1 -> Node12
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1269 523 moveto
+1272 506 1277 492 1285 481 curveto
+1285 480 1286 480 1287 480 curveto
+1297 477 1325 478 1336 478 curveto
+1424 474 1446 475 1535 474 curveto
+1755 470 1811 471 2032 466 curveto
+2047 465 2159 467 2174 462 curveto
+2178 460 2205 436 2208 432 curveto
+2216 420 2224 407 2231 393 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1267 533 moveto
+1265 522 lineto
+1268 530 lineto
+1269 523 lineto
+1268 530 lineto
+1273 524 lineto
+1267 533 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1267 533 moveto
+1265 522 lineto
+1268 530 lineto
+1269 523 lineto
+1268 530 lineto
+1273 524 lineto
+1267 533 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+2186 453 moveto
+(m_companyact)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 4.8 5.52 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node2 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 142 406 moveto
+149 416 156 424 164 432 curveto
+196 462 215 454 258 462 curveto
+388 485 423 469 556 474 curveto
+591 475 599 475 635 476 curveto
+635 476 1089 480 1089 480 curveto
+1097 483 1102 537 1105 604 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 136 398 moveto
+146 403 lineto
+138 400 lineto
+142 406 lineto
+138 400 lineto
+138 409 lineto
+136 398 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 136 398 moveto
+146 403 lineto
+138 400 lineto
+142 406 lineto
+138 400 lineto
+138 409 lineto
+136 398 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+273 453 moveto
+(m_facturasproveedorlist)
+[8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 2.16 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node3 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 392 401 moveto
+402 413 412 423 423 432 curveto
+464 465 485 454 538 462 curveto
+594 470 609 465 667 468 curveto
+694 469 701 469 730 470 curveto
+732 470 1086 479 1089 480 curveto
+1097 483 1102 542 1105 613 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 386 393 moveto
+396 398 lineto
+388 395 lineto
+392 401 lineto
+388 395 lineto
+388 404 lineto
+386 393 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 386 393 moveto
+396 398 lineto
+388 395 lineto
+392 401 lineto
+388 395 lineto
+388 404 lineto
+386 393 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+555 453 moveto
+(m_cobrosList)
+[8.4 5.52 5.04 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node4 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 623 391 moveto
+647 424 678 451 717 462 curveto
+736 467 1071 471 1090 480 curveto
+1090 480 1090 480 1091 481 curveto
+1127 561 1082 781 1105 891 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 617 382 moveto
+626 388 lineto
+619 384 lineto
+623 390 lineto
+619 384 lineto
+619 393 lineto
+617 382 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 617 382 moveto
+626 388 lineto
+619 384 lineto
+623 390 lineto
+619 384 lineto
+619 393 lineto
+617 382 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+757 453 moveto
+(m_pagosList)
+[8.4 5.52 5.52 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node5 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 806 396 moveto
+820 423 839 447 865 462 curveto
+886 475 1082 457 1093 481 curveto
+1129 562 1081 787 1105 895 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 801 387 moveto
+810 394 lineto
+802 390 lineto
+806 396 lineto
+802 390 lineto
+802 398 lineto
+801 387 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 801 387 moveto
+810 394 lineto
+802 390 lineto
+806 396 lineto
+802 390 lineto
+802 398 lineto
+801 387 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+871 453 moveto
+(m_pedidosclienteList)
+[8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.04 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node6 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1022 413 moveto
+1025 420 1029 426 1033 432 curveto
+1042 447 1045 451 1061 462 curveto
+1078 474 1092 462 1105 480 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1017 404 moveto
+1026 411 lineto
+1018 407 lineto
+1022 413 lineto
+1018 407 lineto
+1018 415 lineto
+1017 404 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1017 404 moveto
+1026 411 lineto
+1018 407 lineto
+1022 413 lineto
+1018 407 lineto
+1018 415 lineto
+1017 404 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1064 453 moveto
+(m_budgetsList)
+[8.4 5.52 5.52 5.52 5.52 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node7 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1201 403 moveto
+1203 419 1204 434 1206 450 curveto
+1207 460 1207 470 1208 480 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1200 393 moveto
+1205 403 lineto
+1200 396 lineto
+1201 403 lineto
+1200 396 lineto
+1197 403 lineto
+1200 393 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1200 393 moveto
+1205 403 lineto
+1200 396 lineto
+1201 403 lineto
+1200 396 lineto
+1197 403 lineto
+1200 393 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1205 453 moveto
+(m_pedidosproveedorList)
+[8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node8 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1458 397 moveto
+1464 426 1466 450 1455 462 curveto
+1426 493 1298 450 1267 480 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1456 387 moveto
+1462 396 lineto
+1457 390 lineto
+1458 397 lineto
+1457 390 lineto
+1454 398 lineto
+1456 387 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1456 387 moveto
+1462 396 lineto
+1457 390 lineto
+1458 397 lineto
+1457 390 lineto
+1454 398 lineto
+1456 387 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1459 453 moveto
+(m_facturasList)
+[8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node9 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1676 440 moveto
+1672 448 1667 456 1661 462 curveto
+1631 493 1305 449 1275 480 curveto
+1272 483 1269 501 1267 528 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1680 431 moveto
+1680 442 lineto
+1679 434 lineto
+1676 440 lineto
+1679 434 lineto
+1672 438 lineto
+1680 431 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1680 431 moveto
+1680 442 lineto
+1679 434 lineto
+1676 440 lineto
+1679 434 lineto
+1672 438 lineto
+1680 431 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1667 453 moveto
+(m_articleslist)
+[8.4 5.52 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 2.16 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node10 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 1885 403 moveto
+1883 425 1876 446 1860 462 curveto
+1837 485 1301 457 1278 480 curveto
+1273 485 1270 520 1267 567 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 1885 393 moveto
+1890 403 lineto
+1885 396 lineto
+1885 403 lineto
+1885 396 lineto
+1881 403 lineto
+1885 393 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 1885 393 moveto
+1890 403 lineto
+1885 396 lineto
+1885 403 lineto
+1885 396 lineto
+1881 403 lineto
+1885 393 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+1867 453 moveto
+(m_providerslist)
+[8.4 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 2.16 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+
+%	Node11 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 2094 403 moveto
+2092 425 2084 446 2068 462 curveto
+2060 469 1287 472 1280 480 curveto
+1274 485 1270 534 1267 596 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 2094 393 moveto
+2099 403 lineto
+2094 396 lineto
+2094 403 lineto
+2094 396 lineto
+2090 403 lineto
+2094 393 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 2094 393 moveto
+2099 403 lineto
+2094 396 lineto
+2094 403 lineto
+2094 396 lineto
+2090 403 lineto
+2094 393 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+2074 453 moveto
+(m_albaranesproveedor)
+[8.4 5.52 5.52 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node12 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 2339 403 moveto
+2336 425 2327 445 2311 462 curveto
+2305 467 1287 477 1281 480 curveto
+1275 482 1270 518 1267 567 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 2340 393 moveto
+2343 403 lineto
+2340 396 lineto
+2339 403 lineto
+2340 396 lineto
+2335 403 lineto
+2340 393 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 2340 393 moveto
+2343 403 lineto
+2340 396 lineto
+2339 403 lineto
+2340 396 lineto
+2335 403 lineto
+2340 393 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+2318 453 moveto
+(m_clientsList)
+[8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+end grestore
+end grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

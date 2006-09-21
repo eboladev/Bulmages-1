@@ -29,6 +29,9 @@
 
 class company;
 
+
+/// Muestra la ventana de art&iacute;culos.
+/** */
 class ArticuloView : public QWidget, public Ui_ArticuloBase, public dialogChanges, public Articulo {
     Q_OBJECT
 

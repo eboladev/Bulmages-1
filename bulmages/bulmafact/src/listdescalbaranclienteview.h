@@ -25,6 +25,8 @@
 #include "company.h"
 
 
+/// Muestra y administra la ventana de lista de descuentos por albar&aacute;n a cliente.
+/** */
 class ListDescuentoAlbaranClienteView : public SubForm2Bf {
     Q_OBJECT
 

@@ -27,8 +27,9 @@
 #include "dbrecord.h"
 
 
+/// Clase art&iacute;culo.
+/** */
 class Articulo : public DBRecord {
-
 protected:
     company *m_companyact;
 
@@ -81,33 +82,33 @@ public:
     void setpvparticulo(QString val) {
         setDBvalue("pvparticulo", val);
     };
-    virtual void pintaidarticulo (QString) {}
+    virtual void pintaidarticulo(QString) {}
     ;
-    virtual void pintacodarticulo (QString) {}
+    virtual void pintacodarticulo(QString) {}
     ;
-    virtual void pintanomarticulo (QString) {}
+    virtual void pintanomarticulo(QString) {}
     ;
-    virtual void pintaabrevarticulo (QString) {}
+    virtual void pintaabrevarticulo(QString) {}
     ;
-    virtual void pintaobservarticulo (QString) {}
+    virtual void pintaobservarticulo(QString) {}
     ;
-    virtual void pintapresentablearticulo (QString) {}
+    virtual void pintapresentablearticulo(QString) {}
     ;
-    virtual void pintacontrolstockarticulo (QString) {}
+    virtual void pintacontrolstockarticulo(QString) {}
     ;
-    virtual void pintaidtipo_articulo (QString) {}
+    virtual void pintaidtipo_articulo(QString) {}
     ;
-    virtual void pintaidtipo_iva (QString) {}
+    virtual void pintaidtipo_iva(QString) {}
     ;
-    virtual void pintacodigocompletoarticulo (QString) {}
+    virtual void pintacodigocompletoarticulo(QString) {}
     ;
-    virtual void pintaidfamilia (QString) {}
+    virtual void pintaidfamilia(QString) {}
     ;
-    virtual void pintastockarticulo (QString) {}
+    virtual void pintastockarticulo(QString) {}
     ;
-    virtual void pintainactivoarticulo (QString) {}
+    virtual void pintainactivoarticulo(QString) {}
     ;
-    virtual void pintapvparticulo (QString) {}
+    virtual void pintapvparticulo(QString) {}
     ;
 };
 

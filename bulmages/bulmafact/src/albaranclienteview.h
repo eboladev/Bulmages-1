@@ -41,6 +41,8 @@
 
 class company;
 
+/// Muestra el albar&aacute;n a cliente.
+/** */
 class AlbaranClienteView : public Ficha, public Ui_AlbaranClienteBase, public AlbaranCliente {
     Q_OBJECT
 
@@ -103,17 +105,18 @@ public:
     void generarFactura();
     void agregarFactura();
 
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {return AlbaranCliente::borrar();};
+    virtual int borrar() {
+        return AlbaranCliente::borrar();
+    };
 
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         calculaypintatotales();
@@ -129,7 +132,6 @@ public slots:
     virtual void on_mui_agregarafactura_clicked() {
         agregarFactura();
     };
-
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
     };

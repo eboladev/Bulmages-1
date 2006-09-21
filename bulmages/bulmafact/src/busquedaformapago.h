@@ -28,6 +28,9 @@
 #include "funcaux.h"
 
 
+/// Permite buscar y seleccionar una forma de pago.
+/** Muestra la parte del formulario que permite buscar y seleccionar una
+    forma de pago. Aparece en forma de desplegable. */
 class BusquedaFormaPago : public QComboBox {
     Q_OBJECT
 

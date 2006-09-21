@@ -34,10 +34,11 @@
 #include "subform2bf.h"
 
 
-
 class company;
 
 
+/// Administra el detalle del listado de series de factura.
+/** */
 class ListSerieFacturaSubForm : public SubForm2Bf {
     Q_OBJECT
 
@@ -59,6 +60,8 @@ public slots:
 #include "ui_listseriefacturabase.h"
 
 
+/// Muestra y administra la ventana con la lista de series de facturas.
+/** */
 class ListSerieFacturaView : public QWidget, public Ui_ListSerieFacturaBase {
     Q_OBJECT
 

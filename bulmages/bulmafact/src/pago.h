@@ -27,8 +27,9 @@
 #include "dbrecord.h"
 
 
+/// Almacena la informaci&oacute;n de un pago.
+/** */
 class Pago : public DBRecord {
-
 protected:
     company *companyact;
 

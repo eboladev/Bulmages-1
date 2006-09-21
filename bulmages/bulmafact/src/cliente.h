@@ -26,7 +26,8 @@
 #include "company.h"
 #include "dbrecord.h"
 
-
+/// Administra los datos de un cliente.
+/** */
 class Cliente : public DBRecord {
 
 protected:
@@ -76,7 +77,6 @@ public:
     void setmovilcliente(QString val) {
         setDBvalue("movilcliente", val);
     };
-
     void setfaxcliente(QString val) {
         setDBvalue("faxcliente", val);
     };
@@ -107,48 +107,47 @@ public:
     void setcorpcliente(QString val) {
         setDBvalue("corpcliente", val);
     };
+    virtual void pintaidcliente(QString) {}
+    ;
+    virtual void pintanomcliente(QString) {}
+    ;
+    virtual void pintanomaltcliente(QString) {}
+    ;
+    virtual void pintacifcliente(QString) {}
+    ;
+    virtual void pintabancocliente(QString) {}
+    ;
+    virtual void pintadircliente(QString) {}
+    ;
+    virtual void pintapoblcliente(QString) {}
+    ;
+    virtual void pintacpcliente(QString) {}
+    ;
+    virtual void pintatelcliente(QString) {};
 
-    virtual void pintaidcliente (QString) {}
-    ;
-    virtual void pintanomcliente (QString) {}
-    ;
-    virtual void pintanomaltcliente (QString) {}
-    ;
-    virtual void pintacifcliente (QString) {}
-    ;
-    virtual void pintabancocliente (QString) {}
-    ;
-    virtual void pintadircliente (QString) {}
-    ;
-    virtual void pintapoblcliente (QString) {}
-    ;
-    virtual void pintacpcliente (QString) {}
-    ;
-    virtual void pintatelcliente (QString) {};
+    virtual void pintateltrabcliente(QString) {};
 
-    virtual void pintateltrabcliente (QString) {};
+    virtual void pintamovilcliente(QString) {};
 
-    virtual void pintamovilcliente (QString) {};
-
-    virtual void pintafaxcliente (QString) {}
+    virtual void pintafaxcliente(QString) {}
     ;
-    virtual void pintamailcliente (QString) {}
+    virtual void pintamailcliente(QString) {}
     ;
-    virtual void pintaurlcliente (QString) {}
+    virtual void pintaurlcliente(QString) {}
     ;
-    virtual void pintafaltacliente (QString) {}
+    virtual void pintafaltacliente(QString) {}
     ;
-    virtual void pintafbajacliente (QString) {}
+    virtual void pintafbajacliente(QString) {}
     ;
-    virtual void pintacomentcliente (QString) {}
+    virtual void pintacomentcliente(QString) {}
     ;
-    virtual void pintainactivocliente (QString) {}
+    virtual void pintainactivocliente(QString) {}
     ;
-    virtual void pintaprovcliente (QString) {}
+    virtual void pintaprovcliente(QString) {}
     ;
-    virtual void pintacodcliente (QString) {}
+    virtual void pintacodcliente(QString) {}
     ;
-    virtual void pintacorpcliente (QString) {}
+    virtual void pintacorpcliente(QString) {}
     ;
 };
 

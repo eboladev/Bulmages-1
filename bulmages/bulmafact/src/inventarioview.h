@@ -31,6 +31,8 @@
 #include "postgresiface2.h"
 
 
+/// Muestra y administra la ventana con los datos de un inventario.
+/** */
 class InventarioView : public QWidget, public Ui_InventarioBase, public Inventario {
     Q_OBJECT
 

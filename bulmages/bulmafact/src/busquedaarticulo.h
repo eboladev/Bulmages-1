@@ -29,6 +29,10 @@
 
 class company;
 
+
+/// Permite buscar y seleccionar un art&iacute;culo.
+/** Muestra la parte del formulario que permite buscar y seleccionar un
+    art&iacute;culo. */
 class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase {
     Q_OBJECT
 

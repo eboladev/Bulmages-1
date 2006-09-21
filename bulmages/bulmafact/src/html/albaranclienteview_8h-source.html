@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1">
+<title>BULMAFACT: albaranclienteview.h Source File</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.4.4 -->
+<div class="qindex"><a class="qindex" href="index.html">Página&nbsp;principal</a> | <a class="qindex" href="hierarchy.html">Jerarquía&nbsp;de&nbsp;la&nbsp;clase</a> | <a class="qindex" href="annotated.html">Lista&nbsp;de&nbsp;componentes</a> | <a class="qindex" href="files.html">Lista&nbsp;de&nbsp;archivos</a> | <a class="qindex" href="functions.html">Miembros&nbsp;de&nbsp;las&nbsp;clases</a></div>
+<h1>albaranclienteview.h</h1><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="comment">/***************************************************************************</span>
+<a name="l00002"></a>00002 <span class="comment"> *   Copyright (C) 2005 by Alvaro de Miguel                                *</span>
+<a name="l00003"></a>00003 <span class="comment"> *   alvaro.demiguel@gmail.com                                             *</span>
+<a name="l00004"></a>00004 <span class="comment"> *   Copyright (C) 2005 by Tomeu Borras Riera                              *</span>
+<a name="l00005"></a>00005 <span class="comment"> *   tborras@conetxia.com                                                  *</span>
+<a name="l00006"></a>00006 <span class="comment"> *                                                                         *</span>
+<a name="l00007"></a>00007 <span class="comment"> *   This program is free software; you can redistribute it and/or modify  *</span>
+<a name="l00008"></a>00008 <span class="comment"> *   it under the terms of the GNU General Public License as published by  *</span>
+<a name="l00009"></a>00009 <span class="comment"> *   the Free Software Foundation; either version 2 of the License, or     *</span>
+<a name="l00010"></a>00010 <span class="comment"> *   (at your option) any later version.                                   *</span>
+<a name="l00011"></a>00011 <span class="comment"> *                                                                         *</span>
+<a name="l00012"></a>00012 <span class="comment"> *   This program is distributed in the hope that it will be useful,       *</span>
+<a name="l00013"></a>00013 <span class="comment"> *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *</span>
+<a name="l00014"></a>00014 <span class="comment"> *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *</span>
+<a name="l00015"></a>00015 <span class="comment"> *   GNU General Public License for more details.                          *</span>
+<a name="l00016"></a>00016 <span class="comment"> *                                                                         *</span>
+<a name="l00017"></a>00017 <span class="comment"> *   You should have received a copy of the GNU General Public License     *</span>
+<a name="l00018"></a>00018 <span class="comment"> *   along with this program; if not, write to the                         *</span>
+<a name="l00019"></a>00019 <span class="comment"> *   Free Software Foundation, Inc.,                                       *</span>
+<a name="l00020"></a>00020 <span class="comment"> *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *</span>
+<a name="l00021"></a>00021 <span class="comment"> ***************************************************************************/</span>
+<a name="l00022"></a>00022 
+<a name="l00023"></a>00023 <span class="preprocessor">#ifndef ALBARANCLIENTEVIEW_H</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span><span class="preprocessor">#define ALBARANCLIENTEVIEW_H</span>
+<a name="l00025"></a>00025 <span class="preprocessor"></span>
+<a name="l00026"></a>00026 <span class="preprocessor">#include &lt;QLineEdit&gt;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &lt;QLabel&gt;</span>
+<a name="l00028"></a>00028 <span class="preprocessor">#include &lt;QCheckBox&gt;</span>
+<a name="l00029"></a>00029 
+<a name="l00030"></a>00030 <span class="preprocessor">#include "dialogchanges.h"</span>
+<a name="l00031"></a>00031 <span class="preprocessor">#include "fixed.h"</span>
+<a name="l00032"></a>00032 <span class="preprocessor">#include "busquedacliente.h"</span>
+<a name="l00033"></a>00033 <span class="preprocessor">#include "busquedafecha.h"</span>
+<a name="l00034"></a>00034 <span class="preprocessor">#include "busquedaformapago.h"</span>
+<a name="l00035"></a>00035 <span class="preprocessor">#include "busquedaalmacen.h"</span>
+<a name="l00036"></a>00036 <span class="preprocessor">#include "busquedatrabajador.h"</span>
+<a name="l00037"></a>00037 <span class="preprocessor">#include "ui_albaranclientebase.h"</span>
+<a name="l00038"></a>00038 <span class="preprocessor">#include "albarancliente.h"</span>
+<a name="l00039"></a>00039 <span class="preprocessor">#include "ficha.h"</span>
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041 
+<a name="l00042"></a>00042 <span class="keyword">class </span><a class="code" href="classcompany.html">company</a>;
+<a name="l00043"></a>00043 
+<a name="l00045"></a>00045 
+<a name="l00046"></a><a class="code" href="classAlbaranClienteView.html">00046</a> <span class="keyword">class </span><a class="code" href="classAlbaranClienteView.html">AlbaranClienteView</a> : <span class="keyword">public</span> Ficha, <span class="keyword">public</span> Ui_AlbaranClienteBase, <span class="keyword">public</span> <a class="code" href="classAlbaranCliente.html">AlbaranCliente</a> {
+<a name="l00047"></a>00047     Q_OBJECT
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="keyword">public</span>:
+<a name="l00050"></a>00050     <a class="code" href="classAlbaranClienteView.html">AlbaranClienteView</a>(<a class="code" href="classcompany.html">company</a> *, QWidget *);
+<a name="l00051"></a>00051     ~<a class="code" href="classAlbaranClienteView.html">AlbaranClienteView</a>();
+<a name="l00052"></a>00052     <span class="keywordtype">void</span> inicializar();
+<a name="l00053"></a>00053     <span class="keywordtype">void</span> pintaIdAlbaran(QString) {}
+<a name="l00054"></a>00054     ;
+<a name="l00055"></a>00055     <span class="keywordtype">void</span> pintaNumAlbaran(QString val) {
+<a name="l00056"></a>00056         m_numalbaran-&gt;setText(val);
+<a name="l00057"></a>00057     };
+<a name="l00058"></a>00058     <span class="keywordtype">void</span> pintafechaalbaran(QString val) {
+<a name="l00059"></a>00059         m_fechaalbaran-&gt;setText(val);
+<a name="l00060"></a>00060     };
+<a name="l00061"></a>00061     <span class="keywordtype">void</span> pintaIdUsuario(QString) {}
+<a name="l00062"></a>00062     ;
+<a name="l00063"></a>00063     <span class="keywordtype">void</span> pintaComentAlbaran(QString val) {
+<a name="l00064"></a>00064         m_comentalbaran-&gt;setPlainText(val);
+<a name="l00065"></a>00065     };
+<a name="l00066"></a>00066     <span class="keywordtype">void</span> pintaComentPrivAlbaran(QString val) {
+<a name="l00067"></a>00067         m_comentprivalbaran-&gt;setPlainText(val);
+<a name="l00068"></a>00068     };
+<a name="l00069"></a>00069     <span class="keywordtype">void</span> pintaidcliente(QString val) {
+<a name="l00070"></a>00070         m_cliente-&gt;setidcliente(val);
+<a name="l00071"></a>00071     };
+<a name="l00072"></a>00072     <span class="keywordtype">void</span> pintaidforma_pago(QString val) {
+<a name="l00073"></a>00073         m_forma_pago-&gt;setidforma_pago(val);
+<a name="l00074"></a>00074     };
+<a name="l00075"></a>00075     <span class="keywordtype">void</span> pintaIdFactura(QString) {}
+<a name="l00076"></a>00076     ;
+<a name="l00077"></a>00077     <span class="keywordtype">void</span> pintaidalmacen(QString <span class="keywordtype">id</span>) {
+<a name="l00078"></a>00078         m_almacen-&gt;setidalmacen(<span class="keywordtype">id</span>);
+<a name="l00079"></a>00079     };
+<a name="l00080"></a>00080     <span class="keywordtype">void</span> pintaidtrabajador(QString <span class="keywordtype">id</span>) {
+<a name="l00081"></a>00081         m_trabajador-&gt;setidtrabajador(<span class="keywordtype">id</span>);
+<a name="l00082"></a>00082     };
+<a name="l00083"></a>00083     <span class="keywordtype">void</span> pintadescalbaran(QString val) {
+<a name="l00084"></a>00084         m_descalbaran-&gt;setText(val);
+<a name="l00085"></a>00085     };
+<a name="l00086"></a>00086     <span class="keywordtype">void</span> pintarefalbaran(QString val) {
+<a name="l00087"></a>00087         m_refalbaran-&gt;setText(val);
+<a name="l00088"></a>00088     };
+<a name="l00089"></a>00089     <span class="keywordtype">void</span> pintacontactalbaran(QString val) {
+<a name="l00090"></a>00090         m_contactalbaran-&gt;setText(val);
+<a name="l00091"></a>00091     };
+<a name="l00092"></a>00092     <span class="keywordtype">void</span> pintatelalbaran(QString val) {
+<a name="l00093"></a>00093         m_telalbaran-&gt;setText(val);
+<a name="l00094"></a>00094     };
+<a name="l00095"></a>00095     <span class="keywordtype">void</span> pintaprocesadoalbaran(QString <span class="keywordtype">id</span>) {
+<a name="l00096"></a>00096         <span class="keywordflow">if</span> (<span class="keywordtype">id</span> == <span class="stringliteral">"t"</span> || <span class="keywordtype">id</span> == <span class="stringliteral">"TRUE"</span>) {
+<a name="l00097"></a>00097             m_procesadoalbaran-&gt;setChecked(TRUE);
+<a name="l00098"></a>00098         } <span class="keywordflow">else</span> {
+<a name="l00099"></a>00099             m_procesadoalbaran-&gt;setChecked(FALSE);
+<a name="l00100"></a>00100         }
+<a name="l00101"></a>00101     };
+<a name="l00102"></a>00102     <span class="keywordtype">void</span> pintaNumFactura(QString) {}
+<a name="l00103"></a>00103     ;
+<a name="l00104"></a>00104     <span class="keywordtype">void</span> pintatotales(Fixed, Fixed, Fixed, Fixed);
+<a name="l00105"></a>00105     <span class="keywordtype">void</span> <a class="code" href="classAlbaranClienteView.html#a4">generarFactura</a>();
+<a name="l00106"></a>00106     <span class="keywordtype">void</span> <a class="code" href="classAlbaranClienteView.html#a0">agregarFactura</a>();
+<a name="l00107"></a>00107 
+<a name="l00109"></a>00109     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classAlbaranClienteView.html#a5">guardar</a>();
+<a name="l00110"></a>00110     <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code" href="classAlbaranClienteView.html#a3">cargar</a>(QString <span class="keywordtype">id</span>);
+<a name="l00111"></a>00111     <span class="keyword">virtual</span> <span class="keywordtype">int</span> borrar() {
+<a name="l00112"></a>00112         <span class="keywordflow">return</span> AlbaranCliente::borrar();
+<a name="l00113"></a>00113     };
+<a name="l00114"></a>00114 
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 <span class="keyword">public</span> slots:
+<a name="l00117"></a>00117     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_mui_guardar_clicked() {
+<a name="l00118"></a>00118         <a class="code" href="classAlbaranClienteView.html#a5">guardar</a>();
+<a name="l00119"></a>00119     };
+<a name="l00121"></a><a class="code" href="classAlbaranClienteView.html#i8">00121</a>     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classAlbaranClienteView.html#i8">s_pintaTotales</a>() {
+<a name="l00122"></a>00122         <a class="code" href="classAlbaranCliente.html#a2">calculaypintatotales</a>();
+<a name="l00123"></a>00123     }
+<a name="l00124"></a>00124     <span class="keyword">virtual</span> <span class="keywordtype">void</span> s_verpresupuesto();
+<a name="l00125"></a>00125     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_mui_verpedidocliente_clicked();
+<a name="l00126"></a>00126     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_mui_imprimir_clicked() {
+<a name="l00127"></a>00127         <a class="code" href="classAlbaranCliente.html#a17">imprimirAlbaranCliente</a>();
+<a name="l00128"></a>00128     };
+<a name="l00129"></a>00129     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_mui_facturar_clicked() {
+<a name="l00130"></a>00130         <a class="code" href="classAlbaranClienteView.html#a4">generarFactura</a>();
+<a name="l00131"></a>00131     };
+<a name="l00132"></a>00132     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_mui_agregarafactura_clicked() {
+<a name="l00133"></a>00133         <a class="code" href="classAlbaranClienteView.html#a0">agregarFactura</a>();
+<a name="l00134"></a>00134     };
+<a name="l00135"></a>00135     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_m_descuentos_editFinish(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>) {
+<a name="l00136"></a>00136         <a class="code" href="classAlbaranCliente.html#a2">calculaypintatotales</a>();
+<a name="l00137"></a>00137     };
+<a name="l00138"></a>00138     <span class="keyword">virtual</span> <span class="keywordtype">void</span> on_subform2_editFinish(<span class="keywordtype">int</span>, <span class="keywordtype">int</span>) {
+<a name="l00139"></a>00139         <a class="code" href="classAlbaranCliente.html#a2">calculaypintatotales</a>();
+<a name="l00140"></a>00140     };
+<a name="l00141"></a>00141     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classAlbaranClienteView.html#i2">on_mui_cobrar_clicked</a>();
+<a name="l00142"></a>00142 };
+<a name="l00143"></a>00143 
+<a name="l00144"></a>00144 <span class="preprocessor">#endif</span>
+<a name="l00145"></a>00145 <span class="preprocessor"></span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generado el Thu Sep 21 12:20:31 2006 para BULMAFACT por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.4.4 </small></address>
+</body>
+</html>

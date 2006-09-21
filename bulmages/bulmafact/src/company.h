@@ -58,8 +58,10 @@ class ProveedorView;
 class familiasview;
 
 
+/// Clase company (empresa).
+/** Clase principal del programa donde se almacenan y gestionan
+    todos los datos de la empresa con la que se est&aacute; trabajando.*/
 class company : public postgresiface2 {
-
 private:
     listventanas *m_listventanas;
     ProveedorList *m_providerslist;

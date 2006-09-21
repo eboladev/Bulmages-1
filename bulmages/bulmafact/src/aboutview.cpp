@@ -32,6 +32,9 @@ AboutView::AboutView(QDialog *parent) : QDialog(parent) {
     QString str_soporte;
     QString str_licencia;
     setupUi(this);
+
+    mui_lbversion->setText(mui_lbversion->text() + " " + tr("Compilado usando la version de QT:") + " " + QT_VERSION_STR);
+
     str_sobre = "<br /><br /><br /><br /><center><h2>Facturaci&oacute;n GPL</h2></center>";
     str_autores = "<center><h2>Autores de BulmaFact</h2>" \
                   "<p>" \
@@ -56,12 +59,12 @@ AboutView::AboutView(QDialog *parent) : QDialog(parent) {
                    "<P>  " \
                    "Version 2, June 1991  " \
                    "</P> " \
-                   "<PRE> " \
+                   "<P> " \
                    "Copyright (C) 1989, 1991 Free Software Foundation, Inc. " \
                    "51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA " \
                    "Everyone is permitted to copy and distribute verbatim copies " \
                    "of this license document, but changing it is not allowed. " \
-                   "</PRE> " \
+                   "</P> " \
                    "<H2>Preamble</H2> " \
                    "<P> " \
                    "  The licenses for most software are designed to take away your " \

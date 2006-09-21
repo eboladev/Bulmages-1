@@ -37,6 +37,9 @@
 
 class company;
 
+
+/// Muestra la ficha del albar&aacute;n de proveedor.
+/** */
 class AlbaranProveedorView : public Ficha, public Ui_AlbaranProveedorBase, public AlbaranProveedor {
     Q_OBJECT
 
@@ -78,7 +81,9 @@ public:
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {return AlbaranProveedor::borrar();};
+    virtual int borrar() {
+        return AlbaranProveedor::borrar();
+    };
 
 public slots:
     virtual void s_comentalbaranptextChanged() {
@@ -105,9 +110,7 @@ public slots:
     virtual void s_descalbaranptextChanged(const QString &val) {
         setdescalbaranp(val);
     };
-
     virtual void on_mui_guardar_clicked();
-
     virtual void s_printAlbaranProveedor() {}
     ;
     /// Este slot se activa cuando hay cambios en los subformularios.

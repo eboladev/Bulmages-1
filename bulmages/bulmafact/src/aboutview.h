@@ -26,6 +26,8 @@
 #include <ui_about.h>
 
 
+/// Clase que muestra la ventana de informaci&oacute;n sobre el programa.
+/** */
 class AboutView : public QDialog, private Ui::aboutdlg {
     Q_OBJECT
 

@@ -21,14 +21,14 @@
 #ifndef CLIENTDELIVNOTESLIST_H
 #define CLIENTDELIVNOTESLIST_H
 
-/// Listado de albaranes de clientes.
-/// Clients delivery notes list.
+
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"
 
-
+/// Listado de albaranes de clientes.
+/** */
 class AlbaranClienteListSubform : public SubForm2Bf {
     Q_OBJECT
 public:

@@ -29,7 +29,8 @@
 #include "fixed.h"
 #include "dbrecord.h"
 
-
+/// Clase que almacena los datos de albaranes a clientes.
+/** */
 class AlbaranCliente : public DBRecord {
 protected:
     ListLinAlbaranClienteView *listalineas;
@@ -39,8 +40,6 @@ protected:
 public:
     AlbaranCliente(company *);
     virtual ~AlbaranCliente();
-
-    /// Funciones de retorno de valores
     QString idalbaran() {
         return DBvalue("idalbaran");
     };
@@ -101,7 +100,7 @@ public:
     void vaciaAlbaranCliente();
 
     /// Establece cual es la lista subformulario del presupuesto.
-    /// Normalmente para apuntar listlinpresupuestoview.
+    /// Normalmente para apuntar a listlinpresupuestoview.
     void setListLinAlbaranCliente(ListLinAlbaranClienteView *a) {
         listalineas = a;
         listalineas->setcompany(companyact);

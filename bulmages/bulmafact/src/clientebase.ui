@@ -12,6 +12,9 @@
     <height>592</height>
    </rect>
   </property>
+  <property name="focusPolicy" >
+   <enum>Qt::StrongFocus</enum>
+  </property>
   <property name="windowTitle" >
    <string>Cliente</string>
   </property>
@@ -1030,20 +1033,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>PresupuestoList</class>
-   <extends></extends>
-   <header>presupuestolist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>AlbaranClienteList</class>
-   <extends></extends>
-   <header>albaranclientelist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>FacturasList</class>
    <extends></extends>
    <header>facturaslist.h</header>
@@ -1068,6 +1057,20 @@
    <class>PedidosClienteList</class>
    <extends></extends>
    <header>pedidosclientelist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>PresupuestoList</class>
+   <extends></extends>
+   <header>presupuestolist.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>AlbaranClienteList</class>
+   <extends></extends>
+   <header>albaranclientelist.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

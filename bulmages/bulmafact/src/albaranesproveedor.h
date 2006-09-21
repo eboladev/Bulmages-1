@@ -29,7 +29,8 @@
 #include "funcaux.h"
 #include "subform2bf.h"
 
-
+/// Clase que maneja el detalle de los albaranes de proveedor.
+/** */
 class AlbaranesProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
@@ -55,6 +56,8 @@ public slots:
 #include "ui_albaranesproveedorlistbase.h"
 
 
+/// Clase que almacena la informaci&oacute; de los albaranes de proveedor.
+/** */
 class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase {
     Q_OBJECT
 

@@ -1,0 +1,61 @@
+\section{Referencia de la Clase List\-Comp\-Articulo\-View}
+\label{classListCompArticuloView}\index{ListCompArticuloView@{ListCompArticuloView}}
+Muestra y administra el listado de los componentes de un art\'{\i}culo.  
+
+
+{\tt \#include $<$comparticulolistview.h$>$}
+
+Diagrama de herencias de List\-Comp\-Articulo\-View\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=94pt]{classListCompArticuloView__inherit__graph}
+\end{center}
+\end{figure}
+Diagrama de colaboraci\'{o}n para List\-Comp\-Articulo\-View:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=94pt]{classListCompArticuloView__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Slots p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+virtual void {\bf cargar} (QString idarticulo)\label{classListCompArticuloView_i0}
+
+\item 
+virtual void {\bf edit\-Finished} (int row, int col)\label{classListCompArticuloView_i1}
+
+\item 
+virtual void {\bf pressed\-Asterisk} (int row, int col)
+\end{CompactItemize}
+\subsection*{M\'{e}todos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+{\bf List\-Comp\-Articulo\-View} (QWidget $\ast$parent=0, const char $\ast$name=0)\label{classListCompArticuloView_a0}
+
+\end{CompactItemize}
+\subsection*{Atributos p\'{u}blicos}
+\begin{CompactItemize}
+\item 
+QString {\bf mdb\_\-idarticulo}\label{classListCompArticuloView_o0}
+
+\end{CompactItemize}
+
+
+\subsection{Descripci\'{o}n detallada}
+Muestra y administra el listado de los componentes de un art\'{\i}culo. 
+
+
+
+\subsection{Documentaci\'{o}n de las funciones miembro}
+\index{ListCompArticuloView@{List\-Comp\-Articulo\-View}!pressedAsterisk@{pressedAsterisk}}
+\index{pressedAsterisk@{pressedAsterisk}!ListCompArticuloView@{List\-Comp\-Articulo\-View}}
+\subsubsection{\setlength{\rightskip}{0pt plus 5cm}void List\-Comp\-Articulo\-View::pressed\-Asterisk (int {\em row}, int {\em col})\hspace{0.3cm}{\tt  [virtual, slot]}}\label{classListCompArticuloView_i2}
+
+
+Esto es convertir un QWidget en un sistema modal de dialogo. 
+
+La documentaci\'{o}n para esta clase fu\'{e} generada a partir de los siguientes archivos:\begin{CompactItemize}
+\item 
+comparticulolistview.h\item 
+comparticulolistview.cpp\end{CompactItemize}

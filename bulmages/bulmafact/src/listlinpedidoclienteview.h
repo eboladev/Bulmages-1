@@ -27,6 +27,9 @@
 #include "subform2bf.h"
 #include "fixed.h"
 
+
+/// Muestra y administra las l&iacute;neas de detalle de un pedido de un cliente.
+/** */
 class ListLinPedidoClienteView : public SubForm2Bf {
     Q_OBJECT
 

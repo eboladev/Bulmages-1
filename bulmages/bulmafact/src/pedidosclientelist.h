@@ -27,22 +27,27 @@
 #include "funcaux.h"
 #include "subform2bf.h"
 
+
+/// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
+/** */
 class PedidosClienteListSubform : public SubForm2Bf {
     Q_OBJECT
 
 public:
     PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
-    ~PedidosClienteListSubform() {};
+    ~PedidosClienteListSubform() {}
+    ;
+
 public slots:
     virtual void cargar() {
         _depura("PedidosClienteListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM pedidocliente";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 * cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
     virtual void cargar(QString query) {
-	SubForm3::cargar(query);
+        SubForm3::cargar(query);
     };
 };
 
@@ -50,6 +55,8 @@ public slots:
 #include "ui_pedidosclientelistbase.h"
 
 
+/// Muestra y administra el listado de pedidos de cliente.
+/** */
 class PedidosClienteList : public QWidget, public Ui_PedidosClienteListBase {
     Q_OBJECT
 
@@ -106,8 +113,8 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
-		on_mui_actualizar_clicked();
+        if(text.size() >= 3)
+            on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
         on_mui_editar_clicked();

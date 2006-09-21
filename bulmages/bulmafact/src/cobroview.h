@@ -21,7 +21,6 @@
 #ifndef COBROVIEW_H
 #define COBROVIEW_H
 
-/// PRESUPUESTOS.
 #include <QLineEdit>
 #include <QLabel>
 #include <QCheckBox>
@@ -36,6 +35,8 @@
 
 class company;
 
+/// Administra la ventana de con los datos de un cobro.
+/** */
 class CobroView : public QWidget, private Ui_CobroBase, public Cobro, public dialogChanges {
     Q_OBJECT
 

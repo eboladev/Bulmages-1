@@ -47,7 +47,7 @@ int Inventario::borrar() {
 
         listalineas->borrar();
         _depura("Vamos a borrar el resto",0);
-        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario=" + DBvalue("idinventario"));
+        int error = companyact->ejecuta("DELETE FROM inventario WHERE idinventario = " + DBvalue("idinventario"));
         if (error) {
             companyact->rollback();
             return -1;
@@ -102,7 +102,7 @@ int Inventario::guardar() {
         _depura("error guardando el inventario", 1);
         companyact->rollback();
         return -1;
-    }
+    } // end try
 }
 
 

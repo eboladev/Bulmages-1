@@ -28,6 +28,8 @@
 #include "fixed.h"
 
 
+/// Muestra y administra las l&iacute;neas de detalle de una factura de proveedor.
+/** */
 class ListLinFacturaProveedorView : public SubForm2Bf {
     Q_OBJECT
 

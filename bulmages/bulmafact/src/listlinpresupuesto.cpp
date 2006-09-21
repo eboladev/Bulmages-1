@@ -53,14 +53,14 @@ linpresupuesto *listlinpresupuesto::linpos(int pos) {
 }
 
 
-/// Carga lineas de presupuesto.
+/// Carga l&iacute;neas de presupuesto.
 int listlinpresupuesto::chargeBudgetLines(QString idbudget) {
     int error = 0;
     vaciar();
     _depura("listlinpresupuesto::chargeBudgetLines\n", 0);
     mdb_idpresupuesto = idbudget;
 
-    cursor2 * cur = companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto=" + idbudget + " AND articulo.idarticulo=lpresupuesto.idarticulo ORDER BY idlpresupuesto");
+    cursor2 * cur = companyact->cargacursor("SELECT * FROM lpresupuesto, articulo WHERE idpresupuesto = " + idbudget + " AND articulo.idarticulo = lpresupuesto.idarticulo ORDER BY idlpresupuesto");
     if (cur->error())
         error=1;
     while (!cur->eof())   {
@@ -116,7 +116,7 @@ void listlinpresupuesto::vaciar() {
 void listlinpresupuesto::borrar() {
     if (mdb_idpresupuesto != "")  {
         companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idpresupuesto=" + mdb_idpresupuesto);
+        int error = companyact->ejecuta("DELETE FROM lpresupuesto WHERE idpresupuesto = " + mdb_idpresupuesto);
         if (error) {
             companyact->rollback();
             return;

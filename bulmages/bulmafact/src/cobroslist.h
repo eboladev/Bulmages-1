@@ -21,7 +21,6 @@
 #ifndef COBROSLIST_H
 #define COBROSLIST_H
 
-/// Listado de Cobros.
 #include <QLineEdit>
 
 #include "company.h"
@@ -30,6 +29,8 @@
 #include "subform2bf.h"
 
 
+/// Administra el detalle de la lista de cobros.
+/** */
 class CobrosListSubForm : public SubForm2Bf {
     Q_OBJECT
 
@@ -43,6 +44,8 @@ public:
 #include "ui_cobroslistbase.h"
 
 
+/// Administra los datos de la lista de cobros.
+/** */
 class CobrosList : public QWidget, private Ui_CobrosListBase {
     Q_OBJECT
 

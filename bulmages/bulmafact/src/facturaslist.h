@@ -28,6 +28,8 @@
 #include "subform2bf.h"
 
 
+/// Administra el detalle del listado de facturas a clientes.
+/** */
 class FacturasListSubform : public SubForm2Bf {
     Q_OBJECT
 
@@ -52,6 +54,9 @@ public slots:
 
 #include "ui_facturaslistbase.h"
 
+
+/// Administra el listado de facturas a clientes.
+/** */
 class FacturasList : public QWidget, public Ui_FacturasListBase {
     Q_OBJECT
 

@@ -31,8 +31,9 @@
 #include "dbrecord.h"
 
 
+/// Administra los datos de una factura de proveedor.
+/** */
 class FacturaProveedor : public DBRecord {
-
 protected:
     ListLinFacturaProveedorView *listalineas;
     ListDescuentoFacturaProvView *listadescuentos;
@@ -48,7 +49,7 @@ public:
         return listadescuentos;
     };
     virtual int borrar();
-    /// Establece cual es la lista subformulario del presupuesto. Normalmente para
+    /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
     void setListLinFacturaProveedor(ListLinFacturaProveedorView *a) {
         listalineas = a;

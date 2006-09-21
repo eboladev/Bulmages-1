@@ -25,6 +25,8 @@
 #include "company.h"
 
 
+/// Muestra y administra la ventana de lista de descuentos por pedido de cliente.
+/** */
 class ListDescuentoPedidoClienteView : public SubForm2Bf {
     Q_OBJECT
 
@@ -38,7 +40,7 @@ public slots:
     virtual void cargar(QString idpedidocliente) {
         _depura("ListDescuentoPedidoClienteView::cargar\n", 0);
         mdb_idpedidocliente = idpedidocliente;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente=" + mdb_idpedidocliente);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dpedidocliente WHERE idpedidocliente = " + mdb_idpedidocliente);
         SubForm3::cargar(cur);
         delete cur;
     };

@@ -30,8 +30,11 @@
 #include "subform2bf.h"
 
 
+/// Muestra y administra el listado de los componentes de un art&iacute;culo.
+/** */
 class ListCompArticuloView : public SubForm2Bf {
     Q_OBJECT
+
 public:
     QString mdb_idarticulo;
     ListCompArticuloView(QWidget *parent = 0, const char *name = 0);

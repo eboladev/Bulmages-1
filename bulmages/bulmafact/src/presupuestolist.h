@@ -29,12 +29,16 @@
 #include "subform2bf.h"
 
 
+/// Administra el listado de presupuestos.
+/** */
 class PresupuestoListSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
     PresupuestoListSubForm(QWidget *parent = 0, const char *name = 0);
-    ~PresupuestoListSubForm() {};
+    ~PresupuestoListSubForm() {}
+    ;
+
 public slots:
     virtual void cargar() {
         _depura("PresupuestoListSubForm::cargar\n", 0);
@@ -44,7 +48,7 @@ public slots:
         delete cur;
     };
     virtual void cargar(QString query) {
-	SubForm3::cargar(query);
+        SubForm3::cargar(query);
     };
 };
 
@@ -52,6 +56,8 @@ public slots:
 #include "ui_budgetslistbase.h"
 
 
+/// Muestra y administra la ventana con el listado de presupuestos.
+/** */
 class PresupuestoList : public QWidget, public Ui_BudgetsListBase {
     Q_OBJECT
 
@@ -86,7 +92,7 @@ public:
         m_companyact = comp;
         m_cliente->setcompany(comp);
         m_articulo->setcompany(comp);
-	mui_list->setcompany(comp);
+        mui_list->setcompany(comp);
     };
     void hideBotonera() {
         m_botonera->hide();
@@ -117,8 +123,8 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
-		on_mui_actualizar_clicked();
+        if(text.size() >= 3)
+            on_mui_actualizar_clicked();
     };
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();

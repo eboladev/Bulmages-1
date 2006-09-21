@@ -31,6 +31,8 @@
 #include "funcaux.h"
 
 
+/// Clase bulmafact.
+/** */
 class bulmafact: public QMainWindow, public Ui_bulmafactbase {
     Q_OBJECT
 

@@ -38,6 +38,9 @@
 
 class company;
 
+
+/// Muestra y administra la ventana de una factura a cliente.
+/** */
 class FacturaView : public Ficha, public Ui_FacturaBase, public Factura {
     Q_OBJECT
 

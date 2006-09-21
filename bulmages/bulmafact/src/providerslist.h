@@ -28,11 +28,16 @@
 class company;
 
 
+/// Administra el listado de proveedores.
+/** */
 class ProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     ProveedorListSubform(QWidget *parent = 0);
-    ~ProveedorListSubform() {};
+    ~ProveedorListSubform() {}
+    ;
+
 public slots:
     virtual void cargar() {
         _depura("ProveedorListSubform::cargar\n", 0);
@@ -42,7 +47,7 @@ public slots:
         delete cur;
     };
     virtual void cargar(QString a) {
-	SubForm3::cargar(a);
+        SubForm3::cargar(a);
     };
 };
 
@@ -50,6 +55,8 @@ public slots:
 #include "ui_providerslistbase.h"
 
 
+/// Muestra y administra la ventana con el listado de proveedores.
+/** */
 class ProveedorList : public QWidget, public Ui_ProveedorListBase, public pgimportfiles {
     Q_OBJECT
 
@@ -101,7 +108,7 @@ public:
 
 public slots:
     virtual void on_mui_filtro_textChanged(const QString &text) {
-        if(text.size() >= 3)
+        if (text.size() >= 3)
             on_mui_actualizar_clicked();
     };
     virtual void editar(int);

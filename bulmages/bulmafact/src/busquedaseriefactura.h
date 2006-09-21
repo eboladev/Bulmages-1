@@ -27,6 +27,9 @@
 #include "postgresiface2.h"
 
 
+/// Permite buscar y seleccionar un n&uacute;mero de serie de factura.
+/** Muestra la parte del formulario que permite buscar y seleccionar un
+    n&uacute;mero de serie de factura. */
 class BusquedaSerieFactura : public QComboBox {
     Q_OBJECT
 

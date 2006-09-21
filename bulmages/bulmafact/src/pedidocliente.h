@@ -30,6 +30,8 @@
 #include "dbrecord.h"
 
 
+/// Almacena la informaci&oacute;n de un pedido de cliente.
+/** */
 class PedidoCliente : public DBRecord {
 protected:
     ListLinPedidoClienteView *listalineas;
@@ -37,8 +39,6 @@ protected:
     company *companyact;
 
 public:
-    /// Establece cual es la lista subformulario del presupuesto.
-    /// Normalmente para apuntar listlinpresupuestoview.
     void setListLinPedidoCliente(ListLinPedidoClienteView *a) {
         listalineas = a;
         listalineas->setcompany(companyact);
@@ -107,8 +107,8 @@ public:
     };
     void setidpedidocliente(QString val) {
         setDBvalue("idpedidocliente", val);
-        listalineas->setColumnValue( "idpedidocliente",val);
-        listadescuentos->setColumnValue( "idpedidocliente",val);
+        listalineas->setColumnValue( "idpedidocliente", val);
+        listadescuentos->setColumnValue( "idpedidocliente", val);
     };
     void setnumpedidocliente(QString val) {
         setDBvalue("numpedidocliente", val);

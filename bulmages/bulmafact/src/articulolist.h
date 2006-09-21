@@ -25,7 +25,8 @@
 #include "pgimportfiles.h"
 #include "subform2bf.h"
 
-
+/// Clase que maneja el detalle de la lista de art&iacute;culos.
+/** */
 class ArticuloListSubForm : public SubForm2Bf {
     Q_OBJECT
 public:
@@ -38,6 +39,8 @@ public:
 #include "ui_articleslistbase.h"
 
 
+/// Clase que maneja la lista de art&iacute;culos.
+/** */
 class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles {
     Q_OBJECT
 
@@ -94,8 +97,8 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
-		on_mui_actualizar_clicked();
+        if(text.size() >=3)
+            on_mui_actualizar_clicked();
     };
     virtual void on_mui_list_cellDoubleClicked(int, int);
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);
@@ -113,7 +116,6 @@ public slots:
     virtual void on_mui_actualizar_clicked() {
         presenta();
     };
-
     virtual void on_mui_configurar_toggled(bool checked) {
         if (checked)
             mui_list->showConfig();
@@ -121,10 +123,8 @@ public slots:
             mui_list->hideConfig();
     };
     virtual void on_mui_list_toogledConfig(bool check) {
-          mui_configurar->setChecked(check);
+        mui_configurar->setChecked(check);
     };
-
-
 
 signals:
     void selected(QString);

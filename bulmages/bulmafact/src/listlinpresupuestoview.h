@@ -28,6 +28,8 @@
 #include "fixed.h"
 
 
+/// Muestra y administra el detalle de las l&iacute;neas de un presupuesto.
+/** */
 class listlinpresupuestoview : public SubForm2Bf {
     Q_OBJECT
 

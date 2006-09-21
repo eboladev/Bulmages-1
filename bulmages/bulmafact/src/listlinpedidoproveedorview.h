@@ -28,6 +28,8 @@
 #include "fixed.h"
 
 
+/// Muestra y administra las l&iacute;neas de detalle de un pedido a un proveedor.
+/** */
 class ListLinPedidoProveedorView : public SubForm2Bf {
     Q_OBJECT
 

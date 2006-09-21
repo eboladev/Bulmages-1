@@ -36,7 +36,8 @@
 
 class company;
 
-
+/// Muestra y administra las l&iacute;neas de detalle del listado de almacenes.
+/** */
 class ListAlmacenSubForm : public SubForm2Bf {
     Q_OBJECT
 
@@ -58,6 +59,8 @@ public slots:
 #include "ui_listalmacenbase.h"
 
 
+/// Muestra y administra el listado de almacenes.
+/** */
 class ListAlmacenView : public QWidget, public Ui_ListAlmacenBase {
     Q_OBJECT
 

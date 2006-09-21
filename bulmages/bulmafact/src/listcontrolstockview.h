@@ -27,6 +27,8 @@
 #include "subform2bf.h"
 
 
+/// Muestra y administra el listado de control de stocks.
+/** */
 class ListControlStockView : public SubForm2Bf {
     Q_OBJECT
 
@@ -42,10 +44,8 @@ public slots:
 
         mdb_idinventario=idinventario;
         QString SQLQuery = "SELECT * FROM ";
-
         SQLQuery += " (SELECT * FROM articulo, almacen) AS t1 ";
-
-        SQLQuery += " LEFT JOIN (SELECT *, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = "+idinventario+") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
+        SQLQuery += " LEFT JOIN (SELECT *, idarticulo AS idarticulopk, idalmacen AS idalmacenpk, idinventario AS idinventariopk FROM controlstock WHERE idinventario = " + idinventario + ") AS t2 ON t1.idarticulo = t2.idarticulopk AND t1.idalmacen = t2.idalmacenpk ";
         SQLQuery += " ORDER BY codigoalmacen, codigocompletoarticulo";
         SubForm2Bf::cargar(SQLQuery);
     };

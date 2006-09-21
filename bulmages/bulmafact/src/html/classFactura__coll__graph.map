@@ -1,0 +1,4 @@
+base referer
+rect $classListLinFacturaView.html 7,602 186,751
+rect $classListDescuentoFacturaView.html 210,625 418,729
+rect $classcompany.html 442,9 658,1345

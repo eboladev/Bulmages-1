@@ -25,6 +25,8 @@
 #include "company.h"
 
 
+/// Muestra y administra la ventana de lista de descuentos por albar&aacute;n de proveedor.
+/** */
 class ListDescuentoAlbaranProvView : public SubForm2Bf {
     Q_OBJECT
 
@@ -38,11 +40,10 @@ public slots:
     virtual void cargar(QString idalbaranp) {
         _depura("ListDescuentoAlbaranProvView::cargar\n", 0);
         mdb_idalbaranp = idalbaranp;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dalbaranp WHERE idalbaranp=" + mdb_idalbaranp);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM dalbaranp WHERE idalbaranp = " + mdb_idalbaranp);
         SubForm3::cargar(cur);
         delete cur;
     };
-
 };
 
 #endif

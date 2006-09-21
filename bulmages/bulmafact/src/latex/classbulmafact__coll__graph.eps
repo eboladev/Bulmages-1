@@ -1,0 +1,927 @@
+%!PS-Adobe-2.0
+%%Creator: dot version 2.2 (Tue Sep 13 00:37:56 UTC 2005)
+%%For: (usuario) usuario
+%%Title: G
+%%Pages: (atend)
+%%BoundingBox: 35 35 283 1685
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+
+EncodingVector
+  dup 306 /AE
+  dup 301 /Aacute
+  dup 302 /Acircumflex
+  dup 304 /Adieresis
+  dup 300 /Agrave
+  dup 305 /Aring
+  dup 303 /Atilde
+  dup 307 /Ccedilla
+  dup 311 /Eacute
+  dup 312 /Ecircumflex
+  dup 313 /Edieresis
+  dup 310 /Egrave
+  dup 315 /Iacute
+  dup 316 /Icircumflex
+  dup 317 /Idieresis
+  dup 314 /Igrave
+  dup 334 /Udieresis
+  dup 335 /Yacute
+  dup 376 /thorn
+  dup 337 /germandbls
+  dup 341 /aacute
+  dup 342 /acircumflex
+  dup 344 /adieresis
+  dup 346 /ae
+  dup 340 /agrave
+  dup 345 /aring
+  dup 347 /ccedilla
+  dup 351 /eacute
+  dup 352 /ecircumflex
+  dup 353 /edieresis
+  dup 350 /egrave
+  dup 355 /iacute
+  dup 356 /icircumflex
+  dup 357 /idieresis
+  dup 354 /igrave
+  dup 360 /dcroat
+  dup 361 /ntilde
+  dup 363 /oacute
+  dup 364 /ocircumflex
+  dup 366 /odieresis
+  dup 362 /ograve
+  dup 365 /otilde
+  dup 370 /oslash
+  dup 372 /uacute
+  dup 373 /ucircumflex
+  dup 374 /udieresis
+  dup 371 /ugrave
+  dup 375 /yacute
+  dup 377 /ydieresis  
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+	dup 1 exch div /InvScaleFactor exch def
+	dup scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw aligned label in bounding box aligned to current point
+/alignedtext {			% width adj text
+	/text exch def
+	/adj exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			text stringwidth pop adj mul 0 rmoveto
+		} if
+		[] 0 setdash
+		text show
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+1 setmiterlimit
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+%%Page: 1 1
+%%PageBoundingBox: 36 36 283 1685
+%%PageOrientation: Portrait
+gsave
+35 35 248 1650 boxprim clip newpath
+36 36 translate
+0 0 1 beginpage
+0 0 translate 0 rotate
+0.000 0.000 0.000 graphcolor
+10.00 /Helvetica set_font
+
+%	Node1
+gsave 10 dict begin
+filled
+0.000 0.000 1.000 nodecolor
+0.000 0.000 0.000 nodecolor
+newpath 0 0 moveto
+247 0 lineto
+247 596 lineto
+0 596 lineto
+closepath
+fill
+0.000 0.000 1.000 nodecolor
+newpath 0 0 moveto
+247 0 lineto
+247 596 lineto
+0 596 lineto
+closepath
+stroke
+gsave 10 dict begin
+101 583 moveto
+(bulmafact)
+[5.52 5.52 2.16 8.4 5.52 2.88 5.52 5.04 2.88]
+xshow
+end grestore
+newpath 0 577 moveto
+247 577 lineto
+stroke
+gsave 10 dict begin
+8 564 moveto
+(- m_company)
+[3.36 2.88 8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 5.04]
+xshow
+8 553 moveto
+(- m_list)
+[3.36 2.88 8.4 5.52 2.16 2.16 5.04 2.88]
+xshow
+8 542 moveto
+(- pWorkspace)
+[3.36 2.88 5.52 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52]
+xshow
+end grestore
+newpath 0 536 moveto
+247 536 lineto
+stroke
+gsave 10 dict begin
+8 523 moveto
+(+ bulmafact\(\))
+[5.76 2.88 5.52 5.52 2.16 8.4 5.52 2.88 5.52 5.04 2.88 3.36 3.36]
+xshow
+8 512 moveto
+(+ getcompany\(\))
+[5.76 2.88 5.52 5.52 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+8 501 moveto
+(+ workspace\(\))
+[5.76 2.88 7.2 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52 3.36 3.36]
+xshow
+8 490 moveto
+(+ ~bulmafact\(\))
+[5.76 2.88 5.76 5.52 5.52 2.16 8.4 5.52 2.88 5.52 5.04 2.88 3.36 3.36]
+xshow
+8 479 moveto
+(+ about)
+[5.76 2.88 5.52 5.52 5.52 5.52 2.88]
+xshow
+8 468 moveto
+(+ aboutQt)
+[5.76 2.88 5.52 5.52 5.52 5.52 2.88 7.68 2.88]
+xshow
+8 457 moveto
+(+ closeEvent)
+[5.76 2.88 5.04 2.16 5.52 5.04 5.52 6.72 4.8 5.52 5.52 2.88]
+xshow
+8 446 moveto
+(+ emitirfactura)
+[5.76 2.88 5.52 8.4 2.16 2.88 2.16 3.6 2.88 5.52 5.04 2.88 5.52 3.36 5.52]
+xshow
+8 435 moveto
+(+ on_actionAcerta_de_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 6.72 5.04 5.52 3.6 2.88 5.52 5.52 5.52 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 424 moveto
+(+ on_actionAlmacenes_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 6.72 2.16 8.4 5.52 5.04 5.52 5.52 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 413 moveto
+(+ on_actionFormas_de_Pago_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.76 5.52 3.36 8.4 5.52 5.04 5.52 5.52 5.52 5.52 6.48 5.52 5.52 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 402 moveto
+(+ on_actionGestion_Familias_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.68 5.52 5.04 2.88 2.16 5.52 5.52 5.52 5.76 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 391 moveto
+(+ on_actionGestion_Tipos_Articulo_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.68 5.52 5.04 2.88 2.16 5.52 5.52 5.52 6 2.16 5.52 5.52 5.04 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 380 moveto
+(+ on_actionIndexador_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 2.88 5.52 5.52 5.28 4.8 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 369 moveto
+(+ on_actionInventarios_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 2.88 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 358 moveto
+(+ on_actionListado_Albaranes_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 347 moveto
+(+ on_actionListado_Albaranes_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 336 moveto
+(+ on_actionListado_Clientes_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 325 moveto
+(+ on_actionListado_de_Articulos_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 5.52 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 314 moveto
+(+ on_actionListado_de_Cobros_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 5.52 5.52 5.52 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 303 moveto
+(+ on_actionListado_de_Pagos_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 5.52 5.52 5.52 6.48 5.52 5.52 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 292 moveto
+(+ on_actionListado_Facturas_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 281 moveto
+(+ on_actionListado_Facturas_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 270 moveto
+(+ on_actionListado_Pedidos_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 259 moveto
+(+ on_actionListado_Pedidos_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 248 moveto
+(+ on_actionListado_Presupuestos_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 237 moveto
+(+ on_actionListado_Proveedores_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 5.52 2.16 5.04 2.88 5.52 5.52 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 226 moveto
+(+ on_actionNueva_Factura_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 215 moveto
+(+ on_actionNueva_Factura_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 204 moveto
+(+ on_actionNuevo_Albaran_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 193 moveto
+(+ on_actionNuevo_Albaran_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 182 moveto
+(+ on_actionNuevo_Articulo_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 171 moveto
+(+ on_actionNuevo_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 160 moveto
+(+ on_actionNuevo_Cobro_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 7.2 5.52 5.52 3.36 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 149 moveto
+(+ on_actionNuevo_Pago_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.48 5.52 5.52 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 138 moveto
+(+ on_actionNuevo_Pedido_Cliente_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 127 moveto
+(+ on_actionNuevo_Pedido_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 116 moveto
+(+ on_actionNuevo_Presupuesto_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 105 moveto
+(+ on_actionNuevo_Proveedor_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 7.2 5.52 5.28 4.8 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 94 moveto
+(+ on_actionParametros_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 6.48 5.52 3.36 5.52 8.4 5.52 2.88 3.36 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 83 moveto
+(+ on_actionProvincias_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 6.72 3.36 5.28 5.04 2.16 5.52 5.04 2.16 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 72 moveto
+(+ on_actionSeries_de_Factura_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 6.72 5.52 3.36 2.16 5.52 5.04 5.52 5.52 5.52 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 61 moveto
+(+ on_actionTrabajadores_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 4.56 5.04 3.36 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.52 5.04 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 50 moveto
+(+ on_actionVentana_Completa_triggered)
+[5.76 2.88 5.52 5.52 5.52 5.52 5.04 2.88 2.16 5.52 5.52 6.24 5.52 5.52 2.88 5.52 5.52 5.52 5.52 7.2 5.52 8.4 5.52 2.16 5.52 2.88 5.52 5.52 2.88 3.36 2.16 5.52 5.52 5.52 3.36 5.52 5.52]
+xshow
+8 39 moveto
+(+ recibirfactura)
+[5.76 2.88 3.36 5.52 5.04 2.16 5.52 2.16 3.6 2.88 5.52 5.04 2.88 5.52 3.36 5.52]
+xshow
+8 28 moveto
+(+ s_About)
+[5.76 2.88 5.04 5.52 6.72 5.52 5.52 5.52 2.88]
+xshow
+8 17 moveto
+(+ s_FPago)
+[5.76 2.88 5.04 5.52 6 6.48 5.52 5.52 5.52]
+xshow
+8 6 moveto
+(+ s_ventanaCompleta)
+[5.76 2.88 5.04 5.52 4.8 5.52 5.52 2.88 5.52 5.52 5.52 7.2 5.52 8.4 5.52 2.16 5.52 2.88 5.52]
+xshow
+end grestore
+end grestore
+
+%	Node2
+[ /Rect [ 42 645 204 1647 ]
+  /Border [ 0 0 0 ]
+  /Action << /Subtype /URI /URI ($classcompany.html) >>
+  /Subtype /Link
+/ANN pdfmark
+gsave 10 dict begin
+filled
+0.000 1.000 1.000 nodecolor
+0.000 0.000 1.000 nodecolor
+newpath 42 644 moveto
+204 644 lineto
+204 1647 lineto
+42 1647 lineto
+closepath
+fill
+0.000 1.000 1.000 nodecolor
+newpath 42 644 moveto
+204 644 lineto
+204 1647 lineto
+42 1647 lineto
+closepath
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+102 1634 moveto
+(company)
+[5.04 5.52 8.4 5.52 5.52 5.28 5.04]
+xshow
+end grestore
+newpath 42 1628 moveto
+204 1628 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+50 1615 moveto
+(+ m_pWorkspace)
+[5.76 2.88 8.4 5.52 5.52 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52]
+xshow
+50 1604 moveto
+(- m_albaranesproveedor)
+[3.36 2.88 8.4 5.52 5.52 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36]
+xshow
+50 1593 moveto
+(- m_articleslist)
+[3.36 2.88 8.4 5.52 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 2.16 2.16 5.04 2.88]
+xshow
+50 1582 moveto
+(- m_budgetsList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+50 1571 moveto
+(- m_clientDelivNotesList)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+50 1560 moveto
+(- m_clientsList)
+[3.36 2.88 8.4 5.52 5.04 2.16 2.16 5.52 5.52 2.88 5.04 5.52 2.16 5.04 2.88]
+xshow
+50 1549 moveto
+(- m_cobrosList)
+[3.36 2.88 8.4 5.52 5.04 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+50 1538 moveto
+(- m_facturasList)
+[3.36 2.88 8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+50 1527 moveto
+(- m_facturasproveedorlist)
+[3.36 2.88 8.4 5.52 2.88 5.52 5.04 2.88 5.52 3.36 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 2.16 2.16 5.04 2.88]
+xshow
+50 1516 moveto
+(- m_listventanas)
+[3.36 2.88 8.4 5.52 2.16 2.16 5.04 2.88 4.8 5.52 5.52 2.88 5.52 5.52 5.52 5.04]
+xshow
+50 1505 moveto
+(- m_pagosList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88]
+xshow
+50 1494 moveto
+(- m_pedidosclienteList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.04 2.16 2.16 5.52 5.52 2.64 5.52 5.52 2.16 5.04 2.88]
+xshow
+50 1483 moveto
+(- m_pedidosproveedorList)
+[3.36 2.88 8.4 5.52 5.52 5.52 5.52 2.16 5.52 5.52 5.04 5.52 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 5.52 2.16 5.04 2.88]
+xshow
+50 1472 moveto
+(- m_providerslist)
+[3.36 2.88 8.4 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 2.16 2.16 5.04 2.88]
+xshow
+end grestore
+newpath 42 1466 moveto
+204 1466 lineto
+stroke
+gsave 10 dict begin
+0.000 0.000 0.000 nodecolor
+50 1453 moveto
+(+ company\(\))
+[5.76 2.88 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+50 1442 moveto
+(+ createMainWindows\(\))
+[5.76 2.88 5.04 3.36 5.52 5.52 2.64 5.52 8.4 5.52 2.16 5.52 9.36 2.16 5.52 5.52 5.52 7.2 5.04 3.36 3.36]
+xshow
+50 1431 moveto
+(+ init\(\))
+[5.76 2.88 2.16 5.52 2.16 2.88 3.36 3.36]
+xshow
+50 1420 moveto
+(+ lAlbaranesProveedor\(\))
+[5.76 2.88 2.16 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+50 1409 moveto
+(+ listarticles\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.6 2.88 2.16 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+50 1398 moveto
+(+ listBudgets\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 6.72 5.52 5.52 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+50 1387 moveto
+(+ listClientDelivNotes\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+50 1376 moveto
+(+ listClients\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 7.2 2.16 2.16 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+50 1365 moveto
+(+ listorders\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.36 5.52 5.52 3.36 5.04 3.36 3.36]
+xshow
+50 1354 moveto
+(+ listproviders\(\))
+[5.76 2.88 2.16 2.16 5.04 2.88 5.52 3.36 5.28 5.04 2.16 5.52 5.52 3.36 5.04 3.36 3.36]
+xshow
+50 1343 moveto
+(+ meteWindow\(\))
+[5.76 2.88 8.4 5.52 2.64 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+50 1332 moveto
+(+ newAlbaranClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1321 moveto
+(+ newAlbaranProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1310 moveto
+(+ newArticuloView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1299 moveto
+(+ newBudget\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 5.52 5.52 5.52 5.52 2.88 3.36 3.36]
+xshow
+50 1288 moveto
+(+ newClientDelivNote\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 3.36 3.36]
+xshow
+50 1277 moveto
+(+ newClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1266 moveto
+(+ newCobroView\(\))
+[5.76 2.88 5.52 5.52 7.2 7.2 5.52 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1255 moveto
+(+ newFacturaProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1244 moveto
+(+ newFacturaView\(\))
+[5.76 2.88 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1233 moveto
+(+ newfamiliasview\(\))
+[5.76 2.88 5.52 5.52 7.2 2.88 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.04 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1222 moveto
+(+ newPagoView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1211 moveto
+(+ newPedidoCliente\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+50 1200 moveto
+(+ newPedidoClienteView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1189 moveto
+(+ newPedidoProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1178 moveto
+(+ newProveedorView\(\))
+[5.76 2.88 5.52 5.52 7.2 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 1167 moveto
+(+ newTipoArticuloList\(\))
+[5.76 2.88 5.52 5.52 7.2 6 2.16 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+50 1156 moveto
+(+ refreshAlbaranesCliente\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+50 1145 moveto
+(+ refreshAlbaranesProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 2.16 5.52 5.52 3.36 5.52 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+50 1134 moveto
+(+ refreshArticles\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 3.6 2.88 2.16 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+50 1123 moveto
+(+ refreshBudgets\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.72 5.52 5.52 5.52 5.52 2.88 5.04 3.36 3.36]
+xshow
+50 1112 moveto
+(+ refreshClientDelivNotes\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.88 7.2 5.52 2.16 2.16 5.04 7.2 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+50 1101 moveto
+(+ refreshClientes\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 5.04 3.36 3.36]
+xshow
+50 1090 moveto
+(+ refreshFacturas\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 3.36 3.36]
+xshow
+50 1079 moveto
+(+ refreshFacturasProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+50 1068 moveto
+(+ refreshPedidosCliente\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 5.52 5.52 2.64 5.52 3.36 3.36]
+xshow
+50 1057 moveto
+(+ refreshPedidosProveedor\(\))
+[5.76 2.88 3.36 5.52 2.88 3.36 5.52 5.04 5.52 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 3.36 3.36]
+xshow
+50 1046 moveto
+(+ s_almacenes\(\))
+[5.76 2.88 5.04 5.52 5.52 2.16 8.4 5.52 5.04 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+50 1035 moveto
+(+ s_Familias\(\))
+[5.76 2.88 5.04 5.52 5.76 5.52 8.4 2.16 2.16 2.16 5.52 5.04 3.36 3.36]
+xshow
+50 1024 moveto
+(+ s_FPago\(\))
+[5.76 2.88 5.04 5.52 6 6.48 5.52 5.52 5.52 3.36 3.36]
+xshow
+50 1013 moveto
+(+ s_indexadorCambiaEstado\(\))
+[5.76 2.88 5.04 5.52 2.16 5.52 5.52 5.28 4.8 5.52 5.52 5.52 3.36 7.2 5.52 8.4 5.52 2.16 5.52 6.72 5.04 2.88 5.52 5.52 5.52 3.36 3.36]
+xshow
+50 1002 moveto
+(+ s_inventarios\(\))
+[5.76 2.88 5.04 5.52 2.16 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 5.04 3.36 3.36]
+xshow
+50 991 moveto
+(+ s_listFacturasCli\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 7.2 2.16 2.16 3.36 3.36]
+xshow
+50 980 moveto
+(+ s_listFacturasPro\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 5.76 5.52 5.04 2.88 5.52 3.36 5.52 5.04 6.72 3.36 5.52 3.36 3.36]
+xshow
+50 969 moveto
+(+ s_listPedidosCli\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 7.2 2.16 2.16 3.36 3.36]
+xshow
+50 958 moveto
+(+ s_listPedidosPro\(\))
+[5.76 2.88 5.04 5.52 2.16 2.16 5.04 2.88 6.48 5.52 5.52 2.16 5.52 5.52 5.04 6.72 3.36 5.52 3.36 3.36]
+xshow
+50 947 moveto
+(+ s_newAlbaranClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 936 moveto
+(+ s_newAlbaranPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+50 925 moveto
+(+ s_newAlbaranProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 2.16 5.52 5.52 3.36 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 914 moveto
+(+ s_newArticulo\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 3.36 3.36]
+xshow
+50 903 moveto
+(+ s_newClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 892 moveto
+(+ s_newCobroView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 7.2 5.52 5.52 3.36 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 881 moveto
+(+ s_newFacturaCli\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 7.2 2.16 2.16 3.36 3.36]
+xshow
+50 870 moveto
+(+ s_newFacturaPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.76 5.52 5.04 2.88 5.52 3.36 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+50 859 moveto
+(+ s_newfamiliasview\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 2.88 5.52 8.4 2.16 2.16 2.16 5.52 5.04 5.04 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 848 moveto
+(+ s_newInventario\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 2.88 5.28 4.8 5.52 5.52 2.88 5.52 3.36 2.16 5.52 3.36 3.36]
+xshow
+50 837 moveto
+(+ s_newListConfiguracionView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 5.52 2.16 5.04 2.88 7.2 5.52 5.52 2.88 2.16 5.52 5.52 3.36 5.52 5.04 2.16 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 826 moveto
+(+ s_newPagoView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 815 moveto
+(+ s_newPedidoClienteView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 7.2 2.16 2.16 5.52 5.52 2.64 5.52 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 804 moveto
+(+ s_newPedidoPro\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.52 3.36 3.36]
+xshow
+50 793 moveto
+(+ s_newPedidoProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.48 5.52 5.52 2.16 5.52 5.52 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 782 moveto
+(+ s_newPresupuestoCli\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.36 5.52 5.04 5.52 5.52 5.52 5.52 5.04 2.88 5.52 7.2 2.16 2.16 3.36 3.36]
+xshow
+50 771 moveto
+(+ s_newProveedorView\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6.72 3.36 5.28 4.8 5.52 5.52 5.52 5.52 3.36 6.72 2.16 5.52 7.2 3.36 3.36]
+xshow
+50 760 moveto
+(+ s_newTipoArticuloList\(\))
+[5.76 2.88 5.04 5.52 5.52 5.52 7.2 6 2.16 5.52 5.52 6.72 3.6 2.88 2.16 5.04 5.52 2.16 5.52 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+50 749 moveto
+(+ s_provincias\(\))
+[5.76 2.88 5.04 5.52 5.52 3.36 5.28 5.04 2.16 5.52 5.04 2.16 5.52 5.04 3.36 3.36]
+xshow
+50 738 moveto
+(+ s_seriesFactura\(\))
+[5.76 2.88 5.04 5.52 5.04 5.52 3.36 2.16 5.52 5.04 5.76 5.52 5.04 2.88 5.52 3.36 5.52 3.36 3.36]
+xshow
+50 727 moveto
+(+ s_trabajadores\(\))
+[5.76 2.88 5.04 5.52 2.88 3.36 5.52 5.52 5.52 2.16 5.52 5.52 5.52 3.36 5.52 5.04 3.36 3.36]
+xshow
+50 716 moveto
+(+ sacaWindow\(\))
+[5.76 2.88 5.04 5.52 5.04 5.52 9.36 2.16 5.52 5.52 5.52 7.2 3.36 3.36]
+xshow
+50 705 moveto
+(+ searchCompany\(\))
+[5.76 2.88 5.04 5.52 5.52 3.36 5.04 5.52 7.2 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+50 694 moveto
+(+ setListVentanas\(\))
+[5.76 2.88 5.04 5.52 2.88 5.52 2.16 5.04 2.88 6.24 5.52 5.52 2.88 5.52 5.52 5.52 5.04 3.36 3.36]
+xshow
+50 683 moveto
+(+ setWorkspace\(\))
+[5.76 2.88 5.04 5.52 2.88 9.12 5.52 3.36 5.04 5.04 5.52 5.52 5.04 5.52 3.36 3.36]
+xshow
+50 672 moveto
+(+ viewCobrosList\(\))
+[5.76 2.88 5.04 2.16 5.52 7.2 7.2 5.52 5.52 3.36 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+50 661 moveto
+(+ viewPagosList\(\))
+[5.76 2.88 5.04 2.16 5.52 7.2 6.48 5.52 5.52 5.52 5.04 5.52 2.16 5.04 2.88 3.36 3.36]
+xshow
+50 650 moveto
+(+ ~company\(\))
+[5.76 2.88 5.76 5.04 5.52 8.4 5.52 5.52 5.28 5.04 3.36 3.36]
+xshow
+end grestore
+end grestore
+
+%	Node2 -> Node1
+gsave 10 dict begin
+dashed
+0.776 0.753 0.804 edgecolor
+newpath 123 634 moveto
+123 621 123 609 123 596 curveto
+stroke
+gsave 10 dict begin
+solid
+1 setlinewidth
+0.776 0.753 0.804 edgecolor
+newpath 123 644 moveto
+119 634 lineto
+123 641 lineto
+123 634 lineto
+123 641 lineto
+128 634 lineto
+123 644 lineto
+closepath
+fill
+0.776 0.753 0.804 edgecolor
+newpath 123 644 moveto
+119 634 lineto
+123 641 lineto
+123 634 lineto
+123 641 lineto
+128 634 lineto
+123 644 lineto
+closepath
+stroke
+end grestore
+gsave 10 dict begin
+0.000 0.000 0.000 edgecolor
+122 617 moveto
+(m_company)
+[8.4 5.52 5.04 5.52 8.4 5.52 5.52 5.28 5.04]
+xshow
+end grestore
+end grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+end
+restore
+%%EOF

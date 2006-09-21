@@ -40,7 +40,9 @@
 #include "ficha.h"
 
 
-class PedidoClienteView : public Ficha, public Ui_PedidoClienteBase, public PedidoCliente{
+/// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
+/** */
+class PedidoClienteView : public Ficha, public Ui_PedidoClienteBase, public PedidoCliente {
     Q_OBJECT
 
 public:
@@ -95,7 +97,9 @@ public:
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {return PedidoCliente::borrar();};
+    virtual int borrar() {
+        return PedidoCliente::borrar();
+    };
 
 
 public slots:

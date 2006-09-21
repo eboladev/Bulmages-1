@@ -36,6 +36,8 @@
 class company;
 
 
+/// Muestra y administra la ventana con la informaci&oacute;n de un pago.
+/** */
 class PagoView : public QWidget, private Ui_PagoBase, public Pago, public dialogChanges {
     Q_OBJECT
 
@@ -84,7 +86,7 @@ public slots:
         return 0;
     };
     virtual void on_mui_borrar_clicked();
-    virtual void  on_mui_comentpago_textChanged(const QString &str) {
+    virtual void on_mui_comentpago_textChanged(const QString &str) {
         setcomentpago(str);
     };
     virtual void on_mui_refpago_valueChanged(const QString &str) {

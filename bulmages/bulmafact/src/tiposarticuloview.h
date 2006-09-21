@@ -28,6 +28,8 @@
 class company;
 
 
+/// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
+/** */
 class TipoArticuloList : public QWidget, public Ui_tiposarticulodlg, dialogChanges {
     Q_OBJECT
 
@@ -66,9 +68,9 @@ public slots:
     virtual void on_mui_aceptar_clicked() {
         close();
     };
+
 signals:
     void selected(QString);
-
 };
 
 #endif

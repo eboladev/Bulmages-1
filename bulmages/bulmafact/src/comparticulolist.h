@@ -29,8 +29,9 @@
 #include "funcaux.h"
 
 
+/// Administra el listado de componentes de un art&iacute;culo.
+/** */
 class ListCompArticulo {
-
 public:
     company *companyact;
     QString mdb_idarticulo;

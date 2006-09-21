@@ -27,6 +27,9 @@
 #include "postgresiface2.h"
 
 
+/// Clase que sirve para seleccionar un almac&eacute;n.
+/** Creamos un QComboBox que sirve para presentar la lista de almacenes
+    disponibles para poder seleccionar uno de ellos.*/
 class BusquedaAlmacen : public QComboBox {
     Q_OBJECT
 

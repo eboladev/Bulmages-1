@@ -160,7 +160,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
     int i = 0;
     int i1 = 0;
     while (!m_cursorcombo->eof()) {
-        i ++;
+        i++;
         if (idIva == m_cursorcombo->valor("idtipo_iva")) {
             i1 = i;
         }
@@ -224,7 +224,7 @@ int ArticuloView::guardar() {
         setDBvalue("pvparticulo", m_pvparticulo->text());
         setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentIndex()));
 
-        if (Articulo::guardar() !=0 )
+        if (Articulo::guardar() != 0)
             throw -1;
 
         /// Guardamos la imagen, si es que existe.

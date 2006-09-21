@@ -1,0 +1,446 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}BULMAFACT Indice jer\'{a}rquico}{1}
+\contentsline {section}{\numberline {1.1}BULMAFACT Jerarqu\'{\i }a de la clase}{1}
+\contentsline {chapter}{\numberline {2}BULMAFACT Indice de clases}{5}
+\contentsline {section}{\numberline {2.1}BULMAFACT Lista de componentes}{5}
+\contentsline {chapter}{\numberline {3}BULMAFACT Documentaci\'{o}n de clases}{9}
+\contentsline {section}{\numberline {3.1}Referencia de la Clase About\discretionary {-}{}{}View}{9}
+\contentsline {subsection}{\numberline {3.1.1}Descripci\'{o}n detallada}{9}
+\contentsline {section}{\numberline {3.2}Referencia de la Clase Albaran\discretionary {-}{}{}Cliente}{10}
+\contentsline {subsection}{\numberline {3.2.1}Descripci\'{o}n detallada}{15}
+\contentsline {subsection}{\numberline {3.2.2}Documentaci\'{o}n de las funciones miembro}{15}
+\contentsline {subsubsection}{\numberline {3.2.2.1}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Cliente::calculaypintatotales ()\hspace {0.3cm}{\tt [virtual]}}{15}
+\contentsline {subsubsection}{\numberline {3.2.2.2}\setlength {\rightskip }{0pt plus 5cm}int Albaran\discretionary {-}{}{}Cliente::guardar ()\hspace {0.3cm}{\tt [virtual]}}{15}
+\contentsline {subsubsection}{\numberline {3.2.2.3}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Cliente::imprimir\discretionary {-}{}{}Albaran\discretionary {-}{}{}Cliente ()}{15}
+\contentsline {subsubsection}{\numberline {3.2.2.4}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Cliente::pintar ()\hspace {0.3cm}{\tt [virtual]}}{16}
+\contentsline {subsubsection}{\numberline {3.2.2.5}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Cliente::set\discretionary {-}{}{}List\discretionary {-}{}{}Lin\discretionary {-}{}{}Albaran\discretionary {-}{}{}Cliente ({\bf List\discretionary {-}{}{}Lin\discretionary {-}{}{}Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View} $\ast $ {\em a})\hspace {0.3cm}{\tt [inline]}}{16}
+\contentsline {section}{\numberline {3.3}Referencia de la Clase Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{17}
+\contentsline {subsection}{\numberline {3.3.1}Descripci\'{o}n detallada}{18}
+\contentsline {subsection}{\numberline {3.3.2}Documentaci\'{o}n del constructor y destructor}{18}
+\contentsline {subsubsection}{\numberline {3.3.2.1}\setlength {\rightskip }{0pt plus 5cm}Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0})}{18}
+\contentsline {section}{\numberline {3.4}Referencia de la Clase Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View}{19}
+\contentsline {subsection}{\numberline {3.4.1}Descripci\'{o}n detallada}{24}
+\contentsline {subsection}{\numberline {3.4.2}Documentaci\'{o}n de las funciones miembro}{24}
+\contentsline {subsubsection}{\numberline {3.4.2.1}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View::agregar\discretionary {-}{}{}Factura ()}{24}
+\contentsline {subsubsection}{\numberline {3.4.2.2}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View::generar\discretionary {-}{}{}Factura ()}{24}
+\contentsline {subsubsection}{\numberline {3.4.2.3}\setlength {\rightskip }{0pt plus 5cm}int Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View::guardar ()\hspace {0.3cm}{\tt [virtual]}}{24}
+\contentsline {section}{\numberline {3.5}Referencia de la Clase Albaranes\discretionary {-}{}{}Proveedor}{25}
+\contentsline {subsection}{\numberline {3.5.1}Descripci\'{o}n detallada}{27}
+\contentsline {subsection}{\numberline {3.5.2}Documentaci\'{o}n de las funciones miembro}{27}
+\contentsline {subsubsection}{\numberline {3.5.2.1}\setlength {\rightskip }{0pt plus 5cm}QString Albaranes\discretionary {-}{}{}Proveedor::genera\discretionary {-}{}{}Filtro ()}{27}
+\contentsline {subsubsection}{\numberline {3.5.2.2}\setlength {\rightskip }{0pt plus 5cm}void Albaranes\discretionary {-}{}{}Proveedor::presenta ()}{28}
+\contentsline {section}{\numberline {3.6}Referencia de la Clase Albaranes\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{29}
+\contentsline {subsection}{\numberline {3.6.1}Descripci\'{o}n detallada}{30}
+\contentsline {subsection}{\numberline {3.6.2}Documentaci\'{o}n del constructor y destructor}{30}
+\contentsline {subsubsection}{\numberline {3.6.2.1}\setlength {\rightskip }{0pt plus 5cm}Albaranes\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Albaranes\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0})}{30}
+\contentsline {section}{\numberline {3.7}Referencia de la Clase Albaran\discretionary {-}{}{}Proveedor}{31}
+\contentsline {subsection}{\numberline {3.7.1}Descripci\'{o}n detallada}{34}
+\contentsline {subsection}{\numberline {3.7.2}Documentaci\'{o}n de las funciones miembro}{35}
+\contentsline {subsubsection}{\numberline {3.7.2.1}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Proveedor::imprimir\discretionary {-}{}{}Albaran\discretionary {-}{}{}Proveedor ()}{35}
+\contentsline {subsubsection}{\numberline {3.7.2.2}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Proveedor::pintar ()\hspace {0.3cm}{\tt [virtual]}}{35}
+\contentsline {subsubsection}{\numberline {3.7.2.3}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Proveedor::set\discretionary {-}{}{}List\discretionary {-}{}{}Lin\discretionary {-}{}{}Albaran\discretionary {-}{}{}Proveedor ({\bf List\discretionary {-}{}{}Lin\discretionary {-}{}{}Albaran\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View} $\ast $ {\em a})\hspace {0.3cm}{\tt [inline]}}{35}
+\contentsline {section}{\numberline {3.8}Referencia de la Clase Albaran\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{36}
+\contentsline {subsection}{\numberline {3.8.1}Descripci\'{o}n detallada}{38}
+\contentsline {subsection}{\numberline {3.8.2}Documentaci\'{o}n de las funciones miembro}{39}
+\contentsline {subsubsection}{\numberline {3.8.2.1}\setlength {\rightskip }{0pt plus 5cm}void Albaran\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View::generar\discretionary {-}{}{}Factura ()}{39}
+\contentsline {section}{\numberline {3.9}Referencia de la Clase Articulo}{40}
+\contentsline {subsection}{\numberline {3.9.1}Descripci\'{o}n detallada}{42}
+\contentsline {subsection}{\numberline {3.9.2}Documentaci\'{o}n de las funciones miembro}{42}
+\contentsline {subsubsection}{\numberline {3.9.2.1}\setlength {\rightskip }{0pt plus 5cm}void Articulo::pintar ()\hspace {0.3cm}{\tt [virtual]}}{42}
+\contentsline {section}{\numberline {3.10}Referencia de la Clase Articulo\discretionary {-}{}{}List}{44}
+\contentsline {subsection}{\numberline {3.10.1}Descripci\'{o}n detallada}{46}
+\contentsline {subsection}{\numberline {3.10.2}Documentaci\'{o}n de las funciones miembro}{47}
+\contentsline {subsubsection}{\numberline {3.10.2.1}\setlength {\rightskip }{0pt plus 5cm}void Articulo\discretionary {-}{}{}List::edit\discretionary {-}{}{}Article (int {\em row})}{47}
+\contentsline {subsubsection}{\numberline {3.10.2.2}\setlength {\rightskip }{0pt plus 5cm}void Articulo\discretionary {-}{}{}List::Imprimir ()}{47}
+\contentsline {section}{\numberline {3.11}Referencia de la Clase Articulo\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{48}
+\contentsline {subsection}{\numberline {3.11.1}Descripci\'{o}n detallada}{48}
+\contentsline {subsection}{\numberline {3.11.2}Documentaci\'{o}n del constructor y destructor}{49}
+\contentsline {subsubsection}{\numberline {3.11.2.1}\setlength {\rightskip }{0pt plus 5cm}Articulo\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form::Articulo\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form (QWidget $\ast $ {\em parent} = {\tt 0}, const char $\ast $ {\em name} = {\tt 0})}{49}
+\contentsline {section}{\numberline {3.12}Referencia de la Clase Articulo\discretionary {-}{}{}View}{50}
+\contentsline {subsection}{\numberline {3.12.1}Descripci\'{o}n detallada}{52}
+\contentsline {subsection}{\numberline {3.12.2}Documentaci\'{o}n del constructor y destructor}{52}
+\contentsline {subsubsection}{\numberline {3.12.2.1}\setlength {\rightskip }{0pt plus 5cm}Articulo\discretionary {-}{}{}View::Articulo\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{52}
+\contentsline {subsection}{\numberline {3.12.3}Documentaci\'{o}n de las funciones miembro}{52}
+\contentsline {subsubsection}{\numberline {3.12.3.1}\setlength {\rightskip }{0pt plus 5cm}int Articulo\discretionary {-}{}{}View::borrar ()}{52}
+\contentsline {subsubsection}{\numberline {3.12.3.2}\setlength {\rightskip }{0pt plus 5cm}int Articulo\discretionary {-}{}{}View::cargar (QString {\em idarticulo})}{52}
+\contentsline {subsubsection}{\numberline {3.12.3.3}\setlength {\rightskip }{0pt plus 5cm}int Articulo\discretionary {-}{}{}View::guardar ()}{53}
+\contentsline {subsubsection}{\numberline {3.12.3.4}\setlength {\rightskip }{0pt plus 5cm}void Articulo\discretionary {-}{}{}View::pintar ()\hspace {0.3cm}{\tt [virtual]}}{53}
+\contentsline {section}{\numberline {3.13}Referencia de la Clase bulmafact}{54}
+\contentsline {subsection}{\numberline {3.13.1}Descripci\'{o}n detallada}{57}
+\contentsline {subsection}{\numberline {3.13.2}Documentaci\'{o}n del constructor y destructor}{57}
+\contentsline {subsubsection}{\numberline {3.13.2.1}\setlength {\rightskip }{0pt plus 5cm}bulmafact::bulmafact (QString {\em bd})}{57}
+\contentsline {subsubsection}{\numberline {3.13.2.2}\setlength {\rightskip }{0pt plus 5cm}bulmafact::$\sim $bulmafact ()}{57}
+\contentsline {section}{\numberline {3.14}Referencia de la Clase Busqueda\discretionary {-}{}{}Almacen}{58}
+\contentsline {subsection}{\numberline {3.14.1}Descripci\'{o}n detallada}{60}
+\contentsline {section}{\numberline {3.15}Referencia de la Clase Busqueda\discretionary {-}{}{}Articulo}{61}
+\contentsline {subsection}{\numberline {3.15.1}Descripci\'{o}n detallada}{63}
+\contentsline {section}{\numberline {3.16}Referencia de la Clase Busqueda\discretionary {-}{}{}Cliente}{64}
+\contentsline {subsection}{\numberline {3.16.1}Descripci\'{o}n detallada}{66}
+\contentsline {section}{\numberline {3.17}Referencia de la Clase Busqueda\discretionary {-}{}{}Familia}{67}
+\contentsline {subsection}{\numberline {3.17.1}Descripci\'{o}n detallada}{69}
+\contentsline {section}{\numberline {3.18}Referencia de la Clase Busqueda\discretionary {-}{}{}Forma\discretionary {-}{}{}Pago}{70}
+\contentsline {subsection}{\numberline {3.18.1}Descripci\'{o}n detallada}{72}
+\contentsline {section}{\numberline {3.19}Referencia de la Clase Busqueda\discretionary {-}{}{}Proveedor}{73}
+\contentsline {subsection}{\numberline {3.19.1}Descripci\'{o}n detallada}{75}
+\contentsline {subsection}{\numberline {3.19.2}Documentaci\'{o}n de las funciones miembro}{75}
+\contentsline {subsubsection}{\numberline {3.19.2.1}\setlength {\rightskip }{0pt plus 5cm}void Busqueda\discretionary {-}{}{}Proveedor::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}buscar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{75}
+\contentsline {section}{\numberline {3.20}Referencia de la Clase Busqueda\discretionary {-}{}{}Provincia}{76}
+\contentsline {subsection}{\numberline {3.20.1}Descripci\'{o}n detallada}{78}
+\contentsline {section}{\numberline {3.21}Referencia de la Clase Busqueda\discretionary {-}{}{}Referencia}{79}
+\contentsline {subsection}{\numberline {3.21.1}Descripci\'{o}n detallada}{81}
+\contentsline {subsection}{\numberline {3.21.2}Documentaci\'{o}n de las funciones miembro}{81}
+\contentsline {subsubsection}{\numberline {3.21.2.1}\setlength {\rightskip }{0pt plus 5cm}void Busqueda\discretionary {-}{}{}Referencia::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}abrirtodo\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{81}
+\contentsline {section}{\numberline {3.22}Referencia de la Clase Busqueda\discretionary {-}{}{}Serie\discretionary {-}{}{}Factura}{82}
+\contentsline {subsection}{\numberline {3.22.1}Descripci\'{o}n detallada}{84}
+\contentsline {section}{\numberline {3.23}Referencia de la Clase Busqueda\discretionary {-}{}{}Tipo\discretionary {-}{}{}Articulo}{85}
+\contentsline {subsection}{\numberline {3.23.1}Descripci\'{o}n detallada}{87}
+\contentsline {section}{\numberline {3.24}Referencia de la Clase Busqueda\discretionary {-}{}{}Trabajador}{88}
+\contentsline {subsection}{\numberline {3.24.1}Descripci\'{o}n detallada}{90}
+\contentsline {section}{\numberline {3.25}Referencia de la Clase Cliente}{91}
+\contentsline {subsection}{\numberline {3.25.1}Descripci\'{o}n detallada}{96}
+\contentsline {subsection}{\numberline {3.25.2}Documentaci\'{o}n de las funciones miembro}{96}
+\contentsline {subsubsection}{\numberline {3.25.2.1}\setlength {\rightskip }{0pt plus 5cm}void Cliente::pinta\discretionary {-}{}{}Cliente ()\hspace {0.3cm}{\tt [virtual]}}{96}
+\contentsline {section}{\numberline {3.26}Referencia de la Clase Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{97}
+\contentsline {subsection}{\numberline {3.26.1}Descripci\'{o}n detallada}{97}
+\contentsline {subsection}{\numberline {3.26.2}Documentaci\'{o}n del constructor y destructor}{98}
+\contentsline {subsubsection}{\numberline {3.26.2.1}\setlength {\rightskip }{0pt plus 5cm}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0}, const char $\ast $ {\em name} = {\tt 0})}{98}
+\contentsline {section}{\numberline {3.27}Referencia de la Clase Cliente\discretionary {-}{}{}View}{99}
+\contentsline {subsection}{\numberline {3.27.1}Descripci\'{o}n detallada}{103}
+\contentsline {subsection}{\numberline {3.27.2}Documentaci\'{o}n del constructor y destructor}{104}
+\contentsline {subsubsection}{\numberline {3.27.2.1}\setlength {\rightskip }{0pt plus 5cm}Cliente\discretionary {-}{}{}View::Cliente\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{104}
+\contentsline {subsubsection}{\numberline {3.27.2.2}\setlength {\rightskip }{0pt plus 5cm}Cliente\discretionary {-}{}{}View::$\sim $Cliente\discretionary {-}{}{}View ()}{104}
+\contentsline {subsection}{\numberline {3.27.3}Documentaci\'{o}n de las funciones miembro}{104}
+\contentsline {subsubsection}{\numberline {3.27.3.1}\setlength {\rightskip }{0pt plus 5cm}int Cliente\discretionary {-}{}{}View::cargar (QString {\em idcliente})\hspace {0.3cm}{\tt [virtual]}}{104}
+\contentsline {subsubsection}{\numberline {3.27.3.2}\setlength {\rightskip }{0pt plus 5cm}void Cliente\discretionary {-}{}{}View::delete\discretionary {-}{}{}Client ()}{104}
+\contentsline {subsubsection}{\numberline {3.27.3.3}\setlength {\rightskip }{0pt plus 5cm}int Cliente\discretionary {-}{}{}View::guardar ()\hspace {0.3cm}{\tt [virtual]}}{104}
+\contentsline {section}{\numberline {3.28}Referencia de la Clase Clients\discretionary {-}{}{}List}{105}
+\contentsline {subsection}{\numberline {3.28.1}Descripci\'{o}n detallada}{107}
+\contentsline {subsection}{\numberline {3.28.2}Documentaci\'{o}n del constructor y destructor}{108}
+\contentsline {subsubsection}{\numberline {3.28.2.1}\setlength {\rightskip }{0pt plus 5cm}Clients\discretionary {-}{}{}List::Clients\discretionary {-}{}{}List ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0}, Qt::WFlags {\em flag} = {\tt 0}, edmode {\em editmode} = {\tt EditMode})}{108}
+\contentsline {subsection}{\numberline {3.28.3}Documentaci\'{o}n de las funciones miembro}{108}
+\contentsline {subsubsection}{\numberline {3.28.3.1}\setlength {\rightskip }{0pt plus 5cm}void Clients\discretionary {-}{}{}List::presenta ()}{108}
+\contentsline {section}{\numberline {3.29}Referencia de la Clase Cobro}{109}
+\contentsline {subsection}{\numberline {3.29.1}Descripci\'{o}n detallada}{111}
+\contentsline {section}{\numberline {3.30}Referencia de la Clase Cobros\discretionary {-}{}{}List}{112}
+\contentsline {subsection}{\numberline {3.30.1}Descripci\'{o}n detallada}{114}
+\contentsline {subsection}{\numberline {3.30.2}Documentaci\'{o}n de las funciones miembro}{114}
+\contentsline {subsubsection}{\numberline {3.30.2.1}\setlength {\rightskip }{0pt plus 5cm}void Cobros\discretionary {-}{}{}List::presentar ()}{114}
+\contentsline {section}{\numberline {3.31}Referencia de la Clase Cobros\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{115}
+\contentsline {subsection}{\numberline {3.31.1}Descripci\'{o}n detallada}{115}
+\contentsline {subsection}{\numberline {3.31.2}Documentaci\'{o}n del constructor y destructor}{116}
+\contentsline {subsubsection}{\numberline {3.31.2.1}\setlength {\rightskip }{0pt plus 5cm}Cobros\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form::Cobros\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form (QWidget $\ast $ {\em parent} = {\tt 0})}{116}
+\contentsline {section}{\numberline {3.32}Referencia de la Clase Cobro\discretionary {-}{}{}View}{117}
+\contentsline {subsection}{\numberline {3.32.1}Descripci\'{o}n detallada}{119}
+\contentsline {subsection}{\numberline {3.32.2}Documentaci\'{o}n del constructor y destructor}{119}
+\contentsline {subsubsection}{\numberline {3.32.2.1}\setlength {\rightskip }{0pt plus 5cm}Cobro\discretionary {-}{}{}View::Cobro\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent})}{119}
+\contentsline {section}{\numberline {3.33}Referencia de la Clase company}{120}
+\contentsline {subsection}{\numberline {3.33.1}Descripci\'{o}n detallada}{122}
+\contentsline {subsection}{\numberline {3.33.2}Documentaci\'{o}n del constructor y destructor}{122}
+\contentsline {subsubsection}{\numberline {3.33.2.1}\setlength {\rightskip }{0pt plus 5cm}company::$\sim $company ()}{122}
+\contentsline {subsection}{\numberline {3.33.3}Documentaci\'{o}n de las funciones miembro}{122}
+\contentsline {subsubsection}{\numberline {3.33.3.1}\setlength {\rightskip }{0pt plus 5cm}void company::init (QString {\em bd})}{122}
+\contentsline {subsubsection}{\numberline {3.33.3.2}\setlength {\rightskip }{0pt plus 5cm}{\bf Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View ()}{122}
+\contentsline {subsubsection}{\numberline {3.33.3.3}\setlength {\rightskip }{0pt plus 5cm}{\bf Albaran\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Albaran\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View ()}{122}
+\contentsline {subsubsection}{\numberline {3.33.3.4}\setlength {\rightskip }{0pt plus 5cm}{\bf Articulo\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Articulo\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.5}\setlength {\rightskip }{0pt plus 5cm}{\bf Presupuesto\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Budget ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.6}\setlength {\rightskip }{0pt plus 5cm}{\bf Cliente\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Cliente\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.7}\setlength {\rightskip }{0pt plus 5cm}{\bf Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.8}\setlength {\rightskip }{0pt plus 5cm}{\bf Factura\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Factura\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.9}\setlength {\rightskip }{0pt plus 5cm}{\bf familiasview} $\ast $ company::newfamiliasview (QWidget $\ast $ {\em parent} = {\tt 0}, bool {\em modo\discretionary {-}{}{}Consulta} = {\tt FALSE})}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.10}\setlength {\rightskip }{0pt plus 5cm}{\bf Pago\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Pago\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.11}\setlength {\rightskip }{0pt plus 5cm}{\bf Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.12}\setlength {\rightskip }{0pt plus 5cm}{\bf Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.13}\setlength {\rightskip }{0pt plus 5cm}{\bf Proveedor\discretionary {-}{}{}View} $\ast $ company::new\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View ()}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.14}\setlength {\rightskip }{0pt plus 5cm}{\bf Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List} $\ast $ company::new\discretionary {-}{}{}Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List (QWidget $\ast $ {\em parent} = {\tt 0}, bool {\em modo\discretionary {-}{}{}Consulta} = {\tt FALSE})}{123}
+\contentsline {subsubsection}{\numberline {3.33.3.15}\setlength {\rightskip }{0pt plus 5cm}void company::s\_\discretionary {-}{}{}new\discretionary {-}{}{}Factura\discretionary {-}{}{}Cli ()}{124}
+\contentsline {subsubsection}{\numberline {3.33.3.16}\setlength {\rightskip }{0pt plus 5cm}void company::s\_\discretionary {-}{}{}new\discretionary {-}{}{}Presupuesto\discretionary {-}{}{}Cli ()}{124}
+\contentsline {subsubsection}{\numberline {3.33.3.17}\setlength {\rightskip }{0pt plus 5cm}QString company::search\discretionary {-}{}{}Company ()}{124}
+\contentsline {section}{\numberline {3.34}Referencia de la Clase Comp\discretionary {-}{}{}Articulo}{125}
+\contentsline {subsection}{\numberline {3.34.1}Descripci\'{o}n detallada}{127}
+\contentsline {subsection}{\numberline {3.34.2}Documentaci\'{o}n del constructor y destructor}{127}
+\contentsline {subsubsection}{\numberline {3.34.2.1}\setlength {\rightskip }{0pt plus 5cm}Comp\discretionary {-}{}{}Articulo::Comp\discretionary {-}{}{}Articulo ({\bf company} $\ast $, QString, QString, QString, QString, QString)}{127}
+\contentsline {subsection}{\numberline {3.34.3}Documentaci\'{o}n de las funciones miembro}{127}
+\contentsline {subsubsection}{\numberline {3.34.3.1}\setlength {\rightskip }{0pt plus 5cm}void Comp\discretionary {-}{}{}Articulo::guarda\discretionary {-}{}{}Comp\discretionary {-}{}{}Articulo ()}{127}
+\contentsline {section}{\numberline {3.35}Referencia de la Clase Descuento\discretionary {-}{}{}Presupuesto}{128}
+\contentsline {subsection}{\numberline {3.35.1}Descripci\'{o}n detallada}{130}
+\contentsline {subsection}{\numberline {3.35.2}Documentaci\'{o}n del constructor y destructor}{130}
+\contentsline {subsubsection}{\numberline {3.35.2.1}\setlength {\rightskip }{0pt plus 5cm}Descuento\discretionary {-}{}{}Presupuesto::Descuento\discretionary {-}{}{}Presupuesto ({\bf company} $\ast $, QString, QString, QString, QString)}{130}
+\contentsline {section}{\numberline {3.36}Referencia de la Clase Factura}{131}
+\contentsline {subsection}{\numberline {3.36.1}Descripci\'{o}n detallada}{135}
+\contentsline {subsection}{\numberline {3.36.2}Documentaci\'{o}n de las funciones miembro}{135}
+\contentsline {subsubsection}{\numberline {3.36.2.1}\setlength {\rightskip }{0pt plus 5cm}void Factura::calculaypintatotales ()\hspace {0.3cm}{\tt [virtual]}}{135}
+\contentsline {subsubsection}{\numberline {3.36.2.2}\setlength {\rightskip }{0pt plus 5cm}int Factura::guardar ()\hspace {0.3cm}{\tt [virtual]}}{135}
+\contentsline {subsubsection}{\numberline {3.36.2.3}\setlength {\rightskip }{0pt plus 5cm}void Factura::imprimir\discretionary {-}{}{}Factura ()\hspace {0.3cm}{\tt [virtual]}}{135}
+\contentsline {subsubsection}{\numberline {3.36.2.4}\setlength {\rightskip }{0pt plus 5cm}void Factura::pinta\discretionary {-}{}{}Factura ()}{135}
+\contentsline {subsubsection}{\numberline {3.36.2.5}\setlength {\rightskip }{0pt plus 5cm}void Factura::set\discretionary {-}{}{}List\discretionary {-}{}{}Lin\discretionary {-}{}{}Factura ({\bf List\discretionary {-}{}{}Lin\discretionary {-}{}{}Factura\discretionary {-}{}{}View} $\ast $ {\em a})\hspace {0.3cm}{\tt [inline]}}{136}
+\contentsline {section}{\numberline {3.37}Referencia de la Clase Factura\discretionary {-}{}{}Proveedor}{137}
+\contentsline {subsection}{\numberline {3.37.1}Descripci\'{o}n detallada}{139}
+\contentsline {subsection}{\numberline {3.37.2}Documentaci\'{o}n de las funciones miembro}{140}
+\contentsline {subsubsection}{\numberline {3.37.2.1}\setlength {\rightskip }{0pt plus 5cm}void Factura\discretionary {-}{}{}Proveedor::imprimir\discretionary {-}{}{}Factura\discretionary {-}{}{}Proveedor ()\hspace {0.3cm}{\tt [virtual]}}{140}
+\contentsline {subsubsection}{\numberline {3.37.2.2}\setlength {\rightskip }{0pt plus 5cm}void Factura\discretionary {-}{}{}Proveedor::set\discretionary {-}{}{}List\discretionary {-}{}{}Lin\discretionary {-}{}{}Factura\discretionary {-}{}{}Proveedor ({\bf List\discretionary {-}{}{}Lin\discretionary {-}{}{}Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View} $\ast $ {\em a})\hspace {0.3cm}{\tt [inline]}}{140}
+\contentsline {section}{\numberline {3.38}Referencia de la Clase Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{141}
+\contentsline {subsection}{\numberline {3.38.1}Descripci\'{o}n detallada}{143}
+\contentsline {subsection}{\numberline {3.38.2}Documentaci\'{o}n del constructor y destructor}{143}
+\contentsline {subsubsection}{\numberline {3.38.2.1}\setlength {\rightskip }{0pt plus 5cm}Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View::Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{143}
+\contentsline {subsection}{\numberline {3.38.3}Documentaci\'{o}n de las funciones miembro}{143}
+\contentsline {subsubsection}{\numberline {3.38.3.1}\setlength {\rightskip }{0pt plus 5cm}void Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View::inicializar ()}{143}
+\contentsline {section}{\numberline {3.39}Referencia de la Clase Facturas\discretionary {-}{}{}List}{144}
+\contentsline {subsection}{\numberline {3.39.1}Descripci\'{o}n detallada}{146}
+\contentsline {subsection}{\numberline {3.39.2}Documentaci\'{o}n de las funciones miembro}{146}
+\contentsline {subsubsection}{\numberline {3.39.2.1}\setlength {\rightskip }{0pt plus 5cm}QString Facturas\discretionary {-}{}{}List::genera\discretionary {-}{}{}Filtro ()}{146}
+\contentsline {subsubsection}{\numberline {3.39.2.2}\setlength {\rightskip }{0pt plus 5cm}void Facturas\discretionary {-}{}{}List::presenta ()}{147}
+\contentsline {section}{\numberline {3.40}Referencia de la Clase Facturas\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{148}
+\contentsline {subsection}{\numberline {3.40.1}Descripci\'{o}n detallada}{149}
+\contentsline {subsection}{\numberline {3.40.2}Documentaci\'{o}n del constructor y destructor}{149}
+\contentsline {subsubsection}{\numberline {3.40.2.1}\setlength {\rightskip }{0pt plus 5cm}Facturas\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Facturas\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0}, const char $\ast $ {\em name} = {\tt 0})}{149}
+\contentsline {section}{\numberline {3.41}Referencia de la Clase Facturas\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List}{150}
+\contentsline {subsection}{\numberline {3.41.1}Descripci\'{o}n detallada}{152}
+\contentsline {subsection}{\numberline {3.41.2}Documentaci\'{o}n de las funciones miembro}{152}
+\contentsline {subsubsection}{\numberline {3.41.2.1}\setlength {\rightskip }{0pt plus 5cm}QString Facturas\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List::genera\discretionary {-}{}{}Filtro ()}{152}
+\contentsline {subsubsection}{\numberline {3.41.2.2}\setlength {\rightskip }{0pt plus 5cm}void Facturas\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List::presenta ()}{153}
+\contentsline {section}{\numberline {3.42}Referencia de la Clase Facturas\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{154}
+\contentsline {subsection}{\numberline {3.42.1}Descripci\'{o}n detallada}{155}
+\contentsline {subsection}{\numberline {3.42.2}Documentaci\'{o}n del constructor y destructor}{155}
+\contentsline {subsubsection}{\numberline {3.42.2.1}\setlength {\rightskip }{0pt plus 5cm}Facturas\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Facturas\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0})}{155}
+\contentsline {section}{\numberline {3.43}Referencia de la Clase Factura\discretionary {-}{}{}View}{156}
+\contentsline {subsection}{\numberline {3.43.1}Descripci\'{o}n detallada}{159}
+\contentsline {subsection}{\numberline {3.43.2}Documentaci\'{o}n del constructor y destructor}{159}
+\contentsline {subsubsection}{\numberline {3.43.2.1}\setlength {\rightskip }{0pt plus 5cm}Factura\discretionary {-}{}{}View::Factura\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{159}
+\contentsline {subsection}{\numberline {3.43.3}Documentaci\'{o}n de las funciones miembro}{160}
+\contentsline {subsubsection}{\numberline {3.43.3.1}\setlength {\rightskip }{0pt plus 5cm}void Factura\discretionary {-}{}{}View::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}agregaralbaran\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{160}
+\contentsline {section}{\numberline {3.44}Referencia de la Clase familiasview}{161}
+\contentsline {subsection}{\numberline {3.44.1}Descripci\'{o}n detallada}{163}
+\contentsline {subsection}{\numberline {3.44.2}Documentaci\'{o}n de las funciones miembro}{163}
+\contentsline {subsubsection}{\numberline {3.44.2.1}\setlength {\rightskip }{0pt plus 5cm}void familiasview::close ()\hspace {0.3cm}{\tt [virtual, slot]}}{163}
+\contentsline {subsubsection}{\numberline {3.44.2.2}\setlength {\rightskip }{0pt plus 5cm}void familiasview::mostrarplantilla ()}{163}
+\contentsline {subsubsection}{\numberline {3.44.2.3}\setlength {\rightskip }{0pt plus 5cm}void familiasview::on\_\discretionary {-}{}{}m\_\discretionary {-}{}{}list\discretionary {-}{}{}Familias\_\discretionary {-}{}{}current\discretionary {-}{}{}Item\discretionary {-}{}{}Changed (QTree\discretionary {-}{}{}Widget\discretionary {-}{}{}Item $\ast $ {\em current}, QTree\discretionary {-}{}{}Widget\discretionary {-}{}{}Item $\ast $ {\em previous})\hspace {0.3cm}{\tt [virtual, slot]}}{163}
+\contentsline {subsubsection}{\numberline {3.44.2.4}\setlength {\rightskip }{0pt plus 5cm}void familiasview::on\_\discretionary {-}{}{}m\_\discretionary {-}{}{}list\discretionary {-}{}{}Familias\_\discretionary {-}{}{}item\discretionary {-}{}{}Double\discretionary {-}{}{}Clicked (QTree\discretionary {-}{}{}Widget\discretionary {-}{}{}Item $\ast $ {\em it})\hspace {0.3cm}{\tt [virtual, slot]}}{164}
+\contentsline {subsubsection}{\numberline {3.44.2.5}\setlength {\rightskip }{0pt plus 5cm}void familiasview::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}borrar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{164}
+\contentsline {subsubsection}{\numberline {3.44.2.6}\setlength {\rightskip }{0pt plus 5cm}void familiasview::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}crear\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{164}
+\contentsline {subsubsection}{\numberline {3.44.2.7}\setlength {\rightskip }{0pt plus 5cm}void familiasview::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}guardar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{164}
+\contentsline {subsubsection}{\numberline {3.44.2.8}\setlength {\rightskip }{0pt plus 5cm}void familiasview::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}imprimir\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{164}
+\contentsline {subsubsection}{\numberline {3.44.2.9}\setlength {\rightskip }{0pt plus 5cm}void familiasview::pintar ()\hspace {0.3cm}{\tt [virtual, slot]}}{164}
+\contentsline {subsubsection}{\numberline {3.44.2.10}\setlength {\rightskip }{0pt plus 5cm}bool familiasview::trata\discretionary {-}{}{}Modificado ()}{164}
+\contentsline {section}{\numberline {3.45}Referencia de la Clase FPago\discretionary {-}{}{}View}{165}
+\contentsline {subsection}{\numberline {3.45.1}Descripci\'{o}n detallada}{167}
+\contentsline {subsection}{\numberline {3.45.2}Documentaci\'{o}n de las funciones miembro}{167}
+\contentsline {subsubsection}{\numberline {3.45.2.1}\setlength {\rightskip }{0pt plus 5cm}bool FPago\discretionary {-}{}{}View::trata\discretionary {-}{}{}Modificado ()}{167}
+\contentsline {section}{\numberline {3.46}Referencia de la Clase Informe\discretionary {-}{}{}Cliente}{168}
+\contentsline {subsection}{\numberline {3.46.1}Descripci\'{o}n detallada}{170}
+\contentsline {subsection}{\numberline {3.46.2}Documentaci\'{o}n del constructor y destructor}{170}
+\contentsline {subsubsection}{\numberline {3.46.2.1}\setlength {\rightskip }{0pt plus 5cm}Informe\discretionary {-}{}{}Cliente::Informe\discretionary {-}{}{}Cliente ({\bf company} $\ast $ {\em comp})}{170}
+\contentsline {subsection}{\numberline {3.46.3}Documentaci\'{o}n de las funciones miembro}{170}
+\contentsline {subsubsection}{\numberline {3.46.3.1}\setlength {\rightskip }{0pt plus 5cm}void Informe\discretionary {-}{}{}Cliente::generar\discretionary {-}{}{}Informe ()}{170}
+\contentsline {section}{\numberline {3.47}Referencia de la Clase Informe\discretionary {-}{}{}Clientes}{172}
+\contentsline {subsection}{\numberline {3.47.1}Descripci\'{o}n detallada}{174}
+\contentsline {subsection}{\numberline {3.47.2}Documentaci\'{o}n del constructor y destructor}{174}
+\contentsline {subsubsection}{\numberline {3.47.2.1}\setlength {\rightskip }{0pt plus 5cm}Informe\discretionary {-}{}{}Clientes::Informe\discretionary {-}{}{}Clientes ({\bf company} $\ast $ {\em comp})}{174}
+\contentsline {subsection}{\numberline {3.47.3}Documentaci\'{o}n de las funciones miembro}{174}
+\contentsline {subsubsection}{\numberline {3.47.3.1}\setlength {\rightskip }{0pt plus 5cm}QString Informe\discretionary {-}{}{}Clientes::generar\discretionary {-}{}{}Cliente (QString {\em idcliente})}{174}
+\contentsline {subsubsection}{\numberline {3.47.3.2}\setlength {\rightskip }{0pt plus 5cm}void Informe\discretionary {-}{}{}Clientes::generar\discretionary {-}{}{}Informe ()}{174}
+\contentsline {section}{\numberline {3.48}Referencia de la Clase Informe\discretionary {-}{}{}Referencia}{176}
+\contentsline {subsection}{\numberline {3.48.1}Descripci\'{o}n detallada}{178}
+\contentsline {subsection}{\numberline {3.48.2}Documentaci\'{o}n de las funciones miembro}{178}
+\contentsline {subsubsection}{\numberline {3.48.2.1}\setlength {\rightskip }{0pt plus 5cm}void Informe\discretionary {-}{}{}Referencia::generarinforme ()}{178}
+\contentsline {section}{\numberline {3.49}Referencia de la Clase Inventario}{179}
+\contentsline {subsection}{\numberline {3.49.1}Descripci\'{o}n detallada}{181}
+\contentsline {subsection}{\numberline {3.49.2}Documentaci\'{o}n de las funciones miembro}{181}
+\contentsline {subsubsection}{\numberline {3.49.2.1}\setlength {\rightskip }{0pt plus 5cm}void Inventario::pinta\discretionary {-}{}{}Inventario ()}{181}
+\contentsline {section}{\numberline {3.50}Referencia de la Clase Inventarios\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{182}
+\contentsline {subsection}{\numberline {3.50.1}Descripci\'{o}n detallada}{182}
+\contentsline {subsection}{\numberline {3.50.2}Documentaci\'{o}n del constructor y destructor}{183}
+\contentsline {subsubsection}{\numberline {3.50.2.1}\setlength {\rightskip }{0pt plus 5cm}Inventarios\discretionary {-}{}{}Sub\discretionary {-}{}{}Form::Inventarios\discretionary {-}{}{}Sub\discretionary {-}{}{}Form (QWidget $\ast $ {\em parent} = {\tt 0})}{183}
+\contentsline {section}{\numberline {3.51}Referencia de la Clase Inventarios\discretionary {-}{}{}View}{184}
+\contentsline {subsection}{\numberline {3.51.1}Descripci\'{o}n detallada}{186}
+\contentsline {subsection}{\numberline {3.51.2}Documentaci\'{o}n de las funciones miembro}{186}
+\contentsline {subsubsection}{\numberline {3.51.2.1}\setlength {\rightskip }{0pt plus 5cm}void Inventarios\discretionary {-}{}{}View::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}borrar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{186}
+\contentsline {section}{\numberline {3.52}Referencia de la Clase Inventario\discretionary {-}{}{}View}{187}
+\contentsline {subsection}{\numberline {3.52.1}Descripci\'{o}n detallada}{188}
+\contentsline {subsection}{\numberline {3.52.2}Documentaci\'{o}n del constructor y destructor}{188}
+\contentsline {subsubsection}{\numberline {3.52.2.1}\setlength {\rightskip }{0pt plus 5cm}Inventario\discretionary {-}{}{}View::Inventario\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{188}
+\contentsline {section}{\numberline {3.53}Referencia de la Clase linpresupuesto}{190}
+\contentsline {subsection}{\numberline {3.53.1}Descripci\'{o}n detallada}{192}
+\contentsline {subsection}{\numberline {3.53.2}Documentaci\'{o}n del constructor y destructor}{192}
+\contentsline {subsubsection}{\numberline {3.53.2.1}\setlength {\rightskip }{0pt plus 5cm}linpresupuesto::linpresupuesto ({\bf company} $\ast $, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString)}{192}
+\contentsline {subsection}{\numberline {3.53.3}Documentaci\'{o}n de las funciones miembro}{193}
+\contentsline {subsubsection}{\numberline {3.53.3.1}\setlength {\rightskip }{0pt plus 5cm}void linpresupuesto::setidarticulo (QString)}{193}
+\contentsline {section}{\numberline {3.54}Referencia de la Clase List\discretionary {-}{}{}Almacen\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{194}
+\contentsline {subsection}{\numberline {3.54.1}Descripci\'{o}n detallada}{195}
+\contentsline {section}{\numberline {3.55}Referencia de la Clase List\discretionary {-}{}{}Almacen\discretionary {-}{}{}View}{196}
+\contentsline {subsection}{\numberline {3.55.1}Descripci\'{o}n detallada}{198}
+\contentsline {section}{\numberline {3.56}Referencia de la Clase List\discretionary {-}{}{}Comp\discretionary {-}{}{}Articulo}{199}
+\contentsline {subsection}{\numberline {3.56.1}Descripci\'{o}n detallada}{201}
+\contentsline {subsection}{\numberline {3.56.2}Documentaci\'{o}n de las funciones miembro}{201}
+\contentsline {subsubsection}{\numberline {3.56.2.1}\setlength {\rightskip }{0pt plus 5cm}void List\discretionary {-}{}{}Comp\discretionary {-}{}{}Articulo::cargar (QString {\em idarticulo})}{201}
+\contentsline {section}{\numberline {3.57}Referencia de la Clase List\discretionary {-}{}{}Comp\discretionary {-}{}{}Articulo\discretionary {-}{}{}View}{202}
+\contentsline {subsection}{\numberline {3.57.1}Descripci\'{o}n detallada}{203}
+\contentsline {subsection}{\numberline {3.57.2}Documentaci\'{o}n de las funciones miembro}{203}
+\contentsline {subsubsection}{\numberline {3.57.2.1}\setlength {\rightskip }{0pt plus 5cm}void List\discretionary {-}{}{}Comp\discretionary {-}{}{}Articulo\discretionary {-}{}{}View::pressed\discretionary {-}{}{}Asterisk (int {\em row}, int {\em col})\hspace {0.3cm}{\tt [virtual, slot]}}{203}
+\contentsline {section}{\numberline {3.58}Referencia de la Clase List\discretionary {-}{}{}Configuracion\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{204}
+\contentsline {subsection}{\numberline {3.58.1}Descripci\'{o}n detallada}{205}
+\contentsline {section}{\numberline {3.59}Referencia de la Clase List\discretionary {-}{}{}Configuracion\discretionary {-}{}{}View}{206}
+\contentsline {subsection}{\numberline {3.59.1}Descripci\'{o}n detallada}{208}
+\contentsline {section}{\numberline {3.60}Referencia de la Clase List\discretionary {-}{}{}Control\discretionary {-}{}{}Stock\discretionary {-}{}{}View}{209}
+\contentsline {subsection}{\numberline {3.60.1}Descripci\'{o}n detallada}{210}
+\contentsline {section}{\numberline {3.61}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View}{211}
+\contentsline {subsection}{\numberline {3.61.1}Descripci\'{o}n detallada}{212}
+\contentsline {section}{\numberline {3.62}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Albaran\discretionary {-}{}{}Prov\discretionary {-}{}{}View}{213}
+\contentsline {subsection}{\numberline {3.62.1}Descripci\'{o}n detallada}{214}
+\contentsline {section}{\numberline {3.63}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Factura\discretionary {-}{}{}Prov\discretionary {-}{}{}View}{215}
+\contentsline {subsection}{\numberline {3.63.1}Descripci\'{o}n detallada}{216}
+\contentsline {section}{\numberline {3.64}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Factura\discretionary {-}{}{}View}{217}
+\contentsline {subsection}{\numberline {3.64.1}Descripci\'{o}n detallada}{218}
+\contentsline {section}{\numberline {3.65}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View}{219}
+\contentsline {subsection}{\numberline {3.65.1}Descripci\'{o}n detallada}{220}
+\contentsline {section}{\numberline {3.66}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{221}
+\contentsline {subsection}{\numberline {3.66.1}Descripci\'{o}n detallada}{222}
+\contentsline {section}{\numberline {3.67}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Presupuesto}{223}
+\contentsline {subsection}{\numberline {3.67.1}Descripci\'{o}n detallada}{225}
+\contentsline {subsection}{\numberline {3.67.2}Documentaci\'{o}n de las funciones miembro}{225}
+\contentsline {subsubsection}{\numberline {3.67.2.1}\setlength {\rightskip }{0pt plus 5cm}int List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Presupuesto::carga\discretionary {-}{}{}Descuentos (QString {\em idbudget})}{225}
+\contentsline {section}{\numberline {3.68}Referencia de la Clase List\discretionary {-}{}{}Descuento\discretionary {-}{}{}Presupuesto\discretionary {-}{}{}View}{226}
+\contentsline {subsection}{\numberline {3.68.1}Descripci\'{o}n detallada}{227}
+\contentsline {section}{\numberline {3.69}Referencia de la Clase List\discretionary {-}{}{}Lin\discretionary {-}{}{}Albaran\discretionary {-}{}{}Cliente\discretionary {-}{}{}View}{228}
+\contentsline {subsection}{\numberline {3.69.1}Descripci\'{o}n detallada}{229}
+\contentsline {section}{\numberline {3.70}Referencia de la Clase List\discretionary {-}{}{}Lin\discretionary {-}{}{}Albaran\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{230}
+\contentsline {subsection}{\numberline {3.70.1}Descripci\'{o}n detallada}{231}
+\contentsline {section}{\numberline {3.71}Referencia de la Clase List\discretionary {-}{}{}Lin\discretionary {-}{}{}Factura\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{232}
+\contentsline {subsection}{\numberline {3.71.1}Descripci\'{o}n detallada}{233}
+\contentsline {section}{\numberline {3.72}Referencia de la Clase List\discretionary {-}{}{}Lin\discretionary {-}{}{}Factura\discretionary {-}{}{}View}{234}
+\contentsline {subsection}{\numberline {3.72.1}Descripci\'{o}n detallada}{235}
+\contentsline {section}{\numberline {3.73}Referencia de la Clase List\discretionary {-}{}{}Lin\discretionary {-}{}{}Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View}{236}
+\contentsline {subsection}{\numberline {3.73.1}Descripci\'{o}n detallada}{237}
+\contentsline {section}{\numberline {3.74}Referencia de la Clase List\discretionary {-}{}{}Lin\discretionary {-}{}{}Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{238}
+\contentsline {subsection}{\numberline {3.74.1}Descripci\'{o}n detallada}{239}
+\contentsline {section}{\numberline {3.75}Referencia de la Clase listlinpresupuesto}{240}
+\contentsline {subsection}{\numberline {3.75.1}Descripci\'{o}n detallada}{242}
+\contentsline {subsection}{\numberline {3.75.2}Documentaci\'{o}n de las funciones miembro}{242}
+\contentsline {subsubsection}{\numberline {3.75.2.1}\setlength {\rightskip }{0pt plus 5cm}int listlinpresupuesto::charge\discretionary {-}{}{}Budget\discretionary {-}{}{}Lines (QString {\em idbudget})}{242}
+\contentsline {section}{\numberline {3.76}Referencia de la Clase listlinpresupuestoview}{243}
+\contentsline {subsection}{\numberline {3.76.1}Descripci\'{o}n detallada}{244}
+\contentsline {section}{\numberline {3.77}Referencia de la Clase List\discretionary {-}{}{}Provincias\discretionary {-}{}{}View}{245}
+\contentsline {subsection}{\numberline {3.77.1}Descripci\'{o}n detallada}{247}
+\contentsline {section}{\numberline {3.78}Referencia de la Clase List\discretionary {-}{}{}Serie\discretionary {-}{}{}Factura\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{248}
+\contentsline {subsection}{\numberline {3.78.1}Descripci\'{o}n detallada}{249}
+\contentsline {section}{\numberline {3.79}Referencia de la Clase List\discretionary {-}{}{}Serie\discretionary {-}{}{}Factura\discretionary {-}{}{}View}{250}
+\contentsline {subsection}{\numberline {3.79.1}Descripci\'{o}n detallada}{252}
+\contentsline {section}{\numberline {3.80}Referencia de la Clase Pago}{253}
+\contentsline {subsection}{\numberline {3.80.1}Descripci\'{o}n detallada}{255}
+\contentsline {section}{\numberline {3.81}Referencia de la Clase Pagos\discretionary {-}{}{}List}{256}
+\contentsline {subsection}{\numberline {3.81.1}Descripci\'{o}n detallada}{258}
+\contentsline {subsection}{\numberline {3.81.2}Documentaci\'{o}n de las funciones miembro}{258}
+\contentsline {subsubsection}{\numberline {3.81.2.1}\setlength {\rightskip }{0pt plus 5cm}void Pagos\discretionary {-}{}{}List::presentar ()}{258}
+\contentsline {section}{\numberline {3.82}Referencia de la Clase Pagos\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{259}
+\contentsline {subsection}{\numberline {3.82.1}Descripci\'{o}n detallada}{259}
+\contentsline {subsection}{\numberline {3.82.2}Documentaci\'{o}n del constructor y destructor}{260}
+\contentsline {subsubsection}{\numberline {3.82.2.1}\setlength {\rightskip }{0pt plus 5cm}Pagos\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form::Pagos\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form (QWidget $\ast $ {\em parent} = {\tt 0})}{260}
+\contentsline {section}{\numberline {3.83}Referencia de la Clase Pago\discretionary {-}{}{}View}{261}
+\contentsline {subsection}{\numberline {3.83.1}Descripci\'{o}n detallada}{263}
+\contentsline {subsection}{\numberline {3.83.2}Documentaci\'{o}n del constructor y destructor}{263}
+\contentsline {subsubsection}{\numberline {3.83.2.1}\setlength {\rightskip }{0pt plus 5cm}Pago\discretionary {-}{}{}View::Pago\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent})}{263}
+\contentsline {section}{\numberline {3.84}Referencia de la Clase Pedido\discretionary {-}{}{}Cliente}{264}
+\contentsline {subsection}{\numberline {3.84.1}Descripci\'{o}n detallada}{268}
+\contentsline {subsection}{\numberline {3.84.2}Documentaci\'{o}n de las funciones miembro}{268}
+\contentsline {subsubsection}{\numberline {3.84.2.1}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Cliente::calculaypintatotales ()\hspace {0.3cm}{\tt [virtual]}}{268}
+\contentsline {subsubsection}{\numberline {3.84.2.2}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Cliente::imprimir\discretionary {-}{}{}Pedido\discretionary {-}{}{}Cliente ()\hspace {0.3cm}{\tt [virtual]}}{268}
+\contentsline {section}{\numberline {3.85}Referencia de la Clase Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View}{269}
+\contentsline {subsection}{\numberline {3.85.1}Descripci\'{o}n detallada}{272}
+\contentsline {subsection}{\numberline {3.85.2}Documentaci\'{o}n del constructor y destructor}{272}
+\contentsline {subsubsection}{\numberline {3.85.2.1}\setlength {\rightskip }{0pt plus 5cm}Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View::Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{272}
+\contentsline {subsection}{\numberline {3.85.3}Documentaci\'{o}n de las funciones miembro}{273}
+\contentsline {subsubsection}{\numberline {3.85.3.1}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Cliente\discretionary {-}{}{}View::generar\discretionary {-}{}{}Albaran ()}{273}
+\contentsline {section}{\numberline {3.86}Referencia de la Clase Pedido\discretionary {-}{}{}Proveedor}{274}
+\contentsline {subsection}{\numberline {3.86.1}Descripci\'{o}n detallada}{278}
+\contentsline {subsection}{\numberline {3.86.2}Documentaci\'{o}n de las funciones miembro}{278}
+\contentsline {subsubsection}{\numberline {3.86.2.1}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Proveedor::calculaypintatotales ()}{278}
+\contentsline {subsubsection}{\numberline {3.86.2.2}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Proveedor::imprimir\discretionary {-}{}{}Pedido\discretionary {-}{}{}Proveedor ()}{278}
+\contentsline {subsubsection}{\numberline {3.86.2.3}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Proveedor::pintar ()\hspace {0.3cm}{\tt [virtual]}}{278}
+\contentsline {section}{\numberline {3.87}Referencia de la Clase Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View}{279}
+\contentsline {subsection}{\numberline {3.87.1}Descripci\'{o}n detallada}{282}
+\contentsline {subsection}{\numberline {3.87.2}Documentaci\'{o}n del constructor y destructor}{282}
+\contentsline {subsubsection}{\numberline {3.87.2.1}\setlength {\rightskip }{0pt plus 5cm}Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View::Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{282}
+\contentsline {subsection}{\numberline {3.87.3}Documentaci\'{o}n de las funciones miembro}{283}
+\contentsline {subsubsection}{\numberline {3.87.3.1}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View::generar\discretionary {-}{}{}Albaran ()}{283}
+\contentsline {subsubsection}{\numberline {3.87.3.2}\setlength {\rightskip }{0pt plus 5cm}void Pedido\discretionary {-}{}{}Proveedor\discretionary {-}{}{}View::inicialize ()}{283}
+\contentsline {section}{\numberline {3.88}Referencia de la Clase Pedidos\discretionary {-}{}{}Cliente\discretionary {-}{}{}List}{284}
+\contentsline {subsection}{\numberline {3.88.1}Descripci\'{o}n detallada}{286}
+\contentsline {subsection}{\numberline {3.88.2}Documentaci\'{o}n de las funciones miembro}{286}
+\contentsline {subsubsection}{\numberline {3.88.2.1}\setlength {\rightskip }{0pt plus 5cm}QString Pedidos\discretionary {-}{}{}Cliente\discretionary {-}{}{}List::generar\discretionary {-}{}{}Filtro ()}{286}
+\contentsline {subsubsection}{\numberline {3.88.2.2}\setlength {\rightskip }{0pt plus 5cm}void Pedidos\discretionary {-}{}{}Cliente\discretionary {-}{}{}List::presenta ()}{287}
+\contentsline {section}{\numberline {3.89}Referencia de la Clase Pedidos\discretionary {-}{}{}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{288}
+\contentsline {subsection}{\numberline {3.89.1}Descripci\'{o}n detallada}{289}
+\contentsline {subsection}{\numberline {3.89.2}Documentaci\'{o}n del constructor y destructor}{289}
+\contentsline {subsubsection}{\numberline {3.89.2.1}\setlength {\rightskip }{0pt plus 5cm}Pedidos\discretionary {-}{}{}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Pedidos\discretionary {-}{}{}Cliente\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0}, const char $\ast $ {\em name} = {\tt 0})}{289}
+\contentsline {section}{\numberline {3.90}Referencia de la Clase Pedidos\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List}{290}
+\contentsline {subsection}{\numberline {3.90.1}Descripci\'{o}n detallada}{292}
+\contentsline {subsection}{\numberline {3.90.2}Documentaci\'{o}n de las funciones miembro}{292}
+\contentsline {subsubsection}{\numberline {3.90.2.1}\setlength {\rightskip }{0pt plus 5cm}QString Pedidos\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List::generar\discretionary {-}{}{}Filtro ()}{292}
+\contentsline {subsubsection}{\numberline {3.90.2.2}\setlength {\rightskip }{0pt plus 5cm}void Pedidos\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List::presenta ()}{293}
+\contentsline {section}{\numberline {3.91}Referencia de la Clase Pedidos\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{294}
+\contentsline {subsection}{\numberline {3.91.1}Descripci\'{o}n detallada}{294}
+\contentsline {subsection}{\numberline {3.91.2}Documentaci\'{o}n del constructor y destructor}{295}
+\contentsline {subsubsection}{\numberline {3.91.2.1}\setlength {\rightskip }{0pt plus 5cm}Pedidos\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Pedidos\discretionary {-}{}{}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0})}{295}
+\contentsline {section}{\numberline {3.92}Referencia de la Clase presupuesto}{296}
+\contentsline {subsection}{\numberline {3.92.1}Descripci\'{o}n detallada}{301}
+\contentsline {subsection}{\numberline {3.92.2}Documentaci\'{o}n de las funciones miembro}{301}
+\contentsline {subsubsection}{\numberline {3.92.2.1}\setlength {\rightskip }{0pt plus 5cm}void presupuesto::calculaypintatotales ()\hspace {0.3cm}{\tt [virtual]}}{301}
+\contentsline {subsubsection}{\numberline {3.92.2.2}\setlength {\rightskip }{0pt plus 5cm}int presupuesto::cargar (QString {\em idbudget})\hspace {0.3cm}{\tt [virtual]}}{301}
+\contentsline {subsubsection}{\numberline {3.92.2.3}\setlength {\rightskip }{0pt plus 5cm}void presupuesto::imprimir\discretionary {-}{}{}Presupuesto ()\hspace {0.3cm}{\tt [virtual]}}{301}
+\contentsline {section}{\numberline {3.93}Referencia de la Clase Presupuesto\discretionary {-}{}{}List}{303}
+\contentsline {subsection}{\numberline {3.93.1}Descripci\'{o}n detallada}{305}
+\contentsline {subsection}{\numberline {3.93.2}Documentaci\'{o}n de las funciones miembro}{305}
+\contentsline {subsubsection}{\numberline {3.93.2.1}\setlength {\rightskip }{0pt plus 5cm}QString Presupuesto\discretionary {-}{}{}List::genera\discretionary {-}{}{}Filtro ()}{305}
+\contentsline {subsubsection}{\numberline {3.93.2.2}\setlength {\rightskip }{0pt plus 5cm}void Presupuesto\discretionary {-}{}{}List::presenta ()}{306}
+\contentsline {section}{\numberline {3.94}Referencia de la Clase Presupuesto\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form}{307}
+\contentsline {subsection}{\numberline {3.94.1}Descripci\'{o}n detallada}{308}
+\contentsline {subsection}{\numberline {3.94.2}Documentaci\'{o}n del constructor y destructor}{308}
+\contentsline {subsubsection}{\numberline {3.94.2.1}\setlength {\rightskip }{0pt plus 5cm}Presupuesto\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form::Presupuesto\discretionary {-}{}{}List\discretionary {-}{}{}Sub\discretionary {-}{}{}Form (QWidget $\ast $ {\em parent} = {\tt 0}, const char $\ast $ {\em name} = {\tt 0})}{308}
+\contentsline {section}{\numberline {3.95}Referencia de la Clase Presupuesto\discretionary {-}{}{}View}{309}
+\contentsline {subsection}{\numberline {3.95.1}Descripci\'{o}n detallada}{313}
+\contentsline {subsection}{\numberline {3.95.2}Documentaci\'{o}n del constructor y destructor}{314}
+\contentsline {subsubsection}{\numberline {3.95.2.1}\setlength {\rightskip }{0pt plus 5cm}Presupuesto\discretionary {-}{}{}View::Presupuesto\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent})}{314}
+\contentsline {subsection}{\numberline {3.95.3}Documentaci\'{o}n de las funciones miembro}{314}
+\contentsline {subsubsection}{\numberline {3.95.3.1}\setlength {\rightskip }{0pt plus 5cm}int Presupuesto\discretionary {-}{}{}View::cargar (QString {\em id})\hspace {0.3cm}{\tt [virtual]}}{314}
+\contentsline {subsubsection}{\numberline {3.95.3.2}\setlength {\rightskip }{0pt plus 5cm}int Presupuesto\discretionary {-}{}{}View::guardar ()\hspace {0.3cm}{\tt [virtual]}}{314}
+\contentsline {section}{\numberline {3.96}Referencia de la Clase Proveedor\discretionary {-}{}{}List}{315}
+\contentsline {subsection}{\numberline {3.96.1}Descripci\'{o}n detallada}{317}
+\contentsline {subsection}{\numberline {3.96.2}Documentaci\'{o}n de las funciones miembro}{318}
+\contentsline {subsubsection}{\numberline {3.96.2.1}\setlength {\rightskip }{0pt plus 5cm}void Proveedor\discretionary {-}{}{}List::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}borrar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{318}
+\contentsline {section}{\numberline {3.97}Referencia de la Clase Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform}{319}
+\contentsline {subsection}{\numberline {3.97.1}Descripci\'{o}n detallada}{320}
+\contentsline {subsection}{\numberline {3.97.2}Documentaci\'{o}n del constructor y destructor}{320}
+\contentsline {subsubsection}{\numberline {3.97.2.1}\setlength {\rightskip }{0pt plus 5cm}Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform::Proveedor\discretionary {-}{}{}List\discretionary {-}{}{}Subform (QWidget $\ast $ {\em parent} = {\tt 0})}{320}
+\contentsline {section}{\numberline {3.98}Referencia de la Clase Proveedor\discretionary {-}{}{}View}{321}
+\contentsline {subsection}{\numberline {3.98.1}Descripci\'{o}n detallada}{323}
+\contentsline {subsection}{\numberline {3.98.2}Documentaci\'{o}n del constructor y destructor}{323}
+\contentsline {subsubsection}{\numberline {3.98.2.1}\setlength {\rightskip }{0pt plus 5cm}Proveedor\discretionary {-}{}{}View::Proveedor\discretionary {-}{}{}View ({\bf company} $\ast $ {\em comp}, QWidget $\ast $ {\em parent} = {\tt 0})}{323}
+\contentsline {subsection}{\numberline {3.98.3}Documentaci\'{o}n de las funciones miembro}{323}
+\contentsline {subsubsection}{\numberline {3.98.3.1}\setlength {\rightskip }{0pt plus 5cm}int Proveedor\discretionary {-}{}{}View::cargar (QString {\em idprov})\hspace {0.3cm}{\tt [virtual]}}{323}
+\contentsline {subsubsection}{\numberline {3.98.3.2}\setlength {\rightskip }{0pt plus 5cm}int Proveedor\discretionary {-}{}{}View::guardar ()\hspace {0.3cm}{\tt [virtual]}}{323}
+\contentsline {section}{\numberline {3.99}Referencia de la Clase Splash}{324}
+\contentsline {subsection}{\numberline {3.99.1}Descripci\'{o}n detallada}{324}
+\contentsline {subsection}{\numberline {3.99.2}Documentaci\'{o}n del constructor y destructor}{324}
+\contentsline {subsubsection}{\numberline {3.99.2.1}\setlength {\rightskip }{0pt plus 5cm}Splash::Splash ()}{324}
+\contentsline {subsection}{\numberline {3.99.3}Documentaci\'{o}n de las funciones miembro}{324}
+\contentsline {subsubsection}{\numberline {3.99.3.1}\setlength {\rightskip }{0pt plus 5cm}void Splash::paint ()\hspace {0.3cm}{\tt [slot]}}{324}
+\contentsline {section}{\numberline {3.100}Referencia de la Clase Sub\discretionary {-}{}{}Form2Bf}{325}
+\contentsline {subsection}{\numberline {3.100.1}Descripci\'{o}n detallada}{325}
+\contentsline {subsection}{\numberline {3.100.2}Documentaci\'{o}n de las funciones miembro}{325}
+\contentsline {subsubsection}{\numberline {3.100.2.1}\setlength {\rightskip }{0pt plus 5cm}void Sub\discretionary {-}{}{}Form2Bf::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}list\_\discretionary {-}{}{}pressed\discretionary {-}{}{}Asterisk (int {\em row}, int {\em col})\hspace {0.3cm}{\tt [virtual, slot]}}{325}
+\contentsline {subsubsection}{\numberline {3.100.2.2}\setlength {\rightskip }{0pt plus 5cm}void Sub\discretionary {-}{}{}Form2Bf::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}list\_\discretionary {-}{}{}pressed\discretionary {-}{}{}Minus (int {\em row}, int {\em col})\hspace {0.3cm}{\tt [virtual, slot]}}{325}
+\contentsline {section}{\numberline {3.101}Referencia de la Clase Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List}{326}
+\contentsline {subsection}{\numberline {3.101.1}Descripci\'{o}n detallada}{328}
+\contentsline {subsection}{\numberline {3.101.2}Documentaci\'{o}n de las funciones miembro}{328}
+\contentsline {subsubsection}{\numberline {3.101.2.1}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::close ()\hspace {0.3cm}{\tt [virtual, slot]}}{328}
+\contentsline {subsubsection}{\numberline {3.101.2.2}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::mostrarplantilla ()}{328}
+\contentsline {subsubsection}{\numberline {3.101.2.3}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::on\_\discretionary {-}{}{}m\_\discretionary {-}{}{}list\discretionary {-}{}{}Tipos\_\discretionary {-}{}{}current\discretionary {-}{}{}Item\discretionary {-}{}{}Changed (QTree\discretionary {-}{}{}Widget\discretionary {-}{}{}Item $\ast $ {\em current}, QTree\discretionary {-}{}{}Widget\discretionary {-}{}{}Item $\ast $ {\em previous})\hspace {0.3cm}{\tt [virtual, slot]}}{328}
+\contentsline {subsubsection}{\numberline {3.101.2.4}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::on\_\discretionary {-}{}{}m\_\discretionary {-}{}{}list\discretionary {-}{}{}Tipos\_\discretionary {-}{}{}item\discretionary {-}{}{}Double\discretionary {-}{}{}Clicked (QTree\discretionary {-}{}{}Widget\discretionary {-}{}{}Item $\ast $ {\em item}, int {\em column})\hspace {0.3cm}{\tt [virtual, slot]}}{329}
+\contentsline {subsubsection}{\numberline {3.101.2.5}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}borrar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{329}
+\contentsline {subsubsection}{\numberline {3.101.2.6}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}crear\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{329}
+\contentsline {subsubsection}{\numberline {3.101.2.7}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::on\_\discretionary {-}{}{}mui\_\discretionary {-}{}{}guardar\_\discretionary {-}{}{}clicked ()\hspace {0.3cm}{\tt [virtual, slot]}}{329}
+\contentsline {subsubsection}{\numberline {3.101.2.8}\setlength {\rightskip }{0pt plus 5cm}void Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::pintar ()\hspace {0.3cm}{\tt [virtual, slot]}}{329}
+\contentsline {subsubsection}{\numberline {3.101.2.9}\setlength {\rightskip }{0pt plus 5cm}bool Tipo\discretionary {-}{}{}Articulo\discretionary {-}{}{}List::trata\discretionary {-}{}{}Modificado ()}{329}
+\contentsline {section}{\numberline {3.102}Referencia de la Clase Trabajador\discretionary {-}{}{}View}{330}
+\contentsline {subsection}{\numberline {3.102.1}Descripci\'{o}n detallada}{332}
+\contentsline {subsection}{\numberline {3.102.2}Documentaci\'{o}n de las funciones miembro}{332}
+\contentsline {subsubsection}{\numberline {3.102.2.1}\setlength {\rightskip }{0pt plus 5cm}bool Trabajador\discretionary {-}{}{}View::trata\discretionary {-}{}{}Modificado ()}{332}

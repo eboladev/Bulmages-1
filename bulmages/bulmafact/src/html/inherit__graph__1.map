@@ -1,0 +1,3 @@
+base referer
+rect $classAlbaranCliente.html 9,8 118,32
+rect $classAlbaranClienteView.html 167,8 306,32

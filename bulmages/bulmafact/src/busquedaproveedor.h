@@ -29,6 +29,10 @@
 
 class company;
 
+
+/// Permite buscar y seleccionar un proveedor.
+/** Muestra la parte del formulario que permite buscar y seleccionar un
+    proveedor. */
 class BusquedaProveedor : public QWidget, public Ui_BusquedaProveedorBase {
     Q_OBJECT
 

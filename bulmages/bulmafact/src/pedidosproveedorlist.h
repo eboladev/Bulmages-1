@@ -28,6 +28,8 @@
 #include "subform2bf.h"
 
 
+/// Administra las l&iacute;neas de detalle de pedidos a proveedor.
+/** */
 class PedidosProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
@@ -35,17 +37,15 @@ public:
     PedidosProveedorListSubform(QWidget *parent = 0);
     ~PedidosProveedorListSubform() {}
     ;
-
     virtual void cargar() {
         _depura("PedidosProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM pedidoproveedor";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 * cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
-
     virtual void cargar(QString query) {
-	SubForm3::cargar(query);
+        SubForm3::cargar(query);
     };
 
 };
@@ -54,7 +54,9 @@ public:
 #include "ui_pedidosproveedorlistbase.h"
 
 
-class PedidosProveedorList : public QWidget,  public Ui_PedidosProveedorListBase {
+/// Muestra y administra la ventana con la informaci&oacute;n de los pedidos a proveedor.
+/** */
+class PedidosProveedorList : public QWidget, public Ui_PedidosProveedorListBase {
     Q_OBJECT
 
 private:
@@ -79,7 +81,7 @@ public:
     void setcompany(company *comp) {
         m_companyact = comp;
         m_proveedor->setcompany(comp);
-	mui_list->setcompany(comp);
+        mui_list->setcompany(comp);
     };
     void hideBotonera() {
         m_botonera->hide();
@@ -109,8 +111,8 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
-		on_mui_actualizar_clicked();
+        if(text.size() >= 3)
+            on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();

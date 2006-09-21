@@ -26,8 +26,10 @@
 
 class company;
 
-class InformeReferencia {
 
+/// Genera un informe utilizando una referencia.
+/** */
+class InformeReferencia {
 private:
     QString m_referencia;
     company* companyact;
@@ -42,9 +44,9 @@ public:
 };
 
 
-
+/// Genera un informe utilizando un identificador de cliente.
+/** */
 class InformeCliente {
-
 private:
     QString m_idcliente;
     company* companyact;
@@ -59,8 +61,9 @@ public:
 };
 
 
+/// Genera un informe de todos los cliente.
+/** */
 class InformeClientes {
-
 private:
     company* companyact;
 

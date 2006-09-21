@@ -29,6 +29,10 @@
 
 class company;
 
+
+/// Permite buscar y seleccionar una familia de art&iacute;culos.
+/** Muestra la parte del formulario que permite buscar y seleccionar una
+    familia de art&iacute;culos. */
 class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase {
     Q_OBJECT
 

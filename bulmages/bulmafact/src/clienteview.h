@@ -28,7 +28,10 @@
 
 class company;
 
-class ClienteView :  public QWidget, public Ui_ClienteBase, public Cliente, public dialogChanges  {
+
+/// Muestra la ficha de un cliente.
+/** */
+class ClienteView : public QWidget, public Ui_ClienteBase, public Cliente, public dialogChanges  {
     Q_OBJECT
 
 public:
@@ -106,7 +109,7 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked() {
         if (!guardar())
-        close();
+            close();
     };
     virtual void on_mui_informe_clicked();
 };

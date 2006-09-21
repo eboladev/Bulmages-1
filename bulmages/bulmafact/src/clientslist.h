@@ -26,6 +26,8 @@
 #include "subform2bf.h"
 
 
+/// Administra el detalle de la lista de clientes.
+/** */
 class ClienteListSubform : public SubForm2Bf {
     Q_OBJECT
 
@@ -35,9 +37,12 @@ public:
     ;
 };
 
+
 #include "ui_clientslistbase.h"
 
 
+/// Administra la lista de clientes.
+/** */
 class ClientsList : public QWidget, public Ui_ClientsListBase, public pgimportfiles {
     Q_OBJECT
 

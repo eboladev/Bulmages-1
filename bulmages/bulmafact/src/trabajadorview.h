@@ -29,6 +29,8 @@
 class company;
 
 
+/// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
+/** */
 class TrabajadorView : public QWidget, private Ui_TrabajadorBase, dialogChanges {
     Q_OBJECT
 

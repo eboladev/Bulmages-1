@@ -141,10 +141,10 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
 }
 
 
-/// Se encarga de generar una factura a partir de un albaran.
+/// Se encarga de generar una factura a partir de un albar&aacute;n.
 void AlbaranClienteView::generarFactura() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
-    /// y salimos de la funcion.
+    /// y salimos de la funci&oacute;n.
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
@@ -158,7 +158,7 @@ void AlbaranClienteView::generarFactura() {
     delete cur;
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
-    /// Si no salimos de la funcion.
+    /// Si no salimos de la funci&oacute;n.
     if (QMessageBox::question(this,
                               tr("Factura inexistente"),
                               tr("No existe una factura asociada a este albaran. Desea crearla?"),
@@ -211,16 +211,16 @@ void AlbaranClienteView::agregarFactura() {
     FacturasList *fac = new FacturasList(companyact, diag, 0, FacturasList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
-    /// Hacemos que las opciones de filtrado del listado ya esten bien.
+    /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
     fac->m_cliente->setidcliente(DBvalue("idcliente"));
     fac->on_mui_actualizar_clicked();
 
-    /// Lanzamos el dialogo.
+    /// Lanzamos el di&aacute;logo.
     diag->exec();
     QString idfactura = fac->idfactura();
     delete diag;
 
-    /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operacion.
+    /// Si no hay idfactura es que hemos abortado y por tanto cancelamos la operaci&oacute;n.
     if (idfactura == "")
         return;
 
@@ -228,7 +228,7 @@ void AlbaranClienteView::agregarFactura() {
     FacturaView *bud = companyact->newFacturaView();
     bud->cargar(idfactura);
 
-    /// Agregamos en los comentarios que se ha añadido este albaran.
+    /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
     bud->pintaComentFactura(bud->DBvalue("comentfactura") + tr("Num. albaran") + DBvalue("numalbaran") + "\n" );
 
     companyact->m_pWorkspace->addWindow(bud);
@@ -303,7 +303,7 @@ int AlbaranClienteView::guardar() {
 }
 
 
-/// Crea un nuevo cobro para el albaran seleccionado.
+/// Crea un nuevo cobro para el albar&aacute;n seleccionado.
 void AlbaranClienteView::on_mui_cobrar_clicked() {
     CobroView *bud = companyact->newCobroView();
     bud->setidcliente(DBvalue("idcliente"));

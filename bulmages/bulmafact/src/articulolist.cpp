@@ -60,7 +60,6 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         mui_imprimir->setHidden(TRUE);
     } // end if
 
-
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
 }
@@ -110,7 +109,7 @@ void ArticuloList::on_mui_editar_clicked() {
 
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::INIT_destructor()\n", 0);
-    if(m_modo == EditMode)
+    if (m_modo == EditMode)
         m_companyact->sacaWindow(this);
     _depura("ArticuloList::END_destructor()\n", 0);
 }

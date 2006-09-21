@@ -28,6 +28,8 @@
 #include "subform2bf.h"
 
 
+/// Administra el detalle del listado de facturas de proveedor.
+/** */
 class FacturasProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
@@ -45,7 +47,7 @@ public slots:
         delete cur;
     };
     virtual void cargar(QString query) {
-	SubForm3::cargar(query);
+        SubForm3::cargar(query);
     };
 };
 
@@ -53,6 +55,8 @@ public slots:
 #include "ui_facturasplistbase.h"
 
 
+/// Administra el listado de facturas de proveedor.
+/** */
 class FacturasProveedorList : public QWidget, public Ui_FacturasProveedorListBase {
     Q_OBJECT
 
@@ -114,8 +118,8 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
-		on_mui_actualizar_clicked();
+        if(text.size() >=3)
+            on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();

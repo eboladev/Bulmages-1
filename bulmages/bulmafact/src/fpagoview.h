@@ -28,21 +28,24 @@
 
 class company;
 
+
+/// Muestra y administra la ventana de formas de pago.
+/** */
 class FPagoView : public QWidget, private Ui_FPagoBase, dialogChanges {
     Q_OBJECT
 
 private:
     company *m_companyact;
     cursor2 *m_cursorFPagoView;
-    /// Indica cual es el objeto que se esta mostrando.
+    /// Indica cu&aacute;l es el objeto que se est&aacute; mostrando.
     QString mdb_idforma_pago;
-    /// Indica si es modo consulta o modo edicion. (altera el comportamiento
+    /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento
     /// del doble click sobre la lista)
     bool m_modoConsulta;
     QListWidgetItem *m_item;
 
 private:
-    /// Se encarga de hacer la carga de la consulta (query) inicial y de mostrar la
+    /// Se encarga de hacer la carga de la consulta (query) inicial, de mostrar la
     /// lista bien y presentar el elemento que se especifique.
     void pintar();
 

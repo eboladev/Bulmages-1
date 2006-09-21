@@ -27,6 +27,9 @@
 #include "postgresiface2.h"
 
 
+/// Permite buscar y seleccionar una provincia.
+/** Muestra la parte del formulario que permite buscar y seleccionar una
+    provincia. */
 class BusquedaProvincia : public QComboBox {
     Q_OBJECT
 

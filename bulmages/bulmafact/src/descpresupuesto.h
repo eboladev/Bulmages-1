@@ -24,7 +24,10 @@
 #include "company.h"
 #include "dbrecord.h"
 
-class DescuentoPresupuesto : public DBRecord  {
+
+/// Administra el descuento en un presupuesto.
+/** */
+class DescuentoPresupuesto : public DBRecord {
 private:
 	company *companyact;
 	void definetabla();
@@ -32,7 +35,7 @@ private:
 public:
 	DescuentoPresupuesto(company *);
 	DescuentoPresupuesto(company *, QString);
-	/// La carga rapida tiene un comportamiento poco restrictivo para
+	/// La carga r&aacute;pida tiene un comportamiento poco restrictivo para
 	/// aumentar la eficiencia.
 	DescuentoPresupuesto(company *, QString, QString, QString, QString);
 	virtual ~DescuentoPresupuesto();

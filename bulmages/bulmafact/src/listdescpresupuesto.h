@@ -28,8 +28,10 @@
 #include "descpresupuesto.h"
 #include "funcaux.h"
 
-class ListDescuentoPresupuesto {
 
+/// Muestra y administra la lista de descuentos por presupuesto.
+/** */
+class ListDescuentoPresupuesto {
 public:
     company *companyact;
     QString mdb_idpresupuesto;

@@ -27,15 +27,18 @@
 
 class company;
 
+
+/// Muestra y administra la ventana de familias de art&iacute;culos.
+/** */
 class familiasview : public QWidget, public Ui_familiasdlg, dialogChanges {
     Q_OBJECT
 
 private:
     company *companyact;
-    /// Indica cual es el registro que se esta modificando. Sirve para saber los
-    /// cambios que hay que guardar cuando se ha modificado.
+    /// Indica cu&aacute;l es el registro que se est&aacute; modificando. Sirve para saber los
+    /// cambios que hay que guardar despu&eacute;s de que se haya modificado.
     QString m_idfamilia;
-    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+    /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento del
     /// doble click sobre la lista)
     bool m_modoConsulta;
 
@@ -65,9 +68,9 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
     virtual void on_mui_imprimir_clicked();
+
 signals:
     void selected(QString);
-
 };
 
 #endif
