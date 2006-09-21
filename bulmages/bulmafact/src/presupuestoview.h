@@ -104,7 +104,7 @@ private:
     void generarPedidoCliente();
 
 public:
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+    /// Estos metodos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int cargar(QString id);
     virtual int borrar() {return presupuesto::borrar();};
