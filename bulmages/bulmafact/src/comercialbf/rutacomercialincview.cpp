@@ -75,16 +75,6 @@ void RutaComercialIncView::on_mui_borrar_clicked() {
 
 void RutaComercialIncView::closeEvent( QCloseEvent *e) {
 	_depura("closeEvent",0);
-
-//    if (dialogChanges_hayCambios())  {
-//        int val = QMessageBox::warning( this, "Guardar Cobro",
-//                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-//	if (val == 0) 
-//            on_mui_guardar_clicked();
-//	if (val == 2)
-//	    e->ignore();
-//    }// end if	
-
 }
 
 

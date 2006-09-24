@@ -116,7 +116,7 @@ public slots://
     virtual int borrar() {return RegistroIva::borrar();};
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked();
-    virtual void boton_generarPrevisiones();
+    virtual void on_mui_generarPrevisiones_clicked();
 
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_listIvaChanged() {

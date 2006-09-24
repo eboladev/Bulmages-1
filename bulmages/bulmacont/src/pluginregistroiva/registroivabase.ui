@@ -749,12 +749,12 @@
           <widget class="QComboBox" name="m_fPago" />
          </item>
          <item>
-          <widget class="QToolButton" name="m_botonPrevCobros" >
+          <widget class="QToolButton" name="mui_generarPrevisiones" >
            <property name="text" >
             <string/>
            </property>
            <property name="icon" >
-            <iconset>image3</iconset>
+            <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_downArrow.png</iconset>
            </property>
           </widget>
          </item>
@@ -778,9 +778,6 @@
        </item>
        <item>
         <widget class="SubForm2Bc" name="mui_listPrevCobro" />
-       </item>
-       <item>
-        <widget class="ListLinPrevCobroView" name="m_listprevcobro" />
        </item>
       </layout>
      </widget>
@@ -915,23 +912,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaCuenta</class>
    <extends></extends>
    <header>busquedacuenta.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListLinPrevCobroView</class>
-   <extends></extends>
-   <header>listlinprevcobroview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -943,6 +926,13 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
+   <class>Q3GroupBox</class>
+   <extends></extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>SubForm2Bc</class>
    <extends>QTableWidget</extends>
    <header>subform2bc.h</header>
@@ -950,10 +940,10 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3GroupBox</class>
+   <class>BusquedaFecha</class>
    <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
+   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+   <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>

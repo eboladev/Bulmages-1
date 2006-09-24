@@ -79,7 +79,7 @@ int RegistroIva::borrar() {
 /*
         m_listalineas->borrar();
 */
-        m_listadescuentos->borrar();
+//        m_listadescuentos->borrar();
 
         int error = m_companyact->ejecuta("DELETE FROM registroiva WHERE idregistroiva="+DBvalue("idregistroiva"));
         if (error) {
@@ -125,7 +125,7 @@ void RegistroIva::pintaRegistroIva() {
 
     // Pinta el subformulario de detalle del presupuesto.
 //    m_listalineas->pintaListIva();
-    m_listadescuentos->pintaListLinPrevCobro();
+//    m_listadescuentos->pintaListLinPrevCobro();
 
     calculaypintatotales();
     _depura("END RegistroIva::pintaRegistroIva",0);
@@ -148,9 +148,9 @@ int RegistroIva::cargar(QString id) {
 
 //    error += m_listalineas->cargaListIva(id);
 
-    m_listadescuentos->setidregistroiva(id);
+//    m_listadescuentos->setidregistroiva(id);
 
-    error += m_listadescuentos->chargeBudgetLines();
+//    error += m_listadescuentos->chargeBudgetLines();
 
     /// Tratamiento de excepciones
     if (error) {
@@ -176,7 +176,7 @@ int RegistroIva::guardar() {
     m_listalineas->guardaListIva();
 */
 
-    m_listadescuentos->guardaListLinPrevCobro();
+//    m_listadescuentos->guardaListLinPrevCobro();
     } catch(...) {
 	_depura("RegistroIva::guardar Error al guardar", 3);
 	throw -1;

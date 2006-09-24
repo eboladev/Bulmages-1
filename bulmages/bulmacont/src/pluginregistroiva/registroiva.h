@@ -56,7 +56,7 @@ CREATE TABLE registroiva (
 class RegistroIva : public DBRecord {
 protected:
 //    ListIva *m_listalineas;
-    ListLinPrevCobro *m_listadescuentos;
+//    ListLinPrevCobro *m_listadescuentos;
 
     SubForm2Bc *m_lineas;
 
@@ -75,10 +75,6 @@ public:
     };
 */
 
-    void setListLinPrevCobro ( ListLinPrevCobro *a) {
-        m_listadescuentos =a;
-        m_listadescuentos->setcompany(m_companyact);
-    };
 
     RegistroIva(empresa *);
 
@@ -88,9 +84,6 @@ public:
     };
 */
 
-    ListLinPrevCobro* mlistadescuentos() {
-        return m_listadescuentos;
-    };
 
 
     empresa * _company() {
