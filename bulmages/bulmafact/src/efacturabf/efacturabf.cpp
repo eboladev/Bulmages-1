@@ -1,8 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
- *   tborras@conetxia.com                                                  *
- *   Copyright (C) 2006 by Fco. Javier M. C.                               *
- *   fcojavmc@todo-redes.com                                               *
+ *   Copyright (C) 2006 by Arturo Martin Llado                             *
+ *   amartin@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -28,24 +26,24 @@
 #include <stdio.h>
 
 #include "efacturabf.h"
+#include "efactura.h"
 #include "company.h"
 #include "funcaux.h"
 
-
-// myplugin::myplugin() {}
 efacturabf::efacturabf() {}
 
-// myplugin::~myplugin() {}
 efacturabf::~efacturabf() {}
 
-// void myplugin::elslot() {
+/// Esto es lo que se activa al hacer click sobre el menu
 void efacturabf::elslot() {
-    fprintf(stderr,"Sa ha activado el slot\n");
-    QMessageBox::warning(0,
-                         "Titulo de la ventana",
-                         "Mensaje.",
-                         QMessageBox::Ok,
-                         QMessageBox::Cancel);
+	EFactura *ef = new EFactura();
+	ef->show();
+//     fprintf(stderr,"Sa ha activado el slot\n");
+//     QMessageBox::warning(0,
+//                          "Titulo de la ventana",
+//                          "Mensaje.",
+//                          QMessageBox::Ok,
+//                          QMessageBox::Cancel);
 }
 
 
@@ -64,8 +62,6 @@ void efacturabf::inicializa(bulmafact *bges) {
 
 void entryPoint(bulmafact *bges) {
     _depura("Estoy dentro del plugin de e-factura\n", 0);
-//     myplugin *plug = new myplugin();
-//     plug->inicializa(bges);
 
     efacturabf *efact = new efacturabf();
     efact->inicializa(bges);
