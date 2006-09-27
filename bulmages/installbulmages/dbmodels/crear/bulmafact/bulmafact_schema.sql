@@ -1,104 +1,128 @@
--- -- ----------------------------------------------------------------------------------------
--- (C)  Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
---  joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
--- Este documento esta licenciado bajo licencia GPL
---  ----------------------------------------------------------------------------------------
---     psql xxxx < bulmafact-0_0_1.sql
---  ---------------------------------------------------------------------------------------
+-- -------------------------------------------------------------------------------------------
+-- (C) Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
+-- joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
+--
+--   This program is free software; you can redistribute it and/or modify
+--   it under the terms of the GNU General Public License as published by
+--   the Free Software Foundation; either version 2 of the License, or
+--   (at your option) any later version.
+--
+--   This program is distributed in the hope that it will be useful,
+--   but WITHOUT ANY WARRANTY; without even the implied warranty of
+--   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--   GNU General Public License for more details.
+--
+--   You should have received a copy of the GNU General Public License
+--   along with this program; if not, write to the
+--   Free Software Foundation, Inc.,
+--   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-- -------------------------------------------------------------------------------------------
+-- Usage:    psql database_name < bulmafact_schema.sql
+-- -------------------------------------------------------------------------------------------
 
+\echo '********* INICIADO FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMAFACT *********'
 
--- Ocultamos las noticias
+\echo ':: Establecemos los mensajes minimos a avisos y otros parametros ... '
+\echo -n ':: '
 SET client_min_messages TO warning;
 
-
+\echo -n ':: '
 SET SESSION AUTHORIZATION 'postgres';
+\echo -n ':: '
 SET search_path = public, pg_catalog;
 
+\echo -n ':: '
 SET DATESTYLE TO European;
 
-CREATE  FUNCTION plpgsql_call_handler() RETURNS language_handler
+\echo -n ':: plpgsql_call_handler ... '
+CREATE FUNCTION plpgsql_call_handler() RETURNS language_handler
     AS '$libdir/plpgsql', 'plpgsql_call_handler'
     LANGUAGE c;
     
---CREATE  FUNCTION plpgsql_call_handler() RETURNS language_handler
---    AS '/usr/lib/postgresql/8.0/lib/plpgsql.so', 'plpgsql_call_handler'
---    LANGUAGE c;
-    
-CREATE  TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
+\echo -n ':: Establecemos el lenguaje de procedimientos ... '
+CREATE TRUSTED PROCEDURAL LANGUAGE plpgsql HANDLER plpgsql_call_handler;
 
 
 -- NOTACION:
--- Considerar las siguientes opciones de codificaci�:
+-- Considerar las siguientes opciones de codificacion:
 -- Los nombres de tabla estan escritos SIEMPRE en singular.
--- Todos los campos de una tabla terminan siempre con el nombre de la tabla (salvo las claves foraneas).
--- Las claves foraneas tienen el mismo nombre que el campo con que se corresponden en la tabla relacionada.
--- En caso de que haya diversas claves foraneas referentes al mismo campo, el criterio es que una de ellas tenga el nombre del campo con el que se corresponde y la otra tenga un nombre significativo.
--- Los campos de clave automatica empiezan por id
--- Los enums se simulan (normalmente) con campos numericos, el significado de los valores debe estar
--- explicado en este archivo.
+-- Todos los campos de una tabla terminan siempre con el nombre de la tabla (salvo las claves
+-- foraneas). Las claves foraneas tienen el mismo nombre que el campo con que se corresponden
+-- en la tabla relacionada. En caso de que haya diversas claves foraneas referentes al mismo
+-- campo, el criterio es que una de ellas tenga el nombre del campo con el que se corresponde
+-- y la otra tenga un nombre significativo. Los campos de clave automatica empiezan por id
+-- Los enums se simulan (normalmente) con campos numericos, el significado de los valores debe
+-- estar explicado en este archivo.
 
-
+\echo -n ':: '
 BEGIN;
 
--- La tabla de configuraci�.
+
+-- ** configuracion **
 -- En esta tabla se guardan parametros que el programa va a utilizar.
--- Como por ejemplo el numero de d�itos por defecto de las cuentas o el asiento inteligente que se enlaza con
--- facturacion.
--- Tiene tres campos
--- idconfiguracion: el identificador (No tiene ningn uso especial).
+-- Como por ejemplo el numero de digitos por defecto de las cuentas o el asiento inteligente
+-- que se enlaza con facturacion.
+-- Tiene dos campos
 -- nombre: El nombre del parametro de configuracion.
 -- valor: El valor que toma dicho parametro.
-CREATE  TABLE configuracion (
+\echo -n ':: Configuracion ... '
+CREATE TABLE configuracion (
     nombre character varying(25) PRIMARY KEY,
     valor character varying(350)
 );
 
 
-
--- Codi: Clau artificial.
--- Descripcio: Nom identificatiu o descripci�breu.
--- Dies_1T: Dies abans del primer termini computant els blocs de 30 com a mesos naturals.
--- Descompte: Descompte autom�ic per l's d'aquesta forma de pagament.
-CREATE  TABLE forma_pago (
-   idforma_pago serial PRIMARY KEY,
-   descforma_pago character varying(500),
-   dias1tforma_pago integer,
-   descuentoforma_pago numeric(12,2)
+-- ** forma_pago **
+-- descforma_pago: Nombre identificativo o descripcion breve.
+-- dias1tforma_pago: Dias antes del primer vencimiento calculando los bloque de 30 como
+--                   meses naturales.
+-- descuentoforma_pago: Descuento automatico para esa forma de pago.
+\echo -n ':: Forma de pago ... '
+CREATE TABLE forma_pago (
+    idforma_pago serial PRIMARY KEY,
+    descforma_pago character varying(500),
+    dias1tforma_pago integer,
+    descuentoforma_pago numeric(12, 2)
 );
 
 
--- Codigo: Clave artificial.
--- Nombre: Nombre identificativo del almac�.
--- diralmacen: Direcci� del almac�.
--- poblalmacen: Poblaci� del almac�.
--- cpalmacenc: c�igo postal almac�.
--- telfalmacen: Tel�ono del almac�.
--- faxalmacen: Fax del almac�.
--- emailalmacen: correo electr�ico del almac�.
--- presupuestoautoalmacen el numero de presupuesto es automatico? N=No, 
--- albaranautoalmacen el numero de albaran es automatico? N=No, 
--- facturaautoalmacen el numero de  es automatico? N=No, 
-CREATE  TABLE almacen (
- idalmacen serial PRIMARY KEY,
- codigoalmacen numeric(5, 0) NOT NULL,
- nomalmacen character varying(50),
- diralmacen character varying(150),
- poblalmacen character varying(50),
- cpalmacen character varying(20),
- telalmacen character varying(20),
- faxalmacen character varying(20),
- emailalmacen character varying(100),
- inactivoalmacen character(1),
- UNIQUE(codigoalmacen)
+-- ** almacen **
+-- codigoalmacen: Codigo numerico del almacen.
+-- nomalmacen: Nombre identificativo del almacen.
+-- diralmacen: Direccion del almacen.
+-- poblalmacen: Poblacion del almacen.
+-- cpalmacen: Codigo Postal del almacen.
+-- telalmacen: Telefono del almacen.
+-- faxalmacen: Fax del almacen.
+-- emailalmacen: Direccion de correo electronico del almacen.
+\echo -n ':: Almacen ... '
+CREATE TABLE almacen (
+    idalmacen serial PRIMARY KEY,
+    codigoalmacen numeric(5, 0) NOT NULL,
+    nomalmacen character varying(50),
+    diralmacen character varying(150),
+    poblalmacen character varying(50),
+    cpalmacen character varying(20),
+    telalmacen character varying(20),
+    faxalmacen character varying(20),
+    emailalmacen character varying(100),
+    inactivoalmacen character(1),
+    UNIQUE(codigoalmacen)
 );
 
 
---
--- TOC entry 47 (OID 3090354)
--- Name: staff; Type: TABLE; Schema: public; Owner: fewa
---
-
-CREATE  TABLE trabajador (
+-- ** trabajador **
+-- nomtrabajador: Nombre del trabajador.
+-- apellidostrabajador: Apellidos del trabajador.
+-- dirtrabajador: Direccion del trabajador.
+-- nsstrabajador: Numero de la Seguridad Social del trabajador.
+-- teltrabajador: Numero de telefono fijo del trabajador.
+-- moviltrabajador: Numero de telefono movil del trabajador.
+-- emailtrabajador: Direccion de correo electronico del trabajador.
+-- fototrabajador: Fotografia del trabajador.
+-- activotrabajador: Indica si el trabajador esta activo actualmente en la empresa.
+\echo -n ':: Trabajador ... '
+CREATE TABLE trabajador (
     idtrabajador serial PRIMARY KEY,
     nomtrabajador character varying NOT NULL,
     apellidostrabajador character varying,
@@ -112,145 +136,157 @@ CREATE  TABLE trabajador (
 );
 
 
--- Tabla de pa�es
--- cod2: c�igo de dos d�itos
--- cod3: c�igo de tres d�itos
--- desc: descripci� del pa�
-CREATE  TABLE pais (
-   idpais serial PRIMARY KEY,
-   cod2pais character varying(2),
-   cod3pais character varying(3),
-	descpais character varying(50)
+-- ** pais **
+-- cod2pais: Codigo internacional de dos digitos.
+-- cod3pais: Codigo internacional de tres digitos.
+-- descpais: Cescripcion del pais.
+\echo -n ':: Pais ... '
+CREATE TABLE pais (
+    idpais serial PRIMARY KEY,
+    cod2pais character varying(2),
+    cod3pais character varying(3),
+    descpais character varying(50)
 );
 
 
--- Tabla de monedas
--- cod2: c�igo de dos d�itos
--- cod3: c�igo de tres d�itos
--- desc: descripci� de la moneda
-CREATE  TABLE moneda (
-   idmoneda serial PRIMARY KEY,
-   cod2moneda character varying(2),
-   cod3moneda character varying(3),
-	descmoneda character varying(50)
+-- ** moneda **
+-- cod2moneda: Codigo internacional de dos digitos.
+-- cod3moneda: Codigo internacional de tres digitos.
+-- descmoneda: Descripcion de la moneda.
+\echo -n ':: Moneda ... '
+CREATE TABLE moneda (
+    idmoneda serial PRIMARY KEY,
+    cod2moneda character varying(2),
+    cod3moneda character varying(3),
+    descmoneda character varying(50)
 );
 
 
--- Esta tabla contiene las descripciones de los ivas que se pueden aplicar.
--- Descripcio: Text descriptiu del tipus d'IVA.
-CREATE  TABLE tipo_iva (
-   idtipo_iva serial PRIMARY KEY,
-   desctipo_iva character varying(2000)
-);
-
--- Esta tabla contiene las tasas de cada tipo de iva a partir de una fecha dada.
--- porcentasa_iva contiene el porcentaje de la tasa de iva a aplicar.
--- fechatasa_iva es la fecha de entrada en vigor del % de IVA para el tipo descrito.
-CREATE  TABLE tasa_iva (
-	idtasa_iva serial PRIMARY KEY,
-	idtipo_iva integer REFERENCES tipo_iva(idtipo_iva) NOT NULL,
-	porcentasa_iva NUMERIC(5, 2) NOT NULL,
-	fechatasa_iva date NOT NULL,
-	UNIQUE (idtipo_iva, fechatasa_iva)
+-- ** tipo_iva **
+-- Esta tabla contiene las descripciones de los IVAs que se pueden aplicar.
+-- desctipo_iva: Texto descriptivo del tipo de IVA.
+\echo -n ':: Tipo de IVA ... '
+CREATE TABLE tipo_iva (
+    idtipo_iva serial PRIMARY KEY,
+    desctipo_iva character varying(2000)
 );
 
 
--- Tabla con series de Iva, c�igo i descripci�
--- B�icamente sirve para garantizar la integridad referencial en las  series de facturaci�
--- Deber�n existir en contabilidad tambien.
-CREATE  TABLE serie_factura (
---	idserie_factura serial PRIMARY KEY,
-	codigoserie_factura character varying (6) PRIMARY KEY,
-	descserie_factura character varying(50) NOT NULL,
-	UNIQUE (codigoserie_factura)
+-- ** tasa_iva **
+-- Esta tabla contiene las tasas de cada tipo de IVA a partir de una fecha dada.
+-- porcentasa_iva: Contiene el porcentaje de la tasa de IVA a aplicar.
+-- fechatasa_iva: Es la fecha de entrada en vigor del % de IVA para el tipo descrito.
+\echo -n ':: Tasa de IVA ... '
+CREATE TABLE tasa_iva (
+    idtasa_iva serial PRIMARY KEY,
+    idtipo_iva integer REFERENCES tipo_iva(idtipo_iva) NOT NULL,
+    porcentasa_iva NUMERIC(5, 2) NOT NULL,
+    fechatasa_iva date NOT NULL,
+    UNIQUE (idtipo_iva, fechatasa_iva)
 );
 
 
--- codigofamilia c�igo de la familia.
--- nombrefamilia nombre de la familia
--- descfamilia descripci� extendida de la familia.
--- codcompfamilia c�igo compuesto de familia: Es la concatenaci� del c�igo de familia con sus c�igos padres. 
--- codigocompletofamilia Este campo es de s�o lectura, no se puede escribir sobre �.
-
-CREATE  TABLE familia (
-	idfamilia serial PRIMARY KEY,
-	codigofamilia character varying(12) NOT NULL,
- 	nombrefamilia character varying(50) NOT NULL,
-	descfamilia character varying(300),
-	padrefamilia integer REFERENCES familia(idfamilia),
-	codigocompletofamilia character varying(50) UNIQUE
+-- ** serie_factura **
+-- Tabla con series de IVA, codigo y descripcion.
+-- Basicamente sirve para garantizar la integridad referencial en las series de facturacion.
+-- Deberan existir en contabilidad tambien.
+\echo -n ':: Serie de factura ... '
+CREATE TABLE serie_factura (
+    codigoserie_factura character varying (6) PRIMARY KEY,
+    descserie_factura character varying(50) NOT NULL,
+    UNIQUE (codigoserie_factura)
 );
 
-CREATE  FUNCTION calculacodigocompletofamilia () RETURNS "trigger"
+
+-- ** familia **
+-- codigofamilia: Codigo de la familia.
+-- nombrefamilia: Nombre de la familia
+-- descfamilia: Descripcion extendida de la familia.
+-- codigocompletofamilia: Codigo completo de la familia. Es la concatenacion del codigo de
+--                        familia con sus codigos padres. Este campo es de solo lectura.
+\echo -n ':: Familia ... '
+CREATE TABLE familia (
+    idfamilia serial PRIMARY KEY,
+    codigofamilia character varying(12) NOT NULL,
+    nombrefamilia character varying(50) NOT NULL,
+    descfamilia character varying(300),
+    padrefamilia integer REFERENCES familia(idfamilia),
+    codigocompletofamilia character varying(50) UNIQUE
+);
+
+
+\echo -n ':: Funcion que calcula el codigo completo de la familia ... '
+CREATE FUNCTION calculacodigocompletofamilia() RETURNS "trigger"
 AS '
 DECLARE
-	as RECORD;
-	codigocompleto character varying(50);
+    as RECORD;
+    codigocompleto character varying(50);
 BEGIN
-	codigocompleto := NEW.codigofamilia;
-	SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
-	IF FOUND THEN
-		codigocompleto := as.codigocompletofamilia || codigocompleto;
-	END IF;
-        NEW.codigocompletofamilia := codigocompleto;
-	RETURN NEW;
+    codigocompleto := NEW.codigofamilia;
+    SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
+    IF FOUND THEN
+	codigocompleto := as.codigocompletofamilia || codigocompleto;
+    END IF;
+    NEW.codigocompletofamilia := codigocompleto;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  calculacodigocompletofamiliatrigger
+\echo -n ':: Disparador que calcula el codigo completo de la familia ... '
+CREATE TRIGGER calculacodigocompletofamiliatrigger
     BEFORE INSERT OR UPDATE ON familia
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletofamilia();
     
     
-CREATE  FUNCTION propagacodigocompletofamilia () RETURNS "trigger"
+\echo -n ':: Funcion que propaga el codigo completo de la familia ... '
+CREATE FUNCTION propagacodigocompletofamilia() RETURNS "trigger"
 AS '
 DECLARE
 BEGIN
-	UPDATE familia SET codigocompletofamilia=codigocompletofamilia WHERE padrefamilia = NEW.idfamilia;
-	UPDATE articulo SET codigocompletoarticulo = codigocompletoarticulo WHERE articulo.idfamilia = NEW.idfamilia;
-	RETURN NEW;
+    UPDATE familia SET codigocompletofamilia = codigocompletofamilia WHERE padrefamilia = NEW.idfamilia;
+    UPDATE articulo SET codigocompletoarticulo = codigocompletoarticulo WHERE articulo.idfamilia = NEW.idfamilia;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  propagacodigocompletofamiliatrigger
+
+\echo -n ':: Disparador que propaga el codigo completo de la familia ... '
+CREATE TRIGGER propagacodigocompletofamiliatrigger
     AFTER UPDATE ON familia
     FOR EACH ROW
     EXECUTE PROCEDURE propagacodigocompletofamilia();
 
--- Esta funci� nos da el identificador de familia dado un c�igo.
---CREATE  OR REPLACE FUNCTION idfamilia (text) RETURNS "trigger"
---    AS '
---DECLARE
---    codigo ALIAS FROR $1;
---    mrecord RECORD;
---BEGIN
---    FOR mrecord IN SELECT SUM(baseiva) AS suma, SUM(ivaiva) AS sumaiva FROM iva WHERE iva.idregistroiva=NEW.idregistroiva LOOP
---    	UPDATE registroiva SET baseimp=mrecord.suma, iva=mrecord.sumaiva WHERE idregistroiva=NEW.idregistroiva;
---    END LOOP;
---    RETURN NEW;
---END;
---'    LANGUAGE plpgsql;
 
-
--- El tipo de art�ulo es una tabla que permite crear una forma alternativa de agrupar los art�ulos.
--- codigo: identificador del tipo.
--- desc:
-CREATE  TABLE tipo_articulo (
-	idtipo_articulo serial PRIMARY KEY,
-	codtipo_articulo character varying(10),
-	desctipo_articulo character varying(50)
+-- ** tipo_articulo **
+-- Permite crear una forma alternativa de agrupar los articulos.
+-- codtipo_articulo: Codigo de tipo de articulo.
+-- desctipo_articulo: Descripcion del tipo de articulo.
+\echo -n ':: Tipo de articulo ... '
+CREATE TABLE tipo_articulo (
+    idtipo_articulo serial PRIMARY KEY,
+    codtipo_articulo character varying(10),
+    desctipo_articulo character varying(50)
 );
 
 
--- Codigo: Clave artificial.
--- Nombre: Descripci� corta del art�ulo.
--- abrev: Nombre abreviado del articulo (para tpv o cartelitos estanterias...)
--- idtipo_articulo: identificador de tipo de art�ulo que se utilizar�para agrupar art�ulos como clasificaci� alternativa a el surtido (familias).
--- Observaciones: Campo de texto para a comentarios y observaciones.
--- El campo codigocompletoarticulo s�o puede ser de lectura.
-CREATE  TABLE articulo (
+-- ** articulo **
+-- codarticulo: Codigo del articulo.
+-- nomarticulo: Descripcion corta del articulo.
+-- abrevarticulo: Nombre abreviado del articulo (para TPV o cartelitos de estanteria)
+-- observarticulo: Campo de texto para a comentarios y observaciones.
+-- presentablearticulo:
+-- controlstockarticulo:
+-- idtipo_articulo: Identificador de tipo de articulo que se utilizara para agrupar
+--                  articulos como clasificacion.
+-- idtipo_iva: Identificador del tipo de IVA que se aplica a este articulo.
+-- codigocompletoarticulo: Codigo completo del articulo. Este campo solo puede ser de lectura.
+-- stockarticulo:
+-- inactivoarticulo: Indica si el articulo esta activo o no.
+-- pvparticulo:
+\echo -n ':: Articulo ... '
+CREATE TABLE articulo (
     idarticulo serial PRIMARY KEY,
     codarticulo character varying(12),
     nomarticulo character varying(50),
@@ -264,296 +300,315 @@ CREATE  TABLE articulo (
     idfamilia integer REFERENCES familia(idfamilia) NOT NULL,
     stockarticulo numeric(12,2) DEFAULT 0,    
     inactivoarticulo character(1),
-    -- ATENCION, este campo no da el pvp real del art�ulo, solo es una de las multiples formas de acceder al precio del articulo.
-    -- Para obtener el precio de un art�ulo se debe usar la funcion articulo.
-    -- Para saber el iva correspondiente a un articulo se debe usar la funci� ivaarticulo.
+    -- ATENCION, este campo no da el PVP real del articulo, solo es una de las multiples formas
+    -- de acceder al precio del articulo.
+    -- Para obtener el precio de un articulo se debe usar la funcion articulo.
+    -- Para saber el iva correspondiente a un articulo se debe usar la funcion ivaarticulo.
     pvparticulo numeric(12,2) NOT NULL DEFAULT 0
 );
 
 
+\echo -n ':: Crea o reemplaza funcion is_number ... '
+CREATE OR REPLACE FUNCTION is_number(varchar) RETURNS BOOLEAN AS
+'select $1 ~ ''^[-+]?[0-9]+$''' strict immutable LANGUAGE sql;
 
-create or replace function is_number(varchar) returns boolean as
-'select $1 ~ ''^[-+]?[0-9]+$''' strict immutable language sql;
 
-CREATE  OR REPLACE FUNCTION to_number(character varying) RETURNS INT8 AS '
+\echo -n ':: Crea o reemplaza funcion to_number ... '
+CREATE OR REPLACE FUNCTION to_number(character varying) RETURNS INT8 AS '
 DECLARE
 BEGIN
-	RAISE NOTICE ''to_number %'', $1;
-        RETURN CAST(text($1) AS INT8);
+    RAISE NOTICE ''to_number %'', $1;
+    RETURN CAST(text($1) AS INT8);
 END
 ' LANGUAGE 'plpgsql';
 
-CREATE  OR REPLACE FUNCTION calculacodigocompletoarticulo () RETURNS "trigger"
+
+\echo -n ':: Crea o reemplaza funcion que calcula el codigo completo del articulo ... '
+CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
 AS '
 DECLARE
-	as_ RECORD;
-	codigocompleto character varying(100);
-	codnumeric integer;
-BEGIN
-	-- Lo primero comprobamos el el código del articulo no esté vacio y de ser así lo llenamos.
-	IF NEW.codarticulo = '''' THEN
-		SELECT INTO as_ max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
-		IF FOUND THEN
-			IF is_number(as_.m) THEN
-				codnumeric := to_number(as_.m);
-				codnumeric := codnumeric +1;
-				NEW.codarticulo := CAST (codnumeric AS varchar);
-				WHILE length(NEW.codarticulo) < 4 LOOP
-					NEW.codarticulo := ''0'' || NEW.codarticulo;
-				END LOOP;
-			ELSE
-				NEW.codarticulo := ''0000'';
-			END IF;
-		ELSE
-			NEW.codarticulo = ''0000'';
-		END IF;
-	END IF; 
+    as_ RECORD;
+    codigocompleto character varying(100);
+    codnumeric integer;
 
-	codigocompleto := NEW.codarticulo;
-	SELECT INTO as_ codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+BEGIN
+    -- Lo primero comprobamos es que el codigo del articulo no este vacio y de ser asi lo llenamos.
+    IF NEW.codarticulo = '''' THEN
+	SELECT INTO as_ max(codarticulo) AS m FROM articulo WHERE idfamilia = NEW.idfamilia;
 	IF FOUND THEN
-		codigocompleto := as_.codigocompletofamilia || codigocompleto;
+	    IF is_number(as_.m) THEN
+		codnumeric := to_number(as_.m);
+		codnumeric := codnumeric +1;
+		NEW.codarticulo := CAST (codnumeric AS varchar);
+		WHILE length(NEW.codarticulo) < 4 LOOP
+		    NEW.codarticulo := ''0'' || NEW.codarticulo;
+		END LOOP;
+	    ELSE
+		NEW.codarticulo := ''0000'';
+	    END IF;
+	ELSE
+	    NEW.codarticulo = ''0000'';
 	END IF;
-        NEW.codigocompletoarticulo := codigocompleto;
-	RETURN NEW;
+    END IF; 
+
+    codigocompleto := NEW.codarticulo;
+    SELECT INTO as_ codigocompletofamilia FROM familia WHERE idfamilia = NEW.idfamilia;
+    IF FOUND THEN
+	codigocompleto := as_.codigocompletofamilia || codigocompleto;
+    END IF;
+    NEW.codigocompletoarticulo := codigocompleto;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  calculacodigocompletoarticulotrigger
+\echo -n ':: Disparador que calcula el codigo completo del articulo ... '
+CREATE TRIGGER calculacodigocompletoarticulotrigger
     BEFORE INSERT OR UPDATE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE calculacodigocompletoarticulo();
 
 
-
-    
-
-	
-        
--- Componentes de Art�ulo
-CREATE  TABLE comparticulo (
-	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-	cantcomparticulo integer NOT NULL DEFAULT 1,
-	idcomponente integer NOT NULL REFERENCES articulo(idarticulo),
-	PRIMARY KEY (idarticulo, idcomponente)
+-- ** comparticulo **
+-- cantcomparticulo: Cantidad del articulo referenciado.
+\echo -n ':: Componentes de articulo ... '
+CREATE TABLE comparticulo (
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+    cantcomparticulo integer NOT NULL DEFAULT 1,
+    idcomponente integer NOT NULL REFERENCES articulo(idarticulo),
+    PRIMARY KEY (idarticulo, idcomponente)
 );
 
 
-
-
-
--- ================================== MODULO DE TARIFAS ================================
--- =====================================================================================
--- La tabla tarifa contiene los precios de venta y oferta incluidas las ofertas MxN.
--- idalmacen: Almac� o tienda a la que corresponden los precios.
--- idarticulo: idetificador del articulo al que corresponde el precio.
--- finicio: fecha de inicio vigencia del precio
--- ffin: fecha de finalizaci� de vigencia del precio.
--- esoferta: indica si el precio es de oferta.
--- esmxn: indica si la oferta es mxn (p.e. 3x2).
--- cantidadm: cantidad de unidades para primer valor en oferta mxn (valor de unidades llevadas).
--- cantidadn: cantidad de unidades para segundo valor en oferta mxn (valor de unidades pagadas).
--- FALTA DEFINIR LAS REGLAS PARA EVITAR SOLAPAMIENTOS ENTRE OFERTAS.
-
-CREATE  TABLE tarifa (
-	idtarifa serial PRIMARY KEY,
-	nomtarifa varchar(60),
-	finiciotarifa date,
-	ffintarifa date
+-- ** tarifa **
+-- nomtarifa: Nombre de la tarifa.
+-- finiciotarifa: Fecha de inicio vigencia del precio.
+-- ffintarifa: Fecha de finalizacion de vigencia del precio.
+\echo -n ':: Tarifa ... '
+CREATE TABLE tarifa (
+    idtarifa serial PRIMARY KEY,
+    nomtarifa varchar(60),
+    finiciotarifa date,
+    ffintarifa date
 );
 
 
-
-CREATE  TABLE ltarifa (
-	idltarifa serial PRIMARY KEY,
-   	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-	idtarifa integer NOT NULL REFERENCES tarifa(idtarifa),
-	pvpltarifa numeric(12, 2)
+-- ** ltarifa **
+-- pvpltarifa:: Precio de venta.
+\echo -n ':: Lineas de tarifa ... '
+CREATE TABLE ltarifa (
+    idltarifa serial PRIMARY KEY,
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+    idtarifa integer NOT NULL REFERENCES tarifa(idtarifa),
+    pvpltarifa numeric(12, 2)
 );
 
 
-CREATE  UNIQUE INDEX indice_ltarifa ON ltarifa (idalmacen, idarticulo, idtarifa);
+\echo -n ':: Crea indice de lineas de tarifa ... '
+CREATE UNIQUE INDEX indice_ltarifa ON ltarifa(idalmacen, idarticulo, idtarifa);
 
 
-CREATE  OR REPLACE FUNCTION pvparticuloclial(integer, integer, integer) RETURNS numeric(12,2)
+\echo -n ':: Crea o reemplaza funcion que calcula el precio segun cliente y almacen ... '
+CREATE OR REPLACE FUNCTION pvparticuloclial(integer, integer, integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
-	idarticulo ALIAS FOR $1;
-	idclient ALIAS FOR $2;
-	idalmacen ALIAS FOR $3;
-	as RECORD;
+    idarticulo ALIAS FOR $1;
+    idclient ALIAS FOR $2;
+    idalmacen ALIAS FOR $3;
+    as RECORD;
+
 BEGIN
-	SELECT INTO AS pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente=idclient);
-	IF FOUND THEN
-		RETURN as.pvpltarifa;
-	END IF;
-
-
-	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
-	IF FOUND THEN
-		RETURN as.pvparticulo;
-	END IF;
-	RETURN 0.0;
+    SELECT INTO AS pvpltarifa FROM ltarifa WHERE ltarifa.idarticulo = idarticulo AND ltarifa.idalmacen = idalmacen AND idtarifa IN (SELECT idtarifa FROM cliente WHERE idcliente = idclient);
+    IF FOUND THEN
+	RETURN as.pvpltarifa;
+    END IF;
+    SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
+    IF FOUND THEN
+	RETURN as.pvparticulo;
+    END IF;
+    RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
 
--- ================================== MODULO DE TARIFAS ================================
--- =====================================================================================
 
-
-
-
-
--- Los proveedores son los que nos suminstran articulos y/o servicios.
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
--- 1 Article t�1 sol prove�or principal.
--- 1 Article t�1 sol prove�or referent.
--- CAMPOS
--- ======
--- Codi: Clau artificial.
--- Nom: Nom comercial o fiscal.
--- Nom_alternatiu: Nom comercial o fiscal.
--- CIF: Codi d'Identificaci�Fiscal.
--- CodiCli: Codi de client amb que ens facturen. �il per a identificar-nos.
--- C_Banc
--- Comentaris
--- Adre�: Adre�.
--- Poblaci� Poblaci�
--- CProv: Codi de provincia (dos primers d�its del codi postal).
--- sCP: Tres darrers d�its del codi postal.
--- Telf: Tel�on.
--- Fax: Fax.
--- Email: eMail.
--- Url: Url.
--- CompteWeb: Dades de login si disposen de tenda o tarifes en l�ia
-CREATE  TABLE proveedor (
-   idproveedor serial PRIMARY KEY,
-   nomproveedor character varying(200),
-   nomaltproveedor character varying(200),
-   cifproveedor character varying(12) UNIQUE,
-   codproveedor character varying(12) UNIQUE,
-   codicliproveedor character varying(30),
-   cbancproveedor character varying(20),
-   comentproveedor character varying(2000),
-   dirproveedor character varying(250),
-   poblproveedor character varying(50),
-   cpproveedor character varying(9) NOT NULL,
-   telproveedor character varying(50),
-   faxproveedor character varying(50),
-   emailproveedor character varying(100),
-   corpproveedor character varying(200),
-   urlproveedor character varying(100),
-   clavewebproveedor character varying(100),
-   inactivoproveedor character(1),
-   provproveedor character varying
+-- ** proveedor **
+-- Los proveedores son los que nos suministran articulos y/o servicios.
+-- nomproveedor: Nombre fiscal del proveedor.
+-- nomaltproveedor: Nom comercial del proveedor.
+-- cifprovedor: Codigo de Identificacion Fiscal.
+-- codproveedor: Codigo de proveedor.
+-- codicliprovedor: Codigo que el proveedor nos da para identificarnos como cliente suyo.
+-- cbancproveedor: Codigo bancario del proveedor.
+-- comentproveedor: Comentario.
+-- dirproveedor: Direccion del proveedor.
+-- poblproveedor: Poblacion del proveedor.
+-- cpproveedor: Codigo Postal del proveedor.
+-- telproveedor: Numero de telefono del proveedor.
+-- faxproveedor: Numero de fax del proveedor.
+-- emailproveedor: Direccion de correo electronico del proveedor.
+-- corpproveedor:
+-- urlproveedor: URL de la web de comercio electronico B2B del proveedor.
+-- clavewebproveedor: Clave para entrar en el comercio electronico B2B del proveedor.
+-- inactivoproveedor: Indica si el proveedor lo tenemos marcado como inactivo para suministro.
+-- provproveedor: Provincia del proveedor.
+\echo -n ':: Proveedor ... '
+CREATE TABLE proveedor (
+    idproveedor serial PRIMARY KEY,
+    nomproveedor character varying(200),
+    nomaltproveedor character varying(200),
+    cifproveedor character varying(12) UNIQUE,
+    codproveedor character varying(12) UNIQUE,
+    codicliproveedor character varying(30),
+    cbancproveedor character varying(20),
+    comentproveedor character varying(2000),
+    dirproveedor character varying(250),
+    poblproveedor character varying(50),
+    cpproveedor character varying(9) NOT NULL,
+    telproveedor character varying(50),
+    faxproveedor character varying(50),
+    emailproveedor character varying(100),
+    corpproveedor character varying(200),
+    urlproveedor character varying(100),
+    clavewebproveedor character varying(100),
+    inactivoproveedor character(1),
+    provproveedor character varying
 );
 
 
---Numero: Nmero de divisi�(clau artificial).
---Descripcio: Nom o descripci�de la divisi�
---Contactes: Nom de persona o persones de contacte.
---Comentaris
---Telf: Tel�on.
---Fax: Fax.
---Email
-CREATE  TABLE division (
-   iddivision serial PRIMARY KEY,
-   descdivision character varying(1000),
-   contactosdivisioon character varying(500),
-   comentdivision character varying(2000),
-   teldivision character varying(20),
-   faxdivision character varying(20),
-   maildivision character varying(100),
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
-   inactivodivision character(1)
+-- ** division **
+-- Detalle de todas las divisiones de un proveedor.
+-- descdivision: Descripcion completa de la division.
+-- contactosdivision: Nombre de persona o personas de contacto en esa division.
+-- teldivision: Numero de telefono de la division.
+-- faxdivision: Numero de fax de la division.
+-- maildivision: Direccion de correo electronico de la division.
+-- inactivodivision: Marca de inactivo de la division.
+\echo -n ':: Division ... '
+CREATE TABLE division (
+    iddivision serial PRIMARY KEY,
+    descdivision character varying(1000),
+    contactosdivision character varying(500),
+    comentdivision character varying(2000),
+    teldivision character varying(20),
+    faxdivision character varying(20),
+    maildivision character varying(100),
+    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+    inactivodivision character(1)
 );
 
 
--- El cliente siempre tiene la raz�, bueno, o por lo menos eso cree.
---Codi: Clau artificial.
---Nom: Nom comercial o fiscal.
---Nom_alternatiu: Nom comercial o fiscal.
---CIF: Codi d'Identificaci�Fiscal.
---C_Banc: Compte Bancari.
---Adr: Adre�.
---Pobl: Poblaci�
---CProv: Codi de provincia (dos primers d�its del codi postal).
---sCP: Tres darrers d�its del codi postal.
---Telf: Tel�on.
---Fax: Fax.
---Email: eMail.
---Url: Url.
---Data_alta
---Data_Baixa
----Comentaris
-CREATE  TABLE cliente (
-   idcliente serial PRIMARY KEY,
-   nomcliente character varying(100),
-   nomaltcliente character varying(300),
-   cifcliente character varying(200) UNIQUE,
-   codcliente character varying(12) UNIQUE,
-   bancocliente character varying(35),
-   dircliente character varying(100),
-   poblcliente character varying(40),
-   cpcliente character varying(10),
-   telcliente character varying(20),
-   teltrabcliente character varying(20),
-   movilcliente character varying(20),
-   faxcliente character varying(20),
-   mailcliente character varying(100),
-   urlcliente character varying(150),
-   corpcliente character varying(200),
-   faltacliente date DEFAULT NOW(),
-   fbajacliente date,
-   comentcliente character varying(2000),
-   inactivocliente character(1),
-   provcliente character varying,
-   idtarifa integer references tarifa(idtarifa)
+-- ** cliente **
+-- nomcliente: Nombre completo del cliente.
+-- nomaltcliente: Nombre alternativo. Si es empresa nombre comercial.
+-- cifcliente: Codigo de Identificacion Fiscal. CIF/NIF/NIE
+-- codcliente: Codigo de cliente
+-- bancocliente: Cuenta Corriente del banco del cliente donde domiciliar pagos.
+-- dircliente: Direccion del cliente.
+-- poblcliente: Poblacion de cliente.
+-- cpcliente: Codigo Postal.
+-- telcliente: Numero de telefono fijo particular.
+-- teltrabcliente: Numero de telefono del trabajo.
+-- movilcliente: Numero de telefono movil.
+-- faxcliente: Numero de fax.
+-- mailcliente: Direccion de correo electronico.
+-- urlcliente: Direccion web de cliente.
+-- corpcliente:
+-- faltacliente: Fecha alta como cliente.
+-- fbajacliente: Fecha de baja como cliente.
+-- comentcliente: Comentario.
+-- inactivocliente:
+-- provcliente: Provincia del cliente.
+-- idtarifa: Identificador de la tarifa aplicada a este cliente.
+\echo -n ':: Cliente ... '
+CREATE TABLE cliente (
+    idcliente serial PRIMARY KEY,
+    nomcliente character varying(100),
+    nomaltcliente character varying(300),
+    cifcliente character varying(200) UNIQUE,
+    codcliente character varying(12) UNIQUE,
+    bancocliente character varying(35),
+    dircliente character varying(100),
+    poblcliente character varying(40),
+    cpcliente character varying(10),
+    telcliente character varying(20),
+    teltrabcliente character varying(20),
+    movilcliente character varying(20),
+    faxcliente character varying(20),
+    mailcliente character varying(100),
+    urlcliente character varying(150),
+    corpcliente character varying(200),
+    faltacliente date DEFAULT NOW(),
+    fbajacliente date,
+    comentcliente character varying(2000),
+    inactivocliente character(1),
+    provcliente character varying,
+    idtarifa integer references tarifa(idtarifa)
 );
 
 
-CREATE  TABLE cobro (
-   idcobro serial PRIMARY KEY,
-   idcliente integer NOT NULL REFERENCES cliente(idcliente),
-   fechacobro date DEFAULT NOW(),
-   cantcobro numeric(12,2) DEFAULT 0,
-   refcobro character varying(12) NOT NULL,
-   previsioncobro boolean DEFAULT FALSE,
-   comentcobro character varying(500),
-   idtrabajador integer REFERENCES trabajador(idtrabajador)
+-- ** cobro **
+-- fechacobro: Fecha del cobro.
+-- cantcobro: Cantidad cobrada.
+-- refcobro: Codigo de referencia del cobro.
+-- previsioncobro:
+-- comentcobro: Comentario.
+\echo -n ':: Cobro ... '
+CREATE TABLE cobro (
+    idcobro serial PRIMARY KEY,
+    idcliente integer NOT NULL REFERENCES cliente(idcliente),
+    fechacobro date DEFAULT NOW(),
+    cantcobro numeric(12, 2) DEFAULT 0,
+    refcobro character varying(12) NOT NULL,
+    previsioncobro boolean DEFAULT FALSE,
+    comentcobro character varying(500),
+    idtrabajador integer REFERENCES trabajador(idtrabajador)
 );
    
 
-CREATE  TABLE pago (
-   idpago serial PRIMARY KEY,
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
-   fechapago date DEFAULT NOW(),
-   cantpago numeric(12,2) DEFAULT 0,
-   refpago character varying(12) NOT NULL,
-   previsionpago boolean DEFAULT FALSE,
-   comentpago character varying(500),
-   idtrabajador integer REFERENCES trabajador(idtrabajador)   
-);
-
--- Any: Any en que s'efectua la comanda.
--- Numero: Nmero de comanda (comen�nt de 1 cada any).
--- Descripcio: Breu descripci�o comentari opcional.
--- Data: Data d'emisi�de la comanda.
-CREATE  TABLE pedido (
-   idpedido serial PRIMARY KEY,
-   numpedido character varying(60),
-   fechapedido date,
-   descpedido character varying(500),
-   iddivision integer NOT NULL REFERENCES division(iddivision),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idtrabajador integer REFERENCES trabajador(idtrabajador)   
+-- ** pago **
+-- fechapago: Fecha del cobro.
+-- cantpago: Cantidad cobrada.
+-- refpago: Codigo de referencia del cobro.
+-- previsiopago:
+-- comentpago: Comentario.
+\echo -n ':: Pago ... '
+CREATE TABLE pago (
+    idpago serial PRIMARY KEY,
+    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+    fechapago date DEFAULT NOW(),
+    cantpago numeric(12, 2) DEFAULT 0,
+    refpago character varying(12) NOT NULL,
+    previsionpago boolean DEFAULT FALSE,
+    comentpago character varying(500),
+    idtrabajador integer REFERENCES trabajador(idtrabajador)   
 );
 
 
+-- ** pedido **
+-- numpedido: Numero de pedido.
+-- fechapedido: Fecha de salida del pedido.
+-- descpedido: Descripcion del pedido.
+\echo -n ':: Pedido ... '
+CREATE TABLE pedido (
+    idpedido serial PRIMARY KEY,
+    numpedido character varying(60),
+    fechapedido date,
+    descpedido character varying(500),
+    iddivision integer NOT NULL REFERENCES division(iddivision),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idtrabajador integer REFERENCES trabajador(idtrabajador)   
+);
 
-CREATE  TABLE usuario (
+
+-- ** usuario **
+-- nombreusuario: Nombre del usuario.
+-- apellido1usuario: Primer apellido del usuario.
+-- apellido2usuario: Segundo apellido del usuario.
+-- claveusuario: Clave de acceso del usuario.
+-- permisousuario: Permisos del usuario.
+\echo -n ':: Usuario ... '
+CREATE TABLE usuario (
     loginusuario character varying(15) PRIMARY KEY,
     nombreusuario character varying(35),
     apellido1usuario character varying(35),
@@ -563,1150 +618,1187 @@ CREATE  TABLE usuario (
 );
 
 
-
--- Any: Any de facturaci�
--- Numero: Nmero de factura.
--- Data Comentaris
--- Factura de prove�or.
-CREATE  TABLE fra_pro (
-   idfra_pro serial PRIMARY KEY,
-   numfra_pro character varying(60),
-   fcrefra_pro date,
-   comentfra_pro character varying(2000)
+-- ** fra_pro **
+-- numfra_pro: Numero de factura del proveedor.
+-- fcrefra_pro: Fecha de creacion de la factura.
+-- comentafra_pro: Comentario a la factura.
+\echo -n ':: Factura de proveedor ... '
+CREATE TABLE fra_pro (
+    idfra_pro serial PRIMARY KEY,
+    numfra_pro character varying(60),
+    fcrefra_pro date,
+    comentfra_pro character varying(2000)
 );
 
 
-
--- Albaran de proveedor
--- Any: Any en que s'efectua la comanda.
--- NumCompra: Numero de Compra (Clau artificial per poder registrar recepcions que ens arribin sense l'albar�postposant la cumplimentaci�del nmero d'albar�.
--- NumAlbara: Nmero d'albar�
--- Data: Data de l'albar�-- Recepcio: Data de recepci�
--- Comentaris
-CREATE  TABLE alb_pro (
-   idalb_pro serial PRIMARY KEY,
-   ncompraalb_pro integer,
-   nalbalb_pro character varying(60),
-   fcrealb_pro date,
-   frecepalb_pro date,
-   comentalb_pro character varying(2000),
-
-   idfra_pro integer REFERENCES fra_pro(idfra_pro),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
+-- ** alb_pro **
+-- ncompraalb_pro: Numero de compra. Se usa cuando no se ha emitido albaran.
+-- nalbalb_pro: Numero del albaran.
+-- fcrealb_pro: Fecha de creacion del albaran.
+-- frecepalb_pro: Fecha de recepcion del albaran.
+-- comentalb_pro: Comentario.
+\echo -n ':: Albaran de proveedor ... '
+CREATE TABLE alb_pro (
+    idalb_pro serial PRIMARY KEY,
+    ncompraalb_pro integer,
+    nalbalb_pro character varying(60),
+    fcrealb_pro date,
+    frecepalb_pro date,
+    comentalb_pro character varying(2000),
+    idfra_pro integer REFERENCES fra_pro(idfra_pro),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen)
 );
 
 
-
--- Linea de pedido
--- Numero: Nmero de l�ia.
--- Descripcio: Descripcio de l'article.
--- Quantitat
--- PVD
--- Previsi� Data prevista de recepci�
-
-CREATE  TABLE lpedido (
-   numlpedido serial PRIMARY KEY,
-   desclpedido character varying(150),
-   cantlpedido numeric(12,2),
-   pvdlpedido numeric(12,2),
-   prevlpedido date,
-   ivalpedido numeric(12,2),
-   descuentolpedido numeric(12,2),
-   idpedido integer NOT NULL REFERENCES pedido(idpedido),
-   idalb_pro integer REFERENCES alb_pro(idalb_pro),
-   idarticulo integer REFERENCES articulo(idarticulo)
---      PRIMARY KEY(idpedido, numlpedido)
+-- ** lpedido **
+-- numlpedido: Numero de linea de pedido.
+-- desclpedido: Descripcion de la linea de pedido.
+-- cantlpedido: Cantidad.
+-- pvdlpedido: Precio al que nos vende el proveedor.
+-- prevlpedido: Prevision de recepccion de la mercancia.
+-- ivalpedido: IVA que se aplica al articulo pedido.
+-- descuentolpedido: Descuento que se aplica a esa linea de pedido.
+\echo -n ':: Lineas de pedido ... '
+CREATE TABLE lpedido (
+    numlpedido serial PRIMARY KEY,
+    desclpedido character varying(150),
+    cantlpedido numeric(12, 2),
+    pvdlpedido numeric(12, 2),
+    prevlpedido date,
+    ivalpedido numeric(12, 2),
+    descuentolpedido numeric(12, 2),
+    idpedido integer NOT NULL REFERENCES pedido(idpedido),
+    idalb_pro integer REFERENCES alb_pro(idalb_pro),
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 
--- ===================================================================
--- ====================== PRESUPUESTOS A CLIENTE =====================
--- ===================================================================
-
--- Entendemos que un presupuesto es una relaci� de materiales y trabajos cuantificada que
--- hacemos a petici� de un cliente determinado
--- Numero
--- Data: Data d'emisi�del presupost.
--- PersContacte: Nom de persona de contacte (si cal).
--- TelfContacte: Tel�on.
--- Venciment: Data m�ima de validesa del presupost.
--- Comentaris
---  Pressupost a clients.
-CREATE  TABLE presupuesto (
-   idpresupuesto serial PRIMARY KEY,
-   numpresupuesto integer NOT NULL UNIQUE,
-   refpresupuesto character varying(12) NOT NULL,
-   fpresupuesto date DEFAULT now(),
-   descpresupuesto character varying(150),
-   contactpresupuesto character varying(90),
-   telpresupuesto character varying(20),
-   vencpresupuesto date,
-   comentpresupuesto character varying(3000),
-   idusuari integer,
-   procesadopresupuesto boolean DEFAULT FALSE,
-   idcliente integer REFERENCES cliente(idcliente),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idforma_pago integer NOT NULL REFERENCES forma_pago(idforma_pago),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),
-   bimppresupuesto numeric(12,2) DEFAULT 0,
-   imppresupuesto  numeric(12,2) DEFAULT 0,
-   totalpresupuesto numeric(12,2) DEFAULT 0,
-   UNIQUE (idalmacen, numpresupuesto)
+-- ** presupuesto **
+-- Entendemos que un presupuesto es una relacion de materiales y trabajos cuantificada que
+-- hacemos a peticion de un cliente determinado.
+-- numpresupuesto: Numero de presupuesto.
+-- refpresupuesto: Codigo de referencia que se asigna a ese presupuesto.
+-- fpresupuesto: Fecha de realizacion del presupuesto.
+-- descpresupuesto: Descripcion del presupuesto.
+-- contactpresupuesto: Persona de contacto a la que hacer llegar el presupuesto. Se usa si es
+--                     diferente a los datos de cliente.
+-- telpresupuesto: Telefono de la persona de contacto.
+-- vencpresupuesto: Fecha limite de validez del presupuesto.
+-- comentpresupuesto: Comentario al presupuesto.
+-- procesadopresupuesto: Indica si al presupuesto se le ha dado curso o esta en modo borrador.
+-- bimppresupuesto: Total de Base Imponible del presupuesto.
+-- imppresupuesto: Total de impuestos (IVA) del presupuesto.
+-- totalpresupuesto: Total presupuesto.
+\echo -n ':: Presupuesto ... '
+CREATE TABLE presupuesto (
+    idpresupuesto serial PRIMARY KEY,
+    numpresupuesto integer NOT NULL UNIQUE,
+    refpresupuesto character varying(12) NOT NULL,
+    fpresupuesto date DEFAULT now(),
+    descpresupuesto character varying(150),
+    contactpresupuesto character varying(90),
+    telpresupuesto character varying(20),
+    vencpresupuesto date,
+    comentpresupuesto character varying(3000),
+    idusuari integer,
+    procesadopresupuesto boolean DEFAULT FALSE,
+    idcliente integer REFERENCES cliente(idcliente),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idforma_pago integer NOT NULL REFERENCES forma_pago(idforma_pago),
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    bimppresupuesto numeric(12, 2) DEFAULT 0,
+    imppresupuesto  numeric(12, 2) DEFAULT 0,
+    totalpresupuesto numeric(12, 2) DEFAULT 0,
+    UNIQUE (idalmacen, numpresupuesto)
 );
 
-CREATE  FUNCTION restriccionespresupuesto () RETURNS "trigger"
+
+\echo -n ':: Crea restricciones en presupuesto ... '
+CREATE FUNCTION restriccionespresupuesto() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
-BEGIN
-	IF NEW.fpresupuesto IS NULL THEN
-		NEW.fpresupuesto := now();
-	END IF;
-        IF NEW.numpresupuesto IS NULL THEN
-                SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
-		IF asd.m IS NOT NULL THEN	
-			NEW.numpresupuesto := asd.m + 1;
-		ELSE
+    asd RECORD;
 
-			NEW.numpresupuesto := 1;
-		END IF;			
-        END IF;
-	IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.refpresupuesto := asd.m;
-		END IF;
+BEGIN
+    IF NEW.fpresupuesto IS NULL THEN
+	NEW.fpresupuesto := now();
+    END IF;
+    IF NEW.numpresupuesto IS NULL THEN
+	SELECT INTO asd max(numpresupuesto) AS m FROM presupuesto;
+	IF asd.m IS NOT NULL THEN	
+	    NEW.numpresupuesto := asd.m + 1;
+	ELSE
+	    NEW.numpresupuesto := 1;
+	END IF;			
+    END IF;
+    IF NEW.refpresupuesto IS NULL OR NEW.refpresupuesto = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refpresupuesto := asd.m;
 	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionespresupuestotrigger
+\echo -n ':: Crea restricciones en presupuesto ... '
+CREATE TRIGGER restriccionespresupuestotrigger
     BEFORE INSERT OR UPDATE ON presupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionespresupuesto();
 
 
--- Descuento de presupuesto.
--- Numero
---Concepte: Descripci�del motiu de descompte.
---Proporcio: Percentatge a descomptar.
--- Descompte de pressupost a clients.
-CREATE  TABLE dpresupuesto (
-   iddpresupuesto serial PRIMARY KEY,
-   conceptdpresupuesto character varying(2000),
-   proporciondpresupuesto numeric(12,2),
-   idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+-- ** dpresupuesto **
+-- Descuento en presupuesto a clientes.
+-- conceptdpresupuesto: Motivo del descuento en presupuesto.
+-- proporciondpresupuesto: Porcentaje del descuento.
+\echo -n ':: Descuento de presupuesto ... '
+CREATE TABLE dpresupuesto (
+    iddpresupuesto serial PRIMARY KEY,
+    conceptdpresupuesto character varying(2000),
+    proporciondpresupuesto numeric(12, 2),
+    idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
+    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 );
 
 
-
--- Linea de presupuesto
--- Numero
--- Descripcio: Descripci�de l'article en el moment de ser presupostat.
--- Quantitat
--- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en l�ia.
--- Linia de pressupost a clients.
-CREATE  TABLE lpresupuesto (
-   idlpresupuesto serial PRIMARY KEY,
-   desclpresupuesto character varying(150),
-   cantlpresupuesto numeric(12,2),
-   pvplpresupuesto numeric(12,2),
-   ivalpresupuesto numeric(12,2),
-   descuentolpresupuesto numeric(12,2),
-   idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
-   idarticulo integer REFERENCES articulo(idarticulo)
+-- ** lpresupuesto **
+-- Linea de presupuesto.
+-- desclpresupuesto: Descipcion del articulo.
+-- cantlpresupuesto: Cantidad.
+-- pvplpresupuesto: Precio de venta del articulo.
+-- ivalpresupuesto: IVA aplicado al articulo.
+-- descuentolpresupuesto: Porcentaje de descuento aplicado al precio de venta.
+\echo -n ':: Lineas de presupuesto ... '
+CREATE TABLE lpresupuesto (
+    idlpresupuesto serial PRIMARY KEY,
+    desclpresupuesto character varying(150),
+    cantlpresupuesto numeric(12, 2),
+    pvplpresupuesto numeric(12, 2),
+    ivalpresupuesto numeric(12, 2),
+    descuentolpresupuesto numeric(12, 2),
+    idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
-
 -- Falta poner por defecto el pvp y el iva
 
--- ============= TOTALES AUTOMATICOS EN PRESUPUESTOS A CLIENTE =========================
--- =====================================================================================
 
-CREATE  OR REPLACE FUNCTION actualizatotpres() returns TRIGGER
+\echo -n ':: Crea o reemplaza la funcion actualiza total de presupuesto ... '
+CREATE OR REPLACE FUNCTION actualizatotpres() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalpres(NEW.idpresupuesto);
-	bimp := calcbimppres(NEW.idpresupuesto);
-	imp := calcimpuestospres(NEW.idpresupuesto);
-	UPDATE presupuesto SET totalpresupuesto = tot, bimppresupuesto = bimp, imppresupuesto = imp WHERE idpresupuesto = NEW.idpresupuesto;
-	RETURN NEW;
+    tot := calctotalpres(NEW.idpresupuesto);
+    bimp := calcbimppres(NEW.idpresupuesto);
+    imp := calcimpuestospres(NEW.idpresupuesto);
+    UPDATE presupuesto SET totalpresupuesto = tot, bimppresupuesto = bimp, imppresupuesto = imp WHERE idpresupuesto = NEW.idpresupuesto;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  restriccionespedidoclientetrigger
+
+\echo -n ':: Crea restricciones al insertar lineas en un pedido de cliente ... '
+CREATE TRIGGER restriccionespedidoclientetrigger
     AFTER INSERT OR UPDATE ON lpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpres();
 
-CREATE TRIGGER  restriccionespedidoclientetrigger1
+
+\echo -n ':: Crea restricciones al insertar o actualizar un pedido de cliente ... '
+CREATE TRIGGER restriccionespedidoclientetrigger1
     AFTER INSERT OR UPDATE ON dpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpres();
 
-CREATE  OR REPLACE FUNCTION actualizatotpresb() returns TRIGGER
+
+\echo -n ':: Crea o reemplaza la funcion que actualiza el total del presupuesto ... '
+CREATE OR REPLACE FUNCTION actualizatotpresb() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalpres(OLD.idpresupuesto);
-	bimp := calcbimppres(OLD.idpresupuesto);
-	imp := calcimpuestospres(OLD.idpresupuesto);
-	UPDATE presupuesto SET totalpresupuesto = tot, bimppresupuesto = bimp, imppresupuesto = imp WHERE idpresupuesto = OLD.idpresupuesto;
-	RETURN OLD;
+    tot := calctotalpres(OLD.idpresupuesto);
+    bimp := calcbimppres(OLD.idpresupuesto);
+    imp := calcimpuestospres(OLD.idpresupuesto);
+    UPDATE presupuesto SET totalpresupuesto = tot, bimppresupuesto = bimp, imppresupuesto = imp WHERE idpresupuesto = OLD.idpresupuesto;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  restriccionespedidoclientetriggerd
+
+\echo -n ':: Crea restricciones al borrar o actualizar lineas de un pedido de cliente ... '
+CREATE TRIGGER restriccionespedidoclientetriggerd
     AFTER DELETE OR UPDATE ON lpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpresb();
 
-CREATE TRIGGER  restriccionespedidoclientetriggerd1
+
+\echo -n ':: Crea restricciones al borrar o actualizar lineas de un pedido de cliente ... '
+CREATE TRIGGER restriccionespedidoclientetriggerd1
     AFTER DELETE OR UPDATE ON dpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpresb();
 
 
-
--- ===================================================================
--- ====================== PEDIDOS A CLIENTE ==========================
--- ===================================================================
-
--- Any: Any en que s'efectua la comanda.
--- Numero: Nmero de comanda (comen�nt de 1 cada any).
--- Descripcio: Breu descripci�o comentari opcional.
--- Data: Data d'emisi�de la comanda.
-CREATE  TABLE pedidocliente (
-   idpedidocliente serial PRIMARY KEY,
-   numpedidocliente integer UNIQUE NOT NULL,
-   fechapedidocliente date DEFAULT now(),
-   refpedidocliente character varying(12) NOT NULL,   
-   descpedidocliente character varying(500),
-   comentpedidocliente character varying(3000),
-   contactpedidocliente character varying(90),
-   telpedidocliente character varying(20),
-   idusuari integer,
-   idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
-   procesadopedidocliente boolean DEFAULT FALSE,   
-   idcliente integer NOT NULL REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),
-   totalpedidocliente numeric(12,2) DEFAULT 0,
-   bimppedidocliente NUMERIC(12,2) DEFAULT 0,
-   imppedidocliente NUMERIC(12,2) DEFAULT 0
+-- ** pedidocliente **
+-- numpedidocliente: Numero de pedido de cliente.
+-- fechapedidocliente: Fecha del pedido.
+-- refpedidocliente: Codigo referencia del pedido.
+-- descpedidocliente: Descripccion del pedido.
+-- comentpedidocliente: Comentario.
+-- contactpedidocliente: Persona de contacto del pedido. Solo en caso de que sea diferente
+--                       que los datos del cliente asociado.
+-- telpedidoclient: Telefono de la persona de contacto.
+-- procesadopedidocliente: Indica si se ha dado curso al pedido o es un borrador.
+-- totalpedidocliente: Total del pedido.
+-- bimppedidocliente: Base imponible total del pedido.
+-- imppedidocliente: Total de impuestos (IVA) del pedido.
+\echo -n ':: Pedido de cliente ... '
+CREATE TABLE pedidocliente (
+    idpedidocliente serial PRIMARY KEY,
+    numpedidocliente integer UNIQUE NOT NULL,
+    fechapedidocliente date DEFAULT now(),
+    refpedidocliente character varying(12) NOT NULL,   
+    descpedidocliente character varying(500),
+    comentpedidocliente character varying(3000),
+    contactpedidocliente character varying(90),
+    telpedidocliente character varying(20),
+    idusuari integer,
+    idpresupuesto integer REFERENCES presupuesto(idpresupuesto),
+    procesadopedidocliente boolean DEFAULT FALSE,   
+    idcliente integer NOT NULL REFERENCES cliente(idcliente),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    totalpedidocliente numeric(12,2) DEFAULT 0,
+    bimppedidocliente NUMERIC(12,2) DEFAULT 0,
+    imppedidocliente NUMERIC(12,2) DEFAULT 0
 );
 
-CREATE  FUNCTION restriccionespedidocliente () RETURNS "trigger"
+
+\echo -n ':: Restricciones de un pedido de cliente ... '
+CREATE FUNCTION restriccionespedidocliente() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
+    asd RECORD;
+
 BEGIN
-	IF NEW.fechapedidocliente IS NULL THEN
-		NEW.fechapedidocliente := now();
+    IF NEW.fechapedidocliente IS NULL THEN
+	NEW.fechapedidocliente := now();
+    END IF;
+    IF NEW.numpedidocliente IS NULL THEN
+	SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
+	IF asd.m IS NOT NULL THEN
+	    NEW.numpedidocliente := asd.m + 1;
+	ELSE
+	    NEW.numpedidocliente := 1;
 	END IF;
-        IF NEW.numpedidocliente IS NULL THEN
-                SELECT INTO asd max(numpedidocliente) AS m FROM pedidocliente;
-		IF asd.m IS NOT NULL THEN
-			NEW.numpedidocliente := asd.m + 1;
-		ELSE
-			NEW.numpedidocliente := 1;
-		END IF;
-        END IF;
-	IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.refpedidocliente := asd.m;
-		END IF;
+    END IF;
+    IF NEW.refpedidocliente IS NULL OR NEW.refpedidocliente = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refpedidocliente := asd.m;
 	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionespedidoclientetrigger
+\echo -n ':: Restricciones de un pedido de cliente ... '
+CREATE TRIGGER restriccionespedidoclientetrigger
     BEFORE INSERT OR UPDATE ON pedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionespedidocliente();
 
 
+-- ** dpedidocliente **
 -- Descuento de pedidocliente.
--- Numero
---Concepte: Descripci�del motiu de descompte.
---Proporcio: Percentatge a descomptar.
--- Descompte de pressupost a clients.
-CREATE  TABLE dpedidocliente (
-   iddpedidocliente serial PRIMARY KEY,
-   conceptdpedidocliente character varying(2000),
-   proporciondpedidocliente numeric(12,2),
-   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+-- conceptdpedidocliente: Descripcion del motivo de descuento.
+-- proporciondpedidocliente: Porcentaje del descuento.
+\echo -n ':: Descuento de pedido de cliente ... '
+CREATE TABLE dpedidocliente (
+    iddpedidocliente serial PRIMARY KEY,
+    conceptdpedidocliente character varying(2000),
+    proporciondpedidocliente numeric(12, 2),
+    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente)
+    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 );    
-    
--- Linea de pedido
--- Numero: Nmero de l�ia.
--- Descripcio: Descripcio de l'article.
--- Quantitat
--- PVD
--- Previsi� Data prevista de recepci�
-CREATE  TABLE lpedidocliente (
-   numlpedidocliente serial PRIMARY KEY,
-   desclpedidocliente character varying(150),
-   cantlpedidocliente numeric(12,2),
-   pvplpedidocliente numeric(12,2),
-   prevlpedidocliente date,
-   ivalpedidocliente numeric(12,2),
-   descuentolpedidocliente numeric(12,2),   
-   idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
-   puntlpedidocliente boolean DEFAULT FALSE,
-   idarticulo integer REFERENCES articulo(idarticulo)
+
+
+-- ** lpedidocliente **
+-- Linea de detalle del pedido.
+-- numlpedidocliente: Numero de linea del pedido de cliente.
+-- desclpedidocliente: Descripcion del articulo.
+-- cantlpedidocliente: Cantidad.
+-- pvplpedidocliente: Precio de venta del articulo.
+-- prevlpedidocliente: Fecha prevista de recepcion de la mercancia.
+-- ivalpedidocliente: Total IVA aplicado al articulo.
+-- descuentolpedidocliente: Porcentaje de descuento aplicado a la linea de articulo.
+\echo -n ':: Lineas de pedido de cliente ... '
+CREATE TABLE lpedidocliente (
+    numlpedidocliente serial PRIMARY KEY,
+    desclpedidocliente character varying(150),
+    cantlpedidocliente numeric(12, 2),
+    pvplpedidocliente numeric(12, 2),
+    prevlpedidocliente date,
+    ivalpedidocliente numeric(12, 2),
+    descuentolpedidocliente numeric(12, 2),
+    idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
+    puntlpedidocliente boolean DEFAULT FALSE,
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 
-
--- ============= TOTALES AUTOMATICOS EN PEDIDOS A CLIENTE  =============================
--- =====================================================================================
-
-
-CREATE  OR REPLACE FUNCTION actualizatotpedcli() returns TRIGGER
+\echo -n ':: Crea o reemplaza funcion para actualizar el total de pedido de cliente ... '
+CREATE OR REPLACE FUNCTION actualizatotpedcli() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalpedcli(NEW.idpresupuesto);
-	bimp := calcbimppedcli(NEW.idpresupuesto);
-	imp := calcimpuestospedcli(NEW.idpresupuesto);
-	UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = NEW.idpedidocliente;
-	RETURN NEW;
+    tot := calctotalpedcli(NEW.idpresupuesto);
+    bimp := calcbimppedcli(NEW.idpresupuesto);
+    imp := calcimpuestospedcli(NEW.idpresupuesto);
+    UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = NEW.idpedidocliente;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticospedidoclientetrigger
+
+\echo -n ':: Totales automaticos en pedido de cliente ... '
+CREATE TRIGGER totalesautomaticospedidoclientetrigger
     AFTER INSERT OR UPDATE ON lpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedcli();
 
-CREATE TRIGGER  totalesautomaticospedidoclientetrigger1
+
+\echo -n ':: Totales automaticos en pedido de cliente ... '
+CREATE TRIGGER totalesautomaticospedidoclientetrigger1
     AFTER INSERT OR UPDATE ON dpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedcli();
 
-CREATE  OR REPLACE FUNCTION actualizatotpedclib() returns TRIGGER
+
+\echo -n ':: Crea o reemplaza la funcion que actualiza el total del pedido de cliente ... '
+CREATE OR REPLACE FUNCTION actualizatotpedclib() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalpedcli(OLD.idpresupuesto);
-	bimp := calcbimppedcli(OLD.idpresupuesto);
-	imp := calcimpuestospedcli(OLD.idpresupuesto);
-	UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = OLD.idpedidocliente;
-	RETURN OLD;
+    tot := calctotalpedcli(OLD.idpresupuesto);
+    bimp := calcbimppedcli(OLD.idpresupuesto);
+    imp := calcimpuestospedcli(OLD.idpresupuesto);
+    UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = OLD.idpedidocliente;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticospedidoclientetriggerd
+
+\echo -n ':: Totales automaticos al borrar en pedido de cliente ... '
+CREATE TRIGGER totalesautomaticospedidoclientetriggerd
     AFTER DELETE OR UPDATE ON lpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedclib();
 
-CREATE TRIGGER  totalesautomaticospedidoclientetriggerd1
+
+\echo -n ':: Totales automaticos al borrar en pedido de cliente ... '
+CREATE TRIGGER totalesautomaticospedidoclientetriggerd1
     AFTER DELETE OR UPDATE ON dpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedclib();
 
 
-
-
-
--- ================================================================
--- ================ FACTURAS A CLIENTES ===========================
--- ================================================================
-
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Factura a clients.
-CREATE  TABLE factura (
-   idfactura serial PRIMARY KEY,
-   codigoserie_factura character varying (6) NOT NULL REFERENCES serie_factura(codigoserie_factura),
-   numfactura integer NOT NULL,
-   reffactura character varying(15) NOT NULL,
-   ffactura date DEFAULT now(),
-   descfactura character varying(500),   
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   contactfactura character varying(90),
-   telfactura character varying(20),
-   comentfactura character varying(3000),
-   procesadafactura boolean DEFAULT FALSE, 
-   idusuari integer,
-   idcliente integer REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),   
-   UNIQUE (idalmacen, codigoserie_factura, numfactura),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),
-   totalfactura NUMERIC(12,2) DEFAULT 0,
-   bimpfactura NUMERIC(12,2) DEFAULT 0,
-   impfactura NUMERIC(12,2) DEFAULT 0
+-- ** factura **
+-- factura a cliente.
+\echo -n ':: Factura ... '
+CREATE TABLE factura (
+    idfactura serial PRIMARY KEY,
+    codigoserie_factura character varying(6) NOT NULL REFERENCES serie_factura(codigoserie_factura),
+    numfactura integer NOT NULL,
+    reffactura character varying(15) NOT NULL,
+    ffactura date DEFAULT now(),
+    descfactura character varying(500),   
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    contactfactura character varying(90),
+    telfactura character varying(20),
+    comentfactura character varying(3000),
+    procesadafactura boolean DEFAULT FALSE, 
+    idusuari integer,
+    idcliente integer REFERENCES cliente(idcliente),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),   
+    UNIQUE (idalmacen, codigoserie_factura, numfactura),
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    totalfactura NUMERIC(12, 2) DEFAULT 0,
+    bimpfactura NUMERIC(12, 2) DEFAULT 0,
+    impfactura NUMERIC(12, 2) DEFAULT 0
 );
-\echo "Creada la tabla factura"
 
 
-CREATE  FUNCTION restriccionesfactura () RETURNS "trigger"
+\echo -n ':: Restricciones de factura ... '
+CREATE FUNCTION restriccionesfactura() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
+    asd RECORD;
+
 BEGIN
-	IF NEW.ffactura IS NULL THEN
-		NEW.ffactura := now();
+    IF NEW.ffactura IS NULL THEN
+	NEW.ffactura := now();
+    END IF;
+    IF NEW.numfactura IS NULL THEN
+	SELECT INTO asd max(numfactura) AS m FROM factura WHERE codigoserie_factura = NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
+	IF asd.m IS NOT NULL THEN
+	    NEW.numfactura := asd.m + 1;
+	ELSE
+	    NEW.numfactura := 1;
 	END IF;
-        IF NEW.numfactura IS NULL THEN
-                SELECT INTO asd max(numfactura) AS m FROM factura WHERE codigoserie_factura=NEW.codigoserie_factura AND idalmacen = NEW.idalmacen;
-		IF asd.m IS NOT NULL THEN
-			NEW.numfactura := asd.m + 1;
-		ELSE
-			NEW.numfactura := 1;
-		END IF;
-        END IF;
-	IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.reffactura := asd.m;
-		END IF;
+    END IF;
+    IF NEW.reffactura IS NULL OR NEW.reffactura = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.reffactura := asd.m;
 	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionesfacturatrigger
+\echo -n ':: Agregadas restricciones para la tabla factura ... '
+CREATE TRIGGER restriccionesfacturatrigger
     BEFORE INSERT OR UPDATE ON factura
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesfactura();
-\echo "Agregadas restricciones para la tabla factura"
 
     
--- Descuento de pedidocliente.
--- Numero
---Concepte: Descripci�del motiu de descompte.
---Proporcio: Percentatge a descomptar.
--- Descompte de pressupost a clients.
-CREATE  TABLE dfactura (
-   iddfactura serial PRIMARY KEY,
-   conceptdfactura character varying(2000),
-   proporciondfactura numeric(12,2),
-   idfactura integer NOT NULL REFERENCES factura(idfactura)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+-- ** dfactura **
+-- conceptdfactura: Motivo del descuento.
+-- proporciondfactura: Porcentaje de descuento aplicado al total de la factura.
+\echo -n ':: Descuento de factura ... '
+CREATE TABLE dfactura (
+    iddfactura serial PRIMARY KEY,
+    conceptdfactura character varying(2000),
+    proporciondfactura numeric(12, 2),
+    idfactura integer NOT NULL REFERENCES factura(idfactura)
+    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 ); 
-\echo "Creada la tabla dfactura"
 
 
--- Linea de factura
--- Numero
--- Descripcio: Descripci�de l'article en el moment de ser presupostat.
--- Quantitat
--- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en l�ia.
--- Linia de pressupost a clients.
-CREATE  TABLE lfactura (
-   idlfactura serial PRIMARY KEY,
-   desclfactura character varying(150),
-   cantlfactura numeric(12,2),
-   pvplfactura numeric(12,2),
-   ivalfactura numeric(12,2),
-   descuentolfactura numeric(12,2),
-   idfactura integer NOT NULL REFERENCES factura(idfactura),
-   idarticulo integer REFERENCES articulo(idarticulo)
+-- ** lfactura **
+-- Linea de detalle de la factura.
+-- desclfactura: Descripcion de la linea de factura.
+-- cantlfactura: Cantidad de articulos.
+-- pvplfactura: Precio de venta unitario del articulo.
+-- ivalfactura: IVA aplicado al articulo.
+-- descuentolfactura: Porcentaja de descuento aplicado al articulo.
+\echo -n ':: Lineas de factura ... '
+CREATE TABLE lfactura (
+    idlfactura serial PRIMARY KEY,
+    desclfactura character varying(150),
+    cantlfactura numeric(12, 2),
+    pvplfactura numeric(12, 2),
+    ivalfactura numeric(12, 2),
+    descuentolfactura numeric(12, 2),
+    idfactura integer NOT NULL REFERENCES factura(idfactura),
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
-\echo "Creada la tabla lfactura"
 
 
-CREATE  FUNCTION restriccioneslfactura() RETURNS "trigger"
-    AS '
+\echo -n ':: Restricciones el la linea de factura ... '
+CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
+AS '
 DECLARE
-asd RECORD;
-reg RECORD;
+    asd RECORD;
+    reg RECORD;
+
 BEGIN
-	IF NEW.idarticulo IS NULL THEN
+    IF NEW.idarticulo IS NULL THEN
 	RAISE EXCEPTION ''ARTICULO INVALIDO'';
 	return OLD;
+    END IF;
+    FOR asd IN SELECT * FROM articulo WHERE idarticulo = NEW.idarticulo LOOP
+	IF NEW.desclfactura IS NULL THEN
+	    NEW.desclfactura := asd.nomarticulo;
 	END IF;
-
-	FOR asd IN SELECT * FROM articulo WHERE idarticulo=NEW.idarticulo LOOP
-        	IF NEW.desclfactura IS NULL THEN
-			NEW.desclfactura := asd.nomarticulo;
-		END IF;
-		IF NEW.cantlfactura IS NULL THEN
-			NEW.cantlfactura := 1;
-		END IF;
-		IF NEW.descuentolfactura IS NULL THEN
-			NEW.descuentolfactura := 0;
-		END IF;
-		IF NEW.pvplfactura IS NULL THEN
-			SELECT INTO reg pvparticulo(NEW.idarticulo) AS precio;
-			NEW.pvplfactura := reg.precio;
-		END IF;
-		IF NEW.ivalfactura IS NULL then
-			SELECT INTO reg ivaarticulo(NEW.idarticulo) AS iva;
-			NEW.ivalfactura := reg.iva;
-		END IF;
-	END LOOP;	
-        RETURN NEW;
+	IF NEW.cantlfactura IS NULL THEN
+	    NEW.cantlfactura := 1;
+	END IF;
+	IF NEW.descuentolfactura IS NULL THEN
+	    NEW.descuentolfactura := 0;
+	END IF;
+	IF NEW.pvplfactura IS NULL THEN
+	    SELECT INTO reg pvparticulo(NEW.idarticulo) AS precio;
+	    NEW.pvplfactura := reg.precio;
+	END IF;
+	IF NEW.ivalfactura IS NULL then
+	    SELECT INTO reg ivaarticulo(NEW.idarticulo) AS iva;
+	    NEW.ivalfactura := reg.iva;
+	END IF;
+    END LOOP;	
+    RETURN NEW;
 END;
-'
-    LANGUAGE plpgsql;
+' LANGUAGE plpgsql;
 
-CREATE TRIGGER  restriccionesalfacturatrigger
+
+\echo -n ':: Creadas las restricciones para la linea de factura ... '
+CREATE TRIGGER restriccionesalfacturatrigger
     BEFORE INSERT OR UPDATE ON lfactura
     FOR EACH ROW
     EXECUTE PROCEDURE restriccioneslfactura();
 
-\echo "Creadas las restricciones para la linea de factura"
 
--- ===========CALCULOS ACUMULADOS FACTURAS A CLIENTES =============
--- ================================================================
-
-
--- Cálculo de totales para facturas
-CREATE  OR REPLACE FUNCTION calctotalfactura(integer) RETURNS numeric(12,2)
+\echo -n ':: Calcula el total de la factura ... '
+CREATE OR REPLACE FUNCTION calctotalfactura(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura/100) *(1+ ivalfactura/100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
-		total := total * (1 - res.proporciondfactura/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
 
--- Cálculo de totales para facturas
-CREATE  OR REPLACE FUNCTION calcbimpfactura(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura/100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
-		total := total * (1 - res.proporciondfactura/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
--- Cálculo de totales para facturas
-CREATE  OR REPLACE FUNCTION calcimpuestosfactura(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura/100) *(ivalfactura/100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
-		total := total * (1 - res.proporciondfactura/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
--- ============= METEMOS LOS TOTALES EN FACTURAS A CLIENTE  ===========================
--- =====================================================================================
-
-CREATE  OR REPLACE FUNCTION actualizatotfactura() returns TRIGGER
-AS '
-DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
-BEGIN
-	tot := calctotalfactura(NEW.idfactura);
-	bimp := calcbimpfactura(NEW.idfactura);
-	imp := calcimpuestosfactura(NEW.idfactura);
-	UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = NEW.idfactura;
-	RETURN NEW;
+    total := 0;
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (1 + ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	total := total * (1 - res.proporciondfactura / 100);
+    END LOOP;
+    RETURN total;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosfacturatrigger
+
+\echo -n ':: Calcula el total de la base imponible de la factura ... '
+CREATE OR REPLACE FUNCTION calcbimpfactura(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	total := total * (1 - res.proporciondfactura / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Calcula el total de los impuestos de la factura ... '
+CREATE OR REPLACE FUNCTION calcimpuestosfactura(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlfactura * pvplfactura * (1 - descuentolfactura / 100) * (ivalfactura / 100) AS subtotal1 FROM lfactura WHERE idfactura = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfactura FROM dfactura WHERE idfactura = idp LOOP
+	total := total * (1 - res.proporciondfactura / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Actualiza el total de la factura ... '
+CREATE OR REPLACE FUNCTION actualizatotfactura() returns TRIGGER
+AS '
+DECLARE
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
+BEGIN
+    tot := calctotalfactura(NEW.idfactura);
+    bimp := calcbimpfactura(NEW.idfactura);
+    imp := calcimpuestosfactura(NEW.idfactura);
+    UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = NEW.idfactura;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Totales automaticos de la factura ... '
+CREATE TRIGGER totalesautomaticosfacturatrigger
     AFTER INSERT OR UPDATE ON lfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfactura();
 
-CREATE TRIGGER  totalesautomaticosfacturatrigger1
+
+\echo -n ':: Totales automaticos de la factura ... '
+CREATE TRIGGER totalesautomaticosfacturatrigger1
     AFTER INSERT OR UPDATE ON dfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfactura();
 
 
-CREATE  OR REPLACE FUNCTION actualizatotfacturab() returns TRIGGER
+\echo -n ':: Actualiza el total de la factura al borrar una linea de detalle ... '
+CREATE OR REPLACE FUNCTION actualizatotfacturab() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalfactura(OLD.idfactura);
-	bimp := calcbimpfactura(OLD.idfactura);
-	imp := calcimpuestosfactura(OLD.idfactura);
-	UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = OLD.idfactura;
-	RETURN OLD;
+    tot := calctotalfactura(OLD.idfactura);
+    bimp := calcbimpfactura(OLD.idfactura);
+    imp := calcimpuestosfactura(OLD.idfactura);
+    UPDATE factura SET totalfactura = tot, bimpfactura = bimp, impfactura = imp WHERE idfactura = OLD.idfactura;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosfacturatriggerd
+
+\echo -n ':: Totales automaticos al borrar o actualizar una linea de detalle de una factura ... '
+CREATE TRIGGER totalesautomaticosfacturatriggerd
     AFTER DELETE OR UPDATE ON lfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturab();
 
-CREATE TRIGGER  totalesautomaticosfacturatriggerd1
+
+\echo -n ':: Totales automaticos al borrar o actualizar una linea de detalle de una factura ... '
+CREATE TRIGGER totalesautomaticosfacturatriggerd1
     AFTER DELETE OR UPDATE ON dfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturab();
 
--- ====================================================================
 
-
-
-
-
-
--- ===================================================================
--- ====================== FACTURAS PROVEEDOR =========================
--- ===================================================================
-
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Factura a clients.
-CREATE  TABLE facturap (
-   idfacturap serial PRIMARY KEY,
-   numfacturap character varying (20) NOT NULL UNIQUE,
-   reffacturap character varying(15) NOT NULL,
-   ffacturap date DEFAULT now(),
-   descfacturap character varying(500),   
-   contactfacturap character varying(90),
-   telfacturap character varying(20),
-   comentfacturap character varying(3000),
-   procesadafacturap boolean DEFAULT FALSE, 
-   idusuari integer,
-   idproveedor integer REFERENCES proveedor(idproveedor),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),
-   totalfacturap NUMERIC(12,2) DEFAULT 0,
-   bimpfacturap NUMERIC(12,2) DEFAULT 0,
-   impfacturap NUMERIC(12,2) DEFAULT 0
+-- ** facturap **
+-- Factura de proveedor.
+-- numfacturap: Numero de factura de proveedor.
+-- reffacturap: Codigo referencia de la factura.
+-- ffacturap: Fecha de emision de la factura de proveedor.
+-- descfacturap: Descripcion de la factura de proveedor.
+-- contactfacturap: Persona de contacto. La persona que ha emitido la factura.
+-- telfacturap: Numero de telefono de la persona de contacto.
+-- comentfacturap: Comentario.
+-- procesadafacturap: Indica que la factura de proveedor esta procesada.
+-- totalfacturap: Total de factura.
+-- bimpfacturap: Base Imponible de la factura.
+-- impfacturap: Total de impuestos (IVA).
+\echo -n ':: Factura de proveedor ... '
+CREATE TABLE facturap (
+    idfacturap serial PRIMARY KEY,
+    numfacturap character varying (20) NOT NULL UNIQUE,
+    reffacturap character varying(15) NOT NULL,
+    ffacturap date DEFAULT now(),
+    descfacturap character varying(500),   
+    contactfacturap character varying(90),
+    telfacturap character varying(20),
+    comentfacturap character varying(3000),
+    procesadafacturap boolean DEFAULT FALSE, 
+    idusuari integer,
+    idproveedor integer REFERENCES proveedor(idproveedor),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    totalfacturap NUMERIC(12, 2) DEFAULT 0,
+    bimpfacturap NUMERIC(12, 2) DEFAULT 0,
+    impfacturap NUMERIC(12, 2) DEFAULT 0
 );
 
-\echo "Creada la talba facturap"
 
-CREATE  FUNCTION restriccionesfacturap () RETURNS "trigger"
+\echo -n ':: Funcion ... '
+CREATE FUNCTION restriccionesfacturap() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
+    asd RECORD;
+
 BEGIN
-	IF NEW.ffacturap IS NULL THEN
-		NEW.ffacturap := now();
+    IF NEW.ffacturap IS NULL THEN
+	NEW.ffacturap := now();
+    END IF;
+    IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.reffacturap := asd.m;
 	END IF;
-	IF NEW.reffacturap IS NULL OR NEW.reffacturap = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.reffacturap := asd.m;
-		END IF;
-	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionesfacturaptrigger
+\echo -n ':: Creadas las restricciones para la tabla de facturas a proveedores ... '
+CREATE TRIGGER restriccionesfacturaptrigger
     BEFORE INSERT OR UPDATE ON facturap
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesfacturap();
 
-\echo "Creadas las restricciones para la tabla de facturas a proveedores"
 
--- Linea de presupuesto
--- Numero
--- Descripcio: Descripci�de l'article en el moment de ser presupostat.
--- Quantitat
--- PVP: Preu de l'article en el moment de ser pressupostat
--- Descompte: Percentatge de descompte en l�ia.
--- Linia de pressupost a clients.
-CREATE  TABLE lfacturap (
-   idlfacturap serial PRIMARY KEY,
-   desclfacturap character varying(150),
-   cantlfacturap numeric(12,2),
-   pvplfacturap numeric(12,2),
-   ivalfacturap numeric(12,2),
-   descuentolfacturap numeric(12,2),
-   idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
-   idarticulo integer REFERENCES articulo(idarticulo)
+-- ** lfacturap **
+-- Linea detalle de la factura.
+\echo -n ':: Lineas de factura de proveedor ... '
+CREATE TABLE lfacturap (
+    idlfacturap serial PRIMARY KEY,
+    desclfacturap character varying(150),
+    cantlfacturap numeric(12, 2),
+    pvplfacturap numeric(12, 2),
+    ivalfacturap numeric(12, 2),
+    descuentolfacturap numeric(12, 2),
+    idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
-\echo "Creada la tabla lfacturap"
 
 -- Descuento de factura proveedor
 -- Numero
---Concepte: Descripci�del motiu de descompte.
---Proporcio: Percentatge a descomptar.
+-- Concepte: Descripcio del motiu de descompte.
+-- Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
-CREATE  TABLE dfacturap (
-   iddfacturap serial PRIMARY KEY,
-   conceptdfacturap character varying(2000),
-   proporciondfacturap numeric(12,2),
-   idfacturap integer NOT NULL REFERENCES factura(idfactura)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+\echo -n ':: Descuento de facturas de proveedor ... '
+CREATE TABLE dfacturap (
+    iddfacturap serial PRIMARY KEY,
+    conceptdfacturap character varying(2000),
+    proporciondfacturap numeric(12, 2),
+    idfacturap integer NOT NULL REFERENCES factura(idfactura)
+    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 ); 
-\echo "Creada la tabla dfacturap"
+
 
 -- ======== CALCULOS ACUMULADOS FACTURAS A PROVEEDOR ==============
 -- ================================================================
-
--- Cálculo de totales para factura proveedor
-CREATE  OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12,2)
+-- Calculo de totales para factura proveedor
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap/100) *(1+ ivalfacturap/100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-		total := total * (1 - res.proporciondfacturap/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
-
--- Cálculo de totales para factura proveedor
-CREATE  OR REPLACE FUNCTION calcbimpfacpro(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap/100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-		total := total * (1 - res.proporciondfacturap/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
--- Cálculo de totales para factura proveedor
-CREATE  OR REPLACE FUNCTION calcimpuestosfacpro(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap/100) *(ivalfacturap/100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
-		total := total * (1 - res.proporciondfacturap/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
-\echo "Creadas las funciones de calculo de totales para facturas a proveedor"
-
--- ============= METEMOS LOS TOTALES EN FACTURAS A PROVEEDOR  ==========================
--- =====================================================================================
-
-CREATE  OR REPLACE FUNCTION actualizatotfacturap() returns TRIGGER
-AS '
-DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
-BEGIN
-	tot := calctotalfacpro(NEW.idfacturap);
-	bimp := calcbimpfacpro(NEW.idfacturap);
-	imp := calcimpuestosfacpro(NEW.idfacturap);
-	UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = NEW.idfacturap;
-	RETURN NEW;
+    total := 0;
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (1 + ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	total := total * (1 - res.proporciondfacturap/100);
+    END LOOP;
+    RETURN total;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosfacturaptrigger
+
+-- Calculo de totales para factura proveedor
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calcbimpfacpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	total := total * (1 - res.proporciondfacturap / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Creadas las funciones de calculo de totales para facturas a proveedor ... '
+CREATE OR REPLACE FUNCTION calcimpuestosfacpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlfacturap * pvplfacturap * (1 - descuentolfacturap / 100) * (ivalfacturap / 100) AS subtotal1 FROM lfacturap WHERE idfacturap = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondfacturap FROM dfacturap WHERE idfacturap = idp LOOP
+	total := total * (1 - res.proporciondfacturap / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+-- ============= METEMOS LOS TOTALES EN FACTURAS A PROVEEDOR  ==========================
+-- =====================================================================================
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotfacturap() returns TRIGGER
+AS '
+DECLARE
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
+BEGIN
+    tot := calctotalfacpro(NEW.idfacturap);
+    bimp := calcbimpfacpro(NEW.idfacturap);
+    imp := calcimpuestosfacpro(NEW.idfacturap);
+    UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = NEW.idfacturap;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosfacturaptrigger
     AFTER INSERT OR UPDATE ON lfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturap();
 
-CREATE TRIGGER  totalesautomaticosfacturaptrigger1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosfacturaptrigger1
     AFTER INSERT OR UPDATE ON dfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturap();
 
-CREATE  OR REPLACE FUNCTION actualizatotfacturapb() returns TRIGGER
+
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotfacturapb() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+    
 BEGIN
-	tot := calctotalfacpro(OLD.idfacturap);
-	bimp := calcbimpfacpro(OLD.idfacturap);
-	imp := calcimpuestosfacpro(OLD.idfacturap);
-	UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = OLD.idfacturap;
-	RETURN OLD;
+    tot := calctotalfacpro(OLD.idfacturap);
+    bimp := calcbimpfacpro(OLD.idfacturap);
+    imp := calcimpuestosfacpro(OLD.idfacturap);
+    UPDATE facturap SET totalfacturap = tot, bimpfacturap = bimp, impfacturap = imp WHERE idfacturap = OLD.idfacturap;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosfacturaptriggerd
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosfacturaptriggerd
     AFTER DELETE OR UPDATE ON lfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturapb();
 
-CREATE TRIGGER  totalesautomaticosfacturaptriggerd1
+
+\echo -n ':: Actualiza continuamente los campos de totales en factura de proveedor ... '
+CREATE TRIGGER totalesautomaticosfacturaptriggerd1
     AFTER DELETE OR UPDATE ON dfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturapb();
-
-\echo "Creada la funcionalidad para tener siempre actualizados los campos de totales en facturap"
-
-
--- ===================================================================
-
-
--- -------------------------------------------------------------------------------------------
-
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero: Numero de nofactura
--- Data
--- Concepte: Descripcio del concepte pel qual no es poden facturar els albarans aqui agrupats (garantia, -- contracte de manteniment, regals a clients, etc...).
--- Observacions
--- Agrupacio d'albarans no facturables en funci�d'un determinat concepte.
-CREATE  TABLE nofactura (
-	idnofactura serial PRIMARY KEY,
-   numnofactura integer NOT NULL,
-   fechanofactura date,
-   conceptnofactura character varying(150),
-   observnofactura character varying(150),
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	UNIQUE (idalmacen, numnofactura)
-);
 
 
 -- ===================================================================
 -- ====================== ALBARANES PROVEEDOR ========================
 -- ===================================================================
-
-
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
+-- COMPROVACIONS D'INTEGRITAT>Generiques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albar�a clients.
-CREATE  TABLE albaranp (
+-- Albara clients.
+\echo -n ':: Albaran de proveedor ... '
+CREATE TABLE albaranp (
    idalbaranp serial PRIMARY KEY,
    numalbaranp integer NOT NULL UNIQUE,
    descalbaranp character varying(150),
    refalbaranp character varying(12) NOT NULL,
    fechaalbaranp date DEFAULT now(),
---   loginusuario character varying(15) REFERENCES usuario(loginusuario),
    comentalbaranp character varying(3000),
    procesadoalbaranp boolean DEFAULT FALSE,
    idproveedor integer REFERENCES proveedor(idproveedor),
    idforma_pago integer REFERENCES forma_pago(idforma_pago),
    idusuari integer,
---   idfactura integer REFERENCES factura(idfactura),
---   idnofactura integer REFERENCES nofactura(idnofactura),
    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
    idtrabajador integer REFERENCES trabajador(idtrabajador),   
    UNIQUE (idalmacen, numalbaranp),
-   totalalbaranp NUMERIC(12,2) DEFAULT 0,
-   bimpalbaranp NUMERIC(12,2) DEFAULT 0,
-   impalbaranp NUMERIC(12,2)
+   totalalbaranp NUMERIC(12, 2) DEFAULT 0,
+   bimpalbaranp NUMERIC(12, 2) DEFAULT 0,
+   impalbaranp NUMERIC(12, 2)
 );
 
-\echo "Creada la tabla albaranp"
 
-CREATE  FUNCTION restriccionesalbaranp () RETURNS "trigger"
+\echo -n ':: Funcion ... '
+CREATE FUNCTION restriccionesalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
+    asd RECORD;
+
 BEGIN
-	IF NEW.fechaalbaranp IS NULL THEN
-		NEW.fechaalbaranp := now();
+    IF NEW.fechaalbaranp IS NULL THEN
+	NEW.fechaalbaranp := now();
+    END IF;
+    IF NEW.numalbaranp IS NULL THEN
+	SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
+	IF asd.m IS NOT NULL THEN
+	    NEW.numalbaranp := asd.m + 1;
+	ELSE
+	    NEW.numalbaranp := 1;
 	END IF;
-        IF NEW.numalbaranp IS NULL THEN
-                SELECT INTO asd max(numalbaranp) AS m FROM albaranp;
-		IF asd.m IS NOT NULL THEN
-			NEW.numalbaranp := asd.m + 1;
-		ELSE
-			NEW.numalbaranp := 1;
-		END IF;
-        END IF;
-	IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.refalbaranp := asd.m;
-		END IF;
+    END IF;
+    IF NEW.refalbaranp IS NULL OR NEW.refalbaranp = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refalbaranp := asd.m;
 	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionesalbaranptrigger
+\echo -n ':: Creadas las restricciones para la tabla albaranp ... '
+CREATE TRIGGER restriccionesalbaranptrigger
     BEFORE INSERT OR UPDATE ON albaranp
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesalbaranp();
 
-\echo "Creadas las restricciones para la tabla albaranp"
 
 -- Numero
 -- Descripcio
 -- Quantitat
 -- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
 -- Descompte
--- L�ia d'albar�a clients.
-CREATE  TABLE lalbaranp (
-   numlalbaranp serial PRIMARY KEY,
-   desclalbaranp character varying(100),
-   cantlalbaranp numeric(12,2),
-   ivalalbaranp numeric(12,2),
-   pvplalbaranp numeric(12,2),
-   descontlalbaranp numeric(12,2),
-   idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp),
-   idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
+-- Linia d'albara a clients.
+\echo -n ':: Lineas de albaran de proveedor ... '
+CREATE TABLE lalbaranp (
+    numlalbaranp serial PRIMARY KEY,
+    desclalbaranp character varying(100),
+    cantlalbaranp numeric(12, 2),
+    ivalalbaranp numeric(12, 2),
+    pvplalbaranp numeric(12, 2),
+    descontlalbaranp numeric(12, 2),
+    idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp),
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
 
-
-\echo "Creada la tabla lalbaranp"
 
 -- Descuento albaran proveedor
 -- Numero
--- Concepte: Descripci�del motiu de descompte.
+-- Concepte: Descripcio del motiu de descompte.
 -- Proporcio: Percentatge a descomptar.
--- Descompte d'albar�a clients.
-CREATE  TABLE dalbaranp (
-   iddalbaranp serial PRIMARY KEY,
-   conceptdalbaranp character varying(500),
-   proporciondalbaranp numeric(12,2),
-   idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp)
+-- Descompte d'albara a clients.
+\echo -n ':: Descuento de albaran de proveedor ... '
+CREATE TABLE dalbaranp (
+    iddalbaranp serial PRIMARY KEY,
+    conceptdalbaranp character varying(500),
+    proporciondalbaranp numeric(12, 2),
+    idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp)
 );
 
-\echo "Creada la tabla dalbaranp"
 
 -- ======== CALCULOS ACUMULADOS ALBARANES A PROVEEDOR =============
 -- ================================================================
-
-
--- Cálculo de totales para albaaran proveedor
-CREATE  OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12,2)
+-- Calculo de totales para albaaran proveedor
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp/100) *(1+ ivalalbaranp/100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
-		total := total * (1 - res.proporciondalbaranp/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
 
-CREATE  OR REPLACE FUNCTION calcbimpalbpro(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp/100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
-		total := total * (1 - res.proporciondalbaranp/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-\echo "Cálculo de totales para albaranes de proveedor"
-
-CREATE  OR REPLACE FUNCTION calcimpuestosalbpro(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp/100) *(ivalalbaranp/100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
-		total := total * (1 - res.proporciondalbaranp/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
--- ============= METEMOS LOS TOTALES EN ALBARANES A PROVEEDOR  =========================
--- =====================================================================================
-
-CREATE  OR REPLACE FUNCTION actualizatotalbaranp() returns TRIGGER
-AS '
-DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
-BEGIN
-	tot := calctotalalbpro(NEW.idalbaranp);
-	bimp := calcbimpalbpro(NEW.idalbaranp);
-	imp := calcimpuestosalbpro(NEW.idalbaranp);
-	UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = NEW.idalbaranp;
-	RETURN NEW;
+    total := 0;
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp / 100) * (1 + ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+    RETURN total;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosalbaranptrigger
+
+\echo -n ':: Calculo de totales para albaranes de proveedor ... '
+CREATE OR REPLACE FUNCTION calcbimpalbpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calcimpuestosalbpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+-- ============= METEMOS LOS TOTALES EN ALBARANES A PROVEEDOR  =========================
+-- =====================================================================================
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotalbaranp() returns TRIGGER
+AS '
+DECLARE
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
+BEGIN
+    tot := calctotalalbpro(NEW.idalbaranp);
+    bimp := calcbimpalbpro(NEW.idalbaranp);
+    imp := calcimpuestosalbpro(NEW.idalbaranp);
+    UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = NEW.idalbaranp;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbaranptrigger
     AFTER INSERT OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranp();
 
-CREATE TRIGGER  totalesautomaticosalbaranptrigger1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbaranptrigger1
     AFTER INSERT OR UPDATE ON dalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranp();
 
 
-CREATE  OR REPLACE FUNCTION actualizatotalbaranpb() returns TRIGGER
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotalbaranpb() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalalbpro(OLD.idalbaranp);
-	bimp := calcbimpalbpro(OLD.idalbaranp);
-	imp := calcimpuestosalbpro(OLD.idalbaranp);
-	UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = OLD.idalbaranp;
-	RETURN OLD;
+    tot := calctotalalbpro(OLD.idalbaranp);
+    bimp := calcbimpalbpro(OLD.idalbaranp);
+    imp := calcimpuestosalbpro(OLD.idalbaranp);
+    UPDATE albaranp SET totalalbaranp = tot, bimpalbaranp = bimp, impalbaranp = imp WHERE idalbaranp = OLD.idalbaranp;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosalbaranptriggerd
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbaranptriggerd
     AFTER DELETE OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranpb();
 
-CREATE TRIGGER  totalesautomaticosalbaranptriggerd1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbaranptriggerd1
     AFTER DELETE OR UPDATE ON dalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranpb();
 
 
--- ======================================================================
-
-
-
-
 -- **********************************************************************
--- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCI� DE ERRORES.
+-- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERRORES.
 -- **********************************************************************
 -- **********************************************************************
-
-    
-CREATE  FUNCTION random_string(int4) RETURNS "varchar" AS '
+\echo -n ':: Funcion ... '
+CREATE FUNCTION random_string(int4) RETURNS "varchar" AS '
 DECLARE
-iLoop int4;
-result varchar;
-BEGIN
-result = '''';
-IF ($1>0) AND ($1 < 255) THEN
-  FOR iLoop in 1 .. $1 LOOP
-    result = result || chr(int4(random()*26)+65);
-  END LOOP;
-  RETURN result;
-ELSE
-  RETURN ''f'';
-END IF;
-END;
-'  LANGUAGE 'plpgsql';
-    
+    iLoop int4;
+    result varchar;
 
-CREATE  FUNCTION crearef () RETURNS character varying (15)
-AS '
-DECLARE
-asd RECORD;
-result character varying(15);
-efound boolean;
 BEGIN
-	efound := FALSE;
-	WHILE efound = FALSE LOOP
-		result := random_string(6);
-		efound := TRUE;
-		SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto=result;
-		IF FOUND THEN
-			efound := FALSE;
-		END IF;
-		SELECT  INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente=result;
-		IF FOUND THEN
-			efound := FALSE;
-		END IF;
-		SELECT  INTO asd idalbaran FROM albaran WHERE refalbaran=result;
-		IF FOUND THEN
-			efound := FALSE;
-		END IF;	
-		SELECT INTO asd  idfactura FROM factura WHERE reffactura=result;
-		IF FOUND THEN
-			efound := FALSE;
-		END IF;	
+    result = '''';
+    IF ($1 > 0) AND ($1 < 255) THEN
+	FOR iLoop in 1 .. $1 LOOP
+	    result = result || chr(int4(random()*26)+65);
 	END LOOP;
 	RETURN result;
+    ELSE
+	RETURN ''f'';
+    END IF;
+END;
+'  LANGUAGE 'plpgsql';
+
+
+\echo -n ':: Funcion ... '
+CREATE FUNCTION crearef() RETURNS character varying(15)
+AS '
+DECLARE
+    asd RECORD;
+    result character varying(15);
+    efound boolean;
+
+BEGIN
+    efound := FALSE;
+    WHILE efound = FALSE LOOP
+	result := random_string(6);
+	efound := TRUE;
+	SELECT INTO asd idpresupuesto FROM presupuesto WHERE refpresupuesto = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+	SELECT INTO asd idpedidocliente FROM pedidocliente WHERE refpedidocliente = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;
+	SELECT INTO asd idalbaran FROM albaran WHERE refalbaran = result;
+	IF FOUND THEN
+	    efound := FALSE;
+	END IF;	
+	SELECT INTO asd idfactura FROM factura WHERE reffactura = result;
+	IF FOUND THEN
+		efound := FALSE;
+	END IF;	
+    END LOOP;
+    RETURN result;
 END;
 ' LANGUAGE plpgsql;
 
@@ -1714,82 +1806,85 @@ END;
 -- ===================================================================
 -- ====================== ALBARANES CLIENTE ==========================
 -- ===================================================================
-
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
+-- COMPROVACIONS D'INTEGRITAT>Generiques:
 -- Tots els albarans d'una factura corresponen al mateix client.
 -- FACTURACIO>Albarans:
 -- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
 -- Numero
 -- Data
--- Albar�a clients.
-CREATE  TABLE albaran (
-   idalbaran serial PRIMARY KEY,
-   numalbaran integer NOT NULL UNIQUE,
-   descalbaran character varying(150),
-   refalbaran character varying(12) NOT NULL,
-   fechaalbaran date DEFAULT now(),
-   comentalbaran character varying(3000),
-   comentprivalbaran character varying(3000),
-   procesadoalbaran boolean DEFAULT FALSE,
-   contactalbaran character varying,
-   telalbaran character varying,
-   idusuari integer,
-   idcliente integer REFERENCES cliente(idcliente),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),
-   idfactura integer REFERENCES factura(idfactura),
-   idnofactura integer REFERENCES nofactura(idnofactura),
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),   
-   totalalbaran NUMERIC(12,2) DEFAULT 0,
-   bimpalbaran NUMERIC(12,2) DEFAULT 0,
-   impalbaran NUMERIC(12,2) DEFAULT 0,
-   UNIQUE (idalmacen, numalbaran)
+-- Albara a clients.
+\echo -n ':: Albaran ... '
+CREATE TABLE albaran (
+    idalbaran serial PRIMARY KEY,
+    numalbaran integer NOT NULL UNIQUE,
+    descalbaran character varying(150),
+    refalbaran character varying(12) NOT NULL,
+    fechaalbaran date DEFAULT now(),
+    comentalbaran character varying(3000),
+    comentprivalbaran character varying(3000),
+    procesadoalbaran boolean DEFAULT FALSE,
+    contactalbaran character varying,
+    telalbaran character varying,
+    idusuari integer,
+    idcliente integer REFERENCES cliente(idcliente),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),
+    idfactura integer REFERENCES factura(idfactura),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idtrabajador integer REFERENCES trabajador(idtrabajador),   
+    totalalbaran NUMERIC(12, 2) DEFAULT 0,
+    bimpalbaran NUMERIC(12, 2) DEFAULT 0,
+    impalbaran NUMERIC(12, 2) DEFAULT 0,
+    UNIQUE (idalmacen, numalbaran)
 );
 
-CREATE  FUNCTION restriccionesalbaran () RETURNS "trigger"
+
+\echo -n ':: Funcion ... '
+CREATE FUNCTION restriccionesalbaran() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
+    asd RECORD;
+
 BEGIN
-	IF NEW.fechaalbaran IS NULL THEN
-		NEW.fechaalbaran := now();
+    IF NEW.fechaalbaran IS NULL THEN
+	NEW.fechaalbaran := now();
+    END IF;
+    IF NEW.numalbaran IS NULL THEN
+	SELECT INTO asd max(numalbaran) AS m FROM albaran;
+	IF asd.m IS NOT NULL THEN
+	    NEW.numalbaran := asd.m + 1;
+	ELSE
+	    NEW.numalbaran := 1;
 	END IF;
-        IF NEW.numalbaran IS NULL THEN
-                SELECT INTO asd max(numalbaran) AS m FROM albaran;
-		IF asd.m IS NOT NULL THEN
-			NEW.numalbaran := asd.m + 1;
-		ELSE
-			NEW.numalbaran := 1;
-		END IF;
-        END IF;
-	IF NEW.refalbaran IS NULL OR NEW.refalbaran = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.refalbaran := asd.m;
-		END IF;
+    END IF;
+    IF NEW.refalbaran IS NULL OR NEW.refalbaran = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refalbaran := asd.m;
 	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionesalbarantrigger
+\echo -n ':: Disparador ... '
+CREATE TRIGGER restriccionesalbarantrigger
     BEFORE INSERT OR UPDATE ON albaran
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesalbaran();
 
 
-
 -- Descuento albaran
 -- Numero
--- Concepte: Descripci�del motiu de descompte.
+-- Concepte: Descripcio del motiu de descompte.
 -- Proporcio: Percentatge a descomptar.
--- Descompte d'albar�a clients.
-CREATE  TABLE dalbaran (
-   iddalbaran serial PRIMARY KEY,
-   conceptdalbaran character varying(500),
-   proporciondalbaran numeric(12,2),
-   idalbaran integer NOT NULL REFERENCES albaran(idalbaran)
+-- Descompte d'albara a clients.
+\echo -n ':: Descuento de albaran ... '
+CREATE TABLE dalbaran (
+    iddalbaran serial PRIMARY KEY,
+    conceptdalbaran character varying(500),
+    proporciondalbaran numeric(12, 2),
+    idalbaran integer NOT NULL REFERENCES albaran(idalbaran)
 );
 
 
@@ -1798,215 +1893,229 @@ CREATE  TABLE dalbaran (
 -- Quantitat
 -- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
 -- Descompte
--- L�ia d'albar�a clients.
-CREATE  TABLE lalbaran (
-   numlalbaran serial PRIMARY KEY,
-   desclalbaran character varying(100),
-   cantlalbaran numeric(12,2),
-   pvplalbaran numeric(12,2),
-   descontlalbaran numeric(12,2),
-   ivalalbaran numeric(12,2),
-   idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
-   idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
+-- Linia d'albara a clients.
+\echo -n ':: Lineas de albaran ... '
+CREATE TABLE lalbaran (
+    numlalbaran serial PRIMARY KEY,
+    desclalbaran character varying(100),
+    cantlalbaran numeric(12, 2),
+    pvplalbaran numeric(12, 2),
+    descontlalbaran numeric(12, 2),
+    ivalalbaran numeric(12, 2),
+    idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
+
 
 -- ============= METEMOS LOS TOTALES EN ALBARANES A CLIENTE  ===========================
 -- =====================================================================================
-
-CREATE  OR REPLACE FUNCTION actualizatotalbaran() returns TRIGGER
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotalbaran() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalalbaran(NEW.idalbaran);
-	bimp := calcbimpalbaran(NEW.idalbaran);
-	imp := calcimpuestosalbaran(NEW.idalbaran);
-	UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = NEW.idalbaran;
-	RETURN NEW;
+    tot := calctotalalbaran(NEW.idalbaran);
+    bimp := calcbimpalbaran(NEW.idalbaran);
+    imp := calcimpuestosalbaran(NEW.idalbaran);
+    UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = NEW.idalbaran;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosalbarantrigger
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbarantrigger
     AFTER INSERT OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaran();
 
-CREATE TRIGGER  totalesautomaticosalbarantrigger1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbarantrigger1
     AFTER INSERT OR UPDATE ON dalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaran();
 
 
-CREATE  OR REPLACE FUNCTION actualizatotalbaranb() returns TRIGGER
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotalbaranb() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalalbaran(OLD.idalbaran);
-	bimp := calcbimpalbaran(OLD.idalbaran);
-	imp := calcimpuestosalbaran(OLD.idalbaran);
-	UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = OLD.idalbaran;
-	RETURN OLD;
+    tot := calctotalalbaran(OLD.idalbaran);
+    bimp := calcbimpalbaran(OLD.idalbaran);
+    imp := calcimpuestosalbaran(OLD.idalbaran);
+    UPDATE albaran SET totalalbaran = tot, bimpalbaran = bimp, impalbaran = imp WHERE idalbaran = OLD.idalbaran;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticosalbarantriggerd
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbarantriggerd
     AFTER DELETE OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranb();
 
-CREATE TRIGGER  totalesautomaticosalbarantriggerd1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticosalbarantriggerd1
     AFTER DELETE OR UPDATE ON dalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranb();
 
--- =========================================================
-
-
-
     
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
-CREATE  TABLE ticket (
-   numticket integer PRIMARY KEY,
-   fechaticket date
+-- PARA USO CON TPV:
+\echo -n ':: Ticket ... '
+CREATE TABLE ticket (
+    numticket integer PRIMARY KEY,
+    fechaticket date
 );
 
 
--- COMPROVACIONS D'INTEGRITAT>Gen�iques:
--- 1 Article t�1 sol prove�or principal.
--- 1 Article t�1 sol prove�or referent.
-CREATE  TABLE suministra (
-   idsuministra serial PRIMARY KEY,
-   refpro character varying(100),
-   principalsuministra numeric(12,2),
-   idproveedor integer REFERENCES proveedor(idproveedor),
-   idarticulo integer REFERENCES articulo(idarticulo)
+-- COMPROVACIONS D'INTEGRITAT>Generiques:
+-- 1 Article te 1 sol proveedor principal.
+-- 1 Article te 1 sol proveedor referent.
+\echo -n ':: Proveedor suministra articulo ... '
+CREATE TABLE suministra (
+    idsuministra serial PRIMARY KEY,
+    refpro character varying(100),
+    principalsuministra numeric(12,2),
+    idproveedor integer REFERENCES proveedor(idproveedor),
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
 
 
-
-
-
-
--- Vemos la tabla de provincias.
-CREATE  TABLE provincia (
+\echo -n ':: Provincia ... '
+CREATE TABLE provincia (
     provincia character varying(500)
 );
 
-CREATE  TABLE precio_compra (
-	idprecio_compra serial PRIMARY KEY,
-	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-	iddivision integer REFERENCES division(iddivision),
-	idalmacen integer REFERENCES almacen(idalmacen),
-	fechapreciocompra date,
-	valorpreciocompra numeric(13, 4) NOT NULL
+
+\echo -n ':: Precio de compra ... '
+CREATE TABLE precio_compra (
+    idprecio_compra serial PRIMARY KEY,
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+    iddivision integer REFERENCES division(iddivision),
+    idalmacen integer REFERENCES almacen(idalmacen),
+    fechapreciocompra date,
+    valorpreciocompra numeric(13, 4) NOT NULL
 );
 
 
-CREATE  TABLE codigobarras (
-	idcodigobarras serial PRIMARY KEY,
-	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-	ean14codigobarras numeric(14, 0) NOT NULL UNIQUE,
-	unixcajacodigobarras numeric(4, 0),
-	cajxpaletcodigobarras numeric(4, 0),
-	unidadcodigobarras character(1)
+\echo -n ':: Codigo de barras ... '
+CREATE TABLE codigobarras (
+    idcodigobarras serial PRIMARY KEY,
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+    ean14codigobarras numeric(14, 0) NOT NULL UNIQUE,
+    unixcajacodigobarras numeric(4, 0),
+    cajxpaletcodigobarras numeric(4, 0),
+    unidadcodigobarras character(1)
 );
+
 
 -- FUNCIONES VARIAS DE SOPORTE.
-
-CREATE  OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12,2)
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
-	idarticulo ALIAS FOR $1;
-	as RECORD;
+    idarticulo ALIAS FOR $1;
+    as RECORD;
+
 BEGIN
-	SELECT INTO AS * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
-	IF FOUND THEN
-		RETURN as.porcentasa_iva;
-	END IF;
-	RETURN 0.0;
+    SELECT INTO AS * FROM tipo_iva, tasa_iva, articulo WHERE tasa_iva.idtipo_iva = tipo_iva.idtipo_iva AND tipo_iva.idtipo_iva = articulo.idtipo_iva AND articulo.idarticulo = idarticulo ORDER BY fechatasa_iva;
+    IF FOUND THEN
+	RETURN as.porcentasa_iva;
+    END IF;
+    RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE  OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12,2)
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
-	idarticulo ALIAS FOR $1;
-	as RECORD;
+    idarticulo ALIAS FOR $1;
+    as RECORD;
+
 BEGIN
-	SELECT INTO AS pvparticulo FROM  articulo WHERE articulo.idarticulo = idarticulo;
-	IF FOUND THEN
-		RETURN as.pvparticulo;
-	END IF;
-	RETURN 0.0;
+    SELECT INTO AS pvparticulo FROM articulo WHERE articulo.idarticulo = idarticulo;
+    IF FOUND THEN
+	RETURN as.pvparticulo;
+    END IF;
+    RETURN 0.0;
 END;
 ' LANGUAGE plpgsql;
-
 
 
 -- ===================================================================
 -- ====================== PEDIDOS A PROVEEDOR ========================
 -- ===================================================================
-
-
 -- Any: Any en que s'efectua la comanda.
--- Numero: Nmero de comanda (comen�nt de 1 cada any).
--- Descripcio: Breu descripci�o comentari opcional.
--- Data: Data d'emisi�de la comanda.
-CREATE  TABLE pedidoproveedor (
-   idpedidoproveedor serial PRIMARY KEY,
-   numpedidoproveedor integer UNIQUE NOT NULL,
-   fechapedidoproveedor date DEFAULT now(),
-   refpedidoproveedor character varying(12) NOT NULL,   
-   descpedidoproveedor character varying(500),
-   comentpedidoproveedor character varying(3000),
-   contactpedidoproveedor character varying(90),
-   telpedidoproveedor character varying(20),   
-   procesadopedidoproveedor boolean DEFAULT FALSE,   
-   idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
-   idforma_pago integer REFERENCES forma_pago(idforma_pago),    
-   idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-   idtrabajador integer REFERENCES trabajador(idtrabajador),
-   totalpedidoproveedor NUMERIC(12,2) DEFAULT 0,
-   bimppedidoproveedor NUMERIC(12,2) DEFAULT 0,
-   imppedidoproveedor NUMERIC(12,2) DEFAULT 0
-
+-- Numero: Numero de comanda (iniciant de 1 cada any).
+-- Descripcio: Breu descripcio o comentari opcional.
+-- Data: Data d'emisio de la comanda.
+\echo -n ':: Pedido a proveedor ... '
+CREATE TABLE pedidoproveedor (
+    idpedidoproveedor serial PRIMARY KEY,
+    numpedidoproveedor integer UNIQUE NOT NULL,
+    fechapedidoproveedor date DEFAULT now(),
+    refpedidoproveedor character varying(12) NOT NULL,   
+    descpedidoproveedor character varying(500),
+    comentpedidoproveedor character varying(3000),
+    contactpedidoproveedor character varying(90),
+    telpedidoproveedor character varying(20),   
+    procesadopedidoproveedor boolean DEFAULT FALSE,   
+    idproveedor integer NOT NULL REFERENCES proveedor(idproveedor),
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),    
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idtrabajador integer REFERENCES trabajador(idtrabajador),
+    totalpedidoproveedor NUMERIC(12, 2) DEFAULT 0,
+    bimppedidoproveedor NUMERIC(12, 2) DEFAULT 0,
+    imppedidoproveedor NUMERIC(12, 2) DEFAULT 0
 );
 
-CREATE  FUNCTION restriccionespedidoproveedor () RETURNS "trigger"
+
+\echo -n ':: Funcion  ... '
+CREATE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
 AS '
 DECLARE
-asd RECORD;
+    asd RECORD;
+
 BEGIN
-	IF NEW.fechapedidoproveedor IS NULL THEN
-		NEW.fechapedidoproveedor := now();
+    IF NEW.fechapedidoproveedor IS NULL THEN
+	NEW.fechapedidoproveedor := now();
+    END IF;
+    IF NEW.numpedidoproveedor IS NULL THEN
+	SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
+	IF asd.m IS NOT NULL THEN
+	    NEW.numpedidoproveedor := asd.m + 1;
+	ELSE
+	    NEW.numpedidoproveedor := 1;
 	END IF;
-        IF NEW.numpedidoproveedor IS NULL THEN
-                SELECT INTO asd max(numpedidoproveedor) AS m FROM pedidoproveedor;
-		IF asd.m IS NOT NULL THEN
-			NEW.numpedidoproveedor := asd.m + 1;
-		ELSE
-			NEW.numpedidoproveedor := 1;
-		END IF;
-        END IF;
-	IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
-		SELECT INTO asd crearef() AS m;
-		IF FOUND THEN
-			NEW.refpedidoproveedor := asd.m;
-		END IF;
+    END IF;
+    IF NEW.refpedidoproveedor IS NULL OR NEW.refpedidoproveedor = '''' THEN
+	SELECT INTO asd crearef() AS m;
+	IF FOUND THEN
+	    NEW.refpedidoproveedor := asd.m;
 	END IF;
-        RETURN NEW;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  restriccionespedidoproveedortrigger
+\echo -n ':: Disparador ... '
+CREATE TRIGGER restriccionespedidoproveedortrigger
     BEFORE INSERT OR UPDATE ON pedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionespedidoproveedor();
@@ -2014,690 +2123,776 @@ CREATE TRIGGER  restriccionespedidoproveedortrigger
 
 -- Descuento de pedidocliente.
 -- Numero
---Concepte: Descripci�del motiu de descompte.
---Proporcio: Percentatge a descomptar.
+-- Concepte: Descripcio del motiu de descompte.
+-- Proporcio: Percentatge a descomptar.
 -- Descompte de pressupost a clients.
-CREATE  TABLE dpedidoproveedor (
-   iddpedidoproveedor serial PRIMARY KEY,
-   conceptdpedidoproveedor character varying(2000),
-   proporciondpedidoproveedor numeric(12,2),
-   idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despu� de �ta.
+\echo -n ':: Descuento pedido a proveedor ... '
+CREATE TABLE dpedidoproveedor (
+    iddpedidoproveedor serial PRIMARY KEY,
+    conceptdpedidoproveedor character varying(2000),
+    proporciondpedidoproveedor numeric(12, 2),
+    idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor)
+   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 );    
+
     
 -- Linea de pedido
--- Numero: Nmero de l�ia.
+-- Numero: Numero de linia.
 -- Descripcio: Descripcio de l'article.
 -- Quantitat
 -- PVD
--- Previsi� Data prevista de recepci�
-CREATE  TABLE lpedidoproveedor (
-   numlpedidoproveedor serial PRIMARY KEY,
-   desclpedidoproveedor character varying(150),
-   cantlpedidoproveedor numeric(12,2),
-   pvplpedidoproveedor numeric(12,2),
-   prevlpedidoproveedor date,
-   ivalpedidoproveedor numeric(12,2),
-   descuentolpedidoproveedor numeric(12,2),   
-   idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),
-   puntlpedidoproveedor boolean DEFAULT FALSE,
-   idarticulo integer REFERENCES articulo(idarticulo)
+-- Previsio Data prevista de recepcio
+\echo -n ':: Lineas de pedido a proveedor ... '
+CREATE TABLE lpedidoproveedor (
+    numlpedidoproveedor serial PRIMARY KEY,
+    desclpedidoproveedor character varying(150),
+    cantlpedidoproveedor numeric(12, 2),
+    pvplpedidoproveedor numeric(12, 2),
+    prevlpedidoproveedor date,
+    ivalpedidoproveedor numeric(12, 2),
+    descuentolpedidoproveedor numeric(12, 2),
+    idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),
+    puntlpedidoproveedor boolean DEFAULT FALSE,
+    idarticulo integer REFERENCES articulo(idarticulo)
 );
+
 
 -- ===========CALCULOS ACUMULADOS PEDIDOS A PROVEEDOR =============
 -- ================================================================
-
-
--- Cálculo de totales para pedido proveedor
-CREATE  OR REPLACE FUNCTION calctotalpedpro(integer) RETURNS numeric(12,2)
+-- Calculo de totales para pedido proveedor
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calctotalpedpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor/100) *(1+ ivalpedidoproveedor/100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-		total := total * (1 - res.proporciondpedidoproveedor/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
-CREATE  OR REPLACE FUNCTION calcbimppedpro(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor/100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-		total := total * (1 - res.proporciondpedidoproveedor/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
-
-CREATE  OR REPLACE FUNCTION calcimpuestospedpro(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor/100) *( ivalpedidoproveedor/100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
-		total := total * (1 - res.proporciondpedidoproveedor/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
--- ============= METEMOS LOS TOTALES EN PEDIDOS A PROVEEDOR  ===========================
--- =====================================================================================
-
-CREATE  OR REPLACE FUNCTION actualizatotpedidoproveedor() returns TRIGGER
-AS '
-DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
-BEGIN
-	tot := calctotalpedpro(NEW.idpedidoproveedor);
-	bimp := calcbimppedpro(NEW.idpedidoproveedor);
-	imp := calcimpuestospedpro(NEW.idpedidoproveedor);
-	UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = NEW.idpedidoproveedor;
-	RETURN NEW;
+    total := 0;
+    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (1 + ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - res.proporciondpedidoproveedor / 100);
+    END LOOP;
+    RETURN total;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticospedidoproveedortrigger
+
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calcbimppedpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - res.proporciondpedidoproveedor  / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION calcimpuestospedpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR  res IN SELECT cantlpedidoproveedor * pvplpedidoproveedor * (1 - descuentolpedidoproveedor / 100) * (ivalpedidoproveedor / 100) AS subtotal1 FROM lpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpedidoproveedor FROM dpedidoproveedor WHERE idpedidoproveedor = idp LOOP
+	total := total * (1 - res.proporciondpedidoproveedor / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+-- ============= METEMOS LOS TOTALES EN PEDIDOS A PROVEEDOR  ===========================
+-- =====================================================================================
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotpedidoproveedor() returns TRIGGER
+AS '
+DECLARE
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
+BEGIN
+    tot := calctotalpedpro(NEW.idpedidoproveedor);
+    bimp := calcbimppedpro(NEW.idpedidoproveedor);
+    imp := calcimpuestospedpro(NEW.idpedidoproveedor);
+    UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = NEW.idpedidoproveedor;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Disparador  ... '
+CREATE TRIGGER totalesautomaticospedidoproveedortrigger
     AFTER INSERT OR UPDATE ON lpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedor();
 
-CREATE TRIGGER  totalesautomaticospedidoproveedortrigger1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticospedidoproveedortrigger1
     AFTER INSERT OR UPDATE ON dpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedor();
 
 
-CREATE  OR REPLACE FUNCTION actualizatotpedidoproveedorb() returns TRIGGER
+\echo -n ':: Crea o reemplaza la funcion ... '
+CREATE OR REPLACE FUNCTION actualizatotpedidoproveedorb() returns TRIGGER
 AS '
 DECLARE
-	tot NUMERIC(12,2);
-	bimp NUMERIC(12,2);
-	imp NUMERIC(12,2);
+    tot NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
+    imp NUMERIC(12, 2);
+
 BEGIN
-	tot := calctotalpedpro(OLD.idpedidoproveedor);
-	bimp := calcbimppedpro(OLD.idpedidoproveedor);
-	imp := calcimpuestospedpro(OLD.idpedidoproveedor);
-	UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = OLD.idpedidoproveedor;
-	RETURN OLD;
+    tot := calctotalpedpro(OLD.idpedidoproveedor);
+    bimp := calcbimppedpro(OLD.idpedidoproveedor);
+    imp := calcimpuestospedpro(OLD.idpedidoproveedor);
+    UPDATE pedidoproveedor SET totalpedidoproveedor = tot, bimppedidoproveedor = bimp, imppedidoproveedor = imp WHERE idpedidoproveedor = OLD.idpedidoproveedor;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  totalesautomaticospedidoproveedortriggerd
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticospedidoproveedortriggerd
     AFTER DELETE OR UPDATE ON lpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedorb();
 
-CREATE TRIGGER  totalesautomaticospedidoproveedortriggerd1
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER totalesautomaticospedidoproveedortriggerd1
     AFTER DELETE OR UPDATE ON dpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedorb();
 
 
--- =======================================================================
+-- Calculo de totales para presupuestos.
+\echo -n ':: Crea o reemplaza la funcion calctotalpres ... '
+CREATE OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (1 + ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - res.proporciondpresupuesto / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
 
 -- Calculo de totales para presupuestos.
-CREATE  OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12,2)
+\echo -n ':: Crea o reemplaza la funcion calcbimppres ... '
+CREATE OR REPLACE FUNCTION calcbimppres(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) *(1+ ivalpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-		total := total * (1 - res.proporciondpresupuesto/100);
-	END LOOP;
-	RETURN total;
+    total := 0;
+    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - res.proporciondpresupuesto / 100);
+    END LOOP;
+    RETURN total;
 END;
-' language plpgsql;
+' LANGUAGE plpgsql;
+
 
 -- Calculo de totales para presupuestos.
-CREATE  OR REPLACE FUNCTION calcbimppres(integer) RETURNS numeric(12,2)
+\echo -n ':: Crea o reemplaza la funcion calcimpuestospres ... '
+CREATE OR REPLACE FUNCTION calcimpuestospres(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-		total := total * (1 - res.proporciondpresupuesto/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
 
--- Calculo de totales para presupuestos.
-CREATE  OR REPLACE FUNCTION calcimpuestospres(integer) RETURNS numeric(12,2)
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto / 100) * (ivalpresupuesto / 100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
+	total := total * (1 - res.proporciondpresupuesto / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+-- Calculo de totales para pedido cliente.
+\echo -n ':: Crea o reemplaza la funcion calctotalpedcli ... '
+CREATE OR REPLACE FUNCTION calctotalpedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpresupuesto * pvplpresupuesto * (1 - descuentolpresupuesto/100) * (ivalpresupuesto/100) AS subtotal1 FROM lpresupuesto WHERE idpresupuesto = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpresupuesto FROM dpresupuesto WHERE idpresupuesto = idp LOOP
-		total := total * (1 - res.proporciondpresupuesto/100);
-	END LOOP;
-	RETURN total;
+    total := 0;
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) *(1 + ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - res.proporciondpedidocliente / 100);
+    END LOOP;
+    RETURN total;
 END;
-' language plpgsql;
+' LANGUAGE plpgsql;
 
 
-
--- Cálculo de totales para pedido cliente.
-CREATE  OR REPLACE FUNCTION calctotalpedcli(integer) RETURNS numeric(12,2)
+-- Calculo de totales para pedido cliente.
+\echo -n ':: Crea o reemplaza la funcion calcbimppedcli ... '
+CREATE OR REPLACE FUNCTION calcbimppedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente/100) *(1+ ivalpedidocliente/100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-		total := total * (1 - res.proporciondpedidocliente/100);
-	END LOOP;
-	RETURN total;
+    total := 0;
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+    	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - res.proporciondpedidocliente / 100);
+    END LOOP;
+    RETURN total;
 END;
-' language plpgsql;
+' LANGUAGE plpgsql;
 
 
--- Cálculo de totales para pedido cliente.
-CREATE  OR REPLACE FUNCTION calcbimppedcli(integer) RETURNS numeric(12,2)
+-- Calculo de totales para pedido cliente.
+\echo -n ':: Crea o reemplaza la funcion calcimpuestospedcli ... '
+CREATE OR REPLACE FUNCTION calcimpuestospedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente/100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-		total := total * (1 - res.proporciondpedidocliente/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
 
--- Cálculo de totales para pedido cliente.
-CREATE  OR REPLACE FUNCTION calcimpuestospedcli(integer) RETURNS numeric(12,2)
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente / 100) * (ivalpedidocliente / 100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
+	total := total * (1 - res.proporciondpedidocliente / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+-- Calculo de totales para albaranes.
+\echo -n ':: Crea o reemplaza la funcion calctotalalbaran ... '
+CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlpedidocliente * pvplpedidocliente * (1 - descuentolpedidocliente/100) *( ivalpedidocliente/100) AS subtotal1 FROM lpedidocliente WHERE idpedidocliente = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondpedidocliente FROM dpedidocliente WHERE idpedidocliente = idp LOOP
-		total := total * (1 - res.proporciondpedidocliente/100);
-	END LOOP;
-	RETURN total;
+    total := 0;
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran / 100) * (1 + ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+    RETURN total;
 END;
-' language plpgsql;
+' LANGUAGE plpgsql;
 
 
-
--- Cálculo de totales para albaranes.
-CREATE  OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12,2)
+-- Calculo de totales para albaranes.
+\echo -n ':: Crea o reemplaza la funcion calcbimpalbaran ... '
+CREATE OR REPLACE FUNCTION calcbimpalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran/100) *(1+ ivalalbaran/100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-		total := total * (1 - res.proporciondalbaran/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
 
--- Cálculo de totales para albaranes.
-CREATE  OR REPLACE FUNCTION calcbimpalbaran(integer) RETURNS numeric(12,2)
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	total := total * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Crea o reemplaza la funcion calcimpuestosalbaran ... '
+CREATE OR REPLACE FUNCTION calcimpuestosalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
 BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran/100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-		total := total * (1 - res.proporciondalbaran/100);
-	END LOOP;
-	RETURN total;
+    total := 0;
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+    RETURN total;
 END;
-' language plpgsql;
-
--- Cálculo de totales para albaranes.
-CREATE  OR REPLACE FUNCTION calcimpuestosalbaran(integer) RETURNS numeric(12,2)
-AS '
-DECLARE
-idp ALIAS FOR $1;
-total numeric(12,2);
-res RECORD;
-BEGIN
-	total := 0;
-	FOR  res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran/100)*(ivalalbaran/100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
-		total := total + res.subtotal1;
-	END LOOP;
-	FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
-		total := total * (1 - res.proporciondalbaran/100);
-	END LOOP;
-	RETURN total;
-END;
-' language plpgsql;
-
-
+' LANGUAGE plpgsql;
 
 
 -- ===================================================================
 -- ============================ CONTROL STOCK ========================
 -- ===================================================================
-
--- ------------------------------------------------------------------------------------------
--- ------------------------------------------------------------------------------------------
-
--- ------------------------------------------------------------------------------------------
-
--- ------------------------------------------------------------------------------------------
--- ------------------------------------------------------------------------------------------
-
 -- COMENTARIO TEMPORAL
--- Cambios para el contrl de stock que aun no han sido trasladados al lugar pertinente en 
+-- Cambios para el control de stock que aun no han sido trasladados al lugar pertinente en 
 -- revf
-
-CREATE  TABLE inventario (
-	idinventario SERIAL PRIMARY KEY,
-	nominventario varchar NOT NULL,
-	fechainventario date default now()
+\echo -n ':: Inventario ... '
+CREATE TABLE inventario (
+    idinventario SERIAL PRIMARY KEY,
+    nominventario varchar NOT NULL,
+    fechainventario date default now()
 );
 
--- stockantcontrolstock es un campo de solo lectura, es autorregulado internamente mediante triggers
-CREATE  TABLE controlstock (
-	idinventario integer NOT NULL REFERENCES inventario(idinventario),
-	idalmacen  integer NOT NULL REFERENCES almacen(idalmacen),
-	idarticulo   integer NOT NULL REFERENCES articulo(idarticulo),
-	stockantcontrolstock numeric(12,2) NOT NULL,
-	stocknewcontrolstock numeric(12,2) NOT NULL,
-	punteocontrolstock boolean NOT NULL DEFAULT FALSE,
-	PRIMARY KEY (idinventario, idalmacen, idarticulo)
+
+-- stockantcontrolstock es un campo de solo lectura, es autorregulado internamente mediante
+-- disparadores (triggers).
+\echo -n ':: Control de stock ... '
+CREATE TABLE controlstock (
+    idinventario integer NOT NULL REFERENCES inventario(idinventario),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+    stockantcontrolstock numeric(12, 2) NOT NULL,
+    stocknewcontrolstock numeric(12, 2) NOT NULL,
+    punteocontrolstock boolean NOT NULL DEFAULT FALSE,
+    PRIMARY KEY (idinventario, idalmacen, idarticulo)
 );
 
 
 -- Esta tabla es mantenida por el SGDB y sirve solo para hacer consultas.
-CREATE  TABLE  stock_almacen (
-	idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
-	idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
-	stock numeric(12,2) DEFAULT 0,
-	PRIMARY KEY (idarticulo, idalmacen)
+\echo -n ':: Stock por almacen ... '
+CREATE TABLE stock_almacen (
+    idarticulo integer NOT NULL REFERENCES articulo(idarticulo),
+    idalmacen integer NOT NULL REFERENCES almacen(idalmacen),
+    stock numeric(12, 2) DEFAULT 0,
+    PRIMARY KEY (idarticulo, idalmacen)
 );
 
-CREATE  FUNCTION narticulo () RETURNS "trigger"
+
+\echo -n ':: Funcion narticulo ... '
+CREATE FUNCTION narticulo() RETURNS "trigger"
 AS '
 DECLARE
-	as RECORD;
+    as RECORD;
+
 BEGIN
-		FOR as IN SELECT * FROM almacen LOOP
-			INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, as.idalmacen, 0);
-		END LOOP;
-	RETURN NEW;
+    FOR as IN SELECT * FROM almacen LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (NEW.idarticulo, as.idalmacen, 0);
+    END LOOP;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  narticulot
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER narticulot
     AFTER INSERT ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE narticulo();
 
-CREATE  FUNCTION darticulo () RETURNS "trigger"
+
+\echo -n ':: Funcion darticulo ... '
+CREATE FUNCTION darticulo() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	DELETE FROM stock_almacen WHERE idarticulo = OLD.idarticulo;
-	RETURN OLD;
+    DELETE FROM stock_almacen WHERE idarticulo = OLD.idarticulo;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  darticulot
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER darticulot
     BEFORE DELETE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE darticulo();
 
 
-CREATE  FUNCTION nalmacen () RETURNS "trigger"
+\echo -n ':: Funcion nalmacen ... '
+CREATE FUNCTION nalmacen() RETURNS "trigger"
 AS '
 DECLARE
-	as RECORD;
+    as RECORD;
+
 BEGIN
-		FOR as IN SELECT * FROM articulo LOOP
-			INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (as.idarticulo, NEW.idalmacen, 0);
-		END LOOP;
-	RETURN NEW;
+    FOR as IN SELECT * FROM articulo LOOP
+	INSERT INTO stock_almacen (idarticulo, idalmacen, stock) VALUES (as.idarticulo, NEW.idalmacen, 0);
+    END LOOP;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  nalmacent
+
+\echo -n ':: Disparador al insertar un almacen ... '
+CREATE TRIGGER nalmacent
     AFTER INSERT ON almacen
     FOR EACH ROW
     EXECUTE PROCEDURE nalmacen();
 
-CREATE  FUNCTION dalmacen () RETURNS "trigger"
+
+\echo -n ':: Funcion que borra un almacen ... '
+CREATE FUNCTION dalmacen() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	DELETE FROM stock_almacen WHERE idalmacen = OLD.idalmacen;
-	RETURN OLD;
+    DELETE FROM stock_almacen WHERE idalmacen = OLD.idalmacen;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  dalmacent
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER dalmacent
     BEFORE DELETE ON almacen
     FOR EACH ROW
     EXECUTE PROCEDURE dalmacen();
 
 
-CREATE  FUNCTION disminuyestock () RETURNS "trigger"
+\echo -n ':: Funcion disminuye stock ... '
+CREATE FUNCTION disminuyestock() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	-- Hacemos el update del stock del articulo
-	UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
-	-- Hacemos el update del stock por almacenes
-	UPDATE stock_almacen SET stock = stock + OLD.cantlalbaran WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran=OLD.idalbaran);
-	RETURN NEW;
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo + OLD.cantlalbaran WHERE idarticulo= OLD.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = stock + OLD.cantlalbaran WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran = OLD.idalbaran);
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  disminuyestockt
+\echo -n ':: Disparador disminuye stockt ... '
+CREATE TRIGGER disminuyestockt
     AFTER DELETE OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyestock();
 
 
-CREATE  FUNCTION aumentastock () RETURNS "trigger"
+\echo -n ':: Funcion aumenta stock ... '
+CREATE FUNCTION aumentastock() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	-- Hacemos el update del stock del articulo
-	UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo;
-	-- Hacemos el update del stock por almacenes
-	UPDATE stock_almacen SET stock = stock - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran=NEW.idalbaran);
-	RETURN NEW;
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = stock - NEW.cantlalbaran WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaran WHERE idalbaran=NEW.idalbaran);
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  aumentastockt
+\echo -n ':: Disparador aumenta stockt ... '
+CREATE TRIGGER aumentastockt
     AFTER INSERT OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE aumentastock();    
 
 
-CREATE  FUNCTION disminuyestockp () RETURNS "trigger"
+\echo -n ':: Funcion disminuye stockp ... '
+CREATE FUNCTION disminuyestockp() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	-- Hacemos el update del stock del articulo
-	UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
-	-- Hacemos el update del stock por almacenes
-	UPDATE stock_almacen SET stock = stock - OLD.cantlalbaranp WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=OLD.idalbaranp);
-	RETURN NEW;
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo - OLD.cantlalbaranp WHERE idarticulo= OLD.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = stock - OLD.cantlalbaranp WHERE idarticulo = OLD.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=OLD.idalbaranp);
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  disminuyestockpt
+\echo -n ':: Disparador disminuye stockpt ... '
+CREATE TRIGGER disminuyestockpt
     AFTER DELETE OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyestockp();
 
 
-CREATE  FUNCTION aumentastockp () RETURNS "trigger"
+\echo -n ':: Funcion aumentastockp ... '
+CREATE FUNCTION aumentastockp() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo;
-	-- Hacemos el update del stock por almacenes
-	UPDATE stock_almacen SET stock = stock + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=NEW.idalbaranp);
-	RETURN NEW;
+    UPDATE articulo SET stockarticulo = stockarticulo + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = stock + NEW.cantlalbaranp WHERE idarticulo = NEW.idarticulo AND idalmacen IN (SELECT idalmacen FROM albaranp WHERE idalbaranp=NEW.idalbaranp);
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  aumentastockpt
+\echo -n ':: Disparador ... '
+CREATE TRIGGER aumentastockpt
     AFTER INSERT OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE aumentastockp(); 
 
 
-CREATE  OR REPLACE FUNCTION modificadostock () RETURNS "trigger"
+\echo -n ':: Crea o reemplaza funcion modificado stock ... '
+CREATE OR REPLACE FUNCTION modificadostock() RETURNS "trigger"
 AS '
 DECLARE 
-	cant numeric;
-	as RECORD;
+    cant numeric;
+    as RECORD;
+
 BEGIN
-	IF NEW.stockarticulo <> OLD.stockarticulo THEN
-		cant := NEW.stockarticulo - OLD.stockarticulo;
-		FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-			UPDATE articulo SET stockarticulo = stockarticulo + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente;
-		END LOOP;
-	END IF;
-	RETURN NEW;
+    IF NEW.stockarticulo <> OLD.stockarticulo THEN
+	cant := NEW.stockarticulo - OLD.stockarticulo;
+	FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+	    UPDATE articulo SET stockarticulo = stockarticulo + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente;
+	END LOOP;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  modificastocktrigger
-	AFTER UPDATE ON articulo
-	FOR EACH ROW
-	EXECUTE PROCEDURE modificadostock();
+
+\echo -n ':: Disparador modifica stock... '
+CREATE TRIGGER modificastocktrigger
+    AFTER UPDATE ON articulo
+    FOR EACH ROW
+    EXECUTE PROCEDURE modificadostock();
 
 
-CREATE  OR REPLACE FUNCTION modificadostockalmacen () RETURNS "trigger"
+\echo -n ':: Crea o reemplaza la funcion que modificado stock de almacen ... '
+CREATE OR REPLACE FUNCTION modificadostockalmacen() RETURNS "trigger"
 AS '
 DECLARE 
-	cant numeric;
-	as RECORD;
+    cant numeric;
+    as RECORD;
+
 BEGIN
-	IF NEW.stock <> OLD.stock THEN
-		cant := NEW.stock - OLD.stock;
-		FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
-			UPDATE stock_almacen SET stock = stock + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente AND idalmacen = NEW.idalmacen;
-		END LOOP;
-	END IF;
-	RETURN NEW;
+    IF NEW.stock <> OLD.stock THEN
+	cant := NEW.stock - OLD.stock;
+	FOR as IN SELECT * FROM comparticulo WHERE idarticulo = NEW.idarticulo LOOP
+	    UPDATE stock_almacen SET stock = stock + cant * as.cantcomparticulo WHERE idarticulo = as.idcomponente AND idalmacen = NEW.idalmacen;
+	END LOOP;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  modificastocktrigger
-	AFTER UPDATE ON stock_almacen
-	FOR EACH ROW
-	EXECUTE PROCEDURE modificadostockalmacen();
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER modificastocktrigger
+    AFTER UPDATE ON stock_almacen
+    FOR EACH ROW
+    EXECUTE PROCEDURE modificadostockalmacen();
 
 
 -- ========= REGULACION AUTOMATICA CONTROL STOCK =====================
 -- ===================================================================
-
-CREATE  FUNCTION disminuyecontrolstock () RETURNS "trigger"
+\echo -n ':: Funcion ... '
+CREATE FUNCTION disminuyecontrolstock() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-		-- Hacemos el update del stock del articulo
-		UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
-		-- Hacemos el update del stock por almacenes
-		UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
-	RETURN OLD;
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
+    RETURN OLD;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  disminuyecontrolstockt
+\echo -n ':: Disparador ... '
+CREATE TRIGGER disminuyecontrolstockt
     BEFORE DELETE ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyecontrolstock();
 
 
-CREATE  FUNCTION disminuyecontrolstock1 () RETURNS "trigger"
+\echo -n ':: Funcion ... '
+CREATE FUNCTION disminuyecontrolstock1() RETURNS "trigger"
 AS '
 DECLARE
-	rant RECORD;
+    rant RECORD;
+
 BEGIN
-	-- Cogemos el stock anterior.
-	FOR  rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
-		NEW.stockantcontrolstock := rant.stock;
-	END LOOP;
-	RETURN NEW;
+    -- Cogemos el stock anterior.
+    FOR rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
+	NEW.stockantcontrolstock := rant.stock;
+    END LOOP;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  disminuyecontrolstockt1
+\echo -n ':: Disparador ... '
+CREATE TRIGGER disminuyecontrolstockt1
     BEFORE INSERT ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyecontrolstock1();
 
-CREATE  FUNCTION disminuyecontrolstock2 () RETURNS "trigger"
+
+\echo -n ':: Funcion ... '
+CREATE FUNCTION disminuyecontrolstock2() RETURNS "trigger"
 AS '
 DECLARE
-	rant RECORD;
-BEGIN
-		-- Hacemos el update del stock del articulo
-		UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
-		-- Hacemos el update del stock por almacenes
-		UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
+    rant RECORD;
 
-	-- Cogemos el stock anterior.
-	FOR  rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
-		NEW.stockantcontrolstock := rant.stock;
-	END LOOP;
-	RETURN NEW;
+BEGIN
+    -- Hacemos el update del stock del articulo
+    UPDATE articulo SET stockarticulo = stockarticulo - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo= OLD.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = stock - OLD.stocknewcontrolstock + OLD.stockantcontrolstock WHERE idarticulo = OLD.idarticulo AND idalmacen = OLD.idalmacen;
+    -- Cogemos el stock anterior.
+    FOR rant IN SELECT * FROM stock_almacen WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen LOOP
+	NEW.stockantcontrolstock := rant.stock;
+    END LOOP;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  disminuyecontrolstockt2
+\echo -n ':: Disparador ... '
+CREATE TRIGGER disminuyecontrolstockt2
     BEFORE UPDATE ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyecontrolstock2();
 
 
-
-
-
-CREATE  FUNCTION aumentacontrolstock () RETURNS "trigger"
+\echo -n ':: Funcion ... '
+CREATE FUNCTION aumentacontrolstock() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
-	UPDATE articulo SET stockarticulo = stockarticulo + NEW.stocknewcontrolstock - NEW.stockantcontrolstock WHERE idarticulo = NEW.idarticulo;
-	-- Hacemos el update del stock por almacenes
-	UPDATE stock_almacen SET stock = NEW.stocknewcontrolstock WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen;
-	RETURN NEW;
+    UPDATE articulo SET stockarticulo = stockarticulo + NEW.stocknewcontrolstock - NEW.stockantcontrolstock WHERE idarticulo = NEW.idarticulo;
+    -- Hacemos el update del stock por almacenes
+    UPDATE stock_almacen SET stock = NEW.stocknewcontrolstock WHERE idarticulo = NEW.idarticulo AND idalmacen = NEW.idalmacen;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
 
-CREATE TRIGGER  aumentacontrolstockt
+\echo -n ':: Disparador ... '
+CREATE TRIGGER aumentacontrolstockt
     AFTER INSERT OR UPDATE ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE aumentacontrolstock(); 
 
 
--- Cuando cambiamos el almacen en un albaran o albaranp hay problemas con el control de stock que se descuadra.
-CREATE  FUNCTION cambiaalbaran () RETURNS "trigger"
+-- Cuando cambiamos el almacen en un albaran o albaranp hay problemas con el control de stock
+-- que se descuadra.
+\echo -n ':: Funcion ... '
+CREATE FUNCTION cambiaalbaran() RETURNS "trigger"
 AS '
 DECLARE
-	as RECORD;
+    as RECORD;
+
 BEGIN
-	IF NEW.idalmacen <> OLD.idalmacen THEN
-		FOR as IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
-			UPDATE stock_almacen SET stock = stock + as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-			UPDATE stock_almacen SET stock = stock - as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
-		END LOOP;
-	END IF;
-	RETURN NEW;
+    IF NEW.idalmacen <> OLD.idalmacen THEN
+	FOR as IN SELECT * FROM lalbaran WHERE idalbaran = NEW.idalbaran LOOP
+    	    UPDATE stock_almacen SET stock = stock + as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock - as.cantlalbaran WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
+	END LOOP;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  cambiadoalbarant
-	AFTER UPDATE ON albaran
-	FOR EACH ROW
-	EXECUTE PROCEDURE cambiaalbaran();
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER cambiadoalbarant
+    AFTER UPDATE ON albaran
+    FOR EACH ROW
+    EXECUTE PROCEDURE cambiaalbaran();
 
 
-CREATE  FUNCTION cambiaalbaranp () RETURNS "trigger"
+\echo -n ':: Funcion ... '
+CREATE FUNCTION cambiaalbaranp() RETURNS "trigger"
 AS '
 DECLARE
-	as RECORD;
+    as RECORD;
+
 BEGIN
-	IF NEW.idalmacen <> OLD.idalmacen THEN
-		FOR as IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
-			UPDATE stock_almacen SET stock = stock - as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
-			UPDATE stock_almacen SET stock = stock + as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
-		END LOOP;
-	END IF;
-	RETURN NEW;
+    IF NEW.idalmacen <> OLD.idalmacen THEN
+	FOR as IN SELECT * FROM lalbaranp WHERE idalbaranp = NEW.idalbaranp LOOP
+	    UPDATE stock_almacen SET stock = stock - as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = OLD.idalmacen;
+	    UPDATE stock_almacen SET stock = stock + as.cantlalbaranp WHERE idarticulo = as.idarticulo AND idalmacen = NEW.idalmacen;
+	END LOOP;
+    END IF;
+    RETURN NEW;
 END;
 ' LANGUAGE plpgsql;
 
-CREATE TRIGGER  cambiadoalbaranpt
-	AFTER UPDATE ON albaranp
-	FOR EACH ROW
-	EXECUTE PROCEDURE cambiaalbaranp();
+
+\echo -n ':: Disparador ... '
+CREATE TRIGGER cambiadoalbaranpt
+    AFTER UPDATE ON albaranp
+    FOR EACH ROW
+    EXECUTE PROCEDURE cambiaalbaranp();
 
 
--- ======================= FIN CONTROL STOCK =========================
--- ===================================================================
-
-
-
+\echo -n ':: '
 COMMIT;
+
+\echo '********* FIN FICHERO DE ESTRUCTURA DE LA BASE DE DATOS DE BULMAFACT *********'

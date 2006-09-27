@@ -23,7 +23,6 @@
 #include <QFile>
 #include <QHeaderView>
 #include <QTextStream>
-
 #include <QMenu>
 #include <QShortcut>
 
@@ -41,18 +40,15 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_list->setSortingEnabled(TRUE);
     mui_list->horizontalHeader()->setMovable(TRUE);
 
-    /// Ocultamos el boton de actualizar del subForm porque esta repetido en cada
-    /// una de las ventanas.
-//    mui_botonMostrar->setVisible(FALSE);
-
-    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+h"), this);
+    /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
+    /// el panel de configuracion del subform3.
+    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+s"), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(toogleConfig()));
-    
 
     m_insercion = FALSE;
     m_primero = TRUE;
 
-    /// Para el listado de  columnas hacemos una inicializacion.
+    /// Para el listado de columnas hacemos una inicializacion.
     QStringList headers;
     headers << "" << tr("Nombre") << tr("Nombre de campo") << tr("Visible");
     mui_listcolumnas->setColumnCount(4);
@@ -116,7 +112,7 @@ SDBRecord *SubForm3::newSDBRecord() {
     } // end for
 
     SDBCampo*camp;
-    for(int i = 0; i < rec->lista()->size(); ++i) {
+    for (int i = 0; i < rec->lista()->size(); ++i) {
         camp = (SDBCampo *) rec->lista()->at(i);
         SHeader *head = m_lcabecera.at(i);
         Qt::ItemFlags flags = 0;
@@ -166,6 +162,7 @@ void SubForm3::pintaCabeceras() {
             mui_list->showColumn(i);
     } // end for
     mui_list->setHorizontalHeaderLabels(headers);
+    mui_list->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
     _depura("END SubForm3::pintaCabeceras", 0);
 }
 

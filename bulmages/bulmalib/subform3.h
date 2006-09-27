@@ -155,12 +155,16 @@ public:
     virtual void cargar(QString query);
     virtual int inicializar();
     virtual void pintar();
-    virtual void creaMenu(QMenu *) {_depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);};
-    virtual void procesaMenu(QAction *) {_depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);};
+    virtual void creaMenu(QMenu *) {
+        _depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);
+    };
+    virtual void procesaMenu(QAction *) {
+        _depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);
+    };
     virtual Fixed sumarCampo(QString);
 
 public slots:
-    virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
     virtual void on_mui_appag_clicked() {
@@ -177,12 +181,12 @@ public slots:
     virtual void on_mui_paganterior_clicked();
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item);
     virtual void on_mui_list_cellDoubleClicked(int row, int col);
-    virtual void toogleConfig() { 
-	mui_configurador->setVisible(mui_configurador->isHidden());
-	emit toogledConfig(mui_configurador->isVisible());
+    virtual void toogleConfig() {
+        mui_configurador->setVisible(mui_configurador->isHidden());
+        emit toogledConfig(mui_configurador->isVisible());
     };
     virtual void on_mui_botonCerrar_clicked() {
-	toogleConfig();
+        toogleConfig();
     };
 
 signals:

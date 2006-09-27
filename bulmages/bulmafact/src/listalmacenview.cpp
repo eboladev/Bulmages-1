@@ -52,6 +52,7 @@ ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
     _depura("END ListAlmacenView::ListAlmacenView", 1);
 }
 
+
 void ListAlmacenView::on_mui_aceptar_clicked() {
     try {
         mui_listado->guardar();
@@ -60,6 +61,7 @@ void ListAlmacenView::on_mui_aceptar_clicked() {
         mensajeInfo("Error al guardar los almacenes");
     } // end try
 }
+
 
 ListAlmacenView::~ListAlmacenView() {
     _depura("ListAlmacenView::~ListAlmacenView", 0);
