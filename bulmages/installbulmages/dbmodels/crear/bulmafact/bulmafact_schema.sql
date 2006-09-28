@@ -221,6 +221,7 @@ AS '
 DECLARE
     as RECORD;
     codigocompleto character varying(50);
+
 BEGIN
     codigocompleto := NEW.codigofamilia;
     SELECT INTO as codigocompletofamilia FROM familia WHERE idfamilia = NEW.padrefamilia;
@@ -244,6 +245,7 @@ CREATE TRIGGER calculacodigocompletofamiliatrigger
 CREATE FUNCTION propagacodigocompletofamilia() RETURNS "trigger"
 AS '
 DECLARE
+
 BEGIN
     UPDATE familia SET codigocompletofamilia = codigocompletofamilia WHERE padrefamilia = NEW.idfamilia;
     UPDATE articulo SET codigocompletoarticulo = codigocompletoarticulo WHERE articulo.idfamilia = NEW.idfamilia;
@@ -276,7 +278,7 @@ CREATE TABLE tipo_articulo (
 -- nomarticulo: Descripcion corta del articulo.
 -- abrevarticulo: Nombre abreviado del articulo (para TPV o cartelitos de estanteria)
 -- observarticulo: Campo de texto para a comentarios y observaciones.
--- presentablearticulo:
+-- presentablearticulo: Indica que se incluira en presentaciones (catalogos de articulos).
 -- controlstockarticulo:
 -- idtipo_articulo: Identificador de tipo de articulo que se utilizara para agrupar
 --                  articulos como clasificacion.
@@ -323,7 +325,7 @@ END
 ' LANGUAGE 'plpgsql';
 
 
-\echo -n ':: Crea o reemplaza funcion que calcula el codigo completo del articulo ... '
+\echo -n ':: Funcion que calcula el codigo completo del articulo ... '
 CREATE OR REPLACE FUNCTION calculacodigocompletoarticulo() RETURNS "trigger"
 AS '
 DECLARE
@@ -409,7 +411,7 @@ CREATE TABLE ltarifa (
 CREATE UNIQUE INDEX indice_ltarifa ON ltarifa(idalmacen, idarticulo, idtarifa);
 
 
-\echo -n ':: Crea o reemplaza funcion que calcula el precio segun cliente y almacen ... '
+\echo -n ':: Funcion que calcula el precio segun cliente y almacen ... '
 CREATE OR REPLACE FUNCTION pvparticuloclial(integer, integer, integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
@@ -435,7 +437,7 @@ END;
 -- ** proveedor **
 -- Los proveedores son los que nos suministran articulos y/o servicios.
 -- nomproveedor: Nombre fiscal del proveedor.
--- nomaltproveedor: Nom comercial del proveedor.
+-- nomaltproveedor: Nombre comercial del proveedor.
 -- cifprovedor: Codigo de Identificacion Fiscal.
 -- codproveedor: Codigo de proveedor.
 -- codicliprovedor: Codigo que el proveedor nos da para identificarnos como cliente suyo.
@@ -447,7 +449,7 @@ END;
 -- telproveedor: Numero de telefono del proveedor.
 -- faxproveedor: Numero de fax del proveedor.
 -- emailproveedor: Direccion de correo electronico del proveedor.
--- corpproveedor:
+-- corpproveedor: Nombre del grupo al que pertenece la empresa.
 -- urlproveedor: URL de la web de comercio electronico B2B del proveedor.
 -- clavewebproveedor: Clave para entrar en el comercio electronico B2B del proveedor.
 -- inactivoproveedor: Indica si el proveedor lo tenemos marcado como inactivo para suministro.
@@ -713,7 +715,7 @@ CREATE TABLE presupuesto (
 );
 
 
-\echo -n ':: Crea restricciones en presupuesto ... '
+\echo -n ':: Funcion que crea restricciones en presupuesto ... '
 CREATE FUNCTION restriccionespresupuesto() RETURNS "trigger"
 AS '
 DECLARE
@@ -742,7 +744,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea restricciones en presupuesto ... '
+\echo -n ':: Disparador de restricciones en presupuesto ... '
 CREATE TRIGGER restriccionespresupuestotrigger
     BEFORE INSERT OR UPDATE ON presupuesto
     FOR EACH ROW
@@ -759,7 +761,6 @@ CREATE TABLE dpresupuesto (
     conceptdpresupuesto character varying(2000),
     proporciondpresupuesto numeric(12, 2),
     idpresupuesto integer REFERENCES presupuesto(idpresupuesto)
-    -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 );
 
 
@@ -781,10 +782,10 @@ CREATE TABLE lpresupuesto (
     idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
     idarticulo integer REFERENCES articulo(idarticulo)
 );
--- Falta poner por defecto el pvp y el iva
+-- Falta poner por defecto el PVP y el IVA.
 
 
-\echo -n ':: Crea o reemplaza la funcion actualiza total de presupuesto ... '
+\echo -n ':: Funcion que actualiza el total del presupuesto ... '
 CREATE OR REPLACE FUNCTION actualizatotpres() returns TRIGGER
 AS '
 DECLARE
@@ -802,21 +803,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea restricciones al insertar lineas en un pedido de cliente ... '
+\echo -n ':: Disparador al insertar o actualizar lineas en un pedido de cliente ... '
 CREATE TRIGGER restriccionespedidoclientetrigger
     AFTER INSERT OR UPDATE ON lpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpres();
 
 
-\echo -n ':: Crea restricciones al insertar o actualizar un pedido de cliente ... '
+\echo -n ':: Disparador al insertar o actualizar descuentos en un pedido de cliente ... '
 CREATE TRIGGER restriccionespedidoclientetrigger1
     AFTER INSERT OR UPDATE ON dpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpres();
 
 
-\echo -n ':: Crea o reemplaza la funcion que actualiza el total del presupuesto ... '
+\echo -n ':: Funcion que actualiza el total del presupuesto al borrar una linea ... '
 CREATE OR REPLACE FUNCTION actualizatotpresb() returns TRIGGER
 AS '
 DECLARE
@@ -834,14 +835,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea restricciones al borrar o actualizar lineas de un pedido de cliente ... '
+\echo -n ':: Disparador al borrar o actualizar lineas de un presupuesto a cliente ... '
 CREATE TRIGGER restriccionespedidoclientetriggerd
     AFTER DELETE OR UPDATE ON lpresupuesto
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpresb();
 
 
-\echo -n ':: Crea restricciones al borrar o actualizar lineas de un pedido de cliente ... '
+\echo -n ':: Disparador al borrar o actualizar dewcuentos de un presupuesto a cliente ... '
 CREATE TRIGGER restriccionespedidoclientetriggerd1
     AFTER DELETE OR UPDATE ON dpresupuesto
     FOR EACH ROW
@@ -884,7 +885,7 @@ CREATE TABLE pedidocliente (
 );
 
 
-\echo -n ':: Restricciones de un pedido de cliente ... '
+\echo -n ':: Funcion con restricciones de un pedido de cliente ... '
 CREATE FUNCTION restriccionespedidocliente() RETURNS "trigger"
 AS '
 DECLARE
@@ -913,7 +914,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Restricciones de un pedido de cliente ... '
+\echo -n ':: Disparador de restricciones de un pedido de cliente ... '
 CREATE TRIGGER restriccionespedidoclientetrigger
     BEFORE INSERT OR UPDATE ON pedidocliente
     FOR EACH ROW
@@ -958,7 +959,7 @@ CREATE TABLE lpedidocliente (
 );
 
 
-\echo -n ':: Crea o reemplaza funcion para actualizar el total de pedido de cliente ... '
+\echo -n ':: Funcion para actualizar el total de pedido de cliente ... '
 CREATE OR REPLACE FUNCTION actualizatotpedcli() returns TRIGGER
 AS '
 DECLARE
@@ -976,21 +977,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Totales automaticos en pedido de cliente ... '
+\echo -n ':: Disparador que actualiza el total de un pedido de cliente al insertar una linea ... '
 CREATE TRIGGER totalesautomaticospedidoclientetrigger
     AFTER INSERT OR UPDATE ON lpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedcli();
 
 
-\echo -n ':: Totales automaticos en pedido de cliente ... '
+\echo -n ':: Disparador que actualiza el total de un pedido de cliente al insertar un descuento... '
 CREATE TRIGGER totalesautomaticospedidoclientetrigger1
     AFTER INSERT OR UPDATE ON dpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedcli();
 
 
-\echo -n ':: Crea o reemplaza la funcion que actualiza el total del pedido de cliente ... '
+\echo -n ':: Funcion que actualiza el total del pedido de cliente al borrar una linea ... '
 CREATE OR REPLACE FUNCTION actualizatotpedclib() returns TRIGGER
 AS '
 DECLARE
@@ -1008,14 +1009,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Totales automaticos al borrar en pedido de cliente ... '
+\echo -n ':: Disparador que actualiza el total de un pedido de cliente al borrar una linea ... '
 CREATE TRIGGER totalesautomaticospedidoclientetriggerd
     AFTER DELETE OR UPDATE ON lpedidocliente
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedclib();
 
 
-\echo -n ':: Totales automaticos al borrar en pedido de cliente ... '
+\echo -n ':: Disparador que actualiza el total de un pedido de cliente al borrar un descuento ... '
 CREATE TRIGGER totalesautomaticospedidoclientetriggerd1
     AFTER DELETE OR UPDATE ON dpedidocliente
     FOR EACH ROW
@@ -1048,7 +1049,7 @@ CREATE TABLE factura (
 );
 
 
-\echo -n ':: Restricciones de factura ... '
+\echo -n ':: Funcion con restricciones en factura ... '
 CREATE FUNCTION restriccionesfactura() RETURNS "trigger"
 AS '
 DECLARE
@@ -1077,7 +1078,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Agregadas restricciones para la tabla factura ... '
+\echo -n ':: Disparador antes de insertar o actualizar una factura ... '
 CREATE TRIGGER restriccionesfacturatrigger
     BEFORE INSERT OR UPDATE ON factura
     FOR EACH ROW
@@ -1117,7 +1118,7 @@ CREATE TABLE lfactura (
 );
 
 
-\echo -n ':: Restricciones el la linea de factura ... '
+\echo -n ':: Funcion con restricciones en lineas de factura ... '
 CREATE FUNCTION restriccioneslfactura() RETURNS "trigger"
 AS '
 DECLARE
@@ -1153,14 +1154,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Creadas las restricciones para la linea de factura ... '
+\echo -n ':: Disparador al insertar o actualizar lineas de una factura ... '
 CREATE TRIGGER restriccionesalfacturatrigger
     BEFORE INSERT OR UPDATE ON lfactura
     FOR EACH ROW
     EXECUTE PROCEDURE restriccioneslfactura();
 
 
-\echo -n ':: Calcula el total de la factura ... '
+\echo -n ':: Funcion que calcula el total de una linea de factura ... '
 CREATE OR REPLACE FUNCTION calctotalfactura(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1181,7 +1182,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Calcula el total de la base imponible de la factura ... '
+\echo -n ':: Funcion que calcula la base imponible total de una factura ... '
 CREATE OR REPLACE FUNCTION calcbimpfactura(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1202,7 +1203,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Calcula el total de los impuestos de la factura ... '
+\echo -n ':: Funcion que calcula los impuestos totales de una factura ... '
 CREATE OR REPLACE FUNCTION calcimpuestosfactura(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1223,7 +1224,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Actualiza el total de la factura ... '
+\echo -n ':: Funcion que actualiza el total de una factura ... '
 CREATE OR REPLACE FUNCTION actualizatotfactura() returns TRIGGER
 AS '
 DECLARE
@@ -1241,21 +1242,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Totales automaticos de la factura ... '
+\echo -n ':: Disparador que actualizar el total de una linea de factura al insertar una linea ... '
 CREATE TRIGGER totalesautomaticosfacturatrigger
     AFTER INSERT OR UPDATE ON lfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfactura();
 
 
-\echo -n ':: Totales automaticos de la factura ... '
+\echo -n ':: Disparador que actualizar el total de una linea de factura al insertar un descuento ... '
 CREATE TRIGGER totalesautomaticosfacturatrigger1
     AFTER INSERT OR UPDATE ON dfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfactura();
 
 
-\echo -n ':: Actualiza el total de la factura al borrar una linea de detalle ... '
+\echo -n ':: Funcion que actualiza el total de una factura al borrar una linea de detalle ... '
 CREATE OR REPLACE FUNCTION actualizatotfacturab() returns TRIGGER
 AS '
 DECLARE
@@ -1273,14 +1274,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Totales automaticos al borrar o actualizar una linea de detalle de una factura ... '
+\echo -n ':: Disparador que actualiza el total de una factura al borrar o actualizar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosfacturatriggerd
     AFTER DELETE OR UPDATE ON lfactura
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturab();
 
 
-\echo -n ':: Totales automaticos al borrar o actualizar una linea de detalle de una factura ... '
+\echo -n ':: Disparador que actualiza el total de una factura al borrar o actualizar un descuento ... '
 CREATE TRIGGER totalesautomaticosfacturatriggerd1
     AFTER DELETE OR UPDATE ON dfactura
     FOR EACH ROW
@@ -1379,10 +1380,7 @@ CREATE TABLE dfacturap (
 ); 
 
 
--- ======== CALCULOS ACUMULADOS FACTURAS A PROVEEDOR ==============
--- ================================================================
--- Calculo de totales para factura proveedor
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el total de una factura de proveedor ... '
 CREATE OR REPLACE FUNCTION calctotalfacpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1403,8 +1401,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para factura proveedor
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula la Base Imponible total de una factura de proveedor ... '
 CREATE OR REPLACE FUNCTION calcbimpfacpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1425,7 +1422,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Creadas las funciones de calculo de totales para facturas a proveedor ... '
+\echo -n ':: Funcion que calcula el total de impuestos de una factura de proveedor ... '
 CREATE OR REPLACE FUNCTION calcimpuestosfacpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1446,9 +1443,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ============= METEMOS LOS TOTALES EN FACTURAS A PROVEEDOR  ==========================
--- =====================================================================================
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de una factura de proveedor ... '
 CREATE OR REPLACE FUNCTION actualizatotfacturap() returns TRIGGER
 AS '
 DECLARE
@@ -1466,21 +1461,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de una factura de proveedor al insertar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosfacturaptrigger
     AFTER INSERT OR UPDATE ON lfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturap();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de una factura de proveedor al insertar un descuento ... '
 CREATE TRIGGER totalesautomaticosfacturaptrigger1
     AFTER INSERT OR UPDATE ON dfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturap();
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de una factura de proveedor al borrar una linea de detalle ... '
 CREATE OR REPLACE FUNCTION actualizatotfacturapb() returns TRIGGER
 AS '
 DECLARE
@@ -1498,30 +1493,24 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de una factura de proveedor al borrar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosfacturaptriggerd
     AFTER DELETE OR UPDATE ON lfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturapb();
 
 
-\echo -n ':: Actualiza continuamente los campos de totales en factura de proveedor ... '
+\echo -n ':: Disparador que actualiza el total de una factura de proveedor al borrar un descuento ... '
 CREATE TRIGGER totalesautomaticosfacturaptriggerd1
     AFTER DELETE OR UPDATE ON dfacturap
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotfacturapb();
 
 
--- ===================================================================
--- ====================== ALBARANES PROVEEDOR ========================
--- ===================================================================
--- COMPROVACIONS D'INTEGRITAT>Generiques:
--- Tots els albarans d'una factura corresponen al mateix client.
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Albara clients.
+-- ** albaranp **
+-- Albaranes de proveedor.
+-- COMPROBACIONES DE INTEGRIDAD: Todos los albaranes de una factura corresponden al mismo
+--                               proveedor.
 \echo -n ':: Albaran de proveedor ... '
 CREATE TABLE albaranp (
    idalbaranp serial PRIMARY KEY,
@@ -1543,7 +1532,7 @@ CREATE TABLE albaranp (
 );
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion con restricciones en los albaranes de proveedor ... '
 CREATE FUNCTION restriccionesalbaranp() RETURNS "trigger"
 AS '
 DECLARE
@@ -1572,19 +1561,19 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Creadas las restricciones para la tabla albaranp ... '
+\echo -n ':: Disparador de restricciones antes de insertar o actualizar un albaran de proveedor ... '
 CREATE TRIGGER restriccionesalbaranptrigger
     BEFORE INSERT OR UPDATE ON albaranp
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesalbaranp();
 
 
--- Numero
--- Descripcio
--- Quantitat
--- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
--- Descompte
--- Linia d'albara a clients.
+-- ** lalbaranp **
+-- desclalbaranp: Descripcion.
+-- cantlalbaranp: Cantidad.
+-- ivalalbaranp: IVA aplicado al precio.
+-- pvplalbaranp: Precio sin IVA.
+-- descontlalbaranp: Porcentaje de descuento.
 \echo -n ':: Lineas de albaran de proveedor ... '
 CREATE TABLE lalbaranp (
     numlalbaranp serial PRIMARY KEY,
@@ -1598,12 +1587,11 @@ CREATE TABLE lalbaranp (
 );
 
 
--- Descuento albaran proveedor
--- Numero
--- Concepte: Descripcio del motiu de descompte.
--- Proporcio: Percentatge a descomptar.
--- Descompte d'albara a clients.
-\echo -n ':: Descuento de albaran de proveedor ... '
+-- ** dalbaranp **
+-- Descuento en albaran de proveedor
+-- conceptdalbaranp: Concepto por el que se realiza el descuento en el albaran.
+-- proporciondalbaranp: Porcentaje de descuento.
+\echo -n ':: Descuento en albaran de proveedor ... '
 CREATE TABLE dalbaranp (
     iddalbaranp serial PRIMARY KEY,
     conceptdalbaranp character varying(500),
@@ -1612,10 +1600,7 @@ CREATE TABLE dalbaranp (
 );
 
 
--- ======== CALCULOS ACUMULADOS ALBARANES A PROVEEDOR =============
--- ================================================================
--- Calculo de totales para albaaran proveedor
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el total del albaran de proveedor ... '
 CREATE OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1636,7 +1621,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Calculo de totales para albaranes de proveedor ... '
+\echo -n ':: Funcion que calcula la Base Imponible total de un albaran de proveedor ... '
 CREATE OR REPLACE FUNCTION calcbimpalbpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1657,7 +1642,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el total de impuestos de un albaran de proveedor ... '
 CREATE OR REPLACE FUNCTION calcimpuestosalbpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -1678,9 +1663,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ============= METEMOS LOS TOTALES EN ALBARANES A PROVEEDOR  =========================
--- =====================================================================================
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de un albaran de proveedor ... '
 CREATE OR REPLACE FUNCTION actualizatotalbaranp() returns TRIGGER
 AS '
 DECLARE
@@ -1698,21 +1681,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran de proveedor al insertar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosalbaranptrigger
     AFTER INSERT OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranp();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran de proveedor al insertar un descuento ... '
 CREATE TRIGGER totalesautomaticosalbaranptrigger1
     AFTER INSERT OR UPDATE ON dalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranp();
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de un albaran de proveedor al borrar una linea de detalle ... '
 CREATE OR REPLACE FUNCTION actualizatotalbaranpb() returns TRIGGER
 AS '
 DECLARE
@@ -1730,14 +1713,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran de proveedor al borrar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosalbaranptriggerd
     AFTER DELETE OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranpb();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran de proveedor al borrar un descuento ... '
 CREATE TRIGGER totalesautomaticosalbaranptriggerd1
     AFTER DELETE OR UPDATE ON dalbaranp
     FOR EACH ROW
@@ -1748,7 +1731,7 @@ CREATE TRIGGER totalesautomaticosalbaranptriggerd1
 -- APARTADO DE COMPROBACIONES DE INTEGRIDAD EXTRA Y DETECCION DE ERRORES.
 -- **********************************************************************
 -- **********************************************************************
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion random_string que genera una cadena aleatoria ... '
 CREATE FUNCTION random_string(int4) RETURNS "varchar" AS '
 DECLARE
     iLoop int4;
@@ -1768,7 +1751,7 @@ END;
 '  LANGUAGE 'plpgsql';
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion crearef para crear codigos de referencia ... '
 CREATE FUNCTION crearef() RETURNS character varying(15)
 AS '
 DECLARE
@@ -1803,16 +1786,18 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ===================================================================
--- ====================== ALBARANES CLIENTE ==========================
--- ===================================================================
--- COMPROVACIONS D'INTEGRITAT>Generiques:
--- Tots els albarans d'una factura corresponen al mateix client.
--- FACTURACIO>Albarans:
--- Albarans pendents: S'entendran com albarans pendents tots aquells dels quals no existeixi ticket, factura ni nofactura.
--- Numero
--- Data
--- Albara a clients.
+-- ** albaran **
+-- COMPROBACIONES DE INTEGRIDAD: Todos los albaranes de una factura corresponden con un mismo
+--                               cliente.
+-- numalbaran: Numero de albaran.
+-- descalbaran: Descripcion del albaran.
+-- refalbaran: Codigo de referencia del albaran.
+-- fechaalbaran: Fecha de emision del albaran.
+-- comentalbaran: Comentario.
+-- comentprivalbaran: Comentario privado del albaran.
+-- procesadoalbaran: Indica si se ha procesado el albaran.
+-- contactalbaran: Persona de contacto que ha realizado el albaran.
+-- telalbaran: Telefono de la persona de contacto.
 \echo -n ':: Albaran ... '
 CREATE TABLE albaran (
     idalbaran serial PRIMARY KEY,
@@ -1838,7 +1823,7 @@ CREATE TABLE albaran (
 );
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion con restricciones en el albaran ... '
 CREATE FUNCTION restriccionesalbaran() RETURNS "trigger"
 AS '
 DECLARE
@@ -1867,18 +1852,16 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador de las restricciones antes de insertar o actualizar un albaran ... '
 CREATE TRIGGER restriccionesalbarantrigger
     BEFORE INSERT OR UPDATE ON albaran
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionesalbaran();
 
 
--- Descuento albaran
--- Numero
--- Concepte: Descripcio del motiu de descompte.
--- Proporcio: Percentatge a descomptar.
--- Descompte d'albara a clients.
+-- ** dalbaran **
+-- conceptdalbaran: Motivo por el que se realiza el descuento en el albaran.
+-- proporciondalbaran: Porcentaje de descuento a aplicar.
 \echo -n ':: Descuento de albaran ... '
 CREATE TABLE dalbaran (
     iddalbaran serial PRIMARY KEY,
@@ -1888,12 +1871,12 @@ CREATE TABLE dalbaran (
 );
 
 
--- Numero
--- Descripcio
--- Quantitat
--- PVP: Preu de l'article en el moment de la compra o de ser presupostat.
--- Descompte
--- Linia d'albara a clients.
+-- ** lalbaran **
+-- Linea de detalle del albaran.
+-- cantlalbaran: Cantidad.
+-- pvplalbaran: Precio de venta.
+-- descontlalbaran: Porcentaje de descuento a aplicar.
+-- ivalalbaran: IVA correspondiente al articulo.
 \echo -n ':: Lineas de albaran ... '
 CREATE TABLE lalbaran (
     numlalbaran serial PRIMARY KEY,
@@ -1907,9 +1890,7 @@ CREATE TABLE lalbaran (
 );
 
 
--- ============= METEMOS LOS TOTALES EN ALBARANES A CLIENTE  ===========================
--- =====================================================================================
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de un albaran ... '
 CREATE OR REPLACE FUNCTION actualizatotalbaran() returns TRIGGER
 AS '
 DECLARE
@@ -1927,21 +1908,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran al insertar o actualizar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosalbarantrigger
     AFTER INSERT OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaran();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran al insertar o actualizar una descuento ... '
 CREATE TRIGGER totalesautomaticosalbarantrigger1
     AFTER INSERT OR UPDATE ON dalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaran();
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de un albaran al borrar una linea de detalle ... '
 CREATE OR REPLACE FUNCTION actualizatotalbaranb() returns TRIGGER
 AS '
 DECLARE
@@ -1959,21 +1940,22 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran al borrar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticosalbarantriggerd
     AFTER DELETE OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranb();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un albaran al borrar un descuento ... '
 CREATE TRIGGER totalesautomaticosalbarantriggerd1
     AFTER DELETE OR UPDATE ON dalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotalbaranb();
 
     
--- PARA USO CON TPV:
+-- ** ticket **
+-- Para uso exclusivo con TPV:
 \echo -n ':: Ticket ... '
 CREATE TABLE ticket (
     numticket integer PRIMARY KEY,
@@ -1981,10 +1963,10 @@ CREATE TABLE ticket (
 );
 
 
--- COMPROVACIONS D'INTEGRITAT>Generiques:
--- 1 Article te 1 sol proveedor principal.
--- 1 Article te 1 sol proveedor referent.
-\echo -n ':: Proveedor suministra articulo ... '
+-- ** suministra **
+-- Almacena la informacion necesaria para saber que proveedor suministra un determinado
+-- articulo.
+\echo -n ':: Controla que proveedor suministra un articulo ... '
 CREATE TABLE suministra (
     idsuministra serial PRIMARY KEY,
     refpro character varying(100),
@@ -1994,12 +1976,14 @@ CREATE TABLE suministra (
 );
 
 
+-- ** provincia **
 \echo -n ':: Provincia ... '
 CREATE TABLE provincia (
     provincia character varying(500)
 );
 
 
+-- ** precio_compra **
 \echo -n ':: Precio de compra ... '
 CREATE TABLE precio_compra (
     idprecio_compra serial PRIMARY KEY,
@@ -2011,6 +1995,7 @@ CREATE TABLE precio_compra (
 );
 
 
+-- ** codigobarras **
 \echo -n ':: Codigo de barras ... '
 CREATE TABLE codigobarras (
     idcodigobarras serial PRIMARY KEY,
@@ -2023,7 +2008,7 @@ CREATE TABLE codigobarras (
 
 
 -- FUNCIONES VARIAS DE SOPORTE.
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el IVA de un articulo ... '
 CREATE OR REPLACE FUNCTION ivaarticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
@@ -2040,7 +2025,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el PVP de un articulo ... '
 CREATE OR REPLACE FUNCTION pvparticulo(integer) RETURNS numeric(12, 2)
 AS'
 DECLARE
@@ -2057,13 +2042,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ===================================================================
--- ====================== PEDIDOS A PROVEEDOR ========================
--- ===================================================================
--- Any: Any en que s'efectua la comanda.
--- Numero: Numero de comanda (iniciant de 1 cada any).
--- Descripcio: Breu descripcio o comentari opcional.
--- Data: Data d'emisio de la comanda.
+-- ** pedidoproveedor **
 \echo -n ':: Pedido a proveedor ... '
 CREATE TABLE pedidoproveedor (
     idpedidoproveedor serial PRIMARY KEY,
@@ -2085,7 +2064,7 @@ CREATE TABLE pedidoproveedor (
 );
 
 
-\echo -n ':: Funcion  ... '
+\echo -n ':: Funcion con restricciones en pedidos a proveedor ... '
 CREATE FUNCTION restriccionespedidoproveedor() RETURNS "trigger"
 AS '
 DECLARE
@@ -2114,34 +2093,32 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador de restricciones antes de insertar o actualizar un pedidos a proveedor ... '
 CREATE TRIGGER restriccionespedidoproveedortrigger
     BEFORE INSERT OR UPDATE ON pedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE restriccionespedidoproveedor();
 
 
--- Descuento de pedidocliente.
--- Numero
--- Concepte: Descripcio del motiu de descompte.
--- Proporcio: Percentatge a descomptar.
--- Descompte de pressupost a clients.
-\echo -n ':: Descuento pedido a proveedor ... '
+-- ** dpedidoproveedor **
+-- conceptdpedidoproveedor: Motivo por el que se aplica el descuento al pedido.
+-- proporciondpedidoproveedor: Porcentaje de descuento.
+\echo -n ':: Descuento en pedido a proveedor ... '
 CREATE TABLE dpedidoproveedor (
     iddpedidoproveedor serial PRIMARY KEY,
     conceptdpedidoproveedor character varying(2000),
     proporciondpedidoproveedor numeric(12, 2),
     idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor)
-   -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 );    
 
     
--- Linea de pedido
--- Numero: Numero de linia.
--- Descripcio: Descripcio de l'article.
--- Quantitat
--- PVD
--- Previsio Data prevista de recepcio
+-- ** lpedidoproveedor **
+-- Linea de detalle del pedido a proveedor.
+-- cantlpedidoproveedor: Cantidad.
+-- pvplpedidoproveedor: Precio de compra.
+-- prevlpedidoproveedor: Prevision de recepcion de la mercancia.
+-- ivalpedidoproveedor: IVA aplicado al articulo.
+-- descuentolpedidoproveedor: Descuento aplicado al articulo.
 \echo -n ':: Lineas de pedido a proveedor ... '
 CREATE TABLE lpedidoproveedor (
     numlpedidoproveedor serial PRIMARY KEY,
@@ -2157,10 +2134,7 @@ CREATE TABLE lpedidoproveedor (
 );
 
 
--- ===========CALCULOS ACUMULADOS PEDIDOS A PROVEEDOR =============
--- ================================================================
--- Calculo de totales para pedido proveedor
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el total del pedido a proveedor ... '
 CREATE OR REPLACE FUNCTION calctotalpedpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2181,7 +2155,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula la Base Imponible total de un pedido a proveedor ... '
 CREATE OR REPLACE FUNCTION calcbimppedpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2202,7 +2176,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que calcula el total de impuestos de un pedido a proveedor ... '
 CREATE OR REPLACE FUNCTION calcimpuestospedpro(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2223,9 +2197,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ============= METEMOS LOS TOTALES EN PEDIDOS A PROVEEDOR  ===========================
--- =====================================================================================
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza el total de un pedido a proveedor ... '
 CREATE OR REPLACE FUNCTION actualizatotpedidoproveedor() returns TRIGGER
 AS '
 DECLARE
@@ -2243,21 +2215,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador  ... '
+\echo -n ':: Disparador que actualiza el total de un pedido a proveedor al insertar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticospedidoproveedortrigger
     AFTER INSERT OR UPDATE ON lpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedor();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un pedido a proveedor al insertar un descuento ... '
 CREATE TRIGGER totalesautomaticospedidoproveedortrigger1
     AFTER INSERT OR UPDATE ON dpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedor();
 
 
-\echo -n ':: Crea o reemplaza la funcion ... '
+\echo -n ':: Funcion que actualiza un pedido a proveedor al borrar una linea de detalle ... '
 CREATE OR REPLACE FUNCTION actualizatotpedidoproveedorb() returns TRIGGER
 AS '
 DECLARE
@@ -2275,22 +2247,21 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un pedido a proveedor al borrar una linea de detalle ... '
 CREATE TRIGGER totalesautomaticospedidoproveedortriggerd
     AFTER DELETE OR UPDATE ON lpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedorb();
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que actualiza el total de un pedido a proveedor al borrar un descuento ... '
 CREATE TRIGGER totalesautomaticospedidoproveedortriggerd1
     AFTER DELETE OR UPDATE ON dpedidoproveedor
     FOR EACH ROW
     EXECUTE PROCEDURE actualizatotpedidoproveedorb();
 
 
--- Calculo de totales para presupuestos.
-\echo -n ':: Crea o reemplaza la funcion calctotalpres ... '
+\echo -n ':: Funcion que calcula el total de un presupuesto a cliente ... '
 CREATE OR REPLACE FUNCTION calctotalpres(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2311,8 +2282,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para presupuestos.
-\echo -n ':: Crea o reemplaza la funcion calcbimppres ... '
+\echo -n ':: Funcion que calcula la Base Imponible total de un presupuesto a cliente ... '
 CREATE OR REPLACE FUNCTION calcbimppres(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2333,8 +2303,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para presupuestos.
-\echo -n ':: Crea o reemplaza la funcion calcimpuestospres ... '
+\echo -n ':: Funcion que calcula el total de impuestos de un presupuesto a cliente ... '
 CREATE OR REPLACE FUNCTION calcimpuestospres(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2355,8 +2324,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para pedido cliente.
-\echo -n ':: Crea o reemplaza la funcion calctotalpedcli ... '
+\echo -n ':: Funcion que calcula el total de un pedido de cliente ... '
 CREATE OR REPLACE FUNCTION calctotalpedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2377,8 +2345,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para pedido cliente.
-\echo -n ':: Crea o reemplaza la funcion calcbimppedcli ... '
+\echo -n ':: Funcion que calcula la Base Imponible total de un pedido de cliente ... '
 CREATE OR REPLACE FUNCTION calcbimppedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2399,8 +2366,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para pedido cliente.
-\echo -n ':: Crea o reemplaza la funcion calcimpuestospedcli ... '
+\echo -n ':: Funcion que calcula el total de impuestos de un pedido de cliente ... '
 CREATE OR REPLACE FUNCTION calcimpuestospedcli(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2421,8 +2387,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para albaranes.
-\echo -n ':: Crea o reemplaza la funcion calctotalalbaran ... '
+\echo -n ':: Funcion que calcula el total de un albaran a cliente ... '
 CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2443,8 +2408,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- Calculo de totales para albaranes.
-\echo -n ':: Crea o reemplaza la funcion calcbimpalbaran ... '
+\echo -n ':: Funcion que calcula la Base Imponible total de un albaran a cliente ... '
 CREATE OR REPLACE FUNCTION calcbimpalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2465,7 +2429,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Crea o reemplaza la funcion calcimpuestosalbaran ... '
+\echo -n ':: Funcion que calcula los impuestos totales de un albaran a cliente ... '
 CREATE OR REPLACE FUNCTION calcimpuestosalbaran(integer) RETURNS numeric(12, 2)
 AS '
 DECLARE
@@ -2486,12 +2450,9 @@ END;
 ' LANGUAGE plpgsql;
 
 
--- ===================================================================
--- ============================ CONTROL STOCK ========================
--- ===================================================================
--- COMENTARIO TEMPORAL
--- Cambios para el control de stock que aun no han sido trasladados al lugar pertinente en 
--- revf
+-- ========================== CONTROL DE STOCK =======================
+
+-- ** inventario **
 \echo -n ':: Inventario ... '
 CREATE TABLE inventario (
     idinventario SERIAL PRIMARY KEY,
@@ -2500,8 +2461,9 @@ CREATE TABLE inventario (
 );
 
 
--- stockantcontrolstock es un campo de solo lectura, es autorregulado internamente mediante
--- disparadores (triggers).
+-- ** controlstock **
+-- stockantcontrolstock: Es un campo de solo lectura, es autorregulado internamente mediante
+--                       disparadores (triggers).
 \echo -n ':: Control de stock ... '
 CREATE TABLE controlstock (
     idinventario integer NOT NULL REFERENCES inventario(idinventario),
@@ -2514,6 +2476,7 @@ CREATE TABLE controlstock (
 );
 
 
+-- ** stock_almacen **
 -- Esta tabla es mantenida por el SGDB y sirve solo para hacer consultas.
 \echo -n ':: Stock por almacen ... '
 CREATE TABLE stock_almacen (
@@ -2524,7 +2487,7 @@ CREATE TABLE stock_almacen (
 );
 
 
-\echo -n ':: Funcion narticulo ... '
+\echo -n ':: Funcion para insertar un nuevo articulo en el stock ... '
 CREATE FUNCTION narticulo() RETURNS "trigger"
 AS '
 DECLARE
@@ -2539,14 +2502,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador para insertar un nuevo articulo en el stock ... '
 CREATE TRIGGER narticulot
     AFTER INSERT ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE narticulo();
 
 
-\echo -n ':: Funcion darticulo ... '
+\echo -n ':: Funcion para borrar un articulo en el stock ... '
 CREATE FUNCTION darticulo() RETURNS "trigger"
 AS '
 DECLARE
@@ -2558,14 +2521,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador para borrar un articulo en el stock ... '
 CREATE TRIGGER darticulot
     BEFORE DELETE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE darticulo();
 
 
-\echo -n ':: Funcion nalmacen ... '
+\echo -n ':: Funcion para insertar stock en un almacen ... '
 CREATE FUNCTION nalmacen() RETURNS "trigger"
 AS '
 DECLARE
@@ -2580,14 +2543,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador al insertar un almacen ... '
+\echo -n ':: Disparador al insertar stock en un almacen ... '
 CREATE TRIGGER nalmacent
     AFTER INSERT ON almacen
     FOR EACH ROW
     EXECUTE PROCEDURE nalmacen();
 
 
-\echo -n ':: Funcion que borra un almacen ... '
+\echo -n ':: Funcion que borra stock de un almacen ... '
 CREATE FUNCTION dalmacen() RETURNS "trigger"
 AS '
 DECLARE
@@ -2599,14 +2562,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que borra stock de un almacen ... '
 CREATE TRIGGER dalmacent
     BEFORE DELETE ON almacen
     FOR EACH ROW
     EXECUTE PROCEDURE dalmacen();
 
 
-\echo -n ':: Funcion disminuye stock ... '
+\echo -n ':: Funcion para disminuir stock ... '
 CREATE FUNCTION disminuyestock() RETURNS "trigger"
 AS '
 DECLARE
@@ -2621,14 +2584,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador disminuye stockt ... '
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran a cliente ... '
 CREATE TRIGGER disminuyestockt
     AFTER DELETE OR UPDATE ON lalbaran
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyestock();
 
 
-\echo -n ':: Funcion aumenta stock ... '
+\echo -n ':: Funcion para aumentar stock ... '
 CREATE FUNCTION aumentastock() RETURNS "trigger"
 AS '
 DECLARE
@@ -2643,7 +2606,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador aumenta stockt ... '
+\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran a cliente ... '
 CREATE TRIGGER aumentastockt
     AFTER INSERT OR UPDATE ON lalbaran
     FOR EACH ROW
@@ -2665,14 +2628,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador disminuye stockpt ... '
+\echo -n ':: Disparador que disminuye stock al borrar o actualizar el detalle de un albaran de proveedor ... '
 CREATE TRIGGER disminuyestockpt
     AFTER DELETE OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyestockp();
 
 
-\echo -n ':: Funcion aumentastockp ... '
+\echo -n ':: Funcion que aumenta el stock al recibir mercancias de un proveedor ... '
 CREATE FUNCTION aumentastockp() RETURNS "trigger"
 AS '
 DECLARE
@@ -2686,14 +2649,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que aumenta stock al insertar o actualizar el detalle de un albaran de proveedor ... '
 CREATE TRIGGER aumentastockpt
     AFTER INSERT OR UPDATE ON lalbaranp
     FOR EACH ROW
     EXECUTE PROCEDURE aumentastockp(); 
 
 
-\echo -n ':: Crea o reemplaza funcion modificado stock ... '
+\echo -n ':: Funcion que modifica el stock de un articulo ... '
 CREATE OR REPLACE FUNCTION modificadostock() RETURNS "trigger"
 AS '
 DECLARE 
@@ -2712,14 +2675,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador modifica stock... '
+\echo -n ':: Disparador que modifica el stock al actualizar los datos de un articulo ... '
 CREATE TRIGGER modificastocktrigger
     AFTER UPDATE ON articulo
     FOR EACH ROW
     EXECUTE PROCEDURE modificadostock();
 
 
-\echo -n ':: Crea o reemplaza la funcion que modificado stock de almacen ... '
+\echo -n ':: Funcion que modificado el stock de un almacen ... '
 CREATE OR REPLACE FUNCTION modificadostockalmacen() RETURNS "trigger"
 AS '
 DECLARE 
@@ -2738,7 +2701,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que modifica el stock de un almacen ... '
 CREATE TRIGGER modificastocktrigger
     AFTER UPDATE ON stock_almacen
     FOR EACH ROW
@@ -2746,8 +2709,9 @@ CREATE TRIGGER modificastocktrigger
 
 
 -- ========= REGULACION AUTOMATICA CONTROL STOCK =====================
--- ===================================================================
-\echo -n ':: Funcion ... '
+
+
+\echo -n ':: Funcion que disminuye control de stock ... '
 CREATE FUNCTION disminuyecontrolstock() RETURNS "trigger"
 AS '
 DECLARE
@@ -2762,14 +2726,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que disminuye stock al borrar en control de stock ... '
 CREATE TRIGGER disminuyecontrolstockt
     BEFORE DELETE ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyecontrolstock();
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion que disminuye el control de stock ... '
 CREATE FUNCTION disminuyecontrolstock1() RETURNS "trigger"
 AS '
 DECLARE
@@ -2785,14 +2749,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que disminuye control stock ... '
 CREATE TRIGGER disminuyecontrolstockt1
     BEFORE INSERT ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyecontrolstock1();
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion que disminuye control stock ... '
 CREATE FUNCTION disminuyecontrolstock2() RETURNS "trigger"
 AS '
 DECLARE
@@ -2812,14 +2776,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que disminuye control de stock ... '
 CREATE TRIGGER disminuyecontrolstockt2
     BEFORE UPDATE ON controlstock
     FOR EACH ROW
     EXECUTE PROCEDURE disminuyecontrolstock2();
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion que aumenta control de stock ... '
 CREATE FUNCTION aumentacontrolstock() RETURNS "trigger"
 AS '
 DECLARE
@@ -2833,7 +2797,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que controla el control de stock ... '
 CREATE TRIGGER aumentacontrolstockt
     AFTER INSERT OR UPDATE ON controlstock
     FOR EACH ROW
@@ -2842,7 +2806,7 @@ CREATE TRIGGER aumentacontrolstockt
 
 -- Cuando cambiamos el almacen en un albaran o albaranp hay problemas con el control de stock
 -- que se descuadra.
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion que actualiza el stock al cambiar un albaran a cliente ... '
 CREATE FUNCTION cambiaalbaran() RETURNS "trigger"
 AS '
 DECLARE
@@ -2860,14 +2824,14 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que controla cuando se actualiza un albaran a un cliente ... '
 CREATE TRIGGER cambiadoalbarant
     AFTER UPDATE ON albaran
     FOR EACH ROW
     EXECUTE PROCEDURE cambiaalbaran();
 
 
-\echo -n ':: Funcion ... '
+\echo -n ':: Funcion que actualiza el stock al cambiar un albaran de proveedor ... '
 CREATE FUNCTION cambiaalbaranp() RETURNS "trigger"
 AS '
 DECLARE
@@ -2885,7 +2849,7 @@ END;
 ' LANGUAGE plpgsql;
 
 
-\echo -n ':: Disparador ... '
+\echo -n ':: Disparador que controla cuando se actualiza un albaran de proveedor ... '
 CREATE TRIGGER cambiadoalbaranpt
     AFTER UPDATE ON albaranp
     FOR EACH ROW
