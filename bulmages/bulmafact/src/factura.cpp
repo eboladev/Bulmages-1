@@ -269,8 +269,8 @@ void Factura::imprimirFactura() {
             parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "        <td>" + QApplication::translate("Factura", "Base ") + it.key() + " %</td>\n";
-        tr2 += "        <td>" + l.sprintf("%s", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
+        tr1 += "        <td>" + QApplication::translate("Factura", "Base") +" "+ it.key() + "%</td>\n";
+        tr2 += "        <td>" + l.sprintf(" %s ", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
     Fixed totiva("0.0");
