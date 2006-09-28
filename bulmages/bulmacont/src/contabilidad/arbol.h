@@ -22,35 +22,40 @@
 #define ARBOL_H
 
 #include <QString>
+
 #include "postgresiface2.h"
 
-/**
- @author Ricardo Diaz
- * Fichero de definicion de las clase \ref arbol que crea una estructura tipo arbol para el almacenaje
- * en memoria dinamica de todas cuentas del plan contable de la base de datos que calcula sus saldos cuando se genera.
- * La potencia de esta estructura radica en la actualizacion autom�ica de todas los estados de cada cuenta (las hojas)
- * cada vez que se modifica los valores de alguna de ellas.
+
+
+/// Clase que crea una estructura en forma de arbol para almacenar el plan contable.
+/** Fichero de definici&oacute;n de las clase arbol. Crea una estructura tipo arbol para
+    almacenar en memoria din&aacute;mica todas las cuentas del plan contable de
+    la base de datos y calcula sus saldos cuando se genera.
+    La potencia de esta estructura radica en la actualizaci&oacute;n autom&aacute;ica de
+    todos los estados de cada cuenta (las hojas) cada vez que se modifican los valores
+    de alguna de ellas.
 */
 class Arbol {
 private:
     typedef struct tipohoja;
     typedef struct tiporama {
-        tipohoja* hoja; /// puntero a la hoja donde se almacena los datos de la cuenta.
-        tiporama* sgte; /// puntero a una rama que apunta a una hoja hermana (del mismo nivel).
+        tipohoja* hoja; /// Puntero a la hoja donde se almacena los datos de la cuenta.
+        tiporama* sgte; /// Puntero a una rama que apunta a una hoja hermana (del mismo nivel).
     };
     typedef struct tipohoja {
-        int idcuenta; /// Idcuenta de la BD.
-        QString codigo; /// Codigo de la cuenta.
-        QString descripcion; /// Su descripcion contable.
-        double saldoant, debe, haber, saldo, debeej, haberej, saldoej; /// Los valores a calcular.
-        int numapuntes; /// Numero de apuntes que modifican los valores a calcular.
-        tiporama* ramas; /// Puntero a mas ramas con hojas.
+        int idcuenta; /// Identificador de la cuenta de la base de datos.
+        QString codigo; /// C&oacute;digo de la cuenta.
+        QString descripcion; /// Su descripci&oacute;n contable.
+        /// Los valores a calcular.
+        double saldoant, debe, haber, saldo, debeej, haberej, saldoej;
+        int numapuntes; /// N&uacute;mero de apuntes que modifican los valores a calcular.
+        tiporama* ramas; /// Puntero a m&aacute;s ramas con hojas.
     };
     tipohoja** raiz; /// Raiz del arbol que contiene todas las cuentas de nivel 2.
     tipohoja* hoja; /// Hoja que contiene los datos de una cuenta.
-    tiporama* rama; /// Rama que contiene una hoja y mas ramas o no.
-    postgresiface2 *conexionbase; /// Para el acceso a la BD con la que estamos trabajando.
-    QString hojaactiva; /// Codigo de la ultima hoja visitada (nos servira de indice).
+    tiporama* rama; /// Rama que contiene una hoja y m&aacute;s ramas o no.
+    postgresiface2 *conexionbase; /// Nos da acceso a la base de datos con la que estamos trabajando.
+    QString hojaactiva; /// C&oacute;digo de la &uacute;ltima hoja visitada (nos servir&aacute; de &iacute;ndice).
 
 private:
     void SintetizarRamas(cursor2**, tiporama**);
@@ -60,17 +65,18 @@ private:
 public:
     Arbol();
     ~Arbol();
-    /// \brief Anyade una nueva rama al arbol con su hoja.
+    /// A&ntilde;ade una nueva rama al arbol con su hoja.
     void nuevarama(cursor2*);
-    /// \brief Constituye el arbol inicializando los valores que corresponden a cada cuenta (hoja).
+    /// Constituye el arbol inicializando los valores que corresponden a cada cuenta (hoja).
     void inicializa(cursor2*);
-    /// \brief Actualiza los valores de las hojas en el arbol.
+    /// Actualiza los valores de las hojas en el arbol.
     void actualizahojas(cursor2*);
-    /// \brief Inicializa el acceso al arbol cambiando el valor de la variable "visitada".
+    /// Inicializa el acceso al arbol cambiando el valor de la variable "visitada".
     void inicia();
-    /// \brief Mueve el puntero que indexa una hoja del arbol, segun condicionen los parametros, para que se acceda a la informacion que contiene.
+    /// Mueve el puntero que indexa una hoja del arbol, seg&uacute;n condicionen los
+    /// par&aacute;metros, para que se acceda a la informaci&oacute;n que contiene.
     bool deshoja(unsigned int, bool);
-    /// \brief Devuelve el contenido de valor solicitado como parametro.
+    /// Devuelve el contenido de valor solicitado como par&aacute;metro.
     QString hojaactual(QString);
 };
 

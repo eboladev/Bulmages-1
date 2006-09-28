@@ -45,22 +45,22 @@ class diarioview1;
 class extractoview1;
 class empresa;
 
-/**
-  * @author Tomeu Borrás Riera 
-  * \class BalanceTreeView BalanceTreeView.h
-  * \brief Pantalla de presentación del balnace de sumas y saldos (jerarquica)
-  * \todo Hay que eliminar el array de ccostes y sustituirlo por un cursor2
-  * \todo Hay que eliminar los punteros de extracto - diario - introaputnes y hacerlo pasar todo por la clase empresa.
-  * Clase que sirve para presentar en balance de sumas y saldos  en forma de tabla. Permite presentar el balance entre unos rangos definidos y incluyendo las cuentas de un nivel determinado.
-  */
 
+
+/// Pantalla de presentación del balnace de sumas y saldos (jerarquica)
+/** \todo Hay que eliminar el array de ccostes y sustituirlo por un cursor2.
+    \todo Hay que eliminar los punteros de extracto - diario - introaputnes y hacerlo pasar todo por la clase empresa.
+    Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
+    presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
+    determinado.
+*/
 class BalanceTreeView : public QWidget, public Ui_BalanceTreeBase {
     Q_OBJECT
 
 private:
     /// Empresa con la que trabaja la clase.
     empresa *m_companyact;
-    /// Indica el numero de dígitos que tienen por defecto las cuentas.
+    /// Indica el n&uacute;mero de d&iacute;gitos que tienen por defecto las cuentas.
     int numdigitos;
     int m_ccuenta;
     int m_cdenominacion;

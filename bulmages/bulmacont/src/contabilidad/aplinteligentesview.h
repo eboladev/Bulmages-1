@@ -47,23 +47,28 @@
 #include "ui_aplinteligentesbase.h"
 
 class empresa;
-/**
-  * @author Tomeu Borras Riera 
-  * \class aplinteligentesview aplinteligentesview.h
-  * \brief Formulario para la introduccion de asientos mediante las plantillas.
-  * Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas predefinidas, o asientos plantilla (\ref ainteligentesview).
-  
- A partir de la plantilla se genera el formulario de forma din�ica. Y una vez introducidos los datos se hacen calculos en un bucle resolvedor de incognitas recursivas. Si no hay bucles infinitos al final se obtienen todos los campos necesarios para hacer la introducci� de asientos y esta se efectua.
- 
- 	La clase tiene dos modos de actuar dependiendo de si estamos trabajando con un asiento abierto o con uno cerrado. En el primer caso el comportamiento es de todo lo introducido al asiento abierto.
-	En el segundo caso se genera un asiento nuevo por cada introducci� de plantilla.
-  */
-class aplinteligentesview : public QWidget,  public Ui_AplInteligentesBase  {
+
+
+/// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
+/** Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas
+    predefinidas, o asientos plantilla (\ref ainteligentesview).
+
+    A partir de la plantilla se genera el formulario de forma din&aacute;mica. Y una vez
+    introducidos los datos se hacen c&aacute;lculos en un bucle resolvedor de
+    inc&oaacute;gnitas recursivas. Si no hay bucles infinitos al final se obtienen todos
+    los campos necesarios para hacer la introducci&oacute;n de asientos y esta se
+    efect&uacute;a.
+
+    La clase tiene dos modos de actuar dependiendo de si estamos trabajando con un asiento
+    abierto o con uno cerrado. En el primer caso el comportamiento es de todo lo introducido
+    al asiento abierto.
+    En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
+*/
+class aplinteligentesview : public QWidget, public Ui_AplInteligentesBase {
     Q_OBJECT
 
 private:
-    /// La empresa del programa.
-    empresa *companyact;
+    empresa *companyact; /// La empresa del programa.
     QDomDocument m_doc;
     QString variablescta[100][3];
     QString variablesfecha[100][3];
@@ -77,12 +82,13 @@ private:
     int indvariablesnumero;
     int indvariablestexto;
     int indvariablespredefinidas;
-    int indvariablesapunte; /// El indice a las variables de apunte.
+    int indvariablesapunte; /// El &iacute;ndice a las variables de apunte.
 
-    int modo; /// Si modo == 0 entonces es modo normal. Si modo == 1 entonces es modo 1 ejecucion.
-    /// El modo provoca que la plantilla de asiento inteligente se cierre tras haber pulsado.
-    /// El boton de aceptar y asi permite recuperar el control a otros estamentos.
-    /// Por defecto el modo es 0.
+    /// Si modo == 0 entonces es modo normal. Si modo == 1 entonces es modo 1 ejecuci&oacute;n.
+    /// El modo provoca que la plantilla de asiento inteligente se cierre tras haber pulsado
+    /// el bot&oacute;n de aceptar y as&iacute; permite recuperar el control a otros
+    /// estamentos. Por defecto el modo es 0.
+    int modo;
 
     QLabel *labelcta[100];
     QLabel *labelfecha[100];
@@ -93,9 +99,13 @@ private:
     QLineEdit *varnumero[100];
     QLineEdit *vartexto[100];
 
-    int numainteligente; /// Esta variable indica el idainteligente que estamos usando como plantilla.
-    int numasiento; /// Esta variable indica en que asiento se va a introducir el asiento inteligente.
-    QString listasientos[100]; /// Esta lista se usa en conjuncion con el combo-box para saber los indices de las plantillas de asientos inteligentes.
+    /// Esta variable indica el idainteligente que estamos usando como plantilla.
+    int numainteligente;
+    /// Esta variable indica en qu&eacute; asiento se va a introducir el asiento inteligente.
+    int numasiento;
+    /// Esta lista se usa en conjunci&oacute;n con el combo-box para saber los &iacute;ndices
+    /// de las plantillas de asientos inteligentes.
+    QString listasientos[100];
     int idainteligente;
     unsigned int numdigitos;
 
@@ -118,8 +128,8 @@ public:
     void setfechaasiento(QString fecha) {
         fechaasiento->setText(fecha);
     }
-    /// La funcion sirve para especificar el modo de funcionamiento de los asientos intelgientes.
-    /// Consultar la variable metodo para mas detalles.
+    /// La funci&oacute;n sirve para especificar el modo de funcionamiento de los asientos
+    /// intelgientes. Consultar la variable m&eacute;todo para m&aacute;s detalles.
     void setmodo(int i) {
         modo = i;
     }

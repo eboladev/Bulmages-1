@@ -25,14 +25,9 @@
 
 #include "ui_aboutbase.h"
 
-/**
-  *@author Tomeu Borrás Riera
- * \class aboutview aboutview.h
- * \brief Presentar el About del programa
- *  
- * Esta clase muestra el dialogo de About. Presentan los créditos del programa.
- * this class presents the about of the program.
- */
+
+/// Presenta la informaci&oacute;n sobre el programa.
+/** Esta clase muestra el di&aacute;logo de About. Presentan los cr&eacute;ditos del programa. */
 class aboutview : public QDialog, public Ui_AboutBase {
     Q_OBJECT
 

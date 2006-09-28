@@ -23,6 +23,9 @@
 
 #include "subform2bc.h"
 
+
+///
+/** */
 class BalanceSubForm : public SubForm2Bc {
     Q_OBJECT
 

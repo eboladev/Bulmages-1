@@ -33,6 +33,8 @@
 class empresa;
 
 
+/// Clase Asiento1.
+/** */
 class Asiento1 : public DBRecord {
 public:
     enum estadoasiento {ASVacio = 0, ASAbierto = 1, ASCerrado = 2};
@@ -63,7 +65,6 @@ public:
         return DBvalue("idasiento");
     };
     /// Establece cual es la lista subformulario del presupuesto.
-    /// Normalmente para apuntar listlinpresupuestoview.
     void setListLinAsiento1(ListLinAsiento1View *a) {
         listalineas = a;
     };

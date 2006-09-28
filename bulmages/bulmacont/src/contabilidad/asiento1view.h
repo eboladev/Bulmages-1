@@ -37,19 +37,18 @@
 
 class empresa;
 
-/**
-  *@author Tomeu Borrás Riera 
- * \class Asiento1View asiento1view.h
- * \brief Se encarga de controlar la ventana de introducción de apuntes.
- *
- * Esta es una de las clases mas complejas del programa ya que controla toda la acción y casi toda la interactuación del usuario con el programa. Pretende conseguir una interficie que resulte muy rígida y cómodo para el usuario que introduzca datos.
- Hereda intapunts3dlg  
+
+/// Clase ListAsientos. Se encarga de controlar la ventana de introducci&oacute;n de apuntes.
+/** Esta es una de las clases m&aacute;s complejas del programa porque controla toda la
+    acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
+    Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
+    el usuario que introduzca datos. Hereda intapunts3dlg.
 */
 class ListAsientos {
 
 private:
     empresa *m_companyact;
-    /// Este es el cursor que se usará para recorrer la lista de asientos.
+    /// Este es el cursor que se usar&aacute; para recorrer la lista de asientos.
     cursor2 *cursorasientos;
 
 public:
@@ -99,12 +98,13 @@ public:
 };
 
 
-class Asiento1View : public QWidget, public Ui_AsientoBase,  public Asiento1, public ListAsientos {
+class Asiento1View : public QWidget, public Ui_AsientoBase, public Asiento1, public ListAsientos {
     Q_OBJECT
-private:
-    /// Este puntero del tipo \ref empresa contiene la referencia a la clase que ha inicializado este objeto.
-    empresa *m_companyact;
 
+private:
+    /// Este puntero del tipo empresa contiene la referencia a la clase que ha
+    /// inicializado este objeto.
+    empresa *m_companyact;
     void pintafecha(QString val) {
         mui_fecha->setText(val);
     };
@@ -135,7 +135,7 @@ public:
     void muestraasiento(int v) {
         muestraasiento(QString::number(v));
     };
-    ///Para poder enganchar plugins a esta ventana se ha habilitado este layout.
+    /// Para poder enganchar plugins a esta ventana se ha habilitado este layout.
     QHBoxLayout *layoutPlugins;
 
 public:
@@ -166,13 +166,11 @@ public slots:
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
     virtual void on_mui_fecha_returnPressed();
-
-    /** \brief SLOT que responde a la pulsación del boton de iva.
-      * Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se
-      * presente con los datos ya introducidos.
-      * La clase ivaview hace una inserción o una modificación segun exista o no una entrada
-      * de iva para dicho borrador.
-      */
+    /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de IVA.
+    /// Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se
+    /// presente con los datos ya introducidos. La clase ivaview hace una inserci&oacute;n
+    /// o una modificaci&oacute;n seg&uacute;n exista o no una entrada de IVA para dicho
+    /// borrador.
     virtual void on_mui_iva_clicked() {
         _depura("on_mui_iva_clicked", 0);
         mui_list->boton_iva();
@@ -181,9 +179,8 @@ public slots:
     virtual void s_lineaValueChanged() {
         calculaypintatotales(idasiento());
     };
-    /** Al pulsar return sobre el numero de asiento se procede como si fuese una
-      * carga de dicho asiento.
-      */
+    /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
+    /// carga de dicho asiento.
     void eturn_numasiento() {
         boton_cargarasiento();
     };

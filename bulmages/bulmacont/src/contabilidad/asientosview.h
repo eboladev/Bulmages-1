@@ -27,11 +27,12 @@
 #include "ui_asientolistbase.h"
 
 
-/** \brief Muestra un listado de todos los asientos existentes e informa de si estan abiertos o cerrados.
-*/
 class empresa;
 
 
+/// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
+/// abiertos o cerrados.
+/** */
 class asientosview : public QWidget, public Ui_AsientoListBase {
     Q_OBJECT
 

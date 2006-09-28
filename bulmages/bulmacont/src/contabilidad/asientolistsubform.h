@@ -24,9 +24,9 @@
 #include "subform2bc.h"
 
 
-/** @author Tomeu Borras Riera
-  * \brief Muestra un listado de todos los asientos existentes e informa de si estan abiertos o cerrados.
-*/
+/// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
+/// abiertos o cerrados.
+/** */
 class AsientoListSubform : public SubForm2Bc {
     Q_OBJECT
 

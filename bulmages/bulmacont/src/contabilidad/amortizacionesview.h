@@ -26,6 +26,9 @@
 
 class empresa;
 
+
+/// Clase que muestra la ventana de amortizaciones.
+/** */
 class amortizacionesview : public QWidget, public Ui_AmortizacionesBase {
     Q_OBJECT
 

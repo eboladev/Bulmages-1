@@ -28,27 +28,26 @@
 
 class empresa;
 
-/**
-  * @author Tomeu Borrás Riera 
-  * \class amortizacionview amortizacionview.h
-  * \brief Formulario de introducción y/o visión de amortizaciones.
-  */
+
+/// Clase que muestra la ventana de amortizaci&oacute;n.
+/** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
 class amortizacionview : public QWidget, Ui_AmortizacionBase, dialogChanges {
     Q_OBJECT
 
 public:
     /// Empresa con la que se trabaja.
     empresa *m_companyact;
-    /// Esta variable indica cual es el indice de la cuenta de activo de la amortizacion que
-    /// estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+    /// Esta variable indica cual es el &iacute;ndice de la cuenta de activo de la
+    /// amortizaci&oacute;n que estamos viendo. Si no se est&aacute; mostrando una
+    /// cuenta este valor vale "".
     QString idctaactivo;
-    /// Esta variable indica cual es el indice de la cuenta de amortizacion de la amortizacion
-    /// que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
+    /// Esta variable indica cual es el &iacute;ndice de la cuenta de amortizacion de la
+    /// amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
     QString idctaamortizacion;
-    /// Esta variable indica cual es la amortizacion que se está enseñando. Si no tiene valor
-    /// es que no se esta mostrando ninguna.
+    /// Esta variable indica cu&aacute;l es la amortizaci&oacute;n que se est&aacute;
+    /// ense&ntilde;ando. Si no tiene valor es que no se esta mostrando ninguna.
     QString idamortizacion;
-    /// Esta variable indica cual es el asiento plantilla de amortización.
+    /// Esta variable indica cu&aacute;l es el asiento plantilla de amortizaci&oacute;n.
     QString idainteligente;
     amortizacionview(empresa *, QWidget *, const char *);
     ~amortizacionview();

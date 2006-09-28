@@ -25,9 +25,8 @@
 
 #include <ui_actualizacionesbase.h>
 
-/**
-  *@author Tomeu Borrás Riera
-  */
+/// 
+/** */
 class actualizacionesview : public QWidget, Ui_ActualizacionesBase {
     Q_OBJECT
 

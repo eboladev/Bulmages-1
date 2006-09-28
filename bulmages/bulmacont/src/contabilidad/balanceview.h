@@ -34,16 +34,12 @@
 
 class empresa;
 
-/**
- * \author Tomeu Borras Riera
- * \class balanceview balanceview.h
- * \brief Balance de Sumas y Saldos plano
- * \todo Hay que eliminar el ccostes[200] y cambiarlo por un cursor
- * 
- * Clase que muestra un balance de sumas y saldos de la empresa abierta. 
- Esta clase  genera el balance de sumas y saldos y lo muestra por pantalla en una
- ventana diseñada específicamente para ello.
- */
+/// Balance de Sumas y Saldos plano.
+/** \todo Hay que eliminar el ccostes[200] y cambiarlo por un cursor.
+    Esta clase muestra un balance de sumas y saldos de la empresa abierta.
+    Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
+    ventana dise&ntilde;ada espec&iacute;ficamente para ello.
+*/
 class balanceview : public QWidget, public Ui_BalanceBase {
     Q_OBJECT
 
@@ -52,7 +48,7 @@ private:
     empresa *companyact;
     /// Cursor para recorrer las cuentas.
     cursor2 *cursorcta;
-    /// El nmero de dígitos que tienen las cuentas de la empresa.
+    /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas de la empresa.
     int numdigitos;
     /// Array que almacena los identificadores de los centros de coste.
     int ccostes[200];
