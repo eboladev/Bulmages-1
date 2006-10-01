@@ -1,61 +1,62 @@
 --
--- Modificación de campos y funciones de la BD para la adaptacion para el plugin de ComercialBF
+-- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de ComercialBF.
 --
-
+\echo -n ':: Iniciamos transaccion ... '
 BEGIN;
 
 --
--- Estas primeras funciones cambiar� los tipos de columnas que est� como flotantes a NUMERIC.
+-- Estas primeras funciones cambiaran los tipos de columnas que estan como flotantes a NUMERIC.
 -- Se trata de un parche que se desea aplicar para almacenar los tipos monetarios
 -- ya que actualmente se encuantran almacenados como 'doubles' y es preferible
 -- que se almacenen como tipo 'numeric'.
--- Todas devuelven como valor num�ico el nmero de filas influenciadas por el cambio
--- NOTA: Si alguien sabe como pasar por par�etro un nombre de tabla y campo a modificar se
--- har� mucho m� sencillito porque s�o habr� que implementar un funci� ya que siempre
+-- Todas devuelven como valor numerico el numero de filas influenciadas por el cambio
+-- NOTA: Si alguien sabe como pasar por parametro un nombre de tabla y campo a modificar se
+-- haran mucho mas sencillito porque solo habra que implementar un funcion ya que siempre
 -- hay que hacer lo mismo.
 --
 
 --
--- Función auxiliar para borrar funciones limpiamente
+-- Funcion auxiliar para borrar funciones limpiamente.
 --
-create or replace function drop_if_exists_table (text) returns INTEGER AS '
+CREATE OR REPLACE FUNCTION drop_if_exists_table(text) RETURNS INTEGER AS '
 DECLARE
-tbl_name ALIAS FOR $1;
+    tbl_name ALIAS FOR $1;
+
 BEGIN
-IF (select count(*) from pg_tables where tablename=$1) THEN
- EXECUTE ''DROP TABLE '' || $1;
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_tables where tablename = $1) THEN
+	EXECUTE ''DROP TABLE '' || $1;
+	RETURN 1;
+    END IF;
+    RETURN 0;
 END;
-'
-language 'plpgsql';
+' language 'plpgsql';
 
 
-create or replace function drop_if_exists_proc (text,text) returns INTEGER AS '
+CREATE OR REPLACE FUNCTION drop_if_exists_proc(text, text) RETURNS INTEGER AS '
 DECLARE
-proc_name ALIAS FOR $1;
-proc_params ALIAS FOR $2;
+    proc_name ALIAS FOR $1;
+    proc_params ALIAS FOR $2;
+
 BEGIN
-IF (select count(*) from pg_proc where proname=$1) THEN
- EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
-RETURN 1;
-END IF;
-RETURN 0;
+    IF (select count(*) from pg_proc where proname = $1) THEN
+	EXECUTE ''DROP FUNCTION '' || $1 || ''(''||$2||'') CASCADE'';
+	RETURN 1;
+    END IF;
+    RETURN 0;
 END;
-'
-language 'plpgsql';
+' language 'plpgsql';
 
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	rec RECORD;
+
 BEGIN
-	SELECT INTO rec * FROM pg_attribute  WHERE attname=''idzonacomercial'';
+	SELECT INTO rec * FROM pg_attribute  WHERE attname = ''idzonacomercial'';
 	IF NOT FOUND THEN
 		CREATE TABLE zonacomercial (
 			idzonacomercial SERIAL PRIMARY KEY,
-			nomzonacomercial  VARCHAR
+			nomzonacomercial VARCHAR
 		);
 		CREATE TABLE rutacomercial (
 			idrutacomercial SERIAL PRIMARY KEY,
@@ -100,11 +101,12 @@ BEGIN
 	END IF;
 	RETURN 0;
 END;
-'   LANGUAGE plpgsql;
-SELECT aux();
-DROP FUNCTION aux() CASCADE;
-\echo "Agregamos los campos y tablas para el plugin ComercialBF."
+' LANGUAGE plpgsql;
 
+SELECT aux();
+
+DROP FUNCTION aux() CASCADE;
+\echo ':: Agregamos los campos y tablas para el plugin ComercialBF ... '
 
 
 CREATE OR REPLACE FUNCTION crearutacomercial(date) RETURNS INTEGER AS '
@@ -112,6 +114,7 @@ DECLARE
 	fecha ALIAS FOR $1;
 	client RECORD;
 	nfechabase DATE;
+
 BEGIN
 	FOR client IN SELECT * FROM cliente LOOP
 		nfechabase := client.fechabasecomercialcliente;
@@ -120,9 +123,10 @@ BEGIN
 			RAISE NOTICE '' Nuevo ciclo % %'', nfechabase, fecha;
 			IF fecha = nfechabase THEN
 				-- Aqui toca crear la hoja de ruta.
-				-- Al final actualizamos la fecha base para que los calculos sean siempre lo menos complejos y largos posible.
+				-- Al final actualizamos la fecha base para que los calculos sean siempre lo menos
+				-- complejos y largos posible.
 				RAISE NOTICE ''Hemos llegado al quiz'';
-				-- UPDATE cliente set fechabasecomercialcliente=nfechabase WHERE idcliente= client.idcliente;
+				-- UPDATE cliente set fechabasecomercialcliente = nfechabase WHERE idcliente = client.idcliente;
 			END IF;
 			nfechabase := nfechabase + client.periodocomercialcliente;
 --			RAISE NOTICE '' Calculo % %'', nfechabase, fecha;
@@ -131,32 +135,35 @@ BEGIN
 	RETURN 0;
 END;
 ' LANGUAGE plpgsql;
-\echo "Creamos la funcion de crear las rutas comerciales de forma automatica"
+\echo ':: Creamos la funcion de crear las rutas comerciales de forma automatica ... '
 
 
-
--- Agregamos nuevos parametros de configuraci�.
+-- Agregamos nuevos parametros de configuracion.
 --
 CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	rec RECORD;
+
 BEGIN
-	SELECT INTO rec * FROM configuracion WHERE nombre=''DBRev-ComercialBF'';
+	SELECT INTO rec * FROM configuracion WHERE nombre = ''DBRev-ComercialBF'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.5.9'' WHERE nombre=''DBRev-ComercialBF'';
+		UPDATE CONFIGURACION SET valor = ''0.5.9'' WHERE nombre = ''DBRev-ComercialBF'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''DBRev-ComercialBF'', ''0.5.9''); 		 
 	END IF;
 	RETURN 0;
 END;
-'   LANGUAGE plpgsql;
+' LANGUAGE plpgsql;
+
 SELECT actualizarevision();
+
 DROP FUNCTION actualizarevision() CASCADE;
-\echo "Actualizada la revision de la base de datos a la version 0.5.9"
+\echo ':: Actualizada la revision de la base de datos a la version 0.5.9 ... '
 
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
-DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
+DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;
 
 
+\echo -n ':: Finalizamos la transaccion ... '
 COMMIT;
