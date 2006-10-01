@@ -17,16 +17,14 @@
 
 #include <QWidget>
 #include <QDateTime>
-#include <Q3PtrList>
+#include <QList>
 #include <QPixmap>
 #include <QMouseEvent>
 #include <QKeyEvent>
-#include <Q3PopupMenu>
+#include <QMenu>
 #include <QPaintEvent>
 
-
-class Q3PopupMenu;
-
+class QMenu;
 
 class QmcDateNav : public QWidget {
     Q_OBJECT
@@ -40,13 +38,13 @@ public:
     virtual QSize minimumSizeHint() const;
     bool frame() const;
     void setFrame(bool);
-    Q3PtrList<QDate> selectedDates() const;
+    QList<QDate> selectedDates() const;
     bool setDate(const QDate d);
     bool outlook() const;
     void setOutlook(bool);
-    void installEventDayList(Q3PtrList<QDate> *);
+    void installEventDayList(QList<QDate> *);
     void removeEventDayList();
-    void installNonWorkingDayList(Q3PtrList<QDate> *);
+    void installNonWorkingDayList(QList<QDate> *);
     void removeNonWorkingDayList();
 
 public slots:
@@ -63,8 +61,8 @@ private slots:
 
 private:
     QDate currentMonth;
-    Q3PopupMenu *sevenMonthPopup;
-    Q3PopupMenu *rbPopup;
+    QMenu *sevenMonthPopup;
+    QMenu *rbPopup;
     bool pmDirty;
     bool doFrame;
     QPixmap *pm;

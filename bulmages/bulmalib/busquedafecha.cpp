@@ -31,16 +31,14 @@ BusquedaFecha::BusquedaFecha(QWidget *parent, const char *name)
     QObject::connect(m_fecha, SIGNAL(editingFinished()), this, SLOT(s_fechalostFocus()));
 }
 
-
 BusquedaFecha::~BusquedaFecha() {}
 
-
 void BusquedaFecha::s_searchFecha() {
-    Q3PtrList<QDate> a;
+    QList<QDate> a;
     calendario *cal = new calendario(0);
     cal->exec();
     a = cal->dn->selectedDates();
-    m_fecha->setText(a.first()->toString("dd/MM/yyyy"));
+    m_fecha->setText(a.first().toString("dd/MM/yyyy"));
     delete cal;
     emit(valueChanged(m_fecha->text()));
 }

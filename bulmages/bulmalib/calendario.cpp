@@ -19,19 +19,16 @@
  ***************************************************************************/
 
 #include <QLayout>
-#include <Q3TabDialog>
+#include <QTabWidget>
 #include <QPushButton>
 #include <QCheckBox>
-#include <Q3VBox>
 #include <QHBoxLayout>
 
 #include "calendario.h"
 
-
 calendario::calendario(class QDialog * parent) : QDialog(parent) {
     init();
 }
-
 
 calendario::~calendario() {
     dn->removeNonWorkingDayList(); /// remember to do this _before_ deleting the list!
@@ -52,10 +49,8 @@ void calendario::init() {
 
     dn = new QmcDateNav(this);
 
-    eDays = new Q3PtrList<QDate>;
-    nwDays = new Q3PtrList<QDate>;
-    eDays->setAutoDelete(true);
-    nwDays->setAutoDelete(true);
+    eDays = new QList<QDate>;
+    nwDays = new QList<QDate>;
 
     dn->installNonWorkingDayList(nwDays);
     dn->installEventDayList(eDays);
@@ -92,7 +87,7 @@ void calendario::updateNWDs(int yr) {
         int cd = d.dayOfYear();
         int maxDays = d.daysInYear();
         while (cd <= maxDays) {
-            nwDays->append(new QDate(d));
+            nwDays->append(QDate(d));
             d = d.addDays(7);
             cd += 7;
         } // end while
@@ -106,10 +101,10 @@ void calendario::updateNWDs(int yr) {
 /// (como plazos de entrega de declaraciones, etc.).
 void calendario::updateEventDays(int yr) {
     eDays->clear();
-    eDays->append(new QDate(yr, 1, 1));
-    eDays->append(new QDate(yr, 1, 6)); /// My birthday ;-)
-    eDays->append(new QDate(yr, 12, 25));
-    eDays->append(new QDate(1999, 8, 24)); /// Release of QmcDateNav 0.0.2
+    eDays->append(QDate(yr, 1, 1));
+    eDays->append(QDate(yr, 1, 6)); /// My birthday ;-)
+    eDays->append(QDate(yr, 12, 25));
+    eDays->append(QDate(1999, 8, 24)); /// Release of QmcDateNav 0.0.2
     dn->forceUpdate();
 }
 
@@ -137,7 +132,7 @@ void calendario::showOptions() {
         nonWorkDays[6] = qcbWorkSat->isChecked();
     if (qcbWorkSun->isChecked() != nonWorkDays[7])
         nonWorkDays[7] = qcbWorkSun->isChecked();
-    updateNWDs(dn->selectedDates().at(0)->year());
+    updateNWDs(dn->selectedDates().at(0).year());
     dn->forceUpdate();
 }
 

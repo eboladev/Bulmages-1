@@ -21,11 +21,9 @@
 #ifndef MSGERROR_H
 #define MSGERROR_H
 
-#include <Q3Frame>
 #include <QDialog>
 
 #include <ui_msgerrorbase.h>
-
 
 class msgError : public QDialog, public Ui_msgErrorBase {
     Q_OBJECT

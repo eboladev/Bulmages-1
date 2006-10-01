@@ -77,7 +77,7 @@
       <envvars/>
     </run>
     <general>
-      <activedir>src</activedir>
+      <activedir>src/pluginregistroiva</activedir>
     </general>
     <make>
       <abortonerror>true</abortonerror>

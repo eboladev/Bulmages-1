@@ -23,18 +23,16 @@
 
 #include <QDialog>
 #include <QDateTime>
-#include <Q3PtrList>
+#include <QList>
 #include <QHBoxLayout>
 
 #include "qmcdatenav.h"
 
-
 class QmcDateNav;
 class QHBoxLayout;
-class Q3TabDialog;
+class QTabWidget;
 class QPushButton;
 class QCheckBox;
-class Q3VBox;
 
 /// \bug Se produce una violacion de segmento si nos desplazamos con los cursores
 /// hacia otro mes.
@@ -45,7 +43,7 @@ public:
     calendario(class QDialog * parent = 0);
     ~calendario();
     QmcDateNav *dn;
-    Q3PtrList<QDate> *eDays;
+    QList<QDate> *eDays;
 
 public slots:
     void updateEventDays(int);
@@ -57,13 +55,13 @@ private slots:
 private:
     void init();
     QHBoxLayout *mainLayout;
-    Q3PtrList<QDate> *nwDays;
-    Q3TabDialog *optionsDialog;
+    QList<QDate> *nwDays;
+    QTabWidget *optionsDialog;
     QWidget *optionsWidget;
     QPushButton *optionsButton;
     /// Pages...
-    Q3VBox *generalOptions;
-    Q3VBox *nwdOptions;
+    QWidget *generalOptions;
+    QWidget *nwdOptions;
     QCheckBox *qcbOutlook;
     QCheckBox *qcbFrame;
     QCheckBox *qcbWorkMon;
