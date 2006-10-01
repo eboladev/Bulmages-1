@@ -1261,7 +1261,7 @@ CREATE OR REPLACE FUNCTION actualizatotfacturab() returns TRIGGER
 AS '
 DECLARE
     tot NUMERIC(12, 2);
-    imp NUMERIC(12, 2);
+    bimp NUMERIC(12, 2);
     imp NUMERIC(12, 2);
 
 BEGIN
