@@ -130,21 +130,14 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
         } // end while
         if (i >= m_listBox->count()) {
             _depura("insercion", 0);
-            /// Solo se insertan ventanas con icono. Sino no se insertan.
-            if (((QWidget *)obj)->icon()) {
-                _depura("es posible insertar", 0, nombre);
-                QPixmap icon = *((QWidget *)obj)->icon();
-                QImage imgicon = icon.convertToImage();
-                imgicon = imgicon.scaled(32, 32);
-                icon = imgicon;
-                QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
-                m->setObject(obj);
-                m->setNombre(nombre);
-                m_listBox->setCurrentItem(m);
-            } // end if
+            QPixmap icon = ((QWidget *)obj)->windowIcon().pixmap(32, 32);
+            QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
+            m->setObject(obj);
+            m->setNombre(nombre);
+            m_listBox->setCurrentItem(m);
         } // end if
     } catch (...) {
-        mensajeInfo(tr("listventanas::meteWindow Ventana Duplicada"));
+        mensajeInfo(tr("listventanas::meteWindow ventana duplicada"));
         throw -1;
     } // end try
     _depura("END listventanas::meteWindow()\n", 0);
@@ -159,7 +152,7 @@ void listventanas::sacaWindow(QObject *obj) {
     while (i < m_listBox->count()) {
         QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
         if (m->object() == obj) {
-            _depura("listventanas::sacaWindow Ventana encontrada y vamos a sacarla", 0, m->nombre());
+            _depura("listventanas::sacaWindow ventana encontrada y vamos a sacarla", 0, m->nombre());
             m_listBox->takeItem(i);
             delete m;
             break;

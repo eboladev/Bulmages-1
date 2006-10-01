@@ -18,13 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLabel>
-#include <Q3TextEdit>
-
 #include "msgerror.h"
 
 
-msgError::msgError(QWidget *parent, const char *name) : QDialog(parent, name) {
+msgError::msgError(QWidget *parent) : QDialog(parent) {
     setupUi(this);
     QObject::connect(pushButton1, SIGNAL(clicked(bool)), this, SLOT(close()));
     QObject::connect(pushButton2, SIGNAL(clicked(bool)), this, SLOT(s_mostarDetalles()));

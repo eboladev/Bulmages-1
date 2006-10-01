@@ -82,10 +82,10 @@ QString dialogChanges::retrieveValues(QString qsWidget) {
     for (int i = 0; i < m_maxQLine; i++) {
         if (m_listaQLine[i] != NULL)
             values += ((QLineEdit*)m_listaQLine[i])->text();
-    } //end for
+    } // end for
     for (int i = 0; i < m_maxQText; i++) {
         if (m_listaQText[i] != NULL)
-            values += ((QTextEdit*)m_listaQText[i])->text();
+            values += ((QTextEdit*)m_listaQText[i])->toPlainText();
     } // end for
     if (qsWidget == "QTableWidget") {
         for (int i = 0; i < m_maxQTable; i++) {

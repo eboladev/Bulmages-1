@@ -14,13 +14,13 @@
  *   GNU General Public License for more details.                          *
  ***************************************************************************/
 
-#include <qdatetime.h>
-#include <qtextstream.h>
-#include <qobject.h>
-#include <qstring.h>
+#include <QDateTime>
+#include <QTextStream>
+#include <QObject>
+#include <QString>
+#include <QMessageBox>
+
 #include <stdio.h>
-#include <qstring.h>
-#include <qmessagebox.h>
 
 #include "qapplication2.h"
 #include "pgimportfiles.h"
@@ -203,34 +203,34 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     /// Subcuentas.
     QTextStream stream(&subcuentas);
     while (!subcuentas.atEnd()) {
-        alerta(subcuentas.at() + asientos.at(), subcuentas.size() + asientos.size());
+        alerta(subcuentas.pos() + asientos.pos(), subcuentas.size() + asientos.size());
         QString line = stream.readLine();
         if (line.length() < 2)
             break;
         int pos = 0;
-        QString cod = line.mid(pos, LEN_CODIGO_CUENTA).stripWhiteSpace();
+        QString cod = line.mid(pos, LEN_CODIGO_CUENTA).trimmed();
         pos += LEN_CODIGO_CUENTA;
-        QString titulo = line.mid(pos, LEN_TITULO).stripWhiteSpace();
+        QString titulo = line.mid(pos, LEN_TITULO).trimmed();
         pos += LEN_TITULO;
-        QString nif = line.mid(pos, LEN_NIF).stripWhiteSpace();
+        QString nif = line.mid(pos, LEN_NIF).trimmed();
         pos += LEN_NIF;
-        QString domicilio = line.mid(pos, LEN_DOMICILIO).stripWhiteSpace();
+        QString domicilio = line.mid(pos, LEN_DOMICILIO).trimmed();
         pos += LEN_DOMICILIO;
-        QString poblacion = line.mid(pos,LEN_POBLACION).stripWhiteSpace();
+        QString poblacion = line.mid(pos,LEN_POBLACION).trimmed();
         pos += LEN_POBLACION;
-        QString provincia = line.mid(pos, LEN_PROVINCIA).stripWhiteSpace();
+        QString provincia = line.mid(pos, LEN_PROVINCIA).trimmed();
         pos += LEN_PROVINCIA;
-        QString codpostal = line.mid(pos, LEN_CODPOSTAL).stripWhiteSpace();
+        QString codpostal = line.mid(pos, LEN_CODPOSTAL).trimmed();
         pos += LEN_CODPOSTAL;
-        QString divisa = line.mid(pos, LEN_DIVISA).stripWhiteSpace();
+        QString divisa = line.mid(pos, LEN_DIVISA).trimmed();
         pos += LEN_DIVISA;
-        QString cta_coddivisa = line.mid(pos, LEN_CTA_CODDIVISA).stripWhiteSpace();
+        QString cta_coddivisa = line.mid(pos, LEN_CTA_CODDIVISA).trimmed();
         pos += LEN_CTA_CODDIVISA;
-        QString cta_documento = line.mid(pos, LEN_CTA_DOCUMENTO).stripWhiteSpace();
+        QString cta_documento = line.mid(pos, LEN_CTA_DOCUMENTO).trimmed();
         pos += LEN_CTA_DOCUMENTO;
-        QString ajustame = line.mid(pos, LEN_AJUSTAME).stripWhiteSpace();
+        QString ajustame = line.mid(pos, LEN_AJUSTAME).trimmed();
         pos += LEN_AJUSTAME;
-        QString tipoiva = line.mid(pos, LEN_TIPOIVA).stripWhiteSpace();
+        QString tipoiva = line.mid(pos, LEN_TIPOIVA).trimmed();
         pos += LEN_TIPOIVA;
         /// Antes de hacer una insercion comprobamos que la cuenta no exista ya en el sistema.
         QString query = "SELECT * FROM cuenta WHERE codigo = '" + cod + "'";
@@ -261,76 +261,76 @@ int pgimportfiles::contaplus2Bulmages(QFile &subcuentas, QFile &asientos) {
     QString lastasiento = "0";
     int napunte = 0;
     while (!asientos.atEnd()) {
-        alerta(subcuentas.at() + asientos.at(), subcuentas.size() + asientos.size());
+        alerta(subcuentas.pos() + asientos.pos(), subcuentas.size() + asientos.size());
         QString line = stream2.readLine();
         if (line.length() < 2)
             break;
         int pos = 0;
-        QString asiento = line.mid(pos, LEN_ASIEN).stripWhiteSpace();
+        QString asiento = line.mid(pos, LEN_ASIEN).trimmed();
         pos += LEN_ASIEN;
-        QString fecha = line.mid(pos, LEN_FECHA).stripWhiteSpace();
+        QString fecha = line.mid(pos, LEN_FECHA).trimmed();
         fecha1.setYMD(fecha.mid(0, 4).toInt(), fecha.mid(4, 2).toInt(), fecha.mid(6, 2).toInt());
         fecha = fecha.mid(0, 4) + "-" + fecha.mid(4, 2) + "-" + fecha.mid(6, 2);
         pos += LEN_FECHA;
-        QString subcta = line.mid(pos, LEN_SUBCTA).stripWhiteSpace();
+        QString subcta = line.mid(pos, LEN_SUBCTA).trimmed();
         pos += LEN_SUBCTA;
-        QString contra = line.mid(pos, LEN_CONTRA).stripWhiteSpace();
+        QString contra = line.mid(pos, LEN_CONTRA).trimmed();
         pos += LEN_CONTRA;
-        QString ptadebe = line.mid(pos, LEN_PTADEBE).stripWhiteSpace();
+        QString ptadebe = line.mid(pos, LEN_PTADEBE).trimmed();
         pos += LEN_PTADEBE;
-        QString concepto = line.mid(pos, LEN_CONCEPTO).stripWhiteSpace();
+        QString concepto = line.mid(pos, LEN_CONCEPTO).trimmed();
         pos += LEN_CONCEPTO;
-        QString ptahaber = line.mid(pos, LEN_PTAHABER).stripWhiteSpace();
+        QString ptahaber = line.mid(pos, LEN_PTAHABER).trimmed();
         pos += LEN_PTAHABER;
-        QString factura = line.mid(pos, LEN_FACTURA).stripWhiteSpace();
+        QString factura = line.mid(pos, LEN_FACTURA).trimmed();
         pos += LEN_FACTURA;
-        QString baseimpo = line.mid(pos, LEN_BASEIMPO).stripWhiteSpace();
+        QString baseimpo = line.mid(pos, LEN_BASEIMPO).trimmed();
         pos += LEN_BASEIMPO;
-        QString iva = line.mid(pos, LEN_IVA).stripWhiteSpace();
+        QString iva = line.mid(pos, LEN_IVA).trimmed();
         pos += LEN_IVA;
-        QString recequiv = line.mid(pos, LEN_RECEQUIV).stripWhiteSpace();
+        QString recequiv = line.mid(pos, LEN_RECEQUIV).trimmed();
         pos += LEN_RECEQUIV;
-        QString documento = line.mid(pos, LEN_DOCUMENTO).stripWhiteSpace();
+        QString documento = line.mid(pos, LEN_DOCUMENTO).trimmed();
         pos += LEN_DOCUMENTO;
-        QString departa = line.mid(pos, LEN_DEPARTA).stripWhiteSpace();
+        QString departa = line.mid(pos, LEN_DEPARTA).trimmed();
         pos += LEN_DEPARTA;
-        QString clave = line.mid(pos, LEN_CLAVE).stripWhiteSpace();
+        QString clave = line.mid(pos, LEN_CLAVE).trimmed();
         pos += LEN_CLAVE;
-        QString estado = line.mid(pos, LEN_ESTADO).stripWhiteSpace();
+        QString estado = line.mid(pos, LEN_ESTADO).trimmed();
         pos += LEN_ESTADO;
-        QString ncasado = line.mid(pos, LEN_NCASADO).stripWhiteSpace();
+        QString ncasado = line.mid(pos, LEN_NCASADO).trimmed();
         pos += LEN_NCASADO;
-        QString tcasado = line.mid(pos, LEN_TCASADO).stripWhiteSpace();
+        QString tcasado = line.mid(pos, LEN_TCASADO).trimmed();
         pos += LEN_TCASADO;
-        QString trans = line.mid(pos, LEN_TRANS).stripWhiteSpace();
+        QString trans = line.mid(pos, LEN_TRANS).trimmed();
         pos += LEN_TRANS;
-        QString cambio = line.mid(pos, LEN_CAMBIO).stripWhiteSpace();
+        QString cambio = line.mid(pos, LEN_CAMBIO).trimmed();
         pos += LEN_CAMBIO;
-        QString debeme = line.mid(pos, LEN_DEBEME).stripWhiteSpace();
+        QString debeme = line.mid(pos, LEN_DEBEME).trimmed();
         pos += LEN_DEBEME;
-        QString haberme = line.mid(pos, LEN_HABERME).stripWhiteSpace();
+        QString haberme = line.mid(pos, LEN_HABERME).trimmed();
         pos += LEN_HABERME;
-        QString auxiliar = line.mid(pos, LEN_AUXILIAR).stripWhiteSpace();
+        QString auxiliar = line.mid(pos, LEN_AUXILIAR).trimmed();
         pos += LEN_AUXILIAR;
-        QString serie = line.mid(pos, LEN_SERIE).stripWhiteSpace();
+        QString serie = line.mid(pos, LEN_SERIE).trimmed();
         pos += LEN_SERIE;
-        QString sucursal = line.mid(pos, LEN_SUCURSAL).stripWhiteSpace();
+        QString sucursal = line.mid(pos, LEN_SUCURSAL).trimmed();
         pos += LEN_SUCURSAL;
-        QString coddivisa = line.mid(pos, LEN_CODDIVISA).stripWhiteSpace();
+        QString coddivisa = line.mid(pos, LEN_CODDIVISA).trimmed();
         pos += LEN_CODDIVISA;
-        QString impauxme = line.mid(pos, LEN_IMPAUXME).stripWhiteSpace();
+        QString impauxme = line.mid(pos, LEN_IMPAUXME).trimmed();
         pos += LEN_IMPAUXME;
-        QString monedauso = line.mid(pos, LEN_MONEDAUSO).stripWhiteSpace();
+        QString monedauso = line.mid(pos, LEN_MONEDAUSO).trimmed();
         pos += LEN_MONEDAUSO;
-        QString eurodebe = line.mid(pos, LEN_EURODEBE).stripWhiteSpace();
+        QString eurodebe = line.mid(pos, LEN_EURODEBE).trimmed();
         pos += LEN_EURODEBE;
-        QString eurohaber = line.mid(pos, LEN_EUROHABER).stripWhiteSpace();
+        QString eurohaber = line.mid(pos, LEN_EUROHABER).trimmed();
         pos += LEN_EUROHABER;
-        QString baseeuro = line.mid(pos, LEN_BASEEURO).stripWhiteSpace();
+        QString baseeuro = line.mid(pos, LEN_BASEEURO).trimmed();
         pos += LEN_BASEEURO;
-        QString noconv = line.mid(pos, LEN_NOCONV).stripWhiteSpace();
+        QString noconv = line.mid(pos, LEN_NOCONV).trimmed();
         pos += LEN_NOCONV;
-        QString numeroinv = line.mid(pos, LEN_NUMEROINV).stripWhiteSpace();
+        QString numeroinv = line.mid(pos, LEN_NUMEROINV).trimmed();
         pos += LEN_NUMEROINV;
 
         if (asiento != lastasiento) {
@@ -1247,7 +1247,7 @@ bool StructureParser::startDocument() {
 
 
 bool StructureParser::startElement(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
-    fprintf(stderr, "%s<%s>\n", (const char*)indent, (const char*)qName);
+    fprintf(stderr, "%s<%s>\n", indent.toAscii().data(), qName.toAscii().data());
     indent += "..";
     if (qName == "ASIENTO" && m_tipo & IMPORT_ASIENTOS) {
         tagpadre = "ASIENTO";
@@ -1545,9 +1545,9 @@ void ImportBulmaFact::printcontents() {
     fprintf(stderr, "Impresion de contenidos\n");
     tvalores::Iterator it;
     for (it = valores.begin(); it != valores.end(); ++it) {
-        fprintf(stderr, "Valores encontrados Clave: %s Valor:%s\n",
+        fprintf(stderr, "Valores encontrados clave: %s Valor:%s\n",
                 it.key().toAscii().data(),
-                it.data().toAscii().data());
+                it.value().toAscii().data());
     } // end for
     fprintf(stderr, "Fin de impresion de contenidos\n");
 }

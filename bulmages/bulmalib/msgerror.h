@@ -29,7 +29,7 @@ class msgError : public QDialog, public Ui_msgErrorBase {
     Q_OBJECT
 
 public:
-    msgError(QWidget *parent = 0, const char *name = 0);
+    msgError(QWidget *parent = 0);
     msgError(QString, QString);
     virtual ~msgError();
     void hideFrame() {

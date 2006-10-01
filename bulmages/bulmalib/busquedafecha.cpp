@@ -23,8 +23,7 @@
 #include "funcaux.h"
 
 
-BusquedaFecha::BusquedaFecha(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaFecha::BusquedaFecha(QWidget *parent) : QWidget(parent) {
     setupUi(this);
     QObject::connect(m_searchcliente, SIGNAL(clicked(bool)), this, SLOT(s_searchFecha()));
     QObject::connect(m_fecha, SIGNAL(returnPressed()), this, SLOT(s_returnPressed()));

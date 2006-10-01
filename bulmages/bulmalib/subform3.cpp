@@ -672,7 +672,7 @@ void SubForm3::on_mui_paganterior_clicked() {
     on_mui_appag_clicked();
 }
 
-void SubForm3::imprimirPDF(const QString & titular) {
+void SubForm3::imprimirPDF(const QString &titular) {
     _depura("SubForm3::imprimir", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
@@ -685,8 +685,7 @@ void SubForm3::imprimirPDF(const QString & titular) {
 
     archivo = "cp " + archivo + " " + archivod;
 #endif
-
-    system (archivo.ascii());
+    system(archivo.toAscii());
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -695,14 +694,13 @@ void SubForm3::imprimirPDF(const QString & titular) {
 
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
-
-    system (archivologo.ascii());
+    system(archivologo.toAscii());
 
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
 

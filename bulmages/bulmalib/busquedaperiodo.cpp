@@ -18,34 +18,39 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "busquedaperiodo.h"
 #include <QComboBox>
 
+#include "busquedaperiodo.h"
 
-BusquedaPeriodo::BusquedaPeriodo(QWidget *parent)
-        : QComboBox(parent) {
+
+BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox(parent) {
     _depura("BusquedaPeriodo::BusquedaPeriodo", 0);
-    m_textos[0] = "Semanal";
-    m_textos[1] = "Bisemanal";
-    m_textos[2] = "Quinzenal";
-    m_textos[3] = "Mensual";
-    m_textos[4] = "Trimestral";
-    m_textos[5] = "Semestral";
+    m_textos[0] = tr("Semanal");
+    m_textos[1] = tr("Quincenal");
+    m_textos[2] = tr("Mensual");
+    m_textos[3] = tr("Trimestral");
+    m_textos[4] = tr("Semestral");
+    m_textos[5] = tr("Anual");
+    m_textos[6] = tr("Bienal");
+    m_textos[7] = "";
 
     m_valores[0] = "@ 7 days";
-    m_valores[1] = "@ 14 days";
-    m_valores[2] = "@ 15 days";
-    m_valores[3] = "@ 1 mon";
-    m_valores[4] = "@ 3 mons";
-    m_valores[5] = "@ 6 mons";
+    m_valores[1] = "@ 15 days";
+    m_valores[2] = "@ 1 month";
+    m_valores[3] = "@ 3 month";
+    m_valores[4] = "@ 6 month";
+    m_valores[5] = "@ 1 year";
+    m_valores[6] = "@ 2 year";
+    m_valores[7] = "";
 
     int i = 0;
-    while (i <= 5) {
-        insertItem(m_textos[i]);
+    while (m_textos[i] != "") {
+        /// Anyade un nuevo elemento al final del QComboBox.
+        insertItem(this->count() + 1, m_textos[i]);
         i++;
     } // end while
 
-    connect(this,SIGNAL(activated(int)), this, SLOT(s_activated(int)));
+    connect(this, SIGNAL(activated(int)), this, SLOT(s_activated(int)));
     _depura("END BusquedaPeriodo::BusquedaPeriodo", 0);
 }
 
@@ -56,13 +61,13 @@ BusquedaPeriodo::~BusquedaPeriodo() {}
 void BusquedaPeriodo::setperiodo(QString periodo) {
     _depura("BusquedaPeriodo::setperiodo", 0);
     int i = 0;
-    while (m_valores[i] != periodo && i <= 5) {
-        i ++;
+    while (m_valores[i] != periodo && m_valores[i] != "") {
+        i++;
     } // end while
-    if (i <= 5)
-        setCurrentItem(i);
+    if (m_valores[i] != "")
+        setCurrentIndex(i);
     else
-        setCurrentItem(0);
+        setCurrentIndex(0);
     _depura("END BusquedaPeriodo::setperiodo", 0);
 }
 
