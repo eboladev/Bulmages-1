@@ -305,6 +305,7 @@ void ListLinPrevCobroView::pintalinlistlinprevcobro(int pos) {
 
 
 bool ListLinPrevCobroView::eventFilter( QObject *obj, QEvent *ev ) {
+/*
     QString idcuenta;
     linprevcobro *linea;
     if ( ev->type() == QEvent::KeyRelease ) {
@@ -384,6 +385,7 @@ bool ListLinPrevCobroView::eventFilter( QObject *obj, QEvent *ev ) {
         }// end switch
     }// end if
     return Q3Table::eventFilter( obj, ev );
+*/
 } //end eventFilter
 
 
