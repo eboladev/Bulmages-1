@@ -20,7 +20,6 @@
 #include <QFile>
 #include <QString>
 #include <QXmlDefaultHandler>
-#include <Q3PtrList>
 
 #include "postgresiface2.h"
 #include "funcaux.h"
@@ -175,14 +174,15 @@ private:
     QString tagpadre;
     pgimportfiles *pgimport;
     /// Estas estructuras sirven para guardar datos intermedios.
-    Q3PtrList<tvalores> listalpresupuesto;
-    Q3PtrList<tvalores> listadpresupuesto;
-    Q3PtrList<tvalores> listalfactura;
-    Q3PtrList<tvalores> listadfactura;
-    Q3PtrList<tvalores> listalalbaran;
-    Q3PtrList<tvalores> listadalbaran;
-    Q3PtrList<tvalores> listalpedidocliente;
-    Q3PtrList<tvalores> listadpedidocliente;
+    QList<tvalores> listalpresupuesto;
+    QList<tvalores> listadpresupuesto;
+    QList<tvalores> listalfactura;
+    QList<tvalores> listadfactura;
+    QList<tvalores> listalalbaran;
+    QList<tvalores> listadalbaran;
+    QList<tvalores> listalpedidocliente;
+    QList<tvalores> listadpedidocliente;
+
 
 public:
     ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned long long int tip = IMPORT_TODO);

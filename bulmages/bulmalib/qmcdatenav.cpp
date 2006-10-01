@@ -59,14 +59,14 @@ QRect satBR;
 QRect daysRect;
 
 
-QmcDateNav::QmcDateNav(class QWidget * parent) : QWidget(parent) {
+QmcDateNav::QmcDateNav(class QWidget *parent) : QWidget(parent) {
     currentMonth = QDate(QDate::currentDate());
     init();
     setFocusPolicy(Qt::StrongFocus);
 }
 
 
-QmcDateNav::QmcDateNav(const class QDate & d, class QWidget * parent) : QWidget(parent) {
+QmcDateNav::QmcDateNav(const class QDate &d, class QWidget *parent) : QWidget(parent) {
     currentMonth = QDate(d);
     if (!currentMonth.isValid()) {
         currentMonth = QDate(QDate::currentDate());
@@ -128,13 +128,13 @@ QSize QmcDateNav::minimumSizeHint() const {
     int h = 0;
     int fw = frame() ? 1 : 0;
 
-    w1 = ((fontMetrics().width("00") + 6 ) * 7 ) + 12 + (fw * 2);
+    w1 = ((fontMetrics().width("00") + 6 ) * 7) + 12 + (fw * 2);
     w2 = fontMetrics().width(tr("SEPTEMBER")) + fontMetrics().width(" 0000") + 12 + 6 + (fw * 2);
 
     w = w1 > w2 ? w1 : w2;
 
     h = fw + 4 + fontMetrics().height() + 4 + fontMetrics().boundingRect(QChar('S')).height() + 3 + 1;
-    h += ((fontMetrics().boundingRect(QChar('0')).height()) * 6 ) + 30 + 8 + fw + 1;
+    h += ((fontMetrics().boundingRect(QChar('0')).height()) * 6) + 30 + 8 + fw + 1;
 
     return QSize(w, h);
 }
@@ -203,7 +203,7 @@ bool QmcDateNav::frame() const {
 
 
 void QmcDateNav::drawArrows(QPainter & p) {
-    QRect * tbr = drawCaptionText(p);
+    QRect *tbr = drawCaptionText(p);
     int topBase = ((tbr->bottom() + 2) - (frame() ? 1 : 0)) / 2;
     delete tbr;
     tbr = 0;
@@ -242,7 +242,7 @@ void QmcDateNav::drawArrows(QPainter & p) {
 }
 
 
-QRect * QmcDateNav::drawCaptionText(QPainter & p) {
+QRect *QmcDateNav::drawCaptionText(QPainter & p) {
     QRect br(0, 3, width(), height());
     p.setPen(colorGroup().text());
     QString cText = monthName(currentMonth.month());
@@ -256,7 +256,7 @@ QRect * QmcDateNav::drawCaptionText(QPainter & p) {
 
 
 void QmcDateNav::drawCaption(QPainter & p) {
-    QRect * tbr = drawCaptionText(p);
+    QRect *tbr = drawCaptionText(p);
     int fw = frame() ? 1 : 0;
     p.fillRect(fw, fw, width() - (fw * 2), tbr->bottom() + 2 + (frame() ? 0 : 1), colorGroup().background());
     drawCaptionText(p);
@@ -279,7 +279,7 @@ void QmcDateNav::drawFrame(QPainter & p) {
 }
 
 
-void QmcDateNav::drawDays(QPainter & p) {
+void QmcDateNav::drawDays(QPainter &p) {
     int dayTop = drawCaptionText(p)->bottom() + 4;
     int colWidth = p.fontMetrics().width("00") + 6;
     int tableWidth = (colWidth * 7);
@@ -311,32 +311,32 @@ void QmcDateNav::drawDays(QPainter & p) {
 }
 
 
-void QmcDateNav::drawDates(QPainter & p) {
+void QmcDateNav::drawDates(QPainter &p) {
     QDate *previousMonth;
     QDate *nextMonth;
     dateList.clear();
 
     /// We need to find out what day the first of this month was.
-    QDate *fdom = new QDate( currentMonth.year(), currentMonth.month(), 1 );
+    QDate *fdom = new QDate(currentMonth.year(), currentMonth.month(), 1);
 
     /// That value is assigned to the start position of our matrix.
     /// The problem here is that Qt returns monday as 1, not 0, and Sunday
     /// as 7! We count our matrix from 0, so we just turn a 7 into 0.
     int matrixStartPos = fdom->dayOfWeek();
 
-    if( matrixStartPos == 7 )
+    if (matrixStartPos == 7)
         matrixStartPos = 0;
 
     /// If we are starting the month before thursday, we give the previous month
     /// a little more space.
-    if( matrixStartPos < 4 )
+    if (matrixStartPos < 4)
         matrixStartPos = matrixStartPos + 7;
-    if(!(currentMonth.month() == 1))
+    if (!(currentMonth.month() == 1))
         previousMonth = new QDate(currentMonth.year(), currentMonth.month() - 1, 1);
     else
         previousMonth = new QDate(currentMonth.year() - 1, 12, 1);
 
-    if(!( currentMonth.month() == 12))
+    if (!(currentMonth.month() == 12))
         nextMonth = new QDate(currentMonth.year(), currentMonth.month() + 1, 1);
     else
         nextMonth = new QDate(currentMonth.year() + 1, 1, 1);
@@ -384,9 +384,9 @@ void QmcDateNav::drawDates(QPainter & p) {
         bool nwd = isNonWorkingDay(*insertedDate);
         QFont nFont = p.font();
         QFont oFont = p.font();
-        if(he)
+        if (he)
             nFont.setBold(true);
-        if(nwd)
+        if (nwd)
             nFont.setItalic(true);
         p.setFont(nFont);
         p.drawText(leftBase, topBase, fontMetrics().width("00") + 6, fontMetrics().boundingRect(QChar('0')).height() + 6, Qt::AlignCenter, QString::number(insertedDate->day(), 10));
@@ -426,7 +426,7 @@ void QmcDateNav::drawDates(QPainter & p) {
 }
 
 
-void QmcDateNav::keyPressEvent(QKeyEvent * e) {
+void QmcDateNav::keyPressEvent(QKeyEvent *e) {
     switch (e->key()) {
     case 4100:
         emit close();
@@ -484,7 +484,7 @@ void QmcDateNav::keyPressEvent(QKeyEvent * e) {
 }
 
 
-void QmcDateNav::mouseDoubleClickEvent(QMouseEvent * e) {
+void QmcDateNav::mouseDoubleClickEvent(QMouseEvent *e) {
     fprintf(stderr, "Doble click\n");
     if (e->button() == Qt::RightButton) {
         prepRBPopup();
@@ -604,7 +604,7 @@ void QmcDateNav::mouseDoubleClickEvent(QMouseEvent * e) {
 }
 
 
-void QmcDateNav::mousePressEvent(QMouseEvent * e) {
+void QmcDateNav::mousePressEvent(QMouseEvent *e) {
     if (e->button() == Qt::RightButton) {
         prepRBPopup();
         rbPopup->exec(QCursor::pos());
@@ -944,7 +944,7 @@ int QmcDateNav::fixDays(int tmpYear, int tmpMonth, int d) {
 
 void QmcDateNav::prepRBPopup() {
     rbPopup->clear();
-    rbPopup->addAction("Go to Today");
+    rbPopup->addAction(tr("Go to Today"));
 }
 
 
@@ -1048,7 +1048,7 @@ bool QmcDateNav::setDate(const QDate d) {
 }
 
 
-bool QmcDateNav::hasEvent(const QDate & d) {
+bool QmcDateNav::hasEvent(const QDate &d) {
     if (eventDayList == 0)
         return false;
     QDate ld;
@@ -1062,7 +1062,7 @@ bool QmcDateNav::hasEvent(const QDate & d) {
 }
 
 
-bool QmcDateNav::isNonWorkingDay(const QDate & d) {
+bool QmcDateNav::isNonWorkingDay(const QDate &d) {
     if (nonWorkingDayList == 0)
         return false;
     QDate ld;
@@ -1139,7 +1139,7 @@ int QmcDateNav::findIndex(QDate & id) {
 /// Notes: Cursors are system specific see $QTDIR/src/kernel/qcursor_x11.cpp
 /// I need to figure out how to get the system specific cursor, and
 /// modify it for my use.
-void QmcDateNav::mouseMoveEvent(QMouseEvent * e) {
+void QmcDateNav::mouseMoveEvent(QMouseEvent *e) {
     QRect mr(e->x(), e->y(), 1, 1);
 
     if (daysRect.contains(mr, true)) {

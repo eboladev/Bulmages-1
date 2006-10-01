@@ -600,7 +600,7 @@ int pgimportfiles::bulmafact2XML(QFile &xmlfile, unsigned long long int tipo) {
             stream << "\t<DESCTIPO_IVA>" << XMLProtect(curc->valor("desctipo_iva")) << "</DESCTIPO_IVA>\n";
             stream << "</ARTICULO>\n";
             curc->siguienteregistro();
-        }// end while
+        } // end while
         delete curc;
     } // end if
 
@@ -1183,11 +1183,9 @@ int pgimportfiles::bulmages2XML(QFile &xmlfile, unsigned long long int tipo) {
 }
 
 
-/** \brief Funcion para pasar de un archivo XML a Bulmages.
-  *
-  * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX)
-  * y lo ejecuta para que haga la imporacion del archivo XML.
-  */
+/// Funcion para pasar de un archivo XML a Bulmages.
+/** Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX)
+    y lo ejecuta para que haga la imporacion del archivo XML. */
 int pgimportfiles::XML2Bulmages(QFile &fichero, unsigned long long int tip) {
     StructureParser handler(conexionbase, tip);
     QXmlInputSource source(&fichero);
@@ -1199,11 +1197,9 @@ int pgimportfiles::XML2Bulmages(QFile &fichero, unsigned long long int tip) {
 }
 
 
-/** \brief Funcion para pasar de un archivo XML a BulmaFact.
-  *
-  * Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para 
-  * que haga la imporacion del archivo XML
-  */
+/// Funcion para pasar de un archivo XML a BulmaFact.
+/** Crea un objeto del tipo \ref StructureParser (sistema de proceso de XML mediante SAX) y lo ejecuta para
+    que haga la imporacion del archivo XML. */
 int pgimportfiles::XML2BulmaFact(QFile &fichero, unsigned long long int tip) {
     bool noerror = TRUE;
     fprintf(stderr, "pgimportfiles::XML2BulmaFact()\n");
@@ -1462,14 +1458,6 @@ ImportBulmaFact::ImportBulmaFact(pgimportfiles *imp, postgresiface2 *con, unsign
     conexionbase = con;
     pgimport = imp;
     m_tipo = tip;
-    listalpresupuesto.setAutoDelete(TRUE);
-    listadpresupuesto.setAutoDelete(TRUE);
-    listalfactura.setAutoDelete(TRUE);
-    listadfactura.setAutoDelete(TRUE);
-    listalalbaran.setAutoDelete(TRUE);
-    listadalbaran.setAutoDelete(TRUE);
-    listalpedidocliente.setAutoDelete(TRUE);
-    listadpedidocliente.setAutoDelete(TRUE);
 }
 
 
@@ -1834,19 +1822,19 @@ int ImportBulmaFact::trataArticulo() {
 int ImportBulmaFact::trataLPedidoCliente() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LPedidoCliente ") + valores["IDLPEDIDOCLIENTE"] + "</B><BR>");
-    tvalores *lpedidoclientemap = new tvalores;
-    lpedidoclientemap->insert("IDLPEDIDOCLIENTE", valores["IDLPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("DESCLPEDIDOCLIENTE", valores["DESCLPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("CANTLPEDIDOCLIENTE", valores["CANTLPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("PVPLPEDIDOCLIENTE", valores["PVPLPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("IVALPEDIDOCLIENTE", valores["IVALPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("DESCUENTOLPEDIDOCLIENTE", valores["DESCUENTOLPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("IDPEDIDOCLIENTE", valores["IDPEDIDOCLIENTE"]);
-    lpedidoclientemap->insert("IDARTICULO", valores["IDARTICULO"]);
-    lpedidoclientemap->insert("CODARTICULO", valores["CODARTICULO"]);
-    lpedidoclientemap->insert("NOMARTICULO", valores["NOMARTICULO"]);
-    lpedidoclientemap->insert("ABREVARTICULO", valores["ABREVARTICULO"]);
-    lpedidoclientemap->insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
+    tvalores lpedidoclientemap;
+    lpedidoclientemap.insert("IDLPEDIDOCLIENTE", valores["IDLPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("DESCLPEDIDOCLIENTE", valores["DESCLPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("CANTLPEDIDOCLIENTE", valores["CANTLPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("PVPLPEDIDOCLIENTE", valores["PVPLPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("IVALPEDIDOCLIENTE", valores["IVALPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("DESCUENTOLPEDIDOCLIENTE", valores["DESCUENTOLPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("IDPEDIDOCLIENTE", valores["IDPEDIDOCLIENTE"]);
+    lpedidoclientemap.insert("IDARTICULO", valores["IDARTICULO"]);
+    lpedidoclientemap.insert("CODARTICULO", valores["CODARTICULO"]);
+    lpedidoclientemap.insert("NOMARTICULO", valores["NOMARTICULO"]);
+    lpedidoclientemap.insert("ABREVARTICULO", valores["ABREVARTICULO"]);
+    lpedidoclientemap.insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
     listalpedidocliente.append(lpedidoclientemap);
     return 0;
 }
@@ -1855,10 +1843,10 @@ int ImportBulmaFact::trataLPedidoCliente() {
 int ImportBulmaFact::trataDPedidoCliente() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DPedidoCliente ") + valores["IDDPEDIDOCLIENTE"] + "</B><BR>");
-    tvalores *dpedidoclientemap = new tvalores;
-    dpedidoclientemap->insert("IDDPEDIDOCLIENTE", valores["IDDPEDIDOCLIENTE"]);
-    dpedidoclientemap->insert("CONCEPTDPEDIDOCLIENTE", valores["CONCEPTDPEDIDOCLIENTE"]);
-    dpedidoclientemap->insert("PROPORCIONDPEDIDOCLIENTE", valores["PROPORCIONDPEDIDOCLIENTE"]);
+    tvalores dpedidoclientemap;
+    dpedidoclientemap.insert("IDDPEDIDOCLIENTE", valores["IDDPEDIDOCLIENTE"]);
+    dpedidoclientemap.insert("CONCEPTDPEDIDOCLIENTE", valores["CONCEPTDPEDIDOCLIENTE"]);
+    dpedidoclientemap.insert("PROPORCIONDPEDIDOCLIENTE", valores["PROPORCIONDPEDIDOCLIENTE"]);
     listadpedidocliente.append(dpedidoclientemap);
     return 0;
 }
@@ -1978,7 +1966,10 @@ int ImportBulmaFact::trataPedidoCliente() {
     conexionbase->commit();
     /// Tratamos la insercion de las lineas de albaran.
     tvalores *lpedidoclientemap;
-    for (lpedidoclientemap = listalpedidocliente.first(); lpedidoclientemap; lpedidoclientemap = listalpedidocliente.next()) {
+
+    QMutableListIterator<tvalores> ilistalpedidocliente(listalpedidocliente);
+
+    for (lpedidoclientemap = &listalpedidocliente.first(); lpedidoclientemap; lpedidoclientemap = &ilistalpedidocliente.next()) {
         QString idlpedidocliente = (*lpedidoclientemap)["IDLPEDIDOCLIENTE"];
         QString desclpedidocliente = (*lpedidoclientemap)["DESCLPEDIDOCLIENTE"];
         QString cantlpedidocliente = (*lpedidoclientemap)["CANTLPEDIDOCLIENTE"];
@@ -2012,11 +2003,12 @@ int ImportBulmaFact::trataPedidoCliente() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    fprintf(stderr, "Terminamos la limpieza\n");
-    listalpedidocliente.clear();
     /// Tratamos la insercion de los descuentos de presupuesto.
     tvalores *dpedidoclientemap;
-    for (dpedidoclientemap = listadpedidocliente.first(); dpedidoclientemap; dpedidoclientemap = listadpedidocliente.next()) {
+
+    QMutableListIterator<tvalores> ilistadpedidocliente(listadpedidocliente);
+
+    for (dpedidoclientemap = &listadpedidocliente.first(); dpedidoclientemap; dpedidoclientemap = &ilistadpedidocliente.next()) {
         QString iddpedidocliente = (*dpedidoclientemap)["IDDPEDIDOCLIENTE"];
         QString conceptdpedidocliente = (*dpedidoclientemap)["CONCEPTDPEDIDOCLIENTE"];
         QString proporciondpedidocliente = (*dpedidoclientemap)["PROPORCIONDPEDIDOCLIENTE"];
@@ -2028,7 +2020,6 @@ int ImportBulmaFact::trataPedidoCliente() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    listadpedidocliente.clear();
     valores.clear();
     return 0;
 }
@@ -2037,19 +2028,19 @@ int ImportBulmaFact::trataPedidoCliente() {
 int ImportBulmaFact::trataLAlbaran() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
     pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando LAlbaran ")+valores["IDLALBARAN"]+"</B><BR>");
-    tvalores *lalbaranmap = new tvalores;
-    lalbaranmap->insert("IDLALBARAN", valores["IDLALBARAN"]);
-    lalbaranmap->insert("DESCLALBARAN", valores["DESCLALBARAN"]);
-    lalbaranmap->insert("CANTLALBARAN", valores["CANTLALBARAN"]);
-    lalbaranmap->insert("PVPLALBARAN", valores["PVPLALBARAN"]);
-    lalbaranmap->insert("IVALALBARAN", valores["IVALALBARAN"]);
-    lalbaranmap->insert("DESCUENTOLALBARAN", valores["DESCUENTOLALBARAN"]);
-    lalbaranmap->insert("IDALBARAN", valores["IDALBARAN"]);
-    lalbaranmap->insert("IDARTICULO", valores["IDARTICULO"]);
-    lalbaranmap->insert("CODARTICULO", valores["CODARTICULO"]);
-    lalbaranmap->insert("NOMARTICULO", valores["NOMARTICULO"]);
-    lalbaranmap->insert("ABREVARTICULO", valores["ABREVARTICULO"]);
-    lalbaranmap->insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
+    tvalores lalbaranmap;
+    lalbaranmap.insert("IDLALBARAN", valores["IDLALBARAN"]);
+    lalbaranmap.insert("DESCLALBARAN", valores["DESCLALBARAN"]);
+    lalbaranmap.insert("CANTLALBARAN", valores["CANTLALBARAN"]);
+    lalbaranmap.insert("PVPLALBARAN", valores["PVPLALBARAN"]);
+    lalbaranmap.insert("IVALALBARAN", valores["IVALALBARAN"]);
+    lalbaranmap.insert("DESCUENTOLALBARAN", valores["DESCUENTOLALBARAN"]);
+    lalbaranmap.insert("IDALBARAN", valores["IDALBARAN"]);
+    lalbaranmap.insert("IDARTICULO", valores["IDARTICULO"]);
+    lalbaranmap.insert("CODARTICULO", valores["CODARTICULO"]);
+    lalbaranmap.insert("NOMARTICULO", valores["NOMARTICULO"]);
+    lalbaranmap.insert("ABREVARTICULO", valores["ABREVARTICULO"]);
+    lalbaranmap.insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
     listalalbaran.append(lalbaranmap);
     return 0;
 }
@@ -2058,10 +2049,10 @@ int ImportBulmaFact::trataLAlbaran() {
 int ImportBulmaFact::trataDAlbaran() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores
     pgimport->mensajeria(theApp->translate("ImportBulmaFact","<HR><B>Tratando DAlbaran ")+valores["IDDALBARAN"]+"</B><BR>");
-    tvalores *dalbaranmap = new tvalores;
-    dalbaranmap->insert("IDDALBARAN", valores["IDDALBARAN"]);
-    dalbaranmap->insert("CONCEPTDALBARAN", valores["CONCEPTDALBARAN"]);
-    dalbaranmap->insert("PROPORCIONDALBARAN", valores["PROPORCIONDALBARAN"]);
+    tvalores dalbaranmap;
+    dalbaranmap.insert("IDDALBARAN", valores["IDDALBARAN"]);
+    dalbaranmap.insert("CONCEPTDALBARAN", valores["CONCEPTDALBARAN"]);
+    dalbaranmap.insert("PROPORCIONDALBARAN", valores["PROPORCIONDALBARAN"]);
     listadalbaran.append(dalbaranmap);
     return 0;
 }
@@ -2180,7 +2171,10 @@ int ImportBulmaFact::trataAlbaran() {
     conexionbase->commit();
     /// Tratamos la insercion de las lineas de albaran.
     tvalores *lalbaranmap;
-    for (lalbaranmap = listalalbaran.first(); lalbaranmap; lalbaranmap = listalalbaran.next()) {
+
+    QMutableListIterator<tvalores> ilistalalbaran(listalalbaran);
+
+    for (lalbaranmap = &listalalbaran.first(); lalbaranmap; lalbaranmap = &ilistalalbaran.next()) {
         QString idlalbaran = (*lalbaranmap)["IDLALBARAN"];
         QString desclalbaran = (*lalbaranmap)["DESCLALBARAN"];
         QString cantlalbaran = (*lalbaranmap)["CANTLALBARAN"];
@@ -2195,7 +2189,7 @@ int ImportBulmaFact::trataAlbaran() {
         /// Completamos datos de la linea de presupuesto.
         query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + codigocompletoarticulo + "'";
         cur = conexionbase->cargacursor(query);
-        if(!cur->eof()) {
+        if (!cur->eof()) {
             idarticulo = cur->valor("idarticulo");
         } else {
             pgimport->mensajeria(theApp->translate("ImportBulmaFact", "El articulo de la linea de presupuesto no existe<BR>\n"));
@@ -2214,11 +2208,12 @@ int ImportBulmaFact::trataAlbaran() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    fprintf(stderr, "Terminamos la limpieza\n");
-    listalalbaran.clear();
     /// Tratamos la insercion de los descuentos de presupuesto.
     tvalores *dalbaranmap;
-    for (dalbaranmap = listadalbaran.first(); dalbaranmap; dalbaranmap = listadalbaran.next()) {
+
+    QMutableListIterator<tvalores> ilistadalbaran(listadalbaran);
+
+    for (dalbaranmap = &listadalbaran.first(); dalbaranmap; dalbaranmap = &ilistadalbaran.next()) {
         QString iddalbaran = (*dalbaranmap)["IDDALBARAN"];
         QString conceptdalbaran = (*dalbaranmap)["CONCEPTDALBARAN"];
         QString proporciondalbaran = (*dalbaranmap)["PROPORCIONDALBARAN"];
@@ -2230,7 +2225,6 @@ int ImportBulmaFact::trataAlbaran() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    listadalbaran.clear();
     valores.clear();
     return 0;
 }
@@ -2239,19 +2233,19 @@ int ImportBulmaFact::trataAlbaran() {
 int ImportBulmaFact::trataLFactura() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LFactura ") + valores["IDLFACTURA"] + "</B><BR>");
-    tvalores *lfacturamap = new tvalores;
-    lfacturamap->insert("IDLFACTURA", valores["IDLFACTURA"]);
-    lfacturamap->insert("DESCLFACTURA", valores["DESCLFACTURA"]);
-    lfacturamap->insert("CANTLFACTURA", valores["CANTLFACTURA"]);
-    lfacturamap->insert("PVPLFACTURA", valores["PVPLFACTURA"]);
-    lfacturamap->insert("IVALFACTURA", valores["IVALFACTURA"]);
-    lfacturamap->insert("DESCUENTOLFACTURA", valores["DESCUENTOLFACTURA"]);
-    lfacturamap->insert("IDFACTURA", valores["IDFACTURA"]);
-    lfacturamap->insert("IDARTICULO", valores["IDARTICULO"]);
-    lfacturamap->insert("CODARTICULO", valores["CODARTICULO"]);
-    lfacturamap->insert("NOMARTICULO", valores["NOMARTICULO"]);
-    lfacturamap->insert("ABREVARTICULO", valores["ABREVARTICULO"]);
-    lfacturamap->insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
+    tvalores lfacturamap;
+    lfacturamap.insert("IDLFACTURA", valores["IDLFACTURA"]);
+    lfacturamap.insert("DESCLFACTURA", valores["DESCLFACTURA"]);
+    lfacturamap.insert("CANTLFACTURA", valores["CANTLFACTURA"]);
+    lfacturamap.insert("PVPLFACTURA", valores["PVPLFACTURA"]);
+    lfacturamap.insert("IVALFACTURA", valores["IVALFACTURA"]);
+    lfacturamap.insert("DESCUENTOLFACTURA", valores["DESCUENTOLFACTURA"]);
+    lfacturamap.insert("IDFACTURA", valores["IDFACTURA"]);
+    lfacturamap.insert("IDARTICULO", valores["IDARTICULO"]);
+    lfacturamap.insert("CODARTICULO", valores["CODARTICULO"]);
+    lfacturamap.insert("NOMARTICULO", valores["NOMARTICULO"]);
+    lfacturamap.insert("ABREVARTICULO", valores["ABREVARTICULO"]);
+    lfacturamap.insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
     listalfactura.append(lfacturamap);
     return 0;
 }
@@ -2260,10 +2254,10 @@ int ImportBulmaFact::trataLFactura() {
 int ImportBulmaFact::trataDFactura() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DFactura ") + valores["IDDFACTURA"] + "</B><BR>");
-    tvalores *dfacturamap = new tvalores;
-    dfacturamap->insert("IDDFACTURA", valores["IDDFACTURA"]);
-    dfacturamap->insert("CONCEPTDFACTURA", valores["CONCEPTDFACTURA"]);
-    dfacturamap->insert("PROPORCIONDFACTURA", valores["PROPORCIONDFACTURA"]);
+    tvalores dfacturamap;
+    dfacturamap.insert("IDDFACTURA", valores["IDDFACTURA"]);
+    dfacturamap.insert("CONCEPTDFACTURA", valores["CONCEPTDFACTURA"]);
+    dfacturamap.insert("PROPORCIONDFACTURA", valores["PROPORCIONDFACTURA"]);
     listadfactura.append(dfacturamap);
     return 0;
 }
@@ -2363,8 +2357,6 @@ int ImportBulmaFact::trataFactura() {
     if (!cur->eof()) {
         delete cur;
         pgimport->mensajeria(theApp->translate("ImportBulmaFact", "La factura ya existe y no se va a insertar."));
-        listalfactura.clear();
-        listadfactura.clear();
         valores.clear();
         return 1;
     } // end if
@@ -2396,7 +2388,10 @@ int ImportBulmaFact::trataFactura() {
     conexionbase->commit();
     /// Tratamos la insercion de las lineas de presupuesto.
     tvalores *lfacturamap;
-    for (lfacturamap = listalfactura.first(); lfacturamap; lfacturamap = listalfactura.next()) {
+
+    QMutableListIterator<tvalores> ilistalfactura(listalfactura);
+
+    for (lfacturamap = &listalfactura.first(); lfacturamap; lfacturamap = &ilistalfactura.next()) {
         QString idlfactura = (*lfacturamap)["IDLFACTURA"];
         QString desclfactura = (*lfacturamap)["DESCLFACTURA"];
         QString cantlfactura = (*lfacturamap)["CANTLFACTURA"];
@@ -2430,11 +2425,12 @@ int ImportBulmaFact::trataFactura() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    fprintf(stderr,"Terminamos la limpieza\n");
-    listalfactura.clear();
     /// Tratamos la insercion de los descuentos de presupuesto.
     tvalores *dfacturamap;
-    for (dfacturamap = listadfactura.first(); dfacturamap; dfacturamap = listadfactura.next()) {
+
+    QMutableListIterator<tvalores> ilistadfactura(listadfactura);
+
+    for (dfacturamap = &listadfactura.first(); dfacturamap; dfacturamap = &ilistadfactura.next()) {
         QString iddfactura = (*dfacturamap)["IDDFACTURA"];
         QString conceptdfactura = (*dfacturamap)["CONCEPTDFACTURA"];
         QString proporciondfactura = (*dfacturamap)["PROPORCIONDFACTURA"];
@@ -2446,7 +2442,6 @@ int ImportBulmaFact::trataFactura() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    listadfactura.clear();
     valores.clear();
     return 0;
 }
@@ -2455,19 +2450,19 @@ int ImportBulmaFact::trataFactura() {
 int ImportBulmaFact::trataLPresupuesto() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando LPresupuesto ") + valores["IDLPRESUPUESTO"] + "</B><BR>");
-    tvalores *lpresupuestomap = new tvalores;
-    lpresupuestomap->insert("IDLPRESUPUESTO", valores["IDLPRESUPUESTO"]);
-    lpresupuestomap->insert("DESCLPRESUPUESTO", valores["DESCLPRESUPUESTO"]);
-    lpresupuestomap->insert("CANTLPRESUPUESTO", valores["CANTLPRESUPUESTO"]);
-    lpresupuestomap->insert("PVPLPRESUPUESTO", valores["PVPLPRESUPUESTO"]);
-    lpresupuestomap->insert("IVALPRESUPUESTO", valores["IVALPRESUPUESTO"]);
-    lpresupuestomap->insert("DESCUENTOLPRESUPUESTO", valores["DESCUENTOLPRESUPUESTO"]);
-    lpresupuestomap->insert("IDPRESUPUESTO", valores["IDPRESUPUESTO"]);
-    lpresupuestomap->insert("IDARTICULO", valores["IDARTICULO"]);
-    lpresupuestomap->insert("CODARTICULO", valores["CODARTICULO"]);
-    lpresupuestomap->insert("NOMARTICULO", valores["NOMARTICULO"]);
-    lpresupuestomap->insert("ABREVARTICULO", valores["ABREVARTICULO"]);
-    lpresupuestomap->insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
+    tvalores lpresupuestomap;
+    lpresupuestomap.insert("IDLPRESUPUESTO", valores["IDLPRESUPUESTO"]);
+    lpresupuestomap.insert("DESCLPRESUPUESTO", valores["DESCLPRESUPUESTO"]);
+    lpresupuestomap.insert("CANTLPRESUPUESTO", valores["CANTLPRESUPUESTO"]);
+    lpresupuestomap.insert("PVPLPRESUPUESTO", valores["PVPLPRESUPUESTO"]);
+    lpresupuestomap.insert("IVALPRESUPUESTO", valores["IVALPRESUPUESTO"]);
+    lpresupuestomap.insert("DESCUENTOLPRESUPUESTO", valores["DESCUENTOLPRESUPUESTO"]);
+    lpresupuestomap.insert("IDPRESUPUESTO", valores["IDPRESUPUESTO"]);
+    lpresupuestomap.insert("IDARTICULO", valores["IDARTICULO"]);
+    lpresupuestomap.insert("CODARTICULO", valores["CODARTICULO"]);
+    lpresupuestomap.insert("NOMARTICULO", valores["NOMARTICULO"]);
+    lpresupuestomap.insert("ABREVARTICULO", valores["ABREVARTICULO"]);
+    lpresupuestomap.insert("CODIGOCOMPLETOARTICULO", valores["CODIGOCOMPLETOARTICULO"]);
     listalpresupuesto.append(lpresupuestomap);
     return 0;
 }
@@ -2476,10 +2471,10 @@ int ImportBulmaFact::trataLPresupuesto() {
 int ImportBulmaFact::trataDPresupuesto() {
     /// En el XML se ha encontrado un tag de cliente que esta almacenado en la estructura valores.
     pgimport->mensajeria(theApp->translate("ImportBulmaFact", "<HR><B>Tratando DPresupuesto ") + valores["IDDPRESUPUESTO"] + "</B><BR>");
-    tvalores *dpresupuestomap = new tvalores;
-    dpresupuestomap->insert("IDDPRESUPUESTO", valores["IDDPRESUPUESTO"]);
-    dpresupuestomap->insert("CONCEPTDPRESUPUESTO", valores["CONCEPTDPRESUPUESTO"]);
-    dpresupuestomap->insert("PROPORCIONDPRESUPUESTO", valores["PROPORCIONDPRESUPUESTO"]);
+    tvalores dpresupuestomap;
+    dpresupuestomap.insert("IDDPRESUPUESTO", valores["IDDPRESUPUESTO"]);
+    dpresupuestomap.insert("CONCEPTDPRESUPUESTO", valores["CONCEPTDPRESUPUESTO"]);
+    dpresupuestomap.insert("PROPORCIONDPRESUPUESTO", valores["PROPORCIONDPRESUPUESTO"]);
     listadpresupuesto.append(dpresupuestomap);
     return 0;
 }
@@ -2601,7 +2596,10 @@ int ImportBulmaFact::trataPresupuesto() {
 
     /// Tratamos la insercion de las lineas de presupuesto.
     tvalores *lpresupuestomap;
-    for (lpresupuestomap = listalpresupuesto.first(); lpresupuestomap; lpresupuestomap = listalpresupuesto.next()) {
+
+    QMutableListIterator<tvalores> ilistalpresupuesto(listalpresupuesto);
+
+    for (lpresupuestomap = &listalpresupuesto.first(); lpresupuestomap; lpresupuestomap = &ilistalpresupuesto.next()) {
         QString idlpresupuesto = (*lpresupuestomap)["IDLPRESUPUESTO"];
         QString desclpresupuesto = (*lpresupuestomap)["DESCLPRESUPUESTO"];
         QString cantlpresupuesto = (*lpresupuestomap)["CANTLPRESUPUESTO"];
@@ -2635,10 +2633,12 @@ int ImportBulmaFact::trataPresupuesto() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    listalpresupuesto.clear();
     /// Tratamos la insercion de los descuentos de presupuesto.
     tvalores *dpresupuestomap;
-    for (dpresupuestomap = listadpresupuesto.first(); dpresupuestomap; dpresupuestomap = listadpresupuesto.next()) {
+
+    QMutableListIterator<tvalores> ilistadpresupuesto(listadpresupuesto);
+
+    for (dpresupuestomap = &listadpresupuesto.first(); dpresupuestomap; dpresupuestomap = &ilistadpresupuesto.next()) {
         QString iddpresupuesto = (*dpresupuestomap)["IDDPRESUPUESTO"];
         QString conceptdpresupuesto = (*dpresupuestomap)["CONCEPTDPRESUPUESTO"];
         QString proporciondpresupuesto = (*dpresupuestomap)["PROPORCIONDPRESUPUESTO"];
@@ -2650,7 +2650,6 @@ int ImportBulmaFact::trataPresupuesto() {
         query += ")";
         conexionbase->ejecuta(query);
     } // end for
-    listadpresupuesto.clear();
     valores.clear();
     return 0;
 }

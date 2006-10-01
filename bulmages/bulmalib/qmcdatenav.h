@@ -24,14 +24,16 @@
 #include <QMenu>
 #include <QPaintEvent>
 
+
 class QMenu;
+
 
 class QmcDateNav : public QWidget {
     Q_OBJECT
 
 public:
-    QmcDateNav(class QWidget * parent = 0);
-    QmcDateNav(const class QDate &, class QWidget * parent = 0);
+    QmcDateNav(class QWidget *parent = 0);
+    QmcDateNav(const class QDate &, class QWidget *parent = 0);
     ~QmcDateNav();
     virtual QSizePolicy sizePolicy() const;
     virtual QSize sizeHint() const;
@@ -69,7 +71,7 @@ private:
     void init();
     void makePixmap();
     void drawArrows(QPainter &);
-    QRect * drawCaptionText(QPainter &);
+    QRect *drawCaptionText(QPainter &);
     void drawCaption(QPainter &);
     void drawFrame(QPainter &);
     void drawDays(QPainter &);

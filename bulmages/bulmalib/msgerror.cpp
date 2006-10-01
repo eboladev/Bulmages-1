@@ -32,7 +32,7 @@ msgError::msgError(QString mensaje, QString descripcion) {
     setupUi(this);
     hideFrame();
     m_mensaje->setText(mensaje);
-    m_detalles->setText(descripcion);
+    m_detalles->setPlainText(descripcion);
     exec();
 }
 
