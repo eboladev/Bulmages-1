@@ -57,8 +57,7 @@ public:
     dbtype tipo() {
         return m_tipo;
     };
-    virtual int set
-        (QString val) {
+    virtual int set(QString val) {
         m_valorcampo = val;
         return 0;
     };
@@ -76,6 +75,10 @@ public:
     };
     QString valorcampoprep(int &error);
 };
+
+
+
+
 
 
 class DBRecord {

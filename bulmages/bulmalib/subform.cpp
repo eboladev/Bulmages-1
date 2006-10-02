@@ -87,8 +87,7 @@ SDBCampo::~SDBCampo() {
 void SDBCampo::refresh() {
     _depura("SDBCampo::refresh", 0);
     if (tipo() == DBCampo::DBboolean) {
-        DBCampo::set
-            (checkState() == Qt::Checked ? "TRUE" : "FALSE");
+        DBCampo::set(checkState() == Qt::Checked ? "TRUE" : "FALSE");
     } else {
         DBCampo::set(text());
     } // end if
@@ -96,8 +95,7 @@ void SDBCampo::refresh() {
 }
 
 
-int SDBCampo::set
-    (QString val) {
+int SDBCampo::set(QString val) {
     _depura("SDBCampo::set", 0);
     if (tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")

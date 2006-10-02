@@ -94,8 +94,7 @@ public:
     SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
     virtual ~SDBCampo();
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
-    virtual int set
-        (QString val);
+    virtual int set(QString val);
     void refresh();
 };
 

@@ -79,7 +79,11 @@ DBRecord::DBRecord(postgresiface2 *con) {
 }
 
 
-DBRecord::~DBRecord() {}
+DBRecord::~DBRecord() {
+	_depura("DBRecord::~DBRecord", 0);
+	m_lista.clear();
+	_depura("END DBRecord::~DBRecord", 0);
+}
 
 
 int DBRecord::DBload(cursor2 *cur) {
@@ -109,8 +113,7 @@ void DBRecord::DBclear() {
     DBCampo *linea;
     for(int i = 0; i < m_lista.size(); ++i) {
         linea = m_lista.at(i);
-        linea->set
-        ("");
+        linea->set("");
     } // end for
     _depura("END DBRecord::DBclear", 0);
 }
@@ -265,6 +268,7 @@ int DBRecord::borrar() {
         DBCampo *linea;
         QString separadorwhere = "";
         QString querywhere = "";
+
         for (int i = 0; i < m_lista.size(); ++i) {
             linea = m_lista.at(i);
             if (linea->restrictcampo() & DBCampo::DBDupPrimaryKey) {
@@ -275,6 +279,7 @@ int DBRecord::borrar() {
                 querywhere += separadorwhere + linea->nompresentacion() + " = " + lin;
                 separadorwhere = " AND ";
             } // end if
+
             if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
                 if (linea->restrictcampo() & DBCampo::DBPrimaryKey) {
                     int err;
@@ -286,15 +291,18 @@ int DBRecord::borrar() {
                 } // end if
             } // end if
         } // end for
+
         if (m_nuevoCampo == FALSE) {
             m_conexionbase->ejecuta("DELETE FROM " + m_tablename + " WHERE " + querywhere);
-            DBclear();
+//            DBclear();
         } // end if
+
         _depura("END DBRecord::borrar", 0);
         return 0;
     } catch (...) {
         mensajeInfo("se produjo un error al borrar el elemento");
-        return -1;
+	_depura("DBRecord::borrar() Error al borrar elemento", 3);
+	throw -1;
     }
 }
 
@@ -308,8 +316,8 @@ int DBRecord::guardar() {
         _depura("END DBRecord::guardar", 0);
         return 0;
     } catch (...) {
-        _depura("DBRecord::guardar error en el guardado", 1);
-        return -1;
+        mensajeInfo("DBRecord::guardar error en el guardado");
+        throw -1;
     } // end try
 }
 

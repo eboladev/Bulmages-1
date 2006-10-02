@@ -423,31 +423,42 @@ int SubForm3::guardar() {
     _depura("SubForm3::guardar", 0);
     try {
         SDBRecord *rec;
-        int error = 0;
         /// Borramos los elementos marcados para ser borrados.
         while (!m_listaborrar.isEmpty()) {
             rec = m_listaborrar.takeFirst();
             if (rec) {
-                if (rec->borrar())
-                    throw -1;
+                rec->borrar();
+            } // end if
+        } // end while
+
+	/// Hacemos el guardado
+        for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
+            rec = lineaat(j);
+	    if (rec) {
+               rec->refresh();
+               rec->guardar();
+	    } // end if
+        } // end for
+
+        if (!m_insercion) {
+            rec = lineaat(mui_list->rowCount() - 1);
+            rec->guardar();
+        } // end if
+
+
+        /// Liberamos memoria
+        while (!m_listaborrar.isEmpty()) {
+            rec = m_listaborrar.takeFirst();
+            if (rec) {
                 delete rec;
             } // end if
         } // end while
-        for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
-            rec = lineaat(j);
-            rec->refresh();
-            error = rec->guardar();
-            if (error)
-                throw -1;
-        } // end for
-        if (!m_insercion) {
-            rec = lineaat(mui_list->rowCount() - 1);
-            error = rec->guardar();
-        } // end if
+
         _depura("END SubForm3::guardar", 0);
-        return error;
+        return 0;
     } catch (...) {
         mensajeInfo("error inesperado en el guardado, salimos devolviento -1");
+	_depura("Error inesperado en el guardado,", 3);
         throw -1;
     } // end try
 }
@@ -457,6 +468,7 @@ int SubForm3::borrar() {
     SDBRecord *rec;
     int i = 0;
     int error = 0;
+    try {
     for (rec = m_lista.at(i++); i < m_lista.count(); rec = m_lista.at(i++)) {
         error = rec->borrar();
         if (error)
@@ -467,6 +479,10 @@ int SubForm3::borrar() {
         error = rec->borrar();
     } // end if
     return error;
+   } catch(...) {
+	_depura("SubForm3::borrar() Error al borrar", 3);
+	return -1;
+   } // end try
 }
 
 
@@ -474,20 +490,32 @@ int SubForm3::borrar(int row) {
     _depura("SubForm3::borrar", 0);
     try {
         SDBRecord *rec;
-        rec = m_lista.at(row);
+	SDBCampo *camp;
+	
+	/// Cogemos el elemento correspondiente
+        rec = m_lista.takeAt(row);
+
+	/// Agregamos el elemento a la lista de borrados
         m_listaborrar.append(rec);
-        m_lista.takeAt(row);
+
+	/// Sacamos celda a celda toda la fila
         for (int i = 0; i < mui_list->columnCount(); i++) {
-            mui_list->takeItem(row,i);
+            camp = (SDBCampo *) mui_list->takeItem(row,i);
         } // end for
+
+	/// Borramos la fila de la tabla y el VerticalHeader tambien
         mui_list->takeVerticalHeaderItem(row);
         mui_list->removeRow(row);
+
+	/// Terminamos
+	_depura("END SubForm3::borrar", 0);
+    	return 0;
+
     } catch (...) {
         mensajeInfo( "Error al intentar borrar");
+	_depura("SubForm3::borrar error al borrar", 3);
         throw -1;
     } // end try
-    _depura("END SubForm3::borrar", 0);
-    return 0;
 }
 
 
