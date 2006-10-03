@@ -37,7 +37,8 @@ using namespace std;
 
 
 InventarioView::InventarioView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), Inventario(comp) {
+        : QWidget(parent), Inventario(comp) {
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     _depura("inicializamos el subformulario", 0);

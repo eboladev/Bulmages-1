@@ -24,7 +24,7 @@
 #include "configuracion.h"
 
 
-Splash::Splash() : QDialog(0, Qt::WStyle_NoBorder | Qt::WStyle_Customize) {
+Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     QPixmap image0;
     image0.load(confpr->valor(CONF_SPLASH_BULMAFACT));
     /// Se modifica la paleta para que utilize la imagen como fondo.

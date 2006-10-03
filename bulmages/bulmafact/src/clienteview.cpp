@@ -39,8 +39,9 @@
 
 
 ClienteView::ClienteView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), Cliente(comp), dialogChanges(this) {
+        : QWidget(parent), Cliente(comp), dialogChanges(this) {
     _depura("ClienteView::ClienteView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
 

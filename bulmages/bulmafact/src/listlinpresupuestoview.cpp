@@ -34,12 +34,12 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(par
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre del articulo"));
-    addSHeader("idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Idl presupuesto"));
+    addSHeader("idlpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea de presupuesto"));
     addSHeader("desclpresupuesto", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion presupuesto"));
-    addSHeader("cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl presupuesto"));
-    addSHeader("pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPL presupuesto"));
-    addSHeader("ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAL presupuesto"));
-    addSHeader("descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Desceuentol presupuesto"));
+    addSHeader("cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
+    addSHeader("pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Precio de venta s/IVA"));
+    addSHeader("ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% IVA"));
+    addSHeader("descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% Desceuento"));
     addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id presupuesto"));
     setinsercion(TRUE);
 }
@@ -52,7 +52,7 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof() ) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
@@ -62,7 +62,7 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
             rec->setDBvalue("descuentolpresupuesto", "0.00");
             rec->setDBvalue("pvplpresupuesto", cur->valor("pvparticulo"));
         } // end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
         if (!cur->eof() ) {
             rec->setDBvalue("ivalpresupuesto", cur1->valor("porcentasa_iva"));
         } // end if
@@ -76,7 +76,7 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
 void listlinpresupuestoview::cargar(QString idpresupuesto) {
     _depura("listlinpresupuestoview::cargar\n", 0);
     mdb_idpresupuesto = idpresupuesto;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto=" + mdb_idpresupuesto);
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto);
     SubForm3::cargar(cur);
     delete cur;
 }

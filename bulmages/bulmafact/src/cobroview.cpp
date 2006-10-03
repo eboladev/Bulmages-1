@@ -35,8 +35,9 @@ using namespace std;
 
 
 CobroView::CobroView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), Cobro(comp), dialogChanges(this) {
+        : QWidget(parent), Cobro(comp), dialogChanges(this) {
     _depura("CobroView::CobroView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.

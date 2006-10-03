@@ -4,7 +4,6 @@
 # Destiono es una aplicaci??n: ../../installbulmages/bulmafact
 
 LANGUAGE = C++
-QT += qt3support
 TARGET = ../../installbulmages/bulmafact
 #CONFIG += qt debug
 CONFIG += release warn_on

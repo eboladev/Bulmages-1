@@ -41,7 +41,8 @@ InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
 
 
 InventariosView::InventariosView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose) {
+        : QWidget(parent) {
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     companyact = comp;
     mui_listado->setcompany(comp);

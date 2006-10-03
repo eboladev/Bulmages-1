@@ -49,6 +49,9 @@ QApplication2 * theApp;
 /// El traductor.
 QTranslator * traductor;
 
+
+
+
 /// Faltan el configurador de parametros confpr y el sistema de log ctlog
 
 

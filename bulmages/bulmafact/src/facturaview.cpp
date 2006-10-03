@@ -44,9 +44,10 @@ using namespace std;
 
 
 FacturaView::FacturaView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), Factura(comp) {
+        : Ficha(parent), Factura(comp) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
     _depura("FacturaView::FacturaView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         subform2->setcompany(comp);

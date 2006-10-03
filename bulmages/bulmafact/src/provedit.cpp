@@ -20,6 +20,7 @@
 
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QCloseEvent>
 
 #include "company.h"
 #include "funcaux.h"
@@ -28,8 +29,9 @@
 
 
 ProveedorView::ProveedorView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), DBRecord(comp), dialogChanges(this) {
+        : QWidget(parent), DBRecord(comp), dialogChanges(this) {
     _depura("ProveedorView::ProveedorView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setDBTableName("proveedor");
         setDBCampoId("idproveedor");

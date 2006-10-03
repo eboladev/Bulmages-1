@@ -33,8 +33,9 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent), dialogChanges(this) {
     _depura("TrabajadorView::TrabajadorView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     m_companyact = emp;
     setupUi(this);
     m_archivoimagen = "";

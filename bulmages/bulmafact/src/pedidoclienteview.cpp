@@ -42,8 +42,9 @@
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), PedidoCliente(comp) {
+        : Ficha(parent), PedidoCliente(comp) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi(this);

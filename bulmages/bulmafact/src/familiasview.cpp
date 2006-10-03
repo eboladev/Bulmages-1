@@ -62,7 +62,7 @@ familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
         mui_imprimir->hide();
     } else {
         setModoEdicion();
-        setWindowFlags(Qt::WDestructiveClose);
+        setAttribute(Qt::WA_DeleteOnClose);
         companyact->meteWindow(windowTitle(), this);
     } // end if
     pintar();

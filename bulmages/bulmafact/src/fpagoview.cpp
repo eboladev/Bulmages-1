@@ -29,8 +29,9 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 FPagoView::FPagoView(company *emp,QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent), dialogChanges(this) {
     _depura("FPagoView::FPagoView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
     setModoEdicion();

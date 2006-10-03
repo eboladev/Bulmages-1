@@ -53,8 +53,8 @@ TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoCons
 	mui_aceptar->hide();
     } else {
     	setModoEdicion();
-	setWindowFlags(Qt::WDestructiveClose);
-        companyact->meteWindow(windowTitle(), this);
+       setAttribute(Qt::WA_DeleteOnClose);
+       companyact->meteWindow(windowTitle(), this);
     } // end if
     pintar();
     _depura("END TipoArticuloList::TipoArticuloList", 0);

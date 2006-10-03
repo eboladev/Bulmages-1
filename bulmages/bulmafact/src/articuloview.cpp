@@ -40,8 +40,9 @@
 
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this), Articulo(comp) {
+        : QWidget(parent), dialogChanges(this), Articulo(comp) {
     _depura("ArticuloView::ArticuloView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         m_companyact = comp;
         setupUi(this);

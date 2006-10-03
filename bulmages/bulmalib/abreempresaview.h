@@ -27,12 +27,13 @@
 #include "ui_abreempresabase.h"
 
 
-/// Esta clase muestra el dialogo de seleccionar una empresa y espera a que se haga doble
-/// click sobre uno de los elementos que contiene, se haga click en aceptar o se de la
-/// accion de cancelar.
-/// La ventana siempre se abre en modo modal y detiene la ejecucion del programa.
-/// Se puede especificar, si es preciso, un tipo de mui_empresas a mostrar
-/// (bulmacont o bulmafact) para facilitar la seleccion de elementos.
+/// Abre el di&aacute;logo de seleccionar una empresa.
+/** Esta clase muestra el di&aacute;logo de seleccionar una empresa y espera a que se haga doble
+    click sobre uno de los elementos que contiene, se haga click en aceptar o se de la
+    accion de cancelar.
+    La ventana siempre se abre en modo modal y detiene la ejecuci&oacute;n del programa.
+    Se puede especificar, si es preciso, un tipo de mui_empresas a mostrar
+    (bulmacont o bulmafact) para facilitar la selecci&oacute;n de elementos. */
 class abreempresaview : public QDialog, public Ui_abreempresabase {
     Q_OBJECT
 
@@ -46,7 +47,7 @@ public:
         m_modo = 1;
     };
     /// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la
-    /// presentacion.
+    /// presentaci&oacute;n.
     abreempresaview(QWidget *parent = 0, QString tipo = 0, const char *name = 0, bool modal = true);
     ~abreempresaview();
     /// Devuelve el nombre de la base de datos seleccionada.
@@ -63,7 +64,7 @@ public:
     };
 
 public slots:
-    /// This SLOT is activated to select a company and to press enter.
+    /// Este SLOT se activa al seleccionar una compa&ntilde;ia y pulsar intro.
     virtual void accept();
     /// This SLOT searches in the databases of postgres all the companyes needed.
     virtual void on_mui_actualizar_clicked();

@@ -29,8 +29,9 @@
 #define COL_ORIGINALPROVINCIA 1
 
 
-ListProvinciasView::ListProvinciasView(company *comp, QWidget *parent) : QWidget (parent, Qt::WDestructiveClose) {
+ListProvinciasView::ListProvinciasView(company *comp, QWidget *parent) : QWidget (parent) {
     _depura("INIT_ListProvinciasView::ListProvinciasView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     companyact = comp;
     m_listado->setSelectionMode(QAbstractItemView::SingleSelection);

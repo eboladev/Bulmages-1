@@ -39,8 +39,9 @@ using namespace std;
 #include "albaranproveedorview.h"
 
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), FacturaProveedor(comp) {
+        : Ficha(parent), FacturaProveedor(comp) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi(this);

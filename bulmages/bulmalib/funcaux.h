@@ -46,8 +46,11 @@ using std::string;
 #include <QMainWindow>
 #include <QStatusBar>
 
+#include "qapplication2.h"
 
 extern QMainWindow *g_main;
+
+extern QApplication2 *theApp;
 
 
 template <typename T>

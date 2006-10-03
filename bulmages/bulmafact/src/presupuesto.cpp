@@ -60,7 +60,7 @@ int presupuesto::borrar() {
         companyact->begin();
         listalineas->borrar();
         listadescuentos->borrar();
-        int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto=" + DBvalue("idpresupuesto"));
+        int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto = " + DBvalue("idpresupuesto"));
         if (error) {
             companyact->rollback();
             return -1;

@@ -43,8 +43,9 @@
 
 
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), AlbaranProveedor(comp) {
+        : Ficha(parent), AlbaranProveedor(comp) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         subform2->setcompany(comp);

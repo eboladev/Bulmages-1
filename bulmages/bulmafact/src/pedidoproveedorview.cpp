@@ -42,8 +42,9 @@ using namespace std;
 
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), PedidoProveedor(comp) {
+        : Ficha(parent), PedidoProveedor(comp) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.

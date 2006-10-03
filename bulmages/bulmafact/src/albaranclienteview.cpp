@@ -47,8 +47,9 @@
 
 
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), AlbaranCliente(comp) {
+        : Ficha(parent), AlbaranCliente(comp) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         subform2->setcompany(comp);

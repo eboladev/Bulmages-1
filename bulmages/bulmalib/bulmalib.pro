@@ -74,8 +74,6 @@ SOURCES += postgresiface2.cpp \
 	   ficha.cpp
 	   
 RESOURCES = ../bulmages.qrc
-QT += qt3support
-DEFINES += QT3_SUPPORT_WARNINGS
 TEMPLATE = lib
 LANGUAGE = C++
 INCLUDEPATH += . \

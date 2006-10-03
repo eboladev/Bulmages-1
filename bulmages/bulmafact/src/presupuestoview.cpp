@@ -47,8 +47,9 @@
 
 
 PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), presupuesto(comp) {
+        : Ficha(parent), presupuesto(comp) {
     _depura("Inicializacion de PresupuestoView\n", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
         /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
