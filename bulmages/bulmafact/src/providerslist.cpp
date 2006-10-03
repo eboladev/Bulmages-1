@@ -26,7 +26,6 @@
 #include <QTextStream>
 
 #include "providerslist.h"
-#include "qtable1.h"
 #include "funcaux.h"
 #include "company.h"
 #include "provedit.h"

@@ -73,32 +73,9 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt:
     mui_listado->setcompany(m_companyact);
 
     numdigitos = emp->numdigitosempresa();
-    m_listprevcobro->setcompany(m_companyact);
-
-    m_listprevcobro->chargeBudgetLines();
-    m_listprevcobro->pintalistlinprevcobro();
-
 
     /// Inicializamos el listado
     ////////////////////////////////////////////////////////
-/*
-#define COL_SELECCION                  0
-#define COL_IDPREVCOBRO                1
-#define COL_FPREVISTAPREVCOBRO         2
-#define COL_FCOBROPREVCOBRO            3
-#define COL_IDCUENTA                   4
-#define COL_CODIGO                     5
-#define COL_NOMCTA	               6
-#define COL_IDASIENTO                  7
-#define COL_ORDENASIENTO               8
-#define COL_CANTIDADPREVISTAPREVCOBRO  9
-#define COL_CANTIDADPREVCOBRO          10
-#define COL_IDREGISTROIVA              11
-#define COL_CODIGOCTAREGISTROIVA       12
-#define COL_ENTREGISTROIVA             13
-#define COL_TIPOPREVCOBRO              14
-#define COL_DOCPREVCOBRO               15
-*/
     mui_listado->setDBTableName("prevcobro");
     mui_listado->setDBCampoId("idprevcobro");
     mui_listado->addSHeader("idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr("idprevcobro"));
@@ -121,11 +98,6 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt:
     m_cuenta->setempresa(emp);
     s_recalculaSaldo();
 
-
-
-
-
-
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END cobropagoview::cobropagoview", 0);
 }
@@ -141,12 +113,10 @@ cobropagoview::~cobropagoview() {
 /**
   * \brief SLOT que responde a la pulsacion del botón de actualizar
   */
-void cobropagoview::s_actualizar() {
-    fprintf(stderr,"actualizar \n");
+void cobropagoview::on_mui_actualizar_clicked() {
+    _depura("cobropagoview::s_actualizar", 0);
 
-    m_listprevcobro->s_setfinprevcobro(m_firstDate->text());
-    m_listprevcobro->s_setffiprevcobro(m_lastDate->text());
-
+/*
     if (m_tipoprevcobro->currentText() == "COBROS")
         m_listprevcobro->s_settipoprevcobro("t");
 
@@ -156,11 +126,7 @@ void cobropagoview::s_actualizar() {
     if (m_tipoprevcobro->currentText() == "TODO")
         m_listprevcobro->s_settipoprevcobro("");
     m_listprevcobro->s_setprocesado(m_procesado->currentText());
-
-
-    m_listprevcobro->chargeBudgetLines();
-    m_listprevcobro->pintalistlinprevcobro();
-    s_recalculaSaldo();
+*/
 
 
 /// Hacemos la presentacion con la nueva clase
@@ -187,19 +153,39 @@ void cobropagoview::s_actualizar() {
                    " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                    " WHERE 1=1 "+ cadwhere);
 
+    s_recalculaSaldo();
+
+    _depura("END cobropagoview::s_actualizar", 0);
 
 }
 
 
 void cobropagoview::s_guardar() {
-    m_listprevcobro->guardaListLinPrevCobro();
+	mui_listado->guardar();
 }
 
 
 void cobropagoview::s_recalculaSaldo() {
-    _depura("s_recalculaSaldo()");
-    m_totalCobros->setText(m_listprevcobro->totalCobro().toQString());
-    m_totalPagos->setText(m_listprevcobro->totalPago().toQString());
+    _depura("s_recalculaSaldo()", 0);
+    Fixed totalcobro("0");
+    Fixed totalpago("0");
+
+
+    for (int i = 0; i < mui_listado->rowCount(); i++) {
+	SDBRecord *rec = mui_listado->lineaat(i);
+	if (rec) {
+		if (rec->DBvalue("tipoprevcobro") == "f") {
+			totalcobro = totalcobro + Fixed(rec->DBvalue("cantidadprevcobro"));
+		} else {
+			totalpago = totalpago + Fixed(rec->DBvalue("cantidadprevcobro"));
+		} // end if
+	} // end if
+    } // end for
+
+
+    m_totalCobros->setText(totalcobro.toQString());
+    m_totalPagos->setText(totalpago.toQString());
+    _depura("END s_recalculaSaldo()", 0);
 }
 
 

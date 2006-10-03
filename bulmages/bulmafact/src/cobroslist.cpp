@@ -29,7 +29,6 @@
 #include "cobroslist.h"
 #include "company.h"
 #include "cobroview.h"
-#include "qtable1.h"
 #include "funcaux.h"
 
 

@@ -27,7 +27,6 @@
 #include "funcaux.h"
 #include "pedidoclienteview.h"
 #include "pedidosclientelist.h"
-#include "qtable1.h"
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)

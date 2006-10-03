@@ -27,7 +27,6 @@
 #include "presupuestolist.h"
 #include "company.h"
 #include "presupuestoview.h"
-#include "qtable1.h"
 #include "funcaux.h"
 #include "plugins.h"
 #include "configuracion.h"

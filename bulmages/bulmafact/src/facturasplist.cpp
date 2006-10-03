@@ -24,7 +24,6 @@
 
 #include "facturasplist.h"
 #include "company.h"
-#include "qtable1.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "configuracion.h"

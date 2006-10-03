@@ -33,7 +33,6 @@
 #include "articuloview.h"
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
-#include "qtable1.h"
 #include "funcaux.h"
 
 

@@ -30,7 +30,6 @@
 #include "configuracion.h"
 #include "funcaux.h"
 #include "presupuestoview.h"
-#include "qtable1.h"
 
 
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)

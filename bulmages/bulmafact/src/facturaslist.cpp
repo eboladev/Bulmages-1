@@ -31,7 +31,6 @@
 #include "facturaview.h"
 #include "funcaux.h"
 #include "plugins.h"
-#include "qtable1.h"
 
 
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)

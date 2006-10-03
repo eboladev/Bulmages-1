@@ -139,7 +139,8 @@ HEADERS += splashscreen.h \
 	   asientolistsubform.h \
 	   balancesubform.h \
 	   busquedaccoste.h \
-	   busquedacanal.h 
+	   busquedacanal.h \
+	   qtable1.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -196,7 +197,8 @@ SOURCES += main.cpp \
 	   asientolistsubform.cpp \
 	   balancesubform.cpp \
 	   busquedaccoste.cpp \
-	   busquedacanal.cpp
+	   busquedacanal.cpp \
+	   qtable1.cpp
 	 
 
 unix{

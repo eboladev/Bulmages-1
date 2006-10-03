@@ -31,65 +31,106 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>6</number>
      </property>
      <item>
-      <widget class="QToolButton" name="mui_crear" >
-       <property name="toolTip" >
-        <string>Generar Asiento</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Generar Asiento</string>
-       </property>
+      <widget class="QLabel" name="label" >
        <property name="text" >
         <string/>
        </property>
-       <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+       <property name="pixmap" >
+        <pixmap resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos_listado.48x48.png</pixmap>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="mui_guardar" >
-       <property name="toolTip" >
-        <string>Actualizar</string>
+      <widget class="QFrame" name="frame" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="text" >
-        <string/>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
        </property>
-       <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_crear" >
+          <property name="toolTip" >
+           <string>Generar Asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Generar Asiento</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_guardar" >
+          <property name="toolTip" >
+           <string>Actualizar</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_borrar" >
+          <property name="toolTip" >
+           <string>Actualizar</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_actualizar" >
+          <property name="toolTip" >
+           <string>Actualizar</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>711</width>
+            <height>21</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
-     </item>
-     <item>
-      <widget class="QToolButton" name="mui_borrar" >
-       <property name="toolTip" >
-        <string>Actualizar</string>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>672</width>
-         <height>21</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>
@@ -228,18 +269,6 @@
     </layout>
    </item>
    <item>
-    <widget class="ListLinPrevCobroView" name="m_listprevcobro" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-    </widget>
-   </item>
-   <item>
     <widget class="SubForm2Bc" name="mui_listado" />
    </item>
    <item>
@@ -346,13 +375,6 @@
    <class>BusquedaCuenta</class>
    <extends></extends>
    <header>busquedacuenta.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListLinPrevCobroView</class>
-   <extends></extends>
-   <header>listlinprevcobroview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

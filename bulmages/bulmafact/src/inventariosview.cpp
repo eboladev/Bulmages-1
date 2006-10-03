@@ -24,7 +24,6 @@
 
 #include "inventariosview.h"
 #include "company.h"
-#include "qtable1.h"
 #include "funcaux.h"
 #include "inventarioview.h"
 

@@ -27,7 +27,6 @@
 #include "albaranclienteview.h"
 #include "company.h"
 #include "funcaux.h"
-#include "qtable1.h"
 
 
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)

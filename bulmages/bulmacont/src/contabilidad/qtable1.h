@@ -30,6 +30,7 @@
 #include <QRect>
 
 
+
 class QTableItem1 : public Q3TableItem {
 public:
     int modo;
@@ -59,6 +60,7 @@ public:
 signals:
     void pulsadomas(int, int, int);
 };
+
 
 #endif
 

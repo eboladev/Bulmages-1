@@ -42,7 +42,7 @@ public:
     cobropagoview(empresa *, QWidget *parent = 0);
     ~cobropagoview();
 public slots:
-    virtual void s_actualizar();
+    virtual void on_mui_actualizar_clicked();
     virtual void s_guardar();
     virtual void s_recalculaSaldo();
 };

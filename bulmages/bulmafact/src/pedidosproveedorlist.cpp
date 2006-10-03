@@ -27,7 +27,6 @@
 #include "pedidosproveedorlist.h"
 #include "funcaux.h"
 #include "company.h"
-#include "qtable1.h"
 #include "configuracion.h"
 #include "pedidoproveedorview.h"
 

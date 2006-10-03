@@ -41,14 +41,14 @@
 #include "images/cgastos.xpm"
 
 SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
-
 }
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
-    if (camp->nomcampo() != "codigo")
+    /// Si no es un campo de tipo codigo salimos
+    if (camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente")
         return;
 
     QDialog *diag = new QDialog(0);
@@ -59,10 +59,18 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     if (listcuentas->codcuenta() != "") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo='"+listcuentas->codcuenta()+"'");
         if (!cur->eof() ) {
-            rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
-            rec->setDBvalue("codigo", cur->valor("codigo"));
-            rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
-            rec->setDBvalue("descripcion", cur->valor("descripcion"));
+            if (camp->nomcampo() == "codigo") {
+                rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
+                rec->setDBvalue("codigo", cur->valor("codigo"));
+                rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
+                rec->setDBvalue("descripcion", cur->valor("descripcion"));
+            } // end if
+            if (camp->nomcampo() == "codigoctacliente") {
+                rec->setDBvalue("idctacliente",cur->valor("idcuenta"));
+                rec->setDBvalue("codigoctacliente", cur->valor("codigo"));
+                rec->setDBvalue("tipoctacliente", cur->valor("tipocuenta"));
+                rec->setDBvalue("nomctacliente", cur->valor("descripcion"));
+            } // end if
         }// end if
         delete cur;
     } // end if
@@ -113,24 +121,24 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
     int row = currentRow();
     if ( row < 0)
         return;
-
+ 
     int col = currentColumn();
     if ( row < 0)
         return;
-
+ 
     QMenu *popup = new QMenu(this);
     if(m_delete)
         del = popup->addAction(tr("Borrar registro"));
     popup->addSeparator();
     QAction *ajustc = popup->addAction(tr("Ajustar columa"));
     QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-
+ 
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
-
+ 
     popup->addSeparator();
     QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
-
+ 
     QAction *opcion = popup->exec(QCursor::pos());
     if (opcion == del)
         borrar(row);
@@ -146,13 +154,13 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
         showConfig();
     delete popup;
 }
-
-
-
+ 
+ 
+ 
 int SubForm2Bc::cargar(cursor2 *cur) {
     _depura("SubForm2Bc::cargar",0);
     SubForm3::cargar(cur);
-
+ 
     SDBRecord *reg;
     for ( int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
@@ -183,7 +191,7 @@ int SubForm2Bc::cargar(cursor2 *cur) {
     _depura("END SubForm2Bc::cargar",0);
     return 0;
 }
-
+ 
 */
 
 void SubForm2Bc::boton_asiento() {
@@ -335,14 +343,14 @@ void SubForm2Bc::boton_balancetree(int tipo) {
 
 
 void SubForm2Bc::creaMenu(QMenu *menu) {
-	_depura("SubForm2Bc::pintaMenu", 0);
-	QAction *ac = menu->addAction("Submenu de Contabilidad");
-	menu->addSeparator();
-	_depura("END SubForm2Bc::pintaMenu", 0);
+    _depura("SubForm2Bc::pintaMenu", 0);
+    QAction *ac = menu->addAction("Submenu de Contabilidad");
+    menu->addSeparator();
+    _depura("END SubForm2Bc::pintaMenu", 0);
 }
 
 
 void SubForm2Bc::procesaMenu(QAction *ac) {
-	_depura("SubForm2Bc::procesaMenu", 0);
-	_depura("END SubForm2Bc::procesaMenu", 0);
+    _depura("SubForm2Bc::procesaMenu", 0);
+    _depura("END SubForm2Bc::procesaMenu", 0);
 }

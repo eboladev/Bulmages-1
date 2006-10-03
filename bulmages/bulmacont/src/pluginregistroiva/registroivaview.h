@@ -121,12 +121,8 @@ public slots://
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_listIvaChanged() {
         _depura("s_listIvaChanged",0);
-//        Fixed base = m_listalineas->calculabase();
 	Fixed base = mui_listIva->sumarCampo("baseiva");
-
-//        Fixed iva = m_listalineas->calculaiva();
 	Fixed iva = mui_listIva->sumarCampo("ivaiva");
-
         setbaseimp(base.toQString());
         setiva(iva.toQString());
         pintabaseimp(base.toQString());

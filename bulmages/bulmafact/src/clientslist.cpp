@@ -27,7 +27,6 @@
 #include "clientslist.h"
 #include "clienteview.h"
 #include "company.h"
-#include "qtable1.h"
 #include "funcaux.h"
 #include "pgimportfiles.h"
 #include "informereferencia.h"

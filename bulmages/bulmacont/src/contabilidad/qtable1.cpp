@@ -31,6 +31,8 @@
 #include "funcaux.h"
 
 
+
+
 QTable1::QTable1(QWidget * parent, const char * name ) : Q3Table(parent, name) {}
 
 
@@ -174,4 +176,6 @@ void QTableItem1::paint(QPainter *p, const QColorGroup &cg, const QRect &cr, boo
     /// FIN DEL MODO 10.
     Q3TableItem::paint(p, g, cr, selected);
 }
+
+
 
