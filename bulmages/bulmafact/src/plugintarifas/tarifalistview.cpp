@@ -32,7 +32,6 @@
 #include "tarifaview.h"
 #include "pgimportfiles.h"
 #include "company.h"
-#include "qtable1.h"
 #include "funcaux.h"
 
 
