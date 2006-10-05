@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,67 +18,67 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "rutacomercialview.h"
-
-#include "company.h"
-#include "configuracion.h"
-#include "busquedacliente.h"
-#include "busquedafecha.h"
-#include <QMessageBox>
-
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QFile>
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>
-
 #include <QCloseEvent>
 
+#include "rutacomercialview.h"
+#include "company.h"
+#include "configuracion.h"
+#include "busquedacliente.h"
+#include "busquedafecha.h"
+
+
 #include <fstream>
+
 using namespace std;
 
 #include "funcaux.h"
 #define coma "'"
 
-RutaComercialView::RutaComercialView( company *comp , QWidget *parent, const char *name) : QWidget(parent, name, Qt::WDestructiveClose) , RutaComercial(comp) ,dialogChanges(this) {
-	setupUi(this);
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
+RutaComercialView::RutaComercialView(company *comp, QWidget *parent)
+        : QWidget(parent), RutaComercial(comp), dialogChanges(this) {
+    _depura("RutaComercialView::RutaComercialView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
     dialogChanges_cargaInicial();
-    _depura("END RutaComercialView::RutaComercialView",0);
+    _depura("END RutaComercialView::RutaComercialView", 0);
 }
 
-RutaComercialView::RutaComercialView(QWidget *parent, const char *name) : QWidget(parent, name, Qt::WDestructiveClose) , RutaComercial(NULL) ,dialogChanges(this) {
-	setupUi(this);
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-//    mui_cliente->setcompany(comp);
+
+RutaComercialView::RutaComercialView(QWidget *parent)
+        : QWidget(parent), RutaComercial(NULL), dialogChanges(this) {
+    _depura("RutaComercialView::RutaComercialView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
     dialogChanges_cargaInicial();
-    _depura("END RutaComercialView::RutaComercialView",0);
+    _depura("END RutaComercialView::RutaComercialView", 0);
 }
+
 
 RutaComercialView::~RutaComercialView() {
-    _depura("END RutaComercialView::RutaComercialView",0);
+    _depura("END RutaComercialView::RutaComercialView", 0);
 }
 
 
-
-
-void RutaComercialView::closeEvent( QCloseEvent *e) {
-	_depura("closeEvent",0);
+void RutaComercialView::closeEvent(QCloseEvent *e) {
+    _depura("closeEvent", 0);
     if (dialogChanges_hayCambios())  {
-        int val = QMessageBox::warning( this, "Guardar Cobro",
-                                   "Desea guardar los cambios.","Si","No","Cancelar",0,2);
-	if (val == 0) 
+        int val = QMessageBox::warning(this,
+                                       tr("Guardar cobro"),
+                                       tr("Desea guardar los cambios?"),
+                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+        if (val == 0)
             guardar();
-	if (val == 2)
-	    e->ignore();
-    }// end if	
+        if (val == 2)
+            e->ignore();
+    } // end if
+    _depura("END closeEvent", 0);
 }
-
-
-
-
 

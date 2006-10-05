@@ -21,9 +21,6 @@
 #ifndef LISTLTARIFAVIEW_H
 #define LISTLTARIFAVIEW_H
 
-#include <QEvent>
-#include <QTableWidget>
-
 #include "qtable2.h"
 #include "subform2bf.h"
 
@@ -33,18 +30,16 @@ class ListLTarifaView : public SubForm2Bf {
 
 public:
     QString mdb_idarticulo;
-    ListLTarifaView(QWidget *parent = 0, const char *name = 0);
+    ListLTarifaView(QWidget *parent = 0);
     ~ListLTarifaView() {}
     ;
 
 public slots:
     virtual void cargar(QString idarticulo) {
         _depura("ListLTarifaView::cargaListCompArticulo\n", 0);
-
         mdb_idarticulo=idarticulo;
-
-        QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa) AS t2 LEFT JOIN (SELECT * FROM articulo WHERE idarticulo = " + mdb_idarticulo + ") AS t3 ON 1=1 ";
-        SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo=" + mdb_idarticulo + ") as t1 ON t1.idtarifa=t2.idtarifa AND t1.idalmacen=t2.idalmacen ";
+        QString SQLQuery = "SELECT * FROM (SELECT * FROM almacen, tarifa) AS t2 LEFT JOIN (SELECT * FROM articulo WHERE idarticulo = " + mdb_idarticulo + ") AS t3 ON 1 = 1 ";
+        SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idarticulo = " + mdb_idarticulo + ") as t1 ON t1.idtarifa = t2.idtarifa AND t1.idalmacen = t2.idalmacen ";
         SubForm2Bf::cargar(SQLQuery);
         _depura("END ListLTarifaView::cargaListCompArticulo\n", 0);
     };
@@ -55,24 +50,23 @@ class ListLTarifaView1 : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    ListLTarifaView1(QWidget *parent = 0, const char *name = 0);
+    ListLTarifaView1(QWidget *parent = 0);
     ~ListLTarifaView1() {}
     ;
 
 public slots:
     virtual void cargar(QString SQLQuery) {
         _depura("ListCompArticulo::cargar\n", 0);
-            SubForm2Bf::cargar(SQLQuery);
+        SubForm2Bf::cargar(SQLQuery);
     };
 };
 
 
-/// OJO esta clase esta definida aqui pero es el lanzador del plugin para las
-/// entradas de menu del plugin.
-
 #include "bulmafact.h"
 
 
+/// OJO. Esta clase est&aacute; definida aqu&iacute; pero es el lanzador del plugin para las
+/// entradas del men&uacute; del plugin.
 class myplugin1 : public QObject {
     Q_OBJECT
 

@@ -18,25 +18,18 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QMessageBox>
-#include <QKeyEvent>
-#include <QEvent>
-#include <QFile>
-#include <QTextStream>
-#include <QMenu>
-
 #include "company.h"
 #include "tarifalistsubform.h"
 #include "funcaux.h"
 
 
-TarifaListSubform::TarifaListSubform(QWidget *parent, const char *)
+TarifaListSubform::TarifaListSubform(QWidget *parent)
         : SubForm2Bf(parent) {
     _depura("TarifaListSubform::TarifaListSubform", 0);
     setDBTableName("tarifa");
     setDBCampoId("idtarifa");
-    addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre articulo"));
-    addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id tarifa"));
+    addSHeader("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de la tarifa"));
+    addSHeader("idtarifa", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID tarifa"));
     setinsercion(FALSE);
     _depura("END TarifaListSubform::TarifaListSubform", 0);
 }

@@ -21,8 +21,6 @@
 #ifndef RUTACOMERCIAL_H
 #define RUTACOMERCIAL_H
 
-
-
 #include <QString>
 
 #include "company.h"
@@ -30,7 +28,6 @@
 
 
 class RutaComercial : public DBRecord {
-
 protected:
     company *m_companyact;
 
@@ -40,24 +37,23 @@ public:
         return m_companyact;
     };
     void setcompany(company *comp) {
-	m_companyact = comp;
-	DBRecord::setconexionbase(comp);
-	};
+        m_companyact = comp;
+        DBRecord::setconexionbase(comp);
+    };
     virtual ~RutaComercial();
     virtual void pintar();
-//    virtual int guardar();
     virtual int cargar(QString id) {
-        _depura("RutaComercial::cargar",0);
-	QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial=" + id;
-	cursor2 * cur= m_companyact->cargacursor(query);
-	if (!cur->eof())  {
-		DBload(cur);
-	}
-	delete cur;
-        _depura("END RutaComercial::cargar",0);
+        _depura("RutaComercial::cargar", 0);
+        QString query = "SELECT * FROM rutacomercial WHERE idrutacomercial = " + id;
+        cursor2 *cur = m_companyact->cargacursor(query);
+        if (!cur->eof())  {
+            DBload(cur);
+        }
+        delete cur;
+        _depura("END RutaComercial::cargar", 0);
         return 0;
     };
 };
 
-
 #endif
+

@@ -21,9 +21,6 @@
 #ifndef BUSQUEDAZONACOMERCIAL_H
 #define BUSQUEDAZONACOMERCIAL_H
 
-
-
-
 #include <QComboBox>
 
 #include "company.h"
@@ -31,42 +28,37 @@
 #include "funcaux.h"
 
 
-class BusquedaZonaComercial : public QComboBox
-{
-	Q_OBJECT
+class BusquedaZonaComercial : public QComboBox {
+    Q_OBJECT
 
 private:
-	company *companyact;
-	cursor2 *m_cursorcombo;
+    company *companyact;
+    cursor2 *m_cursorcombo;
 
 public:
-	BusquedaZonaComercial(QWidget *parent = 0);
-	~BusquedaZonaComercial();
-	void setcompany(company *comp)
-	{
-		companyact = comp;
-	};
-	virtual void setidzonacomercial(QString idzonacomercial);
-	QString idzonacomercial() {
-		return m_cursorcombo->valor("idzonacomercial", currentIndex()-1);
-	};
+    BusquedaZonaComercial(QWidget *parent = 0);
+    ~BusquedaZonaComercial();
+    void setcompany(company *comp) {
+        companyact = comp;
+    };
+    virtual void setidzonacomercial(QString idzonacomercial);
+    QString idzonacomercial() {
+        return m_cursorcombo->valor("idzonacomercial", currentIndex() - 1);
+    };
+
 public slots:
-	void m_activated(int index)
-	{
-	    	_depura("Activado el combo box", 0);
-		if (index > 0)
-		{
-			emit(valueChanged(m_cursorcombo->valor("idzonacomercial", index - 1)));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void m_activated(int index) {
+        _depura("Activado el combo box", 0);
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("idzonacomercial", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
-
-
-
 #endif
+

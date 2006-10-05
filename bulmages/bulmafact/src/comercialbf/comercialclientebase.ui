@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>520</width>
+    <height>412</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,70 +17,74 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <widget class="QGroupBox" name="groupBox" >
+     <property name="title" >
+      <string>Datos comerciales:</string>
      </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="label_K4_2" >
-       <property name="text" >
-        <string>Zona Comercial</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaZonaComercial" name="mui_zonacomercial" />
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="label_K4_3" >
-       <property name="text" >
-        <string>Fecha Base</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaFecha" name="mui_fechabasecomercialcliente" />
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="label_K4_4" >
-       <property name="text" >
-        <string>Periodo Visitas</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaPeriodo" name="mui_periodocomercialcliente" />
-     </item>
-    </layout>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item>
+       <layout class="QGridLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item row="2" column="1" >
+         <widget class="BusquedaPeriodo" name="mui_periodocomercialcliente" />
+        </item>
+        <item row="1" column="1" >
+         <widget class="BusquedaFecha" name="mui_fechabasecomercialcliente" />
+        </item>
+        <item row="2" column="0" >
+         <widget class="QLabel" name="label_K4_4" >
+          <property name="text" >
+           <string>Periodo de visitas:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" >
+         <widget class="QLabel" name="label_K4_3" >
+          <property name="text" >
+           <string>Fecha base:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" >
+         <widget class="BusquedaZonaComercial" name="mui_zonacomercial" />
+        </item>
+        <item row="0" column="0" >
+         <widget class="QLabel" name="label_K4_2" >
+          <property name="text" >
+           <string>Zona comercial:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <layout class="QVBoxLayout" >
@@ -88,12 +92,12 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label_K4" >
        <property name="text" >
-        <string>Comentarios Comerciales</string>
+        <string>Comentarios comerciales:</string>
        </property>
       </widget>
      </item>

@@ -21,52 +21,48 @@
  ***************************************************************************/
 
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QTextStream>
 #include <QLayout>
-#include <QMessageBox>
 #include <fstream>
-
 
 #include "listzonacomercialview.h"
 #include "company.h"
 #include "configuracion.h"
 #include "busquedacliente.h"
 #include "busquedafecha.h"
+
 using namespace std;
+
 #include "funcaux.h"
 
-// DEBUGMODE => 0 = Disabled; 1 = Enabled;
-#define DEBUGMODE 1
 
-
-ListZonaComercialView::ListZonaComercialView( company *comp , QWidget *parent, const char *name) : QWidget (parent, name, Qt::WDestructiveClose) {
-	_depura("INIT_ListZonaComercialView::ListZonaComercialView", DEBUGMODE);
-	setupUi(this);
-	companyact = comp;
-	mui_listado->setcompany(comp);
-	mui_listado->cargar();
-	companyact->meteWindow(windowTitle(), this);
-	_depura("END_ListZonaComercialView::ListZonaComercialView", DEBUGMODE);
+ListZonaComercialView::ListZonaComercialView(company *comp, QWidget *parent)
+        : QWidget (parent) {
+    _depura("INIT_ListZonaComercialView::ListZonaComercialView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
+    setupUi(this);
+    companyact = comp;
+    mui_listado->setcompany(comp);
+    mui_listado->cargar();
+    companyact->meteWindow(windowTitle(), this);
+    _depura("END_ListZonaComercialView::ListZonaComercialView", 0);
 }
 
 
 ListZonaComercialView::~ListZonaComercialView() {
-   companyact->sacaWindow(this);
+    companyact->sacaWindow(this);
 }
-
-
 
 
 /// ===================================== SUBFORMULARIO ===============================================
-ListZonaComercialSubForm::ListZonaComercialSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+ListZonaComercialSubForm::ListZonaComercialSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("zonacomercial");
     setDBCampoId("idzonacomercial");
-    addSHeader("idzonacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, "idzonacomercial");
-    addSHeader("nomzonacomercial", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, "nomzonacomercial");
-	setinsercion(TRUE);
+    addSHeader("idzonacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("ID zona comercial"));
+    addSHeader("nomzonacomercial", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Nombre de la zona comercial"));
+    setinsercion(TRUE);
 }
+

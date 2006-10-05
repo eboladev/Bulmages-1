@@ -1,5 +1,12 @@
 <!DOCTYPE TS><TS>
 <context>
+    <name>AboutView</name>
+    <message>
+        <source>Compilado usando la version de QT:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>AlbaranCliente</name>
     <message>
         <source>Id albaran</source>
@@ -797,28 +804,12 @@
         <translation>Subcódigo:</translation>
     </message>
     <message>
-        <source>Nombre:</source>
-        <translation>Nombre:</translation>
-    </message>
-    <message>
         <source>Familia:</source>
         <translation>Familia:</translation>
     </message>
     <message>
-        <source>P.V.P. recomendado:</source>
-        <translation>P.V.P. recomendado:</translation>
-    </message>
-    <message>
         <source>Tipo de I.V.A.:</source>
         <translation>Tipo de I.V.A.:</translation>
-    </message>
-    <message>
-        <source>&amp;Incluir en detalles</source>
-        <translation>&amp;Incluir en detalles</translation>
-    </message>
-    <message>
-        <source>&amp;Control de stock</source>
-        <translation>&amp;Control de stock</translation>
     </message>
     <message>
         <source>Cam&amp;biar imagen</source>
@@ -845,8 +836,40 @@
         <translation>Nuevo artículo</translation>
     </message>
     <message>
-        <source>Descripcion corta:</source>
-        <translation>Descripción corta:</translation>
+        <source>Codigo del articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Informacion del articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Precio de venta s/IVA:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nombre del articulo:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texto para etiqueta:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Otros datos:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Incluir este articulo en el catalogo.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Activar el &amp;control de stock para este articulo.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Imagen del articulo:</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1052,10 +1075,6 @@
 <context>
     <name>BudgetBase</name>
     <message>
-        <source>Presupuesto</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Pro&amp;cesado</source>
         <translation>Pro&amp;cesado</translation>
     </message>
@@ -1096,16 +1115,8 @@
         <translation>Referencia:</translation>
     </message>
     <message>
-        <source>Descripcion del presupuesto:</source>
-        <translation>Descripción del presupuesto:</translation>
-    </message>
-    <message>
         <source>Numero de presupuesto:</source>
         <translation>Número de presupuesto:</translation>
-    </message>
-    <message>
-        <source>Tel. de contacto:</source>
-        <translation>Tel. de contacto:</translation>
     </message>
     <message>
         <source>Persona de contacto:</source>
@@ -1160,8 +1171,24 @@
         <translation></translation>
     </message>
     <message>
-        <source>Total base imponible:</source>
-        <translation>Total base imponible:</translation>
+        <source>Presupuesto a cliente</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Telefono de contacto:</source>
+        <translation type="unfinished">Teléfono de contacto:</translation>
+    </message>
+    <message>
+        <source>Total Base Imponible:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>€</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2154,15 +2181,15 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Base </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Iva </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Total </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Base</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5057,7 +5084,7 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>URL</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Comentarios</source>
@@ -5085,11 +5112,11 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <source>Codigo cliente</source>
-        <translation type="unfinished">Código cliente</translation>
+        <translation>Código cliente</translation>
     </message>
     <message>
         <source>Banco proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Error al crear el proveedor</source>
@@ -5174,12 +5201,12 @@ Esta seguro que desea borrarlo?</source>
         <translation></translation>
     </message>
     <message>
-        <source>Ver configurador de subformulario</source>
+        <source>Ajustar columna</source>
         <translation></translation>
     </message>
     <message>
-        <source>Ajustar columna</source>
-        <translation></translation>
+        <source>Ver/Ocultar configurador de subformulario</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5305,10 +5332,6 @@ Esta seguro que desea borrarlo?</source>
         <source>Acerca de BulmaFact</source>
         <translation></translation>
     </message>
-    <message encoding="UTF-8">
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Facturación GPL&lt;/span&gt; - &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Versión 0.5.9&lt;/span&gt; - &lt;span style=&quot; font-style:italic;&quot;&gt;Usando QT4.1.0&lt;/span&gt; -&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation></translation>
-    </message>
     <message>
         <source>&amp;Acerca de</source>
         <translation>&amp;Acerca de</translation>
@@ -5332,6 +5355,10 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <source>&amp;Cerrar</source>
         <translation>&amp;Cerrar</translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>Facturación GPL - Versión 0.5.9 -</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5691,31 +5718,31 @@ QMenuBar and QToolBar.</translation>
         <translation>Nombre del artículo</translation>
     </message>
     <message>
-        <source>Idl presupuesto</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Descripcion presupuesto</source>
         <translation>Descripción presupuesto</translation>
     </message>
     <message>
-        <source>Cantidadl presupuesto</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>PVPL presupuesto</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>IVAL presupuesto</source>
-        <translation></translation>
-    </message>
-    <message>
-        <source>Desceuentol presupuesto</source>
-        <translation></translation>
-    </message>
-    <message>
         <source>Id presupuesto</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Linea de presupuesto</source>
+        <translation>Línea de presupuesto</translation>
+    </message>
+    <message>
+        <source>Cantidad</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Precio de venta s/IVA</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>% IVA</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>% Desceuento</source>
         <translation></translation>
     </message>
 </context>

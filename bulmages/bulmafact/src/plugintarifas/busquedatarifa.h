@@ -21,13 +21,13 @@
 #ifndef BUSQUEDATARIFA_H
 #define BUSQUEDATARIFA_H
 
-#include <Q3ComboBox>
+#include <QComboBox>
 
 #include "company.h"
 #include "postgresiface2.h"
 
 
-class BusquedaTarifa : public Q3ComboBox {
+class BusquedaTarifa : public QComboBox {
     Q_OBJECT
 
 private:
@@ -36,7 +36,7 @@ private:
     QString mdb_idtarifa;
 
 public:
-    BusquedaTarifa(QWidget *parent = 0, const char *name = 0);
+    BusquedaTarifa(QWidget *parent = 0);
     ~BusquedaTarifa();
     void setcompany(company *comp) {
         companyact = comp;

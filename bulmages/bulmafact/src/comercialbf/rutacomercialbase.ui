@@ -12,29 +12,18 @@
     <height>398</height>
    </rect>
   </property>
-  <property name="font" >
-   <font>
-    <family>Sans Serif</family>
-    <pointsize>11</pointsize>
-    <weight>75</weight>
-    <italic>false</italic>
-    <bold>true</bold>
-    <underline>false</underline>
-    <strikeout>false</strikeout>
-   </font>
-  </property>
   <property name="windowTitle" >
-   <string>Ruta Comercial</string>
+   <string>Ruta comercial</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -63,7 +52,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:11pt; font-weight:600; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:400;">Fecha Ruta&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+          <string>Fecha ruta:</string>
          </property>
          <property name="buddy" >
           <cstring>mui_fecharutacomercial</cstring>
@@ -107,7 +96,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>Referencia</string>
+          <string>Referencia:</string>
          </property>
          <property name="buddy" >
           <cstring>mui_refrutacomercial</cstring>
@@ -168,7 +157,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:11pt; font-weight:600; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:400;">Hora&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+        <string>Hora:</string>
        </property>
        <property name="buddy" >
         <cstring>mui_refrutacomercial</cstring>
@@ -220,7 +209,7 @@
           </sizepolicy>
          </property>
          <property name="text" >
-          <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:11pt; font-weight:600; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:400;">Cliente&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+          <string>Cliente:</string>
          </property>
          <property name="buddy" >
           <cstring>mui_idcliente</cstring>
@@ -253,7 +242,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="textLabel1_2_2_3_4" >
@@ -266,7 +255,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>&lt;html>&lt;head>&lt;meta name="qrichtext" content="1" />&lt;/head>&lt;body style=" white-space: pre-wrap; font-family:Sans Serif; font-size:11pt; font-weight:600; font-style:normal; text-decoration:none;">&lt;p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">&lt;span style=" font-weight:400;">Comentarios&lt;/span>&lt;/p>&lt;/body>&lt;/html></string>
+        <string>Comentarios:</string>
        </property>
        <property name="buddy" >
         <cstring>mui_comentrutacomercial</cstring>

@@ -1,67 +1,55 @@
-//
-// C++ Implementation: RutaComercial
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <QFile>
+#include <QTextStream>
 
 #include "rutacomercial.h"
 #include "company.h"
 #include "configuracion.h"
 #include "plugins.h"
 
-#include <QFile>
-#include <QTextStream>
-
-
 
 RutaComercial::RutaComercial(company *comp) : DBRecord(comp) {
-    m_companyact=comp;
+    m_companyact = comp;
     setDBTableName("rutacomercial");
     setDBCampoId("idrutacomercial");
-    addDBCampo("idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");
-    addDBCampo("fecharutacomercial", DBCampo::DBdate, DBCampo::DBNotNull, "Fecha");
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, "Familia");
-    addDBCampo("comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, "Comentarios");
-    addDBCampo("horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, "Hora");
-    addDBCampo("refrutacomercial",  DBCampo::DBvarchar, DBCampo::DBNothing, "Referencia");
+    addDBCampo("idrutacomercial", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("RutaComercial", "Identificador"));
+    addDBCampo("fecharutacomercial", DBCampo::DBdate, DBCampo::DBNotNull, QApplication::translate("RutaComercial", "Fecha"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("RutaComercial", "Familia"));
+    addDBCampo("comentariosrutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Comentarios"));
+    addDBCampo("horarutacomercial", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Hora"));
+    addDBCampo("refrutacomercial",  DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("RutaComercial", "Referencia"));
 }
+
 
 RutaComercial::~RutaComercial() {}
 
 
-
-
 void RutaComercial::pintar() {
-    _depura("RutaComercial::pintar",0);
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    _depura("RutaComercial::pintar", 0);
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("RutaComercial_pintar", this);
     if (res != 0)
         return;
-	_depura("funcion no sobrecargada",2);
-    _depura("END RutaComercial::pintar",0);
+    _depura("funcion no sobrecargada", 2);
+    _depura("END RutaComercial::pintar", 0);
 }
-
-/*
-int RutaComercial::guardar() {
-	_depura("RutaComercial::guardar",0);
-	/// Todo el guardado es una transaccion.
-	QString id;
-	m_companyact->begin();
-	int error = DBsave(id);
-	if (error)  {
-		m_companyact->rollback();
-		return -1;
-	}
-	setDBvalue("idrutacomercial",id);
-	m_companyact->commit();
-	_depura("END RutaComercial::guardar",0);
-	return 0;
-}
-*/
 

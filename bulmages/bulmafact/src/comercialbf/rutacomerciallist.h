@@ -31,20 +31,22 @@
 
 class RutaComercialListSubForm : public SubForm2Bf {
     Q_OBJECT
+
 public:
-    RutaComercialListSubForm(QWidget *parent = 0, const char *name = 0);
+    RutaComercialListSubForm(QWidget *parent = 0);
     ~RutaComercialListSubForm() {}
     ;
+
 public slots:
     virtual void cargar() {
-        _depura("RutaComercialListSubForm::cargar\n",0);
+        _depura("RutaComercialListSubForm::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
     virtual void cargar(cursor2 *cur) {
-        _depura("PedidosClienteListSubform::cargar\n",0);
+        _depura("PedidosClienteListSubform::cargar\n", 0);
         SubForm3::cargar(cur);
     };
 };
@@ -53,25 +55,21 @@ public slots:
 #include "ui_rutacomerciallistbase.h"
 
 
-
-
 class RutaComercialList : public QWidget, public Ui_RutaComercialListBase {
-Q_OBJECT
+    Q_OBJECT
+
 private:
     company *m_companyact;
-    /// m_modo == 0 es modo edicion
+    /// m_modo == 0 es modo edici&oacute;n
     /// m_modo == 1 es modo selector.
     int m_modo;
     QString m_idpresupuesto;
 
 public:
-    RutaComercialList(QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0);
-    RutaComercialList(company *comp = NULL, QWidget *parent = 0, const char *name = 0,
-                    Qt::WFlags flag = 0);
+    RutaComercialList(QWidget *parent = 0);
+    RutaComercialList(company *comp = NULL, QWidget *parent = 0);
     ~RutaComercialList();
-
     void presenta();
-
     int modo() {
         return m_modo;
     };
@@ -87,11 +85,10 @@ public:
     void modoedicion() {
         m_modo = 0;
     };
-    void setcompany (company *comp) {
+    void setcompany(company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
     };
-
     void hideBotonera() {
         m_botonera->hide();
     };
@@ -105,46 +102,34 @@ public:
         m_busqueda->show();
     };
     void imprimir();
-
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
         }
     };
-
-
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
     };
     QString generaFiltro();
-
-
     void editar(int);
 
 public slots:
-    virtual void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
-		on_mui_editar_clicked();
-	};
-
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+        on_mui_editar_clicked();
+    };
     virtual void on_mui_editar_clicked();
-
-    virtual void on_mui_crear_clicked(); 
- 
+    virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();
     };
-
     virtual void on_mui_actualizar_clicked() {
         presenta();
     };
 
 signals:
-	void selected(QString);
-
-
+    void selected(QString);
 };
 
-
-
 #endif
+

@@ -18,15 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3ComboBox>
+#include <QComboBox>
 
 #include "busquedatarifa.h"
 #include "company.h"
 #include "funcaux.h"
 
 
-BusquedaTarifa::BusquedaTarifa(QWidget *parent, const char *name)
-        : Q3ComboBox(parent, name) {
+BusquedaTarifa::BusquedaTarifa(QWidget *parent)
+        : QComboBox(parent) {
     companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
@@ -45,14 +45,14 @@ void BusquedaTarifa::setidtarifa(QString idtarifa) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
     while (!m_cursorcombo->eof()) {
-        i ++;
+        i++;
         if (m_cursorcombo->valor("idtarifa") == idtarifa)
             i1 = i;
-        insertItem(m_cursorcombo->valor("nomtarifa"));
+        addItem(m_cursorcombo->valor("nomtarifa"));
         m_cursorcombo->siguienteregistro();
     }
-    setCurrentItem(i1);
+    setCurrentIndex(i1);
 }
 

@@ -49,14 +49,14 @@ void myplugin::elslot() {
 
 
 void myplugin::inicializa(bulmafact *bges) {
-    /// Creamos el menu.
+    /// Creamos el men&uacute;.
     QMenu *pPluginMenu = new QMenu("&Plugin");
     QAction *accion = new QAction("&Prueba de plugin", 0);
     accion->setStatusTip("Muestra statustip");
     accion->setWhatsThis("Muestra que es esto");
     connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
     pPluginMenu->addAction(accion);
-    /// Anyadimos la nueva opcion al menu principal del programa.
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
     bges->menuBar()->addMenu(pPluginMenu);
 }
 
@@ -65,7 +65,7 @@ void entryPoint(bulmafact *bges) {
     _depura("Estoy dentro del plugin\n", 0);
     myplugin *plug = new myplugin();
     plug->inicializa(bges);
-    /// SOLO A MODO DE EJEMPLO: se modifica el titulo de la ventana principal
+    /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
     /// del programa para indicar que el plugin se ha cargado.
     bges->setWindowTitle("Prueba de plugin.");
 }

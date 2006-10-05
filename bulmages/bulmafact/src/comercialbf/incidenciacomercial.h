@@ -21,30 +21,29 @@
 #ifndef INCIDENCIACOMERCIAL_H
 #define INCIDENCIACOMERCIAL_H
 
-
 #include <QString>
 
 #include "company.h"
 #include "dbrecord.h"
 
 
-class IncidenciaComercial : public DBRecord
-{
+class IncidenciaComercial : public DBRecord {
 
 protected:
-	company *m_companyact;
+    company *m_companyact;
 
 public:
-	IncidenciaComercial(company *);
-	company* companyact() {return m_companyact;};
-	virtual ~IncidenciaComercial();
-	virtual void pintar();
+    IncidenciaComercial(company *);
+    company* companyact() {
+        return m_companyact;
+    };
+    virtual ~IncidenciaComercial();
+    virtual void pintar();
     void setcompany(company *comp) {
-	m_companyact = comp;
-	DBRecord::setconexionbase(comp);
-	};
+        m_companyact = comp;
+        DBRecord::setconexionbase(comp);
+    };
 };
 
-
-
 #endif
+

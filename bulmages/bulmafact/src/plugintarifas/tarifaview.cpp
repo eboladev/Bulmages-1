@@ -18,17 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLineEdit>
-#include <QMessageBox>
-#include <Q3Table>
-#include <QComboBox>
-#include <Q3TextEdit>
-#include <QLabel>
-#include <QPixmap>
-#include <QCheckBox>
-#include <Q3FileDialog>
 #include <QCloseEvent>
-
 
 #include "tarifaview.h"
 #include "company.h"
@@ -42,25 +32,25 @@
 #include "plugins.h"
 
 
-TarifaView::TarifaView(company *comp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) ,dialogChanges(this), DBRecord(comp) {
+TarifaView::TarifaView(company *comp, QWidget *parent)
+        : QWidget(parent) ,dialogChanges(this), DBRecord(comp) {
     _depura("TarifaView::INIT_constructor()\n", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     m_companyact = comp;
     setupUi(this);
     setDBTableName("tarifa");
     setDBCampoId("idtarifa");
-    addDBCampo("idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Identificador"));
-    addDBCampo("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre Tarifa"));
+    addDBCampo("idtarifa", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("ID tarifa"));
+    addDBCampo("nomtarifa", DBCampo::DBvarchar, DBCampo::DBNotNull, tr("Nombre de la tarifa"));
     mui_idfamilia->setcompany(comp);
     mui_almacen->setcompany(comp);
     mui_almacen->setidalmacen("0");
     mui_list->setcompany(comp);
 
-    if (m_companyact->meteWindow("Tarifa Edicion", this))
+    if (m_companyact->meteWindow(tr("Tarifa edicion"), this))
         return;
 
     dialogChanges_cargaInicial();
-
     _depura("TarifaView::END_constructor()\n", 0);
 }
 
@@ -75,7 +65,7 @@ TarifaView::~TarifaView() {
 void TarifaView::pintar() {
     _depura("TarifaView::pintar", 0);
     mui_nomtarifa->setText(DBvalue("nomtarifa"));
-    setCaption(tr("Tarifa ") + mui_nomtarifa->text());
+    setWindowTitle(tr("Tarifa") + " " + mui_nomtarifa->text());
     _depura("END TarifaView::pintar", 1);
 }
 
@@ -90,25 +80,25 @@ QString TarifaView::formaQuery(QString idtarifa) {
 
     QString idfamilia = mui_idfamilia->idfamilia();
     if (idfamilia != "") {
-        wherearticulo += warticulo + " idfamilia=" + idfamilia;
+        wherearticulo += warticulo + " idfamilia = " + idfamilia;
         warticulo = " AND ";
     } // end if
 
     QString idalmacen = mui_almacen->idalmacen();
     if (idalmacen != "") {
-        wherealmacen += walmacen + " idalmacen=" + idalmacen;
+        wherealmacen += walmacen + " idalmacen = " + idalmacen;
         walmacen = " AND ";
     } // end if
 
-    QString SQLQuery = "SELECT * FROM (SELECT * FROM (SELECT * FROM almacen "+wherealmacen+") AS t6, (SELECT * FROM articulo " + wherearticulo + ") AS t5, (SELECT * FROM tarifa WHERE idtarifa= " + idtarifa + ") AS t2 ) AS t3 ";
-    SQLQuery+= " LEFT JOIN (SELECT * FROM ltarifa WHERE idtarifa=" + idtarifa + ") as t1 ON t1.idtarifa=t3.idtarifa AND t1.idalmacen=t3.idalmacen AND t1.idarticulo=t3.idarticulo";
+    QString SQLQuery = "SELECT * FROM (SELECT * FROM (SELECT * FROM almacen " + wherealmacen + ") AS t6, (SELECT * FROM articulo " + wherearticulo + ") AS t5, (SELECT * FROM tarifa WHERE idtarifa = " + idtarifa + ") AS t2 ) AS t3 ";
+    SQLQuery += " LEFT JOIN (SELECT * FROM ltarifa WHERE idtarifa = " + idtarifa + ") as t1 ON t1.idtarifa = t3.idtarifa AND t1.idalmacen = t3.idalmacen AND t1.idarticulo = t3.idarticulo";
     return SQLQuery;
 }
 
 
-/// Esta funcion carga un articulo de la base de datos y lo presenta.
-/// Si el parametro pasado no es un identificador válido entonces se pone
-/// la ventana de edición en modo de inserción.
+/// Esta funci&oacute;n carga un art&iacute;culo de la base de datos y lo presenta.
+/// Si el par&aacute;metro pasado no es un identificador v&aacute;lido entonces se pone
+/// la ventana de edici&oacute;n en modo de inserci&oacute;n.
 int TarifaView::cargar(QString idtarifa) {
     _depura("TarifaView::cargar(" + idtarifa + ")\n", 0);
     int error = 0;
@@ -116,8 +106,8 @@ int TarifaView::cargar(QString idtarifa) {
     DBRecord::cargar(idtarifa);
     mui_list->cargar(formaQuery(idtarifa));
 
-    setCaption("Tarifa " + DBvalue("nomtarifa"));
-    if (m_companyact->meteWindow(caption(), this))
+    setWindowTitle(tr("Tarifa") + " " + DBvalue("nomtarifa"));
+    if (m_companyact->meteWindow(windowTitle(), this))
         return -1;
 
     dialogChanges_cargaInicial();
@@ -145,7 +135,7 @@ int TarifaView::guardar() {
 }
 
 
-/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo.
+/// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de nuevo.
 void TarifaView::on_mui_crear_clicked() {
     _depura("TarifaView::INIT_boton_nuevo()\n", 0);
     vaciar();
@@ -163,13 +153,13 @@ void TarifaView::on_mui_actualizar_clicked() {
 }
 
 
-/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
+/// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 void TarifaView::on_mui_borrar_clicked() {
     _depura("TarifaView::INIT_boton_borrar()\n", 0);
     if (DBvalue("idtarifa") != "") {
         if (QMessageBox::question(this,
                                   tr("Borrar tarifa"),
-                                  tr("Esta a punto de borrar una tarifa. Desea continuar?."),
+                                  tr("Esta a punto de borrar una tarifa. Desea continuar?"),
                                   tr("&Si"), tr("&No"), 0, 1, 0) == 0) {
             m_companyact->begin();
             int error = mui_list->borrar();

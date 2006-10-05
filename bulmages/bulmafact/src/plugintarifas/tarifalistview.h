@@ -40,15 +40,14 @@ private:
     edmode m_modo;
 
 public:
-    TarifaListView(company *, QWidget *parent = 0, const char *name = 0,
-                   Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    TarifaListView(company *, QWidget *parent = 0, edmode editmodo = EditMode);
     ~TarifaListView();
     void editar(int);
 public slots:
     void on_mui_crear_clicked();
     void on_mui_editar_clicked();
     void on_mui_borrar_clicked();
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *item) {
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
 };

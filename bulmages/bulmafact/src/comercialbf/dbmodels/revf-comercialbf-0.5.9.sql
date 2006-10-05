@@ -1,3 +1,5 @@
+
+SET client_min_messages TO warning;
 --
 -- Modificacion de campos y funciones de la BD para la adaptacion para el plugin de ComercialBF.
 --
@@ -52,7 +54,7 @@ DECLARE
 	rec RECORD;
 
 BEGIN
-	SELECT INTO rec * FROM pg_attribute  WHERE attname = ''idzonacomercial'';
+	SELECT INTO rec * FROM pg_attribute WHERE attname = ''idzonacomercial'';
 	IF NOT FOUND THEN
 		CREATE TABLE zonacomercial (
 			idzonacomercial SERIAL PRIMARY KEY,
@@ -167,3 +169,4 @@ DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;
 
 \echo -n ':: Finalizamos la transaccion ... '
 COMMIT;
+

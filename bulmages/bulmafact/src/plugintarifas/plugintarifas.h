@@ -24,12 +24,6 @@
 # define MY_EXPORT
 #endif
 
-#include <QStringList>
-#include <QWidget>
-#include <QIcon>
-#include <QApplication>
-#include <QObject>
-
 #include "postgresiface2.h"
 #include "clienteview.h"
 #include "articuloview.h"

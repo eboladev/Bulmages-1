@@ -21,17 +21,15 @@
 #ifndef TARIFALISTSUBFORM_H
 #define TARIFALISTSUBFORM_H
 
-#include <QEvent>
-#include <QTableWidget>
-
 #include "qtable2.h"
 #include "subform2bf.h"
 
 
 class TarifaListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
-    TarifaListSubform(QWidget *parent = 0, const char *name = 0);
+    TarifaListSubform(QWidget *parent = 0);
     ~TarifaListSubform() {}
     ;
 
@@ -39,7 +37,7 @@ public slots:
     virtual void cargar() {
         _depura("TarifaListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM tarifa";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 *cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };

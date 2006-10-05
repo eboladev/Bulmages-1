@@ -8,33 +8,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>717</width>
-    <height>653</height>
+    <width>632</width>
+    <height>440</height>
    </rect>
   </property>
-  <property name="font" >
-   <font>
-    <family>Sans Serif</family>
-    <pointsize>11</pointsize>
-    <weight>75</weight>
-    <italic>false</italic>
-    <bold>true</bold>
-    <underline>false</underline>
-    <strikeout>false</strikeout>
-   </font>
-  </property>
   <property name="windowTitle" >
-   <string>Ruta Comercial</string>
+   <string>Ruta comercial</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cuentas_ingresos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -55,30 +44,19 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="frame3" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="frame" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
        </property>
-       <property name="margin" >
-        <number>0</number>
-       </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -146,8 +124,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>70</width>
-            <height>21</height>
+            <width>149</width>
+            <height>36</height>
            </size>
           </property>
          </spacer>
@@ -224,8 +202,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>146</width>
-            <height>21</height>
+            <width>149</width>
+            <height>36</height>
            </size>
           </property>
          </spacer>
@@ -238,7 +216,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Ruta Comercial</string>
+      <string>Ruta comercial:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
@@ -271,7 +249,7 @@
    <item>
     <widget class="QGroupBox" name="groupBox_2" >
      <property name="title" >
-      <string>Incidencia Comercial</string>
+      <string>Incidencia comercial:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
@@ -298,10 +276,10 @@
    <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <property name="spacing" >
-      <number>2</number>
+      <number>6</number>
      </property>
      <item>
       <spacer>
@@ -310,23 +288,23 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>581</width>
-         <height>20</height>
+         <width>362</width>
+         <height>29</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
@@ -337,13 +315,6 @@
  <layoutdefault spacing="2" margin="2" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
   <customwidget>
    <class>RutaComercialView</class>
    <extends>QFrame</extends>

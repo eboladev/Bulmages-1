@@ -18,12 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3PopupMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
-#include <QLineEdit>
-
 #include <stdio.h>
 
 #include "plugintarifas.h"
@@ -48,21 +42,21 @@ void myplugin1::elslot() {
 
 
 void myplugin1::inicializa(bulmafact *bges) {
-    /// El menu de Tarifas en la seccion de articulos
+    /// El men&uacute; de Tarifas en la secci&oacute;n de art&iacute;culos.
     m_bges = bges;
     m_companyact = bges->getcompany();
-    QAction *planCuentas = new QAction("&Tarifas", 0);
-    planCuentas->setStatusTip("Tarifas");
-    planCuentas->setWhatsThis("Tarifas");
+    QAction *planCuentas = new QAction(tr("&Tarifas"), 0);
+    planCuentas->setStatusTip(tr("Tarifas"));
+    planCuentas->setWhatsThis(tr("Tarifas"));
     bges->menuArticulos->addSeparator();
-    planCuentas->addTo(bges->menuArticulos);
+    bges->menuArticulos->addAction(planCuentas);
     connect(planCuentas, SIGNAL(activated()), this, SLOT(elslot()));
 }
 
 
 int entryPoint(bulmafact *bges) {
     _depura("Punto de Entrada del plugin de Tarifas\n", 0);
-    myplugin1 *plug= new myplugin1();
+    myplugin1 *plug = new myplugin1();
     plug->inicializa(bges);
     return 0;
 }
@@ -134,11 +128,11 @@ int ArticuloView_guardar_post(ArticuloView *art) {
     _depura("ArticuloView_guardar_post", 0);
     try {
         ListLTarifaView *l = art->findChild<ListLTarifaView *>("ltarifas");
-        l->setColumnValue( "idarticulo", art->DBvalue("idarticulo"));
+        l->setColumnValue("idarticulo", art->DBvalue("idarticulo"));
         l->guardar();
         return 0;
     } catch (...) {
-        _depura("Hubo un al el guardar de las tarifas", 2);
+        _depura("Hubo un error al guardar las tarifas", 2);
         return 0;
     }
 }
@@ -151,7 +145,7 @@ int ArticuloView_borrar(ArticuloView *art) {
         l->borrar();
         return 0;
     } catch (...) {
-        _depura("Hubo un al el guardar de las tarifas", 0);
+        _depura("Hubo un error al borrar las tarifas", 0);
         throw -1;
     }
 }

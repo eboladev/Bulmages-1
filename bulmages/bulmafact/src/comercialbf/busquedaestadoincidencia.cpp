@@ -1,27 +1,38 @@
-//
-// C++ Implementation: busquedacliente
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include <QComboBox>
 
 #include "busquedaestadoincidencia.h"
-#include <QComboBox>
+#include "funcaux.h"
+
 
 BusquedaEstadoIncidencia::BusquedaEstadoIncidencia(QWidget *parent)
         : QComboBox(parent) {
-    _depura("BusquedaEstadoIncidencia::BusquedaEstadoIncidencia",0);
-    m_textos[0] = "Pendiente";
-    m_textos[1] = "Terminada";
-    m_textos[2] = "No Quiere Nada";
-    m_textos[3] = "No Paga";
-    m_textos[4] = "Cambio Datos";
-    m_textos[5] = "Revisar";
+    _depura("BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0);
+    m_textos[0] = tr("Pendiente");
+    m_textos[1] = tr("Terminada");
+    m_textos[2] = tr("No quiere nada");
+    m_textos[3] = tr("No paga");
+    m_textos[4] = tr("Cambio datos");
+    m_textos[5] = tr("Revisar");
 
     m_valores[0] = "1";
     m_valores[1] = "2";
@@ -32,29 +43,28 @@ BusquedaEstadoIncidencia::BusquedaEstadoIncidencia(QWidget *parent)
 
     int i = 0;
     while (i <= 5) {
-        insertItem(m_textos[i]);
+        addItem(m_textos[i]);
         i++;
-    }// end while
+    } // end while
 
-
-    connect(this,SIGNAL(activated(int)), this, SLOT(s_activated(int)));
-    _depura("END BusquedaEstadoIncidencia::BusquedaEstadoIncidencia",0);
+    connect(this, SIGNAL(activated(int)), this, SLOT(s_activated(int)));
+    _depura("END BusquedaEstadoIncidencia::BusquedaEstadoIncidencia", 0);
 }
 
 
 BusquedaEstadoIncidencia::~BusquedaEstadoIncidencia() {}
 
+
 void BusquedaEstadoIncidencia::setestado(QString estado) {
-    _depura("BusquedaEstadoIncidencia::setestado",0);
+    _depura("BusquedaEstadoIncidencia::setestado", 0);
     int i = 0;
-    while (m_valores[i] != estado && i<=5) {
+    while (m_valores[i] != estado && i <= 5) {
         i ++;
     }
     if (i <= 5)
-        setCurrentItem(i);
+        setCurrentIndex(i);
     else
-        setCurrentItem(0);
-    _depura("END BusquedaEstadoIncidencia::setestado",0);
+        setCurrentIndex(0);
+    _depura("END BusquedaEstadoIncidencia::setestado", 0);
 }
-
 

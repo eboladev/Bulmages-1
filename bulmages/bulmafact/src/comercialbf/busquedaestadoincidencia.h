@@ -21,43 +21,39 @@
 #ifndef BUSQUEDAESTADOINCIDENCIA_H
 #define BUSQUEDAESTADOINCIDENCIA_H
 
-
-
-
 #include <QComboBox>
+
 #include "funcaux.h"
 
 
-class BusquedaEstadoIncidencia : public QComboBox
-{
-	Q_OBJECT
+class BusquedaEstadoIncidencia : public QComboBox {
+    Q_OBJECT
+
 private:
-	QString m_textos[10];
-	QString m_valores[10];
+    QString m_textos[10];
+    QString m_valores[10];
+
 public:
-	BusquedaEstadoIncidencia(QWidget *parent = 0);
-	~BusquedaEstadoIncidencia();
-	virtual void setestado(QString estado);
-	QString estado() {
-		return m_valores[currentIndex()];
-	};
+    BusquedaEstadoIncidencia(QWidget *parent = 0);
+    ~BusquedaEstadoIncidencia();
+    virtual void setestado(QString estado);
+    QString estado() {
+        return m_valores[currentIndex()];
+    };
+
 public slots:
-	void s_activated(int index)
-	{
-	    	_depura("Activado el combo box", 0);
-		if (index > 0)
-		{
-			emit(valueChanged(m_valores[currentIndex()]));
-		} else {
-			emit(valueChanged(""));
-		}
-	};
+    void s_activated(int index) {
+        _depura("Activado el combo box", 0);
+        if (index > 0) {
+            emit(valueChanged(m_valores[currentIndex()]));
+        } else {
+            emit(valueChanged(""));
+        }
+    };
 
 signals:
-	void valueChanged(QString);
+    void valueChanged(QString);
 };
 
-
-
-
 #endif
+

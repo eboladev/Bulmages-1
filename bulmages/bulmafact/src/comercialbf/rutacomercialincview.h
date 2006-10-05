@@ -21,11 +21,7 @@
 #ifndef RUTACOMERCIALINCVIEW_H
 #define RUTACOMERCIALINCVIEW_H
 
-
-
-// RUTAS COMERCIALES.
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QLabel>
 #include <QCheckBox>
 
@@ -34,42 +30,47 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
+#include "funcaux.h"
 
 
 class company;
 
+
 class RutaComercialIncView : public QWidget, public Ui_RutaComercialIncBase {
     Q_OBJECT
+
 private:
-	company *m_companyact;
+    company *m_companyact;
+
 public:
-    RutaComercialIncView(company *, QWidget *, const char *);
+    RutaComercialIncView(company *, QWidget *);
     ~RutaComercialIncView();
     void closeEvent(QCloseEvent *);
-    virtual void pintar() {};
+    virtual void pintar() {}
+    ;
 
 public slots:
     virtual void on_mui_guardar_clicked() {
-	_depura("RutaComercialIncView::on_mui_guardar_clicked",0);
+        _depura("RutaComercialIncView::on_mui_guardar_clicked", 0);
         mui_rutacomercial->guardar();
-	mui_incidenciacomercial->guardar();
-	_depura("END RutaComercialIncView::on_mui_guardar_clicked",0);
+        mui_incidenciacomercial->guardar();
+        _depura("END RutaComercialIncView::on_mui_guardar_clicked", 0);
     };
     virtual int cargar(QString id, QString id1) {
-	_depura("RutaComercialIncView::cargar",0);
+        _depura("RutaComercialIncView::cargar", 0);
         int err = mui_rutacomercial->cargar(id);
-	err = mui_incidenciacomercial->cargar(id1);
-        setCaption("Acción Comercial " + mui_rutacomercial->DBvalue("idrutacomercial") +"+"+ mui_incidenciacomercial->DBvalue("idincidenciacomercial"));
-	m_companyact->meteWindow( caption(), this);
-	_depura("END RutaComercialIncView::cargar",0);
-	return err;
+        err = mui_incidenciacomercial->cargar(id1);
+        setWindowTitle(tr("Accion comercial") + " " + mui_rutacomercial->DBvalue("idrutacomercial") + " + " + mui_incidenciacomercial->DBvalue("idincidenciacomercial"));
+        m_companyact->meteWindow(windowTitle(), this);
+        _depura("END RutaComercialIncView::cargar", 0);
+        return err;
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_aceptar_clicked() {
-	on_mui_guardar_clicked();
-	close();
-	};
+        on_mui_guardar_clicked();
+        close();
+    };
 };
 
-
 #endif
+

@@ -24,7 +24,6 @@
 #define LISTZONACOMERCIALVIEW_H
 
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QLabel>
 #include <QCheckBox>
 
@@ -35,7 +34,6 @@
 #include "subform2bf.h"
 
 
-
 class company;
 
 
@@ -43,14 +41,14 @@ class ListZonaComercialSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
-    ListZonaComercialSubForm(QWidget *parent = 0, const char *name = 0);
+    ListZonaComercialSubForm(QWidget *parent = 0);
     ~ListZonaComercialSubForm() {}
     ;
 
 public slots:
     virtual void cargar() {
         _depura("ListZonaComercialSubForm::cargar\n",0);
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM zonacomercial");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM zonacomercial");
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -67,7 +65,7 @@ public:
     company *companyact;
 
 public:
-    ListZonaComercialView(company *, QWidget *, const char *);
+    ListZonaComercialView(company *, QWidget *);
     ~ListZonaComercialView();
 
 public slots:

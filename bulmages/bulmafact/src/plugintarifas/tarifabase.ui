@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>709</width>
-    <height>456</height>
+    <width>627</width>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -44,30 +44,19 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="frame3" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="frame" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
        </property>
-       <property name="margin" >
-        <number>0</number>
-       </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
@@ -76,9 +65,6 @@
           </property>
           <property name="whatsThis" >
            <string>Guardar</string>
-          </property>
-          <property name="text" >
-           <string/>
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
@@ -123,8 +109,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>481</width>
-            <height>31</height>
+            <width>399</width>
+            <height>30</height>
            </size>
           </property>
          </spacer>
@@ -156,7 +142,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Nombre</string>
+        <string>Nombre de la tarifa:</string>
        </property>
       </widget>
      </item>
@@ -172,14 +158,14 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Filtrado</string>
+      <string>Filtrado:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -199,8 +185,11 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="lineWidth" >
+           <number>0</number>
+          </property>
           <property name="text" >
-           <string>Familia</string>
+           <string>Familia:</string>
           </property>
          </widget>
         </item>
@@ -233,7 +222,7 @@
         <item>
          <widget class="QLabel" name="label_2" >
           <property name="text" >
-           <string>Almacen</string>
+           <string>Almacen:</string>
           </property>
          </widget>
         </item>
@@ -321,23 +310,23 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>581</width>
-         <height>20</height>
+         <width>363</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>Cancelar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
@@ -353,13 +342,6 @@
    <extends>QTableWidget</extends>
    <header>listltarifaview.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>

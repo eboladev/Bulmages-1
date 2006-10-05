@@ -8,12 +8,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>471</width>
-    <height>411</height>
+    <width>438</width>
+    <height>349</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Zonas Comerciales</string>
+   <string>Zonas comerciales</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_gestortareas_mas.32x32.png</iconset>
@@ -23,7 +23,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <widget class="ListZonaComercialSubForm" name="mui_listado" />
@@ -43,23 +43,23 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>581</width>
-         <height>20</height>
+         <width>277</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>&amp;Cancelar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>&amp;Aceptar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>

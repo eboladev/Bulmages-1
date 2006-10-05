@@ -18,16 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-#include <QMessageBox>
-#include <QFile>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QComboBox>
-#include <QTextStream>
-#include <QMenu>
-#include <Q3FileDialog>
-
 #include "tarifalistview.h"
 #include "tarifaview.h"
 #include "pgimportfiles.h"
@@ -35,16 +25,16 @@
 #include "funcaux.h"
 
 
-TarifaListView::TarifaListView(company *comp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, name, Qt::WDestructiveClose)  , pgimportfiles(comp) {
+TarifaListView::TarifaListView(company *comp, QWidget *parent, edmode editmodo)
+        : QWidget(parent), pgimportfiles(comp) {
     _depura("TarifaListView::INIT_TarifaListView()\n", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
+    m_modo = editmodo;
     setupUi(this);
     m_companyact = comp;
     mui_list->setcompany(m_companyact);
     mui_list->cargar();
-
-    comp->meteWindow("Tarifas", this);
-
+    comp->meteWindow(tr("Tarifas"), this);
     _depura("TarifaListView::END_TarifaListView()\n", 0);
 }
 
@@ -62,7 +52,7 @@ void TarifaListView::on_mui_editar_clicked() {
     if (a < 0) {
         _depura("Debe seleccionar una linea", 2);
         return;
-    }// end if
+    } // end if
     editar(a);
     _depura("TarifaListView::END_s_editArticle()\n", 0);
 }

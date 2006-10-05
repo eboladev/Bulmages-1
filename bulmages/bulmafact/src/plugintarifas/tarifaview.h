@@ -39,7 +39,7 @@ private:
     cursor2 *m_cursorcombo;
 
 public:
-    TarifaView(company *emp, QWidget *parent = 0, const char *name = 0);
+    TarifaView(company *emp, QWidget *parent = 0);
     ~TarifaView();
     company *companyact() {
         return m_companyact;

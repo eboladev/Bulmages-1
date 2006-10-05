@@ -11,22 +11,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>866</width>
-    <height>516</height>
+    <width>633</width>
+    <height>404</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Rutas Comerciales</string>
+   <string>Rutas comerciales</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos_listado.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -47,30 +47,19 @@
       </widget>
      </item>
      <item>
-      <widget class="Q3Frame" name="m_botonera" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>5</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QFrame" name="m_botonera" >
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow" >
         <enum>QFrame::Raised</enum>
        </property>
-       <property name="margin" >
-        <number>0</number>
-       </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -217,8 +206,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>100</width>
-            <height>20</height>
+            <width>356</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>
@@ -229,7 +218,7 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3Frame" name="m_busqueda" >
+    <widget class="QFrame" name="m_busqueda" >
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -241,7 +230,7 @@
        <number>5</number>
       </property>
       <property name="spacing" >
-       <number>3</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -254,14 +243,14 @@
         <item>
          <widget class="QCheckBox" name="m_procesados" >
           <property name="text" >
-           <string>Procesados</string>
+           <string>Procesados.</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="textLabel1_2_2_2" >
           <property name="text" >
-           <string>Cliente</string>
+           <string>Cliente:</string>
           </property>
          </widget>
         </item>
@@ -297,7 +286,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4" >
           <property name="text" >
-           <string>Fecha Inicial</string>
+           <string>Fecha inicial:</string>
           </property>
          </widget>
         </item>
@@ -323,7 +312,7 @@
         <item>
          <widget class="QLabel" name="textLabel1_4_2" >
           <property name="text" >
-           <string>Fecha Final</string>
+           <string>Fecha final:</string>
           </property>
          </widget>
         </item>
@@ -354,6 +343,43 @@
    <item>
     <widget class="RutaComercialListSubForm" name="mui_list" />
    </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>362</width>
+         <height>29</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar_2" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar_2" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
@@ -380,33 +406,9 @@
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
-  <customwidget>
-   <class>Q3Frame</class>
-   <extends></extends>
-   <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_filtrar</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>m_busqueda</receiver>
-   <slot>setShown(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>236</x>
-     <y>90</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>57</x>
-     <y>169</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>
