@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>862</width>
-    <height>582</height>
+    <width>865</width>
+    <height>879</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -72,6 +72,12 @@
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
           </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
@@ -84,6 +90,12 @@
           </property>
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -98,6 +110,37 @@
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
           </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_filtrar" >
+          <property name="toolTip" >
+           <string>Actualizar</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="checkable" >
+           <bool>true</bool>
+          </property>
+          <property name="checked" >
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -111,6 +154,12 @@
           <property name="icon" >
            <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
           </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
          </widget>
         </item>
         <item>
@@ -123,8 +172,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>711</width>
-            <height>21</height>
+            <width>571</width>
+            <height>44</height>
            </size>
           </property>
          </spacer>
@@ -135,138 +184,255 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
+    <widget class="QFrame" name="frame_2" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
      </property>
-     <property name="spacing" >
-      <number>6</number>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
      </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_3" >
-       <property name="text" >
-        <string>Cuenta</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaCuenta" name="m_cuenta" />
-     </item>
-     <item>
-      <widget class="QLabel" name="textLabel1" >
-       <property name="text" >
-        <string>Tipo (Cobro / Pago)</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="m_tipoprevcobro" >
-       <item>
-        <property name="text" >
-         <string>TODO</string>
+     <layout class="QVBoxLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>COBROS</string>
+        <property name="spacing" >
+         <number>6</number>
         </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>PAGOS</string>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_3" >
+            <property name="text" >
+             <string>Cuenta</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaCuenta" name="m_cuenta" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>141</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_2" >
+            <property name="text" >
+             <string>Procesado</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="m_procesado" >
+            <item>
+             <property name="text" >
+              <string>TODO</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>PROCESADO</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>NO PROCESADO</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="textLabel1_2" >
-       <property name="text" >
-        <string>Procesado</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QComboBox" name="m_procesado" >
-       <item>
-        <property name="text" >
-         <string>TODO</string>
+        <property name="spacing" >
+         <number>6</number>
         </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>PROCESADO</string>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1" >
+            <property name="text" >
+             <string>Tipo (Cobro / Pago)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="m_tipoprevcobro" >
+            <item>
+             <property name="text" >
+              <string>TODO</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>COBROS</string>
+             </property>
+            </item>
+            <item>
+             <property name="text" >
+              <string>PAGOS</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-       </item>
-       <item>
-        <property name="text" >
-         <string>NO PROCESADO</string>
+        <property name="spacing" >
+         <number>6</number>
         </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>120</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_3" >
-       <property name="text" >
-        <string>Fecha Inicial</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaFecha" name="m_firstDate" />
-     </item>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_2_2" >
-       <property name="text" >
-        <string>Fecha Final</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaFecha" name="m_lastDate" />
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>51</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_2_3" >
+            <property name="text" >
+             <string>Fecha Inicial</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaFecha" name="m_firstDate" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>231</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="textLabel1_2_2_2" >
+            <property name="text" >
+             <string>Fecha Final</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="BusquedaFecha" name="m_lastDate" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <widget class="SubForm2Bc" name="mui_listado" />
@@ -389,5 +555,22 @@
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mui_filtrar</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frame_2</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>186</x>
+     <y>31</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>189</x>
+     <y>97</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

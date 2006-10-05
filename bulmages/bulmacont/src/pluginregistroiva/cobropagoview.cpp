@@ -42,6 +42,8 @@ CREATE TABLE prevcobro (
 );
 
 */
+
+/*
 #define COL_SELECCION                  0
 #define COL_IDPREVCOBRO                1
 #define COL_FPREVISTAPREVCOBRO         2
@@ -60,6 +62,8 @@ CREATE TABLE prevcobro (
 #define COL_DOCPREVCOBRO               15
 
 #include "listlinprevcobroview.h"
+
+*/
 
 /**
   * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
@@ -96,7 +100,7 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt:
 
 
     m_cuenta->setempresa(emp);
-    s_recalculaSaldo();
+    on_mui_actualizar_clicked();
 
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END cobropagoview::cobropagoview", 0);
