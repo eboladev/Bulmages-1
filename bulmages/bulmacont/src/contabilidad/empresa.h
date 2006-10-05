@@ -1,29 +1,32 @@
 /***************************************************************************
-                          empresa.h  -  description
-                             -------------------
-    begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borr�
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2002 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #ifndef EMPRESA_H
 #define EMPRESA_H
 
-#include <qmessagebox.h>
-#include <q3filedialog.h>
-#include <qstring.h>
+#include <QMessageBox>
+#include <Q3FileDialog>
+#include <QString>
 #include <QWorkspace>
-#include <qwidget.h>
-#include <qsizepolicy.h>
-
+#include <QWidget>
+#include <QSizePolicy>
 
 #include "balanceview.h"
 #include "diarioview.h"
@@ -44,26 +47,25 @@ class balanceview;
 class asientosview;
 class cuentaview;
 
-/**
- * @author Tomeu Borras Riera
- * \class empresa empresa.h
- * \brief Soporte principal para cada empresa contable
- *  
- * Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa podra tener multiples empresas abiertas al mismo tiempo.
- * Esta clase es el corazon del programa donde acaban confluyendo todos los dem� objetos.
- * Se encarga de instanciar los objetos necesarios, inicializarlos e invocarlos cuando es preciso.
- * Tambien debe servir como punto de comunicacion entre los diferentes objetos de modo que estos solo tengan referencias a esta clase y haciendo el flujo del codigo mas facil de entender.
- * \todo proporcionar la funcionalidad de comunicacion entre las otras clases.
- */
-class empresa  : public postgresiface2 {
+
+/// Soporte principal para cada empresa contable.
+/** Clase que soporta todas las funciones de la empresa contable. Supuestamente el programa
+    podr&aacute; tener m&uacute;ltiples empresas abiertas al mismo tiempo.
+    Esta clase es el coraz&oacute;n del programa donde acaban confluyendo todos los
+    dem&aacute; objetos.
+    Se encarga de instanciar los objetos necesarios, inicializarlos e invocarlos cuando es
+    preciso.
+    Tambi&eacute;n debe servir como punto de comunicaci&oacute;n entre los diferentes
+    objetos de modo que estos s&oacute;lo tengan referencias a esta clase y haciendo el
+    flujo del c&oacute;digo m&aacute;s f&aacute;cil de entender.
+    \todo Proporcionar la funcionalidad de comunicaci&oacute;n entre las otras clases. */
+class empresa : public postgresiface2 {
 private:
     listventanas *m_listventanas;
-
     QString nombre;
     int ano;
     QString contrasenya;
     QWorkspace2 *m_pWorkspace;
-
     BalanceTreeView *balance1;
     DiarioView *diario;
     extractoview1 *extracto;
@@ -71,26 +73,23 @@ private:
     Asiento1View *introapunts2;
     asientosview *m_listasientos;
     listcuentasview1 *m_listcuentas;
-
-    unsigned int numdigitos;  // El numero de digitos que tienen las cuentas.
-
-    // Hay unos selectores generales, que van a ser estos y que indican con que se trabaja, luego
-    // Estos selectores generales se podran invocar desde distintas partes.
+    unsigned int numdigitos; /// El n&uacute;mero de d&iacute;gitos que tienen las cuentas.
+    /// Hay unos selectores generales, que van a ser estos y que indican con que se trabaja,
+    /// luego estos selectores generales se podr&aacute;n invocar desde distintas partes.
     selectccosteview *selccostes;
     selectcanalview *selcanales;
+
 public:
     QString nombreDB;
 
 public:
     empresa();
     virtual ~empresa();
-
     void init(QString);
-    /// Returns a pointer to the database class
+    /// Devuelve un puntero a la clase de la base de datos.
     postgresiface2 *bdempresa() {
         return (this);
     }
-
     balanceview *balanceempresa() {
         return balance;
     }
@@ -103,13 +102,9 @@ public:
     BalanceTreeView *balance1empresa() {
         return balance1;
     }
-
     Asiento1View *intapuntsempresa() {
         return(introapunts2);
     }
-
-
-
     Asiento1View *intapuntsempresa2() {
         return(introapunts2);
     }
@@ -122,24 +117,21 @@ public:
     QString nombreempresa() {
         return(nombre);
     }
-
-    QWorkspace2 * pWorkspace() { return m_pWorkspace; };
-    void setWorkspace(QWorkspace2 *qw) {
-        m_pWorkspace=qw;
+    QWorkspace2 *pWorkspace() {
+        return m_pWorkspace;
     };
-
+    void setWorkspace(QWorkspace2 *qw) {
+        m_pWorkspace = qw;
+    };
     void setListVentanas(listventanas *doc) {
         m_listventanas = doc;
     };
-
     int meteWindow(QString nom, QObject *obj) {
         return m_listventanas->meteWindow(nom, obj);
     };
-
     void sacaWindow(QObject *nom) {
         m_listventanas->sacaWindow(nom);
     };
-
     int muestracuentas();
     int nuevacuenta();
     int muestraapuntes();
@@ -186,9 +178,10 @@ public:
     selectccosteview *getselccostes();
     selectcanalview *getselcanales();
     void recalculasaldos();
-    int cobPag();  // Gestion de cobros y pagos
+    int cobPag(); /// Gesti&oacute;n de cobros y pagos.
     virtual void s_asiento1();
-
-    cuentaview* newcuentaview();
+    cuentaview *newcuentaview();
 };
+
 #endif
+

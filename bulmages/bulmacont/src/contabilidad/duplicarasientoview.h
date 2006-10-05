@@ -1,37 +1,47 @@
-//
-//
-// C++ Interface: $MODULE$
-//
-// Description: 
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2003
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef DUPLICARASIENTOVIEW_H
 #define DUPLICARASIENTOVIEW_H
 
 #include "ui_duplicarasientobase.h"
 
+
 class empresa;
 
-/**@author Tomeu Borras*/
-class duplicarasientoview : public QDialog, public Ui_DuplicarAsientoBase
-{
-Q_OBJECT
-public:
-	empresa *empresaactual;
-	int idasiento;
-public:
-	duplicarasientoview(empresa *, QWidget *, const char *, bool );
-	~duplicarasientoview();
-	void inicializa(QString, QString);
-public slots:
-	virtual void accept();
-	virtual void lostFocus();
 
+class duplicarasientoview : public QDialog, public Ui_DuplicarAsientoBase {
+    Q_OBJECT
+
+public:
+    empresa *empresaactual;
+    int idasiento;
+
+public:
+    duplicarasientoview(empresa *, QWidget *, const char *, bool);
+    ~duplicarasientoview();
+    void inicializa(QString, QString);
+
+public slots:
+    virtual void accept();
+    virtual void lostFocus();
 };
 
 #endif

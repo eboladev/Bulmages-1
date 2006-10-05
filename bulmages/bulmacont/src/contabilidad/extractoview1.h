@@ -1,22 +1,23 @@
 /***************************************************************************
-                          extractoview1.h  -  description
-                             -------------------
-    begin                : Thu Jan 9 2003
-    copyright            : (C) 2003 by Tomeu Borrás Riera
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-/** \file extractoview1.h
-  * Este fichero contiene la definición de la clase \ref extractoview1
-  * \author Tomeu Borrás Riera
-  */
+
 #ifndef EXTRACTOVIEW1_H
 #define EXTRACTOVIEW1_H
 
@@ -24,23 +25,25 @@
 #include "qtable1.h"
 #include "postgresiface2.h"
 
+
 class empresa;
 
-/** @brief Esta clase Mantiene la generación de extractos contables
-  * 
-  * A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y casación.
-  * Y acceso a filtrado. También desde esta pantalla se puede pedir más información de una cuenta
-  * determinada.
-  */
-class extractoview1 : public QWidget, public Ui_ExtractoBase  {
+/// Esta clase mantiene la generaci&oacute;n de extractos contables.
+/** A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y
+    casaci&oacute;n.
+    Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
+    informaci&oacute;n de una cuenta determinada. */
+class extractoview1 : public QWidget, public Ui_ExtractoBase {
     Q_OBJECT
+
 public:
-    /// El extracto se realiza sobre un cursor que siempre esté en memoria.
+    /// El extracto se realiza sobre un cursor que siempre est&aacute; en memoria.
     cursor2 *m_cursorcta;
     /// Siempre se propaga la empresa a estos objetos.
     empresa *m_companyact;
+
 public:
-    extractoview1(empresa *,QWidget *parent=0, const char *name=0, int flags=0);
+    extractoview1(empresa *, QWidget *parent = 0, const char *name = 0, int flags = 0);
     ~extractoview1();
     void inicializa1(QString, QString, QString, QString, int);
     void vaciar();
@@ -50,7 +53,9 @@ public:
 
 public slots:
     virtual void on_mui_guardar_clicked();
-    virtual void on_mui_actualizar_clicked() {accept();};
+    virtual void on_mui_actualizar_clicked() {
+        accept();
+    };
     virtual void on_mui_imprimir_clicked();
     virtual void accept();
     virtual void boton_siguiente();
@@ -59,14 +64,14 @@ public slots:
     virtual void boton_inicio();
     virtual void boton_imprimir();
     virtual void boton_guardar();
-
     virtual void on_mui_borrapunteo_clicked();
     virtual void on_mui_casacion_clicked();
     virtual void on_mui_guardarpunteo_clicked();
     virtual void on_mui_cargarpunteos_clicked();
     virtual void on_mui_configurar_clicked() {
-            mui_list->showConfig();
-	};
+        mui_list->showConfig();
+    };
 };
 
 #endif
+
