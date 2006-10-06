@@ -23,6 +23,8 @@
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QFileDialog>
+#include <QTextStream>
+
 
 // Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"

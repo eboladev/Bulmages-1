@@ -22,7 +22,7 @@
 #include "calendario.h"
 #include "empresa.h"
 #include "fixed.h"
-
+#include <QTextStream>
 #ifndef WIN32
 #include <unistd.h>
 #include <sys/types.h>

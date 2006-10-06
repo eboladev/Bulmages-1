@@ -23,6 +23,7 @@
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <QPixmap>
+#include <QTextStream>
 
 #include "empresa.h"
 #include "diarioview.h"

@@ -28,7 +28,7 @@
 #include <qtoolbutton.h>
 #include <qlayout.h>
 #include <q3popupmenu.h>
-
+#include <QTextStream>
 
 #include "extractoprintview.h"
 #include "libromayorprint.h"
