@@ -22,6 +22,7 @@ BusquedaCuenta::BusquedaCuenta(QWidget *parent, const char *name)
     mdb_idcuenta="";
     mdb_nomcuenta="";
     mdb_codigocuenta="";
+    mdb_tipocuenta="";
     _depura("END BusquedaCuenta::BusquedaCuenta", 0);
 }
 
@@ -50,10 +51,12 @@ void BusquedaCuenta::setidcuenta(QString val) {
     if(!cur->eof()) {
         mdb_codigocuenta = cur->valor("codigo");
         mdb_nomcuenta = cur->valor("descripcion");
+	mdb_tipocuenta = cur->valor("tipocuenta");
     } else {
         mdb_idcuenta="";
         mdb_nomcuenta="";
         mdb_codigocuenta="";
+	mdb_tipocuenta="";
     }// end if
     delete cur;
     mui_codigocuenta->setText(mdb_codigocuenta);
@@ -71,9 +74,11 @@ void BusquedaCuenta::setcodigocuenta(QString val) {
     if(!cur->eof()) {
         mdb_idcuenta = cur->valor("idcuenta");
         mdb_nomcuenta = cur->valor("descripcion");
+	mdb_tipocuenta = cur->valor("tipocuenta");
     } else {
         mdb_idcuenta="";
         mdb_nomcuenta="";
+	mdb_tipocuenta="";
     }// end if
     delete cur;
     mui_codigocuenta->setText(mdb_codigocuenta);
@@ -133,12 +138,14 @@ void BusquedaCuenta::s_lostFocus() {
             mdb_codigocuenta = cursorcta->valor("codigo");
             mdb_idcuenta = cursorcta->valor("idcuenta");
             mdb_nomcuenta = cursorcta->valor("descripcion");
+	    mdb_tipocuenta = cursorcta->valor("tipocuenta");
             mui_codigocuenta->setText(mdb_codigocuenta);
             mui_nomcuenta->setText(mdb_nomcuenta);
         } else {
             mdb_idcuenta = "";
             mdb_codigocuenta = "";
             mdb_nomcuenta = "";
+	    mdb_tipocuenta = "";
             mui_nomcuenta->setText("");
         }// end if
         delete cursorcta;

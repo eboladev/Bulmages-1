@@ -26,8 +26,6 @@
 #include <errno.h>
 
 #include <QWidget>
-#include <QLineedit>
-#include <Q3DateTimeedit>
 #include <Q3FileDialog>
 #include <QWidget>
 #include <Q3Table>

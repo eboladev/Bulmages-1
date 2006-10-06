@@ -40,6 +40,7 @@ private:
     QString mdb_idcuenta;
     QString mdb_nomcuenta;
     QString mdb_codigocuenta;
+    QString mdb_tipocuenta;
     int numdigitos;
 
 public:
@@ -60,6 +61,9 @@ public:
     };
     virtual QString nomcuenta() {
         return mdb_nomcuenta;
+    };
+    virtual QString tipocuenta() {
+	return mdb_tipocuenta;
     };
     virtual void setidcuenta(QString val);
     virtual void setcodigocuenta(QString val);

@@ -19,7 +19,7 @@
 
 #include <QFile>
 #include <QString>
-#include <QXmlDefaultHandler>
+
 
 #include "postgresiface2.h"
 #include "funcaux.h"
@@ -46,6 +46,9 @@
 #define IMPORT_FORMAS_PAGO 8192
 #define IMPORT_PRESUPUESTOSCLIENTE 16384
 #define IMPORT_PEDIDOSCLIENTE  4
+
+
+
 
 /// Clase para importacion y exportacion a distintos formatos de archivo de datos.
 class pgimportfiles {
@@ -98,122 +101,6 @@ public:
     int XML2Bulmages(QFile &, unsigned long long int tip = IMPORT_TODO);
     int XML2BulmaFact(QFile &, unsigned long long int tip = IMPORT_TODO);
     QString searchParent(QString);
-};
-
-
-/// Clase para leer archivos de XML y hacer la importacion de datos.
-class StructureParser : public QXmlDefaultHandler {
-private:
-    postgresiface2 *conexionbase;
-    QString cadintermedia; /// Esta variable va almacenando los valores que van saliendo en la clase.
-    /// Variables usadas para almacenar los datos de un asiento.
-    QString idasiento;
-    QString ordenasiento;
-    QString fechaasiento;
-    /// Variables usadas para almacenar los datos de un apunte.
-    QString idapunte;
-    QString idborrador;
-    QString fechaapunte;
-    QString codigocuentaapunte;
-    QString debeapunte;
-    QString haberapunte;
-    QString conceptocontableapunte;
-    int m_ordenapunte;
-    /// Variables usadas para almacenar los datos de una cuenta.
-    QString idcuenta;
-    QString descripcioncuenta;
-    QString codigocuenta;
-    QString codigopadre;
-    QString m_bloqueadaCuenta;
-    QString m_nodebeCuenta;
-    QString m_nohaberCuenta;
-    QString m_tipoCuenta;
-    /// Variables usadas para almacenar los datos del registro de IVA.
-    QString m_idRegistroIva;
-    QString m_rIvaContrapartida;
-    QString m_rIvaBaseImp;
-    QString m_rIvaIva;
-    QString m_rIvaFFactura;
-    QString m_rIvaFactura;
-    QString m_rIvaCIF;
-    QString m_rIvaIdFPago;
-    QString m_rIvRecRegIva;
-    /// Variables usadas para almacenar los datos de la tabla de IVA's.
-    QString m_idTipoIva;
-    QString m_baseIva;
-    QString m_nombreTipoIva;
-    /// El tagpadre indica en que posicion estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc.
-    QString tagpadre;
-
-public:
-    StructureParser(postgresiface2 *, unsigned int tip = IMPORT_TODO);
-    ~StructureParser();
-    bool startDocument();
-    bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
-    bool endElement(const QString&, const QString&, const QString&);
-    bool characters(const QString&);
-
-private:
-    QString indent;
-    unsigned int m_tipo;
-};
-
-
-/// Clase para leer archivos de XML y hacer la importacion de datos.
-/// Usamos este tipo para almacenar todos los valores que va recogiendo la clase.
-typedef QMap<QString, QString> tvalores;
-
-
-class ImportBulmaFact : public QXmlDefaultHandler {
-private:
-    postgresiface2 *conexionbase;
-    QString cadintermedia; /// Esta variable va almacenando los valores que van saliendo en la clase.
-    /// Variables usadas para almacenar los datos de un asiento.
-    tvalores valores;
-    /// El tagpadre indica en que posicion estamos. Si estamos en un asiento, un apunte, una cuenta, etc etc etc.
-    QString tagpadre;
-    pgimportfiles *pgimport;
-    /// Estas estructuras sirven para guardar datos intermedios.
-    QList<tvalores> listalpresupuesto;
-    QList<tvalores> listadpresupuesto;
-    QList<tvalores> listalfactura;
-    QList<tvalores> listadfactura;
-    QList<tvalores> listalalbaran;
-    QList<tvalores> listadalbaran;
-    QList<tvalores> listalpedidocliente;
-    QList<tvalores> listadpedidocliente;
-
-
-public:
-    ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned long long int tip = IMPORT_TODO);
-    ~ImportBulmaFact();
-    bool startDocument();
-    bool startElement(const QString&, const QString&, const QString&, const QXmlAttributes&);
-    bool endElement(const QString&, const QString&, const QString&);
-    bool characters(const QString&);
-
-private:
-    QString indent;
-    unsigned int m_tipo;
-    void printcontents();
-    int trataCliente();
-    int trataProveedor();
-    int trataFormaPago();
-    int trataAlmacen();
-    int trataArticulo();
-    int trataFactura();
-    int trataLFactura();
-    int trataDFactura();
-    int trataPresupuesto();
-    int trataLPresupuesto();
-    int trataDPresupuesto();
-    int trataFamilia();
-    int trataAlbaran();
-    int trataLAlbaran();
-    int trataDAlbaran();
-    int trataPedidoCliente();
-    int trataLPedidoCliente();
-    int trataDPedidoCliente();
 };
 
 #endif

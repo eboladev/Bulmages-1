@@ -21,7 +21,6 @@
 #ifndef importainteligente_H
 #define importainteligente_H
 
-#include <Q3PtrStack>
 #include <QMap>
 #include <qxml.h>
 #include "../contabilidad/empresa.h"

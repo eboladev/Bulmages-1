@@ -26,44 +26,7 @@
 
 #include <q3table.h>
 #include <qcombobox.h>
-/*
-CREATE TABLE prevcobro (
-    idprevcobro serial PRIMARY KEY,
-    fprevistaprevcobro date,
-    fcobroprevcobro date,
-    fpagoprevcobro integer,
-    idcuenta integer REFERENCES cuenta(idcuenta),
-    idasiento integer REFERENCES asiento(idasiento),
-    cantidadprevistaprevcobro double precision,
-    cantidadprevcobro  double precision,
-    idregistroiva integer NOT NULL REFERENCES registroiva(idregistroiva),
-    tipoprevcobro boolean,
-    docprevcobro character varying(50)
-);
 
-*/
-
-/*
-#define COL_SELECCION                  0
-#define COL_IDPREVCOBRO                1
-#define COL_FPREVISTAPREVCOBRO         2
-#define COL_FCOBROPREVCOBRO            3
-#define COL_IDCUENTA                   4
-#define COL_CODIGO                     5
-#define COL_NOMCTA	               6
-#define COL_IDASIENTO                  7
-#define COL_ORDENASIENTO               8
-#define COL_CANTIDADPREVISTAPREVCOBRO  9
-#define COL_CANTIDADPREVCOBRO          10
-#define COL_IDREGISTROIVA              11
-#define COL_CODIGOCTAREGISTROIVA       12
-#define COL_ENTREGISTROIVA             13
-#define COL_TIPOPREVCOBRO              14
-#define COL_DOCPREVCOBRO               15
-
-#include "listlinprevcobroview.h"
-
-*/
 
 /**
   * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
@@ -96,8 +59,6 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt:
     mui_listado->addSHeader("docprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("docprevcobro"));
     mui_listado->setinsercion(FALSE);
    /// Dejamos de inicializar el listado
-
-
 
     m_cuenta->setempresa(emp);
     on_mui_actualizar_clicked();

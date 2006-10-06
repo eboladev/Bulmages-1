@@ -27,9 +27,7 @@
 
 #include <QWidget>
 #include <QLineEdit>
-#include <Q3DateTimeedit>
 #include <Q3FileDialog>
-#include <QSidget>
 #include <Q3Table>
 #include <QToolButton>
 #include <QRadioButton>

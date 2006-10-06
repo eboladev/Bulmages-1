@@ -73,6 +73,7 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(paren
     mui_listIva->addSHeader("idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("idtipoiva"));
     mui_listIva->addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("idcuenta"));
     mui_listIva->addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("codigo"));
+    mui_listIva->addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("tipocuenta"));
     mui_listIva->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("nombretipoiva"));
     mui_listIva->addSHeader("idregistroiva", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone , tr("idregistroiva"));
     mui_listIva->addSHeader("baseiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("baseiva"));
@@ -94,6 +95,7 @@ RegistroIvaView::RegistroIvaView( empresa *comp , QWidget *parent) : Ficha(paren
     mui_listPrevCobro->addSHeader("tipoprevcobro", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone , tr("tipoprevcobro"));
     mui_listPrevCobro->addSHeader("docprevcobro", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("docprevcobro"));
     mui_listPrevCobro->addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("codigo"));
+    mui_listIva->addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("tipocuenta"));
     mui_listPrevCobro->addSHeader("descripcion", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone , tr("descripcion"));
     mui_listPrevCobro->addSHeader("idctacliente", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("idctacliente"));
     mui_listPrevCobro->addSHeader("codigoctacliente", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone , tr("codigoctacliente"));
@@ -166,7 +168,7 @@ int RegistroIvaView::cargar(QString id) {
 
      mui_listPrevCobro->cargar("SELECT * FROM prevcobro "
                    " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
-                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente, tipocuenta AS tipoctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
                    " WHERE idregistroiva= "+id+" ORDER BY fcobroprevcobro ");
 
     setCaption("Registro FActura "+factura());
@@ -241,31 +243,20 @@ void RegistroIvaView::on_mui_generarPrevisiones_clicked() {
         } else {
             tipocobro = "f";
         }// end if
-/*
-        m_listprevcobro->nuevalinea(
-            fpcobro.toString("dd/MM/yyyy"),
-            fpcobro.toString("dd/MM/yyyy")
-            ,"","","",
-            totalplazo.toQString(),
-            totalplazo.toQString(),
-            tipocobro,
-            "","","",
-            m_contrapartida->idcuenta(),
-            m_contrapartida->codigocuenta(),
-            m_contrapartida->nomcuenta()
-        );
-*/
+
 	_depura("Cogemos el registro", 3);
 	SDBRecord *rec = mui_listPrevCobro->lineaat(mui_listPrevCobro->rowCount()-1);
 	rec->setDBvalue("fprevistaprevcobro", fpcobro.toString("dd/MM/yyyy"));
+	rec->setDBvalue("cantidadprevistaprevcobro", totalplazo.toQString());
+	rec->setDBvalue("tipoprevcobro", tipocobro);
+	rec->setDBvalue("codigoctacliente", m_contrapartida->codigocuenta());
+        rec->setDBvalue("idctacliente", m_contrapartida->idcuenta());
+	rec->setDBvalue("nomctacliente", m_contrapartida->nomcuenta());
+
 	_depura("Pintamos", 3);
-	mui_listPrevCobro->pintar();
-
-
-
         fpcobro = fpcobro.addDays(plazoentrerecibo);
+	mui_listPrevCobro->nuevoRegistro();
     }// end for
-//    m_listprevcobro->pintalistlinprevcobro();
     _depura("END RegistroIvaView::on_mui_generarPrevisiones_clicked", 0);
 
 }
