@@ -22,6 +22,7 @@ unix{
 		  ../.ui \
 		  /usr/include/qt4 \
 		  /usr/include/qt4/Qt \
+		  /usr/include/qt4/QtXml \
 		  ../../src \
 		  ../../../bulmalib/.ui \
 		  /usr/include/Qt \

@@ -16,7 +16,7 @@ QMAKE_LIBDIR += ../../installbulmages
 
 # Input
 HEADERS += bulmatpv.h filesave.xpm fileopen.xpm fileprint.xpm
-FORMS += tpvdlg.ui
+FORMS += bulmatpv.ui tpvdlg.ui
 SOURCES += bulmatpv.cpp main.cpp
 
 unix{
