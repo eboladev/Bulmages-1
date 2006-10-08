@@ -1,7 +1,5 @@
-# Archivo generado por el gestor qmake de kdevelop. 
-# ------------------------------------------- 
-# Subdirectorio relativo al directorio principal del proyecto: ./bulmalib
-# Destiono es una biblioteca:  bulmalib
+# Archivo generado por el gestor qmake de kdevelop.
+# -------------------------------------------------
 
 #Probamos de usar distcc
 #!isEmpty( DISTCC_HOSTS ) {
@@ -45,8 +43,8 @@ HEADERS += postgresiface2.h \
            subform3.h \
            listventanas.h \
            qworkspace2.h \
-	   qapplication2.h \
-	   ficha.h
+	    qapplication2.h \
+	    ficha.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -70,8 +68,8 @@ SOURCES += postgresiface2.cpp \
            subform3.cpp \
            listventanas.cpp \
            qworkspace2.cpp \
-	   qapplication2.cpp \
-	   ficha.cpp
+	    qapplication2.cpp \
+	    ficha.cpp
 	   
 RESOURCES = ../bulmages.qrc
 TEMPLATE = lib
@@ -90,35 +88,36 @@ MOC_DIR = .moc
 QT += xml
 CONFIG += uic
 unix{
-  UI_DIR = .ui
-  MOC_DIR = .moc
-  OBJECTS_DIR = .obj
-  LIBS += -lpq
-  LIBS += -rdynamic
-  CONFIG += release
-  TARGET = bulmalib
-  DESTDIR = ../installbulmages
-  exists(/usr/include/postgresql/libpq-fe.h){
-    DEFINES += DISTRO_DEBIAN
-  }
-  exists(/usr/include/postgresql/8.0/libpq-fe.h){
-    DEFINES += DISTRO_DEBIAN_8_0
-  }
-  exists(/usr/include/pgsql/libpq-fe.h){
-    DEFINES += DISTRO_RED_HAT
-  }
-  exists(/usr/include/postgresql/pgsql/libpq-fe.h){
-    DEFINES += DISTRO_GENTOO
-  }
+	UI_DIR = .ui
+	MOC_DIR = .moc
+	OBJECTS_DIR = .obj
+	LIBS += -lpq
+	LIBS += -rdynamic
+	CONFIG += release
+	TARGET = bulmalib
+	DESTDIR = ../installbulmages
+	exists(/usr/include/postgresql/libpq-fe.h){
+		DEFINES += DISTRO_DEBIAN
+	}
+	exists(/usr/include/postgresql/8.0/libpq-fe.h){
+		DEFINES += DISTRO_DEBIAN_8_0
+	}
+	exists(/usr/include/pgsql/libpq-fe.h){
+		DEFINES += DISTRO_RED_HAT
+	}
+	exists(/usr/include/postgresql/pgsql/libpq-fe.h){
+		DEFINES += DISTRO_GENTOO
+	}
 }
 windows{
-  UI_DIR = .ui
-  MOC_DIR = .moc
-  OBJECTS_DIR = .obj
-  LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
-  DEFINES += WINDOWS
-  DEFINES += WIN32
-  CONFIG += release \
-  dll
-  VERSION += 0.5.9
+	UI_DIR = .ui
+	MOC_DIR = .moc
+	OBJECTS_DIR = .obj
+	LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
+	INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
+	DEFINES += WINDOWS
+	DEFINES += WIN32
+	CONFIG += release \
+		   dll
+	VERSION += 0.5.9
 }

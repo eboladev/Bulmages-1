@@ -7,6 +7,72 @@
     </message>
 </context>
 <context>
+    <name>BusquedaPeriodo</name>
+    <message>
+        <source>Semanal</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Quincenal</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Mensual</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Trimestral</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Semestral</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Anual</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Bienal</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>Ficha</name>
+    <message>
+        <source>Borrar</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Desea eliminar la</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&amp;Si</source>
+        <translation>&amp;Sí</translation>
+    </message>
+    <message>
+        <source>&amp;No</source>
+        <translation>&amp;No</translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation>&amp;Cancelar</translation>
+    </message>
+    <message>
+        <source>Guardar</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Desea guardar los cambios?</source>
+        <translation>¿Desea guardar los cambios?</translation>
+    </message>
+    <message>
+        <source>No se pudo cerrar la ventana debido a un error</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
     <name>ImportBulmaFact</name>
     <message>
         <source>&lt;HR&gt;&lt;B&gt;Tratando el cliente </source>
@@ -204,6 +270,35 @@
 </source>
         <translation>El artículo de la línea de presupuesto no existe&lt;BR&gt;(new line)</translation>
     </message>
+    <message>
+        <source>El almacen del presupuesto no existe&lt;BR&gt;
+</source>
+        <translation>El almacén del presupuesto no existe&lt;BR&gt;(new line)</translation>
+    </message>
+    <message>
+        <source>El cliente del presupuesto no existe&lt;BR&gt;
+</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>La forma de pago del presupuesto no existe&lt;BR&gt;
+</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>QApplication2</name>
+    <message>
+        <source>Error inesperado en BulmaFact</source>
+        <translation></translation>
+    </message>
+</context>
+<context>
+    <name>QWorkspace2</name>
+    <message>
+        <source>Esc</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>QmcDateNav</name>
@@ -287,51 +382,161 @@
         <source>December</source>
         <translation>Diciembre</translation>
     </message>
+    <message>
+        <source>Go to Today</source>
+        <translation>Ir a hoy</translation>
+    </message>
+</context>
+<context>
+    <name>SubForm3</name>
+    <message>
+        <source>Nombre</source>
+        <translation>Nombre</translation>
+    </message>
+    <message>
+        <source>Nombre de campo</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Visible</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Borrar registro</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ajustar columa</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ajustar altura</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ajustar columnas</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ajustar alturas</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ver/Ocultar configurador de subformulario</source>
+        <translation></translation>
+    </message>
 </context>
 <context>
     <name>SubForm3Base</name>
     <message>
         <source>Configuracion Subformularios</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Imprimir pedido</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;/head&gt;&lt;body style=&quot; white-space: pre-wrap; font-family:Sans Serif; font-size:9pt; font-weight:400; font-style:normal; text-decoration:none;&quot;&gt;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;asdf&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Query</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Columnas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Aplicar Cambios</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuración Subformularios</translation>
     </message>
     <message>
         <source>Query</source>
         <comment>Consulta SQL</comment>
-        <translation type="unfinished"></translation>
+        <translation>Consulta SQL</translation>
+    </message>
+    <message>
+        <source>Aplicar</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&amp;Cerrar</source>
+        <translation>&amp;Cerrar</translation>
+    </message>
+    <message>
+        <source>Columnas visibles</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Paginacion</source>
+        <translation>Paginación</translation>
+    </message>
+    <message>
+        <source>Total filas:</source>
+        <translation>Total filas:</translation>
+    </message>
+    <message>
+        <source>Filas por pagina:</source>
+        <translation>Filas por página:</translation>
+    </message>
+    <message>
+        <source>Pagina actual:</source>
+        <translation>Página actual:</translation>
+    </message>
+    <message>
+        <source>Total paginas:</source>
+        <translation>Total páginas:</translation>
+    </message>
+    <message>
+        <source>Pagina anterior</source>
+        <translation>Página anterior</translation>
+    </message>
+    <message>
+        <source>Pagina siguiente</source>
+        <translation>Página siguiente</translation>
+    </message>
+    <message>
+        <source>SQL</source>
+        <translation></translation>
+    </message>
+    <message encoding="UTF-8">
+        <source>¡Opcion reservada a expertos!</source>
+        <translation>¡Opción reservada a expertos!</translation>
+    </message>
+    <message>
+        <source>Escriba aqui la consulta SQL</source>
+        <translation>Escriba aquí la consulta SQL</translation>
+    </message>
+    <message>
+        <source>Ejecutar consulta</source>
+        <translation></translation>
     </message>
 </context>
 <context>
-    <name>abreempresadlg</name>
+    <name>abreempresabase</name>
+    <message>
+        <source>Seleccione una empresa</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Empresas disponibles:</source>
+        <translation>Empresas disponibles:</translation>
+    </message>
     <message>
         <source>Actualizar</source>
         <translation>Actualizar</translation>
     </message>
     <message>
+        <source>Actualiza el listado de empresas</source>
+        <translation></translation>
+    </message>
+    <message>
+        <source>&amp;Entra</source>
+        <translation>&amp;Entra</translation>
+    </message>
+    <message>
+        <source>&amp;Cancelar</source>
+        <translation>&amp;Cancelar</translation>
+    </message>
+</context>
+<context>
+    <name>abreempresaview</name>
+    <message>
+        <source>&amp;Cierra el programa</source>
+        <translation>&amp;Cierra el programa</translation>
+    </message>
+    <message>
+        <source>Para entrar, antes tiene que seleccionar una empresa.</source>
+        <translation>Para entrar, antes tiene que seleccionar una empresa.</translation>
+    </message>
+    <message>
         <source>Nombre</source>
         <translation>Nombre</translation>
     </message>
-    <message encoding="UTF-8">
-        <source>Año</source>
+    <message>
+        <source>Anyo</source>
         <translation>Año</translation>
     </message>
     <message>
@@ -342,65 +547,83 @@
         <source>Tipo</source>
         <translation>Tipo</translation>
     </message>
+</context>
+<context>
+    <name>funcaux</name>
     <message>
-        <source>&amp;Aceptar</source>
-        <translation>&amp;Aceptar</translation>
+        <source>Informacion de depuracion</source>
+        <translation>Información de depuración</translation>
     </message>
     <message>
-        <source>&amp;Cancelar</source>
-        <translation>&amp;Cancelar</translation>
+        <source>&amp;Continuar</source>
+        <translation>&amp;Continuar</translation>
     </message>
     <message>
-        <source>Abrir empresa</source>
+        <source>&amp;Omitir</source>
+        <translation>&amp;Omitir</translation>
+    </message>
+    <message>
+        <source>Omitir &amp;clase</source>
+        <translation>Omitir &amp;clase</translation>
+    </message>
+    <message>
+        <source>Atencion</source>
+        <translation>Atención</translation>
+    </message>
+</context>
+<context>
+    <name>listventanas</name>
+    <message>
+        <source>Indexador</source>
         <translation></translation>
     </message>
     <message>
-        <source>Actualiza el listado de empresas</source>
+        <source>listventanas::meteWindow ventana duplicada</source>
         <translation></translation>
     </message>
 </context>
 <context>
     <name>logpass</name>
     <message>
-        <source>Error: usuario y/o contrase&#xc3;&#xb1;a incorrectos</source>
-        <translation>Error: Usuario y/o contraseña incorrectos</translation>
+        <source>Error: usuario y/o contrasenya incorrectos</source>
+        <translation>Error: usuario y/o contraseña incorrectos</translation>
     </message>
 </context>
 <context>
     <name>logpassbase</name>
     <message>
-        <source>Usuario</source>
-        <translation></translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>Contraseña</source>
-        <translation>Contraseña</translation>
-    </message>
-    <message encoding="UTF-8">
-        <source>BulmaGés</source>
-        <translation>BulmaGés</translation>
-    </message>
-    <message>
-        <source>Nombre Usuario</source>
-        <translation>Nombre Usuario</translation>
-    </message>
-    <message>
-        <source>Lanzador v.0.5</source>
-        <translation>Lanzador v 0.5</translation>
-    </message>
-    <message>
         <source>&amp;Validar</source>
         <translation>&amp;Validar</translation>
+    </message>
+    <message>
+        <source>Lanzador Bulmages</source>
+        <translation>Lanzador Bulmagés</translation>
+    </message>
+    <message>
+        <source>Mensaje de error:</source>
+        <translation>Mensaje de error:</translation>
+    </message>
+    <message>
+        <source>Registro de entrada:</source>
+        <translation>Registro de entrada:</translation>
+    </message>
+    <message>
+        <source>Nombre de usuario:</source>
+        <translation>Nombre de usuario:</translation>
+    </message>
+    <message>
+        <source>Contrasenya:</source>
+        <translation>Contraseña:</translation>
+    </message>
+    <message>
+        <source>&amp;Cerrar el programa</source>
+        <translation>&amp;Cerrar el programa</translation>
     </message>
 </context>
 <context>
     <name>msgErrorBase</name>
     <message>
         <source>Mensaje</source>
-        <translation>Mensaje</translation>
-    </message>
-    <message>
-        <source>textLabel1</source>
         <translation>Mensaje</translation>
     </message>
     <message>

@@ -276,7 +276,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label5" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -375,7 +375,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label6" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>1</hsizetype>
@@ -414,7 +414,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label7" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>1</hsizetype>
@@ -497,7 +497,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label14" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -528,7 +528,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label13" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -566,7 +566,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label12" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -605,7 +605,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label9" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -644,7 +644,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label11" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -692,7 +692,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label10" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -723,7 +723,7 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label8" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -831,7 +831,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label3" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1153,7 +1153,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label2" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1475,7 +1475,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label4" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1799,7 +1799,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLabel" name="label1" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2180,27 +2180,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends></extends>
-   <header>busquedatrabajador.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoPedidoClienteView</class>
-   <extends></extends>
-   <header>listdescpedidoclienteview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -2232,6 +2211,27 @@
    <class>ListLinPedidoClienteView</class>
    <extends></extends>
    <header>listlinpedidoclienteview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends></extends>
+   <header>busquedatrabajador.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoPedidoClienteView</class>
+   <extends></extends>
+   <header>listdescpedidoclienteview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends></extends>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

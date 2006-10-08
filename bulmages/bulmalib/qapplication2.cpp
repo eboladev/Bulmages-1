@@ -24,7 +24,8 @@
 #include "funcaux.h"
 
 
-QApplication2::QApplication2(int & argc, char ** argv) : QApplication(argc, argv) {}
+QApplication2::QApplication2(int &argc, char **argv) : QApplication(argc, argv) {}
+
 
 bool QApplication2::notify(QObject *o, QEvent *e) {
     try {
@@ -32,6 +33,6 @@ bool QApplication2::notify(QObject *o, QEvent *e) {
     } catch (...) {
         mensajeInfo(tr("Error inesperado en BulmaFact"));
         return FALSE;
-    }
+    } // end try
 }
 

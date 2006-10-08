@@ -5,24 +5,18 @@
 	<pageTemplate id="main">
 		<pageGraphics>
 
-
 		<include src="/var/bulmages/openreports/plantilla.rml"/>
-
 
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
 		<drawString x="1.5cm" y="24.5cm">PRESUPUESTO</drawString>
 
-
-
-
 		<!-- LOS DATOS DEL CLIENTE -->
 		<setFont name="Helvetica" size="12"/>
 		<drawString x="8.5cm" y="24cm">[nomcliente] -- [telcliente]</drawString>
 		<drawString x="8.5cm" y="23.5cm">[dircliente]</drawString>
 		<drawString x="8.5cm" y="23cm">[poblcliente]</drawString>
-
 
 		<setFont name="Helvetica" size="12"/>
 		<fill color="(0,0,0)"/>	
@@ -45,9 +39,7 @@
 
 </template>
 
-
 <include src="/var/bulmages/openreports/estilos.rml"/>
-
 
 <story>
 <blockTable style="tablacontenido" colWidths="1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm" repeatRows="1">
@@ -62,8 +54,6 @@
 [story]
 </blockTable>
 
-
-
 <storyPlace x="0cm" y="0cm" width="15cm" height="1cm">
 <place x="12cm" y="2cm" width="8cm" height="2.5cm">
 <blockTable>
@@ -76,8 +66,5 @@
 </place>
 </storyPlace>
 </story>
-
-
-
 
 </document>

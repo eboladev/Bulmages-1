@@ -31,6 +31,7 @@
 #include <QPainter>
 #include <QWorkspace>
 #include <QMainWindow>
+#include <QProgressBar>
 
 #include "qworkspace2.h"
 #include "bulmafact.h"
@@ -44,27 +45,52 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     _depura("bulmafact::bulmafact\n", 0);
     setupUi(this);
 
+    setUpdatesEnabled(TRUE);
+
     pWorkspace = new QWorkspace2(this);
     pWorkspace->setScrollBarsEnabled(TRUE);
 
-    setCentralWidget(pWorkspace);
+    QFrame *m_frame1 = new QFrame();
+    QProgressBar *m_pb = new QProgressBar();
+    m_pb->setMaximum(100);
+    m_pb->setMinimum(0);
+    m_pb->setValue(0);
+    /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
+    m_pb->setVisible(FALSE);
+
+    setCentralWidget(m_frame1);
+    /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
+    QVBoxLayout *vboxlayout = new QVBoxLayout(this->centralWidget());
+    vboxlayout->setSpacing(0);
+    vboxlayout->setMargin(0);
+    vboxlayout->addWidget(pWorkspace);
+    vboxlayout->addWidget(m_pb);
+
     showMaximized();
 
     m_company = new company();
+
+    m_company->setProgressBar(m_pb);
+
     m_company->init(bd);
     m_company->setWorkspace(pWorkspace);
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
+    m_list->setVisible(FALSE);
     /// Iniciamos el listventanas con el workspace para que pueda operar con el
     m_list->setWorkspace(pWorkspace);
 
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
     m_company->setListVentanas(m_list);
+
     m_company->createMainWindows();
 
+    m_list->setVisible(TRUE);
+    m_pb->setVisible(FALSE);
     statusBar()->showMessage(tr("Listo"), 2000);
+
     _depura("END bulmafact::bulmafact\n", 0);
 }
 

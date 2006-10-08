@@ -285,9 +285,7 @@ windows{
   MOC_DIR = .moc
   OBJECTS_DIR = .obj
   LIBS += ../../bulmalib/release/bulmalib0.dll \
-  INCLUDEPATH += ../../bulmalib/libpq \
-  ../src \
-  .. \
-  LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
+          "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
+  INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
   TARGET = ../../../installbulmages/bulmafact
 }

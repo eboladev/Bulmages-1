@@ -8,10 +8,9 @@
 		<setFont name="Helvetica" size="8"/>		
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="1.2cm">www.conetxia.com -- info@conetxia.com -- 971.29.06.29</drawString>	
-		<drawString x="8cm" y="0.9cm">Joaquin Turina, 1 - 07004 - Palma de Mallorca</drawString>
+		<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>	
 
-		<!-- EL DRAFT -->
+			<!-- EL BORRADOR -->
 			<setFont name="Helvetica" size="100"/>
 			<fill color="(1,0.9,0.9)"/>
 			<stroke color="(1,0.9,0.9)"/>
@@ -20,8 +19,8 @@
 			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
 			<lineMode width="4mm"/>
 			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-		<rotate degrees="-50"/>
-		<translate dx="-15cm" dy="5.5cm"/>
+			<rotate degrees="-50"/>
+			<translate dx="-15cm" dy="5.5cm"/>
 
 		<!-- EL RECUADRO DONDE VA EL CLIENTE -->
 		<stroke color="(0,0,0)"/>
@@ -32,7 +31,7 @@
 		<rect x="1.85cm" y="19.2cm" width="17.3cm" height="0.6cm" fill="yes" stroke="no"/>
 		<grid xs="1.85cm,3.65cm,12.3cm,13.5cm,15.2cm,16.8cm,19.15cm" ys="19.8cm,5cm"/>
 
-		<!-- Los datos del presupuesto -->
+		<!-- EL DETALLE -->
 		<fill color="(0.7,0.7,0.7)"/>
 		<rect x="4cm" y="21cm" width="15cm" height="0.8cm" fill="yes" stroke="no"/>
 		<grid xs="4cm,7cm,10cm,13cm,16cm,19cm" ys="20.2cm,21cm,21.8cm"/>

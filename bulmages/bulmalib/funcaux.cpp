@@ -209,8 +209,8 @@ void reemplazaarchivo(QString archivo, QString texto1, QString texto2, QString a
 }
 
 
-/// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo de
-/// la invocacion de trml2pdf para evitar trabajo duplicado.
+/// En la impresi&oacute;n de documentos con trml2pdf esta funci&oacute;n hace casi todo
+/// el trabajo de la invocaci&oacute;n de trml2pdf para evitar trabajo duplicado.
 void generaPDF(const QString arch) {
     _depura("generaPDF" + arch, 0);
     QDir::setCurrent(confpr->valor(CONF_DIR_USER));
@@ -219,7 +219,7 @@ void generaPDF(const QString arch) {
 #ifdef WINDOWS
 
     cadsys = confpr->valor(CONF_PYTHON) + " " + confpr->valor(CONF_PROGDATA) + "trml2pdf\\trml2pdf.py " + arch + ".rml > " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
-    system(cadsys.ascii());
+    system(cadsys.toAscii());
     _depura(cadsys, 0);
     cadsys = confpr->valor(CONF_FLIP) + " -u " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
     system(cadsys.toAscii().data());
@@ -232,8 +232,8 @@ void generaPDF(const QString arch) {
 }
 
 
-/// Genera un PDF a partir de un RML usando trml2pdf y además lo muestra con el visor
-/// de PDF pasado en la configuracion.
+/// Genera un PDF a partir de un RML usando trml2pdf y adem&aacute;s lo muestra con el visor
+/// de PDF pasado en la configuraci&oacute;n.
 /// arch = Archivo RML.
 void invocaPDF(const QString arch) {
     generaPDF(arch);

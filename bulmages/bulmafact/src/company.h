@@ -23,6 +23,7 @@
 
 #include <QObject>
 #include <QWorkspace>
+#include <QProgressBar>
 
 #include "postgresiface2.h"
 #include "listventanas.h"
@@ -79,6 +80,7 @@ private:
 
 public:
     QWorkspace2 *m_pWorkspace;
+    QProgressBar *m_progressbar;
 
 public:
     company();
@@ -89,6 +91,9 @@ public:
     };
     void setWorkspace(QWorkspace2 *qw) {
         m_pWorkspace = qw;
+    }
+    void setProgressBar(QProgressBar *pb) {
+        m_progressbar = pb;
     }
     void listproviders();
     void listClients();

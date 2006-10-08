@@ -314,7 +314,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label" >
+         <widget class="QLabel" name="label5" >
           <property name="font" >
            <font>
             <family>Sans Serif</family>
@@ -409,7 +409,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label6" >
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -463,7 +463,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label7" >
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -534,7 +534,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label11" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>1</hsizetype>
@@ -586,7 +586,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label13" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -620,7 +620,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label12" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -651,7 +651,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label10" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -692,7 +692,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label16" >
             <property name="sizePolicy" >
              <sizepolicy>
               <hsizetype>1</hsizetype>
@@ -731,7 +731,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label15" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -762,7 +762,7 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QLabel" name="label" >
+           <widget class="QLabel" name="label14" >
             <property name="font" >
              <font>
               <family>Sans Serif</family>
@@ -872,7 +872,7 @@
           <number>2</number>
          </property>
          <item>
-          <widget class="QLabel" name="label" >
+          <widget class="QLabel" name="label8" >
            <property name="text" >
             <string>Comentarios publicos:</string>
            </property>
@@ -908,7 +908,7 @@
           <number>2</number>
          </property>
          <item>
-          <widget class="QLabel" name="label" >
+          <widget class="QLabel" name="label9" >
            <property name="text" >
             <string>Comentarios privados:</string>
            </property>
@@ -956,7 +956,7 @@
         <number>6</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label3" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1278,7 +1278,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label2" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1600,7 +1600,7 @@
         <number>2</number>
        </property>
        <item>
-        <widget class="QLabel" name="label" >
+        <widget class="QLabel" name="label4" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>0</hsizetype>
@@ -1924,7 +1924,7 @@
       <number>2</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLabel" name="label1" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -2305,20 +2305,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends></extends>
-   <header>busquedaformapago.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -2357,6 +2343,20 @@
    <class>BusquedaTrabajador</class>
    <extends></extends>
    <header>busquedatrabajador.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends></extends>
+   <header>busquedaformapago.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -31,7 +31,9 @@
 logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
     setWindowTitle(name);
     setupUi(this);
-    QObject::connect(pushButton24, SIGNAL(clicked()), this, SLOT(validar()));
+    grpAuthError->setVisible(TRUE);
+    QObject::connect(pbValidar, SIGNAL(clicked()), this, SLOT(validar()));
+    QObject::connect(pbCerrar, SIGNAL(clicked()), this, SLOT(close()));
     validar();
 }
 
@@ -48,18 +50,21 @@ void logpass::validar() {
     confpr->setValor(CONF_LOGIN_USER, m_login->text());
     confpr->setValor(CONF_PASSWORD_USER, m_password->text());
 
-    /// Comprobamos si es un usuario valido.
+    /// Comprobamos si es un usuario v&aacute;lido.
     metabase = new postgresiface2();
-    if(!metabase->inicializa("template1")) {
+    if (!metabase->inicializa("template1")) {
         m_authOK = true;
     } // end if
     delete metabase;
 
-    /// Si es valido abrimos el selector y si no mostramos un error y limpiamos el formulario.
+    /// Si es v&aacute;lido abrimos el selector y si no mostramos un error y limpiamos
+    /// el formulario.
     if (m_authOK) {
+        grpAuthError->setVisible(FALSE);
         done(1);
     } else {
-        lblAuthError->setText(tr("Error: usuario y/o contraseña incorrectos"));
+        grpAuthError->setVisible(TRUE);
+        lblAuthError->setText(tr("Error: usuario y/o contrasenya incorrectos"));
         m_login->setText("");
         m_password->setText("");
         m_login->setFocus();

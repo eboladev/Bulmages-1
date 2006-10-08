@@ -61,13 +61,13 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         ncampos = PQnfields(result);
         registroactual = 0;
         /// Depuramos todo.
-        _depura("--------- RESULTADO DE QUERY ----------------");
+        _depura("------------ RESULTADO DE LA CONSULTA -----------------");
         QString err;
-        err.sprintf("Num. Registros: %d, Num. Campos: %d", nregistros, ncampos);
+        err.sprintf("Numero de registros: %d, Numero de campos: %d", nregistros, ncampos);
         _depura(err);
-        _depura("--------- FIN RESULTADO DE QUERY ----------------");
-    } catch(...) {
-        _depura("cursor2::cursor2: Error con el query: "+SQLQuery , 3);
+        _depura("--------- FIN RESULTADO DE LA CONSULTA ----------------");
+    } catch (...) {
+        _depura("cursor2::cursor2: Error en la consulta: " + SQLQuery, 3);
         throw -1;
     } // end try
     _depura("END cursor2::cursor2", 0);
@@ -101,7 +101,7 @@ int cursor2::numcampos() {
 /// Devuelve el nombre del campo de una posicion determinada.
 /// \param campo Posicion de la que se quiere que devuelva el nombre.
 QString cursor2::nomcampo(int campo) {
-    return ((QString) PQfname(result, campo));
+    return ((QString)PQfname(result, campo));
 }
 
 
@@ -140,12 +140,12 @@ QString cursor2::valor(int posicion, int registro) {
 }
 
 
-/// Esta funcion devuelve el valor del campo especificado (por nombre) del registro
+/// Esta funci&oacute;n devuelve el valor del campo especificado (por nombre) del registro
 /// pasado, si se pasa como registro -1 se devuelve el registro actual.
 /// \param campo Nombre del campo a devolver
 /// \param registro El registro del que se quiere devolver el campo.
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
-/// \return El valor de la posicion.
+/// \return El valor de la posici&oacute;n.
 QString cursor2::valor(QString campo, int registro) {
     _depura("cursor2::valor", 0, campo + " " + QString::number(registro));
     int i = 0;
@@ -159,37 +159,37 @@ QString cursor2::valor(QString campo, int registro) {
 }
 
 
-/// Devuelve la posicion siguiente al registro que se esta recorriendo.
+/// Devuelve la posici&oacute;n siguiente al registro que se est&aacute; recorriendo.
 int cursor2::siguienteregistro() {
-    _depura("cursor2::siguienteregistro", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
+    _depura("cursor2::siguienteregistro", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     return ++registroactual;
 }
 
 
-/// Devuelve la posicion anterior al registro que se esta recorriendo.
+/// Devuelve la posici&oacute;n anterior al registro que se est&aacute; recorriendo.
 int cursor2::registroanterior() {
-    _depura("cursor2::registroanterior", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
+    _depura("cursor2::registroanterior", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     return --registroactual;
 }
 
 
-/// Devuelve la posicion del primer registro de la tabla de registros.
+/// Devuelve la posici&oacute;n del primer registro de la tabla de registros.
 int cursor2::primerregistro() {
-    _depura("cursor2::primerregistro", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
+    _depura("cursor2::primerregistro", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     registroactual = 0;
     return 0;
 }
 
 
-/// Devuelve el ultimo registro de la tabla de registros.
+/// Devuelve el &uacute;ltimo registro de la tabla de registros.
 int cursor2::ultimoregistro() {
-    _depura("cursor2::ultimoregistro", 0, "Reg Act: "+QString::number(registroactual)+" Num Registros: "+QString::number(nregistros));
+    _depura("cursor2::ultimoregistro", 0, "Registro actual: " + QString::number(registroactual)+" Numero de registros: " + QString::number(nregistros));
     registroactual = nregistros - 1;
     return registroactual;
 }
 
 
-/// Devuelve TRUE si el registro esta en la posicion final, o si esta vacio.
+/// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n final, o si est&aacute; vacio.
 bool cursor2::eof() {
     if (nregistros == 0) {
         return (true);
@@ -198,7 +198,7 @@ bool cursor2::eof() {
 }
 
 
-/// Devuelve TRUE si el registro esta en la posicion inicial, o si esta vacio.
+/// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n inicial, o si est&aacute; vacio.
 bool cursor2::bof() {
     if (nregistros == 0) {
         return(true);
@@ -207,7 +207,7 @@ bool cursor2::bof() {
 }
 
 
-/// devuelve TRUE si es el ltimo registro a considerar.
+/// Devuelve TRUE si es el &uacute;ltimo registro a considerar.
 bool cursor2::esultimoregistro() {
     _depura("cursor2::esultimoregistro", 0);
     return (registroactual == nregistros - 1);
@@ -226,13 +226,13 @@ postgresiface2::postgresiface2() {
 }
 
 
-/// Finaliza la conexion con la base de datos.
+/// Finaliza la conexi&oacute;n con la base de datos.
 void postgresiface2::terminar() {
     PQfinish(conn);
 }
 
 
-/// Destructor de la clase que al igual que \ref terminar termina la conexion
+/// Destructor de la clase que al igual que \ref terminar termina la conexi&oacute;n
 /// con la base de datos.
 postgresiface2::~postgresiface2() {
     /// close the connection to the database and cleanup.
@@ -240,12 +240,13 @@ postgresiface2::~postgresiface2() {
 }
 
 
-/// Inicializa la conexion con la base de datos mediante los parametro especificados
-/// Precisamente no lo hace el constructor debido a la ausencia de dichos datos.
-/// \param nomdb Indica el nombre de la base de datos
+/// Inicializa la conexi&oacute;n con la base de datos mediante los par&aacute;metro
+/// especificados. Precisamente no lo hace el constructor debido a la ausencia de
+/// dichos datos.
+/// \param nomdb Indica el nombre de la base de datos.
 /// \param user Indica el usuario que hace la operacion a ojos de la base de datos.
-/// \param passwd Indica la contrasenya que utiliza el usuario para autentificarse
-/// \return Si todo va bien devuelve 0, en caso contrario devuelve 1
+/// \param passwd Indica la contrasenya que utiliza el usuario para autentificarse.
+/// \return Si todo va bien devuelve 0, en caso contrario devuelve 1.
 int postgresiface2::inicializa(QString nomdb) {
     dbName = nomdb;
     pghost = confpr->valor(CONF_SERVIDOR); /// host name of the backend server.
@@ -270,12 +271,13 @@ int postgresiface2::inicializa(QString nomdb) {
     _depura(conexion, 0);
     conn = PQconnectdb(conexion.toAscii().data());
     if (PQstatus(conn) == CONNECTION_BAD) {
-        _depura("Connection to database '" + dbName + "' failed.\n", 0);
-        if (passwd != "" && confpr->valor(CONF_ALERTAS_DB) == "Yes")
+        _depura("La conexion con la base de datos '" + dbName + "' ha fallado.\n", 0);
+        if (passwd != "" && confpr->valor(CONF_ALERTAS_DB) == "Yes") {
             _depura(PQerrorMessage(conn), 2);
-        else
+        } else {
             _depura(PQerrorMessage(conn), 0);
-        return (1);
+        } // end if
+        return 1;
     } // end if
     _depura("La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0);
     formatofecha();
@@ -375,11 +377,11 @@ void postgresiface2::rollback() {
 /// respuesta al query.
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     _depura ("postgresiface2::cargacursor", 0);
-	cursor2 *cur = NULL;
+    cursor2 *cur = NULL;
     try {
         cur = new cursor2(nomcursor, conn, Query);
     } catch(...) {
-	_depura( "postgresiface2::cargacursor La base de datos generó un error: "+Query, 3);
+        _depura( "postgresiface2::cargacursor La base de datos generó un error: "+Query, 3);
         delete cur;
         throw -1;
     } // end try
