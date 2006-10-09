@@ -35,7 +35,10 @@ import color
 #
 # Change this to UTF-8 if you plan tu use Reportlab's UTF-8 support
 #
-encoding = 'utf-8'
+#encoding = 'UTF8'
+#encoding = 'utf-8'
+encoding = 'latin1'
+#encoding = 'cp1252'
 
 def _child_get(node, childs):
 	clds = []

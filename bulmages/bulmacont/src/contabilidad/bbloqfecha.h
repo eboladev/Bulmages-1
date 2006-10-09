@@ -22,10 +22,10 @@
 #define BbloqFecha_H
 
 #include <q3listview.h>
+#include <QWidget>
 
 #include "ui_bbloqfechabase.h"
-#include "postgresiface2.h"
-
+#include "funcaux.h"
 
 class empresa;
 
@@ -43,6 +43,7 @@ public:
 
 
 class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
+Q_OBJECT
 private:
     empresa *empresaactual;
 
@@ -51,7 +52,8 @@ public:
     ~BbloqFecha();
 
 public slots:
-    virtual void dobleClick (Q3ListViewItem *item);
+    virtual void on_mui_crear_clicked() { _depura("Funcion aun no implementada", 2);};
+    virtual void on_listView1_doubleClicked(Q3ListViewItem *item);
     virtual void boto1_click();
 };
 

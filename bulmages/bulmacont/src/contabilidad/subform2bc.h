@@ -33,8 +33,6 @@ Q_OBJECT
 public:
     SubForm2Bc(QWidget *parent = 0);
     virtual ~SubForm2Bc() {};
-//    virtual int cargar(cursor2 *);
-
 
    virtual void boton_asiento();
    virtual void boton_extracto1(int);
@@ -45,7 +43,6 @@ public:
    virtual void procesaMenu(QAction *);
 
 public slots:
-//    virtual void contextMenuEvent (QContextMenuEvent *);
     virtual void on_mui_list_editFinished(int row, int col);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);

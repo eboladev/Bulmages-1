@@ -492,8 +492,9 @@ int SubForm3::borrar(int row) {
         SDBRecord *rec;
 	SDBCampo *camp;
 	
-	/// Cogemos el elemento correspondiente
-        rec = m_lista.takeAt(row);
+	/// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
+	rec = lineaat(row);
+	if (!rec) return -1;
 
 	/// Agregamos el elemento a la lista de borrados
         m_listaborrar.append(rec);

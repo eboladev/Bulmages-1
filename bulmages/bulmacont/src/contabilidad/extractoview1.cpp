@@ -222,9 +222,6 @@ void extractoview1::presentar() {
     QString cad;
     QString cadaux;
     cursor2 *cursorapt;
-//    cursor2 *cursorcoste;
-//    cursor2 *cursorcanal;
-//    cursor2 *cursoraux1;
 
     if (m_cursorcta->eof() || m_cursorcta->bof())
         return;
@@ -252,7 +249,10 @@ void extractoview1::presentar() {
         tabla = "apunte";
     }// end if
 
-    query="SELECT * FROM ( (SELECT * FROM "+tabla+" WHERE  idcuenta="+idcuenta+" AND fecha>='"+finicial+"' AND fecha<='"+ffinal+"' "+ccostes+" "+ccanales+" "+tipopunteo+") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ORDER BY t1.fecha, ordenasiento, t1.orden";
+    query="SELECT * FROM ( (SELECT * FROM "+tabla+" WHERE  idcuenta="+idcuenta+" AND fecha>='"+finicial+"' AND fecha<='"+ffinal+"' "+ccostes+" "+ccanales+" "+tipopunteo+") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
+    query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste= t1.idc_coste ";
+     query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
+    query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
 
     cursorapt=m_companyact->cargacursor(query);
     mui_list->cargar(cursorapt);

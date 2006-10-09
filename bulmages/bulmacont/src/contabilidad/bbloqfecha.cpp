@@ -50,8 +50,6 @@ BbloqFecha::BbloqFecha(empresa *emp, QWidget * parent) : QWidget(parent, Qt::WDe
 	}// end if
 
 
-
-
         query.sprintf("SELECT * FROM ejercicios WHERE ejercicio='%s' ORDER BY periodo DESC",curEjer->valor("ejercicio").ascii());
         curPeri = empresaactual->cargacursor(query);
         while (!curPeri->eof()) {
@@ -106,6 +104,7 @@ BbloqFecha::BbloqFecha(empresa *emp, QWidget * parent) : QWidget(parent, Qt::WDe
 
 }
 
+
 BbloqFecha::~BbloqFecha() {
    _depura("BbloqFecha::~BbloqFecha", 0);
 	empresaactual->sacaWindow(this);
@@ -116,7 +115,9 @@ void BbloqFecha::boto1_click() {
     delete this;
 }
 
-void BbloqFecha::dobleClick (Q3ListViewItem *item) {
+
+void BbloqFecha::on_listView1_doubleClicked (Q3ListViewItem *item) {
+    _depura("BbloqFecha::on_listView1_itemDoubleClicked", 0);
     int error;
     myQListViewItem *it = (myQListViewItem *) item;
     if (item->text(1)=="Bloqueado") {
@@ -128,7 +129,9 @@ void BbloqFecha::dobleClick (Q3ListViewItem *item) {
         QString Query = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = "+it->ej+" AND periodo = "+it->per;
         error = empresaactual->ejecuta(Query);
     }// end if
+    _depura("END BbloqFecha::on_listView1_itemDoubleClicked", 0);
 }
+
 
 
 
