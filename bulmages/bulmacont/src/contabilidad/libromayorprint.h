@@ -22,10 +22,12 @@
 #define LIBROMAYORPRINT_H
 
 #include <QWidget>
+
 #ifndef WIN32
 #include <unistd.h>
 #include <sys/wait.h>
 #endif
+
 #include <errno.h>
 #include <sys/types.h>
 #include <string>
@@ -35,6 +37,8 @@ using std::string;
 #include "postgresiface2.h"
 
 
+///
+/** */
 class libromayorprint {
 public:
     QString codinicial;

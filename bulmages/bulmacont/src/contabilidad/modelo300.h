@@ -18,39 +18,31 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-//Clase con los datos necesarios para el modelo 300 de IVA trimestral
-
 #ifndef MOD300_H
 #define MOD300_H
+
+#include <QCheckBox>
 
 #include "ui_modelo300base.h"
 #include "modelosps.h"
 #include "numerocuenta.h"
-#include <qcheckbox.h>
 
-//class mod300dlg;
 
-/**
- * \class Mod300ps modelo300.h
- * \brief Modelo 300 del IVA
- * 
- * Clase para generar el modelo 300 de declaraci� de IVA trimestral en formato postscript.
-Utiliza los formularios oficiales obtenidos de la <a href="http://www.aeat.es">Agencia Tributaria</a> convertidos de pdf a postscript.
-Hereda de \ref Modgenps */
-class Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps
-  {
-Q_OBJECT
+/// Modelo 300 del IVA.
+/** Clase para generar el modelo 300 de declaraci&oacute; de IVA trimestral en formato
+    postscript.
+    Utiliza los formularios oficiales obtenidos de la Agencia Tributaria (http://www.aeat.es)
+    convertidos de pdf a postscript. Hereda de \ref Modgenps */
+class Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps {
+    Q_OBJECT
 
-  public:
+public:
     Mod300ps(QWidget *parent);
-    ~Mod300ps()
-    {//cout << "Modelo 300 destruido\n";
-    }
+    ~Mod300ps() {}
     ;
-
     void accept();
     void generaps();
-    void escribe_cuenta_bancaria(int,int);
+    void escribe_cuenta_bancaria(int, int);
     void escribe_postscriptdefs(void);
     void rellena_identificacion();
     void rellena_compensacion();
@@ -70,21 +62,20 @@ Q_OBJECT
     float ivar4;
     float ivar7;
     float ivar16;
-    
-    float cas34; //Contenido de la casilla 34 (Resultado)
-  private:
+    float cas34; /// Contenido de la casilla 34 (Resultado).
+
+private:
     QString *nombresccc;
     QString *numerccc;
-    /** Bank account number */
-    numerocuenta *ccc; 
+    /** C&oacute;digo de Cuenta Corriente */
+    numerocuenta *ccc;
     void personalButtonPressed();
-    bool sincuentasbancarias;///<Si es true, no tenemos ninguna cuenta de banco en nuestra base de datos
+    bool sincuentasbancarias; /// Si es true, no tenemos ninguna cuenta de banco en nuestra base de datos.
+
 protected:
     QString ano;
     QString empresa;
-   
-  };
-
-
+};
 
 #endif
+

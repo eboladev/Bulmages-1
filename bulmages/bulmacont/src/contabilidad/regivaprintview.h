@@ -1,51 +1,61 @@
 /***************************************************************************
-                          regivaprintview.h  -  description
-                             -------------------
-    begin                : dom jul 13 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
-    email                : tborras@conetxia.com
-    modificat per        : (C) 2003 Antoni Mirabete i Ter� - amirabet@biada.org
- ***************************************************************************/
-
-/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2003 by Antoni Mirabete i Teres                         *
+ *   amirabet@biada.org                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #ifndef REGIVAPRINTVIEW_H
 #define REGIVAPRINTVIEW_H
 
 #include <errno.h>
-#include <qwidget.h>
-#include "ui_regivaprintbase.h"
-#include <qlineedit.h>
-#include <qradiobutton.h>
 
+#include <QWidget>
+#include <QLineEdit>
+#include <QRadioButton>
+
+#include "ui_regivaprintbase.h"
 #include "postgresiface2.h"
+
 
 class empresa;
 
-/**
-  * Trata el formulario de impresi� del registro de IVA
-  * y genera los listados pertinentes
-  */
-class regivaprintview : public QDialog, public Ui_RegIvaPrintBase  {
+
+/// Trata el formulario de impresi&oacute;n del registro de IVA y genera los
+/// listados pertinentes.
+/** */
+class regivaprintview : public QDialog, public Ui_RegIvaPrintBase {
     Q_OBJECT
+
 public:
     char *fichero;
     postgresiface2 *conexionbase;
     empresa *empresaactual;
+
 public:
-    regivaprintview(empresa *, QWidget *parent=0, const char *name=0);
+    regivaprintview(empresa *, QWidget *parent = 0, const char *name = 0);
     ~regivaprintview();
     void inicializa1(QString, QString);
     void presentar(char *tipus);
+
 public slots:
     virtual void accept();
 };
 
 #endif
+

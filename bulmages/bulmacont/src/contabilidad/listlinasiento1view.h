@@ -1,64 +1,45 @@
-//
-// C++ Interface: ListLinAsiento1View
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef LISTLINASIENTO1VIEW_H
 #define LISTLINASIENTO1VIEW_H
-
-/**
-@author Tomeu Borras
-*/
 
 #include "subform2bc.h"
 #include "fixed.h"
 
+
 class ListLinAsiento1View : public SubForm2Bc {
     Q_OBJECT
+
 public:
-    ListLinAsiento1View(QWidget *parent=0, const char *name=0);
-    ~ListLinAsiento1View() {};
+    ListLinAsiento1View(QWidget *parent = 0, const char *name = 0);
+    ~ListLinAsiento1View() {}
+    ;
     virtual void cargar(QString);
     Fixed totaldebe(QString);
     Fixed totalhaber(QString);
 
 public slots:
-    virtual void contextMenuEvent (QContextMenuEvent *);
+    virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void boton_iva();
 };
 
-
-
-/*
-class ListLinAsiento1View : public Q3Table , public ListLinAsiento1 {
-    Q_OBJECT
-public:
-    ListLinAsiento1View(QWidget *parent=0, const char *name=0);
-    ~ListLinAsiento1View();
-    virtual void pintaListLinAsiento1();
-    virtual void pintalinListLinAsiento1(int);
-    virtual bool eventFilter( QObject *obj, QEvent *ev );
-    LinAsiento1 *lineaat(int);
-    LinAsiento1 *lineaact();
-    void cargaconfig();
-    void guardaconfig();
-    void iniciar_asiento_nuevo(QString);
-    void boton_iva();
-
-public slots:
-    virtual void valueBudgetLineChanged(int row, int col);
-    virtual void contextMenu ( int , int , const QPoint &  );
-    virtual void contextMenuCerrado ( int , int , const QPoint &  );
-    virtual void borraLinAsiento1act();
-    virtual void boton_extracto1(int);
-    virtual void boton_diario1(int);
-    virtual void boton_balance1(int);
-};
-*/
 #endif
+

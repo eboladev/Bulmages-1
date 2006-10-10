@@ -30,7 +30,8 @@
 #include <QRect>
 
 
-
+///
+/** */
 class QTableItem1 : public Q3TableItem {
 public:
     int modo;

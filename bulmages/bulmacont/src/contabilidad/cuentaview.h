@@ -39,6 +39,8 @@
 class empresa;
 
 
+/// Visualiza una cuenta.
+/** */
 class cuentaview : public QWidget, public Ui_CuentaBase, dialogChanges {
     Q_OBJECT
 
@@ -47,7 +49,7 @@ public:
     int idcuenta;
     int idgrupos[100];
     postgresiface2 *conexionbase;
-    unsigned int numdigitos; /// Esta variable indica el numero de digitos que tiene la contabilidad en sus cuentas.
+    unsigned int numdigitos; /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tiene la contabilidad en sus cuentas.
 
 public:
     cuentaview(empresa *emp,QWidget *, const char *name = 0, int fl = 0);

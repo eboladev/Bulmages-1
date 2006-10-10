@@ -1,5 +1,7 @@
 /***************************************************************************
- *Copyright (C) 2003 by Fco. Javier MC, Jean René Mérou, Víctor G. Marimón *
+ *   Copyright (C) 2003 by Fco. Javier M.C. &                              *
+ *                         Jean Rene Merou (http://h.says.it) &            *
+ *                         Victor G. Marimon.                              *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -16,46 +18,43 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef LOG_H
 #define LOG_H
 
-#include <qstring.h>
 #include <iostream>
 #include <fstream>
+
+#include <QString>
+
 using namespace std;
 
 #include "empresa.h"
 
-// Estos tipos son utilizados para poder hacer los logs. Se determinan en la función add.
+/// Estos tipos son utilizados para poder hacer los logs. Se determinan en la funci&oacute;n add.
 #define LOG_SEG 1 // seguridad
 #define LOG_SIS 2 // sistema
 #define LOG_DBD 4 // de base de datos
 #define LOG_TRA 8 // trazado de usuarios
-// ... 8 bits -> ocho tipos de logs que se pueden complementar
-
-
-/**
-We want to log everything
-@authors:
-- Fco. Javier MC
-- René Mérou, http://h.says.it  ,   h@myjabber.net
-- Víctor G. Marimón
-*/
-
+/// ... 8 bits -> ocho tipos de logs que se pueden complementar.
 
 
 class bitacora {
 private:
     ofstream *archivolog;
     empresa *empresaactual;
-    
+
 public:
     bitacora();
-    void add(int , int, QString ,QString);
-    void setempresa(empresa *emp) {empresaactual=emp;}
+    void add(int, int, QString, QString);
+    void setempresa(empresa *emp) {
+        empresaactual = emp;
+    }
     ~bitacora();
 };
+
 
 extern bitacora *ctllog;
 
 #endif
+

@@ -27,6 +27,8 @@
 class empresa;
 
 
+///
+/** */
 class duplicarasientoview : public QDialog, public Ui_DuplicarAsientoBase {
     Q_OBJECT
 

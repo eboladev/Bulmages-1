@@ -26,21 +26,22 @@
 #include "subform3.h"
 
 
+///
+/** */
 class SubForm2Bc : public SubForm3 {
-Q_OBJECT
-
+    Q_OBJECT
 
 public:
     SubForm2Bc(QWidget *parent = 0);
-    virtual ~SubForm2Bc() {};
-
-   virtual void boton_asiento();
-   virtual void boton_extracto1(int);
-   virtual void boton_balance1(int);
-   virtual void boton_balancetree(int);
-   virtual void boton_diario1(int);
-   virtual void creaMenu(QMenu *);
-   virtual void procesaMenu(QAction *);
+    virtual ~SubForm2Bc() {}
+    ;
+    virtual void boton_asiento();
+    virtual void boton_extracto1(int);
+    virtual void boton_balance1(int);
+    virtual void boton_balancetree(int);
+    virtual void boton_diario1(int);
+    virtual void creaMenu(QMenu *);
+    virtual void procesaMenu(QAction *);
 
 public slots:
     virtual void on_mui_list_editFinished(int row, int col);

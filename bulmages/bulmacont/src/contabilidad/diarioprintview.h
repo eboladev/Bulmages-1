@@ -42,7 +42,7 @@
 /// Ventana de impresi&oacute; de diarios.
 /// @class DiarioPrintView diarioprintview.h
 /** Es la ventana de impresi&oacute; de diarios. */
-class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase  {
+class DiarioPrintView : public QDialog, public Ui_DiarioPrintBase {
     Q_OBJECT
 
 public:

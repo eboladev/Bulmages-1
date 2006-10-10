@@ -25,6 +25,8 @@
 #include "subform2bc.h"
 
 
+///
+/** */
 class ExtractoSubForm : public SubForm2Bc {
     Q_OBJECT
 

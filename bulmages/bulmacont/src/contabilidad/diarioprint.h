@@ -37,8 +37,9 @@ using std::string;
 #include "empresa.h"
 
 
+/// Imprime el libro diario.
+/** */
 class diarioprint {
-
 public:
     char *finicial;
     char *ffinal;

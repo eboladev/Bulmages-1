@@ -26,28 +26,23 @@
 #include "ui_canualesbase.h"
 
 
-/**
- * \author Tomeu Borras Riera
- * \class balancesview balancesview.h
- * \brief Listado de Balances Disponibles
- * 
- * Clase que muestra un listado de todos los balances introducidos en el sistema.
- * Sirve como punto de entrada a la generacion de los balances permitiendo la
- * importacion/exportacion de los mismos, su modificacion y su impresion.
- */
 class empresa;
 
 
+/// Listado de balances disponibles.
+/** Clase que muestra un listado de todos los balances introducidos en el sistema.
+    Sirve como punto de entrada a la generaci&oacute;n de los balances permitiendo la
+    importaci&oacute;n/exportaci&oacute;n de los mismos, su modificaci&oacute;n y su impresi&oacute;n. */
 class CAnualesView : public QWidget, public Ui_CAnualesBase {
     Q_OBJECT
 
 private:
     /// Empresa con la que se trabaja (inicializada con el constructor de clase)
     empresa *m_companyact;
-    /// Esta variable indica si se abre para busqueda o para edicion.
+    /// Esta variable indica si se abre para b&uacute;squeda o para edici&oacute;n.
     /// (edicion = 0; seleccion = 1)
     int m_modo;
-    /// Indica el nombre del balance seleccionado
+    /// Indica el nombre del balance seleccionado.
     QString m_nomBalance;
     /// Indica el identificador del balance seleccionado.
     QString m_idBalance;
@@ -74,9 +69,9 @@ public:
     }
 
 private slots:
-    /// SLOT que responde a la pulsacion del boton de imprimir Balance.
+    /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir balance.
     virtual void imprimir();
-    /// SLOT que responde a la accion de hacer doble click sobre el listado.
+    /// SLOT que responde a la acci&oacute;n de hacer doble click sobre el listado.
     virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *);
 };
 

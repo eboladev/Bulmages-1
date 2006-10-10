@@ -1,35 +1,52 @@
+/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras                                    *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef _SPLASH_H
 #define _SPLASH_H
 
-#include <qlabel.h>
-#include <q3textbrowser.h>
-#include <qdialog.h>
-#include <q3textbrowser.h>
-//Added by qt3to4:
+#include <QLabel>
+#include <Q3TextBrowser>
+#include <QDialog>
+#include <Q3TextBrowser>
 #include <QEvent>
 
 
-/** 
-  * @author Tomeu Borrás Riera 
-  * \class splashscreen splashscreen.h
-  * \brief Pantalla de bienvenida
-  *
-  * Clase que muestra la imagen del splash y algunos mensajes chorras. 
-  * Esta clase no tiene mucha utilidad, se utiliza para dar mayor apariencia al programa.
-  */
+/// Pantalla de bienvenida.
+/** Clase que muestra la imagen del splash y algunos mensajes chorras.
+    Esta clase no tiene mucha utilidad, se utiliza para dar mayor apariencia al programa. */
+class Splash : public QDialog {
+    Q_OBJECT
 
-class Splash : public QDialog
-{
-  Q_OBJECT
 private:
- QLabel *l;
- Q3TextBrowser *l2;
+    QLabel *l;
+    Q3TextBrowser *l2;
+
 public:
-   Splash();
-   ~Splash();
-   void lista(QString);
+    Splash();
+    ~Splash();
+    void lista(QString);
+
 public slots:
-   virtual void paint();
-   virtual bool event( QEvent *);
+    virtual void paint();
+    virtual bool event(QEvent *);
 };
-#endif // _SPLASH_H
+
+#endif
+

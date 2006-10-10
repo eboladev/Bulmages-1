@@ -21,8 +21,8 @@
 #ifndef BUSQUEDACUENTA_H
 #define BUSQUEDACUENTA_H
 
-#include <qlineedit.h>
-#include <qlabel.h>
+#include <QLineEdit.h>
+#include <QLabel>
 
 #include "ui_busquedacuentabase.h"
 #include "postgresiface2.h"
@@ -63,7 +63,7 @@ public:
         return mdb_nomcuenta;
     };
     virtual QString tipocuenta() {
-	return mdb_tipocuenta;
+        return mdb_tipocuenta;
     };
     virtual void setidcuenta(QString val);
     virtual void setcodigocuenta(QString val);

@@ -34,6 +34,8 @@
 class empresa;
 
 
+/// Visualiza un centro de coste.
+/** */
 class ccosteview : public QWidget, public Ui_ccostedlg, public dialogChanges {
     Q_OBJECT
 
@@ -41,7 +43,7 @@ public:
     postgresiface2 *conexionbase;
     int ccostes[100];
     int idc_coste; /// Indica cual es el centro de coste que se esta visualizando.
-    /// Si su valor es 0 entonces es que no se esta visualizando ningun centro de coste.
+    /// Si su valor es 0 entonces es que no se esta visualizando ning&uacute;n centro de coste.
     empresa *empresaactual;
 
 public:

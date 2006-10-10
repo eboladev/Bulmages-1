@@ -25,6 +25,7 @@
 #include <qxml.h>
 #include "../contabilidad/empresa.h"
 
+
 class QString;
 class postgresiface2;
 

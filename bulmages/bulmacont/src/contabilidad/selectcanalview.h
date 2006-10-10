@@ -17,40 +17,45 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef SELECTCANALVIEW_H
 #define SELECTCANALVIEW_H
 
-#include "ui_selectcanalbase.h"
-#include <q3listview.h>
+#include <Q3ListView>
 
-/**@author Tomeu Borras*/
+#include "ui_selectcanalbase.h"
+
 
 class empresa;
 
+
+///
+/** */
 class selectcanalview : public QDialog, public Ui_SelectCanalBase {
-Q_OBJECT
+    Q_OBJECT
 public:
     selectcanalview(empresa *emp, QWidget *parent = 0, const char *name = 0);
     ~selectcanalview();
 private:
-   empresa *empresaactual;
-   int m_colNomCoste;
-   int m_colDescCoste;
-   int m_colIdCoste;
-   int m_colStatusCoste;  
-   int m_colCheck;
-   int numdigitos;
-   Q3ListViewItemIterator* m_iterador;
+    empresa *empresaactual;
+    int m_colNomCoste;
+    int m_colDescCoste;
+    int m_colIdCoste;
+    int m_colStatusCoste;
+    int m_colCheck;
+    int numdigitos;
+    Q3ListViewItemIterator* m_iterador;
 public:
-   void cargacanales();
-   int firstcanal();
-   int nextcanal();
-   QString cadcanal();
-   QString nomcanal();
+    void cargacanales();
+    int firstcanal();
+    int nextcanal();
+    QString cadcanal();
+    QString nomcanal();
 public slots:
-   void boton_todo();
-   void boton_nada();
-   void boton_invertir();
+    void boton_todo();
+    void boton_nada();
+    void boton_invertir();
 };
 
 #endif
+
