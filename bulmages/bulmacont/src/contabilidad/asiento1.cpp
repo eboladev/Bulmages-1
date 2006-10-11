@@ -34,12 +34,12 @@ Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
     m_companyact = comp;
     setDBTableName("asiento");
     setDBCampoId("idasiento");
-    addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Id asiento"));
-    addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Descripcion del asiento"));
-    addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, tr("Fecha del asiento"));
-    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios del asiento"));
-    addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, tr("Orden de asiento"));
-    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNothing, tr("Tipo de asiento"));
+    addDBCampo("idasiento", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Asiento1", "Id asiento"));
+    addDBCampo("descripcion", DBCampo::DBvarchar, DBCampo::DBNoSave, QApplication::translate("Asiento1", "Descripcion del asiento"));
+    addDBCampo("fecha", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Asiento1", "Fecha del asiento"));
+    addDBCampo("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Asiento1", "Comentarios del asiento"));
+    addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Asiento1", "Orden de asiento"));
+    addDBCampo("clase", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Asiento1", "Tipo de asiento"));
     listalineas = NULL;
 }
 
@@ -52,8 +52,8 @@ void Asiento1::borraAsiento1() {
     int error;
     if (DBvalue("idasiento") != "") {
         switch (QMessageBox::warning(0,
-                                     tr("Borrar asiento"),
-                                     tr("Se va a borrar el asiento. Esta seguro?"),
+                                     QApplication::translate("Asiento1", "Borrar asiento"),
+                                     QApplication::translate("Asiento1", "Se va a borrar el asiento. Esta seguro?"),
                                      QMessageBox::Ok ,
                                      QMessageBox::Cancel )) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.

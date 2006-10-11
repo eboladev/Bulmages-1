@@ -557,8 +557,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                     } // end if
                     break;
                 case TIPO_TEXTO:
-                    for (j = 0; j < i ndvariablestexto && variablestexto[j][0] != subcadena; j++)
-                        ;
+                    for (j = 0; j < indvariablestexto && variablestexto[j][0] != subcadena; j++);
                     if (j == indvariablestexto) {
                         variablestexto[indvariablestexto][0] = nomvar;
                         variablestexto[indvariablestexto][2] = descvar;

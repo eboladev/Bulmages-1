@@ -21,7 +21,7 @@
 #ifndef BUSQUEDACUENTA_H
 #define BUSQUEDACUENTA_H
 
-#include <QLineEdit.h>
+#include <QLineEdit>
 #include <QLabel>
 
 #include "ui_busquedacuentabase.h"
