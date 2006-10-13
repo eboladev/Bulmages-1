@@ -59,7 +59,7 @@ protected:
     };
 
 public:
-    bool SubForm3::campoCompleto(int row);
+    bool campoCompleto(int row);
     void setDelete(bool f) {
         m_delete = f;
     };
@@ -141,6 +141,7 @@ public:
         mui_list->setColumnCount(i);
     };
     void situarse(unsigned int, unsigned int);
+    void situarse1(unsigned int, unsigned int);
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
     SDBRecord *newSDBRecord();
     void setColumnValue(QString, QString);
@@ -189,6 +190,10 @@ public slots:
     virtual void on_mui_botonCerrar_clicked() {
         toogleConfig();
     };
+    virtual void on_mui_list_cellChanged(int, int);
+    virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
+    virtual void on_mui_list_currentCellChanged(int, int, int, int );
+
 
 signals:
     void toogledConfig(bool);

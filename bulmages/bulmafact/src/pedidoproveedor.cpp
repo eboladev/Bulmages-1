@@ -187,7 +187,6 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     fitxersortidatxt += "</tr>";
 
     QString l;
-    _depura("vamos a recorrer el listado de lineas", 2);
     for (int i = 0; i < listalineas->rowCount() - 1; i++) {
         fitxersortidatxt += "<tr>";
         fitxersortidatxt += "        <td>" + listalineas->DBvalue("desclpedidoproveedor", i) + "</td>";
@@ -196,7 +195,6 @@ void PedidoProveedor::imprimirPedidoProveedor() {
         fitxersortidatxt += "        <td>" + l.sprintf("%2.2f",listalineas->DBvalue("cantlpedidoproveedor", i).toFloat() * listalineas->DBvalue("pvplpedidoproveedor", i).toFloat()) + "</td>";
         fitxersortidatxt += "</tr>";
     } // end for
-    _depura("Fin de vamos a recorrer el listado de lineas", 2);
 
     fitxersortidatxt += "<tr>";
     fitxersortidatxt += "        <td></td>";
@@ -225,9 +223,9 @@ void PedidoProveedor::imprimirPedidoProveedor() {
         stream << buff;
         file.close();
     }
-    _depura("Vamos a ejecutar el trml2pdf", 2);
-    system("trml2pdf.py /tmp/pedidoproveedor.rml > /tmp/pedidoproveedor.pdf");
-    system("kpdf /tmp/pedidoproveedor.pdf");
+
+    invocaPDF("pedidoproveedor");
+   _depura("PedidoProveedor::imprimirPedidoProveedor", 0);
 }
 
 

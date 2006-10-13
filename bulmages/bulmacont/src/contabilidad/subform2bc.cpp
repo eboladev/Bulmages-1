@@ -89,7 +89,7 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     (text);
 }
 
-void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
+void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bc::editFinished",0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
@@ -110,7 +110,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col) {
         rec->setDBvalue( "fecha", nfecha);
     }// end if
 
-    SubForm3::on_mui_list_editFinished(row, col);
+    SubForm3::on_mui_list_editFinished(row, col, key);
     _depura("END SubForm2Bc::editFinished",0);
 }
 

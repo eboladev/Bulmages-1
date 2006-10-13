@@ -65,6 +65,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
     _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 0);
 
     /// Si es una pulsaci&oacute;n de tecla que esta capturada con el release salimos sin hacer nada.
+/*
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
@@ -76,6 +77,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         	return TRUE;
     	} // end switch
     } // end if
+*/
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyRelease) {
@@ -89,8 +91,6 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         if (row < 0)
             return TRUE;
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
-        _depura("key release " + QString::number(key) + " mod " + QString::number(mod), 0);
-
         /// ------------------ EL CAMBIO ------------------------------
         switch(key) {
         case Qt::Key_Return:
@@ -122,11 +122,11 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         case Qt::Key_Up:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlSubir(row, col);
-            } else {
-                emit editFinished(row, col, key);
+            return TRUE;
+ //           } else {
+//                emit editFinished(row, col, key);
             } // end if
             /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
-            return TRUE;
         case Qt::Key_Down:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlBajar(row, col);
@@ -140,15 +140,15 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
                 emit ctrlIzquierda(row, col);
                 return TRUE;
             } // end if
-            emit editFinished(row, col, key);
-            return TRUE;
+ //           emit editFinished(row, col, key);
+ //           return TRUE;
         case Qt::Key_Right:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlDerecha(row, col);
                 return TRUE;
             } // end if
-            emit editFinished(row, col, key);
-            return TRUE;
+//            emit editFinished(row, col, key);
+//            return TRUE;
         } // end switch
     } // end if
     _depura("END QTableWidget2::eventFilter()\n", 1);

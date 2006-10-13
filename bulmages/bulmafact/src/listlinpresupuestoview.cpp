@@ -21,6 +21,7 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QWaitCondition>
 
 #include "articulolist.h"
 #include "listlinpresupuestoview.h"

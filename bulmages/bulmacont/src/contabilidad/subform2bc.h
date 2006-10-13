@@ -44,7 +44,7 @@ public:
     virtual void procesaMenu(QAction *);
 
 public slots:
-    virtual void on_mui_list_editFinished(int row, int col);
+    virtual void on_mui_list_editFinished(int row, int col, int key);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
 };

@@ -328,7 +328,6 @@ void presupuesto::imprimirPresupuesto() {
     /// por eso de momento lo dejamos asi.
 
 #ifndef WINDOWS
-
     buff.replace("[detallearticulos]", detalleArticulos());
 #endif
 
@@ -337,8 +336,8 @@ void presupuesto::imprimirPresupuesto() {
         stream << buff;
         file.close();
     }
-    QString cadsys;
     invocaPDF("presupuesto");
+    _depura("presupuesto::imprimirPresupuesto", 0);
 }
 
 
