@@ -46,9 +46,9 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
 }
 
 
-void ListLinFacturaProveedorView::on_mui_list_editFinished(int row, int col) {
+void ListLinFacturaProveedorView::on_mui_list_editFinished(int row, int col, int key) {
     _depura("ListLinAlbaranProveedorView::editFinished", 0);
-    SubForm3::on_mui_list_editFinished(row, col);
+    SubForm3::on_mui_list_editFinished(row, col, key);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();

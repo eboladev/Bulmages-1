@@ -29,7 +29,6 @@
 
 
 class DBCampo {
-
 public:
     enum dbtype {DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean = 5};
     enum dbrestrict {DBNothing = 0, DBNotNull = 1, DBPrimaryKey = 2,
@@ -57,7 +56,8 @@ public:
     dbtype tipo() {
         return m_tipo;
     };
-    virtual int set(QString val) {
+    virtual int set
+        (QString val) {
         m_valorcampo = val;
         return 0;
     };
@@ -77,12 +77,7 @@ public:
 };
 
 
-
-
-
-
 class DBRecord {
-
 protected:
     QList<DBCampo *> m_lista;
     postgresiface2 *m_conexionbase;

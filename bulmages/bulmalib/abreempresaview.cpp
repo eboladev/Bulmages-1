@@ -79,7 +79,7 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
     m_tipoempresa = "";
     m_modo = 0;
     /// si el m_modo es 0 (salir del programa si se cancela la ventana) entonces poner
-    /// un titulo adecuado al boton.
+    /// un t&iacute;tulo adecuado al bot&oacute;n.
     if (m_modo == 0) {
         botonCancelar->setText(tr("&Cierra el programa"));
     }
@@ -93,9 +93,9 @@ abreempresaview::~abreempresaview() {
 }
 
 
-/// Inserta una companya en el QList mui_empresas definido en el dialogo.
+/// Inserta una companya en el QList mui_empresas definido en el di&aacute;logo.
 /// Crea un objeto QListViewItem para la QListView 'mui_empresas' y rellena sus
-/// columnas con los datos pasados al metodo.
+/// columnas con los datos pasados al m&eacute;todo.
 /// @param nombre Nombre de la empresa.
 /// @param ano Ejercicio de la empresa (aunque pueden ser varios).
 /// @param archivo Nombre de la base de datos.

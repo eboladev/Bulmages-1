@@ -56,7 +56,7 @@ void SubForm2Bf::on_mui_list_pressedAsterisk(int row, int col) {
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-        on_mui_list_editFinished(row, col);
+        on_mui_list_editFinished(row, col, Qt::Key_Return);
     } // end if
     delete cur;
     _depura("END SubForm2Bf::pressedAsterisk", 0);
@@ -80,14 +80,14 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
     if (!cur->eof()) {
         rec->setDBvalue(camp->nomcampo(), cur->valor("obserarticulo"));
         /// Invocamos la finalizacion de edicion para que todos los campos se actualicen.
-        on_mui_list_editFinished(row, col);
+        on_mui_list_editFinished(row, col, Qt::Key_Return);
     } // end if
     delete cur;
     _depura("END SubForm2Bf::pressedMinus", 0);
 }
 
 
-void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
+void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bf::editFinished", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
@@ -101,7 +101,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col) {
         }
         delete cur;
     }
-    SubForm3::on_mui_list_editFinished(row, col);
+    SubForm3::on_mui_list_editFinished(row, col, key);
     _depura("END SubForm2Bf::editFinished", 0);
 }
 

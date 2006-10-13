@@ -150,22 +150,19 @@ int main(int argc, char ** argv) {
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza("entryPoint", bges);
-
         g_main = bges;
-
         theApp->exec();
-
     } catch (...) {
         mensajeInfo("Error inesperado en BulmaFact. El programa se cerrara.");
     } // end try
-
-    _depura("MAIN: Se acabo la ejecucion en main", 0);
 
     /// Liberamos memoria.
     delete bges;
     delete theApp;
     delete traductor;
     delete confpr;
+
+    _depura("MAIN: Se acabo la ejecucion en main", 0);
     return 0;
 }
 

@@ -52,7 +52,7 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
-        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        /// Disparamos los plugins.
         int res = g_plugins->lanza("PresupuestoView_PresupuestoView", this);
         if (res != 0)
             return;
@@ -81,7 +81,7 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         comp->meteWindow(windowTitle(), this, FALSE);
         /// Disparamos los plugins por flanco descendente.
         g_plugins->lanza("PresupuestoView_PresupuestoView_Post", this);
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al crear el presupuesto"));
     } // end try
     _depura("Fin de la inicializacion de PresupuestoView\n", 0);

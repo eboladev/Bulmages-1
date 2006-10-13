@@ -44,7 +44,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public Ficha, public Ui_BudgetBase , public presupuesto {
+class PresupuestoView : public Ficha, public Ui_BudgetBase, public presupuesto {
     Q_OBJECT
 
 private:
@@ -104,10 +104,12 @@ private:
     void generarPedidoCliente();
 
 public:
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha.
+    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {return presupuesto::borrar();};
+    virtual int borrar() {
+        return presupuesto::borrar();
+    };
 
 public slots:
     virtual void on_mui_imprimir_clicked();

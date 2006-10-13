@@ -40,8 +40,8 @@ private:
     QString m_tablename; /// Nombre de la tabla en la BD.
 
 protected:
-    QList<SHeader *> m_lcabecera; /// Lista de encabezados del listado. Coord x de la tabla.
-    QList<SDBRecord *> m_lista; /// Filas y contenido. Coord y de la tabla.
+    QList<SHeader *> m_lcabecera; /// Lista de encabezados del listado. Coordenadas X de la tabla.
+    QList<SDBRecord *> m_lista; /// Filas y contenido. Coordenadas Y de la tabla.
     QList<SDBRecord *> m_listaborrar; /// Lista de subformularios marcados para ser borrados.
     postgresiface2 *m_companyact; /// Clase padre y acceso a base de datos.
     QString m_fileconfig; /// Fichero de configuracion del subformulario.
@@ -59,6 +59,7 @@ protected:
     };
 
 public:
+    bool SubForm3::campoCompleto(int row);
     void setDelete(bool f) {
         m_delete = f;
     };
@@ -170,7 +171,7 @@ public slots:
     virtual void on_mui_appag_clicked() {
         on_mui_confquery_clicked();
     };
-    virtual void on_mui_list_editFinished(int row, int col);
+    virtual void on_mui_list_editFinished(int row, int col, int key);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
     virtual void on_mui_list_pressedPlus(int row, int col);

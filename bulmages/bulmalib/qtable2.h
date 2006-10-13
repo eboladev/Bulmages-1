@@ -26,9 +26,9 @@
 
 #include "funcaux.h"
 
-
+/// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
+/** */
 class QTableWidgetItem2 : public QTableWidgetItem {
-
 public:
     int modo;
     QTableWidgetItem2(int type = Type, int mode = 0) : QTableWidgetItem(type) {
@@ -43,7 +43,8 @@ public:
     virtual bool operator < (const QTableWidgetItem & other);
 };
 
-
+/// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y funcionalidades.
+/** Se usa principalmente como tabla para mostrar subformularios.*/
 class QTableWidget2 : public QTableWidget {
     Q_OBJECT
 
@@ -74,15 +75,15 @@ public:
     };
     virtual bool eventFilter(QObject *obj, QEvent *event);
     void setText(int x, int y, const QString & val);
-    void sortColumn (int col, Qt::SortOrder tipoorden);
+    void sortColumn(int col, Qt::SortOrder tipoorden);
     virtual void ordenar();
-
+    
 public slots:
     virtual void sortByColumn(int col);
 
 signals:
     void pulsadomas(int, int, int);
-    void editFinished(int, int);
+    void editFinished(int, int, int);
     void pressedAsterisk(int, int);
     void pressedPlus(int, int);
     void pressedMinus(int, int);

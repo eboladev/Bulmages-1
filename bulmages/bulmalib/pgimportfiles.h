@@ -12,6 +12,11 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
 #ifndef __PGIMPORTFILES__
@@ -20,11 +25,11 @@
 #include <QFile>
 #include <QString>
 
-
 #include "postgresiface2.h"
 #include "funcaux.h"
 
 #define IMPORT_TODO 0xFFFFFFFF
+
 /// Tipos para BulmaCont:
 #define IMPORT_CUENTAS 1
 #define IMPORT_TIPOSIVA 2
@@ -48,29 +53,30 @@
 #define IMPORT_PEDIDOSCLIENTE  4
 
 
-
-
-/// Clase para importacion y exportacion a distintos formatos de archivo de datos.
+/// Clase para importaci&oacute;n y exportaci&oacute;n a distintos formatos de archivo de datos.
+/** */
 class pgimportfiles {
 private:
-    /// Base de datos con la que trabaja la clase y de la que se hace importacion/exportacion.
+    /// Base de datos con la que trabaja la clase y de la que se hace
+    /// importaci&oacute;n/exportaci&oacute;n.
     postgresiface2 *conexionbase;
-    /// La clase puede hacer una simulacion o no dependiendo del valor de esta variable.
+    /// La clase puede hacer una simulaci&oacute;n o no dependiendo del valor de esta
+    /// variable.
     bool m_modoTest;
     /// Las importaciones y exportaciones pueden ser entre dos fechas, m_fInicial indica la
-    /// fecha inicial a partir de la que hacer la importacion.
+    /// fecha inicial a partir de la que hacer la importaci&oacute;n.
     QString m_fInicial;
     /// Las importaciones y exportaciones pueden ser entre dos fechas, m_fFinal indica la
-    /// fecha final a partir de la que hacer la importacion.
+    /// fecha final a partir de la que hacer la importaci&oacute;n.
     QString m_fFinal;
 
 public:
     /// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero
-    /// a funcion.
+    /// a funci&oacute;n.
     virtual void alerta(int, int) {}
     ;
     /// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un
-    /// puntero de funcion.
+    /// puntero de funci&oacute;n.
     virtual void mensajeria(QString) {
         _depura("Funcion no implementada en esta clase\n", 2);
     };
@@ -94,10 +100,10 @@ public:
     ;
     int contaplus2Bulmages(QFile &, QFile &);
     int bulmages2Contaplus(QFile &, QFile &);
-    /// Esta funcion pasa datos de una empresa al formato XML.
+    /// Esta funci&oacute;n pasa datos de una empresa al formato XML.
     int bulmages2XML(QFile &, unsigned long long int tipo = IMPORT_TODO);
     int bulmafact2XML(QFile &, unsigned long long int tipo = IMPORT_TODO);
-    /// Esta funcion pasa datos de XML a bulmages.
+    /// Esta funci&oacute;n pasa datos de XML a bulmag&eacute;s.
     int XML2Bulmages(QFile &, unsigned long long int tip = IMPORT_TODO);
     int XML2BulmaFact(QFile &, unsigned long long int tip = IMPORT_TODO);
     QString searchParent(QString);

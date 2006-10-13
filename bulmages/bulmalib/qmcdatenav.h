@@ -28,13 +28,13 @@
 class QMenu;
 
 
-/// Abre el dialogo del Calendario.
-/** Esta clase muestra el dialogo de seleccionar una fecha
+/// Abre el di&aacute;logo del Calendario.
+/** Esta clase muestra el di&aacute;logo de seleccionar una fecha
     para ello muestra un calendario por meses en el que se puede
-    hacer doble click sobre cualquier dia, y da ese dia como válido. 
+    hacer doble click sobre cualquier d&iacute;a, y da ese d&iacute;a como v&aacute;lido.
     La clase utiliza un Pixmap para mostrar el calendario y captura los
     diferentes enventos del rat&oacute; que se producen sobre el pixmap para
-    mostrar los meses, cambiar el año o seleccionar los diferentes dias.   */
+    mostrar los meses, cambiar el a&ntilde;o o seleccionar los diferentes dias.   */
 class QmcDateNav : public QWidget {
     Q_OBJECT
 
@@ -52,15 +52,15 @@ public:
     void setFrame(bool);
     /// Devuelve las fechas seleccionadas en forma de lista.
     QList<QDate> selectedDates() const;
-    /// Establece la fecha en el calendario
+    /// Establece la fecha en el calendario.
     bool setDate(const QDate d);
     bool outlook() const;
     void setOutlook(bool);
     void installEventDayList(QList<QDate> *);
     void removeEventDayList();
-    /// Agrega dias festivos al calendario
+    /// Agrega dias festivos al calendario.
     void installNonWorkingDayList(QList<QDate> *);
-    /// Quita dias festivos del calendario
+    /// Quita dias festivos del calendario.
     void removeNonWorkingDayList();
 
 public slots:
@@ -81,9 +81,9 @@ private slots:
 private:
     /// El mes actual.
     QDate m_currentMonth;
-    /// El menu desplegable de los meses.
+    /// El men&uacute; desplegable de los meses.
     QMenu *m_sevenMonthPopup;
-    /// El menu desplegable del bot&oacute; derecho.
+    /// El men&uacute; desplegable del bot&oacute; derecho.
     QMenu *m_rbPopup;
     /// Indica si la pantalla necesita repintar.
     bool m_pmDirty;
@@ -108,26 +108,26 @@ private:
     void drawDates(QPainter &);
     /// Dibuja las fechas seleccionadas.
     void drawSelectedDate(int, bool pe = false);
-    /// Dibuja una fecha Deseleccionada.
+    /// Dibuja una fecha deseleccionada.
     void undrawSelectedDate(int);
     int numSelected();
-    /// Dibuja el dia actual.
+    /// Dibuja el d&iacute;a actual.
     void drawToday(int);
     /// Dibuja las selecciones.
     void drawSelections();
     /// Limpia el calendario.
     void clear();
-    /// Hace un c&acute;mbio de mes.
+    /// Hace un c&acute;mbio de m&eacute;s.
     void changeMonth(bool forward, int steps);
-    /// Devuelve el nombre del mes.
+    /// Devuelve el nombre del m&eacute;s.
     QString monthName(int);
     int fixDays(int, int, int);
-    /// Preparaciones para el menu contextual de los meses.
+    /// Preparaciones para el men&uacute; contextual de los meses.
     void prepPopup();
-    /// Preparaciones para el menu contextual del bot&oacute;n izquierdo del rat&oacute;n.
+    /// Preparaciones para el men&uacute; contextual del bot&oacute;n izquierdo del rat&oacute;n.
     void prepRBPopup();
     bool hasEvent(const QDate &);
-    /// Determina si un dia es festivo.
+    /// Determina si un d&iacute;a es festivo.
     bool isNonWorkingDay(const QDate &);
     int findIndex(QRect &);
     int findIndex(QDate &);
@@ -135,9 +135,9 @@ private:
 protected:
     /// Evento de pintado del widget.
     virtual void paintEvent(QPaintEvent *);
-    /// Evento de pulsacion del raton.
+    /// Evento de pulsacion del rat&oacute;n.
     virtual void mousePressEvent(QMouseEvent *);
-    /// Evento de doble pulsacion del rat&oacute;n.
+    /// Evento de doble pulsaci&oacute;n del rat&oacute;n.
     virtual void mouseDoubleClickEvent(QMouseEvent *);
     /// Evento de movimiento del rat&oacute;.
     virtual void mouseMoveEvent(QMouseEvent *);

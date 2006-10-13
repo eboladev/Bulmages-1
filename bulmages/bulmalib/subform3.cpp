@@ -152,7 +152,7 @@ void SubForm3::nuevoRegistro() {
 void SubForm3::pintaCabeceras() {
     _depura("SubForm3::pintaCabeceras", 0);
     QStringList headers;
-    SHeader * linea;
+    SHeader *linea;
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         headers << linea->nompresentacion();
@@ -252,11 +252,14 @@ int SubForm3::inicializar() {
 
 
 /// Carga una tabla a partir del recordset que se le ha pasado.
+/** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
 void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
+    /// Ponemos la consulta a la vista para que pueda ser editada.
     mui_query->setPlainText(cur->query());
     SDBRecord *rec;
-
+    
+    /// Tratramos con la paginacion.
     int filpag = mui_filaspagina->text().toInt();
     if (filpag <= 0)
         filpag = 500;
@@ -274,11 +277,11 @@ void SubForm3::cargar(cursor2 *cur) {
         if (rec)
             delete rec;
     } // end while
-    /// Ponemos los datos sobre el query.
+    /// Ponemos los datos sobre la consulta.
     mui_numfilas->setText(QString::number(cur->numregistros()));
     int numpag = cur->numregistros() / filpag + 1;
     mui_numpaginas->setText(QString::number(numpag));
-    /// Desplazamos hasta encontrar la página adecuada.
+    /// Desplazamos hasta encontrar la p&aacute;gina adecuada.
     int nr = filpag * (pagact - 1);
     while (nr > 0  && !cur->eof()) {
         cur->siguienteregistro();
@@ -341,26 +344,65 @@ SDBRecord *SubForm3::lineaat(int row) {
     return rec;
 }
 
+/// Devuelve TRUE si el registro ha sido completamente rellenado.
+bool SubForm3::campoCompleto(int row) {
+    _depura("SubForm3::campoCompleto", 0);
+    /*
+        SDBCampo *camp;
+        for (int j = 0; j < reg->lista()->size(); ++j) {
+            camp = (SDBCampo *) reg->lista()->at(j);
+            mui_list->setItem(i, j, camp);
+        } // end for
+        */
+    return TRUE;
+    _depura("END SubForm3::campoCompleto", 0);
+}
 
-void SubForm3::on_mui_list_editFinished(int row, int col) {
+
+/// M&eacute;todo que se dispara cuando se termina de editar un campo del Subformulario.
+void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm3::on_mui_list_editFinished", 0);
-    emit editFinish(row, col);
-    if (row == mui_list->rowCount() - 1)
-        nuevoRegistro();
-    situarse(row, col);
+
+
+
+     switch(key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+	    if (row == mui_list->rowCount() - 1)
+        	nuevoRegistro();        
+	    situarse(row, col);
+	    break;
+	case Qt::Key_Down:
+	    if (row == mui_list->rowCount() - 1 && campoCompleto( row))
+        	nuevoRegistro();  
+	    if (row <= mui_list->rowCount() - 1) { 
+	        mui_list->setCurrentCell(row + 1, col);
+	    } // end if
+	    break;
+	case Qt::Key_Up:
+	    if (row > 0) {
+	        mui_list->setCurrentCell(row - 1, col);
+	    } // end if
+	    break;
+     } // end switch
+     
+//    emit editFinish(row, col);
+
     _depura("END SubForm3::on_mui_list_editFinished", 0);
 }
 
 
+/// M&eacute;todo para agregar cabeceras al listado
+/** Cada columna de un subformulario tiene una instancia de la clase SHeader. Este m&eacute;todo
+    se encarga de crear e inicializar cada una de dichas clases. */
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
-    camp->set
-    ("");
+    camp->set("");
     m_lcabecera.append(camp);
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
-    QTableWidgetItem * it = new QTableWidgetItem("");
-    it->setFlags(Qt::ItemIsUserCheckable |Qt::ItemIsEnabled |Qt::ItemIsSelectable | Qt::ItemIsEditable);
+    QTableWidgetItem *it = new QTableWidgetItem("");
+    it->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
     it->setCheckState(Qt::Checked);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
     it = new QTableWidgetItem2(nom);

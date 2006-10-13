@@ -113,10 +113,10 @@ int SDBCampo::set(QString val) {
 
 SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     m_nomcampo = nom;
-    m_valorcampo = "";
-    m_nompresentacion = nomp;
+    m_tipo = typ;
     m_restricciones = res;
     m_options = opt;
-    m_tipo = typ;
+    m_nompresentacion = nomp;
+    m_valorcampo = "";
 }
 

@@ -30,7 +30,6 @@
 
 
 class SHeader {
-
 public:
     enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4};
 
@@ -47,8 +46,7 @@ public:
     ~SHeader() {
         _depura("SHeader::~SHeader", 0);
     };
-    int set
-        (QString val) {
+    int set(QString val) {
         m_valorcampo = val;
         return 0;
     };

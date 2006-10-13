@@ -22,6 +22,7 @@
 #include <QAction>
 
 #include "qworkspace2.h"
+#include "funcaux.h"
 
 
 void QWorkspace2::addWindow(QWidget * w) {
@@ -34,22 +35,23 @@ void QWorkspace2::addWindow(QWidget * w) {
     int margen = 10;
 
     QWorkspace::addWindow(w);
-    /// Se comprueba el tamanyo de la ventana que esta disenyada con Designer:
-    /// Solo si la ventana es mas grande que el espacio de representacion se ajusta
-    /// para caber dentro.
 
-    /// Captura el tamanyo disponible. Restamos el margen que dejamos a cada lado (x2).
+    /// Se comprueba el tama&ntilde;o de la ventana que esta dise&ntilde;ada con Designer:
+    /// S&oacute;lo si la ventana es m&aacute;s grande que el espacio de representaci&oacute;n
+    /// se ajusta para caber dentro.
+
+    /// Captura el tama&ntilde;o disponible. Restamos el margen que dejamos a cada lado (x2).
     tamdispW = this->width() - (margen * 2);
     tamdispH = this->height() - (margen * 2);
 
-    /// Captura el tamanyo con decoracion de la ventana a insertar.
+    /// Captura el tama&ntilde;o con decoraci&oacute;n de la ventana a insertar.
     tamventanadecoW = w->parentWidget()->frameGeometry().width();
     tamventanadecoH = w->parentWidget()->frameGeometry().height();
-    /// Captura el tamanyo sin decoracion de la ventana a insertar.
+    /// Captura el tama&ntilde;o sin decoraci&oacute;n de la ventana a insertar.
     tamventanaW = w->geometry().width();
     tamventanaH = w->geometry().height();
 
-    /// Comprobamos si es necesario cambiar el tamanyo a la ventana.
+    /// Comprobamos si es necesario cambiar el tama&ntilde;o a la ventana.
     if (tamventanadecoW > tamdispW)
         tamventanaW = tamdispW - (tamventanadecoW - tamventanaW);
     if (tamventanadecoH > tamdispH)

@@ -43,23 +43,23 @@
 #include "configuracion.h"
 
 
-/// Esta clase provee toda la interaccion necesaria para las consultas de base de datos
-/// Se carga normalmente a partir de la clase 'postgresiface2' con el metodo 'cargacursor'.
-/// Crea las estructuras necesarias para recorrer un recordset de postgres.
+/// Esta clase provee toda la interacci&oacute;n necesaria para las consultas de base de datos.
+/** Se carga normalmente a partir de la clase 'postgresiface2' con el m&eacute;todo 'cargacursor'.
+    Crea las estructuras necesarias para recorrer un recordset de postgres. */
 class cursor2 {
 private:
     /// El nombre del cursor, (OBSOLETE).
     QString nomcursor;
     /// Estructura en la que se almacena el resultado.
     PGresult *result;
-    /// Estructura en la que se almacenan los datos de conexion.
+    /// Estructura en la que se almacenan los datos de conexi&oacute;n.
     PGconn *conn;
-    /// Para recorrer un query simulamos una cola, esta variable global indica el
+    /// Para recorrer una consulta (query) simulamos una cola, esta variable global indica el
     /// registro en que nos encontramos situados.
     int registroactual;
-    /// Indica el numero de registros que tiene el query. (La componente vertical del query).
+    /// Indica el n&uacute;mero de registros que tiene la consulta. (La componente vertical del query).
     int nregistros;
-    /// Indica el nmero de campos que tiene el query. (La componente horizontal del query).
+    /// Indica el n&uacute;mero de campos que tiene la consulta. (La componente horizontal del query).
     int ncampos;
     bool m_error;
     QString m_query;
@@ -69,9 +69,9 @@ public:
     cursor2(QString nombre, PGconn *conn1, QString SQLQuery);
     /// Destructor, elimina la memoria ocupada.
     ~cursor2();
-    /// Devuelve el numero de registros del cursor.
+    /// Devuelve el n&uacute;mero de registros del cursor.
     int numregistros();
-    /// Devuelve el valor de una determinada posicion del query.
+    /// Devuelve el valor de una determinada posici&oacute;n del query.
     QString valor(int posicion, int registro = -1);
     bool error() {
         return m_error;
@@ -81,35 +81,35 @@ public:
     };
 
 public:
-    /// Devuelve el valor de una determinada posicion del query.
+    /// Devuelve el valor de una determinada posici&oacute;n del query.
     QString valor(QString campo, int registro = -1);
-    /// Avanza el puntero de recorrido en forma de cola una posicion.
+    /// Avanza el puntero de recorrido en forma de cola una posici&oacute;n.
     int siguienteregistro();
-    /// Retrocede el puntero de recorrido en forma de cola una posicion.
+    /// Retrocede el puntero de recorrido en forma de cola una posici&oacute;n.
     int registroanterior();
-    /// Establece la posicion del puntero de recorrido de cola al primer registro.
+    /// Establece la posici&oacute;n del puntero de recorrido de cola al primer registro.
     int primerregistro();
-    /// Establece la posicion del puntero de recorrido de cola en el ltimo registro.
+    /// Establece la posici&oacute;n del puntero de recorrido de cola en el &uacute;ltimo registro.
     int ultimoregistro();
-    /// Devuelve la posicion del registro actual.
+    /// Devuelve la posici&oacute;n del registro actual.
     int regactual() {
         return registroactual;
     };
     /// Libera la memoria que se ha ocupado en las consultas.
     void cerrar();
-    /// Devuelve el nombre del campo de una columna determinada del query.
+    /// Devuelve el nombre del campo de una columna determinada de la consulta.
     QString nomcampo(int);
-    /// Devuelve el numero de columna que tiene una columna referenciada por el nombre.
+    /// Devuelve el n&uacute;mero de columna que tiene una columna referenciada por el nombre.
     int numcampo(QString);
-    /// Devuelve el numero total de columnas que tiene el query.
+    /// Devuelve el n&uacute;mero total de columnas que tiene la consulta.
     int numcampos();
-    /// Indica que se ha alcanzado el primer registro del query.
+    /// Indica que se ha alcanzado el primer registro de la consulta.
     bool eof();
-    /// Indica que se ha alcanzado el ltimo registro del query.
+    /// Indica que se ha alcanzado el &uacute;ltimo registro de la consulta.
     bool bof();
-    /// Informa sobre si el registro actual es el ultimo registro del query.
+    /// Informa sobre si el registro actual es el &uacute;ltimo registro de la consulta.
     bool esultimoregistro();
-    /// Informa sobre si el registro actual es el primer registro del query.
+    /// Informa sobre si el registro actual es el primer registro de la consulta.
     bool esprimerregistro();
 };
 
@@ -119,12 +119,12 @@ private:
     QString pghost; /// Indica cual es el host de las bases de datos.
     QString pgport; /// Indica por que puerto acceder a dicho host.
     QString pgoptions; /// Indica las opciones especiales que pueda tener la conexion.
-    QString pgtty; /// Indica algunos parametros de la conexion (Desgraciadamente no se cuales).
+    QString pgtty; /// Indica algunos par&aacute;metros de la conexi&oacute;n (Desgraciadamente no se cuales).
     QString dbName; /// Indica el nombre de la base de datos con la que se conecta.
-    int nFields; /// Indica el nmero de campos que tiene algo (no se que).
-    PGconn *conn; /// Representa la conexion.
-    int open; /// indica si el postgresiface esta abierto o no.
-    bool m_transaccion; /// Indica si estamos dentro de una transaccion.
+    int nFields; /// Indica el n&uacute;mero de campos que tiene algo (no se que).
+    PGconn *conn; /// Representa la conexi&oacute;n.
+    int open; /// Indica si el postgresiface esta abierto o no.
+    bool m_transaccion; /// Indica si estamos dentro de una transacci&oacute;n.
 
 private:
     /// Establece en la base de datos cual va a ser el formato de fecha a utilizar.
@@ -135,17 +135,17 @@ public:
     postgresiface2();
     /// Destructor de la clase que libera memoria.
     ~postgresiface2();
-    /// La clase debe ser inicializada con algunos parametros  para poder funcionar.
+    /// La clase debe ser inicializada con algunos par&aacute;metros para poder funcionar.
     int inicializa(QString nomdb);
-    /// Inicia una transaccion.
+    /// Inicia una transacci&oacute;n.
     int begin();
-    /// Termina una transaccion.
+    /// Termina una transacci&oacute;n.
     void commit();
-    /// Termina una transaccion de forma abrupta.
+    /// Termina una transacci&oacute;n de forma abrupta.
     void rollback();
-    /// Carga el cursor con un query.
+    /// Carga el cursor con una consulta.
     cursor2 *cargacursor(QString Query, QString nomcursor = "");
-    /// Ejecuta una sentencia de codigo SQL en la base de datos.
+    /// Ejecuta una sentencia de c&oacute;digo SQL en la base de datos.
     int ejecuta(QString);
     int nuevoborrador(int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal);
     int modificaborrador(int idborrador, int idcuenta, float idebe, float ihaber, QString concepto, QString fecha, int contrapartida, int idtipoiva, int idccoste, int idcanal);
@@ -169,7 +169,7 @@ public:
 
     /// Carga en un query las empresas especificadas.
     cursor2 *cargaempresas();
-    /// Busca en una cadena codigo malicioso para SQL y lo elimina (previene el SQLInjection).
+    /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
     static QString sanearCadena(QString cadena);
     void terminar();
     QString propiedadempresa(QString);

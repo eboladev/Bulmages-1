@@ -26,7 +26,7 @@
 #include "funcaux.h"
 
 
-QTableWidget2::QTableWidget2(QWidget * parent):QTableWidget(parent) {
+QTableWidget2::QTableWidget2(QWidget * parent) : QTableWidget(parent) {
     installEventFilter(this);
 }
 
@@ -62,8 +62,22 @@ bool QTableWidgetItem2::operator < (const QTableWidgetItem & other) {
 
 
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
+    _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 0);
 
+    /// Si es una pulsaci&oacute;n de tecla que esta capturada con el release salimos sin hacer nada.
+    if (event->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        int key = keyEvent->key();
+    	switch (key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+        case Qt::Key_Up:
+        case Qt::Key_Down:
+        	return TRUE;
+    	} // end switch
+    } // end if
+
+    /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
@@ -81,7 +95,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         switch(key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            emit editFinished(row, col);
+            emit editFinished(row, col, key);
             return TRUE;
             break;
         case Qt::Key_Slash:
@@ -99,7 +113,6 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         case Qt::Key_Plus:
             emit pressedPlus(row, col);
             return TRUE;
-            break;
         case Qt::Key_Asterisk:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit pressedAsterisk(row, col);
@@ -108,32 +121,34 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             break;
         case Qt::Key_Up:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                _depura("Qt::Key_Up", 0);
                 emit ctrlSubir(row, col);
-                return TRUE;
+            } else {
+                emit editFinished(row, col, key);
             } // end if
-            break;
+            /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
+            return TRUE;
         case Qt::Key_Down:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                _depura("Qt::Key_Down", 0);
                 emit ctrlBajar(row, col);
                 return TRUE;
             } // end if
-            break;
+            /// Al pulsar la tecla 'abajo' se considera que es el fin de la edici&oacute; de la celda.
+            emit editFinished(row, col, key);
+            return TRUE;
         case Qt::Key_Left:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                _depura("Qt::Key_Left", 0);
                 emit ctrlIzquierda(row, col);
                 return TRUE;
             } // end if
-            break;
+            emit editFinished(row, col, key);
+            return TRUE;
         case Qt::Key_Right:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
-                _depura("Qt::Key_Right", 0);
                 emit ctrlDerecha(row, col);
                 return TRUE;
             } // end if
-            break;
+            emit editFinished(row, col, key);
+            return TRUE;
         } // end switch
     } // end if
     _depura("END QTableWidget2::eventFilter()\n", 1);

@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>497</height>
+    <width>876</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -27,7 +27,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>702</width>
+     <width>876</width>
      <height>29</height>
     </rect>
    </property>
@@ -131,8 +131,8 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>475</y>
-     <width>702</width>
+     <y>500</y>
+     <width>876</width>
      <height>22</height>
     </rect>
    </property>
@@ -164,8 +164,8 @@
    </property>
    <property name="iconSize" >
     <size>
-     <width>48</width>
-     <height>48</height>
+     <width>29</width>
+     <height>38</height>
     </size>
    </property>
    <attribute name="toolBarArea" >
@@ -221,8 +221,8 @@
    </property>
    <property name="iconSize" >
     <size>
-     <width>48</width>
-     <height>48</height>
+     <width>29</width>
+     <height>38</height>
     </size>
    </property>
    <property name="toolButtonStyle" >

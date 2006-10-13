@@ -45,15 +45,14 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(par
 }
 
 
-void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
+void listlinpresupuestoview::on_mui_list_editFinished(int row, int col, int key) {
     _depura("listlinpresupuestoview::editFinished", 0);
-    SubForm3::on_mui_list_editFinished(row, col);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
     if (camp->nomcampo() == "codigocompletoarticulo") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
-        if (!cur->eof() ) {
+        if (!cur->eof()) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
@@ -69,6 +68,7 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col) {
         delete cur1;
         delete cur;
     } // end if
+    SubForm3::on_mui_list_editFinished(row, col, key);    
     _depura("END listlinpresupuestoview::editFinished", 0);
 }
 

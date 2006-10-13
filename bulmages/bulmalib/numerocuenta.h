@@ -23,17 +23,17 @@
 #include <QString>
 
 
-/// Esta clase implementa el Codigo Cuenta Cliente (CCC) de un banco.
-/// Su funcion mas importante es cuentaesvalida.
+/// Esta clase implementa el C&oacute;digo Cuenta Cliente (CCC) de un banco.
+/** Su funci&oacute;n m&aacute;s importante es 'cuentaesvalida'. */
 class numerocuenta {
 public:
     numerocuenta(QString, QString, QString, QString); /// Banco, entidad, dc y numcuenta.
-    numerocuenta(QString, QString, QString); /// Banco, entidad y numcuenta. El dc lo calcula automaticamente.
+    numerocuenta(QString, QString, QString); /// Banco, entidad y numcuenta. El dc lo calcula autom&aacute;ticamente.
     numerocuenta(QString); /// Banco, entidad, dc y numcuenta todo seguido, con guiones opcionales.
     ~numerocuenta();
     QString getdc(); /// Calcula y devuelve los digitos de control del ccc
     /// Comprueba si es un numero de cuenta valido.
-    /// Devuelve: true Si es un codigo CCC correcto. false En caso contrario.
+    /// Devuelve TRUE si es un CCC correcto. FALSE en caso contrario.
     bool cuentaesvalida() {
         return (getdc() == dc);
     };
@@ -41,30 +41,30 @@ public:
     QString getcodigo(QString sep = "") {
         return (banco + sep + entidad + sep + dc + sep + numcuenta);
     };
-    /// Devuelve el numero de cuenta.
+    /// Devuelve el n&uacute;mero de cuenta.
     QString getnumcuenta() {
         return numcuenta;
     };
-    /// Devuelve el numero de banco.
+    /// Devuelve el n&uacute;mero de banco.
     QString getbanco() {
         return banco;
     };
-    /// Devuelve el nmero de entidad.
+    /// Devuelve el n&uacute;mero de entidad.
     QString getentidad() {
         return entidad;
     };
-    /// Fija el numero de cuenta.
-    /// Si el argumento tiene menos de 10 digitos, se rellena con ceros a la izquierda.
+    /// Fija el n&uacute;mero de cuenta.
+    /// Si el argumento tiene menos de 10 d&iacute;gitos, se rellena con ceros a la izquierda.
     void setnumcuenta(QString cad) {
         numcuenta = cad.rightJustified(10, '0');
     };
-    /// Fija el numero de banco.
-    /// Si el argumento tiene menos de 4 digitos, se rellena con ceros a la izquierda.
+    /// Fija el n&uacute;mero de banco.
+    /// Si el argumento tiene menos de 4 d&iacute;gitos, se rellena con ceros a la izquierda.
     void setbanco(QString cad) {
         banco = cad.rightJustified(4, '0');
     };
-    /// Fija el numero de entidad.
-    /// Si el argumento tiene menos de 4 digitos, se rellena con ceros a la izquierda.
+    /// Fija el n&uacute;mero de entidad.
+    /// Si el argumento tiene menos de 4 d&iacute;gitos, se rellena con ceros a la izquierda.
     void setentidad(QString cad) {
         entidad = cad.rightJustified(4, '0');
     };

@@ -46,9 +46,9 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
 }
 
 
-void ListLinPedidoClienteView::on_mui_list_editFinished(int row, int col) {
+void ListLinPedidoClienteView::on_mui_list_editFinished(int row, int col, int key) {
     _depura("ListLinPedidoClienteView::editFinished", 0);
-    SubForm3::on_mui_list_editFinished(row, col);
+    SubForm3::on_mui_list_editFinished(row, col, key);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();

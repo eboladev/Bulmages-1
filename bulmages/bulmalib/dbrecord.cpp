@@ -25,10 +25,10 @@
 DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp) {
     m_conexionbase = com;
     m_nomcampo = nom;
-    m_valorcampo = "";
-    m_nompresentacion = nomp;
-    m_restrict = res;
     m_tipo = typ;
+    m_restrict = res;
+    m_nompresentacion = nomp;
+    m_valorcampo = "";
 }
 
 
@@ -99,10 +99,9 @@ int DBRecord::DBload(cursor2 *cur) {
             m_nuevoCampo = TRUE;
         if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
             m_nuevoCampo = TRUE;
-        error += linea->set
-                 (val);
+        error += linea->set(val);
     } // end for
-    _depura("END DBRecord::DBload",0);
+    _depura("END DBRecord::DBload", 0);
     return error;
 }
 
@@ -254,8 +253,7 @@ QString DBRecord::DBvalueprep(QString nomb) {
 int DBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "") {
     _depura("DBRecord::addDBCampo", 0);
     DBCampo *camp = new DBCampo(m_conexionbase, nom, typ, res, nomp);
-    camp->set
-    ("");
+    camp->set("");
     m_lista.append(camp);
     _depura("END DBRecord::addDBCampo", 0);
     return 0;
@@ -294,7 +292,6 @@ int DBRecord::borrar() {
 
         if (m_nuevoCampo == FALSE) {
             m_conexionbase->ejecuta("DELETE FROM " + m_tablename + " WHERE " + querywhere);
-//            DBclear();
         } // end if
 
         _depura("END DBRecord::borrar", 0);
