@@ -115,6 +115,7 @@ public:
     virtual void vaciar() {
         DBclear();
     };
+    virtual void imprimir();
     virtual int cargar(QString);
 };
 

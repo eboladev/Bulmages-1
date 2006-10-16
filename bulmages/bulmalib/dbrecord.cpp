@@ -21,6 +21,8 @@
 #include "dbrecord.h"
 #include "funcaux.h"
 
+#include <QFile>
+#include <QTextStream>
 
 DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp) {
     m_conexionbase = com;
@@ -332,3 +334,68 @@ int DBRecord::cargar(QString id) {
     return 0;
 }
 
+
+void DBRecord::imprimir() {
+/// Impresion de un Pedido de Proveedor
+/** Usa la plantilla pedidoproveedor.rml */
+    _depura("DBRecord::imprimir", 0);
+        DBCampo *linea;
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "ficha.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "ficha.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
+    system (archivo.toAscii().constData());
+
+    /// Copiamos el logo.
+#ifdef WINDOWS
+
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    system(archivologo.toAscii().constData());
+
+    QFile file;
+    file.setFileName(archivod);
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    QString buff = stream.readAll();
+    file.close();
+    QString fitxersortidatxt = "";
+
+
+    /// Impresion de la tabla de contenidos.
+    for (int i = 0; i < m_lista.size(); ++i) {
+            linea = m_lista.at(i);
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "	<td>" + linea->nomcampo() + "</td>\n";
+        fitxersortidatxt += "	<td>" + linea->nompresentacion() + "</td>\n";
+        fitxersortidatxt += "	<td>" + linea->valorcampo() + "</td>\n";
+        fitxersortidatxt += "</tr>";
+    } // end for
+
+    buff.replace("[ficha]", m_tablename);
+
+    buff.replace("[story]", fitxersortidatxt);
+
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    }
+
+    invocaPDF("ficha");
+   _depura("END DBRecord::imprimir", 0);
+}
