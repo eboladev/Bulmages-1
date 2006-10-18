@@ -31,8 +31,6 @@
 #include "funcaux.h"
 
 
-
-
 QTable1::QTable1(QWidget * parent, const char * name ) : Q3Table(parent, name) {}
 
 
@@ -49,7 +47,7 @@ void QTable1::sortColumn(int col, bool ascending, bool) {
         QString cad = text(x, col);
         if (cad != "") {
             setText(x, lastcol + 0, cad);
-            /// Comprobamos si es un numero.
+            /// Comprobamos si es un n&uacute;mero.
             cad.toDouble(&oknumero);
             if (oknumero) {
                 while (cad.length() < 10)
@@ -106,15 +104,15 @@ bool QTable1::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
         } // end if
         if (key == 4115) { /// La tecla hacia arriba.
-            if (ctrlpulsado) /// Solo en combinacion con el ctrl.
+            if (ctrlpulsado) /// S&oacute;lo en combinacion con el ctrl.
                 emit pulsadomas(currentRow(), currentColumn(), key);
         } // end if
         if (key == Qt::Key_Delete) {
-            if (ctrlpulsado) /// Solo en combinacion con el ctrl.
+            if (ctrlpulsado) /// S&oacute;lo en combinacion con el ctrl.
                 emit pulsadomas(currentRow(), currentColumn(), key);
         } // end if
         if (key == 4117) { /// La tecla hacia arriba.
-            if (ctrlpulsado) /// Solo en combinacion con el ctrl.
+            if (ctrlpulsado) /// S&oacute;lo en combinacion con el ctrl.
                 emit pulsadomas(currentRow(), currentColumn(), key);
         } // end if
         if (key == 4129) { /// el Control
@@ -176,6 +174,4 @@ void QTableItem1::paint(QPainter *p, const QColorGroup &cg, const QRect &cr, boo
     /// FIN DEL MODO 10.
     Q3TableItem::paint(p, g, cr, selected);
 }
-
-
 

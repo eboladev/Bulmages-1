@@ -1,26 +1,34 @@
+
 /***************************************************************************
-                          main.cpp  -  description
-                             -------------------
-    begin                : Wed Nov 27 17:16:28 CET 2002
-    copyright            : (C) 2002 by tborras@conetxia.com, josep@burcion.com
-    email                : 
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2002 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *   Copyright (C) 2002 by Josep Burcion                                   *
+ *   josep@burcion.com                                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include <stdlib.h>
-#include <qapplication.h>
-#include <qfont.h>
-#include <qstring.h>
-#include <qtextcodec.h>
-#include <qtranslator.h>
-#include <qlibrary.h>
 
+#include <stdlib.h>
+
+#include <QApplication>
+#include <QFont>
+#include <QString>
+#include <QTextCodec>
+#include <QTranslator>
+#include <QLibrary>
 
 #ifndef WIN32
 #include <unistd.h>
@@ -42,118 +50,100 @@
 #endif
 
 
-
-/// Estas son las variables globales de la aplicación.
-/// El puntero de la aplicación
-QApplication2 * theApp;
+/// Estas son las variables globales de la aplicaci&oacute;n.
+/// El puntero de la aplicaci&oacute;n.
+QApplication2 *theApp;
 /// El traductor.
-QTranslator * traductor;
+QTranslator *traductor;
+
+/// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
 
 
-
-
-/// Faltan el configurador de parametros confpr y el sistema de log ctlog
-
-
-/** \brief los datos de ejecución del programa son sencillos
-  * La ejecución primero crea e inicializa los objetos configuración, idioma, splash, etc
-  * luego intenta entrar en el sistema de base de datos
-  * Y por último crea el objeto del tipo \ref Bulmages01 que es la aplicación de ventanas.
-  */
+/// Los datos de ejecuci&oacute;n del programa son sencillos.
+/** La ejecuci&oacute;n primero crea e inicializa los objetos configuraci&oacute;n,
+    idioma, splash, etc.
+    Luego intenta entrar en el sistema de base de datos.
+    Y por &uacute;ltimo crea el objeto del tipo \ref Bulmages01 que es la aplicaci&oacute;n
+    de ventanas. */
 int main(int argc, char *argv[]) {
-        /// Leemos la configuracion que luego podremos usar siempre
-        confpr = new configuracion();
+    /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
+    confpr = new configuracion();
     Bulmages01 *bges;
-    int valorsalida=0;
-    QString db= argv[2];
-    QString us=argv[3];
-    QString pass=argv[4];
+    int valorsalida = 0;
+    QString db = argv[2];
+    QString us = argv[3];
+    QString pass = argv[4];
     try {
-        /// Inicializamos el objeto global para uso de plugins
+        /// Inicializamos el objeto global para uso de plugins.
         g_plugins = new Plugins();
-
-        /// Definimos la codificacion a Unicode.
+        /// Definimos la codificaci&oacute;n a Unicode.
         QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
         QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
-
-        /// Creamos la aplicacion principal
-        theApp = new QApplication2 (argc, argv);
-        theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
-
-        /// Cargamos las primeras traducciones para bulmalib y para bulmacont
-        traductor = new QTranslator ( 0 );
+        /// Creamos la aplicaci&oacute;n principal.
+        theApp = new QApplication2(argc, argv);
+        theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+        /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
+        traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load( QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+            traductor->load(QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
         } else {
-            QString archivo = "bulmalib_"+confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo,confpr->valor(CONF_DIR_TRADUCCION).ascii());
-        }// end if
-        theApp->installTranslator( traductor );
+            QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
+            traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        } // end if
+        theApp->installTranslator(traductor);
 
-        traductor = new QTranslator ( 0 );
+        traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load( QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii() );
+            traductor->load(QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
         } else {
-            QString archivo = "bulmages_"+confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo.ascii(),confpr->valor(CONF_DIR_TRADUCCION).ascii());
-        }// end if
-        theApp->installTranslator( traductor );
+            QString archivo = "bulmages_" + confpr->valor(CONF_TRADUCCION);
+            traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        } // end if
+        theApp->installTranslator(traductor);
 
-        /// Iniciamos el sistema de log del programa para que se pueda seguir la ejecución del mismo.
+        /// Iniciamos el sistema de log del programa para que se pueda seguir la
+        /// ejecuci&oacute;n del mismo.
         ctllog = new bitacora();
         ctllog->add
         (LOG_SEG, 1,"MaiMai003", "---- Iniciacion del programa ----");
 
-        /// Cargamos el SplashScreen de BulmaCont
+        /// Cargamos el SplashScreen de BulmaCont.
         Splash *splashScr = new Splash();
         delete splashScr;
 
-        /// Miramos en los parametros pasados al programa por si ya viene indicada la empresa y no hay que mostrar selector
+        /// Miramos en los par&aacute;metros pasados al programa por si ya viene
+        /// indicada la empresa y no hay que mostrar selector.
         if (argc == 5) {
             confpr->setValor(CONF_LOGIN_USER, us);
             confpr->setValor(CONF_PASSWORD_USER, pass);
-            bges = new Bulmages01(NULL, "bulmages",0, db);
+            bges = new Bulmages01(NULL, "bulmages", 0, db);
         } else if (argc == 3) {
             QString db= argv[2];
-            bges = new Bulmages01(NULL, "bulmages",0, db);
+            bges = new Bulmages01(NULL, "bulmages", 0, db);
         } else {
-            logpass *login1 = new logpass(0,"");
+            logpass *login1 = new logpass(0, "");
             if (!login1->authOK())
                 login1->exec();
             if (!login1->authOK())
                 exit(1);
             delete login1;
-            bges = new Bulmages01(NULL, "bulmages",0, "");
-        }// end if
+            bges = new Bulmages01(NULL, "bulmages", 0, "");
+        } // end if
 
-        /// Leemos la configuración específica de la base de datos que se ha abierto.
-        QString confesp = CONFGLOBAL+bges->empresaactual()->nameDB()+".conf";
+        /// Leemos la configuraci&oacute;n específica de la base de datos que se ha abierto.
+        QString confesp = CONFGLOBAL + bges->empresaactual()->nameDB() + ".conf";
         confpr->leeconfig(confesp);
 
-
-
-        /// cargamos las librerias de g_plugins
+        /// Cargamos las librerias de g_plugins.
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
-
-	/// Iniciamos las el sistema de recursos
-
-//	Q_CLEANUP_RESOURCE(bulmages);
-//	Q_INIT_RESOURCE(bulmages);
-
-        /// Cargamos el SplashScreen de BulmaCont
-//        splashScr = new Splash();
-//        delete splashScr;
-
-
         g_plugins->lanza("entryPoint", bges);
 
         theApp->setMainWidget(bges);
         g_main = bges;
         valorsalida = theApp->exec();
 
-
-    } catch(...) {
-        mensajeInfo( "Error inesperado en BulmaCont, el programa se cerrará");
+    } catch (...) {
+        mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");
     } // end try
 
     /// Liberamos memoria.
@@ -163,3 +153,4 @@ int main(int argc, char *argv[]) {
 
     return valorsalida;
 }
+

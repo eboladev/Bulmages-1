@@ -148,12 +148,12 @@ void Asiento1View::iniciar_asiento_nuevo() {
         QString idasiento = "";
         QString ordenasiento= "1";
         QString fecha = mui_fecha->text();
-        QString query = "SELECT MAX(ordenasiento)+1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '"+fecha.right(4)+"'";
+        QString query = "SELECT MAX(ordenasiento) + 1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.right(4) + "'";
         cursor2 *cur = m_companyact->cargacursor(query);
         if (!cur->eof())
             ordenasiento = cur->valor("orden");
         delete cur;
-        query = "INSERT INTO asiento (fecha, ordenasiento) VALUES ('"+m_companyact->sanearCadena(fecha)+"',"+ordenasiento+")";
+        query = "INSERT INTO asiento (fecha, ordenasiento) VALUES ('" + m_companyact->sanearCadena(fecha) + "', " + ordenasiento + ")";
         m_companyact->ejecuta(query);
 
         query = "SELECT MAX(idasiento) AS id FROM asiento";

@@ -32,319 +32,238 @@
 #include "extractoview1.h"
 #include "balance1view.h"
 
-
-// Incluimos las imagenes que catalogan los tipos de cuentas.
+/// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
 #include "images/cneto.xpm"
 #include "images/cingresos.xpm"
 #include "images/cgastos.xpm"
 
-SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
-}
+
+SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {}
+
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
-    _depura ("SubForm2Bc::on_mui_list_pressedAsterisk",0);
+    _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
     SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
-    /// Si no es un campo de tipo codigo salimos
+    SDBCampo *camp = (SDBCampo *) item(row, col);
+    /// Si no es un campo de tipo codigo salimos.
     if (camp->nomcampo() != "codigo" && camp->nomcampo() != "codigoctacliente")
         return;
 
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    listcuentasview1 *listcuentas = new listcuentasview1((empresa *) m_companyact, diag, tr("Seleccione cuenta", "company"),0, listcuentasview1::SelectMode);
+    listcuentasview1 *listcuentas = new listcuentasview1((empresa *) m_companyact, diag, tr("Seleccione cuenta", "company"), 0, listcuentasview1::SelectMode);
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (listcuentas->codcuenta() != "") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo='"+listcuentas->codcuenta()+"'");
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + listcuentas->codcuenta() + "'");
         if (!cur->eof() ) {
             if (camp->nomcampo() == "codigo") {
-                rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
+                rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
                 rec->setDBvalue("codigo", cur->valor("codigo"));
                 rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
                 rec->setDBvalue("descripcion", cur->valor("descripcion"));
             } // end if
             if (camp->nomcampo() == "codigoctacliente") {
-                rec->setDBvalue("idctacliente",cur->valor("idcuenta"));
+                rec->setDBvalue("idctacliente", cur->valor("idcuenta"));
                 rec->setDBvalue("codigoctacliente", cur->valor("codigo"));
                 rec->setDBvalue("tipoctacliente", cur->valor("tipocuenta"));
                 rec->setDBvalue("nomctacliente", cur->valor("descripcion"));
             } // end if
-        }// end if
+        } // end if
         delete cur;
     } // end if
     delete diag;
-    _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk",0);
+    _depura ("END SubForm2Bc::on_mui_list_pressedAsterisk", 0);
 }
 
+
 void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
-    _depura("SubForm2Bc::pressedSlash",0);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
+    _depura("SubForm2Bc::pressedSlash", 0);
+    SDBCampo *camp = (SDBCampo *) item(row, col);
     if (camp->nomcampo() == "fecha")
         return;
-
     QString text = editaTexto(camp->text());
     camp->set
     (text);
 }
 
 void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("SubForm2Bc::editFinished",0);
+    _depura("SubForm2Bc::editFinished", 0);
     SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row,col);
+    SDBCampo *camp = (SDBCampo *) item(row, col);
     if (camp->nomcampo() == "codigo") {
-        QString codigoext = extiendecodigo( camp->text(),((empresa *) m_companyact)->numdigitosempresa() );
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo='"+codigoext+"'");
+        QString codigoext = extiendecodigo(camp->text(), ((empresa *) m_companyact)->numdigitosempresa());
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'");
         if (!cur->eof() ) {
-            rec->setDBvalue("idcuenta",cur->valor("idcuenta"));
+            rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
             rec->setDBvalue("codigo", cur->valor("codigo"));
             rec->setDBvalue("tipocuenta", cur->valor("tipocuenta"));
             rec->setDBvalue("descripcioncuenta", cur->valor("descripcion"));
-        }// end if
+        } // end if
         delete cur;
-    }// end if
-
+    } // end if
     if (camp->nomcampo() == "fecha") {
         QString nfecha = normalizafecha( camp->text()).toString("dd/MM/yyyy");
         rec->setDBvalue( "fecha", nfecha);
-    }// end if
-
+    } // end if
     SubForm3::on_mui_list_editFinished(row, col, key);
-    _depura("END SubForm2Bc::editFinished",0);
+    _depura("END SubForm2Bc::editFinished", 0);
 }
 
-/*
- void SubForm2Bc::contextMenuEvent (QContextMenuEvent *) {
-    _depura("SubForm2Bc::contextMenuEvent",0);
-    QAction *del= NULL;
-    int row = currentRow();
-    if ( row < 0)
-        return;
- 
-    int col = currentColumn();
-    if ( row < 0)
-        return;
- 
-    QMenu *popup = new QMenu(this);
-    if(m_delete)
-        del = popup->addAction(tr("Borrar registro"));
-    popup->addSeparator();
-    QAction *ajustc = popup->addAction(tr("Ajustar columa"));
-    QAction *ajustac = popup->addAction(tr("Ajustar altura"));
- 
-    QAction *ajust = popup->addAction(tr("Ajustar columnas"));
-    QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
- 
-    popup->addSeparator();
-    QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
- 
-    QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == del)
-        borrar(row);
-    if (opcion == ajust)
-        resizeColumnsToContents();
-    if (opcion == ajusta)
-        resizeRowsToContents();
-    if (opcion == ajustc)
-        resizeColumnToContents(col);
-    if (opcion == ajustac)
-        resizeRowToContents(row);
-    if(opcion == verconfig)
-        showConfig();
-    delete popup;
-}
- 
- 
- 
-int SubForm2Bc::cargar(cursor2 *cur) {
-    _depura("SubForm2Bc::cargar",0);
-    SubForm3::cargar(cur);
- 
-    SDBRecord *reg;
-    for ( int i = 0; i < m_lista.size(); ++i) {
-        reg = m_lista.at(i);
-        _depura("pintamos un SDBRecord",0);
-        SDBCampo *camp, *cemp=NULL;
-        QIcon icon;
-        for ( int j =0; j < reg->lista()->size(); ++j) {
-            camp = (SDBCampo *) reg->lista()->at(j);
-            if (camp->nomcampo() == "tipocuenta") {
-                if (camp->valorcampo() == "1")
-                    icon =  QPixmap(cactivo);
-                else if (camp->valorcampo() == "2")
-                    icon =   QPixmap(cpasivo);
-                else if (camp->valorcampo() == "3")
-                    icon =   QPixmap(cneto);
-                else if (camp->valorcampo() == "4")
-                    icon =   QPixmap(cingresos);
-                else if (camp->valorcampo() == "5")
-                    icon =   QPixmap(cgastos);
-            }// end if
-            if (camp->nomcampo() == "codigo") {
-                cemp = camp;
-            }// end if
-        }// end for
-        if (cemp != NULL)
-            cemp->setIcon(icon);
-    }// end for
-    _depura("END SubForm2Bc::cargar",0);
-    return 0;
-}
- 
-*/
 
 void SubForm2Bc::boton_asiento() {
-    _depura("SubForm2Bc::boton_asiento",0);
+    _depura("SubForm2Bc::boton_asiento", 0);
     empresa *companyact = (empresa *) m_companyact;
     QString numasiento = DBvalue("idasiento");
     if (numasiento != "") {
         companyact->intapuntsempresa()->muestraasiento(numasiento.toInt());
         companyact->muestraapuntes1();
-    }// end if
-    _depura("END SubForm2Bc::boton_asiento",0);
+    } // end if
+    _depura("END SubForm2Bc::boton_asiento", 0);
 }
 
 
 
-// Si el parametro pasado es un:
-// 0 -> del dia actual
-// 1 -> del mes actual
-// 2 -> del año actual
+/// Si el parametro pasado es un:
+/// 0 -> del d&iacute;a actual
+/// 1 -> del mes actual
+/// 2 -> del a&ntilde;o actual
 void SubForm2Bc::boton_extracto1(int tipo) {
-    _depura("SubForm2Bc::boton_extracto1",0);
+    _depura("SubForm2Bc::boton_extracto1", 0);
     empresa *companyact = (empresa *) m_companyact;
     QDate fecha1, fecha2, fechaact;
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
-    if(fecha != "" && codigo != "") {
+    if (fecha != "" && codigo != "") {
         fechaact = normalizafecha(fecha);
-        switch(tipo) {
+        switch (tipo) {
         case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha1.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
             fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
             break;
         case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
             fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
             break;
         case 2:
-            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha1.setYMD(fechaact.year(), 1, 1);
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
-        }// end switch
+        } // end switch
         companyact->extractoempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
         companyact->extractoempresa()->accept();
         companyact->libromayor();
-    }// end if
-    _depura("END SubForm2Bc::boton_extracto1",0);
+    } // end if
+    _depura("END SubForm2Bc::boton_extracto1", 0);
 }
 
 
-// Si el parametro pasado es un:
-// 0 -> del día actual
-// 1 -> del mes actual
-// 2 -> del año actual
+/// Si el parametro pasado es un:
+/// 0 -> del d&iacute;a actual
+/// 1 -> del mes actual
+/// 2 -> del a&ntilde;o actual
 void SubForm2Bc::boton_diario1(int tipo) {
-    _depura("SubForm2Bc::boton_diario1",0);
+    _depura("SubForm2Bc::boton_diario1", 0);
     empresa *companyact = (empresa *) m_companyact;
     QDate fecha1, fecha2, fechaact, fechaact1;
     fechaact = normalizafecha(DBvalue("fecha").left(10));
     fechaact1 = normalizafecha(DBvalue("fecha").left(10));
-    if(DBvalue("fecha").left(10) != "") {
-        switch(tipo) {
+    if (DBvalue("fecha").left(10) != "") {
+        switch (tipo) {
         case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha1.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
             fecha2.setYMD(fechaact1.year(), fechaact1.month(), fechaact1.day());
             break;
         case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
             fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
             break;
         case 2:
-            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha1.setYMD(fechaact.year(), 1, 1);
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
-        }// end switch
-        companyact->diarioempresa()->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(),(char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
-    }// end if
+        } // end switch
+        companyact->diarioempresa()->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(), (char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
+    } // end if
     companyact->diarioempresa()->accept();
     companyact->librodiario();
-    _depura("SubForm2Bc::boton_diario1",0);
+    _depura("SubForm2Bc::boton_diario1", 0);
 }
 
 
-// Si el parametro pasado es un:
-// 0 -> del periodo actual.
-// 1 -> del mes actual mirado a partir de la fecha de inicio.
-// 2 -> del año actual mirado a partir de la fecha de inicio.
+/// Si el parametro pasado es un:
+/// 0 -> del per&iacute;odo actual.
+/// 1 -> del mes actual mirado a partir de la fecha de inicio.
+/// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
 void SubForm2Bc::boton_balance1(int tipo) {
-    _depura("SubForm2Bc::boton_balance1",0);
+    _depura("SubForm2Bc::boton_balance1", 0);
     empresa *companyact = (empresa *) m_companyact;
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
     QDate fecha1, fecha2, fechaact, fechaact1;
-    if(fecha != "" && codigo != "") {
+    if (fecha != "" && codigo != "") {
         fechaact = normalizafecha(fecha);
-        switch(tipo) {
+        switch (tipo) {
         case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha1.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
             fecha2.setYMD(fechaact1.year(), fechaact.month(), fechaact.day());
             break;
         case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
             fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
             break;
         case 2:
-            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha1.setYMD(fechaact.year(), 1, 1);
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
-        }// end switch
+        } // end switch
         companyact->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
         companyact->balanceempresa()->accept();
         companyact->librobalance();
-    }// end if
-    _depura("END SubForm2Bc::boton_balance1",0);
+    } // end if
+    _depura("END SubForm2Bc::boton_balance1", 0);
 }
 
 
-// Si el parametro pasado es un:
-// 0 -> del periodo actual.
-// 1 -> del mes actual mirado a partir de la fecha de inicio.
-// 2 -> del año actual mirado a partir de la fecha de inicio.
+/// Si el parametro pasado es un:
+/// 0 -> del per&iacute;odo actual.
+/// 1 -> del mes actual mirado a partir de la fecha de inicio.
+/// 2 -> del a&ntilde;o actual mirado a partir de la fecha de inicio.
 void SubForm2Bc::boton_balancetree(int tipo) {
     _depura("SubForm2Bc::boton_balance2",0);
     empresa *companyact = (empresa *) m_companyact;
     QString fecha = DBvalue("fecha").left(10);
     QString codigo = DBvalue("codigo");
     QDate fecha1, fecha2, fechaact, fechaact1;
-    if(fecha != "" && codigo != "") {
+    if (fecha != "" && codigo != "") {
         fechaact = normalizafecha(fecha);
-        switch(tipo) {
+        switch (tipo) {
         case 0:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),fechaact.day());
+            fecha1.setYMD(fechaact.year(), fechaact.month(), fechaact.day());
             fecha2.setYMD(fechaact1.year(), fechaact.month(), fechaact.day());
             break;
         case 1:
-            fecha1.setYMD(fechaact.year(), fechaact.month(),1);
+            fecha1.setYMD(fechaact.year(), fechaact.month(), 1);
             fecha2.setYMD(fechaact.year(), fechaact.month(), fechaact.daysInMonth());
             break;
         case 2:
-            fecha1.setYMD(fechaact.year(), 1,1);
+            fecha1.setYMD(fechaact.year(), 1, 1);
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
-        }// end switch
+        } // end switch
         companyact->balance1empresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
         companyact->balance1empresa()->accept();
         companyact->librobalancetree();
-    }// end if
-    _depura("END SubForm2Bc::boton_balance2",0);
+    } // end if
+    _depura("END SubForm2Bc::boton_balance2", 0);
 }
 
 
 void SubForm2Bc::creaMenu(QMenu *menu) {
     _depura("SubForm2Bc::pintaMenu", 0);
-    QAction *ac = menu->addAction("Submenu de Contabilidad");
+    QAction *ac = menu->addAction(tr("Submenu de contabilidad"));
     menu->addSeparator();
     _depura("END SubForm2Bc::pintaMenu", 0);
 }
@@ -354,3 +273,4 @@ void SubForm2Bc::procesaMenu(QAction *ac) {
     _depura("SubForm2Bc::procesaMenu", 0);
     _depura("END SubForm2Bc::procesaMenu", 0);
 }
+

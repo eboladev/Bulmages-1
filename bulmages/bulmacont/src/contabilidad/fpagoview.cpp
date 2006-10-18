@@ -1,53 +1,57 @@
-//
-// C++ Implementation: %{MODULE}
-//
-// Description:
-
-// Author: %{AUTHOR} <%{EMAIL}>, (C) %{YEAR}
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
-
-
-/** \file fpagoview.cpp
-  * Contiene la implementación de la clase \ref fpagoview
-  * \author Tomeu Borrás Riera
-  */
+/***************************************************************************
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
 #include "fpagoview.h"
 #include "empresa.h"
 
-/** El constructor de la clase prepara las variables globales y llama a la función pintar
-  */
-fpagoview::fpagoview(empresa *emp, QWidget *parent) : QWidget(parent, Qt::WDestructiveClose) , dialogChanges(this) {	
+/// El constructor de la clase prepara las variables globales y llama a la funci&oacute;n
+/// pintar.
+fpagoview::fpagoview(empresa *emp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
     _depura("fpagoview::fpagoview", 0);
     setupUi(this);
-    empresaactual=emp;
-    m_curfpago = NULL;  
-    dialogChanges_cargaInicial(); 
+    empresaactual = emp;
+    m_curfpago = NULL;
+    dialogChanges_cargaInicial();
     pintar();
     emp->meteWindow(windowTitle(), this);
     _depura("END fpagoview::fpagoview", 0);
 }
 
 
-/** El destructor de la clase guarda los datos (por si ha habido cambios)
-  * y libera la memoria que se haya ocupado
-  */
+/// El destructor de la clase guarda los datos (por si ha habido cambios) y libera
+/// la memoria que se haya ocupado. */
 fpagoview::~fpagoview() {
     s_saveFPago();
-    if (m_curfpago != NULL)
+    if (m_curfpago != NULL) {
         delete m_curfpago;
+    } /// end if
     empresaactual->sacaWindow(this);
 }
 
 
-/** Pinta la ventana, recarga el combo y si se pasa el parametro muestra el identificador indicado
-  */
+/// Pinta la ventana, recarga el combo y si se pasa el par&aacute;metro muestra
+/// el identificador indicado. */
 void fpagoview::pintar(QString idfpago) {
-    int posicion=0;
-    /// Vamos a inicializar el combo de los tipos de IVA
+    int posicion = 0;
+    /// Vamos a inicializar el combo de los tipos de IVA.
     if (m_curfpago != NULL)
         delete m_curfpago;
     QString query = "SELECT * from fpago ORDER BY nomfpago";
@@ -57,49 +61,46 @@ void fpagoview::pintar(QString idfpago) {
     while (!m_curfpago->eof()) {
         m_comboFPago->insertItem(m_curfpago->valor("nomfpago"), i);
         if (idfpago == m_curfpago->valor("idfpago") )
-            posicion=i;
+            posicion = i;
         m_curfpago->siguienteregistro();
         i++;
-    }// end while
+    } // end while
     mostrarplantilla(posicion);
 }
 
 
-/**
-  * Esta funcion muestra la forma de pago en la ventana.
-  * \param pos si es distinto de cero se busca en el combo la posición indicada sino se usa la posición actual del combo.
-  */
+/// Esta funci&oacute;n muestra la forma de pago en la ventana.
+/** \param pos si es distinto de cero se busca en el combo la posici&oacute;n
+    indicada sino se usa la posici&oacute;n actual del combo. */
 void fpagoview::mostrarplantilla(int pos) {
     _depura("fpagoview::mostrarplantilla", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		s_saveFPago();	
-    }// end if    
+        if (QMessageBox::warning(this,
+                                 tr("Guardar forma de pago"),
+                                 tr("Desea guardar los cambios?"),
+                                 QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
+            s_saveFPago();
+    } // end if
     if (m_comboFPago->count() > 0) {
-        if (pos != 0)
+        if (pos != 0) {
             m_comboFPago->setCurrentItem(pos);
+        } // end if
         m_posactual = m_comboFPago->currentItem();
         m_nomFPago->setText(m_curfpago->valor("nomfpago", m_posactual));
-        m_plazoPrimerPagoFPago->setText(m_curfpago->valor("plazoprimerpagofpago",m_posactual));
-        m_nPlazosFPago->setText(m_curfpago->valor("nplazosfpago",m_posactual));
-        m_tipoPlazoPrimerPago->setText(m_curfpago->valor("tipoplazoprimerpagofpago",m_posactual));
-        m_plazoEntreReciboFPago->setText(m_curfpago->valor("plazoentrerecibofpago",m_posactual));
-        m_tipoPlazoEntreReciboFPago->setText(m_curfpago->valor("tipoplazoentrerecibofpago",m_posactual));
-	/// Comprobamos cual es la cadena inicial.
-	dialogChanges_cargaInicial();
-    }// end if
+        m_plazoPrimerPagoFPago->setText(m_curfpago->valor("plazoprimerpagofpago", m_posactual));
+        m_nPlazosFPago->setText(m_curfpago->valor("nplazosfpago", m_posactual));
+        m_tipoPlazoPrimerPago->setText(m_curfpago->valor("tipoplazoprimerpagofpago", m_posactual));
+        m_plazoEntreReciboFPago->setText(m_curfpago->valor("plazoentrerecibofpago", m_posactual));
+        m_tipoPlazoEntreReciboFPago->setText(m_curfpago->valor("tipoplazoentrerecibofpago", m_posactual));
+        /// Comprobamos cual es la cadena inicial.
+        dialogChanges_cargaInicial();
+    } // end if
     _depura("END fpagoview::mostrarplantilla", 0);
 }
 
 
-/**
-  Esta funcion sirve para hacer el cambio sobre un
-  centro de coste .
-  */
+/// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste.
 void fpagoview::cambiacombo(int) {
     _depura("fpagoview::cambiacombo", 0);
     mostrarplantilla();
@@ -107,31 +108,31 @@ void fpagoview::cambiacombo(int) {
 }
 
 
-/** SLOT que responde a la pulsación del botón de guardar el tipo de iva que se está editando.
-  * Lo que hace es que se hace un update de todos los campos
-  */
+/// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de guardar el tipo de
+/// IVA que se est&aacute; editando.
+/** Lo que hace es que se hace un update de todos los campos. */
 void fpagoview::s_saveFPago() {
-    QString idfpago = m_curfpago->valor("idfpago",m_posactual);
-    QString query = "UPDATE fpago SET nomfpago='"+m_nomFPago->text()+"', nplazosfpago= "+m_nPlazosFPago->text()+" , plazoprimerpagofpago = "+m_plazoPrimerPagoFPago->text()+", plazoentrerecibofpago="+m_plazoEntreReciboFPago->text()+" WHERE idfpago="+m_curfpago->valor("idfpago", m_posactual);
+    QString idfpago = m_curfpago->valor("idfpago", m_posactual);
+    QString query = "UPDATE fpago SET nomfpago = '" + m_nomFPago->text()+"', nplazosfpago = "+m_nPlazosFPago->text()+" , plazoprimerpagofpago = "+m_plazoPrimerPagoFPago->text()+", plazoentrerecibofpago = " + m_plazoEntreReciboFPago->text() + " WHERE idfpago = " + m_curfpago->valor("idfpago", m_posactual);
     empresaactual->ejecuta(query);
-    dialogChanges_cargaInicial();    
+    dialogChanges_cargaInicial();
     pintar(m_curfpago->valor("idfpago", m_posactual));
 }
 
 
-/** SLOT que responde a la pulsación del botón de nuevo tipo de iva
-  * Inserta en la tabla de ivas
-  */
+/// SLOT que responde a la pulsación del botón de nuevo tipo de IVA. Inserta en la tabla
+/// de IVAs.
 void fpagoview::s_newFPago() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		s_saveFPago();	
-    }// end if
-    QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('NUEVA FORMA DE PAGO',0,0,0)";
+        if (QMessageBox::warning(this,
+                                 tr("Guardar forma de pago"),
+                                 tr("Desea guardar los cambios?"),
+                                 QMessageBox::Ok ,
+                                 QMessageBox::Cancel) == QMessageBox::Ok)
+            s_saveFPago();
+    } // end if
+    QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('NUEVA FORMA DE PAGO', 0, 0, 0)";
     empresaactual->begin();
     empresaactual->ejecuta(query);
     cursor2 *cur = empresaactual->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
@@ -141,40 +142,37 @@ void fpagoview::s_newFPago() {
 }
 
 
-
-/** SLOT que responde a la pulsación del botón de borrar un tipo de IVA
-  * Borra en la tabla de tiposiva el TIPO de iva concreto
-  */
+/// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
+/** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
 void fpagoview::s_deleteFPago() {
-    switch( QMessageBox::warning( this, "Borrar Forma de Pago",
-                                  "Se va a borrar la Forma de Pago,\n"
-                                  "Esto puede ocasionar pérdida de datos\n"
-                                  "Tal vez deberia pensarselo mejor antes\n"
-                                  "porque igual su trabajo se pierde.",
-                                  QMessageBox::Ok ,
-                                  QMessageBox::Cancel )) {
-    case QMessageBox::Ok: // Retry clicked or Enter pressed
-        empresaactual->ejecuta("DELETE FROM fpago WHERE idfpago ="+m_curfpago->valor("idfpago",m_comboFPago->currentItem()));
+    switch (QMessageBox::warning(this,
+                                 tr("Borrar forma de pago"),
+                                 tr("Se va a borrar la forma de pago.\n \
+                                    Esto puede ocasionar perdida de datos.\n \
+                                    Tal vez deberia pensarselo mejor antes\n \
+                                    porque igual su trabajo se pierde."),
+                                 QMessageBox::Ok, QMessageBox::Cancel)) {
+    case QMessageBox::Ok: /// Retry clicked or Enter pressed.
+        empresaactual->ejecuta("DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor("idfpago", m_comboFPago->currentItem()));
         pintar();
         break;
-    case QMessageBox::Cancel: // Abort clicked or Escape pressed
+    case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
         break;
-    }// end switch
+    } // end switch
 }
 
 
-
-/** Antes de salir de la ventana debemos hacer la comprobación de si se ha modificado algo */
+/// Antes de salir de la ventana debemos hacer la comprobaci&oacute;n de si se ha
+/// modificado algo.
 bool fpagoview::close(bool ok) {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-    	    if ( QMessageBox::warning( this, "Guardar Forma de Pago",
-		"Desea guardar los cambios.",
-		QMessageBox::Ok ,
-		QMessageBox::Cancel ) == QMessageBox::Ok)
-		s_saveFPago();	
-    }// end if
+        if (QMessageBox::warning(this,
+                                 tr("Guardar forma de pago"),
+                                 tr("Desea guardar los cambios?"),
+                                 QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
+            s_saveFPago();
+    } // end if
     return QWidget::close(ok);
 }
-
 

@@ -1,32 +1,37 @@
 /***************************************************************************
-                          listcuentasview.cpp  -  description
-                             -------------------
-    begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borrás Riera
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2002 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "listcuentasview1.h"
-#include "funcaux.h"
-#include "cuentaview.h"
-#include "empresa.h"
 
 #include <stdlib.h>
+
 #include <QMap>
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QFileDialog>
 #include <QTextStream>
 
+#include "listcuentasview1.h"
+#include "funcaux.h"
+#include "cuentaview.h"
+#include "empresa.h"
 
-// Incluimos las imagenes que catalogan los tipos de cuentas.
+/// Incluimos las im&aacute;genes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
 #include "images/cpasivo.xpm"
 #include "images/cneto.xpm"
@@ -34,21 +39,20 @@
 #include "images/cgastos.xpm"
 
 
-listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode) : QWidget(parent,name, flag), pgimportfiles(emp->bdempresa()) {
+listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
+        : QWidget(parent, name, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
     empresaactual = emp;
     m_modo = editmode;
     conexionbase= emp->bdempresa();
-
-
-    /// Para el listado de  columnas hacemos una inicializacion
+    /// Para el listado de columnas hacemos una inicializaci&oacute;n.
     QStringList headers;
-    headers << "codigo cuenta" << "nombre cuenta" << "debe" << "haber" << "id cuenta" << "bloqueada" << "nodebe" << "nohaber" << "regularizacion" << "imputacion" << "grupo" << "tipo cuenta";
+    headers << tr("Codigo cuenta") << tr("Nombre cuenta") << tr("Debe") << tr("Haber") << tr("ID cuenta") << tr("Bloqueada") << tr("Nodebe") << tr("Nohaber") << tr("Regularizacion") << tr("Imputacion") << tr("Grupo") << tr("Tipo cuenta");
     ListView1->setHeaderLabels(headers);
 
-    ccuenta=0;
-    cdesccuenta=1;
+    ccuenta = 0;
+    cdesccuenta = 1;
     cdebe = 2;
     chaber = 3;
     cidcuenta = 4;
@@ -61,19 +65,19 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
     ctipocuenta = 11;
 
     tablacuentas->setColumnCount(3);
-    headers << "CODIGO" << "NOMBRE";
+    headers << tr("CODIGO") << tr("NOMBRE");
     tablacuentas->setHorizontalHeaderLabels(headers);
 
     tablacuentas->hideColumn(2);
-    tablacuentas->setColumnWidth(1,400);
-    tablacuentas->setColumnWidth(0,100);
+    tablacuentas->setColumnWidth(1, 400);
+    tablacuentas->setColumnWidth(0, 100);
 
     installEventFilter(this);
     if (m_modo == EditMode)
-        empresaactual->meteWindow( caption(), this);
+        empresaactual->meteWindow(caption(), this);
     _depura("END listcuentasview1::listcuentasview1", 0);
-
 }
+
 
 listcuentasview1::~listcuentasview1() {
     _depura("listcuentasview1::~listcuentasview1", 0);
@@ -82,36 +86,16 @@ listcuentasview1::~listcuentasview1() {
     _depura("END listcuentasview1::~listcuentasview1", 0);
 }
 
-bool listcuentasview1::eventFilter( QObject *obj, QEvent *event ) {
-    /*
-        if ( event->type() == QEvent::KeyPress ) {
-            QKeyEvent *keyEvent = (QKeyEvent *) event;
-            int key = keyEvent->key();
-            if (key == Qt::Key_Up) { // El enter
-                ListView1->eventFilter(ListView1, event);
-    //            Q3ListViewItem *it = ListView1->currentItem()->itemAbove();
-    	    QTreeWidgetItem *it = ListView1->itemAt(ListView1->indexAbove(),0);
-                ListView1->setCurrentItem(it);
-                ListView1->ensureItemVisible(it);
-                return TRUE;
-            }// end if
-            if (key == Qt::Key_Down) { // El enter
-                Q3ListViewItem *it = ListView1->currentItem()->itemBelow();
-                ListView1->setCurrentItem(it);
-                ListView1->ensureItemVisible(it);
-                return TRUE;
-            }// end if
-        }// end if
-    */
+
+bool listcuentasview1::eventFilter(QObject *obj, QEvent *event) {
     return QWidget::eventFilter(obj, event);
 }
 
-/**
- * Se encarga de hacer las inicializaciones de todo el formulario.
- * Se llama asi y no desde el constructor pq asi la podemos llamar desde dentro
- * de la misma clase, etc etc etc
- */
-int listcuentasview1::inicializa( ) { 
+
+/// Se encarga de hacer las inicializaciones de todo el formulario.
+/** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
+    desde dentro de la misma clase, etc, etc, etc. */
+int listcuentasview1::inicializa() {
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int idcuenta;
@@ -123,30 +107,30 @@ int listcuentasview1::inicializa( ) {
     if (ctas->eof()) {
         _depura("El query esta vacio\n", 0);
     } else {
-        fprintf(stderr,"El query tiene registros \n");
-    }// end if
+        fprintf(stderr, "El query tiene registros \n");
+    } // end if
     while (!ctas->eof()) {
         idcuenta = ctas->valor("idcuenta").toInt();
-	padre = ctas->valor("padre").toInt();
+        padre = ctas->valor("padre").toInt();
         if (padre == 0) {
-	    it = new QTreeWidgetItem(ListView1);
+            it = new QTreeWidgetItem(ListView1);
             Lista1[idcuenta] = it;
         } else {
-	    fprintf(stderr,"Cuentas de subnivel: %d\n",padre);
+            fprintf(stderr, "Cuentas de subnivel: %d\n", padre);
             it = new QTreeWidgetItem(Lista1[padre]);
             Lista1[idcuenta] = it;
-        }// end if
-        it->setText(ccuenta,ctas->valor("codigo"));
+        } // end if
+        it->setText(ccuenta, ctas->valor("codigo"));
         it->setText(cdesccuenta, ctas->valor("descripcion"));
-        it->setText(cidcuenta,ctas->valor("idcuenta"));
-        it->setText(cbloqueada,ctas->valor("bloqueada"));
-        it->setText(cnodebe,ctas->valor("nodebe"));
-        it->setText(cnohaber,ctas->valor("nohaber"));
-        it->setText(cregularizacion,ctas->valor("regularizacion"));
-        it->setText(cimputacion,ctas->valor("imputacion"));
-        it->setText(cgrupo,ctas->valor("idgrupo"));
-        it->setText(cdebe,ctas->valor("debe"));
-        it->setText(chaber,ctas->valor("haber"));
+        it->setText(cidcuenta, ctas->valor("idcuenta"));
+        it->setText(cbloqueada, ctas->valor("bloqueada"));
+        it->setText(cnodebe, ctas->valor("nodebe"));
+        it->setText(cnohaber, ctas->valor("nohaber"));
+        it->setText(cregularizacion, ctas->valor("regularizacion"));
+        it->setText(cimputacion, ctas->valor("imputacion"));
+        it->setText(cgrupo, ctas->valor("idgrupo"));
+        it->setText(cdebe, ctas->valor("debe"));
+        it->setText(chaber, ctas->valor("haber"));
         /// Ponemos los iconos.
         if (ctas->valor("tipocuenta") == "1")
             it->setIcon(ccuenta, QPixmap(cactivo));
@@ -160,32 +144,33 @@ int listcuentasview1::inicializa( ) {
             it->setIcon(ccuenta, QPixmap(cgastos));
         ListView1->setItemExpanded(it, TRUE);
         ctas->siguienteregistro();
-    }// end while
+    } // end while
     delete ctas;
 
-    /// Cargamos el numero de digitos de cuenta para poder hacer una introduccion de numeros de cuenta mas practica.
+    /// Cargamos el n&uacute;mero de d&iacute;gitos de cuenta para poder hacer una
+    /// introducci&oacute;n de n&uacute;meros de cuenta m&aacute;s pr&aacute;ctica.
     numdigitos = empresaactual->numdigitosempresa();
 
     inicializatabla();
-    return(0);
+    return 0;
 }
 
-/** Inicializa la tabla de cuentas, que es la segunda pestaña de la pantalla
-  * Dicha tabla sólo muestra las cuentas hoja del plan contable, y deja los demás elementos
-  * ocultos.
-  */
+
+/// Inicializa la tabla de cuentas, que es la segunda pesta&ntilde;a de la pantalla.
+/** Dicha tabla s&oacute;lo muestra las cuentas hoja del plan contable, y deja los
+    dem&aacute;s elementos ocultos. */
 void listcuentasview1::inicializatabla()  {
     _depura("listcuentasview1::inicializatabla", 0);
     QString query;
     query = "SELECT * FROM cuenta ORDER BY codigo";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query);
     tablacuentas->setRowCount(cursoraux1->numregistros());
-    int i=0;
+    int i = 0;
     QTableWidgetItem *dato;
     while (!cursoraux1->eof()) {
-	dato = new QTableWidgetItem(cursoraux1->valor("codigo"));
-	dato->setFlags(Qt::ItemIsEnabled);
-	/// Ponemos los iconos.
+        dato = new QTableWidgetItem(cursoraux1->valor("codigo"));
+        dato->setFlags(Qt::ItemIsEnabled);
+        /// Ponemos los iconos.
         if (cursoraux1->valor("tipocuenta") == "1")
             dato->setIcon(QPixmap(cactivo));
         else if (cursoraux1->valor("tipocuenta") == "2")
@@ -197,91 +182,69 @@ void listcuentasview1::inicializatabla()  {
         else if (cursoraux1->valor("tipocuenta") == "5")
             dato->setIcon(QPixmap(cgastos));
         tablacuentas->setItem(i, 0, dato);
-	dato = new QTableWidgetItem(cursoraux1->valor("descripcion"));
-	dato->setFlags(Qt::ItemIsEnabled);
+        dato = new QTableWidgetItem(cursoraux1->valor("descripcion"));
+        dato->setFlags(Qt::ItemIsEnabled);
         tablacuentas->setItem(i, 1, dato);
-	dato->setFlags(Qt::ItemIsEnabled);
-	dato = new QTableWidgetItem(cursoraux1->valor("idcuenta"));
+        dato->setFlags(Qt::ItemIsEnabled);
+        dato = new QTableWidgetItem(cursoraux1->valor("idcuenta"));
         tablacuentas->setItem(i, 2, dato);
 
-	/*
-        /// Ponemos los iconos.
-        if (cursoraux1->valor("tipocuenta") == "1")
-            tablacuentas->setPixmap(i,0, QPixmap(cactivo));
-        else if (cursoraux1->valor("tipocuenta") == "2")
-            tablacuentas->setPixmap(i,0, QPixmap(cpasivo));
-        else if (cursoraux1->valor("tipocuenta") == "3")
-            tablacuentas->setPixmap(i,0, QPixmap(cneto));
-        else if (cursoraux1->valor("tipocuenta") == "4")
-            tablacuentas->setPixmap(i,0, QPixmap(cingresos));
-        else if (cursoraux1->valor("tipocuenta") == "5")
-            tablacuentas->setPixmap(i,0, QPixmap(cgastos));
-	    */
-	
         QString codigo = cursoraux1->valor("codigo");
         if ((unsigned int)codigo.length() != numdigitos) {
             tablacuentas->hideRow(i);
-        }// end if
-        cursoraux1->siguienteregistro ();
+        } // end if
+        cursoraux1->siguienteregistro();
         i++;
-    }// end while
+    } // end while
     delete cursoraux1;
-
-//    delete dato;
-//    tablacuentas->setReadOnly(TRUE);
     _depura("END listcuentasview1::inicializatabla", 0);
-
 }
 
-/**
- * Este es el slot que se activa al hacer click sobre el
- * ListView del formulario. Lo que hace es actualizar los valores
- * de la derecha del formulario con los valores almacenados en el
- * item que se acaba de pulsar.
- */
+
+/// Este es el SLOT que se activa al hacer click sobre &eacute;l.
+/** ListView del formulario. Lo que hace es actualizar los valores
+    de la derecha del formulario con los valores almacenados en el
+    item que se acaba de pulsar. */
 void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
     _depura("listcuentasview1::on_ListView1_itemClicked", 0);
     QString idcuenta = it->text(cidcuenta);
     QString cad;
     for (int i = 0; i < tablacuentas->rowCount() - 1; i++) {
-        cad = tablacuentas->item(i,2)->text();
+        cad = tablacuentas->item(i, 2)->text();
         if (cad == idcuenta) {
-            tablacuentas->setCurrentCell(i,2);
-            tablacuentas->scrollToItem(tablacuentas->item(i,2), QAbstractItemView::EnsureVisible);
-	    break;
-        }// end if
-    }// end for
+            tablacuentas->setCurrentCell(i, 2);
+            tablacuentas->scrollToItem(tablacuentas->item(i, 2), QAbstractItemView::EnsureVisible);
+            break;
+        } // end if
+    } // end for
     _depura("END listcuentasview1::on_ListView1_itemClicked", 0);
 }
 
-/** La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
-  * del QLineEdit del buscador se lanza esta función que hace una bsqueda sobre el árbol
-  * de cuentas
-  */
+
+/// La pantalla lleva implicito un buscador de cuentas, cuando cambia el contenido
+/** del QLineEdit del buscador se lanza esta funci&oacute;n que hace una b&uacute;squeda
+    sobre el &aacute;rbol de cuentas. */
 void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
     QList<QTreeWidgetItem *> it;
     QString cod = extiendecodigo(string1, (int) numdigitos);
 
-    it = ListView1->findItems(cod,  Qt::MatchStartsWith, ccuenta);
+    it = ListView1->findItems(cod, Qt::MatchStartsWith, ccuenta);
     if (it.count() > 0) {
         ListView1->setCurrentItem(it.first());
-        // ListView1->ensureItemVisible(it.first());
     } else {
-        it = ListView1->findItems(string1,  Qt::MatchStartsWith, cdesccuenta);
+        it = ListView1->findItems(string1, Qt::MatchStartsWith, cdesccuenta);
         if (it.count() > 0) {
             ListView1->setCurrentItem(it.first());
-            //   ListView1->ensureItemVisible(it.first());
-        }// end if
-    }// end if
+        } // end if
+    } // end if
 }
 
-/**
-  * Este es el slot que se activa al hacer doble click sobre el
-  * ListView del formulario. Lo que hace es abrir la ventana de
-  * detalle de cuenta para que se puedan modificar los parametros
-  * y una vez terminado refresca el formulario para que aparezcan
-  * los datos actualizados.
-  */
+
+/// Este es el SLOT que se activa al hacer doble click sobre &eacute;l.
+/** ListView del formulario. Lo que hace es abrir la ventana de
+    detalle de cuenta para que se puedan modificar los par&aacute;metros
+    y una vez terminado refresca el formulario para que aparezcan
+    los datos actualizados. */
 void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) {
     _depura("listcuentasview1::on_ListView1_doubleClicked", 0);
     on_ListView1_itemClicked(it, 0);
@@ -289,103 +252,100 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
-        cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
+        cuentaview *nuevae = new cuentaview(empresaactual, 0, "", true);
         nuevae->cargacuenta(atoi(idcuenta().ascii()));
         inicializa();
-	empresaactual->pWorkspace()->addWindow(nuevae);
-	nuevae->show();
+        empresaactual->pWorkspace()->addWindow(nuevae);
+        nuevae->show();
     } else {
         emit(selected(mdb_idcuenta));
-    }// end if
+    } // end if
     _depura("listcuentasview1::on_ListView1_doubleClicked", 0);
 }
 
-/**
-  * Esta funcion es el slot que se activa al pulsar sobre el
-  * boton nueva cuenta.
-  * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
-  * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
-  * seleccionada por lo que se hace que la ventana que se habre tenga el campo
-  * del padre de la cuenta rellenado.
-  */
+
+/// Esta funci&oacute;n es el SLOT que se activa al pulsar sobre el
+/// bot&oacute;n nueva cuenta.
+/** Su funci&oacute;n es crear una nueva cuenta desde la ventana del plan de cuentas.
+    La inserci&oacute;n de la nueva se hace como cuenta hija de la cuenta actualmente
+    seleccionada por lo que se hace que la ventana que se habre tenga el campo
+    del padre de la cuenta rellenado. */
 void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
     QString cadena, codigo;
-    int  idgrupo=0;
+    int idgrupo = 0;
     QTreeWidgetItem *it;
-    cuentaview *nuevae = new cuentaview(empresaactual,0,0,true);
+    cuentaview *nuevae = new cuentaview(empresaactual, 0, 0, true);
     it = ListView1->currentItem();
     if (it) {
-	codigo = it->text(ccuenta);
-	cadena = it->text(cgrupo);
-	idgrupo = cadena.toInt();
-	nuevae->nuevacuenta(codigo,idgrupo);
+        codigo = it->text(ccuenta);
+        cadena = it->text(cgrupo);
+        idgrupo = cadena.toInt();
+        nuevae->nuevacuenta(codigo, idgrupo);
     } // end if
     empresaactual->pWorkspace()->addWindow(nuevae);
     nuevae->show();
     _depura("END listcuentasview1::on_mui_crear_clicked", 0);
 }
 
-/**
- * Esta función es el slot que se activa al pulsar sobre el
- * boton nueva cuenta.
- * Su función es crear una nueva cuenta desde la ventana del plan de cuentas
- * La inserción de la nueva se hace como cuenta hija de la cuenta actualmente
- * seleccionada por lo que se hace que la ventana que se habre tenga el campo
- * del padre de la cuenta rellenado.
- */
+
+/// Esta funci&oacute;n es el SLOT que se activa al pulsar sobre el
+/// boton nueva cuenta.
+/** Su funci&oacute;n es crear una nueva cuenta desde la ventana del plan de cuentas
+    La inserci&oacute;n de la nueva se hace como cuenta hija de la cuenta actualmente
+    seleccionada por lo que se hace que la ventana que se habre tenga el campo
+    del padre de la cuenta rellenado. */
 void listcuentasview1::on_mui_editar_clicked()  {
     _depura("listcuentasview1::on_mui_editar_clicked", 0);
     QTreeWidgetItem *it;
     it = ListView1->currentItem();
     if (!it) {
-	mensajeInfo(tr("Debe seleccionar una cuenta"));
-	return;
+        mensajeInfo(tr("Debe seleccionar una cuenta"));
+        return;
     }
     on_ListView1_itemClicked(it, 0);
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    cuentaview *nuevae = new cuentaview(empresaactual,0,"",true);
+    cuentaview *nuevae = new cuentaview(empresaactual, 0, "", true);
     nuevae->cargacuenta(atoi(idcuenta().ascii()));
     empresaactual->pWorkspace()->addWindow(nuevae);
     nuevae->show();
     _depura("END listcuentasview1::on_mui_editar_clicked", 0);
 }
 
-/**
-  * Esta funcion es el slot que se activa al pulsar sobre el
-  * boton borrar cuenta.
-  */
-void listcuentasview1::on_mui_borrar_clicked()  {
+
+/// Esta funci&oacute;n es el SLOT que se activa al pulsar sobre el boton borrar cuenta.
+void listcuentasview1::on_mui_borrar_clicked() {
     QTreeWidgetItem *it;
     it = ListView1->currentItem();
     if (!it) {
-	mensajeInfo(tr("Debe seleccionar una cuenta"));
-	return;
+        mensajeInfo(tr("Debe seleccionar una cuenta"));
+        return;
     } // end if
-    int valor = QMessageBox::warning( 0, "Borrar Cuenta", "Se procedera a borrar la cuenta.", QMessageBox::Yes, QMessageBox::No);
+    int valor = QMessageBox::warning(0,
+                                     tr("Borrar cuenta"),
+                                     tr("Se procedera a borrar la cuenta."),
+                                     QMessageBox::Yes, QMessageBox::No);
     if (valor ==  QMessageBox::Yes) {
         int idcuenta =atoi((char *) it->text(cidcuenta).ascii());
         conexionbase->begin();
         if (conexionbase->borrarcuenta(idcuenta) == 0) {
             delete it;
         } else {
-            mensajeInfo("No se ha podido borrar la cuenta" );
-        }// end if
+            mensajeInfo("No se ha podido borrar la cuenta." );
+        } // end if
         conexionbase->commit();
-    }// end if
+    } // end if
 }
 
 
-/** \brief Se ha hecho una doble click sobre la tabla de cuentas
-  *
-  * Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento análogo
-  * en el arbol contable y se simula una doble pulsación sobre ese elemento.
-  */
-void listcuentasview1::on_tablacuentas_doubleClicked(int row, int , int ,const QPoint &) {
+/// Se ha hecho una doble click sobre la tabla de cuentas.
+/** Al hacer doble click sobre la tabla de cuentas, se encuentra el elemento an&aacute;logo
+    en el &aacute;rbol contable y se simula una doble pulsaci&oacute;n sobre ese elemento. */
+void listcuentasview1::on_tablacuentas_doubleClicked(int row, int, int, const QPoint &) {
     _depura("listcuentasview1::on_tablacuentas_doubleClicked", 0);
-    QString idcuenta = tablacuentas->item(row,2)->text();
+    QString idcuenta = tablacuentas->item(row, 2)->text();
     QList <QTreeWidgetItem *> it;
     it = ListView1->findItems(idcuenta, Qt::MatchExactly, cidcuenta);
     ListView1->setCurrentItem(it.first());
@@ -393,54 +353,31 @@ void listcuentasview1::on_tablacuentas_doubleClicked(int row, int , int ,const Q
     _depura("END listcuentasview1::on_tablacuentas_doubleClicked", 0);
 }
 
-/** \brief Cuando se pulsa el Return sobre la busqueda de cuentas
-  * 
-  * Actua como si fuese una doble pulsacion con el raton sobre la tabla de cuentas.
-  */
+
+/// Cuando se pulsa el Return sobre la b&uacute;squeda de cuentas.
+/** Act&uacute;a como si fuese una doble pulsaci&oacute;n con el rat&oacute;n sobre la
+    tabla de cuentas. */
 void listcuentasview1::on_mui_busqueda_editFinished() {
     _depura("listcuentasview1::on_mui_busqueda_editFinished", 0);
     QTreeWidgetItem *it = ListView1->currentItem();
     if (it != 0) {
         on_ListView1_itemDoubleClicked(it, 0);
-    }// end if
+    } // end if
     _depura("END listcuentasview1::on_mui_busqueda_editFinished", 0);
 }
 
-/** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
-  * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
-  * \todo La plantilla podria tener contenidos dinamicos mendiante marcas sustituibles por
-  * un egrep, o un sedit que aun no estan realizados.
-  * \todo Esta funcion deberia implementarse con una clase nueva de Qt que solicitase 
-  * el rango de cuentas entre el que se quiere el listado.
-  */
-/*
-void listcuentasview1::on_mui_imprimirrtk_clicked() {
-    _depura("listcuentasview1::on_mui_imprimir_clicked", 0);
-    QString cadena;
-    cadena = "rtkview --input-sql-driver QPSQL7 --input-sql-database ";
-    cadena += conexionbase->nameDB()+" ";
-    cadena += confpr->valor(CONF_DIR_REPORTS)+"cuentas.rtk &";
-    fprintf(stderr,"%s\n",cadena.ascii());
-    system (cadena.ascii());
-    _depura("END listcuentasview1::on_mui_imprimir_clicked", 0);
 
-}
-*/
-
-
-/** \brief Responde a la pulsacion del boton de imprimir en la ventana de cuentas.
-  * Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
-  * \todo La plantilla podria tener contenidos dinamicos mendiante marcas sustituibles por
-  * un egrep, o un sedit que aun no estan realizados.
-  * \todo Esta funcion deberia implementarse con una clase nueva de Qt que solicitase 
-  * el rango de cuentas entre el que se quiere el listado.
-  */
+/// Responde a la pulsaci&oacute;n del bot&oacute;n de imprimir en la ventana de cuentas.
+/** Crea un string de llamada a rtkview y lo lanza como llamada de sistema.
+    \todo La plantilla podr&iacute;a tener contenidos din&aacute;micos mendiante
+    marcas sustituibles por un egrep, o un sedit que aun no est&aacute;n realizados.
+    \todo Esta funci&oacute;n deber&iacute;a implementarse con una clase nueva de Qt
+    que solicitase el rango de cuentas entre el que se quiere el listado. */
 void listcuentasview1::on_mui_imprimir_clicked() {
     _depura("listcuentasview1::on_mui_imprimir_clicked", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -451,7 +388,6 @@ void listcuentasview1::on_mui_imprimir_clicked() {
 #endif
 
     system (archivo.ascii());
-
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -461,7 +397,7 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system (archivologo.ascii());
+    system(archivologo.ascii());
 
     QFile file;
     file.setName(archivod);
@@ -474,7 +410,7 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     QString query = "SELECT * FROM cuenta ORDER BY codigo";
     cursor2 *cur = conexionbase->cargacursor(query);
 
-    /// Linea de totales del presupuesto.
+    /// L&iacute;nea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr><td>Codigo</td>\n";
     fitxersortidatxt += "<td>Descripcion</td>\n";
@@ -482,14 +418,13 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     fitxersortidatxt += "<td>Haber</td></tr>\n";
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>\n";
-	fitxersortidatxt += "<td>"+cur->valor("codigo")+"</td>\n";
-	fitxersortidatxt += "<td>"+cur->valor("descripcion")+"</td>\n";
-	fitxersortidatxt += "<td>"+cur->valor("debe")+"</td>\n";
-	fitxersortidatxt += "<td>"+cur->valor("haber")+"</td>\n";
+        fitxersortidatxt += "<td>"+cur->valor("codigo")+"</td>\n";
+        fitxersortidatxt += "<td>"+cur->valor("descripcion")+"</td>\n";
+        fitxersortidatxt += "<td>"+cur->valor("debe")+"</td>\n";
+        fitxersortidatxt += "<td>"+cur->valor("haber")+"</td>\n";
         fitxersortidatxt += "</tr>\n";
-	cur->siguienteregistro();
+        cur->siguienteregistro();
     } // end while
-//    fitxersortidatxt += mui_list->imprimir();
     fitxersortidatxt += "</blockTable>";
 
     delete cur;
@@ -507,29 +442,36 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     _depura("END listcuentasview1::on_mui_imprimir_clicked", 0);
 }
 
+
 void listcuentasview1::on_mui_exportar_clicked() {
     _depura("listcuentasview1::on_mui_exportar_clicked", 0);
-    QFile filexml (QFileDialog::getSaveFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));
-    if(filexml.open(QIODevice::WriteOnly)) {
+    QFile filexml(QFileDialog::getSaveFileName(this,
+                  tr("Elija el archivo"),
+                  confpr->valor(CONF_DIR_USER),
+                  tr("Plan contable (*.xml)")));
+    if (filexml.open(QIODevice::WriteOnly)) {
         bulmages2XML(filexml, IMPORT_CUENTAS);
         filexml.close();
     } else {
         mensajeInfo("Error al abrir archivo\n");
-    }// end if
+    } // end if
     _depura("END listcuentasview1::on_mui_exportar_clicked", 0);
 }
 
+
 void listcuentasview1::on_mui_importar_clicked() {
     _depura("listcuentasview1::on_mui_importar_clicked", 0);
-    QFile filexml (QFileDialog::getOpenFileName(this, "Elija el Archivo", confpr->valor(CONF_DIR_USER), "Plan Contable (*.xml)"));
+    QFile filexml(QFileDialog::getOpenFileName(this,
+                  tr("Elija el archivo"),
+                  confpr->valor(CONF_DIR_USER),
+                  tr("Plan contable (*.xml)")));
     if (filexml.open(QIODevice::ReadOnly)) {
         XML2Bulmages(filexml, IMPORT_CUENTAS);
         filexml.close();
         inicializa();
     } else {
         mensajeInfo("Error al abrir archivo\n");
-    }// end if
+    } // end if
     _depura("END listcuentasview1::on_mui_importar_clicked", 0);
 }
-
 
