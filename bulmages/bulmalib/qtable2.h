@@ -26,6 +26,7 @@
 
 #include "funcaux.h"
 
+
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
 /** */
 class QTableWidgetItem2 : public QTableWidgetItem {
@@ -34,16 +35,18 @@ public:
     QTableWidgetItem2(int type = Type, int mode = 0) : QTableWidgetItem(type) {
         modo = mode;
     }
-    QTableWidgetItem2(const QString & text, int type = Type, int mode = 0) : QTableWidgetItem(text, type) {
+    QTableWidgetItem2(const QString &text, int type = Type, int mode = 0) : QTableWidgetItem(text, type) {
         modo = mode;
     }
     ~QTableWidgetItem2() {
         _depura("~QTableWidgetItem2", 1);
     };
-    virtual bool operator < (const QTableWidgetItem & other);
+    virtual bool operator < (const QTableWidgetItem &other);
 };
 
-/// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y funcionalidades.
+
+/// Clase que deriva de QTableWidget para poder reprogramar ciertos aspectos y
+/// funcionalidades.
 /** Se usa principalmente como tabla para mostrar subformularios.*/
 class QTableWidget2 : public QTableWidget {
     Q_OBJECT
@@ -69,12 +72,12 @@ public:
     void columnMoved(int column, int oldIndex, int newIndex) {
         QTableWidget::columnMoved(column, oldIndex, newIndex);
     };
-    QTableWidget2(QWidget * parent = 0);
+    QTableWidget2(QWidget *parent = 0);
     ~QTableWidget2() {
         _depura("~QTableWidget2", 0);
     };
     virtual bool eventFilter(QObject *obj, QEvent *event);
-    void setText(int x, int y, const QString & val);
+    void setText(int x, int y, const QString &val);
     void sortColumn(int col, Qt::SortOrder tipoorden);
     virtual void ordenar();
     

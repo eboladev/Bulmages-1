@@ -122,12 +122,28 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>556</x>
-     <y>239</y>
+     <x>455</x>
+     <y>202</y>
     </hint>
     <hint type="destinationlabel" >
      <x>585</x>
      <y>182</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_framedetalles</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>333</x>
+     <y>188</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>327</x>
+     <y>161</y>
     </hint>
    </hints>
   </connection>

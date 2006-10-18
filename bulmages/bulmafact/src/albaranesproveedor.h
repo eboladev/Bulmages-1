@@ -24,6 +24,7 @@
 #include <QLineEdit>
 
 #include "company.h"
+//#include "empresa.h"
 #include "busquedaproveedor.h"
 #include "busquedaarticulo.h"
 #include "funcaux.h"
@@ -43,12 +44,13 @@ public slots:
     virtual void cargar() {
         _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM albaranp";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 * cur = companyact()->cargacursor(SQLQuery);
+        //cursor2 *cur = empresaact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
     virtual void cargar(QString query) {
-	SubForm3::cargar(query);
+        SubForm3::cargar(query);
     };
 };
 
@@ -63,6 +65,7 @@ class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase 
 
 private:
     company *m_companyact;
+    //Empresa *m_empresaact;
     /// == 0 es modo edicion.
     /// == 1 es modo selector.
     int m_modo;
@@ -71,6 +74,7 @@ private:
 public:
     AlbaranesProveedor(QWidget *parent = 0, Qt::WFlags flag = 0);
     AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
+    //AlbaranesProveedor(Empresa *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
     void presenta();
     void modoseleccion() {
@@ -80,10 +84,15 @@ public:
         m_modo = 0;
     };
     void setcompany(company *comp) {
-        m_companyact=comp;
+        m_companyact = comp;
         m_proveedor->setcompany(comp);
         m_articulo->setcompany(comp);
-	mui_list->setcompany(comp);
+        mui_list->setcompany(comp);
+//    void setempresa(Empresa *comp) {
+//        m_empresaact = comp;
+//        m_proveedor->setempresa(comp);
+//        m_articulo->setempresa(comp);
+//        mui_list->setempresa(comp);
     };
     QString idalbaranp() {
         return mdb_idalbaranp;
@@ -104,6 +113,8 @@ public:
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
+//        if (m_empresaact != NULL) {
+//            m_empresaact->meteWindow(nom, obj);
         }
     };
     void setidproveedor(QString val) {
@@ -117,16 +128,18 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >= 3)
-		on_mui_actualizar_clicked();
+        if(text.size() >= 3)
+            on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked()  {
-        if(m_companyact != NULL)
+        if (m_companyact != NULL)
             m_companyact->s_newAlbaranPro();
+//        if (m_empresaact != NULL)
+//            m_empresaact->s_newAlbaranPro();
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {

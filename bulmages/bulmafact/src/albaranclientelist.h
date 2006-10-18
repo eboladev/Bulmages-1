@@ -25,6 +25,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
+//#include "empresa.h"
 #include "subform2bf.h"
 
 /// Listado de albaranes de clientes.
@@ -40,6 +41,7 @@ public slots:
         _depura("AlbaranClienteListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM albaran";
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        //cursor2 *cur = empresaact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -63,6 +65,7 @@ public:
 
 private:
     company *m_companyact;
+    //Empresa *m_empresaact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -71,6 +74,7 @@ private:
 public:
     AlbaranClienteList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     AlbaranClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+    //AlbaranClienteList(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~AlbaranClienteList();
     void presenta();
     void modoseleccion() {
@@ -84,6 +88,10 @@ public:
         m_companyact = comp;
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
+//    void setempresa(Empresa *comp) {
+//        m_empresaact = comp;
+//        m_cliente->setempresa(comp);
+//        mui_list->setempresa(comp);
     };
     void hideBotonera() {
         m_botonera->hide();
@@ -106,6 +114,8 @@ public:
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
+//        if (m_empresaact != NULL) {
+//            m_empresaact->meteWindow(nom, obj);
         }
     };
     QString generarFiltro();
@@ -121,6 +131,7 @@ public slots:
     };
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newAlbaranClienteView();
+//        m_empresaact->s_newAlbaranClienteView();
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();

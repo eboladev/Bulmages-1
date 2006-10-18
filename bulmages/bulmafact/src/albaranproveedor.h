@@ -24,6 +24,7 @@
 #include <QString>
 
 #include "company.h"
+//#include "empresa.h"
 #include "dbrecord.h"
 #include "listlinalbaranproveedorview.h"
 #include "listdescalbaranprovview.h"
@@ -36,9 +37,11 @@ protected:
     ListLinAlbaranProveedorView *listalineas;
     ListDescuentoAlbaranProvView *listadescuentos;
     company *companyact;
+//    Empresa *empresaact;
 
 public:
     AlbaranProveedor(company *);
+//    AlbaranProveedor(Empresa *);
     virtual ~AlbaranProveedor();
 
     /// Establece cual es la lista subformulario del presupuesto.
@@ -46,10 +49,12 @@ public:
     void setListLinAlbaranProveedor(ListLinAlbaranProveedorView *a) {
         listalineas = a;
         listalineas->setcompany(companyact);
+//        listalineas->setempresa(empresaact);
     };
     void setListDescuentoAlbaranProveedor(ListDescuentoAlbaranProvView *a) {
         listadescuentos = a;
         listadescuentos->setcompany(companyact);
+//        listadescuentos->setempresa(empresaact);
     };
     virtual void pintar();
     virtual int guardar();

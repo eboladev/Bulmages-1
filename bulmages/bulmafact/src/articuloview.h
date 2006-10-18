@@ -28,6 +28,7 @@
 
 
 class company;
+//class Empresa;
 
 
 /// Muestra la ventana de art&iacute;culos.
@@ -38,13 +39,17 @@ class ArticuloView : public QWidget, public Ui_ArticuloBase, public dialogChange
 private:
     QString m_archivoimagen;
     company *m_companyact;
+//    Empresa *m_empresaact;
     cursor2 *m_cursorcombo;
 
 public:
     ArticuloView(company *emp, QWidget *parent = 0);
+//    ArticuloView(Empresa *emp, QWidget *parent = 0);
     ~ArticuloView();
     company *companyact() {
         return m_companyact;
+//    Empresa *empresaact() {
+//        return m_empresaact;
     };
 
 public:

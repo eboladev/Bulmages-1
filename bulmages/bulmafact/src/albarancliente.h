@@ -24,6 +24,7 @@
 #include <QString>
 
 #include "company.h"
+//#include "empresa.h"
 #include "listlinalbaranclienteview.h"
 #include "listdescalbaranclienteview.h"
 #include "fixed.h"
@@ -36,9 +37,11 @@ protected:
     ListLinAlbaranClienteView *listalineas;
     ListDescuentoAlbaranClienteView *listadescuentos;
     company *companyact;
+    //Empresa *empresaact;
 
 public:
     AlbaranCliente(company *);
+    //AlbaranCliente(Empresa *);
     virtual ~AlbaranCliente();
     QString idalbaran() {
         return DBvalue("idalbaran");
@@ -104,10 +107,12 @@ public:
     void setListLinAlbaranCliente(ListLinAlbaranClienteView *a) {
         listalineas = a;
         listalineas->setcompany(companyact);
+        //listalineas->setempresa(empresaact);
     };
     void setListDescuentoAlbaranCliente(ListDescuentoAlbaranClienteView *a) {
         listadescuentos = a;
         listadescuentos->setcompany(companyact);
+        //listadescuentos->setempresa(empresaact);
     };
     void setidalbaran(QString val) {
         setDBvalue("idalbaran", val);

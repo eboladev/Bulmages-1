@@ -36,6 +36,7 @@
 
 
 class company;
+//class Empresa;
 
 
 /// Muestra la ficha del albar&aacute;n de proveedor.
@@ -45,6 +46,7 @@ class AlbaranProveedorView : public Ficha, public Ui_AlbaranProveedorBase, publi
 
 public:
     AlbaranProveedorView(company *, QWidget *);
+//    AlbaranProveedorView(Empresa *, QWidget *);
     ~AlbaranProveedorView();
     void inicializar();
     void pintaidalbaranp(QString) {}

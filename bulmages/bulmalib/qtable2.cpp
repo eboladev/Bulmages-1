@@ -26,7 +26,7 @@
 #include "funcaux.h"
 
 
-QTableWidget2::QTableWidget2(QWidget * parent) : QTableWidget(parent) {
+QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
     installEventFilter(this);
 }
 
@@ -64,18 +64,24 @@ bool QTableWidgetItem2::operator < (const QTableWidgetItem & other) {
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
     _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 0);
 
-    /// Si es una pulsaci&oacute;n de tecla que esta capturada con el release salimos sin hacer nada.
+    /// Si es una pulsaci&oacute;n de tecla que esta capturada con el release salimos
+    /// sin hacer nada.
 /*
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
-    	switch (key) {
+        switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
+            printf("pulsado intro\n");
+            return TRUE;
         case Qt::Key_Up:
+            printf("pulsado flecha arriba\n");
+            return TRUE;
         case Qt::Key_Down:
-        	return TRUE;
-    	} // end switch
+            printf("pulsado flecha abajo\n");
+            return TRUE;
+        } // end switch
     } // end if
 */
 
@@ -92,7 +98,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
             return TRUE;
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
-        switch(key) {
+        switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
             emit editFinished(row, col, key);

@@ -40,6 +40,8 @@
 
 
 class company;
+//class Empresa;
+
 
 /// Muestra el albar&aacute;n a cliente.
 /** */
@@ -48,6 +50,7 @@ class AlbaranClienteView : public Ficha, public Ui_AlbaranClienteBase, public Al
 
 public:
     AlbaranClienteView(company *, QWidget *);
+    //AlbaranClienteView(Empresa *, QWidget *);
     ~AlbaranClienteView();
     void inicializar();
     void pintaIdAlbaran(QString) {}

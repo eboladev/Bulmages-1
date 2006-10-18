@@ -24,6 +24,7 @@
 #include <QString>
 
 #include "company.h"
+//#include "empresa.h"
 #include "dbrecord.h"
 
 
@@ -32,11 +33,15 @@
 class Articulo : public DBRecord {
 protected:
     company *m_companyact;
+//    Empresa *m_empresaact;
 
 public:
     Articulo(company *);
     company* companyact() {
         return m_companyact;
+//    Articulo(Empresa *);
+//    Empresa *empresaact() {
+//        return m_empresaact;
     };
     virtual ~Articulo();
     virtual void pintar();

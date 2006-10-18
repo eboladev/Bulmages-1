@@ -22,8 +22,10 @@
 #define ARTICLESLIST_H
 
 #include "company.h"
+//#include "empresa.h"
 #include "pgimportfiles.h"
 #include "subform2bf.h"
+
 
 /// Clase que maneja el detalle de la lista de art&iacute;culos.
 /** */
@@ -55,11 +57,13 @@ private:
     QString mdb_nomarticulo;
     QString mdb_codigocompletoarticulo;
     company *m_companyact;
+//    Empresa *m_empresaact;
     edmode m_modo;
     void inicializar();
 
 public:
     ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
+//    ArticuloList(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~ArticuloList();
     QString formaQuery();
     QString detalleArticulos();
@@ -109,6 +113,7 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newArticulo();
+//        m_empresaact->s_newArticulo();
     };
     virtual void on_mui_imprimir_clicked() {
         s_imprimir1();
