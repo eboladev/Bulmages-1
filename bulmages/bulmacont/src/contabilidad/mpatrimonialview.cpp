@@ -237,19 +237,19 @@ void mpatrimonialview::accept() {
     if (idmpatrimonial == "") {
         conexionbase->begin();
         query.sprintf("INSERT INTO mpatrimonial (descmpatrimonial) VALUES ('nueva masa')");
-        conexionbase->ejecuta(query.ascii());
+        conexionbase->ejecuta(query.toAscii());
         query.sprintf("SELECT MAX(idmpatrimonial) as id FROM mpatrimonial");
         cursor2 *curs = conexionbase->cargacursor(query, "cargaid");
         conexionbase->commit();
-        idmpatrimonial = curs->valor("id").ascii();
+        idmpatrimonial = curs->valor("id").toAscii();
     } // end if
 
     /// Ponemos los datos correctos sobre la masa patrimonial.
     QString text = descmpatrimonial->text();
-    query.sprintf("UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s", text.ascii(), idmpatrimonial.ascii());
+    query.sprintf("UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s", text.toAscii(), idmpatrimonial.toAscii());
     conexionbase->ejecuta(query);
 
-    query.sprintf("DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.ascii());
+    query.sprintf("DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.toAscii());
     conexionbase->ejecuta(query);
     item = componentessuma->firstChild();
     while (item) {
@@ -257,12 +257,12 @@ void mpatrimonialview::accept() {
         QString tipo = item->text(3);
         if (tipo == "cuenta") {
             query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (%s, NULL, %s, true)",
-                          conexionbase->sanearCadena(id).ascii(),
-                          conexionbase->sanearCadena(idmpatrimonial).ascii());
+                          conexionbase->sanearCadena(id).toAscii(),
+                          conexionbase->sanearCadena(idmpatrimonial).toAscii());
         } else {
             query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (NULL, %s, %s, true)",
-                          conexionbase->sanearCadena(id).ascii(),
-                          conexionbase->sanearCadena(idmpatrimonial).ascii());
+                          conexionbase->sanearCadena(id).toAscii(),
+                          conexionbase->sanearCadena(idmpatrimonial).toAscii());
         } // end if
         conexionbase->ejecuta(query);
         item = item->nextSibling();
@@ -270,16 +270,16 @@ void mpatrimonialview::accept() {
 
     item = componentesresta->firstChild();
     while (item) {
-        QString id = item->text(0).ascii();
-        QString tipo = item->text(3).ascii();
+        QString id = item->text(0).toAscii();
+        QString tipo = item->text(3).toAscii();
         if (tipo == "cuenta") {
             query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (%s, NULL, %s, false)",
-                          conexionbase->sanearCadena(id).ascii(),
-                          conexionbase->sanearCadena(idmpatrimonial).ascii());
+                          conexionbase->sanearCadena(id).toAscii(),
+                          conexionbase->sanearCadena(idmpatrimonial).toAscii());
         } else {
             query.sprintf("INSERT INTO compmasap(idcuenta, idmpatrimonial, masaperteneciente, signo) VALUES (NULL, %s, %s, false)",
-                          conexionbase->sanearCadena(id).ascii(),
-                          conexionbase->sanearCadena(idmpatrimonial).ascii());
+                          conexionbase->sanearCadena(id).toAscii(),
+                          conexionbase->sanearCadena(idmpatrimonial).toAscii());
         } // end if
         conexionbase->ejecuta(query);
         item = item->nextSibling();
@@ -289,6 +289,6 @@ void mpatrimonialview::accept() {
 
 
 QString mpatrimonialview::getnommasa() {
-    return descmpatrimonial->text().ascii();
+    return descmpatrimonial->text().toAscii();
 }
 

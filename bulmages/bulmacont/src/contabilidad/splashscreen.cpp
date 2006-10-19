@@ -35,7 +35,7 @@
 
 Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customize ) {
     QPixmap image0;
-    image0.load(confpr->valor(CONF_SPLASH).ascii());
+    image0.load(confpr->valor(CONF_SPLASH).toAscii());
     l = new QLabel(this);
     l->setPixmap(image0);
     l->setGeometry(0, 0, image0.width(), image0.height());

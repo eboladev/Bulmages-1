@@ -102,8 +102,8 @@ void regivaprintview::presentar(char *tipus) {
             int num1;
             cursor2 *cursorapt;
             conexionbase->begin();
-            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().ascii(), fechafinal1->text().ascii());
-            fprintf(stderr, "%s\n", query.ascii());
+            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toAscii(), fechafinal1->text().toAscii());
+            fprintf(stderr, "%s\n", query.toAscii().constData());
             cursorapt = conexionbase->cargacursor(query, "mycursor");
             conexionbase->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
@@ -116,8 +116,8 @@ void regivaprintview::presentar(char *tipus) {
                     ;
                 fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        IVA Repercutido \n" ;
-                fitxersortidatxt << "Fecha Inicial: " << finicial.ascii() <<
-                "   Fecha Final: " << ffinal.ascii() << endl;
+                fitxersortidatxt << "Fecha Inicial: " << finicial.toAscii().constData() <<
+                "   Fecha Final: " << ffinal.toAscii().constData() << endl;
                 fitxersortidatxt << "Asiento  Fecha   Cuenta   Descripción                        Base imponible    Factura \n" ;
                 fitxersortidatxt << "__________________________________________________________________________________________________________\n";
             } // end if
@@ -135,7 +135,7 @@ void regivaprintview::presentar(char *tipus) {
                 fitxersortidahtml << "</head>\n";
                 fitxersortidahtml << "<body>\n";
                 fitxersortidahtml << "<table><tr><td colspan=\"10\" class=titoliva> IVA Repercutido <hr></td></tr>\n\n";
-                fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.ascii() << " -  Data Final: " << ffinal.ascii() << "<hr></td></tr>\n\n";
+                fitxersortidahtml << "<tr><td colspan=\"10\" class periodeiva> Data Inicial: " << finicial.toAscii().constData() << " -  Data Final: " << ffinal.toAscii().constData() << "<hr></td></tr>\n\n";
                 fitxersortidahtml << "<tr><td class=titolcolumnaiva> Asiento </td><td class=titolcolumnaiva> Data </td><td class=titolcolumnaiva> Cuenta </td><td class=titolcolumnaiva> Descripción</td><td class=titolcolumnaiva> Base Imponible </td><td class=titolcolumnaiva> % IVA </td><td class=titolcolumnaiva> Quota IVA </td><td class=titolcolumnaiva> Factura </td><td class=titolcolumnaiva> CIF </td><td class=titolcolumnaiva> Cuenta IVA </td></tr>\n";
             } // end if
             while (!cursorapt->eof()) {
@@ -148,17 +148,17 @@ void regivaprintview::presentar(char *tipus) {
                 if (txt) {
                     /// Presentaci&oacute;n txt normal.
                     fitxersortidatxt << setw(10) << cursorapt->valor("ordenasiento").toAscii().data() << " " <<
-                    data.ascii() << " " <<
-                    cursorapt->valor("contrapartida").ascii() << " " << cursorapt->valor("descripcion").ascii() << " " << cursorapt->valor("baseimp").ascii() << " " <<
-                    cursorapt->valor("iva").ascii() << " " <<
-                    numberstr.ascii() <<" " <<
-                    cursorapt->valor("factura").ascii() << " " <<
-                    cursorapt->valor("cif").ascii() << " " <<
+                    data.toAscii().constData() << " " <<
+                    cursorapt->valor("contrapartida").toAscii().constData() << " " << cursorapt->valor("descripcion").toAscii().constData() << " " << cursorapt->valor("baseimp").toAscii().constData() << " " <<
+                    cursorapt->valor("iva").toAscii().constData() << " " <<
+                    numberstr.toAscii().constData() <<" " <<
+                    cursorapt->valor("factura").toAscii().constData() << " " <<
+                    cursorapt->valor("cif").toAscii().constData() << " " <<
                     endl;
                 } // end if
                 if (html) {
                     /// Presentaci&oacute;n html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("idasiento").ascii() << "</td><td class=dataiva>" << data.ascii() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").ascii() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").ascii() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").ascii() << "</td><td class=tipusiva>" << cursorapt->valor("iva").ascii() << "</td><td class=quotaiva>" << numberstr.ascii() << "</td><td class=facturaiva>" << cursorapt->valor("factura").ascii() << "</td><td class=cifiva>" << cursorapt->valor("cif").ascii() << "</td></tr> \n";
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("idasiento").toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->valor("iva").toAscii().constData() << "</td><td class=quotaiva>" << numberstr.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->valor("factura").toAscii().constData() << "</td><td class=cifiva>" << cursorapt->valor("cif").toAscii().constData() << "</td></tr> \n";
                 } // end if
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
                 cursorapt->siguienteregistro();
@@ -178,8 +178,8 @@ void regivaprintview::presentar(char *tipus) {
             Fixed tivar("0");
             Fixed tbaseimpr("0");
             while (!cur->eof()) {
-                Fixed baseiva(cur->valor("tbaseiva").replace(".", "").ascii());
-                Fixed porcent(cur->valor("porcentajetipoiva").replace(".", "").ascii());
+                Fixed baseiva(cur->valor("tbaseiva").replace(".", "").toAscii().constData());
+                Fixed porcent(cur->valor("porcentajetipoiva").replace(".", "").toAscii().constData());
                 Fixed baseimp = baseiva * 1000000 / porcent;
                 QString numberstr = baseimp.toQString();
 
@@ -188,9 +188,9 @@ void regivaprintview::presentar(char *tipus) {
                 QString iva = spanish.toString(cursorapt->valor("tbaseiva").toDouble(), 'f', 2);
                 QString bi = spanish.toString(numberstr.toDouble(), 'f', 2);
 
-                fitxersortidatxt << setiosflags( ios::left ) << setw(16) << cur->valor("nombretipoiva").ascii() << " IVA: ";
-                fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << iva.ascii() << " BI: ";
-                fitxersortidatxt << setw(10) << bi.ascii() << endl;
+                fitxersortidatxt << setiosflags( ios::left ) << setw(16) << cur->valor("nombretipoiva").toAscii().constData() << " IVA: ";
+                fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << iva.toAscii().constData() << " BI: ";
+                fitxersortidatxt << setw(10) << bi.toAscii().constData() << endl;
 
                 tivar = tivar+baseiva;
                 tbaseimpr = tbaseimpr+baseimp;
@@ -200,8 +200,8 @@ void regivaprintview::presentar(char *tipus) {
             delete cur;
 
             conexionbase->begin();
-            query.sprintf("SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().ascii(), fechafinal1->text().ascii());
-            fprintf(stderr,"%s\n",query.ascii());
+            query.sprintf("SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().toAscii(), fechafinal1->text().toAscii());
+            fprintf(stderr,"%s\n",query.toAscii().constData());
             cursorapt = conexionbase->cargacursor(query, "mycursor");
             conexionbase->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.
@@ -247,11 +247,11 @@ void regivaprintview::presentar(char *tipus) {
                 /// Acumulamos los totales para al final poder escribirlos.
                 if (txt) {
                     /// Presentaci&oacute;n txt normal.
-                    fitxersortidatxt << setiosflags(ios::left) << setw(8) << cursorapt->valor("ordenasiento").ascii() << setw(12) << data.ascii() << setw(9) << cursorapt->valor("codigo").ascii() << setw(30) << cursorapt->valor("descripcion").left(30).ascii() << " " << resetiosflags( ios::left ) << setw(12) << bi.ascii() << " " << setw(3) << cuota.ascii() << "%" << setw(9) << iva.ascii() << setw(12) << total.ascii() << setiosflags( ios::left ) << "  " << setw(10) << cursorapt->valor("factura").right(8).ascii() <<  setw(10) << cursorapt->valor("cif").ascii() << endl;
+                    fitxersortidatxt << setiosflags(ios::left) << setw(8) << cursorapt->valor("ordenasiento").toAscii().constData() << setw(12) << data.toAscii().constData() << setw(9) << cursorapt->valor("codigo").toAscii().constData() << setw(30) << cursorapt->valor("descripcion").left(30).toAscii().constData() << " " << resetiosflags( ios::left ) << setw(12) << bi.toAscii().constData() << " " << setw(3) << cuota.toAscii().constData() << "%" << setw(9) << iva.toAscii().constData() << setw(12) << total.toAscii().constData() << setiosflags( ios::left ) << "  " << setw(10) << cursorapt->valor("factura").right(8).toAscii().constData() <<  setw(10) << cursorapt->valor("cif").toAscii().constData() << endl;
                 }
                 if (html) {
                     /// Presentaci&oacute;n html normal.
-                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("ordenasiento").ascii() << "</td><td class=dataiva>" << data.ascii() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").ascii() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").ascii() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").ascii() << "</td><td class=tipusiva>" << cursorapt->valor("iva").ascii() << "</td><td class=quotaiva>" << total.ascii() << "</td><td class=facturaiva>" << cursorapt->valor("factura").ascii() << "</td><td class=cifiva>" << cursorapt->valor("cif").ascii() << "</td></tr> \n";
+                    fitxersortidahtml << "<tr><td class=assentamentiva>" << cursorapt->valor("ordenasiento").toAscii().constData() << "</td><td class=dataiva>" << data.toAscii().constData() << "</td><td class=contrapartidaiva>" << cursorapt->valor("contrapartida").toAscii().constData() << "</td><td class=descripcioiva>" << cursorapt->valor("descripcion").toAscii().constData() << "</td><td class=baseimponibleiva>" << cursorapt->valor("baseimp").toAscii().constData() << "</td><td class=tipusiva>" << cursorapt->valor("iva").toAscii().constData() << "</td><td class=quotaiva>" << total.toAscii().constData() << "</td><td class=facturaiva>" << cursorapt->valor("factura").toAscii().constData() << "</td><td class=cifiva>" << cursorapt->valor("cif").toAscii().constData() << "</td></tr> \n";
                 }
                 /// Calculamos la siguiente cuenta registro y finalizamos el bucle.
                 cursorapt->siguienteregistro();
@@ -268,8 +268,8 @@ void regivaprintview::presentar(char *tipus) {
             Fixed tivas("0");
             Fixed tbaseimps("0");
             while (!cur->eof()) {
-                Fixed baseiva(cur->valor("tbaseiva").ascii());
-                Fixed porcent(cur->valor("porcentajetipoiva").ascii());
+                Fixed baseiva(cur->valor("tbaseiva").toAscii().constData());
+                Fixed porcent(cur->valor("porcentajetipoiva").toAscii().constData());
                 Fixed ivacalculado = baseiva * porcent / 100;
                 QString numberstr = ivacalculado.toQString();
 
@@ -281,9 +281,9 @@ void regivaprintview::presentar(char *tipus) {
                 if (j == 0) {
                     fitxersortidatxt << endl;
                 } // end if
-                fitxersortidatxt << setiosflags(ios::left) << setw(16) << cur->valor("nombretipoiva").ascii() << " BI: ";
-                fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << bi.ascii() << " IVA: ";
-                fitxersortidatxt << setw(10) << iva.ascii() << endl;
+                fitxersortidatxt << setiosflags(ios::left) << setw(16) << cur->valor("nombretipoiva").toAscii().constData() << " BI: ";
+                fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << bi.toAscii().constData() << " IVA: ";
+                fitxersortidatxt << setw(10) << iva.toAscii().constData() << endl;
 
                 tivas = tivas + ivacalculado;
                 tbaseimps = tbaseimps + baseiva;
@@ -301,7 +301,7 @@ void regivaprintview::presentar(char *tipus) {
                     exit(errno);
                 } // end if
                 if (!pid) {
-                    error = execvp(confpr->valor(CONF_EDITOR).ascii(), argstxt);
+                    error = execvp(confpr->valor(CONF_EDITOR).toAscii(), argstxt);
                 } // end if
             } // end if
             if (html) {
@@ -313,7 +313,7 @@ void regivaprintview::presentar(char *tipus) {
                     exit(errno);
                 } // end if
                 if (!pid) {
-                    error = execvp(confpr->valor(CONF_NAVEGADOR).ascii(),argshtml);
+                    error = execvp(confpr->valor(CONF_NAVEGADOR).toAscii(),argshtml);
                 } // end if
             } // end if
         }

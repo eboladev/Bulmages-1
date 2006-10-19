@@ -81,23 +81,23 @@ int main(int argc, char *argv[]) {
         QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
         /// Creamos la aplicaci&oacute;n principal.
         theApp = new QApplication2(argc, argv);
-        theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+        theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii())));
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+            traductor->load(QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } else {
             QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
+            traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } // end if
         theApp->installTranslator(traductor);
 
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+            traductor->load(QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } else {
             QString archivo = "bulmages_" + confpr->valor(CONF_TRADUCCION);
-            traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+            traductor->load(archivo.toAscii(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } // end if
         theApp->installTranslator(traductor);
 
@@ -141,7 +141,6 @@ int main(int argc, char *argv[]) {
         theApp->setMainWidget(bges);
         g_main = bges;
         valorsalida = theApp->exec();
-
     } catch (...) {
         mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");
     } // end try

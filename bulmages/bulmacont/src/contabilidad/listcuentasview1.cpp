@@ -253,7 +253,7 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
         cuentaview *nuevae = new cuentaview(empresaactual, 0, "", true);
-        nuevae->cargacuenta(atoi(idcuenta().ascii()));
+        nuevae->cargacuenta(atoi(idcuenta().toAscii()));
         inicializa();
         empresaactual->pWorkspace()->addWindow(nuevae);
         nuevae->show();
@@ -308,7 +308,7 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     cuentaview *nuevae = new cuentaview(empresaactual, 0, "", true);
-    nuevae->cargacuenta(atoi(idcuenta().ascii()));
+    nuevae->cargacuenta(atoi(idcuenta().toAscii()));
     empresaactual->pWorkspace()->addWindow(nuevae);
     nuevae->show();
     _depura("END listcuentasview1::on_mui_editar_clicked", 0);
@@ -328,7 +328,7 @@ void listcuentasview1::on_mui_borrar_clicked() {
                                      tr("Se procedera a borrar la cuenta."),
                                      QMessageBox::Yes, QMessageBox::No);
     if (valor ==  QMessageBox::Yes) {
-        int idcuenta =atoi((char *) it->text(cidcuenta).ascii());
+        int idcuenta = atoi((char *) it->text(cidcuenta).toAscii().constData());
         conexionbase->begin();
         if (conexionbase->borrarcuenta(idcuenta) == 0) {
             delete it;
@@ -387,7 +387,7 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system (archivo.toAscii());
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -397,7 +397,7 @@ void listcuentasview1::on_mui_imprimir_clicked() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system(archivologo.ascii());
+    system(archivologo.toAscii().constData());
 
     QFile file;
     file.setName(archivod);

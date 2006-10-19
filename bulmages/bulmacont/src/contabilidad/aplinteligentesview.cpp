@@ -133,7 +133,7 @@ void aplinteligentesview::inicializavariables() {
 void aplinteligentesview::cifcuenta(int idcuenta) {
     QString query;
     query.sprintf("SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta);
-    fprintf(stderr,"cifcuenta: %s\n", query.ascii());
+    fprintf(stderr,"cifcuenta: %s\n", query.toAscii().constData());
     companyact->begin();
     cursor2 *cur = companyact->cargacursor(query, "cursor");
     companyact->commit();
@@ -149,7 +149,7 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
 void aplinteligentesview::eturn_numero() {
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
-    fprintf(stderr, "Se ha pulsado return sobre el n&uacute;mero: %s\n", numero->text().ascii());
+    fprintf(stderr, "Se ha pulsado return sobre el n&uacute;mero: %s\n", numero->text().toAscii().constData());
     selectsiguiente(numero);
 }
 
@@ -157,7 +157,7 @@ void aplinteligentesview::eturn_numero() {
 void aplinteligentesview::eturn_texto() {
     QLineEdit *texto;
     texto = (QLineEdit *) sender();
-    fprintf(stderr, "Se ha pulsado return sobre el texto: %s\n", texto->text().ascii());
+    fprintf(stderr, "Se ha pulsado return sobre el texto: %s\n", texto->text().toAscii().constData());
     selectsiguiente(texto);
 }
 
@@ -194,7 +194,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
     } else {
         /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
         /// Asi que debemos facilitar las cosas al m&aacute;ximo.
-        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().ascii();
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
         companyact->intapuntsempresa()->vaciaAsiento1();
         numasiento = companyact->intapuntsempresa()->idasiento().toInt();
@@ -442,14 +442,14 @@ void aplinteligentesview::creaasiento() {
         for (int i = 0; i < litems.count(); i++) {
             QDomNode item = litems.item(i);
             codcuenta = aplicavariable(item.firstChildElement("codcuenta").text());
-            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", codcuenta.ascii());
+            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii());
             cur1 = companyact->cargacursor(query, "buscacodigo");
             if (!cur1->eof()) {
-                idcuenta = atoi(cur1->valor("idcuenta").ascii());
+                idcuenta = atoi(cur1->valor("idcuenta").toAscii());
             } // end if
             delete cur1;
             contrapartida = aplicavariable(item.firstChildElement("contrapartida").text());
-            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", contrapartida.ascii());
+            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii());
             cur1 = companyact->cargacursor(query, "buscacodigo");
             if (!cur1->eof()) {
                 idcontrapartida = cur1->valor("idcuenta");
@@ -462,7 +462,7 @@ void aplinteligentesview::creaasiento() {
             fecha = aplicavariable(item.firstChildElement("fecha").text());
             conceptocontable = aplicavariable(item.firstChildElement("conceptocontable").text());
             descripcion = aplicavariable(item.firstChildElement("descripcion").text());
-            query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.ascii(), debe.ascii(), haber.ascii(), fecha.ascii(), conceptocontable.ascii(), descripcion.ascii(), orden++);
+            query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii(), debe.toAscii(), haber.toAscii(), fecha.toAscii(), conceptocontable.toAscii(), descripcion.toAscii(), orden++);
             companyact->begin();
             companyact->ejecuta(query);
             companyact->commit();
@@ -493,7 +493,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
             if (posaux != -1) {
                 posaux1 = subcadena.find("$", posaux + 1);
                 descvar = subcadena.mid(posaux + 1, posaux1 - posaux - 1);
-                fprintf(stderr, "desc:%s<-->size %d\n", descvar.ascii(), posaux1);
+                fprintf(stderr, "desc:%s<-->size %d\n", descvar.toAscii().constData(), posaux1);
                 nomvar = subcadena.mid(0, posaux + 1);
                 /// Si hay un comentario lo debemos borrar tras considerarlo para que no
                 /// estorbe.
@@ -515,8 +515,8 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                 d++;
             } // end while
             if (j == indvariablespredefinidas && d== indvariablesapunte) {
-                fprintf(stderr, "%d,%d, sub:%s\n", indvariablespredefinidas, j,subcadena.ascii());
-                fprintf(stderr, "nom:%s\n", nomvar.ascii());
+                fprintf(stderr, "%d,%d, sub:%s\n", indvariablespredefinidas, j,subcadena.toAscii().constData());
+                fprintf(stderr, "nom:%s\n", nomvar.toAscii().constData());
                 switch (tipo) {
                 case TIPO_CTA:
                     for (j = 0; j < indvariablescta && variablescta[j][0] != nomvar; j++)
@@ -577,7 +577,7 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
 /// Se hace un repaso que hace que se aplique una variable.
 QString aplinteligentesview::aplicavariable(QString texto) {
     QString cadena = texto;
-    fprintf(stderr, "Aplicavariable: texto: %s\n", texto.ascii());
+    fprintf(stderr, "Aplicavariable: texto: %s\n", texto.toAscii().constData());
     int posinicial, posfinal;
     int i;
     int fin = 0;
