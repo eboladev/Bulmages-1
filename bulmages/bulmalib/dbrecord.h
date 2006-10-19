@@ -102,6 +102,15 @@ public:
     void setDBTableName(QString nom) {
         m_tablename = nom;
     };
+    void setNuevo(bool n) {
+	m_nuevoCampo = n;
+    };
+    QString tableName() {
+        return m_tablename;
+    };
+    QString campoId() {
+        return m_campoid;
+    };
     void setDBCampoId(QString nom) {
         m_campoid = nom;
     };

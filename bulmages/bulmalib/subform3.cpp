@@ -561,8 +561,10 @@ int SubForm3::borrar() {
 int SubForm3::borrar(int row) {
     _depura("SubForm3::borrar", 0);
     try {
-        SDBRecord *rec;
+        SDBRecord *rec, *rac;
         SDBCampo *camp;
+
+	rac = new SDBRecord(m_companyact);
 
         /// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
         rec = lineaat(row);
@@ -570,16 +572,25 @@ int SubForm3::borrar(int row) {
             return -1;
 
         /// Agregamos el elemento a la lista de borrados
-        m_listaborrar.append(rec);
+        m_listaborrar.append(rac);
+	m_lista.takeAt(m_lista.indexOf(rec));
+
+	rac->setDBTableName(rec->tableName());
+	rac->setDBCampoId(rec->campoId());
+	rac->setNuevo(FALSE);
 
         /// Sacamos celda a celda toda la fila
         for (int i = 0; i < mui_list->columnCount(); i++) {
-            camp = (SDBCampo *) mui_list->takeItem(row,i);
+            camp = (SDBCampo *) mui_list->item(row,i);
+	    SDBCampo * it= new SDBCampo(rac, m_companyact, camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
+	    rac->lista()->append(it);
+	    it->set( camp->valorcampo());
         } // end for
 
-        /// Borramos la fila de la tabla y el VerticalHeader tambien
-        mui_list->takeVerticalHeaderItem(row);
+	_depura("quitamos la columna del listado", 0);
         mui_list->removeRow(row);
+
+	delete rec;
 
         /// Terminamos
         _depura("END SubForm3::borrar", 0);
