@@ -24,16 +24,23 @@
 #include <QWidget>
 
 #include <ui_efacturabase.h>
+#include "company.h"
+
 
 class EFactura : public QWidget, public Ui_EFacturaBase {
-    Q_OBJECT
+	Q_OBJECT
+
+private:
+	company *m_companyact;
 
 public:
-    EFactura(QWidget *parent = 0);
-    ~EFactura();
+	EFactura(company *emp, QWidget *parent = 0);
+	~EFactura();
+
 public slots:
+	virtual void on_mui_examinaECertificado_clicked();
+	virtual void on_mui_cancelar_clicked();
 	virtual void on_mui_guardar_clicked();
 };
 
 #endif
-

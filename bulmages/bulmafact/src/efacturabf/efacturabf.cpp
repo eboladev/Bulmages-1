@@ -36,7 +36,7 @@ efacturabf::~efacturabf() {}
 
 /// Esto es lo que se activa al hacer click sobre el menu
 void efacturabf::elslot() {
-	EFactura *ef = new EFactura();
+	EFactura *ef = new EFactura(m_companyact);
 	ef->show();
 //     fprintf(stderr,"Sa ha activado el slot\n");
 //     QMessageBox::warning(0,
@@ -48,25 +48,30 @@ void efacturabf::elslot() {
 
 
 void efacturabf::inicializa(bulmafact *bges) {
-    /// Creamos el menu.
-    QMenu *pPluginMenu = new QMenu("&Factura Electronica");
-    QAction *accion = new QAction("&Prueba de e-factura", 0);
-    accion->setStatusTip("Muestra statustip");
-    accion->setWhatsThis("Muestra que es esto");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-    pPluginMenu->addAction(accion);
-    /// Anyadimos la nueva opcion al menu principal del programa.
-    bges->menuBar()->addMenu(pPluginMenu);
+	/// Creamos la conexion de la base de datos
+	m_companyact = bges->getcompany();
+	
+	/// Creamos el menu.
+	QMenu *pPluginMenu = new QMenu("&Factura Electronica");
+	QAction *accion = new QAction("&Prueba de e-factura", 0);
+	accion->setStatusTip("Muestra statustip");
+	accion->setWhatsThis("Muestra que es esto");
+	
+	connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+	
+	pPluginMenu->addAction(accion);
+	/// Anyadimos la nueva opcion al menu principal del programa.
+	bges->menuBar()->addMenu(pPluginMenu);
 }
 
 
 void entryPoint(bulmafact *bges) {
-    _depura("Estoy dentro del plugin de e-factura\n", 0);
-
-    efacturabf *efact = new efacturabf();
-    efact->inicializa(bges);
-    /// SOLO A MODO DE EJEMPLO: se modifica el titulo de la ventana principal
-    /// del programa para indicar que el plugin se ha cargado.
-    bges->setWindowTitle("Prueba de plugin e-factura.");
+	_depura("Estoy dentro del plugin de e-factura\n", 0);
+	
+	efacturabf *efact = new efacturabf();
+	efact->inicializa(bges);
+	/// SOLO A MODO DE EJEMPLO: se modifica el titulo de la ventana principal
+	/// del programa para indicar que el plugin se ha cargado.
+	bges->setWindowTitle("Prueba de plugin e-factura.");
 }
 

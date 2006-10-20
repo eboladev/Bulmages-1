@@ -9,108 +9,177 @@
     <x>0</x>
     <y>0</y>
     <width>442</width>
-    <height>292</height>
+    <height>319</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Configuración Factura Electrónica</string>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>280</y>
+     <width>424</width>
+     <height>30</height>
+    </rect>
    </property>
-   <property name="spacing" >
-    <number>6</number>
+   <layout class="QHBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QPushButton" name="mui_guardar" >
+      <property name="text" >
+       <string>Guardar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="mui_cancelar" >
+      <property name="text" >
+       <string>Cancelar</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="mui_salir" >
+      <property name="text" >
+       <string>Salir!</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="labelECertificado" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>424</width>
+     <height>20</height>
+    </rect>
    </property>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="encabezado" >
-     <property name="text" >
-      <string>Configuración para el envío y recepción de factura electrónica</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QPushButton" name="mui_guardar" >
-       <property name="text" >
-        <string>Guardar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>Cancelar</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_salir" >
-       <property name="text" >
-        <string>Salir!</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="2" column="0" >
-    <widget class="QLabel" name="labelECertificado" >
-     <property name="text" >
-      <string>Fichero con su certificado electrónico</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0" >
-    <widget class="QLabel" name="labelServidorTiempo" >
-     <property name="text" >
-      <string>URL del servidor de tiempo a utilizar</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0" >
-    <widget class="QLineEdit" name="mui_URLServidorTiempo" >
-     <property name="text" >
-      <string>http://</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLineEdit" name="mui_ficheroECertificado" />
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_examinaECertificado" >
-       <property name="text" >
-        <string>Examinar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0" >
-    <widget class="Line" name="line" >
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-  </layout>
+   <property name="text" >
+    <string>Fichero con su certificado electrónico</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>424</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>424</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" >
+    <property name="margin" >
+     <number>0</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QLineEdit" name="mui_ficheroECertificado" />
+    </item>
+    <item>
+     <widget class="QPushButton" name="mui_examinaECertificado" >
+      <property name="text" >
+       <string>Examinar</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="labelServidorTiempo" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>424</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>URL del servidor de tiempo a utilizar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="encabezado" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>424</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Configuración para el envío y recepción de factura electrónica</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelServidorValidaCert" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>190</y>
+     <width>411</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>URL del srvidor que valida su certificado electrónico</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="mui_URLServidorTiempo" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>424</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>http://</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="mui_URLServidorValidaCert" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>210</y>
+     <width>421</width>
+     <height>24</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <pixmapfunction></pixmapfunction>
+ <tabstops>
+  <tabstop>mui_ficheroECertificado</tabstop>
+  <tabstop>mui_examinaECertificado</tabstop>
+  <tabstop>mui_URLServidorTiempo</tabstop>
+  <tabstop>mui_guardar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_salir</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

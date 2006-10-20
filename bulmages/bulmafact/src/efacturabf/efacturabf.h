@@ -31,7 +31,7 @@
 
 #include "qapplication2.h"
 #include "bulmafact.h"
-#include "postgresiface2.h"
+#include "company.h"
 
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
@@ -43,7 +43,7 @@ class efacturabf : public QObject {
     Q_OBJECT
 
 public:
-    postgresiface2 *conexionbase;
+    company *m_companyact;
 
 public:
     efacturabf();
