@@ -33,30 +33,23 @@
 #include "funcaux.h"
 
 
-Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customize ) {
+Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
+
+//: QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customize ) {
     QPixmap image0;
     image0.load(confpr->valor(CONF_SPLASH).toAscii());
     l = new QLabel(this);
     l->setPixmap(image0);
     l->setGeometry(0, 0, image0.width(), image0.height());
 
-    QLabel *l1 = new QLabel(this);
-    l1->setAlignment(Qt::AlignVCenter|Qt::AlignHCenter);
-    l1->setFont(QFont("Arial", 20, QFont::Bold));
-    l1->setPaletteForegroundColor(QColor("#666688"));
-    l1->setText(tr("BulmaCont"));
-    l1->setGeometry(270, 10, 130, 25);
-    l1->setBackgroundOrigin(QWidget::ParentOrigin);
-    l1->setBackgroundPixmap(image0);
 
     QLabel *l0 = new QLabel(this);
-    l0->setPaletteForegroundColor(QColor("#CC6666"));
-    l0->setAlignment(Qt::AlignVCenter);
+    l0->setTextFormat(Qt::RichText);
+    l0->setGeometry(0, 0, image0.width(), image0.height());
+
+    l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("v 0.5.9") );
-    l0->setGeometry(300, 30, 130, 25);
-    l0->setBackgroundOrigin(QWidget::ParentOrigin);
-    l0->setBackgroundPixmap(image0);
+    l0->setText(tr("<div align=\"left\"><font size=+1 color=\"#666666\">BulmaCont</font><BR><font color=\"#333333\">0.5.9</font></center>"));
 
     l2 = new Q3TextBrowser(this);
     l2->setVScrollBarMode(Q3ScrollView::AlwaysOff);
@@ -64,8 +57,6 @@ Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customi
     l2->setFont(QFont("helvetica", 11, QFont::Normal));
     l2->setText(tr("BULMACONT"));
     l2->setGeometry(0, image0.height(), image0.width(), 58);
-    l2->setPaletteForegroundColor(QColor("#000066"));
-    l2->setPaletteBackgroundColor(QColor("#DDDDDD"));
 
     QTimer timer(this);
     connect(&timer, SIGNAL(timeout()), SLOT(close()));
@@ -75,7 +66,6 @@ Splash::Splash() : QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customi
     connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
     timer1.start(1750);
     exec();
-    delete l1;
 }
 
 
