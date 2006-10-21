@@ -28,34 +28,24 @@
      <height>31</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuListados" >
+   <widget class="QMenu" name="menuAyuda" >
     <property name="title" >
-     <string>Listados</string>
+     <string>A&amp;yuda</string>
     </property>
-    <addaction name="actionCuentas_Anuales" />
-    <addaction name="actionMasas_Patrimoniales" />
-    <addaction name="separator" />
-    <addaction name="actionRegistro_de_IVA" />
-    <addaction name="actionModelo_347_no_oficial" />
-    <addaction name="separator" />
-    <addaction name="actionCobros_y_Pagos" />
-    <addaction name="actionAmortizaciones" />
+    <addaction name="actionAyuda" />
+    <addaction name="actionAcerca_de" />
    </widget>
-   <widget class="QMenu" name="menuVentana" >
+   <widget class="QMenu" name="menuVer" >
     <property name="title" >
-     <string>Ventana</string>
+     <string>Ve&amp;r</string>
     </property>
-    <addaction name="actionPlan_Contable" />
-    <addaction name="actionAsientos" />
-    <addaction name="actionApuntes_Contables" />
-    <addaction name="actionLibro_Mayor" />
-    <addaction name="actionLibro_Diario" />
-    <addaction name="actionBalance_de_Sumas_y_Saldos" />
-    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+    <addaction name="actionPantalla_Completa" />
+    <addaction name="actionOrdenar_Ventanas" />
+    <addaction name="actionOrganizaci_n_en_Cascada" />
    </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
-     <string>Herramientas</string>
+     <string>&amp;Herramientas</string>
     </property>
     <addaction name="actionImprimir" />
     <addaction name="actionGuardar" />
@@ -69,24 +59,45 @@
     <addaction name="actionCanal_por_Defecto" />
     <addaction name="actionCentro_de_Coste_por_Defecto" />
    </widget>
-   <widget class="QMenu" name="menuAyuda" >
+   <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
-     <string>Ayuda</string>
+     <string>&amp;Maestro</string>
     </property>
-    <addaction name="actionAyuda" />
-    <addaction name="actionAcerca_de" />
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="actionTipos_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionCentros_de_Coste" />
+    <addaction name="actionCanales" />
+    <addaction name="separator" />
    </widget>
-   <widget class="QMenu" name="menuVer" >
+   <widget class="QMenu" name="menuVentana" >
     <property name="title" >
-     <string>Ver</string>
+     <string>&amp;Ventana</string>
     </property>
-    <addaction name="actionPantalla_Completa" />
-    <addaction name="actionOrdenar_Ventanas" />
-    <addaction name="actionOrganizaci_n_en_Cascada" />
+    <addaction name="actionPlan_Contable" />
+    <addaction name="actionAsientos" />
+    <addaction name="actionApuntes_Contables" />
+    <addaction name="actionLibro_Mayor" />
+    <addaction name="actionLibro_Diario" />
+    <addaction name="actionBalance_de_Sumas_y_Saldos" />
+    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+   </widget>
+   <widget class="QMenu" name="menuListados" >
+    <property name="title" >
+     <string>&amp;Listados</string>
+    </property>
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="actionMasas_Patrimoniales" />
+    <addaction name="separator" />
+    <addaction name="actionRegistro_de_IVA" />
+    <addaction name="actionModelo_347_no_oficial" />
+    <addaction name="separator" />
+    <addaction name="actionCobros_y_Pagos" />
+    <addaction name="actionAmortizaciones" />
    </widget>
    <widget class="QMenu" name="menuAsiento" >
     <property name="title" >
-     <string>Asiento</string>
+     <string>&amp;Asiento</string>
     </property>
     <addaction name="actionAbrir_Asientos" />
     <addaction name="actionOrdenar_Asientos" />
@@ -97,21 +108,10 @@
    </widget>
    <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
-     <string>Empresa</string>
+     <string>&amp;Empresa</string>
     </property>
     <addaction name="actionConfiguracion" />
     <addaction name="actionSalir" />
-   </widget>
-   <widget class="QMenu" name="menuMaestro" >
-    <property name="title" >
-     <string>Maestro</string>
-    </property>
-    <addaction name="actionFormas_de_Pago" />
-    <addaction name="actionTipos_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionCentros_de_Coste" />
-    <addaction name="actionCanales" />
-    <addaction name="separator" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
@@ -128,7 +128,7 @@
      <x>0</x>
      <y>576</y>
      <width>800</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -157,67 +157,67 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Configuracion</string>
+    <string>Co&amp;nfiguración...</string>
    </property>
   </action>
   <action name="actionSalir" >
    <property name="text" >
-    <string>Salir</string>
+    <string>&amp;Cerrar el programa</string>
    </property>
   </action>
   <action name="actionAbrir_Asientos" >
    <property name="text" >
-    <string>Abrir Asientos</string>
+    <string>&amp;Abrir asientos</string>
    </property>
   </action>
   <action name="actionOrdenar_Asientos" >
    <property name="text" >
-    <string>Ordenar Asientos</string>
+    <string>&amp;Ordenar asientos</string>
    </property>
   </action>
   <action name="actionAsiento_de_Apertura" >
    <property name="text" >
-    <string>Asiento de Apertura</string>
+    <string>Asiento de a&amp;pertura</string>
    </property>
   </action>
   <action name="actionAsiento_de_Regularizacion" >
    <property name="text" >
-    <string>Asiento de Regularizacion</string>
+    <string>Asiento de &amp;regularizacion</string>
    </property>
   </action>
   <action name="actionAsiento_de_Cierre" >
    <property name="text" >
-    <string>Asiento de Cierre</string>
+    <string>Asiento de &amp;cierre</string>
    </property>
   </action>
   <action name="actionCuentas_Anuales" >
    <property name="text" >
-    <string>Cuentas Anuales</string>
+    <string>Cuentas a&amp;nuales</string>
    </property>
   </action>
   <action name="actionMasas_Patrimoniales" >
    <property name="text" >
-    <string>Masas Patrimoniales</string>
+    <string>Masas &amp;patrimoniales</string>
    </property>
   </action>
   <action name="actionRegistro_de_IVA" >
    <property name="text" >
-    <string>Registro de IVA</string>
+    <string>Registro de &amp;IVA</string>
    </property>
   </action>
   <action name="actionModelo_347_no_oficial" >
    <property name="text" >
-    <string>Modelo 347 no oficial</string>
+    <string>&amp;Modelo 347 no oficial</string>
    </property>
   </action>
   <action name="actionCobros_y_Pagos" >
    <property name="text" >
-    <string>Cobros y Pagos</string>
+    <string>&amp;Cobros y pagos</string>
    </property>
   </action>
   <action name="actionAmortizaciones" >
    <property name="text" >
-    <string>Amortizaciones</string>
+    <string>&amp;Amortizaciones</string>
    </property>
   </action>
   <action name="actionPlan_Contable" >
@@ -225,7 +225,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Plan Contable</string>
+    <string>&amp;Plan Contable</string>
    </property>
   </action>
   <action name="actionAsientos" >
@@ -233,7 +233,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_asiento.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Asientos</string>
+    <string>&amp;Asientos</string>
    </property>
   </action>
   <action name="actionApuntes_Contables" >
@@ -241,7 +241,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_lapiz.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Apuntes Contables</string>
+    <string>Apuntes &amp;contables</string>
    </property>
   </action>
   <action name="actionLibro_Mayor" >
@@ -249,7 +249,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_mayor.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Libro Mayor</string>
+    <string>Libro &amp;Mayor</string>
    </property>
   </action>
   <action name="actionLibro_Diario" >
@@ -257,7 +257,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_diario.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Libro Diario</string>
+    <string>Libro &amp;Diario</string>
    </property>
   </action>
   <action name="actionBalance_de_Sumas_y_Saldos" >
@@ -265,7 +265,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_balance.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Balance de Sumas y Saldos</string>
+    <string>Balance de &amp;Sumas y Saldos</string>
    </property>
   </action>
   <action name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" >
@@ -273,17 +273,17 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_arbolBalance.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Balance Jerárquico de Sumas y Saldos</string>
+    <string>Balance &amp;jerárquico de Sumas y Saldos</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago" >
    <property name="text" >
-    <string>Formas de Pago</string>
+    <string>Formas de &amp;pago</string>
    </property>
   </action>
   <action name="actionTipos_de_IVA" >
    <property name="text" >
-    <string>Tipos de IVA</string>
+    <string>Tipos de &amp;IVA</string>
    </property>
   </action>
   <action name="actionCentros_de_Coste" >
@@ -291,7 +291,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_centroCoste.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Centros de Coste</string>
+    <string>Centros de cos&amp;te</string>
    </property>
   </action>
   <action name="actionCanales" >
@@ -299,7 +299,7 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_canales.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Canales</string>
+    <string>&amp;Canales</string>
    </property>
   </action>
   <action name="actionAsientos_Inteligentes" >
@@ -315,7 +315,7 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Imprimir</string>
+    <string>&amp;Imprimir</string>
    </property>
   </action>
   <action name="actionGuardar" >
@@ -323,7 +323,7 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Guardar</string>
+    <string>&amp;Guardar</string>
    </property>
   </action>
   <action name="actionActualizar" >
@@ -331,7 +331,7 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
    </property>
    <property name="text" >
-    <string>Actualizar</string>
+    <string>&amp;Actualizar</string>
    </property>
   </action>
   <action name="actionFiltrar" >
@@ -339,57 +339,57 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
    </property>
    <property name="text" >
-    <string>Filtrar</string>
+    <string>&amp;Filtrar</string>
    </property>
   </action>
   <action name="actionRecalcular_Saldos_Iniciales" >
    <property name="text" >
-    <string>Recalcular Saldos Iniciales</string>
+    <string>&amp;Recalcular saldos iniciales</string>
    </property>
   </action>
   <action name="actionSustituir_Cuentas" >
    <property name="text" >
-    <string>Sustituir Cuentas</string>
+    <string>&amp;Sustituir cuentas</string>
    </property>
   </action>
   <action name="actionBloquear_Fechas" >
    <property name="text" >
-    <string>Bloquear Fechas</string>
+    <string>&amp;Bloquear fechas</string>
    </property>
   </action>
   <action name="actionCanal_por_Defecto" >
    <property name="text" >
-    <string>Canal por Defecto</string>
+    <string>&amp;Canal por defecto</string>
    </property>
   </action>
   <action name="actionCentro_de_Coste_por_Defecto" >
    <property name="text" >
-    <string>Centro de Coste por Defecto</string>
+    <string>Centro de cos&amp;te por defecto</string>
    </property>
   </action>
   <action name="actionPantalla_Completa" >
    <property name="text" >
-    <string>Pantalla Completa</string>
+    <string>&amp;Pantalla completa</string>
    </property>
   </action>
   <action name="actionOrdenar_Ventanas" >
    <property name="text" >
-    <string>Ordenar Ventanas</string>
+    <string>Ordenar &amp;ventanas</string>
    </property>
   </action>
   <action name="actionOrganizaci_n_en_Cascada" >
    <property name="text" >
-    <string>Organización en Cascada</string>
+    <string>Organización en &amp;cascada</string>
    </property>
   </action>
   <action name="actionAyuda" >
    <property name="text" >
-    <string>Ayuda</string>
+    <string>A&amp;yuda</string>
    </property>
   </action>
   <action name="actionAcerca_de" >
    <property name="text" >
-    <string>Acerca de</string>
+    <string>&amp;Acerca de BulmaCont</string>
    </property>
   </action>
   <action name="actionSiguiente" >

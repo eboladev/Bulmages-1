@@ -1,11 +1,31 @@
+/***************************************************************************
+ *   Copyright (C) 2006 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include "asientolistsubform.h"
 
 #include <QMenu>
 
-/// =============================================================================
-///                    SUBFORMULARIO
-/// =============================================================================
-AsientoListSubform::AsientoListSubform(QWidget *parent, const char *) : SubForm2Bc(parent) {
+
+/// Subformulario.
+AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
+        : SubForm2Bc(parent) {
     setDBTableName("asiento");
     setFileConfig("AsientoListSubform");
     setDBCampoId("idasiento");
@@ -21,36 +41,37 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *) : SubForm2
     setinsercion(FALSE);
 }
 
-void AsientoListSubform::contextMenuEvent (QContextMenuEvent *) {
-    _depura("SubForm2Bc::contextMenuEvent",0);
+
+void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
+    _depura("SubForm2Bc::contextMenuEvent", 0);
     QAction *del= NULL;
     int row = currentRow();
-    if ( row < 0)
+    if (row < 0) {
         return;
-
+    } // end if
     int col = currentColumn();
-    if ( row < 0)
+    if (row < 0) {
         return;
-
+    } // end if
     QMenu *popup = new QMenu(this);
 
-    QAction *mostapunte = popup->addAction("Mostrar Asiento");
+    QAction *mostapunte = popup->addAction("Mostrar asiento");
     popup->addSeparator();
-    QAction *mostextractodia = popup->addAction("Mostrar Extracto (dia)");
-    QAction *mostextractomes = popup->addAction("Mostrar Extracto (mes)");
-    QAction *mostextractoano = popup->addAction("Mostrar Extracto (ano)");
+    QAction *mostextractodia = popup->addAction("Mostrar extracto (dia)");
+    QAction *mostextractomes = popup->addAction("Mostrar extracto (mes)");
+    QAction *mostextractoano = popup->addAction("Mostrar extracto (ano)");
     popup->addSeparator();
-    QAction *mostbalancedia = popup->addAction("Mostrar Balance (dia)");
-    QAction *mostbalancemes = popup->addAction("Mostrar Balance (mes)");
-    QAction *mostbalanceano = popup->addAction("Mostrar Balance (ano)");
+    QAction *mostbalancedia = popup->addAction("Mostrar balance (dia)");
+    QAction *mostbalancemes = popup->addAction("Mostrar balance (mes)");
+    QAction *mostbalanceano = popup->addAction("Mostrar balance (ano)");
     popup->addSeparator();
-    QAction *mostbalancejdia = popup->addAction("Mostrar Balance Jerarquico (dia)");
-    QAction *mostbalancejmes = popup->addAction("Mostrar Balance Jerarquico (mes)");
-    QAction *mostbalancejano = popup->addAction("Mostrar Balance Jerarquico (ano)");
+    QAction *mostbalancejdia = popup->addAction("Mostrar balance jerarquico (dia)");
+    QAction *mostbalancejmes = popup->addAction("Mostrar balance jerarquico (mes)");
+    QAction *mostbalancejano = popup->addAction("Mostrar balance jerarquico (anyo)");
 
-
-    if(m_delete)
+    if (m_delete) {
         del = popup->addAction(tr("Borrar registro"));
+    } // end if
     popup->addSeparator();
     QAction *ajustc = popup->addAction(tr("Ajustar columa"));
     QAction *ajustac = popup->addAction(tr("Ajustar altura"));
@@ -63,22 +84,21 @@ void AsientoListSubform::contextMenuEvent (QContextMenuEvent *) {
 
     QAction *opcion = popup->exec(QCursor::pos());
 
-    if (opcion == ajust)
+    if (opcion == ajust) {
         resizeColumnsToContents();
-
-    if (opcion == ajusta)
+    } // end if
+    if (opcion == ajusta) {
         resizeRowsToContents();
-
-    if (opcion == ajustc)
+    } // end if
+    if (opcion == ajustc) {
         resizeColumnToContents(col);
-
-    if (opcion == ajustac)
+    } // end if
+    if (opcion == ajustac) {
         resizeRowToContents(row);
-
-    if(opcion == verconfig)
+    } // end if
+    if (opcion == verconfig) {
         showConfig();
-
+    } // end if
     delete popup;
 }
-
 

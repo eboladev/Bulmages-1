@@ -12,7 +12,7 @@ SET search_path = public, pg_catalog;
 -- Name: c_coste; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, debe, haber) VALUES (10, 'Conetxia.', 'Son Oliva', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, debe, haber) VALUES (10, 'Iglues.', 'Son Oliva', NULL, NULL, NULL, NULL, NULL);
 
 --
 -- TOC entry 2 (OID 3768324)

@@ -24,9 +24,11 @@
 /// Constructor de la clase
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
-aboutview::aboutview(QWidget *parent, const char *name) : QDialog(parent, name, false, 0) {
+aboutview::aboutview(QWidget *parent, const char *name)
+        : QDialog(parent, name, false, 0) {
     setupUi(this);
 }
+
 
 /// Destructor de la clase
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
