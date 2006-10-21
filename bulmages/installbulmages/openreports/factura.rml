@@ -25,7 +25,7 @@
 		<setFont name="Helvetica" size="8"/>		
 		<fill color="(1,1,1)"/>	
 		<stroke color="(1,1,1)"/>
-		<drawString x="2cm" y="1cm">www.conetxia.com</drawString>	
+		<drawString x="2cm" y="1cm">www.iglues.org</drawString>
 		
 		
 		<fill color="(0,0,0)"/>	

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="cp1252" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
-<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Articulos Conetxia" author="Tomeu Borras" allowSplitting="20">
+<template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Articulos" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="others">
 		<pageGraphics>
 		<image x="0cm" y="27.5cm" width="10cm" file="logo.jpg"/>
@@ -22,11 +22,11 @@
 		<setFont name="Helvetica" size="8"/>		
 		<fill color="(1,1,1)"/>	
 		<stroke color="(1,1,1)"/>
-		<drawString x="2cm" y="1cm">www.conetxia.com</drawString>	
+		<drawString x="2cm" y="1cm">www.iglues.org</drawString>
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="24"/>
-		<drawString x="1cm" y="26cm">Listado de Art�ulos</drawString>
+		<drawString x="1cm" y="26cm">Listado de Articulos</drawString>
 		</pageGraphics>
 	<frame id="column" x1="0cm" y1="1cm" width="15cm" height="24cm"/>
 	</pageTemplate>	
@@ -52,7 +52,9 @@
 <story>
 
 
+
 	[detallearticulos]
+
 
 </story>
 </document>
