@@ -41,8 +41,9 @@ BusquedaCCoste::~BusquedaCCoste() {
 
 void BusquedaCCoste::setidc_coste(QString idc_coste) {
     _depura("BusquedaCCoste::setidc_coste", 0, idc_coste);
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
     m_cursorcombo = companyact->cargacursor("SELECT * FROM c_coste");
     int i = 0;
     int i1 = 0;
@@ -50,8 +51,9 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
     insertItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
-        if (m_cursorcombo->valor("idc_coste") == idc_coste)
+        if (m_cursorcombo->valor("idc_coste") == idc_coste) {
             i1 = i;
+        } // end if
         insertItem(m_cursorcombo->valor("nombre"));
         m_cursorcombo->siguienteregistro();
     } //end while

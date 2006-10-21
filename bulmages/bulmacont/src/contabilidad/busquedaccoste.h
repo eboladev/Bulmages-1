@@ -25,6 +25,7 @@
 
 #include "empresa.h"
 
+
 class BusquedaCCoste : public QComboBox {
     Q_OBJECT
 

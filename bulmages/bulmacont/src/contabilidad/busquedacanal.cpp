@@ -42,8 +42,9 @@ BusquedaCanal::~BusquedaCanal() {
 
 void BusquedaCanal::setidcanal(QString idcanal) {
     _depura("BusquedaCanal::setidcanal", 0, idcanal);
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
     m_cursorcombo = companyact->cargacursor("SELECT * FROM canal");
     int i = 0;
     int i1 = 0;
@@ -51,8 +52,9 @@ void BusquedaCanal::setidcanal(QString idcanal) {
     addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
-        if (m_cursorcombo->valor("idcanal") == idcanal)
+        if (m_cursorcombo->valor("idcanal") == idcanal) {
             i1 = i;
+        } // end if
         addItem(m_cursorcombo->valor("nombre"));
         m_cursorcombo->siguienteregistro();
     } //end while
@@ -65,7 +67,7 @@ void BusquedaCanal::m_activated(int index) {
             emit(valueChanged(m_cursorcombo->valor("idcanal", index - 1)));
         } else {
             emit(valueChanged(""));
-        }
+        } // end if
 }
 
 QString BusquedaCanal::idcanal() {
@@ -74,5 +76,5 @@ QString BusquedaCanal::idcanal() {
             return(m_cursorcombo->valor("idcanal", index - 1));
         } else {
             return "";
-        }
+        } // end if
 }
