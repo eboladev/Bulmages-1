@@ -378,7 +378,11 @@ bool SubForm3::campoCompleto(int row) {
     for (int i = 0; i < mui_list->columnCount(); i++) {
         camp = (SDBCampo *) mui_list->item(row,i);
 	header = m_lcabecera.at(i);
-        if (camp->restrictcampo() & DBCampo::DBNotNull && camp->text() == "" && header->options() != SHeader::DBNoView) {
+        if (camp->restrictcampo() & DBCampo::DBNotNull 
+	&& camp->text() == "" 
+	&& header->options() != SHeader::DBNoView 
+	&& camp->tipo() != DBCampo::DBboolean
+	) {
             return FALSE;
         } // end if
     } // end for

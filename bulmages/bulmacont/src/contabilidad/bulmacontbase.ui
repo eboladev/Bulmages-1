@@ -16,7 +16,7 @@
    <string>BulmaCont</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_bulmages.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/iconbulmacont.xpm</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -25,7 +25,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuListados" >
@@ -126,9 +126,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>581</y>
+     <y>576</y>
      <width>800</width>
-     <height>19</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

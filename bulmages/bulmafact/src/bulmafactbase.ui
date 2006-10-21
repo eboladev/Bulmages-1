@@ -19,7 +19,7 @@
    <string>BulmaFact - Facturacion GPL</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_bulmages.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/pendientes/iconbulmafact.xpm</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -28,7 +28,7 @@
      <x>0</x>
      <y>0</y>
      <width>876</width>
-     <height>29</height>
+     <height>31</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAcerca_de" >
@@ -131,9 +131,9 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>500</y>
+     <y>498</y>
      <width>876</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>

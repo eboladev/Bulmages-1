@@ -103,6 +103,7 @@
         <file>images/pendientes/i_usuario.xpm</file>
         <file>images/pendientes/i_windowNew.png</file>
         <file>images/pendientes/i_xClipboard.png</file>
+        <file>images/pendientes/iconbulmacont.xpm</file>
         <file>images/pendientes/identity.png</file>
         <file>images/pendientes/igualant.xpm</file>
         <file>images/pendientes/wizard.png</file>
@@ -495,6 +496,7 @@
         <file>images/png/16x16/i_bulmages_ventas_presupuestos_menos.16x16.png</file>
     </qresource>
     <qresource prefix="/Bulmafact32x32" >
+        <file>images/pendientes/iconbulmafact.xpm</file>
         <file>images/png/32x32/i_bulmages_almacen.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_mas.32x32.png</file>
