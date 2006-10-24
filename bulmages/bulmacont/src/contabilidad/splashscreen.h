@@ -41,7 +41,6 @@ private:
 public:
     Splash();
     ~Splash();
-    void lista(QString);
 
 public slots:
     virtual void paint();

@@ -36,15 +36,13 @@ myQListViewItem::myQListViewItem(Q3ListView *parent, QString label1)
 };
 
 
-BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose) {
-    _depura("BbloqFecha::BbloqFecha", 0);
-    setupUi(this);
+void BbloqFecha::inicializa() {
+    _depura("BbloqFecha::inicializa", 0);
     myQListViewItem *listMain, *listAux = 0;
     QString query;
     listView1->setSorting(-1);
 
-    empresaactual = emp;
+    listView1->clear();
 
     query.sprintf("SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC");
     cursor2 *curPeri,*curEjer = empresaactual->cargacursor(query);
@@ -106,6 +104,18 @@ BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
         }
         curEjer->siguienteregistro();
     }
+    _depura("ENd BbloqFecha::inicializa", 0);
+
+}
+
+
+BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose) {
+    _depura("BbloqFecha::BbloqFecha", 0);
+    setupUi(this);
+    QString query;
+    empresaactual = emp;
+    inicializa();
     empresaactual->meteWindow(windowTitle(), this);
     _depura("ENd BbloqFecha::BbloqFecha", 0);
 }
@@ -137,5 +147,29 @@ void BbloqFecha::on_listView1_doubleClicked (Q3ListViewItem *item) {
         error = empresaactual->ejecuta(Query);
     } // end if
     _depura("END BbloqFecha::on_listView1_itemDoubleClicked", 0);
+}
+
+
+void BbloqFecha::on_mui_crear_clicked() {
+    _depura("BbloqFecha::on_mui_crear_clicked", 0);
+    int ejer = 2004;
+
+    QString query = "SELECT max(ejercicio) AS ej FROM ejercicios";
+    cursor2 *cur = empresaactual->cargacursor( query );
+    if (!cur->eof()) {
+        ejer = cur->valor( "ej").toInt();
+    }
+
+    ejer++;
+
+    for (int x=0; x<=12; x++) {
+        QString query ="INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('"+QString::number(ejer)+"', '"+QString::number(x)+"', 'f')";
+        empresaactual->ejecuta(query);
+    }// end for
+
+    inicializa();
+
+    _depura("BbloqFecha::on_mui_crear_clicked", 0);
+
 }
 

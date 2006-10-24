@@ -46,13 +46,14 @@ class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
 Q_OBJECT
 private:
     empresa *empresaactual;
+    void inicializa();
 
 public:
     BbloqFecha(empresa *emp, QWidget * parent = 0);
     ~BbloqFecha();
 
 public slots:
-    virtual void on_mui_crear_clicked() { _depura("Funcion aun no implementada", 2);};
+    virtual void on_mui_crear_clicked();
     virtual void on_listView1_doubleClicked(Q3ListViewItem *item);
     virtual void boto1_click();
 };

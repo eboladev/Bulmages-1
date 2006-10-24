@@ -38,8 +38,7 @@ INCLUDEPATH = ../../../bulmalib \
 /usr/lib/qt4/include/QtXml \
 /usr/lib/qt4/include/Qt \
 ../../../bulmalib/.ui \
-.ui \
-../.ui
+.ui 
 
 FORMS += registroivabase.ui \
 	 listregistroivabase.ui \

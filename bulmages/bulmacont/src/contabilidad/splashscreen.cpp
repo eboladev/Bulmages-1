@@ -32,10 +32,9 @@
 #include "configuracion.h"
 #include "funcaux.h"
 
-
+/// Constructor de la clase
+/** Genera el splash y pinta los elementos iniciales. */
 Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
-
-//: QDialog(0, "", true, Qt::WStyle_NoBorder | Qt::WStyle_Customize ) {
     QPixmap image0;
     image0.load(confpr->valor(CONF_SPLASH).toAscii());
     l = new QLabel(this);
@@ -68,13 +67,15 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     exec();
 }
 
-
+/// Destructor de la clase.
+/** Libera memoria. */
 Splash::~Splash() {
     delete l;
     delete l2;
 }
 
-
+/// Evento que se dispara cada cierto tiempo.
+/** El constructor crea un evento temporal que dispara este metodo. */
 bool Splash::event(QEvent *evt) {
     if (evt->type() == QEvent::KeyPress) {
         close();
@@ -85,7 +86,8 @@ bool Splash::event(QEvent *evt) {
     return QDialog::event(evt);
 }
 
-
+/// Pintado de la pantalla.
+/** Actualiza el widget. */
 void Splash::paint() {
     static int a = 0;
     static QString cad;
@@ -120,37 +122,5 @@ void Splash::paint() {
 
     l2->setText(cad);
     l2->scrollBy(0,400);
-}
-
-
-void Splash::lista(QString dir) {
-    _depura("Splash::lista", 0);
-    static int x = 0;
-    static int y = 0;
-    /// Inicializamos los iconos para ver si se ven bien.
-    QDir subdir(dir);
-    QFileInfoList sublist = subdir.entryInfoList();
-    for (int j =0; j < sublist.size(); ++j) {
-        QFileInfo subfile = sublist.at(j);
-        QString f = subfile.filePath();
-        QPixmap icon;
-        if (icon.load(f)) {
-            QLabel *l4 = new QLabel(this);
-            l4->setPixmap(icon);
-            l4->setGeometry(x, y, 32, 32);
-            l4->show();
-            x = x + 40;
-            if (x > 350) {
-                x = 0;
-                y = y + 40;
-                if (y > 300) {
-                    y = 0;
-                } // end if
-            } // end if
-        } else {
-            lista(f);
-        } // end if
-    } // end for
-    _depura("END Splash::lista", 0);
 }
 
