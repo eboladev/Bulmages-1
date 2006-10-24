@@ -21,6 +21,7 @@
 #include "fpagoview.h"
 #include "empresa.h"
 
+
 /// El constructor de la clase prepara las variables globales y llama a la funci&oacute;n
 /// pintar.
 fpagoview::fpagoview(empresa *emp, QWidget *parent)

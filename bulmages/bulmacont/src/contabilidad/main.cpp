@@ -56,6 +56,8 @@ QApplication2 *theApp;
 /// El traductor.
 QTranslator *traductor;
 
+QString versionBC = "0.5.9";
+
 /// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
 
 

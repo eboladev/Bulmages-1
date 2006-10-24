@@ -1,38 +1,41 @@
 /***************************************************************************
-                          ccosteview.cpp  -  description
-                             -------------------
-    begin                : s� mar 22 2003
-    copyright            : (C) 2003 by Tomeu Borr� Riera
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-/**************************************************************************
- * Esta clase se encarga de presentar los centros de coste, la ventana, y *
- * de controlar la inserci� de nuevos centros de coste, borrarlos, etc   *
- **************************************************************************/
+
 #include "ccosteview.h"
 #include "empresa.h"
 #include "selectccosteview.h"
-
 
 #define COL_NOM_COSTE 0
 #define COL_DESC_COSTE 1
 #define COL_IDC_COSTE 2
 
-// El inicializador de la clase.
-ccosteview::ccosteview(empresa *emp, QWidget *parent) : QWidget (parent, Qt::WDestructiveClose) , dialogChanges(this) {
+
+/// Esta clase se encarga de presentar los centros de coste, la ventana, y
+/// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
+ccosteview::ccosteview(empresa *emp, QWidget *parent)
+        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
     setupUi(this);
     _depura("ccosteview::ccosteview", 0);
     empresaactual = emp;
-    conexionbase=empresaactual->bdempresa();
-    idc_coste=0;
+    conexionbase = empresaactual->bdempresa();
+    idc_coste = 0;
 
     mui_list->setColumnCount(3);
     QStringList headers;
@@ -40,12 +43,12 @@ ccosteview::ccosteview(empresa *emp, QWidget *parent) : QWidget (parent, Qt::WDe
     mui_list->setHeaderLabels(headers);
 
     mui_list->setColumnHidden(COL_IDC_COSTE, TRUE);
-
     dialogChanges_cargaInicial();
     empresaactual->meteWindow(windowTitle(), this);
     pintar();
     _depura("END ccosteview::ccosteview", 0);
 }
+
 
 ccosteview::~ccosteview() {
     _depura("ccosteview::~ccosteview", 0);
@@ -55,85 +58,84 @@ ccosteview::~ccosteview() {
 
 
 void ccosteview::pintar() {
-    QTreeWidgetItem * it;
+    QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista;
     int padre;
-    int idc_coste1=0;
+    int idc_coste1 = 0;
     cursor2 *cursoraux1, *cursoraux2;
 
-    /// Vaciamos el arbol.
+    /// Vaciamos el &aacute;rbol.
     while (mui_list->topLevelItemCount() > 0) {
         it = mui_list->takeTopLevelItem(0);
         delete it;
     } // end while
 
-
     cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         padre = atoi( cursoraux1->valor("padre").ascii());
         idc_coste1 = atoi( cursoraux1->valor("idc_coste").ascii());
-        it =new QTreeWidgetItem(mui_list);
-        Lista[idc_coste1]=it;
+        it = new QTreeWidgetItem(mui_list);
+        Lista[idc_coste1] = it;
         it->setText(COL_IDC_COSTE, cursoraux1->valor("idc_coste"));
         it->setText(COL_DESC_COSTE,cursoraux1->valor("descripcion"));
         it->setText(COL_NOM_COSTE, cursoraux1->valor("nombre"));
         mui_list->expandItem(it);
-        cursoraux1->siguienteregistro ();
-    }// end while
+        cursoraux1->siguienteregistro();
+    } // end while
     delete cursoraux1;
 
     cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor("padre").ascii());
         idc_coste1 = atoi(cursoraux2->valor("idc_coste").ascii());
-        fprintf(stderr,"Cuentas de subnivel:%d",padre);
+        fprintf(stderr, "Cuentas de subnivel:%d", padre);
         it = new QTreeWidgetItem(Lista[padre]);
-        Lista[idc_coste1]=it;
+        Lista[idc_coste1] = it;
         it->setText(COL_IDC_COSTE,cursoraux2->valor("idc_coste"));
         it->setText(COL_DESC_COSTE,cursoraux1->valor("descripcion"));
         it->setText(COL_NOM_COSTE,cursoraux1->valor("nombre"));
         mui_list->expandItem(it);
         cursoraux2->siguienteregistro();
-    }// end while
+    } // end while
     delete cursoraux2;
 
-
-    if ( idc_coste!= 0) {
+    if (idc_coste != 0) {
         mostrarplantilla();
-    }// end if
+    } // end if
 
-    // Ya que se han producido cambios en los centros de coste
-    // Se inicializa el selector de centros de coste.
+    /// Ya que se han producido cambios en los centros de coste
+    /// Se inicializa el selector de centros de coste.
     selectccosteview *scoste = empresaactual->getselccostes();
     scoste->cargacostes();
-}// end pintar
+}
 
 
 void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
     int previdccoste = it->text(COL_IDC_COSTE).toInt();
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, tr("Guardar Centro de Coste"),
-                                   tr("Desea guardar los cambios."),
-                                   tr("Guardar"), tr("Cancelar"),0 , 0, 1) == 0)
+        if (QMessageBox::warning(this,
+                                 tr("Guardar centro de coste"),
+                                 tr("Desea guardar los cambios?"),
+                                 tr("&Guardar"), tr("&Cancelar"), 0, 0, 1) == 0) {
             on_mui_guardar_clicked();
-    }// end if
+        } // end if
+    } // end if
     idc_coste = previdccoste;
     mostrarplantilla();
-}// end seleccionado
+}
 
 
 void ccosteview::mostrarplantilla() {
     _depura("ccosteview::mostrarplantilla", 0);
     QString query;
-    query.sprintf("SELECT * from c_coste WHERE idc_coste=%d",idc_coste);
+    query.sprintf("SELECT * from c_coste WHERE idc_coste = %d",idc_coste);
     cursor2 *cursorcoste = conexionbase->cargacursor(query);
     if (!cursorcoste->eof()) {
         nomcentro->setText(cursorcoste->valor("nombre"));
         desccoste->setText(cursorcoste->valor("descripcion"));
-    }// end if
+    } // end if
     delete cursorcoste;
     dialogChanges_cargaInicial();
-//    botondefault->setOn(TRUE);
 }
 
 
@@ -141,77 +143,81 @@ void ccosteview::on_mui_guardar_clicked() {
     QString nom = nomcentro->text();
     QString desc = desccoste->text();
     QString query;
-    query.sprintf ("UPDATE c_coste SET nombre='%s', descripcion='%s' WHERE idc_coste=%d",nom.ascii(), desc.ascii(), idc_coste);
+    query.sprintf ("UPDATE c_coste SET nombre='%s', descripcion = '%s' WHERE idc_coste = %d", nom.ascii(), desc.ascii(), idc_coste);
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();
     fprintf(stderr,"Se ha guardado el centro de coste\n");
     dialogChanges_cargaInicial();
     pintar();
-}// end boton_guardar
+}
 
 
 void ccosteview::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
-        if ( QMessageBox::warning( this, "Guardar Centro de Coste",
-                                   "Desea guardar los cambios.",
-                                   QMessageBox::Ok ,
-                                   QMessageBox::Cancel ) == QMessageBox::Ok)
+        if (QMessageBox::warning(this,
+                                 tr("Guardar centro de coste"),
+                                 tr("Desea guardar los cambios?"),
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel ) == QMessageBox::Ok) {
             on_mui_guardar_clicked();
+        } // end if
     }// end if
 
     QString query;
     QTreeWidgetItem *it;
     it=mui_list->currentItem();
     if (it) {
-        idc_coste=atoi(it->text(COL_IDC_COSTE).ascii());
-        query.sprintf("INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo Centro de Coste', 'Escriba su descripcion')", idc_coste);
+        idc_coste = atoi(it->text(COL_IDC_COSTE).ascii());
+        query.sprintf("INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste);
         conexionbase->begin();
         conexionbase->ejecuta(query);
     } else {
-        query.sprintf("INSERT INTO c_coste (nombre, descripcion) VALUES ('Nuevo Centro de Coste','Escriba su descripcion')");
+        query.sprintf("INSERT INTO c_coste (nombre, descripcion) VALUES ('Nuevo centro de coste', 'Escriba su descripcion')");
         conexionbase->begin();
         conexionbase->ejecuta(query);
-    }// end if
+    } // end if
     query.sprintf("SELECT MAX(idc_coste) AS id_coste FROM c_coste");
-    cursor2 *cur = conexionbase->cargacursor(query,"queryy");
-    idc_coste= atoi(cur->valor("id_coste").ascii());
+    cursor2 *cur = conexionbase->cargacursor(query, "queryy");
+    idc_coste = atoi(cur->valor("id_coste").ascii());
     delete cur;
     conexionbase->commit();
     pintar();
-}// end boton_nuevo
+}
 
 
 void ccosteview::on_mui_borrar_clicked() {
-    switch( QMessageBox::warning( this, tr("Borrar Centro de Coste"),
-                                  tr("Se va a borrar el Centro de Coste,\n"
-                                     "Esta operaci� puede ocasionar p�dida de datos\n"),
-                                  tr("Borrar") , tr("Cancelar"), 0 , 0 , 1 )) {
+    switch (QMessageBox::warning(this,
+                                 tr("Borrar centro de coste"),
+                                 tr("Se va a borrar el centro de coste.\n \
+                                    Esta operacion puede ocasionar perdida de datos\n"),
+                                 tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
     case 0: // Retry clicked or Enter pressed
-
         QString query;
-        query.sprintf("DELETE FROM c_coste WHERE idc_coste=%d", idc_coste);
+        query.sprintf("DELETE FROM c_coste WHERE idc_coste = %d", idc_coste);
         conexionbase->begin();
         conexionbase->ejecuta(query);
         conexionbase->commit();
         idc_coste=0;
         pintar();
-    }// end switch
-}// end boton_borrar
-
+    } // end switch
+}
 
 
 void ccosteview::closeEvent(QCloseEvent *e) {
     _depura("ccosteview::closeEvent", 0);
     if (dialogChanges_hayCambios())	{
         int val = QMessageBox::warning(this,
-                                       tr("Guardar Centro de Coste"),
+                                       tr("Guardar centro de coste"),
                                        tr("Desea guardar los cambios?"),
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
+        if (val == 0) {
             on_mui_guardar_clicked();
-        if (val == 2)
+        } // end if
+        if (val == 2) {
             e->ignore();
+        } // end if
     } // end if
 }
+

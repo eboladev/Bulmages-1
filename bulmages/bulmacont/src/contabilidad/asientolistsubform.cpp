@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "asientolistsubform.h"
-
 #include <QMenu>
+
+#include "asientolistsubform.h"
 
 
 /// Subformulario.
@@ -54,7 +54,6 @@ void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
         return;
     } // end if
     QMenu *popup = new QMenu(this);
-
     QAction *mostapunte = popup->addAction("Mostrar asiento");
     popup->addSeparator();
     QAction *mostextractodia = popup->addAction("Mostrar extracto (dia)");

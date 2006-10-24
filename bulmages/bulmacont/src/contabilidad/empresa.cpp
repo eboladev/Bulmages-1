@@ -1,18 +1,24 @@
 /***************************************************************************
-                          empresa.cpp  -  description
-                             -------------------
-    begin                : Wed Nov 27 2002
-    copyright            : (C) 2002 by Tomeu Borras
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2002 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include <QObject>
 
 #include "empresa.h"
 #include "abreempresaview.h"
@@ -34,8 +40,6 @@
 #include "selectcanalview.h"
 #include "plugins.h"
 #include "bbloqfecha.h"
-#include <qobject.h>
-
 
 #ifndef WIN32
 #include <unistd.h>
@@ -45,10 +49,10 @@
 
 
 
-/** slot Muestra la ventana de asientos */
+/// SLOT que muestra la ventana de asientos.
 void empresa::s_asiento1() {
-    _depura("empresa::s_asiento1",0);
-    introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("empresa::s_asiento1", 0);
+    introapunts2->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
 }
 
 
@@ -66,35 +70,42 @@ empresa::empresa() {
 
 
 empresa::~empresa() {
-    _depura("~empresa",0);
-    if (diario)
+    _depura("~empresa", 0);
+    if (diario) {
         delete diario;
-    if (extracto)
+    } // end if
+    if (extracto) {
         delete extracto;
-    if (balance1)
+    } // end if
+    if (balance1) {
         delete balance1;
-    if (balance)
+    } // end if
+    if (balance) {
         delete balance;
-    if (selccostes)
+    } // end if
+    if (selccostes) {
         delete selccostes;
-    if (selcanales)
+    } // end if
+    if (selcanales) {
         delete selcanales;
-    if (introapunts2)
+    } // end if
+    if (introapunts2) {
         delete introapunts2;
-    if (m_listasientos)
+    } // end if
+    if (m_listasientos) {
         delete m_listasientos;
+    } // end if
 }
 
-/** \brief inicializa la clase con el nombre de la base de datos y con el workspace.
-  */
+/// Inicializa la clase con el nombre de la base de datos y con el workspace.
 int empresa::inicializa1() {
-    _depura("empresa::inicializa1",0);
-    // Calculamos el numero de digitos que tiene el nivel ultimo de la empresa.
-    QString query = "SELECT * FROM configuracion WHERE nombre= 'CodCuenta'";
-    cursor2 *cursoraux1 = cargacursor(query,"codcuenta");
-    numdigitos=cursoraux1->valor(2).length();
+    _depura("empresa::inicializa1", 0);
+    /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
+    /// de la empresa.
+    QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
+    cursor2 *cursoraux1 = cargacursor(query, "codcuenta");
+    numdigitos = cursoraux1->valor(2).length();
     delete cursoraux1;
-
     if (extracto != NULL) {
         delete extracto;
         delete diario;
@@ -103,13 +114,13 @@ int empresa::inicializa1() {
         delete selccostes;
         delete selcanales;
         delete m_listasientos;
-    }// end if
+    } // end if
 
-    /// Inicializamos los selectores de centros de coste y canales
-    selccostes=new selectccosteview(this, 0, "selccostes");
-    selcanales=new selectcanalview(this, 0, "selcanales");
+    /// Inicializamos los selectores de centros de coste y canales.
+    selccostes = new selectccosteview(this, 0, "selccostes");
+    selcanales = new selectcanalview(this, 0, "selcanales");
 
-    /// Inicializamos las ventanas de uso generalizado
+    /// Inicializamos las ventanas de uso generalizado.
     extracto = new extractoview1(this, 0, "extracto");
     m_pWorkspace->addWindow(extracto);
 
@@ -137,59 +148,56 @@ int empresa::inicializa1() {
     return(0);
 }
 
-/** \brief Maximiza todas las ventanas que est� en el workspace de la aplicaci�
-  * 
-  * Envia un mensaje showMaximized a todos los objetos que deben ser maximizados
-  */
+
+/// Maximiza todas las ventanas que est&aacute;n en el workspace de la aplicaci&oacute;n.
+/** Env&iacute;a un mensaje showMaximized a todos los objetos que deben ser maximizados. */
 void empresa::maximiza() {
-    _depura("empresa::maximiza",0);
+    _depura("empresa::maximiza", 0);
     diario->showMaximized();
     extracto->showMaximized();
     balance1->showMaximized();
     balance->showMaximized();
-    _depura("END empresa::maximiza",0);
+    _depura("END empresa::maximiza", 0);
 }
 
 
 void empresa::init(QString bd) {
-    if (bd == "")
+    if (bd == "") {
         bd = searchCompany();
+    } // end if
     inicializa(bd);
 }
 
 
-/** \brief Se utiliza para mostrar un selector de empresas \ref abreempresaview
-  * Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de clases a partir de dicha inicializacion.
-  */
+/// Se utiliza para mostrar un selector de empresas \ref abreempresaview.
+/** Al usuario debe seleccionar una empresa y el sistema empieza la inicializaci&oacute;n
+    de clases a partir de dicha inicializaci&oacute;n. */
 QString empresa::searchCompany() {
-    //El cambio de empresa se realiza desde el selector.
+    /// El cambio de empresa se realiza desde el selector.
     _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n", 0);
-    abreempresaview *nuevae = new abreempresaview(0, "BulmaCont" );
+    abreempresaview *nuevae = new abreempresaview(0, "BulmaCont");
     nuevae->exec();
     _depura("Vamos a cambiar la empresa \n", 0);
     QString bd= nuevae->nomDB();
-    _depura("Empresa cambiada a"+bd, 0);
+    _depura("Empresa cambiada a" + bd, 0);
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
-    if (bd == "")
+    if (bd == "") {
         exit(1);
-    return(bd);
+    } // end if
+    return bd;
 }
 
 
-/**
-  * Esta funcion abre la ventana que presenta las cuentas contables
-  */
-int empresa::muestracuentas() 	{
+/// Esta funci&oacute;n abre la ventana que presenta las cuentas contables.
+int empresa::muestracuentas() {
     m_listcuentas->show();
     return 0;
 }
 
 
-/**
-  * Esta funcion presenta los centros de coste. Luego recarga los
-  * comboboxes de todo el resto de pantallas para que se actualizen
-  */
+/// Esta funci&oacute;n presenta los centros de coste.
+/** Luego recarga los comboboxes de todo el resto de pantallas para que se actualizen. */
 int empresa::ccostes() {
     _depura("empresa::ccostes", 0);
     ccosteview *ccoste = new ccosteview(this, 0);
@@ -201,11 +209,8 @@ int empresa::ccostes() {
 }
 
 
-/**
-  * Esta funcion presenta la pantalla de edicion de canales. Luego
-  * recarga los comboboxes de todo el resto de pantallas para que se
-  * actualizen.
-  */
+/// Esta funci&oacute;n presenta la pantalla de edicion de canales.
+/** Luego recarga los comboboxes de todo el resto de pantallas para que se actualizen. */
 int empresa::canales() {
     _depura("empresa::canales", 0);
     canalview *canal = new canalview(this, 0);
@@ -216,9 +221,8 @@ int empresa::canales() {
 }
 
 
-/** Crea la ventana de tipos de IVA y la presenta en modo modal
-  * Es invocada desde la clase principal
-  */
+/// Crea la ventana de tipos de IVA y la presenta en modo modal.
+/** Es invocada desde la clase principal. */
 void empresa::bloqueoFechas() {
     _depura("empresa::bloqueoFechas", 0);
     BbloqFecha *tip = new BbloqFecha(this, 0);
@@ -228,9 +232,8 @@ void empresa::bloqueoFechas() {
 }
 
 
-/** Crea la ventana de tipos de IVA y la presenta en modo modal
-  * Es invocada desde la clase principal
-  */
+/// Crea la ventana de tipos de IVA y la presenta en modo modal.
+/** Es invocada desde la clase principal. */
 int empresa::tiposIVA() {
     _depura("empresa::tiposIVA", 0);
     tipoivaview *tip = new tipoivaview(this, 0);
@@ -241,9 +244,8 @@ int empresa::tiposIVA() {
 }
 
 
-/** Crea la ventana de Formas de Pago y la presenta en modo modal
-  * Es invocada desde la clase principal
-  */
+/// Crea la ventana de Formas de Pago y la presenta en modo modal.
+/** Es invocada desde la clase principal. */
 int empresa::fPago() {
     _depura("empresa::fPago", 0);
     fpagoview *fp = new fpagoview(this, 0);
@@ -255,7 +257,7 @@ int empresa::fPago() {
 
 
 int empresa::cambioejercicio() {
-    //El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio
+    /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
     return 0;
@@ -263,19 +265,20 @@ int empresa::cambioejercicio() {
 
 
 int empresa::nuevaempresa() {
-    //La creaci� de una nueva empresa ha pasado al selector.
+    /// La creaci&oacute;n de una nueva empresa ha pasado al selector.
     return 0;
 }
 
 
-/** \brief Crea la ventana de edicion de cuentas y devuelve un puntero a esta*/
+/// Crea la ventana de edici&oacute;n de cuentas y devuelve un puntero a esta.
 cuentaview* empresa::newcuentaview() {
-    cuentaview * nuevae =new cuentaview(this, 0, "nuevacuenta", true);
+    cuentaview *nuevae = new cuentaview(this, 0, "nuevacuenta", true);
     return nuevae;
 }
 
+
 int empresa::nuevacuenta() {
-    cuentaview * nuevae = newcuentaview();
+    cuentaview *nuevae = newcuentaview();
     m_pWorkspace->addWindow(nuevae);
     nuevae->show();
     return 0;
@@ -288,20 +291,20 @@ int empresa::muestraapuntes() {
 
 
 int empresa::muestraapuntes1() {
-    introapunts2->setWindowState(introapunts2->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+    introapunts2->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
     return 0;
 }
 
 
 int empresa::muestraasientos() {
-    m_listasientos->setWindowState(m_listasientos->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+    m_listasientos->setWindowState(m_listasientos->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
     return 0;
 }
 
 
 int empresa::propiedadempresa() {
     _depura("empresa::propiedadempresa", 0);
-    propiedadesempresa * nuevae = new propiedadesempresa(this, 0);
+    propiedadesempresa *nuevae = new propiedadesempresa(this, 0);
     m_pWorkspace->addWindow(nuevae);
     nuevae->show();
     _depura("empresa::propiedadempresa", 0);
@@ -310,22 +313,17 @@ int empresa::propiedadempresa() {
 
 
 int empresa::amortizaciones() {
-    amortizacionesview * amors = new amortizacionesview(this, 0, "");
+    amortizacionesview *amors = new amortizacionesview(this, 0, "");
     m_pWorkspace->addWindow(amors);
     amors->show();
     return 0;
 }
 
 
-
-
-
-/*******************************************************************
- * Esta funcion llama a la pantalla de creacion, modificacion      *
- * de masas patrimoniales.                                         *
- *******************************************************************/
+/// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
+/// de masas patrimoniales.
 int empresa::mpatrimoniales() {
-    mpatrimonialesview * nuevae = new mpatrimonialesview(0, "mpatrimoniales", true);
+    mpatrimonialesview *nuevae = new mpatrimonialesview(0, "mpatrimoniales", true);
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;
@@ -333,13 +331,11 @@ int empresa::mpatrimoniales() {
 }
 
 
-/*******************************************************************
- * Esta funcion llama a la pantalla de creacion, modificacion      *
- * de masas patrimoniales.                                         *
- *******************************************************************/
+/// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
+/// de masas patrimoniales.
 int empresa::compbalance() {
     _depura("empresa::compbalance", 0);
-    CAnualesView * nueva = new CAnualesView(this, 0, "balances");
+    CAnualesView *nueva = new CAnualesView(this, 0, "balances");
     m_pWorkspace->addWindow(nueva);
     nueva->show();
     _depura("END empresa::compbalance", 0);
@@ -347,123 +343,120 @@ int empresa::compbalance() {
 }
 
 
-
 int empresa::libromayor() {
     extracto->setWindowState(extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-    return(0);
+    return 0;
 }
 
 
 int empresa::boton_siguiente() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow();
     if (widget == extracto) {
         extracto->boton_siguiente();
     } else if (widget == introapunts2) {
         introapunts2->boton_siguiente();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
 
 
 int empresa::boton_anterior() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
-
-
+    widget = m_pWorkspace->activeWindow();
     if (widget == extracto) {
         extracto->boton_anterior();
     } else if (widget == introapunts2) {
         introapunts2->boton_anterior();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
 
 
 int empresa::boton_guardar() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
         diario->boton_guardar();
     } else {
         extracto->boton_guardar();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
 
-int empresa::boton_imprimir() {
-    QWidget *widget = m_pWorkspace->activeWindow ();
 
+int empresa::boton_imprimir() {
+    QWidget *widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
         diario->boton_imprimir();
-    } else if(widget == balance1) {
+    } else if (widget == balance1) {
         balance1->boton_imprimir();
     } else if (widget == balance) {
         balance->boton_imprimir();
     } else if (widget == extracto) {
         extracto->boton_imprimir();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
+
 
 int empresa::boton_reload() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
-
+    widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
         diario->accept();
-    } else if(widget == extracto) {
+    } else if (widget == extracto) {
         extracto->accept();
-    } else if(widget== balance) {
+    } else if (widget == balance) {
         balance->accept();
     } else if (widget == balance1) {
         balance1->accept();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
+
 
 int empresa::boton_primero() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
-
-
+    widget = m_pWorkspace->activeWindow();
     if (widget == introapunts2) {
         introapunts2->boton_inicio();
     } else if (widget == diario) {}
     else if (widget == extracto) {
         extracto->boton_inicio();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
+
 
 int empresa::boton_ultimo() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
-
+    widget = m_pWorkspace->activeWindow();
     if (widget == introapunts2) {
         introapunts2->boton_fin();
     } else if (widget == diario) {}
     else if (widget == extracto) {
         extracto->boton_fin();
-    }// end if
-    return(0);
+    } // end if
+    return 0;
 }
 
 
 int empresa::librodiario() {
-    diario->setWindowState(diario->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-    return(0);
+    diario->setWindowState(diario->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    return 0;
 }
 
+
 int empresa::librobalance() {
-    balance->setWindowState(balance->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-    return(0);
+    balance->setWindowState(balance->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    return 0;
 }
 
 
 int empresa::librobalancetree() {
-    balance1->setWindowState(balance1->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
-    return(0);
+    balance1->setWindowState(balance1->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    return 0;
 }
 
 
@@ -487,31 +480,31 @@ void empresa::Ordenarasientos() {
 
 
 int empresa::registroiva() {
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("empresa_registroiva", this);
     return res;
 }
 
+
 int empresa::modelo347() {
-    BModelo347 *dlg347 = new BModelo347(this,"0");
+    BModelo347 *dlg347 = new BModelo347(this, "0");
     dlg347->exec();
     delete dlg347;
-    return(0);
+    return 0;
 }
 
-/*************************************************************
- * Esta funcion borra la empresa actual
- *************************************************************/
 
+/// Esta funci&oacute;n borra la empresa actual.
 int empresa::borrarempresa() {
-    //El proceso de borrado se realiza desde las herramientas el selector.
-    return(0);
+    /// El proceso de borrado se realiza desde las herramientas el selector.
+    return 0;
 }
 
 
-// Esta funci� es la que se encarga de cerrar al empresa
-// Y de crear un nuevo ejercicio para dicha empresa
+/// Esta funci&oacute;n es la que se encarga de cerrar al empresa
+/// y de crear un nuevo ejercicio para dicha empresa.
 void empresa::nuevoejercicio() {}
+
 
 void empresa::cierraempresa() {
     introapunts2->show();
@@ -533,49 +526,50 @@ void empresa::regularizaempresa() {
 
 void empresa::Filtro() {
     QWidget *widget;
-    widget = m_pWorkspace->activeWindow ();
+    widget = m_pWorkspace->activeWindow();
     if (widget == introapunts2) {
         introapunts2->boton_filtrar();
-    }// end if
+    } // end if
 }
 
-// Esta funci� reemplaza en los apuntes todas las ocurrencias de una determinada cuenta por
-// Otra cuenta.
+/// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
+/// determinada cuenta por otra cuenta.
 void empresa::reemplazacuentaenasientos() {
-    cambiactaview *ctac = new  cambiactaview(this,0,0, false);
+    cambiactaview *ctac = new cambiactaview(this, 0, 0, false);
     ctac->exec();
 }
 
 
-// Esta funci� recalcula los saldos parciales del plan contable.
+/// Esta funci&oacute;n recalcula los saldos parciales del plan contable.
 void empresa::recalculasaldos() {
     ejecuta("SELECT recalculasaldos()");
 }
 
 
-
-/** Esta funci� se dispara para poner en marcha la gesti� de cobros y pagos
-  */
+/// Esta funci&oacute;n se dispara para poner en marcha la gesti&oacute;n de cobros y pagos.
 int empresa::cobPag() {
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto
+    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("empresa_cobPag", this);
     return res;
 }
+
 
 selectccosteview *empresa::getselccostes() {
     return selccostes;
 }
 
+
 selectcanalview *empresa::getselcanales() {
     return selcanales;
 }
+
 
 void empresa::centrocostedefecto() {
     selccostes->exec();
 }
 
+
 void empresa::canaldefecto() {
     selcanales->exec();
 }
-
 

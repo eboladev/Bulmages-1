@@ -19,6 +19,7 @@
  ***************************************************************************/
 
 #include <QWidget>
+
 #include "tipoivaview.h"
 #include "empresa.h"
 #include "busquedacuenta.h"

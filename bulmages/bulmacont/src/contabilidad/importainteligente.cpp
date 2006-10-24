@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <qstring.h>
+#include <QString>
 
 #include "importainteligente.h"
 #include "empresa.h"
