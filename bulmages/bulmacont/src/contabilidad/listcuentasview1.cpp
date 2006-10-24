@@ -39,8 +39,8 @@
 #include "images/cgastos.xpm"
 
 
-listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *name, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, name, flag), pgimportfiles(emp->bdempresa()) {
+listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode)
+        : QWidget(parent, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
     empresaactual = emp;
@@ -74,7 +74,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, const char *na
 
     installEventFilter(this);
     if (m_modo == EditMode)
-        empresaactual->meteWindow(caption(), this);
+        empresaactual->meteWindow(windowTitle(), this);
     _depura("END listcuentasview1::listcuentasview1", 0);
 }
 
@@ -252,7 +252,7 @@ void listcuentasview1::on_ListView1_itemDoubleClicked(QTreeWidgetItem *it, int) 
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
     if (m_modo == EditMode) {
-        cuentaview *nuevae = new cuentaview(empresaactual, 0, "", true);
+        cuentaview *nuevae = new cuentaview(empresaactual, 0);
         nuevae->cargacuenta(atoi(idcuenta().toAscii()));
         inicializa();
         empresaactual->pWorkspace()->addWindow(nuevae);
@@ -275,7 +275,7 @@ void listcuentasview1::on_mui_crear_clicked()  {
     QString cadena, codigo;
     int idgrupo = 0;
     QTreeWidgetItem *it;
-    cuentaview *nuevae = new cuentaview(empresaactual, 0, 0, true);
+    cuentaview *nuevae = new cuentaview(empresaactual, 0);
     it = ListView1->currentItem();
     if (it) {
         codigo = it->text(ccuenta);
@@ -307,7 +307,7 @@ void listcuentasview1::on_mui_editar_clicked()  {
     mdb_codcuenta = it->text(ccuenta);
     mdb_idcuenta = it->text(cidcuenta);
     mdb_desccuenta = it->text(cdesccuenta);
-    cuentaview *nuevae = new cuentaview(empresaactual, 0, "", true);
+    cuentaview *nuevae = new cuentaview(empresaactual, 0);
     nuevae->cargacuenta(atoi(idcuenta().toAscii()));
     empresaactual->pWorkspace()->addWindow(nuevae);
     nuevae->show();

@@ -70,11 +70,11 @@ void libromayorprint::accept() {
         conexionbase->begin();
         cursoraux = conexionbase->cargacuentascodigo(-1, codinicial, codfinal);
         while(!cursoraux->eof()) {
-            idcuenta = atoi(cursoraux->valor(0).ascii());
+            idcuenta = atoi(cursoraux->valor(0).toAscii());
             cursoraux1 = conexionbase->cargaapuntesctafecha(idcuenta, finicial, ffinal);
             if (!cursoraux1->eof()) {
-                activo = strcmp((char *) cursoraux->valor(13).ascii() , "f");
-                fprintf(mifile, "\n\n%12s %50s", cursoraux->valor(1).ascii(), cursoraux->valor(2).ascii());
+                activo = strcmp((char *) cursoraux->valor(13).toAscii().constData() , "f");
+                fprintf(mifile, "\n\n%12s %50s", cursoraux->valor(1).toAscii().constData(), cursoraux->valor(2).toAscii().constData());
                 if (activo) {
                     fprintf(mifile, " Cuenta de Activo\n");
                 } else {
@@ -82,25 +82,25 @@ void libromayorprint::accept() {
                 } // end if
                 cursoraux2 = conexionbase->cargasaldoscuentafecha(idcuenta, finicial);
                 if (!cursoraux2->eof()) {
-                    debeinicial = Fixed(cursoraux2->valor(0).ascii());
-                    haberinicial = Fixed(cursoraux2->valor(1).ascii());
+                    debeinicial = Fixed(cursoraux2->valor(0).toAscii().constData());
+                    haberinicial = Fixed(cursoraux2->valor(1).toAscii().constData());
                     if (activo) {
                         saldoinicial = debeinicial - haberinicial;
                     } else {
                         saldoinicial = haberinicial - debeinicial;
                     } // end if
                     fprintf(mifile, "%5.5s %10.10s %10.10s %-40.40s %10.10s %10.10s %10.10s\n", "Asiento", "Fecha", "Asiento", "Descripcion", "Debe", "Haber", "Saldo");
-                    fprintf(mifile, "                                                 SUMAS ANTERIORES... %10.2s %10.2s %10.2s\n", debeinicial.toQString().ascii(), haberinicial.toQString().ascii(), saldoinicial.toQString().ascii());
+                    fprintf(mifile, "                                                 SUMAS ANTERIORES... %10.2s %10.2s %10.2s\n", debeinicial.toQString().toAscii().constData(), haberinicial.toQString().toAscii().constData(), saldoinicial.toQString().toAscii().constData());
                     fprintf(mifile, "---------------------------------------------------------------------------------------------------------\n");
                 } // end if
                 saldo = saldoinicial;
                 debefinal = debeinicial;
                 haberfinal = haberinicial;
                 for (; !cursoraux1->eof(); cursoraux1->siguienteregistro()) {
-                    idasiento = atoi(cursoraux1->valor(2).ascii());
-                    textasiento = (char *) cursoraux1->valor(5).ascii();
-                    debe = Fixed(cursoraux1->valor(8).ascii());
-                    haber = Fixed(cursoraux1->valor(9).ascii());
+                    idasiento = atoi(cursoraux1->valor(2).toAscii());
+                    textasiento = (char *) cursoraux1->valor(5).toAscii().constData();
+                    debe = Fixed(cursoraux1->valor(8).toAscii().constData());
+                    haber = Fixed(cursoraux1->valor(9).toAscii().constData());
                     if (activo) {
                         saldo = saldo + debe - haber;
                     } else {
@@ -108,8 +108,8 @@ void libromayorprint::accept() {
                     } // end if
                     debefinal = debefinal + debe;
                     haberfinal = haberfinal + haber;
-                    cad = cursoraux1->valor(4).ascii();
-                    fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2s %10.2s %10.2s\n", idasiento, cad.substr(1,10).c_str(), textasiento, cursoraux1->valor(5).ascii(), debe.toQString().ascii(), haber.toQString().ascii(), saldo.toQString().ascii());
+                    cad = cursoraux1->valor(4).toAscii().constData();
+                    fprintf(mifile,"%5.5d %10.10s %10.10s %-40.40s %10.2s %10.2s %10.2s\n", idasiento, cad.substr(1,10).c_str(), textasiento, cursoraux1->valor(5).toAscii().constData(), debe.toQString().toAscii().constData(), haber.toQString().toAscii().constData(), saldo.toQString().toAscii().constData());
                 } // end for
                 if (activo) {
                     saldofinal = debefinal - haberfinal;
@@ -117,7 +117,7 @@ void libromayorprint::accept() {
                     saldofinal = haberfinal - debefinal;
                 } // end if
                 fprintf(mifile, "                                       -----------------------------------------------------------------\n");
-                fprintf(mifile, "                                                  TOTAL SUBCUENTA... %10.2s %10.2s %10.2s\n", debefinal.toQString().ascii(), haberfinal.toQString().ascii(), saldofinal.toQString().ascii());
+                fprintf(mifile, "                                                  TOTAL SUBCUENTA... %10.2s %10.2s %10.2s\n", debefinal.toQString().toAscii().constData(), haberfinal.toQString().toAscii().constData(), saldofinal.toQString().toAscii().constData());
                 cursoraux2->cerrar();
                 delete cursoraux2;
             } // end if
@@ -130,6 +130,6 @@ void libromayorprint::accept() {
         delete cursoraux;
     } // end if
     QString cadaux = confpr->valor(CONF_EDITOR) + " mayor.txt";
-    system (cadaux.ascii());
+    system(cadaux.toAscii().constData());
 }
 

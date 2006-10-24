@@ -44,11 +44,11 @@ Arbol::~Arbol() {
 }
 
 
-void Arbol::nuevarama(cursor2* ramas) {
+void Arbol::nuevarama(cursor2 *ramas) {
     unsigned int i;
     /// Rellenamos los valores de inicializacion para una hoja.
     hoja = new tipohoja;
-    hoja->idcuenta = atoi(ramas->valor("idcuenta").ascii());
+    hoja->idcuenta = atoi(ramas->valor("idcuenta").toAscii().constData());
     hoja->codigo = QString(ramas->valor("codigo"));
     hoja->descripcion = QString(ramas->valor("descripcion"));
     hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = 0.00;
@@ -60,7 +60,7 @@ void Arbol::nuevarama(cursor2* ramas) {
 }
 
 
-void Arbol::inicializa(cursor2* ramas) {
+void Arbol::inicializa(cursor2 *ramas) {
     unsigned int i;
     QString padre;
     tiporama* guia = NULL;
@@ -74,7 +74,7 @@ void Arbol::inicializa(cursor2* ramas) {
             if (ramas->valor("nivel").toInt() > 2) {
                 /// Creamos una hoja.
                 hoja = new tipohoja;
-                hoja->idcuenta = atoi(ramas->valor("idcuenta").ascii());
+                hoja->idcuenta = atoi(ramas->valor("idcuenta").toAscii().constData());
                 hoja->codigo = QString(ramas->valor("codigo"));
                 hoja->descripcion = QString(ramas->valor("descripcion"));
                 hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = 0.00;
@@ -101,15 +101,15 @@ void Arbol::inicializa(cursor2* ramas) {
 }
 
 
-void Arbol::SintetizarRamas(cursor2** cuentas, tiporama** ramas) {
+void Arbol::SintetizarRamas(cursor2 **cuentas, tiporama **ramas) {
     tiporama *guia, *rama;
     tipohoja *hoja;
     int nivel;
     cursor2* ptrcuentas = *cuentas;
-    nivel = atoi(ptrcuentas->valor("nivel").ascii());
+    nivel = atoi(ptrcuentas->valor("nivel").toAscii().constData());
     ptrcuentas->siguienteregistro();
     guia = NULL;
-    while (!ptrcuentas->eof() && (atoi(ptrcuentas->valor("nivel").ascii()) > nivel)) {
+    while (!ptrcuentas->eof() && (atoi(ptrcuentas->valor("nivel").toAscii().constData()) > nivel)) {
         /// Reservamos un huequecito de memoria para almacenar los datos de la rama.
         rama = new tiporama;
         if (!guia) {
@@ -119,7 +119,7 @@ void Arbol::SintetizarRamas(cursor2** cuentas, tiporama** ramas) {
             guia = guia->sgte;
         }
         hoja = new tipohoja; /// Idem para una hojita.
-        hoja->idcuenta = atoi(ptrcuentas->valor("idcuenta").ascii());
+        hoja->idcuenta = atoi(ptrcuentas->valor("idcuenta").toAscii().constData());
         hoja->codigo = ptrcuentas->valor("codigo");
         hoja->descripcion = ptrcuentas->valor("descripcion");
         hoja->saldoant = hoja->debe = hoja->haber = hoja->saldo = hoja->debeej = hoja->haberej = hoja->saldoej = 0.00;
@@ -134,10 +134,10 @@ void Arbol::SintetizarRamas(cursor2** cuentas, tiporama** ramas) {
 }
 
 
-void Arbol::actualizahojas(cursor2* cuenta) {
+void Arbol::actualizahojas(cursor2 *cuenta) {
     unsigned int i = 0;
     bool actualizado;
-    tipohoja* hojaraiz;
+    tipohoja *hojaraiz;
 
     QString cuentapadre = cuenta->valor("codigo").left(2);
     do {
@@ -165,7 +165,7 @@ void Arbol::ActualizarHoja(tiporama** ramaraiz, cursor2* cuenta, bool* actualiza
     tiporama* rama = *ramaraiz;
     /// Buscamos por cada una de las ramas.
     while (rama && !(*actualizado)) {
-        int idcuenta = atoi(cuenta->valor("idcuenta").ascii());
+        int idcuenta = atoi(cuenta->valor("idcuenta").toAscii().constData());
         if (rama->hoja->idcuenta == idcuenta) {
             /// Ponemos los valores obtenidos de la BD.
             rama->hoja->saldoant = cuenta->valor("saldoant").toDouble();
@@ -264,7 +264,7 @@ bool Arbol::deshoja(unsigned int nivel, bool superiores) {
 }
 
 
-void Arbol::Deshojar(tiporama* rama, unsigned int nivel, bool superiores, bool* deshojada) {
+void Arbol::Deshojar(tiporama *rama, unsigned int nivel, bool superiores, bool *deshojada) {
     unsigned int nivelhoja = rama->hoja->codigo.length();
     if (hojaactiva >= rama->hoja->codigo) {
         if (rama->hoja->ramas && nivelhoja < nivel)

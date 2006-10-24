@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>594</height>
+    <width>659</width>
+    <height>571</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -376,10 +376,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
-       <number>2</number>
+       <number>6</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -559,32 +559,28 @@
        </layout>
       </item>
       <item>
-       <widget class="Q3ButtonGroup" name="buttonGroup1" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>0</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
+       <widget class="QGroupBox" name="buttonGroup1" >
         <property name="title" >
-         <string>Punteo</string>
-        </property>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
+         <string>Punteo:</string>
         </property>
         <layout class="QHBoxLayout" >
          <property name="margin" >
-          <number>0</number>
+          <number>9</number>
          </property>
          <property name="spacing" >
-          <number>2</number>
+          <number>6</number>
          </property>
          <item>
           <widget class="QRadioButton" name="mui_punteonopunteado" >
            <property name="text" >
             <string>Apuntes &amp;No Punteados</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="mui_punteopunteado" >
+           <property name="text" >
+            <string>Ap&amp;untes Punteados</string>
            </property>
           </widget>
          </item>
@@ -595,13 +591,6 @@
            </property>
            <property name="checked" >
             <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="mui_punteopunteado" >
-           <property name="text" >
-            <string>Ap&amp;untes Punteados</string>
            </property>
           </widget>
          </item>
@@ -3064,13 +3053,6 @@
  <layoutdefault spacing="2" margin="5" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>

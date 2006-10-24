@@ -51,11 +51,10 @@
 
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
-balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int)
+balanceview::balanceview(empresa *emp, QWidget *parent, int)
         : QWidget(parent) {
     setupUi(this);
     companyact = emp;
-
     numdigitos = companyact->numdigitosempresa();
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
@@ -66,7 +65,6 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int)
     combonivel->insertItem("5", 3);
     combonivel->insertItem("6", 4);
     combonivel->insertItem("7", 5);
-
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
@@ -78,7 +76,7 @@ balanceview::balanceview(empresa *emp, QWidget *parent, const char *, int)
     cargacostes();
     /// Activamos las se&ntilde;ales.
     connect(mui_actualizar, SIGNAL(clicked()), this, SLOT(accept()));
-    companyact->meteWindow(caption(), this);
+    companyact->meteWindow(windowTitle(), this);
 }
 
 

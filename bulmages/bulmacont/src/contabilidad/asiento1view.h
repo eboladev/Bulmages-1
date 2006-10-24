@@ -42,8 +42,7 @@ class empresa;
 /** Esta es una de las clases m&aacute;s complejas del programa porque controla toda la
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
-    el usuario que introduzca datos. Hereda intapunts3dlg.
-*/
+    el usuario que introduzca datos. Hereda intapunts3dlg. */
 class ListAsientos {
 
 private:
@@ -146,7 +145,7 @@ public:
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo();
-    Asiento1View(empresa *, QWidget *parent = 0, const char *name = 0, int flags = 0);
+    Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
 
 public slots:

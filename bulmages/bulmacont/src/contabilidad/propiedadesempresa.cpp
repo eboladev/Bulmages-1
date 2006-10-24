@@ -123,7 +123,7 @@ int propiedadesempresa::inicializa() {
         if (n == "Pais")
             p = linePais;
         if (p) {
-            cout << n.ascii() << " = " << v.ascii() << "\n";
+            cout << n.toAscii().constData() << " = " << v.toAscii().constData() << "\n";
             p->setText(v);
         }
     }
@@ -141,8 +141,8 @@ void propiedadesempresa::s_saveConfig() {
     while (tpropiedades->text(i, 0) != "") {
         QString SQLQuery;
         SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')", i,
-                         m_companyact->sanearCadena(tpropiedades->text(i, 0)).ascii(),
-                         m_companyact->sanearCadena(tpropiedades->text(i, 1)).ascii());
+                         m_companyact->sanearCadena(tpropiedades->text(i, 0)).toAscii().constData(),
+                         m_companyact->sanearCadena(tpropiedades->text(i, 1)).toAscii().constData());
         m_companyact->ejecuta(SQLQuery);
         i++;
     } // end while
@@ -170,7 +170,7 @@ void propiedadesempresa::update_value(QString n, QString v) {
     QString query = "SELECT * FROM configuracion WHERE nombre = '" + n + "'";
     cursor2 *cur = m_companyact->cargacursor(query, "configuracion");
     if (cur->numregistros() == 0) {
-        query.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES ((select max(idconfiguracion) + 1 FROM configuracion), '%s', '%s')", n.ascii(), v.ascii());
+        query.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES ((select max(idconfiguracion) + 1 FROM configuracion), '%s', '%s')", n.toAscii().constData(), v.toAscii().constData());
     } else {
         query = "UPDATE configuracion SET valor = '" + v + "' WHERE nombre = '" + n + "'";
     } // end if

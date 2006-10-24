@@ -43,7 +43,7 @@ public:
     empresa *m_companyact;
 
 public:
-    extractoview1(empresa *, QWidget *parent = 0, const char *name = 0, int flags = 0);
+    extractoview1(empresa *, QWidget *parent = 0, int flags = 0);
     ~extractoview1();
     void inicializa1(QString, QString, QString, QString, int);
     void vaciar();

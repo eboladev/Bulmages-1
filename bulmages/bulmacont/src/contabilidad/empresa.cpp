@@ -117,30 +117,30 @@ int empresa::inicializa1() {
     } // end if
 
     /// Inicializamos los selectores de centros de coste y canales.
-    selccostes = new selectccosteview(this, 0, "selccostes");
-    selcanales = new selectcanalview(this, 0, "selcanales");
+    selccostes = new selectccosteview(this, 0);
+    selcanales = new selectcanalview(this, 0);
 
     /// Inicializamos las ventanas de uso generalizado.
-    extracto = new extractoview1(this, 0, "extracto");
+    extracto = new extractoview1(this, 0);
     m_pWorkspace->addWindow(extracto);
 
-    diario = new DiarioView(this, 0, "diario");
+    diario = new DiarioView(this, 0);
     m_pWorkspace->addWindow(diario);
 
-    balance = new balanceview(this, 0, "balance");
+    balance = new balanceview(this, 0);
     m_pWorkspace->addWindow(balance);
 
-    balance1 = new BalanceTreeView(this, 0, "BalanceTree");
+    balance1 = new BalanceTreeView(this, 0);
     m_pWorkspace->addWindow(balance1);
 
-    introapunts2 = new Asiento1View(this, 0, "introapunts2");
+    introapunts2 = new Asiento1View(this, 0);
     m_pWorkspace->addWindow(introapunts2);
 
     m_listasientos = new asientosview(this, 0);
     m_listasientos->inicializa();
     m_pWorkspace->addWindow(m_listasientos);
 
-    m_listcuentas = new listcuentasview1(this, 0, "Cuentas");
+    m_listcuentas = new listcuentasview1(this, 0);
     m_listcuentas->inicializa();
     m_pWorkspace->addWindow(m_listcuentas);
 
@@ -272,7 +272,7 @@ int empresa::nuevaempresa() {
 
 /// Crea la ventana de edici&oacute;n de cuentas y devuelve un puntero a esta.
 cuentaview* empresa::newcuentaview() {
-    cuentaview *nuevae = new cuentaview(this, 0, "nuevacuenta", true);
+    cuentaview *nuevae = new cuentaview(this, 0);
     return nuevae;
 }
 
@@ -323,7 +323,7 @@ int empresa::amortizaciones() {
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
 /// de masas patrimoniales.
 int empresa::mpatrimoniales() {
-    mpatrimonialesview *nuevae = new mpatrimonialesview(0, "mpatrimoniales", true);
+    mpatrimonialesview *nuevae = new mpatrimonialesview(0);
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;

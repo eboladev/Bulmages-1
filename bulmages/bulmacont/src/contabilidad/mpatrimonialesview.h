@@ -46,7 +46,7 @@ public:
     QString idmasa;
 
 public:
-    mpatrimonialesview(QWidget *parent = 0, const char *name = 0, int fl = 0);
+    mpatrimonialesview(QWidget *parent = 0, Qt::WFlags fl = 0);
     ~mpatrimonialesview();
     int inicializa(postgresiface2 *);
     void inicializatabla();

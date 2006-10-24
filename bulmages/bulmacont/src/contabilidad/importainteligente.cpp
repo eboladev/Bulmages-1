@@ -65,7 +65,7 @@ bool importainteligente::startElement(const QString&, const QString&, const QStr
         delete cur;
     } // end if
     if (tag == "binteligente") {
-        SQLQuery.sprintf("INSERT INTO binteligente (idainteligente) VALUES (%s)\n", conexionbase->sanearCadena(tvalores["idainteligente"]).ascii());
+        SQLQuery.sprintf("INSERT INTO binteligente (idainteligente) VALUES (%s)\n", conexionbase->sanearCadena(tvalores["idainteligente"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idbinteligente) AS idbinteligente FROM binteligente";
@@ -96,57 +96,57 @@ bool importainteligente::startElement(const QString&, const QString&, const QStr
 bool importainteligente::endElement(const QString&, const QString&, const QString& qName) {
     QString SQLQuery;
     if (qName == "ainteligente") {
-        SQLQuery.sprintf("UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].ascii(), tvalores["idainteligente"].ascii());
+        SQLQuery.sprintf("UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE ainteligente SET comentariosasiento = '%s' WHERE idainteligente = %s\n", tvalores["comentariosasiento"].ascii(), tvalores["idainteligente"].ascii());
+        SQLQuery.sprintf("UPDATE ainteligente SET comentariosasiento = '%s' WHERE idainteligente = %s\n", tvalores["comentariosasiento"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
     } // end if
     if (qName == "binteligente") {
-        SQLQuery.sprintf("UPDATE binteligente SET fecha = '%s' WHERE idbinteligente = %s\n", tvalores["fecha"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET fecha = '%s' WHERE idbinteligente = %s\n", tvalores["fecha"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET conceptocontable = '%s' WHERE idbinteligente=%s\n", tvalores["conceptocontable"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET conceptocontable = '%s' WHERE idbinteligente=%s\n", tvalores["conceptocontable"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET codcuenta = '%s' WHERE idbinteligente = %s\n", tvalores["codcuenta"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET codcuenta = '%s' WHERE idbinteligente = %s\n", tvalores["codcuenta"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET descripcion = '%s' WHERE idbinteligente = %s\n", tvalores["descripcionb"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET descripcion = '%s' WHERE idbinteligente = %s\n", tvalores["descripcionb"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET debe = '%s' WHERE idbinteligente = %s\n", tvalores["debe"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET debe = '%s' WHERE idbinteligente = %s\n", tvalores["debe"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET haber = '%s' WHERE idbinteligente = %s\n", tvalores["haber"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET haber = '%s' WHERE idbinteligente = %s\n", tvalores["haber"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET contrapartida = '%s' WHERE idbinteligente = %s\n", tvalores["contrapartida"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET contrapartida = '%s' WHERE idbinteligente = %s\n", tvalores["contrapartida"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET comentario = '%s' WHERE idbinteligente = %s\n", tvalores["comentario"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET comentario = '%s' WHERE idbinteligente = %s\n", tvalores["comentario"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET canal = '%s' WHERE idbinteligente = %s\n", tvalores["canal"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET canal = '%s' WHERE idbinteligente = %s\n", tvalores["canal"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET idc_coste = '%s' WHERE idbinteligente = %s\n", tvalores["idc_coste"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET idc_coste = '%s' WHERE idbinteligente = %s\n", tvalores["idc_coste"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
-        SQLQuery.sprintf("UPDATE binteligente SET marcaconciliacion = '%s' WHERE idbinteligente = %s\n", tvalores["marcaconciliacion"].ascii(), tvalores["idbinteligente"].ascii());
+        SQLQuery.sprintf("UPDATE binteligente SET marcaconciliacion = '%s' WHERE idbinteligente = %s\n", tvalores["marcaconciliacion"].toAscii().constData(), tvalores["idbinteligente"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();

@@ -79,7 +79,7 @@ bool importbalance::startElement1(const QString&, const QString&, const QString&
         delete cur;
     } // end if
     if (m_tag == "mpatrimonial") {
-        SQLQuery.sprintf("INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).ascii());
+        SQLQuery.sprintf("INSERT INTO mpatrimonial (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idmpatrimonial) AS idmpatrimonial FROM mpatrimonial";
@@ -109,7 +109,7 @@ bool importbalance::endElement1(const QString&, const QString&, const QString& q
     m_tag = qName;
     QString SQLQuery;
     if (qName == "balance") {
-        SQLQuery.sprintf("UPDATE balance SET nombrebalance = '%s' WHERE idbalance = %s\n", m_tvalores["nombrebalance"].ascii(), m_tvalores["idbalance"].ascii());
+        SQLQuery.sprintf("UPDATE balance SET nombrebalance = '%s' WHERE idbalance = %s\n", m_tvalores["nombrebalance"].toAscii().constData(), m_tvalores["idbalance"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
@@ -120,33 +120,33 @@ bool importbalance::endElement1(const QString&, const QString&, const QString& q
         /// Cuando todo haya terminado debemos actualizar el cambo idmpatrimonial de los
         /// compmasap para que la cosa funcione.
         m_identmasasp[m_tvalores["idmasa"]] = m_tvalores["idmpatrimonial_nueva"];
-        SQLQuery.sprintf("UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s\n", m_tvalores["descmpatrimonial"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
+        SQLQuery.sprintf("UPDATE mpatrimonial SET descmpatrimonial = '%s' WHERE idmpatrimonial = %s\n", m_tvalores["descmpatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
         if (m_tvalores["orden"] != "") {
-            SQLQuery.sprintf("UPDATE mpatrimonial SET orden = %s WHERE idmpatrimonial = %s\n", m_tvalores["orden"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
+            SQLQuery.sprintf("UPDATE mpatrimonial SET orden = %s WHERE idmpatrimonial = %s\n", m_tvalores["orden"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();
             m_tvalores["orden"] = "";
         } // end if
         if (m_tvalores["tabulacion"] != "") {
-            SQLQuery.sprintf("UPDATE mpatrimonial SET tabulacion = %s WHERE idmpatrimonial = %s\n", m_tvalores["tabulacion"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
+            SQLQuery.sprintf("UPDATE mpatrimonial SET tabulacion = %s WHERE idmpatrimonial = %s\n", m_tvalores["tabulacion"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();
             m_tvalores["tabulacion"] = "";
         } // end if
         if (m_tvalores["opdesc"] != "") {
-            SQLQuery.sprintf("UPDATE mpatrimonial SET opdesc = %s WHERE idmpatrimonial = %s\n", m_tvalores["opdesc"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
+            SQLQuery.sprintf("UPDATE mpatrimonial SET opdesc = %s WHERE idmpatrimonial = %s\n", m_tvalores["opdesc"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();
             m_tvalores["opdesc"] = "";
         } // end if
         if (m_tvalores["tipompatrimonial"] != "") {
-            SQLQuery.sprintf("UPDATE mpatrimonial SET tipompatrimonial = %s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].ascii(), m_tvalores["idmpatrimonial_nueva"].ascii());
+            SQLQuery.sprintf("UPDATE mpatrimonial SET tipompatrimonial = %s WHERE idmpatrimonial=%s\n", m_tvalores["tipompatrimonial"].toAscii().constData(), m_tvalores["idmpatrimonial_nueva"].toAscii().constData());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();
@@ -184,7 +184,7 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
     /// As&iacute; nos aseguramos que ya existen los valores de idmpatrimonial y
     /// masaperteneciente.
     if (m_tag == "compmasap") {
-        SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["masaperteneciente"]]).ascii());
+        SQLQuery.sprintf("INSERT INTO compmasap (masaperteneciente) VALUES (%s)\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["masaperteneciente"]]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idcompmasap) AS idcompmasap FROM compmasap";
@@ -196,7 +196,7 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
         delete cur;
     } // end if
     if (m_tag == "compbalance") {
-        SQLQuery.sprintf("INSERT INTO compbalance (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).ascii());
+        SQLQuery.sprintf("INSERT INTO compbalance (idbalance) VALUES (%s)\n", conexionbase->sanearCadena(m_tvalores["idbalance"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         SQLQuery = "SELECT max(idcompbalance) AS idcompbalance FROM compbalance";
@@ -213,28 +213,28 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
         /// Actualizamos el idmasapatrimonial del compmasap, que es el que m&aacute;s
         /// dolores de cabeza causa.
         if (m_tvalores["idmpatrimonial"] != "" && m_tvalores["codigo"] == "") {
-            SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).ascii(), conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
+            SQLQuery.sprintf("UPDATE compmasap SET idmpatrimonial = %s WHERE idcompmasap = %s\n", conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).toAscii().constData(), conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();
         } // end if
         if (m_tvalores["codigo"] != "") {
             SQLQuery.sprintf("UPDATE compmasap SET idcuenta = id_cuenta('%s') WHERE idcompmasap = %s\n",
-                             conexionbase->sanearCadena(m_tvalores["codigo"]).ascii(),
-                             conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
+                             conexionbase->sanearCadena(m_tvalores["codigo"]).toAscii().constData(),
+                             conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
             conexionbase->begin();
             conexionbase->ejecuta(SQLQuery);
             conexionbase->commit();
         } // end if
         SQLQuery.sprintf("UPDATE compmasap SET signo = '%s' WHERE idcompmasap = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["signo"]).ascii(),
-                         conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
+                         conexionbase->sanearCadena(m_tvalores["signo"]).toAscii().constData(),
+                         conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
         SQLQuery.sprintf("UPDATE compmasap SET nombre = '%s' WHERE idcompmasap = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["nombre"]).ascii(),
-                         conexionbase->sanearCadena(m_tvalores["idcompmasap"]).ascii());
+                         conexionbase->sanearCadena(m_tvalores["nombre"]).toAscii().constData(),
+                         conexionbase->sanearCadena(m_tvalores["idcompmasap"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
@@ -244,26 +244,26 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
     if (m_tag == "compbalance") {
         /// Con los componentes del balance tambi&eacute;n intervienen las masas patrimoniales.
         SQLQuery.sprintf("UPDATE compbalance SET idmpatrimonial = %s WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).ascii(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
+                         conexionbase->sanearCadena(m_identmasasp[m_tvalores["idmpatrimonial"]]).toAscii().constData(),
+                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
         SQLQuery.sprintf("UPDATE compbalance SET orden = %s WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["orden"]).ascii(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
+                         conexionbase->sanearCadena(m_tvalores["orden"]).toAscii().constData(),
+                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
         SQLQuery.sprintf("UPDATE compbalance SET concepto = '%s' WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["concepto"]).ascii(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
+                         conexionbase->sanearCadena(m_tvalores["concepto"]).toAscii().constData(),
+                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
         SQLQuery.sprintf("UPDATE compbalance SET tabulacion = %s WHERE idcompbalance = %s\n",
-                         conexionbase->sanearCadena(m_tvalores["tabulacion"]).ascii(),
-                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).ascii());
+                         conexionbase->sanearCadena(m_tvalores["tabulacion"]).toAscii().constData(),
+                         conexionbase->sanearCadena(m_tvalores["idcompbalance"]).toAscii().constData());
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();

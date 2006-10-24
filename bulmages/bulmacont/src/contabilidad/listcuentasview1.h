@@ -84,7 +84,7 @@ public:
     };
 
 public:
-    listcuentasview1(empresa *, QWidget *parent = 0, const char *name = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
+    listcuentasview1(empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~listcuentasview1();
     int inicializa();
 

@@ -52,7 +52,7 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
 
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    listcuentasview1 *listcuentas = new listcuentasview1((empresa *) m_companyact, diag, tr("Seleccione cuenta", "company"), 0, listcuentasview1::SelectMode);
+    listcuentasview1 *listcuentas = new listcuentasview1((empresa *)m_companyact, diag, 0, listcuentasview1::SelectMode);
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (listcuentas->codcuenta() != "") {
@@ -184,7 +184,7 @@ void SubForm2Bc::boton_diario1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         } // end switch
-        companyact->diarioempresa()->inicializa1((char *) fecha1.toString("dd/MM/yyyy").ascii(), (char *) fecha2.toString("dd/MM/yyyy").ascii(), 0);
+        companyact->diarioempresa()->inicializa1((char *) fecha1.toString("dd/MM/yyyy").toAscii().constData(), (char *) fecha2.toString("dd/MM/yyyy").toAscii().constData(), 0);
     } // end if
     companyact->diarioempresa()->accept();
     companyact->librodiario();

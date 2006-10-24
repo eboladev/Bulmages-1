@@ -62,7 +62,7 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *na
     table1->hideColumn(COL_EJERCICIO);
     table1->hideColumn(COL_IDLINAMORTIZACION);
 
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END amortizacionview::amortizacionview", 0);
 }
 
@@ -103,7 +103,7 @@ void amortizacionview::s_saveAmortizacion() {
     fprintf(stderr, "Vamos a hacer un accept\n");
     if (idamortizacion == "") {
         fprintf(stderr, "Se trata de una insercion");
-        query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra,fecha1cuota, idcuentaactivo, idcuentaamortizacion, agrupacion) VALUES ('%s', %f, %d, '%s','%s', id_cuenta('%s'), id_cuenta('%s'),'%s')", namortizacion.ascii(), valorcompradbl, numcuotasint, fechacomprastr.ascii(), fecha1cuotastr.ascii(), ctaactivostr.ascii(), ctaamortizacionstr.ascii(), agrupacionstr.ascii());
+        query.sprintf("INSERT INTO amortizacion (nomamortizacion, valorcompra, numcuotas, fechacompra,fecha1cuota, idcuentaactivo, idcuentaamortizacion, agrupacion) VALUES ('%s', %f, %d, '%s','%s', id_cuenta('%s'), id_cuenta('%s'),'%s')", namortizacion.toAscii().constData(), valorcompradbl, numcuotasint, fechacomprastr.toAscii().constData(), fecha1cuotastr.toAscii().constData(), ctaactivostr.toAscii().constData(), ctaamortizacionstr.toAscii().constData(), agrupacionstr.toAscii().constData());
         m_companyact->begin();
         if (m_companyact->ejecuta(query)) {
             /// El mensaje de error lo deber&iacute;a dar la funci&oacute;n ejecuta,
@@ -125,14 +125,14 @@ void amortizacionview::s_saveAmortizacion() {
         /// Iteramos para cada l&iacute;nea en el subformulario.
         for (int i = 0; i < table1->numRows(); i++) {
             /// Insertamos en la base de datos cada l&iacute;nea de amortizaci&oacute;n.
-            query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, '%s', %s)", idamortizacion.ascii(), table1->text(i,COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii());
+            query.sprintf("INSERT INTO linamortizacion (idamortizacion, fechaprevista, cantidad) VALUES (%s, '%s', %s)", idamortizacion.toAscii().constData(), table1->text(i,COL_FECHA).toAscii().constData(), table1->text(i, COL_CUOTA).toAscii().constData());
             m_companyact->begin();
             m_companyact->ejecuta(query);
             m_companyact->commit();
         } // end for
     } else {
         fprintf(stderr,"Se trata de una modificacion\n");
-        query.sprintf("UPDATE amortizacion SET nomamortizacion = '%s', valorcompra = %f, numcuotas = %d, fechacompra = '%s', idcuentaactivo = %s, idcuentaamortizacion = %s, fecha1cuota = '%s', agrupacion = '%s' WHERE idamortizacion = %s", namortizacion.ascii(), valorcompradbl, numcuotasint,fechacomprastr.ascii(), idctaactivo.ascii(), idctaamortizacion.ascii(),fecha1cuotastr.ascii(),agrupacionstr.ascii(), idamortizacion.ascii());
+        query.sprintf("UPDATE amortizacion SET nomamortizacion = '%s', valorcompra = %f, numcuotas = %d, fechacompra = '%s', idcuentaactivo = %s, idcuentaamortizacion = %s, fecha1cuota = '%s', agrupacion = '%s' WHERE idamortizacion = %s", namortizacion.toAscii().constData(), valorcompradbl, numcuotasint,fechacomprastr.toAscii().constData(), idctaactivo.toAscii().constData(), idctaamortizacion.toAscii().constData(), fecha1cuotastr.toAscii().constData(), agrupacionstr.toAscii().constData(), idamortizacion.toAscii().constData());
         m_companyact->begin();
         m_companyact->ejecuta(query);
         m_companyact->commit();
@@ -140,7 +140,7 @@ void amortizacionview::s_saveAmortizacion() {
         for (int i = 0; i < table1->numRows(); i++) {
             if (table1->text(i,COL_IDLINAMORTIZACION) != "") {
                 /// Modificamos las entradas en la l&iacute;nea de amortizaci&oacute;n.
-                query.sprintf("UPDATE linamortizacion SET fechaprevista = '%s', cantidad = %s WHERE idlinamortizacion = %s", table1->text(i, COL_FECHA).ascii(), table1->text(i, COL_CUOTA).ascii(), table1->text(i, COL_IDLINAMORTIZACION).ascii());
+                query.sprintf("UPDATE linamortizacion SET fechaprevista = '%s', cantidad = %s WHERE idlinamortizacion = %s", table1->text(i, COL_FECHA).toAscii().constData(), table1->text(i, COL_CUOTA).toAscii().constData(), table1->text(i, COL_IDLINAMORTIZACION).toAscii().constData());
                 m_companyact->begin();
                 m_companyact->ejecuta(query);
                 m_companyact->commit();
@@ -176,7 +176,7 @@ amortizacionview::~amortizacionview() {}
 void amortizacionview::inicializa(QString idamortiza) {
     _depura("amortizacionview::inicializa", 0);
     idamortizacion = idamortiza;
-    fprintf(stderr, "Inicializamos el formulario %s\n", idamortizacion.ascii());
+    fprintf(stderr, "Inicializamos el formulario %s\n", idamortizacion.toAscii().constData());
     QString query = "SELECT * FROM amortizacion LEFT JOIN (SELECT idcuenta AS idcta, codigo AS codctaactivo FROM cuenta) AS t1 ON t1.idcta = amortizacion.idcuentaactivo LEFT JOIN (SELECT idcuenta AS idcta1, codigo AS codctaamortizacion FROM cuenta) AS t2 ON t2.idcta1 = amortizacion.idcuentaamortizacion WHERE idamortizacion = " + idamortizacion;
 
     m_companyact->begin();
@@ -191,9 +191,9 @@ void amortizacionview::inicializa(QString idamortiza) {
         valorcompra->setText(curs->valor("valorcompra"));
         numcuotas->setText(curs->valor("numcuotas"));
         QString cadena;
-        cadena.sprintf("%10.10s", curs->valor("fechacompra").ascii());
+        cadena.sprintf("%10.10s", curs->valor("fechacompra").toAscii().constData());
         fechacompra->setText(cadena);
-        cadena.sprintf("%10.10s", curs->valor("fecha1cuota").ascii());
+        cadena.sprintf("%10.10s", curs->valor("fecha1cuota").toAscii().constData());
         fecha1cuota->setText(cadena);
         ctaactivo->setText(curs->valor("codctaactivo"));
         idctaactivo = curs->valor("idcta");
@@ -250,7 +250,7 @@ void amortizacionview::inicializa(QString idamortiza) {
     /// est&aacute; hecha.
     botoncalcular->setDisabled(TRUE);
     dialogChanges_cargaInicial();
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END amortizacionview::inicializa", 0);
 }
 
@@ -270,7 +270,7 @@ void amortizacionview::calculaamortizacion() {
         valcuota = valorcompra->text().toDouble() / ncuotas;
         valcuotastr.sprintf("%10.2f", valcuota);
         for (int i = 0; i < ncuotas; i++) {
-            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").toAscii().constData());
             table1->setText(i, 0, f1cuota.toString("dd/MM/yyyy"));
             table1->setText(i, 1, valcuotastr);
             /// Dependiendo de la periodicidad actualizamos la fecha.
@@ -293,7 +293,7 @@ void amortizacionview::calculaamortizacion() {
         for (int i = 1; i <= ncuotas; i++) {
             valcuota = valorcompra->text().toDouble() * i/total;
             valcuotastr.sprintf("%10.2f", valcuota);
-            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").toAscii().constData());
             table1->setText(i - 1, 0, f1cuota.toString("dd/MM/yyyy"));
             table1->setText(i - 1, 1, valcuotastr);
             /// Dependiendo de la periodicidad actualizamos la fecha.
@@ -316,7 +316,7 @@ void amortizacionview::calculaamortizacion() {
         for (int i = 0; i < ncuotas; i++) {
             valcuota = valorcompra->text().toDouble() * (ncuotas - i) / total;
             valcuotastr.sprintf("%10.2f", valcuota);
-            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").toAscii().constData());
             table1->setText(i, 0, f1cuota.toString("dd/MM/yyyy"));
             table1->setText(i, 1, valcuotastr);
             /// Dependiendo de la periodicidad actualizamos la fecha.
@@ -344,7 +344,7 @@ void amortizacionview::calculaamortizacion() {
                 valcuota = valorcompra->text().toDouble() - total;
             } // end if
             valcuotastr.sprintf("%10.2f", valcuota);
-            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").ascii());
+            fprintf(stderr, "calculo de una cuota %s\n", f1cuota.toString("dd/MM/yyyy").toAscii().constData());
             table1->setText(i, 0, f1cuota.toString("dd/MM/yyyy"));
             table1->setText(i, 1, valcuotastr);
             /// Dependiendo de la periodicidad actualizamos la fecha.
@@ -442,9 +442,9 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
     if (opcion == 4) {
         /// Se va a generar el asiento.
         QString fecha = table1->text(row, COL_FECHA);
-        fprintf(stderr, "Fecha: %s\n", fecha.ascii());
+        fprintf(stderr, "Fecha: %s\n", fecha.toAscii().constData());
         QString cant = table1->text(row, COL_CUOTA);
-        fprintf(stderr, "Cuota: %s\n", cant.ascii());
+        fprintf(stderr, "Cuota: %s\n", cant.toAscii().constData());
         /// El asiento debe ser uno nuevo.
         int numasiento = 0;
         aplinteligentesview *nueva = new aplinteligentesview(m_companyact, 0);

@@ -53,8 +53,8 @@
 #define PADRE          m_cpadre
 
 
-BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, const char *name, int)
-        : QWidget (parent, name) {
+BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
+        : QWidget (parent) {
     setupUi(this);
     _depura("BalanceTreeView::BalanceTreeView\n", 0);
     m_companyact = emp;
@@ -117,7 +117,7 @@ BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, const char *name
     cadena.sprintf("%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
 
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END BalanceTreeView::BalanceTreeView\n", 0);
 }
 
@@ -252,11 +252,11 @@ void BalanceTreeView::presentar() {
     m_companyact->ejecuta(query);
     /// Vamos a implementar el tema del c&oacute;digo.
     if (cinicial != "") {
-        query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii());
+        query.sprintf("DELETE FROM balancetemp WHERE codigo < '%s'", cinicial.toAscii().constData());
         m_companyact->ejecuta(query);
     } // end if
     if (cfinal != "") {
-        query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii());
+        query.sprintf("DELETE FROM balancetemp WHERE codigo > '%s'", cfinal.toAscii().constData());
         m_companyact->ejecuta(query);
     } // end if
 
@@ -278,7 +278,7 @@ void BalanceTreeView::presentar() {
     query.sprintf("SELECT idcuenta FROM balancetemp ORDER BY padre DESC");
     cursorapt = m_companyact->cargacursor(query, "Balance1view");
     while (!cursorapt->eof()) {
-        query.sprintf("SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor("idcuenta").toAscii());
+        query.sprintf("SELECT * FROM balancetemp WHERE idcuenta = %s", cursorapt->valor("idcuenta").toAscii().constData());
         cursor2 *mycur = m_companyact->cargacursor(query,"cursorrefresco");
         if (!mycur->eof()) {
             query.sprintf("UPDATE balancetemp SET tsaldo = tsaldo + (%2.2f), tdebe = tdebe + (%2.2f), thaber = thaber +(%2.2f), asaldo = asaldo+(%2.2f), ejdebe = ejdebe + (%2.2f), ejhaber = ejhaber + (%2.2f), ejsaldo = ejsaldo + (%2.2f) WHERE idcuenta = %d", atof(mycur->valor("tsaldo").toAscii()), atof(mycur->valor("tdebe").toAscii()), atof(mycur->valor("thaber").toAscii()), atof(mycur->valor("asaldo").toAscii()), atof(mycur->valor("ejdebe").toAscii()), atof(mycur->valor("ejhaber").toAscii()),
@@ -298,7 +298,7 @@ void BalanceTreeView::presentar() {
     listado->clear();
     while (!cursorapt1->eof()) {
         QString padre1 = cursorapt1->valor("padre");
-        fprintf(stderr, "buscamos el item: %s\n", padre1.toAscii());
+        fprintf(stderr, "buscamos el item: %s\n", padre1.toAscii().constData());
         Q3ListViewItem *padre = listado->findItem(padre1, IDCUENTA, Qt::CaseSensitive);
         /// Si hemos encontrado el padre de la lista lo ponemos, si no lo hemos encontrado
         /// no lo ponemos.

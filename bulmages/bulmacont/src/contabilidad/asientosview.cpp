@@ -40,7 +40,7 @@ asientosview::asientosview(empresa *emp, QWidget *parent)
     } // end while
     delete cur;
     mui_filtrar->toggle();
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END asientosview::asientosview", 0);
 }
 

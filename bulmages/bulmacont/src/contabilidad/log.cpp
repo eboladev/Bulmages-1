@@ -34,7 +34,7 @@ bitacora *ctllog;
 bitacora::bitacora() {
     _depura("Constructor de Bitacora");
     /// Abre el archivo de log.
-    archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).ascii(), ios::out | ios::app);
+    archivolog = new ofstream(confpr->valor(CONF_ARCHIVO_LOG).toAscii().constData(), ios::out | ios::app);
     empresaactual = NULL;
     _depura("Fin de Constructor de Bitacora");
 }
@@ -61,9 +61,9 @@ void bitacora::add
         /// 1- nombre de la clase (abreviado),
         /// 2- nombre funcion abr.
         /// 3- nmero de log (general).
-        *archivolog << tipoLog <<  ", "  << nivellog << ", " << logdebug.ascii() << ", " << horastr.ascii() << ", usuario:" << empresaactual->nomuserempresa().ascii() << ", BD:" << empresaactual->nombreDB.ascii() << ", "<< qsTxt.ascii() << endl;
+        *archivolog << tipoLog <<  ", "  << nivellog << ", " << logdebug.toAscii().constData() << ", " << horastr.toAscii().constData() << ", usuario:" << empresaactual->nomuserempresa().toAscii().constData() << ", BD:" << empresaactual->nombreDB.toAscii().constData() << ", "<< qsTxt.toAscii().constData() << endl;
     } else {
-        *archivolog << tipoLog <<  ", " << nivellog << ", " << logdebug.ascii() << ", " << horastr.ascii() << ", "  << ", "  <<  ", " << qsTxt.ascii() << endl;
+        *archivolog << tipoLog <<  ", " << nivellog << ", " << logdebug.toAscii().constData() << ", " << horastr.toAscii().constData() << ", "  << ", "  <<  ", " << qsTxt.toAscii().constData() << endl;
     } // end if
 }
 

@@ -35,8 +35,8 @@
 #include "log.h"
 
 
-Bulmages01::Bulmages01(QWidget *parent, const char *name, Qt::WFlags f, QString DB)
-        : QMainWindow(parent, name, f) {
+Bulmages01::Bulmages01(QWidget *parent, Qt::WFlags f, QString DB)
+        : QMainWindow(parent, f) {
     _depura("Bulmages01::Bulmages01", 0);
     setupUi(this);
 
@@ -59,7 +59,7 @@ Bulmages01::Bulmages01(QWidget *parent, const char *name, Qt::WFlags f, QString 
     m_empresaactual->setListVentanas(m_list);
     m_empresaactual->inicializa1();
 
-    setCaption(tr("BulmaCont -- ") + DBName + " --");
+    setWindowTitle(tr("BulmaCont -- ") + DBName + " --");
     initStatusBar();
     ctllog->setempresa(m_empresaactual);
     ctllog->add

@@ -105,7 +105,7 @@ void BusquedaCuenta::s_searchCuenta() {
     diag->setModal(true);
 
     /// Creamos una instancia del selector de cuentas.
-    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, tr("Seleccione cuenta", "company"), 0, listcuentasview1::SelectMode);
+    listcuentasview1 *listcuentas = new listcuentasview1(empresaactual, diag, 0, listcuentasview1::SelectMode);
 
     /// Hacemos la conexi&oacute;n del cerrar de las cuentas con el cerrar di&aacute;logo.
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));

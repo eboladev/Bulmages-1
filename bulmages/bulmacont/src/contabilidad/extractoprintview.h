@@ -49,7 +49,7 @@ public:
     char *fichero;
     postgresiface2 *conexionbase;
     empresa *empresaactual;
-    ExtractoPrintView(empresa *, QWidget *, const char *);
+    ExtractoPrintView(empresa *, QWidget *);
     void presentar(char *tipus);
     ~ExtractoPrintView();
 

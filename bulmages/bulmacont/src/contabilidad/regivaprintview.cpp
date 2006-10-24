@@ -33,8 +33,8 @@
 extern Mod300ps *modelo;
 
 
-regivaprintview::regivaprintview(empresa *emp, QWidget *parent, const char *name )
-        : QDialog(parent, name) {
+regivaprintview::regivaprintview(empresa *emp, QWidget *parent)
+        : QDialog(parent) {
     setupUi(this);
     fichero = NULL;
     empresaactual = emp;
@@ -102,7 +102,7 @@ void regivaprintview::presentar(char *tipus) {
             int num1;
             cursor2 *cursorapt;
             conexionbase->begin();
-            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toAscii(), fechafinal1->text().toAscii());
+            query.sprintf("SELECT * FROM registroiva, cuenta, borrador, asiento  where cuenta.idcuenta = borrador.idcuenta AND borrador.idborrador = registroiva.idborrador AND asiento.idasiento = borrador.idasiento AND (cuenta.codigo LIKE '43%%' OR cuenta.codigo LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY asiento.ordenasiento", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData());
             fprintf(stderr, "%s\n", query.toAscii().constData());
             cursorapt = conexionbase->cargacursor(query, "mycursor");
             conexionbase->commit();
@@ -200,8 +200,8 @@ void regivaprintview::presentar(char *tipus) {
             delete cur;
 
             conexionbase->begin();
-            query.sprintf("SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().toAscii(), fechafinal1->text().toAscii());
-            fprintf(stderr,"%s\n",query.toAscii().constData());
+            query.sprintf("SELECT *, (baseimp + iva) AS total, (iva / baseimp * 100)::INTEGER AS cuota FROM registroiva, cuenta, borrador, asiento  WHERE cuenta.idcuenta=borrador.idcuenta AND borrador.idborrador=registroiva.idborrador AND asiento.idasiento=borrador.idasiento AND (cuenta.codigo NOT LIKE '43%%' AND cuenta.codigo NOT LIKE '600%%') AND borrador.fecha >= '%s' AND borrador.fecha <= '%s' ORDER BY cuota, borrador.fecha", fechainicial1->text().toAscii().constData(), fechafinal1->text().toAscii().constData());
+            fprintf(stderr, "%s\n", query.toAscii().constData());
             cursorapt = conexionbase->cargacursor(query, "mycursor");
             conexionbase->commit();
             /// Calculamos cuantos registros van a crearse y dimensionamos la tabla.

@@ -34,7 +34,7 @@ amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent, const char
     m_companyact = emp;
     inicializatabla();
     modo = 0;
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END amortizacionesview::amortizacionesview", 0);
 }
 

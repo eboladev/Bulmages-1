@@ -58,45 +58,45 @@ BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
             listMain->setText(1, "Abierto");
         } // end if
 
-        query.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").ascii());
+        query.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
         curPeri = empresaactual->cargacursor(query);
         while (!curPeri->eof()) {
             switch (curPeri->valor("periodo").toInt()) {
             case 12:
-                listAux = new myQListViewItem(listMain,tr("Diciembre "));
+                listAux = new myQListViewItem(listMain, tr("Diciembre "));
                 break;
             case 11:
-                listAux = new myQListViewItem(listMain,tr("Noviembre "));
+                listAux = new myQListViewItem(listMain, tr("Noviembre "));
                 break;
             case 10:
-                listAux = new myQListViewItem(listMain,tr("Octubre"   ));
+                listAux = new myQListViewItem(listMain, tr("Octubre"   ));
                 break;
             case  9:
-                listAux = new myQListViewItem(listMain,tr("Septiembre"));
+                listAux = new myQListViewItem(listMain, tr("Septiembre"));
                 break;
             case  8:
-                listAux = new myQListViewItem(listMain,tr("Agosto    "));
+                listAux = new myQListViewItem(listMain, tr("Agosto    "));
                 break;
             case  7:
-                listAux = new myQListViewItem(listMain,tr("Julio     "));
+                listAux = new myQListViewItem(listMain, tr("Julio     "));
                 break;
             case  6:
-                listAux = new myQListViewItem(listMain,tr("Junio     "));
+                listAux = new myQListViewItem(listMain, tr("Junio     "));
                 break;
             case  5:
-                listAux = new myQListViewItem(listMain,tr("Mayo      "));
+                listAux = new myQListViewItem(listMain, tr("Mayo      "));
                 break;
             case  4:
-                listAux = new myQListViewItem(listMain,tr("Abril     "));
+                listAux = new myQListViewItem(listMain, tr("Abril     "));
                 break;
             case  3:
-                listAux = new myQListViewItem(listMain,tr("Marzo     "));
+                listAux = new myQListViewItem(listMain, tr("Marzo     "));
                 break;
             case  2:
-                listAux = new myQListViewItem(listMain,tr("Febrero   "));
+                listAux = new myQListViewItem(listMain, tr("Febrero   "));
                 break;
             case  1:
-                listAux = new myQListViewItem(listMain,tr("Enero     "));
+                listAux = new myQListViewItem(listMain, tr("Enero     "));
                 break;
             }
             listAux->ej = curEjer->valor("ejercicio");

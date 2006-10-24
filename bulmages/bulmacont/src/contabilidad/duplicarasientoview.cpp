@@ -79,15 +79,15 @@ void duplicarasientoview::accept() {
     empresaactual->begin();
     cursor2 *cur = empresaactual->cargacursor(query, "hola");
     if (!cur->eof()) {
-        ordeninicial = atoi(cur->valor("orden").ascii()) + 1;
+        ordeninicial = atoi(cur->valor("orden").toAscii()) + 1;
     } // end if
     delete cur;
 
     query1 = "SELECT max(idasiento) AS maxim FROM asiento";
     cursor2 *cursaux = empresaactual->cargacursor(query1, "maximo");
     if (!cursaux->eof()) {
-        idasiento = atoi(cursaux->valor("maxim").ascii());
-        idasientoinicial = atoi(cursaux->valor("maxim").ascii()) + 1;
+        idasiento = atoi(cursaux->valor("maxim").toAscii());
+        idasientoinicial = atoi(cursaux->valor("maxim").toAscii()) + 1;
     } // end if
     delete cursaux;
 

@@ -194,7 +194,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
     } else {
         /// Se est&aacute; insertando de forma sistem&aacute;tica asientos inteligentes.
         /// Asi que debemos facilitar las cosas al m&aacute;ximo.
-        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii();
+        variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
         companyact->intapuntsempresa()->vaciaAsiento1();
         numasiento = companyact->intapuntsempresa()->idasiento().toInt();
@@ -317,7 +317,7 @@ void aplinteligentesview::mostrarplantilla() {
 
     fprintf(stderr, "Hemos recolectado las nuevas variables\n");
     for (i = 0;i < indvariablescta; i++) {
-        labelcta[i] = new QLabel(groupBox1, "");
+        labelcta[i] = new QLabel("", groupBox1);
         labelcta[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
         labelcta[i]->setText(variablescta[i][2]);
         labelcta[i]->show();
@@ -330,7 +330,7 @@ void aplinteligentesview::mostrarplantilla() {
     } // end for
 
     for (i = 0;i < indvariablesfecha; i++) {
-        labelfecha[i] = new QLabel(groupBox1, "");
+        labelfecha[i] = new QLabel("", groupBox1);
         labelfecha[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
         labelfecha[i]->setText(variablesfecha[i][2]);
         labelfecha[i]->show();
@@ -344,22 +344,22 @@ void aplinteligentesview::mostrarplantilla() {
     } // end for
 
     for (i = 0;i < indvariablesnumero; i++) {
-        labelnumero[i] = new QLabel(groupBox1, "");
+        labelnumero[i] = new QLabel("", groupBox1);
         labelnumero[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
         labelnumero[i]->setText(variablesnumero[i][2]);
         labelnumero[i]->show();
-        varnumero[i] = new QLineEdit(groupBox1, "");
+        varnumero[i] = new QLineEdit("", groupBox1);
         varnumero[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
         connect(varnumero[i], SIGNAL(returnPressed()), this, SLOT(return_numero()));
         varnumero[i]->show();
     } // end for
 
     for (i = 0;i < indvariablestexto; i++) {
-        labeltexto[i] = new QLabel(groupBox1, "");
+        labeltexto[i] = new QLabel("", groupBox1);
         labeltexto[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
         labeltexto[i]->setText(variablestexto[i][2]);
         labeltexto[i]->show();
-        vartexto[i] = new QLineEdit(groupBox1, "");
+        vartexto[i] = new QLineEdit("", groupBox1);
         vartexto[i]->setGeometry(QRect(150, inc + 32 * (j++), 350, 25));
         connect(vartexto[i], SIGNAL(returnPressed()), this, SLOT(return_texto()));
         vartexto[i]->show();
@@ -442,14 +442,14 @@ void aplinteligentesview::creaasiento() {
         for (int i = 0; i < litems.count(); i++) {
             QDomNode item = litems.item(i);
             codcuenta = aplicavariable(item.firstChildElement("codcuenta").text());
-            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii());
+            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", codcuenta.toAscii().constData());
             cur1 = companyact->cargacursor(query, "buscacodigo");
             if (!cur1->eof()) {
-                idcuenta = atoi(cur1->valor("idcuenta").toAscii());
+                idcuenta = atoi(cur1->valor("idcuenta").toAscii().constData());
             } // end if
             delete cur1;
             contrapartida = aplicavariable(item.firstChildElement("contrapartida").text());
-            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii());
+            query.sprintf("SELECT * FROM cuenta where codigo = '%s'", contrapartida.toAscii().constData());
             cur1 = companyact->cargacursor(query, "buscacodigo");
             if (!cur1->eof()) {
                 idcontrapartida = cur1->valor("idcuenta");
@@ -462,7 +462,7 @@ void aplinteligentesview::creaasiento() {
             fecha = aplicavariable(item.firstChildElement("fecha").text());
             conceptocontable = aplicavariable(item.firstChildElement("conceptocontable").text());
             descripcion = aplicavariable(item.firstChildElement("descripcion").text());
-            query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii(), debe.toAscii(), haber.toAscii(), fecha.toAscii(), conceptocontable.toAscii(), descripcion.toAscii(), orden++);
+            query.sprintf("INSERT INTO borrador (idasiento, idcuenta, contrapartida, debe, haber, fecha, conceptocontable, descripcion, orden) VALUES (%d, %d, %s, %s, %s, '%s', '%s', '%s', %d)", numasiento, idcuenta, idcontrapartida.toAscii().constData(), debe.toAscii().constData(), haber.toAscii().constData(), fecha.toAscii().constData(), conceptocontable.toAscii().constData(), descripcion.toAscii().constData(), orden++);
             companyact->begin();
             companyact->ejecuta(query);
             companyact->commit();

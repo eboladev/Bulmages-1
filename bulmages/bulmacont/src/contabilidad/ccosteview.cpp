@@ -36,12 +36,10 @@ ccosteview::ccosteview(empresa *emp, QWidget *parent)
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     idc_coste = 0;
-
     mui_list->setColumnCount(3);
     QStringList headers;
     headers << tr("nom_coste") << tr("desc_coste") << tr("idc_coste") ;
     mui_list->setHeaderLabels(headers);
-
     mui_list->setColumnHidden(COL_IDC_COSTE, TRUE);
     dialogChanges_cargaInicial();
     empresaactual->meteWindow(windowTitle(), this);
@@ -72,8 +70,8 @@ void ccosteview::pintar() {
 
     cursoraux1 = conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
-        padre = atoi( cursoraux1->valor("padre").ascii());
-        idc_coste1 = atoi( cursoraux1->valor("idc_coste").ascii());
+        padre = atoi( cursoraux1->valor("padre").toAscii());
+        idc_coste1 = atoi( cursoraux1->valor("idc_coste").toAscii());
         it = new QTreeWidgetItem(mui_list);
         Lista[idc_coste1] = it;
         it->setText(COL_IDC_COSTE, cursoraux1->valor("idc_coste"));
@@ -86,8 +84,8 @@ void ccosteview::pintar() {
 
     cursoraux2= conexionbase->cargacursor("SELECT * FROM c_coste WHERE padre IS NOT NULL ORDER BY idc_coste");
     while (!cursoraux2->eof()) {
-        padre = atoi(cursoraux2->valor("padre").ascii());
-        idc_coste1 = atoi(cursoraux2->valor("idc_coste").ascii());
+        padre = atoi(cursoraux2->valor("padre").toAscii());
+        idc_coste1 = atoi(cursoraux2->valor("idc_coste").toAscii());
         fprintf(stderr, "Cuentas de subnivel:%d", padre);
         it = new QTreeWidgetItem(Lista[padre]);
         Lista[idc_coste1] = it;
@@ -143,7 +141,7 @@ void ccosteview::on_mui_guardar_clicked() {
     QString nom = nomcentro->text();
     QString desc = desccoste->text();
     QString query;
-    query.sprintf ("UPDATE c_coste SET nombre='%s', descripcion = '%s' WHERE idc_coste = %d", nom.ascii(), desc.ascii(), idc_coste);
+    query.sprintf ("UPDATE c_coste SET nombre = '%s', descripcion = '%s' WHERE idc_coste = %d", nom.toAscii().constData(), desc.toAscii().constData(), idc_coste);
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();
@@ -169,7 +167,7 @@ void ccosteview::on_mui_crear_clicked() {
     QTreeWidgetItem *it;
     it=mui_list->currentItem();
     if (it) {
-        idc_coste = atoi(it->text(COL_IDC_COSTE).ascii());
+        idc_coste = atoi(it->text(COL_IDC_COSTE).toAscii());
         query.sprintf("INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste);
         conexionbase->begin();
         conexionbase->ejecuta(query);
@@ -180,7 +178,7 @@ void ccosteview::on_mui_crear_clicked() {
     } // end if
     query.sprintf("SELECT MAX(idc_coste) AS id_coste FROM c_coste");
     cursor2 *cur = conexionbase->cargacursor(query, "queryy");
-    idc_coste = atoi(cur->valor("id_coste").ascii());
+    idc_coste = atoi(cur->valor("id_coste").toAscii());
     delete cur;
     conexionbase->commit();
     pintar();

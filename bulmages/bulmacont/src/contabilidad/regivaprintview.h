@@ -48,7 +48,7 @@ public:
     empresa *empresaactual;
 
 public:
-    regivaprintview(empresa *, QWidget *parent = 0, const char *name = 0);
+    regivaprintview(empresa *, QWidget *parent = 0);
     ~regivaprintview();
     void inicializa1(QString, QString);
     void presentar(char *tipus);

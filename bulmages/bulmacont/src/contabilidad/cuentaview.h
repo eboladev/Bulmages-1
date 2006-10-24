@@ -52,7 +52,7 @@ public:
     unsigned int numdigitos; /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tiene la contabilidad en sus cuentas.
 
 public:
-    cuentaview(empresa *emp,QWidget *, const char *name = 0, int fl = 0);
+    cuentaview(empresa *emp, QWidget *, Qt::WFlags fl = 0);
     ~cuentaview();
     int inicializa();
     int nuevacuenta(QString, int);

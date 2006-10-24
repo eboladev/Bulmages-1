@@ -24,8 +24,8 @@
 #include "mpatrimonialview.h"
 
 
-mpatrimonialesview::mpatrimonialesview(QWidget *parent, const char *name, int fl)
-        : QDialog (parent, name, fl) {
+mpatrimonialesview::mpatrimonialesview(QWidget *parent, Qt::WFlags fl)
+        : QDialog (parent, fl) {
     setupUi(this);
     modo = 0;
 }
@@ -85,9 +85,9 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
     fprintf(stderr, "Se ha hecho doble click sobre la tabla\n");
     /// Dependiendo del modo hacemos una cosa u otra.
     if (modo == 0) {
-        QString idmpatrimonial = tabla->text(row, 0).ascii();
+        QString idmpatrimonial = tabla->text(row, 0).toAscii();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        mpatrimonialview *masa = new mpatrimonialview(this, 0);
+        mpatrimonialview *masa = new mpatrimonialview(this);
         masa->inicializa(conexionbase);
         masa->inicializa1(idmpatrimonial);
         masa->exec();
@@ -95,8 +95,8 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
         /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
         inicializatabla();
     } else {
-        idmasa = tabla->text(tabla->currentRow(), 0).ascii();
-        nommasa = tabla->text(tabla->currentRow(), 1).ascii();
+        idmasa = tabla->text(tabla->currentRow(), 0).toAscii();
+        nommasa = tabla->text(tabla->currentRow(), 1).toAscii();
         close();
     } // end if
 
@@ -118,12 +118,12 @@ void mpatrimonialesview::editarmasa() {
 void mpatrimonialesview::borrarmasa() {
     int row;
     row = tabla->currentRow();
-    idmasa = tabla->text(tabla->currentRow(), 0).ascii();
+    idmasa = tabla->text(tabla->currentRow(), 0).toAscii();
     QString query;
-    query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial   = %s", idmasa.ascii());
+    query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial   = %s", idmasa.toAscii().constData());
     conexionbase->begin();
     conexionbase->ejecuta(query);
-    query.sprintf("DELETE FROM mpatrimonial WHERE idmpatrimonial = %s", idmasa.ascii());
+    query.sprintf("DELETE FROM mpatrimonial WHERE idmpatrimonial = %s", idmasa.toAscii().constData());
     conexionbase->ejecuta(query);
     conexionbase->commit();
     inicializatabla();
@@ -131,7 +131,7 @@ void mpatrimonialesview::borrarmasa() {
 
 
 void mpatrimonialesview::nuevamasa() {
-    mpatrimonialview *masa = new mpatrimonialview(this, 0);
+    mpatrimonialview *masa = new mpatrimonialview(this);
     masa->inicializa(conexionbase);
     masa->exec();
     delete masa;

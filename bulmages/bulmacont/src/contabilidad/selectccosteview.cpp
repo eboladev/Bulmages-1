@@ -25,8 +25,8 @@
 #include "funcaux.h"
 
 
-selectccosteview::selectccosteview(empresa *emp,QWidget *parent, const char *name)
-        : QDialog (parent, name) {
+selectccosteview::selectccosteview(empresa *emp, QWidget *parent)
+        : QDialog (parent) {
     _depura("selectccosteview::selectccosteview", 0);
     setupUi(this);
     empresaactual = emp;
@@ -140,12 +140,12 @@ QString selectccosteview::cadcoste() {
     idc_coste = firstccoste();
     while (idc_coste) {
         if (ccostes != "")
-            ccostes.sprintf("%s, %d", ccostes.ascii(), idc_coste);
+            ccostes.sprintf("%s, %d", ccostes.toAscii().constData(), idc_coste);
         else
             ccostes.sprintf("%d", idc_coste);
         idc_coste = nextccoste();
     } /// end while
-    fprintf(stderr, " cadcoste: %s\n", ccostes.ascii());
+    fprintf(stderr, " cadcoste: %s\n", ccostes.toAscii().constData());
     return ccostes;
 }
 
@@ -157,7 +157,7 @@ QString selectccosteview::nomcoste() {
     fprintf(stderr, "nomcoste()\n");
     item = (Q3CheckListItem *) m_iterador->current();
     if (item->isOn()) {
-        fprintf(stderr, "nomcoste: %s\n", item->text(m_colNomCoste).ascii());
+        fprintf(stderr, "nomcoste: %s\n", item->text(m_colNomCoste).toAscii().constData());
         return item->text(m_colNomCoste);
     } else {
         return "";

@@ -18,10 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QTextStream>
 #include <QLineEdit>
 #include <q3datetimeedit.h>
 #include <q3progressbar.h>
-#include <QTextStream>
 
 #include "canualesprintview.h"
 #include "funcaux.h"
@@ -259,7 +259,7 @@ void CAnualesPrintView::imprimir() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.ascii());
+    system(archivo.toAscii().constData());
     /// Copiamos el logo.
 #ifdef WINDOWS
 
@@ -269,7 +269,7 @@ void CAnualesPrintView::imprimir() {
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #endif
 
-    system(archivologo.ascii());
+    system(archivologo.toAscii().constData());
     QFile file;
     file.setName(archivod);
     file.open(QIODevice::ReadOnly);

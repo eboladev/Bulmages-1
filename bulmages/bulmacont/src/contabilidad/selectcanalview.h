@@ -33,9 +33,11 @@ class empresa;
 /** */
 class selectcanalview : public QDialog, public Ui_SelectCanalBase {
     Q_OBJECT
+
 public:
-    selectcanalview(empresa *emp, QWidget *parent = 0, const char *name = 0);
+    selectcanalview(empresa *emp, QWidget *parent = 0);
     ~selectcanalview();
+
 private:
     empresa *empresaactual;
     int m_colNomCoste;
@@ -44,13 +46,15 @@ private:
     int m_colStatusCoste;
     int m_colCheck;
     int numdigitos;
-    Q3ListViewItemIterator* m_iterador;
+    Q3ListViewItemIterator *m_iterador;
+
 public:
     void cargacanales();
     int firstcanal();
     int nextcanal();
     QString cadcanal();
     QString nomcanal();
+
 public slots:
     void boton_todo();
     void boton_nada();

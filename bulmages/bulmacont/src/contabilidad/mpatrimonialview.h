@@ -38,7 +38,7 @@ public:
     QString idmpatrimonial;
 
 public:
-    mpatrimonialview(QWidget *parent = 0, const char *name = 0);
+    mpatrimonialview(QWidget *parent = 0);
     ~mpatrimonialview();
     int inicializa(postgresiface2 *);
     void inicializa1(QString);

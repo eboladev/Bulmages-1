@@ -43,8 +43,8 @@
 /** \param emp Empresa que llama al objeto.
     \param parent Widget padre de este.
     \param nam Nombre que recibe el widget o ventana. */
-Asiento1View::Asiento1View(empresa *emp, QWidget *parent, const char *name, int)
-        : QWidget (parent, name), Asiento1(emp), ListAsientos(emp) {
+Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
+        : QWidget (parent), Asiento1(emp), ListAsientos(emp) {
     setupUi(this);
     _depura("Asiento1View::Asiento1View\n", 0);
     m_companyact = emp;
@@ -58,7 +58,7 @@ Asiento1View::Asiento1View(empresa *emp, QWidget *parent, const char *name, int)
     cargaasientos();
     /// Desplazamos hasta el último asiento.
     boton_fin();
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END Asiento1View::Asiento1View\n", 0);
 }
 

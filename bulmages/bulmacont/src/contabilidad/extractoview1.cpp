@@ -48,19 +48,16 @@
 /// Este archivo contiene la implementaci&oacute;n de la clase extractoview1 que saca el
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
 /// tres principales junto a \ref introapuntes1 y \ref diarioview1.
-extractoview1::extractoview1(empresa *emp, QWidget *parent, const char *name, int)
-        : QWidget(parent,name) {
+extractoview1::extractoview1(empresa *emp, QWidget *parent, int)
+        : QWidget(parent) {
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
-
     mui_list->setcompany(emp);
-
     m_companyact = emp;
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
-
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
@@ -69,8 +66,7 @@ extractoview1::extractoview1(empresa *emp, QWidget *parent, const char *name, in
     cadena.sprintf("%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
     m_cursorcta = NULL;
-
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END extractoview1::extractoview1", 0);
 }
 
@@ -149,7 +145,7 @@ void extractoview1::boton_fin() {
 
 
 void extractoview1::boton_imprimir() {
-    ExtractoPrintView *print = new ExtractoPrintView(m_companyact, 0, 0);
+    ExtractoPrintView *print = new ExtractoPrintView(m_companyact, 0);
     print->exec();
 }
 
@@ -161,11 +157,11 @@ void extractoview1::boton_guardar() {
                  tr("Elige el nombre de archivo"));
     if (!fn.isEmpty()) {
         libromayorprint libromayor;
-        QString finicial = m_fechainicial1->text().toAscii();
-        QString ffinal = m_fechafinal1->text().toAscii();
+        QString finicial = m_fechainicial1->text().toAscii().constData();
+        QString ffinal = m_fechafinal1->text().toAscii().constData();
         libromayor.inicializa(m_companyact);
         libromayor.inicializa1(m_codigoinicial->text(), m_codigofinal->text(), finicial, ffinal);
-        libromayor.inicializa2((char *) fn.toAscii().constData());
+        libromayor.inicializa2((char *)fn.toAscii().constData());
         libromayor.accept();
     } // end if
 }
@@ -238,11 +234,11 @@ void extractoview1::presentar() {
     selectccosteview *scoste = m_companyact->getselccostes();
     QString ccostes = scoste->cadcoste();
     if (ccostes != "") {
-        ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.toAscii());
+        ccostes.sprintf(" AND idc_coste IN (%s) ", ccostes.toAscii().constData());
     } // end if
     QString ccanales = scanal->cadcanal();
     if (ccanales != "") {
-        ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.toAscii());
+        ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.toAscii().constData());
     } // end if
     QString tabla;
     if (mui_asAbiertos->isChecked()) {
@@ -314,20 +310,20 @@ void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fe
 
 void extractoview1::on_mui_casacion_clicked() {
     QString query;
-    query.sprintf("SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = %s ORDER BY fecha", m_cursorcta->valor("idcuenta").toAscii());
+    query.sprintf("SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = %s ORDER BY fecha", m_cursorcta->valor("idcuenta").toAscii().constData());
     m_companyact->begin();
     cursor2 *curshaber = m_companyact->cargacursor(query, "curshaber");
     m_companyact->commit();
     while (!curshaber->eof()) {
-        query.sprintf("SELECT * FROM apunte WHERE punteo = FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").toAscii(), m_cursorcta->valor("idcuenta").toAscii());
+        query.sprintf("SELECT * FROM apunte WHERE punteo = FALSE AND debe = %s AND idcuenta = %s ORDER BY fecha", curshaber->valor("haber").toAscii().constData(), m_cursorcta->valor("idcuenta").toAscii().constData());
         m_companyact->begin();
         cursor2 *cursdebe = m_companyact->cargacursor(query.toAscii(), "cursdebe");
         m_companyact->commit();
         if (!cursdebe->eof()) {
-            query.sprintf("UPDATE apunte set punteo = TRUE WHERE idapunte = %s", curshaber->valor("idapunte").toAscii());
+            query.sprintf("UPDATE apunte set punteo = TRUE WHERE idapunte = %s", curshaber->valor("idapunte").toAscii().constData());
             m_companyact->begin();
             m_companyact->ejecuta(query);
-            query.sprintf("UPDATE apunte SET punteo = TRUE WHERE idapunte = %s", cursdebe->valor("idapunte").toAscii());
+            query.sprintf("UPDATE apunte SET punteo = TRUE WHERE idapunte = %s", cursdebe->valor("idapunte").toAscii().constData());
             m_companyact->ejecuta(query);
             m_companyact->commit();
         } // end if
@@ -352,7 +348,7 @@ void extractoview1::on_mui_guardarpunteo_clicked() {
             query = "SELECT * FROM apunte WHERE punteo = TRUE";
             cursor2 *cursp = m_companyact->cargacursor(query, "punteos");
             while (!cursp->eof()) {
-                fprintf(mifile,"%s\n", cursp->valor("idapunte").toAscii());
+                fprintf(mifile,"%s\n", cursp->valor("idapunte").toAscii().constData());
                 cursp->siguienteregistro();
             } // end while
             delete cursp;
@@ -394,7 +390,7 @@ void extractoview1::on_mui_cargarpunteos_clicked() {
                  tr("Cargar punteo"),
                  tr("Elige el nombre de archivo"));
     if (!fn.isEmpty()) {
-        ifstream filestr((char *) fn.toAscii().constData());
+        ifstream filestr((char *)fn.toAscii().constData());
         string a;
         m_companyact->ejecuta("UPDATE apunte SET punteo = FALSE");
         while (filestr.good()) {

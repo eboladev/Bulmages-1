@@ -22,8 +22,8 @@
 #include "empresa.h"
 
 
-cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int)
-        : QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this) {
+cuentaview::cuentaview(empresa *emp, QWidget *parent, Qt::WFlags fl)
+        : QWidget(parent, fl | Qt::WDestructiveClose), dialogChanges(this) {
     setupUi(this);
     idcuenta = 0;
     empresaactual = emp;
@@ -31,7 +31,7 @@ cuentaview::cuentaview(empresa *emp, QWidget *parent, const char *name, int)
     numdigitos = emp->numdigitosempresa();
     inicializa();
     dialogChanges_cargaInicial();
-    empresaactual->meteWindow(caption(), this);
+    empresaactual->meteWindow(windowTitle(), this);
 }
 
 
@@ -189,8 +189,8 @@ int cuentaview::cargacuenta(int idcuenta1) {
     codigo->setText(cursorcuenta->valor("codigo"));
 
     /// Cambiamos el t&iacute;tulo de la ventana con el c&oacute;digo.
-    setCaption(tr("Cuenta") + codigo->text());
-    empresaactual->meteWindow(caption(), this);
+    setWindowTitle(tr("Cuenta") + codigo->text());
+    empresaactual->meteWindow(windowTitle(), this);
 
     descripcion->setText(cursorcuenta->valor("descripcion"));
     debe->setText(cursorcuenta->valor("debe"));
@@ -285,7 +285,7 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
     /// siguiente que le corresponda.
     QString cpadreaux;
     QString query;
-    query.sprintf("SELECT * FROM cuenta WHERE padre = id_cuenta('%s') ORDER BY codigo DESC", codpadre.toAscii());
+    query.sprintf("SELECT * FROM cuenta WHERE padre = id_cuenta('%s') ORDER BY codigo DESC", codpadre.toAscii().constData());
     cursor2 *cur = conexionbase->cargacursor(query);
     if (!cur->eof()) {
         long int valor = cur->valor("codigo").toLong();

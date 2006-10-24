@@ -27,8 +27,8 @@
 /** Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa
     el programa. Luego llama al m&eacute;todo cargacanales que hace la carga de los canales
     a partir de la base de datos. */
-selectcanalview::selectcanalview(empresa *emp,QWidget *parent, const char *name)
-        : QDialog(parent, name) {
+selectcanalview::selectcanalview(empresa *emp,QWidget *parent)
+        : QDialog(parent) {
     _depura("selectcanalview::selectcanalview", 0);
     setupUi(this);
     empresaactual = emp;
@@ -60,7 +60,7 @@ void selectcanalview::cargacanales() {
     cursoraux1 = empresaactual->cargacursor("SELECT * FROM canal", "canalillos");
     empresaactual->commit();
     while (!cursoraux1->eof()) {
-        idcanal = atoi(cursoraux1->valor("idcanal").ascii());
+        idcanal = atoi(cursoraux1->valor("idcanal").toAscii());
         it = new Q3CheckListItem(m_listCanales, "hola pepsi", Q3CheckListItem::CheckBox);
         Lista[idcanal] = it;
         it->setText(m_colIdCoste, cursoraux1->valor("idcanal"));
@@ -108,7 +108,7 @@ QString selectcanalview::cadcanal() {
     idcanal = firstcanal();
     while (idcanal) {
         if (ccanales != "")
-            ccanales.sprintf("%s, %d", ccanales.ascii(), idcanal);
+            ccanales.sprintf("%s, %d", ccanales.toAscii().constData(), idcanal);
         else
             ccanales.sprintf("%d", idcanal);
         idcanal = nextcanal();
@@ -122,7 +122,7 @@ QString selectcanalview::nomcanal() {
     Q3CheckListItem *item;
     item = (Q3CheckListItem *) m_iterador->current();
     if (item->isOn()) {
-        fprintf(stderr, "nomcanal: %s\n", item->text(m_colNomCoste).ascii());
+        fprintf(stderr, "nomcanal: %s\n", item->text(m_colNomCoste).toAscii().constData());
         return item->text(m_colNomCoste);
     } else {
         return "";

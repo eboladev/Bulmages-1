@@ -103,7 +103,7 @@ void Modgenps::escrizqder(float valor, int x, int y) {
     QString cad1, cad2;
     formatdigits(&cad1, &cad2, valor);
     cout << "Si le digo" << valor << " me sale:\n";
-    cout << "OJO!!!:"<< cad1.ascii() << " ," << cad2.ascii() <<"\n";
+    cout << "OJO!!!:"<< cad1.toAscii().constData() << " ," << cad2.toAscii().constData() <<"\n";
     escrizq(cad1, x, y);
     escrder(cad2, x, y);
 }

@@ -52,7 +52,7 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
     metabase->inicializa("bulmages"); ///[TODO] CAMBIAR!!!!
 
     metabase->begin();
-    fprintf(stderr, "%s\n", query.ascii());
+    fprintf(stderr, "%s\n", query.toAscii().constData());
     cursor2 *cur = metabase->cargacursor(query, "bancos");
 
     int nTuples = cur->numregistros();
@@ -66,7 +66,7 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
         nombresccc[i] += cur->valor("codigo");
 
         numerccc[i] = cur->valor("bancoent_cuenta");
-        cout << nombresccc[i].ascii() << "\t" << numerccc[i].ascii() << "\n";
+        cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
         combocuentas->insertItem(nombresccc[i]);
         cur->siguienteregistro();
     }
@@ -93,9 +93,9 @@ void Mod300ps::accept() {
     } else
         ccc = new numerocuenta(banco->text(), entidad->text(), dc->text(), cuenta->text());
 
-    cout << "Elegida cuenta numero " << ccc->getcodigo("-").ascii() << "\n";
+    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toAscii().constData() << "\n";
 
-    cout << "dc=" << ccc->getdc().ascii() << "\n";
+    cout << "dc=" << ccc->getdc().toAscii().constData() << "\n";
     if (!ccc->cuentaesvalida()) {
         switch (QMessageBox::warning(this,
                                      QObject::tr("Formulario 300"),
@@ -166,7 +166,7 @@ void Mod300ps::generaps() {
     /// Ahora tengo que procesar tempname y generar psname.
     if (doit) {
         psname = QString(getenv("HOME")) + "/.bulmages/mod300.ps";
-        cout << psname.ascii();
+        cout << psname.toAscii().constData();
         m_fich.setName(psname);
         if (m_fich.open(QIODevice::WriteOnly)) {
             m_output.setDevice(&m_fich);
@@ -235,7 +235,7 @@ void Mod300ps::generaps() {
             m_fichlec.close();
             m_fich.close();
 
-            cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA).ascii() << "\n";
+            cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA).toAscii().constData() << "\n";
             cout << "[TODO] OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
             cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 

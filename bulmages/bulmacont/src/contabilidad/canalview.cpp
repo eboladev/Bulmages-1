@@ -101,8 +101,8 @@ void canalview::on_mui_guardar_clicked() {
     QString desc = desccanal->text();
     QString query;
     query.sprintf ("UPDATE canal SET nombre ='%s', descripcion = '%s' WHERE idcanal = %d",
-                   conexionbase->sanearCadena(nom).ascii(),
-                   conexionbase->sanearCadena(desc).ascii(),
+                   conexionbase->sanearCadena(nom).toAscii().constData(),
+                   conexionbase->sanearCadena(desc).toAscii().constData(),
                    idcanal);
     conexionbase->ejecuta(query);
     dialogChanges_cargaInicial();
@@ -127,7 +127,7 @@ void canalview::on_mui_crear_clicked() {
     conexionbase->ejecuta(query);
     query.sprintf("SELECT MAX(idcanal) AS id FROM canal");
     cursor2 *cur = conexionbase->cargacursor(query, "queryy");
-    idcanal = atoi(cur->valor("id").ascii());
+    idcanal = atoi(cur->valor("id").toAscii());
     delete cur;
     conexionbase->commit();
     pintar();

@@ -38,7 +38,7 @@ CAnualesView::CAnualesView(empresa *emp, QWidget *parent, const char *name)
     m_companyact = emp;
     m_modo = 0;
     inicializatabla();
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END CAnualesView::CAnualesView", 0);
 }
 

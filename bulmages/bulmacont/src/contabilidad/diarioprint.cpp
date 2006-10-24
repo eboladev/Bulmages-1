@@ -77,20 +77,20 @@ void diarioprint::accept() {
         cursoraux = conexionbase->cargaasientosfecha(finicial, ffinal);
         for (; !cursoraux->eof(); cursoraux->siguienteregistro()) {
             fprintf(stderr, "bucle\n");
-            fechaasiento = cursoraux->valor(2).ascii();
-            idasiento = atoi(cursoraux->valor(0).ascii());
+            fechaasiento = cursoraux->valor(2).toAscii().constData();
+            idasiento = atoi(cursoraux->valor(0).toAscii());
             cursoraux1 = conexionbase->cargaapuntes(idasiento);
             for (; !cursoraux1->eof(); cursoraux1->siguienteregistro()) {
-                fecha = cursoraux1->valor(4).ascii();
-                descripcion = cursoraux1->valor(5).ascii();
-                concepto = cursoraux->valor(1).ascii();
-                debe = atof(cursoraux1->valor(8).ascii());
-                haber = atof(cursoraux1->valor(9).ascii());
-                idcuenta = atoi(cursoraux1->valor(6).ascii());
+                fecha = cursoraux1->valor(4).toAscii().constData();
+                descripcion = cursoraux1->valor(5).toAscii().constData();
+                concepto = cursoraux->valor(1).toAscii().constData();
+                debe = atof(cursoraux1->valor(8).toAscii());
+                haber = atof(cursoraux1->valor(9).toAscii());
+                idcuenta = atoi(cursoraux1->valor(6).toAscii());
 
                 cursoraux2 = conexionbase->cargacuenta(idcuenta, NULL);
                 if (!cursoraux2->eof()) {
-                    codigocuenta = cursoraux2->valor(1).ascii();
+                    codigocuenta = cursoraux2->valor(1).toAscii().constData();
                 } // end if
                 cursoraux2->cerrar();
                 delete cursoraux2;
@@ -107,6 +107,6 @@ void diarioprint::accept() {
 
     /// Hacemos la llamada de sistema para imprimir.
     QString cadaux = confpr->valor(CONF_EDITOR) + " diario.txt";
-    system(cadaux.ascii());
+    system(cadaux.toAscii().constData());
 }
 

@@ -99,7 +99,7 @@ void BModelo347::click_imprimir() {
             cif = tablaventas->text(i, 2);
             cp = tablaventas->text(i, 3);
             importe = tablaventas->text(i, 4);
-            fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.ascii(), descripcion.ascii(), cif.ascii(), cp.ascii(), importe.toFloat());
+            fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.toAscii().constData(), descripcion.toAscii().constData(), cif.toAscii().constData(), cp.toAscii().constData(), importe.toFloat());
         }
         numcompras = tablacompras->numRows();
         fprintf(mifile, "\nCuenta	 Acreedor				 	    CIF/NIF     CP	Importe\n");
@@ -111,7 +111,7 @@ void BModelo347::click_imprimir() {
             cif = tablacompras->text(i, 2);
             cp = tablacompras->text(i, 3);
             importe = tablacompras->text(i, 4);
-            fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.ascii(), descripcion.ascii(), cif.ascii(), cp.ascii(), importe.toFloat());
+            fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.toAscii().constData(), descripcion.toAscii().constData(), cif.toAscii().constData(), cp.toAscii().constData(), importe.toFloat());
         }
         fclose(mifile);
     } // end if
@@ -122,7 +122,7 @@ void BModelo347::click_imprimir() {
         exit(errno);
     } // end if
     if (!pid) {
-        error = execvp(confpr->valor(CONF_EDITOR).ascii(), args);
+        error = execvp(confpr->valor(CONF_EDITOR).toAscii(), args);
     } // end if
 #endif
 }

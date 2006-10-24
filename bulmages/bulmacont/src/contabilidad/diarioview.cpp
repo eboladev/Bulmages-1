@@ -44,8 +44,8 @@
 #include "busquedafecha.h"
 
 
-DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int)
-        : QWidget(parent, name) {
+DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
+        : QWidget(parent) {
     setupUi(this);
     _depura("DiarioView::DiarioView\n", 0);
     m_companyact = emp;
@@ -58,7 +58,7 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, const char *name, int)
     mui_fechainicial->setText(cadena);
     sprintf(cadena, "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     mui_fechafinal->setText(cadena);
-    m_companyact->meteWindow(caption(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END DiarioView::DiarioView\n", 0);
 }
 

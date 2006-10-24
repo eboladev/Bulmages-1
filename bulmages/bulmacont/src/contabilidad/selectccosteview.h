@@ -62,7 +62,7 @@ private:
 public:
     /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
     /// base de datos a utilizar.
-    selectccosteview(empresa *emp, QWidget *parent = 0, const char *name = 0);
+    selectccosteview(empresa *emp, QWidget *parent = 0);
     /// Destructor de la clase.
     ~selectccosteview();
     void cargacostes();

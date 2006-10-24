@@ -37,7 +37,7 @@ private:
     empresa *m_companyact;
 
 public:
-    DiarioView(empresa *, QWidget *parent = 0, const char *name = 0, int flags = 0);
+    DiarioView(empresa *, QWidget *parent = 0, int flags = 0);
     ~DiarioView();
     void accept();
     /// Inicializa la clase con las fechas inicial y final. El &uacute;ltimo par&aacute;metro
