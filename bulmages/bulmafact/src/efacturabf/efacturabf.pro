@@ -72,11 +72,17 @@ windows {
 #	TARGET = ../../../installbulmages/plugins/mypluginbf
 }
 
-FORMS += efacturabase.ui
+FORMS += 	efacturabase.ui \
+		efacturaenviobase.ui \
+		efacturarecepcionbase.ui
 
 SOURCES = 	efacturabf.cpp \
-		efactura.cpp
+		efactura.cpp \
+		efacturaenvio.cpp \
+		efacturarecepcion.cpp
 
 HEADERS = 	efacturabf.h \
-		efactura.h
+		efactura.h \
+		efacturaenvio.h \
+		efacturarecepcion.h
 

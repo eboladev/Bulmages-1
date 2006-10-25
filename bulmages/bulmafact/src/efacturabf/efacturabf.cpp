@@ -27,6 +27,8 @@
 
 #include "efacturabf.h"
 #include "efactura.h"
+#include "efacturaenvio.h"
+#include "efacturarecepcion.h"
 #include "company.h"
 #include "funcaux.h"
 
@@ -38,6 +40,13 @@ efacturabf::~efacturabf() {}
 void efacturabf::elslot() {
 	EFactura *ef = new EFactura(m_companyact);
 	ef->show();
+	
+	EFacturaEnvio *efv = new EFacturaEnvio(m_companyact);
+	efv->show();
+	
+	EFacturaRecepcion *efr = new EFacturaRecepcion(m_companyact);
+	efr->show();
+	
 //     fprintf(stderr,"Sa ha activado el slot\n");
 //     QMessageBox::warning(0,
 //                          "Titulo de la ventana",

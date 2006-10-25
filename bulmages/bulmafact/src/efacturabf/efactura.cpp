@@ -56,6 +56,8 @@ EFactura::EFactura(company *emp, QWidget *parent) : QWidget(parent) {
 
 EFactura::~EFactura() {}
 
+// ---------------------------- Slots ---------------------------- //
+
 /// Funcionalidad del boton Examinar en el apartado del certificado
 
 void EFactura::on_mui_examinaECertificado_clicked() {
@@ -66,8 +68,11 @@ void EFactura::on_mui_examinaECertificado_clicked() {
                     "Escoja un fichero por favor",
                     "/home",
                     "Todos los archivos (*)");
+
+	/// Si se le da a cancelar, s devuelve NULL y se queda el campo de texto vacio
 	
-	mui_ficheroECertificado->setText(s);
+	if (s != NULL)
+		mui_ficheroECertificado->setText(s);
 }
 
 /// Funcionalidad del boton guardar

@@ -8,18 +8,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>319</height>
+    <width>446</width>
+    <height>357</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Configuración Factura Electrónica</string>
   </property>
-  <widget class="QWidget" name="" >
+  <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
     <rect>
      <x>10</x>
-     <y>280</y>
+     <y>320</y>
      <width>424</width>
      <height>30</height>
     </rect>
@@ -80,7 +80,7 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
-  <widget class="QWidget" name="" >
+  <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
     <rect>
      <x>10</x>
@@ -108,37 +108,11 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="labelServidorTiempo" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>424</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>URL del servidor de tiempo a utilizar</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="encabezado" >
-   <property name="geometry" >
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>424</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text" >
-    <string>Configuración para el envío y recepción de factura electrónica</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="labelServidorValidaCert" >
    <property name="geometry" >
     <rect>
      <x>10</x>
-     <y>190</y>
+     <y>250</y>
      <width>411</width>
      <height>16</height>
     </rect>
@@ -151,7 +125,7 @@
    <property name="geometry" >
     <rect>
      <x>10</x>
-     <y>150</y>
+     <y>210</y>
      <width>424</width>
      <height>21</height>
     </rect>
@@ -164,10 +138,62 @@
    <property name="geometry" >
     <rect>
      <x>10</x>
-     <y>210</y>
+     <y>270</y>
      <width>421</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="text" >
+    <string>http://</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelEncabezado" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>424</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Configuración para el envío y recepción de factura electrónica</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelServidorTiempo" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>190</y>
+     <width>424</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>URL del servidor de tiempo a utilizar</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="mui_email" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>241</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>421</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Dirección de e-mail donde se reciben las e-factutas</string>
    </property>
   </widget>
  </widget>
