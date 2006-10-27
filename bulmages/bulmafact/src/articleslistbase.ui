@@ -11,8 +11,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>382</height>
+    <width>973</width>
+    <height>587</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -26,7 +26,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -59,7 +59,7 @@
          <number>5</number>
         </property>
         <property name="spacing" >
-         <number>5</number>
+         <number>2</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -121,6 +121,28 @@
           </property>
           <property name="icon" >
            <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_imprimirCatalogo" >
+          <property name="toolTip" >
+           <string>Imprimir Catalogo</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir Catalogo</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -278,8 +300,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>80</width>
-            <height>20</height>
+            <width>131</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>

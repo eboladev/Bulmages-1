@@ -80,7 +80,6 @@ public:
         return mdb_codigocompletoarticulo;
     };
     void presenta();
-    void Imprimir();
     void editArticle(int);
     /// Funciones que se encargan en guardar y cargar la configuracion del listado.
     void guardaconfig();
@@ -113,7 +112,6 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newArticulo();
-//        m_empresaact->s_newArticulo();
     };
     virtual void on_mui_imprimir_clicked() {
         s_imprimir1();
@@ -130,6 +128,8 @@ public slots:
     virtual void on_mui_list_toogledConfig(bool check) {
         mui_configurar->setChecked(check);
     };
+
+    virtual void on_mui_imprimirCatalogo_clicked();
 
 signals:
     void selected(QString);

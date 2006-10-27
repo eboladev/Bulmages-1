@@ -3,12 +3,13 @@
 # Subdir relative project main directory: .
 # Target is a subdirs project 
 
-CONFIG+=ordered
+CONFIG = ordered
 
   TEMPLATE = subdirs
+
   SUBDIRS += bulmalib
-  SUBDIRS += bulmacont
   SUBDIRS += bulmafact
+  SUBDIRS += bulmacont
 #  SUBDIRS += bulmatpv
   SUBDIRS += bulmages
   

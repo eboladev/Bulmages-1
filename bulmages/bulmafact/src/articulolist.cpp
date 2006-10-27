@@ -176,11 +176,11 @@ QString ArticuloList::detalleArticulos() {
         QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + XMLProtect(cur->valor("codigocompletoarticulo")) + ".jpg";
         QFile f(file);
         if (f.exists()) {
-            texto += "<td><illustration x=\"0\" y=\"0\" height=\"5cm\">\n"
+            texto += "<td><!-- illustration x=\"0\" y=\"0\" height=\"5cm\" -->\n"
                      "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) +
                      XMLProtect(cur->valor("codigocompletoarticulo")) +
                      ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
-                     "</illustration></td>\n";
+                     "<!-- /illustration --></td>\n";
         } else {
             texto += "<td></td>\n";
         }
@@ -194,10 +194,11 @@ QString ArticuloList::detalleArticulos() {
 }
 
 
-void ArticuloList::Imprimir() {
-    _depura("ArticuloList::INIT_Imprimir()\n", 0);
+void ArticuloList::on_mui_imprimirCatalogo_clicked() {
+    _depura("ArticuloList::on_mui_imprimirCatalogo_clicked()\n", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
+    QString archivod1 = confpr->valor(CONF_DIR_USER) + "articulos1.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -233,8 +234,11 @@ void ArticuloList::Imprimir() {
         stream << buff;
         file.close();
     } // end if
-    invocaPDF("articulos");
-    _depura("ArticuloList::END_Imprimir()\n", 0);
+
+    QString iconv = "iconv -tUTF8 -c "+archivod+" > "+archivod1;
+    system(iconv.toAscii().constData());
+    invocaPDF("articulos1");
+    _depura("END ArticuloList::on_mui_imprimirCatalogo_clicked()\n", 0);
 }
 
 
