@@ -4,7 +4,7 @@
 <template pageSize="(21cm, 29.7cm)" leftMargin="0cm" rightMargin="0cm" topMargin="1.0cm" bottomMargin="2.0cm" title="Presupuesto" author="Tomeu Borras" allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
-		<include src="/var/bulmages/openreports/plantilla.rml"/>
+		<include src="/usr/share/bulmages/openreports/plantilla.rml"/>
 
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
@@ -39,7 +39,7 @@
 </template>
 
 
-<include src="/var/bulmages/openreports/estilos.rml"/>
+<include src="/usr/share/bulmages/openreports/estilos.rml"/>
 
 <story>
 <blockTable style="tablacontenido" colWidths="1.75cm, 8.55cm, 1.2cm, 1.7cm, 1.8cm, 2.25cm" repeatRows="1">
