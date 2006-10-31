@@ -24,8 +24,9 @@
 
 
 canalview::canalview(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent), dialogChanges(this) {
     _depura("canalview::canalview", 0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
@@ -86,7 +87,7 @@ void canalview::mostrarplantilla() {
     cursor2 *cursorcanal = conexionbase->cargacursor(query);
     if (!cursorcanal->eof()) {
         nomcanal->setText(cursorcanal->valor("nombre"));
-        desccanal->setText(cursorcanal->valor("descripcion"));
+        desccanal->setPlainText(cursorcanal->valor("descripcion"));
     } // end if
     mui_idcanal->setidcanal(QString::number(idcanal));
     dialogChanges_cargaInicial();
@@ -98,7 +99,7 @@ void canalview::mostrarplantilla() {
 void canalview::on_mui_guardar_clicked() {
     _depura("canalview::on_mui_guardar_clicked", 0);
     QString nom = nomcanal->text();
-    QString desc = desccanal->text();
+    QString desc = desccanal->toPlainText();
     QString query;
     query.sprintf ("UPDATE canal SET nombre ='%s', descripcion = '%s' WHERE idcanal = %d",
                    conexionbase->sanearCadena(nom).toAscii().constData(),
@@ -118,7 +119,7 @@ void canalview::on_mui_crear_clicked() {
         if (QMessageBox::warning(this,
                                  tr("Guardar canal"),
                                  tr("Desea guardar los cambios."),
-                                 tr("&Guardar"), tr("&Cancelar"), 0 ,0 ,1 ) == 0)
+                                 tr("&Guardar"), tr("&Cancelar"), 0 , 0, 1) == 0)
             on_mui_guardar_clicked();
     } // end if
     QString query;

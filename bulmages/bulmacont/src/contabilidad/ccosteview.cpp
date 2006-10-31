@@ -130,7 +130,7 @@ void ccosteview::mostrarplantilla() {
     cursor2 *cursorcoste = conexionbase->cargacursor(query);
     if (!cursorcoste->eof()) {
         nomcentro->setText(cursorcoste->valor("nombre"));
-        desccoste->setText(cursorcoste->valor("descripcion"));
+        desccoste->setPlainText(cursorcoste->valor("descripcion"));
     } // end if
     delete cursorcoste;
     dialogChanges_cargaInicial();
@@ -139,9 +139,9 @@ void ccosteview::mostrarplantilla() {
 
 void ccosteview::on_mui_guardar_clicked() {
     QString nom = nomcentro->text();
-    QString desc = desccoste->text();
+    QString desc = desccoste->toPlainText();
     QString query;
-    query.sprintf ("UPDATE c_coste SET nombre = '%s', descripcion = '%s' WHERE idc_coste = %d", nom.toAscii().constData(), desc.toAscii().constData(), idc_coste);
+    query.sprintf("UPDATE c_coste SET nombre = '%s', descripcion = '%s' WHERE idc_coste = %d", nom.toAscii().constData(), desc.toAscii().constData(), idc_coste);
     conexionbase->begin();
     conexionbase->ejecuta(query);
     conexionbase->commit();
@@ -158,14 +158,14 @@ void ccosteview::on_mui_crear_clicked() {
                                  tr("Guardar centro de coste"),
                                  tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok,
-                                 QMessageBox::Cancel ) == QMessageBox::Ok) {
+                                 QMessageBox::Cancel) == QMessageBox::Ok) {
             on_mui_guardar_clicked();
         } // end if
     }// end if
 
     QString query;
     QTreeWidgetItem *it;
-    it=mui_list->currentItem();
+    it = mui_list->currentItem();
     if (it) {
         idc_coste = atoi(it->text(COL_IDC_COSTE).toAscii());
         query.sprintf("INSERT INTO c_coste (padre, nombre, descripcion) VALUES (%d, 'Nuevo centro de coste', 'Escriba su descripcion')", idc_coste);
@@ -191,13 +191,13 @@ void ccosteview::on_mui_borrar_clicked() {
                                  tr("Se va a borrar el centro de coste.\n \
                                     Esta operacion puede ocasionar perdida de datos\n"),
                                  tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
-    case 0: // Retry clicked or Enter pressed
+    case 0: /// Retry clicked or Enter pressed.
         QString query;
         query.sprintf("DELETE FROM c_coste WHERE idc_coste = %d", idc_coste);
         conexionbase->begin();
         conexionbase->ejecuta(query);
         conexionbase->commit();
-        idc_coste=0;
+        idc_coste = 0;
         pintar();
     } // end switch
 }

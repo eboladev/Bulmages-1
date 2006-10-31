@@ -49,7 +49,7 @@ public:
 
 public slots:
     virtual void s_saveConfig();
-    virtual bool close(bool);
+    virtual bool close();
     virtual void extiendeCuentas();
 
 private:

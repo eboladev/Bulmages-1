@@ -180,7 +180,7 @@ void propiedadesempresa::update_value(QString n, QString v) {
 }
 
 
-bool propiedadesempresa::close(bool ok) {
+bool propiedadesempresa::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::question(this,

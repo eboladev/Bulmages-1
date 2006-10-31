@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>557</width>
-    <height>570</height>
+    <width>569</width>
+    <height>515</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -23,7 +23,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -230,21 +230,18 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3GroupBox" name="groupBox1" >
+    <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Contenido del Centro de Coste</string>
+      <string>Contenido del centro de coste:</string>
      </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <layout class="QGridLayout" >
+     <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>11</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
-      <item row="0" column="0" >
+      <item>
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -255,7 +252,7 @@
         <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
-           <string>Nombre</string>
+           <string>Nombre:</string>
           </property>
          </widget>
         </item>
@@ -264,7 +261,7 @@
         </item>
        </layout>
       </item>
-      <item row="1" column="0" >
+      <item>
        <layout class="QVBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -283,21 +280,12 @@
            </sizepolicy>
           </property>
           <property name="text" >
-           <string>Descripcion</string>
+           <string>Descripción:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="Q3TextEdit" name="desccoste" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
+         <widget class="QTextEdit" name="desccoste" />
         </item>
        </layout>
       </item>
@@ -341,42 +329,10 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3TextEdit</class>
-   <extends></extends>
-   <header>q3textedit.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
-  <connection>
-   <sender>mui_detalles</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>groupBox1</receiver>
-   <slot>setVisible(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>17</x>
-     <y>289</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>58</x>
-     <y>323</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>pushButton2</sender>
    <signal>clicked()</signal>

@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>586</width>
-    <height>236</height>
+    <width>541</width>
+    <height>233</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,25 +17,22 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
-    <widget class="Q3GroupBox" name="groupBox3" >
+    <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Datos Listado</string>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+      <string>Datos del listado:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>11</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -146,43 +143,50 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="Q3ButtonGroup" name="buttonGroup1" >
+      <widget class="QGroupBox" name="groupBox_2" >
        <property name="title" >
-        <string>Formato</string>
-       </property>
-       <property name="orientation" >
-        <enum>Qt::Vertical</enum>
+        <string>Formato:</string>
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>11</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
-         <widget class="QRadioButton" name="radiotexto" >
-          <property name="text" >
-           <string>Texto Plano</string>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
           </property>
-          <property name="checked" >
-           <bool>true</bool>
+          <property name="spacing" >
+           <number>6</number>
           </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radiohtml" >
-          <property name="text" >
-           <string>HTML</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="radioPS" >
-          <property name="text" >
-           <string>Postscript</string>
-          </property>
-         </widget>
+          <item>
+           <widget class="QRadioButton" name="radiotexto" >
+            <property name="text" >
+             <string>Texto Plano</string>
+            </property>
+            <property name="checked" >
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radiohtml" >
+            <property name="text" >
+             <string>HTML</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioPS" >
+            <property name="text" >
+             <string>Postscript</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -197,18 +201,11 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>130</width>
-         <height>20</height>
+         <width>21</width>
+         <height>103</height>
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton2" >
-       <property name="text" >
-        <string>Cancelar</string>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="pushButton1" >
@@ -220,28 +217,19 @@
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="pushButton2" >
+       <property name="text" >
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>
