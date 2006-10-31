@@ -106,9 +106,10 @@ void ArticuloView::pintar() {
     _depura("END ArticuloView::pintar", 1);
 }
 
-/// Esta funcion carga un articulo de la base de datos y lo presenta.
-/// Si el parametro pasado no es un identificador valido entonces se pone
-/// la ventana de edicion en modo de insercion.
+
+/// Esta funci&oacute;n carga un art&iacute;culo de la base de datos y lo presenta.
+/// Si el par&aacute;metro pasado no es un identificador v&aacute;lido entonces se pone
+/// la ventana de edici&oacute;n en modo de inserci&oacute;n.
 int ArticuloView::cargar(QString idarticulo) {
     _depura("ArticuloView::cargar()\n", 0);
     try {
@@ -116,22 +117,23 @@ int ArticuloView::cargar(QString idarticulo) {
 
         /// Disparamos los plugins.
         int res = g_plugins->lanza("ArticuloView_cargar", this);
-        if (res != 0)
+        if (res != 0) {
             return res;
-
+        } // end if
         QString ivaType = "";
         Articulo::cargar(idarticulo);
         ivaType = DBvalue("idtipo_iva");
 
         int ret = cargarcomboiva(ivaType);
-        if (ret)
+        if (ret) {
             throw -1;
-
+        } // end if
         /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
         setWindowTitle(tr("Articulo") + " " + DBvalue("codigocompletoarticulo"));
         ret = m_companyact->meteWindow(windowTitle(), this);
-        if (ret)
+        if (ret) {
             throw -1;
+        } // end if
         m_componentes->cargar(DBvalue("idarticulo"));
 
     } catch (...) {
@@ -145,13 +147,14 @@ int ArticuloView::cargar(QString idarticulo) {
 }
 
 
-/// Hace la carga del combo-box de tipos de iva para el articulo.
+/// Hace la carga del combo-box de tipos de IVA para el art&iacute;culo.
 int ArticuloView::cargarcomboiva(QString idIva) {
     _depura("ArticuloView::INIT_cargarcomboiva()\n", 0);
 
     m_cursorcombo = NULL;
-    if (m_cursorcombo != NULL)
+    if (m_cursorcombo != NULL) {
         delete m_cursorcombo;
+    } // end if
     m_combotipo_iva->clear();
     m_cursorcombo = m_companyact->cargacursor("SELECT * FROM tipo_iva");
     if (m_cursorcombo->error()) {
@@ -164,7 +167,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         i++;
         if (idIva == m_cursorcombo->valor("idtipo_iva")) {
             i1 = i;
-        }
+        } // end if
         m_combotipo_iva->addItem(m_cursorcombo->valor("desctipo_iva"));
         m_cursorcombo->siguienteregistro();
     } // end while
@@ -177,7 +180,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
 }
 
 
-/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
+/// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 void ArticuloView::on_mui_borrar_clicked() {
     _depura("ArticuloView::INIT_boton_borrar()\n", 0);
 
@@ -209,8 +212,8 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 
 
 /// Metodo de guardar la ficha. Guarda todos los componentes de la ficha.
-/// Si todo ha ido bien devuelve 0
-/// Si hay algun error debe ser tratado con el manejo de excepciones catch.
+/// Si todo ha ido bien devuelve 0.
+/// Si hay alg&uacute;n error debe ser tratado con el manejo de excepciones catch.
 int ArticuloView::guardar() {
     try {
         _depura("ArticuloView::guardar()\n", 0);
@@ -225,9 +228,9 @@ int ArticuloView::guardar() {
         setDBvalue("pvparticulo", m_pvparticulo->text());
         setDBvalue("idtipo_iva", m_cursorcombo->valor("idtipo_iva", m_combotipo_iva->currentIndex()));
 
-        if (Articulo::guardar() != 0)
+        if (Articulo::guardar() != 0) {
             throw -1;
-
+        } // end if
         /// Guardamos la imagen, si es que existe.
         if (m_archivoimagen != "") {
             cursor2 *cur1 = m_companyact->cargacursor("SELECT codigocompletoarticulo FROM articulo WHERE idarticulo = " + DBvalue("idarticulo"));
@@ -243,9 +246,9 @@ int ArticuloView::guardar() {
 
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_guardar_post", this);
-        if (res != 0)
+        if (res != 0) {
             return res;
-
+        } // end if
         dialogChanges_cargaInicial();
 
         _depura("END ArticuloView::guardar()\n", 0);
@@ -264,8 +267,9 @@ int ArticuloView::borrar() {
         m_companyact->begin();
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_borrar", this);
-        if (res != 0)
+        if (res != 0) {
             return res;
+        } // end if
         m_componentes->borrar();
         Articulo::borrar();
         m_companyact->commit();

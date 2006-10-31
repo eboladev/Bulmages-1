@@ -92,7 +92,7 @@ public:
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
-        }
+        } // end if
     };
     void setidproveedor(QString val) {
         m_proveedor->setidproveedor(val);

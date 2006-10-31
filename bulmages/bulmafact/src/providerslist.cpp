@@ -148,7 +148,7 @@ void ProveedorList::on_mui_exportar_clicked() {
                   confpr->valor(CONF_DIR_USER),
                   tr("Proveedores (*.xml)")));
 
-    if(filexml.open(QIODevice::WriteOnly)) {
+    if (filexml.open(QIODevice::WriteOnly)) {
         bulmafact2XML(filexml, IMPORT_PROVEEDORES);
         filexml.close();
     } else {

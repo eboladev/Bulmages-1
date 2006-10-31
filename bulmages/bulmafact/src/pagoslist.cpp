@@ -67,7 +67,6 @@ void PagosList::presentar() {
     _depura("PagosList::presentar()\n", 0);
     if (m_companyact != NULL ) {
         mui_list->cargar("SELECT * FROM pago NATURAL LEFT JOIN proveedor NATURAL LEFT JOIN trabajador WHERE 1 = 1 " + generaFiltro());
-
         /// Hacemos el calculo del total.
         cursor2 *cur = m_companyact->cargacursor("SELECT SUM(cantpago) AS total FROM pago WHERE 1 = 1 " + generaFiltro());
         m_total->setText(cur->valor("total"));
@@ -88,23 +87,20 @@ QString PagosList::generaFiltro() {
     if (m_proveedor->idproveedor() != "") {
         filtro += " AND pago.idproveedor = " + m_proveedor->idproveedor();
     } // end if
-
     QString subfiltro = " AND ";
     if (mui_efectivos->isChecked() ) {
         filtro += " AND NOT previsionpago";
 	subfiltro = " OR ";
     } // end if
-
     if (mui_previsiones->isChecked() ) {
         filtro += subfiltro + " previsionpago";
     } // end if
-
-
-
-    if (m_fechain->text() != "")
+    if (m_fechain->text() != "") {
         filtro += " AND fechapago >= '" + m_fechain->text() + "' ";
-    if (m_fechafin->text() != "")
+    } // end if
+    if (m_fechafin->text() != "") {
         filtro += " AND fechapago <= '" + m_fechafin->text() + "' ";
+    } // end if
     _depura("END PagosList::generaFiltro", 0);
     return (filtro);
 }
@@ -112,10 +108,11 @@ QString PagosList::generaFiltro() {
 
 void PagosList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a >= 0) {
         on_mui_list_cellDoubleClicked(a, 0);
-    else
+    } else {
         _depura("Debe seleccionar una linea", 2);
+    } // end if
 }
 
 
@@ -138,16 +135,19 @@ void PagosList::on_mui_list_cellDoubleClicked(int, int) {
 void PagosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
-    if (a < 0)
+    if (a < 0) {
         return;
+    } // end if
     QMenu *popup = new QMenu(this);
     QAction *edit = popup->addAction(tr("Editar pago"));
     QAction *del = popup->addAction(tr("Borrar pago"));
     QAction *opcion = popup->exec(QCursor::pos());
-    if (opcion == del)
+    if (opcion == del) {
         on_mui_borrar_clicked();
-    if (opcion == edit)
+    } // end if
+    if (opcion == edit) {
         on_mui_editar_clicked();
+    } // end if
     delete popup;
 }
 
@@ -193,17 +193,17 @@ PagosListSubForm::PagosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("pago");
     setDBCampoId("idpago");
     addSHeader("idpago", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pago"));
-    addSHeader("idproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id proveedor"));
+    addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id proveedor"));
     addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre proveedor"));
     addSHeader("cifproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("C.I.F. proveedor"));
     addSHeader("telproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono proveedor"));
     addSHeader("emailproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Email proveedor"));
-    addSHeader("fechapago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de pago"));
-    addSHeader("cantpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cantidad"));
+    addSHeader("fechapago", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de pago"));
+    addSHeader("cantpago", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cantidad"));
     addSHeader("refpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia de pago"));
     addSHeader("previsionpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Prevision pago"));
     addSHeader("comentpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario pago"));
-    addSHeader("idtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
+    addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
     addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de trabajador"));
     addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos trabajador"));
     setinsercion(FALSE);
