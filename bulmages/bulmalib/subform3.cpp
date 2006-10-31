@@ -37,7 +37,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setAlternatingRowColors(TRUE);
-    mui_list->setSortingEnabled(TRUE);
+    mui_list->setSortingEnabled(FALSE); // Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
 
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
@@ -280,6 +280,8 @@ int SubForm3::inicializar() {
 /** Este m&eacute;todo genera, a partir del recordset pasado como par&aacute;metro el listado y lo muestra. */
 void SubForm3::cargar(cursor2 *cur) {
     _depura("SubForm3::cargar", 0);
+    /// Desactivamos el sorting debido a un error en las Qt4
+    mui_list->setSortingEnabled(FALSE);
     /// Ponemos la consulta a la vista para que pueda ser editada.
     mui_query->setPlainText(cur->query());
     SDBRecord *rec;
@@ -326,9 +328,11 @@ void SubForm3::cargar(cursor2 *cur) {
         cargaconfig();
     /// Inicializamos la tabla con las filas necesarias.
     mui_list->setRowCount(m_lista.count());
+
     SDBRecord *reg;
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
+
         SDBCampo *camp;
         for (int j = 0; j < reg->lista()->size(); ++j) {
             camp = (SDBCampo *) reg->lista()->at(j);
@@ -340,6 +344,8 @@ void SubForm3::cargar(cursor2 *cur) {
     mui_list->ordenar();
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
+    /// Reactivamos el sorting
+    mui_list->setSortingEnabled(TRUE);
     _depura("END SubForm3::cargar", 0);
 }
 

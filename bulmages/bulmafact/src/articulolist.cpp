@@ -45,7 +45,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     m_familia->setcompany(comp);
     mui_list->setcompany(comp);
     m_usadoarticulo->setCheckState(Qt::Unchecked);
-    presenta();
+
     m_modo = editmodo;
     if (m_modo == EditMode) {
         comp->meteWindow(windowTitle(), this);
@@ -59,6 +59,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         mui_imprimir->setHidden(TRUE);
     } // end if
 
+    presenta();
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
 }
@@ -321,8 +322,8 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     addSHeader("obserarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Observaciones sobre el articulo"));
     addSHeader("desctipo_articulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion del tipo de articulo"));
     addSHeader("desctipo_iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion tipo de I.V.A."));
-    addSHeader("pvparticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("P.V.P. articulo"));
-    addSHeader("stockarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
+    addSHeader("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("P.V.P. articulo"));
+    addSHeader("stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
     setinsercion(FALSE);
     setDelete(FALSE);
 }

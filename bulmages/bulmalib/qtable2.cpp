@@ -32,8 +32,8 @@ QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
 
 
 /// Esta funcion ya es obsoleta y no se utiliza.
-bool QTableWidgetItem2::operator < (const QTableWidgetItem & other) {
-    _depura("QTableWidgetItem2::operator<", 0);
+bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
+    _depura("QTableWidgetItem2::operator<", 2);
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -56,7 +56,7 @@ bool QTableWidgetItem2::operator < (const QTableWidgetItem & other) {
         } // end if
         return cad < cad1;
     } // end if
-    _depura("END QTableWidgetItem2::operator<", 0);
+    _depura("END QTableWidgetItem2::operator<", 2);
     return TRUE;
 }
 
@@ -164,10 +164,12 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 
 void QTableWidget2::ordenar() {
     _depura("QTableWidget2::ordenar ", 0);
-    sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
+//    sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
+	sortByColumn(m_colorden);
     _depura("END QTableWidget2::ordenar", 0);
 }
 
+/*
 
 void QTableWidget2::sortByColumn(int col) {
     _depura("QTableWidget2::sortByColumn ", 0);
@@ -182,7 +184,6 @@ void QTableWidget2::sortByColumn(int col) {
 
 void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
     _depura("QTableWidget2::sortColumn", 0);
-
     m_tipoorden = tipoorden;
     m_colorden = col;
     if (m_colorden > columnCount() | m_colorden < 0) {
@@ -209,6 +210,9 @@ void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
     for (int x = 0; x < rowCount(); x++) {
         _depura("tratamos un elemento " + QString::number(x) + " " + QString::number(col), 0);
         QString cad = item(x, col)->text();
+	
+	bool f = item(x,col) < item(x, lastcol);
+
         _depura("comprobamos " + cad, 0);
         if (cad != "") {
             setText(x, lastcol + 0, cad);
@@ -241,9 +245,11 @@ void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
     removeColumn(lastcol + 2);
     removeColumn(lastcol + 1);
     removeColumn(lastcol + 0);
+
     _depura("END QTableWidget2::sortColumn", 0);
 }
 
+*/
 
 void QTableWidget2::setText(int x, int y, const QString & val) {
     _depura("QTableWidget::setText", 0);

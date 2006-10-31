@@ -94,6 +94,8 @@ public:
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");
     virtual int set(QString val);
     void refresh();
+//    virtual bool operator< (const SDBCampo &other) const {_depura("comparando elementos", 2);};
+    virtual bool operator< (const QTableWidgetItem &other) const;
 };
 
 #endif

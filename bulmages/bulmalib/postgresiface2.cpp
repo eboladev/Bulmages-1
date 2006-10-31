@@ -147,7 +147,7 @@ QString cursor2::valor(int posicion, int registro) {
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
 QString cursor2::valor(QString campo, int registro) {
-    _depura("cursor2::valor", 0, campo + " " + QString::number(registro));
+    _depura("cursor2::valor"+ campo + " " + QString::number(registro), 0);
     int i = 0;
     if (registro == -1) {
         registro = registroactual;
@@ -155,6 +155,7 @@ QString cursor2::valor(QString campo, int registro) {
     i = numcampo(campo);
     if (i == -1)
         return "";
+    _depura("END cursor2::valor ", 0,"campo:"+campo+" ----- Valor:"+PQgetvalue(result, registro, i));
     return (QString::fromUtf8(PQgetvalue(result, registro, i)));
 }
 

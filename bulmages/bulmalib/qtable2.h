@@ -41,7 +41,7 @@ public:
     ~QTableWidgetItem2() {
         _depura("~QTableWidgetItem2", 1);
     };
-    virtual bool operator < (const QTableWidgetItem &other);
+    virtual bool operator< (const QTableWidgetItem &other) const;
 };
 
 
@@ -78,11 +78,11 @@ public:
     };
     virtual bool eventFilter(QObject *obj, QEvent *event);
     void setText(int x, int y, const QString &val);
-    void sortColumn(int col, Qt::SortOrder tipoorden);
+//    void sortColumn(int col, Qt::SortOrder tipoorden);
     virtual void ordenar();
     
-public slots:
-    virtual void sortByColumn(int col);
+//public slots:
+//    virtual void sortByColumn(int col);
 
 signals:
     void pulsadomas(int, int, int);
