@@ -48,7 +48,7 @@ private:
     QString m_idBalance;
 
 public:
-    CAnualesView(empresa *, QWidget *parent = 0, const char *name = 0);
+    CAnualesView(empresa *, QWidget *parent = 0);
     ~CAnualesView();
     void inicializatabla();
     /// Establece el funcionamiento de la ventana como selector (afecta sobre el dobleclick en el listado)

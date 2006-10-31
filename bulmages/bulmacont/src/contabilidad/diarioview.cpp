@@ -25,9 +25,7 @@
 #include <QCheckBox>
 #include <QPixmap>
 #include <QTextStream>
-#include <q3datetimeedit.h>
-#include <q3filedialog.h>
-#include <q3popupmenu.h>
+#include <QFileDialog>
 
 #include "empresa.h"
 #include "diarioview.h"
@@ -103,17 +101,18 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Muestra el formulario de impresi&oacute;n de diario y lo ejecuta \ref DiarioPrintView */
 void DiarioView::boton_imprimir() {
-    DiarioPrintView *print = new DiarioPrintView(m_companyact, 0, 0);
+    DiarioPrintView *print = new DiarioPrintView(m_companyact, 0);
     print->exec();
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n guardar del formulario.
 void DiarioView::boton_guardar() {
-    QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),
-                 tr("Diarios (*.txt)"), 0,
+    QString fn = QFileDialog::getSaveFileName(this,
                  tr("Guardar Libro Diario"),
-                 tr("Elige el nombre de archivo"));
+                 confpr->valor(CONF_DIR_USER),
+                 tr("Diarios (*.txt)"));
+
     if (!fn.isEmpty()) {
         /// Si se ha proporcionado un nombre de archivo v&aacute;lido
         /// invocamos la clase diarioprint y hacemos que guarde el archivo.
@@ -194,10 +193,10 @@ void DiarioView::on_mui_imprimir_clicked() {
 
     system(archivologo.toAscii().constData());
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
     /// L&iacute;nea de totales del presupuesto.

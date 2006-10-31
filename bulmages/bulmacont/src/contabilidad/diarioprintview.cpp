@@ -31,8 +31,8 @@
 #include "diarioview.h"
 
 
-DiarioPrintView::DiarioPrintView(empresa *emp, QWidget *parent, const char *name)
-        : QDialog(parent,name) {
+DiarioPrintView::DiarioPrintView(empresa *emp, QWidget *parent)
+        : QDialog(parent) {
     setupUi(this);
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();

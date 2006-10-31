@@ -31,11 +31,11 @@ asientosview::asientosview(empresa *emp, QWidget *parent)
     setupUi(this);
     m_companyact = emp;
     mui_list->setcompany(emp);
-    mui_ejercicio->insertItem("--", 0);
+    mui_ejercicio->insertItem(0, "--");
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while (!cur->eof()) {
-        mui_ejercicio->insertItem(cur->valor("ano"));
+        mui_ejercicio->addItem(cur->valor("ano"));
         cur->siguienteregistro();
     } // end while
     delete cur;

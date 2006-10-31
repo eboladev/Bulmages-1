@@ -27,8 +27,8 @@
 #define NUMDIGITOS   empresaactual->numdigitosempresa()
 
 
-cambiactaview::cambiactaview(empresa *emp, QWidget *parent, const char *name, bool flag)
-        : QDialog(parent, name, flag, 0) {
+cambiactaview::cambiactaview(empresa *emp, QWidget *parent, Qt::WFlags flag)
+        : QDialog(parent, flag) {
     _depura("cambiactaview::cambiactaview", 0);
     setupUi(this);
     empresaactual = emp;

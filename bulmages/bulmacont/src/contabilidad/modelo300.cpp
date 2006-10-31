@@ -29,9 +29,7 @@
 #include <QRadioButton>
 #include <QLineEdit>
 #include <QMessageBox>
-#include <q3progressdialog.h>
-#include <q3http.h>
-#include <qobject.h>
+#include <QObject>
 
 #include "modelo300.h"
 #include "configuracion.h"
@@ -67,7 +65,7 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
 
         numerccc[i] = cur->valor("bancoent_cuenta");
         cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
-        combocuentas->insertItem(nombresccc[i]);
+        combocuentas->addItem(nombresccc[i]);
         cur->siguienteregistro();
     }
     delete cur;
@@ -89,7 +87,7 @@ void Mod300ps::accept() {
     m_es_borrador = borradorcheckbox->isChecked();
 
     if (cuentaButton->isChecked()) {
-        ccc = new numerocuenta(numerccc[combocuentas->currentItem()]);
+        ccc = new numerocuenta(numerccc[combocuentas->currentIndex()]);
     } else
         ccc = new numerocuenta(banco->text(), entidad->text(), dc->text(), cuenta->text());
 
@@ -117,10 +115,10 @@ void Mod300ps::accept() {
 /** The hardest part is converting the official pdf to postscript. */
 void Mod300ps::generaps() {
     QString pdfname, tempname, psname, command;
-    char *cad1;
+    char *cad1 = NULL;
     QString cadaux;
 
-    cout << "Elegido trimestre" << trimestre->currentItem() << "\n";
+    cout << "Elegido trimestre" << trimestre->currentIndex() << "\n";
 
     tempname = QString(getenv("HOME")) + "/.bulmages/mod300temp.ps";
     pdfname = QString(getenv("HOME")) + "/.bulmages/formularios/mod300e.pdf";
@@ -167,10 +165,10 @@ void Mod300ps::generaps() {
     if (doit) {
         psname = QString(getenv("HOME")) + "/.bulmages/mod300.ps";
         cout << psname.toAscii().constData();
-        m_fich.setName(psname);
+        m_fich.setFileName(psname);
         if (m_fich.open(QIODevice::WriteOnly)) {
             m_output.setDevice(&m_fich);
-            m_fichlec.setName(tempname);
+            m_fichlec.setFileName(tempname);
             if (!m_fichlec.open(QIODevice::ReadOnly)) {
                 cout << "Error al abrir fichero de lectura!!\n";
                 exit(1);
@@ -326,7 +324,7 @@ void Mod300ps::rellena_identificacion() {
 
     delete m;
 
-    cad1.sprintf("%d", trimestre->currentItem() + 1); /// Si elegido item 0 ---> cad1="1", etc.
+    cad1.sprintf("%d", trimestre->currentIndex() + 1); /// Si elegido item 0 ---> cad1="1", etc.
 
     marca_casilla(cad1, 452, 690);
     marca_casilla("T", 467, 690);
@@ -359,14 +357,14 @@ void Mod300ps::rellena_liquidacion() {
 void Mod300ps::rellena_compensacion() {
     if (cas34 < 0) {
         escrizqder(-cas34, 248, 145); /// Casilla a compensar si la 34 sale negativa.
-        if (trimestre->currentItem()==3) { /// Si estamos en el cuarto trimestre...
+        if (trimestre->currentIndex() == 3) { /// Si estamos en el cuarto trimestre...
             escribe_cuenta_bancaria(76,32); /// Ponemos la cuenta bancaria si hay que devolver.
         } // end if
     } else {
-        if (trimestre->currentItem() == 3) /// Si estamos en el cuarto trimestre...
+        if (trimestre->currentIndex() == 3) /// Si estamos en el cuarto trimestre...
         {
             marca_casilla("X", 464, 134); /// Casilla de adeudo en cuenta.
-            escribe_cuenta_bancaria(338,73);
+            escribe_cuenta_bancaria(338, 73);
         } // end if
     } // end if
 }

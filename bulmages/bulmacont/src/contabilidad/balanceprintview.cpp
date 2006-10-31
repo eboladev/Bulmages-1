@@ -27,8 +27,6 @@
 #include <QToolButton>
 #include <QCheckBox>
 #include <QLocale>
-#include <q3datetimeedit.h>
-#include <q3table.h>
 
 #include <busquedafecha.h>
 
@@ -59,7 +57,7 @@ BalancePrintView::BalancePrintView(empresa *emp) : QDialog(0) {
     int i = 0;
     while (!niveles->eof()) {
         /// Inicializamos la tabla de nivel.
-        combonivel->insertItem(niveles->valor("nivel"), i);
+        combonivel->insertItem(i, niveles->valor("nivel"));
         niveles->siguienteregistro();
         i++;
     } // end while

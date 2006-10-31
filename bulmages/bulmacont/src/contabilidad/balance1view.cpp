@@ -19,7 +19,7 @@
  ***************************************************************************/
 
 #include <QPixmap>
-#include <Q3PopupMenu>
+#include <QMenu>
 
 #include <busquedafecha.h>
 
@@ -100,12 +100,12 @@ BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
     /// configuraci&oacute;n que es global.
     listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCETREE).toAscii().constData());
     /// Inicializamos la tabla de nivel.
-    combonivel->insertItem("2", 0);
-    combonivel->insertItem("3", 1);
-    combonivel->insertItem("4", 2);
-    combonivel->insertItem("5", 3);
-    combonivel->insertItem("6", 4);
-    combonivel->insertItem("7", 5);
+    combonivel->insertItem(0, "2");
+    combonivel->insertItem(1, "3");
+    combonivel->insertItem(2, "4");
+    combonivel->insertItem(3, "5");
+    combonivel->insertItem(4, "6");
+    combonivel->insertItem(5, "7");
 
     connect(listado, SIGNAL(contextMenuRequested(Q3ListViewItem *, const QPoint &, int)), this, SLOT(contextmenu(Q3ListViewItem *, const QPoint &, int)));
 
@@ -356,14 +356,15 @@ void BalanceTreeView::presentar() {
     totalhaber->setText(QString::number(thaber, 'f', 2));
     totalsaldo->setText(QString::number(tsaldo, 'f', 2));
     /// Activamos la parte de nivel para que se filtre el listado.
-    nivelactivated(combonivel->currentItem());
+    nivelactivated(combonivel->currentIndex());
     _depura("END BalanceTreeView::presentar", 0);
 }
 
 
 void BalanceTreeView::nivelactivated(int nivel) {
     _depura("BalanceTreeView::nivelactivated", 0);
-    int nivel1 = atoi(combonivel->text(nivel).toAscii());
+    combonivel->setCurrentIndex(nivel);
+    int nivel1 = atoi(combonivel->currentText().toAscii());
     nivelactivated1(nivel1, listado->firstChild());
     _depura("END BalanceTreeView::nivelactivated", 0);
 }
@@ -393,39 +394,39 @@ void BalanceTreeView::nivelactivated1(int nivel, Q3ListViewItem *ot) {
     Creamos el objeto QPopupMenu con las opciones que queremos que aparezcan.
     Lo invocamos y seg&uacute;n la opci&oacute;n que haya elegido el usuario llamamos
     a la funci&oacute;n que da respuesta a dicha petici&oacute;n. */
-void BalanceTreeView::contextmenu(Q3ListViewItem *, const QPoint &poin, int) {
+void BalanceTreeView::contextmenu(const QPoint &point) {
     _depura("BalanceTreeView::contextmenu", 0);
-    Q3PopupMenu *popup;
-    int opcion;
-    popup = new Q3PopupMenu;
-    popup->insertItem(tr("Ver Diario (este dia)"), 101);
-    popup->insertItem(tr("Ver Diario (este mes)"), 103);
-    popup->insertItem(tr("Ver Diario (este anyo)"), 104);
-    popup->insertSeparator();
-    popup->insertItem(tr("Ver extracto (este dia)"), 111);
-    popup->insertItem(tr("Ver extracto (este mes)"), 113);
-    popup->insertItem(tr("Ver extracto (este anyo)"), 114);
-    opcion = popup->exec(poin);
-    switch (opcion) {
-    case 101:
+
+    QMenu *menupopup = new QMenu(this);
+    QAction *opt1 = menupopup->addAction(tr("Ver Diario (este dia)"));
+    QAction *opt2 = menupopup->addAction(tr("Ver Diario (este mes)"));
+    QAction *opt3 = menupopup->addAction(tr("Ver Diario (este anyo)"));
+    menupopup->addSeparator();
+    QAction *opt4 = menupopup->addAction(tr("Ver extracto (este dia)"));
+    QAction *opt5 = menupopup->addAction(tr("Ver extracto (este mes)"));
+    QAction *opt6 = menupopup->addAction(tr("Ver extracto (este anyo)"));
+    QAction *opcion = menupopup->exec(point);
+
+    if (opcion == opt1) {
         boton_diario1(0);
-        break;
-    case 103:
+    } // end if
+    if (opcion == opt2) {
         boton_diario1(1);
-        break;
-    case 104:
+    } // end if
+    if (opcion == opt3) {
         boton_diario1(2);
-        break;
-    case 111:
+    } // end if
+    if (opcion == opt4) {
         boton_extracto1(0);
-        break;
-    case 113:
+    } // end if
+    if (opcion == opt5) {
         boton_extracto1(1);
-        break;
-    case 114:
+    } // end if
+    if (opcion == opt6) {
         boton_extracto1(2);
-    } // end switch
-    delete popup;
+    } // end if
+
+    delete menupopup;
     _depura("END BalanceTreeView::contextmenu", 0);
 }
 

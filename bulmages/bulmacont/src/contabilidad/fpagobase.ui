@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>392</width>
-    <height>370</height>
+    <width>448</width>
+    <height>346</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -193,24 +193,13 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3GroupBox" name="groupBox1" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+    <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Información de la Forma de Pago</string>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+      <string>Información de la forma de pago:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>11</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
@@ -385,8 +374,8 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>41</width>
-          <height>80</height>
+          <width>330</width>
+          <height>19</height>
          </size>
         </property>
        </spacer>
@@ -398,15 +387,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

@@ -18,14 +18,12 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3table.h>
-
 #include "mpatrimonialesview.h"
 #include "mpatrimonialview.h"
 
 
 mpatrimonialesview::mpatrimonialesview(QWidget *parent, Qt::WFlags fl)
-        : QDialog (parent, fl) {
+        : QDialog(parent, fl) {
     setupUi(this);
     modo = 0;
 }

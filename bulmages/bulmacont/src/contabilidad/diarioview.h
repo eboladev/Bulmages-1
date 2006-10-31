@@ -29,7 +29,7 @@ class empresa;
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public QWidget, public Ui_DiarioBase  {
+class DiarioView : public QWidget, public Ui_DiarioBase {
     Q_OBJECT
 
 private:

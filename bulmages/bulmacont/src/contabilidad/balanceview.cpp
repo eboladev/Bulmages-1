@@ -24,9 +24,6 @@
 #include <QPixmap>
 #include <QLocale>
 #include <QFont>
-#include <q3datetimeedit.h>
-#include <q3filedialog.h>
-#include <Q3PopupMenu>
 
 #include "balanceview.h"
 #include "empresa.h"
@@ -59,12 +56,12 @@ balanceview::balanceview(empresa *emp, QWidget *parent, int)
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
     /// Inicializamos la tabla de nivel.
-    combonivel->insertItem("2", 0);
-    combonivel->insertItem("3", 1);
-    combonivel->insertItem("4", 2);
-    combonivel->insertItem("5", 3);
-    combonivel->insertItem("6", 4);
-    combonivel->insertItem("7", 5);
+    combonivel->insertItem(0, "2");
+    combonivel->insertItem(1, "3");
+    combonivel->insertItem(2, "4");
+    combonivel->insertItem(3, "5");
+    combonivel->insertItem(4, "6");
+    combonivel->insertItem(5, "7");
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
@@ -96,11 +93,11 @@ void balanceview::cargacostes() {
     companyact->begin();
     cursor2 *cursorcoste = companyact->cargacursor(query, "costes");
     companyact->commit();
-    combocoste->insertItem("--", 0);
+    combocoste->insertItem(0, "--");
     ccostes[0] = 0;
     int i = 1;
     while (!cursorcoste->eof()) {
-        combocoste->insertItem(cursorcoste->valor(2), -1);
+        combocoste->addItem(cursorcoste->valor(2));
         ccostes[i++] = atoi(cursorcoste->valor(0));
         cursorcoste->siguienteregistro();
     } // end while
@@ -124,7 +121,7 @@ void balanceview::inicializa1(QString codinicial, QString codfinal, QString fech
         i++;
     } // end while
     if (i < 100) {
-        combocoste->setCurrentItem(i);
+        combocoste->setCurrentIndex(i);
     } // end if
     ///**************************************************/
 }
@@ -142,7 +139,7 @@ void balanceview::presentar() {
     int nivel = combonivel->currentText().toInt();
     bool jerarquico = checksuperiores->isChecked();
     /// Extraemos el centro de coste.
-    int idc_coste = ccostes[combocoste->currentItem()];
+    int idc_coste = ccostes[combocoste->currentIndex()];
 
     /// A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la
     /// ejecuci&oacute;n del programa.
@@ -266,7 +263,8 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
                 /// esa rama.
                 i = ptrIt + 1;
                 while (i != ptrList.constEnd()) {
-                    ptrList.erase(i.key());
+                    /// Borra todas las entradas con la misma clave.
+                    ptrList.remove(i.key());
                     ++i;
                 } // end while
             } else { /// sin jerarquizar...

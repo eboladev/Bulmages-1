@@ -24,10 +24,6 @@
 #include <QLayout>
 #include <QTextStream>
 #include <QCheckBox>
-#include <q3datetimeedit.h>
-#include <q3table.h>
-#include <q3popupmenu.h>
-#include <q3filedialog.h>
 
 #include "extractoview1.h"
 #include "extractoprintview.h"
@@ -430,10 +426,10 @@ void extractoview1::on_mui_imprimir_clicked() {
 
     system(archivologo.toAscii().constData());
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";

@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>443</width>
-    <height>274</height>
+    <width>445</width>
+    <height>252</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -193,27 +193,16 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3GroupBox" name="groupBox1" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>7</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+    <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Información del canal</string>
-     </property>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+      <string>Información del canal:</string>
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>11</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -301,8 +290,8 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>41</width>
-          <height>20</height>
+          <width>381</width>
+          <height>21</height>
          </size>
         </property>
        </spacer>
@@ -315,13 +304,6 @@
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction></pixmapfunction>
  <customwidgets>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
   <customwidget>
    <class>BusquedaCuenta</class>
    <extends></extends>

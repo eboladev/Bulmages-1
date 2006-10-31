@@ -25,8 +25,9 @@
 /// El constructor de la clase prepara las variables globales y llama a la funci&oacute;n
 /// pintar.
 fpagoview::fpagoview(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent), dialogChanges(this) {
     _depura("fpagoview::fpagoview", 0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     empresaactual = emp;
     m_curfpago = NULL;
@@ -60,7 +61,7 @@ void fpagoview::pintar(QString idfpago) {
     m_comboFPago->clear();
     int i = 0;
     while (!m_curfpago->eof()) {
-        m_comboFPago->insertItem(m_curfpago->valor("nomfpago"), i);
+        m_comboFPago->insertItem(i, m_curfpago->valor("nomfpago"));
         if (idfpago == m_curfpago->valor("idfpago") )
             posicion = i;
         m_curfpago->siguienteregistro();
@@ -85,9 +86,9 @@ void fpagoview::mostrarplantilla(int pos) {
     } // end if
     if (m_comboFPago->count() > 0) {
         if (pos != 0) {
-            m_comboFPago->setCurrentItem(pos);
+            m_comboFPago->setCurrentIndex(pos);
         } // end if
-        m_posactual = m_comboFPago->currentItem();
+        m_posactual = m_comboFPago->currentIndex();
         m_nomFPago->setText(m_curfpago->valor("nomfpago", m_posactual));
         m_plazoPrimerPagoFPago->setText(m_curfpago->valor("plazoprimerpagofpago", m_posactual));
         m_nPlazosFPago->setText(m_curfpago->valor("nplazosfpago", m_posactual));
@@ -154,7 +155,7 @@ void fpagoview::s_deleteFPago() {
                                     porque igual su trabajo se pierde."),
                                  QMessageBox::Ok, QMessageBox::Cancel)) {
     case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-        empresaactual->ejecuta("DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor("idfpago", m_comboFPago->currentItem()));
+        empresaactual->ejecuta("DELETE FROM fpago WHERE idfpago = " + m_curfpago->valor("idfpago", m_comboFPago->currentIndex()));
         pintar();
         break;
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
@@ -165,7 +166,7 @@ void fpagoview::s_deleteFPago() {
 
 /// Antes de salir de la ventana debemos hacer la comprobaci&oacute;n de si se ha
 /// modificado algo.
-bool fpagoview::close(bool ok) {
+bool fpagoview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -174,6 +175,6 @@ bool fpagoview::close(bool ok) {
                                  QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
             s_saveFPago();
     } // end if
-    return QWidget::close(ok);
+    return QWidget::close();
 }
 

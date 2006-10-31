@@ -19,14 +19,13 @@
  ***************************************************************************/
 
 #include <QLineEdit>
-#include <q3listview.h>
 
 #include "mpatrimonialview.h"
 #include "mpatrimonialesview.h"
 
 
 mpatrimonialview::mpatrimonialview(QWidget *parent)
-        : QDialog (parent) {
+        : QDialog(parent) {
     setupUi(this);
     conexionbase = NULL;
     idmpatrimonial = "";

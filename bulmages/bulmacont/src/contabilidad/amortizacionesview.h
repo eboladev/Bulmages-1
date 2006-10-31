@@ -37,7 +37,7 @@ public:
     QString idamortizacion; /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
     QString nomamortizacion; /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
     int modo;
-    amortizacionesview(empresa *, QWidget *, const char *);
+    amortizacionesview(empresa *, QWidget *);
     ~amortizacionesview();
     void inicializatabla();
 

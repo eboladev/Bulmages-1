@@ -27,8 +27,9 @@
 
 /// El constructor de la clase prepara las variables globales y llama a la función pintar.ç
 tipoivaview::tipoivaview(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent), dialogChanges(this) {
     _depura("tipoivaview::tipoivaview", 0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     empresaactual = emp;
     m_codigoCtaTipoIVA->setempresa(emp);
@@ -64,7 +65,7 @@ void tipoivaview::pintar(QString idtipoiva) {
     m_comboTipoIVA->clear();
     int i = 0;
     while (!m_curtipoiva->eof()) {
-        m_comboTipoIVA->insertItem(m_curtipoiva->valor("nombretipoiva"), i);
+        m_comboTipoIVA->insertItem(i, m_curtipoiva->valor("nombretipoiva"));
         if (idtipoiva == m_curtipoiva->valor("idtipoiva") )
             posicion = i;
         m_curtipoiva->siguienteregistro();
@@ -89,8 +90,8 @@ void tipoivaview::mostrarplantilla(int pos) {
     } // end if
     if (m_comboTipoIVA->count() > 0) {
         if (pos != 0)
-            m_comboTipoIVA->setCurrentItem(pos);
-        m_posactual = m_comboTipoIVA->currentItem();
+            m_comboTipoIVA->setCurrentIndex(pos);
+        m_posactual = m_comboTipoIVA->currentIndex();
         m_nombreTipoIVA->setText(m_curtipoiva->valor("nombretipoiva", m_posactual));
         m_codigoCtaTipoIVA->setText(m_curtipoiva->valor("codigo", m_posactual));
         m_porcentTipoIVA->setText(m_curtipoiva->valor("porcentajetipoiva", m_posactual));
@@ -153,7 +154,7 @@ void tipoivaview::s_deleteTipoIVA() {
                                  QMessageBox::Ok ,
                                  QMessageBox::Cancel)) {
     case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-        empresaactual->ejecuta("DELETE FROM tipoiva WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_comboTipoIVA->currentItem()));
+        empresaactual->ejecuta("DELETE FROM tipoiva WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_comboTipoIVA->currentIndex()));
         pintar();
         break;
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
@@ -165,16 +166,16 @@ void tipoivaview::s_deleteTipoIVA() {
 /// Antes de salir de la ventana debemos hacer la comprobaci&oacute;n de si se ha
 /// modificado algo.
 /** Esta función está dedicada a Francina, Bienvenida al mundo. :) */
-bool tipoivaview::close(bool ok) {
+bool tipoivaview::close() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
                                  tr("Guardar tipo de IVA"),
                                  tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok ,
+                                 QMessageBox::Ok,
                                  QMessageBox::Cancel ) == QMessageBox::Ok)
             s_saveTipoIVA();
     } // end if
-    return QWidget::close(ok);
+    return QWidget::close();
 }
 

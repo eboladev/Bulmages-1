@@ -30,7 +30,6 @@
 #include <QTextStream>
 #include <QMessageBox>
 #include <QObject>
-#include <q3progressdialog.h>
 
 #include "modelosps.h"
 #include "configuracion.h"

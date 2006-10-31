@@ -19,13 +19,13 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include <Q3TextBrowser>
 
 #include "actualizacionesview.h"
 
 
 actualizacionesview::actualizacionesview(QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose) {
+        : QWidget(parent) {
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     textBrowser1->setSource("/usr/share/bulmages/ayuda/index.htm");
 }

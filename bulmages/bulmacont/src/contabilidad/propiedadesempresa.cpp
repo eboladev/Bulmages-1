@@ -28,8 +28,9 @@ using namespace std;
 
 
 propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent), dialogChanges(this) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
     inicializa();
@@ -185,11 +186,11 @@ bool propiedadesempresa::close(bool ok) {
         if (QMessageBox::question(this,
                                   tr("Guardar cambios"),
                                   tr("Desea guardar los cambios?"),
-                                  tr("Guardar"), tr("No guardar"), 0, 0, 1) == 0) {
+                                  tr("&Guardar"), tr("&No guardar"), 0, 0, 1) == 0) {
             s_saveConfig();
         } // end if
     } // end if
-    return QWidget::close(ok);
+    return QWidget::close();
 }
 
 /// Este SLOT corresponde a la pulsaci&oacute;n del bot&oacute;n de modificar plan contable

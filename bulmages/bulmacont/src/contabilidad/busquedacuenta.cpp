@@ -23,8 +23,8 @@
 #include "../contabilidad/empresa.h"
 
 
-BusquedaCuenta::BusquedaCuenta(QWidget *parent, const char *name)
-        : QWidget(parent, name) {
+BusquedaCuenta::BusquedaCuenta(QWidget *parent)
+        : QWidget(parent) {
     _depura("BusquedaCuenta::BusquedaCuenta", 0);
     setupUi(this);
     empresaactual = NULL;

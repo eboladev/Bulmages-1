@@ -37,7 +37,7 @@ public:
     int idasiento;
 
 public:
-    duplicarasientoview(empresa *, QWidget *, const char *, bool);
+    duplicarasientoview(empresa *, QWidget *, Qt::WFlags flag = 0);
     ~duplicarasientoview();
     void inicializa(QString, QString);
 

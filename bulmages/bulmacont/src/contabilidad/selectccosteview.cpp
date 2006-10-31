@@ -18,15 +18,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3listview.h>
-
 #include "selectccosteview.h"
 #include "empresa.h"
 #include "funcaux.h"
 
 
 selectccosteview::selectccosteview(empresa *emp, QWidget *parent)
-        : QDialog (parent) {
+        : QDialog(parent) {
     _depura("selectccosteview::selectccosteview", 0);
     setupUi(this);
     empresaactual = emp;

@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3table.h>
-#include <q3filedialog.h>
 #include <QMessageBox>
 
 #include "canualesview.h"
@@ -31,9 +29,10 @@
 #define COL_NOMBRE 1
 
 
-CAnualesView::CAnualesView(empresa *emp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose) {
+CAnualesView::CAnualesView(empresa *emp, QWidget *parent)
+        : QWidget(parent) {
     _depura("CAnualesView::CAnualesView", 0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
     m_modo = 0;

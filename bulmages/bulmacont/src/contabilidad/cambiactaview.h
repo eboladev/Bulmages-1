@@ -35,7 +35,7 @@ private:
     empresa *empresaactual;
 
 public:
-    cambiactaview(empresa *, QWidget *, const char *, bool);
+    cambiactaview(empresa *, QWidget *, Qt::WFlags flag = 0);
     ~cambiactaview();
 
 public slots:

@@ -49,13 +49,13 @@ public:
     QString idamortizacion;
     /// Esta variable indica cu&aacute;l es el asiento plantilla de amortizaci&oacute;n.
     QString idainteligente;
-    amortizacionview(empresa *, QWidget *, const char *);
+    amortizacionview(empresa *, QWidget *);
     ~amortizacionview();
     void inicializa(QString);
     void trataModificado();
 
 public slots:
-    virtual bool close(bool);
+    virtual bool close();
     virtual void accept();
     virtual void calculaamortizacion();
     virtual void contextMenuRequested(int, int, const QPoint &);

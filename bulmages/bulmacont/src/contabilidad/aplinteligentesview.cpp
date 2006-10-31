@@ -85,7 +85,7 @@ void aplinteligentesview::inicializa(int idasiento) {
     QFileInfoList list = dir.entryInfoList();
     for (int i = 0; i < list.size(); ++i) {
         QFileInfo fileInfo = list.at(i);
-        mui_comboainteligentes->insertItem(fileInfo.fileName(), - 1);
+        mui_comboainteligentes->addItem(fileInfo.fileName());
         listasientos[i++]= fileInfo.filePath();
     } // end for
     /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
@@ -177,7 +177,7 @@ void aplinteligentesview::on_mui_comboainteligentes_activated(int) {
 void aplinteligentesview::muestraplantilla(QString plantilla) {
     int i = 0;
     while (mui_comboainteligentes->currentText() != plantilla && i < 100)
-        mui_comboainteligentes->setCurrentItem(i++);
+        mui_comboainteligentes->setCurrentIndex(i++);
     mostrarplantilla();
 }
 
@@ -484,14 +484,14 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
     QString nomvar, descvar;
     int j;
     /// Recogemos variables en el c&oacute;digo de cuenta.
-    posinicial = cadena.find("$", 0);
+    posinicial = cadena.indexOf("$", 0);
     if (posinicial != -1) {
-        posfinal = cadena.find("$", posinicial + 1);
+        posfinal = cadena.indexOf("$", posinicial + 1);
         if (posfinal != -1) {
-            subcadena = cadena.mid(posinicial,posfinal + 1);
-            posaux = subcadena.find(",", 0);
+            subcadena = cadena.mid(posinicial, posfinal + 1);
+            posaux = subcadena.indexOf(",", 0);
             if (posaux != -1) {
-                posaux1 = subcadena.find("$", posaux + 1);
+                posaux1 = subcadena.indexOf("$", posaux + 1);
                 descvar = subcadena.mid(posaux + 1, posaux1 - posaux - 1);
                 fprintf(stderr, "desc:%s<-->size %d\n", descvar.toAscii().constData(), posaux1);
                 nomvar = subcadena.mid(0, posaux + 1);
@@ -584,9 +584,9 @@ QString aplinteligentesview::aplicavariable(QString texto) {
     /// Vamos a quitar todos los comentarios que aparezcan.
     while (!fin) {
         fin = 1;
-        posinicial = cadena.find(",", 0);
+        posinicial = cadena.indexOf(",", 0);
         if (posinicial != -1) {
-            posfinal = cadena.find("$", posinicial);
+            posfinal = cadena.indexOf("$", posinicial);
             if (posfinal != -1) {
                 cadena.replace(posinicial, posfinal, "$");
                 fin = 0;
@@ -594,46 +594,46 @@ QString aplinteligentesview::aplicavariable(QString texto) {
         } // end if
     } // end while
     for (i = 0; i < indvariablespredefinidas; i++) {
-        posinicial = cadena.find(variablespredefinidas[i][0], 0);
+        posinicial = cadena.indexOf(variablespredefinidas[i][0], 0);
         while (posinicial != -1) {
             cadena.replace(posinicial, variablespredefinidas[i][0].length(), variablespredefinidas[i][1]);
-            posinicial = cadena.find(variablespredefinidas[i][0], 0);
+            posinicial = cadena.indexOf(variablespredefinidas[i][0], 0);
         } // end if
     } // end for
     for (i = 0;i < indvariablestexto; i++) {
-        posinicial = cadena.find(variablestexto[i][0], 0);
+        posinicial = cadena.indexOf(variablestexto[i][0], 0);
         while (posinicial != -1) {
             cadena.replace(posinicial,variablestexto[i][0].length(), variablestexto[i][1]);
-            posinicial = cadena.find(variablestexto[i][0], 0);
+            posinicial = cadena.indexOf(variablestexto[i][0], 0);
         } // end if
     } // end for
     for (i = 0; i < indvariablesfecha; i++) {
-        posinicial = cadena.find(variablesfecha[i][0], 0);
+        posinicial = cadena.indexOf(variablesfecha[i][0], 0);
         while (posinicial != -1) {
             cadena.replace(posinicial,variablesfecha[i][0].length(), variablesfecha[i][1]);
-            posinicial = cadena.find(variablesfecha[i][0], 0);
+            posinicial = cadena.indexOf(variablesfecha[i][0], 0);
         } // end if
     } // end for
     for (i = 0;i < indvariablesnumero; i++) {
-        posinicial = cadena.find(variablesnumero[i][0], 0);
+        posinicial = cadena.indexOf(variablesnumero[i][0], 0);
         while (posinicial != -1) {
             cadena.replace(posinicial,variablesnumero[i][0].length(), variablesnumero[i][1]);
-            posinicial = cadena.find(variablesnumero[i][0], 0);
+            posinicial = cadena.indexOf(variablesnumero[i][0], 0);
         } // end if
     } // end for
     for (i = 0;i < indvariablescta; i++) {
-        posinicial = cadena.find(variablescta[i][0], 0);
+        posinicial = cadena.indexOf(variablescta[i][0], 0);
         while (posinicial != -1) {
             cadena.replace(posinicial,variablescta[i][0].length(), variablescta[i][1]);
-            posinicial = cadena.find(variablescta[i][0], 0);
+            posinicial = cadena.indexOf(variablescta[i][0], 0);
         } // end if
     } // end for
     /// aplicamos las variables de apunte.
     for (i = 0; i < indvariablesapunte; i++) {
-        posinicial = cadena.find(variablesapunte[i][0], 0);
+        posinicial = cadena.indexOf(variablesapunte[i][0], 0);
         while (posinicial != -1) {
             cadena.replace(posinicial,variablesapunte[i][0].length(), variablesapunte[i][1]);
-            posinicial = cadena.find(variablesapunte[i][0], 0);
+            posinicial = cadena.indexOf(variablesapunte[i][0], 0);
         } // end if
     } // end for
     return cadena;

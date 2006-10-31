@@ -20,8 +20,6 @@
 
 #include <QTextStream>
 #include <QLineEdit>
-#include <q3datetimeedit.h>
-#include <q3progressbar.h>
 
 #include "canualesprintview.h"
 #include "funcaux.h"
@@ -271,10 +269,10 @@ void CAnualesPrintView::imprimir() {
 
     system(archivologo.toAscii().constData());
     QFile file;
-    file.setName(archivod);
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    QString buff = stream.read();
+    QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
     fitxersortidatxt = "";

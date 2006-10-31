@@ -46,14 +46,13 @@ class extractoview1;
 class empresa;
 
 
-
 /// Pantalla de presentación del balnace de sumas y saldos (jerarquica)
 /** \todo Hay que eliminar el array de ccostes y sustituirlo por un cursor2.
-    \todo Hay que eliminar los punteros de extracto - diario - introaputnes y hacerlo pasar todo por la clase empresa.
+    \todo Hay que eliminar los punteros de extracto - diario - introaputnes y hacerlo pasar
+    todo por la clase empresa.
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
     presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
-    determinado.
-*/
+    determinado. */
 class BalanceTreeView : public QWidget, public Ui_BalanceTreeBase {
     Q_OBJECT
 
@@ -84,7 +83,7 @@ private:
     void presentar();
 
 private slots:
-    virtual void contextmenu(Q3ListViewItem *, const QPoint &, int);
+    virtual void contextmenu(const QPoint &);
     virtual void nivelactivated(int);
     virtual void nivelactivated1(int, Q3ListViewItem *);
     virtual void boton_extracto1(int);

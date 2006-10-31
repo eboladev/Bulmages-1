@@ -23,10 +23,7 @@
 #endif
 
 #include <QPixmap>
-#include <Q3Frame>
 #include <QEvent>
-#include <q3accel.h>
-#include <q3dockwindow.h>
 
 #include "bulmages01.h"
 #include "configuracion.h"
@@ -81,7 +78,7 @@ Bulmages01::~Bulmages01() {
 
 
 void Bulmages01::initStatusBar() {
-    statusBar()->message(tr("Listo."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
@@ -93,59 +90,59 @@ bool Bulmages01::eventFilter(QObject *object, QEvent *event)  {
 
 /// Slot implementation.
 void Bulmages01::slotEditUndo()  {
-    statusBar()->message(tr("Reverting last action..."));
-    statusBar()->message(tr("Ready."));
+    statusBar()->showMessage(tr("Deshaciendo la ultima accion..."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
 void Bulmages01::slotEditCut()  {
-    statusBar()->message(tr("Cutting selection..."));
-    statusBar()->message(tr("Ready."));
+    statusBar()->showMessage(tr("Cortando seleccion..."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
 void Bulmages01::slotEditCopy()  {
-    statusBar()->message(tr("Copying selection to clipboard..."));
-    statusBar()->message(tr("Ready."));
+    statusBar()->showMessage(tr("Copiando la seleccion al portapapeles..."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
 void Bulmages01::slotEditPaste()  {
-    statusBar()->message(tr("Inserting clipboard contents..."));
-    statusBar()->message(tr("Ready."));
+    statusBar()->showMessage(tr("Insertando el contenido del portapapeles..."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
 void Bulmages01::slotViewStatusBar(bool toggle)  {
-    statusBar()->message(tr("Toggle statusbar..."));
+    statusBar()->showMessage(tr("Cambinado barra de estado..."));
     if (toggle == false) {
         statusBar()->hide();
     } else {
         statusBar()->show();
     } // end if
-    statusBar()->message(tr("Ready."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
 void Bulmages01::slotViewFullScreen(bool toggle)  {
-    statusBar()->message(tr("Toggle full screen mode..."));
+    statusBar()->showMessage(tr("Cambiando a modo de pantalla completa..."));
     if (toggle == false) {
         showNormal();
     } else {
         showFullScreen();
     } // end if
-    statusBar()->message(tr("Ready."));
+    statusBar()->showMessage(tr("Listo."));
 }
 
 
 void Bulmages01::slotStatusHelpMsg(const QString &text) {
     /// Change status message of whole statusbar temporary (text, msec).
-    statusBar()->message(text, 2000);
+    statusBar()->showMessage(text, 2000);
 }
 
 
 void Bulmages01::slotListadoCuentas()  {
-    statusBar()->message(tr("Listado de cuentas"));
+    statusBar()->showMessage(tr("Listado de cuentas"));
 }
 
 
@@ -201,7 +198,7 @@ void Bulmages01::on_actionAyuda_triggered() {
 
 
 void Bulmages01::on_actionAcerca_de_triggered() {
-    aboutview *about = new aboutview(0, 0);
+    aboutview *about = new aboutview(0);
     about->exec();
 }
 

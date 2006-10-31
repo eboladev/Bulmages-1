@@ -32,7 +32,7 @@ class aboutview : public QDialog, public Ui_AboutBase {
     Q_OBJECT
 
 public:
-    aboutview(QWidget *parent = 0, const char *name = 0); /// Constructor de la clase.
+    aboutview(QWidget *parent = 0); /// Constructor de la clase.
     ~aboutview(); /// Destructor de la clase.
 };
 

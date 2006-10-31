@@ -44,7 +44,7 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
 
 void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
     _depura("SubForm2Bc::contextMenuEvent", 0);
-    QAction *del= NULL;
+    QAction *del = NULL;
     int row = currentRow();
     if (row < 0) {
         return;
@@ -74,10 +74,8 @@ void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
     popup->addSeparator();
     QAction *ajustc = popup->addAction(tr("Ajustar columa"));
     QAction *ajustac = popup->addAction(tr("Ajustar altura"));
-
     QAction *ajust = popup->addAction(tr("Ajustar columnas"));
     QAction *ajusta = popup->addAction(tr("Ajustar alturas"));
-
     popup->addSeparator();
     QAction *verconfig = popup->addAction(tr("Ver configurador de subformulario"));
 

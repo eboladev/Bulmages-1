@@ -44,7 +44,7 @@ private:
     int numdigitos;
 
 public:
-    BusquedaCuenta(QWidget *parent = 0, const char *name = 0);
+    BusquedaCuenta(QWidget *parent = 0);
     ~BusquedaCuenta();
     void setempresa(empresa *comp);
     QString text()  {

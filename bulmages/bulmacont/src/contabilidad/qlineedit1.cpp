@@ -21,8 +21,7 @@
 #include "qlineedit1.h"
 
 
-QLineEdit1::QLineEdit1(QWidget * parent, const char * name = 0)
-        : QLineEdit(parent, name) {}
+QLineEdit1::QLineEdit1(QWidget * parent) : QLineEdit(parent) {}
 
 
 QLineEdit1::~QLineEdit1() {}

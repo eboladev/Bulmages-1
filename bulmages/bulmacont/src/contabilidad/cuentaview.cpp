@@ -103,7 +103,7 @@ void cuentaview::cuentanueva(QString cod) {
         while (idgrupos[i] != idgrupo && i < 100) {
             i++;
         } // end while
-        combogrupos->setCurrentItem(i);
+        combogrupos->setCurrentIndex(i);
         delete cur;
     } // end if
 }
@@ -119,7 +119,7 @@ void cuentaview::cambiapadre(const QString &cadena) {
     QString cad;
     cursor2 *cursoraux;
     cad = codigopadre->text();
-    unsigned int i = cad.find(".", 0);
+    unsigned int i = cad.indexOf(".", 0);
     if (i+1 < (unsigned int) cad.length()) {
         if (i != 0) {
             cad.replace(i, 1, "%");
@@ -169,8 +169,8 @@ int cuentaview::inicializa() {
     cursorgrupos = conexionbase->cargagrupos();
     conexionbase->commit();
     while (!cursorgrupos->eof()) {
-        combogrupos->insertItem(cursorgrupos->valor(1), -1);
-        idgrupos[combogrupos->count() - 1]=atoi(cursorgrupos->valor(0));
+        combogrupos->addItem(cursorgrupos->valor(1));
+        idgrupos[combogrupos->count() - 1] = atoi(cursorgrupos->valor(0));
         cursorgrupos->siguienteregistro();
     } // end while
     delete cursorgrupos;
@@ -247,7 +247,7 @@ int cuentaview::cargacuenta(int idcuenta1) {
     int i = 0;
     while (idgrupos[i] != idgrupo && i < 100)
         i++;
-    combogrupos->setCurrentItem(i);
+    combogrupos->setCurrentIndex(i);
     /// Vamos a coger el c&oacute;digo del padre de la cuenta para que tambi&eacute;n
     /// aparezca en el formulario.
     cpadre = atoi(cursorcuenta->valor(4).toAscii());
@@ -329,7 +329,7 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
     while (idgrupos[i] != idgrupo && i < 100)
         i++;
     if (idgrupos[i] == idgrupo)
-        combogrupos->setCurrentItem(i);
+        combogrupos->setCurrentIndex(i);
     return 0;
 }
 
@@ -381,7 +381,7 @@ void cuentaview::saveAccount() {
                                      conexionbase->sanearCadena(codigo->text()),
                                      imputacion->isChecked(),
                                      bloqueada->isChecked(),
-                                     idgrupos[combogrupos->currentItem()],
+                                     idgrupos[combogrupos->currentIndex()],
                                      TRUE,
                                      conexionbase->sanearCadena(nombreent->text()),
                                      conexionbase->sanearCadena(cif->text()),
@@ -401,7 +401,7 @@ void cuentaview::saveAccount() {
         conexionbase->nuevacuenta(conexionbase->sanearCadena(descripcion->text()),
                                   conexionbase->sanearCadena(codigo->text()),
                                   idpadre,
-                                  idgrupos[combogrupos->currentItem()],
+                                  idgrupos[combogrupos->currentIndex()],
                                   conexionbase->sanearCadena(nombreent->text()),
                                   conexionbase->sanearCadena(cif->text()),
                                   conexionbase->sanearCadena(direccion->text()),

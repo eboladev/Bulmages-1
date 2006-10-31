@@ -55,7 +55,7 @@ private slots:
     virtual void s_saveFPago();
     virtual void s_newFPago();
     virtual void s_deleteFPago();
-    virtual bool close(bool);
+    virtual bool close();
 };
 
 #endif

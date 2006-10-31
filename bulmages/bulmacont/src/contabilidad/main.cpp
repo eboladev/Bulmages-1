@@ -29,6 +29,7 @@
 #include <QTextCodec>
 #include <QTranslator>
 #include <QLibrary>
+#include <QLocale>
 
 #ifndef WIN32
 #include <unistd.h>
@@ -87,7 +88,8 @@ int main(int argc, char *argv[]) {
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
+            traductor->load(QString("bulmalib_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } else {
             QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
             traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii());
@@ -96,7 +98,8 @@ int main(int argc, char *argv[]) {
 
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
+            traductor->load(QString("bulmages_") + QLocale::system().name(),
+                            confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } else {
             QString archivo = "bulmages_" + confpr->valor(CONF_TRADUCCION);
             traductor->load(archivo.toAscii(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
@@ -140,7 +143,6 @@ int main(int argc, char *argv[]) {
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
         g_plugins->lanza("entryPoint", bges);
 
-        theApp->setMainWidget(bges);
         g_main = bges;
         valorsalida = theApp->exec();
     } catch (...) {

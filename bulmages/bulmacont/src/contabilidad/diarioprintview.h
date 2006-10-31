@@ -57,7 +57,7 @@ public:
     /// Establece cual es la ventana de filtro de diario. Es imprescindible
     /// inicializar el filtro antes de mostrar la ventana o el bot&oacute;n de filtro
     /// no funcionar&aacute;.
-    DiarioPrintView(empresa *emp, QWidget *parent, const char *name);
+    DiarioPrintView(empresa *emp, QWidget *parent);
     ~DiarioPrintView();
     void presentar(char *tipus = "html");
 

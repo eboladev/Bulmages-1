@@ -53,7 +53,7 @@ private slots:
     virtual void s_saveTipoIVA();
     virtual void s_newTipoIVA();
     virtual void s_deleteTipoIVA();
-    virtual bool close(bool);
+    virtual bool close();
 };
 
 #endif

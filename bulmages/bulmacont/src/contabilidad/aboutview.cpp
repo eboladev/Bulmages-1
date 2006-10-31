@@ -21,11 +21,10 @@
 #include "aboutview.h"
 
 
-/// Constructor de la clase
+/// Constructor de la clase.
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
-aboutview::aboutview(QWidget *parent, const char *name)
-        : QDialog(parent, name, false, 0) {
+aboutview::aboutview(QWidget *parent) : QDialog(parent) {
     setupUi(this);
 }
 

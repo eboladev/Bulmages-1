@@ -23,8 +23,8 @@
 #include <errno.h>
 
 
-BModelo347::BModelo347(postgresiface2 *DBconnect, QString ejerActual, QWidget *parent, const char *name, Qt::WFlags f)
-        : QDialog(parent, name, f) {
+BModelo347::BModelo347(postgresiface2 *DBconnect, QString ejerActual, QWidget *parent, Qt::WFlags f)
+        : QDialog(parent, f) {
     setupUi(this);
     importe->setText("3005.06");
     finicial->setText(normalizafecha("01/01/" + ejerActual).toString("dd/MM/yyyy"));

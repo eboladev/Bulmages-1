@@ -48,16 +48,16 @@ void BusquedaCCoste::setidc_coste(QString idc_coste) {
     int i = 0;
     int i1 = 0;
     clear();
-    insertItem("--");
+    addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
         if (m_cursorcombo->valor("idc_coste") == idc_coste) {
             i1 = i;
         } // end if
-        insertItem(m_cursorcombo->valor("nombre"));
+        addItem(m_cursorcombo->valor("nombre"));
         m_cursorcombo->siguienteregistro();
     } //end while
-    setCurrentItem(i1);
+    setCurrentIndex(i1);
     _depura("END BusquedaCCoste::setidc_coste", 0, idc_coste);
 }
 

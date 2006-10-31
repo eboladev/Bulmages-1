@@ -18,10 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3listview.h>
-
 #include "selectcanalview.h"
 #include "empresa.h"
+
 
 /// Inicializa las variables de empresa y de base de datos.
 /** Luego crea las columnas para el objeto m_listCanales que es la lista en que se basa

@@ -313,7 +313,7 @@ int empresa::propiedadempresa() {
 
 
 int empresa::amortizaciones() {
-    amortizacionesview *amors = new amortizacionesview(this, 0, "");
+    amortizacionesview *amors = new amortizacionesview(this, 0);
     m_pWorkspace->addWindow(amors);
     amors->show();
     return 0;
@@ -335,7 +335,7 @@ int empresa::mpatrimoniales() {
 /// de masas patrimoniales.
 int empresa::compbalance() {
     _depura("empresa::compbalance", 0);
-    CAnualesView *nueva = new CAnualesView(this, 0, "balances");
+    CAnualesView *nueva = new CAnualesView(this, 0);
     m_pWorkspace->addWindow(nueva);
     nueva->show();
     _depura("END empresa::compbalance", 0);
@@ -535,7 +535,7 @@ void empresa::Filtro() {
 /// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
 /// determinada cuenta por otra cuenta.
 void empresa::reemplazacuentaenasientos() {
-    cambiactaview *ctac = new cambiactaview(this, 0, 0, false);
+    cambiactaview *ctac = new cambiactaview(this, 0, false);
     ctac->exec();
 }
 

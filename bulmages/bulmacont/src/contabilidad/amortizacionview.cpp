@@ -20,7 +20,7 @@
 
 #include <QPushButton>
 #include <QRadioButton>
-#include <Q3PopupMenu>
+#include <QMenu>
 
 #include "amortizacionview.h"
 #include "empresa.h"
@@ -37,9 +37,10 @@
 #define COL_ORDENASIENTO           5
 
 
-amortizacionview::amortizacionview(empresa *emp, QWidget *parent, const char *name)
-        : QWidget(parent, name, Qt::WDestructiveClose), dialogChanges(this) {
+amortizacionview::amortizacionview(empresa *emp, QWidget *parent)
+        : QWidget(parent), dialogChanges(this) {
     _depura("amortizacionview::amortizacionview", 0);
+    this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
     idamortizacion = "";
@@ -83,7 +84,7 @@ void amortizacionview::s_deleteAmortizacion() {
         m_companyact->begin();
         m_companyact->ejecuta(query);
         m_companyact->commit();
-        close(0);
+        close();
     } // end if
     _depura("END amortizacionview::s_deleteAmortizacion", 0);
 }
@@ -161,11 +162,11 @@ void amortizacionview::s_saveAmortizacion() {
 void amortizacionview::accept() {}
 
 
-bool amortizacionview::close(bool ok) {
+bool amortizacionview::close() {
     _depura("amortizacionview::close", 0);
     trataModificado();
     _depura("END amortizacionview::close", 0);
-    return QWidget::close(ok);
+    return QWidget::close();
 }
 
 amortizacionview::~amortizacionview() {}
@@ -372,44 +373,43 @@ void amortizacionview::calculaamortizacion() {
     $cuota$ Cuota a pagar. */
 void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin) {
     _depura("amortizacionview::contextMenuRequested", 0);
-    Q3PopupMenu *popup;
-    popup = new Q3PopupMenu;
-    int opcion;
-    /// Generamos el men&uacute; contextual.
-    popup->insertItem(tr("Generar asiento"), 4);
-    popup->insertSeparator();
-    popup->insertItem(tr("Ver asiento"), 1);
-    popup->insertSeparator();
-    popup->insertItem(tr("Desvincular asiento"), 5);
-    popup->insertItem(tr("Borrar asiento"), 6);
-    popup->insertSeparator();
-    popup->insertItem(tr("Insertar cuota"), 7);
-    popup->insertItem(tr("Borrar cuota"), 8);
+
+    QMenu *menupopup = new QMenu(this);
+    QAction *opt1 = menupopup->addAction(tr("Generar asiento"));
+    menupopup->addSeparator();
+    QAction *opt2 = menupopup->addAction(tr("Ver asiento"));
+    menupopup->addSeparator();
+    QAction *opt3 = menupopup->addAction(tr("Desvincular asiento"));
+    QAction *opt4 = menupopup->addAction(tr("Borrar asiento"));
+    menupopup->addSeparator();
+    QAction *opt5 = menupopup->addAction(tr("Insertar cuota"));
+    QAction *opt6 = menupopup->addAction(tr("Borrar cuota"));
 
     if (table1->text(row, COL_IDASIENTO) == "") {
-        popup->setItemEnabled(4, TRUE);
-        popup->setItemEnabled(1, FALSE);
-        popup->setItemEnabled(5, FALSE);
-        popup->setItemEnabled(6, FALSE);
-        popup->setItemEnabled(7, TRUE);
-        popup->setItemEnabled(8, TRUE);
+        opt1->setEnabled(TRUE);
+        opt2->setEnabled(TRUE);
+        opt3->setEnabled(TRUE);
+        opt4->setEnabled(TRUE);
+        opt5->setEnabled(TRUE);
+        opt6->setEnabled(TRUE);
     } else {
-        popup->setItemEnabled(4, FALSE);
-        popup->setItemEnabled(1, TRUE);
-        popup->setItemEnabled(5, TRUE);
-        popup->setItemEnabled(6, TRUE);
-        popup->setItemEnabled(7, TRUE);
-        popup->setItemEnabled(8, FALSE);
+        opt1->setEnabled(FALSE);
+        opt2->setEnabled(FALSE);
+        opt3->setEnabled(FALSE);
+        opt4->setEnabled(FALSE);
+        opt5->setEnabled(FALSE);
+        opt6->setEnabled(FALSE);
     } // end if
 
-    opcion = popup->exec(poin);
-    delete popup;
+    QAction *opcion = menupopup->exec(poin);
+
+    delete menupopup;
     /// Inserci&oacute;n de una nueva cuota.
-    if (opcion == 7) {
+    if (opcion == opt5) {
         table1->insertRows(row + 1, 1);
     } // end if
     /// Eliminar una cuota.
-    if (opcion == 8) {
+    if (opcion == opt6) {
         QString idlinamortizacion = table1->text(row, COL_IDLINAMORTIZACION);
         QString query = "DELETE FROM linamortizacion WHERE idlinamortizacion = " + idlinamortizacion;
         if(idlinamortizacion != "") {
@@ -419,12 +419,12 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         } // end if
         table1->removeRow(row);
     } // end if
-    if (opcion == 1 || opcion == 6) {
+    if (opcion == opt2 || opcion == opt4) {
         /// Si se va a mostrar el asiento, o se va a borrar.
         QString idasiento = table1->text(row, COL_IDASIENTO);
         m_companyact->intapuntsempresa()->muestraasiento(idasiento.toInt());
     } // end if
-    if (opcion == 5 || opcion ==6) {
+    if (opcion == opt3 || opcion == opt4) {
         /// Si se va a desvincular el asiento o se va a borrar.
         QString idasiento = table1->text(row, COL_IDASIENTO);
         QString idlinamortizacion = table1->text(row, COL_IDLINAMORTIZACION);
@@ -435,11 +435,11 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         table1->setText(row,COL_IDASIENTO, "");
         table1->setText(row,COL_ORDENASIENTO, "");
     } // end if
-    if (opcion == 6) {
+    if (opcion == opt4) {
         /// Si se va a borrar el asiento.
         m_companyact->intapuntsempresa()->borraAsiento1();
     } // end if
-    if (opcion == 4) {
+    if (opcion == opt1) {
         /// Se va a generar el asiento.
         QString fecha = table1->text(row, COL_FECHA);
         fprintf(stderr, "Fecha: %s\n", fecha.toAscii().constData());

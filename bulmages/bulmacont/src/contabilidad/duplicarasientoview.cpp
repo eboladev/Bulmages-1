@@ -24,8 +24,8 @@
 #define NUMDIGITOS   empresaactual->numdigitosempresa()
 
 
-duplicarasientoview::duplicarasientoview(empresa *emp, QWidget *parent, const char *name, bool flag)
-        : QDialog(parent, name, flag, 0) {
+duplicarasientoview::duplicarasientoview(empresa *emp, QWidget *parent, Qt::WFlags flag)
+        : QDialog(parent, flag) {
     setupUi(this);
     empresaactual = emp;
     fdinicial->setText(QDate::currentDate().toString("dd/MM/yyyy"));

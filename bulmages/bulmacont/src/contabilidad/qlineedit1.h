@@ -29,7 +29,7 @@
 class QLineEdit1: public QLineEdit {
 public:
     int hola;
-    QLineEdit1(QWidget *, const char *);
+    QLineEdit1(QWidget *);
     ~QLineEdit1();
 };
 
