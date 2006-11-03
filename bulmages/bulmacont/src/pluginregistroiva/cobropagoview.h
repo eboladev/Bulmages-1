@@ -17,30 +17,31 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef COBROPAGOVIEW_H
 #define COBROPAGOVIEW_H
 
 #include "ficha.h"
 #include "ui_cobropagobase.h"
-
-/**
-  * @author Tomeu Borrás Riera 
-  * \class cobropagoview cobropagoview.h
-  * \brief Listado de gestion de cobros y pagos.
-  */
-
 #include "empresa.h"
+
+
 class postgresiface2;
 
+
+/// Listado de gestion de cobros y pagos.
 class cobropagoview : public Ficha, public Ui_CobroPagoBase {
     Q_OBJECT
+
 public:
     postgresiface2 *conexionbase;
     empresa *m_companyact;
     int numdigitos;
+
 public:
     cobropagoview(empresa *, QWidget *parent = 0);
     ~cobropagoview();
+
 public slots:
     virtual void on_mui_actualizar_clicked();
     virtual void s_guardar();
@@ -48,3 +49,4 @@ public slots:
 };
 
 #endif
+

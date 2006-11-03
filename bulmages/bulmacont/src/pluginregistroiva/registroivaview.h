@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2004 by Tomeu Borr� Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -17,37 +17,38 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef REGISTROIVAVIEW_H
 #define REGISTROIVAVIEW_H
-
-#include "ui_registroivabase.h"
-#include "registroiva.h"
-#include "postgresiface2.h"
-#include "ficha.h"
-#include "fixed.h"
-
 
 #include <QLineEdit>
 #include <Q3TextEdit>
 #include <QLabel>
 #include <QCheckBox>
 
+#include "ui_registroivabase.h"
+#include "registroiva.h"
+#include "postgresiface2.h"
+#include "ficha.h"
+#include "fixed.h"
 #include "dialogchanges.h"
 
-/** @author Tomeu Borras Riera */
+
 class empresa;
 
-class RegistroIvaView : public Ficha, public Ui_RegistroIvaBase , public RegistroIva  {
+
+class RegistroIvaView : public Ficha, public Ui_RegistroIvaBase, public RegistroIva {
     Q_OBJECT
+
 private:
     cursor2 *m_cursorcombo;
     /// Cursor para las formas de pago.
     cursor2 *m_cursorFPago;
+
 public:
     RegistroIvaView(empresa *, QWidget *);
     ~RegistroIvaView();
     void manageArticle(int);
-
     virtual void pintaidregistroiva(const QString &val) {}
     ;
     virtual void pintacontrapartida(const QString &val) {
@@ -97,6 +98,7 @@ public:
         else
             m_factSoportada->setChecked(FALSE);
     };
+
 virtual void pintarectificaaregistroiva(const QString &val) {}
     ;
     virtual void pintaincregistro(const QString &val) {
@@ -106,28 +108,29 @@ virtual void pintarectificaaregistroiva(const QString &val) {}
             m_incregistroIVA->setChecked(FALSE);
     };
 
-
 private:
     void generarPedidoCliente();
     void cargarComboFPago(QString);
 
-public slots://
+public slots:
     virtual void on_mui_guardar_clicked();
-    virtual int borrar() {return RegistroIva::borrar();};
+    virtual int borrar() {
+        return RegistroIva::borrar();
+    };
     virtual int cargar(QString id);
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_generarPrevisiones_clicked();
-
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_listIvaChanged() {
-        _depura("s_listIvaChanged",0);
-	Fixed base = mui_listIva->sumarCampo("baseiva");
-	Fixed iva = mui_listIva->sumarCampo("ivaiva");
+        _depura("s_listIvaChanged", 0);
+        Fixed base = mui_listIva->sumarCampo("baseiva");
+        Fixed iva = mui_listIva->sumarCampo("ivaiva");
         setbaseimp(base.toQString());
         setiva(iva.toQString());
         pintabaseimp(base.toQString());
         pintaiva(iva.toQString());
     };
-
 };
+
 #endif
+

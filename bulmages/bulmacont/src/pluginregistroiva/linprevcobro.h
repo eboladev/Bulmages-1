@@ -1,22 +1,29 @@
-//
-// C++ Interface: linprevcobro
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef LINPREVCOBRO_H
 #define LINPREVCOBRO_H
 
-/**
-@author Tomeu Borras
-*/
 #include "empresa.h"
 #include "postgresiface2.h"
+
 
 class linprevcobro {
 private:
@@ -32,27 +39,28 @@ private:
     QString mdb_tipoprevcobro;
     QString mdb_docprevcobro;
     QString mdb_idctacliente;
-    /// Aunque no es un elemento de la tabla, si es importante que este incluido pq se pinta en muchas partes.
+    /// Aunque no es un elemento de la tabla, si es importante que este incluido porque se
+    /// pinta en muchas partes.
     QString mdb_codigocuenta;
     QString mdb_codigoctacliente;
-    /// Aunque no es un elemento de la tabla, si es importante que este incluido pq se pinta en muchas partes.
+    /// Aunque no es un elemento de la tabla, si es importante que este incluido porque se
+    /// pinta en muchas partes.
     QString mdb_nomcuenta;
     QString mdb_nomctacliente;
     empresa *empresaactual;
     postgresiface2 *conexionbase;
-public:
 
+public:
     linprevcobro(empresa *);
-    linprevcobro(empresa *, QString );
-    /// La carga r�ida tiene un comportamiento poco restrictivo para aumnetar la eficiencia.
-    linprevcobro(empresa *, QString , QString , QString , QString , QString , QString , QString, QString, QString, QString, QString, QString, QString, QString, QString , QString );
+    linprevcobro(empresa *, QString);
+    /// La carga r&aacute;pida tiene un comportamiento poco restrictivo para aumentar la
+    /// eficiencia.
+    linprevcobro(empresa *, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString, QString);
     virtual ~linprevcobro();
     virtual void pintalinprevcobro() {};
     void guardalinprevcobro();
     void vacialinprevcobro();
     int creaPago();
-
-
     inline QString idprevcobro() {
         return mdb_idprevcobro;
     };
@@ -92,31 +100,27 @@ public:
     inline QString codigocuenta() {
         return mdb_codigocuenta;
     };
-
     inline QString codigoctacliente() {
         return mdb_codigoctacliente;
     };
-
     inline QString nomcuenta() {
         return mdb_nomcuenta;
     };
     inline QString nomctacliente() {
         return mdb_nomctacliente;
     };
-
     inline void setidprevcobro(QString val) {
-        mdb_idprevcobro=val;
+        mdb_idprevcobro = val;
     };
     inline void setfprevistaprevcobro(QString val) {
-        mdb_fprevistaprevcobro=val;
+        mdb_fprevistaprevcobro = val;
     };
     inline void setfcobroprevcobro(QString val) {
-        mdb_fcobroprevcobro=val;
+        mdb_fcobroprevcobro = val;
     };
     inline void setidfpago(QString val)  {
         mdb_idfpago=val;
     };
-
     inline void setidasiento(QString val) {
         mdb_idasiento=val;
     };
@@ -135,20 +139,18 @@ public:
     inline void setdocprevcobro(QString val) {
         mdb_docprevcobro=val;
     };
-
     void setcodigocuenta(QString);
     void setidcuenta(QString);
     inline void setnomcuenta(QString val) {
         mdb_nomcuenta=val;
     };
-
     void setcodigoctacliente(QString);
     void setidctacliente(QString);
     inline void setnomctacliente(QString val) {
         mdb_nomctacliente=val;
     };
-
     void borrar();
 };
 
 #endif
+

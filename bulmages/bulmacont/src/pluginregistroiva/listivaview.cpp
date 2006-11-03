@@ -1,75 +1,79 @@
-//
-// C++ Implementation: ListIvaView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
 
-#define COL_IDIVA 0
-#define COL_IDREGISTROIVA 1
-#define COL_IDTIPOIVA 2
-#define COL_IDCUENTA 3
-#define COL_NOMBRETIPOIVA 4
-#define COL_CODIGO 5
-#define COL_BASEIVA 6
-#define COL_IVAIVA 7
+#define COL_IDIVA           0
+#define COL_IDREGISTROIVA   1
+#define COL_IDTIPOIVA       2
+#define COL_IDCUENTA        3
+#define COL_NOMBRETIPOIVA   4
+#define COL_CODIGO          5
+#define COL_BASEIVA         6
+#define COL_IVAIVA          7
 
-#include "listivaview.h"
-#include "funcaux.h"
 #include <Q3Table>
 #include <QMessageBox>
 #include <Q3PopupMenu>
-//Added by qt3to4:
 #include <QKeyEvent>
 #include <QEvent>
-//Added by qt3to4:
 #include <QTextStream>
+
 #include "empresa.h"
+#include "listivaview.h"
+#include "funcaux.h"
 
 
 void ListIvaView::guardaconfig() {
-    _depura("ListIvaView::guardaconfig",0);
+    _depura("ListIvaView::guardaconfig", 0);
     QString aux = "";
-
-    QFile file( confpr->valor(CONF_DIR_USER)+"confListIvaView.cfn" );
-    if ( file.open( QIODevice::WriteOnly ) ) {
-        QTextStream stream( &file );
+    QFile file(confpr->valor(CONF_DIR_USER) + "confListIvaView.cfn");
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
         for (int i = 0; i < numCols(); i++) {
             showColumn(i);
             stream << columnWidth(i) << "\n";
-        }// end for
+        } // end for
         file.close();
-    }// end if
-}// end guardaconfig()
+    } // end if
+}
+
 
 void ListIvaView::cargaconfig() {
-    _depura("ListIvaView::cargaconfig",0);
-    QFile file( confpr->valor(CONF_DIR_USER)+"confListIvaView.cfn" );
+    _depura("ListIvaView::cargaconfig", 0);
+    QFile file( confpr->valor(CONF_DIR_USER) + "confListIvaView.cfn" );
     QString line;
-    if ( file.open( QIODevice::ReadOnly ) ) {
-        QTextStream stream( &file );
+    if (file.open(QIODevice::ReadOnly)) {
+        QTextStream stream(&file);
         for (int i = 0; i < numCols(); i++) {
             QString linea = stream.readLine();
             setColumnWidth(i, linea.toInt());
-        }// end for
+        } // end for
         file.close();
-    }// end if
-}// end cargaconfig
+    } // end if
+}
 
 
-
-
-ListIvaView::ListIvaView(QWidget * parent, const char * name) : Q3Table(parent, name), ListIva() {
-    _depura("ListIvaView::ListIvaView",0);
+ListIvaView::ListIvaView(QWidget * parent) : Q3Table(parent), ListIva() {
+    _depura("ListIvaView::ListIvaView", 0);
     /// Inicializamos la tabla de lineas de presupuesto
     setNumCols(8);
     setNumRows(0);
-
     horizontalHeader()->setLabel( COL_IDIVA, tr( "COL_IDIVA" ) );
     horizontalHeader()->setLabel( COL_IDTIPOIVA, tr( "COL_IDTIPOIVA" ) );
     horizontalHeader()->setLabel( COL_IDCUENTA, tr( "COL_IDCUENTA" ) );
@@ -78,7 +82,6 @@ ListIvaView::ListIvaView(QWidget * parent, const char * name) : Q3Table(parent, 
     horizontalHeader()->setLabel( COL_IDREGISTROIVA, tr( "COL_IDREGISTROIVA" ) );
     horizontalHeader()->setLabel( COL_BASEIVA, tr( "COL_BASEIVA" ) );
     horizontalHeader()->setLabel( COL_IVAIVA, tr( "COL_IVAIVA" ) );
-
     setColumnWidth(COL_IDIVA,100);
     setColumnWidth(COL_IDTIPOIVA,100);
     setColumnWidth(COL_IDCUENTA,100);
@@ -87,17 +90,15 @@ ListIvaView::ListIvaView(QWidget * parent, const char * name) : Q3Table(parent, 
     setColumnWidth(COL_IDREGISTROIVA,100);
     setColumnWidth(COL_BASEIVA,100);
     setColumnWidth(COL_IVAIVA,74);
-
     hideColumn(COL_IDIVA);
     hideColumn(COL_IDTIPOIVA);
     hideColumn(COL_IDCUENTA);
     hideColumn(COL_IDREGISTROIVA);
-
-    setSelectionMode( Q3Table::SingleRow );
-    // Establecemos el color de fondo de la rejilla. El valor lo tiene la clase configuracion que es global.
+    setSelectionMode(Q3Table::SingleRow);
+    /// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase
+    /// configuraci&oacute;n que es global.
     setPaletteBackgroundColor(confpr->valor(CONF_BG_LINPRESUPUESTOS));
-
-    connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int , int )));
+    connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int, int)));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
     installEventFilter(this);
     cargaconfig();
@@ -105,49 +106,48 @@ ListIvaView::ListIvaView(QWidget * parent, const char * name) : Q3Table(parent, 
 
 
 ListIvaView::~ListIvaView() {
-    _depura("ListIvaView::~ListIvaView()",0);
+    _depura("ListIvaView::~ListIvaView()", 0);
     guardaconfig();
 }
 
 
 void ListIvaView::pintaListIva() {
-    _depura("ListIvaView::pintaListIva\n",0);
+    _depura("ListIvaView::pintaListIva\n", 0);
     setNumRows(0);
     setNumRows(m_lista.count());
-    /// \todo Habr� que vaciar la tabla para que el pintado fuera exacto.
+    /// \todo Habra que vaciar la tabla para que el pintado fuera exacto.
     Iva *linea;
     uint i = 0;
-    for ( linea = m_lista.first(); linea; linea = m_lista.next() ) {
+    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
         pintaIva(i);
         adjustRow(i);
         i++;
-    }// end for
-    _depura("END ListIvaView::pintaListIva\n",0);
+    } // end for
+    _depura("END ListIvaView::pintaListIva\n", 0);
 }
 
 
-
-void ListIvaView::contextMenu ( int row, int, const QPoint & pos ) {
+void ListIvaView::contextMenu(int row, int, const QPoint & pos) {
     Q3PopupMenu *popup;
     int opcion;
     popup = new Q3PopupMenu;
-    popup->insertItem(tr(tr("Borrar Linea")),1);
+    popup->insertItem(tr(tr("Borrar Linea")), 1);
     opcion = popup->exec(pos);
     delete popup;
-    switch(opcion) {
+    switch (opcion) {
     case 1:
         borraIva(row);
-    }// end switch
-}// end contextMenuRequested
+    } // end switch
+}
 
 
 void ListIvaView::borraIvaAct() {
     borraIva(currentRow());
-}// end borralinpresupuestoact
+}
 
 
 void ListIvaView::pintaIva(int pos) {
-    _depura("ListIvaView::pintaIva\n",0);
+    _depura("ListIvaView::pintaIva\n", 0);
     Iva *linea;
     linea = m_lista.at(pos);
     setText(pos, COL_IDIVA, linea->idiva());
@@ -159,12 +159,12 @@ void ListIvaView::pintaIva(int pos) {
     setText(pos, COL_BASEIVA, linea->baseiva());
     setText(pos, COL_IVAIVA, linea->ivaiva());
     adjustRow(pos);
-    _depura("END ListIvaView::pintaIva\n",0);
-}// end pintaIva
+    _depura("END ListIvaView::pintaIva\n", 0);
+}
 
 
-bool ListIvaView::eventFilter( QObject *obj, QEvent *ev ) {
-    _depura("ListIvaView::eventFilter()\n",1);
+bool ListIvaView::eventFilter(QObject *obj, QEvent *ev) {
+    _depura("ListIvaView::eventFilter()\n", 1);
     /*
         QString idArticle;
         //    linpresupuesto *linea=lineaact();
@@ -204,58 +204,56 @@ bool ListIvaView::eventFilter( QObject *obj, QEvent *ev ) {
             }// end switch
         }// end if
     */
-    return Q3Table::eventFilter( obj, ev );
-} //end eventFilter
-
+    return Q3Table::eventFilter(obj, ev);
+}
 
 
 void ListIvaView::valueBudgetLineChanged(int row, int col) {
-    _depura("valueBudgetLineChanged \n",0);
+    _depura("valueBudgetLineChanged \n", 0);
     Iva *linea;
     linea = lineaat(row);
-        if (linea != NULL) {
-            switch (col) {
-            case COL_BASEIVA: {
-                    float baseiva = text(row, COL_BASEIVA).replace(",",".").toFloat();
-                    linea->setbaseiva(QString::number(baseiva));
-                    break;
-                }
-            case COL_IVAIVA: {
-                    float ivaiva = text(row, COL_IVAIVA).replace(",",".").toFloat();
-                    linea->setivaiva(QString::number(ivaiva));
-                    break;
-                }// end case
-            }// end switch
-            pintaIva(row);
-        }// end if
-    _depura("END valueBudgetLineChanged \n",0);
-} //end valueBudgetLineChanged
+    if (linea != NULL) {
+        switch (col) {
+        case COL_BASEIVA: {
+                float baseiva = text(row, COL_BASEIVA).replace(",", ".").toFloat();
+                linea->setbaseiva(QString::number(baseiva));
+                break;
+            }
+        case COL_IVAIVA: {
+                float ivaiva = text(row, COL_IVAIVA).replace(",", ".").toFloat();
+                linea->setivaiva(QString::number(ivaiva));
+                break;
+            } // end case
+        } // end switch
+        pintaIva(row);
+    } // end if
+    _depura("END valueBudgetLineChanged \n", 0);
+}
 
 
-/// Devuelve la linea que se esta tratando actualmente
+/// Devuelve la l&iacute;nea que se esta tratando actualmente.
 Iva *ListIvaView::lineaact() {
-    _depura("ListIvaView::lineaact()\n",0);
+    _depura("ListIvaView::lineaact()\n", 0);
     return lineaat(currentRow());
-}// end lineaact
+}
 
-/// Devuelve la linea especificada, y si no existe se van creando lineas hasta que exista.
+
+/// Devuelve la l&iacute;nea especificada, y si no existe se van creando
+/// l&iacute;neas hasta que exista.
 Iva *ListIvaView::lineaat(int row) {
     _depura("ListIvaView::lineaat\n", 0);
     Iva *linea;
-    if (row >=0) {
-        while (m_lista.at(row) == 0 ) {
-            fprintf(stderr,"Creamos la linea\n");
-            linea=new Iva(companyact);
+    if (row >= 0) {
+        while (m_lista.at(row) == 0) {
+            fprintf(stderr, "Creamos la linea\n");
+            linea = new Iva(companyact);
             linea->setidregistroiva(mdb_idregistroiva);
             m_lista.append(linea);
-        }// end while
+        } // end while
         return(m_lista.at(row));
     } else {
-        _depura("Linea inexistente\n",0);
+        _depura("Linea inexistente\n", 0);
         return NULL;
     }// end if
-
-}// end lineaat
-
-
+}
 

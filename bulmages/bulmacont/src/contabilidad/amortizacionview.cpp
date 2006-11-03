@@ -132,7 +132,7 @@ void amortizacionview::s_saveAmortizacion() {
             m_companyact->commit();
         } // end for
     } else {
-        fprintf(stderr,"Se trata de una modificacion\n");
+        fprintf(stderr, "Se trata de una modificacion\n");
         query.sprintf("UPDATE amortizacion SET nomamortizacion = '%s', valorcompra = %f, numcuotas = %d, fechacompra = '%s', idcuentaactivo = %s, idcuentaamortizacion = %s, fecha1cuota = '%s', agrupacion = '%s' WHERE idamortizacion = %s", namortizacion.toAscii().constData(), valorcompradbl, numcuotasint,fechacomprastr.toAscii().constData(), idctaactivo.toAscii().constData(), idctaamortizacion.toAscii().constData(), fecha1cuotastr.toAscii().constData(), agrupacionstr.toAscii().constData(), idamortizacion.toAscii().constData());
         m_companyact->begin();
         m_companyact->ejecuta(query);

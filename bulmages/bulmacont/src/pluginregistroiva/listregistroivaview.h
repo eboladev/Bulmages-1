@@ -1,18 +1,23 @@
 /***************************************************************************
-                          ListRegistroIvaView.h  -  description
-                             -------------------
-    begin                : Thu Jan 30 2003
-    copyright            : (C) 2003 by Tomeu Borras Riera
-    email                : tborras@conetxia.com
- ***************************************************************************/
-/***************************************************************************
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
  *   the Free Software Foundation; either version 2 of the License, or     *
  *   (at your option) any later version.                                   *
  *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 /***************************************************************************
       LISTA DE BUGS CONOCIDOS
       
@@ -26,30 +31,31 @@
 #ifndef LISTREGISTROIVAVIEW_H
 #define LISTREGISTROIVAVIEW_H
 
-// #include <QTableWidgetItem>
 #include <QWidget>
 #include <qlineedit.h>
 #include <q3table.h>
 #include <q3popupmenu.h>
-#include "ui_listregistroivabase.h"
 
+#include "ui_listregistroivabase.h"
 #include "empresa.h"
 
-/** *@author Tomeu Borras� Riera */
 
-
-class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase  {
+class ListRegistroIvaView : public QWidget, public Ui_ListRegistroIvaBase {
     Q_OBJECT
+
 private:
-	/// Opciones del menu contextual
-	QAction *m_verreg;
-	QAction *m_verasiento;
+    /// Opciones del men&uacute; contextual.
+    QAction *m_verreg;
+    QAction *m_verasiento;
+
 public:
     empresa *m_companyact;
+
 public:
-    ListRegistroIvaView(empresa *, QString ejerActual="",QWidget *parent=0, const char *name=0);
+    ListRegistroIvaView(empresa *, QString ejerActual = "", QWidget *parent = 0);
     ~ListRegistroIvaView();
     void inicializa();
+
 public slots:
     virtual void on_mui_tablasoportado_cellDoubleClicked(int, int);
     virtual void on_mui_tablarepercutido_cellDoubleClicked(int, int);
@@ -59,7 +65,9 @@ public slots:
     virtual void on_mui_tablarepercutido_trataMenu(QAction *ac);
     virtual void on_mui_actualizar_clicked();
     virtual void boton_print();
-    virtual void on_mui_list_editFinished(int row, int col) {};
+    virtual void on_mui_list_editFinished(int row, int col) {}
+    ;
 };
 
 #endif
+

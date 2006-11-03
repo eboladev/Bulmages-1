@@ -1,38 +1,44 @@
-//
-// C++ Interface: ListLinPrevCobroView
-//
-// Description:
-//
-//
-// Author: Tomeu Borras <tborras@conetxia.com>, (C) 2005
-//
-// Copyright: See COPYING file that comes with this distribution
-//
-//
+/***************************************************************************
+ *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #ifndef LISTLINPREVCOBROVIEW1_H
 #define LISTLINPREVCOBROVIEW1_H
 
-/**
-@author Tomeu Borras
-*/
-
 #include <q3table.h>
 #include "qtable1.h"
-//Added by qt3to4:
 #include <QEvent>
+
 #include "listlinprevcobro.h"
 #include "empresa.h"
 #include "linprevcobro.h"
 
 
-class ListLinPrevCobroView : public Q3Table , public ListLinPrevCobro {
+class ListLinPrevCobroView : public Q3Table, public ListLinPrevCobro {
     Q_OBJECT
+
 public:
-    ListLinPrevCobroView(QWidget *parent=0, const char *name=0);
+    ListLinPrevCobroView(QWidget *parent = 0);
     ~ListLinPrevCobroView();
     virtual void pintalistlinprevcobro();
     virtual void pintalinlistlinprevcobro(int);
-    virtual bool eventFilter( QObject *obj, QEvent *ev );
+    virtual bool eventFilter(QObject *obj, QEvent *ev);
     linprevcobro *lineaat(int);
     linprevcobro *lineaact();
     void arreglaPosicion(int, int);
@@ -41,13 +47,13 @@ public:
 
 private:
     virtual void pintalistlinprevcobro(linprevcobro *, int);
+
 public slots:
     virtual void valueLineChanged(int row, int col);
     virtual QString searchCuenta();
-    virtual void contextMenu ( int , int , const QPoint &  );
+    virtual void contextMenu(int, int, const QPoint &);
     virtual void borralinprevcobroact();
     virtual void s_creaPago();
-
     /// Esto activa a las variables de filtro con lo que los nombres de las funciones no son
     /// muy acertados.
     virtual void s_settipoprevcobro(QString tip) {
@@ -71,3 +77,4 @@ public slots:
 };
 
 #endif
+

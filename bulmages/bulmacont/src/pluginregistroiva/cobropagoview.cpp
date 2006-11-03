@@ -17,6 +17,10 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
+#include <q3table.h>
+#include <qcombobox.h>
+
 #include "cobropagoview.h"
 #include "postgresiface2.h"
 #include "empresa.h"
@@ -24,14 +28,10 @@
 #include "calendario.h"
 #include "busquedacuenta.h"
 
-#include <q3table.h>
-#include <qcombobox.h>
 
-
-/**
-  * \brief Inicia los encabezados de la tabla y llama a la presentación del listado.
-  */
-cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt::WDestructiveClose) {
+/// Inicia los encabezados de la tabla y llama a la presentación del listado.
+cobropagoview::cobropagoview(empresa * emp, QWidget *parent)
+        : Ficha(parent, Qt::WDestructiveClose) {
     _depura("cobropagoview::cobropagoview", 0);
     setupUi(this);
     conexionbase = emp->bdempresa();
@@ -41,8 +41,7 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt:
 
     numdigitos = emp->numdigitosempresa();
 
-    /// Inicializamos el listado
-    ////////////////////////////////////////////////////////
+    /// Inicializamos el listado.
     mui_listado->setDBTableName("prevcobro");
     mui_listado->setDBCampoId("idprevcobro");
     mui_listado->addSHeader("idprevcobro", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr("idprevcobro"));
@@ -58,75 +57,38 @@ cobropagoview::cobropagoview(empresa * emp, QWidget *parent) : Ficha(parent, Qt:
     mui_listado->addSHeader("tipoprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("tipoprevcobro"));
     mui_listado->addSHeader("docprevcobro", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("docprevcobro"));
     mui_listado->setinsercion(FALSE);
-   /// Dejamos de inicializar el listado
-
+    /// Dejamos de inicializar el listado.
     m_cuenta->setempresa(emp);
     on_mui_actualizar_clicked();
-
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END cobropagoview::cobropagoview", 0);
 }
 
 
 cobropagoview::~cobropagoview() {
-   _depura("cobropagoview::~cobropagoview", 0);
-   m_companyact->sacaWindow(this);
-   _depura("END cobropagoview::~cobropagoview", 0);
+    _depura("cobropagoview::~cobropagoview", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END cobropagoview::~cobropagoview", 0);
 }
 
 
-/**
-  * \brief SLOT que responde a la pulsacion del botón de actualizar
-  */
+/// SLOT que responde a la pulsacion del botón de actualizar.
 void cobropagoview::on_mui_actualizar_clicked() {
     _depura("cobropagoview::s_actualizar", 0);
 
-/*
-    if (m_tipoprevcobro->currentText() == "COBROS")
-        m_listprevcobro->s_settipoprevcobro("t");
-
-    if (m_tipoprevcobro->currentText() == "PAGOS")
-        m_listprevcobro->s_settipoprevcobro("f");
-
-    if (m_tipoprevcobro->currentText() == "TODO")
-        m_listprevcobro->s_settipoprevcobro("");
-    m_listprevcobro->s_setprocesado(m_procesado->currentText());
-*/
-
-
-/// Hacemos la presentacion con la nueva clase
-/*
-    fprintf(stderr,"ListLinPrevCobro::chargeBudgetLines\n");
-    fprintf(stderr,"Hacemos la carga del cursor\n");
-    if (mfilt_idregistroiva != "")
-        cadwhere = " AND idregistroiva = "+mfilt_idregistroiva;
-    if (mfilt_finprevcobro != "")
-        cadwhere += " AND fcobroprevcobro >= '"+mfilt_finprevcobro+"'";
-    if ( mfilt_codigocuentaprevcobro != "")
-        cadwhere += " AND idcuenta = id_cuenta('"+mfilt_codigocuentaprevcobro+"')";
-    if ( mfilt_tipoprevcobro != "")
-        cadwhere += " AND tipoprevcobro = '"+mfilt_tipoprevcobro+"'";
-    if (mfilt_procesado == "PROCESADO")
-        cadwhere += " AND idasiento IS NOT NULL ";
-    if (mfilt_procesado == "NO PROCESADO")
-        cadwhere += " AND idasiento IS NULL ";
-*/
+    /// Hacemos la presentacion con la nueva clase
     QString cadwhere = "";
-
     mui_listado->cargar("SELECT * FROM prevcobro "
-                   " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
-                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
-                   " WHERE 1=1 "+ cadwhere);
-
+                        " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
+                        " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+                        " WHERE 1=1 "+ cadwhere);
     s_recalculaSaldo();
-
     _depura("END cobropagoview::s_actualizar", 0);
-
 }
 
 
 void cobropagoview::s_guardar() {
-	mui_listado->guardar();
+    mui_listado->guardar();
 }
 
 
@@ -134,25 +96,18 @@ void cobropagoview::s_recalculaSaldo() {
     _depura("s_recalculaSaldo()", 0);
     Fixed totalcobro("0");
     Fixed totalpago("0");
-
-
     for (int i = 0; i < mui_listado->rowCount(); i++) {
-	SDBRecord *rec = mui_listado->lineaat(i);
-	if (rec) {
-		if (rec->DBvalue("tipoprevcobro") == "f") {
-			totalcobro = totalcobro + Fixed(rec->DBvalue("cantidadprevcobro"));
-		} else {
-			totalpago = totalpago + Fixed(rec->DBvalue("cantidadprevcobro"));
-		} // end if
-	} // end if
+        SDBRecord *rec = mui_listado->lineaat(i);
+        if (rec) {
+            if (rec->DBvalue("tipoprevcobro") == "f") {
+                totalcobro = totalcobro + Fixed(rec->DBvalue("cantidadprevcobro"));
+            } else {
+                totalpago = totalpago + Fixed(rec->DBvalue("cantidadprevcobro"));
+            } // end if
+        } // end if
     } // end for
-
-
     m_totalCobros->setText(totalcobro.toQString());
     m_totalPagos->setText(totalpago.toQString());
     _depura("END s_recalculaSaldo()", 0);
 }
-
-
-
 

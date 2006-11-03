@@ -160,7 +160,7 @@ void Genps_thread::run() {
     QFile macro(macrofilename);
 
     /// Escribo la serie de macros que me interactuaran con Acrobat Reader, esto es:
-    /// situar el rat&oacute;n en la ventana, pulsar ctrl+P, seleccionar "imprimr a fichero",
+    /// situar el rat&oacute;n en la ventana, pulsar ctrl+P, seleccionar "imprimir a fichero",
     /// escribir el nombre del fichero y darle a imprimir.
     /// m_output << "Delay 10\n";
 
@@ -168,7 +168,7 @@ void Genps_thread::run() {
     for (int i = 1; i < 11; i++) {
         sleep(1);
         QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep10));
-        cout << i<<"\n";
+        cout << i<< "\n";
     }
 
     macro.open(QIODevice::WriteOnly);
