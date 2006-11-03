@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
@@ -29,12 +30,12 @@
 #include "busquedacuenta.h"
 #include "asiento1view.h"
 
-#define COL_FECHA                  0
-#define COL_CUOTA                  1
-#define COL_IDASIENTO              2
-#define COL_EJERCICIO              3
-#define COL_IDLINAMORTIZACION      4
-#define COL_ORDENASIENTO           5
+#define COL_FECHA                0
+#define COL_CUOTA                1
+#define COL_IDASIENTO            2
+#define COL_EJERCICIO            3
+#define COL_IDLINAMORTIZACION    4
+#define COL_ORDENASIENTO         5
 
 
 amortizacionview::amortizacionview(empresa *emp, QWidget *parent)

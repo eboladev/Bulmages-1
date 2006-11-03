@@ -37,19 +37,18 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     ffinal->setText(normalizafecha("31/12").toString("dd/MM/yyyy"));
     emp->meteWindow(windowTitle(), this);
 
-    /// ============================================
-    /// DEFINICIONES PARA LA TABLA DE IVAAboutView
+    /// DEFINICIONES PARA LA TABLA DE IVAAboutView.
     mui_tablasoportado->setDBTableName("registroiva");
     mui_tablasoportado->setDBCampoId("idregistroiva");
-    mui_tablasoportado->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id"));
-    mui_tablasoportado->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Concepto contable"));
+    mui_tablasoportado->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Id"));
+    mui_tablasoportado->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("Concepto contable"));
     mui_tablasoportado->addSHeader("baseimp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("idcuenta"));
-    mui_tablasoportado->addSHeader("iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("IVA"));
-    mui_tablasoportado->addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("Fecha de factura"));
-    mui_tablasoportado->addSHeader("femisionregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite , tr("descripcioncuenta"));
-    mui_tablasoportado->addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("descripcion"));
-    mui_tablasoportado->addSHeader("serieregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Debe"));
-    mui_tablasoportado->addSHeader("idborrador", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Haber"));
+    mui_tablasoportado->addSHeader("iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("IVA"));
+    mui_tablasoportado->addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Fecha de factura"));
+    mui_tablasoportado->addSHeader("femisionregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("descripcioncuenta"));
+    mui_tablasoportado->addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("descripcion"));
+    mui_tablasoportado->addSHeader("serieregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, tr("Debe"));
+    mui_tablasoportado->addSHeader("idborrador", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNoWrite, tr("Haber"));
     mui_tablasoportado->addSHeader("incregistro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Contrapartida"));
     mui_tablasoportado->addSHeader("regularizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Comentario"));
     mui_tablasoportado->addSHeader("plan349", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("ID Canal"));
@@ -61,41 +60,40 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     mui_tablasoportado->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
     mui_tablasoportado->setinsercion(FALSE);
 
-
     mui_tablarepercutido->setDBTableName("registroiva");
     mui_tablarepercutido->setDBCampoId("idregistroiva");
-    mui_tablarepercutido->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id"));
-    mui_tablarepercutido->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Concepto Contable"));
+    mui_tablarepercutido->addSHeader("idregistroiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Id"));
+    mui_tablarepercutido->addSHeader("contrapartida", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("Concepto Contable"));
     mui_tablarepercutido->addSHeader("baseimp", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("idcuenta"));
-    mui_tablarepercutido->addSHeader("iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("codigo"));
-    mui_tablarepercutido->addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("tipocuenta"));
-    mui_tablarepercutido->addSHeader("femisionregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("descripcioncuenta"));
-    mui_tablarepercutido->addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone , tr("descripcion"));
-    mui_tablarepercutido->addSHeader("serieregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Debe"));
-    mui_tablarepercutido->addSHeader("idborrador", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("Haber"));
-    mui_tablarepercutido->addSHeader("incregistro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Contrapartida"));
-    mui_tablarepercutido->addSHeader("regularizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Comentario"));
-    mui_tablarepercutido->addSHeader("plan349", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("ID Canal"));
-    mui_tablarepercutido->addSHeader("numorden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("Conciliacion"));
-    mui_tablarepercutido->addSHeader("cif", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idc_coste"));
-    mui_tablarepercutido->addSHeader("idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idapunte"));
-    mui_tablarepercutido->addSHeader("factemitida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("idtipoiva"));
-    mui_tablarepercutido->addSHeader("rectificaaregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone , tr("orden"));
+    mui_tablarepercutido->addSHeader("iva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("codigo"));
+    mui_tablarepercutido->addSHeader("ffactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("tipocuenta"));
+    mui_tablarepercutido->addSHeader("femisionregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("descripcioncuenta"));
+    mui_tablarepercutido->addSHeader("factura", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("descripcion"));
+    mui_tablarepercutido->addSHeader("serieregistroiva", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("Debe"));
+    mui_tablarepercutido->addSHeader("idborrador", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("Haber"));
+    mui_tablarepercutido->addSHeader("incregistro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Contrapartida"));
+    mui_tablarepercutido->addSHeader("regularizacion", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Comentario"));
+    mui_tablarepercutido->addSHeader("plan349", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("ID Canal"));
+    mui_tablarepercutido->addSHeader("numorden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Conciliacion"));
+    mui_tablarepercutido->addSHeader("cif", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("idc_coste"));
+    mui_tablarepercutido->addSHeader("idfpago", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("idapunte"));
+    mui_tablarepercutido->addSHeader("factemitida", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("idtipoiva"));
+    mui_tablarepercutido->addSHeader("rectificaaregistroiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("orden"));
     mui_tablarepercutido->addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("idasiento"));
     mui_tablarepercutido->setinsercion(FALSE);
 
     mui_totalRepercutido->setDBTableName("");
     mui_totalRepercutido->setDBCampoId("");
-    mui_totalRepercutido->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("nombretipoiva"));
-    mui_totalRepercutido->addSHeader("tivaiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("tivaiva"));
-    mui_totalRepercutido->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("tbaseiva"));
+    mui_totalRepercutido->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("nombretipoiva"));
+    mui_totalRepercutido->addSHeader("tivaiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("tivaiva"));
+    mui_totalRepercutido->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("tbaseiva"));
     mui_totalRepercutido->setinsercion(FALSE);
 
     mui_totalSoportado->setDBTableName("");
     mui_totalSoportado->setDBCampoId("");
-    mui_totalSoportado->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("nombretipoiva"));
-    mui_totalSoportado->addSHeader("tivaiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("tivaiva"));
-    mui_totalSoportado->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite , tr("tbaseiva"));
+    mui_totalSoportado->addSHeader("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("nombretipoiva"));
+    mui_totalSoportado->addSHeader("tivaiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("tivaiva"));
+    mui_totalSoportado->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("tbaseiva"));
     mui_totalSoportado->setinsercion(FALSE);
 
     /// END DEFINICIONES PARA LA TABLA DE IVAAboutViewAboutViewAboutViewAboutView
@@ -138,7 +136,7 @@ void ListRegistroIvaView::on_mui_tablarepercutido_cellDoubleClicked(int, int) {
 
 
 void ListRegistroIvaView::boton_print() {
-    regivaprintview *print = new regivaprintview(m_companyact, 0, 0);
+    regivaprintview *print = new regivaprintview(m_companyact, 0);
     print->inicializa1(finicial->text(), ffinal->text());
     print->exec();
     delete print;
