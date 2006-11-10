@@ -30,6 +30,7 @@
 #include "fixed.h"
 #include "dbrecord.h"
 
+
 /// Clase que almacena los datos de albaranes a clientes.
 /** */
 class AlbaranCliente : public DBRecord {

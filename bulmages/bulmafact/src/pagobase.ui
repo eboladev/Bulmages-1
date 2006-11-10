@@ -8,12 +8,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>438</width>
-    <height>266</height>
+    <width>480</width>
+    <height>272</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Pago</string>
+   <string>Nuevo pago a proveedor</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
@@ -23,7 +23,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -31,10 +31,16 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -67,14 +73,20 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
           <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
            <size>
             <width>32</width>
             <height>32</height>
@@ -94,8 +106,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -103,6 +115,12 @@
         <item>
          <widget class="QToolButton" name="mui_borrar" >
           <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
            <size>
             <width>32</width>
             <height>32</height>
@@ -122,8 +140,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -138,7 +156,7 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>213</width>
+            <width>61</width>
             <height>32</height>
            </size>
           </property>
@@ -149,7 +167,7 @@
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
-            <vsizetype>5</vsizetype>
+            <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -158,27 +176,12 @@
            <string>Referencia:</string>
           </property>
           <property name="buddy" >
-           <cstring>mui_refpago</cstring>
+           <cstring></cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="mui_refpago" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>13</hsizetype>
-            <vsizetype>13</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>100</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
+         <widget class="BusquedaReferencia" name="mui_refpago" />
         </item>
        </layout>
       </widget>
@@ -186,10 +189,181 @@
     </layout>
    </item>
    <item>
-    <widget class="QCheckBox" name="mui_previsionpago" >
-     <property name="text" >
-      <string>Prevision</string>
+    <widget class="QFrame" name="frame_2" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
      </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>5</number>
+      </property>
+      <property name="spacing" >
+       <number>5</number>
+      </property>
+      <item row="1" column="0" colspan="4" >
+       <widget class="BusquedaProveedor" name="mui_proveedor" >
+        <property name="minimumSize" >
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="4" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>428</width>
+          <height>16</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="textLabel1_4_4" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Total pago:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_cantpago</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>162</width>
+          <height>26</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="1" colspan="2" >
+       <widget class="QLineEdit" name="mui_cantpago" >
+        <property name="enabled" >
+         <bool>true</bool>
+        </property>
+        <property name="font" >
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text" >
+         <string>0.00</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="3" >
+       <widget class="QLineEdit" name="mui_comentpago" />
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2_3_2" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Descripcion del pago:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy" >
+         <cstring>mui_comentpago</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1_2_3" >
+        <property name="text" >
+         <string>Fecha de pago:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" >
+       <widget class="BusquedaFecha" name="mui_fechapago" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2" colspan="2" >
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
+        </property>
+        <property name="spacing" >
+         <number>5</number>
+        </property>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="mui_previsionpago" >
+          <property name="layoutDirection" >
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="text" >
+           <string>Provision de fondos</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
     </widget>
    </item>
    <item>
@@ -198,472 +372,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>2</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_3_2" >
-       <property name="text" >
-        <string>Proveedor:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaProveedor" name="mui_proveedor" >
-       <property name="minimumSize" >
-        <size>
-         <width>250</width>
-         <height>0</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>160</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>2</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_3" >
-       <property name="text" >
-        <string>Fecha pago:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="BusquedaFecha" name="mui_fechapago" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>7</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::MinimumExpanding</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>276</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>2</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_2_2_3_2" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>1</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Descripcion pago:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>mui_comentpago</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="mui_comentpago" />
-     </item>
-    </layout>
-   </item>
-   <item>
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>420</width>
-       <height>16</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
-     </property>
-     <item>
-      <widget class="QLabel" name="textLabel1_4_4" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>5</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text" >
-        <string>Total pago:</string>
-       </property>
-       <property name="buddy" >
-        <cstring>mui_cantpago</cstring>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLineEdit" name="mui_cantpago" >
-       <property name="enabled" >
-        <bool>true</bool>
-       </property>
-       <property name="palette" >
-        <palette>
-         <active>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>237</red>
-           <green>237</green>
-           <blue>237</blue>
-          </color>
-          <color>
-           <red>231</red>
-           <green>231</green>
-           <blue>231</blue>
-          </color>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>166</red>
-           <green>166</green>
-           <blue>166</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>127</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>0</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>231</red>
-           <green>231</green>
-           <blue>231</blue>
-          </color>
-         </active>
-         <inactive>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>237</red>
-           <green>237</green>
-           <blue>237</blue>
-          </color>
-          <color>
-           <red>231</red>
-           <green>231</green>
-           <blue>231</blue>
-          </color>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>166</red>
-           <green>166</green>
-           <blue>166</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>127</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>0</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>231</red>
-           <green>231</green>
-           <blue>231</blue>
-          </color>
-         </inactive>
-         <disabled>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>237</red>
-           <green>237</green>
-           <blue>237</blue>
-          </color>
-          <color>
-           <red>231</red>
-           <green>231</green>
-           <blue>231</blue>
-          </color>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>166</red>
-           <green>166</green>
-           <blue>166</blue>
-          </color>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>255</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-          <color>
-           <red>121</red>
-           <green>125</green>
-           <blue>121</blue>
-          </color>
-          <color>
-           <red>207</red>
-           <green>207</green>
-           <blue>207</blue>
-          </color>
-          <color>
-           <red>0</red>
-           <green>0</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>255</red>
-           <green>0</green>
-           <blue>255</blue>
-          </color>
-          <color>
-           <red>231</red>
-           <green>231</green>
-           <blue>231</blue>
-          </color>
-         </disabled>
-        </palette>
-       </property>
-       <property name="font" >
-        <font>
-         <family>Arial</family>
-         <pointsize>28</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
-       </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="alignment" >
-        <set>Qt::AlignRight</set>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>16</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -672,16 +381,23 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>201</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>&amp;Cerrar</string>
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
@@ -693,13 +409,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends></extends>
-   <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -708,18 +417,24 @@
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
+   <extends>QWidget</extends>
    <header>busquedareferencia.h</header>
+   <container>1</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends></extends>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>mui_refpago</tabstop>
   <tabstop>mui_previsionpago</tabstop>
   <tabstop>mui_comentpago</tabstop>
   <tabstop>mui_cantpago</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>mui_cancelar</tabstop>
   <tabstop>mui_guardar</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_comentpago</tabstop>
@@ -729,7 +444,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>mui_cancelar</sender>
    <signal>clicked()</signal>
    <receiver>PagoBase</receiver>
    <slot>close()</slot>

@@ -52,15 +52,15 @@ void BusquedaProveedor::setidproveedor(QString val) {
     mdb_idproveedor = val;
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = '" + mdb_idproveedor + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         mdb_cifproveedor = cur->valor("cifproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
-	mdb_codproveedor = cur->valor("codproveedor");
+        mdb_codproveedor = cur->valor("codproveedor");
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
         mdb_cifproveedor = "";
-	mdb_codproveedor = "";
+        mdb_codproveedor = "";
     } // end if
     delete cur;
     pinta();
@@ -75,11 +75,11 @@ void BusquedaProveedor::setcifproveedor(QString val) {
     if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
-	mdb_codproveedor = cur->valor("codproveedor");
+        mdb_codproveedor = cur->valor("codproveedor");
     } else {
         mdb_idproveedor = "";
         mdb_nomproveedor = "";
-	mdb_codproveedor = "";
+        mdb_codproveedor = "";
     } // end if
 
     delete cur;
@@ -87,12 +87,12 @@ void BusquedaProveedor::setcifproveedor(QString val) {
 }
 
 
-/// Busqueda de proveedor.
+/// B&uacute;squeda de proveedor.
 void BusquedaProveedor::on_mui_buscar_clicked() {
     _depura("BusquedaProveedor::on_mui_buscar_clicked", 0);
 
-    /// Esto es convertir un QWidget en un sistema modal de dialogo.
-    QDialog *diag=new QDialog(0);
+    /// Esto es convertir un QWidget en un sistema modal de di&aacute;logo.
+    QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
     ProveedorList *providers = new ProveedorList(companyact, diag, 0, ProveedorList::SelectMode);
@@ -101,8 +101,8 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     diag->exec();
 
     if (providers->cifprovider() != "") {
-	setcifproveedor( providers->cifprovider());
- 	emit(valueChanged(mdb_idproveedor));
+        setcifproveedor(providers->cifprovider());
+        emit(valueChanged(mdb_idproveedor));
     } // end if
 
     delete providers;
@@ -124,9 +124,9 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
         return;
 
     bool encontrado = FALSE;
-    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor='" + val + "'";
+    QString SQLQuery = "SELECT * FROM proveedor WHERE cifproveedor = '" + val + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         mdb_idproveedor = cur->valor("idproveedor");
         mdb_nomproveedor = cur->valor("nomproveedor");
         mdb_cifproveedor = cur->valor("cifproveedor");
@@ -135,8 +135,8 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     }
     delete cur;
 
-    if (! encontrado) {
-        QString SQLQuery = "SELECT * FROM proveedor WHERE codproveedor='" + val + "'";
+    if (!encontrado) {
+        QString SQLQuery = "SELECT * FROM proveedor WHERE codproveedor = '" + val + "'";
         cur = companyact->cargacursor(SQLQuery);
         if(!cur->eof()) {
             mdb_idproveedor = cur->valor("idproveedor");
@@ -149,7 +149,7 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     } // end if
 
 
-    if (! encontrado) {
+    if (!encontrado) {
         QString SQLQuery = "SELECT * FROM proveedor WHERE upper(nomproveedor) LIKE upper('%" + val + "%')";
         cur = companyact->cargacursor(SQLQuery);
         if(cur->numregistros() == 1) {
@@ -163,12 +163,12 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     } // end if
 
 
-    if(!encontrado) {
+    if (!encontrado) {
         m_nomproveedor->setText("");
     } // end if
 
     if (encontrado) {
-        m_nomproveedor->setText(mdb_codproveedor+".- "+mdb_nomproveedor);
+        m_nomproveedor->setText(mdb_codproveedor + ".- " + mdb_nomproveedor);
     } // end if
     _depura("END BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
 }

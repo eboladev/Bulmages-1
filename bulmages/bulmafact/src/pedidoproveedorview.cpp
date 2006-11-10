@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QCloseEvent>
+#include <fstream>
+
 #include <QMessageBox>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
 #include <QToolButton>
 #include <QLayout>
-#include <fstream>
 
 using namespace std;
 
@@ -61,7 +61,7 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
         dialogChanges_cargaInicial();
         comp->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
-        mensajeInfo(tr("Error al crear el pedido proveedor"));
+        mensajeInfo(tr("Error al crear el pedido a proveedor"));
     } // end try
     _depura("END PedidoProveedorView::PedidoProveedorView", 0);
 }
@@ -78,13 +78,29 @@ PedidoProveedorView::~PedidoProveedorView() {
 void PedidoProveedorView::inicialize() {
     m_totalBases->setReadOnly(TRUE);
     m_totalBases->setAlignment(Qt::AlignRight);
+    QPalette p1 = m_totalBases->palette();
+    p1.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
+    m_totalBases->setPalette(p1);
+
     m_totalTaxes->setReadOnly(TRUE);
     m_totalTaxes->setAlignment(Qt::AlignRight);
+    QPalette p2 = m_totalTaxes->palette();
+    p2.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
+    m_totalTaxes->setPalette(p2);
+
     m_totalDiscounts->setReadOnly(TRUE);
     m_totalDiscounts->setAlignment(Qt::AlignRight);
+    QPalette p3 = m_totalDiscounts->palette();
+    p3.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
+    m_totalDiscounts->setPalette(p3);
+
     m_totalpedidoproveedor->setReadOnly(TRUE);
     m_totalpedidoproveedor->setAlignment(Qt::AlignRight);
-    /// Inicializamos la forma de pago para que no se quede sin ser pintada.
+    QPalette p4 = m_totalpedidoproveedor->palette();
+    p4.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
+    m_totalpedidoproveedor->setPalette(p4);
+
+    /// Inicializamos los desplegables.
     pintaidforma_pago("0");
     pintaidalmacen("0");
     pintaidtrabajador("0");
@@ -126,7 +142,7 @@ int PedidoProveedorView::guardar() {
         setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked() ? "TRUE" : "FALSE");
         PedidoProveedor::guardar();
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         _depura("PedidoProveedorView::guardar Error al guardar el Pedido Proveedor", 0);
         throw -1;
     } // end try
@@ -162,7 +178,7 @@ void PedidoProveedorView::generarAlbaran() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         AlbaranProveedorView *bud = new AlbaranProveedorView(companyact, NULL);
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaranp"));

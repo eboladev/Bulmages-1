@@ -352,11 +352,12 @@ void company::s_newAlbaranPro() {
 
 
 void company::s_newPedidoPro() {
-    _depura ("company::s_newPedidoPro",0);
-    PedidoProveedorView *bud = new PedidoProveedorView(this, 0);
-    m_pWorkspace->addWindow(bud);
-    bud->pintar();
-    bud->show();
+    _depura ("company::s_newPedidoPro", 0);
+    PedidoProveedorView *ppv = new PedidoProveedorView(this, 0);
+    m_pWorkspace->addWindow(ppv);
+    ppv->pintar();
+    ppv->show();
+    _depura ("END company::s_newPedidoPro", 0);
 }
 
 

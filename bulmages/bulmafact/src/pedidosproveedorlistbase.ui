@@ -11,22 +11,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>557</width>
-    <height>456</height>
+    <width>534</width>
+    <height>399</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Pedidos a proveedores</string>
+   <string>Listado de pedidos a proveedores</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_listado.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -56,10 +56,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -233,11 +233,11 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
+           <enum>QSizePolicy::Fixed</enum>
           </property>
           <property name="sizeHint" >
            <size>
-            <width>51</width>
+            <width>15</width>
             <height>20</height>
            </size>
           </property>
@@ -266,14 +266,21 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item>
+      <item row="0" column="0" colspan="2" >
+       <widget class="QCheckBox" name="m_procesados" >
+        <property name="text" >
+         <string>Solo procesados</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -282,93 +289,21 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="m_procesados" >
-          <property name="text" >
-           <string>Procesados</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>220</width>
-            <height>31</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label7" >
-          <property name="text" >
-           <string>Fecha inicial:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>200</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
          <widget class="QLabel" name="label6" >
           <property name="text" >
            <string>Fecha final:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item>
          <widget class="BusquedaFecha" name="m_fechafin" />
         </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>101</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
        </layout>
       </item>
-      <item>
+      <item row="1" column="0" >
        <layout class="QHBoxLayout" >
         <property name="margin" >
          <number>0</number>
@@ -377,75 +312,32 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label4" >
+         <widget class="QLabel" name="label7" >
           <property name="text" >
-           <string>Proveedor:</string>
+           <string>Fecha inicial:</string>
+          </property>
+          <property name="alignment" >
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="BusquedaProveedor" name="m_proveedor" >
-          <property name="minimumSize" >
-           <size>
-            <width>250</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>136</width>
-            <height>31</height>
-           </size>
-          </property>
-         </spacer>
+         <widget class="BusquedaFecha" name="m_fechain" />
         </item>
        </layout>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="2" column="0" >
+       <widget class="BusquedaProveedor" name="m_proveedor" >
+        <property name="minimumSize" >
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
         </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label5" >
-          <property name="text" >
-           <string>Articulo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaArticulo" name="m_articulo" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>136</width>
-            <height>31</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="BusquedaArticulo" name="m_articulo" />
       </item>
      </layout>
     </widget>
@@ -459,7 +351,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>2</number>
+      <number>6</number>
      </property>
      <item>
       <spacer>
@@ -471,8 +363,8 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>340</width>
-         <height>21</height>
+         <width>211</width>
+         <height>37</height>
         </size>
        </property>
       </spacer>
@@ -480,7 +372,7 @@
      <item>
       <widget class="QLabel" name="label3" >
        <property name="text" >
-        <string>Total:</string>
+        <string>Suma de totales de pedidos:</string>
        </property>
       </widget>
      </item>
@@ -492,7 +384,7 @@
        <property name="font" >
         <font>
          <family>Sans Serif</family>
-         <pointsize>20</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
@@ -500,8 +392,18 @@
          <strikeout>false</strikeout>
         </font>
        </property>
+       <property name="text" >
+        <string>0.00</string>
+       </property>
        <property name="alignment" >
         <set>Qt::AlignRight</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton" >
+       <property name="text" >
+        <string>&amp;Cerrar</string>
        </property>
       </widget>
      </item>

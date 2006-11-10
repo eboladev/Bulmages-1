@@ -96,11 +96,12 @@ public:
             m_procesadopedidoproveedor->setChecked(FALSE);
         }
     };
-
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {return PedidoProveedorView::borrar();};
+    virtual int borrar() {
+        return PedidoProveedorView::borrar();
+    };
 
 public slots:
     virtual void on_mui_guardar_clicked() {
@@ -110,8 +111,7 @@ public slots:
     virtual void on_mui_imprimir_clicked() {
         imprimirPedidoProveedor();
     };
-
-    /// Este slot se activa cuando hay cambios en los subformularios.
+    /// Este SLOT se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         calculaypintatotales();
     };
