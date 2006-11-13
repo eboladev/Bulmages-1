@@ -54,6 +54,7 @@ protected:
     void guardaconfig();
     void cargaconfig();
     void pintaCabeceras();
+public:
     QList<SDBRecord *> *lista() {
         return &m_lista;
     };

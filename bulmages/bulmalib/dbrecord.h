@@ -96,7 +96,7 @@ public:
     };
     int DBload(cursor2 *);
     virtual int DBsave(QString &id);
-    int setDBvalue(QString, QString);
+    virtual int setDBvalue(QString, QString);
     QString DBvalue(QString);
     QString DBvalueprep(QString);
     void setDBTableName(QString nom) {

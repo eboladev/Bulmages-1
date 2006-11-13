@@ -24,44 +24,44 @@
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "ui_amortizacionbase.h"
-
+#include "dbrecord.h"
+#include "ficha.h"
 
 class empresa;
 
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class amortizacionview : public QWidget, Ui_AmortizacionBase, dialogChanges {
+class amortizacionview : public Ficha, Ui_AmortizacionBase, DBRecord {
     Q_OBJECT
 
-public:
+private:
     /// Empresa con la que se trabaja.
     empresa *m_companyact;
     /// Esta variable indica cual es el &iacute;ndice de la cuenta de activo de la
     /// amortizaci&oacute;n que estamos viendo. Si no se est&aacute; mostrando una
     /// cuenta este valor vale "".
-    QString idctaactivo;
+    QString m_idctaactivo;
     /// Esta variable indica cual es el &iacute;ndice de la cuenta de amortizacion de la
     /// amortizacion que estamos viendo. Si no se está mostrando una cuenta este valor vale "".
-    QString idctaamortizacion;
+    QString m_idctaamortizacion;
     /// Esta variable indica cu&aacute;l es la amortizaci&oacute;n que se est&aacute;
     /// ense&ntilde;ando. Si no tiene valor es que no se esta mostrando ninguna.
-    QString idamortizacion;
+    QString m_idamortizacion;
     /// Esta variable indica cu&aacute;l es el asiento plantilla de amortizaci&oacute;n.
-    QString idainteligente;
+    QString m_idainteligente;
+public:
     amortizacionview(empresa *, QWidget *);
     ~amortizacionview();
-    void inicializa(QString);
-    void trataModificado();
+    virtual int cargar(QString idamortizacion);
+    virtual int guardar();
+    virtual int borrar();
+
 
 public slots:
-    virtual bool close();
-    virtual void accept();
-    virtual void calculaamortizacion();
+    virtual void on_mui_btcalcular_clicked();
     virtual void contextMenuRequested(int, int, const QPoint &);
-    virtual void s_saveAmortizacion();
-    virtual void s_newAmortizacion();
-    virtual void s_deleteAmortizacion();
+    virtual void on_mui_guardar_clicked();
 };
 
 #endif

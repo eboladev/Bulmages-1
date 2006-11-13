@@ -100,6 +100,7 @@ void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
 
 /// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
 /// tenga todos los elementos necesarios (columnas).
+/// Nota: Esta funcion es de uso interno, no debe ser usada.
 SDBRecord *SubForm3::newSDBRecord() {
     _depura("SubForm3::newSDBRecord\n", 0);
     SDBRecord *rec = new SDBRecord(m_companyact);
@@ -363,15 +364,22 @@ SDBRecord *SubForm3::lineaact() {
 }
 
 
-/// Devuelve la linea especificada
+/// Devuelve la linea especificada o NULL si ésta no existe.
 SDBRecord *SubForm3::lineaat(int row) {
-    _depura("SubForm3::lineaat()\n", 0);
+    _depura("SubForm3::lineaat()", 0);
+
+    /// Si la lista no tiene suficientes elementos devolvemos NULL
+    if (mui_list->rowCount() < row || row < 0) {
+	return NULL;
+    } // end if
+
+    /// Seleccionamos el campo especificado y lo devolvemos.
     SDBCampo *camp = (SDBCampo*) mui_list->item(row, 0);
     if (!camp) {
         return NULL;
     } // end if
     SDBRecord *rec = (SDBRecord *) camp->pare();
-    _depura("END SubForm3::lineaat()\n", 0);
+    _depura("END SubForm3::lineaat()", 0);
     return rec;
 }
 
@@ -513,6 +521,11 @@ int SubForm3::guardar() {
             } // end if
         } // end while
 
+        /// Si no hay elementos que guardar salimos.
+        if(mui_list->rowCount() == 0 || ( (mui_list->rowCount() == 1) && m_insercion)) {
+		return 0;
+	} // end if
+
         /// Hacemos el guardado
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
@@ -522,6 +535,7 @@ int SubForm3::guardar() {
             } // end if
         } // end for
 
+        /// Si no hay modo insercion hacemos el guardado de la ultima linea.
         if (!m_insercion) {
             rec = lineaat(mui_list->rowCount() - 1);
             rec->guardar();

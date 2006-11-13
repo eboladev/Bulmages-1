@@ -115,7 +115,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_imprimir" >
+         <widget class="QToolButton" name="mui_borrar" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -132,47 +132,13 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
             <width>22</width>
             <height>22</height>
            </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_eliminar" >
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Imprimir albaran</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Imprimir albaran</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>22</width>
-            <height>22</height>
-           </size>
-          </property>
-          <property name="checkable" >
-           <bool>false</bool>
-          </property>
-          <property name="checked" >
-           <bool>false</bool>
           </property>
          </widget>
         </item>
@@ -419,38 +385,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="6" >
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>221</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="1" column="6" >
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>221</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="1" column="1" colspan="5" >
-          <widget class="BusquedaCuenta" name="ctaamortizacion" />
-         </item>
-         <item row="0" column="1" colspan="5" >
-          <widget class="BusquedaCuenta" name="ctaactivo" />
-         </item>
          <item row="2" column="1" colspan="2" >
           <widget class="BusquedaFecha" name="fechacompra" />
          </item>
@@ -466,6 +400,12 @@
             </size>
            </property>
           </spacer>
+         </item>
+         <item row="0" column="1" colspan="6" >
+          <widget class="BusquedaCuenta" name="ctaactivo" />
+         </item>
+         <item row="1" column="1" colspan="6" >
+          <widget class="BusquedaCuenta" name="ctaamortizacion" />
          </item>
         </layout>
        </item>
@@ -568,7 +508,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="botoncalcular" >
+          <widget class="QPushButton" name="mui_btcalcular" >
            <property name="text" >
             <string>&amp;Calcular</string>
            </property>
@@ -595,10 +535,7 @@
           </widget>
          </item>
          <item>
-          <widget class="Q3Table" name="table1" />
-         </item>
-         <item>
-          <widget class="QTableWidget" name="tableWidget1" />
+          <widget class="SubForm3" name="mui_listcuotas" />
          </item>
         </layout>
        </item>
@@ -1255,6 +1192,20 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaCuenta</class>
+   <extends></extends>
+   <header>busquedacuenta.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>SubForm3</class>
+   <extends>Q3Table</extends>
+   <header>subform3.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1265,13 +1216,6 @@
    <class>Q3Table</class>
    <extends></extends>
    <header>q3table.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCuenta</class>
-   <extends></extends>
-   <header>busquedacuenta.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1286,7 +1230,7 @@
   <tabstop>metodoincremental</tabstop>
   <tabstop>metododecremental</tabstop>
   <tabstop>metodoporcentual</tabstop>
-  <tabstop>botoncalcular</tabstop>
+  <tabstop>mui_btcalcular</tabstop>
   <tabstop>tabWidget3</tabstop>
   <tabstop>amortizado</tabstop>
   <tabstop>pendiente</tabstop>

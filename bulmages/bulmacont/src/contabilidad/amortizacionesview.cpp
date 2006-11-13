@@ -78,7 +78,7 @@ void amortizacionesview::on_listado_cellDoubleClicked(int row, int) {
         idamortizacion = listado->item(row,COL_CODIGO)->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
         amortizacionview *amor = new amortizacionview(m_companyact, 0);
-        amor->inicializa(idamortizacion);
+        amor->cargar(idamortizacion);
         m_companyact->pWorkspace()->addWindow(amor);
         amor->show();
     } else {
