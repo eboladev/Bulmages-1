@@ -22,6 +22,7 @@
 #include <QAction>
 #include <QObject>
 #include <QMessageBox>
+#include <QToolButton>
 
 #include <stdio.h>
 
@@ -31,6 +32,9 @@
 #include "efacturarecepcion.h"
 #include "company.h"
 #include "funcaux.h"
+#include "facturaview.h"
+#include "efqtoolbutton.h"
+#include "facturasplist.h"
 
 efacturabf::efacturabf() {}
 
@@ -41,11 +45,11 @@ void efacturabf::elslot() {
 	EFactura *ef = new EFactura(m_companyact);
 	ef->show();
 	
-	EFacturaEnvio *efv = new EFacturaEnvio(m_companyact);
-	efv->show();
+// 	EFacturaEnvio *efv = new EFacturaEnvio(m_companyact);
+// 	efv->show();
 	
-	EFacturaRecepcion *efr = new EFacturaRecepcion(m_companyact);
-	efr->show();
+// 	EFacturaRecepcion *efr = new EFacturaRecepcion(m_companyact);
+// 	efr->show();
 	
 //     fprintf(stderr,"Sa ha activado el slot\n");
 //     QMessageBox::warning(0,
@@ -84,3 +88,30 @@ void entryPoint(bulmafact *bges) {
 	bges->setWindowTitle("Prueba de plugin e-factura.");
 }
 
+/// Dibuja el boton de exportar en el formulario de factura
+
+// int FacturaView_FacturaView(FacturaView *fac) {
+int FacturaView_EFacturaBotonExportar(FacturaView *fac) {
+	_depura("FacturaView_EFacturaBotonExportar", 0);
+	
+	EFQToolButton *mui_exporta_efactura = new EFQToolButton(fac, fac->mui_plugbotones);
+	mui_exporta_efactura->setObjectName(QString::fromUtf8("guardar"));
+	mui_exporta_efactura->setMinimumSize(QSize(32, 32));
+	mui_exporta_efactura->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/pendientes/i_save.xpm")));
+	mui_exporta_efactura->setIconSize(QSize(22, 22));
+	
+	QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(fac->mui_plugbotones);
+	m_hboxLayout1->setSpacing(5);
+	m_hboxLayout1->setMargin(5);
+	m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));	
+	m_hboxLayout1->addWidget(mui_exporta_efactura);
+	
+	_depura("END FacturaView_EFacturaBotonExportar", 0);
+	
+	return 0;
+}
+
+int FacturasProveedorListSubform_EFacturaBotonImportar(FacturasProveedorListSubform *listfac) {
+	_depura("FacturasProveedorListSubform_EFacturaBotonImportar", 0);
+	return 0;
+}

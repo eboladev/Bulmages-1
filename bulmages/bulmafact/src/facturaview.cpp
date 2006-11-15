@@ -41,15 +41,22 @@ using namespace std;
 #include "informereferencia.h"
 #include "listdescfacturaview.h"
 #include "listlinfacturaview.h"
+#include "plugins.h"
 
 
 FacturaView::FacturaView(company *comp, QWidget *parent)
         : Ficha(parent), Factura(comp) {
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    _depura("FacturaView::FacturaView", 0);
+    _depura("FacturaView::EFacturaBotonExportar", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+        
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("FacturaView_EFacturaBotonExportar", this);
+        if (res != 0)
+            return;
+        
         subform2->setcompany(comp);
         m_almacen->setcompany(comp);
         m_forma_pago->setcompany(comp);

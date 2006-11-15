@@ -18,12 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "QString"
-
 #include "efactura.h"
 #include "funcaux.h"
 #include <QFileDialog>
 #include <QLineEdit>
+#include <QString>
 
 /// Constructor de la clase EFactura (el form)
 /// Pasamos como parametro la empresa para poder usar metodos de BD para
@@ -56,25 +55,6 @@ EFactura::EFactura(company *emp, QWidget *parent) : QWidget(parent) {
 
 EFactura::~EFactura() {}
 
-// ---------------------------- Slots ---------------------------- //
-
-/// Funcionalidad del boton Examinar en el apartado del certificado
-
-void EFactura::on_mui_examinaECertificado_clicked() {
-	_depura("EFactura::on_mui_examinar_clicked", 0);
-	
-	QString s = QFileDialog::getOpenFileName(
-                    this,
-                    "Escoja un fichero por favor",
-                    "/home",
-                    "Todos los archivos (*)");
-
-	/// Si se le da a cancelar, s devuelve NULL y se queda el campo de texto vacio
-	
-	if (s != NULL)
-		mui_ficheroECertificado->setText(s);
-}
-
 /// Funcionalidad del boton guardar
 
 void EFactura::on_mui_guardar_clicked() {
@@ -106,10 +86,28 @@ void EFactura::on_mui_guardar_clicked() {
 	m_companyact->ejecuta(query);
 }
 
+/// Funcionalidad del boton Examinar en el apartado del certificado
+
+void EFactura::on_mui_examinaECertificado_clicked() {
+	_depura("EFactura::on_mui_examinar_clicked", 0);
+	
+	QString s = QFileDialog::getOpenFileName(
+			this,
+			"Escoja un fichero por favor",
+			"/home",
+			"Todos los archivos (*)"
+			);
+
+	/// Si se le da a cancelar, s devuelve NULL y se queda el campo de texto vacio
+	
+	if (s != NULL)
+		mui_ficheroECertificado->setText(s);
+}
+
 /// Funcionalidad del boton cancelar
 
 void EFactura::on_mui_cancelar_clicked() {
-	_depura("EFactura::on_mui_cancelar_clicked", 0);
+	_depura("EFactura::on_mui_cancelar_clicked", 2);
 	
 // 	QString query = "SELECT * FROM configuracion";
 // 	cursor2 *cur = m_companyact->cargacursor(query);

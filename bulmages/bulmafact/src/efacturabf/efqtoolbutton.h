@@ -18,30 +18,26 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef EFACTURA_H
-#define EFACTURA_H
-
 #include <QWidget>
-#include <QString>
-
-#include <ui_efacturabase.h>
+#include <QToolButton>
 #include "company.h"
+#include "funcaux.h"
 
-
-class EFactura : public QWidget, public Ui_EFacturaBase {
+class EFQToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
 	company *m_companyact;
-
+	FacturaView *m_factura;
+	
 public:
-	EFactura(company *emp, QWidget *parent = 0);
-	~EFactura();
-
+	EFQToolButton(FacturaView *fac, QWidget *parent = 0);
+	~EFQToolButton();
+	void escribe_linea_factura(QString &string, cursor2 *lfactura, int numerolinea);
+	void exporta_factura_ubl();
+	void importa_factura_ubl();
+	
 public slots:
-	virtual void on_mui_examinaECertificado_clicked();
-	virtual void on_mui_cancelar_clicked();
-	virtual void on_mui_guardar_clicked();
-};
+	virtual void click();
 
-#endif
+};

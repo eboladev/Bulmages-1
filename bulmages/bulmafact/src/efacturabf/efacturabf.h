@@ -32,25 +32,28 @@
 #include "qapplication2.h"
 #include "bulmafact.h"
 #include "company.h"
-
+#include "facturasplist.h"
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
-
+extern "C" MY_EXPORT int FacturaView_EFacturaBotonExportar(FacturaView *);
+extern "C" MY_EXPORT int FacturasProveedorListSubform_EFacturaBotonImportar(FacturasProveedorListSubform *);
 extern QApplication2 *theApp;
 
 
 class efacturabf : public QObject {
     Q_OBJECT
 
-public:
+private:
     company *m_companyact;
 
 public:
-    efacturabf();
-    ~efacturabf();
-    void inicializa(bulmafact *);
+	efacturabf();
+	~efacturabf();
+	void inicializa(bulmafact *);
+	int FacturaView_FacturaView(FacturaView *);
+	int FacturasProveedorListSubform_EFacturaBotonImportar(FacturasProveedorListSubform *);
 
 public slots:
-    void elslot();
+	void elslot();
 };
 
