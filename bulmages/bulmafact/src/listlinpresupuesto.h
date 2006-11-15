@@ -31,6 +31,9 @@
 
 /// Administra las l&iacute;neas de detalle de un presupuesto.
 /** */
+
+/*
+
 class listlinpresupuesto {
 public:
     company *companyact;
@@ -65,6 +68,9 @@ public:
         } // end for
     };
 };
+
+
+*/
 
 #endif
 

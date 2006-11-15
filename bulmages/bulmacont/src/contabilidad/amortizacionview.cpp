@@ -30,10 +30,14 @@
 #include "asiento1view.h"
 
 
+AmortizacionSubForm::AmortizacionSubForm(QWidget *parent) : SubForm2Bc(parent) {}
+AmortizacionSubForm::~AmortizacionSubForm() {};
+
+
 /// Constructor de Clase
-amortizacionview::amortizacionview(empresa *emp, QWidget *parent)
+AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
         : Ficha(parent), DBRecord(emp) {
-    _depura("amortizacionview::amortizacionview", 0);
+    _depura("AmortizacionView::AmortizacionView", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
@@ -88,14 +92,14 @@ amortizacionview::amortizacionview(empresa *emp, QWidget *parent)
 
     /// Fin de nuevas amortizaciones
     m_companyact->meteWindow(windowTitle(), this);
-    _depura("END amortizacionview::amortizacionview", 0);
+    _depura("END AmortizacionView::AmortizacionView", 0);
 }
 
 
 
 
-int amortizacionview::borrar() {
-    _depura("amortizacionview::borrar", 0);
+int AmortizacionView::borrar() {
+    _depura("AmortizacionView::borrar", 0);
     if (m_idamortizacion != "") {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + m_idamortizacion;
         m_companyact->ejecuta(query);
@@ -103,12 +107,12 @@ int amortizacionview::borrar() {
         m_companyact->ejecuta(query);
         close();
     } // end if
-    _depura("END amortizacionview::borrar", 0);
+    _depura("END AmortizacionView::borrar", 0);
     return 0;
 }
 
-int amortizacionview::guardar() {
-    _depura("amortizacionview::guardar", 0);
+int AmortizacionView::guardar() {
+    _depura("AmortizacionView::guardar", 0);
     try {
 	/// Guardamos los datos del formulario
         setDBvalue("nomamortizacion", nomamortizacion->text() );
@@ -127,7 +131,7 @@ int amortizacionview::guardar() {
         mui_listcuotas->setColumnValue("idamortizacion", id);
         mui_listcuotas->guardar();
         dialogChanges_cargaInicial();
-        _depura("END amortizacionview::guardar", 0);
+        _depura("END AmortizacionView::guardar", 0);
         return 0;
     } catch(...) {
         mensajeInfo("Error en el guardado");
@@ -135,22 +139,22 @@ int amortizacionview::guardar() {
     } // end try
 }
 
-void amortizacionview::on_mui_guardar_clicked() {
+void AmortizacionView::on_mui_guardar_clicked() {
     guardar();
 }
 
 
 
-amortizacionview::~amortizacionview() {
-    _depura("amortizacionview::~amortizacionview", 0);
+AmortizacionView::~AmortizacionView() {
+    _depura("AmortizacionView::~AmortizacionView", 0);
     m_companyact->sacaWindow( this);
-    _depura("END amortizacionview::~amortizacionview", 0);
+    _depura("END AmortizacionView::~AmortizacionView", 0);
 }
 
 /// Esta funci&oacute;n inicializa la clase, y adem&aacute;s hace la presentaci&oacuet;n
 /// de una determinada amortizaci&oacute;n.
-int amortizacionview::cargar(QString idamortizacion) {
-    _depura("amortizacionview::cargar", 0, idamortizacion);
+int AmortizacionView::cargar(QString idamortizacion) {
+    _depura("AmortizacionView::cargar", 0, idamortizacion);
     try {
         m_idamortizacion = idamortizacion;
 
@@ -196,7 +200,7 @@ int amortizacionview::cargar(QString idamortizacion) {
         mui_btcalcular->setDisabled(TRUE);
         dialogChanges_cargaInicial();
         m_companyact->meteWindow(windowTitle(), this);
-        _depura("END amortizacionview::cargar", 0);
+        _depura("END AmortizacionView::cargar", 0);
         return 0;
     } catch (...) {
         mensajeInfo(tr("Error en la carga de la amortizacion"));
@@ -205,8 +209,8 @@ int amortizacionview::cargar(QString idamortizacion) {
 }
 
 
-void amortizacionview::on_mui_btcalcular_clicked() {
-    _depura("amortizacionview::calculaamortizacion", 0);
+void AmortizacionView::on_mui_btcalcular_clicked() {
+    _depura("AmortizacionView::calculaamortizacion", 0);
 
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
     /// Hay que obtener diversos datos.
@@ -330,7 +334,7 @@ void amortizacionview::on_mui_btcalcular_clicked() {
         } // end for
     } // end if
 
-    _depura("amortizacionview::calculaamortizacion", 0);
+    _depura("AmortizacionView::calculaamortizacion", 0);
 }
 
 
@@ -341,8 +345,8 @@ void amortizacionview::on_mui_btcalcular_clicked() {
     $cuenta$ Cuenta de Amortizaci&oacute;n.
     $cuentabien$ Cuenta del Bien.
     $cuota$ Cuota a pagar. */
-void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin) {
-    _depura("amortizacionview::contextMenuRequested", 0);
+void AmortizacionView::contextMenuRequested(int row, int col, const QPoint &poin) {
+    _depura("AmortizacionView::contextMenuRequested", 0);
     /*
         QMenu *menupopup = new QMenu(this);
         QAction *opt1 = menupopup->addAction(tr("Generar asiento"));
@@ -454,13 +458,13 @@ void amortizacionview::contextMenuRequested(int row, int col, const QPoint &poin
         } // end if
         col = 0;
     */
-    _depura("END amortizacionview::contextMenuRequested", 0);
+    _depura("END AmortizacionView::contextMenuRequested", 0);
 }
 
 
 /*
-void amortizacionview::trataModificado() {
-    _depura("amortizacionview::trataModificado", 0);
+void AmortizacionView::trataModificado() {
+    _depura("AmortizacionView::trataModificado", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -470,6 +474,6 @@ void amortizacionview::trataModificado() {
                                  QMessageBox::Cancel ) == QMessageBox::Ok)
             on_mui_guardar_clicked();
     } // end if
-    _depura("END amortizacionview::trataModificado", 0);
+    _depura("END AmortizacionView::trataModificado", 0);
 }
 */

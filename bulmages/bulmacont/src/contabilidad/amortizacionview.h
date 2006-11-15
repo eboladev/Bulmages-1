@@ -23,16 +23,32 @@
 
 #include "postgresiface2.h"
 #include "dialogchanges.h"
-#include "ui_amortizacionbase.h"
+#include "subform2bc.h"
 #include "dbrecord.h"
 #include "ficha.h"
 
 class empresa;
 
+class AmortizacionSubForm : public SubForm2Bc {
+Q_OBJECT
+public:
+    AmortizacionSubForm(QWidget *parent);
+    virtual ~AmortizacionSubForm();
+    virtual void creaMenu(QMenu *) {
+        _depura("AmortizacionSubForm:: CreaMenu, funcion para ser sobreescrita", 2);
+    };
+    virtual void procesaMenu(QAction *) {
+        _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 2);
+    };
+};
+
+
+
+#include "ui_amortizacionbase.h"
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */
-class amortizacionview : public Ficha, Ui_AmortizacionBase, DBRecord {
+class AmortizacionView : public Ficha, Ui_AmortizacionBase, DBRecord {
     Q_OBJECT
 
 private:
@@ -50,13 +66,13 @@ private:
     QString m_idamortizacion;
     /// Esta variable indica cu&aacute;l es el asiento plantilla de amortizaci&oacute;n.
     QString m_idainteligente;
+
 public:
-    amortizacionview(empresa *, QWidget *);
-    ~amortizacionview();
+    AmortizacionView(empresa *, QWidget *);
+    ~AmortizacionView();
     virtual int cargar(QString idamortizacion);
     virtual int guardar();
     virtual int borrar();
-
 
 public slots:
     virtual void on_mui_btcalcular_clicked();

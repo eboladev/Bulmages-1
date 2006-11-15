@@ -10,6 +10,7 @@ LANGUAGE = C++
 INCLUDEPATH += ../../bulmalib  \
 	       ../../bulmalib/.ui \
 	       ../../bulmalib/.moc \
+	       .ui \
 	       /usr/include/qt4 \
 	       /usr/include/qt4/Qt \
 	       /usr/lib/qt4/include/Qt \

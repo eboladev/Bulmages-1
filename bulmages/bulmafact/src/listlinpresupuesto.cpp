@@ -23,6 +23,7 @@
 #include "linpresupuesto.h"
 #include "funcaux.h"
 
+/*
 
 listlinpresupuesto::listlinpresupuesto(company *comp) {
     companyact = comp;
@@ -135,3 +136,5 @@ void listlinpresupuesto::borralinpresupuesto(int pos) {
     pintalistlinpresupuesto();
 }
 
+
+*/

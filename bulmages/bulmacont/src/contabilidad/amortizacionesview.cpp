@@ -77,7 +77,7 @@ void amortizacionesview::on_listado_cellDoubleClicked(int row, int) {
     if (modo == 0) {
         idamortizacion = listado->item(row,COL_CODIGO)->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        amortizacionview *amor = new amortizacionview(m_companyact, 0);
+        AmortizacionView *amor = new AmortizacionView(m_companyact, 0);
         amor->cargar(idamortizacion);
         m_companyact->pWorkspace()->addWindow(amor);
         amor->show();
@@ -92,7 +92,7 @@ void amortizacionesview::on_listado_cellDoubleClicked(int row, int) {
 
 void amortizacionesview::on_mui_crear_clicked() {
     _depura("amortizacionesview::on_mui_crear_clicked", 0);
-    amortizacionview *amor = new amortizacionview(m_companyact, 0);
+    AmortizacionView *amor = new AmortizacionView(m_companyact, 0);
     m_companyact->pWorkspace()->addWindow(amor);
     amor->show();
     _depura("END amortizacionesview::on_mui_crear_clicked", 0);

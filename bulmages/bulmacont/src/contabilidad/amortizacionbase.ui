@@ -535,7 +535,7 @@
           </widget>
          </item>
          <item>
-          <widget class="SubForm3" name="mui_listcuotas" />
+          <widget class="AmortizacionSubForm" name="mui_listcuotas" />
          </item>
         </layout>
        </item>
@@ -1192,20 +1192,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaCuenta</class>
-   <extends></extends>
-   <header>busquedacuenta.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>SubForm3</class>
-   <extends>Q3Table</extends>
-   <header>subform3.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1216,6 +1202,20 @@
    <class>Q3Table</class>
    <extends></extends>
    <header>q3table.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCuenta</class>
+   <extends></extends>
+   <header>busquedacuenta.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>AmortizacionSubForm</class>
+   <extends>Q3Table</extends>
+   <header>amortizacionview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
