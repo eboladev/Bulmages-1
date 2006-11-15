@@ -133,9 +133,11 @@ void DiarioView::accept() {
 }
 
 
+/// Pinta el listado en el subformulario
 void DiarioView::presentar() {
     _depura("DiarioView::presentar", 0);
     QString query = "SELECT * FROM borrador NATURAL LEFT JOIN cuenta  LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t1 ON t1.idc_coste = borrador.idc_coste ";
+    query += " LEFT JOIN (SELECT ordenasiento, idasiento FROM asiento) AS t5 ON t5.idasiento = borrador.idasiento";
     query += " LEFT JOIN (SELECT idcanal, nombre as nombrecanal FROM canal) AS t2 ON t2.idcanal = borrador.idcanal";
     query += " LEFT JOIN (SELECT idregistroiva, factura, idborrador FROM registroiva) AS t3 ON t3.idborrador = borrador.idborrador ";
     QString cad = "";
@@ -168,7 +170,9 @@ void DiarioView::presentar() {
 }
 
 
+/// Boton de impresion del diario.
 void DiarioView::on_mui_imprimir_clicked() {
+    _depura("DiarioView::on_mui_imprimir_clicked", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "diario.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "diario.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -213,5 +217,6 @@ void DiarioView::on_mui_imprimir_clicked() {
     } // end if
     /// Crea el pdf y lo muestra.
     invocaPDF("diario");
+    _depura("END DiarioView::on_mui_imprimir_clicked", 0);
 }
 

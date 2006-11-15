@@ -24,14 +24,15 @@
 
 
 ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
+    _depura("ExtractoSubForm::ExtractoSubForm", 0);
     setDBTableName("apunte");
     setFileConfig( "ExtractoSubForm");
     setDBCampoId("idapunte");
-    addSHeader("punteo", DBCampo::DBboolean, DBCampo::DBNotNull,SHeader::DBNone, tr("P"));
-    addSHeader("idapunte", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("P"));
-    addSHeader("codigoborrador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idapunte"));
-    addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("codigoborrador"));
-    addSHeader("iddiario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idasiento"));
+    addSHeader("punteo", DBCampo::DBboolean, DBCampo::DBNotNull,SHeader::DBNone, tr("punteo"));
+    addSHeader("idapunte", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("idapunte"));
+    addSHeader("codigoborrador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("codigoborrador"));
+    addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idasiento"));
+    addSHeader("iddiario", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("iddiario"));
     addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("conceptocontable", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Concepto"));
     addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idcuenta"));
@@ -49,11 +50,12 @@ ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(par
     addSHeader("idtipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idtipoiva"));
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("orden"));
     setinsercion(FALSE);
+    _depura("END ExtractoSubForm::ExtractoSubForm", 0);
 }
 
 
 void ExtractoSubForm::contextMenuEvent (QContextMenuEvent *) {
-    _depura("SubForm2Bc::contextMenuEvent", 0);
+    _depura("ExtractoSubForm::contextMenuEvent", 0);
     QAction *del = NULL;
     int row = currentRow();
     if (row < 0) {
@@ -140,5 +142,6 @@ void ExtractoSubForm::contextMenuEvent (QContextMenuEvent *) {
         boton_balancetree(2);
     } // end if
     delete popup;
+    _depura("ExtractoSubForm::contextMenuEvent", 0);
 }
 

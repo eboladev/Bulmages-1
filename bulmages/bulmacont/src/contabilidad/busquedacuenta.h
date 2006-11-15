@@ -41,7 +41,7 @@ private:
     QString mdb_nomcuenta;
     QString mdb_codigocuenta;
     QString mdb_tipocuenta;
-    int numdigitos;
+    int m_numdigitos;
 
 public:
     BusquedaCuenta(QWidget *parent = 0);

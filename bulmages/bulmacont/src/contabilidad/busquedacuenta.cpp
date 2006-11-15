@@ -33,13 +33,13 @@ BusquedaCuenta::BusquedaCuenta(QWidget *parent)
     mdb_nomcuenta = "";
     mdb_codigocuenta = "";
     mdb_tipocuenta = "";
+    connect(mui_codigocuenta, SIGNAL(editingFinished()), this, SLOT(s_lostFocus()));
     _depura("END BusquedaCuenta::BusquedaCuenta", 0);
 }
 
 
 BusquedaCuenta::~BusquedaCuenta() {
-    _depura("BusquedaCuenta::~BusquedaCuenta", 0);
-
+    _depura("END BusquedaCuenta::~BusquedaCuenta", 0);
 }
 
 
@@ -47,9 +47,8 @@ void BusquedaCuenta::setempresa(empresa *comp) {
     _depura("BusquedaCuenta::setempresa", 0);
     empresaactual = comp;
     conexionbase = empresaactual->bdempresa();
-    numdigitos = empresaactual->numdigitosempresa();
+    m_numdigitos = empresaactual->numdigitosempresa();
     _depura("END BusquedaCuenta::setempresa", 0);
-
 }
 
 
@@ -72,7 +71,6 @@ void BusquedaCuenta::setidcuenta(QString val) {
     mui_codigocuenta->setText(mdb_codigocuenta);
     mui_nomcuenta->setText(mdb_nomcuenta);
     _depura("END BusquedaCuenta::setidcuenta", 0);
-
 }
 
 
@@ -141,7 +139,7 @@ void BusquedaCuenta::s_lostFocus() {
     mdb_codigocuenta=mui_codigocuenta->text();
     QString cad = mdb_codigocuenta;
     if (cad != "") {
-        cad = extiendecodigo(cad,numdigitos);
+        cad = extiendecodigo(cad,m_numdigitos);
         cursor2 *cursorcta = conexionbase->cargacuenta(0, cad);
         int num = cursorcta->numregistros();
         if (num == 1) {

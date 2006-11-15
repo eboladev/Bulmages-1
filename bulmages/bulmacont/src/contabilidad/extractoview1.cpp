@@ -50,10 +50,14 @@ extractoview1::extractoview1(empresa *emp, QWidget *parent, int)
     setupUi(this);
     mui_list->setcompany(emp);
     m_companyact = emp;
+
+    /// Iniciamos los componentes
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
+    mui_codigocontrapartida->setempresa(emp);
     m_codigoinicial->hideNombre();
     m_codigofinal->hideNombre();
+
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
@@ -66,7 +70,7 @@ extractoview1::extractoview1(empresa *emp, QWidget *parent, int)
     _depura("END extractoview1::extractoview1", 0);
 }
 
-
+/// Destructor de la clase.
 extractoview1::~extractoview1() {
     _depura("extractoview1::~extractoview1\n", 0);
     delete m_cursorcta;
@@ -104,49 +108,61 @@ void extractoview1::accept() {
 
 /// Esta es la funci&oacute;n que avanza un registro entre las cuentas.
 void extractoview1::boton_siguiente() {
+    _depura("extractoview1::boton_siguiente", 0);
     if (m_cursorcta != NULL) {
         if (!m_cursorcta->esultimoregistro()) {
             m_cursorcta->siguienteregistro();
             presentar();
         } // end if
     } // end if
+    _depura("END extractoview1::boton_siguiente", 0);
 }
 
 
 /// Esta es la funci&oacute;n que retrocede un registro entre las cuentas.
 void extractoview1::boton_anterior() {
+    _depura("extractoview1::boton_anterior", 0);
     if (m_cursorcta != NULL) {
         if (!m_cursorcta->esprimerregistro()) {
             m_cursorcta->registroanterior();
             presentar();
         } // end if
     } // end if
+    _depura("END extractoview1::boton_anterior", 0);
 }
 
-
+/// Retrocede al principio de las cuentas.
 void extractoview1::boton_inicio() {
+    _depura("extractoview1::boton_inicio", 0);
     if (m_cursorcta != NULL) {
         m_cursorcta->primerregistro();
         presentar();
     } // end if
+    _depura("END extractoview1::boton_inicio", 0);
 }
 
-
+/// Avanza al final de las cuentas.
 void extractoview1::boton_fin() {
+    _depura("extractoview1::boton_fin", 0);
     if (m_cursorcta != NULL) {
         m_cursorcta->ultimoregistro();
         presentar();
     } // end if
+    _depura("END extractoview1::boton_fin", 0);
 }
 
 
+/// Imprime el extracto
 void extractoview1::boton_imprimir() {
+    _depura("extractoview1::boton_imprimir", 0);
     ExtractoPrintView *print = new ExtractoPrintView(m_companyact, 0);
     print->exec();
+    _depura("END extractoview1::boton_imprimir", 0);
 }
 
 
 void extractoview1::boton_guardar() {
+    _depura("extractoview1::boton_guardar", 0);
     QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),
                  tr("Diarios (*.txt)"), 0,
                  tr("Guardar Libro Diario"),
@@ -160,16 +176,20 @@ void extractoview1::boton_guardar() {
         libromayor.inicializa2((char *)fn.toAscii().constData());
         libromayor.accept();
     } // end if
+    _depura("END extractoview1::boton_guardar", 0);
 }
 
 
+/// Limpia los totales
 void extractoview1::vaciar() {
+    _depura("extractoview1::vaciar", 0);
     inicialdebe->setText("0");
     inicialhaber->setText("0");
     inicialsaldo->setText("0");
     totaldebe->setText("0");
     totalhaber->setText("0");
     totalsaldo->setText("0");
+    _depura("END extractoview1::vaciar", 0);
 }
 
 
@@ -187,7 +207,7 @@ void extractoview1::on_mui_guardar_clicked() {
 /// Esta funci&oacute;n se encarga de montar la consulta que va a hacer la consulta en
 /// la base de datos.
 void extractoview1::presentar() {
-    fprintf(stderr, "Presentar\n");
+    _depura("extractoview1::presentar", 0);
     float debe, haber, saldo;
     float debeinicial = 0, haberinicial = 0, saldoinicial = 0;
     float debefinal, haberfinal, saldofinal;
@@ -237,13 +257,16 @@ void extractoview1::presentar() {
         ccanales.sprintf(" AND idcanal IN (%s) ", ccanales.toAscii().constData());
     } // end if
     QString tabla;
+    QString cont;
     if (mui_asAbiertos->isChecked()) {
         tabla = "borrador";
+        cont = " FALSE AS punteo, * ";
     } else {
         tabla = "apunte";
+        cont = " * ";
     } // end if
 
-    query = "SELECT * FROM ((SELECT * FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
+    query = "SELECT * FROM ((SELECT "+cont+" FROM " + tabla + " WHERE  idcuenta = " + idcuenta + " AND fecha >= '" + finicial + "' AND fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " " + tipopunteo + ") AS t2 LEFT JOIN cuenta ON t2.idcuenta = cuenta.idcuenta) AS t1 LEFT JOIN asiento ON asiento.idasiento = t1.idasiento ";
     query += " LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste FROM c_coste) AS t5 ON t5.idc_coste = t1.idc_coste ";
     query += " LEFT JOIN (SELECT idcanal, nombre AS nombrecanal FROM canal) AS t6 ON t6.idcanal = t1.idcanal ";
     query += " ORDER BY t1.fecha, ordenasiento, t1.orden";
@@ -293,18 +316,23 @@ void extractoview1::presentar() {
     } // end if
     delete cursorapt;
     ajustes();
+    _depura("END extractoview1::presentar", 0);
 }
 
 
 void extractoview1::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int) {
+    _depura("extractoview1::inicializa1", 0);
     m_codigoinicial->setText(codinicial);
     m_codigofinal->setText(codfinal);
     m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
     m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
+    _depura("END extractoview1::inicializa1", 0);
 }
 
 
+/// Realiza la casacion de los apuntes.
 void extractoview1::on_mui_casacion_clicked() {
+    _depura("extractoview1::on_mui_casacion_clicked", 0);
     QString query;
     query.sprintf("SELECT * FROM apunte WHERE punteo = FALSE AND haber <> 0 AND idcuenta = %s ORDER BY fecha", m_cursorcta->valor("idcuenta").toAscii().constData());
     m_companyact->begin();
@@ -328,10 +356,13 @@ void extractoview1::on_mui_casacion_clicked() {
     } // end while
     delete curshaber;
     presentar();
+    _depura("END extractoview1::on_mui_casacion_clicked", 0);
 }
 
 
+/// Guarda el punteo en disco para poder recuperarlo despues
 void extractoview1::on_mui_guardarpunteo_clicked() {
+    _depura("extractoview1::on_mui_guardarpunteo_clicked", 0);
     QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),
                  tr("Punteos (*.pto)"), 0,
                  tr("Guardar punteo"),
@@ -351,6 +382,7 @@ void extractoview1::on_mui_guardarpunteo_clicked() {
             fclose(mifile);
         } // end if
     } // end if
+    _depura("END extractoview1::on_mui_guardarpunteo_clicked", 0);
 }
 
 
@@ -359,6 +391,7 @@ void extractoview1::on_mui_guardarpunteo_clicked() {
     resetear el punteo.
     Por supuesto cuando se pulsa dicho bot&oacute;n se borra el punteo. */
 void extractoview1::on_mui_borrapunteo_clicked() {
+    _depura("extractoview1::on_mui_borrapunteo_clicked", 0);
     int valor = QMessageBox::warning(0,
                                      tr("Borrar punteo"),
                                      tr("Se dispone a borrar el punteo. Este cambio \
@@ -372,6 +405,7 @@ void extractoview1::on_mui_borrapunteo_clicked() {
         m_companyact->commit();
         presentar();
     } // end if
+    _depura("END extractoview1::on_mui_borrapunteo_clicked", 0);
 }
 
 
@@ -381,6 +415,7 @@ void extractoview1::on_mui_borrapunteo_clicked() {
     Para ello es preciso que no se hayan abierto y cerrado los asientos correspondientes
     ya que en dicho caso la carga del punteo no funciona correctamente. */
 void extractoview1::on_mui_cargarpunteos_clicked() {
+    _depura("extractoview1::on_mui_cargarpunteos_clicked", 0);
     QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),
                  tr("Punteos (*.pto)"), 0,
                  tr("Cargar punteo"),
@@ -398,10 +433,13 @@ void extractoview1::on_mui_cargarpunteos_clicked() {
         filestr.close();
     } // end if
     presentar();
+    _depura("END extractoview1::on_mui_cargarpunteos_clicked", 0);
 }
 
 
+/// Slot que responde a la Impresion del extracto
 void extractoview1::on_mui_imprimir_clicked() {
+    _depura("extractoview1::on_mui_imprimir_clicked", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "extracto.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "extracto.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -443,5 +481,6 @@ void extractoview1::on_mui_imprimir_clicked() {
     } // end if
     /// Crea el pdf y lo muestra.
     invocaPDF("extracto");
+    _depura("END extractoview1::on_mui_imprimir_clicked", 0);
 }
 
