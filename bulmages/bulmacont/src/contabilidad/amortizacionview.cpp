@@ -1,4 +1,3 @@
-
 /***************************************************************************
  *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
