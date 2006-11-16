@@ -5,12 +5,14 @@
 
 QT += qt3support xml
 
+#QT += xml
+
 LANGUAGE = C++
 
 INCLUDEPATH += ../../bulmalib  \
 	       ../../bulmalib/.ui \
 	       ../../bulmalib/.moc \
-	       .ui \
+	       ../../bulmages/src/.ui \
 	       /usr/include/qt4 \
 	       /usr/include/qt4/Qt \
 	       /usr/lib/qt4/include/Qt \
@@ -27,21 +29,12 @@ CONFIG += release \
 
 TEMPLATE = app 
 
-#comun/selectorbase.ui.target = comun/selectorbase.ui 
-
 FORMS += comun/importContaplusBase.ui \
 	 comun/selectorbase.ui \
 	comun/configuracion.ui\
 	comun/nuevaempresadlg.ui \
 	comun/nuevafactbase.ui \
 	comun/importexportbulmafactbase.ui
-
-#IDLS += comun/selectorbase.ui
-#        comun/uiconfiguracion.ui \
-#        comun/nuevaempresadlg.ui \
-#        comun/nuevafactbase.ui \
-#        comun/importContaplusBase.ui \
-#	comun/importexportbulmafactbase.ui
 
 HEADERS += comun/bselector.h \
            comun/bconfiguracion.h \
@@ -148,4 +141,4 @@ TARGET = ..\..\..\installbulmages\bulmages
 #The following line was inserted by qt3to4
 #QT +=  
 #The following line was inserted by qt3to4
-# CONFIG += uic3
+#CONFIG += uic3

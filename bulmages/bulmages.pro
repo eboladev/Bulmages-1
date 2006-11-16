@@ -10,6 +10,6 @@ CONFIG = ordered
   SUBDIRS += bulmalib
   SUBDIRS += bulmafact
   SUBDIRS += bulmacont
-#  SUBDIRS += bulmatpv
   SUBDIRS += bulmages
+#  SUBDIRS += bulmatpv
   
