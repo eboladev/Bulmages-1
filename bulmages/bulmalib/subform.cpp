@@ -157,11 +157,8 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) const {
 			return ( m_valorcampo < val);
 		}
 		_depura("tipo desconocido", 0);
-
-		
-	} else {
-		return FALSE;
 	}
+	return FALSE;
 };
 
 

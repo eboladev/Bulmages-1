@@ -27,7 +27,9 @@
 
 
 QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
+    _depura("QTableWidget2::QTableWidget2", 0);
     installEventFilter(this);
+    _depura("END QTableWidget2::QTableWidget2", 0);
 }
 
 
@@ -62,28 +64,7 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
 
 
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 0);
-
-    /// Si es una pulsaci&oacute;n de tecla que esta capturada con el release salimos
-    /// sin hacer nada.
-/*
-    if (event->type() == QEvent::KeyPress) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        int key = keyEvent->key();
-        switch (key) {
-        case Qt::Key_Return:
-        case Qt::Key_Enter:
-            printf("pulsado intro\n");
-            return TRUE;
-        case Qt::Key_Up:
-            printf("pulsado flecha arriba\n");
-            return TRUE;
-        case Qt::Key_Down:
-            printf("pulsado flecha abajo\n");
-            return TRUE;
-        } // end switch
-    } // end if
-*/
+    _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyRelease) {
@@ -94,8 +75,9 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         /// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos
         /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
         /// busqueda de que celda es.
-        if (row < 0)
+        if (row < 0) {
             return TRUE;
+	} // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
@@ -128,9 +110,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         case Qt::Key_Up:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlSubir(row, col);
-            return TRUE;
- //           } else {
-//                emit editFinished(row, col, key);
+      	        return TRUE;
             } // end if
             /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
         case Qt::Key_Down:
@@ -139,22 +119,17 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
                 return TRUE;
             } // end if
             /// Al pulsar la tecla 'abajo' se considera que es el fin de la edici&oacute; de la celda.
-            emit editFinished(row, col, key);
             return TRUE;
         case Qt::Key_Left:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlIzquierda(row, col);
                 return TRUE;
             } // end if
- //           emit editFinished(row, col, key);
- //           return TRUE;
         case Qt::Key_Right:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlDerecha(row, col);
                 return TRUE;
             } // end if
-//            emit editFinished(row, col, key);
-//            return TRUE;
         } // end switch
     } // end if
     _depura("END QTableWidget2::eventFilter()\n", 1);
@@ -169,87 +144,7 @@ void QTableWidget2::ordenar() {
     _depura("END QTableWidget2::ordenar", 0);
 }
 
-/*
 
-void QTableWidget2::sortByColumn(int col) {
-    _depura("QTableWidget2::sortByColumn ", 0);
-    if (m_tipoorden == 0)
-        m_tipoorden = 1;
-    else
-        m_tipoorden = 0;
-    sortColumn(col, (Qt::SortOrder) m_tipoorden);
-    _depura("END QTableWidget2::sortByColumn", 0);
-}
-
-
-void QTableWidget2::sortColumn(int col, Qt::SortOrder tipoorden) {
-    _depura("QTableWidget2::sortColumn", 0);
-    m_tipoorden = tipoorden;
-    m_colorden = col;
-    if (m_colorden > columnCount() | m_colorden < 0) {
-        m_colorden = 0;
-        col = 0;
-    } // end if
-    if (m_tipoorden >1) {
-        m_tipoorden = 1;
-        tipoorden = (Qt::SortOrder) 1;
-    } // end if
-    int lastcol = columnCount();
-    _depura("insercion de columnas", 0);
-    insertColumn(lastcol);
-    insertColumn(lastcol + 1);
-    insertColumn(lastcol + 2);
-    _depura("ocultacion de columnas", 0);
-    hideColumn(lastcol);
-    hideColumn(lastcol + 1);
-    hideColumn(lastcol + 2);
-    bool oknumero = TRUE;
-    bool okfecha = TRUE;
-
-    _depura("comienza el bucle", 0);
-    for (int x = 0; x < rowCount(); x++) {
-        _depura("tratamos un elemento " + QString::number(x) + " " + QString::number(col), 0);
-        QString cad = item(x, col)->text();
-	
-	bool f = item(x,col) < item(x, lastcol);
-
-        _depura("comprobamos " + cad, 0);
-        if (cad != "") {
-            setText(x, lastcol + 0, cad);
-            /// Comprobamos si es un numero.
-            cad.toDouble(&oknumero);
-            if (oknumero) {
-                while (cad.length() < 10)
-                    cad.insert(0, "0");
-                setText(x,lastcol + 1, cad);
-            } // end if
-            if (okfecha) {
-                if (cad[2] == '/') {
-                    QDate fech = normalizafecha(cad);
-                    cad = fech.toString(Qt::ISODate);
-                } else {
-                    okfecha = FALSE;
-                } // end if
-                setText(x, lastcol + 2, cad);
-            } // end if
-        } // end if
-    } // end for
-
-    if (oknumero)
-        QTableWidget::sortItems(lastcol + 1, tipoorden);
-    else if (okfecha)
-        QTableWidget::sortItems(lastcol + 2, tipoorden);
-    else
-        QTableWidget::sortItems(lastcol + 0, tipoorden);
-
-    removeColumn(lastcol + 2);
-    removeColumn(lastcol + 1);
-    removeColumn(lastcol + 0);
-
-    _depura("END QTableWidget2::sortColumn", 0);
-}
-
-*/
 
 void QTableWidget2::setText(int x, int y, const QString & val) {
     _depura("QTableWidget::setText", 0);

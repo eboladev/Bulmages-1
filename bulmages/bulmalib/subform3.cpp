@@ -170,14 +170,17 @@ void SubForm3::pintaCabeceras() {
 
 /// Se situa en una celda especifica del subformulario.
 void SubForm3::situarse(unsigned int row, unsigned int col) {
-    _depura("SubForm3::situarse", 0);
+    _depura("SubForm3::situarse", 0, QString::number(row)+" "+QString::number(col));
     unsigned int nrow = row;
-    int ncol = col;
+    unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
+    if(!linea) return;
     bool invalido = TRUE;
-    while (invalido) {
+
+    /// Mientras no se encuentre un candidato y haya candidatos
+    while (invalido && nrow < row +2) {
         ncol++;
-        if (ncol == m_lcabecera.count()) {
+        if (ncol == (unsigned int ) m_lcabecera.count()) {
             ncol = 0;
             nrow++;
         } // end if
@@ -195,13 +198,14 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
 /// Se situa en una celda especifica del subformulario. 
 /** Se incluye la celda incluye la actual */
 void SubForm3::situarse1(unsigned int row, unsigned int col) {
-    _depura("SubForm3::situarse", 0);
+    _depura("SubForm3::situarse1", 0, QString::number(row)+" "+QString::number(col));
     unsigned int nrow = row;
-    int ncol = col;
+    unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
+    if(!linea) return;
     bool invalido = TRUE;
     while (invalido) {
-        if (ncol == m_lcabecera.count()) {
+        if (ncol == (unsigned int) m_lcabecera.count()) {
             ncol = 0;
             nrow++;
         } // end if
@@ -214,7 +218,7 @@ void SubForm3::situarse1(unsigned int row, unsigned int col) {
 	if (invalido) ncol++;
     } // end while
     mui_list->setCurrentCell(nrow, ncol);
-    _depura("END SubForm3::situarse", 0);
+    _depura("END SubForm3::situarse1", 0);
 }
 
 
@@ -420,13 +424,20 @@ void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
 
     case Qt::Key_Return:
     case Qt::Key_Enter:
-        situarse(row, col);
+	// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+	// La accion simulada.
+	if (!m_insercion) {
+		QTableWidgetItem *item = mui_list->currentItem();
+  		emit itemDoubleClicked(item);
+	        emit cellDoubleClicked(row, col);
+	 } else {
+	        situarse(row, col);
+	} // end if
         break;
 
     case Qt::Key_Down:
 	situarse(row, col);
 	situarse1(row, col);
-//        if (row == mui_list->rowCount() -1) {
 	if (creado) {
             mui_list->setCurrentCell(row + 1, col);
         } // end if
@@ -916,14 +927,13 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
 
 void SubForm3::on_mui_list_cellChanged(int, int) {
 }
-void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *it) {
+void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
 }
 
-void SubForm3::on_mui_list_currentCellChanged(int nrow, int ncol, int row, int col) {
+void SubForm3::on_mui_list_currentCellChanged(int , int , int row, int col) {
     _depura("SubForm3::on_mui_list_currentCellChanged", 0);
 	if (row >= 0 && col >= 0)   {
 	on_mui_list_editFinished( row,  col, 0);	
-//	situarse1(nrow, ncol);
     } // end if
     _depura("END SubForm3::on_mui_list_currentCellChanged", 0);
 }

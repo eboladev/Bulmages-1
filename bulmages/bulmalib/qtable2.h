@@ -55,7 +55,6 @@ private:
     int modo; /// Indica el modo de dibujo.
     int m_tipoorden;
     int m_colorden;
-
 public:
     int tipoorden() {
         return m_tipoorden;
