@@ -968,9 +968,9 @@ DECLARE
     imp NUMERIC(12, 2);
 
 BEGIN
-    tot := calctotalpedcli(NEW.idpresupuesto);
-    bimp := calcbimppedcli(NEW.idpresupuesto);
-    imp := calcimpuestospedcli(NEW.idpresupuesto);
+    tot := calctotalpedcli(NEW.idpedidocliente);
+    bimp := calcbimppedcli(NEW.idpedidocliente);
+    imp := calcimpuestospedcli(NEW.idpedidocliente);
     UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = NEW.idpedidocliente;
     RETURN NEW;
 END;
@@ -1000,9 +1000,9 @@ DECLARE
     imp NUMERIC(12, 2);
 
 BEGIN
-    tot := calctotalpedcli(OLD.idpresupuesto);
-    bimp := calcbimppedcli(OLD.idpresupuesto);
-    imp := calcimpuestospedcli(OLD.idpresupuesto);
+    tot := calctotalpedcli(OLD.idpedidocliente);
+    bimp := calcbimppedcli(OLD.idpedidocliente);
+    imp := calcimpuestospedcli(OLD.idpedidocliente);
     UPDATE pedidocliente SET totalpedidocliente = tot, bimppedidocliente = bimp, imppedidocliente = imp WHERE idpedidocliente = OLD.idpedidocliente;
     RETURN OLD;
 END;

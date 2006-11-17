@@ -48,7 +48,12 @@ public:
 public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
+    /// TODO: Se tiene que pasar de cancelar a cerrar en todas las ventanas.
+    /// Despues quedara obsoleto.
     virtual void on_mui_cancelar_clicked() {
+        close();
+    };
+    virtual void on_mui_cerrar_clicked() {
         close();
     };
 };

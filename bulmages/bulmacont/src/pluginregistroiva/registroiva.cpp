@@ -209,8 +209,8 @@ int RegistroIva::buscaborradorservicio(int idborrador) {
         SQLQuery = "SELECT * FROM lacosa WHERE codigo SIMILAR TO " + cuentas + " OR codigo SIMILAR TO " + cuentasIVA;
         cur = m_companyact->cargacursor(SQLQuery);
         while (!cur->eof() ) {
-            fprintf(stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->valor("idborrador").ascii(), cur->valor("contrapartida").ascii(), cur->valor("codigo").ascii());
-            registro = atoi(cur->valor("idborrador").ascii());
+            fprintf(stderr, "idborrador: %s contrapartida: %s cuenta: %s\n", cur->valor("idborrador").toAscii().constData(), cur->valor("contrapartida").toAscii().constData(), cur->valor("codigo").toAscii().constData());
+            registro = atoi(cur->valor("idborrador").toAscii().constData());
             cur->siguienteregistro();
         } //end while
         delete cur;
@@ -429,7 +429,7 @@ void RegistroIva::buscaNumFactura(int idborrador) {
             query.sprintf("SELECT MAX(to_number(factura,'99999')) AS factura FROM registroiva WHERE numorden = ''");
             recordset = m_companyact->cargacursor(query, "recordset");
             if (!recordset->eof()) {
-                numfact = 1 + atoi(recordset->valor("factura").ascii());
+                numfact = 1 + atoi(recordset->valor("factura").toAscii().constData());
             } else {
                 numfact = 1;
             } // end if
@@ -452,7 +452,7 @@ void RegistroIva::buscaNumFactura(int idborrador) {
             query.sprintf("SELECT MAX(to_number(numorden,'99999')) AS numorden FROM registroiva WHERE numorden <> ''");
             recordset = m_companyact->cargacursor(query, "recordset");
             if (!recordset->eof()) {
-                numord = 1 + atoi(recordset->valor("numorden").ascii());
+                numord = 1 + atoi(recordset->valor("numorden").toAscii().constData());
             } else {
                 numord = 1;
             } // end if

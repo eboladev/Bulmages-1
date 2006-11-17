@@ -116,7 +116,6 @@ BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
     m_fechainicial1->setText(cadena);
     cadena.sprintf("%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
-
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END BalanceTreeView::BalanceTreeView\n", 0);
 }
@@ -328,6 +327,7 @@ void BalanceTreeView::presentar() {
         } // end if
 
         it->setText(DENOMINACION, cursorapt1->valor("descripcion"));
+/*
         it->setText(SALDO_ANT,QString::number(atof(cursorapt1->valor("asaldo")), 'f', 2));
         it->setText(DEBE,QString::number(atof(cursorapt1->valor("tdebe")), 'f', 2));
         it->setText(HABER,QString::number(atof(cursorapt1->valor("thaber")), 'f', 2));
@@ -335,6 +335,19 @@ void BalanceTreeView::presentar() {
         it->setText(DEBEEJ,QString::number(atof(cursorapt1->valor("ejdebe")), 'f', 2));
         it->setText(HABEREJ,QString::number(atof(cursorapt1->valor("ejhaber")), 'f', 2));
         it->setText(SALDOEJ,QString::number(atof(cursorapt1->valor("ejsaldo")), 'f', 2));
+*/
+
+
+        it->setText(SALDO_ANT, QString::number(cursorapt1->valor("asaldo").toDouble(), 'f', 2));
+        it->setText(DEBE, QString::number(cursorapt1->valor("tdebe").toDouble(), 'f', 2));
+        it->setText(HABER, QString::number(cursorapt1->valor("thaber").toDouble(), 'f', 2));
+        it->setText(SALDO, QString::number(cursorapt1->valor("tsaldo").toDouble(), 'f', 2));
+        it->setText(DEBEEJ, QString::number(cursorapt1->valor("ejdebe").toDouble(), 'f', 2));
+        it->setText(HABEREJ, QString::number(cursorapt1->valor("ejhaber").toDouble(), 'f', 2));
+        it->setText(SALDOEJ, QString::number(cursorapt1->valor("ejsaldo").toDouble(), 'f', 2));
+
+
+
         it->setText(NIVEL, cursorapt1->valor("nivel"));
         it->setText(IDCUENTA, cursorapt1->valor("idcuenta"));
         it->setText(PADRE, cursorapt1->valor("padre"));

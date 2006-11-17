@@ -97,8 +97,8 @@ void balanceview::cargacostes() {
     ccostes[0] = 0;
     int i = 1;
     while (!cursorcoste->eof()) {
-        combocoste->addItem(cursorcoste->valor(2));
-        ccostes[i++] = atoi(cursorcoste->valor(0));
+        combocoste->addItem(cursorcoste->valor("nombre"));
+        ccostes[i++] = cursorcoste->valor("idc_coste").toInt();
         cursorcoste->siguienteregistro();
     } // end while
     delete cursorcoste;
@@ -152,11 +152,11 @@ void balanceview::presentar() {
 }
 
 
-void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int idc_coste, bool jerarquico) {
+void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico) {
     /// Vamos a formatear los n&uacute;meros con punto para los millares y coma para
     /// los decimales.
     QLocale spanish(QLocale::Spanish);
-    double tsaldoant, tdebe, thaber, tsaldo;
+    double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
 
     /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
     /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
@@ -167,7 +167,7 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
     Arbol *arbol;
     arbol = new Arbol;
     while (!ramas->eof()) {
-        if (atoi(ramas->valor("nivel").toAscii()) == 2) { /// Cuenta ra&iacute;z.
+        if (ramas->valor("nivel").toInt() == 2) { /// Cuenta ra&iacute;z.
             /// Se crea una rama en el &aacute;rbol (de las primeritas que salen
             /// de una ra&iacute;z).
             arbol->nuevarama(ramas);

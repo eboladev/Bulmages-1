@@ -8,30 +8,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>224</width>
-    <height>66</height>
+    <width>208</width>
+    <height>86</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form1</string>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QGridLayout" >
    <property name="margin" >
     <number>0</number>
    </property>
    <property name="spacing" >
     <number>5</number>
    </property>
-   <item>
-    <layout class="QVBoxLayout" >
+   <item row="1" column="0" >
+    <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
-      <widget class="QLabel" name="label" >
+      <widget class="QLineEdit" name="m_cifcliente" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>5</hsizetype>
@@ -40,58 +40,39 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="text" >
-        <string>Cliente:</string>
-       </property>
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" >
-       <property name="margin" >
-        <number>0</number>
+      <widget class="QToolButton" name="mui_buscar" >
+       <property name="minimumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
-       <property name="spacing" >
-        <number>5</number>
+       <property name="maximumSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
-       <item>
-        <widget class="QLineEdit" name="m_cifcliente" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>0</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QToolButton" name="mui_buscar" >
-         <property name="minimumSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="maximumSize" >
-          <size>
-           <width>22</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-         <property name="icon" >
-          <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
-   <item>
+   <item row="2" column="0" >
     <widget class="QLabel" name="m_nomcliente" >
      <property name="sizePolicy" >
       <sizepolicy>
@@ -106,6 +87,21 @@
      </property>
      <property name="text" >
       <string>Cliente</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" >
+    <widget class="QLabel" name="label" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>0</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text" >
+      <string>Cliente:</string>
      </property>
     </widget>
    </item>

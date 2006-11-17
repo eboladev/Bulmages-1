@@ -170,7 +170,7 @@ void linprevcobro::guardalinprevcobro() {
 
 
 void linprevcobro::setcodigocuenta(QString val) {
-    fprintf(stderr, "setcodigocuenta(%s)\n", val.ascii());
+    fprintf(stderr, "setcodigocuenta(%s)\n", val.toAscii().constData());
     mdb_codigocuenta = extiendecodigo(val, empresaactual->numdigitosempresa());
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     cursor2 *cur = conexionbase->cargacursor(SQLQuery);
@@ -183,7 +183,7 @@ void linprevcobro::setcodigocuenta(QString val) {
 
 
 void linprevcobro::setidcuenta(QString val) {
-    fprintf(stderr,"setidcuenta(%s)\n", val.ascii());
+    fprintf(stderr,"setidcuenta(%s)\n", val.toAscii().constData());
     mdb_idcuenta = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idcuenta + "";
     cursor2 *cur = conexionbase->cargacursor(SQLQuery);
@@ -273,7 +273,7 @@ int linprevcobro::creaPago() {
 
 
 void linprevcobro::setcodigoctacliente(QString val) {
-    fprintf(stderr,"setcodigocuenta(%s)\n", val.ascii());
+    fprintf(stderr,"setcodigocuenta(%s)\n", val.toAscii().constData());
     mdb_codigoctacliente=extiendecodigo(val, empresaactual->numdigitosempresa());
     QString SQLQuery = "SELECT idcuenta, descripcion FROM cuenta WHERE codigo = '" + mdb_codigoctacliente + "'";
     cursor2 *cur = conexionbase->cargacursor(SQLQuery);
@@ -286,7 +286,7 @@ void linprevcobro::setcodigoctacliente(QString val) {
 
 
 void linprevcobro::setidctacliente(QString val) {
-    fprintf(stderr,"setidcuenta(%s)\n", val.ascii());
+    fprintf(stderr,"setidcuenta(%s)\n", val.toAscii().constData());
     mdb_idctacliente = val;
     QString SQLQuery = "SELECT codigo, descripcion FROM cuenta WHERE idcuenta = " + mdb_idctacliente + "";
     cursor2 *cur = conexionbase->cargacursor(SQLQuery);

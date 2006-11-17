@@ -48,7 +48,7 @@
 #define COL_IDCTACLIENTE               16
 
 
-#include <q3table.h>
+//#include <q3table.h>
 #include <QMessageBox>
 #include <q3popupmenu.h>
 #include <QPixmap>
@@ -309,91 +309,6 @@ void ListLinPrevCobroView::pintalinlistlinprevcobro(int pos) {
     linea = m_lista.at(pos);
     pintalistlinprevcobro(linea, pos);
 }
-
-
-bool ListLinPrevCobroView::eventFilter(QObject *obj, QEvent *ev) {
-    /*
-        QString idcuenta;
-        linprevcobro *linea;
-        if ( ev->type() == QEvent::KeyRelease ) {
-            QKeyEvent *k = (QKeyEvent *)ev;
-            int col=currentColumn();
-            int row=currentRow();
-            fprintf(stderr,"eventFilter(%d, %d)\n",row, col);
-            switch (k->key()) {
-            case Qt::Key_Plus:
-                if ((col == COL_FCOBROPREVCOBRO)) {
-                    Q3PtrList<QDate> a;
-                    calendario *cal = new calendario(0);
-                    cal->exec();
-                    a = cal->dn->selectedDates();
-                    delete cal;
-                    linea = lineaact();
-                    linea->setfcobroprevcobro(a.first()->toString("dd/MM/yyyy"));
-                    pintalinlistlinprevcobro(currentRow());
-                } else if (col == COL_CODIGOCUENTA) {
-                    linea = lineaact();
-                    idcuenta = searchCuenta();
-                    linea->setidcuenta(idcuenta);
-                    pintalinlistlinprevcobro(row);
-                } else if (col == COL_CODIGOCTACLIENTE) {
-                    linea = lineaact();
-                    idcuenta = searchCuenta();
-                    linea->setidctacliente(idcuenta);
-                    pintalinlistlinprevcobro(row);
-                }// end if
-                return TRUE;
-                break;
-            case Qt::Key_Asterisk:
-                linea = lineaact();
-                if (row > 0) {
-                    QString valor= text(row-1,col);
-                    switch (col) {
-                    case COL_FPREVISTAPREVCOBRO:
-                        linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
-                        break;
-                    case COL_FCOBROPREVCOBRO:
-                        linea->setfcobroprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
-                        linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
-                        setText(row,col,linea->fprevistaprevcobro());
-                        break;
-                    case COL_CODIGOCUENTA:
-                        linea->setcodigocuenta(valor);
-                        setText(row,col,linea->codigocuenta());
-                        break;
-                    case COL_CODIGOCTACLIENTE:
-                        linea->setcodigoctacliente(valor);
-                        setText(row,col,linea->codigoctacliente());
-                        break;
-                    case COL_CANTIDADPREVISTAPREVCOBRO:
-                        linea->setcantidadprevistaprevcobro(valor);
-                        break;
-                    case COL_CANTIDADPREVCOBRO:
-                        linea->setcantidadprevcobro(valor);
-                        linea->setcantidadprevistaprevcobro(valor);
-                        break;
-                    case COL_DOCPREVCOBRO:
-                        linea->setdocprevcobro(valor);
-                        break;
-                    case COL_TIPOPREVCOBRO:
-                        if (valor == "COBRO")
-                            linea->settipoprevcobro("t");
-                        else
-                            linea->settipoprevcobro("f");
-                        break;
-                    }// end switch
-                }// end if
-                return TRUE;
-                break;
-            case Qt::Key_Return:
-            case Qt::Key_Enter:
-                arreglaPosicion(row, col);
-                return TRUE;
-            }// end switch
-        }// end if
-        return Q3Table::eventFilter( obj, ev );
-    */
-} //end eventFilter
 
 
 /// Este m&eacute;todo se encarga de asegurar que la posición del foco es la correcta para

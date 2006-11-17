@@ -21,10 +21,9 @@
 #ifndef LISTLINPREVCOBROVIEW1_H
 #define LISTLINPREVCOBROVIEW1_H
 
-#include <q3table.h>
-#include "qtable1.h"
 #include <QEvent>
 
+#include "qtable1.h"
 #include "listlinprevcobro.h"
 #include "empresa.h"
 #include "linprevcobro.h"
@@ -38,7 +37,6 @@ public:
     ~ListLinPrevCobroView();
     virtual void pintalistlinprevcobro();
     virtual void pintalinlistlinprevcobro(int);
-    virtual bool eventFilter(QObject *obj, QEvent *ev);
     linprevcobro *lineaat(int);
     linprevcobro *lineaact();
     void arreglaPosicion(int, int);

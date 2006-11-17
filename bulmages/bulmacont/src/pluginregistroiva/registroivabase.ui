@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>754</width>
-    <height>498</height>
+    <width>743</width>
+    <height>384</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -119,33 +119,25 @@
    </item>
    <item>
     <widget class="QTabWidget" name="tabWidget2" >
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>&amp;Datos Factura</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
        <item>
-        <widget class="Q3GroupBox" name="groupBox1" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>1</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QGroupBox" name="groupBox_3" >
          <property name="title" >
-          <string>Datos Empresa</string>
+          <string>Datos de la empresa:</string>
          </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
-           <number>11</number>
+           <number>9</number>
           </property>
           <property name="spacing" >
            <number>6</number>
@@ -169,7 +161,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Cuenta Cliente / Proveedor</string>
+               <string>Cuenta cliente / Proveedor:</string>
               </property>
              </widget>
             </item>
@@ -197,7 +189,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>CIF / NIF</string>
+               <string>CIF / NIF:</string>
               </property>
              </widget>
             </item>
@@ -210,411 +202,412 @@
         </widget>
        </item>
        <item>
-        <widget class="Q3GroupBox" name="groupBox2" >
-         <property name="sizePolicy" >
-          <sizepolicy>
-           <hsizetype>5</hsizetype>
-           <vsizetype>7</vsizetype>
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
+        <widget class="QGroupBox" name="groupBox" >
          <property name="title" >
-          <string>Datos Factura</string>
+          <string>Datos de la factura:</string>
          </property>
-         <property name="alignment" >
-          <set>Qt::AlignTop</set>
-         </property>
-         <layout class="QGridLayout" >
+         <layout class="QHBoxLayout" >
           <property name="margin" >
-           <number>11</number>
+           <number>5</number>
           </property>
           <property name="spacing" >
-           <number>6</number>
+           <number>5</number>
           </property>
-          <item rowspan="3" row="0" column="1" >
-           <widget class="Q3ButtonGroup" name="buttonGroup2" >
-            <property name="title" >
-             <string>Tipo de Factura</string>
+          <item>
+           <layout class="QVBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
             </property>
-            <layout class="QVBoxLayout" >
+            <property name="spacing" >
+             <number>6</number>
+            </property>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>0</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QCheckBox" name="m_incregistroIVA" >
+                <property name="text" >
+                 <string>&amp;Tener en cuenta para el registro de IVA</string>
+                </property>
+                <property name="shortcut" >
+                 <string>Alt+T</string>
+                </property>
+                <property name="checked" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType" >
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" >
+                 <size>
+                  <width>151</width>
+                  <height>21</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="TextLabel1_4" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize" >
+                 <size>
+                  <width>100</width>
+                  <height>32767</height>
+                 </size>
+                </property>
+                <property name="text" >
+                 <string>Asiento:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="numasiento" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>1</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize" >
+                 <size>
+                  <width>85</width>
+                  <height>32767</height>
+                 </size>
+                </property>
+                <property name="focusPolicy" >
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="acceptDrops" >
+                 <bool>true</bool>
+                </property>
+                <property name="text" >
+                 <string/>
+                </property>
+                <property name="alignment" >
+                 <set>Qt::AlignRight</set>
+                </property>
+                <property name="readOnly" >
+                 <bool>true</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>0</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="TextLabel1" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Num. Factura</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="m_factura" >
+                <property name="alignment" >
+                 <set>Qt::AlignRight</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="TextLabel1_6_3" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Fecha Factura</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="BusquedaFecha" name="m_ffactura" />
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType" >
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" >
+                 <size>
+                  <width>152</width>
+                  <height>21</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>0</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="TextLabel1_6_2_2" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Fecha recepción:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="BusquedaFecha" name="m_femisionregistroiva" />
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType" >
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" >
+                 <size>
+                  <width>390</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" >
+              <property name="margin" >
+               <number>0</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="TextLabel1_7" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Serie</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="m_serieregistroiva" >
+                <property name="alignment" >
+                 <set>Qt::AlignRight</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="TextLabel1_5" >
+                <property name="sizePolicy" >
+                 <sizepolicy>
+                  <hsizetype>5</hsizetype>
+                  <vsizetype>0</vsizetype>
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text" >
+                 <string>Orden</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="m_numorden" >
+                <property name="alignment" >
+                 <set>Qt::AlignRight</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer>
+                <property name="orientation" >
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType" >
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" >
+                 <size>
+                  <width>160</width>
+                  <height>21</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_2" >
+            <property name="sizePolicy" >
+             <sizepolicy>
+              <hsizetype>7</hsizetype>
+              <vsizetype>5</vsizetype>
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="title" >
+             <string>Tipo de factura:</string>
+            </property>
+            <layout class="QHBoxLayout" >
              <property name="margin" >
-              <number>11</number>
+              <number>5</number>
              </property>
              <property name="spacing" >
-              <number>6</number>
+              <number>5</number>
              </property>
              <item>
-              <widget class="QRadioButton" name="m_factEmitida" >
-               <property name="text" >
-                <string>Em&amp;itida</string>
+              <layout class="QVBoxLayout" >
+               <property name="margin" >
+                <number>0</number>
                </property>
-               <property name="shortcut" >
-                <string>Alt+I</string>
+               <property name="spacing" >
+                <number>6</number>
                </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QRadioButton" name="m_factSoportada" >
-               <property name="text" >
-                <string>Reci&amp;bida</string>
-               </property>
-               <property name="shortcut" >
-                <string>Alt+B</string>
-               </property>
-              </widget>
+               <item>
+                <widget class="QRadioButton" name="m_factEmitida" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>3</hsizetype>
+                   <vsizetype>5</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text" >
+                  <string>Em&amp;itida</string>
+                 </property>
+                 <property name="shortcut" >
+                  <string>Alt+I</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QRadioButton" name="m_factSoportada" >
+                 <property name="sizePolicy" >
+                  <sizepolicy>
+                   <hsizetype>3</hsizetype>
+                   <vsizetype>5</vsizetype>
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="text" >
+                  <string>Reci&amp;bida</string>
+                 </property>
+                 <property name="shortcut" >
+                  <string>Alt+B</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </widget>
           </item>
-          <item row="0" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QCheckBox" name="m_incregistroIVA" >
-              <property name="text" >
-               <string>&amp;Tener en cuenta para el registro de IVA</string>
-              </property>
-              <property name="shortcut" >
-               <string>Alt+T</string>
-              </property>
-              <property name="checked" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType" >
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" >
-               <size>
-                <width>151</width>
-                <height>21</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QLabel" name="TextLabel1_4" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize" >
-               <size>
-                <width>100</width>
-                <height>32767</height>
-               </size>
-              </property>
-              <property name="text" >
-               <string>Asiento:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="numasiento" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>1</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="maximumSize" >
-               <size>
-                <width>85</width>
-                <height>32767</height>
-               </size>
-              </property>
-              <property name="focusPolicy" >
-               <enum>Qt::NoFocus</enum>
-              </property>
-              <property name="acceptDrops" >
-               <bool>true</bool>
-              </property>
-              <property name="text" >
-               <string/>
-              </property>
-              <property name="alignment" >
-               <set>Qt::AlignRight</set>
-              </property>
-              <property name="readOnly" >
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="1" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="TextLabel1" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Num. Factura</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_factura" >
-              <property name="alignment" >
-               <set>Qt::AlignRight</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="TextLabel1_6_3" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Fecha Factura</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="BusquedaFecha" name="m_ffactura" />
-            </item>
-            <item>
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType" >
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" >
-               <size>
-                <width>152</width>
-                <height>21</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item row="2" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="TextLabel1_7" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Serie</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_serieregistroiva" >
-              <property name="alignment" >
-               <set>Qt::AlignRight</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="TextLabel1_5" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Orden</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_numorden" >
-              <property name="alignment" >
-               <set>Qt::AlignRight</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType" >
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" >
-               <size>
-                <width>160</width>
-                <height>21</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item row="3" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="TextLabel1_6_2_2" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Fecha Recepción</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="BusquedaFecha" name="m_femisionregistroiva" />
-            </item>
-            <item>
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType" >
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" >
-               <size>
-                <width>390</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item row="4" column="0" >
-           <layout class="QHBoxLayout" >
-            <property name="margin" >
-             <number>0</number>
-            </property>
-            <property name="spacing" >
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="TextLabel1_3" >
-              <property name="sizePolicy" >
-               <sizepolicy>
-                <hsizetype>5</hsizetype>
-                <vsizetype>0</vsizetype>
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text" >
-               <string>Rectifica A:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="m_numfactrectificada" >
-              <property name="alignment" >
-               <set>Qt::AlignRight</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer>
-              <property name="orientation" >
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeType" >
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" >
-               <size>
-                <width>271</width>
-                <height>21</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
          </layout>
         </widget>
        </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Ignored</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab2" >
       <attribute name="title" >
        <string>DesgloseIVA</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
-        <widget class="Q3ButtonGroup" name="buttonGroup1" >
+        <widget class="QGroupBox" name="groupBox_4" >
          <property name="title" >
-          <string>IVA</string>
+          <string>IVA:</string>
          </property>
          <layout class="QVBoxLayout" >
           <property name="margin" >
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="spacing" >
-           <number>0</number>
+           <number>5</number>
           </property>
           <item>
            <widget class="SubForm2Bc" name="mui_listIva" />
@@ -638,7 +631,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Total Base Imponible</string>
+               <string>Total Base Imponible:</string>
               </property>
               <property name="alignment" >
                <set>Qt::AlignCenter</set>
@@ -649,17 +642,6 @@
              <widget class="QLineEdit" name="m_baseImponible" >
               <property name="enabled" >
                <bool>true</bool>
-              </property>
-              <property name="font" >
-               <font>
-                <family>Sans Serif</family>
-                <pointsize>18</pointsize>
-                <weight>75</weight>
-                <italic>false</italic>
-                <bold>true</bold>
-                <underline>false</underline>
-                <strikeout>false</strikeout>
-               </font>
               </property>
               <property name="alignment" >
                <set>Qt::AlignRight</set>
@@ -680,7 +662,7 @@
                </sizepolicy>
               </property>
               <property name="text" >
-               <string>Total IVA</string>
+               <string>Total IVA:</string>
               </property>
               <property name="alignment" >
                <set>Qt::AlignCenter</set>
@@ -700,17 +682,6 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="font" >
-               <font>
-                <family>Sans Serif</family>
-                <pointsize>18</pointsize>
-                <weight>75</weight>
-                <italic>false</italic>
-                <bold>true</bold>
-                <underline>false</underline>
-                <strikeout>false</strikeout>
-               </font>
-              </property>
               <property name="alignment" >
                <set>Qt::AlignRight</set>
               </property>
@@ -724,9 +695,25 @@
          </layout>
         </widget>
        </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Ignored</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab3" >
       <attribute name="title" >
        <string>&amp;Cobros / Pagos</string>
       </attribute>
@@ -818,7 +805,7 @@
         </sizepolicy>
        </property>
        <property name="text" >
-        <string>Total Factura</string>
+        <string>Total factura:</string>
        </property>
        <property name="alignment" >
         <set>Qt::AlignCenter</set>
@@ -829,17 +816,6 @@
       <widget class="QLineEdit" name="m_totalFactura" >
        <property name="enabled" >
         <bool>true</bool>
-       </property>
-       <property name="font" >
-        <font>
-         <family>Sans Serif</family>
-         <pointsize>18</pointsize>
-         <weight>75</weight>
-         <italic>false</italic>
-         <bold>true</bold>
-         <underline>false</underline>
-         <strikeout>false</strikeout>
-        </font>
        </property>
        <property name="alignment" >
         <set>Qt::AlignRight</set>
@@ -869,24 +845,11 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>570</width>
-         <height>21</height>
+         <width>478</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cancelar" >
-       <property name="text" >
-        <string>Ca&amp;ncelar</string>
-       </property>
-       <property name="shortcut" >
-        <string>Alt+N</string>
-       </property>
-       <property name="autoDefault" >
-        <bool>false</bool>
-       </property>
-      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="mui_aceptar" >
@@ -894,10 +857,23 @@
         <enum>Qt::TabFocus</enum>
        </property>
        <property name="text" >
-        <string>Aceptar</string>
+        <string>&amp;Aceptar</string>
        </property>
        <property name="shortcut" >
         <string/>
+       </property>
+       <property name="autoDefault" >
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+       <property name="shortcut" >
+        <string>Alt+N</string>
        </property>
        <property name="autoDefault" >
         <bool>false</bool>
@@ -916,20 +892,6 @@
    <extends></extends>
    <header>busquedacuenta.h</header>
    <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ButtonGroup</class>
-   <extends></extends>
-   <header>Qt3Support/Q3ButtonGroup</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends></extends>
-   <header>Qt3Support/Q3GroupBox</header>
-   <container>1</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>

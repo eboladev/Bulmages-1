@@ -176,7 +176,7 @@ void ListRegistroIvaView::inicializa() {
     m_ivar->setText(cur->valor("tbaseiva"));
     delete cur;
 
-    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ",finicial->text().ascii(), ffinal->text().ascii());
+    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT  * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento ) AS t1 ON t1.idborrador = registroiva.idborrador WHERE factemitida AND ffactura >= '%s' AND ffactura <= '%s' ",finicial->text().toAscii().constData(), ffinal->text().toAscii().constData());
     cursor2 *cursorreg = m_companyact->cargacursor(query);
     /// El nuevo proceso de carga es distinto.
     mui_tablasoportado->cargar(cursorreg);
@@ -184,7 +184,7 @@ void ListRegistroIvaView::inicializa() {
 
     /// Hacemos el c&aacute;culo de los que no pertenecen a IVA soportado porque
     /// as&iacute; entran todos.
-    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().ascii(), ffinal->text().ascii());
+    query.sprintf("SELECT *, (registroiva.baseimp + registroiva.iva) AS totalfactura FROM registroiva LEFT JOIN (SELECT * FROM cuenta, borrador, asiento  WHERE cuenta.idcuenta = borrador.idcuenta AND asiento.idasiento = borrador.idasiento) AS t1 ON t1.idborrador = registroiva.idborrador WHERE NOT factemitida AND ffactura >= '%s' AND ffactura <= '%s'", finicial->text().toAscii().constData(), ffinal->text().toAscii().constData());
     cursorreg = m_companyact->cargacursor(query);
     /// El nuevo proceso de carga es distinto.
     mui_tablarepercutido->cargar(cursorreg);

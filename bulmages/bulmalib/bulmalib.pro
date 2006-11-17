@@ -43,8 +43,8 @@ HEADERS += postgresiface2.h \
            subform3.h \
            listventanas.h \
            qworkspace2.h \
-	    qapplication2.h \
-	    ficha.h
+           qapplication2.h \
+           ficha.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -68,8 +68,8 @@ SOURCES += postgresiface2.cpp \
            subform3.cpp \
            listventanas.cpp \
            qworkspace2.cpp \
-	    qapplication2.cpp \
-	    ficha.cpp
+           qapplication2.cpp \
+           ficha.cpp
 	   
 RESOURCES = ../bulmages.qrc
 TEMPLATE = lib
@@ -87,13 +87,15 @@ UI_DIR = .ui
 MOC_DIR = .moc
 QT += xml
 CONFIG += uic
-unix{
+
+unix {
 	UI_DIR = .ui
 	MOC_DIR = .moc
 	OBJECTS_DIR = .obj
 	LIBS += -lpq
 	LIBS += -rdynamic
-	CONFIG += release
+#	CONFIG += release
+        CONFIG += qt debug
 	TARGET = bulmalib
 	DESTDIR = ../installbulmages
 	exists(/usr/include/postgresql/libpq-fe.h){
@@ -109,7 +111,8 @@ unix{
 		DEFINES += DISTRO_GENTOO
 	}
 }
-windows{
+
+windows {
 	UI_DIR = .ui
 	MOC_DIR = .moc
 	OBJECTS_DIR = .obj
@@ -121,3 +124,4 @@ windows{
 		   dll
 	VERSION += 0.5.9
 }
+

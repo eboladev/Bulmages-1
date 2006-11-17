@@ -169,8 +169,8 @@ int cuentaview::inicializa() {
     cursorgrupos = conexionbase->cargagrupos();
     conexionbase->commit();
     while (!cursorgrupos->eof()) {
-        combogrupos->addItem(cursorgrupos->valor(1));
-        idgrupos[combogrupos->count() - 1] = atoi(cursorgrupos->valor(0));
+        combogrupos->addItem(cursorgrupos->valor("descripcion"));
+        idgrupos[combogrupos->count() - 1] = cursorgrupos->valor("idgrupo").toInt();
         cursorgrupos->siguienteregistro();
     } // end while
     delete cursorgrupos;

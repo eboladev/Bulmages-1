@@ -67,10 +67,11 @@ public:
 private:
     QString *nombresccc;
     QString *numerccc;
-    /** C&oacute;digo de Cuenta Corriente */
+    /// C&oacute;digo de Cuenta Corriente.
     numerocuenta *ccc;
     void personalButtonPressed();
-    bool sincuentasbancarias; /// Si es true, no tenemos ninguna cuenta de banco en nuestra base de datos.
+    /// Si es true, no tenemos ninguna cuenta de banco en nuestra base de datos.
+    bool sincuentasbancarias;
 
 protected:
     QString ano;

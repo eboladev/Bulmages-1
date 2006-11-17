@@ -18,8 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3table.h>
-#include <qcombobox.h>
+#include <QComboBox>
 
 #include "cobropagoview.h"
 #include "postgresiface2.h"
@@ -30,17 +29,14 @@
 
 
 /// Inicia los encabezados de la tabla y llama a la presentación del listado.
-cobropagoview::cobropagoview(empresa * emp, QWidget *parent)
+cobropagoview::cobropagoview(empresa *emp, QWidget *parent)
         : Ficha(parent, Qt::WDestructiveClose) {
     _depura("cobropagoview::cobropagoview", 0);
     setupUi(this);
     conexionbase = emp->bdempresa();
     m_companyact = emp;
-
     mui_listado->setcompany(m_companyact);
-
     numdigitos = emp->numdigitosempresa();
-
     /// Inicializamos el listado.
     mui_listado->setDBTableName("prevcobro");
     mui_listado->setDBCampoId("idprevcobro");

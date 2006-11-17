@@ -5,8 +5,8 @@
 
 LANGUAGE = C++
 TARGET = ../../installbulmages/bulmafact
-#CONFIG += qt debug
-CONFIG += release warn_on
+CONFIG += qt debug
+#CONFIG += release warn_on
 LIBS += -rdynamic
 TEMPLATE = app
 
@@ -256,7 +256,7 @@ INCLUDEPATH += ../../bulmalib \
 /usr/lib/qt4/include/QtXml \
 ..
 
-unix{
+unix {
   TARGETDEPS += ../../installbulmages/libbulmalib.so
   LIBS += -lbulmalib \
   -lpq
@@ -279,7 +279,7 @@ unix{
   }
 }
 
-windows{
+windows {
   DEFINES += WINDOWS
   UI_DIR = .ui
   MOC_DIR = .moc

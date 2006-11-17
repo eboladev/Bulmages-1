@@ -136,7 +136,7 @@ void Modgenps::marcadeagua_borrador() {
 }
 
 
-Genps_thread::Genps_thread(QString pdfnamepar, QString tempnamepar, Q3ProgressDialog *dialpar) {
+Genps_thread::Genps_thread(QString pdfnamepar, QString tempnamepar, QProgressDialog *dialpar) {
     m_pdfname = pdfnamepar;
     m_tempname = tempnamepar;
     m_progressdia = dialpar;
@@ -146,14 +146,17 @@ Genps_thread::Genps_thread(QString pdfnamepar, QString tempnamepar, Q3ProgressDi
 /// Invoca al programa Acrobat Reader en un servidor virtual XVfb.
 void Genps_thread::run() {
     QTextStream m_output;
+    QString command;
     /// Lo borro para asegurarme de que Acrobat no me pregunte "overwrite?".
-    system("rm -f " + m_tempname);
+    command = "rm -f " + m_tempname;
+    system(command.toAscii().constData());
     cout << "Llamando a XVfb...\n";
     system("Xvfb :5.0 -ac -fbdir /tmp -screen 0 800x600x8 &");
     system("xmodmap -display :5.0 /usr/X11R6/lib/X11/xmodmap.std");
     cout << "XVfb iniciado...\n";
     cout << "Iniciando acrobat reader...\n";
-    system("acroread -display :5.0 -geometry 800x600+0+0 -tempFile +useFrontEndProgram " + m_pdfname + " &");
+    command = "acroread -display :5.0 -geometry 800x600+0+0 -tempFile +useFrontEndProgram " + m_pdfname + " &";
+    system(command.toAscii().constData());
     cout << "Acrobat reader iniciado...\n";
 
     QString macrofilename = QString(getenv("HOME")) + "/.bulmages/macrotmp";
@@ -168,7 +171,7 @@ void Genps_thread::run() {
     for (int i = 1; i < 11; i++) {
         sleep(1);
         QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep10));
-        cout << i<< "\n";
+        cout << i << "\n";
     }
 
     macro.open(QIODevice::WriteOnly);
@@ -179,7 +182,8 @@ void Genps_thread::run() {
     m_output << "KeyStrRelease p\n";
     m_output << "KeyStrRelease Control_L\n";
     macro.close();
-    system("xmacroplay :5.0 < " + macrofilename);
+    command = "xmacroplay :5.0 < " + macrofilename;
+    system(command.toAscii().constData());
 
     sleep(1);
     QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
@@ -197,7 +201,8 @@ void Genps_thread::run() {
     m_output << "KeyStrPress Return\n";
     m_output << "KeyStrRelease Return\n";
     macro.close();
-    system("xmacroplay :5.0 < " + macrofilename);
+    command = "xmacroplay :5.0 < " + macrofilename;
+    system(command.toAscii().constData());
 
     sleep(3);
     QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
@@ -209,23 +214,29 @@ void Genps_thread::run() {
     m_output << "KeyStrRelease q\n";
     m_output << "KeyStrRelease Control_L\n";
     macro.close();
-    system("xmacroplay :5.0 < " + macrofilename);
+    command = "xmacroplay :5.0 < " + macrofilename;
+    system(command.toAscii().constData());
 
     /// Con este comando busco el servidor Xvfb que corra en el display :5.0 y lo mato.
-    system("kill $(ps aux|grep 'Xvfb :5.0'|grep -v grep|awk '{print $2}')");
+    command = "kill $(ps aux|grep 'Xvfb :5.0'|grep -v grep|awk '{print $2}')";
+    system(command.toAscii().constData());
     cout << "Se acabo!!\n";
 }
 
 
-Psprogressdialog::Psprogressdialog(QWidget *a, const char * b, bool f, Qt::WFlags max):Q3ProgressDialog(a, b, f, max) {}
+Psprogressdialog::Psprogressdialog(QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera)
+        : QProgressDialog(etiqueta, btcancelar, minimo, maximo, widget, bandera) {}
 
 
 void Psprogressdialog::customEvent(QCustomEvent *event) {
-    if ((int)event->type() == sleep10)
-        this->setProgress(progress() + 5);
-    if ((int)event->type() == sleep3)
-        this->setProgress(progress() + 25);
-    if (progress() > 98)
-        setProgress(100);
+    if ((int)event->type() == sleep10) {
+        this->setValue(value() + 5);
+    } // end if
+    if ((int)event->type() == sleep3) {
+        this->setValue(value() + 25);
+    } // end if
+    if (value() > 98) {
+        setValue(100);
+    } // end if
 }
 

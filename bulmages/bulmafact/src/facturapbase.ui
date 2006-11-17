@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>691</width>
-    <height>552</height>
+    <width>677</width>
+    <height>525</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -381,72 +381,30 @@
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item row="0" column="0" colspan="2" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="0" >
+       <widget class="QCheckBox" name="m_procesadafacturap" >
+        <property name="text" >
+         <string>Procesada</string>
         </property>
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>231</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="m_procesadafacturap" >
-          <property name="text" >
-           <string>Procesada</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item row="4" column="1" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="spacing" >
-         <number>5</number>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Preferred</enum>
         </property>
-        <item>
-         <widget class="BusquedaFormaPago" name="m_forma_pago" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+        <property name="sizeHint" >
+         <size>
+          <width>81</width>
+          <height>22</height>
+         </size>
+        </property>
+       </spacer>
       </item>
-      <item row="4" column="0" >
+      <item row="2" column="0" >
        <widget class="QLabel" name="label7" >
         <property name="sizePolicy" >
          <sizepolicy>
@@ -475,84 +433,7 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="label8" >
-        <property name="font" >
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>9</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text" >
-         <string>Descripcion:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1" >
-       <widget class="QLineEdit" name="m_descfacturap" />
-      </item>
-      <item row="2" column="1" >
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <item>
-         <widget class="BusquedaFecha" name="m_fechafacturap" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0" colspan="2" >
-       <widget class="BusquedaProveedor" name="m_proveedor" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>5</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>250</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" >
+      <item row="1" column="0" >
        <widget class="QLabel" name="label10" >
         <property name="sizePolicy" >
          <sizepolicy>
@@ -578,6 +459,72 @@
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item rowspan="3" row="0" column="2" >
+       <widget class="BusquedaProveedor" name="m_proveedor" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="2" >
+       <widget class="QLineEdit" name="m_descfacturap" />
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label8" >
+        <property name="font" >
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>9</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="text" >
+         <string>Descripcion:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" >
+       <widget class="BusquedaFormaPago" name="m_forma_pago" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" >
+       <widget class="BusquedaFecha" name="m_fechafacturap" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </item>
@@ -981,20 +928,6 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>ListDescuentoFacturaProvView</class>
-   <extends></extends>
-   <header>listdescfacturaprovview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends></extends>
-   <header>busquedaformapago.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends></extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1009,16 +942,30 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>ListLinFacturaProveedorView</class>
    <extends></extends>
-   <header>busquedaproveedor.h</header>
+   <header>listlinfacturapview.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>ListLinFacturaProveedorView</class>
+   <class>BusquedaFormaPago</class>
    <extends></extends>
-   <header>listlinfacturapview.h</header>
+   <header>busquedaformapago.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoFacturaProvView</class>
+   <extends></extends>
+   <header>listdescfacturaprovview.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends></extends>
+   <header>busquedaproveedor.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

@@ -22,7 +22,6 @@
 #define REGISTROIVAVIEW_H
 
 #include <QLineEdit>
-#include <Q3TextEdit>
 #include <QLabel>
 #include <QCheckBox>
 
@@ -49,7 +48,7 @@ public:
     RegistroIvaView(empresa *, QWidget *);
     ~RegistroIvaView();
     void manageArticle(int);
-    virtual void pintaidregistroiva(const QString &val) {}
+    virtual void pintaidregistroiva(const QString &) {}
     ;
     virtual void pintacontrapartida(const QString &val) {
         m_contrapartida->setidcuenta(val);
@@ -78,11 +77,11 @@ public:
     virtual void pintafactura(const QString &val) {
         m_factura->setText(val);
     };
-    virtual void pintaidborrador(const QString &val) {}
+    virtual void pintaidborrador(const QString &) {}
     ;
-    virtual void pintaregularizacion(const QString &val) {}
+    virtual void pintaregularizacion(const QString &) {}
     ;
-    virtual void pintaplan349(const QString &val) {}
+    virtual void pintaplan349(const QString &) {}
     ;
     virtual void pintanumorden(const QString &val) {
         m_numorden->setText(val);
@@ -90,7 +89,7 @@ public:
     virtual void pintacif(const QString &val) {
         m_cif->setText(val);
     };
-    virtual void pintaidfpago(const QString &val) {}
+    virtual void pintaidfpago(const QString &) {}
     ;
     virtual void pintafactemitida(const QString &val) {
         if (val == "t" || val == "TRUE")
@@ -98,8 +97,7 @@ public:
         else
             m_factSoportada->setChecked(FALSE);
     };
-
-virtual void pintarectificaaregistroiva(const QString &val) {}
+virtual void pintarectificaaregistroiva(const QString &) {}
     ;
     virtual void pintaincregistro(const QString &val) {
         if (val == "t" || val == "TRUE")

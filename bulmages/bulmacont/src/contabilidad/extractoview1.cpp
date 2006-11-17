@@ -24,6 +24,7 @@
 #include <QLayout>
 #include <QTextStream>
 #include <QCheckBox>
+#include <QFileDialog>
 
 #include "extractoview1.h"
 #include "extractoprintview.h"
@@ -163,10 +164,11 @@ void extractoview1::boton_imprimir() {
 
 void extractoview1::boton_guardar() {
     _depura("extractoview1::boton_guardar", 0);
-    QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),
-                 tr("Diarios (*.txt)"), 0,
-                 tr("Guardar Libro Diario"),
-                 tr("Elige el nombre de archivo"));
+    QString fn = QFileDialog::getSaveFileName(this,
+                 tr("Guardar libro diario"),
+                 confpr->valor(CONF_DIR_USER),
+                 tr("Diarios (*.txt)"));
+
     if (!fn.isEmpty()) {
         libromayorprint libromayor;
         QString finicial = m_fechainicial1->text().toAscii().constData();
@@ -363,10 +365,11 @@ void extractoview1::on_mui_casacion_clicked() {
 /// Guarda el punteo en disco para poder recuperarlo despues
 void extractoview1::on_mui_guardarpunteo_clicked() {
     _depura("extractoview1::on_mui_guardarpunteo_clicked", 0);
-    QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),
-                 tr("Punteos (*.pto)"), 0,
+    QString fn = QFileDialog::getSaveFileName(this,
                  tr("Guardar punteo"),
-                 tr("Elige el nombre de archivo"));
+                 confpr->valor(CONF_DIR_USER),
+                 tr("Punteos (*.pto)"));
+
     if (!fn.isEmpty()) {
         FILE *mifile;
         mifile = fopen((char *) fn.toAscii().constData(), "wt");
@@ -416,10 +419,11 @@ void extractoview1::on_mui_borrapunteo_clicked() {
     ya que en dicho caso la carga del punteo no funciona correctamente. */
 void extractoview1::on_mui_cargarpunteos_clicked() {
     _depura("extractoview1::on_mui_cargarpunteos_clicked", 0);
-    QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),
-                 tr("Punteos (*.pto)"), 0,
+    QString fn = QFileDialog::getOpenFileName(this,
                  tr("Cargar punteo"),
-                 tr("Elige el nombre de archivo"));
+                 confpr->valor(CONF_DIR_USER),
+                 tr("Punteo (*.pto)"));
+
     if (!fn.isEmpty()) {
         ifstream filestr((char *)fn.toAscii().constData());
         string a;

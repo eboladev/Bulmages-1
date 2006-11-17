@@ -25,16 +25,14 @@
        ya que la busqueda esta hecha con un LIKE que no contempla estos casos.
  
       - Las fechas incorrectas producen mal funcionamiento pej: 31/06/2003 no
-      dara ningun registro pq dia 31 no existe.
+      dara ningun registro porque el dia 31 no existe.
  ***************************************************************************/
 
 #ifndef LISTREGISTROIVAVIEW_H
 #define LISTREGISTROIVAVIEW_H
 
 #include <QWidget>
-#include <qlineedit.h>
-#include <q3table.h>
-#include <q3popupmenu.h>
+#include <QLineEdit>
 
 #include "ui_listregistroivabase.h"
 #include "empresa.h"
@@ -65,7 +63,7 @@ public slots:
     virtual void on_mui_tablarepercutido_trataMenu(QAction *ac);
     virtual void on_mui_actualizar_clicked();
     virtual void boton_print();
-    virtual void on_mui_list_editFinished(int row, int col) {}
+    virtual void on_mui_list_editFinished(int, int) {}
     ;
 };
 

@@ -43,9 +43,11 @@ QApplication2 *theApp;
 bulmafact *bges;
 QTranslator *traductor;
 
-int main(int argc, char ** argv) {
+int main(int argc, char **argv) {
     try {
         _depura("main:: Iniciando programa", 0);
+        Q_INIT_RESOURCE(bulmages);
+
         /// Leemos la configuracion que luego podremos usar siempre.
         confpr = new configuracion();
         /// Preparamos el sistema de plugins.

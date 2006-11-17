@@ -27,9 +27,6 @@
 #include <QIcon>
 #include <QApplication>
 #include <QObject>
-#include <q3dockwindow.h>
-#include <q3mainwindow.h>
-#include <q3popupmenu.h>
 
 #include "pluginregistroiva.h"
 #include "empresa.h"
@@ -40,9 +37,10 @@
 #include "listregistroivaview.h"
 #include "registroivaview.h"
 
-int entryPoint(Bulmages01 *bges) {
-    _depura("Punto de Entrada del plugin registroIVA", 0);
-    _depura("END Punto de Entrada del plugin registroIVA", 0);
+
+int entryPoint(Bulmages01 *) {
+    _depura("Punto de entrada del plugin registroIVA", 0);
+    _depura("END Punto de entrada del plugin registroIVA", 0);
     return 0;
 }
 
@@ -65,7 +63,7 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
 
     /// Recorremos la tabla en busca de entradas de factura no introducidas y las
     /// preguntamos antes de cerrar nada.
-    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + as->DBvalue("idasiento") + " AND codigo SIMILAR TO '" + companyact->sanearCadena(cuentas.ascii()) + "' GROUP BY contra";
+    QString SQLQuery = "SELECT bcontrapartidaborr(idborrador) AS contra FROM borrador LEFT JOIN cuenta ON borrador.idcuenta = cuenta.idcuenta WHERE idasiento = " + as->DBvalue("idasiento") + " AND codigo SIMILAR TO '" + companyact->sanearCadena(cuentas.toAscii().constData()) + "' GROUP BY contra";
 
     cursor2 *cursborr= companyact->cargacursor(SQLQuery);
     while (!cursborr->eof()) {

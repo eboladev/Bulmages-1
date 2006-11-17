@@ -23,7 +23,7 @@
 
 #include <QFile>
 #include <QThread>
-#include <Q3ProgressDialog>
+#include <QProgressDialog>
 #include <QEvent>
 #include <QCustomEvent>
 #include <QTextStream>
@@ -35,16 +35,16 @@ enum {sleep10 = 1001, sleep3 = 1002, acabado = 1003};
 /// Clase base para rellenar todos los formularios oficiales desde el pdf de www.aeat.es
 class Genps_thread : public QThread {
 public:
-    Genps_thread(QString, QString, Q3ProgressDialog *);
+    Genps_thread(QString, QString, QProgressDialog *);
     void run();
     QString m_pdfname, m_tempname;
-    Q3ProgressDialog *m_progressdia;
+    QProgressDialog *m_progressdia;
 };
 
 
-class Psprogressdialog : public Q3ProgressDialog {
+class Psprogressdialog : public QProgressDialog {
 public:
-    Psprogressdialog(QWidget *a, const char * b, bool f, Qt::WFlags max);
+    Psprogressdialog(QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera);
     void customEvent(QCustomEvent *);
 };
 

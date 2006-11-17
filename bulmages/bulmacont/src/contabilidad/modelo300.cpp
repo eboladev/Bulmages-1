@@ -131,21 +131,22 @@ void Mod300ps::generaps() {
         QMessageBox::warning(this,
                              QObject::tr("Formulario 300"),
                              QObject::tr("Lo siento, no encuentro el formulario original en pdf.\n"
-                                         "Prueba a descargarlo desde www.aeat.es y guaedalo en\n"
+                                         "Pruebe a descargarlo desde www.aeat.es y guaedelo en\n"
                                          "/usr/share/bulmages/formularios/ o en\n"
                                          "~/.bulmages/formularios/."),
-                             QObject::tr("Aceptar"), 0, 0, 0, 1 );
+                             QObject::tr("&Aceptar"), 0, 0, 0, 1);
         doit = false;
     }
 
     if (doit) {
         cout << "Convirtiendo a postscript...\n";
         if (m_es_borrador) {
-            system("pdftops " + pdfname + " " + tempname);
+            command = "pdftops " + pdfname + " " + tempname;
+            system(command.toAscii().constData());
         } else {
-            Psprogressdialog progress(this, QObject::tr("Creando formulario.."), FALSE, 0);
+            Psprogressdialog progress(tr("Creando formulario"), tr("&Cancelar"), 0, 50, this, 0);
             this->convierte_a_postscript = new Genps_thread(pdfname, tempname, &progress);
-            progress.setProgress(0);
+            progress.setValue(0);
 
             /// LLama a la rutina para convertir el pdf en ps y conservar el dichoso
             /// numerito de serie.
@@ -238,8 +239,7 @@ void Mod300ps::generaps() {
             cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 
             command = "rm " + tempname + "; kghostview " + psname;
-            system(command);
-
+            system(command.toAscii().constData());
         } else {
             cout << "EEEEHH!!! !QUE NO  HE ABIERTO EL FICHEROOOOOOOOOO!\n";
         } // end if
