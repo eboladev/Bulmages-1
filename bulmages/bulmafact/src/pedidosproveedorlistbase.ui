@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PedidosProveedorListBase</class>
  <widget class="QWidget" name="PedidosProveedorListBase" >
   <property name="enabled" >
@@ -16,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Listado de pedidos a proveedores</string>
+   <string>Pedidos a proveedores</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_listado.48x48.png</iconset>
@@ -299,7 +297,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
         </item>
        </layout>
       </item>
@@ -322,12 +320,12 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" />
         </item>
        </layout>
       </item>
       <item row="2" column="0" >
-       <widget class="BusquedaProveedor" name="m_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
         <property name="minimumSize" >
          <size>
           <width>250</width>
@@ -337,7 +335,7 @@
        </widget>
       </item>
       <item row="2" column="1" >
-       <widget class="BusquedaArticulo" name="m_articulo" />
+       <widget class="BusquedaArticulo" native="1" name="m_articulo" />
       </item>
      </layout>
     </widget>
@@ -412,35 +410,26 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaArticulo</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaProveedor</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>PedidosProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>pedidosproveedorlist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

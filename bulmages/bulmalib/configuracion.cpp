@@ -53,7 +53,7 @@ using namespace std;
 
 
 /// The global object confpr is the instance of configuracion that is available to
-/// all BulmaGes aplicationlas
+/// all BulmaGes aplication.
 /// El objeto global confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
 configuracion *confpr;
@@ -62,8 +62,11 @@ configuracion *confpr;
 /// archivos que pueden tener informacion de configuracion de Bulmages:
 /// '/etc/bulmages.conf' y
 /// '~/bulmages.conf'.
+///
+/// NOTA: No se puede utilizar _depura dentro de esta clase porque necesita
+/// valores que no se disponen antes de leer el archivo de configuraci&oacute;n.
 configuracion::configuracion() {
-    _depura("configuracion::configuracion", 1);
+    //_depura("configuracion::configuracion", 1);
     QDir homedir;
     /// Cambiamos a ~/.bulmages como directorio de trabajo.
     QString dir = getenv("HOME");
@@ -76,14 +79,14 @@ configuracion::configuracion() {
     dir = "C:\\.bulmages\\";
 #endif
 
-    _depura("Vamos a comprobar la existencia\n", 1);
+    //_depura("Vamos a comprobar la existencia\n", 1);
     /// Comprobamos la existencia del directorio personalizado de bulmages.
     if (!homedir.exists(dir))
         homedir.mkdir(dir);
     /// Solo cambiamos de directorio si no es windows.
     chdir(dir.toAscii().data());
     /// Primero leemos la configuracion global.
-    _depura("Vamos a llamar a leeconfig\n", 1);
+    //_depura("Vamos a llamar a leeconfig\n", 1);
     leeconfig(CONFGLOBAL);
     /// Y luego anyadimos la configuracion local, asi los valores por defecto son los globales.
     /// Y los que estan en local sustituyen a los existentes.
@@ -101,7 +104,7 @@ configuracion::configuracion() {
     setValor(CONF_ALERTAS_DB, "Yes");
     setValor(CONF_LOGIN_USER, "");
     setValor(CONF_PASSWORD_USER, "");
-    _depura("END configuracion:configuracion\n", 1);
+    //_depura("END configuracion:configuracion\n", 1);
 }
 
 
@@ -281,7 +284,7 @@ void configuracion::saveconfig() {
 /// contains the configuration.
 /// Lee la configuracion del fichero de configuracion pasado y rellena la estructura.
 bool configuracion::leeconfig(QString fich) {
-    _depura("leeconfig(" + fich + ")\n", 0);
+    //_depura("leeconfig(" + fich + ")\n", 0);
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
         QTextStream in(&arch);
@@ -304,16 +307,19 @@ bool configuracion::leeconfig(QString fich) {
 
 
 /// Devuelve el valor de un campo determinado.
-/// \param i Parametro del que se quiere el valor.
-/// \return El valor que tiene dicho parametro.
+/// \param i Par&aacute;metro del que se quiere el valor.
+/// \return El valor que tiene dicho par&aacute;metro.
 QString configuracion::valor(int i) {
-    return (m_valores[i]);
+    if (m_valores.contains(i)) {
+        return (m_valores[i]);
+    } // end if
+    return "";
 }
 
 
-/// Establece el valor de un campo determinado con la tupla que se pasa como parametro.
-/// \param i El indice del parametro a cambiar.
-/// \param valor El valor que tomaria dicho parametro.
+/// Establece el valor de un campo determinado con la tupla que se pasa como par&aacute;metro.
+/// \param i El &iacute;ndice del par&aacute;metro a cambiar.
+/// \param valor El valor que tomar&iacute;a dicho par&aacute;metro.
 void configuracion::setValor(int i, QString valor) {
     m_valores[i] = valor;
 }

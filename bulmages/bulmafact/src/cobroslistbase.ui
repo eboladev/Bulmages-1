@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>CobrosListBase</class>
  <widget class="QWidget" name="CobrosListBase" >
   <property name="enabled" >
@@ -11,22 +9,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>458</width>
-    <height>416</height>
+    <width>539</width>
+    <height>436</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Cobros</string>
+   <string>Cobros a clientes</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros_listado.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -34,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -56,10 +54,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -227,7 +225,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
+           <enum>QSizePolicy::Ignored</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -262,10 +260,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -283,7 +281,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" />
         </item>
         <item>
          <spacer>
@@ -309,7 +307,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
         </item>
         <item>
          <spacer>
@@ -385,7 +383,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaCliente" name="m_cliente" />
+         <widget class="BusquedaCliente" native="1" name="m_cliente" />
         </item>
         <item>
          <spacer>
@@ -450,7 +448,7 @@
        <property name="font" >
         <font>
          <family>Sans Serif</family>
-         <pointsize>20</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
@@ -468,28 +466,21 @@
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaCliente</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>CobrosListSubForm</class>
    <extends>QTableWidget</extends>
    <header>cobroslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

@@ -10,7 +10,7 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="1.5cm" y="24.5cm">PRESUPUESTO</drawString>
+		<drawString x="1.5cm" y="24.5cm">PEDIDO DE CLIENTE</drawString>
 
 		<!-- LOS DATOS DEL CLIENTE -->
 		<setFont name="Helvetica" size="12"/>

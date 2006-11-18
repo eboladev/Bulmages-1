@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Joan Miquel Torres Rigo</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ProveedorListBase</class>
  <widget class="QWidget" name="ProveedorListBase" >
   <property name="enabled" >
@@ -24,7 +22,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle" >
-   <string>Listado de proveedores</string>
+   <string>Proveedores</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_proveedores_listado.48x48.png</iconset>
@@ -405,14 +403,11 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>ProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>providerslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

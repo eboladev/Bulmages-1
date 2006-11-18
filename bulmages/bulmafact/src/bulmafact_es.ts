@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1">
+<!DOCTYPE TS><TS version="1.1" language="es">
 <context>
     <name>AboutView</name>
     <message>
@@ -629,12 +629,12 @@
     <message>
         <location filename="albaranproveedorbase.ui" line="24"/>
         <source>Nuevo albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nuevo albarán de proveedor</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="436"/>
         <source>Descripcion:</source>
-        <translation type="unfinished"></translation>
+        <translation>Descripción:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="albaranproveedorbase.ui" line="465"/>

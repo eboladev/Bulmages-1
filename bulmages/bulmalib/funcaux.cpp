@@ -257,7 +257,6 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 2 = Alto (sale un popup).
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
-
 void _depura(QString cad, int nivel, QString param) {
     static bool semaforo = 0;
     static QFile file("/tmp/bulmagesout.txt");

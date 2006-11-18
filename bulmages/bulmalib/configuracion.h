@@ -106,7 +106,8 @@
 #define CONF_SERVIDOR                181
 /// Indica por defecto que puerto tiene el servidor de bases de datos para conectar con el.
 #define CONF_PUERTO                  182
-/// Indica que navegador utilizar para mostrar los resultados de los listados (por defecto mozilla).
+/// Indica que navegador utilizar para mostrar los resultados de los listados (por defecto
+/// mozilla).
 #define CONF_NAVEGADOR               197
 /// Indica que editor usar para mostrar listados (por defecto kedit).
 #define CONF_EDITOR                  198
@@ -121,11 +122,13 @@
 #define CONF_BACKGROUND              200
 /// Indica que imagen utilizar como splash de Bulmafact.
 #define CONF_SPLASH_BULMAFACT        196
-/// # Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp, creaemp, borraemp).
+/// Esto indica donde se van a albergar los programas auxiliares a bulmages (cargaemp,
+/// creaemp, borraemp).
 #define CONF_EJECUTABLES             300
 /// # Esto indica que CSS usar con los listados.
 #define CONF_PLANTILLA               301
-/// Esto indica que idioma utilizar (es ca en fr de o locales(coger el idioma de las locales)).
+/// Esto indica que idioma utilizar 'es' 'ca' 'en' 'fr' 'de' o 'locales' (coger el idioma de
+/// las locales).
 #define CONF_TRADUCCION              305
 /// Indica en que directorio se encuentran los archivos de traduccion.
 #define CONF_DIR_TRADUCCION          306
@@ -149,28 +152,32 @@
 #define CONF_DIR_OPENREPORTS         330
 /// Dictamina cuales son los privilegios del usuario.
 #define CONF_PRIVILEGIOS_USUARIO     420
-/// ALERTAS_DB Determina si los errores de la base de datos deben ser alertados via messagebox o no.
+/// ALERTAS_DB Determina si los errores de la base de datos deben ser alertados via
+/// messagebox o no.
 #define CONF_ALERTAS_DB              421
 /// CONF_LOGIN_USER    Determina el login de usuario. Inicialmente vale "".
 #define CONF_LOGIN_USER              422
 /// CONF_PASSWORD_USER     Determina el password del usuario. Inicialmente vale "".
 #define CONF_PASSWORD_USER           423
-/// ESta variable indica el directorio de trabajo del usuario.
+/// Esta variable indica el directorio de trabajo del usuario.
 #define CONF_DIR_USER                424
-/// Esta variable indica donde se van a guardar los archivos de imagenes de los articulos en BulmaFact.
+/// Esta variable indica donde se van a guardar los archivos de imagenes de los articulos
+/// en BulmaFact.
 #define CONF_DIR_IMG_ARTICLES        425
 #define CONF_DIR_IMG_PERSONAL        426
 #define CONF_DIR_CANUALES            427
-/// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos, albaranes y facturas inicialmente vale "".
+/// CONF_NUM_AUT_* determina si se utilizaran numeradores automaticos para presupuestos,
+/// albaranes y facturas inicialmente vale "".
 #define CONF_NUM_AUT_PRESUP          500
 #define CONF_NUM_AUT_ALBARAN         501
 #define CONF_NUM_AUT_FACTURA         502
-/// COMNF_DEBUG indica el modo de debug.
+/// CONF_DEBUG indica el modo de debug.
 #define CONF_DEBUG                   550
-/// CONF_MOSTRAR_ALMACEN determina si se visualizaran el almacen en los listados y si aparecera inhibido en las entradas de datos inicialmente vale "".
+/// CONF_MOSTRAR_ALMACEN determina si se visualizaran el almacen en los listados y si
+/// aparecera inhibido en las entradas de datos inicialmente vale "".
 #define CONF_MOSTRAR_ALMACEN         510
 
-typedef QMap<int,QString> mapa;
+typedef QMap<int, QString> mapa;
 
 
 /// Se encarga de recoger todos los parametros de configuracion de la aplicacion y los

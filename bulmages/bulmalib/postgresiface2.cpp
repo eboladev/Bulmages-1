@@ -449,7 +449,6 @@ QString postgresiface2::searchParent(QString cod) {
 }
 
 
-
 int postgresiface2::nuevoborrador(int idcuenta, int idasiento, QString concepto, QString descripcion, float debe, float haber, QString fecha, int idcontrapartida, int idtipoiva, int idccoste, int idcanal) {
     QString query = "";
     QString textcuenta;
@@ -691,8 +690,6 @@ int postgresiface2::abreasiento(int idasiento) {
 }
 
 
-
-
 int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
     QString cadena;
     cadena.sprintf("%d", idcuenta);
@@ -706,7 +703,6 @@ int postgresiface2::modificacuenta(int idcuenta, QString desccuenta, QString cod
     _depura(query);
     return (ejecuta(query));
 }
-
 
 
 int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString nombreent, QString cifent, QString dir, QString cp, QString tel, QString comm, QString banco, QString email, QString web, int tipocuenta, bool cnodebe, bool cnohaber) {
@@ -741,8 +737,6 @@ int postgresiface2::nuevacuenta(QString desccuenta, QString codigo, int padre, i
 }
 
 
-
-
 cursor2 *postgresiface2::cargaempresas() {
     QString query;
     query = "SELECT * FROM empresa";
@@ -751,19 +745,19 @@ cursor2 *postgresiface2::cargaempresas() {
 }
 
 
-/// Esta funcion estetica devuelve una cadena "saneada" para pasarsela a Postgresql.
-/// Neutraliza (escapes) los caracteres problematicos por ser caracteres especiales
-/// de Postgresql. Ejemplo, comillas, contrabarras,...
+/// Esta funci&oacute;n est&eacute;tica devuelve una cadena "saneada" para pasarsela
+/// a Postgresql. Neutraliza (escapes) los car&aacute;cteres problem&aacute;ticos por
+/// ser car&aacute;cteres especiales de Postgresql. Ejemplo, comillas, barras invertidas, ...
 QString postgresiface2::sanearCadena(QString cadena) {
-    int longitud;
-    char *buffer;
-    QString cadenaLimpia;
-    longitud = cadena.length();
-    /// Reservamos (la funcion de postgres lo necesita) un buffer del
-    /// doble de caracteres + 1 que la cadena original
-    buffer = (char *) malloc(sizeof(char) * longitud * 3);
-    PQescapeString(buffer, cadena.toUtf8(), strlen(cadena.toUtf8()));
-    cadenaLimpia = buffer;
+    int longitud = 0;
+    char *buffer = "";
+    QString cadenaLimpia = "";
+    longitud = cadena.size();
+    /// Reservamos (la funci&oacute;n de postgres lo necesita) un buffer del
+    /// doble de car&aacute;cteres + 1 que la cadena original.
+    buffer = (char *) malloc((sizeof(char) * longitud * 2) + 1);
+    PQescapeString(buffer, cadena.toAscii().constData(), cadena.toAscii().size());
+    cadenaLimpia = QString::fromAscii(buffer);
     free(buffer);
     return cadenaLimpia;
 }
