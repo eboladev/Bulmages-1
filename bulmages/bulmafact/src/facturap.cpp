@@ -124,6 +124,10 @@ int FacturaProveedor::guardar() {
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
+
+	/// Hacemos una carga para recuperar referencias y demás datos
+	cargar(id);
+
         _depura("END FacturaProveedor::guardar()", 0);
         return 0;
     } catch (...) {

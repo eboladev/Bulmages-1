@@ -95,7 +95,7 @@ void PedidoCliente::pintar() {
 
 /// Esta funcion carga un PedidoCliente.
 int PedidoCliente::cargar(QString idbudget) {
-    _depura("cargaPedidoCliente()\n", 0);
+    _depura("PedidoCliente::cargar", 0);
     QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente=" + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
@@ -105,10 +105,11 @@ int PedidoCliente::cargar(QString idbudget) {
     listalineas->cargar(idbudget);
     listadescuentos->cargar(idbudget);
     pintar();
+    _depura("END PedidoCliente::cargar", 0);
     return 0;
 }
 
-
+/// Guardamos el pedido cliente.
 int PedidoCliente::guardar() {
     _depura("PedidoCliente::guardar", 0);
     QString id;
@@ -119,6 +120,9 @@ int PedidoCliente::guardar() {
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
+
+	/// Hacemos una carga para recuperar los campos Referencia y num
+	cargar(id);
         _depura("END PedidoCliente::guardar", 0);
         return 0;
     } catch(...) {

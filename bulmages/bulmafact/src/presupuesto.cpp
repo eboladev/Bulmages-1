@@ -131,6 +131,8 @@ int presupuesto::guardar() {
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
+	/// Hacemos una carga para recuperar el numero y la referencia.
+	cargar(id);
         _depura("END presupuesto::guardar", 0);
         return 0;
     } catch (...) {

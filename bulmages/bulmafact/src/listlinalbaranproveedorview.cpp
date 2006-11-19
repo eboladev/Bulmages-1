@@ -82,22 +82,35 @@ void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
 }
 
 
+/// Calcula la Base imponible total del albaran de proveedor.
 Fixed ListLinAlbaranProveedorView::calculabase() {
-    Fixed base("0.0");
+    _depura("ListLinAlbaranProveedorView::calculabase", 0);
+    Fixed base("0.00");
+    Fixed totpar("0.00");
     for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("cantlalbaranp", i));
+        totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("cantlalbaranp", i));
+        totpar = totpar * ( Fixed("100.00") - Fixed(DBvalue("descontlalbaranp", i)));
+        totpar = totpar * Fixed("0.01");
         base = base + totpar;
     } // end for
+    _depura("END ListLinAlbaranProveedorView::calculabase", 0);
     return base;
 }
 
-
+/// Devuelve el total del IVA del albaran de proveedor
 Fixed ListLinAlbaranProveedorView::calculaiva() {
-    Fixed base("0.0");
+    _depura("ListLinAlbaranProveedorView::calculaiva", 0);
+    Fixed base("0.00");
+    Fixed totpar("0.00");
     for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("ivalalbaranp", i)) / 100;
+        totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("ivalalbaranp", i)) * Fixed("0.01");
+        totpar = totpar * Fixed(DBvalue("cantlalbaranp", i));
+        Fixed porcentdesc = Fixed("100.00") - Fixed(DBvalue("descontlalbaranp", i));
+        porcentdesc = porcentdesc * Fixed("0.01");
+        totpar = totpar * porcentdesc;
         base = base + totpar;
     } // end for
+    _depura("END ListLinAlbaranProveedorView::calculaiva", 0);
     return base;
 }
 

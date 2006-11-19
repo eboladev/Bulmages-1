@@ -130,6 +130,10 @@ int AlbaranCliente::guardar() {
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
+
+	/// Hacemos una carga para recuperar datos como la referencia y el numero de albaran
+	cargar(id);
+
         _depura("END AlbaranCliente::guardar", 0);
         return 0;
     } catch(...) {

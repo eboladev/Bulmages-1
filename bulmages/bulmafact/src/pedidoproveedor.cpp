@@ -110,6 +110,7 @@ int PedidoProveedor::cargar(QString idbudget) {
     listalineas->cargar(idbudget);
     listadescuentos->cargar(idbudget);
     pintar();
+    _depura("END PedidoProveedor::cargar", 0);
     return 0;
 }
 
@@ -130,6 +131,10 @@ int PedidoProveedor::guardar() {
         if (error)
             throw -1;
         companyact->commit();
+
+	/// Hacemos una carga para recuperar la referencia
+	cargar(id);
+
         _depura("END PedidoProveedor::guardar", 0);
         return 0;
     } catch (...) {
@@ -137,7 +142,6 @@ int PedidoProveedor::guardar() {
         _depura("PedidoProveedor::guardar Error al guardar el pedido proveedor", 2);
         throw -1;
     } // end try
-    _depura("END PedidoProveedor::guardar", 0);
 }
 
 

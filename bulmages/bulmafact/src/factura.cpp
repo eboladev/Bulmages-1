@@ -135,6 +135,10 @@ int Factura::guardar() {
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
+
+	/// Hacemos una carga para recuperar datos como la referencia
+	cargar(id);
+
         _depura("END Factura::guardar", 0);
         return 0;
     } catch (...) {
@@ -142,7 +146,6 @@ int Factura::guardar() {
         companyact->rollback();
         throw  -1;
     } // end try
-    _depura("END Factura::guardar", 0);
 }
 
 
