@@ -79,7 +79,9 @@ INCLUDEPATH += . \
 /usr/include/qt4/Qt \
 /usr/lib/qt4/include/Qt \
 /usr/include/Qt \
-/usr/include/QtXml
+/usr/include/QtXml \
+/usr/include/qt4/include/QtXml
+
 VERSION = 0.5.9
 TARGET = bulmalib
 OBJECTS_DIR = .obj
@@ -94,8 +96,8 @@ unix {
 	OBJECTS_DIR = .obj
 	LIBS += -lpq
 	LIBS += -rdynamic
-#	CONFIG += release
-        CONFIG += qt debug
+	CONFIG += release
+#        CONFIG += qt debug
 	TARGET = bulmalib
 	DESTDIR = ../installbulmages
 	exists(/usr/include/postgresql/libpq-fe.h){

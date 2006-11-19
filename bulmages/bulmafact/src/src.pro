@@ -5,8 +5,8 @@
 
 LANGUAGE = C++
 TARGET = ../../installbulmages/bulmafact
-CONFIG += qt debug
-#CONFIG += release warn_on
+#CONFIG += qt debug
+CONFIG += release warn_on
 LIBS += -rdynamic
 TEMPLATE = app
 
@@ -250,6 +250,7 @@ INCLUDEPATH += ../../bulmalib \
 /usr/include/qt4 \
 /usr/include/qt4/Qt \
 /usr/include/qt4/QtXml \
+/usr/include/qt4/QtGui \
 /usr/include/Qt \
 /usr/include/QtXml \
 /usr/lib/qt4/include/Qt \
