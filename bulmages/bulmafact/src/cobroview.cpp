@@ -35,7 +35,7 @@ using namespace std;
 
 
 CobroView::CobroView(company *comp, QWidget *parent)
-        : QWidget(parent), Cobro(comp), dialogChanges(this) {
+        : Ficha(parent), Cobro(comp) {
     _depura("CobroView::CobroView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -53,19 +53,12 @@ CobroView::CobroView(company *comp, QWidget *parent)
 
 
 CobroView::~CobroView() {
+    _depura("CobroView::~CobroView", 0);
     companyact->sacaWindow(this);
+    _depura("END CobroView::~CobroView", 0);
 }
 
 
-void CobroView::on_mui_borrar_clicked() {
-    _depura("CobroView::on_mui_borrar_clicked\n", 0);
-    if (QMessageBox::warning(this,
-                             tr("BulmaFact - Presupuestos"),
-                             tr("Desea borrar este presupuesto"),
-                             tr("&Si"), tr("&No")) == 0) {
-        borrar();
-    } // end if
-}
 
 
 int CobroView::cargar(QString id) {
@@ -85,17 +78,5 @@ int CobroView::cargar(QString id) {
 }
 
 
-void CobroView::closeEvent(QCloseEvent *e) {
-    _depura("closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar cobro"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            on_mui_guardar_clicked();
-        if (val == 2)
-            e->ignore();
-    } // end if
-}
+
 

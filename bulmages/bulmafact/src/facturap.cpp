@@ -33,6 +33,7 @@ typedef QMap<QString, Fixed> base;
 
 
 FacturaProveedor::FacturaProveedor(company *comp) : DBRecord(comp) {
+    _depura("FacturaProveedor::FacturaProveedor", 0);
     companyact = comp;
 
     setDBTableName("facturap");
@@ -47,6 +48,7 @@ FacturaProveedor::FacturaProveedor(company *comp) : DBRecord(comp) {
     addDBCampo("descfacturap", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Descripcion facturap"));
     addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id trabajador"));
     addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("FacturaProveedor", "Id forma de pago"));
+    _depura("END FacturaProveedor::FacturaProveedor", 0);
 }
 
 

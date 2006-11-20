@@ -8,7 +8,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>541</width>
+    <width>587</width>
     <height>320</height>
    </rect>
   </property>
@@ -304,7 +304,7 @@
      <property name="sizeHint" >
       <size>
        <width>535</width>
-       <height>51</height>
+       <height>16</height>
       </size>
      </property>
     </spacer>
@@ -630,8 +630,8 @@
      </property>
      <property name="sizeHint" >
       <size>
-       <width>20</width>
-       <height>40</height>
+       <width>535</width>
+       <height>16</height>
       </size>
      </property>
     </spacer>
@@ -642,7 +642,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -651,16 +651,23 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>40</width>
-         <height>20</height>
+         <width>201</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>&amp;Cerrar</string>
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>
@@ -696,22 +703,5 @@
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>CobroBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>503</x>
-     <y>297</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>538</x>
-     <y>176</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

@@ -56,6 +56,9 @@ public slots:
     virtual void on_mui_cerrar_clicked() {
         close();
     };
+    virtual void on_mui_guardar_clicked() {
+	guardar();
+    };
 };
 
 #endif

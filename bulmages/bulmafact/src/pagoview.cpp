@@ -43,7 +43,7 @@ using namespace std;
 
 
 PagoView::PagoView(company *comp, QWidget *parent)
-        : QWidget(parent), Pago(comp), dialogChanges(this) {
+        : Ficha(parent), Pago(comp) {
     try {
         setAttribute(Qt::WA_DeleteOnClose);
         setupUi(this);
@@ -66,30 +66,4 @@ PagoView::~PagoView() {
 }
 
 
-void PagoView::on_mui_borrar_clicked() {
-    _depura("PagoView::on_mui_borrar_clicked", 0);
-    if (QMessageBox::warning(this,
-                             tr("BulmaFact - Presupuestos"),
-                             tr("Desea borrar este presupuesto?"),
-                             tr("&Si"), tr("&No")) == 0) {
-        borraPago();
-    } // end if
-    _depura("END PagoView::on_mui_borrar_clicked", 0);
-}
-
-
-void PagoView::closeEvent(QCloseEvent *e) {
-    _depura("PagoView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar pago"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            guardaPago();
-        if (val == 2)
-            e->ignore();
-    } // end if
-    _depura("END PagoView::closeEvent", 0);
-}
 

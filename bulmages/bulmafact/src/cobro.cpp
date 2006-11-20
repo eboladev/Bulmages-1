@@ -53,3 +53,26 @@ void Cobro::pintar() {
     pintacomentcobro(DBvalue("comentcobro"));
 }
 
+
+
+int Cobro::guardar() {
+    _depura("Cobro::guardar", 0);
+    try {
+        QString id;
+        companyact->begin();
+        DBsave(id);
+        setidcobro(id);
+        companyact->commit();
+
+	/// Hacemos una carga para que se actualizen datos como la referencia
+	cargar(id);
+
+        _depura("END Cobro::guardar", 0);
+        return 0;
+    } catch (...) {
+        mensajeInfo("Error inesperado al guardar");
+        companyact->rollback();
+	return -1;
+    } // end try
+}
+

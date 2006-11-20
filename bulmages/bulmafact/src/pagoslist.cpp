@@ -176,7 +176,7 @@ void PagosList::on_mui_borrar_clicked() {
 	if (m_modo == 0 && mdb_idpago != "") {
 		PagoView *bud = new PagoView(m_companyact, NULL);
 		bud->cargar(mdb_idpago);
-		bud->borraPago();
+		bud->borrar();
 	} // end if
 	presentar();
     } catch (...)  {

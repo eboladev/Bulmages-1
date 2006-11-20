@@ -43,18 +43,21 @@ Pago::Pago(company *comp) : DBRecord(comp) {
 Pago::~Pago() {}
 
 
-void Pago::borraPago() {
+int Pago::borrar() {
+    _depura("Pago::borrar", 0);
     if (DBvalue("idpago") != "") {
         companyact->begin();
         int error = companyact->ejecuta("DELETE FROM pago WHERE idpago = " + DBvalue("idpago"));
         if (error) {
             companyact->rollback();
-            return;
+            return -1;
         } // end if
         companyact->commit();
         vaciar();
         pintar();
     } // end if
+    _depura("END Pago::borrar", 0);
+    return 0;
 }
 
 
@@ -76,27 +79,37 @@ void Pago::pintar() {
 
 /// Esta funcion carga un pago.
 int Pago::cargar(QString idpago) {
-    QString query = "SELECT * FROM pago WHERE idPago = " + idpago;
+    _depura("Pago::cargar", 0);
+    QString query = "SELECT * FROM pago WHERE idpago = " + idpago;
     cursor2 * cur = companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
     delete cur;
     pintar();
+    _depura("Pago::cargar", 0);
     return 0;
 }
 
 
-void Pago::guardaPago() {
+int Pago::guardar() {
+    _depura("Pago::guardar", 0);
     try {
         QString id;
         companyact->begin();
         DBsave(id);
         setidpago(id);
         companyact->commit();
+
+	/// Hacemos una carga para que se actualizen datos como la referencia
+	cargar(id);
+
+        _depura("END Pago::guardar", 0);
+        return 0;
     } catch (...) {
         mensajeInfo("Error inesperado al guardar");
         companyact->rollback();
+	return -1;
     } // end try
 }
 

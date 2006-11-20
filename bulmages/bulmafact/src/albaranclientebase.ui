@@ -835,7 +835,17 @@
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
-      <widget class="ListLinAlbaranClienteView" name="subform2" />
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>9</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="ListLinAlbaranClienteView" name="subform2" />
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
       <attribute name="title" >
@@ -1285,9 +1295,9 @@
  <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
-   <class>BusquedaTrabajador</class>
+   <class>BusquedaCliente</class>
    <extends></extends>
-   <header>busquedatrabajador.h</header>
+   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1295,6 +1305,13 @@
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
+   <container>0</container>
+   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends></extends>
+   <header>busquedatrabajador.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1330,13 +1347,6 @@
    <class>BusquedaAlmacen</class>
    <extends></extends>
    <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends></extends>
-   <header>busquedacliente.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>

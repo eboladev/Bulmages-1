@@ -31,6 +31,7 @@
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
@@ -38,14 +39,13 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pago.
 /** */
-class PagoView : public QWidget, private Ui_PagoBase, public Pago, public dialogChanges {
+class PagoView : public Ficha, private Ui_PagoBase, public Pago {
     Q_OBJECT
 
 public:
     PagoView(company *, QWidget *);
     ~PagoView();
     void manageArticle(int);
-    void closeEvent(QCloseEvent *);
     void pintafechapago(QString id) {
         mui_fechapago->setText(id);
     };
@@ -69,10 +69,8 @@ public:
         } // end if
     };
 
-public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardaPago();
-    };
+    virtual int guardar() {return Pago::guardar();};
+    virtual int borrar() {return Pago::borrar();};
     virtual int cargar(QString id) {
         try {
             if (Pago::cargar(id))
@@ -85,7 +83,10 @@ public slots:
         } // end try
         return 0;
     };
-    virtual void on_mui_borrar_clicked();
+
+
+public slots:
+
     virtual void on_mui_comentpago_textChanged(const QString &str) {
         setcomentpago(str);
     };

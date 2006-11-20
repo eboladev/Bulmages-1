@@ -43,9 +43,11 @@ QApplication2 *theApp;
 bulmafact *bges;
 QTranslator *traductor;
 
+/// Inicio de ejecucion del programa.
+/// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado confpr.
 int main(int argc, char **argv) {
     try {
-        _depura("main:: Iniciando programa", 0);
+        fprintf(stderr, "main:: Iniciando programa");
         Q_INIT_RESOURCE(bulmages);
 
         /// Leemos la configuracion que luego podremos usar siempre.
@@ -73,19 +75,19 @@ int main(int argc, char **argv) {
         /// 4) bulmalib_es
         /// 5) bulmalib_.qm
         /// 6) bulmalib_
+	/// Cogemos traducciones de bulmalib
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmalib_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+            traductor->load(QString("bulmalib_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         } else {
             QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
             traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         } // end if
         theApp->installTranslator(traductor);
 
+	/// Cogemos traducciones de bulmafact
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
-            traductor->load(QString("bulmafact_") + QLocale::system().name(),
-                            confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
+            traductor->load(QString("bulmafact_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         } else {
             QString archivo = "bulmafact_" + confpr->valor(CONF_TRADUCCION);
             traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
@@ -164,7 +166,7 @@ int main(int argc, char **argv) {
     delete traductor;
     delete confpr;
 
-    _depura("MAIN: Se acabo la ejecucion en main", 0);
+    fprintf(stderr," Fin de ejecucion");
     return 0;
 }
 

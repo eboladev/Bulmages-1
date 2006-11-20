@@ -38,8 +38,8 @@ public:
     virtual ~Pago();
     virtual int cargar(QString);
     virtual void pintar();
-    void guardaPago();
-    void borraPago();
+    virtual int guardar();
+    virtual int borrar();
     void vaciar();
     virtual void pintaidpago(QString) {}
     ;

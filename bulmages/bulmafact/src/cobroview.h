@@ -31,20 +31,20 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
 
 /// Administra la ventana de con los datos de un cobro.
 /** */
-class CobroView : public QWidget, private Ui_CobroBase, public Cobro, public dialogChanges {
+class CobroView : public Ficha, private Ui_CobroBase, public Cobro {
     Q_OBJECT
 
 public:
     CobroView(company *, QWidget *);
     ~CobroView();
     void manageArticle(int);
-    void closeEvent(QCloseEvent *);
     void pintafechacobro(QString id) {
         mui_fechacobro->setText(id);
     };
@@ -67,13 +67,12 @@ public:
             mui_previsioncobro->setChecked(FALSE);
         }
     };
+    virtual int guardar() {return Cobro::guardar();};
+    virtual int borrar()  {return Cobro::borrar();};
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    };
     virtual int cargar(QString id);
-    virtual void on_mui_borrar_clicked();
+
     virtual void on_mui_comentcobro_textChanged(const QString &str) {
         setcomentcobro(str);
     };

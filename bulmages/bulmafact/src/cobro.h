@@ -38,6 +38,7 @@ protected:
 public:
     Cobro(company *);
     virtual ~Cobro();
+    virtual int guardar();
     virtual void pintar();
     void setidcobro(QString val) {
         setDBvalue("idcobro", val);

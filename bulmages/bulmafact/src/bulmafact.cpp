@@ -163,10 +163,8 @@ void bulmafact::closeEvent(QCloseEvent *) {
     delete m_company;
     delete m_list;
 #ifdef WINDOWS
-
     exit(0);
 #endif
-
     _depura("END bulmafact::closeEvent", 0);
 }
 

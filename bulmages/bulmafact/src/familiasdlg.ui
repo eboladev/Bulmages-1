@@ -16,150 +16,170 @@
    <string>Familias</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_articulos_familias.32x32.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
      </property>
-     <property name="minimumSize" >
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
+     <property name="spacing" >
+      <number>0</number>
      </property>
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QHBoxLayout" >
-      <property name="margin" >
-       <number>0</number>
-      </property>
-      <property name="spacing" >
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QToolButton" name="mui_crear" >
-        <property name="toolTip" >
-         <string>Nuevo tipo de articulo</string>
+     <item>
+      <widget class="QLabel" name="label_2" >
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="pixmap" >
+        <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos_familias.48x48.png</pixmap>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QFrame" name="frame" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>5</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>0</number>
         </property>
-        <property name="whatsThis" >
-         <string>Nuevo tipo de articulo</string>
+        <property name="spacing" >
+         <number>0</number>
         </property>
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="mui_borrar" >
-        <property name="toolTip" >
-         <string>Borrar tipo de articulo</string>
-        </property>
-        <property name="whatsThis" >
-         <string>Borrar tipo de articulo</string>
-        </property>
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="mui_guardar" >
-        <property name="toolTip" >
-         <string>Guardar tipo de articulo</string>
-        </property>
-        <property name="whatsThis" >
-         <string>Guardar tipo de articulo</string>
-        </property>
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QToolButton" name="mui_imprimir" >
-        <property name="toolTip" >
-         <string>Guardar tipo de articulo</string>
-        </property>
-        <property name="whatsThis" >
-         <string>Guardar tipo de articulo</string>
-        </property>
-        <property name="text" >
-         <string/>
-        </property>
-        <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
-        </property>
-        <property name="iconSize" >
-         <size>
-          <width>22</width>
-          <height>22</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType" >
-         <enum>QSizePolicy::Expanding</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>191</width>
-          <height>30</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
+        <item>
+         <widget class="QToolButton" name="mui_crear" >
+          <property name="toolTip" >
+           <string>Nueva Familia</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Nueva Familia</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_borrar" >
+          <property name="toolTip" >
+           <string>Borrar Familia</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar Familia</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_guardar" >
+          <property name="toolTip" >
+           <string>Guardar Familia</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Guardar Familia</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QToolButton" name="mui_imprimir" >
+          <property name="toolTip" >
+           <string>Imprimir Familias</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir Familias</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>191</width>
+            <height>30</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QTreeWidget" name="m_listFamilias" />
@@ -187,10 +207,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir pedido</string>
+        <string>Mostrar / Ocultar Detalle</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir pedido</string>
+        <string>Mostrar / Ocultar Detalle</string>
        </property>
        <property name="text" >
         <string/>
@@ -234,10 +254,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QVBoxLayout" >
@@ -248,7 +268,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>5</hsizetype>
@@ -304,7 +324,7 @@
            <number>2</number>
           </property>
           <item>
-           <widget class="QLabel" name="" >
+           <widget class="QLabel" name="label" >
             <property name="text" >
              <string>Codigo:</string>
             </property>
@@ -326,7 +346,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="QLabel" name="" >
+         <widget class="QLabel" name="label" >
           <property name="text" >
            <string>Codigo completo:</string>
           </property>
@@ -392,12 +412,28 @@
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>543</x>
-     <y>568</y>
+     <x>439</x>
+     <y>525</y>
     </hint>
     <hint type="destinationlabel" >
      <x>10</x>
      <y>577</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mui_detalles</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>groupBox1</receiver>
+   <slot>setShown(bool)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>15</x>
+     <y>225</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>169</x>
+     <y>251</y>
     </hint>
    </hints>
   </connection>
