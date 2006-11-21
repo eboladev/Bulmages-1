@@ -35,7 +35,6 @@ public:
 	~EFQToolButton();
 	void escribe_linea_factura(QString &string, cursor2 *lfactura, int numerolinea);
 	void exporta_factura_ubl();
-	void importa_factura_ubl();
 	
 public slots:
 	virtual void click();

@@ -28,13 +28,16 @@
 
 #include "efacturabf.h"
 #include "efactura.h"
-#include "efacturaenvio.h"
-#include "efacturarecepcion.h"
+// #include "efacturaenvio.h"
+// #include "efacturarecepcion.h"
 #include "company.h"
 #include "funcaux.h"
+// Exportacion
 #include "facturaview.h"
 #include "efqtoolbutton.h"
+// Importacion
 #include "facturasplist.h"
+#include "efqtoolbutton_importar.h"
 
 efacturabf::efacturabf() {}
 
@@ -90,12 +93,11 @@ void entryPoint(bulmafact *bges) {
 
 /// Dibuja el boton de exportar en el formulario de factura
 
-// int FacturaView_FacturaView(FacturaView *fac) {
 int FacturaView_EFacturaBotonExportar(FacturaView *fac) {
 	_depura("FacturaView_EFacturaBotonExportar", 0);
 	
 	EFQToolButton *mui_exporta_efactura = new EFQToolButton(fac, fac->mui_plugbotones);
-	mui_exporta_efactura->setObjectName(QString::fromUtf8("guardar"));
+	mui_exporta_efactura->setObjectName(QString::fromUtf8("importar"));
 	mui_exporta_efactura->setMinimumSize(QSize(32, 32));
 	mui_exporta_efactura->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/pendientes/i_save.xpm")));
 	mui_exporta_efactura->setIconSize(QSize(22, 22));
@@ -111,7 +113,14 @@ int FacturaView_EFacturaBotonExportar(FacturaView *fac) {
 	return 0;
 }
 
-int FacturasProveedorListSubform_EFacturaBotonImportar(FacturasProveedorListSubform *listfac) {
+int FacturasProveedorList_EFacturaBotonImportar(FacturasProveedorList *listfac) {
 	_depura("FacturasProveedorListSubform_EFacturaBotonImportar", 0);
-	return 0;
+	
+// 	EFQToolButtonImportar *mui_importa_efactura = new EFQToolButtonImportar(listfac, listfac->mui_plugbotones);
+// 	mui_importa_efactura->setObjectName(QString::fromUtf8("guardar"));
+// 	mui_importa_efactura->setMinimumSize(QSize(32, 32));
+// 	mui_importa_efactura->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/pendientes/i_save.xpm")));
+// 	mui_importa_efactura->setIconSize(QSize(22, 22));
+
+ 	return 0;
 }

@@ -36,24 +36,23 @@
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
 extern "C" MY_EXPORT int FacturaView_EFacturaBotonExportar(FacturaView *);
-extern "C" MY_EXPORT int FacturasProveedorListSubform_EFacturaBotonImportar(FacturasProveedorListSubform *);
+extern "C" MY_EXPORT int FacturasProveedorList_EFacturaBotonImportar(FacturasProveedorList *);
 extern QApplication2 *theApp;
 
 
 class efacturabf : public QObject {
-    Q_OBJECT
+	Q_OBJECT
 
 private:
-    company *m_companyact;
+	company *m_companyact;
 
 public:
 	efacturabf();
 	~efacturabf();
 	void inicializa(bulmafact *);
 	int FacturaView_FacturaView(FacturaView *);
-	int FacturasProveedorListSubform_EFacturaBotonImportar(FacturasProveedorListSubform *);
+	int FacturasProveedorList_EFacturaBotonImportar(FacturasProveedorList *);
 
 public slots:
 	void elslot();
 };
-

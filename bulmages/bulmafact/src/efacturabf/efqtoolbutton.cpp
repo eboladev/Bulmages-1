@@ -253,17 +253,9 @@ void EFQToolButton::exporta_factura_ubl() {
 	delete file;
 }
 
-/// ------------------ Importa una factura desde un fichero en formato UBL 1.0 ------------------- ///
-
-void EFQToolButton::importa_factura_ubl() {
-
-	;
-
-}
-
 void EFQToolButton::click() {
 	
-	if ( (!m_factura->dialogChanges_hayCambios()) && (m_factura->DBvalue("idfactura") != "") ) {	
+	if ( (!m_factura->dialogChanges_hayCambios()) && (m_factura->DBvalue("idfactura") != "") ) {
 		_depura ("Se ha exportado la factura a formato UBL", 2);
 		exporta_factura_ubl();
 	} else {
