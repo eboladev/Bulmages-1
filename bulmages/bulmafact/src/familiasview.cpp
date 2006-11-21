@@ -357,7 +357,7 @@ void familiasview::on_mui_imprimir_clicked() {
         stream << buff;
         file.close();
     }
-    system("trml2pdf.py /tmp/familias.rml > /tmp/familias.pdf");
+    system("bgtrml2pdf.py /tmp/familias.rml > /tmp/familias.pdf");
     system("kpdf /tmp/familias.pdf &");
 }
 

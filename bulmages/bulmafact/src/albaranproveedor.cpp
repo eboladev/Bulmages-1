@@ -212,7 +212,7 @@ void AlbaranProveedor::imprimirAlbaranProveedor() {
         file.close();
     } // end if
 
-    system("trml2pdf.py /tmp/albaranpproveedor.rml > /tmp/albaranpproveedor.pdf");
+    system("bgtrml2pdf.py /tmp/albaranpproveedor.rml > /tmp/albaranpproveedor.pdf");
     system("kpdf /tmp/albaranpproveedor.pdf &");
 }
 

@@ -218,7 +218,7 @@ void generaPDF(const QString arch) {
 
 #ifdef WINDOWS
 
-    cadsys = confpr->valor(CONF_PYTHON) + " " + confpr->valor(CONF_PROGDATA) + "trml2pdf\\trml2pdf.py " + arch + ".rml > " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
+    cadsys = confpr->valor(CONF_PYTHON) + " " + confpr->valor(CONF_PROGDATA) + "trml2pdf\\bgtrml2pdf.py " + arch + ".rml > " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
     system(cadsys.toAscii());
     _depura(cadsys, 0);
     cadsys = confpr->valor(CONF_FLIP) + " -u " + confpr->valor(CONF_DIR_USER) + arch + ".pdf";
@@ -226,7 +226,7 @@ void generaPDF(const QString arch) {
     _depura(cadsys, 0);
 #else
 
-    cadsys = "trml2pdf.py " + arch + ".rml > " + arch + ".pdf";
+    cadsys = "bgtrml2pdf.py " + arch + ".rml > " + arch + ".pdf";
     system(cadsys.toAscii().data());
 #endif
 }

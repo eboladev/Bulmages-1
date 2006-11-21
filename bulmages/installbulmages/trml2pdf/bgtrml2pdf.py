@@ -29,6 +29,8 @@ import reportlab
 from reportlab.pdfgen import canvas
 from reportlab import platypus
 
+sys.path.append('/usr/lib/bulmages')
+
 import utils
 import color
 
