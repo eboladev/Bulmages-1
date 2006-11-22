@@ -21,6 +21,7 @@
 #include <QMessageBox>
 #include <QFile>
 #include <QTextStream>
+#include <QString>
 
 #include "facturasplist.h"
 #include "company.h"
@@ -28,11 +29,20 @@
 #include "busquedaarticulo.h"
 #include "configuracion.h"
 #include "facturapview.h"
-
+#include "plugins.h"
 
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
         : QWidget(parent, flag) {
+
     setupUi(this);
+
+    _depura("FacturasProveedorList::FacturasProveedorList", 0);
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasProveedorList_EFacturaBotonImportar", this);
+    if (res != 0)
+        return;
+
     m_companyact = NULL;
     m_modo = 0;
     mdb_idfacturap = "";
@@ -44,6 +54,14 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
         : QWidget(parent) {
     setupUi(this);
+
+    _depura("FacturasProveedorList::FacturasProveedorList", 0);
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
+    if (res != 0)
+    	return;
+
     m_companyact = comp;
     m_proveedor->setcompany(m_companyact);
     m_articulo->setcompany(m_companyact);

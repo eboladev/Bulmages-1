@@ -186,7 +186,7 @@ cp -r ainteligentes /usr/share/bulmages
 cp -r balances /usr/share/bulmages
 cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
-
+cp -r efactura /usr/share/bulmages
 
 info "Instalando plugins iniciales. \n"
 if [ ! -e /usr/lib/bulmages ]; then

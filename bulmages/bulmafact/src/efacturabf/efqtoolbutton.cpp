@@ -23,11 +23,14 @@
 #include "facturaview.h"
 #include "funcaux.h"
 
-/// Para Exportacion/Importacion de efacturas
+/// Para Exportacion de efacturas
 #include <QFile>
 #include <QTextStream>
 #include <QtXml/QXmlInputSource>
 #include <QtXml/QXmlSimpleReader>
+
+#define _PLANTILLA_ "/usr/share/bulmages/efactura/plantilla_efactura.xml"
+#define _RESULTADO_ "/tmp/efactura.xml"
 
 EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(parent) {
 	_depura("EFQToolButton_EFQToolButton", 0);
@@ -111,8 +114,11 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	QString query = "";
 	
-	QFile *file_in  = new QFile("/tmp/plantilla_efactura.xml");
-	QFile *file_out = new QFile("/tmp/resultado.xml");
+// 	QFile *file_in  = new QFile("/tmp/plantilla_efactura.xml");
+// 	QFile *file_out = new QFile("/tmp/resultado.xml");
+
+	QFile *file_in  = new QFile(_PLANTILLA_);
+	QFile *file_out = new QFile(_RESULTADO_);
 	
 	if (!file_in->open(QIODevice::ReadOnly | QIODevice::Text))
 		_depura("Problemas al abir la plantilla de factura", 2);
@@ -229,9 +235,9 @@ void EFQToolButton::exporta_factura_ubl() {
 	delete file_in;
 	delete file_out;
 	
-	// Parseamos fichero XML ---------------------------
+	/// Parseamos fichero XML ---------------------------
 	
-	QFile *file = new QFile("/tmp/resultado.xml");
+	QFile *file = new QFile(_RESULTADO_);
 	
 	if (!file->open(QIODevice::ReadOnly | QIODevice::Text))
 		return;
@@ -256,8 +262,8 @@ void EFQToolButton::exporta_factura_ubl() {
 void EFQToolButton::click() {
 	
 	if ( (!m_factura->dialogChanges_hayCambios()) && (m_factura->DBvalue("idfactura") != "") ) {
-		_depura ("Se ha exportado la factura a formato UBL", 2);
 		exporta_factura_ubl();
+		_depura ("Exportacion completada. Su factura se encuentra en /tmp/efactura.xml", 2);
 	} else {
 		_depura("Es necesario Guardar la factura antes de exportarla a UBL", 2);
 	}

@@ -78,6 +78,11 @@ public:
         m_articulo->setcompany(comp);
         mui_list->setcompany(comp);
     };
+    
+    company* get_company() {
+       return m_companyact;
+    };
+    
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);

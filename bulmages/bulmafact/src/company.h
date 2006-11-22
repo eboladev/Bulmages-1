@@ -95,6 +95,9 @@ public:
     void setProgressBar(QProgressBar *pb) {
         m_progressbar = pb;
     }
+    FacturasProveedorList *facturasProveedorList() {
+    	return m_facturasproveedorlist;
+    };
     void listproviders();
     void listClients();
     void listarticles();

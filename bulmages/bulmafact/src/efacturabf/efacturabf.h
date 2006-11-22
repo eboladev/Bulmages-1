@@ -36,7 +36,7 @@
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
 extern "C" MY_EXPORT int FacturaView_EFacturaBotonExportar(FacturaView *);
-extern "C" MY_EXPORT int FacturasProveedorList_EFacturaBotonImportar(FacturasProveedorList *);
+
 extern QApplication2 *theApp;
 
 

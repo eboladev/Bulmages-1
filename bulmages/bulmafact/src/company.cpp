@@ -224,6 +224,11 @@ void company::createMainWindows() {
 
     /// pb = 100%
     m_progressbar->setValue(100);
+    
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("company_createMainWindows_Post", this);
+    if (res != 0)
+    	return;	
     _depura("END company::createMainWindows\n", 0);
 }
 

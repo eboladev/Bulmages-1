@@ -44,6 +44,8 @@ INSERT INTO configuracion (nombre, valor) VALUES ('Tipo', 'BulmaFact');
 INSERT INTO configuracion (nombre, valor) VALUES ('ProgramaContabilidad', 'BulmaCont');
 INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('AlmacenDefecto', '100');
+INSERT INTO configuracion (nombre, valor) VALUES ('DireccionCompleta', 'Sin definir');
+INSERT INTO configuracion (nombre, valor) VALUES ('Ciudad', 'Sin definir');
 \echo -n ':: Configuraciones ... '
 COMMIT;
 

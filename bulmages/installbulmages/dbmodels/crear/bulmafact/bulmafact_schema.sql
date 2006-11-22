@@ -546,6 +546,7 @@ CREATE TABLE cliente (
     inactivocliente character(1),
     provcliente character varying,
     idtarifa integer references tarifa(idtarifa)
+    departamento character varying(32);
 );
 
 
