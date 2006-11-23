@@ -557,9 +557,6 @@
    <property name="shortcut" >
     <string>Ctrl+I</string>
    </property>
-   <property name="menuRole" >
-    <enum>QAction::TextHeuristicRole</enum>
-   </property>
   </action>
  </widget>
  <resources>
