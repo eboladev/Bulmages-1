@@ -26,6 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Administra el detalle del listado de facturas de proveedor.
@@ -36,7 +37,6 @@ class FacturasProveedorListSubform : public SubForm2Bf {
 public:
     FacturasProveedorListSubform(QWidget *parent = 0);
     ~FacturasProveedorListSubform() {}
-    ;
 
 public slots:
     virtual void cargar() {
@@ -45,10 +45,10 @@ public slots:
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
-    };
+    }
     virtual void cargar(QString query) {
         SubForm3::cargar(query);
-    };
+    }
 };
 
 
@@ -57,7 +57,7 @@ public slots:
 
 /// Administra el listado de facturas de proveedor.
 /** */
-class FacturasProveedorList : public QWidget, public Ui_FacturasProveedorListBase {
+class FacturasProveedorList : public Ficha, public Ui_FacturasProveedorListBase {
     Q_OBJECT
 
 private:
@@ -77,44 +77,42 @@ public:
         m_proveedor->setcompany(comp);
         m_articulo->setcompany(comp);
         mui_list->setcompany(comp);
-    };
-    
+    }
     company* get_company() {
        return m_companyact;
-    };
-    
+    }
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
-        }
-    };
+        } // end if
+    }
     void modoseleccion() {
         m_modo = 1;
-    };
+    }
     void modoedicion() {
         m_modo = 0;
-    };
+    }
     QString idfacturap() {
         return mdb_idfacturap;
-    };
+    }
     void hideBusqueda() {
         m_busqueda->hide();
-    };
+    }
     void showBusqueda() {
         m_busqueda->show();
-    };
+    }
     void hideBotonera() {
         m_botonera->hide();
-    };
+    }
     void showBotonera() {
         m_botonera->show();
-    };
+    }
     void setidproveedor(QString val) {
         m_proveedor->setidproveedor(val);
-    };
+    }
     void setidarticulo(QString val) {
         m_articulo->setidarticulo(val);
-    };
+    }
     QString generaFiltro();
     /// Funciones que se encargan de guardar y cargar la configuracion del listado.
     void guardaconfig();

@@ -70,7 +70,6 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
 PedidoProveedorView::~PedidoProveedorView() {
     _depura("PedidoProveedorView::~PedidoProveedorView", 0);
     companyact->refreshPedidosProveedor();
-    companyact->sacaWindow(this);
     _depura("END PedidoProveedorView::~PedidoProveedorView", 0);
 }
 
@@ -190,7 +189,7 @@ void PedidoProveedorView::generarAlbaran() {
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
     if (QMessageBox::question(this,
-                              tr("Albaran de proveedor inexistente"),
+                              tr("El albaran de proveedor no existe"),
                               tr("No existe un albaran asociado a este pedido.\n Desea crearlo?"),
                               tr("&Si"), tr("&No"),
                               QString::null, 0, 1))
@@ -230,5 +229,11 @@ void PedidoProveedorView::generarAlbaran() {
         linea1->setDBvalue("proporciondalbaranp", listadescuentos->DBvalue("proporciondpedidoproveedor", i));
     } // end for
     bud->show();
+}
+
+
+int PedidoProveedorView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
 }
 

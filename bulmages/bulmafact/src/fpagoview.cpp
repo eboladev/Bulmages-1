@@ -29,7 +29,7 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 FPagoView::FPagoView(company *emp,QWidget *parent)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("FPagoView::FPagoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -63,9 +63,14 @@ FPagoView::~FPagoView() {
     _depura("FPagoView::~FPagoView", 0);
     if (m_cursorFPagoView != NULL)
         delete m_cursorFPagoView;
-    m_companyact->sacaWindow( this);
     _depura("END FPagoView::~FPagoView", 0);
 
+}
+
+
+int FPagoView::sacaWindow() {
+    m_companyact->sacaWindow(this);
+    return 0;
 }
 
 
@@ -91,18 +96,19 @@ void FPagoView::on_mui_guardar_clicked() {
                         m_companyact->sanearCadena(m_dias1tforma_pago->text()) + " , descuentoforma_pago = "+
                         m_companyact->sanearCadena(m_descuentoforma_pago->text()) + " WHERE idforma_pago =" + mdb_idforma_pago;
         m_companyact->ejecuta(query);
-        if (m_cursorFPagoView != NULL)
+        if (m_cursorFPagoView != NULL) {
             delete m_cursorFPagoView;
+        } // end if
         m_cursorFPagoView = m_companyact->cargacursor("SELECT * FROM forma_pago ORDER BY idforma_pago");
-        if(m_item)
+        if (m_item) {
             m_item->setText(m_descforma_pago->text());
-
+        } // end if
         dialogChanges_cargaInicial();
     } catch(...) {
         _depura ("error guardando la forma de pago", 1);
         return;
-    }
-} // end if
+    } // end try
+}
 
 
 bool FPagoView::trataModificado() {
@@ -153,20 +159,5 @@ void FPagoView::on_mui_borrar_clicked() {
     } // end if
     m_companyact->commit();
     pintar();
-}
-
-
-void FPagoView::closeEvent(QCloseEvent *e) {
-    _depura("FPagoView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar Forma de Pago"),
-                                       tr("Desea guardar los cambios."),
-                                       tr("&Si"), tr("&No"), tr("Cancelar"), 0, 2);
-        if (val == 0)
-            on_mui_guardar_clicked();
-        if (val == 2)
-            e->ignore();
-    } // end if
 }
 

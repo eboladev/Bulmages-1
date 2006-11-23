@@ -22,7 +22,7 @@
 #define FAMILIASVIEW_H
 
 #include "ui_familiasdlg.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
@@ -30,7 +30,7 @@ class company;
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class familiasview : public QWidget, public Ui_familiasdlg, dialogChanges {
+class familiasview : public Ficha, public Ui_familiasdlg {
     Q_OBJECT
 
 private:
@@ -49,14 +49,15 @@ public:
     void mostrarplantilla();
     void setModoConsulta() {
         m_modoConsulta = TRUE;
-    };
+    }
     void setModoEdicion() {
         m_modoConsulta = FALSE;
-    };
+    }
     QString codigoCompletoFamilia();
     QString idFamilia();
     QString nombreFamilia();
     void pintar(QTreeWidgetItem *);
+    virtual int sacaWindow();
 
 public slots:
     virtual void pintar();

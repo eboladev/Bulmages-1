@@ -32,17 +32,14 @@
 #include "plugins.h"
 
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
-
-    setupUi(this);
-
+        : Ficha(parent, flag) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
-
+    setupUi(this);
     /// Disparamos los plugins.
     int res = g_plugins->lanza("FacturasProveedorList_EFacturaBotonImportar", this);
-    if (res != 0)
+    if (res != 0) {
         return;
-
+    } // end if
     m_companyact = NULL;
     m_modo = 0;
     mdb_idfacturap = "";
@@ -52,16 +49,16 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
 
 
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     setupUi(this);
 
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
-    if (res != 0)
+    if (res != 0) {
     	return;
-
+    } // end if
     m_companyact = comp;
     m_proveedor->setcompany(m_companyact);
     m_articulo->setcompany(m_companyact);
@@ -76,7 +73,6 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
 
 FacturasProveedorList::~FacturasProveedorList() {
     _depura("FacturasProveedorList::~FacturasProveedorList", 0);
-    m_companyact->sacaWindow(this);
 }
 
 

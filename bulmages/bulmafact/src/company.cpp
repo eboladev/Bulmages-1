@@ -141,84 +141,84 @@ void company::createMainWindows() {
     /// pb = 0%
     _depura("company::createMainWindows inicializamos m_articleslist\n", 1);
     m_progressbar->setValue(0);
-    m_articleslist = new ArticuloList(this, 0, 0, ArticuloList::EditMode);
+    m_articleslist = new ArticuloList(this);
     m_pWorkspace->addWindow(m_articleslist);
     m_articleslist->hide();
 
     /// pb = 8%
     _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
     m_progressbar->setValue(8);
-    m_providerslist = new ProveedorList(this, 0);
+    m_providerslist = new ProveedorList(this);
     m_pWorkspace->addWindow(m_providerslist);
     m_providerslist->hide();
 
     /// pb = 16%
     _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
     m_progressbar->setValue(16);
-    m_clientsList = new ClientsList(this, 0);
+    m_clientsList = new ClientsList(this);
     m_pWorkspace->addWindow(m_clientsList);
     m_clientsList->hide();
 
     /// pb = 32%
     _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
     m_progressbar->setValue(32);
-    m_cobrosList = new CobrosList(this, 0);
+    m_cobrosList = new CobrosList(this);
     m_pWorkspace->addWindow(m_cobrosList);
     m_cobrosList->hide();
 
     /// pb = 40%
     _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
     m_progressbar->setValue(40);
-    m_pagosList = new PagosList(this, 0);
+    m_pagosList = new PagosList(this);
     m_pWorkspace->addWindow(m_pagosList);
     m_pagosList->hide();
 
     /// pb = 48%
     _depura("company::createMainWindows inicializamos m_budgetsList\n", 1);
     m_progressbar->setValue(48);
-    m_budgetsList = new PresupuestoList(this, 0);
+    m_budgetsList = new PresupuestoList(this);
     m_pWorkspace->addWindow(m_budgetsList);
     m_budgetsList->hide();
 
     /// pb = 52%
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
     m_progressbar->setValue(52);
-    m_pedidosclienteList = new PedidosClienteList(this, 0);
+    m_pedidosclienteList = new PedidosClienteList(this);
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
     /// pb = 60%
     _depura("company::createMainWindows inicializamos m_clientDelivNotesList\n", 1);
     m_progressbar->setValue(60);
-    m_clientDelivNotesList = new AlbaranClienteList(this, 0);
+    m_clientDelivNotesList = new AlbaranClienteList(this);
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 
     /// pb = 68%
     _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
     m_progressbar->setValue(68);
-    m_facturasList = new FacturasList(this, 0);
+    m_facturasList = new FacturasList(this);
     m_pWorkspace->addWindow(m_facturasList);
     m_facturasList->hide();
 
     /// pb = 76%
     _depura("company::createMainWindows inicializamos m_pedidosproveedorlist\n", 1);
     m_progressbar->setValue(76);
-    m_pedidosproveedorList = new PedidosProveedorList(this, 0);
+    m_pedidosproveedorList = new PedidosProveedorList(this);
     m_pWorkspace->addWindow(m_pedidosproveedorList);
     m_pedidosproveedorList->hide();
 
     /// pb = 84%
     _depura("company::createMainWindows inicializamos m_albaranesproveedorlist\n", 1);
     m_progressbar->setValue(84);
-    m_albaranesproveedor = new AlbaranesProveedor(this, 0);
+    m_albaranesproveedor = new AlbaranesProveedor(this);
     m_pWorkspace->addWindow(m_albaranesproveedor);
     m_albaranesproveedor->hide();
 
     /// pb = 92%
     _depura("company::createMainWindows inicializamos m_facturasproveedorlist\n", 1);
     m_progressbar->setValue(92);
-    m_facturasproveedorlist = new FacturasProveedorList(this, 0);
+    m_facturasproveedorlist = new FacturasProveedorList(this);
     m_pWorkspace->addWindow(m_facturasproveedorlist);
     m_facturasproveedorlist->hide();
 

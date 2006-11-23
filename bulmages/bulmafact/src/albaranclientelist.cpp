@@ -30,7 +30,7 @@
 
 
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, flag) {
+        : Ficha(parent) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = editmodo;
@@ -42,7 +42,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
 
 
 AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, flag) {
+        : Ficha(parent) {
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
@@ -57,10 +57,7 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
 }
 
 
-AlbaranClienteList::~AlbaranClienteList() {
-    if (m_modo == EditMode)
-        m_companyact->sacaWindow(this);
-}
+AlbaranClienteList::~AlbaranClienteList() {}
 
 
 void AlbaranClienteList::presenta() {

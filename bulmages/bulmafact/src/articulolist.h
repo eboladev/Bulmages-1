@@ -25,6 +25,7 @@
 //#include "empresa.h"
 #include "pgimportfiles.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Clase que maneja el detalle de la lista de art&iacute;culos.
@@ -43,7 +44,7 @@ public:
 
 /// Clase que maneja la lista de art&iacute;culos.
 /** */
-class ArticuloList : public QWidget, private Ui_ArticuloListBase, public pgimportfiles {
+class ArticuloList : public Ficha, private Ui_ArticuloListBase, public pgimportfiles {
     Q_OBJECT
 
 public:

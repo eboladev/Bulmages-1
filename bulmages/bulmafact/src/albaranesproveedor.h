@@ -125,6 +125,7 @@ public:
     };
     QString generaFiltro();
     void editar(int);
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {

@@ -71,9 +71,14 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
 FacturaProveedorView::~FacturaProveedorView() {
     _depura("FacturaProveedorView::~FacturaProveedorView", 0);
     companyact->refreshFacturasProveedor();
-    companyact->sacaWindow(this);
     _depura("END FacturaProveedorView::~FacturaProveedorView", 0);
 
+}
+
+
+int FacturaProveedorView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
 }
 
 

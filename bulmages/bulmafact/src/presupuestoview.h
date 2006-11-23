@@ -58,47 +58,48 @@ public:
     void manageArticle(int);
     void pintaNumPresupuesto(QString id) {
         m_numpresupuesto->setText(id);
-    };
+    }
     void pintaFPresupuesto(QString id) {
         m_fpresupuesto->setText(id);
-    };
+    }
     void pintaVencPresupuesto(QString id) {
         m_vencpresupuesto->setText(id);
-    };
+    }
     void pintaContractPresupuesto(QString id) {
         m_contactpresupuesto->setText(id);
-    };
+    }
     void pintaTelPresupuesto(QString id) {
         m_telpresupuesto->setText(id);
-    };
+    }
     void pintaComentPresupuesto(QString id) {
         m_comentpresupuesto->setPlainText(id);
-    };
+    }
     void pintaidcliente(QString id) {
         m_cliente->setidcliente(id);
-    };
+    }
     void pintarefpresupuesto(QString id) {
         m_refpresupuesto->setText(id);
-    };
+    }
     void pintaidforma_pago(QString id) {
         m_forma_pago->setidforma_pago(id);
-    };
+    }
     void pintaidalmacen(QString id) {
         m_almacen->setidalmacen(id);
-    };
+    }
     void pintaidtrabajador(QString id) {
         m_trabajador->setidtrabajador(id);
-    };
+    }
     void pintaprocesadopresupuesto(QString id) {
         if (id == "t" || id == "TRUE") {
             m_procesadopresupuesto->setChecked(TRUE);
         } else {
             m_procesadopresupuesto->setChecked(FALSE);
         }
-    };
+    }
     void pintadescpresupuesto(QString id) {
         m_descpresupuesto->setText(id);
-    };
+    }
+    virtual int sacaWindow();
 
 private:
     void generarPedidoCliente();
@@ -109,26 +110,26 @@ public:
     virtual int cargar(QString id);
     virtual int borrar() {
         return presupuesto::borrar();
-    };
+    }
 
 public slots:
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_guardar_clicked() {
         guardar();
-    };
+    }
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
         calculaypintatotales();
-    };
+    }
     virtual void on_mui_pasarapedido_clicked() {
         generarPedidoCliente();
-    };
+    }
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
-    };
+    }
     virtual void on_subform2_editFinish(int, int) {
         calculaypintatotales();
-    };
+    }
 };
 
 #endif

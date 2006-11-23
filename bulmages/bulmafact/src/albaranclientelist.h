@@ -27,6 +27,7 @@
 #include "company.h"
 //#include "empresa.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 /// Listado de albaranes de clientes.
 /** */
@@ -35,7 +36,7 @@ class AlbaranClienteListSubform : public SubForm2Bf {
 public:
     AlbaranClienteListSubform(QWidget *parent = 0);
     ~AlbaranClienteListSubform() {}
-    ;
+
 public slots:
     virtual void cargar() {
         _depura("AlbaranClienteListSubform::cargar\n", 0);
@@ -44,16 +45,16 @@ public slots:
         //cursor2 *cur = empresaact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
-    };
+    }
     virtual void cargar(QString query) {
-	SubForm3::cargar(query);
-    };
+        SubForm3::cargar(query);
+    }
 };
 
 #include "ui_albaranclientelistbase.h"
 
 
-class AlbaranClienteList : public QWidget, public Ui_AlbaranClienteListBase {
+class AlbaranClienteList : public Ficha, public Ui_AlbaranClienteListBase {
     Q_OBJECT
 
 public:
@@ -79,74 +80,76 @@ public:
     void presenta();
     void modoseleccion() {
         m_modo = 1;
-    };
+    }
     void modoedicion() {
         m_modo=0;
-    };
+    }
     void imprimir();
     void setcompany(company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
-//    void setempresa(Empresa *comp) {
-//        m_empresaact = comp;
-//        m_cliente->setempresa(comp);
-//        mui_list->setempresa(comp);
-    };
+        //    void setempresa(Empresa *comp) {
+        //        m_empresaact = comp;
+        //        m_cliente->setempresa(comp);
+        //        mui_list->setempresa(comp);
+    }
     void hideBotonera() {
         m_botonera->hide();
-    };
+    }
     void showBotonera() {
         m_botonera->show();
-    };
+    }
     void hideBusqueda() {
         m_busqueda->hide();
-    };
+    }
     void showBusqueda() {
         m_busqueda->show();
-    };
+    }
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
-    };
+    }
     QString idCliDelivNote() {
         return mdb_idalbaran;
-    };
+    }
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
-//        if (m_empresaact != NULL) {
-//            m_empresaact->meteWindow(nom, obj);
+            //        if (m_empresaact != NULL) {
+            //            m_empresaact->meteWindow(nom, obj);
         }
-    };
+    }
     QString generarFiltro();
     void editar(int);
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
-		on_mui_actualizar_clicked();
-    };
+        if (text.size() >=3) {
+            on_mui_actualizar_clicked();
+        } // end if
+    }
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
-    };
+    }
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newAlbaranClienteView();
-//        m_empresaact->s_newAlbaranClienteView();
-    };
+        //        m_empresaact->s_newAlbaranClienteView();
+    }
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();
-    };
+    }
     virtual void on_mui_actualizar_clicked() {
         presenta();
-    };
+    }
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
-    };
+        } // end if
+    }
 
 signals:
     void selected(QString);

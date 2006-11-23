@@ -33,7 +33,7 @@
 
 
 InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     companyact = NULL;
     meteWindow(windowTitle(), this);
@@ -41,7 +41,7 @@ InventariosView::InventariosView(QWidget *parent, Qt::WFlags flag)
 
 
 InventariosView::InventariosView(company *comp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     companyact = comp;
@@ -51,15 +51,19 @@ InventariosView::InventariosView(company *comp, QWidget *parent)
 }
 
 
-InventariosView::~InventariosView() {
+InventariosView::~InventariosView() {}
+
+
+int InventariosView::sacaWindow() {
     companyact->sacaWindow(this);
+    return 0;
 }
 
 
 void InventariosView::on_mui_editar_clicked() {
     int a = mui_listado->currentRow();
     QString idinventario = mui_listado->item(a, COL_IDINVENTARIO)->text();
-    if ( idinventario != "") {
+    if (idinventario != "") {
         InventarioView *bud = new InventarioView(companyact, 0);
         if (bud->cargar(idinventario))
             return;

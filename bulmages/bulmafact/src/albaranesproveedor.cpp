@@ -60,7 +60,12 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlag
 
 AlbaranesProveedor::~AlbaranesProveedor() {
     m_companyact->refreshAlbaranesProveedor();
+}
+
+
+int AlbaranesProveedor::sacaWindow() {
     m_companyact->sacaWindow(this);
+    return 0;
 }
 
 

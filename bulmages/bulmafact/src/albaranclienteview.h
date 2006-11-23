@@ -107,14 +107,13 @@ public:
     void pintatotales(Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     void agregarFactura();
-
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha.
+    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int cargar(QString id);
     virtual int borrar() {
         return AlbaranCliente::borrar();
     };
-
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {

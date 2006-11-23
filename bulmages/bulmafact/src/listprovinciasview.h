@@ -24,6 +24,7 @@
 #define LISTPROVINCIASVIEW_H
 
 #include "ui_listprovinciasbase.h"
+#include "ficha.h"
 
 
 class company;
@@ -31,7 +32,7 @@ class company;
 
 /// Muestra y administra la ventana con la lista de provincias.
 /** */
-class ListProvinciasView : public QWidget, public Ui_ListProvinciasBase {
+class ListProvinciasView : public Ficha, public Ui_ListProvinciasBase {
     Q_OBJECT
 
 public:
@@ -42,6 +43,7 @@ public:
     ~ListProvinciasView();
     void inicializa();
     int guardalinea(int);
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_botonnew_clicked();

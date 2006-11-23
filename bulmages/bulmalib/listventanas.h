@@ -88,6 +88,8 @@ public:
 
 public:
     int meteWindow(QString, QObject *, bool compdup = TRUE);
+    int seleccionaWindow(QString, QObject *);
+    int deSeleccionaWindow();
     void sacaWindow(QObject *);
     void cambiaVisible();
     void vaciar();

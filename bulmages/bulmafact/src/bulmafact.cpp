@@ -67,13 +67,12 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     vboxlayout->addWidget(m_pb);
 
     showMaximized();
-
     m_company = new company();
-
     m_company->setProgressBar(m_pb);
-
     m_company->init(bd);
     m_company->setWorkspace(pWorkspace);
+
+    connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
     /// Aqui creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
@@ -84,7 +83,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
     m_company->setListVentanas(m_list);
-
     m_company->createMainWindows();
 
     m_list->setVisible(TRUE);
@@ -163,8 +161,26 @@ void bulmafact::closeEvent(QCloseEvent *) {
     delete m_company;
     delete m_list;
 #ifdef WINDOWS
+
     exit(0);
 #endif
+
     _depura("END bulmafact::closeEvent", 0);
+}
+
+
+void bulmafact::informaindexador(QWidget *w) {
+    _depura("bulmafact::informaindexador", 0);
+    /// No existe una ventana que activar.
+    if (w == NULL) {
+        m_company->deSeleccionaWindow();
+        return;
+    } // end if
+    m_company->seleccionaWindow(w->windowTitle(), w);
+    
+    QString texto = "Window activated. " + w->windowTitle() + "\n";
+    printf(texto.toAscii().constData());
+    
+    _depura("END bulmafact::informaindexador", 0);
 }
 

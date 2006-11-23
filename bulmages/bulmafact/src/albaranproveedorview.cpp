@@ -77,7 +77,12 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
 
 AlbaranProveedorView::~AlbaranProveedorView() {
     companyact->refreshAlbaranesProveedor();
+}
+
+
+int AlbaranProveedorView::sacaWindow() {
     companyact->sacaWindow(this);
+    return 0;
 }
 
 

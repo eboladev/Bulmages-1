@@ -36,7 +36,7 @@
 
 
 familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("familiasview::familiasview", 0);
     setupUi(this);
     companyact = comp;
@@ -70,8 +70,12 @@ familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
 }
 
 
-familiasview::~familiasview() {
+familiasview::~familiasview() {}
+
+
+int familiasview::sacaWindow() {
     companyact->sacaWindow(this);
+    return 0;
 }
 
 

@@ -85,8 +85,13 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
 FacturaView::~FacturaView() {
     _depura("FacturaView::~FacturaView", 0);
     companyact->refreshFacturas();
-    companyact->sacaWindow(this);
     _depura("END FacturaView::~FacturaView", 0);
+}
+
+
+int FacturaView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
 }
 
 

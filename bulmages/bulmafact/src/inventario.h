@@ -45,32 +45,29 @@ public:
         _depura("Inventario::setListControlStock", 0);
         listalineas = a;
         listalineas->setcompany(companyact);
-    };
-    ListControlStockView* getlistalineas() {
+    }
+    ListControlStockView *getlistalineas() {
         return listalineas;
-    };
+    }
     virtual int cargar(QString);
     void pintaInventario();
     virtual int guardar();
     virtual int borrar();
     void imprimirInventario();
     virtual void pintaidinventario(QString) {}
-    ;
     virtual void pintafechainventario(QString) {}
-    ;
     virtual void pintanominventario(QString) {}
-    ;
     virtual void pregenerar();
     void setidinventario(QString val) {
         setDBvalue("idinventario", val);
         listalineas->setColumnValue("idinventario", val);
-    };
+    }
     void setfechainventario(QString val) {
         setDBvalue("fechainventario", val);
-    };
+    }
     void setnominventario(QString val) {
         setDBvalue("nominventario", val);
-    };
+    }
     void vaciaInventario();
 };
 

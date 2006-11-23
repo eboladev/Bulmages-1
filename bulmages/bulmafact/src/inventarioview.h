@@ -29,40 +29,43 @@
 #include "inventario.h"
 #include "busquedafecha.h"
 #include "postgresiface2.h"
+#include "ficha.h"
 
 
 /// Muestra y administra la ventana con los datos de un inventario.
 /** */
-class InventarioView : public QWidget, public Ui_InventarioBase, public Inventario {
+class InventarioView : public Ficha, public Ui_InventarioBase, public Inventario {
     Q_OBJECT
 
 public:
     InventarioView(company *, QWidget *parent = 0);
     ~InventarioView();
     void pintaidinventario(QString) {}
-    ;
     void pintafechainventario(QString id) {
         m_fechainventario->setText(id);
-    };
+    }
     void pintanominventario(QString id) {
         m_nominventario->setText(id);
-    };
+    }
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         setfechainventario(m_fechainventario->text());
         setnominventario(m_nominventario->text());
-	guardar();
-    };
+        Inventario::guardar();
+    }
     virtual void on_mui_aceptar_clicked() {
         setfechainventario(m_fechainventario->text());
         setnominventario(m_nominventario->text());
-        if(!guardar()) close();
-    };
+        if (!Inventario::guardar()) {
+            close();
+        } // end if
+    }
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_pregenerar_clicked() {
         pregenerar();
-    };
+    }
 };
 
 #endif

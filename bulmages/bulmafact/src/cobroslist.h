@@ -27,6 +27,7 @@
 #include "busquedacliente.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Administra el detalle de la lista de cobros.
@@ -46,7 +47,7 @@ public:
 
 /// Administra los datos de la lista de cobros.
 /** */
-class CobrosList : public QWidget, private Ui_CobrosListBase {
+class CobrosList : public Ficha, private Ui_CobrosListBase {
     Q_OBJECT
 
 private:

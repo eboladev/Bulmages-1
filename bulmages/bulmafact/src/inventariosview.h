@@ -23,6 +23,7 @@
 
 #include "company.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de inventarios.
@@ -51,7 +52,7 @@ public slots:
 
 /// Muestra y administra el listado de inventarios.
 /** */
-class InventariosView : public QWidget, public Ui_InventariosBase {
+class InventariosView : public Ficha, public Ui_InventariosBase {
     Q_OBJECT
 
 private:
@@ -65,24 +66,25 @@ public:
     void setcompany(company *comp) {
         companyact = comp;
         mui_listado->setcompany(comp);
-    };
+    }
     void meteWindow(QString nom, QObject *obj) {
         if (companyact != NULL) {
             companyact->meteWindow(nom, obj);
         }
-    };
+    }
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_listado_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
-    };
+    }
     virtual void on_mui_crear_clicked() {
         companyact->s_newInventario();
-    };
+    }
     virtual void on_mui_editar_clicked();
     virtual void on_mui_listado_itemDoubleClicked() {
         on_mui_editar_clicked();
-    };
+    }
     virtual void on_mui_borrar_clicked();
 };
 

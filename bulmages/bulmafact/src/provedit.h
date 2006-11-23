@@ -23,7 +23,7 @@
 
 #include "ui_proveditbase.h"
 #include "dbrecord.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
@@ -31,12 +31,12 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
 /** */
-class ProveedorView : public QWidget, public Ui_ProveedorBase, public DBRecord, public dialogChanges {
+class ProveedorView : public Ficha, public Ui_ProveedorBase, public DBRecord {
     Q_OBJECT
 
 private:
     company *m_companyact;
-    void closeEvent(QCloseEvent *);
+    /*void closeEvent(QCloseEvent *);*/
 
 public:
     ProveedorView(company *emp, QWidget *parent = 0);
@@ -45,14 +45,15 @@ public:
 public:
     virtual int cargar(QString);
     virtual int guardar();
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
-    };
+    }
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_mui_aceptar_clicked();
+/*    virtual void on_mui_aceptar_clicked();*/
 };
 
 #endif

@@ -33,7 +33,7 @@
 
 
 PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
@@ -44,7 +44,7 @@ PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
 
 
 PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
@@ -60,8 +60,10 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
 
 PresupuestoList::~PresupuestoList() {
     _depura("PresupuestoList::~PresupuestoList", 0);
-    m_companyact->sacaWindow(this);
 }
+
+
+
 
 
 void PresupuestoList::presenta() {

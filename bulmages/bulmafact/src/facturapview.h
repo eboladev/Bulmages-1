@@ -73,13 +73,13 @@ public:
         }
     };
     virtual void pintatotales(Fixed base, Fixed iva);
-
-    /// Estos metodos deben existir para poder trabajar con la clase Ficha
+    /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int borrar() {
         return FacturaProveedor::borrar();
     };
     virtual int cargar(QString id);
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {

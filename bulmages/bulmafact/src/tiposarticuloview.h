@@ -22,7 +22,7 @@
 #define TIPOSARTICULOVIEW_H
 
 #include "ui_tiposarticulodlg.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 
 
 class company;
@@ -30,7 +30,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
 /** */
-class TipoArticuloList : public QWidget, public Ui_tiposarticulodlg, dialogChanges {
+class TipoArticuloList : public Ficha, public Ui_tiposarticulodlg {
     Q_OBJECT
 
 private:
@@ -49,13 +49,14 @@ public:
     void mostrarplantilla();
     void setModoConsulta() {
         m_modoConsulta = TRUE;
-    };
+    }
     void setModoEdicion() {
         m_modoConsulta = FALSE;
-    };
+    }
     QString codtipo_articulo();
     QString idtipo_articulo();
     QString desctipo_articulo();
+    virtual int sacaWindow();
 
 public slots:
     virtual void pintar();
@@ -67,7 +68,7 @@ public slots:
     virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
     virtual void on_mui_aceptar_clicked() {
         close();
-    };
+    }
 
 signals:
     void selected(QString);

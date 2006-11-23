@@ -24,6 +24,7 @@
 #include "pgimportfiles.h"
 #include "company.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Administra el detalle de la lista de clientes.
@@ -43,7 +44,7 @@ public:
 
 /// Administra la lista de clientes.
 /** */
-class ClientsList : public QWidget, public Ui_ClientsListBase, public pgimportfiles {
+class ClientsList : public Ficha, public Ui_ClientsListBase, public pgimportfiles {
     Q_OBJECT
 
 public:
@@ -58,8 +59,6 @@ private:
     QString mdb_idcliente;
     QString mdb_nomcliente;
     QString mdb_cifcliente;
-
-public:
     company *m_companyact;
 
 public:
@@ -67,60 +66,62 @@ public:
     ~ClientsList();
     void selectMode() {
         m_modo = SelectMode;
-    };
+    }
     void editMode() {
         m_modo = EditMode;
-    };
+    }
     void presenta();
     QString idclient() {
         return mdb_idcliente;
-    };
+    }
     QString nomclient() {
         return mdb_nomcliente;
-    };
+    }
     QString cifclient() {
         return mdb_cifcliente;
-    };
+    }
     void hideBotonera() {
         m_botonera->hide();
-    };
+    }
     void showBotonera() {
         m_botonera->show();
-    };
+    }
     void hideBusqueda() {
         m_busqueda->hide();
-    };
+    }
     void showBusqueda() {
         m_busqueda->show();
-    };
+    }
     void editar(int);
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3)
+        if (text.size() >= 3) {
             on_mui_actualizar_clicked();
-    };
+        } // end if
+    }
     void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
-    };
+    }
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newClienteView();
-    };
+    }
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_informeclientes_clicked();
     virtual void on_mui_actualizar_clicked() {
         presenta();
-    };
+    }
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
-    };
+        } // end if
+    }
 
 signals:
     void selected(QString);

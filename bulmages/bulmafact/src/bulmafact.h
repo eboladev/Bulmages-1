@@ -205,6 +205,11 @@ public slots:
         m_company->s_indexadorCambiaEstado();
 //        m_empresa->s_indexadorCambiaEstado();
     }
+
+private slots:
+    /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
+    void informaindexador(QWidget *w);
+
 };
 
 #endif

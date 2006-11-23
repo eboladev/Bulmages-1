@@ -74,8 +74,14 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
 
 AlbaranClienteView::~AlbaranClienteView() {
     companyact->refreshAlbaranesCliente();
-    companyact->sacaWindow(this);
 }
+
+
+int AlbaranClienteView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
+}
+
 
 void AlbaranClienteView::inicializar() {
     _depura("AlbaranClienteView::inicializar", 0);

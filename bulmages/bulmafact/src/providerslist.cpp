@@ -33,7 +33,7 @@
 
 
 ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, flag), pgimportfiles(comp) {
+        : Ficha(parent, flag), pgimportfiles(comp) {
     _depura("ProveedorList::ProveedorList", 0);
     setupUi(this);
     m_companyact = comp;
@@ -59,10 +59,7 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, ed
 }
 
 
-ProveedorList::~ProveedorList() {
-    if (m_modo == EditMode)
-        m_companyact->sacaWindow(this);
-}
+ProveedorList::~ProveedorList() {}
 
 
 void ProveedorList::presenta() {

@@ -48,6 +48,7 @@ ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : F
     m_companyact = comp;
     mui_listado->setcompany(m_companyact);
     mui_listado->cargar();
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("END ListConfiguracionView::ListConfiguracionView", 1);
 }
 
@@ -55,6 +56,12 @@ ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : F
 ListConfiguracionView::~ListConfiguracionView() {
     _depura("ListConfiguracionView::~ListConfiguracionView", 0);
     _depura("END ListConfiguracionView::~ListConfiguracionView", 0);
+}
+
+
+int ListConfiguracionView::sacaWindow() {
+    m_companyact->sacaWindow(this);
+    return 0;
 }
 
 

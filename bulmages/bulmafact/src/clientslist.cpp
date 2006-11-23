@@ -31,11 +31,9 @@
 #include "pgimportfiles.h"
 #include "informereferencia.h"
 
-#define EDIT_MODE 0
-
 
 ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, flag), pgimportfiles(comp) {
+        : Ficha(parent, flag), pgimportfiles(comp) {
     _depura("ClientsList::ClientsList", 0);
     setupUi(this);
     m_companyact = comp;
@@ -45,8 +43,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
     mdb_nomcliente = "";
     m_modo = editmode;
     hideBusqueda();
-    presenta();
-    /// Si estamos en el modo edicion metemos la ventana en el lugar apropiado.
+    /// Si estamos en el modo edici&oacute;n metemos la ventana en el lugar apropiado.
     if (m_modo == EditMode) {
         m_companyact->meteWindow(windowTitle(), this);
     } else {
@@ -58,13 +55,13 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
         mui_importar->setHidden(TRUE);
         mui_imprimir->setHidden(TRUE);
     } // end if
+    presenta();
     _depura("END ClientsList::ClientsList", 0);
 }
 
 
 ClientsList::~ClientsList() {
-    if (m_modo == EditMode)
-        m_companyact->sacaWindow(this);
+    _depura("ClientsList::~ClientsList", 0);
 }
 
 
@@ -124,7 +121,7 @@ void ClientsList::on_mui_borrar_clicked() {
     try {
         QString idcliente = mui_list->DBvalue("idcliente");
         ClienteView *cli = m_companyact->newClienteView();
-        if (cli->cargar(idcliente) ) {
+        if (cli->cargar(idcliente)) {
             delete cli;
             throw -1;
         } // end if

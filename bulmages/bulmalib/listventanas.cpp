@@ -107,12 +107,13 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
     _depura("listventanas::meteWindow()", 0);
     try {
         int i = 0;
-        while (i < m_listBox->count())  {
+        while (i < m_listBox->count()) {
             QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
             /// Si la ventana ya esta en la lista.
             if (m->object() == obj) {
-                _depura("listventanas::Ventana ya existente ", 0,  nombre);
+                _depura("listventanas::La ventana ya existe", 0, nombre);
                 m->setNombre(nombre);
+                //m_listBox->setCurrentItem(m);
                 return 0;
             } // end if
 
@@ -123,7 +124,7 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
                 ((QWidget *)m->object())->hide();
                 ((QWidget *)m->object())->show();
                 _depura("listventanas::Establecemos la nueva primaria()\n", 0);
-                m_listBox->setCurrentItem(m);
+                //m_listBox->setCurrentItem(m);
                 throw -1;
             } // end if
             i++;
@@ -134,7 +135,7 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
             QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
             m->setObject(obj);
             m->setNombre(nombre);
-            m_listBox->setCurrentItem(m);
+            //m_listBox->setCurrentItem(m);
         } // end if
     } catch (...) {
         mensajeInfo(tr("listventanas::meteWindow ventana duplicada"));
@@ -145,9 +146,46 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
 }
 
 
+/// Sirve para seleccionar una ventana listada en el Indexador.
+int listventanas::seleccionaWindow(QString nombre, QObject *obj) {
+    _depura("listventanas::seleccionaWindow()", 0);
+    try {
+        int i = 0;
+        while (i < m_listBox->count()) {
+            QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
+            /// Encuentra la ventana en la lista.
+            if (m->object() == obj) {
+                _depura("listventanas::Se ha encontrado la ventana", 0, nombre);
+                m_listBox->setCurrentItem(m);
+                return 0;
+            } // end if
+            i++;
+        } // end while
+    } catch (...) {
+        throw -1;
+    } // end try
+    _depura("END listventanas::seleccionaWindow()\n", 0);
+    return 0;
+}
+
+
+/// Deselecciona todas las entradas del Indexador.
+int listventanas::deSeleccionaWindow() {
+    _depura("listventanas::deSeleccionaWindow()", 0);
+    try {
+        m_listBox->clearSelection();
+        return 0;
+    } catch (...) {
+        throw -1;
+    } // end try
+    _depura("END listventanas::deSeleccionaWindow()\n", 0);
+    return 0;
+}
+
+
 void listventanas::sacaWindow(QObject *obj) {
     _depura("listventanas::sacaWindow()\n", 0);
-    /// Buscamos la ventana correspondiente y la borramos.
+    /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
     int i = 0;
     while (i < m_listBox->count()) {
         QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);

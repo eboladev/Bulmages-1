@@ -54,7 +54,6 @@ void Cobro::pintar() {
 }
 
 
-
 int Cobro::guardar() {
     _depura("Cobro::guardar", 0);
     try {
@@ -64,7 +63,7 @@ int Cobro::guardar() {
         setidcobro(id);
         companyact->commit();
 
-	/// Hacemos una carga para que se actualizen datos como la referencia
+	/// Hacemos una carga para que se actualizen datos como la referencia.
 	cargar(id);
 
         _depura("END Cobro::guardar", 0);

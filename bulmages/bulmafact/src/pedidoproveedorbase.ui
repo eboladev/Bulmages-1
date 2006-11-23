@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>PedidoProveedorBase</class>
  <widget class="QWidget" name="PedidoProveedorBase" >
   <property name="geometry" >
@@ -9,8 +7,16 @@
     <x>0</x>
     <y>0</y>
     <width>681</width>
-    <height>538</height>
+    <height>571</height>
    </rect>
+  </property>
+  <property name="sizePolicy" >
+   <sizepolicy>
+    <hsizetype>5</hsizetype>
+    <vsizetype>7</vsizetype>
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle" >
    <string>Nuevo pedido a proveedor</string>
@@ -177,7 +183,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Minimum</enum>
+           <enum>QSizePolicy::Fixed</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -415,6 +421,14 @@
    </item>
    <item>
     <widget class="QFrame" name="frame" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>5</hsizetype>
+       <vsizetype>1</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -483,7 +497,7 @@
        </widget>
       </item>
       <item row="1" column="3" >
-       <widget class="BusquedaFecha" name="m_fechapedidoproveedor" >
+       <widget class="BusquedaFecha" native="1" name="m_fechapedidoproveedor" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>13</hsizetype>
@@ -505,7 +519,7 @@
        </widget>
       </item>
       <item row="2" column="3" >
-       <widget class="BusquedaTrabajador" name="m_trabajador" >
+       <widget class="BusquedaTrabajador" native="1" name="m_trabajador" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -517,7 +531,7 @@
        </widget>
       </item>
       <item row="3" column="3" >
-       <widget class="BusquedaAlmacen" name="m_almacen" >
+       <widget class="BusquedaAlmacen" native="1" name="m_almacen" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>13</hsizetype>
@@ -529,7 +543,7 @@
        </widget>
       </item>
       <item row="4" column="3" >
-       <widget class="BusquedaFormaPago" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -570,7 +584,7 @@
        <widget class="QLineEdit" name="m_telpedidoproveedor" />
       </item>
       <item rowspan="3" row="0" column="0" colspan="2" >
-       <widget class="BusquedaProveedor" name="m_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -629,6 +643,9 @@
      <property name="enabled" >
       <bool>true</bool>
      </property>
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>&amp;Detalle</string>
@@ -641,7 +658,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="ListLinPedidoProveedorView" name="subform3" />
+        <widget class="ListLinPedidoProveedorView" native="1" name="subform3" />
        </item>
       </layout>
      </widget>
@@ -657,7 +674,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="ListDescuentoPedidoProveedorView" name="m_descuentos" />
+        <widget class="ListDescuentoPedidoProveedorView" native="1" name="m_descuentos" />
        </item>
       </layout>
      </widget>
@@ -673,7 +690,16 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="QTextEdit" name="m_comentpedidoproveedor" />
+        <widget class="QTextEdit" name="m_comentpedidoproveedor" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -1017,63 +1043,46 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinPedidoProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinpedidoproveedorview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>ListDescuentoPedidoProveedorView</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>listdescpedidoproveedorview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaTrabajador</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedatrabajador.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFormaPago</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends></extends>
-   <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>ListLinPedidoProveedorView</class>
-   <extends></extends>
-   <header>listlinpedidoproveedorview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends></extends>
-   <header>busquedaalmacen.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

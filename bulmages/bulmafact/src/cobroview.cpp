@@ -54,11 +54,14 @@ CobroView::CobroView(company *comp, QWidget *parent)
 
 CobroView::~CobroView() {
     _depura("CobroView::~CobroView", 0);
-    companyact->sacaWindow(this);
     _depura("END CobroView::~CobroView", 0);
 }
 
 
+int CobroView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
+}
 
 
 int CobroView::cargar(QString id) {
@@ -76,7 +79,4 @@ int CobroView::cargar(QString id) {
     _depura("END CobroView::cargar", 0);
     return 0;
 }
-
-
-
 

@@ -124,6 +124,12 @@ public:
     int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
         return m_listventanas->meteWindow(nom, obj, compdup);
     };
+    int seleccionaWindow(QString nom, QObject *obj) {
+        return m_listventanas->seleccionaWindow(nom, obj);
+    };
+    int deSeleccionaWindow() {
+        return m_listventanas->deSeleccionaWindow();
+    };
     void sacaWindow(QObject *nom) {
         m_listventanas->sacaWindow(nom);
     };

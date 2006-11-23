@@ -33,7 +33,7 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     m_companyact = emp;
@@ -51,8 +51,9 @@ TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
 /// Carga el query de la base de datos y carga el qlistview.
 void TrabajadorView::pintar() {
     mui_lista->clear();
-    if (m_cursortrabajadores != NULL)
+    if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
+    } // end if
     m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
     while (!m_cursortrabajadores->eof()) {
         new QListWidgetItem(m_cursortrabajadores->valor("apellidostrabajador") + " " + m_cursortrabajadores->valor("nomtrabajador"), mui_lista);
@@ -66,16 +67,21 @@ void TrabajadorView::pintar() {
 
 TrabajadorView::~TrabajadorView() {
     _depura("TrabajadorView::~TrabajadorView", 0);
-    if (m_cursortrabajadores != NULL)
+    if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
-    m_companyact->sacaWindow(this);
+    } // end if
     _depura("END TrabajadorView::~TrabajadorView", 0);
+}
+
+
+int TrabajadorView::sacaWindow() {
+    m_companyact->sacaWindow(this);
+    return 0;
 }
 
 
 void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura( "on_mui_lista_currentItemChanged", 0);
-
     int row = mui_lista->row(cur);
     trataModificado();
     m_nomtrabajador->setText(m_cursortrabajadores->valor("nomtrabajador", row));
@@ -86,13 +92,12 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
     m_teltrabajador->setText(m_cursortrabajadores->valor("teltrabajador", row));
     m_moviltrabajador->setText(m_cursortrabajadores->valor("moviltrabajador", row));
     m_emailtrabajador->setText(m_cursortrabajadores->valor("emailtrabajador", row));
-    if ( m_cursortrabajadores->valor("activotrabajador", row) == "t") {
+    if (m_cursortrabajadores->valor("activotrabajador", row) == "t") {
         m_activotrabajador->setChecked(TRUE);
     } else {
         m_activotrabajador->setChecked(FALSE);
     } // end if
     m_item = cur;
-
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg"));
@@ -101,8 +106,9 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
 
 void TrabajadorView::on_mui_guardar_clicked() {
     QString m_textactivotrabajador = "FALSE";
-    if (m_activotrabajador->isChecked())
+    if (m_activotrabajador->isChecked()) {
         m_textactivotrabajador = "TRUE";
+    } // end if
     QString query = "UPDATE trabajador SET ";
     query += "  nomtrabajador='" + m_companyact->sanearCadena(m_nomtrabajador->text()) + "'";
     query += ", apellidostrabajador= '" + m_companyact->sanearCadena(m_apellidostrabajador->text()) + "'";
@@ -119,19 +125,19 @@ void TrabajadorView::on_mui_guardar_clicked() {
         m_companyact->rollback();
         return;
     } // end if
-
-    if (m_cursortrabajadores != NULL)
+    if (m_cursortrabajadores != NULL) {
         delete m_cursortrabajadores;
+    } // end if
+
     m_cursortrabajadores = m_companyact->cargacursor("SELECT * FROM trabajador ORDER BY apellidostrabajador");
 
-    if (m_item)
+    if (m_item) {
         m_item->setText(m_apellidostrabajador->text() + m_nomtrabajador->text());
-
+    } // end if
     if (m_archivoimagen != "") {
         QString cadena = "cp " + m_archivoimagen + " " + confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg";
         system( cadena.toAscii().constData());
     } // end if
-
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
 }
@@ -177,7 +183,7 @@ void TrabajadorView::on_mui_nuevo_clicked() {
 void TrabajadorView::on_mui_borrar_clicked() {
     trataModificado();
     m_companyact->begin();
-    QString query = "DELETE FROM trabajador WHERE idtrabajador=" + mdb_idtrabajador;
+    QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;
     int error = m_companyact->ejecuta(query);
     if (error) {
         m_companyact->rollback();

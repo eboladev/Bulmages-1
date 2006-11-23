@@ -87,8 +87,10 @@ public:
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {return Factura::borrar();};
-
+    virtual int borrar() {
+        return Factura::borrar();
+    };
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {

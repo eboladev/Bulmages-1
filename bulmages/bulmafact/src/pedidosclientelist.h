@@ -26,6 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Administra las l&iacute;neas de detalle del listado de pedidos de cliente.
@@ -36,7 +37,6 @@ class PedidosClienteListSubform : public SubForm2Bf {
 public:
     PedidosClienteListSubform(QWidget *parent = 0, const char *name = 0);
     ~PedidosClienteListSubform() {}
-    ;
 
 public slots:
     virtual void cargar() {
@@ -45,10 +45,10 @@ public slots:
         cursor2 * cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
-    };
+    }
     virtual void cargar(QString query) {
         SubForm3::cargar(query);
-    };
+    }
 };
 
 
@@ -57,7 +57,7 @@ public slots:
 
 /// Muestra y administra el listado de pedidos de cliente.
 /** */
-class PedidosClienteList : public QWidget, public Ui_PedidosClienteListBase {
+class PedidosClienteList : public Ficha, public Ui_PedidosClienteListBase {
     Q_OBJECT
 
 private:
@@ -74,40 +74,40 @@ public:
     void presenta();
     void modoseleccion() {
         m_modo = 1;
-    };
+    }
     void modoedicion() {
         m_modo = 0;
-    };
+    }
     void imprimir();
     void setcompany(company *comp) {
         companyact = comp;
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
-    };
+    }
     void hideBotonera() {
         m_botonera->hide();
-    };
+    }
     void showBotonera() {
         m_botonera->show();
-    };
+    }
     void hideBusqueda() {
         _depura("Ocultar busqueda.", 0);
         m_busqueda->hide();
-    };
+    }
     void showBusqueda() {
         m_busqueda->show();
-    };
+    }
     QString idpedidocliente() {
         return m_idpedidocliente;
-    };
+    }
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
-    };
+    }
     void meteWindow(QString nom, QObject *obj) {
         if (companyact != NULL) {
             companyact->meteWindow(nom, obj);
         }
-    };
+    }
     void editar(int);
     QString generarFiltro();
 
@@ -115,19 +115,19 @@ public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
         if(text.size() >= 3)
             on_mui_actualizar_clicked();
-    };
+    }
     void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
         on_mui_editar_clicked();
-    };
+    }
     virtual void on_mui_imprimir_clicked() {
         imprimir();
-    };
+    }
     virtual void on_mui_crear_clicked() {
         companyact->s_newPedidoClienteView();
-    };
+    }
     virtual void on_mui_actualizar_clicked() {
         presenta();
-    };
+    }
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_configurar_toggled(bool checked) {
@@ -135,7 +135,7 @@ public slots:
             mui_list->showConfig();
         else
             mui_list->hideConfig();
-    };
+    }
 
 signals:
     void selected(QString);

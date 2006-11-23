@@ -22,7 +22,8 @@
 #define TRABAJADORVIEW_H
 
 #include <ui_trabajadorbase.h>
-#include "dialogchanges.h"
+
+#include "ficha.h"
 #include "postgresiface2.h"
 
 
@@ -31,7 +32,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
-class TrabajadorView : public QWidget, private Ui_TrabajadorBase, dialogChanges {
+class TrabajadorView : public Ficha, private Ui_TrabajadorBase {
     Q_OBJECT
 
 private:
@@ -60,6 +61,7 @@ public:
         m_modoConsulta = FALSE;
     };
     bool trataModificado();
+    virtual int sacaWindow();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);

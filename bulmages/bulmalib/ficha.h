@@ -36,14 +36,18 @@ public:
     ~Ficha() {}
     ;
     virtual int guardar() {
-        _depura("Ficha::guardar existe solo para ser derivado", 2);
+        _depura("Ficha::guardar existe solo para ser derivado", 0);
         return 0;
     };
     virtual int borrar() {
-        _depura("Ficha::borrar existe solo para ser derivado", 2);
+        _depura("Ficha::borrar existe solo para ser derivado", 0);
         return 0;
     };
     virtual void closeEvent(QCloseEvent *);
+    virtual int sacaWindow() {
+        _depura("Ficha::sacaWindow existe solo para ser derivado", 0);
+        return 0;
+    };
 
 public slots:
     virtual void on_mui_aceptar_clicked();
@@ -53,11 +57,8 @@ public slots:
     virtual void on_mui_cancelar_clicked() {
         close();
     };
-    virtual void on_mui_cerrar_clicked() {
-        close();
-    };
     virtual void on_mui_guardar_clicked() {
-	guardar();
+        guardar();
     };
 };
 

@@ -151,7 +151,7 @@ void PedidoCliente::imprimirPedidoCliente() {
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system (archivo.toAscii().constData());
+    system(archivo.toAscii().constData());
 
     /// Copiamos el logo.
 #ifdef WINDOWS

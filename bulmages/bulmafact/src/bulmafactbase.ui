@@ -28,36 +28,6 @@
      <height>29</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>E&amp;mpresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
-   </widget>
-   <widget class="QMenu" name="menuCompras" >
-    <property name="title" >
-     <string>Com&amp;pras</string>
-    </property>
-    <addaction name="actionNuevo_Pedido_Proveedor" />
-    <addaction name="actionListado_Pedidos_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Albaran_Proveedor" />
-    <addaction name="actionListado_Albaranes_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNueva_Factura_Proveedor" />
-    <addaction name="actionListado_Facturas_Proveedor" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Pago" />
-    <addaction name="actionListado_de_Pagos" />
-   </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>Venta&amp;na</string>
-    </property>
-    <addaction name="actionVentana_Completa" />
-    <addaction name="actionIndexador" />
-   </widget>
    <widget class="QMenu" name="menuAcerca_de" >
     <property name="title" >
      <string>A&amp;yuda</string>
@@ -65,17 +35,6 @@
     <addaction name="actionDocumentacion" />
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
-   </widget>
-   <widget class="QMenu" name="menuArticulos" >
-    <property name="title" >
-     <string>Articulo&amp;s</string>
-    </property>
-    <addaction name="actionGestion_Familias" />
-    <addaction name="actionGestion_Tipos_Articulo" />
-    <addaction name="actionNuevo_Articulo" />
-    <addaction name="actionListado_de_Articulos" />
-    <addaction name="separator" />
-    <addaction name="actionInventarios" />
    </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
@@ -97,6 +56,17 @@
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
    </widget>
+   <widget class="QMenu" name="menuArticulos" >
+    <property name="title" >
+     <string>Articulo&amp;s</string>
+    </property>
+    <addaction name="actionGestion_Familias" />
+    <addaction name="actionGestion_Tipos_Articulo" />
+    <addaction name="actionNuevo_Articulo" />
+    <addaction name="actionListado_de_Articulos" />
+    <addaction name="separator" />
+    <addaction name="actionInventarios" />
+   </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
      <string>&amp;Ventas</string>
@@ -115,6 +85,36 @@
     <addaction name="separator" />
     <addaction name="actionNuevo_Cobro" />
     <addaction name="actionListado_de_Cobros" />
+   </widget>
+   <widget class="QMenu" name="menuCompras" >
+    <property name="title" >
+     <string>Com&amp;pras</string>
+    </property>
+    <addaction name="actionNuevo_Pedido_Proveedor" />
+    <addaction name="actionListado_Pedidos_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Albaran_Proveedor" />
+    <addaction name="actionListado_Albaranes_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNueva_Factura_Proveedor" />
+    <addaction name="actionListado_Facturas_Proveedor" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Pago" />
+    <addaction name="actionListado_de_Pagos" />
+   </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>E&amp;mpresa</string>
+    </property>
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
+   </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>Venta&amp;na</string>
+    </property>
+    <addaction name="actionVentana_Completa" />
+    <addaction name="actionIndexador" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -245,7 +245,7 @@
     <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Cerrar el programa</string>
+    <string>&amp;Salir del programa</string>
    </property>
    <property name="shortcut" >
     <string>Ctrl+Q</string>
@@ -462,6 +462,9 @@
    </property>
   </action>
   <action name="actionVentana_Completa" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
    <property name="text" >
     <string>Ventana &amp;completa</string>
    </property>
@@ -536,11 +539,26 @@
    </property>
   </action>
   <action name="actionIndexador" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="checked" >
+    <bool>true</bool>
+   </property>
    <property name="text" >
-    <string>Muestra/oculta &amp;Indexador</string>
+    <string>&amp;Indexador</string>
+   </property>
+   <property name="iconText" >
+    <string>Indexador</string>
+   </property>
+   <property name="toolTip" >
+    <string>Indexador</string>
    </property>
    <property name="shortcut" >
     <string>Ctrl+I</string>
+   </property>
+   <property name="menuRole" >
+    <enum>QAction::TextHeuristicRole</enum>
    </property>
   </action>
  </widget>

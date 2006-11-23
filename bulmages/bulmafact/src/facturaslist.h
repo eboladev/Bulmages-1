@@ -26,6 +26,7 @@
 #include "company.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Administra el detalle del listado de facturas a clientes.
@@ -36,7 +37,6 @@ class FacturasListSubform : public SubForm2Bf {
 public:
     FacturasListSubform(QWidget *parent = 0, const char *name = 0);
     ~FacturasListSubform() {}
-    ;
 
 public slots:
     virtual void cargar() {
@@ -45,10 +45,10 @@ public slots:
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
-    };
+    }
     virtual void cargar(QString query) {
 	SubForm3::cargar(query);
-    };
+    }
 };
 
 
@@ -57,7 +57,7 @@ public slots:
 
 /// Administra el listado de facturas a clientes.
 /** */
-class FacturasList : public QWidget, public Ui_FacturasListBase {
+class FacturasList : public Ficha, public Ui_FacturasListBase {
     Q_OBJECT
 
 public:

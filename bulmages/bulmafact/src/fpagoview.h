@@ -22,7 +22,7 @@
 #define FPAGOVIEW_H
 
 #include "ui_fpagobase.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 #include "postgresiface2.h"
 
 
@@ -31,7 +31,7 @@ class company;
 
 /// Muestra y administra la ventana de formas de pago.
 /** */
-class FPagoView : public QWidget, private Ui_FPagoBase, dialogChanges {
+class FPagoView : public Ficha, private Ui_FPagoBase {
     Q_OBJECT
 
 private:
@@ -59,7 +59,7 @@ public:
         m_modoConsulta = FALSE;
     };
     bool trataModificado();
-    virtual void closeEvent(QCloseEvent *);
+    virtual int sacaWindow();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);

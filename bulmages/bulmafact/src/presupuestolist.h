@@ -27,6 +27,7 @@
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 /// Administra el listado de presupuestos.
@@ -37,7 +38,6 @@ class PresupuestoListSubForm : public SubForm2Bf {
 public:
     PresupuestoListSubForm(QWidget *parent = 0, const char *name = 0);
     ~PresupuestoListSubForm() {}
-    ;
 
 public slots:
     virtual void cargar() {
@@ -46,10 +46,10 @@ public slots:
         cursor2 * cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
-    };
+    }
     virtual void cargar(QString query) {
         SubForm3::cargar(query);
-    };
+    }
 };
 
 
@@ -58,7 +58,7 @@ public slots:
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public QWidget, public Ui_BudgetsListBase {
+class PresupuestoList : public Ficha, public Ui_BudgetsListBase {
     Q_OBJECT
 
 private:
@@ -75,49 +75,49 @@ public:
     void presenta();
     int modo() {
         return m_modo;
-    };
+    }
     company *getcompany() {
         return m_companyact;
-    };
+    }
     QString idpresupuesto() {
         return m_idpresupuesto;
-    };
+    }
     void modoseleccion() {
         m_modo = 1;
-    };
+    }
     void modoedicion() {
         m_modo = 0;
-    };
+    }
     void setcompany (company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
         m_articulo->setcompany(comp);
         mui_list->setcompany(comp);
-    };
+    }
     void hideBotonera() {
         m_botonera->hide();
-    };
+    }
     void showBotonera() {
         m_botonera->show();
-    };
+    }
     void hideBusqueda() {
         m_busqueda->hide();
-    };
+    }
     void showBusqueda() {
         m_busqueda->show();
-    };
+    }
     void imprimir();
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
-        }
-    };
+        } // end if
+    }
     void setidcliente(QString val) {
         m_cliente->setidcliente(val);
-    };
+    }
     void setidarticulo(QString val) {
         m_articulo->setidarticulo(val);
-    };
+    }
     QString generaFiltro();
     void editar(int);
 
@@ -125,27 +125,28 @@ public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
         if(text.size() >= 3)
             on_mui_actualizar_clicked();
-    };
+    }
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
-    };
+    }
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newPresupuestoCli();
-    };
+    }
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();
-    };
+    }
     virtual void on_mui_actualizar_clicked() {
         presenta();
-    };
+    }
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
-    };
+        } // end if
+    }
 
 signals:
     void selected(QString);

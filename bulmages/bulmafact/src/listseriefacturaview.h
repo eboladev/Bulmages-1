@@ -32,6 +32,7 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 #include "subform2bf.h"
+#include "ficha.h"
 
 
 class company;
@@ -45,7 +46,6 @@ class ListSerieFacturaSubForm : public SubForm2Bf {
 public:
     ListSerieFacturaSubForm(QWidget *parent = 0);
     ~ListSerieFacturaSubForm() {}
-    ;
 
 public slots:
     virtual void cargar() {
@@ -53,7 +53,7 @@ public slots:
         cursor2 * cur= companyact()->cargacursor("SELECT *, codigoserie_factura AS codigoserie_facturaorig FROM serie_factura");
         SubForm3::cargar(cur);
         delete cur;
-    };
+    }
 };
 
 
@@ -62,7 +62,7 @@ public slots:
 
 /// Muestra y administra la ventana con la lista de series de facturas.
 /** */
-class ListSerieFacturaView : public QWidget, public Ui_ListSerieFacturaBase {
+class ListSerieFacturaView : public Ficha, public Ui_ListSerieFacturaBase {
     Q_OBJECT
 
 public:
@@ -71,12 +71,13 @@ public:
 public:
     ListSerieFacturaView(company *, QWidget *);
     ~ListSerieFacturaView();
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_aceptar_clicked() {
         mui_listado->guardar();
         close();
-    };
+    }
 };
 
 #endif

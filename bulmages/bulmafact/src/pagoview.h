@@ -48,27 +48,26 @@ public:
     void manageArticle(int);
     void pintafechapago(QString id) {
         mui_fechapago->setText(id);
-    };
+    }
     void pintacomentpago(QString id) {
         mui_comentpago->setText(id);
-    };
+    }
     void pintaidproveedor(QString id) {
         mui_proveedor->setidproveedor(id);
-    };
+    }
     void pintarefpago(QString id) {
         mui_refpago->setText(id);
-    };
+    }
     void pintacantpago(QString id) {
         mui_cantpago->setText(id);
-    };
+    }
     void pintaprevisionpago(QString id) {
         if (id == "t" || id == "TRUE") {
             mui_previsionpago->setChecked(TRUE);
         } else {
             mui_previsionpago->setChecked(FALSE);
         } // end if
-    };
-
+    }
     virtual int guardar() {return Pago::guardar();};
     virtual int borrar() {return Pago::borrar();};
     virtual int cargar(QString id) {
@@ -82,20 +81,19 @@ public:
             return -1;
         } // end try
         return 0;
-    };
-
+    }
+    virtual int sacaWindow();
 
 public slots:
-
     virtual void on_mui_comentpago_textChanged(const QString &str) {
         setcomentpago(str);
-    };
+    }
     virtual void on_mui_refpago_valueChanged(const QString &str) {
         setrefpago(str);
-    };
+    }
     virtual void on_mui_cantpago_textChanged(const QString &str) {
         setcantpago(str);
-    };
+    }
     virtual void on_mui_previsionpago_stateChanged(int i) {
         if (i) {
             setprevisionpago("TRUE");
@@ -105,10 +103,10 @@ public slots:
     }
     virtual void on_mui_proveedor_valueChanged(QString id) {
         setidproveedor(id);
-    };
+    }
     virtual void on_mui_fechapago_valueChanged(QString id) {
         setfechapago(id);
-    };
+    }
 };
 
 #endif

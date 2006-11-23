@@ -29,7 +29,7 @@
 
 
 ProveedorView::ProveedorView(company *comp, QWidget *parent)
-        : QWidget(parent), DBRecord(comp), dialogChanges(this) {
+        : Ficha(parent), DBRecord(comp) {
     _depura("ProveedorView::ProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -87,8 +87,12 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
 }
 
 
-ProveedorView::~ProveedorView() {
+ProveedorView::~ProveedorView() {}
+
+
+int ProveedorView::sacaWindow() {
     m_companyact->sacaWindow(this);
+    return 0;
 }
 
 
@@ -209,7 +213,7 @@ int ProveedorView::guardar() {
         dialogChanges_cargaInicial();
         _depura("END ProveedorView::guardar", 0);
         return 0;
-    } catch(...) {
+    } catch (...) {
         _depura("error al guardar el proveedor", 1);
         m_companyact->rollback();
         return -1;
@@ -230,7 +234,7 @@ void ProveedorView::on_mui_borrar_clicked() {
             } // end if
 }
 
-
+/*
 void ProveedorView::closeEvent(QCloseEvent *e) {
     _depura("ProveedorView::closeEvent", 0);
     if (dialogChanges_hayCambios()) {
@@ -251,4 +255,4 @@ void ProveedorView::on_mui_aceptar_clicked() {
     if (!guardar())
         close();
 }
-
+*/

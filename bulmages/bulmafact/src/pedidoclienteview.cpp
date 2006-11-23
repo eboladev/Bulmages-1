@@ -18,6 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <fstream>
+
 #include <QMessageBox>
 #include <QWidget>
 #include <QObject>
@@ -25,8 +27,6 @@
 #include <QToolButton>
 #include <QLayout>
 #include <QCloseEvent>
-
-#include <fstream>
 
 #include "pedidoclienteview.h"
 #include "company.h"
@@ -67,7 +67,12 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
 
 PedidoClienteView::~PedidoClienteView() {
     companyact->refreshPedidosCliente();
+}
+
+
+int PedidoClienteView::sacaWindow() {
     companyact->sacaWindow(this);
+    return 0;
 }
 
 
@@ -193,8 +198,9 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
 
 int PedidoClienteView::cargar(QString id) {
     try {
-        if (PedidoCliente::cargar(id))
+        if (PedidoCliente::cargar(id)) {
             throw -1;
+        } // end if
         setWindowTitle(tr("Pedido de cliente") + " " + DBvalue("refpedidocliente") + " " + DBvalue("idpedidocliente"));
         companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
@@ -206,27 +212,25 @@ int PedidoClienteView::cargar(QString id) {
 
 
 int PedidoClienteView::guardar() {
-   try {
-    setcomentpedidocliente(m_comentpedidocliente->toPlainText());
-    setnumpedidocliente(m_numpedidocliente->text());
-    setidcliente(m_cliente->idcliente());
-    setfechapedidocliente(m_fechapedidocliente->text());
-    setidalmacen(m_almacen->idalmacen());
-    setidtrabajador(m_trabajador->idtrabajador());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setrefpedidocliente(m_refpedidocliente->text());
-    setdescpedidocliente(m_descpedidocliente->text());
-    setcontactpedidocliente(m_contactpedidocliente->text());
-    settelpedidocliente(m_telpedidocliente->text());
-    setprocesadopedidocliente(m_procesadopedidocliente->isChecked() ? "TRUE" : "FALSE");
-    PedidoCliente::guardar();
-    dialogChanges_cargaInicial();
-    } catch(...) {
-	_depura("", 0);
-	throw -1;
+    try {
+        setcomentpedidocliente(m_comentpedidocliente->toPlainText());
+        setnumpedidocliente(m_numpedidocliente->text());
+        setidcliente(m_cliente->idcliente());
+        setfechapedidocliente(m_fechapedidocliente->text());
+        setidalmacen(m_almacen->idalmacen());
+        setidtrabajador(m_trabajador->idtrabajador());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setrefpedidocliente(m_refpedidocliente->text());
+        setdescpedidocliente(m_descpedidocliente->text());
+        setcontactpedidocliente(m_contactpedidocliente->text());
+        settelpedidocliente(m_telpedidocliente->text());
+        setprocesadopedidocliente(m_procesadopedidocliente->isChecked() ? "TRUE" : "FALSE");
+        PedidoCliente::guardar();
+        dialogChanges_cargaInicial();
+    } catch (...) {
+        _depura("", 0);
+        throw -1;
     } // end try
     return 0;
 }
-
-
 

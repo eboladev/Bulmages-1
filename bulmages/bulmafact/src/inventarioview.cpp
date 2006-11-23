@@ -37,7 +37,7 @@ using namespace std;
 
 
 InventarioView::InventarioView(company *comp, QWidget *parent)
-        : QWidget(parent), Inventario(comp) {
+        : Ficha(parent), Inventario(comp) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
@@ -49,19 +49,25 @@ InventarioView::InventarioView(company *comp, QWidget *parent)
 }
 
 
-InventarioView::~InventarioView() {
+InventarioView::~InventarioView() {}
+
+
+int InventarioView::sacaWindow() {
+    _depura("InventarioView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    return 0;
+    _depura("END InventarioView::sacaWindow", 0);
 }
 
 
-/// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
+/// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
 void InventarioView::on_mui_borrar_clicked() {
     if (DBvalue("idinventario") != "") {
-        if ( QMessageBox::question(this,
+        if (QMessageBox::question(this,
                                    tr("Borrar inventario"),
                                    tr("Esta a punto de borrar un inventario. Desea continuar?"),
                                    tr("Si"), tr("No"), 0, 1, 0) == 0) {
-            borrar();
+            Inventario::borrar();
         } // end if
     } // end if
 }

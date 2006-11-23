@@ -30,7 +30,7 @@
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     companyact = NULL;
     m_modo = 0;
@@ -41,7 +41,7 @@ PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
 
 
 PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     companyact = comp;
     m_cliente->setcompany(comp);
@@ -57,7 +57,6 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlag
 
 PedidosClienteList::~PedidosClienteList() {
     _depura("PedidosClienteList::~PedidosClienteList", 0);
-    companyact->sacaWindow(this);
 }
 
 
@@ -77,33 +76,28 @@ QString PedidosClienteList::generarFiltro() {
     _depura("PedidosClienteList::generarFiltro \n", 0);
 
     QString filtro = "";
-
     if (m_filtro->text() != "") {
         filtro = " AND ( descpedidocliente LIKE '%" + m_filtro->text() + "%' ";
-	filtro +=" OR refpedidocliente LIKE '"+m_filtro->text()+"%' ";
+        filtro +=" OR refpedidocliente LIKE '"+m_filtro->text()+"%' ";
         filtro += " OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
     } // end if
-
     if (m_cliente->idcliente() != "") {
         filtro += " AND pedidocliente.idcliente=" + m_cliente->idcliente();
     } // end if
-
     if (!m_procesados->isChecked()) {
         filtro += " AND NOT procesadopedidocliente";
     } // end if
-
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidocliente IN (SELECT DISTINCT idpedidocliente FROM lpedidocliente WHERE idarticulo='" + m_articulo->idarticulo() + "')";
     } // end if
-
-    if (m_fechain->text() != "")
+    if (m_fechain->text() != "") {
         filtro += " AND fechapedidocliente >= '" + m_fechain->text() + "' ";
-
-    if (m_fechafin->text() != "")
+    } // end if
+    if (m_fechafin->text() != "") {
         filtro += " AND fechapedidocliente <= '" + m_fechafin->text() + "' ";
-
+    } // end if
     return (filtro);
 }
 
@@ -111,20 +105,20 @@ QString PedidosClienteList::generarFiltro() {
 void PedidosClienteList::editar(int row) {
     _depura("ProveedorList::editar", 0);
     try {
-	m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
-	if (m_modo == 0) {
-		PedidoClienteView *prov = new PedidoClienteView(companyact, 0);
-		if (prov->cargar(m_idpedidocliente)) {
-			delete prov;
-			return;
-		} // end if
-		companyact->m_pWorkspace->addWindow(prov);
-		prov->show();
-	} else {
-		emit(selected(m_idpedidocliente));
-	} // end if
-    } catch(...) {
-	mensajeInfo(tr("Error al cargar el pedido cliente"));
+        m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"), row);
+        if (m_modo == 0) {
+            PedidoClienteView *prov = new PedidoClienteView(companyact, 0);
+            if (prov->cargar(m_idpedidocliente)) {
+                delete prov;
+                return;
+            } // end if
+            companyact->m_pWorkspace->addWindow(prov);
+            prov->show();
+        } else {
+            emit(selected(m_idpedidocliente));
+        } // end if
+    } catch (...) {
+        mensajeInfo(tr("Error al cargar el pedido cliente"));
     } // end try
     _depura("END ProveedorList::editar", 0);
 }
@@ -132,10 +126,11 @@ void PedidosClienteList::editar(int row) {
 
 void PedidosClienteList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a >= 0) {
         editar(a);
-    else
+    } else {
         _depura("Debe seleccionar una linea", 2);
+    } // end if
 }
 
 
@@ -149,18 +144,20 @@ void PedidosClienteList::imprimir() {
 void PedidosClienteList::on_mui_borrar_clicked() {
     _depura("PedidosClienteList::on_mui_borrar_clicked", 0);
     try {
-	m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
-	if (m_modo == 0) {
-		PedidoClienteView *prov = companyact->newPedidoClienteView();
-		if (prov->cargar(m_idpedidocliente)) throw -1;
-		prov->borrar();
-		delete prov;
-	} // end if
-	presenta();
-    } catch(...) {
-	mensajeInfo(tr("Error al borrar el pedido cliente"));
+        m_idpedidocliente = mui_list->DBvalue(QString("idpedidocliente"));
+        if (m_modo == 0) {
+            PedidoClienteView *prov = companyact->newPedidoClienteView();
+            if (prov->cargar(m_idpedidocliente)) {
+                throw -1;
+            } // end if
+            prov->borrar();
+            delete prov;
+        } // end if
+        presenta();
+    } catch (...) {
+        mensajeInfo(tr("Error al borrar el pedido cliente"));
     } // end try
-	_depura("END PedidosClienteList::on_mui_borrar_clicked", 0);
+    _depura("END PedidosClienteList::on_mui_borrar_clicked", 0);
 }
 
 

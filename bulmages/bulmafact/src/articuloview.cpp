@@ -40,7 +40,7 @@
 
 
 ArticuloView::ArticuloView(company *comp, QWidget *parent)
-        : QWidget(parent), dialogChanges(this), Articulo(comp) {
+        : Ficha(parent), Articulo(comp) {
     _depura("ArticuloView::ArticuloView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -60,7 +60,7 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
         m_componentes->cargar("0");
 
         m_imagen->setPixmap(QPixmap("/usr/share/bulmages/logopeq.png"));
-        m_companyact->meteWindow(tr("Edicion del articulo"), this, FALSE);
+        m_companyact->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch (...) {
         mensajeInfo(tr("Error al crear el articulo"));
@@ -71,8 +71,13 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
 
 ArticuloView::~ArticuloView() {
     _depura("ArticuloView::INIT_destructor()\n", 0);
-    m_companyact->sacaWindow(this);
     _depura("ArticuloView::END_destructor()\n", 0);
+}
+
+
+int ArticuloView::sacaWindow() {
+    m_companyact->sacaWindow(this);
+    return 0;
 }
 
 
@@ -294,26 +299,6 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
     _depura("ArticuloView::END_s_cambiarimagen()\n", 0);
-}
-
-
-void ArticuloView::closeEvent( QCloseEvent *e) {
-    _depura("ArticuloView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar articulo"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            try {
-                guardar();
-            } catch (...) {
-                e->ignore();
-            } // end catch
-        if (val == 2)
-            e->ignore();
-    } // end if
-    _depura("END ArticuloView::closeEvent", 0);
 }
 
 

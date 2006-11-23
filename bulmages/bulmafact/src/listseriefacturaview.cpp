@@ -41,7 +41,7 @@ using namespace std;
 
 
 ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("INIT_ListSerieFacturaView::ListSerieFacturaView", 1);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -54,11 +54,15 @@ ListSerieFacturaView::ListSerieFacturaView(company *comp, QWidget *parent)
 
 
 ListSerieFacturaView::~ListSerieFacturaView() {
-	_depura("ListSerieFacturaView::~ListSerieFacturaView", 0);
-	companyact->sacaWindow(this);
-	_depura("END ListSerieFacturaView::~ListSerieFacturaView", 0);
+    _depura("ListSerieFacturaView::~ListSerieFacturaView", 0);
+    _depura("END ListSerieFacturaView::~ListSerieFacturaView", 0);
 }
 
+
+int ListSerieFacturaView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
+}
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListSerieFacturaSubForm::ListSerieFacturaSubForm(QWidget *parent) : SubForm2Bf(parent) {

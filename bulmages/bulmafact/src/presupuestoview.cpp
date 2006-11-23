@@ -98,10 +98,14 @@ void PresupuestoView::inicializar() {
 }
 
 
-
 PresupuestoView::~PresupuestoView() {
     companyact->refreshBudgets();
+}
+
+
+int PresupuestoView::sacaWindow() {
     companyact->sacaWindow(this);
+    return 0;
 }
 
 

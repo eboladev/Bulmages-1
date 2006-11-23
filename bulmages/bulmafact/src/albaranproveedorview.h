@@ -86,6 +86,7 @@ public:
     virtual int borrar() {
         return AlbaranProveedor::borrar();
     };
+    virtual int sacaWindow();
 
 public slots:
     virtual void s_comentalbaranptextChanged() {

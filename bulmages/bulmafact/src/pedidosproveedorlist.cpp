@@ -32,7 +32,7 @@
 
 
 PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
@@ -43,7 +43,7 @@ PedidosProveedorList::PedidosProveedorList(QWidget *parent, Qt::WFlags flag)
 
 
 PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
@@ -59,7 +59,6 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::W
 
 PedidosProveedorList::~PedidosProveedorList() {
     _depura("PedidosProveedorList::~PedidosProveedorList", 0);
-    m_companyact->sacaWindow(this);
 }
 
 
@@ -82,26 +81,22 @@ QString PedidosProveedorList::generarFiltro() {
     } else {
         filtro = "";
     } // end if
-
     if (m_proveedor->idproveedor() != "") {
         filtro += " AND pedidoproveedor.idproveedor = " + m_proveedor->idproveedor();
     } // end if
-
-    if (!m_procesados->isChecked() ) {
+    if (!m_procesados->isChecked()) {
         filtro += " AND NOT procesadopedidoproveedor";
     } // end if
-
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidoproveedor IN (SELECT DISTINCT idpedidoproveedor FROM lpedidoproveedor WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if
-
-    if (m_fechain->text() != "")
+    if (m_fechain->text() != "") {
         filtro += " AND fechapedidoproveedor >= '" + m_fechain->text() + "' ";
-
-    if (m_fechafin->text() != "")
+    } // end if
+    if (m_fechafin->text() != "") {
         filtro += " AND fechapedidoproveedor <= '" + m_fechafin->text() + "' ";
-    //filtro += " ORDER BY "+orden[m_orden->currentItem()];
-
+        //filtro += " ORDER BY "+orden[m_orden->currentItem()];
+    } // end if
     return (filtro);
 }
 

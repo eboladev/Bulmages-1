@@ -46,7 +46,6 @@ class ListConfiguracionSubForm : public SubForm2Bf {
 public:
     ListConfiguracionSubForm(QWidget *parent = 0);
     ~ListConfiguracionSubForm() {}
-    ;
 
 public slots:
     virtual void cargar() {
@@ -72,6 +71,7 @@ public:
 public:
     ListConfiguracionView(company *comp, QWidget *parent = 0);
     ~ListConfiguracionView();
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_aceptar_clicked() {

@@ -42,7 +42,7 @@ using namespace std;
 
 
 ListAlmacenView::ListAlmacenView(company *comp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("ListAlmacenView::ListAlmacenView", 1);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -66,10 +66,14 @@ void ListAlmacenView::on_mui_aceptar_clicked() {
 
 ListAlmacenView::~ListAlmacenView() {
     _depura("ListAlmacenView::~ListAlmacenView", 0);
-    companyact->sacaWindow(this);
     _depura("END ListAlmacenView::~ListAlmacenView", 0);
 }
 
+
+int ListAlmacenView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
+}
 
 /// ===================================== SUBFORMULARIO ===============================================
 ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {

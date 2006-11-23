@@ -33,7 +33,7 @@
 
 
 TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoConsulta)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("TipoArticuloList::TipoArticuloList", 0);
     setupUi(this);
     companyact = comp;
@@ -63,9 +63,15 @@ TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoCons
 
 TipoArticuloList::~TipoArticuloList() {
     _depura("TipoArticuloList::~TipoArticuloList", 0);
-    companyact->sacaWindow(this);
     _depura("END TipoArticuloList::~TipoArticuloList", 0);
 }
+
+
+int TipoArticuloList::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
+}
+
 
 void TipoArticuloList::pintar() {
     QTreeWidgetItem * it;

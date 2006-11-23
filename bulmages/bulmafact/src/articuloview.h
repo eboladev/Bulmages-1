@@ -23,7 +23,7 @@
 
 #include "ui_articleeditbase.h"
 #include "postgresiface2.h"
-#include "dialogchanges.h"
+#include "ficha.h"
 #include "articulo.h"
 
 
@@ -33,24 +33,24 @@ class company;
 
 /// Muestra la ventana de art&iacute;culos.
 /** */
-class ArticuloView : public QWidget, public Ui_ArticuloBase, public dialogChanges, public Articulo {
+class ArticuloView : public Ficha, public Ui_ArticuloBase, public Articulo {
     Q_OBJECT
 
 private:
     QString m_archivoimagen;
     company *m_companyact;
-//    Empresa *m_empresaact;
+    //    Empresa *m_empresaact;
     cursor2 *m_cursorcombo;
 
 public:
     ArticuloView(company *emp, QWidget *parent = 0);
-//    ArticuloView(Empresa *emp, QWidget *parent = 0);
+    //    ArticuloView(Empresa *emp, QWidget *parent = 0);
     ~ArticuloView();
     company *companyact() {
         return m_companyact;
-//    Empresa *empresaact() {
-//        return m_empresaact;
-    };
+        //    Empresa *empresaact() {
+        //        return m_empresaact;
+    }
 
 public:
     void pintar();
@@ -58,7 +58,7 @@ public:
     int guardar();
     int borrar();
     int cargarcomboiva(QString);
-    void closeEvent(QCloseEvent *);
+    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
@@ -66,7 +66,6 @@ public slots:
             guardar();
         } catch (...) {}
     }
-    ;
     virtual void on_mui_borrar_clicked();
     virtual void on_m_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_clicked();

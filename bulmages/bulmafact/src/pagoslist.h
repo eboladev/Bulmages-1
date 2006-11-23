@@ -98,6 +98,7 @@ public:
         m_proveedor->setidproveedor(val);
     };
     QString generaFiltro();
+    virtual int sacaWindow(); 
 
 public slots:
     virtual void on_mui_list_cellDoubleClicked(int, int);

@@ -61,9 +61,12 @@ PagoView::PagoView(company *comp, QWidget *parent)
 
 PagoView::~PagoView() {
     _depura("PagoView::~PagoView", 0);
-    companyact->sacaWindow(this);
     _depura("END PagoView::~PagoView", 0);
 }
 
 
+int PagoView::sacaWindow() {
+    companyact->sacaWindow(this);
+    return 0;
+}
 

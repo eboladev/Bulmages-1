@@ -34,19 +34,20 @@
 
 
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     m_companyact = NULL;
     m_modo = editmodo;
     mdb_idfactura = "";
-    if (m_modo == EditMode)
+    if (m_modo == EditMode) {
         meteWindow(windowTitle(), this);
+    } // end if
     hideBusqueda();
 }
 
 
 FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : QWidget(parent, flag) {
+        : Ficha(parent, flag) {
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(m_companyact);
@@ -55,16 +56,14 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     presenta();
     m_modo = editmodo;
     mdb_idfactura = "";
-    if (m_modo == EditMode)
+    if (m_modo == EditMode) {
         meteWindow(windowTitle(), this);
+    } // end if
     hideBusqueda();
 }
 
 
-FacturasList::~FacturasList() {
-    if (m_modo == EditMode)
-        m_companyact->sacaWindow(this);
-}
+FacturasList::~FacturasList() {}
 
 
 void FacturasList::presenta() {
@@ -87,7 +86,7 @@ QString FacturasList::generaFiltro() {
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descfactura LIKE '%" + m_filtro->text() + "%' ";
-	filtro +=" OR reffactura LIKE '"+m_filtro->text()+"%' ";
+        filtro +=" OR reffactura LIKE '"+m_filtro->text()+"%' ";
         filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
@@ -117,7 +116,7 @@ void FacturasList::editar(int row) {
     if (m_modo ==0 ) {
         FacturaView *prov = m_companyact->newFacturaView();
         if (prov->cargar(mdb_idfactura)) {
-	    delete prov;
+            delete prov;
             return;
         }
         m_companyact->m_pWorkspace->addWindow(prov);
@@ -148,15 +147,16 @@ void FacturasList::on_mui_imprimir_clicked() {
 void FacturasList::on_mui_borrar_clicked() {
     _depura("FacturasList::on_mui_borrar_clicked", 0);
     try {
-	mdb_idfactura = mui_list->DBvalue(QString("idfactura"));
-	if (m_modo == 0) {
-		FacturaView *fac = m_companyact->newFacturaView();
-		if (fac->cargar(mdb_idfactura)) throw -1;
-		fac->borrar();
-	} // end if
-	presenta();
+        mdb_idfactura = mui_list->DBvalue(QString("idfactura"));
+        if (m_modo == 0) {
+            FacturaView *fac = m_companyact->newFacturaView();
+            if (fac->cargar(mdb_idfactura))
+                throw -1;
+            fac->borrar();
+        } // end if
+        presenta();
     } catch(...) {
-	mensajeInfo(tr("Error al borrar la factura cliente"));
+        mensajeInfo(tr("Error al borrar la factura cliente"));
     } // end try
     _depura("END FacturasList::on_mui_borrar_clicked", 0);
 }

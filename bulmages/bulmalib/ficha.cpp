@@ -22,19 +22,20 @@
 
 
 Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {
-       _depura("Ficha::Ficha", 0);
-       dialogChanges_cargaInicial();
-       _depura("END Ficha::Ficha", 0);
+    _depura("Ficha::Ficha", 0);
+    dialogChanges_cargaInicial();
+    _depura("END Ficha::Ficha", 0);
 }
 
 
 void Ficha::on_mui_aceptar_clicked() {
-	_depura("Ficha::on_mui_aceptar_clicked", 0);
-	try {
-		if (guardar()) throw -1;
-		close();
-	} catch (...) {
-	} // end try
+    _depura("Ficha::on_mui_aceptar_clicked", 0);
+    try {
+        if (guardar()) {
+            throw -1;
+        } // end if
+        close();
+    } catch (...) {} // end try
 }
 
 
@@ -58,19 +59,25 @@ void Ficha::on_mui_borrar_clicked() {
 void Ficha::closeEvent(QCloseEvent *e) {
     _depura("Ficha::closeEvent", 0);
     try {
-	if (dialogChanges_hayCambios()) {
-		int val = QMessageBox::warning(this,
-					tr("Guardar") + " " + windowTitle(),
-					tr("Desea guardar los cambios?"),
-					tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-		if (val == 0)
-		guardar();
-		if (val == 2)
-		e->ignore();
-	} // end if
+        if (dialogChanges_hayCambios()) {
+            int val = QMessageBox::warning(this,
+                                           tr("Guardar") + " " + windowTitle(),
+                                           tr("Desea guardar los cambios?"),
+                                           tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
+            if (val == 0) {
+                guardar();
+            } // end if
+            if (val == 2) {
+                e->ignore();
+                return;
+            } // end if
+        } // end if
+
+        sacaWindow();
+
     } catch (...) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
-	e->ignore();
+        e->ignore();
     } // end try
     _depura("END Ficha::closeEvent", 0);
 }

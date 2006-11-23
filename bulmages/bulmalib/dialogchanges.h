@@ -47,10 +47,8 @@ public:
         _depura("dialogChanges::dialogChanges", 0);
         m_obje = ob;
         _depura("END dialogChanges::dialogChanges", 0);
-
-    };
+    }
     ~dialogChanges() {}
-    ;
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();
 

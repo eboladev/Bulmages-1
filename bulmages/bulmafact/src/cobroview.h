@@ -67,8 +67,13 @@ public:
             mui_previsioncobro->setChecked(FALSE);
         }
     };
-    virtual int guardar() {return Cobro::guardar();};
-    virtual int borrar()  {return Cobro::borrar();};
+    virtual int guardar() {
+        return Cobro::guardar();
+    };
+    virtual int borrar()  {
+        return Cobro::borrar();
+    };
+    virtual int sacaWindow();
 
 public slots:
     virtual int cargar(QString id);
