@@ -49,8 +49,6 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 	
 	QString query = "SELECT * FROM articulo WHERE idarticulo = " + lfactura->valor("idarticulo");
 	cursor2 *articulo = m_companyact->cargacursor(query);
-	// obtener valores lfactura y pasarlos de QString a Fixed
-	// necesito: valor de los impuestos
 	
 	QString string_iva = lfactura->valor("ivalfactura");
 	QString string_bimp = lfactura->valor("pvplfactura");
@@ -62,45 +60,49 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
  	
  	Fixed iva_lfactura = (iva/100)*bimp;
  	Fixed descuento_lfactura = (descuento/100)*bimp;
- 	//Fixed total_lfactura = bimp + iva_lfactura - descuento_lfactura;
 	
 	string += "<cac:InvoiceLine>\n";
 	
 	// Numero de linea en el documento
 	string += "\t<cac:ID>" + numero + "</cac:ID>\n";
-	string += "\t<cbc:Description>" + lfactura->valor("desclfactura") + "</cbc:Description>\n";
+	
 	// Cantidad de elementos en la linea
-	string += "\t<cbc:InvoicedQuantity>" + lfactura->valor("cantlfactura") + "</cbc:InvoicedQuantity>\n";
+	string += "\t<cbc:InvoicedQuantity quantityUnitCode=\"UNIT\">" + lfactura->valor("cantlfactura") + "</cbc:InvoicedQuantity>\n";
+	
 	// PVP de la linea
 	string += "\t<cbc:LineExtensionAmount amountCurrencyCodeListVersionID=\"0.3\" amountCurrencyID=\"EUR\">" + lfactura->valor("pvplfactura") +"</cbc:LineExtensionAmount>\n";
+	
+	// Descuentos o recargos. El false nos dice que es descuento.
+	string += "\t<cac:AllowanceCharge>\n";
+	string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
+	string += "\t\t<cbc:Amount amountCurrencyID=\"EUR\">" + descuento_lfactura.toQString() + "</cbc:Amount>\n";
+	string += "\t</cac:AllowanceCharge>\n";
+	
+	// Total de los impuestos
+	string += "\t<cac:TaxTotal>\n";
+	string += "\t\t<cbc:TotalTaxAmount amountCurrencyID=\"EUR\">" + iva_lfactura.toQString() + "</cbc:TotalTaxAmount>\n";
+	string += "\t</cac:TaxTotal>\n";
+	
 	// Descripcion del elemento de la linea
 	string += "\t<cac:Item>\n";
-	string += "\t\t<cbc:Description>" + articulo->valor("nomarticulo") + "</cbc:Description>\n";
+	string += "\t\t<cbc:Description>" + lfactura->valor("desclfactura") + "</cbc:Description>\n";
 	// Codigo de articulo
 	string += "\t\t<cac:SellersItemIdentification>\n";
 	string += "\t\t\t<cac:ID>" + articulo->valor("codarticulo") + "</cac:ID>\n";
 	string += "\t\t</cac:SellersItemIdentification>\n";
+	// Impuestos
+	string += "\t\t<cac:TaxCategory>\n";
+	string += "\t\t\t<cac:ID>" + lfactura->valor("ivalfactura") + "</cac:ID>\n";
+	string += "\t\t\t<cbc:Percent>" + lfactura->valor("ivalfactura") + "</cbc:Percent>\n";
+	string += "\t\t\t<cac:TaxScheme>\n";
+	string += "\t\t\t\t<cac:TaxTypeCode>IVA</cac:TaxTypeCode>\n";
+	string += "\t\t\t</cac:TaxScheme>\n";
+	string += "\t\t</cac:TaxCategory>\n";
 	// PVP de un articulo
 	string += "\t\t<cac:BasePrice>\n";
 	string += "\t\t\t<cbc:PriceAmount amountCurrencyCodeListVersionID=\"0.3\" amountCurrencyID=\"EUR\">" + articulo->valor("pvparticulo") +"</cbc:PriceAmount>\n";
 	string += "\t\t</cac:BasePrice>\n";
 	string += "\t</cac:Item>\n";
-	// Impuestos
-	string += "\t<cac:TaxTotal>\n";
-	string += "\t\t<cbc:TotalTaxAmount>" + iva_lfactura.toQString() + "</cbc:TotalTaxAmount>\n";
-	// Categoria = porcentaje del tipo de IVA
-	string += "\t\t<cac:TaxSubTotal>\n";
-	string += "\t\t\t<cac:TaxCategory>" + lfactura->valor("ivalfactura") + "</cac:TaxCategory>\n";
-	// Cantidad a la cual le aplicaremos el porcentaje de IVA = Base imponible
-	string += "\t\t\t<cbc:TaxableAmount>" + bimp.toQString() + "</cbc:TaxableAmount>\n";
-	string += "\t\t\t<cbc:TaxAmount>" + iva_lfactura.toQString() + "</cbc:TaxAmount>\n";
-	string += "\t\t</cac:TaxSubTotal>\n";
-	string += "\t</cac:TaxTotal>\n";
-	// Descuentos o recargos. El False nos dice que es descuento.
-	string += "\t<cac:AllowanceCharge>\n";
-	string += "\t\t<cbc:ChargeIndicator>False</cbc:ChargeIndicator>\n";
-	string += "\t\t<cbc:Amount>" + lfactura->valor("descuentolfactura") + "</cbc:Amount>\n";
-	string += "\t</cac:AllowanceCharge>\n";
 	
 	string += "</cac:InvoiceLine>\n";
 	string += "\n"; // Dejamos sitio para otra linea

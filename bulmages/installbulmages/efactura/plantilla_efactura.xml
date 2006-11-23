@@ -4,19 +4,21 @@
 	<cbc:IssueDate>[ffactura]</cbc:IssueDate>
 	<TaxPointDate>[ffactura]</TaxPointDate>
 	
-	<!-- Informacion del cliente -->
+	<!-- Informacion del comprador -->
 	<cac:BuyerParty>
 		<cac:Party>
+ 			<cac:PartyIdentification>
+				<cac:ID>[cifcliente]</cac:ID>
+			</cac:PartyIdentification> 
 			<cac:PartyName>
 				<cbc:Name>[nomcliente]</cbc:Name>
 			</cac:PartyName>
-			<cac:PartyIdentification>
-			    <cac:ID>[cifcliente]</cac:ID>
-			</cac:PartyIdentification>
 			<cac:Address>
-				<cbc:Department>[departamento]</cbc:Department>
 				<cbc:StreetName>[dircliente]</cbc:StreetName>
+				<cbc:Department>[departamento]</cbc:Department>
 				<cbc:CityName>[pobcliente]</cbc:CityName>
+<!-- 				<cac:CountrySubentityCode>IL</cac:CountrySubentityCode> -->
+<!-- 				<cbc:Department>[departamento]</cbc:Department> -->
 				<cbc:PostalZone>[cpcliente]</cbc:PostalZone>
 			</cac:Address>
 		</cac:Party>
@@ -25,12 +27,12 @@
 	<!-- Informacion de la empresa que hace la factura -->
 	<cac:SellerParty>
 		<cac:Party>
+			<cac:PartyIdentification>
+				<cac:ID>[cif_empresa]</cac:ID>
+			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>[nombre_empresa]</cbc:Name>
 			</cac:PartyName>
-			<cac:PartyIdentification>
-			    <cac:ID>[cif_empresa]</cac:ID>
-			</cac:PartyIdentification>
 			<cac:Address>
 				<cbc:StreetName>[dir_empresa]</cbc:StreetName>
 				<cbc:CityName>[ciudad_empresa]</cbc:CityName>
@@ -56,6 +58,7 @@
 	<!-- TOTALES -->
 	<cac:LegalTotal>
 		<cbc:LineExtensionTotalAmount amountCurrencyID="EUR">[bimpfactura]</cbc:LineExtensionTotalAmount>
+		<cbc:TaxExclusiveTotalAmount amountCurrencyID="EUR">[bimpfactura]</cbc:TaxExclusiveTotalAmount>
 		<cbc:TaxInclusiveTotalAmount amountCurrencyID="EUR">[totalfactura]</cbc:TaxInclusiveTotalAmount>
 	</cac:LegalTotal>
 
