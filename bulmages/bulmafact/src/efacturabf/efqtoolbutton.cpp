@@ -146,6 +146,25 @@ void EFQToolButton::exporta_factura_ubl() {
 	query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue("idfactura");
 	cursor2 *factura_totales = m_companyact->cargacursor(query);
 	
+/// HACER FUNCION -----------------------------------------------------
+	
+	// Descuento al PVP de la factura (cogidos de la tabla dfactura)
+/*	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
+	cursor2 *descuentos_factura = m_companyact->cargacursor(query);
+	
+	Fixed descuentofactura;
+	Fixed totalFactura(factura_totales->valor("bimpfactura"));
+	Fixed acumulador = "0.00";	
+
+	descuentos_factura->primerregistro();
+	
+	while (!descuentos_factura->eof()) {
+		descuentoFactura = Fixed(descuentos_factura->valor("");
+		descuentos_factura->siguienteregistro();
+	}
+*/	
+/// FIN HACER FUNCION -------------------------------------------------
+	
 	// Datos del cliente
 	query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->DBvalue("idcliente");
 	cursor2 *cliente = m_companyact->cargacursor(query);
@@ -176,6 +195,7 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	FacturaXml.replace("[numfactura]", m_factura->DBvalue("numfactura"));
 	FacturaXml.replace("[ffactura]", m_factura->DBvalue("ffactura"));
+	FacturaXml.replace("[descfactura]", m_factura->DBvalue("descfactura"));
 	FacturaXml.replace("[impfactura]", factura_totales->valor("impfactura"));
 	FacturaXml.replace("[bimpfactura]", factura_totales->valor("bimpfactura"));
 	FacturaXml.replace("[totalfactura]", factura_totales->valor("totalfactura"));
@@ -251,8 +271,8 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	if (!ok)
 		_depura("Problemas en el parseo del archivo", 2);
-	else
-		_depura("Archivo parseado sin problemas", 2);
+// 	else
+// 		_depura("Archivo parseado sin problemas", 2);
 		
 	file->close();
 

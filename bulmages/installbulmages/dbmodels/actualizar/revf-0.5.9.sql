@@ -1335,6 +1335,23 @@ DROP FUNCTION aux() CASCADE;
 \echo "Disparamos los triggers para que se actualicen los totales."
 
 
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''DireccionCompleta'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (nombre, valor) VALUES (''DireccionCompleta'', ''*CAMBIAME*''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''Ciudad'', ''*CAMBIAME*''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''CodArticuloGenerico'', ''*CAMBIAME*'');
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
+
 
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
@@ -1347,9 +1364,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.5.9-0003'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.5.9-0004'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0003''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0004''); 		 
 	END IF;
 	RETURN 0;
 END;

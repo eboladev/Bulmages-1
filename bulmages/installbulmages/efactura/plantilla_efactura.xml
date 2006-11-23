@@ -2,6 +2,7 @@
 <Invoice xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-1.0" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-1.0" xmlns:cur="urn:oasis:names:specification:ubl:schema:xsd:CurrencyCode-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1.0" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-1.0 http://docs.oasis-open.org/ubl/cd-UBL-1.0/xsdrt/maindoc/UBL-Invoice-1.0.xsd">
 	<ID>[numfactura]</ID>
 	<cbc:IssueDate>[ffactura]</cbc:IssueDate>
+	<cbc:Note>[descfactura]</cbc:Note>
 	<TaxPointDate>[ffactura]</TaxPointDate>
 	
 	<!-- Informacion del comprador -->
@@ -50,6 +51,14 @@
 		<cac:ReferenceEventCode>!</cac:ReferenceEventCode>
 	</cac:PaymentTerms>
 	
+	<!-- Descuentos aplicado al PVP de la factura -->
+<!-- 	<cac:AllowanceCharge> -->
+<!-- 		<cbc:ChargeIndicator>false</cbc:ChargeIndicator> -->
+<!-- 		<cbc:Amount amountCurrencyID="EUR">[descuentofactura]</cbc:Amount> -->
+<!-- 	</cac:AllowanceCharge> -->
+<!-- 	<cac:TaxTotal> -->
+	[descuentos]
+	
 	<!-- Total de los impuestos -->
 	<cac:TaxTotal>
 		<cbc:TotalTaxAmount amountCurrencyID="EUR">[impfactura]</cbc:TotalTaxAmount>
@@ -62,6 +71,7 @@
 		<cbc:TaxInclusiveTotalAmount amountCurrencyID="EUR">[totalfactura]</cbc:TaxInclusiveTotalAmount>
 	</cac:LegalTotal>
 
+	<!-- Lineas de factura -->
 	[lineas_factura]
 	
 </Invoice>

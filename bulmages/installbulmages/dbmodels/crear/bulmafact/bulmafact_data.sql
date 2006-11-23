@@ -46,6 +46,7 @@ INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir'
 INSERT INTO configuracion (nombre, valor) VALUES ('AlmacenDefecto', '100');
 INSERT INTO configuracion (nombre, valor) VALUES ('DireccionCompleta', 'Sin definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('Ciudad', 'Sin definir');
+INSERT INTO configuracion (nombre, valor) VALUES ('CodArticuloGenerico', 'Sin Definir');
 \echo -n ':: Configuraciones ... '
 COMMIT;
 
