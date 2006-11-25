@@ -24,6 +24,7 @@
 #include <QWidget>
 
 #include "ui_aboutbase.h"
+#include "ficha.h"
 
 
 /// Presenta la informaci&oacute;n sobre el programa.
@@ -34,6 +35,9 @@ class aboutview : public QDialog, public Ui_AboutBase {
 public:
     aboutview(QWidget *parent = 0); /// Constructor de la clase.
     ~aboutview(); /// Destructor de la clase.
+
+private slots:
+    void on_mui_aceptar_clicked();
 };
 
 #endif

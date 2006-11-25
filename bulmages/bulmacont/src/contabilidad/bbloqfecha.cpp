@@ -24,94 +24,116 @@
 #include "empresa.h"
 
 
-myQListViewItem::myQListViewItem(myQListViewItem *parent, QString label1)
-        : Q3ListViewItem(parent, label1) {
+miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidget *parent)
+        : QTreeWidgetItem(parent) {
     return;
-};
+}
 
 
-myQListViewItem::myQListViewItem(Q3ListView *parent, QString label1)
-        : Q3ListViewItem(parent, label1) {
+miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
+        : QTreeWidgetItem(parent) {
     return;
-};
+}
 
 
 void BbloqFecha::inicializa() {
     _depura("BbloqFecha::inicializa", 0);
-    myQListViewItem *listMain, *listAux = 0;
-    QString query;
-    listView1->setSorting(-1);
+    miQTreeWidgetItem *itemlevel0;
+    miQTreeWidgetItem *itemlevel1 = 0;
 
-    listView1->clear();
+    QString consultabd;
+    mui_treeWidget->setColumnCount(2);
+    QStringList cabecera;
+    cabecera << tr("Ejercicio") << tr("Estado");
+    mui_treeWidget->setHeaderLabels(cabecera);
 
-    query.sprintf("SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC");
-    cursor2 *curPeri,*curEjer = empresaactual->cargacursor(query);
+    mui_treeWidget->clear();
+    mui_treeWidget->setSortingEnabled(FALSE);
+
+    /// Consultamos a la base de datos.
+    consultabd.sprintf("SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC");
+    cursor2 *curPeri, *curEjer = empresaactual->cargacursor(consultabd);
+
     while (!curEjer->eof()) {
-        listMain = new myQListViewItem(listView1, curEjer->valor("ejercicio"));
-        listMain->ej = curEjer->valor("ejercicio");
-        listMain->per = "0";
+
+        itemlevel0 = new miQTreeWidgetItem(mui_treeWidget);
+        itemlevel0->setText(0, curEjer->valor("ejercicio")); /// Columna 0.
+
         if (curEjer->valor("bloqueado") == "t") {
-            listMain->setText(1, "Bloqueado");
+            itemlevel0->setText(1, qsbloqueado);
         } else {
-            listMain->setText(1, "Abierto");
+            itemlevel0->setText(1, qsabierto);
         } // end if
 
-        query.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
-        curPeri = empresaactual->cargacursor(query);
+        consultabd.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
+        curPeri = empresaactual->cargacursor(consultabd);
         while (!curPeri->eof()) {
             switch (curPeri->valor("periodo").toInt()) {
             case 12:
-                listAux = new myQListViewItem(listMain, tr("Diciembre "));
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Diciembre")); /// Columna 0.
                 break;
             case 11:
-                listAux = new myQListViewItem(listMain, tr("Noviembre "));
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Noviembre")); /// Columna 0.
                 break;
             case 10:
-                listAux = new myQListViewItem(listMain, tr("Octubre"   ));
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Octubre")); /// Columna 0.
                 break;
-            case  9:
-                listAux = new myQListViewItem(listMain, tr("Septiembre"));
+            case 9:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Septiembre")); /// Columna 0.
                 break;
-            case  8:
-                listAux = new myQListViewItem(listMain, tr("Agosto    "));
+            case 8:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Agosto")); /// Columna 0.
                 break;
-            case  7:
-                listAux = new myQListViewItem(listMain, tr("Julio     "));
+            case 7:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Julio")); /// Columna 0.
                 break;
-            case  6:
-                listAux = new myQListViewItem(listMain, tr("Junio     "));
+            case 6:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Junio")); /// Columna 0.
                 break;
-            case  5:
-                listAux = new myQListViewItem(listMain, tr("Mayo      "));
+            case 5:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Mayo")); /// Columna 0.
                 break;
-            case  4:
-                listAux = new myQListViewItem(listMain, tr("Abril     "));
+            case 4:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Abril")); /// Columna 0.
                 break;
-            case  3:
-                listAux = new myQListViewItem(listMain, tr("Marzo     "));
+            case 3:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Marzo")); /// Columna 0.
                 break;
-            case  2:
-                listAux = new myQListViewItem(listMain, tr("Febrero   "));
+            case 2:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Febrero")); /// Columna 0.
                 break;
-            case  1:
-                listAux = new myQListViewItem(listMain, tr("Enero     "));
+            case 1:
+                itemlevel1 = new miQTreeWidgetItem(itemlevel0);
+                itemlevel1->setText(0, tr("Enero")); /// Columna 0.
                 break;
-            }
-            listAux->ej = curEjer->valor("ejercicio");
-            listAux->per = curPeri->valor("periodo");
-            curPeri->valor("bloqueado") == "t" ? listAux->setText(1, "Bloqueado") : listAux->setText(1, "Abierto");
+            } // end switch
+            itemlevel1->ej = curEjer->valor("ejercicio");
+            itemlevel1->per = curPeri->valor("periodo");
+            curPeri->valor("bloqueado") == "t" ? itemlevel1->setText(1, qsbloqueado) : itemlevel1->setText(1, qsabierto);
             curPeri->siguienteregistro();
-        }
+        } // end while
         curEjer->siguienteregistro();
-    }
+    } // end while
     _depura("ENd BbloqFecha::inicializa", 0);
-
 }
 
 
 BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
         : QWidget(parent, Qt::WDestructiveClose) {
     _depura("BbloqFecha::BbloqFecha", 0);
+    qsbloqueado = tr("Bloqueado");
+    qsabierto = tr ("Abierto");
     setupUi(this);
     QString query;
     empresaactual = emp;
@@ -133,20 +155,22 @@ void BbloqFecha::boto1_click() {
 }
 
 
-void BbloqFecha::on_listView1_doubleClicked (Q3ListViewItem *item) {
-    _depura("BbloqFecha::on_listView1_itemDoubleClicked", 0);
+void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna) {
+    _depura("BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
     int error;
-    myQListViewItem *it = (myQListViewItem *) item;
-    if (item->text(1) == "Bloqueado") {
-        item->setText(1, "Abierto");
-        QString Query = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = " + it->ej + " AND periodo = " + it->per;
-        error = empresaactual->ejecuta(Query);
-    } else {
-        item->setText(1, "Bloqueado");
-        QString Query = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = " + it->ej + " AND periodo = " + it->per;
-        error = empresaactual->ejecuta(Query);
+    miQTreeWidgetItem *it = (miQTreeWidgetItem *) item;
+    if (columna == 1) {
+        if (item->text(1) == qsbloqueado) {
+            item->setText(1, qsabierto);
+            QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
+            error = empresaactual->ejecuta(consultabd);
+        } else {
+            item->setText(1, qsbloqueado);
+            QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
+            error = empresaactual->ejecuta(consultabd);
+        } // end if
     } // end if
-    _depura("END BbloqFecha::on_listView1_itemDoubleClicked", 0);
+    _depura("END BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
 }
 
 
@@ -154,22 +178,21 @@ void BbloqFecha::on_mui_crear_clicked() {
     _depura("BbloqFecha::on_mui_crear_clicked", 0);
     int ejer = 2004;
 
-    QString query = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    cursor2 *cur = empresaactual->cargacursor( query );
+    QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
+    cursor2 *cur = empresaactual->cargacursor(consultabd);
     if (!cur->eof()) {
-        ejer = cur->valor( "ej").toInt();
-    }
+        ejer = cur->valor("ej").toInt();
+    } // end if
 
     ejer++;
 
-    for (int x=0; x<=12; x++) {
-        QString query ="INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('"+QString::number(ejer)+"', '"+QString::number(x)+"', 'f')";
-        empresaactual->ejecuta(query);
-    }// end for
+    for (int x = 0; x <= 12; x++) {
+        QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number(ejer) + "', '" + QString::number(x) + "', 'f')";
+        empresaactual->ejecuta(consultabd);
+    } // end for
 
     inicializa();
 
     _depura("BbloqFecha::on_mui_crear_clicked", 0);
-
 }
 

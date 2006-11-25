@@ -21,32 +21,35 @@
 #ifndef BbloqFecha_H
 #define BbloqFecha_H
 
-#include <q3listview.h>
 #include <QWidget>
 
 #include "ui_bbloqfechabase.h"
 #include "funcaux.h"
 
+
 class empresa;
 
 
-class myQListViewItem : public Q3ListViewItem {
+class miQTreeWidgetItem : public QTreeWidgetItem {
 public:
-    myQListViewItem(Q3ListView *parent, QString label1);
-    myQListViewItem(myQListViewItem *parent, QString label1);
-    ~myQListViewItem() {
+    miQTreeWidgetItem(QTreeWidget *parent);
+    miQTreeWidgetItem(QTreeWidgetItem *parent);
+    ~miQTreeWidgetItem() {
         return;
-    };
+    }
     QString ej;
     QString per;
 };
 
 
 class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
-Q_OBJECT
+    Q_OBJECT
+
 private:
     empresa *empresaactual;
     void inicializa();
+    QString qsbloqueado;
+    QString qsabierto;
 
 public:
     BbloqFecha(empresa *emp, QWidget * parent = 0);
@@ -54,8 +57,10 @@ public:
 
 public slots:
     virtual void on_mui_crear_clicked();
-    virtual void on_listView1_doubleClicked(Q3ListViewItem *item);
     virtual void boto1_click();
+
+private slots:
+    virtual void on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna);
 };
 
 #endif

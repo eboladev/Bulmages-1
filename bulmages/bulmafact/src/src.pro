@@ -16,7 +16,10 @@ QMAKE_LIBDIR += ../../installbulmages
 exists( /usr/bin/distcc ) {
    QMAKE_CXX = distcc g++
 }
-
+# Lo mismo pero para SuSe (compilado distcc desde la fuente)
+exists( /usr/local/bin/distcc ) {
+   QMAKE_CXX = distcc g++
+}
 
 # RESOURCES += ../../bulmages-recursos-graficos.qrc
 

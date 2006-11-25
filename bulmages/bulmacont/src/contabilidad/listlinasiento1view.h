@@ -31,7 +31,6 @@ class ListLinAsiento1View : public SubForm2Bc {
 public:
     ListLinAsiento1View(QWidget *parent = 0, const char *name = 0);
     ~ListLinAsiento1View() {}
-    ;
     virtual void cargar(QString);
     Fixed totaldebe(QString);
     Fixed totalhaber(QString);

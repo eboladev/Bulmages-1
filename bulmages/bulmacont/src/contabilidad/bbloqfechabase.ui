@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BBloqFechaBase</class>
  <widget class="QWidget" name="BBloqFechaBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>282</width>
-    <height>342</height>
+    <width>383</width>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -23,7 +20,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <widget class="QFrame" name="frame" >
@@ -87,47 +84,12 @@
     </widget>
    </item>
    <item>
-    <widget class="Q3ListView" name="listView1" >
-     <property name="resizePolicy" >
-      <enum>Q3ScrollView::Manual</enum>
-     </property>
-     <property name="selectionMode" >
-      <enum>Q3ListView::NoSelection</enum>
-     </property>
-     <property name="showSortIndicator" >
-      <bool>false</bool>
-     </property>
-     <property name="rootIsDecorated" >
-      <bool>true</bool>
-     </property>
-     <property name="resizeMode" >
-      <enum>Q3ListView::AllColumns</enum>
-     </property>
-     <column>
-      <property name="text" >
-       <string>Ejercicio</string>
-      </property>
-     </column>
-     <column>
-      <property name="text" >
-       <string>Estado</string>
-      </property>
-     </column>
-    </widget>
+    <widget class="QTreeWidget" name="mui_treeWidget" />
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListView</class>
-   <extends></extends>
-   <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

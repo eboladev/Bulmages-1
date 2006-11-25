@@ -148,7 +148,7 @@ void ListLinAsiento1View::cargar(QString idasiento) {
 
 void ListLinAsiento1View::boton_iva() {
     _depura("ListLinAsiento1View::boton_iva", 0);
-    int res = g_plugins->lanza("ListLinAsiento1View_boton_iva", this);
+    g_plugins->lanza("ListLinAsiento1View_boton_iva", this);
     _depura("END ListLinAsiento1View::boton_iva", 0);
 
 }
