@@ -1,18 +1,38 @@
 NOTAS PARA LA INSTALACION:
 --------------------------
-El script de instalacion funciona sobre Debian, Mandrake, Ubuntu y SUSE.
+El script de instalacion ha sido probado sobre Debian, Mandrake, Ubuntu y SUSE.
 Seguramente sea facil extenderlo a otras distribuciones.
 
+La instalacion del software se divide en dos partes, cliente y servidor
+
+Servidor
+--------
+La parte servidor instala y configura las bases de datos iniciales.
+
+
 Para instalar el programa entre en el directorio de instalacion y escriba
-"como root" ./installbulmages.
+"como root" 
+
+./installbulmages-server
 
 
+Nota: Vea el directorio dbmodels para mas informacion sobre como instalar
+ manualmente o como actualizar un sistema.
+
+
+Cliente
+-------
+En cada uno de los clientes debe instalar el ejecutable y configurarlo para
+que acceda al servidor.
+
+Para instalar el cliente escriba (como root)
+
+# ./installbulmages-client
+
+
+Consideraciones Especiales
+--------------------------
 
 Hay un modo de instalacion que no usa dialog, para hacer una instalacion en
 modo texto escriba
 # ./installbulmages --texto
-
-
-
---
-Tomeu Borras

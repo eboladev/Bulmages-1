@@ -1,13 +1,15 @@
-BulmaCont
+BulmaFact
 ---------
+
 Este directorio contiene todo el codigo fuente del programa de facturacion 
 Bulmafact. Tanto el programa principal como algunos plugins especificos.
 
 
 Estructura
 ----------
-Dentro del directorio src/contabilidad esta el codigo fuente de la aplicacion.
-El resto de directorios  son plugins.
+
+Dentro del directorio src esta el codigo fuente de la aplicacion.
+Cada subdirectorio de src corresponde con un plugin.
 
 Compilacion
 -----------
@@ -19,8 +21,7 @@ Ejecute desde este directorio:
    $ make
    
 Si solo desea compilar una parte del programa puede entrar dentro
-del directorio correspondiente y compilar siguiendo los mismos 
-pasos.
+del directorio correspondiente y compilar.
 
 El programa compilado y los plugins se encuentran en installbulmages.
 

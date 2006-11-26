@@ -1,0 +1,29 @@
+BulmaLib
+---------
+Este directorio contiene todo el codigo fuente de la lubreria comun
+a todos los programas.
+
+
+Estructura
+----------
+Todo el codigo fuente se encuentra dentro de este directorio.
+
+
+Compilacion
+-----------
+Este programa se desarrolla normalmente con Debian, Ubuntu y Suse por lo que 
+no deberia tener problemas para compilar con estas distribuciones.
+
+Ejecute desde este directorio:
+   $ qmake-qt4 (O qmake si usa Suse)
+   $ make
+
+La libreria dinamica bulmalib.so resultado de esta compilacion 
+se ubica en el directorio installbulmages.
+   
+Mire los archivos .pro de cada directorio para comprender mejor el
+sistema de compilacion.
+
+
+Nota: Si efectua compilacion manual es importante compilar primero esta
+parte ya que es necesaria para compilar los demas.

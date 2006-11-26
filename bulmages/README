@@ -53,7 +53,7 @@ hay que mantenerlos.
 - Los scripts de actualizacion estan en dbmodels/actualizar
  
 2.- Tambien esta el archivos bulmages.conf que se instalara en las proximas
-versiones. Por tanto todo lo que se añade en la configuracion debe ir tambien
+versiones. Por tanto todo lo que se agrega en la configuracion debe ir tambien
 reflejado en su correspondiente archivo aqui. Tambien hay unos archivos de
 revision entre versiones del archivo. Para que las actualizaciones no cambien
 toda la configuracion del sistema. 
@@ -89,5 +89,20 @@ $installbulmages-server
 $installbulmages-client
 
 
+Notas para la instalacion
+-------------------------
+El programa depende de ciertos archivos en /etc para ejecutarse correctamente.
+Sin embargo cuando se esta desarrollando es incomodo andar reinstalando para
+comprobar el correcto funcionamiento del programa.
+En dicho caso es util hacer una instalacion y cambiar los siguientes archivos
+por soft links a los ejecutables resultantes del codigo fuente.
+
+Estos son los archivos que se deben enlazar:
+/usr/lib/libbulmages.0.5.9.so
+/usr/bin/bulmages
+/usr/bin/bulmafact
+/usr/bin/bulmacont
+
+De esta forma siempre se puede tener en ejecucucion una version en desarrollo
 
 
