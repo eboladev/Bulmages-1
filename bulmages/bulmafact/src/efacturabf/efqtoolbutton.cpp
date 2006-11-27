@@ -41,6 +41,20 @@ EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(pa
 
 EFQToolButton::~EFQToolButton() {}
 
+void EFQToolButton::escribe_descuento_factura(QString &string, cursor2 *descuentos_factura, Fixed bimpfactura) {
+	
+	Fixed descuentoFactura = Fixed(descuentos_factura->valor("proporciondfactura"))*(bimpfactura/100);
+
+	string += "\t<cac:AllowanceCharge>\n";
+	string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
+	string += "\t\t<cbc:MultiplierFactorNumeric>" + descuentos_factura->valor("proporciondfactura") + "</cbc:MultiplierFactorNumeric>\n";
+	string += "\t\t<cbc:Amount amountCurrencyID=\"EUR\">" + descuentoFactura.toQString() + "</cbc:Amount>\n";
+	string += "\t</cac:AllowanceCharge>\n";
+	string += "\n";
+	
+// 	return descuentoFactura;
+}
+
 /// Funcion que escribe lineas de factura en un QString
 
 void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, int numerolinea) {
@@ -116,9 +130,6 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	QString query = "";
 	
-// 	QFile *file_in  = new QFile("/tmp/plantilla_efactura.xml");
-// 	QFile *file_out = new QFile("/tmp/resultado.xml");
-
 	QFile *file_in  = new QFile(_PLANTILLA_);
 	QFile *file_out = new QFile(_RESULTADO_);
 	
@@ -149,20 +160,22 @@ void EFQToolButton::exporta_factura_ubl() {
 /// HACER FUNCION -----------------------------------------------------
 	
 	// Descuento al PVP de la factura (cogidos de la tabla dfactura)
-/*	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
-	cursor2 *descuentos_factura = m_companyact->cargacursor(query);
-	
-	Fixed descuentofactura;
+	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
+	cursor2 *descuentos_factura = m_companyact->cargacursor(query);	
+
+	QString DescuentosFactura = "\n";
 	Fixed totalFactura(factura_totales->valor("bimpfactura"));
-	Fixed acumulador = "0.00";	
+// 	Fixed acumulador = "0.00";
 
 	descuentos_factura->primerregistro();
 	
 	while (!descuentos_factura->eof()) {
-		descuentoFactura = Fixed(descuentos_factura->valor("");
+		escribe_descuento_factura(DescuentosFactura, descuentos_factura, totalFactura);
 		descuentos_factura->siguienteregistro();
 	}
-*/	
+	
+	FacturaXml.replace("[descuentos]", DescuentosFactura);
+	
 /// FIN HACER FUNCION -------------------------------------------------
 	
 	// Datos del cliente
@@ -236,6 +249,8 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	FacturaXml.replace("[lineas_factura]", LineasFactura);
 	
+	delete descuentos_factura;
+	delete lfacturas;
 	delete factura_totales;
 	delete cliente;
 	delete trabajador;

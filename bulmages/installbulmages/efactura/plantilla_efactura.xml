@@ -52,11 +52,6 @@
 	</cac:PaymentTerms>
 	
 	<!-- Descuentos aplicado al PVP de la factura -->
-<!-- 	<cac:AllowanceCharge> -->
-<!-- 		<cbc:ChargeIndicator>false</cbc:ChargeIndicator> -->
-<!-- 		<cbc:Amount amountCurrencyID="EUR">[descuentofactura]</cbc:Amount> -->
-<!-- 	</cac:AllowanceCharge> -->
-<!-- 	<cac:TaxTotal> -->
 	[descuentos]
 	
 	<!-- Total de los impuestos -->
