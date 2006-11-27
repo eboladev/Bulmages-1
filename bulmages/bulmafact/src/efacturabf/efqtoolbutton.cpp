@@ -89,6 +89,7 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 	// Descuentos o recargos. El false nos dice que es descuento.
 	string += "\t<cac:AllowanceCharge>\n";
 	string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
+	string += "\t\t<cbc:MultiplierFactorNumeric>" + lfactura->valor("descuentolfactura") + "</cbc:MultiplierFactorNumeric>\n";
 	string += "\t\t<cbc:Amount amountCurrencyID=\"EUR\">" + descuento_lfactura.toQString() + "</cbc:Amount>\n";
 	string += "\t</cac:AllowanceCharge>\n";
 	
@@ -157,8 +158,6 @@ void EFQToolButton::exporta_factura_ubl() {
 	query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue("idfactura");
 	cursor2 *factura_totales = m_companyact->cargacursor(query);
 	
-/// HACER FUNCION -----------------------------------------------------
-	
 	// Descuento al PVP de la factura (cogidos de la tabla dfactura)
 	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
 	cursor2 *descuentos_factura = m_companyact->cargacursor(query);	
@@ -175,8 +174,6 @@ void EFQToolButton::exporta_factura_ubl() {
 	}
 	
 	FacturaXml.replace("[descuentos]", DescuentosFactura);
-	
-/// FIN HACER FUNCION -------------------------------------------------
 	
 	// Datos del cliente
 	query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->DBvalue("idcliente");

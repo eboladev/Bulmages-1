@@ -24,6 +24,8 @@
 #include "company.h"
 #include "funcaux.h"
 #include <QtXml/QDomDocument>
+#include <QMap>
+#include <QString>
 
 class EFQToolButtonImportar : public QToolButton {
 	Q_OBJECT
@@ -37,7 +39,10 @@ public:
 	~EFQToolButtonImportar();
 	void importa_factura_ubl();
 	QString obten_valor_nodo(QString nombre, QDomDocument *doc);
-	
+	QString obten_id_proveedor(QDomDocument *doc);
+	QString obten_descuento_factura(QDomDocument *doc);
+	void obten_linea_factura(QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i);
+
 public slots:
 	virtual void click();
 
