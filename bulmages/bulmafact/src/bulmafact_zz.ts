@@ -5,7 +5,7 @@
     <message>
         <location filename="aboutview.cpp" line="36"/>
         <source>Compilado usando la version de QT:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esto lo han hecho con las Qt:</translation>
     </message>
 </context>
 <context>
@@ -13,82 +13,82 @@
     <message>
         <location filename="albarancliente.cpp" line="37"/>
         <source>Id albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id.</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="38"/>
         <source>Id cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. Cli</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="39"/>
         <source>Id almacen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. alm</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="40"/>
         <source>Numero de albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Er albaran</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="41"/>
         <source>Fecha albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esto se hizo:</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="42"/>
         <source>Contacto albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Si pasa algo preguntar por</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="43"/>
         <source>Telefono</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Er telefono</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="44"/>
         <source>Comentario</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pues sobre esto yo pienso que</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="45"/>
         <source>Comentario priv albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esto no se lo diremos al cliente</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="46"/>
         <source>Id forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. FP</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="47"/>
         <source>Id trabajador</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. trab</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="48"/>
         <source>Procesado albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Visto para sentencia</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="49"/>
         <source>Descripcion albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El albaran va de</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="50"/>
         <source>Referencia albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Referencia albaran</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="239"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Porca miseria</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="237"/>
         <source>Descuento</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Quitamos esto</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="238"/>
@@ -98,17 +98,17 @@
     <message>
         <location filename="albarancliente.cpp" line="277"/>
         <source>Base </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El te&amp;rico</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="293"/>
         <source>I.V.A. </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pal gobierno</translation>
     </message>
     <message>
         <location filename="albarancliente.cpp" line="297"/>
         <source>Total </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Una vez aplicado</translation>
     </message>
 </context>
 <context>
@@ -116,77 +116,77 @@
     <message>
         <location filename="albaranclientebase.ui" line="101"/>
         <source>Guardar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Boton de la suerte</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="135"/>
         <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cepillarse albaran</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="169"/>
         <source>Imprimir albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sacarlo impreso</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="219"/>
         <source>Ver pedido de cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El cliente pidio esto otro</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="253"/>
         <source>Pasar a factura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ir pensando en cobrarlo</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="287"/>
         <source>Agregar a factura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A ver si lo pagan pronto poniendolo aqui</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="321"/>
         <source>Agregar a factura existente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anexarlo a una factura ya hecha</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="375"/>
         <source>Referencia del albaran:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ref. alb</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="426"/>
         <source>Imprimir pedido</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar papel</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="470"/>
         <source>Descripcion:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pensandolo bien:</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="albaranclientebase.ui" line="522"/>
         <source>Nº de albaran:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Num. alb</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="675"/>
         <source>Almacen:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Almacen</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="707"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Como piensa pagarlo?</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="768"/>
         <source>Telefono de contacto:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Para malas notocias llamar al</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="739"/>
         <source>Trabajador:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Quien pondra las excusas cuando no este hecho?</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="631"/>
@@ -206,32 +206,32 @@
     <message>
         <location filename="albaranclientebase.ui" line="836"/>
         <source>&amp;Detalle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Bien mirado</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="842"/>
         <source>Descuen&amp;tos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Indicador de simpatia</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="858"/>
         <source>Comentario&amp;s</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Me ha dicho la Paqui</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="878"/>
         <source>Comentarios publicos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vox populi</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="914"/>
         <source>Comentarios privados:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Top Secret (no divulgar)</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="1050"/>
         <source>Total base imponible:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teorico</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="1209"/>
@@ -241,32 +241,32 @@
     <message>
         <location filename="albaranclientebase.ui" line="984"/>
         <source>Total descuentos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Buen rollete</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="1116"/>
         <source>Total impuestos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pal Gobierno</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="1182"/>
         <source>Total pedido: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Le vamos a sacar</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="1276"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Quita quita,que caro</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="1258"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pos fale</translation>
     </message>
     <message>
         <location filename="albaranclientebase.ui" line="16"/>
         <source>Nuevo albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uno mas</translation>
     </message>
 </context>
 <context>
@@ -274,12 +274,12 @@
     <message>
         <location filename="albaranclientelist.cpp" line="120"/>
         <source>Error al borrar el albaran cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hemos metido la pata en alguna parte</translation>
     </message>
     <message>
         <location filename="albaranclientelist.cpp" line="128"/>
         <source>Albaranes Cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sajadas a Clientes</translation>
     </message>
 </context>
 <context>
@@ -287,47 +287,47 @@
     <message>
         <location filename="albaranclientelistbase.ui" line="70"/>
         <source>Nuevo albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uno mas ...</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="92"/>
         <source>Editar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Toquetear albaran</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="114"/>
         <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A criar malvas</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="136"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar papel</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="158"/>
         <source>Filtrar albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Discriminar un poco</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="183"/>
         <source>Configurar listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ajustar vision</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="208"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otra vez !!!!</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="243"/>
         <source>Buscar:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mirar a ver:</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="356"/>
         <source>Procesados</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Olvidados</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="379"/>
@@ -342,22 +342,22 @@
     <message>
         <location filename="albaranclientelistbase.ui" line="294"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Entre</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="320"/>
         <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">y entre</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="454"/>
         <source>Total: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cuanto dice ?</translation>
     </message>
     <message>
         <location filename="albaranclientelistbase.ui" line="19"/>
         <source>Listado de albaranes a clientes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A los clientes se les ha hecho</translation>
     </message>
 </context>
 <context>
@@ -448,37 +448,37 @@
     <message>
         <location filename="albaranclienteview.cpp" line="166"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Fale</translation>
     </message>
     <message>
         <location filename="albaranclienteview.cpp" line="166"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Ni hablar</translation>
     </message>
     <message>
         <location filename="albaranclienteview.cpp" line="164"/>
         <source>Factura inexistente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Que la factura no existe</translation>
     </message>
     <message>
         <location filename="albaranclienteview.cpp" line="165"/>
         <source>No existe una factura asociada a este albaran. Desea crearla?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No veo la factura. La creo?</translation>
     </message>
     <message>
         <location filename="albaranclienteview.cpp" line="69"/>
         <source>Error al crear el albaran cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Va a ser que en algo hemos fallado al crear el albaran cliente</translation>
     </message>
     <message>
         <location filename="albaranclienteview.cpp" line="233"/>
         <source>Num. albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Num. Alb</translation>
     </message>
     <message>
         <location filename="albaranclienteview.cpp" line="267"/>
         <source>Albaran a cliente</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Albaran Cliente</translation>
     </message>
 </context>
 <context>
@@ -486,32 +486,32 @@
     <message>
         <location filename="albaranproveedor.cpp" line="32"/>
         <source>Id albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. alb pro</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="33"/>
         <source>Numero albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Num. alb pro</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="34"/>
         <source>Fecha albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cuando se hizo el trabajillo</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="35"/>
         <source>Comentario albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lo que pienso de la cosa</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="36"/>
         <source>Id proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. prov</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="37"/>
         <source>Id forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. FP</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="38"/>
@@ -521,17 +521,17 @@
     <message>
         <location filename="albaranproveedor.cpp" line="39"/>
         <source>Referencia albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Referencia</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="40"/>
         <source>Descripcion albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lo que es</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="163"/>
         <source>Concepto</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lo que decimos que es</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="164"/>
@@ -546,17 +546,17 @@
     <message>
         <location filename="albaranproveedor.cpp" line="198"/>
         <source>Total</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Porca Miseria</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="186"/>
         <source>Base imponible</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Teorico</translation>
     </message>
     <message>
         <location filename="albaranproveedor.cpp" line="192"/>
         <source>I.V.A.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pal Gobierno</translation>
     </message>
 </context>
 <context>
@@ -569,12 +569,12 @@
     <message>
         <location filename="albaranproveedorbase.ui" line="143"/>
         <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Olvidar definitivamente</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="285"/>
         <source>Pasar a factura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No va a quedar mas remedio que pagarlo</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="339"/>
@@ -584,22 +584,22 @@
     <message>
         <location filename="albaranproveedorbase.ui" line="392"/>
         <source>Imprimir pedido</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar papel</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="665"/>
         <source>&amp;Detalle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Lo que</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="681"/>
         <source>Desc&amp;uentos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La quita</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="697"/>
         <source>&amp;Comentarios</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Todos pensamos que ...</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="973"/>
@@ -609,47 +609,47 @@
     <message>
         <location filename="albaranproveedorbase.ui" line="946"/>
         <source>Total pedido: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">En teoria:</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="1025"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dale canya</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="201"/>
         <source>Ver pedidos de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lo que les pedimos a los proveedores</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="243"/>
         <source>Pasar a Factura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pos habra que pagarlo</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="24"/>
         <source>Nuevo albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otro papelote pal monton</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="436"/>
         <source>Descripcion:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">De que va la cosa?</translation>
     </message>
     <message encoding="UTF-8">
         <location filename="albaranproveedorbase.ui" line="465"/>
         <source>Nº de albaran:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Num. alb</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="604"/>
         <source>Fecha de creacion:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cuando se hizo</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="546"/>
         <source>Forma de pago:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Como aflojar la pasta</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="575"/>
@@ -659,22 +659,22 @@
     <message>
         <location filename="albaranproveedorbase.ui" line="751"/>
         <source>Descuentos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La quita</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="817"/>
         <source>Base imponible:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">En teoria</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="883"/>
         <source>Impuestos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hacienda somos todos</translation>
     </message>
     <message>
         <location filename="albaranproveedorbase.ui" line="1046"/>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">A tomar por &amp;Culo</translation>
     </message>
 </context>
 <context>
@@ -682,12 +682,12 @@
     <message>
         <location filename="albaranproveedorview.cpp" line="130"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Bueeeno</translation>
     </message>
     <message>
         <location filename="albaranproveedorview.cpp" line="130"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Por encima de &amp;mi cadaver</translation>
     </message>
     <message>
         <location filename="albaranproveedorview.cpp" line="127"/>
@@ -697,12 +697,12 @@
     <message>
         <location filename="albaranproveedorview.cpp" line="129"/>
         <source>No existe una factura asociada a este albaran.Desea crearla?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No hay factura, La hacemos ?</translation>
     </message>
     <message>
         <location filename="albaranproveedorview.cpp" line="72"/>
         <source>Error al crear el albaran proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Algo ha fallado, pa mi que has sido tu.</translation>
     </message>
     <message>
         <location filename="albaranproveedorview.cpp" line="166"/>
@@ -715,7 +715,7 @@
     <message>
         <location filename="albaranesproveedor.cpp" line="165"/>
         <source>Error al borrar albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No va a ser tan facil deshacerse de las pruebas</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="148"/>
@@ -728,37 +728,37 @@
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="70"/>
         <source>Nuevo albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otro papelote pal monton</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="92"/>
         <source>Editar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Adulterar el contenido</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="114"/>
         <source>Borrar albaran</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eliminar pruebas</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="136"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar papel</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="158"/>
         <source>Filtrar albaranes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ver mejor</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="183"/>
         <source>Configurar listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Afinar resultados</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="208"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Repensarlo mejor</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="243"/>
@@ -768,12 +768,12 @@
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="301"/>
         <source>Procesados</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Olvidados</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="324"/>
         <source>Contiene articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lleva incorporado</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="350"/>
@@ -783,17 +783,17 @@
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="386"/>
         <source>Fecha inicial:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Se empieza</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="412"/>
         <source>Fecha final:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Se acaba</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="470"/>
         <source>Total: </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tanto?</translation>
     </message>
     <message>
         <location filename="albaranesproveedorlistbase.ui" line="19"/>
@@ -806,17 +806,17 @@
     <message>
         <location filename="albaranesproveedor.cpp" line="178"/>
         <source>ID albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Id. alb pro</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="179"/>
         <source>Numero de albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Num. alb pro</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="180"/>
         <source>Descripcion del albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esto es ..</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="181"/>
@@ -826,17 +826,17 @@
     <message>
         <location filename="albaranesproveedor.cpp" line="182"/>
         <source>Fecha del albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cuando lo hicieron</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="183"/>
         <source>Comentario del albaran de proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pienso sobre esto que ...</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="184"/>
         <source>Albaran de proveedor procesado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Albaran proveedot masticadito</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="185"/>
@@ -846,7 +846,7 @@
     <message>
         <location filename="albaranesproveedor.cpp" line="186"/>
         <source>ID forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Como pagar</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="187"/>
@@ -856,7 +856,7 @@
     <message>
         <location filename="albaranesproveedor.cpp" line="188"/>
         <source>Nommbre del proveedor</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El mangante</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="189"/>
@@ -866,21 +866,21 @@
     <message>
         <location filename="albaranesproveedor.cpp" line="190"/>
         <source>Descripcion de la forma de pago</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Como se paga ?</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="191"/>
         <source>Base imponible</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Parece que es esto</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="192"/>
         <source>Impuestos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Para mantener algun politico</translation>
     </message>
     <message>
         <location filename="albaranesproveedor.cpp" line="193"/>
-        <source>Total albaran</source>
+        <source>Lo que realmente va a costar</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -899,37 +899,37 @@
     <message>
         <location filename="articulo.cpp" line="37"/>
         <source>Nombre del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esto es ...</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="38"/>
         <source>Abreviacion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pero lo llamamos</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="39"/>
         <source>Observaciones</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y pensamos sobre ello que ...</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="40"/>
         <source>Incluir en presentaciones</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Merece la pena tenerlo en catalogo?</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="41"/>
         <source>Incluir en control de stock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">En el almacen podran mangar de esto ?</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="42"/>
         <source>Tipo de articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tipo de articulo</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="43"/>
         <source>Tipo de I.V.A.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hacienda quiere un % del negocio</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="44"/>
@@ -944,7 +944,7 @@
     <message>
         <location filename="articulo.cpp" line="46"/>
         <source>Stock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tenemos o no ?</translation>
     </message>
     <message>
         <location filename="articulo.cpp" line="47"/>
@@ -954,7 +954,7 @@
     <message>
         <location filename="articulo.cpp" line="48"/>
         <source>P.V.P. base</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">En principio va a salir por ...</translation>
     </message>
 </context>
 <context>
@@ -967,7 +967,7 @@
     <message>
         <location filename="articleeditbase.ui" line="92"/>
         <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Prescindir de ello</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="127"/>
@@ -977,7 +977,7 @@
     <message>
         <location filename="articleeditbase.ui" line="412"/>
         <source>&amp;Datos generales</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Comunmente es</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="468"/>
@@ -997,12 +997,12 @@
     <message>
         <location filename="articleeditbase.ui" line="638"/>
         <source>Tipo de I.V.A.:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tipo de impuesto</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="812"/>
         <source>Cam&amp;biar imagen</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Que aspecto tiene ?</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="838"/>
@@ -1017,17 +1017,17 @@
     <message>
         <location filename="articleeditbase.ui" line="901"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ya no lo quiero</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="894"/>
         <source>&amp;Aceptar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Si lo quiero</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="19"/>
         <source>Nuevo articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Otro mass</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="440"/>
@@ -1037,42 +1037,42 @@
     <message>
         <location filename="articleeditbase.ui" line="542"/>
         <source>Informacion del articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Los prospectos dicen ...</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="620"/>
         <source>Precio de venta s/IVA:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Saldra por (sin chupocteros)</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="656"/>
         <source>Nombre del articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Se llama</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="677"/>
         <source>Texto para etiqueta:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Y si lo etiqueto pondra ...</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="718"/>
         <source>Otros datos:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mas cosas</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="730"/>
         <source>&amp;Incluir este articulo en el catalogo.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Es chulo, que lo vean los clientes</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="737"/>
         <source>Activar el &amp;control de stock para este articulo.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Igual nos lo mangan, lo controlamos ?</translation>
     </message>
     <message>
         <location filename="articleeditbase.ui" line="770"/>
         <source>Imagen del articulo:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Foto chula</translation>
     </message>
 </context>
 <context>
@@ -1080,22 +1080,22 @@
     <message>
         <location filename="articulolist.cpp" line="301"/>
         <source>Borrar articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Perder de vista</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="124"/>
         <source>Esta a punto de borrar un articulo. Estos datos pueden dar problemas.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Si me lo quito de enmedio luego no te quejes?</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="300"/>
         <source>Editar articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Alterarlo</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="274"/>
         <source>Elija el archivo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Que archivo uso?</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="276"/>
@@ -1110,7 +1110,7 @@
     <message>
         <location filename="articulolist.cpp" line="134"/>
         <source>Error al borrar el articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La cagamos, seguro que yo no tengo la culpa?</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="248"/>
@@ -1123,22 +1123,22 @@
     <message>
         <location filename="articleslistbase.ui" line="73"/>
         <source>Nuevo articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uno mas !!</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="95"/>
         <source>Editar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tunear</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="117"/>
         <source>Borrar articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Multiplicar por cero</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="161"/>
         <source>Imprimir listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar mucho papel</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="183"/>
@@ -1148,12 +1148,12 @@
     <message>
         <location filename="articleslistbase.ui" line="208"/>
         <source>Configurar listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dejar Bonito</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="233"/>
         <source>Actualizar listado</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Repensarlo todo</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="255"/>
@@ -1178,12 +1178,12 @@
     <message>
         <location filename="articleslistbase.ui" line="365"/>
         <source>Solo usados</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ver los populares</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="378"/>
         <source>S&amp;olo presentables</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ver los guapos</translation>
     </message>
     <message>
         <location filename="articleslistbase.ui" line="381"/>
@@ -1208,7 +1208,7 @@
     <message>
         <location filename="articleslistbase.ui" line="139"/>
         <source>Imprimir Catalogo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar papel en catalogos</translation>
     </message>
 </context>
 <context>
@@ -1231,12 +1231,12 @@
     <message>
         <location filename="articulolist.cpp" line="321"/>
         <source>Descripcion abreviada del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Como se conoce al articulo?</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="322"/>
         <source>Observaciones sobre el articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Yo pienso sobre esta cosa ...</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="323"/>
@@ -1256,7 +1256,7 @@
     <message>
         <location filename="articulolist.cpp" line="326"/>
         <source>Disponible en stock</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aun quedan</translation>
     </message>
 </context>
 <context>
@@ -1264,27 +1264,27 @@
     <message>
         <location filename="articuloview.cpp" line="63"/>
         <source>Edicion del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tunear articulo</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="189"/>
         <source>Borrar articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Perder de vista</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="190"/>
         <source>Esta a punto de borrar un articulo. Desea continuar?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">De veras puedo cargarmelo ?</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="306"/>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Fale</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="306"/>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Mejor otro dia</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="293"/>
@@ -1304,17 +1304,17 @@
     <message>
         <location filename="articuloview.cpp" line="305"/>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seguro que lo guardo ?</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="306"/>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Pasar de todo</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="66"/>
         <source>Error al crear el articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La cagamos en alguna parte</translation>
     </message>
     <message>
         <location filename="articuloview.cpp" line="132"/>
@@ -1324,7 +1324,7 @@
     <message>
         <location filename="articuloview.cpp" line="140"/>
         <source>Error en la carga del articulo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Algo falla</translation>
     </message>
 </context>
 <context>
@@ -1337,12 +1337,12 @@
     <message>
         <location filename="budgetbase.ui" line="128"/>
         <source>Borrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Finiquitar</translation>
     </message>
     <message>
         <location filename="budgetbase.ui" line="156"/>
         <source>Imprimir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gastar papel</translation>
     </message>
     <message>
         <location filename="budgetbase.ui" line="200"/>

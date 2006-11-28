@@ -45,19 +45,19 @@
     </message>
     <message>
         <source>Desea eliminar la</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nos la cargamos?</translation>
     </message>
     <message>
         <source>&amp;Si</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Dale ca&ntilde;</translation>
     </message>
     <message>
         <source>&amp;No</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Norrrllll</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Aborta Fistro!!</translation>
     </message>
     <message>
         <source>Guardar</source>
@@ -65,11 +65,11 @@
     </message>
     <message>
         <source>Desea guardar los cambios?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Payo, esto lo quieres para algo ?</translation>
     </message>
     <message>
         <source>No se pudo cerrar la ventana debido a un error</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tio, la hemos cagado y no se puede cerrar la ventana.</translation>
     </message>
 </context>
 <context>
@@ -284,7 +284,7 @@
     <name>QApplication2</name>
     <message>
         <source>Error inesperado en BulmaFact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">De veras que no me esperaba esto en BulmaFact</translation>
     </message>
 </context>
 <context>
@@ -397,55 +397,55 @@
     </message>
     <message>
         <source>Borrar registro</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cepillarse el registro</translation>
     </message>
     <message>
         <source>Ajustar columa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vamos a poner bien la columna</translation>
     </message>
     <message>
         <source>Ajustar altura</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Que quepa a lo alto</translation>
     </message>
     <message>
         <source>Ajustar columnas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esas columnas se me alineen conyo!!</translation>
     </message>
     <message>
         <source>Ajustar alturas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ponme decentes las alturas</translation>
     </message>
     <message>
         <source>Ver/Ocultar configurador de subformulario</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ver/o no que hacer con el Subformulario</translation>
     </message>
 </context>
 <context>
     <name>SubForm3Base</name>
     <message>
         <source>Configuracion Subformularios</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Toqueteo del Subformulario</translation>
     </message>
     <message>
         <source>Query</source>
         <comment>Consulta SQL</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Que conyo estamos mirando de la base de datos</translation>
     </message>
     <message>
         <source>Aplicar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Darle canya</translation>
     </message>
     <message>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Quita quita</translation>
     </message>
     <message>
         <source>Columnas visibles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Columnas que se ven</translation>
     </message>
     <message>
         <source>Paginacion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Cuanto ver ?</translation>
     </message>
     <message>
         <source>Total filas:</source>
@@ -477,53 +477,53 @@
     </message>
     <message encoding="UTF-8">
         <source>¡Opcion reservada a expertos!</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Si no sabes no toques esto!!</translation>
     </message>
     <message>
         <source>Escriba aqui la consulta SQL</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pon aqui el SQL</translation>
     </message>
     <message>
         <source>Ejecutar consulta</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dale canya!!!</translation>
     </message>
 </context>
 <context>
     <name>abreempresabase</name>
     <message>
         <source>Seleccione una empresa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Que empresa desea el senyorito? </translation>
     </message>
     <message>
         <source>Empresas disponibles:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esto es lo que hay:</translation>
     </message>
     <message>
         <source>Actualizar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No me fio, actualizar</translation>
     </message>
     <message>
         <source>Actualiza el listado de empresas</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Revisar el listado de empresas</translation>
     </message>
     <message>
         <source>&amp;Entra</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vamos pa ya !!</translation>
     </message>
     <message>
         <source>&amp;Cancelar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Jarlll aborta aborta</translation>
     </message>
 </context>
 <context>
     <name>abreempresaview</name>
     <message>
         <source>&amp;Cierra el programa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Por hoy ya basta</translation>
     </message>
     <message>
         <source>Para entrar, antes tiene que seleccionar una empresa.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Fistro dime por lo menos la empresa, que no soy adivino</translation>
     </message>
     <message>
         <source>Nombre</source>
@@ -546,87 +546,87 @@
     <name>funcaux</name>
     <message>
         <source>Informacion de depuracion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El programa piensa que ....</translation>
     </message>
     <message>
         <source>&amp;Continuar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Seguir cagandola</translation>
     </message>
     <message>
         <source>&amp;Omitir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Pasar de este tema</translation>
     </message>
     <message>
         <source>Omitir &amp;clase</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pasar de esta &amp;clase</translation>
     </message>
     <message>
         <source>Atencion</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hazme caso !!!</translation>
     </message>
 </context>
 <context>
     <name>listventanas</name>
     <message>
         <source>Indexador</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Lo que hay</translation>
     </message>
     <message>
         <source>listventanas::meteWindow ventana duplicada</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Payo, que esto ya lo tenemos abierto</translation>
     </message>
 </context>
 <context>
     <name>logpass</name>
     <message>
         <source>Error: usuario y/o contrasenya incorrectos</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">No me fio de ti, repiteme la contrasenya</translation>
     </message>
 </context>
 <context>
     <name>logpassbase</name>
     <message>
         <source>&amp;Validar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Dejame entrar</translation>
     </message>
     <message>
         <source>Lanzador Bulmages</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Burma Jes</translation>
     </message>
     <message>
         <source>Mensaje de error:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">La cagamos:</translation>
     </message>
     <message>
         <source>Registro de entrada:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Portero de la disco:</translation>
     </message>
     <message>
         <source>Nombre de usuario:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El sujeto en question:</translation>
     </message>
     <message>
         <source>Contrasenya:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">El c&oacute;digo Top Secret</translation>
     </message>
     <message>
         <source>&amp;Cerrar el programa</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Por hoy ya basta!!!</translation>
     </message>
 </context>
 <context>
     <name>msgErrorBase</name>
     <message>
         <source>Mensaje</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pienso que ......</translation>
     </message>
     <message>
         <source>&amp;Detalles</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;Hablar mas claro</translation>
     </message>
     <message>
         <source>&amp;Cerrar</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vamonos !!!</translation>
     </message>
 </context>
 <context>
@@ -668,12 +668,12 @@
     </message>
     <message>
         <source>Application name</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nombre en cuestion</translation>
     </message>
     <message>
         <source>Error en el XML.
 Documento mal formado.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pa mi que el XML no esta bien.</translation>
     </message>
 </context>
 </TS>
