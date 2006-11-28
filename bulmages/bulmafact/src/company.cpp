@@ -308,13 +308,20 @@ void company::s_newProveedorView() {
     bud->show();
 }
 
-
+/// Creacion de una ventana de factura de proveedor
+/// Es importante que siempre que se crea una factura de proveedor
+/// sea mediante este metodo de comany, ya que de esta forma nos
+/// aseguramos de que si existe un plugin que sustituye esta ventana,
+/// nuestra llamada devolvera el objeto adecuado
 FacturaProveedorView *company::newFacturaProveedorView() {
+	_depura("company::newFacturaProveedorView", 0);
     /// Lanzamos los plugins necesarios.
     FacturaProveedorView *bud;
     if (g_plugins->lanza("company_newFacturaProveedorView", this, (void **)&bud))
         return bud;
     bud = new FacturaProveedorView(this, 0);
+    _depura("END company::newFacturaProveedorView", 0);
+    
     return bud;
 }
 

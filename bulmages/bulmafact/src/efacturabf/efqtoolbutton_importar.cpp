@@ -56,24 +56,35 @@ QString EFQToolButtonImportar::obten_valor_nodo(QString nombre, QDomDocument *do
 }
 
 QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc) {
-	// Obtenemos una lista con todos los nodos descuento
-	QDomNodeList lista_nodos_descuento = doc->elementsByTagName("cac:AllowanceCharge");
-	
-	QDomNode nodo;
+	// Obtenemos el nodo padre
+	QDomNodeList lista_padre = doc->elementsByTagName("Invoice");
+	QDomNode padre = lista_padre.item(0);
+		
+	QDomNode nodo1, nodo2;
 	QDomElement e;
 	
 	Fixed total_descuento = "0.00";
 	
 	int i = 0;
 	
-	while ( !(lista_nodos_descuento.item(i).isNull()) ) {
+	/// Nos movemos entre los nodos hijos cac:AllowanceCharge
+	/// Ojo, no confundir con los elementos cac:AllowanceCharge que estan
+	/// dentro del elemento cac:InvoiceLine. Por eso se hace este tipo de
+	/// recorrido. Cogemos los nodos cac:AllowanceCharge que son hijos
+	/// del nodo raiz, no todos los nodos cac:AllowanceCharge.
+	nodo1 = padre.firstChildElement("cac:AllowanceCharge");
 	
-		nodo = lista_nodos_descuento.item(i);
-		nodo = nodo.firstChildElement("cbc:Amount");
+	while ( !nodo1.isNull() ) {
 		
-		e = nodo.toElement();
+		/// Nos situamos sobre el elemento que contiene la cantidad
+		nodo2 = nodo1.firstChildElement("cbc:Amount");
 		
+		e = nodo2.toElement();
+		
+		/// Acumulamos...
 		total_descuento = total_descuento + Fixed(e.text());
+		/// Siguiente descuento, si existe
+		nodo1 = nodo1.nextSiblingElement("cac:AllowanceCharge");
 		
 		i++;
 	}
@@ -153,7 +164,9 @@ QString EFQToolButtonImportar::obten_id_proveedor(QDomDocument *doc) {
 /// ------------------ Importa una factura desde un fichero en formato UBL 1.0 ------------------- ///
 
 void EFQToolButtonImportar::importa_factura_ubl() {
+	_depura("EFQToolButtonImportar::importa_factura_ubl 1", 0);
 
+	
 	QString fichero = QFileDialog::getOpenFileName(
 			this,
 			"Escoja un fichero que contenga una efactura para importarlo a la base de datos de BulmaFact",
@@ -191,9 +204,21 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	QString impFactura = obten_valor_nodo("cbc:TotalTaxAmount", &doc);
 	QString totalFactura = obten_valor_nodo("cbc:TaxInclusiveTotalAmount", &doc);
 	
+	/// Comprobamos que el proveedor existe. Si no, abortamos y damos mensaje de error.
 	QString idProveedor = obten_id_proveedor(&doc);
+	
+	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + idProveedor + "'";
+	cursor2 *proveedor = m_companyact->cargacursor(query);
+	
+	if (proveedor->numregistros() == 0) {
+		_depura("El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2);
+		
+		return;
+	}
 
 	QString descuentoFactura = obten_descuento_factura(&doc);
+	
+/// Lineas de factura ------------------------------------------------------------------------
 	
 	// Contamos las lineas que hay
 	
@@ -214,13 +239,13 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	}
 	
 /// Vamos a usar un QMap para ir recorriendo las lineas de factura y los valores
-/// los iremos guardando, una vez obtenidos los que nos interesan, en una lista
-/// de QMaps.
+/// los iremos guardando, una vez obtenidos los que nos interesan, en una lista de QMaps.
 
 	QMap<QString, QString> mapa_lfactura;
 	QList< QMap<QString, QString> > lista_mapas_lfactura;
 	
 /// 	Estas son las claves que vamos a usar dentro del QMap mapa_lfactura
+
 /// 	mapa_lfactura["desclfactura"]
 /// 	mapa_lfactura["cantlfactura"]
 /// 	mapa_lfactura["pvplfactura"]
@@ -240,10 +265,59 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 		mapa_lfactura = lista_mapas_lfactura.at(i);
 		_depura(mapa_lfactura["desclfactura"] + "--" + mapa_lfactura["cantlfactura"] + "--" + mapa_lfactura["pvplfactura"] + "--" + mapa_lfactura["ivalfactura"] + "--" + mapa_lfactura["descuentolfactura"] + "--" + mapa_lfactura["idarticulo"], 2);
 	}
+	
+/// FIN Lineas de factura --------------------------------------------------------------------
 		
 	/// Mostramos la ficha con la informacion de la factura importada
 // 	FacturaProveedorView *fp = new FacturaProveedorView(m_companyact);
+// 	FacturaProveedorView *fp = m_companyact->s_newFacturaPro();
+	
+	FacturaProveedorView *fp = m_companyact->newFacturaProveedorView();
+	_depura("antes de workspace", 4);
+	m_companyact->m_pWorkspace->addWindow(fp);
+	_depura("despues de workspace", 2);
+	fp->inicializar();
+	_depura("final 1", 2);
+	fp->pintar();
+	_depura("final 2", 2);
+	fp->show();
+	_depura("final 3", 2);
+// 	fp->cargar("0");
 // 	fp->show();
+	
+// 	QString numeroFactura = obten_valor_nodo("ID", &doc);
+// 	QString fechaFactura = obten_valor_nodo("cbc:IssueDate", &doc);
+// 	QString descFactura = obten_valor_nodo("cbc:Note", &doc);
+// 	QString bimpFactura = obten_valor_nodo("cbc:LineExtensionTotalAmount", &doc);
+// 	QString impFactura = obten_valor_nodo("cbc:TotalTaxAmount", &doc);
+// 	QString totalFactura = obten_valor_nodo("cbc:TaxInclusiveTotalAmount", &doc);
+// 	
+// 	QString idProveedor = obten_id_proveedor(&doc);
+// 
+// 	QString descuentoFactura = obten_descuento_factura(&doc);
+	
+	fp->pintanumfacturap(numeroFactura);
+	fp->pintafechafacturap(fechaFactura);
+	fp->pintadescfacturap(descFactura);
+	fp->pintaidproveedor(proveedor->valor("idproveedor"));
+	
+	Fixed bimp(bimpFactura);
+	Fixed iva(impFactura);
+	
+ 	fp->pintatotales(bimp, iva);
+	fp->m_totalDiscounts->setText(descuentoFactura);
+	
+	/// Que seleccione la forma de pago el que esta importanto la factura
+	/// Esto lo hacemos asi porque guardamos este campo como una cadena
+	/// de texto dentro de la efactura, al ser algo tan variable mejor que
+	/// lo haga de nuevo el propio usuario
+	fp->pintaidforma_pago("");
+	
+	//dibujar_lineas_factura;
+	//dibujar_descuentos_factura
+
+	delete proveedor;
+// 	delete fp;
 }
 
 void EFQToolButtonImportar::click() {

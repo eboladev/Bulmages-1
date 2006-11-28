@@ -73,7 +73,7 @@ int FacturaProveedor::borrar() {
     return 0;
 }
 
-
+/// Esta funcion pinta una FacturaProveedor
 void FacturaProveedor::pintar() {
     _depura("FacturaProveedor::pintar", 0);
     pintaidproveedor(DBvalue("idproveedor"));

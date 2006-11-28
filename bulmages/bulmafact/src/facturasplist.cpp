@@ -117,7 +117,9 @@ QString FacturasProveedorList::generaFiltro() {
     return (filtro);
 }
 
-
+/// Este metodo responmde a la accion predeterminada sobre el listado
+/// Normalmente consiste en abrir la ficha del elemento seleccionado,
+/// en este caso, una factura de proveedor
 void FacturasProveedorList::editar(int row) {
     _depura("FacturasProveedorList::editar", 0);
     try {

@@ -85,11 +85,13 @@ int FacturaProveedorView::sacaWindow() {
 /// inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
 /// Sirve para inicializar los componenetes sin necesidad de query alguno
 void FacturaProveedorView::inicializar() {
-    _depura("FacturaProveedorView::inicializar", 0);
+    _depura("FacturaProveedorView::inicializar", 2);
     subform2->inicializar();
+    _depura("Hemos inicializado el subform2", 2);
     m_descuentos->inicializar();
+    _depura("Hemos inicializado m_descuentos", 2);
     dialogChanges_cargaInicial();
-    _depura("END FacturaProveedorView::inicializar", 0);
+    _depura("END FacturaProveedorView::inicializar", 2);
 }
 
 
