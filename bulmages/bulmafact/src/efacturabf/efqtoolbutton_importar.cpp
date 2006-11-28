@@ -273,7 +273,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 // 	FacturaProveedorView *fp = m_companyact->s_newFacturaPro();
 	
 	FacturaProveedorView *fp = m_companyact->newFacturaProveedorView();
-	_depura("antes de workspace", 4);
+	_depura("antes de workspace", 2);
 	m_companyact->m_pWorkspace->addWindow(fp);
 	_depura("despues de workspace", 2);
 	fp->inicializar();
@@ -282,6 +282,37 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	_depura("final 2", 2);
 	fp->show();
 	_depura("final 3", 2);
+
+
+// ====================================================
+
+    ListLinFacturaProveedorView *lineas = fp->getlistalineas();
+
+        for (int i = 0; i < 4; i++) {
+            lineas->setinsercion(FALSE);
+            SDBRecord *rec = lineas->lista()->last();
+/*
+    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
+    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
+    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
+    addSHeader("idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea"));
+    addSHeader("desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
+    addSHeader("cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
+    addSHeader("pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
+    addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
+    addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
+    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Factura"));
+*/
+
+            rec->setDBvalue("codigocompletoarticulo", "020401");
+            rec->setDBvalue("cantlfacturap", "56.98");
+            rec->setDBvalue("desclfacturap", "Toma maroma, pastillas de goma.");
+            lineas->setinsercion(TRUE);
+            lineas->nuevoRegistro();
+        } // end for
+
+//  ===================================================
+
 // 	fp->cargar("0");
 // 	fp->show();
 	
