@@ -122,6 +122,5 @@ void EFactura::on_mui_cancelar_clicked() {
 // 	query = "UPDATE configuracion SET nombre='nombre' WHRE nombre='elnombre'";
 // 	m_companyact->begin();
 // 	m_companyact->ejecuta(query);
-// 	m_companyact->rollback();
-	
+// 	m_companyact->rollback();	
 }

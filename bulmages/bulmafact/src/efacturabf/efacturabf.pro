@@ -3,19 +3,19 @@
 # Subdir relative project main directory: ./src/efacturabf
 # Target is a library:  
 
-#FORMS += efacturabase.ui \
-#         efacturaenviobase.ui \
-#         efacturarecepcionbase.ui 
+FORMS += efacturabase.ui \
+         efacturaenviobase.ui \
+         efacturarecepcionbase.ui 
 HEADERS += efacturabf.h \
-#           efactura.h \
-#           efacturaenvio.h \
-#           efacturarecepcion.h \
+           efactura.h \
+           efacturaenvio.h \
+           efacturarecepcion.h \
            efqtoolbutton.h \
 	   efqtoolbutton_importar.h 
 SOURCES += efacturabf.cpp \
-#           efactura.cpp \
-#           efacturaenvio.cpp \
-#           efacturarecepcion.cpp \
+           efactura.cpp \
+           efacturaenvio.cpp \
+           efacturarecepcion.cpp \
            efqtoolbutton.cpp \
 	   efqtoolbutton_importar.cpp
 	    
