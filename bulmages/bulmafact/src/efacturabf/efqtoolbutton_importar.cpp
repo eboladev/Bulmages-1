@@ -215,10 +215,10 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 		
 		return;
 	}
-
+	
 	QString descuentoFactura = obten_descuento_factura(&doc);
 	
-/// Lineas de factura ------------------------------------------------------------------------
+/// Obtenemos lineas de factura ------------------------------------------------------------------------
 	
 	// Contamos las lineas que hay
 	
@@ -234,9 +234,10 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	if (numlineas == 0) {
 		_depura("Esta factura es erronea. No contiene ninguna linea asociada", 2);
 		exit(-1);
-	} else {
-		_depura("Hay lineas de factura: " + QString::number(numlineas), 2);
-	}
+	} 
+// 	else {
+// 		_depura("Hay lineas de factura: " + QString::number(numlineas), 2);
+// 	}
 	
 /// Vamos a usar un QMap para ir recorriendo las lineas de factura y los valores
 /// los iremos guardando, una vez obtenidos los que nos interesan, en una lista de QMaps.
@@ -261,76 +262,116 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	}
 	
 	/// Debug en pantalla
-	for (int i = 0; i < lista_mapas_lfactura.size(); i++) {
-		mapa_lfactura = lista_mapas_lfactura.at(i);
-		_depura(mapa_lfactura["desclfactura"] + "--" + mapa_lfactura["cantlfactura"] + "--" + mapa_lfactura["pvplfactura"] + "--" + mapa_lfactura["ivalfactura"] + "--" + mapa_lfactura["descuentolfactura"] + "--" + mapa_lfactura["idarticulo"], 2);
-	}
+// 	for (int i = 0; i < lista_mapas_lfactura.size(); i++) {
+// 		mapa_lfactura = lista_mapas_lfactura.at(i);
+// 		_depura(mapa_lfactura["desclfactura"] + "--" + mapa_lfactura["cantlfactura"] + "--" + mapa_lfactura["pvplfactura"] + "--" + mapa_lfactura["ivalfactura"] + "--" + mapa_lfactura["descuentolfactura"] + "--" + mapa_lfactura["idarticulo"], 2);
+// 	}
 	
-/// FIN Lineas de factura --------------------------------------------------------------------
+/// FIN Obtenemos lineas de factura --------------------------------------------------------------------
 		
 	/// Mostramos la ficha con la informacion de la factura importada
-// 	FacturaProveedorView *fp = new FacturaProveedorView(m_companyact);
-// 	FacturaProveedorView *fp = m_companyact->s_newFacturaPro();
 	
 	FacturaProveedorView *fp = m_companyact->newFacturaProveedorView();
-	_depura("antes de workspace", 2);
 	m_companyact->m_pWorkspace->addWindow(fp);
-	_depura("despues de workspace", 2);
 	fp->inicializar();
-	_depura("final 1", 2);
 	fp->pintar();
-	_depura("final 2", 2);
 	fp->show();
-	_depura("final 3", 2);
 
-
-// ====================================================
-
-    ListLinFacturaProveedorView *lineas = fp->getlistalineas();
-
-        for (int i = 0; i < 4; i++) {
-            lineas->setinsercion(FALSE);
-            SDBRecord *rec = lineas->lista()->last();
 /*
-    addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
-    addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
-    addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
-    addSHeader("idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea"));
-    addSHeader("desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-    addSHeader("cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-    addSHeader("pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
-    addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
-    addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
-    addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Factura"));
+addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
+addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
+addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
+addSHeader("idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea"));
+addSHeader("desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
+addSHeader("cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
+addSHeader("pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
+addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
+addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
+addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Factura"));
+*/		
+
+/// Creamos las lineas de factura --------------------------------------------
+
+	ListLinFacturaProveedorView *lineas = fp->getlistalineas();
+	SDBRecord *rec = lineas->lista()->last();
+	cursor2 *articulo = NULL;
+
+	for (int i = 0; i < numlineas; i++) {
+		lineas->setinsercion(FALSE); /// Hace falta que este en el bucle? preguntar a Tomeu
+		mapa_lfactura = lista_mapas_lfactura.at(i);	
+
+		/// Comprobamos que existe un articulo con ese codigo en la BD
+		/// Si no es asi, mandamos una alerta al usuario y anyadimos ese
+		/// articulo a la linea como articulo generico		
+		query = "SELECT * FROM articulo WHERE codarticulo = '" + mapa_lfactura["idarticulo"] + "'";
+		articulo = m_companyact->cargacursor(query);
+		
+		if (articulo->numregistros() == 0) {
+			_depura("El articulo con codigo completo " + mapa_lfactura["idarticulo"] + " no existe en la base de datos. Se importara como articulo generico.", 2);
+			
+			mapa_lfactura["idarticulo"] = "ARTGEN";
+		}
+			
+		rec->setDBvalue("desclfacturap", mapa_lfactura["desclfactura"]);
+		rec->setDBvalue("cantlfacturap", mapa_lfactura["cantlfactura"]);
+		rec->setDBvalue("pvplfacturap", mapa_lfactura["pvplfactura"]);
+		rec->setDBvalue("ivalfacturap", mapa_lfactura["ivalfactura"]);
+		rec->setDBvalue("descuentolfacturap", mapa_lfactura["descuentolfactura"]);
+		
+		rec->setDBvalue("codarticulo", mapa_lfactura["idarticulo"]); // poner el del generico
+
+// 		rec->setDBvalue("idarticulo", mapa_lfactura["idarticulo"]);
+// 		rec->setDBvalue("", mapa_lfactura[""]);
+
+		lineas->setinsercion(TRUE);
+		lineas->nuevoRegistro();
+		
+		rec = lineas->lista()->last();
+	} // end for
+	
+	delete articulo;
+	delete rec;
+	
+/// Creamos los descuentos --------------------------------------------
+/*	
+	ListDescuentoFacturaProvView *descuentos = fp->getlistadescuentos();
+	SDBRecord *rec = descuentos->lista()->last();
+	cursor2 *articulo = NULL;
+
+	for (int i = 0; i < numlineas; i++) {
+		lineas->setinsercion(FALSE); /// Hace falta que este en el bucle? preguntar a Tomeu
+		mapa_lfactura = lista_mapas_lfactura.at(i);	
+			
+		rec->setDBvalue("desclfacturap", mapa_lfactura["desclfactura"]);
+		rec->setDBvalue("cantlfacturap", mapa_lfactura["cantlfactura"]);
+		rec->setDBvalue("pvplfacturap", mapa_lfactura["pvplfactura"]);
+		rec->setDBvalue("ivalfacturap", mapa_lfactura["ivalfactura"]);
+		rec->setDBvalue("descuentolfacturap", mapa_lfactura["descuentolfactura"]);
+		
+		rec->setDBvalue("codarticulo", mapa_lfactura["idarticulo"]); // poner el del generico
+
+// 		rec->setDBvalue("idarticulo", mapa_lfactura["idarticulo"]);
+// 		rec->setDBvalue("", mapa_lfactura[""]);
+
+		lineas->setinsercion(TRUE);
+		lineas->nuevoRegistro();
+		
+		rec = lineas->lista()->last();
+	} // end for
+	
+	delete articulo;
+	delete rec;
 */
-
-            rec->setDBvalue("codigocompletoarticulo", "020401");
-            rec->setDBvalue("cantlfacturap", "56.98");
-            rec->setDBvalue("desclfacturap", "Toma maroma, pastillas de goma.");
-            lineas->setinsercion(TRUE);
-            lineas->nuevoRegistro();
-        } // end for
-
-//  ===================================================
 
 // 	fp->cargar("0");
 // 	fp->show();
-	
-// 	QString numeroFactura = obten_valor_nodo("ID", &doc);
-// 	QString fechaFactura = obten_valor_nodo("cbc:IssueDate", &doc);
-// 	QString descFactura = obten_valor_nodo("cbc:Note", &doc);
-// 	QString bimpFactura = obten_valor_nodo("cbc:LineExtensionTotalAmount", &doc);
-// 	QString impFactura = obten_valor_nodo("cbc:TotalTaxAmount", &doc);
-// 	QString totalFactura = obten_valor_nodo("cbc:TaxInclusiveTotalAmount", &doc);
-// 	
-// 	QString idProveedor = obten_id_proveedor(&doc);
-// 
-// 	QString descuentoFactura = obten_descuento_factura(&doc);
 	
 	fp->pintanumfacturap(numeroFactura);
 	fp->pintafechafacturap(fechaFactura);
 	fp->pintadescfacturap(descFactura);
 	fp->pintaidproveedor(proveedor->valor("idproveedor"));
+	
+	delete proveedor;
 	
 	Fixed bimp(bimpFactura);
 	Fixed iva(impFactura);
@@ -347,7 +388,6 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	//dibujar_lineas_factura;
 	//dibujar_descuentos_factura
 
-	delete proveedor;
 // 	delete fp;
 }
 
