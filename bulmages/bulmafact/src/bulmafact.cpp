@@ -41,8 +41,13 @@
 #include "busquedaperiodo.h"
 
 
+/** Prepara la pantalla principal para que tenga todos los componentes.
+    Crea el workspace y lo inicializa.
+    Crea la instancia de company y la inicializa y almacena esta en el puntero m_company.
+    Crea la lista de ventanas.
+*/
 bulmafact::bulmafact(QString bd) : QMainWindow() {
-    _depura("bulmafact::bulmafact\n", 0);
+    _depura("bulmafact::bulmafact", 0);
     setupUi(this);
 
     setUpdatesEnabled(TRUE);
@@ -89,12 +94,14 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     m_pb->setVisible(FALSE);
     statusBar()->showMessage(tr("Listo"), 2000);
 
-    _depura("END bulmafact::bulmafact\n", 0);
+    _depura("END bulmafact::bulmafact", 0);
 }
 
 
+/** Libera memoria destruyendo todos los objetos creados.
+*/
 bulmafact::~bulmafact() {
-    _depura("Destructor de BulmaFact", 0);
+    _depura("bulmafact::~bulmafact", 0);
     delete pWorkspace;
     /// En MS-Windows no termina bien la ejecucion del programa y por eso
     /// agregamos esta salida rapida.
@@ -103,26 +110,35 @@ bulmafact::~bulmafact() {
     exit(0);
 #endif
 
-    _depura("End Destructor de BulmaFact", 0);
+    _depura("END bulmafact::~bulmafact", 0);
 }
 
 
+/** La facturacion automatica es un proceso que no se ha implementado todavia.
+*/
 void bulmafact::emitirfactura() {
-    _depura("emitir factura activado", 0);
+    _depura("bulmafact::emitirfactura", 0);
     QMessageBox::information(this,
                              tr("BulmaFact"),
                              tr("Pulse aceptar para emitir un monton de facturas"));
+    _depura("END bulmafact::emitirfactura", 0);
 }
 
 
+/** El metodo de recepcion de factura ya no tiene sentido con la
+    factura electronica.
+*/
+/// \TODO: Destruir este metodo.
 void bulmafact::recibirfactura() {
-    _depura("recibir factura activado", 0);
+    _depura("bulmafact::recibirfactura", 0);
     QMessageBox::critical(this,
                           tr("BulmaFact"),
                           tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
+    _depura("END bulmafact::recibirfactura", 0);
 }
 
-
+/** Este metodo ya no se usa puesto que tenemos una ventana de About */
+/// \TODO destruir este metodo.
 void bulmafact::about() {
     QMessageBox::about(this,
                        tr("Qt Application Example"),
@@ -130,17 +146,20 @@ void bulmafact::about() {
                           "QMainWindow,\nQMenuBar and QToolBar."));
 }
 
-
+/** Este metodo ya no se usa */
+/// \TODO: Destruir este metodo.
 void bulmafact::aboutQt() {
     QMessageBox::aboutQt(this, tr("Qt Application Example"));
 }
 
 
+/// \TODO: Revisar este metodo.
 void bulmafact::s_FPago() {
     m_company->s_FPago();
 }
 
-
+/** Intercambia entre el modo ventana completa y el modo ventana normal
+*/
 void bulmafact::s_ventanaCompleta() {
     if (isFullScreen()) {
         showNormal();
@@ -149,26 +168,34 @@ void bulmafact::s_ventanaCompleta() {
     } // end if
 }
 
-
+/** Metodo que responde a la pulsacion de About en el menu.
+    Inicializa la ventana de About y la muestra.
+*/
 void bulmafact::s_About() {
+    _depura("bulmafact::s_About", 0);
     AboutView about;
     about.exec();
+    _depura("END bulmafact::s_About", 0);
 }
 
 
+/** Evento de cerrar la ventana principal.
+    Libera parte de la memoria reservada. Ya que sabemos que se va a cerrar el programa.
+*/
 void bulmafact::closeEvent(QCloseEvent *) {
     _depura("bulmafact::closeEvent", 0);
     delete m_company;
     delete m_list;
 #ifdef WINDOWS
-
     exit(0);
 #endif
-
     _depura("END bulmafact::closeEvent", 0);
 }
 
 
+/** Captura el evento de cambio de ventana en el workSpace y actua sobre el
+    listado de ventanas para que seleccione la ventana adecuada.
+*/
 void bulmafact::informaindexador(QWidget *w) {
     _depura("bulmafact::informaindexador", 0);
     /// No existe una ventana que activar.

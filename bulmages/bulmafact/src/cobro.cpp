@@ -26,7 +26,10 @@
 #include "configuracion.h"
 
 
+/** Inicializa el DBRecord para que trabaje con la tabla cobro.
+*/
 Cobro::Cobro(company *comp) : DBRecord(comp) {
+    _depura("Cobro::Cobro", 0);
     companyact = comp;
     setDBTableName("cobro");
     setDBCampoId("idcobro");
@@ -37,13 +40,23 @@ Cobro::Cobro(company *comp) : DBRecord(comp) {
     addDBCampo("refcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Referencia del cobro"));
     addDBCampo("cantcobro", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Cobro", "Cantidad"));
     addDBCampo("comentcobro", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cobro", "Comentarios"));
+    _depura("END Cobro::Cobro", 0);
+}
+
+/** No requiere de acciones especiales en el constructor.
+*/
+Cobro::~Cobro() {
+    _depura("Cobro::~Cobro", 0);
+    _depura("END Cobro::~Cobro", 0);
 }
 
 
-Cobro::~Cobro() {}
-
-
+/** Este mapa se encarga de pintar el cobro a traves de la pantalla de presentacion.
+    Para ello utiliza los metodos virtuales pintarXXX() que deben estar implementados
+    en la clase de visualizacion.
+*/
 void Cobro::pintar() {
+    _depura("Cobro::pintar", 0);
     pintaidcobro(DBvalue("idcobro"));
     pintaidcliente(DBvalue("idcliente"));
     pintafechacobro(DBvalue("fechacobro"));
@@ -51,9 +64,18 @@ void Cobro::pintar() {
     pintarefcobro(DBvalue("refcobro"));
     pintaprevisioncobro(DBvalue("previsioncobro"));
     pintacomentcobro(DBvalue("comentcobro"));
+    _depura("END Cobro::pintar", 0);
 }
 
 
+/** Este metodo se encarga de guardar el cobro en la Base de datos.
+    Crea una transaccion e invoca al metodo DBsave de DBRecord.
+    Una vez guardado se hace una carga para incorporar los elementos que haya podido
+    introducir la base de datos (p. ej: La referencia del cobro).
+    
+    Si se produce un error genera un mensaje de error y devuelve -1.
+    Si todo va bien devuelve 0.
+*/
 int Cobro::guardar() {
     _depura("Cobro::guardar", 0);
     try {

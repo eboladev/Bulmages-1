@@ -40,17 +40,17 @@
 
 
 class company;
-//class Empresa;
-
 
 /// Muestra el albar&aacute;n a cliente.
-/** */
+/** Clase que globaliza los Albaranes a Cliente derivando de las clases Ficha y AlbaranCliente.
+    Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
+    Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.    
+*/
 class AlbaranClienteView : public Ficha, public Ui_AlbaranClienteBase, public AlbaranCliente {
     Q_OBJECT
 
 public:
     AlbaranClienteView(company *, QWidget *);
-    //AlbaranClienteView(Empresa *, QWidget *);
     ~AlbaranClienteView();
     void inicializar();
     void pintaIdAlbaran(QString) {}

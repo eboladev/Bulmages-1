@@ -32,6 +32,10 @@
 #include "informereferencia.h"
 
 
+/** Inicializa todos los componentes del listado.
+    Hace una presentacion inicial.
+    Mete la ventana en el workSpace si estamos en modo edicion.
+*/
 ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmode)
         : Ficha(parent, flag), pgimportfiles(comp) {
     _depura("ClientsList::ClientsList", 0);
@@ -43,7 +47,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
     mdb_nomcliente = "";
     m_modo = editmode;
     hideBusqueda();
-    /// Si estamos en el modo edici&oacute;n metemos la ventana en el lugar apropiado.
+    /// Si estamos en el modo edici&oacute;n metemos la ventana en el workSpace.
     if (m_modo == EditMode) {
         m_companyact->meteWindow(windowTitle(), this);
     } else {
@@ -60,13 +64,17 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
 }
 
 
+/** No requiere acciones especiales en el destructor de la clase.
+*/
 ClientsList::~ClientsList() {
     _depura("ClientsList::~ClientsList", 0);
+    _depura("END ClientsList::~ClientsList", 0);
 }
 
 
-/// Iniciamos los clientes.
-/// Hacemos la consulta a la base de datos y presentamos el listado.
+/** Todo el listado de clientes lo presenta el Subformulario mui_list del tipo ListLinCliente.
+*/
+/// \TODO: Mejorar el sistema de filtrado incluyendo una funcion de generar Filtro.
 void ClientsList::presenta() {
     _depura("ClientsList::presenta", 0);
     mui_list->cargar("SELECT * FROM cliente  WHERE nomcliente LIKE '%" + m_findClient->text() + "%' ORDER BY nomcliente");
@@ -74,6 +82,12 @@ void ClientsList::presenta() {
 }
 
 
+/** LA accion de editar tiene una doble vertiente dependiendo del modo en que se ha abierto la ventana.
+    Modo Edicion:
+	- Crea una instancia de ClienteView, lo inicializa y lo presenta.
+    Modo Seleccion:
+	- Establece cual es el elemento seleccionado y se cierra la ventana para devolver el control.
+*/
 void ClientsList::editar(int row) {
     _depura("ClientsList::editar", 0);
     mdb_idcliente = mui_list->DBvalue("idcliente", row);
@@ -94,15 +108,23 @@ void ClientsList::editar(int row) {
 }
 
 
+/** SLOT que responde a la pulsacion del boton editar.
+    Comprueba que existe un elemento seleccionado y llama al metodo editar().
+*/
 void ClientsList::on_mui_editar_clicked() {
+    _depura("ClientsList::on_mui_editar_clicked", 0);
     if (mui_list->currentRow() < 0) {
         _depura("Debe seleccionar un elemento", 2);
         return;
     } // end if
     editar(mui_list->currentRow());
+    _depura("END ClientsList::on_mui_editar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton imprimir.
+    La impresion de listados esta completamente delegada a SubForm3
+*/
 void ClientsList::on_mui_imprimir_clicked() {
     _depura("ClientsList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Clientes"));
@@ -110,12 +132,22 @@ void ClientsList::on_mui_imprimir_clicked() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton informecliente.
+    El informe es un informe de todas las operaciones realizadas por cada cliente y un resumen de totales del mismo.
+    Instancia InformeClientes, lo inicializa y lo lanza.
+*/
 void ClientsList::on_mui_informeclientes_clicked() {
+    _depura("ClientsList::on_mui_informeclientes_clicked", 0);
     InformeClientes info(m_companyact);
     info.generarInforme();
+    _depura("END ClientsList::on_mui_informeclientes_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton borrar.
+    Instancia la clase ClienteView, lo inicializa con el cliente seleccionado y le lanza el evento de borrar.
+    Esta es la forma adecuada de borrar desde el listado ya que asi preservamos el tema plugins.
+*/
 void ClientsList::on_mui_borrar_clicked() {
     _depura("ClientsList::on_mui_borrar_clicked", 0);
     try {
@@ -135,7 +167,12 @@ void ClientsList::on_mui_borrar_clicked() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton exportar.
+    Saca un dialog selector de archivo para que indiquemos a que archivo exportar.
+    Llama a bulmafact2XML para hacer la exportacion.
+*/
 void ClientsList::on_mui_exportar_clicked() {
+    _depura("ClientsList::on_mui_exportar_clicked", 0);
     QFile filexml(QFileDialog::getSaveFileName(
                       this,
                       tr("Elija el archivo"),
@@ -148,10 +185,17 @@ void ClientsList::on_mui_exportar_clicked() {
     } else {
         _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
     } // end if
+    _depura("END ClientsList::on_mui_exportar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton importar.
+    Saca un selector de archivos para indicar desde que archivo importar.
+    Llama a XML2BulmaFact para hacer la importacion.
+    Refresca el listado.
+*/
 void ClientsList::on_mui_importar_clicked() {
+    _depura("ClientsList::on_mui_importar_clicked", 0);
     QFile filexml(QFileDialog::getOpenFileName(
                       this,
                       tr("Elija el archivo"),
@@ -165,12 +209,16 @@ void ClientsList::on_mui_importar_clicked() {
     } else {
         _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
     } // end if
+    _depura("ClientsList::on_mui_importar_clicked", 0);
 }
 
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** PRepara el subformulario para trabajar con la tabla cliente.
+    Establece que no se puedan insertar ni borrar lineas.
+*/
 ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     setDBTableName("cliente");
     setDBCampoId("idcliente");

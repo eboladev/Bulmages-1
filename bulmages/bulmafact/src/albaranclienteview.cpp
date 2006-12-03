@@ -46,6 +46,10 @@
 #include "presupuestoview.h"
 
 
+/** Constructor de la clase corresponde a la parte visual de la ficha de cliente.
+    Inicializa la ventana y todos sus componentes.
+    Mete la ventana en el WorkSpace.
+*/        
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         : Ficha(parent), AlbaranCliente(comp) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
@@ -72,17 +76,30 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
 }
 
 
+/** Destructor de la clase.
+    Indica al listado que debe actualizarse.
+*/
+/// \TODO: Este metodo deberia mejorarse para que indicase al listado que 
+/// solo debe eliminar una fila del mismo.
 AlbaranClienteView::~AlbaranClienteView() {
+    _depura("AlbaranClienteView::~AlbaranClienteView(", 0);
     companyact->refreshAlbaranesCliente();
+    _depura("END AlbaranClienteView::~AlbaranClienteView(", 0);
 }
 
 
+/** Saca la ventana del workSpace. Este metodo es llamado desde Ficha.
+*/
 int AlbaranClienteView::sacaWindow() {
+    _depura("AlbaranClienteView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END AlbaranClienteView::sacaWindow", 0);
     return 0;
 }
 
 
+/** Inicializa todos los elementos del formulario
+*/
 void AlbaranClienteView::inicializar() {
     _depura("AlbaranClienteView::inicializar", 0);
     subform2->inicializar();
@@ -91,15 +108,25 @@ void AlbaranClienteView::inicializar() {
     _depura("END AlbaranClienteView::inicializar", 0);
 }
 
+/** Pinta los totales en las casillas correspondientes
+*/
 void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    _depura("AlbaranClienteView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalalbaran->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
+    _depura("END AlbaranClienteView::pintatotales", 0);
 }
 
 
+/** Metodo que responde a la opcion de ver el presupuesto correspondiente con
+    este albaran.
+    
+    Busca los presupuestos por referencia y abre los que tienen la misma referencia.
+*/
 void AlbaranClienteView::s_verpresupuesto() {
+    _depura("AlbaranClienteView::s_verpresupuesto", 0);
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" +
                        DBvalue("refalbaran") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -126,11 +153,16 @@ void AlbaranClienteView::s_verpresupuesto() {
         bud->show();
     } // end if
     delete cur;
+    _depura("END AlbaranClienteView::s_verpresupuesto", 0);
 }
 
 
+/** SLOT de ver el pedidocliente.
+    Busca los pedidos a cliente que tienen la misma referencia que el albaran
+    y los abre.
+*/
 void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
-    _depura("on_mui_verpedidocliente_clicked", 0);
+    _depura("AlbaranClienteView::on_mui_verpedidocliente_clicked", 0);
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refalbaran") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
@@ -145,11 +177,18 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
         _depura("no hay pedidos con esta referencia", 2);
     } // end if
     delete cur;
+    _depura("END AlbaranClienteView::on_mui_verpedidocliente_clicked", 0);
 }
 
 
 /// Se encarga de generar una factura a partir de un albar&aacute;n.
+/** Primero de todo busca una factura por referencia que tenga este albaran.
+    Si dicha factura existe entonces la cargamos y terminamos.
+    Si no existe dicha factura el sistema avisa y permite crear una poniendo
+    Todos los datos del albaran automaticamente en ella.
+*/
 void AlbaranClienteView::generarFactura() {
+    _depura("AlbaranClienteView::generarFactura", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funci&oacute;n.
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "'";
@@ -164,7 +203,7 @@ void AlbaranClienteView::generarFactura() {
     } // end if
     delete cur;
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
+    /// Informamos de que no existe la factura y a ver si lo queremos realizar.
     /// Si no salimos de la funci&oacute;n.
     if (QMessageBox::question(this,
                               tr("Factura inexistente"),
@@ -206,10 +245,13 @@ void AlbaranClienteView::generarFactura() {
     } // end for
     bud->calculaypintatotales();
     m_procesadoalbaran->setChecked(TRUE);
+    _depura("END AlbaranClienteView::generarFactura", 0);
 }
 
 
-/// Se encarga de agregar un albaran a una factura.
+/// Se encarga de agregar un albaran a una factura ya existente.
+/// Para ello presenta un selector de factura y permite escoger a que factura
+/// Agregar el albaran.
 void AlbaranClienteView::agregarFactura() {
     /// Pedimos la factura a la que agregar.
     _depura("AlbaranClienteView::agregarFactura", 0);
@@ -265,6 +307,11 @@ void AlbaranClienteView::agregarFactura() {
 }
 
 
+/// Se encarga de hacer la carga de un albaran. Para ello delega la responsabilidad
+/// De base de datos a la clase \class AlbaranCliente y se encarga unicamente
+/// De volver a meter la ventana en el workSpace para que esta coja adecuadamente
+/// El titulo. Tambien inicializa el sistema de control de cambios.
+/// Si algo falla se genera una excepcion.
 int AlbaranClienteView::cargar(QString id) {
     _depura("AlbaranClienteView::cargar", 0);
     try {
@@ -281,6 +328,13 @@ int AlbaranClienteView::cargar(QString id) {
 }
 
 
+/** Cuando guardamos un albaran se cogen los valores de todos los campos y
+    se meten en el sistema de la base de datos.
+    Luego se deja el guardado a la clase AlbaranCliente que tambien guarda
+    las lineas y los descuentos.
+    
+    Si algo falla se genera una excepcion.
+*/
 int AlbaranClienteView::guardar() {
     _depura("AlbaranClienteView::guardar", 0);
     try {
@@ -311,7 +365,11 @@ int AlbaranClienteView::guardar() {
 
 
 /// Crea un nuevo cobro para el albar&aacute;n seleccionado.
+// Util con cobros anticipados a la factura. El cobro tendra
+/// la misma cantidad, referencia y cliente que el albaran.
+/// Este metodo crea una pantalla de cobro y le pone los datos necesarios.
 void AlbaranClienteView::on_mui_cobrar_clicked() {
+    _depura("AlbaranClienteView::on_mui_cobrar_clicked", 0);
     CobroView *bud = companyact->newCobroView();
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalalbaran->text());
@@ -319,5 +377,6 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
     bud->setcomentcobro(DBvalue("descalbaran"));
     bud->pintar();
     bud->show();
+    _depura("END AlbaranClienteView::on_mui_cobrar_clicked", 0);
 }
 

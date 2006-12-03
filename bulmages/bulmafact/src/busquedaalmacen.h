@@ -34,7 +34,9 @@ class BusquedaAlmacen : public QComboBox {
     Q_OBJECT
 
 private:
+    /// El puntero a company para que se pueda trabajar con la base de datos.
     company *companyact;
+    /// En este cursor guardamos los resultados del query de almacenes. Que se corresponde con los presentados en el comboBox.
     cursor2 *m_cursorcombo;
 
 public:

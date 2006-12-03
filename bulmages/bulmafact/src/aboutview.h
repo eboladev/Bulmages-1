@@ -27,12 +27,15 @@
 
 
 /// Clase que muestra la ventana de informaci&oacute;n sobre el programa.
-/** */
+/** Es invocada desde el menu About y presenta la licencia, autores y entidades
+    que dan soporte al programa.
+    */
 class AboutView : public QDialog, private Ui::aboutdlg {
     Q_OBJECT
-
 public:
+    /// Constructor de la clase que hace todas las inicializaciones y muestra el dise&ntilde;o hecho en about.ui.
     AboutView(QDialog *parent = 0);
+    /// Destructor de la clase. Destruye todas las reservas de memoria din&aacute; dinamica que se hayan podido realizar.
     ~AboutView();
 };
 

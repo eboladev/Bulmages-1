@@ -23,7 +23,9 @@
 #include "company.h"
 #include "funcaux.h"
 
-
+/** Inicializa la clase poniendo a NULL todos los valores para que no haya confusion
+    en el hecho de que la clase aun no ha sido completamente inicializada.
+*/
 BusquedaCliente::BusquedaCliente(QWidget *parent)
         : QWidget(parent) {
     _depura("BusquedaCliente::BusquedaCliente", 0);
@@ -38,9 +40,16 @@ BusquedaCliente::BusquedaCliente(QWidget *parent)
 }
 
 
-BusquedaCliente::~BusquedaCliente() {}
+/** No requiere de acciones especiales en el destructor de clase.
+*/
+BusquedaCliente::~BusquedaCliente() {
+    _depura("BusquedaCliente::~BusquedaCliente", 0);
+    _depura("END BusquedaCliente::~BusquedaCliente", 0);
+}
 
 
+/** Se encarga de presentar en el Widget los valores seleccionados.
+*/
 void BusquedaCliente::pinta() {
     _depura ("BusquedaCliente::pinta", 0);
     m_semaforo = TRUE;
@@ -51,6 +60,12 @@ void BusquedaCliente::pinta() {
 
 }
 
+/** Mediante este metodo indicamos al Widget que cargue un cliente determinado.
+    Busca en la base de datos un cliente que coincida con el identificador pasado
+    y si lo encuentra lo carga y lo presente.
+    Dicho elemento se considera el elemento seleccionado.
+    Al finalizar llama al metodo pinta() para que se refelejen visualmente los cambios.
+*/
 void BusquedaCliente::setidcliente(QString val) {
     _depura("BusquedaCliente::setidcliente", 0);
     mdb_idcliente = val;
@@ -74,6 +89,11 @@ void BusquedaCliente::setidcliente(QString val) {
 }
 
 
+/** Mediante este metodo le decimos al Widget cual es el CIF del cliente seleccionado.
+    Busca en la base de datos cual el cliente cuyo CIF coincida con el que hemos seleccionado
+    y si lo encuentra lo pinta y lo considera el elemento seleccionado.
+    Al final llama al metodo pintar() para garantizar la correcta visualizacion del elemento en pantalla.
+*/
 void BusquedaCliente::setcifcliente(QString val) {
     _depura("BusquedaCliente::setcifcliente", 0, val);
     mdb_cifcliente = val;
@@ -96,9 +116,14 @@ void BusquedaCliente::setcifcliente(QString val) {
 }
 
 
-/// Busqueda de clientes.
+/** SLOT que responde a la accion de buscar un cliente.
+    Abre el listado de clientes en modo Seleccionar y espera a que cerremos
+    dicha ventana o que seleccionemos un elemento.
+    Una vez determinado el elemento lo considera como el elemento seleccionado 
+    y lo muestra.
+*/
 void BusquedaCliente::on_mui_buscar_clicked() {
-    _depura("BusquedaCliente::on_mui_buscar_clicked\n", 0);
+    _depura("BusquedaCliente::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
@@ -110,19 +135,26 @@ void BusquedaCliente::on_mui_buscar_clicked() {
 	emit(valueChanged(mdb_idcliente));
     } // end if
     delete diag;
-    _depura("END BusquedaCliente::on_mui_buscar_clicked\n", 0);
-
+    _depura("END BusquedaCliente::on_mui_buscar_clicked", 0);
 }
 
 
+/** SLOT que responde al fin de la edicion del campos de texto.
+    Se supone que hemos introducido un cliente identificable por codigo, por nombre o por CIF
+    Asi que se encarga de buscarlo y encontrarlo.
+*/
 void BusquedaCliente::on_m_cifcliente_editingFinished() {
     _depura("BusquedaCliente::on_m_cifcliente_editingFinished", 0);
     pinta();
     emit(valueChanged(mdb_idcliente));
     _depura("END BusquedaCliente::on_m_cifcliente_editingFinished", 0);
-
 }
 
+/** SLOT que responde a la modificacion del campo de texto del Widget.
+    A medida que vamos escribiendo en el campo de textos el sistema va buscando
+    posibles clientes que cumplan las caracteristicas. Si encuentra solo uno lo
+    considera como el cliente seleccionado.
+*/
 void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     _depura("BusquedaCliente::on_m_cifcliente_textChanged", 0);
     if (m_semaforo)

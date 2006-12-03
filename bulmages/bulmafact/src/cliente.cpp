@@ -27,6 +27,9 @@
 #include "plugins.h"
 
 
+/** Inicializa todos los componentes.
+    Prepara el DBRecord para trabajar con la tabla cliente.
+*/
 Cliente::Cliente(company *comp) : DBRecord(comp) {
     _depura("Cliente::Cliente", 0);
     m_companyact = comp;
@@ -57,10 +60,20 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
 }
 
 
-Cliente::~Cliente() {}
+/** No requiere de acciones adicionales.
+*/
+Cliente::~Cliente() {
+    _depura("Cliente::~Cliente", 0);
+    _depura("END Cliente::~Cliente", 0);
+}
 
 
+/** Metodo que permite borrar un cliente. 
+    Hace un delete sobre la base de datos del cliente que esta viendose.
+*/
+/// \TODO: Deberia meterse dentro de un bloque de depuracion try{} catch{}.
 void Cliente::borraCliente() {
+    _depura("Cliente::borraCliente", 0);
     if (DBvalue("idcliente") != "") {
         m_companyact->begin();
         int error = m_companyact->ejecuta("DELETE FROM cliente WHERE idcliente = " + DBvalue("idcliente"));
@@ -71,14 +84,24 @@ void Cliente::borraCliente() {
         m_companyact->commit();
         vaciaCliente();
     } // end if
+    _depura("END Cliente::borraCliente", 0);
 }
 
 
+/** Vacia los valores que pueda contener DBRecord para asegurarnos que no hay 
+    Basura en las variables.
+*/
 void Cliente::vaciaCliente() {
+    _depura("Cliente::vaciaCliente", 0);
     DBclear();
+    _depura("END Cliente::vaciaCliente", 0);
 }
 
 
+/** Se encarga de pintar un cliente.
+    PAra ello coge todos los valores del DBRecord y llama a los metodos pintar que deben
+    estar reimplementados en la clase de visualizacion.
+*/
 void Cliente::pintaCliente() {
     _depura("Cliente::pintaCliente", 0);
 
@@ -113,20 +136,34 @@ void Cliente::pintaCliente() {
 }
 
 
-/// Esta funcion carga un cliente.
+/** Metodo para realizar la carga de un cliente.
+    Hace el select en la base de datos y delega la responsibilidad de llentar los campos a
+    DBRecord.
+*/
+/// \TODO:    Justo depues de la carga deberia hacerse un pintado.
+/// \TODO:    Deberia estar en un bloque de depuracion try{} catch{}
 int Cliente::cargar(QString idcliente) {
-    _depura("Cliente::cargaCliente", 0);
+    _depura("Cliente::cargar", 0);
     QString query = "SELECT * FROM cliente WHERE idcliente = " + idcliente;
     cursor2 *cur = m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
     delete cur;
-    _depura("END Cliente::cargaCliente", 0);
+    _depura("END Cliente::cargar", 0);
     return 0;
 }
 
 
+/** Almacena en la base de datos los valores del registro.
+    Delega en DBRecord la composicion del query y la ejecucion del mismo.
+    Sin embargo crea la transaccion de borrado y la finaliza.
+    Tambien trata las posibles excepciones.
+    
+    Si todo va bien devuelve 0.
+    Si se produce algun error devuelve -1.
+*/
+/// \TODO: Deberia generar una excepcion que deberia ser tratada en la parte visual.
 int Cliente::guardar() {
     _depura("Cliente::guardar", 0);
     QString id;

@@ -24,21 +24,35 @@
 #include "company.h"
 
 
+/** Inicializa todos los componentes a NULL para que no haya confusiones sobre
+    si un elemento ha sido inicializado o no.
+    Hace la conexion del SIGNAL activated con m_activated para tratar el evento.
+*/
 BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
         : QComboBox(parent) {
+    _depura("BusquedaTrabajador::BusquedaTrabajador", 0);
     companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaTrabajador::BusquedaTrabajador", 0);
 }
 
-
+/** Libera la memoria dinamica que se estaba utilizando.
+*/
 BusquedaTrabajador::~BusquedaTrabajador() {
+    _depura("BusquedaTrabajador::~BusquedaTrabajador", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
+    _depura("END BusquedaTrabajador::~BusquedaTrabajador", 0);
 }
 
 
+/** Con este metodo se puede indicar al Widget cual es el trabajador seleccionado.
+    Recarga el cursor de trabajadores y cuando encuentra uno con el mismo identificador
+    que el que se ha pasado por parametro lo establece como elemento seleccionado.
+*/
 void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
+    _depura("BusquedaTrabajador::setidtrabajador", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM trabajador");
@@ -54,5 +68,6 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
         m_cursorcombo->siguienteregistro();
     } // end while
     setCurrentIndex(i1);
+    _depura("END BusquedaTrabajador::setidtrabajador", 0);
 }
 

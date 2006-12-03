@@ -39,6 +39,10 @@
 #include "plugins.h"
 
 
+/** Se encarga de la inicializacion de todos los componentes de la ventana de Articulo.
+    Inicializa la gestion de cambios para que se considere que no hay camibos realizados en la ventana.
+    Mete la ventana en el worSpace.
+*/
 ArticuloView::ArticuloView(company *comp, QWidget *parent)
         : Ficha(parent), Articulo(comp) {
     _depura("ArticuloView::ArticuloView", 0);
@@ -68,19 +72,27 @@ ArticuloView::ArticuloView(company *comp, QWidget *parent)
     _depura("END ArticuloView::ArticuloView", 0);
 }
 
-
+/** No requiere de ninguna actuacion especial. */
 ArticuloView::~ArticuloView() {
-    _depura("ArticuloView::INIT_destructor()\n", 0);
-    _depura("ArticuloView::END_destructor()\n", 0);
+    _depura("ArticuloView::~ArticuloView", 0);
+    _depura("END ArticuloView::~ArticuloView", 0);
 }
 
 
+/** Saca la ventana del workSpace.
+    Este metodo es invocado desde la clase Ficha.
+*/
 int ArticuloView::sacaWindow() {
+    _depura("ArticuloView::sacaWindow", 0);
     m_companyact->sacaWindow(this);
+    _depura("END ArticuloView::sacaWindow", 0);
     return 0;
 }
 
 
+/** Se encarga de presentar la ventana con los datos cargados en la clase DBRecord.
+    Tambien cambia el titulo de la ventana para que contenga la informacion correcta.
+*/
 void ArticuloView::pintar() {
     _depura("ArticuloView::pintar", 0);
 
@@ -108,7 +120,7 @@ void ArticuloView::pintar() {
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_ARTICLES) + m_codigocompletoarticulo->text() + ".jpg"));
 
     setWindowTitle(tr("Articulo") + " " + m_codigocompletoarticulo->text());
-    _depura("END ArticuloView::pintar", 1);
+    _depura("END ArticuloView::pintar", 0);
 }
 
 
@@ -133,28 +145,37 @@ int ArticuloView::cargar(QString idarticulo) {
         if (ret) {
             throw -1;
         } // end if
-        /// Cambiamos el titulo de la ventana para que aparezca el codigo del articulo.
-        setWindowTitle(tr("Articulo") + " " + DBvalue("codigocompletoarticulo"));
+
+	/// Cargamos los componentes.
+        m_componentes->cargar(DBvalue("idarticulo"));
+	
+        /// Pintamos para que la visualizacion sea correcta con la carga.
+	pintar();
+//        setWindowTitle(tr("Articulo") + " " + DBvalue("codigocompletoarticulo"));
+
+	/// Metemosl a ventana en el workSpace para que corrija el titulo.
         ret = m_companyact->meteWindow(windowTitle(), this);
         if (ret) {
             throw -1;
         } // end if
-        m_componentes->cargar(DBvalue("idarticulo"));
+
+	/// Iniciamos el control de cambios para que se considere que no hay cambios realizados.
+        dialogChanges_cargaInicial();
+
 
     } catch (...) {
         mensajeInfo(tr("Error en la carga del articulo"));
         return -1;
     } // end try
-    pintar();
-    dialogChanges_cargaInicial();
     _depura("END ArticuloView::cargar()\n", 0);
     return 0;
 }
 
 
 /// Hace la carga del combo-box de tipos de IVA para el art&iacute;culo.
+/// \TODO: Debe crearse un Widget para tipos de IVA.
 int ArticuloView::cargarcomboiva(QString idIva) {
-    _depura("ArticuloView::INIT_cargarcomboiva()\n", 0);
+    _depura("ArticuloView::cargarcomboiva", 0);
 
     m_cursorcombo = NULL;
     if (m_cursorcombo != NULL) {
@@ -180,14 +201,17 @@ int ArticuloView::cargarcomboiva(QString idIva) {
         m_combotipo_iva->setCurrentIndex(i1 - 1);
     } // end if
 
-    _depura("ArticuloView::END_cargarcomboiva()\n", 0);
+    _depura("END ArticuloView::cargarcomboiva", 0);
     return 0;
 }
 
 
-/// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
+/** SLOT que se invoca al pulsar sobre el bot&oacute;n de borrar.
+    Pregunta si se desea borrar y en caso afirmativo hace el borrado.
+    Una vez acabo resetea el control de cambios para que se considere que no hay cambios.
+*/
 void ArticuloView::on_mui_borrar_clicked() {
-    _depura("ArticuloView::INIT_boton_borrar()\n", 0);
+    _depura("ArticuloView::on_mui_borrar_clicked", 0);
 
     if (DBvalue("idarticulo") != "") {
         if (QMessageBox::question(this,
@@ -198,12 +222,15 @@ void ArticuloView::on_mui_borrar_clicked() {
             dialogChanges_cargaInicial();
         } // end if
     } // end if
-    _depura("ArticuloView::END_boton_borrar()\n", 0);
+    _depura("END ArticuloView::on_mui_borrar_clicked", 0);
 }
 
-
+/** SLOT que responde a la finalizacion de edicion del codigocompleto del articulo.
+    En cuyo caso lo que se hace es buscar un articulo que tenga dicho codigo y cargar su 
+    ficha.
+*/
 void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
-    _depura("ArticuloView::INIT_s_findArticulo()\n", 0);
+    _depura("ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
 
     QString SQlQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + m_codigocompletoarticulo->text() + "'";
     cursor2 *cur = m_companyact->cargacursor(SQlQuery);
@@ -212,13 +239,16 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
     } // end if
     delete cur;
 
-    _depura("ArticuloView::END_s_findArticulo()\n", 0);
+    _depura("END ArticuloView::on_m_codigocompletoarticulo_editingFinished", 0);
 }
 
 
-/// Metodo de guardar la ficha. Guarda todos los componentes de la ficha.
-/// Si todo ha ido bien devuelve 0.
-/// Si hay alg&uacute;n error debe ser tratado con el manejo de excepciones catch.
+/** Metodo de guardar la ficha. Guarda todos los componentes de la ficha.
+    Si todo ha ido bien devuelve 0.
+    Si hay alg&uacute;n error debe ser tratado con el manejo de excepciones catch.
+    Si se produce algun error devuelve una excepcion -1.
+    Si se ha cambiado la imagen la almacena en el directorio correspondiente.
+*/
 int ArticuloView::guardar() {
     try {
         _depura("ArticuloView::guardar()\n", 0);
@@ -265,6 +295,15 @@ int ArticuloView::guardar() {
 }
 
 
+/** Metodo de borrar un articulo. 
+    Hace las comprobaciones necesarias para el guardado.
+    Crea una transaccion de borrado para borrar primero los componentes y luego la ficha.
+    Tambien lanza los plugins por si hay componentes adicionales en el borrado.
+    Si todo ha ido bien cierra la ventana.
+    NOTA: Este metodo no hace la pregunta de desea borrar los cambios ya que
+    a veces interesa poder borrar sin preguntar. Por eso la preguna la hace
+    on_mui_borrar_clicked().
+*/
 int ArticuloView::borrar() {
     _depura ("ArticuloView::borrar", 0);
     try {
@@ -289,6 +328,10 @@ int ArticuloView::borrar() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton de cambio de imagen.
+    Abre la imagen y la almacenta al mismo tiempo que la presenta.
+    Es el metodo de guardado quien determina como almacenarla.
+*/
 void ArticuloView::on_mui_cambiarimagen_clicked() {
     _depura("ArticuloView::INIT_s_cambiarimagen()\n", 0);
     m_archivoimagen = QFileDialog::getOpenFileName(
@@ -302,10 +345,15 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 }
 
 
+/** Este metodo responde a la pulsacion del boton aceptar.
+*/
+/// \TODO: Deberia estar implementado en la clase Ficha y ser eliminado de aqui.
 void ArticuloView::on_mui_aceptar_clicked() {
+    _depura("ArticuloView::on_mui_aceptar_clicked", 0);
     try {
         guardar();
         close();
     } catch (...) {}
+    _depura("END ArticuloView::on_mui_aceptar_clicked", 0);
 }
 

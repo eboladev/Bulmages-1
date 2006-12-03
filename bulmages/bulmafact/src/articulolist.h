@@ -28,22 +28,26 @@
 #include "ficha.h"
 
 
-/// Clase que maneja el detalle de la lista de art&iacute;culos.
-/** */
+/** Clase que maneja el subformulario de la lista de art&iacute;culos.
+    Deriva de SubForm2Bf y agrega la configuracion para tratar especificamente
+    con la tabla articulo.
+*/
 class ArticuloListSubForm : public SubForm2Bf {
     Q_OBJECT
 public:
     ArticuloListSubForm(QWidget *parent = 0, const char *name = 0);
-    ~ArticuloListSubForm() {}
-    ;
+    ~ArticuloListSubForm() {};
 };
 
 
 #include "ui_articleslistbase.h"
 
 
-/// Clase que maneja la lista de art&iacute;culos.
-/** */
+/** Clase que maneja la ventana de listado de articulos
+    Se encarga del control y manejo de la venta que presenta el listado de articulos.
+*/
+/// \TODO: Deberia crearse la clase Listado y hacer que esta clase derive de Listado en lugar
+/// derivar de Ficha.
 class ArticuloList : public Ficha, private Ui_ArticuloListBase, public pgimportfiles {
     Q_OBJECT
 
@@ -54,17 +58,21 @@ public:
     };
 
 private:
+    /// El identificador de articulo para el modo seleccion. Indica el articulo seleccionado.
     QString mdb_idarticulo;
+    /// El nombre del articulo seleccionado si estamos en modo seleccion.
     QString mdb_nomarticulo;
+    /// El codigo completo del articulo seleccionado si estamos en modo seleccion.
     QString mdb_codigocompletoarticulo;
+    /// El puntero a la clase company para manejar la BD y hacer traspaso de mensajes.
     company *m_companyact;
 //    Empresa *m_empresaact;
+    /// El indicador del modo (Seleccion o Edicion). Esta funcionalidad deberia pasarse a la clase Listado.
     edmode m_modo;
     void inicializar();
 
 public:
     ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-//    ArticuloList(Empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~ArticuloList();
     QString formaQuery();
     QString detalleArticulos();

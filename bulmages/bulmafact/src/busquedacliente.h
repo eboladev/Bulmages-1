@@ -31,17 +31,23 @@ class company;
 
 
 /// Permite buscar y seleccionar un cliente.
-/** Muestra la parte del formulario que permite buscar y seleccionar un
-    cliente. */
+/** Implementa un Widget que permite buscar y seleccionar un
+    cliente de BulmaFact de forma generica. */
 class BusquedaCliente : public QWidget, public Ui_BusquedaClienteBase {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company para poder opera con la base de datos y hacer paso de mensajes.
     company *companyact;
+    /// Almacena el idcliente del cliente seleccionado.
     QString mdb_idcliente;
+    /// Almacena el nombrecliente del cliente seleccionado.
     QString mdb_nomcliente;
+    /// Almacena el cifcliente del cliente seleccionado.
     QString mdb_cifcliente;
+    /// Almacena el codigo cliente del cliente seleccionado.
     QString mdb_codcliente;
+    /// Impide que se produzca un dead-lock entre pintar y on_mui_text_changed.
     bool m_semaforo;
 
 public:

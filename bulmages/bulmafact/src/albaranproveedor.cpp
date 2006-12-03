@@ -24,8 +24,11 @@
 #include "albaranproveedor.h"
 
 
+/** Constructor de la clase. Prepara el DBRecord para trabajar con la tabla albaranp
+*/
 AlbaranProveedor::AlbaranProveedor(company *comp)
         : DBRecord(comp) {
+    _depura("AlbaranProveedor::AlbaranProveedor", 0);	
     companyact = comp;
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
@@ -38,12 +41,23 @@ AlbaranProveedor::AlbaranProveedor(company *comp)
     addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("AlbaranProveedor", "Id almacen"));
     addDBCampo("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Referencia albaran proveedor"));
     addDBCampo("descalbaranp", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranProveedor", "Descripcion albaran proveedor"));
+    _depura("END AlbaranProveedor::AlbaranProveedor", 0);	
 }
 
 
-AlbaranProveedor::~AlbaranProveedor() {}
+/** Destructor de la clase, no necesita funcionalidades adicionales.
+*/
+AlbaranProveedor::~AlbaranProveedor() {
+    _depura("AlbaranProveedor::~AlbaranProveedor", 0);
+    _depura("END AlbaranProveedor::~AlbaranProveedor", 0);
+}
 
 
+/** Se encarga del borrado en la base de datos de una albaran de proveedor.
+    Si se produce algun error devuelve una excepcion.
+    Primero llama al borrado de las lineas y luego a los descuentos.
+    Por ultimo llama al borrado del registro correspondiente en albaranp.
+*/
 int AlbaranProveedor::borrar() {
     _depura("AlbaranProveedor::borrar", 0);
     try {
@@ -64,13 +78,22 @@ int AlbaranProveedor::borrar() {
 }
 
 
+/** Vacia los datos que puedan haber quedado en la clase DBRecord.
+*/
 void AlbaranProveedor::vaciaAlbaranProveedor()  {
+    _depura("AlbaranProveedor::vaciaAlbaranProveedor", 0);
     DBclear();
+    _depura("END AlbaranProveedor::vaciaAlbaranProveedor", 0);
 }
 
 
+/** Se encarga de hacerel pintado de la ficha del albaran.
+    Para ello coge todos los campos e invoca a los metodos pinta... que deben estar
+    implementados en la clase encargada de la visualizacion.
+    Tambien pinta los totales.
+*/
 void AlbaranProveedor::pintar()  {
-    _depura("pintaAlbaranProveedor\n", 0);
+    _depura("AlbaranProveedor::pintar", 0);
     pintaidalbaranp(DBvalue("idalbaranp"));
     pintanumalbaranp(DBvalue("numalbaranp"));
     pintafechaalbaranp(DBvalue("fechaalbaranp"));
@@ -82,12 +105,16 @@ void AlbaranProveedor::pintar()  {
     pintadescalbaranp(DBvalue("descalbaranp"));
     /// Pintamos los totales.
     pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    _depura("END AlbaranProveedor::pintar", 0);
 }
 
 
 /// Esta funcion carga un AlbaranProveedor.
+/// Hace el query adecuado, carga el registro a traves de DBRecord.
+/// Hace la carga de las lineas y de los descuentos.
+/// Invoca al pintado.
 int AlbaranProveedor::cargar(QString idbudget) {
-    _depura("AlbaranProveedor::cargar()\n", 0);
+    _depura("AlbaranProveedor::cargar", 0);
     QString query = "SELECT * FROM albaranp WHERE idalbaranp =" + idbudget;
     cursor2 * cur = companyact->cargacursor(query);
 
@@ -98,10 +125,18 @@ int AlbaranProveedor::cargar(QString idbudget) {
     listalineas->cargar(idbudget);
     listadescuentos->cargar(idbudget);
     pintar();
+    _depura("END AlbaranProveedor::cargar", 0);
     return 0;
 }
 
 
+/** Guarda el albaran de proveedor en la base de datos.
+    Para ello hace el guardado de DBRecord y luego guarda las lineas y los descuentos.
+    Una vez hecho el guardado se hace una carga para recuperar posibles datos que haya
+    introducido la base de datos como la referencia.
+    
+    Si algo falla devuelve una excepcion -1.
+*/
 int AlbaranProveedor::guardar() {
     _depura("AlbaranProveedor::guardar", 0);
     QString id;
@@ -126,6 +161,10 @@ int AlbaranProveedor::guardar() {
 }
 
 
+/** La impresion del albaran de proveedor no esta activada en estos momentos
+    ya que no se prevee que un albaran de un proveedor vaya a ser imprimido ya que
+    es un documento que entregan a la empresa y no uno que la empresa emite.
+*/
 void AlbaranProveedor::imprimirAlbaranProveedor() {
     /// Copiamos el archivo.
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranpproveedor.rml";

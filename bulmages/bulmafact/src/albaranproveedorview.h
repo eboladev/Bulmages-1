@@ -39,14 +39,15 @@ class company;
 //class Empresa;
 
 
-/// Muestra la ficha del albar&aacute;n de proveedor.
-/** */
+/** Se encarga de la ventana de albar&aacute;n de proveedor.
+    Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
+    de manejo de la base de datos.
+ */
 class AlbaranProveedorView : public Ficha, public Ui_AlbaranProveedorBase, public AlbaranProveedor {
     Q_OBJECT
 
 public:
     AlbaranProveedorView(company *, QWidget *);
-//    AlbaranProveedorView(Empresa *, QWidget *);
     ~AlbaranProveedorView();
     void inicializar();
     void pintaidalbaranp(QString) {}

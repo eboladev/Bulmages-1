@@ -24,18 +24,36 @@
 #include "company.h"
 
 
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no. 
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
 BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent)
         : QComboBox(parent) {
+    _depura("BusquedaSerieFactura::BusquedaSerieFactura", 0);
     companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaSerieFactura::BusquedaSerieFactura", 0);
 }
 
 
-BusquedaSerieFactura::~BusquedaSerieFactura() {}
+/** Libera la memoria reservada.
+*/
+BusquedaSerieFactura::~BusquedaSerieFactura() {
+    _depura("BusquedaSerieFactura::~BusquedaSerieFactura", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaSerieFactura::~BusquedaSerieFactura", 0);
+}
 
 
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
 void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
+    _depura("BusquedaSerieFactura::setcodigoserie_factura", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM serie_factura");
@@ -51,5 +69,6 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
         m_cursorcombo->siguienteregistro();
     }
     setCurrentIndex(i1);
+    _depura("END BusquedaSerieFactura::setcodigoserie_factura", 0);
 }
 

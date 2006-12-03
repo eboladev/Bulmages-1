@@ -408,5 +408,6 @@ AboutView::AboutView(QDialog *parent) : QDialog(parent) {
 }
 
 
+/// Destructor de la clase
 AboutView::~AboutView() {}
 

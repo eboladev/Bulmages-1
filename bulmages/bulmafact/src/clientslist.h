@@ -27,23 +27,26 @@
 #include "ficha.h"
 
 
-/// Administra el detalle de la lista de clientes.
-/** */
+/** Subformulario de clientes.
+    Esta clase derivada de SubForm2Bf presenta todo el listado de clientes.
+*/
 class ClienteListSubform : public SubForm2Bf {
     Q_OBJECT
 
 public:
     ClienteListSubform(QWidget *parent = 0, const char *name = 0);
-    ~ClienteListSubform() {}
-    ;
+    ~ClienteListSubform() {};
 };
 
 
 #include "ui_clientslistbase.h"
 
 
-/// Administra la lista de clientes.
-/** */
+/** Esta clase implementa la pantalla de listado de Clientes.
+    Deriva de Ficha para la estandarizacion de Pantallas.
+    Tiene dos modos de funcionamiento (Edicion y Seleccion)
+*/
+/// \TODO: Deberia crearse la clase Listado para poner en ella mas funcionalidades comunes a los listados.
 class ClientsList : public Ficha, public Ui_ClientsListBase, public pgimportfiles {
     Q_OBJECT
 
@@ -55,10 +58,15 @@ public:
     };
 
 private:
+    /// Indica si la pantalla esta en modo edicion o en modo seleccion.
     edmode m_modo;
+    /// Almacene el idcliente del registro seleccionado.
     QString mdb_idcliente;
+    /// Almacena el nomcliente del cliente seleccionado.
     QString mdb_nomcliente;
+    /// Almacena el cifcliente del registro seleccionado.
     QString mdb_cifcliente;
+    /// Puntero a la clase company para poder trabajar con la Base de Datos y poder hacer paso de mensajes.
     company *m_companyact;
 
 public:

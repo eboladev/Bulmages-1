@@ -28,11 +28,13 @@
 #include "dbrecord.h"
 
 
-/// Administra los datos de un cobro.
-/** */
+/** Clase que interactua entre la pantalla de Cobro y la base de datos.
+    Incorpora los metodos de guardado de datos y abstraye metodos de visualizacion.
+*/
 class Cobro : public DBRecord {
 
 protected:
+    /// Puntero a la clase company para poder trabajar con la Base de Datos y con el paso de mensajes.
     company *companyact;
 
 public:

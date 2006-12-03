@@ -28,13 +28,17 @@
 
 
 /// Permite buscar y seleccionar una provincia.
-/** Muestra la parte del formulario que permite buscar y seleccionar una
-    provincia. */
+/** Este Widget  permite buscar y seleccionar una  provincia. 
+    Antes de usar el Widget debe ser inicializa con setcompany()
+*/
+/// \TODO: Comprobar que libere correctamente la memoria.
 class BusquedaProvincia : public QComboBox {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company para poder trabajar con la base de datos. Debe inicializarse con setcompany().
     company *companyact;
+    /// Cursor que almacena en memoria la lista de provincias.
     cursor2 *m_cursorcombo;
 
 public:

@@ -30,15 +30,16 @@
 #include "funcaux.h"
 #include "subform2bf.h"
 
-/// Clase que maneja el detalle de los albaranes de proveedor.
-/** */
+/// Clase que maneja el subformulario de los albaranes de proveedor.
+/** Deriva de la clase SubForm2Bf.
+    Reimplementa los metodos de carga para que trabajan con la tabla albaranp.
+*/
 class AlbaranesProveedorListSubform : public SubForm2Bf {
     Q_OBJECT
 
 public:
     AlbaranesProveedorListSubform(QWidget *parent = 0);
-    ~AlbaranesProveedorListSubform() {}
-    ;
+    ~AlbaranesProveedorListSubform() {};
 
 public slots:
     virtual void cargar() {
@@ -58,17 +59,20 @@ public slots:
 #include "ui_albaranesproveedorlistbase.h"
 
 
-/// Clase que almacena la informaci&oacute; de los albaranes de proveedor.
-/** */
+/// Clase que controla la pantalla de listado de albaranes a proveedor.
+/// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
 class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase {
     Q_OBJECT
-
 private:
+    /// El puntero m_companyact que se propaga por practicamente todas las clases de la aplicacion.
     company *m_companyact;
-    //Empresa *m_empresaact;
+
+    /// Indicador de modo edicion o modo seleccion
     /// == 0 es modo edicion.
     /// == 1 es modo selector.
     int m_modo;
+    
+    /// En el caso de estar en modo seleccion esta variable de clase indicara el identificador seleccionado.
     QString mdb_idalbaranp;
 
 public:
@@ -88,11 +92,6 @@ public:
         m_proveedor->setcompany(comp);
         m_articulo->setcompany(comp);
         mui_list->setcompany(comp);
-//    void setempresa(Empresa *comp) {
-//        m_empresaact = comp;
-//        m_proveedor->setempresa(comp);
-//        m_articulo->setempresa(comp);
-//        mui_list->setempresa(comp);
     };
     QString idalbaranp() {
         return mdb_idalbaranp;
@@ -113,9 +112,7 @@ public:
     void meteWindow(QString nom, QObject *obj) {
         if (m_companyact != NULL) {
             m_companyact->meteWindow(nom, obj);
-//        if (m_empresaact != NULL) {
-//            m_empresaact->meteWindow(nom, obj);
-        }
+        } // end if
     };
     void setidproveedor(QString val) {
         m_proveedor->setidproveedor(val);
@@ -139,8 +136,6 @@ public slots:
     virtual void on_mui_crear_clicked()  {
         if (m_companyact != NULL)
             m_companyact->s_newAlbaranPro();
-//        if (m_empresaact != NULL)
-//            m_empresaact->s_newAlbaranPro();
     };
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {

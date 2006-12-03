@@ -31,25 +31,27 @@ class company;
 //class Empresa;
 
 
-/// Muestra la ventana de art&iacute;culos.
-/** */
+/** Esta clase controla la ventana de un articulo.
+    Deriva de la clase Ficha para el control de la ventana y de la clase Articulo
+    para el control con la base de datos.
+*/
 class ArticuloView : public Ficha, public Ui_ArticuloBase, public Articulo {
     Q_OBJECT
 
 private:
+    /// La imagen de un articulo es una excepcion ya que no se guarda en la base de datos
+    /// por ese motivo la almacenamos en esta variable que hace que corresponda con un archivo.
     QString m_archivoimagen;
+    /// El puntero a la clase company que indica con que empresa estamos trabajando.
     company *m_companyact;
     //    Empresa *m_empresaact;
     cursor2 *m_cursorcombo;
 
 public:
     ArticuloView(company *emp, QWidget *parent = 0);
-    //    ArticuloView(Empresa *emp, QWidget *parent = 0);
     ~ArticuloView();
     company *companyact() {
         return m_companyact;
-        //    Empresa *empresaact() {
-        //        return m_empresaact;
     }
 
 public:

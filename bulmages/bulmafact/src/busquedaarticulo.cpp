@@ -23,21 +23,34 @@
 #include "company.h"
 #include "funcaux.h"
 
-
+/** Inicializa todos los componentes a null para que no haya posibles
+    errores al introducir el puntero a company.
+*/
 BusquedaArticulo::BusquedaArticulo(QWidget *parent)
         : QWidget(parent) {
+    _depura("BusquedaArticulo::BusquedaArticulo", 0);
     setupUi(this);
     companyact = NULL;
     mdb_idarticulo = "";
     mdb_nomarticulo = "";
     mdb_codigocompletoarticulo = "";
+    _depura("END BusquedaArticulo::BusquedaArticulo", 0);
 }
 
 
-BusquedaArticulo::~BusquedaArticulo() {}
+/** El destructor no requiere de acciones especiales.
+*/
+BusquedaArticulo::~BusquedaArticulo() {
+    _depura("BusquedaArticulo::~BusquedaArticulo", 0);
+    _depura("END BusquedaArticulo::~BusquedaArticulo", 0);
+}
 
 
+/** Con este metodo indicamos al Widget que articulo presentar como cargado.
+    Lo busca en la base de datos y muestra el codigocompleto y el nombre.
+*/
 void BusquedaArticulo::setidarticulo(QString val) {
+    _depura("BusquedaArticulo::setidarticulo", 0);
     mdb_idarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE idarticulo='" + mdb_idarticulo + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -54,10 +67,15 @@ void BusquedaArticulo::setidarticulo(QString val) {
     delete cur;
     m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
     m_nomarticulo->setText(mdb_nomarticulo);
+    _depura("END BusquedaArticulo::setidarticulo", 0);
 }
 
-
+/** Con este metodo indicamos cual es el articulo que debe presentar el Widget
+    como seleccionado, indicando cual es su codigocompleto ya que es un indice
+    muy utilizado con los articulos.
+*/
 void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
+    _depura("BusquedaArticulo::setcodigocompletoarticulo", 0);
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -71,10 +89,16 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
     delete cur;
     m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
     m_nomarticulo->setText(mdb_nomarticulo);
+    _depura("END BusquedaArticulo::setcodigocompletoarticulo", 0);
 }
 
 
-/// Busqueda de articulos.
+/** SLOT que responde a la pulsacion del boton buscar. 
+    Crea un listado de articulos en modo seleccion y lo presenta quedando a la
+    espera de que se seleccione un articulo o se cierre dicho listado.
+    Una vez seleccionado un articulo lo considera como el articulo seleccionado por
+    el Widget.
+*/
 void BusquedaArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaArticulo::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -93,7 +117,12 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
 }
 
 
+/** SLOT que responde a terminar de escribir en el cuadro de texto del Widget.
+    Busca en la tabla de articulos un elemento con el codigocompletoarticulo coincidente
+    y si lo encuentra lo muestra y lo considera como el elemento seleccionado por este Widget.
+*/
 void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &val) {
+    _depura("BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
     mdb_codigocompletoarticulo = val;
     QString SQLQuery = "SELECT * FROM articulo WHERE codigocompletoarticulo='" + mdb_codigocompletoarticulo + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -108,5 +137,6 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
     m_codigocompletoarticulo->setText(mdb_codigocompletoarticulo);
     m_nomarticulo->setText(mdb_nomarticulo);
     emit(valueChanged(mdb_idarticulo));
+    _depura("END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
 }
 

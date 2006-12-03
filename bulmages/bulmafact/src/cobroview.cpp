@@ -33,7 +33,10 @@ using namespace std;
 
 #include "funcaux.h"
 
-
+/** inicializa todos los componentes de la clase.
+    Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
+    Mete la ventana en el workSpace.
+*/
 CobroView::CobroView(company *comp, QWidget *parent)
         : Ficha(parent), Cobro(comp) {
     _depura("CobroView::CobroView", 0);
@@ -52,18 +55,31 @@ CobroView::CobroView(company *comp, QWidget *parent)
 }
 
 
+/** No precisa acciones adicionales en el destructor. 
+*/
 CobroView::~CobroView() {
     _depura("CobroView::~CobroView", 0);
     _depura("END CobroView::~CobroView", 0);
 }
 
 
+/** Saca la ventana del workSpace.
+    Este metodo es invocado desde la clase Ficha.
+*/
 int CobroView::sacaWindow() {
+    _depura("CobroView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END CobroView::sacaWindow", 0);
     return 0;
 }
 
-
+/** Metodo de carga de un cobro.
+    Delega el meanejo con la base de datos a la clase Cobro.
+    Sin embargo se encarga de cambiar el titulo de la ventana y de refrescar.
+    
+    Si todo va bien devuelve 0.
+    Si se producen errores devuelve -1.
+*/
 int CobroView::cargar(QString id) {
     _depura("CobroView::cargar", 0);
     try {

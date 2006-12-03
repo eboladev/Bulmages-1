@@ -31,15 +31,20 @@ class company;
 
 
 /// Permite buscar y seleccionar una familia de art&iacute;culos.
-/** Muestra la parte del formulario que permite buscar y seleccionar una
-    familia de art&iacute;culos. */
+/** Este Widget permite buscar y seleccionar una familia de art&iacute;culos. 
+    Para usar en forma de selector de articulos.
+*/
 class BusquedaFamilia : public QWidget, public Ui_BusquedaFamiliaBase {
     Q_OBJECT
 
 private:
+    /// Mediante este puntero podemos trabajar con la base de datos y pasar mensajes.
     company *companyact;
+    /// Almacena el idfamilia que se haya seleccionado.
     QString mdb_idfamilia;
+    /// Almacena el nombrefamilia que se haya seleccionado.
     QString mdb_nombrefamilia;
+    /// Almacena el codigocompletofamilia que se haya seleccionado.
     QString mdb_codigocompletofamilia;
 
 public:

@@ -26,9 +26,12 @@
 #include "configuracion.h"
 #include "plugins.h"
 
-
-Articulo::Articulo(company *comp) : DBRecord(comp)
-{
+/** Se encarga de inicializar la clase.
+    Prepara el DBRecord para trabajar con la tabla articulo.
+    Agrega los campos necesarios para toda la ficha.
+*/
+Articulo::Articulo(company *comp) : DBRecord(comp) {
+  _depura("Articulo::Articulo", 0);
   m_companyact = comp;
   setDBTableName("articulo");
   setDBCampoId("idarticulo");
@@ -46,14 +49,19 @@ Articulo::Articulo(company *comp) : DBRecord(comp)
   addDBCampo("stockarticulo", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Articulo", "Stock"));
   addDBCampo("inactivoarticulo", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Articulo", "Inactivo"));
   addDBCampo("pvparticulo", DBCampo::DBnumeric, DBCampo::DBNotNull, QApplication::translate("Articulo", "P.V.P. base"));
+  _depura("END Articulo::Articulo", 0);
 }
 
+/** No precisa de ninguna accion especial */
+Articulo::~Articulo() {
+    _depura("Articulo::~Articulo", 0);
+    _depura("END Articulo::~Articulo", 0);
+}
 
-Articulo::~Articulo() {}
-
-
-void Articulo::pintar()
-{
+/** Se encarga de realizar el pintado de la ficha a partir de los datos cargados
+    en el DBRecord.
+*/
+void Articulo::pintar() {
   _depura("Articulo::pintar", 0);
   /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
   int res = g_plugins->lanza("Articulo_pintar", this);

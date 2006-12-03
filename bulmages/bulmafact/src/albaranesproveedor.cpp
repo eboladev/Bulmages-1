@@ -32,19 +32,36 @@
 #include "presupuestoview.h"
 
 
+/** Constructor de AlbaranesProveedor sin inicializar con la clase company.
+    Util para casos en los que aun no se haya inicializado company.
+    No sera completamente operativo hasta que se haya inicializado con 
+    setcompany.
+    
+    Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
+*/
+/// \TODO: Deberia derivar de la clase Listado o de Ficha.
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
         : QWidget(parent, flag) {
+    _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
     mdb_idalbaranp = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
 }
 
 
+/** Constructor completo de la clase con el puntero a Company adecuado.
+    Inicializa todos los componentes con company.
+    Hace una presentacion inicial.
+    Mete la ventana en el workSpace.
+    Oculta la parte de Busqueda.
+*/
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
         : QWidget(parent, flag) {
+    _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     m_companyact = comp;
     m_proveedor->setcompany(comp);
@@ -55,22 +72,36 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlag
     mdb_idalbaranp = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END AlbaranesProveedor::AlbaranesProveedor", 0);
 }
 
 
+/** Refresca la ventana de listados de albaranes.
+*/
 AlbaranesProveedor::~AlbaranesProveedor() {
+    _depura("AlbaranesProveedor::~AlbaranesProveedor", 0);
     m_companyact->refreshAlbaranesProveedor();
+    _depura("END AlbaranesProveedor::~AlbaranesProveedor", 0);
 }
 
 
+/** Saca la ventan del workspace.
+    Este metodo es llamado desde la clase Ficha.
+*/
 int AlbaranesProveedor::sacaWindow() {
+    _depura("AlbaranesProveedor::sacaWindow", 0);
     m_companyact->sacaWindow(this);
+    _depura("END AlbaranesProveedor::sacaWindow", 0);
     return 0;
 }
 
 
+/** Hace la carga del listado, 
+    Calcula el total de albaranes con las opciones de filtrado descritas y
+    lo presenta.
+*/
 void AlbaranesProveedor::presenta() {
-    _depura("AlbaranesProveedor::presenta().", 1);
+    _depura("AlbaranesProveedor::presenta", 0);
     if (m_companyact != NULL ) {
         mui_list->cargar("SELECT *, totalalbaranp AS total, " \
                         "bimpalbaranp AS base, impalbaranp AS impuestos " \
@@ -94,9 +125,11 @@ void AlbaranesProveedor::presenta() {
 }
 
 
+/** Este es un metodo auxiliar para presenta() que se encarga de generar
+    la clausula WHERE de la consulta.
+*/
 QString AlbaranesProveedor::generaFiltro() {
-    /// Tratamiento de los filtros.
-    _depura("Tratamos el filtro.", 0);
+    _depura("AlbaranesProveedor::generaFiltro", 0);
     QString filtro = "";
 
     if (m_filtro->text() != "") {
@@ -117,10 +150,15 @@ QString AlbaranesProveedor::generaFiltro() {
         filtro += " AND fechaalbaranp >= '" + m_fechain->text() + "' ";
     if (m_fechafin->text() != "")
         filtro += " AND fechaalbaranp <= '" + m_fechafin->text() + "' ";
+    _depura("END AlbaranesProveedor::generaFiltro", 0);
     return (filtro);
 }
 
 
+/** Realiza la operacion de edicion.
+    Si el modo seleccionado es edicion abre la ficha de albaran proveedor y carga en ella el elemento seleccionado.
+    Si el modo es seleccion lanza el signal adecuado.
+*/    
 void AlbaranesProveedor::editar(int row) {
     _depura("AlbaranesProveedor::editar", 0);
     mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"), row);
@@ -139,15 +177,23 @@ void AlbaranesProveedor::editar(int row) {
 }
 
 
+/** SLOT de la pulsacion sobre el boton de editar.
+    Si existe un elemento seleccionado llama al metodo editar()
+*/
 void AlbaranesProveedor::on_mui_editar_clicked() {
+    _depura("AlbaranesProveedor::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
     if (a >= 0)
         editar(a);
     else
         _depura("Debe seleccionar una linea", 2);
+    _depura("END AlbaranesProveedor::on_mui_editar_clicked", 0);
+
 }
 
 
+/** La impresion de listados esta completamente delegada a la clase SubForm3
+*/
 void AlbaranesProveedor::imprimir() {
     _depura("AlbaranesProveedor::imprimir", 0);
 	mui_list->imprimirPDF(tr("Albaranes de proveedor"));
@@ -155,6 +201,12 @@ void AlbaranesProveedor::imprimir() {
 }
 
 
+/** Al pulsar sobre el boton borrar se carga la ficha y se invoca al metodo de
+    borrar en esta. 
+    Tambien se tratan las posibles excepciones que se hayan podido
+    producir.
+    Tras el borrado repinta la pantalla.
+*/
 void AlbaranesProveedor::on_mui_borrar_clicked() {
     _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
     try {
@@ -170,14 +222,17 @@ void AlbaranesProveedor::on_mui_borrar_clicked() {
         mensajeInfo(tr("Error al borrar albaran de proveedor"));
     } // end try
     _depura("END AlbaranesProveedor::on_mui_borrar_clicked", 0);
-
 }
 
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** Configuracion del subformulario de listado.
+    Prepara el subformulario para trabajar con la tabla albaranp.
+*/
 AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0);
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID albaran de proveedor"));
@@ -198,5 +253,6 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : 
     addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total albaran"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    _depura("END AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0);
 }
 

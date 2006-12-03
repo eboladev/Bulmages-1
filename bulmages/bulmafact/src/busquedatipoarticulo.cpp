@@ -23,20 +23,35 @@
 #include "company.h"
 
 
+/** Inicializa todos los componentes a NULL para que no haya confusiones sobre
+    si un elemento ha sido inicializado o no.
+*/
 BusquedaTipoArticulo::BusquedaTipoArticulo(QWidget *parent)
         : QWidget(parent) {
+    _depura("BusquedaTipoArticulo::BusquedaTipoArticulo", 0);
     setupUi(this);
     m_companyact = NULL;
     mdb_idtipo_articulo = "";
     mdb_desctipo_articulo = "";
     mdb_codtipo_articulo = "";
+    _depura("BusquedaTipoArticulo::BusquedaTipoArticulo", 0);
 }
 
 
-BusquedaTipoArticulo::~BusquedaTipoArticulo() {}
+/** El destructor de la clase no requiere de acciones adicionales.
+*/
+BusquedaTipoArticulo::~BusquedaTipoArticulo() {
+    _depura("BusquedaTipoArticulo::~BusquedaTipoArticulo", 0);
+    _depura("END BusquedaTipoArticulo::~BusquedaTipoArticulo", 0);
+}
 
 
+/** Mediante este metodo se puede indicar cual es el tipo de articulo seleccionado.
+    Busca en la base de datos el tipo que concuerde con el identificador pasado.
+    Coge todos los datos necesarios para la presentacion y los muestra.
+*/
 void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
+    _depura("BusquedaTipoArticulo::setidtipo_articulo", 0);
     mdb_idtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE idtipo_articulo = '" + mdb_idtipo_articulo + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
@@ -53,10 +68,16 @@ void BusquedaTipoArticulo::setidtipo_articulo(QString val) {
     delete cur;
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
+    _depura("END BusquedaTipoArticulo::setidtipo_articulo", 0);
 }
 
 
+/** Mediante este metodo se puede indicar cual es el tipo de articulo seleccionado.
+    Busca en la base de datos el tipo que coincide con el codigo pasado.
+    Coge todos los datos necesarios para la presentacion y los muestra.
+*/
 void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
+    _depura("BusquedaTipoArticulo::setcodtipo_articulo", 0);
     mdb_codtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
@@ -72,10 +93,17 @@ void BusquedaTipoArticulo::setcodtipo_articulo(QString val) {
     delete cur;
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
+    _depura("END BusquedaTipoArticulo::setcodtipo_articulo", 0);
 }
 
 
 /// Busqueda de TipoArticulos.
+/** SLOT que responde a la pulsacion del boton de buscar tipo.
+    Crea una instancia de TipoArticuloList y lo pone en modo Seleccionar.
+    Lo muestra como un Dialog y espera a que termine la seleccion de tipo.
+    Una vez seleccionado el tipo muestra todos los datos del tipo y lo pone como
+    elemento seleccionado.
+*/
 void BusquedaTipoArticulo::on_mui_buscar_clicked() {
     _depura("BusquedaTipoArticulo::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
@@ -104,7 +132,13 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
 }
 
 
+/** SLOT que responde al cambio de texto en el campo de tipo de articulo.
+    Busca un tipo de articulo cuyo codigo corresponda con el codigo introducido y si lo encuentra.
+    lo establece como predeterminado y lo presenta.
+    Emite un signal de valueChanged().
+*/
 void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val) {
+    _depura("BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
     mdb_codtipo_articulo = val;
     QString SQLQuery = "SELECT * FROM tipo_articulo WHERE codtipo_articulo = '" + mdb_codtipo_articulo + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
@@ -121,5 +155,6 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
     m_codtipo_articulo->setText(mdb_codtipo_articulo);
     m_desctipo_articulo->setText(mdb_desctipo_articulo);
     emit(valueChanged(mdb_idtipo_articulo));
+    _depura("END BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
 }
 

@@ -30,15 +30,14 @@
 class company;
 
 
-/// Permite buscar y seleccionar una referencia.
-/** Muestra la parte del formulario que permite buscar y seleccionar una
-    referencia en cualquier documento. */
+/// Permite introducir una referencia.
+/** Este Widget permite introducir una referencia. */
 class BusquedaReferencia : public QWidget, public Ui_BusquedaReferenciaBase {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company que permite trabajar con la Base de Datos y el paso de mensajes.
     company *m_companyact;
-    bool m_semaforo;
 
 public:
     BusquedaReferencia(QWidget *parent = 0);

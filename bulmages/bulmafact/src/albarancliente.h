@@ -32,17 +32,23 @@
 
 
 /// Clase que almacena los datos de albaranes a clientes.
-/** */
+/** Se usa en conjuncion con AlbaranClienteView para conformar entre ambas
+    la pantalla de edici&oacute;n de albaranes a Cliente.
+*/
+/// \TODO: Cambiar companyact por m_companyact.
 class AlbaranCliente : public DBRecord {
 protected:
+    /// Lista de lineas del albar&aacute;n.
     ListLinAlbaranClienteView *listalineas;
+    /// Lista de descuentos del albar&aacute;n
     ListDescuentoAlbaranClienteView *listadescuentos;
+    /// Puntero a la clase company con la que se esta trabajando.
     company *companyact;
-    //Empresa *empresaact;
-
 public:
     AlbaranCliente(company *);
     //AlbaranCliente(Empresa *);
+    
+    
     virtual ~AlbaranCliente();
     QString idalbaran() {
         return DBvalue("idalbaran");
@@ -194,7 +200,8 @@ public:
     ;
     virtual void pintaprocesadoalbaran(QString) {}
     ;
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
+    /// M&eacute;todo que se encarga de pintar los totales en la pantalla. Debe ser reimplementado en la clase que derive de esta.
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {_depura("Metodo para ser reimplementado en una clase derivada.", 2);}
     ;
 };
 

@@ -28,20 +28,17 @@
 #include "dbrecord.h"
 
 
-/// Clase art&iacute;culo.
-/** */
+/** Clase que se encarga de la relacion de un articulo con la base de datos
+*/
 class Articulo : public DBRecord {
 protected:
+    /// El puntero a la clase company para poder trabajar con la base de datos
+    /// Y poder hacer comodamente el traspaso de mensajes.
     company *m_companyact;
-//    Empresa *m_empresaact;
-
 public:
     Articulo(company *);
     company* companyact() {
         return m_companyact;
-//    Articulo(Empresa *);
-//    Empresa *empresaact() {
-//        return m_empresaact;
     };
     virtual ~Articulo();
     virtual void pintar();

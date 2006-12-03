@@ -27,14 +27,19 @@
 #include "postgresiface2.h"
 
 
-/// Permite buscar y seleccionar un n&uacute;mero de serie de factura.
-/** Muestra la parte del formulario que permite buscar y seleccionar un
-    n&uacute;mero de serie de factura. */
+/// Permite  seleccionar una serie de factura.
+/** Este Widget permite buscar y seleccionar un
+    n&uacute;mero de serie de factura.
+    Antes de utilizarlo debe ser inicializa con setcompany.   
+    Cuando se cambia el elemento seleccionado emite un SIGNAL valueChanged().
+*/
 class BusquedaSerieFactura : public QComboBox {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase compay que permite trabajar con la Base de Datos y el paso de parametros.
     company *companyact;
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
 
 public:

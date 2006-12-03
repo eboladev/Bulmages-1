@@ -30,15 +30,19 @@
 class company;
 
 /// Permite buscar y seleccionar un tipo de art&iacute;culo.
-/** Muestra la parte del formulario que permite buscar y seleccionar un
+/** Este Widget permite buscar y seleccionar un
     tipo de art&iacute;culo. */
 class BusquedaTipoArticulo : public QWidget, public Ui_BusquedaTipoArticuloBase {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company que se propaga por toda la aplicacion para poder trabajar con BAses de datos y hacer paso de mensajes.
     company *m_companyact;
+    /// Almacena el idtipo_articulo del elemento seleccionado.
     QString mdb_idtipo_articulo;
+    /// Almacena la descripcion del tipo de articulo seleccionado.
     QString mdb_desctipo_articulo;
+    /// Almacena el codigo del tipo de articulo seleccionado.
     QString mdb_codtipo_articulo;
 
 public:

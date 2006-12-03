@@ -32,10 +32,15 @@
 #include "funcaux.h"
 
 
+
+/** Inicializa todos los componentes.
+    Mete la ventana en el workSpace.
+    Este constructor no es complete, debe inicializarse con setcompany para que la clase pueda operar.    
+*/
 CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
-    setupUi(this);
     _depura("CobrosList::CobrosList", 0);
+    setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
     mdb_idcobro = "";
@@ -46,10 +51,14 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
 }
 
 
+/** Inicializa todos los componentes.
+    Hace una presentacion inicial.
+    Mete la ventana en el workSpace.
+*/
 CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
-    setupUi(this);
     _depura("CobrosList::CobrosList",0);
+    setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
     mui_list->setcompany(comp);
@@ -62,9 +71,18 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
 }
 
 
-CobrosList::~CobrosList() {}
+/** No requiere acciones especiales en el destructor.
+*/
+CobrosList::~CobrosList() {
+    _depura("CobrosList::~CobrosList", 0);
+    _depura("END CobrosList::~CobrosList", 0);
+}
 
 
+/** Hace la carag del listado.
+    PAra ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
+    Tambien hace un select de calculo de totales y lo presenta en el textEdit correspondiente.
+*/
 void CobrosList::presentar() {
     _depura("CobrosList::presentar()\n", 0);
     if (m_companyact != NULL) {
@@ -79,6 +97,8 @@ void CobrosList::presentar() {
 }
 
 
+/** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
+*/
 QString CobrosList::generaFiltro() {
     _depura("CobrosList::generaFiltro\n", 0);
     QString filtro = "";
@@ -112,15 +132,24 @@ QString CobrosList::generaFiltro() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton editar en el listado.
+    comprueba que exista un elemento seleccionado y llama a la funcion de editar().
+*/
+/// \TODO: Deberia crearse el metodo editar() en lugar de llamar a on_mui_list_cellDoubleClicked().
 void CobrosList::on_mui_editar_clicked() {
+    _depura("CobrosList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
     if (a >= 0)
         on_mui_list_cellDoubleClicked(a, 0);
     else
         _depura("Debe seleccionar una linea", 2);
+    _depura("END CobrosList::on_mui_editar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton de crear en el listado.
+    Instancia la clase CobroView, y la presenta.
+*/
 void CobrosList::on_mui_crear_clicked() {
     _depura("CobrosList::on_mui_crear_clicked", 0);
     CobroView *bud = m_companyact->newCobroView();
@@ -128,9 +157,12 @@ void CobrosList::on_mui_crear_clicked() {
     bud->show();
     bud->setidcliente(m_cliente->idcliente());
     bud->pintar();
+    _depura("CobrosList::on_mui_crear_clicked", 0);
 }
 
 
+/** La impresion de listados esta completamente delegada a la clase SubForm3
+*/
 void CobrosList::imprimir() {
     _depura("CobrosList::imprimir", 0);
     mui_list->imprimirPDF(tr("Listado de Cobros"));
@@ -138,6 +170,12 @@ void CobrosList::imprimir() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton borrar.
+    Comprueba que exista un elemento seleccionado.
+    Instancia la clase CobroView, la inicializa y le lanza el metodo borrar.
+    Esta es la forma correcta de implementar un borrado a partir de un listado
+    ya que de esta forma si existen plugins que alteren el borrado tambien seran invocados.
+*/
 void CobrosList::on_mui_borrar_clicked() {
     _depura("CobrosList::on_mui_borrar_clicked",0);
     try {
@@ -156,6 +194,10 @@ void CobrosList::on_mui_borrar_clicked() {
 }
 
 
+/** SLOT que responde al doble click en el subformulario.
+    Dependiendo del modo (Edicion o Seleccion) hace unas operaciones u otras.
+*/
+/// \TODO: Deberia crearse el metodo editar y este llamar a ese.
 void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     _depura("CobrosList::on_mui_list_cellDoubleClicked", 0);
     try {
@@ -178,7 +220,9 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
 
 }
 
-
+/** SLOT que responde a la peticion de menu contextual en el subformulario.
+*/
+/// \TODO: Revisar si este metodo es util.
 void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
@@ -193,13 +237,18 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     if (opcion == edit)
         on_mui_editar_clicked();
     delete popup;
+    _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
 }
 
 
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** Prepara el subformulario para trabajar con la tabla cobro.
+    Establece que no se puedan insertar elementos ya que es un listado.
+*/
 CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("CobrosListSubForm::CobrosListSubForm", 0);
     setDBTableName("cobro");
     setDBCampoId("idcobro");
     addSHeader("idcobro", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cobro"));
@@ -217,5 +266,6 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del trabajador"));
     addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos del trabajador"));
     setinsercion(FALSE);
+    _depura("END CobrosListSubForm::CobrosListSubForm", 0);
 }
 

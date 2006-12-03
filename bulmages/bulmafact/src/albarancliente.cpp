@@ -26,9 +26,13 @@
 #include "funcaux.h"
 #include "albarancliente.h"
 
-
+/// Definimos el tipo base que almacena los diferentes importes para las distintas bases imponibles.
 typedef QMap<QString, Fixed> base;
 
+/** Constructor de la clase que inicializa la clase, prepara la clase DBRecord
+    para que trabaje en la base de datos con la tabla albaran y procese adecuadamente
+    todos los campos de dicha tabla.    
+*/    
 AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)  {
     _depura("AlbaranCliente::AlbaranCliente(company *)", 0);
     companyact = comp;
@@ -50,13 +54,26 @@ AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)  {
     addDBCampo("refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Referencia albaran"));
     listalineas = NULL;
     listadescuentos = NULL;
+    _depura("END AlbaranCliente::AlbaranCliente(company *)", 0);
 }
 
 
-AlbaranCliente::~AlbaranCliente() {}
+/// Destructor de la clase.
+AlbaranCliente::~AlbaranCliente() {
+    _depura("AlbaranCliente::~AlbaranCliente", 0);
+    _depura("END AlbaranCliente::~AlbaranCliente", 0);
+}
 
-
+/** Metodo de borrar un albaran. Se encarga de mandar a la base de datos
+    la instruccion necesaria para el borrado de un albaran y controlar
+    los posibles errores que se produzcan.
+    Tambi&eacute;n borra todas las lineas y las lineas de descuento que se refieren
+    a el albaran que se pretende borrar.
+*/
+/// \todo: Este metodo deberia poderse delegar en DBRecord, o por lo menos la parte del borrado del registro.
+/// \todo: Hace falta meter el metodo dentro del sistema de excepciones try catch.
 int AlbaranCliente::borrar() {
+    _depura("AlbaranCliente::borrar", 0);
     if (DBvalue("idalbaran") != "")  {
         companyact->begin();
         listalineas->borrar();
@@ -70,15 +87,23 @@ int AlbaranCliente::borrar() {
         }
         companyact->commit();
     }
+    _depura("END AlbaranCliente::borrar", 0);
     return 0;
 }
 
-
+/// Hace un vaciado de los elementos que se corresponden con la base de datos.
+/// Es &uacute;til para sistemas de recarga de la pantalla.
 void AlbaranCliente::vaciaAlbaranCliente() {
+    _depura("AlbaranCliente::vaciaAlbaranCliente", 0);
     DBclear();
+    _depura("END AlbaranCliente::vaciaAlbaranCliente", 0);
 }
 
-
+/** Se encarga de sincronizar los elementos de la base de datos con los de la pantalla
+    Invocando este m&eacute;todo conseguimos que la pantalla muestre lo que hay en la base
+    de datos. No invoca el pintado de las lineas de albar&aacute;n ni descuentos de albar&aacute;n.
+    Sin embarco si que provoca el calculo y pintado de los totales.
+*/
 void AlbaranCliente::pintar() {
     _depura("AlbaranCliente::pintar", 0);
     pintaIdAlbaran(DBvalue("idalbaran"));
@@ -102,7 +127,12 @@ void AlbaranCliente::pintar() {
 }
 
 
-/// Esta funcioncarga un AlbaranCliente.
+/** Este m&eacute;todo carga un AlbaranCliente. Tambi&eacute;n carga las lineas
+    de albar&aacute;n y los descuentos de albar&aacute;n.
+    Tras la carga tambi&eacute;n invoca un repintado del albaran para que se vea
+    correctamente la pantalla.
+*/
+/// \TODO: Falta introducir este m&eacute;todo dentro de sentencias try catch.
 int AlbaranCliente::cargar(QString idalbaran)  {
     _depura("AlbaranCliente::cargar", 0);
     QString query = "SELECT * FROM albaran WHERE idalbaran = " + idalbaran;
@@ -117,7 +147,15 @@ int AlbaranCliente::cargar(QString idalbaran)  {
     return 0;
 }
 
-
+/** Este m&eacute;todo se encarga de hacer el guardado del albar&aacute; en la
+    base de datos. Una vez guardado se guardan las lineas de albar&aacute;n y los
+    descuentos de albar&aacute;n. Tras hacer el guardado se hace una carga del albaran
+    para recuperar los datos que haya podido escribir la base de datos automaticamente.
+    Dichos datos son la referencia y el n&uacute;mero de albar&aacute;n.
+    
+    Si todo funciona bien este m&eacute;todo devuelve 0. Si se produce algun error
+    se genera una excepcion -1.
+*/    
 int AlbaranCliente::guardar() {
     _depura("AlbaranCliente::guardar", 0);
     /// Todo el guardado es una transaccion.
@@ -143,7 +181,14 @@ int AlbaranCliente::guardar() {
 }
 
 
+/** Este m&eacute;todo se encarga de la impresi&oacute;n de un albar&aacute;n de 
+    cliente. Para imprimir cogemos la plantilla albaran.rml del directorio de plantillas
+    hacemos en ella todas las sustituciones por los valores reales correspondientes y
+    guardamos el rml resultante en ~/.bulmages/albaran.rml una vez hecho esto invocamos
+    a bgtrml2pdf.py para que transforme el rml en PDF.
+*/
 void AlbaranCliente::imprimirAlbaranCliente()  {
+    _depura("AlbaranCliente::imprimirAlbaranCliente", 0);
     base basesimp;
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaran.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "albaran.rml";
@@ -307,11 +352,16 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     } // end if
 
     invocaPDF("albaran");
+    _depura("END AlbaranCliente::imprimirAlbaranCliente", 0);
 }
 
 
+/** Hace el c&aacute;lculo de los totales del albar&aacute;n a partir de las
+    l&iacute;neas de albar&aacute;n y descuentos de albar&aacute;n.
+    Una vez hecho esto hace una llamada a pintatotales para que los muestre
+*/
 void AlbaranCliente::calculaypintatotales()  {
-    _depura("calculaypintatotales.", 0);
+    _depura("AlbaranCliente::calculaypintatotales.", 0);
     base basesimp;
     SDBRecord *linea;
     /// Impresi&oacute;n de los contenidos.

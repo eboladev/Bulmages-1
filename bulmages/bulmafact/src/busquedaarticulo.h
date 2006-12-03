@@ -37,9 +37,13 @@ class BusquedaArticulo : public QWidget, public Ui_BusquedaArticuloBase {
     Q_OBJECT
 
 private:
+    /// Puntero de la clase company que permite trabajar con la base de datos y el paso de mensajes.
     company *companyact;
+    /// El Widget almacena el idarticulo seleccionado en esta variable.
     QString mdb_idarticulo;
+    /// BusquedaArticulo almacena el nombre del articulo seleccionado en esta variable.
     QString mdb_nomarticulo;
+    /// BusquedaArticulo almacena el codigo completo del articulo seleccionado en esta variable de clase.
     QString mdb_codigocompletoarticulo;
 
 public:

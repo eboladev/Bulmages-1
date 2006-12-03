@@ -32,15 +32,22 @@
 #include "funcaux.h"
 
 
-/// Clase bulmafact.
-/** */
+/** Esta es la clase principal del programa ya que es la que deriva de QMainWindow.
+    Su funcionalidad es servir de base como aplicacion Qt y inicializar los componentes clave.
+    Tambien sirve de soporte al dise&ntilde;o especificado en bulmafactbase.ui con sus menus
+    y ToolBoxes.
+    Hace todo el traspaso de mensajes de los menus a company y captura algunos que no son
+    propiamente de la facturacion como pueda ser el FullScreen o el About.
+*/
 class bulmafact: public QMainWindow, public Ui_bulmafactbase {
     Q_OBJECT
 
 private:
+    /// El workSpace que se va a usar con la aplicacion.
     QWorkspace2 *pWorkspace;
+    /// La clase corazon de la aplicacion y centralizadora de mensajes y componentes.
     company *m_company;
-//    Empresa *m_empresa;
+    /// El listado de ventanas abiertas que esta en forma de dock en la parte izquierda.
     listventanas *m_list;
 
 public:
@@ -50,9 +57,7 @@ public:
         return pWorkspace;
     };
     company *getcompany() {
-//    Empresa *getempresa() {
         return m_company;
-//        return m_empresa;
     };
 
 public slots:

@@ -38,6 +38,10 @@
 #include "informereferencia.h"
 
 
+/** Inicializa todos los componentes.
+    MEte la ventana en el workSpace.
+    Resetea el control de cambios.
+*/
 ClienteView::ClienteView(company *comp, QWidget *parent)
         : Ficha(parent), Cliente(comp) {
     _depura("ClienteView::ClienteView", 0);
@@ -61,6 +65,8 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         m_listalbaranes->setcompany(m_companyact);
         m_listfacturas->setcompany(m_companyact);
         m_listcobros->setcompany(m_companyact);
+	
+	/// Metemos la ventana en el workSpace.
         m_companyact->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
         /// Disparamos los plugins.
@@ -72,6 +78,8 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
 }
 
 
+/** No precisa de acciones adicionales.
+*/
 ClienteView::~ClienteView() {
     _depura("ClienteView::~ClienteView\n", 0);
     /// Disparamos los plugins.
@@ -80,20 +88,28 @@ ClienteView::~ClienteView() {
 }
 
 
+/** Saca la ventana del workSpace.
+    Este metodo es invocado desde la clase Ficha.
+*/
 int ClienteView::sacaWindow() {
+    _depura("ClienteView::sacaWindow", 0);
     m_companyact->sacaWindow(this);
+    _depura("END ClienteView::sacaWindow", 0);
     return 0;
 }
 
 
 /**
-* loadClient
+* cargar
 *
 * Given a valid client ID this function loads the client into the
 * form so that we can edit it.
 * 
 * Otherwise it empties the form and sets it so that we can add
 * a new client
+*
+* Si la funcion falla imprime un mensaje de error y devuelve -1
+* Si todo va bien devuelve 0
 **/
 int ClienteView::cargar(QString idcliente) {
     _depura("ClienteView::cargar", 0);
@@ -113,9 +129,13 @@ int ClienteView::cargar(QString idcliente) {
         m_listfacturas->presenta();
         m_listcobros->setidcliente(idcliente);
         m_listcobros->presentar();
+	/// Pintamos
         pintaCliente();
+	
+	/// Reseteamos el control de cambios.
         dialogChanges_cargaInicial();
     } catch (...) {
+	mensajeInfo(tr("Error al cargar el cliente"));
         return -1;
     } // end try
     _depura("ClienteView::cargar", 0);
@@ -124,21 +144,27 @@ int ClienteView::cargar(QString idcliente) {
 
 
 /// Empties the form.
+/** Vacia el formulario */
+/// \TODO: Investigar la necesidad de este metodo.
 void ClienteView::emptyForm() {
+    _depura("ClienteView::emptyForm", 0);
     m_provcliente->setCurrentIndex(0);
     dialogChanges_cargaInicial();
+    _depura("END ClienteView::emptyForm", 0);
 }
 
 
 /**
-* saveClient
+* guardar
 *
 * This function saves the current client. It checks
 * if it is a new client that needs to be added or if
 * it is an existing one that has to be modified
 **/
+/// \TODO: Deberia incorporar un bloque de excepciones try{} catch{}
 int ClienteView::guardar() {
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+    _depura("ClienteView::guardar", 0);
+    /// Disparamos los plugins
     int res = g_plugins->lanza("ClienteView_saveClient", this);
     if (res != 0) {
         return 0;
@@ -164,6 +190,7 @@ int ClienteView::guardar() {
     if (!err) {
         dialogChanges_cargaInicial();
     } // end if
+    _depura("ClienteView::guardar", 0);
     return err;
 }
 
@@ -175,12 +202,18 @@ int ClienteView::guardar() {
 * In the future it should really delete the client, or better yet
 * mark it as deleted on an appropiate field in the DB
 **/
+/// \TODO: Investigar la necesidad de este metodo.
 void ClienteView::deleteClient() {
+    _depura("ClienteView::deleteClient", 0);
     borraCliente();
     emptyForm();
+    _depura("END ClienteView::deleteClient", 0);
 }
 
-
+/** SLOT que responde a la pulsacion del boton guardar.
+    Invoca al metodo guardar().
+*/
+/// \TODO: Este metodo debe estar implementado en la clase Ficha.
 void ClienteView::on_mui_guardar_clicked() {
     _depura("ClienteView::on_mui_guardar_clicked", 0);
     guardar();
@@ -188,7 +221,12 @@ void ClienteView::on_mui_guardar_clicked() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton borrar.
+    Invoca al metodo deleteClient().
+*/
+/// \TODO: deleteClient deberia ser borrar(). y este metodo deberia estar en Ficha.
 void ClienteView::on_mui_borrar_clicked() {
+    _depura("ClienteView::on_mui_borrar_clicked", 0);
     int ret = QMessageBox::warning(this,
                                    tr("Edicion de clientes"),
                                    tr("Esta a punto de borrar un cliente.\n"
@@ -198,9 +236,13 @@ void ClienteView::on_mui_borrar_clicked() {
                                    QMessageBox::Cancel | QMessageBox::Escape);
     if (ret == QMessageBox::Yes)
         deleteClient();
+    _depura("END ClienteView::on_mui_borrar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton informe de cliente.
+    Crea una instancia de InformeCliente, la inicializa y la lanza.
+*/
 void ClienteView::on_mui_informe_clicked() {
     _depura("ClienteView::on_mui_informe_clicked", 0);
     InformeCliente inf(companyact());

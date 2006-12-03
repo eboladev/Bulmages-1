@@ -27,10 +27,18 @@
 #include "dbrecord.h"
 
 /// Administra los datos de un cliente.
-/** */
+/** Esta clase se encarga del trabajo entre un cliente y la base de datos.
+    ESta hecha para trabajar conjuntamente con una clase de visualizacion que muestre
+    los datos del cliente.
+    
+    Tiene dos tipos de metodos especiales:
+	setXXX son utlizados para alterar valores de un cliente.
+	pintaXXX son utilizados para invocar a al repintado de determinado elemento.
+*/
 class Cliente : public DBRecord {
 
 protected:
+    /// Puntero a la clase company que permite trabajar con la base de datos y el paso de parametros.
     company *m_companyact;
 
 public:

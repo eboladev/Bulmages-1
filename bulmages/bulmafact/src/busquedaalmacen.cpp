@@ -25,6 +25,8 @@
 #include "funcaux.h"
 
 
+/** Constructor del Widget conecta las se&ntilde;ales y prepara los componentes.
+*/
 BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
         : QComboBox(parent) {
     _depura("BusquedaAlmacen::BusquedaAlmacen", 0);
@@ -34,12 +36,18 @@ BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
     _depura("END BusquedaAlmacen::BusquedaAlmacen", 0);
 }
 
-
+/** El destructor no precisa de operaciones especiales
+*/
 BusquedaAlmacen::~BusquedaAlmacen() {
     _depura("BusquedaAlmacen::~BusquedaAlmacen", 0);
+    _depura("END BusquedaAlmacen::~BusquedaAlmacen", 0);
 }
 
 
+/** Mediante este metodo establecemos el almacen que debe presentar el Widget
+    como seleccionado.
+    Recarga el cursor y presenta en el combo aquel que se ajusta al id pasado.
+*/
 void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     _depura("BusquedaAlmacen::setidalmacen", 0, idalmacen);
     if (m_cursorcombo != NULL)

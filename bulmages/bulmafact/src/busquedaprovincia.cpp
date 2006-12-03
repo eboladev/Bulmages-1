@@ -24,7 +24,10 @@
 #include "company.h"
 #include "funcaux.h"
 
-
+/** Con este constructor inicializamos todos los componentes del Widget a NULL.
+    De esta forma nos aseguramos que no haya problemas para determinar si un objeto
+    ha sido creado o no.
+*/
 BusquedaProvincia::BusquedaProvincia(QWidget *parent)
         : QComboBox(parent) {
     _depura("BusquedaProvincia::BusquedaProvincia", 0);
@@ -35,9 +38,20 @@ BusquedaProvincia::BusquedaProvincia(QWidget *parent)
 }
 
 
-BusquedaProvincia::~BusquedaProvincia() {}
+/** El destructor libera memoria utilizada por el programa.
+*/
+BusquedaProvincia::~BusquedaProvincia() {
+    _depura("BusquedaProvincia::~BusquedaProvincia", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaProvincia::~BusquedaProvincia", 0);
+}
 
 
+/** Este metodo sirve para indicar al Widget cual es la provincia por defecto.
+    Recarga todo el query de provincias y compone de nuevo el comboBox estableciendo como provincia
+    por defecto aquella cuyo identificador coincide con el que se ha pasado por parametro.
+*/
 void BusquedaProvincia::setProvincia(QString provincia) {
     _depura("BusquedaProvincia::setProvincia", 0);
     if (m_cursorcombo != NULL)

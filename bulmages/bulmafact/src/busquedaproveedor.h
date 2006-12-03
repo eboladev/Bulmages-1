@@ -31,17 +31,23 @@ class company;
 
 
 /// Permite buscar y seleccionar un proveedor.
-/** Muestra la parte del formulario que permite buscar y seleccionar un
+/** Widget que permite buscar y seleccionar un
     proveedor. */
 class BusquedaProveedor : public QWidget, public Ui_BusquedaProveedorBase {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company para poder trabajar con la Base de Datos y pasar mensajes.
     company *companyact;
+    /// Almacena el idproveedor seleccionado.
     QString mdb_idproveedor;
+    /// Almacena el nomproveedor seleccionado.
     QString mdb_nomproveedor;
+    /// Almacena el cifproveedor seleccionado.
     QString mdb_cifproveedor;
+    /// Almacena el codproveedor seleccionado.
     QString mdb_codproveedor;
+    /// Se usa para evitar un dead-lock entre pintar() y on_mui_textChanged().
     bool m_semaforo;
 
 public:

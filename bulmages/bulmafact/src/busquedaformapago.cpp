@@ -23,22 +23,38 @@
 #include "busquedaformapago.h"
 #include "company.h"
 
-
+/** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
+    sobre si un elemento ha sido creado o no.
+    Conecta el activar un tipo con m_activated.
+*/
+/// \TODO: No deberia usarse m_activated como signal ya que confunde con una variable de clase.
 BusquedaFormaPago::BusquedaFormaPago(QWidget *parent)
         : QComboBox(parent) {
+    _depura("BusquedaFormaPago::BusquedaFormaPago", 0);
     companyact = NULL;
     m_cursorcombo = NULL;
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    _depura("END BusquedaFormaPago::BusquedaFormaPago", 0);
 }
 
 
+/** Se libera memoria destruyendo el cursor que almacena los tipos de IVA si es que esta creado.
+*/
 BusquedaFormaPago::~BusquedaFormaPago() {
+    _depura("BusquedaFormaPago::~BusquedaFormaPago", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
+    _depura("END BusquedaFormaPago::~BusquedaFormaPago", 0);
 }
 
 
+/** Mediante este metodo podemos indicar al Widget cual es la forma de pago que esta seleccionada
+    pasandole como parametro el idform_pago.
+    Busca en la tabla forma_pago de la base de datos aquel registro cuyo idforma_pago coincide con el pasado.
+    Rellena el comboBox haciendo que el seleccionado sea el visible.
+*/
 void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
+    _depura("BusquedaFormaPago::setidforma_pago", 0);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     m_cursorcombo = companyact->cargacursor("SELECT * FROM forma_pago");
@@ -54,5 +70,6 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
         m_cursorcombo->siguienteregistro();
     }
     setCurrentIndex(i1);
+    _depura("END BusquedaFormaPago::setidforma_pago", 0);
 }
 

@@ -29,13 +29,15 @@
 
 
 /// Permite buscar y seleccionar una forma de pago.
-/** Muestra la parte del formulario que permite buscar y seleccionar una
-    forma de pago. Aparece en forma de desplegable. */
+/** Widget que permite buscar y seleccionar una
+    forma de pago. Aparece en forma de comboBox. */
 class BusquedaFormaPago : public QComboBox {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company para poder trabajar con la Base de Datos y pasar mensajes.
     company *companyact;
+    /// Cursor de la base de datos que contiene las formas de pago disponibles.
     cursor2 *m_cursorcombo;
 
 public:

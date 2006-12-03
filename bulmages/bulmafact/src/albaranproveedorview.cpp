@@ -41,7 +41,9 @@
 #include "presupuestolist.h"
 #include "presupuestoview.h"
 
-
+/** Inicializa todos los componentes de la ventana.
+    Mete la ventana en el workSpace.
+*/    
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         : Ficha(parent), AlbaranProveedor(comp) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
@@ -75,17 +77,28 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
 }
 
 
+/** Hace que el listado de Albaranes se refresque
+*/
 AlbaranProveedorView::~AlbaranProveedorView() {
+    _depura("AlbaranProveedorView::~AlbaranProveedorView", 0);
     companyact->refreshAlbaranesProveedor();
+    _depura("END AlbaranProveedorView::~AlbaranProveedorView", 0);
 }
 
-
+/** Este metodo es invocado por la clase ficha.
+    Saca la ventana del workSpace
+*/
 int AlbaranProveedorView::sacaWindow() {
+    _depura("AlbaranProveedorView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END AlbaranProveedorView::sacaWindow", 0);
     return 0;
 }
 
-
+/** Inicializa los elementos de la ventana.
+    Este metodo es invocado al crear un nuevo Albaran de Proveedor sin
+    tener que hacer una carga del mismo.
+*/
 void AlbaranProveedorView::inicializar() {
     _depura("AlbaranProveedorView::inicializar", 0);
     subform2->inicializar();
@@ -95,6 +108,8 @@ void AlbaranProveedorView::inicializar() {
 }
 
 
+/** Pinta los totales indicados en sus correspondientes textEdit.
+*/
 void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
     _depura("AlbaranProveedorView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
@@ -104,12 +119,18 @@ void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
 }
 
 
+/** FUNCION AUN NO IMPLEMENTADA. */
 void AlbaranProveedorView::s_verpedidoproveedor()  {
     _depura("Funcion aun no implementada", 2);
 }
 
 
-/// Se encarga de generar una facturap a partir del albaranp.
+/** Se encarga de generar una factura de proveedor a partir del albaranp.
+    Mira si existe una factura de proveedor con la misma referencia y si es asi
+    la abre y la muestra.
+    En caso contrario crea una instancia de facturap y rellena todos los campos de esta con 
+    los datos del albaran y la muestra.
+*/
 void AlbaranProveedorView::generarFactura()  {
     _depura("AlbaranProveedorView::generarFactura", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
@@ -160,9 +181,15 @@ void AlbaranProveedorView::generarFactura()  {
     } // end for
     bud->pintar();
     bud->show();
+    _depura("END AlbaranProveedorView::generarFactura", 0);
 }
 
-
+/** Se encarga de hacer la carga de un Albaran de Proveedor.
+    Delega toda la funcionalidad a AlbaranProveedor excepto el cambiar el
+    titulo dela ventana y hacer que este se refresque en el listado de ventanas.
+    Inicializa la ventana para que considere que no hay cambios realizados.    
+    Si algo falla devuelve -1.
+*/
 int AlbaranProveedorView::cargar(QString id) {
     _depura("AlbaranProveedorView::cargar", 0);
     try {
@@ -180,6 +207,14 @@ int AlbaranProveedorView::cargar(QString id) {
 }
 
 
+/** Refresca los datos de DBRecord con los valores puestos en los componentes
+    Luego invoca los metodos de guardado en AlbaranProveedor.
+
+    Induce una carga con el identificador de ventana para que se refresquen posibles
+    datos que haya introducido la base de datos.
+
+    Si algo falla devuelve una excepcion -1.
+*/
 int AlbaranProveedorView::guardar() {
     _depura("AlbaranProveedorView::guardar", 0);
     try {
@@ -192,7 +227,7 @@ int AlbaranProveedorView::guardar() {
         setrefalbaranp(m_refalbaranp->text());
         setdescalbaranp(m_descalbaranp->text());
         AlbaranProveedor::guardar();
-        dialogChanges_cargaInicial();
+        cargar(DBvalue("idalbaranp"));
         _depura("END AlbaranProveedorView::guardar", 0);
         return 0;
     } catch (...) {
@@ -202,12 +237,21 @@ int AlbaranProveedorView::guardar() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton guardar.
+    Llama al metodo de guardar.
+*/
 void AlbaranProveedorView::on_mui_guardar_clicked() {
+    _depura("AlbaranProveedorView::on_mui_guardar_clicked", 0);
     guardar();
-    cargar(DBvalue("idalbaranp"));
+    _depura("END AlbaranProveedorView::on_mui_guardar_clicked", 0);
 }
 
 
+/** SLOT que responde a la creacion de un pago.
+    Crea una instancia de la ventana de pagos y la rellena con los datos
+    del AlbaranProveedor y lo muestra.
+*/
+///  \TODO: Actualmente no esta comprobando que el pago ya exista.
 void AlbaranProveedorView::on_mui_pagar_clicked() {
     _depura("AlbaranProveedorView::on_mui_pagar_clicked", 0);
     PagoView *bud = companyact->newPagoView();
@@ -221,7 +265,11 @@ void AlbaranProveedorView::on_mui_pagar_clicked() {
     _depura("END AlbaranProveedorView::on_mui_pagar_clicked", 0);
 }
 
-
+/** SLOT que responde a la solicitud de ver todos los pedidos de proveedor
+    relacionados con el albaran abierto.
+    Realiza una consulta sobre los pedidos de proveedor que tienen la misma
+    referencia que este pedido de proveedor y los instancia y muestra.
+*/
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     _depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue("refalbaranp") + "'";

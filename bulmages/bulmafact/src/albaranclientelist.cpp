@@ -29,8 +29,16 @@
 #include "funcaux.h"
 
 
+/** Constructor de la clase sin inicializacion de company. Usando este
+    constructor no se olvide de usar setcompany para que la clase no de
+    excepciones.
+    El constructor crea la pantalla, la pone en editmodo por defecto y la mete 
+    en el listado de ventanas.
+    Usando esta clase tampoco se inicializan bien los widgets que contiene.
+*/
 AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent) {
+    _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     m_companyact = NULL;
     m_modo = editmodo;
@@ -38,11 +46,18 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
     if (m_modo == EditMode)
         meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
 
-
+/** Constructor de la clase.
+    Inicializa toda la ventana y los widgets que esta contiene.
+    Hace una presentacion inicial de los albaranes de cliente.
+    Pone la pantalla en modo de edicion por defecto  a no ser que se especifique lo contrario.
+    Mete la ventana en el workspace.
+*/
 AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent) {
+    _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
@@ -54,12 +69,18 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
     if (m_modo == EditMode)
         m_companyact->meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
 
+/** Destructor de la clase */
+AlbaranClienteList::~AlbaranClienteList() {
+    _depura("AlbaranClienteList::~AlbaranClienteList", 0);
+    _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
+}
 
-AlbaranClienteList::~AlbaranClienteList() {}
-
-
+/** Carga el listado de la base de datos y lo presenta.
+    Tambien carga el total y lo presenta.
+*/
 void AlbaranClienteList::presenta() {
     _depura("AlbaranClienteList::presenta\n");
 
@@ -74,6 +95,16 @@ void AlbaranClienteList::presenta() {
 }
 
 
+/**  Este metodo se activa cuando bien pulsando sobre el boton de editar
+     o bien haciendo doble click en el modo de edicion se desea invocar la accion
+     Editar el elemento si estamos en modo editmode o cerrar la ventana y emitir
+     un signal selected() si estamos en el modo selector.
+      
+     Primero determina el idalbaran seleccionado, luego crea la instancia de
+     la ventana de edicion AlbaranClienteView y lo mete en el workspace.
+     Por ultimo hace que dicha ventana carge de la base de datos el idalbaran
+     seleccionado.
+*/
 void AlbaranClienteList::editar(int row) {
     _depura("AlbaranClienteList::editar", 0);
     mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"), row);
@@ -92,16 +123,27 @@ void AlbaranClienteList::editar(int row) {
 }
 
 
+/** Metodo que responde a la pulsacion del boton editar en el formulario.
+    Comprueba que exista un elemento seleccionado y si es el caso llama
+    al metodo editar, si no termina devolviendo un mensaje.
+*/
 void AlbaranClienteList::on_mui_editar_clicked() {
+    _depura("AlbaranClienteList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
     if (a >= 0)
         editar(a);
     else
         _depura("Debe seleccionar una linea", 2);
+    _depura("END AlbaranClienteList::on_mui_editar_clicked", 0);
+
 }
 
 
-
+/** Responde a la pulsacion del boton borrar en el formulario.
+    Carga el elemento seleccionado e invoca a su metodo de borrar.
+*/
+/// \todo: Comprobar que se libera bien la memoria.
+/// \todo: Intentar que no se tenga que recargar todo el listado y que simplemente se borre la fila seleccionada.
 void AlbaranClienteList::on_mui_borrar_clicked() {
     _depura("AlbaranClienteList::on_mui_borrar_clicked", 0);
     try {
@@ -120,6 +162,9 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
 }
 
 
+/** La impresion de listados es estandarizada por la clase DBRecord
+*/
+/// \TODO: Se podria hacer una clase derivada de Ficha que fuese Listado y que directamente implementase el metodo on_mui_imprimir.
 void AlbaranClienteList::imprimir() {
     _depura("AlbaranClienteList::imprimir", 0);
     mui_list->imprimirPDF(tr("Albaranes Cliente"));
@@ -127,6 +172,9 @@ void AlbaranClienteList::imprimir() {
 }
 
 
+/** Este metodo ayuda a construir el query de filtrado construyendo la clausula
+    WHERE a partir de las opciones de filtrado.
+*/
 QString AlbaranClienteList::generarFiltro() {
     /// Tratamiento de los filtros.
     _depura("AlbaranClienteList::generarFiltro", 0);
@@ -163,7 +211,11 @@ QString AlbaranClienteList::generarFiltro() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** Constructor del subformulario de albaranes a cliente.
+    Configura el subformulario para que use la tabla albaran.
+*/
 AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
     addSHeader("refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Referencia de albaran"));
@@ -184,5 +236,6 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2
     addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    _depura("END AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
 }
 

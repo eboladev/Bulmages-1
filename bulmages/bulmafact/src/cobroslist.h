@@ -30,31 +30,36 @@
 #include "ficha.h"
 
 
-/// Administra el detalle de la lista de cobros.
-/** */
+/** Subformulario especializado en el trabajo con Cobros.
+*/
 class CobrosListSubForm : public SubForm2Bf {
     Q_OBJECT
 
 public:
     CobrosListSubForm(QWidget *parent = 0);
-    ~CobrosListSubForm() {}
-    ;
+    ~CobrosListSubForm() {};
 };
 
 
 #include "ui_cobroslistbase.h"
 
 
-/// Administra los datos de la lista de cobros.
-/** */
+/** Clase que presenta el listado de Cobros.
+    Deriva de la clase Ficha para estandarizacion de Formularios.
+    Controla los eventos y la sincronizacion del listado con el filtrado.
+*/
 class CobrosList : public Ficha, private Ui_CobrosListBase {
     Q_OBJECT
 
 private:
+    /// Puntero a la clase company que sirve para trabajar con la Base de Datos y paso de mensajes.
     company *m_companyact;
+    
+    /// Indica el modo de trabajo de la pantalla.
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
+    /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
     QString mdb_idcobro;
 
 public:

@@ -30,14 +30,18 @@
 #include "listdescalbaranprovview.h"
 
 
-/// Clase que almacena los datos de un albar&aacute;n de proveedor.
-/** */
+/** Esta clase se encarga de la manipulacion y operacion con la base de datos
+    desde la ficha de albaran de proveedor.
+*/
 class AlbaranProveedor : public DBRecord {
 protected:
+    /// Listado de lineas de albaran de proveedor.
     ListLinAlbaranProveedorView *listalineas;
+    /// Listado de descuentos aplicados en el albaran de proveedor.
     ListDescuentoAlbaranProvView *listadescuentos;
+    /// Puntero de la clase company con la que se esta trabajando. Este puntero se propaga por todas las clases de la aplicacion.
+    /// \TODO: Deberia ser m_company.
     company *companyact;
-//    Empresa *empresaact;
 
 public:
     AlbaranProveedor(company *);

@@ -36,8 +36,12 @@
 
 class company;
 
-/// Administra la ventana de con los datos de un cobro.
-/** */
+/** Ventana de ficha de cobro.
+    Se encarga de la presentacion de la ficha de cobro y del tratamiento de eventos producidos
+    en dicha ventana.
+    Deriva de Ficha para metodos comunes a todas las ventanas.
+    Deriva de Cobro para el manejo de la Base de datos.    
+*/
 class CobroView : public Ficha, private Ui_CobroBase, public Cobro {
     Q_OBJECT
 

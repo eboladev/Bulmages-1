@@ -36,6 +36,13 @@
 #include "funcaux.h"
 
 
+/** Constructor de la ventana de listado de articulos
+    Inicializa todos los componentes, propaga el puntero a m_company
+    Configura la pantalla para que haga una cosa u otra en funcion de m_modo.
+    Si estamos en modo edicion mete la ventana en el workSpace. En caso contrario
+    la presenta como un popup.
+    Hace la presentacion inicial.
+*/
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag), pgimportfiles(comp) {
     _depura("ArticuloList::INIT_ArticuloList()\n", 0);
@@ -58,22 +65,30 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         mui_importar->setHidden(TRUE);
         mui_imprimir->setHidden(TRUE);
     } // end if
-
     presenta();
     hideBusqueda();
     _depura("ArticuloList::END_ArticuloList()\n", 0);
 }
 
 
+/** Hace la carga del subformulario para presentar el listado.
+*/
 void ArticuloList::presenta() {
     _depura("ArticuloList::INIT_presenta()\n", 0);
     mui_list->cargar(formaQuery());
     _depura("ArticuloList::END_presenta()\n", 0);
 }
 
-
+/** Se encarga de la accion preseleccionada al hacer doble click o al darle
+    al boton de editar. 
+    Si estamos en modo seleccion actualiza el valor de los campos de seleccion y
+    cierra la ventana.
+    Si estamos en modo edicion abre una instancia de ArticuloView y lo carga con el
+    valor seleccionado.
+*/
+/// \TODO: este metodo deberia ser editar
 void ArticuloList::editArticle(int row) {
-    _depura("ArticuloList::INIT_editArticle()\n", 0);
+    _depura("ArticuloList::editArticle()\n", 0);
     mdb_idarticulo = mui_list->DBvalue("idarticulo", row);
     mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
     mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
@@ -95,6 +110,9 @@ void ArticuloList::editArticle(int row) {
 }
 
 
+/** SLOT que responde al boton de editar articulo
+    Comprueba que haya un elemento seleccionado y llama a editArticle.
+*/
 void ArticuloList::on_mui_editar_clicked() {
     _depura("ArticuloList::INIT_s_editArticle()\n", 0);
     int a = mui_list->currentRow();
@@ -107,12 +125,18 @@ void ArticuloList::on_mui_editar_clicked() {
 }
 
 
+/** No requiere de ninguna accion adicional */
 ArticuloList::~ArticuloList() {
     _depura("ArticuloList::INIT_destructor()\n", 0);
     _depura("ArticuloList::END_destructor()\n", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton borrar 
+    Verifica que queremos borrar el articulo y lo borra tras preguntar.
+*/
+/// \TODO: Deberia crear una instancia del articulo e invocar a su metodo de borrado
+/// ya que si hay algun plugin puede que no se vea afectado por este metodo.
 void ArticuloList::on_mui_borrar_clicked() {
     _depura("ArticuloList::INIT_removeArticle()\n", 0);
     try {
@@ -127,15 +151,19 @@ void ArticuloList::on_mui_borrar_clicked() {
                 throw -1;
             presenta();
         } // end if
-        _depura("ArticuloList::END_removeArticle()\n", 0);
+        _depura("ENd ArticuloList::on_mui_borrar_clicked", 0);
     } catch (...) {
         mensajeInfo(tr("Error al borrar el articulo"));
     } // end try
 }
 
 
+/** Metodo auxiliar que forma el query de presentacion a partir de los datos
+    de filtrado.
+    Es usado por presentar
+*/
 QString ArticuloList::formaQuery() {
-    _depura("ArticuloList::INIT_formaQuery()\n", 0);
+    _depura("ArticuloList::formaQuery", 0);
     QString query = "";
     query += "SELECT * FROM articulo NATURAL LEFT JOIN tipo_iva NATURAL LEFT JOIN tipo_articulo WHERE 1 = 1 ";
     if (m_presentablearticulo->isChecked())
@@ -163,8 +191,10 @@ QString ArticuloList::formaQuery() {
 }
 
 
+/** Metodo auxiliar para la creacion del catalogo de articulos
+*/
 QString ArticuloList::detalleArticulos() {
-    _depura("ArticuloList::INIT_detalleArticulos()\n", 0);
+    _depura("ArticuloList::detalleArticulos", 0);
     QString texto = "";
     cursor2 *cur = m_companyact->cargacursor(formaQuery());
     while (!cur->eof()) {
@@ -188,14 +218,20 @@ QString ArticuloList::detalleArticulos() {
         cur->siguienteregistro();
     } // end while
     delete cur;
+    _depura("END ArticuloList::detalleArticulos()\n", 0);
     return texto;
-    _depura("ArticuloList::END_detalleArticulos()\n", 0);
 }
 
-
+/** Impresion del catalogo de articulos
+    utiliza la plantilla articulos1.rml para crear un catalogo de articulos.
+    crea una copia de artiulos1.rml en el directorio ~/.bulmages
+    hace la sustitucion y ampliacion en dicho archivo.
+    Al final llama al metodo de bgtrml2pdf.py para generar un PDF 
+    y lo muestra.
+*/
 void ArticuloList::on_mui_imprimirCatalogo_clicked() {
     _depura("ArticuloList::on_mui_imprimirCatalogo_clicked()\n", 0);
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos.rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos1.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
     QString archivod1 = confpr->valor(CONF_DIR_USER) + "articulos1.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -237,10 +273,12 @@ void ArticuloList::on_mui_imprimirCatalogo_clicked() {
     QString iconv = "iconv -tUTF8 -c "+archivod+" > "+archivod1;
     system(iconv.toAscii().constData());
     invocaPDF("articulos1");
-    _depura("END ArticuloList::on_mui_imprimirCatalogo_clicked()\n", 0);
+    _depura("END ArticuloList::on_mui_imprimirCatalogo_clicked", 0);
 }
 
 
+/** La impresion del listado esta completamente delegada en SubForm3
+*/
 void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::INIT_s_imprimir1()\n", 0);
     mui_list->imprimirPDF(tr("Listado de articulos"));
@@ -248,8 +286,10 @@ void ArticuloList::s_imprimir1() {
 }
 
 
+/**  SLOT que exporta el listado de articulos a formato XML 
+*/
 void ArticuloList::on_mui_exportar_clicked() {
-    _depura("ArticuloList::INIT_s_exportar()\n", 0);
+    _depura("ArticuloList::on_mui_exportar_clicked", 0);
     QFile filexml(QFileDialog::getSaveFileName(this,
                   tr("Elija el archivo"),
                   confpr->valor(CONF_DIR_USER),
@@ -262,10 +302,14 @@ void ArticuloList::on_mui_exportar_clicked() {
         _depura("ERROR AL ABRIR EL ARCHIVO\n", 2);
     } // end if
 
-    _depura("ArticuloList::END_s_exportar()\n", 0);
+    _depura("END ArticuloList::on_mui_exportar_clicked", 0);
 }
 
 
+/** SLOT que importa los articulos desde un fichero xml
+    Pide al usuario que indique cual es el fichero
+    Hace la importacion a traves de XML2BulmaFact.
+*/
 void ArticuloList::on_mui_importar_clicked() {
     _depura("ArticuloList::INIT_s_importar()\n", 0);
     QFile filexml(QFileDialog::getOpenFileName(this,
@@ -284,11 +328,18 @@ void ArticuloList::on_mui_importar_clicked() {
 }
 
 
+/** SLOT que responde al doble click sobre un elemento del listado
+    llama a editArticle para que actue correspondientemente.
+*/
 void ArticuloList::on_mui_list_cellDoubleClicked(int a, int) {
+    _depura("ArticuloList::on_mui_list_cellDoubleClicked", 0);
     editArticle(a);
+    _depura("END ArticuloList::on_mui_list_cellDoubleClicked", 0);
 }
 
-
+/** \TODO: REVISAR ESTE METODO YA QUE NO PARECE SER EL ADECUADO
+    EN LA LLAMADA DE SUBMENUS
+*/
 void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("ArticuloList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
@@ -309,8 +360,11 @@ void ArticuloList::on_mui_list_customContextMenuRequested(const QPoint &) {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** Prepara el subformulario para que trabaje con la tabla articulo
+*/
 ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
         : SubForm2Bf(parent) {
+    _depura("ArticuloListSubForm::ArticuloListSubForm", 0);
     setDBTableName("articulo");
     setDBCampoId("idarticulo");
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID articulo"));
@@ -324,5 +378,6 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     addSHeader("stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    _depura("END ArticuloListSubForm::ArticuloListSubForm", 0);
 }
 

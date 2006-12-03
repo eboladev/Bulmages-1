@@ -23,17 +23,27 @@
 #include "company.h"
 
 
+/** Se encarga de poner todos los componentes a NULL para que no exista confusion
+    en si los componentes han sido inicializados o no.
+*/
 BusquedaFamilia::BusquedaFamilia(QWidget *parent)
         : QWidget(parent) {
+    _depura("BusquedaFamilia::BusquedaFamilia", 0);
     setupUi(this);
     companyact = NULL;
     mdb_idfamilia = "";
     mdb_nombrefamilia = "";
     mdb_codigocompletofamilia = "";
+    _depura("END BusquedaFamilia::BusquedaFamilia", 0);
 }
 
 
-BusquedaFamilia::~BusquedaFamilia() {}
+/** No requiere de acciones especiales en la destruccion del Widget
+*/
+BusquedaFamilia::~BusquedaFamilia() {
+    _depura("BusquedaFamilia::~BusquedaFamilia", 0);
+    _depura("END BusquedaFamilia::~BusquedaFamilia", 0);
+}
 
 
 void BusquedaFamilia::setidfamilia(QString val) {

@@ -29,8 +29,16 @@
 #include "subform2bf.h"
 #include "ficha.h"
 
-/// Listado de albaranes de clientes.
-/** */
+/// Subformulario de albaranes de clientes.
+/** Esta clase se encarga de implementar el subformulario de albaranes a clientes.
+    Es una clase derivada de SubForm2Bf, donde estan las funciones especificas de la facturacion.
+    que a su vez deriva de SubForm3 que tiene las funciones de subformularios.
+    
+    La funcionalidad de esta clase es configurar el subformulario para que funcione
+    con la tabla de albaranes.
+    
+    Reimplementa los metodos de cargar para producir el query adecuado.
+*/
 class AlbaranClienteListSubform : public SubForm2Bf {
     Q_OBJECT
 public:
@@ -54,22 +62,32 @@ public slots:
 #include "ui_albaranclientelistbase.h"
 
 
+/** Albaranes a Clientes.
+    Esta clase representa la pantalla de albaranes a clientes.
+*/
+/// \TODO: Deberia crearse una clase derivada de Ficha que fuese Listado y que
+/// incorporase algunas funcionalidades comunes a todos los listados.
 class AlbaranClienteList : public Ficha, public Ui_AlbaranClienteListBase {
     Q_OBJECT
 
 public:
-    enum edmode
-    {
+    enum edmode {
         EditMode = 0,
         SelectMode = 1
     };
 
 private:
+    /// El puntero a company que se propaga siempre en toda la aplicacion.
     company *m_companyact;
     //Empresa *m_empresaact;
+    
+    /// El modo del listado, modo edicion o modo selector.
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
+    /// \TODO: Traspasar a la clase listado.
     int m_modo;
+    
+    /// En el modo selector esta variable indica el elemento seleccionado.
     QString mdb_idalbaran;
 
 public:
@@ -152,6 +170,7 @@ public slots:
     }
 
 signals:
+    /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.
     void selected(QString);
 };
 
