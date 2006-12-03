@@ -22,6 +22,8 @@
 
 #include "busquedaseriefactura.h"
 #include "company.h"
+#include "funcaux.h"
+
 
 
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
