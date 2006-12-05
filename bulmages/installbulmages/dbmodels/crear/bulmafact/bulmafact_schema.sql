@@ -1376,7 +1376,7 @@ CREATE TABLE dfacturap (
     iddfacturap serial PRIMARY KEY,
     conceptdfacturap character varying(2000),
     proporciondfacturap numeric(12, 2),
-    idfacturap integer NOT NULL REFERENCES factura(idfactura)
+    idfacturap integer NOT NULL REFERENCES facturap(idfacturap)
     -- Falta poner el lugar donde se aplica el descuento, antes de la factura o despues de esta.
 ); 
 

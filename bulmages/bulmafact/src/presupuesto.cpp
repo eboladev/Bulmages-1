@@ -344,7 +344,7 @@ void presupuesto::imprimirPresupuesto() {
 
 
 void presupuesto::calculaypintatotales() {
-    _depura("calculaypintatotales \n", 0);
+    _depura("presupuesto::calculaypintatotales \n", 0);
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("presupuesto_calculaypintatotales", this);
@@ -408,6 +408,6 @@ void presupuesto::calculaypintatotales() {
         totiva = totiva + pariva;
     } // end for
     pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-    _depura("END calculaypintatotales\n", 0);
+    _depura("END presupuesto::calculaypintatotales\n", 0);
 }
 

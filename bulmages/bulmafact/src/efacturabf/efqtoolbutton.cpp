@@ -43,7 +43,16 @@ EFQToolButton::~EFQToolButton() {}
 
 void EFQToolButton::escribe_descuento_factura(QString &string, cursor2 *descuentos_factura, Fixed bimpfactura) {
 	
-	Fixed descuentoFactura = Fixed(descuentos_factura->valor("proporciondfactura"))*(bimpfactura/100);
+// 	Fixed descuentoFactura = Fixed(descuentos_factura->valor("proporciondfactura"))*(bimpfactura/Fixed("100.00"));
+	Fixed descuentoFactura = "0.00";
+	_depura(descuentoFactura.toQString(), 2);
+	descuentoFactura = Fixed(descuentos_factura->valor("proporciondfactura"));
+	_depura(descuentoFactura.toQString(), 2);
+	_depura(descuentoFactura.toQString()+" * "+bimpfactura.toQString(), 2);
+	descuentoFactura = descuentoFactura*bimpfactura;
+	_depura(descuentoFactura.toQString(), 2);
+	descuentoFactura = descuentoFactura*Fixed("0.01");
+	_depura(descuentoFactura.toQString(), 2);
 
 	string += "\t<cac:AllowanceCharge>\n";
 	string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
@@ -103,7 +112,7 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 	string += "\t\t<cbc:Description>" + lfactura->valor("desclfactura") + "</cbc:Description>\n";
 	// Codigo de articulo
 	string += "\t\t<cac:SellersItemIdentification>\n";
-	string += "\t\t\t<cac:ID>" + articulo->valor("codarticulo") + "</cac:ID>\n";
+	string += "\t\t\t<cac:ID>" + articulo->valor("codigocompletoarticulo") + "</cac:ID>\n";
 	string += "\t\t</cac:SellersItemIdentification>\n";
 	// Impuestos
 	string += "\t\t<cac:TaxCategory>\n";
@@ -157,23 +166,6 @@ void EFQToolButton::exporta_factura_ubl() {
 	// Datos de la factura que no estan en el DBRecord
 	query = "SELECT totalfactura, bimpfactura, impfactura FROM factura WHERE idfactura = " + m_factura->DBvalue("idfactura");
 	cursor2 *factura_totales = m_companyact->cargacursor(query);
-	
-	// Descuento al PVP de la factura (cogidos de la tabla dfactura)
-	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
-	cursor2 *descuentos_factura = m_companyact->cargacursor(query);	
-
-	QString DescuentosFactura = "\n";
-	Fixed totalFactura(factura_totales->valor("bimpfactura"));
-// 	Fixed acumulador = "0.00";
-
-	descuentos_factura->primerregistro();
-	
-	while (!descuentos_factura->eof()) {
-		escribe_descuento_factura(DescuentosFactura, descuentos_factura, totalFactura);
-		descuentos_factura->siguienteregistro();
-	}
-	
-	FacturaXml.replace("[descuentos]", DescuentosFactura);
 	
 	// Datos del cliente
 	query = "SELECT * FROM cliente WHERE idcliente = " + m_factura->DBvalue("idcliente");
@@ -238,13 +230,39 @@ void EFQToolButton::exporta_factura_ubl() {
 	QString LineasFactura = "\n";
 	int numerolinea = 1;
 	
+	Fixed totalFactura = "0.00";
+	
+	/// Escribimos la informacion sobre cada linea y de paso ya obtenemos el total
+	/// de la factura sumando todos los PVPs de las lineas
 	while (!lfacturas->eof()) {
 		escribe_linea_factura(LineasFactura, lfacturas, numerolinea);
+		
+		totalFactura = totalFactura + (Fixed(lfacturas->valor("cantlfactura"))*Fixed(lfacturas->valor("pvplfactura")));
+		
 		lfacturas->siguienteregistro();
 		numerolinea++;
 	}
 	
 	FacturaXml.replace("[lineas_factura]", LineasFactura);
+	
+// 	Fixed totalFactura(factura_totales->valor("bimpfactura"));
+	
+	/// Descuento al PVP de la factura (cogidos de la tabla dfactura)
+	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
+	cursor2 *descuentos_factura = m_companyact->cargacursor(query);	
+
+	QString DescuentosFactura = "\n";
+	
+// 	Fixed acumulador = "0.00";
+
+	descuentos_factura->primerregistro();
+	
+	while (!descuentos_factura->eof()) {
+		escribe_descuento_factura(DescuentosFactura, descuentos_factura, totalFactura);
+		descuentos_factura->siguienteregistro();
+	}
+	
+	FacturaXml.replace("[descuentos]", DescuentosFactura);
 	
 	delete descuentos_factura;
 	delete lfacturas;

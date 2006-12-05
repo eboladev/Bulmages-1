@@ -42,52 +42,26 @@ protected:
 public:
     FacturaProveedor(company *);
     virtual ~FacturaProveedor();
-    ListLinFacturaProveedorView* getlistalineas() {
-        return listalineas;
-    };
-    ListDescuentoFacturaProvView* getlistadescuentos() {
-        return listadescuentos;
-    };
+    
+    ListLinFacturaProveedorView* getlistalineas();
+    ListDescuentoFacturaProvView* getlistadescuentos();
+    
     virtual int borrar();
+    
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
-    void setListLinFacturaProveedor(ListLinFacturaProveedorView *a) {
-        listalineas = a;
-        listalineas->setcompany(companyact);
-    };
-    void setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-    };
-    void setidproveedor(QString val) {
-        setDBvalue("idproveedor", val);
-    };
-    void setreffacturap(QString val) {
-        setDBvalue("reffacturap", val);
-    };
-    void setnumfacturap(QString val) {
-        setDBvalue("numfacturap", val);
-    };
-    void setfechafacturap(QString val) {
-        setDBvalue("ffacturap", val);
-    };
-    void setdescfacturap(QString val) {
-        setDBvalue("descfacturap", val);
-    };
-    void setcomentfacturap(QString val) {
-        setDBvalue("comentfacturap", val);
-    };
-    void setidfacturap(QString val) {
-        setDBvalue("idfacturap", val);
-        listalineas->setColumnValue("idfacturap", val);
-        listadescuentos->setColumnValue("idfacturap", val);
-    };
-    void setidforma_pago(QString val) {
-        setDBvalue("idforma_pago", val);
-    };
-    void setprocesadafacturap(QString val) {
-        setDBvalue("procesadafacturap", val);
-    };
+    void setListLinFacturaProveedor(ListLinFacturaProveedorView *a);
+    void setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a);
+    void setidproveedor(QString val);
+    void setreffacturap(QString val);
+    void setnumfacturap(QString val);
+    void setfechafacturap(QString val);
+    void setdescfacturap(QString val);
+    void setcomentfacturap(QString val);
+    void setidfacturap(QString val);
+    void setidforma_pago(QString val);
+    void setprocesadafacturap(QString val);
+    
     virtual void imprimirFacturaProveedor();
     virtual int cargar(QString);
     virtual void pintar();
@@ -119,6 +93,9 @@ public:
     virtual QString calculateValues() {
         return "";
     };
+    virtual void calculaypintatotales();
+    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
+    ;
 };
 
 #endif

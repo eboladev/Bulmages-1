@@ -259,15 +259,20 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal (stdout).
 void _depura(QString cad, int nivel, QString param) {
-    static bool semaforo = 0;
-    static QFile file("/tmp/bulmagesout.txt");
-    static QTextStream out(&file);
+
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
     if (confpr == NULL) {
         return;
     } // end if
 
+    static bool semaforo = 0;
+    static QFile file(confpr->valor(CONF_DIR_USER)+"bulmagesout.txt");
+    static QTextStream out(&file);
+
+
+
     if (confpr->valor(CONF_DEBUG) == "TRUE") {
+
         if (!semaforo) {
             if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
                 return;

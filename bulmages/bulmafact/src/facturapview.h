@@ -72,7 +72,10 @@ public:
             m_procesadafacturap->setChecked(FALSE);
         }
     };
+    
     virtual void pintatotales(Fixed base, Fixed iva);
+    virtual void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int borrar() {
@@ -82,14 +85,12 @@ public:
     virtual int sacaWindow();
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-        cargar(DBvalue("idfacturap"));
-    };
+    virtual void on_mui_guardar_clicked();
 
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
-        pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+//         pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+        calculaypintatotales();
     }
     virtual void on_mui_pagar_clicked() {
         s_nuevoPago();

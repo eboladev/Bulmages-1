@@ -34,38 +34,47 @@
 #include "facturapview.h"
 #include "fixed.h"
 
+#include "listlinfacturapview.h"
+#include "company.h"
+#include "listdescfacturaprovview.h"
+#include "dbrecord.h"
+
 EFQToolButtonImportar::EFQToolButtonImportar(FacturasProveedorList *faclistado, QWidget *parent) : QToolButton(parent) {
 	_depura("EFQToolButtonImportar_EFQToolButtonImportar", 0);
 	m_faclistado = faclistado;
 	m_companyact = faclistado->get_company();
 	connect(this, SIGNAL(clicked()), this, SLOT(click()));
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar", 0);
 }
 
 EFQToolButtonImportar::~EFQToolButtonImportar() {}
 
+/// Dado un nombre de etiqueta se retorna el texto/valor que contiene (<etiqueta>valor</etiqueta>).
 QString EFQToolButtonImportar::obten_valor_nodo(QString nombre, QDomDocument *doc) {
+	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0);
 	QDomNodeList lista_nodos = doc->elementsByTagName(nombre);
 	QDomNode nodo = lista_nodos.item(0);
 	
 	if (nodo.isNull())
 		_depura("No hay un nodo con ese nombre", 2);
 		
-	QDomElement e = nodo.toElement();
-	
-	return e.text();
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_valor_nodo", 0);
+
+	return nodo.toElement().text();
 }
 
-QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc) {
+/// Esta funcion obtiene los descuentos y los mete dentro de una QList, la cual se
+/// recibe como parametro y devuelve un QString con el valor total de los descuentos.
+QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc, QList< QMap<QString, QString> > &lista_descuentos) {
+	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0);
 	// Obtenemos el nodo padre
 	QDomNodeList lista_padre = doc->elementsByTagName("Invoice");
 	QDomNode padre = lista_padre.item(0);
+	QMap<QString, QString> mapa_descuento;
 		
 	QDomNode nodo1, nodo2;
-	QDomElement e;
 	
 	Fixed total_descuento = "0.00";
-	
-	int i = 0;
 	
 	/// Nos movemos entre los nodos hijos cac:AllowanceCharge
 	/// Ojo, no confundir con los elementos cac:AllowanceCharge que estan
@@ -76,23 +85,35 @@ QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc) {
 	
 	while ( !nodo1.isNull() ) {
 		
-		/// Nos situamos sobre el elemento que contiene la cantidad
-		nodo2 = nodo1.firstChildElement("cbc:Amount");
+		/// Nos situamos sobre el elemento que contiene el porcentaje de descuento sobre el PVP
+		nodo2 = nodo1.firstChildElement("cbc:MultiplierFactorNumeric");
 		
-		e = nodo2.toElement();
+		mapa_descuento["conceptdfactura"] = "DESCUENTO";
+		mapa_descuento["proporciondfactura"] = nodo2.toElement().text();
+		
+		/// Nos situamos sobre el elemento que contiene la cantidad
+		nodo2 = nodo2.nextSiblingElement("cbc:Amount");
 		
 		/// Acumulamos...
-		total_descuento = total_descuento + Fixed(e.text());
+		total_descuento = total_descuento + Fixed(nodo2.toElement().text());
+		
+		/// Guardamos la informacion de este descuento en la lista de descuentos
+		lista_descuentos.append(mapa_descuento);
+
 		/// Siguiente descuento, si existe
 		nodo1 = nodo1.nextSiblingElement("cac:AllowanceCharge");
-		
-		i++;
 	}
+	
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0);
 	
 	return total_descuento.toQString();
 }
 
+/// Esta funcion recibe como parametro un QMap por referencia, al cual se le insertara
+/// la informacion sobre la linea de factura situada en la posicion indicada por el parametro i,
+/// contando desde 0 hasta numlineas-1 y de arriba a abajo del documento.
 void EFQToolButtonImportar::obten_linea_factura(QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i) {
+	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0);
 	QDomNodeList lista_lineas = doc->elementsByTagName("cac:InvoiceLine");
 	QDomNode padre = lista_lineas.item(i);
 	QDomNode tmp;
@@ -138,11 +159,16 @@ void EFQToolButtonImportar::obten_linea_factura(QDomDocument *doc, QMap<QString,
 	
 	mapa_lfactura["idarticulo"] = tmp.toElement().text();
 	
-	return;
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0);
 }
 
+/// Esta funcion obtiene el CIF de la empresa que emitio la factura (el campo
+/// cac:ID dentro de la seccion cac:PartyIdentification del elemento cac:SellerParty).
+/// Una vez obtenido este valor, nos sirve para saber si este proveedor existe o no
+/// en nuestra base de datos. Si no existe se aborta el proceso de importacion y se
+/// le pide al usuario que primero anyada a este nuevo proveedor en la base de datos.
 QString EFQToolButtonImportar::obten_id_proveedor(QDomDocument *doc) {
-
+	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0);
 	// Nos situamos sobre la parte que identifica al vendedor
 	QDomNodeList lista_nodos = doc->elementsByTagName("cac:SellerParty");
 	// Obtenemos el nodo padre de esta seccion
@@ -154,19 +180,16 @@ QString EFQToolButtonImportar::obten_id_proveedor(QDomDocument *doc) {
 	nodo = nodo.firstChildElement("cac:PartyIdentification");
 	nodo = nodo.firstChildElement("cac:ID");
 	
-	// Obtenemos el valor de ese nodo transformandolo en QDomElement
-	// y usando el metodo text()
-	QDomElement e = nodo.toElement();
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_id_proveedor", 0);
 	
-	return e.text();
+	return nodo.toElement().text();
 }
 
 /// ------------------ Importa una factura desde un fichero en formato UBL 1.0 ------------------- ///
 
 void EFQToolButtonImportar::importa_factura_ubl() {
-	_depura("EFQToolButtonImportar::importa_factura_ubl 1", 0);
+	_depura("EFQToolButtonImportar::importa_factura_ubl", 0);
 
-	
 	QString fichero = QFileDialog::getOpenFileName(
 			this,
 			"Escoja un fichero que contenga una efactura para importarlo a la base de datos de BulmaFact",
@@ -215,8 +238,53 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 		
 		return;
 	}
+
+/// Mostramos la ficha con la informacion de la factura importada --------------------------------------
 	
-	QString descuentoFactura = obten_descuento_factura(&doc);
+	FacturaProveedorView *fp = m_companyact->newFacturaProveedorView();
+	m_companyact->m_pWorkspace->addWindow(fp);
+	fp->inicializar();
+	fp->pintar();
+	fp->show();
+	
+/// Obtenemos los descuentos ---------------------------------------------------------------------------
+
+	QList< QMap<QString, QString> > lista_mapas_dfactura;
+	
+	QString descuentoFactura = obten_descuento_factura(&doc, lista_mapas_dfactura);
+	
+/// Vamos a usar un QMap para ir recorriendo los descuentos de la factura y los valores
+/// los iremos guardando, una vez obtenidos los que nos interesan, en una lista de QMaps.
+	
+	// Contamos los descuentos que hay
+	
+	int numdescuentos = lista_mapas_dfactura.count();
+	
+/// 	Estas son las claves que vamos a usar dentro del QMap mapa_dfactura
+
+/// 	mapa_dfactura["conceptdfactura"]
+/// 	mapa_dfactura["proporciondfactura"]
+
+/// Pintamos los descuentos --------------------------------------------
+	
+	ListDescuentoFacturaProvView *descuentos = fp->getlistadescuentos();
+	SDBRecord *rec = descuentos->lista()->last();
+	QMap <QString, QString> mapa_dfactura;
+
+	for (int i = 0; i < numdescuentos; i++) {
+		descuentos->setinsercion(FALSE);
+		mapa_dfactura = lista_mapas_dfactura.at(i);	
+			
+		rec->setDBvalue("conceptdfacturap", mapa_dfactura["conceptdfactura"]);
+		rec->setDBvalue("proporciondfacturap", mapa_dfactura["proporciondfactura"]);
+		
+		descuentos->setinsercion(TRUE);
+		descuentos->nuevoRegistro();
+		
+		rec = descuentos->lista()->last();
+	} // end for
+	
+/// FIN Descuentos de factura --------------------------------------------------------------------------
 	
 /// Obtenemos lineas de factura ------------------------------------------------------------------------
 	
@@ -234,10 +302,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	if (numlineas == 0) {
 		_depura("Esta factura es erronea. No contiene ninguna linea asociada", 2);
 		exit(-1);
-	} 
-// 	else {
-// 		_depura("Hay lineas de factura: " + QString::number(numlineas), 2);
-// 	}
+	}
 	
 /// Vamos a usar un QMap para ir recorriendo las lineas de factura y los valores
 /// los iremos guardando, una vez obtenidos los que nos interesan, en una lista de QMaps.
@@ -254,47 +319,18 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 /// 	mapa_lfactura["descuentolfactura"]
 /// 	mapa_lfactura["idarticulo"]
 	
-	
-	/// Mientras haya lineas, las vamos obteniendo
+/// Mientras haya lineas, las vamos obteniendo
 	for (int i = 0; i < numlineas; i++) {
 		obten_linea_factura(&doc, mapa_lfactura, i);
 		lista_mapas_lfactura.append(mapa_lfactura);
 	}
 	
-	/// Debug en pantalla
-// 	for (int i = 0; i < lista_mapas_lfactura.size(); i++) {
-// 		mapa_lfactura = lista_mapas_lfactura.at(i);
-// 		_depura(mapa_lfactura["desclfactura"] + "--" + mapa_lfactura["cantlfactura"] + "--" + mapa_lfactura["pvplfactura"] + "--" + mapa_lfactura["ivalfactura"] + "--" + mapa_lfactura["descuentolfactura"] + "--" + mapa_lfactura["idarticulo"], 2);
-// 	}
-	
-/// FIN Obtenemos lineas de factura --------------------------------------------------------------------
-		
-	/// Mostramos la ficha con la informacion de la factura importada
-	
-	FacturaProveedorView *fp = m_companyact->newFacturaProveedorView();
-	m_companyact->m_pWorkspace->addWindow(fp);
-	fp->inicializar();
-	fp->pintar();
-	fp->show();
-
-/*
-addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
-addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
-addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
-addSHeader("idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea"));
-addSHeader("desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
-addSHeader("cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
-addSHeader("pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
-addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
-addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
-addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Factura"));
-*/		
-
-/// Creamos las lineas de factura --------------------------------------------
+/// Pintamos las lineas de factura --------------------------------------------
 
 	ListLinFacturaProveedorView *lineas = fp->getlistalineas();
-	SDBRecord *rec = lineas->lista()->last();
+	rec = lineas->lista()->last();
 	cursor2 *articulo = NULL;
+	QString idarticulo, nomarticulo;
 
 	for (int i = 0; i < numlineas; i++) {
 		lineas->setinsercion(FALSE); /// Hace falta que este en el bucle? preguntar a Tomeu
@@ -303,25 +339,37 @@ addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, 
 		/// Comprobamos que existe un articulo con ese codigo en la BD
 		/// Si no es asi, mandamos una alerta al usuario y anyadimos ese
 		/// articulo a la linea como articulo generico		
-		query = "SELECT * FROM articulo WHERE codarticulo = '" + mapa_lfactura["idarticulo"] + "'";
+		query = "SELECT * FROM articulo WHERE codigocompletoarticulo = '" + mapa_lfactura["idarticulo"] + "'";
 		articulo = m_companyact->cargacursor(query);
 		
+		/// Si no obtenemos resultados cargamos en el cursor articulo los
+		/// valores que necesitamos (idarticulo y nomarticulo)
 		if (articulo->numregistros() == 0) {
 			_depura("El articulo con codigo completo " + mapa_lfactura["idarticulo"] + " no existe en la base de datos. Se importara como articulo generico.", 2);
 			
-			mapa_lfactura["idarticulo"] = "ARTGEN";
-		}
+			/// Obtenemos el codigo de articulo generico
+			query = "SELECT valor FROM configuracion WHERE nombre = 'CodArticuloGenerico'";
+			articulo = m_companyact->cargacursor(query);
 			
+			mapa_lfactura["idarticulo"] = articulo->valor("valor");
+			
+			/// Datos necesarios para guardar correctamente la linea de factura
+			query = "SELECT idarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo = '" + articulo->valor("valor") + "'";
+			articulo = m_companyact->cargacursor(query);
+		} // end if
+			
+		idarticulo  = articulo->valor("idarticulo");
+		nomarticulo = articulo->valor("nomarticulo");
+		
+		rec->setDBvalue("idarticulo", articulo->valor("idarticulo"));
+		rec->setDBvalue("nomarticulo", articulo->valor("nomarticulo"));
 		rec->setDBvalue("desclfacturap", mapa_lfactura["desclfactura"]);
 		rec->setDBvalue("cantlfacturap", mapa_lfactura["cantlfactura"]);
 		rec->setDBvalue("pvplfacturap", mapa_lfactura["pvplfactura"]);
 		rec->setDBvalue("ivalfacturap", mapa_lfactura["ivalfactura"]);
 		rec->setDBvalue("descuentolfacturap", mapa_lfactura["descuentolfactura"]);
 		
-		rec->setDBvalue("codarticulo", mapa_lfactura["idarticulo"]); // poner el del generico
-
-// 		rec->setDBvalue("idarticulo", mapa_lfactura["idarticulo"]);
-// 		rec->setDBvalue("", mapa_lfactura[""]);
+		rec->setDBvalue("codigocompletoarticulo", mapa_lfactura["idarticulo"]);
 
 		lineas->setinsercion(TRUE);
 		lineas->nuevoRegistro();
@@ -330,42 +378,12 @@ addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, 
 	} // end for
 	
 	delete articulo;
-	delete rec;
-	
-/// Creamos los descuentos --------------------------------------------
-/*	
-	ListDescuentoFacturaProvView *descuentos = fp->getlistadescuentos();
-	SDBRecord *rec = descuentos->lista()->last();
-	cursor2 *articulo = NULL;
 
-	for (int i = 0; i < numlineas; i++) {
-		lineas->setinsercion(FALSE); /// Hace falta que este en el bucle? preguntar a Tomeu
-		mapa_lfactura = lista_mapas_lfactura.at(i);	
-			
-		rec->setDBvalue("desclfacturap", mapa_lfactura["desclfactura"]);
-		rec->setDBvalue("cantlfacturap", mapa_lfactura["cantlfactura"]);
-		rec->setDBvalue("pvplfacturap", mapa_lfactura["pvplfactura"]);
-		rec->setDBvalue("ivalfacturap", mapa_lfactura["ivalfactura"]);
-		rec->setDBvalue("descuentolfacturap", mapa_lfactura["descuentolfactura"]);
-		
-		rec->setDBvalue("codarticulo", mapa_lfactura["idarticulo"]); // poner el del generico
-
-// 		rec->setDBvalue("idarticulo", mapa_lfactura["idarticulo"]);
-// 		rec->setDBvalue("", mapa_lfactura[""]);
-
-		lineas->setinsercion(TRUE);
-		lineas->nuevoRegistro();
-		
-		rec = lineas->lista()->last();
-	} // end for
-	
-	delete articulo;
-	delete rec;
-*/
+/// FIN lineas de factura ------------------------------------------------------------------------------
 
 // 	fp->cargar("0");
 // 	fp->show();
-	
+
 	fp->pintanumfacturap(numeroFactura);
 	fp->pintafechafacturap(fechaFactura);
 	fp->pintadescfacturap(descFactura);
@@ -379,16 +397,32 @@ addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, 
  	fp->pintatotales(bimp, iva);
 	fp->m_totalDiscounts->setText(descuentoFactura);
 	
-	/// Que seleccione la forma de pago el que esta importanto la factura
+/// Damos valores a los campos DBvalue -----------------------------------------------------------------
+	
+	lineas->setcompany(m_companyact);
+	descuentos->setcompany(m_companyact);
+	
+	_depura("empezamos con los setDB", 2);
+
+	fp->setidproveedor(idProveedor);
+	fp->setreffacturap(""); /// El valor lo pone el usuario que importa la factura
+	fp->setnumfacturap(numeroFactura);
+	fp->setfechafacturap(fechaFactura);
+	fp->setdescfacturap(descFactura);
+	fp->setcomentfacturap("");
+	
+	/// Que seleccione la forma de pago el que esta importanto la factura.
 	/// Esto lo hacemos asi porque guardamos este campo como una cadena
 	/// de texto dentro de la efactura, al ser algo tan variable mejor que
-	/// lo haga de nuevo el propio usuario
+	/// lo haga de nuevo el propio usuario.
 	fp->pintaidforma_pago("");
 	
-	//dibujar_lineas_factura;
-	//dibujar_descuentos_factura
+	fp->setprocesadafacturap("");
+	
+	_depura("acabamos con los setDB", 2);
 
-// 	delete fp;
+	_depura("END EFQToolButtonImportar::importa_factura_ubl", 0);
+	
 }
 
 void EFQToolButtonImportar::click() {

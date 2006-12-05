@@ -40,7 +40,7 @@ public:
 	void importa_factura_ubl();
 	QString obten_valor_nodo(QString nombre, QDomDocument *doc);
 	QString obten_id_proveedor(QDomDocument *doc);
-	QString obten_descuento_factura(QDomDocument *doc);
+	QString obten_descuento_factura(QDomDocument *doc, QList< QMap<QString, QString> > &lista_descuentos);
 	void obten_linea_factura(QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i);
 
 public slots:

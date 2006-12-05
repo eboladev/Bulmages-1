@@ -85,13 +85,11 @@ int FacturaProveedorView::sacaWindow() {
 /// inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
 /// Sirve para inicializar los componenetes sin necesidad de query alguno
 void FacturaProveedorView::inicializar() {
-    _depura("FacturaProveedorView::inicializar", 2);
+    _depura("FacturaProveedorView::inicializar", 0);
     subform2->inicializar();
-    _depura("Hemos inicializado el subform2", 2);
     m_descuentos->inicializar();
-    _depura("Hemos inicializado m_descuentos", 2);
     dialogChanges_cargaInicial();
-    _depura("END FacturaProveedorView::inicializar", 2);
+    _depura("END FacturaProveedorView::inicializar", 0);
 }
 
 
@@ -101,6 +99,14 @@ void FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
     m_totalfacturap->setText((iva + base).toQString());
 }
 
+void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    _depura("PresupuestoView::pintatotales", 0);
+    m_totalBases->setText(QString(base.toQString()));
+    m_totalTaxes->setText(QString(iva.toQString()));
+    m_totalfacturap->setText(QString(total.toQString()));
+    m_totalDiscounts->setText(QString(desc.toQString()));
+    _depura("END PresupuestoView::pintatotales", 0);
+}
 
 void FacturaProveedorView::s_nuevoPago() {
     _depura("FacturaProveedorView::s_nuevoPago", 0);
@@ -166,3 +172,17 @@ void FacturaProveedorView::on_mui_veralbaranes_clicked() {
 	delete cur;	
 	_depura("END FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
 }
+
+
+/** SLOT que responde a la pulsacion del boton guardar en la ficha de factura de proveedor.
+	Llama al metodo guardar y hace una carga para refrescar valores que haya podido meter
+	la base de datos.
+*/
+/// \TODO: Hacer que la carga se haga en el guardar de FacturaProveedor.
+void FacturaProveedorView::on_mui_guardar_clicked() {
+    	_depura("FacturaProveedorView::on_mui_guardar_clicked", 0);
+        guardar();
+        cargar(DBvalue("idfacturap"));
+    	_depura("END FacturaProveedorView::on_mui_guardar_clicked", 0);
+}
+

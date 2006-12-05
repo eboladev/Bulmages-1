@@ -70,7 +70,7 @@ configuracion::configuracion() {
     QDir homedir;
     /// Cambiamos a ~/.bulmages como directorio de trabajo.
     QString dir = getenv("HOME");
-    fprintf(stderr, "\n %s \n", dir.toAscii().data());
+//    fprintf(stderr, "\n %s \n", dir.toAscii().data());
     dir = dir + "/.bulmages/";
 
 #ifdef WIN32

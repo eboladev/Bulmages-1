@@ -1334,6 +1334,9 @@ SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Disparamos los triggers para que se actualicen los totales."
 
+--
+-- Ponemos valores necesarios en la tabla configuracion para hacer uso del plugin efacturabf.
+--
 
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
@@ -1350,6 +1353,24 @@ END;
 '   LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
+
+--
+-- Correccion de bug en el schema de la BD. En la tabla dfacturap, la clave extranjera a facturap
+-- apuntaba a la tabla factura.
+--
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+BEGIN
+	ALTER TABLE dfacturap DROP CONSTRAINT dfacturap_idfacturap_fkey;
+	ALTER TABLE dfacturap ADD FOREIGN KEY(idfacturap) REFERENCES facturap(idfacturap);
+	
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
+
 
 
 
