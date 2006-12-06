@@ -167,7 +167,7 @@ int Factura::guardar() {
     try {
         /// Calculamos el proximo numero de factura para poder insertarlo en caso de que este sea nulo.
         if (DBvalue("numfactura") == "") {
-            QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura WHERE codigoserie_factura = '".DBvalue("codigoserie_factura")."'";
+            QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura WHERE codigoserie_factura = '"+DBvalue("codigoserie_factura")+"'";
             cursor2 *cur= companyact->cargacursor(SQLQueryn);
             if (!cur->eof())
                 setDBvalue("numfactura", cur->valor("num"));

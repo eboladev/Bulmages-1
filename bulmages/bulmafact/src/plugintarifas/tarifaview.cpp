@@ -27,7 +27,6 @@
 #include "busquedafamilia.h"
 #include "busquedaalmacen.h"
 #include "comparticulolistview.h"
-#include "comparticulolist.h"
 #include "funcaux.h"
 #include "plugins.h"
 
