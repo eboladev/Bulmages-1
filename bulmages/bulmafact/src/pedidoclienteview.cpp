@@ -113,7 +113,9 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
 }
 
 
-/// Se encarga de generar un albaran a partir del pedido.
+/** Genera un Albaran a Cliente a partir de los datos
+    que tiene el pedido.
+*/
 void PedidoClienteView::generarAlbaran() {
     _depura("PedidoClienteView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.

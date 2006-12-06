@@ -23,9 +23,7 @@
 
 #include <QEvent>
 
-#include "comparticulolist.h"
 #include "company.h"
-#include "comparticulo.h"
 #include "qtable2.h"
 #include "subform.h"
 #include "subform3.h"

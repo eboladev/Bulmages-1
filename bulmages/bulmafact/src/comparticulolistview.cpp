@@ -28,8 +28,11 @@
 #include "funcaux.h"
 
 
+/** Prepara el subformulario para trabajar con la tabla comparticulo de la base de datos.
+*/
 ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
         : SubForm2Bf(parent) {
+    _depura("ListCompArticuloView::ListCompArticuloView", 0);
     setDBTableName("comparticulo");
     setDBCampoId("idcomponente");
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo del articulo"));
@@ -38,9 +41,14 @@ ListCompArticuloView::ListCompArticuloView(QWidget *parent, const char *)
     addSHeader("idcomponente", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, tr("ID componente"));
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey | DBCampo::DBNotNull, SHeader::DBNoView, tr("ID articulo"));
     setinsercion(TRUE);
+    _depura("END ListCompArticuloView::ListCompArticuloView", 0);
 }
 
+/** SLOT que responde a la pulsacion de Ctrl + * en el subformulario.
+    Dependiendo de la columna que este seleccionada saca el buscador de articulos.
+*/
 void ListCompArticuloView::pressedAsterisk(int row, int col) {
+    _depura("ListCompArticuloView::pressedAsterisk", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row,col);
     if (camp->nomcampo() != "codigocompletoarticulo")
@@ -61,9 +69,13 @@ void ListCompArticuloView::pressedAsterisk(int row, int col) {
         rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
         rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
     } // end if
+    _depura("END ListCompArticuloView::pressedAsterisk", 0);
 }
 
 
+/** SLOT que responde a la finalizacion de edicion de una celda en el subformulario.
+    Comprueba que sea la celda de codigo de articulo y si es asi pone el resto de componentes.
+*/
 void ListCompArticuloView::editFinished(int row, int col) {
     _depura("ListCompArticuloView::editFinished", 0);
     SDBRecord *rec = lineaat(row);
@@ -77,5 +89,6 @@ void ListCompArticuloView::editFinished(int row, int col) {
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
         } // end if
     } // end if
+    _depura("END ListCompArticuloView::editFinished", 0);
 }
 

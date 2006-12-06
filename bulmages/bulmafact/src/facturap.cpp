@@ -29,6 +29,7 @@
 
 
 class Fixed;
+/// Una factura puede tener multiples bases. Por eso definimos el tipo base como un QMap.
 typedef QMap<QString, Fixed> base;
 
 /** Inicializa todos los componentes.
@@ -37,7 +38,6 @@ typedef QMap<QString, Fixed> base;
 FacturaProveedor::FacturaProveedor(company *comp) : DBRecord(comp) {
     _depura("FacturaProveedor::FacturaProveedor", 0);
     companyact = comp;
-
     setDBTableName("facturap");
     setDBCampoId("idfacturap");
     addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("FacturaProveedor", "Id facturap"));
@@ -402,8 +402,10 @@ void FacturaProveedor::setprocesadafacturap(QString val) {
 	setDBvalue("procesadafacturap", val);
 }
 
+/** Calcula el total de factura, los impuestos y descuentos y se encarga de que se muestre adecuadamente.
+*/
 void FacturaProveedor::calculaypintatotales() {
-    _depura("FacturaProveedor::calculaypintatotales \n", 2);
+    _depura("FacturaProveedor::calculaypintatotales", 0);
 
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("FacturaProveedor::_calculaypintatotales", this);
@@ -467,5 +469,5 @@ void FacturaProveedor::calculaypintatotales() {
         totiva = totiva + pariva;
     } // end for
     pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-    _depura("END FacturaProveedor::calculaypintatotales\n", 2);
+    _depura("END FacturaProveedor::calculaypintatotales", 0);
 }

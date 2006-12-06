@@ -61,25 +61,45 @@ class familiasview;
 
 /// Clase company (empresa).
 /** Clase principal del programa donde se almacenan y gestionan
-    todos los datos de la empresa con la que se est&aacute; trabajando.*/
+    todos los datos de la empresa con la que se est&aacute; trabajando.
+    Deriva de postgresiface ya que tiene el tratamiento de la base de datos.
+*/
+/** \TODO: Esta clase deberia convertirse en 2, una parte comun con todas las aplicaciones bulma en bulmalib y una parte especifica en BulmaFact.
+*/
+
 class company : public postgresiface2 {
 private:
+    /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de mensajes tiene el control de la lista de ventanas.
     listventanas *m_listventanas;
+    /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
     ProveedorList *m_providerslist;
+    /// Puntero a la ventan ade lista de clientes. Esta ventana se abre una vez al inicio del programa.
     ClientsList *m_clientsList;
+    /// Puntero a la ventana de lista de articulos. Esta ventan ase abre una vez al inicio del programa.
     ArticuloList *m_articleslist;
+    /// Puntero a la ventana de lista de presupuestos. Esta ventana se abre una vez al inicio del program.a \TODO: Cambiarle el nombre.
     PresupuestoList *m_budgetsList;
+    /// Puntero al a ventana de lista de albarnaes a cliente. Esta ventana se crea una vez al inicio del programa.
     AlbaranClienteList *m_clientDelivNotesList;
+    /// Puntero a la ventana de lista de facturas a cliente. Esta ventana se crea una vez al inicoi del programa.
     FacturasList *m_facturasList;
+    /// Puntero a la lista de pedidos de cliente. Esta ventana se crea una vez al inicio del programa.
     PedidosClienteList *m_pedidosclienteList;
+    /// Puntero a la lista de pedidos a proveedor. Esta ventana se crea una vez al inicoi del programa.
     PedidosProveedorList *m_pedidosproveedorList;
+    /// Puntero a la lista de albaranes de proveedor. Esta ventana se crea una vez al inicio del programa.
     AlbaranesProveedor *m_albaranesproveedor;
+    /// Puntero al a lista de cobros. Esta ventana se crea una vez al inicio del programa.
     CobrosList *m_cobrosList;
+    /// Puntero a la ventan ade facturas de proveedor. Esta ventana se crea una vez al inicio del programa.
     FacturasProveedorList *m_facturasproveedorlist;
+    /// Puntero a la ventana de pagos. Esta ventana se crea una vez al inicio del programa.
     PagosList *m_pagosList;
 
 public:
+    /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas, es comodo tener este puntero inicializado en esta clase.
     QWorkspace2 *m_pWorkspace;
+    /// El indicador de progreso. PAra que determinados procesos puedan indicar su evolucion de forma general en la ventana principal.
     QProgressBar *m_progressbar;
 
 public:

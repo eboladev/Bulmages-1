@@ -34,7 +34,6 @@
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
 #include "comparticulolistview.h"
-#include "comparticulolist.h"
 #include "funcaux.h"
 #include "plugins.h"
 

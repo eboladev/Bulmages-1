@@ -35,8 +35,10 @@
 #include "ficha.h"
 
 
-/// Muestra y administra la ventana de factura de proveedor.
-/** */
+/** Implementa la pantalla de Facturas de Proveedores.
+    Deriva de la clase ficha para heredar metodos comunes a las fichas.
+    Tambien deriva de la clase \ref FacturaProveedor para trabajar con la tabla facturap.
+*/
 class FacturaProveedorView : public Ficha, public Ui_FacturaProveedorBase, public FacturaProveedor {
     Q_OBJECT
 

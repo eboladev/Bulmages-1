@@ -29,7 +29,6 @@
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
 #include "company.h"
-#include "linpresupuesto.h"
 #include "dbrecord.h"
 
 

@@ -31,12 +31,15 @@
 #include "dbrecord.h"
 
 
-/// Administra los datos de una factura de proveedor.
-/** */
+/** Hace de intermediario entre la base de datos y la pantalla de Factura Proveedor.
+*/
 class FacturaProveedor : public DBRecord {
 protected:
+    /// Puntero a la lista de lineas de factura de proveedor. 
     ListLinFacturaProveedorView *listalineas;
+    /// Puntero a la lista de descuentos de factura de proveedor.
     ListDescuentoFacturaProvView *listadescuentos;
+    /// Puntero a la clase company para trabajar con la Base de Datos y para el paso de mensajes.
     company *companyact;
 
 public:

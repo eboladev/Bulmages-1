@@ -28,10 +28,15 @@
 
 
 class Fixed;
+
+/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base como un QMap.
 typedef QMap<QString, Fixed> base;
 
 
+/** PReparamos la clase DBRecord para funcionar con la tabla factura.
+*/
 Factura::Factura(company *comp) : DBRecord(comp) {
+    _depura("Factura::Factura", 0);
     companyact = comp;
     setDBTableName("factura");
     setDBCampoId("idfactura");
@@ -47,13 +52,27 @@ Factura::Factura(company *comp) : DBRecord(comp) {
     addDBCampo("descfactura", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Factura", "Descripcion factura"));
     addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Factura", "Id trabajador"));
     addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Factura", "Id formad de pago"));
+    _depura("END Factura::Factura", 0);
 }
 
 
-Factura::~Factura() {}
+/** No requiere de acciones especiales en el destructor.
+*/
+Factura::~Factura() {
+    _depura("Factura::~Factura", 0);
+    _depura("END Factura::~Factura", 0);
+}
 
 
+
+/** Se encarga del borrado de una factura.
+    Para ello primero borra las lineas y descuentos de esta. y luego
+    Borra la ficha de la factura.
+    Sit odo va bien devuelve 0, sino devuelve -1.
+*/
+/// \TODO: Deberia contener un bloque try{} catch{}
 int Factura::borrar() {
+    _depura("Factura::borrar", 0);
     if (DBvalue("idfactura") != "") {
         companyact->begin();
         int error = listalineas->borrar();
@@ -73,17 +92,26 @@ int Factura::borrar() {
         } // end if
         companyact->commit();
     } // end if
+    _depura("END Factura::borrar", 0);
     return 0;
 }
 
 
+/** Vacia la memoria que pudiera tener DBRecord
+*/
 void Factura::vaciaFactura() {
+    _depura("Factura::vaciaFactura", 0);
     DBclear();
+    _depura("END Factura::vaciaFactura", 0);
 }
 
 
+/** Pinta una factura.
+    Para ello utiliza los metodos sobrecargables pintaXXX de esta forma se podria generar una segunda interficie reutilizando esta clase.
+*/
+/// \TODO: Deberia llamarse pintar.
 void Factura::pintaFactura() {
-    _depura("pintaFactura\n", 0);
+    _depura("pintaFactura", 0);
     pintaidcliente(DBvalue("idcliente"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaNumFactura(DBvalue("numfactura"));
@@ -96,11 +124,20 @@ void Factura::pintaFactura() {
     pintadescfactura(DBvalue("descfactura"));
     /// Pinta el subformulario de detalle del factura.
     calculaypintatotales();
+    _depura("END pintaFactura", 0);
 }
 
 
 /// Esta funcion carga un factura.
+/** Carga una factura. 
+    Crea el query de carga y delega el llenodo de registros a DBRecord.
+    Una vez cargado DBRecord hace una llamada a la carga de lineas y descuentos.
+    Tras el cargado se hace un pintado para que se vea bien todo.
+    Si todo va bien devuelve 0.
+*/
+/// \TODO: Deberia utilizar un bloque try{} catch{}
 int Factura::cargar(QString idbudget) {
+    _depura("Factura::cargar", 0);
     inicialize();
     QString query = "SELECT * FROM factura  WHERE idfactura=" + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -111,17 +148,26 @@ int Factura::cargar(QString idbudget) {
     listalineas->cargar(idbudget);
     listadescuentos->cargar(idbudget);
     pintaFactura();
+    _depura("END Factura::cargar", 0);
     return 0;
 }
 
 
+/** Se encarga del guardado de una factura.
+    Primero busca el numero de factura que hace falta.
+    Luego guarda el registro.
+    Despues guarda las lineas y descuentos.
+    Al finalizar el guardado hace un cargar para repintar todos los elementos.
+    Si todo va bien devuelve 0
+    Si se produce un error genera una excepcion -1
+*/
 int Factura::guardar() {
     _depura("Factura::guardar", 0);
     QString fecha;
     try {
         /// Calculamos el proximo numero de factura para poder insertarlo en caso de que este sea nulo.
         if (DBvalue("numfactura") == "") {
-            QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura";
+            QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura WHERE codigoserie_factura = '".DBvalue("codigoserie_factura")."'";
             cursor2 *cur= companyact->cargacursor(SQLQueryn);
             if (!cur->eof())
                 setDBvalue("numfactura", cur->valor("num"));
@@ -149,7 +195,13 @@ int Factura::guardar() {
 }
 
 
-void Factura::imprimirFactura() {
+/** Impresion de una factura.
+    Coge la plantilla facturacliente.rml y la guarda en ~/.bulmages/facturacliente.rml
+    Luego hace en este archivo toda la sustitucion de cadenas segun la ficha de factura.
+    Por ultimo llama a bgtrml2pdf.py para generear un pdf y lo muestra con el visor predeterminado.
+*/
+void  Factura::imprimirFactura() {
+    _depura("Factura::imprimirFactura", 0);
     /// Hacemos el lanzamiento de plugins para este caso.
     int res = g_plugins->lanza("Factura_imprimirFactura", this);
     if (res)
@@ -299,10 +351,16 @@ void Factura::imprimirFactura() {
         file.close();
     }
     invocaPDF("facturacliente");
+    _depura("Factura::imprimirFactura", 0);
 }
 
 
+
+/** Calcula los totales de factura, descuentos e impuestos y invoca al metodo de pintaTotales para
+    que se pinten dichos valores en la pantalla.
+*/
 void Factura::calculaypintatotales() {
+    _depura("Factura::calculaypintatotales", 0);
     base basesimp;
     SDBRecord *linea;
     /// Impresion de los contenidos.
@@ -358,5 +416,6 @@ void Factura::calculaypintatotales() {
         totiva = totiva + pariva;
     } // end for
     pintatotales(totiva, totbaseimp, totiva+totbaseimp, basei * porcentt / 100);
+    _depura("Factura::calculaypintatotales", 0);
 }
 

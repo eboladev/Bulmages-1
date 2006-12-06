@@ -112,7 +112,9 @@ public slots:
     }
     virtual void on_mui_verpresupuesto_clicked();
     virtual void on_mui_pasaraalbaran_clicked() {
+	_depura("on_mui_pasaraalbaran_clicked", 0);
         generarAlbaran();
+	_depura("END on_mui_pasaraalbaran_clicked", 0);
     }
     virtual void on_mui_cobrar_clicked();
     virtual void on_m_descuentos_editFinish(int, int) {

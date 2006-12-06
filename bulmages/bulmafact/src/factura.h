@@ -31,11 +31,15 @@
 
 
 /// Administra los datos de una factura a cliente.
-/** */
+/** Intermedia entre la base de datos y la pantalla de presentacion.
+*/
 class Factura : public DBRecord {
 protected:
+    /// Puntero a la lista de lineas de factura.
     ListLinFacturaView *listalineas;
+    /// Puntero a la lista de lineas de descuento.
     ListDescuentoFacturaView *listadescuentos;
+    /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
     company *companyact;
 
 public:

@@ -33,8 +33,13 @@
 #include "plugins.h"
 
 
+/** Prepara todos los componentes i los inicializa a NULL para que no haya dudas sobre si
+    ya han sido inicializados o no.
+    Inicializando la clase con este constructor precisa que sea establecido el company con setcompany.
+*/
 FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag) {
+    _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     m_companyact = NULL;
     m_modo = editmodo;
@@ -43,11 +48,14 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         meteWindow(windowTitle(), this);
     } // end if
     hideBusqueda();
+    _depura("END FacturasList::FacturasList", 0);
 }
 
-
+/** Inicializa todos los componentes y prepara la ventana para funcionar.
+*/
 FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag) {
+    _depura("FacturasList::FacturasList", 0);
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(m_companyact);
@@ -60,14 +68,22 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         meteWindow(windowTitle(), this);
     } // end if
     hideBusqueda();
+    _depura("END FacturasList::FacturasList", 0);
 }
 
 
-FacturasList::~FacturasList() {}
+/** No precisa de acciones especiales en el destructor de la clase.
+*/
+FacturasList::~FacturasList() {
+    _depura("FacturasList::~FacturasList", 0);
+    _depura("END FacturasList::~FacturasList", 0);
+}
 
 
+/** Hace la carga del subformulario y el calculo de los totales.
+*/
 void FacturasList::presenta() {
-    _depura("FacturasList::presenta()", 1);
+    _depura("FacturasList::presenta", 0);
 
     mui_list->cargar("SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  " + generaFiltro());
 
@@ -76,13 +92,15 @@ void FacturasList::presenta() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-    _depura("END FacturasList::presenta()", 1);
+    _depura("END FacturasList::presenta", 1);
 }
 
 
+/** Funcion auxiliar que genera la clausula WHERE de la consulta del listado a partir de las opciones de filtrado que el usuario haya especificado.
+*/
 QString FacturasList::generaFiltro() {
+    _depura("FacturasList::generaFiltro", 0);
     /// Tratamiento de los filtros.
-    fprintf(stderr,"Tratamos el filtro \n");
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descfactura LIKE '%" + m_filtro->text() + "%' ";
@@ -106,10 +124,15 @@ QString FacturasList::generaFiltro() {
     if (m_fechafin->text() != "") {
         filtro += " AND ffactura <= '" + m_fechafin->text() + "' ";
     } // end if
+    _depura("END FacturasList::generaFiltro", 0);
     return (filtro);
 }
 
 
+/** Metodo que responde a la accion por defecto sobre el listado (doble click o boton de editar)
+    Si estamos en modo edicion abre la ficha de Factura y carga el elemento seleccionado.
+    Si estamos en modo seleccion cierra la ventana y emite el SIGNAL de que se ha seleccionado una factura.
+*/
 void FacturasList::editar(int row) {
     _depura("FacturasList::editar", 0);
     mdb_idfactura = mui_list->DBvalue(QString("idfactura"), row);
@@ -127,16 +150,24 @@ void FacturasList::editar(int row) {
     _depura("END FacturasList::editar", 0);
 }
 
-
+/** SLOT que responde a la pulsacion del boton editar en el listado.
+    Comprueba que exista un elemento seleccionado y
+    llama al metodo \ref editar().
+*/
 void FacturasList::on_mui_editar_clicked() {
+    _depura("FacturasList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
     if (a >= 0)
         editar(a);
     else
         _depura("Debe seleccionar una linea", 2);
+    _depura("END FacturasList::on_mui_editar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton de imprimir.
+    La impresion de listados esta completamente delegada en SubForm2Bf
+*/
 void FacturasList::on_mui_imprimir_clicked() {
     _depura("FacturasList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Facturas"));
@@ -144,6 +175,11 @@ void FacturasList::on_mui_imprimir_clicked() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton borrar.
+    Crea una instancia de FacuturaView, carga el elemento seleccionado e invoca al 
+    metodo de borrar.
+    La ventaja de hacerlo de esta forma es que si hay plugins en la factura, estos tambien se ejecutaran.
+*/
 void FacturasList::on_mui_borrar_clicked() {
     _depura("FacturasList::on_mui_borrar_clicked", 0);
     try {
@@ -165,7 +201,10 @@ void FacturasList::on_mui_borrar_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** Prepara el subformulario para trabajar con la tabla factura.
+*/
 FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    _depura("FacturasListSubform::FacturasListSubform", 0);
     setDBTableName("factura");
     setDBCampoId("idfactura");
     addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id factura"));
@@ -186,5 +225,6 @@ FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubFor
     addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
     addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
+    _depura("END FacturasListSubform::FacturasListSubform", 0);
 }
 
