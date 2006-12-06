@@ -29,8 +29,6 @@
 #include "busquedacliente.h"
 #include "busquedafecha.h"
 
-using namespace std;
-
 #include "funcaux.h"
 
 /** inicializa todos los componentes de la clase.

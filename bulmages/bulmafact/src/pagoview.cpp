@@ -37,8 +37,6 @@
 #include "busquedaproveedor.h"
 #include "busquedafecha.h"
 
-using namespace std;
-
 #include "funcaux.h"
 
 

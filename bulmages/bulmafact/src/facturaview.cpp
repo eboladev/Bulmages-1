@@ -28,8 +28,6 @@
 
 #include <fstream>
 
-using namespace std;
-
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
 #include "clientslist.h"
@@ -43,11 +41,12 @@ using namespace std;
 #include "listlinfacturaview.h"
 #include "plugins.h"
 
-
+/** Inicializa la pantalla.
+    Inicializa todos los componentes y mete la pantalla en el workSpace.
+*/
 FacturaView::FacturaView(company *comp, QWidget *parent)
         : Ficha(parent), Factura(comp) {
-    /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-    _depura("FacturaView::EFacturaBotonExportar", 0);
+    _depura("FacturaView::FacturaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
@@ -82,6 +81,9 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
 }
 
 
+/** Al destruir la clase provocamos que se refresque el listado de facturas.
+    Para que salga actualizado.
+*/
 FacturaView::~FacturaView() {
     _depura("FacturaView::~FacturaView", 0);
     companyact->refreshFacturas();
@@ -89,12 +91,19 @@ FacturaView::~FacturaView() {
 }
 
 
+/** Saca la ventana del workSpace.
+    Este metodo es invocado desde la clase Ficha.
+*/
 int FacturaView::sacaWindow() {
+    _depura("FacturaView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END FacturaView::sacaWindow", 0);
     return 0;
 }
 
 
+/** Inicializa los subformularios y resetea el control de cambios.
+*/
 void FacturaView::inicializar() {
     _depura("FacturaView::inicializar", 0);
     subform2->inicializar();
@@ -104,15 +113,23 @@ void FacturaView::inicializar() {
 }
 
 
+/** Pinta los campos de totales, que al no estar en la base de datos son tratados
+    de forma distinta.
+*/
 void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    _depura("FacturaView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalfactura->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
+    _depura("FacturaView::pintatotales", 0);
 }
 
 
-/// Crea un nuevo cobro para la factura seleccionada.
+/** SLOT que responde a la pulsacion del boton mui_cobrar
+    Crea una instancia de la clase \ref CobroView y lo inicializa con los datos
+    de la factura.
+*/
 void FacturaView::on_mui_cobrar_clicked() {
     _depura("FacturaView::on_mui_cobrar_clicked", 0);
     CobroView *bud = companyact->newCobroView();
@@ -127,6 +144,10 @@ void FacturaView::on_mui_cobrar_clicked() {
 }
 
 
+/** Carga una factura de la base de datos.
+    Deleta toda la carga a la clase \ref Factura 
+    Cambia el titulo de la ventana y reseta el control de cambios.
+*/
 int FacturaView::cargar(QString id) {
     _depura("FacturaView::cargar", 0);
     try {
@@ -143,9 +164,12 @@ int FacturaView::cargar(QString id) {
     return 0;
 }
 
-
+/** SLOT que responde a la pulsacion del boton mui_agregaralbaran.
+    Muestra un selector de albaranes y una vez seleccionado un albaran hace el agregado
+    de todas las lineas de este.
+*/
 void FacturaView::on_mui_agregaralbaran_clicked() {
-    _depura("FacturaView::on_mui_agregaralbaran_clicked\n", 0);
+    _depura("FacturaView::on_mui_agregaralbaran_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
     AlbaranClienteList *fac = new AlbaranClienteList(companyact, diag, 0, AlbaranClienteList::SelectMode);
@@ -200,11 +224,15 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
 
     /// Pintamos los totales.
     calculaypintatotales();
-    _depura("END FacturaView::on_mui_agregaralbaran_clicked\n", 0);
+    _depura("END FacturaView::on_mui_agregaralbaran_clicked", 0);
 }
 
 
-
+/** Guardado de la ficha en la base de datos.
+    Utiliza los metodos setXXX para establecer los valores de la Ficha en el DBRecord
+    y luego llama a \ref Factura::guardar() para el guardado en la base de datos.
+*/
+/// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el control de cambios que deberia estar en el metodo de carga.
 int FacturaView::guardar() {
     _depura("FacturaView::guardar", 0);
     try {
@@ -229,6 +257,9 @@ int FacturaView::guardar() {
 }
 
 
+/** SLOT que responde a la pulsacion del boton mui_veralbaranes.
+    Busca todos los albaranes con la misma referencia y para cada uno de ellos instancia la clase \ref AlbaranClienteView 
+*/
 void FacturaView::on_mui_veralbaranes_clicked() {
     _depura("FacturaView::on_mui_veralbaranes_clicked", 0);
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue("reffactura") + "'";
@@ -245,4 +276,5 @@ void FacturaView::on_mui_veralbaranes_clicked() {
         _depura("no hay albaranes con esta referencia", 2);
     } // end if
     delete cur;
+    _depura("END FacturaView::on_mui_veralbaranes_clicked", 0);
 }

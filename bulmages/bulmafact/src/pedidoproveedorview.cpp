@@ -27,8 +27,6 @@
 #include <QToolButton>
 #include <QLayout>
 
-using namespace std;
-
 #include "pedidoproveedorview.h"
 #include "company.h"
 #include "listlinpedidoproveedorview.h"

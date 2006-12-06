@@ -33,9 +33,6 @@
 #include "inventario.h"
 #include "funcaux.h"
 
-using namespace std;
-
-
 InventarioView::InventarioView(company *comp, QWidget *parent)
         : Ficha(parent), Inventario(comp) {
     setAttribute(Qt::WA_DeleteOnClose);

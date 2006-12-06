@@ -31,6 +31,11 @@
 #include "facturapview.h"
 #include "plugins.h"
 
+/** Inicializa todos los componentes del listado a NULL para que no exista consusion sobre
+    si un elemento ha sido inicializado o no.
+    Al construir la clase con este constructor debe ser inicializada con setcompany().
+    Mete la ventana en el workSpace.
+*/
 FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
@@ -45,14 +50,17 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     mdb_idfacturap = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("FacturasProveedorList::FacturasProveedorList", 0);
 }
 
 
+/** Inicializa todos los componentes, hace la carga inicial con \ref presenta()
+    mete la ventana en el workSpace().
+*/
 FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
         : Ficha(parent) {
-    setupUi(this);
-
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
+    setupUi(this);
 
     /// Disparamos los plugins.
     int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
@@ -68,14 +76,21 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     mdb_idfacturap = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END FacturasProveedorList::FacturasProveedorList", 0);
 }
 
 
+/** No precisa de acciones especiales en el destructor.
+*/
 FacturasProveedorList::~FacturasProveedorList() {
     _depura("FacturasProveedorList::~FacturasProveedorList", 0);
+    _depura("END FacturasProveedorList::~FacturasProveedorList", 0);
 }
 
 
+/** Hace la carga inicial del listado.
+    Tambien hace el calculo de totales y lo presenta.
+*/
 void FacturasProveedorList::presenta() {
     _depura("FacturasProveedorList::presenta", 0);
     mui_list->cargar("SELECT *, totalfacturap AS total, bimpfacturap AS base, impfacturap AS impuestos  FROM facturap LEFT JOIN proveedor ON facturap.idproveedor=proveedor.idproveedor WHERE 1=1  " + generaFiltro());
@@ -88,9 +103,12 @@ void FacturasProveedorList::presenta() {
 }
 
 
+/** Metodo auxiliar que crea la clausula WHERE del query de carga  \ref presenta() 
+    La clausula WHERE utiliza todas las opciones de filtrado para crearse.
+*/
 QString FacturasProveedorList::generaFiltro() {
+    _depura("FacturasProveedorList::generaFiltro", 0);
     /// Tratamiento de los filtros.
-    _depura("Tratamos el filtro \n", 0);
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descfacturap LIKE '%" + m_filtro->text() + "%' ";
@@ -114,6 +132,7 @@ QString FacturasProveedorList::generaFiltro() {
     if (m_fechafin->text() != "")
         filtro += " AND ffacturap <= '" + m_fechafin->text() + "' ";
 
+    _depura("END FacturasProveedorList::generaFiltro", 0);
     return (filtro);
 }
 
@@ -142,15 +161,25 @@ void FacturasProveedorList::editar(int row) {
 }
 
 
+/** SLOT que responde a la pulsacion del boton mui_editar en el formulario.
+    comprueba que exista una fila seleccionada y llama al metodo \ref editar()
+*/
 void FacturasProveedorList::on_mui_editar_clicked() {
+    _depura("FacturasProveedorList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
     if (a >= 0)
         editar(a);
     else
         _depura("Debe seleccionar una linea", 2);
+    _depura("END FacturasProveedorList::on_mui_editar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton mui_borrar en el formulario.
+    Crea una instancia de \ref FacturaProveedorView carga el elemento seleccionado
+    y lanza el metodo \ref FacturaProveedorView::on_mui_borrar_clicked()
+    Una vez borrado recarga el listado para que se actualicen los cambios.
+*/
 void FacturasProveedorList::on_mui_borrar_clicked() {
     _depura("FacturasProveedorList::on_mui_borrar_clicked", 0);
     try {
@@ -162,11 +191,14 @@ void FacturasProveedorList::on_mui_borrar_clicked() {
 	presenta();
     } catch(...) {
 	mensajeInfo(tr("Error al borrar factura de proveedor"));
-    }
+    } // end try
     _depura("END FacturasProveedorList::on_mui_borrar_clicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton mui_imprimir.
+    La impresion de listados esta completamente delegada en SubForm3
+*/
 void FacturasProveedorList::on_mui_imprimir_clicked() {
     _depura("FacturasProveedorList::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Listado de Facturas de Proveedores"));
@@ -177,7 +209,10 @@ void FacturasProveedorList::on_mui_imprimir_clicked() {
 /// =============================================================================
 ///                    SUBFORMULARIO
 /// =============================================================================
+/** Prepara el subformulario para que trabaje con la tabla facturap.
+*/
 FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
     setDBTableName("facturap");
     setDBCampoId("idfacturap");
     addSHeader("reffacturap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia factura"));
@@ -194,5 +229,6 @@ FacturasProveedorListSubform::FacturasProveedorListSubform(QWidget *parent) : Su
     addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
     addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
+    _depura("END FacturasProveedorListSubform::FacturasProveedorListSubform", 0);
 }
 

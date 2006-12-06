@@ -27,8 +27,6 @@
 #include <fstream>
 
 
-using namespace std;
-
 #include "facturapview.h"
 #include "company.h"
 #include "listlinfacturapview.h"
@@ -38,6 +36,10 @@ using namespace std;
 #include "funcaux.h"
 #include "albaranproveedorview.h"
 
+
+/** Inicializa todos los componentes de la clase.
+    mete la ventana en el workSpace.
+*/
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
         : Ficha(parent), FacturaProveedor(comp) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
@@ -68,6 +70,8 @@ FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
 }
 
 
+/** Al destruir una factura de proveedor se hace un refresco del listado de facturas de proveedor.
+*/
 FacturaProveedorView::~FacturaProveedorView() {
     _depura("FacturaProveedorView::~FacturaProveedorView", 0);
     companyact->refreshFacturasProveedor();
@@ -76,14 +80,20 @@ FacturaProveedorView::~FacturaProveedorView() {
 }
 
 
+/** Este metodo es utilizado para sacar la ventana del workSpace.
+    es utilizada desde la clase Ficha.
+*/
 int FacturaProveedorView::sacaWindow() {
+    _depura("FacturaProveedorView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END FacturaProveedorView::sacaWindow", 0);
     return 0;
 }
 
 
-/// inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
-/// Sirve para inicializar los componenetes sin necesidad de query alguno
+/** inicializar debe ser invocado cuando se crea una nueva ficha sin cargar ningun date de la base de datos (por ejemplo una nueva ficha).
+    Sirve para inicializar los componenetes sin necesidad de query alguno
+*/
 void FacturaProveedorView::inicializar() {
     _depura("FacturaProveedorView::inicializar", 0);
     subform2->inicializar();
@@ -93,12 +103,21 @@ void FacturaProveedorView::inicializar() {
 }
 
 
+/** Pinta los totales de la Factura de proveedor.
+    Este metodo se llama desde FacturaProveedor.
+*/
 void FacturaProveedorView::pintatotales(Fixed base, Fixed iva) {
+    _depura("FacturaProveedorView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalfacturap->setText((iva + base).toQString());
+    _depura("END FacturaProveedorView::pintatotales", 0);
 }
 
+
+/** Pinta los totales de la Factura de proveedor.
+    Este metodo se llama desde FacturaProveedor.
+*/
 void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
     _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
@@ -108,6 +127,11 @@ void FacturaProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixe
     _depura("END PresupuestoView::pintatotales", 0);
 }
 
+/** Metodo que responde al hacer un nuevo pago desde la factura.
+    Crea una instancia de \ref PagoView y la lanza poniendole los parametros
+    del pago iguales a los de la factura de Proveedor.
+*/
+/// \TODO: Deberia ser directamente on_mui_pagar_clicked()
 void FacturaProveedorView::s_nuevoPago() {
     _depura("FacturaProveedorView::s_nuevoPago", 0);
     PagoView *bud = companyact->newPagoView();
@@ -122,6 +146,12 @@ void FacturaProveedorView::s_nuevoPago() {
 }
 
 
+/** Carga una factura de proveedor desde la base de datos.
+    Deleta toda la funcionalidad a la clase FacturaProveedor excepto el cambio de titulo
+    de la ventana y el reseteo del control de cambios.
+    Si todo va bien devuelve 0
+    Si algo falla devuelve -1
+*/
 int FacturaProveedorView::cargar(QString id) {
     _depura("FacturaProveedorView::cargar", 0);
     try {
@@ -137,6 +167,12 @@ int FacturaProveedorView::cargar(QString id) {
 }
 
 
+/** Se encarga del guardado de la ficha en la base de datos.
+     Pone los valores de los cambios del formulario en el DBRecord mediante los metodos setXXX
+     Llama al metodo guardar() de FacturaProveedor quien hace el guardado en la base de datos.
+     Si algo falla saca un mensaje de error y produce una excepcion -1.
+     Si todo va bien devuelve 0.
+*/
 int FacturaProveedorView::guardar() {
     _depura("FacturaProveedorView::guardar", 0);
     try {
@@ -158,6 +194,10 @@ int FacturaProveedorView::guardar() {
     return 0;
 }
 
+/** SLOT que responde  a la pulsacion del boton ver albaranes.
+    Consulta todos los albaranes con la misma referencia.
+    Los instancia y los carga.
+*/
 void FacturaProveedorView::on_mui_veralbaranes_clicked() {
 	_depura("FacturaProveedorView::on_mui_veralbaranes_clicked", 0);
 	QString query = "SELECT * FROM albaranp WHERE refalbaranp='"+DBvalue("reffacturap")+"'";
