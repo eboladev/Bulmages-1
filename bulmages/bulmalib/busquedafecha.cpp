@@ -23,14 +23,25 @@
 #include "funcaux.h"
 
 
+/**  Inicializa el objeto y hace todas las conexiones necesarias.
+*/
 BusquedaFecha::BusquedaFecha(QWidget *parent) : QWidget(parent) {
+    _depura("BusquedaFecha::BusquedaFecha", 0);
     setupUi(this);
     QObject::connect(m_searchcliente, SIGNAL(clicked(bool)), this, SLOT(s_searchFecha()));
     QObject::connect(m_fecha, SIGNAL(returnPressed()), this, SLOT(s_returnPressed()));
     QObject::connect(m_fecha, SIGNAL(editingFinished()), this, SLOT(s_fechalostFocus()));
+    QObject::connect(m_fecha, SIGNAL(editingFinished()), this, SIGNAL(editingFinished()));
+    _depura("BusquedaFecha::BusquedaFecha", 0);
 }
 
-BusquedaFecha::~BusquedaFecha() {}
+/** No requiere de acciones especiales en el destructor.
+*/
+BusquedaFecha::~BusquedaFecha() {
+    _depura("BusquedaFecha::~BusquedaFecha", 0);
+    _depura("END BusquedaFecha::~BusquedaFecha", 0);
+}
+
 
 void BusquedaFecha::s_searchFecha() {
     QList<QDate> a;

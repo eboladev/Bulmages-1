@@ -72,6 +72,8 @@ void Asiento1::borraAsiento1() {
             break;
         } // end switch
     } // end if
+    _depura("END Asiento1::borraAsiento1", 0);
+
 }
 
 
@@ -82,6 +84,9 @@ void Asiento1::vaciaAsiento1() {
 }
 
 
+/** Se encarga del pintado del asiento.
+*/
+/// \TODO: Debe ser pintar()
 void Asiento1::pintaAsiento1() {
     _depura("Asiento1::pintaAsiento1", 0);
     pintaidasiento(idasiento());

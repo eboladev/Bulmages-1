@@ -25,6 +25,9 @@
 #include "fixed.h"
 
 
+/** Implementa el subformulario de asientos contables.
+    Deriva de SubForm2Bc.
+*/
 class ListLinAsiento1View : public SubForm2Bc {
     Q_OBJECT
 

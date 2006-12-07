@@ -47,7 +47,7 @@ int entryPoint(Bulmages01 *) {
 
 /// Buscamos en el asiento si hay indicios de una factura y actuamos en consecuencia.
 int Asiento1_guardaAsiento1_post(Asiento1 *as) {
-    _depura("Asiento1_guardaAsiento1_post", 2);
+    _depura("Asiento1_guardaAsiento1_post", 0);
     empresa *companyact = as->companyact();
     QString cuentas = "";
     QString query = "SELECT valor FROM configuracion WHERE nombre = 'RegistroEmitida' OR nombre = 'RegistroSoportada'";
@@ -75,7 +75,7 @@ int Asiento1_guardaAsiento1_post(Asiento1 *as) {
         cursborr->siguienteregistro();
     } // end while
     delete cursborr;
-    _depura("END Asiento1_guardaAsiento1_post", 2);
+    _depura("END Asiento1_guardaAsiento1_post", 0);
     return 0;
 }
 

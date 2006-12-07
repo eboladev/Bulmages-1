@@ -92,6 +92,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bc::editFinished", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
+    camp->refresh();
     if (camp->nomcampo() == "codigo") {
         QString codigoext = extiendecodigo(camp->text(), ((empresa *) m_companyact)->numdigitosempresa());
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + codigoext + "'");

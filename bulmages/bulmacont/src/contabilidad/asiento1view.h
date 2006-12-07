@@ -164,7 +164,7 @@ public slots:
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
-    virtual void on_mui_fecha_returnPressed();
+    virtual void on_mui_fecha_editingFinished();
     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de IVA.
     /// Crea la clase \ref ivaview y la inicializa con el identificador de borrador para que se
     /// presente con los datos ya introducidos. La clase ivaview hace una inserci&oacute;n

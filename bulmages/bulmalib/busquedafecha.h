@@ -64,6 +64,7 @@ public slots:
 signals:
     void valueChanged(QString);
     void returnPressed();
+    void editingFinished();
 };
 
 #endif

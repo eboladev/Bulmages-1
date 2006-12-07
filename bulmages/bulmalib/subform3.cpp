@@ -398,9 +398,10 @@ bool SubForm3::campoCompleto(int row) {
 	header = m_lcabecera.at(i);
         if (camp->restrictcampo() & DBCampo::DBNotNull 
 	&& camp->text() == "" 
-	&& header->options() != SHeader::DBNoView 
+	&& !(header->options() & SHeader::DBNoView) 
 	&& camp->tipo() != DBCampo::DBboolean
 	) {
+	    _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
             return FALSE;
         } // end if
     } // end for
@@ -424,8 +425,8 @@ void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
 
     case Qt::Key_Return:
     case Qt::Key_Enter:
-	// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
-	// La accion simulada.
+	/// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+	/// La accion simulada.
 	if (!m_insercion) {
 		QTableWidgetItem *item = mui_list->currentItem();
   		emit itemDoubleClicked(item);
