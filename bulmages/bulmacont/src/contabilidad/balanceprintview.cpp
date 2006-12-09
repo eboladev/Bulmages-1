@@ -42,6 +42,8 @@
 #include <unistd.h>
 #endif
 
+using namespace std;
+
 
 BalancePrintView::BalancePrintView(empresa *emp) : QDialog(0) {
     setupUi(this);

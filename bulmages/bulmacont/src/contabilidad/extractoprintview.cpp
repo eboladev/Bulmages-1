@@ -33,7 +33,7 @@
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 
-
+using namespace std;
 
 /// Constructor de la clase que inicializa los parametros necesarios para esta
 /** @param emp Empresa con la que va a trabajar esta clase.

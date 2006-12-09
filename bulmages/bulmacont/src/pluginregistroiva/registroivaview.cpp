@@ -37,8 +37,6 @@
 #include <QCloseEvent>
 #include <fstream>
 
-using namespace std;
-
 #include "funcaux.h"
 #define coma "'"
 

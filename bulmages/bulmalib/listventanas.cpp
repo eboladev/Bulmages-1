@@ -30,8 +30,6 @@
 #include "funcaux.h"
 
 
-using namespace std;
-
 
 listventanas::listventanas(QWidget *a) : QDockWidget(a) {
     _depura("listventanas::INIT_listventanas()\n", 0);

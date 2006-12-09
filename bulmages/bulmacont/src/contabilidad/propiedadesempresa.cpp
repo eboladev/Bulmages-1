@@ -24,8 +24,6 @@
 #include "propiedadesempresa.h"
 #include "empresa.h"
 
-using namespace std;
-
 
 propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
         : QWidget(parent), dialogChanges(this) {
@@ -124,9 +122,8 @@ int propiedadesempresa::inicializa() {
         if (n == "Pais")
             p = linePais;
         if (p) {
-            cout << n.toAscii().constData() << " = " << v.toAscii().constData() << "\n";
             p->setText(v);
-        }
+        } // end if
     }
     delete cur;
     dialogChanges_cargaInicial();

@@ -34,8 +34,7 @@
 #include "modelo300.h"
 #include "configuracion.h"
 #include "postgresiface2.h"
-
-using namespace std;
+#include "funcaux.h"
 
 
 /// El constructor llama al cuadro de di&aacute;logo para seleccionar par&aacute;metros
@@ -64,7 +63,7 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
         nombresccc[i] += cur->valor("codigo");
 
         numerccc[i] = cur->valor("bancoent_cuenta");
-        cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
+//        cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
         combocuentas->addItem(nombresccc[i]);
         cur->siguienteregistro();
     }
@@ -78,12 +77,13 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
         personalButtonPressed();
         cuentaButton->setDisabled(true);
     }
-    cout << "Objeto Mod300ps generado\n";
+    _depura("Objeto Mod300ps generado", 0);
 }
 
 
 /// When pressed, it calls to the \ref generaps method.
 void Mod300ps::accept() {
+    _depura("Mod300ps::accept", 0);
     m_es_borrador = borradorcheckbox->isChecked();
 
     if (cuentaButton->isChecked()) {
@@ -91,10 +91,10 @@ void Mod300ps::accept() {
     } else
         ccc = new numerocuenta(banco->text(), entidad->text(), dc->text(), cuenta->text());
 
-    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toAscii().constData() << "\n";
-
-    cout << "dc=" << ccc->getdc().toAscii().constData() << "\n";
-    if (!ccc->cuentaesvalida()) {
+//    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toAscii().constData() << "\n";
+//    cout << "dc=" << ccc->getdc().toAscii().constData() << "\n";
+ 
+   if (!ccc->cuentaesvalida()) {
         switch (QMessageBox::warning(this,
                                      QObject::tr("Formulario 300"),
                                      QObject::tr("Aviso: El numero de cuenta bancario introducido\n"
@@ -114,11 +114,12 @@ void Mod300ps::accept() {
 /// Generate the postscript of the 300-model with the given parameters.
 /** The hardest part is converting the official pdf to postscript. */
 void Mod300ps::generaps() {
+    _depura("Mod300ps::generaps", 0);
     QString pdfname, tempname, psname, command;
     char *cad1 = NULL;
     QString cadaux;
 
-    cout << "Elegido trimestre" << trimestre->currentIndex() << "\n";
+//    cout << "Elegido trimestre" << trimestre->currentIndex() << "\n";
 
     tempname = QString(getenv("HOME")) + "/.bulmages/mod300temp.ps";
     pdfname = QString(getenv("HOME")) + "/.bulmages/formularios/mod300e.pdf";
@@ -139,7 +140,7 @@ void Mod300ps::generaps() {
     }
 
     if (doit) {
-        cout << "Convirtiendo a postscript...\n";
+//        cout << "Convirtiendo a postscript...\n";
         if (m_es_borrador) {
             command = "pdftops " + pdfname + " " + tempname;
             system(command.toAscii().constData());
@@ -165,13 +166,13 @@ void Mod300ps::generaps() {
     /// Ahora tengo que procesar tempname y generar psname.
     if (doit) {
         psname = QString(getenv("HOME")) + "/.bulmages/mod300.ps";
-        cout << psname.toAscii().constData();
+//        cout << psname.toAscii().constData();
         m_fich.setFileName(psname);
         if (m_fich.open(QIODevice::WriteOnly)) {
             m_output.setDevice(&m_fich);
             m_fichlec.setFileName(tempname);
             if (!m_fichlec.open(QIODevice::ReadOnly)) {
-                cout << "Error al abrir fichero de lectura!!\n";
+                _depura("Error al abrir fichero de lectura!!", 2);
                 exit(1);
             } // end if
             m_fichlec.readLine(cad1, 256);
@@ -234,14 +235,14 @@ void Mod300ps::generaps() {
             m_fichlec.close();
             m_fich.close();
 
-            cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA).toAscii().constData() << "\n";
-            cout << "[TODO] OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
-            cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
+//            cout << "Se supone que tengo que leer los formularios desde " << confpr->valor(CONF_PROGDATA).toAscii().constData() << "\n";
+//            cout << "[TODO] OJO!! Los formularios que genera no son validos, ya que han de tener un numero de serie UNICO\n";
+//            cout << "[TODO]  Es decir, hay que bajarse de internet uno nuevo CADA VEZ que se haga un modelo nuevo\n";
 
             command = "rm " + tempname + "; kghostview " + psname;
             system(command.toAscii().constData());
         } else {
-            cout << "EEEEHH!!! !QUE NO  HE ABIERTO EL FICHEROOOOOOOOOO!\n";
+            _depura("EEEEHH!!! !QUE NO  HE ABIERTO EL FICHEROOOOOOOOOO!", 2);
         } // end if
     }
 }

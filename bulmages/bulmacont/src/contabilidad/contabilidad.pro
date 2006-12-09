@@ -113,7 +113,6 @@ HEADERS += splashscreen.h \
            amortizacionview.h \
            bmodelo347.h \
            amortizacionesview.h \
-           log.h \
            selectccosteview.h \
            selectcanalview.h \
            modelosps.h \
@@ -171,7 +170,6 @@ SOURCES += main.cpp \
            amortizacionview.cpp \
            bmodelo347.cpp \
            amortizacionesview.cpp \
-           log.cpp \
            selectccosteview.cpp \
            selectcanalview.cpp \
            modelosps.cpp \

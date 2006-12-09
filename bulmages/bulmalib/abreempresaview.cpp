@@ -22,8 +22,6 @@
 
 #include <fstream>
 
-using namespace std;
-
 #include <QFile>
 #include <QLineEdit>
 #include <QMessageBox>
@@ -35,6 +33,7 @@ using namespace std;
 #include <QHeaderView>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QTextStream>
 
 #include <stdio.h>
 
@@ -42,6 +41,7 @@ using namespace std;
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "funcaux.h"
+
 
 /// Este es el archivo en el que se almacenan las mui_empresas que existen.
 /// Es un archivo separado por comas, que se suele alojar en el 'home/.bulmages' del usuario.
@@ -181,21 +181,31 @@ void abreempresaview::cargaArchivo() {
         on_mui_actualizar_clicked();
     } // end if
 
+
+     QFile file(dir1);
+     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+         return;
+
     preparamui_empresas();
-    ifstream filestr(dir1.toAscii().data());
-    string nombre, ano, nombd, tipo;
-    while (filestr.good()) {
-        getline(filestr, nombre, ',');
-        getline(filestr, ano, ',');
-        getline(filestr, nombd, ',');
-        if (getline(filestr, tipo, '\n') ) {
-            QString eltipo = tipo.c_str();
-            if (eltipo == m_tipo || m_tipo == "") {
-                insertCompany(nombre.c_str(), ano.c_str(), nombd.c_str(), tipo.c_str());
+//    ifstream filestr(dir1.toAscii().data());
+    QTextStream filestr(&file);
+
+//    string nombre, ano, nombd, tipo;
+    QString nombre, ano, nombd, tipo;
+
+    while (! filestr.atEnd()) {
+	nombre = filestr.readLine();
+//        getline(filestr, nombre, ',');
+	ano = filestr.readLine();
+//        getline(filestr, ano, ',');
+//        getline(filestr, nombd, ',');
+	nombd = filestr.readLine();
+	tipo = filestr.readLine();
+            if (tipo == m_tipo || m_tipo == "") {
+                insertCompany(nombre, ano, nombd, tipo);
             } // end if
-        } // end if
     } // end while
-    filestr.close();
+    file.close();
     _depura("abreempresaview::cargaArchivo", 0);
 }
 
@@ -213,7 +223,12 @@ void abreempresaview::guardaArchivo() {
     QString dir1 = "C:\\.bulmages\\" + LISTEMPRESAS;
 #endif
 
-    ofstream filestr((char *) dir1.toAscii().data());
+
+     QFile file(dir1);
+     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+         return;
+//    ofstream filestr((char *) dir1.toAscii().data());
+    QTextStream filestr(&file);
     /// Deshabilitamos las alertas para que no aparezcan warnings con bases de datos
     /// que no son del sistema.
     confpr->setValor(CONF_ALERTAS_DB, "No");
@@ -267,7 +282,7 @@ void abreempresaview::guardaArchivo() {
     delete curs;
     delete db;
     confpr->setValor(CONF_ALERTAS_DB, "Yes");
-    filestr.close();
+    file.close();
     _depura("END abreempresaview::guardaArchivo", 0);
 }
 

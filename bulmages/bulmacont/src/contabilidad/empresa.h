@@ -33,7 +33,6 @@
 #include "extractoview1.h"
 #include "bmodelo347.h"
 #include "postgresiface2.h"
-#include "log.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
 

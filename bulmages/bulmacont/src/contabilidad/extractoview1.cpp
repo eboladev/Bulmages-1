@@ -425,16 +425,20 @@ void extractoview1::on_mui_cargarpunteos_clicked() {
                  tr("Punteo (*.pto)"));
 
     if (!fn.isEmpty()) {
-        ifstream filestr((char *)fn.toAscii().constData());
-        string a;
+	QFile file(fn);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            return;
+	} // end if
+	QTextStream filestr(&file);
+        QString a;
         m_companyact->ejecuta("UPDATE apunte SET punteo = FALSE");
-        while (filestr.good()) {
+        while (!filestr.atEnd()) {
             filestr >> a;
             QString query;
-            query.sprintf("UPDATE apunte SET punteo = TRUE WHERE idapunte = %s", a.c_str());
+            query = "UPDATE apunte SET punteo = TRUE WHERE idapunte = "+ a;
             m_companyact->ejecuta(query);
         } // end while
-        filestr.close();
+        file.close();
     } // end if
     presentar();
     _depura("END extractoview1::on_mui_cargarpunteos_clicked", 0);

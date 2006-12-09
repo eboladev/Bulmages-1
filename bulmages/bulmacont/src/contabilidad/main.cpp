@@ -39,7 +39,6 @@
 #include "splashscreen.h"
 #include "configuracion.h"
 #include "qtextcodec.h"
-#include "log.h"
 #include "logpass.h"
 #include "plugins.h"
 #include "qapplication2.h"
@@ -105,12 +104,6 @@ int main(int argc, char *argv[]) {
             traductor->load(archivo.toAscii(), confpr->valor(CONF_DIR_TRADUCCION).toAscii());
         } // end if
         theApp->installTranslator(traductor);
-
-        /// Iniciamos el sistema de log del programa para que se pueda seguir la
-        /// ejecuci&oacute;n del mismo.
-        ctllog = new bitacora();
-        ctllog->add
-        (LOG_SEG, 1,"MaiMai003", "---- Iniciacion del programa ----");
 
         /// Cargamos el SplashScreen de BulmaCont.
         Splash *splashScr = new Splash();

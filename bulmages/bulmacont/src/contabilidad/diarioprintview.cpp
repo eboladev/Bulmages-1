@@ -30,6 +30,8 @@
 #include "selectcanalview.h"
 #include "diarioview.h"
 
+using namespace std;
+
 
 DiarioPrintView::DiarioPrintView(empresa *emp, QWidget *parent)
         : QDialog(parent) {

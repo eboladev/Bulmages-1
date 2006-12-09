@@ -30,6 +30,8 @@
 #include <fstream>
 #include "fixed.h"
 
+using namespace std;
+
 extern Mod300ps *modelo;
 
 

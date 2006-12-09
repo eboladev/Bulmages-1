@@ -29,8 +29,6 @@
 #include "configuracion.h"
 #include "aboutview.h"
 #include "actualizacionesview.h"
-#include "log.h"
-
 
 Bulmages01::Bulmages01(QWidget *parent, Qt::WFlags f, QString DB)
         : QMainWindow(parent, f) {
@@ -58,22 +56,13 @@ Bulmages01::Bulmages01(QWidget *parent, Qt::WFlags f, QString DB)
 
     setWindowTitle(tr("BulmaCont -- ") + DBName + " --");
     initStatusBar();
-    ctllog->setempresa(m_empresaactual);
-    ctllog->add
-    (LOG_SEG | LOG_TRA, 1, "BmgCtt001" , "El usuario ha entrado en bulmacont");
     _depura("END Bulmages01::Bulmages01", 0);
 }
 
 
 Bulmages01::~Bulmages01() {
-    _depura("~Bulmages01", 0);
-    /// En el constructor asignamos un puntero a empresa {ctllog->setempresa(&empresaactual);}
-    /// Al destruir la clase empresa no podemos seguir apuntando a un objeto que ya no existe.
-    /// es necesario eliminar la referencia a este objeto, por ejemplo aqu&iacute;
-    /// justo antes logeo la salida del usuario (Ren&eacute;)
-    ctllog->add
-    (LOG_SEG | LOG_TRA, 1, "BmgDtt017", "El usuario sale de bulmacont.");
-    ctllog->setempresa(NULL);
+    _depura("Bulmages01::~Bulmages01", 0);
+    _depura("END Bulmages01::~Bulmages01", 0);
 }
 
 

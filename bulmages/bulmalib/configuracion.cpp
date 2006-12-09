@@ -38,9 +38,6 @@
 #include "funcaux.h"
 
 
-using namespace std;
-
-
 #include "abreempresaview.h"
 
 #ifdef WIN32
@@ -267,7 +264,12 @@ QString configuracion::nombre(int i) {
 void configuracion::saveconfig() {
     QString dir1 = getenv("HOME");
     dir1 = dir1 + "/" + CONFLOCAL;
-    ofstream filestr((char *) dir1.data());
+
+     QFile file(dir1);
+     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+         return;
+
+    QTextStream filestr(&file);
     for (int i = 0; i < 1000; i++) {
         if (nombre(i) != "") {
             filestr << nombre(i).toAscii().data();
@@ -276,7 +278,7 @@ void configuracion::saveconfig() {
             filestr << endl;
         } // end if
     } // end for
-    filestr.close();
+    file.close();
 }
 
 
