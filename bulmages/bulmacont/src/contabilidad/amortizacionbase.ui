@@ -1199,9 +1199,9 @@
    <pixmap></pixmap>
   </customwidget>
   <customwidget>
-   <class>Q3Table</class>
+   <class>QTableWidget</class>
    <extends></extends>
-   <header>q3table.h</header>
+   <header>qtablewidget.h</header>
    <container>0</container>
    <pixmap></pixmap>
   </customwidget>
@@ -1214,7 +1214,7 @@
   </customwidget>
   <customwidget>
    <class>AmortizacionSubForm</class>
-   <extends>Q3Table</extends>
+   <extends>QTableWidget</extends>
    <header>amortizacionview.h</header>
    <container>0</container>
    <pixmap></pixmap>

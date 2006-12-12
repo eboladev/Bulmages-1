@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QWidget>
-
 #include "actualizacionesview.h"
 
 
@@ -27,7 +25,8 @@ actualizacionesview::actualizacionesview(QWidget *parent)
         : QWidget(parent) {
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    textBrowser1->setSource("/usr/share/bulmages/ayuda/index.htm");
+    QUrl url("/usr/share/bulmages/ayuda/index.htm");
+    textBrowser1->setSource(url);
 }
 
 

@@ -21,13 +21,14 @@
 #ifndef BALANCE1VIEW_H
 #define BALANCE1VIEW_H
 
-#include <Q3DateTimeEdit>
-#include <Q3FileDialog>
-#include <Q3Table>
+//#include <Q3DateTimeEdit>
+//#include <Q3FileDialog>
+//#include <Q3Table>
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QToolButton>
+#include <QTreeWidgetItem>
 
 #include "qtable1.h"
 #include "qlayout.h"
@@ -85,7 +86,8 @@ private:
 private slots:
     virtual void contextmenu(const QPoint &);
     virtual void nivelactivated(int);
-    virtual void nivelactivated1(int, Q3ListViewItem *);
+    //virtual void nivelactivated1(int, Q3ListViewItem *);
+    virtual void nivelactivated1(int, QTreeWidgetItem *);
     virtual void boton_extracto1(int);
     virtual void boton_asiento();
     virtual void boton_diario1(int);

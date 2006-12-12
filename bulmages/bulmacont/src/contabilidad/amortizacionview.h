@@ -27,24 +27,27 @@
 #include "dbrecord.h"
 #include "ficha.h"
 
+
 class empresa;
 
+
 class AmortizacionSubForm : public SubForm2Bc {
-Q_OBJECT
+    Q_OBJECT
+
 public:
     AmortizacionSubForm(QWidget *parent);
     virtual ~AmortizacionSubForm();
     virtual void creaMenu(QMenu *) {
         _depura("AmortizacionSubForm:: CreaMenu, funcion para ser sobreescrita", 2);
-    };
+    }
     virtual void procesaMenu(QAction *) {
         _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 2);
-    };
+    }
 };
 
 
-
 #include "ui_amortizacionbase.h"
+
 
 /// Clase que muestra la ventana de amortizaci&oacute;n.
 /** Formulario de introducci&oacute;n y/o visi&oacute;n de amortizaciones. */

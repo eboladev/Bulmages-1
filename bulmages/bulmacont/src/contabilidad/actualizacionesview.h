@@ -22,6 +22,7 @@
 #define ACTUALIZACIONESVIEW_H
 
 #include <QWidget>
+#include <QUrl>
 
 #include <ui_actualizacionesbase.h>
 

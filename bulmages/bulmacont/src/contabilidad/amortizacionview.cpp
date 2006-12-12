@@ -31,10 +31,13 @@
 
 
 AmortizacionSubForm::AmortizacionSubForm(QWidget *parent) : SubForm2Bc(parent) {}
-AmortizacionSubForm::~AmortizacionSubForm() {};
 
 
-/// Constructor de Clase
+AmortizacionSubForm::~AmortizacionSubForm() {}
+;
+
+
+/// Constructor de la clase
 AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
         : Ficha(parent), DBRecord(emp) {
     _depura("AmortizacionView::AmortizacionView", 0);
@@ -78,7 +81,6 @@ AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
     addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "telproveedor"));
     addDBCampo("agrupacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "agrupacion"));
 
-
     /// Inicializamos el listado.
     mui_listcuotas->setDBTableName("linamortizacion");
     mui_listcuotas->setDBCampoId("idlinamortizacion");
@@ -96,8 +98,6 @@ AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
 }
 
 
-
-
 int AmortizacionView::borrar() {
     _depura("AmortizacionView::borrar", 0);
     if (m_idamortizacion != "") {
@@ -111,10 +111,11 @@ int AmortizacionView::borrar() {
     return 0;
 }
 
+
 int AmortizacionView::guardar() {
     _depura("AmortizacionView::guardar", 0);
     try {
-	/// Guardamos los datos del formulario
+        /// Guardamos los datos del formulario
         setDBvalue("nomamortizacion", nomamortizacion->text() );
         setDBvalue("idcuentaactivo",  ctaactivo->idcuenta() );
         setDBvalue("valorcompra", valorcompra->text() );
@@ -124,7 +125,7 @@ int AmortizacionView::guardar() {
         setDBvalue("idcuentaamortizacion", ctaamortizacion->idcuenta());
         setDBvalue("agrupacion", agrupacion->text());
 
-        QString id="";
+        QString id = "";
         DBRecord::DBsave(id);
 
         /// Guardamos las lineas de amortizacion.
@@ -133,16 +134,16 @@ int AmortizacionView::guardar() {
         dialogChanges_cargaInicial();
         _depura("END AmortizacionView::guardar", 0);
         return 0;
-    } catch(...) {
+    } catch (...) {
         mensajeInfo("Error en el guardado");
         return -1;
     } // end try
 }
 
+
 void AmortizacionView::on_mui_guardar_clicked() {
     guardar();
 }
-
 
 
 AmortizacionView::~AmortizacionView() {
@@ -151,16 +152,15 @@ AmortizacionView::~AmortizacionView() {
     _depura("END AmortizacionView::~AmortizacionView", 0);
 }
 
+
 /// Esta funci&oacute;n inicializa la clase, y adem&aacute;s hace la presentaci&oacuet;n
 /// de una determinada amortizaci&oacute;n.
 int AmortizacionView::cargar(QString idamortizacion) {
     _depura("AmortizacionView::cargar", 0, idamortizacion);
     try {
         m_idamortizacion = idamortizacion;
-
         DBRecord::cargar(m_idamortizacion);
 
-        /// ==============================00
         /// se ha cargado de la base de datos.
         nomamortizacion->setText(DBvalue("nomamortizacion"));
         valorcompra->setText(DBvalue("valorcompra"));
@@ -177,7 +177,6 @@ int AmortizacionView::cargar(QString idamortizacion) {
         cursor2 *curs = m_companyact->cargacursor(query);
         mui_listcuotas->cargar(curs);
         delete curs;
-
 
         /// Calculamos lo que ya llevamos amortizado y lo presentamos en la pantalla.
         query = "SELECT sum(cantidad) AS amortizado FROM linamortizacion WHERE idasiento IS NOT NULL AND idamortizacion = " + m_idamortizacion;
@@ -211,7 +210,6 @@ int AmortizacionView::cargar(QString idamortizacion) {
 
 void AmortizacionView::on_mui_btcalcular_clicked() {
     _depura("AmortizacionView::calculaamortizacion", 0);
-
     /// Para hacer el c&iacute;rculo de los plazos de cada amortizaci&oacute;n
     /// Hay que obtener diversos datos.
     QDate f1cuota = normalizafecha(fecha1cuota->text());
@@ -282,7 +280,6 @@ void AmortizacionView::on_mui_btcalcular_clicked() {
         for (int i = 0; i < ncuotas; i++) {
             valcuota = valorcompra->text().toDouble() * (ncuotas - i) / total;
             valcuotastr.sprintf("%10.2f", valcuota);
-
             mui_listcuotas->setinsercion(TRUE);
             mui_listcuotas->nuevoRegistro();
             mui_listcuotas->setinsercion(FALSE);
@@ -308,7 +305,7 @@ void AmortizacionView::on_mui_btcalcular_clicked() {
         double total = 0;
         for (int i = 0; i < ncuotas; i++) {
             if (i < (ncuotas - 1)) {
-                valcuota = (valorcompra->text().toDouble()-total) * porcent;
+                valcuota = (valorcompra->text().toDouble() - total) * porcent;
                 total += valcuota;
                 fprintf(stderr, "cuota: %10.2f -- total: %10.2f\n", valcuota, total);
             } else {
@@ -333,7 +330,6 @@ void AmortizacionView::on_mui_btcalcular_clicked() {
             } // end if
         } // end for
     } // end if
-
     _depura("AmortizacionView::calculaamortizacion", 0);
 }
 

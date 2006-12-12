@@ -29,13 +29,13 @@ selectccosteview::selectccosteview(empresa *emp, QWidget *parent)
     setupUi(this);
     empresaactual = emp;
     numdigitos = empresaactual->numdigitosempresa();
-    m_iterador = new Q3ListViewItemIterator (m_listCostes);
+    m_iterador = new QTreeWidgetItemIterator(m_listCostes);
 
-    m_colNomCoste = m_listCostes->addColumn("nom_coste", -1);
-    m_colDescCoste = m_listCostes->addColumn("desc_coste", -1);
-    m_colStatusCoste = m_listCostes->addColumn("Status", -1);
-    m_colIdCoste = m_listCostes->addColumn("idc_coste", 0);
-    m_colCheck = m_listCostes->addColumn("Seleccion", -1);
+    m_listCostes->setColumnCount(5);
+
+    QStringList etiquetas;
+    etiquetas << tr("nom_coste") << tr("desc_coste") << tr("Status") << tr("idc_coste") << tr("Seleccion");
+    m_listCostes->setHeaderLabels(etiquetas);
 
     cargacostes();
     fprintf(stderr, "FIN de Constructor de selectccosteview\n");
@@ -51,8 +51,8 @@ void selectccosteview::cargacostes() {
     /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
     /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
     fprintf(stderr, "Ahora nos toca rellenar las listas.\n");
-    Q3CheckListItem *it;
-    QMap <int,Q3ListViewItem *> Lista;
+    QMap <int, QTreeWidgetItem *> Lista;
+    QTreeWidgetItem *item;
     int padre;
     int idc_coste = 0;
     cursor2 *cursoraux1, *cursoraux2;
@@ -62,12 +62,15 @@ void selectccosteview::cargacostes() {
     cursoraux1 = empresaactual->cargacursor("SELECT * FROM c_coste WHERE padre ISNULL ORDER BY idc_coste");
     while (!cursoraux1->eof()) {
         idc_coste = cursoraux1->valor("idc_coste").toInt();
-        it = new Q3CheckListItem(m_listCostes, "hola", Q3CheckListItem::CheckBox);
-        Lista[idc_coste] = it;
-        it->setText(m_colIdCoste, cursoraux1->valor("idc_coste"));
-        it->setText(m_colDescCoste, cursoraux1->valor("descripcion"));
-        it->setText(m_colNomCoste, cursoraux1->valor("nombre"));
-        it->setOpen(true);
+
+        item = new QTreeWidgetItem(m_listCostes);
+        item->setText(3, cursoraux1->valor("idc_coste"));
+        item->setText(1, cursoraux1->valor("descripcion"));
+        item->setText(0, cursoraux1->valor("nombre"));
+        item->setCheckState(0, Qt::Unchecked);
+        item->setExpanded(TRUE);
+        Lista[idc_coste] = item;
+
         cursoraux1->siguienteregistro ();
     } // end while
     delete cursoraux1;
@@ -79,12 +82,15 @@ void selectccosteview::cargacostes() {
         padre = cursoraux2->valor("padre").toInt();
         idc_coste = cursoraux2->valor("idc_coste").toInt();
         fprintf(stderr, "Cuentas de subnivel:%d", padre);
-        it = new Q3CheckListItem(Lista[padre], "hola", Q3CheckListItem::CheckBox);
-        Lista[idc_coste] = it;
-        it->setText(m_colIdCoste, cursoraux2->valor("idc_coste"));
-        it->setText(m_colDescCoste, cursoraux2->valor("descripcion"));
-        it->setText(m_colNomCoste, cursoraux2->valor("nombre"));
-        it->setOpen(true);
+
+        item = new QTreeWidgetItem(Lista[padre]);
+        item->setText(3, cursoraux2->valor("idc_coste"));
+        item->setText(1, cursoraux2->valor("descripcion"));
+        item->setText(0, cursoraux2->valor("nombre"));
+        item->setCheckState(0, Qt::Unchecked);
+        item->setExpanded(TRUE);
+        Lista[idc_coste] = item;
+
         cursoraux2->siguienteregistro();
     } // end while
     delete cursoraux2;
@@ -94,20 +100,22 @@ void selectccosteview::cargacostes() {
 /// Devuelve el idc_coste. Si no hay ning&uacute;n centro de coste seleccionado devuelve
 /// cero
 int selectccosteview::firstccoste() {
+    _depura("selectccosteview::firstccoste", 0);
     delete m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCostes);
+    m_iterador = new QTreeWidgetItemIterator(m_listCostes);
+    fprintf(stderr, "firstccoste\n");
     int idccoste = 0;
-    Q3CheckListItem *item;
-    fprintf(stderr, "nextccoste\n");
-    while (m_iterador->current() && idccoste == 0) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        if (item->isOn()) {
-            idccoste = item->text(m_colIdCoste).toInt();
+
+    while ((**m_iterador) && idccoste == 0) {
+        if ((**m_iterador)->checkState(0) == Qt::Checked) {
+            idccoste = (**m_iterador)->text(3).toInt();
             fprintf(stderr, "primer centro de coste:%d\n", idccoste);
             return idccoste;
         } // end if
-        (*m_iterador)++;
+        ++(*m_iterador);
     } // end while
+
+    _depura("END selectccosteview::firstccoste", 0);
     return idccoste;
 }
 
@@ -115,16 +123,15 @@ int selectccosteview::firstccoste() {
 /// Esta funci&oacute;n devuelve el siguiente centro de coste seleccionado de la vista.
 int selectccosteview::nextccoste() {
     int idccoste = 0;
-    Q3CheckListItem *item;
     fprintf(stderr, "nextccoste\n");
-    while (m_iterador->current() && idccoste == 0) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        if (item->isOn()) {
-            idccoste = item->text(m_colIdCoste).toInt();
-            fprintf(stderr, "primer centro de coste:%d\n", idccoste);
+
+    while ((**m_iterador) && idccoste == 0) {
+        if ((**m_iterador)->checkState(0) == Qt::Checked) {
+            idccoste = (**m_iterador)->text(3).toInt();
+            fprintf(stderr, "siguiente centro de coste:%d\n", idccoste);
             return idccoste;
         } // end if
-        (*m_iterador)++;
+        ++(*m_iterador);
     } // end while
     return idccoste;
 }
@@ -151,56 +158,57 @@ QString selectccosteview::cadcoste() {
 /// Esta funci&oacute;n devuelve el nombre del centro de coste actual
 /// Si no existe devuelve ""
 QString selectccosteview::nomcoste() {
-    Q3CheckListItem *item;
+    QTreeWidgetItemIterator m_iterador(m_listCostes);
+
     fprintf(stderr, "nomcoste()\n");
-    item = (Q3CheckListItem *) m_iterador->current();
-    if (item->isOn()) {
-        fprintf(stderr, "nomcoste: %s\n", item->text(m_colNomCoste).toAscii().constData());
-        return item->text(m_colNomCoste);
+
+    if ((*m_iterador)->checkState(0) == Qt::Checked) {
+        fprintf(stderr, "nomcoste: %s\n", (*m_iterador)->text(0).toAscii().constData());
+        return (*m_iterador)->text(0);
     } else {
         return "";
     } // end if
+
+    delete *m_iterador;
 }
 
 
-void selectccosteview::boton_todo() {
-    Q3ListViewItemIterator *m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCostes);
-    Q3CheckListItem *item;
-    while (m_iterador->current()) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        item->setOn(TRUE);
-        (*m_iterador)++;
+void selectccosteview::on_mui_todo_clicked() {
+    QTreeWidgetItemIterator m_iterador(m_listCostes);
+
+    while (*m_iterador) {
+        (*m_iterador)->setCheckState(0, Qt::Checked);
+        ++m_iterador;
     }
-    delete m_iterador;
+
+    delete *m_iterador;
 }
 
 
-void selectccosteview::boton_nada() {
-    Q3ListViewItemIterator *m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCostes);
-    Q3CheckListItem *item;
-    while (m_iterador->current()) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        item->setOn(FALSE);
-        (*m_iterador)++;
+void selectccosteview::on_mui_nada_clicked() {
+    QTreeWidgetItemIterator m_iterador(m_listCostes);
+
+    while (*m_iterador) {
+        (*m_iterador)->setCheckState(0, Qt::Unchecked);
+        ++m_iterador;
     }
-    delete m_iterador;
+
+    delete *m_iterador;
 }
 
 
-void selectccosteview::boton_invertir() {
-    Q3ListViewItemIterator *m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCostes);
-    Q3CheckListItem *item;
-    while (m_iterador->current()) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        if (item->isOn())
-            item->setOn(FALSE);
-        else
-            item->setOn(TRUE);
-        (*m_iterador)++;
-    } //end while
-    delete m_iterador;
+void selectccosteview::on_mui_invertir_clicked() {
+    QTreeWidgetItemIterator m_iterador(m_listCostes);
+
+    while (*m_iterador) {
+        if ((*m_iterador)->checkState(0) == Qt::Unchecked) {
+            (*m_iterador)->setCheckState(0, Qt::Checked);
+        } else {
+            (*m_iterador)->setCheckState(0, Qt::Unchecked);
+        }
+        ++m_iterador;
+    }
+
+    delete *m_iterador;
 }
 

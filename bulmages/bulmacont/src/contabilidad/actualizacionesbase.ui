@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ActualizacionesBase</class>
  <widget class="QWidget" name="ActualizacionesBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1025</width>
-    <height>529</height>
+    <width>531</width>
+    <height>326</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -25,9 +22,6 @@
    <property name="spacing" >
     <number>4</number>
    </property>
-   <item row="0" column="0" colspan="2" >
-    <widget class="Q3TextBrowser" name="textBrowser1" />
-   </item>
    <item row="1" column="1" >
     <widget class="QPushButton" name="pushButton1" >
      <property name="text" >
@@ -51,19 +45,13 @@
      </property>
     </spacer>
    </item>
+   <item row="0" column="0" colspan="2" >
+    <widget class="QTextBrowser" name="textBrowser1" />
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="4" margin="4" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3TextBrowser</class>
-   <extends>QWidget</extends>
-   <header>q3textbrowser.h</header>
-   <container>1</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

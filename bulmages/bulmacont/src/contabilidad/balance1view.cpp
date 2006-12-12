@@ -71,31 +71,49 @@ BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
 
     listado->clear();
 
-    CUENTA = listado->addColumn(tr("Codigo cuenta"), 150);
-    DENOMINACION = listado->addColumn(tr("Nombre de la cuenta"), 350);
-    SALDO_ANT = listado->addColumn(tr("Saldo anterior"), 90);
-    DEBE = listado->addColumn(tr("Debe"), 90);
-    HABER = listado->addColumn(tr("Haber"), 90);
-    SALDO = listado->addColumn(tr("Saldo periodo"), 90);
-    DEBEEJ = listado->addColumn(tr("Debe ejercicio"), 90);
-    HABEREJ =  listado->addColumn(tr("Haber ejercicio"), 90);
-    SALDOEJ = listado->addColumn(tr("Saldo ejercicio"), 90);
-    NIVEL = listado->addColumn(tr("Nivel"), 0);
-    IDCUENTA = listado->addColumn(tr("ID cuenta"), 0);
-    PADRE = listado->addColumn(tr("Padre"), 0);
+    listado->setColumnCount(12);
+    QStringList nombrecolumnas;
+    nombrecolumnas << tr("Codigo cuenta")
+    << tr("Nombre de la cuenta")
+    << tr("Saldo anterior")
+    << tr("Debe")
+    << tr("Haber")
+    << tr("Saldo periodo")
+    << tr("Debe ejercicio")
+    << tr("Haber ejercicio")
+    << tr("Saldo ejercicio")
+    << tr("Nivel")
+    << tr("ID cuenta")
+    << tr("Padre");
 
-    listado->setColumnAlignment(CUENTA, Qt::AlignLeft);
-    listado->setColumnAlignment(DENOMINACION, Qt::AlignLeft);
-    listado->setColumnAlignment(SALDO_ANT, Qt::AlignRight);
-    listado->setColumnAlignment(DEBE, Qt::AlignRight);
-    listado->setColumnAlignment(HABER, Qt::AlignRight);
-    listado->setColumnAlignment(SALDO, Qt::AlignRight);
-    listado->setColumnAlignment(DEBEEJ, Qt::AlignRight);
-    listado->setColumnAlignment(HABEREJ, Qt::AlignRight);
-    listado->setColumnAlignment(SALDOEJ, Qt::AlignRight);
-    listado->setColumnAlignment(IDCUENTA, Qt::AlignRight);
-    listado->setColumnAlignment(NIVEL, Qt::AlignRight);
-    listado->setColumnAlignment(PADRE, Qt::AlignRight);
+    listado->setHeaderLabels(nombrecolumnas);
+
+    CUENTA = 1;
+    DENOMINACION = 2;
+    SALDO_ANT = 3;
+    DEBE = 4;
+    HABER = 5;
+    SALDO = 6;
+    DEBEEJ = 7;
+    HABEREJ =  8;
+    SALDOEJ = 9;
+    NIVEL = 10;
+    IDCUENTA = 11;
+    PADRE = 12;
+    /*
+        listado->setColumnAlignment(CUENTA, Qt::AlignLeft);
+        listado->setColumnAlignment(DENOMINACION, Qt::AlignLeft);
+        listado->setColumnAlignment(SALDO_ANT, Qt::AlignRight);
+        listado->setColumnAlignment(DEBE, Qt::AlignRight);
+        listado->setColumnAlignment(HABER, Qt::AlignRight);
+        listado->setColumnAlignment(SALDO, Qt::AlignRight);
+        listado->setColumnAlignment(DEBEEJ, Qt::AlignRight);
+        listado->setColumnAlignment(HABEREJ, Qt::AlignRight);
+        listado->setColumnAlignment(SALDOEJ, Qt::AlignRight);
+        listado->setColumnAlignment(IDCUENTA, Qt::AlignRight);
+        listado->setColumnAlignment(NIVEL, Qt::AlignRight);
+        listado->setColumnAlignment(PADRE, Qt::AlignRight);
+    */
     /// Establecemos el color de fondo del extracto. El valor lo tiene la clase
     /// configuraci&oacute;n que es global.
     listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCETREE).toAscii().constData());
@@ -107,8 +125,8 @@ BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
     combonivel->insertItem(4, "6");
     combonivel->insertItem(5, "7");
 
-    connect(listado, SIGNAL(contextMenuRequested(Q3ListViewItem *, const QPoint &, int)), this, SLOT(contextmenu(Q3ListViewItem *, const QPoint &, int)));
-
+    //connect(listado, SIGNAL(contextMenuRequested(Q3ListViewItem *, const QPoint &, int)), this, SLOT(contextmenu(Q3ListViewItem *, const QPoint &, int)));
+    connect(listado, SIGNAL(contextMenuRequested(QTreeWidgetItem *, const QPoint &, int)), this, SLOT(contextmenu(QTreeWidgetItem *, const QPoint &, int)));
     /// Iniciamos los componentes de la fecha para que al principio aparezcan
     /// como el a&ntilde;o inicial.
     QString cadena;
@@ -221,7 +239,8 @@ void BalanceTreeView::inicializa1(QString codinicial, QString codfinal, QString 
 
 void BalanceTreeView::presentar() {
     _depura("BalanceTreeView::presentar", 0);
-    QListViewItem1 * it;
+    //QListViewItem1 * it;
+    QTreeWidgetItem *it;
     int j, num1;
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
     QString query;
@@ -298,15 +317,21 @@ void BalanceTreeView::presentar() {
     while (!cursorapt1->eof()) {
         QString padre1 = cursorapt1->valor("padre");
         fprintf(stderr, "buscamos el item: %s\n", padre1.toAscii().constData());
-        Q3ListViewItem *padre = listado->findItem(padre1, IDCUENTA, Qt::CaseSensitive);
+
+        QTreeWidgetItem *padre = listado->findItems(padre1, Qt::MatchCaseSensitive, IDCUENTA).first();
+        //        Q3ListViewItem *padre = listado->findItem(padre1, IDCUENTA, Qt::CaseSensitive);
+
+
         /// Si hemos encontrado el padre de la lista lo ponemos, si no lo hemos encontrado
         /// no lo ponemos.
         if (padre != 0) {
-            it = new QListViewItem1(padre);
+            //it = new QListViewItem1(padre);
+            it = new QTreeWidgetItem(padre);
         } else {
-            it = new QListViewItem1(listado);
+            //it = new QListViewItem1(listado);
+            it = new QTreeWidgetItem(listado);
         } // end if
-        it->setTipo(atoi(cursorapt1->valor("nivel").toAscii()));
+        //it->setTipo(atoi(cursorapt1->valor("nivel").toAscii()));
         /// Acumulamos los totales para al final poder escribirlos.
         tsaldoant += atof(cursorapt1->valor("asaldo").toAscii());
         tsaldo += atof(cursorapt1->valor("tsaldo").toAscii());
@@ -315,27 +340,27 @@ void BalanceTreeView::presentar() {
 
         it->setText(CUENTA, cursorapt1->valor("codigo"));
         if (cursorapt1->valor("tipocuenta") == "1") {
-            it->setPixmap(CUENTA, QPixmap(cactivo));
+            //it->setPixmap(CUENTA, QPixmap(cactivo));
         } else if (cursorapt1->valor("tipocuenta") == "2") {
-            it->setPixmap(CUENTA, QPixmap(cpasivo));
+            //it->setPixmap(CUENTA, QPixmap(cpasivo));
         } else if (cursorapt1->valor("tipocuenta") == "3") {
-            it->setPixmap(CUENTA, QPixmap(cneto));
+            //it->setPixmap(CUENTA, QPixmap(cneto));
         } else if (cursorapt1->valor("tipocuenta") == "4") {
-            it->setPixmap(CUENTA, QPixmap(cingresos));
+            //it->setPixmap(CUENTA, QPixmap(cingresos));
         } else if (cursorapt1->valor("tipocuenta") == "5") {
-            it->setPixmap(CUENTA, QPixmap(cgastos));
+            //it->setPixmap(CUENTA, QPixmap(cgastos));
         } // end if
 
         it->setText(DENOMINACION, cursorapt1->valor("descripcion"));
-/*
-        it->setText(SALDO_ANT,QString::number(atof(cursorapt1->valor("asaldo")), 'f', 2));
-        it->setText(DEBE,QString::number(atof(cursorapt1->valor("tdebe")), 'f', 2));
-        it->setText(HABER,QString::number(atof(cursorapt1->valor("thaber")), 'f', 2));
-        it->setText(SALDO,QString::number(atof(cursorapt1->valor("tsaldo")), 'f', 2));
-        it->setText(DEBEEJ,QString::number(atof(cursorapt1->valor("ejdebe")), 'f', 2));
-        it->setText(HABEREJ,QString::number(atof(cursorapt1->valor("ejhaber")), 'f', 2));
-        it->setText(SALDOEJ,QString::number(atof(cursorapt1->valor("ejsaldo")), 'f', 2));
-*/
+        /*
+                it->setText(SALDO_ANT,QString::number(atof(cursorapt1->valor("asaldo")), 'f', 2));
+                it->setText(DEBE,QString::number(atof(cursorapt1->valor("tdebe")), 'f', 2));
+                it->setText(HABER,QString::number(atof(cursorapt1->valor("thaber")), 'f', 2));
+                it->setText(SALDO,QString::number(atof(cursorapt1->valor("tsaldo")), 'f', 2));
+                it->setText(DEBEEJ,QString::number(atof(cursorapt1->valor("ejdebe")), 'f', 2));
+                it->setText(HABEREJ,QString::number(atof(cursorapt1->valor("ejhaber")), 'f', 2));
+                it->setText(SALDOEJ,QString::number(atof(cursorapt1->valor("ejsaldo")), 'f', 2));
+        */
 
 
         it->setText(SALDO_ANT, QString::number(cursorapt1->valor("asaldo").toDouble(), 'f', 2));
@@ -351,7 +376,7 @@ void BalanceTreeView::presentar() {
         it->setText(NIVEL, cursorapt1->valor("nivel"));
         it->setText(IDCUENTA, cursorapt1->valor("idcuenta"));
         it->setText(PADRE, cursorapt1->valor("padre"));
-        it->setOpen(true);
+        //it->setOpen(true);
         cursorapt1->siguienteregistro();
         j++;
     } // end while
@@ -378,23 +403,24 @@ void BalanceTreeView::nivelactivated(int nivel) {
     _depura("BalanceTreeView::nivelactivated", 0);
     combonivel->setCurrentIndex(nivel);
     int nivel1 = atoi(combonivel->currentText().toAscii());
-    nivelactivated1(nivel1, listado->firstChild());
+    //nivelactivated1(nivel1, listado->firstChild());
     _depura("END BalanceTreeView::nivelactivated", 0);
 }
 
 
-void BalanceTreeView::nivelactivated1(int nivel, Q3ListViewItem *ot) {
+//void BalanceTreeView::nivelactivated1(int nivel, Q3ListViewItem *ot) {
+void BalanceTreeView::nivelactivated1(int nivel, QTreeWidgetItem *ot) {
     _depura("BalanceTreeView::nivelactivated1", 0);
     if (ot) {
         if (atoi(ot->text(NIVEL).toAscii()) <= nivel) {
-            ot->setOpen(true);
-            ot->setVisible(true);
+            //ot->setOpen(true);
+            //ot->setVisible(true);
         } else {
-            ot->setOpen(false);
-            ot->setVisible(false);
+            //ot->setOpen(false);
+            //ot->setVisible(false);
         } // end if
-        nivelactivated1(nivel, ot->firstChild());
-        nivelactivated1(nivel, ot->nextSibling());
+        //nivelactivated1(nivel, ot->firstChild());
+        //nivelactivated1(nivel, ot->nextSibling());
     } // end if
     _depura("END BalanceTreeView::nivelactivated1", 0);
 }

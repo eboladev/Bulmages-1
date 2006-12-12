@@ -21,7 +21,7 @@
 #ifndef SELECTCCOSTEVIEW_H
 #define SELECTCCOSTEVIEW_H
 
-#include <Q3ListView>
+#include <QTreeWidgetItemIterator>
 
 #include <ui_selectccostebase.h>
 
@@ -40,7 +40,7 @@ class selectccosteview : public QDialog, public Ui_SelectCCosteBase {
     Q_OBJECT
 
 private:
-    /// Empresa con la que se inicizlia la clase.
+    /// Empresa con la que se inicializa la clase.
     empresa *empresaactual;
     ///Indice de la columna que pone el nombre del centro de coste en la lista del formulario.
     int m_colNomCoste;
@@ -57,7 +57,7 @@ private:
     /// Número de dígitos que tienen, por defecto, las cuentas.
     int numdigitos;
     /// Iterador de la lista que se presenta en este formulario.
-    Q3ListViewItemIterator* m_iterador;
+    QTreeWidgetItemIterator *m_iterador;
 
 public:
     /// Constructor de la clase que recibe el parametro de empresa y que inicializa la
@@ -72,9 +72,9 @@ public:
     QString nomcoste();
 
 public slots:
-    void boton_todo();
-    void boton_nada();
-    void boton_invertir();
+    void on_mui_todo_clicked();
+    void on_mui_nada_clicked();
+    void on_mui_invertir_clicked();
 };
 
 #endif

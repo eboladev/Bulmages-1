@@ -40,38 +40,51 @@ BModelo347::~BModelo347() {}
 
 void BModelo347::click_recargar() {
     int i = 0;
+    QTableWidgetItem *item;
     QString query;
     /// A por la tabla de Ventas...pedazo de consulta SQL.
-    query= QString("SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.debe) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo='4770016' OR codigo='4770007' OR codigo='4770004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha<='")+ffinal->text()+QString("' AND fecha>='")+finicial->text()+QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '430%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > ") + importe->text() + QString(" ORDER BY descripcion");
+    query = QString("SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.debe) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo = '4770016' OR codigo = '4770007' OR codigo = '4770004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha <= '") + ffinal->text() + QString("' AND fecha >= '") + finicial->text() + QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo LIKE '430%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > ") + importe->text() + QString(" ORDER BY descripcion");
     DBConn->begin();
     cursor2 *recordSet = DBConn->cargacursor(query, "recordSet");
     DBConn->commit();
-    tablaventas->setNumRows(recordSet->numregistros());
+    tablaventas->setColumnCount(5);
+    tablaventas->setRowCount(recordSet->numregistros());
     i = 0;
     while (!recordSet->eof()) {
-        tablaventas->setText(i, 0,recordSet->valor("codigo"));
-        tablaventas->setText(i, 1,recordSet->valor("descripcion"));
-        tablaventas->setText(i, 2,recordSet->valor("cif"));
-        tablaventas->setText(i, 3,recordSet->valor("cp"));
+        item = new QTableWidgetItem(recordSet->valor("codigo"));
+        tablaventas->setItem(i, 0, item);
+        item = new QTableWidgetItem(recordSet->valor("descripcion"));
+        tablaventas->setItem(i, 1, item);
+        item = new QTableWidgetItem(recordSet->valor("cif"));
+        tablaventas->setItem(i, 2, item);
+        item = new QTableWidgetItem(recordSet->valor("cp"));
+        tablaventas->setItem(i, 3, item);
         query.setNum(recordSet->valor("importe").toFloat(), 'f', 2); /// Round a 2 decimales.
-        tablaventas->setText(i, 4, query);
+        item = new QTableWidgetItem(query);
+        tablaventas->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
     }
     /// A por la tabla de Compras...
-    query = QString("SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.haber) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo='4720016' OR codigo='4720007' OR codigo='4720004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha<='")+ffinal->text()+QString("' AND fecha>='")+finicial->text()+QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo SIMILAR TO '4(0|1)0%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > ") + importe->text() + QString(" ORDER BY descripcion");
+    query = QString("SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.haber) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo = '4720016' OR codigo = '4720007' OR codigo = '4720004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha <= '") + ffinal->text() + QString("' AND fecha >= '") + finicial->text() + QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo SIMILAR TO '4(0|1)0%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > ") + importe->text() + QString(" ORDER BY descripcion");
     DBConn->begin();
     recordSet = DBConn->cargacursor(query, "recordSet");
     DBConn->commit();
-    tablacompras->setNumRows(recordSet->numregistros());
+    tablacompras->setColumnCount(5);
+    tablacompras->setRowCount(recordSet->numregistros());
     i = 0;
     while (!recordSet->eof()) {
-        tablacompras->setText(i, 0,recordSet->valor("codigo"));
-        tablacompras->setText(i, 1,recordSet->valor("descripcion"));
-        tablacompras->setText(i, 2,recordSet->valor("cif"));
-        tablacompras->setText(i, 3,recordSet->valor("cp"));
-        query.setNum(recordSet->valor("importe").toFloat(),'f',2); /// Round a 2 decimales.
-        tablacompras->setText(i, 4, query);
+        item = new QTableWidgetItem(recordSet->valor("codigo"));
+        tablacompras->setItem(i, 0, item);
+        item = new QTableWidgetItem(recordSet->valor("descripcion"));
+        tablacompras->setItem(i, 1, item);
+        item = new QTableWidgetItem(recordSet->valor("cif"));
+        tablacompras->setItem(i, 2, item);
+        item = new QTableWidgetItem(recordSet->valor("cp"));
+        tablacompras->setItem(i, 3, item);
+        query.setNum(recordSet->valor("importe").toFloat(), 'f', 2); /// Round a 2 decimales.
+        item = new QTableWidgetItem(query);
+        tablacompras->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
     }
@@ -92,25 +105,25 @@ void BModelo347::click_imprimir() {
         fprintf(mifile, "LISTADO 347\n");
         fprintf(mifile, "\nCuenta	 Deudor 				 	    CIF/NIF     CP	Importe\n");
         fprintf(mifile, "________________________________________________________________________________________\n");
-        numventas = tablaventas->numRows();
+        numventas = tablaventas->rowCount();
         for (i = 0; i < numventas; i++) {
-            codigo = tablaventas->text(i, 0);
-            descripcion = tablaventas->text(i, 1);
-            cif = tablaventas->text(i, 2);
-            cp = tablaventas->text(i, 3);
-            importe = tablaventas->text(i, 4);
+            codigo = tablaventas->item(i, 0)->text();
+            descripcion = tablaventas->item(i, 1)->text();
+            cif = tablaventas->item(i, 2)->text();
+            cp = tablaventas->item(i, 3)->text();
+            importe = tablaventas->item(i, 4)->text();
             fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.toAscii().constData(), descripcion.toAscii().constData(), cif.toAscii().constData(), cp.toAscii().constData(), importe.toFloat());
         }
-        numcompras = tablacompras->numRows();
+        numcompras = tablacompras->rowCount();
         fprintf(mifile, "\nCuenta	 Acreedor				 	    CIF/NIF     CP	Importe\n");
         fprintf(mifile, "________________________________________________________________________________________\n");
-        numcompras = tablacompras->numRows();
+        numcompras = tablacompras->rowCount();
         for (i = 0; i < numcompras; i++) {
-            codigo = tablacompras->text(i, 0);
-            descripcion = tablacompras->text(i, 1);
-            cif = tablacompras->text(i, 2);
-            cp = tablacompras->text(i, 3);
-            importe = tablacompras->text(i, 4);
+            codigo = tablacompras->item(i, 0)->text();
+            descripcion = tablacompras->item(i, 1)->text();
+            cif = tablacompras->item(i, 2)->text();
+            cp = tablacompras->item(i, 3)->text();
+            importe = tablacompras->item(i, 4)->text();
             fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.toAscii().constData(), descripcion.toAscii().constData(), cif.toAscii().constData(), cp.toAscii().constData(), importe.toFloat());
         }
         fclose(mifile);

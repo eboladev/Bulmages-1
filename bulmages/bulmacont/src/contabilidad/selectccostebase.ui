@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>SelectCCosteBase</class>
  <widget class="QDialog" name="SelectCCosteBase" >
   <property name="geometry" >
@@ -18,39 +15,17 @@
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_centroCoste.xpm</iconset>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>11</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
     <number>6</number>
    </property>
-   <item row="0" column="0" >
-    <widget class="Q3ListView" name="m_listCostes" >
-     <property name="resizePolicy" >
-      <enum>Q3ScrollView::Manual</enum>
-     </property>
-     <property name="selectionMode" >
-      <enum>Q3ListView::Single</enum>
-     </property>
-     <property name="allColumnsShowFocus" >
-      <bool>true</bool>
-     </property>
-     <property name="showSortIndicator" >
-      <bool>true</bool>
-     </property>
-     <property name="itemMargin" >
-      <number>0</number>
-     </property>
-     <property name="rootIsDecorated" >
-      <bool>true</bool>
-     </property>
-     <property name="resizeMode" >
-      <enum>Q3ListView::LastColumn</enum>
-     </property>
-    </widget>
+   <item>
+    <widget class="QTreeWidget" name="m_listCostes" />
    </item>
-   <item row="1" column="0" >
+   <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
       <number>0</number>
@@ -75,21 +50,21 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton3_2" >
+      <widget class="QPushButton" name="mui_invertir" >
        <property name="text" >
         <string>Invertir</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton3" >
+      <widget class="QPushButton" name="mui_nada" >
        <property name="text" >
         <string>S. Nada</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton2" >
+      <widget class="QPushButton" name="mui_todo" >
        <property name="text" >
         <string>S. Todo</string>
        </property>
@@ -108,15 +83,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11" />
  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>Q3ListView</class>
-   <extends></extends>
-   <header>q3listview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

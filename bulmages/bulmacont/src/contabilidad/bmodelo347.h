@@ -22,7 +22,6 @@
 #define BModelo347_H
 
 #include <QLineEdit>
-#include <Q3Table>
 
 #include "ui_modelo347base.h"
 #include "funcaux.h"

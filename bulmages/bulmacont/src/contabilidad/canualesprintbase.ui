@@ -1,7 +1,6 @@
 <ui version="4.0" >
  <author>Tomeu Borrás Riera</author>
  <comment>Impresión de Balances</comment>
- <exportmacro></exportmacro>
  <class>CAnualesPrintBase</class>
  <widget class="QDialog" name="CAnualesPrintBase" >
   <property name="geometry" >
@@ -9,7 +8,7 @@
     <x>0</x>
     <y>0</y>
     <width>534</width>
-    <height>191</height>
+    <height>207</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -72,7 +71,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="mui_fechainicial" />
+      <widget class="BusquedaFecha" native="1" name="mui_fechainicial" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_2_2" >
@@ -82,7 +81,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="mui_fechafinal" />
+      <widget class="BusquedaFecha" native="1" name="mui_fechafinal" />
      </item>
     </layout>
    </item>
@@ -109,7 +108,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="mui_fechainicial1" />
+      <widget class="BusquedaFecha" native="1" name="mui_fechainicial1" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_2_3" >
@@ -119,12 +118,19 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="mui_fechafinal1" />
+      <widget class="BusquedaFecha" native="1" name="mui_fechafinal1" />
      </item>
     </layout>
    </item>
    <item>
-    <widget class="Q3ProgressBar" name="progreso" />
+    <widget class="QProgressBar" name="progressBar" >
+     <property name="value" >
+      <number>24</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -175,21 +181,11 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="12" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>Q3ProgressBar</class>
    <extends>QWidget</extends>
-   <header>q3progressbar.h</header>
-   <container>1</container>
-   <pixmap></pixmap>
+   <header>../../../bulmalib/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>
