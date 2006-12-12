@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>MPatrimonialesBase</class>
  <widget class="QDialog" name="MPatrimonialesBase" >
   <property name="geometry" >
@@ -69,7 +66,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1_2" >
+      <widget class="QPushButton" name="mui_cerrar" >
        <property name="text" >
         <string>Cerrar</string>
        </property>
@@ -86,21 +83,21 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton5" >
+      <widget class="QPushButton" name="mui_nuevo" >
        <property name="text" >
         <string>Nuevo</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton5_2" >
+      <widget class="QPushButton" name="mui_borrar" >
        <property name="text" >
         <string>Borrar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton5_2_2" >
+      <widget class="QPushButton" name="mui_editar" >
        <property name="text" >
         <string>Editar</string>
        </property>
@@ -141,10 +138,8 @@
  <customwidgets>
   <customwidget>
    <class>Q3Table</class>
-   <extends></extends>
+   <extends>Q3Frame</extends>
    <header>q3table.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources/>

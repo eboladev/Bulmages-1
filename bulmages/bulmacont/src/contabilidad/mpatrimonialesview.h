@@ -65,9 +65,9 @@ public:
 
 public slots:
     virtual void dbtabla(int, int, int, const QPoint &);
-    virtual void nuevamasa();
-    virtual void borrarmasa();
-    virtual void editarmasa();
+    virtual void on_mui_nuevo_clicked();
+    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_editar_clicked();
 };
 
 #endif

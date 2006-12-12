@@ -104,7 +104,7 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
 }
 
 
-void mpatrimonialesview::editarmasa() {
+void mpatrimonialesview::on_mui_editar_clicked() {
     int row = tabla->currentRow();
     int col = tabla->currentColumn();
     QPoint mouse;
@@ -113,7 +113,7 @@ void mpatrimonialesview::editarmasa() {
 }
 
 
-void mpatrimonialesview::borrarmasa() {
+void mpatrimonialesview::on_mui_borrar_clicked() {
     int row;
     row = tabla->currentRow();
     idmasa = tabla->text(tabla->currentRow(), 0).toAscii();
@@ -128,7 +128,7 @@ void mpatrimonialesview::borrarmasa() {
 }
 
 
-void mpatrimonialesview::nuevamasa() {
+void mpatrimonialesview::on_mui_nuevo_clicked() {
     mpatrimonialview *masa = new mpatrimonialview(this);
     masa->inicializa(conexionbase);
     masa->exec();

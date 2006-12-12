@@ -21,8 +21,6 @@
 #ifndef SELECTCANALVIEW_H
 #define SELECTCANALVIEW_H
 
-#include <Q3ListView>
-
 #include "ui_selectcanalbase.h"
 
 
@@ -46,7 +44,7 @@ private:
     int m_colStatusCoste;
     int m_colCheck;
     int numdigitos;
-    Q3ListViewItemIterator *m_iterador;
+    QTreeWidgetItemIterator *m_iterador;
 
 public:
     void cargacanales();
@@ -56,9 +54,9 @@ public:
     QString nomcanal();
 
 public slots:
-    void boton_todo();
-    void boton_nada();
-    void boton_invertir();
+    void on_mui_todo_clicked();
+    void on_mui_nada_clicked();
+    void on_mui_invertir_clicked();
 };
 
 #endif

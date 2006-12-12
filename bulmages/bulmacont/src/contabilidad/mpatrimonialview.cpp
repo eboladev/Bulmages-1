@@ -29,14 +29,12 @@ mpatrimonialview::mpatrimonialview(QWidget *parent)
     setupUi(this);
     conexionbase = NULL;
     idmpatrimonial = "";
-    componentessuma->addColumn(tr("identificador"), 0);
-    componentessuma->addColumn(tr("codigo"), 0);
-    componentessuma->addColumn(tr("descripcion"), -1);
-    componentessuma->addColumn(tr("tipo"), 0);
-    componentesresta->addColumn(tr("identificador"), 0);
-    componentesresta->addColumn(tr("codigo"), 0);
-    componentesresta->addColumn(tr("descripcion"), -1);
-    componentesresta->addColumn(tr("tipo"), -1);
+
+    componentessuma->setColumnCount(8);
+
+    QStringList etiquetas;
+    etiquetas << tr("identificador") << tr("codigo") << tr("descripcion") << tr("tipo") << tr("identificador") << tr("codigo") << tr("descripcion") << tr("tipo");
+    componentessuma->setHorizontalHeaderLabels(etiquetas);
 }
 
 
@@ -70,7 +68,8 @@ void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
     conexionbase->commit();
     Q3ListViewItem *it;
     while (!cursoraux->eof()) {
-        it = new Q3ListViewItem(componentessuma);
+
+//        it = new Q3ListViewItem(componentessuma);
         it->setText(1, cursoraux->valor("codigo"));
         it->setText(2, cursoraux->valor("descripcion"));
         it->setText(3, "cuenta");
@@ -85,7 +84,9 @@ void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
     cursoraux = conexionbase->cargacursor(query, "cursorusuario");
     conexionbase->commit();
     while (!cursoraux->eof()) {
-        it = new Q3ListViewItem(componentessuma);
+
+
+//        it = new Q3ListViewItem(componentessuma);
         it->setText(1, "");
         it->setText(2, cursoraux->valor("descmpatrimonial"));
         it->setText(3, "masa patrimonial");
@@ -140,7 +141,9 @@ void mpatrimonialview::nuevasuma() {
     cursor2 *cursoraux1 = conexionbase->cargacursor(query, "cursorusuario");
     conexionbase->commit();
     while (!cursoraux1->eof()) {
-        it = new Q3ListViewItem(componentessuma);
+
+
+//        it = new Q3ListViewItem(componentessuma);
         it->setText(1, cursoraux1->valor("codigo"));
         it->setText(2, cursoraux1->valor("descripcion"));
         it->setText(3, "cuenta");
@@ -155,7 +158,9 @@ void mpatrimonialview::nuevasuma() {
     cursoraux1 = conexionbase->cargacursor(query, "cursormpatrimonial");
     conexionbase->commit();
     while (!cursoraux1->eof()) {
-        it = new Q3ListViewItem(componentessuma);
+
+
+//        it = new Q3ListViewItem(componentessuma);
         it->setText(1, "");
         it->setText(2, cursoraux1->valor("descmpatrimonial"));
         it->setText(3, "masa patrimonial");
@@ -167,8 +172,9 @@ void mpatrimonialview::nuevasuma() {
 
 void mpatrimonialview::borrasuma() {
     Q3ListViewItem *it;
-    it = componentessuma->currentItem();
-    componentessuma->takeItem(it);
+
+//    it = componentessuma->currentItem();
+//    componentessuma->takeItem(it);
 }
 
 
@@ -213,8 +219,8 @@ void mpatrimonialview::nuevaresta() {
 
 void mpatrimonialview::borraresta() {
     Q3ListViewItem *it;
-    it = componentesresta->currentItem();
-    componentesresta->takeItem(it);
+//    it = componentesresta->currentItem();
+//    componentesresta->takeItem(it);
 }
 
 
@@ -250,7 +256,8 @@ void mpatrimonialview::accept() {
 
     query.sprintf("DELETE FROM compmasap WHERE masaperteneciente = %s", idmpatrimonial.toAscii().constData());
     conexionbase->ejecuta(query);
-    item = componentessuma->firstChild();
+
+//    item = componentessuma->firstChild();
     while (item) {
         QString id = item->text(0);
         QString tipo = item->text(3);

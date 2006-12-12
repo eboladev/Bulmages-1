@@ -24,18 +24,17 @@
 #include <stdlib.h>
 
 #include <QLineEdit>
-#include <Q3ListView>
-#include <Q3Table>
 
 #include "ui_propiedadesempresabase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class empresa;
 
 
-class propiedadesempresa : public QWidget, Ui_PropiedadesEmpresaBase, dialogChanges {
+class propiedadesempresa : public Ficha, public Ui_PropiedadesEmpresaBase {
     Q_OBJECT
 
 public:

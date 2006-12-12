@@ -32,12 +32,14 @@ selectcanalview::selectcanalview(empresa *emp,QWidget *parent)
     setupUi(this);
     empresaactual = emp;
     numdigitos = empresaactual->numdigitosempresa();
-    m_iterador = new Q3ListViewItemIterator(m_listCanales);
-    m_colNomCoste = m_listCanales->addColumn("nom_canal", -1);
-    m_colDescCoste = m_listCanales->addColumn("desc_canal", -1);
-    m_colStatusCoste = m_listCanales->addColumn("Status", -1);
-    m_colIdCoste = m_listCanales->addColumn("idcanal", 0);
-    m_colCheck = m_listCanales->addColumn("Seleccion", -1);
+    m_iterador = new QTreeWidgetItemIterator(m_listCanales);
+
+    m_listCanales->setColumnCount(5);
+
+    QStringList etiquetas;
+    etiquetas << tr("nom_canal") << tr("desc_canal") << tr("Status") << tr("idcanal") << tr("Seleccion");
+    m_listCanales->setHeaderLabels(etiquetas);
+
     cargacanales();
     _depura("END selectcanalview::selectcanalview", 0);
 }
@@ -49,53 +51,56 @@ selectcanalview::~selectcanalview() {
 
 
 void selectcanalview::cargacanales() {
-    Q3CheckListItem *it;
-    Q3CheckListItem *Lista[10000];
-    int idcanal=0;
+    QMap <int, QTreeWidgetItem *> Lista;
+    QTreeWidgetItem *it;
+
+    int idcanal = 0;
     cursor2 *cursoraux1;
-    /// Cogemos los centros de coste principales y los ponemos donde toca.
+    /// Cogemos los canales y los ponemos donde toca.
     m_listCanales->clear();
     empresaactual->begin();
     cursoraux1 = empresaactual->cargacursor("SELECT * FROM canal", "canalillos");
     empresaactual->commit();
     while (!cursoraux1->eof()) {
         idcanal = atoi(cursoraux1->valor("idcanal").toAscii());
-        it = new Q3CheckListItem(m_listCanales, "hola pepsi", Q3CheckListItem::CheckBox);
+        it = new QTreeWidgetItem(m_listCanales);
         Lista[idcanal] = it;
-        it->setText(m_colIdCoste, cursoraux1->valor("idcanal"));
-        it->setText(m_colDescCoste, cursoraux1->valor("descripcion"));
-        it->setText(m_colNomCoste, cursoraux1->valor("nombre"));
-        it->setOpen(true);
+        it->setText(3, cursoraux1->valor("idcanal"));
+        it->setText(1, cursoraux1->valor("descripcion"));
+        it->setText(0, cursoraux1->valor("nombre"));
+        it->setCheckState(0, Qt::Unchecked);
+        it->setExpanded(TRUE);
         cursoraux1->siguienteregistro();
     } // end while
+
     delete cursoraux1;
 }
 
 
-/// Esta funci&oacute;n devuelve el primer centro de coste seleccionado de la vista.
-/// Devuelve el idc_coste. Si no hay ning&uacute;n centro de coste seleccionado devuelve
+/// Esta funci&oacute;n devuelve el primer canal seleccionado de la vista.
+/// Devuelve el idcanal. Si no hay ning&uacute;n canal seleccionado devuelve
 /// cero.
 int selectcanalview::firstcanal() {
     delete m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCanales);
+    m_iterador = new QTreeWidgetItemIterator(m_listCanales);
+
     return nextcanal();
 }
 
 
-/// Esta funci&oacute;n devuelve el siguiente centro de coste seleccionado de la vista.
+/// Esta funci&oacute;n devuelve el siguiente canal seleccionado de la vista.
 int selectcanalview::nextcanal() {
     int idcanal = 0;
-    Q3CheckListItem *item;
     fprintf(stderr, "nextcanal\n");
-    while (m_iterador->current() && idcanal == 0) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        if (item->isOn()) {
-            idcanal = item->text(m_colIdCoste).toInt();
-            fprintf(stderr, "primer canal:%d\n", idcanal);
+    while ((**m_iterador) && idcanal == 0) {
+        if ((**m_iterador)->checkState(0) == Qt::Checked) {
+            idcanal = (**m_iterador)->text(3).toInt();
+            fprintf(stderr, "siguiente canal:%d\n", idcanal);
             return idcanal;
         } // end if
-        (*m_iterador)++;
+        ++(*m_iterador);
     } // end while
+
     return idcanal;
 }
 
@@ -112,61 +117,62 @@ QString selectcanalview::cadcanal() {
             ccanales.sprintf("%d", idcanal);
         idcanal = nextcanal();
     } // end while
+
     return ccanales;
 }
 
 
 /// Esta funci&oacute;n devuelve el nombre de un canal determinado.
 QString selectcanalview::nomcanal() {
-    Q3CheckListItem *item;
-    item = (Q3CheckListItem *) m_iterador->current();
-    if (item->isOn()) {
-        fprintf(stderr, "nomcanal: %s\n", item->text(m_colNomCoste).toAscii().constData());
-        return item->text(m_colNomCoste);
+    QTreeWidgetItemIterator m_iterador(m_listCanales);
+
+    if ((*m_iterador)->checkState(0) == Qt::Checked) {
+        fprintf(stderr, "nomcanal: %s\n", (*m_iterador)->text(0).toAscii().constData());
+        return (*m_iterador)->text(0);
     } else {
         return "";
     } // end if
+
+    delete *m_iterador;
 }
 
 
-void selectcanalview::boton_todo() {
-    Q3ListViewItemIterator *m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCanales);
-    Q3CheckListItem *item;
-    while (m_iterador->current()) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        item->setOn(TRUE);
-        (*m_iterador)++;
-    } // end while
-    delete m_iterador;
+void selectcanalview::on_mui_todo_clicked() {
+    QTreeWidgetItemIterator m_iterador(m_listCanales);
+
+    while (*m_iterador) {
+        (*m_iterador)->setCheckState(0, Qt::Checked);
+        ++m_iterador;
+    }
+
+    delete *m_iterador;
 }
 
 
-void selectcanalview::boton_nada() {
-    Q3ListViewItemIterator *m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCanales);
-    Q3CheckListItem *item;
-    while (m_iterador->current()) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        item->setOn(FALSE);
-        (*m_iterador)++;
-    } // end while
-    delete m_iterador;
+void selectcanalview::on_mui_nada_clicked() {
+    QTreeWidgetItemIterator m_iterador(m_listCanales);
+
+    while (*m_iterador) {
+        (*m_iterador)->setCheckState(0, Qt::Unchecked);
+        ++m_iterador;
+    }
+
+    delete *m_iterador;
 }
 
 
-void selectcanalview::boton_invertir() {
-    Q3ListViewItemIterator *m_iterador;
-    m_iterador = new Q3ListViewItemIterator(m_listCanales);
-    Q3CheckListItem *item;
-    while (m_iterador->current()) {
-        item = (Q3CheckListItem *) m_iterador->current();
-        if (item->isOn())
-            item->setOn(FALSE);
-        else
-            item->setOn(TRUE);
-        (*m_iterador)++;
-    } //end while
-    delete m_iterador;
+void selectcanalview::on_mui_invertir_clicked() {
+    QTreeWidgetItemIterator m_iterador(m_listCanales);
+
+    while (*m_iterador) {
+        if ((*m_iterador)->checkState(0) == Qt::Unchecked) {
+            (*m_iterador)->setCheckState(0, Qt::Checked);
+        } else {
+            (*m_iterador)->setCheckState(0, Qt::Unchecked);
+        }
+        ++m_iterador;
+    }
+
+    delete *m_iterador;
 }
 

@@ -26,7 +26,7 @@
 
 
 propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
@@ -46,6 +46,7 @@ propiedadesempresa::~propiedadesempresa() {
 
 
 int propiedadesempresa::inicializa() {
+    _depura("propiedadesempresa::inicializa", 0);
     int num;
     int i;
 
@@ -57,21 +58,25 @@ int propiedadesempresa::inicializa() {
     } // end if
     delete curs;
 
-    tpropiedades->setNumCols(2);
+    tpropiedades->setColumnCount(2);
 
-    tpropiedades->horizontalHeader()->setLabel(0, tr( "Propiedad"));
-    tpropiedades->horizontalHeader()->setLabel(1, tr( "Valor"));
+    QStringList etiquetas;
+    etiquetas << tr("Propiedad") << tr("Valor");
+    tpropiedades->setHorizontalHeaderLabels(etiquetas);
 
     query = "SELECT * FROM configuracion";
     m_companyact->begin();
     curs = m_companyact->cargacursor(query, "queryconf");
     m_companyact->commit();
     num = curs->numregistros();
-    tpropiedades->setNumRows(100);
+    tpropiedades->setRowCount(100);
     i = 0;
+
     while (!curs->eof()) {
-        tpropiedades->setText(i, 0, curs->valor("nombre"));
-        tpropiedades->setText(i, 1, curs->valor("valor"));
+        QTableWidgetItem *tablaItem0 = new QTableWidgetItem(curs->valor("nombre"));
+        tpropiedades->setItem(i, 0, tablaItem0);
+        QTableWidgetItem *tablaItem1 = new QTableWidgetItem(curs->valor("valor"));
+        tpropiedades->setItem(i, 1, tablaItem1);
         curs->siguienteregistro();
         i++;
     } // end while
@@ -125,9 +130,11 @@ int propiedadesempresa::inicializa() {
             p->setText(v);
         } // end if
     }
+
     delete cur;
-    dialogChanges_cargaInicial();
-    return(0);
+    //dialogChanges_cargaInicial();
+    return 0;
+    _depura("END propiedadesempresa::inicializa", 2);
 }
 
 
@@ -136,11 +143,11 @@ void propiedadesempresa::s_saveConfig() {
     QString query = "DELETE FROM configuracion";
     m_companyact->ejecuta(query);
     int i = 0;
-    while (tpropiedades->text(i, 0) != "") {
+    while (tpropiedades->item(i, 0)->text() != "") {
         QString SQLQuery;
         SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')", i,
-                         m_companyact->sanearCadena(tpropiedades->text(i, 0)).toAscii().constData(),
-                         m_companyact->sanearCadena(tpropiedades->text(i, 1)).toAscii().constData());
+                         m_companyact->sanearCadena(tpropiedades->item(i, 0)->text()).toAscii().constData(),
+                         m_companyact->sanearCadena(tpropiedades->item(i, 1)->text()).toAscii().constData());
         m_companyact->ejecuta(SQLQuery);
         i++;
     } // end while
@@ -174,10 +181,12 @@ void propiedadesempresa::update_value(QString n, QString v) {
     } // end if
     delete cur;
     m_companyact->ejecuta(query);
+    _depura("END propiedadesempresa::update_value", 0);
 }
 
 
 bool propiedadesempresa::close() {
+    _depura("propiedadesempresa::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::question(this,
@@ -187,6 +196,7 @@ bool propiedadesempresa::close() {
             s_saveConfig();
         } // end if
     } // end if
+    _depura("END propiedadesempresa::close", 0);
     return QWidget::close();
 }
 
