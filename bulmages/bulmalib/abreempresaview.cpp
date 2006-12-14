@@ -181,29 +181,29 @@ void abreempresaview::cargaArchivo() {
         on_mui_actualizar_clicked();
     } // end if
 
-
-     QFile file(dir1);
-     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-         return;
+    QFile file(dir1);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return;
+    } // end if
 
     preparamui_empresas();
-//    ifstream filestr(dir1.toAscii().data());
     QTextStream filestr(&file);
 
-//    string nombre, ano, nombd, tipo;
-    QString nombre, ano, nombd, tipo;
+    QString lineatexto, nombre, ano, nombd, tipo;
+    QStringList listacampos;
 
-    while (! filestr.atEnd()) {
-	nombre = filestr.readLine();
-//        getline(filestr, nombre, ',');
-	ano = filestr.readLine();
-//        getline(filestr, ano, ',');
-//        getline(filestr, nombd, ',');
-	nombd = filestr.readLine();
-	tipo = filestr.readLine();
-            if (tipo == m_tipo || m_tipo == "") {
-                insertCompany(nombre, ano, nombd, tipo);
-            } // end if
+    while (!filestr.atEnd()) {
+        /// Lee una linea completa del archivo.
+        lineatexto = filestr.readLine();
+        /// Separa los diferentes campos de la linea de texto y la asigna a las variables.
+        QStringList listacampos = lineatexto.split(",");
+        nombre = listacampos[0];
+        ano = listacampos[1];
+        nombd = listacampos[2];
+        tipo = listacampos[3];
+        if (tipo == m_tipo || m_tipo == "") {
+            insertCompany(nombre, ano, nombd, tipo);
+        } // end if
     } // end while
     file.close();
     _depura("abreempresaview::cargaArchivo", 0);
@@ -223,11 +223,10 @@ void abreempresaview::guardaArchivo() {
     QString dir1 = "C:\\.bulmages\\" + LISTEMPRESAS;
 #endif
 
-
-     QFile file(dir1);
-     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-         return;
-//    ofstream filestr((char *) dir1.toAscii().data());
+    QFile file(dir1);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        return;
+    } // end if
     QTextStream filestr(&file);
     /// Deshabilitamos las alertas para que no aparezcan warnings con bases de datos
     /// que no son del sistema.

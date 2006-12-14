@@ -132,7 +132,7 @@ void company::init(QString bd) {
 QString company::searchCompany() {
     /// El cambio de empresa se realiza desde el selector.
     _depura("company::searchCompany", 0);
-    abreempresaview *nuevae = new abreempresaview(0, QApplication::translate("company", "BulmaFact"));
+    abreempresaview *nuevae = new abreempresaview(0, "BulmaFact");
     nuevae->exec();
     _depura("Vamos a cambiar la empresa \n", 0);
     QString bd = nuevae->nomDB();
