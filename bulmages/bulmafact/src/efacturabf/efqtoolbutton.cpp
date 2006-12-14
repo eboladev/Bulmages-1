@@ -33,26 +33,22 @@
 #define _RESULTADO_ "/tmp/efactura.xml"
 
 EFQToolButton::EFQToolButton(FacturaView *fac, QWidget *parent) : QToolButton(parent) {
-	_depura("EFQToolButton_EFQToolButton", 0);
+	_depura("EFQToolButton::EFQToolButton", 0);
 	m_factura = fac;
 	m_companyact = fac->_company();
 	connect(this, SIGNAL(clicked()), this, SLOT(click()));
+	_depura("END EFQToolButton::EFQToolButton", 0);
 }
 
 EFQToolButton::~EFQToolButton() {}
 
 void EFQToolButton::escribe_descuento_factura(QString &string, cursor2 *descuentos_factura, Fixed bimpfactura) {
+	_depura("EFQToolButton::escribe_descuento_factura", 0);
 	
-// 	Fixed descuentoFactura = Fixed(descuentos_factura->valor("proporciondfactura"))*(bimpfactura/Fixed("100.00"));
 	Fixed descuentoFactura = "0.00";
-	_depura(descuentoFactura.toQString(), 2);
 	descuentoFactura = Fixed(descuentos_factura->valor("proporciondfactura"));
-	_depura(descuentoFactura.toQString(), 2);
-	_depura(descuentoFactura.toQString()+" * "+bimpfactura.toQString(), 2);
 	descuentoFactura = descuentoFactura*bimpfactura;
-	_depura(descuentoFactura.toQString(), 2);
 	descuentoFactura = descuentoFactura*Fixed("0.01");
-	_depura(descuentoFactura.toQString(), 2);
 
 	string += "\t<cac:AllowanceCharge>\n";
 	string += "\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n";
@@ -61,12 +57,14 @@ void EFQToolButton::escribe_descuento_factura(QString &string, cursor2 *descuent
 	string += "\t</cac:AllowanceCharge>\n";
 	string += "\n";
 	
-// 	return descuentoFactura;
+	_depura("END EFQToolButton::escribe_descuento_factura", 0);
 }
 
 /// Funcion que escribe lineas de factura en un QString
 
 void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, int numerolinea) {
+
+	_depura("EFQToolButton::escribe_linea_factura", 0);
 
 	QString numero = QString::number(numerolinea);
 	
@@ -114,7 +112,7 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 	string += "\t\t<cac:SellersItemIdentification>\n";
 	string += "\t\t\t<cac:ID>" + articulo->valor("codigocompletoarticulo") + "</cac:ID>\n";
 	string += "\t\t</cac:SellersItemIdentification>\n";
-	// Impuestos
+	// Tipo de Impuestos
 	string += "\t\t<cac:TaxCategory>\n";
 	string += "\t\t\t<cac:ID>" + lfactura->valor("ivalfactura") + "</cac:ID>\n";
 	string += "\t\t\t<cbc:Percent>" + lfactura->valor("ivalfactura") + "</cbc:Percent>\n";
@@ -132,11 +130,15 @@ void EFQToolButton::escribe_linea_factura(QString &string, cursor2 *lfactura, in
 	string += "\n"; // Dejamos sitio para otra linea
 	
 	delete articulo;
+	
+	_depura("END EFQToolButton::escribe_linea_factura", 0);
 }
 
 /// ---------------- Generacion de factura a partir de una plantilla en formato UBL 1.0 ------------------ ///
 
 void EFQToolButton::exporta_factura_ubl() {
+
+	_depura("EFQToolButton::exporta_factura_ubl", 0);
 	
 	QString query = "";
 	
@@ -244,17 +246,13 @@ void EFQToolButton::exporta_factura_ubl() {
 	}
 	
 	FacturaXml.replace("[lineas_factura]", LineasFactura);
-	
-// 	Fixed totalFactura(factura_totales->valor("bimpfactura"));
-	
+		
 	/// Descuento al PVP de la factura (cogidos de la tabla dfactura)
 	query = "SELECT * FROM dfactura WHERE idfactura = " + m_factura->DBvalue("idfactura");
 	cursor2 *descuentos_factura = m_companyact->cargacursor(query);	
 
 	QString DescuentosFactura = "\n";
 	
-// 	Fixed acumulador = "0.00";
-
 	descuentos_factura->primerregistro();
 	
 	while (!descuentos_factura->eof()) {
@@ -301,17 +299,19 @@ void EFQToolButton::exporta_factura_ubl() {
 	
 	if (!ok)
 		_depura("Problemas en el parseo del archivo", 2);
-// 	else
-// 		_depura("Archivo parseado sin problemas", 2);
 		
 	file->close();
 
 	delete source;
 	delete xmlReader;
 	delete file;
+	
+	_depura("END EFQToolButton::exporta_factura_ubl", 0);
 }
 
 void EFQToolButton::click() {
+
+	_depura("EFQToolButton::click", 0);
 	
 	if ( (!m_factura->dialogChanges_hayCambios()) && (m_factura->DBvalue("idfactura") != "") ) {
 		exporta_factura_ubl();
@@ -319,5 +319,7 @@ void EFQToolButton::click() {
 	} else {
 		_depura("Es necesario Guardar la factura antes de exportarla a UBL", 2);
 	}
-};
+	
+	_depura("END EFQToolButton::click", 0);
+}
 

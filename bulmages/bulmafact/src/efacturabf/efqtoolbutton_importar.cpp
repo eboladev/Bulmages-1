@@ -318,7 +318,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 /// 	mapa_lfactura["ivalfactura"]
 /// 	mapa_lfactura["descuentolfactura"]
 /// 	mapa_lfactura["idarticulo"]
-	
+
 /// Mientras haya lineas, las vamos obteniendo
 	for (int i = 0; i < numlineas; i++) {
 		obten_linea_factura(&doc, mapa_lfactura, i);
@@ -381,6 +381,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 
 /// FIN lineas de factura ------------------------------------------------------------------------------
 
+/// Empezamos a pintar datos ---------------------------------------------------------------------------
 // 	fp->cargar("0");
 // 	fp->show();
 
@@ -401,8 +402,6 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 	lineas->setcompany(m_companyact);
 	descuentos->setcompany(m_companyact);
-	
-	_depura("empezamos con los setDB", 2);
 
 	fp->setidproveedor(idProveedor);
 	fp->setreffacturap(""); /// El valor lo pone el usuario que importa la factura
@@ -419,12 +418,11 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 	fp->setprocesadafacturap("");
 	
-	_depura("acabamos con los setDB", 2);
-
 	_depura("END EFQToolButtonImportar::importa_factura_ubl", 0);
-	
 }
 
 void EFQToolButtonImportar::click() {
+	_depura("EFQToolButtonImportar::click", 0);
 	importa_factura_ubl();
+	_depura("END EFQToolButtonImportar::click", 0);
 }

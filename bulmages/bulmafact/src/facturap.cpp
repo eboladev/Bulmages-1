@@ -389,9 +389,7 @@ void FacturaProveedor::setcomentfacturap(QString val) {
 void FacturaProveedor::setidfacturap(QString val) {
 	_depura("FacturaProveedor::setidfacturap", 0);
 	setDBvalue("idfacturap", val);
-// 	_depura("listalineas->setColumnValue", 4);
 	listalineas->setColumnValue("idfacturap", val);
-// 	_depura("listadescuentos->setColumnValue", 5);
 	listadescuentos->setColumnValue("idfacturap", val);
 	_depura("END FacturaProveedor::setidfacturap", 0);
 }
