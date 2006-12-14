@@ -21,9 +21,6 @@
 #ifndef ASIENTO1_H
 #define ASIENTO1_H
 
-#include <Q3Table>
-#include <Q3PtrList>
-
 #include <QString>
 
 #include "fixed.h"

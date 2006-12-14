@@ -22,9 +22,8 @@
 #define _SPLASH_H
 
 #include <QLabel>
-#include <Q3TextBrowser>
+#include <QTextBrowser>
 #include <QDialog>
-#include <Q3TextBrowser>
 #include <QEvent>
 
 
@@ -36,7 +35,7 @@ class Splash : public QDialog {
 
 private:
     QLabel *l;
-    Q3TextBrowser *l2;
+    QTextBrowser *l2;
 
 public:
     Splash();

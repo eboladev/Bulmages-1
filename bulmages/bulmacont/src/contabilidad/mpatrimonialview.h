@@ -48,12 +48,13 @@ public:
     QString getnommasa();
 
 public slots:
-    virtual void nuevasuma();
-    virtual void nuevaresta();
-    virtual void borrasuma();
-    virtual void borraresta();
-    virtual void accept();
-    virtual void buscampatrimonial();
+    virtual void on_mui_nuevasuma_clicked();
+    virtual void on_mui_nuevaresta_clicked();
+    virtual void on_mui_borrasuma_clicked();
+    virtual void on_mui_borraresta_clicked();
+    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_buscampatrimonial_clicked();
+    virtual void on_mui_cancelar_clicked();
 };
 
 #endif

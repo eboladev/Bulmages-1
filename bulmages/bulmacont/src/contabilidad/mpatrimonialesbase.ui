@@ -66,9 +66,9 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cerrar" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>Cerrar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>

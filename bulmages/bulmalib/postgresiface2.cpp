@@ -313,13 +313,13 @@ int postgresiface2::formatofecha() {
 
 
 /// Con esta sentencia se inicia una transaccion en la base de datos
-/// Las transacciones lo que indican es que el usuario se ha apoderado de la base de datos durante
-/// un tiempo y que la operacion que va a transcurrir debe hacerse sin concurrencia.
+/// Las transacciones lo que indican es que el usuario se ha apoderado de la base de datos
+/// durante un tiempo y que la operacion que va a transcurrir debe hacerse sin concurrencia.
 /// \return Si todo ha funcionado bien devuelve un 0, en caso contrario devuelve un 1.
 int postgresiface2::begin() {
     _depura("postgresiface2::begin", 0);
     if (m_transaccion) {
-        _depura("Ya estamos dentro de una transaccion", 2);
+        _depura("Ya estamos dentro de una transaccion", 0);
         return -1;
     } // end if
     PGresult *res;
@@ -343,7 +343,7 @@ int postgresiface2::begin() {
 void postgresiface2::commit() {
     _depura("postgresiface2::commit", 0);
     if (!m_transaccion) {
-        _depura("No estamos en ninguna transaccion", 2);
+        _depura("No estamos en ninguna transaccion", 0);
         return;
     } // end if
     PGresult *res;
@@ -361,7 +361,7 @@ void postgresiface2::commit() {
 void postgresiface2::rollback() {
     _depura("postgresiface2::rollback", 0);
     if (!m_transaccion) {
-        _depura("No estamos en ninguna transaccion", 2);
+        _depura("No estamos en ninguna transaccion", 0);
         return;
     } // end if
     PGresult *res;
@@ -373,7 +373,7 @@ void postgresiface2::rollback() {
 
 
 /// Se encarga de generar un objeto del tipo cursor2 y de iniciarlo con un query concreto
-/// NOTA: Este metodo crea mem�ia, con lo que �ta debe ser liberada posteriormente.
+/// NOTA: Este metodo crea memoria, con lo que esta debe ser liberada posteriormente.
 /// \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la
 /// respuesta al query.
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
@@ -381,8 +381,8 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
     cursor2 *cur = NULL;
     try {
         cur = new cursor2(nomcursor, conn, Query);
-    } catch(...) {
-        _depura( "postgresiface2::cargacursor La base de datos generó un error: "+Query, 3);
+    } catch (...) {
+        _depura("postgresiface2::cargacursor La base de datos genero un error: " + Query, 3);
         delete cur;
         throw -1;
     } // end try

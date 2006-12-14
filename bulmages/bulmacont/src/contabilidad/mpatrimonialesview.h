@@ -29,7 +29,7 @@
 
 ///
 /** */
-class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase  {
+class mpatrimonialesview : public QDialog, public Ui_MPatrimonialesBase {
     Q_OBJECT
 
 public:
@@ -68,6 +68,7 @@ public slots:
     virtual void on_mui_nuevo_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
+    virtual void on_mui_cancelar_clicked();
 };
 
 #endif

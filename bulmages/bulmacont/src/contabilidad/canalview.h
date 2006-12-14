@@ -24,7 +24,6 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QLineEdit>
-#include <Q3TextEdit>
 
 #include "ui_canalbase.h"
 #include "postgresiface2.h"

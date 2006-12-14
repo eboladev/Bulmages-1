@@ -26,7 +26,6 @@
 #include <QMessageBox>
 #include <QLineEdit>
 #include <QComboBox>
-#include <Q3MultiLineEdit>
 #include <QCheckBox>
 #include <QRadioButton>
 

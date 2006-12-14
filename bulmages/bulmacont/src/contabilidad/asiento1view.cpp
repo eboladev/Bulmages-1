@@ -270,7 +270,7 @@ void Asiento1View::prepguardar() {
     _depura("Asiento1View::prepguardar", 0);
     setDBvalue("fecha", mui_fecha->text());
     setDBvalue("ordenasiento", m_ordenasiento->text());
-    setDBvalue("comentariosasiento", mui_comentariosAsiento->text());
+    setDBvalue("comentariosasiento", mui_comentariosAsiento->toPlainText());
     setDBvalue("clase", QString::number(mui_claseAsiento->currentIndex()));
     _depura("END Asiento1View::prepguardar", 0);
 }

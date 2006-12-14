@@ -44,14 +44,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
         <string>Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1_2" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
         <string>Cancelar</string>
        </property>
@@ -155,7 +155,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QToolButton" name="ToolButton1" >
+              <widget class="QToolButton" name="mui_buscacuenta" >
                <property name="sizePolicy" >
                 <sizepolicy>
                  <hsizetype>0</hsizetype>
@@ -208,7 +208,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QToolButton" name="ToolButton1_2" >
+              <widget class="QToolButton" name="mui_buscampatrimonial" >
                <property name="sizePolicy" >
                 <sizepolicy>
                  <hsizetype>0</hsizetype>
@@ -276,14 +276,14 @@
                 <number>0</number>
                </property>
                <item>
-                <widget class="QPushButton" name="pushButton3" >
+                <widget class="QPushButton" name="mui_nuevasuma" >
                  <property name="text" >
                   <string>Agregar</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton3_2" >
+                <widget class="QPushButton" name="mui_borrasuma" >
                  <property name="text" >
                   <string>Quitar</string>
                  </property>
@@ -362,14 +362,14 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton3_3" >
+                <widget class="QPushButton" name="mui_nuevaresta" >
                  <property name="text" >
                   <string>Agregar</string>
                  </property>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton3_2_2" >
+                <widget class="QPushButton" name="mui_borraresta" >
                  <property name="text" >
                   <string>Quitar</string>
                  </property>
@@ -393,25 +393,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="Q3ListView" name="componentesresta" >
-                 <property name="sizePolicy" >
-                  <sizepolicy>
-                   <hsizetype>7</hsizetype>
-                   <vsizetype>7</vsizetype>
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="resizePolicy" >
-                  <enum>Q3ScrollView::Manual</enum>
-                 </property>
-                 <property name="allColumnsShowFocus" >
-                  <bool>true</bool>
-                 </property>
-                 <property name="resizeMode" >
-                  <enum>Q3ListView::NoColumn</enum>
-                 </property>
-                </widget>
+                <widget class="QTableWidget" name="componentesresta" />
                </item>
               </layout>
              </item>
@@ -444,13 +426,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <customwidgets>
-  <customwidget>
-   <class>Q3ListView</class>
-   <extends>Q3Frame</extends>
-   <header>q3listview.h</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

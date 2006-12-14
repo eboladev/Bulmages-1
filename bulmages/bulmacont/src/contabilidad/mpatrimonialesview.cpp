@@ -137,3 +137,8 @@ void mpatrimonialesview::on_mui_nuevo_clicked() {
     inicializatabla();
 }
 
+
+void mpatrimonialesview::on_mui_cancelar_clicked() {
+    close();
+}
+

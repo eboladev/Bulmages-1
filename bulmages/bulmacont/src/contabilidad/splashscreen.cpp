@@ -18,13 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QDialog>
 #include <QLayout>
 #include <QColor>
 #include <QTimer>
 #include <QPixmap>
-#include <QLabel>
-#include <QEvent>
 #include <QDir>
 #include <QIcon>
 
@@ -48,13 +45,12 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
 
     l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("<div align=\"left\"><font size=+1 color=\"#666666\">BulmaCont</font><BR><font color=\"#333333\">0.5.9</font></center>"));
+    l0->setText(tr("<center><font size=+1 color=\"#666666\">BulmaCont</font>&nbsp;<font color=\"#333333\">0.5.9</font></center>"));
 
-    l2 = new Q3TextBrowser(this);
-    l2->setVScrollBarMode(Q3ScrollView::AlwaysOff);
+    l2 = new QTextBrowser(this);
+    l2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     l2->setAlignment(Qt::AlignBottom);
-    l2->setFont(QFont("helvetica", 11, QFont::Normal));
-    l2->setText(tr("BULMACONT"));
+    l2->setFont(QFont("helvetica", 9, QFont::Normal));
     l2->setGeometry(0, image0.height(), image0.width(), 58);
 
     QTimer timer(this);
@@ -90,8 +86,8 @@ bool Splash::event(QEvent *evt) {
 /** Actualiza el widget. */
 void Splash::paint() {
     static int a = 0;
-    static QString cad;
-    static int b = 0;
+    int cantidadmensajes;
+    QString cad = "";
     QString mensajes[] = {
                              tr("Comprobando nivel de combustible"),
                              tr("Calibrando los lasers del lector de CD"),
@@ -105,22 +101,23 @@ void Splash::paint() {
                              tr("Flusheando datos con vidas inteligentes superiores"),
                              tr("Permutando las tablas de particion del Sistema Operativo"),
                              tr("Crackeando BulmaGes")};
+
+    /// Cuenta el numero de mensajes.
+    cantidadmensajes = sizeof(mensajes) / sizeof(mensajes[0]);
+
     if (a) {
-        cad = cad + "<FONT COLOR='#FF0000'>....... <B>OK</B></FONT><BR>";
+        cad = cad + "<FONT COLOR='#FF0000'>&nbsp;.......&nbsp;<B>OK</B></FONT><BR>";
     } // end if
 
-    /// Este trozo de c&oacute;digo es para sacar los iconos del recurso.
-    if (b == 0) {
-        b = 1;
-    } // end if
+    /// Recorre todos los elementos del array de mensajes cada vez que se llama a la funcion.
+    /// Cuando termina de recorrerlos todos cierra la ventana y el programa continua.
+    if (a >= cantidadmensajes)
+        this->close();
 
-    cad = cad + " " + mensajes[a];
-    if (a > 10) {
-        a = 0;
-    } // end if
+    cad = cad + "<FONT COLOR='#000066'>" + mensajes[a] + "</FONT>";
     a++;
-
-    l2->setText(cad);
-    l2->scrollBy(0,400);
+    l2->insertHtml(cad);
+    /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
+    l2->ensureCursorVisible();
 }
 

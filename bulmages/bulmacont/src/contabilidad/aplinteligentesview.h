@@ -24,9 +24,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <Q3Table>
-#include <Q3GroupBox>
-
 #include <QWidget>
 #include <QLineEdit>
 #include <QToolButton>

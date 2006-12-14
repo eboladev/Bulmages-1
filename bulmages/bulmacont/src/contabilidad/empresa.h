@@ -22,11 +22,11 @@
 #define EMPRESA_H
 
 #include <QMessageBox>
-#include <Q3FileDialog>
 #include <QString>
 #include <QWorkspace>
 #include <QWidget>
 #include <QSizePolicy>
+#include <QDir>
 
 #include "balanceview.h"
 #include "diarioview.h"

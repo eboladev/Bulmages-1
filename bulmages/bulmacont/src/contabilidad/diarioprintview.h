@@ -26,9 +26,6 @@
 #include <errno.h>
 
 #include <QWidget>
-#include <Q3FileDialog>
-#include <QWidget>
-#include <Q3Table>
 #include <QToolButton>
 #include <QRadioButton>
 

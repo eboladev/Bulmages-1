@@ -114,9 +114,6 @@ BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
         listado->setColumnAlignment(NIVEL, Qt::AlignRight);
         listado->setColumnAlignment(PADRE, Qt::AlignRight);
     */
-    /// Establecemos el color de fondo del extracto. El valor lo tiene la clase
-    /// configuraci&oacute;n que es global.
-    listado->setPaletteBackgroundColor(confpr->valor(CONF_BG_BALANCETREE).toAscii().constData());
     /// Inicializamos la tabla de nivel.
     combonivel->insertItem(0, "2");
     combonivel->insertItem(1, "3");
