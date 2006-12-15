@@ -56,7 +56,7 @@ void myplugin1::boton_adjuntar() {
     /// FAlta por resolver esta salvedad
     Asiento1View *intapunts = empresaactual->intapuntsempresa();
     if (intapunts->idasiento() != "-1")
-    	adoc->asociaasiento(intapunts->idasiento());
+        adoc->asociaasiento(intapunts->idasiento());
     delete adoc;
 }// end boton_adjuntar
 
@@ -84,7 +84,7 @@ void myplugin1::elslot() {
 
 
 
-adocumental::adocumental(empresa *emp,QWidget *parent, const char *name ) : adocumentalbase(parent,name,false,0) {
+adocumental::adocumental(empresa *emp,QWidget *parent, const char *name) : QDialog(parent) {
     empresaactual=emp;
     conexionbase = emp->bdempresa();
     modo =0;
@@ -155,10 +155,10 @@ void adocumental::doubleclicked(int row, int, int, const QPoint &) {
 
 
 void adocumental::newADocumental(QString archivo) {
-        QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('"+conexionbase->sanearCadena(archivo)+"')";
-        conexionbase->begin();
-        conexionbase->ejecuta(SQLQuery);
-        conexionbase->commit();
+    QString SQLQuery = "INSERT INTO adocumental (archivoadocumental) VALUES ('"+conexionbase->sanearCadena(archivo)+"')";
+    conexionbase->begin();
+    conexionbase->ejecuta(SQLQuery);
+    conexionbase->commit();
 }// end newAdocumental
 
 void adocumental::boton_newadocumental() {
@@ -249,11 +249,11 @@ void adocumental::s_agregarDirectorio() {
     d.setFilter( QDir::Files | QDir::Hidden | QDir::NoSymLinks );
     d.setSorting( QDir::Size | QDir::Reversed );
 
-	QList<QFileInfo> list = d.entryInfoList();
+    QList<QFileInfo> list = d.entryInfoList();
     QListIterator<QFileInfo> it( list );
     while ( it.hasNext()) {
-	QString fn = it.next().filePath();
-	newADocumental(fn);
+        QString fn = it.next().filePath();
+        newADocumental(fn);
     }// end while
     inicializa();
 }// end s_agregarDirectorio

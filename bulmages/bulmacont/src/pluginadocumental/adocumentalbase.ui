@@ -1,280 +1,294 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>adocumentalbase</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>adocumentalbase</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>676</width>
-            <height>495</height>
-        </rect>
-    </property>
-    <property name="caption">
-        <string>Archivo Documental</string>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout3</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <property name="margin">
-                    <number>0</number>
-                </property>
-                <property name="spacing">
-                    <number>0</number>
-                </property>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>m_new</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image0</iconset>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>m_save</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image1</iconset>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>m_adddir</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image2</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Agregar Directorio</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Agrega un directorio entero de Documentos.</string>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>m_delete</cstring>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image3</iconset>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>m_scan</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>false</bool>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image4</iconset>
-                    </property>
-                </widget>
-                <widget class="QToolButton">
-                    <property name="name">
-                        <cstring>m_desasociar</cstring>
-                    </property>
-                    <property name="enabled">
-                        <bool>true</bool>
-                    </property>
-                    <property name="text">
-                        <string></string>
-                    </property>
-                    <property name="iconSet">
-                        <iconset>image5</iconset>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                        <string>Desasociar</string>
-                    </property>
-                    <property name="whatsThis" stdset="0">
-                        <string>Desasociar el archivo de su  apunte</string>
-                    </property>
-                </widget>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer4</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>290</width>
-                            <height>31</height>
-                        </size>
-                    </property>
-                </spacer>
-            </hbox>
-        </widget>
-        <widget class="QTable">
-            <column>
-                <property name="text">
-                    <string>iadocumental</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>archivo</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>idasiento</string>
-                </property>
-            </column>
-            <column>
-                <property name="text">
-                    <string>Comentarios</string>
-                </property>
-            </column>
-            <property name="name">
-                <cstring>m_listado</cstring>
-            </property>
-            <property name="numRows">
-                <number>3</number>
-            </property>
-            <property name="numCols">
-                <number>4</number>
-            </property>
-        </widget>
-        <widget class="QLayoutWidget">
-            <property name="name">
-                <cstring>layout2</cstring>
-            </property>
-            <hbox>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <spacer>
-                    <property name="name">
-                        <cstring>spacer2</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>351</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QPushButton">
-                    <property name="name">
-                        <cstring>pushButton1</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Cerrar</string>
-                    </property>
-                </widget>
-            </hbox>
-        </widget>
-    </vbox>
-</widget>
-<images>
-    <image name="image0">
-        <data format="PNG" length="581">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000020c49444154388dad95316b1a611cc67f272d899440843a74b35b0bf9040e1dba7669e67e807e80d2c92960563f41d76ca54bed52f028820e01254814113983c31d18384b021ea4c3d3e1bdd79c672f57212fc8e3fff578ee770fcf7b2209fb69ba921692da465bedc4ec4b5f7f4af2a42f67523890806764ada4b11692ee24495aad62bd31eafb66633809a585d4e9fbd6bc72f8bcb2ffb071db985873c5a60a639d1b69d9eb466bf24a3eb15d963c360f1786d89b1b62cf3377eb9cfb49f33dc0d9326ea5895729727b637b9d5d9be47b008ea47bfc6b4439fefe07780ad12d140f20b88e78512e1204117c2f724617a8025d3e505dcf9f3f3a2f81ab8733ce22f6629d98bda62bc9973e9d3405bc070a9919a75b11866663a31d7752d3f524df68ef44028eb78cd719af529a261e99a7ea9cc7bf7525856be263a0504836e4edab38db224451acb7c00126db32cc664b780dfdcb80ea1174c7011c813b0ed87ff22ea7c73729b53d9e18198ee27960c87b7df374b50471f6c94b656b7b3b9cc43a32da1bf82696beafde695ec619276ea30dff20af9dee406c5be0cdc31cf250b52ce2ad8cfd94e690ff17b17d37dc13e7651dee90710ef13026d62ec496f47133b66dc8201e3e4ac63b649dcc78e348bb5398fd827a03828b22f586cbf2a248bd01cb4b3347633347d312f5860bd312f5067055e21b3f00b4f53e761ca700bc010ed7ff04bb2d01bf81f65f558647444ed07b680000000049454e44ae426082</data>
-    </image>
-    <image name="image1">
-        <data format="PNG" length="1277">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000004c449444154388d8d947f48d47718c75ff7c3f5b1ae71c6aa731878638b84065d6474522dad3fea2e5abbd820cdfef0b258cd206c7f4405737706a1fd11d41f2dafd17627ac4e07a60eb6bc1a9b3632bd31775ea371d736a74eed74cdf28b7dedd91f67d29a506ff8f081cfe7e1fd7e9ef7c3f3c0ff61085e14493489146e2a7c35b835f8b2639523235c1536018659e26785f9d987c20d85a6823e98c81fa5685de4cfa4b985765b371bcf17e438d73aef6be39a16fd313a05c8f47921181ede14696e8a8988c899d322a98848cda936e90a3c14dff1b0a4222279cbf2b27dcb7d16c72a4706607c6e25c5ef169b8e1e0f8b8848ac3725899332035f75b3f49f16f15585657f794af697d749a25a243737d766b3d9e64d573fbb8863952323161291deb4c73224b3e2e891b0c44222951f86255cd52ffbdf0f4aac51c4f68a6df1b488e93f36f49f15696e8d894c8a541eaa9b9df519545604a5fd9088afaa593cdb6ba4acbc4eac16ebe2a7898d478f84452645623f89c42ebd10af88889495d7a5e36f8a04b7264429b5c63863c30a87c935eea2e38724f597216bedc40b75dbbb37405eae97fa9e16c88146730356ab73c18c0d892691ba73ed22a974062f844991e0f684f8aa9a4586445c5b6bc46ab1ee564abd6504489d1373ed5701bcce021aae7683eec27fa2e5f9e96640242b820737dd7d03a06964e778a6806123c0827d0671e57a084561c7eb2b29da308037dfcd8183211a3e1e20f049c7ec369405a8dce2a55e6b61a52d1ba5d43fa323c9bf810726c0e03b2e5383c608252f2da57ea883f71eafa631d5c181456ea2d61e06860ab8f87980cf2e6431928ab33a7f09037f4c507f7921238f23f82bdec65de6e7eb48d51e6db26f48d3b401236088deaec59befa65e8b601bb4b3eb4a2d76cd41a3de81c75e409605fc3bbd38d725715a0af0ee0d10d93f88c3d14bf1f21d3008a3634560b63f0486810746c0c8a31d043a5b18182922aa77d3f0e56192963891eb763e387f16c7af1304be6b018a68bddb42658e97f89bdda0bbb970ab017220dbd681d562d7354d1b071ed175313d41b14b22c5a56744ba9feafafdf45573b24d82dbfbc5b3bd4662a1f4e47505442a0f8545fa455c9b7ca294da8599f5c022c064eaec1bfe28cf7e98ce4488916117dbf6cd272303927746c9cace647474828d9b96d294e8646cb4884bdf9e64644c237e2f4e89b98461fb00d7daa28c3e9cff85ae25efeaba3e0c4c1a6b77d612eda9c5b3ac044d0b909909dc01fb1b59f4f640963913ae8103078e15710207fd4c8c8f51b2bc98801660654e36d6ec6cc646e20fa66d9804c4a02c6a515bf9c45fd5776a4107ccd072e2301de3490a72ed447e4e92d76367cf377e9cce63284b84e8ad3c34bd9186d30728daede7c6f5ea520ded77746e03f78029804ca5d46b4aa9f54aa92dede7d21354b73921aecd3522bd22aecd35926812a9392552b72926c53bcf48b82a257253c4b9a64b94caf30079c05ca6d7a681f40e9d035894524ad3358b32ab45e8cc6dab9868ad8efb672a09be730cf7a787b12fa944239db1bbcc4fe46abd5bd3e33dc020f0e809f193fb89c84bc03c608e32abf9c0420d6d5efb6969adbee2c7a397d0680ee1d13d84f4466e7caf956a7af56fc02f4fdb301b9e0898a74b5b08e400cb8075c096f60a91c20d3e292e4d09b06dfa6fc606807f01236308c2e64c62ad0000000049454e44ae426082</data>
-    </image>
-    <image name="image2">
-        <data format="PNG" length="857">89504e470d0a1a0a0000000d4948445200000018000000180806000000e0773df800000320494441544889ad953d681b6718c77f32a29c8b339866d085147490065995878a14dccb926ad4d42a9d2c0acdd0ecc2b890bd144aeca9de8a867e684bb534325d220f218a08b11caa54122158260927636a5924463a8ce0dfe154bbb23e6cb77de0f8f187f79ecf7b9f4312273d2b1569f3b5b4b02add7b242596a5d3bc278909c65807947ed9d1fc0c649e36304290a99600b0bfca297c13014c7fdcd04827a322b725fdfc6274a62b3f483337ee28f0495bc6b59591e77cd260f00e68127ce3aa0308df447b8d34adfd389d3573e8f9a12d3a8df3d88f88ee2fe09f07b223cf1d3a0aa41c197e13ba0df09b6cddf69d07de000727053bd1828bd27a455ac81e914b0f040481b7fe8b6f5f20e528f9a549e1d70a10c6a5824118a8f0f0fb167433e09f846e07fcc941fdfcead84a7dc1b474fd1ce4fd40b94262364cb60ccc9e4e6ffcd482e7572dc01916c4174c398a5f3159ab95802850823fa3742830890d1400fb4cbaba6141f1c279e08d2f9896627e30814c0d08c164b144ee5694afef436216b26548ce42a63ca8573f80a52948bc0bd9971edffe70091e2fdac0335f20e5281e31597d5ac0f0dbb05f2099b2a9deaf0316309e79ea2c7c6e416d8f44689af7ed2578bc7803d802ca1346c4c4ed02219b965b2019b2d97b0271cb626fbf42dcb270f7476bc3b2a817c1be38cd72116ff0ded01daf45294776c824fb248f458c8fe6ea54b7adbeafe9f8d7f54f5da584fd69944eadc1da3719281e650fec4e103171dd0ac6a51800f1f72c5a6e898415a6e5826b85c76aac28f58710bb684297beec0fef811d34a9d60acc846c0aaf4a184471391db7c9331389b1f15d7fef815d8009236282ebcd60b598c39d8ab2fd2a47abc793b43115a3fa5b6ea0f7871721987234bf2ccddfba2b35a53bf94d69a7c7a674ef91231d48eb95a624e98f176d4992d3f4d86e4bcc3902be00ae01eff4ddb4605a4a7cbbde73ae23ee48770b92dad283dfe5d9668f3b3dbef6c095db02ae039739bebb0229e728f3211caca0d95741cff9f0ec011f738ebc05f6f722fb172c5ef8ac37d82d8eed235f2feae561d1cf60bbc0b31e8f55e0f5ecdc40efce66078c58d943ffc9ffa7fd054695adea4166865d0000000049454e44ae426082</data>
-    </image>
-    <image name="image3">
-        <data format="PNG" length="766">89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b000002c549444154388d95954148145118c7ff2b452e19cc1e828404bd1978c86e4944e7e8504a87822e0b1d4a3a44748850e8d021960e4197a03d08e6a5d59378302c28dc83301a5bb385c4141b8c603086c11a22fc3a7c6fb6ddd5ddecc1f0bdefbd99fffcf8bfefbd2740c953980fa00285795caccb43989cf1a996219787b008920eab55ab17a6026c0340b56a318ead135662008272041558580ac9e541526f6797d7d956b8306f6289389b2ec62e86160af381bd53aa91f7fe9b9826e24deb4491230f63a840b06a7f5b28fe25977448526a0fe2a03d719410d3d81ac90f49520af88bff5da8c7ba5b5b523a2d6dfcda52e6485a6b3f36d47d34a3afdf37b4f132a3a99d69751e189176a6357c60a4963fbc93ea93f4adbdc7d52672471cacbabc0c546072ce8710aede7e8aa48b923af6ed71bcee3c8ecc17bf1cc12614e6fc9a78f6768ca44bbb846b1e27a42d8829d9dc42115887d9d736e788770b37d471d18773e7a95e18364d471a8431c4109e198693e7997ce2430cb3af03b2775b1237118ee54002274ed98d9f1bb6f11b39235fb26fb2ed889bbdad5ecb8244782b67c4f79e5b7e210bdbb0b8143af1b01d71d0489cd4efc020480463cfc13b06fd83b6802567ddb279be2f8f13e2b012dba2757920513dde0bdbae2a80c5e5c8c8971b893beab7f7f467490725fd923247d2d29ad4d793917624f5de9724a5bd6e953f4ba74e744b9fa4a1816e153f4a43037dd2ce54ebb3a2ea88a3f53ae22b376db1aefb162fdfac11fba5bd89db7b1c0113a1893db6ddc58305cb9f85f8499538afdb7a9c544514c53081890c9cb6fa05825208fda76dfcd1be891dc13a46e779e0790433be8dbbf378f1856fd5d1e5c1122c2e1b71fb3a6ef238d971c90d52bb49569dc7755eb7ae8a2f65adcc6e69743cafafaf64f14da746c7f35a7bd7187fbef7343a9ed7ef15173f78926624895de7712a95ea9074569257bb09feaf21e9a7a4b77f00a143f821f014481c0000000049454e44ae426082</data>
-    </image>
-    <image name="image4">
-        <data format="PNG" length="933">89504e470d0a1a0a0000000d4948445200000017000000170806000000e02ad4a00000036c49444154488995945f685b551cc73f091d4b71851b9990401fea83d0cefad060611427ac3890e9836dd9832b0a0e5fb4be94e11e8c7f28a37d10f730681e060e09b67d702682b45184465012a4da54689b8639b2a123111937252b4958275f1fcebdb94dd7aef5c0e5777ee71c7ebfcff99edffda1aaa425495529e358d75fcc4afa479a4f4bb59bd24c52029e609f21a9e523b35452cb78604cad666ca964268bceb99964514097753c143830b8aa7a7438099a7b25675e94934002ba0e0cbeb893fcaa3777c96ddb58f78676d54d5074131c057c8f274f15a5f18bd2475f1bf2ce2ec94920db21afeef05b6f70f460cd5f3d2bf5f649a190d4460be9747c59a5b8b176bcd577253a58f3e39604e6db49ee6a2fa7aa6c493f49eb2909780df0ef0eee4f17cade8b7404e1dea6e7b743e53e108472b90e61c86d5418e88674a10cbd30b79ac6d5fcd1dadcab5a9aafda4abe7ed3f173662f936b920fed45eecb2c9534d01ff6b26d0347e0c31b402fb006c3bd905cdbdb4f7e513757a4d596efe677913ff0ec72fe31373ac4084d4a6de94299c1fe7093b8be0ded470c59a40762effa18b360f6218cb6c12c300a24da60c482cad3107cf93cdced83ce152adfcf111c128db5fdc86d8fbc760dcd4f20251dfb03520c2985d663487f86a4e2b4395c9c36be43eecfbad5e290572aa63a926b6679ae00af34802131700f167e061e4276034e00f5df37219487db3108e58d0f8723d72cce9aa12b5d45f39348dfa29971a425a4942595a2c6e668927bbdc509ecf692e857c602b2c751298e1477124d20f3434a9f8f235d73f6afa3cc15b36ebdbe2e9faa121d4e19de073a800ae4fe360f9afbd847c482fa314816a0cf82b76fc0c23bb0b205839704533e3805fc05f4007d223c054dcdebdb26f06ecd039d90fd05defb06b27fc0b39fc0c269d868c0e05b3d243ef0912f40e44de07488d14beca3b9ed5957f3e2152301a0cb6f60349f40760c45cf21eb181a7e0145bbd0f049b43ce169deec2df5ba21767b894b9ebe0317cfc185976018b8fe1bfcb8024f8e417a1536b7c00a40e01424cec0ed8647ee534dfaec4b187906121b59469e1b20b10a7301c85d007ef5b1f01d442c885c86c6169c3d09d13390ba0363cf43f2168cf69bb7e22953b6e129d3cdfcc08b80b5b3bbf5bc5f4be63f6ddfb3d91d6604cfe79bc1fcbb374393fa9702d00d8d429e40f709feafff1fb4b86106454026100000000049454e44ae426082</data>
-    </image>
-    <image name="image5">
-        <data format="PNG" length="2306">89504e470d0a1a0a0000000d4948445200000020000000200806000000737a7af4000008c9494441545885c59761881c6719c77fdb4cd299ba8119d883d9b229bb70c19bb585cc984877b0d02ca6e0b61f6a0f14d3d60fb12a9a084a0a22b97e684f103511c4e4839054b44d0569af182e8b289993a6d92dc5ccc636d989e49addf686ec9a6e6fa6ed79f3b6dddeeb87d94befd2562d7ef085e5cf33cccef37ffeefff79de998c9492ffe752004aa59262e8c6cd42880dc9304153b40dc930c9688a06436e402113a18ec5b12a400462102c3114ff737229654a0085e2a9df9e7ac1d00d0d130881021942240532f4019d4d53bf8b5666ba224c5ac71bb573ade7faf18c525554b38d50f382d78e0cc5d37de87f6216c5f1a2355b9f7d4f4a29171717a594522ebfb59ce2728a57ae2ecae56367e5d1ed15b96c5af272ce94d234e5933953eed7f5cbb6c2a33adc0e189f24f72a8189457f31915765bade1ae1f2085f9252de3b2da582948a2aa5aa4aa9ebf254ce948b85a25ccee9cbcba6993c9dd3df3c6b9ae7f6e8fae3b6a27e5905fdbf22608d5b13b3276693750a8c2abf5c9f958ba6292f8094aa2a2fa82981459012e401dd94bb2776cae9898abc50b4e4acae4b699af254c194d3393db0612f70d3c711c84829296d2d59feef7ddf28182a63c0dbc066e07442fbb1bb698de5b1b6d5f0c216966e3177b1cecec8a2db9dc11a443c5cac12ed3c40890e28f9f7c4130ff8fbe3ce0635ab6f7780a938fed3cc507c2f86e07a0237ac068db001631045116c862449a0a0c1cf0f73ffaf8e237659ecfdfe346287c99e7ba709be9447ffeacfd83751435754085bc4a28a913336aadf686f7d20673fb36fd0fff61111cf4f65d5bb76c3b33a6c07326b497cb40209a0adb92b1a59ab0728109d8b10bac00b3c1a172d668200151b316c52556c3a63014277a3d6af271f5407ad576baafae3038a7acfa1a5f8ec0c7c45401778ff9a021a5a665581244ad2e4efad21608ce23cb4c3366a41c5effb54b7ba74975a181b2d9c2d737cbd62e3ee6a7178bb4d2de719b52fd67e22e08d1921f63c22e2676d55fdac05df02b2d7941875c167d675c1aafbaf5f57a5948b529e79ee8c5c7c6951ce9e9895674e5c96477ff3b4bcf2e215397b62562efa57e429ef945c6e2fcbe947a7df5255d50550a1f81d45bd7c58515f051c60d3c77be07a0518c563d0197470c75d8238a03a51856c87dd956a1a8f5769c50195428566bf893db457c4506c0210d06d0dc52f3b43718b0aa5d5ceb846c0311d781d0cc348bb60e3750436a6244a5b4b10833beee2f5034a66152f34b08b5582a580eaad55b4258d6ab14293664655d46b8fe8c09f6d458d801b47bf74148f3c9099dc314914451886419224689a4694a47f9e391fd1530d3a1723fa89416f29420c9d0f1cfb7284a93858419bbdb795e9779ba88010e29d55022a88fa50fc1df8c7aa0714808404b7e0420f8c7caa80b65983d7e1a92e1c6942a21b8801182503750855cbc0ef01790d7ae0e40dbc4b30b7b94c7d0e6a5baab44854f5d6e9aa983f7409110ff2f0e98ec21fc49005e09db56d78ebc19f1efcebe43d933746718431664092f0ccbc46ac43b004f53930b329656d0b3000b500a20faa497a049920c214930e8821f49620eef35adc9cfaa3f5c2f15eb0d47d0a781388a494ef5ef3805b7021244d1e019ac691563acc7be741df02027047c92bc5147716418da13a9e626d02f4186a16e437c3de1db0bbc22db38ffde89b955f1cff41f1cec3df5d63eb3573a0db00137a0b3d30c07bb947bc048f9f86dedb40a7833a84561fd4220403d08b10c4a08f833f48affb7da88da7d51fbc13dc82cfc35f38499c9be2d81e4b9d7c50df87aadfb1ea811bd6792084bc99871e58b93c6208c9183004379fbadfd68110dc42aa805b48e5af8d833384839f4fef99da91f69a9a0fb8bbbf8f878687983afd107b2a25d49cfe39e0536b1548e7400e3add0ee4a0d1ed002016d27df77b6d34a0d1f260011af311b522080153dba1a424ecb5208e13ca63e02ff4209bf048e708fa961256d6c2c3a739a8a366b5b175732021c938058776d8a6649620846ab19456be65e4917c9964d8c0356da2c1496cc54015b0d782fc009c310d7f014a590d2e81a3e7f1c316fb73f713349b44fd1e55a54ca55003d8046c58ef814e8372ae4cbbdb061d827e1b00ef524aa0d16ba32976aa140e732f9f240f78418f249ba2a583d7ed91e4c0eb7628e92ef44dce4c3cc994721ffbb71da07eae83106ae6c31ed8927a2025e1e316cad47488148897c0c9974986a36ea181952df35433c1d2f3785db0cd3c62845e08b659a2d1054b9fa413e6b9af7010ef9c8d95ad21864840aef7c0422393ee7d8372cec1effa1cdc95b057790662f02eb561e4150d173f6c10c531f58b6dcaa38a8599a293032fece098d098ef50cebad4cff7b1b21af54b2d8095750412928c9b7769840d5cd32509139c9c83df0f7878d724076e3b492d9727163eae5925c187828b1836b0cd328d101cb384d74db11182935b1377c1324bcc75db3863f62a8195f50af41ad8391bafeba55d1036b0748b46b7c1e4b62ab6e1a153c20b5b683888b001b8785d1f6ba4803d42eb7a1c2993e4cad42f355687d0ca5a0570f32e221454cc0acdb0896dda10826dda78dd26b56d35268b1e982e09fec80b3e4ecea1d94df77c2e043b5762ae0b56ae44b30b965ec29b07472f1177c0ca9621ee2d7c7812f61a1b444ee0cd7b58ba8577d14b5fbb56e3798fdd9643293e89a08adff7515517afdb4e5d3f9f76417dbe47a2a771310bf5a0433f82e32d9fd6c58e3cf6c4bebfb0d47f9ef4184d0fa3f2d6f2b6a38f1e3de3753dcd355dfcbe8f537052349d0fe2d027af3b994361855a51d01301d5ad2ec112540ad00cc1ce4173012c03ea41839252a2fefcb130eaf0b7fefc911788fba7810bc0a294722523a544d3b49b745dbf0330c5504855511143c147a01443b1a2de7ef46bd64eebaebc5a46a50d6a19213a0851a2373849dccfc751e7481887415784c15944fc22d0015e07fe09bc0bac482965464a4926b3ee4df93f2fddbcadf8c3cb7fd406e266f498e87c7d207afa65111e7b450c3ae789bb01e917e61b400c2c01ef8f5aefda0cb8f661f289090064cd3bd0f37712f72296faaf000bc055d253fbddd52affdd23a494fc0bae87edc8cfdc60580000000049454e44ae426082</data>
-    </image>
-</images>
-<connections>
-    <connection>
-        <sender>m_listado</sender>
-        <signal>doubleClicked(int,int,int,const QPoint&amp;)</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>doubleclicked(int,int,int,const QPoint&amp;)</slot>
-    </connection>
-    <connection>
-        <sender>m_new</sender>
-        <signal>clicked()</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>boton_newadocumental()</slot>
-    </connection>
-    <connection>
-        <sender>m_desasociar</sender>
-        <signal>clicked()</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>boton_desasociar()</slot>
-    </connection>
-    <connection>
-        <sender>pushButton1</sender>
-        <signal>clicked()</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>close()</slot>
-    </connection>
-    <connection>
-        <sender>m_delete</sender>
-        <signal>clicked()</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>s_deleteADocumental()</slot>
-    </connection>
-    <connection>
-        <sender>m_save</sender>
-        <signal>clicked()</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>s_saveADocumental()</slot>
-    </connection>
-    <connection>
-        <sender>m_adddir</sender>
-        <signal>clicked()</signal>
-        <receiver>adocumentalbase</receiver>
-        <slot>s_agregarDirectorio()</slot>
-    </connection>
-</connections>
-<slots>
-    <slot>doubleclicked(int, int, int, const QPoint &amp;)</slot>
-    <slot>boton_newadocumental()</slot>
-    <slot>boton_desasociar()</slot>
-    <slot>s_deleteADocumental()</slot>
-    <slot>s_saveADocumental()</slot>
-    <slot>s_agregarDirectorio()</slot>
-</slots>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+<ui version="4.0" >
+ <class>adocumentalbase</class>
+ <widget class="QDialog" name="adocumentalbase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>676</width>
+    <height>495</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Archivo Documental</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolButton" name="m_new" >
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>image0</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_save" >
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>image1</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_adddir" >
+       <property name="toolTip" >
+        <string>Agregar Directorio</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Agrega un directorio entero de Documentos.</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>image2</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_delete" >
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>image3</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_scan" >
+       <property name="enabled" >
+        <bool>false</bool>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>image4</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="m_desasociar" >
+       <property name="enabled" >
+        <bool>true</bool>
+       </property>
+       <property name="toolTip" >
+        <string>Desasociar</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Desasociar el archivo de su  apunte</string>
+       </property>
+       <property name="text" >
+        <string/>
+       </property>
+       <property name="icon" >
+        <iconset>image5</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>290</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Q3Table" name="m_listado" >
+     <property name="numRows" >
+      <number>3</number>
+     </property>
+     <property name="numCols" >
+      <number>4</number>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>351</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton1" >
+       <property name="text" >
+        <string>Cerrar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>Q3Table</class>
+   <extends>Q3Frame</extends>
+   <header>q3table.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>m_listado</sender>
+   <signal>doubleClicked(int,int,int,QPoint)</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>doubleclicked(int,int,int,QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_new</sender>
+   <signal>clicked()</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>boton_newadocumental()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_desasociar</sender>
+   <signal>clicked()</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>boton_desasociar()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton1</sender>
+   <signal>clicked()</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_delete</sender>
+   <signal>clicked()</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>s_deleteADocumental()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_save</sender>
+   <signal>clicked()</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>s_saveADocumental()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_adddir</sender>
+   <signal>clicked()</signal>
+   <receiver>adocumentalbase</receiver>
+   <slot>s_agregarDirectorio()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

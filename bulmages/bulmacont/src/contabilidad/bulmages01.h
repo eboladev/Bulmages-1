@@ -94,7 +94,7 @@ private slots:
     virtual void s_asiento1() {
         m_empresaactual->s_asiento1();
     }
-    void closeEvent( QCloseEvent *);
+    void closeEvent(QCloseEvent *);
     /// Toggle the statusbar.
     void slotViewStatusBar(bool toggle);
     /// Creates a new view for the current document.

@@ -22,6 +22,8 @@
 #define LISTLINPREVCOBROVIEW1_H
 
 #include <QEvent>
+#include <Q3Table>
+
 
 #include "qtable1.h"
 #include "listlinprevcobro.h"

@@ -70,6 +70,5 @@ OBJECTS_DIR = .obj
 
 #The following line was inserted by qt3to4
 QT +=  qt3support xml
-#The following line was inserted by qt3to4
-CONFIG += uic3
+DEFINES += QT3_SUPPORT_WARNINGS
 
