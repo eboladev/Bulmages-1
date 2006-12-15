@@ -78,7 +78,7 @@ void CAnualesView::inicializatabla() {
         /// Cogemos el nombre y lo mostramos.
         QDomDocument doc;
         QFile f(newItem1->text());
-        if (!f.open(IO_ReadOnly)) {
+        if (!f.open(QIODevice::ReadOnly)) {
             return;
         } // end if
         if (!doc.setContent(&f)) {

@@ -45,8 +45,9 @@
 
 
 aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose) {
+        : QWidget(parent) {
     _depura("aplinteligentesview::aplinteligentesview", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     companyact = emp;
     /// iniciamos los contadores de variables para que no haya problemas.
@@ -230,7 +231,7 @@ void aplinteligentesview::mostrarplantilla() {
     /// Vamos a intentar borrar todos los datos antes de empezar.
     borrawidgets();
     QFile f(listasientos[mui_comboainteligentes->currentIndex()]);
-    if (!f.open(IO_ReadOnly))
+    if (!f.open(QIODevice::ReadOnly))
         return;
     if (!m_doc.setContent(&f)) {
         f.close();

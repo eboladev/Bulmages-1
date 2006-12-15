@@ -23,8 +23,9 @@
 
 #include "qlistviewitem1.h"
 
-
+/*
 void QListViewItem1::paintCell(QPainter *p, const QColorGroup &cg, int c, int w, int b) {
+
     QColorGroup g(cg);
     QFont forig(p->font());
     QFont f(p->font());
@@ -41,11 +42,13 @@ void QListViewItem1::paintCell(QPainter *p, const QColorGroup &cg, int c, int w,
         f.setPointSize(9);
     } // end if
     p->setFont(f);
-    Q3ListViewItem::paintCell(p, g, c, w, b);
+
+    //Q3ListViewItem::paintCell(p, g, c, w, b);
 }
 
 
 void QListViewItem1::width(const QFontMetrics &fm, const Q3ListView *lv, int c) {
-   Q3ListViewItem::width(fm, lv, c);
+   //Q3ListViewItem::width(fm, lv, c);
 } // end width
 
+*/

@@ -25,7 +25,6 @@
 #include <QThread>
 #include <QProgressDialog>
 #include <QEvent>
-#include <QCustomEvent>
 #include <QTextStream>
 
 
@@ -45,7 +44,7 @@ public:
 class Psprogressdialog : public QProgressDialog {
 public:
     Psprogressdialog(QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera);
-    void customEvent(QCustomEvent *);
+    //void customEvent(QCustomEvent *);
 };
 
 

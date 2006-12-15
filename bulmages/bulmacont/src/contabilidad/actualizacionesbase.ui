@@ -51,7 +51,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="4" margin="4" />
- <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

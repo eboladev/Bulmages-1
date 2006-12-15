@@ -48,34 +48,39 @@ int mpatrimonialesview::inicializa(postgresiface2 *conn) {
     conexionbase->commit();
     numdigitos = cursoraux1->valor("valor").length();
     delete cursoraux1;
-    fprintf(stderr,"las cuentas tienen %d digitos\n", numdigitos);
+    fprintf(stderr, "las cuentas tienen %d digitos\n", numdigitos);
     inicializatabla();
     return(0);
 }
 
 
-void mpatrimonialesview::inicializatabla()  {
-    tabla->setNumRows(0);
-    tabla->setNumCols(2);
-    tabla->horizontalHeader()->setLabel(0, tr("CODIGO"));
-    tabla->horizontalHeader()->setLabel(1, tr("Masa patrimonial"));
-    tabla->hideColumn(2);
-    tabla->hideColumn(0);
-    tabla->setColumnWidth(1, 400);
+void mpatrimonialesview::inicializatabla() {
+    QTableWidgetItem *item0, *item1;
+    mui_tabla->setRowCount(0);
+    mui_tabla->setColumnCount(2);
+    QStringList etiquetas;
+    etiquetas << tr("CODIGO") << tr("Masa patrimonial");
+    mui_tabla->setHorizontalHeaderLabels(etiquetas);
+    mui_tabla->hideColumn(2);
+    mui_tabla->hideColumn(0);
+    mui_tabla->setColumnWidth(1, 400);
+
     QString query = "SELECT * FROM mpatrimonial WHERE idbalance ISNULL";
     conexionbase->begin();
     cursor2 *cursoraux1 = conexionbase->cargacursor(query, "elquery");
     conexionbase->commit();
-    tabla->setNumRows(cursoraux1->numregistros());
+
+    mui_tabla->setRowCount(cursoraux1->numregistros());
     int i = 0;
     while (!cursoraux1->eof()) {
-        tabla->setText(i, 0, cursoraux1->valor("idmpatrimonial"));
-        tabla->setText(i, 1, cursoraux1->valor("descmpatrimonial"));
+        item0 = new QTableWidgetItem(cursoraux1->valor("idmpatrimonial"));
+        mui_tabla->setItem(i, 0, item0);
+        item1 = new QTableWidgetItem(cursoraux1->valor("descmpatrimonial"));
+        mui_tabla->setItem(i, 1, item1);
         cursoraux1->siguienteregistro();
         i++;
     } // end while
     delete cursoraux1;
-    tabla->setReadOnly(TRUE);
 }
 
 
@@ -83,7 +88,7 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
     fprintf(stderr, "Se ha hecho doble click sobre la tabla\n");
     /// Dependiendo del modo hacemos una cosa u otra.
     if (modo == 0) {
-        QString idmpatrimonial = tabla->text(row, 0).toAscii();
+        QString idmpatrimonial = mui_tabla->item(row, 0)->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
         mpatrimonialview *masa = new mpatrimonialview(this);
         masa->inicializa(conexionbase);
@@ -93,8 +98,8 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
         /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
         inicializatabla();
     } else {
-        idmasa = tabla->text(tabla->currentRow(), 0).toAscii();
-        nommasa = tabla->text(tabla->currentRow(), 1).toAscii();
+        idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
+        nommasa = mui_tabla->item(mui_tabla->currentRow(), 1)->text();
         close();
     } // end if
 
@@ -105,8 +110,8 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
 
 
 void mpatrimonialesview::on_mui_editar_clicked() {
-    int row = tabla->currentRow();
-    int col = tabla->currentColumn();
+    int row = mui_tabla->currentRow();
+    int col = mui_tabla->currentColumn();
     QPoint mouse;
     dbtabla(row, col, 0, mouse);
     inicializatabla();
@@ -115,8 +120,8 @@ void mpatrimonialesview::on_mui_editar_clicked() {
 
 void mpatrimonialesview::on_mui_borrar_clicked() {
     int row;
-    row = tabla->currentRow();
-    idmasa = tabla->text(tabla->currentRow(), 0).toAscii();
+    row = mui_tabla->currentRow();
+    idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
     QString query;
     query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial   = %s", idmasa.toAscii().constData());
     conexionbase->begin();

@@ -23,7 +23,8 @@
 
 
 cuentaview::cuentaview(empresa *emp, QWidget *parent, Qt::WFlags fl)
-        : QWidget(parent, fl | Qt::WDestructiveClose), dialogChanges(this) {
+        : QWidget(parent, fl), dialogChanges(this) {
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     idcuenta = 0;
     empresaactual = emp;

@@ -130,10 +130,11 @@ void BbloqFecha::inicializa() {
 
 
 BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose) {
+        : QWidget(parent) {
     _depura("BbloqFecha::BbloqFecha", 0);
     qsbloqueado = tr("Bloqueado");
     qsabierto = tr ("Abierto");
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     QString query;
     empresaactual = emp;

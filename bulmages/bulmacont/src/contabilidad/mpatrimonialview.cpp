@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QLineEdit>
-#include <Q3ListViewItem>
 
 #include "mpatrimonialview.h"
 #include "mpatrimonialesview.h"
@@ -214,8 +213,8 @@ void mpatrimonialview::on_mui_borrasuma_clicked() {
 /// Se ha pulsado sobre el bot&oacute; de agregar donde est&aacute; la suma.
 /// Tenemos que a&ntilde;dir la masa patrimonial o la cuenta a la suma.
 void mpatrimonialview::on_mui_nuevaresta_clicked() {
-    //Q3ListViewItem *it;
-    QTableWidgetItem *item;
+    QTableWidgetItem *it0, *it1, *it2, *it3;
+    int i;
 
     /// Lo primero de todo es coger el c&oacute;igo de cuenta.
     QString codcuenta = codigocta1->text();
@@ -226,12 +225,18 @@ void mpatrimonialview::on_mui_nuevaresta_clicked() {
     QString query = "SELECT * FROM cuenta WHERE codigo = '" + codcuenta + "'";
     cursor2 *cursoraux1 = conexionbase->cargacursor(query, "cursorusuario");
     conexionbase->commit();
+    i = componentesresta->rowCount();
     while (!cursoraux1->eof()) {
-        //it = new Q3ListViewItem(componentesresta);
-        //it->setText(1, cursoraux1->valor("codigo"));
-        //it->setText(2, cursoraux1->valor("descripcion"));
-        //it->setText(3, "cuenta");
-        //it->setText(0, cursoraux1->valor("idcuenta"));
+        componentesresta->insertRow(i);
+        it1 = new QTableWidgetItem(cursoraux1->valor("codigo"));
+        componentesresta->setItem(i, 1, it1);
+        it2 = new QTableWidgetItem(cursoraux1->valor("descripcion"));
+        componentesresta->setItem(i, 2, it2);
+        it3 = new QTableWidgetItem("cuenta");
+        componentesresta->setItem(i, 3, it3);
+        it0 = new QTableWidgetItem(cursoraux1->valor("idcuenta"));
+        componentesresta->setItem(i, 0, it0);
+        i++;
         cursoraux1->siguienteregistro();
     } // end while
     delete cursoraux1;
@@ -241,23 +246,25 @@ void mpatrimonialview::on_mui_nuevaresta_clicked() {
     query = "SELECT * FROM mpatrimonial WHERE idmpatrimonial = " + masapatrimonial;
     cursoraux1 = conexionbase->cargacursor(query, "cursormpatrimonial");
     conexionbase->commit();
+    i = componentesresta->rowCount();
     while (!cursoraux1->eof()) {
-        //it = new Q3ListViewItem(componentesresta);
-        //it->setText(1, "");
-        //it->setText(2, cursoraux1->valor("descmpatrimonial"));
-        //it->setText(3, "masa patrimonial");
-        //it->setText(0, cursoraux1->valor("idmpatrimonial"));
+        componentesresta->insertRow(i);
+        it1 = new QTableWidgetItem("");
+        componentesresta->setItem(i, 1, it1);
+        it2 = new QTableWidgetItem(cursoraux1->valor("descmpatrimonial"));
+        componentesresta->setItem(i, 2, it2);
+        it3 = new QTableWidgetItem("masa patrimonial");
+        componentesresta->setItem(i, 3, it3);
+        it0 = new QTableWidgetItem(cursoraux1->valor("idmpatrimonial"));
+        componentesresta->setItem(i, 0, it0);
+        i++;
         cursoraux1->siguienteregistro();
     } // end while
 }
 
 
 void mpatrimonialview::on_mui_borraresta_clicked() {
-    //Q3ListViewItem *it;
-    QTableWidgetItem *item;
-
-    //    it = componentesresta->currentItem();
-    //    componentesresta->takeItem(it);
+    componentesresta->removeRow(componentesresta->currentRow());
 }
 
 
@@ -277,7 +284,6 @@ void mpatrimonialview::on_mui_cancelar_clicked() {
 
 
 void mpatrimonialview::on_mui_aceptar_clicked() {
-    QTableWidgetItem *item;
     int i;
     QString query;
 

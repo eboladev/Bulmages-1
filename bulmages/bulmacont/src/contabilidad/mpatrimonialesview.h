@@ -22,6 +22,7 @@
 #define MPATRIMONIALESVIEW_H
 
 #include <QWidget>
+#include <QStringList>
 
 #include "ui_mpatrimonialesbase.h"
 #include "postgresiface2.h"

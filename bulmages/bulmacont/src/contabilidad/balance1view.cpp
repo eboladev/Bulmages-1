@@ -24,7 +24,7 @@
 #include <busquedafecha.h>
 
 #include "balance1view.h"
-#include "qlistviewitem1.h"
+//#include "qlistviewitem1.h"
 #include "listcuentasview1.h"
 #include "balanceprintview.h"
 #include "empresa.h"

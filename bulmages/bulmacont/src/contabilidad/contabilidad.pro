@@ -5,8 +5,6 @@ exists(/usr/bin/distcc) {
     QMAKE_CXX = distcc g++
 }
 
-QT += qt3support
-
 #QMAKE_CLEAN = Makefile
 
 LANGUAGE = C++
@@ -260,6 +258,4 @@ win32{
 }
 
 QT += xml  
-
-DEFINES += QT3_SUPPORT_WARNINGS
 

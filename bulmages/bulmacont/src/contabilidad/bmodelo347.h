@@ -31,7 +31,7 @@
 class BModelo347 : public QDialog, public Ui_Modelo347Base {
 
 public:
-    BModelo347(postgresiface2 *DBConn = 0, QString ejerActual = "", QWidget * parent = 0, Qt::WFlags f = Qt::WType_TopLevel);
+    BModelo347(postgresiface2 *DBConn = 0, QString ejerActual = "", QWidget * parent = 0, Qt::WFlags f = Qt::Window);
     ~BModelo347();
 
 public slots:

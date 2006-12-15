@@ -24,6 +24,7 @@
 #include <QWidget>
 #include <QComboBox>
 #include <QLineEdit>
+#include <QCloseEvent>
 
 #include "ui_ccostebase.h"
 #include "postgresiface2.h"

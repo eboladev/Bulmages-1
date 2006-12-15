@@ -21,16 +21,19 @@
 #ifndef QLISTVIEWITEM1_H
 #define QLISTVIEWITEM1_H
 
+/*
 #include <Q3ListView>
-
+*/
 
 ///
 /** */
-class QListViewItem1 : public Q3ListViewItem {
+/*
+//class QListViewItem1 : public Q3ListViewItem {
 public:
     int tipolista;
 
 public:
+
     QListViewItem1(Q3ListView *parent) : Q3ListViewItem(parent) {}
     ;
     QListViewItem1(Q3ListViewItem *parent) : Q3ListViewItem(parent) {}
@@ -44,6 +47,6 @@ public:
     void width(const QFontMetrics &, const Q3ListView *, int);
 
 };
-
+*/
 #endif
 

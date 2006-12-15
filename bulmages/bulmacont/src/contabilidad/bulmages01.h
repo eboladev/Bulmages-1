@@ -56,7 +56,7 @@ private:
     listventanas *m_list;
 
 public:
-    Bulmages01(QWidget *parent = 0, Qt::WFlags f = Qt::WType_TopLevel, QString DB = "");
+    Bulmages01(QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "");
     ~Bulmages01();
     empresa *empresaactual() {
         return m_empresaactual;

@@ -168,7 +168,7 @@ void Genps_thread::run() {
     /// This sleeps are necessary to wait for Acrobat Reader to be started.
     for (int i = 1; i < 11; i++) {
         sleep(1);
-        QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep10));
+        //QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep10));
 //        cout << i << "\n";
     }
 
@@ -184,7 +184,7 @@ void Genps_thread::run() {
     system(command.toAscii().constData());
 
     sleep(1);
-    QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
+    //QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
 
     macro.open(QIODevice::WriteOnly);
     m_output.setDevice(&macro);
@@ -203,7 +203,7 @@ void Genps_thread::run() {
     system(command.toAscii().constData());
 
     sleep(3);
-    QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
+    //QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep3));
 
     macro.open(QIODevice::WriteOnly);
     m_output.setDevice(&macro);
@@ -225,7 +225,7 @@ void Genps_thread::run() {
 Psprogressdialog::Psprogressdialog(QString etiqueta, QString btcancelar, int minimo, int maximo, QWidget *widget, Qt::WFlags bandera)
         : QProgressDialog(etiqueta, btcancelar, minimo, maximo, widget, bandera) {}
 
-
+/*
 void Psprogressdialog::customEvent(QCustomEvent *event) {
     if ((int)event->type() == sleep10) {
         this->setValue(value() + 5);
@@ -238,3 +238,4 @@ void Psprogressdialog::customEvent(QCustomEvent *event) {
     } // end if
 }
 
+*/

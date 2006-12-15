@@ -28,6 +28,7 @@
 #include <QComboBox>
 #include <QCheckBox>
 #include <QRadioButton>
+#include <QCloseEvent>
 
 #include "ui_cuentabase.h"
 #include "postgresiface2.h"

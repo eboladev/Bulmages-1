@@ -21,10 +21,12 @@
 #ifndef QTABLE1_H
 #define QTABLE1_H
 
-#include <Q3Table>
-#include <QEvent>
+//#include <Q3Table>
+//#include <Q3TableItem>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
-#include <Q3TableItem>
+#include <QEvent>
 #include <QColorGroup>
 #include <QPainter>
 #include <QRect>
@@ -32,30 +34,34 @@
 
 ///
 /** */
-class QTableItem1 : public Q3TableItem {
+//class QTableItem1 : public Q3TableItem {
+class QTableItem1 : public QTableWidgetItem {
 public:
     int modo;
 
 public:
-    QTableItem1(Q3Table *table, EditType et, const QString &text, int mode) : Q3TableItem(table, et, text) {
+//    QTableItem1(Q3Table *table, EditType et, const QString &text, int mode) : Q3TableItem(table, et, text) {
+    QTableItem1(QTableWidget *table, const QString &text, int mode) : QTableWidgetItem(text) {
         modo = mode;
     }
     void paint(QPainter *p, const QColorGroup &cg, const QRect &cr, bool selected);
 };
 
 
-class QTable1 : public Q3Table {
-    Q_OBJECT
+//class QTable1 : public Q3Table {
+class QTable1 : public QTableWidget {
+   Q_OBJECT
 
 public:
     int modo; /// Indica el modo de dibujo.
 
 public:
-    QTable1(QWidget * parent = 0, const char * name = 0);
+    QTable1(QWidget *parent = 0);
     void sortColumn(int col, bool ascending = TRUE, bool wholeRows = TRUE);
     QWidget *beginEdit(int, int, bool);
     virtual bool eventFilter(QObject *obj, QEvent *event);
-    virtual void setItem(int, int, Q3TableItem *);
+//    virtual void setItem(int, int, Q3TableItem *);
+    virtual void setItem(int, int, QTableWidgetItem *);
     void paintCell (QPainter *, int, int, const QRect &, bool);
 
 signals:

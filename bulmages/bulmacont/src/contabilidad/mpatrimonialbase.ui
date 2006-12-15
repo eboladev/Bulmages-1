@@ -323,7 +323,17 @@
                 </widget>
                </item>
                <item>
-                <widget class="QTableWidget" name="componentessuma" />
+                <widget class="QTableWidget" name="componentessuma" >
+                 <property name="editTriggers" >
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="selectionMode" >
+                  <enum>QAbstractItemView::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior" >
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>
@@ -393,7 +403,17 @@
                 </widget>
                </item>
                <item>
-                <widget class="QTableWidget" name="componentesresta" />
+                <widget class="QTableWidget" name="componentesresta" >
+                 <property name="editTriggers" >
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="selectionMode" >
+                  <enum>QAbstractItemView::SingleSelection</enum>
+                 </property>
+                 <property name="selectionBehavior" >
+                  <enum>QAbstractItemView::SelectRows</enum>
+                 </property>
+                </widget>
                </item>
               </layout>
              </item>

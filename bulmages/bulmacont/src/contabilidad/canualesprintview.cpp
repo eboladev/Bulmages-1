@@ -327,7 +327,7 @@ void CAnualesPrintView::imprimir() {
 
 void CAnualesPrintView::setidbalance(QString id) {
     QFile f(id);
-    if (!f.open( IO_ReadOnly))
+    if (!f.open(QIODevice::ReadOnly))
         return;
     if (!m_doc.setContent(&f)) {
         f.close();

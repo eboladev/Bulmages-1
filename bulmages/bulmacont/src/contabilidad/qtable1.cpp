@@ -31,28 +31,34 @@
 #include "funcaux.h"
 
 
-QTable1::QTable1(QWidget * parent, const char * name ) : Q3Table(parent, name) {}
+//QTable1::QTable1(QWidget * parent, const char * name ) : Q3Table(parent, name) {}
+QTable1::QTable1(QWidget * parent) : QTableWidget(parent) {}
 
 
 void QTable1::sortColumn(int col, bool ascending, bool) {
-    int lastcol = numCols();
-    insertColumns(lastcol, 3);
+    //int lastcol = numCols();
+    int lastcol = columnCount();
+    //insertColumns(lastcol, 3);
+    setColumnCount(lastcol + 3);
     hideColumn(lastcol);
     hideColumn(lastcol + 1);
     hideColumn(lastcol + 2);
     bool oknumero = TRUE;
     bool okfecha = TRUE;
 
-    for (int x = 0; x < numRows(); x++) {
-        QString cad = text(x, col);
+    //for (int x = 0; x < numRows(); x++) {
+    for (int x = 0; x < rowCount(); x++) {
+        //QString cad = text(x, col);
+        QString cad = item(x, col)->text();
         if (cad != "") {
-            setText(x, lastcol + 0, cad);
+            //setText(x, lastcol + 0, cad);
+            
             /// Comprobamos si es un n&uacute;mero.
             cad.toDouble(&oknumero);
             if (oknumero) {
                 while (cad.length() < 10)
                     cad.insert(0, "0");
-                setText(x, lastcol + 1, cad);
+                //setText(x, lastcol + 1, cad);
             } // end if
             if (okfecha) {
                 if (cad[2] == '/') {
@@ -61,17 +67,20 @@ void QTable1::sortColumn(int col, bool ascending, bool) {
                 } else {
                     okfecha = FALSE;
                 } // end if
-                setText(x, lastcol + 2, cad);
+                //setText(x, lastcol + 2, cad);
             } // end if
         } // end if
     } // end for
 
     if (oknumero)
-        Q3Table::sortColumn(lastcol + 1, ascending, true);
+        //Q3Table::sortColumn(lastcol + 1, ascending, true);
+        QTableWidget::sortItems(lastcol + 1);
     else if (okfecha)
-        Q3Table::sortColumn(lastcol + 2, ascending, true);
+        //Q3Table::sortColumn(lastcol + 2, ascending, true);
+        QTableWidget::sortItems(lastcol + 2);
     else
-        Q3Table::sortColumn(lastcol + 0, ascending, true);
+        //Q3Table::sortColumn(lastcol + 0, ascending, true);
+        QTableWidget::sortItems(lastcol + 0);
 
     removeColumn(lastcol + 2);
     removeColumn(lastcol + 1);
@@ -80,7 +89,9 @@ void QTable1::sortColumn(int col, bool ascending, bool) {
 
 
 QWidget *QTable1::beginEdit(int row, int col, bool type) {
-    return (Q3Table::beginEdit(row, col, type));
+//    return (Q3Table::beginEdit(row, col, type));
+//    return (QTableWidget::beginEdit(row, col, type));
+      return 0;
 }
 
 
@@ -132,46 +143,51 @@ bool QTable1::eventFilter(QObject *obj, QEvent *event) {
         } // end if
     } // end if
     _depura("QTable1::END_eventFilter()\n", 1);
-    return Q3Table::eventFilter(obj, event);
+    //return Q3Table::eventFilter(obj, event);
+    return QTableWidget::eventFilter(obj, event);
 }
 
 
-void QTable1::setItem(int row, int col, Q3TableItem *it) {
-    Q3Table::setItem(row, col, it);
+//void QTable1::setItem(int row, int col, Q3TableItem *it) {
+//    Q3Table::setItem(row, col, it);
+void QTable1::setItem(int row, int col, QTableWidgetItem *it) {
+    QTableWidget::setItem(row, col, it);
 }
 
 
 void QTable1::paintCell(QPainter * p, int row, int col, const QRect &cr, bool selected) {
-    Q3Table::paintCell(p, row, col, cr, selected);
+//    Q3Table::paintCell(p, row, col, cr, selected);
+//    QTableWidget::paintCell(p, row, col, cr, selected);
 }
 
 
 void QTableItem1::paint(QPainter *p, const QColorGroup &cg, const QRect &cr, bool selected) {
-    QColorGroup g(cg);
+    //QColorGroup g(cg);
     QFont f(p->font());
     /// Establecemos el color de fondo de este item como el color de fondo del diario.
-    g.setColor(QColorGroup::Base, QColor::QColor(confpr->valor(CONF_BG_DIARIO).toAscii().data()));
+    //g.setColor(QColorGroup::Base, QColor::QColor(confpr->valor(CONF_BG_DIARIO).toAscii().data()));
     /// Establecemos la fuente segun las preferencias del diario.
     f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).toAscii().data()));
     f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).toAscii().data());
     p->setFont(f);
 
     if (modo == 1) {
-        g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO1).toAscii().data()));
+        //g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO1).toAscii().data()));
     } else {
-        g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO2).toAscii().data()));
+        //g.setColor(QColorGroup::Text, QColor::QColor(confpr->valor(CONF_FG_DIARIO2).toAscii().data()));
     } // end if
 
     /// MODO 10.
     if (modo == 10) {
-        g.setColor(QColorGroup::Base, QColor::QColor("#FFFFFF"));
+        //g.setColor(QColorGroup::Base, QColor::QColor("#FFFFFF"));
         /// Establecemos la fuente segun las preferencias del diario.
         f.setPointSize(atoi(confpr->valor(CONF_FONTSIZE_DIARIO).toAscii().data()));
         f.setFamily(confpr->valor(CONF_FONTFAMILY_DIARIO).toAscii().data());
         p->setFont(f);
-        g.setColor(QColorGroup::Text, QColor::QColor("#FF0000"));
+        //g.setColor(QColorGroup::Text, QColor::QColor("#FF0000"));
     } // end if
     /// FIN DEL MODO 10.
-    Q3TableItem::paint(p, g, cr, selected);
+    //Q3TableItem::paint(p, g, cr, selected);
+    //QTableWidgetItem::paint(p, g, cr, selected);
 }
 
