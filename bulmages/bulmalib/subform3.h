@@ -37,17 +37,27 @@ class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
 
 private:
-    QString m_tablename; /// Nombre de la tabla en la BD.
+    /// Nombre de la tabla en la BD.
+    QString m_tablename;
 
 protected:
-    QList<SHeader *> m_lcabecera; /// Lista de encabezados del listado. Coordenadas X de la tabla.
-    QList<SDBRecord *> m_lista; /// Filas y contenido. Coordenadas Y de la tabla.
-    QList<SDBRecord *> m_listaborrar; /// Lista de subformularios marcados para ser borrados.
-    postgresiface2 *m_companyact; /// Clase padre y acceso a base de datos.
-    QString m_fileconfig; /// Fichero de configuracion del subformulario.
-    QString m_campoid; /// Campo Identificador de la tabla en la BD.
-    bool m_insercion; /// Indica si se pueden insertar nuevas filas o no.
-    bool m_primero; /// Indica si ya se ha cargado la configuracion o no.
+    /// Lista de encabezados del listado. Coordenadas X de la tabla.
+    QList<SHeader *> m_lcabecera;
+    /// Filas y contenido. Coordenadas Y de la tabla.
+    QList<SDBRecord *> m_lista;
+    /// Lista de subformularios marcados para ser borrados.
+    QList<SDBRecord *> m_listaborrar;
+    /// Clase padre y acceso a base de datos.
+    postgresiface2 *m_companyact;
+    /// Fichero de configuracion del subformulario.
+    QString m_fileconfig;
+    /// Campo Identificador de la tabla en la BD.
+    QString m_campoid;
+    /// Indica si se pueden insertar nuevas filas o no.
+    bool m_insercion;
+    /// Indica si ya se ha cargado la configuracion o no.
+    bool m_primero;
+    /// Indica si se pueden borrar registros.
     bool m_delete;
 
 protected:

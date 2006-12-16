@@ -114,7 +114,7 @@ private:
         mui_claseAsiento->setCurrentIndex(val.toInt());
     };
     void pintacomentariosasiento(QString text) {
-        mui_comentariosAsiento->setText(text);
+        mui_comentariosAsiento->setPlainText(text);
     };
     virtual void calculaypintatotales(QString);
     void prepguardar();
