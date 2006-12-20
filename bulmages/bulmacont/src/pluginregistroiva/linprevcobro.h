@@ -119,35 +119,35 @@ public:
         mdb_fcobroprevcobro = val;
     };
     inline void setidfpago(QString val)  {
-        mdb_idfpago=val;
+        mdb_idfpago = val;
     };
     inline void setidasiento(QString val) {
-        mdb_idasiento=val;
+        mdb_idasiento = val;
     };
     inline void setcantidadprevistaprevcobro(QString val) {
-        mdb_cantidadprevistaprevcobro=val;
+        mdb_cantidadprevistaprevcobro = val;
     };
     inline void setcantidadprevcobro(QString val) {
-        mdb_cantidadprevcobro=val;
+        mdb_cantidadprevcobro = val;
     };
     inline void setidregistroiva(QString val) {
-        mdb_idregistroiva=val;
+        mdb_idregistroiva = val;
     };
     inline void settipoprevcobro(QString val) {
-        mdb_tipoprevcobro=val;
+        mdb_tipoprevcobro = val;
     };
     inline void setdocprevcobro(QString val) {
-        mdb_docprevcobro=val;
+        mdb_docprevcobro = val;
     };
     void setcodigocuenta(QString);
     void setidcuenta(QString);
     inline void setnomcuenta(QString val) {
-        mdb_nomcuenta=val;
+        mdb_nomcuenta = val;
     };
     void setcodigoctacliente(QString);
     void setidctacliente(QString);
     inline void setnomctacliente(QString val) {
-        mdb_nomctacliente=val;
+        mdb_nomctacliente = val;
     };
     void borrar();
 };

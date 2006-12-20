@@ -40,7 +40,7 @@ public:
     ListIva(empresa *comp);
     ListIva();
     void setcompany(empresa *c) {
-        companyact=c;
+        companyact = c;
     };
     virtual ~ListIva();
     void guardaListIva();

@@ -267,7 +267,7 @@ int cuentaview::cargacuenta(int idcuenta1) {
     direccion->setText(cursorcuenta->valor("dirent_cuenta"));
     cp->setText(cursorcuenta->valor("cpent_cuenta"));
     telf->setText(cursorcuenta->valor("telent_cuenta"));
-    coments->setText(cursorcuenta->valor("coment_cuenta"));
+    coments->setPlainText(cursorcuenta->valor("coment_cuenta"));
     banco->setText(cursorcuenta->valor("bancoent_cuenta"));
     email->setText(cursorcuenta->valor("emailent_cuenta"));
     web->setText(cursorcuenta->valor("webent_cuenta"));

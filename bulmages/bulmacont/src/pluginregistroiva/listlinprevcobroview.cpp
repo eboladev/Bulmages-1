@@ -47,8 +47,6 @@
 #define COL_CANTIDADPREVISTAPREVCOBRO  15
 #define COL_IDCTACLIENTE               16
 
-
-//#include <q3table.h>
 #include <QMessageBox>
 #include <q3popupmenu.h>
 #include <QPixmap>

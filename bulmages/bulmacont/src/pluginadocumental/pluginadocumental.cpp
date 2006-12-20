@@ -1,27 +1,49 @@
+/***************************************************************************
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
 #include <stdio.h>
+
+#include <q3dockwindow.h>
+#include <q3mainwindow.h>
+
+#include <QAction>
+#include <QObject>
+#include <QMessageBox>
+#include <QToolButton>
+#include <QImage>
+#include <QLabel>
+#include <QPixmap>
+#include <QHBoxLayout>
+
 #include "pluginadocumental.h"
 #include "empresa.h"
 #include "asiento1view.h"
 #include "adocumental.h"
 
-/// Inclusión de imágenes
+/// Inclusion de imagenes.
 #include "napuntedoc.xpm"
 #include "ndoc.xpm"
 
-#include <qaction.h>
-#include <qobject.h>
-#include <qmessagebox.h>
-#include <q3dockwindow.h>
-#include <q3mainwindow.h>
-#include <qtoolbutton.h>
-#include <qimage.h>
-#include <qlabel.h>
-//Added by qt3to4:
-#include <QPixmap>
-#include <QHBoxLayout>
 
 void entryPoint(Bulmages01 *bges) {
-    fprintf(stderr,"Entrada del Plugin ADocumental\n");
+    fprintf(stderr, "Entrada del Plugin ADocumental\n");
     QPixmap *img = new QPixmap(napuntedoc);
     QPixmap *img1 = new QPixmap(ndoc);
 
@@ -32,20 +54,19 @@ void entryPoint(Bulmages01 *bges) {
     QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;
 
     QToolButton *m_adocumental = new QToolButton(intapunts, "m_adocumental");
-    m_adocumental->setSizePolicy( QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental->sizePolicy().hasHeightForWidth()));
+    m_adocumental->setSizePolicy(QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental->sizePolicy().hasHeightForWidth()));
     m_adocumental->setIconSet(QIcon(*img));
     layoutPlugins->addWidget(m_adocumental);
-
 
     QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
     QToolButton *m_adocumental1 = new QToolButton(intapunts, "m_adocumental2");
     m_adocumental1->setSizePolicy(QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental1->sizePolicy().hasHeightForWidth()));
     m_adocumental1->setIconSet(QIcon(*img1));
-    layoutPlugins->addWidget( m_adocumental1 );
+    layoutPlugins->addWidget(m_adocumental1);
     QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
     intapunts->showMaximized();
 
-    /// Hacemos la entrada de menu
+    /// Hacemos la entrada de menu.
     QAction *ArchDoc = new QAction("&Archivo Documental", 0);
     ArchDoc->setStatusTip("Archivo Documental");
     ArchDoc->setWhatsThis("Archivo Documental");
@@ -53,5 +74,4 @@ void entryPoint(Bulmages01 *bges) {
     //ArchDoc->addTo(bges->pHerramientas());
     //QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));
 }
-
 
