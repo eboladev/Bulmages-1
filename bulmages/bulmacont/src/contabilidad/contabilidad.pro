@@ -71,15 +71,15 @@ FORMS += bulmacontbase.ui \
 
 #FORMS3 +=  mod300dlg.ui 
 
-TRANSLATIONS += bulmages_es.ts \
-                bulmages_ca.ts \
-                bulmages_en.ts \
-                bulmages_fr.ts \
-                bulmages_de.ts \
-		bulmages_zz.ts
+TRANSLATIONS += bulmacont_es.ts \
+                bulmacont_ca.ts \
+                bulmacont_en.ts \
+                bulmacont_fr.ts \
+                bulmacont_de.ts \
+		bulmacont_zz.ts
 
 HEADERS += splashscreen.h \
-           bulmages01.h \
+           bulmacont.h \
            aboutview.h \
            empresa.h \
            listcuentasview1.h \
@@ -136,7 +136,7 @@ HEADERS += splashscreen.h \
 
 SOURCES += main.cpp \
            splashscreen.cpp \
-           bulmages01.cpp \
+           bulmacont.cpp \
            aboutview.cpp \
            empresa.cpp \
            listcuentasview1.cpp \

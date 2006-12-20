@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BULMAGES01_H
-#define BULMAGES01_H
+#ifndef BULMACONT_H
+#define BULMACONT_H
 
 #include <errno.h>
 
@@ -46,7 +46,7 @@
 /// window and providing a menubar, toolbar
 /// and statusbar. For the main view, an instance of class Bulmages01View is
 /// created which creates your view.
-class Bulmages01 : public QMainWindow, Ui_BulmaContBase {
+class Bulmacont : public QMainWindow, Ui_BulmaContBase {
     Q_OBJECT
 
 private:
@@ -56,8 +56,8 @@ private:
     listventanas *m_list;
 
 public:
-    Bulmages01(QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "");
-    ~Bulmages01();
+    Bulmacont(QWidget *parent = 0, Qt::WFlags f = Qt::Window, QString DB = "");
+    ~Bulmacont();
     empresa *empresaactual() {
         return m_empresaactual;
     }

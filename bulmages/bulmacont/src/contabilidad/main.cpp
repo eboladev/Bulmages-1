@@ -35,7 +35,7 @@
 #include <unistd.h>
 #endif
 
-#include "bulmages01.h"
+#include "bulmacont.h"
 #include "splashscreen.h"
 #include "configuracion.h"
 #include "qtextcodec.h"
@@ -65,12 +65,12 @@ QString versionBC = "0.5.9";
 /** La ejecuci&oacute;n primero crea e inicializa los objetos configuraci&oacute;n,
     idioma, splash, etc.
     Luego intenta entrar en el sistema de base de datos.
-    Y por &uacute;ltimo crea el objeto del tipo \ref Bulmages01 que es la aplicaci&oacute;n
+    Y por &uacute;ltimo crea el objeto del tipo \ref Bulmacont que es la aplicaci&oacute;n
     de ventanas. */
 int main(int argc, char *argv[]) {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
     confpr = new configuracion();
-    Bulmages01 *bges;
+    Bulmacont *bges;
     int valorsalida = 0;
     QString db = argv[2];
     QString us = argv[3];
@@ -114,10 +114,10 @@ int main(int argc, char *argv[]) {
         if (argc == 5) {
             confpr->setValor(CONF_LOGIN_USER, us);
             confpr->setValor(CONF_PASSWORD_USER, pass);
-            bges = new Bulmages01(NULL, 0, db);
+            bges = new Bulmacont(NULL, 0, db);
         } else if (argc == 3) {
             QString db= argv[2];
-            bges = new Bulmages01(NULL, 0, db);
+            bges = new Bulmacont(NULL, 0, db);
         } else {
             logpass *login1 = new logpass(0, "");
             if (!login1->authOK())
@@ -125,7 +125,7 @@ int main(int argc, char *argv[]) {
             if (!login1->authOK())
                 exit(1);
             delete login1;
-            bges = new Bulmages01(NULL, 0, "");
+            bges = new Bulmacont(NULL, 0, "");
         } // end if
 
         /// Leemos la configuraci&oacute;n específica de la base de datos que se ha abierto.

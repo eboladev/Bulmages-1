@@ -25,14 +25,14 @@
 #include <QPixmap>
 #include <QEvent>
 
-#include "bulmages01.h"
+#include "bulmacont.h"
 #include "configuracion.h"
 #include "aboutview.h"
 #include "actualizacionesview.h"
 
-Bulmages01::Bulmages01(QWidget *parent, Qt::WFlags f, QString DB)
+Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
         : QMainWindow(parent, f) {
-    _depura("Bulmages01::Bulmages01", 0);
+    _depura("Bulmacont::Bulmacont", 0);
     setupUi(this);
 
     m_pWorkspace = new QWorkspace2(this);
@@ -56,53 +56,53 @@ Bulmages01::Bulmages01(QWidget *parent, Qt::WFlags f, QString DB)
 
     setWindowTitle(tr("BulmaCont -- ") + DBName + " --");
     initStatusBar();
-    _depura("END Bulmages01::Bulmages01", 0);
+    _depura("END Bulmacont::Bulmacont", 0);
 }
 
 
-Bulmages01::~Bulmages01() {
-    _depura("Bulmages01::~Bulmages01", 0);
-    _depura("END Bulmages01::~Bulmages01", 0);
+Bulmacont::~Bulmacont() {
+    _depura("Bulmacont::~Bulmacont", 0);
+    _depura("END Bulmacont::~Bulmacont", 0);
 }
 
 
-void Bulmages01::initStatusBar() {
+void Bulmacont::initStatusBar() {
     statusBar()->showMessage(tr("Listo."));
 }
 
 
-bool Bulmages01::eventFilter(QObject *object, QEvent *event)  {
+bool Bulmacont::eventFilter(QObject *object, QEvent *event)  {
     /// Standard event processing.
     return QWidget::eventFilter( object, event );
 }
 
 
 /// Slot implementation.
-void Bulmages01::slotEditUndo()  {
+void Bulmacont::slotEditUndo()  {
     statusBar()->showMessage(tr("Deshaciendo la ultima accion..."));
     statusBar()->showMessage(tr("Listo."));
 }
 
 
-void Bulmages01::slotEditCut()  {
+void Bulmacont::slotEditCut()  {
     statusBar()->showMessage(tr("Cortando seleccion..."));
     statusBar()->showMessage(tr("Listo."));
 }
 
 
-void Bulmages01::slotEditCopy()  {
+void Bulmacont::slotEditCopy()  {
     statusBar()->showMessage(tr("Copiando la seleccion al portapapeles..."));
     statusBar()->showMessage(tr("Listo."));
 }
 
 
-void Bulmages01::slotEditPaste()  {
+void Bulmacont::slotEditPaste()  {
     statusBar()->showMessage(tr("Insertando el contenido del portapapeles..."));
     statusBar()->showMessage(tr("Listo."));
 }
 
 
-void Bulmages01::slotViewStatusBar(bool toggle)  {
+void Bulmacont::slotViewStatusBar(bool toggle)  {
     statusBar()->showMessage(tr("Cambinado barra de estado..."));
     if (toggle == false) {
         statusBar()->hide();
@@ -113,7 +113,7 @@ void Bulmages01::slotViewStatusBar(bool toggle)  {
 }
 
 
-void Bulmages01::slotViewFullScreen(bool toggle)  {
+void Bulmacont::slotViewFullScreen(bool toggle)  {
     statusBar()->showMessage(tr("Cambiando a modo de pantalla completa..."));
     if (toggle == false) {
         showNormal();
@@ -124,47 +124,47 @@ void Bulmages01::slotViewFullScreen(bool toggle)  {
 }
 
 
-void Bulmages01::slotStatusHelpMsg(const QString &text) {
+void Bulmacont::slotStatusHelpMsg(const QString &text) {
     /// Change status message of whole statusbar temporary (text, msec).
     statusBar()->showMessage(text, 2000);
 }
 
 
-void Bulmages01::slotListadoCuentas()  {
+void Bulmacont::slotListadoCuentas()  {
     statusBar()->showMessage(tr("Listado de cuentas"));
 }
 
 
-void Bulmages01::slotAsientos()  {
+void Bulmacont::slotAsientos()  {
     m_empresaactual->muestraasientos();
 }
 
 
-void Bulmages01::slotCentrosCoste() {
+void Bulmacont::slotCentrosCoste() {
     m_empresaactual->ccostes();
 }
 
 
-void Bulmages01::slotCanales() {
+void Bulmacont::slotCanales() {
     m_empresaactual->canales();
 }
 
 
-void Bulmages01::slotCompBalance() {
+void Bulmacont::slotCompBalance() {
     m_empresaactual->compbalance();
 }
 
 
-void Bulmages01::slotPerdidas() {}
+void Bulmacont::slotPerdidas() {}
 
 
-void Bulmages01::windowMenuAboutToShow()  {}
+void Bulmacont::windowMenuAboutToShow()  {}
 
 
-void Bulmages01::slotWindowNewWindow() {}
+void Bulmacont::slotWindowNewWindow() {}
 
 
-void Bulmages01::closeEvent(QCloseEvent *) {
+void Bulmacont::closeEvent(QCloseEvent *) {
     _depura("closeEvent", 0);
     delete m_empresaactual;
 #ifdef WINDOWS
@@ -176,17 +176,17 @@ void Bulmages01::closeEvent(QCloseEvent *) {
 }
 
 
-void Bulmages01::on_actionAyuda_triggered() {
-    _depura("Bulmages01::on_actionAyuda_triggered", 0);
+void Bulmacont::on_actionAyuda_triggered() {
+    _depura("Bulmacont::on_actionAyuda_triggered", 0);
     actualizacionesview *act = new actualizacionesview(0);
     m_pWorkspace->addWindow(act);
     act->show();
-    _depura("END Bulmages01::on_actionAyuda_triggered", 0);
+    _depura("END Bulmacont::on_actionAyuda_triggered", 0);
 
 }
 
 
-void Bulmages01::on_actionAcerca_de_triggered() {
+void Bulmacont::on_actionAcerca_de_triggered() {
     aboutview *about = new aboutview(0);
     about->exec();
 }
