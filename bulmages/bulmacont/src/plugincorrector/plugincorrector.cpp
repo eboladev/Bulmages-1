@@ -38,11 +38,11 @@
 #include "empresa.h"
 
 
-void entryPoint(Bulmages01 *bges) {
+void entryPoint(Bulmacont *bcont) {
     _depura("Estoy dentro del plugin\n", 0);
-    empresa *emp = bges->empresaactual();
+    empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    Q3DockWindow *doc1  = new Q3DockWindow(Q3DockWindow::OutsideDock, bges, "Corrector");
+    Q3DockWindow *doc1  = new Q3DockWindow(Q3DockWindow::OutsideDock, bcont, "Corrector");
     doc1->setGeometry(100, 100, 100, 500);
     doc1->setFixedExtentWidth(200);
 
@@ -53,7 +53,7 @@ void entryPoint(Bulmages01 *bges) {
     doc1->setWidget(corr);
     doc1->setResizeEnabled(TRUE);
     doc1->setMovingEnabled(TRUE);
-    //bges->moveDockWindow(doc1,Qt::DockRight);
+    //bcont->moveDockWindow(doc1,Qt::DockRight);
     doc1->dock();
     doc1->hide();
     doc1->showMaximized();
@@ -65,7 +65,7 @@ void entryPoint(Bulmages01 *bges) {
     viewCorrector->setStatusTip("Muestra/oculta el corrector");
     viewCorrector->setWhatsThis("Corrector.\n\nMuestra/oculta el corrector");
     QObject::connect(viewCorrector, SIGNAL(toggled(bool)), corr, SLOT(cambia(bool)));
-    //viewCorrector->addTo(bges->pVerMenu());
+    //viewCorrector->addTo(bcont->pVerMenu());
     _depura("END entryPoint\n", 0);
 }
 

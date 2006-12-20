@@ -24,10 +24,10 @@
 # define MY_EXPORT
 #endif
 
-#include "bulmages01.h"
+#include "bulmacont.h"
 #include "postgresiface2.h"
 #include "empresa.h"
 
 
-extern "C" MY_EXPORT void entryPoint(Bulmages01 *);
+extern "C" MY_EXPORT void entryPoint(Bulmacont *);
 

@@ -38,7 +38,7 @@
 #include "registroivaview.h"
 
 
-int entryPoint(Bulmages01 *) {
+int entryPoint(Bulmacont *) {
     _depura("Punto de entrada del plugin registroIVA", 0);
     _depura("END Punto de entrada del plugin registroIVA", 0);
     return 0;

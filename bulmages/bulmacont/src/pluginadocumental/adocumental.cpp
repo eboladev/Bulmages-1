@@ -44,8 +44,8 @@ myplugin1::~myplugin1() {}
 /// Esto debe coger un asiento y asociarle un archivo documental y abrirlo y ensenyar
 /// ambas cosas.
 void myplugin1::boton_nuevoasientodocumental() {
-    fprintf(stderr,"boton_nuevoasientodocumental\n");
-    adocumental *adoc = new adocumental(empresaactual, 0, "Adjuntar documento");
+    fprintf(stderr, "boton_nuevoasientodocumental\n");
+    adocumental *adoc = new adocumental(empresaactual, 0);
     adoc->presentaprimervacio();
     Asiento1View *intapunts = empresaactual->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
@@ -55,7 +55,7 @@ void myplugin1::boton_nuevoasientodocumental() {
 
 
 void myplugin1::boton_adjuntar() {
-    adocumental *adoc = new adocumental(empresaactual, 0, "Adjuntar documento");
+    adocumental *adoc = new adocumental(empresaactual, 0);
     adoc->setmodoconsulta();
     adoc->exec();
     /// Falta por resolver esta salvedad.
@@ -73,7 +73,7 @@ void myplugin1::boton_adjuntar() {
     La idea principal es que se pueda conectar un escaner y se puedan escanear
     las imagenes de facturas para despues pasarlas. */
 void myplugin1::archDoc() {
-    adocumental *adoc = new adocumental(empresaactual, 0, "Archivo documental.");
+    adocumental *adoc = new adocumental(empresaactual, 0);
     adoc->exec();
     delete adoc;
 }
@@ -88,7 +88,7 @@ void myplugin1::elslot() {
 }
 
 
-adocumental::adocumental(empresa *emp,QWidget *parent, const char *name)
+adocumental::adocumental(empresa *emp, QWidget *parent)
         : QDialog(parent) {
     empresaactual = emp;
     conexionbase = emp->bdempresa();
@@ -98,11 +98,11 @@ adocumental::adocumental(empresa *emp,QWidget *parent, const char *name)
 
     m_listado->setNumRows(0);
     m_listado->setNumCols(7);
-    m_listado->horizontalHeader()->setLabel(COL_IDADOCUMENTAL, tr("idarchivodocumental"));
-    m_listado->horizontalHeader()->setLabel(COL_IDASIENTO, tr("idasiento"));
+    m_listado->horizontalHeader()->setLabel(COL_IDADOCUMENTAL, tr("Id archivo documental"));
+    m_listado->horizontalHeader()->setLabel(COL_IDASIENTO, tr("Id asiento"));
     m_listado->horizontalHeader()->setLabel(COL_DESCRIPCIONADOCUMENTAL, tr("Descripcion"));
-    m_listado->horizontalHeader()->setLabel(COL_FECHAINTADOCUMENTAL, tr("Fecha Doc"));
-    m_listado->horizontalHeader()->setLabel(COL_FECHAASADOCUMENTAL, tr("Fecah Asoc"));
+    m_listado->horizontalHeader()->setLabel(COL_FECHAINTADOCUMENTAL, tr("Fecha doc."));
+    m_listado->horizontalHeader()->setLabel(COL_FECHAASADOCUMENTAL, tr("Fecha asoc."));
     m_listado->horizontalHeader()->setLabel(COL_ARCHIVOADOCUMENTAL, tr("Archivo"));
     m_listado->horizontalHeader()->setLabel(COL_ORDENASIENTO, tr("Asiento"));
 
@@ -170,7 +170,10 @@ void adocumental::newADocumental(QString archivo) {
 
 
 void adocumental::boton_newadocumental() {
-    QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), tr("Todos (*.*)"), 0, tr("Agregar Documento"), tr("Elige el nombre de archivo"));
+    QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),
+                 tr("Todos (*.*)"), 0,
+                 tr("Agregar Documento"),
+                 tr("Elige el nombre de archivo"));
     if (!fn.isEmpty()) {
         newADocumental(fn);
     } // end if

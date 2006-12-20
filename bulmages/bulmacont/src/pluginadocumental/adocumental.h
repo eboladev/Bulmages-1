@@ -73,7 +73,7 @@ private:
     QString idadocumental;
 
 public:
-    adocumental(empresa *, QWidget *parent = 0, const char *name = 0);
+    adocumental(empresa *, QWidget *parent = 0);
     ~adocumental();
     void setmodoedicion() {
         modo = 0;

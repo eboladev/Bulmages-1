@@ -6,17 +6,18 @@
 FORMS += adocumentalbase.ui 
 
 SOURCES += pluginadocumental.cpp \
-	  adocumental.cpp
+	   adocumental.cpp
 
 HEADERS += pluginadocumental.h  \
-	  adocumental.h
+	   adocumental.h
 
 
 
 TEMPLATE = lib
 
 CONFIG +=  plugin \
-         warn_on
+           warn_on \
+	   qt
 	 	 
 TARGET = ../../../installbulmages/plugins/adocumental
 
