@@ -257,7 +257,7 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 2 = Alto (sale un popup).
 /// nivel 4 = Comienza depuracion indiscriminada.
 /// nivel 5 = Termina depuracion indiscriminada.
-/// nivel 10 = Salida a terminal (stdout).
+/// nivel 10 = Salida a terminal.
 void _depura(QString cad, int nivel, QString param) {
 
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
@@ -266,13 +266,10 @@ void _depura(QString cad, int nivel, QString param) {
     } // end if
 
     static bool semaforo = 0;
-    static QFile file(confpr->valor(CONF_DIR_USER)+"bulmagesout.txt");
+    static QFile file(confpr->valor(CONF_DIR_USER) + "bulmagesout.txt");
     static QTextStream out(&file);
 
-
-
     if (confpr->valor(CONF_DEBUG) == "TRUE") {
-
         if (!semaforo) {
             if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
                 return;
@@ -283,9 +280,6 @@ void _depura(QString cad, int nivel, QString param) {
         static QString mensajesanulados[7000];
         static QString clasesanuladas[7000];
         static int indiceclases = 0;
-        if (nivel == 10) {
-            printf(cad.toAscii().constData());
-        }
 
         if (nivel == 5) {
             supnivel = 0;
@@ -295,19 +289,16 @@ void _depura(QString cad, int nivel, QString param) {
             supnivel = 2;
             nivel = 2;
         } // end if
-
         if (nivel == 0) {
             out << cad << " " << param << "\n";
         } else if (nivel == 1) {
             out << cad << " " << param << "\n";
         } // end if
-
         for (int i = 0; i < indice; i++) {
             if (cad == mensajesanulados[i]) {
                 return;
             } // end if
         } // end for
-
         for (int i = 0; i < indiceclases; i++) {
             if (cad.left(cad.indexOf("::")) == clasesanuladas[i]) {
                 return;
@@ -339,6 +330,11 @@ void _depura(QString cad, int nivel, QString param) {
                                   QApplication::translate("funcaux", "Informacion de depuracion"),
                                   cad, QApplication::translate("funcaux", "&Continuar"),
                                   QString::null, 0);
+        } // end if
+        if (nivel == 10) { /// Saca los mensajes por la consola de errores.
+            QString cadenasalida;
+            cadenasalida = "--> " + cad + " <--\n";
+            fprintf(stderr, cadenasalida.toAscii().constData());
         } // end if
     } // end if
 }

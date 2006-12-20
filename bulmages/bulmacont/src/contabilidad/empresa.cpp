@@ -48,7 +48,6 @@
 #endif
 
 
-
 /// SLOT que muestra la ventana de asientos.
 void empresa::s_asiento1() {
     _depura("empresa::s_asiento1", 0);

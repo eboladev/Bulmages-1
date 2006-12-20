@@ -111,7 +111,7 @@ configuracion::~configuracion() {}
 
 /// Puesto que la configuracion funciona sobre un array y sobre defines en dicho array
 /// esta funcion dado un define devuelve el nombre utilizado.
-/// Esta funcion es til para hacer la insercion inicial de elementos
+/// Esta funcion es util para hacer la insercion inicial de elementos
 /// Tambien es util para hacer nosotros el guardado de los parametros.
 QString configuracion::nombre(int i) {
     if (i == CONF_BG_APUNTES)

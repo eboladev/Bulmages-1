@@ -102,19 +102,19 @@ public:
         return balance1;
     }
     Asiento1View *intapuntsempresa() {
-        return(introapunts2);
+        return introapunts2;
     }
     Asiento1View *intapuntsempresa2() {
-        return(introapunts2);
+        return introapunts2;
     }
     int numdigitosempresa() {
-        return(numdigitos);
+        return numdigitos;
     }
     QString nomuserempresa() {
-        return(nombre);
+        return nombre;
     }
     QString nombreempresa() {
-        return(nombre);
+        return nombre;
     }
     QWorkspace2 *pWorkspace() {
         return m_pWorkspace;

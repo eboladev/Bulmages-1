@@ -43,14 +43,13 @@
 
 
 void entryPoint(Bulmacont *bcont) {
-    fprintf(stderr, "Entrada del plugin ADocumental.\n");
+    _depura("Entrada del plugin ADocumental.", 10);
 
-/*
     QPixmap *img = new QPixmap(napuntedoc);
     QPixmap *img1 = new QPixmap(ndoc);
 
     empresa *emp = bcont->empresaactual();
-    Asiento1View* intapunts = emp->intapuntsempresa();
+    Asiento1View *intapunts = emp->intapuntsempresa();
     myplugin1 *pub = new myplugin1(emp);
     intapunts->hide();
     QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;
@@ -58,16 +57,14 @@ void entryPoint(Bulmacont *bcont) {
     QToolButton *m_adocumental = new QToolButton(intapunts);
     //m_adocumental->setSizePolicy(QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental->sizePolicy().hasHeightForWidth()));
     //m_adocumental->setIconSet(QIcon(*img));
-    layoutPlugins->addWidget(m_adocumental);
+    //layoutPlugins->addWidget(m_adocumental);
 
     QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
     QToolButton *m_adocumental1 = new QToolButton(intapunts);
 
-/// Creamos el QAction que va dentro del QToolButton.
-
     //m_adocumental1->setSizePolicy(QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental1->sizePolicy().hasHeightForWidth()));
     //m_adocumental1->setIconSet(QIcon(*img1));
-    layoutPlugins->addWidget(m_adocumental1);
+    //layoutPlugins->addWidget(m_adocumental1);
     QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
     intapunts->showMaximized();
 
@@ -78,6 +75,5 @@ void entryPoint(Bulmacont *bcont) {
     //bcont->pHerramientas()->insertSeparator();
     //ArchDoc->addTo(bcont->pHerramientas());
     //QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));
-*/
 }
 

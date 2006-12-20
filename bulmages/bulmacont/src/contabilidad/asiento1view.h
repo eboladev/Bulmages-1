@@ -44,7 +44,6 @@ class empresa;
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
 class ListAsientos {
-
 private:
     empresa *m_companyact;
     /// Este es el cursor que se usar&aacute; para recorrer la lista de asientos.

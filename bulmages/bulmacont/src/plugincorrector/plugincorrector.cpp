@@ -20,11 +20,6 @@
 
 #include <stdio.h>
 
-#include <q3popupmenu.h>
-#include <q3dockwindow.h>
-#include <q3dockwindow.h>
-#include <q3mainwindow.h>
-
 #include <QAction>
 #include <QMessageBox>
 #include <QStringList>
@@ -42,19 +37,21 @@ void entryPoint(Bulmacont *bcont) {
     _depura("Estoy dentro del plugin\n", 0);
     empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    Q3DockWindow *doc1  = new Q3DockWindow(Q3DockWindow::OutsideDock, bcont, "Corrector");
+    //Q3DockWindow *doc1  = new Q3DockWindow(Q3DockWindow::OutsideDock, bcont, "Corrector");
+
+    QDockWidget *doc1 = new QDockWidget("Corrector", bcont);
+    doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
+
     doc1->setGeometry(100, 100, 100, 500);
-    doc1->setFixedExtentWidth(200);
+    doc1->setFixedWidth(200);
 
     correctorwidget *corr = new correctorwidget(doc1, "correctorplugin");
     corr->setEmpresa(emp);
     corr->dock = doc1;
 
     doc1->setWidget(corr);
-    doc1->setResizeEnabled(TRUE);
-    doc1->setMovingEnabled(TRUE);
     //bcont->moveDockWindow(doc1,Qt::DockRight);
-    doc1->dock();
+    //doc1->dock();
     doc1->hide();
     doc1->showMaximized();
 

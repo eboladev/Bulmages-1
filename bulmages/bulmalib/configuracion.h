@@ -21,17 +21,17 @@
 #ifndef _CONFIGURACION1_H_
 #define _CONFIGURACION1_H_
 
-#include "qapplication2.h"
-#include <QTranslator>
-#include <QString>
-#include <QMap>
-
-#include "postgresiface2.h"
-
 #include <fstream>
 #include <iostream>
 #include <iomanip>
 #include <stdlib.h>
+
+#include <QTranslator>
+#include <QString>
+#include <QMap>
+
+#include "qapplication2.h"
+#include "postgresiface2.h"
 
 
 /// Indica el color de fondo de la ventana de apuntes cuando esta cerrada.

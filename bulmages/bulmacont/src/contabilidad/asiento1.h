@@ -27,6 +27,7 @@
 #include "dbrecord.h"
 #include "listlinasiento1view.h"
 
+
 class empresa;
 
 
