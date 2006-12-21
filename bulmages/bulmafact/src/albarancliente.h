@@ -24,7 +24,6 @@
 #include <QString>
 
 #include "company.h"
-//#include "empresa.h"
 #include "listlinalbaranclienteview.h"
 #include "listdescalbaranclienteview.h"
 #include "fixed.h"
@@ -35,7 +34,6 @@
 /** Se usa en conjuncion con AlbaranClienteView para conformar entre ambas
     la pantalla de edici&oacute;n de albaranes a Cliente.
 */
-/// \TODO: Cambiar companyact por m_companyact.
 class AlbaranCliente : public DBRecord {
 protected:
     /// Lista de lineas del albar&aacute;n.
@@ -43,11 +41,9 @@ protected:
     /// Lista de descuentos del albar&aacute;n
     ListDescuentoAlbaranClienteView *listadescuentos;
     /// Puntero a la clase company con la que se esta trabajando.
-    company *companyact;
+    company *m_companyact;
 public:
     AlbaranCliente(company *);
-    //AlbaranCliente(Empresa *);
-    
     
     virtual ~AlbaranCliente();
     QString idalbaran() {
@@ -113,13 +109,11 @@ public:
     /// Normalmente para apuntar a listlinpresupuestoview.
     void setListLinAlbaranCliente(ListLinAlbaranClienteView *a) {
         listalineas = a;
-        listalineas->setcompany(companyact);
-        //listalineas->setempresa(empresaact);
+        listalineas->setcompany(m_companyact);
     };
     void setListDescuentoAlbaranCliente(ListDescuentoAlbaranClienteView *a) {
         listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-        //listadescuentos->setempresa(empresaact);
+        listadescuentos->setcompany(m_companyact);
     };
     void setidalbaran(QString val) {
         setDBvalue("idalbaran", val);

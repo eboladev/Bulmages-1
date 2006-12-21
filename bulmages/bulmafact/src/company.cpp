@@ -66,9 +66,7 @@
 
 /** No precisa de operaciones en su construccion.
 */
-/// \TODO: Deberia crearse una clase intermedia entre postgresiface y esta para almacenar
-/// procedimientos comunes entre BulmaFact y BulmaCont.
-company::company() {
+company::company() : EmpresaBase(){
     _depura("company::company", 0);
     _depura("END company::company", 0);
 }
@@ -77,8 +75,7 @@ company::company() {
 /// El destructor de la clase company borra toda la memoria almacenada.
 company::~company() {
     _depura("company::~company", 0);
-    /// Primero cerramos todas las ventanas y las DestructiveClose se borran
-    m_listventanas->vaciar();
+
     /// Borramos el resto de ventanas.
     delete m_facturasproveedorlist;
     m_facturasproveedorlist = NULL;
@@ -108,42 +105,7 @@ company::~company() {
 }
 
 
-/** Inicializa la base de datos que se pasa, si se pasa una cadena vacia
-    entonces invoca el selector de empresa.
-*/
-void company::init(QString bd) {
-    _depura("company::init", 0);
-    if (bd == "")
-        bd = searchCompany();
 
-    /// Hacemos visible el ProgressBar mientras se habre la base de datos y se cargan
-    /// los datos de la en las ventanas.
-    m_progressbar->setVisible(TRUE);
-
-    inicializa(bd);
-    _depura("END company::init", 0);
-}
-
-
-/** Se utiliza para mostrar un selector de empresas abreempresaview
-    Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
-    clases a partir de dicha inicializacion.
-*/
-QString company::searchCompany() {
-    /// El cambio de empresa se realiza desde el selector.
-    _depura("company::searchCompany", 0);
-    abreempresaview *nuevae = new abreempresaview(0, "BulmaFact");
-    nuevae->exec();
-    _depura("Vamos a cambiar la empresa \n", 0);
-    QString bd = nuevae->nomDB();
-    _depura("Empresa cambiada a " + bd, 0);
-    delete nuevae;
-    /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
-    if (bd == "")
-        exit(1);
-    _depura("END company::searchCompany", 0);
-    return bd;
-}
 
 
 /** Crea todas las ventanas que aparecen creadas al inicio del programa.
@@ -1072,11 +1034,5 @@ void company::s_newfamiliasview() {
 }
 
 
-/** */
-/// \TODO: Que significa esto ?.
-void company::s_indexadorCambiaEstado() {
-    _depura("company::s_indexadorCambiaEstado", 0);
-    m_listventanas->cambiaVisible();
-    _depura("END company::s_indexadorCambiaEstado", 0);
-}
+
 

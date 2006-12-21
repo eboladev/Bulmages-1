@@ -21,8 +21,8 @@
  ***************************************************************************/
 
 #include <unistd.h>
-
 #include <QCheckBox>
+#include <QTextStream>
 
 #include "diarioprintview.h"
 #include "empresa.h"
@@ -133,6 +133,7 @@ void DiarioPrintView::presentar(char *tipus) {
         ofstream fitxersortidatxt("diario.txt");
         ofstream fitxersortidahtml("diario.html");
 
+
         if (!fitxersortidatxt) {
             /// Verificamos que se hayan creado correctamente los archivos.
             txt = 0;
@@ -140,12 +141,12 @@ void DiarioPrintView::presentar(char *tipus) {
         if (!fitxersortidahtml) {
             html = 0;
         } // end if
+
         if (txt | html) {
             /// S&oacute;lo continuamos se hemos podido crear alg&uacute;n archivo.
             if (txt) {
                 /// Presentaci&oacute;n txt normal.
-                fitxersortidatxt.setf(ios::fixed)
-                    ;
+                fitxersortidatxt.setf(ios::fixed);
                 fitxersortidatxt.precision(2);
                 fitxersortidatxt << "                                        LLIBRE DIARI \n" ;
                 fitxersortidatxt << "Data Inicial: " << finicial.toAscii().constData() << "   Data Final: " << ffinal.toAscii().constData() << endl;
@@ -154,8 +155,7 @@ void DiarioPrintView::presentar(char *tipus) {
             } // end if
             if (html) {
                 /// Presentaci&oacute;n html normal.
-                fitxersortidahtml.setf(ios::fixed)
-                    ;
+                fitxersortidahtml.setf(ios::fixed);
                 fitxersortidahtml.precision(2);
                 fitxersortidahtml << "<html>\n";
                 fitxersortidahtml << "<head>\n";

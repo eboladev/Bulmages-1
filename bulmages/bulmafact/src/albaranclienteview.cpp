@@ -83,7 +83,7 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
 /// solo debe eliminar una fila del mismo.
 AlbaranClienteView::~AlbaranClienteView() {
     _depura("AlbaranClienteView::~AlbaranClienteView(", 0);
-    companyact->refreshAlbaranesCliente();
+    m_companyact->refreshAlbaranesCliente();
     _depura("END AlbaranClienteView::~AlbaranClienteView(", 0);
 }
 
@@ -92,7 +92,7 @@ AlbaranClienteView::~AlbaranClienteView() {
 */
 int AlbaranClienteView::sacaWindow() {
     _depura("AlbaranClienteView::sacaWindow", 0);
-    companyact->sacaWindow(this);
+    m_companyact->sacaWindow(this);
     _depura("END AlbaranClienteView::sacaWindow", 0);
     return 0;
 }
@@ -129,10 +129,10 @@ void AlbaranClienteView::s_verpresupuesto() {
     _depura("AlbaranClienteView::s_verpresupuesto", 0);
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" +
                        DBvalue("refalbaran") + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if (cur->numregistros() > 1) {
-        PresupuestoList *list = new PresupuestoList(companyact, NULL);
+        PresupuestoList *list = new PresupuestoList(m_companyact, NULL);
         list->modoseleccion();
         list->show();
 
@@ -143,12 +143,12 @@ void AlbaranClienteView::s_verpresupuesto() {
         this->setEnabled(true);
 
         if (list->idpresupuesto() != QString("")) {
-            PresupuestoView *bud = companyact->newBudget();
+            PresupuestoView *bud = m_companyact->newBudget();
             bud->cargar(list->idpresupuesto());
             bud->show();
         } // end if
     } else if (!cur->eof()) {
-        PresupuestoView *bud = companyact->newBudget();
+        PresupuestoView *bud = m_companyact->newBudget();
         bud->cargar(cur->valor("idpresupuesto"));
         bud->show();
     } // end if
@@ -164,11 +164,11 @@ void AlbaranClienteView::s_verpresupuesto() {
 void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
     _depura("AlbaranClienteView::on_mui_verpedidocliente_clicked", 0);
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refalbaran") + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            PedidoClienteView *bud = companyact->newPedidoClienteView();
-            companyact->m_pWorkspace->addWindow(bud);
+            PedidoClienteView *bud = m_companyact->newPedidoClienteView();
+            m_companyact->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idpedidocliente"));
             bud->show();
             cur->siguienteregistro();
@@ -192,11 +192,11 @@ void AlbaranClienteView::generarFactura() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funci&oacute;n.
     QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
-        FacturaView *bud = companyact->newFacturaView();
-        companyact->m_pWorkspace->addWindow(bud);
+        FacturaView *bud = m_companyact->newFacturaView();
+        m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfactura"));
         bud->show();
         return;
@@ -213,8 +213,8 @@ void AlbaranClienteView::generarFactura() {
     }
 
     /// Creamos la factura.
-    FacturaView *bud = companyact->newFacturaView();
-    companyact->m_pWorkspace->addWindow(bud);
+    FacturaView *bud = m_companyact->newFacturaView();
+    m_companyact->m_pWorkspace->addWindow(bud);
 
     /// Cargamos un elemento que no existe para inicializar bien la clase.
     bud->cargar("0");
@@ -257,7 +257,7 @@ void AlbaranClienteView::agregarFactura() {
     _depura("AlbaranClienteView::agregarFactura", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
-    FacturasList *fac = new FacturasList(companyact, diag, 0, FacturasList::SelectMode);
+    FacturasList *fac = new FacturasList(m_companyact, diag, 0, FacturasList::SelectMode);
     connect(fac, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
     /// Hacemos que las opciones de filtrado del listado ya est&eacute;n bien.
@@ -274,13 +274,13 @@ void AlbaranClienteView::agregarFactura() {
         return;
 
     /// Creamos la factura.
-    FacturaView *bud = companyact->newFacturaView();
+    FacturaView *bud = m_companyact->newFacturaView();
     bud->cargar(idfactura);
 
     /// Agregamos en los comentarios que se ha a&ntilde;adido este albar&aacute;n.
     bud->pintaComentFactura(bud->DBvalue("comentfactura") + tr("Num. albaran") + DBvalue("numalbaran") + "\n" );
 
-    companyact->m_pWorkspace->addWindow(bud);
+    m_companyact->m_pWorkspace->addWindow(bud);
     /// EN TEORIA SE DEBARIA COMPROBAR QUE LA FACTURA ES DEL MISMO CLIENTE,
     /// pero por ahora pasamos de hacerlo.
     QString l;
@@ -318,7 +318,7 @@ int AlbaranClienteView::cargar(QString id) {
         if (AlbaranCliente::cargar(id))
             throw -1;
         setWindowTitle(tr("Albaran a cliente") + " " + DBvalue("refalbaran") + " " + DBvalue("idalbaran"));
-        companyact->meteWindow(windowTitle(), this);
+        m_companyact->meteWindow(windowTitle(), this);
         dialogChanges_cargaInicial();
     } catch(...) {
         return -1;
@@ -370,7 +370,7 @@ int AlbaranClienteView::guardar() {
 /// Este metodo crea una pantalla de cobro y le pone los datos necesarios.
 void AlbaranClienteView::on_mui_cobrar_clicked() {
     _depura("AlbaranClienteView::on_mui_cobrar_clicked", 0);
-    CobroView *bud = companyact->newCobroView();
+    CobroView *bud = m_companyact->newCobroView();
     bud->setidcliente(DBvalue("idcliente"));
     bud->setcantcobro(m_totalalbaran->text());
     bud->setrefcobro(DBvalue("refalbaran"));

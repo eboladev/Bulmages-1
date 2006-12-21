@@ -235,6 +235,7 @@ public slots:
     virtual void on_actionFin_triggered() {
         m_empresaactual->boton_ultimo();
     }
+    virtual void informaindexador(QWidget *w);
 };
 
 #endif

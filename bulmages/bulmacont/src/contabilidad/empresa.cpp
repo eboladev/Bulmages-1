@@ -55,7 +55,8 @@ void empresa::s_asiento1() {
 }
 
 
-empresa::empresa() {
+empresa::empresa() : EmpresaBase() {
+    _depura("empresa::empresa", 0);
     diario = NULL;
     extracto = NULL;
     balance1 = NULL;
@@ -65,6 +66,7 @@ empresa::empresa() {
     introapunts2 = NULL;
     m_listasientos = NULL;
     nombre = "";
+    _depura("END empresa::empresa", 0);
 }
 
 
@@ -94,6 +96,7 @@ empresa::~empresa() {
     if (m_listasientos) {
         delete m_listasientos;
     } // end if
+    _depura("END ~empresa", 0);
 }
 
 /// Inicializa la clase con el nombre de la base de datos y con el workspace.
@@ -160,32 +163,6 @@ void empresa::maximiza() {
 }
 
 
-void empresa::init(QString bd) {
-    if (bd == "") {
-        bd = searchCompany();
-    } // end if
-    inicializa(bd);
-}
-
-
-/// Se utiliza para mostrar un selector de empresas \ref abreempresaview.
-/** Al usuario debe seleccionar una empresa y el sistema empieza la inicializaci&oacute;n
-    de clases a partir de dicha inicializaci&oacute;n. */
-QString empresa::searchCompany() {
-    /// El cambio de empresa se realiza desde el selector.
-    _depura("empresa::searchCompany vamos a mostrar el abreempresaview\n", 0);
-    abreempresaview *nuevae = new abreempresaview(0, "BulmaCont");
-    nuevae->exec();
-    _depura("Vamos a cambiar la empresa \n", 0);
-    QString bd= nuevae->nomDB();
-    _depura("Empresa cambiada a" + bd, 0);
-    delete nuevae;
-    /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
-    if (bd == "") {
-        exit(1);
-    } // end if
-    return bd;
-}
 
 
 /// Esta funci&oacute;n abre la ventana que presenta las cuentas contables.

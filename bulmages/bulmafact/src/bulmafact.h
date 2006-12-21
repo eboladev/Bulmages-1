@@ -27,7 +27,6 @@
 #include "qworkspace2.h"
 #include "ui_bulmafactbase.h"
 #include "company.h"
-//#include "empresa.h"
 #include "listventanas.h"
 #include "funcaux.h"
 

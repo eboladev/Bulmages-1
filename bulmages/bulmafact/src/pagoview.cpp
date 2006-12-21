@@ -23,7 +23,6 @@
 #include <QObject>
 #include <QComboBox>
 #include <QToolButton>
-#include <QFile>
 #include <QTextStream>
 #include <QLayout>
 #include <QMessageBox>

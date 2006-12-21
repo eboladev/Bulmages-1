@@ -22,13 +22,12 @@
 #define COMPANY_H
 
 #include <QObject>
-#include <QWorkspace>
-#include <QProgressBar>
+
 
 #include "postgresiface2.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
-
+#include "empresabase.h"
 
 class ProveedorList;
 class ClientsList;
@@ -64,13 +63,10 @@ class familiasview;
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos.
 */
-/** \TODO: Esta clase deberia convertirse en 2, una parte comun con todas las aplicaciones bulma en bulmalib y una parte especifica en BulmaFact.
-*/
-
-class company : public postgresiface2 {
+class company : public EmpresaBase{
 private:
     /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de mensajes tiene el control de la lista de ventanas.
-    listventanas *m_listventanas;
+//    listventanas *m_listventanas;
     /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
     ProveedorList *m_providerslist;
     /// Puntero a la ventan ade lista de clientes. Esta ventana se abre una vez al inicio del programa.
@@ -97,24 +93,17 @@ private:
     PagosList *m_pagosList;
 
 public:
+/*
     /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas, es comodo tener este puntero inicializado en esta clase.
     QWorkspace2 *m_pWorkspace;
     /// El indicador de progreso. PAra que determinados procesos puedan indicar su evolucion de forma general en la ventana principal.
     QProgressBar *m_progressbar;
+*/
 
 public:
     company();
     ~company();
-    void init(QString);
-    void setListVentanas(listventanas *doc) {
-        m_listventanas = doc;
-    };
-    void setWorkspace(QWorkspace2 *qw) {
-        m_pWorkspace = qw;
-    }
-    void setProgressBar(QProgressBar *pb) {
-        m_progressbar = pb;
-    }
+
     FacturasProveedorList *facturasProveedorList() {
     	return m_facturasproveedorlist;
     };
@@ -141,18 +130,7 @@ public:
     void refreshFacturas();
     void refreshFacturasProveedor();
     void refreshClientes();
-    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
-        return m_listventanas->meteWindow(nom, obj, compdup);
-    };
-    int seleccionaWindow(QString nom, QObject *obj) {
-        return m_listventanas->seleccionaWindow(nom, obj);
-    };
-    int deSeleccionaWindow() {
-        return m_listventanas->deSeleccionaWindow();
-    };
-    void sacaWindow(QObject *nom) {
-        m_listventanas->sacaWindow(nom);
-    };
+
     void s_FPago();
     void s_Familias();
     void s_trabajadores();
@@ -184,8 +162,6 @@ public:
     void s_newInventario();
     void viewPagosList();
     void viewCobrosList();
-    void s_indexadorCambiaEstado();
-    QString searchCompany();
     FacturaProveedorView *newFacturaProveedorView();
     PresupuestoView *newBudget();
     FacturaView *newFacturaView();

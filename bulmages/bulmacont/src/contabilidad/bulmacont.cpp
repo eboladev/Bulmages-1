@@ -39,13 +39,33 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     m_pWorkspace = new QWorkspace2(this);
     m_pWorkspace->setScrollBarsEnabled(TRUE);
 
-    setCentralWidget(m_pWorkspace);
+    QFrame *m_frame1 = new QFrame();
+    QProgressBar *m_pb = new QProgressBar();
+    m_pb->setMaximum(100);
+    m_pb->setMinimum(0);
+    m_pb->setValue(0);
+    /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
+    m_pb->setVisible(FALSE);
 
-    showMaximized();
+    setCentralWidget(m_frame1);
+    /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
+    QVBoxLayout *vboxlayout = new QVBoxLayout(this->centralWidget());
+    vboxlayout->setSpacing(0);
+    vboxlayout->setMargin(0);
+    vboxlayout->addWidget(m_pWorkspace);
+    vboxlayout->addWidget(m_pb);
+
+
+//    showMaximized();
+    showNormal();
 
     m_empresaactual = new empresa();
+    m_empresaactual->setProgressBar(m_pb);
+    m_empresaactual->init(DB, "BulmaCont");
     m_empresaactual->setWorkspace(m_pWorkspace);
-    m_empresaactual->init(DB);
+
+    connect(m_pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
+
 
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
@@ -60,9 +80,12 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     m_empresaactual->inicializa1();
 
     m_list->setVisible(TRUE);
+    m_pb->setVisible(FALSE);
+
     setWindowTitle(tr("BulmaCont -- ") + DBName + " --");
     initStatusBar();
     statusBar()->showMessage(tr("Listo"), 2000);
+
     _depura("END Bulmacont::Bulmacont", 0);
 }
 
@@ -195,5 +218,24 @@ void Bulmacont::on_actionAyuda_triggered() {
 void Bulmacont::on_actionAcerca_de_triggered() {
     aboutview *about = new aboutview(0);
     about->exec();
+}
+
+
+/** Captura el evento de cambio de ventana en el workSpace y actua sobre el
+    listado de ventanas para que seleccione la ventana adecuada.
+*/
+void Bulmacont::informaindexador(QWidget *w) {
+    _depura("bulmafact::informaindexador", 0);
+    /// No existe una ventana que activar.
+    if (w == NULL) {
+        m_empresaactual->deSeleccionaWindow();
+        return;
+    } // end if
+    m_empresaactual->seleccionaWindow(w->windowTitle(), w);
+    
+    QString texto = "Window activated. " + w->windowTitle() + "\n";
+    printf(texto.toAscii().constData());
+    
+    _depura("END bulmafact::informaindexador", 0);
 }
 

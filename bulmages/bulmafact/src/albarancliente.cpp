@@ -35,7 +35,7 @@ typedef QMap<QString, Fixed> base;
 */    
 AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)  {
     _depura("AlbaranCliente::AlbaranCliente(company *)", 0);
-    companyact = comp;
+    m_companyact = comp;
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
     addDBCampo("idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranCliente", "Id albaran"));
@@ -75,17 +75,17 @@ AlbaranCliente::~AlbaranCliente() {
 int AlbaranCliente::borrar() {
     _depura("AlbaranCliente::borrar", 0);
     if (DBvalue("idalbaran") != "")  {
-        companyact->begin();
+        m_companyact->begin();
         listalineas->borrar();
         listadescuentos->borrar();
 
-        int error = companyact->ejecuta("DELETE FROM albaran WHERE idalbaran = " + DBvalue("idalbaran"));
+        int error = m_companyact->ejecuta("DELETE FROM albaran WHERE idalbaran = " + DBvalue("idalbaran"));
 
         if (error)  {
-            companyact->rollback();
+            m_companyact->rollback();
             return -1;
         }
-        companyact->commit();
+        m_companyact->commit();
     }
     _depura("END AlbaranCliente::borrar", 0);
     return 0;
@@ -136,7 +136,7 @@ void AlbaranCliente::pintar() {
 int AlbaranCliente::cargar(QString idalbaran)  {
     _depura("AlbaranCliente::cargar", 0);
     QString query = "SELECT * FROM albaran WHERE idalbaran = " + idalbaran;
-    cursor2 *cur = companyact->cargacursor(query);
+    cursor2 *cur = m_companyact->cargacursor(query);
     if (!cur->eof())
         DBload(cur);
     delete cur;
@@ -159,14 +159,14 @@ int AlbaranCliente::cargar(QString idalbaran)  {
 int AlbaranCliente::guardar() {
     _depura("AlbaranCliente::guardar", 0);
     /// Todo el guardado es una transaccion.
-    companyact->begin();
+    m_companyact->begin();
     try {
         QString id;
         DBsave(id);
         setidalbaran(id);
         listalineas->guardar();
         listadescuentos->guardar();
-        companyact->commit();
+        m_companyact->commit();
 
         /// Hacemos una carga para recuperar datos como la referencia y el numero de albaran
         cargar(id);
@@ -175,7 +175,7 @@ int AlbaranCliente::guardar() {
         return 0;
     } catch (...) {
         _depura("AlbaranCliente::guardar error al guardar albaran cliente", 0);
-        companyact->rollback();
+        m_companyact->rollback();
         throw -1;
     } // end try
 }
@@ -222,7 +222,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     QString fitxersortidatxt = "";
     /// L&iacute;nea de totales del albar&aacute;.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));
         buff.replace("[poblcliente]",cur->valor("poblcliente"));

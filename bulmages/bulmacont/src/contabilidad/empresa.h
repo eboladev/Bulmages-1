@@ -36,6 +36,7 @@
 #include "listventanas.h"
 #include "qworkspace2.h"
 
+#include "empresabase.h"
 
 class selectccosteview;
 class selectcanalview;
@@ -58,13 +59,11 @@ class cuentaview;
     objetos de modo que estos s&oacute;lo tengan referencias a esta clase y haciendo el
     flujo del c&oacute;digo m&aacute;s f&aacute;cil de entender.
     \todo Proporcionar la funcionalidad de comunicaci&oacute;n entre las otras clases. */
-class empresa : public postgresiface2 {
+class empresa : public EmpresaBase {
 private:
-    listventanas *m_listventanas;
     QString nombre;
     int ano;
     QString contrasenya;
-    QWorkspace2 *m_pWorkspace;
     BalanceTreeView *balance1;
     DiarioView *diario;
     extractoview1 *extracto;
@@ -84,7 +83,6 @@ public:
 public:
     empresa();
     virtual ~empresa();
-    void init(QString);
     /// Devuelve un puntero a la clase de la base de datos.
     postgresiface2 *bdempresa() {
         return (this);
@@ -116,21 +114,8 @@ public:
     QString nombreempresa() {
         return nombre;
     }
-    QWorkspace2 *pWorkspace() {
-        return m_pWorkspace;
-    };
-    void setWorkspace(QWorkspace2 *qw) {
-        m_pWorkspace = qw;
-    };
-    void setListVentanas(listventanas *doc) {
-        m_listventanas = doc;
-    };
-    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
-        return m_listventanas->meteWindow(nom, obj, compdup);
-    };
-    void sacaWindow(QObject *nom) {
-        m_listventanas->sacaWindow(nom);
-    };
+
+
     int muestracuentas();
     int nuevacuenta();
     int muestraapuntes();
@@ -139,7 +124,6 @@ public:
     int propiedadempresa();
     int nuevaempresa();
     int borrarempresa();
-    QString searchCompany();
     int libromayor();
     int librodiario();
     int librobalance();
