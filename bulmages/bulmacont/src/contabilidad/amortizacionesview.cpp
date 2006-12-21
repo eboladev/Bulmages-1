@@ -28,14 +28,14 @@
 
 
 amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("amortizacionesview::amortizacionesview", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
     inicializatabla();
     modo = 0;
-    m_companyact->meteWindow(windowTitle(), this);
+    m_companyact->meteWindow(windowTitle(), this, FALSE);
     _depura("END amortizacionesview::amortizacionesview", 0);
 }
 

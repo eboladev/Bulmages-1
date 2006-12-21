@@ -40,7 +40,7 @@
 
 
 listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags flag, edmode editmode)
-        : QWidget(parent, flag), pgimportfiles(emp->bdempresa()) {
+        : Ficha(parent, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
     empresaactual = emp;

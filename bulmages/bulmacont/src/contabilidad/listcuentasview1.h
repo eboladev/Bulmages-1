@@ -26,6 +26,7 @@
 #include "postgresiface2.h"
 #include "ui_listcuentasbase.h"
 #include "pgimportfiles.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -34,7 +35,7 @@ class empresa;
 /// Presenta un listado del plan contable.
 /** Esta pantalla tiene dos modos de funcionamiento, en uno act&uacute;a como selector de
     cuentas y en el otro act&uacute;a como soporte para la edici&oacute;n del plan contable. */
-class listcuentasview1 : public QWidget, public Ui_ListCuentasBase, public pgimportfiles {
+class listcuentasview1 : public Ficha, public Ui_ListCuentasBase, public pgimportfiles {
     Q_OBJECT
 
 public:

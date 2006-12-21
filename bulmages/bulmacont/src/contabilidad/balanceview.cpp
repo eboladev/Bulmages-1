@@ -49,7 +49,7 @@
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
 balanceview::balanceview(empresa *emp, QWidget *parent, int)
-        : QWidget(parent) {
+        : Ficha(parent) {
     setupUi(this);
     companyact = emp;
     numdigitos = companyact->numdigitosempresa();

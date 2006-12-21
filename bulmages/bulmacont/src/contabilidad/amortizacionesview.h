@@ -22,6 +22,7 @@
 #define AMORTIZACIONESVIEW_H
 
 #include "ui_amortizacionesbase.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -29,13 +30,15 @@ class empresa;
 
 /// Clase que muestra la ventana de amortizaciones.
 /** */
-class amortizacionesview : public QWidget, public Ui_AmortizacionesBase {
+class amortizacionesview : public Ficha, public Ui_AmortizacionesBase {
     Q_OBJECT
 
 public:
     empresa *m_companyact;
-    QString idamortizacion; /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
-    QString nomamortizacion; /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
+    /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
+    QString idamortizacion;
+    /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
+    QString nomamortizacion;
     int modo;
     amortizacionesview(empresa *, QWidget *);
     ~amortizacionesview();

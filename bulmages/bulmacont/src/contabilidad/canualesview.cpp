@@ -30,7 +30,7 @@
 
 
 CAnualesView::CAnualesView(empresa *emp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("CAnualesView::CAnualesView", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

@@ -25,10 +25,12 @@
 #include <QUrl>
 
 #include <ui_actualizacionesbase.h>
+#include "ficha.h"
+
 
 /// 
 /** */
-class actualizacionesview : public QWidget, Ui_ActualizacionesBase {
+class actualizacionesview : public Ficha, Ui_ActualizacionesBase {
     Q_OBJECT
 
 public:

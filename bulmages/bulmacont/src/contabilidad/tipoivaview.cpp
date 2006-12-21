@@ -27,7 +27,7 @@
 
 /// El constructor de la clase prepara las variables globales y llama a la función pintar.ç
 tipoivaview::tipoivaview(empresa *emp, QWidget *parent)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("tipoivaview::tipoivaview", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

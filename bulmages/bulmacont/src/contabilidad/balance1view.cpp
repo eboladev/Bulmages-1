@@ -24,7 +24,6 @@
 #include <busquedafecha.h>
 
 #include "balance1view.h"
-//#include "qlistviewitem1.h"
 #include "listcuentasview1.h"
 #include "balanceprintview.h"
 #include "empresa.h"
@@ -45,7 +44,7 @@
 #define DEBE           m_cdebe
 #define HABER          m_chaber
 #define SALDO          m_csaldo
-#define DEBEEJ	         m_cdebeej
+#define DEBEEJ         m_cdebeej
 #define HABEREJ        m_chaberej
 #define SALDOEJ        m_csaldoej
 #define IDCUENTA       m_cidcuenta
@@ -54,7 +53,7 @@
 
 
 BalanceTreeView::BalanceTreeView(empresa *emp, QWidget *parent, int)
-        : QWidget (parent) {
+        : Ficha(parent) {
     setupUi(this);
     _depura("BalanceTreeView::BalanceTreeView\n", 0);
     m_companyact = emp;

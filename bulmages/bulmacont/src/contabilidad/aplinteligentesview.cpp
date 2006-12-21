@@ -45,7 +45,7 @@
 
 
 aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("aplinteligentesview::aplinteligentesview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

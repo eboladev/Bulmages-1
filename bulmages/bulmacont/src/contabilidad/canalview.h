@@ -29,12 +29,13 @@
 #include "ui_canalbase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class empresa;
 
 
-class canalview : public QWidget, public Ui_canaldlg, public dialogChanges {
+class canalview : public Ficha, public Ui_canaldlg {
     Q_OBJECT
 
 public:

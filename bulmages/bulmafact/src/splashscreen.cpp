@@ -52,9 +52,10 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     pl1.setBrush(QPalette::Base, QColor("#DDDDDD"));
     l1->setPalette(pl1);
 
-    QProgressBar *barra = new QProgressBar(this);
+    barra = new QProgressBar(this);
+    barra->setTextVisible(FALSE);
     /// Poniendo el minimo y maximo a 0 hace el efecto especial.
-    barra->setRange(0, 0);
+    barra->setRange(0, 10);
     barra->setGeometry(0, image0.height() - 38, image0.width(), 15);
     QPalette pbarra = barra->palette();
     QColor colorfondobarra = QColor("#000000");
@@ -67,6 +68,15 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     QTimer timer1(this);
     connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
     timer1.start(1750);
+
+    QTimer timer2(this);
+    connect(&timer2, SIGNAL(timeout()), SLOT(barraprogreso()));
+    timer2.start(50);
+
+    /// Centramos la ventana en la pantalla.
+    QDesktopWidget *pantalla = new QDesktopWidget();
+    move((pantalla->screenGeometry().width() / 2) - (image0.width() / 2), (pantalla->screenGeometry().height() / 2) - ((image0.height() + 58) / 2));
+
     /// Nos muestra la ventana en modo MODAL.
     exec();
 }
@@ -81,11 +91,9 @@ bool Splash::event(QEvent *evt) {
     if (evt->type() == QEvent::KeyPress) {
         close();
     } // end if
-
-    if (evt->type() == QEvent::MouseButtonRelease) {
+    if (evt->type() == QEvent::MouseButtonDblClick) {
         close();
     } // end if
-
     return QDialog::event(evt);
 }
 
@@ -125,5 +133,14 @@ void Splash::paint() {
     l1->insertHtml(cad);
     /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
     l1->ensureCursorVisible();
+}
+
+
+void Splash::barraprogreso() {
+    if (barra->value() < 10) {
+        barra->setValue(barra->value() + 1);
+    } else {
+        barra->setValue(0);
+    } // end if
 }
 

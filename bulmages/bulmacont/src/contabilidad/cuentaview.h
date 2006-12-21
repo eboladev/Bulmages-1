@@ -34,6 +34,7 @@
 #include "postgresiface2.h"
 #include "funcaux.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -41,7 +42,7 @@ class empresa;
 
 /// Visualiza una cuenta.
 /** */
-class cuentaview : public QWidget, public Ui_CuentaBase, dialogChanges {
+class cuentaview : public Ficha, public Ui_CuentaBase {
     Q_OBJECT
 
 public:

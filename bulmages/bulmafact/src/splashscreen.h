@@ -30,6 +30,7 @@
 #include <QTextBrowser>
 #include <QPalette>
 #include <QProgressBar>
+#include <QDesktopWidget>
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -42,6 +43,7 @@ class Splash : public QDialog {
 
 private:
     QTextBrowser *l1;
+    QProgressBar *barra;
 
 public:
     Splash();
@@ -50,6 +52,9 @@ public:
 public slots:
     void paint();
     bool event(QEvent *);
+
+private slots:
+    void barraprogreso();
 };
 
 #endif

@@ -24,6 +24,7 @@
 #include "ui_extractobase.h"
 #include "qtable1.h"
 #include "postgresiface2.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -33,7 +34,7 @@ class empresa;
     casaci&oacute;n.
     Y acceso a filtrado. Tambi&eacute;n desde esta pantalla se puede pedir m&aacute;s
     informaci&oacute;n de una cuenta determinada. */
-class extractoview1 : public QWidget, public Ui_ExtractoBase {
+class extractoview1 : public Ficha, public Ui_ExtractoBase {
     Q_OBJECT
 
 public:

@@ -24,6 +24,7 @@
 #include "ui_fpagobase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -32,7 +33,7 @@ class empresa;
 /// La clase fpagoview se encarga de la gesti&oacute;n de formas de pago.
 /** Las formas de pago son unas plantillas que se usan para determinar las formas en
     que se pagan o se cobran las facturas emitidas o recibidas. */
-class fpagoview : public QWidget, Ui_FPagoBase, dialogChanges {
+class fpagoview : public Ficha, Ui_FPagoBase {
     Q_OBJECT
 
 private:

@@ -125,8 +125,8 @@ public:
     void setListVentanas(listventanas *doc) {
         m_listventanas = doc;
     };
-    int meteWindow(QString nom, QObject *obj) {
-        return m_listventanas->meteWindow(nom, obj);
+    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
+        return m_listventanas->meteWindow(nom, obj, compdup);
     };
     void sacaWindow(QObject *nom) {
         m_listventanas->sacaWindow(nom);

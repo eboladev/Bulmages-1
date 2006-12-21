@@ -26,7 +26,7 @@
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
 asientosview::asientosview(empresa *emp, QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("asientosview::asientosview", 0);
     setupUi(this);
     m_companyact = emp;

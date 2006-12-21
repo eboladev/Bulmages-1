@@ -22,6 +22,7 @@
 #define DIARIOVIEW12_H
 
 #include "ui_diariobase.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -29,7 +30,7 @@ class empresa;
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public QWidget, public Ui_DiarioBase {
+class DiarioView : public Ficha, public Ui_DiarioBase {
     Q_OBJECT
 
 private:

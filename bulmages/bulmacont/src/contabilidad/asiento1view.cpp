@@ -44,7 +44,7 @@
     \param parent Widget padre de este.
 */
 Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
-        : QWidget (parent), Asiento1(emp), ListAsientos(emp) {
+        : Ficha(parent), Asiento1(emp), ListAsientos(emp) {
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
     m_companyact = emp;
@@ -198,7 +198,7 @@ void Asiento1View::on_mui_fecha_editingFinished() {
     /// Cambiar la fecha del asiento.
     if (estadoAsiento1() != Asiento1::ASCerrado) {
         setDBvalue("fecha", mui_fecha->text());
-        guardar();
+        Asiento1::guardar();
     } else {
         iniciar_asiento_nuevo();
     } // end if

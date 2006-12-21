@@ -22,7 +22,7 @@
 
 
 actualizacionesview::actualizacionesview(QWidget *parent)
-        : QWidget(parent) {
+        : Ficha(parent) {
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     QUrl url("/usr/share/bulmages/ayuda/index.htm");

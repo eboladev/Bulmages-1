@@ -18,16 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLayout>
-#include <QColor>
-#include <QTimer>
-#include <QPixmap>
-#include <QDir>
-#include <QIcon>
-
 #include "splashscreen.h"
 #include "configuracion.h"
 #include "funcaux.h"
+
 
 /// Constructor de la clase
 /** Genera el splash y pinta los elementos iniciales. */
@@ -37,7 +31,6 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     l = new QLabel(this);
     l->setPixmap(image0);
     l->setGeometry(0, 0, image0.width(), image0.height());
-
 
     QLabel *l0 = new QLabel(this);
     l0->setTextFormat(Qt::RichText);
@@ -51,7 +44,24 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     l2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     l2->setAlignment(Qt::AlignBottom);
     l2->setFont(QFont("helvetica", 9, QFont::Normal));
-    l2->setGeometry(0, image0.height(), image0.width(), 58);
+    l2->setGeometry(0, image0.height() + 15, image0.width(), 58);
+
+    QPalette pl2 = l2->palette();
+    pl2.setBrush(QPalette::Base, QColor("#DDDDDD"));
+    l2->setPalette(pl2);
+
+    barra = new QProgressBar(this);
+    barra->setTextVisible(FALSE);
+    /// Poniendo el minimo y maximo a 0 hace el efecto especial.
+    barra->setRange(0, 10);
+    barra->setGeometry(0, image0.height(), image0.width(), 15);
+    QPalette pbarra = barra->palette();
+    QColor colorfondobarra = QColor("#000000");
+    colorfondobarra.setAlpha(100);
+    pbarra.setBrush(QPalette::Base, colorfondobarra);
+    barra->setPalette(pbarra);
+
+    this->paint();
 
     QTimer timer(this);
     connect(&timer, SIGNAL(timeout()), SLOT(close()));
@@ -60,8 +70,18 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     QTimer timer1(this);
     connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
     timer1.start(1750);
+
+    QTimer timer2(this);
+    connect(&timer2, SIGNAL(timeout()), SLOT(barraprogreso()));
+    timer2.start(50);
+
+    /// Centramos la ventana en la pantalla.
+    QDesktopWidget *pantalla = new QDesktopWidget();
+    move((pantalla->screenGeometry().width() / 2) - (image0.width() / 2), (pantalla->screenGeometry().height() / 2) - ((image0.height() + 58) / 2));
+
     exec();
 }
+
 
 /// Destructor de la clase.
 /** Libera memoria. */
@@ -70,17 +90,19 @@ Splash::~Splash() {
     delete l2;
 }
 
+
 /// Evento que se dispara cada cierto tiempo.
 /** El constructor crea un evento temporal que dispara este metodo. */
 bool Splash::event(QEvent *evt) {
     if (evt->type() == QEvent::KeyPress) {
         close();
     } // end if
-    if (evt->type() == QEvent::MouseButtonPress) {
+    if (evt->type() == QEvent::MouseButtonDblClick) {
         close();
     } // end if
     return QDialog::event(evt);
 }
+
 
 /// Pintado de la pantalla.
 /** Actualiza el widget. */
@@ -119,5 +141,14 @@ void Splash::paint() {
     l2->insertHtml(cad);
     /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
     l2->ensureCursorVisible();
+}
+
+
+void Splash::barraprogreso() {
+    if (barra->value() < 10) {
+        barra->setValue(barra->value() + 1);
+    } else {
+        barra->setValue(0);
+    } // end if
 }
 

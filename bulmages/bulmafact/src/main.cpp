@@ -47,7 +47,7 @@ QTranslator *traductor;
 /// NOTA: En el main no se puede utilizar _depura ya que puede que no este bien inicializado confpr.
 int main(int argc, char **argv) {
     try {
-        fprintf(stderr, "main:: Iniciando programa");
+        fprintf(stderr, "--> MAIN::Iniciando el programa. <--\n");
         Q_INIT_RESOURCE(bulmages);
 
         /// Leemos la configuracion que luego podremos usar siempre.
@@ -157,16 +157,16 @@ int main(int argc, char **argv) {
         g_main = bges;
         theApp->exec();
     } catch (...) {
-        mensajeInfo("Error inesperado en BulmaFact. El programa se cerrara.");
+        mensajeInfo(QApplication::translate("main", "Error inesperado en BulmaFact. El programa se cerrara."));
     } // end try
 
+    fprintf(stderr, "--> MAIN::Cerrando el programa. <--\n");
     /// Liberamos memoria.
     delete bges;
     delete theApp;
     delete traductor;
     delete confpr;
 
-    fprintf(stderr," Fin de ejecucion");
     return 0;
 }
 

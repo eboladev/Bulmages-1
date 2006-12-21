@@ -43,7 +43,7 @@
 
 
 DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
-        : QWidget(parent) {
+        : Ficha(parent) {
     setupUi(this);
     _depura("DiarioView::DiarioView\n", 0);
     m_companyact = emp;

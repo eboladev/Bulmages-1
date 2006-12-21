@@ -45,7 +45,8 @@
 using namespace std;
 
 
-BalancePrintView::BalancePrintView(empresa *emp) : QDialog(0) {
+BalancePrintView::BalancePrintView(empresa *emp)
+        : QDialog(0) {
     setupUi(this);
     empresaactual = emp;
     conexionbase = emp->bdempresa();

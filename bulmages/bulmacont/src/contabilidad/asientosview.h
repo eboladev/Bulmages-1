@@ -25,6 +25,7 @@
 
 #include "postgresiface2.h"
 #include "ui_asientolistbase.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -33,7 +34,7 @@ class empresa;
 /// Muestra un listado de todos los asientos existentes e informa de si est&aacute;n
 /// abiertos o cerrados.
 /** */
-class asientosview : public QWidget, public Ui_AsientoListBase {
+class asientosview : public Ficha, public Ui_AsientoListBase {
     Q_OBJECT
 
 public:

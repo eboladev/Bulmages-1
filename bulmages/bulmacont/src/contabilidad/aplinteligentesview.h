@@ -42,6 +42,8 @@
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 #include "ui_aplinteligentesbase.h"
+#include "ficha.h"
+
 
 class empresa;
 
@@ -61,7 +63,7 @@ class empresa;
     al asiento abierto.
     En el segundo caso se genera un asiento nuevo por cada introducci&oacute;n de plantilla.
 */
-class aplinteligentesview : public QWidget, public Ui_AplInteligentesBase {
+class aplinteligentesview : public Ficha, public Ui_AplInteligentesBase {
     Q_OBJECT
 
 private:

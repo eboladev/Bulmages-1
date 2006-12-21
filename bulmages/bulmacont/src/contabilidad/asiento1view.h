@@ -33,6 +33,7 @@
 #include "fixed.h"
 #include "busquedafecha.h"
 #include "asiento1.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -96,7 +97,7 @@ public:
 };
 
 
-class Asiento1View : public QWidget, public Ui_AsientoBase, public Asiento1, public ListAsientos {
+class Asiento1View : public Ficha, public Ui_AsientoBase, public Asiento1, public ListAsientos {
     Q_OBJECT
 
 private:
@@ -157,7 +158,7 @@ public slots:
     };
     virtual void on_mui_guardarasiento_clicked() {
         prepguardar();
-        guardar();
+        Asiento1::guardar();
     };
     virtual void on_mui_nuevoasiento_clicked();
     virtual void on_mui_borrar_clicked();

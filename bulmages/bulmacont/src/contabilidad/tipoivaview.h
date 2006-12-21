@@ -24,13 +24,14 @@
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "ui_tipoivabase.h"
+#include "ficha.h"
 
 
 class empresa;
 
 /// Esta clase hace el mantenimiento de la tabla de Tipos de IVA.
 /** Su funcionamiento se basa un poco en el funcionamiento de la pantalla de canales. */
-class tipoivaview : public QWidget, public Ui_TipoIvaBase, dialogChanges {
+class tipoivaview : public Ficha, public Ui_TipoIvaBase {
     Q_OBJECT
 
 private:

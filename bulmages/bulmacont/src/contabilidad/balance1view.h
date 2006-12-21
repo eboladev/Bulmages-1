@@ -21,10 +21,6 @@
 #ifndef BALANCE1VIEW_H
 #define BALANCE1VIEW_H
 
-//#include <Q3DateTimeEdit>
-//#include <Q3FileDialog>
-//#include <Q3Table>
-
 #include <QWidget>
 #include <QLineEdit>
 #include <QToolButton>
@@ -39,6 +35,7 @@
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "ui_balancetreebase.h"
+#include "ficha.h"
 
 
 class intapunts3view;
@@ -54,7 +51,7 @@ class empresa;
     Esta clase sirve para presentar en balance de sumas y saldos en forma de tabla. Permite
     presentar el balance entre unos rangos definidos, incluyendo las cuentas de un nivel
     determinado. */
-class BalanceTreeView : public QWidget, public Ui_BalanceTreeBase {
+class BalanceTreeView : public Ficha, public Ui_BalanceTreeBase {
     Q_OBJECT
 
 private:

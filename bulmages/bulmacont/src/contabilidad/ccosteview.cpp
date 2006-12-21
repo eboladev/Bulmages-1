@@ -30,7 +30,7 @@
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
 ccosteview::ccosteview(empresa *emp, QWidget *parent)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     _depura("ccosteview::ccosteview", 0);

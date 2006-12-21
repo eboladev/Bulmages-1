@@ -30,6 +30,7 @@
 #include "aboutview.h"
 #include "actualizacionesview.h"
 
+
 Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
         : QMainWindow(parent, f) {
     _depura("Bulmacont::Bulmacont", 0);
@@ -39,7 +40,8 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     m_pWorkspace->setScrollBarsEnabled(TRUE);
 
     setCentralWidget(m_pWorkspace);
-    show();
+
+    showMaximized();
 
     m_empresaactual = new empresa();
     m_empresaactual->setWorkspace(m_pWorkspace);
@@ -47,15 +49,20 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
 
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
+    m_list->setVisible(FALSE);
 
-    /// Indicamos a listventanas cual es el workspace para que pueda operar con el
+    /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace(m_pWorkspace);
+
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
+
     m_empresaactual->setListVentanas(m_list);
     m_empresaactual->inicializa1();
 
+    m_list->setVisible(TRUE);
     setWindowTitle(tr("BulmaCont -- ") + DBName + " --");
     initStatusBar();
+    statusBar()->showMessage(tr("Listo"), 2000);
     _depura("END Bulmacont::Bulmacont", 0);
 }
 
@@ -77,7 +84,6 @@ bool Bulmacont::eventFilter(QObject *object, QEvent *event)  {
 }
 
 
-/// Slot implementation.
 void Bulmacont::slotEditUndo()  {
     statusBar()->showMessage(tr("Deshaciendo la ultima accion..."));
     statusBar()->showMessage(tr("Listo."));

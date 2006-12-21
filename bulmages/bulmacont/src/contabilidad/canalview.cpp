@@ -24,7 +24,7 @@
 
 
 canalview::canalview(empresa *emp, QWidget *parent)
-        : QWidget(parent), dialogChanges(this) {
+        : Ficha(parent) {
     _depura("canalview::canalview", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);

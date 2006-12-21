@@ -29,6 +29,7 @@
 #include "ui_ccostebase.h"
 #include "postgresiface2.h"
 #include "dialogchanges.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -36,7 +37,7 @@ class empresa;
 
 /// Visualiza un centro de coste.
 /** */
-class ccosteview : public QWidget, public Ui_ccostedlg, public dialogChanges {
+class ccosteview : public Ficha, public Ui_ccostedlg {
     Q_OBJECT
 
 public:

@@ -46,7 +46,7 @@
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
 /// tres principales junto a \ref introapuntes1 y \ref diarioview1.
 extractoview1::extractoview1(empresa *emp, QWidget *parent, int)
-        : QWidget(parent) {
+        : Ficha(parent) {
     _depura("extractoview1::extractoview1", 0);
     setupUi(this);
     mui_list->setcompany(emp);

@@ -30,6 +30,7 @@
 #include "postgresiface2.h"
 #include "configuracion.h"
 #include "listcuentasview1.h"
+#include "ficha.h"
 
 
 class empresa;
@@ -40,7 +41,7 @@ class empresa;
     Esta clase genera el balance de sumas y saldos y lo muestra por pantalla en una
     ventana dise&ntilde;ada espec&iacute;ficamente para ello.
 */
-class balanceview : public QWidget, public Ui_BalanceBase {
+class balanceview : public Ficha, public Ui_BalanceBase {
     Q_OBJECT
 
 private:

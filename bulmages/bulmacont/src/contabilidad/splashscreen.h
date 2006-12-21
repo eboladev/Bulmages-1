@@ -25,6 +25,9 @@
 #include <QTextBrowser>
 #include <QDialog>
 #include <QEvent>
+#include <QDesktopWidget>
+#include <QTimer>
+#include <QProgressBar>
 
 
 /// Pantalla de bienvenida.
@@ -36,6 +39,7 @@ class Splash : public QDialog {
 private:
     QLabel *l;
     QTextBrowser *l2;
+    QProgressBar *barra;
 
 public:
     Splash();
@@ -44,6 +48,9 @@ public:
 public slots:
     virtual void paint();
     virtual bool event(QEvent *);
+
+private slots:
+    void barraprogreso();
 };
 
 #endif
