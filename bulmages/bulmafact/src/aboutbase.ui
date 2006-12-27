@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>AboutBase</class>
- <widget class="QDialog" name="AboutBase" >
+ <class>aboutdlg</class>
+ <widget class="QDialog" name="aboutdlg" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -499,7 +499,7 @@
    </palette>
   </property>
   <property name="windowTitle" >
-   <string>Acerca de BulmaCont</string>
+   <string>Acerca de BulmaFact</string>
   </property>
   <property name="windowIcon" >
    <iconset/>
@@ -529,23 +529,11 @@
        </property>
        <item>
         <widget class="QLabel" name="label" >
-         <property name="minimumSize" >
-          <size>
-           <width>48</width>
-           <height>48</height>
-          </size>
-         </property>
-         <property name="maximumSize" >
-          <size>
-           <width>48</width>
-           <height>48</height>
-          </size>
-         </property>
          <property name="text" >
           <string/>
          </property>
          <property name="pixmap" >
-          <pixmap resource="../../../bulmages.qrc" >:/Genericos48x48/images/pendientes/bulmacont.png</pixmap>
+          <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_articulos.48x48.png</pixmap>
          </property>
         </widget>
        </item>
@@ -563,7 +551,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Contabilidad GPL - Versión 0.9.1 -</string>
+          <string>Facturación GPL - Versión 0.9.1 -</string>
          </property>
         </widget>
        </item>
@@ -715,9 +703,9 @@ p, li { white-space: pre-wrap; }
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="mui_aceptar" >
+        <widget class="QPushButton" name="pushButton_cerrar" >
          <property name="text" >
-          <string>&amp;Aceptar</string>
+          <string>&amp;Cerrar</string>
          </property>
         </widget>
        </item>
@@ -729,7 +717,24 @@ p, li { white-space: pre-wrap; }
  </widget>
  <layoutdefault spacing="5" margin="5" />
  <resources>
-  <include location="../../../bulmages.qrc" />
+  <include location="../../bulmages.qrc" />
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_cerrar</sender>
+   <signal>clicked()</signal>
+   <receiver>aboutdlg</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>546</x>
+     <y>325</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>299</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

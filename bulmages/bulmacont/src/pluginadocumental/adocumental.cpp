@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3textbrowser.h>
-
 #include "asiento1view.h"
 #include "adocumental.h"
 #include "empresa.h"
@@ -66,25 +64,16 @@ void myplugin1::boton_adjuntar() {
 }
 
 
-/** Esta funcion se dispara para poner en marcha el archivo documental.
-    El archivo documental es una opcion mendiante la cual se pueden poner
-    junto a los asientos y otras entidades una serie de documentos ligados
-    como pueden ser PDF's, GIFS, archivos de sonido, etc.
-    La idea principal es que se pueda conectar un escaner y se puedan escanear
-    las imagenes de facturas para despues pasarlas. */
+/// Esta funcion se dispara para poner en marcha el archivo documental.
+/// El archivo documental es una opcion mendiante la cual se pueden poner
+/// junto a los asientos y otras entidades una serie de documentos ligados
+/// como pueden ser PDF's, GIFS, archivos de sonido, etc.
+/// La idea principal es que se pueda conectar un escaner y se puedan escanear
+/// las imagenes de facturas para despues pasarlas.
 void myplugin1::archDoc() {
     adocumental *adoc = new adocumental(empresaactual, 0);
     adoc->exec();
     delete adoc;
-}
-
-
-void myplugin1::elslot() {
-    fprintf(stderr, "Se ha activado el slot\n");
-    QMessageBox::warning(0, "Guardar familia",
-                         "Desea guardar los cambios?",
-                         QMessageBox::Ok,
-                         QMessageBox::Cancel );
 }
 
 
@@ -150,11 +139,11 @@ void adocumental::inicializa() {
 
 void adocumental::doubleclicked(int row, int, int, const QPoint &) {
     idadocumental = m_listado->text(row, COL_IDADOCUMENTAL);
-    fprintf(stderr, "Archivo Documental: %s\n", idadocumental.ascii());
-    if (modo ==0 ) { /// Es el modo edicion.
+    _depura("Archivo Documental: " + idadocumental, 10);
+    if (modo == 0) { /// Es el modo edicion.
         QString archivo = m_listado->text(row, COL_ARCHIVOADOCUMENTAL);
         QString comando = "konqueror " + archivo + " &";
-        system(comando.ascii());
+        system(comando.toAscii().constData());
     } else { /// Es el modo consulta.
         done(1);
     } // end if
@@ -170,10 +159,10 @@ void adocumental::newADocumental(QString archivo) {
 
 
 void adocumental::boton_newadocumental() {
-    QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER),
-                 tr("Todos (*.*)"), 0,
-                 tr("Agregar Documento"),
-                 tr("Elige el nombre de archivo"));
+    QString fn = QFileDialog::getOpenFileName(this, tr("Elija el nombre del archivo"),
+                 confpr->valor(CONF_DIR_USER),
+                 tr("Todos (*.*)"));
+
     if (!fn.isEmpty()) {
         newADocumental(fn);
     } // end if
@@ -186,11 +175,11 @@ inline QString adocumental::getidadocumental() {
 
 
 void adocumental::asociaasiento(QString idasiento) {
-    fprintf(stderr, "AsociaAsiento: \n");
-    fprintf(stderr, "idasiento:%s, idadocumental:%s\n", idasiento.ascii(), idadocumental.ascii());
+    _depura("AsociaAsiento:", 10);
+    _depura("idasiento:" + idasiento  + ", idadocumental:" + idadocumental);
     if ((idadocumental != "") && (idasiento != "")) {
         QString SQLQuery = "UPDATE adocumental SET /*idasiento*/= " + idasiento + " WHERE idadocumental = " + idadocumental;
-        fprintf(stderr, "%s\n", SQLQuery.ascii());
+        _depura(SQLQuery, 10);
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
         conexionbase->commit();
@@ -199,8 +188,8 @@ void adocumental::asociaasiento(QString idasiento) {
 }
 
 
-/** Esta funcion coge el primer archivo documental no esta asociado a ningun asiento
-    y lo muestra asignando a idasiento su valor. */
+/// Esta funcion coge el primer archivo documental no esta asociado a ningun asiento
+/// y lo muestra asignando a idasiento su valor.
 void adocumental::presentaprimervacio() {
     int i = 0;
     while (m_listado->text(i, COL_IDASIENTO) != "" && i < m_listado->numRows())
@@ -252,22 +241,18 @@ void adocumental::s_saveADocumental() {
 
 
 void adocumental::s_agregarDirectorio() {
-    QString fn = Q3FileDialog::getExistingDirectory(
-                     confpr->valor(CONF_DIR_USER),
-                     this,
-                     "get existing directory",
-                     "Choose a directory",
-                     TRUE);
-    QDir d(fn);
-    d.setFilter(QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    d.setSorting(QDir::Size | QDir::Reversed);
+    QString fn = QFileDialog::getExistingDirectory(this, tr("Elija un directorio"),
+                 confpr->valor(CONF_DIR_USER),
+                 QFileDialog::ShowDirsOnly
+                 | QFileDialog::DontResolveSymlinks);
 
-    QList<QFileInfo> list = d.entryInfoList();
-    QListIterator<QFileInfo> it(list);
-    while (it.hasNext()) {
-        QString fn = it.next().filePath();
-        newADocumental(fn);
-    } // end while
+    QDir d(fn);
+    QFileInfoList list = d.entryInfoList();
+    for (int i = 0; i < list.size(); ++i) {
+        QFileInfo fileInfo = list.at(i);
+        newADocumental(fileInfo.filePath());
+    } // end for
+
     inicializa();
 }
 

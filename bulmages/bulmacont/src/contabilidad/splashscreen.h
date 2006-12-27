@@ -21,24 +21,26 @@
 #ifndef _SPLASH_H
 #define _SPLASH_H
 
-#include <QLabel>
-#include <QTextBrowser>
 #include <QDialog>
-#include <QEvent>
-#include <QDesktopWidget>
+#include <QPixmap>
+#include <QLabel>
 #include <QTimer>
+#include <QTextBrowser>
+#include <QPalette>
 #include <QProgressBar>
+#include <QDesktopWidget>
+
+#include <stdlib.h>
+#include <stdio.h>
 
 
-/// Pantalla de bienvenida.
-/** Clase que muestra la imagen del splash y algunos mensajes chorras.
-    Esta clase no tiene mucha utilidad, se utiliza para dar mayor apariencia al programa. */
+/// Muestra y administra la ventana de bienvenida al programa.
+/** */
 class Splash : public QDialog {
     Q_OBJECT
 
 private:
-    QLabel *l;
-    QTextBrowser *l2;
+    QTextBrowser *l1;
     QProgressBar *barra;
 
 public:
@@ -46,8 +48,8 @@ public:
     ~Splash();
 
 public slots:
-    virtual void paint();
-    virtual bool event(QEvent *);
+    void paint();
+    bool event(QEvent *);
 
 private slots:
     void barraprogreso();

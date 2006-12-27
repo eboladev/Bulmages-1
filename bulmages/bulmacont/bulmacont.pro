@@ -6,6 +6,7 @@
 SUBDIRS += src/contabilidad \
            src/pluginregistroiva \
            src/pluginadocumental \
-           src/plugincorrector 
+           src/plugincorrector \
+           src/plugin 
 TEMPLATE = subdirs
 CONFIG += ordered

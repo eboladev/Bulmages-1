@@ -38,7 +38,7 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
 
     l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("<center><font size=+1 color=\"#0000ff\">BulmaFact</font>&nbsp;<font color=\"#ffcc00\">0.5.9</font></center>"));
+    l0->setText(tr("<center><font size=+1 color=\"#a3ffa3\">BulmaFact</font>&nbsp;<font color=\"#0000ff\">0.9.1</font></center>"));
 
     l1 = new QTextBrowser(this);
     l1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -114,7 +114,7 @@ void Splash::paint() {
                              tr("Sincronizando fases Alfa Beta"),
                              tr("Flusheando datos con vidas inteligentes superiores"),
                              tr("Permutando las particiones del Sistema Operativo"),
-                             tr("Crackeando BulmaGes")};
+                             tr("Crackeando BulmaFact")};
 
     /// Cuenta el numero de mensajes.
     cantidadmensajes = sizeof(mensajes) / sizeof(mensajes[0]);

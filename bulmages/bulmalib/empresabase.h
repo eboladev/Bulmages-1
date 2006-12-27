@@ -31,14 +31,17 @@
 
 class EmpresaBase : public postgresiface2 {
 protected:
-    /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de mensajes tiene el control de la lista de ventanas.
+    /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de
+    /// mensajes tiene el control de la lista de ventanas.
     listventanas *m_listventanas;
-public:
-    /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas, es comodo tener este puntero inicializado en esta clase.
-    QWorkspace2 *m_pWorkspace;
-    /// El indicador de progreso. PAra que determinados procesos puedan indicar su evolucion de forma general en la ventana principal.
-    QProgressBar *m_progressbar;
 
+public:
+    /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas,
+    /// es comodo tener este puntero inicializado en esta clase.
+    QWorkspace2 *m_pWorkspace;
+    /// El indicador de progreso. Para que determinados procesos puedan indicar su evolucion
+    /// de forma general en la ventana principal.
+    QProgressBar *m_progressbar;
 
 public:
     EmpresaBase();
@@ -73,3 +76,4 @@ public:
 };
 
 #endif
+

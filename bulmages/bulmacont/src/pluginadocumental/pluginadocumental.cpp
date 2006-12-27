@@ -20,9 +20,6 @@
 
 #include <stdio.h>
 
-//#include <q3dockwindow.h>
-//#include <q3mainwindow.h>
-
 #include <QAction>
 #include <QObject>
 #include <QMessageBox>
@@ -52,28 +49,42 @@ void entryPoint(Bulmacont *bcont) {
     Asiento1View *intapunts = emp->intapuntsempresa();
     myplugin1 *pub = new myplugin1(emp);
     intapunts->hide();
+
     QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;
 
-    QToolButton *m_adocumental = new QToolButton(intapunts);
-    //m_adocumental->setSizePolicy(QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental->sizePolicy().hasHeightForWidth()));
-    //m_adocumental->setIconSet(QIcon(*img));
-    //layoutPlugins->addWidget(m_adocumental);
+    //QToolButton *m_adocumental = new QToolButton(intapunts);
+    QToolButton *m_adocumental = new QToolButton();
+
+    m_adocumental->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_adocumental->setIcon(QIcon(*img));
+    layoutPlugins->addWidget(m_adocumental);
 
     QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
-    QToolButton *m_adocumental1 = new QToolButton(intapunts);
+    //QToolButton *m_adocumental1 = new QToolButton(intapunts);
+    QToolButton *m_adocumental1 = new QToolButton();
 
-    //m_adocumental1->setSizePolicy(QSizePolicy((QSizePolicy::SizeType)0, (QSizePolicy::SizeType)0, 0, 0, m_adocumental1->sizePolicy().hasHeightForWidth()));
-    //m_adocumental1->setIconSet(QIcon(*img1));
-    //layoutPlugins->addWidget(m_adocumental1);
+    m_adocumental1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    m_adocumental1->setIcon(QIcon(*img1));
+    layoutPlugins->addWidget(m_adocumental1);
+
     QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
-    intapunts->showMaximized();
+    //intapunts->showMaximized();
 
     /// Hacemos la entrada de menu.
     QAction *ArchDoc = new QAction("&Archivo documental", 0);
     ArchDoc->setStatusTip("Archivo documental");
     ArchDoc->setWhatsThis("Archivo documental");
+    QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));
+
+    ///TODO: Hay que poner la opcion dentro del menu HERRAMIENTAS.
     //bcont->pHerramientas()->insertSeparator();
     //ArchDoc->addTo(bcont->pHerramientas());
-    //QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));
+
+    /// Creamos el men&uacute;.
+    QMenu *pPluginMenu = new QMenu("&Plugin documental");
+
+    pPluginMenu->addAction(ArchDoc);
+    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
+    bcont->menuBar()->addMenu(pPluginMenu);
 }
 

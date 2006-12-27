@@ -23,7 +23,7 @@ exists( /usr/local/bin/distcc ) {
 
 # RESOURCES += ../../bulmages-recursos-graficos.qrc
 
-FORMS += about.ui \
+FORMS += aboutbase.ui \
          pagobase.ui \
          cobrobase.ui \
          trabajadorbase.ui \
@@ -125,8 +125,6 @@ HEADERS += bulmafact.h \
            informereferencia.h \
            trabajadorview.h \
            busquedatrabajador.h \
-#           comparticulo.h \
-#           comparticulolist.h \
            comparticulolistview.h \
            pago.h \
            pagoview.h \
@@ -153,10 +151,6 @@ HEADERS += bulmafact.h \
            listalmacenview.h \
            listconfiguracionview.h \
            subform2bf.h \
-#           listlinpresupuesto.h \
-#           linpresupuesto.h \
-#           listdescpresupuesto.h \
-#           descpresupuesto.h \
            busquedareferencia.h
 
 SOURCES += bulmafact.cpp \
@@ -212,8 +206,6 @@ SOURCES += bulmafact.cpp \
            informereferencia.cpp \
            trabajadorview.cpp \
            busquedatrabajador.cpp \
-#           comparticulo.cpp \
-#           comparticulolist.cpp \
            comparticulolistview.cpp \
            pago.cpp \
            pagoview.cpp \
@@ -240,10 +232,6 @@ SOURCES += bulmafact.cpp \
            listalmacenview.cpp \
            listconfiguracionview.cpp \
            subform2bf.cpp \
-#           listlinpresupuesto.cpp \
-#           linpresupuesto.cpp \
-#           listdescpresupuesto.cpp \
-#           descpresupuesto.cpp \
            busquedareferencia.cpp
 
 

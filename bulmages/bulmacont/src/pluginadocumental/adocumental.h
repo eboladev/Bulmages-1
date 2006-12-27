@@ -21,7 +21,8 @@
 #ifndef ADOCUMENTAL_H
 #define ADOCUMENTAL_H
 
-#include <Q3FileDialog>
+#include <QFileDialog>
+#include <QFileInfo>
 
 #include <QWidget>
 #include <QMessageBox>
@@ -46,7 +47,6 @@ public:
     ~myplugin1();
 
 public slots:
-    virtual void elslot();
     virtual void boton_adjuntar();
     virtual void boton_nuevoasientodocumental();
     virtual void archDoc();

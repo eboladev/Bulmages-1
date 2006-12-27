@@ -39,7 +39,7 @@ myplugin::~myplugin() {}
 
 
 void myplugin::elslot() {
-    fprintf(stderr,"Sa ha activado el slot\n");
+    fprintf(stderr, "Sa ha activado el slot\n");
     QMessageBox::warning(0,
                          "Titulo de la ventana",
                          "Mensaje.",

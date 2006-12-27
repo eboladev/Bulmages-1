@@ -23,14 +23,13 @@
 #include "funcaux.h"
 
 
-/// Constructor de la clase
-/** Genera el splash y pinta los elementos iniciales. */
 Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     QPixmap image0;
-    image0.load(confpr->valor(CONF_SPLASH).toAscii());
-    l = new QLabel(this);
-    l->setPixmap(image0);
-    l->setGeometry(0, 0, image0.width(), image0.height());
+    image0.load(confpr->valor(CONF_SPLASH));
+    /// Se modifica la paleta para que utilize la imagen como fondo.
+    QPalette p = this->palette();
+    p.setBrush(QPalette::Window, image0);
+    this->setPalette(p);
 
     QLabel *l0 = new QLabel(this);
     l0->setTextFormat(Qt::RichText);
@@ -38,23 +37,25 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
 
     l0->setAlignment(Qt::AlignTop);
     l0->setFont(QFont("Arial", 20, QFont::Bold));
-    l0->setText(tr("<center><font size=+1 color=\"#666666\">BulmaCont</font>&nbsp;<font color=\"#333333\">0.5.9</font></center>"));
+    l0->setText(tr("<center><font size=+1 color=\"#fff8a1\">BulmaCont</font>&nbsp;<font color=\"#ff5e00\">0.9.1</font></center>"));
 
-    l2 = new QTextBrowser(this);
-    l2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    l2->setAlignment(Qt::AlignBottom);
-    l2->setFont(QFont("helvetica", 9, QFont::Normal));
-    l2->setGeometry(0, image0.height() + 15, image0.width(), 58);
+    l1 = new QTextBrowser(this);
+    l1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    l1->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    QPalette pl2 = l2->palette();
-    pl2.setBrush(QPalette::Base, QColor("#DDDDDD"));
-    l2->setPalette(pl2);
+    l1->setAlignment(Qt::AlignBottom);
+    l1->setFont(QFont("helvetica", 9, QFont::Normal));
+    l1->setGeometry(0, image0.height() - 23, image0.width(), 58);
+
+    QPalette pl1 = l1->palette();
+    pl1.setBrush(QPalette::Base, QColor("#DDDDDD"));
+    l1->setPalette(pl1);
 
     barra = new QProgressBar(this);
     barra->setTextVisible(FALSE);
     /// Poniendo el minimo y maximo a 0 hace el efecto especial.
     barra->setRange(0, 10);
-    barra->setGeometry(0, image0.height(), image0.width(), 15);
+    barra->setGeometry(0, image0.height() - 38, image0.width(), 15);
     QPalette pbarra = barra->palette();
     QColor colorfondobarra = QColor("#000000");
     colorfondobarra.setAlpha(100);
@@ -62,10 +63,6 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     barra->setPalette(pbarra);
 
     this->paint();
-
-    QTimer timer(this);
-    connect(&timer, SIGNAL(timeout()), SLOT(close()));
-    timer.start(10000);
 
     QTimer timer1(this);
     connect(&timer1, SIGNAL(timeout()), SLOT(paint()));
@@ -79,15 +76,15 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     QDesktopWidget *pantalla = new QDesktopWidget();
     move((pantalla->screenGeometry().width() / 2) - (image0.width() / 2), (pantalla->screenGeometry().height() / 2) - ((image0.height() + 58) / 2));
 
-    exec();
+    /// Nos muestra la ventana en modo MODAL.
+    exec();    
 }
 
 
 /// Destructor de la clase.
 /** Libera memoria. */
 Splash::~Splash() {
-    delete l;
-    delete l2;
+    delete l1;
 }
 
 
@@ -122,7 +119,7 @@ void Splash::paint() {
                              tr("Sincronizando fases Alfa Beta"),
                              tr("Flusheando datos con vidas inteligentes superiores"),
                              tr("Permutando las tablas de particion del Sistema Operativo"),
-                             tr("Crackeando BulmaGes")};
+                             tr("Crackeando BulmaCont")};
 
     /// Cuenta el numero de mensajes.
     cantidadmensajes = sizeof(mensajes) / sizeof(mensajes[0]);
@@ -138,9 +135,9 @@ void Splash::paint() {
 
     cad = cad + "<FONT COLOR='#000066'>" + mensajes[a] + "</FONT>";
     a++;
-    l2->insertHtml(cad);
+    l1->insertHtml(cad);
     /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
-    l2->ensureCursorVisible();
+    l1->ensureCursorVisible();
 }
 
 

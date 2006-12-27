@@ -7,9 +7,9 @@
         <source>Acerca de BulmaCont</source>
         <translation type="unfinished"></translation>
     </message>
-    <message encoding="UTF-8">
+    <message>
         <location filename="aboutbase.ui" line="566"/>
-        <source>Contabilidad GPL - Versión 0.5.9 -</source>
+        <source>Contabilidad GPL - Versi&#xc3;&#xb3;n 0.9.1 -</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1048,92 +1048,92 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>BalanceTreeView</name>
     <message>
-        <location filename="balance1view.cpp" line="77"/>
+        <location filename="balance1view.cpp" line="76"/>
         <source>Codigo cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="78"/>
+        <location filename="balance1view.cpp" line="77"/>
         <source>Nombre de la cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="79"/>
+        <location filename="balance1view.cpp" line="78"/>
         <source>Saldo anterior</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="80"/>
+        <location filename="balance1view.cpp" line="79"/>
         <source>Debe</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="81"/>
+        <location filename="balance1view.cpp" line="80"/>
         <source>Haber</source>
         <translation type="unfinished">Haber</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="82"/>
+        <location filename="balance1view.cpp" line="81"/>
         <source>Saldo periodo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="83"/>
+        <location filename="balance1view.cpp" line="82"/>
         <source>Debe ejercicio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="84"/>
+        <location filename="balance1view.cpp" line="83"/>
         <source>Haber ejercicio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="85"/>
+        <location filename="balance1view.cpp" line="84"/>
         <source>Saldo ejercicio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="86"/>
+        <location filename="balance1view.cpp" line="85"/>
         <source>Nivel</source>
         <translation type="unfinished">Nivell</translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="87"/>
+        <location filename="balance1view.cpp" line="86"/>
         <source>ID cuenta</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="87"/>
+        <location filename="balance1view.cpp" line="86"/>
         <source>Padre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="437"/>
+        <location filename="balance1view.cpp" line="436"/>
         <source>Ver Diario (este dia)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="438"/>
+        <location filename="balance1view.cpp" line="437"/>
         <source>Ver Diario (este mes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="439"/>
+        <location filename="balance1view.cpp" line="438"/>
         <source>Ver Diario (este anyo)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="441"/>
+        <location filename="balance1view.cpp" line="440"/>
         <source>Ver extracto (este dia)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="442"/>
+        <location filename="balance1view.cpp" line="441"/>
         <source>Ver extracto (este mes)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="balance1view.cpp" line="443"/>
+        <location filename="balance1view.cpp" line="442"/>
         <source>Ver extracto (este anyo)</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1482,48 +1482,53 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>Bulmacont</name>
     <message>
-        <location filename="bulmacont.cpp" line="57"/>
+        <location filename="bulmacont.cpp" line="85"/>
         <source>BulmaCont -- </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="123"/>
+        <location filename="bulmacont.cpp" line="152"/>
         <source>Listo.</source>
         <translation type="unfinished">Enllestit.</translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="82"/>
+        <location filename="bulmacont.cpp" line="111"/>
         <source>Deshaciendo la ultima accion...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="88"/>
+        <location filename="bulmacont.cpp" line="117"/>
         <source>Cortando seleccion...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="94"/>
+        <location filename="bulmacont.cpp" line="123"/>
         <source>Copiando la seleccion al portapapeles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="100"/>
+        <location filename="bulmacont.cpp" line="129"/>
         <source>Insertando el contenido del portapapeles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="106"/>
+        <location filename="bulmacont.cpp" line="135"/>
         <source>Cambinado barra de estado...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="117"/>
+        <location filename="bulmacont.cpp" line="146"/>
         <source>Cambiando a modo de pantalla completa...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="bulmacont.cpp" line="134"/>
+        <location filename="bulmacont.cpp" line="163"/>
         <source>Listado de cuentas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="bulmacont.cpp" line="87"/>
+        <source>Listo</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3308,68 +3313,68 @@ Pruebe a descargarlo desde www.aeat.es y guaedelo en
 <context>
     <name>Splash</name>
     <message>
-        <location filename="splashscreen.cpp" line="92"/>
+        <location filename="splashscreen.cpp" line="111"/>
         <source>Comprobando nivel de combustible</source>
         <translation>Carregant el Solitari en segon pla</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="93"/>
+        <location filename="splashscreen.cpp" line="112"/>
         <source>Calibrando los lasers del lector de CD</source>
         <translation>Calibrant els lasers del lector de CD</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="98"/>
+        <location filename="splashscreen.cpp" line="117"/>
         <source>Haciendo PING contra el servidor de la MetaBase</source>
         <translation>Entrant al Jabber, per veure als amics</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="99"/>
+        <location filename="splashscreen.cpp" line="118"/>
         <source>Dejando tiempo libre al sistema</source>
         <translation>Eliminant altres programes de Contabilitat</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="100"/>
+        <location filename="splashscreen.cpp" line="119"/>
         <source>Sincronizando fases Alfa Beta</source>
         <translation>Enjegant la WebCam</translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="96"/>
+        <location filename="splashscreen.cpp" line="115"/>
         <source>Golpecitos de reajuste del HD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="48"/>
-        <source>&lt;center&gt;&lt;font size=+1 color=&quot;#666666&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#333333&quot;&gt;0.5.9&lt;/font&gt;&lt;/center&gt;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="splashscreen.cpp" line="94"/>
+        <location filename="splashscreen.cpp" line="113"/>
         <source>Comprobando la disquetera y la memoria fisica</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="95"/>
+        <location filename="splashscreen.cpp" line="114"/>
         <source>Induciendo energia quantica, entre su RAM y su ROM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="97"/>
+        <location filename="splashscreen.cpp" line="116"/>
         <source>Probando la velocidad del ventilador de la CPU y su frecuencia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="101"/>
+        <location filename="splashscreen.cpp" line="120"/>
         <source>Flusheando datos con vidas inteligentes superiores</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="102"/>
+        <location filename="splashscreen.cpp" line="121"/>
         <source>Permutando las tablas de particion del Sistema Operativo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="splashscreen.cpp" line="103"/>
-        <source>Crackeando BulmaGes</source>
+        <location filename="splashscreen.cpp" line="40"/>
+        <source>&lt;center&gt;&lt;font size=+1 color=&quot;#fff8a1&quot;&gt;BulmaCont&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff5e00&quot;&gt;0.9.1&lt;/font&gt;&lt;/center&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="splashscreen.cpp" line="122"/>
+        <source>Crackeando BulmaCont</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -24,8 +24,7 @@
 #include "abreempresaview.h"
 
 
-/** No precisa de operaciones en su construccion.
-*/
+/// No precisa de operaciones en su construccion.
 EmpresaBase::EmpresaBase() {
     _depura("EmpresaBase::EmpresaBase", 0);
     _depura("END EmpresaBase::EmpresaBase", 0);
@@ -35,19 +34,19 @@ EmpresaBase::EmpresaBase() {
 /// El destructor de la clase EmpresaBase borra toda la memoria almacenada.
 EmpresaBase::~EmpresaBase() {
     _depura("EmpresaBase::~EmpresaBase", 0);
-    /// cerramos todas las ventanas y las DestructiveClose se borran
+    /// cerramos todas las ventanas y las DestructiveClose se borran.
     m_listventanas->vaciar();
     _depura("END EmpresaBase::~EmpresaBase", 0);
 }
 
-/** Inicializa la base de datos que se pasa, si se pasa una cadena vacia
-    entonces invoca el selector de empresa.
-*/
+
+/// Inicializa la base de datos que se pasa, si se pasa una cadena vacia
+/// entonces invoca el selector de empresa.
 void EmpresaBase::init(QString bd, QString tipo) {
     _depura("EmpresaBase::init", 0);
-    if (bd == "")
+    if (bd == "") {
         bd = searchCompany(tipo);
-
+    } // end if
     /// Hacemos visible el ProgressBar mientras se habre la base de datos y se cargan
     /// los datos de la en las ventanas.
     m_progressbar->setVisible(TRUE);
@@ -57,10 +56,9 @@ void EmpresaBase::init(QString bd, QString tipo) {
 }
 
 
-/** Se utiliza para mostrar un selector de empresas abreempresaview
-    Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
-    clases a partir de dicha inicializacion.
-*/
+/// Se utiliza para mostrar un selector de empresas abreempresaview
+/// Al usuario debe seleccionar una empresa y el sistema empieza la inicializacion de
+/// clases a partir de dicha inicializacion.
 QString EmpresaBase::searchCompany(QString tipo) {
     /// El cambio de empresa se realiza desde el selector.
     _depura("EmpresaBase::searchCompany", 0);
@@ -71,17 +69,18 @@ QString EmpresaBase::searchCompany(QString tipo) {
     _depura("Empresa cambiada a " + bd, 0);
     delete nuevae;
     /// Si no se ha seleccionado ninguna base de datos entonces abortamos.
-    if (bd == "")
+    if (bd == "") {
         exit(1);
+    } // end if
     _depura("END EmpresaBase::searchCompany", 0);
     return bd;
 }
 
 
-/** */
 /// \TODO: Que significa esto ?.
 void EmpresaBase::s_indexadorCambiaEstado() {
     _depura("company::s_indexadorCambiaEstado", 0);
     m_listventanas->cambiaVisible();
     _depura("END company::s_indexadorCambiaEstado", 0);
 }
+
