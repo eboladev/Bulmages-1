@@ -17,7 +17,8 @@ TEMPLATE = lib
 
 CONFIG +=  plugin \
            warn_on \
-	   qt
+	   qt \
+	   release
 	 	 
 TARGET = ../../../installbulmages/plugins/adocumental
 
@@ -70,6 +71,5 @@ OBJECTS_DIR = .obj
 
 
 #The following line was inserted by qt3to4
-QT +=  qt3support xml
-DEFINES += QT3_SUPPORT_WARNINGS
+QT +=  xml
 

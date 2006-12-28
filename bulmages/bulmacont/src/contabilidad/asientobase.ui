@@ -50,7 +50,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QFrame" name="frame_3" >
+      <widget class="QFrame" name="mui_framebotones" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>7</hsizetype>

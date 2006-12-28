@@ -25,7 +25,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QToolButton" name="m_new" >
@@ -33,7 +33,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image0</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
        </property>
       </widget>
      </item>
@@ -43,7 +43,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image1</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
        </property>
       </widget>
      </item>
@@ -59,7 +59,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image2</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_immportar.png</iconset>
        </property>
       </widget>
      </item>
@@ -69,7 +69,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image3</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_dele.png</iconset>
        </property>
       </widget>
      </item>
@@ -82,7 +82,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image4</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
        </property>
       </widget>
      </item>
@@ -101,7 +101,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset>image5</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_tuxPeq.png</iconset>
        </property>
       </widget>
      </item>
@@ -124,14 +124,7 @@
     </layout>
    </item>
    <item>
-    <widget class="Q3Table" name="m_listado" >
-     <property name="numRows" >
-      <number>3</number>
-     </property>
-     <property name="numCols" >
-      <number>4</number>
-     </property>
-    </widget>
+    <widget class="QTableWidget" name="m_listado" />
    </item>
    <item>
     <layout class="QHBoxLayout" >
@@ -169,31 +162,10 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <customwidgets>
-  <customwidget>
-   <class>Q3Table</class>
-   <extends>Q3Frame</extends>
-   <header>q3table.h</header>
-  </customwidget>
- </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../../bulmages.qrc" />
+ </resources>
  <connections>
-  <connection>
-   <sender>m_listado</sender>
-   <signal>doubleClicked(int,int,int,QPoint)</signal>
-   <receiver>adocumentalbase</receiver>
-   <slot>doubleclicked(int,int,int,QPoint)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>m_new</sender>
    <signal>clicked()</signal>

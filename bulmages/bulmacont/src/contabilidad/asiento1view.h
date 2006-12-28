@@ -25,7 +25,7 @@
 
 #include <QWidget>
 #include <QString>
-#include <QHBoxLayout>
+#include <QFrame>
 
 #include "qtable2.h"
 #include "postgresiface2.h"
@@ -134,8 +134,6 @@ public:
     void muestraasiento(int v) {
         muestraasiento(QString::number(v));
     };
-    /// Para poder enganchar plugins a esta ventana se ha habilitado este layout.
-    QHBoxLayout *layoutPlugins;
 
 public:
     void setFecha(QString val) {

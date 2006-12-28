@@ -27,7 +27,9 @@
 #include <QImage>
 #include <QLabel>
 #include <QPixmap>
-#include <QHBoxLayout>
+//#include <QHBoxLayout>
+//#include <QToolBar>
+#include <QFrame>
 
 #include "pluginadocumental.h"
 #include "empresa.h"
@@ -47,29 +49,36 @@ void entryPoint(Bulmacont *bcont) {
 
     empresa *emp = bcont->empresaactual();
     Asiento1View *intapunts = emp->intapuntsempresa();
+
     myplugin1 *pub = new myplugin1(emp);
     intapunts->hide();
 
-    QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;
 
-    //QToolButton *m_adocumental = new QToolButton(intapunts);
-    QToolButton *m_adocumental = new QToolButton();
+    QToolButton *boton1 = new QToolButton();
+    QAction *botonaction1 = new QAction(QIcon(*img), "" , 0);
+    boton1->addAction(botonaction1);
 
-    m_adocumental->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    m_adocumental->setIcon(QIcon(*img));
-    layoutPlugins->addWidget(m_adocumental);
+    intapunts->hboxLayout1->addWidget(boton1);
 
-    QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
-    //QToolButton *m_adocumental1 = new QToolButton(intapunts);
-    QToolButton *m_adocumental1 = new QToolButton();
 
-    m_adocumental1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    m_adocumental1->setIcon(QIcon(*img1));
-    layoutPlugins->addWidget(m_adocumental1);
-
-    QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
-    //intapunts->showMaximized();
-
+    /*
+        QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;
+        QToolButton *m_adocumental = new QToolButton(intapunts);
+     
+        m_adocumental->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        m_adocumental->setIcon(QIcon(*img));
+        layoutPlugins->addWidget(m_adocumental);
+     
+        QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
+        QToolButton *m_adocumental1 = new QToolButton(intapunts);
+     
+        m_adocumental1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        m_adocumental1->setIcon(QIcon(*img1));
+        layoutPlugins->addWidget(m_adocumental1);
+     
+        QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
+        intapunts->showMaximized();
+    */
     /// Hacemos la entrada de menu.
     QAction *ArchDoc = new QAction("&Archivo documental", 0);
     ArchDoc->setStatusTip("Archivo documental");

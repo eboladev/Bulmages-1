@@ -23,10 +23,10 @@
 
 #include <QFileDialog>
 #include <QFileInfo>
-
 #include <QWidget>
 #include <QMessageBox>
 #include <QDialog>
+#include <QTableWidgetItem>
 
 #include "ui_adocumentalbase.h"
 #include "postgresiface2.h"
