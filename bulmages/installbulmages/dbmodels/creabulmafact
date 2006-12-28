@@ -10,7 +10,7 @@
 #		$1 Tipo: Texto o dialogo
 #               $2 Nombre Base de Datos
 #               $3 Tipo:  0.- Base (Vacia)
-#			  1.- Plan Contable.
+#			  1.- No se usa de .
 #			  2.- Juego de prueba de bulmafact
 #		$4 Nombre de la Empresa
 #
@@ -18,8 +18,10 @@
 # ------------------------------------------------------------------------------------------------
 
 
+version="v0.9.1"
+
 #Buscamos el parametro para saber si es texto o no
-if [ "$1" = "--texto" ]; then
+if [ "$1" = "--texto" ]; 
   texto="1"
   ptexto="--texto"
 else
@@ -28,13 +30,23 @@ else
 fi
 
 
+#Si el nmero de parametros no es el correcto salimos con un mensaje de error.
+if [ "$4" = "" ]; then
+   echo "creabulmafact [--texto | --dialog] nombre [0 | 1 | 2] nomempresa"
+   echo " opcion 0: Base de datos Vacia, (si duda elija esta opcion)"
+   echo " opcion 2: Juego de pruebas de bulmafact. Base de datos de ejemplo."
+   exit
+fi
+
+
+
 function mensaje() {
    if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
       echo -e "$1"
    elif [ -e /usr/bin/xdialog ]; then
-      xdialog --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
+      xdialog --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
    else
-      dialog --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
+      dialog --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --msgbox "$1" 15 60
    fi
 }
 
@@ -43,9 +55,9 @@ function info() {
    if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
       echo -e "$1"
    elif [ -e /usr/bin/xdialog ]; then
-      xdialog  --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+      xdialog  --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
    else
-      dialog  --title "Creacion Base de Datos" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
+      dialog  --title "Creacion Base de Datos $version" --backtitle "Asociacion Iglues" --infobox "$1" 10 60
    fi
 }
 
@@ -69,10 +81,20 @@ cd /usr/share/bulmages/dbmodels
 
 
 info "Creamos la base de datos:$2 $3"
-linea
 tiempo
 
-dropdb  $2 2>> /tmp/error.txt > /dev/null
+#dropdb  $2 2>> /tmp/error.txt > /dev/null
+# Comprobamos que la base de datos no exista ya en el sistema.
+LANG_PSQL=`psql -l | grep $2`
+if [ "$LANG_PSQL" != "" ]; then
+	mensaje "No se puede crear la base de datos $2 porque ya existe en el sistema"
+	exit 1
+fi;
+
+
+# La creacion de las bases de datos como UNICODE da muchos problemas con los caracteres especiales
+# Por ese motivo de momento crearemos las bases de datos como SQL_ASCII
+#createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
 createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
 
 # Creamos la base
@@ -114,7 +136,7 @@ if [ -e /tmp/errores.txt ]; then
    DBS=`cat /tmp/errores.txt | grep ERROR`
 fi
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortar�la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n$DBS"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortara instalacion. Para mas informacion consulte http://www.iglues.org . \n$DBS"
    dropdb $2
    exit 1
 else

@@ -545,8 +545,8 @@ CREATE TABLE cliente (
     comentcliente character varying(2000),
     inactivocliente character(1),
     provcliente character varying,
-    idtarifa integer references tarifa(idtarifa)
-    departamento character varying(32);
+    idtarifa integer references tarifa(idtarifa),
+    departamento character varying(32)
 );
 
 

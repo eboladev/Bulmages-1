@@ -14,12 +14,12 @@
 #                         1.- Plan Contable.
 #                         2.- Juego de prueba de bulmacont
 #               $4 Nombre de la Empresa.
-#               $5 Ejercicio (ano)
+#               $5 Ejercicio (anyo)
 #
 # La diferencia entre este script y el installbulmages es que este no hace falta que se ejecute como ROOT
 # -------------------------------------------------------------------------------------------------------
 
-version="v0.5.3"
+version="v0.9.1"
 texto="1"
 ptexto="--texto"
 
@@ -37,6 +37,9 @@ fi
 #Si el nmero de parametros no es el correcto salimos con un mensaje de error.
 if [ "$5" = "" ]; then
    echo "creabulmacont [--texto | --dialog] nombre [0 | 1 | 2] nomempresa ejercicio"
+   echo " opcion 0: Base de datos Vacia"
+   echo " opcion 1: Base de datos con plan contable estandar (si duda elija esta opcion)"
+   echo " opcion 2: Juego de pruebas de bulmacont. Base de datos de ejemplo."
    exit
 fi
 
@@ -86,6 +89,7 @@ info "Creamos la base de datos:$2 \n $4"
 linea
 tiempo
 
+# Comprobamos que la base de datos no exista ya en el sistema.
 LANG_PSQL=`psql -l | grep $2`
 if [ "$LANG_PSQL" != "" ]; then
 	mensaje "No se puede crear la base de datos $2 porque ya existe en el sistema"
@@ -93,14 +97,16 @@ if [ "$LANG_PSQL" != "" ]; then
 fi;
 
 
-info "Comprobamos la existencia de PLPGSQL"
-   LANG_PSQL=`locate plpgsql.so`
-   if [ "$LANG_PSQL" = "" ]; then
-      mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
-   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
-   Por favor, localicela e intente una instalacion manual\n"
-      exit 1
-   fi
+# Ya no hacemos esta comprobacion y dejamos que la haga el propio motor de base de datos.
+# El codigo comentado es un resquicio.
+#info "Comprobamos la existencia de PLPGSQL"
+#   LANG_PSQL=`locate plpgsql.so`
+#   if [ "$LANG_PSQL" = "" ]; then
+#      mensaje "PostgreSQL no esta bien instalado o la distribucion no es una \n de las soportadas por el instalador. \
+#   No se ha encontrado la libreria plpgsql.so necesaria para instalar las \n bases de datos
+#   Por favor, localicela e intente una instalacion manual\n"
+#      exit 1
+#   fi
 
 
 # La creacion de las bases de datos como UNICODE da muchos problemas con los caracteres especiales
@@ -109,7 +115,7 @@ info "Comprobamos la existencia de PLPGSQL"
 createdb -E SQL_ASCII $2 2>> /tmp/errores.txt > /dev/null
 
 
-# Si no ha salido en el exit 1 es que si ha encontrado el plpgsql y continuamos
+# Creamos la empresa y  metemos los datos de esquema que deben hacerse en cualquier caso.
 if [ "$3" = "1" -o "$3" = "2" -o "$3" = "0" ]; then
 	info "Importamos el esquema de base de datos de una empresa. \n"
 	tiempo
@@ -118,6 +124,8 @@ fi
 
 
 
+
+# En caso de querer un conjunto minimo de datos se meten los datos minimos.
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
    info "Cargamos el conjunto minimo de datos. \n Plan contable simple. \n"
@@ -129,6 +137,8 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
 fi
 
 
+
+# Si se esta pidiendo un ejemplo entonces se carga el resto de datos.
 if [ "$3" = "2" ]; then
    # Cargamos todas las tablas que son de ejemplo.
    info "Cargamos datos adicionales. \n Ejemplo. \n"
@@ -158,9 +168,11 @@ info "Realizando configuraciones adicionales. \n"
 echo "UPDATE configuracion SET valor='$4' WHERE nombre='NombreEmpresa';" | psql $2 >/dev/null
 tiempo
 
+
+# Si hay errores se borra la base de datos y se sale.
 DBS=`cat /tmp/errores.txt | grep ERROR`
 if [ "$DBS" ]; then
-   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortaro la instalacion. Para mas informacion consulte en bulmages@bulma.net. \n"
+   mensaje "Se han producido errores al instalar la base de datos $2 \n Se abortara la instalacion. Para mas informacion consulte en http://www.iglues.org \n"
    dropdb $2
    exit 1
 else
