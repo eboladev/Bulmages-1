@@ -44,7 +44,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public Ficha, public Ui_BudgetBase, public presupuesto {
+class PresupuestoView : public Ficha, public Ui_BudgetBase, public Presupuesto {
     Q_OBJECT
 
 private:
@@ -77,7 +77,7 @@ public:
     void pintaidcliente(QString id) {
         m_cliente->setidcliente(id);
     }
-    void pintarefpresupuesto(QString id) {
+    void pintarefPresupuesto(QString id) {
         m_refpresupuesto->setText(id);
     }
     void pintaidforma_pago(QString id) {
@@ -89,14 +89,14 @@ public:
     void pintaidtrabajador(QString id) {
         m_trabajador->setidtrabajador(id);
     }
-    void pintaprocesadopresupuesto(QString id) {
+    void pintaprocesadoPresupuesto(QString id) {
         if (id == "t" || id == "TRUE") {
             m_procesadopresupuesto->setChecked(TRUE);
         } else {
             m_procesadopresupuesto->setChecked(FALSE);
         }
     }
-    void pintadescpresupuesto(QString id) {
+    void pintadescPresupuesto(QString id) {
         m_descpresupuesto->setText(id);
     }
     virtual int sacaWindow();
@@ -109,7 +109,7 @@ public:
     virtual int guardar();
     virtual int cargar(QString id);
     virtual int borrar() {
-        return presupuesto::borrar();
+        return Presupuesto::borrar();
     }
 
 public slots:

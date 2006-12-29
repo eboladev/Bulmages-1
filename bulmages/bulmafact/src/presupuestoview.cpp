@@ -47,8 +47,8 @@
 
 
 PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
-        : Ficha(parent), presupuesto(comp) {
-    _depura("Inicializacion de PresupuestoView\n", 0);
+        : Ficha(parent), Presupuesto(comp) {
+    _depura("Inicializacion de PresupuestoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
@@ -65,7 +65,7 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         m_trabajador->setcompany(comp);
         m_refpresupuesto->setcompany(comp);
         setlislinpresupuesto(subform2);
-        setlisdescpresupuesto(m_descuentos);
+        setlisdescPresupuesto(m_descuentos);
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
         m_totalTaxes->setReadOnly(TRUE);
@@ -84,7 +84,7 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
     } catch (...) {
         mensajeInfo(tr("Error al crear el presupuesto"));
     } // end try
-    _depura("Fin de la inicializacion de PresupuestoView\n", 0);
+    _depura("Fin de la inicializacion de PresupuestoView", 0);
 }
 
 
@@ -201,13 +201,14 @@ void PresupuestoView::generarPedidoCliente() {
     /// Pintamos el pedido y lo presentamos.
     bud->pintar();
     bud->show();
+    _depura("END PresupuestoView::generarPedidoCliente", 0);
 }
 
 
 int PresupuestoView::cargar(QString id) {
     _depura("PresupuestoView::cargar", 0);
     try {
-        if (presupuesto::cargar(id))
+        if (Presupuesto::cargar(id))
             throw -1;
         setWindowTitle(tr("Presupuesto") + " " + DBvalue("refpresupuesto") + " " + DBvalue("idpresupuesto"));
         companyact->meteWindow(windowTitle(), this);
@@ -227,20 +228,20 @@ int PresupuestoView::guardar() {
     int res = g_plugins->lanza("PresupuestoView_guardar", this);
     if (res != 0)
         return 0;
-    setcomentpresupuesto(m_comentpresupuesto->toPlainText());
-    setnumpresupuesto(m_numpresupuesto->text());
+    setcomentPresupuesto(m_comentpresupuesto->toPlainText());
+    setnumPresupuesto(m_numpresupuesto->text());
     setidcliente(m_cliente->idcliente());
-    setfpresupuesto(m_fpresupuesto->text());
-    setvencpresupuesto(m_vencpresupuesto->text());
+    setfPresupuesto(m_fpresupuesto->text());
+    setvencPresupuesto(m_vencpresupuesto->text());
     setidalmacen(m_almacen->idalmacen());
     setidtrabajador(m_trabajador->idtrabajador());
     setidforma_pago(m_forma_pago->idforma_pago());
-    setrefpresupuesto(m_refpresupuesto->text());
-    setdescpresupuesto(m_descpresupuesto->text());
-    setcontactpresupuesto(m_contactpresupuesto->text());
-    settelpresupuesto(m_telpresupuesto->text());
-    setprocesadopresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
-    presupuesto::guardar();
+    setrefPresupuesto(m_refpresupuesto->text());
+    setdescPresupuesto(m_descpresupuesto->text());
+    setcontactPresupuesto(m_contactpresupuesto->text());
+    settelPresupuesto(m_telpresupuesto->text());
+    setprocesadoPresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
+    Presupuesto::guardar();
     dialogChanges_cargaInicial();
     } catch (...) {
 	_depura("PresupuestoView::guardar error al guardar el presupuesto", 0);

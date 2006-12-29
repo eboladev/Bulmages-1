@@ -48,6 +48,28 @@ END;
 language 'plpgsql';
 
 
+-- ======================== COMPROBACION DE CUAL ES LA ULTIMA VERSION ==================================
+
+CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.5.9%'' OR valor = ''0.5.3'');
+	IF FOUND THEN
+		RETURN 0;
+	ELSE
+		RETURN -1;		 
+	END IF;
+END;
+'   LANGUAGE plpgsql;
+SELECT compruebarevision();
+DROP FUNCTION compruebarevision() CASCADE;
+\echo "Comprobada la revision"
+
+-- ========================  FIN DE LA COMPROBACION ============================
+
+
+
 CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER
 AS '
 BEGIN
@@ -155,9 +177,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.5.9'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.5.9-0002'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (20, ''DatabaseRevision'', ''0.5.9''); 		 
+		INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (20, ''DatabaseRevision'', ''0.5.9-0002''); 		 
 	END IF;
 	RETURN 0;
 END;

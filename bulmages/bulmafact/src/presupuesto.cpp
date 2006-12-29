@@ -31,31 +31,39 @@
 
 typedef QMap<QString, Fixed> base;
 
-presupuesto::presupuesto(company *comp) : DBRecord(comp) {
+Presupuesto::Presupuesto(company *comp) : DBRecord(comp) {
+    _depura("Presupuesto::Presupuesto", 0);
     companyact = comp;
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
-    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("presupuesto", "ID presupuesto"));
-    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("presupuesto", "ID cliente"));
-    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("presupuesto", "ID almacen"));
-    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("presupuesto", "Numero de presupuesto"));
-    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("presupuesto", "Fecha de creacion"));
-    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("presupuesto", "Fecha de vencimiento"));
-    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Persona de contacto"));
-    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Numero de telefono"));
-    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Comentarios"));
-    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("presupuesto", "Presupuesto procesado"));
-    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Descuento"));
-    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("presupuesto", "Referencia"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("presupuesto", "ID forma de pago"));
-    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("presupuesto", "ID trabajador"));
+    addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Presupuesto", "ID Presupuesto"));
+    addDBCampo("idcliente", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Presupuesto", "ID cliente"));
+    addDBCampo("idalmacen", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Presupuesto", "ID almacen"));
+    addDBCampo("numpresupuesto", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de Presupuesto"));
+    addDBCampo("fpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Fecha de creacion"));
+    addDBCampo("vencpresupuesto", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Fecha de vencimiento"));
+    addDBCampo("contactpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Persona de contacto"));
+    addDBCampo("telpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Numero de telefono"));
+    addDBCampo("comentpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Comentarios"));
+    addDBCampo("procesadopresupuesto", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Presupuesto procesado"));
+    addDBCampo("descpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Descuento"));
+    addDBCampo("refpresupuesto", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Presupuesto", "Referencia"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "ID forma de pago"));
+    addDBCampo("idtrabajador", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Presupuesto", "ID trabajador"));
+    _depura("END Presupuesto::Presupuesto", 0);
+
 }
 
 
-presupuesto::~presupuesto() {}
+Presupuesto::~Presupuesto() {
+    _depura("Presupuesto::~Presupuesto", 0);
+    _depura("END Presupuesto::~Presupuesto", 0);
+
+}
 
 
-int presupuesto::borrar() {
+int Presupuesto::borrar() {
+    _depura("Presupuesto::borrar", 0);
     if (DBvalue("idpresupuesto") != "") {
         companyact->begin();
         listalineas->borrar();
@@ -67,16 +75,20 @@ int presupuesto::borrar() {
         } // end if
         companyact->commit();
     } // end if
+    _depura("END Presupuesto::borrar", 0);
     return 0;
 }
 
 
-void presupuesto::vaciaPresupuesto() {
+void Presupuesto::vaciaPresupuesto() {
+    _depura("Presupuesto::vaciaPresupuesto", 0);
     DBclear();
+    _depura("END Presupuesto::vaciaPresupuesto", 0);
 }
 
 
-void presupuesto::pintaPresupuesto() {
+void Presupuesto::pintaPresupuesto() {
+    _depura("Presupuesto::pintaPresupuesto", 0);
     pintaidcliente(DBvalue("idcliente"));
     pintaIdAlmacen(DBvalue("idalmacen"));
     pintaNumPresupuesto(DBvalue("numpresupuesto"));
@@ -85,18 +97,20 @@ void presupuesto::pintaPresupuesto() {
     pintaContractPresupuesto(DBvalue("contactpresupuesto"));
     pintaTelPresupuesto(DBvalue("telpresupuesto"));
     pintaComentPresupuesto(DBvalue("comentpresupuesto"));
-    pintaprocesadopresupuesto(DBvalue("procesadopresupuesto"));
-    pintadescpresupuesto(DBvalue("descpresupuesto"));
-    pintarefpresupuesto(DBvalue("refpresupuesto"));
+    pintaprocesadoPresupuesto(DBvalue("procesadopresupuesto"));
+    pintadescPresupuesto(DBvalue("descpresupuesto"));
+    pintarefPresupuesto(DBvalue("refpresupuesto"));
     pintaidforma_pago(DBvalue("idforma_pago"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaidtrabajador(DBvalue("idtrabajador"));
     calculaypintatotales();
+    _depura("END Presupuesto::pintaPresupuesto", 0);
 }
 
 
-/// Esta funcion carga un presupuesto.
-int presupuesto::cargar(QString idbudget) {
+/// Esta funcion carga un Presupuesto.
+int Presupuesto::cargar(QString idbudget) {
+    _depura("Presupuesto::cargar", 0);
     int error = 0;
     QString query = "SELECT * FROM presupuesto WHERE idpresupuesto = " + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
@@ -112,28 +126,29 @@ int presupuesto::cargar(QString idbudget) {
 
     /// Tratamiento de excepciones.
     if (error) {
-        _depura("Error en la carga del presupuesto\n", 2);
+        _depura("Error en la carga del Presupuesto\n", 2);
         return 1;
     } // end if
 
     pintaPresupuesto();
+    _depura("END Presupuesto::cargar", 0);
     return 0;
 }
 
 
-int presupuesto::guardar() {
-    _depura("presupuesto::guardar", 0);
+int Presupuesto::guardar() {
+    _depura("Presupuesto::guardar", 0);
     QString id;
     companyact->begin();
     try {
         DBsave(id);
-        setidpresupuesto(id);
+        setidPresupuesto(id);
         listalineas->guardar();
         listadescuentos->guardar();
         companyact->commit();
 	/// Hacemos una carga para recuperar el numero y la referencia.
 	cargar(id);
-        _depura("END presupuesto::guardar", 0);
+        _depura("END Presupuesto::guardar", 0);
         return 0;
     } catch (...) {
         _depura("Error guardando, se cancela la operacion", 0);
@@ -143,7 +158,8 @@ int presupuesto::guardar() {
 }
 
 
-QString presupuesto::detalleArticulos() {
+QString Presupuesto::detalleArticulos() {
+    _depura("Presupuesto::detalleArticulos", 0);
     QString texto = "";
     cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
     int i = 0;
@@ -177,18 +193,20 @@ QString presupuesto::detalleArticulos() {
         cur->siguienteregistro();
     } // end while
     delete cur;
+    _depura("END Presupuesto::detalleArticulos", 0);
     return texto;
 }
 
 
-void presupuesto::imprimirPresupuesto() {
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("presupuesto_imprimirPresupuesto", this);
+void Presupuesto::imprimirPresupuesto() {
+    _depura("Presupuesto::imprimirPresupuesto", 0);
+    /// Disparamos los plugins con Presupuesto_imprimirPresupuesto.
+    int res = g_plugins->lanza("Presupuesto_imprimirPresupuesto", this);
     if (res != 0)
         return;
     base basesimp;
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "presupuesto.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "presupuesto.rml";
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "Presupuesto.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "Presupuesto.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -217,7 +235,7 @@ void presupuesto::imprimirPresupuesto() {
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt = "";
-    /// Linea de totales del presupuesto.
+    /// Linea de totales del Presupuesto.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
@@ -274,9 +292,9 @@ void presupuesto::imprimirPresupuesto() {
     if (listadescuentos->rowCount() - 1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Descuento") + "</td>\n";
-        fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Porcentaje") + "</td>\n";
-        fitxersortidatxt += "    <td>" + QApplication::translate("presupuesto", "Total") + "</td>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Descuento") + "</td>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
         for (int i = 0; i < (listadescuentos->rowCount() - 1); ++i) {
             linea1 = listadescuentos->lineaat(i);
@@ -305,7 +323,7 @@ void presupuesto::imprimirPresupuesto() {
             parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "    <td>" + QApplication::translate("presupuesto", "Base ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "Base ") +" "+ XMLProtect(it.key()) + " %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
@@ -318,10 +336,10 @@ void presupuesto::imprimirPresupuesto() {
             pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "    <td>" + QApplication::translate("presupuesto", "I.V.A. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.V.A. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
-    tr1 += "    <td>" + QApplication::translate("presupuesto", "Total ") + "</td>\n";
+    tr1 += "    <td>" + QApplication::translate("Presupuesto", "Total ") + "</td>\n";
     tr2 += "    <td>" + l.sprintf(" %s ", (totiva+totbaseimp).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
@@ -338,16 +356,16 @@ void presupuesto::imprimirPresupuesto() {
         stream << buff;
         file.close();
     }
-    invocaPDF("presupuesto");
-    _depura("presupuesto::imprimirPresupuesto", 0);
+    invocaPDF("Presupuesto");
+    _depura("Presupuesto::imprimirPresupuesto", 0);
 }
 
 
-void presupuesto::calculaypintatotales() {
-    _depura("presupuesto::calculaypintatotales \n", 0);
+void Presupuesto::calculaypintatotales() {
+    _depura("Presupuesto::calculaypintatotales", 0);
 
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("presupuesto_calculaypintatotales", this);
+    /// Disparamos los plugins con Presupuesto_imprimirPresupuesto.
+    int res = g_plugins->lanza("Presupuesto_calculaypintatotales", this);
     if (res != 0)
         return;
 
@@ -408,6 +426,6 @@ void presupuesto::calculaypintatotales() {
         totiva = totiva + pariva;
     } // end for
     pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-    _depura("END presupuesto::calculaypintatotales\n", 0);
+    _depura("END Presupuesto::calculaypintatotales", 0);
 }
 
