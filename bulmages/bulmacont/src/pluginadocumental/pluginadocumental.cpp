@@ -53,32 +53,22 @@ void entryPoint(Bulmacont *bcont) {
     myplugin1 *pub = new myplugin1(emp);
     intapunts->hide();
 
+    QToolButton *m_adocumental = new QToolButton(intapunts);
+    m_adocumental->setIcon(QIcon(*img));
+    m_adocumental->setMinimumSize(QSize(22, 22));
+    m_adocumental->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
 
-    QToolButton *boton1 = new QToolButton();
-    QAction *botonaction1 = new QAction(QIcon(*img), "" , 0);
-    boton1->addAction(botonaction1);
+    intapunts->hboxLayout1->addWidget(m_adocumental);
 
-    intapunts->hboxLayout1->addWidget(boton1);
+    QToolButton *m_adocumental1 = new QToolButton(intapunts);
+    m_adocumental1->setIcon(QIcon(*img1));
+    m_adocumental1->setMinimumSize(QSize(22, 22));
+    m_adocumental1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
 
+    intapunts->hboxLayout1->addWidget(m_adocumental1);
 
-    /*
-        QHBoxLayout *layoutPlugins = intapunts->layoutPlugins;
-        QToolButton *m_adocumental = new QToolButton(intapunts);
-     
-        m_adocumental->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        m_adocumental->setIcon(QIcon(*img));
-        layoutPlugins->addWidget(m_adocumental);
-     
-        QObject::connect(m_adocumental, SIGNAL(clicked()), pub, SLOT(boton_adjuntar()));
-        QToolButton *m_adocumental1 = new QToolButton(intapunts);
-     
-        m_adocumental1->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        m_adocumental1->setIcon(QIcon(*img1));
-        layoutPlugins->addWidget(m_adocumental1);
-     
-        QObject::connect(m_adocumental1, SIGNAL(clicked()), pub, SLOT(boton_nuevoasientodocumental()));
-        intapunts->showMaximized();
-    */
     /// Hacemos la entrada de menu.
     QAction *ArchDoc = new QAction("&Archivo documental", 0);
     ArchDoc->setStatusTip("Archivo documental");

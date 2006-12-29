@@ -36,23 +36,26 @@ myplugin1::myplugin1(empresa *emp) {
     conexionbase = emp->bdempresa();
 }
 
+
 myplugin1::~myplugin1() {}
 
 
 /// Esto debe coger un asiento y asociarle un archivo documental y abrirlo y ensenyar
 /// ambas cosas.
 void myplugin1::boton_nuevoasientodocumental() {
-    fprintf(stderr, "boton_nuevoasientodocumental\n");
+    _depura("myplugin1::boton_nuevoasientodocumental", 10);
     adocumental *adoc = new adocumental(empresaactual, 0);
     adoc->presentaprimervacio();
     Asiento1View *intapunts = empresaactual->intapuntsempresa();
     intapunts->iniciar_asiento_nuevo();
     adoc->asociaasiento(intapunts->idasiento());
     delete adoc;
+    _depura("END myplugin1::boton_nuevoasientodocumental", 10);
 }
 
 
 void myplugin1::boton_adjuntar() {
+    _depura("myplugin1::boton_adjuntar", 10);
     adocumental *adoc = new adocumental(empresaactual, 0);
     adoc->setmodoconsulta();
     adoc->exec();
@@ -61,6 +64,7 @@ void myplugin1::boton_adjuntar() {
     if (intapunts->idasiento() != "-1")
         adoc->asociaasiento(intapunts->idasiento());
     delete adoc;
+    _depura("END myplugin1::boton_adjuntar", 10);
 }
 
 
@@ -191,7 +195,7 @@ void adocumental::asociaasiento(QString idasiento) {
     _depura("AsociaAsiento:", 10);
     _depura("idasiento:" + idasiento  + ", idadocumental:" + idadocumental);
     if ((idadocumental != "") && (idasiento != "")) {
-        QString SQLQuery = "UPDATE adocumental SET /*idasiento*/= " + idasiento + " WHERE idadocumental = " + idadocumental;
+        QString SQLQuery = "UPDATE adocumental SET idasiento = " + idasiento + " WHERE idadocumental = " + idadocumental;
         _depura(SQLQuery, 10);
         conexionbase->begin();
         conexionbase->ejecuta(SQLQuery);
@@ -201,16 +205,18 @@ void adocumental::asociaasiento(QString idasiento) {
 }
 
 
-/// Esta funcion coge el primer archivo documental no esta asociado a ningun asiento
+/// Esta funcion coge el primer archivo documental que no esta asociado a ningun asiento
 /// y lo muestra asignando a idasiento su valor.
 void adocumental::presentaprimervacio() {
+    _depura("adocumental::presentaprimervacio", 10);
     int i = 0;
-
-    while (m_listado->item(i, COL_IDASIENTO)->text() != "" && i < m_listado->rowCount())
+    while (i < m_listado->rowCount()) {
+        if (m_listado->item(i, COL_IDASIENTO)->text() == "") {
+            doubleclicked(i, 0, 0, QPoint::QPoint(0, 0));
+        } // end if
         i++;
-    if (i < m_listado->rowCount()) {
-        doubleclicked(i, 0, 0, QPoint::QPoint(0, 0));
-    } // end if
+    } // end while
+    _depura("END adocumental::presentaprimervacio", 10);
 }
 
 

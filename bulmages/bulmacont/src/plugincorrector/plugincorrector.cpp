@@ -37,8 +37,6 @@ void entryPoint(Bulmacont *bcont) {
     _depura("Estoy dentro del plugin\n", 0);
     empresa *emp = bcont->empresaactual();
     /// Vamos a probar con un docwindow.
-    //Q3DockWindow *doc1  = new Q3DockWindow(Q3DockWindow::OutsideDock, bcont, "Corrector");
-
     QDockWidget *doc1 = new QDockWidget("Corrector", bcont);
     doc1->setFeatures(QDockWidget::AllDockWidgetFeatures);
 

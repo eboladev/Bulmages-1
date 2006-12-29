@@ -18,9 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <q3table.h>
-#include <q3header.h>
-#include <q3textbrowser.h>
+//#include <q3table.h>
+//#include <q3header.h>
+//#include <q3textbrowser.h>
 
 #include "asiento1view.h"
 #include "correctorwidget.h"

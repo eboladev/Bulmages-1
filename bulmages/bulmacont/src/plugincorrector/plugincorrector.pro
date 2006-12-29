@@ -1,12 +1,10 @@
-# Archivo generado por el gestor qmake de kdevelop. 
-# ------------------------------------------- 
-# Subdirectorio relativo al directorio principal del proyecto: ./fuentes/src/plugincorrector
-# Destiono es una biblioteca:  ../../../installbulmages/plugins/corrector
+# Archivo generado por el gestor qmake de kdevelop.
+# -------------------------------------------------
 
 TEMPLATE = lib
 
 CONFIG += plugin \
-warn_on
+          warn_on
 
 TARGET = ../../../installbulmages/plugins/corrector
 
@@ -18,16 +16,16 @@ LIBS += -lpq \
 -rdynamic
 
 INCLUDEPATH = ../../../bulmalib \
-../contabilidad \
-../contabilidad/.ui \
-/usr/include/qt4 \
-/usr/include/qt4/Qt \
-/usr/include/QtXml \
-/usr/lib/qt4/include/QtXml \
-/usr/lib/qt4/include/Qt \
-../../../bulmalib/.ui \
-.ui \
-../.ui
+              ../contabilidad \
+              ../contabilidad/.ui \
+              /usr/include/qt4 \
+              /usr/include/qt4/Qt \
+              /usr/include/QtXml \
+              /usr/lib/qt4/include/QtXml \
+              /usr/lib/qt4/include/Qt \
+              ../../../bulmalib/.ui \
+              .ui \
+              ../.ui
 
 FORMS += correctorwdt.ui \
          confreglas.ui 
@@ -66,9 +64,6 @@ unix{
   }
 }
 
-#The following line was inserted by qt3to4
-QT +=  qt3support 
-QT +=  xml
-#The following line was inserted by qt3to4
+QT +=  qt3support xml
 CONFIG += uic3
 
