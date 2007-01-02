@@ -35,9 +35,9 @@
 #define COL_CODFAMILIA 4
 
 
-familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
+FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
         : Ficha(parent) {
-    _depura("familiasview::familiasview", 0);
+    _depura("FamiliasView::FamiliasView", 0);
     setupUi(this);
     companyact = comp;
 
@@ -66,21 +66,21 @@ familiasview::familiasview(company *comp, QWidget *parent, bool modoConsulta)
         companyact->meteWindow(windowTitle(), this);
     } // end if
     pintar();
-    _depura("END familiasview::familiasview", 0);
+    _depura("END FamiliasView::FamiliasView", 0);
 }
 
 
-familiasview::~familiasview() {}
+FamiliasView::~FamiliasView() {}
 
 
-int familiasview::sacaWindow() {
+int FamiliasView::sacaWindow() {
     companyact->sacaWindow(this);
     return 0;
 }
 
 
-void familiasview::pintar() {
-    _depura("familiasview::pintar", 0);
+void FamiliasView::pintar() {
+    _depura("FamiliasView::pintar", 0);
     QTreeWidgetItem * it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
@@ -129,7 +129,7 @@ void familiasview::pintar() {
 }
 
 
-QString familiasview::codigoCompletoFamilia() {
+QString FamiliasView::codigoCompletoFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_CODCOMPLETOFAMILIA);
@@ -138,7 +138,7 @@ QString familiasview::codigoCompletoFamilia() {
 }
 
 
-QString familiasview::idFamilia() {
+QString FamiliasView::idFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_IDFAMILIA);
@@ -147,7 +147,7 @@ QString familiasview::idFamilia() {
 }
 
 
-QString familiasview::nombreFamilia() {
+QString FamiliasView::nombreFamilia() {
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_NOMFAMILIA);
@@ -159,7 +159,7 @@ QString familiasview::nombreFamilia() {
 /// Se ha seleccionado un item en la lista.
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
-void familiasview::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
+void FamiliasView::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
     if (m_modoConsulta) {
         m_idfamilia = it->text(COL_IDFAMILIA);
         emit selected(m_idfamilia);
@@ -170,7 +170,7 @@ void familiasview::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
 /// Se ha seleccionado un item en la lista.
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
-void familiasview::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem *previous) {
+void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem *previous) {
     QString idfamiliaold = "";
     if (previous)
         m_idfamilia = previous->text(COL_IDFAMILIA);
@@ -183,7 +183,7 @@ void familiasview::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * curren
 }
 
 
-void familiasview::mostrarplantilla() {
+void FamiliasView::mostrarplantilla() {
     _depura("mostramos la plantilla\n", 0);
     QString query;
     query= "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
@@ -197,19 +197,19 @@ void familiasview::mostrarplantilla() {
     delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("Terminamos la ejecución de familiasview::mostrarplantilla\n", 0);
+    _depura("Terminamos la ejecución de FamiliasView::mostrarplantilla\n", 0);
 }
 
 
 /// Antes de salir de la ventana debemos hacer la comprobacion de si se ha modificado algo
 /// Esta funcion esta dedicada a Francina, Bienvenida al mundo :))
-void familiasview::close() {
+void FamiliasView::close() {
     trataModificado();
     QWidget::close();
 }
 
 
-bool familiasview::trataModificado() {
+bool FamiliasView::trataModificado() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -226,8 +226,8 @@ bool familiasview::trataModificado() {
 
 /// SLOT que responde a la pulsacion del boton de guardar el tipo de IVA que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
-void familiasview::on_mui_guardar_clicked() {
-    _depura("familiasview::on_mui_guardar_clicked", 0);
+void FamiliasView::on_mui_guardar_clicked() {
+    _depura("FamiliasView::on_mui_guardar_clicked", 0);
     try {
         if (m_idfamilia == "") {
             mensajeInfo(tr("Debe seleccionar una familia"));
@@ -241,7 +241,7 @@ void familiasview::on_mui_guardar_clicked() {
         if (error)
             throw -1;
         dialogChanges_cargaInicial();
-        _depura("END familiasview::on_mui_guardar_clicked", 0);
+        _depura("END FamiliasView::on_mui_guardar_clicked", 0);
     } catch (...) {
         mensajeInfo("Error al guardar la familia");
         return;
@@ -249,7 +249,7 @@ void familiasview::on_mui_guardar_clicked() {
 }
 
 
-void familiasview::pintar(QTreeWidgetItem *it) {
+void FamiliasView::pintar(QTreeWidgetItem *it) {
     QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
         cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia = " + idfamilia);
@@ -267,8 +267,8 @@ void familiasview::pintar(QTreeWidgetItem *it) {
 
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de IVA
 /// Inserta en la tabla de IVAs.
-void familiasview::on_mui_crear_clicked() {
-    _depura("familiasview::on_mui_crear_clicked", 0);
+void FamiliasView::on_mui_crear_clicked() {
+    _depura("FamiliasView::on_mui_crear_clicked", 0);
     try {
         companyact->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
@@ -290,7 +290,7 @@ void familiasview::on_mui_crear_clicked() {
         m_idfamilia = cur->valor("idfamilia");
         delete cur;
         pintar();
-        _depura("END familiasview::on_mui_crear_clicked", 0);
+        _depura("END FamiliasView::on_mui_crear_clicked", 0);
     } catch (...) {
         companyact->rollback();
         mensajeInfo("Error al crear la familia");
@@ -300,8 +300,8 @@ void familiasview::on_mui_crear_clicked() {
 
 /// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
 /// Lo que hace es que se hace un update de todos los campos.
-void familiasview::on_mui_borrar_clicked() {
-    _depura("familiasview::on_mui_borrar_clicked", 0);
+void FamiliasView::on_mui_borrar_clicked() {
+    _depura("FamiliasView::on_mui_borrar_clicked", 0);
     try {
         if (m_idfamilia == "") {
             mensajeInfo(tr("Debe seleccionar una familia"));
@@ -313,14 +313,14 @@ void familiasview::on_mui_borrar_clicked() {
         if (error)
             throw -1;
         pintar();
-        _depura("END familiasview::on_mui_borrar_clicked", 0);
+        _depura("END FamiliasView::on_mui_borrar_clicked", 0);
     } catch (...) {
         mensajeInfo("Error al borrar la familia");
     } // end try
 }
 
 
-void familiasview::on_mui_imprimir_clicked() {
+void FamiliasView::on_mui_imprimir_clicked() {
     /// Copiamos el archivo.
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "familias.rml";
     archivo = "cp " + archivo + " /tmp/familias.rml";
@@ -366,7 +366,7 @@ void familiasview::on_mui_imprimir_clicked() {
 }
 
 
-void familiasview::on_mui_aceptar_clicked() {
+void FamiliasView::on_mui_aceptar_clicked() {
     trataModificado();
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)

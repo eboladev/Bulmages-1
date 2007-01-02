@@ -99,18 +99,24 @@ void PresupuestoView::inicializar() {
 
 
 PresupuestoView::~PresupuestoView() {
+    _depura("PresupuestoView::~PresupuestoView", 0);
     companyact->refreshBudgets();
+    _depura("END PresupuestoView::~PresupuestoView", 0);
 }
 
 
 int PresupuestoView::sacaWindow() {
+    _depura("PresupuestoView::sacaWindow", 0);
     companyact->sacaWindow(this);
+    _depura("END PresupuestoView::sacaWindow", 0);
     return 0;
 }
 
 
 void PresupuestoView::on_mui_imprimir_clicked() {
+    _depura("PresupuestoView::on_mui_imprimir_clicked", 0);
     imprimirPresupuesto();
+    _depura("END PresupuestoView::on_mui_imprimir_clicked", 0);
 }
 
 
@@ -128,10 +134,20 @@ void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed des
 void PresupuestoView::generarPedidoCliente() {
     _depura("PresupuestoView::generarPedidoCliente", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos.
-    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refpresupuesto") + "'";
+    QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refpresupuesto") + "' AND idcliente = "+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-        PedidoClienteView *bud = companyact->newPedidoClienteView();
+    
+
+	/// Informamos que ya hay una factura y que la abriremos.
+	/// Si no salimos de la funci&oacute;n.
+	if (QMessageBox::question(this,
+				tr("Pedido existente"),
+				tr("Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?"),
+				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+		return;
+	}
+   	PedidoClienteView *bud = companyact->newPedidoClienteView();
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
@@ -142,12 +158,12 @@ void PresupuestoView::generarPedidoCliente() {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Sino salimos de la funcion.
-    if (QMessageBox::question(this,
-                              tr("Pedido de cliente inexistente"),
-                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
-                              tr("&Si"), tr("&No"),
-                              QString::null, 0, 1))
-        return;
+//    if (QMessageBox::question(this,
+//                              tr("Pedido de cliente inexistente"),
+//                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
+//                              tr("&Si"), tr("&No"),
+//                              QString::null, 0, 1))
+//        return;
 
     /// Creamos el pedido.
     PedidoClienteView *bud = companyact->newPedidoClienteView();

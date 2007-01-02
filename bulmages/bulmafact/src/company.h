@@ -55,7 +55,7 @@ class AlbaranProveedorView;
 class PedidoClienteView;
 class TipoArticuloList;
 class ProveedorView;
-class familiasview;
+class FamiliasView;
 
 
 /// Clase company (empresa).
@@ -172,7 +172,7 @@ public:
     PedidoClienteView *newPedidoClienteView();
     PedidoProveedorView *newPedidoProveedorView();
     TipoArticuloList *newTipoArticuloList(QWidget *parent = 0, bool modoConsulta = FALSE);
-    familiasview *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
+    FamiliasView *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
 };
 
 #endif

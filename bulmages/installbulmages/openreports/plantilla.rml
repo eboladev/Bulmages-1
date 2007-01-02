@@ -2,13 +2,15 @@
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
 <document>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="3cm" y="26cm" width="17cm" file="logo.jpg"/>
+		<image x="1cm" y="25.9cm" width="11cm" file="logo.jpg"/>
 
 		<!-- EL PIE DE PAGINA -->
 		<setFont name="Helvetica" size="8"/>		
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>	
+		<drawString x="7.3cm" y="1.2cm">www.iglues.org -- info@iglues.org --</drawString>		      
+		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion. Puede personalizar sus formatos de impresion modificando las plantillas ubicadas en /usr/share/bulmages/openreports/</drawString>	
+
 
 			<!-- EL BORRADOR -->
 			<setFont name="Helvetica" size="100"/>

@@ -806,7 +806,7 @@
         <number>4</number>
        </property>
        <item>
-        <widget class="listlinpresupuestoview" native="1" name="subform2" />
+        <widget class="ListLinPresupuestoView" native="1" name="subform2" />
        </item>
       </layout>
      </widget>
@@ -3073,7 +3073,7 @@
    <header>busquedatrabajador.h</header>
   </customwidget>
   <customwidget>
-   <class>listlinpresupuestoview</class>
+   <class>ListLinPresupuestoView</class>
    <extends>QWidget</extends>
    <header>listlinpresupuestoview.h</header>
   </customwidget>

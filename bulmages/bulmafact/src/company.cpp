@@ -1010,13 +1010,13 @@ void company::s_newTipoArticuloList() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
-familiasview *company::newfamiliasview(QWidget *parent, bool modoConsulta) {
+FamiliasView *company::newfamiliasview(QWidget *parent, bool modoConsulta) {
     _depura("company::newfamiliasview", 0);
     /// Lanzamos los plugins necesarios.
-    familiasview *bud;
+    FamiliasView *bud;
     if (g_plugins->lanza("company_newfamiliasview", this, (void **)&bud))
         return bud;
-    bud = new familiasview(this, parent, modoConsulta);
+    bud = new FamiliasView(this, parent, modoConsulta);
     _depura("END company::newfamiliasview", 0);
     return bud;
 }
@@ -1027,7 +1027,7 @@ familiasview *company::newfamiliasview(QWidget *parent, bool modoConsulta) {
 */
 void company::s_newfamiliasview() {
     _depura("company::s_newfamiliasview", 0);
-    familiasview *pag = newfamiliasview();
+    FamiliasView *pag = newfamiliasview();
     m_pWorkspace->addWindow(pag);
     pag->show();
     _depura("END company::s_newfamiliasview", 0);

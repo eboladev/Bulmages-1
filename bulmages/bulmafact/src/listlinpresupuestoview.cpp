@@ -29,7 +29,7 @@
 #include "fixed.h"
 
 
-listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(parent) {
+ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("lpresupuesto");
     setDBCampoId("idlpresupuesto");
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
@@ -46,8 +46,8 @@ listlinpresupuestoview::listlinpresupuestoview(QWidget *parent) : SubForm2Bf(par
 }
 
 
-void listlinpresupuestoview::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("listlinpresupuestoview::editFinished", 0);
+void ListLinPresupuestoView::on_mui_list_editFinished(int row, int col, int key) {
+    _depura("ListLinPresupuestoView::editFinished", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
@@ -70,12 +70,12 @@ void listlinpresupuestoview::on_mui_list_editFinished(int row, int col, int key)
         delete cur;
     } // end if
     SubForm3::on_mui_list_editFinished(row, col, key);    
-    _depura("END listlinpresupuestoview::editFinished", 0);
+    _depura("END ListLinPresupuestoView::editFinished", 0);
 }
 
 
-void listlinpresupuestoview::cargar(QString idpresupuesto) {
-    _depura("listlinpresupuestoview::cargar\n", 0);
+void ListLinPresupuestoView::cargar(QString idpresupuesto) {
+    _depura("ListLinPresupuestoView::cargar\n", 0);
     mdb_idpresupuesto = idpresupuesto;
     cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto);
     SubForm3::cargar(cur);
@@ -83,7 +83,7 @@ void listlinpresupuestoview::cargar(QString idpresupuesto) {
 }
 
 
-Fixed listlinpresupuestoview::calculabase() {
+Fixed ListLinPresupuestoView::calculabase() {
     Fixed base("0.0");
     for (int i = 0; i < rowCount() - 1; i++) {
         Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("cantlpresupuesto", i));
@@ -93,7 +93,7 @@ Fixed listlinpresupuestoview::calculabase() {
 }
 
 
-Fixed listlinpresupuestoview::calculaiva() {
+Fixed ListLinPresupuestoView::calculaiva() {
     Fixed base("0.0");
     for (int i = 0; i < rowCount() - 1; i++) {
         Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("ivalpresupuesto", i));

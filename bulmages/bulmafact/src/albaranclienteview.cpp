@@ -189,12 +189,21 @@ void AlbaranClienteView::on_mui_verpedidocliente_clicked() {
 */
 void AlbaranClienteView::generarFactura() {
     _depura("AlbaranClienteView::generarFactura", 0);
-    /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
+    /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
     /// y salimos de la funci&oacute;n.
-    QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "'";
+    QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "' AND idcliente ="+DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
+
+	/// Informamos que ya hay una factura y que la abriremos.
+	/// Si no salimos de la funci&oacute;n.
+	if (QMessageBox::question(this,
+				tr("Factura existente"),
+				tr("Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?"),
+				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+		return;
+	}
         FacturaView *bud = m_companyact->newFacturaView();
         m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfactura"));
@@ -205,12 +214,12 @@ void AlbaranClienteView::generarFactura() {
 
     /// Informamos de que no existe la factura y a ver si lo queremos realizar.
     /// Si no salimos de la funci&oacute;n.
-    if (QMessageBox::question(this,
-                              tr("Factura inexistente"),
-                              tr("No existe una factura asociada a este albaran. Desea crearla?"),
-                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
-        return;
-    }
+//    if (QMessageBox::question(this,
+//                              tr("Factura inexistente"),
+//                              tr("No existe una factura asociada a este albaran. Desea crearla?"),
+//                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+//        return;
+//    }
 
     /// Creamos la factura.
     FacturaView *bud = m_companyact->newFacturaView();

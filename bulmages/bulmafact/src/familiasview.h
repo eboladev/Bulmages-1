@@ -30,7 +30,7 @@ class company;
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class familiasview : public Ficha, public Ui_familiasdlg {
+class FamiliasView : public Ficha, public Ui_familiasdlg {
     Q_OBJECT
 
 private:
@@ -43,8 +43,8 @@ private:
     bool m_modoConsulta;
 
 public:
-    familiasview(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
-    ~familiasview();
+    FamiliasView(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
+    ~FamiliasView();
     bool trataModificado();
     void mostrarplantilla();
     void setModoConsulta() {

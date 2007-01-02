@@ -36,13 +36,13 @@
 /** */
 class Presupuesto : public DBRecord {
 protected:
-    listlinpresupuestoview *listalineas;
+    ListLinPresupuestoView *listalineas;
     ListDescuentoPresupuestoView *listadescuentos;
     company *companyact;
 
 public:
     Presupuesto(company *);
-    void setlislinpresupuesto(listlinpresupuestoview *a) {
+    void setlislinpresupuesto(ListLinPresupuestoView *a) {
         listalineas = a;
         listalineas->setcompany(companyact);
     };
@@ -50,7 +50,7 @@ public:
         listadescuentos = a;
         listadescuentos->setcompany(companyact);
     };
-    listlinpresupuestoview* _listalineas() {
+    ListLinPresupuestoView* _listalineas() {
         return listalineas;
     };
     ListDescuentoPresupuestoView *_listadescuentos() {

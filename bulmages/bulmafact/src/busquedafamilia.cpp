@@ -92,7 +92,7 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
     diag->setModal(true);
 
 
-    familiasview *fam = companyact->newfamiliasview(diag, TRUE);
+    FamiliasView *fam = companyact->newfamiliasview(diag, TRUE);
 
     connect(fam, SIGNAL(selected(QString)), diag, SLOT(accept()));
 

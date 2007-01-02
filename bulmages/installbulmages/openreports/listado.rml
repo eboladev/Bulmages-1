@@ -5,25 +5,27 @@
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="0.5cm" y="19cm" width="10cm" file="logo.jpg"/>
+		<image x="0.5cm" y="18.2cm" width="7cm" file="logo.jpg"/>
 
 		<!-- EL DRAFT -->
-			<!--setFont name="Helvetica" size="100"/>
+			<setFont name="Helvetica" size="100"/>
 			<fill color="(1,0.9,0.9)"/>
 			<stroke color="(1,0.9,0.9)"/>
-			<translate dx="15cm" dy="-5.5cm"/>
-			<rotate degrees="50"/>
+			<translate dx="13cm" dy="-10.5cm"/>
+			<rotate degrees="30"/>
 			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
 			<lineMode width="4mm"/>
 			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-		<rotate degrees="-50"/>
-		<translate dx="-15cm" dy="5.5cm"/-->
+		<rotate degrees="-30"/>
+		<translate dx="-13cm" dy="10.5cm"/>
 
 		<!-- EL PIE DE PAGINA -->
 		<setFont name="Helvetica" size="8"/>		
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
+		<drawString x="13.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
+		<drawString x="0.3cm" y="0.2cm">Estas plantillas son de demostracion. Puede personalizar sus formatos de impresion modificando las plantillas ubicadas en /usr/share/bulmages/openreports/</drawString>	
+
 
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>

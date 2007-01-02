@@ -22,6 +22,7 @@
 
 #include "splashscreen.h"
 #include "configuracion.h"
+#include "funcaux.h"
 
 
 Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {

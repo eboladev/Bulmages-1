@@ -205,8 +205,8 @@ void Presupuesto::imprimirPresupuesto() {
     if (res != 0)
         return;
     base basesimp;
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "Presupuesto.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "Presupuesto.rml";
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + "presupuesto.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "presupuesto.rml";
     QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -356,7 +356,7 @@ void Presupuesto::imprimirPresupuesto() {
         stream << buff;
         file.close();
     }
-    invocaPDF("Presupuesto");
+    invocaPDF("presupuesto");
     _depura("Presupuesto::imprimirPresupuesto", 0);
 }
 

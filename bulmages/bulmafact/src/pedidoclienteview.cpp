@@ -93,7 +93,7 @@ void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed d
 
 
 void PedidoClienteView::on_mui_verpresupuesto_clicked() {
-    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "'";
+    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "' AND idcliente=" + DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
@@ -119,9 +119,19 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
 void PedidoClienteView::generarAlbaran() {
     _depura("PedidoClienteView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='" + DBvalue("refpedidocliente") + "'";
+    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='" + DBvalue("refpedidocliente") + "' AND idcliente = "+DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
+    
+
+	/// Informamos que ya hay un albaran y que la abriremos.
+	/// Si no salimos de la funci&oacute;n.
+	if (QMessageBox::question(this,
+				tr("Albaran ya existe"),
+				tr("Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?"),
+				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+		return;
+	}
         AlbaranClienteView *bud = new AlbaranClienteView(companyact, NULL);
         companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idalbaran"));
@@ -132,13 +142,13 @@ void PedidoClienteView::generarAlbaran() {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Si no salimos de la funcion.
-    if (QMessageBox::question(this,
-                              tr("No existe albaran de cliente."),
-                              tr("No existe un albaran asociado a este pedido."
-                                 "Desea crearlo?"),
-                              tr("&Si"), tr("&No"),
-                              QString::null, 0, 1))
-        return;
+//    if (QMessageBox::question(this,
+//                              tr("No existe albaran de cliente."),
+//                              tr("No existe un albaran asociado a este pedido."
+//                                 "Desea crearlo?"),
+//                              tr("&Si"), tr("&No"),
+//                              QString::null, 0, 1))
+//        return;
 
     /// Creamos el albaran.
     AlbaranClienteView *bud = companyact->newAlbaranClienteView();
