@@ -18,10 +18,15 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QDialog>
+
 #include "confreglasview.h"
 
-confreglasview::confreglasview(QWidget *parent, const char *name)
-        : confreglas(parent, name) {}
+
+confreglasview::confreglasview(QWidget *parent)
+        : QDialog(parent) {
+    setupUi(this);
+}
 
 
 confreglasview::~confreglasview() {}

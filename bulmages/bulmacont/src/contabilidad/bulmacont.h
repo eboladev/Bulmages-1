@@ -61,6 +61,13 @@ public:
     empresa *empresaactual() {
         return m_empresaactual;
     }
+    /// Exporta menues.
+    QMenu *mui_MenuHerramientas() {
+	return menuHerramientas;
+    }
+    QMenu *mui_MenuVer() {
+	return menuVer;
+    }
 
 protected:
     /// Event filter to catch close events for MDI child windows and is installed in

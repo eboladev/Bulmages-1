@@ -61,8 +61,8 @@ public:
     void boton_filtrar() {
         _depura("Funcion no implementada", 2);
     };
-    virtual void muestraasiento(QString ) {
-        mensajeInfo( "Funcion no implementada.");
+    virtual void muestraasiento(QString) {
+        mensajeInfo("Funcion no implementada.");
     };
     virtual void pintaasiento(QString ) {
         _depura("Funcion no implementada.", 2);

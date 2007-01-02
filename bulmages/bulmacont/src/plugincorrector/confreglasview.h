@@ -21,7 +21,7 @@
 #ifndef CONFREGLASVIEW_H
 #define CONFREGLASVIEW_H
 
-#include "confreglas.h"
+#include "ui_confreglasbase.h"
 
 
 /** Permite configurar reglas que el corrector controle.
@@ -29,13 +29,12 @@
     reglas para que haga un control de las mismas.
     De esta forma el usuario puede controlar determinados detalles de la contabilidad que
     de otra forma le seria imposible controlar. */
-class confreglasview : public confreglas {
+class confreglasview : public QDialog, public Ui_confreglasbase {
     Q_OBJECT
 
 public:
-    confreglasview(QWidget *parent = 0, const char *name = 0);
+    confreglasview(QWidget *parent = 0);
     ~confreglasview();
-
 };
 
 #endif

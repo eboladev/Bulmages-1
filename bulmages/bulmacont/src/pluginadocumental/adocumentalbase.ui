@@ -124,7 +124,14 @@
     </layout>
    </item>
    <item>
-    <widget class="QTableWidget" name="m_listado" />
+    <widget class="QTableWidget" name="m_listado" >
+     <property name="selectionMode" >
+      <enum>QAbstractItemView::SingleSelection</enum>
+     </property>
+     <property name="selectionBehavior" >
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" >

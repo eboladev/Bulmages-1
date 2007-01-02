@@ -27,8 +27,6 @@
 #include <QImage>
 #include <QLabel>
 #include <QPixmap>
-//#include <QHBoxLayout>
-//#include <QToolBar>
 #include <QFrame>
 
 #include "pluginadocumental.h"
@@ -75,15 +73,9 @@ void entryPoint(Bulmacont *bcont) {
     ArchDoc->setWhatsThis("Archivo documental");
     QObject::connect(ArchDoc, SIGNAL(activated()), pub, SLOT(archDoc()));
 
-    ///TODO: Hay que poner la opcion dentro del menu HERRAMIENTAS.
-    //bcont->pHerramientas()->insertSeparator();
-    //ArchDoc->addTo(bcont->pHerramientas());
-
-    /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu("&Plugin documental");
-
-    pPluginMenu->addAction(ArchDoc);
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bcont->menuBar()->addMenu(pPluginMenu);
+    /// Pone la opcion dentro del menu HERRAMIENTAS.
+    bcont->mui_MenuHerramientas()->addSeparator();
+    bcont->mui_MenuHerramientas()->addAction(ArchDoc);
+    _depura("Iniciado correctamente el plugin ADocumental.", 10);
 }
 

@@ -23,10 +23,12 @@
 
 #include <QDockWidget>
 #include <QString>
+#include <QObject>
 
-#include "correctorwdt.h"
+#include "ui_correctorbase.h"
 #include "postgresiface2.h"
 #include "empresa.h"
+#include "funcaux.h"
 
 
 /** Busca errores y incoherencias en la contabilidad y las reporta al usuario en forma de
@@ -39,7 +41,7 @@
     El corrector solo tiene una instancia en toda la ejecucion del programa, es la clase
     empresa la que se encarga de construirlo y una vez construido permanece siempre en
     ejecucion. */
-class correctorwidget : public correctorwdt {
+class correctorwidget : public QWidget, public Ui_correctorbase {
     Q_OBJECT
 
 public:
@@ -55,12 +57,13 @@ public:
     QDockWidget *dock;
 
 public:
-    correctorwidget(QWidget* parent = 0, const char* name = 0, Qt::WFlags fl = 0);
+    correctorwidget(QWidget* parent = 0, Qt::WFlags fl = 0);
     ~correctorwidget();
     /// El corrector, al contrario que todos los demas elementos tiene la inicializacion de
     /// la base de datos y de la empresa realizada de forma diferente. Debe usarse la
     /// funcion setEmpresa para inicializar el objeto. Esto es debido a que la construccion
     /// del corrector es anterior a la construccion de la clase empresa.
+
     void setEmpresa(empresa *empres) {
         empresaactual = empres;
         conexionbase = empres->bdempresa();
@@ -68,17 +71,17 @@ public:
     void agregarError(QString, QString, QString);
 
 public slots:
-    virtual void corregir();
-    virtual void link(const QString &);
-    virtual void alink(const QString &, const QString &);
-    virtual void s_configurarReglas();
+    virtual void on_mui_corregir_clicked();
+    virtual void on_mui_configurar_clicked();
+    virtual void alink(const QUrl &url);
     virtual void cambia(bool a) {
         if (a) {
             dock->hide();
             dock->show();
             dock->showMaximized();
-        } else
+        } else {
             dock->hide();
+        } // end if
     };
 };
 

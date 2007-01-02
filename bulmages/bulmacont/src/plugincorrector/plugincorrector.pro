@@ -4,7 +4,9 @@
 TEMPLATE = lib
 
 CONFIG += plugin \
-          warn_on
+          warn_on \
+	  qt \
+	  release
 
 TARGET = ../../../installbulmages/plugins/corrector
 
@@ -13,7 +15,7 @@ VERSION = 1.0.0
 DESTDIR = .
 
 LIBS += -lpq \
--rdynamic
+        -rdynamic
 
 INCLUDEPATH = ../../../bulmalib \
               ../contabilidad \
@@ -27,8 +29,8 @@ INCLUDEPATH = ../../../bulmalib \
               .ui \
               ../.ui
 
-FORMS += correctorwdt.ui \
-         confreglas.ui 
+FORMS += correctorbase.ui \
+         confreglasbase.ui 
 	 
 HEADERS += plugincorrector.h \
            correctorwidget.h \
@@ -64,6 +66,4 @@ unix{
   }
 }
 
-QT +=  qt3support xml
-CONFIG += uic3
-
+QT +=  xml
