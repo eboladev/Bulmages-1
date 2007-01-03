@@ -35,6 +35,7 @@ BusquedaSerieFactura::BusquedaSerieFactura(QWidget *parent)
     _depura("BusquedaSerieFactura::BusquedaSerieFactura", 0);
     companyact = NULL;
     m_cursorcombo = NULL;
+    m_codigoserie_factura = "";
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     _depura("END BusquedaSerieFactura::BusquedaSerieFactura", 0);
 }
@@ -61,16 +62,61 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
     m_cursorcombo = companyact->cargacursor("SELECT * FROM serie_factura");
     int i = 0;
     int i1 = 0;
+    int i2 = 0;
     clear();
     addItem("--");
     while (!m_cursorcombo->eof()) {
         i ++;
+	if (m_cursorcombo->valor("codigoserie_factura") == m_codigoserie_factura)
+	    i2 = i;
         if (m_cursorcombo->valor("codigoserie_factura") == codigo)
             i1 = i;
         addItem(m_cursorcombo->valor("codigoserie_factura") + ".-" + m_cursorcombo->valor("descserie_factura"));
         m_cursorcombo->siguienteregistro();
     }
-    setCurrentIndex(i1);
+    if (i1 != 0) {
+    	setCurrentIndex(i1);
+    } else {
+	setCurrentIndex(i2);
+    } // end if
     _depura("END BusquedaSerieFactura::setcodigoserie_factura", 0);
 }
+
+
+void BusquedaSerieFactura::m_activated(int index) {
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("codigoserie_factura", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        }
+}
+
+
+QString BusquedaSerieFactura::codigoserie_factura() {
+        int index = currentIndex();
+        if (index > 0) {
+            return(m_cursorcombo->valor("codigoserie_factura", index - 1));
+        } else {
+            return "";
+        }
+}
+
+
+void BusquedaSerieFactura::setcompany(company *comp) {
+        companyact = comp;
+	cursor2 *cur = companyact->cargacursor("SELECT * FROM configuracion WHERE nombre ='SerieFacturaDefecto'");
+	if (!cur->eof()) {
+		m_codigoserie_factura = cur->valor("valor");
+	} // end if
+	delete cur;
+
+}
+
+
+
+
+
+
+
+
 

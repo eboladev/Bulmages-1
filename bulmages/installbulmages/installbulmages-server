@@ -108,6 +108,12 @@ function linea {
    fi
 }
 
+function dlinea {
+   if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
+     echo -e "\033[32m===============================================\033[0m\n"
+   fi
+}
+
 
 function instalararchivos {
    # Hacemos una insercion inicial de las bases de datos.
@@ -156,16 +162,14 @@ info "Comprobando la existencia de versiones anteriores. \n" "\033[32m" "\033[0m
 tiempo
 if [ -e /etc/bulmages-server.conf ]; then
    # Tratando base de datos de.
-   LIST_DATABASES=`su - postgres -c "psql -l -t"`
-   for database in $LIST_DATABASES
-   do
-
+   # La forma mas limpia para obtener un listado de las bases de datos instaladas es esta antes que un p
+   LIST_DATABASES=`su - postgres -c "echo 'SELECT datname FROM pg_database' | psql -t template1"`
+   for database in $LIST_DATABASES; do
+	dlinea
+	info "Comprobamos $database \n"
 	   su - postgres -c "/usr/share/bulmages/dbmodels/actualizabulmafact --texto $database"
 	   su - postgres -c "/usr/share/bulmages/dbmodels/actualizabulmacont --texto $database"
    done 
-
-      # Presentamos los errores acaecidos
-      cat /tmp/errores.txt | grep ERROR
 else
 
       info "Creando bases de datos del sistema y empresas de ejemplo. \n"
@@ -181,15 +185,14 @@ else
       # Tratamos el archivo de configuracion
       info "Instalando la nueva version del archivo de configuracion. \n"
       touch /etc/bulmages-server.conf
-      
-      # Presentamos los errores acaecidos
-      if [ -e /tmp/errores.txt ]; then
-         cat /tmp/errores.txt | grep ERROR
-      fi
-      
       # Dejamos que la inserciï¿œ del usuario la haga una funciï¿œ y asi encapsulamos un poco.
       lee
-   fi
+fi
 
-   mensaje "INSTALACION FINALIZADA CON EXITO" "\033[32m" "\033[0m"
+# Presentamos los errores acaecidos
+if [ -e /tmp/errores.txt ]; then
+   cat /tmp/errores.txt | grep ERROR
+fi
+      
+mensaje "INSTALACION FINALIZADA CON EXITO" "\033[32m" "\033[0m"
 

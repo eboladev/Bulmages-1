@@ -38,31 +38,18 @@ private:
     company *companyact;
     /// En este cursor guardamos los resultados del query de almacenes. Que se corresponde con los presentados en el comboBox.
     cursor2 *m_cursorcombo;
+    /// Indica cual es el codigo de almacen por defecto.
+    QString m_codigoalmacen;
 
 public:
     BusquedaAlmacen(QWidget *parent = 0, const char *name = 0);
     ~BusquedaAlmacen();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     virtual void setidalmacen(QString idalmacen);
-    QString idalmacen() {
-        int index= currentIndex();
-        if (index > 0) {
-            return(m_cursorcombo->valor("idalmacen", index - 1));
-        } else {
-            return "";
-        }
-    };
+    QString idalmacen();
 
 public slots:
-    void m_activated(int index) {
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idalmacen", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    void m_activated(int index);
 
 signals:
     void valueChanged(QString);

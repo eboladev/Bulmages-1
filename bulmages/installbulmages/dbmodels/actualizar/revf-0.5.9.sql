@@ -1348,6 +1348,12 @@ BEGIN
 		INSERT INTO configuracion (nombre, valor) VALUES (''Ciudad'', ''*CAMBIAME*''); 		 
 		INSERT INTO configuracion (nombre, valor) VALUES (''CodArticuloGenerico'', ''*CAMBIAME*'');
 	END IF;
+	SELECT INTO as * FROM configuracion WHERE nombre=''SerieFacturaDefecto'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (nombre, valor) VALUES (''SerieFacturaDefecto'', ''*CAMBIAME*''); 		 
+	END IF;
+
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -1385,9 +1391,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.5.9-0004'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.5.9-0005'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0004''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.5.9-0005''); 		 
 	END IF;
 	RETURN 0;
 END;

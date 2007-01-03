@@ -83,3 +83,10 @@ ListAlmacenSubForm::ListAlmacenSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setinsercion(TRUE);
 }
 
+void ListAlmacenSubForm::cargar() {
+        _depura("ListAlmacenSubForm::cargar", 0);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
+        SubForm3::cargar(cur);
+        delete cur;
+        _depura("END ListAlmacenSubForm::cargar", 0);
+}

@@ -104,7 +104,7 @@ for j in `ls /usr/share/bulmages/dbmodels/actualizar/*.sql | grep revf- | sort 2
      do
          # info "Comprobando la existencia de /usr/share/bulmages/$j"
                info "Aplicamos parche $j a $2"
-               psql $2 < $j 22> /dev/null
+               psql $2 < $j 2> /dev/null >/dev/null
                tiempo
 #        fi
 done

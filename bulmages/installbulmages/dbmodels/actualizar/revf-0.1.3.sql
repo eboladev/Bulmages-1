@@ -46,7 +46,25 @@ END;
 '
 language 'plpgsql';
 
+-- ======================== COMPROBACION DE CUAL ES LA ULTIMA VERSION ==================================
 
+CREATE OR REPLACE FUNCTION compruebarevision() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'' AND ( valor LIKE ''0.1.3%'' OR valor = ''0.1.3'');
+	IF FOUND THEN
+		RETURN 0;
+	ELSE
+		RETURN -1;		 
+	END IF;
+END;
+'   LANGUAGE plpgsql;
+SELECT compruebarevision();
+DROP FUNCTION compruebarevision() CASCADE;
+\echo "Comprobada la revision"
+
+-- ========================  FIN DE LA COMPROBACION ============================
 
 
 create or replace function is_number(varchar) returns boolean as

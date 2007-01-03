@@ -41,31 +41,18 @@ private:
     company *companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
+    /// Indica cual es el codigo de la serie de factura por defecto.
+    QString m_codigoserie_factura;
 
 public:
     BusquedaSerieFactura(QWidget *parent = 0);
     ~BusquedaSerieFactura();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     virtual void setcodigoserie_factura(QString);
-    QString codigoserie_factura() {
-        int index = currentIndex();
-        if (index > 0) {
-            return(m_cursorcombo->valor("codigoserie_factura", index - 1));
-        } else {
-            return "";
-        }
-    };
+    QString codigoserie_factura();
 
 public slots:
-    void m_activated(int index) {
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("codigoserie_factura", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    void m_activated(int index);
 
 signals:
     void valueChanged(QString);

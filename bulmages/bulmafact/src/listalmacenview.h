@@ -44,16 +44,10 @@ class ListAlmacenSubForm : public SubForm2Bf {
 
 public:
     ListAlmacenSubForm(QWidget *parent = 0);
-    ~ListAlmacenSubForm() {}
-    ;
+    virtual ~ListAlmacenSubForm() {};
 
 public slots:
-    virtual void cargar() {
-        _depura("ListAlmacenSubForm::cargar\n", 0);
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM almacen");
-        SubForm3::cargar(cur);
-        delete cur;
-    };
+    virtual void cargar();
 };
 
 
