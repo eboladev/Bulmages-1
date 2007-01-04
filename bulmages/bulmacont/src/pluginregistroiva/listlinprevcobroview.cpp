@@ -48,7 +48,6 @@
 #define COL_IDCTACLIENTE               16
 
 #include <QMessageBox>
-#include <q3popupmenu.h>
 #include <QPixmap>
 #include <QKeyEvent>
 #include <QEvent>
@@ -87,25 +86,14 @@ void ListLinPrevCobroView::presentacionListado() {
 
 
 ListLinPrevCobroView::ListLinPrevCobroView(QWidget * parent)
-        : Q3Table(parent), ListLinPrevCobro() {
+        : QTableWidget(parent), ListLinPrevCobro() {
     /// Inicializamos la tabla de lineas de presupuesto
-    setNumCols(17);
-    setNumRows(10000);
-    horizontalHeader()->setLabel(COL_IDPREVCOBRO, tr("COL_IDPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_FPREVISTAPREVCOBRO, tr("COL_FPREVISTAPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_FCOBROPREVCOBRO, tr("COL_FCOBROPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_IDFPAGO, tr("COL_IDFPAGO"));
-    horizontalHeader()->setLabel(COL_IDCUENTA, tr("COL_IDCUENTA"));
-    horizontalHeader()->setLabel(COL_CODIGOCUENTA, tr("COL_CODIGOCUENTA"));
-    horizontalHeader()->setLabel(COL_NOMCUENTA, tr("COL_NOMCUENTA"));
-    horizontalHeader()->setLabel(COL_IDASIENTO, tr("COL_IDASIENTO"));
-    horizontalHeader()->setLabel(COL_CANTIDADPREVISTAPREVCOBRO, tr("COL_CANTIDADPREVISTAPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_CANTIDADPREVCOBRO, tr("COL_CANTIDADPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_IDREGISTROIVA, tr("COL_IDREGISTROIVA"));
-    horizontalHeader()->setLabel(COL_TIPOPREVCOBRO, tr("COL_TIPOPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_DOCPREVCOBRO, tr("COL_DOCPREVCOBRO"));
-    horizontalHeader()->setLabel(COL_CODIGOCTACLIENTE, tr("COL_CODIGOCTACLIENTE"));
-    horizontalHeader()->setLabel(COL_NOMCTACLIENTE, tr("COL_NOMCTACLIENTE"));
+    setColumnCount(17);
+    setRowCount(10000);
+    QStringList etiquetas;
+
+    etiquetas << "COL_SELECCION" << "COL_FCOBROPREVCOBRO" << "COL_CODIGOCTACLIENTE" << "COL_NOMCTACLIENTE" << "COL_CODIGOCUENTA" << "COL_NOMCUENTA" << "COL_CANTIDADPREVCOBRO" << "COL_IDREGISTROIVA" << "COL_TIPOPREVCOBRO" << "COL_DOCPREVCOBRO" << "COL_IDPREVCOBRO" << "COL_FPREVISTAPREVCOBRO" << "COL_IDFPAGO" << "COL_IDCUENTA" << "COL_IDASIENTO" << "COL_CANTIDADPREVISTAPREVCOBRO" << "COL_IDCTACLIENTE";
+
     setColumnWidth(COL_SELECCION, 25);
     setColumnWidth(COL_IDPREVCOBRO, 100);
     setColumnWidth(COL_FPREVISTAPREVCOBRO, 100);
@@ -122,13 +110,18 @@ ListLinPrevCobroView::ListLinPrevCobroView(QWidget * parent)
     setColumnWidth(COL_IDREGISTROIVA, 50);
     setColumnWidth(COL_TIPOPREVCOBRO, 100);
     setColumnWidth(COL_DOCPREVCOBRO, 100);
-    setSelectionMode(Q3Table::SingleRow);
-    setColumnReadOnly(COL_NOMCUENTA, true);
-    setColumnReadOnly(COL_NOMCTACLIENTE, true);
+
+    setSelectionMode(QAbstractItemView::SingleSelection);
+
+    //    setColumnReadOnly(COL_NOMCUENTA, true);
+    //    setColumnReadOnly(COL_NOMCTACLIENTE, true);
 
     /// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase
     /// configuraci&oacute;n que es global.
-    setPaletteBackgroundColor("#FFFFFF");
+    QPalette palette;
+    palette.setColor(this->backgroundRole(), QColor("#FFFFFF"));
+    this->setPalette(palette);
+
     presentacionListado();
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueLineChanged(int, int)));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
@@ -140,46 +133,49 @@ ListLinPrevCobroView::~ListLinPrevCobroView() {}
 
 
 void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
-    setText(pos, COL_IDPREVCOBRO, linea->idprevcobro());
-    setText(pos, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
-    setText(pos, COL_FCOBROPREVCOBRO, linea->fcobroprevcobro());
-    setText(pos, COL_IDFPAGO, linea->idfpago());
-    setText(pos, COL_IDCUENTA, linea->idcuenta());
-    setText(pos, COL_IDCTACLIENTE, linea->idctacliente());
-    setText(pos, COL_CODIGOCUENTA, linea->codigocuenta());
-    setText(pos, COL_CODIGOCTACLIENTE, linea->codigoctacliente());
-    setText(pos, COL_NOMCUENTA, linea->nomcuenta());
-    setText(pos, COL_NOMCTACLIENTE, linea->nomctacliente());
-    setText(pos, COL_IDASIENTO, linea->idasiento());
+
+    item(pos, COL_IDPREVCOBRO)->setText(linea->idprevcobro());
+    item(pos, COL_FPREVISTAPREVCOBRO)->setText(linea->fprevistaprevcobro());
+    item(pos, COL_FCOBROPREVCOBRO)->setText(linea->fcobroprevcobro());
+    item(pos, COL_IDFPAGO)->setText(linea->idfpago());
+    item(pos, COL_IDCUENTA)->setText(linea->idcuenta());
+    item(pos, COL_IDCTACLIENTE)->setText(linea->idctacliente());
+    item(pos, COL_CODIGOCUENTA)->setText(linea->codigocuenta());
+    item(pos, COL_CODIGOCTACLIENTE)->setText(linea->codigoctacliente());
+    item(pos, COL_NOMCUENTA)->setText(linea->nomcuenta());
+    item(pos, COL_NOMCTACLIENTE)->setText(linea->nomctacliente());
+    item(pos, COL_IDASIENTO)->setText(linea->idasiento());
 
     if (linea->idasiento() == "") {
-        Q3CheckTableItem *item = new Q3CheckTableItem(this, "");
-        setItem(pos,COL_SELECCION,item);
+        //       Q3CheckTableItem *item = new Q3CheckTableItem(this, "");
+        //       setItem(pos,COL_SELECCION,item);
     } // end if
 
-    setText(pos, COL_CANTIDADPREVISTAPREVCOBRO, linea->cantidadprevistaprevcobro());
-    setText(pos, COL_CANTIDADPREVCOBRO, linea->cantidadprevcobro());
-    setText(pos, COL_IDREGISTROIVA, linea->idregistroiva());
+    item(pos, COL_CANTIDADPREVISTAPREVCOBRO)->setText(linea->cantidadprevistaprevcobro());
+    item(pos, COL_CANTIDADPREVCOBRO)->setText(linea->cantidadprevcobro());
+    item(pos, COL_IDREGISTROIVA)->setText(linea->idregistroiva());
+
     if (linea->tipoprevcobro() == "t") {
-        setText(pos, COL_TIPOPREVCOBRO,"COBRO");
+        item(pos, COL_TIPOPREVCOBRO)->setText(tr("Cobro"));
     } else {
-        setText(pos, COL_TIPOPREVCOBRO,"PAGO");
+        item(pos, COL_TIPOPREVCOBRO)->setText(tr("Pago"));
     } // end if
-    setText(pos, COL_DOCPREVCOBRO, linea->docprevcobro());
+
+    item(pos, COL_DOCPREVCOBRO)->setText(linea->docprevcobro());
 
     /// Ponemos los iconos para que la cosa parezca mas guay.
     cursor2 *cursoraux1 = m_companyact->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idcuenta());
     if (!cursoraux1->eof()) {
         if (cursoraux1->valor("tipocuenta") == "1") {
-            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cactivo));
+            item(pos, COL_CODIGOCUENTA)->setIcon(QIcon(QPixmap(cactivo)));
         } else if (cursoraux1->valor("tipocuenta") == "2") {
-            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cpasivo));
+            item(pos, COL_CODIGOCUENTA)->setIcon(QIcon(QPixmap(cpasivo)));
         } else if (cursoraux1->valor("tipocuenta") == "3") {
-            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cneto));
+            item(pos, COL_CODIGOCUENTA)->setIcon(QIcon(QPixmap(cneto)));
         } else if (cursoraux1->valor("tipocuenta") == "4") {
-            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cingresos));
+            item(pos, COL_CODIGOCUENTA)->setIcon(QIcon(QPixmap(cingresos)));
         } else if (cursoraux1->valor("tipocuenta") == "5") {
-            setPixmap(pos, COL_CODIGOCUENTA, QPixmap(cgastos));
+            item(pos, COL_CODIGOCUENTA)->setIcon(QIcon(QPixmap(cgastos)));
         } // end if
     } // end if
     delete cursoraux1;
@@ -188,15 +184,15 @@ void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
     cursoraux1= m_companyact->cargacursor("SELECT tipocuenta FROM cuenta WHERE idcuenta = " + linea->idctacliente());
     if (!cursoraux1->eof()) {
         if (cursoraux1->valor("tipocuenta") == "1") {
-            setPixmap(pos, COL_CODIGOCTACLIENTE, QPixmap(cactivo));
+            item(pos, COL_CODIGOCTACLIENTE)->setIcon(QIcon(QPixmap(cactivo)));
         } else if (cursoraux1->valor("tipocuenta") == "2") {
-            setPixmap(pos, COL_CODIGOCTACLIENTE, QPixmap(cpasivo));
+            item(pos, COL_CODIGOCTACLIENTE)->setIcon(QIcon(QPixmap(cpasivo)));
         } else if (cursoraux1->valor("tipocuenta") == "3") {
-            setPixmap(pos, COL_CODIGOCTACLIENTE, QPixmap(cneto));
+            item(pos, COL_CODIGOCTACLIENTE)->setIcon(QIcon(QPixmap(cneto)));
         } else if (cursoraux1->valor("tipocuenta") == "4") {
-            setPixmap(pos, COL_CODIGOCTACLIENTE, QPixmap(cingresos));
+            item(pos, COL_CODIGOCTACLIENTE)->setIcon(QIcon(QPixmap(cingresos)));
         } else if (cursoraux1->valor("tipocuenta") == "5") {
-            setPixmap(pos, COL_CODIGOCTACLIENTE, QPixmap(cgastos));
+            item(pos, COL_CODIGOCTACLIENTE)->setIcon(QIcon(QPixmap(cgastos)));
         } // end if
     } // end if
     delete cursoraux1;
@@ -204,23 +200,37 @@ void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
 
 
 void ListLinPrevCobroView::pintalistlinprevcobro() {
-    fprintf(stderr, "INICIO de pintalistlinprevcobro\n");
-    setNumRows(0);
-    setNumRows(100);
-    /// \todo Habra que vaciar la tabla para que el pintado fuera exacto.
+    _depura("INICIO de pintalistlinprevcobro", 10);
+    setRowCount(0);
+    setRowCount(100);
+    /// TODO: Habra que vaciar la tabla para que el pintado fuera exacto.
     linprevcobro *linea;
     uint i = 0;
     for (linea = m_lista.first(); linea; linea = m_lista.next()) {
         pintalistlinprevcobro(linea, i);
         i++;
     } // end for
-    fprintf(stderr, "FIN de pintalistlinprevcobro\n");
+    _depura("FIN de pintalistlinprevcobro", 10);
 }
 
 
 void ListLinPrevCobroView::contextMenu(int row, int col, const QPoint & pos) {
-    Q3PopupMenu *popup;
-    int opcion;
+    QMenu *popup = new QMenu();
+    QAction *menuborrarlinea = popup->addAction(tr("Borrar linea"));
+    QAction *menugenerarasiento = popup->addAction(tr("Generar asiento de cobro/pago"));
+    QAction *menudesvinculaasiento = popup->addAction(tr("Desvincular asiento"));
+    QAction *menuverasiento = popup->addAction(tr("Ver asiento"));
+    QAction *menuverfact = popup->addAction(tr("Ver factura"));
+    QAction *menucobro = popup->addAction(tr("Cobro"));
+    QAction *menupago = popup->addAction(tr("Pago"));
+
+    menugenerarasiento->setVisible(FALSE);
+    menudesvinculaasiento->setVisible(FALSE);
+    menuverasiento->setVisible(FALSE);
+    menuverfact->setVisible(FALSE);
+    menucobro->setVisible(FALSE);
+    menupago->setVisible(FALSE);
+
     cursor2 *cur;
     QString query;
     linprevcobro *linea = lineaact();
@@ -230,50 +240,50 @@ void ListLinPrevCobroView::contextMenu(int row, int col, const QPoint & pos) {
     if (linea->idprevcobro() == "") {
         return;
     } // end if
-    popup = new Q3PopupMenu;
-
     if (col == COL_TIPOPREVCOBRO) {
-        popup->insertItem(tr("COBRO"), 6);
-        popup->insertItem(tr("PAGO"), 7);
+        menucobro->setVisible(TRUE);
+        menupago->setVisible(TRUE);
     } // end if
 
-    popup->insertItem(tr("Borrar linea"), 1);
     if (linea->idasiento() == "") {
-        popup->insertItem(tr("Generar asiento de cobro/pago"), 2);
+        menugenerarasiento->setVisible(TRUE);
     } else {
-        popup->insertItem(tr("Desvincular asiento"), 3);
-        popup->insertItem(tr("Ver asiento"), 4);
+        menudesvinculaasiento->setVisible(TRUE);
+        menuverasiento->setVisible(TRUE);
     } // end if
     if (linea->idregistroiva() != "") {
-        popup->insertItem(tr("Ver Factura"), 5);
+        menuverfact->setVisible(TRUE);
     } // end if
-    opcion = popup->exec(pos);
+
+    QAction *opcion = popup->exec(pos);
     delete popup;
-    switch (opcion) {
-    case 1:
+
+    /// Comborobamos que opcio se ha seleccionado del menu contextual.
+
+    if (opcion == menuborrarlinea) {
         borralinprevcobro(row);
-        break;
-    case 2:
+    } // end if
+    if (opcion == menugenerarasiento) {
         /// Poner aqu&iacute; el c&oacute;digo necesario para generar el asiento.
         /// Intentamos la creación del asiento y si funciona repintamos todo.
         if (linea->creaPago()) {
             pintalistlinprevcobro();
         } // end if
-        break;
-    case 3:
+    } // end if
+    if (opcion == menudesvinculaasiento) {
         if (linea->idasiento() != "") {
             query = "UPDATE prevcobro SET idasiento = NULL WHERE idprevcobro = " + linea->idprevcobro();
             m_companyact->ejecuta(query);
             linea->setidasiento("");
             pintalistlinprevcobro();
         } // end if
-        break;
-    case 4:
+    } // end if
+    if (opcion == menuverasiento) {
         if (linea->idasiento() != "") {
             m_companyact->intapuntsempresa()->muestraasiento(linea->idasiento().toInt());
         } // end if
-        break;
-    case 5:
+    } // end if
+    if (opcion == menuverfact) {
         query = "SELECT idborrador FROM registroiva WHERE idregistroiva = " + linea->idregistroiva();
         cur = m_companyact->cargacursor(query);
         if (linea->idregistroiva() != "") {
@@ -283,16 +293,15 @@ void ListLinPrevCobroView::contextMenu(int row, int col, const QPoint & pos) {
             iva->show();
         } // end if
         delete cur;
-        break;
-    case 6:
+    } // end if
+    if (opcion == menucobro) {
         linea->settipoprevcobro("t");
         pintalistlinprevcobro(linea, row);
-        break;
-    case 7:
+    } // end if
+    if (opcion == menupago) {
         linea->settipoprevcobro("f");
         pintalistlinprevcobro(linea, row);
-        break;
-    } // end switch
+    } // end if
 }
 
 
@@ -302,7 +311,7 @@ void ListLinPrevCobroView::borralinprevcobroact() {
 
 
 void ListLinPrevCobroView::pintalinlistlinprevcobro(int pos) {
-    fprintf(stderr, "pintalinlistlinprevcobro(%d)\n", pos);
+    _depura("pintalinlistlinprevcobro", 10);
     linprevcobro *linea;
     linea = m_lista.at(pos);
     pintalistlinprevcobro(linea, pos);
@@ -334,55 +343,55 @@ void ListLinPrevCobroView::arreglaPosicion(int row, int col) {
 
 
 void ListLinPrevCobroView::valueLineChanged(int row, int col) {
-    fprintf(stderr, "valueLineChanged \n");
-    QString valor = text(row, col);
+    _depura("valueLineChanged", 10);
+    QString valor = item(row, col)->text();
     linprevcobro *linea;
     linea = lineaat(row);
     if (linea != NULL) {
         switch (col) {
         case COL_FPREVISTAPREVCOBRO:
             linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
-            setText(row, col, linea->fprevistaprevcobro());
+            item(row, col)->setText(linea->fprevistaprevcobro());
             break;
         case COL_FCOBROPREVCOBRO:
             linea->setfcobroprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
             linea->setfprevistaprevcobro(normalizafecha(valor).toString("dd/MM/yyyy"));
-            setText(row,col, linea->fcobroprevcobro());
-            setText(row, COL_FPREVISTAPREVCOBRO, linea->fprevistaprevcobro());
+            item(row, col)->setText(linea->fcobroprevcobro());
+            item(row, COL_FPREVISTAPREVCOBRO)->setText(linea->fprevistaprevcobro());
             break;
         case COL_CODIGOCUENTA:
             linea->setcodigocuenta(valor);
-            setText(row, col, linea->codigocuenta());
-            setText(row, COL_NOMCUENTA, linea->nomcuenta());
-            setText(row, COL_IDCUENTA, linea->idcuenta());
+            item(row, col)->setText(linea->codigocuenta());
+            item(row, COL_NOMCUENTA)->setText(linea->nomcuenta());
+            item(row, COL_IDCUENTA)->setText(linea->idcuenta());
             break;
         case COL_CODIGOCTACLIENTE:
             linea->setcodigoctacliente(valor);
-            setText(row, col, linea->codigoctacliente());
-            setText(row, COL_NOMCTACLIENTE, linea->nomctacliente());
-            setText(row, COL_IDCTACLIENTE, linea->idctacliente());
+            item(row, col)->setText(linea->codigocuenta());
+            item(row, COL_NOMCTACLIENTE)->setText(linea->nomctacliente());
+            item(row, COL_IDCTACLIENTE)->setText(linea->idctacliente());
             break;
         case COL_CANTIDADPREVISTAPREVCOBRO:
             linea->setcantidadprevistaprevcobro(valor);
-            setText(row,col, linea->cantidadprevistaprevcobro());
+            item(row, col)->setText(linea->cantidadprevistaprevcobro());
             break;
         case COL_CANTIDADPREVCOBRO:
             linea->setcantidadprevcobro(valor);
             linea->setcantidadprevistaprevcobro(valor);
-            setText(row,col, linea->cantidadprevcobro());
-            setText(row, COL_CANTIDADPREVISTAPREVCOBRO, linea->cantidadprevistaprevcobro());
+            item(row, col)->setText(linea->cantidadprevcobro());
+            item(row, COL_CANTIDADPREVISTAPREVCOBRO)->setText(linea->cantidadprevistaprevcobro());
             break;
         case COL_DOCPREVCOBRO:
             linea->setdocprevcobro(valor);
-            setText(row,col, linea->docprevcobro());
+            item(row, col)->setText(linea->docprevcobro());
             break;
         case COL_TIPOPREVCOBRO:
             if (valor == "COBRO") {
                 linea->settipoprevcobro("t");
-                setText(row, col, "COBRO");
+                item(row, col)->setText(tr("Cobro"));
             } else {
                 linea->settipoprevcobro("f");
-                setText(row, col, "PAGO");
+                item(row, col)->setText(tr("Pago"));
             } // end if
             break;
         } // end switch
@@ -435,7 +444,8 @@ QString ListLinPrevCobroView::searchCuenta() {
 
 
 /**
-  * \brief SLOT que respoonde a la creación de un asiento de cobro o pago a partir de la gestion de cobros y pagos.
+  * SLOT que respoonde a la creacion de un asiento de cobro o pago a partir de la gestion de
+  * cobros y pagos.
   * Descripción:
   * 1.- Calculamos los campos Total, Tipo de Asiento (compra/venta), Cuenta bancaria y cuenta de cliente
   * 2.- Determinamos si es un cobro o un pago.
@@ -444,19 +454,21 @@ QString ListLinPrevCobroView::searchCuenta() {
   */
 void ListLinPrevCobroView::s_creaPago() {
     /// Calculamos los campos necesarios.
-    /* El cálculo de los campos requeridos es una iteración por la tabla. */
+    /// El calculo de los campos requeridos es una iteracion por la tabla.
     /// Actualizamos los campos que haga falta.
-    for (int i = 0; i < numRows(); i++) {
-        fprintf(stderr, "Iteración para los elementos de la lista %d\n", i);
-        Q3TableItem *check = item(i,COL_SELECCION);
-        fprintf(stderr, "Vamos a testear \n");
-        if (check != NULL) {
-            Q3CheckTableItem *check1 = (Q3CheckTableItem *) check;
-            if (check1->isChecked()) {
-                linprevcobro *linea = lineaat(i);
-                linea->creaPago();
-            } // end if
-        } // end if
+    for (int i = 0; i < rowCount(); i++) {
+        _depura("Iteracion para los elementos de la lista", 10);
+        /*
+                Q3TableItem *check = item(i,COL_SELECCION);
+                _depura ("Vamos a testear", 10);
+                if (check != NULL) {
+                    Q3CheckTableItem *check1 = (Q3CheckTableItem *) check;
+                    if (check1->isChecked()) {
+                        linprevcobro *linea = lineaat(i);
+                        linea->creaPago();
+                    } // end if
+                } // end if
+        */
     } // end for
     /// Inicializamos para que se muestren las cosas estas.
     pintalistlinprevcobro();

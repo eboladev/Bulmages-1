@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <Q3PopupMenu>
-
 #include "listregistroivaview.h"
 #include "regivaprintview.h"
 #include "registroivaview.h"
@@ -96,8 +94,7 @@ ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent
     mui_totalSoportado->addSHeader("tbaseiva", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNoWrite, tr("tbaseiva"));
     mui_totalSoportado->setinsercion(FALSE);
 
-    /// END DEFINICIONES PARA LA TABLA DE IVAAboutViewAboutViewAboutViewAboutView
-    /// =============================================
+    /// Fin de las definiciones para la tabla de IVA.
     _depura("END ListRegistroIvaView::ListRegistroIvaView", 0);
 }
 

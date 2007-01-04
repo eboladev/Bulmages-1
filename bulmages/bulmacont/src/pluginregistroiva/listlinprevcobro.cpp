@@ -22,6 +22,7 @@
 #include "empresa.h"
 #include "linprevcobro.h"
 
+
 void ListLinPrevCobro::inicializaVariables() {
     m_companyact = NULL;
     mdb_idregistroiva = "";
@@ -70,9 +71,9 @@ int ListLinPrevCobro::chargeBudgetLines() {
         cadwhere = " AND idregistroiva = " + mfilt_idregistroiva;
     if (mfilt_finprevcobro != "")
         cadwhere += " AND fcobroprevcobro >= '" + mfilt_finprevcobro + "'";
-    if ( mfilt_codigocuentaprevcobro != "")
+    if (mfilt_codigocuentaprevcobro != "")
         cadwhere += " AND idcuenta = id_cuenta('" + mfilt_codigocuentaprevcobro + "')";
-    if ( mfilt_tipoprevcobro != "")
+    if (mfilt_tipoprevcobro != "")
         cadwhere += " AND tipoprevcobro = '" + mfilt_tipoprevcobro + "'";
     if (mfilt_procesado == "PROCESADO")
         cadwhere += " AND idasiento IS NOT NULL ";
@@ -80,9 +81,9 @@ int ListLinPrevCobro::chargeBudgetLines() {
         cadwhere += " AND idasiento IS NULL ";
 
     cursor2 * cur= m_companyact->cargacursor("SELECT * FROM prevcobro "
-                   " LEFT JOIN cuenta ON cuenta.idcuenta=prevcobro.idcuenta "
+                   " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
                    " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
-                   " WHERE 1=1 "+ cadwhere + " ORDER BY fcobroprevcobro ");
+                   " WHERE 1 = 1 "+ cadwhere + " ORDER BY fcobroprevcobro ");
 
     int i = 0;
     while (!cur->eof()) {

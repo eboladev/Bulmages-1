@@ -21,7 +21,8 @@
 #ifndef LISTIVAVIEW_H
 #define LISTIVAVIEW_H
 
-#include <Q3Table>
+#include <QTableWidget>
+#include <QMenu>
 #include <QEvent>
 
 #include "listiva.h"
@@ -31,7 +32,7 @@
 class empresa;
 
 
-class ListIvaView : public Q3Table, public ListIva {
+class ListIvaView : public QTableWidget, public ListIva {
     Q_OBJECT
 
 public:

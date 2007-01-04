@@ -22,8 +22,7 @@
 #define LISTLINPREVCOBROVIEW1_H
 
 #include <QEvent>
-#include <Q3Table>
-
+#include <QTableWidget>
 
 #include "qtable1.h"
 #include "listlinprevcobro.h"
@@ -31,7 +30,7 @@
 #include "linprevcobro.h"
 
 
-class ListLinPrevCobroView : public Q3Table, public ListLinPrevCobro {
+class ListLinPrevCobroView : public QTableWidget, public ListLinPrevCobro {
     Q_OBJECT
 
 public:

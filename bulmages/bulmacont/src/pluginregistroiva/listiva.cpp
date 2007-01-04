@@ -22,6 +22,7 @@
 #include "empresa.h"
 #include "funcaux.h"
 
+
 ListIva::ListIva(empresa *comp) {
     companyact = comp;
     m_lista.setAutoDelete(TRUE);
@@ -52,7 +53,7 @@ int ListIva::cargaListIva(QString idregistroiva) {
     vaciar();
     mdb_idregistroiva = idregistroiva;
 
-    cursor2 * cur= companyact->cargacursor("SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva="+idregistroiva+" ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo");
+    cursor2 * cur= companyact->cargacursor("SELECT * FROM  tipoiva LEFT JOIN (SELECT * FROM iva WHERE idregistroiva = " + idregistroiva + " ) AS t1 ON t1.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta on tipoiva.idcuenta = cuenta.idcuenta  ORDER BY codigo");
     if (cur->error()) {
         error = 1;
     } // end if
@@ -76,15 +77,15 @@ int ListIva::cargaListIva(QString idregistroiva) {
 
 
 void ListIva::guardaListIva() {
-	_depura("ListIva::guardaListIva", 0);
+    _depura("ListIva::guardaListIva", 0);
     Iva *linea;
     uint i = 0;
     for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-	if (linea->baseiva() != "")
-	    linea->guardaIva();
+        if (linea->baseiva() != "")
+            linea->guardaIva();
         i++;
     } // end for
-	_depura("END ListIva::guardaListIva", 0);
+    _depura("END ListIva::guardaListIva", 0);
 }
 
 

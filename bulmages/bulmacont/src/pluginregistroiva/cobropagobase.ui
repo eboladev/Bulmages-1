@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>CobroPagoBase</class>
  <widget class="QWidget" name="CobroPagoBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>865</width>
-    <height>879</height>
+    <width>589</width>
+    <height>395</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -222,7 +219,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BusquedaCuenta" name="m_cuenta" />
+           <widget class="BusquedaCuenta" native="1" name="m_cuenta" />
           </item>
          </layout>
         </item>
@@ -376,7 +373,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BusquedaFecha" name="m_firstDate" />
+           <widget class="BusquedaFecha" native="1" name="m_firstDate" />
           </item>
          </layout>
         </item>
@@ -412,7 +409,7 @@
            </widget>
           </item>
           <item>
-           <widget class="BusquedaFecha" name="m_lastDate" />
+           <widget class="BusquedaFecha" native="1" name="m_lastDate" />
           </item>
          </layout>
         </item>
@@ -528,28 +525,21 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>SubForm2Bc</class>
    <extends>QTableWidget</extends>
    <header>subform2bc.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaCuenta</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmages/bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

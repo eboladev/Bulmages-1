@@ -27,13 +27,13 @@ void Iva::definetabla() {
     setDBTableName("iva");
     setDBCampoId("idiva");
     addDBCampo("idiva", DBCampo::DBint, DBCampo::DBPrimaryKey, "Identificador");
-    addDBCampo("idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, "Identificador");
-    addDBCampo("idregistroiva", DBCampo::DBint, DBCampo::DBNotNull, "Identificador");
+    addDBCampo("idtipoiva", DBCampo::DBint, DBCampo::DBNotNull, "Id tipo IVA");
+    addDBCampo("idregistroiva", DBCampo::DBint, DBCampo::DBNotNull, "Id registro IVA");
     addDBCampo("baseiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Cantidad");
-    addDBCampo("ivaiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Precio Linea Presupuesto");
-    addDBCampo("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, "Id. Cuenta");
+    addDBCampo("ivaiva", DBCampo::DBnumeric, DBCampo::DBNotNull, "Precio linea presupuesto");
+    addDBCampo("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, "Id. cuenta");
     addDBCampo("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, "Codigo");
-    addDBCampo("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre Tipo Iva");
+    addDBCampo("nombretipoiva", DBCampo::DBvarchar, DBCampo::DBNoSave, "Nombre tipo IVA");
     _depura("END Iva::definetabla",0);
 }
 
@@ -49,13 +49,13 @@ Iva::Iva(empresa *comp) : DBRecord(comp) {
 Iva::Iva(empresa *comp, QString idiva) : DBRecord(comp) {
     m_companyact = comp;
     definetabla();
-    QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva="+idiva;
+    QString SQLQuery = "SELECT * FROM iva LEFT JOIN tipoiva ON iva.idtipoiva = tipoiva.idtipoiva LEFT JOIN cuenta ON cuenta.idcuenta = tipoiva.idtipoiva WHERE idiva = " + idiva;
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         DBload(cur);
     } else {
         vaciaIva();
-    }// end if
+    } // end if
 }
 
 

@@ -18,17 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "listivaview.h"
-#include "registroivaview.h"
-#include "empresa.h"
-
-#include <plugins.h>
 #include <QMessageBox>
-#include <Q3Table>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
-#include <Q3PopupMenu>
 #include <QToolButton>
 #include <QFile>
 #include <QTextStream>
@@ -37,8 +30,12 @@
 #include <QCloseEvent>
 #include <fstream>
 
+#include <plugins.h>
+
+#include "listivaview.h"
+#include "registroivaview.h"
+#include "empresa.h"
 #include "funcaux.h"
-#define coma "'"
 
 
 RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
@@ -162,7 +159,7 @@ int RegistroIvaView::cargar(QString id) {
     mui_listPrevCobro->cargar("SELECT * FROM prevcobro "
                               " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
                               " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente, tipocuenta AS tipoctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
-                              " WHERE idregistroiva= " + id + " ORDER BY fcobroprevcobro ");
+                              " WHERE idregistroiva = " + id + " ORDER BY fcobroprevcobro ");
 
     setWindowTitle(tr("Registro factura") + " " + factura());
     dialogChanges_cargaInicial();

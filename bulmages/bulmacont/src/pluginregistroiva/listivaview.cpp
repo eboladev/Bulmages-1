@@ -27,9 +27,7 @@
 #define COL_BASEIVA         6
 #define COL_IVAIVA          7
 
-#include <Q3Table>
 #include <QMessageBox>
-#include <Q3PopupMenu>
 #include <QKeyEvent>
 #include <QEvent>
 #include <QTextStream>
@@ -45,7 +43,7 @@ void ListIvaView::guardaconfig() {
     QFile file(confpr->valor(CONF_DIR_USER) + "confListIvaView.cfn");
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
-        for (int i = 0; i < numCols(); i++) {
+        for (int i = 0; i < columnCount(); i++) {
             showColumn(i);
             stream << columnWidth(i) << "\n";
         } // end for
@@ -60,7 +58,7 @@ void ListIvaView::cargaconfig() {
     QString line;
     if (file.open(QIODevice::ReadOnly)) {
         QTextStream stream(&file);
-        for (int i = 0; i < numCols(); i++) {
+        for (int i = 0; i < columnCount(); i++) {
             QString linea = stream.readLine();
             setColumnWidth(i, linea.toInt());
         } // end for
@@ -69,35 +67,36 @@ void ListIvaView::cargaconfig() {
 }
 
 
-ListIvaView::ListIvaView(QWidget * parent) : Q3Table(parent), ListIva() {
+ListIvaView::ListIvaView(QWidget * parent) : QTableWidget(parent), ListIva() {
     _depura("ListIvaView::ListIvaView", 0);
     /// Inicializamos la tabla de lineas de presupuesto
-    setNumCols(8);
-    setNumRows(0);
-    horizontalHeader()->setLabel( COL_IDIVA, tr( "COL_IDIVA" ) );
-    horizontalHeader()->setLabel( COL_IDTIPOIVA, tr( "COL_IDTIPOIVA" ) );
-    horizontalHeader()->setLabel( COL_IDCUENTA, tr( "COL_IDCUENTA" ) );
-    horizontalHeader()->setLabel( COL_CODIGO, tr( "COL_CODIGO" ) );
-    horizontalHeader()->setLabel( COL_NOMBRETIPOIVA, tr( "COL_NOMBRETIPOIVA" ) );
-    horizontalHeader()->setLabel( COL_IDREGISTROIVA, tr( "COL_IDREGISTROIVA" ) );
-    horizontalHeader()->setLabel( COL_BASEIVA, tr( "COL_BASEIVA" ) );
-    horizontalHeader()->setLabel( COL_IVAIVA, tr( "COL_IVAIVA" ) );
-    setColumnWidth(COL_IDIVA,100);
-    setColumnWidth(COL_IDTIPOIVA,100);
-    setColumnWidth(COL_IDCUENTA,100);
-    setColumnWidth(COL_CODIGO,100);
-    setColumnWidth(COL_NOMBRETIPOIVA,100);
-    setColumnWidth(COL_IDREGISTROIVA,100);
-    setColumnWidth(COL_BASEIVA,100);
-    setColumnWidth(COL_IVAIVA,74);
+    setColumnCount(8);
+    setRowCount(0);
+    QStringList etiquetas;
+    etiquetas << tr("COL_IDIVA") << tr("COL_IDTIPOIVA") << tr("COL_IDCUENTA") << tr("COL_CODIGO") << tr("COL_NOMBRETIPOIVA") << tr("COL_IDREGISTROIVA") << tr("COL_BASEIVA") << tr("COL_IVAIVA");
+    setHorizontalHeaderLabels(etiquetas);
+
+    setColumnWidth(COL_IDIVA, 100);
+    setColumnWidth(COL_IDTIPOIVA, 100);
+    setColumnWidth(COL_IDCUENTA, 100);
+    setColumnWidth(COL_CODIGO, 100);
+    setColumnWidth(COL_NOMBRETIPOIVA, 100);
+    setColumnWidth(COL_IDREGISTROIVA, 100);
+    setColumnWidth(COL_BASEIVA, 100);
+    setColumnWidth(COL_IVAIVA, 74);
+
     hideColumn(COL_IDIVA);
     hideColumn(COL_IDTIPOIVA);
     hideColumn(COL_IDCUENTA);
     hideColumn(COL_IDREGISTROIVA);
-    setSelectionMode(Q3Table::SingleRow);
+
+    setSelectionMode(QAbstractItemView::SingleSelection);
     /// Establecemos el color de fondo de la rejilla. El valor lo tiene la clase
     /// configuraci&oacute;n que es global.
-    setPaletteBackgroundColor(confpr->valor(CONF_BG_LINPRESUPUESTOS));
+    QPalette palette;
+    palette.setColor(this->backgroundRole(), confpr->valor(CONF_BG_LINPRESUPUESTOS));
+    this->setPalette(palette);
+
     connect(this, SIGNAL(valueChanged(int, int)), this, SLOT(valueBudgetLineChanged(int, int)));
     connect(this, SIGNAL(contextMenuRequested(int, int, const QPoint &)), this, SLOT(contextMenu(int, int, const QPoint &)));
     installEventFilter(this);
@@ -113,14 +112,14 @@ ListIvaView::~ListIvaView() {
 
 void ListIvaView::pintaListIva() {
     _depura("ListIvaView::pintaListIva\n", 0);
-    setNumRows(0);
-    setNumRows(m_lista.count());
-    /// \todo Habra que vaciar la tabla para que el pintado fuera exacto.
+    setRowCount(0);
+    setRowCount(m_lista.count());
+    /// TODO Habra que vaciar la tabla para que el pintado fuera exacto.
     Iva *linea;
     uint i = 0;
     for (linea = m_lista.first(); linea; linea = m_lista.next()) {
         pintaIva(i);
-        adjustRow(i);
+        resizeRowToContents(i);
         i++;
     } // end for
     _depura("END ListIvaView::pintaListIva\n", 0);
@@ -128,16 +127,13 @@ void ListIvaView::pintaListIva() {
 
 
 void ListIvaView::contextMenu(int row, int, const QPoint & pos) {
-    Q3PopupMenu *popup;
-    int opcion;
-    popup = new Q3PopupMenu;
-    popup->insertItem(tr(tr("Borrar Linea")), 1);
-    opcion = popup->exec(pos);
+    QMenu *popup = new QMenu();
+    QAction *borrarlinea = popup->addAction(tr("Borrar linea"));
+    QAction *opcion = popup->exec(pos);
     delete popup;
-    switch (opcion) {
-    case 1:
+    if (opcion == borrarlinea) {
         borraIva(row);
-    } // end switch
+    } // end if
 }
 
 
@@ -150,15 +146,17 @@ void ListIvaView::pintaIva(int pos) {
     _depura("ListIvaView::pintaIva\n", 0);
     Iva *linea;
     linea = m_lista.at(pos);
-    setText(pos, COL_IDIVA, linea->idiva());
-    setText(pos, COL_IDTIPOIVA, linea->idtipoiva());
-    setText(pos, COL_IDCUENTA, linea->idcuenta());
-    setText(pos, COL_CODIGO, linea->codigo());
-    setText(pos, COL_NOMBRETIPOIVA, linea->nombretipoiva());
-    setText(pos, COL_IDREGISTROIVA, linea->idregistroiva());
-    setText(pos, COL_BASEIVA, linea->baseiva());
-    setText(pos, COL_IVAIVA, linea->ivaiva());
-    adjustRow(pos);
+
+    item(pos, COL_IDIVA)->setText(linea->idiva());
+    item(pos, COL_IDTIPOIVA)->setText(linea->idtipoiva());
+    item(pos, COL_IDCUENTA)->setText(linea->idcuenta());
+    item(pos, COL_CODIGO)->setText(linea->codigo());
+    item(pos, COL_NOMBRETIPOIVA)->setText(linea->nombretipoiva());
+    item(pos, COL_IDREGISTROIVA)->setText(linea->idregistroiva());
+    item(pos, COL_BASEIVA)->setText(linea->baseiva());
+    item(pos, COL_IVAIVA)->setText(linea->ivaiva());
+    resizeRowToContents(pos);
+
     _depura("END ListIvaView::pintaIva\n", 0);
 }
 
@@ -204,7 +202,7 @@ bool ListIvaView::eventFilter(QObject *obj, QEvent *ev) {
             }// end switch
         }// end if
     */
-    return Q3Table::eventFilter(obj, ev);
+    return QTableWidget::eventFilter(obj, ev);
 }
 
 
@@ -215,12 +213,12 @@ void ListIvaView::valueBudgetLineChanged(int row, int col) {
     if (linea != NULL) {
         switch (col) {
         case COL_BASEIVA: {
-                float baseiva = text(row, COL_BASEIVA).replace(",", ".").toFloat();
+                float baseiva = item(row, COL_BASEIVA)->text().replace(",", ".").toFloat();
                 linea->setbaseiva(QString::number(baseiva));
                 break;
             }
         case COL_IVAIVA: {
-                float ivaiva = text(row, COL_IVAIVA).replace(",", ".").toFloat();
+                float ivaiva = item(row, COL_IVAIVA)->text().replace(",", ".").toFloat();
                 linea->setivaiva(QString::number(ivaiva));
                 break;
             } // end case
