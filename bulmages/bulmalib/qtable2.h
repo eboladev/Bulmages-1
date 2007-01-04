@@ -23,9 +23,19 @@
 
 #include <QEvent>
 #include <QTableWidget>
-
+#include <QItemDelegate>
 #include "funcaux.h"
 
+
+
+class QTableItemTextDelegate : public QItemDelegate {
+public:
+    QTableItemTextDelegate(QObject *);
+    ~QTableItemTextDelegate();
+    void setEditorData(QWidget *, const QModelIndex &index) const;
+    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+};
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
 /** */
@@ -73,14 +83,16 @@ public:
     };
     QTableWidget2(QWidget *parent = 0);
     ~QTableWidget2() {
-        _depura("~QTableWidget2", 0);
+        _depura("END ~QTableWidget2", 0);
     };
+    void editItem(QTableWidgetItem *it);
     virtual bool eventFilter(QObject *obj, QEvent *event);
     void setText(int x, int y, const QString &val);
 //    void sortColumn(int col, Qt::SortOrder tipoorden);
     virtual void ordenar();
     
-//public slots:
+public slots:
+    virtual void sitemChanged(QTableWidgetItem *it);
 //    virtual void sortByColumn(int col);
 
 signals:

@@ -63,7 +63,7 @@ protected:
 protected:
     void guardaconfig();
     void cargaconfig();
-    void pintaCabeceras();
+    virtual void pintaCabeceras();
 public:
     QList<SDBRecord *> *lista() {
         return &m_lista;
@@ -136,6 +136,7 @@ public:
         m_tablename = nom;
         m_fileconfig = nom;
     };
+    QString tableName() { return m_tablename;};
     void setFileConfig(QString nom) {
         m_fileconfig = nom;
     };

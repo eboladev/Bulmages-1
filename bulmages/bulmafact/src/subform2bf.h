@@ -44,9 +44,10 @@ public:
     void setDelete(bool f) {
         m_delete = f;
     };
-    virtual void cargar(QString query) {
-	SubForm3::cargar(query);
-    };
+    virtual void cargar(QString query);
+
+protected:
+    virtual void pintaCabeceras();
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);
@@ -54,6 +55,7 @@ public slots:
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
     virtual void on_mui_list_pressedMinus(int row, int col);
+    int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
 };
 
 #endif

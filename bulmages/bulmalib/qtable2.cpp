@@ -20,18 +20,95 @@
 
 #include <QKeyEvent>
 #include <QEvent>
+#include <QLineEdit>
+#include <QTextEdit>
 
 #include "qtable2.h"
 #include "configuracion.h"
 #include "funcaux.h"
 
 
+QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent=0) : QItemDelegate(parent) {}
+
+QTableItemTextDelegate::~QTableItemTextDelegate() {}
+
+
+QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+	QTextEdit *textedit = new QTextEdit(parent);
+	return textedit;
+/*
+    if (index.column() == durationColumn) {
+        QTimeEdit *timeEdit = new QTimeEdit(parent);
+        timeEdit->setDisplayFormat("mm:ss");
+        connect(timeEdit, SIGNAL(editingFinished()),
+                this, SLOT(commitAndCloseEditor()));
+        return timeEdit;
+    } else {
+        return QItemDelegate::createEditor(parent, option, index);
+    }
+*/
+}
+
+void QTableItemTextDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
+        QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
+	model->setData(index, textedit->toPlainText());
+/*
+    if (index.column() == durationColumn) {
+        QTimeEdit *timeEdit = qobject_cast<QTimeEdit *>(editor);
+        QTime time = timeEdit->time();
+        int secs = (time.minute() * 60) + time.second();
+        model->setData(index, secs);
+    } else {
+        QItemDelegate::setModelData(editor, model, index);
+    }
+*/
+}
+
+
+void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
+
+//    QString data = index.model()->data(index, Qt::DisplayRole);
+    QString data = index.data(Qt::DisplayRole).toString();
+    QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
+    textedit->setText(data);
+    textedit->setGeometry(textedit->x(), textedit->y(), textedit->width()+150, textedit->height()+50);
+
+/*
+    if (index.column() == durationColumn) {
+        int secs = index.model()->data(index, Qt::DisplayRole).toInt();
+        QTimeEdit *timeEdit = qobject_cast<QTimeEdit *>(editor);
+        timeEdit->setTime(QTime(0, secs / 60, secs % 60));
+    } else {
+        QItemDelegate::setEditorData(editor, index);
+    }
+*/
+/*
+    // let base class fill the editor
+    QItemDelegate::setEditorData(editor, index);
+
+    // select all if it's a line edit
+    QLineEdit* lineEdit = qobject_cast<QLineEdit*>(editor);
+    if (lineEdit)
+        lineEdit->selectAll();
+*/
+}
+
+
 QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
     _depura("QTableWidget2::QTableWidget2", 0);
+//    setItemDelegate(new QTableItemDelegate(this));
     installEventFilter(this);
+    connect(this, SIGNAL(itemChanged(QTableWidgetItem *)), this, SLOT(sitemChanged(QTableWidgetItem *)));
     _depura("END QTableWidget2::QTableWidget2", 0);
 }
 
+void QTableWidget2::editItem(QTableWidgetItem *it) {
+    _depura("edicion", 2);
+}
+
+void QTableWidget2::sitemChanged(QTableWidgetItem *it) {
+    //	_depura("item cambiado", 2);
+}
 
 /// Esta funcion ya es obsoleta y no se utiliza.
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
@@ -77,7 +154,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         /// busqueda de que celda es.
         if (row < 0) {
             return TRUE;
-	} // end if
+        } // end if
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
@@ -110,7 +187,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         case Qt::Key_Up:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit ctrlSubir(row, col);
-      	        return TRUE;
+                return TRUE;
             } // end if
             /// Al pulsar la tecla 'arriba' se considera que es el fin de la edici&oacute;n de la celda.
         case Qt::Key_Down:
@@ -139,8 +216,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 
 void QTableWidget2::ordenar() {
     _depura("QTableWidget2::ordenar ", 0);
-//    sortColumn(m_colorden, (Qt::SortOrder) m_tipoorden);
-	sortByColumn(m_colorden);
+    sortByColumn(m_colorden);
     _depura("END QTableWidget2::ordenar", 0);
 }
 

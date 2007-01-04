@@ -29,7 +29,37 @@
 
 
 SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
+    _depura("SubForm2Bf::SubForm2Bf", 0);
     setDelete(TRUE);
+    _depura("END SubForm2Bf::SubForm2Bf", 0);
+}
+
+
+int SubForm2Bf::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
+    _depura("SubForm2Bf::addSHeader", 0);
+    SubForm3::addSHeader(nom, typ, res, opt, nomp);
+    _depura("END SubForm2Bf::addSHeader", 0);
+}
+
+
+void SubForm2Bf::pintaCabeceras() {
+    _depura("SubForm2Bf::pintaCabeceras", 0);
+    SubForm3::pintaCabeceras();
+    SHeader *linea;
+    for (int i = 0; i < m_lcabecera.size(); ++i) {
+        linea = m_lcabecera.at(i);
+//        if (linea->nomcampo() == "descl"+tableName()) {
+//            mui_list->setItemDelegate(new QTableItemTextDelegate(this));
+            mui_list->setItemDelegateForColumn(i, new QTableItemTextDelegate(this));
+//        } // end if
+    } // end for
+    _depura("END SubForm2Bf::pintaCabeceras", 0);
+}
+
+void SubForm2Bf::cargar(QString query) {
+    _depura("SubForm2Bf::cargar", 0);
+    SubForm3::cargar(query);
+    _depura("END SubForm2Bf::cargar", 0);
 }
 
 
@@ -69,6 +99,7 @@ void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
     QString text = editaTexto(camp->text());
     camp->set
     (text);
+    _depura("END SubForm2Bf::pressedSlash", 0);
 }
 
 
