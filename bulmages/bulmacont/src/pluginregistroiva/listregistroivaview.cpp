@@ -27,8 +27,9 @@
 
 
 ListRegistroIvaView::ListRegistroIvaView(empresa * emp, QString, QWidget *parent)
-        : QWidget(parent, Qt::WDestructiveClose) {
+        : QWidget(parent) {
     _depura("ListRegistroIvaView::ListRegistroIvaView", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     m_companyact = emp;
     finicial->setText(normalizafecha("01/01").toString("dd/MM/yyyy"));

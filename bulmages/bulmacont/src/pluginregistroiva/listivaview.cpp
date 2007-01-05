@@ -115,13 +115,21 @@ void ListIvaView::pintaListIva() {
     setRowCount(0);
     setRowCount(m_lista.count());
     /// TODO Habra que vaciar la tabla para que el pintado fuera exacto.
-    Iva *linea;
     uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+    Iva *linea;
+
+    QMutableListIterator<Iva*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
         pintaIva(i);
         resizeRowToContents(i);
         i++;
-    } // end for
+    } // end while
+
     _depura("END ListIvaView::pintaListIva\n", 0);
 }
 

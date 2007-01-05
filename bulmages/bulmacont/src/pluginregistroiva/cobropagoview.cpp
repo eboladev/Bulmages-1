@@ -30,8 +30,9 @@
 
 /// Inicia los encabezados de la tabla y llama a la presentación del listado.
 cobropagoview::cobropagoview(empresa *emp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose) {
+        : Ficha(parent) {
     _depura("cobropagoview::cobropagoview", 0);
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     conexionbase = emp->bdempresa();
     m_companyact = emp;

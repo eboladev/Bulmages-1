@@ -39,7 +39,8 @@
 
 
 RegistroIvaView::RegistroIvaView(empresa *comp, QWidget *parent)
-        : Ficha(parent, Qt::WDestructiveClose), RegistroIva(comp) {
+        : Ficha(parent), RegistroIva(comp) {
+    setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     _depura("Inicializacion de RegistroIvaView", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto

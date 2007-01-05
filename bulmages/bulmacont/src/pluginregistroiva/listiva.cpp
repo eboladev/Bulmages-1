@@ -25,7 +25,6 @@
 
 ListIva::ListIva(empresa *comp) {
     companyact = comp;
-    m_lista.setAutoDelete(TRUE);
     mdb_idregistroiva = "";
 }
 
@@ -33,7 +32,6 @@ ListIva::ListIva(empresa *comp) {
 ListIva::ListIva() {
     _depura("Constructor de ListIva\n", 0);
     companyact = NULL;
-    m_lista.setAutoDelete(TRUE);
     mdb_idregistroiva = "";
 }
 
@@ -42,7 +40,7 @@ ListIva::~ListIva() {}
 
 
 Iva *ListIva::linpos(int pos) {
-    return (m_lista.at(pos));
+    return m_lista.at(pos);
 }
 
 
@@ -79,12 +77,19 @@ int ListIva::cargaListIva(QString idregistroiva) {
 void ListIva::guardaListIva() {
     _depura("ListIva::guardaListIva", 0);
     Iva *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        if (linea->baseiva() != "")
+
+    QMutableListIterator<Iva*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
+        if (linea->baseiva() != "") {
             linea->guardaIva();
-        i++;
-    } // end for
+        } // end if
+    } // end while
+
     _depura("END ListIva::guardaListIva", 0);
 }
 
@@ -92,11 +97,17 @@ void ListIva::guardaListIva() {
 Fixed ListIva::calculabase() {
     Fixed base("0.00");
     Iva *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+
+    QMutableListIterator<Iva*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
         base = base + Fixed(linea->baseiva());
-        i++;
-    } // end for
+    } // end while
+
     return base;
 }
 
@@ -104,11 +115,17 @@ Fixed ListIva::calculabase() {
 Fixed ListIva::calculaiva() {
     Fixed iva("0.00");
     Iva *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+
+    QMutableListIterator<Iva*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
         iva = iva + Fixed(linea->ivaiva());
-        i++;
-    } // end for
+    } // end while
+
     return iva;
 }
 
@@ -136,7 +153,7 @@ void ListIva::borraIva(int pos) {
     Iva *linea;
     linea = m_lista.at(pos);
     linea->borrar();
-    m_lista.remove(pos);
+    m_lista.removeAt(pos);
     pintaListIva();
 }
 

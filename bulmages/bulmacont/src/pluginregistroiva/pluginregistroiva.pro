@@ -7,13 +7,13 @@ exists(/usr/bin/distcc) {
 
 
 #The following line was inserted by qt3to4
-QT +=  qt3support xml
-DEFINES += QT3_SUPPORT_WARNINGS
+QT +=  xml
 
 TEMPLATE = lib
 
 CONFIG += plugin \
-	  release
+          qt \
+	  release 
 
 TARGET = ../../../installbulmages/plugins/registroiva
 

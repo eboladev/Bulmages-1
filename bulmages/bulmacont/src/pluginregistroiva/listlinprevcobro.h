@@ -22,7 +22,8 @@
 #define LISTLINPREVCOBRO_H
 
 #include <QObject>
-#include <Q3PtrList>
+#include <QList>
+#include <QMutableListIterator>
 
 #include "empresa.h"
 #include "postgresiface2.h"
@@ -45,7 +46,7 @@ protected:
     QString mfilt_procesado;
 
 protected:
-    Q3PtrList<linprevcobro> m_lista;
+    QList<linprevcobro*> m_lista;
 
 public:
     Fixed totalCobro();
@@ -60,7 +61,7 @@ public:
     void guardaListLinPrevCobro();
     void vaciar();
     virtual void pintaListLinPrevCobro() {
-        fprintf(stderr,"La funcion pintaListLinPrevCobro aun no ha sido implementada\n");
+        _depura("La funcion pintaListLinPrevCobro aun no ha sido implementada", 10);
     };
     int chargeBudgetLines();
     void borrar();
@@ -70,11 +71,15 @@ public:
     void setidregistroiva(QString id) {
         mdb_idregistroiva = id;
         linprevcobro *linea;
-        uint i = 0;
-        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+        QMutableListIterator<linprevcobro*> m_ilista(m_lista);
+        /// Vamos delante del primer elemento de la lista.
+        m_ilista.toFront();
+        /// Comprobamos que el primer elemento y siguientes existan.
+        while (m_ilista.hasNext()) {
+            /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+            linea = m_ilista.next();
             linea->setidregistroiva(mdb_idregistroiva);
-            i++;
-        } // end for
+        } // end while
     };
 };
 

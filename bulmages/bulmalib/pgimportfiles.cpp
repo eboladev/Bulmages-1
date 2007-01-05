@@ -2081,7 +2081,7 @@ int ImportBulmaFact::trataPedidoCliente() {
 
     conexionbase->begin();
     conexionbase->ejecuta(query);
-    cur= conexionbase->cargacursor("SELECT MAX(idpedidocliente) AS id FROM pedidocliente");
+    cur = conexionbase->cargacursor("SELECT MAX(idpedidocliente) AS id FROM pedidocliente");
     idpedidocliente = cur->valor("id");
     delete cur;
     conexionbase->commit();

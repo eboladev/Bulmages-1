@@ -22,7 +22,8 @@
 #define LISTIVA_H
 
 #include <QObject>
-#include <Q3PtrList>
+#include <QList>
+#include <QMutableListIterator>
 
 #include "empresa.h"
 #include "iva.h"
@@ -34,7 +35,7 @@ class ListIva {
 public:
     empresa *companyact;
     QString mdb_idregistroiva;
-    Q3PtrList<Iva> m_lista;
+    QList<Iva*> m_lista;
 
 public:
     ListIva(empresa *comp);
@@ -60,11 +61,15 @@ public:
     void setidregistroiva(QString id) {
         mdb_idregistroiva = id;
         Iva *linea;
-        uint i = 0;
-        for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+        QMutableListIterator<Iva*> m_ilista(m_lista);
+        /// Vamos delante del primer elemento de la lista.
+        m_ilista.toFront();
+        /// Comprobamos que el primer elemento y siguientes existan.
+        while (m_ilista.hasNext()) {
+            /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+            linea = m_ilista.next();
             linea->setidregistroiva(mdb_idregistroiva);
-            i++;
-        } // end for
+        } // end while
     };
 };
 

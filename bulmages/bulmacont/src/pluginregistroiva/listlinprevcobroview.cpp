@@ -93,6 +93,7 @@ ListLinPrevCobroView::ListLinPrevCobroView(QWidget * parent)
     QStringList etiquetas;
 
     etiquetas << "COL_SELECCION" << "COL_FCOBROPREVCOBRO" << "COL_CODIGOCTACLIENTE" << "COL_NOMCTACLIENTE" << "COL_CODIGOCUENTA" << "COL_NOMCUENTA" << "COL_CANTIDADPREVCOBRO" << "COL_IDREGISTROIVA" << "COL_TIPOPREVCOBRO" << "COL_DOCPREVCOBRO" << "COL_IDPREVCOBRO" << "COL_FPREVISTAPREVCOBRO" << "COL_IDFPAGO" << "COL_IDCUENTA" << "COL_IDASIENTO" << "COL_CANTIDADPREVISTAPREVCOBRO" << "COL_IDCTACLIENTE";
+    setHorizontalHeaderLabels(etiquetas);
 
     setColumnWidth(COL_SELECCION, 25);
     setColumnWidth(COL_IDPREVCOBRO, 100);
@@ -147,8 +148,7 @@ void ListLinPrevCobroView::pintalistlinprevcobro(linprevcobro *linea, int pos) {
     item(pos, COL_IDASIENTO)->setText(linea->idasiento());
 
     if (linea->idasiento() == "") {
-        //       Q3CheckTableItem *item = new Q3CheckTableItem(this, "");
-        //       setItem(pos,COL_SELECCION,item);
+        item(pos, COL_SELECCION)->setFlags(Qt::ItemIsUserCheckable);
     } // end if
 
     item(pos, COL_CANTIDADPREVISTAPREVCOBRO)->setText(linea->cantidadprevistaprevcobro());
@@ -206,10 +206,16 @@ void ListLinPrevCobroView::pintalistlinprevcobro() {
     /// TODO: Habra que vaciar la tabla para que el pintado fuera exacto.
     linprevcobro *linea;
     uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+    QMutableListIterator<linprevcobro*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
         pintalistlinprevcobro(linea, i);
-        i++;
-    } // end for
+    } // end while
+
     _depura("FIN de pintalistlinprevcobro", 10);
 }
 
@@ -409,25 +415,27 @@ linprevcobro *ListLinPrevCobroView::lineaact() {
 /// Devuelve la l&iacute;nea especificada, y si no existe se van creando l&iacute;neas
 /// hasta que exista.
 linprevcobro *ListLinPrevCobroView::lineaat(int row) {
-    fprintf(stderr, "listlinprevcobro::lineaat(%d)\n", row);
+    _depura("listlinprevcobro::lineaat", 2);
     linprevcobro *linea;
     if (row >= 0) {
-        while (m_lista.at(row) == 0) {
-            fprintf(stderr, "Creamos la linea\n");
+        while (m_lista.value(row) == 0) {
+            _depura("Creamos la linea", 10);
             linea = new linprevcobro(m_companyact);
             linea->setidregistroiva(mdb_idregistroiva);
             m_lista.append(linea);
         } // end while
-        return(m_lista.at(row));
+        return m_lista.at(row);
     } else {
-        fprintf(stderr,"Linea inexistente\n");
+        _depura("Linea inexistente", 10);
         return NULL;
     } // end if
+    _depura("END listlinprevcobro::lineaat", 2);
 }
 
 
 QString ListLinPrevCobroView::searchCuenta() {
     _depura("ListLinPrevCobroView::searchCuenta", 2, "Funcion no implementada");
+
     /*
         QString idcuenta;
         listcuentasview1 *listcuentas = new listcuentasview1(m_companyact);

@@ -31,7 +31,6 @@ void ListLinPrevCobro::inicializaVariables() {
     mfilt_codigocuentaprevcobro = "";
     mfilt_finprevcobro = "";
     mfilt_ffiprevcobro = "";
-    m_lista.setAutoDelete(TRUE);
 }
 
 
@@ -40,9 +39,11 @@ ListLinPrevCobro::ListLinPrevCobro(empresa *comp) {
     m_companyact = comp;
 }
 
+
 ListLinPrevCobro::ListLinPrevCobro() {
     inicializaVariables();
 }
+
 
 ListLinPrevCobro::~ListLinPrevCobro() {}
 
@@ -57,7 +58,7 @@ void ListLinPrevCobro::nuevalinea(QString desc, QString cantl, QString pvpl, QSt
 
 
 linprevcobro *ListLinPrevCobro::linpos(int pos) {
-    return (m_lista.at(pos));
+    return m_lista.at(pos);
 }
 
 
@@ -80,10 +81,10 @@ int ListLinPrevCobro::chargeBudgetLines() {
     if (mfilt_procesado == "NO PROCESADO")
         cadwhere += " AND idasiento IS NULL ";
 
-    cursor2 * cur= m_companyact->cargacursor("SELECT * FROM prevcobro "
-                   " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
-                   " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
-                   " WHERE 1 = 1 "+ cadwhere + " ORDER BY fcobroprevcobro ");
+    cursor2 *cur= m_companyact->cargacursor("SELECT * FROM prevcobro "
+                                            " LEFT JOIN cuenta ON cuenta.idcuenta = prevcobro.idcuenta "
+                                            " LEFT JOIN (SELECT idcuenta AS idctacliente, codigo AS codigoctacliente, descripcion AS nomctacliente FROM cuenta) AS T1 ON t1.idctacliente = prevcobro.idctacliente "
+                                            " WHERE 1 = 1 "+ cadwhere + " ORDER BY fcobroprevcobro ");
 
     int i = 0;
     while (!cur->eof()) {
@@ -118,11 +119,16 @@ int ListLinPrevCobro::chargeBudgetLines() {
 void ListLinPrevCobro::guardaListLinPrevCobro() {
     _depura("guardaListLinPrevCobro()");
     linprevcobro *linea;
-    uint i = 0;
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
+
+    QMutableListIterator<linprevcobro*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
         linea->guardalinprevcobro();
-        i++;
-    } // end for
+    } // end while
 }
 
 
@@ -144,7 +150,7 @@ void ListLinPrevCobro::borralinprevcobro(int pos) {
     linprevcobro *linea;
     linea = m_lista.at(pos);
     linea->borrar();
-    m_lista.remove(pos);
+    m_lista.removeAt(pos);
     pintaListLinPrevCobro();
 }
 
@@ -152,10 +158,19 @@ void ListLinPrevCobro::borralinprevcobro(int pos) {
 Fixed ListLinPrevCobro::totalCobro() {
     linprevcobro *linea;
     Fixed tcobro("0");
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        if (linea->tipoprevcobro() == "t")
+
+    QMutableListIterator<linprevcobro*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
+        if (linea->tipoprevcobro() == "t") {
             tcobro = tcobro + Fixed(linea->cantidadprevcobro());
-    } // end for
+        } // end if
+    } // end while
+
     return tcobro;
 }
 
@@ -163,10 +178,19 @@ Fixed ListLinPrevCobro::totalCobro() {
 Fixed ListLinPrevCobro::totalPago() {
     linprevcobro *linea;
     Fixed tpago("0");
-    for (linea = m_lista.first(); linea; linea = m_lista.next()) {
-        if (linea->tipoprevcobro() == "f")
+
+    QMutableListIterator<linprevcobro*> m_ilista(m_lista);
+    /// Vamos delante del primer elemento de la lista.
+    m_ilista.toFront();
+    /// Comprobamos que el primer elemento y siguientes existan.
+    while (m_ilista.hasNext()) {
+        /// Si existe el elemento nos desplazamos a el moviendo el cursor.
+        linea = m_ilista.next();
+        if (linea->tipoprevcobro() == "f") {
             tpago = tpago + Fixed(linea->cantidadprevcobro());
-    } // end for
+        } // end if
+    } // end while
+
     return tpago;
 }
 
