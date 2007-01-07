@@ -45,7 +45,8 @@ HEADERS += postgresiface2.h \
            qworkspace2.h \
            qapplication2.h \
            ficha.h \
-	   empresabase.h
+	   empresabase.h \
+	   qtexteditdelegate.h
 	   
 	   
 SOURCES += postgresiface2.cpp \
@@ -71,7 +72,8 @@ SOURCES += postgresiface2.cpp \
            qworkspace2.cpp \
            qapplication2.cpp \
            ficha.cpp \
-	   empresabase.cpp
+	   empresabase.cpp \
+	   qtexteditdelegate.cpp
 	   
 RESOURCES = ../bulmages.qrc
 TEMPLATE = lib

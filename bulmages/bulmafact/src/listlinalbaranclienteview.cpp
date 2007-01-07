@@ -52,6 +52,13 @@ void ListLinAlbaranClienteView::on_mui_list_editFinished(int row, int col, int k
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
+
+    /// Si el campo no ha sido cambiado se termina sin cambiar nada.
+    if ( ! camp->cambiado() ) {
+    	SubForm3::on_mui_list_editFinished(row, col, key);
+	return;
+    } // end if
+
     if (camp->nomcampo() == "codigocompletoarticulo") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
         if (!cur->eof() ) {

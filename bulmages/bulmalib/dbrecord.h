@@ -41,8 +41,16 @@ protected:
     int m_restrict;
     dbtype m_tipo;
     postgresiface2 *m_conexionbase;
+    /// indica el valor del campo en un estado anterior para determinar si ha habido cambios.
+    QString m_valorcampoorig;
 
 public:
+    bool cambiado() {
+	return m_valorcampo != m_valorcampoorig;
+    };
+    void resetCambio() {
+	m_valorcampoorig = m_valorcampo;
+    };
     DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
     virtual ~DBCampo() {
         _depura("DBCampo::~DBCampo", 1);

@@ -140,3 +140,71 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
     _depura("END BusquedaArticulo::on_m_codigocompletoarticulo_textChanged", 0);
 }
 
+
+
+// ==================================================================0
+// Busqueda Articulo Delegate para usar con los subforms
+// ===================================================================
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no. 
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
+BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
+        : QComboBox(parent) {
+    _depura("BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
+    m_companyact = NULL;
+    m_cursorcombo = NULL;
+    setEditable(true);
+    setSizeAdjustPolicy(QComboBox::AdjustToContents);
+//    setCompleter(0);
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
+    _depura("END BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
+}
+
+
+/** Libera la memoria reservada.
+*/
+BusquedaArticuloDelegate::~BusquedaArticuloDelegate() {
+    _depura("BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaArticuloDelegate::~BusquedaArticuloDelegate", 0);
+}
+
+
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
+    _depura("BusquedaArticuloDelegate::s_editTextChanged", 0);
+    static bool semaforo = FALSE;
+    QString codigo = cod;
+
+    if (codigo.size() < 3) return;
+
+    if (semaforo) { return; }
+    else  {semaforo = TRUE; }
+
+
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+//    while (count() )
+//	removeItem(0);
+
+    codigo = codigo.left(codigo.indexOf(".-"));
+
+
+    m_cursorcombo = m_companyact->cargacursor("SELECT codigocompletoarticulo, nomarticulo FROM articulo WHERE codigocompletoarticulo LIKE '"+codigo+"%' ORDER BY codigocompletoarticulo LIMIT 25");
+    clear();
+    while (!m_cursorcombo->eof()) {
+        addItem(m_cursorcombo->valor("codigocompletoarticulo") + ".-" + m_cursorcombo->valor("nomarticulo"));
+        m_cursorcombo->siguienteregistro();
+    }
+    setEditText(cod);
+//    showPopup();
+    semaforo = FALSE;
+    _depura("END BusquedaArticuloDelegate::s_editTextChanged", 0);
+}
+

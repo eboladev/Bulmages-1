@@ -22,18 +22,29 @@
 #include <QMenu>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QComboBox>
 
 #include "subform2bf.h"
 #include "funcaux.h"
 #include "articulolist.h"
+#include "busquedaarticulo.h"
+#include "qtexteditdelegate.h"
 
 
 SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     _depura("SubForm2Bf::SubForm2Bf", 0);
     setDelete(TRUE);
+    m_delegate = new QSubForm2BfDelegate(this);
+    mui_list->setItemDelegate(m_delegate);
     _depura("END SubForm2Bf::SubForm2Bf", 0);
 }
 
+
+SubForm2Bf::~SubForm2Bf() {
+    _depura("SubForm2Bf::~SubForm2Bf", 0);
+    delete m_delegate;
+    _depura("END SubForm2Bf::~SubForm2Bf", 0);
+}
 
 int SubForm2Bf::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm2Bf::addSHeader", 0);
@@ -48,10 +59,10 @@ void SubForm2Bf::pintaCabeceras() {
     SHeader *linea;
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
-//        if (linea->nomcampo() == "descl"+tableName()) {
-//            mui_list->setItemDelegate(new QTableItemTextDelegate(this));
-            mui_list->setItemDelegateForColumn(i, new QTableItemTextDelegate(this));
-//        } // end if
+        //        if (linea->nomcampo() == "descl"+tableName()) {
+        //            mui_list->setItemDelegate(new QTableItemTextDelegate(this));
+        mui_list->setItemDelegateForColumn(i, new QTableItemTextDelegate(this));
+        //        } // end if
     } // end for
     _depura("END SubForm2Bf::pintaCabeceras", 0);
 }
@@ -123,6 +134,13 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
+
+    /// Si el campo no ha sido cambiado se sale.
+    if ( ! camp->cambiado() ) {
+    	SubForm3::on_mui_list_editFinished(row, col, key);
+	return;
+    } // end if
+
     if (camp->nomcampo() == "codigocompletoarticulo") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof()) {
@@ -177,5 +195,150 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
 
     delete popup;
     _depura("END SubForm2Bf::contextMenuEvent", 0);
+}
+
+
+
+// ===============================================================
+//  Tratamientos del Item Delegate
+// ===============================================================
+
+QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent=0) : QItemDelegate(parent) {
+    _depura("QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
+    m_subform = (SubForm2Bf *) parent;
+    installEventFilter(this);
+    _depura("END QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
+}
+
+QSubForm2BfDelegate::~QSubForm2BfDelegate() {}
+
+
+QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+    _depura("QSubForm2BfDelegate::createEditor", 0);
+//    if (m_rowant == -1) return NULL;
+//    m_rowant = index.row();
+    SHeader *linea;
+    linea = m_subform->cabecera()->at(index.column());
+    _depura("QSubForm2BfDelegate::createEditor", 0, "CurrentColumn: " + QString::number(index.column()));
+    _depura("QSubForm2BfDelegate::createEditor", 0, "CurrentRow" + QString::number(index.row()));
+
+//    _depura("QSubForm2BfDelegate::createEditor", 0, "option" + QString::number(option));
+//    _depura("QSubForm2BfDelegate::createEditor", 0, "index" + QString::number(index));
+//    if (m_subform->currentRow() == 0) return NULL;
+    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+        QTextEditDelegate *editor = new QTextEditDelegate(parent);
+	editor->setObjectName("QTextEditDelegate");
+        return editor;
+    } else if (linea->nomcampo() == "cant"+m_subform->tableName()
+	   || linea->nomcampo() == "pvp"+m_subform->tableName()
+	   || linea->nomcampo() == "descuento"+m_subform->tableName()
+	   || linea->nomcampo() == "iva"+m_subform->tableName()	) {
+	QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
+	editor->setMinimum(0);
+	//editor->setMaximum(10000);
+	return editor;
+    } else if (linea->nomcampo() == "codigocompletoarticulo"){
+	BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
+	editor->setcompany((company *)m_subform->companyact());
+//	editor->setCodigoCompletoArticulo("0");
+	return editor;
+    } else {
+        return QItemDelegate::createEditor(parent, option, index);
+    }// end if
+
+}
+
+void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
+    _depura("QSubForm2BfDelegate::setModelData", 0);
+    _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number(index.column()));
+    _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentRow" + QString::number(index.row()));
+
+    /// Si la fila o columna pasadas son invalidas salimos.
+    if ( index.column() < 0 || index.row() < 0) return;
+
+    SHeader *linea;
+    linea = m_subform->cabecera()->at(index.column());
+    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate *>(editor);
+        model->setData(index, textedit->toPlainText());
+        return;
+    } else if (linea->nomcampo() == "cant"+m_subform->tableName()
+	   || linea->nomcampo() == "pvp"+m_subform->tableName()
+	   || linea->nomcampo() == "descuento"+m_subform->tableName()
+	   || linea->nomcampo() == "iva"+m_subform->tableName()	) {
+	QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+	spinBox->interpretText();
+	QString value = spinBox->text();
+	value = value.replace(",", ".");
+	model->setData(index, value );
+    } else if (linea->nomcampo() == "codigocompletoarticulo"){
+	BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
+	QString value = comboBox->currentText();
+    	value = value.left(value.indexOf(".-"));	
+	model->setData(index, value);
+    } else {
+        QItemDelegate::setModelData(editor, model, index);
+    }// end if
+    _depura("END QSubForm2BfDelegate::setModelData", 0);
+}
+
+
+void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
+    _depura("QSubForm2BfDelegate::setEditorData", 0);
+    _depura("QSubForm2BfDelegate::setEditorData", 0, "CurrentColumn: " + QString::number(index.column()));
+    _depura("QSubForm2BfDelegate::setEditorData", 0, "CurrentRow" + QString::number(index.row()));
+    SHeader *linea;
+    linea = m_subform->cabecera()->at(index.column());
+    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+        QString data = index.model()->data(index, Qt::DisplayRole).toString();
+        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
+        textedit->setText(data);
+//        textedit->setGeometry(textedit->x(), textedit->y(), textedit->width()+150, textedit->height()+150);
+    } else if (linea->nomcampo() == "cant"+m_subform->tableName()
+	   || linea->nomcampo() == "pvp"+m_subform->tableName()
+	   || linea->nomcampo() == "descuento"+m_subform->tableName()
+	   || linea->nomcampo() == "iva"+m_subform->tableName()	) {
+	QString value = index.model()->data(index, Qt::DisplayRole).toString();
+	QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+	spinBox->setValue(value.toDouble());
+    } else if (linea->nomcampo() == "codigocompletoarticulo"){
+	QString value = index.model()->data(index, Qt::DisplayRole).toString();
+	BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
+	comboBox->addItem(value);
+    } else {
+        QItemDelegate::setEditorData(editor, index);
+    }// end if
+    _depura("END QSubForm2BfDelegate::setEditorData", 0);
+}
+
+bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
+    _depura("QSubForm2BfDelegate::eventFilter", 0,   obj->objectName()+" --> " + QString::number(event->type()));
+    if (obj->isWidgetType()) {
+	_depura("QSubForm2BfDelegate:: de tipo toolTip", 0,   ((QWidget *)obj)->toolTip());
+	_depura("QSubForm2BfDelegate:: de tipo windowRole", 0,   ((QWidget *)obj)->windowRole());
+	_depura("QSubForm2BfDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
+	_depura("QSubForm2BfDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
+    }// end if
+
+    /// Si es un release de tecla se hace la funcionalidad especificada.
+    if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        int key = keyEvent->key();
+    	_depura("QSubForm2BfDelegate::key = :", 0, QString::number(key));
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// ------------------ EL CAMBIO ------------------------------
+        switch (key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+		if (obj->objectName() == "QTextEditDelegate") {
+			obj->event(event);
+            		return TRUE;
+		} // end if
+        } // end switch
+
+    } // end if
+    _depura("END QSubForm2BfDelegate::eventFilter()", 0);
+    return QItemDelegate::eventFilter(obj, event);
+//	return TRUE;
 }
 

@@ -142,6 +142,28 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
 
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
     _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
+    if (event->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        int key = keyEvent->key();
+        int col = currentColumn();
+        int row = currentRow();
+        /// Algunas veces se produce un eventfilter pero la fila no existe (-1) en esos
+        /// casos abortamos la ejecucion del eventFilter para que no de fallos en la
+        /// busqueda de que celda es.
+        if (row < 0) {
+            return TRUE;
+        } // end if
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// ------------------ EL CAMBIO ------------------------------
+        switch (key) {
+
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            emit editFinished(row, col, key);
+            return TRUE;
+            break;
+	} // end switch
+    } // end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyRelease) {
@@ -158,11 +180,14 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
+
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            emit editFinished(row, col, key);
+	    _depura("Se ha pulsado el Return", 2);
+//            emit editFinished(row, col, key);
             return TRUE;
             break;
+
         case Qt::Key_Slash:
             if ((mod & Qt::ControlModifier) || (mod & Qt::AltModifier)) {
                 emit pressedSlash(row, col);

@@ -23,11 +23,32 @@
 
 #include <QLineEdit>
 #include <QLabel>
+#include <QComboBox>
+#include "postgresiface2.h"
 
 #include "ui_busquedaarticulobase.h"
 
 
 class company;
+
+
+class BusquedaArticuloDelegate : public QComboBox {
+Q_OBJECT
+private:
+	company *m_companyact;
+    /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
+    cursor2 *m_cursorcombo;
+
+public:
+    BusquedaArticuloDelegate(QWidget *parent = 0);
+    ~BusquedaArticuloDelegate();
+    void setcompany(company *comp) {
+        m_companyact = comp;
+    };
+public slots:
+    virtual void s_editTextChanged(const QString &);
+};
+
 
 
 /// Permite buscar y seleccionar un art&iacute;culo.

@@ -66,34 +66,34 @@ public:
         return DBvalue("idalmacen");
     };
     QString numPresupuesto() {
-        return DBvalue("numPresupuesto");
+        return DBvalue("numpresupuesto");
     };
     QString fPresupuesto() {
-        return DBvalue("fPresupuesto");
+        return DBvalue("fpresupuesto");
     };
     QString vencPresupuesto() {
-        return DBvalue("vencPresupuesto");
+        return DBvalue("vencpresupuesto");
     };
     QString contactPresupuesto() {
-        return DBvalue("contactPresupuesto");
+        return DBvalue("contactpresupuesto");
     };
     QString telPresupuesto() {
-        return DBvalue("telPresupuesto");
+        return DBvalue("telpresupuesto");
     };
     QString comentPresupuesto() {
-        return DBvalue("comentPresupuesto");
+        return DBvalue("comentpresupuesto");
     };
     QString idPresupuesto() {
-        return DBvalue("idPresupuesto");
+        return DBvalue("idpresupuesto");
     };
     QString procesadoPresupuesto() {
-        return DBvalue("procesadoPresupuesto");
+        return DBvalue("procesadopresupuesto");
     };
     QString descPresupuesto() {
-        return DBvalue("descPresupuesto");
+        return DBvalue("descpresupuesto");
     };
     QString refPresupuesto() {
-        return DBvalue("refPresupuesto");
+        return DBvalue("refpresupuesto");
     };
     QString idforma_pago() {
         return DBvalue("idforma_pago");
@@ -153,36 +153,36 @@ public:
         setDBvalue("idtrabajador", val);
     };
     void setnumPresupuesto(QString val) {
-        setDBvalue("numPresupuesto", val);
+        setDBvalue("numpresupuesto", val);
     };
     void setfPresupuesto(QString val) {
-        setDBvalue("fPresupuesto", val);
+        setDBvalue("fpresupuesto", val);
     };
     void setvencPresupuesto(QString val) {
-        setDBvalue("vencPresupuesto", val);
+        setDBvalue("vencpresupuesto", val);
     };
     void setcontactPresupuesto(QString val) {
-        setDBvalue("contactPresupuesto", val);
+        setDBvalue("contactpresupuesto", val);
     };
     void settelPresupuesto(QString val) {
-        setDBvalue("telPresupuesto", val);
+        setDBvalue("telpresupuesto", val);
     };
     void setcomentPresupuesto(QString val) {
-        setDBvalue("comentPresupuesto", val);
+        setDBvalue("comentpresupuesto", val);
     };
     void setidPresupuesto(QString val) {
-        setDBvalue("idPresupuesto", val);
-        listalineas->setColumnValue("idPresupuesto", val);
-        listadescuentos->setColumnValue("idPresupuesto", val);
+        setDBvalue("idpresupuesto", val);
+        listalineas->setColumnValue("idpresupuesto", val);
+        listadescuentos->setColumnValue("idpresupuesto", val);
     };
     void setprocesadoPresupuesto(QString val) {
-        setDBvalue("procesadoPresupuesto", val);
+        setDBvalue("procesadopresupuesto", val);
     };
     void setdescPresupuesto(QString val) {
-        setDBvalue("descPresupuesto", val);
+        setDBvalue("descpresupuesto", val);
     };
     void setrefPresupuesto(QString val) {
-        setDBvalue("refPresupuesto", val);
+        setDBvalue("refpresupuesto", val);
     };
     void setidforma_pago(QString val) {
         setDBvalue("idforma_pago", val);

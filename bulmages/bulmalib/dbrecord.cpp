@@ -31,6 +31,7 @@ DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString 
     m_restrict = res;
     m_nompresentacion = nomp;
     m_valorcampo = "";
+    m_valorcampoorig = "";
 }
 
 
@@ -102,6 +103,8 @@ int DBRecord::DBload(cursor2 *cur) {
         if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
             m_nuevoCampo = TRUE;
         error += linea->set(val);
+	// Al ser una carga consideramos que los cambios estan inicializados.
+	linea->resetCambio();
     } // end for
     _depura("END DBRecord::DBload", 0);
     return error;

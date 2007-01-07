@@ -68,6 +68,9 @@ public:
     QList<SDBRecord *> *lista() {
         return &m_lista;
     };
+    QList<SHeader *> *cabecera() {
+	return &m_lcabecera;
+    };
 
 public:
     bool campoCompleto(int row);

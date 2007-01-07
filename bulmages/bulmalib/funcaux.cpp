@@ -290,9 +290,9 @@ void _depura(QString cad, int nivel, QString param) {
             nivel = 2;
         } // end if
         if (nivel == 0) {
-            out << cad << " " << param << "\n";
+            out << cad << " " << param << "\n" << flush;
         } else if (nivel == 1) {
-            out << cad << " " << param << "\n";
+            out << cad << " " << param << "\n" << flush;
         } // end if
         for (int i = 0; i < indice; i++) {
             if (cad == mensajesanulados[i]) {
@@ -306,7 +306,7 @@ void _depura(QString cad, int nivel, QString param) {
         } // end for
 
         if (nivel == 2 || (supnivel == 2 && nivel == 0) || nivel == 3) {
-            out << cad << " " << param << "\n";
+            out << cad << " " << param << "\n" << flush;
             int err = QMessageBox::information(NULL,
                                                QApplication::translate("funcaux", "Informacion de depuracion"),
                                                cad + " " + param,
@@ -325,7 +325,7 @@ void _depura(QString cad, int nivel, QString param) {
         file.flush();
     } else {
         if (nivel == 2) {
-            out << cad << " " << param << "\n";
+            out << cad << " " << param << "\n" << flush;
             QMessageBox::question(NULL,
                                   QApplication::translate("funcaux", "Informacion de depuracion"),
                                   cad, QApplication::translate("funcaux", "&Continuar"),
