@@ -225,6 +225,8 @@ FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubFor
     addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
     addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
+    setDelete(FALSE);
+    setSortingEnabled(TRUE);
     _depura("END FacturasListSubform::FacturasListSubform", 0);
 }
 

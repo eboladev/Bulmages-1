@@ -378,6 +378,7 @@ ArticuloListSubForm::ArticuloListSubForm(QWidget *parent, const char *)
     addSHeader("stockarticulo", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Disponible en stock"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
     _depura("END ArticuloListSubForm::ArticuloListSubForm", 0);
 }
 

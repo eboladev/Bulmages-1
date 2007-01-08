@@ -42,7 +42,9 @@ ListLinPedidoClienteView::ListLinPedidoClienteView(QWidget *parent) : SubForm2Bf
     addSHeader("ivalpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido cliente"));
     addSHeader("descuentolpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido cliente"));
     addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido cliente"));
+    addSHeader("ordenlpedidocliente", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
+    setOrdenEnabled(TRUE);
 }
 
 
@@ -85,7 +87,7 @@ void ListLinPedidoClienteView::on_mui_list_editFinished(int row, int col, int ke
 void ListLinPedidoClienteView::cargar(QString idpedidocliente) {
     _depura("ListLinPedidoClienteView::cargar\n", 0);
     mdb_idpedidocliente = idpedidocliente;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente);
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidocliente LEFT JOIN articulo ON lpedidocliente.idarticulo = articulo.idarticulo WHERE idpedidocliente=" + mdb_idpedidocliente + " ORDER BY ordenlpedidocliente");
     SubForm3::cargar(cur);
     delete cur;
 }

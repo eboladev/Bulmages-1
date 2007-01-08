@@ -266,6 +266,8 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del trabajador"));
     addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos del trabajador"));
     setinsercion(FALSE);
+    setDelete(FALSE);
+    setSortingEnabled(TRUE);
     _depura("END CobrosListSubForm::CobrosListSubForm", 0);
 }
 

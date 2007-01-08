@@ -59,6 +59,10 @@ protected:
     bool m_primero;
     /// Indica si se pueden borrar registros.
     bool m_delete;
+    /// Indica si el subformulario es ordenable o no.
+    bool m_sorting;
+    /// Indica si se usa ordenacion por la base de datos. (Su uso implica que exista en la tabla el campo orden)
+    bool m_orden;
 
 protected:
     void guardaconfig();
@@ -73,6 +77,11 @@ public:
     };
 
 public:
+    void setSortingEnabled(bool);
+    bool sortingEnabled();
+    void setOrdenEnabled(bool);
+    bool ordenEnabled();
+
     bool campoCompleto(int row);
     void setDelete(bool f) {
         m_delete = f;

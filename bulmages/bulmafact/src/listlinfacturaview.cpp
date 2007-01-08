@@ -41,7 +41,9 @@ ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("ivalfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl factura"));
     addSHeader("descuentolfactura", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol factura"));
     addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id factura"));
+    addSHeader("ordenlfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
+    setOrdenEnabled(TRUE);
 }
 
 
@@ -83,7 +85,7 @@ void ListLinFacturaView::on_mui_list_editFinished(int row, int col, int key) {
 void ListLinFacturaView::cargar(QString idfactura) {
     _depura("ListLinFacturaView::cargar\n", 0);
     mdb_idfactura = idfactura;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura);
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura + " ORDER BT ordenlfactura");
     SubForm3::cargar(cur);
     delete cur;
 }

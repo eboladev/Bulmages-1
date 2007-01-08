@@ -211,5 +211,7 @@ PagosListSubForm::PagosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de trabajador"));
     addSHeader("apellidostrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apellidos trabajador"));
     setinsercion(FALSE);
+    setDelete(FALSE);
+    setSortingEnabled(TRUE);
 }
 

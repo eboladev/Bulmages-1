@@ -772,6 +772,7 @@ CREATE TABLE dpresupuesto (
 -- pvplpresupuesto: Precio de venta del articulo.
 -- ivalpresupuesto: IVA aplicado al articulo.
 -- descuentolpresupuesto: Porcentaje de descuento aplicado al precio de venta.
+-- ordenlpresupuesto: Indica el orden en que aparecen las lineas listadas.
 \echo -n ':: Lineas de presupuesto ... '
 CREATE TABLE lpresupuesto (
     idlpresupuesto serial PRIMARY KEY,
@@ -780,6 +781,7 @@ CREATE TABLE lpresupuesto (
     pvplpresupuesto numeric(12, 2),
     ivalpresupuesto numeric(12, 2),
     descuentolpresupuesto numeric(12, 2),
+    ordenlpresupuesto integer,
     idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
     idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -955,6 +957,7 @@ CREATE TABLE lpedidocliente (
     ivalpedidocliente numeric(12, 2),
     descuentolpedidocliente numeric(12, 2),
     idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
+    ordenlpedidocliente integer,
     puntlpedidocliente boolean DEFAULT FALSE,
     idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -1114,6 +1117,7 @@ CREATE TABLE lfactura (
     pvplfactura numeric(12, 2),
     ivalfactura numeric(12, 2),
     descuentolfactura numeric(12, 2),
+    ordenlfactura integer,
     idfactura integer NOT NULL REFERENCES factura(idfactura),
     idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -1361,6 +1365,7 @@ CREATE TABLE lfacturap (
     pvplfacturap numeric(12, 2),
     ivalfacturap numeric(12, 2),
     descuentolfacturap numeric(12, 2),
+    ordenlfacturap integer,
     idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
     idarticulo integer REFERENCES articulo(idarticulo)
 );
@@ -1583,6 +1588,7 @@ CREATE TABLE lalbaranp (
     ivalalbaranp numeric(12, 2),
     pvplalbaranp numeric(12, 2),
     descontlalbaranp numeric(12, 2),
+    ordenlalbaranp integer,
     idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp),
     idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
@@ -1886,6 +1892,7 @@ CREATE TABLE lalbaran (
     pvplalbaran numeric(12, 2),
     descontlalbaran numeric(12, 2),
     ivalalbaran numeric(12, 2),
+    ordenlalbaran integer,
     idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
     idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
 );
@@ -2129,6 +2136,7 @@ CREATE TABLE lpedidoproveedor (
     prevlpedidoproveedor date,
     ivalpedidoproveedor numeric(12, 2),
     descuentolpedidoproveedor numeric(12, 2),
+    ordenlpedidoproveedor integer,
     idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),
     puntlpedidoproveedor boolean DEFAULT FALSE,
     idarticulo integer REFERENCES articulo(idarticulo)

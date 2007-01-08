@@ -47,6 +47,8 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
     m_insercion = FALSE;
     m_primero = TRUE;
+    m_sorting = FALSE;
+    m_orden = FALSE;
 
     /// Para el listado de columnas hacemos una inicializacion.
     QStringList headers;
@@ -83,6 +85,32 @@ SubForm3::~SubForm3() {
     _depura("END SubForm3::~SubForm3", 0);
 }
 
+
+void SubForm3::setSortingEnabled(bool sorting) {
+    _depura("SubForm3::setSortingEnabled", 0);
+    mui_list->setSortingEnabled(sorting);
+    m_sorting = sorting;
+    _depura("END SubForm3::setSortingEnabled", 0);
+}
+
+
+bool SubForm3::sortingEnabled() {
+    _depura("SubForm3::sortingEnabled", 0);
+    return m_sorting;
+}
+
+
+void SubForm3::setOrdenEnabled(bool sorting) {
+    _depura("SubForm3::setOrdenEnabled", 0);
+    m_orden = sorting;
+    _depura("END SubForm3::setOrdenEnabled", 0);
+}
+
+
+bool SubForm3::ordenEnabled() {
+    _depura("SubForm3::ordenEnabled", 0);
+    return m_orden;
+}
 
 void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
     _depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
@@ -151,7 +179,7 @@ void SubForm3::nuevoRegistro() {
     } // end for
 
     /// Activamos el sorting debido a un error en las Qt4
-    mui_list->setSortingEnabled(TRUE);
+    mui_list->setSortingEnabled(m_sorting);
 
     _depura("END SubForm3::nuevoRegistro", 0);
 }
@@ -182,7 +210,8 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
     unsigned int nrow = row;
     unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
-    if(!linea) return;
+    if(!linea)
+        return;
     bool invalido = TRUE;
 
     /// Mientras no se encuentre un candidato y haya candidatos
@@ -203,14 +232,15 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
     _depura("END SubForm3::situarse", 0);
 }
 
-/// Se situa en una celda especifica del subformulario. 
+/// Se situa en una celda especifica del subformulario.
 /** Se incluye la celda incluye la actual */
 void SubForm3::situarse1(unsigned int row, unsigned int col) {
     _depura("SubForm3::situarse1", 0, QString::number(row)+" "+QString::number(col));
     unsigned int nrow = row;
     unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
-    if(!linea) return;
+    if(!linea)
+        return;
     bool invalido = TRUE;
     while (invalido) {
         if (ncol == (unsigned int) m_lcabecera.count()) {
@@ -223,7 +253,8 @@ void SubForm3::situarse1(unsigned int row, unsigned int col) {
             invalido = TRUE;
         if (linea->options() & SHeader::DBNoWrite)
             invalido = TRUE;
-	if (invalido) ncol++;
+        if (invalido)
+            ncol++;
     } // end while
     mui_list->setCurrentCell(nrow, ncol);
     _depura("END SubForm3::situarse1", 0);
@@ -358,7 +389,7 @@ void SubForm3::cargar(cursor2 *cur) {
     /// configuramos que registros son visibles y que registros no lo son.
     on_mui_confcol_clicked();
     /// Reactivamos el sorting
-    mui_list->setSortingEnabled(TRUE);
+    mui_list->setSortingEnabled(m_sorting);
     _depura("END SubForm3::cargar", 0);
 }
 
@@ -382,7 +413,7 @@ SDBRecord *SubForm3::lineaat(int row) {
 
     /// Si la lista no tiene suficientes elementos devolvemos NULL
     if (mui_list->rowCount() < row || row < 0) {
-	return NULL;
+        return NULL;
     } // end if
 
     /// Seleccionamos el campo especificado y lo devolvemos.
@@ -403,13 +434,13 @@ bool SubForm3::campoCompleto(int row) {
     /// Sacamos celda a celda toda la fila
     for (int i = 0; i < mui_list->columnCount(); i++) {
         camp = (SDBCampo *) mui_list->item(row,i);
-	header = m_lcabecera.at(i);
-        if (camp->restrictcampo() & DBCampo::DBNotNull 
-	&& camp->text() == "" 
-	&& !(header->options() & SHeader::DBNoView) 
-	&& camp->tipo() != DBCampo::DBboolean
-	) {
-	    _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
+        header = m_lcabecera.at(i);
+        if (camp->restrictcampo() & DBCampo::DBNotNull
+                && camp->text() == ""
+                && !(header->options() & SHeader::DBNoView)
+                && camp->tipo() != DBCampo::DBboolean
+           ) {
+            _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
             return FALSE;
         } // end if
     } // end for
@@ -424,30 +455,30 @@ void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
     emit editFinish(row, col);
     bool creado = FALSE;
 
-       if (row == mui_list->rowCount() - 1 && campoCompleto( row)) {
-            nuevoRegistro();
-	    creado = TRUE;
-	} // end if
+    if (row == mui_list->rowCount() - 1 && campoCompleto( row)) {
+        nuevoRegistro();
+        creado = TRUE;
+    } // end if
 
     switch(key) {
 
     case Qt::Key_Return:
     case Qt::Key_Enter:
-	if (!m_insercion) {
-		/// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
-		/// La accion simulada.
-		QTableWidgetItem *item = mui_list->currentItem();
-  		emit itemDoubleClicked(item);
-	        emit cellDoubleClicked(row, col);
-	 } else {
-	        situarse(row, col);
-	} // end if
+        if (!m_insercion) {
+            /// Se ha hecho un enter sobre una tabla sin insercion con lo que lanzamos un doble click para que sea
+            /// La accion simulada.
+            QTableWidgetItem *item = mui_list->currentItem();
+            emit itemDoubleClicked(item);
+            emit cellDoubleClicked(row, col);
+        } else {
+            situarse(row, col);
+        } // end if
         break;
 
     case Qt::Key_Down:
-	situarse(row, col);
-	situarse1(row, col);
-	if (creado) {
+        situarse(row, col);
+        situarse1(row, col);
+        if (creado) {
             mui_list->setCurrentCell(row + 1, col);
         } // end if
         break;
@@ -489,13 +520,13 @@ void SubForm3::setColumnValue(QString campo, QString valor) {
     _depura("SubForm3::setColumnValue", 0);
     SDBRecord *rec;
     int restaporinsercion;
-    
+
     if (!m_insercion) {
-    	restaporinsercion=0;
+        restaporinsercion=0;
     } else {
-    	restaporinsercion = 1;
+        restaporinsercion = 1;
     } // end if
-    
+
     for (int i = 0; i < mui_list->rowCount() - restaporinsercion; ++i) {
         rec =  lineaat(i);
         if (rec)
@@ -553,13 +584,15 @@ int SubForm3::guardar() {
 
         /// Si no hay elementos que guardar salimos.
         if(mui_list->rowCount() == 0 || ( (mui_list->rowCount() == 1) && m_insercion)) {
-		return 0;
-	} // end if
+            return 0;
+        } // end if
 
         /// Hacemos el guardado
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
             if (rec) {
+                if (m_orden)
+                    rec->setDBvalue("orden"+m_tablename, QString::number(j));
                 rec->refresh();
                 rec->guardar();
             } // end if
@@ -568,6 +601,9 @@ int SubForm3::guardar() {
         /// Si no hay modo insercion hacemos el guardado de la ultima linea.
         if (!m_insercion) {
             rec = lineaat(mui_list->rowCount() - 1);
+            if (m_orden)
+                rec->setDBvalue("orden"+m_tablename, QString::number(mui_list->rowCount() - 1));
+            rec->refresh();
             rec->guardar();
         } // end if
 
@@ -605,7 +641,7 @@ int SubForm3::borrar() {
             rec = m_lista.at(m_lista.count() - 1);
             error = rec->borrar();
         } // end if
-   	_depura("END SubForm3::borrar", 0);
+        _depura("END SubForm3::borrar", 0);
         return error;
     } catch(...) {
         _depura("SubForm3::borrar() Error al borrar", 3);
@@ -620,7 +656,7 @@ int SubForm3::borrar(int row) {
         SDBRecord *rec, *rac;
         SDBCampo *camp;
 
-	rac = new SDBRecord(m_companyact);
+        rac = new SDBRecord(m_companyact);
 
         /// Cogemos el elemento correspondiente, partimos de mui_list, tb podriamos usar lineaat
         rec = lineaat(row);
@@ -629,24 +665,25 @@ int SubForm3::borrar(int row) {
 
         /// Agregamos el elemento a la lista de borrados
         m_listaborrar.append(rac);
-	m_lista.takeAt(m_lista.indexOf(rec));
+        m_lista.takeAt(m_lista.indexOf(rec));
 
-	rac->setDBTableName(rec->tableName());
-	rac->setDBCampoId(rec->campoId());
-	rac->setNuevo(FALSE);
+        rac->setDBTableName(rec->tableName());
+        rac->setDBCampoId(rec->campoId());
+        rac->setNuevo(FALSE);
 
         /// Sacamos celda a celda toda la fila
         for (int i = 0; i < mui_list->columnCount(); i++) {
             camp = (SDBCampo *) mui_list->item(row,i);
-	    SDBCampo * it= new SDBCampo(rac, m_companyact, camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
-	    rac->lista()->append(it);
-	    it->set( camp->valorcampo());
+            SDBCampo * it= new SDBCampo(rac, m_companyact, camp->nomcampo(), camp->tipo(), camp->restrictcampo(), camp->nompresentacion());
+            rac->lista()->append(it);
+            it->set
+            ( camp->valorcampo());
         } // end for
 
-	_depura("quitamos la columna del listado", 0);
+        _depura("quitamos la columna del listado", 0);
         mui_list->removeRow(row);
 
-	delete rec;
+        delete rec;
 
         /// Terminamos
         _depura("END SubForm3::borrar", 0);
@@ -789,22 +826,24 @@ void SubForm3::on_mui_confquery_clicked() {
 /// Disparador que se activa al haber pulsado ctrl+Arriba en la tabla
 /// Hace el intercambio con la fila inmediatamente superior.
 void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
-    _depura("SubForm3::on_mui_list_ctrlSubir (" + QString::number(row) + "," + QString::number(col) + ")", 0);
+    _depura("SubForm3::on_mui_list_ctrlSubir", 0," (" + QString::number(row) + "," + QString::number(col) + ")");
+    if ( ! m_orden)
+        return;
+    if (row >= mui_list->rowCount() -1 || row == 0)
+        return;
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
     mui_list->setCurrentCell(0, 0);
-    row++;
-    if (row > 0) {
-        for (int i = 0; i < mui_list->columnCount(); ++i) {
-            QTableWidgetItem *it = mui_list->takeItem(row, i);
-            QTableWidgetItem *ot = mui_list->takeItem(row - 1, i);
-            mui_list->setItem(row, i, ot);
-            mui_list->setItem(row - 1, i, it);
-        } // end for
-    } // end if
+
+    for (int i = 0; i < mui_list->columnCount(); ++i) {
+        QTableWidgetItem *it = mui_list->takeItem(row, i);
+        QTableWidgetItem *ot = mui_list->takeItem(row - 1, i);
+        mui_list->setItem(row, i, ot);
+        mui_list->setItem(row - 1, i, it);
+    } // end for
     mui_list->setCurrentCell(row - 1, col);
     /// Desactivamos el sorting debido a un error en las Qt4
-//    mui_list->setSortingEnabled(TRUE);
+    mui_list->setSortingEnabled(m_sorting);
     _depura("END SubForm3::on_mui_list_ctrlSubir", 0);
 }
 
@@ -813,20 +852,29 @@ void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
 /// Hace el intercambio con la fila inmediatamente inferior.
 void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     _depura("SubForm3::on_mui_list_ctrlBajar", 0);
+    _depura("SubForm3::on_mui_list_ctrlBajar", 0, " (Row, col)" + QString::number(row) + "--" + QString::number(col));
+    _depura("SubForm3::on_mui_list_ctrlBajar", 0, " rowCount" + QString::number(mui_list->rowCount()) );
+
+    if (! m_orden)
+        return;
+    if (row >= mui_list->rowCount() -2 )
+        return;
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
-    mui_list->setCurrentCell(0, 0);
-    row--;
-    if (row < mui_list->rowCount() - 1) {
-        for (int i = 0; i < mui_list->columnCount(); ++i) {
-            QTableWidgetItem *it = mui_list->takeItem(row, i);
-            mui_list->setItem(row, i, mui_list->takeItem(row + 1, i));
-            mui_list->setItem(row + 1, i, it);
-        } // end for
-    } // end if
+
+    if (row != 0)
+        mui_list->setCurrentCell(0, 0);
+    else
+        mui_list->setCurrentCell(mui_list->rowCount()-1, 0);
+
+    for (int i = 0; i < mui_list->columnCount(); ++i) {
+        QTableWidgetItem *it = mui_list->takeItem(row, i);
+        mui_list->setItem(row, i, mui_list->takeItem(row + 1, i));
+        mui_list->setItem(row + 1, i, it);
+    } // end for
     mui_list->setCurrentCell(row + 1, col);
     /// Desactivamos el sorting debido a un error en las Qt4
-//    mui_list->setSortingEnabled(TRUE);
+    mui_list->setSortingEnabled(m_sorting);
     _depura("END SubForm3::on_mui_list_ctrlBajar", 0);
 }
 
@@ -834,7 +882,6 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
 void SubForm3::on_mui_pagsiguiente_clicked() {
     int pag = mui_paginaact->text().toInt();
     pag++;
-    //mui_paginaact->setText(QString::number(pag));
     mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
 }
@@ -844,7 +891,6 @@ void SubForm3::on_mui_paganterior_clicked() {
     int pag = mui_paginaact->text().toInt();
     if (pag > 1)
         pag--;
-    //mui_paginaact->setText(QString::number(pag));
     mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
 }
@@ -954,15 +1000,13 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     delete popup;
 }
 
-void SubForm3::on_mui_list_cellChanged(int, int) {
-}
-void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
-}
+void SubForm3::on_mui_list_cellChanged(int, int) {}
+void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {}
 
 void SubForm3::on_mui_list_currentCellChanged(int , int , int row, int col) {
     _depura("SubForm3::on_mui_list_currentCellChanged", 0);
-	if (row >= 0 && col >= 0)   {
-	on_mui_list_editFinished( row,  col, 0);	
+    if (row >= 0 && col >= 0)   {
+        on_mui_list_editFinished( row,  col, 0);
     } // end if
     _depura("END SubForm3::on_mui_list_currentCellChanged", 0);
 }

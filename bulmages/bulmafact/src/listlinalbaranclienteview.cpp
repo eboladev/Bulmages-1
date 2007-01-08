@@ -42,7 +42,9 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
     addSHeader("ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl albaran"));
     addSHeader("descontlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descontl albaran"));
     addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaran"));
+    addSHeader("ordenlalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
+    setOrdenEnabled(TRUE);
 }
 
 
@@ -83,7 +85,7 @@ void ListLinAlbaranClienteView::on_mui_list_editFinished(int row, int col, int k
 void ListLinAlbaranClienteView::cargar(QString idalbaran) {
     _depura("ListLinAlbaranClienteView::cargar\n", 0);
     mdb_idalbaran = idalbaran;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran);
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + " ORDER BY ordenlalbaran");
     SubForm3::cargar(cur);
     delete cur;
 }

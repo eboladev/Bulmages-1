@@ -253,6 +253,7 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : 
     addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total albaran"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
     _depura("END AlbaranesProveedorListSubform::AlbaranesProveedorListSubform", 0);
 }
 

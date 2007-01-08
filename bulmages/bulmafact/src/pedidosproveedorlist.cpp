@@ -181,5 +181,6 @@ PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubF
     addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
 }
 

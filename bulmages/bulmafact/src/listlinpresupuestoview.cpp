@@ -42,7 +42,10 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
     addSHeader("ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% IVA"));
     addSHeader("descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
     addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id presupuesto"));
+    addSHeader("ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
+
     setinsercion(TRUE);
+    setOrdenEnabled(TRUE);
 }
 
 
@@ -84,7 +87,8 @@ void ListLinPresupuestoView::on_mui_list_editFinished(int row, int col, int key)
 void ListLinPresupuestoView::cargar(QString idpresupuesto) {
     _depura("ListLinPresupuestoView::cargar\n", 0);
     mdb_idpresupuesto = idpresupuesto;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto);
+    /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto +" ORDER BY ordenlpresupuesto");
     SubForm3::cargar(cur);
     delete cur;
 }

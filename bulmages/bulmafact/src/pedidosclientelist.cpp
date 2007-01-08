@@ -185,5 +185,6 @@ PedidosClienteListSubform::PedidosClienteListSubform(QWidget *parent, const char
     addSHeader("idpedidocliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido cliente"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
 }
 

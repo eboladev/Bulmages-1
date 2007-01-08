@@ -42,7 +42,9 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent)
     addSHeader("ivalalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl albaranp"));
     addSHeader("descontlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descontl albaranp"));
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaranp"));
+    addSHeader("ordenlalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
+    setOrdenEnabled(TRUE);
 }
 
 
@@ -83,7 +85,7 @@ void ListLinAlbaranProveedorView::on_mui_list_editFinished(int row, int col, int
 void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
     _depura("ListLinPedidoProveedorView::cargar\n", 0);
     mdb_idalbaranp = idalbaranp;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp);
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp");
     SubForm3::cargar(cur);
     delete cur;
 }

@@ -57,7 +57,8 @@ public:
 
 
 /// Clase SubForm2Bf
-/** */
+/** Es la primera abstraccion de los subformularios que incluye todas las caracteristicas comunes de la facturacion
+*/
 class SubForm2Bf : public SubForm3 {
     Q_OBJECT
 
@@ -76,8 +77,6 @@ public:
         SubForm3::setcompany(c);
 	m_delegate->setcompany(c);
     };
-protected:
-    virtual void pintaCabeceras();
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);
@@ -85,7 +84,6 @@ public slots:
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
     virtual void on_mui_list_pressedMinus(int row, int col);
-    int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
 };
 
 #endif

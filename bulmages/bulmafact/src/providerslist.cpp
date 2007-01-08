@@ -194,5 +194,6 @@ ProveedorListSubform::ProveedorListSubform(QWidget *parent) : SubForm2Bf(parent)
     addSHeader("clavewebproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clave de acceso a la web del proveedor"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
 }
 

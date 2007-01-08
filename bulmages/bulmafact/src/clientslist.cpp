@@ -241,5 +241,6 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     addSHeader("comentcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
 }
 

@@ -236,6 +236,7 @@ AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2
     addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    setSortingEnabled(TRUE);
     _depura("END AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
 }
 

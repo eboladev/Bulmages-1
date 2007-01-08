@@ -42,7 +42,9 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
     addSHeader("ivalpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido proveedor"));
     addSHeader("descuentolpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido proveedor"));
     addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido proveedor"));
+    addSHeader("ordenlpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
+    setOrdenEnabled(TRUE);
 }
 
 
@@ -85,7 +87,7 @@ void ListLinPedidoProveedorView::on_mui_list_editFinished(int row, int col, int 
 void ListLinPedidoProveedorView::cargar(QString idpedidoproveedor) {
         _depura("ListLinPedidoProveedorView::cargar\n", 0);
         mdb_idpedidoproveedor = idpedidoproveedor;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor);
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpedidoproveedor LEFT JOIN articulo ON lpedidoproveedor.idarticulo = articulo.idarticulo WHERE idpedidoproveedor=" + mdb_idpedidoproveedor + " ORDER BY ordenlpedidoproveedor");
         SubForm3::cargar(cur);
         delete cur;
 }
