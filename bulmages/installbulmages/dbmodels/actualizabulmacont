@@ -80,9 +80,10 @@ function linea {
 
 # Comprobamos que la base de dato cumpla las caracteristicas deseadas.
 linea
-info "Comprobamos que sea una base de datos de bulmacont"
+info "Comprobamos que sea una base de datos de bulmacont:"
 TIPO=`psql -t $2 -c "SELECT valor FROM configuracion WHERE nombre='Tipo'" 2> /dev/null`
-echo $TIPO
+VERSION=`psql -t $2 -c "SELECT valor FROM configuracion WHERE nombre='DatabaseRevision'" 2> /dev/null`
+echo $TIPO "version" $VERSION
 if [ ! "$TIPO" = " BulmaCont" ]; then
 	info "No es una base de datos de BulmaCont"
 	exit
@@ -103,10 +104,11 @@ tiempo
 for j in `ls /usr/share/bulmages/dbmodels/actualizar/*.sql | grep rev- | sort 2> /dev/null`
      do
          # info "Comprobando la existencia de /usr/share/bulmages/$j"
+ 	if [ `echo $j | sed -r "s/[^0-9]//g"i` -gt `echo $VERSION | sed -r "s/[^0-9]//g"i` ]; then
                info "Aplicamos parche $j a $2"
-               psql $2 < $j > /dev/null 2> /dev/null
-               tiempo
-#        fi
+       	       psql $2 < $j > /dev/null 2> /dev/null
+	       tiempo
+	fi
 done
 
  
