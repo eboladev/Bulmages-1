@@ -26,7 +26,6 @@
 #include <QComboBox>
 #include <QToolButton>
 #include <QCheckBox>
-#include <QLocale>
 
 #include <busquedafecha.h>
 
@@ -139,10 +138,6 @@ void BalancePrintView::presentar(char *tipus) {
             html = 0; /// Se puede mejorar el tratamiento de errores.
         if (!fitxersortidakugar)
             kugar = 0;
-
-        /// Vamos a formatear los n&uacute;meros con punto para los millares y coma
-        /// para los decimales.
-        QLocale spanish(QLocale::Spanish);
 
         /// S&oacute;lo continuamos si hemos podido crear alg&uacute;n archivo.
         if (txt | html | kugar) {
@@ -268,13 +263,13 @@ void BalancePrintView::presentar(char *tipus) {
                 saldoej += lsaldoej.toDouble();
 
                 /// Las variables de las filas en formato espa&ntilde;ol.
-                lsaldoant = spanish.toString(lsaldoant.toDouble(), 'f', 2);
-                ldebe = spanish.toString(ldebe.toDouble(), 'f', 2);
-                lhaber = spanish.toString(lhaber.toDouble(), 'f', 2);
-                lsaldo = spanish.toString(lsaldo.toDouble(), 'f', 2);
-                ldebeej = spanish.toString(ldebeej.toDouble(), 'f', 2);
-                lhaberej = spanish.toString(lhaberej.toDouble(), 'f', 2);
-                lsaldoej = spanish.toString(lsaldoej.toDouble(), 'f', 2);
+                lsaldoant = QString::number(lsaldoant.toDouble(), 'f', 2);
+                ldebe = QString::number(ldebe.toDouble(), 'f', 2);
+                lhaber = QString::number(lhaber.toDouble(), 'f', 2);
+                lsaldo = QString::number(lsaldo.toDouble(), 'f', 2);
+                ldebeej = QString::number(ldebeej.toDouble(), 'f', 2);
+                lhaberej = QString::number(lhaberej.toDouble(), 'f', 2);
+                lsaldoej = QString::number(lsaldoej.toDouble(), 'f', 2);
 
                 /// Imprimimos l&iacute;nea seg&uacute;n formato.
                 /// Presentaci&oacute;n en txt normal.
@@ -323,13 +318,13 @@ void BalancePrintView::presentar(char *tipus) {
 
             /// Hacemos la actualizaci&oacute;n de los saldos totales en
             /// formato espa&ntilde;ol.
-            QString totalsaldoant = spanish.toString(tsaldoant, 'f', 2);
-            QString totaldebe = spanish.toString(tdebe, 'f', 2);
-            QString totalhaber = spanish.toString(thaber, 'f', 2);
-            QString totalsaldo = spanish.toString(tsaldo, 'f', 2);
-            QString totaldebeej = spanish.toString(debeej, 'f', 2);
-            QString totalhaberej = spanish.toString(haberej, 'f', 2);
-            QString totalsaldoej = spanish.toString(saldoej, 'f', 2);
+            QString totalsaldoant = QString::number(tsaldoant, 'f', 2);
+            QString totaldebe = QString::number(tdebe, 'f', 2);
+            QString totalhaber = QString::number(thaber, 'f', 2);
+            QString totalsaldo = QString::number(tsaldo, 'f', 2);
+            QString totaldebeej = QString::number(debeej, 'f', 2);
+            QString totalhaberej = QString::number(haberej, 'f', 2);
+            QString totalsaldoej = QString::number(saldoej, 'f', 2);
 
             /// Imprimimos la l&iacute;nea con los resultados totalizados.
             /// Presentaci&oacute;n txt normal.

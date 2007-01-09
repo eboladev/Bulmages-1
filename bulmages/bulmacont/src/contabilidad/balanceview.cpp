@@ -22,7 +22,6 @@
 #include <QLineEdit>
 #include <QToolButton>
 #include <QPixmap>
-#include <QLocale>
 #include <QFont>
 
 #include "balanceview.h"
@@ -153,9 +152,6 @@ void balanceview::presentar() {
 
 
 void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico) {
-    /// Vamos a formatear los n&uacute;meros con punto para los millares y coma para
-    /// los decimales.
-    QLocale spanish(QLocale::Spanish);
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
 
     /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
@@ -229,13 +225,13 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
             thaber += lhaber.toDouble();
 
             /// Las variables de las filas en formato espa&ntilde;ol.
-            lsaldoant = spanish.toString(lsaldoant.toDouble(), 'f', 2);
-            ldebe = spanish.toString(ldebe.toDouble(), 'f', 2);
-            lhaber = spanish.toString(lhaber.toDouble(), 'f', 2);
-            lsaldo = spanish.toString(lsaldo.toDouble(), 'f', 2);
-            ldebeej = spanish.toString(ldebeej.toDouble(), 'f', 2);
-            lhaberej = spanish.toString(lhaberej.toDouble(), 'f', 2);
-            lsaldoej = spanish.toString(lsaldoej.toDouble(), 'f', 2);
+            lsaldoant = QString::number(lsaldoant.toDouble(), 'f', 2);
+            ldebe = QString::number(ldebe.toDouble(), 'f', 2);
+            lhaber = QString::number(lhaber.toDouble(), 'f', 2);
+            lsaldo = QString::number(lsaldo.toDouble(), 'f', 2);
+            ldebeej = QString::number(ldebeej.toDouble(), 'f', 2);
+            lhaberej = QString::number(lhaberej.toDouble(), 'f', 2);
+            lsaldoej = QString::number(lsaldoej.toDouble(), 'f', 2);
 
             /// Ahora, vamos a pintar en el Widget cada l&iacute;nea.
             /// Formamos la l&iacute;nea.
@@ -301,10 +297,10 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
 
     /// Hacemos la actualizaci&oacute;n de los saldos totales en formato
     /// espa&ntilde;ol y los ponemos en su Widget.
-    QString totsaldoant = spanish.toString(tsaldoant, 'f', 2);
-    QString totdebe = spanish.toString(tdebe, 'f', 2);
-    QString tothaber = spanish.toString(thaber, 'f', 2);
-    QString totsaldo = spanish.toString(tsaldo, 'f', 2);
+    QString totsaldoant = QString::number(tsaldoant, 'f', 2);
+    QString totdebe = QString::number(tdebe, 'f', 2);
+    QString tothaber = QString::number(thaber, 'f', 2);
+    QString totsaldo = QString::number(tsaldo, 'f', 2);
     totalsaldoant->setText(totsaldoant);
     totaldebe->setText(totdebe);
     totalhaber->setText(tothaber);

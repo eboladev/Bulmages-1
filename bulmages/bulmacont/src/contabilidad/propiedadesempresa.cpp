@@ -72,6 +72,7 @@ int propiedadesempresa::inicializa() {
     tpropiedades->setRowCount(100);
     i = 0;
 
+    /// Rellena la tabla con Items.
     while (!curs->eof()) {
         QTableWidgetItem *tablaItem0 = new QTableWidgetItem(curs->valor("nombre"));
         tpropiedades->setItem(i, 0, tablaItem0);
@@ -103,70 +104,86 @@ int propiedadesempresa::inicializa() {
         cur->siguienteregistro();
 
         if (n == "NombreEmpresa")
-            p = m_nomEmpresa;
+            p = mui_nombreempresa;
         if (n == "CIF")
-            p = lineCIF;
+            p = mui_cif;
+        if (n == "Telefono")
+            p = mui_telefono;
         if (n == "TipoVia")
-            p = lineTipoVia;
+            p = mui_tipovia;
         if (n == "NombreVia")
-            p = lineNombreVia;
+            p = mui_nombrevia;
         if (n == "NumeroVia")
-            p = lineNumeroVia;
+            p = mui_numerovia;
         if (n == "Escalera")
-            p = lineEscalera;
+            p = mui_escalera;
         if (n == "Piso")
-            p = linePiso;
+            p = mui_piso;
         if (n == "Puerta")
-            p = linePuerta;
+            p = mui_puerta;
         if (n == "CodPostal")
-            p = lineCodPostal;
+            p = mui_codigopostal;
         if (n == "Municipio")
-            p = lineMunicipio;
+            p = mui_poblacion;
         if (n == "Provincia")
-            p = lineProvincia;
+            p = mui_provincia;
         if (n == "Pais")
-            p = linePais;
+            p = mui_pais;
         if (p) {
             p->setText(v);
         } // end if
     }
 
     delete cur;
-    //dialogChanges_cargaInicial();
     return 0;
     _depura("END propiedadesempresa::inicializa", 2);
 }
 
 
-void propiedadesempresa::s_saveConfig() {
-    _depura("propiedadesempresa::s_saveConfig", 0);
+int propiedadesempresa::guardar() {
+    _depura("propiedadesempresa::on_mui_guardar_clicked()", 0);
+    int i = 0;
+    int pos = 0;
+    /// Iniciamos transaccion.
+    m_companyact->begin();
     QString query = "DELETE FROM configuracion";
     m_companyact->ejecuta(query);
-    int i = 0;
-    while (tpropiedades->item(i, 0)->text() != "") {
-        QString SQLQuery;
-        SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')", i,
-                         m_companyact->sanearCadena(tpropiedades->item(i, 0)->text()).toAscii().constData(),
-                         m_companyact->sanearCadena(tpropiedades->item(i, 1)->text()).toAscii().constData());
-        m_companyact->ejecuta(SQLQuery);
-        i++;
-    } // end while
 
-    /// Este bloque de c&oacute;digo guarda los datos fiscales en la tabla configuraci&oacute;n.
-    update_value("NombreEmpresa", m_nomEmpresa->text());
-    update_value("CIF", lineCIF->text());
-    update_value("TipoVia", lineTipoVia->text());
-    update_value("NombreVia", lineNombreVia->text());
-    update_value("NumeroVia", lineNumeroVia->text());
-    update_value("Escalera", lineEscalera->text());
-    update_value("Piso", linePiso->text());
-    update_value("Puerta", linePuerta->text());
-    update_value("CodPostal", lineCodPostal->text());
-    update_value("Municipio", lineMunicipio->text());
-    update_value("Provincia", lineProvincia->text());
-    update_value("Pais", linePais->text());
-    dialogChanges_cargaInicial();
-    _depura("END propiedadesempresa::s_saveConfig", 0);
+    if (tpropiedades->rowCount() > 0) {
+        for (i = 0; i < tpropiedades->rowCount(); i++) {
+            /// Si vale 0 significa que no hay ningun QTableWidgetItem en esa posicion.
+            if ((tpropiedades->item(i, 0) != 0) && (tpropiedades->item(i, 1) != 0) && (tpropiedades->item(i, 0)->text() != "")) {
+                QString SQLQuery;
+                SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')", pos,
+                                 m_companyact->sanearCadena(tpropiedades->item(i, 0)->text()).toAscii().constData(),
+                                 m_companyact->sanearCadena(tpropiedades->item(i, 1)->text()).toAscii().constData());
+                m_companyact->ejecuta(SQLQuery);
+                pos++;
+            } // end if
+        } // end for
+    } // end if
+
+    /// Este bloque de c&oacute;digo guarda los datos fiscales en la tabla
+    /// configuraci&oacute;n.
+    update_value("NombreEmpresa", mui_nombreempresa->text());
+    update_value("CIF", mui_cif->text());
+    update_value("Telefono", mui_telefono->text());
+    update_value("TipoVia", mui_tipovia->text());
+    update_value("NombreVia", mui_nombrevia->text());
+    update_value("NumeroVia", mui_numerovia->text());
+    update_value("Escalera", mui_escalera->text());
+    update_value("Piso", mui_piso->text());
+    update_value("Puerta", mui_puerta->text());
+    update_value("CodPostal", mui_codigopostal->text());
+    update_value("Poblacion", mui_poblacion->text());
+    update_value("Provincia", mui_provincia->text());
+    update_value("Pais", mui_pais->text());
+
+    /// Procesamos la transaccion.
+    m_companyact->commit();
+
+    _depura("END propiedadesempresa::on_mui_guardar_clicked()", 10);
+    return 0;
 }
 
 
@@ -193,7 +210,7 @@ bool propiedadesempresa::close() {
                                   tr("Guardar cambios"),
                                   tr("Desea guardar los cambios?"),
                                   tr("&Guardar"), tr("&No guardar"), 0, 0, 1) == 0) {
-            s_saveConfig();
+            on_mui_guardar_clicked();
         } // end if
     } // end if
     _depura("END propiedadesempresa::close", 0);
@@ -207,7 +224,8 @@ bool propiedadesempresa::close() {
     De momento esta funci&oacute;n est&aacute; incompleta y hace varias consideraciones
     que deber&iacute;an ir solucion&aacute;ndose (no trata los d&iacute;gitos de cuenta
     y subcuenta) por lo que siempre considera que las cuentas son 4 d&iacute;gitos. */
-void propiedadesempresa::extiendeCuentas() {
+void propiedadesempresa::on_mui_modificarplan_clicked() {
+    _depura("propiedadesempresa::on_mui_modificarplan_clicked", 0);
     unsigned int nlong = modcodigo->text().length();
     QString codigo;
     QString query = "SELECT * FROM cuenta";
@@ -227,14 +245,15 @@ void propiedadesempresa::extiendeCuentas() {
     m_companyact->ejecuta(query);
     m_companyact->commit();
     if (QMessageBox::warning(this,
-                             tr("Salir"),
+                             tr("Salir del programa"),
                              tr("Para que los cambios tengan efecto, \
                                 debe salir del programa y volver a entrar. \n \
                                 Salir ahora?"),
-                             tr("Salir"), tr("No salir"), 0, 0, 1) == 0) {
+                             tr("&Salir"), tr("&No salir"), 0, 0, 1) == 0) {
         exit(1)
         ;
     } // end if
     dialogChanges_cargaInicial();
+    _depura("END propiedadesempresa::on_mui_modificarplan_clicked", 0);
 }
 

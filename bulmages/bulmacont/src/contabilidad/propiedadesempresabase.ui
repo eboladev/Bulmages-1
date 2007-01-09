@@ -5,36 +5,42 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>619</width>
-    <height>396</height>
+    <width>589</width>
+    <height>305</height>
    </rect>
   </property>
   <property name="acceptDrops" >
    <bool>false</bool>
   </property>
   <property name="windowTitle" >
-   <string>Propiedades Empresa</string>
+   <string>Propiedades de la empresa</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_configuracion.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>4</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>4</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
-      <widget class="QToolButton" name="toolButton1_2_2" >
+      <widget class="QToolButton" name="mui_guardar" >
+       <property name="toolTip" >
+        <string>Guardar</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Guardar</string>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -67,84 +73,55 @@
       <bool>true</bool>
      </property>
      <property name="currentIndex" >
-      <number>2</number>
+      <number>0</number>
      </property>
-     <widget class="QWidget" name="TabPage" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
-       <string>&amp;Datos Fiscales</string>
+       <string>&amp;Datos fiscales</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>4</number>
+        <number>6</number>
        </property>
-       <item row="0" column="11" colspan="2" >
-        <widget class="QLineEdit" name="lineCIF" >
+       <item row="5" column="4" colspan="5" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>291</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="5" column="1" colspan="3" >
+        <widget class="QLineEdit" name="mui_pais" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="textLabel2_2_2" >
-         <property name="text" >
-          <string>Tipo de vía:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2" >
-        <widget class="QLabel" name="textLabel2_2_2_2" >
-         <property name="text" >
-          <string>Nombre de la vía:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="textLabel2" >
-         <property name="text" >
-          <string>Nombre:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="2" colspan="11" >
-        <widget class="QLineEdit" name="lineNombreVia" >
+       <item row="4" column="7" colspan="2" >
+        <widget class="QLineEdit" name="mui_provincia" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="3" column="3" >
-        <widget class="QLabel" name="textLabel2_2_2_4" >
-         <property name="text" >
-          <string>Escalera:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="4" >
-        <widget class="QLineEdit" name="lineEscalera" >
+       <item row="4" column="3" colspan="3" >
+        <widget class="QLineEdit" name="mui_poblacion" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="3" column="6" >
-        <widget class="QLineEdit" name="linePiso" >
-         <property name="text" >
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="9" colspan="2" >
-        <widget class="QLineEdit" name="linePuerta" >
-         <property name="text" >
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="12" >
-        <widget class="QLineEdit" name="lineCodPostal" >
+       <item row="4" column="1" >
+        <widget class="QLineEdit" name="mui_codigopostal" >
          <property name="text" >
           <string/>
          </property>
@@ -153,87 +130,69 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="7" colspan="2" >
-        <widget class="QLabel" name="textLabel2_2_2_3_2_2" >
+       <item row="3" column="7" >
+        <widget class="QLineEdit" name="mui_puerta" >
          <property name="text" >
-          <string>Provincia:</string>
+          <string/>
          </property>
         </widget>
        </item>
        <item row="3" column="5" >
-        <widget class="QLabel" name="textLabel2_2_2_6" >
-         <property name="text" >
-          <string>Piso:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="8" >
-        <widget class="QLabel" name="textLabel2_2_2_5" >
-         <property name="text" >
-          <string>Puerta:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="11" >
-        <widget class="QLabel" name="textLabel2_2_2_7" >
-         <property name="text" >
-          <string>C.P.:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="3" >
-        <widget class="QLineEdit" name="lineTipoVia" >
+        <widget class="QLineEdit" name="mui_piso" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="0" column="10" >
-        <widget class="QLabel" name="textLabel2_2" >
-         <property name="text" >
-          <string>CIF:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="9" colspan="4" >
-        <widget class="QLineEdit" name="lineProvincia" >
+       <item row="3" column="3" >
+        <widget class="QLineEdit" name="mui_escalera" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="3" column="1" colspan="2" >
-        <widget class="QLineEdit" name="lineNumeroVia" >
+       <item row="3" column="1" >
+        <widget class="QLineEdit" name="mui_numerovia" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="4" column="1" colspan="6" >
-        <widget class="QLineEdit" name="lineMunicipio" >
+       <item row="2" column="1" colspan="8" >
+        <widget class="QLineEdit" name="mui_nombrevia" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="5" column="1" colspan="7" >
-        <widget class="QLineEdit" name="linePais" >
+       <item row="1" column="1" colspan="5" >
+        <widget class="QLineEdit" name="mui_tipovia" >
          <property name="text" >
           <string/>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" >
-        <widget class="QLabel" name="textLabel2_2_2_3_2_3" >
+       <item row="0" column="1" colspan="5" >
+        <widget class="QLineEdit" name="mui_nombreempresa" >
          <property name="text" >
-          <string>País:</string>
+          <string/>
          </property>
         </widget>
        </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="textLabel2_2_2_3_2" >
+       <item row="0" column="7" colspan="2" >
+        <widget class="QLineEdit" name="mui_cif" >
          <property name="text" >
-          <string>Municipio:</string>
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="7" colspan="2" >
+        <widget class="QLineEdit" name="mui_telefono" />
+       </item>
+       <item row="1" column="6" >
+        <widget class="QLabel" name="label" >
+         <property name="text" >
+          <string>Teléfono:</string>
          </property>
         </widget>
        </item>
@@ -242,32 +201,164 @@
          <property name="text" >
           <string>Número:</string>
          </property>
-        </widget>
-       </item>
-       <item row="0" column="1" colspan="9" >
-        <widget class="QLineEdit" name="m_nomEmpresa" >
-         <property name="text" >
-          <string/>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
+       <item row="3" column="2" >
+        <widget class="QLabel" name="textLabel2_2_2_4" >
+         <property name="text" >
+          <string>Escalera:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="4" >
+        <widget class="QLabel" name="textLabel2_2_2_6" >
+         <property name="text" >
+          <string>Piso:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="6" >
+        <widget class="QLabel" name="textLabel2_2_2_3_2_2" >
+         <property name="text" >
+          <string>Provincia:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2_3_2_3" >
+         <property name="text" >
+          <string>País:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="5" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="textLabel2" >
+         <property name="text" >
+          <string>Nombre:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2_2" >
+         <property name="text" >
+          <string>Nombre vía:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2" >
+         <property name="text" >
+          <string>Tipo de vía:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="6" >
+        <widget class="QLabel" name="textLabel2_2" >
+         <property name="text" >
+          <string>C.I.F.:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" >
+        <widget class="QLabel" name="textLabel2_2_2_3_2" >
+         <property name="text" >
+          <string>Población:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2_7" >
+         <property name="text" >
+          <string>C.P.:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="6" >
+        <widget class="QLabel" name="textLabel2_2_2_5" >
+         <property name="text" >
+          <string>Puerta:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="8" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab2" >
       <attribute name="title" >
-       <string>D&amp;igitos de cuentas</string>
+       <string>D&amp;ígitos de cuentas</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>4</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="QLabel" name="TextLabel1" >
          <property name="text" >
-          <string>Modelo de Código Cuenta</string>
+          <string>Modelo del código de cuenta:</string>
          </property>
         </widget>
        </item>
@@ -290,7 +381,7 @@
            <item>
             <widget class="QLabel" name="TextLabel1_2" >
              <property name="text" >
-              <string>Digitos estandar</string>
+              <string>Dígitos estandar</string>
              </property>
             </widget>
            </item>
@@ -308,7 +399,7 @@ yyyy --> Dígitos de cuenta.</string>
           </layout>
          </item>
          <item>
-          <widget class="QPushButton" name="PushButton3" >
+          <widget class="QPushButton" name="mui_modificarplan" >
            <property name="text" >
             <string>Modi&amp;ficar plan contable</string>
            </property>
@@ -334,19 +425,29 @@ yyyy --> Dígitos de cuenta.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab3" >
       <attribute name="title" >
-       <string>Propiedades &amp;Generales</string>
+       <string>Propiedades &amp;generales</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>4</number>
+        <number>5</number>
        </property>
        <item row="0" column="0" >
-        <widget class="QTableWidget" name="tpropiedades" />
+        <widget class="QTableWidget" name="tpropiedades" >
+         <property name="alternatingRowColors" >
+          <bool>true</bool>
+         </property>
+         <property name="selectionMode" >
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior" >
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -356,21 +457,21 @@ yyyy --> Dígitos de cuenta.</string>
  </widget>
  <layoutdefault spacing="4" margin="4" />
  <tabstops>
-  <tabstop>m_nomEmpresa</tabstop>
-  <tabstop>lineCIF</tabstop>
-  <tabstop>lineTipoVia</tabstop>
-  <tabstop>lineNombreVia</tabstop>
-  <tabstop>lineNumeroVia</tabstop>
-  <tabstop>lineEscalera</tabstop>
-  <tabstop>linePiso</tabstop>
-  <tabstop>linePuerta</tabstop>
-  <tabstop>lineCodPostal</tabstop>
-  <tabstop>lineMunicipio</tabstop>
-  <tabstop>lineProvincia</tabstop>
-  <tabstop>linePais</tabstop>
+  <tabstop>mui_nombreempresa</tabstop>
+  <tabstop>mui_cif</tabstop>
+  <tabstop>mui_tipovia</tabstop>
+  <tabstop>mui_nombrevia</tabstop>
+  <tabstop>mui_numerovia</tabstop>
+  <tabstop>mui_escalera</tabstop>
+  <tabstop>mui_piso</tabstop>
+  <tabstop>mui_puerta</tabstop>
+  <tabstop>mui_codigopostal</tabstop>
+  <tabstop>mui_poblacion</tabstop>
+  <tabstop>mui_provincia</tabstop>
+  <tabstop>mui_pais</tabstop>
   <tabstop>TabWidget2</tabstop>
   <tabstop>modcodigo</tabstop>
-  <tabstop>PushButton3</tabstop>
+  <tabstop>mui_modificarplan</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />

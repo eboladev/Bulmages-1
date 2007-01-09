@@ -40,7 +40,7 @@
     Inicializa todos los componentes, propaga el puntero a m_company
     Configura la pantalla para que haga una cosa u otra en funcion de m_modo.
     Si estamos en modo edicion mete la ventana en el workSpace. En caso contrario
-    la presenta como un popup.
+    la presenta como un 'popup'.
     Hace la presentacion inicial.
 */
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
@@ -132,7 +132,7 @@ ArticuloList::~ArticuloList() {
 }
 
 
-/** SLOT que responde a la pulsacion del boton borrar 
+/** SLOT que responde a la pulsacion del boton borrar
     Verifica que queremos borrar el articulo y lo borra tras preguntar.
 */
 /// \TODO: Deberia crear una instancia del articulo e invocar a su metodo de borrado
@@ -151,7 +151,7 @@ void ArticuloList::on_mui_borrar_clicked() {
                 throw -1;
             presenta();
         } // end if
-        _depura("ENd ArticuloList::on_mui_borrar_clicked", 0);
+        _depura("END ArticuloList::on_mui_borrar_clicked", 0);
     } catch (...) {
         mensajeInfo(tr("Error al borrar el articulo"));
     } // end try
@@ -270,14 +270,14 @@ void ArticuloList::on_mui_imprimirCatalogo_clicked() {
         file.close();
     } // end if
 
-    QString iconv = "iconv -tUTF8 -c "+archivod+" > "+archivod1;
+    QString iconv = "iconv -tUTF8 -c " + archivod + " > " + archivod1;
     system(iconv.toAscii().constData());
     invocaPDF("articulos1");
     _depura("END ArticuloList::on_mui_imprimirCatalogo_clicked", 0);
 }
 
 
-/** La impresion del listado esta completamente delegada en SubForm3
+/** La impresion del listado esta completamente delegada en SubForm3.
 */
 void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::INIT_s_imprimir1()\n", 0);
@@ -286,7 +286,7 @@ void ArticuloList::s_imprimir1() {
 }
 
 
-/**  SLOT que exporta el listado de articulos a formato XML 
+/** SLOT que exporta el listado de articulos a formato XML.
 */
 void ArticuloList::on_mui_exportar_clicked() {
     _depura("ArticuloList::on_mui_exportar_clicked", 0);

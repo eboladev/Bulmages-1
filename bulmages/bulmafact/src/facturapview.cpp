@@ -18,14 +18,14 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <fstream>
+
 #include <QMessageBox>
 #include <QWidget>
 #include <QObject>
 #include <QComboBox>
 #include <QToolButton>
 #include <QLayout>
-#include <fstream>
-
 
 #include "facturapview.h"
 #include "company.h"

@@ -47,9 +47,9 @@ public:
     int inicializa();
 
 public slots:
-    virtual void s_saveConfig();
     virtual bool close();
-    virtual void extiendeCuentas();
+    virtual int guardar();
+    virtual void on_mui_modificarplan_clicked();
 
 private:
     void update_value(QString, QString);

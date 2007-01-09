@@ -18,8 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include <QLocale>
-
 #include "regivaprintview.h"
 #include "empresa.h"
 
@@ -168,9 +166,6 @@ void regivaprintview::presentar(char *tipus) {
             /// Vaciamos el cursor de la base de datos.
             delete cursorapt;
 
-            /// Vamos a formatear los n&uacute;meros con punto para los millares y coma
-            /// para los decimales.
-            QLocale spanish(QLocale::Spanish);
             /// AHORA PONEMOS EL RESUMEN DEL IVA REPERCUTIDO.
             QString SQLQuery = "SELECT * FROM cuenta, tipoiva LEFT JOIN (SELECT idtipoiva, SUM(baseiva) AS tbaseiva FROM iva iva.idregistroiva IN (SELECT idregistroiva FROM registroiva WHERE ffactura >='"+fechainicial1->text()+"' AND ffactura <='"+fechafinal1->text()+"' ) GROUP BY idtipoiva) AS dd ON dd.idtipoiva=tipoiva.idtipoiva WHERE tipoiva.idcuenta = cuenta.idcuenta AND cuenta.codigo LIKE '477%'";
             conexionbase->begin();
@@ -187,8 +182,8 @@ void regivaprintview::presentar(char *tipus) {
 
                 /// Pasamos al formato de representaci&oacute;n espa&ntilde;ol las
                 /// cantidades a mostrar.
-                QString iva = spanish.toString(cursorapt->valor("tbaseiva").toDouble(), 'f', 2);
-                QString bi = spanish.toString(numberstr.toDouble(), 'f', 2);
+                QString iva = QString::number(cursorapt->valor("tbaseiva").toDouble(), 'f', 2);
+                QString bi = QString::number(numberstr.toDouble(), 'f', 2);
 
                 fitxersortidatxt << setiosflags( ios::left ) << setw(16) << cur->valor("nombretipoiva").toAscii().constData() << " IVA: ";
                 fitxersortidatxt << resetiosflags( ios::left ) << setw(12) << iva.toAscii().constData() << " BI: ";
@@ -238,14 +233,14 @@ void regivaprintview::presentar(char *tipus) {
                 datahora = cursorapt->valor("fecha");
                 data = datahora.mid(0, 10);
                 /// Pasamos al formato de representacion español las cantidades a mostrar.
-                QString bi = spanish.toString(cursorapt->valor("baseimp").toDouble(), 'f', 2);
-                QString iva = spanish.toString(cursorapt->valor("iva").toDouble(), 'f', 2);
-                QString total = spanish.toString(cursorapt->valor("total").toDouble(), 'f', 2);
+                QString bi = QString::number(cursorapt->valor("baseimp").toDouble(), 'f', 2);
+                QString iva = QString::number(cursorapt->valor("iva").toDouble(), 'f', 2);
+                QString total = QString::number(cursorapt->valor("total").toDouble(), 'f', 2);
                 /// Hacemos el c&aacute;lculo de la cuota (as&iacute; nos sirve para ver
                 /// si se c&aacute;lculo el % correcto).
                 // int calculo = round(cursorapt->valor("iva").toDouble()/cursorapt->valor("baseimp").toDouble()*100);
                 // QString cuota = QString::number(calculo);
-                QString cuota = spanish.toString(cursorapt->valor("cuota").toInt());
+                QString cuota = QString::number(cursorapt->valor("cuota").toInt());
                 /// Acumulamos los totales para al final poder escribirlos.
                 if (txt) {
                     /// Presentaci&oacute;n txt normal.
@@ -277,8 +272,8 @@ void regivaprintview::presentar(char *tipus) {
 
                 /// Pasamos al formato de representaci&oacute;n espa&ntilde;ol las
                 /// cantidades a mostrar.
-                QString bi = spanish.toString(cur->valor("tbaseiva").toDouble(), 'f', 2);
-                QString iva = spanish.toString(numberstr.toDouble(), 'f', 2);
+                QString bi = QString::number(cur->valor("tbaseiva").toDouble(), 'f', 2);
+                QString iva = QString::number(numberstr.toDouble(), 'f', 2);
 
                 if (j == 0) {
                     fitxersortidatxt << endl;

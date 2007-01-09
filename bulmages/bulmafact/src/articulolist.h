@@ -22,7 +22,6 @@
 #define ARTICLESLIST_H
 
 #include "company.h"
-//#include "empresa.h"
 #include "pgimportfiles.h"
 #include "subform2bf.h"
 #include "ficha.h"
@@ -34,9 +33,11 @@
 */
 class ArticuloListSubForm : public SubForm2Bf {
     Q_OBJECT
+
 public:
     ArticuloListSubForm(QWidget *parent = 0, const char *name = 0);
-    ~ArticuloListSubForm() {};
+    ~ArticuloListSubForm() {}
+    ;
 };
 
 
@@ -66,7 +67,6 @@ private:
     QString mdb_codigocompletoarticulo;
     /// El puntero a la clase company para manejar la BD y hacer traspaso de mensajes.
     company *m_companyact;
-//    Empresa *m_empresaact;
     /// El indicador del modo (Seleccion o Edicion). Esta funcionalidad deberia pasarse a la clase Listado.
     edmode m_modo;
     void inicializar();
@@ -109,8 +109,9 @@ public:
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-        if(text.size() >=3)
+        if (text.size() >= 3) {
             on_mui_actualizar_clicked();
+        } // end if
     };
     virtual void on_mui_list_cellDoubleClicked(int, int);
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);
@@ -129,10 +130,11 @@ public slots:
         presenta();
     };
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
+        } // end if
     };
     virtual void on_mui_list_toogledConfig(bool check) {
         mui_configurar->setChecked(check);
