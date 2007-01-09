@@ -83,11 +83,12 @@ void ListLinAlbaranClienteView::on_mui_list_editFinished(int row, int col, int k
 
 
 void ListLinAlbaranClienteView::cargar(QString idalbaran) {
-    _depura("ListLinAlbaranClienteView::cargar\n", 0);
+    _depura("ListLinAlbaranClienteView::cargar", 0);
     mdb_idalbaran = idalbaran;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + " ORDER BY ordenlalbaran");
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaran LEFT JOIN articulo ON lalbaran.idarticulo = articulo.idarticulo WHERE idalbaran=" + mdb_idalbaran + "   ORDER BY ordenlalbaran");
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END ListLinAlbaranClienteView::cargar", 0);
 }
 
 

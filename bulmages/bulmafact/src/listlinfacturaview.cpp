@@ -85,7 +85,7 @@ void ListLinFacturaView::on_mui_list_editFinished(int row, int col, int key) {
 void ListLinFacturaView::cargar(QString idfactura) {
     _depura("ListLinFacturaView::cargar\n", 0);
     mdb_idfactura = idfactura;
-    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura + " ORDER BT ordenlfactura");
+    cursor2 * cur= companyact()->cargacursor("SELECT * FROM lfactura LEFT JOIN articulo ON lfactura.idarticulo = articulo.idarticulo WHERE idfactura=" + mdb_idfactura + " ORDER BY ordenlfactura");
     SubForm3::cargar(cur);
     delete cur;
 }

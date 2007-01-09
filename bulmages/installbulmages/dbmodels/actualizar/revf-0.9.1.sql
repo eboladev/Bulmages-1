@@ -89,9 +89,13 @@ BEGIN
 		ALTER TABLE lfactura ADD COLUMN ordenlfactura INTEGER;
 		ALTER TABLE lfacturap ADD COLUMN ordenlfacturap INTEGER;
 		ALTER TABLE lalbaranp ADD COLUMN ordenlalbaranp INTEGER;
-		ALTER TABLE albaran ADD COLUMN ordenlalbaran INTEGER;
 		ALTER TABLE lpedidoproveedor ADD COLUMN ordenlpedidoproveedor INTEGER;
 	END IF;
+	SELECT INTO as * FROM pg_attribute  WHERE attname=''ordenlalbaran'';
+	IF NOT FOUND THEN
+		ALTER TABLE lalbaran ADD COLUMN ordenlalbaran INTEGER;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
