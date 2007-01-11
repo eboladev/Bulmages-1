@@ -43,6 +43,10 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
         : Ficha(parent, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
+    
+    // definiciones signals and slots
+    //QObject::connect(mui_busqueda, SIGNAL(textChanged(QString)),this, SLOT(on_mui_busqueda_textChanged(const QString &)));
+    
     empresaactual = emp;
     m_modo = editmode;
     conexionbase= emp->bdempresa();
@@ -225,17 +229,23 @@ void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
 /** del QLineEdit del buscador se lanza esta funci&oacute;n que hace una b&uacute;squeda
     sobre el &aacute;rbol de cuentas. */
 void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
+    
     QList<QTreeWidgetItem *> it;
     QString cod = extiendecodigo(string1, (int) numdigitos);
-
     it = ListView1->findItems(cod, Qt::MatchStartsWith, ccuenta);
     if (it.count() > 0) {
         ListView1->setCurrentItem(it.first());
     } else {
-        it = ListView1->findItems(string1, Qt::MatchStartsWith, cdesccuenta);
-        if (it.count() > 0) {
-            ListView1->setCurrentItem(it.first());
-        } // end if
+	QTreeWidgetItemIterator it(ListView1);
+	QRegExp patron("^.*"+string1+".*$");
+	patron.setCaseSensitivity(Qt::CaseInsensitive);
+	while(*it){
+	    if (patron.exactMatch((*it)->text(cdesccuenta))){
+		label->setText((*it)->text(cdesccuenta));
+		ListView1->setCurrentItem(*it);
+	    }
+	    ++it;
+	} // end while
     } // end if
 }
 

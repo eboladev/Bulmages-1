@@ -1,7 +1,6 @@
 <ui version="4.0" >
  <author>aaloy</author>
  <comment>Pla de comptes		</comment>
- <exportmacro></exportmacro>
  <class>ListCuentasBase</class>
  <widget class="QWidget" name="ListCuentasBase" >
   <property name="geometry" >
@@ -379,7 +378,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <tabstops>
   <tabstop>mui_busqueda</tabstop>
   <tabstop>TabWidget2</tabstop>

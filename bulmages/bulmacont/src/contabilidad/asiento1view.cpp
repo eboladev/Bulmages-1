@@ -107,7 +107,7 @@ void Asiento1View::asientoabiertop() {
     /// Los apuntes deben ser editables.
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
-            mui_list->item(fila, columna)->setFont(QFont("Decorative", -1, -1, false));
+            mui_list->item(fila, columna)->setFont(QFont("Courier", -1, -1, false));
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
         } // end for
     } // end for
@@ -129,7 +129,7 @@ void Asiento1View::asientocerradop() {
     /// modificaciones por estar en modo CERRADO).
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
-            mui_list->item(fila, columna)->setFont(QFont("Courier", -1, -1, false));
+            mui_list->item(fila, columna)->setFont(QFont("Decorative", -1, -1, false));
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
         } // end for
     } // end for
