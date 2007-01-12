@@ -54,7 +54,6 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
     QStringList headers;
     headers << tr("Codigo cuenta") << tr("Nombre cuenta") << tr("Debe") << tr("Haber") << tr("ID cuenta") << tr("Bloqueada") << tr("Nodebe") << tr("Nohaber") << tr("Regularizacion") << tr("Imputacion") << tr("Grupo") << tr("Tipo cuenta");
     ListView1->setHeaderLabels(headers);
-
     ccuenta = 0;
     cdesccuenta = 1;
     cdebe = 2;
@@ -67,6 +66,16 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
     cimputacion = 9;
     cgrupo = 10;
     ctipocuenta = 11;
+    
+    ListView1->setColumnWidth(ccuenta,175);
+    ListView1->setColumnWidth(cdesccuenta,400);
+    ListView1->hideColumn(cidcuenta);
+    ListView1->hideColumn(cnodebe);
+    ListView1->hideColumn(cnohaber);
+    ListView1->hideColumn(cregularizacion);
+    ListView1->hideColumn(cimputacion);
+    ListView1->hideColumn(cgrupo);
+    ListView1->hideColumn(ctipocuenta);
 
     tablacuentas->setColumnCount(3);
     headers << tr("CODIGO") << tr("NOMBRE");
@@ -240,10 +249,8 @@ void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
 	QRegExp patron("^.*"+string1+".*$");
 	patron.setCaseSensitivity(Qt::CaseInsensitive);
 	while(*it){
-	    if (patron.exactMatch((*it)->text(cdesccuenta))){
-		label->setText((*it)->text(cdesccuenta));
+	    if (patron.exactMatch((*it)->text(cdesccuenta)))
 		ListView1->setCurrentItem(*it);
-	    }
 	    ++it;
 	} // end while
     } // end if
