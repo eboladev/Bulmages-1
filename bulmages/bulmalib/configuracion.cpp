@@ -40,68 +40,115 @@
 
 #include "abreempresaview.h"
 
-#ifdef WIN32
-    #define CONFGLOBAL "C:\\bulmages.conf"
-#else
-    #define CONFGLOBAL "/etc/bulmages.conf"
-#endif
 
-#define CONFLOCAL "bulmages.conf"
-
-
-/// The global object confpr is the instance of configuracion that is available to
-/// all BulmaGes aplication.
 /// El objeto global confpr es la instancia de la clase configuracion. Este objeto
 /// puede ser accedido desde todas las clases de la aplicacion.
 configuracion *confpr;
 
-/// Constructor de la clase que hace directamente la lectura de los dos posibles
-/// archivos que pueden tener informacion de configuracion de Bulmages:
-/// '/etc/bulmages.conf' y
-/// '~/bulmages.conf'.
+/// Constructor de la clase que hace directamente la lectura de los posibles
+/// archivos que pueden tener informacion de configuracion. Como parametro
+/// reciben el nombre del programa y buscan en este orden su archivo de configuracion.
+///
+/// 1) /etc/bulmages/ -> Opciones genericas para todos los usuarios.
+/// 2) /home/~/.bulmages/  -> Opciones especificas para cada usuario.
+///
+/// Las opciones se iran cargando desde las mas genericas a las mas especificas.
+/// Estas ultimas prevaleceran a las genericas cuando existan.
+///
+/// Dentro de cada directorio hay las siguientes preferencias a la hora de aplicar
+/// las configuraciones:
+///
+/// 1) bulmages.conf -> archivo para todos los programas del paquete Bulmages.
+/// 2) bulmaxxx.conf -> archivo especifico a un solo programa del paquete.
 ///
 /// NOTA: No se puede utilizar _depura dentro de esta clase porque necesita
 /// valores que no se disponen antes de leer el archivo de configuraci&oacute;n.
-configuracion::configuracion() {
-    //_depura("configuracion::configuracion", 1);
-    QDir homedir;
-    /// Cambiamos a ~/.bulmages como directorio de trabajo.
-    QString dir = getenv("HOME");
-//    fprintf(stderr, "\n %s \n", dir.toAscii().data());
-    dir = dir + "/.bulmages/";
+configuracion::configuracion(QString nombreprograma) {
+    QString mensaje;
+    QDir dirGlobalConf;
+    QFile genericGlobalConfFile;
+    QFile programGlobalConfFile;
+    QFile genericLocalConfFile;
+    QFile programLocalConfFile;
 
+    /// Definimos los directorios donde buscar primero.
 #ifdef WIN32
 
-    _depura("Es WINDOWS !!!", 1);
-    dir = "C:\\.bulmages\\";
+    m_dirGlobalConf = "C:\\bulmages\\";
+#else
+
+    m_dirGlobalConf = "/etc/bulmages/";
 #endif
 
-    //_depura("Vamos a comprobar la existencia\n", 1);
-    /// Comprobamos la existencia del directorio personalizado de bulmages.
-    if (!homedir.exists(dir))
-        homedir.mkdir(dir);
-    /// Solo cambiamos de directorio si no es windows.
-    chdir(dir.toAscii().data());
-    /// Primero leemos la configuracion global.
-    //_depura("Vamos a llamar a leeconfig\n", 1);
-    leeconfig(CONFGLOBAL);
-    /// Y luego anyadimos la configuracion local, asi los valores por defecto son los globales.
-    /// Y los que estan en local sustituyen a los existentes.
+    QString dirusuario = getenv("HOME");
+    m_dirLocalConf = dirusuario + "/.bulmages/";
 
-    /// Solo leemos la configuracion local si no estamos en Windows.
-#ifndef WIN32
+    m_genericGlobalConfFile = "bulmages.conf";
+    m_programGlobalConfFile = nombreprograma + ".conf";
 
-    QString dir1 = getenv("HOME");
-    dir1 = dir1 + "/" + CONFLOCAL;
-    leeconfig(dir1);
-#endif
+    m_genericLocalConfFile = m_genericGlobalConfFile;
+    m_programLocalConfFile = m_programGlobalConfFile;
 
-    setValor(CONF_DIR_USER, dir);
+    /// Comprobamos la existencia de los directorios y archivos de configuracion.
+    /// Directorios y archivos obligatorios (sale si no existe):
+    if (!dirGlobalConf.exists(m_dirGlobalConf)) {
+        mensaje = "--> El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
+        exit(-1);
+    } else {
+        if (!genericGlobalConfFile.exists(m_dirGlobalConf + m_genericGlobalConfFile)) {
+            mensaje = "--> El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
+            exit(-1);
+        } else {
+            /// 1) Leemos la configuracion del archivo generico global.
+            leeconfig(m_dirGlobalConf + m_genericGlobalConfFile);
+        }// end if
+    } // end if
+
+    /// Directorios y archivos opcionales:
+    if (!programGlobalConfFile.exists(m_dirGlobalConf + m_programGlobalConfFile)) {
+        mensaje = "--> El archivo '" + m_dirGlobalConf + m_programGlobalConfFile + "' no existe. <--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
+    } else {
+        /// 2) Leemos la configuracion del archivo especifico global.
+        leeconfig(m_dirGlobalConf + m_programGlobalConfFile);
+    }// end if
+
+    /// Comprobamos si el usuario tiene creado su '/home/~/.bulmages/' directorio
+    /// de configuracion.
+    if (!dirGlobalConf.exists(m_dirLocalConf)) {
+        if (dirGlobalConf.mkdir(m_dirLocalConf) == TRUE) {
+            mensaje = "--> Se ha creado el directorio '" + m_dirLocalConf + "'. <--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
+        } else {
+            mensaje = "--> No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
+            exit(-1);
+        }// end if
+    } // end if
+
+    if (!genericLocalConfFile.exists(m_dirLocalConf + m_genericLocalConfFile)) {
+        mensaje = "--> El archivo '" + m_dirLocalConf + m_genericLocalConfFile + "' no existe. <--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
+    } else {
+        /// 3) Leemos la configuracion del archivo generico local.
+        leeconfig(m_dirLocalConf + m_genericLocalConfFile);
+    }// end if
+
+    if (!programLocalConfFile.exists(m_dirLocalConf + m_programLocalConfFile)) {
+        mensaje = "--> El archivo '" + m_dirLocalConf + m_programLocalConfFile + "' no existe. <--\n";
+        fprintf(stderr, mensaje.toAscii().constData());
+    } else {
+        /// 4) Leemos la configuracion del archivo especifico local.
+        leeconfig(m_dirLocalConf + m_programLocalConfFile);
+    }// end if
+
+    setValor(CONF_DIR_USER, m_dirLocalConf);
     setValor(CONF_PRIVILEGIOS_USUARIO, "1");
     setValor(CONF_ALERTAS_DB, "Yes");
     setValor(CONF_LOGIN_USER, "");
     setValor(CONF_PASSWORD_USER, "");
-    //_depura("END configuracion:configuracion\n", 1);
 }
 
 
@@ -263,11 +310,11 @@ QString configuracion::nombre(int i) {
 /// 'home' del usuario.
 void configuracion::saveconfig() {
     QString dir1 = getenv("HOME");
-    dir1 = dir1 + "/" + CONFLOCAL;
+    dir1 = dir1 + "/.bulmages/" + m_dirLocalConf;
 
-     QFile file(dir1);
-     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-         return;
+    QFile file(dir1);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
 
     QTextStream filestr(&file);
     for (int i = 0; i < 1000; i++) {
@@ -286,7 +333,6 @@ void configuracion::saveconfig() {
 /// contains the configuration.
 /// Lee la configuracion del fichero de configuracion pasado y rellena la estructura.
 bool configuracion::leeconfig(QString fich) {
-    //_depura("leeconfig(" + fich + ")\n", 0);
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
         QTextStream in(&arch);

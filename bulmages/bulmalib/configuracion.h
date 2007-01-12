@@ -193,8 +193,15 @@ private:
     /// De esta forma no tendremos memoria desaprovechada.
     QMap<int, QString> m_valores;
 
+    QString m_dirGlobalConf;
+    QString m_dirLocalConf;
+    QString m_genericGlobalConfFile;
+    QString m_programGlobalConfFile;
+    QString m_genericLocalConfFile;
+    QString m_programLocalConfFile;
+
 public:
-    configuracion();
+    configuracion(QString nombreprograma);
     ~configuracion();
     QString valor(int);
     void setValor(int, QString);

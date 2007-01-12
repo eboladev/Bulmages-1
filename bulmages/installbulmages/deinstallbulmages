@@ -46,8 +46,10 @@ tiempo
 
 info "Borrando archivos"
 tiempo
-rm -f /etc/bulmages.conf
-rm -f /etc/bulmages-server.conf
+rm -f /etc/bulmages/bulmages.conf
+rm -f /etc/bulmages/bulmacont.conf
+rm -f /etc/bulmages/bulmafact.conf
+rm -f /etc/bulmages/bulmages-server.conf
 rm -rf /usr/share/bulmages
 rm -rf /usr/bin/bulmages
 rm -rf /usr/bin/cargaemp

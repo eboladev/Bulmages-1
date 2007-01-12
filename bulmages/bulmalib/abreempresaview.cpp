@@ -171,7 +171,7 @@ void abreempresaview::cargaArchivo() {
     dir1 = dir1 + "/.bulmages/" + LISTEMPRESAS;
 #else
 
-    QString dir1 = "C:\\.bulmages\\" + LISTEMPRESAS;
+    QString dir1 = "C:\\bulmages\\" + LISTEMPRESAS;
 #endif
     /// Si el archivo no existe hacemos una recarga.
     _depura("Vamos a comprobar la existencia\n", 1);
@@ -196,7 +196,7 @@ void abreempresaview::cargaArchivo() {
         /// Lee una linea completa del archivo.
         lineatexto = filestr.readLine();
         /// Separa los diferentes campos de la linea de texto y la asigna a las variables.
-        QStringList listacampos = lineatexto.split(",");
+        QStringList listacampos = lineatexto.split("\t");
         nombre = listacampos[0];
         ano = listacampos[1];
         nombd = listacampos[2];
@@ -220,7 +220,7 @@ void abreempresaview::guardaArchivo() {
     dir1 = dir1 + "/.bulmages/" + LISTEMPRESAS;
 #else
 
-    QString dir1 = "C:\\.bulmages\\" + LISTEMPRESAS;
+    QString dir1 = "C:\\bulmages\\" + LISTEMPRESAS;
 #endif
 
     QFile file(dir1);
@@ -269,9 +269,9 @@ void abreempresaview::guardaArchivo() {
                 insertCompany(nombre, ano, nomdb, tipo);
             }// end if
             /// Independientemente de si deben mostrarse o no hay que guardarlas en el archivo.
-            filestr << nombre.toAscii().data() << ",";
-            filestr << ano.toAscii().data() << ",";
-            filestr << nomdb.toAscii().data() << ",";
+            filestr << nombre.toAscii().data() << "\t";
+            filestr << ano.toAscii().data() << "\t";
+            filestr << nomdb.toAscii().data() << "\t";
             filestr << tipo.toAscii().data()  << endl;
             nomdb = "";
         } // end if

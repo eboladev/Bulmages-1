@@ -41,7 +41,7 @@ fpagoview::fpagoview(empresa *emp, QWidget *parent)
 /// El destructor de la clase guarda los datos (por si ha habido cambios) y libera
 /// la memoria que se haya ocupado. */
 fpagoview::~fpagoview() {
-    s_saveFPago();
+    on_mui_guardar_clicked();
     if (m_curfpago != NULL) {
         delete m_curfpago;
     } /// end if
@@ -82,7 +82,7 @@ void fpagoview::mostrarplantilla(int pos) {
                                  tr("Guardar forma de pago"),
                                  tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
-            s_saveFPago();
+            on_mui_guardar_clicked();
     } // end if
     if (m_comboFPago->count() > 0) {
         if (pos != 0) {
@@ -113,9 +113,9 @@ void fpagoview::cambiacombo(int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de guardar el tipo de
 /// IVA que se est&aacute; editando.
 /** Lo que hace es que se hace un update de todos los campos. */
-void fpagoview::s_saveFPago() {
+void fpagoview::on_mui_guardar_clicked() {
     QString idfpago = m_curfpago->valor("idfpago", m_posactual);
-    QString query = "UPDATE fpago SET nomfpago = '" + m_nomFPago->text()+"', nplazosfpago = "+m_nPlazosFPago->text()+" , plazoprimerpagofpago = "+m_plazoPrimerPagoFPago->text()+", plazoentrerecibofpago = " + m_plazoEntreReciboFPago->text() + " WHERE idfpago = " + m_curfpago->valor("idfpago", m_posactual);
+    QString query = "UPDATE fpago SET nomfpago = '" + m_nomFPago->text() + "', nplazosfpago = " + m_nPlazosFPago->text() + " , plazoprimerpagofpago = " + m_plazoPrimerPagoFPago->text() + ", plazoentrerecibofpago = " + m_plazoEntreReciboFPago->text() + " WHERE idfpago = " + m_curfpago->valor("idfpago", m_posactual);
     empresaactual->ejecuta(query);
     dialogChanges_cargaInicial();
     pintar(m_curfpago->valor("idfpago", m_posactual));
@@ -124,17 +124,17 @@ void fpagoview::s_saveFPago() {
 
 /// SLOT que responde a la pulsación del botón de nuevo tipo de IVA. Inserta en la tabla
 /// de IVAs.
-void fpagoview::s_newFPago() {
+void fpagoview::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
                                  tr("Guardar forma de pago"),
                                  tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok ,
+                                 QMessageBox::Ok,
                                  QMessageBox::Cancel) == QMessageBox::Ok)
-            s_saveFPago();
+            on_mui_guardar_clicked();
     } // end if
-    QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('NUEVA FORMA DE PAGO', 0, 0, 0)";
+    QString query = "INSERT INTO fpago (nomfpago, nplazosfpago, plazoprimerpagofpago, plazoentrerecibofpago) VALUES ('" + tr("Nueva forma de pago") + "', 0, 0, 0)";
     empresaactual->begin();
     empresaactual->ejecuta(query);
     cursor2 *cur = empresaactual->cargacursor("SELECT max(idfpago) AS idfpago FROM fpago");
@@ -146,7 +146,7 @@ void fpagoview::s_newFPago() {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
 /** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
-void fpagoview::s_deleteFPago() {
+void fpagoview::on_mui_borrar_clicked() {
     switch (QMessageBox::warning(this,
                                  tr("Borrar forma de pago"),
                                  tr("Se va a borrar la forma de pago.\n \
@@ -173,7 +173,7 @@ bool fpagoview::close() {
                                  tr("Guardar forma de pago"),
                                  tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
-            s_saveFPago();
+            on_mui_guardar_clicked();
     } // end if
     return QWidget::close();
 }

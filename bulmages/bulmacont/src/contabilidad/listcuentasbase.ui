@@ -7,25 +7,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>664</width>
-    <height>502</height>
+    <width>549</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Plan de Cuentas</string>
+   <string>Plan de cuentas</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</iconset>
   </property>
   <property name="toolTip" >
-   <string comment="Manteniment del plà de comptes" >Plà de comptes</string>
+   <string comment="Manteniment del plà de comptes" />
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -33,7 +33,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -83,10 +83,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_editar" >
@@ -319,7 +319,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="TextLabel2" >
@@ -327,7 +327,7 @@
         <string>Búsqueda</string>
        </property>
        <property name="buddy" >
-        <cstring></cstring>
+        <cstring>mui_aceptar</cstring>
        </property>
       </widget>
      </item>
@@ -341,32 +341,32 @@
      <property name="currentIndex" >
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
-       <string>Plan &amp;Contable</string>
+       <string>Plan &amp;contable</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="QTreeWidget" name="ListView1" />
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab2" >
       <attribute name="title" >
        <string>S&amp;ubcuentas</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>11</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item row="0" column="0" >
         <widget class="QTableWidget" name="tablacuentas" />
@@ -374,6 +374,43 @@
       </layout>
      </widget>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

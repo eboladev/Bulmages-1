@@ -66,7 +66,7 @@ QTranslator *traductor;
     de ventanas. */
 int main(int argc, char *argv[]) {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
-    confpr = new configuracion();
+    confpr = new configuracion("bulmacont");
     Bulmacont *bges;
     int valorsalida = 0;
     QString db = argv[2];

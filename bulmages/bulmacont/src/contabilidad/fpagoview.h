@@ -53,9 +53,9 @@ public:
 
 private slots:
     virtual void cambiacombo(int);
-    virtual void s_saveFPago();
-    virtual void s_newFPago();
-    virtual void s_deleteFPago();
+    virtual void on_mui_guardar_clicked();
+    virtual void on_mui_crear_clicked();
+    virtual void on_mui_borrar_clicked();
     virtual bool close();
 };
 

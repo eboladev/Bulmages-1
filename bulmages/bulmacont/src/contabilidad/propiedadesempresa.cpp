@@ -178,6 +178,7 @@ int propiedadesempresa::guardar() {
     update_value("Poblacion", mui_poblacion->text());
     update_value("Provincia", mui_provincia->text());
     update_value("Pais", mui_pais->text());
+    update_value("Tipo", "BulmaCont");
 
     /// Procesamos la transaccion.
     m_companyact->commit();

@@ -1,29 +1,26 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>FPagoBase</class>
  <widget class="QWidget" name="FPagoBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
-    <height>346</height>
+    <width>406</width>
+    <height>308</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Formas de Pago</string>
+   <string>Formas de pago</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_bancos.48x48.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -31,7 +28,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -53,13 +50,13 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear_2" >
+         <widget class="QToolButton" name="mui_crear" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -71,6 +68,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="toolTip" >
+           <string>Nueva forma de pago</string>
           </property>
           <property name="text" >
            <string/>
@@ -87,7 +87,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar_2" >
+         <widget class="QToolButton" name="mui_borrar" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -99,6 +99,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="toolTip" >
+           <string>Borrar forma de pago</string>
           </property>
           <property name="text" >
            <string/>
@@ -115,7 +118,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_guardar_2" >
+         <widget class="QToolButton" name="mui_guardar" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -127,6 +130,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="toolTip" >
+           <string>Guardar forma de pago</string>
           </property>
           <property name="text" >
            <string/>
@@ -174,7 +180,7 @@
      <item>
       <widget class="QLabel" name="textLabel2" >
        <property name="text" >
-        <string>Forma de Pago</string>
+        <string>Forma de pago:</string>
        </property>
       </widget>
      </item>
@@ -195,176 +201,134 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Información de la forma de pago:</string>
+      <string>Datos:</string>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
-           <string>Nombre</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_nomFPago" />
-        </item>
-       </layout>
+      <item row="4" column="1" >
+       <widget class="QLineEdit" name="m_plazoEntreReciboFPago" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_2" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Plazo primer Recibo (dias)</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_plazoPrimerPagoFPago" />
-        </item>
-       </layout>
+      <item row="1" column="1" >
+       <widget class="QLineEdit" name="m_plazoPrimerPagoFPago" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Número de Plazos</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_nPlazosFPago" />
-        </item>
-       </layout>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="m_nPlazosFPago" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Nombre de la forma de pago:</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_3" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>tipoplazoprimerpago</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_tipoPlazoPrimerPago" />
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_3_2" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Plazo entre Recibos (dias)</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_plazoEntreReciboFPago" />
-        </item>
-       </layout>
+      <item row="0" column="1" >
+       <widget class="QLineEdit" name="m_nomFPago" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2_2" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="text" >
+         <string>Plazo del primer recibo (días):</string>
         </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_3_3" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>tipoplazoentrerecibofpago</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_tipoPlazoEntreReciboFPago" />
-        </item>
-       </layout>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
-      <item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Número de plazos:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" >
+       <widget class="QLineEdit" name="m_tipoPlazoPrimerPago" />
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2_3" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Tipo plazo primer pago:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2_3_2" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Plazo entre recibos (días):</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2_3_3" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Tipo plazo entre recibo:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1" >
+       <widget class="QLineEdit" name="m_tipoPlazoEntreReciboFPago" />
+      </item>
+      <item row="6" column="0" colspan="2" >
        <spacer>
         <property name="orientation" >
          <enum>Qt::Vertical</enum>
@@ -374,8 +338,8 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>330</width>
-          <height>19</height>
+          <width>366</width>
+          <height>16</height>
          </size>
         </property>
        </spacer>
@@ -386,7 +350,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

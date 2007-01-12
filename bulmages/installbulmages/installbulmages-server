@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
-# Script de instalaciï¿œ de BulmaGï¿œ
-# (C) Tomeu Borrï¿œ, y Rene Merou Septiempbre 2004
+# Script de instalacionœde BulmaGes.
+# (C) Tomeu Borras y Rene Merou Septiempbre 2004
 # Este documento es GPL
 #------------------------------------------------------------------------------
 # Parametros
@@ -10,17 +10,11 @@
 ###############################################################################
 
 
-# Primeros pinitos con archivos de Debian
-#. /usr/share/debconf/confmodule
-#db_version 2.0
-#db_input low foo/bar || true
-#db_go || true
-
-version="v0.9.1 - server"
+version="v"`cat version`" - server"
 direj=$(pwd)
 
 
-#Buscamos el parametro para saber si es texto o no
+# Buscamos el parametro para saber si es texto o no.
 if [ "$1" = "--texto" ]; then
   texto="1"
   ptexto="--texto"
@@ -29,22 +23,22 @@ else
   ptexto="--dialog"
 fi
 
-#Borramos antiguos archivos que puedan dar problemas
-if [ -e /tmp/errores.txt ]; then
-   rm -f /tmp/errores.txt
+# Borramos antiguos archivos que puedan dar problemas.
+if [ -e /tmp/bulmages/errores.txt ]; then
+   rm -f /tmp/bulmages/errores.txt
 fi
-if [ -e /tmp/listdb.lst ]; then
-   rm -f /tmp/listdb.lst
+if [ -e /tmp/bulmages/listdb.lst ]; then
+   rm -f /tmp/bulmages/listdb.lst
 fi
-if [ -e /tmp/listuser.lst ]; then
-   rm -f /tmp/listuser.lst
+if [ -e /tmp/bulmages/listuser.lst ]; then
+   rm -f /tmp/bulmages/listuser.lst
 fi
-if [ -e /tmp/error.txt ]; then
-   rm -f /tmp/error.txt
+if [ -e /tmp/bulmages/error.txt ]; then
+   rm -f /tmp/bulmages/error.txt
 fi
 
 
-# Esta funcion presenta mensajes por pantalla
+# Esta funcion presenta mensajes por pantalla.
 function mensaje() {
    if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
       echo -e "$2" "$1"  "$3"
@@ -54,6 +48,7 @@ function mensaje() {
       dialog --title "Instalacion de BulmaGes $version" --backtitle "Asociacion Iglues" --msgbox "$1" 10 60
    fi
 }
+
 
 # Esta funcion presenta mensajes.
 function info() {
@@ -66,19 +61,20 @@ function info() {
    fi
 }
 
+
 #Esta funcion crea usuarios que van a manejar la base de datos.
 function lee() {
    if [ ! -e /usr/bin/dialog -a ! -e /usr/bin/xdialog -o $texto = 1 ]; then
       echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
       read user
    elif [ -e /usr/bin/xdialog ]; then
-      xdialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/dialog.ans
-      user=`cat /tmp/dialog.ans`
-      rm -f /tmp/dialog.ans # don't litter !
+      xdialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+      user=`cat /tmp/bulmages/dialog.ans`
+      rm -f /tmp/bulmages/dialog.ans # don't litter !
    else
-      xdialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/dialog.ans
-      user=`cat /tmp/dialog.ans`
-      rm -f /tmp/dialog.ans # don't litter !
+      xdialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+      user=`cat /tmp/bulmages/dialog.ans`
+      rm -f /tmp/bulmages/dialog.ans # don't litter !
    fi
    while [ "$user" != "" ]
    do
@@ -87,13 +83,13 @@ function lee() {
          echo -e  "\033[33m""Indique el usuario que va a trabajar normalmente con el programa:"  "\033[0m"
          read user
       elif [ -e /usr/bin/xdialog ]; then
-         dialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/dialog.ans
-         user=`cat /tmp/dialog.ans`
-         rm -f /tmp/dialog.ans # don't litter !
+         dialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+         user=`cat /tmp/bulmages/dialog.ans`
+         rm -f /tmp/bulmages/dialog.ans # don't litter !
       else
-         dialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/dialog.ans
-         user=`cat /tmp/dialog.ans`
-         rm -f /tmp/dialog.ans # don't litter !
+         dialog --title "Instalacion de BulmaGes $version" --inputbox "Nombre del usuario que va a trabajar normalmente con BulmaGes. \n deje el campo en blanco para terminar." 10 60  2>/tmp/bulmages/dialog.ans
+         user=`cat /tmp/bulmages/dialog.ans`
+         rm -f /tmp/bulmages/dialog.ans # don't litter !
       fi
    done
 }
@@ -141,8 +137,8 @@ fi
 
 
 # Iniciamos el tema de los errores.
-if [ -e /tmp/errores.txt ]; then
-    rm -f /tmp/errores.txt
+if [ -e /tmp/bulmages/errores.txt ]; then
+    rm -f /tmp/bulmages/errores.txt
 fi
 
 #Comprobamos que estamos en el directorio adecuado
@@ -156,13 +152,12 @@ fi
 instalararchivos
 
 
-
-# Distinguimos entre una instalacion y una actualización
+# Distinguimos entre una instalacion y una actualizacion.
 info "Comprobando la existencia de versiones anteriores. \n" "\033[32m" "\033[0m"
 tiempo
-if [ -e /etc/bulmages-server.conf ]; then
+if [ -e /etc/bulmages/bulmages-server.conf ]; then
    # Tratando base de datos de.
-   # La forma mas limpia para obtener un listado de las bases de datos instaladas es esta antes que un p
+   # La forma mas limpia para obtener un listado de las bases de datos instaladas.
    LIST_DATABASES=`su - postgres -c "echo 'SELECT datname FROM pg_database' | psql -t template1"`
    for database in $LIST_DATABASES; do
 	dlinea
@@ -182,16 +177,16 @@ else
       # Creamos las bases de datos para bulmafact.
       su - postgres -c "/usr/share/bulmages/dbmodels/creabulmafact $ptexto bulmafact 2 \"Facturacion Vacia\""
       
-      # Tratamos el archivo de configuracion
+      # Tratamos el archivo de configuracion.
       info "Instalando la nueva version del archivo de configuracion. \n"
-      touch /etc/bulmages-server.conf
-      # Dejamos que la inserciï¿œ del usuario la haga una funciï¿œ y asi encapsulamos un poco.
+      touch /etc/bulmages/bulmages-server.conf
+      # Dejamos que la insercionœ del usuario la haga una funcionœ y asi encapsulamos un poco.
       lee
 fi
 
-# Presentamos los errores acaecidos
-if [ -e /tmp/errores.txt ]; then
-   cat /tmp/errores.txt | grep ERROR
+# Presentamos los errores acaecidos.
+if [ -e /tmp/bulmages/errores.txt ]; then
+   cat /tmp/bulmages/errores.txt | grep ERROR
 fi
       
 mensaje "INSTALACION FINALIZADA CON EXITO" "\033[32m" "\033[0m"
