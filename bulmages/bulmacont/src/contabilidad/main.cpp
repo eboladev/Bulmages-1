@@ -64,7 +64,7 @@ QTranslator *traductor;
     Luego intenta entrar en el sistema de base de datos.
     Y por &uacute;ltimo crea el objeto del tipo \ref Bulmacont que es la aplicaci&oacute;n
     de ventanas. */
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
     confpr = new configuracion("bulmacont");
     Bulmacont *bges;
@@ -75,12 +75,14 @@ int main(int argc, char *argv[]) {
     try {
         /// Inicializamos el objeto global para uso de plugins.
         g_plugins = new Plugins();
-        /// Definimos la codificaci&oacute;n a Unicode.
-        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-        QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+
         /// Creamos la aplicaci&oacute;n principal.
         theApp = new QApplication2(argc, argv);
         theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii())));
+
+        /// Definimos la codificaci&oacute;n a Unicode.
+        QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+        QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
