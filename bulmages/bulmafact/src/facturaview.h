@@ -98,7 +98,8 @@ public slots:
     };
 
     virtual void on_mui_imprimir_clicked() {
-        imprimirFactura();
+//        imprimirFactura();
+	imprimir();
     };
     virtual void on_mui_agregaralbaran_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.

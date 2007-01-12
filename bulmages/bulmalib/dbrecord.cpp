@@ -219,7 +219,7 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
 
 
 QString DBRecord::DBvalue(QString nomb) {
-    _depura("DBRecord::value", 0);
+    _depura("DBRecord::value", 0, nomb);
     DBCampo *linea;
     int i = 0;
     linea = m_lista.value(i);
@@ -233,6 +233,22 @@ QString DBRecord::DBvalue(QString nomb) {
         return linea->valorcampo();
     }
     return "";
+}
+
+bool DBRecord::exists(QString nomb) {
+    _depura("DBRecord::exists", 0, nomb);
+    DBCampo *linea;
+    int i = 0;
+    linea = m_lista.value(i);
+    while (linea && linea->nomcampo() != nomb)
+        linea = m_lista.value(++i);
+    if (!linea) {
+        return FALSE;
+    } // end if
+    if (linea->nomcampo() == nomb) {
+        return TRUE;
+    } // end if
+    return FALSE;
 }
 
 

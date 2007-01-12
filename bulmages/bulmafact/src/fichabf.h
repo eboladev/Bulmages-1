@@ -56,6 +56,7 @@ public:
     SubForm2Bf* getlistadescuentos() {
         return m_listadescuentos;
     };
+    void imprimir();
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
 };

@@ -165,14 +165,8 @@ void abreempresaview::mui_empresasdobleclick() {
 /// Carga del archivo de mui_empresas las mui_empresas disponibles.
 void abreempresaview::cargaArchivo() {
     _depura("abreempresaview::cargaArchivo", 0);
-#ifndef WINDOWS
+    QString dir1= confpr->valor(CONF_DIR_USER) + LISTEMPRESAS;
 
-    QString dir1 = getenv("HOME");
-    dir1 = dir1 + "/.bulmages/" + LISTEMPRESAS;
-#else
-
-    QString dir1 = "C:\\bulmages\\" + LISTEMPRESAS;
-#endif
     /// Si el archivo no existe hacemos una recarga.
     _depura("Vamos a comprobar la existencia\n", 1);
     /// Comprobamos la existencia del directorio personalizado de bulmages. Y si no

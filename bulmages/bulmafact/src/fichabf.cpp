@@ -18,8 +18,11 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "fichabf.h"
+#include <QFile>
+#include <QTextStream>
 
+#include "fichabf.h"
+#include "plugins.h"
 class Fixed;
 
 
@@ -130,3 +133,226 @@ void FichaBf::calculaypintatotales() {
 
     _depura("FichaBf::calculaypintatotales", 0);
 }
+
+
+
+void FichaBf::imprimir() {
+    _depura("FichaBf::imprimir", 0);
+    /// Disparamos los plugins
+    int res = g_plugins->lanza("FichaBf_imprimir", this);
+    if (res != 0)
+        return;
+    base basesimp;
+    base basesimpreqeq;
+    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + m_tablename+".rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + m_tablename+".rml";
+    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+
+    Fixed irpf("0");
+
+    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre='IRPF'");
+    if (!cur->eof()) {
+       irpf = Fixed(cur->valor("valor"));
+    } // end if
+    delete cur;
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
+    system (archivo.toAscii().constData());
+    /// Copiamos el logo
+#ifdef WINDOWS
+
+    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    system(archivologo.toAscii().constData());
+    QFile file;
+    file.setFileName(archivod);
+    file.open(QIODevice::ReadOnly);
+    QTextStream stream(&file);
+    QString buff = stream.readAll();
+    file.close();
+    QString fitxersortidatxt = "";
+
+    /// Linea de totales del Presupuesto.
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
+    cur = companyact->cargacursor(SQLQuery);
+    if(!cur->eof()) {
+        buff.replace("[dircliente]", cur->valor("dircliente"));
+        buff.replace("[poblcliente]", cur->valor("poblcliente"));
+        buff.replace("[telcliente]", cur->valor("telcliente"));
+        buff.replace("[nomcliente]", cur->valor("nomcliente"));
+        buff.replace("[cifcliente]", cur->valor("cifcliente"));
+        buff.replace("[idcliente]", cur->valor("idcliente"));
+        buff.replace("[cpcliente]", cur->valor("cpcliente"));
+    } // end if
+    delete cur;
+
+
+    if (exists("num"+m_tablename))
+	    buff.replace("[num"+m_tablename+"]", DBvalue("num"+m_tablename));
+    if (exists("f"+m_tablename))
+	    buff.replace("[f"+m_tablename+"]", DBvalue("f"+m_tablename));
+    if (exists("venc"+m_tablename))
+	    buff.replace("[venc"+m_tablename+"]", DBvalue("venc"+m_tablename));
+    if (exists("contact"+m_tablename))
+	    buff.replace("[contact"+m_tablename+"]", DBvalue("contact"+m_tablename));
+    if (exists("tel"+m_tablename))
+	    buff.replace("[tel"+m_tablename+"]", DBvalue("tel"+m_tablename));
+    if (exists("coment"+m_tablename))
+	    buff.replace("[coment"+m_tablename+"]", DBvalue("coment"+m_tablename));
+    if (exists("desc"+m_tablename))
+	    buff.replace("[desc"+m_tablename+"]", DBvalue("desc"+m_tablename));
+    if (exists("ref"+m_tablename))
+	    buff.replace("[ref"+m_tablename+"]", DBvalue("ref"+m_tablename));
+    if (exists("codigo_serie"+m_tablename) )
+	    buff.replace("[codigo_serie"+m_tablename+"]", DBvalue("codigo_serie"+m_tablename));
+    if (exists("fecha"+m_tablename) )
+	    buff.replace("[fecha"+m_tablename+"]", DBvalue("fecha"+m_tablename));
+    /// Impresion de la tabla de contenidos.
+
+    QString l;
+
+    /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
+    SDBRecord *linea;
+    for (int i = 0; i < (m_listalineas->rowCount() - 1); ++i) {
+        linea = m_listalineas->lineaat(i);
+        Fixed base = Fixed(linea->DBvalue("cant"+m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
+        basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento"+m_listalineas->tableName()).toAscii().constData()) / 100;
+        basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento"+m_listalineas->tableName()).toAscii().constData()) / 100;
+
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
+        fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("desc"+m_listalineas->tableName())) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("cant"+m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvp"+m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuento"+m_listalineas->tableName())).toAscii().constData()) + " %</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuento"+m_listalineas->tableName())) / 100).toQString().toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "</tr>";
+    } // end for
+
+    buff.replace("[story]", fitxersortidatxt);
+
+    Fixed basei("0.00");
+    base::Iterator it;
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        basei = basei + it.value();
+    } // end for
+
+    /// Impresion de los descuentos.
+    fitxersortidatxt = "";
+    Fixed porcentt("0.00");
+    SDBRecord *linea1;
+    if (m_listadescuentos->rowCount() - 1) {
+        fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
+        fitxersortidatxt += "<tr>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Descuento") + "</td>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Porcentaje") + "</td>\n";
+        fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Total") + "</td>\n";
+        fitxersortidatxt += "</tr>\n";
+        for (int i = 0; i < (m_listadescuentos->rowCount() - 1); ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
+            porcentt = porcentt + Fixed(linea1->DBvalue("proporcion"+m_listadescuentos->tableName()).toAscii().constData());
+            fitxersortidatxt += "<tr>\n";
+            fitxersortidatxt += "    <td>" + XMLProtect(linea1->DBvalue("concept"+m_listadescuentos->tableName())) + "</td>\n";
+            fitxersortidatxt += "    <td>" + l.sprintf("%s", linea1->DBvalue("proporcion"+m_listadescuentos->tableName()).toAscii().constData()) + " %</td>\n";
+            fitxersortidatxt += "    <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporcion"+m_listadescuentos->tableName())) * basei / 100).toQString().toAscii().constData()) + "</td>\n";
+            fitxersortidatxt += "</tr>";
+        } // end for
+        fitxersortidatxt += "</blockTable>\n";
+    } // end if
+    buff.replace("[descuentos]", fitxersortidatxt);
+
+    /// Impresion de los totales.
+    fitxersortidatxt = "";
+    QString tr1 = ""; /// Rellena el primer tr de titulares.
+    QString tr2 = ""; /// Rellena el segundo tr de cantidades.
+    fitxersortidatxt += "<blockTable style=\"tabladescuento\" >\n";
+    Fixed totbaseimp("0.00");
+    Fixed parbaseimp("0.00");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        if (porcentt > 0) {
+            parbaseimp = it.value() - it.value() * porcentt / 100;
+        } else {
+            parbaseimp = it.value();
+        } // end if
+        totbaseimp = totbaseimp + parbaseimp;
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "Base ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr2 += "    <td>" + l.sprintf(" %s ", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
+    } // end for
+
+
+    /// Impresion de los IVAS.
+    Fixed totiva("0.0");
+    Fixed pariva("0.0");
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
+        if (porcentt > 0) {
+            pariva = (it.value() - it.value() * porcentt / 100) * Fixed(it.key()) / 100;
+        } else {
+            pariva = it.value() * Fixed(it.key()) / 100;
+        } // end if
+        totiva = totiva + pariva;
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.V.A. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr2 += "    <td>" + l.sprintf(" %s ", pariva.toQString().toAscii().constData()) + "</td>\n";
+    } // end for
+
+
+
+    /// Impresion de los Recargos de Equivalencia.
+    Fixed totreqeq("0.0");
+    Fixed parreqeq("0.0");
+    for (it = basesimpreqeq.begin(); it != basesimpreqeq.end(); ++it) {
+        if (porcentt > 0) {
+            parreqeq = (it.value() - it.value() * porcentt / 100) * Fixed(it.key()) / 100;
+        } else {
+            parreqeq = it.value() * Fixed(it.key()) / 100;
+        } // end if
+        totreqeq = totreqeq + parreqeq;
+	if (parreqeq > 0) {
+		tr1 += "    <td>" + QApplication::translate("Presupuesto", "R.E. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+		tr2 += "    <td>" + l.sprintf(" %s ", parreqeq.toQString().toAscii().constData()) + "</td>\n";
+	} // end if
+    } // end for
+
+
+    Fixed totirpf = totbaseimp * irpf / 100;
+    if (totirpf > 0) {
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.R.P.F  (-") +" "+ XMLProtect(irpf.toQString()) + ") %</td>\n";
+        tr2 += "    <td>" + l.sprintf(" %s ", totirpf.toQString().toAscii().constData()) + "</td>\n";
+    } // end if
+
+
+
+    tr1 += "    <td>" + QApplication::translate("Presupuesto", "Total ") + "</td>\n";
+    tr2 += "    <td>" + l.sprintf(" %s ", (totiva+totbaseimp+totreqeq-totirpf).toQString().toAscii().constData()) + "</td>\n";
+    fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
+    buff.replace("[totales]", fitxersortidatxt);
+
+    /// En la version para windows hay problemas con las imagenes,
+    /// por eso de momento lo dejamos asi.
+
+#ifndef WINDOWS
+ //   buff.replace("[detallearticulos]", detalleArticulos());
+#endif
+
+    if (file.open(QIODevice::WriteOnly)) {
+        QTextStream stream(&file);
+        stream << buff;
+        file.close();
+    }
+    invocaPDF(m_tablename);
+    _depura("FichaBf::imprimir", 0);
+}
+
+

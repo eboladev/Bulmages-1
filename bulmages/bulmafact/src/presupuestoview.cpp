@@ -117,7 +117,7 @@ int PresupuestoView::sacaWindow() {
 
 void PresupuestoView::on_mui_imprimir_clicked() {
     _depura("PresupuestoView::on_mui_imprimir_clicked", 0);
-    imprimirPresupuesto();
+    imprimir();
     _depura("END PresupuestoView::on_mui_imprimir_clicked", 0);
 }
 

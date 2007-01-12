@@ -73,10 +73,8 @@ configuracion::configuracion(QString nombreprograma) {
 
     /// Definimos los directorios donde buscar primero.
 #ifdef WIN32
-
     m_dirGlobalConf = "C:\\bulmages\\";
 #else
-
     m_dirGlobalConf = "/etc/bulmages/";
 #endif
 
@@ -333,6 +331,7 @@ void configuracion::saveconfig() {
 /// contains the configuration.
 /// Lee la configuracion del fichero de configuracion pasado y rellena la estructura.
 bool configuracion::leeconfig(QString fich) {
+    fprintf(stderr, "Leyendo configuracion");
     QFile arch(fich);
     if (arch.open(QIODevice::ReadOnly)) {
         QTextStream in(&arch);

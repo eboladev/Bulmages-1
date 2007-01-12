@@ -42,7 +42,6 @@ public:
     virtual void pintar();
     virtual int guardar();
     virtual int borrar();
-    virtual void imprimirPedidoCliente();
     virtual void pintaidcliente(QString) {}
     ;
     virtual void pintaidalmacen(QString) {}

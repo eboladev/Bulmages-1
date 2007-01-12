@@ -105,9 +105,6 @@ company::~company() {
 }
 
 
-
-
-
 /** Crea todas las ventanas que aparecen creadas al inicio del programa.
     Todas estas ventanas son principalmente los listados mas utilizados a partir de los
     cuales se pueden crear nuevas fichas y manejar todo.

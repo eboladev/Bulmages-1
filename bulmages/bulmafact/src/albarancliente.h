@@ -89,7 +89,6 @@ public:
     virtual int guardar();
     virtual int borrar();
     virtual int cargar(QString);
-    void imprimirAlbaranCliente();
     void vaciaAlbaranCliente();
 
 

@@ -105,7 +105,7 @@ public slots:
         guardar();
     }
     virtual void on_mui_imprimir_clicked() {
-        imprimirPedidoCliente();
+        imprimir();
     }
     virtual void s_pintaTotales() {
         calculaypintatotales();

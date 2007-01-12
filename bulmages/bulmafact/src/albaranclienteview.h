@@ -126,7 +126,7 @@ public slots:
     virtual void s_verpresupuesto();
     virtual void on_mui_verpedidocliente_clicked();
     virtual void on_mui_imprimir_clicked() {
-        imprimirAlbaranCliente();
+	imprimir();
     };
     virtual void on_mui_facturar_clicked() {
         generarFactura();
