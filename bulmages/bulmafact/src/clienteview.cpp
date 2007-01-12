@@ -190,6 +190,7 @@ int ClienteView::guardar() {
     setDBvalue("corpcliente", mui_corpcliente->text());
     setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
     setDBvalue("recargoeqcliente",  mui_recargoeqcliente->isChecked() ? "TRUE" : "FALSE");
+    setDBvalue("regimenfiscalcliente", mui_regimenfiscalcliente->currentText());
     int err = Cliente::guardar();
     if (!err) {
         dialogChanges_cargaInicial();

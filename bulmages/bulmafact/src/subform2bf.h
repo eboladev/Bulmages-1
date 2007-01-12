@@ -79,9 +79,7 @@ public:
         SubForm3::setcompany(c);
 	m_delegate->setcompany(c);
     };
-    Fixed calculabase();
-    Fixed calculaiva();
-    Fixed calcularecargoeq();
+
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

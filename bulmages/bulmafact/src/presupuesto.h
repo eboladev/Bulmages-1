@@ -29,36 +29,21 @@
 #include "listlinpresupuestoview.h"
 #include "listdescpresupuestoview.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
 /// Administra la informaci&oacute;n de un Presupuesto.
 /** */
-class Presupuesto : public DBRecord {
+class Presupuesto : public FichaBf {
 protected:
+/*
     ListLinPresupuestoView *listalineas;
     ListDescuentoPresupuestoView *listadescuentos;
-    company *companyact;
+*/
 
 public:
-    Presupuesto(company *);
-    void setlislinpresupuesto(ListLinPresupuestoView *a) {
-        listalineas = a;
-        listalineas->setcompany(companyact);
-    };
-    void setlisdescPresupuesto(ListDescuentoPresupuestoView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-    };
-    ListLinPresupuestoView* _listalineas() {
-        return listalineas;
-    };
-    ListDescuentoPresupuestoView *_listadescuentos() {
-        return listadescuentos;
-    };
-    company *_company() {
-        return companyact;
-    };
+    Presupuesto(company *, QWidget *);
+
     QString idcliente() {
         return DBvalue("idcliente");
     };
@@ -107,7 +92,6 @@ public:
     virtual int guardar();
     virtual int borrar();
     virtual void imprimirPresupuesto();
-    virtual void calculaypintatotales();
     virtual QString detalleArticulos();
     virtual void pintaidcliente(QString) {}
     ;
@@ -141,8 +125,6 @@ public:
     ;
     virtual void pintaidtrabajador(QString) {}
     ;
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
-    ;
     void setidcliente(QString val) {
         setDBvalue("idcliente", val);
     };
@@ -172,8 +154,8 @@ public:
     };
     void setidPresupuesto(QString val) {
         setDBvalue("idpresupuesto", val);
-        listalineas->setColumnValue("idpresupuesto", val);
-        listadescuentos->setColumnValue("idpresupuesto", val);
+        m_listalineas->setColumnValue("idpresupuesto", val);
+        m_listadescuentos->setColumnValue("idpresupuesto", val);
     };
     void setprocesadoPresupuesto(QString val) {
         setDBvalue("procesadopresupuesto", val);

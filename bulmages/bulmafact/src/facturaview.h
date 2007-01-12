@@ -34,14 +34,14 @@
 #include "busquedaseriefactura.h"
 #include "busquedaalmacen.h"
 #include "dialogchanges.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 class company;
 
 
 /// Muestra y administra la ventana de una factura a cliente.
 /** */
-class FacturaView : public Ficha, public Ui_FacturaBase, public Factura {
+class FacturaView : public Factura, public Ui_FacturaBase {
     Q_OBJECT
 
 public:
@@ -82,7 +82,7 @@ public:
             m_procesadafactura->setChecked(FALSE);
         }
     };
-    void pintatotales(Fixed, Fixed, Fixed, Fixed);
+    void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
 
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
     virtual int guardar();

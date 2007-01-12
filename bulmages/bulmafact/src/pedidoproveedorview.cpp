@@ -213,7 +213,7 @@ void PedidoProveedorView::generarAlbaran() {
         linea1->setDBvalue("desclalbaranp", linea->DBvalue(tr("Descripcion del albaran")));
         linea1->setDBvalue("cantlalbaranp", linea->DBvalue(tr("Cantidad del pedido")));
         linea1->setDBvalue("pvplalbaranp", linea->DBvalue(tr("P.V.P.")));
-        linea1->setDBvalue("descontlalbaranp", linea->DBvalue(tr("Descuento")));
+        linea1->setDBvalue("descuentolalbaranp", linea->DBvalue(tr("Descuento")));
         linea1->setDBvalue("idarticulo", linea->DBvalue(tr("ID articulo")));
         linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue(tr("Codigo completo articulo")));
         linea1->setDBvalue("nomarticulo", linea->DBvalue(tr("Nombre del articulo")));

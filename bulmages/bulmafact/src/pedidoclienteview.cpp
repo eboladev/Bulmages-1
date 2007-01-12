@@ -42,7 +42,7 @@
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
-        : Ficha(parent), PedidoCliente(comp) {
+        : PedidoCliente(comp, parent) {
     _depura("PedidoClienteView::PedidoClienteView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -55,8 +55,10 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
         m_almacen->setcompany(comp);
         m_trabajador->setcompany(comp);
         m_refpedidocliente->setcompany(comp);
-        setListLinPedidoCliente(subform3);
-        setListDescuentoPedidoCliente(m_descuentos);
+
+	setListaLineas(subform3);
+	setListaDescuentos(m_descuentos);
+
         comp->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el pedido cliente"));
@@ -84,11 +86,15 @@ void PedidoClienteView::inicializar() {
     _depura("END PedidoClienteView::inicializar", 0);
 }
 
-void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
-    m_totalBases->setText(base.toQString());
-    m_totalTaxes->setText(iva.toQString());
+void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
+    _depura("PedidoClienteView::pintatotales", 0);
+    m_totalBases->setText(QString(base.toQString()));
+    m_totalTaxes->setText(QString(iva.toQString()));
+    m_totalDiscounts->setText(QString(desc.toQString()));
+    m_totalIRPF->setText(QString(irpf.toQString()));
+    m_totalReqEq->setText(QString(reqeq.toQString()));
     m_totalpedidocliente->setText(total.toQString());
-    m_totalDiscounts->setText(desc.toQString());
+    _depura("END PedidoClienteView::pintatotales", 0);
 }
 
 
@@ -167,14 +173,14 @@ void PedidoClienteView::generarAlbaran() {
 
     /// Traspasamos las lineas del albaran.
     SDBRecord *linea, *linea1;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount(); ++i) {
+        linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             linea1->setDBvalue("desclalbaran", linea->DBvalue("desclpedidocliente"));
             linea1->setDBvalue("cantlalbaran", linea->DBvalue("cantlpedidocliente"));
             linea1->setDBvalue("pvplalbaran", linea->DBvalue("pvplpedidocliente"));
-            linea1->setDBvalue("descontlalbaran", linea->DBvalue("descuentolpedidocliente"));
+            linea1->setDBvalue("descuentolalbaran", linea->DBvalue("descuentolpedidocliente"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
@@ -184,8 +190,8 @@ void PedidoClienteView::generarAlbaran() {
     } // end for
 
     /// Traspasamos los descuentos.
-    for (int i = 0; i < listadescuentos->rowCount(); ++i) {
-        linea1 = listadescuentos->lineaat(i);
+    for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
+        linea1 = m_listadescuentos->lineaat(i);
         if (linea1->DBvalue("proporciondpedidocliente") != "") {
             linea = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
             linea->setDBvalue("conceptdalbaran", linea1->DBvalue("conceptdpedidocliente"));
@@ -205,6 +211,7 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
     bud->setcomentcobro(DBvalue("descpedidocliente"));
     bud->pintar();
     bud->show();
+    _depura("END PedidoClienteView::on_mui_cobrar_clicked", 0);
 }
 
 

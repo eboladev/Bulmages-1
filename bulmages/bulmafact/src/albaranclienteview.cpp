@@ -51,7 +51,7 @@
     Mete la ventana en el WorkSpace.
 */        
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
-        : Ficha(parent), AlbaranCliente(comp) {
+        : AlbaranCliente(comp, parent) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -64,15 +64,15 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         m_trabajador->setcompany(comp);
         m_refalbaran->setcompany(comp);
 
-        setListLinAlbaranCliente(subform2);
-        setListDescuentoAlbaranCliente(m_descuentos);
+	setListaLineas(subform2);
+	setListaDescuentos(m_descuentos);
 
         comp->meteWindow(windowTitle(), this, FALSE);
 
     } catch(...) {
         mensajeInfo(tr("Error al crear el albaran cliente"));
     } // end try
-    _depura("END AlbaranClienteView::AlbaranClienteView\n", 0);
+    _depura("END AlbaranClienteView::AlbaranClienteView", 0);
 }
 
 
@@ -110,12 +110,14 @@ void AlbaranClienteView::inicializar() {
 
 /** Pinta los totales en las casillas correspondientes
 */
-void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+void AlbaranClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("AlbaranClienteView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalalbaran->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
+    m_totalIRPF->setText(QString(irpf.toQString()));
+    m_totalReqEq->setText(QString(reqeq.toQString()));
     _depura("END AlbaranClienteView::pintatotales", 0);
 }
 
@@ -237,14 +239,14 @@ void AlbaranClienteView::generarFactura() {
 
     QString l;
     SDBRecord *linea, *linea1;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount(); ++i) {
+        linea = m_listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
-            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descuentolalbaran"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
@@ -294,14 +296,14 @@ void AlbaranClienteView::agregarFactura() {
     /// pero por ahora pasamos de hacerlo.
     QString l;
     SDBRecord *linea, *linea1;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount(); ++i) {
+        linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
-            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descuentolalbaran"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));

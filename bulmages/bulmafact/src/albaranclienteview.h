@@ -46,7 +46,7 @@ class company;
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
     Contiene todos los metodos de pintado que son llamados desde AlbaranCliente.    
 */
-class AlbaranClienteView : public Ficha, public Ui_AlbaranClienteBase, public AlbaranCliente {
+class AlbaranClienteView : public AlbaranCliente, public Ui_AlbaranClienteBase {
     Q_OBJECT
 
 public:
@@ -104,7 +104,7 @@ public:
     };
     void pintaNumFactura(QString) {}
     ;
-    void pintatotales(Fixed, Fixed, Fixed, Fixed);
+    void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     void agregarFactura();
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.

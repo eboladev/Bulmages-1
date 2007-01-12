@@ -122,12 +122,171 @@ BEGIN
 		ALTER TABLE lalbaranp ALTER COLUMN reqeqlalbaranp SET DEFAULT 0;
 	END IF;
 
+	SELECT INTO as * FROM pg_attribute WHERE attname=''regimenfiscalcliente'';
+	IF NOT FOUND THEN
+		ALTER TABLE cliente ADD COLUMN regimenfiscalcliente CHARACTER VARYING(50);
+		UPDATE cliente SET regimenfiscalcliente = ''Normal'';
+		ALTER TABLE cliente ALTER COLUMN regimenfiscalcliente SET NOT NULL;
+	END IF;
+	-- Cambiamos el nombre del campo descontlalbaran en la tabla lalbaran
+	SELECT INTO as * FROM pg_attribute WHERE attname=''descontlalbaran'';
+	IF FOUND THEN
+		ALTER TABLE lalbaran RENAME COLUMN descontlalbaran TO descuentolalbaran;
+	END IF;
+
+	-- Cambiamos el nombre del campo descontlalbaran en la tabla lalbaran
+	SELECT INTO as * FROM pg_attribute WHERE attname=''descontlalbaranp'';
+	IF FOUND THEN
+		ALTER TABLE lalbaranp RENAME COLUMN descontlalbaranp TO descuentolalbaranp;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
 SELECT aux();
 DROP FUNCTION aux() CASCADE;
 \echo "Agregamos los campos de totales para los presupuestos."
+
+
+\echo -n ':: Funcion que calcula el total del albaran de proveedor ... '
+CREATE OR REPLACE FUNCTION calctotalalbpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (1 + ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula la Base Imponible total de un albaran de proveedor ... '
+CREATE OR REPLACE FUNCTION calcbimpalbpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+\echo -n ':: Funcion que calcula el total de impuestos de un albaran de proveedor ... '
+CREATE OR REPLACE FUNCTION calcimpuestosalbpro(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
+	total := total * (1 - res.proporciondalbaranp / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula el total de un albaran a cliente ... '
+CREATE OR REPLACE FUNCTION calctotalalbaran(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (1 + ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula la Base Imponible total de un albaran a cliente ... '
+CREATE OR REPLACE FUNCTION calcbimpalbaran(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+	total := total * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+\echo -n ':: Funcion que calcula los impuestos totales de un albaran a cliente ... '
+CREATE OR REPLACE FUNCTION calcimpuestosalbaran(integer) RETURNS numeric(12, 2)
+AS '
+DECLARE
+    idp ALIAS FOR $1;
+    total numeric(12, 2);
+    res RECORD;
+
+BEGIN
+    total := 0;
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    	total := total + res.subtotal1;
+    END LOOP;
+    FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
+    	total := total * (1 - res.proporciondalbaran / 100);
+    END LOOP;
+    RETURN total;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
+DECLARE
+	as RECORD;
+BEGIN
+	SELECT INTO as * FROM configuracion WHERE nombre=''IRPF'';
+	IF NOT FOUND THEN
+		INSERT INTO configuracion (nombre, valor) VALUES (''IRPF'', ''0''); 		 
+	END IF;
+	RETURN 0;
+END;
+'   LANGUAGE plpgsql;
+SELECT aux();
+DROP FUNCTION aux() CASCADE;
+
 
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
@@ -140,9 +299,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0003'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-0004'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0003''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0004''); 		 
 	END IF;
 	RETURN 0;
 END;

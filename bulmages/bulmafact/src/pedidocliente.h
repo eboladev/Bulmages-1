@@ -27,40 +27,22 @@
 #include "listdescpedidoclienteview.h"
 #include "fixed.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
 /// Almacena la informaci&oacute;n de un pedido de cliente.
 /** */
-class PedidoCliente : public DBRecord {
-protected:
-    ListLinPedidoClienteView *listalineas;
-    ListDescuentoPedidoClienteView *listadescuentos;
-    company *companyact;
+class PedidoCliente : public FichaBf {
 
 public:
-    void setListLinPedidoCliente(ListLinPedidoClienteView *a) {
-        listalineas = a;
-        listalineas->setcompany(companyact);
-    };
-    void setListDescuentoPedidoCliente(ListDescuentoPedidoClienteView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-    };
-    PedidoCliente(company *);
+
+    PedidoCliente(company *, QWidget *);
     virtual ~PedidoCliente();
     virtual int cargar(QString);
     virtual void pintar();
     virtual int guardar();
     virtual int borrar();
     virtual void imprimirPedidoCliente();
-    virtual void calculaypintatotales();
-    ListLinPedidoClienteView* getlistalineas() {
-        return listalineas;
-    };
-    ListDescuentoPedidoClienteView* getlistadescuentos() {
-        return listadescuentos;
-    };
     virtual void pintaidcliente(QString) {}
     ;
     virtual void pintaidalmacen(QString) {}
@@ -97,8 +79,7 @@ public:
     ;
     virtual void pintaidtrabajador(QString) {}
     ;
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
-    ;
+
     void setidcliente(QString val) {
         setDBvalue("idcliente", val);
     };
@@ -107,8 +88,8 @@ public:
     };
     void setidpedidocliente(QString val) {
         setDBvalue("idpedidocliente", val);
-        listalineas->setColumnValue( "idpedidocliente", val);
-        listadescuentos->setColumnValue( "idpedidocliente", val);
+        m_listalineas->setColumnValue( "idpedidocliente", val);
+        m_listadescuentos->setColumnValue( "idpedidocliente", val);
     };
     void setnumpedidocliente(QString val) {
         setDBvalue("numpedidocliente", val);

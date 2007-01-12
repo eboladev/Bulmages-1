@@ -25,7 +25,7 @@ QTranslator * traductor;
 
 
 int main( int argc, char ** argv ) {
-    confpr = new configuracion();
+    confpr = new configuracion("bulmages");
     QApplication2 a( argc, argv );
     theApp = &a;
 

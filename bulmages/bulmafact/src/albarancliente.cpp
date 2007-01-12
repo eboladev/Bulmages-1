@@ -26,16 +26,13 @@
 #include "funcaux.h"
 #include "albarancliente.h"
 
-/// Definimos el tipo base que almacena los diferentes importes para las distintas bases imponibles.
-typedef QMap<QString, Fixed> base;
 
 /** Constructor de la clase que inicializa la clase, prepara la clase DBRecord
     para que trabaje en la base de datos con la tabla albaran y procese adecuadamente
     todos los campos de dicha tabla.    
 */    
-AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)  {
-    _depura("AlbaranCliente::AlbaranCliente(company *)", 0);
-    m_companyact = comp;
+AlbaranCliente::AlbaranCliente(company *comp, QWidget *parent) : FichaBf (comp, parent)  {
+    _depura("AlbaranCliente::AlbaranCliente", 0);
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
     addDBCampo("idalbaran", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranCliente", "Id albaran"));
@@ -52,9 +49,7 @@ AlbaranCliente::AlbaranCliente(company *comp) : DBRecord (comp)  {
     addDBCampo("procesadoalbaran", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Procesado albaran"));
     addDBCampo("descalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Descripcion albaran"));
     addDBCampo("refalbaran", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("AlbaranCliente", "Referencia albaran"));
-    listalineas = NULL;
-    listadescuentos = NULL;
-    _depura("END AlbaranCliente::AlbaranCliente(company *)", 0);
+    _depura("END AlbaranCliente::AlbaranCliente", 0);
 }
 
 
@@ -76,11 +71,9 @@ int AlbaranCliente::borrar() {
     _depura("AlbaranCliente::borrar", 0);
     if (DBvalue("idalbaran") != "")  {
         m_companyact->begin();
-        listalineas->borrar();
-        listadescuentos->borrar();
-
+        m_listalineas->borrar();
+        m_listadescuentos->borrar();
         int error = m_companyact->ejecuta("DELETE FROM albaran WHERE idalbaran = " + DBvalue("idalbaran"));
-
         if (error)  {
             m_companyact->rollback();
             return -1;
@@ -140,8 +133,8 @@ int AlbaranCliente::cargar(QString idalbaran)  {
     if (!cur->eof())
         DBload(cur);
     delete cur;
-    listalineas->cargar(idalbaran);
-    listadescuentos->cargar(idalbaran);
+    m_listalineas->cargar(idalbaran);
+    m_listadescuentos->cargar(idalbaran);
     pintar();
     _depura("Fin AlbaranCliente::cargar", 0);
     return 0;
@@ -164,10 +157,9 @@ int AlbaranCliente::guardar() {
         QString id;
         DBsave(id);
         setidalbaran(id);
-        listalineas->guardar();
-        listadescuentos->guardar();
+        m_listalineas->guardar();
+        m_listadescuentos->guardar();
         m_companyact->commit();
-
         /// Hacemos una carga para recuperar datos como la referencia y el numero de albaran
         cargar(id);
 
@@ -245,21 +237,21 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     QString l;
 
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount() - 1; ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount() - 1; ++i) {
+        linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlalbaran").toAscii().constData()) *
                      Fixed(linea->DBvalue("pvplalbaran").toAscii().constData());
         basesimp[linea->DBvalue("ivalalbaran")] = basesimp[linea->DBvalue("ivalalbaran")] + base -
-                base * Fixed(linea->DBvalue("descontlalbaran").toAscii().constData()) / 100;
+                base * Fixed(linea->DBvalue("descuentolalbaran").toAscii().constData()) / 100;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
         fitxersortidatxt += "        <td>" + XMLProtect(linea->DBvalue("desclalbaran")) + "</td>\n";
         fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("cantlalbaran").toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("pvplalbaran").toAscii().constData()) + "</td>\n";
-        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("descontlalbaran").toAscii().constData()) + " %</td>\n";
+        fitxersortidatxt += "        <td>" + l.sprintf("%s",linea->DBvalue("descuentolalbaran").toAscii().constData()) + " %</td>\n";
         fitxersortidatxt += "        <td>" + l.sprintf("%s",(base - base *
-                            Fixed(linea->DBvalue("descontlalbaran")) / 100).toQString().toAscii().constData())
+                            Fixed(linea->DBvalue("descuentolalbaran")) / 100).toQString().toAscii().constData())
                             + "</td>\n";
         fitxersortidatxt += "</tr>";
     }
@@ -276,7 +268,7 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount() - 1) {
+    if (m_listadescuentos->rowCount() - 1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm," \
                             " 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
@@ -285,8 +277,8 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
         fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranCliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
 
-        for (int i = 0; i < listadescuentos->rowCount() - 1; ++i) {
-            linea1 = listadescuentos->lineaat(i);
+        for (int i = 0; i < m_listadescuentos->rowCount() - 1; ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondalbaran").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdalbaran") + "</td>\n";
@@ -353,80 +345,5 @@ void AlbaranCliente::imprimirAlbaranCliente()  {
 
     invocaPDF("albaran");
     _depura("END AlbaranCliente::imprimirAlbaranCliente", 0);
-}
-
-
-/** Hace el c&aacute;lculo de los totales del albar&aacute;n a partir de las
-    l&iacute;neas de albar&aacute;n y descuentos de albar&aacute;n.
-    Una vez hecho esto hace una llamada a pintatotales para que los muestre
-*/
-void AlbaranCliente::calculaypintatotales()  {
-    _depura("AlbaranCliente::calculaypintatotales.", 0);
-    base basesimp;
-    SDBRecord *linea;
-    /// Impresi&oacute;n de los contenidos.
-    QString l;
-
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlalbaran").toAscii().constData());
-        Fixed pvpund(linea->DBvalue("pvplalbaran").toAscii().constData());
-        Fixed desc1(linea->DBvalue("descontlalbaran").toAscii().constData());
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        Fixed val("0.00");
-        val = basesimp[linea->DBvalue("ivalalbaran")];
-        val = val + base;
-        QString lin = linea->DBvalue("ivalalbaran");
-        basesimp[lin] = val;
-    } // end for
-
-    Fixed basei("0.00");
-    base::Iterator it;
-
-    for (it = basesimp.begin(); it != basesimp.end(); ++it)
-        basei = basei + it.value();
-
-    /// Impresi&oacute;n de los descuentos.
-    Fixed porcentt("0.00");
-    SDBRecord *linea1;
-
-    for(int i = 0; i < listadescuentos->rowCount(); ++i) {
-        linea1 = listadescuentos->lineaat(i);
-        Fixed propor(linea1->DBvalue("proporciondalbaran").toAscii().constData());
-        porcentt = porcentt + propor;
-    } // end for
-
-    Fixed totbaseimp("0.00");
-    Fixed parbaseimp("0.00");
-
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-
-        if (porcentt > Fixed("0.00")) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-
-        totbaseimp = totbaseimp + parbaseimp;
-    } // end for
-
-    Fixed totiva("0.00");
-    Fixed pariva("0.00");
-
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().toAscii().constData());
-
-        if (porcentt > Fixed("0.00")) {
-            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
-        } else {
-            pariva = it.value() * piva / 100;
-        } // end if
-
-        totiva = totiva + pariva;
-    } // end for
-
-    pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-    _depura("END AlbaranCliente::calculaypintatotales", 0);
 }
 

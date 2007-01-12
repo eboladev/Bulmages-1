@@ -47,7 +47,7 @@
 
 
 PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
-        : Ficha(parent), Presupuesto(comp) {
+        : Presupuesto(comp, parent) {
     _depura("Inicializacion de PresupuestoView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -64,8 +64,10 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         m_almacen->setcompany(comp);
         m_trabajador->setcompany(comp);
         m_refpresupuesto->setcompany(comp);
-        setlislinpresupuesto(subform2);
-        setlisdescPresupuesto(m_descuentos);
+
+	setListaLineas(subform2);
+	setListaDescuentos(m_descuentos);
+
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
         m_totalTaxes->setReadOnly(TRUE);
@@ -120,12 +122,14 @@ void PresupuestoView::on_mui_imprimir_clicked() {
 }
 
 
-void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
     m_totalTaxes->setText(QString(iva.toQString()));
     m_totalBudget->setText(QString(total.toQString()));
     m_totalDiscounts->setText(QString(desc.toQString()));
+    m_totalIRPF->setText(QString(irpf.toQString()));
+    m_totalReqEq->setText(QString(reqeq.toQString()));
     _depura("END PresupuestoView::pintatotales", 0);
 }
 
@@ -185,8 +189,8 @@ void PresupuestoView::generarPedidoCliente() {
     /// Traspasamos las lineas del presupuesto a lineas del pedido.
     SDBRecord *linea;
     SDBRecord *linea2;
-    for (int i = 0; i < listalineas->rowCount(); i++) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount(); i++) {
+        linea = m_listalineas->lineaat(i);
         if (linea->DBvalue("idarticulo") != "") {
             linea2 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             linea2->setDBvalue("desclpedidocliente", linea->DBvalue("desclpresupuesto"));
@@ -204,8 +208,8 @@ void PresupuestoView::generarPedidoCliente() {
     /// Traspasamos los descuentos del presupuesto a descuentos del pedido.
     SDBRecord *linea1;
     SDBRecord *linea3;
-    for (int i = 0; i < listadescuentos->rowCount(); i++) {
-        linea1 = listadescuentos->lineaat(i);
+    for (int i = 0; i < m_listadescuentos->rowCount(); i++) {
+        linea1 = m_listadescuentos->lineaat(i);
         if (linea1->DBvalue("proporciondpresupuesto") != "") {
             linea3 = bud->getlistadescuentos()->lineaat(bud->getlistadescuentos()->rowCount() - 1);
             linea3->setDBvalue("conceptdpedidocliente", linea1->DBvalue("conceptdpresupuesto"));

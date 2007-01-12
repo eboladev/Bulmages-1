@@ -199,347 +199,7 @@
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item row="9" column="3" >
-        <widget class="QCheckBox" name="mui_recargoeqcliente" >
-         <property name="text" >
-          <string>Aplicar Recargo de Equivalencia</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1" >
-        <widget class="BusquedaFormaPago" name="mui_forma_pago" />
-       </item>
-       <item row="9" column="0" >
-        <widget class="QLabel" name="textLabel2_8_6" >
-         <property name="text" >
-          <string>Forma de Pago</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="0" >
-        <widget class="QLabel" name="textLabel2_8_2" >
-         <property name="text" >
-          <string>Pagina web:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
        <item row="12" column="0" colspan="4" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>2</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="textLabel2_4_3" >
-           <property name="text" >
-            <string>Datos bancarios:</string>
-           </property>
-           <property name="buddy" >
-            <cstring></cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="m_bancocliente" />
-         </item>
-        </layout>
-       </item>
-       <item row="7" column="3" >
-        <widget class="QLineEdit" name="mui_movilcliente" />
-       </item>
-       <item row="3" column="1" colspan="3" >
-        <widget class="QLineEdit" name="m_nomaltcliente" />
-       </item>
-       <item row="0" column="0" >
-        <widget class="QLabel" name="textLabel2_5" >
-         <property name="text" >
-          <string>C.I.F./N.I.F./N.I.E.:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1" colspan="3" >
-        <widget class="QLineEdit" name="mui_corpcliente" />
-       </item>
-       <item row="6" column="2" >
-        <widget class="QLabel" name="textLabel2_8_4" >
-         <property name="text" >
-          <string>Numero de fax:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="2" >
-        <widget class="QLabel" name="textLabel2_8_5" >
-         <property name="text" >
-          <string>Telefono movil:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0" >
-        <widget class="QLabel" name="textLabel2_4" >
-         <property name="text" >
-          <string>Nombre comercial:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1" >
-        <widget class="QLineEdit" name="m_urlcliente" />
-       </item>
-       <item row="5" column="0" >
-        <widget class="QLabel" name="textLabel2_9" >
-         <property name="text" >
-          <string>Poblacion:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="3" >
-        <widget class="QLineEdit" name="m_mailcliente" />
-       </item>
-       <item row="0" column="3" >
-        <widget class="QLineEdit" name="mui_codcliente" />
-       </item>
-       <item row="7" column="0" >
-        <widget class="QLabel" name="textLabel2_11" >
-         <property name="text" >
-          <string>Telefono del trabajo:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0" >
-        <widget class="QLabel" name="textLabel2_2" >
-         <property name="text" >
-          <string>Nombre completo:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1" >
-        <widget class="QLineEdit" name="m_telcliente" />
-       </item>
-       <item row="0" column="1" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLineEdit" name="m_cifcliente" />
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item row="8" column="2" >
-        <widget class="QLabel" name="textLabel2_8_3" >
-         <property name="text" >
-          <string>Correo electronico:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1" >
-        <widget class="QLineEdit" name="m_poblcliente" />
-       </item>
-       <item row="2" column="0" >
-        <widget class="QLabel" name="textLabel2_2_2" >
-         <property name="text" >
-          <string>Empresa:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="3" >
-        <widget class="QLineEdit" name="m_faxcliente" />
-       </item>
-       <item row="4" column="3" >
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item>
-          <widget class="QLabel" name="textLabel2_7" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>5</hsizetype>
-             <vsizetype>5</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="text" >
-            <string>Codigo postal:</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="buddy" >
-            <cstring></cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="m_cpcliente" >
-           <property name="sizePolicy" >
-            <sizepolicy>
-             <hsizetype>7</hsizetype>
-             <vsizetype>0</vsizetype>
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="2" >
-        <widget class="QLabel" name="textLabel2_10" >
-         <property name="text" >
-          <string>Codigo de cliente:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="2" >
-        <widget class="QLabel" name="textLabel2_9_2" >
-         <property name="text" >
-          <string>Provincia:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1" >
-        <widget class="QLineEdit" name="mui_teltrabcliente" />
-       </item>
-       <item row="4" column="0" >
-        <widget class="QLabel" name="textLabel2_6" >
-         <property name="text" >
-          <string>Direccion:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="3" >
-        <widget class="BusquedaProvincia" native="1" name="m_provcliente" >
-         <property name="minimumSize" >
-          <size>
-           <width>150</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0" >
-        <widget class="QLabel" name="textLabel2_8" >
-         <property name="text" >
-          <string>Telefono fijo:</string>
-         </property>
-         <property name="alignment" >
-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-         </property>
-         <property name="buddy" >
-          <cstring></cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1" colspan="3" >
-        <widget class="QLineEdit" name="m_nomcliente" />
-       </item>
-       <item row="4" column="1" colspan="2" >
-        <widget class="QLineEdit" name="m_dircliente" />
-       </item>
-       <item row="11" column="0" colspan="4" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -609,13 +269,369 @@
          </item>
         </layout>
        </item>
-       <item row="10" column="0" colspan="4" >
+       <item row="11" column="0" colspan="4" >
         <widget class="QFrame" name="m_frameplugin" >
          <property name="frameShape" >
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow" >
           <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1" >
+        <widget class="BusquedaRegimenFiscal" name="mui_regimenfiscalcliente" />
+       </item>
+       <item row="10" column="0" >
+        <widget class="QLabel" name="textLabel2_8_7" >
+         <property name="text" >
+          <string>Regimen fiscal</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1" >
+        <widget class="BusquedaFormaPago" name="mui_forma_pago" />
+       </item>
+       <item row="9" column="0" >
+        <widget class="QLabel" name="textLabel2_8_6" >
+         <property name="text" >
+          <string>Forma de pago</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1" colspan="2" >
+        <widget class="QLineEdit" name="m_dircliente" />
+       </item>
+       <item row="1" column="1" colspan="3" >
+        <widget class="QLineEdit" name="m_nomcliente" />
+       </item>
+       <item row="6" column="0" >
+        <widget class="QLabel" name="textLabel2_8" >
+         <property name="text" >
+          <string>Telefono fijo:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="3" >
+        <widget class="BusquedaProvincia" native="1" name="m_provcliente" >
+         <property name="minimumSize" >
+          <size>
+           <width>150</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" >
+        <widget class="QLabel" name="textLabel2_6" >
+         <property name="text" >
+          <string>Direccion:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1" >
+        <widget class="QLineEdit" name="mui_teltrabcliente" />
+       </item>
+       <item row="5" column="2" >
+        <widget class="QLabel" name="textLabel2_9_2" >
+         <property name="text" >
+          <string>Provincia:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" >
+        <widget class="QLabel" name="textLabel2_10" >
+         <property name="text" >
+          <string>Codigo de cliente:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="3" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="textLabel2_7" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>5</hsizetype>
+             <vsizetype>5</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text" >
+            <string>Codigo postal:</string>
+           </property>
+           <property name="alignment" >
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="buddy" >
+            <cstring></cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="m_cpcliente" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>7</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="6" column="3" >
+        <widget class="QLineEdit" name="m_faxcliente" />
+       </item>
+       <item row="2" column="0" >
+        <widget class="QLabel" name="textLabel2_2_2" >
+         <property name="text" >
+          <string>Empresa:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1" >
+        <widget class="QLineEdit" name="m_poblcliente" />
+       </item>
+       <item row="8" column="2" >
+        <widget class="QLabel" name="textLabel2_8_3" >
+         <property name="text" >
+          <string>Correo electronico:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QLineEdit" name="m_cifcliente" />
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="6" column="1" >
+        <widget class="QLineEdit" name="m_telcliente" />
+       </item>
+       <item row="1" column="0" >
+        <widget class="QLabel" name="textLabel2_2" >
+         <property name="text" >
+          <string>Nombre completo:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0" >
+        <widget class="QLabel" name="textLabel2_11" >
+         <property name="text" >
+          <string>Telefono del trabajo:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="3" >
+        <widget class="QLineEdit" name="mui_codcliente" />
+       </item>
+       <item row="8" column="3" >
+        <widget class="QLineEdit" name="m_mailcliente" />
+       </item>
+       <item row="5" column="0" >
+        <widget class="QLabel" name="textLabel2_9" >
+         <property name="text" >
+          <string>Poblacion:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1" >
+        <widget class="QLineEdit" name="m_urlcliente" />
+       </item>
+       <item row="3" column="0" >
+        <widget class="QLabel" name="textLabel2_4" >
+         <property name="text" >
+          <string>Nombre comercial:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2" >
+        <widget class="QLabel" name="textLabel2_8_5" >
+         <property name="text" >
+          <string>Telefono movil:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2" >
+        <widget class="QLabel" name="textLabel2_8_4" >
+         <property name="text" >
+          <string>Numero de fax:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1" colspan="3" >
+        <widget class="QLineEdit" name="mui_corpcliente" />
+       </item>
+       <item row="0" column="0" >
+        <widget class="QLabel" name="textLabel2_5" >
+         <property name="text" >
+          <string>C.I.F./N.I.F./N.I.E.:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1" colspan="3" >
+        <widget class="QLineEdit" name="m_nomaltcliente" />
+       </item>
+       <item row="7" column="3" >
+        <widget class="QLineEdit" name="mui_movilcliente" />
+       </item>
+       <item row="13" column="0" colspan="4" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="textLabel2_4_3" >
+           <property name="text" >
+            <string>Datos bancarios:</string>
+           </property>
+           <property name="buddy" >
+            <cstring></cstring>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="m_bancocliente" />
+         </item>
+        </layout>
+       </item>
+       <item row="8" column="0" >
+        <widget class="QLabel" name="textLabel2_8_2" >
+         <property name="text" >
+          <string>Pagina web:</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="3" >
+        <widget class="QCheckBox" name="mui_recargoeqcliente" >
+         <property name="text" >
+          <string>Aplicar Recargo de Equivalencia</string>
          </property>
         </widget>
        </item>
@@ -1068,6 +1084,16 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
+   <class>PresupuestoList</class>
+   <extends>QWidget</extends>
+   <header>presupuestolist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>AlbaranClienteList</class>
+   <extends>QWidget</extends>
+   <header>albaranclientelist.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QComboBox</extends>
    <header>busquedaformapago.h</header>
@@ -1088,19 +1114,14 @@
    <header>cobroslist.h</header>
   </customwidget>
   <customwidget>
+   <class>BusquedaRegimenFiscal</class>
+   <extends>QComboBox</extends>
+   <header>busquedaregimenfiscal.h</header>
+  </customwidget>
+  <customwidget>
    <class>PedidosClienteList</class>
    <extends>QWidget</extends>
    <header>pedidosclientelist.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PresupuestoList</class>
-   <extends>QWidget</extends>
-   <header>presupuestolist.h</header>
-  </customwidget>
-  <customwidget>
-   <class>AlbaranClienteList</class>
-   <extends>QWidget</extends>
-   <header>albaranclientelist.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

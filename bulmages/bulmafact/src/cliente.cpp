@@ -54,6 +54,7 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de baja del cliente"));
     addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Comentarios"));
     addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Cliente inactivo"));
+    addDBCampo("regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Regimen Fiscal"));
     addDBCampo("codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo"));
     addDBCampo("corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Empresa"));
     addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Cliente", "Forma_Pago"));
@@ -135,7 +136,7 @@ void Cliente::pintaCliente() {
     pintacorpcliente(DBvalue("corpcliente"));
     pintaidforma_pago(DBvalue("idforma_pago"));
     pintarecargoeqcliente(DBvalue("recargoeqcliente"));
-
+    pintaregimenfiscalcliente(DBvalue("regimenfiscalcliente"));
     _depura("END Cliente::pintaCliente", 0);
 }
 

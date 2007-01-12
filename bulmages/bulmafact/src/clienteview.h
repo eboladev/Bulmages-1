@@ -99,7 +99,10 @@ public:
     void pintainactivocliente(QString) {}
     void pintaprovcliente(QString val) {
         m_provcliente->setProvincia(val);
-    }
+    };
+    void pintaregimenfiscalcliente(QString val) {
+	mui_regimenfiscalcliente->setRegimenFiscal(val);
+    };
     void pintarecargoeqcliente(QString val) {
 	/// Pintamos el recargo de equivalencia
 	if (val == "t") {

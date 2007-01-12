@@ -97,6 +97,7 @@ public:
     ;
     virtual void pintaidforma_pago(QString) {};
     virtual void pintarecargoeqcliente(QString) {};
+    virtual void pintaregimenfiscalcliente(QString) {};
 };
 
 #endif

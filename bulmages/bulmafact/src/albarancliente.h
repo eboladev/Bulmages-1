@@ -24,26 +24,19 @@
 #include <QString>
 
 #include "company.h"
-#include "listlinalbaranclienteview.h"
-#include "listdescalbaranclienteview.h"
 #include "fixed.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
 /// Clase que almacena los datos de albaranes a clientes.
 /** Se usa en conjuncion con AlbaranClienteView para conformar entre ambas
     la pantalla de edici&oacute;n de albaranes a Cliente.
 */
-class AlbaranCliente : public DBRecord {
-protected:
-    /// Lista de lineas del albar&aacute;n.
-    ListLinAlbaranClienteView *listalineas;
-    /// Lista de descuentos del albar&aacute;n
-    ListDescuentoAlbaranClienteView *listadescuentos;
-    /// Puntero a la clase company con la que se esta trabajando.
-    company *m_companyact;
+class AlbaranCliente : public FichaBf {
+Q_OBJECT
+
 public:
-    AlbaranCliente(company *);
+    AlbaranCliente(company *, QWidget *);
     
     virtual ~AlbaranCliente();
     QString idalbaran() {
@@ -91,34 +84,19 @@ public:
     QString telalbaran() {
         return DBvalue("telalbaran");
     };
-    ListLinAlbaranClienteView* getlistalineas() {
-        return listalineas;
-    };
-    ListDescuentoAlbaranClienteView* getlistadescuentos() {
-        return listadescuentos;
-    };
+
     virtual void pintar();
     virtual int guardar();
     virtual int borrar();
     virtual int cargar(QString);
-    virtual void calculaypintatotales();
     void imprimirAlbaranCliente();
     void vaciaAlbaranCliente();
 
-    /// Establece cual es la lista subformulario del presupuesto.
-    /// Normalmente para apuntar a listlinpresupuestoview.
-    void setListLinAlbaranCliente(ListLinAlbaranClienteView *a) {
-        listalineas = a;
-        listalineas->setcompany(m_companyact);
-    };
-    void setListDescuentoAlbaranCliente(ListDescuentoAlbaranClienteView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(m_companyact);
-    };
+
     void setidalbaran(QString val) {
         setDBvalue("idalbaran", val);
-        listalineas->setColumnValue("idalbaran", val);
-        listadescuentos->setColumnValue("idalbaran", val);
+        m_listalineas->setColumnValue("idalbaran", val);
+        m_listadescuentos->setColumnValue("idalbaran", val);
     };
     void setNumAlbaran(QString val) {
         setDBvalue("numalbaran", val);
@@ -193,9 +171,6 @@ public:
     virtual void pintatelalbaran(QString) {}
     ;
     virtual void pintaprocesadoalbaran(QString) {}
-    ;
-    /// M&eacute;todo que se encarga de pintar los totales en la pantalla. Debe ser reimplementado en la clase que derive de esta.
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {_depura("Metodo para ser reimplementado en una clase derivada.", 2);}
     ;
 };
 

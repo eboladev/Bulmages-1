@@ -173,7 +173,7 @@ void AlbaranProveedorView::generarFactura()  {
         linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
         linea1->setDBvalue("cantlfacturap", linea->DBvalue("cantlalbaranp"));
         linea1->setDBvalue("pvplfacturap", linea->DBvalue("pvplalbaranp"));
-        linea1->setDBvalue("descuentolfacturap", linea->DBvalue("descontlalbaranp"));
+        linea1->setDBvalue("descuentolfacturap", linea->DBvalue("descuentolalbaranp"));
         linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
         linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
         linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
@@ -348,7 +348,7 @@ void AlbaranProveedorView::generarFacturaProveedor() {
             linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
             linea1->setDBvalue("cantlfacturap", linea->DBvalue("cantlalbaranp"));
             linea1->setDBvalue("pvplfacturap", linea->DBvalue("pvplalbaranp"));
-            linea1->setDBvalue("descuentolfacturap", linea->DBvalue("descontlalbaranp"));
+            linea1->setDBvalue("descuentolfacturap", linea->DBvalue("descuentolalbaranp"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));

@@ -45,7 +45,7 @@
     Inicializa todos los componentes y mete la pantalla en el workSpace.
 */
 FacturaView::FacturaView(company *comp, QWidget *parent)
-        : Ficha(parent), Factura(comp) {
+        : Factura(comp, parent) {
     _depura("FacturaView::FacturaView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -63,8 +63,11 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
         m_descuentos->setcompany(comp);
         m_codigoserie_factura->setcompany(comp);
         m_reffactura->setcompany(comp);
-        setListLinFactura(subform2);
-        setListDescuentoFactura(m_descuentos);
+	
+	/// Inicializamos FichaBf
+	setListaLineas(subform2);
+	setListaDescuentos(m_descuentos);
+
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
         m_totalTaxes->setReadOnly(TRUE);
@@ -116,12 +119,14 @@ void FacturaView::inicializar() {
 /** Pinta los campos de totales, que al no estar en la base de datos son tratados
     de forma distinta.
 */
-void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("FacturaView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalfactura->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
+    m_totalIRPF->setText(QString(irpf.toQString()));
+    m_totalReqEq->setText(QString(reqeq.toQString()));
     _depura("FacturaView::pintatotales", 0);
 }
 
@@ -208,7 +213,7 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
             linea1->setDBvalue("desclfactura", linea->DBvalue("desclalbaran"));
             linea1->setDBvalue("cantlfactura", linea->DBvalue("cantlalbaran"));
             linea1->setDBvalue("pvplfactura", linea->DBvalue("pvplalbaran"));
-            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descontlalbaran"));
+            linea1->setDBvalue("descuentolfactura", linea->DBvalue("descuentolalbaran"));
             linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
             linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
             linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));

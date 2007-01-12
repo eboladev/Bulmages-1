@@ -44,7 +44,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public Ficha, public Ui_BudgetBase, public Presupuesto {
+class PresupuestoView : public Presupuesto, public Ui_BudgetBase {
     Q_OBJECT
 
 private:
@@ -53,7 +53,7 @@ private:
 public:
     PresupuestoView(company *, QWidget *);
     ~PresupuestoView();
-    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void inicializar();
     void manageArticle(int);
     void pintaNumPresupuesto(QString id) {

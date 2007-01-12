@@ -151,7 +151,9 @@ HEADERS += bulmafact.h \
            listalmacenview.h \
            listconfiguracionview.h \
            subform2bf.h \
-           busquedareferencia.h
+           busquedareferencia.h \
+	   fichabf.h \
+	   busquedaregimenfiscal.h
 
 SOURCES += bulmafact.cpp \
            main.cpp \
@@ -232,7 +234,9 @@ SOURCES += bulmafact.cpp \
            listalmacenview.cpp \
            listconfiguracionview.cpp \
            subform2bf.cpp \
-           busquedareferencia.cpp
+           busquedareferencia.cpp \
+	   fichabf.cpp \
+	   busquedaregimenfiscal.cpp
 
 
 INCLUDEPATH += ../../bulmalib \

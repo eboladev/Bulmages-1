@@ -27,10 +27,7 @@
 #include "funcaux.h"
 
 
-typedef QMap<QString, Fixed> base;
-
-PedidoCliente::PedidoCliente(company *comp) : DBRecord(comp) {
-    companyact = comp;
+PedidoCliente::PedidoCliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
     addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoCliente", "Identificador"));
@@ -55,8 +52,8 @@ PedidoCliente::~PedidoCliente() {}
 int PedidoCliente::borrar() {
     if (DBvalue("idpedidocliente") != "") {
         companyact->begin();
-        listalineas->borrar();
-        listadescuentos->borrar();
+        m_listalineas->borrar();
+        m_listadescuentos->borrar();
         int error = companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente=" + DBvalue("idpedidocliente"));
         if (error) {
             companyact->rollback();
@@ -102,8 +99,8 @@ int PedidoCliente::cargar(QString idbudget) {
         DBload(cur);
     } // end if
     delete cur;
-    listalineas->cargar(idbudget);
-    listadescuentos->cargar(idbudget);
+    m_listalineas->cargar(idbudget);
+    m_listadescuentos->cargar(idbudget);
     pintar();
     _depura("END PedidoCliente::cargar", 0);
     return 0;
@@ -117,8 +114,8 @@ int PedidoCliente::guardar() {
     try {
         DBsave(id);
         setidpedidocliente(id);
-        listalineas->guardar();
-        listadescuentos->guardar();
+        m_listalineas->guardar();
+        m_listadescuentos->guardar();
         companyact->commit();
 
 	/// Hacemos una carga para recuperar los campos Referencia y num
@@ -198,8 +195,8 @@ void PedidoCliente::imprimirPedidoCliente() {
     QString l;
 
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount() - 1; ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount() - 1; ++i) {
+        linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpedidocliente").toAscii().constData()) * Fixed(linea->DBvalue("pvplpedidocliente").toAscii().constData());
         basesimp[linea->DBvalue("ivalpedidocliente")] = basesimp[linea->DBvalue("ivalpedidocliente")] + base - base * Fixed(linea->DBvalue("descuentolpedidocliente").toAscii().constData()) / 100;
         fitxersortidatxt += "<tr>\n";
@@ -225,15 +222,15 @@ void PedidoCliente::imprimirPedidoCliente() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount() - 1) {
+    if (m_listadescuentos->rowCount() - 1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Descuento") + "</td>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Porcentaje") + "</td>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < listadescuentos->rowCount() - 1; ++i) {
-            linea1 = listadescuentos->lineaat(i);
+        for (int i = 0; i < m_listadescuentos->rowCount() - 1; ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpedidocliente").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdpedidocliente") + "</td>\n";
@@ -288,65 +285,5 @@ void PedidoCliente::imprimirPedidoCliente() {
     }
 
     invocaPDF("pedidocliente");
-}
-
-
-void PedidoCliente::calculaypintatotales() {
-    _depura("PedidoCliente::calculaypintatotales \n", 0);
-    base basesimp;
-
-    /// Impresion de los contenidos.
-    QString l;
-    SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlpedidocliente").toAscii().constData());
-        Fixed pvpund(linea->DBvalue("pvplpedidocliente").toAscii().constData());
-        Fixed desc1(linea->DBvalue("descuentolpedidocliente").toAscii().constData());
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        basesimp[linea->DBvalue("ivalpedidocliente")] = basesimp[linea->DBvalue("ivalpedidocliente")] + base;
-    } // end for
-
-    Fixed basei("0.00");
-    base::Iterator it;
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.value();
-    } // end for
-
-    /// Impresion de los descuentos.
-    Fixed porcentt("0.00");
-    SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
-        for ( int i = 0; i < listadescuentos->rowCount(); ++i) {
-            linea1 = listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporciondpedidocliente").toAscii().constData());
-            porcentt = porcentt + propor;
-        } // end for
-    } // end if
-
-    Fixed totbaseimp("0.00");
-    Fixed parbaseimp("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        if (porcentt > Fixed("0.00")) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        totbaseimp = totbaseimp + parbaseimp;
-    } // end for
-
-    Fixed totiva("0.00");
-    Fixed pariva("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().toAscii().constData());
-        if (porcentt > Fixed("0.00")) {
-            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
-        } else {
-            pariva = it.value() * piva / 100;
-        } // end if
-        totiva = totiva + pariva;
-    } // end for
-    pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
 }
 

@@ -42,7 +42,7 @@
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido de cliente.
 /** */
-class PedidoClienteView : public Ficha, public Ui_PedidoClienteBase, public PedidoCliente {
+class PedidoClienteView : public PedidoCliente, public Ui_PedidoClienteBase {
     Q_OBJECT
 
 public:
@@ -84,7 +84,7 @@ public:
     void pintatelpedidocliente(QString id) {
         m_telpedidocliente->setText(id);
     }
-    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed, Fixed);
     void pintaprocesadopedidocliente(QString id) {
         if (id == "t" || id == "TRUE") {
             m_procesadopedidocliente->setChecked(TRUE);

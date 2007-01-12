@@ -28,33 +28,20 @@
 #include "fixed.h"
 #include "company.h"
 #include "dbrecord.h"
-
+#include "fichabf.h"
 
 /// Administra los datos de una factura a cliente.
 /** Intermedia entre la base de datos y la pantalla de presentacion.
 */
-class Factura : public DBRecord {
-protected:
-    /// Puntero a la lista de lineas de factura.
-    ListLinFacturaView *listalineas;
-    /// Puntero a la lista de lineas de descuento.
-    ListDescuentoFacturaView *listadescuentos;
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
-    company *companyact;
+class Factura : public FichaBf {
+Q_OBJECT
 
 public:
-    Factura(company *);
+    Factura(company *, QWidget *parent);
     virtual ~Factura();
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
-    void setListLinFactura ( ListLinFacturaView *a) {
-        listalineas = a;
-        listalineas->setcompany(companyact);
-    };
-    void setListDescuentoFactura ( ListDescuentoFacturaView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-    };
+
     company *_company() {
         return companyact;
     };
@@ -91,12 +78,7 @@ public:
     QString idforma_pago() {
         return DBvalue("idforma_pago");
     };
-    ListLinFacturaView* getlistalineas() {
-        return listalineas;
-    };
-    ListDescuentoFacturaView* getlistadescuentos() {
-        return listadescuentos;
-    };
+
     virtual int cargar(QString);
     void pintaFactura();
     virtual int guardar();
@@ -127,8 +109,8 @@ public:
     };
     void setidfactura(QString val) {
         setDBvalue("idfactura", val);
-        listalineas->setColumnValue( "idfactura", val);
-        listadescuentos->setColumnValue( "idfactura", val);
+        m_listalineas->setColumnValue( "idfactura", val);
+        m_listadescuentos->setColumnValue( "idfactura", val);
     };
     void setidforma_pago(QString val) {
         setDBvalue("idforma_pago", val);
@@ -138,7 +120,7 @@ public:
     };
     void vaciaFactura();
     virtual void imprimirFactura();
-    virtual void calculaypintatotales();
+
     virtual void pintaidcliente(QString) {}
     ;
     virtual void pintareffactura(QString) {}
@@ -158,8 +140,6 @@ public:
     virtual void pintaidforma_pago(QString) {}
     ;
     virtual void pintaprocesadafactura(QString) {}
-    ;
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
     ;
     virtual void cargaFacturaDescuentas(QString) {}
     ;

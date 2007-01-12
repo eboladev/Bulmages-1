@@ -524,6 +524,8 @@ CREATE TABLE division (
 -- inactivocliente:
 -- provcliente: Provincia del cliente.
 -- idtarifa: Identificador de la tarifa aplicada a este cliente.
+-- regimenfiscalcliente Indica el regimen al que se acoge el cliente (Normal, comunitario, extracomunitario)
+
 \echo -n ':: Cliente ... '
 CREATE TABLE cliente (
     idcliente serial PRIMARY KEY,
@@ -544,6 +546,7 @@ CREATE TABLE cliente (
     corpcliente character varying(200),
     faltacliente date DEFAULT NOW(),
     fbajacliente date,
+    regimenfiscalcliente character varying(50) DEFAULT ''Normal'' NOT NULL,
     comentcliente character varying(2000),
     inactivocliente character(1),
     provcliente character varying,
@@ -1588,7 +1591,7 @@ CREATE TRIGGER restriccionesalbaranptrigger
 -- cantlalbaranp: Cantidad.
 -- ivalalbaranp: IVA aplicado al precio.
 -- pvplalbaranp: Precio sin IVA.
--- descontlalbaranp: Porcentaje de descuento.
+-- descuentolbaranp: Porcentaje de descuento.
 \echo -n ':: Lineas de albaran de proveedor ... '
 
 CREATE TABLE lalbaranp (
@@ -1598,7 +1601,7 @@ CREATE TABLE lalbaranp (
     ivalalbaranp numeric(12, 2),
     reqeqlalbaranp NUMERIC(12,2) DEFAULT 0,
     pvplalbaranp numeric(12, 2),
-    descontlalbaranp numeric(12, 2),
+    descuentolalbaranp numeric(12, 2),
     ordenlalbaranp integer,
     idalbaranp integer NOT NULL REFERENCES albaranp(idalbaranp),
     idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
@@ -1628,7 +1631,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp / 100) * (1 + ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (1 + ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
 	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
@@ -1649,7 +1652,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
 	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
@@ -1670,7 +1673,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descontlalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
+    FOR res IN SELECT cantlalbaranp * pvplalbaranp * (1 - descuentolalbaranp / 100) * (ivalalbaranp / 100) AS subtotal1 FROM lalbaranp WHERE idalbaranp = idp LOOP
 	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondalbaranp FROM dalbaranp WHERE idalbaranp = idp LOOP
@@ -1893,7 +1896,7 @@ CREATE TABLE dalbaran (
 -- Linea de detalle del albaran.
 -- cantlalbaran: Cantidad.
 -- pvplalbaran: Precio de venta.
--- descontlalbaran: Porcentaje de descuento a aplicar.
+-- descuentolalbaran: Porcentaje de descuento a aplicar.
 -- ivalalbaran: IVA correspondiente al articulo.
 \echo -n ':: Lineas de albaran ... '
 CREATE TABLE lalbaran (
@@ -1901,7 +1904,7 @@ CREATE TABLE lalbaran (
     desclalbaran character varying(100),
     cantlalbaran numeric(12, 2),
     pvplalbaran numeric(12, 2),
-    descontlalbaran numeric(12, 2),
+    descuentolalbaran numeric(12, 2),
     ivalalbaran numeric(12, 2),
     reqeqlalbaran NUMERIC(12,2) DEFAULT 0,
     ordenlalbaran integer,
@@ -2419,7 +2422,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran / 100) * (1 + ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (1 + ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
 	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
@@ -2440,7 +2443,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
 	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP
@@ -2461,7 +2464,7 @@ DECLARE
 
 BEGIN
     total := 0;
-    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descontlalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
+    FOR res IN SELECT cantlalbaran * pvplalbaran * (1 - descuentolalbaran / 100) * (ivalalbaran / 100) AS subtotal1 FROM lalbaran WHERE idalbaran = idp LOOP
     	total := total + res.subtotal1;
     END LOOP;
     FOR res IN SELECT proporciondalbaran FROM dalbaran WHERE idalbaran = idp LOOP

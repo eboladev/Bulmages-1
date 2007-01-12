@@ -29,11 +29,8 @@
 #include "plugins.h"
 
 
-typedef QMap<QString, Fixed> base;
-
-Presupuesto::Presupuesto(company *comp) : DBRecord(comp) {
+Presupuesto::Presupuesto(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("Presupuesto::Presupuesto", 0);
-    companyact = comp;
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
     addDBCampo("idpresupuesto", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Presupuesto", "ID Presupuesto"));
@@ -66,8 +63,8 @@ int Presupuesto::borrar() {
     _depura("Presupuesto::borrar", 0);
     if (DBvalue("idpresupuesto") != "") {
         companyact->begin();
-        listalineas->borrar();
-        listadescuentos->borrar();
+        m_listalineas->borrar();
+        m_listadescuentos->borrar();
         int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto = " + DBvalue("idpresupuesto"));
         if (error) {
             companyact->rollback();
@@ -121,8 +118,8 @@ int Presupuesto::cargar(QString idbudget) {
     } // end if
     delete cur;
 
-    listalineas->cargar(idbudget);
-    listadescuentos->cargar(idbudget);
+    m_listalineas->cargar(idbudget);
+    m_listadescuentos->cargar(idbudget);
 
     /// Tratamiento de excepciones.
     if (error) {
@@ -143,8 +140,8 @@ int Presupuesto::guardar() {
     try {
         DBsave(id);
         setidPresupuesto(id);
-        listalineas->guardar();
-        listadescuentos->guardar();
+        m_listalineas->guardar();
+        m_listadescuentos->guardar();
         companyact->commit();
 	/// Hacemos una carga para recuperar el numero y la referencia.
 	cargar(id);
@@ -263,8 +260,8 @@ void Presupuesto::imprimirPresupuesto() {
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     SDBRecord *linea;
-    for (int i = 0; i < (listalineas->rowCount() - 1); ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < (m_listalineas->rowCount() - 1); ++i) {
+        linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpresupuesto").toAscii().constData()) * Fixed(linea->DBvalue("pvplpresupuesto").toAscii().constData());
         basesimp[linea->DBvalue("ivalpresupuesto")] = basesimp[linea->DBvalue("ivalpresupuesto")] + base - base * Fixed(linea->DBvalue("descuentolpresupuesto").toAscii().constData()) / 100;
         fitxersortidatxt += "<tr>\n";
@@ -289,15 +286,15 @@ void Presupuesto::imprimirPresupuesto() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount() - 1) {
+    if (m_listadescuentos->rowCount() - 1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Descuento") + "</td>\n";
         fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Porcentaje") + "</td>\n";
         fitxersortidatxt += "    <td>" + QApplication::translate("Presupuesto", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < (listadescuentos->rowCount() - 1); ++i) {
-            linea1 = listadescuentos->lineaat(i);
+        for (int i = 0; i < (m_listadescuentos->rowCount() - 1); ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpresupuesto").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "    <td>" + XMLProtect(linea1->DBvalue("conceptdpresupuesto")) + "</td>\n";
@@ -360,72 +357,4 @@ void Presupuesto::imprimirPresupuesto() {
     _depura("Presupuesto::imprimirPresupuesto", 0);
 }
 
-
-void Presupuesto::calculaypintatotales() {
-    _depura("Presupuesto::calculaypintatotales", 0);
-
-    /// Disparamos los plugins con Presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("Presupuesto_calculaypintatotales", this);
-    if (res != 0)
-        return;
-
-    base basesimp;
-    SDBRecord *linea;
-    /// Impresion de los contenidos.
-    QString l;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlpresupuesto").toAscii().constData());
-        Fixed pvpund(linea->DBvalue("pvplpresupuesto").toAscii().constData());
-        Fixed desc1(linea->DBvalue("descuentolpresupuesto").toAscii().constData());
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        Fixed val("0.00");
-        val = basesimp[linea->DBvalue("ivalpresupuesto")];
-        val = val + base;
-        QString lin = linea->DBvalue("ivalpresupuesto");
-        basesimp[lin] = val;
-    } // end for
-    Fixed basei("0.00");
-    base::Iterator it;
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.value();
-    } // end for
-
-    /// Impresion de los descuentos.
-    Fixed porcentt("0.00");
-    SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
-        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
-            linea1 = listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporciondpresupuesto").toAscii().constData());
-            porcentt = porcentt + propor;
-        } // end for
-    } // end if
-
-    Fixed totbaseimp("0.00");
-    Fixed parbaseimp("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        if (porcentt > Fixed("0.00") ) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        totbaseimp = totbaseimp + parbaseimp;
-    } // end for
-
-    Fixed totiva("0.00");
-    Fixed pariva("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().toAscii().constData());
-        if (porcentt > Fixed("0.00")) {
-            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
-        } else {
-            pariva = it.value() * piva / 100;
-        } // end if
-        totiva = totiva + pariva;
-    } // end for
-    pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-    _depura("END Presupuesto::calculaypintatotales", 0);
-}
 

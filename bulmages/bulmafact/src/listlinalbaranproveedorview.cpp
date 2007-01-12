@@ -40,7 +40,7 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent)
     addSHeader("cantlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl albaranp"));
     addSHeader("pvplalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl albaranp"));
     addSHeader("ivalalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl albaranp"));
-    addSHeader("descontlalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descontl albaranp"));
+    addSHeader("descuentolalbaranp", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descontl albaranp"));
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaranp"));
     addSHeader("ordenlalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
@@ -69,7 +69,7 @@ void ListLinAlbaranProveedorView::on_mui_list_editFinished(int row, int col, int
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
             rec->setDBvalue("desclalbaranp", cur->valor("nomarticulo"));
             rec->setDBvalue("cantlalbaranp", "1.00");
-            rec->setDBvalue("descontlalbaranp","0.00");
+            rec->setDBvalue("descuentolalbaranp","0.00");
             rec->setDBvalue("pvplalbaranp", cur->valor("pvparticulo"));
         } // end if
         cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
@@ -98,7 +98,7 @@ Fixed ListLinAlbaranProveedorView::calculabase() {
     Fixed totpar("0.00");
     for (int i = 0; i < rowCount() - 1; i++) {
         totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("cantlalbaranp", i));
-        totpar = totpar * ( Fixed("100.00") - Fixed(DBvalue("descontlalbaranp", i)));
+        totpar = totpar * ( Fixed("100.00") - Fixed(DBvalue("descuentolalbaranp", i)));
         totpar = totpar * Fixed("0.01");
         base = base + totpar;
     } // end for
@@ -114,7 +114,7 @@ Fixed ListLinAlbaranProveedorView::calculaiva() {
     for (int i = 0; i < rowCount() - 1; i++) {
         totpar = Fixed(DBvalue("pvplalbaranp", i)) * Fixed(DBvalue("ivalalbaranp", i)) * Fixed("0.01");
         totpar = totpar * Fixed(DBvalue("cantlalbaranp", i));
-        Fixed porcentdesc = Fixed("100.00") - Fixed(DBvalue("descontlalbaranp", i));
+        Fixed porcentdesc = Fixed("100.00") - Fixed(DBvalue("descuentolalbaranp", i));
         porcentdesc = porcentdesc * Fixed("0.01");
         totpar = totpar * porcentdesc;
         base = base + totpar;
