@@ -21,6 +21,7 @@
 #include <QTranslator>
 #include <QTextCodec>
 #include <QLocale>
+#include <QDir>
 
 #include "qapplication2.h"
 #include "configuracion.h"
@@ -33,9 +34,9 @@
 #include "plugins.h"
 
 #ifdef WIN32
-#define CONFGLOBAL "C:\\bulmages_"
+#define CONFGLOBAL "C:\\bulmages\\bulmafact_"
 #else
-#define CONFGLOBAL "/etc/bulmages_"
+#define CONFGLOBAL "/etc/bulmages/bulmafact_"
 #endif
 
 
@@ -125,8 +126,14 @@ int main(int argc, char **argv) {
         } // end if
 
         /// Leemos la configuracion especifica de la base de datos que se ha abierto.
-        QString confesp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
-        confpr->leeconfig(confesp);
+        QString confEsp = CONFGLOBAL + bges->getcompany()->nameDB() + ".conf";
+        QDir archivoConf;
+        if (!archivoConf.exists(confEsp)) {
+            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
+            fprintf(stderr, mensaje.toAscii().constData());
+        } else {
+            confpr->leeconfig(confEsp);
+        } // end if
 
         /// Cargamos el sistema de traducciones una vez pasado por las configuraciones generales
         traductor = new QTranslator(0);

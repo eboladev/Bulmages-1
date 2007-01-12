@@ -92,12 +92,12 @@ configuracion::configuracion(QString nombreprograma) {
     /// Comprobamos la existencia de los directorios y archivos de configuracion.
     /// Directorios y archivos obligatorios (sale si no existe):
     if (!dirGlobalConf.exists(m_dirGlobalConf)) {
-        mensaje = "--> El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
+        mensaje = "--> ERROR: El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
         fprintf(stderr, mensaje.toAscii().constData());
         exit(-1);
     } else {
         if (!genericGlobalConfFile.exists(m_dirGlobalConf + m_genericGlobalConfFile)) {
-            mensaje = "--> El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
+            mensaje = "--> ERROR: El archivo '" + m_dirGlobalConf + m_genericGlobalConfFile + "' no existe. Debe crearlo. <--\n";
             fprintf(stderr, mensaje.toAscii().constData());
             exit(-1);
         } else {
@@ -122,7 +122,7 @@ configuracion::configuracion(QString nombreprograma) {
             mensaje = "--> Se ha creado el directorio '" + m_dirLocalConf + "'. <--\n";
             fprintf(stderr, mensaje.toAscii().constData());
         } else {
-            mensaje = "--> No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
+            mensaje = "--> ERROR: No se ha podido crear el directorio '" + m_dirLocalConf + "'. <--\n";
             fprintf(stderr, mensaje.toAscii().constData());
             exit(-1);
         }// end if
