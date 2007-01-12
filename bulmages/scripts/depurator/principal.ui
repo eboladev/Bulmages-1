@@ -1,0 +1,188 @@
+<ui version="4.0" >
+ <class>Principal</class>
+ <widget class="QMainWindow" name="Principal" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>807</width>
+    <height>535</height>
+   </rect>
+  </property>
+  <property name="font" >
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle" >
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <layout class="QHBoxLayout" >
+    <property name="margin" >
+     <number>9</number>
+    </property>
+    <property name="spacing" >
+     <number>6</number>
+    </property>
+    <item>
+     <widget class="QDockWidget" name="dockWidget" >
+      <widget class="QWidget" name="dockWidgetContents" >
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>9</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTreeWidget" name="tree" >
+          <property name="font" >
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="alternatingRowColors" >
+           <bool>true</bool>
+          </property>
+          <property name="sortingEnabled" >
+           <bool>true</bool>
+          </property>
+          <property name="columnCount" >
+           <number>3</number>
+          </property>
+          <column>
+           <property name="text" >
+            <string>1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>1</string>
+           </property>
+          </column>
+          <column>
+           <property name="text" >
+            <string>2</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="table" >
+      <property name="alternatingRowColors" >
+       <bool>true</bool>
+      </property>
+      <property name="selectionMode" >
+       <enum>QAbstractItemView::MultiSelection</enum>
+      </property>
+      <property name="columnCount" >
+       <number>3</number>
+      </property>
+      <column/>
+      <column/>
+      <column/>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>807</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAbout" >
+    <property name="title" >
+     <string>About</string>
+    </property>
+    <addaction name="mui_about" />
+   </widget>
+   <widget class="QMenu" name="menuPrincipal" >
+    <property name="title" >
+     <string>Principal</string>
+    </property>
+    <addaction name="mui_conectar" />
+    <addaction name="separator" />
+    <addaction name="mui_tableclear" />
+    <addaction name="actionLimpiar_Arbol" />
+   </widget>
+   <addaction name="menuPrincipal" />
+   <addaction name="menuAbout" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" />
+  <widget class="QToolBar" name="toolBar" >
+   <property name="orientation" >
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <attribute name="toolBarArea" >
+    <number>4</number>
+   </attribute>
+   <addaction name="mui_clear" />
+   <addaction name="mui_conectar" />
+   <addaction name="mui_expandtree" />
+   <addaction name="mui_collapseTree" />
+  </widget>
+  <action name="mui_about" >
+   <property name="text" >
+    <string>About</string>
+   </property>
+  </action>
+  <action name="mui_clear" >
+   <property name="text" >
+    <string>Limpiar</string>
+   </property>
+  </action>
+  <action name="mui_conectar" >
+   <property name="text" >
+    <string>Conectar</string>
+   </property>
+  </action>
+  <action name="mui_tableclear" >
+   <property name="text" >
+    <string>Limpiar Table</string>
+   </property>
+  </action>
+  <action name="actionLimpiar_Arbol" >
+   <property name="text" >
+    <string>Limpiar Arbol</string>
+   </property>
+  </action>
+  <action name="mui_expandtree" >
+   <property name="text" >
+    <string>Expandir Arbol</string>
+   </property>
+  </action>
+  <action name="mui_collapseTree" >
+   <property name="text" >
+    <string>contraerArbol</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>actionLimpiar_Arbol</sender>
+   <signal>triggered()</signal>
+   <receiver>tree</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>204</x>
+     <y>291</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
