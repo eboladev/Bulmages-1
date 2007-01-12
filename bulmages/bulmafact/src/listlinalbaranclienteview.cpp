@@ -40,47 +40,13 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
     addSHeader("cantlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl albaran"));
     addSHeader("pvplalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl albaran"));
     addSHeader("ivalalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl albaran"));
+    addSHeader("reqeqlalbaran", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
     addSHeader("descontlalbaran", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descontl albaran"));
     addSHeader("idalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaran"));
     addSHeader("ordenlalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
 }
-
-
-void ListLinAlbaranClienteView::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("ListLinAlbaranClienteView::editFinished", 0);
-    SubForm3::on_mui_list_editFinished(row, col, key);
-    SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row, col);
-    camp->refresh();
-
-    /// Si el campo no ha sido cambiado se termina sin cambiar nada.
-    if ( ! camp->cambiado() ) {
-    	SubForm3::on_mui_list_editFinished(row, col, key);
-	return;
-    } // end if
-
-    if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo='" + camp->text() + "'");
-        if (!cur->eof() ) {
-            rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
-            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-            rec->setDBvalue("desclalbaran", cur->valor("nomarticulo"));
-            rec->setDBvalue("cantlalbaran", "1.00");
-            rec->setDBvalue("descontlalbaran", "0.00");
-            rec->setDBvalue("pvplalbaran", cur->valor("pvparticulo"));
-        } // end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva=" + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
-        if (!cur->eof() ) {
-            rec->setDBvalue("ivalalbaran", cur1->valor("porcentasa_iva"));
-        } // end if
-        delete cur1;
-        delete cur;
-    } // end if
-}
-
 
 void ListLinAlbaranClienteView::cargar(QString idalbaran) {
     _depura("ListLinAlbaranClienteView::cargar", 0);
@@ -91,23 +57,4 @@ void ListLinAlbaranClienteView::cargar(QString idalbaran) {
     _depura("END ListLinAlbaranClienteView::cargar", 0);
 }
 
-
-Fixed ListLinAlbaranClienteView::calculabase() {
-    Fixed base("0.0");
-    for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplalbaran", i)) * Fixed(DBvalue("cantlalbaran", i));
-        base = base + totpar;
-    } // end for
-    return base;
-}
-
-
-Fixed ListLinAlbaranClienteView::calculaiva() {
-    Fixed base("0.0");
-    for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplalbaran", i)) * Fixed(DBvalue("ivalalbaran", i));
-        base = base + totpar;
-    } // end for
-    return base;
-}
 

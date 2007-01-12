@@ -27,6 +27,10 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(
     _depura("END Ficha::Ficha", 0);
 }
 
+Ficha::~Ficha() {
+	_depura("Ficha::~Ficha", 0);
+	_depura("END Ficha::~Ficha", 0);
+}
 
 void Ficha::on_mui_aceptar_clicked() {
     _depura("Ficha::on_mui_aceptar_clicked", 0);
@@ -36,7 +40,10 @@ void Ficha::on_mui_aceptar_clicked() {
         } // end if
         close();
     } catch (...) {} // end try
+    _depura("Ficha::on_mui_aceptar_clicked", 0);
 }
+
+
 
 
 void Ficha::on_mui_borrar_clicked() {

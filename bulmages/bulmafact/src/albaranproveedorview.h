@@ -36,8 +36,6 @@
 
 
 class company;
-//class Empresa;
-
 
 /** Se encarga de la ventana de albar&aacute;n de proveedor.
     Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
@@ -88,8 +86,12 @@ public:
         return AlbaranProveedor::borrar();
     };
     virtual int sacaWindow();
+    void generarFacturaProveedor();
 
 public slots:
+    virtual void on_mui_facturar_clicked() {
+	generarFacturaProveedor();
+    };
     virtual void s_comentalbaranptextChanged() {
         setcomentalbaranp(m_comentalbaranp->toPlainText());
     };

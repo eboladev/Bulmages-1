@@ -278,3 +278,11 @@ void FacturaView::on_mui_veralbaranes_clicked() {
     delete cur;
     _depura("END FacturaView::on_mui_veralbaranes_clicked", 0);
 }
+
+void FacturaView::on_m_cliente_valueChanged(QString id) {
+	_depura("FacturaView::on_m_cliente_valueChanged", 0);
+	subform2->setIdCliente(id);
+	m_forma_pago->setIdCliente(id);
+	_depura("END FacturaView::on_m_cliente_valueChanged", 0);
+}
+

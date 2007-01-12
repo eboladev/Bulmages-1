@@ -50,16 +50,9 @@ public:
     QString idforma_pago() {
         return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
     };
-
+    virtual void setIdCliente(QString);
 public slots:
-    void m_activated(int index) {
-        _depura("Activado el combo box", 0);
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idforma_pago", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    virtual void m_activated(int index);
 
 signals:
     void valueChanged(QString);

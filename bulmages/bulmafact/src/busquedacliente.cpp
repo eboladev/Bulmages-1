@@ -56,6 +56,7 @@ void BusquedaCliente::pinta() {
     m_cifcliente->setText(mdb_cifcliente);
     m_nomcliente->setText(mdb_codcliente+".- "+mdb_nomcliente);
     m_semaforo = FALSE;
+    emit(valueChanged(mdb_idcliente));
     _depura ("END BusquedaCliente::pinta", 0);
 
 }
@@ -109,7 +110,6 @@ void BusquedaCliente::setcifcliente(QString val) {
         mdb_nomcliente = "";
         mdb_codcliente = "";
     } // end if
-
     delete cur;
     pinta();
     _depura("END BusquedaCliente::setcifcliente", 0, val);
@@ -132,7 +132,6 @@ void BusquedaCliente::on_mui_buscar_clicked() {
     diag->exec();
     if (clients->cifclient() != "") {
         setcifcliente(clients->cifclient());
-	emit(valueChanged(mdb_idcliente));
     } // end if
     delete diag;
     _depura("END BusquedaCliente::on_mui_buscar_clicked", 0);
@@ -146,7 +145,6 @@ void BusquedaCliente::on_mui_buscar_clicked() {
 void BusquedaCliente::on_m_cifcliente_editingFinished() {
     _depura("BusquedaCliente::on_m_cifcliente_editingFinished", 0);
     pinta();
-    emit(valueChanged(mdb_idcliente));
     _depura("END BusquedaCliente::on_m_cifcliente_editingFinished", 0);
 }
 

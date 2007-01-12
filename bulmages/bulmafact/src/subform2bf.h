@@ -65,8 +65,10 @@ class SubForm2Bf : public SubForm3 {
 private:
     bool m_delete;
     QSubForm2BfDelegate *m_delegate;
+    QString mdb_idcliente;
 
 public:
+    void setIdCliente(QString id);
     SubForm2Bf(QWidget *parent = 0);
     virtual ~SubForm2Bf();
     void setDelete(bool f) {
@@ -77,6 +79,9 @@ public:
         SubForm3::setcompany(c);
 	m_delegate->setcompany(c);
     };
+    Fixed calculabase();
+    Fixed calculaiva();
+    Fixed calcularecargoeq();
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

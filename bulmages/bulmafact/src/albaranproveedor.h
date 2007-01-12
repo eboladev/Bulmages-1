@@ -24,7 +24,6 @@
 #include <QString>
 
 #include "company.h"
-//#include "empresa.h"
 #include "dbrecord.h"
 #include "listlinalbaranproveedorview.h"
 #include "listdescalbaranprovview.h"

@@ -141,6 +141,7 @@ public slots:
         calculaypintatotales();
     };
     virtual void on_mui_cobrar_clicked();
+    virtual void on_m_cliente_valueChanged(QString id);
 };
 
 #endif

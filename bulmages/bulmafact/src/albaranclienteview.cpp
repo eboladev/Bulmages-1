@@ -389,3 +389,10 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
     _depura("END AlbaranClienteView::on_mui_cobrar_clicked", 0);
 }
 
+void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
+	_depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
+	subform2->setIdCliente(id);
+	m_forma_pago->setIdCliente(id);
+	_depura("END AlbaranClienteView::on_m_cliente_valueChanged", 0);
+}
+

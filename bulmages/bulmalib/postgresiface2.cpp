@@ -38,7 +38,7 @@
 /// \param conn1 Conexion con la base de datos (Inicializada en \ref postgresiface2
 /// \param SQLQuery Query en formato SQL a realizar en la base de datos.
 cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
-    _depura("cursor2::cursor2", 0);
+    _depura("cursor2::cursor2", 0, SQLQuery);
     try {
         conn = conn1;
         m_error = FALSE;
@@ -70,7 +70,7 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         _depura("cursor2::cursor2: Error en la consulta: " + SQLQuery, 3);
         throw -1;
     } // end try
-    _depura("END cursor2::cursor2", 0);
+    _depura("END cursor2::cursor2", 0, " Numero de registros: "+QString::number(nregistros)+", Numero de campos: "+QString::number(ncampos));
 }
 
 
@@ -136,6 +136,7 @@ QString cursor2::valor(int posicion, int registro) {
     if (registro == -1) {
         registro = registroactual;
     } // end if
+    _depura("END cursor2::valor", 0);
     return (QString::fromUtf8(PQgetvalue(result, registro, posicion)));
 }
 
@@ -147,7 +148,7 @@ QString cursor2::valor(int posicion, int registro) {
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
 QString cursor2::valor(QString campo, int registro) {
-    _depura("cursor2::valor"+ campo + " " + QString::number(registro), 0);
+    _depura("cursor2::valor",0,  campo + " " + QString::number(registro));
     int i = 0;
     if (registro == -1) {
         registro = registroactual;
@@ -163,6 +164,7 @@ QString cursor2::valor(QString campo, int registro) {
 /// Devuelve la posici&oacute;n siguiente al registro que se est&aacute; recorriendo.
 int cursor2::siguienteregistro() {
     _depura("cursor2::siguienteregistro", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
+    _depura("END cursor2::siguienteregistro", 0);
     return ++registroactual;
 }
 
@@ -178,6 +180,7 @@ int cursor2::registroanterior() {
 int cursor2::primerregistro() {
     _depura("cursor2::primerregistro", 0, "Registro actual: " + QString::number(registroactual) + " Numero de registros: " + QString::number(nregistros));
     registroactual = 0;
+    _depura("END cursor2::primerregistro", 0);
     return 0;
 }
 
@@ -192,9 +195,11 @@ int cursor2::ultimoregistro() {
 
 /// Devuelve TRUE si el registro est&aacute; en la posici&oacute;n final, o si est&aacute; vacio.
 bool cursor2::eof() {
+    _depura("cursor2::eof", 0);
     if (nregistros == 0) {
         return (true);
     } // end if
+    _depura("END cursor2::eof", 0);
     return (registroactual >= nregistros);
 }
 
@@ -236,8 +241,10 @@ void postgresiface2::terminar() {
 /// Destructor de la clase que al igual que \ref terminar termina la conexi&oacute;n
 /// con la base de datos.
 postgresiface2::~postgresiface2() {
+    _depura("postgresiface2::~postgresiface2", 0);
     /// close the connection to the database and cleanup.
     PQfinish(conn);
+    _depura("END postgresiface2::~postgresiface2", 0);
 }
 
 
@@ -249,6 +256,7 @@ postgresiface2::~postgresiface2() {
 /// \param passwd Indica la contrasenya que utiliza el usuario para autentificarse.
 /// \return Si todo va bien devuelve 0, en caso contrario devuelve 1.
 int postgresiface2::inicializa(QString nomdb) {
+    _depura("postgresiface2::inicializa", 0, nomdb);
     dbName = nomdb;
     pghost = confpr->valor(CONF_SERVIDOR); /// host name of the backend server.
     pgport = confpr->valor(CONF_PUERTO); /// port of the backend server.
@@ -282,6 +290,7 @@ int postgresiface2::inicializa(QString nomdb) {
     } // end if
     _depura("La conexion con la base de datos ha ido bien, ahora vamos a por la fecha", 0);
     formatofecha();
+    _depura("END postgresiface2::inicializa", 0, nomdb);
     return 0;
 }
 
@@ -290,6 +299,7 @@ int postgresiface2::inicializa(QString nomdb) {
 /// fecha espayola dd/mm/yyyy
 /// \return Devuelve 0 si no ha habido problemas, en caso contrario devuelve 1.
 int postgresiface2::formatofecha() {
+    _depura("postgresiface2::formatofecha", 0);
     QString query = "";
     PGresult *res;
     query = "SET DATESTYLE TO SQL, European";
@@ -308,6 +318,7 @@ int postgresiface2::formatofecha() {
         _depura( "Cambio del formato de codificacion");
     } // end if
     PQclear(res);
+    _depura("END postgresiface2::formatofecha", 0);
     return 0;
 }
 
@@ -377,7 +388,7 @@ void postgresiface2::rollback() {
 /// \return Devuelve un apuntador al objeto \ref cursor2 generado e inicializado con la
 /// respuesta al query.
 cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
-    _depura ("postgresiface2::cargacursor", 0);
+    _depura ("postgresiface2::cargacursor", 0, Query);
     cursor2 *cur = NULL;
     try {
         cur = new cursor2(nomcursor, conn, Query);
@@ -386,7 +397,7 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
         delete cur;
         throw -1;
     } // end try
-    _depura ("END postgresiface2::cargacursor", 0);
+    _depura ("END postgresiface2::cargacursor", 0, nomcursor);
     return cur;
 }
 
@@ -400,7 +411,7 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 #include <qtextcodec.h>
 
 int postgresiface2::ejecuta(QString Query) {
-    _depura("postgresiface2::ejecuta", 0);
+    _depura("postgresiface2::ejecuta", 0, Query);
     PGresult *result = NULL;
     try {
         /// Prova de control de permisos.
@@ -421,6 +432,7 @@ int postgresiface2::ejecuta(QString Query) {
         PQclear(result);
         throw -1;
     } // end try
+    _depura("END postgresiface2::ejecuta", 0, Query);
 }
 
 

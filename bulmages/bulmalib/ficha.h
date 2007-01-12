@@ -33,8 +33,7 @@ class Ficha : public QWidget, public dialogChanges {
 
 public:
     Ficha(QWidget *parent = 0, Qt::WFlags f = 0);
-    ~Ficha() {}
-    ;
+    ~Ficha();
     virtual int guardar() {
         _depura("Ficha::guardar existe solo para ser derivado", 0);
         return 0;

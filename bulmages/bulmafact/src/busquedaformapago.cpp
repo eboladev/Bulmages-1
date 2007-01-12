@@ -73,3 +73,24 @@ void BusquedaFormaPago::setidforma_pago(QString idforma_pago) {
     _depura("END BusquedaFormaPago::setidforma_pago", 0);
 }
 
+
+void BusquedaFormaPago::setIdCliente(QString idcliente) {
+	_depura("BusquedaFormaPago::setIdCliente", 0, idcliente);
+	cursor2 * cur = companyact->cargacursor("SELECT idforma_pago FROM cliente WHERE idcliente="+idcliente);
+	if (!cur->eof()) {
+		setidforma_pago(cur->valor("idforma_pago"));
+	} // end if
+	delete cur;
+	_depura("END BusquedaFormaPago::setIdCliente", 0);
+}
+
+void BusquedaFormaPago::m_activated(int index) {
+        _depura("BusquedaFormaPago::m_activated", 0);
+        if (index > 0) {
+            emit(valueChanged(m_cursorcombo->valor("idforma_pago", index - 1)));
+        } else {
+            emit(valueChanged(""));
+        } // end if
+        _depura("END BusquedaFormaPago::m_activated", 0);
+}
+

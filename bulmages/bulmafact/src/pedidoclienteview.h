@@ -115,14 +115,15 @@ public slots:
 	_depura("on_mui_pasaraalbaran_clicked", 0);
         generarAlbaran();
 	_depura("END on_mui_pasaraalbaran_clicked", 0);
-    }
+    };
     virtual void on_mui_cobrar_clicked();
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
-    }
+    };
     virtual void on_subform3_editFinish(int, int) {
         calculaypintatotales();
-    }
+    };
+    virtual void on_m_cliente_valueChanged(QString id);
 };
 
 #endif

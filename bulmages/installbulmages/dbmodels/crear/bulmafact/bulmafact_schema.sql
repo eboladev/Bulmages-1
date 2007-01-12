@@ -176,11 +176,13 @@ CREATE TABLE tipo_iva (
 -- Esta tabla contiene las tasas de cada tipo de IVA a partir de una fecha dada.
 -- porcentasa_iva: Contiene el porcentaje de la tasa de IVA a aplicar.
 -- fechatasa_iva: Es la fecha de entrada en vigor del % de IVA para el tipo descrito.
+-- porcentretasa_iva: Indica el recargo de equivalencia a aplicar.
 \echo -n ':: Tasa de IVA ... '
 CREATE TABLE tasa_iva (
     idtasa_iva serial PRIMARY KEY,
     idtipo_iva integer REFERENCES tipo_iva(idtipo_iva) NOT NULL,
     porcentasa_iva NUMERIC(5, 2) NOT NULL,
+    porcentretasa_iva NUMERIC(5,2) DEFAULT 0,
     fechatasa_iva date NOT NULL,
     UNIQUE (idtipo_iva, fechatasa_iva)
 );
@@ -546,6 +548,8 @@ CREATE TABLE cliente (
     inactivocliente character(1),
     provcliente character varying,
     idtarifa integer references tarifa(idtarifa),
+    recargoeqcliente boolean DEFAULT FALSE,
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),
     departamento character varying(32)
 );
 
@@ -669,6 +673,7 @@ CREATE TABLE lpedido (
     pvdlpedido numeric(12, 2),
     prevlpedido date,
     ivalpedido numeric(12, 2),
+    receqlpedido NUMERIC(12,2) DEFAULT 0,
     descuentolpedido numeric(12, 2),
     idpedido integer NOT NULL REFERENCES pedido(idpedido),
     idalb_pro integer REFERENCES alb_pro(idalb_pro),
@@ -780,6 +785,7 @@ CREATE TABLE lpresupuesto (
     cantlpresupuesto numeric(12, 2),
     pvplpresupuesto numeric(12, 2),
     ivalpresupuesto numeric(12, 2),
+    reqeqlpresupuesto numeric(12,2) DEFAULT 0,
     descuentolpresupuesto numeric(12, 2),
     ordenlpresupuesto integer,
     idpresupuesto integer NOT NULL REFERENCES presupuesto(idpresupuesto),
@@ -955,6 +961,7 @@ CREATE TABLE lpedidocliente (
     pvplpedidocliente numeric(12, 2),
     prevlpedidocliente date,
     ivalpedidocliente numeric(12, 2),
+    reqeqlpedidocliente NUMERIC(12,2),
     descuentolpedidocliente numeric(12, 2),
     idpedidocliente integer NOT NULL REFERENCES pedidocliente(idpedidocliente),
     ordenlpedidocliente integer,
@@ -1116,6 +1123,7 @@ CREATE TABLE lfactura (
     cantlfactura numeric(12, 2),
     pvplfactura numeric(12, 2),
     ivalfactura numeric(12, 2),
+    reqeqlfactura NUMERIC(12,2) DEFAULT 0,
     descuentolfactura numeric(12, 2),
     ordenlfactura integer,
     idfactura integer NOT NULL REFERENCES factura(idfactura),
@@ -1364,6 +1372,7 @@ CREATE TABLE lfacturap (
     cantlfacturap numeric(12, 2),
     pvplfacturap numeric(12, 2),
     ivalfacturap numeric(12, 2),
+    reqeqlfacturap NUMERIC(12,2) DEFAULT 0,
     descuentolfacturap numeric(12, 2),
     ordenlfacturap integer,
     idfacturap integer NOT NULL REFERENCES facturap(idfacturap),
@@ -1581,11 +1590,13 @@ CREATE TRIGGER restriccionesalbaranptrigger
 -- pvplalbaranp: Precio sin IVA.
 -- descontlalbaranp: Porcentaje de descuento.
 \echo -n ':: Lineas de albaran de proveedor ... '
+
 CREATE TABLE lalbaranp (
     numlalbaranp serial PRIMARY KEY,
     desclalbaranp character varying(100),
     cantlalbaranp numeric(12, 2),
     ivalalbaranp numeric(12, 2),
+    reqeqlalbaranp NUMERIC(12,2) DEFAULT 0,
     pvplalbaranp numeric(12, 2),
     descontlalbaranp numeric(12, 2),
     ordenlalbaranp integer,
@@ -1892,6 +1903,7 @@ CREATE TABLE lalbaran (
     pvplalbaran numeric(12, 2),
     descontlalbaran numeric(12, 2),
     ivalalbaran numeric(12, 2),
+    reqeqlalbaran NUMERIC(12,2) DEFAULT 0,
     ordenlalbaran integer,
     idalbaran integer NOT NULL REFERENCES albaran(idalbaran),
     idarticulo integer NOT NULL REFERENCES articulo(idarticulo)
@@ -2135,6 +2147,7 @@ CREATE TABLE lpedidoproveedor (
     pvplpedidoproveedor numeric(12, 2),
     prevlpedidoproveedor date,
     ivalpedidoproveedor numeric(12, 2),
+    reqeqlpedidoproveedor NUMERIC(12,2) DEFAULT 0,
     descuentolpedidoproveedor numeric(12, 2),
     ordenlpedidoproveedor integer,
     idpedidoproveedor integer NOT NULL REFERENCES pedidoproveedor(idpedidoproveedor),

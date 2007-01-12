@@ -267,3 +267,11 @@ int PresupuestoView::guardar() {
     return 0;
 }
 
+
+void PresupuestoView::on_m_cliente_valueChanged(QString id) {
+	_depura("PresupuestoView::on_m_cliente_valueChanged", 0);
+	subform2->setIdCliente(id);
+	m_forma_pago->setIdCliente(id);
+	_depura("END PresupuestoView::on_m_cliente_valueChanged", 0);
+}
+

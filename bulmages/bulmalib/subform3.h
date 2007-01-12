@@ -36,11 +36,9 @@
 class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
 
-private:
+protected:
     /// Nombre de la tabla en la BD.
     QString m_tablename;
-
-protected:
     /// Lista de encabezados del listado. Coordenadas X de la tabla.
     QList<SHeader *> m_lcabecera;
     /// Filas y contenido. Coordenadas Y de la tabla.

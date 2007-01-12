@@ -285,3 +285,79 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     _depura("END AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
 }
 
+
+/// Se encarga de generar una factura a partir de un albar&aacute;n.
+/** Primero de todo busca una factura por referencia que tenga este albaran.
+    Si dicha factura existe entonces la cargamos y terminamos.
+    Si no existe dicha factura el sistema avisa y permite crear una poniendo
+    Todos los datos del albaran automaticamente en ella.
+*/
+void AlbaranProveedorView::generarFacturaProveedor() {
+    _depura("AlbaranProveedorView::generarFacturaProveedor", 0);
+    /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
+    /// y salimos de la funci&oacute;n.
+    QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue("refalbaranp") + "' AND idproveedor ="+DBvalue("idproveedor");
+    cursor2 *cur = companyact->cargacursor(SQLQuery);
+
+    if (!cur->eof()) {
+
+	/// Informamos que ya hay una factura y que la abriremos.
+	/// Si no salimos de la funci&oacute;n.
+	if (QMessageBox::question(this,
+				tr("Factura de Proveedor existente"),
+				tr("Existe una factura a este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?"),
+				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+		return;
+	}
+        FacturaProveedorView *bud = companyact->newFacturaProveedorView();
+        companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idfacturap"));
+        bud->show();
+        return;
+    } // end if
+    delete cur;
+
+    /// Informamos de que no existe la factura y a ver si lo queremos realizar.
+    /// Si no salimos de la funci&oacute;n.
+//    if (QMessageBox::question(this,
+//                              tr("Factura inexistente"),
+//                              tr("No existe una factura asociada a este albaran. Desea crearla?"),
+//                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+//        return;
+//    }
+
+    /// Creamos la factura.
+    FacturaProveedorView *bud = companyact->newFacturaProveedorView();
+    companyact->m_pWorkspace->addWindow(bud);
+
+    /// Cargamos un elemento que no existe para inicializar bien la clase.
+    bud->inicializar();
+    bud->setcomentfacturap(DBvalue("comentalbaranp"));
+    bud->setidforma_pago(DBvalue("idforma_pago"));
+    bud->setreffacturap(DBvalue("refalbaranp"));
+    bud->setidproveedor(DBvalue("idproveedor"));
+    bud->pintar();
+    bud->show();
+
+    QString l;
+    SDBRecord *linea, *linea1;
+    for (int i = 0; i < listalineas->rowCount(); ++i) {
+        linea = listalineas->lineaat(i);
+        if (linea->DBvalue( "idarticulo") != "") {
+            linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
+            linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
+            linea1->setDBvalue("cantlfacturap", linea->DBvalue("cantlalbaranp"));
+            linea1->setDBvalue("pvplfacturap", linea->DBvalue("pvplalbaranp"));
+            linea1->setDBvalue("descuentolfacturap", linea->DBvalue("descontlalbaranp"));
+            linea1->setDBvalue("idarticulo", linea->DBvalue("idarticulo"));
+            linea1->setDBvalue("codigocompletoarticulo", linea->DBvalue("codigocompletoarticulo"));
+            linea1->setDBvalue("nomarticulo", linea->DBvalue("nomarticulo"));
+            linea1->setDBvalue("ivalfacturap", linea->DBvalue("ivalalbaranp"));
+            bud->getlistalineas()->nuevoRegistro();
+        } // end if
+    } // end for
+    bud->calculaypintatotales();
+//    m_procesadoalbaranp->setChecked(TRUE);
+    _depura("END AlbaranClienteView::generarFactura", 0);
+}
+

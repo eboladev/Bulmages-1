@@ -130,6 +130,7 @@ public slots:
     virtual void on_subform2_editFinish(int, int) {
         calculaypintatotales();
     }
+    virtual void on_m_cliente_valueChanged(QString id);
 };
 
 #endif

@@ -30,6 +30,7 @@
 
 
 ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListLinPresupuestoView::ListLinPresupuestoView", 0);
     setDBTableName("lpresupuesto");
     setDBCampoId("idlpresupuesto");
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
@@ -40,76 +41,28 @@ ListLinPresupuestoView::ListLinPresupuestoView(QWidget *parent) : SubForm2Bf(par
     addSHeader("cantlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
     addSHeader("pvplpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Precio de venta s/IVA"));
     addSHeader("ivalpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% IVA"));
+    addSHeader("reqeqlpresupuesto", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo E.Q."));
     addSHeader("descuentolpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("% Descuento"));
     addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id presupuesto"));
     addSHeader("ordenlpresupuesto", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
-
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
-}
-
-
-void ListLinPresupuestoView::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("ListLinPresupuestoView::editFinished", 0);
-    SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row, col);
-    camp->refresh();
-
-    /// Si el campo no ha sido cambiado se sale.
-    if ( ! camp->cambiado() ) {
-    	SubForm3::on_mui_list_editFinished(row, col, key);
-	return;
-    } // end if
-
-    if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
-        if (!cur->eof()) {
-            rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
-            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-            rec->setDBvalue("desclpresupuesto", cur->valor("nomarticulo"));
-            rec->setDBvalue("cantlpresupuesto", "1.00");
-            rec->setDBvalue("descuentolpresupuesto", "0.00");
-            rec->setDBvalue("pvplpresupuesto", cur->valor("pvparticulo"));
-        } // end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
-        if (!cur->eof() ) {
-            rec->setDBvalue("ivalpresupuesto", cur1->valor("porcentasa_iva"));
-        } // end if
-        delete cur1;
-        delete cur;
-    } // end if
-    SubForm3::on_mui_list_editFinished(row, col, key);    
-    _depura("END ListLinPresupuestoView::editFinished", 0);
+    _depura("END ListLinPresupuestoView::ListLinPresupuestoView", 0);
 }
 
 
 void ListLinPresupuestoView::cargar(QString idpresupuesto) {
-    _depura("ListLinPresupuestoView::cargar\n", 0);
+    _depura("ListLinPresupuestoView::cargar", 0);
     mdb_idpresupuesto = idpresupuesto;
     /// Al hacer la carge usamos el ordenlpresupuesto para indicar que el campo de ordenacion es el que toca.
     cursor2 * cur= companyact()->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE idpresupuesto = " + mdb_idpresupuesto +" ORDER BY ordenlpresupuesto");
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END ListLinPresupuestoView::cargar", 0);
 }
 
 
-Fixed ListLinPresupuestoView::calculabase() {
-    Fixed base("0.0");
-    for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("cantlpresupuesto", i));
-        base = base + totpar;
-    } // end for
-    return base;
-}
 
 
-Fixed ListLinPresupuestoView::calculaiva() {
-    Fixed base("0.0");
-    for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplpresupuesto", i)) * Fixed(DBvalue("ivalpresupuesto", i));
-        base = base + totpar;
-    } // end for
-    return base;
-}
+
 

@@ -36,14 +36,10 @@ class ListLinAlbaranClienteView : public SubForm2Bf {
 public:
     QString mdb_idalbaran;
     ListLinAlbaranClienteView(QWidget *parent = 0);
-    ~ListLinAlbaranClienteView() {}
-    ;
+    ~ListLinAlbaranClienteView() {};
 
 public slots:
     virtual void cargar(QString idalbaran);
-    Fixed calculabase();
-    Fixed calculaiva();
-    virtual void on_mui_list_editFinished(int, int, int);
 };
 
 #endif

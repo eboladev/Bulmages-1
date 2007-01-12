@@ -100,6 +100,18 @@ public:
     void pintaprovcliente(QString val) {
         m_provcliente->setProvincia(val);
     }
+    void pintarecargoeqcliente(QString val) {
+	/// Pintamos el recargo de equivalencia
+	if (val == "t") {
+		mui_recargoeqcliente->setChecked(TRUE);
+	} else {
+		mui_recargoeqcliente->setChecked(FALSE);
+	} // end if
+    };
+    void pintaidforma_pago(QString val) {
+	mui_forma_pago->setidforma_pago(val);
+    };
+
     virtual int sacaWindow();
 
 public slots:

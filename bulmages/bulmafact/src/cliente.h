@@ -52,69 +52,7 @@ public:
     virtual void borraCliente();
     virtual void vaciaCliente();
     virtual int cargar(QString);
-    void setidcliente(QString val) {
-        setDBvalue("idcliente", val);
-    };
-    void setnomcliente(QString val) {
-        setDBvalue("nomcliente", val);
-    };
-    void setnomaltcliente(QString val) {
-        setDBvalue("nomaltcliente", val);
-    };
-    void setcifcliente(QString val) {
-        setDBvalue("cifcliente", val);
-    };
-    void setbancocliente(QString val) {
-        setDBvalue("bancocliente", val);
-    };
-    void setdircliente(QString val) {
-        setDBvalue("dircliente", val);
-    };
-    void setpoblcliente(QString val) {
-        setDBvalue("poblcliente", val);
-    };
-    void setcpcliente(QString val) {
-        setDBvalue("cpcliente", val);
-    };
-    void settelcliente(QString val) {
-        setDBvalue("telcliente", val);
-    };
-    void setteltrabcliente(QString val) {
-        setDBvalue("teltrabcliente", val);
-    };    
-    void setmovilcliente(QString val) {
-        setDBvalue("movilcliente", val);
-    };
-    void setfaxcliente(QString val) {
-        setDBvalue("faxcliente", val);
-    };
-    void setmailcliente(QString val) {
-        setDBvalue("mailcliente", val);
-    };
-    void seturlcliente(QString val) {
-        setDBvalue("urlcliente", val);
-    };
-    void setfaltacliente(QString val) {
-        setDBvalue("faltacliente", val);
-    };
-    void setfbajacliente(QString val) {
-        setDBvalue("fbajacliente", val);
-    };
-    void setcomentcliente(QString val) {
-        setDBvalue("comentcliente", val);
-    };
-    void setinactivocliente(QString val) {
-        setDBvalue("inactivocliente", val);
-    };
-    void setprovcliente(QString val) {
-        setDBvalue("provcliente", val);
-    };
-    void setcodcliente(QString val) {
-        setDBvalue("codcliente", val);
-    };
-    void setcorpcliente(QString val) {
-        setDBvalue("corpcliente", val);
-    };
+
     virtual void pintaidcliente(QString) {}
     ;
     virtual void pintanomcliente(QString) {}
@@ -157,6 +95,8 @@ public:
     ;
     virtual void pintacorpcliente(QString) {}
     ;
+    virtual void pintaidforma_pago(QString) {};
+    virtual void pintarecargoeqcliente(QString) {};
 };
 
 #endif

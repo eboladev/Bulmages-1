@@ -96,6 +96,32 @@ BEGIN
 		ALTER TABLE lalbaran ADD COLUMN ordenlalbaran INTEGER;
 	END IF;
 
+	SELECT INTO as * FROM pg_attribute WHERE attname=''porcentretasa_iva'';
+	IF NOT FOUND THEN
+		ALTER TABLE tasa_iva ADD COLUMN porcentretasa_iva NUMERIC(5,2);
+		ALTER TABLE tasa_iva ALTER COLUMN porcentretasa_iva SET DEFAULT 0;
+		ALTER TABLE cliente ADD COLUMN recargoeqcliente BOOLEAN;
+		ALTER TABLE cliente ALTER COLUMN recargoeqcliente SET DEFAULT FALSE;
+		ALTER TABLE cliente ADD COLUMN idforma_pago integer;
+		ALTER TABLE cliente ADD CONSTRAINT idforma_pagofk FOREIGN KEY (idforma_pago) REFERENCES forma_pago(idforma_pago);
+		ALTER TABLE lpedido ADD COLUMN reqeqlpedido NUMERIC(12,2);
+		ALTER TABLE lpedido ALTER COLUMN reqeqlpedido SET DEFAULT 0;
+		ALTER TABLE lpresupuesto ADD COLUMN reqeqlpresupuesto NUMERIC(12,2);
+		ALTER TABLE lpresupuesto ALTER COLUMN reqeqlpresupuesto SET DEFAULT 0;
+		ALTER TABLE lpedidocliente ADD COLUMN reqeqlpedidocliente NUMERIC(12,2);
+		ALTER TABLE lpedidocliente ALTER COLUMN reqeqlpedidocliente SET DEFAULT 0;
+		ALTER TABLE lfactura ADD COLUMN reqeqlfactura NUMERIC(12,2);
+		ALTER TABLE lfactura ALTER COLUMN reqeqlfactura SET DEFAULT 0;
+		ALTER TABLE lfacturap ADD COLUMN reqeqlfacturap NUMERIC(12,2);
+		ALTER TABLE lfacturap ALTER COLUMN reqeqlfacturap SET DEFAULT 0;
+		ALTER TABLE lalbaran ADD COLUMN reqeqlalbaran NUMERIC(12,2);
+		ALTER TABLE lalbaran ALTER COLUMN reqeqlalbaran SET DEFAULT 0;
+		ALTER TABLE lpedidoproveedor ADD COLUMN reqeqlpedidoproveedor NUMERIC(12,2);
+		ALTER TABLE lpedidoproveedor ALTER COLUMN reqeqlpedidoproveedor SET DEFAULT 0;
+		ALTER TABLE lalbaranp ADD COLUMN reqeqlalbaranp NUMERIC(12,2);
+		ALTER TABLE lalbaranp ALTER COLUMN reqeqlalbaranp SET DEFAULT 0;
+	END IF;
+
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -114,9 +140,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0002'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-0003'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0002''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0003''); 		 
 	END IF;
 	RETURN 0;
 END;

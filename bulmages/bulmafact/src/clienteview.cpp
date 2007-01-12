@@ -65,6 +65,8 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         m_listalbaranes->setcompany(m_companyact);
         m_listfacturas->setcompany(m_companyact);
         m_listcobros->setcompany(m_companyact);
+	mui_forma_pago->setcompany(m_companyact);
+        mui_forma_pago->setidforma_pago("0");
 	
 	/// Metemos la ventana en el workSpace.
         m_companyact->meteWindow(windowTitle(), this, FALSE);
@@ -186,6 +188,8 @@ int ClienteView::guardar() {
     setDBvalue("provcliente", m_provcliente->currentText());
     setDBvalue("codcliente", mui_codcliente->text());
     setDBvalue("corpcliente", mui_corpcliente->text());
+    setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
+    setDBvalue("recargoeqcliente",  mui_recargoeqcliente->isChecked() ? "TRUE" : "FALSE");
     int err = Cliente::guardar();
     if (!err) {
         dialogChanges_cargaInicial();

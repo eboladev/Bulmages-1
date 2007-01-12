@@ -36,6 +36,7 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     setDelete(TRUE);
     m_delegate = new QSubForm2BfDelegate(this);
     mui_list->setItemDelegate(m_delegate);
+    mdb_idcliente = "";
     _depura("END SubForm2Bf::SubForm2Bf", 0);
 }
 
@@ -127,9 +128,43 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
             rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
             rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
             rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-        }
+	    if(m_tablename == "lpresupuesto" 
+	    || m_tablename == "lpedidoproveedor"
+	    || m_tablename == "lpedidocliente"
+	    || m_tablename == "lalbaranp"
+	    || m_tablename == "lfacturap"
+	    || m_tablename == "lalbaran"
+	    || m_tablename == "lfactura") {
+		rec->setDBvalue("desc"+m_tablename, cur->valor("nomarticulo"));
+		rec->setDBvalue("cant"+m_tablename, "1.00");
+		rec->setDBvalue("descuento"+m_tablename, "0.00");
+		rec->setDBvalue("pvp"+m_tablename, cur->valor("pvparticulo"));
+	    } // end if
+        } // end if
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur->eof() ) {
+	    if(m_tablename == "lpresupuesto" 
+	    || m_tablename == "lpedidocliente"
+	    || m_tablename == "lpedidoproveedor"
+	    || m_tablename == "lalbaranp"
+	    || m_tablename == "lfacturap"
+	    || m_tablename == "lalbaran"
+	    || m_tablename == "lfactura") {
+            	rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
+            	/// Calculamos el recargo equivalente.
+		cursor2 *cur2 = companyact()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
+		if (cur2->valor("recargoeqcliente") == "t") {
+			rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+		} else {
+			rec->setDBvalue("reqeq"+m_tablename, "0");
+		} // end if
+		delete cur2;
+	    } // end if
+        } // end if
+        delete cur1;
         delete cur;
-    }
+    } // end if
+
     SubForm3::on_mui_list_editFinished(row, col, key);
     _depura("END SubForm2Bf::editFinished", 0);
 }
@@ -178,6 +213,66 @@ void SubForm2Bf::contextMenuEvent(QContextMenuEvent *) {
 }
 
 
+void SubForm2Bf::setIdCliente(QString id) {
+    _depura("SubForm2Bf::setIdCliente", 0, id);
+    mdb_idcliente = id;
+    /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
+    for (int i = 0; i < rowCount() - 1; i++) {
+        SDBRecord *rec = lineaat(i);
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
+        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+        if (!cur->eof() ) {
+            rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
+            /// Calculamos el recargo equivalente.
+            cursor2 *cur2 = companyact()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
+            if (cur2->valor("recargoeqcliente") == "t") {
+                rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+            } else {
+                rec->setDBvalue("reqeq"+m_tablename, "0");
+            } // end if
+            delete cur2;
+        } // end if
+        delete cur1;
+        delete cur;
+    } // end for
+    _depura("END SubForm2Bf::setIdCliente", 0);
+}
+
+Fixed SubForm2Bf::calcularecargoeq() {
+    _depura("SubForm2Bf::calcularecargoeq", 0);
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvp"+m_tablename, i)) * Fixed(DBvalue("cant"+m_tablename, i)) * Fixed(DBvalue("receq"+m_tablename, i));
+        base = base + totpar;
+    } // end for
+    _depura("END SubForm2Bf::calcularecargoeq", 0);
+    return base;
+}
+
+Fixed SubForm2Bf::calculabase() {
+    _depura("SubForm2Bf::calculabase", 0);
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvp"+m_tablename, i)) * Fixed(DBvalue("cant"+m_tablename, i));
+        base = base + totpar;
+    } // end for
+    _depura("END SubForm2Bf::calculabase", 0);
+    return base;
+}
+
+
+Fixed SubForm2Bf::calculaiva() {
+    _depura("SubForm2Bf::calculaiva", 0);
+    Fixed base("0.0");
+    for (int i = 0; i < rowCount() - 1; i++) {
+        Fixed totpar = Fixed(DBvalue("pvp"+m_tablename, i)) * Fixed(DBvalue("cant"+m_tablename, i)) * Fixed(DBvalue("iva"+m_tablename, i));
+        base = base + totpar;
+    } // end for
+    _depura("END SubForm2Bf::calculaiva", 0);
+    return base;
+}
+
+
 
 // ===============================================================
 //  Tratamientos del Item Delegate
@@ -210,7 +305,7 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
 	   || linea->nomcampo() == "iva"+m_subform->tableName()	) {
 	QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
 	editor->setMinimum(0);
-	//editor->setMaximum(10000);
+	editor->setMaximum(1000000);
 	return editor;
     } else if (linea->nomcampo() == "codigocompletoarticulo"){
 	BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
@@ -313,4 +408,6 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
     _depura("END QSubForm2BfDelegate::eventFilter()", 0);
     return QItemDelegate::eventFilter(obj, event);
 }
+
+
 

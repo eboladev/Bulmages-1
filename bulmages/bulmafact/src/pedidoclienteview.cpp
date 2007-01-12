@@ -246,3 +246,10 @@ int PedidoClienteView::guardar() {
     return 0;
 }
 
+void PedidoClienteView::on_m_cliente_valueChanged(QString id) {
+	_depura("PedidoClienteView::on_m_cliente_valueChanged", 0);
+	subform3->setIdCliente(id);
+	m_forma_pago->setIdCliente(id);
+	_depura("END PedidoClienteView::on_m_cliente_valueChanged", 0);
+}
+
