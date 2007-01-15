@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borras                                    *
+ *   Copyright (C) 2003 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -11,34 +11,41 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #include "nuevafact.h"
 
 
-nuevafact::nuevafact(QWidget * parent, const char * name, Qt::WFlags f) 
-  : QDialog(parent,name,f) {
+nuevafact::nuevafact(QWidget *parent, const char *name, Qt::WFlags f) 
+  : QDialog(parent, name, f) {
   setupUi(this);
 
-  // signals and slots connections
+  /// Signals and slots connections.
   QObject::connect(PushButton1, SIGNAL(clicked()), this, SLOT(accept()));
   QObject::connect(PushButton1_2, SIGNAL(clicked()), this, SLOT(close()));
-}// end BNuevaEmpresa
+}
 
 
 nuevafact::~nuevafact() {
-}// ~nuevafact
+}
 
 
 void nuevafact::accept() {
-  // Falta comprobar que tengas permisos para crear nuevas empresas.
+  /// Falta comprobar que tengas permisos para crear nuevas empresas.
   QString nombredb;
   QString nombreEmp;
 
   nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
   nombreEmp = nombreempresa->text().stripWhiteSpace();
   QString cadena = confpr->valor(CONF_PROGDATA);
-  cadena +="dbmodels/creabulmafact --texto "+nombredb+" 1 "+nombreEmp+" "+ ejercicioempresa->text().stripWhiteSpace()+" ";
+  cadena += "dbmodels/creabulmafact --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().stripWhiteSpace() + " ";
   
   system(cadena.ascii());
   close();
-}// end accept
+}
+

@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Tomeu Borr�                                    *
+ *   Copyright (C) 2003 by Tomeu Borras                                    *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -11,43 +11,50 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#include "importContaplus.h"
-#include "pgimportfiles.h"
 
-#include <qfile.h>
+#include <QToolButton>
+#include <QFile>
+#include <QLineEdit>
+#include <QCheckBox>
 #include <q3filedialog.h>
-#include <qlineedit.h>
 #include <q3progressbar.h>
 #include <q3textbrowser.h>
-#include <qcheckbox.h>
 
+#include "importContaplus.h"
+#include "pgimportfiles.h"
 #include "busquedafecha.h"
-
-#include <qtoolbutton.h>
-
 #include "calendario.h"
+
 
 Q3ProgressBar *progress;
 Q3TextBrowser *mensajes;
-QString mensajein="";
+QString mensajein = "";
+
+
 void importContaplus::alerta(int a, int b) {
-	fprintf(stderr,"mensaje publicado");
-	progress->setProgress(a,b);
-}// end realizado
+	fprintf(stderr, "mensaje publicado");
+	progress->setProgress(a, b);
+}
+
 
 void importContaplus::mensajeria(QString mensaje) {
-	mensajein+=mensaje;
+	mensajein += mensaje;
 	mensajes->setText(mensajein);
-	mensajes->scrollBy(0,400);
-}// end publicamensaje
+	mensajes->scrollBy(0, 400);
+}
 
 
-importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const char * name, Qt::WFlags f=0) 
-  :  QDialog(parent,name,f), pgimportfiles(con) {
+importContaplus::importContaplus(postgresiface2 *con, QWidget *parent, const char *name, Qt::WFlags f = 0)
+  : QDialog(parent, name, f), pgimportfiles(con) {
   setupUi(this);
 
-  // signals and slots connections
+  /// Signals and slots connections.
   QObject::connect(pushButton33, SIGNAL(clicked()), this, SLOT(botonImportar()));
   QObject::connect(pushButton33_2, SIGNAL(clicked()), this, SLOT(botonExportar()));
   QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(close()));
@@ -58,72 +65,74 @@ importContaplus::importContaplus(postgresiface2 * con, QWidget * parent, const c
   progress = m_progressbar;
   mensajes = m_mensajes;
   conexionbase = con;
-}//end importContaplus
+}
 
-/// Se ha pulsado sobre el bot� de bsqueda de una subcuenta.
+
+/// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 void importContaplus::botonBuscarXML() {
-	m_XML->setText( Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Contaplus (*.xml)", this, "select file", "Elija el Archivo"));
-}// end botonBuscarSubCta
+	m_XML->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.xml)", this, "select file", "Elija el archivo"));
+}
 
-/// Se ha pulsado sobre el bot� de bsqueda de una subcuenta.
+
+/// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 void importContaplus::botonBuscarSubCta() {
-	m_subCta->setText( Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
-}// end botonBuscarSubCta
+	m_subCta->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.txt)", this, "select file", "Elija el archivo"));
+}
 
-/** \brief SLOT que responde a la pulsaci� de selecci� de archivo.
-  */
+
+/// SLOT que responde a la pulsacion de seleccion de archivo.
 void importContaplus::botonBuscarDiario() {
-	m_diario->setText( Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER),"Contaplus (*.txt)", this, "select file", "Elija el Archivo"));
-}// end botonBuscarDiario	
+	m_diario->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.txt)", this, "select file", "Elija el archivo"));
+}
+
 
 void importContaplus::botonImportar() {
 	QString finicial = m_fechainicial->text();
 	QString ffinal = m_fechafinal->text();
 	if (m_subCta->text() != "") {
-		QFile filecont (m_subCta->text());
-		QFile fileasie (m_diario->text());
+		QFile filecont(m_subCta->text());
+		QFile fileasie(m_diario->text());
 		filecont.open(QIODevice::ReadOnly);
 		fileasie.open(QIODevice::ReadOnly);
 		setFInicial(finicial);
 		setFFinal(ffinal);	
-		if (m_test->isChecked() ) {
+		if (m_test->isChecked()) {
 			setModoTest();
-		}// end if
+		} // end if
 		contaplus2Bulmages(filecont, fileasie);
 		filecont.close();
 		fileasie.close();
 	} else {
-		QFile filexml (m_XML->text());
+		QFile filexml(m_XML->text());
 		filexml.open(QIODevice::ReadOnly);
 		XML2Bulmages(filexml);
 		filexml.close();
-	}// end if
-	mensajein="";
-}// end botonImportar 
+	} // end if
+	mensajein = "";
+}
 
 
-/** \brief SLOT que responde a la pulsaci� del bot� de exportar
-  * 
-  * Se ha pulsado sobre el bot� de exportar. Lee los campos del formulario
-  * mira si la opci� de exportaci� es XML o contaplus y llama a las funciones apropiadas
-  * de la clase \ref pgimportfiles 
-  * Esta funci� utiliza los punteros a funci� para inicializar \ref pgimportfiles con las funciones que se van a
-  * encargar de presentaci� del estado de la importaci�.
-  * \todo Los punteros a funci� deber�n ser reemplazados por funciones virtuales y haciendo derivar esta clase de pgimportfiles.
-  */
+/** SLOT que responde a la pulsacion del boton de exportar */
+/// Se ha pulsado sobre el boton de exportar. Lee los campos del formulario
+/// mira si la opcion de exportacion es XML o contaplus y llama a las funciones apropiadas
+/// de la clase \ref pgimportfiles
+/// Esta funcion utiliza los punteros a funcion para inicializar \ref pgimportfiles con
+/// las funciones que se van a encargar de presentacion del estado de la importacion.
+/// \todo Los punteros a funcion deberian ser reemplazados por funciones virtuales y
+/// haciendo derivar esta clase de pgimportfiles.
 void importContaplus::botonExportar() {
 	/// Leemos las fechas entre las que tiene que ser el listado.
 	QString finicial = m_fechainicial->text();
 	QString ffinal = m_fechafinal->text();
 
 	setFInicial(finicial);
-	setFFinal(ffinal);	
-	if (m_test->isChecked() ) {
+	setFFinal(ffinal);
+	if (m_test->isChecked()) {
 		setModoTest();
-	}// end if	
+	} // end if
 	if (m_subCta->text() != "") {
-		QFile filecont (m_subCta->text());
-		QFile fileasie (m_diario->text());
+		QFile filecont(m_subCta->text());
+		QFile fileasie(m_diario->text());
 		filecont.open(QIODevice::WriteOnly);
 		fileasie.open(QIODevice::WriteOnly);
 		bulmages2Contaplus(filecont, fileasie);
@@ -131,10 +140,11 @@ void importContaplus::botonExportar() {
 		fileasie.close();
 	} // end if
 	if (m_XML->text() != "") {
-		QFile filexml (m_XML->text());
+		QFile filexml(m_XML->text());
 		filexml.open(QIODevice::WriteOnly);
 		bulmages2XML(filexml);
 		filexml.close();
-	}// end if
-	mensajein="";
-}// end botonExportar
+	} // end if
+	mensajein = "";
+}
+

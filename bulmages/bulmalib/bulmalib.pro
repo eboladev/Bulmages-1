@@ -86,7 +86,7 @@ INCLUDEPATH += . \
 /usr/include/QtXml \
 /usr/include/qt4/include/QtXml
 
-VERSION = 0.5.9
+VERSION = 0.9.1
 TARGET = bulmalib
 OBJECTS_DIR = .obj
 UI_DIR = .ui
@@ -128,6 +128,6 @@ windows {
 	DEFINES += WIN32
 	CONFIG += release \
 		   dll
-	VERSION += 0.5.9
+	VERSION += 0.9.1
 }
 

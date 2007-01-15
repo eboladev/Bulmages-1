@@ -17,26 +17,28 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef nuevafact_H
 #define nuevafact_H
 
+#include <QLineEdit>
+#include <QDialog>
+
 #include "ui_nuevafactbase.h"
 #include "postgresiface2.h"
-#include <qlineedit.h>
-#include <qdialog.h>
 
-/** @author Josep Burcion */
+
 class BSelector;
 
-class nuevafact : public QDialog, public Ui_nuevafactbase
-{
 
+class nuevafact : public QDialog, public Ui_nuevafactbase {
 public:
-    nuevafact(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel);
+    nuevafact(QWidget *parent = 0, const char *name = 0, Qt::WFlags f = Qt::WType_TopLevel);
     ~nuevafact();
 
 private slots:
-  virtual void accept();
+    virtual void accept();
 };
 
 #endif
+

@@ -17,28 +17,28 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef BNuevaEmpresa_H
 #define BNuevaEmpresa_H
 
+#include <QLineEdit>
+#include <QDialog>
+
 #include "ui_nuevaempresadlg.h"
 #include "postgresiface2.h"
-#include <qlineedit.h>
-#include <qdialog.h>
 
-/** @author Josep Burcion */
+
 class BSelector;
 
-class BNuevaEmpresa : public QDialog, public Ui_nuevaempresadlg
-{
 
+class BNuevaEmpresa : public QDialog, public Ui_nuevaempresadlg {
 public:
-    BNuevaEmpresa(QWidget * parent = 0, const char * name = 0, Qt::WFlags f = Qt::WType_TopLevel);
+    BNuevaEmpresa(QWidget *parent = 0, const char *name = 0, Qt::WFlags f = Qt::WType_TopLevel);
     ~BNuevaEmpresa();
 
 private slots:
-  virtual void accept();
-
-
+    virtual void accept();
 };
 
 #endif
+

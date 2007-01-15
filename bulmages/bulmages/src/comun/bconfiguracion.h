@@ -11,64 +11,76 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
  *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef BCONFIGURACION_H
 #define BCONFIGURACION_H
+
+#include <QPushButton>
+#include <QLineEdit>
+#include <QLabel>
+#include <QComboBox>
+#include <QSpinBox>
+#include <QFontDatabase>
+#include <QDialog>
+
+#include <q3listview.h>
+#include <q3textedit.h>
+#include <q3popupmenu.h>
+#include <q3filedialog.h>
 
 #include "ui_configuracion.h"
 #include "bselector.h"
 #include "postgresiface2.h"
-#include <qpushbutton.h>
-#include <q3listview.h>
-#include <qlineedit.h>
-#include <qlabel.h>
-#include <q3textedit.h>
-#include <q3popupmenu.h>
-#include <qcombobox.h>
-#include <qspinbox.h>
-#include <qfontdatabase.h>
-#include <q3filedialog.h>
-#include <qdialog.h>
 
 #ifndef WIN32
 #include <sys/wait.h>
 #endif
 
-/** @author Josep Burcion */
 
 class BSelector;
 
+
 class BConfiguracion : public QDialog, public Ui_UIconfiguracion {
-Q_OBJECT
+    Q_OBJECT
+
 public:
-    BConfiguracion(BSelector *, QWidget *, const char *, Qt::WFlags );
+    BConfiguracion(BSelector *, QWidget *, const char *, Qt::WFlags);
     ~BConfiguracion();
+
 private:
     BSelector* PunteroAlSelector;
     void cargarFichaBulmages();
     void cargarFichaUsuarios();
     void tablaconfiguracion();
+
 private slots:
-  virtual void cerrar();
-  virtual void listView1_currentChanged(Q3ListViewItem *);
-  virtual void listView2_clickBotonDerecho(Q3ListViewItem*,const QPoint&,int);
-  virtual void listiView2_clickMouse(int,Q3ListViewItem *,const QPoint&,int);
-  virtual void FontChanged(const QString &);
-  virtual void FontSizeChanged(int);
-  virtual void salvarEmpresa();
-  virtual void BotonA_4restaurarEmpresa();
-  virtual void BotonA_10aceptar();
-  virtual void BotonA_11rechazar();
-  virtual void BotonA_6nombreEmpresa();
-  virtual void BotonA_61clonarEmpresa();
-  virtual void nuevaEmpresa();
-  virtual void borrarEmpresa();
-  virtual void nuevoEjercicio();
-  virtual void BotonB_1Aplicar();
-  virtual void BotonB_2Desacer();
-  virtual void nuevaFacturacion();
-  virtual void BotonContaplus();
-  virtual void s_importexportbulmafact();
+    virtual void cerrar();
+    virtual void listView1_currentChanged(Q3ListViewItem *);
+    virtual void listView2_clickBotonDerecho(Q3ListViewItem *, const QPoint&, int);
+    virtual void listiView2_clickMouse(int, Q3ListViewItem *, const QPoint&, int);
+    virtual void FontChanged(const QString &);
+    virtual void FontSizeChanged(int);
+    virtual void salvarEmpresa();
+    virtual void BotonA_4restaurarEmpresa();
+    virtual void BotonA_10aceptar();
+    virtual void BotonA_11rechazar();
+    virtual void BotonA_6nombreEmpresa();
+    virtual void BotonA_61clonarEmpresa();
+    virtual void nuevaEmpresa();
+    virtual void borrarEmpresa();
+    virtual void nuevoEjercicio();
+    virtual void BotonB_1Aplicar();
+    virtual void BotonB_2Desacer();
+    virtual void nuevaFacturacion();
+    virtual void BotonContaplus();
+    virtual void s_importexportbulmafact();
 };
 
 #endif
+

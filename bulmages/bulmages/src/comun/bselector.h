@@ -17,48 +17,57 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+
 #ifndef BSELECTOR_H
 #define BSELECTOR_H
 
+#include <QEvent>
+#include <QMainWindow>
+
 #include "ui_selectorbase.h"
-#include <qevent.h>
-#include <qmainwindow.h>
 #include "abreempresaview.h"
 #include "bconfiguracion.h"
 
-/** @author Josep Burcion 
-  * @brief Muestra un selector de aplicaciones y configuraci�
-  */
 
+/** Muestra un selector de aplicaciones y configuracion. */
 class BSelector : public QMainWindow, public Ui_selectorbase {
-Q_OBJECT
+    Q_OBJECT
 
 private:
-/// Nombre de la base de datos que representa a la empresa.
-   QString m_empresabd;
-/// Indica si va a ser contabilidad o facturaci�   
-   QString m_tipoempresa;        
- 
+    /// Nombre de la base de datos que representa a la empresa.
+    QString m_empresabd;
+    /// Indica si va a ser contabilidad o facturacion.
+    QString m_tipoempresa;
+
 public:
-    BSelector(QWidget * parent=0,const char * name=0);
+    BSelector(QWidget *parent = 0, const char *name = 0);
     ~BSelector();
-    QString empresaDB() {return m_empresabd;};
-    void setEmpresaBD(QString emp) {m_empresabd=emp;};
-    QString tipoEmpresa() {return m_tipoempresa;};
-    void setTipoEmpresa(QString tip) {m_tipoempresa = tip;};
+    QString empresaDB() {
+        return m_empresabd;
+    };
+    void setEmpresaBD(QString emp) {
+        m_empresabd = emp;
+    };
+    QString tipoEmpresa() {
+        return m_tipoempresa;
+    };
+    void setTipoEmpresa(QString tip) {
+        m_tipoempresa = tip;
+    };
 
 public slots:
-  virtual void seleccionaempresa_clicked();
-  
+    virtual void seleccionaempresa_clicked();
+
 private slots:
-  virtual void salir_clicked();
-  virtual void configura_clicked();
-  virtual void m_iglues_clicked();
-  virtual void m_bulmatpv_clicked();
-  virtual void contabilidad_clicked();
-  virtual void produccion_clicked();
-  virtual void m_bcontaweb_clicked();
-  virtual void m_bulmafact_clicked();
+    virtual void salir_clicked();
+    virtual void configura_clicked();
+    virtual void m_iglues_clicked();
+    virtual void m_bulmatpv_clicked();
+    virtual void contabilidad_clicked();
+    virtual void produccion_clicked();
+    virtual void m_bcontaweb_clicked();
+    virtual void m_bulmafact_clicked();
 };
 
 #endif
+
