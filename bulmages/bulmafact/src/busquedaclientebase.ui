@@ -1,37 +1,34 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BusquedaClienteBase</class>
  <widget class="QWidget" name="BusquedaClienteBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>208</width>
-    <height>86</height>
+    <width>209</width>
+    <height>78</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Form1</string>
   </property>
-  <layout class="QGridLayout" >
+  <layout class="QVBoxLayout" >
    <property name="margin" >
     <number>0</number>
    </property>
    <property name="spacing" >
     <number>5</number>
    </property>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
+   <item>
+    <layout class="QVBoxLayout" >
      <property name="margin" >
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
-      <widget class="QLineEdit" name="m_cifcliente" >
+      <widget class="QLabel" name="label" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>5</hsizetype>
@@ -40,39 +37,64 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="text" >
+        <string>Cliente:</string>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="mui_buscar" >
-       <property name="minimumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
+      <layout class="QHBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
        </property>
-       <property name="maximumSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
+       <property name="spacing" >
+        <number>5</number>
        </property>
-       <property name="text" >
-        <string/>
-       </property>
-       <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
-       </property>
-       <property name="iconSize" >
-        <size>
-         <width>22</width>
-         <height>22</height>
-        </size>
-       </property>
-      </widget>
+       <item>
+        <widget class="QLineEdit" name="m_cifcliente" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>5</hsizetype>
+           <vsizetype>0</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QToolButton" name="mui_buscar" >
+         <property name="minimumSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="maximumSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+         <property name="text" >
+          <string/>
+         </property>
+         <property name="icon" >
+          <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+         </property>
+         <property name="iconSize" >
+          <size>
+           <width>22</width>
+           <height>22</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
-   <item row="2" column="0" >
+   <item>
     <widget class="QLabel" name="m_nomcliente" >
      <property name="sizePolicy" >
       <sizepolicy>
@@ -90,25 +112,9 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QLabel" name="label" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>5</hsizetype>
-       <vsizetype>0</vsizetype>
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text" >
-      <string>Cliente:</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <layoutdefault spacing="0" margin="0" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>

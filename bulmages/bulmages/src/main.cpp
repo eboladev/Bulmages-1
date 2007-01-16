@@ -20,6 +20,7 @@
 
 #include <QTranslator>
 #include <QTextCodec>
+#include <QLocale>
 
 #include "comun/bselector.h"
 #include "qapplication2.h"
@@ -42,35 +43,38 @@ QTranslator *traductor;
 int main(int argc, char **argv) {
     confpr = new configuracion("bulmages");
     QApplication2 a(argc, argv);
+    Q_INIT_RESOURCE(bulmages);
     theApp = &a;
 
-    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("latin1"));
-    theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).ascii(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).ascii())));
+    /// Definimos la codificaci&oacute;n a Unicode.
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+
+    theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii().constData(),atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii().constData())));
 
     /// Set the location where your .qm files are in load() below as the last parameter
     /// instead of "." for development, use "/" to use the english original as
     /// .qm files are stored in the base project directory.
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("bulmalib_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(QString("bulmalib_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "bulmalib_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo, confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     a.installTranslator(traductor);
 
     traductor = new QTranslator(0);
     if (confpr->valor(CONF_TRADUCCION) == "locales") {
-        traductor->load(QString("ibulmages_") + QTextCodec::locale(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(QString("ibulmages_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } else {
         QString archivo = "ibulmages_" + confpr->valor(CONF_TRADUCCION);
-        traductor->load(archivo.ascii(), confpr->valor(CONF_DIR_TRADUCCION).ascii());
+        traductor->load(archivo.toAscii().constData(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
     } // end if
     a.installTranslator(traductor);
 
     BSelector *bw = new BSelector();
-    bw->setCaption(theApp->translate("main", "Selector de BulmaGes"));
-    a.setMainWidget(bw);
+    bw->setWindowTitle(theApp->translate("main", "Selector de BulmaGes"));
 
     /// Lo primero que hacemos es comprobar el sistema de autentificacion de
     /// Postgres para pedir un 'login' y un 'password' en caso de que sea necesario para

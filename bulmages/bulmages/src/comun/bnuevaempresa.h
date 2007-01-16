@@ -33,7 +33,7 @@ class BSelector;
 
 class BNuevaEmpresa : public QDialog, public Ui_nuevaempresadlg {
 public:
-    BNuevaEmpresa(QWidget *parent = 0, const char *name = 0, Qt::WFlags f = Qt::WType_TopLevel);
+    BNuevaEmpresa(QWidget *parent = 0, Qt::WFlags f = Qt::Window);
     ~BNuevaEmpresa();
 
 private slots:

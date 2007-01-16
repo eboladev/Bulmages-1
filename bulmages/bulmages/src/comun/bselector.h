@@ -40,7 +40,7 @@ private:
     QString m_tipoempresa;
 
 public:
-    BSelector(QWidget *parent = 0, const char *name = 0);
+    BSelector(QWidget *parent = 0);
     ~BSelector();
     QString empresaDB() {
         return m_empresabd;

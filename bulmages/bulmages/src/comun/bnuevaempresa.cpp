@@ -24,8 +24,8 @@
 #include "abreempresaview.h"
 
 
-BNuevaEmpresa::BNuevaEmpresa(QWidget *parent, const char *name, Qt::WFlags f)
-        : QDialog(parent, name, f) {
+BNuevaEmpresa::BNuevaEmpresa(QWidget *parent, Qt::WFlags f)
+        : QDialog(parent, f) {
     setupUi(this);
 
     QObject::connect(PushButton1, SIGNAL(clicked()), this, SLOT(accept()));
@@ -42,8 +42,8 @@ void BNuevaEmpresa::accept() {
     QString nombreEmp;
     QString ejemp = ejercicioempresa->text();
 
-    nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
-    nombreEmp = nombreempresa->text().stripWhiteSpace();
+    nombredb = bdempresa->text().trimmed()+ejercicioempresa->text().trimmed();
+    nombreEmp = nombreempresa->text().trimmed();
 
     /// Comprobamos que se han introducido todos los datos para avisar en caso contrario.
     if ((nombredb == "") || (nombreEmp == "") || (ejemp == "") ) {
@@ -53,8 +53,8 @@ void BNuevaEmpresa::accept() {
     } // end if
 
     QString cadena = confpr->valor(CONF_PROGDATA);
-    cadena += "dbmodels/creabulmages --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().stripWhiteSpace() + " " + "";
-    system(cadena.ascii());
+    cadena += "dbmodels/creabulmages --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " " + "";
+    system(cadena.toAscii().constData());
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(nombredb);
     QString query = "UPDATE configuracion SET valor = '" + nombreEmp + "' WHERE nombre = 'NombreEmpresa'";
@@ -64,7 +64,7 @@ void BNuevaEmpresa::accept() {
     DBconn->ejecuta(query);
     /// Creamos el ejercicio.
     for (int x = 0; x <= 12; x++) {
-        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')", ejemp.ascii(), x);
+        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')", ejemp.toAscii().constData(), x);
         DBconn->ejecuta(query);
     } // end for
     DBconn->commit();

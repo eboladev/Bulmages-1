@@ -356,53 +356,7 @@
          </widget>
         </item>
         <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>140</width>
-            <height>31</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2" >
-          <property name="text" >
-           <string>Articulo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="BusquedaArticulo" native="1" name="m_articulo" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>60</width>
-            <height>31</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2_2" >
-          <property name="text" >
-           <string>Cliente:</string>
-          </property>
-         </widget>
         </item>
         <item>
          <widget class="BusquedaCliente" native="1" name="m_cliente" >

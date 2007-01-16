@@ -22,9 +22,8 @@
 #include <errno.h>
 
 #include <QMessageBox>
-#include <q3table.h>
-#include <qtabwidget.h>
-#include <qfile.h>
+#include <QTabWidget>
+#include <QFile>
 
 #include "bconfiguracion.h"
 #include "bnuevaempresa.h"
@@ -40,8 +39,8 @@
 #endif
 
 
-BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, const char *name, Qt::WFlags f = 0)
-        : QDialog(parent, name, f) {
+BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, Qt::WFlags f = 0)
+        : QDialog(parent, f) {
     setupUi(this);
 
     QObject::connect(pushButtonF_X, SIGNAL(clicked()), this, SLOT(cerrar()));
@@ -54,18 +53,18 @@ BConfiguracion::BConfiguracion(BSelector *ref, QWidget *parent, const char *name
     QObject::connect(pushButtonA_5, SIGNAL(clicked()), this, SLOT(nuevoEjercicio()));
     QObject::connect(pushButton32_2, SIGNAL(clicked()), this, SLOT(s_importexportbulmafact()));
 
-    PunteroAlSelector=ref;
+    PunteroAlSelector = ref;
     if (PunteroAlSelector->tipoEmpresa() == "BulmaCont") {
         cargarFichaBulmages();
-        m_tab->setTabEnabled(m_tab->page(1), FALSE);
-        m_tab->setTabEnabled(m_tab->page(2), FALSE);
-        m_tab->setTabEnabled(m_tab->page(3), FALSE);
+        m_tab->setTabEnabled(1, FALSE);
+        m_tab->setTabEnabled(2, FALSE);
+        m_tab->setTabEnabled(3, FALSE);
     } // end if
     if (PunteroAlSelector->tipoEmpresa() == "BulmaFact") {
         cargarFichaBulmages();
-        m_tab->setTabEnabled(m_tab->page(0), FALSE);
-        m_tab->setTabEnabled(m_tab->page(2), FALSE);
-        m_tab->setTabEnabled(m_tab->page(3), FALSE);
+        m_tab->setTabEnabled(0, FALSE);
+        m_tab->setTabEnabled(2, FALSE);
+        m_tab->setTabEnabled(3, FALSE);
     } // end if
     cargarFichaUsuarios();
     tablaconfiguracion();
@@ -79,7 +78,7 @@ void BConfiguracion::cerrar() {
     /// Guardamos la configuracion.
     for (int i = 0; i < 1000; i++) {
         if (confpr->nombre(i) != "") {
-            confpr->setValor(i, m_tconfiguracion->text(i, 1).ascii());
+            confpr->setValor(i, m_tconfiguracion->item(i, 1)->text().toAscii().constData());
         } // end if
     } // end for
 
@@ -93,20 +92,26 @@ void BConfiguracion::cerrar() {
 /// Esta funcion rellena la tabla de configuracion del programa.
 /// Para luego poder guardar los parametros que haga falta.
 void BConfiguracion::tablaconfiguracion() {
-    m_tconfiguracion->setLeftMargin(0);
+    QTableWidgetItem *item0;
+    QTableWidgetItem *item1;
+    QTableWidgetItem *item2;
+    m_tconfiguracion->setColumnCount(3);
     m_tconfiguracion->hideColumn(2);
-    m_tconfiguracion->setNumRows(1000);
+    m_tconfiguracion->setRowCount(1000);
     QString cad;
     for (int i = 0; i < 1000; i++) {
         cad = cad.setNum(i);
-        m_tconfiguracion->setText(i, 0, confpr->nombre(i));
-        m_tconfiguracion->setText(i, 1, confpr->valor(i));
-        m_tconfiguracion->setText(i, 2, cad);
+        item0 = new QTableWidgetItem(confpr->nombre(i));
+        item1 = new QTableWidgetItem(confpr->valor(i));
+        item2 = new QTableWidgetItem(cad);
+        m_tconfiguracion->setItem(i, 0, item0);
+        m_tconfiguracion->setItem(i, 1, item1);
+        m_tconfiguracion->setItem(i, 2, item2);
         if (confpr->nombre(i) == "")
             m_tconfiguracion->hideRow(i);
     } // end for
-    m_tconfiguracion->adjustColumn(0);
-    m_tconfiguracion->adjustColumn(1);
+    m_tconfiguracion->resizeColumnToContents(0);
+    m_tconfiguracion->resizeColumnToContents(1);
 }
 
 
@@ -131,7 +136,7 @@ void BConfiguracion::BotonA_10aceptar() {}
 void BConfiguracion::BotonContaplus() {
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
-    importContaplus *import= new importContaplus(DBconn, 0, 0, 0);
+    importContaplus *import = new importContaplus(DBconn, 0, 0);
     import->exec();
     delete import;
     delete DBconn;
@@ -145,7 +150,7 @@ void BConfiguracion::BotonContaplus() {
 void BConfiguracion::s_importexportbulmafact() {
     postgresiface2 *DBconn = new postgresiface2();
     DBconn->inicializa(PunteroAlSelector->empresaDB());
-    ImportExportBulmafactView *import= new ImportExportBulmafactView(DBconn, 0, 0, 0);
+    ImportExportBulmafactView *import= new ImportExportBulmafactView(DBconn, 0, 0);
     import->exec();
     delete import;
     delete DBconn;
@@ -165,10 +170,8 @@ void BConfiguracion::BotonA_6nombreEmpresa() {
     /// Activa el line edit para que pueda ser editado.
     if (lineEditA_1->isReadOnly() ) {
         lineEditA_1->setReadOnly(false);
-        lineEditA_1->setPaletteBackgroundColor(QColor(255, 255, 255));
     } else { /// Y guarda el nuevo nombre de empresa.
         lineEditA_1->setReadOnly(true);
-        lineEditA_1->setPaletteBackgroundColor(QColor(255, 255, 0));
         PunteroAlSelector->nombreempresa->setText(lineEditA_1->text());
     } // end if
 }
@@ -177,7 +180,7 @@ void BConfiguracion::BotonA_6nombreEmpresa() {
 /// Aqui abrimos el cuador de dialogo que nos permite crear una empresa nueva basada en la
 /// BASE DE DATOS bgplangcont.
 void BConfiguracion::nuevaEmpresa() {
-    BNuevaEmpresa *n = new BNuevaEmpresa(this, "Creador");
+    BNuevaEmpresa *n = new BNuevaEmpresa(this);
     n->exec();
     delete n;
 }
@@ -186,7 +189,7 @@ void BConfiguracion::nuevaEmpresa() {
 /// Aqui abrimos el cuadro de dialogo que nos permite crear una empresa nueva basada en la
 /// BASE DE DATOS bgplangcont.º
 void BConfiguracion::nuevaFacturacion() {
-    nuevafact *n = new nuevafact(this, "Creador");
+    nuevafact *n = new nuevafact(this);
     n->exec();
     delete n;
 }
@@ -196,7 +199,7 @@ void BConfiguracion::nuevaFacturacion() {
 void BConfiguracion::BotonA_61clonarEmpresa() {
     QString dbEmpresa;
     if (dbEmpresa != "") {
-        QMessageBox::information(this, "Debug", "Clonando la Base de Datos: " + dbEmpresa + "\n\nProceso no disponible...\n", QMessageBox::Ok);
+        QMessageBox::information(this, "Debug", "Clonando la base de datos: " + dbEmpresa + "\n\nProceso no disponible...\n", QMessageBox::Ok);
     } // end if
 }
 
@@ -220,7 +223,7 @@ void BConfiguracion::borrarEmpresa() {
             int mensaje = QMessageBox::warning(this, tr("Atencion"), tr("Borrar una empresa puede suponer perdida de datos\n Desea continuar?\n"), QMessageBox::Yes,QMessageBox::No, 0);
             if (mensaje == QMessageBox::Yes) {
                 QString sentencia = "dropdb " + dbEmpresa;
-                system(sentencia.ascii());
+                system(sentencia.toAscii().constData());
                 /// Hacemos una recarga de empresas porque sabemos a ciencia cierta que
                 /// ha cambiado el listado.
                 abreempresaview *abre = new abreempresaview(NULL, "hola", "hola");
@@ -254,7 +257,7 @@ void BConfiguracion::nuevoEjercicio() {
             ejer = "2003";
     } // end if
     for (x = 0; x <= 12; x++) {
-        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')", ejer.ascii(), x);
+        query.sprintf("INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('%s', '%d', 'f')", ejer.toAscii().constData(), x);
         DBconn->ejecuta(query);
     } // end for
     DBconn->commit();
@@ -268,20 +271,23 @@ void BConfiguracion::salvarEmpresa() {
     QString PGserver;
     //  PGserver = "-h ";
 
-    PGserver = confpr->valor(CONF_SERVIDOR).ascii();
+    PGserver = confpr->valor(CONF_SERVIDOR).toAscii().constData();
     dbEmpresa = PunteroAlSelector->empresaDB();
-    fprintf(stderr, "Vamos a guardar la empresa %s\n", dbEmpresa.ascii());
+    fprintf(stderr, "Vamos a guardar la empresa %s\n", dbEmpresa.toAscii().constData());
 
     if (dbEmpresa != "") {
-        QString fn = Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Empresas (*.pgdump)", 0, "Guardar empresa", "Elige el nombre de empresa con el que guardar");
+        QString fn = QFileDialog::getSaveFileName(this, tr("Guardar empresa"),
+                     confpr->valor(CONF_DIR_USER),
+                     tr("Empresas (*.pgdump)"));
+
         if (!fn.isEmpty()) {
             if (fn.right(7) != ".pgdump")
                 fn = fn + ".pgdump";
-            fprintf(stderr, "Vamos a guardar la empresa en el fichero %s\n", fn.ascii());
+            fprintf(stderr, "Vamos a guardar la empresa en el fichero %s\n", fn.toAscii().constData());
             QString cadena;
-            cadena.sprintf("%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).ascii(), PGserver.ascii(), dbEmpresa.ascii(), fn.ascii());
-            fprintf(stderr, "%s\n", cadena.ascii());
-            system(cadena.ascii());
+            cadena.sprintf("%sguardaemp %s %s %s", confpr->valor(CONF_EJECUTABLES).toAscii().constData(), PGserver.toAscii().constData(), dbEmpresa.toAscii().constData(), fn.toAscii().constData());
+            fprintf(stderr, "%s\n", cadena.toAscii().constData());
+            system(cadena.toAscii().constData());
         } // end if
     } // end if
 }
@@ -293,17 +299,19 @@ void BConfiguracion::BotonA_4restaurarEmpresa() {
     fprintf(stderr, "Restaurar empresa \n");
     QString dbEmpresa;
     QString PGserver;
-    PGserver = confpr->valor(CONF_SERVIDOR).ascii();
+    PGserver = confpr->valor(CONF_SERVIDOR).toAscii().constData();
     QString usuario;
 
     dbEmpresa = PunteroAlSelector->empresaDB();
     if (dbEmpresa != "") {
-        QString fn = Q3FileDialog::getOpenFileName(confpr->valor(CONF_DIR_USER), "Empresas (*.pgdump)", 0, "Cargar empresa", "Elige el fichero a cargar.");
+        QString fn = QFileDialog::getOpenFileName(this, tr("Cargar empresa"),
+                     confpr->valor(CONF_DIR_USER),
+                     tr("Empresas (*.pgdump)"));
 
         if (!fn.isEmpty()) {
             QString comando = "cargaemp " + PGserver + " " + dbEmpresa + " " + fn;
-            fprintf(stderr, "%s\n", comando.ascii());
-            system (comando.ascii());
+            fprintf(stderr, "%s\n", comando.toAscii().constData());
+            system (comando.toAscii().constData());
         } // end if
     } // end if
 }
@@ -312,7 +320,7 @@ void BConfiguracion::BotonA_4restaurarEmpresa() {
 void BConfiguracion::cargarFichaUsuarios() {}
 
 
-void BConfiguracion::listView1_currentChanged(Q3ListViewItem *) {
+void BConfiguracion::listView1_currentChanged(QListWidgetItem *) {
 #ifndef WIN32
 #endif
 }
@@ -328,9 +336,9 @@ void BConfiguracion::BotonB_2Desacer() {
 }
 
 
-void BConfiguracion::listView2_clickBotonDerecho(Q3ListViewItem *, const QPoint&, int) {}
+void BConfiguracion::listView2_clickBotonDerecho(QListWidgetItem *, const QPoint&, int) {}
 
 
 /// Por conveniencia (Bug QT??).
-void BConfiguracion::listiView2_clickMouse(int, Q3ListViewItem *, const QPoint&, int) {}
+void BConfiguracion::listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int) {}
 

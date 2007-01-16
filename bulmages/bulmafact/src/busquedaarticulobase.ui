@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BusquedaArticuloBase</class>
  <widget class="QWidget" name="BusquedaArticuloBase" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>228</width>
-    <height>69</height>
+    <height>72</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -51,7 +48,7 @@
         <number>0</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="QLineEdit" name="m_codigocompletoarticulo" >
@@ -106,7 +103,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="0" margin="0" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>

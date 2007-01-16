@@ -41,7 +41,7 @@ private:
     };
 
 public:
-    ImportExportBulmafactView(postgresiface2 *, QWidget *, const char *, Qt::WFlags );
+    ImportExportBulmafactView(postgresiface2 *, QWidget *, Qt::WFlags);
     ~ImportExportBulmafactView() {}
     ;
     virtual void alerta(int, int);

@@ -22,9 +22,9 @@
 #include <QLineEdit>
 #include <QFile>
 #include <QToolButton>
-#include <q3filedialog.h>
-#include <q3progressbar.h>
-#include <q3textbrowser.h>
+#include <QFileDialog>
+#include <QProgressBar>
+#include <QTextBrowser>
 
 #include "importexportbulmafactview.h"
 #include "pgimportfiles.h"
@@ -33,20 +33,20 @@
 
 
 void ImportExportBulmafactView::alerta(int a, int b) {
-    m_progressbar->setProgress(a, b);
+    m_progressbar->setRange(a, b);
 }
 
 
 void ImportExportBulmafactView::mensajeria(QString mensaje) {
-    fprintf(stderr,"MENSAJE:\n\n\n%s\n\n\n", mensaje.ascii());
+    fprintf(stderr, "MENSAJE:\n\n\n%s\n\n\n", mensaje.toAscii().constData());
     mensajein += mensaje + "<BR>";
-    m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>" + QString(mensajein.latin1()) + "</BODY></HTML>");
-    // m_mensajes->scrollBy(0,400);
+    m_mensajes->setText("<HTML><BODY BGCOLOR='#CCCCCC'>" + QString(mensajein.toLatin1()) + "</BODY></HTML>");
+    m_mensajes->ensureCursorVisible();
 }
 
 
-ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 *con, QWidget *parent, const char *name, Qt::WFlags f = 0)
-        : QDialog(parent, name, f), pgimportfiles(con) {
+ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0)
+        : QDialog(parent, f), pgimportfiles(con) {
     setupUi(this);
 
     /// Signals and slots connections.
@@ -62,7 +62,7 @@ ImportExportBulmafactView::ImportExportBulmafactView(postgresiface2 *con, QWidge
 
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 void ImportExportBulmafactView::botonBuscarXML() {
-    m_XML->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.xml)", this, "select file", "Elija el archivo"));
+    m_XML->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.xml)")));
 }
 
 
@@ -71,11 +71,11 @@ void ImportExportBulmafactView::botonImportar() {
     fprintf(stderr, "ImportExportBulmafactView::botonImportar()\n");
     QString finicial = m_fechainicial->text();
     QString ffinal = m_fechafinal->text();
-    QFile filexml (m_XML->text());
+    QFile filexml(m_XML->text());
     filexml.open(QIODevice::ReadOnly);
     XML2BulmaFact(filexml);
     filexml.close();
-    // m_mensajes->setText("");
+    m_mensajes->setText("");
 }
 
 
@@ -104,6 +104,6 @@ void ImportExportBulmafactView::botonExportar() {
         bulmafact2XML(filexml);
         filexml.close();
     } // end if
-    //	m_mensajes->setText("");
+    m_mensajes->setText("");
 }
 

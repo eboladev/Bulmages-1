@@ -35,7 +35,7 @@ private:
     postgresiface2 *conexionbase;
 
 public:
-    importContaplus(postgresiface2 *, QWidget *, const char *, Qt::WFlags);
+    importContaplus(postgresiface2 *, QWidget *, Qt::WFlags);
     ~importContaplus() {}
     ;
     void alerta(int, int);

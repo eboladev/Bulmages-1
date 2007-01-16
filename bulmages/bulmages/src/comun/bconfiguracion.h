@@ -27,12 +27,8 @@
 #include <QComboBox>
 #include <QSpinBox>
 #include <QFontDatabase>
-#include <QDialog>
-
-#include <q3listview.h>
-#include <q3textedit.h>
-#include <q3popupmenu.h>
-#include <q3filedialog.h>
+#include <QFileDialog>
+#include <QListWidgetItem>
 
 #include "ui_configuracion.h"
 #include "bselector.h"
@@ -50,20 +46,20 @@ class BConfiguracion : public QDialog, public Ui_UIconfiguracion {
     Q_OBJECT
 
 public:
-    BConfiguracion(BSelector *, QWidget *, const char *, Qt::WFlags);
+    BConfiguracion(BSelector *, QWidget *, Qt::WFlags);
     ~BConfiguracion();
 
 private:
-    BSelector* PunteroAlSelector;
+    BSelector *PunteroAlSelector;
     void cargarFichaBulmages();
     void cargarFichaUsuarios();
     void tablaconfiguracion();
 
 private slots:
     virtual void cerrar();
-    virtual void listView1_currentChanged(Q3ListViewItem *);
-    virtual void listView2_clickBotonDerecho(Q3ListViewItem *, const QPoint&, int);
-    virtual void listiView2_clickMouse(int, Q3ListViewItem *, const QPoint&, int);
+    virtual void listView1_currentChanged(QListWidgetItem *);
+    virtual void listView2_clickBotonDerecho(QListWidgetItem *, const QPoint&, int);
+    virtual void listiView2_clickMouse(int, QListWidgetItem *, const QPoint&, int);
     virtual void FontChanged(const QString &);
     virtual void FontSizeChanged(int);
     virtual void salvarEmpresa();

@@ -22,9 +22,9 @@
 #include <QFile>
 #include <QLineEdit>
 #include <QCheckBox>
-#include <q3filedialog.h>
-#include <q3progressbar.h>
-#include <q3textbrowser.h>
+#include <QFileDialog>
+#include <QProgressBar>
+#include <QTextBrowser>
 
 #include "importContaplus.h"
 #include "pgimportfiles.h"
@@ -32,26 +32,26 @@
 #include "calendario.h"
 
 
-Q3ProgressBar *progress;
-Q3TextBrowser *mensajes;
+QProgressBar *progress;
+QTextEdit *mensajes;
 QString mensajein = "";
 
 
 void importContaplus::alerta(int a, int b) {
 	fprintf(stderr, "mensaje publicado");
-	progress->setProgress(a, b);
+	progress->setRange(a, b);
 }
 
 
 void importContaplus::mensajeria(QString mensaje) {
 	mensajein += mensaje;
 	mensajes->setText(mensajein);
-	mensajes->scrollBy(0, 400);
+	mensajes->ensureCursorVisible();
 }
 
 
-importContaplus::importContaplus(postgresiface2 *con, QWidget *parent, const char *name, Qt::WFlags f = 0)
-  : QDialog(parent, name, f), pgimportfiles(con) {
+importContaplus::importContaplus(postgresiface2 *con, QWidget *parent, Qt::WFlags f = 0)
+  : QDialog(parent, f), pgimportfiles(con) {
   setupUi(this);
 
   /// Signals and slots connections.
@@ -70,19 +70,19 @@ importContaplus::importContaplus(postgresiface2 *con, QWidget *parent, const cha
 
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 void importContaplus::botonBuscarXML() {
-	m_XML->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.xml)", this, "select file", "Elija el archivo"));
+	m_XML->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.xml)")));;
 }
 
 
 /// Se ha pulsado sobre el boton de bsqueda de una subcuenta.
 void importContaplus::botonBuscarSubCta() {
-	m_subCta->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.txt)", this, "select file", "Elija el archivo"));
+	m_subCta->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.txt)")));;
 }
 
 
 /// SLOT que responde a la pulsacion de seleccion de archivo.
 void importContaplus::botonBuscarDiario() {
-	m_diario->setText(Q3FileDialog::getSaveFileName(confpr->valor(CONF_DIR_USER), "Contaplus (*.txt)", this, "select file", "Elija el archivo"));
+	m_diario->setText(QFileDialog::getSaveFileName(this, tr("Guardar archivo"), confpr->valor(CONF_DIR_USER), tr("Contaplus (*.txt)")));;
 }
 
 

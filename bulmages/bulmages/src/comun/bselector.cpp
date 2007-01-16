@@ -31,8 +31,8 @@
 #endif
 
 
-BSelector::BSelector(QWidget *parent, const char *name)
-        : QMainWindow(parent, name) {
+BSelector::BSelector(QWidget *parent)
+        : QMainWindow(parent) {
     setupUi(this);
 
     /// signals and slots connections.
@@ -79,7 +79,7 @@ void BSelector::salir_clicked() {
 
 /// Boton para abrir el dialogo de configuraciones personalizadas.
 void BSelector::configura_clicked() {
-    BConfiguracion *VentanaConfiguracion = new BConfiguracion(this, 0, "Ventana configuracion", 0);
+    BConfiguracion *VentanaConfiguracion = new BConfiguracion(this, 0, 0);
     VentanaConfiguracion->exec();
     delete VentanaConfiguracion;
 }
@@ -87,7 +87,9 @@ void BSelector::configura_clicked() {
 
 /// Boton para entrar en la ventana de Iglues.
 void BSelector::m_iglues_clicked() {
-    system(confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org &");
+    QString cadena;
+    cadena = confpr->valor(CONF_NAVEGADOR) + " http://www.iglues.org &";
+    system(cadena.toAscii().constData());
 }
 
 
@@ -101,7 +103,7 @@ void BSelector::m_bulmatpv_clicked() {
     } // end while
     if (m_empresabd != "") {
         char cadena[300];
-        sprintf(cadena, "bulmatpv bulmatpv %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
+        sprintf(cadena, "bulmatpv bulmatpv %s %s %s &", m_empresabd.toAscii().constData(), confpr->valor(CONF_LOGIN_USER).toAscii().constData(), confpr->valor(CONF_PASSWORD_USER).toAscii().constData());
         system(cadena);
     } // end if
 }
@@ -130,7 +132,7 @@ void BSelector::contabilidad_clicked() {
     } // end if
     if (m_empresabd != "") {
         char cadena[300];
-        sprintf(cadena, "bulmacont bulmacont %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
+        sprintf(cadena, "bulmacont bulmacont %s %s %s &", m_empresabd.toAscii().constData(), confpr->valor(CONF_LOGIN_USER).toAscii().constData(), confpr->valor(CONF_PASSWORD_USER).toAscii().constData());
         system (cadena);
     } // end if
 }
@@ -140,13 +142,17 @@ void BSelector::contabilidad_clicked() {
 void BSelector::produccion_clicked() {
     /// Al crear un nuevo modulo, le paso como primer parametro un puntero al selector.
     /// De este modo puedo acceder facilmente al selector desde el modulo.
-    system(confpr->valor(CONF_NAVEGADOR) + " http://localhost/galopin/ &");
+    QString cadena;
+    cadena = confpr->valor(CONF_NAVEGADOR) + " http://localhost/galopin/ &";
+    system(cadena.toAscii().constData());
 }
 
 
 /// Boton para entrar en el modulo de STOCKS Y ALMACENES.º
 void BSelector::m_bcontaweb_clicked() {
-    system(confpr->valor(CONF_NAVEGADOR) + " http://localhost/bcontaweb/ &");
+    QString cadena;
+    cadena = confpr->valor(CONF_NAVEGADOR) + " http://localhost/bcontaweb/ &";
+    system(cadena.toAscii().constData());
 }
 
 
@@ -160,7 +166,7 @@ void BSelector::m_bulmafact_clicked() {
     } // end while
     if (m_empresabd != "") {
         char cadena[300];
-        sprintf(cadena, "bulmafact bulmafact %s %s %s &", m_empresabd.ascii(), confpr->valor(CONF_LOGIN_USER).ascii(), confpr->valor(CONF_PASSWORD_USER).ascii());
+        sprintf(cadena, "bulmafact bulmafact %s %s %s &", m_empresabd.toAscii().constData(), confpr->valor(CONF_LOGIN_USER).toAscii().constData(), confpr->valor(CONF_PASSWORD_USER).toAscii().constData());
         system (cadena);
     } // end if
 }

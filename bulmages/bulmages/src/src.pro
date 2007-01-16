@@ -3,9 +3,7 @@
 # Subdirectorio relativo al directorio principal del proyecto: ./introbulmages/src
 # Destiono es una aplicaci??n: ../../installbulmages/bulmages
 
-QT += qt3support xml
-
-#QT += xml
+QT += xml
 
 LANGUAGE = C++
 
@@ -20,21 +18,19 @@ INCLUDEPATH += ../../bulmalib  \
 
 TARGET = ../../installbulmages/bulmages 
 
-# RESOURCES += ../../bulmages-recursos-graficos.qrc
+RESOURCES += ../../bulmages.qrc
 
 CONFIG += release \
-          warn_on \
-          qt4 \
           thread 
 
 TEMPLATE = app 
 
 FORMS += comun/importContaplusBase.ui \
 	 comun/selectorbase.ui \
-	comun/configuracion.ui\
-	comun/nuevaempresadlg.ui \
-	comun/nuevafactbase.ui \
-	comun/importexportbulmafactbase.ui
+ 	 comun/configuracion.ui\
+	 comun/nuevaempresadlg.ui \
+	 comun/nuevafactbase.ui \
+	 comun/importexportbulmafactbase.ui
 
 HEADERS += comun/bselector.h \
            comun/bconfiguracion.h \
@@ -52,28 +48,6 @@ SOURCES += main.cpp \
            comun/gongimportfiles.cpp \
            comun/importContaplus.cpp \
 	   comun/importexportbulmafactview.cpp
-
-
-
-
-#uiselector.ui.commands = $$IDL_COMPILER 
-#uiconfiguracion.ui.commands = $$IDL_COMPILER 
-#nuevafactbase.ui.commands = $$IDL_COMPILER 
-#nuevaempresadlg.ui.commands = $$IDL_COMPILER 
-#importContaplusBase.ui.commands = $$IDL_COMPILER 
-
-
-#comun/importContaplusBase.ui.target = comun/importContaplusBase.ui 
-#comun/nuevafactbase.ui.target = comun/nuevafactbase.ui 
-#comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui 
-#comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui 
-
-
-#comun/importContaplusBase.ui.target = comun/importContaplusBase.ui
-#comun/nuevafactbase.ui.target = comun/nuevafactbase.ui
-#comun/nuevaempresadlg.ui.target = comun/nuevaempresadlg.ui
-#comun/uiconfiguracion.ui.target = comun/uiconfiguracion.ui
-#comun/uiselector.ui.target = comun/uiselector.ui
 
 TRANSLATIONS += ibulmages_es.ts \
                 ibulmages_ca.ts \
@@ -115,7 +89,7 @@ win32{
   DEFINES += WIN32
   DEFINES += WINDOWS
 
- UI_DIR = .ui
+  UI_DIR = .ui
 
   MOC_DIR = .moc
 
@@ -138,7 +112,3 @@ TARGET = ..\..\..\installbulmages\bulmages
 
 }
 
-#The following line was inserted by qt3to4
-#QT +=  
-#The following line was inserted by qt3to4
-#CONFIG += uic3

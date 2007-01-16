@@ -23,11 +23,13 @@
 
 #include "fichabf.h"
 #include "plugins.h"
+
+
 class Fixed;
 
 
-
-FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f) : Ficha(parent, f), DBRecord(comp) {
+FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f)
+        : Ficha(parent, f), DBRecord(comp) {
     _depura("FichaBf::FichaBf", 0);
     m_listalineas = NULL;
     m_listadescuentos = NULL;
@@ -36,9 +38,10 @@ FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f) : Ficha(parent, f
     _depura("END FichaBf::FichaBf", 0);
 }
 
+
 FichaBf::~FichaBf() {
-	_depura("FichaBf::~FichaBf", 0);
-	_depura("END FichaBf::~FichaBf", 0);
+    _depura("FichaBf::~FichaBf", 0);
+    _depura("END FichaBf::~FichaBf", 0);
 }
 
 
@@ -54,26 +57,26 @@ void FichaBf::calculaypintatotales() {
     QString l;
     Fixed irpf("0");
 
-    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre='IRPF'");
+    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
     if (!cur->eof()) {
-       irpf = Fixed(cur->valor("valor"));
+        irpf = Fixed(cur->valor("valor"));
     } // end if
     delete cur;
 
     for (int i = 0; i < m_listalineas->rowCount(); ++i) {
         linea = m_listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cant"+m_listalineas->tableName()).toAscii().constData());
-        Fixed pvpund(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
-        Fixed desc1(linea->DBvalue("descuento"+m_listalineas->tableName()).toAscii().constData());
+        Fixed cant(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData());
+        Fixed pvpund(linea->DBvalue("pvp" + m_listalineas->tableName()).toAscii().constData());
+        Fixed desc1(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData());
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
-        basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base;
-        basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] + base;
+        basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base;
+        basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] + base;
     } // end for
 
     Fixed basei("0.00");
     base::Iterator it;
-    for ( it = basesimp.begin(); it != basesimp.end(); ++it) {
+    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
         basei = basei + it.value();
     } // end for
 
@@ -83,7 +86,7 @@ void FichaBf::calculaypintatotales() {
     if (m_listadescuentos->rowCount()) {
         for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
             linea1 = m_listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporcion"+m_listadescuentos->tableName()).toAscii().constData());
+            Fixed propor(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
             porcentt = porcentt + propor;
         } // end for
     } // end if
@@ -128,32 +131,29 @@ void FichaBf::calculaypintatotales() {
     } // end for
 
     Fixed totirpf = totbaseimp * irpf / 100;
-
-    pintatotales(totiva, totbaseimp, totiva+totbaseimp+totreqeq-totirpf, basei * porcentt / 100, totirpf, totreqeq);
-
+    pintatotales(totiva, totbaseimp, totiva + totbaseimp + totreqeq - totirpf, basei * porcentt / 100, totirpf, totreqeq);
     _depura("FichaBf::calculaypintatotales", 0);
 }
-
 
 
 void FichaBf::imprimir() {
     _depura("FichaBf::imprimir", 0);
     /// Disparamos los plugins
     int res = g_plugins->lanza("FichaBf_imprimir", this);
-    if (res != 0)
+    if (res != 0) {
         return;
+    } // end if
     base basesimp;
     base basesimpreqeq;
-    QString archivo=confpr->valor(CONF_DIR_OPENREPORTS) + m_tablename+".rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + m_tablename+".rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + m_tablename+".rml";
-    QString archivologo=confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
     Fixed irpf("0");
 
-    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre='IRPF'");
+    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM configuracion WHERE nombre = 'IRPF'");
     if (!cur->eof()) {
-       irpf = Fixed(cur->valor("valor"));
+        irpf = Fixed(cur->valor("valor"));
     } // end if
     delete cur;
 
@@ -186,9 +186,9 @@ void FichaBf::imprimir() {
     QString fitxersortidatxt = "";
 
     /// Linea de totales del Presupuesto.
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
     cur = companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
+    if (!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));
         buff.replace("[poblcliente]", cur->valor("poblcliente"));
         buff.replace("[telcliente]", cur->valor("telcliente"));
@@ -199,46 +199,44 @@ void FichaBf::imprimir() {
     } // end if
     delete cur;
 
-
-    if (exists("num"+m_tablename))
-	    buff.replace("[num"+m_tablename+"]", DBvalue("num"+m_tablename));
-    if (exists("f"+m_tablename))
-	    buff.replace("[f"+m_tablename+"]", DBvalue("f"+m_tablename));
-    if (exists("venc"+m_tablename))
-	    buff.replace("[venc"+m_tablename+"]", DBvalue("venc"+m_tablename));
-    if (exists("contact"+m_tablename))
-	    buff.replace("[contact"+m_tablename+"]", DBvalue("contact"+m_tablename));
-    if (exists("tel"+m_tablename))
-	    buff.replace("[tel"+m_tablename+"]", DBvalue("tel"+m_tablename));
-    if (exists("coment"+m_tablename))
-	    buff.replace("[coment"+m_tablename+"]", DBvalue("coment"+m_tablename));
-    if (exists("desc"+m_tablename))
-	    buff.replace("[desc"+m_tablename+"]", DBvalue("desc"+m_tablename));
-    if (exists("ref"+m_tablename))
-	    buff.replace("[ref"+m_tablename+"]", DBvalue("ref"+m_tablename));
-    if (exists("codigo_serie"+m_tablename) )
-	    buff.replace("[codigo_serie"+m_tablename+"]", DBvalue("codigo_serie"+m_tablename));
-    if (exists("fecha"+m_tablename) )
-	    buff.replace("[fecha"+m_tablename+"]", DBvalue("fecha"+m_tablename));
+    if (exists("num" + m_tablename))
+        buff.replace("[num" + m_tablename + "]", DBvalue("num" + m_tablename));
+    if (exists("f" + m_tablename))
+        buff.replace("[f" + m_tablename + "]", DBvalue("f" + m_tablename));
+    if (exists("venc" + m_tablename))
+        buff.replace("[venc" + m_tablename + "]", DBvalue("venc" + m_tablename));
+    if (exists("contact" + m_tablename))
+        buff.replace("[contact" + m_tablename + "]", DBvalue("contact" + m_tablename));
+    if (exists("tel" + m_tablename))
+        buff.replace("[tel" + m_tablename+"]", DBvalue("tel" + m_tablename));
+    if (exists("coment" + m_tablename))
+        buff.replace("[coment" + m_tablename+"]", DBvalue("coment" + m_tablename));
+    if (exists("desc" + m_tablename))
+        buff.replace("[desc" + m_tablename + "]", DBvalue("desc" + m_tablename));
+    if (exists("ref" + m_tablename))
+        buff.replace("[ref" + m_tablename + "]", DBvalue("ref" + m_tablename));
+    if (exists("codigo_serie" + m_tablename) )
+        buff.replace("[codigo_serie" + m_tablename+"]", DBvalue("codigo_serie" + m_tablename));
+    if (exists("fecha" + m_tablename) )
+        buff.replace("[fecha" + m_tablename + "]", DBvalue("fecha" + m_tablename));
     /// Impresion de la tabla de contenidos.
-
     QString l;
 
     /// Contador que sirve para poner lineas de mas en caso de que sea preciso.
     SDBRecord *linea;
     for (int i = 0; i < (m_listalineas->rowCount() - 1); ++i) {
         linea = m_listalineas->lineaat(i);
-        Fixed base = Fixed(linea->DBvalue("cant"+m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
-        basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento"+m_listalineas->tableName()).toAscii().constData()) / 100;
-        basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento"+m_listalineas->tableName()).toAscii().constData()) / 100;
+        Fixed base = Fixed(linea->DBvalue("cant" + m_listalineas->tableName()).toAscii().constData()) * Fixed(linea->DBvalue("pvp"+m_listalineas->tableName()).toAscii().constData());
+        basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData()) / 100;
+        basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq"+m_listalineas->tableName())] + base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData()) / 100;
 
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("codigocompletoarticulo")) + "</td>\n";
-        fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("desc"+m_listalineas->tableName())) + "</td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("cant"+m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvp"+m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuento"+m_listalineas->tableName())).toAscii().constData()) + " %</td>\n";
-        fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuento"+m_listalineas->tableName())) / 100).toQString().toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + XMLProtect(linea->DBvalue("desc" + m_listalineas->tableName())) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("cant" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("pvp" + m_listalineas->tableName())).toAscii().constData()) + "</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", XMLProtect(linea->DBvalue("descuento" + m_listalineas->tableName())).toAscii().constData()) + " %</td>\n";
+        fitxersortidatxt += "    <td>" + l.sprintf("%s", (base - base * Fixed(linea->DBvalue("descuento" + m_listalineas->tableName())) / 100).toQString().toAscii().constData()) + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 
@@ -263,11 +261,11 @@ void FichaBf::imprimir() {
         fitxersortidatxt += "</tr>\n";
         for (int i = 0; i < (m_listadescuentos->rowCount() - 1); ++i) {
             linea1 = m_listadescuentos->lineaat(i);
-            porcentt = porcentt + Fixed(linea1->DBvalue("proporcion"+m_listadescuentos->tableName()).toAscii().constData());
+            porcentt = porcentt + Fixed(linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData());
             fitxersortidatxt += "<tr>\n";
-            fitxersortidatxt += "    <td>" + XMLProtect(linea1->DBvalue("concept"+m_listadescuentos->tableName())) + "</td>\n";
-            fitxersortidatxt += "    <td>" + l.sprintf("%s", linea1->DBvalue("proporcion"+m_listadescuentos->tableName()).toAscii().constData()) + " %</td>\n";
-            fitxersortidatxt += "    <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporcion"+m_listadescuentos->tableName())) * basei / 100).toQString().toAscii().constData()) + "</td>\n";
+            fitxersortidatxt += "    <td>" + XMLProtect(linea1->DBvalue("concept" + m_listadescuentos->tableName())) + "</td>\n";
+            fitxersortidatxt += "    <td>" + l.sprintf("%s", linea1->DBvalue("proporcion" + m_listadescuentos->tableName()).toAscii().constData()) + " %</td>\n";
+            fitxersortidatxt += "    <td>" + l.sprintf("-%s", (Fixed(linea1->DBvalue("proporcion" + m_listadescuentos->tableName())) * basei / 100).toQString().toAscii().constData()) + "</td>\n";
             fitxersortidatxt += "</tr>";
         } // end for
         fitxersortidatxt += "</blockTable>\n";
@@ -288,10 +286,9 @@ void FichaBf::imprimir() {
             parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "    <td>" + QApplication::translate("Presupuesto", "Base ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "Base ") + " " + XMLProtect(it.key()) + " %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
-
 
     /// Impresion de los IVAS.
     Fixed totiva("0.0");
@@ -303,11 +300,9 @@ void FichaBf::imprimir() {
             pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.V.A. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.V.A. ") + " " + XMLProtect(it.key()) + " %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
-
-
 
     /// Impresion de los Recargos de Equivalencia.
     Fixed totreqeq("0.0");
@@ -319,31 +314,27 @@ void FichaBf::imprimir() {
             parreqeq = it.value() * Fixed(it.key()) / 100;
         } // end if
         totreqeq = totreqeq + parreqeq;
-	if (parreqeq > 0) {
-		tr1 += "    <td>" + QApplication::translate("Presupuesto", "R.E. ") +" "+ XMLProtect(it.key()) + " %</td>\n";
-		tr2 += "    <td>" + l.sprintf(" %s ", parreqeq.toQString().toAscii().constData()) + "</td>\n";
-	} // end if
+        if (parreqeq > 0) {
+            tr1 += "    <td>" + QApplication::translate("Presupuesto", "R.E. ") + " " + XMLProtect(it.key()) + " %</td>\n";
+            tr2 += "    <td>" + l.sprintf(" %s ", parreqeq.toQString().toAscii().constData()) + "</td>\n";
+        } // end if
     } // end for
-
 
     Fixed totirpf = totbaseimp * irpf / 100;
     if (totirpf > 0) {
-        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.R.P.F  (-") +" "+ XMLProtect(irpf.toQString()) + ") %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.R.P.F  (-") + " " + XMLProtect(irpf.toQString()) + ") %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", totirpf.toQString().toAscii().constData()) + "</td>\n";
     } // end if
 
-
-
     tr1 += "    <td>" + QApplication::translate("Presupuesto", "Total ") + "</td>\n";
-    tr2 += "    <td>" + l.sprintf(" %s ", (totiva+totbaseimp+totreqeq-totirpf).toQString().toAscii().constData()) + "</td>\n";
+    tr2 += "    <td>" + l.sprintf(" %s ", (totiva+totbaseimp + totreqeq - totirpf).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 
     /// En la version para windows hay problemas con las imagenes,
     /// por eso de momento lo dejamos asi.
-
 #ifndef WINDOWS
- //   buff.replace("[detallearticulos]", detalleArticulos());
+    //   buff.replace("[detallearticulos]", detalleArticulos());
 #endif
 
     if (file.open(QIODevice::WriteOnly)) {
@@ -354,5 +345,4 @@ void FichaBf::imprimir() {
     invocaPDF(m_tablename);
     _depura("FichaBf::imprimir", 0);
 }
-
 

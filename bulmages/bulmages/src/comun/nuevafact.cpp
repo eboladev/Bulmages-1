@@ -21,8 +21,8 @@
 #include "nuevafact.h"
 
 
-nuevafact::nuevafact(QWidget *parent, const char *name, Qt::WFlags f) 
-  : QDialog(parent, name, f) {
+nuevafact::nuevafact(QWidget *parent, Qt::WFlags f) 
+  : QDialog(parent, f) {
   setupUi(this);
 
   /// Signals and slots connections.
@@ -40,12 +40,12 @@ void nuevafact::accept() {
   QString nombredb;
   QString nombreEmp;
 
-  nombredb = bdempresa->text().stripWhiteSpace()+ejercicioempresa->text().stripWhiteSpace();
-  nombreEmp = nombreempresa->text().stripWhiteSpace();
+  nombredb = bdempresa->text().trimmed() + ejercicioempresa->text().trimmed();
+  nombreEmp = nombreempresa->text().trimmed();
   QString cadena = confpr->valor(CONF_PROGDATA);
-  cadena += "dbmodels/creabulmafact --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().stripWhiteSpace() + " ";
+  cadena += "dbmodels/creabulmafact --texto " + nombredb + " 1 " + nombreEmp + " " + ejercicioempresa->text().trimmed() + " ";
   
-  system(cadena.ascii());
+  system(cadena.toAscii().constData());
   close();
 }
 

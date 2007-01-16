@@ -33,7 +33,7 @@ class BSelector;
 
 class nuevafact : public QDialog, public Ui_nuevafactbase {
 public:
-    nuevafact(QWidget *parent = 0, const char *name = 0, Qt::WFlags f = Qt::WType_TopLevel);
+    nuevafact(QWidget *parent = 0, Qt::WFlags f = Qt::Window);
     ~nuevafact();
 
 private slots:

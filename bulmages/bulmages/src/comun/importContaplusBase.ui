@@ -1,337 +1,369 @@
-<ui version="4.0" stdsetdef="1" >
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>importContaplusBase</class>
-  <widget class="QDialog" name="importContaplusBase" >
-    <property name="geometry" >
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>617</width>
-        <height>429</height>
-      </rect>
-    </property>
-    <property name="windowTitle" >
-      <string>Importar y Exportar Datos</string>
-    </property>
-    <layout class="QVBoxLayout" >
-      <item>
-        <widget class="QTabWidget" name="tabWidget3" >
-          <widget class="QWidget" name="tab" >
-            <attribute name="title" >
-              <string>&amp;Contalus</string>
-            </attribute>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <item>
-                <layout class="QHBoxLayout" >
-                  <property name="margin" >
-                    <number>0</number>
-                  </property>
-                  <item>
-                    <layout class="QVBoxLayout" >
-                      <property name="margin" >
-                        <number>0</number>
-                      </property>
-                      <item>
-                        <widget class="QLabel" name="textLabel1" >
-                          <property name="text" >
-                            <string>Archivo de SubCta</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="m_subCta" />
-                      </item>
-                    </layout>
-                  </item>
-                  <item>
-                    <widget class="QToolButton" name="toolButton1" >
-                      <property name="sizePolicy" >
-                        <sizepolicy>
-                          <hsizetype>0</hsizetype>
-                          <vsizetype>0</vsizetype>
-                          <horstretch>32</horstretch>
-                          <verstretch>32</verstretch>
-                        </sizepolicy>
-                      </property>
-                      <property name="minimumSize" >
-                        <size>
-                          <width>32</width>
-                          <height>32</height>
-                        </size>
-                      </property>
-                      <property name="text" >
-                        <string>...</string>
-                      </property>
-                    </widget>
-                  </item>
-                </layout>
-              </item>
-              <item>
-                <layout class="QHBoxLayout" >
-                  <property name="margin" >
-                    <number>0</number>
-                  </property>
-                  <item>
-                    <layout class="QVBoxLayout" >
-                      <property name="margin" >
-                        <number>0</number>
-                      </property>
-                      <item>
-                        <widget class="QLabel" name="textLabel1_2" >
-                          <property name="text" >
-                            <string>Archivo de Diario</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="m_diario" />
-                      </item>
-                    </layout>
-                  </item>
-                  <item>
-                    <widget class="QToolButton" name="toolButton1_2" >
-                      <property name="sizePolicy" >
-                        <sizepolicy>
-                          <hsizetype>0</hsizetype>
-                          <vsizetype>0</vsizetype>
-                          <horstretch>32</horstretch>
-                          <verstretch>32</verstretch>
-                        </sizepolicy>
-                      </property>
-                      <property name="minimumSize" >
-                        <size>
-                          <width>32</width>
-                          <height>32</height>
-                        </size>
-                      </property>
-                      <property name="text" >
-                        <string>...</string>
-                      </property>
-                    </widget>
-                  </item>
-                </layout>
-              </item>
-            </layout>
-          </widget>
-          <widget class="QWidget" name="tab" >
-            <attribute name="title" >
-              <string>&amp;XML</string>
-            </attribute>
-            <layout class="QVBoxLayout" >
-              <property name="margin" >
-                <number>0</number>
-              </property>
-              <item>
-                <layout class="QHBoxLayout" >
-                  <property name="margin" >
-                    <number>0</number>
-                  </property>
-                  <item>
-                    <layout class="QVBoxLayout" >
-                      <property name="margin" >
-                        <number>0</number>
-                      </property>
-                      <item>
-                        <widget class="QLabel" name="textLabel1_3" >
-                          <property name="text" >
-                            <string>Archivo XML</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="m_XML" />
-                      </item>
-                    </layout>
-                  </item>
-                  <item>
-                    <widget class="QToolButton" name="toolButton1_5" >
-                      <property name="sizePolicy" >
-                        <sizepolicy>
-                          <hsizetype>0</hsizetype>
-                          <vsizetype>0</vsizetype>
-                          <horstretch>32</horstretch>
-                          <verstretch>32</verstretch>
-                        </sizepolicy>
-                      </property>
-                      <property name="minimumSize" >
-                        <size>
-                          <width>32</width>
-                          <height>32</height>
-                        </size>
-                      </property>
-                      <property name="text" >
-                        <string>...</string>
-                      </property>
-                    </widget>
-                  </item>
-                </layout>
-              </item>
-              <item>
-                <spacer name="spacer4" >
-                  <property name="sizeHint" >
-                    <size>
-                      <width>61</width>
-                      <height>91</height>
-                    </size>
-                  </property>
-                  <property name="sizeType" >
-                    <enum>Expanding</enum>
-                  </property>
-                  <property name="orientation" >
-                    <enum>Vertical</enum>
-                  </property>
-                </spacer>
-              </item>
-            </layout>
-          </widget>
-        </widget>
-      </item>
-      <item>
+<ui version="4.0" >
+ <class>importContaplusBase</class>
+ <widget class="QDialog" name="importContaplusBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>617</width>
+    <height>429</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Importar y Exportar Datos</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>5</number>
+   </property>
+   <property name="spacing" >
+    <number>5</number>
+   </property>
+   <item>
+    <widget class="QTabWidget" name="tabWidget3" >
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>&amp;Contalus</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
         <layout class="QHBoxLayout" >
-          <property name="margin" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
             <number>0</number>
-          </property>
-          <item>
-            <widget class="QLabel" name="textLabel2" >
-              <property name="text" >
-                <string>Fecha Inicial</string>
-              </property>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel1" >
+             <property name="text" >
+              <string>Archivo de SubCta</string>
+             </property>
             </widget>
-          </item>
-          <item>
-            <widget class="BusquedaFecha" name="m_fechainicial" />
-          </item>
-          <item>
-            <widget class="QLabel" name="textLabel2_2" >
-              <property name="text" >
-                <string>Fecha Final</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="BusquedaFecha" name="m_fechafinal" />
-          </item>
-          <item>
-            <spacer name="spacer8" >
-              <property name="sizeHint" >
-                <size>
-                  <width>70</width>
-                  <height>20</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="m_subCta" />
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton1" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>32</horstretch>
+             <verstretch>32</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
         </layout>
-      </item>
-      <item>
-        <widget class="QCheckBox" name="m_test" >
-          <property name="text" >
-            <string>Realizar sólo &amp;un Testeo</string>
-          </property>
-        </widget>
-      </item>
-      <item>
-        <layout class="QVBoxLayout" >
-          <property name="margin" >
-            <number>0</number>
-          </property>
-          <item>
-            <widget class="QLabel" name="textLabel3" >
-              <property name="text" >
-                <string>Resultado</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="Q3TextBrowser" name="m_mensajes" />
-          </item>
-        </layout>
-      </item>
-      <item>
-        <widget class="Q3ProgressBar" name="m_progressbar" />
-      </item>
-      <item>
+       </item>
+       <item>
         <layout class="QHBoxLayout" >
-          <property name="margin" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
             <number>0</number>
-          </property>
-          <item>
-            <spacer name="spacer1" >
-              <property name="sizeHint" >
-                <size>
-                  <width>340</width>
-                  <height>31</height>
-                </size>
-              </property>
-              <property name="sizeType" >
-                <enum>Expanding</enum>
-              </property>
-              <property name="orientation" >
-                <enum>Horizontal</enum>
-              </property>
-            </spacer>
-          </item>
-          <item>
-            <widget class="QPushButton" name="pushButtonF_X" >
-              <property name="text" >
-                <string>Ca&amp;ncelar</string>
-              </property>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel1_2" >
+             <property name="text" >
+              <string>Archivo de Diario</string>
+             </property>
             </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="pushButton33_2" >
-              <property name="text" >
-                <string>Expor&amp;tar</string>
-              </property>
-            </widget>
-          </item>
-          <item>
-            <widget class="QPushButton" name="pushButton33" >
-              <property name="text" >
-                <string>&amp;Importar</string>
-              </property>
-            </widget>
-          </item>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="m_diario" />
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton1_2" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>32</horstretch>
+             <verstretch>32</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
         </layout>
-      </item>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab" >
+      <attribute name="title" >
+       <string>&amp;XML</string>
+      </attribute>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="textLabel1_3" >
+             <property name="text" >
+              <string>Archivo XML</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="m_XML" />
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QToolButton" name="toolButton1_5" >
+           <property name="sizePolicy" >
+            <sizepolicy>
+             <hsizetype>0</hsizetype>
+             <vsizetype>0</vsizetype>
+             <horstretch>32</horstretch>
+             <verstretch>32</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize" >
+            <size>
+             <width>32</width>
+             <height>32</height>
+            </size>
+           </property>
+           <property name="text" >
+            <string>...</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType" >
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>61</width>
+           <height>91</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="textLabel2" >
+       <property name="text" >
+        <string>Fecha Inicial</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="BusquedaFecha" native="1" name="m_fechainicial" />
+     </item>
+     <item>
+      <widget class="QLabel" name="textLabel2_2" >
+       <property name="text" >
+        <string>Fecha Final</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="BusquedaFecha" native="1" name="m_fechafinal" />
+     </item>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>70</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
     </layout>
-  </widget>
-  <layoutdefault spacing="6" margin="11" />
-  <pixmapfunction></pixmapfunction>
-  <customwidgets>
-    <customwidget>
-      <class>BusquedaFecha</class>
-      <extends></extends>
-      <header location="local" >../../../bulmalib/busquedafecha.h</header>
-      <sizehint>
-        <width>50</width>
-        <height>20</height>
-      </sizehint>
-      <container>0</container>
-      <sizepolicy>
-        <hordata>5</hordata>
-        <verdata>5</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <tabstops>
-    <tabstop>pushButtonF_X</tabstop>
-  </tabstops>
-  <images>
-    <image name="image0" >
-      <data format="PNG" length="1102" >89504e470d0a1a0a0000000d4948445200000016000000160806000000c4b46c3b0000041549444154388db5954f681c6518c67f13a7f55b09f20dae300b9b92814a9d60d11dbcec921e1ae8c185485be8c5638b60255ab439488df662156d4b519353ac22d1e4d4b9082b98120f85cdc176b6d0345368e8aeff3a039db21f18dcaf32ed78d8ddb4a5b6e8c1175e868f197edf332f0fcf6b645946bf0cc318001e034c6000307afda8ca7a7d074881db5996dd31fb6fa78e4c3d79e1eb0baf2dabe5fd3291dbeaaa4e8e1c1d3a78780404ff786eab36e1d5706df9fcf23c29a7819b8661dc32b22cc3308c81cb3f5c9eb4ccf0638a16415c6324efb09a048cd81eab4980677b90ac427e84300970f3fdb383bf5c23f8aac19767d571e033a0dd076f9afe74fad2de5deeb6dada07387f3409528d370441042a1644b14620c8e5a15a86e6bac695d048a09487639f2b6a0bfa17e065e07a7f14a68dbd2d486a38c2226837f01c496d11a2ef35f3e76384093ad508537266ab60f2a045d3ed502e4223d694870535f416c002da033df0c0d2da1223f93641b484372439bda039f951ccfc79859402e7054969d446dad05ad34c1c6ae2cf419840a907ef550ed8dc576c78b6c76a52c77304b545f06715a47078b78d3d0e63db3d4215e00c5acccc75f06715fe5c8bb1e75c9a3b72946c8d8fa6e72aa3afd808e28091bc20f8156adf2974aaa9eeb671f74365bba6a19628dcc87172b6cde18316afbc21c1144c9d8a70e82aefb3ee05e3d91eab4a53482b84173552daec1c875251d354e0880213c7dbd4e6149347220ebf6ae13e2bd089c63fd7a154bcdfdc1be0200ef06cc1d24a1d4c280c43c58546a2299816136f46842b0a210507765884ba8d5b92e85413fd068df821e0ae4fc1cb0b4835e54168ae83438189b7db345734a4200705aa089522608230053a8552513c5c317968029812bfa5710673cc2c74ba4a07057651d26ac59c381ae12f5a444d8d4e35ce708ef0ae2bbafebd577198d4d95b8633c382b8a59999ebf0ee5b15da379638b0cf429970e228b4d662a60e45e875856d4bdc12c8f4113376f382705d53dd27d0a9c69f55ccccd599feb080703b547775987caf806d4b5412430a95714975f43e1f3fa89824c09502b1032c6d73ec548bf953b0bca8d8bb5332af206ab65189eece164d784ee39fcd51290ae6d10f80b3fa953ad57dd0b8a229dbc04b82d74d177f21225cd11cbbd8ea7e9d82cc4bc6f648821f35d1bac29116335736a019906d80c3abe19aff93d85a7a46d04834a52288f10e07f68ce19f0b901ac218c65ef46028a43a0afed91cae1c2354759a9700b80edc06b27ebae53079a73c2adeb70a5d4b69ad41742d247ad70b133420004d771c4a41d8d044b146c57c0b7c015ca3b74136015b804f809fb9bb15fe6dff0e7c03ec019e079ede087abaa964014ff59e397a81c2a32bebfd7e07680337e9073d80611826f038f0440fba99ffb6f3feeac1ff046e19ffd732fd1b7054f024ad43c3200000000049454e44ae426082</data>
-    </image>
-  </images>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="m_test" >
+     <property name="text" >
+      <string>Realizar sólo &amp;un Testeo</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="textLabel3" >
+       <property name="text" >
+        <string>Resultado</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="m_mensajes" />
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QProgressBar" name="m_progressbar" >
+     <property name="value" >
+      <number>24</number>
+     </property>
+     <property name="orientation" >
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType" >
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>340</width>
+         <height>31</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonF_X" >
+       <property name="text" >
+        <string>Ca&amp;ncelar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton33_2" >
+       <property name="text" >
+        <string>Expor&amp;tar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton33" >
+       <property name="text" >
+        <string>&amp;Importar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>pushButtonF_X</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
 </ui>

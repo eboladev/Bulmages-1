@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>FacturasProveedorListBase</class>
  <widget class="QWidget" name="FacturasProveedorListBase" >
   <property name="enabled" >
@@ -307,7 +305,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" />
         </item>
         <item>
          <spacer>
@@ -333,7 +331,7 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
         </item>
         <item>
          <spacer>
@@ -372,56 +370,10 @@
          </widget>
         </item>
         <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>41</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
+         <widget class="BusquedaArticulo" native="1" name="m_articulo" />
         </item>
         <item>
-         <widget class="QLabel" name="label7" >
-          <property name="text" >
-           <string>Contiene articulo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaArticulo" name="m_articulo" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>81</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="label6" >
-          <property name="text" >
-           <string>Proveedor:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaProveedor" name="m_proveedor" >
+         <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
           <property name="minimumSize" >
            <size>
             <width>250</width>
@@ -429,22 +381,6 @@
            </size>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>190</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>
@@ -511,35 +447,26 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaProveedor</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaArticulo</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>FacturasProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>facturasplist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>
