@@ -40,7 +40,7 @@
 
 
 PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent), PedidoProveedor(comp) {
+        : PedidoProveedor(comp, parent) {
     _depura("PedidoProveedorView::PedidoProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -73,6 +73,7 @@ PedidoProveedorView::~PedidoProveedorView() {
 
 
 void PedidoProveedorView::inicialize() {
+    _depura("PedidoProveedorView::inicialize", 0);
     m_totalBases->setReadOnly(TRUE);
     m_totalBases->setAlignment(Qt::AlignRight);
     QPalette p1 = m_totalBases->palette();
@@ -103,6 +104,7 @@ void PedidoProveedorView::inicialize() {
     pintaidtrabajador("0");
     subform3->pintar();
     m_descuentos->pintar();
+    _depura("END PedidoProveedorView::inicialize", 0);
 }
 
 
@@ -149,10 +151,12 @@ int PedidoProveedorView::guardar() {
 
 
 void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc) {
+    _depura("PedidoProveedorView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
     m_totalpedidoproveedor->setText(total.toQString());
     m_totalDiscounts->setText(desc.toQString());
+    _depura("END PedidoProveedorView::pintatotales", 0);
 }
 
 
@@ -172,6 +176,7 @@ void PedidoProveedorView::on_mui_pagar_clicked() {
 
 /// Se encarga de generar un albaran a partir del pedido.
 void PedidoProveedorView::generarAlbaran() {
+    _depura("PedidoProveedorView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + DBvalue("refpedidoproveedor") + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -227,11 +232,6 @@ void PedidoProveedorView::generarAlbaran() {
         linea1->setDBvalue("proporciondalbaranp", listadescuentos->DBvalue("proporciondpedidoproveedor", i));
     } // end for
     bud->show();
-}
-
-
-int PedidoProveedorView::sacaWindow() {
-    companyact->sacaWindow(this);
-    return 0;
+    _depura("END PedidoProveedorView::generarAlbaran", 0);
 }
 

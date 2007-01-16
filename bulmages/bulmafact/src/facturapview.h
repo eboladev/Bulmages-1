@@ -32,14 +32,13 @@
 #include "busquedaformapago.h"
 #include "busquedaalmacen.h"
 #include "funcaux.h"
-#include "ficha.h"
 
 
 /** Implementa la pantalla de Facturas de Proveedores.
     Deriva de la clase ficha para heredar metodos comunes a las fichas.
     Tambien deriva de la clase \ref FacturaProveedor para trabajar con la tabla facturap.
 */
-class FacturaProveedorView : public Ficha, public Ui_FacturaProveedorBase, public FacturaProveedor {
+class FacturaProveedorView : public FacturaProveedor, public Ui_FacturaProveedorBase {
     Q_OBJECT
 
 public:
@@ -91,7 +90,6 @@ public slots:
 
     /// Este slot se activa cuando hay cambios en los subformularios.
     virtual void s_pintaTotales() {
-//         pintatotales(listalineas->calculabase(), listalineas->calculaiva());
         calculaypintatotales();
     }
     virtual void on_mui_pagar_clicked() {

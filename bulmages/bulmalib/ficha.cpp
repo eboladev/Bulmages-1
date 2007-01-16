@@ -64,7 +64,7 @@ void Ficha::on_mui_borrar_clicked() {
 
 
 void Ficha::closeEvent(QCloseEvent *e) {
-    _depura("Ficha::closeEvent", 0);
+    _depura("Ficha::closeEvent", 0, windowTitle());
     try {
         if (dialogChanges_hayCambios()) {
             int val = QMessageBox::warning(this,

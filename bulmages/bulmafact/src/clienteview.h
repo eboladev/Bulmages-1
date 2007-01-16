@@ -115,8 +115,6 @@ public:
 	mui_forma_pago->setidforma_pago(val);
     };
 
-    virtual int sacaWindow();
-
 public slots:
     /// \TODO: Muchos metodos aqui implementados deberian estar en Ficha.
     virtual void on_mui_guardar_clicked();

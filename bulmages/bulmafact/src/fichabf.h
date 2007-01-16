@@ -59,6 +59,7 @@ public:
     void imprimir();
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
+    virtual int sacaWindow();
 };
 
 #endif

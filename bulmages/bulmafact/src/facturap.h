@@ -24,16 +24,18 @@
 #define FACTURAP_H
 
 #include <QString>
+#include <QWidget>
 
 #include "listlinfacturapview.h"
 #include "company.h"
 #include "listdescfacturaprovview.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
 /** Hace de intermediario entre la base de datos y la pantalla de Factura Proveedor.
 */
-class FacturaProveedor : public DBRecord {
+class FacturaProveedor : public FichaBf {
+Q_OBJECT
 protected:
     /// Puntero a la lista de lineas de factura de proveedor. 
     ListLinFacturaProveedorView *listalineas;
@@ -43,7 +45,7 @@ protected:
     company *companyact;
 
 public:
-    FacturaProveedor(company *);
+    FacturaProveedor(company *, QWidget *);
     virtual ~FacturaProveedor();
     
     ListLinFacturaProveedorView* getlistalineas();

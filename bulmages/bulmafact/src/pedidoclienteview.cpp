@@ -68,13 +68,9 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
 
 
 PedidoClienteView::~PedidoClienteView() {
+    _depura("PedidoClienteView::~PedidoClienteView", 0);
     companyact->refreshPedidosCliente();
-}
-
-
-int PedidoClienteView::sacaWindow() {
-    companyact->sacaWindow(this);
-    return 0;
+    _depura("END PedidoClienteView::~PedidoClienteView", 0);
 }
 
 
@@ -99,6 +95,7 @@ void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed d
 
 
 void PedidoClienteView::on_mui_verpresupuesto_clicked() {
+    _depura("PedidoClienteView::on_mui_verpresupuesto_clicked", 0);
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "' AND idcliente=" + DBvalue("idcliente");
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
@@ -116,6 +113,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
         _depura("No hay presupuestos con la misma referencia.", 2);
     } // end if
     delete cur;
+    _depura("END PedidoClienteView::on_mui_verpresupuesto_clicked", 0);
 }
 
 
@@ -199,6 +197,7 @@ void PedidoClienteView::generarAlbaran() {
             bud->getlistadescuentos()->nuevoRegistro();
         } // end if
     } // end for
+    _depura("END PedidoClienteView::generarAlbaran", 0);
 }
 
 
@@ -216,6 +215,7 @@ void PedidoClienteView::on_mui_cobrar_clicked() {
 
 
 int PedidoClienteView::cargar(QString id) {
+    _depura("PedidoClienteView::cargar", 0);
     try {
         if (PedidoCliente::cargar(id)) {
             throw -1;
@@ -226,11 +226,13 @@ int PedidoClienteView::cargar(QString id) {
     } catch (...) {
         return -1;
     } // end try
+    _depura("END PedidoClienteView::cargar", 0);
     return 0;
 }
 
 
 int PedidoClienteView::guardar() {
+    _depura("PedidoClienteView::guardar", 0);
     try {
         setcomentpedidocliente(m_comentpedidocliente->toPlainText());
         setnumpedidocliente(m_numpedidocliente->text());
@@ -250,6 +252,7 @@ int PedidoClienteView::guardar() {
         _depura("", 0);
         throw -1;
     } // end try
+    _depura("END PedidoClienteView::guardar", 0);
     return 0;
 }
 

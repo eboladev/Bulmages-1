@@ -140,6 +140,16 @@ BEGIN
 		ALTER TABLE lalbaranp RENAME COLUMN descontlalbaranp TO descuentolalbaranp;
 	END IF;
 
+	SELECT INTO as * FROM pg_attribute WHERE attname=''regimenfiscalproveedor'';
+	IF NOT FOUND THEN
+		ALTER TABLE proveedor ADD COLUMN recargoeqproveedor BOOLEAN;
+		ALTER TABLE proveedor ALTER COLUMN recargoeqproveedor SET DEFAULT FALSE;
+		ALTER TABLE proveedor ADD COLUMN idforma_pago integer;
+		ALTER TABLE proveedor ADD CONSTRAINT idforma_pagofk FOREIGN KEY (idforma_pago) REFERENCES forma_pago(idforma_pago);
+		ALTER TABLE proveedor ADD COLUMN regimenfiscalproveedor CHARACTER VARYING(50);
+		UPDATE proveedor SET regimenfiscalproveedor = ''Normal'';
+		ALTER TABLE proveedor ALTER COLUMN regimenfiscalproveedor SET NOT NULL;
+	END IF;
 	RETURN 0;
 END;
 '   LANGUAGE plpgsql;
@@ -299,9 +309,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0004'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor=''0.9.1-0005'' WHERE nombre=''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0004''); 		 
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0005''); 		 
 	END IF;
 	RETURN 0;
 END;

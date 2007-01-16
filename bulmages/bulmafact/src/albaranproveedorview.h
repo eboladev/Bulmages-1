@@ -41,7 +41,7 @@ class company;
     Deriva de Ficha para temas de visualizacion y de AlbaranProveedor para cuestiones
     de manejo de la base de datos.
  */
-class AlbaranProveedorView : public Ficha, public Ui_AlbaranProveedorBase, public AlbaranProveedor {
+class AlbaranProveedorView : public AlbaranProveedor, public Ui_AlbaranProveedorBase {
     Q_OBJECT
 
 public:
@@ -85,7 +85,6 @@ public:
     virtual int borrar() {
         return AlbaranProveedor::borrar();
     };
-    virtual int sacaWindow();
     void generarFacturaProveedor();
 
 public slots:

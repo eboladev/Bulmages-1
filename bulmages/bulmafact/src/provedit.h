@@ -23,7 +23,7 @@
 
 #include "ui_proveditbase.h"
 #include "dbrecord.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class company;
@@ -31,21 +31,19 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un proveedor.
 /** */
-class ProveedorView : public Ficha, public Ui_ProveedorBase, public DBRecord {
+class ProveedorView : public FichaBf, public Ui_ProveedorBase {
     Q_OBJECT
 
 private:
     company *m_companyact;
-    /*void closeEvent(QCloseEvent *);*/
 
 public:
-    ProveedorView(company *emp, QWidget *parent = 0);
+    ProveedorView(company *comp, QWidget *parent = 0);
     ~ProveedorView();
 
 public:
     virtual int cargar(QString);
     virtual int guardar();
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
@@ -53,7 +51,6 @@ public slots:
     }
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-/*    virtual void on_mui_aceptar_clicked();*/
 };
 
 #endif

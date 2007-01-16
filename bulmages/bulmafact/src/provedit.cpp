@@ -29,7 +29,7 @@
 
 
 ProveedorView::ProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent), DBRecord(comp) {
+        : FichaBf(comp, parent) {
     _depura("ProveedorView::ProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -51,6 +51,11 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         addDBCampo("urlproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("URL"));
         addDBCampo("comentproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Comentarios"));
         addDBCampo("codproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Codigo"));
+	addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
+	addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
+	addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
+
+
 
         setupUi(this);
         m_companyact = comp;
@@ -77,6 +82,10 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         m_listpagosprov->setcompany(m_companyact);
         m_listpagosprov->hideBusqueda();
 
+	mui_forma_pago->setcompany(m_companyact);
+        mui_forma_pago->setidforma_pago("0");
+
+
         m_companyact->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
     } catch(...) {
@@ -87,20 +96,18 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
 }
 
 
-ProveedorView::~ProveedorView() {}
-
-
-int ProveedorView::sacaWindow() {
-    m_companyact->sacaWindow(this);
-    return 0;
+ProveedorView::~ProveedorView() {
+    _depura("ProveedorView::~ProveedorView", 0);
+    _depura("END ProveedorView::~ProveedorView", 0);
 }
+
 
 
 /// Esta funcion carga un proveedor de la base de datos y lo presenta.
 /// Si el parametro pasado no es un identificador valido entonces se pone
 /// la ventana de edicion en modo de insercion.
 int ProveedorView::cargar(QString idprov) {
-    _depura("ProveedorView::cargar", 0);
+    _depura("ProveedorView::cargar", 0, idprov);
     try {
         QString query = "SELECT * FROM proveedor WHERE idproveedor = " + idprov;
         cursor2 * cur = m_companyact->cargacursor(query);
@@ -123,6 +130,16 @@ int ProveedorView::cargar(QString idprov) {
         m_comentproveedor->setPlainText(DBvalue("comentproveedor" ));
         m_provproveedor->setProvincia(DBvalue("provproveedor"));
         mui_codproveedor->setText(DBvalue("codproveedor"));
+        mui_forma_pago->setidforma_pago(DBvalue("idforma_pago"));
+	mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
+
+	/// Pintamos el recargo de equivalencia
+	if (DBvalue("recargoeqproveedor") == "t") {
+		mui_recargoeqproveedor->setChecked(TRUE);
+	} else {
+		mui_recargoeqproveedor->setChecked(FALSE);
+	} // end if
+
         dialogChanges_cargaInicial();
 
         /// Cargamos las ventanas auxiliares.
@@ -149,6 +166,7 @@ int ProveedorView::cargar(QString idprov) {
 
 /// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de nuevo.
 void ProveedorView::on_mui_crear_clicked() {
+    _depura("ProveedorView::on_mui_crear_clicked", 0);
     if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar proveedor"),
@@ -177,6 +195,7 @@ void ProveedorView::on_mui_crear_clicked() {
     m_comentproveedor->setPlainText("");
     mui_codproveedor->setText("");
     dialogChanges_cargaInicial();
+    _depura("END ProveedorView::on_mui_crear_clicked", 0);
 }
 
 
@@ -204,7 +223,9 @@ int ProveedorView::guardar() {
     setDBvalue("comentproveedor", m_comentproveedor->toPlainText());
     setDBvalue("provproveedor", m_provproveedor->currentText());
     setDBvalue("codproveedor", mui_codproveedor->text());
-
+    setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
+    setDBvalue("recargoeqproveedor",  mui_recargoeqproveedor->isChecked() ? "TRUE" : "FALSE");
+    setDBvalue("regimenfiscalproveedor", mui_regimenfiscalproveedor->currentText());
     QString id;
     m_companyact->begin();
     try {
@@ -223,6 +244,7 @@ int ProveedorView::guardar() {
 
 /// Esta funcion se ejecuta cuando se ha pulsado sobre el boton de borrar.
 void ProveedorView::on_mui_borrar_clicked() {
+    _depura("ProveedorView::on_mui_borrar_clicked", 0);
     if (DBvalue("idproveedor") != "")
         if (QMessageBox::Yes == QMessageBox::question(this,
                 tr("Borrar proveedor"),
@@ -232,27 +254,6 @@ void ProveedorView::on_mui_borrar_clicked() {
                 dialogChanges_cargaInicial();
                 close();
             } // end if
+    _depura("END ProveedorView::on_mui_borrar_clicked", 0);
 }
 
-/*
-void ProveedorView::closeEvent(QCloseEvent *e) {
-    _depura("ProveedorView::closeEvent", 0);
-    if (dialogChanges_hayCambios()) {
-        int val = QMessageBox::warning(this,
-                                       tr("Guardar proveedor"),
-                                       tr("Desea guardar los cambios?"),
-                                       tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-        if (val == 0)
-            if (guardar())
-                e->ignore();
-        if (val == 2)
-            e->ignore();
-    } // end if
-}
-
-
-void ProveedorView::on_mui_aceptar_clicked() {
-    if (!guardar())
-        close();
-}
-*/

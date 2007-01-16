@@ -45,7 +45,7 @@
     Mete la ventana en el workSpace.
 */    
 AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent), AlbaranProveedor(comp) {
+        : AlbaranProveedor(comp, parent) {
     _depura("AlbaranProveedorView::AlbaranProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
@@ -85,15 +85,6 @@ AlbaranProveedorView::~AlbaranProveedorView() {
     _depura("END AlbaranProveedorView::~AlbaranProveedorView", 0);
 }
 
-/** Este metodo es invocado por la clase ficha.
-    Saca la ventana del workSpace
-*/
-int AlbaranProveedorView::sacaWindow() {
-    _depura("AlbaranProveedorView::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    _depura("END AlbaranProveedorView::sacaWindow", 0);
-    return 0;
-}
 
 /** Inicializa los elementos de la ventana.
     Este metodo es invocado al crear un nuevo Albaran de Proveedor sin

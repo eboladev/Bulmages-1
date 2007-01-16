@@ -28,6 +28,7 @@
 
 
 PedidoCliente::PedidoCliente(company *comp, QWidget *parent) : FichaBf(comp, parent) {
+    _depura("PedidoCliente::PedidoCliente", 0);
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
     addDBCampo("idpedidocliente", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoCliente", "Identificador"));
@@ -43,13 +44,18 @@ PedidoCliente::PedidoCliente(company *comp, QWidget *parent) : FichaBf(comp, par
     addDBCampo("comentpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Comentarios"));
     addDBCampo("procesadopedidocliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Procesado"));
     addDBCampo("refpedidocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("PedidoCliente", "Referencia"));
+    _depura("END PedidoCliente::PedidoCliente", 0);
 }
 
 
-PedidoCliente::~PedidoCliente() {}
+PedidoCliente::~PedidoCliente() {
+    _depura("PedidoCliente::~PedidoCliente", 0);
+    _depura("END PedidoCliente::~PedidoCliente", 0);
+}
 
 
 int PedidoCliente::borrar() {
+    _depura("PedidoCliente::borrar", 0);
     if (DBvalue("idpedidocliente") != "") {
         companyact->begin();
         m_listalineas->borrar();
@@ -61,17 +67,20 @@ int PedidoCliente::borrar() {
         } // end if
         companyact->commit();
     } // end if
+    _depura("PedidoCliente::borrar", 0);
     return 0;
 }
 
 
 void PedidoCliente::vaciaPedidoCliente() {
+    _depura("PedidoCliente::vaciaPedidoCliente", 0);
     DBclear();
+    _depura("END PedidoCliente::vaciaPedidoCliente", 0);
 }
 
 
 void PedidoCliente::pintar() {
-    _depura("PedidoCliente::pintaPedidoCliente\n", 0);
+    _depura("PedidoCliente::pintar", 0);
     pintaidcliente(DBvalue("idcliente"));
     pintaidalmacen(DBvalue("idalmacen"));
     pintaidpedidocliente(DBvalue("idpedidocliente"));
@@ -86,7 +95,7 @@ void PedidoCliente::pintar() {
     pintatelpedidocliente(DBvalue("telpedidocliente"));
     pintaidtrabajador(DBvalue("idtrabajador"));
     calculaypintatotales();
-    _depura("FIN PedidoCliente::pintaPedidoCliente()\n", 0);
+    _depura("END PedidoCliente::pintar", 0);
 }
 
 

@@ -28,14 +28,10 @@
 #include "company.h"
 
 
-class Fixed;
-/// Una factura puede tener multiples bases. Por eso definimos el tipo base como un QMap.
-typedef QMap<QString, Fixed> base;
-
 /** Inicializa todos los componentes.
     Prepara el DBRecord para trabajar con la tabla facturap.
 */
-FacturaProveedor::FacturaProveedor(company *comp) : DBRecord(comp) {
+FacturaProveedor::FacturaProveedor(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("FacturaProveedor::FacturaProveedor", 0);
     companyact = comp;
     setDBTableName("facturap");

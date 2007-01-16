@@ -476,6 +476,9 @@ CREATE TABLE proveedor (
     urlproveedor character varying(100),
     clavewebproveedor character varying(100),
     inactivoproveedor character(1),
+    recargoeqproveedor boolean DEFAULT FALSE,
+    idforma_pago integer REFERENCES forma_pago(idforma_pago),
+    regimenfiscalproveedor character varying(50) DEFAULT ''Normal'' NOT NULL,
     provproveedor character varying
 );
 

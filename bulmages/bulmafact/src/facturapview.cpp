@@ -41,7 +41,7 @@
     mete la ventana en el workSpace.
 */
 FacturaProveedorView::FacturaProveedorView(company *comp, QWidget *parent)
-        : Ficha(parent), FacturaProveedor(comp) {
+        : FacturaProveedor(comp, parent) {
     _depura("FacturaProveedorView::FacturaProveedorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {

@@ -29,19 +29,20 @@
 #include "listdescpedidoproveedorview.h"
 #include "fixed.h"
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 
 
 /// Almacena la informaci&oacute;n de un pedido a proveedor.
 /** */
-class PedidoProveedor : public DBRecord {
+class PedidoProveedor : public FichaBf {
+Q_OBJECT
 protected:
     ListLinPedidoProveedorView *listalineas;
     ListDescuentoPedidoProveedorView *listadescuentos;
     company *companyact;
 
 public:
-    PedidoProveedor(company *);
+    PedidoProveedor(company *, QWidget *);
     virtual ~PedidoProveedor();
     void setListLinPedidoProveedor(ListLinPedidoProveedorView *a) {
         listalineas = a;

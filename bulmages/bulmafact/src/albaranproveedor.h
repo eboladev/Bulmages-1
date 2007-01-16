@@ -22,9 +22,10 @@
 #define ALBARANPROVEEDOR_H
 
 #include <QString>
+#include <QWidget>
 
 #include "company.h"
-#include "dbrecord.h"
+#include "fichabf.h"
 #include "listlinalbaranproveedorview.h"
 #include "listdescalbaranprovview.h"
 
@@ -32,7 +33,8 @@
 /** Esta clase se encarga de la manipulacion y operacion con la base de datos
     desde la ficha de albaran de proveedor.
 */
-class AlbaranProveedor : public DBRecord {
+class AlbaranProveedor : public FichaBf {
+Q_OBJECT
 protected:
     /// Listado de lineas de albaran de proveedor.
     ListLinAlbaranProveedorView *listalineas;
@@ -43,8 +45,7 @@ protected:
     company *companyact;
 
 public:
-    AlbaranProveedor(company *);
-//    AlbaranProveedor(Empresa *);
+    AlbaranProveedor(company *, QWidget *);
     virtual ~AlbaranProveedor();
 
     /// Establece cual es la lista subformulario del presupuesto.

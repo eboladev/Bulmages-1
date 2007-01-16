@@ -88,16 +88,6 @@ AlbaranClienteView::~AlbaranClienteView() {
 }
 
 
-/** Saca la ventana del workSpace. Este metodo es llamado desde Ficha.
-*/
-int AlbaranClienteView::sacaWindow() {
-    _depura("AlbaranClienteView::sacaWindow", 0);
-    m_companyact->sacaWindow(this);
-    _depura("END AlbaranClienteView::sacaWindow", 0);
-    return 0;
-}
-
-
 /** Inicializa todos los elementos del formulario
 */
 void AlbaranClienteView::inicializar() {

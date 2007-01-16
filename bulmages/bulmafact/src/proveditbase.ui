@@ -1,15 +1,13 @@
 <ui version="4.0" >
  <author>Tomeu Borrar Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ProveedorBase</class>
  <widget class="QWidget" name="ProveedorBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>746</width>
-    <height>571</height>
+    <width>788</width>
+    <height>771</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -189,18 +187,34 @@
    </item>
    <item>
     <widget class="QTabWidget" name="masdf" >
+     <property name="currentIndex" >
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>Datos generales</string>
       </attribute>
-      <layout class="QVBoxLayout" >
+      <layout class="QGridLayout" >
        <property name="margin" >
         <number>9</number>
        </property>
        <property name="spacing" >
         <number>6</number>
        </property>
-       <item>
+       <item row="8" column="0" >
+        <widget class="QLabel" name="textLabel2_8_6" >
+         <property name="text" >
+          <string>Forma de pago</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -270,7 +284,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="1" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -303,7 +317,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="2" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -323,7 +337,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="3" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -343,7 +357,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="4" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -410,7 +424,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="5" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -436,7 +450,7 @@
           </widget>
          </item>
          <item>
-          <widget class="BusquedaProvincia" name="m_provproveedor" >
+          <widget class="BusquedaProvincia" native="1" name="m_provproveedor" >
            <property name="minimumSize" >
             <size>
              <width>150</width>
@@ -447,7 +461,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="6" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -497,7 +511,7 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="7" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -547,7 +561,27 @@
          </item>
         </layout>
        </item>
-       <item>
+       <item row="11" column="0" colspan="3" >
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>2</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="textLabel2_4_3" >
+           <property name="text" >
+            <string>Datos bancarios:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="m_cbancproveedor" />
+         </item>
+        </layout>
+       </item>
+       <item row="10" column="0" colspan="3" >
         <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
@@ -611,25 +645,31 @@
          </item>
         </layout>
        </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
+       <item row="9" column="0" >
+        <widget class="QLabel" name="textLabel2_8_7" >
+         <property name="text" >
+          <string>Regimen fiscal</string>
          </property>
-         <property name="spacing" >
-          <number>2</number>
+         <property name="alignment" >
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
          </property>
-         <item>
-          <widget class="QLabel" name="textLabel2_4_3" >
-           <property name="text" >
-            <string>Datos bancarios:</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="m_cbancproveedor" />
-         </item>
-        </layout>
+         <property name="buddy" >
+          <cstring></cstring>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="1" >
+        <widget class="BusquedaRegimenFiscal" name="mui_regimenfiscalproveedor" />
+       </item>
+       <item row="8" column="1" >
+        <widget class="BusquedaFormaPago" name="mui_forma_pago" />
+       </item>
+       <item row="8" column="2" >
+        <widget class="QCheckBox" name="mui_recargoeqproveedor" >
+         <property name="text" >
+          <string>Aplicar Recargo de Equivalencia</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -645,7 +685,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="PedidosProveedorList" name="m_listpedidosprov" />
+        <widget class="PedidosProveedorList" native="1" name="m_listpedidosprov" />
        </item>
       </layout>
      </widget>
@@ -661,7 +701,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="AlbaranesProveedor" name="m_albaranesprov" />
+        <widget class="AlbaranesProveedor" native="1" name="m_albaranesprov" />
        </item>
       </layout>
      </widget>
@@ -677,7 +717,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="FacturasProveedorList" name="m_listfacturasprov" />
+        <widget class="FacturasProveedorList" native="1" name="m_listfacturasprov" />
        </item>
       </layout>
      </widget>
@@ -693,7 +733,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="PagosList" name="m_listpagosprov" />
+        <widget class="PagosList" native="1" name="m_listpagosprov" />
        </item>
       </layout>
      </widget>
@@ -1089,63 +1129,45 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>PedidosProveedorList</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>pedidosproveedorlist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaProvincia</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaprovincia.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QComboBox</extends>
+   <header>busquedaformapago.h</header>
   </customwidget>
   <customwidget>
    <class>PagosList</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>pagoslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>AlbaranesProveedor</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>albaranesproveedor.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>FacturasProveedorList</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>facturasplist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaRegimenFiscal</class>
+   <extends>QComboBox</extends>
+   <header>busquedaregimenfiscal.h</header>
   </customwidget>
  </customwidgets>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
- <connections>
-  <connection>
-   <sender>mui_cancelar</sender>
-   <signal>clicked()</signal>
-   <receiver>ProveedorBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>647</x>
-     <y>570</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>2</x>
-     <y>571</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

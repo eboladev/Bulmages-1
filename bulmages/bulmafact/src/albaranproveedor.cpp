@@ -26,8 +26,8 @@
 
 /** Constructor de la clase. Prepara el DBRecord para trabajar con la tabla albaranp
 */
-AlbaranProveedor::AlbaranProveedor(company *comp)
-        : DBRecord(comp) {
+AlbaranProveedor::AlbaranProveedor(company *comp, QWidget *parent)
+        : FichaBf(comp, parent) {
     _depura("AlbaranProveedor::AlbaranProveedor", 0);	
     companyact = comp;
     setDBTableName("albaranp");

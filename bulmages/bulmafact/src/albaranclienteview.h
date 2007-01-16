@@ -113,7 +113,6 @@ public:
     virtual int borrar() {
         return AlbaranCliente::borrar();
     };
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {

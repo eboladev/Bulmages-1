@@ -45,7 +45,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un pedido a proveedor.
 /** */
-class PedidoProveedorView : public Ficha, public Ui_PedidoProveedorBase, public PedidoProveedor {
+class PedidoProveedorView : public PedidoProveedor, public Ui_PedidoProveedorBase {
     Q_OBJECT
 
 public:
@@ -102,7 +102,6 @@ public:
     virtual int borrar() {
         return PedidoProveedorView::borrar();
     };
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {

@@ -90,15 +90,6 @@ ClienteView::~ClienteView() {
 }
 
 
-/** Saca la ventana del workSpace.
-    Este metodo es invocado desde la clase Ficha.
-*/
-int ClienteView::sacaWindow() {
-    _depura("ClienteView::sacaWindow", 0);
-    m_companyact->sacaWindow(this);
-    _depura("END ClienteView::sacaWindow", 0);
-    return 0;
-}
 
 
 /**

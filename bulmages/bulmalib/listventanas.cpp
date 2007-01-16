@@ -32,25 +32,23 @@
 
 
 listventanas::listventanas(QWidget *a) : QDockWidget(a) {
-    _depura("listventanas::INIT_listventanas()\n", 0);
+    _depura("listventanas::listventanas", 0);
     m_listBox = new QListWidget1(this);
     m_listBox->setIconSize(QSize(32, 32));
     m_listBox->setContentsMargins(0, 0, 0, 0);
     m_listBox->setSpacing(0);
     m_listBox->setWindowTitle(tr("Indexador"));
-    //setAccessibleName(tr("Indexador"));
-    //setAccessibleDescription(tr("Indexador"));
     setWindowTitle(tr("Indexador"));
     setFocusPolicy(Qt::StrongFocus);
     setWidget(m_listBox);
     connect(m_listBox, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(dclicked()));
     connect(m_listBox, SIGNAL(itemClicked(QListWidgetItem *)), this, SLOT(clicked()));
-    _depura("listventanas::END_listventanas()\n", 0);
+    _depura("END listventanas::listventanas", 0);
 }
 
 
 void listventanas::dclicked() {
-    _depura("listventanas::dclicked()\n", 0);
+    _depura("listventanas::dclicked", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
         if (widget->isMaximized() == TRUE)
@@ -58,26 +56,26 @@ void listventanas::dclicked() {
         else
             widget->showMaximized();
     } // end if
-    _depura("END listventanas::dclicked()\n", 0);
+    _depura("END listventanas::dclicked", 0);
 }
 
 
 void listventanas::clicked() {
-    _depura("listventanas::clicked()\n", 0);
+    _depura("listventanas::clicked", 0);
     QWidget *widget = (QWidget *)((QListWidgetItem1 *) m_listBox->currentItem())->object();
     if (widget != NULL) {
         widget->show();
         widget->parentWidget()->raise();
         m_pWorkspace->setActiveWindow(widget);
     } // end if
-    _depura("END listventanas::clicked()\n", 0);
+    _depura("END listventanas::clicked", 0);
 }
 
 
 listventanas::~listventanas() {
-    _depura("listventanas::~listventanas\n", 0);
+    _depura("listventanas::~listventanas", 0);
     delete m_listBox;
-    _depura("END listventanas::~listventanas\n", 0);
+    _depura("END listventanas::~listventanas", 0);
 }
 
 
@@ -102,7 +100,7 @@ void listventanas::vaciar() {
 /// nombre This QString is the name of the window that was shown in the listbox
 /// obj This QObject * contains the pointer of the window for furtner reference.
 int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
-    _depura("listventanas::meteWindow()", 0);
+    _depura("listventanas::meteWindo)", 0);
     try {
         int i = 0;
         while (i < m_listBox->count()) {
@@ -111,18 +109,17 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
             if (m->object() == obj) {
                 _depura("listventanas::La ventana ya existe", 0, nombre);
                 m->setNombre(nombre);
-                //m_listBox->setCurrentItem(m);
                 return 0;
             } // end if
 
             /// Comprobamos ventanas duplicadas.
             if (m->nombre() == nombre && compdup) {
-                _depura("listventanas::hay una duplicada y la cerramos()\n", 0);
-                _depura("listventanas::mostramos la original()\n", 0);
+                _depura("listventanas::hay una duplicada y la cerramos", 0);
+                _depura("listventanas::mostramos la original", 0);
                 ((QWidget *)m->object())->hide();
                 ((QWidget *)m->object())->show();
-                _depura("listventanas::Establecemos la nueva primaria()\n", 0);
-                //m_listBox->setCurrentItem(m);
+		sacaWindow(obj);
+                _depura("listventanas::Establecemos la nueva primaria", 0);
                 throw -1;
             } // end if
             i++;
@@ -133,20 +130,19 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
             QListWidgetItem1 *m = new QListWidgetItem1(m_listBox, icon);
             m->setObject(obj);
             m->setNombre(nombre);
-            //m_listBox->setCurrentItem(m);
         } // end if
     } catch (...) {
         mensajeInfo(tr("listventanas::meteWindow ventana duplicada"));
         throw -1;
     } // end try
-    _depura("END listventanas::meteWindow()\n", 0);
+    _depura("END listventanas::meteWindow", 0);
     return 0;
 }
 
 
 /// Sirve para seleccionar una ventana listada en el Indexador.
 int listventanas::seleccionaWindow(QString nombre, QObject *obj) {
-    _depura("listventanas::seleccionaWindow()", 0);
+    _depura("listventanas::seleccionaWindow", 0);
     try {
         int i = 0;
         while (i < m_listBox->count()) {
@@ -162,27 +158,27 @@ int listventanas::seleccionaWindow(QString nombre, QObject *obj) {
     } catch (...) {
         throw -1;
     } // end try
-    _depura("END listventanas::seleccionaWindow()\n", 0);
+    _depura("END listventanas::seleccionaWindow", 0);
     return 0;
 }
 
 
 /// Deselecciona todas las entradas del Indexador.
 int listventanas::deSeleccionaWindow() {
-    _depura("listventanas::deSeleccionaWindow()", 0);
+    _depura("listventanas::deSeleccionaWindow", 0);
     try {
         m_listBox->clearSelection();
         return 0;
     } catch (...) {
         throw -1;
     } // end try
-    _depura("END listventanas::deSeleccionaWindow()\n", 0);
+    _depura("END listventanas::deSeleccionaWindow", 0);
     return 0;
 }
 
 
 void listventanas::sacaWindow(QObject *obj) {
-    _depura("listventanas::sacaWindow()\n", 0);
+    _depura("listventanas::sacaWindow", 0);
     /// Buscamos la entrada correspondiente dentro del Indexador y la borramos.
     int i = 0;
     while (i < m_listBox->count()) {
@@ -195,15 +191,17 @@ void listventanas::sacaWindow(QObject *obj) {
         } // end if
         i++;
     } // end while
-    _depura("END listventanas::sacaWindow()\n", 0);
+    _depura("END listventanas::sacaWindow", 0);
 }
 
 
 void listventanas::cambiaVisible() {
+    _depura("listventanas::cambiaVisible", 0);
     if (this->isVisible() == TRUE) {
         this->hide();
     } else {
         this->show();
     } // end if
+    _depura("END listventanas::cambiaVisible", 0);
 }
 

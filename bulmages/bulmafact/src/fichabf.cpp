@@ -215,8 +215,8 @@ void FichaBf::imprimir() {
         buff.replace("[desc" + m_tablename + "]", DBvalue("desc" + m_tablename));
     if (exists("ref" + m_tablename))
         buff.replace("[ref" + m_tablename + "]", DBvalue("ref" + m_tablename));
-    if (exists("codigo_serie" + m_tablename) )
-        buff.replace("[codigo_serie" + m_tablename+"]", DBvalue("codigo_serie" + m_tablename));
+    if (exists("codigoserie_" + m_tablename) )
+        buff.replace("[codigoserie_" + m_tablename+"]", DBvalue("codigoserie_" + m_tablename));
     if (exists("fecha" + m_tablename) )
         buff.replace("[fecha" + m_tablename + "]", DBvalue("fecha" + m_tablename));
     /// Impresion de la tabla de contenidos.
@@ -346,3 +346,13 @@ void FichaBf::imprimir() {
     _depura("FichaBf::imprimir", 0);
 }
 
+
+/** Saca la ventana del workSpace.
+    Este metodo es invocado desde la clase Ficha.
+*/
+int FichaBf::sacaWindow() {
+    _depura("FichaBf::sacaWindow", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END FichaBf::sacaWindow", 0);
+    return 0;
+}

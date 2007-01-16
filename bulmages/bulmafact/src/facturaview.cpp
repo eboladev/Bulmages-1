@@ -94,16 +94,6 @@ FacturaView::~FacturaView() {
 }
 
 
-/** Saca la ventana del workSpace.
-    Este metodo es invocado desde la clase Ficha.
-*/
-int FacturaView::sacaWindow() {
-    _depura("FacturaView::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    _depura("END FacturaView::sacaWindow", 0);
-    return 0;
-}
-
 
 /** Inicializa los subformularios y resetea el control de cambios.
 */

@@ -27,9 +27,9 @@
 #include "funcaux.h"
 
 
-typedef QMap<QString, Fixed> base;
+// typedef QMap<QString, Fixed> base;
 
-PedidoProveedor::PedidoProveedor(company *comp) : DBRecord(comp) {
+PedidoProveedor::PedidoProveedor(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     companyact = comp;
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");

@@ -99,7 +99,6 @@ public:
     void pintadescPresupuesto(QString id) {
         m_descpresupuesto->setText(id);
     }
-    virtual int sacaWindow();
 
 private:
     void generarPedidoCliente();

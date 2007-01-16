@@ -107,14 +107,6 @@ PresupuestoView::~PresupuestoView() {
 }
 
 
-int PresupuestoView::sacaWindow() {
-    _depura("PresupuestoView::sacaWindow", 0);
-    companyact->sacaWindow(this);
-    _depura("END PresupuestoView::sacaWindow", 0);
-    return 0;
-}
-
-
 void PresupuestoView::on_mui_imprimir_clicked() {
     _depura("PresupuestoView::on_mui_imprimir_clicked", 0);
     imprimir();

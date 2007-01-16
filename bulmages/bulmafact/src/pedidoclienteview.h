@@ -98,7 +98,6 @@ public:
     virtual int borrar() {
         return PedidoCliente::borrar();
     }
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
