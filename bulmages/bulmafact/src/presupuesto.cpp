@@ -62,15 +62,15 @@ Presupuesto::~Presupuesto() {
 int Presupuesto::borrar() {
     _depura("Presupuesto::borrar", 0);
     if (DBvalue("idpresupuesto") != "") {
-        companyact->begin();
+        m_companyact->begin();
         m_listalineas->borrar();
         m_listadescuentos->borrar();
-        int error = companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto = " + DBvalue("idpresupuesto"));
+        int error = m_companyact->ejecuta("DELETE FROM presupuesto WHERE idpresupuesto = " + DBvalue("idpresupuesto"));
         if (error) {
-            companyact->rollback();
+            m_companyact->rollback();
             return -1;
         } // end if
-        companyact->commit();
+        m_companyact->commit();
     } // end if
     _depura("END Presupuesto::borrar", 0);
     return 0;
@@ -110,7 +110,7 @@ int Presupuesto::cargar(QString idbudget) {
     _depura("Presupuesto::cargar", 0);
     int error = 0;
     QString query = "SELECT * FROM presupuesto WHERE idpresupuesto = " + idbudget;
-    cursor2 * cur= companyact->cargacursor(query);
+    cursor2 * cur= m_companyact->cargacursor(query);
     if (cur->error())
         error = 1;
     if (!cur->eof()) {
@@ -136,20 +136,20 @@ int Presupuesto::cargar(QString idbudget) {
 int Presupuesto::guardar() {
     _depura("Presupuesto::guardar", 0);
     QString id;
-    companyact->begin();
+    m_companyact->begin();
     try {
         DBsave(id);
         setidPresupuesto(id);
         m_listalineas->guardar();
         m_listadescuentos->guardar();
-        companyact->commit();
+        m_companyact->commit();
 	/// Hacemos una carga para recuperar el numero y la referencia.
 	cargar(id);
         _depura("END Presupuesto::guardar", 0);
         return 0;
     } catch (...) {
         _depura("Error guardando, se cancela la operacion", 0);
-        companyact->rollback();
+        m_companyact->rollback();
         throw -1;
     } // end try
 }
@@ -158,7 +158,7 @@ int Presupuesto::guardar() {
 QString Presupuesto::detalleArticulos() {
     _depura("Presupuesto::detalleArticulos", 0);
     QString texto = "";
-    cursor2 *cur=companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
+    cursor2 *cur=m_companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
     int i = 0;
     while(!cur->eof()) {
         i = !i;
@@ -234,7 +234,7 @@ void Presupuesto::imprimirPresupuesto() {
     QString fitxersortidatxt = "";
     /// Linea de totales del Presupuesto.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));
         buff.replace("[poblcliente]", cur->valor("poblcliente"));

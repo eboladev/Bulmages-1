@@ -37,33 +37,16 @@
 class PedidoProveedor : public FichaBf {
 Q_OBJECT
 protected:
-    ListLinPedidoProveedorView *listalineas;
-    ListDescuentoPedidoProveedorView *listadescuentos;
-    company *companyact;
-
 public:
     PedidoProveedor(company *, QWidget *);
     virtual ~PedidoProveedor();
-    void setListLinPedidoProveedor(ListLinPedidoProveedorView *a) {
-        listalineas = a;
-        listalineas->setcompany(companyact);
-    };
-    void setListDescuentoPedidoProveedor(ListDescuentoPedidoProveedorView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-    };
+
     virtual int cargar(QString);
     virtual void pintar();
     virtual int guardar();
     virtual int borrar();
     void imprimirPedidoProveedor();
-    void calculaypintatotales();
-    ListLinPedidoProveedorView* getlistalineas() {
-        return listalineas;
-    };
-    ListDescuentoPedidoProveedorView* getlistadescuentos() {
-        return listadescuentos;
-    };
+
     virtual void pintaidproveedor(QString) {}
     ;
     virtual void pintaidalmacen(QString) {}
@@ -110,8 +93,8 @@ public:
     };
     void setidpedidoproveedor(QString val) {
         setDBvalue("idpedidoproveedor", val);
-        listalineas->setColumnValue( "idpedidoproveedor", val);
-        listadescuentos->setColumnValue( "idpedidoproveedor", val);
+        m_listalineas->setColumnValue( "idpedidoproveedor", val);
+        m_listadescuentos->setColumnValue( "idpedidoproveedor", val);
     };
     void setnumpedidoproveedor(QString val) {
         setDBvalue("numpedidoproveedor", val);

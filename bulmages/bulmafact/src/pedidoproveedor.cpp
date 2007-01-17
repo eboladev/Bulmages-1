@@ -30,7 +30,6 @@
 // typedef QMap<QString, Fixed> base;
 
 PedidoProveedor::PedidoProveedor(company *comp, QWidget *parent) : FichaBf(comp, parent) {
-    companyact = comp;
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
     addDBCampo("idpedidoproveedor", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("PedidoProveedor", "Id pedido proveedor"));
@@ -49,23 +48,28 @@ PedidoProveedor::PedidoProveedor(company *comp, QWidget *parent) : FichaBf(comp,
 }
 
 
-PedidoProveedor::~PedidoProveedor() {}
+PedidoProveedor::~PedidoProveedor() {
+   _depura("PedidoProveedor::~PedidoProveedor", 0);
+   _depura("END PedidoProveedor::~PedidoProveedor", 0);
+}
 
 
 int PedidoProveedor::borrar() {
+    _depura("PedidoProveedor::borrar", 0);
     if (DBvalue("idpedidoproveedor") != "") {
-        listalineas->borrar();
-        listadescuentos->borrar();
-        companyact->begin();
-        int error = companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor=" + DBvalue("idpedidoproveedor"));
+        m_listalineas->borrar();
+        m_listadescuentos->borrar();
+        m_companyact->begin();
+        int error = m_companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor=" + DBvalue("idpedidoproveedor"));
         if (error) {
-            companyact->rollback();
+            m_companyact->rollback();
             return -1;
         } // end if
-        companyact->commit();
+        m_companyact->commit();
         vaciaPedidoProveedor();
         pintar();
     } // end if
+    _depura("END PedidoProveedor::borrar", 0);
     return 0;
 }
 
@@ -102,13 +106,13 @@ void PedidoProveedor::pintar() {
 int PedidoProveedor::cargar(QString idbudget) {
     _depura("PedidoProveedor::cargar", 0);
     QString query = "SELECT * FROM pedidoproveedor WHERE idpedidoproveedor=" + idbudget;
-    cursor2 * cur= companyact->cargacursor(query);
+    cursor2 * cur= m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
     delete cur;
-    listalineas->cargar(idbudget);
-    listadescuentos->cargar(idbudget);
+    m_listalineas->cargar(idbudget);
+    m_listadescuentos->cargar(idbudget);
     pintar();
     _depura("END PedidoProveedor::cargar", 0);
     return 0;
@@ -119,18 +123,18 @@ int PedidoProveedor::guardar() {
     _depura("PedidoProveedor::guardar", 0);
     QString id;
     try {
-        companyact->begin();
+        m_companyact->begin();
         int error = DBsave(id);
         if (error)
             throw -1;
         setidpedidoproveedor(id);
-        error = listalineas->guardar();
+        error = m_listalineas->guardar();
         if (error)
             throw -1;
-        error = listadescuentos->guardar();
+        error = m_listadescuentos->guardar();
         if (error)
             throw -1;
-        companyact->commit();
+        m_companyact->commit();
 
 	/// Hacemos una carga para recuperar la referencia
 	cargar(id);
@@ -138,7 +142,7 @@ int PedidoProveedor::guardar() {
         _depura("END PedidoProveedor::guardar", 0);
         return 0;
     } catch (...) {
-        companyact->rollback();
+        m_companyact->rollback();
         _depura("PedidoProveedor::guardar Error al guardar el pedido proveedor", 2);
         throw -1;
     } // end try
@@ -188,7 +192,7 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 
     /// Linea de totales del presupuesto.
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
         buff.replace("[poblproveedor]", cur->valor("poblproveedor"));
@@ -212,8 +216,8 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     QString l;
 
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount() - 1; ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount() - 1; ++i) {
+        linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlpedidoproveedor").toAscii().constData()) * Fixed(linea->DBvalue("pvplpedidoproveedor").toAscii().constData());
         basesimp[linea->DBvalue("ivalpedidoproveedor")] = basesimp[linea->DBvalue("ivalpedidoproveedor")] + base - base * Fixed(linea->DBvalue("descuentolpedidoproveedor").toAscii().constData()) / 100;
         fitxersortidatxt += "<tr>\n";
@@ -239,15 +243,15 @@ void PedidoProveedor::imprimirPedidoProveedor() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount() - 1) {
+    if (m_listadescuentos->rowCount() - 1) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Descuento") + "</td>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Porcentaje") + "</td>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("PedidoCliente", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < listadescuentos->rowCount() - 1; ++i) {
-            linea1 = listadescuentos->lineaat(i);
+        for (int i = 0; i < m_listadescuentos->rowCount() - 1; ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondpedidoproveedor").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdpedidoproveedor") + "</td>\n";
@@ -303,59 +307,5 @@ void PedidoProveedor::imprimirPedidoProveedor() {
 
     invocaPDF("pedidoproveedor");
    _depura("PedidoProveedor::imprimirPedidoProveedor", 0);
-}
-
-
-void PedidoProveedor::calculaypintatotales() {
-    _depura("calculaypintatotales \n", 0);
-    base basesimp;
-
-    /// Impresion de los contenidos.
-    QString l;
-    for (int i = 0; i < listalineas->rowCount() - 1; i++) {
-        Fixed cant(listalineas->DBvalue("cantlpedidoproveedor", i));
-        Fixed pvpund(listalineas->DBvalue("pvplpedidoproveedor", i));
-        Fixed desc1(listalineas->DBvalue("descuentolpedidoproveedor", i));
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        basesimp[listalineas->DBvalue("ivalpedidoproveedor", i)] = basesimp[listalineas->DBvalue("ivalpedidoproveedor", i)] + base;
-    } // end for
-
-    Fixed basei("0.00");
-    base::Iterator it;
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.value();
-    } // end for
-    /// Impresion de los descuentos.
-    Fixed porcentt("0.00");
-
-    for (int i = 0; i < listadescuentos->rowCount() - 1; i++) {
-        Fixed propor(listadescuentos->DBvalue("proporciondpedidoproveedor", i).toAscii().constData());
-        porcentt = porcentt + propor;
-    } // end for
-
-    Fixed totbaseimp("0.00");
-    Fixed parbaseimp("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        if (porcentt > Fixed("0.00")) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        totbaseimp = totbaseimp + parbaseimp;
-    } // end for
-
-    Fixed totiva("0.00");
-    Fixed pariva("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().toAscii().constData());
-        if (porcentt > Fixed("0.00")) {
-            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
-        } else {
-            pariva = it.value() * piva / 100;
-        } // end if
-        totiva = totiva + pariva;
-    } // end for
-    pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
 }
 

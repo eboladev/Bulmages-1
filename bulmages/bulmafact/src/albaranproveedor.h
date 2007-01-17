@@ -35,40 +35,15 @@
 */
 class AlbaranProveedor : public FichaBf {
 Q_OBJECT
-protected:
-    /// Listado de lineas de albaran de proveedor.
-    ListLinAlbaranProveedorView *listalineas;
-    /// Listado de descuentos aplicados en el albaran de proveedor.
-    ListDescuentoAlbaranProvView *listadescuentos;
-    /// Puntero de la clase company con la que se esta trabajando. Este puntero se propaga por todas las clases de la aplicacion.
-    /// \TODO: Deberia ser m_company.
-    company *companyact;
-
 public:
     AlbaranProveedor(company *, QWidget *);
     virtual ~AlbaranProveedor();
 
-    /// Establece cual es la lista subformulario del presupuesto.
-    /// Normalmente para apuntar listlinpresupuestoview.
-    void setListLinAlbaranProveedor(ListLinAlbaranProveedorView *a) {
-        listalineas = a;
-        listalineas->setcompany(companyact);
-//        listalineas->setempresa(empresaact);
-    };
-    void setListDescuentoAlbaranProveedor(ListDescuentoAlbaranProvView *a) {
-        listadescuentos = a;
-        listadescuentos->setcompany(companyact);
-//        listadescuentos->setempresa(empresaact);
-    };
+
     virtual void pintar();
     virtual int guardar();
     virtual int borrar();
-    ListLinAlbaranProveedorView* getlistalineas() {
-        return listalineas;
-    };
-    ListDescuentoAlbaranProvView* getlistadescuentos() {
-        return listadescuentos;
-    };
+
     virtual int cargar(QString);
     virtual void pintaidalbaranp(QString) {}
     ;
@@ -88,12 +63,10 @@ public:
     ;
     virtual void pintarefalbaranp(QString) {}
     ;
-    virtual void pintatotales(Fixed, Fixed) {}
-    ;
     void setidalbaranp(QString val) {
         setDBvalue("idalbaranp", val);
-        listalineas->setColumnValue("idalbaranp", val);
-        listadescuentos->setColumnValue("idalbaranp", val);
+        m_listalineas->setColumnValue("idalbaranp", val);
+        m_listadescuentos->setColumnValue("idalbaranp", val);
     };
     void setnumalbaranp(QString val) {
         setDBvalue("numalbaranp", val);
@@ -122,7 +95,6 @@ public:
     void setdescalbaranp(QString val) {
         setDBvalue("descalbaranp", val);
     };
-    void imprimirAlbaranProveedor();
     void vaciaAlbaranProveedor();
 };
 

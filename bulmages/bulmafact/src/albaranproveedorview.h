@@ -76,7 +76,7 @@ public:
     void pintarefalbaranp(QString val) {
         m_refalbaranp->setText(val);
     };
-    void pintatotales(Fixed, Fixed);
+    void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
 
     /// Estos metodos deben existir para poder trabajar con la clase Ficha
@@ -118,19 +118,9 @@ public slots:
     virtual void on_mui_guardar_clicked();
     virtual void s_printAlbaranProveedor() {}
     ;
-    /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {
-        pintatotales(listalineas->calculabase(), listalineas->calculaiva());
-    }
     virtual void s_verpedidoproveedor();
-    virtual void s_imprimirAlbaranProveedor() {
-        imprimirAlbaranProveedor();
-    };
     virtual void s_generarFactura() {
         generarFactura();
-    };
-    virtual void calculaypintatotales() {
-        s_pintaTotales();
     };
     virtual void on_m_descuentos_editFinish(int, int) {
         calculaypintatotales();
@@ -140,6 +130,7 @@ public slots:
     };
     virtual void on_mui_pagar_clicked();
     virtual void on_mui_verpedidosproveedor_clicked();
+    virtual void on_m_proveedor_valueChanged(QString);
 };
 
 #endif

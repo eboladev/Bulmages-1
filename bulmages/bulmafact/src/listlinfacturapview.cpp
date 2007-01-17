@@ -30,86 +30,32 @@
 
 ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
         : SubForm2Bf(parent) {
+    _depura("ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
     setDBTableName("lfacturap");
     setDBCampoId("idlfacturap");
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
-// Prueba - Arturo
-//     addSHeader("codarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo articulo"));
-// FIN Prueba - Arturo
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
     addSHeader("idlfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoView, tr("Linea"));
     addSHeader("desclfacturap", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Descripcion"));
     addSHeader("cantlfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidad"));
     addSHeader("pvplfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("P.V.P."));
     addSHeader("ivalfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("% I.V.A."));
+    addSHeader("reqeqlfacturap", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("% Recargo"));
     addSHeader("descuentolfacturap", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuento"));
     addSHeader("idfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Factura"));
     addSHeader("ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
-}
-
-
-void ListLinFacturaProveedorView::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("ListLinAlbaranProveedorView::editFinished", 0);
-    SubForm3::on_mui_list_editFinished(row, col, key);
-    SDBRecord *rec = lineaat(row);
-    SDBCampo *camp = (SDBCampo *) item(row, col);
-    camp->refresh();
-
-    /// Si el campo no ha sido cambiado se termina sin cambiar nada.
-    if ( ! camp->cambiado() ) {
-    	SubForm3::on_mui_list_editFinished(row, col, key);
-	return;
-    } // end if
-
-    if (camp->nomcampo() == "codigocompletoarticulo") {
-        cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
-        if (!cur->eof()) {
-            rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
-            rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
-            rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
-            rec->setDBvalue("desclfacturap", cur->valor("nomarticulo"));
-            rec->setDBvalue("cantlfacturap", "1.00");
-            rec->setDBvalue("descuentolfacturap", "0.00");
-            rec->setDBvalue("pvplfacturap", cur->valor("pvparticulo"));
-        } // end if
-        cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + "ORDER BY fechatasa_iva LIMIT 1");
-        if (!cur->eof()) {
-            rec->setDBvalue("ivalfacturap", cur1->valor("porcentasa_iva"));
-        } // end if
-        delete cur1;
-        delete cur;
-    } // end if
+    _depura("END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
 }
 
 
 void ListLinFacturaProveedorView::cargar(QString idfacturap) {
-    _depura("ListLinFacturaProveedorView::cargar\n", 0);
+    _depura("ListLinFacturaProveedorView::cargar", 0);
     mdb_idfacturap = idfacturap;
     cursor2 *cur = companyact()->cargacursor("SELECT * FROM lfacturap LEFT JOIN articulo ON lfacturap.idarticulo = articulo.idarticulo WHERE idfacturap = " + mdb_idfacturap + " ORDER BY ordenlfacturap");
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END ListLinFacturaProveedorView::cargar", 0);
 }
-
-
-Fixed ListLinFacturaProveedorView::calculabase() {
-    Fixed base("0.0");
-    for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplfacturap", i)) * Fixed(DBvalue("cantlfacturap", i));
-        base = base + totpar;
-    } // end for
-    return base;
-}
-
-
-Fixed ListLinFacturaProveedorView::calculaiva() {
-    Fixed base("0.0");
-    for (int i = 0; i < rowCount() - 1; i++) {
-        Fixed totpar = Fixed(DBvalue("pvplfacturap", i)) * Fixed(DBvalue("ivalfacturap", i)) / 100;
-        base = base + totpar;
-    } // end for
-    return base;
-}
-

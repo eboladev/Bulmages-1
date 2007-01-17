@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>681</width>
-    <height>571</height>
+    <width>846</width>
+    <height>902</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -29,7 +29,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -711,7 +711,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>6</number>
      </property>
      <item>
       <layout class="QVBoxLayout" >
@@ -863,6 +863,75 @@
         <number>5</number>
        </property>
        <item>
+        <widget class="QLabel" name="label4_3" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="text" >
+          <string>I.R.P.F.</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_totalIRPF" >
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="acceptDrops" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>0.00</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight</set>
+         </property>
+         <property name="readOnly" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item>
         <widget class="QLabel" name="label4" >
          <property name="sizePolicy" >
           <sizepolicy>
@@ -893,6 +962,75 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalTaxes" >
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="acceptDrops" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>0.00</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight</set>
+         </property>
+         <property name="readOnly" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label4_2" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="text" >
+          <string>Recargo</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_totalReqEq" >
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1050,24 +1188,14 @@
    <header>busquedaproveedor.h</header>
   </customwidget>
   <customwidget>
-   <class>ListLinPedidoProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listlinpedidoproveedorview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
   </customwidget>
   <customwidget>
-   <class>ListDescuentoPedidoProveedorView</class>
+   <class>ListLinPedidoProveedorView</class>
    <extends>QWidget</extends>
-   <header>listdescpedidoproveedorview.h</header>
+   <header>listlinpedidoproveedorview.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
@@ -1075,14 +1203,24 @@
    <header>busquedareferencia.h</header>
   </customwidget>
   <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoPedidoProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listdescpedidoproveedorview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
   </customwidget>
  </customwidgets>
  <resources>

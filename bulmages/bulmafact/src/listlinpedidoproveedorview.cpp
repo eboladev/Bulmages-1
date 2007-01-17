@@ -40,6 +40,7 @@ ListLinPedidoProveedorView::ListLinPedidoProveedorView(QWidget *parent) : SubFor
     addSHeader("cantlpedidoproveedor", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Cantidadl pedido proveedor"));
     addSHeader("pvplpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("PVPl pedido proveedor"));
     addSHeader("ivalpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("IVAl pedido proveedor"));
+    addSHeader("reqeqlpedidoproveedor", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Recargo pedido proveedor"));
     addSHeader("descuentolpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNone, tr("Descuentol pedido proveedor"));
     addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id pedido proveedor"));
     addSHeader("ordenlpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));

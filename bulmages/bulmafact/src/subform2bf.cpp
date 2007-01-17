@@ -153,12 +153,25 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
                 /// Calculamos el recargo equivalente.
                 cursor2 *cur2 = companyact()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
-                if (cur2->valor("recargoeqcliente") == "t") {
-                    rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-                } else {
-                    rec->setDBvalue("reqeq"+m_tablename, "0");
-                } // end if
+		if (!cur2->eof()) {
+			if (cur2->valor("recargoeqcliente") == "t") {
+			rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+			} else {
+			rec->setDBvalue("reqeq"+m_tablename, "0");
+			} // end if
+		} // end if
                 delete cur2;
+
+                cur2 = companyact()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
+		if (!cur2->eof()) {
+			if (cur2->valor("recargoeqproveedor") == "t") {
+			rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+			} else {
+			rec->setDBvalue("reqeq"+m_tablename, "0");
+			} // end if
+		} // end if
+                delete cur2;
+
             } // end if
         } // end if
         delete cur1;
@@ -250,10 +263,46 @@ void SubForm2Bf::setIdCliente(QString id) {
         } // end for
     } // end if
     delete curcliente;
-
-
     _depura("END SubForm2Bf::setIdCliente", 0);
 }
+
+
+void SubForm2Bf::setIdProveedor(QString id) {
+    _depura("SubForm2Bf::setIdProveedor", 0, id);
+    mdb_idproveedor = id;
+
+    /// Reseteamos los valores
+    for (int i = 0; i < rowCount() - 1; i++) {
+        SDBRecord *rec = lineaat(i);
+        rec->setDBvalue("iva"+m_tablename, "0");
+        rec->setDBvalue("reqeq"+m_tablename, "0");
+    } // end for
+
+    cursor2 *curproveedor = companyact()->cargacursor("SELECT recargoeqproveedor, regimenfiscalproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
+    if (! curproveedor->eof()) {
+
+        /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
+        for (int i = 0; i < rowCount() - 1; i++) {
+            SDBRecord *rec = lineaat(i);
+            cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo") );
+            cursor2 *cur1 = companyact()->cargacursor("SELECT * FROM tasa_iva WHERE idtipo_iva = " + cur->valor("idtipo_iva") + " ORDER BY fechatasa_iva LIMIT 1");
+            if (!cur->eof() ) {
+                if (curproveedor->valor("regimenfiscalproveedor") == "Normal") {
+                    rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
+                } // end if
+                if (curproveedor->valor("recargoeqproveedor") == "t") {
+                    rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+                } // end if
+
+            } // end if
+            delete cur1;
+            delete cur;
+        } // end for
+    } // end if
+    delete curproveedor;
+    _depura("END SubForm2Bf::setIdProveedor", 0);
+}
+
 
 
 // ===============================================================

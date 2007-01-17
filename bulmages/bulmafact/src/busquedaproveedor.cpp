@@ -52,6 +52,7 @@ void BusquedaProveedor::pinta() {
     m_cifproveedor->setText(mdb_cifproveedor);
     m_nomproveedor->setText(mdb_codproveedor + ".- " + mdb_nomproveedor);
     m_semaforo = FALSE;
+    emit(valueChanged(mdb_idproveedor));
     _depura("END BusquedaProveedor::pinta", 0);
 }
 

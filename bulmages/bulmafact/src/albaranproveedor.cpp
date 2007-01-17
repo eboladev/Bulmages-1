@@ -29,7 +29,6 @@
 AlbaranProveedor::AlbaranProveedor(company *comp, QWidget *parent)
         : FichaBf(comp, parent) {
     _depura("AlbaranProveedor::AlbaranProveedor", 0);	
-    companyact = comp;
     setDBTableName("albaranp");
     setDBCampoId("idalbaranp");
     addDBCampo("idalbaranp", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("AlbaranProveedor", "Id albaran proveedor"));
@@ -62,17 +61,17 @@ int AlbaranProveedor::borrar() {
     _depura("AlbaranProveedor::borrar", 0);
     try {
         if (DBvalue("idalbaranp") != "")  {
-            companyact->begin();
-            listalineas->borrar();
-            listadescuentos->borrar();
-            companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp = " + DBvalue("idalbaranp"));
-            companyact->commit();
+            m_companyact->begin();
+            m_listalineas->borrar();
+            m_listadescuentos->borrar();
+            m_companyact->ejecuta("DELETE FROM albaranp WHERE idalbaranp = " + DBvalue("idalbaranp"));
+            m_companyact->commit();
         } // end if
         _depura("END AlbaranProveedor::borrar", 0);
         return 0;
     } catch (...) {
         mensajeInfo( "Error al borrar el Albaran de Proveedor");
-        companyact->rollback();
+        m_companyact->rollback();
         return -1;
     } // end catch
 }
@@ -104,7 +103,7 @@ void AlbaranProveedor::pintar()  {
     pintarefalbaranp(DBvalue("refalbaranp"));
     pintadescalbaranp(DBvalue("descalbaranp"));
     /// Pintamos los totales.
-    pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+    calculaypintatotales();
     _depura("END AlbaranProveedor::pintar", 0);
 }
 
@@ -116,14 +115,14 @@ void AlbaranProveedor::pintar()  {
 int AlbaranProveedor::cargar(QString idbudget) {
     _depura("AlbaranProveedor::cargar", 0);
     QString query = "SELECT * FROM albaranp WHERE idalbaranp =" + idbudget;
-    cursor2 * cur = companyact->cargacursor(query);
+    cursor2 * cur = m_companyact->cargacursor(query);
 
     if (!cur->eof())
         DBload(cur);
 
     delete cur;
-    listalineas->cargar(idbudget);
-    listadescuentos->cargar(idbudget);
+    m_listalineas->cargar(idbudget);
+    m_listadescuentos->cargar(idbudget);
     pintar();
     _depura("END AlbaranProveedor::cargar", 0);
     return 0;
@@ -141,12 +140,12 @@ int AlbaranProveedor::guardar() {
     _depura("AlbaranProveedor::guardar", 0);
     QString id;
     try {
-        companyact->begin();
+        m_companyact->begin();
         DBsave(id);
         setidalbaranp(id);
-        listalineas->guardar();
-        listadescuentos->guardar();
-        companyact->commit();
+        m_listalineas->guardar();
+        m_listadescuentos->guardar();
+        m_companyact->commit();
 
 	/// Hacemos una carga para recuperar la referencia
 	cargar(id);
@@ -155,103 +154,8 @@ int AlbaranProveedor::guardar() {
         return 0;
     } catch(...) {
         _depura("AlbaranProveedor::guardar error al guardar", 2);
-        companyact->rollback();
+        m_companyact->rollback();
         throw -1;
     } // end catch
-}
-
-
-/** La impresion del albaran de proveedor no esta activada en estos momentos
-    ya que no se prevee que un albaran de un proveedor vaya a ser imprimido ya que
-    es un documento que entregan a la empresa y no uno que la empresa emite.
-*/
-void AlbaranProveedor::imprimirAlbaranProveedor() {
-    /// Copiamos el archivo.
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "albaranpproveedor.rml";
-    archivo = "cp " + archivo + " /tmp/albaranpproveedor.rml";
-    system(archivo.toAscii().constData());
-    /// Copiamos el logo.
-    archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-    archivo = "cp " + archivo + " /tmp/logo.jpg";
-    system(archivo.toAscii().constData());
-
-    QFile file;
-    file.setFileName("/tmp/albaranpproveedor.rml");
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
-    QString buff = stream.readAll();
-    file.close();
-    QString fitxersortidatxt;
-    /// Linea de totales del presupuesto.
-    QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
-
-    if (!cur->eof()) {
-        buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
-        buff.replace("[poblproveedor]", cur->valor("poblproveedor"));
-        buff.replace("[telproveedor]", cur->valor("telproveedor"));
-        buff.replace("[nomproveedor]", cur->valor("nomproveedor"));
-        buff.replace("[cifproveedor]", cur->valor("cifproveedor"));
-    } // end if
-
-    buff.replace("[numalbaranp]", DBvalue("numalbaranp"));
-    buff.replace("[fechaalbaranp]", DBvalue("fechaalbaranp"));
-    buff.replace("[comentalbaranp]", DBvalue("comentalbaranp"));
-    buff.replace("[descalbaranp]", DBvalue("descalbaranp"));
-    buff.replace("[refalbaranp]", DBvalue("refalbaranp"));
-
-    fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"10cm, 2cm, 2cm, " \
-                       "3cm\" repeatRows=\"1\">";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Concepto") + "</td>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Cantidad") + "</td>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Precio/u.") + "</td>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Total") + "</td>";
-    fitxersortidatxt += "</tr>";
-
-    QString l;
-    SDBRecord *linea;
-
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
-        fitxersortidatxt += "<tr>";
-        fitxersortidatxt += "        <td>" + linea->DBvalue("desclalbaranp") + "</td>";
-        fitxersortidatxt += "        <td>" + linea->DBvalue("cantlalbaranp") +"</td>";
-        fitxersortidatxt += "        <td>" + linea->DBvalue("pvplalbaranp") +"</td>";
-        fitxersortidatxt += "        <td>" + (Fixed(linea->DBvalue("pvplalbaranp")) * Fixed(linea->DBvalue("pvplalbaranp"))).toQString() + "</td>";
-        fitxersortidatxt += "</tr>";
-        i++;
-    }
-
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "        <td></td>";
-    fitxersortidatxt += "        <td></td>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Base imponible") + "</td>";
-    fitxersortidatxt += "        <td>" + listalineas->calculabase().toQString() + "</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "        <td></td>";
-    fitxersortidatxt += "        <td></td>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "I.V.A.") + "</td>";
-    fitxersortidatxt += "        <td>" + listalineas->calculaiva().toQString() + "</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "<tr>";
-    fitxersortidatxt += "        <td></td>";
-    fitxersortidatxt += "        <td></td>";
-    fitxersortidatxt += "        <td>" + QApplication::translate("AlbaranProveedor", "Total") + "</td>";
-    fitxersortidatxt += "        <td>" + (listalineas->calculabase() + listalineas->calculaiva()).toQString() + "</td>";
-    fitxersortidatxt += "</tr>";
-    fitxersortidatxt += "</blockTable>";
-
-    buff.replace("[story]", fitxersortidatxt);
-
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
-        stream << buff;
-        file.close();
-    } // end if
-
-    system("bgtrml2pdf.py /tmp/albaranpproveedor.rml > /tmp/albaranpproveedor.pdf");
-    system("kpdf /tmp/albaranpproveedor.pdf &");
 }
 

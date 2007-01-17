@@ -88,7 +88,7 @@ public:
     void pintatelpedidoproveedor(QString id) {
         m_telpedidoproveedor->setText(id);
     };
-    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void pintaprocesadopedidoproveedor(QString id) {
         if (id == "t" || id == "TRUE") {
             m_procesadopedidoproveedor->setChecked(TRUE);
@@ -104,6 +104,7 @@ public:
     };
 
 public slots:
+    virtual void on_m_proveedor_valueChanged(QString);
     virtual void on_mui_guardar_clicked() {
         guardar();
         dialogChanges_cargaInicial();

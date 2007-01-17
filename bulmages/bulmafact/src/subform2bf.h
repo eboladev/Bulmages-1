@@ -66,9 +66,11 @@ private:
     bool m_delete;
     QSubForm2BfDelegate *m_delegate;
     QString mdb_idcliente;
+    QString mdb_idproveedor;
 
 public:
     void setIdCliente(QString id);
+    void setIdProveedor(QString id);
     SubForm2Bf(QWidget *parent = 0);
     virtual ~SubForm2Bf();
     void setDelete(bool f) {

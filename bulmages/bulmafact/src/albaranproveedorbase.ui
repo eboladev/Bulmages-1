@@ -28,7 +28,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -713,7 +713,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>6</number>
      </property>
      <item>
       <layout class="QVBoxLayout" >
@@ -728,7 +728,7 @@
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
-           <vsizetype>0</vsizetype>
+           <vsizetype>5</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -754,6 +754,9 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalDiscounts" >
+         <property name="enabled" >
+          <bool>true</bool>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -764,6 +767,9 @@
            <underline>false</underline>
            <strikeout>false</strikeout>
           </font>
+         </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
          </property>
          <property name="acceptDrops" >
           <bool>false</bool>
@@ -794,7 +800,7 @@
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
-           <vsizetype>0</vsizetype>
+           <vsizetype>5</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -831,6 +837,78 @@
            <strikeout>false</strikeout>
           </font>
          </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="acceptDrops" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>0.00</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight</set>
+         </property>
+         <property name="readOnly" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label4_3" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="text" >
+          <string>I.R.P.F.</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_totalIRPF" >
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="acceptDrops" >
           <bool>false</bool>
          </property>
@@ -860,7 +938,7 @@
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
-           <vsizetype>0</vsizetype>
+           <vsizetype>5</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -897,6 +975,81 @@
            <strikeout>false</strikeout>
           </font>
          </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="acceptDrops" >
+          <bool>false</bool>
+         </property>
+         <property name="text" >
+          <string>0.00</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignRight</set>
+         </property>
+         <property name="readOnly" >
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label4_2" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>5</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>9</pointsize>
+           <weight>50</weight>
+           <italic>false</italic>
+           <bold>false</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="text" >
+          <string>Recargo</string>
+         </property>
+         <property name="alignment" >
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="m_totalReqEq" >
+         <property name="font" >
+          <font>
+           <family>Sans Serif</family>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="acceptDrops" >
+          <bool>false</bool>
+         </property>
          <property name="text" >
           <string>0.00</string>
          </property>
@@ -923,7 +1076,7 @@
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
-           <vsizetype>0</vsizetype>
+           <vsizetype>5</vsizetype>
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -940,7 +1093,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Total pedido: </string>
+          <string>Total:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -963,11 +1116,20 @@
            <strikeout>false</strikeout>
           </font>
          </property>
+         <property name="focusPolicy" >
+          <enum>Qt::NoFocus</enum>
+         </property>
          <property name="acceptDrops" >
           <bool>false</bool>
          </property>
+         <property name="autoFillBackground" >
+          <bool>true</bool>
+         </property>
          <property name="text" >
           <string>0.00</string>
+         </property>
+         <property name="frame" >
+          <bool>true</bool>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight</set>
@@ -1051,21 +1213,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListLinAlbaranProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listlinalbaranproveedorview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoAlbaranProvView</class>
-   <extends>QWidget</extends>
-   <header>listdescalbaranprovview.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaProveedor</class>
    <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
@@ -1084,6 +1231,21 @@
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinAlbaranProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinalbaranproveedorview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoAlbaranProvView</class>
+   <extends>QWidget</extends>
+   <header>listdescalbaranprovview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -54,7 +54,7 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
 	addDBCampo("regimenfiscalproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Proveedor", "Regimen Fiscal"));
 	addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Proveedor", "Forma_Pago"));
 	addDBCampo("recargoeqproveedor", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Proveedor", "Recargo de Equivalencia"));
-
+	addDBCampo("irpfproveedor", DBCampo::DBnumeric, DBCampo::DBNothing, QApplication::translate("Proveedor", "IRPF"));
 
 
         setupUi(this);
@@ -69,7 +69,6 @@ ProveedorView::ProveedorView(company *comp, QWidget *parent)
         masdf->setTabEnabled(7, FALSE);
 
         /// Cargamos el listado de pedidos del proveedor y dejamos presentable.
-        _depura("inicializamos el listado de pedidos\n", 0);
         m_listpedidosprov->setcompany(m_companyact);
         m_listpedidosprov->hideBusqueda();
 
@@ -132,6 +131,7 @@ int ProveedorView::cargar(QString idprov) {
         mui_codproveedor->setText(DBvalue("codproveedor"));
         mui_forma_pago->setidforma_pago(DBvalue("idforma_pago"));
 	mui_regimenfiscalproveedor->setRegimenFiscal(DBvalue("regimenfiscalproveedor"));
+	mui_irpfproveedor->setText(DBvalue("irpfproveedor"));
 
 	/// Pintamos el recargo de equivalencia
 	if (DBvalue("recargoeqproveedor") == "t") {
@@ -194,6 +194,7 @@ void ProveedorView::on_mui_crear_clicked() {
     m_urlproveedor->setText("");
     m_comentproveedor->setPlainText("");
     mui_codproveedor->setText("");
+    mui_irpfproveedor->setText("");
     dialogChanges_cargaInicial();
     _depura("END ProveedorView::on_mui_crear_clicked", 0);
 }
@@ -226,6 +227,7 @@ int ProveedorView::guardar() {
     setDBvalue("idforma_pago", mui_forma_pago->idforma_pago());
     setDBvalue("recargoeqproveedor",  mui_recargoeqproveedor->isChecked() ? "TRUE" : "FALSE");
     setDBvalue("regimenfiscalproveedor", mui_regimenfiscalproveedor->currentText());
+    setDBvalue("irpfproveedor", mui_irpfproveedor->text());
     QString id;
     m_companyact->begin();
     try {

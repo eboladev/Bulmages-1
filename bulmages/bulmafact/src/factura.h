@@ -43,7 +43,7 @@ public:
     /// apuntar listlinpresupuestoview.
 
     company *_company() {
-        return companyact;
+        return m_companyact;
     };
     QString codigoserie_factura() {
         return DBvalue("codigoserie_factura");

@@ -74,35 +74,27 @@ public:
         }
     };
     
-    virtual void pintatotales(Fixed base, Fixed iva);
-    virtual void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc);
+    virtual void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
-    virtual int borrar() {
-        return FacturaProveedor::borrar();
-    };
     virtual int cargar(QString id);
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked();
 
-    /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {
-        calculaypintatotales();
-    }
     virtual void on_mui_pagar_clicked() {
         s_nuevoPago();
     };
     virtual void s_nuevoPago();
     virtual void on_m_descuentos_editFinish(int, int) {
-        s_pintaTotales();
+        calculaypintatotales();
     };
     virtual void on_subform2_editFinish(int, int) {
-        s_pintaTotales();
+        calculaypintatotales();
     };
     virtual void on_mui_veralbaranes_clicked();
+    virtual void on_m_proveedor_valueChanged(QString);
 };
 
 #endif

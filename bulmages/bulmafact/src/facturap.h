@@ -36,27 +36,13 @@
 */
 class FacturaProveedor : public FichaBf {
 Q_OBJECT
-protected:
-    /// Puntero a la lista de lineas de factura de proveedor. 
-    ListLinFacturaProveedorView *listalineas;
-    /// Puntero a la lista de descuentos de factura de proveedor.
-    ListDescuentoFacturaProvView *listadescuentos;
-    /// Puntero a la clase company para trabajar con la Base de Datos y para el paso de mensajes.
-    company *companyact;
-
 public:
     FacturaProveedor(company *, QWidget *);
     virtual ~FacturaProveedor();
-    
-    ListLinFacturaProveedorView* getlistalineas();
-    ListDescuentoFacturaProvView* getlistadescuentos();
-    
+
     virtual int borrar();
     
-    /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
-    /// apuntar listlinpresupuestoview.
-    void setListLinFacturaProveedor(ListLinFacturaProveedorView *a);
-    void setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a);
+
     void setidproveedor(QString val);
     void setreffacturap(QString val);
     void setnumfacturap(QString val);
@@ -98,9 +84,6 @@ public:
     virtual QString calculateValues() {
         return "";
     };
-    virtual void calculaypintatotales();
-    virtual void pintatotales(Fixed, Fixed, Fixed, Fixed) {}
-    ;
 };
 
 #endif

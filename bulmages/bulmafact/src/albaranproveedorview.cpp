@@ -56,8 +56,11 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         m_proveedor->setcompany(comp);
         m_descuentos->setcompany(comp);
         m_refalbaranp->setcompany(comp);
-        setListLinAlbaranProveedor(subform2);
-        setListDescuentoAlbaranProveedor(m_descuentos);
+
+	setListaLineas( subform2);
+	setListaDescuentos( m_descuentos);
+
+
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
         m_totalTaxes->setReadOnly(TRUE);
@@ -68,8 +71,8 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         m_totalalbaranp->setAlignment(Qt::AlignRight);
         pintaidforma_pago("0");
         pintaidalmacen("0");
-        if (companyact != NULL)
-            companyact->meteWindow(windowTitle(), this, FALSE);
+        if (m_companyact != NULL)
+            m_companyact->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el albaran proveedor"));
     } // end try
@@ -81,7 +84,7 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
 */
 AlbaranProveedorView::~AlbaranProveedorView() {
     _depura("AlbaranProveedorView::~AlbaranProveedorView", 0);
-    companyact->refreshAlbaranesProveedor();
+    m_companyact->refreshAlbaranesProveedor();
     _depura("END AlbaranProveedorView::~AlbaranProveedorView", 0);
 }
 
@@ -101,11 +104,14 @@ void AlbaranProveedorView::inicializar() {
 
 /** Pinta los totales indicados en sus correspondientes textEdit.
 */
-void AlbaranProveedorView::pintatotales(Fixed base, Fixed iva) {
+void AlbaranProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("AlbaranProveedorView::pintatotales", 0);
+    m_totalalbaranp->setText((iva + base).toQString());
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
-    m_totalalbaranp->setText((iva + base).toQString());
+    m_totalDiscounts->setText(desc.toQString());
+    m_totalIRPF->setText(QString(irpf.toQString()));
+    m_totalReqEq->setText(QString(reqeq.toQString()));
     _depura("END AlbaranProveedorView::pintatotales", 0);
 }
 
@@ -127,11 +133,11 @@ void AlbaranProveedorView::generarFactura()  {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos
     /// y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue("refalbaranp") + "'";
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
-        FacturaProveedorView *bud = companyact->newFacturaProveedorView();
-        companyact->m_pWorkspace->addWindow(bud);
+        FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+        m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfacturap"));
         bud->show();
         return;
@@ -149,8 +155,8 @@ void AlbaranProveedorView::generarFactura()  {
     } // end if
 
     /// Creamos la factura.
-    FacturaProveedorView *bud = companyact->newFacturaProveedorView();
-    companyact->m_pWorkspace->addWindow(bud);
+    FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+    m_companyact->m_pWorkspace->addWindow(bud);
 
     bud->setcomentfacturap(DBvalue("comentalbaranp"));
     bud->setidforma_pago(DBvalue("idforma_pago"));
@@ -158,7 +164,7 @@ void AlbaranProveedorView::generarFactura()  {
     bud->setidproveedor(DBvalue("idproveedor"));
     SDBRecord *linea, *linea1;
 
-    for (int i  = 0; i < listalineas->rowCount(); ++i) {
+    for (int i  = 0; i < m_listalineas->rowCount(); ++i) {
         linea = getlistalineas()->lineaat(i);
         linea1 = bud->getlistalineas()->newSDBRecord();
         linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
@@ -187,7 +193,7 @@ int AlbaranProveedorView::cargar(QString id) {
         AlbaranProveedor::cargar(id);
         if (DBvalue("idalbaranp") != "") {
             setWindowTitle(tr("Albaran de proveedor") + " " + DBvalue("refalbaranp") + " " + DBvalue("idalbaranp"));
-            companyact->meteWindow(windowTitle(), this);
+            m_companyact->meteWindow(windowTitle(), this);
             dialogChanges_cargaInicial();
         } // end if
     } catch (...) {
@@ -245,8 +251,8 @@ void AlbaranProveedorView::on_mui_guardar_clicked() {
 ///  \TODO: Actualmente no esta comprobando que el pago ya exista.
 void AlbaranProveedorView::on_mui_pagar_clicked() {
     _depura("AlbaranProveedorView::on_mui_pagar_clicked", 0);
-    PagoView *bud = companyact->newPagoView();
-    companyact->m_pWorkspace->addWindow(bud);
+    PagoView *bud = m_companyact->newPagoView();
+    m_companyact->m_pWorkspace->addWindow(bud);
     bud->setidproveedor(DBvalue("idproveedor"));
     bud->setcantpago(m_totalalbaranp->text());
     bud->setrefpago(DBvalue("refalbaranp"));
@@ -264,11 +270,11 @@ void AlbaranProveedorView::on_mui_pagar_clicked() {
 void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     _depura("AlbaranProveedorView::on_mui_verpedidos_clicked", 0);
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue("refalbaranp") + "'";
-    cursor2 *cur = companyact->cargacursor(query);
+    cursor2 *cur = m_companyact->cargacursor(query);
     while (!cur->eof()) {
-        PedidoProveedorView *pedpro = companyact->newPedidoProveedorView();
+        PedidoProveedorView *pedpro = m_companyact->newPedidoProveedorView();
         pedpro->cargar(cur->valor("idpedidoproveedor"));
-        companyact->m_pWorkspace->addWindow( pedpro);
+        m_companyact->m_pWorkspace->addWindow( pedpro);
         pedpro->show();
         cur->siguienteregistro();
     } // end while
@@ -288,7 +294,7 @@ void AlbaranProveedorView::generarFacturaProveedor() {
     /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
     /// y salimos de la funci&oacute;n.
     QString SQLQuery = "SELECT * FROM facturap WHERE reffacturap = '" + DBvalue("refalbaranp") + "' AND idproveedor ="+DBvalue("idproveedor");
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
 
@@ -300,8 +306,8 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
 		return;
 	}
-        FacturaProveedorView *bud = companyact->newFacturaProveedorView();
-        companyact->m_pWorkspace->addWindow(bud);
+        FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+        m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfacturap"));
         bud->show();
         return;
@@ -318,8 +324,8 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 //    }
 
     /// Creamos la factura.
-    FacturaProveedorView *bud = companyact->newFacturaProveedorView();
-    companyact->m_pWorkspace->addWindow(bud);
+    FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+    m_companyact->m_pWorkspace->addWindow(bud);
 
     /// Cargamos un elemento que no existe para inicializar bien la clase.
     bud->inicializar();
@@ -332,8 +338,8 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 
     QString l;
     SDBRecord *linea, *linea1;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount(); ++i) {
+        linea = m_listalineas->lineaat(i);
         if (linea->DBvalue( "idarticulo") != "") {
             linea1 = bud->getlistalineas()->lineaat(bud->getlistalineas()->rowCount() - 1);
             linea1->setDBvalue("desclfacturap", linea->DBvalue("desclalbaranp"));
@@ -350,5 +356,13 @@ void AlbaranProveedorView::generarFacturaProveedor() {
     bud->calculaypintatotales();
 //    m_procesadoalbaranp->setChecked(TRUE);
     _depura("END AlbaranClienteView::generarFactura", 0);
+}
+
+
+void AlbaranProveedorView::on_m_proveedor_valueChanged(QString id) {
+	_depura("AlbaranProveedorView::on_m_proveedor_valueChanged", 0);
+	subform2->setIdProveedor(id);
+	m_forma_pago->setIdProveedor(id);
+	_depura("END AlbaranProveedorView::on_m_proveedor_valueChanged", 0);
 }
 

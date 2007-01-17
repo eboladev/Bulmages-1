@@ -267,7 +267,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 
 /// Pintamos los descuentos --------------------------------------------
 	
-	ListDescuentoFacturaProvView *descuentos = fp->getlistadescuentos();
+	ListDescuentoFacturaProvView *descuentos =(ListDescuentoFacturaProvView *) fp->getlistadescuentos();
 	SDBRecord *rec = descuentos->lista()->last();
 	QMap <QString, QString> mapa_dfactura;
 
@@ -327,7 +327,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 /// Pintamos las lineas de factura --------------------------------------------
 
-	ListLinFacturaProveedorView *lineas = fp->getlistalineas();
+	ListLinFacturaProveedorView *lineas =(ListLinFacturaProveedorView *) fp->getlistalineas();
 	rec = lineas->lista()->last();
 	cursor2 *articulo = NULL;
 	QString idarticulo, nomarticulo;
@@ -395,7 +395,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	Fixed bimp(bimpFactura);
 	Fixed iva(impFactura);
 	
- 	fp->pintatotales(bimp, iva);
+ 	fp->calculaypintatotales();
 	fp->m_totalDiscounts->setText(descuentoFactura);
 	
 /// Damos valores a los campos DBvalue -----------------------------------------------------------------

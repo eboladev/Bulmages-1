@@ -51,6 +51,7 @@ public:
         return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
     };
     virtual void setIdCliente(QString);
+    virtual void setIdProveedor(QString);
 public slots:
     virtual void m_activated(int index);
 

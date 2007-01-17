@@ -41,9 +41,6 @@ public:
 
 public slots:
     virtual void cargar(QString idfacturap);
-    Fixed calculabase();
-    Fixed calculaiva();
-    virtual void on_mui_list_editFinished(int, int, int);
 };
 
 #endif

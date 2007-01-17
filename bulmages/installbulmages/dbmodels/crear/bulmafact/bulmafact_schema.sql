@@ -456,6 +456,7 @@ END;
 -- clavewebproveedor: Clave para entrar en el comercio electronico B2B del proveedor.
 -- inactivoproveedor: Indica si el proveedor lo tenemos marcado como inactivo para suministro.
 -- provproveedor: Provincia del proveedor.
+-- irpfproveedor: Indica el IRPF que usa el proveedor por defecto.
 \echo -n ':: Proveedor ... '
 CREATE TABLE proveedor (
     idproveedor serial PRIMARY KEY,
@@ -477,6 +478,7 @@ CREATE TABLE proveedor (
     clavewebproveedor character varying(100),
     inactivoproveedor character(1),
     recargoeqproveedor boolean DEFAULT FALSE,
+    irpfproveedor NUMERIC(12,2) DEFAULT 0,
     idforma_pago integer REFERENCES forma_pago(idforma_pago),
     regimenfiscalproveedor character varying(50) DEFAULT ''Normal'' NOT NULL,
     provproveedor character varying

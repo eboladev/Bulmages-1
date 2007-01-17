@@ -33,7 +33,6 @@ FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f)
     _depura("FichaBf::FichaBf", 0);
     m_listalineas = NULL;
     m_listadescuentos = NULL;
-    companyact = comp;
     m_companyact = comp;
     _depura("END FichaBf::FichaBf", 0);
 }
@@ -62,6 +61,14 @@ void FichaBf::calculaypintatotales() {
         irpf = Fixed(cur->valor("valor"));
     } // end if
     delete cur;
+
+    if (exists("idproveedor")) {
+	cur = m_companyact->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor="+DBvalue("idproveedor"));
+	if (!cur->eof()) {
+		irpf = Fixed(cur->valor("irpfproveedor"));
+	} // end if
+	delete cur;
+    } // end if
 
     for (int i = 0; i < m_listalineas->rowCount(); ++i) {
         linea = m_listalineas->lineaat(i);
@@ -187,7 +194,7 @@ void FichaBf::imprimir() {
 
     /// Linea de totales del Presupuesto.
     QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
-    cur = companyact->cargacursor(SQLQuery);
+    cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));
         buff.replace("[poblcliente]", cur->valor("poblcliente"));

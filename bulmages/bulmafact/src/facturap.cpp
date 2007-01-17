@@ -33,7 +33,6 @@
 */
 FacturaProveedor::FacturaProveedor(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("FacturaProveedor::FacturaProveedor", 0);
-    companyact = comp;
     setDBTableName("facturap");
     setDBCampoId("idfacturap");
     addDBCampo("idfacturap", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("FacturaProveedor", "Id facturap"));
@@ -69,15 +68,15 @@ int FacturaProveedor::borrar() {
     _depura("FacturaProveedor::borrar", 0);
     int error = 0;
     if (DBvalue("idfacturap") != "") {
-        companyact->begin();
-        error = listalineas->borrar();
-        error += listadescuentos->borrar();
+        m_companyact->begin();
+        error = m_listalineas->borrar();
+        error += m_listadescuentos->borrar();
         error += DBRecord::borrar();
         if (error) {
-            companyact->rollback();
+            m_companyact->rollback();
             return -1;
         } // end if
-        companyact->commit();
+        m_companyact->commit();
     } // end if
     _depura("END FacturaProveedor::borrar", 0);
     return 0;
@@ -96,7 +95,7 @@ void FacturaProveedor::pintar() {
     pintaprocesadafacturap(DBvalue("procesadafacturap"));
     pintaidforma_pago(DBvalue("idforma_pago"));
     pintadescfacturap(DBvalue("descfacturap"));
-//     pintatotales(listalineas->calculabase(), listalineas->calculaiva());
+//     pintatotales(m_listalineas->calculabase(), m_listalineas->calculaiva());
     calculaypintatotales();
     _depura("END FacturaProveedor::pintar", 0);
 }
@@ -113,7 +112,7 @@ int FacturaProveedor::cargar(QString idfacturap) {
     try {
         inicialize();
         QString query = "SELECT * FROM facturap WHERE idfacturap=" + idfacturap;
-        cursor2 * cur = companyact->cargacursor(query);
+        cursor2 * cur = m_companyact->cargacursor(query);
 	if (cur->eof()) {
 		delete cur;
 		throw -1;
@@ -123,8 +122,8 @@ int FacturaProveedor::cargar(QString idfacturap) {
                 throw -1;
 	} // end if
         delete cur;
-        listalineas->cargar(idfacturap);
-        listadescuentos->cargar(idfacturap);
+        m_listalineas->cargar(idfacturap);
+        m_listadescuentos->cargar(idfacturap);
         pintar();
     } catch (...) {
 	mensajeInfo("FacturaProveedor::cargar producida una excepcion");
@@ -142,14 +141,14 @@ int FacturaProveedor::cargar(QString idfacturap) {
 */
 int FacturaProveedor::guardar() {
     _depura("FacturaProveedor::guardar()", 0);
-    companyact->begin();
+    m_companyact->begin();
     try {
         QString id;
         DBsave(id);
         setidfacturap(id);
-        listalineas->guardar();
-        listadescuentos->guardar();
-        companyact->commit();
+        m_listalineas->guardar();
+        m_listadescuentos->guardar();
+        m_companyact->commit();
 
 	/// Hacemos una carga para recuperar referencias y demás datos
 	cargar(id);
@@ -158,7 +157,7 @@ int FacturaProveedor::guardar() {
         return 0;
     } catch (...) {
         mensajeInfo("FacturaProveedor::guardar() se produjo un error al guardar");
-        companyact->rollback();
+        m_companyact->rollback();
         throw -1;
     } // end try
 }
@@ -211,7 +210,7 @@ void FacturaProveedor::imprimirFacturaProveedor() {
 
     /// Linea de totales del presupuesto
     QString SQLQuery = "SELECT * FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor");
-    cursor2 *cur = companyact->cargacursor(SQLQuery);
+    cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dirproveedor]", cur->valor("dirproveedor"));
         buff.replace("[poblproveedor]", cur->valor("poblproveedor"));
@@ -243,8 +242,8 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     int i = 0;
 
     SDBRecord *linea;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
+    for (int i = 0; i < m_listalineas->rowCount(); ++i) {
+        linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlfacturap").toAscii().constData()) * Fixed(linea->DBvalue("pvplfacturap").toAscii().constData());
         basesimp[linea->DBvalue("ivalfacturap")] = basesimp[linea->DBvalue("ivalfacturap")] + base - base * Fixed(linea->DBvalue("descuentolfacturap").toAscii().constData()) / 100;
 
@@ -275,15 +274,15 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     fitxersortidatxt = "";
     Fixed porcentt("0.00");
     SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
+    if (m_listadescuentos->rowCount()) {
         fitxersortidatxt += "<blockTable style=\"tabladescuento\" colWidths=\"12cm, 2cm, 3cm\" repeatRows=\"1\">\n";
         fitxersortidatxt += "<tr>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("FacturaProveedor", "Descuento") + "</td>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("FacturaProveedor", "Porcentaje") + "</td>\n";
         fitxersortidatxt += "        <td>" + QApplication::translate("FacturaProveedor", "Total") + "</td>\n";
         fitxersortidatxt += "</tr>\n";
-        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
-            linea1 = listadescuentos->lineaat(i);
+        for (int i = 0; i < m_listadescuentos->rowCount(); ++i) {
+            linea1 = m_listadescuentos->lineaat(i);
             porcentt = porcentt + Fixed(linea1->DBvalue("proporciondfacturap").toAscii().constData());
             fitxersortidatxt += "<tr>\n";
             fitxersortidatxt += "        <td>" + linea1->DBvalue("conceptdfacturap") + "</td>\n";
@@ -339,31 +338,6 @@ void FacturaProveedor::imprimirFacturaProveedor() {
     invocaPDF("facturap");
 }
 
-
-/** Devuelve la lista de lineas de factura de proveedor. (Puntero al subformulario).
-*/
-ListLinFacturaProveedorView* FacturaProveedor::getlistalineas() {
-	_depura("FacturaProveedor::getlistalineas", 0);
-	return listalineas;
-}
-
-/** Devuelve la lista de lineas de descuento. (Puntero al subformulario).
-*/
-ListDescuentoFacturaProvView* FacturaProveedor::getlistadescuentos() {
-	_depura("FacturaProveedor::getlistadescuentos", 0);
-	return listadescuentos;
-}
-
-/// Establece cual es la lista subformulario del presupuesto. Normalmente para
-/// apuntar listlinpresupuestoview.
-void FacturaProveedor::setListLinFacturaProveedor(ListLinFacturaProveedorView *a) {
-	listalineas = a;
-	listalineas->setcompany(companyact);
-}
-void FacturaProveedor::setListDescuentoFacturaProv(ListDescuentoFacturaProvView *a) {
-	listadescuentos = a;
-	listadescuentos->setcompany(companyact);
-}
 void FacturaProveedor::setidproveedor(QString val) {
 	setDBvalue("idproveedor", val);
 }
@@ -385,8 +359,8 @@ void FacturaProveedor::setcomentfacturap(QString val) {
 void FacturaProveedor::setidfacturap(QString val) {
 	_depura("FacturaProveedor::setidfacturap", 0);
 	setDBvalue("idfacturap", val);
-	listalineas->setColumnValue("idfacturap", val);
-	listadescuentos->setColumnValue("idfacturap", val);
+	m_listalineas->setColumnValue("idfacturap", val);
+	m_listadescuentos->setColumnValue("idfacturap", val);
 	_depura("END FacturaProveedor::setidfacturap", 0);
 }
 void FacturaProveedor::setidforma_pago(QString val) {
@@ -394,74 +368,4 @@ void FacturaProveedor::setidforma_pago(QString val) {
 }
 void FacturaProveedor::setprocesadafacturap(QString val) {
 	setDBvalue("procesadafacturap", val);
-}
-
-/** Calcula el total de factura, los impuestos y descuentos y se encarga de que se muestre adecuadamente.
-*/
-void FacturaProveedor::calculaypintatotales() {
-    _depura("FacturaProveedor::calculaypintatotales", 0);
-
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("FacturaProveedor::_calculaypintatotales", this);
-    if (res != 0)
-        return;
-
-    base basesimp;
-    SDBRecord *linea;
-    /// Impresion de los contenidos.
-    QString l;
-    for (int i = 0; i < listalineas->rowCount(); ++i) {
-        linea = listalineas->lineaat(i);
-        Fixed cant(linea->DBvalue("cantlfacturap").toAscii().constData());
-        Fixed pvpund(linea->DBvalue("pvplfacturap").toAscii().constData());
-        Fixed desc1(linea->DBvalue("descuentolfacturap").toAscii().constData());
-        Fixed cantpvp = cant * pvpund;
-        Fixed base = cantpvp - cantpvp * desc1 / 100;
-        Fixed val("0.00");
-        val = basesimp[linea->DBvalue("ivalfacturap")];
-        val = val + base;
-        QString lin = linea->DBvalue("ivalfacturap");
-        basesimp[lin] = val;
-    } // end for
-    Fixed basei("0.00");
-    base::Iterator it;
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        basei = basei + it.value();
-    } // end for
-
-    /// Impresion de los descuentos.
-    Fixed porcentt("0.00");
-    SDBRecord *linea1;
-    if (listadescuentos->rowCount()) {
-        for (int i = 0; i < listadescuentos->rowCount(); ++i) {
-            linea1 = listadescuentos->lineaat(i);
-            Fixed propor(linea1->DBvalue("proporciondfacturap").toAscii().constData());
-            porcentt = porcentt + propor;
-        } // end for
-    } // end if
-
-    Fixed totbaseimp("0.00");
-    Fixed parbaseimp("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        if (porcentt > Fixed("0.00") ) {
-            parbaseimp = it.value() - it.value() * porcentt / 100;
-        } else {
-            parbaseimp = it.value();
-        } // end if
-        totbaseimp = totbaseimp + parbaseimp;
-    } // end for
-
-    Fixed totiva("0.00");
-    Fixed pariva("0.00");
-    for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        Fixed piva(it.key().toAscii().constData());
-        if (porcentt > Fixed("0.00")) {
-            pariva = (it.value() - it.value() * porcentt / 100) * piva / 100;
-        } else {
-            pariva = it.value() * piva / 100;
-        } // end if
-        totiva = totiva + pariva;
-    } // end for
-    pintatotales(totiva, totbaseimp, totiva + totbaseimp, basei * porcentt / 100);
-    _depura("END FacturaProveedor::calculaypintatotales", 0);
 }
