@@ -36,37 +36,6 @@
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
    </widget>
-   <widget class="QMenu" name="menuMaestro" >
-    <property name="title" >
-     <string>Maest&amp;ro</string>
-    </property>
-    <addaction name="actionNuevo_Proveedor" />
-    <addaction name="actionListado_Proveedores" />
-    <addaction name="separator" />
-    <addaction name="actionNuevo_Cliente" />
-    <addaction name="actionListado_Clientes" />
-    <addaction name="separator" />
-    <addaction name="actionProvincias" />
-    <addaction name="separator" />
-    <addaction name="actionSeries_de_Factura" />
-    <addaction name="separator" />
-    <addaction name="actionTrabajadores" />
-    <addaction name="separator" />
-    <addaction name="actionFormas_de_Pago" />
-    <addaction name="separator" />
-    <addaction name="actionAlmacenes" />
-   </widget>
-   <widget class="QMenu" name="menuArticulos" >
-    <property name="title" >
-     <string>Articulo&amp;s</string>
-    </property>
-    <addaction name="actionGestion_Familias" />
-    <addaction name="actionGestion_Tipos_Articulo" />
-    <addaction name="actionNuevo_Articulo" />
-    <addaction name="actionListado_de_Articulos" />
-    <addaction name="separator" />
-    <addaction name="actionInventarios" />
-   </widget>
    <widget class="QMenu" name="menuVentas" >
     <property name="title" >
      <string>&amp;Ventas</string>
@@ -115,6 +84,37 @@
     </property>
     <addaction name="actionVentana_Completa" />
     <addaction name="actionIndexador" />
+   </widget>
+   <widget class="QMenu" name="menuArticulos" >
+    <property name="title" >
+     <string>Articulo&amp;s</string>
+    </property>
+    <addaction name="actionGestion_Familias" />
+    <addaction name="actionGestion_Tipos_Articulo" />
+    <addaction name="actionNuevo_Articulo" />
+    <addaction name="actionListado_de_Articulos" />
+    <addaction name="separator" />
+    <addaction name="actionInventarios" />
+   </widget>
+   <widget class="QMenu" name="menuMaestro" >
+    <property name="title" >
+     <string>Maest&amp;ro</string>
+    </property>
+    <addaction name="actionNuevo_Proveedor" />
+    <addaction name="actionListado_Proveedores" />
+    <addaction name="separator" />
+    <addaction name="actionNuevo_Cliente" />
+    <addaction name="actionListado_Clientes" />
+    <addaction name="separator" />
+    <addaction name="actionProvincias" />
+    <addaction name="separator" />
+    <addaction name="actionSeries_de_Factura" />
+    <addaction name="separator" />
+    <addaction name="actionTrabajadores" />
+    <addaction name="separator" />
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="separator" />
+    <addaction name="actionAlmacenes" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -315,7 +315,7 @@
     <string>Nuevo &amp;presupuesto a cliente...</string>
    </property>
    <property name="shortcut" >
-    <string>F5</string>
+    <string>F4</string>
    </property>
   </action>
   <action name="actionListado_Presupuestos" >
@@ -435,7 +435,7 @@
     <string>Nuevo &amp;cliente...</string>
    </property>
    <property name="shortcut" >
-    <string>F4</string>
+    <string>F3</string>
    </property>
   </action>
   <action name="actionListado_Clientes" >

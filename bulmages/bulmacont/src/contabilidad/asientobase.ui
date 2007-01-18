@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>724</width>
-    <height>480</height>
+    <width>633</width>
+    <height>444</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -18,10 +18,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -82,7 +82,7 @@
          <number>5</number>
         </property>
         <property name="spacing" >
-         <number>2</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_abrirasiento" >
@@ -95,10 +95,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Abrir Asiento</string>
+           <string>Abrir asiento</string>
           </property>
           <property name="whatsThis" >
-           <string>Abrir Asiento Ctrl + A</string>
+           <string>Abrir asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -128,10 +128,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Cerrar Asiento</string>
+           <string>Cerrar asiento</string>
           </property>
           <property name="whatsThis" >
-           <string>Cerrar Asiento Ctrl + C</string>
+           <string>Cerrar asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -161,10 +161,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Cerrar Asiento</string>
+           <string>Guardar asiento</string>
           </property>
           <property name="whatsThis" >
-           <string>Cerrar Asiento Ctrl + C</string>
+           <string>Guardar asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -194,7 +194,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Nuevo Asiento Ctrl+N</string>
+           <string>Nuevo asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Nuevo asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -224,7 +227,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Extender Asiento</string>
+           <string>Extender asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Extender asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -257,7 +263,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Borrar Asiento</string>
+           <string>Borrar asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -287,7 +296,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Duplicar  Asiento</string>
+           <string>Duplicar asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Duplicar asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -317,7 +329,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Exportar Asiento</string>
+           <string>Exportar asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Exportar asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -344,7 +359,10 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
-           <string>Importar Asiento</string>
+           <string>Importar asiento</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Importar asiento</string>
           </property>
           <property name="text" >
            <string/>
@@ -371,6 +389,9 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
+           <string>Registro de IVA</string>
+          </property>
+          <property name="whatsThis" >
            <string>Registro de IVA</string>
           </property>
           <property name="text" >
@@ -401,6 +422,9 @@
            </sizepolicy>
           </property>
           <property name="toolTip" >
+           <string>Asientos Inteligentes</string>
+          </property>
+          <property name="whatsThis" >
            <string>Asientos Inteligentes</string>
           </property>
           <property name="text" >
@@ -460,7 +484,7 @@
        <item>
         <widget class="QLabel" name="TextLabel2" >
          <property name="text" >
-          <string>Fecha</string>
+          <string>Fecha:</string>
          </property>
         </widget>
        </item>
@@ -480,7 +504,7 @@
        <item>
         <widget class="QLabel" name="TextLabel1" >
          <property name="text" >
-          <string>Num. Asiento</string>
+          <string>Núm. asiento:</string>
          </property>
         </widget>
        </item>
@@ -515,7 +539,7 @@
        <item>
         <widget class="QLabel" name="TextLabel1_3" >
          <property name="text" >
-          <string>Descuadre</string>
+          <string>Descuadre:</string>
          </property>
         </widget>
        </item>
@@ -1099,7 +1123,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
       <layout class="QHBoxLayout" >
@@ -1130,7 +1154,7 @@
      <item>
       <widget class="QLabel" name="textLabel1" >
        <property name="text" >
-        <string>Saldo</string>
+        <string>Saldo:</string>
        </property>
       </widget>
      </item>
@@ -1165,7 +1189,7 @@
      <item>
       <widget class="QLabel" name="TextLabel1_2" >
        <property name="text" >
-        <string>Totales</string>
+        <string>Totales:</string>
        </property>
       </widget>
      </item>

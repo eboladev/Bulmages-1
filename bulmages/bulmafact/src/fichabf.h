@@ -37,7 +37,6 @@ public:
     SubForm2Bf *m_listadescuentos;
 
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
-//    company *companyact;
     company *m_companyact;
 
 
@@ -63,3 +62,4 @@ public:
 };
 
 #endif
+

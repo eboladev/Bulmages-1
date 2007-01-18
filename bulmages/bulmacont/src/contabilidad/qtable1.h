@@ -21,8 +21,6 @@
 #ifndef QTABLE1_H
 #define QTABLE1_H
 
-//#include <Q3Table>
-//#include <Q3TableItem>
 #include <QTableWidget>
 #include <QTableWidgetItem>
 
@@ -34,23 +32,20 @@
 
 ///
 /** */
-//class QTableItem1 : public Q3TableItem {
 class QTableItem1 : public QTableWidgetItem {
 public:
     int modo;
 
 public:
-//    QTableItem1(Q3Table *table, EditType et, const QString &text, int mode) : Q3TableItem(table, et, text) {
-    QTableItem1(QTableWidget *table, const QString &text, int mode) : QTableWidgetItem(text) {
+    QTableItem1(QTableWidget *, const QString &text, int mode) : QTableWidgetItem(text) {
         modo = mode;
     }
     void paint(QPainter *p, const QColorGroup &cg, const QRect &cr, bool selected);
 };
 
 
-//class QTable1 : public Q3Table {
 class QTable1 : public QTableWidget {
-   Q_OBJECT
+    Q_OBJECT
 
 public:
     int modo; /// Indica el modo de dibujo.
@@ -60,14 +55,12 @@ public:
     void sortColumn(int col, bool ascending = TRUE, bool wholeRows = TRUE);
     QWidget *beginEdit(int, int, bool);
     virtual bool eventFilter(QObject *obj, QEvent *event);
-//    virtual void setItem(int, int, Q3TableItem *);
     virtual void setItem(int, int, QTableWidgetItem *);
     void paintCell (QPainter *, int, int, const QRect &, bool);
 
 signals:
     void pulsadomas(int, int, int);
 };
-
 
 #endif
 

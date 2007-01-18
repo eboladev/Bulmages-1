@@ -293,7 +293,7 @@ CREATE OR REPLACE FUNCTION aux() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''IRPF'';
+	SELECT INTO as * FROM configuracion WHERE nombre = ''IRPF'';
 	IF NOT FOUND THEN
 		INSERT INTO configuracion (nombre, valor) VALUES (''IRPF'', ''0''); 		 
 	END IF;
@@ -313,9 +313,9 @@ CREATE OR REPLACE FUNCTION actualizarevision() RETURNS INTEGER AS '
 DECLARE
 	as RECORD;
 BEGIN
-	SELECT INTO as * FROM configuracion WHERE nombre=''DatabaseRevision'';
+	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor=''0.9.1-0006'' WHERE nombre=''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0006'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
 		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0006'');
 	END IF;
@@ -327,7 +327,7 @@ DROP FUNCTION actualizarevision() CASCADE;
 \echo "Actualizada la revision de la base de datos a la version 0.9.1"
 
 DROP FUNCTION drop_if_exists_table(text) CASCADE;
-DROP FUNCTION drop_if_exists_proc(text,text) CASCADE;
+DROP FUNCTION drop_if_exists_proc(text, text) CASCADE;
 
 
 COMMIT;

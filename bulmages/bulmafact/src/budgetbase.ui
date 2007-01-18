@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>766</width>
-    <height>571</height>
+    <height>576</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -109,6 +109,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+S</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -137,6 +140,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -164,6 +170,9 @@
             <width>22</width>
             <height>22</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
@@ -481,56 +490,6 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="1" >
-       <widget class="BusquedaCliente" native="1" name="m_cliente" >
-        <property name="sizePolicy" >
-         <sizepolicy>
-          <hsizetype>7</hsizetype>
-          <vsizetype>5</vsizetype>
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize" >
-         <size>
-          <width>250</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="font" >
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>9</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label13" >
-        <property name="font" >
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>9</pointsize>
-          <weight>50</weight>
-          <italic>false</italic>
-          <bold>false</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="text" >
-         <string>Cliente:</string>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="3" >
        <widget class="BusquedaFecha" native="1" name="m_fpresupuesto" >
         <property name="sizePolicy" >
@@ -778,6 +737,35 @@
         </property>
        </widget>
       </item>
+      <item row="0" column="0" colspan="2" >
+       <widget class="BusquedaCliente" native="1" name="m_cliente" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>7</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>250</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="font" >
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>9</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
@@ -894,6 +882,70 @@
          <property name="enabled" >
           <bool>true</bool>
          </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+            <colorrole role="Window" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -963,6 +1015,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalBases" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1023,7 +1112,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>I.R.P.F.</string>
+          <string>I.R.P.F.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -1032,6 +1121,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalIRPF" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1101,6 +1227,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalTaxes" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1161,7 +1324,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Recargo</string>
+          <string>R.E.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -1170,6 +1333,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalReqEq" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1241,6 +1441,43 @@
         <widget class="QLineEdit" name="m_totalBudget" >
          <property name="enabled" >
           <bool>true</bool>
+         </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
          </property>
          <property name="font" >
           <font>
@@ -1344,6 +1581,16 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
+   <class>ListDescuentoPresupuestoView</class>
+   <extends>QWidget</extends>
+   <header>listdescpresupuestoview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
+  </customwidget>
+  <customwidget>
    <class>ListLinPresupuestoView</class>
    <extends>QWidget</extends>
    <header>listlinpresupuestoview.h</header>
@@ -1372,16 +1619,6 @@
    <class>BusquedaAlmacen</class>
    <extends>QWidget</extends>
    <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoPresupuestoView</class>
-   <extends>QWidget</extends>
-   <header>listdescpresupuestoview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

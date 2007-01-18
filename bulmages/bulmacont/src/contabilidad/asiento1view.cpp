@@ -155,18 +155,20 @@ void Asiento1View::iniciar_asiento_nuevo() {
         QString idasiento = "";
         QString ordenasiento = "1";
         QString fecha = mui_fecha->text();
-	m_companyact->begin();
+        m_companyact->begin();
         QString query = "SELECT MAX(ordenasiento) + 1 AS orden FROM asiento WHERE EXTRACT(YEAR FROM fecha) = '" + fecha.right(4) + "'";
         cursor2 *cur = m_companyact->cargacursor(query);
 
-	/// Comprobamos que el orden es correcto ya que si no hay registros puede dar una excepcion.
-	bool conversionok;
+        /// Comprobamos que el orden es correcto porque si no hay registros puede
+        /// dar una excepcion.
+        bool conversionok;
         int ord = (cur->valor("orden")).toInt(&conversionok);
-	if (conversionok) 
+        if (conversionok) {
             ordenasiento = cur->valor("orden");
+        } // end if
         delete cur;
 
-	/// Creamos el asiento en la base de datos.
+        /// Creamos el asiento en la base de datos.
         query = "INSERT INTO asiento (fecha, ordenasiento) VALUES ('" + m_companyact->sanearCadena(fecha) + "', " + ordenasiento + ")";
         m_companyact->ejecuta(query);
         query = "SELECT MAX(idasiento) AS id FROM asiento";
@@ -174,7 +176,7 @@ void Asiento1View::iniciar_asiento_nuevo() {
         if (!cur->eof())
             idasiento = cur->valor("id");
         delete cur;
-	m_companyact->commit();
+        m_companyact->commit();
         /// FIN TRATAMIENTO DE BASE DE DATOS.
         cargaasientos();
         muestraasiento(idasiento.toInt());
@@ -184,7 +186,7 @@ void Asiento1View::iniciar_asiento_nuevo() {
         return;
     } catch (...) {
         mensajeInfo("Asiento no pudo crearse");
-	m_companyact->rollback();
+        m_companyact->rollback();
     } // end try
 }
 

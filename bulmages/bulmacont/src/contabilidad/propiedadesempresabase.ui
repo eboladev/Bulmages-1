@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>589</width>
-    <height>305</height>
+    <width>535</width>
+    <height>311</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -20,50 +20,87 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <property name="spacing" >
       <number>5</number>
      </property>
      <item>
-      <widget class="QToolButton" name="mui_guardar" >
-       <property name="toolTip" >
-        <string>Guardar</string>
-       </property>
-       <property name="whatsThis" >
-        <string>Guardar</string>
-       </property>
+      <widget class="QLabel" name="label_2" >
        <property name="text" >
         <string/>
        </property>
-       <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+       <property name="pixmap" >
+        <pixmap resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</pixmap>
        </property>
       </widget>
      </item>
      <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
+      <widget class="QFrame" name="frame" >
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
        </property>
-       <property name="sizeType" >
-        <enum>QSizePolicy::Expanding</enum>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
        </property>
-       <property name="sizeHint" >
-        <size>
-         <width>441</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
+       <layout class="QHBoxLayout" >
+        <property name="margin" >
+         <number>5</number>
+        </property>
+        <property name="spacing" >
+         <number>5</number>
+        </property>
+        <item>
+         <widget class="QToolButton" name="mui_guardar" >
+          <property name="toolTip" >
+           <string>Guardar</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Guardar</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>22</width>
+            <height>22</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+S</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>101</width>
+            <height>25</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
      </item>
     </layout>
    </item>
@@ -108,6 +145,12 @@
        </item>
        <item row="4" column="7" colspan="2" >
         <widget class="QLineEdit" name="mui_provincia" >
+         <property name="minimumSize" >
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -132,6 +175,12 @@
        </item>
        <item row="3" column="7" >
         <widget class="QLineEdit" name="mui_puerta" >
+         <property name="minimumSize" >
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -139,6 +188,12 @@
        </item>
        <item row="3" column="5" >
         <widget class="QLineEdit" name="mui_piso" >
+         <property name="minimumSize" >
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -146,6 +201,18 @@
        </item>
        <item row="3" column="3" >
         <widget class="QLineEdit" name="mui_escalera" >
+         <property name="minimumSize" >
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="sizeIncrement" >
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -153,6 +220,12 @@
        </item>
        <item row="3" column="1" >
         <widget class="QLineEdit" name="mui_numerovia" >
+         <property name="minimumSize" >
+          <size>
+           <width>50</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -174,6 +247,12 @@
        </item>
        <item row="0" column="1" colspan="5" >
         <widget class="QLineEdit" name="mui_nombreempresa" >
+         <property name="minimumSize" >
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -181,6 +260,12 @@
        </item>
        <item row="0" column="7" colspan="2" >
         <widget class="QLineEdit" name="mui_cif" >
+         <property name="minimumSize" >
+          <size>
+           <width>100</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="text" >
           <string/>
          </property>
@@ -192,57 +277,75 @@
        <item row="1" column="6" >
         <widget class="QLabel" name="label" >
          <property name="text" >
-          <string>Teléfono:</string>
+          <string>Te&amp;léfono:</string>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_telefono</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="0" >
         <widget class="QLabel" name="textLabel2_2_2_3" >
          <property name="text" >
-          <string>Número:</string>
+          <string>Nú&amp;mero:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_numerovia</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="2" >
         <widget class="QLabel" name="textLabel2_2_2_4" >
          <property name="text" >
-          <string>Escalera:</string>
+          <string>Escale&amp;ra:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_escalera</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="4" >
         <widget class="QLabel" name="textLabel2_2_2_6" >
          <property name="text" >
-          <string>Piso:</string>
+          <string>Pi&amp;so:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_piso</cstring>
          </property>
         </widget>
        </item>
        <item row="4" column="6" >
         <widget class="QLabel" name="textLabel2_2_2_3_2_2" >
          <property name="text" >
-          <string>Provincia:</string>
+          <string>Prov&amp;incia:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_provincia</cstring>
          </property>
         </widget>
        </item>
        <item row="5" column="0" >
         <widget class="QLabel" name="textLabel2_2_2_3_2_3" >
          <property name="text" >
-          <string>País:</string>
+          <string>&amp;País:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_pais</cstring>
          </property>
         </widget>
        </item>
@@ -262,70 +365,91 @@
        <item row="0" column="0" >
         <widget class="QLabel" name="textLabel2" >
          <property name="text" >
-          <string>Nombre:</string>
+          <string>&amp;Nombre:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_nombreempresa</cstring>
          </property>
         </widget>
        </item>
        <item row="2" column="0" >
         <widget class="QLabel" name="textLabel2_2_2_2" >
          <property name="text" >
-          <string>Nombre vía:</string>
+          <string>Nombre &amp;vía:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_nombrevia</cstring>
          </property>
         </widget>
        </item>
        <item row="1" column="0" >
         <widget class="QLabel" name="textLabel2_2_2" >
          <property name="text" >
-          <string>Tipo de vía:</string>
+          <string>&amp;Tipo de vía:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_tipovia</cstring>
          </property>
         </widget>
        </item>
        <item row="0" column="6" >
         <widget class="QLabel" name="textLabel2_2" >
          <property name="text" >
-          <string>C.I.F.:</string>
+          <string>C.I.&amp;F.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_cif</cstring>
          </property>
         </widget>
        </item>
        <item row="4" column="2" >
         <widget class="QLabel" name="textLabel2_2_2_3_2" >
          <property name="text" >
-          <string>Población:</string>
+          <string>Po&amp;blación:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_poblacion</cstring>
          </property>
         </widget>
        </item>
        <item row="4" column="0" >
         <widget class="QLabel" name="textLabel2_2_2_7" >
          <property name="text" >
-          <string>C.P.:</string>
+          <string>&amp;C.P.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_codigopostal</cstring>
          </property>
         </widget>
        </item>
        <item row="3" column="6" >
         <widget class="QLabel" name="textLabel2_2_2_5" >
          <property name="text" >
-          <string>Puerta:</string>
+          <string>Puert&amp;a:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+         <property name="buddy" >
+          <cstring>mui_puerta</cstring>
          </property>
         </widget>
        </item>
@@ -346,14 +470,14 @@
      </widget>
      <widget class="QWidget" name="tab2" >
       <attribute name="title" >
-       <string>D&amp;ígitos de cuentas</string>
+       <string>Dí&amp;gitos de cuentas</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>5</number>
+        <number>9</number>
        </property>
        <property name="spacing" >
-        <number>5</number>
+        <number>6</number>
        </property>
        <item>
         <widget class="QLabel" name="TextLabel1" >
@@ -363,7 +487,7 @@
         </widget>
        </item>
        <item>
-        <layout class="QVBoxLayout" >
+        <layout class="QHBoxLayout" >
          <property name="margin" >
           <number>0</number>
          </property>
@@ -371,32 +495,48 @@
           <number>4</number>
          </property>
          <item>
-          <layout class="QHBoxLayout" >
-           <property name="margin" >
-            <number>0</number>
+          <widget class="QLabel" name="TextLabel1_2" >
+           <property name="text" >
+            <string>Dígitos estanda&amp;r</string>
            </property>
-           <property name="spacing" >
-            <number>4</number>
+           <property name="buddy" >
+            <cstring>modcodigo</cstring>
            </property>
-           <item>
-            <widget class="QLabel" name="TextLabel1_2" >
-             <property name="text" >
-              <string>Dígitos estandar</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="modcodigo" />
-           </item>
-           <item>
-            <widget class="QLabel" name="TextLabel2" >
-             <property name="text" >
-              <string>xxxx --> Dígitos de plan contable.
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="modcodigo" />
+         </item>
+         <item>
+          <widget class="QLabel" name="TextLabel2" >
+           <property name="text" >
+            <string>xxxx --> Dígitos de plan contable.
 yyyy --> Dígitos de cuenta.</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
          <item>
           <widget class="QPushButton" name="mui_modificarplan" >
@@ -404,6 +544,19 @@ yyyy --> Dígitos de cuenta.</string>
             <string>Modi&amp;ficar plan contable</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -427,7 +580,7 @@ yyyy --> Dígitos de cuenta.</string>
      </widget>
      <widget class="QWidget" name="tab3" >
       <attribute name="title" >
-       <string>Propiedades &amp;generales</string>
+       <string>Propiedad&amp;es generales</string>
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
