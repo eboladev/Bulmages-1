@@ -191,13 +191,15 @@ void abreempresaview::cargaArchivo() {
         lineatexto = filestr.readLine();
         /// Separa los diferentes campos de la linea de texto y la asigna a las variables.
         QStringList listacampos = lineatexto.split("\t");
-        nombre = listacampos[0];
-        ano = listacampos[1];
-        nombd = listacampos[2];
-        tipo = listacampos[3];
-        if (tipo == m_tipo || m_tipo == "") {
-            insertCompany(nombre, ano, nombd, tipo);
-        } // end if
+	if(listacampos.count() == 4){
+	    nombre = listacampos[0];
+	    ano = listacampos[1];
+	    nombd = listacampos[2];
+	    tipo = listacampos[3];
+	    if (tipo == m_tipo || m_tipo == "") {
+		insertCompany(nombre, ano, nombd, tipo);
+	    } // end if
+	} // end if
     } // end while
     file.close();
     _depura("abreempresaview::cargaArchivo", 0);
