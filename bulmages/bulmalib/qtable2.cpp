@@ -183,8 +183,8 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 
         case Qt::Key_Return:
         case Qt::Key_Enter:
-	    _depura("Se ha pulsado el Return", 2);
-//            emit editFinished(row, col, key);
+//	    _depura("Se ha pulsado el Return", 2);
+            emit editFinished(row, col, key);
             return TRUE;
             break;
 

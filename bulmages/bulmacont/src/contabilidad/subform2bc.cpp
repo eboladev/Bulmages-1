@@ -30,6 +30,7 @@
 #include "asiento1view.h"
 #include "extractoview1.h"
 #include "balance1view.h"
+#include "qtexteditdelegate.h"
 
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"
@@ -39,8 +40,18 @@
 #include "images/cgastos.xpm"
 
 
-SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {}
+SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
+    _depura("SubForm2Bc::SubForm2Bc", 0);
+    m_delegate = new QSubForm2BcDelegate(this);
+    mui_list->setItemDelegate(m_delegate);
+    _depura("END SubForm2Bc::SubForm2Bc", 0);
+}
 
+SubForm2Bc::~SubForm2Bc() {
+    _depura("SubForm2Bc::~SubForm2Bc", 0);
+    delete m_delegate;
+    _depura("END SubForm2Bc::~SubForm2Bc", 0);
+}
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
@@ -273,4 +284,140 @@ void SubForm2Bc::procesaMenu(QAction *ac) {
     _depura("SubForm2Bc::procesaMenu", 0);
     _depura("END SubForm2Bc::procesaMenu", 0);
 }
+
+
+// ===============================================================
+//  Tratamientos del Item Delegate
+// ===============================================================
+
+QSubForm2BcDelegate::QSubForm2BcDelegate(QObject *parent=0) : QItemDelegate(parent) {
+    _depura("QSubForm2BcDelegate::QSubForm2BcDelegate", 0);
+    m_subform = (SubForm2Bc *) parent;
+    installEventFilter(this);
+    _depura("END QSubForm2BcDelegate::QSubForm2BcDelegate", 0);
+}
+
+QSubForm2BcDelegate::~QSubForm2BcDelegate() {
+    _depura("QSubForm2BcDelegate::~QSubForm2BcDelegate", 0);
+    _depura("END QSubForm2BcDelegate::~QSubForm2BcDelegate", 0);
+}
+
+
+QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+    _depura("QSubForm2BcDelegate::createEditor", 0);
+    SHeader *linea;
+    linea = m_subform->cabecera()->at(index.column());
+    _depura("QSubForm2BcDelegate::createEditor", 0, "CurrentColumn: " + QString::number(index.column()));
+    _depura("QSubForm2BcDelegate::createEditor", 0, "CurrentRow" + QString::number(index.row()));
+
+    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+        QTextEditDelegate *editor = new QTextEditDelegate(parent);
+        editor->setObjectName("QTextEditDelegate");
+        return editor;
+    } else if (linea->nomcampo() == "debe"
+               || linea->nomcampo() == "haber"	) {
+        QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
+        editor->setMinimum(0);
+        editor->setMaximum(1000000);
+        return editor;
+    } else if (linea->nomcampo() == "codigo") {
+        BusquedaCuentaDelegate *editor = new BusquedaCuentaDelegate(parent);
+        editor->setcompany((empresa *)m_subform->companyact());
+        return editor;
+    } else {
+        return QItemDelegate::createEditor(parent, option, index);
+    }// end if
+
+}
+
+void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
+    _depura("QSubForm2BcDelegate::setModelData", 0);
+    _depura("QSubForm2BcDelegate::setModelData", 0, "CurrentColumn: " + QString::number(index.column()));
+    _depura("QSubForm2BcDelegate::setModelData", 0, "CurrentRow" + QString::number(index.row()));
+
+    /// Si la fila o columna pasadas son invalidas salimos.
+    if ( index.column() < 0 || index.row() < 0)
+        return;
+
+    SHeader *linea;
+    linea = m_subform->cabecera()->at(index.column());
+    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate *>(editor);
+        model->setData(index, textedit->toPlainText());
+        return;
+
+    } else if (linea->nomcampo() == "debe"
+               || linea->nomcampo() == "haber"+m_subform->tableName()	) {
+        QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+        spinBox->interpretText();
+        QString value = spinBox->text();
+        value = value.replace(",", ".");
+        model->setData(index, value );
+    } else if (linea->nomcampo() == "codigo") {
+        BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
+        QString value = comboBox->currentText();
+        value = value.left(value.indexOf(".-"));
+        model->setData(index, value);
+    } else {
+        QItemDelegate::setModelData(editor, model, index);
+    }// end if
+    _depura("END QSubForm2BcDelegate::setModelData", 0);
+}
+
+
+void QSubForm2BcDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
+    _depura("QSubForm2BcDelegate::setEditorData", 0);
+    _depura("QSubForm2BcDelegate::setEditorData", 0, "CurrentColumn: " + QString::number(index.column()));
+    _depura("QSubForm2BcDelegate::setEditorData", 0, "CurrentRow" + QString::number(index.row()));
+    SHeader *linea;
+    linea = m_subform->cabecera()->at(index.column());
+    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+        QString data = index.model()->data(index, Qt::DisplayRole).toString();
+        QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
+        textedit->setText(data);
+    } else if (linea->nomcampo() == "debe"
+               || linea->nomcampo() == "haber"	) {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+        spinBox->setValue(value.toDouble());
+    } else if (linea->nomcampo() == "codigo") {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
+        comboBox->addItem(value);
+    } else {
+        QItemDelegate::setEditorData(editor, index);
+    }// end if
+    _depura("END QSubForm2BcDelegate::setEditorData", 0);
+}
+
+bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
+    _depura("QSubForm2BcDelegate::eventFilter", 0,   obj->objectName()+" --> " + QString::number(event->type()));
+    if (obj->isWidgetType()) {
+        _depura("QSubForm2BcDelegate:: de tipo toolTip", 0,   ((QWidget *)obj)->toolTip());
+        _depura("QSubForm2BcDelegate:: de tipo windowRole", 0,   ((QWidget *)obj)->windowRole());
+        _depura("QSubForm2BcDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
+        _depura("QSubForm2BcDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
+    }// end if
+
+    /// Si es un release de tecla se hace la funcionalidad especificada.
+    if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        int key = keyEvent->key();
+        _depura("QSubForm2BcDelegate::key = :", 0, QString::number(key));
+        Qt::KeyboardModifiers mod = keyEvent->modifiers();
+        /// ------------------ EL CAMBIO ------------------------------
+        switch (key) {
+        case Qt::Key_Return:
+        case Qt::Key_Enter:
+            if (obj->objectName() == "QTextEditDelegate") {
+                obj->event(event);
+                return TRUE;
+            } // end if
+        } // end switch
+
+    } // end if
+    _depura("END QSubForm2BcDelegate::eventFilter()", 0);
+    return QItemDelegate::eventFilter(obj, event);
+}
+
 

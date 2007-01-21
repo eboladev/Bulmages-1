@@ -26,15 +26,42 @@
 #include "subform3.h"
 
 
+class SubForm2Bc;
+
+
+/// Clase SubForm2BcDelegate
+/** Se encarga del control de los Widgets de Edicion del sistema.*/
+class QSubForm2BcDelegate : public QItemDelegate {
+private:
+    /// Clase padre y acceso a base de datos.
+    postgresiface2 *m_companyact;
+    SubForm2Bc *m_subform;
+
+public:
+    QSubForm2BcDelegate(QObject *);
+    ~QSubForm2BcDelegate();
+    void setEditorData(QWidget *, const QModelIndex &index) const;
+    void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
+    QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
+    void setcompany(postgresiface2 *c) {
+        m_companyact = c;
+    };
+    postgresiface2 *companyact() {
+        return m_companyact;
+    };
+    virtual bool eventFilter(QObject *obj, QEvent *event);
+};
+
+
 ///
 /** */
 class SubForm2Bc : public SubForm3 {
     Q_OBJECT
-
+public:
+    QSubForm2BcDelegate *m_delegate;
 public:
     SubForm2Bc(QWidget *parent = 0);
-    virtual ~SubForm2Bc() {}
-    ;
+    virtual ~SubForm2Bc();
     virtual void boton_asiento();
     virtual void boton_extracto1(int);
     virtual void boton_balance1(int);
