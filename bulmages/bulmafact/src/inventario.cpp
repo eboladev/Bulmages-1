@@ -194,7 +194,7 @@ void Inventario::imprimirInventario() {
             stream << buff;
             file.close();
         }// end if
-        system("trml2pdf.py /tmp/facturap.rml > /tmp/facturap.pdf");
+        system("btrml2pdf /tmp/facturap.rml > /tmp/facturap.pdf");
         system("kpdf /tmp/facturap.pdf");
     */
 }
