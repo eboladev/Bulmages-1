@@ -104,6 +104,7 @@ void Asiento1View::asientoabiertop() {
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(TRUE);
 
+
     /// Los apuntes deben ser editables.
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
@@ -111,6 +112,7 @@ void Asiento1View::asientoabiertop() {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
         } // end for
     } // end for
+
     _depura("END Asiento1View::asientoabiertop", 0);
 }
 
@@ -125,6 +127,7 @@ void Asiento1View::asientocerradop() {
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(FALSE);
 
+
     /// Los apuntes deben dejar de ser editables (aunque no se graben sus posibles
     /// modificaciones por estar en modo CERRADO).
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
@@ -133,6 +136,7 @@ void Asiento1View::asientocerradop() {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
         } // end for
     } // end for
+
     _depura("END Asiento1View::asientocerradop", 0);
 }
 
@@ -260,7 +264,7 @@ void Asiento1View::boton_cargarasiento() {
         cargar(idas);
     } else {
         _depura("Asiento inexistente", 2);
-        pintaAsiento1();
+        pintar();
     } // end if
     delete curs;
     _depura("END Asiento1View::boton_cargarasiento", 0);
@@ -287,7 +291,7 @@ void Asiento1View::on_mui_borrar_clicked() {
         muestraasiento(idasiento);
     else {
         vaciaAsiento1();
-        pintaAsiento1();
+        pintar();
     } // end if
     _depura("END Asiento1View::on_mui_borrar_clicked", 0);
 }
@@ -382,7 +386,7 @@ void ListAsientos::boton_inicio() {
     _depura("ListAsientos::boton_inicio", 0);
     if (cursorasientos->numregistros() != 0) {
         cursorasientos->primerregistro();
-        pintaasiento(cursorasientos->valor("idasiento"));
+        cargar(cursorasientos->valor("idasiento"));
     } // end if
     _depura("END ListAsientos::boton_inicio", 0);
 }
@@ -396,7 +400,7 @@ void ListAsientos::boton_fin() {
     _depura("ListAsientos::boton_fin", 0);
     if (cursorasientos->numregistros() != 0 ) {
         cursorasientos->ultimoregistro();
-        pintaasiento(cursorasientos->valor("idasiento"));
+        cargar(cursorasientos->valor("idasiento"));
     } // end if
     _depura("END ListAsientos::boton_fin", 0);
 }
@@ -414,7 +418,7 @@ void ListAsientos::boton_siguiente() {
     } // end if
     if (!cursorasientos->esultimoregistro()) {
         cursorasientos->siguienteregistro();
-        pintaasiento(cursorasientos->valor("idasiento"));
+        cargar(cursorasientos->valor("idasiento"));
     }// end if
     _depura("END ListAsientos::boton_siguiente", 0);
 }
@@ -432,7 +436,7 @@ void ListAsientos::boton_anterior() {
     } // end if
     if (!cursorasientos->esprimerregistro()) {
         cursorasientos->registroanterior();
-        pintaasiento(cursorasientos->valor("idasiento"));
+        cargar(cursorasientos->valor("idasiento"));
     } // end if
     _depura("END ListAsientos::boton_anterior", 0);
 }

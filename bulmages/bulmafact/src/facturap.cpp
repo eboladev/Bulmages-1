@@ -122,9 +122,10 @@ int FacturaProveedor::cargar(QString idfacturap) {
                 throw -1;
 	} // end if
         delete cur;
+        pintar();
         m_listalineas->cargar(idfacturap);
         m_listadescuentos->cargar(idfacturap);
-        pintar();
+        calculaypintatotales();
     } catch (...) {
 	mensajeInfo("FacturaProveedor::cargar producida una excepcion");
         throw -1;

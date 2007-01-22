@@ -133,9 +133,10 @@ int AlbaranCliente::cargar(QString idalbaran)  {
     if (!cur->eof())
         DBload(cur);
     delete cur;
+    pintar();
     m_listalineas->cargar(idalbaran);
     m_listadescuentos->cargar(idalbaran);
-    pintar();
+    calculaypintatotales();
     _depura("Fin AlbaranCliente::cargar", 0);
     return 0;
 }

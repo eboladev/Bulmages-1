@@ -111,7 +111,7 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
 
 
 void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
-    _depura("SubForm2Bf::editFinished", 0);
+    _depura("SubForm2Bf::on_mui_list_editFinished", 0);
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();
@@ -179,7 +179,7 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     } // end if
 
     SubForm3::on_mui_list_editFinished(row, col, key);
-    _depura("END SubForm2Bf::editFinished", 0);
+    _depura("END SubForm2Bf::on_mui_list_editFinished", 0);
 }
 
 

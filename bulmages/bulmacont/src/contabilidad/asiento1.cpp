@@ -87,8 +87,8 @@ void Asiento1::vaciaAsiento1() {
 /** Se encarga del pintado del asiento.
 */
 /// \TODO: Debe ser pintar()
-void Asiento1::pintaAsiento1() {
-    _depura("Asiento1::pintaAsiento1", 0);
+void Asiento1::pintar() {
+    _depura("Asiento1::pintar", 0);
     pintaidasiento(idasiento());
     pintadescripcion(DBvalue("descripcion"));
     pintafecha(DBvalue("fecha"));
@@ -98,7 +98,7 @@ void Asiento1::pintaAsiento1() {
     /// Pintamos los totales.
     calculaypintatotales(idasiento());
     trataestadoAsiento1();
-    _depura("END Asiento1::pintaAsiento1", 0);
+    _depura("END Asiento1::pintar", 0);
 }
 
 
@@ -111,8 +111,9 @@ int Asiento1::cargar(QString idasiento) {
         DBload(cur);
     } // end if
     delete cur;
+    trataestadoAsiento1();
     listalineas->cargar(idasiento);
-    pintaAsiento1();
+    pintar();
     _depura("END Asiento1::cargar", 0, idasiento);
     return 0;
 }

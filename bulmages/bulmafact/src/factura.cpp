@@ -140,9 +140,10 @@ int Factura::cargar(QString idbudget) {
         DBload(cur);
     } // end if
     delete cur;
+    pintaFactura();
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
-    pintaFactura();
+    calculaypintatotales();
     _depura("END Factura::cargar", 0);
     return 0;
 }

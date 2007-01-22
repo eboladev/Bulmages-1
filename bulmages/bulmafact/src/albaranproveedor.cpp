@@ -121,9 +121,10 @@ int AlbaranProveedor::cargar(QString idbudget) {
         DBload(cur);
 
     delete cur;
+    pintar();
     m_listalineas->cargar(idbudget);
     m_listadescuentos->cargar(idbudget);
-    pintar();
+    calculaypintatotales();
     _depura("END AlbaranProveedor::cargar", 0);
     return 0;
 }

@@ -118,8 +118,6 @@ int Presupuesto::cargar(QString idbudget) {
     } // end if
     delete cur;
 
-    m_listalineas->cargar(idbudget);
-    m_listadescuentos->cargar(idbudget);
 
     /// Tratamiento de excepciones.
     if (error) {
@@ -128,6 +126,12 @@ int Presupuesto::cargar(QString idbudget) {
     } // end if
 
     pintaPresupuesto();
+
+    m_listalineas->cargar(idbudget);
+    m_listadescuentos->cargar(idbudget);
+
+    calculaypintatotales();
+
     _depura("END Presupuesto::cargar", 0);
     return 0;
 }

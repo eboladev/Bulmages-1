@@ -1017,3 +1017,6 @@ void SubForm3::on_mui_list_currentCellChanged(int , int , int row, int col) {
     _depura("END SubForm3::on_mui_list_currentCellChanged", 0);
 }
 
+void SubForm3::setinsercion(bool b) {
+        m_insercion = b;
+};

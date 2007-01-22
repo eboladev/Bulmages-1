@@ -64,9 +64,6 @@ public:
     virtual void muestraasiento(QString) {
         mensajeInfo("Funcion no implementada.");
     };
-    virtual void pintaasiento(QString ) {
-        _depura("Funcion no implementada.", 2);
-    };
     void situarasiento(QString);
     bool esprimerasiento() {
         return cursorasientos->esprimerregistro();
@@ -94,6 +91,9 @@ public:
             return "";
         }
     };
+    virtual int cargar(QString id) {
+	_depura("ListAsientos::cargar debe ser sobrecargada", 2);
+    };
 };
 
 
@@ -120,15 +120,10 @@ private:
     void prepguardar();
 
 public:
-    void pintaasiento(QString v) {
-        _depura("Asiento1View::pintaasiento ", 0);
-        cargar(v);
-        _depura("END Asiento1View::pintaasiento ", 0);
-    };
     void muestraasiento(QString v) {
         _depura("Asiento1View::muestraasiento ", 0);
         situarasiento(v);
-        pintaasiento(v);
+	cargar(v);
         _depura("END Asiento1View::muestraasiento ", 0);
     };
     void muestraasiento(int v) {
@@ -145,7 +140,9 @@ public:
     void iniciar_asiento_nuevo();
     Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
-
+    virtual int cargar(QString idasiento) {
+	Asiento1::cargar(idasiento);
+    };
 public slots:
     virtual void on_mui_abrirasiento_clicked() {
         abreAsiento1();
@@ -158,6 +155,7 @@ public slots:
         prepguardar();
         Asiento1::guardar();
     };
+
     virtual void on_mui_nuevoasiento_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();

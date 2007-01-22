@@ -133,9 +133,7 @@ public:
     };
     QString imprimir();
     void sortItems(int col, Qt::SortOrder orden);
-    void setinsercion(bool b) {
-        m_insercion = b;
-    };
+    void setinsercion(bool b);
     void setcompany(postgresiface2 *c) {
         m_companyact = c;
     };

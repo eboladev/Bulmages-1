@@ -77,29 +77,29 @@ public:
         _depura("funcion no implementada pintafecha");
     };
     virtual void pintacomentariosasiento(QString) {
-        _depura("funcion no implementada pintacomentariosasiento");
+        _depura("funcion no implementada pintacomentariosasiento", 2);
     };
     virtual void pintaordenasiento(QString) {
-        _depura("funcion no implementada pintaordenasiento");
+        _depura("funcion no implementada pintaordenasiento", 2);
     };
     virtual void pintaclase(QString) {
-        _depura("funcion no implementada pintaclase");
+        _depura("funcion no implementada pintaclase", 2);
     };
     virtual void calculaypintatotales(QString) {
-        _depura("funcion no implementada calculaypintatotales");
+        _depura("funcion no implementada calculaypintatotales", 2);
     };
-    virtual void pintaAsiento1();
+    virtual void pintar();
     virtual void trataestadoAsiento1() {
-        _depura("funcion no implementada trataestadoAsiento1");
+        _depura("funcion no implementada trataestadoAsiento1", 2);
     };
     virtual void asiento_cierre() {
-        _depura("Funcion no implementada");
+        _depura("Funcion no implementada", 2);
     };
     virtual void asiento_apertura() {
-        _depura("Funcion no implementada");
+        _depura("Funcion no implementada", 2);
     };
     virtual void asiento_regularizacion() {
-        _depura("Funcion no implementada");
+        _depura("Funcion no implementada", 2);
     };
 };
 
