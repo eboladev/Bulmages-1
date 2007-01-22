@@ -70,7 +70,7 @@ void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& i
 //    QString data = index.model()->data(index, Qt::DisplayRole);
     QString data = index.data(Qt::DisplayRole).toString();
     QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
-    textedit->setText(data);
+    textedit->setPlainText(data);
     textedit->setGeometry(textedit->x(), textedit->y(), textedit->width()+150, textedit->height()+50);
 
 /*

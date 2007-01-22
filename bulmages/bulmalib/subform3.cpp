@@ -199,7 +199,7 @@ void SubForm3::pintaCabeceras() {
             mui_list->showColumn(i);
     } // end for
     mui_list->setHorizontalHeaderLabels(headers);
-    mui_list->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
+    mui_list->horizontalHeader()->setResizeMode(0, QHeaderView::Interactive);
     _depura("END SubForm3::pintaCabeceras", 0);
 }
 
@@ -374,12 +374,15 @@ void SubForm3::cargar(cursor2 *cur) {
     mui_list->setRowCount(m_lista.count());
 
     SDBRecord *reg;
+    SDBCampo *camp;
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
-
-        SDBCampo *camp;
+	QRegExp rx("^.*00:00:00.*$"); // Para emparejar los valores fechas
         for (int j = 0; j < reg->lista()->size(); ++j) {
             camp = (SDBCampo *) reg->lista()->at(j);
+	    // Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha
+	    if(rx.exactMatch(camp->valorcampo()))
+		camp->set(camp->valorcampo().left(10));
             mui_list->setItem(i, j, camp);
         } // end for
     } // end for
@@ -390,6 +393,8 @@ void SubForm3::cargar(cursor2 *cur) {
     on_mui_confcol_clicked();
     /// Reactivamos el sorting
     mui_list->setSortingEnabled(m_sorting);
+    resizeColumnsToContents();
+    resizeRowsToContents();
     _depura("END SubForm3::cargar", 0);
 }
 
@@ -698,6 +703,7 @@ int SubForm3::borrar(int row) {
 
 
 /// Guardamos el archivo de configuracion.
+
 void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig", 0);
     QString aux = "";
