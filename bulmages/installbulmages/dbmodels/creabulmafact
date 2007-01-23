@@ -21,7 +21,7 @@
 version="v0.9.1"
 
 #Buscamos el parametro para saber si es texto o no
-if [ "$1" = "--texto" ]; 
+if [ "$1" = "--texto" ]; then
   texto="1"
   ptexto="--texto"
 else

@@ -480,7 +480,7 @@ CREATE TABLE proveedor (
     recargoeqproveedor boolean DEFAULT FALSE,
     irpfproveedor NUMERIC(12,2) DEFAULT 0,
     idforma_pago integer REFERENCES forma_pago(idforma_pago),
-    regimenfiscalproveedor character varying(50) DEFAULT ''Normal'' NOT NULL,
+    regimenfiscalproveedor character varying(50) DEFAULT 'Normal' NOT NULL,
     provproveedor character varying
 );
 
@@ -551,7 +551,7 @@ CREATE TABLE cliente (
     corpcliente character varying(200),
     faltacliente date DEFAULT NOW(),
     fbajacliente date,
-    regimenfiscalcliente character varying(50) DEFAULT ''Normal'' NOT NULL,
+    regimenfiscalcliente character varying(50) DEFAULT 'Normal' NOT NULL,
     comentcliente character varying(2000),
     inactivocliente character(1),
     provcliente character varying,
