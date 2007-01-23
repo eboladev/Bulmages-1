@@ -104,7 +104,7 @@ private:
     int numasiento;
     /// Esta lista se usa en conjunci&oacute;n con el combo-box para saber los &iacute;ndices
     /// de las plantillas de asientos inteligentes.
-    QString listasientos[100];
+    QStringList listasientos;
     int idainteligente;
     unsigned int numdigitos;
 

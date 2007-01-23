@@ -136,7 +136,7 @@ void Asiento1View::asientocerradop() {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
         } // end for
     } // end for
-
+    
     _depura("END Asiento1View::asientocerradop", 0);
 }
 
@@ -235,7 +235,7 @@ void Asiento1View::on_mui_duplicar_clicked() {
 void Asiento1View::on_mui_inteligente_clicked() {
     _depura("Asiento1View::on_mui_inteligente_clicked", 0);
     int numasiento;
-    if (estadoasiento() != Asiento1::ASCerrado) {
+    if (estadoAsiento1() != Asiento1::ASCerrado) {
         /// El asiento esta abierto y por tanto se muestra como abierto.
         asientoabiertop();
         numasiento = idasiento().toInt();

@@ -138,7 +138,7 @@ void Asiento1::abreAsiento1() {
         _depura("No hay asiento");
         return;
     }
-    m_companyact->abreasiento(id.toInt());
+    m_companyact->abreasiento(id.toInt());    
     trataestadoAsiento1();
 }
 
