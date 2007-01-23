@@ -87,7 +87,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while (!cur->eof()) {
-        PresupuestoView *bud = m_companyact->newBudget();
+        PresupuestoView *bud = m_companyact->nuevoPresupuesto();
         m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpresupuesto"));
         bud->show();

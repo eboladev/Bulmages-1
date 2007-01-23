@@ -65,8 +65,8 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         m_trabajador->setcompany(comp);
         m_refpresupuesto->setcompany(comp);
 
-	setListaLineas(subform2);
-	setListaDescuentos(m_descuentos);
+        setListaLineas(subform2);
+        setListaDescuentos(m_descuentos);
 
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
@@ -74,8 +74,8 @@ PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         m_totalTaxes->setAlignment(Qt::AlignRight);
         m_totalDiscounts->setReadOnly(TRUE);
         m_totalDiscounts->setAlignment(Qt::AlignRight);
-        m_totalBudget->setReadOnly(TRUE);
-        m_totalBudget->setAlignment(Qt::AlignRight);
+        m_totalPresupuestoCliente->setReadOnly(TRUE);
+        m_totalPresupuestoCliente->setAlignment(Qt::AlignRight);
         /// Inicializamos la forma de pago para que no se quede sin ser pintada.
         pintaidforma_pago("0");
         pintaidalmacen("0");
@@ -102,7 +102,7 @@ void PresupuestoView::inicializar() {
 
 PresupuestoView::~PresupuestoView() {
     _depura("PresupuestoView::~PresupuestoView", 0);
-    m_companyact->refreshBudgets();
+    m_companyact->refreshPresupuestos();
     _depura("END PresupuestoView::~PresupuestoView", 0);
 }
 
@@ -118,7 +118,7 @@ void PresupuestoView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed des
     _depura("PresupuestoView::pintatotales", 0);
     m_totalBases->setText(QString(base.toQString()));
     m_totalTaxes->setText(QString(iva.toQString()));
-    m_totalBudget->setText(QString(total.toQString()));
+    m_totalPresupuestoCliente->setText(QString(total.toQString()));
     m_totalDiscounts->setText(QString(desc.toQString()));
     m_totalIRPF->setText(QString(irpf.toQString()));
     m_totalReqEq->setText(QString(reqeq.toQString()));
@@ -133,17 +133,17 @@ void PresupuestoView::generarPedidoCliente() {
     QString SQLQuery = "SELECT * FROM pedidocliente WHERE refpedidocliente = '" + DBvalue("refpresupuesto") + "' AND idcliente = "+DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
-    
 
-	/// Informamos que ya hay una factura y que la abriremos.
-	/// Si no salimos de la funci&oacute;n.
-	if (QMessageBox::question(this,
-				tr("Pedido existente"),
-				tr("Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?"),
-				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
-		return;
-	}
-   	PedidoClienteView *bud = m_companyact->newPedidoClienteView();
+
+        /// Informamos que ya hay una factura y que la abriremos.
+        /// Si no salimos de la funci&oacute;n.
+        if (QMessageBox::question(this,
+                                  tr("Pedido existente"),
+                                  tr("Existe un pedido a este cliente con la misma referencia que este presupuesto. Desea abrirla para verificar?"),
+                                  tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+            return;
+        }
+        PedidoClienteView *bud = m_companyact->newPedidoClienteView();
         m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpedidocliente"));
         bud->show();
@@ -154,12 +154,12 @@ void PresupuestoView::generarPedidoCliente() {
 
     /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
     /// Sino salimos de la funcion.
-//    if (QMessageBox::question(this,
-//                              tr("Pedido de cliente inexistente"),
-//                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
-//                              tr("&Si"), tr("&No"),
-//                              QString::null, 0, 1))
-//        return;
+    //    if (QMessageBox::question(this,
+    //                              tr("Pedido de cliente inexistente"),
+    //                              tr("No existe un pedido asociado a este presupuesto. Desea crearlo?"),
+    //                              tr("&Si"), tr("&No"),
+    //                              QString::null, 0, 1))
+    //        return;
 
     /// Creamos el pedido.
     PedidoClienteView *bud = m_companyact->newPedidoClienteView();
@@ -236,28 +236,28 @@ int PresupuestoView::cargar(QString id) {
 int PresupuestoView::guardar() {
     _depura("PresupuestoView::guardar", 0);
     try {
-    /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
-    int res = g_plugins->lanza("PresupuestoView_guardar", this);
-    if (res != 0)
-        return 0;
-    setcomentPresupuesto(m_comentpresupuesto->toPlainText());
-    setnumPresupuesto(m_numpresupuesto->text());
-    setidcliente(m_cliente->idcliente());
-    setfPresupuesto(m_fpresupuesto->text());
-    setvencPresupuesto(m_vencpresupuesto->text());
-    setidalmacen(m_almacen->idalmacen());
-    setidtrabajador(m_trabajador->idtrabajador());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setrefPresupuesto(m_refpresupuesto->text());
-    setdescPresupuesto(m_descpresupuesto->text());
-    setcontactPresupuesto(m_contactpresupuesto->text());
-    settelPresupuesto(m_telpresupuesto->text());
-    setprocesadoPresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
-    Presupuesto::guardar();
-    dialogChanges_cargaInicial();
+        /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
+        int res = g_plugins->lanza("PresupuestoView_guardar", this);
+        if (res != 0)
+            return 0;
+        setcomentPresupuesto(m_comentpresupuesto->toPlainText());
+        setnumPresupuesto(m_numpresupuesto->text());
+        setidcliente(m_cliente->idcliente());
+        setfPresupuesto(m_fpresupuesto->text());
+        setvencPresupuesto(m_vencpresupuesto->text());
+        setidalmacen(m_almacen->idalmacen());
+        setidtrabajador(m_trabajador->idtrabajador());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setrefPresupuesto(m_refpresupuesto->text());
+        setdescPresupuesto(m_descpresupuesto->text());
+        setcontactPresupuesto(m_contactpresupuesto->text());
+        settelPresupuesto(m_telpresupuesto->text());
+        setprocesadoPresupuesto(m_procesadopresupuesto->isChecked() ? "TRUE" : "FALSE");
+        Presupuesto::guardar();
+        dialogChanges_cargaInicial();
     } catch (...) {
-	_depura("PresupuestoView::guardar error al guardar el presupuesto", 0);
-	throw -1;
+        _depura("PresupuestoView::guardar error al guardar el presupuesto", 0);
+        throw -1;
     } // end try
     _depura("END PresupuestoView::guardar", 0);
     return 0;
@@ -265,9 +265,9 @@ int PresupuestoView::guardar() {
 
 
 void PresupuestoView::on_m_cliente_valueChanged(QString id) {
-	_depura("PresupuestoView::on_m_cliente_valueChanged", 0);
-	subform2->setIdCliente(id);
-	m_forma_pago->setIdCliente(id);
-	_depura("END PresupuestoView::on_m_cliente_valueChanged", 0);
+    _depura("PresupuestoView::on_m_cliente_valueChanged", 0);
+    subform2->setIdCliente(id);
+    m_forma_pago->setIdCliente(id);
+    _depura("END PresupuestoView::on_m_cliente_valueChanged", 0);
 }
 

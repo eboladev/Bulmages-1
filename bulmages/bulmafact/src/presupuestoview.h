@@ -25,7 +25,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "ui_budgetbase.h"
+#include "ui_presupuestoclientebase.h"
 #include "postgresiface2.h"
 #include "presupuesto.h"
 #include "listlinpresupuestoview.h"
@@ -44,7 +44,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un presupuesto.
 /** */
-class PresupuestoView : public Presupuesto, public Ui_BudgetBase {
+class PresupuestoView : public Presupuesto, public Ui_PresupuestoClienteBase {
     Q_OBJECT
 
 private:

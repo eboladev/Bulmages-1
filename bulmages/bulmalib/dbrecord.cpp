@@ -24,6 +24,7 @@
 #include <QFile>
 #include <QTextStream>
 
+
 DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp) {
     m_conexionbase = com;
     m_nomcampo = nom;
@@ -103,7 +104,7 @@ int DBRecord::DBload(cursor2 *cur) {
         if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
             m_nuevoCampo = TRUE;
         error += linea->set(val);
-	// Al ser una carga consideramos que los cambios estan inicializados.
+	/// Al ser una carga consideramos que los cambios estan inicializados.
 	linea->resetCambio();
     } // end for
     _depura("END DBRecord::DBload", 0);

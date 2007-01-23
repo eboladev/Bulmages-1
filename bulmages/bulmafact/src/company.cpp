@@ -498,26 +498,26 @@ void company::listBudgets() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
-PresupuestoView *company::newBudget() {
-    _depura("company::newBudget", 0);
+PresupuestoView *company::nuevoPresupuesto() {
+    _depura("company::nuevoPresupuesto", 0);
     /// Lanzamos los plugins necesarios.
     PresupuestoView *bud;
-    if (g_plugins->lanza("company_newBudget", this, (void **)&bud))
+    if (g_plugins->lanza("company_nuevoPresupuesto", this, (void **)&bud))
         return bud;
     bud = new PresupuestoView(this, 0);
-    _depura("END company::newBudget", 0);
+    _depura("END company::nuevoPresupuesto", 0);
     return bud;
 }
 
 /** Crea y muestra la Ficha de presupuesto.
-    Si solo se desea crear la ficha sin mostrarla debe usar el metodo newBudget().
+    Si solo se desea crear la ficha sin mostrarla debe usar el metodo nuevoPresupuesto().
 */
 void company::s_newPresupuestoCli() {
     _depura("company::s_newPresupuestoCli", 0);
     /// Lanzamos los plugins necesarios.
     if (g_plugins->lanza("company_s_newPresupuestoCli", this))
         return;
-    PresupuestoView *bud = newBudget();
+    PresupuestoView *bud = nuevoPresupuesto();
     m_pWorkspace->addWindow(bud);
     bud->inicializar();
     bud->show();
@@ -563,10 +563,10 @@ void company::s_newFacturaCli() {
     De esta forma es posible actualizar el listado de presupuestos sin tener que 
     buscar un puntero a dicha clase.
 */
-void company::refreshBudgets() {
-    _depura("company::refreshBudgets", 0);
+void company::refreshPresupuestos() {
+    _depura("company::refreshPresupuestos", 0);
     m_budgetsList->presenta();
-    _depura("END company::refreshBudgets", 0);
+    _depura("END company::refreshPresupuestos", 0);
 }
 
 
@@ -775,9 +775,9 @@ ArticuloView *company::newArticuloView() {
 void company::s_newArticulo() {
     _depura("company::s_newArticulo", 0);
     ArticuloView *art = newArticuloView();
-    art->setFocus();
     m_pWorkspace->addWindow(art);
     art->show();
+    art->setFocus();
     _depura("END company::s_newArticulo", 0);
 }
 

@@ -63,7 +63,7 @@ FORMS += aboutbase.ui \
          bulmafactbase.ui \
          listalmacenbase.ui \
          listconfiguracionbase.ui \
-         budgetbase.ui  \
+         presupuestoclientebase.ui  \
          busquedareferenciabase.ui
 
 TRANSLATIONS += bulmafact_es.ts \

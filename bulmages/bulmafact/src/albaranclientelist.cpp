@@ -36,7 +36,7 @@
     en el listado de ventanas.
     Usando esta clase tampoco se inicializan bien los widgets que contiene.
 */
-AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
+AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags, edmode editmodo)
         : Ficha(parent) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
@@ -55,7 +55,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flag, edmode 
     Pone la pantalla en modo de edicion por defecto  a no ser que se especifique lo contrario.
     Mete la ventana en el workspace.
 */
-AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
+AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlags, edmode editmodo)
         : Ficha(parent) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);

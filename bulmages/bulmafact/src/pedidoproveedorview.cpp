@@ -53,9 +53,9 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
         m_almacen->setcompany(comp);
         m_trabajador->setcompany(comp);
         m_refpedidoproveedor->setcompany(comp);
-	
-	setListaLineas( subform3);
-	setListaDescuentos( m_descuentos);
+
+        setListaLineas(subform3);
+        setListaDescuentos(m_descuentos);
 
         inicialize();
         dialogChanges_cargaInicial();
@@ -255,9 +255,9 @@ void PedidoProveedorView::generarAlbaran() {
 }
 
 void PedidoProveedorView::on_m_proveedor_valueChanged(QString id) {
-	_depura("PedidoProveedorView::on_m_proveedor_valueChanged", 0);
-	subform3->setIdProveedor(id);
-	m_forma_pago->setIdProveedor(id);
-	_depura("END PedidoProveedorView::on_m_proveedor_valueChanged", 0);
+    _depura("PedidoProveedorView::on_m_proveedor_valueChanged", 0);
+    subform3->setIdProveedor(id);
+    m_forma_pago->setIdProveedor(id);
+    _depura("END PedidoProveedorView::on_m_proveedor_valueChanged", 0);
 }
 

@@ -100,7 +100,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            PresupuestoView *bud = m_companyact->newBudget();
+            PresupuestoView *bud = m_companyact->nuevoPresupuesto();
             m_companyact->m_pWorkspace->addWindow(bud);
             if (bud->cargar(cur->valor("idpresupuesto"))) {
                 delete bud;

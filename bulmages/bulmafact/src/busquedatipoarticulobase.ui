@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BusquedaTipoArticuloBase</class>
  <widget class="QWidget" name="BusquedaTipoArticuloBase" >
   <property name="geometry" >
@@ -9,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>220</width>
-    <height>73</height>
+    <height>74</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -108,7 +105,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="0" margin="0" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>

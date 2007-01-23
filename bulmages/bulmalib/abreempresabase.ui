@@ -1,14 +1,11 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>abreempresabase</class>
  <widget class="QDialog" name="abreempresabase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
+    <width>478</width>
     <height>298</height>
    </rect>
   </property>
@@ -192,10 +189,9 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="5" />
- <pixmapfunction></pixmapfunction>
  <tabstops>
-  <tabstop>mui_actualizar</tabstop>
   <tabstop>mui_empresas</tabstop>
+  <tabstop>mui_actualizar</tabstop>
   <tabstop>botonAceptar</tabstop>
   <tabstop>botonCancelar</tabstop>
  </tabstops>

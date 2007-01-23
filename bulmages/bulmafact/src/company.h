@@ -121,7 +121,7 @@ public:
     ArticuloView *newArticuloView();
     void createMainWindows();
     void refreshArticles();
-    void refreshBudgets();
+    void refreshPresupuestos();
     void refreshPedidosCliente();
     void refreshPedidosProveedor();
     void refreshClientDelivNotes();
@@ -163,7 +163,7 @@ public:
     void viewPagosList();
     void viewCobrosList();
     FacturaProveedorView *newFacturaProveedorView();
-    PresupuestoView *newBudget();
+    PresupuestoView *nuevoPresupuesto();
     FacturaView *newFacturaView();
     CobroView *newCobroView();
     PagoView *newPagoView();

@@ -135,12 +135,12 @@ void AlbaranClienteView::s_verpresupuesto() {
         this->setEnabled(true);
 
         if (list->idpresupuesto() != QString("")) {
-            PresupuestoView *bud = m_companyact->newBudget();
+            PresupuestoView *bud = m_companyact->nuevoPresupuesto();
             bud->cargar(list->idpresupuesto());
             bud->show();
         } // end if
     } else if (!cur->eof()) {
-        PresupuestoView *bud = m_companyact->newBudget();
+        PresupuestoView *bud = m_companyact->nuevoPresupuesto();
         bud->cargar(cur->valor("idpresupuesto"));
         bud->show();
     } // end if

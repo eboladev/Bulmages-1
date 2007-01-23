@@ -152,8 +152,8 @@ void FichaBf::imprimir() {
     } // end if
     base basesimp;
     base basesimpreqeq;
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + m_tablename+".rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + m_tablename+".rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + m_tablename + ".rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + m_tablename + ".rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
 
     Fixed irpf("0");
@@ -348,7 +348,7 @@ void FichaBf::imprimir() {
         QTextStream stream(&file);
         stream << buff;
         file.close();
-    }
+    } // end if
     invocaPDF(m_tablename);
     _depura("FichaBf::imprimir", 0);
 }
@@ -363,3 +363,4 @@ int FichaBf::sacaWindow() {
     _depura("END FichaBf::sacaWindow", 0);
     return 0;
 }
+

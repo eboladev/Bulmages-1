@@ -118,7 +118,7 @@ void PresupuestoList::editar(int row) {
     try {
 	m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
 	if (m_modo == 0) {
-		PresupuestoView *prov = m_companyact->newBudget();
+		PresupuestoView *prov = m_companyact->nuevoPresupuesto();
 		if (prov->cargar(m_idpresupuesto)) {
 		delete prov;
 		return;
@@ -156,7 +156,7 @@ void PresupuestoList::on_mui_borrar_clicked() {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
         if (m_modo == 0) {
-            PresupuestoView *prov = m_companyact->newBudget();
+            PresupuestoView *prov = m_companyact->nuevoPresupuesto();
             if (prov->cargar(m_idpresupuesto))
                 return;
             prov->borrar();
