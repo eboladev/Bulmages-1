@@ -68,7 +68,7 @@ void selectccosteview::cargacostes() {
         item->setText(1, cursoraux1->valor("descripcion"));
         item->setText(0, cursoraux1->valor("nombre"));
         item->setCheckState(0, Qt::Unchecked);
-        item->setExpanded(TRUE);
+// descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
         Lista[idc_coste] = item;
 
         cursoraux1->siguienteregistro ();
@@ -88,7 +88,7 @@ void selectccosteview::cargacostes() {
         item->setText(1, cursoraux2->valor("descripcion"));
         item->setText(0, cursoraux2->valor("nombre"));
         item->setCheckState(0, Qt::Unchecked);
-        item->setExpanded(TRUE);
+// descomentarlo si Qt>=4.2        item->setExpanded(TRUE);
         Lista[idc_coste] = item;
 
         cursoraux2->siguienteregistro();

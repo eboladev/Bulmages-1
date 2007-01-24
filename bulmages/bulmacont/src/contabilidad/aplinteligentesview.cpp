@@ -49,6 +49,7 @@ aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent)
     _depura("aplinteligentesview::aplinteligentesview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+    
     companyact = emp;
     /// iniciamos los contadores de variables para que no haya problemas.
     indvariablescta = 0;
@@ -91,7 +92,7 @@ void aplinteligentesview::inicializa(int idasiento) {
 	QStringList listaOrdenada;
 	while(!list.isEmpty()){
 	    QFileInfo fileInfo = list.takeFirst();
-	    listaOrdenada.append(fileInfo.fileName()); // cogemos los nombres de los ficheros
+	    listaOrdenada.append(fileInfo.fileName().replace(".xml","")); // cogemos los nombres de los ficheros sin la extension
 	    listasientos.append(fileInfo.filePath()); // y la ruta completa
 	}
 	listaOrdenada.sort(); // se ordena la lista alfabeticamente
@@ -159,7 +160,7 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
 }
 
 
-void aplinteligentesview::eturn_numero() {
+void aplinteligentesview::return_numero() {
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
     fprintf(stderr, "Se ha pulsado return sobre el n&uacute;mero: %s\n", numero->text().toAscii().constData());
@@ -167,7 +168,7 @@ void aplinteligentesview::eturn_numero() {
 }
 
 
-void aplinteligentesview::eturn_texto() {
+void aplinteligentesview::return_texto() {
     QLineEdit *texto;
     texto = (QLineEdit *) sender();
     fprintf(stderr, "Se ha pulsado return sobre el texto: %s\n", texto->text().toAscii().constData());
@@ -194,7 +195,7 @@ void aplinteligentesview::muestraplantilla(QString plantilla) {
 
 
 /// La pulsaci&oacute;n sobre el bot&oacute;n de creaci&oacute;n del asiento.
-void aplinteligentesview::on_mui_aceptar_clicked() {
+void aplinteligentesview::on_mui_acept_clicked() {
     /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
     /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
     if (numasiento != 0) {
@@ -743,10 +744,8 @@ void aplinteligentesview::selectsiguiente(QObject *edit) {
     } // end for
     /// En caso de que se haya encontrado el edit, y sea el &uacute;ltimo
     /// Se hace un aceptar.
-    /*
     if (encontrado == 1) {
         on_mui_aceptar_clicked();
     } // end if
-    */
 }
 

@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include <QObject>
 #include <QWidget>
 #include <QLineEdit>
 #include <QToolButton>
@@ -43,9 +44,6 @@
 #include "busquedacuenta.h"
 #include "ui_aplinteligentesbase.h"
 #include "ficha.h"
-
-
-class empresa;
 
 
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
@@ -134,10 +132,10 @@ public:
     }
 
 public slots:
-    virtual void on_mui_aceptar_clicked();
-    virtual void eturn_numero();
-    virtual void eturn_texto();
-    virtual void on_mui_comboainteligentes_activated(int index);
+    void on_mui_acept_clicked();
+    void return_numero();
+    void return_texto();
+    void on_mui_comboainteligentes_activated(int index);
 };
 
 #endif

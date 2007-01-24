@@ -44,9 +44,6 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
     
-    // definiciones signals and slots
-    //QObject::connect(mui_busqueda, SIGNAL(textChanged(QString)),this, SLOT(on_mui_busqueda_textChanged(const QString &)));
-    
     empresaactual = emp;
     m_modo = editmode;
     conexionbase= emp->bdempresa();
@@ -66,7 +63,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
     cimputacion = 9;
     cgrupo = 10;
     ctipocuenta = 11;
-    
+   
     ListView1->setColumnWidth(ccuenta,175);
     ListView1->setColumnWidth(cdesccuenta,400);
     ListView1->hideColumn(cidcuenta);

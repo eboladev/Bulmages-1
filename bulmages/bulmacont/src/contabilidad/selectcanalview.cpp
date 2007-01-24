@@ -69,7 +69,7 @@ void selectcanalview::cargacanales() {
         it->setText(1, cursoraux1->valor("descripcion"));
         it->setText(0, cursoraux1->valor("nombre"));
         it->setCheckState(0, Qt::Unchecked);
-        it->setExpanded(TRUE);
+	it->setExpanded(TRUE);
         cursoraux1->siguienteregistro();
     } // end while
 

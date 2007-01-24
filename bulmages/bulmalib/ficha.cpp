@@ -43,9 +43,6 @@ void Ficha::on_mui_aceptar_clicked() {
     _depura("Ficha::on_mui_aceptar_clicked", 0);
 }
 
-
-
-
 void Ficha::on_mui_borrar_clicked() {
     _depura("Ficha::on_mui_borrar_clicked", 0);
     int val = QMessageBox::warning(this,

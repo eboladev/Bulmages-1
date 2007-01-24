@@ -31,7 +31,6 @@
 
 class empresa;
 
-
 /// Presenta un listado del plan contable.
 /** Esta pantalla tiene dos modos de funcionamiento, en uno act&uacute;a como selector de
     cuentas y en el otro act&uacute;a como soporte para la edici&oacute;n del plan contable. */

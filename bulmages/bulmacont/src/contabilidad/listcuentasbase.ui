@@ -418,6 +418,17 @@
  <tabstops>
   <tabstop>mui_busqueda</tabstop>
   <tabstop>TabWidget2</tabstop>
+  <tabstop>ListView1</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+  <tabstop>mui_editar</tabstop>
+  <tabstop>mui_crear</tabstop>
+  <tabstop>mui_borrar</tabstop>
+  <tabstop>mui_imprimir</tabstop>
+  <tabstop>mui_exportar</tabstop>
+  <tabstop>mui_importar</tabstop>
+  <tabstop>mui_actualizar</tabstop>
+  <tabstop>tablacuentas</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />

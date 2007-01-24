@@ -123,10 +123,10 @@ void mpatrimonialesview::on_mui_borrar_clicked() {
     row = mui_tabla->currentRow();
     idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
     QString query;
-    query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial   = %s", idmasa.toAscii().constData());
+    query.sprintf("DELETE FROM compmasap WHERE idmpatrimonial=%s", idmasa.toAscii().constData());
     conexionbase->begin();
     conexionbase->ejecuta(query);
-    query.sprintf("DELETE FROM mpatrimonial WHERE idmpatrimonial = %s", idmasa.toAscii().constData());
+    query.sprintf("DELETE FROM mpatrimonial WHERE idmpatrimonial=%s", idmasa.toAscii().constData());
     conexionbase->ejecuta(query);
     conexionbase->commit();
     inicializatabla();

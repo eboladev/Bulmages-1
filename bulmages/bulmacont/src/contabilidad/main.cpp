@@ -1,3 +1,4 @@
+
 /***************************************************************************
  *   Copyright (C) 2002 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
@@ -29,7 +30,6 @@
 #include <QTranslator>
 #include <QLibrary>
 #include <QLocale>
-#include <QDir>
 
 #ifndef WIN32
 #include <unistd.h>
@@ -44,9 +44,9 @@
 #include "qapplication2.h"
 
 #ifdef WIN32
-#define CONFGLOBAL "C:\\bulmages\\bulmacont_"
+#define CONFGLOBAL "C:\\bulmages\\bulmages_"
 #else
-#define CONFGLOBAL "/etc/bulmages/bulmacont_"
+#define CONFGLOBAL "/etc/bulmages/bulmages_"
 #endif
 
 
@@ -128,14 +128,8 @@ int main(int argc, char **argv) {
         } // end if
 
         /// Leemos la configuraci&oacute;n específica de la base de datos que se ha abierto.
-        QString confEsp = CONFGLOBAL + bges->empresaactual()->nameDB() + ".conf";
-        QDir archivoConf;
-        if (!archivoConf.exists(confEsp)) {
-            QString mensaje = "--> El archivo '" + confEsp + "' no existe. <--\n";
-            fprintf(stderr, mensaje.toAscii().constData());
-        } else {
-            confpr->leeconfig(confEsp);
-        } // end if
+        QString confesp = CONFGLOBAL + bges->empresaactual()->nameDB() + ".conf";
+        confpr->leeconfig(confesp);
 
         /// Cargamos las librerias de g_plugins.
         g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));

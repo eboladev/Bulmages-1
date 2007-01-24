@@ -395,8 +395,8 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     if (obj->isWidgetType()) {
         _depura("QSubForm2BcDelegate:: de tipo toolTip", 0,   ((QWidget *)obj)->toolTip());
         _depura("QSubForm2BcDelegate:: de tipo windowRole", 0,   ((QWidget *)obj)->windowRole());
-        _depura("QSubForm2BcDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
-        _depura("QSubForm2BcDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
+//        _depura("QSubForm2BcDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
+//        _depura("QSubForm2BcDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
     }// end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
