@@ -145,42 +145,50 @@ void Asiento1::abreAsiento1() {
 
 void Asiento1::cierraAsiento1() {
     _depura("Asiento1::cierraAsiento1", 0);
-    if (estadoAsiento1() != ASAbierto)
+    if (estadoAsiento1() != ASAbierto) {
+	_depura("asiento no abierto", 0);
         return;
+    }
     if (guardar())
         return;
     QString id = DBvalue("idasiento");
     if (id == "") {
-        _depura("No hay asiento");
+        _depura("No hay asiento", 0);
         return;
     }
-    m_companyact->cierraasiento(id.toInt());
-    QString idasiento = DBvalue("idasiento");
+
+    cursor2 * cur = m_companyact->cargacursor("SELECT cierraasiento("+id+")");
+    delete cur;
     vaciaAsiento1();
-    cargar(idasiento);
+    cargar(id);
     _depura("END Asiento1::cierraasiento1", 0);
 }
 
 
 Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
+    _depura("Asiento1::estadoasiento", 0);
     if (DBvalue("idasiento") == "")
         return ASVacio;
+
+    QString SQLQuery1 = "SELECT count(idapunte) AS cuenta1 FROM apunte WHERE idasiento = " + DBvalue("idasiento");
+    cursor2 *cur1 = m_companyact->cargacursor(SQLQuery1);
+    QString numap = cur1->valor("cuenta1");
+    delete cur1;
 
     QString SQLQuery = "SELECT count(idborrador) AS cuenta FROM borrador WHERE idasiento = " + DBvalue("idasiento");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     QString numborr = cur->valor("cuenta");
     delete cur;
 
-    SQLQuery = "SELECT count(idapunte) AS cuenta FROM apunte WHERE idasiento = " + DBvalue("idasiento");
-    cur = m_companyact->cargacursor(SQLQuery);
-    QString numap = cur->valor("cuenta");
-    delete cur;
+    _depura("END Asiento1::estadoasiento", 0, "borradores: "+numborr+" -- apuntes: "+numap);
 
-    if (numborr == "0")
+    if (numborr == "0") {
         return ASVacio;
-    if (numap != "0")
+    } else if (numap != "0") {
         return ASCerrado;
-    return ASAbierto;
+    } else {
+    	return ASAbierto;
+    }
 }
 
 

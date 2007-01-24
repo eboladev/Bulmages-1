@@ -1019,4 +1019,4 @@ void SubForm3::on_mui_list_currentCellChanged(int , int , int row, int col) {
 
 void SubForm3::setinsercion(bool b) {
         m_insercion = b;
-};
+}

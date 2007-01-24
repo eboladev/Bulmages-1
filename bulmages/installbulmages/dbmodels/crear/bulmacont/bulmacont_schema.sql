@@ -1485,6 +1485,11 @@ CREATE FUNCTION abreasiento(integer) RETURNS integer
 DECLARE
     id_asiento ALIAS FOR $1;
 BEGIN
+    -- Para prevenir la apertura de un asiento en teoría bloqueado primero lo modificamos para que salte el trigger.
+    -- Esto debería hacer las comprobaciones por si mismo pero asi es mas comodo.
+    UPDATE asiento SET idasiento = idasiento WHERE idasiento = id_asiento;
+    UPDATE apunte SET idasiento = idasiento WHERE idasiento = id_asiento;
+
     DELETE FROM apunte WHERE idasiento = id_asiento;
     RETURN 1;
 END;
