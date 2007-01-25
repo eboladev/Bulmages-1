@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>DuplicarAsientoBase</class>
  <widget class="QDialog" name="DuplicarAsientoBase" >
   <property name="geometry" >
@@ -248,7 +245,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
         <string>&amp;Aceptar</string>
        </property>
@@ -258,7 +255,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1_2" >
+      <widget class="QPushButton" name="mui_cerrar" >
        <property name="text" >
         <string>&amp;Cerrar</string>
        </property>
@@ -277,8 +274,6 @@
    <class>BusquedaFecha</class>
    <extends>QLineEdit</extends>
    <header>busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>
@@ -286,7 +281,7 @@
  </resources>
  <connections>
   <connection>
-   <sender>pushButton1_2</sender>
+   <sender>mui_cerrar</sender>
    <signal>clicked()</signal>
    <receiver>DuplicarAsientoBase</receiver>
    <slot>close()</slot>

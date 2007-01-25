@@ -1683,7 +1683,7 @@ BEGIN
 	RAISE EXCEPTION '' Periodo bloqueado '';
     END IF;
     IF NEW.ordenasiento ISNULL OR NEW.ordenasiento = 0 THEN
-	SELECT INTO ej max(ordenasiento) + 1 AS max, count(idasiento) as cuenta FROM asiento;
+	SELECT INTO ej max(ordenasiento) + 1 AS max, count(idasiento) as cuenta FROM asiento WHERE EXTRACT (YEAR FROM NEW.fecha)= EXTRACT(YEAR FROM fecha);
 	IF ej.cuenta > 0 THEN
 	    NEW.ordenasiento = ej.max;
 	ELSE

@@ -29,7 +29,7 @@ class empresa;
 
 ///
 /** */
-class duplicarasientoview : public QDialog, public Ui_DuplicarAsientoBase {
+class DuplicarAsientoView : public QDialog, public Ui_DuplicarAsientoBase {
     Q_OBJECT
 
 public:
@@ -37,12 +37,12 @@ public:
     int idasiento;
 
 public:
-    duplicarasientoview(empresa *, QWidget *, Qt::WFlags flag = 0);
-    ~duplicarasientoview();
+    DuplicarAsientoView(empresa *, QWidget *, Qt::WFlags flag = 0);
+    ~DuplicarAsientoView();
     void inicializa(QString, QString);
 
 public slots:
-    virtual void accept();
+    virtual void on_mui_aceptar_clicked();
     virtual void lostFocus();
 };
 

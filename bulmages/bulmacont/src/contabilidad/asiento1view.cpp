@@ -218,7 +218,7 @@ void Asiento1View::on_mui_fecha_editingFinished() {
     para que actualize los cambios. */
 void Asiento1View::on_mui_duplicar_clicked() {
     _depura("Asiento1View::on_mui_duplicar_clicked", 0);
-    duplicarasientoview *dupli = new duplicarasientoview(m_companyact, 0);
+    DuplicarAsientoView *dupli = new DuplicarAsientoView(m_companyact, 0);
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
     dupli->inicializa(m_ordenasiento->text(), m_ordenasiento->text());
     dupli->exec();

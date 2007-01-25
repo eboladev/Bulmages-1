@@ -93,6 +93,43 @@ END;
     LANGUAGE plpgsql;
 
 
+SELECT drop_if_exists_proc('restriccionesasiento', '');
+CREATE OR REPLACE FUNCTION restriccionesasiento() RETURNS "trigger"
+    AS '
+DECLARE
+    ej RECORD;
+BEGIN
+    SELECT INTO  ej  * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = 0;
+    IF FOUND THEN
+    	IF ej.bloqueado = TRUE THEN
+	    RAISE EXCEPTION '' Periodo bloqueado '';
+	END IF;
+    ELSE
+	RAISE EXCEPTION '' Ejercicio Inexistente'';
+    END IF;
+    SELECT INTO  ej * FROM ejercicios WHERE ejercicio = EXTRACT (YEAR FROM NEW.fecha) AND periodo = EXTRACT (MONTH FROM NEW.fecha);
+    IF ej.bloqueado = TRUE THEN
+	RAISE EXCEPTION '' Periodo bloqueado '';
+    END IF;
+    IF NEW.ordenasiento ISNULL OR NEW.ordenasiento = 0 THEN
+	SELECT INTO ej max(ordenasiento) + 1 AS max, count(idasiento) as cuenta FROM asiento WHERE EXTRACT (YEAR FROM NEW.fecha)= EXTRACT(YEAR FROM fecha);
+	IF ej.cuenta > 0 THEN
+	    NEW.ordenasiento = ej.max;
+	ELSE
+	    NEW.ordenasiento = 1;
+	END IF;
+    END IF;
+    RETURN NEW;
+END;
+' LANGUAGE plpgsql;
+
+
+CREATE TRIGGER restriccionesasientotrigger
+   BEFORE INSERT OR UPDATE ON asiento
+   FOR EACH ROW
+   EXECUTE PROCEDURE restriccionesasiento();
+
+
 
 -- ================================== ACTUALIZACION  ===================================
 -- =====================================================================================
@@ -105,9 +142,9 @@ DECLARE
 BEGIN
 	SELECT INTO as * FROM configuracion WHERE nombre = ''DatabaseRevision'';
 	IF FOUND THEN
-		UPDATE CONFIGURACION SET valor = ''0.9.1-0001'' WHERE nombre = ''DatabaseRevision'';
+		UPDATE CONFIGURACION SET valor = ''0.9.1-0002'' WHERE nombre = ''DatabaseRevision'';
 	ELSE
-		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0001'');
+		INSERT INTO configuracion (nombre, valor) VALUES (''DatabaseRevision'', ''0.9.1-0002'');
 	END IF;
 	RETURN 0;
 END;
