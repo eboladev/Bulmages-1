@@ -109,7 +109,7 @@ void asientosview::inicializa() {
     } // end if
 
     query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr, comentariosasiento, clase   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textcantapunt + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
-    cursor2 *cursoraux= m_companyact->cargacursor(query);
+    cursor2 *cursoraux = m_companyact->cargacursor(query);
     mui_list->cargar(cursoraux);
     delete cursoraux;
     _depura("END asientosview::inicializa", 0);

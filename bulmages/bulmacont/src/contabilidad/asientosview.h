@@ -50,8 +50,12 @@ public slots:
     virtual void on_mui_actualizar_clicked() {
         inicializa();
     };
-    virtual void on_mui_configurar_clicked() {
-        mui_list->showConfig();
+    virtual void on_mui_configurar_toggled(bool checked) {
+        if (checked) {
+            mui_list->showConfig();
+        } else {
+            mui_list->hideConfig();
+        } // end if
     };
     virtual void on_mui_imprimir_clicked();
 };

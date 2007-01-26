@@ -319,7 +319,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="botoninteligente_2" >
+         <widget class="QToolButton" name="mui_exportar" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -349,7 +349,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="ToolButton17" >
+         <widget class="QToolButton" name="mui_importar" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>

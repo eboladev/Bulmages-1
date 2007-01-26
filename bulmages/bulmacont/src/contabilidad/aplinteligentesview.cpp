@@ -195,7 +195,7 @@ void aplinteligentesview::muestraplantilla(QString plantilla) {
 
 
 /// La pulsaci&oacute;n sobre el bot&oacute;n de creaci&oacute;n del asiento.
-void aplinteligentesview::on_mui_acept_clicked() {
+void aplinteligentesview::on_mui_aceptar_clicked() {
     /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
     /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
     if (numasiento != 0) {
@@ -209,7 +209,7 @@ void aplinteligentesview::on_mui_acept_clicked() {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
         companyact->intapuntsempresa()->vaciaAsiento1();
-	companyact->intapuntsempresa()->iniciar_asiento_nuevo();
+	 companyact->intapuntsempresa()->iniciar_asiento_nuevo();
         numasiento = companyact->intapuntsempresa()->idasiento().toInt();
         recogevalores();
         creaasiento();
@@ -330,11 +330,11 @@ void aplinteligentesview::mostrarplantilla() {
 	
 	fprintf(stderr, "Hemos recolectado las nuevas variables\n");
 	for (int i = 0;i < indvariablescta; i++) {
-	    labelcta[i] = new QLabel("", groupBox1);
+	    labelcta[i] = new QLabel("", mui_datosAsiento);
 	    labelcta[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
 	    labelcta[i]->setText(variablescta[i][2]);
 	    labelcta[i]->show();
-	    varcta[i] = new BusquedaCuenta(groupBox1);
+	    varcta[i] = new BusquedaCuenta(mui_datosAsiento);
 	    varcta[i]->setGeometry(QRect(150, inc + 32 * (j++), 300, 25));
 	    varcta[i]->setempresa(companyact);
 	    connect(varcta[i], SIGNAL(returnPressed()), this, SLOT(return_cta()));
@@ -343,12 +343,12 @@ void aplinteligentesview::mostrarplantilla() {
 	} // end for
 	
 	for (int i = 0;i < indvariablesfecha; i++) {
-	    labelfecha[i] = new QLabel("", groupBox1);
+	    labelfecha[i] = new QLabel("", mui_datosAsiento);
 	    labelfecha[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
 	    labelfecha[i]->setText(variablesfecha[i][2]);
 	    labelfecha[i]->show();
 	    
-	    varfecha[i] = new BusquedaFecha(groupBox1);
+	    varfecha[i] = new BusquedaFecha(mui_datosAsiento);
 	    varfecha[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
 	    
 	    connect(varfecha[i], SIGNAL(returnPressed()), this, SLOT(return_fecha()));
@@ -357,22 +357,22 @@ void aplinteligentesview::mostrarplantilla() {
 	} // end for
 	
 	for (int i = 0;i < indvariablesnumero; i++) {
-	    labelnumero[i] = new QLabel("", groupBox1);
+	    labelnumero[i] = new QLabel("", mui_datosAsiento);
 	    labelnumero[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
 	    labelnumero[i]->setText(variablesnumero[i][2]);
 	    labelnumero[i]->show();
-	    varnumero[i] = new QLineEdit("", groupBox1);
+	    varnumero[i] = new QLineEdit("", mui_datosAsiento);
 	    varnumero[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
 	    connect(varnumero[i], SIGNAL(returnPressed()), this, SLOT(return_numero()));
 	    varnumero[i]->show();
 	} // end for
 	
 	for (int i = 0;i < indvariablestexto; i++) {
-	    labeltexto[i] = new QLabel("", groupBox1);
+	    labeltexto[i] = new QLabel("", mui_datosAsiento);
 	    labeltexto[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
 	    labeltexto[i]->setText(variablestexto[i][2]);
 	    labeltexto[i]->show();
-	    vartexto[i] = new QLineEdit("", groupBox1);
+	    vartexto[i] = new QLineEdit("", mui_datosAsiento);
 	    vartexto[i]->setGeometry(QRect(150, inc + 32 * (j++), 350, 25));
 	    connect(vartexto[i], SIGNAL(returnPressed()), this, SLOT(return_texto()));
 	    vartexto[i]->show();

@@ -193,7 +193,7 @@ void propiedadesempresa::update_value(QString n, QString v) {
     QString query = "SELECT * FROM configuracion WHERE nombre = '" + n + "'";
     cursor2 *cur = m_companyact->cargacursor(query, "configuracion");
     if (cur->numregistros() == 0) {
-        query.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES ((select max(idconfiguracion) + 1 FROM configuracion), '%s', '%s')", n.toAscii().constData(), v.toAscii().constData());
+        query.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES ((select coalesce(max(idconfiguracion), 0) + 1 AS idconfiguracion FROM configuracion), '%s', '%s')", n.toAscii().constData(), v.toAscii().constData());
     } else {
         query = "UPDATE configuracion SET valor = '" + v + "' WHERE nombre = '" + n + "'";
     } // end if
@@ -247,9 +247,7 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
     m_companyact->commit();
     if (QMessageBox::warning(this,
                              tr("Salir del programa"),
-                             tr("Para que los cambios tengan efecto, \
-                                debe salir del programa y volver a entrar. \n \
-                                Salir ahora?"),
+                             tr("Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\nSalir ahora?"),
                              tr("&Salir"), tr("&No salir"), 0, 0, 1) == 0) {
         exit(1)
         ;

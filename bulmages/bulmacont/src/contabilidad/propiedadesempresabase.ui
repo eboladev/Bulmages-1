@@ -20,10 +20,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -141,6 +141,9 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
         </widget>
        </item>
        <item row="4" column="7" colspan="2" >
@@ -154,12 +157,18 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
         </widget>
        </item>
        <item row="4" column="3" colspan="3" >
         <widget class="QLineEdit" name="mui_poblacion" >
          <property name="text" >
           <string/>
+         </property>
+         <property name="maxLength" >
+          <number>50</number>
          </property>
         </widget>
        </item>
@@ -169,7 +178,7 @@
           <string/>
          </property>
          <property name="maxLength" >
-          <number>5</number>
+          <number>10</number>
          </property>
         </widget>
        </item>
@@ -184,6 +193,9 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
         </widget>
        </item>
        <item row="3" column="5" >
@@ -196,6 +208,9 @@
          </property>
          <property name="text" >
           <string/>
+         </property>
+         <property name="maxLength" >
+          <number>50</number>
          </property>
         </widget>
        </item>
@@ -216,6 +231,9 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
         </widget>
        </item>
        <item row="3" column="1" >
@@ -229,6 +247,9 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
         </widget>
        </item>
        <item row="2" column="1" colspan="8" >
@@ -236,12 +257,18 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>200</number>
+         </property>
         </widget>
        </item>
        <item row="1" column="1" colspan="5" >
         <widget class="QLineEdit" name="mui_tipovia" >
          <property name="text" >
           <string/>
+         </property>
+         <property name="maxLength" >
+          <number>200</number>
          </property>
         </widget>
        </item>
@@ -253,8 +280,8 @@
            <height>0</height>
           </size>
          </property>
-         <property name="text" >
-          <string/>
+         <property name="maxLength" >
+          <number>200</number>
          </property>
         </widget>
        </item>
@@ -269,10 +296,17 @@
          <property name="text" >
           <string/>
          </property>
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
         </widget>
        </item>
        <item row="1" column="7" colspan="2" >
-        <widget class="QLineEdit" name="mui_telefono" />
+        <widget class="QLineEdit" name="mui_telefono" >
+         <property name="maxLength" >
+          <number>50</number>
+         </property>
+        </widget>
        </item>
        <item row="1" column="6" >
         <widget class="QLabel" name="label" >
@@ -505,7 +539,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="modcodigo" />
+          <widget class="QLineEdit" name="modcodigo" >
+           <property name="maxLength" >
+            <number>50</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="TextLabel2" >
@@ -613,6 +651,7 @@ yyyy --> Dígitos de cuenta.</string>
   <tabstop>mui_nombreempresa</tabstop>
   <tabstop>mui_cif</tabstop>
   <tabstop>mui_tipovia</tabstop>
+  <tabstop>mui_telefono</tabstop>
   <tabstop>mui_nombrevia</tabstop>
   <tabstop>mui_numerovia</tabstop>
   <tabstop>mui_escalera</tabstop>
@@ -622,9 +661,11 @@ yyyy --> Dígitos de cuenta.</string>
   <tabstop>mui_poblacion</tabstop>
   <tabstop>mui_provincia</tabstop>
   <tabstop>mui_pais</tabstop>
+  <tabstop>mui_guardar</tabstop>
   <tabstop>TabWidget2</tabstop>
   <tabstop>modcodigo</tabstop>
   <tabstop>mui_modificarplan</tabstop>
+  <tabstop>tpropiedades</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />

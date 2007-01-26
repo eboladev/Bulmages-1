@@ -17,15 +17,15 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>4</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>4</number>
+    <number>5</number>
    </property>
    <item row="1" column="1" >
-    <widget class="QPushButton" name="pushButton1" >
+    <widget class="QPushButton" name="mui_aceptar" >
      <property name="text" >
-      <string>Cerrar</string>
+      <string>&amp;Aceptar</string>
      </property>
     </widget>
    </item>

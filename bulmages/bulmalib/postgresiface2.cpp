@@ -70,7 +70,7 @@ cursor2::cursor2(QString nombre, PGconn *conn1, QString SQLQuery) {
         _depura("cursor2::cursor2: Error en la consulta: " + SQLQuery, 3);
         throw -1;
     } // end try
-    _depura("END cursor2::cursor2", 0, " Numero de registros: "+QString::number(nregistros)+", Numero de campos: "+QString::number(ncampos));
+    _depura("END cursor2::cursor2", 0, " Numero de registros: " + QString::number(nregistros) + ", Numero de campos: " + QString::number(ncampos));
 }
 
 
@@ -148,7 +148,7 @@ QString cursor2::valor(int posicion, int registro) {
 /// Si vale -1 entonces se usa el recorrido  en forma de lista de campos para hacerlo.
 /// \return El valor de la posici&oacute;n.
 QString cursor2::valor(QString campo, int registro) {
-    _depura("cursor2::valor",0,  campo + " " + QString::number(registro));
+    _depura("cursor2::valor", 0, campo + " " + QString::number(registro));
     int i = 0;
     if (registro == -1) {
         registro = registroactual;
@@ -156,7 +156,7 @@ QString cursor2::valor(QString campo, int registro) {
     i = numcampo(campo);
     if (i == -1)
         return "";
-    _depura("END cursor2::valor ", 0,"campo:"+campo+" ----- Valor:"+PQgetvalue(result, registro, i));
+    _depura("END cursor2::valor ", 0, "campo:" + campo + " ----- Valor:" + PQgetvalue(result, registro, i));
     return (QString::fromUtf8(PQgetvalue(result, registro, i)));
 }
 
@@ -410,6 +410,7 @@ cursor2 *postgresiface2::cargacursor(QString Query, QString nomcursor) {
 
 #include <qtextcodec.h>
 
+
 int postgresiface2::ejecuta(QString Query) {
     _depura("postgresiface2::ejecuta", 0, Query);
     PGresult *result = NULL;
@@ -424,12 +425,23 @@ int postgresiface2::ejecuta(QString Query) {
         PQclear(result);
         _depura("postgresiface2::ejecuta", 0);
         return 0;
+    } catch (int e) {
+        if (e == 42501) {
+            _depura("SQL command failed: " + Query);
+            fprintf(stderr,"%s\n", PQerrorMessage(conn));
+            QString mensaje = "No tiene permisos suficientes para ejecutar el comando SQL:\n";
+            msgError(mensaje + (QString)PQerrorMessage(conn), Query + "\n" + (QString)PQerrorMessage(conn));
+            PQclear(result);
+            throw -1;
+        } else {
+            _depura("SQL command failed: " + Query);
+            fprintf(stderr,"%s\n", PQerrorMessage(conn));
+            QString mensaje = "Error al intentar modificar la base de datos:\n";
+            msgError(mensaje + (QString)PQerrorMessage(conn), Query + "\n" + (QString)PQerrorMessage(conn));
+            PQclear(result);
+            throw -1;
+        } // end if
     } catch (...) {
-        _depura("SQL command failed: " + Query);
-        fprintf(stderr,"%s\n", PQerrorMessage(conn));
-        QString mensaje = "Error al intentar modificar la base de datos:\n";
-        msgError(mensaje + (QString)PQerrorMessage(conn), Query + "\n" + (QString)PQerrorMessage(conn));
-        PQclear(result);
         throw -1;
     } // end try
     _depura("END postgresiface2::ejecuta", 0, Query);

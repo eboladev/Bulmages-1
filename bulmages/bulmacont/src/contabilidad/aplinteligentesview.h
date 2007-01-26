@@ -49,13 +49,13 @@
 /// Formulario para la introducci&oacute;n de asientos mediante las plantillas.
 /** Clase que sirve para introducir asientos en el sistema mediante el uso de plantillas
     predefinidas, o asientos plantilla (\ref ainteligentesview).
-
+ 
     A partir de la plantilla se genera el formulario de forma din&aacute;mica. Y una vez
     introducidos los datos se hacen c&aacute;lculos en un bucle resolvedor de
     inc&oaacute;gnitas recursivas. Si no hay bucles infinitos al final se obtienen todos
     los campos necesarios para hacer la introducci&oacute;n de asientos y esta se
     efect&uacute;a.
-
+ 
     La clase tiene dos modos de actuar dependiendo de si estamos trabajando con un asiento
     abierto o con uno cerrado. En el primer caso el comportamiento es de todo lo introducido
     al asiento abierto.
@@ -132,10 +132,13 @@ public:
     }
 
 public slots:
-    void on_mui_acept_clicked();
+    void on_mui_aceptar_clicked();
     void return_numero();
     void return_texto();
     void on_mui_comboainteligentes_activated(int index);
+    virtual void on_mui_guardar_clicked() {
+        guardar();
+    }
 };
 
 #endif

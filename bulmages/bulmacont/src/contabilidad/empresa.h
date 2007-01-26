@@ -38,6 +38,7 @@
 
 #include "empresabase.h"
 
+
 class selectccosteview;
 class selectcanalview;
 class BalanceTreeView;
@@ -114,8 +115,6 @@ public:
     QString nombreempresa() {
         return nombre;
     }
-
-
     int muestracuentas();
     int nuevacuenta();
     int muestraapuntes();

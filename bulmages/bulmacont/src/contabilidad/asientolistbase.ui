@@ -5,12 +5,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
-    <height>463</height>
+    <width>596</width>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Listado de Asientos</string>
+   <string>Listado de asientos</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_asiento.xpm</iconset>
@@ -32,8 +32,17 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
-       <property name="text" >
-        <string/>
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
        </property>
        <property name="pixmap" >
         <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_asiento.xpm</pixmap>
@@ -66,6 +75,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Imprimir</string>
           </property>
@@ -88,6 +103,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Filtrar</string>
           </property>
@@ -122,6 +149,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Configurar</string>
           </property>
@@ -141,7 +174,7 @@
            </size>
           </property>
           <property name="checkable" >
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="checked" >
            <bool>false</bool>
@@ -151,6 +184,12 @@
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
           <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
            <size>
             <width>32</width>
             <height>32</height>
@@ -193,7 +232,7 @@
           <property name="sizeHint" >
            <size>
             <width>351</width>
-            <height>39</height>
+            <height>32</height>
            </size>
           </property>
          </spacer>
@@ -211,108 +250,119 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>9</number>
       </property>
       <property name="spacing" >
        <number>6</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="sizeHint" >
+         <size>
+          <width>271</width>
+          <height>20</height>
+         </size>
         </property>
-        <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
-           <string>Ejercicio</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="mui_ejercicio" />
-        </item>
-       </layout>
+       </spacer>
       </item>
-      <item>
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Ejercicio:</string>
         </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="TextLabel2" >
-          <property name="text" >
-           <string>Asientos cuyo nombre se parezca a</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="mui_nombreasiento" />
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="1" >
+       <widget class="QComboBox" name="mui_ejercicio" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+       </widget>
+      </item>
+      <item row="4" column="2" >
+       <widget class="QLineEdit" name="mui_cantidadapunte" />
+      </item>
+      <item row="3" column="2" >
+       <widget class="QLabel" name="TextLabel2_2_2" >
+        <property name="text" >
+         <string>Asientos con  apuntes con cantidad igual a:</string>
         </property>
-        <item>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="TextLabel2_2" >
-            <property name="text" >
-             <string>Asientos con saldo</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_saldoasiento" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="TextLabel2_2_2" >
-            <property name="text" >
-             <string>Asientos con  apuntes con cantidad igual a</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_cantidadapunte" />
-          </item>
-         </layout>
-        </item>
-       </layout>
+       </widget>
+      </item>
+      <item row="4" column="0" colspan="2" >
+       <widget class="QLineEdit" name="mui_saldoasiento" />
+      </item>
+      <item row="3" column="0" colspan="2" >
+       <widget class="QLabel" name="TextLabel2_2" >
+        <property name="text" >
+         <string>Asientos con saldo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" colspan="3" >
+       <widget class="QLabel" name="TextLabel2" >
+        <property name="text" >
+         <string>Asientos cuyo nombre se parezca a:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3" >
+       <widget class="QLineEdit" name="mui_nombreasiento" />
       </item>
      </layout>
     </widget>
    </item>
    <item>
-    <widget class="AsientoListSubform" name="mui_list" />
+    <widget class="AsientoListSubform" name="mui_list" >
+     <property name="sortingEnabled" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>5</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

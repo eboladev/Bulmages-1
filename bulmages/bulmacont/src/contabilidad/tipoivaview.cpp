@@ -45,7 +45,7 @@ tipoivaview::tipoivaview(empresa *emp, QWidget *parent)
 /// y libera la memoria que se haya ocupado.
 tipoivaview::~tipoivaview() {
     _depura("tipoivaview::~tipoivaview", 0);
-    s_saveTipoIVA();
+    on_mui_guardar2_clicked();
     if (m_curtipoiva != NULL)
         delete m_curtipoiva;
     empresaactual->sacaWindow(this);
@@ -62,16 +62,15 @@ void tipoivaview::pintar(QString idtipoiva) {
         delete m_curtipoiva;
     QString query = "SELECT * from tipoiva left join cuenta ON tipoiva.idcuenta = cuenta.idcuenta ORDER BY nombretipoiva";
     m_curtipoiva = empresaactual->cargacursor(query);
-    m_comboTipoIVA->clear();
+    mui_comboTipoIVA->clear();
     int i = 0;
     while (!m_curtipoiva->eof()) {
-        m_comboTipoIVA->insertItem(i, m_curtipoiva->valor("nombretipoiva"));
+        mui_comboTipoIVA->insertItem(i, m_curtipoiva->valor("nombretipoiva"));
         if (idtipoiva == m_curtipoiva->valor("idtipoiva") )
             posicion = i;
         m_curtipoiva->siguienteregistro();
         i++;
     } // end while
-    mostrarplantilla(posicion);
 }
 
 
@@ -84,14 +83,14 @@ void tipoivaview::mostrarplantilla(int pos) {
         if (QMessageBox::warning(this,
                                  tr("Guardar tipo de IVA"),
                                  tr("Desea guardar los cambios?"),
-                                 QMessageBox::Ok ,
-                                 QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveTipoIVA();
+                                 QMessageBox::Ok,
+                                 QMessageBox::Cancel) == QMessageBox::Ok)
+            on_mui_guardar2_clicked();
     } // end if
-    if (m_comboTipoIVA->count() > 0) {
+    if (mui_comboTipoIVA->count() > 0) {
         if (pos != 0)
-            m_comboTipoIVA->setCurrentIndex(pos);
-        m_posactual = m_comboTipoIVA->currentIndex();
+            mui_comboTipoIVA->setCurrentIndex(pos);
+        m_posactual = mui_comboTipoIVA->currentIndex();
         m_nombreTipoIVA->setText(m_curtipoiva->valor("nombretipoiva", m_posactual));
         m_codigoCtaTipoIVA->setText(m_curtipoiva->valor("codigo", m_posactual));
         m_porcentTipoIVA->setText(m_curtipoiva->valor("porcentajetipoiva", m_posactual));
@@ -102,7 +101,7 @@ void tipoivaview::mostrarplantilla(int pos) {
 
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste .
-void tipoivaview::cambiacombo(int) {
+void tipoivaview::on_mui_comboTipoIVA_currentIndexChanged(int) {
     mostrarplantilla();
 }
 
@@ -110,7 +109,7 @@ void tipoivaview::cambiacombo(int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de guardar el tipo de IVA
 /// que se est&aacute; editando.
 /** Lo que hace es que se hace una actualizaci&oacute;n de todos los campos. */
-void tipoivaview::s_saveTipoIVA() {
+void tipoivaview::on_mui_guardar2_clicked() {
     QString idtipoiva = m_curtipoiva->valor("idtipoiva", m_posactual);
     QString query = "UPDATE tipoiva SET nombretipoiva = '" + m_nombreTipoIVA->text() + "', porcentajetipoiva = " + m_porcentTipoIVA->text() + " , idcuenta = id_cuenta('" + m_codigoCtaTipoIVA->text() + "') WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_posactual);
     empresaactual->ejecuta(query);
@@ -122,7 +121,8 @@ void tipoivaview::s_saveTipoIVA() {
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de nuevo tipo de IVA.
 /** Inserta en la tabla de IVAs. */
-void tipoivaview::s_newTipoIVA() {
+void tipoivaview::on_mui_nuevo2_clicked() {
+    _depura("on_mui_nuevo2_clicked()", 10);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -130,7 +130,7 @@ void tipoivaview::s_newTipoIVA() {
                                  tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveTipoIVA();
+            on_mui_guardar2_clicked();
     } // end if
     QString query = "INSERT INTO tipoiva (nombretipoiva, porcentajetipoiva, idcuenta) VALUES ('NUEVO TIPO IVA', 0, id_cuenta('47'))";
     empresaactual->begin();
@@ -139,27 +139,27 @@ void tipoivaview::s_newTipoIVA() {
     empresaactual->commit();
     pintar(cur->valor("idtipoiva"));
     delete cur;
+    _depura("END on_mui_nuevo2_clicked()", 10);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
 /** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
-void tipoivaview::s_deleteTipoIVA() {
+void tipoivaview::on_mui_borrar2_clicked() {
+    _depura("on_mui_borrar2_clicked", 10);
     switch (QMessageBox::warning(this,
                                  tr("Borrar tipo de IVA"),
-                                 tr("Se va a borrar el tipo de IVA. \
-                                    Esto puede ocasionar perdida de datos. \
-                                    Tal vez deberia pensarselo mejor antes \
-                                    porque igual su trabajo se va perder."),
-                                 QMessageBox::Ok ,
+                                 tr("Se va a borrar el tipo de IVA. \nEsto puede ocasionar perdida de datos."),
+                                 QMessageBox::Ok,
                                  QMessageBox::Cancel)) {
     case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-        empresaactual->ejecuta("DELETE FROM tipoiva WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_comboTipoIVA->currentIndex()));
+        empresaactual->ejecuta("DELETE FROM tipoiva WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", mui_comboTipoIVA->currentIndex()));
         pintar();
         break;
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
         break;
     } // end switch
+    _depura("END on_mui_borrar2_clicked", 10);
 }
 
 
@@ -173,8 +173,8 @@ bool tipoivaview::close() {
                                  tr("Guardar tipo de IVA"),
                                  tr("Desea guardar los cambios?"),
                                  QMessageBox::Ok,
-                                 QMessageBox::Cancel ) == QMessageBox::Ok)
-            s_saveTipoIVA();
+                                 QMessageBox::Cancel) == QMessageBox::Ok)
+            on_mui_guardar2_clicked();
     } // end if
     return QWidget::close();
 }

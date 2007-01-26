@@ -50,10 +50,10 @@ private:
     void mostrarplantilla(int pos = 0);
 
 private slots:
-    virtual void cambiacombo(int);
-    virtual void s_saveTipoIVA();
-    virtual void s_newTipoIVA();
-    virtual void s_deleteTipoIVA();
+    virtual void on_mui_comboTipoIVA_currentIndexChanged(int);
+    virtual void on_mui_guardar2_clicked();
+    virtual void on_mui_nuevo2_clicked();
+    virtual void on_mui_borrar2_clicked();
     virtual bool close();
 };
 

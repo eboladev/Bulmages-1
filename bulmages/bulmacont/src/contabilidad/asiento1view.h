@@ -79,7 +79,7 @@ public:
             return id;
         } else {
             return "";
-        }
+        } // end if
     };
     QString idasientosiguiente() {
         if (!cursorasientos->esultimoregistro()) {
@@ -89,10 +89,11 @@ public:
             return id;
         } else {
             return "";
-        }
+        } // end if
     };
-    virtual int cargar(QString id) {
-	_depura("ListAsientos::cargar debe ser sobrecargada", 2);
+    virtual int cargar(QString) {
+        _depura("ListAsientos::cargar debe ser sobrecargada", 2);
+        return 0;
     };
 };
 
@@ -123,7 +124,7 @@ public:
     void muestraasiento(QString v) {
         _depura("Asiento1View::muestraasiento ", 0);
         situarasiento(v);
-	cargar(v);
+        cargar(v);
         _depura("END Asiento1View::muestraasiento ", 0);
     };
     void muestraasiento(int v) {
@@ -141,8 +142,9 @@ public:
     Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
     virtual int cargar(QString idasiento) {
-	Asiento1::cargar(idasiento);
+        Asiento1::cargar(idasiento);
     };
+
 public slots:
     virtual void on_mui_abrirasiento_clicked() {
         abreAsiento1();

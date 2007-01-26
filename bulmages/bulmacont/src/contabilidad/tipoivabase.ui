@@ -1,15 +1,12 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>TipoIvaBase</class>
  <widget class="QWidget" name="TipoIvaBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>445</width>
-    <height>252</height>
+    <width>421</width>
+    <height>256</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -20,10 +17,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -31,7 +28,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -53,13 +50,13 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear_2" >
+         <widget class="QToolButton" name="mui_nuevo2" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -87,7 +84,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar_2" >
+         <widget class="QToolButton" name="mui_borrar2" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -115,7 +112,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_guardar_2" >
+         <widget class="QToolButton" name="mui_guardar2" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -174,12 +171,12 @@
      <item>
       <widget class="QLabel" name="textLabel2" >
        <property name="text" >
-        <string>Tipo de IVA</string>
+        <string>Tipo de IVA:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="m_comboTipoIVA" >
+      <widget class="QComboBox" name="mui_comboTipoIVA" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>7</hsizetype>
@@ -195,92 +192,32 @@
    <item>
     <widget class="QGroupBox" name="groupBox" >
      <property name="title" >
-      <string>Información del canal:</string>
+      <string>Información del tipo de IVA:</string>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>5</number>
       </property>
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="2" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="spacing" >
-         <number>6</number>
+        <property name="sizeHint" >
+         <size>
+          <width>201</width>
+          <height>20</height>
+         </size>
         </property>
-        <item>
-         <widget class="QLabel" name="textLabel1" >
-          <property name="text" >
-           <string>Nombre</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_nombreTipoIVA" />
-        </item>
-       </layout>
+       </spacer>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_3" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Cuenta</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaCuenta" name="m_codigoCtaTipoIVA" />
-        </item>
-       </layout>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="m_porcentTipoIVA" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="textLabel1_2_2" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Porcentaje</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_porcentTipoIVA" />
-        </item>
-       </layout>
-      </item>
-      <item>
+      <item row="3" column="0" colspan="3" >
        <spacer>
         <property name="orientation" >
          <enum>Qt::Vertical</enum>
@@ -296,22 +233,118 @@
         </property>
        </spacer>
       </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Nombre:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="textLabel1_2_2" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Porcentaje:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="textLabel1_2_3" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text" >
+         <string>Cuenta:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2" >
+       <widget class="QLineEdit" name="m_nombreTipoIVA" />
+      </item>
+      <item row="1" column="1" colspan="2" >
+       <widget class="BusquedaCuenta" native="1" name="m_codigoCtaTipoIVA" />
+      </item>
      </layout>
     </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_aceptar" >
+       <property name="text" >
+        <string>&amp;Aceptar</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="mui_cancelar" >
+       <property name="text" >
+        <string>&amp;Cancelar</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaCuenta</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>mui_nuevo2</tabstop>
+  <tabstop>mui_borrar2</tabstop>
+  <tabstop>mui_guardar2</tabstop>
+  <tabstop>mui_comboTipoIVA</tabstop>
+  <tabstop>m_nombreTipoIVA</tabstop>
+  <tabstop>m_porcentTipoIVA</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+ </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>
