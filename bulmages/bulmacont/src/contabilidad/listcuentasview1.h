@@ -36,7 +36,7 @@ class empresa;
     cuentas y en el otro act&uacute;a como soporte para la edici&oacute;n del plan contable. */
 class listcuentasview1 : public Ficha, public Ui_ListCuentasBase, public pgimportfiles {
     Q_OBJECT
-  
+
 public:
     enum edmode
     {

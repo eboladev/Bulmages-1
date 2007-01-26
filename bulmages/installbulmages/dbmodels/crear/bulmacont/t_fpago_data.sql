@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -24,4 +25,4 @@ INSERT INTO fpago (idfpago, nomfpago, nplazosfpago, plazoprimerpagofpago, tipopl
 
 SELECT pg_catalog.setval('fpago_idfpago_seq', 3, true);
 
-
+COMMIT;

@@ -369,7 +369,7 @@ int empresa::boton_imprimir() {
     } else if (widget == balance1) {
         balance1->boton_imprimir();
     } else if (widget == balance) {
-        balance->boton_imprimir();
+        balance->on_mui_imprimir_clicked();
     } else if (widget == extracto) {
         extracto->boton_imprimir();
     } // end if

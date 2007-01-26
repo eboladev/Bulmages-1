@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -22,4 +23,4 @@ INSERT INTO asiento (idasiento, descripcion, fecha, comentariosasiento, ordenasi
 
 SELECT pg_catalog.setval('asiento_idasiento_seq', 100, false);
 
-
+COMMIT;

@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (1, 'CodCuenta', 'xxxxyyy');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (2, 'Amortizacion', 'Amortizacion');
@@ -29,3 +30,4 @@ INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (24, 'CuentasD
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (25, 'CuentasObligaciones', '40;41');
 INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (26, 'Pago', 'Pago');
 
+COMMIT;

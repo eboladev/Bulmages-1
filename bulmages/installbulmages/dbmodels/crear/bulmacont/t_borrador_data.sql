@@ -1,6 +1,8 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
+
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -25,4 +27,4 @@ SELECT cierraasiento(1);
 
 SELECT pg_catalog.setval('borrador_idborrador_seq', 3, true);
 
-
+COMMIT;

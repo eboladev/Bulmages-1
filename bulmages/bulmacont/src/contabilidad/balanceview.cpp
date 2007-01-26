@@ -326,7 +326,7 @@ void balanceview::nivelactivated(int) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del
     balance y lo ejecuta en modo Modal. */
-void balanceview::boton_imprimir() {
+void balanceview::on_mui_imprimir_clicked() {
     BalancePrintView *balan = new BalancePrintView(companyact);
     balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE);
     balan->exec();

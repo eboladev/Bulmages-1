@@ -2,6 +2,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -29,4 +30,4 @@ SET search_path = public, pg_catalog;
 
 SELECT pg_catalog.setval('cuenta_idcuenta_seq', 10000, false);
 
-
+COMMIT;

@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>BulmaContBase</class>
  <widget class="QMainWindow" name="BulmaContBase" >
   <property name="geometry" >
@@ -25,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>31</height>
+     <height>29</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAyuda" >
@@ -70,18 +67,6 @@
     <addaction name="actionCanales" />
     <addaction name="separator" />
    </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>&amp;Ventana</string>
-    </property>
-    <addaction name="actionPlan_Contable" />
-    <addaction name="actionAsientos" />
-    <addaction name="actionApuntes_Contables" />
-    <addaction name="actionLibro_Mayor" />
-    <addaction name="actionLibro_Diario" />
-    <addaction name="actionBalance_de_Sumas_y_Saldos" />
-    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
-   </widget>
    <widget class="QMenu" name="menuListados" >
     <property name="title" >
      <string>&amp;Listados</string>
@@ -113,6 +98,18 @@
     <addaction name="actionConfiguracion" />
     <addaction name="actionSalir" />
    </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>&amp;Ventana</string>
+    </property>
+    <addaction name="actionPlan_Contable" />
+    <addaction name="actionAsientos" />
+    <addaction name="actionApuntes_Contables" />
+    <addaction name="actionLibro_Mayor" />
+    <addaction name="actionLibro_Diario" />
+    <addaction name="actionBalance_de_Cuentas" />
+    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+   </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
    <addaction name="menuListados" />
@@ -122,16 +119,7 @@
    <addaction name="menuVer" />
    <addaction name="menuAyuda" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>576</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar" />
   <widget class="QToolBar" name="toolBar" >
    <property name="orientation" >
     <enum>Qt::Horizontal</enum>
@@ -145,7 +133,7 @@
    <addaction name="actionAsientos" />
    <addaction name="actionLibro_Mayor" />
    <addaction name="actionLibro_Diario" />
-   <addaction name="actionBalance_de_Sumas_y_Saldos" />
+   <addaction name="actionBalance_de_Cuentas" />
    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
    <addaction name="actionInicio" />
    <addaction name="actionAnterior" />
@@ -260,12 +248,12 @@
     <string>Libro &amp;Diario</string>
    </property>
   </action>
-  <action name="actionBalance_de_Sumas_y_Saldos" >
+  <action name="actionBalance_de_Cuentas" >
    <property name="icon" >
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_balance.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Balance de &amp;Sumas y Saldos</string>
+    <string>&amp;Balance de Cuentas</string>
    </property>
   </action>
   <action name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" >
@@ -425,7 +413,6 @@
    </property>
   </action>
  </widget>
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>

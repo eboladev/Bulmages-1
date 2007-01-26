@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -21,4 +22,4 @@ INSERT INTO c_coste (idc_coste, descripcion, nombre, codigo, padre, imputacion, 
 
 SELECT pg_catalog.setval('c_coste_idc_coste_seq', 100, false);
 
-
+COMMIT;

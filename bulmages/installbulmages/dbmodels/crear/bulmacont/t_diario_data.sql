@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -15,4 +16,4 @@ SET search_path = public, pg_catalog;
 COPY diario (iddiario, descripcion) FROM stdin;
 \.
 
-
+COMMIT;

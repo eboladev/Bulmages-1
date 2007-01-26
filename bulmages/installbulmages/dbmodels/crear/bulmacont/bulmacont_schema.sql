@@ -2,6 +2,8 @@
 --
 -- PostgreSQL database definition of BulmaCont
 -- Creamos el lenguaje plpgsql y lo preparamos para ser usado con toda la base de datos.
+BEGIN;
+
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
 SET search_path = public, pg_catalog;
@@ -1798,3 +1800,4 @@ CREATE TRIGGER civad
 
 COMMENT ON SCHEMA public IS 'Standard public schema';
 
+COMMIT;

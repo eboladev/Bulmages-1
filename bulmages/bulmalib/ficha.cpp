@@ -61,7 +61,8 @@ void Ficha::on_mui_borrar_clicked() {
 
 
 void Ficha::closeEvent(QCloseEvent *e) {
-    _depura("Ficha::closeEvent", 0, windowTitle());
+    QString texto = "Ficha::closeEvent - " + windowTitle();
+    _depura(texto, 10);
     try {
         if (dialogChanges_hayCambios()) {
             int val = QMessageBox::warning(this,
@@ -83,6 +84,6 @@ void Ficha::closeEvent(QCloseEvent *e) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
         e->ignore();
     } // end try
-    _depura("END Ficha::closeEvent", 0);
+    _depura("END Ficha::closeEvent", 10);
 }
 

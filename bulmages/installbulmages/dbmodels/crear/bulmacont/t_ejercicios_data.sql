@@ -1,3 +1,5 @@
+BEGIN;
+
 INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, 0, FALSE);
 INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, 1, FALSE);
 INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES (2005, 2, FALSE);
@@ -26,3 +28,4 @@ INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 10, FALSE);
 INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 11, FALSE);
 INSERT into ejercicios (ejercicio, periodo, bloqueado) VALUES (2004, 12, FALSE);
 
+COMMIT;

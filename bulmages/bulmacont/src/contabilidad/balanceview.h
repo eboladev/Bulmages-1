@@ -68,7 +68,7 @@ private:
 
 public slots:
     virtual void accept();
-    virtual void boton_imprimir();
+    virtual void on_mui_imprimir_clicked();
 
 private slots:
     virtual void nivelactivated(int);

@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -22,4 +23,4 @@ COPY grupo (idgrupo, descripcion) FROM stdin;
 7	7.- VENTAS E INGRESOS
 \.
 
-
+COMMIT;

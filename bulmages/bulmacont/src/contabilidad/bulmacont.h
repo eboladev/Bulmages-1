@@ -143,7 +143,7 @@ public slots:
     virtual void on_actionPlan_Contable_triggered() {
         m_empresaactual->muestracuentas();
     }
-    virtual void on_actionBalance_de_Sumas_y_Saldos_triggered() {
+    virtual void on_actionBalance_de_Cuentas_triggered() {
         m_empresaactual->librobalance();
     }
     virtual void on_actionBalance_Jer_rquico_de_Sumas_y_Saldos_triggered() {

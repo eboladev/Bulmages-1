@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -19,4 +20,4 @@ SET search_path = public, pg_catalog;
 
 SELECT pg_catalog.setval('registroiva_idregistroiva_seq', 1, true);
 
-
+COMMIT;

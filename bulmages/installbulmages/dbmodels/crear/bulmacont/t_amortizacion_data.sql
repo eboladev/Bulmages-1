@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -26,4 +27,4 @@ COPY amortizacion (idamortizacion, idcuentaactivo, idcuentaamortizacion, descamo
 
 SELECT pg_catalog.setval('amortizacion_idamortizacion_seq', 5, true);
 
-
+COMMIT;

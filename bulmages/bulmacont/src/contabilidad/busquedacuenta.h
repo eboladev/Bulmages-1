@@ -32,11 +32,11 @@
 class empresa;
 
 
-
 class BusquedaCuentaDelegate : public QComboBox {
-Q_OBJECT
+    Q_OBJECT
+
 private:
-	empresa *m_companyact;
+    empresa *m_companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
 
@@ -46,6 +46,7 @@ public:
     void setcompany(empresa *comp) {
         m_companyact = comp;
     };
+
 public slots:
     virtual void s_editTextChanged(const QString &);
 };

@@ -1,6 +1,7 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -23,4 +24,4 @@ INSERT INTO canal (idcanal, descripcion, nombre) VALUES (4, 'Tipo B', 'Canal B')
 
 SELECT pg_catalog.setval('canal_idcanal_seq', 100, false);
 
-
+COMMIT;

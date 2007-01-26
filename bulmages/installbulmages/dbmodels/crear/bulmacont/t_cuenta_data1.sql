@@ -2,6 +2,8 @@
 --
 -- PostgreSQL database dump
 --
+BEGIN;
+
 
 SET client_encoding = 'UNICODE';
 SET check_function_bodies = false;
@@ -691,4 +693,4 @@ UPDATE CUENTA SET debe=0, haber=0;
 
 SELECT pg_catalog.setval('cuenta_idcuenta_seq', 10000, false);
 
-
+COMMIT;
