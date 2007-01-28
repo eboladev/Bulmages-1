@@ -33,7 +33,7 @@ import reportlab
 from reportlab.pdfgen import canvas
 from reportlab import platypus
 
-sys.path.append('/usr/share/bulmages/bgtrml2pdf')
+sys.path.append('/usr/lib/bulmages')
 
 import bgutils
 import bgcolor
