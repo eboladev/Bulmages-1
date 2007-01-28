@@ -465,7 +465,7 @@ CREATE TABLE proveedor (
     cifproveedor character varying(12) UNIQUE,
     codproveedor character varying(12) UNIQUE,
     codicliproveedor character varying(30),
-    cbancproveedor character varying(20),
+    cbancproveedor character varying(120),
     comentproveedor character varying(2000),
     dirproveedor character varying(250),
     poblproveedor character varying(50),
@@ -530,7 +530,6 @@ CREATE TABLE division (
 -- provcliente: Provincia del cliente.
 -- idtarifa: Identificador de la tarifa aplicada a este cliente.
 -- regimenfiscalcliente Indica el regimen al que se acoge el cliente (Normal, comunitario, extracomunitario)
-
 \echo -n ':: Cliente ... '
 CREATE TABLE cliente (
     idcliente serial PRIMARY KEY,
@@ -538,7 +537,7 @@ CREATE TABLE cliente (
     nomaltcliente character varying(300),
     cifcliente character varying(200) UNIQUE,
     codcliente character varying(12) UNIQUE,
-    bancocliente character varying(35),
+    bancocliente character varying(120),
     dircliente character varying(100),
     poblcliente character varying(40),
     cpcliente character varying(10),
