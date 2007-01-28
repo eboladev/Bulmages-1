@@ -15,7 +15,7 @@
    <string>Plan de cuentas</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</iconset>
   </property>
   <property name="toolTip" >
    <string comment="Manteniment del plà de comptes" />
@@ -50,7 +50,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_cuentas.xpm</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_cuentas.xpm</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -124,7 +124,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -166,7 +166,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -208,7 +208,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -242,7 +242,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -284,7 +284,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_immportar.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_immportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -323,7 +323,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_exportar.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_exportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -362,7 +362,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

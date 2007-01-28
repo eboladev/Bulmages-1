@@ -33,7 +33,7 @@
 #include "fixed.h"
 #include "busquedafecha.h"
 #include "asiento1.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class empresa;
@@ -98,7 +98,7 @@ public:
 };
 
 
-class Asiento1View : public Ficha, public Ui_AsientoBase, public Asiento1, public ListAsientos {
+class Asiento1View : public Asiento1, public Ui_AsientoBase, public ListAsientos {
     Q_OBJECT
 
 private:
@@ -121,6 +121,8 @@ private:
     void prepguardar();
 
 public:
+    Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
+    ~Asiento1View();
     void muestraasiento(QString v) {
         _depura("Asiento1View::muestraasiento ", 0);
         situarasiento(v);
@@ -139,19 +141,17 @@ public:
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo();
-    Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
-    ~Asiento1View();
     virtual int cargar(QString idasiento) {
         Asiento1::cargar(idasiento);
     };
 
 public slots:
     virtual void on_mui_abrirasiento_clicked() {
-        abreAsiento1();
+        abrir();
     };
     virtual void on_mui_cerrarasiento_clicked() {
         prepguardar();
-        cierraAsiento1();
+        cerrar();
     };
     virtual void on_mui_guardarasiento_clicked() {
         prepguardar();

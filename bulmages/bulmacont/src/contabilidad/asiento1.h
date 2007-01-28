@@ -24,7 +24,7 @@
 #include <QString>
 
 #include "fixed.h"
-#include "dbrecord.h"
+#include "fichabc.h"
 #include "listlinasiento1view.h"
 
 
@@ -33,7 +33,7 @@ class empresa;
 
 /// Clase Asiento1.
 /** */
-class Asiento1 : public DBRecord {
+class Asiento1 : public FichaBc {
 public:
     enum estadoasiento {ASVacio = 0, ASAbierto = 1, ASCerrado = 2};
 
@@ -42,17 +42,17 @@ protected:
     empresa *m_companyact;
 
 public:
+    Asiento1(empresa *, QWidget *parent);
+    virtual ~Asiento1();
     empresa *companyact() {
         return m_companyact;
     };
-    Asiento1(empresa *);
-    virtual ~Asiento1();
     int cargar(QString);
     Fixed totaldebe(QString);
     Fixed totalhaber(QString);
-    void vaciaAsiento1();
-    void abreAsiento1();
-    void cierraAsiento1();
+    void vaciar();
+    void abrir();
+    void cerrar();
     estadoasiento estadoAsiento1();
     int guardar();
     void setidasiento(QString val) {
@@ -66,7 +66,7 @@ public:
     void setListLinAsiento1(ListLinAsiento1View *a) {
         listalineas = a;
     };
-    void borraAsiento1();
+    virtual int borrar();
     virtual void pintaidasiento(QString) {
         _depura("funcion no implementada pintaidasiento");
     };

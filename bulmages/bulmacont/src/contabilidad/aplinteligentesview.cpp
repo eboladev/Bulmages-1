@@ -77,6 +77,7 @@ aplinteligentesview::~aplinteligentesview() {
 
 
 void aplinteligentesview::inicializa(int idasiento) {
+    _depura("aplinteligentesview::inicializa", 0);
     numasiento = idasiento;
     inicializavariables();
 
@@ -110,12 +111,14 @@ void aplinteligentesview::inicializa(int idasiento) {
 	
 	on_mui_comboainteligentes_activated(0);
     }
+    _depura("END aplinteligentesview::inicializa", 0);
 }
 
 
 /// Las variables predefinidas se declaran aqu&iacute;.
 /// De momento tenemos dos fariables fechaactual y fechaasiento.
 void aplinteligentesview::inicializavariables() {
+    _depura("aplinteligentesview::inicializavariables", 0);
     QString subcadena;
     QString buffer;
     QDate fecha;
@@ -137,6 +140,7 @@ void aplinteligentesview::inicializavariables() {
     } // end if
     delete cur;
     indvariablespredefinidas = 2;
+    _depura("END aplinteligentesview::inicializavariables", 0);
 }
 
 
@@ -145,9 +149,9 @@ void aplinteligentesview::inicializavariables() {
 /// NOTA: N&oacute;tese que el sistema normalmente carga el NIF de la contrapartida
 /// del asiento inteligente y que este campo normalmente va en la parte de CIFCUENTA.
 void aplinteligentesview::cifcuenta(int idcuenta) {
+    _depura("aplinteligentesview::cifcuenta", 0);
     QString query;
     query.sprintf("SELECT * FROM cuenta WHERE idcuenta = %d", idcuenta);
-    fprintf(stderr,"cifcuenta: %s\n", query.toAscii().constData());
     companyact->begin();
     cursor2 *cur = companyact->cargacursor(query, "cursor");
     companyact->commit();
@@ -157,22 +161,25 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
         variablesapunte[VAR_APUNT_CIFCUENTA][1] = "";
     } // end if
     delete cur;
+    _depura("END aplinteligentesview::cifcuenta", 0);
 }
 
 
 void aplinteligentesview::return_numero() {
+    _depura("aplinteligentesview::return_numero", 0);
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
-    fprintf(stderr, "Se ha pulsado return sobre el n&uacute;mero: %s\n", numero->text().toAscii().constData());
     selectsiguiente(numero);
+    _depura("END aplinteligentesview::return_numero", 0);
 }
 
 
 void aplinteligentesview::return_texto() {
+    _depura("aplinteligentesview::return_texto", 0);
     QLineEdit *texto;
     texto = (QLineEdit *) sender();
-    fprintf(stderr, "Se ha pulsado return sobre el texto: %s\n", texto->text().toAscii().constData());
     selectsiguiente(texto);
+    _depura("END aplinteligentesview::return_texto", 0);
 }
 
 
@@ -188,14 +195,17 @@ void aplinteligentesview::on_mui_comboainteligentes_activated(int) {
 /// Tambi&eacute;n pone el combobox en la posici&oacute;n adecuada.
 /// Si la plantilla no existe el resultado es indefinido.
 void aplinteligentesview::muestraplantilla(QString plantilla) {
+    _depura("aplinteligentesview::muestraplantilla", 0);
     while (mui_comboainteligentes->currentText() != plantilla)
         mui_comboainteligentes->setCurrentIndex(mui_comboainteligentes->currentIndex()+1);
     mostrarplantilla();
+    _depura("aplinteligentesview::muestraplantilla", 0);
 }
 
 
 /// La pulsaci&oacute;n sobre el bot&oacute;n de creaci&oacute;n del asiento.
 void aplinteligentesview::on_mui_aceptar_clicked() {
+     _depura("aplinteligentesview::on_mui_aceptar_clicked", 0);
     /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
     /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
     if (numasiento != 0) {
@@ -208,12 +218,12 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
         /// Asi que debemos facilitar las cosas al m&aacute;ximo.
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
-        companyact->intapuntsempresa()->vaciaAsiento1();
-	 companyact->intapuntsempresa()->iniciar_asiento_nuevo();
+        companyact->intapuntsempresa()->vaciar();
+	companyact->intapuntsempresa()->iniciar_asiento_nuevo();
         numasiento = companyact->intapuntsempresa()->idasiento().toInt();
         recogevalores();
         creaasiento();
-        companyact->intapuntsempresa()->cierraAsiento1();
+        companyact->intapuntsempresa()->cerrar();
         numasiento = 0;
         fechaasiento->selectAll();
         fechaasiento->setFocus();
@@ -223,6 +233,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
     if (modo == 1) {
         close();
     } // end if
+     _depura("END aplinteligentesview::on_mui_aceptar_clicked", 0);
 }
 
 
@@ -328,7 +339,6 @@ void aplinteligentesview::mostrarplantilla() {
 	    } // end if
 	} // end for
 	
-	fprintf(stderr, "Hemos recolectado las nuevas variables\n");
 	for (int i = 0;i < indvariablescta; i++) {
 	    labelcta[i] = new QLabel("", mui_datosAsiento);
 	    labelcta[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
@@ -387,6 +397,7 @@ void aplinteligentesview::mostrarplantilla() {
 /// De esta forma podemos establecer valores por defecto de determinados asientos de obligada
 /// existencia. Como los de Amortizaciones.
 void aplinteligentesview::setvalores(QString var, QString val) {
+    _depura("aplinteligentesview::setvalores", 0);
     for (int i = 0;i < indvariablescta; i++) {
         if (variablescta[i][0] == var) {
             varcta[i]->setText(val);
@@ -407,11 +418,13 @@ void aplinteligentesview::setvalores(QString var, QString val) {
             vartexto[i]->setText(val);
         } // end if
     } // end for
+    _depura("END aplinteligentesview::setvalores", 0);
 }
 
 /// Esta funci&oacute;n recoge los valores de los cuadros de texto y
 /// y rellena las tablas de variables con los valores recogidos.
 void aplinteligentesview::recogevalores() {
+    _depura("aplinteligentesview::recogevalores", 0);
     int i;
     for (i = 0; i < indvariablestexto; i++) {
         variablestexto[i][1] = vartexto[i]->text();
@@ -425,6 +438,7 @@ void aplinteligentesview::recogevalores() {
     for (i = 0; i < indvariablescta; i++) {
         variablescta[i][1] = varcta[i]->text();
     } // end for
+    _depura("END aplinteligentesview::recogevalores", 0);
 }
 
 /// Esta funci&oacute;n se encarga de crear el nuevo asiento a partir
@@ -491,6 +505,7 @@ void aplinteligentesview::creaasiento() {
 /// Esta funci&oacute;n busca variables en una cadena de texto y la coloca en los arrays
 /// de variables que forman el asiento inteligente.
 void aplinteligentesview::recogevariables(QString texto, int tipo) {
+    _depura("aplinteligentesview::recogevariables", 0);
     int posinicial, posfinal, posaux, posaux1;
     QString cadena = texto;
     QString subcadena;
@@ -506,7 +521,6 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
             if (posaux != -1) {
                 posaux1 = subcadena.indexOf("$", posaux + 1);
                 descvar = subcadena.mid(posaux + 1, posaux1 - posaux - 1);
-                fprintf(stderr, "desc:%s<-->size %d\n", descvar.toAscii().constData(), posaux1);
                 nomvar = subcadena.mid(0, posaux + 1);
                 /// Si hay un comentario lo debemos borrar tras considerarlo para que no
                 /// estorbe.
@@ -528,8 +542,6 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                 d++;
             } // end while
             if (j == indvariablespredefinidas && d== indvariablesapunte) {
-                fprintf(stderr, "%d,%d, sub:%s\n", indvariablespredefinidas, j,subcadena.toAscii().constData());
-                fprintf(stderr, "nom:%s\n", nomvar.toAscii().constData());
                 switch (tipo) {
                 case TIPO_CTA:
                     for (j = 0; j < indvariablescta && variablescta[j][0] != nomvar; j++)
@@ -584,13 +596,14 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
             } // end if
         } // end if
     } // end if
+    _depura("END aplinteligentesview::recogevariables", 0);
 }
 
 
 /// Se hace un repaso que hace que se aplique una variable.
 QString aplinteligentesview::aplicavariable(QString texto) {
+    _depura("aplinteligentesview::aplicavariable", 0);
     QString cadena = texto;
-    fprintf(stderr, "Aplicavariable: texto: %s\n", texto.toAscii().constData());
     int posinicial, posfinal;
     int i;
     int fin = 0;
@@ -650,10 +663,12 @@ QString aplinteligentesview::aplicavariable(QString texto) {
         } // end if
     } // end for
     return cadena;
+    _depura("END aplinteligentesview::aplicavariable", 0);
 }
 
 
 void aplinteligentesview::borrawidgets() {
+    _depura("aplinteligentesview::borrawidgets", 0);
     int i;
     /// Vamos a intentar borrar todos los datos antes de empezar.
     for (i = 0; i < indvariablescta; i++) {
@@ -676,10 +691,12 @@ void aplinteligentesview::borrawidgets() {
     indvariablesfecha = 0;
     indvariablesnumero = 0;
     indvariablestexto = 0;
+    _depura("END aplinteligentesview::borrawidgets", 0);
 }
 
 
 void aplinteligentesview::selectfirst() {
+    _depura("aplinteligentesview::selectfirst", 0);
     if (indvariablescta > 0) {
         varcta[0]->selectAll();
         varcta[0]->setFocus();
@@ -693,6 +710,7 @@ void aplinteligentesview::selectfirst() {
         vartexto[0]->selectAll();
         vartexto[0]->setFocus();
     } // end if
+    _depura("END aplinteligentesview::selectfirst", 0);
 }
 
 
@@ -700,6 +718,7 @@ void aplinteligentesview::selectfirst() {
 /// creada virtualmente.
 /// Si el widget es el &uacute;ltimo de la lista se hace un aceptar.
 void aplinteligentesview::selectsiguiente(QObject *edit) {
+    _depura("aplinteligentesview::selectsiguiente", 0);
     int encontrado = 0;
     int i = 0;
     for (i = 0; i < indvariablescta; i++) {
@@ -747,5 +766,6 @@ void aplinteligentesview::selectsiguiente(QObject *edit) {
     if (encontrado == 1) {
         on_mui_aceptar_clicked();
     } // end if
+    _depura("END aplinteligentesview::selectsiguiente", 0);
 }
 

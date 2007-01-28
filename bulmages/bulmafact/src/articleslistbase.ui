@@ -74,7 +74,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -96,7 +96,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -118,7 +118,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -140,7 +140,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -162,7 +162,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_filePrint.xpm</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_filePrint.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -184,7 +184,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -209,7 +209,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -234,7 +234,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -256,7 +256,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_exportar.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_exportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -278,7 +278,7 @@
            <string>Exportar</string>
           </property>
           <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_immportar.png</iconset>
+           <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_immportar.png</iconset>
           </property>
           <property name="iconSize" >
            <size>

@@ -44,7 +44,7 @@
     \param parent Widget padre de este.
 */
 Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
-        : Ficha(parent), Asiento1(emp), ListAsientos(emp) {
+        : Asiento1(emp, parent), ListAsientos(emp) {
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
     m_companyact = emp;
@@ -184,7 +184,7 @@ void Asiento1View::iniciar_asiento_nuevo() {
         /// FIN TRATAMIENTO DE BASE DE DATOS.
         cargaasientos();
         muestraasiento(idasiento.toInt());
-        abreAsiento1();
+        abrir();
 
         _depura("END Asiento1View::iniciar_asiento_nuevo", 0);
         return;
@@ -285,12 +285,12 @@ void Asiento1View::prepguardar() {
 void Asiento1View::on_mui_borrar_clicked() {
     _depura("Asiento1View::on_mui_borrar_clicked", 0);
     QString idasiento = idasientosiguiente();
-    borraAsiento1();
+    Asiento1::borrar();
     cargaasientos();
     if (idasiento != "")
         muestraasiento(idasiento);
     else {
-        vaciaAsiento1();
+        vaciar();
         pintar();
     } // end if
     _depura("END Asiento1View::on_mui_borrar_clicked", 0);

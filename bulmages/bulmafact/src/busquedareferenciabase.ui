@@ -102,7 +102,7 @@
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_tuxPeq.png</iconset>
+        <iconset resource="../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tuxPeq.png</iconset>
        </property>
        <property name="iconSize" >
         <size>

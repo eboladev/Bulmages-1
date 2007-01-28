@@ -93,7 +93,7 @@
             <string>Aplicar</string>
            </property>
            <property name="icon" >
-            <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+            <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
            </property>
            <property name="toolButtonStyle" >
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -106,7 +106,7 @@
             <string>Aplicar</string>
            </property>
            <property name="icon" >
-            <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+            <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
            </property>
            <property name="toolButtonStyle" >
             <enum>Qt::ToolButtonTextBesideIcon</enum>
@@ -119,7 +119,7 @@
             <string>&amp;Cerrar</string>
            </property>
            <property name="icon" >
-            <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_tuxPeq.png</iconset>
+            <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/png/i_tuxPeq.png</iconset>
            </property>
            <property name="toolButtonStyle" >
             <enum>Qt::ToolButtonTextBesideIcon</enum>

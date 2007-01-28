@@ -16,7 +16,7 @@
    <string>BulmaFact - Facturacion GPL</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/pendientes/iconbulmafact.xpm</iconset>
+   <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/iconbulmafact.xpm</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" />
   <widget class="QMenuBar" name="menubar" >
@@ -242,7 +242,7 @@
   </widget>
   <action name="actionSalir" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
    </property>
    <property name="text" >
     <string>&amp;Salir del programa</string>
@@ -253,7 +253,7 @@
   </action>
   <action name="actionParametros" >
    <property name="icon" >
-    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_configuracion.xpm</iconset>
+    <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
     <string>Configurar &amp;BulmaFact...</string>

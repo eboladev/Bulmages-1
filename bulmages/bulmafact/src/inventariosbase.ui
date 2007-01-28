@@ -55,7 +55,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -77,7 +77,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_edit.png</iconset>
+         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_edit.png</iconset>
         </property>
         <property name="iconSize" >
          <size>
@@ -99,7 +99,7 @@
          <string/>
         </property>
         <property name="icon" >
-         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+         <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
         </property>
         <property name="iconSize" >
          <size>

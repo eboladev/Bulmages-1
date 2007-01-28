@@ -29,8 +29,8 @@
 #include "empresa.h"
 
 
-Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
-    _depura("Asiento1::Asiento1(empresa *)", 0);
+Asiento1::Asiento1(empresa *comp, QWidget *parent) : FichaBc (comp, parent) {
+    _depura("Asiento1::Asiento1", 0);
     m_companyact = comp;
     setDBTableName("asiento");
     setDBCampoId("idasiento");
@@ -41,14 +41,19 @@ Asiento1::Asiento1(empresa *comp) : DBRecord (comp) {
     addDBCampo("ordenasiento", DBCampo::DBint, DBCampo::DBNotNull, QApplication::translate("Asiento1", "Orden de asiento"));
     addDBCampo("clase", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Asiento1", "Tipo de asiento"));
     listalineas = NULL;
+    _depura("END Asiento1::Asiento1", 0);
 }
 
 
-Asiento1::~Asiento1() {}
+Asiento1::~Asiento1() {
+    _depura("Asiento1::~Asiento1", 0);
+    _depura("END Asiento1::~Asiento1", 0);
+}
 
-
-void Asiento1::borraAsiento1() {
-    _depura("Asiento1::borraAsiento1", 0);
+/** Metodo que se encarga del borrado completo de un
+*/
+int Asiento1::borrar() {
+    _depura("Asiento1::borrar", 0);
     int error;
     if (DBvalue("idasiento") != "") {
         switch (QMessageBox::warning(0,
@@ -57,36 +62,36 @@ void Asiento1::borraAsiento1() {
                                      QMessageBox::Ok ,
                                      QMessageBox::Cancel )) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
-            listalineas->borrar();
             m_companyact->begin();
+            listalineas->borrar();
             error = m_companyact->ejecuta("DELETE FROM apunte WHERE idasiento = " + DBvalue("idasiento"));
             error += m_companyact->ejecuta("DELETE FROM asiento WHERE idasiento = " + DBvalue("idasiento"));
             if (error) {
                 m_companyact->rollback();
-                return;
+                return -1;
             } // end if
             m_companyact->commit();
-            vaciaAsiento1();
+            vaciar();
             break;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
             break;
         } // end switch
     } // end if
-    _depura("END Asiento1::borraAsiento1", 0);
-
+    _depura("END Asiento1::borrar", 0);
+    return 0;
 }
 
 
-void Asiento1::vaciaAsiento1() {
-    _depura("Asiento1::vaciaAsiento1", 0);
+void Asiento1::vaciar() {
+    _depura("Asiento1::vaciar", 0);
     DBclear();
     listalineas->inicializar();
+    _depura("END Asiento1::vaciar", 0);
 }
 
 
 /** Se encarga del pintado del asiento.
 */
-/// \TODO: Debe ser pintar()
 void Asiento1::pintar() {
     _depura("Asiento1::pintar", 0);
     pintaidasiento(idasiento());
@@ -129,7 +134,7 @@ Fixed Asiento1::totalhaber(QString idbudget) {
 }
 
 
-void Asiento1::abreAsiento1() {
+void Asiento1::abrir() {
     _depura("Asiento1::abreAsiento1", 0);
     if (estadoAsiento1() != ASCerrado)
         return;
@@ -143,7 +148,7 @@ void Asiento1::abreAsiento1() {
 }
 
 
-void Asiento1::cierraAsiento1() {
+void Asiento1::cerrar() {
     _depura("Asiento1::cierraAsiento1", 0);
     if (estadoAsiento1() != ASAbierto) {
 	_depura("asiento no abierto", 0);
@@ -159,7 +164,7 @@ void Asiento1::cierraAsiento1() {
 
     cursor2 * cur = m_companyact->cargacursor("SELECT cierraasiento("+id+")");
     delete cur;
-    vaciaAsiento1();
+    vaciar();
     cargar(id);
     _depura("END Asiento1::cierraasiento1", 0);
 }

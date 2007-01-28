@@ -13,7 +13,7 @@
    <string>Ayuda</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_tux.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tux.png</iconset>
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >

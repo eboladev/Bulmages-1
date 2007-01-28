@@ -102,7 +102,7 @@
           <string>Actualizar</string>
          </property>
          <property name="icon" >
-          <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+          <iconset resource="../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
          </property>
         </widget>
        </item>

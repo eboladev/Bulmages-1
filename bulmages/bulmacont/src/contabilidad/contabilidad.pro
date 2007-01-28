@@ -132,7 +132,8 @@ HEADERS += splashscreen.h \
 	   balancesubform.h \
 	   busquedaccoste.h \
 	   busquedacanal.h \
-	   qtable1.h
+	   qtable1.h \
+	   fichabc.h
 
 SOURCES += main.cpp \
            splashscreen.cpp \
@@ -189,7 +190,8 @@ SOURCES += main.cpp \
 	   balancesubform.cpp \
 	   busquedaccoste.cpp \
 	   busquedacanal.cpp \
-	   qtable1.cpp
+	   qtable1.cpp \
+	   fichabc.cpp
 
 unix{
     UI_DIR = .ui

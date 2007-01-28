@@ -80,7 +80,7 @@
           <string/>
          </property>
          <property name="icon" >
-          <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+          <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
          </property>
          <property name="iconSize" >
           <size>
