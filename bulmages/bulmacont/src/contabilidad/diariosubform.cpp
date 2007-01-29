@@ -19,7 +19,6 @@
  ***************************************************************************/
 
 #include <QMenu>
-
 #include "diariosubform.h"
 
 
@@ -54,6 +53,8 @@ DiarioSubForm::DiarioSubForm(QWidget *parent, const char *) : SubForm2Bc(parent)
     addSHeader("idcuenta", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("idcuenta"));
     addSHeader("orden", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("orden"));
     setinsercion(FALSE);
+    setOrdenEnabled(FALSE);
+    setSortingEnabled(TRUE);
     _depura("DiarioSubForm::DiarioSubForm", 0);
 }
 
@@ -66,9 +67,7 @@ void DiarioSubForm::contextMenuEvent(QContextMenuEvent *) {
         return;
     } // end if
     int col = currentColumn();
-    if (row < 0) {
-        return;
-    } // end if
+
     QMenu *popup = new QMenu(this);
     QAction *mostapunte = popup->addAction("Mostrar asiento");
     popup->addSeparator();

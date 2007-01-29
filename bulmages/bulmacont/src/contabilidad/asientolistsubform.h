@@ -32,8 +32,7 @@ class AsientoListSubform : public SubForm2Bc {
 
 public:
     AsientoListSubform(QWidget *parent = 0, const char *name = 0);
-    virtual ~AsientoListSubform() {}
-    ;
+    virtual ~AsientoListSubform();
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

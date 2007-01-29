@@ -45,7 +45,7 @@
 DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
         : Ficha(parent) {
     setupUi(this);
-    _depura("DiarioView::DiarioView\n", 0);
+    _depura("DiarioView::DiarioView", 0);
     m_companyact = emp;
     mui_list->setcompany(emp);
     mui_contrapartida->setempresa(emp);
@@ -57,18 +57,19 @@ DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
     sprintf(cadena, "%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     mui_fechafinal->setText(cadena);
     m_companyact->meteWindow(windowTitle(), this);
-    _depura("END DiarioView::DiarioView\n", 0);
+    _depura("END DiarioView::DiarioView", 0);
 }
 
 
 DiarioView::~DiarioView() {
-    _depura("DiarioView::~DiarioView\n", 0);
+    _depura("DiarioView::~DiarioView", 0);
     m_companyact->sacaWindow(this);
-    _depura("END DiarioView::~DiarioView\n", 0);
+    _depura("END DiarioView::~DiarioView", 0);
 }
 
 
 void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
+    _depura("DiarioView::inicializa1", 0);
     QString s1, s2, s3;
     QDate fecha1aux;
     int dia, mes, ano;
@@ -95,19 +96,23 @@ void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
     fecha1aux.setYMD(ano, mes, dia);
     cadena2.sprintf("%2.2d/%2.2d/%4.4d", fecha1aux.day(), fecha1aux.month(), fecha1aux.year());
     mui_fechafinal->setText(cadena2);
+    _depura("END DiarioView::inicializa1", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Muestra el formulario de impresi&oacute;n de diario y lo ejecuta \ref DiarioPrintView */
 void DiarioView::boton_imprimir() {
+    _depura("DiarioView::boton_imprimir", 0);
     DiarioPrintView *print = new DiarioPrintView(m_companyact, 0);
     print->exec();
+    _depura("END DiarioView::boton_imprimir", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n guardar del formulario.
 void DiarioView::boton_guardar() {
+    _depura("DiarioView::boton_guardar", 0);
     QString fn = QFileDialog::getSaveFileName(this,
                  tr("Guardar Libro Diario"),
                  confpr->valor(CONF_DIR_USER),
@@ -124,12 +129,15 @@ void DiarioView::boton_guardar() {
         diariop.inicializa2((char *) fn.toAscii().constData());
         diariop.accept();
     } // end if
+    _depura("END DiarioView::boton_guardar", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void DiarioView::accept() {
+    _depura("DiarioView::accept", 0);
     presentar();
+    _depura("END DiarioView::accept", 0);
 }
 
 
@@ -156,7 +164,7 @@ void DiarioView::presentar() {
         cadand = " AND ";
     } // end if
 
-    cursor2 *cur = m_companyact->cargacursor(query + cad);
+    cursor2 *cur = m_companyact->cargacursor(query + cad + " ORDER BY t5.ordenasiento ");
     mui_list->cargar(cur);
     delete cur;
 

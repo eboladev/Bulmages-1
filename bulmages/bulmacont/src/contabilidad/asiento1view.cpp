@@ -44,12 +44,11 @@
     \param parent Widget padre de este.
 */
 Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
-        : Asiento1(emp, parent), ListAsientos(emp) {
+        : ListAsientos(emp, parent) {
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
-    m_companyact = emp;
 
-    mui_list->setcompany(m_companyact);
+    mui_list->setcompany(emp);
     setListLinAsiento1(mui_list);
 
     /// Ocultamos los detalles del asiento.
@@ -136,7 +135,7 @@ void Asiento1View::asientocerradop() {
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
         } // end for
     } // end for
-    
+
     _depura("END Asiento1View::asientocerradop", 0);
 }
 
@@ -271,6 +270,19 @@ void Asiento1View::boton_cargarasiento() {
 }
 
 
+void Asiento1View::muestraasiento(QString v) {
+        _depura("Asiento1View::muestraasiento ", 0);
+        situarasiento(v);
+        cargar(v);
+        _depura("END Asiento1View::muestraasiento ", 0);
+}
+
+
+// =========================================================================================
+//                       LISTASIENTOS
+// =========================================================================================
+
+
 /// Prepara para guardar.
 void Asiento1View::prepguardar() {
     _depura("Asiento1View::prepguardar", 0);
@@ -297,9 +309,8 @@ void Asiento1View::on_mui_borrar_clicked() {
 }
 
 
-ListAsientos::ListAsientos(empresa *emp) {
+ListAsientos::ListAsientos(empresa *emp, QWidget *parent) : Asiento1(emp, parent) {
     _depura("ListAsientos::ListAsientos", 0);
-    m_companyact = emp;
     cursorasientos = NULL;
     _depura("END ListAsientos::ListAsientos", 0);
 
@@ -460,5 +471,33 @@ void ListAsientos::situarasiento(QString idasiento) {
         throw -1;
     } // end try
     _depura("END ListAsientos::situarasiento", 0, idasiento);
+}
+
+
+QString ListAsientos::idasientoanterior() {
+    _depura("ListAsientos::idasientoanterior", 0);
+    if (!cursorasientos->esprimerregistro()) {
+        cursorasientos->registroanterior();
+        QString id = cursorasientos->valor("idasiento");
+        cursorasientos->siguienteregistro();
+        _depura("END ListAsientos::idasientoanterior", 0);
+        return id;
+    } else {
+        return "";
+    } // end if
+}
+
+
+QString ListAsientos::idasientosiguiente() {
+    _depura("ListAsientos::idasientosiguiente", 0);
+    if (!cursorasientos->esultimoregistro()) {
+        cursorasientos->siguienteregistro();
+        QString id = cursorasientos->valor("idasiento");
+        cursorasientos->registroanterior();
+        _depura("END ListAsientos::idasientosiguiente", 0);
+        return id;
+    } else {
+        return "";
+    } // end if
 }
 

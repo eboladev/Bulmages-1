@@ -320,6 +320,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_exportar" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -350,6 +353,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_importar" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>

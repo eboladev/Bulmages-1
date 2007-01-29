@@ -26,24 +26,30 @@
 /// Subformulario.
 AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
         : SubForm2Bc(parent) {
+    _depura("AsientoListSubform::AsientoListSubform", 0);
     setDBTableName("asiento");
     setFileConfig("AsientoListSubform");
     setDBCampoId("idasiento");
     addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("idasiento"));
-    addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
-    addSHeader("ordenasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Orden"));
-    addSHeader("numap", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apuntes"));
-    addSHeader("numborr", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Borrador"));
-    addSHeader("totaldebe", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Debe"));
-    addSHeader("totalhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Haber"));
+    addSHeader("fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
+    addSHeader("ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Orden"));
+    addSHeader("numap", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apuntes"));
+    addSHeader("numborr", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Borrador"));
+    addSHeader("totaldebe", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Debe"));
+    addSHeader("totalhaber", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Haber"));
     addSHeader("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
-    addSHeader("clase", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clase"));
+    addSHeader("clase", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clase"));
     setinsercion(FALSE);
+    _depura("END AsientoListSubform::AsientoListSubform", 0);
 }
 
+AsientoListSubform::~AsientoListSubform() {
+    _depura("AsientoListSubform::~AsientoListSubform", 0);
+    _depura("END AsientoListSubform::~AsientoListSubform", 0);
+}
 
 void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
-    _depura("SubForm2Bc::contextMenuEvent", 0);
+    _depura("AsientoListSubform::contextMenuEvent", 0);
     QAction *del = NULL;
     int row = currentRow();
     if (row < 0) {
@@ -97,5 +103,6 @@ void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
         showConfig();
     } // end if
     delete popup;
+    _depura("END AsientoListSubform::contextMenuEvent", 0);
 }
 

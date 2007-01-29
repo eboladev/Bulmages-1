@@ -44,14 +44,14 @@ class empresa;
     acci&oacute;n y casi toda la interactuaci&oacute;n del usuario con el programa.
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
-class ListAsientos {
+class ListAsientos : public Asiento1 {
+Q_OBJECT
 private:
-    empresa *m_companyact;
     /// Este es el cursor que se usar&aacute; para recorrer la lista de asientos.
     cursor2 *cursorasientos;
 
 public:
-    ListAsientos(empresa *);
+    ListAsientos(empresa *, QWidget *parent);
     virtual ~ListAsientos();
     void cargaasientos();
     void boton_inicio();
@@ -71,40 +71,15 @@ public:
     bool esultimoasiento() {
         return cursorasientos->esultimoregistro();
     };
-    QString idasientoanterior() {
-        if (!cursorasientos->esprimerregistro()) {
-            cursorasientos->registroanterior();
-            QString id = cursorasientos->valor("idasiento");
-            cursorasientos->siguienteregistro();
-            return id;
-        } else {
-            return "";
-        } // end if
-    };
-    QString idasientosiguiente() {
-        if (!cursorasientos->esultimoregistro()) {
-            cursorasientos->siguienteregistro();
-            QString id = cursorasientos->valor("idasiento");
-            cursorasientos->registroanterior();
-            return id;
-        } else {
-            return "";
-        } // end if
-    };
-    virtual int cargar(QString) {
-        _depura("ListAsientos::cargar debe ser sobrecargada", 2);
-        return 0;
-    };
+    QString idasientoanterior();
+    QString idasientosiguiente();
 };
 
 
-class Asiento1View : public Asiento1, public Ui_AsientoBase, public ListAsientos {
+class Asiento1View : public ListAsientos, public Ui_AsientoBase  {
     Q_OBJECT
 
 private:
-    /// Este puntero del tipo empresa contiene la referencia a la clase que ha
-    /// inicializado este objeto.
-    empresa *m_companyact;
     void pintafecha(QString val) {
         mui_fecha->setText(val);
     };
@@ -123,12 +98,8 @@ private:
 public:
     Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
-    void muestraasiento(QString v) {
-        _depura("Asiento1View::muestraasiento ", 0);
-        situarasiento(v);
-        cargar(v);
-        _depura("END Asiento1View::muestraasiento ", 0);
-    };
+
+    void muestraasiento(QString v);
     void muestraasiento(int v) {
         muestraasiento(QString::number(v));
     };
@@ -141,9 +112,6 @@ public:
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo();
-    virtual int cargar(QString idasiento) {
-        Asiento1::cargar(idasiento);
-    };
 
 public slots:
     virtual void on_mui_abrirasiento_clicked() {

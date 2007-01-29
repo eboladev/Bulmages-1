@@ -134,6 +134,7 @@ SDBRecord *SubForm3::newSDBRecord() {
     SDBRecord *rec = new SDBRecord(m_companyact);
     rec->setDBTableName(m_tablename);
     rec->setDBCampoId(m_campoid);
+
     SHeader * linea;
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
@@ -151,6 +152,13 @@ SDBRecord *SubForm3::newSDBRecord() {
         if (head->tipo() == DBCampo::DBboolean)
             flags |= Qt::ItemIsUserCheckable;
         camp->setFlags(flags);
+
+        /// Tratamos el tema de la alineacion dependiendo del tipo.AboutView
+	if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
+		camp->setTextAlignment(Qt::AlignRight);
+        } else {
+		camp->setTextAlignment(Qt::AlignLeft);
+	} // end if
     } // end for
     _depura("END SubForm3::newSDBRecord", 0);
     return rec;
