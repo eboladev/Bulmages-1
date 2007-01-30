@@ -46,16 +46,19 @@ private:
 private:
     void pintar(QString idtipoiva = "");
     void mostrarplantilla(int pos = 0);
+    void cambiacombo(int);
 
 public:
     fpagoview(empresa *, QWidget *parent = 0);
     ~fpagoview();
 
 private slots:
-    virtual void cambiacombo(int);
-    virtual void on_mui_guardar_clicked();
-    virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_guardarFPago_clicked();
+    virtual void on_mui_crearFPago_clicked();
+    virtual void on_mui_borrarFPago_clicked();
+    virtual void on_mui_comboFPago_currentIndexChanged(int i) {
+        cambiacombo(i);
+    }
     virtual bool close();
 };
 

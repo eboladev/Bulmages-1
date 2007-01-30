@@ -56,7 +56,7 @@
          <number>5</number>
         </property>
         <item>
-         <widget class="QToolButton" name="mui_crear" >
+         <widget class="QToolButton" name="mui_crearFPago" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -87,7 +87,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_borrar" >
+         <widget class="QToolButton" name="mui_borrarFPago" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -118,7 +118,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QToolButton" name="mui_guardar" >
+         <widget class="QToolButton" name="mui_guardarFPago" >
           <property name="minimumSize" >
            <size>
             <width>32</width>
@@ -185,7 +185,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="m_comboFPago" >
+      <widget class="QComboBox" name="mui_comboFPago" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>7</hsizetype>
@@ -211,13 +211,13 @@
        <number>5</number>
       </property>
       <item row="4" column="1" >
-       <widget class="QLineEdit" name="m_plazoEntreReciboFPago" />
+       <widget class="QLineEdit" name="mui_plazoEntreRecibos" />
       </item>
       <item row="1" column="1" >
-       <widget class="QLineEdit" name="m_plazoPrimerPagoFPago" />
+       <widget class="QLineEdit" name="mui_plazoPrimerPago" />
       </item>
       <item row="2" column="1" >
-       <widget class="QLineEdit" name="m_nPlazosFPago" />
+       <widget class="QLineEdit" name="mui_numeroPlazos" />
       </item>
       <item row="0" column="0" >
        <widget class="QLabel" name="textLabel1" >
@@ -230,7 +230,7 @@
        </widget>
       </item>
       <item row="0" column="1" >
-       <widget class="QLineEdit" name="m_nomFPago" />
+       <widget class="QLineEdit" name="mui_nombreFPago" />
       </item>
       <item row="1" column="0" >
        <widget class="QLabel" name="textLabel1_2_2_2" >
@@ -243,7 +243,7 @@
          </sizepolicy>
         </property>
         <property name="text" >
-         <string>Plazo del primer recibo (días):</string>
+         <string>Plazo del primer recibo (dias):</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -261,7 +261,7 @@
          </sizepolicy>
         </property>
         <property name="text" >
-         <string>Número de plazos:</string>
+         <string>Numero de plazos:</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -269,7 +269,7 @@
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QLineEdit" name="m_tipoPlazoPrimerPago" />
+       <widget class="QLineEdit" name="mui_tipoPlazoPrimerPago" />
       </item>
       <item row="3" column="0" >
        <widget class="QLabel" name="textLabel1_2_2_3" >
@@ -300,7 +300,7 @@
          </sizepolicy>
         </property>
         <property name="text" >
-         <string>Plazo entre recibos (días):</string>
+         <string>Plazo entre recibos (dias):</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -318,7 +318,7 @@
          </sizepolicy>
         </property>
         <property name="text" >
-         <string>Tipo plazo entre recibo:</string>
+         <string>Tipo plazo entre recibos:</string>
         </property>
         <property name="alignment" >
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -326,7 +326,7 @@
        </widget>
       </item>
       <item row="5" column="1" >
-       <widget class="QLineEdit" name="m_tipoPlazoEntreReciboFPago" />
+       <widget class="QLineEdit" name="mui_tipoPlazoEntreRecibos" />
       </item>
       <item row="6" column="0" colspan="2" >
        <spacer>
