@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>641</width>
-    <height>602</height>
+    <width>764</width>
+    <height>673</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,10 +17,10 @@
   </property>
   <layout class="QGridLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>2</number>
    </property>
    <item row="1" column="0" >
     <widget class="QFrame" name="frame" >
@@ -1029,7 +1029,16 @@
     </widget>
    </item>
    <item row="3" column="0" >
-    <widget class="ExtractoSubForm" name="mui_list" />
+    <widget class="ExtractoSubForm" name="mui_list" >
+     <property name="sizePolicy" >
+      <sizepolicy>
+       <hsizetype>7</hsizetype>
+       <vsizetype>7</vsizetype>
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
    </item>
    <item row="4" column="0" >
     <widget class="QGroupBox" name="groupBox" >
@@ -1261,22 +1270,6 @@
       </item>
      </layout>
     </widget>
-   </item>
-   <item row="5" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType" >
-      <enum>QSizePolicy::Expanding</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>

@@ -28,7 +28,6 @@
 
 
 /// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base como un QMap.
-typedef QMap<QString, Fixed> base;
 
 class FichaBc : public Ficha, public DBRecord {
     Q_OBJECT
@@ -39,9 +38,8 @@ public:
     empresa *m_companyact;
 
 
-public:
     FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
-    ~FichaBc();
+    virtual ~FichaBc();
     void setListaLineas(SubForm2Bc * form) {
 	m_listalineas = form;
     };

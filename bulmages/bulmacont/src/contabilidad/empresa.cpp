@@ -40,6 +40,7 @@
 #include "selectcanalview.h"
 #include "plugins.h"
 #include "bbloqfecha.h"
+#include "diarioview.h"
 
 #ifndef WIN32
 #include <unistd.h>

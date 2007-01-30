@@ -23,6 +23,7 @@
 #include "empresa.h"
 
 
+
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
 asientosview::asientosview(empresa *emp, QWidget *parent)

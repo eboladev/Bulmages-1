@@ -29,12 +29,13 @@
 #include <QDir>
 
 #include "balanceview.h"
-#include "diarioview.h"
 #include "extractoview1.h"
 #include "bmodelo347.h"
 #include "postgresiface2.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
+#include "listcuentasview1.h"
+
 
 #include "empresabase.h"
 

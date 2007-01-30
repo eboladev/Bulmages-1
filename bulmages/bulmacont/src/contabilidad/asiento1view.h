@@ -27,13 +27,9 @@
 #include <QString>
 #include <QFrame>
 
-#include "qtable2.h"
-#include "postgresiface2.h"
 #include "configuracion.h"
-#include "fixed.h"
 #include "busquedafecha.h"
 #include "asiento1.h"
-#include "fichabc.h"
 
 
 class empresa;

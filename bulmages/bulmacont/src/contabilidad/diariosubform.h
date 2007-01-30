@@ -25,14 +25,13 @@
 
 
 ///
-/** */
+/** SubFormulario de la pantalla de Diario.*/
 class DiarioSubForm : public SubForm2Bc {
     Q_OBJECT
 
 public:
     DiarioSubForm(QWidget *parent = 0, const char *name = 0);
-    virtual ~DiarioSubForm() {}
-    ;
+    virtual ~DiarioSubForm();
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);

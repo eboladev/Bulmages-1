@@ -23,7 +23,6 @@
 
 #include <QWidget>
 
-#include "postgresiface2.h"
 #include "ui_asientolistbase.h"
 #include "ficha.h"
 

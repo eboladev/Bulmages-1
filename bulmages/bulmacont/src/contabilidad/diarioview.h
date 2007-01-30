@@ -21,25 +21,21 @@
 #ifndef DIARIOVIEW12_H
 #define DIARIOVIEW12_H
 
-#include "ui_diariobase.h"
-#include "ficha.h"
 
+#include "ui_diariobase.h"
+
+#include "fichabc.h"
 
 class empresa;
 
-
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
-class DiarioView : public Ficha, public Ui_DiarioBase {
-    Q_OBJECT
-
-private:
-    /// Empresa con la que esta trabajando esta clase.
-    empresa *m_companyact;
-
+class DiarioView : public Ficha, public Ui::DiarioBase {
+Q_OBJECT
 public:
+    empresa *m_companyact;
     DiarioView(empresa *, QWidget *parent = 0, int flags = 0);
-    ~DiarioView();
+    virtual ~DiarioView();
     void accept();
     /// Inicializa la clase con las fechas inicial y final. El &uacute;ltimo par&aacute;metro
     /// no se usa.
