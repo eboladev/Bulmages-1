@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>593</width>
-    <height>576</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -40,7 +40,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -304,6 +304,12 @@
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
          </widget>
         </item>
        </layout>
@@ -370,36 +376,6 @@
      </property>
     </widget>
    </item>
-   <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
-      <number>5</number>
-     </property>
-     <item>
-      <spacer>
-       <property name="orientation" >
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" >
-        <size>
-         <width>581</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="mui_cerrar" >
-       <property name="text" >
-        <string>&amp;Cerrar</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="5" />
@@ -427,22 +403,6 @@
     <hint type="destinationlabel" >
      <x>233</x>
      <y>70</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mui_cerrar</sender>
-   <signal>clicked()</signal>
-   <receiver>ProveedorListBase</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>515</x>
-     <y>555</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>414</x>
-     <y>539</y>
     </hint>
    </hints>
   </connection>

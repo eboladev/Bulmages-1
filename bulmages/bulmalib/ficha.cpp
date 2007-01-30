@@ -80,9 +80,7 @@ void Ficha::closeEvent(QCloseEvent *e) {
                 return;
             } // end if
         } // end if
-
         sacaWindow();
-
     } catch (...) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
         e->ignore();

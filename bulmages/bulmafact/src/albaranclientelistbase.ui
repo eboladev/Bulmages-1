@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>637</width>
-    <height>372</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -243,20 +243,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_filtro" />
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
+         <widget class="QLineEdit" name="m_filtro" >
+          <property name="minimumSize" >
            <size>
-            <width>40</width>
-            <height>20</height>
+            <width>150</width>
+            <height>0</height>
            </size>
           </property>
-         </spacer>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -284,7 +278,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QLabel" name="textLabel1_4" >
@@ -294,7 +288,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -320,7 +321,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -346,7 +354,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QCheckBox" name="m_procesados" >
@@ -884,7 +892,7 @@
        <property name="font" >
         <font>
          <family>Sans Serif</family>
-         <pointsize>20</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
@@ -894,6 +902,9 @@
        </property>
        <property name="alignment" >
         <set>Qt::AlignRight</set>
+       </property>
+       <property name="readOnly" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>

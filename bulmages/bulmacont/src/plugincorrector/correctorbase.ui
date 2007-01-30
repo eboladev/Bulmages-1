@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>277</width>
-    <height>354</height>
+    <width>263</width>
+    <height>342</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,7 +17,7 @@
     <number>0</number>
    </property>
    <property name="spacing" >
-    <number>0</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -25,37 +25,73 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QToolButton" name="mui_corregir" >
+       <property name="minimumSize" >
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="maximumSize" >
         <size>
-         <width>28</width>
-         <height>28</height>
+         <width>32</width>
+         <height>32</height>
         </size>
+       </property>
+       <property name="toolTip" >
+        <string>Corregir</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Corregir</string>
        </property>
        <property name="text" >
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_ok.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QToolButton" name="mui_configurar" >
+       <property name="minimumSize" >
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="maximumSize" >
         <size>
-         <width>28</width>
-         <height>28</height>
+         <width>32</width>
+         <height>32</height>
         </size>
+       </property>
+       <property name="toolTip" >
+        <string>Configurar</string>
+       </property>
+       <property name="whatsThis" >
+        <string>Configurar</string>
        </property>
        <property name="text" >
         <string/>
        </property>
        <property name="icon" >
-        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_packageSettings.png</iconset>
+        <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_packageSettings.png</iconset>
+       </property>
+       <property name="iconSize" >
+        <size>
+         <width>22</width>
+         <height>22</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -82,7 +118,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../bulmages.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>mui_configurar</sender>

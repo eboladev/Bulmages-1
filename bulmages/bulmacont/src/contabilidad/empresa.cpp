@@ -163,8 +163,6 @@ void empresa::maximiza() {
 }
 
 
-
-
 /// Esta funci&oacute;n abre la ventana que presenta las cuentas contables.
 int empresa::muestracuentas() {
     m_listcuentas->show();

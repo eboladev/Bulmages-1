@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Josep Maria Estopà Rey</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ClientsListBase</class>
  <widget class="QWidget" name="ClientsListBase" >
   <property name="enabled" >
@@ -11,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>674</width>
-    <height>346</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -34,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -314,7 +312,7 @@
          <widget class="QLineEdit" name="m_findClient" >
           <property name="minimumSize" >
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>0</height>
            </size>
           </property>
@@ -372,14 +370,11 @@
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>ClienteListSubform</class>
    <extends>QTableWidget</extends>
    <header>clientslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

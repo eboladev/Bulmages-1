@@ -5,12 +5,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1015</width>
+    <height>690</height>
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>BulmaCont</string>
+   <string>BulmaCont - Contabilidad GPL</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/iconbulmacont.xpm</iconset>
@@ -21,24 +21,45 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1015</width>
      <height>29</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuAyuda" >
+   <widget class="QMenu" name="menuListados" >
     <property name="title" >
-     <string>A&amp;yuda</string>
+     <string>&amp;Listados</string>
     </property>
-    <addaction name="actionAyuda" />
-    <addaction name="actionAcerca_de" />
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="actionMasas_Patrimoniales" />
+    <addaction name="separator" />
+    <addaction name="actionRegistro_de_IVA" />
+    <addaction name="actionModelo_347_no_oficial" />
+    <addaction name="separator" />
+    <addaction name="actionCobros_y_Pagos" />
+    <addaction name="actionAmortizaciones" />
    </widget>
-   <widget class="QMenu" name="menuVer" >
+   <widget class="QMenu" name="menuVentana" >
     <property name="title" >
-     <string>Ve&amp;r</string>
+     <string>&amp;Ventana</string>
     </property>
-    <addaction name="actionPantalla_Completa" />
-    <addaction name="actionOrdenar_Ventanas" />
-    <addaction name="actionOrganizaci_n_en_Cascada" />
+    <addaction name="actionPlan_Contable" />
+    <addaction name="actionAsientos" />
+    <addaction name="actionApuntes_Contables" />
+    <addaction name="actionLibro_Mayor" />
+    <addaction name="actionLibro_Diario" />
+    <addaction name="actionBalance_de_Cuentas" />
+    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+   </widget>
+   <widget class="QMenu" name="menuMaestro" >
+    <property name="title" >
+     <string>&amp;Maestro</string>
+    </property>
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="actionTipos_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionCentros_de_Coste" />
+    <addaction name="actionCanales" />
+    <addaction name="separator" />
    </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
@@ -56,29 +77,20 @@
     <addaction name="actionCanal_por_Defecto" />
     <addaction name="actionCentro_de_Coste_por_Defecto" />
    </widget>
-   <widget class="QMenu" name="menuMaestro" >
+   <widget class="QMenu" name="menuAyuda" >
     <property name="title" >
-     <string>&amp;Maestro</string>
+     <string>A&amp;yuda</string>
     </property>
-    <addaction name="actionFormas_de_Pago" />
-    <addaction name="actionTipos_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionCentros_de_Coste" />
-    <addaction name="actionCanales" />
-    <addaction name="separator" />
+    <addaction name="actionAyuda" />
+    <addaction name="actionAcerca_de" />
    </widget>
-   <widget class="QMenu" name="menuListados" >
+   <widget class="QMenu" name="menuVer" >
     <property name="title" >
-     <string>&amp;Listados</string>
+     <string>Ve&amp;r</string>
     </property>
-    <addaction name="actionCuentas_Anuales" />
-    <addaction name="actionMasas_Patrimoniales" />
-    <addaction name="separator" />
-    <addaction name="actionRegistro_de_IVA" />
-    <addaction name="actionModelo_347_no_oficial" />
-    <addaction name="separator" />
-    <addaction name="actionCobros_y_Pagos" />
-    <addaction name="actionAmortizaciones" />
+    <addaction name="actionPantalla_Completa" />
+    <addaction name="actionOrdenar_Ventanas" />
+    <addaction name="actionOrganizaci_n_en_Cascada" />
    </widget>
    <widget class="QMenu" name="menuAsiento" >
     <property name="title" >
@@ -98,18 +110,6 @@
     <addaction name="actionConfiguracion" />
     <addaction name="actionSalir" />
    </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>&amp;Ventana</string>
-    </property>
-    <addaction name="actionPlan_Contable" />
-    <addaction name="actionAsientos" />
-    <addaction name="actionApuntes_Contables" />
-    <addaction name="actionLibro_Mayor" />
-    <addaction name="actionLibro_Diario" />
-    <addaction name="actionBalance_de_Cuentas" />
-    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
-   </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
    <addaction name="menuListados" />
@@ -123,6 +123,12 @@
   <widget class="QToolBar" name="toolBar" >
    <property name="orientation" >
     <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="iconSize" >
+    <size>
+     <width>32</width>
+     <height>32</height>
+    </size>
    </property>
    <attribute name="toolBarArea" >
     <number>4</number>
@@ -145,12 +151,18 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Co&amp;nfiguración...</string>
+    <string>Co&amp;nfiguracion...</string>
+   </property>
+   <property name="iconText" >
+    <string>Configuracion</string>
+   </property>
+   <property name="toolTip" >
+    <string>Configuracion</string>
    </property>
   </action>
   <action name="actionSalir" >
    <property name="text" >
-    <string>&amp;Cerrar el programa</string>
+    <string>&amp;Salir del programa</string>
    </property>
   </action>
   <action name="actionAbrir_Asientos" >
@@ -261,7 +273,13 @@
     <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_arbolBalance.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Balance &amp;jerárquico de Sumas y Saldos</string>
+    <string>Balance &amp;jerarquico de Sumas y Saldos</string>
+   </property>
+   <property name="iconText" >
+    <string>Balance jerarquico de Sumas y Saldos</string>
+   </property>
+   <property name="toolTip" >
+    <string>Balance jerarquico de Sumas y Saldos</string>
    </property>
   </action>
   <action name="actionFormas_de_Pago" >

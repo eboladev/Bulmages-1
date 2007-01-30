@@ -301,7 +301,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Minimum</enum>
+           <enum>QSizePolicy::Expanding</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -339,17 +339,9 @@
         </item>
         <item>
          <widget class="BusquedaReferencia" name="m_refalbaranp" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
           <property name="minimumSize" >
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>0</height>
            </size>
           </property>
@@ -1435,6 +1427,21 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QWidget</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinAlbaranProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinalbaranproveedorview.h</header>
+  </customwidget>
+  <customwidget>
    <class>ListDescuentoAlbaranProvView</class>
    <extends>QWidget</extends>
    <header>listdescalbaranprovview.h</header>
@@ -1453,21 +1460,6 @@
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListLinAlbaranProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listlinalbaranproveedorview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

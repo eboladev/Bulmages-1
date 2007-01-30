@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
-    <height>399</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -61,6 +61,18 @@
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Nuevo pedido proveedor</string>
           </property>
@@ -83,6 +95,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_editar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Editar pedido proveedor</string>
           </property>
@@ -105,6 +129,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Borrar pedido proveedor</string>
           </property>
@@ -129,8 +165,14 @@
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="minimumSize" >
            <size>
-            <width>0</width>
-            <height>0</height>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="toolTip" >
@@ -155,6 +197,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Filtrar pedidos</string>
           </property>
@@ -180,6 +234,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_configurar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Configurar listado</string>
           </property>
@@ -205,6 +271,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Actualizar listado</string>
           </property>
@@ -231,7 +309,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Fixed</enum>
+           <enum>QSizePolicy::Expanding</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -249,7 +327,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_filtro" />
+         <widget class="QLineEdit" name="m_filtro" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -266,10 +351,10 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item row="0" column="0" colspan="2" >
        <widget class="QCheckBox" name="m_procesados" >
@@ -284,7 +369,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QLabel" name="label6" >
@@ -297,7 +382,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -307,7 +399,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QLabel" name="label7" >
@@ -320,7 +412,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>
@@ -349,7 +448,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -362,7 +461,7 @@
        <property name="sizeHint" >
         <size>
          <width>211</width>
-         <height>37</height>
+         <height>12</height>
         </size>
        </property>
       </spacer>
@@ -370,7 +469,7 @@
      <item>
       <widget class="QLabel" name="label3" >
        <property name="text" >
-        <string>Suma de totales de pedidos:</string>
+        <string>Total:</string>
        </property>
       </widget>
      </item>
@@ -378,6 +477,43 @@
       <widget class="QLineEdit" name="m_total" >
        <property name="enabled" >
         <bool>true</bool>
+       </property>
+       <property name="palette" >
+        <palette>
+         <active>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>238</red>
+             <green>238</green>
+             <blue>238</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>238</red>
+             <green>238</green>
+             <blue>238</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
        </property>
        <property name="font" >
         <font>
@@ -396,12 +532,8 @@
        <property name="alignment" >
         <set>Qt::AlignRight</set>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton" >
-       <property name="text" >
-        <string>&amp;Cerrar</string>
+       <property name="readOnly" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -412,16 +544,6 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -430,6 +552,16 @@
    <class>PedidosProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>pedidosproveedorlist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends>QWidget</extends>
+   <header>busquedaarticulo.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
   </customwidget>
  </customwidgets>
  <resources>

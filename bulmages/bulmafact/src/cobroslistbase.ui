@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>539</width>
-    <height>436</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -236,6 +236,19 @@
          </spacer>
         </item>
         <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLabel" name="textLabel1" >
           <property name="text" >
            <string>Buscar:</string>
@@ -243,7 +256,14 @@
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="m_filtro" />
+         <widget class="QLineEdit" name="m_filtro" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
@@ -271,7 +291,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QLabel" name="textLabel1_4" >
@@ -281,7 +301,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -307,7 +334,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -333,7 +367,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <layout class="QVBoxLayout" >
@@ -429,6 +463,43 @@
        <property name="enabled" >
         <bool>true</bool>
        </property>
+       <property name="palette" >
+        <palette>
+         <active>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>238</red>
+             <green>238</green>
+             <blue>238</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>238</red>
+             <green>238</green>
+             <blue>238</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
        <property name="font" >
         <font>
          <family>Sans Serif</family>
@@ -442,6 +513,9 @@
        </property>
        <property name="alignment" >
         <set>Qt::AlignRight</set>
+       </property>
+       <property name="readOnly" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>

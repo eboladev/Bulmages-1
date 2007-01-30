@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>FacturasListBase</class>
  <widget class="QWidget" name="FacturasListBase" >
   <property name="enabled" >
@@ -11,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>571</width>
-    <height>397</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -23,10 +21,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -34,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -56,10 +54,10 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -275,10 +273,10 @@
      </property>
      <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+       <number>5</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+       <number>5</number>
       </property>
       <item>
        <layout class="QHBoxLayout" >
@@ -286,7 +284,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QLabel" name="textLabel1_4" >
@@ -296,7 +294,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -322,7 +327,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -348,7 +360,7 @@
          <number>0</number>
         </property>
         <property name="spacing" >
-         <number>3</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QCheckBox" name="m_procesada" >
@@ -384,7 +396,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaArticulo" name="m_articulo" />
+         <widget class="BusquedaArticulo" native="1" name="m_articulo" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -410,10 +429,10 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaCliente" name="m_cliente" >
+         <widget class="BusquedaCliente" native="1" name="m_cliente" >
           <property name="minimumSize" >
            <size>
-            <width>250</width>
+            <width>150</width>
             <height>0</height>
            </size>
           </property>
@@ -449,7 +468,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>3</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -462,7 +481,7 @@
        <property name="sizeHint" >
         <size>
          <width>340</width>
-         <height>21</height>
+         <height>12</height>
         </size>
        </property>
       </spacer>
@@ -479,10 +498,47 @@
        <property name="enabled" >
         <bool>true</bool>
        </property>
+       <property name="palette" >
+        <palette>
+         <active>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>238</red>
+             <green>238</green>
+             <blue>238</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </active>
+         <inactive>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>238</red>
+             <green>238</green>
+             <blue>238</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </inactive>
+         <disabled>
+          <colorrole role="Base" >
+           <brush brushstyle="SolidPattern" >
+            <color alpha="255" >
+             <red>255</red>
+             <green>255</green>
+             <blue>255</blue>
+            </color>
+           </brush>
+          </colorrole>
+         </disabled>
+        </palette>
+       </property>
        <property name="font" >
         <font>
          <family>Sans Serif</family>
-         <pointsize>20</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>
@@ -493,6 +549,9 @@
        <property name="alignment" >
         <set>Qt::AlignRight</set>
        </property>
+       <property name="readOnly" >
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
     </layout>
@@ -500,35 +559,26 @@
   </layout>
  </widget>
  <layoutdefault spacing="3" margin="5" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaCliente</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedacliente.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>FacturasListSubform</class>
    <extends>QTableWidget</extends>
    <header>facturaslist.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>BusquedaArticulo</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

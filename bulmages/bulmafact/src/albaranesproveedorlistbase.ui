@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>564</width>
-    <height>398</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -32,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -246,7 +246,7 @@
          <widget class="QLineEdit" name="m_filtro" >
           <property name="minimumSize" >
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>0</height>
            </size>
           </property>
@@ -324,7 +324,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechain" />
+         <widget class="BusquedaFecha" native="1" name="m_fechain" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -332,7 +339,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -350,7 +357,14 @@
          </widget>
         </item>
         <item>
-         <widget class="BusquedaFecha" native="1" name="m_fechafin" />
+         <widget class="BusquedaFecha" native="1" name="m_fechafin" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <spacer>
@@ -358,7 +372,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -884,7 +898,7 @@
        <property name="font" >
         <font>
          <family>Sans Serif</family>
-         <pointsize>20</pointsize>
+         <pointsize>12</pointsize>
          <weight>75</weight>
          <italic>false</italic>
          <bold>true</bold>

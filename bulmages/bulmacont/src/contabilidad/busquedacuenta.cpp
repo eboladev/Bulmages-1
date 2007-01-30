@@ -106,6 +106,7 @@ void BusquedaCuenta::s_searchCuenta() {
     /// Hacemos la conexi&oacute;n del cerrar de las cuentas con el cerrar di&aacute;logo.
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
     connect(listcuentas, SIGNAL(destroyed(QObject)), diag, SLOT(accept()));
+
     listcuentas->inicializa();
 
     /// Sacamos el di&aacute;logo.
