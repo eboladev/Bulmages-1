@@ -56,7 +56,7 @@ void cuentaview::cuentanueva(QString cod) {
         } else {
             bloqueada->setChecked(false);
         } // end if
-        if (cur->valor("imputacion")!= "f") {
+        if (cur->valor("imputacion") != "f") {
             imputacion->setChecked(true);
         } else {
             imputacion->setChecked(false);
@@ -150,7 +150,7 @@ void cuentaview::closeEvent(QCloseEvent *e) {
                                        tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
         if (val == 0)
             try {
-                saveAccount();
+                guardarCuenta();
             } catch (...) {
                 e->ignore();
             } // end try
@@ -337,14 +337,14 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
 /// Esta funci&oacute;n se dispara cuando se ha pulsado
 /// return sobre el bot&oacute;n del c&oacute;digo.
 void cuentaview::codigo_ret() {
-    QString cod=codigo->text();
+    QString cod = codigo->text();
     cod = extiendecodigo(cod, numdigitos);
     codigo->setText(cod);
 }
 
 
-void cuentaview::saveAccount() {
-    _depura("cuentaview::saveAccount", 0);
+void cuentaview::guardarCuenta() {
+    _depura("cuentaview::guardarCuenta", 0);
     QString codigocuenta;
     int idpadre = 0;
     cursor2 *cursoraux;
@@ -414,7 +414,7 @@ void cuentaview::saveAccount() {
                                   conexionbase->sanearCadena(web->text()),
                                   tipocuenta,
                                   nodebe->isChecked(),
-                                  nohaber->isChecked() );
+                                  nohaber->isChecked());
         QString query = "SELECT max(idcuenta) AS id from cuenta";
         cursoraux = conexionbase->cargacursor(query, "maxidcuenta");
         idcuenta = atoi(cursoraux->valor("id").toAscii());
@@ -426,13 +426,10 @@ void cuentaview::saveAccount() {
 }
 
 
-void cuentaview::deleteAccount() {
+void cuentaview::borrarCuenta() {
     switch (QMessageBox::warning(this,
                                  tr("Borrar cuenta"),
-                                 tr("Se va a borrar la cuenta,\n \
-                                    Esto puede ocasionar perdida de datos\n \
-                                    Tal vez deberia pensarselo mejor antes\n \
-                                    porque igual su trabajo se pierde."),
+                                 tr("Se va a borrar la cuenta,\nEsto puede ocasionar perdida de datos\nTal vez deberia pensarselo mejor antes\nporque igual su trabajo se pierde."),
                                  QMessageBox::Ok, QMessageBox::Cancel)) {
     case QMessageBox::Ok: /// Retry clicked or Enter pressed.
         conexionbase->ejecuta("DELETE FROM cuenta WHERE idcuenta = " + QString::number(idcuenta));

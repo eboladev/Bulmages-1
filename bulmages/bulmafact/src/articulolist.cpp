@@ -117,7 +117,7 @@ void ArticuloList::on_mui_editar_clicked() {
     _depura("ArticuloList::INIT_s_editArticle()\n", 0);
     int a = mui_list->currentRow();
     if (a < 0) {
-        _depura("Debe seleccionar una linea", 2);
+        mensajeInfo(tr("Tiene que seleccionar un articulo"));
         return;
     } // end if
     editArticle(a);
@@ -138,7 +138,12 @@ ArticuloList::~ArticuloList() {
 /// \TODO: Deberia crear una instancia del articulo e invocar a su metodo de borrado
 /// ya que si hay algun plugin puede que no se vea afectado por este metodo.
 void ArticuloList::on_mui_borrar_clicked() {
-    _depura("ArticuloList::INIT_removeArticle()\n", 0);
+    _depura("ArticuloList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Tiene que seleccionar un articulo"));
+        return;
+    } // end if
     try {
         QString idarticulo = mui_list->DBvalue("idarticulo");
         if (QMessageBox::Yes == QMessageBox::question(this,

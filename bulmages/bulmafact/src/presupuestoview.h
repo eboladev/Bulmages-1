@@ -18,8 +18,8 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef BUDGET_H
-#define BUDGET_H
+#ifndef PRESUPUESTOCLIENTE_H
+#define PRESUPUESTOCLIENTE_H
 
 #include <QLineEdit>
 #include <QLabel>

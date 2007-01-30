@@ -46,16 +46,16 @@ PedidoProveedorView::PedidoProveedorView(company *comp, QWidget *parent)
     try {
         setupUi(this);
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
-        subform3->setcompany(comp);
-        m_proveedor->setcompany(comp);
-        m_forma_pago->setcompany(comp);
-        m_descuentos->setcompany(comp);
-        m_almacen->setcompany(comp);
-        m_trabajador->setcompany(comp);
-        m_refpedidoproveedor->setcompany(comp);
+        mui_lineasDetalle->setcompany(comp);
+        mui_proveedor->setcompany(comp);
+        mui_formaPago->setcompany(comp);
+        mui_descuentos->setcompany(comp);
+        mui_almacenDestino->setcompany(comp);
+        mui_trabajador->setcompany(comp);
+        mui_referenciaPedido->setcompany(comp);
 
-        setListaLineas(subform3);
-        setListaDescuentos(m_descuentos);
+        setListaLineas(mui_lineasDetalle);
+        setListaDescuentos(mui_descuentos);
 
         inicialize();
         dialogChanges_cargaInicial();
@@ -76,36 +76,36 @@ PedidoProveedorView::~PedidoProveedorView() {
 
 void PedidoProveedorView::inicialize() {
     _depura("PedidoProveedorView::inicialize", 0);
-    m_totalBases->setReadOnly(TRUE);
-    m_totalBases->setAlignment(Qt::AlignRight);
-    QPalette p1 = m_totalBases->palette();
+    mui_totalBaseImponible->setReadOnly(TRUE);
+    mui_totalBaseImponible->setAlignment(Qt::AlignRight);
+    QPalette p1 = mui_totalBaseImponible->palette();
     p1.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    m_totalBases->setPalette(p1);
+    mui_totalBaseImponible->setPalette(p1);
 
-    m_totalTaxes->setReadOnly(TRUE);
-    m_totalTaxes->setAlignment(Qt::AlignRight);
-    QPalette p2 = m_totalTaxes->palette();
+    mui_totalImpuestos->setReadOnly(TRUE);
+    mui_totalImpuestos->setAlignment(Qt::AlignRight);
+    QPalette p2 = mui_totalImpuestos->palette();
     p2.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    m_totalTaxes->setPalette(p2);
+    mui_totalImpuestos->setPalette(p2);
 
-    m_totalDiscounts->setReadOnly(TRUE);
-    m_totalDiscounts->setAlignment(Qt::AlignRight);
-    QPalette p3 = m_totalDiscounts->palette();
+    mui_totalDescuentos->setReadOnly(TRUE);
+    mui_totalDescuentos->setAlignment(Qt::AlignRight);
+    QPalette p3 = mui_totalDescuentos->palette();
     p3.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    m_totalDiscounts->setPalette(p3);
+    mui_totalDescuentos->setPalette(p3);
 
-    m_totalpedidoproveedor->setReadOnly(TRUE);
-    m_totalpedidoproveedor->setAlignment(Qt::AlignRight);
-    QPalette p4 = m_totalpedidoproveedor->palette();
+    mui_totalPedido->setReadOnly(TRUE);
+    mui_totalPedido->setAlignment(Qt::AlignRight);
+    QPalette p4 = mui_totalPedido->palette();
     p4.setBrush(QPalette::Base, this->palette().color(QPalette::Window));
-    m_totalpedidoproveedor->setPalette(p4);
+    mui_totalPedido->setPalette(p4);
 
     /// Inicializamos los desplegables.
     pintaidforma_pago("0");
     pintaidalmacen("0");
     pintaidtrabajador("0");
-    subform3->pintar();
-    m_descuentos->pintar();
+    mui_lineasDetalle->pintar();
+    mui_descuentos->pintar();
     _depura("END PedidoProveedorView::inicialize", 0);
 }
 
@@ -129,18 +129,18 @@ int PedidoProveedorView::cargar(QString id) {
 int PedidoProveedorView::guardar() {
     _depura("PedidoProveedorView::guardar", 0);
     try {
-        setcomentpedidoproveedor(m_comentpedidoproveedor->toPlainText());
-        setnumpedidoproveedor(m_numpedidoproveedor->text());
-        setidproveedor(m_proveedor->idproveedor());
-        setfechapedidoproveedor(m_fechapedidoproveedor->text());
-        setidalmacen(m_almacen->idalmacen());
-        setidtrabajador(m_trabajador->idtrabajador());
-        setidforma_pago(m_forma_pago->idforma_pago());
-        setrefpedidoproveedor(m_refpedidoproveedor->text());
-        setdescpedidoproveedor(m_descpedidoproveedor->text());
-        setcontactpedidoproveedor(m_contactpedidoproveedor->text());
-        settelpedidoproveedor(m_telpedidoproveedor->text());
-        setprocesadopedidoproveedor(m_procesadopedidoproveedor->isChecked() ? "TRUE" : "FALSE");
+        setcomentpedidoproveedor(mui_comentarios->toPlainText());
+        setnumpedidoproveedor(mui_numeroPedido->text());
+        setidproveedor(mui_proveedor->idproveedor());
+        setfechapedidoproveedor(mui_fechaPedido->text());
+        setidalmacen(mui_almacenDestino->idalmacen());
+        setidtrabajador(mui_trabajador->idtrabajador());
+        setidforma_pago(mui_formaPago->idforma_pago());
+        setrefpedidoproveedor(mui_referenciaPedido->text());
+        setdescpedidoproveedor(mui_descripcionPedido->text());
+        setcontactpedidoproveedor(mui_personaContacto->text());
+        settelpedidoproveedor(mui_telefonoContacto->text());
+        setprocesadopedidoproveedor(mui_tramitadoPedido->isChecked() ? "TRUE" : "FALSE");
         PedidoProveedor::guardar();
         dialogChanges_cargaInicial();
     } catch (...) {
@@ -154,12 +154,12 @@ int PedidoProveedorView::guardar() {
 
 void PedidoProveedorView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("PedidoProveedorView::pintatotales", 0);
-    m_totalBases->setText(base.toQString());
-    m_totalTaxes->setText(iva.toQString());
-    m_totalpedidoproveedor->setText(total.toQString());
-    m_totalDiscounts->setText(desc.toQString());
-    m_totalIRPF->setText(QString(irpf.toQString()));
-    m_totalReqEq->setText(QString(reqeq.toQString()));
+    mui_totalBaseImponible->setText(base.toQString());
+    mui_totalImpuestos->setText(iva.toQString());
+    mui_totalPedido->setText(total.toQString());
+    mui_totalDescuentos->setText(desc.toQString());
+    mui_totalIRPF->setText(QString(irpf.toQString()));
+    mui_totalRecargo->setText(QString(reqeq.toQString()));
     _depura("END PedidoProveedorView::pintatotales", 0);
 }
 
@@ -169,7 +169,7 @@ void PedidoProveedorView::on_mui_pagar_clicked() {
     PagoView *bud = m_companyact->newPagoView();
     m_companyact->m_pWorkspace->addWindow(bud);
     bud->setidproveedor(DBvalue("idproveedor"));
-    bud->setcantpago(m_totalpedidoproveedor->text());
+    bud->setcantpago(mui_totalPedido->text());
     bud->setrefpago(DBvalue("refpedidoproveedor"));
     bud->setcomentpago(DBvalue("descpedidoproveedor"));
     bud->pintar();
@@ -197,7 +197,7 @@ void PedidoProveedorView::generarAlbaran() {
     /// Si no salimos de la funcion.
     if (QMessageBox::question(this,
                               tr("El albaran de proveedor no existe"),
-                              tr("No existe un albaran asociado a este pedido.\n Desea crearlo?"),
+                              tr("No existe un albaran asociado a este pedido.\nDesea crearlo?"),
                               tr("&Si"), tr("&No"),
                               QString::null, 0, 1))
         return;
@@ -233,8 +233,6 @@ void PedidoProveedorView::generarAlbaran() {
         } // end if
     } // end for
 
-
-
     /// Traspasamos los descuentos del pedido a descuentos del albaran.
     SDBRecord *linea1;
     SDBRecord *linea3;
@@ -248,16 +246,15 @@ void PedidoProveedorView::generarAlbaran() {
         } // end if
     } // end for
 
-
     bud->pintar();
     bud->show();
     _depura("END PedidoProveedorView::generarAlbaran", 0);
 }
 
-void PedidoProveedorView::on_m_proveedor_valueChanged(QString id) {
+void PedidoProveedorView::on_mui_proveedor_valueChanged(QString id) {
     _depura("PedidoProveedorView::on_m_proveedor_valueChanged", 0);
-    subform3->setIdProveedor(id);
-    m_forma_pago->setIdProveedor(id);
+    mui_lineasDetalle->setIdProveedor(id);
+    mui_formaPago->setIdProveedor(id);
     _depura("END PedidoProveedorView::on_m_proveedor_valueChanged", 0);
 }
 

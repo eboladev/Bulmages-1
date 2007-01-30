@@ -28,7 +28,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -663,10 +663,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="ListLinAlbaranProveedorView" native="1" name="subform2" />
@@ -679,10 +679,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="ListDescuentoAlbaranProvView" native="1" name="m_descuentos" />
@@ -757,6 +757,43 @@
          <property name="enabled" >
           <bool>true</bool>
          </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -826,6 +863,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalBases" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -895,6 +969,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalIRPF" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -964,6 +1075,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalTaxes" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1024,7 +1172,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Recargo</string>
+          <string>R.E.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -1033,6 +1181,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalReqEq" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -1104,6 +1289,43 @@
         <widget class="QLineEdit" name="m_totalalbaranp" >
          <property name="enabled" >
           <bool>true</bool>
+         </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
          </property>
          <property name="font" >
           <font>
@@ -1213,6 +1435,11 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>ListDescuentoAlbaranProvView</class>
+   <extends>QWidget</extends>
+   <header>listdescalbaranprovview.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaProveedor</class>
    <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
@@ -1241,11 +1468,6 @@
    <class>ListLinAlbaranProveedorView</class>
    <extends>QWidget</extends>
    <header>listlinalbaranproveedorview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoAlbaranProvView</class>
-   <extends>QWidget</extends>
-   <header>listdescalbaranprovview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -156,7 +156,7 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
         } // end if
         presenta();
     } catch(...) {
-        mensajeInfo(tr("Error al borrar el albaran cliente"));
+        mensajeInfo(tr("Error al borrar el albaran a cliente"));
     } // end try
     _depura("END AlbaranClienteList::on_mui_borrar_clicked", 0);
 }
@@ -167,7 +167,7 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
 /// \TODO: Se podria hacer una clase derivada de Ficha que fuese Listado y que directamente implementase el metodo on_mui_imprimir.
 void AlbaranClienteList::imprimir() {
     _depura("AlbaranClienteList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Albaranes Cliente"));
+    mui_list->imprimirPDF(tr("Albaranes a cliente"));
     _depura("END AlbaranClienteList::imprimir", 0);
 }
 

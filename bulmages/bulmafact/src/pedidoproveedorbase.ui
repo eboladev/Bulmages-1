@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>846</width>
-    <height>691</height>
+    <width>717</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -29,7 +29,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -297,12 +297,12 @@
            <string>Referencia del pedido:</string>
           </property>
           <property name="buddy" >
-           <cstring>m_refpedidoproveedor</cstring>
+           <cstring>mui_referenciaPedido</cstring>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="BusquedaReferencia" name="m_refpedidoproveedor" >
+         <widget class="BusquedaReferencia" name="mui_referenciaPedido" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>3</hsizetype>
@@ -380,12 +380,12 @@
         <string>Descripcion:</string>
        </property>
        <property name="buddy" >
-        <cstring>m_descpedidoproveedor</cstring>
+        <cstring>mui_descripcionPedido</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_descpedidoproveedor" />
+      <widget class="QLineEdit" name="mui_descripcionPedido" />
      </item>
      <item>
       <widget class="QLabel" name="label6" >
@@ -401,12 +401,12 @@
         <string>Nº de pedido:</string>
        </property>
        <property name="buddy" >
-        <cstring>m_numpedidoproveedor</cstring>
+        <cstring>mui_numeroPedido</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_numpedidoproveedor" >
+      <widget class="QLineEdit" name="mui_numeroPedido" >
        <property name="sizePolicy" >
         <sizepolicy>
          <hsizetype>0</hsizetype>
@@ -497,7 +497,7 @@
        </widget>
       </item>
       <item row="1" column="3" >
-       <widget class="BusquedaFecha" native="1" name="m_fechapedidoproveedor" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechaPedido" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>13</hsizetype>
@@ -505,6 +505,9 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
         </property>
        </widget>
       </item>
@@ -519,7 +522,7 @@
        </widget>
       </item>
       <item row="2" column="3" >
-       <widget class="BusquedaTrabajador" native="1" name="m_trabajador" >
+       <widget class="BusquedaTrabajador" native="1" name="mui_trabajador" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -528,10 +531,13 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
+        </property>
        </widget>
       </item>
       <item row="3" column="3" >
-       <widget class="BusquedaAlmacen" native="1" name="m_almacen" >
+       <widget class="BusquedaAlmacen" native="1" name="mui_almacenDestino" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>13</hsizetype>
@@ -540,10 +546,13 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
+        </property>
        </widget>
       </item>
       <item row="4" column="3" >
-       <widget class="BusquedaFormaPago" native="1" name="m_forma_pago" >
+       <widget class="BusquedaFormaPago" native="1" name="mui_formaPago" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>5</hsizetype>
@@ -551,6 +560,9 @@
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
         </property>
        </widget>
       </item>
@@ -563,12 +575,12 @@
          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
         <property name="buddy" >
-         <cstring></cstring>
+         <cstring>mui_numeroPedido</cstring>
         </property>
        </widget>
       </item>
       <item row="3" column="1" >
-       <widget class="QLineEdit" name="m_contactpedidoproveedor" />
+       <widget class="QLineEdit" name="mui_personaContacto" />
       </item>
       <item row="4" column="0" >
        <widget class="QLabel" name="label8" >
@@ -581,10 +593,10 @@
        </widget>
       </item>
       <item row="4" column="1" >
-       <widget class="QLineEdit" name="m_telpedidoproveedor" />
+       <widget class="QLineEdit" name="mui_telefonoContacto" />
       </item>
       <item rowspan="3" row="0" column="0" colspan="2" >
-       <widget class="BusquedaProveedor" native="1" name="m_proveedor" >
+       <widget class="BusquedaProveedor" native="1" name="mui_proveedor" >
         <property name="sizePolicy" >
          <sizepolicy>
           <hsizetype>7</hsizetype>
@@ -599,10 +611,13 @@
           <height>0</height>
          </size>
         </property>
+        <property name="focusPolicy" >
+         <enum>Qt::StrongFocus</enum>
+        </property>
        </widget>
       </item>
       <item row="0" column="3" >
-       <widget class="QCheckBox" name="m_procesadopedidoproveedor" >
+       <widget class="QCheckBox" name="mui_tramitadoPedido" >
         <property name="font" >
          <font>
           <family>Sans Serif</family>
@@ -652,13 +667,17 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <item>
-        <widget class="ListLinPedidoProveedorView" native="1" name="subform3" />
+        <widget class="ListLinPedidoProveedorView" native="1" name="mui_lineasDetalle" >
+         <property name="focusPolicy" >
+          <enum>Qt::StrongFocus</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -668,13 +687,17 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <item>
-        <widget class="ListDescuentoPedidoProveedorView" native="1" name="m_descuentos" />
+        <widget class="ListDescuentoPedidoProveedorView" native="1" name="mui_descuentos" >
+         <property name="focusPolicy" >
+          <enum>Qt::StrongFocus</enum>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -690,7 +713,7 @@
         <number>5</number>
        </property>
        <item>
-        <widget class="QTextEdit" name="m_comentpedidoproveedor" >
+        <widget class="QTextEdit" name="mui_comentarios" >
          <property name="sizePolicy" >
           <sizepolicy>
            <hsizetype>7</hsizetype>
@@ -698,6 +721,9 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="focusPolicy" >
+          <enum>Qt::StrongFocus</enum>
          </property>
         </widget>
        </item>
@@ -751,7 +777,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_totalDiscounts" >
+        <widget class="QLineEdit" name="mui_totalDescuentos" >
          <property name="enabled" >
           <bool>true</bool>
          </property>
@@ -860,7 +886,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_totalBases" >
+        <widget class="QLineEdit" name="mui_totalBaseImponible" >
          <property name="palette" >
           <palette>
            <active>
@@ -966,7 +992,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_totalIRPF" >
+        <widget class="QLineEdit" name="mui_totalIRPF" >
          <property name="palette" >
           <palette>
            <active>
@@ -1072,7 +1098,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_totalTaxes" >
+        <widget class="QLineEdit" name="mui_totalImpuestos" >
          <property name="palette" >
           <palette>
            <active>
@@ -1178,7 +1204,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_totalReqEq" >
+        <widget class="QLineEdit" name="mui_totalRecargo" >
          <property name="palette" >
           <palette>
            <active>
@@ -1284,7 +1310,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="m_totalpedidoproveedor" >
+        <widget class="QLineEdit" name="mui_totalPedido" >
          <property name="enabled" >
           <bool>true</bool>
          </property>
@@ -1405,6 +1431,16 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinPedidoProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinpedidoproveedorview.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -1434,17 +1470,32 @@
    <extends>QWidget</extends>
    <header>busquedaproveedor.h</header>
   </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListLinPedidoProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listlinpedidoproveedorview.h</header>
-  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>mui_referenciaPedido</tabstop>
+  <tabstop>mui_detalles</tabstop>
+  <tabstop>mui_descripcionPedido</tabstop>
+  <tabstop>mui_numeroPedido</tabstop>
+  <tabstop>mui_proveedor</tabstop>
+  <tabstop>mui_tramitadoPedido</tabstop>
+  <tabstop>mui_fechaPedido</tabstop>
+  <tabstop>mui_trabajador</tabstop>
+  <tabstop>mui_personaContacto</tabstop>
+  <tabstop>mui_almacenDestino</tabstop>
+  <tabstop>mui_telefonoContacto</tabstop>
+  <tabstop>mui_formaPago</tabstop>
+  <tabstop>discounts</tabstop>
+  <tabstop>mui_lineasDetalle</tabstop>
+  <tabstop>mui_descuentos</tabstop>
+  <tabstop>mui_comentarios</tabstop>
+  <tabstop>mui_guardar</tabstop>
+  <tabstop>mui_borrar</tabstop>
+  <tabstop>mui_imprimir</tabstop>
+  <tabstop>mui_facturar</tabstop>
+  <tabstop>mui_pagar</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
+ </tabstops>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>

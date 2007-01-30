@@ -54,46 +54,46 @@ public:
     void generarAlbaran();
     void inicialize();
     void pintaidproveedor(QString id) {
-        m_proveedor->setidproveedor(id);
+        mui_proveedor->setidproveedor(id);
     };
     void pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
+        mui_almacenDestino->setidalmacen(id);
     };
     void pintaidpedidoproveedor(QString) {}
     ;
     void pintanumpedidoproveedor(QString id) {
-        m_numpedidoproveedor->setText(id);
+        mui_numeroPedido->setText(id);
     };
     void pintafechapedidoproveedor(QString id) {
-        m_fechapedidoproveedor->setText(id);
+        mui_fechaPedido->setText(id);
     };
     void pintadescpedidoproveedor(QString id) {
-        m_descpedidoproveedor->setText(id);
+        mui_descripcionPedido->setText(id);
     };
     void pintaidforma_pago(QString id) {
-        m_forma_pago->setidforma_pago(id);
+        mui_formaPago->setidforma_pago(id);
     };
     void pintaidtrabajador(QString id) {
-        m_trabajador->setidtrabajador(id);
+        mui_trabajador->setidtrabajador(id);
     };
     void pintacomentpedidoproveedor(QString id) {
-        m_comentpedidoproveedor->setPlainText(id);
+        mui_comentarios->setPlainText(id);
     };
     void pintarefpedidoproveedor(QString id) {
-        m_refpedidoproveedor->setText(id);
+        mui_referenciaPedido->setText(id);
     };
     void pintacontactpedidoproveedor(QString id) {
-        m_contactpedidoproveedor->setText(id);
+        mui_personaContacto->setText(id);
     };
     void pintatelpedidoproveedor(QString id) {
-        m_telpedidoproveedor->setText(id);
+        mui_telefonoContacto->setText(id);
     };
     void pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq);
     void pintaprocesadopedidoproveedor(QString id) {
         if (id == "t" || id == "TRUE") {
-            m_procesadopedidoproveedor->setChecked(TRUE);
+            mui_tramitadoPedido->setChecked(TRUE);
         } else {
-            m_procesadopedidoproveedor->setChecked(FALSE);
+            mui_tramitadoPedido->setChecked(FALSE);
         }
     };
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
@@ -104,7 +104,7 @@ public:
     };
 
 public slots:
-    virtual void on_m_proveedor_valueChanged(QString);
+    virtual void on_mui_proveedor_valueChanged(QString);
     virtual void on_mui_guardar_clicked() {
         guardar();
         dialogChanges_cargaInicial();
@@ -120,10 +120,10 @@ public slots:
     virtual void on_mui_facturar_clicked() {
         generarAlbaran();
     };
-    virtual void on_m_descuentos_editFinish(int, int) {
+    virtual void on_mui_descuentos_editFinish(int, int) {
         calculaypintatotales();
     };
-    virtual void on_subform3_editFinish(int, int) {
+    virtual void on_mui_lineasDetalle_editFinish(int, int) {
         calculaypintatotales();
     };
 };

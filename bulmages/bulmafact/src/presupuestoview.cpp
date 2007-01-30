@@ -43,8 +43,6 @@
 #include "informereferencia.h"
 #include "plugins.h"
 
-#define coma "'"
-
 
 PresupuestoView::PresupuestoView(company *comp, QWidget *parent)
         : Presupuesto(comp, parent) {

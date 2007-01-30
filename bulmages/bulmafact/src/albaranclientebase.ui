@@ -28,7 +28,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -1414,7 +1414,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Recargo</string>
+          <string>R.E.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -1671,16 +1671,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListDescuentoAlbaranClienteView</class>
    <extends>QWidget</extends>
    <header>listdescalbaranclienteview.h</header>
@@ -1709,6 +1699,16 @@
    <class>ListLinAlbaranClienteView</class>
    <extends>QWidget</extends>
    <header>listlinalbaranclienteview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
   </customwidget>
  </customwidgets>
  <resources>

@@ -148,8 +148,7 @@ void AlbaranProveedorView::generarFactura()  {
     /// Si no salimos de la funcion.
     if (QMessageBox::question(this,
                               tr("Factura inexistente"),
-                              tr("No existe una factura asociada a este albaran."
-                                 "Desea crearla?"),
+                              tr("No existe una factura asociada a este albaran.\nDesea crearla?"),
                               tr("&Si"), tr("&No"), QString::null, 0, 1)) {
         return;
     } // end if
@@ -301,8 +300,8 @@ void AlbaranProveedorView::generarFacturaProveedor() {
 	/// Informamos que ya hay una factura y que la abriremos.
 	/// Si no salimos de la funci&oacute;n.
 	if (QMessageBox::question(this,
-				tr("Factura de Proveedor existente"),
-				tr("Existe una factura a este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?"),
+				tr("Factura de proveedor existente"),
+				tr("Existe una factura de este proveedor con la misma referencia que este albaran. Desea abrirla para verificar?"),
 				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
 		return;
 	}

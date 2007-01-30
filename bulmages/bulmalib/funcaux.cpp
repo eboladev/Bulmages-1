@@ -43,8 +43,9 @@ QString editaTexto(QString texto) {
     ed->setPlainText(texto);
     g_main->setEnabled(FALSE);
     ed->show();
-    while(!ed->isHidden())
+    while (!ed->isHidden()) {
         theApp->processEvents();
+    } // end while
     g_main->setEnabled(TRUE);
     QString vuelta = ed->toPlainText();
     return vuelta;
@@ -259,7 +260,6 @@ void mailsendPDF(const QString arch, const QString to, const QString subject, co
 /// nivel 5 = Termina depuracion indiscriminada.
 /// nivel 10 = Salida a terminal.
 void _depura(QString cad, int nivel, QString param) {
-
     /// Si el objeto confpr no esta creado puede dar segmentation fault.
     if (confpr == NULL) {
         return;

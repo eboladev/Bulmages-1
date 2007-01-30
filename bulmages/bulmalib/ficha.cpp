@@ -27,24 +27,27 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(
     _depura("END Ficha::Ficha", 0);
 }
 
+
 Ficha::~Ficha() {
-	_depura("Ficha::~Ficha", 0);
-	_depura("END Ficha::~Ficha", 0);
+    _depura("Ficha::~Ficha", 0);
+    _depura("END Ficha::~Ficha", 0);
 }
 
+
 void Ficha::on_mui_aceptar_clicked() {
-    _depura("Ficha::on_mui_aceptar_clicked", 0);
+    _depura("Ficha::on_mui_aceptar_clicked", 10);
     try {
         if (guardar()) {
             throw -1;
         } // end if
         close();
     } catch (...) {} // end try
-    _depura("Ficha::on_mui_aceptar_clicked", 0);
+    _depura("Ficha::on_mui_aceptar_clicked", 10);
 }
 
+
 void Ficha::on_mui_borrar_clicked() {
-    _depura("Ficha::on_mui_borrar_clicked", 0);
+    _depura("Ficha::on_mui_borrar_clicked", 10);
     int val = QMessageBox::warning(this,
                                    tr("Borrar") + " " + windowTitle(),
                                    tr("Desea eliminar la") + " " + windowTitle(),
@@ -56,7 +59,7 @@ void Ficha::on_mui_borrar_clicked() {
             close();
         } // end if
     } // end if
-    _depura("END Ficha::on_mui_borrar_clicked", 0);
+    _depura("END Ficha::on_mui_borrar_clicked", 10);
 }
 
 

@@ -45,12 +45,18 @@ class empresa;
 class cuentaview : public Ficha, public Ui_CuentaBase {
     Q_OBJECT
 
+private:
+    void guardarCuenta();
+    void borrarCuenta();
+
 public:
     empresa *empresaactual;
     int idcuenta;
     int idgrupos[100];
     postgresiface2 *conexionbase;
-    unsigned int numdigitos; /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tiene la contabilidad en sus cuentas.
+    /// Esta variable indica el n&uacute;mero de d&iacute;gitos que tiene la
+    /// contabilidad en sus cuentas.
+    unsigned int numdigitos;
 
 public:
     cuentaview(empresa *emp, QWidget *, Qt::WFlags fl = 0);
@@ -64,10 +70,14 @@ public:
 
 public slots:
     virtual void codigo_ret();
-    virtual void saveAccount();
-    virtual void deleteAccount();
+    virtual void on_mui_guardar_clicked() {
+        guardarCuenta();
+    };
+    virtual void on_mui_borrar_clicked() {
+        borrarCuenta();
+    };
     virtual void on_mui_aceptar_clicked() {
-        saveAccount();
+        guardarCuenta();
         close();
     };
 };

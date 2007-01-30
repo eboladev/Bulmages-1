@@ -93,7 +93,6 @@ public:
     /// Funciones que se encargan en guardar y cargar la configuracion del listado.
     void guardaconfig();
     void cargaconfig();
-
     void modoseleccion() {
         m_modo = SelectMode;
     };
@@ -139,7 +138,6 @@ public slots:
     virtual void on_mui_list_toogledConfig(bool check) {
         mui_configurar->setChecked(check);
     };
-
     virtual void on_mui_imprimirCatalogo_clicked();
 
 signals:
