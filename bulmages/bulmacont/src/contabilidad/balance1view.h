@@ -83,7 +83,6 @@ private:
 private slots:
     virtual void contextmenu(const QPoint &);
     virtual void nivelactivated(int);
-    //virtual void nivelactivated1(int, Q3ListViewItem *);
     virtual void nivelactivated1(int, QTreeWidgetItem *);
     virtual void boton_extracto1(int);
     virtual void boton_asiento();
