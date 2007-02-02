@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>764</width>
-    <height>673</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -1052,7 +1052,20 @@
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item row="0" column="2" >
+      <item row="0" column="1" >
+       <widget class="QLabel" name="TextLabel2" >
+        <property name="frameShape" >
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow" >
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="text" >
+         <string>Debe:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
        <widget class="QLabel" name="TextLabel2_5" >
         <property name="frameShape" >
          <enum>QFrame::NoFrame</enum>
@@ -1065,7 +1078,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="3" >
+      <item row="0" column="4" >
        <widget class="QLineEdit" name="totalhaber" >
         <property name="enabled" >
          <bool>true</bool>
@@ -1120,7 +1133,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="4" >
+      <item row="0" column="5" >
        <widget class="QLabel" name="TextLabel2_6" >
         <property name="frameShape" >
          <enum>QFrame::NoFrame</enum>
@@ -1133,68 +1146,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="5" >
-       <widget class="QLineEdit" name="totalsaldo" >
-        <property name="enabled" >
-         <bool>true</bool>
-        </property>
-        <property name="palette" >
-         <palette>
-          <active>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>238</red>
-              <green>238</green>
-              <blue>238</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="Base" >
-            <brush brushstyle="SolidPattern" >
-             <color alpha="255" >
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="font" >
-         <font>
-          <family>Sans Serif</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <italic>false</italic>
-          <bold>true</bold>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="alignment" >
-         <set>Qt::AlignRight</set>
-        </property>
-        <property name="readOnly" >
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
+      <item row="0" column="2" >
        <widget class="QLineEdit" name="totaldebe" >
         <property name="enabled" >
          <bool>true</bool>
@@ -1255,18 +1207,79 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="TextLabel2" >
-        <property name="frameShape" >
-         <enum>QFrame::NoFrame</enum>
+      <item row="0" column="6" >
+       <widget class="QLineEdit" name="totalsaldo" >
+        <property name="enabled" >
+         <bool>true</bool>
         </property>
-        <property name="frameShadow" >
-         <enum>QFrame::Plain</enum>
+        <property name="palette" >
+         <palette>
+          <active>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </active>
+          <inactive>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>238</red>
+              <green>238</green>
+              <blue>238</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </inactive>
+          <disabled>
+           <colorrole role="Base" >
+            <brush brushstyle="SolidPattern" >
+             <color alpha="255" >
+              <red>255</red>
+              <green>255</green>
+              <blue>255</blue>
+             </color>
+            </brush>
+           </colorrole>
+          </disabled>
+         </palette>
         </property>
-        <property name="text" >
-         <string>Debe:</string>
+        <property name="font" >
+         <font>
+          <family>Sans Serif</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <italic>false</italic>
+          <bold>true</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight</set>
+        </property>
+        <property name="readOnly" >
+         <bool>true</bool>
         </property>
        </widget>
+      </item>
+      <item row="0" column="0" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

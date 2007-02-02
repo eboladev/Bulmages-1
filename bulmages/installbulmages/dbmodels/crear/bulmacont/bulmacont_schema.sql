@@ -437,10 +437,10 @@ CREATE FUNCTION abreasientos() RETURNS integer
 --DECLARE res RECORD;
 BEGIN
 --    FOR as IN SELECT * FROM asiento ORDER BY idasiento DESC LOOP
---      SELECT INTO res cambiaasiento(as.idasiento, as.idasiento*3);
+--      SELECT INTO res cambiaasiento(as.idasiento, as.idasiento * 3);
 --    END LOOP;
 --  Abrir los asientos es modificar el campo ordenasiento de los mismos para que se reorganicen
-    UPDATE asiento SET ordenasiento= ordenasiento * 3;
+    UPDATE asiento SET ordenasiento = ordenasiento * 3;
     RETURN 0;
 END;
 '

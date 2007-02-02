@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>546</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -46,6 +46,9 @@
        </property>
        <property name="pixmap" >
         <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_asiento.xpm</pixmap>
+       </property>
+       <property name="scaledContents" >
+        <bool>true</bool>
        </property>
       </widget>
      </item>

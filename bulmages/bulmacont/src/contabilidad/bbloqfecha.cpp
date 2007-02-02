@@ -45,6 +45,7 @@ void BbloqFecha::inicializa() {
     mui_treeWidget->setColumnCount(2);
     QStringList cabecera;
     cabecera << tr("Ejercicio") << tr("Estado");
+    mui_treeWidget->setColumnWidth(0, 200);
     mui_treeWidget->setHeaderLabels(cabecera);
 
     mui_treeWidget->clear();

@@ -37,7 +37,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setAlternatingRowColors(TRUE);
-    mui_list->setSortingEnabled(FALSE); // Hay un Bug que impide ordenar bien los elementos.
+    mui_list->setSortingEnabled(FALSE); /// Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
 
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
@@ -112,6 +112,7 @@ bool SubForm3::ordenEnabled() {
     return m_orden;
 }
 
+
 void SubForm3::on_mui_list_itemDoubleClicked(QTableWidgetItem *item) {
     _depura("SubForm3::on_mui_list_itemDoubleClicked", 0);
     emit itemDoubleClicked(item);
@@ -135,13 +136,13 @@ SDBRecord *SubForm3::newSDBRecord() {
     rec->setDBTableName(m_tablename);
     rec->setDBCampoId(m_campoid);
 
-    SHeader * linea;
+    SHeader *linea;
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         rec->addDBCampo(linea->nomcampo(), linea->tipo(), linea->restricciones(), linea->nompresentacion());
     } // end for
 
-    SDBCampo*camp;
+    SDBCampo *camp;
     for (int i = 0; i < rec->lista()->size(); ++i) {
         camp = (SDBCampo *) rec->lista()->at(i);
         SHeader *head = m_lcabecera.at(i);
@@ -154,11 +155,11 @@ SDBRecord *SubForm3::newSDBRecord() {
         camp->setFlags(flags);
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.AboutView
-	if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
-		camp->setTextAlignment(Qt::AlignRight);
+        if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
+            camp->setTextAlignment(Qt::AlignRight);
         } else {
-		camp->setTextAlignment(Qt::AlignLeft);
-	} // end if
+            camp->setTextAlignment(Qt::AlignLeft);
+        } // end if
     } // end for
     _depura("END SubForm3::newSDBRecord", 0);
     return rec;
@@ -188,7 +189,6 @@ void SubForm3::nuevoRegistro() {
 
     /// Activamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(m_sorting);
-
     _depura("END SubForm3::nuevoRegistro", 0);
 }
 
@@ -214,11 +214,11 @@ void SubForm3::pintaCabeceras() {
 
 /// Se situa en una celda especifica del subformulario.
 void SubForm3::situarse(unsigned int row, unsigned int col) {
-    _depura("SubForm3::situarse", 0, QString::number(row)+" "+QString::number(col));
+    _depura("SubForm3::situarse", 0, QString::number(row) + " " + QString::number(col));
     unsigned int nrow = row;
     unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
-    if(!linea)
+    if (!linea)
         return;
     bool invalido = TRUE;
 
@@ -240,10 +240,11 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
     _depura("END SubForm3::situarse", 0);
 }
 
+
 /// Se situa en una celda especifica del subformulario.
 /** Se incluye la celda incluye la actual */
 void SubForm3::situarse1(unsigned int row, unsigned int col) {
-    _depura("SubForm3::situarse1", 0, QString::number(row)+" "+QString::number(col));
+    _depura("SubForm3::situarse1", 0, QString::number(row) + " " + QString::number(col));
     unsigned int nrow = row;
     unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
@@ -711,7 +712,6 @@ int SubForm3::borrar(int row) {
 
 
 /// Guardamos el archivo de configuracion.
-
 void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig", 0);
     QString aux = "";
@@ -807,8 +807,9 @@ void SubForm3::on_mui_list_pressedMinus(int, int) {
 QString SubForm3::imprimir() {
     QString fitxersortidatxt = "<tr>\n";
     for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
-        if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked)
+        if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked) {
             fitxersortidatxt += "    <td>" + XMLProtect(mui_listcolumnas->item(i, 2)->text()) + "</td>\n";
+        } // end if
     } // end for
     fitxersortidatxt += "</tr>\n";
     for (int i = 0; i < mui_list->rowCount(); ++i) {
@@ -871,7 +872,7 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
 
     if (! m_orden)
         return;
-    if (row >= mui_list->rowCount() -2 )
+    if (row >= mui_list->rowCount() -2)
         return;
     /// Desactivamos el sorting debido a un error en las Qt4
     mui_list->setSortingEnabled(FALSE);
@@ -879,7 +880,7 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     if (row != 0)
         mui_list->setCurrentCell(0, 0);
     else
-        mui_list->setCurrentCell(mui_list->rowCount()-1, 0);
+        mui_list->setCurrentCell(mui_list->rowCount() - 1, 0);
 
     for (int i = 0; i < mui_list->columnCount(); ++i) {
         QTableWidgetItem *it = mui_list->takeItem(row, i);
@@ -908,6 +909,7 @@ void SubForm3::on_mui_paganterior_clicked() {
     mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
 }
+
 
 void SubForm3::imprimirPDF(const QString &titular) {
     _depura("SubForm3::imprimir", 0);
@@ -939,6 +941,8 @@ void SubForm3::imprimirPDF(const QString &titular) {
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
+    stream.setCodec("ISO-8859-15");
+
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
@@ -953,6 +957,7 @@ void SubForm3::imprimirPDF(const QString &titular) {
 
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
+        stream.setCodec("ISO-8859-15");
         stream << buff;
         file.close();
     } // end if
@@ -1003,7 +1008,7 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
         resizeColumnToContents(col);
     if (opcion == ajustac)
         resizeRowToContents(row);
-    if(opcion == verconfig)
+    if (opcion == verconfig)
         toogleConfig();
 
     emit trataMenu(opcion);
@@ -1014,16 +1019,21 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     delete popup;
 }
 
+
 void SubForm3::on_mui_list_cellChanged(int, int) {}
+
+
 void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {}
 
-void SubForm3::on_mui_list_currentCellChanged(int , int , int row, int col) {
+
+void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
     _depura("SubForm3::on_mui_list_currentCellChanged", 0);
-    if (row >= 0 && col >= 0)   {
-        on_mui_list_editFinished( row,  col, 0);
+    if (row >= 0 && col >= 0) {
+        on_mui_list_editFinished(row, col, 0);
     } // end if
     _depura("END SubForm3::on_mui_list_currentCellChanged", 0);
 }
+
 
 void SubForm3::setinsercion(bool b) {
         m_insercion = b;

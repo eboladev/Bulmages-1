@@ -23,6 +23,7 @@
 
 #include <Qt>
 #include <QWidget>
+#include <QTextCodec>
 
 #include "ui_subform3base.h"
 #include "postgresiface2.h"
@@ -66,12 +67,13 @@ protected:
     void guardaconfig();
     void cargaconfig();
     virtual void pintaCabeceras();
+
 public:
     QList<SDBRecord *> *lista() {
         return &m_lista;
     };
     QList<SHeader *> *cabecera() {
-	return &m_lcabecera;
+        return &m_lcabecera;
     };
 
 public:
@@ -212,8 +214,7 @@ public slots:
     };
     virtual void on_mui_list_cellChanged(int, int);
     virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
-    virtual void on_mui_list_currentCellChanged(int, int, int, int );
-
+    virtual void on_mui_list_currentCellChanged(int, int, int, int);
 
 signals:
     void toogledConfig(bool);

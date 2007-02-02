@@ -21,8 +21,6 @@
 #ifndef ASIENTO1VIEW_H
 #define ASIENTO1VIEW_H
 
-#include "ui_asientobase.h"
-
 #include <QWidget>
 #include <QString>
 #include <QFrame>
@@ -31,6 +29,7 @@
 #include "busquedafecha.h"
 #include "asiento1.h"
 
+#include "ui_asientobase.h"
 
 class empresa;
 
@@ -72,7 +71,7 @@ public:
 };
 
 
-class Asiento1View : public ListAsientos, public Ui_AsientoBase  {
+class Asiento1View : public ListAsientos, public Ui_AsientoBase {
     Q_OBJECT
 
 private:
