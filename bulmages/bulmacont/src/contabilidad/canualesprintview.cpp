@@ -45,7 +45,10 @@ CAnualesPrintView::CAnualesPrintView(empresa *emp, QWidget *parent)
 }
 
 
-CAnualesPrintView::~CAnualesPrintView() {}
+CAnualesPrintView::~CAnualesPrintView() {
+    _depura("CAnualesPrintView::~CAnualesPrintView", 0);
+    _depura("END CAnualesPrintView::~CAnualesPrintView", 0);
+}
 
 
 ///Se ha pulsado sobre el bot&oacute;n de aceptar del formulario con lo que podemosº
@@ -60,16 +63,24 @@ CAnualesPrintView::~CAnualesPrintView() {}
 			FSi
 		FPara
 	FMientras */
-void CAnualesPrintView::accept() {
-    _depura("CAnualesPrintView::accept", 0);
+void CAnualesPrintView::on_mui_aceptar_clicked() {
+    _depura("CAnualesPrintView::on_mui_aceptar_clicked", 0);
     QString finicial = mui_fechainicial->text();
     QString ffinal = mui_fechafinal->text();
     QString finicial1 = mui_fechainicial1->text();
     QString ffinal1 = mui_fechafinal1->text();
-    if (finicial == "" || ffinal == "" || finicial1 == "" || ffinal1 == "") {
+    if (finicial1 == "") {
+	finicial1 = finicial;
+    } // end if
+    if (ffinal1 == "") {
+	ffinal1 = ffinal;
+    }
+    if (finicial == "" || ffinal == "") {
         return;
     } // end if
-    /// Ponemos todos los valores de las cuentas.
+
+
+    /// Ponemos todos los valores de las cuentas. Hacemos la carga.
     QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
     for (int i = 0; i < lcuentas.count(); i++) {
         QDomNode cuenta = lcuentas.item(i);
@@ -88,6 +99,8 @@ void CAnualesPrintView::accept() {
         } // end if
     } // end for
 
+
+    /// HAcemos el calculo recursivo del balance.
     bool terminado = FALSE;
     while (!terminado) {
         terminado = TRUE;
@@ -104,7 +117,7 @@ void CAnualesPrintView::accept() {
 
     /// Una vez que tenemos el objeto bien generado y a punto pasamos a la generacion del PDF.
     imprimir();
-    _depura("END CAnualesPrintView::accept", 0);
+    _depura("END CAnualesPrintView::on_mui_aceptar_clicked", 0);
 }
 
 
@@ -326,6 +339,7 @@ void CAnualesPrintView::imprimir() {
 
 
 void CAnualesPrintView::setidbalance(QString id) {
+    _depura("CAnualesPrintView::setidbalance", 0);
     QFile f(id);
     if (!f.open(QIODevice::ReadOnly))
         return;
@@ -335,5 +349,6 @@ void CAnualesPrintView::setidbalance(QString id) {
     } // end if
     f.close();
     m_nomBalance->setText(id);
+    _depura("END CAnualesPrintView::setidbalance", 0);
 }
 

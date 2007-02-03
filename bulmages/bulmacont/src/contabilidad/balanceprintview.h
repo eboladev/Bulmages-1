@@ -51,12 +51,12 @@ public:
     void inicializa1(QString, QString, QString, QString, bool);
 
 private:
-    void accept();
     void presentar(char *tipus);
 
 private slots:
-    virtual void boton_canales();
-    virtual void boton_ccostes();
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_canales_clicked();
+    virtual void on_mui_ccostes_clicked();
 };
 
 #endif

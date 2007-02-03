@@ -51,6 +51,7 @@ public:
     void presentar();
     void ajustes();
     void boton_filtrar();
+    QString imprimeExtractoCuenta(QString);
 
 public slots:
     virtual void on_mui_guardar_clicked();

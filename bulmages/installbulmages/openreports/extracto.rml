@@ -28,7 +28,7 @@
 		<fill color="(0,0,0)"/>	
 		<stroke color="(0,0,0)"/>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">Listado de clientes</drawString>
+		<drawString x="18cm" y="19.5cm">Extracto de Cuentas</drawString>
 		</pageGraphics>
 	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
 	</pageTemplate>

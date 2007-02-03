@@ -941,7 +941,7 @@ void SubForm3::imprimirPDF(const QString &titular) {
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
-    stream.setCodec("ISO-8859-15");
+    //stream.setCodec("ISO-8859-15");
 
     QString buff = stream.readAll();
     file.close();
@@ -957,7 +957,7 @@ void SubForm3::imprimirPDF(const QString &titular) {
 
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
-        stream.setCodec("ISO-8859-15");
+        //stream.setCodec("ISO-8859-15");
         stream << buff;
         file.close();
     } // end if

@@ -181,6 +181,12 @@ void DiarioView::presentar() {
 
 /// Boton de impresion del diario.
 void DiarioView::on_mui_imprimir_clicked() {
+   mui_list->imprimirPDF("Libro Diario");
+}
+
+/*
+/// Boton de impresion del diario.
+void DiarioView::on_mui_imprimir_clicked() {
     _depura("DiarioView::on_mui_imprimir_clicked", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "diario.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "diario.rml";
@@ -228,4 +234,4 @@ void DiarioView::on_mui_imprimir_clicked() {
     invocaPDF("diario");
     _depura("END DiarioView::on_mui_imprimir_clicked", 0);
 }
-
+*/

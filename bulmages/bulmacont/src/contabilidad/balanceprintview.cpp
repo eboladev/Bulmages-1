@@ -46,6 +46,7 @@ using namespace std;
 
 BalancePrintView::BalancePrintView(empresa *emp)
         : QDialog(0) {
+    _depura("BalancePrintView::BalancePrintView", 0);
     setupUi(this);
     empresaactual = emp;
     conexionbase = emp->bdempresa();
@@ -65,10 +66,14 @@ BalancePrintView::BalancePrintView(empresa *emp)
     } // end while
     conexionbase->commit();
     delete niveles;
+    _depura("END BalancePrintView::BalancePrintView", 0);
 }
 
 
-BalancePrintView::~BalancePrintView() {}
+BalancePrintView::~BalancePrintView() {
+   _depura("BalancePrintView::~BalancePrintView", 0);
+   _depura("END BalancePrintView::~BalancePrintView", 0);
+}
 
 
 /// Inicializa la clase para que tenga par&aacute;metros por defecto (no es obligatorio).
@@ -78,16 +83,19 @@ BalancePrintView::~BalancePrintView() {}
     ffinal = Indica la fecha para terminar de contar los saldos.
     arbol = Indica si hay que representar el balance en forma de árbol o no. */
 void BalancePrintView::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1, bool arbol) {
+    _depura("BalancePrintView::inicializa1", 0);
     m_fechainicial1->setText(finicial1);
     m_fechafinal1->setText(ffinal1);
     m_codigoinicial->setText(codinicial1);
     m_codigofinal->setText(codfinal1);
     checksuperiores->setChecked(arbol);
+    _depura("END BalancePrintView::inicializa1", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
-void BalancePrintView::accept() {
+void BalancePrintView::on_mui_imprimir_clicked() {
+    _depura("BalancePrintView::on_mui_imprimir_clicked", 0);
     if (radiotexto->isChecked())
         presentar("txt");
     if (radiohtml->isChecked())
@@ -96,11 +104,13 @@ void BalancePrintView::accept() {
         presentar("rtk");
     if (radiokugar->isChecked())
         presentar("kugar");
+    _depura("END BalancePrintView::on_mui_imprimir_clicked", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void BalancePrintView::presentar(char *tipus) {
+    _depura("BalancePrintView::presentar", 0);
 #ifndef WIN32
     int kugar, txt, html, txtapren, htmlapren;
     double tsaldoant, tdebe, thaber, tsaldo, debeej, haberej, saldoej;
@@ -377,27 +387,30 @@ void BalancePrintView::presentar(char *tipus) {
             }
         }
     }
-
 #endif
-
+    _depura("END BalancePrintView::presentar", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de canal.
 /** Presenta la ventana de selecci&oacute;n de canales \ref selectcanalview. */
-void BalancePrintView::boton_canales() {
+void BalancePrintView::on_mui_canales_clicked() {
+    _depura("BalancePrintView::on_mui_canales_clicked", 0);
     selectcanalview *selcanales = empresaactual->getselcanales();
     selcanales->exec();
     selcanales->firstcanal();
+    _depura("END BalancePrintView::on_mui_canales_clicked", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de selecci&oacute;n de
 /// centros de coste.
 /** Presenta la ventana de selecci&oacute;n de centros de coste \ref selectccosteview. */
-void BalancePrintView::boton_ccostes() {
+void BalancePrintView::on_mui_ccostes_clicked() {
+    _depura("BalancePrintView::on_mui_ccostes_clicked", 0);
     selectccosteview *selccostes = empresaactual->getselccostes();
     selccostes->exec();
     selccostes->firstccoste();
+    _depura("END BalancePrintView::on_mui_ccostes_clicked", 0);
 }
 

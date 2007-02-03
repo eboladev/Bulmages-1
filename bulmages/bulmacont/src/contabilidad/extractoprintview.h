@@ -45,8 +45,7 @@ class ExtractoPrintView : public QDialog, public Ui_ExtractoPrintBase {
 
 public:
     char *fichero;
-    postgresiface2 *conexionbase;
-    empresa *empresaactual;
+    empresa *m_companyact;
     ExtractoPrintView(empresa *, QWidget *);
     void presentar(char *tipus);
     ~ExtractoPrintView();

@@ -60,7 +60,7 @@ public:
     void imprimir();
 
 public slots:
-    virtual void accept();
+    virtual void on_mui_aceptar_clicked();
 };
 
 #endif

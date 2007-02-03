@@ -125,7 +125,7 @@
    <item>
     <widget class="QProgressBar" name="progressBar" >
      <property name="value" >
-      <number>24</number>
+      <number>0</number>
      </property>
      <property name="orientation" >
       <enum>Qt::Horizontal</enum>
@@ -157,7 +157,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
         <string>Acep&amp;tar</string>
        </property>
@@ -167,7 +167,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton1_2" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
         <string>&amp;Cancelar</string>
        </property>
@@ -190,15 +190,15 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_nomBalance</tabstop>
-  <tabstop>pushButton1</tabstop>
-  <tabstop>pushButton1_2</tabstop>
+  <tabstop>mui_aceptar</tabstop>
+  <tabstop>mui_cancelar</tabstop>
  </tabstops>
  <resources>
   <include location="../../../bulmages.qrc" />
  </resources>
  <connections>
   <connection>
-   <sender>pushButton1_2</sender>
+   <sender>mui_cancelar</sender>
    <signal>clicked()</signal>
    <receiver>CAnualesPrintBase</receiver>
    <slot>close()</slot>
@@ -214,7 +214,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton1</sender>
+   <sender>mui_aceptar</sender>
    <signal>clicked()</signal>
    <receiver>CAnualesPrintBase</receiver>
    <slot>accept()</slot>
