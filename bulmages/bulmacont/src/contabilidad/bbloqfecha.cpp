@@ -66,6 +66,10 @@ void BbloqFecha::inicializa() {
             itemlevel0->setText(1, qsabierto);
         } // end if
 
+        itemlevel0->ej = curEjer->valor("ejercicio");
+        itemlevel0->per = curEjer->valor("periodo");
+
+
         consultabd.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
         curPeri = empresaactual->cargacursor(consultabd);
         while (!curPeri->eof()) {

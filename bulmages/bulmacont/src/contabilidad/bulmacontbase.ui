@@ -22,7 +22,7 @@
      <x>0</x>
      <y>0</y>
      <width>1015</width>
-     <height>29</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAyuda" >
@@ -79,10 +79,8 @@
      <string>&amp;Listados</string>
     </property>
     <addaction name="actionCuentas_Anuales" />
-    <addaction name="actionMasas_Patrimoniales" />
     <addaction name="separator" />
     <addaction name="actionRegistro_de_IVA" />
-    <addaction name="actionModelo_347_no_oficial" />
     <addaction name="separator" />
     <addaction name="actionCobros_y_Pagos" />
     <addaction name="actionAmortizaciones" />

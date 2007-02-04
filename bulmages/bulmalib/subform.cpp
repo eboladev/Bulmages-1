@@ -66,31 +66,15 @@ int SDBRecord::addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nom
     return 0;
 }
 
-/*
-int SDBRecord::setDBvalue(QString nomb, QString valor) {
-    _depura("SDBRecord::setDBvalue", 2);
-    SDBCampo *linea;
-    int error = 0;
-    int i = 0;
-    linea = (SDBCampo *) m_lista.value(i);
-    while (linea && linea->nomcampo() != nomb)
-        linea = (SDBCampo*) m_lista.value(++i);
-    if (!linea) {
-        _depura("Campo " + nomb + " no encontrado", 2);
-        return -1;
-    } // end if
-    if (linea->nomcampo() == nomb)
-        error = linea->set(valor);
-    return error;
-}
-*/
 
 SDBCampo::SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp)
         : QTableWidgetItem2(), DBCampo(com, nom, typ, res, nomp) {
+    _depura("SDBCampo::SDBCampo", 0);
     static int creaciones = 0;
     creaciones++;
     _depura("SDBCampo creados:", 0, QString::number(creaciones));
     m_pare = par;
+    _depura("SDBCampo::SDBCampo", 0);
 }
 
 
@@ -99,6 +83,7 @@ SDBCampo::~SDBCampo() {
     static int destrucciones = 0;
     destrucciones++;
     _depura("SDBCampo destruidos:", 0, QString::number(destrucciones));
+    _depura("END SDBCampo::~SDBCampo()", 0);
 }
 
 
@@ -114,7 +99,7 @@ void SDBCampo::refresh() {
 
 
 int SDBCampo::set(QString val) {
-    _depura("SDBCampo::set", 0, val);
+    _depura("SDBCampo::set", 0, m_nomcampo +" = "+ val);
     if (tipo() == DBCampo::DBboolean) {
         if (val == "TRUE" || val == "t")
             setCheckState(Qt::Checked);

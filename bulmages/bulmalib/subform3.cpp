@@ -531,7 +531,7 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 /** Establece el valor de toda la columna.
 */
 void SubForm3::setColumnValue(QString campo, QString valor) {
-    _depura("SubForm3::setColumnValue", 0);
+    _depura("SubForm3::setColumnValue", 0, campo +" -- "+valor);
     SDBRecord *rec;
     int restaporinsercion;
 

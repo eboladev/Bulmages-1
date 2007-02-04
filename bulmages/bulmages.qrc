@@ -496,7 +496,6 @@
         <file>images/png/16x16/i_bulmages_ventas_presupuestos_menos.16x16.png</file>
     </qresource>
     <qresource prefix="/Bulmafact32x32" >
-        <file>images/png/iconbulmafact.xpm</file>
         <file>images/png/32x32/i_bulmages_almacen.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_almacen_mas.32x32.png</file>
@@ -626,6 +625,7 @@
         <file>images/png/32x32/i_bulmages_ventas_presupuestos_listado.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_presupuestos_mas.32x32.png</file>
         <file>images/png/32x32/i_bulmages_ventas_presupuestos_menos.32x32.png</file>
+        <file>images/png/iconbulmafact.xpm</file>
     </qresource>
     <qresource prefix="/Bulmafact48x48" >
         <file>images/png/48x48/i_bulmages_almacen.48x48.png</file>
@@ -760,6 +760,7 @@
     </qresource>
     <qresource prefix="/Genericos16x16" />
     <qresource prefix="/Genericos32x32" >
+        <file>images/png/i_bulmacont_amortizaciones.png</file>
         <file>images/png/i_bulmages.png</file>
         <file>images/png/i_configuracion.xpm</file>
         <file>images/png/i_dele.png</file>

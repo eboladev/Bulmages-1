@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ListRegistroIvaBase</class>
  <widget class="QWidget" name="ListRegistroIvaBase" >
   <property name="geometry" >
@@ -9,21 +6,21 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>424</height>
+    <height>576</height>
    </rect>
   </property>
   <property name="windowTitle" >
    <string>Listados de IVA</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -39,12 +36,18 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</pixmap>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QFrame" name="frame" >
+       <property name="minimumSize" >
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="frameShape" >
         <enum>QFrame::StyledPanel</enum>
        </property>
@@ -70,7 +73,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_fileNew.xpm</iconset>
           </property>
          </widget>
         </item>
@@ -86,7 +89,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_dele.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
          </widget>
         </item>
@@ -110,7 +113,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
          </widget>
         </item>
@@ -151,7 +154,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="finicial" />
+      <widget class="BusquedaFecha" native="1" name="finicial" />
      </item>
      <item>
       <widget class="QLabel" name="textLabel1_4" >
@@ -161,7 +164,7 @@
       </widget>
      </item>
      <item>
-      <widget class="BusquedaFecha" name="ffinal" />
+      <widget class="BusquedaFecha" native="1" name="ffinal" />
      </item>
      <item>
       <spacer>
@@ -429,21 +432,16 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>BusquedaFecha</class>
-   <extends></extends>
+   <extends>QWidget</extends>
    <header>../../../bulmages/bulmalib/busquedafecha.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
   <customwidget>
    <class>SubForm2Bc</class>
    <extends>QTableWidget</extends>
    <header>subform2bc.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

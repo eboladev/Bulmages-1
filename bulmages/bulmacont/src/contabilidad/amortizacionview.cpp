@@ -30,11 +30,17 @@
 #include "asiento1view.h"
 
 
-AmortizacionSubForm::AmortizacionSubForm(QWidget *parent) : SubForm2Bc(parent) {}
+AmortizacionSubForm::AmortizacionSubForm(QWidget *parent) : SubForm2Bc(parent) {
+    _depura("AmortizacionSubForm::AmortizacionSubForm", 0);
+    _depura("END AmortizacionSubForm::AmortizacionSubForm", 0);
+}
 
 
-AmortizacionSubForm::~AmortizacionSubForm() {}
-;
+AmortizacionSubForm::~AmortizacionSubForm() {
+    _depura("AmortizacionSubForm::~AmortizacionSubForm", 0);
+    _depura("END AmortizacionSubForm::~AmortizacionSubForm", 0);
+}
+
 
 
 /// Constructor de la clase
@@ -52,14 +58,6 @@ AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
     mui_listcuotas->setcompany(emp);
     ctaactivo->setempresa(emp);
     ctaamortizacion->setempresa(emp);
-
-    /// Buscamos cual es el asiento inteligente que realiza la amortizaci&oacute;n.
-    QString query = "SELECT * FROM ainteligente, configuracion WHERE descripcion = valor AND configuracion.nombre = 'Amortizacion'";
-    cursor2 *cur = m_companyact->cargacursor(query);
-    if (!cur->eof()) {
-        m_idainteligente = cur->valor("m_idainteligente");
-    } // end if
-    delete cur;
 
     /// Inicializamos la clase para la base de datos.
     setDBTableName("amortizacion");
@@ -131,7 +129,7 @@ int AmortizacionView::guardar() {
         /// Guardamos las lineas de amortizacion.
         mui_listcuotas->setColumnValue("idamortizacion", id);
         mui_listcuotas->guardar();
-        dialogChanges_cargaInicial();
+        cargar(id);
         _depura("END AmortizacionView::guardar", 0);
         return 0;
     } catch (...) {
@@ -142,7 +140,9 @@ int AmortizacionView::guardar() {
 
 
 void AmortizacionView::on_mui_guardar_clicked() {
+    _depura("AmortizacionView::on_mui_guardar_clicked", 0);
     guardar();
+    _depura("END AmortizacionView::on_mui_guardar_clicked", 0);
 }
 
 

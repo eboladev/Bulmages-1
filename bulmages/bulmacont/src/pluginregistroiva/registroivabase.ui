@@ -16,7 +16,7 @@
    <string>Registro de Facturas</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -39,7 +39,7 @@
         <string/>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_iva.xpm</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_iva.xpm</pixmap>
        </property>
       </widget>
      </item>
@@ -70,7 +70,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -86,7 +86,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_editDelete.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -741,7 +741,7 @@
             <string/>
            </property>
            <property name="icon" >
-            <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/pendientes/i_downArrow.png</iconset>
+            <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_downArrow.png</iconset>
            </property>
           </widget>
          </item>

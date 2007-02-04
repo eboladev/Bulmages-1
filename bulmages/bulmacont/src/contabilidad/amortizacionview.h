@@ -38,10 +38,10 @@ public:
     AmortizacionSubForm(QWidget *parent);
     virtual ~AmortizacionSubForm();
     virtual void creaMenu(QMenu *) {
-        _depura("AmortizacionSubForm:: CreaMenu, funcion para ser sobreescrita", 2);
+        _depura("AmortizacionSubForm:: CreaMenu, funcion para ser sobreescrita", 0);
     }
     virtual void procesaMenu(QAction *) {
-        _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 2);
+        _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0);
     }
 };
 
@@ -67,8 +67,6 @@ private:
     /// Esta variable indica cu&aacute;l es la amortizaci&oacute;n que se est&aacute;
     /// ense&ntilde;ando. Si no tiene valor es que no se esta mostrando ninguna.
     QString m_idamortizacion;
-    /// Esta variable indica cu&aacute;l es el asiento plantilla de amortizaci&oacute;n.
-    QString m_idainteligente;
 
 public:
     AmortizacionView(empresa *, QWidget *);

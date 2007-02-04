@@ -78,8 +78,10 @@ QString DBCampo::valorcampoprep(int &error) {
 
 
 DBRecord::DBRecord(postgresiface2 *con) {
+    _depura("DBRecord::DBRecord", 0);
     m_conexionbase = con;
     m_nuevoCampo = TRUE;
+    _depura("END DBRecord::DBRecord", 0);
 }
 
 
@@ -213,8 +215,8 @@ int DBRecord::setDBvalue(QString nomb, QString valor) {
         return -1;
     } // end if
     if (linea->nomcampo() == nomb)
-        error = linea->set
-                (valor);
+        error = linea->set(valor);
+    _depura("END DBRecord::setDBvalue", 0);
     return error;
 }
 

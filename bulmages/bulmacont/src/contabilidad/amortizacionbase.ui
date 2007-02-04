@@ -13,7 +13,7 @@
    <string>Amortizacion</string>
   </property>
   <property name="windowIcon" >
-   <iconset resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tuxPeq.png</iconset>
+   <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_bulmacont_amortizaciones.png</iconset>
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
@@ -53,7 +53,7 @@
         </size>
        </property>
        <property name="pixmap" >
-        <pixmap resource="../../../bulmages.qrc" >:/BulmaCont32x32/images/png/i_tuxPeq.png</pixmap>
+        <pixmap resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_bulmacont_amortizaciones.png</pixmap>
        </property>
        <property name="scaledContents" >
         <bool>true</bool>
@@ -1598,6 +1598,11 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
+   <class>AmortizacionSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>amortizacionview.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1606,11 +1611,6 @@
    <class>BusquedaCuenta</class>
    <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
-  </customwidget>
-  <customwidget>
-   <class>AmortizacionSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>amortizacionview.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

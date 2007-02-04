@@ -55,7 +55,6 @@ Presupuesto::Presupuesto(company *comp, QWidget *parent) : FichaBf(comp, parent)
 Presupuesto::~Presupuesto() {
     _depura("Presupuesto::~Presupuesto", 0);
     _depura("END Presupuesto::~Presupuesto", 0);
-
 }
 
 

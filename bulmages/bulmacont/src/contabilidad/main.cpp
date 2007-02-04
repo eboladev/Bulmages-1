@@ -57,13 +57,13 @@ QApplication2 *theApp;
 QTranslator *traductor;
 /// Faltan el configurador de par&aacute;metros confpr y el sistema de log ctlog.
 
-
 /// Los datos de ejecuci&oacute;n del programa son sencillos.
 /** La ejecuci&oacute;n primero crea e inicializa los objetos configuraci&oacute;n,
     idioma, splash, etc.
     Luego intenta entrar en el sistema de base de datos.
     Y por &uacute;ltimo crea el objeto del tipo \ref Bulmacont que es la aplicaci&oacute;n
     de ventanas. */
+
 int main(int argc, char **argv) {
     /// Leemos la configuraci&oacute;n que luego podremos usar siempre.
     confpr = new configuracion("bulmacont");

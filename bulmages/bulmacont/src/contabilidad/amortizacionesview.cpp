@@ -119,3 +119,12 @@ void amortizacionesview::on_mui_borrar_clicked() {
     _depura("END amortizacionesview::on_mui_borrar_clicked", 0);
 }
 
+/// SLOT que responde a la pulsacion del boton actualizar. Que hace que se redibuje el listado de amortizaciones.
+void amortizacionesview::on_mui_actualizar_clicked() {
+	_depura("amortizacionesview::on_mui_actualizar_clicked", 0);
+	inicializatabla();
+	_depura("END amortizacionesview::on_mui_actualizar_clicked", 0);
+}
+
+
+

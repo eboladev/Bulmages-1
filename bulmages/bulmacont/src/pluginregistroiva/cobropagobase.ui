@@ -67,7 +67,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_fileNew.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -86,7 +86,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_save.xpm</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_save.xpm</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -105,7 +105,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_editDelete.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_dele.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -124,7 +124,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_find.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_find.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -149,7 +149,7 @@
            <string/>
           </property>
           <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/pendientes/i_reload.png</iconset>
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_reload.png</iconset>
           </property>
           <property name="iconSize" >
            <size>
@@ -527,6 +527,11 @@
  <layoutdefault spacing="6" margin="11" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
    <class>SubForm2Bc</class>
    <extends>QTableWidget</extends>
    <header>subform2bc.h</header>
@@ -535,11 +540,6 @@
    <class>BusquedaCuenta</class>
    <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmages/bulmalib/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <resources>
