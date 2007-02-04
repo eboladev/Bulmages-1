@@ -286,7 +286,8 @@ void ArticuloList::on_mui_imprimirCatalogo_clicked() {
 */
 void ArticuloList::s_imprimir1() {
     _depura("ArticuloList::INIT_s_imprimir1()\n", 0);
-    mui_list->imprimirPDF(tr("Listado de articulos"));
+    //mui_list->imprimirPDF(tr("Listado de articulos"));
+    mui_list->imprimirPDF("Listado de artículos");
     _depura("ArticuloList::END_s_imprimir1()\n", 0);
 }
 

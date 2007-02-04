@@ -913,6 +913,7 @@ void SubForm3::on_mui_paganterior_clicked() {
 
 void SubForm3::imprimirPDF(const QString &titular) {
     _depura("SubForm3::imprimir", 0);
+
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
@@ -940,9 +941,8 @@ void SubForm3::imprimirPDF(const QString &titular) {
     QFile file;
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
+ 
     QTextStream stream(&file);
-    //stream.setCodec("ISO-8859-15");
-
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
@@ -956,9 +956,10 @@ void SubForm3::imprimirPDF(const QString &titular) {
     buff.replace("[titulo]", titular);
 
     if (file.open(QIODevice::WriteOnly)) {
+
         QTextStream stream(&file);
-        //stream.setCodec("ISO-8859-15");
         stream << buff;
+
         file.close();
     } // end if
 

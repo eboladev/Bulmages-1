@@ -25,58 +25,6 @@
      <height>29</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuListados" >
-    <property name="title" >
-     <string>&amp;Listados</string>
-    </property>
-    <addaction name="actionCuentas_Anuales" />
-    <addaction name="actionMasas_Patrimoniales" />
-    <addaction name="separator" />
-    <addaction name="actionRegistro_de_IVA" />
-    <addaction name="actionModelo_347_no_oficial" />
-    <addaction name="separator" />
-    <addaction name="actionCobros_y_Pagos" />
-    <addaction name="actionAmortizaciones" />
-   </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>&amp;Ventana</string>
-    </property>
-    <addaction name="actionPlan_Contable" />
-    <addaction name="actionAsientos" />
-    <addaction name="actionApuntes_Contables" />
-    <addaction name="actionLibro_Mayor" />
-    <addaction name="actionLibro_Diario" />
-    <addaction name="actionBalance_de_Cuentas" />
-    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
-   </widget>
-   <widget class="QMenu" name="menuMaestro" >
-    <property name="title" >
-     <string>&amp;Maestro</string>
-    </property>
-    <addaction name="actionFormas_de_Pago" />
-    <addaction name="actionTipos_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionCentros_de_Coste" />
-    <addaction name="actionCanales" />
-    <addaction name="separator" />
-   </widget>
-   <widget class="QMenu" name="menuHerramientas" >
-    <property name="title" >
-     <string>&amp;Herramientas</string>
-    </property>
-    <addaction name="actionImprimir" />
-    <addaction name="actionGuardar" />
-    <addaction name="actionActualizar" />
-    <addaction name="actionFiltrar" />
-    <addaction name="separator" />
-    <addaction name="actionRecalcular_Saldos_Iniciales" />
-    <addaction name="actionSustituir_Cuentas" />
-    <addaction name="actionBloquear_Fechas" />
-    <addaction name="separator" />
-    <addaction name="actionCanal_por_Defecto" />
-    <addaction name="actionCentro_de_Coste_por_Defecto" />
-   </widget>
    <widget class="QMenu" name="menuAyuda" >
     <property name="title" >
      <string>A&amp;yuda</string>
@@ -92,9 +40,56 @@
     <addaction name="actionOrdenar_Ventanas" />
     <addaction name="actionOrganizaci_n_en_Cascada" />
    </widget>
+   <widget class="QMenu" name="menuHerramientas" >
+    <property name="title" >
+     <string>&amp;Herramientas</string>
+    </property>
+    <addaction name="actionRecalcular_Saldos_Iniciales" />
+    <addaction name="actionSustituir_Cuentas" />
+    <addaction name="actionBloquear_Fechas" />
+    <addaction name="separator" />
+    <addaction name="actionCanal_por_Defecto" />
+    <addaction name="actionCentro_de_Coste_por_Defecto" />
+   </widget>
+   <widget class="QMenu" name="menuMaestro" >
+    <property name="title" >
+     <string>&amp;Maestro</string>
+    </property>
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="actionTipos_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionCentros_de_Coste" />
+    <addaction name="actionCanales" />
+    <addaction name="separator" />
+   </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>&amp;Ventana</string>
+    </property>
+    <addaction name="actionPlan_Contable" />
+    <addaction name="actionAsientos" />
+    <addaction name="actionApuntes_Contables" />
+    <addaction name="actionLibro_Mayor" />
+    <addaction name="actionLibro_Diario" />
+    <addaction name="actionBalance_de_Cuentas" />
+    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+   </widget>
+   <widget class="QMenu" name="menuListados" >
+    <property name="title" >
+     <string>&amp;Listados</string>
+    </property>
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="actionMasas_Patrimoniales" />
+    <addaction name="separator" />
+    <addaction name="actionRegistro_de_IVA" />
+    <addaction name="actionModelo_347_no_oficial" />
+    <addaction name="separator" />
+    <addaction name="actionCobros_y_Pagos" />
+    <addaction name="actionAmortizaciones" />
+   </widget>
    <widget class="QMenu" name="menuAsiento" >
     <property name="title" >
-     <string>&amp;Asiento</string>
+     <string>&amp;Asientos</string>
     </property>
     <addaction name="actionAbrir_Asientos" />
     <addaction name="actionOrdenar_Asientos" />
@@ -167,7 +162,7 @@
   </action>
   <action name="actionAbrir_Asientos" >
    <property name="text" >
-    <string>&amp;Abrir asientos</string>
+    <string>&amp;Espaciar asientos</string>
    </property>
   </action>
   <action name="actionOrdenar_Asientos" >

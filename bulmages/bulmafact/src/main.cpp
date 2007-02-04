@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
 
         /// Definimos la codificacion a Unicode.
         QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-        QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+        QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
         theApp->setFont(QFont(confpr->valor(CONF_FONTFAMILY_BULMAGES).toAscii().constData(), atoi(confpr->valor(CONF_FONTSIZE_BULMAGES).toAscii().constData())));
 

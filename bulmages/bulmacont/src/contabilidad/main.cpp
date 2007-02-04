@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
 
         /// Definimos la codificaci&oacute;n a Unicode.
         QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
-        QTextCodec::setCodecForLocale(QTextCodec::codecForName("CP1252"));
+        QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
         /// Cargamos las primeras traducciones para bulmalib y para bulmacont.
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
