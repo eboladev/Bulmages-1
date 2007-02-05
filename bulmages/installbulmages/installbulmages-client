@@ -157,16 +157,16 @@ cp rev-* /usr/share/bulmages
 info "Instalando archivos de ayuda del programa, imagenes, iconos, listados y traducciones. \n"
 tiempo
 cp -r dbmodels /usr/share/bulmages
-cp -r backgrounds /usr/share/bulmages
+#cp -r backgrounds /usr/share/bulmages
 cp -r ayuda /usr/share/bulmages
-cp -r reports /usr/share/bulmages
+#cp -r reports /usr/share/bulmages
 cp -r css /usr/share/bulmages
 cp -r icons /usr/share/bulmages
 cp -r traducciones /usr/share/bulmages
 cp -r formularios /usr/share/bulmages
 cp -r ainteligentes /usr/share/bulmages
 cp -r balances /usr/share/bulmages
-cp -r kugar /usr/share/bulmages
+#cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
 cp -r efactura /usr/share/bulmages
 
