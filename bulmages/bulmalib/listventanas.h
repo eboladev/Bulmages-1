@@ -91,12 +91,19 @@ public:
     int seleccionaWindow(QString, QObject *);
     int deSeleccionaWindow();
     void sacaWindow(QObject *);
-    void cambiaVisible();
+    void cambiaVisible(bool);
     void vaciar();
+
+protected:
+    void closeEvent(QCloseEvent *event);
 
 public slots:
     virtual void dclicked();
     virtual void clicked();
+
+signals:
+    void cambiaEstadoVisible(bool);
+
 };
 
 #endif

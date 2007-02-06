@@ -77,10 +77,10 @@ QString EmpresaBase::searchCompany(QString tipo) {
 }
 
 
-/// \TODO: Que significa esto ?.
-void EmpresaBase::s_indexadorCambiaEstado() {
+/// Cambia el estado de la ventana de Indexador. Visible o no visible.
+void EmpresaBase::s_indexadorCambiaEstado(bool visible) {
     _depura("company::s_indexadorCambiaEstado", 0);
-    m_listventanas->cambiaVisible();
+    m_listventanas->cambiaVisible(visible);
     _depura("END company::s_indexadorCambiaEstado", 0);
 }
 

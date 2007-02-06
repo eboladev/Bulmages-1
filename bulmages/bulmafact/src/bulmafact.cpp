@@ -49,7 +49,6 @@
 bulmafact::bulmafact(QString bd) : QMainWindow() {
     _depura("bulmafact::bulmafact", 0);
 
-
     setupUi(this);
 
     setUpdatesEnabled(TRUE);
@@ -75,13 +74,10 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
 
     showNormal();
 
-
     m_company = new company();
     m_company->setProgressBar(m_pb);
     m_company->init(bd, "BulmaFact");
     m_company->setWorkspace(pWorkspace);
-
-
 
     connect(pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
@@ -90,6 +86,8 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     m_list->setVisible(FALSE);
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace(pWorkspace);
+
+    connect(m_list, SIGNAL(cambiaEstadoVisible(bool)), this, SLOT(setActionIndexador(bool)));
 
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
@@ -143,6 +141,7 @@ void bulmafact::recibirfactura() {
     _depura("END bulmafact::recibirfactura", 0);
 }
 
+
 /** Este metodo ya no se usa puesto que tenemos una ventana de About */
 /// \TODO destruir este metodo.
 void bulmafact::about() {
@@ -151,6 +150,7 @@ void bulmafact::about() {
                        tr("This example demonstrates simple use of "
                           "QMainWindow,\nQMenuBar and QToolBar."));
 }
+
 
 /** Este metodo ya no se usa */
 /// \TODO: Destruir este metodo.
@@ -164,6 +164,7 @@ void bulmafact::s_FPago() {
     m_company->s_FPago();
 }
 
+
 /** Intercambia entre el modo ventana completa y el modo ventana normal
 */
 void bulmafact::s_ventanaCompleta() {
@@ -173,6 +174,7 @@ void bulmafact::s_ventanaCompleta() {
         showFullScreen();
     } // end if
 }
+
 
 /** Metodo que responde a la pulsacion de About en el menu.
     Inicializa la ventana de About y la muestra.

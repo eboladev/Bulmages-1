@@ -70,107 +70,81 @@ public slots:
     void aboutQt();
     virtual void on_actionNuevo_Pedido_Proveedor_triggered() {
         m_company->s_newPedidoPro();
-//        m_empresa->s_newPedidoPro();
     };
     virtual void on_actionListado_Pedidos_Proveedor_triggered() {
         m_company->s_listPedidosPro();
-//        m_empresa->s_listPedidosPro();
     };
     virtual void on_actionNuevo_Albaran_Proveedor_triggered() {
         m_company->s_newAlbaranPro();
-//        m_empresa->s_newAlbaranPro();
     };
     virtual void on_actionListado_Albaranes_Proveedor_triggered() {
         m_company->lAlbaranesProveedor();
-//        m_empresa->lAlbaranesProveedor();
     };
     virtual void on_actionNueva_Factura_Proveedor_triggered() {
         m_company->s_newFacturaPro();
-//        m_empresa->s_newFacturaPro();
     };
     virtual void on_actionListado_Facturas_Proveedor_triggered() {
         m_company->s_listFacturasPro();
-//        m_empresa->s_listFacturasPro();
     };
     virtual void on_actionNuevo_Presupuesto_triggered() {
         m_company->s_newPresupuestoCli();
-//        m_empresa->s_newPresupuestoCli();
     };
     virtual void on_actionListado_Presupuestos_triggered() {
         m_company->listBudgets();
-//        m_empresa->listBudgets();
     };
     virtual void on_actionNuevo_Pedido_Cliente_triggered() {
         m_company->s_newPedidoClienteView();
-//        m_empresa->s_newPedidoClienteView();
     };
     virtual void on_actionListado_Pedidos_Cliente_triggered() {
         m_company->s_listPedidosCli();
-//        m_empresa->s_listPedidosCli();
     };
     virtual void on_actionNuevo_Albaran_Cliente_triggered() {
         m_company->s_newAlbaranClienteView();
-//        m_empresa->s_newAlbaranClienteView();
     };
     virtual void on_actionListado_Albaranes_Cliente_triggered() {
         m_company->listClientDelivNotes();
-//        m_empresa->listClientDelivNotes();
     };
     virtual void on_actionNueva_Factura_Cliente_triggered() {
         m_company->s_newFacturaCli();
-//        m_empresa->s_newFacturaCli();
     };
     virtual void on_actionListado_Facturas_Cliente_triggered() {
         m_company->s_listFacturasCli();
-//        m_empresa->s_listFacturasCli();
     };
     virtual void on_actionGestion_Familias_triggered() {
         m_company->s_newfamiliasview();
-//        m_empresa->s_newfamiliasview();
     };
     virtual void on_actionGestion_Tipos_Articulo_triggered() {
         m_company->s_newTipoArticuloList();
-//        m_empresa->s_newTipoArticuloList();
     };
     virtual void on_actionNuevo_Articulo_triggered() {
         m_company->s_newArticulo();
-//        m_empresa->s_newArticulo();
     };
     virtual void on_actionListado_de_Articulos_triggered() {
         m_company->listarticles();
-//        m_empresa->listarticles();
     };
     virtual void on_actionInventarios_triggered() {
         m_company->s_inventarios();
-//        m_empresa->s_inventarios();
     };
     virtual void on_actionNuevo_Proveedor_triggered() {
         m_company->s_newProveedorView();
-//        m_empresa->s_newProveedorView();
     };
     virtual void on_actionListado_Proveedores_triggered() {
         m_company->listproviders();
-//        m_empresa->listproviders();
     };
     virtual void on_actionNuevo_Cliente_triggered() {
         m_company->s_newClienteView();
-//        m_empresa->s_newClienteView();
     };
     virtual void on_actionListado_Clientes_triggered() {
         m_company->listClients();
-//        m_empresa->listClients();
     };
     virtual void on_actionProvincias_triggered() {
         m_company->s_provincias();
-//        m_empresa->s_provincias();
     };
     virtual void on_actionSeries_de_Factura_triggered() {
         m_company->s_seriesFactura();
-//        m_empresa->s_seriesFactura();
     };
     virtual void on_actionTrabajadores_triggered() {
         m_company->s_trabajadores();
-//        m_empresa->s_trabajadores();
     };
     virtual void on_actionVentana_Completa_triggered() {
         s_ventanaCompleta();
@@ -180,39 +154,43 @@ public slots:
     };
     virtual void on_actionAlmacenes_triggered() {
         m_company->s_almacenes();
-//        m_empresa->s_almacenes();
     };
     virtual void on_actionListado_de_Pagos_triggered() {
         m_company->viewPagosList();
-//        m_empresa->viewPagosList();
     };
     virtual void on_actionNuevo_Pago_triggered() {
         m_company->s_newPagoView();
-//        m_empresa->s_newPagoView();
     };
     virtual void on_actionNuevo_Cobro_triggered() {
         m_company->s_newCobroView();
-//        m_empresa->s_newCobroView();
     };
     virtual void on_actionListado_de_Cobros_triggered() {
         m_company->viewCobrosList();
-//        m_empresa->viewCobrosList();
     };
     virtual void on_actionParametros_triggered() {
         m_company->s_newListConfiguracionView();
-//        m_empresa->s_newListConfiguracionView();
     };
     virtual void on_actionFormas_de_Pago_triggered() {
         s_FPago();
     };
     virtual void on_actionIndexador_triggered() {
-        m_company->s_indexadorCambiaEstado();
-//        m_empresa->s_indexadorCambiaEstado();
-    }
+        if (actionIndexador->isChecked() == TRUE) {
+            m_company->s_indexadorCambiaEstado(TRUE);
+        } else {
+            m_company->s_indexadorCambiaEstado(FALSE);
+        } // end if
+    };
 
 private slots:
     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
     void informaindexador(QWidget *w);
+    void setActionIndexador(bool visible) {
+        if (visible == TRUE) {
+            actionIndexador->setChecked(TRUE);
+        } else {
+            actionIndexador->setChecked(FALSE);
+        } // end if
+    };
 
 };
 

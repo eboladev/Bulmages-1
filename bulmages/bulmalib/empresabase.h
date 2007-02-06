@@ -72,7 +72,7 @@ public:
     void sacaWindow(QObject *nom) {
         m_listventanas->sacaWindow(nom);
     };
-    void s_indexadorCambiaEstado();
+    void s_indexadorCambiaEstado(bool);
 };
 
 #endif

@@ -218,6 +218,7 @@ void company::viewCobrosList() {
     _depura("END company::viewCobrosList", 0);
 }
 
+
 /** Metodo para ver la ventana de PAgos.
     Es invocado desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
@@ -241,6 +242,7 @@ void company::listproviders() {
     _depura("END company::listproviders", 0);
 }
 
+
 /** Muestra la ventana de listado de Clientes.
     Es invocada desde el menu de la aplicacion a traves de la clase BulmaFact.
 */
@@ -251,6 +253,7 @@ void company::listClients() {
     m_pWorkspace->setActiveWindow(m_clientsList);
     _depura("END company::listClients", 0);
 }
+
 
 /** Muestra la ventana del listado de Articulos.
     Es invocada desde el menu de la aplicacion a traves de la clase BulmaFact.
@@ -291,6 +294,7 @@ ClienteView *company::newClienteView() {
     return bud;
 }
 
+
 /** Crea y agrega al workSpace una instancia de la ficha de cliente.
     Tiene la ventaja de que el tratamiento esta centralizado y es facil de invocar desde cualquier parte.
     Si no se desea que la ventana aparezca en pantalla puede usarse newClienteView()
@@ -303,6 +307,7 @@ void company::s_newClienteView() {
     bud->show();
     _depura("END company::s_newClienteView", 0);
 }
+
 
 /** Crea una instancia de la ficha de proveedor.
     Tiene la ventaja de que no debe implementarse en cada sitio que se quiera instanciar la ficha de proveedor.
@@ -331,6 +336,7 @@ void company::s_newProveedorView() {
     bud->show();
     _depura("END company::s_newProveedorView", 0);
 }
+
 
 /** Creacion de una ventana de factura de proveedor
     Es importante que siempre que se crea una factura de proveedor
@@ -525,7 +531,6 @@ void company::s_newPresupuestoCli() {
 }
 
 
-
 /** Crea una instancia de la clase FacturaView
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
@@ -691,7 +696,6 @@ void company::refreshPedidosCliente() {
         m_pedidosclienteList->presenta();
     _depura("END company::refreshPedidosCliente", 0);
 }
-
 
 
 /** Metodo para refrescar la lista de Pedidos a Proveedor

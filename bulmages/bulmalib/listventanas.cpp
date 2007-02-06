@@ -30,7 +30,6 @@
 #include "funcaux.h"
 
 
-
 listventanas::listventanas(QWidget *a) : QDockWidget(a) {
     _depura("listventanas::listventanas", 0);
     m_listBox = new QListWidget1(this);
@@ -195,13 +194,19 @@ void listventanas::sacaWindow(QObject *obj) {
 }
 
 
-void listventanas::cambiaVisible() {
+void listventanas::cambiaVisible(bool visible) {
     _depura("listventanas::cambiaVisible", 0);
-    if (this->isVisible() == TRUE) {
-        this->hide();
-    } else {
+    if (visible == TRUE) {
         this->show();
+    } else {
+        this->hide();
     } // end if
     _depura("END listventanas::cambiaVisible", 0);
+}
+
+
+void listventanas::closeEvent(QCloseEvent *event) {
+    emit(cambiaEstadoVisible(FALSE));
+    _depura("listventanas::closeEvent", 0);
 }
 
