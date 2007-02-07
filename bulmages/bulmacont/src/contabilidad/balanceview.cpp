@@ -30,7 +30,6 @@
 #include "arbol.h"
 #include "postgresiface2.h"
 #include "balanceprintview.h"
-#include "qtable1.h"
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
 

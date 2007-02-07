@@ -35,16 +35,16 @@ public:
     Ficha(QWidget *parent = 0, Qt::WFlags f = 0);
     ~Ficha();
     virtual int guardar() {
-        _depura("Ficha::guardar existe solo para ser derivado", 10);
+        _depura("Ficha::guardar existe solo para ser derivado", 0);
         return 0;
     };
     virtual int borrar() {
-        _depura("Ficha::borrar existe solo para ser derivado", 10);
+        _depura("Ficha::borrar existe solo para ser derivado", 0);
         return 0;
     };
     virtual void closeEvent(QCloseEvent *);
     virtual int sacaWindow() {
-        _depura("Ficha::sacaWindow existe solo para ser derivado", 10);
+        _depura("Ficha::sacaWindow existe solo para ser derivado", 0);
         return 0;
     };
 

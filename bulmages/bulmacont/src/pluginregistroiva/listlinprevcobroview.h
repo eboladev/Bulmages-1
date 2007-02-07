@@ -24,7 +24,6 @@
 #include <QEvent>
 #include <QTableWidget>
 
-#include "qtable1.h"
 #include "listlinprevcobro.h"
 #include "empresa.h"
 #include "linprevcobro.h"

@@ -46,7 +46,7 @@ class BbloqFecha : public QWidget, public Ui_BBloqFechaBase {
     Q_OBJECT
 
 private:
-    empresa *empresaactual;
+    empresa *m_companyact;
     void inicializa();
     QString qsbloqueado;
     QString qsabierto;
@@ -57,7 +57,6 @@ public:
 
 public slots:
     virtual void on_mui_crear_clicked();
-    virtual void boto1_click();
 
 private slots:
     virtual void on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int columna);

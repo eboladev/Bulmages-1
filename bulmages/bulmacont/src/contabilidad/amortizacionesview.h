@@ -28,19 +28,19 @@
 class empresa;
 
 
-/// Clase que muestra la ventana de amortizaciones.
 /** */
 class amortizacionesview : public Ficha, public Ui_AmortizacionesBase {
     Q_OBJECT
-
-public:
+private:
     empresa *m_companyact;
     /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
-    QString idamortizacion;
+    QString m_idamortizacion;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
-    QString nomamortizacion;
-    int modo;
-    amortizacionesview(empresa *, QWidget *);
+    QString m_nomamortizacion;
+    int m_modo;
+ 
+public:
+   amortizacionesview(empresa *, QWidget *);
     ~amortizacionesview();
     void inicializatabla();
 

@@ -26,7 +26,6 @@
 #include <QToolButton>
 #include <QTreeWidgetItem>
 
-#include "qtable1.h"
 #include "qlayout.h"
 
 #include "listcuentasview1.h"

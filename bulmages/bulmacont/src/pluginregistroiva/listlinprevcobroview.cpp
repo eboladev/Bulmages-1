@@ -52,7 +52,6 @@
 #include <QKeyEvent>
 #include <QEvent>
 
-#include "qtable1.h"
 #include "configuracion.h"
 #include "calendario.h"
 #include "asiento1view.h"

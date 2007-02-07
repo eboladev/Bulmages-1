@@ -26,12 +26,16 @@
 
 miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidget *parent)
         : QTreeWidgetItem(parent) {
+    _depura("miQTreeWidgetItem::miQTreeWidgetItem", 0);
+    _depura("END miQTreeWidgetItem::miQTreeWidgetItem", 0);
     return;
 }
 
 
 miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
         : QTreeWidgetItem(parent) {
+    _depura("miQTreeWidgetItem::miQTreeWidgetItem", 0);
+    _depura("END miQTreeWidgetItem::miQTreeWidgetItem", 0);
     return;
 }
 
@@ -53,7 +57,7 @@ void BbloqFecha::inicializa() {
 
     /// Consultamos a la base de datos.
     consultabd.sprintf("SELECT * FROM ejercicios WHERE periodo = 0 ORDER BY ejercicio DESC");
-    cursor2 *curPeri, *curEjer = empresaactual->cargacursor(consultabd);
+    cursor2 *curPeri, *curEjer = m_companyact->cargacursor(consultabd);
 
     while (!curEjer->eof()) {
 
@@ -71,7 +75,7 @@ void BbloqFecha::inicializa() {
 
 
         consultabd.sprintf("SELECT * FROM ejercicios WHERE ejercicio = '%s' ORDER BY periodo DESC", curEjer->valor("ejercicio").toAscii().constData());
-        curPeri = empresaactual->cargacursor(consultabd);
+        curPeri = m_companyact->cargacursor(consultabd);
         while (!curPeri->eof()) {
             switch (curPeri->valor("periodo").toInt()) {
             case 12:
@@ -142,22 +146,17 @@ BbloqFecha::BbloqFecha(empresa *emp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     QString query;
-    empresaactual = emp;
+    m_companyact = emp;
     inicializa();
-    empresaactual->meteWindow(windowTitle(), this);
+    m_companyact->meteWindow(windowTitle(), this);
     _depura("ENd BbloqFecha::BbloqFecha", 0);
 }
 
 
 BbloqFecha::~BbloqFecha() {
     _depura("BbloqFecha::~BbloqFecha", 0);
-    empresaactual->sacaWindow(this);
+    m_companyact->sacaWindow(this);
     _depura("ENd BbloqFecha::~BbloqFecha", 0);
-}
-
-
-void BbloqFecha::boto1_click() {
-    delete this;
 }
 
 
@@ -169,11 +168,11 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int 
         if (item->text(1) == qsbloqueado) {
             item->setText(1, qsabierto);
             QString consultabd = "UPDATE ejercicios SET bloqueado = FALSE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = empresaactual->ejecuta(consultabd);
+            error = m_companyact->ejecuta(consultabd);
         } else {
             item->setText(1, qsbloqueado);
             QString consultabd = "UPDATE ejercicios SET bloqueado = TRUE WHERE ejercicio = '" + it->ej + "' AND periodo = '" + it->per + "'";
-            error = empresaactual->ejecuta(consultabd);
+            error = m_companyact->ejecuta(consultabd);
         } // end if
     } // end if
     _depura("END BbloqFecha::on_mui_treeWidget_doubleClicked", 0);
@@ -182,10 +181,10 @@ void BbloqFecha::on_mui_treeWidget_itemDoubleClicked(QTreeWidgetItem *item, int 
 
 void BbloqFecha::on_mui_crear_clicked() {
     _depura("BbloqFecha::on_mui_crear_clicked", 0);
-    int ejer = 2004;
+    int ejer = 2006;
 
     QString consultabd = "SELECT max(ejercicio) AS ej FROM ejercicios";
-    cursor2 *cur = empresaactual->cargacursor(consultabd);
+    cursor2 *cur = m_companyact->cargacursor(consultabd);
     if (!cur->eof()) {
         ejer = cur->valor("ej").toInt();
     } // end if
@@ -194,7 +193,7 @@ void BbloqFecha::on_mui_crear_clicked() {
 
     for (int x = 0; x <= 12; x++) {
         QString consultabd = "INSERT INTO ejercicios (ejercicio, periodo, bloqueado) VALUES('" + QString::number(ejer) + "', '" + QString::number(x) + "', 'f')";
-        empresaactual->ejecuta(consultabd);
+        m_companyact->ejecuta(consultabd);
     } // end for
 
     inicializa();

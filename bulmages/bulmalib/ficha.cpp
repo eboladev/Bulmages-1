@@ -35,19 +35,19 @@ Ficha::~Ficha() {
 
 
 void Ficha::on_mui_aceptar_clicked() {
-    _depura("Ficha::on_mui_aceptar_clicked", 10);
+    _depura("Ficha::on_mui_aceptar_clicked", 0);
     try {
         if (guardar()) {
             throw -1;
         } // end if
         close();
     } catch (...) {} // end try
-    _depura("Ficha::on_mui_aceptar_clicked", 10);
+    _depura("Ficha::on_mui_aceptar_clicked", 0);
 }
 
 
 void Ficha::on_mui_borrar_clicked() {
-    _depura("Ficha::on_mui_borrar_clicked", 10);
+    _depura("Ficha::on_mui_borrar_clicked", 0);
     int val = QMessageBox::warning(this,
                                    tr("Borrar") + " " + windowTitle(),
                                    tr("Desea eliminar la") + " " + windowTitle(),
@@ -59,7 +59,7 @@ void Ficha::on_mui_borrar_clicked() {
             close();
         } // end if
     } // end if
-    _depura("END Ficha::on_mui_borrar_clicked", 10);
+    _depura("END Ficha::on_mui_borrar_clicked", 0);
 }
 
 

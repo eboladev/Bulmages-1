@@ -22,7 +22,6 @@
 #define EXTRACTOVIEW1_H
 
 #include "ui_extractobase.h"
-#include "qtable1.h"
 #include "postgresiface2.h"
 #include "ficha.h"
 

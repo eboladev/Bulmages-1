@@ -21,7 +21,6 @@
 #ifndef BALANCEVIEW_H
 #define BALANCEVIEW_H
 
-#include "qtable1.h"
 #include "qlayout.h"
 
 #include "ui_balancebase.h"

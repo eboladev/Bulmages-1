@@ -23,7 +23,6 @@
 
 #include <Qt>
 #include <QWidget>
-#include <QTextCodec>
 
 #include "ui_subform3base.h"
 #include "postgresiface2.h"

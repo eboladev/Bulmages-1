@@ -26,7 +26,10 @@
 #define COL_CODIGO 0
 #define COL_NOMBRE 1
 
-
+/** Constructor de la clase del listado.
+ *  Inicializa las variables y elementos del listado.
+ */
+/// TODO: Esta derivando de Ficha y deberia derivar de FichaBc
 amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent)
         : Ficha(parent) {
     _depura("amortizacionesview::amortizacionesview", 0);
@@ -34,19 +37,23 @@ amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent)
     setupUi(this);
     m_companyact = emp;
     inicializatabla();
-    modo = 0;
+    m_modo = 0;
     m_companyact->meteWindow(windowTitle(), this, FALSE);
     _depura("END amortizacionesview::amortizacionesview", 0);
 }
 
-
+/** Destructor de la clase que libera mermoria y saca la ventana de la lista
+ * de ventanas.
+ */
 amortizacionesview::~amortizacionesview() {
     _depura("amortizacionesview::~amortizacionesview", 0);
     m_companyact->sacaWindow(this);
     _depura("END amortizacionesview::~amortizacionesview", 0);
 }
 
-
+/** Inicializa y rellena desde la base de datos el listado de amortizaciones.
+ */
+/// TODO: La clase se basa en QTableWidget y deberia usar SubForm2Bc
 void amortizacionesview::inicializatabla()  {
     _depura("amortizacionesview::inicializatabla", 0);
     /// Para el listado de columnas hacemos una inicializaci&oacute;n.
@@ -55,7 +62,7 @@ void amortizacionesview::inicializatabla()  {
     listado->setHorizontalHeaderLabels(headers);
     listado->setColumnCount(2);
     string query = "SELECT * FROM amortizacion ORDER BY nomamortizacion";
-    cursor2 *cursoraux1 = m_companyact->cargacursor(query.c_str(), "elquery");
+    cursor2 *cursoraux1 = m_companyact->cargacursor(query.c_str());
     listado->setRowCount(cursoraux1->numregistros());
     int i = 0;
     while (!cursoraux1->eof()) {
@@ -70,33 +77,39 @@ void amortizacionesview::inicializatabla()  {
     _depura("END amortizacionesview::inicializatabla", 0);
 }
 
-
+/** SLOT que responde a hacer doble click sobre la tabla listado.
+ * lo que hace es invocar a la clase AmortizacionView y generar en esta una carga del elemento
+ * que ha sido clickado y mostrarlo.
+ * Si el modo es modo seleccion en lugar de modo edicion coge los valores del elemento seleccionado y cierra la ventana.
+ */
 void amortizacionesview::on_listado_cellDoubleClicked(int row, int) {
     _depura("amortizacionesview::on_listado_cellDoubleClicked", 0);
     /// Dependiendo del modo hacemos una cosa u otra.
-    if (modo == 0) {
-        idamortizacion = listado->item(row,COL_CODIGO)->text();
+    if (m_modo == 0) {
+        m_idamortizacion = listado->item(row,COL_CODIGO)->text();
         /// Creamos el objeto mpatrimonialview, y lo lanzamos.
         AmortizacionView *amor = new AmortizacionView(m_companyact, 0);
-        amor->cargar(idamortizacion);
+        amor->cargar(m_idamortizacion);
         m_companyact->pWorkspace()->addWindow(amor);
         amor->show();
     } else {
-        idamortizacion = listado->item(listado->currentRow(), COL_CODIGO)->text();
-        nomamortizacion = listado->item(listado->currentRow(), COL_NOMBRE)->text();
+        m_idamortizacion = listado->item(listado->currentRow(), COL_CODIGO)->text();
+        m_nomamortizacion = listado->item(listado->currentRow(), COL_NOMBRE)->text();
         close();
     } // end if
     _depura("END amortizacionesview::on_listado_cellDoubleClicked", 0);
 }
 
 
+/** SLOT que responde a la pulsacion del boton crear una nueva amortizacion.
+ * Crea una instancia de la clase AmortizacionView y la llama.
+ */
 void amortizacionesview::on_mui_crear_clicked() {
     _depura("amortizacionesview::on_mui_crear_clicked", 0);
     AmortizacionView *amor = new AmortizacionView(m_companyact, 0);
     m_companyact->pWorkspace()->addWindow(amor);
     amor->show();
     _depura("END amortizacionesview::on_mui_crear_clicked", 0);
-
 }
 
 
@@ -109,9 +122,7 @@ void amortizacionesview::on_mui_borrar_clicked() {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
         m_companyact->begin();
         m_companyact->ejecuta(query);
-        m_companyact->commit();
         query = "DELETE FROM amortizacion WHERE idamortizacion = " + codigo;
-        m_companyact->begin();
         m_companyact->ejecuta(query);
         m_companyact->commit();
         inicializatabla();
