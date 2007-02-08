@@ -64,32 +64,28 @@ configuracion *confpr;
 /// NOTA: No se puede utilizar _depura dentro de esta clase porque necesita
 /// valores que no se disponen antes de leer el archivo de configuraci&oacute;n.
 configuracion::configuracion(QString nombreprograma) {
-    QString mensaje;
-    QDir dirGlobalConf;
-    QFile genericGlobalConfFile;
-    QFile programGlobalConfFile;
-    QFile genericLocalConfFile;
-    QFile programLocalConfFile;
-
     /// Definimos los directorios donde buscar primero.
 #ifdef WIN32
-    m_dirGlobalConf = "C:\\bulmages\\";
+    m_dirGlobalConf = "C:/bulmages/";
 #else
     m_dirGlobalConf = "/etc/bulmages/";
 #endif
-
+    QString mensaje;
+    QFile genericGlobalConfFile;
+    QFile programGlobalConfFile;
+    QFile genericLocalConfFile;
+    QFile programLocalConfFile;    
+    QDir dirGlobalConf(m_dirGlobalConf);
     QString dirusuario = getenv("HOME");
     m_dirLocalConf = dirusuario + "/.bulmages/";
-
     m_genericGlobalConfFile = "bulmages.conf";
     m_programGlobalConfFile = nombreprograma + ".conf";
-
     m_genericLocalConfFile = m_genericGlobalConfFile;
     m_programLocalConfFile = m_programGlobalConfFile;
 
     /// Comprobamos la existencia de los directorios y archivos de configuracion.
     /// Directorios y archivos obligatorios (sale si no existe):
-    if (!dirGlobalConf.exists(m_dirGlobalConf)) {
+    if (!dirGlobalConf.exists()) {
         mensaje = "--> ERROR: El directorio '" + m_dirGlobalConf + "' no existe. Debe crearlo. <--\n";
         fprintf(stderr, mensaje.toAscii().constData());
         exit(-1);

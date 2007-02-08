@@ -26,6 +26,8 @@
 #include "calendario.h"
 #include "empresa.h"
 #include "fixed.h"
+#include "postgresiface2.h"
+#include "arbol.h"
 
 #ifndef WIN32
 #include <unistd.h>
@@ -79,7 +81,9 @@ void CAnualesPrintView::on_mui_aceptar_clicked() {
         return;
     } // end if
 
-
+    
+/** Versión sin ARBOL
+    
     /// Ponemos todos los valores de las cuentas. Hacemos la carga.
     QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
     for (int i = 0; i < lcuentas.count(); i++) {
@@ -98,7 +102,88 @@ void CAnualesPrintView::on_mui_aceptar_clicked() {
             delete cur;
         } // end if
     } // end for
-
+    
+**/
+    
+/** Versión con ARBOL: más rollo de codígo pero muuuucho mas eficiente **/
+    
+    /// Vamos a crear un &aacute;rbol en la mem&oacute;ria din&aacute;mica con
+    /// los distintos niveles de cuentas.
+    
+    // Primero, averiguaremos la cantidad de ramas iniciales (tantos como
+    // n&uacute;mero de cuentas de nivel 2) y las vamos creando.
+    empresaactual->begin();
+    QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
+    cursor2 *ramas;
+    ramas = empresaactual->cargacursor(query, "Ramas");
+    Arbol *arbolP1, *arbolP2; // un arbol por cada periodo
+    arbolP1 = new Arbol;
+    arbolP2 = new Arbol;
+    while (!ramas->eof()) {
+	if (atoi(ramas->valor("nivel").toAscii().constData()) == 2) { /// Cuenta ra&iacute;z.
+	    arbolP1->nuevarama(ramas);
+	    arbolP2->nuevarama(ramas);
+	} // end if
+	ramas->siguienteregistro();
+    } // end while
+    arbolP1->inicializa(ramas);
+    arbolP2->inicializa(ramas);    
+    delete ramas;
+    
+    // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
+    // establecer as&iacute; los valores de cada cuenta para el periodo 1.
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    cursor2 *hojas;
+    hojas = empresaactual->cargacursor(query, "Periodo1");
+    // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
+    while (!hojas->eof()) {
+	arbolP1->actualizahojas(hojas);
+	hojas->siguienteregistro();
+    } // end while
+    
+    // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
+    // establecer as&iacute; los valores de cada cuenta para el periodo 2.
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    hojas = empresaactual->cargacursor(query, "Periodo2");
+    // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
+    while (!hojas->eof()) {
+	arbolP2->actualizahojas(hojas);
+	hojas->siguienteregistro();
+    } // end while
+    delete hojas;
+    
+    QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
+    for (int i = 0; i < lcuentas.count(); i++) {
+	QDomNode cuenta = lcuentas.item(i);
+        QDomElement e1 = cuenta.toElement();
+	QString valorP1, valorP2;
+	Fixed valor = Fixed("0.0");
+	if( !e1.isNull() ) {
+	    if(arbolP1->irHoja(e1.text())) {
+		valor = Fixed(arbolP1->hojaactual("saldoant"));
+		valor = valor + Fixed(arbolP1->hojaactual("saldo"));
+	    } else {
+		valor = Fixed("0.0");
+	    }
+	    valorP1 = valor.toQString();
+	    if(arbolP2->irHoja(e1.text())) {
+		valor = Fixed(arbolP2->hojaactual("saldoant"));
+		valor = valor + Fixed(arbolP2->hojaactual("saldo"));
+	    } else {
+		valor = Fixed("0.0");
+	    }
+	    valorP2 = valor.toQString();
+	    QDomNode c = e1.parentNode();
+	    agregaValores(c, valorP1, valorP2);
+	} // end if
+    } // end for
+    
+    /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
+    delete arbolP1;
+    delete arbolP2;
+    empresaactual->commit();
+    
+/** Fin de la versión con ARBOL **/
 
     /// HAcemos el calculo recursivo del balance.
     bool terminado = FALSE;

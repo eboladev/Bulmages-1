@@ -78,6 +78,8 @@ public:
     bool deshoja(unsigned int, bool);
     /// Devuelve el contenido de valor solicitado como par&aacute;metro.
     QString hojaactual(QString);
+    /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
+    bool irHoja(QString);
 };
 
 #endif
