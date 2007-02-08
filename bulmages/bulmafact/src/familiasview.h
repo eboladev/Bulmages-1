@@ -21,7 +21,7 @@
 #ifndef FAMILIASVIEW_H
 #define FAMILIASVIEW_H
 
-#include "ui_familiasdlg.h"
+#include "ui_familiasbase.h"
 #include "ficha.h"
 
 
@@ -30,7 +30,7 @@ class company;
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class FamiliasView : public Ficha, public Ui_familiasdlg {
+class FamiliasView : public Ficha, public Ui_familiasbase {
     Q_OBJECT
 
 private:
@@ -67,7 +67,7 @@ public slots:
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
+    virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     virtual void on_mui_imprimir_clicked();
 
 signals:

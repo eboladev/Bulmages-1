@@ -213,7 +213,7 @@ void reemplazaarchivo(QString archivo, QString texto1, QString texto2, QString a
 /// En la impresi&oacute;n de documentos con trml2pdf esta funci&oacute;n hace casi todo
 /// el trabajo de la invocaci&oacute;n de trml2pdf para evitar trabajo duplicado.
 void generaPDF(const QString arch) {
-    _depura("generaPDF" + arch, 0);
+    _depura("generaPDF " + arch, 0);
     QDir::setCurrent(confpr->valor(CONF_DIR_USER));
     QString cadsys;
 

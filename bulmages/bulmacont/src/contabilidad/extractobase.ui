@@ -20,7 +20,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item row="1" column="0" >
     <widget class="QFrame" name="frame" >
@@ -353,10 +353,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Guardar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Guardar</string>
           </property>
           <property name="text" >
            <string/>
@@ -393,10 +393,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
@@ -427,10 +427,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Mostrar/Oculatar filtro</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Mostrar/Oculatar filtro</string>
           </property>
           <property name="text" >
            <string/>
@@ -467,10 +467,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Configurar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Configurar</string>
           </property>
           <property name="text" >
            <string/>
@@ -562,6 +562,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="toolTip" >
+           <string>Casacion</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Casacion</string>
+          </property>
           <property name="text" >
            <string/>
           </property>
@@ -589,6 +595,12 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="toolTip" >
+           <string>Guardar punteo</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Guardar punteo</string>
           </property>
           <property name="text" >
            <string/>
@@ -618,6 +630,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="toolTip" >
+           <string>Cargar punteo</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Cargar punteo</string>
+          </property>
           <property name="text" >
            <string/>
           </property>
@@ -645,6 +663,12 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="toolTip" >
+           <string>Borrar punteo</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar punteo</string>
           </property>
           <property name="text" >
            <string/>

@@ -48,6 +48,9 @@ Asiento1View::Asiento1View(empresa *emp, QWidget *parent, int)
     setupUi(this);
     _depura("Asiento1View::Asiento1View", 0);
 
+    eventos_mui_ordenasiento *eventosOrdenAsiento = new eventos_mui_ordenasiento(this);
+    mui_ordenasiento->installEventFilter(eventosOrdenAsiento);
+
     mui_list->setcompany(emp);
     setListLinAsiento1(mui_list);
 
@@ -103,7 +106,6 @@ void Asiento1View::asientoabiertop() {
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(TRUE);
 
-
     /// Los apuntes deben ser editables.
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
@@ -125,7 +127,6 @@ void Asiento1View::asientocerradop() {
     mui_iva->setEnabled(FALSE);
     mui_inteligente->setEnabled(TRUE);
     mui_list->setinsercion(FALSE);
-
 
     /// Los apuntes deben dejar de ser editables (aunque no se graben sus posibles
     /// modificaciones por estar en modo CERRADO).
@@ -151,7 +152,7 @@ void Asiento1View::on_mui_nuevoasiento_clicked() {
 
 
 /// Esta funci&oacute;n se encarga de hacer las inicializaciones en un asiento nuevo.
-void Asiento1View::iniciar_asiento_nuevo() {
+void Asiento1View::iniciar_asiento_nuevo(QString nuevoordenasiento) {
     _depura("Asiento1View::iniciar_asiento_nuevo", 0);
     try {
         /// TRATAMIENTO DE BASE DE DATOS.
@@ -167,7 +168,13 @@ void Asiento1View::iniciar_asiento_nuevo() {
         bool conversionok;
         int ord = (cur->valor("orden")).toInt(&conversionok);
         if (conversionok) {
-            ordenasiento = cur->valor("orden");
+            /// nuevoordenasiento = "" cuando no hay un numero de orden preestablecido
+            /// de creacion del nuevo asiento.
+            if (nuevoordenasiento == "") {
+                ordenasiento = cur->valor("orden");
+            } else {
+                ordenasiento = nuevoordenasiento;
+            } // end if
         } // end if
         delete cur;
 
@@ -219,7 +226,7 @@ void Asiento1View::on_mui_duplicar_clicked() {
     _depura("Asiento1View::on_mui_duplicar_clicked", 0);
     DuplicarAsientoView *dupli = new DuplicarAsientoView(m_companyact, 0);
     /// Establecemos los par&aacute;metros para el nuevo asiento a duplicar.
-    dupli->inicializa(m_ordenasiento->text(), m_ordenasiento->text());
+    dupli->inicializa(mui_ordenasiento->text(), mui_ordenasiento->text());
     dupli->exec();
     cargaasientos();
     boton_fin();
@@ -256,13 +263,19 @@ void Asiento1View::on_mui_inteligente_clicked() {
 void Asiento1View::boton_cargarasiento() {
     _depura("Asiento1View::boton_cargarasiento", 0);
     QString idas = "";
-    QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = " + m_ordenasiento->text() + " ORDER BY ordenasiento DESC";
+    QString query = "SELECT idasiento FROM asiento WHERE ordenasiento = " + mui_ordenasiento->text() + " ORDER BY ordenasiento DESC";
     cursor2 *curs = m_companyact->cargacursor(query);
     if (!curs->eof()) {
         idas = curs->valor("idasiento");
         cargar(idas);
     } else {
-        _depura("Asiento inexistente", 2);
+        /// Si el asiento no existe se da la posibilidad de crear uno nuevo.
+        if (QMessageBox::question(this,
+                                  tr("Asiento inexistente."),
+                                  tr("Desea crear un nuevo asiento en esa posicion?"),
+                                  tr("&Si"), tr("&No"), 0, 0, 1) == 0) {
+            iniciar_asiento_nuevo(mui_ordenasiento->text());
+        } // end if
         pintar();
     } // end if
     delete curs;
@@ -287,7 +300,7 @@ void Asiento1View::muestraasiento(QString v) {
 void Asiento1View::prepguardar() {
     _depura("Asiento1View::prepguardar", 0);
     setDBvalue("fecha", mui_fecha->text());
-    setDBvalue("ordenasiento", m_ordenasiento->text());
+    setDBvalue("ordenasiento", mui_ordenasiento->text());
     setDBvalue("comentariosasiento", mui_comentariosAsiento->toPlainText());
     setDBvalue("clase", QString::number(mui_claseAsiento->currentIndex()));
     _depura("END Asiento1View::prepguardar", 0);
@@ -499,5 +512,18 @@ QString ListAsientos::idasientosiguiente() {
     } else {
         return "";
     } // end if
+}
+
+
+bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event)
+{    
+    if (event->type() == QEvent::KeyPress) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if ((keyEvent->key() == Qt::Key_Enter) || (keyEvent->key() == Qt::Key_Return)) {
+            objeto->mui_ordenasiento_pulsadoIntro();
+            return true;
+        } // end if
+    } // end if
+    return QObject::eventFilter(obj, event);
 }
 

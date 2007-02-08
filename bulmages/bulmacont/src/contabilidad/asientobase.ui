@@ -624,13 +624,6 @@
       <number>5</number>
      </property>
      <item>
-      <widget class="QLabel" name="TextLabel2" >
-       <property name="text" >
-        <string>Fecha:</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="BusquedaFecha" name="mui_fecha" >
        <property name="minimumSize" >
         <size>
@@ -648,20 +641,15 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="m_ordenasiento" >
-       <property name="sizePolicy" >
-        <sizepolicy>
-         <hsizetype>0</hsizetype>
-         <vsizetype>0</vsizetype>
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
+      <widget class="QSpinBox" name="mui_ordenasiento" >
        <property name="minimumSize" >
         <size>
          <width>100</width>
          <height>0</height>
         </size>
+       </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
        </property>
       </widget>
      </item>
@@ -720,12 +708,22 @@
          </disabled>
         </palette>
        </property>
+       <property name="alignment" >
+        <set>Qt::AlignRight</set>
+       </property>
        <property name="readOnly" >
         <bool>true</bool>
        </property>
       </widget>
      </item>
     </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="TextLabel2" >
+     <property name="text" >
+      <string>Fecha:</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QFrame" name="frame" >
@@ -845,7 +843,7 @@
        </property>
        <property name="minimumSize" >
         <size>
-         <width>150</width>
+         <width>100</width>
          <height>0</height>
         </size>
        </property>
@@ -885,6 +883,13 @@
           </colorrole>
          </disabled>
         </palette>
+       </property>
+       <property name="font" >
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="mouseTracking" >
         <bool>false</bool>
@@ -920,7 +925,7 @@
       <widget class="QLineEdit" name="m_totaldebe" >
        <property name="minimumSize" >
         <size>
-         <width>150</width>
+         <width>100</width>
          <height>0</height>
         </size>
        </property>
@@ -960,6 +965,14 @@
           </colorrole>
          </disabled>
         </palette>
+       </property>
+       <property name="font" >
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <italic>false</italic>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="alignment" >
         <set>Qt::AlignRight</set>
@@ -983,7 +996,7 @@
       <widget class="QLineEdit" name="m_totalhaber" >
        <property name="minimumSize" >
         <size>
-         <width>150</width>
+         <width>100</width>
          <height>0</height>
         </size>
        </property>
@@ -1023,6 +1036,13 @@
           </colorrole>
          </disabled>
         </palette>
+       </property>
+       <property name="font" >
+        <font>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
        </property>
        <property name="alignment" >
         <set>Qt::AlignRight</set>

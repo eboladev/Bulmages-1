@@ -22,6 +22,7 @@
 #define ASIENTOSVIEW_H
 
 #include <QWidget>
+#include <QComboBox>
 
 #include "ui_asientolistbase.h"
 #include "ficha.h"
@@ -35,6 +36,9 @@ class empresa;
 /** */
 class asientosview : public Ficha, public Ui_AsientoListBase {
     Q_OBJECT
+
+private:
+    void rellenaListaEjercicio();
 
 public:
     empresa *m_companyact;

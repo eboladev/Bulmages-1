@@ -28,11 +28,11 @@
 #include "company.h"
 #include "funcaux.h"
 
-#define COL_NOMFAMILIA 0
-#define COL_CODCOMPLETOFAMILIA 1
-#define COL_DESCFAMILIA 2
-#define COL_IDFAMILIA  3
-#define COL_CODFAMILIA 4
+#define COL_NOMFAMILIA          0
+#define COL_CODCOMPLETOFAMILIA  1
+#define COL_DESCFAMILIA         2
+#define COL_IDFAMILIA           3
+#define COL_CODFAMILIA          4
 
 
 FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
@@ -45,6 +45,9 @@ FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
     QStringList headers;
     headers << tr("Nombre") << tr("Codigo") << tr("Descripcion") << tr("Id familia") << tr("Codigo completo");
     m_listFamilias->setHeaderLabels(headers);
+
+    m_listFamilias->setColumnWidth(0, 200);
+    m_listFamilias->setColumnWidth(1, 100);
 
     m_listFamilias->setColumnHidden(COL_IDFAMILIA, TRUE);
     m_listFamilias->setColumnHidden(COL_CODFAMILIA, TRUE);
@@ -81,7 +84,7 @@ int FamiliasView::sacaWindow() {
 
 void FamiliasView::pintar() {
     _depura("FamiliasView::pintar", 0);
-    QTreeWidgetItem * it;
+    QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
     int idfamilia = 0;
@@ -93,7 +96,7 @@ void FamiliasView::pintar() {
         delete it;
     } // end while
 
-    cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia ISNULL ORDER BY idfamilia");
+    cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia");
     while (!cursoraux1->eof()) {
         padre = cursoraux1->valor("padrefamilia").toInt();
         idfamilia = cursoraux1->valor("idfamilia").toInt();
@@ -170,7 +173,7 @@ void FamiliasView::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
 /// Se ha seleccionado un item en la lista.
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
-void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem *previous) {
+void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous) {
     QString idfamiliaold = "";
     if (previous)
         m_idfamilia = previous->text(COL_IDFAMILIA);
@@ -240,6 +243,11 @@ void FamiliasView::on_mui_guardar_clicked() {
         int error = companyact->ejecuta(query);
         if (error)
             throw -1;
+        /// Guardamos la informacion de la fila que esta seleccionada para volver
+        /// a ponerla despues.
+        QTreeWidgetItem *posicionCursor;
+        posicionCursor = m_listFamilias->currentItem();
+        posicionCursor->setSelected(TRUE);
         dialogChanges_cargaInicial();
         _depura("END FamiliasView::on_mui_guardar_clicked", 0);
     } catch (...) {
@@ -317,25 +325,46 @@ void FamiliasView::on_mui_borrar_clicked() {
     } catch (...) {
         mensajeInfo("Error al borrar la familia");
     } // end try
+    _depura("END FamiliasView::on_mui_borrar_clicked", 0);
 }
 
 
 void FamiliasView::on_mui_imprimir_clicked() {
-    /// Copiamos el archivo.
+    _depura("FamiliasView::on_mui_imprimir_clicked", 0);
+
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "familias.rml";
-    archivo = "cp " + archivo + " /tmp/familias.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "familias.rml";
+    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+
+    /// Copiamos el archivo.
+#ifdef WINDOWS
+
+    archivo = "copy " + archivo + " " + archivod;
+#else
+
+    archivo = "cp " + archivo + " " + archivod;
+#endif
+
     system (archivo.toAscii().constData());
     /// Copiamos el logo.
-    archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-    archivo = "cp " + archivo + " /tmp/logo.jpg";
-    system(archivo.toAscii().constData());
+#ifdef WINDOWS
+
+    archivologo = "copy "  + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#else
+
+    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+#endif
+
+    system(archivologo.toAscii().constData());
     QFile file;
-    file.setFileName("/tmp/familias.rml");
+    file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
     QTextStream stream(&file);
     QString buff = stream.readAll();
     file.close();
-    QString fitxersortidatxt;
+
+    QString fitxersortidatxt = "";
+
     /// Linea de totales del presupuesto.
     fitxersortidatxt = "<blockTable style=\"tabla\" colWidths=\"3cm, 15cm\" repeatRows=\"1\">";
     fitxersortidatxt += "<tr>";
@@ -361,12 +390,14 @@ void FamiliasView::on_mui_imprimir_clicked() {
         stream << buff;
         file.close();
     }
-    system("bgtrml2pdf /tmp/familias.rml > /tmp/familias.pdf");
-    system("kpdf /tmp/familias.pdf &");
+    invocaPDF("familias");
+
+    _depura("END FamiliasView::on_mui_imprimir_clicked", 0);
 }
 
 
 void FamiliasView::on_mui_aceptar_clicked() {
+    _depura("FamiliasView::on_mui_aceptar_clicked", 0);
     trataModificado();
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
@@ -374,5 +405,6 @@ void FamiliasView::on_mui_aceptar_clicked() {
     else
         m_idfamilia = "";
     close();
+    _depura("END FamiliasView::on_mui_aceptar_clicked", 0);
 }
 

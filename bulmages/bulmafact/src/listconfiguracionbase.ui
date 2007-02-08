@@ -1,7 +1,5 @@
 <ui version="4.0" >
  <author>Tomeu Borrás Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>ListConfiguracionBase</class>
  <widget class="QWidget" name="ListConfiguracionBase" >
   <property name="geometry" >
@@ -23,7 +21,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>2</number>
+    <number>5</number>
    </property>
    <item>
     <widget class="ListConfiguracionSubForm" name="mui_listado" />
@@ -34,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -68,14 +66,11 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="6" />
- <pixmapfunction></pixmapfunction>
  <customwidgets>
   <customwidget>
    <class>ListConfiguracionSubForm</class>
    <extends>QTableWidget</extends>
    <header>listconfiguracionview.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
   </customwidget>
  </customwidgets>
  <resources>

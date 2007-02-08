@@ -53,7 +53,7 @@ FORMS += aboutbase.ui \
          busquedaarticulobase.ui \
          busquedaproveedorbase.ui \
          busquedatipoarticulobase.ui \
-         familiasdlg.ui \
+         familiasbase.ui \
          busquedafamiliabase.ui \
          listseriefacturabase.ui \
          inventariosbase.ui \

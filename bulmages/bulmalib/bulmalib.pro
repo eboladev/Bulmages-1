@@ -3,8 +3,8 @@
 
 #Probamos de usar distcc
 #!isEmpty( DISTCC_HOSTS ) {
-exists(/usr/bin/distcc) {
-   QMAKE_CXX = distcc g++
+exists(/usr/bin/distcc){
+    QMAKE_CXX = distcc g++
 }
 #}
 
@@ -14,14 +14,14 @@ FORMS += logpassbase.ui \
          msgerrorbase.ui \
          busquedafechabase.ui \
          subform3base.ui 
-	 
+
 TRANSLATIONS += bulmalib_es.ts \
                 bulmalib_ca.ts \
                 bulmalib_en.ts \
                 bulmalib_fr.ts \
                 bulmalib_de.ts \
                 bulmalib_zz.ts 
-		
+
 HEADERS += postgresiface2.h \
            configuracion.h \
            numerocuenta.h \
@@ -47,8 +47,6 @@ HEADERS += postgresiface2.h \
            ficha.h \
 	   empresabase.h \
 	   qtexteditdelegate.h
-	   
-	   
 SOURCES += postgresiface2.cpp \
            configuracion.cpp \
            numerocuenta.cpp \
@@ -74,7 +72,6 @@ SOURCES += postgresiface2.cpp \
            ficha.cpp \
 	   empresabase.cpp \
 	   qtexteditdelegate.cpp
-	   
 RESOURCES = ../bulmages.qrc
 TEMPLATE = lib
 LANGUAGE = C++
@@ -94,40 +91,40 @@ MOC_DIR = .moc
 QT += xml
 CONFIG += uic
 
-unix {
-	UI_DIR = .ui
-	MOC_DIR = .moc
-	OBJECTS_DIR = .obj
-	LIBS += -lpq
-	LIBS += -rdynamic
-	CONFIG += release
-#        CONFIG += qt debug
-	TARGET = bulmalib
-	DESTDIR = ../installbulmages
-	exists(/usr/include/postgresql/libpq-fe.h){
-		DEFINES += DISTRO_DEBIAN
-	}
-	exists(/usr/include/postgresql/8.0/libpq-fe.h){
-		DEFINES += DISTRO_DEBIAN_8_0
-	}
-	exists(/usr/include/pgsql/libpq-fe.h){
-		DEFINES += DISTRO_RED_HAT
-	}
-	exists(/usr/include/postgresql/pgsql/libpq-fe.h){
-		DEFINES += DISTRO_GENTOO
-	}
+unix{
+    UI_DIR = .ui
+    MOC_DIR = .moc
+    OBJECTS_DIR = .obj
+    LIBS += -lpq
+    LIBS += -rdynamic
+    CONFIG += release
+    #        CONFIG += qt debug
+    TARGET = bulmalib
+    DESTDIR = ../installbulmages
+    exists(/usr/include/postgresql/libpq-fe.h){
+        DEFINES += DISTRO_DEBIAN
+    }
+    exists(/usr/include/postgresql/8.0/libpq-fe.h){
+        DEFINES += DISTRO_DEBIAN_8_0
+    }
+    exists(/usr/include/pgsql/libpq-fe.h){
+        DEFINES += DISTRO_RED_HAT
+    }
+    exists(/usr/include/postgresql/pgsql/libpq-fe.h){
+        DEFINES += DISTRO_GENTOO
+    }
 }
 
-windows {
-	UI_DIR = .ui
-	MOC_DIR = .moc
-	OBJECTS_DIR = .obj
-	LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
-	INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
-	DEFINES += WINDOWS
-	DEFINES += WIN32
-	CONFIG += release \
+windows{
+    UI_DIR = .ui
+    MOC_DIR = .moc
+    OBJECTS_DIR = .obj
+    LIBS += "C:\Archivos de programa\PostgreSQL\8.1\bin\libpq.dll"
+    INCLUDEPATH += "C:\Archivos de programa\PostgreSQL\8.1\include"
+    DEFINES += WINDOWS
+    DEFINES += WIN32
+    CONFIG += release \
 		   dll
-	VERSION += 0.9.1
+    VERSION += 0.9.1
 }
 

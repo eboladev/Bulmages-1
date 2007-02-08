@@ -40,7 +40,8 @@ class empresa;
     Pretende conseguir una interficie que resulte muy r&iacute;gida y c&oacute;moda para
     el usuario que introduzca datos. Hereda intapunts3dlg. */
 class ListAsientos : public Asiento1 {
-Q_OBJECT
+    Q_OBJECT
+
 private:
     /// Este es el cursor que se usar&aacute; para recorrer la lista de asientos.
     cursor2 *cursorasientos;
@@ -79,7 +80,7 @@ private:
         mui_fecha->setText(val);
     };
     void pintaordenasiento(QString val) {
-        m_ordenasiento->setText(val);
+        mui_ordenasiento->setValue(val.toInt());
     };
     void pintaclase(QString val) {
         mui_claseAsiento->setCurrentIndex(val.toInt());
@@ -106,7 +107,7 @@ public:
     virtual void trataestadoAsiento1();
     void asientoabiertop();
     void asientocerradop();
-    void iniciar_asiento_nuevo();
+    void iniciar_asiento_nuevo(QString nuevoordenasiento = "");
 
 public slots:
     virtual void on_mui_abrirasiento_clicked() {
@@ -120,7 +121,6 @@ public slots:
         prepguardar();
         Asiento1::guardar();
     };
-
     virtual void on_mui_nuevoasiento_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();
@@ -141,10 +141,29 @@ public slots:
     };
     /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
     /// carga de dicho asiento.
-    void eturn_numasiento() {
+    void mui_ordenasiento_pulsadoIntro() {
         boton_cargarasiento();
     };
     virtual void boton_cargarasiento();
+};
+
+
+/// Captura todos los eventos del SpinBox 'mui_ordenasiento'.
+class eventos_mui_ordenasiento : public QObject
+{
+    Q_OBJECT
+
+private:
+    Asiento1View *objeto;
+
+public:
+    eventos_mui_ordenasiento(Asiento1View *ob) {
+        objeto = ob;
+    };
+    ~eventos_mui_ordenasiento() {};
+
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
 };
 
 #endif

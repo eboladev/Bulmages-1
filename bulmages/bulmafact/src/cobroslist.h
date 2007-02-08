@@ -76,7 +76,7 @@ public:
     void setcompany (company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
-	mui_list->setcompany(comp);
+        mui_list->setcompany(comp);
     };
     QString idcobro() {
         return mdb_idcobro;

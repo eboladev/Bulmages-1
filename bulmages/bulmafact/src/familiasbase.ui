@@ -1,15 +1,13 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>familiasdlg</class>
- <widget class="QWidget" name="familiasdlg" >
+ <class>familiasbase</class>
+ <widget class="QWidget" name="familiasbase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>505</width>
-    <height>541</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -31,10 +29,22 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label_2" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -67,13 +77,25 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>0</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Nueva Familia</string>
           </property>
@@ -96,6 +118,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Borrar Familia</string>
           </property>
@@ -118,6 +152,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Guardar Familia</string>
           </property>
@@ -140,6 +186,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Imprimir Familias</string>
           </property>
@@ -190,20 +248,20 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QToolButton" name="mui_detalles" >
        <property name="minimumSize" >
         <size>
-         <width>16</width>
-         <height>16</height>
+         <width>22</width>
+         <height>22</height>
         </size>
        </property>
        <property name="maximumSize" >
         <size>
-         <width>16</width>
-         <height>16</height>
+         <width>22</width>
+         <height>22</height>
         </size>
        </property>
        <property name="toolTip" >
@@ -252,110 +310,69 @@
      <property name="title" >
       <string>Contenido de la familia:</string>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>5</number>
       </property>
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item>
-       <layout class="QVBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>2</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text" >
-           <string>Descripcion:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="m_descFamilia" />
-        </item>
-       </layout>
+      <item row="1" column="0" colspan="4" >
+       <widget class="QTextEdit" name="m_descFamilia" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="0" column="0" colspan="4" >
+       <widget class="QLabel" name="label" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>0</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="spacing" >
-         <number>2</number>
+        <property name="text" >
+         <string>Descripcion:</string>
         </property>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1" >
-            <property name="text" >
-             <string>Nombre:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="m_nomFamilia" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>2</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label" >
-            <property name="text" >
-             <string>Codigo:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="m_codFamilia" />
-          </item>
-         </layout>
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="2" column="2" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Codigo:</string>
         </property>
-        <property name="spacing" >
-         <number>2</number>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
-           <string>Codigo completo:</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="m_codCompletoFamilia" />
-        </item>
-       </layout>
+       </widget>
+      </item>
+      <item row="2" column="3" >
+       <widget class="QLineEdit" name="m_codFamilia" />
+      </item>
+      <item row="2" column="1" >
+       <widget class="QLineEdit" name="m_nomFamilia" />
+      </item>
+      <item row="3" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Codigo completo:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1" colspan="3" >
+       <widget class="QLineEdit" name="m_codCompletoFamilia" />
+      </item>
+      <item row="2" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Nombre:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -363,10 +380,10 @@
    <item>
     <layout class="QHBoxLayout" >
      <property name="margin" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <property name="spacing" >
-      <number>2</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -400,7 +417,6 @@
   </layout>
  </widget>
  <layoutdefault spacing="2" margin="2" />
- <pixmapfunction></pixmapfunction>
  <resources>
   <include location="../../bulmages.qrc" />
  </resources>
@@ -408,7 +424,7 @@
   <connection>
    <sender>mui_cancelar</sender>
    <signal>clicked()</signal>
-   <receiver>familiasdlg</receiver>
+   <receiver>familiasbase</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel" >

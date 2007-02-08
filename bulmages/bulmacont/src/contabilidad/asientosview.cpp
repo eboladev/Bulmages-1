@@ -23,7 +23,6 @@
 #include "empresa.h"
 
 
-
 /// El constructor de la clase inicializa algunas estructuras y configura la visi&oacute;n
 /// de la pantalla.
 asientosview::asientosview(empresa *emp, QWidget *parent)
@@ -32,6 +31,18 @@ asientosview::asientosview(empresa *emp, QWidget *parent)
     setupUi(this);
     m_companyact = emp;
     mui_list->setcompany(emp);
+
+    rellenaListaEjercicio();
+
+    mui_filtrar->toggle();
+    m_companyact->meteWindow(windowTitle(), this);
+    _depura("END asientosview::asientosview", 0);
+}
+
+
+void asientosview::rellenaListaEjercicio() {
+    /// Actualiza el contenido del combobox.
+    mui_ejercicio->clear();
     mui_ejercicio->insertItem(0, "--");
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
@@ -40,9 +51,6 @@ asientosview::asientosview(empresa *emp, QWidget *parent)
         cur->siguienteregistro();
     } // end while
     delete cur;
-    mui_filtrar->toggle();
-    m_companyact->meteWindow(windowTitle(), this);
-    _depura("END asientosview::asientosview", 0);
 }
 
 
@@ -79,6 +87,7 @@ void asientosview::inicializa() {
     QString textnombreasiento = "";
     QString textejercicio = "";
     int pand = 0;
+
     /// Componemos la consulta a partir de la parte de filtrado.
     if (saldototal != "") {
         cadwhere = " WHERE ";
@@ -113,6 +122,15 @@ void asientosview::inicializa() {
     cursor2 *cursoraux = m_companyact->cargacursor(query);
     mui_list->cargar(cursoraux);
     delete cursoraux;
+
+    /// Actualiza el contenido del combobox.
+    rellenaListaEjercicio();
+
+    /// Busca el texto guardado anteriormente del combobox y lo selecciona.
+    int ejercicioIndice;
+    ejercicioIndice = mui_ejercicio->findText(ejercicio);
+    mui_ejercicio->setCurrentIndex(ejercicioIndice);
+
     _depura("END asientosview::inicializa", 0);
 }
 
@@ -120,58 +138,6 @@ void asientosview::inicializa() {
 void asientosview::on_mui_imprimir_clicked() {
     _depura("asientosview::on_mui_imprimir_clicked", 0);
     mui_list->imprimirPDF(tr("Asientos"));
-    /*
-        QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
-        QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
-        QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-     
-        /// Copiamos el archivo.
-    #ifdef WINDOWS
-     
-        archivo = "copy " + archivo + " " + archivod;
-    #else
-     
-        archivo = "cp " + archivo + " " + archivod;
-    #endif
-     
-        system (archivo.ascii());
-     
-        /// Copiamos el logo.
-    #ifdef WINDOWS
-     
-        archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-    #else
-     
-        archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-    #endif
-     
-        system (archivologo.ascii());
-     
-        QFile file;
-        file.setName(archivod);
-        file.open(QIODevice::ReadOnly);
-        QTextStream stream(&file);
-        QString buff = stream.read();
-        file.close();
-        QString fitxersortidatxt;
-     
-        /// Linea de totales del presupuesto
-        fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
-        fitxersortidatxt += mui_list->imprimir();
-        fitxersortidatxt += "</blockTable>";
-     
-        buff.replace("[story]", fitxersortidatxt);
-        buff.replace("[titulo]", "Asientos");
-     
-     
-        if (file.open(QIODevice::WriteOnly)) {
-            QTextStream stream(&file);
-            stream << buff;
-            file.close();
-        } // end if
-     
-        invocaPDF("listado");
-    */
     _depura("END asientosview::on_mui_imprimir_clicked", 0);
 }
 

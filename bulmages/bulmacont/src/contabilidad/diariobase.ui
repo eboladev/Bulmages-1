@@ -104,10 +104,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar albaran</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
@@ -138,10 +138,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Mostrar/ocultar filtro</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Mostrar/ocultar filtro</string>
           </property>
           <property name="text" >
            <string/>
@@ -178,10 +178,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Configurar listado</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Configurar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -218,10 +218,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Actualizar</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Actualizar</string>
           </property>
           <property name="text" >
            <string/>
@@ -272,175 +272,106 @@
      <property name="frameShadow" >
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QGridLayout" >
       <property name="margin" >
        <number>5</number>
       </property>
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="2" column="3" colspan="2" >
+       <widget class="QLabel" name="textLabel1_3_2_2" >
+        <property name="text" >
+         <string>Apuntes con contrapartida:</string>
         </property>
-        <property name="spacing" >
-         <number>5</number>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <item>
-         <widget class="QLabel" name="TextLabel1_3" >
-          <property name="text" >
-           <string>Fecha inicial</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" native="1" name="mui_fechainicial" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="TextLabel1_2_2" >
-          <property name="text" >
-           <string>Fecha final</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="BusquedaFecha" native="1" name="mui_fechafinal" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>5</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>150</width>
-            <height>0</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>191</width>
-            <height>21</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
+       </widget>
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
-        </property>
-        <property name="spacing" >
-         <number>5</number>
-        </property>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1_3_2" >
-            <property name="text" >
-             <string>Apuntes con saldo inferior a:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_saldoinferior" />
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>6</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1_3" >
-            <property name="text" >
-             <string>Apuntes con saldo superior a:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="mui_saldosuperior" />
-          </item>
-         </layout>
-        </item>
-       </layout>
+      <item row="2" column="5" >
+       <widget class="BusquedaCuenta" native="1" name="mui_contrapartida" />
       </item>
-      <item>
-       <layout class="QHBoxLayout" >
-        <property name="margin" >
-         <number>0</number>
+      <item row="1" column="0" colspan="2" >
+       <widget class="QLabel" name="textLabel1_3_2" >
+        <property name="text" >
+         <string>Apuntes con saldo inferior a:</string>
         </property>
-        <property name="spacing" >
-         <number>5</number>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
-        <item>
-         <widget class="QCheckBox" name="mui_asAbiertos" >
-          <property name="text" >
-           <string>&amp;Incluir asientos abiertos</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" >
-          <property name="margin" >
-           <number>0</number>
-          </property>
-          <property name="spacing" >
-           <number>5</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="textLabel1_3_2_2" >
-            <property name="text" >
-             <string>Apuntes con contrapartida:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="BusquedaCuenta" native="1" name="mui_contrapartida" />
-          </item>
-         </layout>
-        </item>
-       </layout>
+       </widget>
+      </item>
+      <item row="1" column="3" colspan="2" >
+       <widget class="QLabel" name="textLabel1_3" >
+        <property name="text" >
+         <string>Apuntes con saldo superior a:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" >
+       <widget class="QLabel" name="TextLabel1_2_2" >
+        <property name="text" >
+         <string>Fecha final:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="TextLabel1_3" >
+        <property name="text" >
+         <string>Fecha inicial:</string>
+        </property>
+        <property name="alignment" >
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1" colspan="2" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechainicial" >
+        <property name="sizePolicy" >
+         <sizepolicy>
+          <hsizetype>5</hsizetype>
+          <vsizetype>5</vsizetype>
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4" colspan="2" >
+       <widget class="BusquedaFecha" native="1" name="mui_fechafinal" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="3" >
+       <widget class="QCheckBox" name="mui_asAbiertos" >
+        <property name="text" >
+         <string>&amp;Incluir asientos abiertos</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5" >
+       <widget class="QLineEdit" name="mui_saldosuperior" />
+      </item>
+      <item row="1" column="2" >
+       <widget class="QLineEdit" name="mui_saldoinferior" />
       </item>
      </layout>
     </widget>

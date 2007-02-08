@@ -27,7 +27,6 @@
 #include "plugins.h"
 
 
-
 /** PReparamos la clase DBRecord para funcionar con la tabla factura.
 */
 Factura::Factura(company *comp, QWidget *parent) : FichaBf(comp, parent) {
@@ -57,7 +56,6 @@ Factura::~Factura() {
     _depura("Factura::~Factura", 0);
     _depura("END Factura::~Factura", 0);
 }
-
 
 
 /** Se encarga del borrado de una factura.
@@ -220,7 +218,7 @@ void  Factura::imprimirFactura() {
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy "  +archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy "  + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
 #else
 
     archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
@@ -233,10 +231,11 @@ void  Factura::imprimirFactura() {
     QTextStream stream(&file);
     QString buff = stream.readAll();
     file.close();
+
     QString fitxersortidatxt = "";
 
     /// Linea de totales del presupuesto.
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente=" + DBvalue("idcliente");
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = " + DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         buff.replace("[dircliente]", cur->valor("dircliente"));
@@ -259,7 +258,7 @@ void  Factura::imprimirFactura() {
     /// Impresion de la tabla de contenidos.
     QString l;
     SDBRecord *linea;
-    for(int i=0; i < m_listalineas->rowCount()-1; ++i) {
+    for (int i = 0; i < m_listalineas->rowCount() - 1; ++i) {
         linea = m_listalineas->lineaat(i);
         Fixed base = Fixed(linea->DBvalue("cantlfactura").toAscii().constData()) * Fixed(linea->DBvalue("pvplfactura").toAscii().constData());
         basesimp[linea->DBvalue("ivalfactura")] = basesimp[linea->DBvalue("ivalfactura")] + base - base * Fixed(linea->DBvalue("descuentolfactura").toAscii().constData()) / 100;
@@ -349,6 +348,4 @@ void  Factura::imprimirFactura() {
     invocaPDF("facturacliente");
     _depura("Factura::imprimirFactura", 0);
 }
-
-
 
