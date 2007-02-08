@@ -25,20 +25,46 @@
 
 #include <QLineEdit>
 
-#include "ui_propiedadesempresabase.h"
+
 #include "postgresiface2.h"
 #include "dialogchanges.h"
 #include "ficha.h"
-
+#include "subform2bc.h"
 
 class empresa;
 
 
+/// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
+/** */
+class ListConfiguracionSubForm : public SubForm2Bc {
+    Q_OBJECT
+
+public:
+    ListConfiguracionSubForm(QWidget *parent = 0);
+    ~ListConfiguracionSubForm() {}
+
+public slots:
+    virtual void cargar() {
+        _depura("ListConfiguracionSubForm::cargar", 0);
+        cursor2 *cur = companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
+        SubForm3::cargar(cur);
+        delete cur;
+    };
+};
+
+
+
+#include "ui_propiedadesempresabase.h"
+
+
+/** Gestion la configuracion de la empresa abierta. Basicamente hace gestiones
+sobre la tabla configuracion en dicha empresa
+ @TODO: Como estan duplicadas estas tablas tanto en bulmafact conmo en bulmacont se podria hacer una abstraccion en bulmalib.
+*/
 class propiedadesempresa : public Ficha, public Ui_PropiedadesEmpresaBase {
     Q_OBJECT
 
 public:
-    QString empresadb;
     empresa *m_companyact;
 
 public:
@@ -48,11 +74,8 @@ public:
 
 public slots:
     virtual bool close();
-    virtual int guardar();
+    virtual void on_mui_guardar_clicked();
     virtual void on_mui_modificarplan_clicked();
-
-private:
-    void update_value(QString, QString);
 };
 
 #endif

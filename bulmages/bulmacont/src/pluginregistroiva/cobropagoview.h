@@ -26,17 +26,14 @@
 #include "empresa.h"
 
 
-class postgresiface2;
-
 
 /// Listado de gestion de cobros y pagos.
+/// TODO: Esta clase debe derivar de FichaBc
 class cobropagoview : public Ficha, public Ui_CobroPagoBase {
     Q_OBJECT
 
-public:
-    postgresiface2 *conexionbase;
+private:
     empresa *m_companyact;
-    int numdigitos;
 
 public:
     cobropagoview(empresa *, QWidget *parent = 0);

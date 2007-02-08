@@ -34,10 +34,8 @@ cobropagoview::cobropagoview(empresa *emp, QWidget *parent)
     _depura("cobropagoview::cobropagoview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    conexionbase = emp->bdempresa();
     m_companyact = emp;
     mui_listado->setcompany(m_companyact);
-    numdigitos = emp->numdigitosempresa();
     /// Inicializamos el listado.
     mui_listado->setDBTableName("prevcobro");
     mui_listado->setDBCampoId("idprevcobro");

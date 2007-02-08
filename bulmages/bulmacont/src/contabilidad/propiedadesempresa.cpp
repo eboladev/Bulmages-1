@@ -24,7 +24,6 @@
 #include "propiedadesempresa.h"
 #include "empresa.h"
 
-
 propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
         : Ficha(parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
@@ -32,6 +31,10 @@ propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
     setupUi(this);
     m_companyact = emp;
     inicializa();
+
+    mui_subform->setcompany(m_companyact);
+    mui_subform->cargar();
+
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END propiedadesempresa::propiedadesempresa", 0);
 }
@@ -58,149 +61,24 @@ int propiedadesempresa::inicializa() {
     } // end if
     delete curs;
 
-    tpropiedades->setColumnCount(2);
-
-    QStringList etiquetas;
-    etiquetas << tr("Propiedad") << tr("Valor");
-    tpropiedades->setHorizontalHeaderLabels(etiquetas);
-
-    query = "SELECT * FROM configuracion";
-    m_companyact->begin();
-    curs = m_companyact->cargacursor(query, "queryconf");
-    m_companyact->commit();
-    num = curs->numregistros();
-    tpropiedades->setRowCount(100);
-    i = 0;
-
-    /// Rellena la tabla con Items.
-    while (!curs->eof()) {
-        QTableWidgetItem *tablaItem0 = new QTableWidgetItem(curs->valor("nombre"));
-        tpropiedades->setItem(i, 0, tablaItem0);
-        QTableWidgetItem *tablaItem1 = new QTableWidgetItem(curs->valor("valor"));
-        tpropiedades->setItem(i, 1, tablaItem1);
-        curs->siguienteregistro();
-        i++;
-    } // end while
-    delete curs;
-
-    /// Este bloque de c&oacute;digo realiza la consulta para obtener los datos fiscales
-    /// de la empresa.
-    QString empresa, ano;
-
-    /// Tiene que usar la empresa elegida, no bulmages!!!! TODO
-    query = "SELECT nombre, valor FROM configuracion";
-
-    m_companyact->begin();
-    cursor2 *cur = m_companyact->cargacursor(query, "datos");
-    m_companyact->commit();
-
-    QString n, v;
-    int nTuples = cur->numregistros();
-    QLineEdit *p;
-    for (int i = 0; i < nTuples; i++) {
-        p = NULL;
-        n = cur->valor("nombre");
-        v = cur->valor("valor");
-        cur->siguienteregistro();
-
-        if (n == "NombreEmpresa")
-            p = mui_nombreempresa;
-        if (n == "CIF")
-            p = mui_cif;
-        if (n == "Telefono")
-            p = mui_telefono;
-        if (n == "TipoVia")
-            p = mui_tipovia;
-        if (n == "NombreVia")
-            p = mui_nombrevia;
-        if (n == "NumeroVia")
-            p = mui_numerovia;
-        if (n == "Escalera")
-            p = mui_escalera;
-        if (n == "Piso")
-            p = mui_piso;
-        if (n == "Puerta")
-            p = mui_puerta;
-        if (n == "CodPostal")
-            p = mui_codigopostal;
-        if (n == "Municipio")
-            p = mui_poblacion;
-        if (n == "Provincia")
-            p = mui_provincia;
-        if (n == "Pais")
-            p = mui_pais;
-        if (p) {
-            p->setText(v);
-        } // end if
-    }
-
-    delete cur;
     return 0;
-    _depura("END propiedadesempresa::inicializa", 2);
+    _depura("END propiedadesempresa::inicializa", 0);
 }
 
 
-int propiedadesempresa::guardar() {
-    _depura("propiedadesempresa::on_mui_guardar_clicked()", 0);
-    int i = 0;
-    int pos = 0;
+void propiedadesempresa::on_mui_guardar_clicked() {
+    _depura("propiedadesempresa::on_mui_guardar_clicked", 0);
     /// Iniciamos transaccion.
     m_companyact->begin();
-    QString query = "DELETE FROM configuracion";
-    m_companyact->ejecuta(query);
+    mui_subform->guardar();
 
-    if (tpropiedades->rowCount() > 0) {
-        for (i = 0; i < tpropiedades->rowCount(); i++) {
-            /// Si vale 0 significa que no hay ningun QTableWidgetItem en esa posicion.
-            if ((tpropiedades->item(i, 0) != 0) && (tpropiedades->item(i, 1) != 0) && (tpropiedades->item(i, 0)->text() != "")) {
-                QString SQLQuery;
-                SQLQuery.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES (%d,'%s','%s')", pos,
-                                 m_companyact->sanearCadena(tpropiedades->item(i, 0)->text()).toAscii().constData(),
-                                 m_companyact->sanearCadena(tpropiedades->item(i, 1)->text()).toAscii().constData());
-                m_companyact->ejecuta(SQLQuery);
-                pos++;
-            } // end if
-        } // end for
-    } // end if
-
-    /// Este bloque de c&oacute;digo guarda los datos fiscales en la tabla
-    /// configuraci&oacute;n.
-    update_value("NombreEmpresa", mui_nombreempresa->text());
-    update_value("CIF", mui_cif->text());
-    update_value("Telefono", mui_telefono->text());
-    update_value("TipoVia", mui_tipovia->text());
-    update_value("NombreVia", mui_nombrevia->text());
-    update_value("NumeroVia", mui_numerovia->text());
-    update_value("Escalera", mui_escalera->text());
-    update_value("Piso", mui_piso->text());
-    update_value("Puerta", mui_puerta->text());
-    update_value("CodPostal", mui_codigopostal->text());
-    update_value("Poblacion", mui_poblacion->text());
-    update_value("Provincia", mui_provincia->text());
-    update_value("Pais", mui_pais->text());
-    update_value("Tipo", "BulmaCont");
 
     /// Procesamos la transaccion.
     m_companyact->commit();
-
-    _depura("END propiedadesempresa::on_mui_guardar_clicked()", 10);
-    return 0;
+    dialogChanges_cargaInicial();
+    _depura("END propiedadesempresa::on_mui_guardar_clicked", 0);
 }
 
-
-void propiedadesempresa::update_value(QString n, QString v) {
-    _depura("propiedadesempresa::update_value", 0);
-    QString query = "SELECT * FROM configuracion WHERE nombre = '" + n + "'";
-    cursor2 *cur = m_companyact->cargacursor(query, "configuracion");
-    if (cur->numregistros() == 0) {
-        query.sprintf("INSERT INTO configuracion (idconfiguracion, nombre, valor) VALUES ((select coalesce(max(idconfiguracion), 0) + 1 AS idconfiguracion FROM configuracion), '%s', '%s')", n.toAscii().constData(), v.toAscii().constData());
-    } else {
-        query = "UPDATE configuracion SET valor = '" + v + "' WHERE nombre = '" + n + "'";
-    } // end if
-    delete cur;
-    m_companyact->ejecuta(query);
-    _depura("END propiedadesempresa::update_value", 0);
-}
 
 
 bool propiedadesempresa::close() {
@@ -249,10 +127,25 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
                              tr("Salir del programa"),
                              tr("Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\nSalir ahora?"),
                              tr("&Salir"), tr("&No salir"), 0, 0, 1) == 0) {
-        exit(1)
-        ;
+        exit(1);
     } // end if
     dialogChanges_cargaInicial();
     _depura("END propiedadesempresa::on_mui_modificarplan_clicked", 0);
+}
+
+
+
+
+/// ===================================== SUBFORMULARIO ===============================================
+ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc(parent) {
+    _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
+    setDBTableName("configuracion");
+    setDBCampoId("nombre");
+    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "nombre");
+    addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
+    addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
+    setinsercion(FALSE);
+    setDelete(FALSE);
+    _depura("END ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
 }
 

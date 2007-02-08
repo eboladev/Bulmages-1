@@ -29,6 +29,9 @@
 #include "linprevcobro.h"
 
 
+/// TODO: Esta clase debe derivar de SubForm2Bc
+/** Se encarga de la gestion del listado de lineas de cobro
+*/
 class ListLinPrevCobroView : public QTableWidget, public ListLinPrevCobro {
     Q_OBJECT
 

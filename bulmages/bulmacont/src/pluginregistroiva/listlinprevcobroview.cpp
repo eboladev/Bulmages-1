@@ -18,7 +18,6 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-/// @todo Hay que meter toda esta gestión como un plugin independiente de la aplicación.
 /// @todo Hay que hacer dos líneas de presentación (una para el listado en las facturas y otro para el listado por si solo)
 /// Incluimos las imagenes que catalogan los tipos de cuentas.
 #include "images/cactivo.xpm"

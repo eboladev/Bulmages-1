@@ -27,7 +27,9 @@
 #include "funcaux.h"
 
 
-
+/** Implementa los elementos de edicion por defecto de un QTableWidgetItem2.
+Mediante esta clase se crean editores especificos que luego pueden sobrecargarse.
+*/
 class QTableItemTextDelegate : public QItemDelegate {
 public:
     QTableItemTextDelegate(QObject *);
@@ -38,7 +40,6 @@ public:
 };
 
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
-/** */
 class QTableWidgetItem2 : public QTableWidgetItem {
 public:
     int modo;
@@ -88,12 +89,11 @@ public:
     void editItem(QTableWidgetItem *it);
     virtual bool eventFilter(QObject *obj, QEvent *event);
     void setText(int x, int y, const QString &val);
-//    void sortColumn(int col, Qt::SortOrder tipoorden);
     virtual void ordenar();
     
 public slots:
     virtual void sitemChanged(QTableWidgetItem *it);
-//    virtual void sortByColumn(int col);
+
 
 signals:
     void pulsadomas(int, int, int);

@@ -30,8 +30,7 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 -- nombre = El nombre del parametro de configuracion.
 -- valor = El valor que toma dicho parametro.
 CREATE TABLE configuracion (
-    idconfiguracion integer NOT NULL,
-    nombre character varying(25),
+    nombre character varying(25) PRIMARY KEY,
     valor character varying(350)
 );
 

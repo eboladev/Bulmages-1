@@ -46,6 +46,7 @@ ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : F
     m_companyact = comp;
     mui_listado->setcompany(m_companyact);
     mui_listado->cargar();
+
     m_companyact->meteWindow(windowTitle(), this, FALSE);
     _depura("END ListConfiguracionView::ListConfiguracionView", 1);
 }
@@ -67,7 +68,7 @@ int ListConfiguracionView::sacaWindow() {
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("configuracion");
     setDBCampoId("nombre");
-    //addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, tr("nombre"));
+    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "nombre");
     addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
     addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
     setinsercion(FALSE);

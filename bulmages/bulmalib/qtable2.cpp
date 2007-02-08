@@ -27,92 +27,80 @@
 #include "configuracion.h"
 #include "funcaux.h"
 
+/** Constructor de la clase estandar de delegacion para la edicion de elementos
+en el QTable2 */
+QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent=0) : QItemDelegate(parent) {
+	_depura("QTableItemTextDelegate::QTableItemTextDelegate", 0);
+	_depura("END QTableItemTextDelegate::QTableItemTextDelegate", 0);
+}
 
-QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent=0) : QItemDelegate(parent) {}
+/** Destructor de la clase estandar de delegacion para la edicion de elementos en el Qtable2
+*/
+QTableItemTextDelegate::~QTableItemTextDelegate() {
+	_depura("QTableItemTextDelegate::~QTableItemTextDelegate", 0);
+	_depura("END QTableItemTextDelegate::~QTableItemTextDelegate", 0);
+}
 
-QTableItemTextDelegate::~QTableItemTextDelegate() {}
-
-
+/** Creacion del editor basado en un QTextEdit para el caso de edicion de elementos
+de Qtable2
+*/
 QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+	_depura("QTableItemTextDelegate::createEditor", 0);
 	QTextEdit *textedit = new QTextEdit(parent);
+	_depura("END QTableItemTextDelegate::createEditor", 0);
 	return textedit;
-/*
-    if (index.column() == durationColumn) {
-        QTimeEdit *timeEdit = new QTimeEdit(parent);
-        timeEdit->setDisplayFormat("mm:ss");
-        connect(timeEdit, SIGNAL(editingFinished()),
-                this, SLOT(commitAndCloseEditor()));
-        return timeEdit;
-    } else {
-        return QItemDelegate::createEditor(parent, option, index);
-    }
-*/
 }
 
+/** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
+de edicion
+*/
 void QTableItemTextDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
+	_depura("QTableItemTextDelegate::setModelData", 0);
         QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
-	model->setData(index, textedit->toPlainText());
-/*
-    if (index.column() == durationColumn) {
-        QTimeEdit *timeEdit = qobject_cast<QTimeEdit *>(editor);
-        QTime time = timeEdit->time();
-        int secs = (time.minute() * 60) + time.second();
-        model->setData(index, secs);
-    } else {
-        QItemDelegate::setModelData(editor, model, index);
-    }
-*/
+	model->setData(index, textedit->toPlainText());	_depura("END QTableItemTextDelegate::setModelData", 0);
+
 }
 
-
+/** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
+de edicion
+*/
 void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
-
-//    QString data = index.model()->data(index, Qt::DisplayRole);
+    _depura("QTableItemTextDelegate::setEditorData", 0);
     QString data = index.data(Qt::DisplayRole).toString();
     QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
     textedit->setPlainText(data);
     textedit->setGeometry(textedit->x(), textedit->y(), textedit->width()+150, textedit->height()+50);
-
-/*
-    if (index.column() == durationColumn) {
-        int secs = index.model()->data(index, Qt::DisplayRole).toInt();
-        QTimeEdit *timeEdit = qobject_cast<QTimeEdit *>(editor);
-        timeEdit->setTime(QTime(0, secs / 60, secs % 60));
-    } else {
-        QItemDelegate::setEditorData(editor, index);
-    }
-*/
-/*
-    // let base class fill the editor
-    QItemDelegate::setEditorData(editor, index);
-
-    // select all if it's a line edit
-    QLineEdit* lineEdit = qobject_cast<QLineEdit*>(editor);
-    if (lineEdit)
-        lineEdit->selectAll();
-*/
+    _depura("END QTableItemTextDelegate::setEditorData", 0);
 }
 
+// ======================================================================
+// ======================================================================
 
+/** Constructor de QTableWidget2 clase derivada de QTableWidget con
+un eventHandler especifico
+*/
 QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
     _depura("QTableWidget2::QTableWidget2", 0);
-//    setItemDelegate(new QTableItemDelegate(this));
     installEventFilter(this);
     connect(this, SIGNAL(itemChanged(QTableWidgetItem *)), this, SLOT(sitemChanged(QTableWidgetItem *)));
     _depura("END QTableWidget2::QTableWidget2", 0);
 }
 
+/** Este metodo no hace nada
+*/
 void QTableWidget2::editItem(QTableWidgetItem *it) {
-    _depura("edicion", 2);
+    _depura("QTableWidget2::editItem", 0);
+    _depura("END QTableWidget2::editItem", 0);
 }
 
 void QTableWidget2::sitemChanged(QTableWidgetItem *it) {
-    //	_depura("item cambiado", 2);
+    _depura("QTableWidget2::sitemChanged", 0);
+    _depura("END QTableWidget2::sitemChanged", 0);
 }
 
 /// Esta funcion ya es obsoleta y no se utiliza.
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
-    _depura("QTableWidgetItem2::operator<", 2);
+    _depura("QTableWidgetItem2::operator<", 0);
     bool oknumero;
     bool oknumero1;
     QString cad = text();
@@ -135,11 +123,14 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
         } // end if
         return cad < cad1;
     } // end if
-    _depura("END QTableWidgetItem2::operator<", 2);
+    _depura("END QTableWidgetItem2::operator<", 0);
     return TRUE;
 }
 
 
+/** EventFilter para QTableWidget2, procesa los eventos recibidos por la
+tabla y emite signals si lo considera adecuado.
+*/
 bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
     _depura("QTableWidget2::eventFilter() :" + QString::number(event->type()), 1);
     if (event->type() == QEvent::KeyPress) {
@@ -183,7 +174,6 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 
         case Qt::Key_Return:
         case Qt::Key_Enter:
-//	    _depura("Se ha pulsado el Return", 2);
             emit editFinished(row, col, key);
             return TRUE;
             break;
@@ -239,6 +229,9 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 }
 
 
+/** Se ha pulsado sobre las cabeceras en la tabla lo que invoca el 
+metodo de ordenacion.
+*/
 void QTableWidget2::ordenar() {
     _depura("QTableWidget2::ordenar ", 0);
     sortByColumn(m_colorden);
@@ -246,7 +239,9 @@ void QTableWidget2::ordenar() {
 }
 
 
-
+/** Hace una asignacion de un elemento.
+    @BUG: Parece que esta creando elementos de memoria sin intentar eliminar los antiguos.
+*/
 void QTableWidget2::setText(int x, int y, const QString & val) {
     _depura("QTableWidget::setText", 0);
     QTableWidgetItem2 *newitem = new QTableWidgetItem2(val);

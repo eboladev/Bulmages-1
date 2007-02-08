@@ -282,7 +282,6 @@ int empresa::propiedadempresa() {
     propiedadesempresa *nuevae = new propiedadesempresa(this, 0);
     m_pWorkspace->addWindow(nuevae);
     nuevae->show();
-    nuevae->mui_nombreempresa->setFocus();
     _depura("empresa::propiedadempresa", 0);
     return 0;
 }
