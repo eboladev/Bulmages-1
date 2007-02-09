@@ -31,6 +31,7 @@
 
 #include "funcaux.h"
 
+
 /** inicializa todos los componentes de la clase.
     Resetea el sistema de control de cambios para que considere que no hay cambios por parte del usuario.
     Mete la ventana en el workSpace.
@@ -87,7 +88,7 @@ int CobroView::cargar(QString id) {
         pintar();
         dialogChanges_cargaInicial();
         companyact->meteWindow(windowTitle(), this);
-    } catch(...) {
+    } catch (...) {
         return -1;
     } // end try
     _depura("END CobroView::cargar", 0);

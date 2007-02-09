@@ -33,6 +33,7 @@
 #include "inventario.h"
 #include "funcaux.h"
 
+
 InventarioView::InventarioView(company *comp, QWidget *parent)
         : Ficha(parent), Inventario(comp) {
     setAttribute(Qt::WA_DeleteOnClose);
@@ -49,6 +50,17 @@ InventarioView::InventarioView(company *comp, QWidget *parent)
 InventarioView::~InventarioView() {}
 
 
+void InventarioView::on_mui_guardar2_clicked() {
+    if (mui_nominventario->text() == "") {
+        mensajeInfo(tr("Tiene que escribir una descripcion de inventario antes de guardar"));
+        return;
+    } // end if
+    setfechainventario(mui_fechainventario->text());
+    setnominventario(mui_nominventario->text());
+    Inventario::guardar();
+}
+
+
 int InventarioView::sacaWindow() {
     _depura("InventarioView::sacaWindow", 0);
     companyact->sacaWindow(this);
@@ -58,7 +70,7 @@ int InventarioView::sacaWindow() {
 
 
 /// Esta funci&oacute;n se ejecuta cuando se ha pulsado sobre el bot&oacute;n de borrar.
-void InventarioView::on_mui_borrar_clicked() {
+void InventarioView::on_mui_borrar2_clicked() {
     if (DBvalue("idinventario") != "") {
         if (QMessageBox::question(this,
                                    tr("Borrar inventario"),

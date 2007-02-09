@@ -37,6 +37,12 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize" >
+        <size>
+         <width>0</width>
+         <height>17</height>
+        </size>
+       </property>
        <property name="text" >
         <string>Cliente:</string>
        </property>
@@ -59,6 +65,12 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize" >
+          <size>
+           <width>0</width>
+           <height>21</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -103,6 +115,12 @@
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
+     </property>
+     <property name="minimumSize" >
+      <size>
+       <width>0</width>
+       <height>21</height>
+      </size>
      </property>
      <property name="frameShape" >
       <enum>QFrame::StyledPanel</enum>

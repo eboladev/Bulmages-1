@@ -237,10 +237,8 @@ void SubForm2Bf::setIdCliente(QString id) {
         rec->setDBvalue("reqeq"+m_tablename, "0");
     } // end for
 
-
     cursor2 *curcliente = companyact()->cargacursor("SELECT recargoeqcliente, regimenfiscalcliente FROM cliente WHERE idcliente="+mdb_idcliente);
     if (! curcliente->eof()) {
-
 
         /// Cuando se cambia el cliente se deben recalcular las lineas por si hay Recargo Equivalente
         for (int i = 0; i < rowCount() - 1; i++) {
@@ -304,17 +302,16 @@ void SubForm2Bf::setIdProveedor(QString id) {
 }
 
 
-
-// ===============================================================
-//  Tratamientos del Item Delegate
-// ===============================================================
-
-QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent=0) : QItemDelegate(parent) {
+/// ===============================================================
+///  Tratamientos del Item Delegate
+/// ===============================================================
+QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(parent) {
     _depura("QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
     m_subform = (SubForm2Bf *) parent;
     installEventFilter(this);
     _depura("END QSubForm2BfDelegate::QSubForm2BfDelegate", 0);
 }
+
 
 QSubForm2BfDelegate::~QSubForm2BfDelegate() {}
 
@@ -326,14 +323,14 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     _depura("QSubForm2BfDelegate::createEditor", 0, "CurrentColumn: " + QString::number(index.column()));
     _depura("QSubForm2BfDelegate::createEditor", 0, "CurrentRow" + QString::number(index.row()));
 
-    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QTextEditDelegate *editor = new QTextEditDelegate(parent);
         editor->setObjectName("QTextEditDelegate");
         return editor;
-    } else if (linea->nomcampo() == "cant"+m_subform->tableName()
-               || linea->nomcampo() == "pvp"+m_subform->tableName()
-               || linea->nomcampo() == "descuento"+m_subform->tableName()
-               || linea->nomcampo() == "iva"+m_subform->tableName()	) {
+    } else if (linea->nomcampo() == "cant" + m_subform->tableName()
+               || linea->nomcampo() == "pvp" + m_subform->tableName()
+               || linea->nomcampo() == "descuento" + m_subform->tableName()
+               || linea->nomcampo() == "iva" + m_subform->tableName()) {
         QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
         editor->setMinimum(0);
         editor->setMaximum(1000000);
@@ -344,29 +341,29 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         return editor;
     } else {
         return QItemDelegate::createEditor(parent, option, index);
-    }// end if
-
+    } // end if
 }
+
 
 void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QSubForm2BfDelegate::setModelData", 0);
     _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentColumn: " + QString::number(index.column()));
-    _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentRow" + QString::number(index.row()));
+    _depura("QSubForm2BfDelegate::setModelData", 0, "CurrentRow: " + QString::number(index.row()));
 
     /// Si la fila o columna pasadas son invalidas salimos.
-    if ( index.column() < 0 || index.row() < 0)
+    if (index.column() < 0 || index.row() < 0)
         return;
 
     SHeader *linea;
     linea = m_subform->cabecera()->at(index.column());
-    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate *>(editor);
         model->setData(index, textedit->toPlainText());
         return;
-    } else if (linea->nomcampo() == "cant"+m_subform->tableName()
-               || linea->nomcampo() == "pvp"+m_subform->tableName()
-               || linea->nomcampo() == "descuento"+m_subform->tableName()
-               || linea->nomcampo() == "iva"+m_subform->tableName()	) {
+    } else if (linea->nomcampo() == "cant" + m_subform->tableName()
+               || linea->nomcampo() == "pvp" + m_subform->tableName()
+               || linea->nomcampo() == "descuento" + m_subform->tableName()
+               || linea->nomcampo() == "iva" + m_subform->tableName()	) {
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
         spinBox->interpretText();
         QString value = spinBox->text();
@@ -379,7 +376,7 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         model->setData(index, value);
     } else {
         QItemDelegate::setModelData(editor, model, index);
-    }// end if
+    } // end if
     _depura("END QSubForm2BfDelegate::setModelData", 0);
 }
 
@@ -387,17 +384,17 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
 void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const {
     _depura("QSubForm2BfDelegate::setEditorData", 0);
     _depura("QSubForm2BfDelegate::setEditorData", 0, "CurrentColumn: " + QString::number(index.column()));
-    _depura("QSubForm2BfDelegate::setEditorData", 0, "CurrentRow" + QString::number(index.row()));
+    _depura("QSubForm2BfDelegate::setEditorData", 0, "CurrentRow: " + QString::number(index.row()));
     SHeader *linea;
     linea = m_subform->cabecera()->at(index.column());
-    if (linea->nomcampo() == "desc"+m_subform->tableName()) {
+    if (linea->nomcampo() == "desc" + m_subform->tableName()) {
         QString data = index.model()->data(index, Qt::DisplayRole).toString();
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
         textedit->setText(data);
-    } else if (linea->nomcampo() == "cant"+m_subform->tableName()
-               || linea->nomcampo() == "pvp"+m_subform->tableName()
-               || linea->nomcampo() == "descuento"+m_subform->tableName()
-               || linea->nomcampo() == "iva"+m_subform->tableName()	) {
+    } else if (linea->nomcampo() == "cant" + m_subform->tableName()
+               || linea->nomcampo() == "pvp" + m_subform->tableName()
+               || linea->nomcampo() == "descuento" + m_subform->tableName()
+               || linea->nomcampo() == "iva" + m_subform->tableName()	) {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
         spinBox->setValue(value.toDouble());
@@ -407,18 +404,19 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
         comboBox->addItem(value);
     } else {
         QItemDelegate::setEditorData(editor, index);
-    }// end if
+    } // end if
     _depura("END QSubForm2BfDelegate::setEditorData", 0);
 }
 
+
 bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
-    _depura("QSubForm2BfDelegate::eventFilter", 0,   obj->objectName()+" --> " + QString::number(event->type()));
+    _depura("QSubForm2BfDelegate::eventFilter", 0, obj->objectName() + " --> " + QString::number(event->type()));
     if (obj->isWidgetType()) {
-        _depura("QSubForm2BfDelegate:: de tipo toolTip", 0,   ((QWidget *)obj)->toolTip());
-        _depura("QSubForm2BfDelegate:: de tipo windowRole", 0,   ((QWidget *)obj)->windowRole());
-        _depura("QSubForm2BfDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
-        _depura("QSubForm2BfDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
-    }// end if
+        _depura("QSubForm2BfDelegate:: de tipo toolTip", 0, ((QWidget *)obj)->toolTip());
+        _depura("QSubForm2BfDelegate:: de tipo windowRole", 0, ((QWidget *)obj)->windowRole());
+        _depura("QSubForm2BfDelegate:: de tipo accesibleDescription", 0, ((QWidget *)obj)->accessibleDescription());
+        _depura("QSubForm2BfDelegate:: de tipo accesibleName", 0, ((QWidget *)obj)->accessibleName());
+    } // end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
@@ -440,6 +438,4 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
     _depura("END QSubForm2BfDelegate::eventFilter()", 0);
     return QItemDelegate::eventFilter(obj, event);
 }
-
-
 

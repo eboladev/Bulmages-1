@@ -42,27 +42,23 @@ public:
     ~InventarioView();
     void pintaidinventario(QString) {}
     void pintafechainventario(QString id) {
-        m_fechainventario->setText(id);
+        mui_fechainventario->setText(id);
     }
     void pintanominventario(QString id) {
-        m_nominventario->setText(id);
+        mui_nominventario->setText(id);
     }
     virtual int sacaWindow();
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        setfechainventario(m_fechainventario->text());
-        setnominventario(m_nominventario->text());
-        Inventario::guardar();
-    }
+    virtual void on_mui_guardar2_clicked();
     virtual void on_mui_aceptar_clicked() {
-        setfechainventario(m_fechainventario->text());
-        setnominventario(m_nominventario->text());
+        setfechainventario(mui_fechainventario->text());
+        setnominventario(mui_nominventario->text());
         if (!Inventario::guardar()) {
             close();
         } // end if
     }
-    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_borrar2_clicked();
     virtual void on_mui_pregenerar_clicked() {
         pregenerar();
     }

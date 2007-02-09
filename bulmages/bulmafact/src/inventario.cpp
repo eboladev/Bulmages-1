@@ -75,7 +75,7 @@ void Inventario::pintaInventario() {
 
 /// Esta funcion carga un Inventario.
 int Inventario::cargar(QString idbudget) {
-    QString query = "SELECT * FROM inventario  WHERE idinventario = " + idbudget;
+    QString query = "SELECT * FROM inventario WHERE idinventario = " + idbudget;
     cursor2 * cur= companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
@@ -99,7 +99,7 @@ int Inventario::guardar() {
         _depura("END Inventario::guardar()", 0);
         return 0;
     } catch (...) {
-        _depura("error guardando el inventario", 1);
+        _depura("Error guardando el inventario", 1);
         companyact->rollback();
         return -1;
     } // end try
@@ -108,7 +108,8 @@ int Inventario::guardar() {
 
 void Inventario::pregenerar() {
     _depura("Inventario::pregenerar", 0);
-    //listalineas->pregenerar();
+    listalineas->pregenerar();
+    _depura("END Inventario::pregenerar", 0);
 }
 
 

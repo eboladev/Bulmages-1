@@ -85,7 +85,7 @@ public slots:
     virtual void on_mui_listado_itemDoubleClicked() {
         on_mui_editar_clicked();
     }
-    virtual void on_mui_borrar_clicked();
+    virtual void on_mui_borrar2_clicked();
 };
 
 #endif

@@ -54,10 +54,10 @@ Cliente::Cliente(company *comp) : DBRecord(comp) {
     addDBCampo("fbajacliente", DBCampo::DBdate, DBCampo::DBNothing, QApplication::translate("Cliente", "Fecha de baja del cliente"));
     addDBCampo("comentcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Comentarios"));
     addDBCampo("inactivocliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Cliente inactivo"));
-    addDBCampo("regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Regimen Fiscal"));
+    addDBCampo("regimenfiscalcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Regimen fiscal"));
     addDBCampo("codcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Codigo"));
     addDBCampo("corpcliente", DBCampo::DBvarchar, DBCampo::DBNothing, QApplication::translate("Cliente", "Empresa"));
-    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Cliente", "Forma_Pago"));
+    addDBCampo("idforma_pago", DBCampo::DBint, DBCampo::DBNothing, QApplication::translate("Cliente", "Forma de pago"));
     addDBCampo("recargoeqcliente", DBCampo::DBboolean, DBCampo::DBNothing, QApplication::translate("Cliente", "Recargo de Equivalencia"));
     _depura("END Cliente::Cliente", 0);
 }
@@ -175,7 +175,7 @@ int Cliente::guardar() {
     m_companyact->begin();
     try {
         DBsave(id);
-	setDBvalue("idcliente", id);
+        setDBvalue("idcliente", id);
         m_companyact->commit();
         _depura("END Cliente::guardar", 0);
         return 0;

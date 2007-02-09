@@ -265,7 +265,7 @@
 <context>
     <name>AlbaranClienteListBase</name>
     <message>
-        <location filename="albaranclientelistbase.ui" line="354"/>
+        <location filename="albaranclientelistbase.ui" line="362"/>
         <source>Procesados</source>
         <translation></translation>
     </message>
@@ -310,17 +310,17 @@
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="albaranclientelistbase.ui" line="292"/>
+        <location filename="albaranclientelistbase.ui" line="286"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="albaranclientelistbase.ui" line="318"/>
+        <location filename="albaranclientelistbase.ui" line="319"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="albaranclientelistbase.ui" line="406"/>
+        <location filename="albaranclientelistbase.ui" line="414"/>
         <source>Total: </source>
         <translation>Total:</translation>
     </message>
@@ -512,22 +512,22 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="662"/>
+        <location filename="albaranproveedorbase.ui" line="654"/>
         <source>&amp;Detalle</source>
         <translation>&amp;Detalle</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="678"/>
+        <location filename="albaranproveedorbase.ui" line="670"/>
         <source>Desc&amp;uentos</source>
         <translation>Desc&amp;uentos</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="694"/>
+        <location filename="albaranproveedorbase.ui" line="686"/>
         <source>&amp;Comentarios</source>
         <translation>&amp;Comentarios</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="1129"/>
+        <location filename="albaranproveedorbase.ui" line="1343"/>
         <source>0.00</source>
         <translation></translation>
     </message>
@@ -542,12 +542,12 @@
         <translation>Referencia:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="1184"/>
+        <location filename="albaranproveedorbase.ui" line="1398"/>
         <source>&amp;Aceptar</source>
         <translation>&amp;Aceptar</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="389"/>
+        <location filename="albaranproveedorbase.ui" line="381"/>
         <source>Imprimir pedido</source>
         <translation></translation>
     </message>
@@ -567,62 +567,62 @@
         <translation>Nuevo albarán de proveedor</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="433"/>
+        <location filename="albaranproveedorbase.ui" line="425"/>
         <source>Descripcion:</source>
         <translation>Descripción:</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="albaranproveedorbase.ui" line="462"/>
+        <location filename="albaranproveedorbase.ui" line="454"/>
         <source>Nº de albaran:</source>
         <translation>Nº de albarán:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="601"/>
+        <location filename="albaranproveedorbase.ui" line="593"/>
         <source>Fecha de creacion:</source>
         <translation>Fecha de creación:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="543"/>
+        <location filename="albaranproveedorbase.ui" line="535"/>
         <source>Forma de pago:</source>
         <translation>Forma de pago:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="572"/>
+        <location filename="albaranproveedorbase.ui" line="564"/>
         <source>Almacen:</source>
         <translation>Almacén:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="748"/>
+        <location filename="albaranproveedorbase.ui" line="740"/>
         <source>Descuentos:</source>
         <translation>Descuentos:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="820"/>
+        <location filename="albaranproveedorbase.ui" line="849"/>
         <source>Base imponible:</source>
         <translation>Base imponible:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="958"/>
+        <location filename="albaranproveedorbase.ui" line="1061"/>
         <source>Impuestos:</source>
         <translation>Impuestos:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="1205"/>
+        <location filename="albaranproveedorbase.ui" line="1419"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="889"/>
+        <location filename="albaranproveedorbase.ui" line="955"/>
         <source>I.R.P.F.</source>
         <translation>I.R.P.F.</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="1096"/>
+        <location filename="albaranproveedorbase.ui" line="1273"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="albaranproveedorbase.ui" line="1027"/>
+        <location filename="albaranproveedorbase.ui" line="1167"/>
         <source>R.E.:</source>
         <translation>R.E.:</translation>
     </message>
@@ -737,12 +737,12 @@ Desea crearla?</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="albaranesproveedorlistbase.ui" line="348"/>
+        <location filename="albaranesproveedorlistbase.ui" line="355"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="albaranesproveedorlistbase.ui" line="406"/>
+        <location filename="albaranesproveedorlistbase.ui" line="420"/>
         <source>Total: </source>
         <translation>Total:</translation>
     </message>
@@ -1029,12 +1029,12 @@ Desea crearla?</source>
 <context>
     <name>ArticuloList</name>
     <message>
-        <location filename="articulolist.cpp" line="354"/>
+        <location filename="articulolist.cpp" line="355"/>
         <source>Editar articulo</source>
         <translation>Editar artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="355"/>
+        <location filename="articulolist.cpp" line="356"/>
         <source>Borrar articulo</source>
         <translation>Borrar artículo</translation>
     </message>
@@ -1044,12 +1044,12 @@ Desea crearla?</source>
         <translation>Esta a punto de borrar un artículo. Estos datos pueden dar problemas.</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="321"/>
+        <location filename="articulolist.cpp" line="322"/>
         <source>Elija el archivo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="323"/>
+        <location filename="articulolist.cpp" line="324"/>
         <source>Clientes (*.xml)</source>
         <translation></translation>
     </message>
@@ -1062,11 +1062,6 @@ Desea crearla?</source>
         <location filename="articulolist.cpp" line="161"/>
         <source>Error al borrar el articulo</source>
         <translation>Error al borrar el artículo</translation>
-    </message>
-    <message>
-        <location filename="articulolist.cpp" line="289"/>
-        <source>Listado de articulos</source>
-        <translation>Listado de artículos</translation>
     </message>
     <message>
         <location filename="articulolist.cpp" line="144"/>
@@ -1160,47 +1155,47 @@ Desea crearla?</source>
 <context>
     <name>ArticuloListSubForm</name>
     <message>
-        <location filename="articulolist.cpp" line="375"/>
+        <location filename="articulolist.cpp" line="376"/>
         <source>ID articulo</source>
         <translation>ID artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="376"/>
+        <location filename="articulolist.cpp" line="377"/>
         <source>Codigo completo del articulo</source>
         <translation>Código completo del artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="377"/>
+        <location filename="articulolist.cpp" line="378"/>
         <source>Nombre del articulo</source>
         <translation>Nombre del artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="378"/>
+        <location filename="articulolist.cpp" line="379"/>
         <source>Descripcion abreviada del articulo</source>
         <translation>Descripción abreviada del artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="379"/>
+        <location filename="articulolist.cpp" line="380"/>
         <source>Observaciones sobre el articulo</source>
         <translation>Observaciones sobre el artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="380"/>
+        <location filename="articulolist.cpp" line="381"/>
         <source>Descripcion del tipo de articulo</source>
         <translation>Descripción del tipo de artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="381"/>
+        <location filename="articulolist.cpp" line="382"/>
         <source>Descripcion tipo de I.V.A.</source>
         <translation>Descripción tipo de I.V.A.</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="382"/>
+        <location filename="articulolist.cpp" line="383"/>
         <source>P.V.P. articulo</source>
         <translation>P.V.P. artículo</translation>
     </message>
     <message>
-        <location filename="articulolist.cpp" line="383"/>
+        <location filename="articulolist.cpp" line="384"/>
         <source>Disponible en stock</source>
         <translation></translation>
     </message>
@@ -1256,62 +1251,62 @@ Desea crearla?</source>
 <context>
     <name>BudgetsListBase</name>
     <message>
-        <location filename="budgetslistbase.ui" line="348"/>
+        <location filename="budgetslistbase.ui" line="446"/>
         <source>Procesados</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="68"/>
+        <location filename="budgetslistbase.ui" line="80"/>
         <source>Nuevo pedido</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="90"/>
+        <location filename="budgetslistbase.ui" line="114"/>
         <source>Editar pedido</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="112"/>
+        <location filename="budgetslistbase.ui" line="148"/>
         <source>Borrar pedido</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="134"/>
+        <location filename="budgetslistbase.ui" line="182"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="156"/>
+        <location filename="budgetslistbase.ui" line="216"/>
         <source>Filtrar pedidos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="181"/>
+        <location filename="budgetslistbase.ui" line="253"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="206"/>
+        <location filename="budgetslistbase.ui" line="290"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="241"/>
+        <location filename="budgetslistbase.ui" line="325"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="286"/>
+        <location filename="budgetslistbase.ui" line="370"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="312"/>
+        <location filename="budgetslistbase.ui" line="403"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="budgetslistbase.ui" line="393"/>
+        <location filename="budgetslistbase.ui" line="491"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
@@ -1550,204 +1545,214 @@ Desea crearla?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="86"/>
+        <location filename="clientebase.ui" line="110"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="642"/>
+        <location filename="clientebase.ui" line="702"/>
         <source>Pres&amp;upuestos</source>
         <translation>Pres&amp;upuestos</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="658"/>
+        <location filename="clientebase.ui" line="718"/>
         <source>Pedidos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="674"/>
+        <location filename="clientebase.ui" line="734"/>
         <source>Albaranes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="690"/>
+        <location filename="clientebase.ui" line="750"/>
         <source>&amp;Facturas</source>
         <translation>&amp;Facturas</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="706"/>
+        <location filename="clientebase.ui" line="766"/>
         <source>Co&amp;bros</source>
         <translation>Co&amp;bros</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="722"/>
+        <location filename="clientebase.ui" line="782"/>
         <source>Co&amp;ntratos</source>
         <translation>Co&amp;ntratos</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="816"/>
+        <location filename="clientebase.ui" line="876"/>
         <source>Ver</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="824"/>
+        <location filename="clientebase.ui" line="884"/>
         <source>Vigentes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="829"/>
+        <location filename="clientebase.ui" line="889"/>
         <source>Vencidos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="834"/>
+        <location filename="clientebase.ui" line="894"/>
         <source>Todos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="871"/>
+        <location filename="clientebase.ui" line="931"/>
         <source>D&amp;ivisiones</source>
         <translation>D&amp;ivisiones</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="71"/>
+        <location filename="clientebase.ui" line="95"/>
         <source>Guardar cliente</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="149"/>
+        <location filename="clientebase.ui" line="135"/>
         <source>Borrar cliente</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="193"/>
+        <location filename="clientebase.ui" line="253"/>
         <source>&amp;Datos generales</source>
         <translation>&amp;Datos generales</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="537"/>
+        <location filename="clientebase.ui" line="597"/>
         <source>Nombre comercial:</source>
         <translation>Nombre comercial:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="346"/>
+        <location filename="clientebase.ui" line="406"/>
         <source>Direccion:</source>
         <translation>Dirección:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="401"/>
+        <location filename="clientebase.ui" line="461"/>
         <source>Codigo postal:</source>
         <translation>Código postal:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="521"/>
+        <location filename="clientebase.ui" line="581"/>
         <source>Poblacion:</source>
         <translation>Población:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="362"/>
+        <location filename="clientebase.ui" line="422"/>
         <source>Provincia:</source>
         <translation>Provincia:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="621"/>
+        <location filename="clientebase.ui" line="681"/>
         <source>Pagina web:</source>
         <translation>Página web:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="606"/>
+        <location filename="clientebase.ui" line="666"/>
         <source>Datos bancarios:</source>
         <translation>Datos bancarios:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="860"/>
+        <location filename="clientebase.ui" line="920"/>
         <source>Resumen por articulos:</source>
         <translation>Resumen por artículos:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="963"/>
+        <location filename="clientebase.ui" line="1023"/>
         <source>Produ&amp;ctos suministrados</source>
         <translation>Produ&amp;ctos suministrados</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="1069"/>
+        <location filename="clientebase.ui" line="1129"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="1076"/>
+        <location filename="clientebase.ui" line="1136"/>
         <source>&amp;Aceptar</source>
         <translation>&amp;Aceptar</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="563"/>
+        <location filename="clientebase.ui" line="623"/>
         <source>Numero de fax:</source>
         <translation>Número de fax:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="502"/>
+        <location filename="clientebase.ui" line="562"/>
         <source>Telefono del trabajo:</source>
         <translation>Teléfono del trabajo:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="489"/>
+        <location filename="clientebase.ui" line="549"/>
         <source>Nombre completo:</source>
         <translation>Nombre completo:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="323"/>
+        <location filename="clientebase.ui" line="383"/>
         <source>Telefono fijo:</source>
         <translation>Teléfono fijo:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="447"/>
+        <location filename="clientebase.ui" line="507"/>
         <source>Correo electronico:</source>
         <translation>Correo electrónico:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="372"/>
+        <location filename="clientebase.ui" line="432"/>
         <source>Codigo de cliente:</source>
         <translation>Código de cliente:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="431"/>
+        <location filename="clientebase.ui" line="491"/>
         <source>Empresa:</source>
         <translation>Empresa:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="550"/>
+        <location filename="clientebase.ui" line="610"/>
         <source>Telefono movil:</source>
         <translation>Teléfono móvil:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="579"/>
+        <location filename="clientebase.ui" line="639"/>
         <source>C.I.F./N.I.F./N.I.E.:</source>
         <translation>C.I.F./N.I.F./N.I.E.:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="221"/>
+        <location filename="clientebase.ui" line="281"/>
         <source>Comentarios:</source>
         <translation>Comentarios:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="258"/>
+        <location filename="clientebase.ui" line="318"/>
         <source>Datos de comercio electronico:</source>
         <translation>Datos de comercio electrónico:</translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="288"/>
+        <location filename="clientebase.ui" line="348"/>
         <source>Regimen fiscal</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="304"/>
+        <location filename="clientebase.ui" line="364"/>
         <source>Forma de pago</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientebase.ui" line="634"/>
+        <location filename="clientebase.ui" line="694"/>
         <source>Aplicar Recargo de Equivalencia</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="clientebase.ui" line="172"/>
+        <source>Imprimir informe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="clientebase.ui" line="209"/>
+        <source>Imprimir</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1898,77 +1903,77 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>ClientsListBase</name>
     <message>
-        <location filename="clientslistbase.ui" line="19"/>
+        <location filename="clientslistbase.ui" line="17"/>
         <source>Clientes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="255"/>
+        <location filename="clientslistbase.ui" line="253"/>
         <source>Exportar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="277"/>
+        <location filename="clientslistbase.ui" line="275"/>
         <source>Importar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="346"/>
+        <location filename="clientslistbase.ui" line="344"/>
         <source>Pro&amp;cesados</source>
         <translation>Pro&amp;cesados</translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="70"/>
+        <location filename="clientslistbase.ui" line="68"/>
         <source>Nuevo cliente</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="92"/>
+        <location filename="clientslistbase.ui" line="90"/>
         <source>Editar cliente</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="114"/>
+        <location filename="clientslistbase.ui" line="112"/>
         <source>Borrar cliente</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="136"/>
+        <location filename="clientslistbase.ui" line="134"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="180"/>
+        <location filename="clientslistbase.ui" line="178"/>
         <source>Filtrar clientes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="205"/>
+        <location filename="clientslistbase.ui" line="203"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="230"/>
+        <location filename="clientslistbase.ui" line="228"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="252"/>
+        <location filename="clientslistbase.ui" line="250"/>
         <source>Exportar clientes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="274"/>
+        <location filename="clientslistbase.ui" line="272"/>
         <source>Importar clientes</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="309"/>
+        <location filename="clientslistbase.ui" line="307"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="clientslistbase.ui" line="158"/>
+        <location filename="clientslistbase.ui" line="156"/>
         <source>Informe Compras/Ventas</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1988,7 +1993,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="cobro.cpp" line="38"/>
         <source>Prevision de cobro</source>
-        <translation></translation>
+        <translation type="unfinished">Previsión de cobro</translation>
     </message>
     <message>
         <location filename="cobro.cpp" line="39"/>
@@ -2148,32 +2153,32 @@ Esta seguro que desea borrarlo?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="cobroslistbase.ui" line="241"/>
+        <location filename="cobroslistbase.ui" line="254"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="cobroslistbase.ui" line="279"/>
+        <location filename="cobroslistbase.ui" line="299"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="cobroslistbase.ui" line="305"/>
+        <location filename="cobroslistbase.ui" line="332"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="cobroslistbase.ui" line="423"/>
+        <location filename="cobroslistbase.ui" line="457"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="cobroslistbase.ui" line="349"/>
+        <location filename="cobroslistbase.ui" line="383"/>
         <source>Cobros Previstos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="cobroslistbase.ui" line="356"/>
+        <location filename="cobroslistbase.ui" line="390"/>
         <source>Cobros Efectivos</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2227,8 +2232,8 @@ Esta seguro que desea borrarlo?</source>
     </message>
     <message>
         <location filename="cobroslist.cpp" line="263"/>
-        <source>Previcion del cobro</source>
-        <translation>Previción del cobro</translation>
+        <source>Prevision de cobro</source>
+        <translation type="unfinished">Previsión de cobro</translation>
     </message>
     <message>
         <location filename="cobroslist.cpp" line="264"/>
@@ -2340,92 +2345,92 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>Factura</name>
     <message>
-        <location filename="factura.cpp" line="38"/>
+        <location filename="factura.cpp" line="37"/>
         <source>Id factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="39"/>
+        <location filename="factura.cpp" line="38"/>
         <source>Id cliente</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="40"/>
+        <location filename="factura.cpp" line="39"/>
         <source>Id almacen</source>
         <translation>Id almacén</translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="41"/>
+        <location filename="factura.cpp" line="40"/>
         <source>Numero factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="42"/>
+        <location filename="factura.cpp" line="41"/>
         <source>Ffactura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="43"/>
+        <location filename="factura.cpp" line="42"/>
         <source>Procesada factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="44"/>
+        <location filename="factura.cpp" line="43"/>
         <source>Codigo serie factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="45"/>
+        <location filename="factura.cpp" line="44"/>
         <source>Comentario factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="46"/>
+        <location filename="factura.cpp" line="45"/>
         <source>Referencia factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="47"/>
+        <location filename="factura.cpp" line="46"/>
         <source>Descripcion factura</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="48"/>
+        <location filename="factura.cpp" line="47"/>
         <source>Id trabajador</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="49"/>
+        <location filename="factura.cpp" line="48"/>
         <source>Id formad de pago</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="293"/>
+        <location filename="factura.cpp" line="292"/>
         <source>Total</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="291"/>
+        <location filename="factura.cpp" line="290"/>
         <source>Descuento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="292"/>
+        <location filename="factura.cpp" line="291"/>
         <source>Porcentaje</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="336"/>
+        <location filename="factura.cpp" line="335"/>
         <source>Iva </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="339"/>
+        <location filename="factura.cpp" line="338"/>
         <source>Total </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="factura.cpp" line="323"/>
+        <location filename="factura.cpp" line="322"/>
         <source>Base</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2555,7 +2560,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="facturabase.ui" line="1012"/>
         <source>I.R.P.F.:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">I.R.P.F.:</translation>
     </message>
     <message>
         <location filename="facturabase.ui" line="1118"/>
@@ -2871,82 +2876,82 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>FacturasListBase</name>
     <message>
-        <location filename="facturaslistbase.ui" line="356"/>
+        <location filename="facturaslistbase.ui" line="368"/>
         <source>Pro&amp;cesada</source>
         <translation>Pro&amp;cesada</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="359"/>
+        <location filename="facturaslistbase.ui" line="371"/>
         <source>Alt+C</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="70"/>
+        <location filename="facturaslistbase.ui" line="68"/>
         <source>Nueva factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="92"/>
+        <location filename="facturaslistbase.ui" line="90"/>
         <source>Editar factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="114"/>
+        <location filename="facturaslistbase.ui" line="112"/>
         <source>Borrar factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="142"/>
+        <location filename="facturaslistbase.ui" line="140"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="164"/>
+        <location filename="facturaslistbase.ui" line="162"/>
         <source>Filtrar facturas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="189"/>
+        <location filename="facturaslistbase.ui" line="187"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="214"/>
+        <location filename="facturaslistbase.ui" line="212"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="249"/>
+        <location filename="facturaslistbase.ui" line="247"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="382"/>
+        <location filename="facturaslistbase.ui" line="394"/>
         <source>Contiene articulo:</source>
         <translation>Contiene artículo:</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="408"/>
+        <location filename="facturaslistbase.ui" line="427"/>
         <source>Cliente:</source>
         <translation>Cliente:</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="294"/>
+        <location filename="facturaslistbase.ui" line="292"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="320"/>
+        <location filename="facturaslistbase.ui" line="325"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="473"/>
+        <location filename="facturaslistbase.ui" line="492"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="facturaslistbase.ui" line="19"/>
+        <location filename="facturaslistbase.ui" line="17"/>
         <source>Facturas a clientes</source>
         <translation></translation>
     </message>
@@ -3060,67 +3065,67 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>FacturasProveedorListBase</name>
     <message>
-        <location filename="facturasplistbase.ui" line="365"/>
+        <location filename="facturasplistbase.ui" line="470"/>
         <source>Procesa&amp;da</source>
         <translation>Procesa&amp;da</translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="368"/>
+        <location filename="facturasplistbase.ui" line="473"/>
         <source>Alt+D</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="68"/>
+        <location filename="facturasplistbase.ui" line="80"/>
         <source>Nueva factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="90"/>
+        <location filename="facturasplistbase.ui" line="114"/>
         <source>Editar factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="112"/>
+        <location filename="facturasplistbase.ui" line="148"/>
         <source>Borrar factura</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="134"/>
+        <location filename="facturasplistbase.ui" line="182"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="156"/>
+        <location filename="facturasplistbase.ui" line="216"/>
         <source>Filtrar facturas</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="181"/>
+        <location filename="facturasplistbase.ui" line="253"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="206"/>
+        <location filename="facturasplistbase.ui" line="290"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="265"/>
+        <location filename="facturasplistbase.ui" line="349"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="303"/>
+        <location filename="facturasplistbase.ui" line="394"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="329"/>
+        <location filename="facturasplistbase.ui" line="427"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="facturasplistbase.ui" line="420"/>
+        <location filename="facturasplistbase.ui" line="525"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
@@ -3201,12 +3206,12 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>FamiliasView</name>
     <message>
-        <location filename="familiasview.cpp" line="343"/>
+        <location filename="familiasview.cpp" line="372"/>
         <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasview.cpp" line="342"/>
+        <location filename="familiasview.cpp" line="371"/>
         <source>Codigo</source>
         <translation type="unfinished">Código</translation>
     </message>
@@ -3226,17 +3231,17 @@ Esta seguro que desea borrarlo?</source>
         <translation type="unfinished">Código completo</translation>
     </message>
     <message>
-        <location filename="familiasview.cpp" line="216"/>
+        <location filename="familiasview.cpp" line="219"/>
         <source>Guardar familia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasview.cpp" line="217"/>
+        <location filename="familiasview.cpp" line="220"/>
         <source>Desea guardar los cambios?</source>
         <translation type="unfinished">¿Desea guardar los cambios?</translation>
     </message>
     <message>
-        <location filename="familiasview.cpp" line="307"/>
+        <location filename="familiasview.cpp" line="315"/>
         <source>Debe seleccionar una familia</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3557,17 +3562,17 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>ListConfiguracionBase</name>
     <message>
-        <location filename="listconfiguracionbase.ui" line="16"/>
+        <location filename="listconfiguracionbase.ui" line="14"/>
         <source>Configuraciones</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="listconfiguracionbase.ui" line="55"/>
+        <location filename="listconfiguracionbase.ui" line="53"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="listconfiguracionbase.ui" line="62"/>
+        <location filename="listconfiguracionbase.ui" line="60"/>
         <source>&amp;Aceptar</source>
         <translation>&amp;Aceptar</translation>
     </message>
@@ -3576,12 +3581,12 @@ Esta seguro que desea borrarlo?</source>
     <name>ListConfiguracionSubForm</name>
     <message>
         <location filename="listconfiguracionview.cpp" line="71"/>
-        <source>nombre</source>
+        <source>Nombre</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="listconfiguracionview.cpp" line="72"/>
-        <source>valor</source>
+        <source>Valor</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4437,67 +4442,67 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>PagosListBase</name>
     <message>
-        <location filename="pagoslistbase.ui" line="76"/>
+        <location filename="pagoslistbase.ui" line="88"/>
         <source>Nuevo pago</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="98"/>
+        <location filename="pagoslistbase.ui" line="122"/>
         <source>Editar pago</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="120"/>
+        <location filename="pagoslistbase.ui" line="156"/>
         <source>Borrar pago</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="142"/>
+        <location filename="pagoslistbase.ui" line="190"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="164"/>
+        <location filename="pagoslistbase.ui" line="224"/>
         <source>Filtrar pagos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="189"/>
+        <location filename="pagoslistbase.ui" line="261"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="214"/>
+        <location filename="pagoslistbase.ui" line="298"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="249"/>
+        <location filename="pagoslistbase.ui" line="346"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="363"/>
+        <location filename="pagoslistbase.ui" line="467"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="389"/>
+        <location filename="pagoslistbase.ui" line="500"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="447"/>
+        <location filename="pagoslistbase.ui" line="565"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="295"/>
+        <location filename="pagoslistbase.ui" line="399"/>
         <source>Pagos Efectivos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pagoslistbase.ui" line="302"/>
+        <location filename="pagoslistbase.ui" line="406"/>
         <source>Previsiones de Pago</source>
         <translation type="unfinished"></translation>
     </message>
@@ -4813,7 +4818,7 @@ Esta seguro que desea borrarlo?</source>
     <message>
         <location filename="pedidoclientebase.ui" line="1002"/>
         <source>I.R.P.F.:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">I.R.P.F.:</translation>
     </message>
     <message>
         <location filename="pedidoclientebase.ui" line="1108"/>
@@ -4935,32 +4940,32 @@ Esta seguro que desea borrarlo?</source>
 <context>
     <name>PedidoProveedorBase</name>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="666"/>
+        <location filename="pedidoproveedorbase.ui" line="664"/>
         <source>&amp;Detalle</source>
         <translation>&amp;Detalle</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="1375"/>
+        <location filename="pedidoproveedorbase.ui" line="1373"/>
         <source>0.00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="456"/>
+        <location filename="pedidoproveedorbase.ui" line="454"/>
         <source>Foma de pago:</source>
         <translation>Forma de pago:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="588"/>
+        <location filename="pedidoproveedorbase.ui" line="586"/>
         <source>Telefono de contacto:</source>
         <translation>Teléfono de contacto:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="1423"/>
+        <location filename="pedidoproveedorbase.ui" line="1421"/>
         <source>&amp;Cancelar</source>
         <translation>&amp;Cancelar</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="1416"/>
+        <location filename="pedidoproveedorbase.ui" line="1414"/>
         <source>&amp;Aceptar</source>
         <translation>&amp;Aceptar</translation>
     </message>
@@ -4980,17 +4985,17 @@ Esta seguro que desea borrarlo?</source>
         <translation>Referencia del pedido:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="572"/>
+        <location filename="pedidoproveedorbase.ui" line="570"/>
         <source>Persona de contacto:</source>
         <translation>Persona de contacto:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="686"/>
+        <location filename="pedidoproveedorbase.ui" line="684"/>
         <source>Descuen&amp;tos</source>
         <translation>Descuen&amp;tos</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="706"/>
+        <location filename="pedidoproveedorbase.ui" line="704"/>
         <source>Comentario&amp;s</source>
         <translation>Comentario&amp;s</translation>
     </message>
@@ -5000,52 +5005,52 @@ Esta seguro que desea borrarlo?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="380"/>
+        <location filename="pedidoproveedorbase.ui" line="378"/>
         <source>Descripcion:</source>
         <translation>Descripción:</translation>
     </message>
     <message encoding="UTF-8">
-        <location filename="pedidoproveedorbase.ui" line="401"/>
+        <location filename="pedidoproveedorbase.ui" line="399"/>
         <source>Nº de pedido:</source>
         <translation>Nº de pedido:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="474"/>
+        <location filename="pedidoproveedorbase.ui" line="472"/>
         <source>Almacen de destino:</source>
         <translation>Almacén de destino:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="492"/>
+        <location filename="pedidoproveedorbase.ui" line="490"/>
         <source>Emisor responsable:</source>
         <translation>Emisor responsable:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="517"/>
+        <location filename="pedidoproveedorbase.ui" line="515"/>
         <source>Fecha del pedido:</source>
         <translation>Fecha del pedido:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="633"/>
+        <location filename="pedidoproveedorbase.ui" line="631"/>
         <source>Pedido &amp;tramitado</source>
         <translation>Pedido &amp;tramitado</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="772"/>
+        <location filename="pedidoproveedorbase.ui" line="770"/>
         <source>Descuentos:</source>
         <translation>Descuentos:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="881"/>
+        <location filename="pedidoproveedorbase.ui" line="879"/>
         <source>Base imponible:</source>
         <translation>Base imponible:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="1093"/>
+        <location filename="pedidoproveedorbase.ui" line="1091"/>
         <source>Impuestos:</source>
         <translation>Impuestos:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="1305"/>
+        <location filename="pedidoproveedorbase.ui" line="1303"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
@@ -5065,17 +5070,17 @@ Esta seguro que desea borrarlo?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="347"/>
+        <location filename="pedidoproveedorbase.ui" line="345"/>
         <source>Ver detalle de cabecera</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="987"/>
+        <location filename="pedidoproveedorbase.ui" line="985"/>
         <source>I.R.P.F.:</source>
         <translation>I.R.P.F.:</translation>
     </message>
     <message>
-        <location filename="pedidoproveedorbase.ui" line="1199"/>
+        <location filename="pedidoproveedorbase.ui" line="1197"/>
         <source>R.E.:</source>
         <translation>R.E.:</translation>
     </message>
@@ -5130,62 +5135,62 @@ Desea crearlo?</source>
 <context>
     <name>PedidosClienteListBase</name>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="279"/>
+        <location filename="pedidosclientelistbase.ui" line="298"/>
         <source>Procesados</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="68"/>
+        <location filename="pedidosclientelistbase.ui" line="80"/>
         <source>Nuevo pedido</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="90"/>
+        <location filename="pedidosclientelistbase.ui" line="102"/>
         <source>Editar pedido</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="112"/>
+        <location filename="pedidosclientelistbase.ui" line="124"/>
         <source>Borrar pedido</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="134"/>
+        <location filename="pedidosclientelistbase.ui" line="146"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="156"/>
+        <location filename="pedidosclientelistbase.ui" line="168"/>
         <source>Filtrar pedidos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="181"/>
+        <location filename="pedidosclientelistbase.ui" line="193"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="206"/>
+        <location filename="pedidosclientelistbase.ui" line="218"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="241"/>
+        <location filename="pedidosclientelistbase.ui" line="253"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="309"/>
+        <location filename="pedidosclientelistbase.ui" line="328"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="335"/>
+        <location filename="pedidosclientelistbase.ui" line="361"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="pedidosclientelistbase.ui" line="393"/>
+        <location filename="pedidosclientelistbase.ui" line="426"/>
         <source>Total:</source>
         <translation>Total:</translation>
     </message>
@@ -5299,79 +5304,74 @@ Desea crearlo?</source>
 <context>
     <name>PedidosProveedorListBase</name>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="68"/>
+        <location filename="pedidosproveedorlistbase.ui" line="80"/>
         <source>Nuevo pedido proveedor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="90"/>
+        <location filename="pedidosproveedorlistbase.ui" line="114"/>
         <source>Editar pedido proveedor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="112"/>
+        <location filename="pedidosproveedorlistbase.ui" line="148"/>
         <source>Borrar pedido proveedor</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="140"/>
+        <location filename="pedidosproveedorlistbase.ui" line="182"/>
         <source>Imprimir listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="162"/>
+        <location filename="pedidosproveedorlistbase.ui" line="216"/>
         <source>Filtrar pedidos</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="187"/>
+        <location filename="pedidosproveedorlistbase.ui" line="253"/>
         <source>Configurar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="212"/>
+        <location filename="pedidosproveedorlistbase.ui" line="290"/>
         <source>Actualizar listado</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="247"/>
+        <location filename="pedidosproveedorlistbase.ui" line="325"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="315"/>
+        <location filename="pedidosproveedorlistbase.ui" line="407"/>
         <source>Fecha inicial:</source>
         <translation>Fecha inicial:</translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="292"/>
+        <location filename="pedidosproveedorlistbase.ui" line="377"/>
         <source>Fecha final:</source>
         <translation>Fecha final:</translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="277"/>
+        <location filename="pedidosproveedorlistbase.ui" line="362"/>
         <source>Solo procesados</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="pedidosproveedorlistbase.ui" line="373"/>
-        <source>Suma de totales de pedidos:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosproveedorlistbase.ui" line="394"/>
+        <location filename="pedidosproveedorlistbase.ui" line="530"/>
         <source>0.00</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pedidosproveedorlistbase.ui" line="404"/>
-        <source>&amp;Cerrar</source>
-        <translation type="unfinished">&amp;Cerrar</translation>
     </message>
     <message>
         <location filename="pedidosproveedorlistbase.ui" line="17"/>
         <source>Pedidos a proveedores</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="pedidosproveedorlistbase.ui" line="472"/>
+        <source>Total:</source>
+        <translation type="unfinished">Total:</translation>
     </message>
 </context>
 <context>
@@ -5460,27 +5460,27 @@ Desea crearlo?</source>
 <context>
     <name>Presupuesto</name>
     <message>
-        <location filename="presupuesto.cpp" line="296"/>
+        <location filename="presupuesto.cpp" line="295"/>
         <source>Descuento</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="presupuesto.cpp" line="297"/>
+        <location filename="presupuesto.cpp" line="296"/>
         <source>Porcentaje</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="presupuesto.cpp" line="298"/>
+        <location filename="presupuesto.cpp" line="297"/>
         <source>Total</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="presupuesto.cpp" line="327"/>
+        <location filename="presupuesto.cpp" line="326"/>
         <source>Base </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="presupuesto.cpp" line="340"/>
+        <location filename="presupuesto.cpp" line="339"/>
         <source>I.V.A. </source>
         <translation type="unfinished">(sp)I.V.A.</translation>
     </message>
@@ -5495,7 +5495,7 @@ Desea crearlo?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="presupuesto.cpp" line="343"/>
+        <location filename="presupuesto.cpp" line="342"/>
         <source>Total </source>
         <translation type="unfinished"></translation>
     </message>
@@ -6154,7 +6154,7 @@ Desea crearlo?</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="providerslistbase.ui" line="332"/>
+        <location filename="providerslistbase.ui" line="338"/>
         <source>Procesa&amp;dos</source>
         <translation>Procesa&amp;dos</translation>
     </message>
@@ -6207,11 +6207,6 @@ Desea crearlo?</source>
         <location filename="providerslistbase.ui" line="293"/>
         <source>Buscar:</source>
         <translation>Buscar:</translation>
-    </message>
-    <message>
-        <location filename="providerslistbase.ui" line="397"/>
-        <source>&amp;Cerrar</source>
-        <translation type="unfinished">&amp;Cerrar</translation>
     </message>
     <message>
         <location filename="providerslistbase.ui" line="25"/>
@@ -6724,29 +6719,29 @@ p, li { white-space: pre-wrap; }
         <translation></translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="152"/>
+        <location filename="bulmafact.cpp" line="151"/>
         <source>This example demonstrates simple use of QMainWindow,
 QMenuBar and QToolBar.</source>
         <translation>This example demonstrates simple use of QMainWindow,(new line)
 QMenuBar and QToolBar.</translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="101"/>
+        <location filename="bulmafact.cpp" line="99"/>
         <source>Listo</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="141"/>
+        <location filename="bulmafact.cpp" line="139"/>
         <source>BulmaFact</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="129"/>
+        <location filename="bulmafact.cpp" line="127"/>
         <source>Pulse aceptar para emitir un monton de facturas</source>
         <translation>Pulse aceptar para emitir un montón de facturas</translation>
     </message>
     <message>
-        <location filename="bulmafact.cpp" line="142"/>
+        <location filename="bulmafact.cpp" line="140"/>
         <source>Pulse aceptar para recibir(destruir) un monton de facturas</source>
         <translation>Pulse aceptar para recibir(destruir) un montón de facturas</translation>
     </message>
@@ -7040,71 +7035,71 @@ QMenuBar and QToolBar.</translation>
     </message>
 </context>
 <context>
-    <name>familiasdlg</name>
+    <name>familiasbase</name>
     <message>
-        <location filename="familiasdlg.ui" line="16"/>
+        <location filename="familiasbase.ui" line="14"/>
         <source>Familias</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasdlg.ui" line="253"/>
-        <source>Contenido de la familia:</source>
-        <translation>Contenido de la familia:</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="309"/>
-        <source>Nombre:</source>
-        <translation>Nombre:</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="329"/>
-        <source>Codigo:</source>
-        <translation>Código:</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="351"/>
-        <source>Codigo completo:</source>
-        <translation>Código completo:</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="281"/>
-        <source>Descripcion:</source>
-        <translation>Descripción:Descripción:</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="387"/>
-        <source>&amp;Cancelar</source>
-        <translation>&amp;Cancelar</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="394"/>
-        <source>&amp;Aceptar</source>
-        <translation>&amp;Aceptar</translation>
-    </message>
-    <message>
-        <location filename="familiasdlg.ui" line="81"/>
+        <location filename="familiasbase.ui" line="103"/>
         <source>Nueva Familia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasdlg.ui" line="103"/>
+        <location filename="familiasbase.ui" line="137"/>
         <source>Borrar Familia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasdlg.ui" line="125"/>
+        <location filename="familiasbase.ui" line="171"/>
         <source>Guardar Familia</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasdlg.ui" line="147"/>
+        <location filename="familiasbase.ui" line="205"/>
         <source>Imprimir Familias</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="familiasdlg.ui" line="213"/>
+        <location filename="familiasbase.ui" line="271"/>
         <source>Mostrar / Ocultar Detalle</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="311"/>
+        <source>Contenido de la familia:</source>
+        <translation type="unfinished">Contenido de la familia:</translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="334"/>
+        <source>Descripcion:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="341"/>
+        <source>Codigo:</source>
+        <translation type="unfinished">Código:</translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="357"/>
+        <source>Codigo completo:</source>
+        <translation type="unfinished">Código completo:</translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="370"/>
+        <source>Nombre:</source>
+        <translation type="unfinished">Nombre:</translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="404"/>
+        <source>&amp;Cancelar</source>
+        <translation type="unfinished">&amp;Cancelar</translation>
+    </message>
+    <message>
+        <location filename="familiasbase.ui" line="411"/>
+        <source>&amp;Aceptar</source>
+        <translation type="unfinished">&amp;Aceptar</translation>
     </message>
 </context>
 <context>

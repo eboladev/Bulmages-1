@@ -806,6 +806,7 @@ void company::s_newInventario() {
     InventarioView *bud = new InventarioView(this, 0);
     m_pWorkspace->addWindow(bud);
     bud->show();
+    bud->mui_nominventario->setFocus();
     _depura("END company::s_newInventario", 0);
 }
 

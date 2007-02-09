@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>766</width>
-    <height>609</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -81,10 +81,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar</string>
+           <string>Guardar presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar</string>
+           <string>Guardar presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -112,10 +112,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar</string>
+           <string>Borrar presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar</string>
+           <string>Borrar presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -143,10 +143,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir</string>
+           <string>Imprimir presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir</string>
+           <string>Imprimir presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -1581,16 +1581,6 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
@@ -1619,6 +1609,16 @@
    <class>ListLinPresupuestoView</class>
    <extends>QWidget</extends>
    <header>listlinpresupuestoview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

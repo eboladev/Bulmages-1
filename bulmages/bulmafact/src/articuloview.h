@@ -28,7 +28,6 @@
 
 
 class company;
-//class Empresa;
 
 
 /** Esta clase controla la ventana de un articulo.
@@ -44,7 +43,6 @@ private:
     QString m_archivoimagen;
     /// El puntero a la clase company que indica con que empresa estamos trabajando.
     company *m_companyact;
-    //    Empresa *m_empresaact;
     cursor2 *m_cursorcombo;
 
 public:

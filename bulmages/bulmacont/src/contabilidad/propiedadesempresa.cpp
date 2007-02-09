@@ -72,7 +72,6 @@ void propiedadesempresa::on_mui_guardar_clicked() {
     m_companyact->begin();
     mui_subform->guardar();
 
-
     /// Procesamos la transaccion.
     m_companyact->commit();
     dialogChanges_cargaInicial();
@@ -134,14 +133,12 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
 }
 
 
-
-
 /// ===================================== SUBFORMULARIO ===============================================
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc(parent) {
     _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
     setDBTableName("configuracion");
     setDBCampoId("nombre");
-    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "nombre");
+    addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView, "Nombre");
     addSHeader("nombre", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite, tr("Nombre"));
     addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
     setinsercion(FALSE);

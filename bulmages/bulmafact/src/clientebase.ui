@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>822</width>
-    <height>812</height>
+    <width>690</width>
+    <height>639</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -21,10 +21,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -32,10 +32,22 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -54,15 +66,27 @@
        </property>
        <layout class="QHBoxLayout" >
         <property name="margin" >
-         <number>9</number>
+         <number>5</number>
         </property>
         <property name="spacing" >
-         <number>6</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_guardar" >
           <property name="enabled" >
            <bool>true</bool>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
           </property>
           <property name="toolTip" >
            <string>Guardar cliente</string>
@@ -92,6 +116,18 @@
           <property name="enabled" >
            <bool>true</bool>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Borrar cliente</string>
           </property>
@@ -117,11 +153,23 @@
           <property name="enabled" >
            <bool>true</bool>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
-           <string>Borrar cliente</string>
+           <string>Imprimir informe</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar cliente</string>
+           <string>Imprimir informe</string>
           </property>
           <property name="text" >
            <string/>
@@ -142,11 +190,23 @@
           <property name="enabled" >
            <bool>true</bool>
           </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
-           <string>Borrar cliente</string>
+           <string>Imprimir</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar cliente</string>
+           <string>Imprimir</string>
           </property>
           <property name="text" >
            <string/>
@@ -194,10 +254,10 @@
       </attribute>
       <layout class="QGridLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item row="12" column="0" colspan="4" >
         <layout class="QHBoxLayout" >
@@ -385,7 +445,7 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QLabel" name="textLabel2_7" >
@@ -460,7 +520,7 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QLineEdit" name="m_cifcliente" />
@@ -643,10 +703,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="PresupuestoList" native="1" name="m_listpresupuestos" />
@@ -659,10 +719,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="PedidosClienteList" native="1" name="m_listpedidos" />
@@ -675,10 +735,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="AlbaranClienteList" native="1" name="m_listalbaranes" />
@@ -691,10 +751,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="FacturasList" native="1" name="m_listfacturas" />
@@ -707,10 +767,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>2</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="CobrosList" native="1" name="m_listcobros" />
@@ -723,10 +783,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -872,10 +932,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -964,10 +1024,10 @@
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <layout class="QHBoxLayout" >
@@ -1048,7 +1108,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -1084,6 +1144,11 @@
  <layoutdefault spacing="2" margin="5" />
  <customwidgets>
   <customwidget>
+   <class>PedidosClienteList</class>
+   <extends>QWidget</extends>
+   <header>pedidosclientelist.h</header>
+  </customwidget>
+  <customwidget>
    <class>PresupuestoList</class>
    <extends>QWidget</extends>
    <header>presupuestolist.h</header>
@@ -1117,11 +1182,6 @@
    <class>BusquedaRegimenFiscal</class>
    <extends>QComboBox</extends>
    <header>busquedaregimenfiscal.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PedidosClienteList</class>
-   <extends>QWidget</extends>
-   <header>pedidosclientelist.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

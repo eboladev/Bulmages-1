@@ -46,7 +46,7 @@ public slots:
         cargar(mdb_idinventario);
         return 0;
     }
-    
+    virtual void pregenerar();
 };
 
 #endif
