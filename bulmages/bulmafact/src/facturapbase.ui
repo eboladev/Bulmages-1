@@ -18,10 +18,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -33,6 +33,12 @@
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="maximumSize" >
         <size>
          <width>48</width>
@@ -62,134 +68,6 @@
         <property name="spacing" >
          <number>5</number>
         </property>
-        <item row="0" column="6" >
-         <widget class="BusquedaReferencia" name="m_reffacturap" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>7</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5" >
-         <widget class="QLabel" name="label5" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>5</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="font" >
-           <font>
-            <family>Sans Serif</family>
-            <pointsize>9</pointsize>
-            <weight>50</weight>
-            <italic>false</italic>
-            <bold>false</bold>
-            <underline>false</underline>
-            <strikeout>false</strikeout>
-           </font>
-          </property>
-          <property name="text" >
-           <string>Referencia de la factura:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4" >
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeType" >
-           <enum>QSizePolicy::MinimumExpanding</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>18</width>
-            <height>32</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="0" column="3" >
-         <widget class="QToolButton" name="mui_pagar" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Efectuar pago</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Efectuar pago</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2" >
-         <widget class="QToolButton" name="mui_veralbaranes" >
-          <property name="enabled" >
-           <bool>true</bool>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Ver Albaranes</string>
-          </property>
-          <property name="whatsThis" >
-           <string>Ver Albaranes con la misma referenica</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="1" >
          <widget class="QToolButton" name="mui_borrar" >
           <property name="minimumSize" >
@@ -221,6 +99,69 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3" >
+         <widget class="QToolButton" name="mui_veralbaranes" >
+          <property name="enabled" >
+           <bool>true</bool>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Ver albaranes con la misma referencia</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Ver albaranes con la misma referencia</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_compras_albaran.48x48.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="6" >
+         <widget class="QLabel" name="label5" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font" >
+           <font>
+            <family>Sans Serif</family>
+            <pointsize>9</pointsize>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+            <underline>false</underline>
+            <strikeout>false</strikeout>
+           </font>
+          </property>
+          <property name="text" >
+           <string>Referencia de la factura:</string>
           </property>
          </widget>
         </item>
@@ -257,6 +198,90 @@
            </size>
           </property>
          </widget>
+        </item>
+        <item row="0" column="7" >
+         <widget class="BusquedaReferencia" name="m_reffacturap" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>7</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::MinimumExpanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>18</width>
+            <height>32</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="4" >
+         <widget class="QToolButton" name="mui_pagar" >
+          <property name="enabled" >
+           <bool>true</bool>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Registrar pago a proveedor</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Registrar pago a proveedor</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_pagos.48x48.png</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2" >
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>
@@ -645,6 +670,43 @@
          <property name="enabled" >
           <bool>true</bool>
          </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -714,6 +776,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalBases" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -774,7 +873,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>I.R.P.F.</string>
+          <string>I.R.P.F.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -783,6 +882,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalIRPF" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -852,6 +988,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalTaxes" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -912,7 +1085,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>Recargo</string>
+          <string>R.E.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -921,6 +1094,43 @@
        </item>
        <item>
         <widget class="QLineEdit" name="m_totalReqEq" >
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
+         </property>
          <property name="font" >
           <font>
            <family>Sans Serif</family>
@@ -992,6 +1202,43 @@
         <widget class="QLineEdit" name="m_totalfacturap" >
          <property name="enabled" >
           <bool>true</bool>
+         </property>
+         <property name="palette" >
+          <palette>
+           <active>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </active>
+           <inactive>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>238</red>
+               <green>238</green>
+               <blue>238</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </inactive>
+           <disabled>
+            <colorrole role="Base" >
+             <brush brushstyle="SolidPattern" >
+              <color alpha="255" >
+               <red>255</red>
+               <green>255</green>
+               <blue>255</blue>
+              </color>
+             </brush>
+            </colorrole>
+           </disabled>
+          </palette>
          </property>
          <property name="font" >
           <font>
@@ -1084,14 +1331,24 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaProveedor</class>
+   <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListLinFacturaProveedorView</class>
+   <extends>QWidget</extends>
+   <header>listlinfacturapview.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
   </customwidget>
   <customwidget>
    <class>BusquedaReferencia</class>
@@ -1102,16 +1359,6 @@
    <class>ListDescuentoFacturaProvView</class>
    <extends>QWidget</extends>
    <header>listdescfacturaprovview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListLinFacturaProveedorView</class>
-   <extends>QWidget</extends>
-   <header>listlinfacturapview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

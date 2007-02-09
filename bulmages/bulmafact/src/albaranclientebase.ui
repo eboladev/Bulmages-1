@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>707</width>
-    <height>593</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -39,6 +39,12 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
        </property>
        <property name="maximumSize" >
         <size>
@@ -107,7 +113,14 @@
          </spacer>
         </item>
         <item row="0" column="10" >
-         <widget class="BusquedaReferencia" name="m_refalbaran" />
+         <widget class="BusquedaReferencia" name="m_refalbaran" >
+          <property name="minimumSize" >
+           <size>
+            <width>150</width>
+            <height>0</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item row="0" column="9" >
          <widget class="QLabel" name="label5" >
@@ -150,10 +163,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Agregar a factura existente</string>
+           <string>Registrar cobro a cliente</string>
           </property>
           <property name="whatsThis" >
-           <string>Agregar a factura existente</string>
+           <string>Registrar cobro a cliente</string>
           </property>
           <property name="text" >
            <string/>
@@ -218,10 +231,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Pasar a factura</string>
+           <string>Generar factura a partir de este albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Pasar a factura</string>
+           <string>Generar factura a partir de este albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -252,10 +265,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Ver pedido de cliente</string>
+           <string>Ver pedidos con la misma referencia</string>
           </property>
           <property name="whatsThis" >
-           <string>Ver pedido de cliente</string>
+           <string>Ver pedidos con la misma referencia</string>
           </property>
           <property name="text" >
            <string/>
@@ -529,6 +542,12 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -955,7 +974,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <layout class="QVBoxLayout" >
@@ -1202,7 +1221,7 @@
           </font>
          </property>
          <property name="text" >
-          <string>I.R.P.F.</string>
+          <string>I.R.P.F.:</string>
          </property>
          <property name="alignment" >
           <set>Qt::AlignCenter</set>
@@ -1671,6 +1690,11 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+  </customwidget>
+  <customwidget>
    <class>ListDescuentoAlbaranClienteView</class>
    <extends>QWidget</extends>
    <header>listdescalbaranclienteview.h</header>
@@ -1704,11 +1728,6 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
   </customwidget>
  </customwidgets>
  <resources>

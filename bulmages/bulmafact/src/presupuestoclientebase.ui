@@ -41,6 +41,18 @@
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="pixmap" >
         <pixmap resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_presupuestos.48x48.png</pixmap>
        </property>
@@ -80,6 +92,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Guardar presupuesto</string>
           </property>
@@ -111,6 +129,12 @@
             <height>32</height>
            </size>
           </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Borrar presupuesto</string>
           </property>
@@ -137,6 +161,12 @@
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
           <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
            <size>
             <width>32</width>
             <height>32</height>
@@ -189,11 +219,17 @@
             <height>32</height>
            </size>
           </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
-           <string>Pasar a pedido</string>
+           <string>Generar pedido a partir de este presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Pasar a pedido</string>
+           <string>Generar pedido a partir de este presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -263,7 +299,7 @@
           </property>
           <property name="minimumSize" >
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>0</height>
            </size>
           </property>
@@ -280,7 +316,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QToolButton" name="mui_detalles" >
@@ -838,7 +874,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <layout class="QVBoxLayout" >
@@ -1523,7 +1559,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -1581,6 +1617,11 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
@@ -1614,11 +1655,6 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

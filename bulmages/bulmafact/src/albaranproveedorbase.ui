@@ -40,6 +40,12 @@
      </property>
      <item>
       <widget class="QLabel" name="label6" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="maximumSize" >
         <size>
          <width>48</width>
@@ -92,10 +98,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Guardar</string>
+           <string>Guardar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Guardar</string>
+           <string>Guardar albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -134,10 +140,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar</string>
+           <string>Borrar albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar</string>
+           <string>Borrar albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -192,10 +198,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Ver pedidos de proveedor</string>
+           <string>Ver pedidos a proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Ver pedidos de proveedor</string>
+           <string>Ver pedidos a proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -234,10 +240,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Pasar a Factura</string>
+           <string>Generar factura a partir de este albaran</string>
           </property>
           <property name="whatsThis" >
-           <string>Pasar a Factura</string>
+           <string>Generar factura a partir de este albaran</string>
           </property>
           <property name="text" >
            <string/>
@@ -276,10 +282,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Pasar a factura</string>
+           <string>Registrar pago a proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Pasar a factura</string>
+           <string>Registrar pago a proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -1427,6 +1433,21 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
@@ -1445,21 +1466,6 @@
    <class>ListDescuentoAlbaranProvView</class>
    <extends>QWidget</extends>
    <header>listdescalbaranprovview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
   </customwidget>
  </customwidgets>
  <resources>
