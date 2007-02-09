@@ -36,6 +36,18 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -74,10 +86,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nuevo pedido</string>
+           <string>Nuevo presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo pedido</string>
+           <string>Nuevo presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -87,8 +99,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -108,10 +120,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Editar pedido</string>
+           <string>Editar presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar pedido</string>
+           <string>Editar presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -121,8 +133,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -142,10 +154,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar pedido</string>
+           <string>Borrar presupuesto</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar pedido</string>
+           <string>Borrar presupuesto</string>
           </property>
           <property name="text" >
            <string/>
@@ -155,8 +167,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -189,8 +201,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -223,8 +235,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="checkable" >
@@ -260,8 +272,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="checkable" >
@@ -497,6 +509,20 @@
        <property name="enabled" >
         <bool>true</bool>
        </property>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>5</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="palette" >
         <palette>
          <active>
@@ -560,16 +586,6 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PresupuestoListSubForm</class>
-   <extends>QTableWidget</extends>
-   <header>presupuestolist.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaArticulo</class>
    <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
@@ -578,6 +594,16 @@
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PresupuestoListSubForm</class>
+   <extends>QTableWidget</extends>
+   <header>presupuestolist.h</header>
   </customwidget>
  </customwidgets>
  <resources>
