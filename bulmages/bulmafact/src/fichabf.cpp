@@ -63,11 +63,11 @@ void FichaBf::calculaypintatotales() {
     delete cur;
 
     if (exists("idproveedor")) {
-	cur = m_companyact->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor="+DBvalue("idproveedor"));
-	if (!cur->eof()) {
-		irpf = Fixed(cur->valor("irpfproveedor"));
-	} // end if
-	delete cur;
+        cur = m_companyact->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor="+DBvalue("idproveedor"));
+        if (!cur->eof()) {
+            irpf = Fixed(cur->valor("irpfproveedor"));
+        } // end if
+        delete cur;
     } // end if
 
     for (int i = 0; i < m_listalineas->rowCount(); ++i) {
@@ -122,7 +122,6 @@ void FichaBf::calculaypintatotales() {
         } // end if
         totiva = totiva + pariva;
     } // end for
-
 
     /// Calculamos el total de recargo de equivalencia.
     Fixed totreqeq("0.00");

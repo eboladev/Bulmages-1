@@ -48,16 +48,21 @@ void Ficha::on_mui_aceptar_clicked() {
 
 void Ficha::on_mui_borrar_clicked() {
     _depura("Ficha::on_mui_borrar_clicked", 0);
-    int val = QMessageBox::warning(this,
-                                   tr("Borrar") + " " + windowTitle(),
-                                   tr("Desea eliminar la") + " " + windowTitle(),
-                                   tr("&Si"), tr("&No"), tr("&Cancelar"), 0, 2);
-    if (val == 0) {
+
+    int val = QMessageBox::question(this,
+                                    tr("Borrar") + " " + windowTitle(),
+                                    tr("Desea eliminar") + " " + windowTitle(),
+                                   QMessageBox::Yes,
+                                   QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default);
+
+    if (val == QMessageBox::Yes) {
         if (!borrar()) {
             dialogChanges_cargaInicial();
-            _depura(windowTitle() + " " + "borrado satisfactoriamente.", 2);
+            _depura(windowTitle() + " " + "borrado satisfactoriamente.", 10);
             close();
-        } // end if
+        } else {
+            mensajeInfo(windowTitle() + tr("No se ha podido borrar"));
+        }// end if
     } // end if
     _depura("END Ficha::on_mui_borrar_clicked", 0);
 }

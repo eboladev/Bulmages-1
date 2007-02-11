@@ -120,10 +120,11 @@ public:
     }
     QString generaFiltro();
     void editar(int);
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-        if(text.size() >= 3)
+        if (text.size() >= 3)
             on_mui_actualizar_clicked();
     }
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
@@ -133,7 +134,6 @@ public slots:
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newPresupuestoCli();
     }
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();
     }

@@ -854,16 +854,17 @@
       <attribute name="title" >
        <string>&amp;Detalle</string>
       </attribute>
-      <widget class="ListLinAlbaranClienteView" native="1" name="subform2" >
-       <property name="geometry" >
-        <rect>
-         <x>9</x>
-         <y>9</y>
-         <width>1017</width>
-         <height>519</height>
-        </rect>
+      <layout class="QGridLayout" >
+       <property name="margin" >
+        <number>5</number>
        </property>
-      </widget>
+       <property name="spacing" >
+        <number>5</number>
+       </property>
+       <item row="0" column="0" >
+        <widget class="ListLinAlbaranClienteView" native="1" name="subform2" />
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="Tab2" >
       <attribute name="title" >
@@ -1690,6 +1691,16 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>ListLinAlbaranClienteView</class>
+   <extends>QWidget</extends>
+   <header>listlinalbaranclienteview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -1718,16 +1729,6 @@
    <class>BusquedaTrabajador</class>
    <extends>QWidget</extends>
    <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListLinAlbaranClienteView</class>
-   <extends>QWidget</extends>
-   <header>listlinalbaranclienteview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
   </customwidget>
  </customwidgets>
  <resources>

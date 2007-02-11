@@ -34,17 +34,20 @@
 
 PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
+    _depura("PresupuestoList::PresupuestoList(1)", 0);
     setupUi(this);
     m_companyact = NULL;
     m_modo = 0;
     m_idpresupuesto = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END PresupuestoList::PresupuestoList(1)", 0);
 }
 
 
 PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
+    _depura("PresupuestoList::PresupuestoList(2)", 0);
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
@@ -55,6 +58,7 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
     m_idpresupuesto = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END PresupuestoList::PresupuestoList(2)", 0);
 }
 
 
@@ -63,11 +67,8 @@ PresupuestoList::~PresupuestoList() {
 }
 
 
-
-
-
 void PresupuestoList::presenta() {
-    _depura("PresupuestoList::presenta()\n");
+    _depura("PresupuestoList::presenta", 0);
 
     /// Hacemos el listado y lo presentamos.
     mui_list->cargar("SELECT *, totalpresupuesto AS total, bimppresupuesto AS base, imppresupuesto AS impuestos FROM presupuesto LEFT JOIN  cliente ON presupuesto.idcliente=cliente.idcliente LEFT JOIN almacen ON presupuesto.idalmacen=almacen.idalmacen WHERE 1=1 " + generaFiltro());
@@ -77,24 +78,25 @@ void PresupuestoList::presenta() {
     m_total->setText(cur->valor("total"));
     delete cur;
 
-    _depura("end PresupuestoList::presenta()\n");
+    _depura("END PresupuestoList::presenta", 0);
 }
 
 
 QString PresupuestoList::generaFiltro() {
+    _depura("PresupuestoList::generaFiltro", 0);
     /// Tratamiento de los filtros.
     QString filtro = "";
 
     if (m_filtro->text() != "") {
         filtro = " AND (descpresupuesto LIKE '%" + m_filtro->text() + "%' ";
-        filtro +=" OR refpresupuesto LIKE '"+m_filtro->text()+"%' ";
-        filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
+        filtro += " OR refpresupuesto LIKE '" + m_filtro->text() + "%' ";
+        filtro += " OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
     } // end if
 
     if (m_cliente->idcliente() != "") {
-        filtro += " AND presupuesto.idcliente=" + m_cliente->idcliente();
+        filtro += " AND presupuesto.idcliente = " + m_cliente->idcliente();
     } // end if
 
     if (!m_procesados->isChecked() ) {
@@ -106,10 +108,11 @@ QString PresupuestoList::generaFiltro() {
     }// end if
 
     if (m_fechain->text() != "")
-        filtro += " AND fpresupuesto >= '"+m_fechain->text() + "' ";
+        filtro += " AND fpresupuesto >= '" + m_fechain->text() + "' ";
     if (m_fechafin->text() != "")
-        filtro += " AND fpresupuesto <= '"+m_fechafin->text() + "' ";
+        filtro += " AND fpresupuesto <= '" + m_fechafin->text() + "' ";
     return (filtro);
+    _depura("END PresupuestoList::generaFiltro", 0);
 }
 
 
@@ -136,34 +139,42 @@ void PresupuestoList::editar(int row) {
 
 
 void PresupuestoList::on_mui_editar_clicked() {
+    _depura("PresupuestoList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a >= 0) {
         editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } else {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+    } // end if
+    _depura("END PresupuestoList::on_mui_editar_clicked", 0);
 }
 
 
 void PresupuestoList::imprimir() {
     _depura("PresupuestoList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Listado de Presupuestos"));
+    mui_list->imprimirPDF(tr("Listado de presupuestos"));
     _depura("END PresupuestoList::imprimir", 0);
 }
 
 
 void PresupuestoList::on_mui_borrar_clicked() {
     _depura("PresupuestoList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
         if (m_modo == 0) {
             PresupuestoView *prov = m_companyact->nuevoPresupuesto();
             if (prov->cargar(m_idpresupuesto))
                 return;
-            prov->borrar();
-            delete prov;
+            prov->on_mui_borrar_clicked();
+            prov->close();
         } // end if
         presenta();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al borrar el presupuesto"));
     } // end try
     _depura("END PresupuestoList::on_mui_borrar_clicked", 0);

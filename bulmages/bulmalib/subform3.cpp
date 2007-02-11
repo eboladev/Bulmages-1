@@ -42,7 +42,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
 
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer
     /// el panel de configuracion del subform3.
-    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+s"), this);
+    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+B"), this);
     connect(shortcut, SIGNAL(activated()), this, SLOT(toogleConfig()));
 
     m_insercion = FALSE;
