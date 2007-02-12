@@ -28,10 +28,11 @@
 		<drawCentredString x="17.5cm" y="21.2cm">Ref</drawCentredString>
 		<setFont name="Helvetica" size="10"/>
 		<drawCentredString x="5.5cm" y="20.4cm">[cifcliente]</drawCentredString>
-		<drawCentredString x="8.5cm" y="20.4cm">[idcliente]</drawCentredString>
+		<drawCentredString x="8.5cm" y="20.4cm">[codcliente] / [idcliente]</drawCentredString>
 		<drawCentredString x="11.5cm" y="20.4cm">[fpresupuesto]</drawCentredString>
 		<drawCentredString x="14.5cm" y="20.4cm">[numpresupuesto]</drawCentredString>
 		<drawCentredString x="17.5cm" y="20.4cm">[refpresupuesto]</drawCentredString>
+		<drawString x="1cm" y ="2.5cm">Presupuesto valido hasta [vencpresupuesto]</drawString>
 		</pageGraphics>
 		<!-- FRAME DE CONTENIDOS -->
 		<frame id="column" x1="1cm" y1="5cm" width="19cm" height="15cm"/>

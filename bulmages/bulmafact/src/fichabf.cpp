@@ -202,6 +202,7 @@ void FichaBf::imprimir() {
         buff.replace("[cifcliente]", cur->valor("cifcliente"));
         buff.replace("[idcliente]", cur->valor("idcliente"));
         buff.replace("[cpcliente]", cur->valor("cpcliente"));
+        buff.replace("[codcliente]", cur->valor("codcliente"));
     } // end if
     delete cur;
 
