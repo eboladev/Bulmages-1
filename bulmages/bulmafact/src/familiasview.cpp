@@ -36,10 +36,9 @@
 
 
 FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
-        : Ficha(parent) {
+        : FichaBf(comp, parent) {
     _depura("FamiliasView::FamiliasView", 0);
     setupUi(this);
-    companyact = comp;
 
     m_listFamilias->setColumnCount(3);
     QStringList headers;
@@ -51,6 +50,8 @@ FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
 
     m_listFamilias->setColumnHidden(COL_IDFAMILIA, TRUE);
     m_listFamilias->setColumnHidden(COL_CODFAMILIA, TRUE);
+
+    m_semaforoPintar = FALSE;
 
     m_idfamilia = "";
     if (modoConsulta) {
@@ -66,7 +67,7 @@ FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
     } else {
         setModoEdicion();
         setAttribute(Qt::WA_DeleteOnClose);
-        companyact->meteWindow(windowTitle(), this);
+        m_companyact->meteWindow(windowTitle(), this);
     } // end if
     pintar();
     _depura("END FamiliasView::FamiliasView", 0);
@@ -76,14 +77,10 @@ FamiliasView::FamiliasView(company *comp, QWidget *parent, bool modoConsulta)
 FamiliasView::~FamiliasView() {}
 
 
-int FamiliasView::sacaWindow() {
-    companyact->sacaWindow(this);
-    return 0;
-}
-
 
 void FamiliasView::pintar() {
     _depura("FamiliasView::pintar", 0);
+    m_semaforoPintar = TRUE; /// Activamos el semaforo de pintado para que no haya slots concurrentes.
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int padre;
@@ -96,7 +93,8 @@ void FamiliasView::pintar() {
         delete it;
     } // end while
 
-    cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia");
+
+    cursoraux1 = m_companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NULL ORDER BY idfamilia");
     while (!cursoraux1->eof()) {
         padre = cursoraux1->valor("padrefamilia").toInt();
         idfamilia = cursoraux1->valor("idfamilia").toInt();
@@ -111,7 +109,7 @@ void FamiliasView::pintar() {
         cursoraux1->siguienteregistro();
     } // end while
     delete cursoraux1;
-    cursoraux2 = companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia");
+    cursoraux2 = m_companyact->cargacursor("SELECT * FROM familia WHERE padrefamilia IS NOT NULL ORDER BY idfamilia");
     while (!cursoraux2->eof()) {
         padre = cursoraux2->valor("padrefamilia").toInt();
         idfamilia = cursoraux2->valor("idfamilia").toInt();
@@ -129,10 +127,13 @@ void FamiliasView::pintar() {
     m_idfamilia = "";
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
+    m_semaforoPintar = FALSE; /// Desactivamos el semaforo de pintado.
+    _depura("END FamiliasView::pintar", 0);
 }
 
 
 QString FamiliasView::codigoCompletoFamilia() {
+    _depura("FamiliasView::codigoCompletoFamilia", 0);
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_CODCOMPLETOFAMILIA);
@@ -142,6 +143,7 @@ QString FamiliasView::codigoCompletoFamilia() {
 
 
 QString FamiliasView::idFamilia() {
+    _depura("FamiliasView::idFamilia", 0);
     QTreeWidgetItem *it = m_listFamilias->currentItem();
     if (it)
         return it->text(COL_IDFAMILIA);
@@ -163,10 +165,12 @@ QString FamiliasView::nombreFamilia() {
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
 void FamiliasView::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
+    _depura("FamiliasView::on_m_listFamilias_itemDoubleClicked", 0);
     if (m_modoConsulta) {
         m_idfamilia = it->text(COL_IDFAMILIA);
         emit selected(m_idfamilia);
     } // end if
+    _depura("END FamiliasView::on_m_listFamilias_itemDoubleClicked", 0);
 }
 
 
@@ -174,6 +178,11 @@ void FamiliasView::on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *it) {
 /// Lo que hacemos es mostar el elemento.
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
 void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous) {
+   _depura("FamiliasView::on_m_listFamilias_currentItemChanged", 0);
+
+   /// Si estamos dentro del proceso de pintado salimos sin hacer nada ya que puede haber problemas.
+   if (m_semaforoPintar ) return;
+
     QString idfamiliaold = "";
     if (previous)
         m_idfamilia = previous->text(COL_IDFAMILIA);
@@ -183,14 +192,15 @@ void FamiliasView::on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current
     } // end if
     m_idfamilia = current->text(COL_IDFAMILIA);
     mostrarplantilla();
+   _depura("END FamiliasView::on_m_listFamilias_currentItemChanged", 0);
 }
 
 
 void FamiliasView::mostrarplantilla() {
-    _depura("mostramos la plantilla\n", 0);
+    _depura("FamiliasView::mostrarplantilla", 0);
     QString query;
     query= "SELECT * from familia WHERE idfamilia = " + m_idfamilia;
-    cursor2 *cursorfamilia = companyact->cargacursor(query);
+    cursor2 *cursorfamilia = m_companyact->cargacursor(query);
     if (!cursorfamilia->eof()) {
         m_nomFamilia->setText(cursorfamilia->valor("nombrefamilia"));
         m_descFamilia->setPlainText(cursorfamilia->valor("descfamilia"));
@@ -200,16 +210,9 @@ void FamiliasView::mostrarplantilla() {
     delete cursorfamilia;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("Terminamos la ejecución de FamiliasView::mostrarplantilla\n", 0);
+    _depura("END FamiliasView::mostrarplantilla", 0);
 }
 
-
-/// Antes de salir de la ventana debemos hacer la comprobacion de si se ha modificado algo
-/// Esta funcion esta dedicada a Francina, Bienvenida al mundo :))
-void FamiliasView::close() {
-    trataModificado();
-    QWidget::close();
-}
 
 
 bool FamiliasView::trataModificado() {
@@ -237,10 +240,10 @@ void FamiliasView::on_mui_guardar_clicked() {
             return;
         } // end if
         QString query = "UPDATE familia SET nombrefamilia = '" +
-                        companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
-                        companyact->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
-                        companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
-        int error = companyact->ejecuta(query);
+                        m_companyact->sanearCadena(m_nomFamilia->text()) + "', descfamilia = '" +
+                        m_companyact->sanearCadena(m_descFamilia->toPlainText()) + "' , codigofamilia = '" +
+                        m_companyact->sanearCadena(m_codFamilia->text()) + "' WHERE idfamilia =" + m_idfamilia;
+        int error = m_companyact->ejecuta(query);
         if (error)
             throw -1;
         /// Guardamos la informacion de la fila que esta seleccionada para volver
@@ -260,7 +263,7 @@ void FamiliasView::on_mui_guardar_clicked() {
 void FamiliasView::pintar(QTreeWidgetItem *it) {
     QString idfamilia = it->text(COL_IDFAMILIA);
     if (it) {
-        cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM familia WHERE idfamilia = " + idfamilia);
+        cursor2 *cursoraux1 = m_companyact->cargacursor("SELECT * FROM familia WHERE idfamilia = " + idfamilia);
         if (!cursoraux1->eof()) {
             it->setText(COL_NOMFAMILIA, cursoraux1->valor("nombrefamilia"));
             it->setText(COL_CODFAMILIA, cursoraux1->valor("codigofamilia"));
@@ -278,7 +281,7 @@ void FamiliasView::pintar(QTreeWidgetItem *it) {
 void FamiliasView::on_mui_crear_clicked() {
     _depura("FamiliasView::on_mui_crear_clicked", 0);
     try {
-        companyact->begin();
+        m_companyact->begin();
         /// Si se ha modificado el contenido advertimos y guardamos.
         trataModificado();
         QString padrefamilia;
@@ -289,43 +292,66 @@ void FamiliasView::on_mui_crear_clicked() {
 
         QString query = "INSERT INTO familia (nombrefamilia, descfamilia, padrefamilia, codigofamilia) VALUES ('NUEVA FAMILIA', 'Descripcion de la familia', " + padrefamilia + ", 'XXX')";
 
-        int error = companyact->ejecuta(query);
+        int error = m_companyact->ejecuta(query);
         if (error) {
             throw -1;
         } // end if
-        cursor2 *cur = companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
-        companyact->commit();
+        cursor2 *cur = m_companyact->cargacursor("SELECT max(idfamilia) AS idfamilia FROM familia");
+        m_companyact->commit();
         m_idfamilia = cur->valor("idfamilia");
         delete cur;
         pintar();
         _depura("END FamiliasView::on_mui_crear_clicked", 0);
     } catch (...) {
-        companyact->rollback();
+        m_companyact->rollback();
         mensajeInfo("Error al crear la familia");
     } // end try
 }
 
 
-/// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
-/// Lo que hace es que se hace un update de todos los campos.
+
 void FamiliasView::on_mui_borrar_clicked() {
     _depura("FamiliasView::on_mui_borrar_clicked", 0);
+
+    int val = QMessageBox::question(this,
+                                    tr("Borrar") + " " + windowTitle(),
+                                    tr("Desea eliminar") + " " + windowTitle(),
+                                   QMessageBox::Yes,
+                                   QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default);
+
+    if (val == QMessageBox::Yes) {
+        if (!borrar()) {
+            dialogChanges_cargaInicial();
+            _depura(windowTitle() + " " + "borrado satisfactoriamente.", 10);
+        } else {
+            mensajeInfo(windowTitle() + tr("No se ha podido borrar"));
+        }// end if
+    } // end if
+    _depura("END FamiliasView::on_mui_borrar_clicked", 0);
+}
+
+/// SLOT que responde a la pulsacion del botón de borrar la familia que se está editando.
+/// Lo que hace es que se hace un update de todos los campos.
+int FamiliasView::borrar() {
+    _depura("FamiliasView::borrar", 0);
+	if (m_idfamilia == "") {
+		mensajeInfo(tr("Debe seleccionar una familia"));
+		return -1;
+	} // end if
     try {
-        if (m_idfamilia == "") {
-            mensajeInfo(tr("Debe seleccionar una familia"));
-            return;
-        } // end if
-        trataModificado();
         QString query = "DELETE FROM FAMILIA WHERE idfamilia = " + m_idfamilia;
-        int error = companyact->ejecuta(query);
+        int error = m_companyact->ejecuta(query);
         if (error)
             throw -1;
+	m_idfamilia = "";
+	dialogChanges_cargaInicial();
         pintar();
-        _depura("END FamiliasView::on_mui_borrar_clicked", 0);
+        _depura("END FamiliasView::borrar", 0);
     } catch (...) {
         mensajeInfo("Error al borrar la familia");
+	return -1;
     } // end try
-    _depura("END FamiliasView::on_mui_borrar_clicked", 0);
+    return 0;
 }
 
 
@@ -372,7 +398,7 @@ void FamiliasView::on_mui_imprimir_clicked() {
     fitxersortidatxt += "        <td>" + tr("Nombre") + "</td>";
     fitxersortidatxt += "</tr>";
 
-    cursor2 *cur = companyact->cargacursor("SELECT * FROM familia ORDER BY codigocompletofamilia");
+    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM familia ORDER BY codigocompletofamilia");
     while(!cur->eof()) {
         fitxersortidatxt += "<tr>";
         fitxersortidatxt += "        <td>" + cur->valor("codigocompletofamilia") + "</td>";

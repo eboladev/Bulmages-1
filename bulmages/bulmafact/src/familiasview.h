@@ -22,7 +22,7 @@
 #define FAMILIASVIEW_H
 
 #include "ui_familiasbase.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 class company;
@@ -30,17 +30,17 @@ class company;
 
 /// Muestra y administra la ventana de familias de art&iacute;culos.
 /** */
-class FamiliasView : public Ficha, public Ui_familiasbase {
+class FamiliasView : public FichaBf, public Ui_familiasbase {
     Q_OBJECT
 
 private:
-    company *companyact;
     /// Indica cu&aacute;l es el registro que se est&aacute; modificando. Sirve para saber los
     /// cambios que hay que guardar despu&eacute;s de que se haya modificado.
     QString m_idfamilia;
     /// Indica si es modo consulta o modo edici&oacute;n. (modifica el comportamiento del
     /// doble click sobre la lista)
     bool m_modoConsulta;
+    bool m_semaforoPintar;   // Este semaforo indica si se esta en el proceso de pintado
 
 public:
     FamiliasView(company *, QWidget *parent = 0, bool modoConsulta = FALSE);
@@ -57,16 +57,15 @@ public:
     QString idFamilia();
     QString nombreFamilia();
     void pintar(QTreeWidgetItem *);
-    virtual int sacaWindow();
+    virtual int borrar();
+    virtual void on_mui_aceptar_clicked();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void pintar();
     virtual void on_m_listFamilias_itemDoubleClicked(QTreeWidgetItem *);
-    virtual void on_mui_aceptar_clicked();
-    virtual void close();
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_m_listFamilias_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     virtual void on_mui_imprimir_clicked();
 
