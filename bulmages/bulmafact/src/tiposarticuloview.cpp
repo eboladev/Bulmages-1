@@ -26,10 +26,9 @@
 #include "company.h"
 #include "funcaux.h"
 
-#define COL_IDTIPOARTICULO 0
-#define COL_CODTIPOARTICULO 1
+#define COL_IDTIPOARTICULO    0
+#define COL_CODTIPOARTICULO   1
 #define COL_DESCTIPOARTICULO  2
-
 
 
 TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoConsulta)
@@ -43,14 +42,14 @@ TipoArticuloList::TipoArticuloList(company *comp, QWidget *parent, bool modoCons
     m_listTipos->setHeaderLabels(headers);
     m_idtipo = "";
     if (modoConsulta) {
-	setModoConsulta();
-	groupBox1->hide();
-	mui_detalles->hide();
-	mui_crear->hide();
-	mui_guardar->hide();
-	mui_borrar->hide();
-	mui_cancelar->hide();
-	mui_aceptar->hide();
+	   setModoConsulta();
+	   groupBox1->hide();
+	   mui_detalles->hide();
+	   mui_crear->hide();
+	   mui_guardar->hide();
+	   mui_borrar->hide();
+	   mui_cancelar->hide();
+	   mui_aceptar->hide();
     } else {
     	setModoEdicion();
        setAttribute(Qt::WA_DeleteOnClose);
@@ -77,7 +76,7 @@ void TipoArticuloList::pintar() {
     QTreeWidgetItem * it;
 
     /// vaciamos el arbol.
-    while (m_listTipos->topLevelItemCount () > 0) {
+    while (m_listTipos->topLevelItemCount() > 0) {
         it = m_listTipos->takeTopLevelItem(0);
         delete it;
     } // end while
@@ -101,30 +100,33 @@ void TipoArticuloList::pintar() {
 QString TipoArticuloList::codtipo_articulo() {
     _depura("TipoArticuloList::codtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
-    if (it)
+    if (it) {
     	return it->text(COL_CODTIPOARTICULO);
-    else
-	return "";
+    } else {
+	   return "";
+    } // end if
     _depura("END TipoArticuloList::codtipo_articulo", 0);
 }
 
 QString TipoArticuloList::idtipo_articulo() {
     _depura("TipoArticuloList::idtipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
-    if (it) 
+    if (it) {
     	return it->text(COL_IDTIPOARTICULO);
-    else
-	return "";
+    } else {
+	   return "";
+    } // end if
     _depura("TipoArticuloList::idtipo_articulo", 0);
 }
 
 QString TipoArticuloList::desctipo_articulo() {
     _depura("TipoArticuloList::desctipo_articulo", 0);
     QTreeWidgetItem *it = m_listTipos->currentItem();
-    if (it)
-	return it->text(COL_DESCTIPOARTICULO);
-    else
-	return "";
+    if (it) {
+	   return it->text(COL_DESCTIPOARTICULO);
+    } else {
+	   return "";
+    } // end if
     _depura("END TipoArticuloList::desctipo_articulo", 0);
 }
 
@@ -132,7 +134,7 @@ QString TipoArticuloList::desctipo_articulo() {
 /// Se ha seleccionado un item en la lista
 /// Lo que hacemos es mostar el elemento
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
-void TipoArticuloList::on_m_listTipos_itemDoubleClicked(QTreeWidgetItem * item, int) {
+void TipoArticuloList::on_m_listTipos_itemDoubleClicked(QTreeWidgetItem *item, int) {
     if (m_modoConsulta) {
         m_idtipo = item->text(COL_IDTIPOARTICULO);
         emit selected(m_idtipo);
@@ -143,7 +145,7 @@ void TipoArticuloList::on_m_listTipos_itemDoubleClicked(QTreeWidgetItem * item, 
 /// Se ha seleccionado un item en la lista
 /// Lo que hacemos es mostar el elemento
 /// Si el anterior ha sido modificado pedimos para actuar en consecuencia.
-void TipoArticuloList::on_m_listTipos_currentItemChanged (QTreeWidgetItem *current, QTreeWidgetItem *) {
+void TipoArticuloList::on_m_listTipos_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *) {
     _depura("TipoArticuloList::on_m_listTipos_itemChanged", 0);
     QString idtipoold = current->text(COL_IDTIPOARTICULO);
     if (idtipoold != "") {
@@ -156,9 +158,9 @@ void TipoArticuloList::on_m_listTipos_currentItemChanged (QTreeWidgetItem *curre
 
 
 void TipoArticuloList::mostrarplantilla() {
-    _depura("mostramos la plantilla\n", 2);
+    _depura("TipoArticuloList::mostrarplantilla", 0);
     QString query;
-    query = "SELECT * from tipo_articulo WHERE idtipo_articulo=" + m_idtipo;
+    query = "SELECT * from tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
     cursor2 *cursortipo = companyact->cargacursor(query);
     if (!cursortipo->eof()) {
         m_codTipo->setText(cursortipo->valor("codtipo_articulo"));
@@ -167,7 +169,7 @@ void TipoArticuloList::mostrarplantilla() {
     delete cursortipo;
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
-    _depura("Terminamos la ejecución de TipoArticuloList::mostrarplantilla\n", 2);
+    _depura("END TipoArticuloList::mostrarplantilla", 0);
 }
 
 
@@ -188,18 +190,18 @@ bool TipoArticuloList::trataModificado() {
                                  QMessageBox::Ok,
                                  QMessageBox::Cancel) == QMessageBox::Ok)
             on_mui_guardar_clicked();
-        return (TRUE);
+        return TRUE;
     } // end if
-    return(FALSE);
+    return FALSE;
 }
 
 
 /// SLOT que responde a la pulsacion del boton de guardar el tipo de iva que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos
 void TipoArticuloList::on_mui_guardar_clicked() {
-    QString query = "UPDATE tipo_articulo SET codtipo_articulo='" +
-                    companyact->sanearCadena(m_codTipo->text()) + "', desctipo_articulo= '" +
-                    companyact->sanearCadena(m_descTipo->toPlainText()) + "' WHERE idtipo_articulo=" + m_idtipo;
+    QString query = "UPDATE tipo_articulo SET codtipo_articulo = '" +
+                    companyact->sanearCadena(m_codTipo->text()) + "', desctipo_articulo = '" +
+                    companyact->sanearCadena(m_descTipo->toPlainText()) + "' WHERE idtipo_articulo = " + m_idtipo;
     companyact->begin();
     int error = companyact->ejecuta(query);
     if (error) {
@@ -212,7 +214,7 @@ void TipoArticuloList::on_mui_guardar_clicked() {
     /// Vamos a hacer algo no reentrante.
     QList<QTreeWidgetItem *> listit =  m_listTipos->findItems(m_idtipo, Qt::MatchExactly, COL_IDTIPOARTICULO);
     QTreeWidgetItem *it = listit.first();
-    cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo WHERE idtipo_articulo=" + m_idtipo);
+    cursor2 *cursoraux1 = companyact->cargacursor("SELECT * FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo);
     if (!cursoraux1->eof()) {
         it->setText(COL_IDTIPOARTICULO, cursoraux1->valor("idtipo_articulo"));
         it->setText(COL_CODTIPOARTICULO,cursoraux1->valor("codtipo_articulo"));
@@ -229,7 +231,7 @@ void TipoArticuloList::on_mui_crear_clicked() {
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
 
-    QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX','Descripcion del tipo')";
+    QString query = "INSERT INTO tipo_articulo (codtipo_articulo, desctipo_articulo) VALUES ('XXXXXX', 'Descripcion del tipo')";
     companyact->begin();
     int error = companyact->ejecuta(query);
     if (error) {
@@ -251,10 +253,11 @@ void TipoArticuloList::on_mui_borrar_clicked() {
     if (!it)
         return;
     trataModificado();
-    QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo=" + m_idtipo;
+    QString query = "DELETE FROM tipo_articulo WHERE idtipo_articulo = " + m_idtipo;
     int error = companyact->ejecuta(query);
-    if (error)
+    if (error) {
         return;
+    } // end if
     it = m_listTipos->takeTopLevelItem(m_listTipos->indexOfTopLevelItem(m_listTipos->currentItem()));
     delete it;
     _depura("END TipoArticuloList::on_mui_borrar_clicked", 0);

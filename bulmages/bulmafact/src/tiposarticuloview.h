@@ -21,7 +21,7 @@
 #ifndef TIPOSARTICULOVIEW_H
 #define TIPOSARTICULOVIEW_H
 
-#include "ui_tiposarticulodlg.h"
+#include "ui_tiposarticulobase.h"
 #include "ficha.h"
 
 
@@ -30,7 +30,7 @@ class company;
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un tipo de art&iacute;culo.
 /** */
-class TipoArticuloList : public Ficha, public Ui_tiposarticulodlg {
+class TipoArticuloList : public Ficha, public Ui_tiposarticulobase {
     Q_OBJECT
 
 private:
@@ -65,7 +65,7 @@ public slots:
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
-    virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
+    virtual void on_m_listTipos_currentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
     virtual void on_mui_aceptar_clicked() {
         close();
     }

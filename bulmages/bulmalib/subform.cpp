@@ -103,7 +103,7 @@ int SDBCampo::set(QString val) {
     if (tipo() == DBCampo::DBboolean) {
         if (restrictcampo() == SHeader::DBNoWrite) {
             setFlags(this->flags() & (~Qt::ItemIsUserCheckable));
-        }
+        } // end if
         if (val == "TRUE" || val == "t") {
             setCheckState(Qt::Checked);
         } else {

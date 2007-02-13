@@ -48,7 +48,7 @@ FORMS += aboutbase.ui \
          pedidoclientebase.ui \
          albaranclientebase.ui \
          facturabase.ui \
-         tiposarticulodlg.ui \
+         tiposarticulobase.ui \
          busquedaclientebase.ui \
          busquedaarticulobase.ui \
          busquedaproveedorbase.ui \
