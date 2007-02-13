@@ -87,8 +87,8 @@ public:
     };
     void setidpedidocliente(QString val) {
         setDBvalue("idpedidocliente", val);
-        m_listalineas->setColumnValue( "idpedidocliente", val);
-        m_listadescuentos->setColumnValue( "idpedidocliente", val);
+        m_listalineas->setColumnValue("idpedidocliente", val);
+        m_listadescuentos->setColumnValue("idpedidocliente", val);
     };
     void setnumpedidocliente(QString val) {
         setDBvalue("numpedidocliente", val);

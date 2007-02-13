@@ -57,6 +57,7 @@ public slots:
     }
 };
 
+
 #include "ui_albaranclientelistbase.h"
 
 
@@ -129,10 +130,11 @@ public:
     }
     QString generarFiltro();
     void editar(int);
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >=3) {
+        if (text.size() >= 3) {
             on_mui_actualizar_clicked();
         } // end if
     }
@@ -142,7 +144,6 @@ public slots:
     virtual void on_mui_crear_clicked() {
         m_companyact->s_newAlbaranClienteView();
     }
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();

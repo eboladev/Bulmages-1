@@ -37,7 +37,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_list->setAlternatingRowColors(TRUE);
-    mui_list->setSortingEnabled(FALSE); /// Hay un Bug que impide ordenar bien los elementos.
+    mui_list->setSortingEnabled(FALSE); /// TODO:Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
 
     /// Capturamos la secuencia de teclas para hacer aparecer o desaparecer

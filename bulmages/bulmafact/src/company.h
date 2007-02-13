@@ -122,6 +122,7 @@ public:
     void createMainWindows();
     void refreshArticles();
     void refreshPresupuestos();
+    void refreshCobrosCliente();
     void refreshPedidosCliente();
     void refreshPedidosProveedor();
     void refreshClientDelivNotes();

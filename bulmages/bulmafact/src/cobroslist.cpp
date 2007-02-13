@@ -32,7 +32,6 @@
 #include "funcaux.h"
 
 
-
 /** Inicializa todos los componentes.
     Mete la ventana en el workSpace.
     Este constructor no es complete, debe inicializarse con setcompany para que la clase pueda operar.    
@@ -62,7 +61,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
     m_companyact = comp;
     m_cliente->setcompany(comp);
     mui_list->setcompany(comp);
-    presentar();
+    presenta();
     m_modo = 0;
     mdb_idcobro = "";
     meteWindow(windowTitle(), this);
@@ -83,24 +82,23 @@ CobrosList::~CobrosList() {
     PAra ello genera los SELECTS con ayuda de generaFiltro y los pasa al SubFormulario para que los presente.
     Tambien hace un select de calculo de totales y lo presenta en el textEdit correspondiente.
 */
-void CobrosList::presentar() {
-    _depura("CobrosList::presentar()\n", 0);
+void CobrosList::presenta() {
+    _depura("CobrosList::presentar", 0);
     if (m_companyact != NULL) {
-        mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1=1 " + generaFiltro());
-
+        mui_list->cargar("SELECT * FROM cobro NATURAL LEFT JOIN cliente NATURAL LEFT JOIN trabajador WHERE 1 = 1 " + generaFiltro());
         /// Hacemos el calculo del total.
-        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1=1 " + generaFiltro());
+        cursor2 *cur = m_companyact->cargacursor("SELECT SUM(cantcobro) AS total FROM cobro WHERE 1 = 1 " + generaFiltro());
         m_total->setText(cur->valor("total"));
         delete cur;
     } // end if
-    _depura("END CobrosList::presentar()\n", 0);
+    _depura("END CobrosList::presentar", 0);
 }
 
 
 /** Metodo auxiliar que genera la clausula WHERE del listado con las opciones de filtrado especificadas.
 */
 QString CobrosList::generaFiltro() {
-    _depura("CobrosList::generaFiltro\n", 0);
+    _depura("CobrosList::generaFiltro", 0);
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( desccobro LIKE '%" + m_filtro->text() + "%' ";
@@ -108,16 +106,16 @@ QString CobrosList::generaFiltro() {
         filtro = "";
     } // end if
     if (m_cliente->idcliente() != "") {
-        filtro += " AND cobro.idcliente=" + m_cliente->idcliente();
+        filtro += " AND cobro.idcliente = " + m_cliente->idcliente();
     } // end if
 
     QString subfiltro = " AND ";
-    if (mui_efectivos->isChecked() ) {
+    if (mui_efectivos->isChecked()) {
         filtro += " AND NOT previsioncobro";
         subfiltro = " OR ";
     } // end if
 
-    if (mui_previsiones->isChecked() ) {
+    if (mui_previsiones->isChecked()) {
         filtro += subfiltro + " previsioncobro";
     } // end if
 
@@ -127,7 +125,7 @@ QString CobrosList::generaFiltro() {
     if (m_fechafin->text() != "")
         filtro += " AND fechacobro <= '" + m_fechafin->text() + "' ";
 
-    _depura("END CobrosList::generaFiltro\n", 0);
+    _depura("END CobrosList::generaFiltro", 0);
     return (filtro);
 }
 
@@ -139,10 +137,11 @@ QString CobrosList::generaFiltro() {
 void CobrosList::on_mui_editar_clicked() {
     _depura("CobrosList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a >= 0) {
         on_mui_list_cellDoubleClicked(a, 0);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } else {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+    } // end if
     _depura("END CobrosList::on_mui_editar_clicked", 0);
 }
 
@@ -165,7 +164,7 @@ void CobrosList::on_mui_crear_clicked() {
 */
 void CobrosList::imprimir() {
     _depura("CobrosList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Listado de Cobros"));
+    mui_list->imprimirPDF(tr("Cobros a clientes"));
     _depura("END CobrosList::imprimir", 0);
 }
 
@@ -178,17 +177,23 @@ void CobrosList::imprimir() {
 */
 void CobrosList::on_mui_borrar_clicked() {
     _depura("CobrosList::on_mui_borrar_clicked",0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
         if (m_modo == 0) {
-            CobroView *bud = m_companyact->newCobroView();
-            bud->cargar(mdb_idcobro);
-            bud->borrar();
-            delete bud;
+            CobroView *cv = m_companyact->newCobroView();
+            if (cv->cargar(mdb_idcobro))
+                throw -1;
+            cv->on_mui_borrar_clicked();
+            cv->close();
         } // end if
-        presentar();
-    } catch(...) {
-        mensajeInfo(tr("Error al borrar el cobro"));
+        presenta();
+    } catch (...) {
+        mensajeInfo(tr("Error al borrar el cobro a cliente"));
     } // end try
     _depura("END:CobrosList::on_mui_borrar_clicked",0);
 }
@@ -226,7 +231,7 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
 void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
     int a = mui_list->currentRow();
-    if ( a < 0)
+    if (a < 0)
         return;
     QMenu *popup = new QMenu(this);
     QAction *edit = popup->addAction(tr("Editar cobro"));
@@ -260,7 +265,7 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("fechacobro", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha de cobro"));
     addSHeader("cantcobro", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Cantidad"));
     addSHeader("refcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia del cobro"));
-    addSHeader("previsioncobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Prevision de cobro"));
+    addSHeader("previsioncobro", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Prevision de cobro"));
     addSHeader("comentcobro", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
     addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID trabajador"));
     addSHeader("nomtrabajador", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre del trabajador"));

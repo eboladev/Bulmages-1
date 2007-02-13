@@ -42,7 +42,7 @@ public slots:
     virtual void cargar() {
         _depura("FacturasListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM factura";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 *cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -118,10 +118,11 @@ public:
 
     void presenta();
     void editar(int);
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-	if(text.size() >=3) 
+    if (text.size() >= 3) 
 		on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
@@ -135,12 +136,12 @@ public slots:
     };
     virtual void on_mui_editar_clicked();
     virtual void on_mui_imprimir_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
+        } // end if
     };
 
 signals:

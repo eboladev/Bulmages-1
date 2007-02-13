@@ -55,10 +55,8 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
         m_almacen->setcompany(comp);
         m_trabajador->setcompany(comp);
         m_refpedidocliente->setcompany(comp);
-
-	setListaLineas(subform3);
-	setListaDescuentos(m_descuentos);
-
+        setListaLineas(subform3);
+        setListaDescuentos(m_descuentos);
         comp->meteWindow(windowTitle(), this, FALSE);
     } catch (...) {
         mensajeInfo(tr("Error al crear el pedido cliente"));
@@ -96,7 +94,7 @@ void PedidoClienteView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed d
 
 void PedidoClienteView::on_mui_verpresupuesto_clicked() {
     _depura("PedidoClienteView::on_mui_verpresupuesto_clicked", 0);
-    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "' AND idcliente=" + DBvalue("idcliente");
+    QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + DBvalue("refpedidocliente") + "' AND idcliente = " + DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
@@ -125,22 +123,20 @@ void PedidoClienteView::generarAlbaran() {
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
     QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='" + DBvalue("refpedidocliente") + "' AND idcliente = "+DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
-    if(!cur->eof()) {
-    
-
-	/// Informamos que ya hay un albaran y que la abriremos.
-	/// Si no salimos de la funci&oacute;n.
-	if (QMessageBox::question(this,
-				tr("Albaran ya existe"),
-				tr("Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?"),
-				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
-		return;
-	}
-        AlbaranClienteView *bud = new AlbaranClienteView(m_companyact, NULL);
-        m_companyact->m_pWorkspace->addWindow(bud);
-        bud->cargar(cur->valor("idalbaran"));
-        bud->show();
-        return;
+    if (!cur->eof()) {
+	   /// Informamos que ya hay un albaran y que la abriremos.
+	   /// Si no salimos de la funci&oacute;n.
+	   if (QMessageBox::question(this,
+				    tr("Albaran ya existe"),
+				    tr("Existe un albaran a este cliente con la misma referencia que este pedido. Desea abrirlo para verificar?"),
+				    tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+		  return;
+	   }
+       AlbaranClienteView *bud = new AlbaranClienteView(m_companyact, NULL);
+       m_companyact->m_pWorkspace->addWindow(bud);
+       bud->cargar(cur->valor("idalbaran"));
+       bud->show();
+       return;
     } // end if
     delete cur;
 

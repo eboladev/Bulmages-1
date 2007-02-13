@@ -46,10 +46,10 @@ protected:
 
 public:
     bool cambiado() {
-	return m_valorcampo != m_valorcampoorig;
+        return m_valorcampo != m_valorcampoorig;
     };
     void resetCambio() {
-	m_valorcampoorig = m_valorcampo;
+        m_valorcampoorig = m_valorcampo;
     };
     DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
     virtual ~DBCampo() {

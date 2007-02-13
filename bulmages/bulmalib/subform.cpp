@@ -27,8 +27,8 @@
 
 SDBRecord::SDBRecord(postgresiface2 *con) : DBRecord(con) {
     static int creaciones = 0;
-    creaciones ++;
-    _depura("SDBrecord creados:" + QString::number(creaciones), 0);
+    creaciones++;
+    _depura("SDBrecord creados: " + QString::number(creaciones), 0);
 }
 
 
@@ -36,7 +36,7 @@ SDBRecord::~SDBRecord() {
     static int destrucciones = 0;
     _depura("SDBRecord::~SDBRecord", 0);
     destrucciones++;
-    _depura("SDBrecord destruidos:" + QString::number(destrucciones), 0);
+    _depura("SDBrecord destruidos: " + QString::number(destrucciones), 0);
 }
 
 
@@ -99,12 +99,16 @@ void SDBCampo::refresh() {
 
 
 int SDBCampo::set(QString val) {
-    _depura("SDBCampo::set", 0, m_nomcampo +" = "+ val);
+    _depura("SDBCampo::set", 0, m_nomcampo + " = " + val);
     if (tipo() == DBCampo::DBboolean) {
-        if (val == "TRUE" || val == "t")
+        if (restrictcampo() == SHeader::DBNoWrite) {
+            setFlags(this->flags() & (~Qt::ItemIsUserCheckable));
+        }
+        if (val == "TRUE" || val == "t") {
             setCheckState(Qt::Checked);
-        else
+        } else {
             setCheckState(Qt::Unchecked);
+        } // end if
     } else {
         setText(val);
     } // end if
@@ -121,7 +125,6 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) const {
 	if (tip == m_tipo) {
 		QString val = ot->valorcampo();
 
-
 		if (m_tipo == DBCampo::DBnumeric || m_tipo == DBCampo::DBint) {
 		_depura("SDBCampo::operator< es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
 			double db1 = m_valorcampo.toDouble();
@@ -135,11 +138,11 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) const {
                     QString db1 = fech.toString(Qt::ISODate);
 		    QDate fech1 = normalizafecha(val);
 		    QString db2 = fech1.toString(Qt::ISODate);
-		    return( db1 < db2);
+		    return (db1 < db2);
 		} // end if
 
 		if (m_tipo == DBCampo::DBvarchar) {
-			return ( m_valorcampo < val);
+			return (m_valorcampo < val);
 		}
 		_depura("tipo desconocido", 0);
 	}

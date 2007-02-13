@@ -104,7 +104,7 @@ QString FacturasList::generaFiltro() {
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descfactura LIKE '%" + m_filtro->text() + "%' ";
-        filtro +=" OR reffactura LIKE '"+m_filtro->text()+"%' ";
+        filtro +=" OR reffactura LIKE '" + m_filtro->text() + "%' ";
         filtro +=" OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
@@ -136,17 +136,17 @@ QString FacturasList::generaFiltro() {
 void FacturasList::editar(int row) {
     _depura("FacturasList::editar", 0);
     mdb_idfactura = mui_list->DBvalue(QString("idfactura"), row);
-    if (m_modo ==0 ) {
+    if (m_modo == 0) {
         FacturaView *prov = m_companyact->newFacturaView();
         if (prov->cargar(mdb_idfactura)) {
             delete prov;
             return;
-        }
+        } // end if
         m_companyact->m_pWorkspace->addWindow(prov);
         prov->show();
     } else {
         emit(selected(mdb_idfactura));
-    }// end if
+    } // end if
     _depura("END FacturasList::editar", 0);
 }
 
@@ -157,10 +157,11 @@ void FacturasList::editar(int row) {
 void FacturasList::on_mui_editar_clicked() {
     _depura("FacturasList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a >= 0) {
         editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } else {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+    } // end if
     _depura("END FacturasList::on_mui_editar_clicked", 0);
 }
 
@@ -170,7 +171,7 @@ void FacturasList::on_mui_editar_clicked() {
 */
 void FacturasList::on_mui_imprimir_clicked() {
     _depura("FacturasList::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Listado de Facturas"));
+    mui_list->imprimirPDF(tr("Facturas a clientes"));
     _depura("FacturasList::on_mui_imprimir_clicked", 0);
 }
 
@@ -182,17 +183,23 @@ void FacturasList::on_mui_imprimir_clicked() {
 */
 void FacturasList::on_mui_borrar_clicked() {
     _depura("FacturasList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
         mdb_idfactura = mui_list->DBvalue(QString("idfactura"));
         if (m_modo == 0) {
-            FacturaView *fac = m_companyact->newFacturaView();
-            if (fac->cargar(mdb_idfactura))
+            FacturaView *fv = m_companyact->newFacturaView();
+            if (fv->cargar(mdb_idfactura))
                 throw -1;
-            fac->borrar();
+            fv->on_mui_borrar_clicked();
+            fv->close();
         } // end if
         presenta();
-    } catch(...) {
-        mensajeInfo(tr("Error al borrar la factura cliente"));
+    } catch (...) {
+        mensajeInfo(tr("Error al borrar la factura a cliente"));
     } // end try
     _depura("END FacturasList::on_mui_borrar_clicked", 0);
 }

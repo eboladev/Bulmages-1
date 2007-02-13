@@ -40,9 +40,9 @@ public:
 
 public slots:
     virtual void cargar() {
-        _depura("PedidosClienteListSubform::cargar\n", 0);
+        _depura("PedidosClienteListSubform::cargar", 0);
         QString SQLQuery = "SELECT * FROM pedidocliente";
-        cursor2 * cur = companyact()->cargacursor(SQLQuery);
+        cursor2 *cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -63,7 +63,7 @@ class PedidosClienteList : public Ficha, public Ui_PedidosClienteListBase {
 private:
     company *companyact;
     /// m_modo == 0 es modo edicion.
-    /// m_modo ==  es modo selector.
+    /// m_modo == 1 es modo selector.
     int m_modo;
     QString m_idpedidocliente;
 
@@ -106,17 +106,19 @@ public:
     void meteWindow(QString nom, QObject *obj) {
         if (companyact != NULL) {
             companyact->meteWindow(nom, obj);
-        }
+        } // end if
     }
     void editar(int);
     QString generarFiltro();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-        if(text.size() >= 3)
+        if (text.size() >= 3) {
             on_mui_actualizar_clicked();
+        } // end if
     }
-    void on_mui_list_itemDoubleClicked( QTableWidgetItem *) {
+    void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
         on_mui_editar_clicked();
     }
     virtual void on_mui_imprimir_clicked() {
@@ -128,13 +130,13 @@ public slots:
     virtual void on_mui_actualizar_clicked() {
         presenta();
     }
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
+        } // end if
     }
 
 signals:

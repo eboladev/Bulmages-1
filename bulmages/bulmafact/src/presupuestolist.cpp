@@ -152,7 +152,7 @@ void PresupuestoList::on_mui_editar_clicked() {
 
 void PresupuestoList::imprimir() {
     _depura("PresupuestoList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Listado de presupuestos"));
+    mui_list->imprimirPDF(tr("Presupuestos a clientes"));
     _depura("END PresupuestoList::imprimir", 0);
 }
 
@@ -167,11 +167,11 @@ void PresupuestoList::on_mui_borrar_clicked() {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
         if (m_modo == 0) {
-            PresupuestoView *prov = m_companyact->nuevoPresupuesto();
-            if (prov->cargar(m_idpresupuesto))
-                return;
-            prov->on_mui_borrar_clicked();
-            prov->close();
+            PresupuestoView *pv = m_companyact->nuevoPresupuesto();
+            if (pv->cargar(m_idpresupuesto))
+                throw -1;
+            pv->on_mui_borrar_clicked();
+            pv->close();
         } // end if
         presenta();
     } catch (...) {

@@ -73,8 +73,7 @@ void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& i
     _depura("END QTableItemTextDelegate::setEditorData", 0);
 }
 
-// ======================================================================
-// ======================================================================
+/// ======================================================================
 
 /** Constructor de QTableWidget2 clase derivada de QTableWidget con
 un eventHandler especifico
@@ -86,7 +85,7 @@ QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
     _depura("END QTableWidget2::QTableWidget2", 0);
 }
 
-/** Este metodo no hace nada
+/** Este m&eacute;todo no hace nada.
 */
 void QTableWidget2::editItem(QTableWidgetItem *it) {
     _depura("QTableWidget2::editItem", 0);
@@ -98,7 +97,7 @@ void QTableWidget2::sitemChanged(QTableWidgetItem *it) {
     _depura("END QTableWidget2::sitemChanged", 0);
 }
 
-/// Esta funcion ya es obsoleta y no se utiliza.
+/// Esta funci&oacute;n ya es obsoleta y no se utiliza.
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
     _depura("QTableWidgetItem2::operator<", 0);
     bool oknumero;
@@ -107,7 +106,7 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
     QString cad1 = other.text();
 
     if (cad != "") {
-        /// Comprobamos si es un número.
+        /// Comprobamos si es un n&uacute;mero.
         double ncad = cad.toDouble(&oknumero);
         double ncad1 = cad1.toDouble(&oknumero1);
         if (oknumero && oknumero1) {
@@ -147,13 +146,12 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
-
         case Qt::Key_Return:
         case Qt::Key_Enter:
             emit editFinished(row, col, key);
             return TRUE;
             break;
-	} // end switch
+        } // end switch
     } // end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
@@ -171,7 +169,6 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
         Qt::KeyboardModifiers mod = keyEvent->modifiers();
         /// ------------------ EL CAMBIO ------------------------------
         switch (key) {
-
         case Qt::Key_Return:
         case Qt::Key_Enter:
             emit editFinished(row, col, key);

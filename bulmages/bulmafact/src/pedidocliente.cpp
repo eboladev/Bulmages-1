@@ -60,7 +60,7 @@ int PedidoCliente::borrar() {
         m_companyact->begin();
         m_listalineas->borrar();
         m_listadescuentos->borrar();
-        int error = m_companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente=" + DBvalue("idpedidocliente"));
+        int error = m_companyact->ejecuta("DELETE FROM pedidocliente WHERE idpedidocliente = " + DBvalue("idpedidocliente"));
         if (error) {
             m_companyact->rollback();
             return -1;
@@ -102,8 +102,8 @@ void PedidoCliente::pintar() {
 /// Esta funcion carga un PedidoCliente.
 int PedidoCliente::cargar(QString idbudget) {
     _depura("PedidoCliente::cargar", 0);
-    QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente=" + idbudget;
-    cursor2 * cur= m_companyact->cargacursor(query);
+    QString query = "SELECT * FROM pedidocliente WHERE idpedidocliente = " + idbudget;
+    cursor2 *cur = m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -126,15 +126,14 @@ int PedidoCliente::guardar() {
         m_listalineas->guardar();
         m_listadescuentos->guardar();
         m_companyact->commit();
-
-	/// Hacemos una carga para recuperar los campos Referencia y num
-	cargar(id);
+        /// Hacemos una carga para recuperar los campos Referencia y num.
+        cargar(id);
         _depura("END PedidoCliente::guardar", 0);
         return 0;
-    } catch(...) {
+    } catch (...) {
         _depura("PedidoCliente::guardar se produjo un error al guardar, cancelamos la operacion", 0);
         m_companyact->rollback();
         throw -1;
-    } // end catch
+    } // end try
 }
 

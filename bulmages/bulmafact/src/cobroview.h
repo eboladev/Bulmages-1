@@ -69,7 +69,7 @@ public:
             mui_previsioncobro->setChecked(TRUE);
         } else {
             mui_previsioncobro->setChecked(FALSE);
-        }
+        } // end if
     };
     virtual int guardar() {
         return Cobro::guardar();
@@ -96,7 +96,7 @@ public slots:
             setprevisioncobro("TRUE");
         } else {
             setprevisioncobro("FALSE");
-        }
+        } // end if
     }
     virtual void on_mui_cliente_valueChanged(QString id) {
         setidcliente(id);

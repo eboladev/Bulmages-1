@@ -66,14 +66,14 @@ public:
     CobrosList(QWidget *parent = 0, Qt::WFlags flag = 0);
     CobrosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~CobrosList();
-    void presentar();
+    void presenta();
     void modoseleccion() {
         m_modo = 1;
     };
     void modoedicion() {
         m_modo = 0;
     };
-    void setcompany (company *comp) {
+    void setcompany(company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
@@ -107,24 +107,25 @@ public:
     /// Funciones que se encarga en guardar y cargar la configuracion del listado.
     void guardaconfig();
     void cargaconfig();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_mui_list_cellDoubleClicked(int, int);
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();
     };
     virtual void on_mui_actualizar_clicked() {
-        presentar();
+        presenta();
     };
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
+        } // end if
     };
 };
 

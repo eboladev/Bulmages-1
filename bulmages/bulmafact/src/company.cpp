@@ -686,25 +686,37 @@ void company::newPedidoCliente() {
 }
 
 
-/** Metodo para refrescar la lista de Pedidos a Cliente.
-    Mediante este metodo es sencill actualizar el listado de albaranes de proveedor sin disponer
+/** Metodo para refrescar la lista de Cobros a Cliente.
+    Mediante este metodo es sencillo actualizar el listado de cobros a cliente sin disponer
+    de un puntero a dicha ventana.
+*/
+void company::refreshCobrosCliente() {
+    _depura("company::refreshCobrosCliente", 0);
+    if (m_cobrosList != NULL)
+        m_cobrosList->presenta();
+    _depura("END company::refreshCobrosCliente", 0);
+}
+
+
+/** Metodo para refrescar la lista de Pedidos de Clientes.
+    Mediante este metodo es sencillo actualizar el listado de pedidos de clientes sin disponer
     de un puntero a dicha ventana.
 */
 void company::refreshPedidosCliente() {
     _depura("company::refreshPedidosCliente", 0);
-    if(m_pedidosclienteList != NULL)
+    if (m_pedidosclienteList != NULL)
         m_pedidosclienteList->presenta();
     _depura("END company::refreshPedidosCliente", 0);
 }
 
 
 /** Metodo para refrescar la lista de Pedidos a Proveedor
-    Mediante este metodo es sencill actualizar el listado de albaranes de proveedor sin disponer
+    Mediante este metodo es sencillo actualizar el listado de pedidos a proveedor sin disponer
     de un puntero a dicha ventana.
 */
 void company::refreshPedidosProveedor() {
     _depura("company::refreshPedidosProveedor", 0);
-    if(m_pedidosproveedorList != NULL)
+    if (m_pedidosproveedorList != NULL)
         m_pedidosproveedorList->presenta();
     _depura("END company::refreshPedidosProveedor", 0);
 }

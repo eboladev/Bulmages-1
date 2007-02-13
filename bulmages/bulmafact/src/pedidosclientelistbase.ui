@@ -91,6 +91,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -112,6 +115,9 @@
             <width>22</width>
             <height>22</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+E</string>
           </property>
          </widget>
         </item>
@@ -135,6 +141,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -157,6 +166,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -178,6 +190,9 @@
             <width>22</width>
             <height>22</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+F</string>
           </property>
           <property name="checkable" >
            <bool>true</bool>
@@ -204,6 +219,9 @@
             <height>22</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+B</string>
+          </property>
           <property name="checkable" >
            <bool>true</bool>
           </property>
@@ -228,6 +246,9 @@
             <width>22</width>
             <height>22</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>F5</string>
           </property>
          </widget>
         </item>
@@ -432,6 +453,20 @@
        <property name="enabled" >
         <bool>true</bool>
        </property>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>5</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="palette" >
         <palette>
          <active>
@@ -495,16 +530,6 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -513,6 +538,16 @@
    <class>PedidosClienteListSubform</class>
    <extends>QTableWidget</extends>
    <header>pedidosclientelist.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends>QWidget</extends>
+   <header>busquedaarticulo.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
   </customwidget>
  </customwidgets>
  <resources>

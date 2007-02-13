@@ -58,6 +58,7 @@ CobroView::CobroView(company *comp, QWidget *parent)
 */
 CobroView::~CobroView() {
     _depura("CobroView::~CobroView", 0);
+    companyact->refreshCobrosCliente();
     _depura("END CobroView::~CobroView", 0);
 }
 

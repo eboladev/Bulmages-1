@@ -84,10 +84,9 @@ AlbaranClienteList::~AlbaranClienteList() {
 void AlbaranClienteList::presenta() {
     _depura("AlbaranClienteList::presenta\n");
 
-    mui_list->cargar("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen=almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1=1  "+generarFiltro());
-
+    mui_list->cargar("SELECT *, totalalbaran AS total, bimpalbaran AS base, impalbaran AS impuestos FROM albaran LEFT JOIN  cliente ON albaran.idcliente = cliente.idcliente LEFT JOIN almacen ON albaran.idalmacen = almacen.idalmacen LEFT JOIN forma_pago ON albaran.idforma_pago = forma_pago.idforma_pago WHERE 1 = 1 " + generarFiltro());
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen=albaran.idalmacen where 1=1 "+generarFiltro());
+    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalalbaran) AS total FROM albaran LEFT JOIN cliente ON albaran.idcliente=cliente.idcliente LEFT JOIN almacen ON almacen.idalmacen = albaran.idalmacen where 1 = 1 " + generarFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 
@@ -130,10 +129,11 @@ void AlbaranClienteList::editar(int row) {
 void AlbaranClienteList::on_mui_editar_clicked() {
     _depura("AlbaranClienteList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a >= 0) {
         editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } else {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+    } // end if
     _depura("END AlbaranClienteList::on_mui_editar_clicked", 0);
 
 }
@@ -146,16 +146,22 @@ void AlbaranClienteList::on_mui_editar_clicked() {
 /// \todo: Intentar que no se tenga que recargar todo el listado y que simplemente se borre la fila seleccionada.
 void AlbaranClienteList::on_mui_borrar_clicked() {
     _depura("AlbaranClienteList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
         mdb_idalbaran = mui_list->DBvalue(QString("idalbaran"));
         if (m_modo == 0) {
-            AlbaranClienteView *prov = m_companyact->newAlbaranClienteView();
-            if (prov->cargar(mdb_idalbaran))
+            AlbaranClienteView *acv = m_companyact->newAlbaranClienteView();
+            if (acv->cargar(mdb_idalbaran))
                 throw -1;
-            prov->borrar();
+            acv->on_mui_borrar_clicked();
+            acv->close();
         } // end if
         presenta();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al borrar el albaran a cliente"));
     } // end try
     _depura("END AlbaranClienteList::on_mui_borrar_clicked", 0);
@@ -167,7 +173,7 @@ void AlbaranClienteList::on_mui_borrar_clicked() {
 /// \TODO: Se podria hacer una clase derivada de Ficha que fuese Listado y que directamente implementase el metodo on_mui_imprimir.
 void AlbaranClienteList::imprimir() {
     _depura("AlbaranClienteList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Albaranes a cliente"));
+    mui_list->imprimirPDF(tr("Albaranes a clientes"));
     _depura("END AlbaranClienteList::imprimir", 0);
 }
 

@@ -122,7 +122,7 @@ int ClienteView::cargar(QString idcliente) {
         m_listfacturas->setidcliente(idcliente);
         m_listfacturas->presenta();
         m_listcobros->setidcliente(idcliente);
-        m_listcobros->presentar();
+        m_listcobros->presenta();
 	/// Pintamos
         pintaCliente();
 	

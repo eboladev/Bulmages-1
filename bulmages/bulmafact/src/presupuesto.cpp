@@ -146,8 +146,8 @@ int Presupuesto::guardar() {
         m_listalineas->guardar();
         m_listadescuentos->guardar();
         m_companyact->commit();
-	/// Hacemos una carga para recuperar el numero y la referencia.
-	cargar(id);
+        /// Hacemos una carga para recuperar el numero y la referencia.
+        cargar(id);
         _depura("END Presupuesto::guardar", 0);
         return 0;
     } catch (...) {
@@ -161,9 +161,9 @@ int Presupuesto::guardar() {
 QString Presupuesto::detalleArticulos() {
     _depura("Presupuesto::detalleArticulos", 0);
     QString texto = "";
-    cursor2 *cur=m_companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
+    cursor2 *cur = m_companyact->cargacursor("SELECT * FROM lpresupuesto LEFT JOIN articulo ON lpresupuesto.idarticulo = articulo.idarticulo WHERE presentablearticulo AND idpresupuesto=" + DBvalue("idpresupuesto"));
     int i = 0;
-    while(!cur->eof()) {
+    while (!cur->eof()) {
         i = !i;
         if (i) {
             texto += "<blockTable style=\"tabladetalle1\" colWidths=\"5cm, 8cm\" rowHeights=\"5.5cm\">\n";
