@@ -122,9 +122,6 @@ if [ "$3" = "1" -o "$3" = "2" -o "$3" = "0" ]; then
 	psql $2 < crear/bulmacont/bulmacont_schema.sql 2>> /tmp/errores.txt > /dev/null
 fi
 
-
-
-
 # En caso de querer un conjunto minimo de datos se meten los datos minimos.
 if [ "$3" = "1" -o "$3" = "2" ]; then
    # Cargamos lo minimo, para dejar la empresa con un plan contable vacio.
@@ -135,8 +132,6 @@ if [ "$3" = "1" -o "$3" = "2" ]; then
    psql $2 < crear/bulmacont/t_fpago_data.sql 2>> /tmp/errores.txt > /dev/null
    tiempo
 fi
-
-
 
 # Si se esta pidiendo un ejemplo entonces se carga el resto de datos.
 if [ "$3" = "2" ]; then
@@ -162,12 +157,10 @@ if [ "$3" = "2" ]; then
    tiempo
 fi
 
-
 #Ponemos el nombre que corresponde
 info "Realizando configuraciones adicionales. \n"
-echo "UPDATE configuracion SET valor='$4' WHERE nombre='NombreEmpresa';" | psql $2 >/dev/null
+echo "UPDATE configuracion SET valor='$4' WHERE nombre='NombreEmpresa';" | psql $2 > /dev/null
 tiempo
-
 
 # Si hay errores se borra la base de datos y se sale.
 DBS=`cat /tmp/errores.txt | grep ERROR`

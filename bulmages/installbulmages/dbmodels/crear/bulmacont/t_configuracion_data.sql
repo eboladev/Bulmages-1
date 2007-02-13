@@ -22,7 +22,6 @@ INSERT INTO configuracion (nombre, valor) VALUES ('Ejercicio', '2004');
 INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('RegistroEmitida', '472');
 INSERT INTO configuracion (nombre, valor) VALUES ('RegistroSoportada', '477');
-INSERT INTO configuracion (nombre, valor) VALUES ('DatabaseRevision', '0.5.1');
 INSERT INTO configuracion (nombre, valor) VALUES ('CuentaRegularizacion', '129');
 INSERT INTO configuracion (nombre, valor) VALUES ('CuentasIngresos', '60;62');
 INSERT INTO configuracion (nombre, valor) VALUES ('CuentasGastos', '70');
