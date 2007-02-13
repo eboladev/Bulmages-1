@@ -114,7 +114,8 @@ else
 
    # Tratamos el archivo de configuracion.
    info "Instalando la nueva version del archivo de configuracion. \n"
-   cp bulmages.conf /etc/bulmages
+   mkdir /etc/bulmages
+   cp bulmages.conf /etc/bulmages/bulmages.conf
 
    # Presentamos los errores acaecidos.
    if [ -e /tmp/bulmages/errores.txt ]; then

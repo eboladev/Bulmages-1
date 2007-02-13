@@ -112,7 +112,7 @@ fi;
 # La creacion de las bases de datos como UNICODE da muchos problemas con los caracteres especiales
 # Por ese motivo de momento crearemos las bases de datos como SQL_ASCII
 #createdb -E UNICODE $2 2>> /tmp/errores.txt > /dev/null
-createdb -E SQL_ASCII $2 2>> /tmp/errores.txt > /dev/null
+createdb -E UNICODE  $2 2>> /tmp/errores.txt > /dev/null
 
 
 # Creamos la empresa y  metemos los datos de esquema que deben hacerse en cualquier caso.
