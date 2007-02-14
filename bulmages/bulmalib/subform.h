@@ -31,7 +31,7 @@
 
 class SHeader {
 public:
-    enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4};
+    enum dboptions {DBNone = 0, DBReadOnly = 1, DBNoView = 2, DBNoWrite = 4, DBBlockView = 8};
 
 protected:
     QString m_nomcampo;

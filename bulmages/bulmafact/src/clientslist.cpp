@@ -220,6 +220,7 @@ void ClientsList::on_mui_importar_clicked() {
     Establece que no se puedan insertar ni borrar lineas.
 */
 ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    _depura("ClienteListSubform::ClienteListSubform", 0);
     setDBTableName("cliente");
     setDBCampoId("idcliente");
     addSHeader("idcliente", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID cliente"));
@@ -242,5 +243,6 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);
+    _depura("END ClienteListSubform::ClienteListSubform", 0);
 }
 

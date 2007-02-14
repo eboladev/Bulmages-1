@@ -522,6 +522,10 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
        it->setCheckState(Qt::Checked);
     } // end if
 
+    if (opt & SHeader::DBBlockView) {
+        it->setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
+    } // end if
+
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
     it = new QTableWidgetItem2(nom);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 1, it);
@@ -834,6 +838,7 @@ void SubForm3::on_mui_list_pressedMinus(int, int) {
 
 
 QString SubForm3::imprimir() {
+    _depura("SubForm3::imprimir", 0);
     QString fitxersortidatxt = "<tr>\n";
     for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
         if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked) {
@@ -850,6 +855,7 @@ QString SubForm3::imprimir() {
         } // end for
         fitxersortidatxt += "</tr>\n";
     } // end for
+    _depura("END SubForm3::imprimir", 0);
     return fitxersortidatxt;
 }
 
@@ -896,9 +902,6 @@ void SubForm3::on_mui_list_ctrlSubir(int row, int col) {
 /// Hace el intercambio con la fila inmediatamente inferior.
 void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
     _depura("SubForm3::on_mui_list_ctrlBajar", 0);
-    _depura("SubForm3::on_mui_list_ctrlBajar", 0, " (Row, col)" + QString::number(row) + "--" + QString::number(col));
-    _depura("SubForm3::on_mui_list_ctrlBajar", 0, " rowCount" + QString::number(mui_list->rowCount()) );
-
     if (! m_orden)
         return;
     if (row >= mui_list->rowCount() -2)
@@ -924,19 +927,23 @@ void SubForm3::on_mui_list_ctrlBajar(int row, int col) {
 
 
 void SubForm3::on_mui_pagsiguiente_clicked() {
+    _depura("SubForm3::on_mui_pagsiguiente_clicked", 0);
     int pag = mui_paginaact->text().toInt();
     pag++;
     mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
+    _depura("END SubForm3::on_mui_pagsiguiente_clicked", 0);
 }
 
 
 void SubForm3::on_mui_paganterior_clicked() {
+    _depura("SubForm3::on_mui_paganterior_clicked", 0);
     int pag = mui_paginaact->text().toInt();
     if (pag > 1)
         pag--;
     mui_paginaact->setValue(pag);
     on_mui_appag_clicked();
+    _depura("END SubForm3::on_mui_paganterior_clicked", 0);
 }
 
 
@@ -1047,13 +1054,20 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
     procesaMenu(opcion);
 
     delete popup;
+    _depura("END SubForm3::contextMenuEvent", 0);
 }
 
 
-void SubForm3::on_mui_list_cellChanged(int, int) {}
+void SubForm3::on_mui_list_cellChanged(int, int) {
+    _depura("SubForm3::on_mui_list_cellChanged", 0);
+    _depura("END SubForm3::on_mui_list_cellChanged", 0);
+}
 
 
-void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {}
+void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
+	_depura("SubForm3::on_mui_list_itemChanged", 0);
+	_depura("END SubForm3::on_mui_list_itemChanged", 0);
+}
 
 
 void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
@@ -1066,5 +1080,7 @@ void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
 
 
 void SubForm3::setinsercion(bool b) {
+	_depura("SubForm3::setinsercion", 0);
         m_insercion = b;
+	_depura("END SubForm3::setinsercion", 0);
 }
