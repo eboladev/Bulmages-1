@@ -509,13 +509,19 @@ void SubForm3::on_mui_list_editFinished(int row, int col, int key) {
 int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
     _depura("SubForm3::addSHeader (" + nom + ")", 0);
     SHeader *camp = new SHeader(nom, typ, res, opt, nomp);
-    camp->set
-    ("");
+    camp->set("");
     m_lcabecera.append(camp);
     mui_listcolumnas->insertRow(mui_listcolumnas->rowCount());
     QTableWidgetItem *it = new QTableWidgetItem("");
     it->setFlags(Qt::ItemIsUserCheckable | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsEditable);
-    it->setCheckState(Qt::Checked);
+
+    if (opt & SHeader::DBNoView) {
+       mui_list->hideColumn(mui_listcolumnas->rowCount() -1);
+       it->setCheckState(Qt::Unchecked);
+    } else {
+       it->setCheckState(Qt::Checked);
+    } // end if
+
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
     it = new QTableWidgetItem2(nom);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 1, it);
@@ -523,6 +529,8 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 2, it);
     it = new QTableWidgetItem2("");
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 3, it);
+
+    _depura("END SubForm3::addSHeader (" + nom + ")", 0);
     return 0;
 }
 
@@ -741,46 +749,67 @@ void SubForm3::cargaconfig() {
     _depura("SubForm3::cargaconfig", 0);
     QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "tablecfn.cfn");
     QString line;
+    int error = 1;
     if (file.open(QIODevice::ReadOnly)) {
+	error = 0;
         QTextStream stream(&file);
+        
+	/// Establecemos la columna de ordenacion
         QString linea = stream.readLine();
         mui_list->setcolorden(linea.toInt());
+
+	/// Establecemos el tipo de ordenacion
         linea = stream.readLine();
         mui_list->settipoorden(linea.toInt());
+
+	/// Establecemos el numero de filas por pagina
         linea = stream.readLine();
-        //mui_filaspagina->setText(linea);
-        mui_filaspagina->setValue(linea.toInt());
+	if (linea.toInt() > 0)
+        	mui_filaspagina->setValue(linea.toInt());
+
+	/// Establecemos el ancho de las columnas.
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
             if (linea.toInt() > 0)
                 mui_list->setColumnWidth(i, linea.toInt());
-            else
-                mui_list->setColumnWidth(i, 3);
+            else {
+                mui_list->setColumnWidth(i, 30);
+		error = 1;
+	    } // end if
         } // end for
+
+	/// Leemos el status de las columnas.
         for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
             linea = stream.readLine();
             if (linea == "1")
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Checked);
-            else
+            else if (linea == "0") 
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Unchecked);
+	    else
+		error = 1;
         } // end for
-        on_mui_confcol_clicked();
         file.close();
-    } else {
-        mui_list->resizeColumnsToContents();
+        on_mui_confcol_clicked();
     } // end if
+
+    /// Si se ha producido algun error en la carga hacemos un maquetado automatico.
+    if (error) 
+	mui_list->resizeColumnsToContents();
+
     m_primero = FALSE;
     _depura("END SubForm3::cargaconfig", 0);
 }
 
 
 void SubForm3::on_mui_confcol_clicked() {
+    _depura("SubForm3::on_mui_confcol_clicked", 0);
     for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
         if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked)
             mui_list->showColumn(i);
         else
             mui_list->hideColumn(i);
     } // end for
+    _depura("END SubForm3::on_mui_confcol_clicked", 0);
 }
 
 
