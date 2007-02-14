@@ -55,4 +55,5 @@ public:
 
 public slots:
 	void elslot();
+	void elslot1();
 };

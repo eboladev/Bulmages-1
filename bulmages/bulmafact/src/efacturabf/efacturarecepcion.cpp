@@ -25,6 +25,9 @@
 #include <QFileDialog>
 #include <QLineEdit>
 
+#define EMAIL "efactura@conetxia.com"
+#define DIREMAIL "/home/arturo/efacturamail"
+
 EFacturaRecepcion::EFacturaRecepcion(company *emp, QWidget *parent) : QWidget(parent) {
 	QString query;
 	
@@ -34,3 +37,27 @@ EFacturaRecepcion::EFacturaRecepcion(company *emp, QWidget *parent) : QWidget(pa
 }
 
 EFacturaRecepcion::~EFacturaRecepcion() {}
+
+void EFacturaRecepcion::on_mui_recibir_clicked() {
+	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
+	
+	QString diremail = "/home/arturo/efacturamail";
+
+	_depura("recibiendo...", 2);
+	system("cd /home/arturo/efacturamail ; python /usr/lib/bulmages/recibemail.py mail.conetxia.com efactura@conetxia.com art5r4");
+	_depura("recepcion completada", 2);
+
+	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
+}
+
+void EFacturaRecepcion::on_mui_abrir_clicked() {
+	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
+
+	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
+}
+
+void EFacturaRecepcion::on_mui_salir_clicked() {
+	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
+	close();
+	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
+}

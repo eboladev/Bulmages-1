@@ -29,7 +29,7 @@
 #include "efacturabf.h"
 #include "efactura.h"
 // #include "efacturaenvio.h"
-// #include "efacturarecepcion.h"
+#include "efacturarecepcion.h"
 #include "company.h"
 #include "funcaux.h"
 // Exportacion
@@ -62,6 +62,10 @@ void efacturabf::elslot() {
 //                          QMessageBox::Cancel);
 }
 
+void efacturabf::elslot1() {
+	EFacturaRecepcion *efr = new EFacturaRecepcion(m_companyact);
+	efr->show();
+}
 
 void efacturabf::inicializa(bulmafact *bges) {
 	/// Creamos la conexion de la base de datos
@@ -69,13 +73,22 @@ void efacturabf::inicializa(bulmafact *bges) {
 	
 	/// Creamos el menu.
 	QMenu *pPluginMenu = new QMenu("&Factura Electronica");
-	QAction *accion = new QAction("&Prueba de e-factura", 0);
+	
+	QAction *accion = new QAction("&Configuracion de e-factura", 0);
 	accion->setStatusTip("Muestra statustip");
 	accion->setWhatsThis("Muestra que es esto");
 	
+	QAction *accion1 = new QAction("&Recepcion de e-facturas", 0);
+	accion1->setStatusTip("Muestra statustip");
+	accion1->setWhatsThis("Muestra que es esto");
+
 	connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+	connect(accion1, SIGNAL(activated()), this, SLOT(elslot1()));
 	
+	/// Anyadimos los submenus al menu de efactura
 	pPluginMenu->addAction(accion);
+	pPluginMenu->addAction(accion1);
+
 	/// Anyadimos la nueva opcion al menu principal del programa.
 	bges->menuBar()->addMenu(pPluginMenu);
 }

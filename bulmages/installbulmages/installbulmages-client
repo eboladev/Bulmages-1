@@ -169,7 +169,25 @@ cp -r ainteligentes /usr/share/bulmages
 cp -r balances /usr/share/bulmages
 #cp -r kugar /usr/share/bulmages
 cp -r openreports /usr/share/bulmages
+
+
+############################################
+############ Inicio efactura ###############
+############################################
+
+info "Instalando archivos necesarios para exportacion a factura electronica en formato UBL 1.0. \n";
+
+# Por ahora aqui dentro solo esta la plantilla para generar efacturas
+# y los dos scripts en python para enviarlas y recibirlas por e-mail
 cp -r efactura /usr/share/bulmages
+
+# Copiamos los scripts a /usr/lib/bulmages
+cp enviamail.py /usr/lib/bulmages
+cp recibemail.py /usr/lib/bulmages
+
+############################################
+############## Fin efactura# ###############
+############################################
 
 info "Instalando plugins iniciales. \n"
 if [ ! -e /usr/lib/bulmages ]; then
