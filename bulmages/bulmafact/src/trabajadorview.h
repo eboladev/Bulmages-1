@@ -23,45 +23,36 @@
 
 #include <ui_trabajadorbase.h>
 
-#include "ficha.h"
+#include "fichabf.h"
 #include "postgresiface2.h"
 
 
-class company;
 
 
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
-class TrabajadorView : public Ficha, private Ui_TrabajadorBase {
+class TrabajadorView : public FichaBf, private Ui_TrabajadorBase {
     Q_OBJECT
 
 private:
-    company *m_companyact;
     cursor2 *m_cursortrabajadores;
     /// Indica cual es el objeto que se esta mostrando.
     QString mdb_idtrabajador;
-    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
-    /// doble click sobre la lista)
-    bool m_modoConsulta;
+    /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen tambien lo indica.
     QString m_archivoimagen;
+    /// Indica en la lista de trabajadores cual es el item seleccionado.
     QListWidgetItem *m_item;
 
 private:
     /// Se encarga de hacer la carga del query inicial y de mostrar la lista bien
     /// y presentar el elemento que se especifique.
     void pintar();
+    virtual void imprimir() {_depura("TrabajadorView::imprimir",0);};
 
 public:
     TrabajadorView(company * emp, QWidget *parent = 0);
     ~TrabajadorView();
-    void setModoConsulta() {
-        m_modoConsulta = TRUE;
-    };
-    void setModoEdicion() {
-        m_modoConsulta = FALSE;
-    };
     bool trataModificado();
-    virtual int sacaWindow();
 
 private slots:
     virtual void on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *prev);

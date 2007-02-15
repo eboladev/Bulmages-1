@@ -35,9 +35,9 @@ ListControlStockView::ListControlStockView(QWidget *parent, const char *)
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, tr("Id articulo"));
     addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "Id almacen");
     addSHeader("idinventario", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "Id inventario");
-    addSHeader("idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idarticulo");
-    addSHeader("idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idalmacen");
-    addSHeader("idinventariopk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView, "idinventario");
+    addSHeader("idarticulopk", DBCampo::DBint, DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idarticulo");
+    addSHeader("idalmacenpk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idalmacen");
+    addSHeader("idinventariopk", DBCampo::DBint,  DBCampo::DBNoSave | DBCampo::DBDupPrimaryKey, SHeader::DBNone | SHeader::DBNoView | SHeader::DBBlockView, "idinventario");
     setinsercion(FALSE);
 }
 

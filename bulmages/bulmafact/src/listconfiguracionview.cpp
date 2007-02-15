@@ -38,12 +38,12 @@
 
 #include "funcaux.h"
 
-
-ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : Ficha(parent) {
+/** La ventana se construye como derivada de Ficha, inicializa el subformulario  y mete la ventana en el visor de ventanas
+*/
+ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : FichaBf(comp, parent) {
     _depura("ListConfiguracionView::ListConfiguracionView", 1);
     setupUi(this);
     this->setAttribute(Qt::WA_DeleteOnClose);
-    m_companyact = comp;
     mui_listado->setcompany(m_companyact);
     mui_listado->cargar();
 
@@ -52,20 +52,20 @@ ListConfiguracionView::ListConfiguracionView(company *comp, QWidget *parent) : F
 }
 
 
+/** La destruccion de la clase no requiere de acciones especificas
+*/
 ListConfiguracionView::~ListConfiguracionView() {
     _depura("ListConfiguracionView::~ListConfiguracionView", 0);
     _depura("END ListConfiguracionView::~ListConfiguracionView", 0);
 }
 
 
-int ListConfiguracionView::sacaWindow() {
-    m_companyact->sacaWindow(this);
-    return 0;
-}
-
 
 /// ===================================== SUBFORMULARIO ===============================================
+/** Inicializacion del subformulario donde se indican todos los campos que deben aparecer
+*/
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
     setDBTableName("configuracion");
     setDBCampoId("nombre");
     addSHeader("nombreorig", DBCampo::DBvarchar, DBCampo::DBDupPrimaryKey | DBCampo::DBNoSave, SHeader::DBNoView | SHeader::DBBlockView, "nombre");
@@ -73,5 +73,6 @@ ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bf
     addSHeader("valor", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Valor"));
     setinsercion(FALSE);
     setDelete(FALSE);
+    _depura("END ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
 }
 

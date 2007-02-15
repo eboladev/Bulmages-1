@@ -30,7 +30,17 @@
 
 class Ficha : public QWidget, public dialogChanges {
     Q_OBJECT
-
+protected:
+    /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
+    /// doble click sobre la lista)
+    bool m_modoConsulta;
+protected:
+    void setModoConsulta() {
+        m_modoConsulta = TRUE;
+    };
+    void setModoEdicion() {
+        m_modoConsulta = FALSE;
+    };
 public:
     Ficha(QWidget *parent = 0, Qt::WFlags f = 0);
     ~Ficha();

@@ -33,10 +33,9 @@
 
 /// Constructor de la clase inicializa la clase y llama a la clase de pintar para que pinte.
 TrabajadorView::TrabajadorView(company *emp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBf(emp, parent) {
     _depura("TrabajadorView::TrabajadorView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
-    m_companyact = emp;
     setupUi(this);
     m_archivoimagen = "";
     setModoEdicion();
@@ -74,12 +73,6 @@ TrabajadorView::~TrabajadorView() {
 }
 
 
-int TrabajadorView::sacaWindow() {
-    m_companyact->sacaWindow(this);
-    return 0;
-}
-
-
 void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QListWidgetItem *) {
     _depura( "on_mui_lista_currentItemChanged", 0);
     int row = mui_lista->row(cur);
@@ -101,10 +94,12 @@ void TrabajadorView::on_mui_lista_currentItemChanged(QListWidgetItem *cur, QList
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     m_imagen->setPixmap(QPixmap(confpr->valor(CONF_DIR_IMG_PERSONAL) + mdb_idtrabajador + ".jpg"));
+    _depura( "END on_mui_lista_currentItemChanged", 0);
 }
 
 
 void TrabajadorView::on_mui_guardar_clicked() {
+    _depura("TrabajadorView::on_mui_guardar_clicked", 0);
     QString m_textactivotrabajador = "FALSE";
     if (m_activotrabajador->isChecked()) {
         m_textactivotrabajador = "TRUE";
@@ -140,11 +135,12 @@ void TrabajadorView::on_mui_guardar_clicked() {
     } // end if
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
+    _depura("END TrabajadorView::on_mui_guardar_clicked", 0);
 }
 
 
 bool TrabajadorView::trataModificado() {
-    _depura( "TrabajadorView::trataModificado\n", 0);
+    _depura( "TrabajadorView::trataModificado", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -154,6 +150,7 @@ bool TrabajadorView::trataModificado() {
             on_mui_guardar_clicked();
         return (TRUE);
     } // end if
+    _depura("END TrabajadorView::trataModificado", 0);
     return (FALSE);
 }
 
@@ -161,6 +158,7 @@ bool TrabajadorView::trataModificado() {
 /// SLOT que responde a la pulsacion del boton de nuevo tipo de iva.
 /// Inserta en la tabla de ivas
 void TrabajadorView::on_mui_nuevo_clicked() {
+    _depura("TrabajadorView::on_mui_nuevo_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     trataModificado();
     QString query = "INSERT INTO trabajador (nomtrabajador, apellidostrabajador, nsstrabajador) VALUES ('NUEVO TRABAJADOR','NUEVO TRABAJADOR','000000000000')";
@@ -175,12 +173,14 @@ void TrabajadorView::on_mui_nuevo_clicked() {
     mdb_idtrabajador = cur->valor("idtrabajador");
     delete cur;
     pintar();
+    _depura("END TrabajadorView::on_mui_nuevo_clicked", 0);
 }
 
 
 /// SLOT que responde a la pulsacion del boton de borrar la familia que se esta editando.
 /// Lo que hace es que se hace un update de todos los campos.
 void TrabajadorView::on_mui_borrar_clicked() {
+    _depura("TrabajadorView::on_mui_borrar_clicked", 0);
     trataModificado();
     m_companyact->begin();
     QString query = "DELETE FROM trabajador WHERE idtrabajador = " + mdb_idtrabajador;
@@ -191,14 +191,17 @@ void TrabajadorView::on_mui_borrar_clicked() {
     } // end if
     m_companyact->commit();
     pintar();
+    _depura("END TrabajadorView::on_mui_borrar_clicked", 0);
 }
 
 
 void TrabajadorView::on_mui_imagen_clicked() {
+    _depura("TrabajadorView::on_mui_imagen_clicked", 0);
     m_archivoimagen = QFileDialog::getOpenFileName(this,
                       tr("Seleccione archivo"),
                       "",
                       tr("Imagenes (*.jpg)"));
     m_imagen->setPixmap(QPixmap(m_archivoimagen));
+    _depura("END TrabajadorView::on_mui_imagen_clicked", 0);
 }
 

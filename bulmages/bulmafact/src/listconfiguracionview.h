@@ -27,7 +27,7 @@
 #include <QLabel>
 #include <QCheckBox>
 
-#include "ficha.h"
+#include "fichabf.h"
 #include "postgresiface2.h"
 #include "cobro.h"
 #include "busquedacliente.h"
@@ -35,7 +35,6 @@
 #include "subform2bf.h"
 
 
-class company;
 
 
 /// Muestra y administra las l&iacute;neas de detalle del listado de configuraci&oacute;nes.
@@ -62,16 +61,11 @@ public slots:
 
 /// Muestra y administra el listado de configuraci&oacute;nes.
 /** */
-class ListConfiguracionView : public Ficha, public Ui_ListConfiguracionBase {
+class ListConfiguracionView : public FichaBf, public Ui_ListConfiguracionBase {
     Q_OBJECT
-
-public:
-    company *m_companyact;
-
 public:
     ListConfiguracionView(company *comp, QWidget *parent = 0);
     ~ListConfiguracionView();
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_aceptar_clicked() {
