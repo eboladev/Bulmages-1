@@ -102,8 +102,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -142,9 +142,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
@@ -179,8 +182,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -216,9 +219,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
@@ -1117,23 +1123,23 @@
        </property>
        <property name="sizeHint" >
         <size>
-         <width>581</width>
-         <height>20</height>
+         <width>331</width>
+         <height>27</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_cancelar" >
+      <widget class="QPushButton" name="mui_aceptar" >
        <property name="text" >
-        <string>&amp;Cancelar</string>
+        <string>&amp;Aceptar</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="mui_aceptar" >
+      <widget class="QPushButton" name="mui_cancelar" >
        <property name="text" >
-        <string>&amp;Aceptar</string>
+        <string>&amp;Cancelar</string>
        </property>
       </widget>
      </item>

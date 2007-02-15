@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Pedido de cliente</string>
+   <string>Nuevo pedido de cliente</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_pedidos.48x48.png</iconset>
@@ -1522,21 +1522,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListLinPedidoClienteView</class>
    <extends>QWidget</extends>
    <header>listlinpedidoclienteview.h</header>
@@ -1560,6 +1545,21 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QWidget</extends>
+   <header>busquedaformapago.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
   </customwidget>
  </customwidgets>
  <resources>

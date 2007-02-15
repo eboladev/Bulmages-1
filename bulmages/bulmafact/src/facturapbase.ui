@@ -100,6 +100,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
          </widget>
         </item>
         <item row="0" column="3" >
@@ -197,13 +200,16 @@
             <height>32</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+S</string>
+          </property>
          </widget>
         </item>
         <item row="0" column="7" >
          <widget class="BusquedaReferencia" name="m_reffacturap" >
           <property name="sizePolicy" >
            <sizepolicy>
-            <hsizetype>7</hsizetype>
+            <hsizetype>5</hsizetype>
             <vsizetype>0</vsizetype>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
@@ -311,10 +317,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir pedido</string>
+        <string>Mostrar/ocultar cabecera</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir pedido</string>
+        <string>Mostrar/ocultar cabecera</string>
        </property>
        <property name="text" >
         <string/>
@@ -327,6 +333,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="shortcut" >
+        <string>Ctrl+G</string>
        </property>
        <property name="checkable" >
         <bool>true</bool>
@@ -1331,11 +1340,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFormaPago</class>
-   <extends>QWidget</extends>
-   <header>busquedaformapago.h</header>
-  </customwidget>
-  <customwidget>
    <class>ListLinFacturaProveedorView</class>
    <extends>QWidget</extends>
    <header>listlinfacturapview.h</header>
@@ -1359,6 +1363,11 @@
    <class>ListDescuentoFacturaProvView</class>
    <extends>QWidget</extends>
    <header>listdescfacturaprovview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFormaPago</class>
+   <extends>QWidget</extends>
+   <header>busquedaformapago.h</header>
   </customwidget>
  </customwidgets>
  <resources>

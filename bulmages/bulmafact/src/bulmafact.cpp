@@ -48,14 +48,10 @@
 */
 bulmafact::bulmafact(QString bd) : QMainWindow() {
     _depura("bulmafact::bulmafact", 0);
-
     setupUi(this);
-
     setUpdatesEnabled(TRUE);
-
     pWorkspace = new QWorkspace2(this);
     pWorkspace->setScrollBarsEnabled(TRUE);
-
     QFrame *m_frame1 = new QFrame();
     QProgressBar *m_pb = new QProgressBar();
     m_pb->setMaximum(100);
@@ -63,7 +59,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     m_pb->setValue(0);
     /// Hacemos que el ProgressBar est&eacute; invisible hasta que se seleccione una empresa.
     m_pb->setVisible(FALSE);
-
     setCentralWidget(m_frame1);
     /// Creamos un VerticalLayout donde metemos el contenido central del QMainWindow.
     QVBoxLayout *vboxlayout = new QVBoxLayout(this->centralWidget());
@@ -73,7 +68,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     vboxlayout->addWidget(m_pb);
 
     showNormal();
-
     m_company = new company();
     m_company->setProgressBar(m_pb);
     m_company->init(bd, "BulmaFact");
@@ -97,7 +91,6 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     m_list->setVisible(TRUE);
     m_pb->setVisible(FALSE);
     statusBar()->showMessage(tr("Listo"), 2000);
-
     _depura("END bulmafact::bulmafact", 0);
 }
 
@@ -139,23 +132,6 @@ void bulmafact::recibirfactura() {
                           tr("BulmaFact"),
                           tr("Pulse aceptar para recibir(destruir) un monton de facturas"));
     _depura("END bulmafact::recibirfactura", 0);
-}
-
-
-/** Este metodo ya no se usa puesto que tenemos una ventana de About */
-/// \TODO destruir este metodo.
-void bulmafact::about() {
-    QMessageBox::about(this,
-                       tr("Qt Application Example"),
-                       tr("This example demonstrates simple use of "
-                          "QMainWindow,\nQMenuBar and QToolBar."));
-}
-
-
-/** Este metodo ya no se usa */
-/// \TODO: Destruir este metodo.
-void bulmafact::aboutQt() {
-    QMessageBox::aboutQt(this, tr("Qt Application Example"));
 }
 
 
@@ -213,9 +189,28 @@ void bulmafact::informaindexador(QWidget *w) {
     } // end if
     m_company->seleccionaWindow(w->windowTitle(), w);
     
-    QString texto = "Window activated. " + w->windowTitle() + "\n";
-    printf(texto.toAscii().constData());
+    QString texto = "Window activated. " + w->windowTitle();
+    _depura(texto, 10);
     
     _depura("END bulmafact::informaindexador", 0);
+}
+
+
+/** Muestra la ayuda del programa.
+*/
+void bulmafact::on_actionDocumentacion_triggered() {
+    _depura("bulmafact::on_actionDocumentacion_triggered", 0);
+    QAssistantClient *asistenteAyuda = new QAssistantClient(QLibraryInfo::location(QLibraryInfo::BinariesPath), 0);
+    connect(asistenteAyuda, SIGNAL(error(const QString)), this, SLOT(documentacionError(const QString)));
+    QStringList parametros;
+    parametros << "-profile" << QString("/usr/share/bulmages/ayuda/bulmafact/bulmafact.adp");
+    asistenteAyuda->setArguments(parametros);
+    asistenteAyuda->openAssistant();
+    _depura("END bulmafact::on_actionDocumentacion_triggered", 0);
+}
+
+
+void bulmafact::documentacionError(const QString docError) {
+    _depura("Error en la ayuda: " + docError, 10);
 }
 

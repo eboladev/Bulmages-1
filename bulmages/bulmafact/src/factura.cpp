@@ -132,7 +132,7 @@ void Factura::pintaFactura() {
 int Factura::cargar(QString idbudget) {
     _depura("Factura::cargar", 0);
     inicialize();
-    QString query = "SELECT * FROM factura  WHERE idfactura=" + idbudget;
+    QString query = "SELECT * FROM factura WHERE idfactura = " + idbudget;
     cursor2 * cur= m_companyact->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
@@ -161,8 +161,8 @@ int Factura::guardar() {
     try {
         /// Calculamos el proximo numero de factura para poder insertarlo en caso de que este sea nulo.
         if (DBvalue("numfactura") == "") {
-            QString SQLQueryn = "SELECT MAX(numFactura)+1 as num FROM Factura WHERE codigoserie_factura = '"+DBvalue("codigoserie_factura")+"'";
-            cursor2 *cur= m_companyact->cargacursor(SQLQueryn);
+            QString SQLQueryn = "SELECT MAX(numfactura) + 1 AS num FROM factura WHERE codigoserie_factura = '" + DBvalue("codigoserie_factura") + "'";
+            cursor2 *cur = m_companyact->cargacursor(SQLQueryn);
             if (!cur->eof())
                 setDBvalue("numfactura", cur->valor("num"));
             pintaNumFactura(DBvalue("numfactura"));

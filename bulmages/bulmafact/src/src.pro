@@ -6,7 +6,7 @@
 LANGUAGE = C++
 TARGET = ../../installbulmages/bulmafact
 #CONFIG += qt debug
-CONFIG += release warn_on
+CONFIG += release warn_on assistant
 LIBS += -rdynamic
 TEMPLATE = app
 
@@ -59,7 +59,7 @@ FORMS += aboutbase.ui \
          inventariosbase.ui \
          inventariobase.ui \
          clientebase.ui \
-         budgetslistbase.ui \
+         presupuestoslistbase.ui \
          bulmafactbase.ui \
          listalmacenbase.ui \
          listconfiguracionbase.ui \

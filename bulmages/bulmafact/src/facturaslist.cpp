@@ -85,10 +85,10 @@ FacturasList::~FacturasList() {
 void FacturasList::presenta() {
     _depura("FacturasList::presenta", 0);
 
-    mui_list->cargar("SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  " + generaFiltro());
+    mui_list->cargar("SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalfactura) AS total FROM factura LEFT JOIN cliente ON factura.idcliente=cliente.idcliente LEFT JOIN  almacen ON  factura.idalmacen=almacen.idalmacen WHERE 1=1  " + generaFiltro());
+    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalfactura) AS total FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
     m_total->setText(cur->valor("total"));
     delete cur;
 
@@ -110,13 +110,15 @@ QString FacturasList::generaFiltro() {
         filtro = "";
     } // end if
     if (m_cliente->idcliente() != "") {
-        filtro += " AND factura.idcliente=" + m_cliente->idcliente();
+        filtro += " AND factura.idcliente = " + m_cliente->idcliente();
     } // end if
     if (!m_procesada->isChecked() ) {
-        filtro += " AND NOT procesadafactura";
-    } // end if
+        filtro += " AND NOT procesadafactura ";
+    } else {
+        filtro += " AND procesadafactura ";
+    }// end if
     if (m_articulo->idarticulo() != "") {
-        filtro += " AND idfactura IN (SELECT DISTINCT idfactura FROM lfactura WHERE idarticulo='" + m_articulo->idarticulo() + "')";
+        filtro += " AND idfactura IN (SELECT DISTINCT idfactura FROM lfactura WHERE idarticulo = '" + m_articulo->idarticulo() + "') ";
     } // end if
     if (m_fechain->text() != "") {
         filtro += " AND ffactura >= '" + m_fechain->text() + "' ";

@@ -43,7 +43,7 @@ public slots:
     virtual void cargar() {
         _depura("PresupuestoListSubForm::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM presupuesto";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
+        cursor2 *cur= companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -53,12 +53,12 @@ public slots:
 };
 
 
-#include "ui_budgetslistbase.h"
+#include "ui_presupuestoslistbase.h"
 
 
 /// Muestra y administra la ventana con el listado de presupuestos.
 /** */
-class PresupuestoList : public Ficha, public Ui_BudgetsListBase {
+class PresupuestoList : public Ficha, public Ui_PresupuestosListBase {
     Q_OBJECT
 
 private:

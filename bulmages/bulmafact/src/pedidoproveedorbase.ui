@@ -119,6 +119,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+S</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -153,6 +156,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -186,6 +192,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
@@ -315,6 +324,14 @@
         </item>
         <item>
          <widget class="BusquedaReferencia" name="mui_referenciaPedido" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -351,10 +368,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Ver detalle de cabecera</string>
+        <string>Mostrar/ocultar cabecera</string>
        </property>
        <property name="whatsThis" >
-        <string>Ver detalle de cabecera</string>
+        <string>Mostrar/ocultar cabecera</string>
        </property>
        <property name="text" >
         <string/>
@@ -367,6 +384,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="shortcut" >
+        <string>Ctrl+G</string>
        </property>
        <property name="checkable" >
         <bool>true</bool>
@@ -1441,6 +1461,21 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaAlmacen</class>
+   <extends>QWidget</extends>
+   <header>busquedaalmacen.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaTrabajador</class>
+   <extends>QWidget</extends>
+   <header>busquedatrabajador.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -1464,21 +1499,6 @@
    <class>ListDescuentoPedidoProveedorView</class>
    <extends>QWidget</extends>
    <header>listdescpedidoproveedorview.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaAlmacen</class>
-   <extends>QWidget</extends>
-   <header>busquedaalmacen.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaTrabajador</class>
-   <extends>QWidget</extends>
-   <header>busquedatrabajador.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

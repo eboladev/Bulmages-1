@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Factura</string>
+   <string>Nueva factura a cliente</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_ventas_facturas.48x48.png</iconset>
@@ -192,7 +192,7 @@
            <enum>Qt::Horizontal</enum>
           </property>
           <property name="sizeType" >
-           <enum>QSizePolicy::Expanding</enum>
+           <enum>QSizePolicy::Preferred</enum>
           </property>
           <property name="sizeHint" >
            <size>
@@ -369,6 +369,14 @@
         </item>
         <item>
          <widget class="BusquedaReferencia" name="m_reffactura" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -523,6 +531,12 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
        </property>
        <property name="maximumSize" >
         <size>
@@ -1527,16 +1541,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
-   <class>ListDescuentoFacturaView</class>
-   <extends>QWidget</extends>
-   <header>listdescfacturaview.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaAlmacen</class>
    <extends>QWidget</extends>
    <header>busquedaalmacen.h</header>
@@ -1565,6 +1569,16 @@
    <class>ListLinFacturaView</class>
    <extends>QWidget</extends>
    <header>listlinfacturaview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ListDescuentoFacturaView</class>
+   <extends>QWidget</extends>
+   <header>listdescfacturaview.h</header>
   </customwidget>
  </customwidgets>
  <resources>

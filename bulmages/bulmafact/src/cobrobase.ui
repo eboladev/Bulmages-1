@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Cobro</string>
+   <string>Nuevo cobro a cliente</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../bulmages.qrc" >:/Bulmafact48x48/images/png/48x48/i_bulmages_cobros.48x48.png</iconset>
@@ -297,7 +297,7 @@
           <property name="sizeHint" >
            <size>
             <width>20</width>
-            <height>40</height>
+            <height>20</height>
            </size>
           </property>
          </spacer>
@@ -405,11 +405,6 @@
  <layoutdefault spacing="4" margin="3" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaReferencia</class>
    <extends>QLineEdit</extends>
    <header>busquedareferencia.h</header>
@@ -418,6 +413,11 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
   </customwidget>
  </customwidgets>
  <resources>

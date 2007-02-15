@@ -66,8 +66,7 @@ public slots:
     virtual void s_FPago();
     virtual void s_ventanaCompleta();
     virtual void s_About();
-    void about();
-    void aboutQt();
+    virtual void on_actionDocumentacion_triggered();
     virtual void on_actionNuevo_Pedido_Proveedor_triggered() {
         m_company->s_newPedidoPro();
     };
@@ -191,7 +190,7 @@ private slots:
             actionIndexador->setChecked(FALSE);
         } // end if
     };
-
+    void documentacionError(const QString);
 };
 
 #endif

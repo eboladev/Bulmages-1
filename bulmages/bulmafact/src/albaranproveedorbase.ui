@@ -115,6 +115,9 @@
             <height>32</height>
            </size>
           </property>
+          <property name="shortcut" >
+           <string>Ctrl+S</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -156,6 +159,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
@@ -345,6 +351,14 @@
         </item>
         <item>
          <widget class="BusquedaReferencia" name="m_refalbaranp" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>13</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -381,10 +395,10 @@
         </size>
        </property>
        <property name="toolTip" >
-        <string>Imprimir pedido</string>
+        <string>Mostrar/ocultar cabecera</string>
        </property>
        <property name="whatsThis" >
-        <string>Imprimir pedido</string>
+        <string>Mostrar/ocultar cabecera</string>
        </property>
        <property name="text" >
         <string/>
@@ -397,6 +411,9 @@
          <width>22</width>
          <height>22</height>
         </size>
+       </property>
+       <property name="shortcut" >
+        <string>Ctrl+G</string>
        </property>
        <property name="checkable" >
         <bool>true</bool>
@@ -1433,21 +1450,6 @@
  <layoutdefault spacing="2" margin="2" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaProveedor</class>
-   <extends>QWidget</extends>
-   <header>busquedaproveedor.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaReferencia</class>
-   <extends>QLineEdit</extends>
-   <header>busquedareferencia.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaFormaPago</class>
    <extends>QWidget</extends>
    <header>busquedaformapago.h</header>
@@ -1466,6 +1468,21 @@
    <class>ListDescuentoAlbaranProvView</class>
    <extends>QWidget</extends>
    <header>listdescalbaranprovview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaProveedor</class>
+   <extends>QWidget</extends>
+   <header>busquedaproveedor.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaReferencia</class>
+   <extends>QLineEdit</extends>
+   <header>busquedareferencia.h</header>
   </customwidget>
  </customwidgets>
  <resources>

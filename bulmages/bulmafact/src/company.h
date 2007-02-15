@@ -22,12 +22,14 @@
 #define COMPANY_H
 
 #include <QObject>
-
+#include <QAssistantClient>
+#include <QLibraryInfo>
 
 #include "postgresiface2.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
 #include "empresabase.h"
+
 
 class ProveedorList;
 class ClientsList;
@@ -63,10 +65,8 @@ class FamiliasView;
     todos los datos de la empresa con la que se est&aacute; trabajando.
     Deriva de postgresiface ya que tiene el tratamiento de la base de datos.
 */
-class company : public EmpresaBase{
+class company : public EmpresaBase {
 private:
-    /// Puntero al dock que lista las ventansa. Puesto que esta clase hace el paso de mensajes tiene el control de la lista de ventanas.
-//    listventanas *m_listventanas;
     /// Puntero a la ventana de lista de proveedores. Esta ventana se abre una vez al principio.
     ProveedorList *m_providerslist;
     /// Puntero a la ventan ade lista de clientes. Esta ventana se abre una vez al inicio del programa.
@@ -74,7 +74,7 @@ private:
     /// Puntero a la ventana de lista de articulos. Esta ventan ase abre una vez al inicio del programa.
     ArticuloList *m_articleslist;
     /// Puntero a la ventana de lista de presupuestos. Esta ventana se abre una vez al inicio del program.a \TODO: Cambiarle el nombre.
-    PresupuestoList *m_budgetsList;
+    PresupuestoList *m_presupuestosList;
     /// Puntero al a ventana de lista de albarnaes a cliente. Esta ventana se crea una vez al inicio del programa.
     AlbaranClienteList *m_clientDelivNotesList;
     /// Puntero a la ventana de lista de facturas a cliente. Esta ventana se crea una vez al inicoi del programa.
@@ -93,17 +93,8 @@ private:
     PagosList *m_pagosList;
 
 public:
-/*
-    /// Puntero al workScpace de la aplicacion. Ya que esta clase crea todas las ventanas, es comodo tener este puntero inicializado en esta clase.
-    QWorkspace2 *m_pWorkspace;
-    /// El indicador de progreso. PAra que determinados procesos puedan indicar su evolucion de forma general en la ventana principal.
-    QProgressBar *m_progressbar;
-*/
-
-public:
     company();
     ~company();
-
     FacturasProveedorList *facturasProveedorList() {
     	return m_facturasproveedorlist;
     };
@@ -131,7 +122,6 @@ public:
     void refreshFacturas();
     void refreshFacturasProveedor();
     void refreshClientes();
-
     void s_FPago();
     void s_Familias();
     void s_trabajadores();

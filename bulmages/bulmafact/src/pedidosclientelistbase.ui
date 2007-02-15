@@ -36,6 +36,18 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -87,8 +99,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -98,6 +110,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_editar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Editar pedido</string>
           </property>
@@ -112,8 +136,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -123,6 +147,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Borrar pedido</string>
           </property>
@@ -137,8 +173,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -148,6 +184,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Imprimir listado</string>
           </property>
@@ -162,8 +210,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -173,6 +221,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Filtrar pedidos</string>
           </property>
@@ -187,8 +247,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -201,6 +261,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_configurar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Configurar listado</string>
           </property>
@@ -215,8 +287,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -229,6 +301,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Actualizar listado</string>
           </property>
@@ -243,8 +327,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -530,16 +614,6 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaFecha</class>
-   <extends>QWidget</extends>
-   <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>PedidosClienteListSubform</class>
-   <extends>QTableWidget</extends>
-   <header>pedidosclientelist.h</header>
-  </customwidget>
-  <customwidget>
    <class>BusquedaArticulo</class>
    <extends>QWidget</extends>
    <header>busquedaarticulo.h</header>
@@ -548,6 +622,16 @@
    <class>BusquedaCliente</class>
    <extends>QWidget</extends>
    <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QWidget</extends>
+   <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>PedidosClienteListSubform</class>
+   <extends>QTableWidget</extends>
+   <header>pedidosclientelist.h</header>
   </customwidget>
  </customwidgets>
  <resources>

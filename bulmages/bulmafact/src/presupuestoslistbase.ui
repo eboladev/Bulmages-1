@@ -1,7 +1,7 @@
 <ui version="4.0" >
  <author>Tomeu Borras Riera</author>
- <class>BudgetsListBase</class>
- <widget class="QWidget" name="BudgetsListBase" >
+ <class>PresupuestosListBase</class>
+ <widget class="QWidget" name="PresupuestosListBase" >
   <property name="enabled" >
    <bool>true</bool>
   </property>

@@ -95,8 +95,8 @@ company::~company() {
     m_cobrosList = NULL;
     delete m_pagosList;
     m_pagosList = NULL;
-    delete m_budgetsList;
-    m_budgetsList = NULL;
+    delete m_presupuestosList;
+    m_presupuestosList = NULL;
     delete m_pedidosclienteList;
     m_pedidosclienteList = NULL;
     delete m_clientDelivNotesList;
@@ -148,11 +148,11 @@ void company::createMainWindows() {
     m_pagosList->hide();
 
     /// pb = 48%
-    _depura("company::createMainWindows inicializamos m_budgetsList\n", 1);
+    _depura("company::createMainWindows inicializamos m_presupuestosList\n", 1);
     m_progressbar->setValue(48);
-    m_budgetsList = new PresupuestoList(this);
-    m_pWorkspace->addWindow(m_budgetsList);
-    m_budgetsList->hide();
+    m_presupuestosList = new PresupuestoList(this);
+    m_pWorkspace->addWindow(m_presupuestosList);
+    m_presupuestosList->hide();
 
     /// pb = 52%
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
@@ -273,7 +273,7 @@ void company::listarticles() {
 */
 void company::refreshArticles() {
     _depura("company::refreshArticles", 0);
-    if(m_articleslist != NULL)
+    if (m_articleslist != NULL)
         m_articleslist->presenta();
     _depura("END company::refreshArticles", 0);
 }
@@ -493,9 +493,9 @@ void company::s_listFacturasPro() {
 */
 void company::listBudgets() {
     _depura("company::listBudgets", 0);
-    m_budgetsList->show();
-    m_budgetsList->parentWidget()->raise();
-    m_pWorkspace->setActiveWindow(m_budgetsList);
+    m_presupuestosList->show();
+    m_presupuestosList->parentWidget()->raise();
+    m_pWorkspace->setActiveWindow(m_presupuestosList);
     _depura("END company::listBudgets", 0);
 }
 
@@ -570,7 +570,7 @@ void company::s_newFacturaCli() {
 */
 void company::refreshPresupuestos() {
     _depura("company::refreshPresupuestos", 0);
-    m_budgetsList->presenta();
+    m_presupuestosList->presenta();
     _depura("END company::refreshPresupuestos", 0);
 }
 
@@ -581,7 +581,7 @@ void company::refreshPresupuestos() {
 */
 void company::refreshFacturas() {
     _depura("company::refreshFacturas", 0);
-    if(m_facturasList != NULL)
+    if (m_facturasList != NULL)
         m_facturasList->presenta();
     _depura("END company::refreshFacturas", 0);
 }
@@ -593,7 +593,7 @@ void company::refreshFacturas() {
 */
 void company::refreshFacturasProveedor() {
     _depura("company::refreshFacturasProveedor", 0);
-    if(m_facturasproveedorlist != NULL)
+    if (m_facturasproveedorlist != NULL)
         m_facturasproveedorlist->presenta();
     _depura("END company::refreshFacturasProveedor", 0);
 
@@ -643,7 +643,7 @@ void company::refreshClientDelivNotes() {
 */
 void company::refreshAlbaranesCliente() {
     _depura("company::refreshAlbaranesCliente", 0);
-    if(m_clientDelivNotesList != NULL)
+    if (m_clientDelivNotesList != NULL)
         m_clientDelivNotesList->presenta();
     _depura("company::refreshAlbaranesCliente", 0);
 }
@@ -655,7 +655,7 @@ void company::refreshAlbaranesCliente() {
 */
 void company::refreshAlbaranesProveedor() {
     _depura("company::refreshAlbaranesProveedor", 0);
-    if(m_albaranesproveedor != NULL)
+    if (m_albaranesproveedor != NULL)
         m_albaranesproveedor->presenta();
     _depura("END company::refreshAlbaranesProveedor", 0);
 }
@@ -667,7 +667,7 @@ void company::refreshAlbaranesProveedor() {
 */
 void company::refreshClientes() {
     _depura("company::refreshClientes", 0);
-    if(m_clientsList != NULL)
+    if (m_clientsList != NULL)
         m_clientsList->presenta();
     _depura("END company::refreshClientes", 0);
 }
@@ -1046,7 +1046,4 @@ void company::s_newfamiliasview() {
     pag->show();
     _depura("END company::s_newfamiliasview", 0);
 }
-
-
-
 
