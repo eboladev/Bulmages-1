@@ -59,6 +59,7 @@ AlbaranCliente::~AlbaranCliente() {
     _depura("END AlbaranCliente::~AlbaranCliente", 0);
 }
 
+
 /** Metodo de borrar un albaran. Se encarga de mandar a la base de datos
     la instruccion necesaria para el borrado de un albaran y controlar
     los posibles errores que se produzcan.
@@ -84,6 +85,7 @@ int AlbaranCliente::borrar() {
     return 0;
 }
 
+
 /// Hace un vaciado de los elementos que se corresponden con la base de datos.
 /// Es &uacute;til para sistemas de recarga de la pantalla.
 void AlbaranCliente::vaciaAlbaranCliente() {
@@ -91,6 +93,7 @@ void AlbaranCliente::vaciaAlbaranCliente() {
     DBclear();
     _depura("END AlbaranCliente::vaciaAlbaranCliente", 0);
 }
+
 
 /** Se encarga de sincronizar los elementos de la base de datos con los de la pantalla
     Invocando este m&eacute;todo conseguimos que la pantalla muestre lo que hay en la base

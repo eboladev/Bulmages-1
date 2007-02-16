@@ -63,14 +63,11 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         m_cliente->setcompany(comp);
         m_trabajador->setcompany(comp);
         m_refalbaran->setcompany(comp);
-
-	setListaLineas(subform2);
-	setListaDescuentos(m_descuentos);
-
+        setListaLineas(subform2);
+        setListaDescuentos(m_descuentos);
         comp->meteWindow(windowTitle(), this, FALSE);
-
-    } catch(...) {
-        mensajeInfo(tr("Error al crear el albaran cliente"));
+    } catch (...) {
+        mensajeInfo(tr("Error al crear el albaran a cliente"));
     } // end try
     _depura("END AlbaranClienteView::AlbaranClienteView", 0);
 }
@@ -135,12 +132,12 @@ void AlbaranClienteView::s_verpresupuesto() {
         this->setEnabled(true);
 
         if (list->idpresupuesto() != QString("")) {
-            PresupuestoView *bud = m_companyact->nuevoPresupuesto();
+            PresupuestoView *bud = m_companyact->nuevoPresupuestoView();
             bud->cargar(list->idpresupuesto());
             bud->show();
         } // end if
     } else if (!cur->eof()) {
-        PresupuestoView *bud = m_companyact->nuevoPresupuesto();
+        PresupuestoView *bud = m_companyact->nuevoPresupuestoView();
         bud->cargar(cur->valor("idpresupuesto"));
         bud->show();
     } // end if
@@ -183,7 +180,7 @@ void AlbaranClienteView::generarFactura() {
     _depura("AlbaranClienteView::generarFactura", 0);
     /// Comprobamos que existe una factura para este cliente, y en caso afirmativo lo mostramos
     /// y salimos de la funci&oacute;n.
-    QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "' AND idcliente ="+DBvalue("idcliente");
+    QString SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + DBvalue("refalbaran") + "' AND idcliente = " + DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
 
     if (!cur->eof()) {
@@ -366,7 +363,7 @@ int AlbaranClienteView::guardar() {
 
 
 /// Crea un nuevo cobro para el albar&aacute;n seleccionado.
-// Util con cobros anticipados a la factura. El cobro tendra
+/// Util con cobros anticipados a la factura. El cobro tendra
 /// la misma cantidad, referencia y cliente que el albaran.
 /// Este metodo crea una pantalla de cobro y le pone los datos necesarios.
 void AlbaranClienteView::on_mui_cobrar_clicked() {

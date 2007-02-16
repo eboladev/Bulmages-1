@@ -200,8 +200,11 @@ QString AlbaranClienteList::generarFiltro() {
     if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaran IN (SELECT DISTINCT idalbaran FROM lalbaran WHERE idarticulo='" + m_articulo->idarticulo() + "')";
 
-    if (!m_procesados->isChecked() )
-        filtro += " AND NOT procesadoalbaran";
+    if (!m_procesados->isChecked()) {
+        filtro += " AND NOT procesadoalbaran ";
+    } else {
+        filtro += " AND procesadoalbaran ";
+    } // end if
 
     if (m_fechain->text() != "")
         filtro += " AND fechaalbaran >= '" + m_fechain->text() + "' ";

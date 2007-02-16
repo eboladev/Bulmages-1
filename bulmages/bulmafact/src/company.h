@@ -154,14 +154,14 @@ public:
     void viewPagosList();
     void viewCobrosList();
     FacturaProveedorView *newFacturaProveedorView();
-    PresupuestoView *nuevoPresupuesto();
+    PresupuestoView *nuevoPresupuestoView();
+    PedidoProveedorView *nuevoPedidoProveedorView();
     FacturaView *newFacturaView();
     CobroView *newCobroView();
     PagoView *newPagoView();
     AlbaranClienteView *newAlbaranClienteView();
     AlbaranProveedorView *newAlbaranProveedorView();
     PedidoClienteView *newPedidoClienteView();
-    PedidoProveedorView *newPedidoProveedorView();
     TipoArticuloList *newTipoArticuloList(QWidget *parent = 0, bool modoConsulta = FALSE);
     FamiliasView *newfamiliasview(QWidget *parent = 0, bool modoConsulta = FALSE);
 };

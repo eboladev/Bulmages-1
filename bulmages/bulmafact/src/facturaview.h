@@ -36,6 +36,7 @@
 #include "dialogchanges.h"
 #include "fichabf.h"
 
+
 class company;
 
 
@@ -80,7 +81,7 @@ public:
             m_procesadafactura->setChecked(TRUE);
         } else {
             m_procesadafactura->setChecked(FALSE);
-        }
+        } // end if
     };
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
 
@@ -95,10 +96,9 @@ public slots:
     virtual void on_mui_guardar_clicked() {
         guardar();
     };
-
     virtual void on_mui_imprimir_clicked() {
 //        imprimirFactura();
-	imprimir();
+        imprimir();
     };
     virtual void on_mui_agregaralbaran_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.

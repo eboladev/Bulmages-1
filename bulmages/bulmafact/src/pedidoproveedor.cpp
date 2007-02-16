@@ -60,7 +60,7 @@ int PedidoProveedor::borrar() {
         m_listalineas->borrar();
         m_listadescuentos->borrar();
         m_companyact->begin();
-        int error = m_companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor=" + DBvalue("idpedidoproveedor"));
+        int error = m_companyact->ejecuta("DELETE FROM pedidoproveedor WHERE idpedidoproveedor = " + DBvalue("idpedidoproveedor"));
         if (error) {
             m_companyact->rollback();
             return -1;

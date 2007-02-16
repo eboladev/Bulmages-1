@@ -39,9 +39,8 @@
     
     Inicializa todos los componentes, se pone en modo edicion y mete la ventana en el workSpace.
 */
-/// \TODO: Deberia derivar de la clase Listado o de Ficha.
 AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     m_companyact = NULL;
@@ -60,7 +59,7 @@ AlbaranesProveedor::AlbaranesProveedor(QWidget *parent, Qt::WFlags flag)
     Oculta la parte de Busqueda.
 */
 AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlags flag)
-        : QWidget(parent, flag) {
+        : Ficha(parent) {
     _depura("AlbaranesProveedor::AlbaranesProveedor", 0);
     setupUi(this);
     m_companyact = comp;
@@ -141,8 +140,11 @@ QString AlbaranesProveedor::generaFiltro() {
 
     if (m_proveedor->idproveedor() != "")
         filtro += " AND albaranp.idproveedor = " + m_proveedor->idproveedor();
-    if (!m_procesados->isChecked())
-        filtro += " AND NOT procesadoalbaranp";
+    if (!m_procesados->isChecked()) {
+        filtro += " AND NOT procesadoalbaranp ";
+    } else {
+        filtro += " AND procesadoalbaranp ";
+    } // end if
     if (m_articulo->idarticulo() != "")
         filtro += " AND idalbaranp IN (SELECT DISTINCT idalbaranp FROM lalbaranp " \
                   "WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
@@ -183,10 +185,12 @@ void AlbaranesProveedor::editar(int row) {
 void AlbaranesProveedor::on_mui_editar_clicked() {
     _depura("AlbaranesProveedor::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } else {
         editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } // end if
     _depura("END AlbaranesProveedor::on_mui_editar_clicked", 0);
 
 }
@@ -209,16 +213,23 @@ void AlbaranesProveedor::imprimir() {
 */
 void AlbaranesProveedor::on_mui_borrar_clicked() {
     _depura("AlbaranesProveedor::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
         mdb_idalbaranp = mui_list->DBvalue(QString("idalbaranp"));
         if (m_modo == 0) {
-            AlbaranProveedorView *bud = m_companyact->newAlbaranProveedorView();
-            bud->cargar(mdb_idalbaranp);
-            bud->borrar();
-            delete bud;
+            AlbaranProveedorView *apv = m_companyact->newAlbaranProveedorView();
+            if (apv->cargar(mdb_idalbaranp)) {
+                throw -1;
+            } // end if
+            apv->on_mui_borrar_clicked();
+            apv->close();
         } // end if
         presenta();
-    } catch(...) {
+    } catch (...) {
         mensajeInfo(tr("Error al borrar albaran de proveedor"));
     } // end try
     _depura("END AlbaranesProveedor::on_mui_borrar_clicked", 0);
@@ -241,7 +252,7 @@ AlbaranesProveedorListSubform::AlbaranesProveedorListSubform(QWidget *parent) : 
     addSHeader("refalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia"));
     addSHeader("fechaalbaranp", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("comentalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario"));
-    addSHeader("procesadoalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Albaran procesado?"));
+    addSHeader("procesadoalbaranp", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Procesado"));
     addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID proveedor"));
     addSHeader("idforma_pago", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID forma de pago"));
     addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ID almacen"));

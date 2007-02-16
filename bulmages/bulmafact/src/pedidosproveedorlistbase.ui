@@ -36,6 +36,18 @@
      </property>
      <item>
       <widget class="QLabel" name="label1" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -74,10 +86,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nuevo pedido proveedor</string>
+           <string>Nuevo pedido a proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Nuevo pedido proveedor</string>
+           <string>Nuevo pedido a proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -87,9 +99,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
           </property>
          </widget>
         </item>
@@ -108,10 +123,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Editar pedido proveedor</string>
+           <string>Editar pedido a proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar pedido proveedor</string>
+           <string>Editar pedido a proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -121,9 +136,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+E</string>
           </property>
          </widget>
         </item>
@@ -142,10 +160,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar pedido proveedor</string>
+           <string>Borrar pedido a proveedor</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar pedido proveedor</string>
+           <string>Borrar pedido a proveedor</string>
           </property>
           <property name="text" >
            <string/>
@@ -155,9 +173,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
@@ -189,9 +210,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
@@ -223,9 +247,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+F</string>
           </property>
           <property name="checkable" >
            <bool>true</bool>
@@ -260,9 +287,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+B</string>
           </property>
           <property name="checkable" >
            <bool>true</bool>
@@ -297,9 +327,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>F5</string>
           </property>
          </widget>
         </item>
@@ -328,6 +361,14 @@
         </item>
         <item>
          <widget class="QLineEdit" name="m_filtro" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -477,6 +518,20 @@
       <widget class="QLineEdit" name="m_total" >
        <property name="enabled" >
         <bool>true</bool>
+       </property>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>5</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
        </property>
        <property name="palette" >
         <palette>

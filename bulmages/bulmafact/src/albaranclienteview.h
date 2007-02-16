@@ -41,6 +41,7 @@
 
 class company;
 
+
 /// Muestra el albar&aacute;n a cliente.
 /** Clase que globaliza los Albaranes a Cliente derivando de las clases Ficha y AlbaranCliente.
     Se encarga del control de la pantalla de albaranes a clientes, el paso de mensajes y la visualizacion.
@@ -100,7 +101,7 @@ public:
             m_procesadoalbaran->setChecked(TRUE);
         } else {
             m_procesadoalbaran->setChecked(FALSE);
-        }
+        } // end if
     };
     void pintaNumFactura(QString) {}
     ;
@@ -125,7 +126,7 @@ public slots:
     virtual void s_verpresupuesto();
     virtual void on_mui_verpedidocliente_clicked();
     virtual void on_mui_imprimir_clicked() {
-	imprimir();
+        imprimir();
     };
     virtual void on_mui_facturar_clicked() {
         generarFactura();

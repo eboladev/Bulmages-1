@@ -87,7 +87,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
     QString SQLQuery = "SELECT * FROM presupuesto WHERE refpresupuesto = '" + mui_referencia->text() + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while (!cur->eof()) {
-        PresupuestoView *bud = m_companyact->nuevoPresupuesto();
+        PresupuestoView *bud = m_companyact->nuevoPresupuestoView();
         m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idpresupuesto"));
         bud->show();
@@ -153,7 +153,7 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
     SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
         while (!cur->eof()) {
-            PedidoProveedorView *bud = m_companyact->newPedidoProveedorView();
+            PedidoProveedorView *bud = m_companyact->nuevoPedidoProveedorView();
             m_companyact->m_pWorkspace->addWindow(bud);
             bud->cargar(cur->valor("idpedidoproveedor"));
             bud->show();

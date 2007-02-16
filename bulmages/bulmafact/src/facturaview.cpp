@@ -64,9 +64,9 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
         m_codigoserie_factura->setcompany(comp);
         m_reffactura->setcompany(comp);
 	
-	/// Inicializamos FichaBf
-	setListaLineas(subform2);
-	setListaDescuentos(m_descuentos);
+	    /// Inicializamos FichaBf
+	    setListaLineas(subform2);
+	    setListaDescuentos(m_descuentos);
 
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);
@@ -94,7 +94,6 @@ FacturaView::~FacturaView() {
 }
 
 
-
 /** Inicializa los subformularios y resetea el control de cambios.
 */
 void FacturaView::inicializar() {
@@ -109,7 +108,7 @@ void FacturaView::inicializar() {
 /** Pinta los campos de totales, que al no estar en la base de datos son tratados
     de forma distinta.
 */
-void   FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
+void FacturaView::pintatotales(Fixed iva, Fixed base, Fixed total, Fixed desc, Fixed irpf, Fixed reqeq) {
     _depura("FacturaView::pintatotales", 0);
     m_totalBases->setText(base.toQString());
     m_totalTaxes->setText(iva.toQString());
@@ -158,6 +157,7 @@ int FacturaView::cargar(QString id) {
     _depura("END FacturaView::cargar", 0);
     return 0;
 }
+
 
 /** SLOT que responde a la pulsacion del boton mui_agregaralbaran.
     Muestra un selector de albaranes y una vez seleccionado un albaran hace el agregado
@@ -227,7 +227,8 @@ void FacturaView::on_mui_agregaralbaran_clicked() {
     Utiliza los metodos setXXX para establecer los valores de la Ficha en el DBRecord
     y luego llama a \ref Factura::guardar() para el guardado en la base de datos.
 */
-/// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el control de cambios que deberia estar en el metodo de carga.
+/// \TODO: Una vez hecho el guardado deberia hacer una carga y dejar de resetear el
+/// control de cambios que deberia estar en el metodo de carga.
 int FacturaView::guardar() {
     _depura("FacturaView::guardar", 0);
     try {
@@ -243,7 +244,7 @@ int FacturaView::guardar() {
         setprocesadafactura( m_procesadafactura->isChecked() ? "TRUE" : "FALSE");
         Factura::guardar();
         dialogChanges_cargaInicial();
-    } catch(...) {
+    } catch (...) {
         _depura("FacturaView::guardar error al guardar", 0);
         throw -1;
     } // end try
@@ -273,6 +274,7 @@ void FacturaView::on_mui_veralbaranes_clicked() {
     delete cur;
     _depura("END FacturaView::on_mui_veralbaranes_clicked", 0);
 }
+
 
 void FacturaView::on_m_cliente_valueChanged(QString id) {
 	_depura("FacturaView::on_m_cliente_valueChanged", 0);

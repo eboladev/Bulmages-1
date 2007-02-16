@@ -36,6 +36,18 @@
      </property>
      <item>
       <widget class="QLabel" name="label" >
+       <property name="minimumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
+       <property name="maximumSize" >
+        <size>
+         <width>48</width>
+         <height>48</height>
+        </size>
+       </property>
        <property name="text" >
         <string/>
        </property>
@@ -61,6 +73,18 @@
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Nuevo albaran</string>
           </property>
@@ -75,14 +99,29 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_editar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Editar albaran</string>
           </property>
@@ -97,14 +136,29 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+E</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_borrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Borrar albaran</string>
           </property>
@@ -119,14 +173,29 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+D</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_imprimir" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Imprimir listado</string>
           </property>
@@ -141,14 +210,29 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QToolButton" name="mui_filtrar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Filtrar albaranes</string>
           </property>
@@ -163,9 +247,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+F</string>
           </property>
           <property name="checkable" >
            <bool>true</bool>
@@ -174,6 +261,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_configurar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Configurar listado</string>
           </property>
@@ -188,9 +287,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+B</string>
           </property>
           <property name="checkable" >
            <bool>true</bool>
@@ -199,6 +301,18 @@
         </item>
         <item>
          <widget class="QToolButton" name="mui_actualizar" >
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
           <property name="toolTip" >
            <string>Actualizar listado</string>
           </property>
@@ -213,9 +327,12 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>F5</string>
           </property>
          </widget>
         </item>
@@ -244,6 +361,14 @@
         </item>
         <item>
          <widget class="QLineEdit" name="m_filtro" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>5</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
           <property name="minimumSize" >
            <size>
             <width>150</width>
@@ -251,19 +376,6 @@
            </size>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer>
-          <property name="orientation" >
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" >
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>
@@ -425,6 +537,20 @@
       <widget class="QLineEdit" name="m_total" >
        <property name="enabled" >
         <bool>true</bool>
+       </property>
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>5</hsizetype>
+         <vsizetype>0</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize" >
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
        </property>
        <property name="palette" >
         <palette>
@@ -918,11 +1044,6 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
-  </customwidget>
-  <customwidget>
    <class>AlbaranesProveedorListSubform</class>
    <extends>QTableWidget</extends>
    <header>albaranesproveedor.h</header>
@@ -936,6 +1057,11 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
+  </customwidget>
+  <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends>QWidget</extends>
+   <header>busquedaarticulo.h</header>
   </customwidget>
  </customwidgets>
  <resources>

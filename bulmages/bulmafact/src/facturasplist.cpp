@@ -117,13 +117,15 @@ QString FacturasProveedorList::generaFiltro() {
         filtro = "";
     } // end if
     if (m_proveedor->idproveedor() != "") {
-        filtro += " AND facturap.idproveedor=" + m_proveedor->idproveedor();
+        filtro += " AND facturap.idproveedor = " + m_proveedor->idproveedor();
     } // end if
     if (!m_procesada->isChecked() ) {
-        filtro += " AND NOT procesadafacturap";
-    } // end if
+        filtro += " AND NOT procesadafacturap ";
+    } else {
+        filtro += " AND procesadafacturap ";
+    }// end if
     if (m_articulo->idarticulo() != "") {
-        filtro += " AND idfacturap IN (SELECT DISTINCT idfacturap FROM lfacturap WHERE idarticulo='" + m_articulo->idarticulo() + "')";
+        filtro += " AND idfacturap IN (SELECT DISTINCT idfacturap FROM lfacturap WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if
 
     if (m_fechain->text() != "")
@@ -142,20 +144,20 @@ QString FacturasProveedorList::generaFiltro() {
 void FacturasProveedorList::editar(int row) {
     _depura("FacturasProveedorList::editar", 0);
     try {
-	mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
-	if (m_modo == 0) {
-		FacturaProveedorView *prov = m_companyact->newFacturaProveedorView();
-		if (prov->cargar(mdb_idfacturap)) {
-			delete prov;
-			return;
-		} // end if
-		m_companyact->m_pWorkspace->addWindow(prov);
-		prov->show();
-	} else {
-		emit(selected(mdb_idfacturap));
-	} // end if
+	   mdb_idfacturap = mui_list->DBvalue(QString("idfacturap"), row);
+	   if (m_modo == 0) {
+		  FacturaProveedorView *prov = m_companyact->newFacturaProveedorView();
+		  if (prov->cargar(mdb_idfacturap)) {
+			 delete prov;
+			 return;
+		  } // end if
+		  m_companyact->m_pWorkspace->addWindow(prov);
+		  prov->show();
+	   } else {
+		  emit(selected(mdb_idfacturap));
+	   } // end if
     } catch(...) {
-	mensajeInfo(tr("Error al cargar la factura proveedor"));
+    	mensajeInfo(tr("Error al cargar la factura proveedor"));
     } // end try
     _depura("END FacturasProveedorList::editar", 0);
 }
@@ -167,10 +169,12 @@ void FacturasProveedorList::editar(int row) {
 void FacturasProveedorList::on_mui_editar_clicked() {
     _depura("FacturasProveedorList::on_mui_editar_clicked", 0);
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } else {
         editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } // end if
     _depura("END FacturasProveedorList::on_mui_editar_clicked", 0);
 }
 
@@ -182,15 +186,20 @@ void FacturasProveedorList::on_mui_editar_clicked() {
 */
 void FacturasProveedorList::on_mui_borrar_clicked() {
     _depura("FacturasProveedorList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
-	mdb_idfacturap = mui_list->DBvalue("idfacturap");
-	FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
-	bud->cargar(mdb_idfacturap);
-	bud->on_mui_borrar_clicked();
-	delete bud;
-	presenta();
-    } catch(...) {
-	mensajeInfo(tr("Error al borrar factura de proveedor"));
+	   mdb_idfacturap = mui_list->DBvalue("idfacturap");
+	   FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+	   bud->cargar(mdb_idfacturap);
+	   bud->on_mui_borrar_clicked();
+	   delete bud;
+	   presenta();
+    } catch (...) {
+    	mensajeInfo(tr("Error al borrar la factura de proveedor"));
     } // end try
     _depura("END FacturasProveedorList::on_mui_borrar_clicked", 0);
 }
@@ -201,7 +210,7 @@ void FacturasProveedorList::on_mui_borrar_clicked() {
 */
 void FacturasProveedorList::on_mui_imprimir_clicked() {
     _depura("FacturasProveedorList::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF(tr("Listado de Facturas de Proveedores"));
+    mui_list->imprimirPDF(tr("Facturas de proveedores"));
     _depura("END FacturasProveedorList::on_mui_imprimir_clicked", 0);
 }
 

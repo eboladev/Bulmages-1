@@ -42,7 +42,7 @@ public:
 public:
     FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0);
     ~FichaBf();
-    void setListaLineas(SubForm2Bf * form) {
+    void setListaLineas(SubForm2Bf *form) {
         m_listalineas = form;
     };
     void setListaDescuentos(SubForm2Bf *form) {

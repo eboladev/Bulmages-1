@@ -94,7 +94,7 @@ QString PagosList::generaFiltro() {
     QString subfiltro = " AND ";
     if (mui_efectivos->isChecked() ) {
         filtro += " AND NOT previsionpago";
-	subfiltro = " OR ";
+        subfiltro = " OR ";
     } // end if
     if (mui_previsiones->isChecked() ) {
         filtro += subfiltro + " previsionpago";
@@ -112,10 +112,11 @@ QString PagosList::generaFiltro() {
 
 void PagosList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >= 0) {
-        on_mui_list_cellDoubleClicked(a, 0);
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
     } else {
-        _depura("Debe seleccionar una linea", 2);
+        on_mui_list_cellDoubleClicked(a, 0);
     } // end if
 }
 
@@ -125,10 +126,10 @@ void PagosList::on_mui_list_cellDoubleClicked(int, int) {
     if (m_modo == 0 && mdb_idpago != "") {
         PagoView *bud = m_companyact->newPagoView();
         if (bud->cargar(mdb_idpago)) {
-		delete bud;
-		return;
-	} // end if
-	m_companyact->m_pWorkspace->addWindow(bud);
+            delete bud;
+            return;
+        } // end if
+        m_companyact->m_pWorkspace->addWindow(bud);
         bud->show();
     } else {
         close();
@@ -168,23 +169,28 @@ void PagosList::on_mui_crear_clicked() {
 
 void PagosList::imprimir() {
     _depura("PagosList::imprimir", 0);
-     mui_list->imprimirPDF(tr("Listado de Pagos"));
+     mui_list->imprimirPDF(tr("Pagos a proveedores"));
     _depura("END PagosList::imprimir", 0);
 }
 
 
 void PagosList::on_mui_borrar_clicked() {
     _depura("PagosList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
-	mdb_idpago = mui_list->DBvalue("idpago");
-	if (m_modo == 0 && mdb_idpago != "") {
-		PagoView *bud = new PagoView(m_companyact, NULL);
-		bud->cargar(mdb_idpago);
-		bud->borrar();
-	} // end if
-	presentar();
+	   mdb_idpago = mui_list->DBvalue("idpago");
+	   if (m_modo == 0 && mdb_idpago != "") {
+		  PagoView *bud = new PagoView(m_companyact, NULL);
+		  bud->cargar(mdb_idpago);
+		  bud->borrar();
+	   } // end if
+	   presentar();
     } catch (...)  {
-	mensajeInfo(tr("Error al borrar el pago"));
+    	mensajeInfo(tr("Error al borrar el pago"));
     } // end try
     _depura("END PagosList::on_mui_borrar_clicked", 0);
 }

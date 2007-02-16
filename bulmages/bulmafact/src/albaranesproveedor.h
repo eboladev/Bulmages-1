@@ -28,6 +28,8 @@
 #include "busquedaarticulo.h"
 #include "funcaux.h"
 #include "subform2bf.h"
+#include "ficha.h"
+
 
 /// Clase que maneja el subformulario de los albaranes de proveedor.
 /** Deriva de la clase SubForm2Bf.
@@ -44,8 +46,7 @@ public slots:
     virtual void cargar() {
         _depura("AlbaranesProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM albaranp";
-        cursor2 * cur = companyact()->cargacursor(SQLQuery);
-        //cursor2 *cur = empresaact()->cargacursor(SQLQuery);
+        cursor2 *cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     };
@@ -60,7 +61,7 @@ public slots:
 
 /// Clase que controla la pantalla de listado de albaranes a proveedor.
 /// \TODO: Deberia derivar de Ficha o Listado en lugar de QWidget.
-class AlbaranesProveedor : public QWidget, public Ui_AlbaranesProveedorListBase {
+class AlbaranesProveedor : public Ficha, public Ui_AlbaranesProveedorListBase {
     Q_OBJECT
 private:
     /// El puntero m_companyact que se propaga por practicamente todas las clases de la aplicacion.
@@ -77,7 +78,6 @@ private:
 public:
     AlbaranesProveedor(QWidget *parent = 0, Qt::WFlags flag = 0);
     AlbaranesProveedor(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
-    //AlbaranesProveedor(Empresa *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~AlbaranesProveedor();
     void presenta();
     void modoseleccion() {
@@ -122,10 +122,11 @@ public:
     QString generaFiltro();
     void editar(int);
     virtual int sacaWindow();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
-        if(text.size() >= 3)
+        if (text.size() >= 3)
             on_mui_actualizar_clicked();
     };
     void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
@@ -136,7 +137,6 @@ public slots:
         if (m_companyact != NULL)
             m_companyact->s_newAlbaranPro();
     };
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_imprimir_clicked() {
         imprimir();
     };
@@ -144,10 +144,11 @@ public slots:
         presenta();
     };
     virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked)
+        if (checked) {
             mui_list->showConfig();
-        else
+        } else {
             mui_list->hideConfig();
+        } // end if
     };
 
 signals:

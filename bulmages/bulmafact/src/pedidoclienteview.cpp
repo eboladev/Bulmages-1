@@ -98,7 +98,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
         while (!cur->eof()) {
-            PresupuestoView *bud = m_companyact->nuevoPresupuesto();
+            PresupuestoView *bud = m_companyact->nuevoPresupuestoView();
             m_companyact->m_pWorkspace->addWindow(bud);
             if (bud->cargar(cur->valor("idpresupuesto"))) {
                 delete bud;
@@ -121,7 +121,7 @@ void PedidoClienteView::on_mui_verpresupuesto_clicked() {
 void PedidoClienteView::generarAlbaran() {
     _depura("PedidoClienteView::generarAlbaran", 0);
     /// Comprobamos que existe el elemento, y en caso afirmativo lo mostramos y salimos de la funcion.
-    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran='" + DBvalue("refpedidocliente") + "' AND idcliente = "+DBvalue("idcliente");
+    QString SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + DBvalue("refpedidocliente") + "' AND idcliente = " + DBvalue("idcliente");
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     if (!cur->eof()) {
 	   /// Informamos que ya hay un albaran y que la abriremos.
@@ -140,32 +140,25 @@ void PedidoClienteView::generarAlbaran() {
     } // end if
     delete cur;
 
-    /// Informamos de que no existe el pedido y a ver si lo queremos realizar.
-    /// Si no salimos de la funcion.
-//    if (QMessageBox::question(this,
-//                              tr("No existe albaran de cliente."),
-//                              tr("No existe un albaran asociado a este pedido."
-//                                 "Desea crearlo?"),
-//                              tr("&Si"), tr("&No"),
-//                              QString::null, 0, 1))
-//        return;
-
     /// Creamos el albaran.
     AlbaranClienteView *bud = m_companyact->newAlbaranClienteView();
     m_companyact->m_pWorkspace->addWindow(bud);
     bud->cargar("0");
 
-    /// Traspasamos los datos del albaran.
+    /// Traspasamos los datos al albaran.
     bud->setcomentalbaran(DBvalue("comentpedidocliente"));
     bud->setdescalbaran(DBvalue("descpedidocliente"));
     bud->setidforma_pago(DBvalue("idforma_pago"));
     bud->setrefalbaran(DBvalue("refpedidocliente"));
     bud->setidcliente(DBvalue("idcliente"));
     bud->setidalmacen(DBvalue("idalmacen"));
+    bud->setcontactalbaran(DBvalue("contactpedidocliente"));
+    bud->settelalbaran(DBvalue("telpedidocliente"));
+    bud->setidtrabajador(DBvalue("idtrabajador"));
     bud->pintar();
     bud->show();
 
-    /// Traspasamos las lineas del albaran.
+    /// Traspasamos las lineas al albaran.
     SDBRecord *linea, *linea1;
     for (int i = 0; i < m_listalineas->rowCount(); ++i) {
         linea = m_listalineas->lineaat(i);

@@ -100,8 +100,10 @@ QString PresupuestoList::generaFiltro() {
     } // end if
 
     if (!m_procesados->isChecked() ) {
-        filtro += " AND NOT procesadopresupuesto";
-    } // end if
+        filtro += " AND NOT procesadopresupuesto ";
+    } else {
+        filtro += " AND procesadopresupuesto ";
+    }// end if
 
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpresupuesto IN (SELECT DISTINCT idpresupuesto FROM lpresupuesto WHERE idarticulo='" + m_articulo->idarticulo() + "')";
@@ -121,7 +123,7 @@ void PresupuestoList::editar(int row) {
     try {
 	m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
 	if (m_modo == 0) {
-		PresupuestoView *prov = m_companyact->nuevoPresupuesto();
+		PresupuestoView *prov = m_companyact->nuevoPresupuestoView();
 		if (prov->cargar(m_idpresupuesto)) {
 		delete prov;
 		return;
@@ -167,7 +169,7 @@ void PresupuestoList::on_mui_borrar_clicked() {
     try {
         m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"));
         if (m_modo == 0) {
-            PresupuestoView *pv = m_companyact->nuevoPresupuesto();
+            PresupuestoView *pv = m_companyact->nuevoPresupuestoView();
             if (pv->cargar(m_idpresupuesto))
                 throw -1;
             pv->on_mui_borrar_clicked();

@@ -80,7 +80,7 @@ QString PedidosClienteList::generarFiltro() {
     QString filtro = "";
     if (m_filtro->text() != "") {
         filtro = " AND ( descpedidocliente LIKE '%" + m_filtro->text() + "%' ";
-        filtro +=" OR refpedidocliente LIKE '"+m_filtro->text()+"%' ";
+        filtro +=" OR refpedidocliente LIKE '" + m_filtro->text() + "%' ";
         filtro += " OR nomcliente LIKE '%" + m_filtro->text() + "%') ";
     } else {
         filtro = "";
@@ -89,8 +89,10 @@ QString PedidosClienteList::generarFiltro() {
         filtro += " AND pedidocliente.idcliente = " + m_cliente->idcliente();
     } // end if
     if (!m_procesados->isChecked()) {
-        filtro += " AND NOT procesadopedidocliente";
-    } // end if
+        filtro += " AND NOT procesadopedidocliente ";
+    } else {
+        filtro += " AND procesadopedidocliente ";
+    }// end if
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidocliente IN (SELECT DISTINCT idpedidocliente FROM lpedidocliente WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if
@@ -133,7 +135,7 @@ void PedidosClienteList::on_mui_editar_clicked() {
         return;
     } else {
         editar(a);
-    }// end if
+    } // end if
 }
 
 

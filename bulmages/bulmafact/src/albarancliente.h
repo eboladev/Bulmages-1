@@ -37,7 +37,6 @@ Q_OBJECT
 
 public:
     AlbaranCliente(company *, QWidget *);
-    
     virtual ~AlbaranCliente();
     QString idalbaran() {
         return DBvalue("idalbaran");
@@ -84,14 +83,11 @@ public:
     QString telalbaran() {
         return DBvalue("telalbaran");
     };
-
     virtual void pintar();
     virtual int guardar();
     virtual int borrar();
     virtual int cargar(QString);
     void vaciaAlbaranCliente();
-
-
     void setidalbaran(QString val) {
         setDBvalue("idalbaran", val);
         m_listalineas->setColumnValue("idalbaran", val);

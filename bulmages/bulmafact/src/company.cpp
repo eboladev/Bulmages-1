@@ -504,7 +504,7 @@ void company::listBudgets() {
     Es importante tener la creacion de instancias centralizada en esta clase para asegurar
     Que se lanzan los plugins necesarios.
 */
-PresupuestoView *company::nuevoPresupuesto() {
+PresupuestoView *company::nuevoPresupuestoView() {
     _depura("company::nuevoPresupuesto", 0);
     /// Lanzamos los plugins necesarios.
     PresupuestoView *bud;
@@ -515,6 +515,23 @@ PresupuestoView *company::nuevoPresupuesto() {
     return bud;
 }
 
+
+/** Crea una instancia de la clase PedidoProveedorView.
+    Es importante tener la creacion de instancias centralizada en esta clase para asegurar
+    Que se lanzan los plugins necesarios.
+*/
+PedidoProveedorView *company::nuevoPedidoProveedorView() {
+    _depura("company::nuevoPedidoProveedor", 0);
+    /// Lanzamos los plugins necesarios.
+    PedidoProveedorView *bud;
+    if (g_plugins->lanza("company_nuevoPedidoProveedor", this, (void **)&bud))
+        return bud;
+    bud = new PedidoProveedorView(this, 0);
+    _depura("END company::nuevoPedidoProveedor", 0);
+    return bud;
+}
+
+
 /** Crea y muestra la Ficha de presupuesto.
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo nuevoPresupuesto().
 */
@@ -523,7 +540,7 @@ void company::s_newPresupuestoCli() {
     /// Lanzamos los plugins necesarios.
     if (g_plugins->lanza("company_s_newPresupuestoCli", this))
         return;
-    PresupuestoView *bud = nuevoPresupuesto();
+    PresupuestoView *bud = nuevoPresupuestoView();
     m_pWorkspace->addWindow(bud);
     bud->inicializar();
     bud->show();
@@ -913,28 +930,12 @@ void company::s_newPedidoClienteView() {
 }
 
 
-/** Crea una instancia de la clase PedidoProveedorView
-    Es importante tener la creacion de instancias centralizada en esta clase para asegurar
-    Que se lanzan los plugins necesarios.
-*/
-PedidoProveedorView *company::newPedidoProveedorView() {
-    _depura("company::newPedidoProveedorView", 0);
-    /// Lanzamos los plugins necesarios.
-    PedidoProveedorView *bud;
-    if (g_plugins->lanza("company_newPedidoProveedorView", this, (void **)&bud))
-        return bud;
-    bud = new PedidoProveedorView(this, 0);
-    _depura("END company::newPedidoProveedorView", 0);
-    return bud;
-}
-
-
 /** Crea y muestra la ficha de Pedido de Proveedor.
     Si solo se desea crear la ficha sin mostrarla debe usar el metodo newPedidoProveedorView().
 */
 void company::s_newPedidoProveedorView() {
     _depura("company::s_newPedidoProveedorView", 0);
-    PedidoProveedorView *bud = newPedidoProveedorView();
+    PedidoProveedorView *bud = nuevoPedidoProveedorView();
     m_pWorkspace->addWindow(bud);
     bud->pintar();
     bud->show();

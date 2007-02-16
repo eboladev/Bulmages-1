@@ -85,8 +85,10 @@ QString PedidosProveedorList::generarFiltro() {
         filtro += " AND pedidoproveedor.idproveedor = " + m_proveedor->idproveedor();
     } // end if
     if (!m_procesados->isChecked()) {
-        filtro += " AND NOT procesadopedidoproveedor";
-    } // end if
+        filtro += " AND NOT procesadopedidoproveedor ";
+    } else {
+        filtro += " AND procesadopedidoproveedor ";
+    }// end if
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idpedidoproveedor IN (SELECT DISTINCT idpedidoproveedor FROM lpedidoproveedor WHERE idarticulo = '" + m_articulo->idarticulo() + "')";
     } // end if
@@ -103,24 +105,31 @@ QString PedidosProveedorList::generarFiltro() {
 
 void PedidosProveedorList::imprimir() {
     _depura("PedidosProveedorList::imprimir", 0);
-    mui_list->imprimirPDF(tr("Listado de Pedidos a Proveedores"));
+    mui_list->imprimirPDF(tr("Pedidos a proveedores"));
     _depura("END PedidosProveedorList::imprimir", 0);
 }
 
 
 void PedidosProveedorList::on_mui_borrar_clicked() {
     _depura("PedidosProveedorList::on_mui_borrar_clicked", 0);
+    int a = mui_list->currentRow();
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } // end if
     try {
-	mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
-	if (mdb_idpedidoproveedor == "") return;
-	PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
-	if (prov->cargar(mdb_idpedidoproveedor)) {
-		throw -1;
-	} // end if
-	prov->borrar();
-	presenta();
-    } catch(...) {
-	mensajeInfo(tr("No se pudo borrar el pedido proveedor"));
+        mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"));
+        if (m_modo == 0) {
+            PedidoProveedorView *ppv = m_companyact->nuevoPedidoProveedorView();
+            if (ppv->cargar(mdb_idpedidoproveedor)) {
+                throw -1;
+            } // end if
+            ppv->on_mui_borrar_clicked();
+            ppv->close();
+        } // end if
+        presenta();
+    } catch (...) {
+        mensajeInfo(tr("Error al borrar el pedido a proveedor"));
     } // end try
     _depura("END PedidosProveedorList::on_mui_borrar_clicked", 0);
 }
@@ -129,20 +138,20 @@ void PedidosProveedorList::on_mui_borrar_clicked() {
 void PedidosProveedorList::editar(int row) {
     _depura("PedidosProveedorList::editar", 0);
     try {
-	mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
-	if (m_modo == 0) {
-		PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
-		if (prov->cargar(mdb_idpedidoproveedor)) {
-		delete prov;
-		return;
-		} // end if
-		m_companyact->m_pWorkspace->addWindow(prov);
-		prov->show();
-	} else {
-		emit(selected(mdb_idpedidoproveedor));
-	} // end if
-    } catch(...) {
-	mensajeInfo(tr("Error al cargar el pedido proveedor"));
+	   mdb_idpedidoproveedor = mui_list->DBvalue(QString("idpedidoproveedor"), row);
+	   if (m_modo == 0) {
+		  PedidoProveedorView *prov = new PedidoProveedorView(m_companyact, 0);
+		  if (prov->cargar(mdb_idpedidoproveedor)) {
+		  delete prov;
+		  return;
+		  } // end if
+		  m_companyact->m_pWorkspace->addWindow(prov);
+		  prov->show();
+	   } else {
+		  emit(selected(mdb_idpedidoproveedor));
+	   } // end if
+    } catch (...) {
+    	mensajeInfo(tr("Error al cargar el pedido proveedor"));
     } // end try
     _depura("END PedidosProveedorList::editar", 0);
 }
@@ -150,10 +159,12 @@ void PedidosProveedorList::editar(int row) {
 
 void PedidosProveedorList::on_mui_editar_clicked() {
     int a = mui_list->currentRow();
-    if (a >= 0)
+    if (a < 0) {
+        mensajeInfo(tr("Debe seleccionar una linea"));
+        return;
+    } else {
         editar(a);
-    else
-        _depura("Debe seleccionar una linea", 2);
+    } // end if
 }
 
 
@@ -163,22 +174,22 @@ void PedidosProveedorList::on_mui_editar_clicked() {
 PedidosProveedorListSubform::PedidosProveedorListSubform(QWidget *parent) : SubForm2Bf(parent) {
     setDBTableName("pedidoproveedor");
     setDBCampoId("idpedidoproveedor");
-    addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido proveedor"));
-    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo de almacen"));
-    addSHeader("refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia pedido proveedor"));
-    addSHeader("numpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero pedido proveedor"));
-    addSHeader("descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion pedido proveedor"));
+    addSHeader("numpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero de pedido"));
     addSHeader("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre de proveedor"));
     addSHeader("fechapedidoproveedor", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha pedido proveedor"));
+    addSHeader("refpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Referencia pedido"));
+    addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base Imponible"));
+    addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
+    addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total pedido"));
+    addSHeader("descpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Descripcion pedido proveedor"));
+    addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo de almacen"));
     addSHeader("contactpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Persona de contacto proveedor"));
     addSHeader("telpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono proveedor"));
     addSHeader("comentpedidoproveedor", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario pedido proveedor"));
+    addSHeader("idpedidoproveedor", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id pedido"));
     addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
     addSHeader("idproveedor", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id proveedor"));
     addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id almacen"));
-    addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
-    addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
-    addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);

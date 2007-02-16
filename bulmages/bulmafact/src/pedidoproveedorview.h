@@ -100,7 +100,7 @@ public:
     virtual int guardar();
     virtual int cargar(QString id);
     virtual int borrar() {
-        return PedidoProveedorView::borrar();
+        return PedidoProveedor::borrar();
     };
 
 public slots:

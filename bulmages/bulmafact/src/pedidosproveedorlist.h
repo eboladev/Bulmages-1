@@ -40,7 +40,7 @@ public:
     virtual void cargar() {
         _depura("PedidosProveedorListSubform::cargar\n", 0);
         QString SQLQuery = "SELECT * FROM pedidoproveedor";
-        cursor2 * cur = companyact()->cargacursor(SQLQuery);
+        cursor2 *cur = companyact()->cargacursor(SQLQuery);
         SubForm3::cargar(cur);
         delete cur;
     }
@@ -107,6 +107,7 @@ public:
     }
     QString generarFiltro();
     void editar(int);
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_m_filtro_textChanged(const QString &text) {
@@ -129,7 +130,6 @@ public slots:
     virtual void s_filtrar() {
         presenta();
     }
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_editar_clicked();
     virtual void on_mui_configurar_toggled(bool checked) {
         if (checked) {

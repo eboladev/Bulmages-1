@@ -37,6 +37,7 @@ BusquedaAlmacen::BusquedaAlmacen(QWidget *parent, const char *)
     _depura("END BusquedaAlmacen::BusquedaAlmacen", 0);
 }
 
+
 /** El destructor no precisa de operaciones especiales
 */
 BusquedaAlmacen::~BusquedaAlmacen() {
@@ -61,21 +62,22 @@ void BusquedaAlmacen::setidalmacen(QString idalmacen) {
     clear();
     addItem("--");
     while (!m_cursorcombo->eof()) {
-        i ++;
-	if (m_cursorcombo->valor("codigoalmacen") == m_codigoalmacen)
-	    i2 = i;
-        if (m_cursorcombo->valor("idalmacen") == idalmacen)
-            i1 = i;
-        addItem(m_cursorcombo->valor("nomalmacen"));
-        m_cursorcombo->siguienteregistro();
-    } //end while
-    if (i1 != 0) {
-    	setCurrentIndex(i1);
-    } else {
-	setCurrentIndex(i2);
+       i++;
+	   if (m_cursorcombo->valor("codigoalmacen") == m_codigoalmacen)
+	       i2 = i;
+            if (m_cursorcombo->valor("idalmacen") == idalmacen)
+                i1 = i;
+            addItem(m_cursorcombo->valor("nomalmacen"));
+            m_cursorcombo->siguienteregistro();
+        } //end while
+        if (i1 != 0) {
+            setCurrentIndex(i1);
+        } else {
+            setCurrentIndex(i2);
     } // end if
     _depura("END BusquedaAlmacen::setidalmacen", 0, idalmacen);
 }
+
 
 QString BusquedaAlmacen::idalmacen() {
 	_depura("BusquedaAlmacen::idalmacen", 0);
@@ -88,6 +90,7 @@ QString BusquedaAlmacen::idalmacen() {
             return "";
         } // end if
 }
+
 
 void BusquedaAlmacen::setcompany(company *comp) {
 	_depura("BusquedaAlmacen::setcompany", 0);
@@ -110,6 +113,4 @@ void BusquedaAlmacen::m_activated(int index) {
         } // end if
 	_depura("END BusquedaAlmacen::m_activated", 0);
 }
-
-
 

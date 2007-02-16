@@ -271,7 +271,7 @@ void AlbaranProveedorView::on_mui_verpedidosproveedor_clicked() {
     QString query = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + DBvalue("refalbaranp") + "'";
     cursor2 *cur = m_companyact->cargacursor(query);
     while (!cur->eof()) {
-        PedidoProveedorView *pedpro = m_companyact->newPedidoProveedorView();
+        PedidoProveedorView *pedpro = m_companyact->nuevoPedidoProveedorView();
         pedpro->cargar(cur->valor("idpedidoproveedor"));
         m_companyact->m_pWorkspace->addWindow( pedpro);
         pedpro->show();
