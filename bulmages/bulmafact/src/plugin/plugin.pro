@@ -16,13 +16,23 @@ QMAKE_LIBDIR += ../../../installbulmages
 unix{
     TARGET = ../../../installbulmages/plugins/mypluginbf
 
-    INCLUDEPATH = ../../../bulmalib \
+    INCLUDEPATH += ../../../bulmalib \
 		  .. \
 		  ../.ui \
 		  /usr/include/qt4 \
 		  /usr/include/qt4/Qt \
 		  ../../src \
-		  ../../../bulmalib/.ui 
+		  ../../../bulmalib/.ui \
+		  /usr/include/qt4 \
+		  /usr/include/qt4/Qt \
+		  /usr/include/qt4/QtXml \
+		  /usr/include/qt4/QtGui \
+		  /usr/include/Qt \
+		  /usr/include/QtXml \
+		  /usr/lib/qt4/include/Qt \
+		  /usr/lib/qt4/include/QtXml \
+		  /usr/include/qt4/QtAssistant \
+		  .
 
     UI_DIR = .ui
     MOC_DIR = .moc
