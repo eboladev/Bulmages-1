@@ -21,7 +21,8 @@ SOURCES += efacturabf.cpp \
 	    
 TEMPLATE = lib
 CONFIG += release \
-efacturabf
+efacturabf \
+assistant
 LIBS += -rdynamic
 VERSION = 1.0.0
 QMAKE_LIBDIR += ../../../installbulmages

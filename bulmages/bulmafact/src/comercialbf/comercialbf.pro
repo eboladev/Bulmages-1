@@ -5,7 +5,8 @@
 TEMPLATE = lib
 
 CONFIG += release \
-          plugin
+          plugin \
+          assistant
 
 LIBS +=	 -rdynamic \
 	 -lbulmalib
