@@ -24,6 +24,8 @@
 
 #include <QPixmap>
 #include <QEvent>
+#include <QProgressBar>
+
 
 #include "bulmacont.h"
 #include "configuracion.h"
@@ -55,8 +57,6 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     vboxlayout->addWidget(m_pWorkspace);
     vboxlayout->addWidget(m_pb);
 
-
-//    showMaximized();
     showNormal();
 
     m_empresaactual = new empresa();
@@ -66,13 +66,14 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
 
     connect(m_pWorkspace, SIGNAL(windowActivated(QWidget *)), this, SLOT(informaindexador(QWidget *)));
 
-
     /// Aqu&iacute; creamos la ventana dock para meter las distintas ventanas.
     m_list = new listventanas(0);
     m_list->setVisible(FALSE);
 
     /// Iniciamos el listventanas con el workspace para que pueda operar con el.
     m_list->setWorkspace(m_pWorkspace);
+
+    connect(m_list, SIGNAL(cambiaEstadoVisible(bool)), this, SLOT(setActionIndexador(bool)));
 
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 

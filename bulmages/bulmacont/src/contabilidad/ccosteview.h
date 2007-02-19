@@ -52,11 +52,11 @@ public:
     ~ccosteview();
     void pintar();
     void mostrarplantilla();
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_mui_guardar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_list_itemClicked(QTreeWidgetItem *, int);
     virtual void closeEvent(QCloseEvent *);
 };

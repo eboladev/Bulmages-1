@@ -36,6 +36,7 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     m_companyact = NULL;
     mui_list->setSelectionMode(QAbstractItemView::SingleSelection);
     mui_list->setSelectionBehavior(QAbstractItemView::SelectRows);
+    mui_list->setHorizontalScrollMode(QAbstractItemView::ScrollPerPixel);
     mui_list->setAlternatingRowColors(TRUE);
     mui_list->setSortingEnabled(FALSE); /// TODO:Hay un Bug que impide ordenar bien los elementos.
     mui_list->horizontalHeader()->setMovable(TRUE);
@@ -539,7 +540,6 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
 }
 
 
-
 /** Establece el valor de toda la columna.
 */
 void SubForm3::setColumnValue(QString campo, QString valor) {
@@ -560,6 +560,7 @@ void SubForm3::setColumnValue(QString campo, QString valor) {
     } // end for
     _depura("END SubForm3::setColumnValue", 0);
 }
+
 
 Fixed SubForm3::sumarCampo(QString campo) {
     _depura("SubForm3::sumarCampo", 0);
@@ -609,7 +610,7 @@ int SubForm3::guardar() {
         } // end while
 
         /// Si no hay elementos que guardar salimos.
-        if(mui_list->rowCount() == 0 || ( (mui_list->rowCount() == 1) && m_insercion)) {
+        if (mui_list->rowCount() == 0 || ((mui_list->rowCount() == 1) && m_insercion)) {
             return 0;
         } // end if
 
@@ -617,8 +618,9 @@ int SubForm3::guardar() {
         for (int j = 0; j < mui_list->rowCount() - 1; ++j) {
             rec = lineaat(j);
             if (rec) {
-                if (m_orden)
-                    rec->setDBvalue("orden"+m_tablename, QString::number(j));
+                if (m_orden) {
+                    rec->setDBvalue("orden" + m_tablename, QString::number(j));
+                } // end if
                 rec->refresh();
                 rec->guardar();
             } // end if
@@ -628,11 +630,10 @@ int SubForm3::guardar() {
         if (!m_insercion) {
             rec = lineaat(mui_list->rowCount() - 1);
             if (m_orden)
-                rec->setDBvalue("orden"+m_tablename, QString::number(mui_list->rowCount() - 1));
+                rec->setDBvalue("orden" + m_tablename, QString::number(mui_list->rowCount() - 1));
             rec->refresh();
             rec->guardar();
         } // end if
-
 
         /// Liberamos memoria
         while (!m_listaborrar.isEmpty()) {
@@ -644,9 +645,12 @@ int SubForm3::guardar() {
 
         _depura("END SubForm3::guardar", 0);
         return 0;
+    } catch (int e) {
+        if (e == 100) {
+            throw -1;
+        } // end if
     } catch (...) {
-        mensajeInfo("error inesperado en el guardado, salimos devolviento -1");
-        _depura("Error inesperado en el guardado,", 3);
+        mensajeError("Error inesperado en el guardado. [SubForm3::guardar]");
         throw -1;
     } // end try
 }
@@ -669,8 +673,8 @@ int SubForm3::borrar() {
         } // end if
         _depura("END SubForm3::borrar", 0);
         return error;
-    } catch(...) {
-        _depura("SubForm3::borrar() Error al borrar", 3);
+    } catch (...) {
+        mensajeError("Error al borrar. [SubForm3::borrar]");
         return -1;
     } // end try
 }

@@ -111,6 +111,13 @@ private slots:
     /// Gets called when the window menu is activated; recreates the window menu with all
     /// opened window titles.
     void windowMenuAboutToShow();
+    void setActionIndexador(bool visible) {
+        if (visible == TRUE) {
+            actionIndexador->setChecked(TRUE);
+        } else {
+            actionIndexador->setChecked(FALSE);
+        } // end if
+    };
 
 private:
     /// The name used.
@@ -243,6 +250,13 @@ public slots:
         m_empresaactual->boton_ultimo();
     }
     virtual void informaindexador(QWidget *w);
+    virtual void on_actionIndexador_triggered() {
+        if (actionIndexador->isChecked() == TRUE) {
+            m_empresaactual->s_indexadorCambiaEstado(TRUE);
+        } else {
+            m_empresaactual->s_indexadorCambiaEstado(FALSE);
+        } // end if
+    };
 };
 
 #endif

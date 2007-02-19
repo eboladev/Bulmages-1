@@ -124,29 +124,47 @@ int empresa::inicializa1() {
     selcanales = new selectcanalview(this, 0);
 
     /// Inicializamos las ventanas de uso generalizado.
+
+    /// Establecemos el porcentaje del carga de informaci&oacute;n en las diferentes ventanas.
+    /// pb = 0%
+    m_progressbar->setValue(0);
     extracto = new extractoview1(this, 0);
     m_pWorkspace->addWindow(extracto);
 
+    /// pb = 20%
+    m_progressbar->setValue(20);
     diario = new DiarioView(this, 0);
     m_pWorkspace->addWindow(diario);
 
+    /// pb = 35%
+    m_progressbar->setValue(35);
     balance = new balanceview(this, 0);
     m_pWorkspace->addWindow(balance);
 
+    /// pb = 50%
+    m_progressbar->setValue(50);
     balance1 = new BalanceTreeView(this, 0);
     m_pWorkspace->addWindow(balance1);
 
+    /// pb = 60%
+    m_progressbar->setValue(60);
     introapunts2 = new Asiento1View(this, 0);
     m_pWorkspace->addWindow(introapunts2);
 
+    /// pb = 75%
+    m_progressbar->setValue(75);
     m_listasientos = new asientosview(this, 0);
     m_listasientos->inicializa();
     m_pWorkspace->addWindow(m_listasientos);
 
+    /// pb = 90%
+    m_progressbar->setValue(90);
     m_listcuentas = new listcuentasview1(this, 0);
     m_listcuentas->inicializa();
     m_pWorkspace->addWindow(m_listcuentas);
 
+    /// pb = 100%
+    m_progressbar->setValue(100);
     _depura("END empresa::inicializa1", 0);
     return(0);
 }
@@ -446,7 +464,7 @@ void empresa::Abrirasientos() {
 
 void empresa::Ordenarasientos() {
     QString query= "SELECT reordenaasientosall()";
-    cursor2 * cur = cargacursor(query, "hola");
+    cursor2 *cur = cargacursor(query, "hola");
     delete cur;
     introapunts2->cargaasientos();
     introapunts2->boton_fin();

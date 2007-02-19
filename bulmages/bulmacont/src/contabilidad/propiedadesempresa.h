@@ -31,6 +31,7 @@
 #include "ficha.h"
 #include "subform2bc.h"
 
+
 class empresa;
 
 
@@ -53,7 +54,6 @@ public slots:
 };
 
 
-
 #include "ui_propiedadesempresabase.h"
 
 
@@ -71,10 +71,10 @@ public:
     propiedadesempresa(empresa *emp, QWidget *parent = 0);
     ~propiedadesempresa();
     int inicializa();
+    virtual void on_mui_guardar_clicked();
 
 public slots:
     virtual bool close();
-    virtual void on_mui_guardar_clicked();
     virtual void on_mui_modificarplan_clicked();
 };
 

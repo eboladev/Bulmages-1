@@ -23,6 +23,7 @@
 
 #include <Qt>
 #include <QWidget>
+#include <QHeaderView>
 
 #include "ui_subform3base.h"
 #include "postgresiface2.h"
@@ -80,7 +81,6 @@ public:
     bool sortingEnabled();
     void setOrdenEnabled(bool);
     bool ordenEnabled();
-
     bool campoCompleto(int row);
     void setDelete(bool f) {
         m_delete = f;
@@ -113,6 +113,9 @@ public:
     };
     int currentColumn() {
         return mui_list->currentColumn();
+    };
+    void setResizeMode(QHeaderView::ResizeMode modo) {
+        mui_list->horizontalHeader()->setResizeMode(modo);
     };
     void resizeColumnsToContents() {
         mui_list->resizeColumnsToContents();

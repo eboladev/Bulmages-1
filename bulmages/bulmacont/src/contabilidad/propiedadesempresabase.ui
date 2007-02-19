@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>535</width>
-    <height>311</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="acceptDrops" >
@@ -112,16 +112,16 @@
      <property name="currentIndex" >
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab2" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>Dí&amp;gitos de cuentas</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="QLabel" name="TextLabel1" >
@@ -136,7 +136,7 @@
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>4</number>
+          <number>5</number>
          </property>
          <item>
           <widget class="QLabel" name="TextLabel1_2" >
@@ -171,7 +171,7 @@ yyyy --> Dígitos de cuenta.</string>
           <number>0</number>
          </property>
          <property name="spacing" >
-          <number>6</number>
+          <number>5</number>
          </property>
          <item>
           <spacer>
@@ -226,16 +226,16 @@ yyyy --> Dígitos de cuenta.</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab2" >
       <attribute name="title" >
-       <string>Propiedades Generales</string>
+       <string>Propiedades generales</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
-        <number>9</number>
+        <number>5</number>
        </property>
        <property name="spacing" >
-        <number>6</number>
+        <number>5</number>
        </property>
        <item>
         <widget class="ListConfiguracionSubForm" name="mui_subform" />

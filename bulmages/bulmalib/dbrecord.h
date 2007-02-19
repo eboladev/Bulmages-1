@@ -106,15 +106,13 @@ public:
     virtual int DBsave(QString &id);
     virtual int setDBvalue(QString, QString);
     QString DBvalue(QString);
-
     bool exists(QString);
-
     QString DBvalueprep(QString);
     void setDBTableName(QString nom) {
         m_tablename = nom;
     };
     void setNuevo(bool n) {
-	m_nuevoCampo = n;
+	   m_nuevoCampo = n;
     };
     QString tableName() {
         return m_tablename;

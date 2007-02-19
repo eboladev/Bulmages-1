@@ -24,6 +24,7 @@
 #include "propiedadesempresa.h"
 #include "empresa.h"
 
+
 propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
         : Ficha(parent) {
     _depura("propiedadesempresa::propiedadesempresa", 0);
@@ -34,6 +35,7 @@ propiedadesempresa::propiedadesempresa(empresa *emp, QWidget *parent)
 
     mui_subform->setcompany(m_companyact);
     mui_subform->cargar();
+    //mui_subform->setResizeMode(QHeaderView::Stretch);
 
     m_companyact->meteWindow(windowTitle(), this);
     _depura("END propiedadesempresa::propiedadesempresa", 0);
@@ -79,7 +81,6 @@ void propiedadesempresa::on_mui_guardar_clicked() {
 }
 
 
-
 bool propiedadesempresa::close() {
     _depura("propiedadesempresa::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
@@ -94,6 +95,7 @@ bool propiedadesempresa::close() {
     _depura("END propiedadesempresa::close", 0);
     return QWidget::close();
 }
+
 
 /// Este SLOT corresponde a la pulsaci&oacute;n del bot&oacute;n de modificar plan contable
 /// de la pantalla de configuraci&oacute;n.
@@ -124,7 +126,7 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
     m_companyact->commit();
     if (QMessageBox::warning(this,
                              tr("Salir del programa"),
-                             tr("Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\nSalir ahora?"),
+                             tr("Para que los cambios tengan efecto\ndebe salir del programa y volver a entrar.\n\nSalir ahora?"),
                              tr("&Salir"), tr("&No salir"), 0, 0, 1) == 0) {
         exit(1);
     } // end if

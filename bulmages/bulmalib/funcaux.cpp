@@ -342,7 +342,23 @@ void _depura(QString cad, int nivel, QString param) {
 
 void mensajeInfo(QString cad) {
     QMessageBox::information(NULL,
-                             QApplication::translate("funcaux", "Atencion"),
+                             QApplication::translate("funcaux", "Informacion del programa"),
+                             cad, QApplication::translate("funcaux", "&Continuar"),
+                             QString::null, 0);
+}
+
+
+void mensajeAviso(QString cad) {
+    QMessageBox::warning(NULL,
+                             QApplication::translate("funcaux", "Aviso del programa"),
+                             cad, QApplication::translate("funcaux", "&Continuar"),
+                             QString::null, 0);
+}
+
+
+void mensajeError(QString cad) {
+    QMessageBox::critical(NULL,
+                             QApplication::translate("funcaux", "Error del programa"),
                              cad, QApplication::translate("funcaux", "&Continuar"),
                              QString::null, 0);
 }

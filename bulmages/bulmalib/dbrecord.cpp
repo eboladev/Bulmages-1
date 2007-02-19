@@ -41,7 +41,7 @@ QString DBCampo::valorcampoprep(int &error) {
     error = 0;
     if ((m_restrict & DBNotNull) && !(m_restrict & DBAuto)) {
         if (m_valorcampo == "") {
-            _depura("Campo " + m_nompresentacion + " vacio", 2);
+            mensajeAviso("El campo '" + m_nompresentacion + "' no puede estar vacio.");
             error = -1;
             return "";
         } // end if
@@ -106,8 +106,8 @@ int DBRecord::DBload(cursor2 *cur) {
         if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
             m_nuevoCampo = TRUE;
         error += linea->set(val);
-	/// Al ser una carga consideramos que los cambios estan inicializados.
-	linea->resetCambio();
+    	/// Al ser una carga consideramos que los cambios estan inicializados.
+	   linea->resetCambio();
     } // end for
     _depura("END DBRecord::DBload", 0);
     return error;
@@ -196,7 +196,7 @@ int DBRecord::DBsave(QString &id) {
         return 0;
     } catch (...) {
         _depura("EXCEPTION DBRecord::DBsave", 0);
-        throw (-1);
+        throw -1;
     } // end try
     _depura("END DBRecord::DBSave", 0);
 }
@@ -234,9 +234,10 @@ QString DBRecord::DBvalue(QString nomb) {
     } // end if
     if (linea->nomcampo() == nomb) {
         return linea->valorcampo();
-    }
+    } // end if
     return "";
 }
+
 
 bool DBRecord::exists(QString nomb) {
     _depura("DBRecord::exists", 0, nomb);
@@ -263,13 +264,13 @@ QString DBRecord::DBvalueprep(QString nomb) {
     while (linea && linea->nomcampo() != nomb)
         linea = m_lista.value(++i);
     if (!linea) {
-        _depura("Campo " + nomb + " no encontrado", 2);
+        mensajeAviso("No se ha encontrado el campo '" + nomb + "'.");
         return "";
     } // end if
     if (linea->nomcampo() == nomb) {
         int err;
         return linea->valorcampoprep(err);
-    }
+    } // end if
     return "";
 }
 
@@ -322,8 +323,8 @@ int DBRecord::borrar() {
         return 0;
     } catch (...) {
         mensajeInfo("se produjo un error al borrar el elemento");
-	_depura("DBRecord::borrar() Error al borrar elemento", 3);
-	throw -1;
+        _depura("DBRecord::borrar() Error al borrar elemento", 3);
+        throw -1;
     }
 }
 
@@ -337,8 +338,8 @@ int DBRecord::guardar() {
         _depura("END DBRecord::guardar", 0);
         return 0;
     } catch (...) {
-        mensajeInfo("DBRecord::guardar error en el guardado");
-        throw -1;
+        mensajeError("DBRecord:: Se ha producido un error al guardar los datos.");
+        throw -100;
     } // end try
 }
 
@@ -347,7 +348,7 @@ int DBRecord::guardar() {
 int DBRecord::cargar(QString id) {
     _depura("DBRecord::cargar", 0);
     QString query = "SELECT * FROM " + m_tablename + " WHERE " + m_campoid + " = " + id;
-    cursor2 * cur = m_conexionbase->cargacursor(query);
+    cursor2 *cur = m_conexionbase->cargacursor(query);
     if (!cur->eof()) {
         DBload(cur);
     } // end if
@@ -396,7 +397,6 @@ void DBRecord::imprimir() {
     file.close();
     QString fitxersortidatxt = "";
 
-
     /// Impresion de la tabla de contenidos.
     for (int i = 0; i < m_lista.size(); ++i) {
             linea = m_lista.at(i);
@@ -408,16 +408,15 @@ void DBRecord::imprimir() {
     } // end for
 
     buff.replace("[ficha]", m_tablename);
-
     buff.replace("[story]", fitxersortidatxt);
-
 
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << buff;
         file.close();
-    }
+    } // end if
 
     invocaPDF("ficha");
    _depura("END DBRecord::imprimir", 0);
 }
+

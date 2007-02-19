@@ -22,9 +22,20 @@
      <x>0</x>
      <y>0</y>
      <width>1015</width>
-     <height>26</height>
+     <height>29</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuMaestro" >
+    <property name="title" >
+     <string>&amp;Maestro</string>
+    </property>
+    <addaction name="actionFormas_de_Pago" />
+    <addaction name="actionTipos_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionCentros_de_Coste" />
+    <addaction name="actionCanales" />
+    <addaction name="separator" />
+   </widget>
    <widget class="QMenu" name="menuAyuda" >
     <property name="title" >
      <string>A&amp;yuda</string>
@@ -34,11 +45,19 @@
    </widget>
    <widget class="QMenu" name="menuVer" >
     <property name="title" >
-     <string>Ve&amp;r</string>
+     <string>Ventana</string>
     </property>
     <addaction name="actionPantalla_Completa" />
     <addaction name="actionOrdenar_Ventanas" />
     <addaction name="actionOrganizaci_n_en_Cascada" />
+    <addaction name="actionIndexador" />
+   </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>&amp;Empresa</string>
+    </property>
+    <addaction name="actionConfiguracion" />
+    <addaction name="actionSalir" />
    </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
@@ -51,20 +70,9 @@
     <addaction name="actionCanal_por_Defecto" />
     <addaction name="actionCentro_de_Coste_por_Defecto" />
    </widget>
-   <widget class="QMenu" name="menuMaestro" >
-    <property name="title" >
-     <string>&amp;Maestro</string>
-    </property>
-    <addaction name="actionFormas_de_Pago" />
-    <addaction name="actionTipos_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionCentros_de_Coste" />
-    <addaction name="actionCanales" />
-    <addaction name="separator" />
-   </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
-     <string>&amp;Ventana</string>
+     <string>&amp;Ver</string>
     </property>
     <addaction name="actionPlan_Contable" />
     <addaction name="actionAsientos" />
@@ -95,13 +103,6 @@
     <addaction name="actionAsiento_de_Apertura" />
     <addaction name="actionAsiento_de_Regularizacion" />
     <addaction name="actionAsiento_de_Cierre" />
-   </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>&amp;Empresa</string>
-    </property>
-    <addaction name="actionConfiguracion" />
-    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
@@ -156,6 +157,9 @@
   <action name="actionSalir" >
    <property name="text" >
     <string>&amp;Salir del programa</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+Q</string>
    </property>
   </action>
   <action name="actionAbrir_Asientos" >
@@ -370,6 +374,9 @@
    <property name="text" >
     <string>&amp;Pantalla completa</string>
    </property>
+   <property name="shortcut" >
+    <string>F11</string>
+   </property>
   </action>
   <action name="actionOrdenar_Ventanas" >
    <property name="text" >
@@ -384,6 +391,9 @@
   <action name="actionAyuda" >
    <property name="text" >
     <string>A&amp;yuda</string>
+   </property>
+   <property name="shortcut" >
+    <string>F1</string>
    </property>
   </action>
   <action name="actionAcerca_de" >
@@ -421,6 +431,20 @@
    </property>
    <property name="text" >
     <string>Fin</string>
+   </property>
+  </action>
+  <action name="actionIndexador" >
+   <property name="checkable" >
+    <bool>true</bool>
+   </property>
+   <property name="checked" >
+    <bool>true</bool>
+   </property>
+   <property name="text" >
+    <string>Indexador</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+I</string>
    </property>
   </action>
  </widget>

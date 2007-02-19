@@ -22,9 +22,9 @@
 #include "empresa.h"
 #include "selectccosteview.h"
 
-#define COL_NOM_COSTE 0
+#define COL_NOM_COSTE  0
 #define COL_DESC_COSTE 1
-#define COL_IDC_COSTE 2
+#define COL_IDC_COSTE  2
 
 
 /// Esta clase se encarga de presentar los centros de coste, la ventana, y
@@ -39,7 +39,8 @@ ccosteview::ccosteview(empresa *emp, QWidget *parent)
     idc_coste = 0;
     mui_list->setColumnCount(3);
     QStringList headers;
-    headers << tr("nom_coste") << tr("desc_coste") << tr("idc_coste") ;
+    headers << tr("Nombre") << tr("Descripcion") << tr("Id centro de coste");
+    mui_list->setColumnWidth(0, 200);
     mui_list->setHeaderLabels(headers);
     mui_list->setColumnHidden(COL_IDC_COSTE, TRUE);
     dialogChanges_cargaInicial();
@@ -87,7 +88,7 @@ void ccosteview::pintar() {
     while (!cursoraux2->eof()) {
         padre = atoi(cursoraux2->valor("padre").toAscii());
         idc_coste1 = atoi(cursoraux2->valor("idc_coste").toAscii());
-        fprintf(stderr, "Cuentas de subnivel:%d", padre);
+        fprintf(stderr, "Cuentas de subnivel: %d", padre);
         it = new QTreeWidgetItem(Lista[padre]);
         Lista[idc_coste1] = it;
         it->setText(COL_IDC_COSTE,cursoraux2->valor("idc_coste"));
@@ -162,7 +163,7 @@ void ccosteview::on_mui_crear_clicked() {
                                  QMessageBox::Cancel) == QMessageBox::Ok) {
             on_mui_guardar_clicked();
         } // end if
-    }// end if
+    } // end if
 
     QString query;
     QTreeWidgetItem *it;
@@ -189,8 +190,7 @@ void ccosteview::on_mui_crear_clicked() {
 void ccosteview::on_mui_borrar_clicked() {
     switch (QMessageBox::warning(this,
                                  tr("Borrar centro de coste"),
-                                 tr("Se va a borrar el centro de coste.\n \
-                                    Esta operacion puede ocasionar perdida de datos\n"),
+                                 tr("Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos."),
                                  tr("&Borrar"), tr("&Cancelar"), 0, 0, 1)) {
     case 0: /// Retry clicked or Enter pressed.
         QString query;

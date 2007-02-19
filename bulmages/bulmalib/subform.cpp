@@ -126,14 +126,14 @@ bool SDBCampo::operator< (const QTableWidgetItem &other) const {
 		QString val = ot->valorcampo();
 
 		if (m_tipo == DBCampo::DBnumeric || m_tipo == DBCampo::DBint) {
-		_depura("SDBCampo::operator< es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
+		    _depura("SDBCampo::operator< es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
 			double db1 = m_valorcampo.toDouble();
 			double db2 = val.toDouble();
 			return (db1 < db2);
 		} // end if
 
 		if (m_tipo == DBCampo::DBdate) {
-		_depura("SDBCampo::operator< es del tipo fecha:", 0, m_nomcampo + QString::number(m_tipo));
+            _depura("SDBCampo::operator< es del tipo fecha:", 0, m_nomcampo + QString::number(m_tipo));
                     QDate fech = normalizafecha(m_valorcampo);
                     QString db1 = fech.toString(Qt::ISODate);
 		    QDate fech1 = normalizafecha(val);

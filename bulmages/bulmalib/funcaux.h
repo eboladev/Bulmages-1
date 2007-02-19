@@ -79,6 +79,8 @@ void reemplazaarchivo(QString, QString, QString, QString);
 QString editaTexto(QString texto);
 void _depura(QString cad, int nivel = 0, QString param = "");
 void mensajeInfo(QString cad);
+void mensajeAviso(QString cad);
+void mensajeError(QString cad);
 /// En la impresion de documentos con trml2pdf esta funcion hace casi todo el trabajo.
 /// de la invocacion de trml2pdf.
 /// Para evitar trabajo duplicado. El archivo debe estar ubicado ya en el directorio.

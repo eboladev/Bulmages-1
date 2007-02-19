@@ -47,11 +47,13 @@ SubForm2Bc::SubForm2Bc(QWidget *parent) : SubForm3(parent) {
     _depura("END SubForm2Bc::SubForm2Bc", 0);
 }
 
+
 SubForm2Bc::~SubForm2Bc() {
     _depura("SubForm2Bc::~SubForm2Bc", 0);
     delete m_delegate;
     _depura("END SubForm2Bc::~SubForm2Bc", 0);
 }
+
 
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
@@ -99,6 +101,7 @@ void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
     (text);
 }
 
+
 void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bc::editFinished", 0);
     SDBRecord *rec = lineaat(row);
@@ -134,7 +137,6 @@ void SubForm2Bc::boton_asiento() {
     } // end if
     _depura("END SubForm2Bc::boton_asiento", 0);
 }
-
 
 
 /// Si el parametro pasado es un:
@@ -286,16 +288,16 @@ void SubForm2Bc::procesaMenu(QAction *ac) {
 }
 
 
-// ===============================================================
-//  Tratamientos del Item Delegate
-// ===============================================================
-
+/// ===============================================================
+///  Tratamientos del Item Delegate
+/// ===============================================================
 QSubForm2BcDelegate::QSubForm2BcDelegate(QObject *parent=0) : QItemDelegate(parent) {
     _depura("QSubForm2BcDelegate::QSubForm2BcDelegate", 0);
     m_subform = (SubForm2Bc *) parent;
     installEventFilter(this);
     _depura("END QSubForm2BcDelegate::QSubForm2BcDelegate", 0);
 }
+
 
 QSubForm2BcDelegate::~QSubForm2BcDelegate() {
     _depura("QSubForm2BcDelegate::~QSubForm2BcDelegate", 0);
@@ -326,9 +328,9 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         return editor;
     } else {
         return QItemDelegate::createEditor(parent, option, index);
-    }// end if
-
+    } // end if
 }
+
 
 void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
     _depura("QSubForm2BcDelegate::setModelData", 0);
@@ -360,7 +362,7 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         model->setData(index, value);
     } else {
         QItemDelegate::setModelData(editor, model, index);
-    }// end if
+    } // end if
     _depura("END QSubForm2BcDelegate::setModelData", 0);
 }
 
@@ -390,6 +392,7 @@ void QSubForm2BcDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
     _depura("END QSubForm2BcDelegate::setEditorData", 0);
 }
 
+
 bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     _depura("QSubForm2BcDelegate::eventFilter", 0,   obj->objectName()+" --> " + QString::number(event->type()));
     if (obj->isWidgetType()) {
@@ -397,7 +400,7 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
         _depura("QSubForm2BcDelegate:: de tipo windowRole", 0,   ((QWidget *)obj)->windowRole());
 //        _depura("QSubForm2BcDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
 //        _depura("QSubForm2BcDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
-    }// end if
+    } // end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
     if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
@@ -419,5 +422,4 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     _depura("END QSubForm2BcDelegate::eventFilter()", 0);
     return QItemDelegate::eventFilter(obj, event);
 }
-
 
