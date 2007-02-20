@@ -1,5 +1,5 @@
 -- -------------------------------------------------------------------------------------------
--- (C) Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
+-- (C) Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2007
 -- joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
 --
 --   This program is free software; you can redistribute it and/or modify
@@ -102,18 +102,18 @@ COMMIT;
 
 \echo -n ':: Pedido de cliente ... '
 BEGIN;
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(1, '25/10/2004', 'Pedido  carne y pescado', 1, 1);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(2, '30/10/2004', 'Pedido especial noche ', 2, 3);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(3, '02/11/2004', 'Frutos de temporada', 1, 2);
-INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(4, '02/10/2004', 'Pedido de lencería', 2, 1);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(1, '25/10/2007', 'Pedido  carne y pescado', 1, 1);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(2, '30/10/2007', 'Pedido especial noche ', 2, 3);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(3, '02/11/2007', 'Frutos de temporada', 1, 2);
+INSERT INTO pedidocliente (numpedidocliente, fechapedidocliente, descpedidocliente, idcliente, idalmacen) VALUES(4, '02/10/2007', 'Pedido de lencería', 2, 1);
 \echo -n ':: Pedido de cliente ... '
 COMMIT;
 
 \echo -n ':: Presupuesto ... '
 BEGIN;
-INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', '12/12/2004', 'Sin comentarios', 1, 1, 1,1);
-INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', '13/12/2004', 'Sin comentarios', 1, 1, 1,1);
-INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29', '14/12/2004', 'Sin comentarios', 1, 2, 1,1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (1, '30/11/2007', 'Primer Contacto', '971 32 32 78', '12/12/2007', 'Sin comentarios', 1, 1, 1,1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (2, '29/11/2007', 'Segundo Contacto', '91 454 45 30', '13/12/2007', 'Sin comentarios', 1, 1, 1,1);
+INSERT INTO presupuesto (numpresupuesto, fpresupuesto, contactpresupuesto, telpresupuesto, vencpresupuesto, comentpresupuesto, idusuari, idcliente, idalmacen, idforma_pago) VALUES (3, '10/11/2007', 'Tercer Contacto', '971 29 06 29', '14/12/2007', 'Sin comentarios', 1, 2, 1,1);
 \echo -n ':: Presupuesto ... '
 COMMIT;
 
@@ -126,17 +126,17 @@ COMMIT;
 
 \echo -n ':: Factura a clientes ... '
 BEGIN;
-INSERT INTO factura (codigoserie_factura, numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('DD', 1, '30/11/2004', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1, 1);
-INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('DD', 2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1, 1);
-INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('REC', 3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2, 1);
+INSERT INTO factura (codigoserie_factura, numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('DD', 1, '30/11/2007', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1, 1);
+INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('DD', 2, '29/11/2007', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1, 1);
+INSERT INTO factura (codigoserie_factura,numfactura, ffactura, contactfactura, telfactura, comentfactura, idusuari, idcliente, idalmacen) VALUES ('REC', 3, '10/11/2007', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2, 1);
 \echo -n ':: Factura a clientes ... '
 COMMIT;
 
 \echo -n ':: Factura de proveedor ... '
 BEGIN;
-INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES (1, '30/11/2004', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1);
-INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES (2, '29/11/2004', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1);
-INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES (3, '10/11/2004', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2);
+INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES (1, '30/11/2007', 'Primer Contacto', '971 32 32 78', 'Sin comentarios', 1, 1);
+INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES (2, '29/11/2007', 'Segundo Contacto', '91 454 45 30', 'Sin comentarios', 1, 1);
+INSERT INTO facturap (numfacturap, ffacturap, contactfacturap, telfacturap, comentfacturap, idusuari, idproveedor) VALUES (3, '10/11/2007', 'Tercer Contacto', '971 29 06 29',  'Sin comentarios', 1, 2);
 \echo -n ':: Factura de proveedor ... '
 COMMIT;
 

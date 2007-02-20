@@ -14,8 +14,8 @@ SET search_path = public, pg_catalog;
 --
 
 COPY amortizacion (idamortizacion, idcuentaactivo, idcuentaamortizacion, descamortizacion, nomamortizacion, fechacompra, fecha1cuota, valorcompra, periodicidad, numcuotas, metodo, nifproveedor, nomproveedor, dirproveedor, telproveedor, agrupacion) FROM stdin;
-4	770	770	\N	coche	2004-01-01	2004-01-01	120000	\N	5	\N	\N	\N	\N	\N	vehiculos
-2	770	770	\N	motocicleta	2004-01-01	2004-12-31	6700	\N	5	\N	\N	\N	\N	\N	la amoto
+4	770	770	\N	coche	2007-01-01	2007-01-01	120000	\N	5	\N	\N	\N	\N	\N	vehiculos
+2	770	770	\N	motocicleta	2007-01-01	2007-12-31	6700	\N	5	\N	\N	\N	\N	\N	la amoto
 5	483	586	\N	Edificio Sa Riera	2005-09-10	2005-09-10	100	\N	10	\N	\N	\N	\N	\N	\N
 \.
 

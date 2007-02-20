@@ -1,5 +1,5 @@
 -- -------------------------------------------------------------------------------------------
--- (C) Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2004
+-- (C) Joan Miquel Torres Rigo & Tomeu Borras Riera & Mateu Borras Marco, Agosto 2007
 -- joanmi@bulma.net, tborras@conetxia.com mborras@conetxia.com
 --
 --   This program is free software; you can redistribute it and/or modify

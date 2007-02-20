@@ -18,7 +18,7 @@ INSERT INTO configuracion (nombre, valor) VALUES ('Municipio', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('Provincia', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('Pais', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('Tipo', 'BulmaCont');
-INSERT INTO configuracion (nombre, valor) VALUES ('Ejercicio', '2004');
+INSERT INTO configuracion (nombre, valor) VALUES ('Ejercicio', '2007');
 INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('RegistroEmitida', '472');
 INSERT INTO configuracion (nombre, valor) VALUES ('RegistroSoportada', '477');
