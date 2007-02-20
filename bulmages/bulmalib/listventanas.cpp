@@ -117,7 +117,7 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
                 _depura("listventanas::mostramos la original", 0);
                 ((QWidget *)m->object())->hide();
                 ((QWidget *)m->object())->show();
-		sacaWindow(obj);
+	             sacaWindow(obj);
                 _depura("listventanas::Establecemos la nueva primaria", 0);
                 throw -1;
             } // end if

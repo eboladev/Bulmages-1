@@ -82,7 +82,7 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if (m_modo == 0) {
         botonCancelar->setText(tr("&Cierra el programa"));
-    }
+    } // end if
     cargaArchivo();
     _depura("END abreempresaview::abreempresaview", 0);
 }
@@ -240,38 +240,42 @@ void abreempresaview::guardaArchivo() {
     preparamui_empresas();
     /// Para cada base de datos nos intentamos conectar y miramos de que tipo es.
     while (!curs->eof()) {
-        db1 = new postgresiface2();
-        db1->inicializa(curs->valor("datname"));
-        try {
-            cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
-            if (!curs1->eof()) {
-                tipo = curs1->valor("valor");
-                nomdb = curs->valor("datname");
+        /// Realizamos la comprobacion de que el nombre de la base de datos comienze por 'bulma'
+        /// antes de conectarnos a ella. Evitamos que se conecte con Bases de Datos del sistema.
+        if (curs->valor("datname").startsWith("bulma") == TRUE) {
+            db1 = new postgresiface2();
+            db1->inicializa(curs->valor("datname"));
+            try {
+                cursor2 *curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Tipo'");
+                if (!curs1->eof()) {
+                    tipo = curs1->valor("valor");
+                    nomdb = curs->valor("datname");
+                } // end if
+                delete curs1;
+                curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
+                if (!curs1->eof()) {
+                    nombre = curs1->valor("valor");
+                } // end if
+                delete curs1;
+                curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
+                if (!curs1->eof()) {
+                    ano = curs1->valor("valor");
+                } // end if
+                delete curs1;
+            } catch (...) {}
+            if (nomdb != "") {
+                if (tipo == m_tipo || m_tipo == "") {
+                    insertCompany(nombre, ano, nomdb, tipo);
+                }// end if
+                /// Independientemente de si deben mostrarse o no hay que guardarlas en el archivo.
+                filestr << nombre.toAscii().data() << "\t";
+                filestr << ano.toAscii().data() << "\t";
+                filestr << nomdb.toAscii().data() << "\t";
+                filestr << tipo.toAscii().data()  << endl;
+                nomdb = "";
             } // end if
-            delete curs1;
-            curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'NombreEmpresa'");
-            if (!curs1->eof()) {
-                nombre = curs1->valor("valor");
-            } // end if
-            delete curs1;
-            curs1 = db1->cargacursor("SELECT * FROM configuracion WHERE nombre = 'Ejercicio'");
-            if (!curs1->eof()) {
-                ano = curs1->valor("valor");
-            } // end if
-            delete curs1;
-        } catch (...) {}
-        if (nomdb != "") {
-            if (tipo == m_tipo || m_tipo == "") {
-                insertCompany(nombre, ano, nomdb, tipo);
-            }// end if
-            /// Independientemente de si deben mostrarse o no hay que guardarlas en el archivo.
-            filestr << nombre.toAscii().data() << "\t";
-            filestr << ano.toAscii().data() << "\t";
-            filestr << nomdb.toAscii().data() << "\t";
-            filestr << tipo.toAscii().data()  << endl;
-            nomdb = "";
+            delete db1;
         } // end if
-        delete db1;
         curs->siguienteregistro();
     } // end while
     delete curs;

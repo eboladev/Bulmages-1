@@ -30,7 +30,7 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
     setDBTableName("asiento");
     setFileConfig("AsientoListSubform");
     setDBCampoId("idasiento");
-    addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("idasiento"));
+    addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id asiento"));
     addSHeader("fecha", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("ordenasiento", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Orden"));
     addSHeader("numap", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Apuntes"));
@@ -43,10 +43,12 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
     _depura("END AsientoListSubform::AsientoListSubform", 0);
 }
 
+
 AsientoListSubform::~AsientoListSubform() {
     _depura("AsientoListSubform::~AsientoListSubform", 0);
     _depura("END AsientoListSubform::~AsientoListSubform", 0);
 }
+
 
 void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
     _depura("AsientoListSubform::contextMenuEvent", 0);

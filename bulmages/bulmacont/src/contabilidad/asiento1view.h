@@ -94,7 +94,6 @@ private:
 public:
     Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
-
     void muestraasiento(QString v);
     void muestraasiento(int v) {
         muestraasiento(QString::number(v));

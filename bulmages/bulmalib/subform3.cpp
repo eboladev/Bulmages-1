@@ -224,9 +224,9 @@ void SubForm3::situarse(unsigned int row, unsigned int col) {
     bool invalido = TRUE;
 
     /// Mientras no se encuentre un candidato y haya candidatos
-    while (invalido && nrow < row +2) {
+    while (invalido && nrow < row + 2) {
         ncol++;
-        if (ncol == (unsigned int ) m_lcabecera.count()) {
+        if (ncol == (unsigned int) m_lcabecera.count()) {
             ncol = 0;
             nrow++;
         } // end if
@@ -389,11 +389,12 @@ void SubForm3::cargar(cursor2 *cur) {
         reg = m_lista.at(i);
 	QRegExp rx("^.*00:00:00.*$"); // Para emparejar los valores fechas
         for (int j = 0; j < reg->lista()->size(); ++j) {
-            camp = (SDBCampo *) reg->lista()->at(j);
-	    // Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha
-	    if(rx.exactMatch(camp->valorcampo()))
-		camp->set(camp->valorcampo().left(10));
-            mui_list->setItem(i, j, camp);
+           camp = (SDBCampo *) reg->lista()->at(j);
+	       /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
+	       if (rx.exactMatch(camp->valorcampo())) {
+                camp->set(camp->valorcampo().left(10));
+           } // end if
+           mui_list->setItem(i, j, camp);
         } // end for
     } // end for
     nuevoRegistro();
@@ -414,6 +415,7 @@ void SubForm3::cargar(QString query) {
     cargar(cur);
     delete cur;
 }
+
 
 /// Devuelve la linea que se esta tratando actualmente.
 SDBRecord *SubForm3::lineaact() {
@@ -441,6 +443,7 @@ SDBRecord *SubForm3::lineaat(int row) {
     return rec;
 }
 
+
 /// Devuelve TRUE si el registro ha sido completamente rellenado.
 bool SubForm3::campoCompleto(int row) {
     _depura("SubForm3::campoCompleto", 0);
@@ -453,8 +456,7 @@ bool SubForm3::campoCompleto(int row) {
         if (camp->restrictcampo() & DBCampo::DBNotNull
                 && camp->text() == ""
                 && !(header->options() & SHeader::DBNoView)
-                && camp->tipo() != DBCampo::DBboolean
-           ) {
+                && camp->tipo() != DBCampo::DBboolean) {
             _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
             return FALSE;
         } // end if

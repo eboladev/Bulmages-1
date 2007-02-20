@@ -291,11 +291,9 @@ void Asiento1View::muestraasiento(QString v) {
 }
 
 
-// =========================================================================================
-//                       LISTASIENTOS
-// =========================================================================================
-
-
+/// =========================================================================================
+///                       LISTASIENTOS
+/// =========================================================================================
 /// Prepara para guardar.
 void Asiento1View::prepguardar() {
     _depura("Asiento1View::prepguardar", 0);
@@ -338,6 +336,7 @@ ListAsientos::~ListAsientos() {
     _depura("END ListAsientos::~ListAsientos", 0);
 }
 
+
 /// Prepara el cursor que sirve para recorrer los asientos uno a uno.
 /** Carga el cursor que sirve para hacer todo
     el recorrido a trav&eacute;s de los asientos.
@@ -348,7 +347,7 @@ ListAsientos::~ListAsientos() {
     s&oacute;lo realiza una carga del cursor que sirve para recorrer los asientos. */
 void ListAsientos::cargaasientos() {
     _depura("ListAsientos::cargaasientos", 0);
-    QString cantapunt ="";
+    QString cantapunt = "";
     QString saldototal = "";
     QString nombreasiento = "";
     QString query;
@@ -446,6 +445,7 @@ void ListAsientos::boton_siguiente() {
     }// end if
     _depura("END ListAsientos::boton_siguiente", 0);
 }
+
 
 /// Slot que responde a la pulsaci&oacute;n del botón de anterior registro.
 /** Comprueba que existen registros en el cursor de asientos a mostrar y si

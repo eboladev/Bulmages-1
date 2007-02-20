@@ -59,8 +59,8 @@ int Asiento1::borrar() {
         switch (QMessageBox::warning(0,
                                      QApplication::translate("Asiento1", "Borrar asiento"),
                                      QApplication::translate("Asiento1", "Se va a borrar el asiento. Esta seguro?"),
-                                     QMessageBox::Ok ,
-                                     QMessageBox::Cancel )) {
+                                     QMessageBox::Ok,
+                                     QMessageBox::Cancel)) {
         case QMessageBox::Ok: /// Retry clicked or Enter pressed.
             m_companyact->begin();
             listalineas->borrar();
@@ -162,7 +162,7 @@ void Asiento1::cerrar() {
         return;
     }
 
-    cursor2 * cur = m_companyact->cargacursor("SELECT cierraasiento("+id+")");
+    cursor2 *cur = m_companyact->cargacursor("SELECT cierraasiento(" + id + ")");
     delete cur;
     vaciar();
     cargar(id);
@@ -185,7 +185,7 @@ Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
     QString numborr = cur->valor("cuenta");
     delete cur;
 
-    _depura("END Asiento1::estadoasiento", 0, "borradores: "+numborr+" -- apuntes: "+numap);
+    _depura("END Asiento1::estadoasiento", 0, "borradores: " + numborr + " -- apuntes: " + numap);
 
     if (numborr == "0") {
         return ASVacio;
@@ -193,7 +193,7 @@ Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
         return ASCerrado;
     } else {
     	return ASAbierto;
-    }
+    } // end if
 }
 
 

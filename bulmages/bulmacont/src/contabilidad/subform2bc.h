@@ -57,8 +57,10 @@ public:
 /** */
 class SubForm2Bc : public SubForm3 {
     Q_OBJECT
+
 public:
     QSubForm2BcDelegate *m_delegate;
+
 public:
     SubForm2Bc(QWidget *parent = 0);
     virtual ~SubForm2Bc();
