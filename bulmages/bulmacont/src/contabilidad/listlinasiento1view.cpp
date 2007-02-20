@@ -32,7 +32,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     setDBCampoId("idborrador");
     addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Fecha"));
     addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo"));
-    addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Descripcion de la cuenta"));
+    addSHeader("descripcioncuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Descripcion de la cuenta"));
     addSHeader("descripcion", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Descripcion"));
     addSHeader("conceptocontable", DBCampo::DBvarchar, DBCampo::DBNothing, SHeader::DBNone, tr("Concepto contable"));
     addSHeader("debe", DBCampo::DBnumeric, DBCampo::DBNotNull, SHeader::DBNone, tr("Debe"));
@@ -127,6 +127,7 @@ void ListLinAsiento1View::contextMenuEvent(QContextMenuEvent *) {
         boton_balancetree(2);
 
     delete popup;
+    _depura("END SubForm2Bc::contextMenuEvent", 0);
 }
 
 
@@ -156,20 +157,24 @@ void ListLinAsiento1View::boton_iva() {
 
 /// Devuelve el DEBE de un asiento.
 Fixed ListLinAsiento1View::totaldebe(QString idasiento) {
+    _depura("ListLinAsiento1View::totaldebe", 0);
     QString SQLQuery = "SELECT sum(debe) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta = borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     cursor2 *cur= m_companyact->cargacursor(SQLQuery);
     QString resultado = cur->valor(0);
     delete cur;
+    _depura("END ListLinAsiento1View::totaldebe", 0);
     return Fixed(resultado);
 }
 
 
 /// Devuelve el HABER de un asiento.
 Fixed ListLinAsiento1View::totalhaber(QString idasiento) {
+    _depura("ListLinAsiento1View::totalhaber", 0);
     QString SQLQuery = "SELECT  sum(haber) FROM borrador LEFT JOIN (SELECT codigo, descripcion AS descripcioncuenta, idcuenta, tipocuenta FROM cuenta) AS t1 ON t1.idcuenta=borrador.idcuenta LEFT JOIN (SELECT idcanal, nombre AS nombrecanal, descripcion AS descripcioncanal FROM canal) AS t2 ON borrador.idcanal = t2.idcanal LEFT JOIN (SELECT idc_coste, nombre AS nombrec_coste, descripcion AS descripcionc_coste FROM c_coste) AS t3 ON borrador.idc_coste = t3.idc_coste LEFT JOIN (SELECT idregistroiva, factura, ffactura, idborrador FROM registroiva) AS t4 ON borrador.idborrador = t4.idborrador WHERE idasiento = " + idasiento;
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     QString resultado = cur->valor(0);
     delete cur;
+    _depura("END ListLinAsiento1View::totalhaber", 0);
     return Fixed(resultado);
 }
 

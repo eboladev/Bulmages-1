@@ -138,7 +138,7 @@ int empresa::inicializa1() {
 
     /// pb = 35%
     m_progressbar->setValue(35);
-    balance = new balanceview(this, 0);
+    balance = new BalanceView(this, 0);
     m_pWorkspace->addWindow(balance);
 
     /// pb = 50%
@@ -196,7 +196,6 @@ int empresa::ccostes() {
     ccosteview *ccoste = new ccosteview(this, 0);
     m_pWorkspace->addWindow(ccoste);
     ccoste->show();
-    balance->cargacostes();
     _depura("END empresa::ccostes", 0);
     return 0;
 }
@@ -250,47 +249,46 @@ int empresa::fPago() {
 
 
 int empresa::cambioejercicio() {
+    _depura("empresa::cambioejercicio", 0);
     /// El ejercicio ha cambiado y recargamos el cursor de asientos del nuevo ejercicio.
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
-    return 0;
-}
-
-
-int empresa::nuevaempresa() {
-    /// La creaci&oacute;n de una nueva empresa ha pasado al selector.
+    _depura("END empresa::cambioejercicio", 0);
     return 0;
 }
 
 
 /// Crea la ventana de edici&oacute;n de cuentas y devuelve un puntero a esta.
 cuentaview* empresa::newcuentaview() {
+    _depura("empresa::newcuentaview", 0);
     cuentaview *nuevae = new cuentaview(this, 0);
+    _depura("END empresa::newcuentaview", 0);
     return nuevae;
 }
 
 
 int empresa::nuevacuenta() {
+    _depura("empresa::nuevacuenta", 0);
     cuentaview *nuevae = newcuentaview();
     m_pWorkspace->addWindow(nuevae);
     nuevae->show();
-    return 0;
-}
-
-
-int empresa::muestraapuntes() {
+    _depura("END empresa::nuevacuenta", 0);
     return 0;
 }
 
 
 int empresa::muestraapuntes1() {
+    _depura("empresa::muestraapuntes1", 0);
     introapunts2->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("END empresa::muestraapuntes1", 0);
     return 0;
 }
 
 
 int empresa::muestraasientos() {
+    _depura("empresa::muestraasientos", 0);
     m_listasientos->setWindowState(m_listasientos->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("END empresa::muestraasientos", 0);
     return 0;
 }
 
@@ -300,15 +298,17 @@ int empresa::propiedadempresa() {
     propiedadesempresa *nuevae = new propiedadesempresa(this, 0);
     m_pWorkspace->addWindow(nuevae);
     nuevae->show();
-    _depura("empresa::propiedadempresa", 0);
+    _depura("END empresa::propiedadempresa", 0);
     return 0;
 }
 
 
 int empresa::amortizaciones() {
+    _depura("empresa::amortizaciones", 0);
     amortizacionesview *amors = new amortizacionesview(this, 0);
     m_pWorkspace->addWindow(amors);
     amors->show();
+    _depura("END empresa::amortizaciones", 0);
     return 0;
 }
 
@@ -316,10 +316,12 @@ int empresa::amortizaciones() {
 /// Esta funci&oacute;n llama a la pantalla de creacion, modificaci&oacute;n
 /// de masas patrimoniales.
 int empresa::mpatrimoniales() {
+    _depura("empresa::mpatrimoniales", 0);
     mpatrimonialesview *nuevae = new mpatrimonialesview(0);
     nuevae->inicializa(this);
     nuevae->exec();
     delete nuevae;
+    _depura("END empresa::mpatrimoniales", 0);
     return 0;
 }
 
@@ -337,12 +339,15 @@ int empresa::compbalance() {
 
 
 int empresa::libromayor() {
+    _depura("empresa::libromayor", 0);
     extracto->setWindowState(extracto->windowState() &  ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("END empresa::libromayor", 0);
     return 0;
 }
 
 
 int empresa::boton_siguiente() {
+    _depura("empresa::boton_siguiente", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == extracto) {
@@ -350,11 +355,13 @@ int empresa::boton_siguiente() {
     } else if (widget == introapunts2) {
         introapunts2->boton_siguiente();
     } // end if
+    _depura("END empresa::boton_siguiente", 0);
     return 0;
 }
 
 
 int empresa::boton_anterior() {
+    _depura("empresa::boton_anterior", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == extracto) {
@@ -362,11 +369,13 @@ int empresa::boton_anterior() {
     } else if (widget == introapunts2) {
         introapunts2->boton_anterior();
     } // end if
+    _depura("END empresa::boton_anterior", 0);
     return 0;
 }
 
 
 int empresa::boton_guardar() {
+    _depura("empresa::boton_guardar", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
@@ -374,26 +383,30 @@ int empresa::boton_guardar() {
     } else {
         extracto->boton_guardar();
     } // end if
+    _depura("END empresa::boton_guardar", 0);
     return 0;
 }
 
 
 int empresa::boton_imprimir() {
+    _depura("empresa::boton_imprimir", 0);
     QWidget *widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
         diario->boton_imprimir();
     } else if (widget == balance1) {
-        balance1->boton_imprimir();
+        balance1->on_mui_imprimir_clicked();
     } else if (widget == balance) {
         balance->on_mui_imprimir_clicked();
     } else if (widget == extracto) {
         extracto->boton_imprimir();
     } // end if
+    _depura("END empresa::boton_imprimir", 0);
     return 0;
 }
 
 
 int empresa::boton_reload() {
+    _depura("empresa::boton_reload", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == diario) {
@@ -403,13 +416,15 @@ int empresa::boton_reload() {
     } else if (widget == balance) {
         balance->accept();
     } else if (widget == balance1) {
-        balance1->accept();
+        balance1->on_mui_actualizar_clicked();
     } // end if
+    _depura("END empresa::boton_reload", 0);
     return 0;
 }
 
 
 int empresa::boton_primero() {
+    _depura("empresa::boton_primero", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == introapunts2) {
@@ -418,11 +433,13 @@ int empresa::boton_primero() {
     else if (widget == extracto) {
         extracto->boton_inicio();
     } // end if
+    _depura("END empresa::boton_primero", 0);
     return 0;
 }
 
 
 int empresa::boton_ultimo() {
+    _depura("empresa::boton_ultimo", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == introapunts2) {
@@ -431,138 +448,165 @@ int empresa::boton_ultimo() {
     else if (widget == extracto) {
         extracto->boton_fin();
     } // end if
+    _depura("END empresa::boton_ultimo", 0);
     return 0;
 }
 
 
 int empresa::librodiario() {
+    _depura("empresa::librodiario", 0);
     diario->setWindowState(diario->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("END empresa::librodiario", 0);
     return 0;
 }
 
 
 int empresa::librobalance() {
+    _depura("empresa::librobalance", 0);
     balance->setWindowState(balance->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("END empresa::librobalance", 0);
     return 0;
 }
 
 
 int empresa::librobalancetree() {
+    _depura("empresa::librobalancetree", 0);
     balance1->setWindowState(balance1->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("END empresa::librobalancetree", 0);
     return 0;
 }
 
 
 void empresa::Abrirasientos() {
+    _depura("empresa::Abrirasientos", 0);
     cursor2 *cur = cargacursor("SELECT abreasientos()");
     delete cur;
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
     introapunts2->show();
+    _depura("END empresa::Abrirasientos", 0);
 }
 
 
 void empresa::Ordenarasientos() {
+    _depura("empresa::Ordenarasientos", 0);
     QString query= "SELECT reordenaasientosall()";
     cursor2 *cur = cargacursor(query, "hola");
     delete cur;
     introapunts2->cargaasientos();
     introapunts2->boton_fin();
     introapunts2->show();
+    _depura("END empresa::Ordenarasientos", 0);
 }
 
 
 int empresa::registroiva() {
+    _depura("empresa::registroiva", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("empresa_registroiva", this);
+    _depura("END empresa::registroiva", 0);
     return res;
 }
 
 
 int empresa::modelo347() {
+    _depura("empresa::modelo347", 0);
     BModelo347 *dlg347 = new BModelo347(this, "0");
     dlg347->exec();
     delete dlg347;
+    _depura("END empresa::modelo347", 0);
     return 0;
 }
 
 
-/// Esta funci&oacute;n borra la empresa actual.
-int empresa::borrarempresa() {
-    /// El proceso de borrado se realiza desde las herramientas el selector.
-    return 0;
-}
-
-
-/// Esta funci&oacute;n es la que se encarga de cerrar al empresa
-/// y de crear un nuevo ejercicio para dicha empresa.
-void empresa::nuevoejercicio() {}
 
 
 void empresa::cierraempresa() {
+    _depura("empresa::cierraempresa", 0);
     introapunts2->show();
     introapunts2->asiento_cierre();
+    _depura("END empresa::cierraempresa", 0);
 }
 
 
 void empresa::abreempresa() {
+    _depura("empresa::abreempresa", 0);
     introapunts2->show();
     introapunts2->asiento_apertura();
+    _depura("END empresa::abreempresa", 0);
 }
 
 
 void empresa::regularizaempresa() {
+    _depura("empresa::regularizaempresa", 0);
     introapunts2->show();
     introapunts2->asiento_regularizacion();
+    _depura("END empresa::regularizaempresa", 0);
 }
 
 
 void empresa::Filtro() {
+    _depura("empresa::Filtro", 0);
     QWidget *widget;
     widget = m_pWorkspace->activeWindow();
     if (widget == introapunts2) {
         introapunts2->boton_filtrar();
     } // end if
+    _depura("END empresa::Filtro", 0);
 }
 
 /// Esta funci&oacute;n reemplaza en los apuntes todas las ocurrencias de una
 /// determinada cuenta por otra cuenta.
 void empresa::reemplazacuentaenasientos() {
+    _depura("empresa::reemplazacuentaenasientos", 0);
     cambiactaview *ctac = new cambiactaview(this, 0, false);
     ctac->exec();
+    _depura("END empresa::reemplazacuentaenasientos", 0);
 }
 
 
 /// Esta funci&oacute;n recalcula los saldos parciales del plan contable.
 void empresa::recalculasaldos() {
+    _depura("empresa::recalculasaldos", 0);
     ejecuta("SELECT recalculasaldos()");
+    _depura("END empresa::recalculasaldos", 0);
 }
 
 
 /// Esta funci&oacute;n se dispara para poner en marcha la gesti&oacute;n de cobros y pagos.
 int empresa::cobPag() {
+    _depura("empresa::cobPag", 0);
     /// Disparamos los plugins con presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("empresa_cobPag", this);
+    _depura("END empresa::cobPag", 0);
     return res;
 }
 
 
 selectccosteview *empresa::getselccostes() {
+    _depura("empresa::getselccostes", 0);
+    _depura("END empresa::getselccostes", 0);
     return selccostes;
 }
 
 
 selectcanalview *empresa::getselcanales() {
+    _depura("empresa::getselcanales", 0);
+    _depura("END empresa::getselcanales", 0);
     return selcanales;
 }
 
 
 void empresa::centrocostedefecto() {
+    _depura("empresa::centrocostedefecto", 0);
     selccostes->exec();
+    _depura("END empresa::centrocostedefecto", 0);
 }
 
 
 void empresa::canaldefecto() {
+    _depura("empresa::canaldefecto", 0);
     selcanales->exec();
+    _depura("END empresa::canaldefecto", 0);
 }
 

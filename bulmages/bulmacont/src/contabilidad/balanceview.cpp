@@ -32,6 +32,7 @@
 #include "balanceprintview.h"
 #include "busquedafecha.h"
 #include "busquedacuenta.h"
+#include "busquedaccoste.h"
 
 #define CUENTA          0
 #define DENOMINACION    1
@@ -46,11 +47,12 @@
 
 /// Se prepara el combobox de niveles a mostrar y se ponen las fechas de balance.
 /** \bug No es necesario borrar la tabla de designer para que esto funcione. */
-balanceview::balanceview(empresa *emp, QWidget *parent, int)
+BalanceView::BalanceView(empresa *emp, QWidget *parent, int)
         : Ficha(parent) {
+    _depura("BalanceView::BalanceView", 0);
     setupUi(this);
-    companyact = emp;
-    numdigitos = companyact->numdigitosempresa();
+    m_companyact = emp;
+    numdigitos = m_companyact->numdigitosempresa();
     m_codigoinicial->setempresa(emp);
     m_codigofinal->setempresa(emp);
     /// Inicializamos la tabla de nivel.
@@ -67,61 +69,38 @@ balanceview::balanceview(empresa *emp, QWidget *parent, int)
     m_fechainicial1->setText(cadena);
     cadena.sprintf("%2.2d/%2.2d/%4.4d", 31, 12, QDate::currentDate().year());
     m_fechafinal1->setText(cadena);
+
+
     /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-    cargacostes();
+    mui_combocoste->setcompany(emp);
+    mui_combocoste->setidc_coste("0");
+
     /// Activamos las se&ntilde;ales.
     connect(mui_actualizar, SIGNAL(clicked()), this, SLOT(accept()));
-    companyact->meteWindow(windowTitle(), this);
+    m_companyact->meteWindow(windowTitle(), this);
+    _depura("END BalanceView::BalanceView", 0);
 }
 
 
-balanceview::~balanceview() {
-    _depura("balanceview::~balanceview", 0);
-    companyact->sacaWindow(this);
-    _depura("END balanceview::~balanceview", 0);
-}
-
-
-/// Esta funci&oacute;n se encarga de cargar el combobox de centros de coste para que se
-/// pueda seleccionar uno. \bug Debe eliminarse el array ccoste. */
-void balanceview::cargacostes() {
-    /// Hacemos la carga de los centros de coste. Rellenamos el combobox correspondiente.
-    combocoste->clear();
-    QString query = "SELECT * FROM c_coste ORDER BY nombre";
-    companyact->begin();
-    cursor2 *cursorcoste = companyact->cargacursor(query, "costes");
-    companyact->commit();
-    combocoste->insertItem(0, "--");
-    ccostes[0] = 0;
-    int i = 1;
-    while (!cursorcoste->eof()) {
-        combocoste->addItem(cursorcoste->valor("nombre"));
-        ccostes[i++] = cursorcoste->valor("idc_coste").toInt();
-        cursorcoste->siguienteregistro();
-    } // end while
-    delete cursorcoste;
+BalanceView::~BalanceView() {
+    _depura("BalanceView::~BalanceView", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END BalanceView::~BalanceView", 0);
 }
 
 
 /// Se encarga de inicializar la clase con los par&aacute;metros que se le han pasado.
 /** Esta funci&ocute;n sirve para que desde fuera se pueda preparar a la clase para
     presentar un balance predeterminado. */
-void balanceview::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, int idc_coste) {
-    ///********************** Josep *********************/
-    fprintf(stderr, "balanceview::inicializa1\n");
+void BalanceView::inicializa1(QString codinicial, QString codfinal, QString fecha1, QString fecha2, QString idc_coste) {
+    _depura("BalanceView::inicializa1", 0);
     m_codigoinicial->setText(codinicial);
     m_codigofinal->setText(codfinal);
     m_fechainicial1->setText(normalizafecha(fecha1).toString("dd/MM/yyyy"));
     m_fechafinal1->setText(normalizafecha(fecha2).toString("dd/MM/yyyy"));
     /// Establecemos el centro de coste correspondiente.
-    int i = 0;
-    while (ccostes[i] != idc_coste && i < 100) {
-        i++;
-    } // end while
-    if (i < 100) {
-        combocoste->setCurrentIndex(i);
-    } // end if
-    ///**************************************************/
+    mui_combocoste->setidc_coste(idc_coste);
+    _depura("END BalanceView::inicializa1", 0);
 }
 
 
@@ -129,7 +108,8 @@ void balanceview::inicializa1(QString codinicial, QString codfinal, QString fech
 /** \bug Hay que eliminar el uso de double y usar un sistema de punto fijo.
     Crea una tabla auxiliar de balance y hace en ella todos los c&aacute;lculos necesarios
     para concretar los resultados. */
-void balanceview::presentar() {
+void BalanceView::presentar() {
+    _depura("BalanceView::presentar", 0);
     QString finicial = m_fechainicial1->text();
     QString ffinal = m_fechafinal1->text();
     QString cinicial = m_codigoinicial->codigocuenta().left(2);
@@ -137,7 +117,7 @@ void balanceview::presentar() {
     int nivel = combonivel->currentText().toInt();
     bool jerarquico = checksuperiores->isChecked();
     /// Extraemos el centro de coste.
-    int idc_coste = ccostes[combocoste->currentIndex()];
+    int idc_coste = mui_combocoste->idc_coste().toInt();
 
     /// A partir de ahora ya no hay tablas temporales ni accesos a disco que merman la
     /// ejecuci&oacute;n del programa.
@@ -147,18 +127,20 @@ void balanceview::presentar() {
         /// Balance de Sumas y Saldos.
         presentarSyS(finicial, ffinal, cinicial, cfinal, nivel, idc_coste, jerarquico);
     } // end if
+    _depura("END BalanceView::presentar", 0);
 }
 
 
-void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico) {
+void BalanceView::presentarSyS(QString finicial, QString ffinal, QString cinicial, QString cfinal, int nivel, int, bool jerarquico) {
+    _depura("BalanceView::presentarSyS", 0);
     double tsaldoant = 0, tdebe = 0, thaber = 0, tsaldo = 0;
 
     /// Primero, averiguaremos la cantidad de ramas iniciales que nacen de la ra&iacute;z
     /// (tantas como n&uacute;mero de cuentas de nivel 2) y las vamos creando.
-    companyact->begin();
+    m_companyact->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
-    ramas = companyact->cargacursor(query);
+    ramas = m_companyact->cargacursor(query);
     Arbol *arbol;
     arbol = new Arbol;
     while (!ramas->eof()) {
@@ -181,7 +163,7 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
     /// \bug OJO!! falta usar el querycoste.
     /// Poblamos el &aacute;rbol de hojas (cuentas).
     cursor2 *hojas;
-    hojas = companyact->cargacursor(query, "Recopilacion por periodo");
+    hojas = m_companyact->cargacursor(query, "Recopilacion por periodo");
     while (!hojas->eof()) {
         /// Para cada cuenta con apuntes introducidos hay que actualizar hojas del &aacute;rbol.
         arbol->actualizahojas(hojas);
@@ -308,26 +290,33 @@ void balanceview::presentarSyS(QString finicial, QString ffinal, QString cinicia
     /// Eliminamos el &aacute;rbol de la mem&oacute;ria y cerramos la conexi&oacute;n
     /// con la BD.
     delete arbol;
-    companyact->commit();
+    m_companyact->commit();
+    _depura("END BalanceView::presentarSyS", 0);
 }
 
 
-void balanceview::accept() {
+void BalanceView::accept() {
+    _depura("BalanceView::accept", 0);
     presentar();
+    _depura("END BalanceView::accept", 0);
 }
 
 
-void balanceview::nivelactivated(int) {
+void BalanceView::nivelactivated(int) {
+    _depura("BalanceView::nivelactivated", 0);
     presentar();
+    _depura("END BalanceView::nivelactivated", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del
     balance y lo ejecuta en modo Modal. */
-void balanceview::on_mui_imprimir_clicked() {
-    BalancePrintView *balan = new BalancePrintView(companyact);
+void BalanceView::on_mui_imprimir_clicked() {
+    _depura("BalanceView::on_mui_imprimir_clicked", 0);
+    BalancePrintView *balan = new BalancePrintView(m_companyact);
     balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), FALSE);
     balan->exec();
+    _depura("END BalanceView::on_mui_imprimir_clicked", 0);
 }
 

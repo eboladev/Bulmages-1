@@ -22,9 +22,12 @@
 #define BUSQUEDACCOSTE_H
 
 #include <QComboBox>
+#include "postgresiface2.h"
 
-#include "empresa.h"
+//#include "empresa.h"
 
+
+class empresa;
 
 class BusquedaCCoste : public QComboBox {
     Q_OBJECT

@@ -313,7 +313,10 @@ QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(pa
 }
 
 
-QSubForm2BfDelegate::~QSubForm2BfDelegate() {}
+QSubForm2BfDelegate::~QSubForm2BfDelegate() {
+   _depura("QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
+   _depura("END QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
+}
 
 
 QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
@@ -332,7 +335,7 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
                || linea->nomcampo() == "descuento" + m_subform->tableName()
                || linea->nomcampo() == "iva" + m_subform->tableName()) {
         QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
-        editor->setMinimum(0);
+        editor->setMinimum(-1000000);
         editor->setMaximum(1000000);
         return editor;
     } else if (linea->nomcampo() == "codigocompletoarticulo") {

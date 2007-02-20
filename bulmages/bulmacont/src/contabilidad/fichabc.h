@@ -27,11 +27,12 @@
 #include "empresa.h"
 
 
-/// Una factura puede tener multiples bases imponibles. Por eso definimos el tipo base como un QMap.
-
+/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos comunes a todas las pantallas
+*/
 class FichaBc : public Ficha, public DBRecord {
     Q_OBJECT
 public:
+    /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
     SubForm2Bc *m_listalineas;
 
     /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
@@ -40,13 +41,8 @@ public:
 
     FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
     virtual ~FichaBc();
-    void setListaLineas(SubForm2Bc * form) {
-	m_listalineas = form;
-    };
-
-    SubForm2Bc* listalineas() {
-        return m_listalineas;
-    };
+    void setListaLineas(SubForm2Bc * form);
+    SubForm2Bc* listalineas();
     virtual int sacaWindow();
 };
 

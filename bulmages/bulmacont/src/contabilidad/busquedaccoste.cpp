@@ -22,7 +22,7 @@
 
 #include "busquedaccoste.h"
 #include "funcaux.h"
-
+#include "empresa.h"
 
 BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
         : QComboBox(parent) {

@@ -25,7 +25,7 @@
     <number>5</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>2</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -33,7 +33,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>5</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QLabel" name="pixmapLabel1" >
@@ -90,8 +90,50 @@
          <number>5</number>
         </property>
         <property name="spacing" >
-         <number>5</number>
+         <number>2</number>
         </property>
+        <item>
+         <widget class="QToolButton" name="mui_crear" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>0</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="maximumSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="toolTip" >
+           <string>Nueva Cuenta</string>
+          </property>
+          <property name="text" >
+           <string/>
+          </property>
+          <property name="icon" >
+           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
+          </property>
+          <property name="iconSize" >
+           <size>
+            <width>32</width>
+            <height>32</height>
+           </size>
+          </property>
+          <property name="shortcut" >
+           <string>Ctrl+N</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QToolButton" name="mui_editar" >
           <property name="sizePolicy" >
@@ -134,48 +176,6 @@
           </property>
           <property name="shortcut" >
            <string>Ctrl+C</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QToolButton" name="mui_crear" >
-          <property name="sizePolicy" >
-           <sizepolicy>
-            <hsizetype>0</hsizetype>
-            <vsizetype>0</vsizetype>
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="maximumSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="toolTip" >
-           <string>Nueva Cuenta</string>
-          </property>
-          <property name="text" >
-           <string/>
-          </property>
-          <property name="icon" >
-           <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_fileNew.xpm</iconset>
-          </property>
-          <property name="iconSize" >
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="shortcut" >
-           <string>Ctrl+N</string>
           </property>
          </widget>
         </item>
@@ -382,8 +382,8 @@
           </property>
           <property name="sizeHint" >
            <size>
-            <width>301</width>
-            <height>28</height>
+            <width>161</width>
+            <height>34</height>
            </size>
           </property>
          </spacer>
@@ -460,7 +460,6 @@
   <tabstop>TabWidget2</tabstop>
   <tabstop>ListView1</tabstop>
   <tabstop>mui_editar</tabstop>
-  <tabstop>mui_crear</tabstop>
   <tabstop>mui_borrar</tabstop>
   <tabstop>mui_imprimir</tabstop>
   <tabstop>mui_exportar</tabstop>

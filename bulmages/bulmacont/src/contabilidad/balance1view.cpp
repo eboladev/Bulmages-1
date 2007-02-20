@@ -463,11 +463,17 @@ void BalanceTreeView::contextmenu(const QPoint &point) {
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir.
 /** Crea el objeto \ref BalancePrintView lo inicializa con los mismos valores del balance
     y lo ejecuta en modo Modal. */
-void BalanceTreeView::boton_imprimir() {
-    _depura("BalanceTreeView::boton_imprimir", 0);
+void BalanceTreeView::on_mui_imprimir_clicked() {
+    _depura("BalanceTreeView::on_mui_imprimir_clicked", 0);
     BalancePrintView *balan = new BalancePrintView(m_companyact);
     balan->inicializa1(m_codigoinicial->text(), m_codigofinal->text(), m_fechainicial1->text(), m_fechafinal1->text(), TRUE);
     balan->exec();
-    _depura("END BalanceTreeView::boton_imprimir", 0);
+    _depura("END BalanceTreeView::on_mui_imprimir_clicked", 0);
+}
+
+void BalanceTreeView::on_mui_actualizar_clicked() {
+    _depura("BalanceTreeView::on_mui_actualizar_clicked", 0);
+        presentar();
+    _depura("END BalanceTreeView::on_mui_actualizar_clicked", 0);
 }
 

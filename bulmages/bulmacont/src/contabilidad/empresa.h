@@ -45,7 +45,7 @@ class selectcanalview;
 class BalanceTreeView;
 class Asiento1View;
 class DiarioView;
-class balanceview;
+class BalanceView;
 class asientosview;
 class cuentaview;
 
@@ -69,7 +69,7 @@ private:
     BalanceTreeView *balance1;
     DiarioView *diario;
     extractoview1 *extracto;
-    balanceview *balance;
+    BalanceView *balance;
     Asiento1View *introapunts2;
     asientosview *m_listasientos;
     listcuentasview1 *m_listcuentas;
@@ -89,7 +89,7 @@ public:
     postgresiface2 *bdempresa() {
         return (this);
     }
-    balanceview *balanceempresa() {
+    BalanceView *balanceempresa() {
         return balance;
     }
     extractoview1 *extractoempresa() {
@@ -118,12 +118,9 @@ public:
     }
     int muestracuentas();
     int nuevacuenta();
-    int muestraapuntes();
     int muestraapuntes1();
     int muestraasientos();
     int propiedadempresa();
-    int nuevaempresa();
-    int borrarempresa();
     int libromayor();
     int librodiario();
     int librobalance();
@@ -149,7 +146,6 @@ public:
     void Abrirasientos();
     void Ordenarasientos();
     void Filtro();
-    void nuevoejercicio();
     int mpatrimoniales();
     int compbalance();
     int amortizaciones();

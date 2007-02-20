@@ -232,7 +232,7 @@ void SubForm2Bc::boton_balance1(int tipo) {
             fecha2.setYMD(fechaact.year(), 12, 31);
             break;
         } // end switch
-        companyact->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
+        companyact->balanceempresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), "0");
         companyact->balanceempresa()->accept();
         companyact->librobalance();
     } // end if
@@ -267,7 +267,7 @@ void SubForm2Bc::boton_balancetree(int tipo) {
             break;
         } // end switch
         companyact->balance1empresa()->inicializa1(codigo, codigo, fecha1.toString("dd/MM/yyyy"), fecha2.toString("dd/MM/yyyy"), 0);
-        companyact->balance1empresa()->accept();
+        companyact->balance1empresa()->on_mui_actualizar_clicked();
         companyact->librobalancetree();
     } // end if
     _depura("END SubForm2Bc::boton_balance2", 0);
@@ -319,7 +319,7 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
     } else if (linea->nomcampo() == "debe"
                || linea->nomcampo() == "haber"	) {
         QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
-        editor->setMinimum(0);
+        editor->setMinimum(-1000000);
         editor->setMaximum(1000000);
         return editor;
     } else if (linea->nomcampo() == "codigo") {

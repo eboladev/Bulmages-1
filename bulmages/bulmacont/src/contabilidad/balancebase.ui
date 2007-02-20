@@ -32,10 +32,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>5</number>
+    <number>9</number>
    </property>
    <property name="spacing" >
-    <number>5</number>
+    <number>6</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -341,11 +341,21 @@
      </property>
      <layout class="QGridLayout" >
       <property name="margin" >
-       <number>5</number>
+       <number>9</number>
       </property>
       <property name="spacing" >
-       <number>5</number>
+       <number>6</number>
       </property>
+      <item row="6" column="2" >
+       <widget class="BusquedaCCoste" name="mui_combocoste" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item row="6" column="3" >
        <spacer>
         <property name="orientation" >
@@ -353,7 +363,7 @@
         </property>
         <property name="sizeHint" >
          <size>
-          <width>241</width>
+          <width>261</width>
           <height>20</height>
          </size>
         </property>
@@ -394,16 +404,6 @@
          </size>
         </property>
        </spacer>
-      </item>
-      <item row="6" column="2" >
-       <widget class="QComboBox" name="combocoste" >
-        <property name="minimumSize" >
-         <size>
-          <width>150</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
       </item>
       <item row="5" column="1" >
        <widget class="QLabel" name="textLabel1_2" >
@@ -960,6 +960,11 @@
    <extends>QWidget</extends>
    <header>busquedacuenta.h</header>
   </customwidget>
+  <customwidget>
+   <class>BusquedaCCoste</class>
+   <extends>QComboBox</extends>
+   <header>busquedaccoste.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>mui_guardar</tabstop>
@@ -971,7 +976,6 @@
   <tabstop>abreviadoButton</tabstop>
   <tabstop>resultadosButton</tabstop>
   <tabstop>combonivel</tabstop>
-  <tabstop>combocoste</tabstop>
   <tabstop>checksuperiores</tabstop>
   <tabstop>mui_list</tabstop>
  </tabstops>
