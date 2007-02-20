@@ -242,7 +242,7 @@ void abreempresaview::guardaArchivo() {
     while (!curs->eof()) {
         /// Realizamos la comprobacion de que el nombre de la base de datos comienze por 'bulma'
         /// antes de conectarnos a ella. Evitamos que se conecte con Bases de Datos del sistema.
-        if (curs->valor("datname").startsWith("bulma") == TRUE) {
+        if (!curs->valor("datname").startsWith("template")) {
             db1 = new postgresiface2();
             db1->inicializa(curs->valor("datname"));
             try {
