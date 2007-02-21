@@ -190,7 +190,7 @@ int cuentaview::cargacuenta(int idcuenta1) {
     codigo->setText(cursorcuenta->valor("codigo"));
 
     /// Cambiamos el t&iacute;tulo de la ventana con el c&oacute;digo.
-    setWindowTitle(tr("Cuenta") + codigo->text());
+    setWindowTitle(tr("Cuenta") + " " + codigo->text());
     empresaactual->meteWindow(windowTitle(), this);
 
     descripcion->setText(cursorcuenta->valor("descripcion"));

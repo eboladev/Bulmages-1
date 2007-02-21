@@ -288,8 +288,15 @@ void listcuentasview1::on_mui_crear_clicked()  {
     _depura("listcuentasview1::on_mui_crear_clicked", 0);
     QString cadena, codigo;
     int idgrupo = 0;
+
+    if (ListView1->selectedItems().count() <= 0) {
+        mensajeInfo("Tiene que seleccionar una cuenta.");
+        return;
+    } // end if
+
     QTreeWidgetItem *it;
     cuentaview *nuevae = new cuentaview(empresaactual, 0);
+
     it = ListView1->currentItem();
     if (it) {
         codigo = it->text(ccuenta);

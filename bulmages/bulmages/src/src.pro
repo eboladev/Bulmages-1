@@ -1,7 +1,5 @@
 # Archivo generado por el gestor qmake de kdevelop. 
-# ------------------------------------------- 
-# Subdirectorio relativo al directorio principal del proyecto: ./introbulmages/src
-# Destiono es una aplicaci??n: ../../installbulmages/bulmages
+# -------------------------------------------------
 
 QT += xml
 

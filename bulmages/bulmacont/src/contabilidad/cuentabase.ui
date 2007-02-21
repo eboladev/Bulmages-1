@@ -333,7 +333,7 @@
      <property name="currentIndex" >
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
        <string>&amp;Datos contables</string>
       </attribute>
@@ -1650,7 +1650,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab2" >
       <attribute name="title" >
        <string>&amp;Otros datos</string>
       </attribute>

@@ -127,6 +127,7 @@ void SubForm2Bc::on_mui_list_editFinished(int row, int col, int key) {
 }
 
 
+/// Muestra la ventana de asiento.
 void SubForm2Bc::boton_asiento() {
     _depura("SubForm2Bc::boton_asiento", 0);
     empresa *companyact = (empresa *) m_companyact;

@@ -655,6 +655,7 @@ int SubForm3::guardar() {
         mensajeError("Error inesperado en el guardado. [SubForm3::guardar]");
         throw -1;
     } // end try
+    return -1;
 }
 
 

@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>msgErrorBase</class>
  <widget class="QDialog" name="msgErrorBase" >
   <property name="geometry" >
@@ -72,7 +69,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>2</number>
+      <number>5</number>
      </property>
      <item>
       <spacer>
@@ -135,14 +132,14 @@
    <sender>pushButton2</sender>
    <signal>toggled(bool)</signal>
    <receiver>m_framedetalles</receiver>
-   <slot>show()</slot>
+   <slot>setShown(bool)</slot>
    <hints>
     <hint type="sourcelabel" >
-     <x>333</x>
-     <y>188</y>
+     <x>331</x>
+     <y>193</y>
     </hint>
     <hint type="destinationlabel" >
-     <x>327</x>
+     <x>339</x>
      <y>161</y>
     </hint>
    </hints>

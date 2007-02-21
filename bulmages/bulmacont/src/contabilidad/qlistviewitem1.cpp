@@ -52,3 +52,4 @@ void QListViewItem1::width(const QFontMetrics &fm, const Q3ListView *lv, int c) 
 } // end width
 
 */
+

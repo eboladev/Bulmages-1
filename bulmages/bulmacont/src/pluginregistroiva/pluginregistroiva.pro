@@ -13,7 +13,8 @@ TEMPLATE = lib
 
 CONFIG += plugin \
           qt \
-	  release 
+	  release \
+	  assistant
 
 TARGET = ../../../installbulmages/plugins/registroiva
 

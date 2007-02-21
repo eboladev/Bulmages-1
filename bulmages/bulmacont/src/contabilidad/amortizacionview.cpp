@@ -42,7 +42,6 @@ AmortizacionSubForm::~AmortizacionSubForm() {
 }
 
 
-
 /// Constructor de la clase
 AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
         : Ficha(parent), DBRecord(emp) {
@@ -62,32 +61,32 @@ AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
     /// Inicializamos la clase para la base de datos.
     setDBTableName("amortizacion");
     setDBCampoId("idamortizacion");
-    addDBCampo("idamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey  , tr( "idamortizacion"));
-    addDBCampo("idcuentaactivo", DBCampo::DBint, DBCampo::DBNothing, tr( "Identificador"));
-    addDBCampo("idcuentaamortizacion", DBCampo::DBint, DBCampo::DBNotNull, tr("idcuentaamortizacion"));
-    addDBCampo("descamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "descamortizacion"));
-    addDBCampo("nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "nomamortizacion"));
-    addDBCampo("fechacompra", DBCampo::DBdate, DBCampo::DBNothing, tr( "fechacompra"));
-    addDBCampo("fecha1cuota", DBCampo::DBdate, DBCampo::DBNothing, tr( "fecha1cuota"));
-    addDBCampo("valorcompra", DBCampo::DBnumeric, DBCampo::DBNothing, tr( "valorcompra"));
-    addDBCampo("periodicidad", DBCampo::DBint, DBCampo::DBNothing, tr( "periodicidad"));
-    addDBCampo("numcuotas", DBCampo::DBint, DBCampo::DBNothing, tr( "numcuotas"));
-    addDBCampo("metodo", DBCampo::DBvarchar, DBCampo::DBNoSave, tr( "metodo"));
-    addDBCampo("nifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "nifproveedor"));
-    addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "nomproveedor"));
-    addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "dirproveedor"));
-    addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "telproveedor"));
-    addDBCampo("agrupacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr( "agrupacion"));
+    addDBCampo("nomamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre de la amortizacion"));
+    addDBCampo("descamortizacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Descripcion de la amortizacion"));
+    addDBCampo("fechacompra", DBCampo::DBdate, DBCampo::DBNothing, tr("Fecha de la compra"));
+    addDBCampo("fecha1cuota", DBCampo::DBdate, DBCampo::DBNothing, tr("Fecha 1a cuota"));
+    addDBCampo("valorcompra", DBCampo::DBnumeric, DBCampo::DBNothing, tr("Valor de la compra"));
+    addDBCampo("periodicidad", DBCampo::DBint, DBCampo::DBNothing, tr("Periodicidad"));
+    addDBCampo("numcuotas", DBCampo::DBint, DBCampo::DBNothing, tr("Numero de cuotas"));
+    addDBCampo("metodo", DBCampo::DBvarchar, DBCampo::DBNoSave, tr("Metodo"));
+    addDBCampo("nifproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("NIF del proveedor"));
+    addDBCampo("nomproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Nombre del proveedor"));
+    addDBCampo("dirproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Direccion del proveedor"));
+    addDBCampo("telproveedor", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Telefono del proveedor"));
+    addDBCampo("agrupacion", DBCampo::DBvarchar, DBCampo::DBNothing, tr("Agrupacion"));
+    addDBCampo("idamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, tr("Id amortizacion"));
+    addDBCampo("idcuentaactivo", DBCampo::DBint, DBCampo::DBNothing, tr("Identificador"));
+    addDBCampo("idcuentaamortizacion", DBCampo::DBint, DBCampo::DBNotNull, tr("Id cuenta amortizacion"));
 
     /// Inicializamos el listado.
     mui_listcuotas->setDBTableName("linamortizacion");
     mui_listcuotas->setDBCampoId("idlinamortizacion");
-    mui_listcuotas->addSHeader("idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr("idlinamortizacion"));
-    mui_listcuotas->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("idamortizacion"));
-    mui_listcuotas->addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite , tr("idasiento"));
-    mui_listcuotas->addSHeader("ejercicio", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("ejercicio"));
-    mui_listcuotas->addSHeader("fechaprevista", DBCampo::DBdate, DBCampo::DBNothing, SHeader::DBNone , tr("fechaprevista"));
-    mui_listcuotas->addSHeader("cantidad", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone , tr("cantidad"));
+    mui_listcuotas->addSHeader("ejercicio", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNone, tr("Ejercicio"));
+    mui_listcuotas->addSHeader("fechaprevista", DBCampo::DBdate, DBCampo::DBNothing, SHeader::DBNone, tr("Fecha prevista"));
+    mui_listcuotas->addSHeader("cantidad", DBCampo::DBnumeric, DBCampo::DBNothing, SHeader::DBNone, tr("Cantidad"));
+    mui_listcuotas->addSHeader("idasiento", DBCampo::DBint, DBCampo::DBNothing, SHeader::DBNoWrite , tr("Id asiento"));
+    mui_listcuotas->addSHeader("idlinamortizacion", DBCampo::DBint, DBCampo::DBPrimaryKey, SHeader::DBNoWrite , tr("Id lineas de amortizacion"));
+    mui_listcuotas->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoWrite , tr("Id amortizacion"));
     mui_listcuotas->setinsercion(FALSE);
 
     /// Fin de nuevas amortizaciones

@@ -67,14 +67,14 @@ public:
     int cargacuenta(int);
     void cambiapadre(const QString &);
     void closeEvent(QCloseEvent *);
+    virtual void on_mui_borrar_clicked() {
+        borrarCuenta();
+    };
 
 public slots:
     virtual void codigo_ret();
     virtual void on_mui_guardar_clicked() {
         guardarCuenta();
-    };
-    virtual void on_mui_borrar_clicked() {
-        borrarCuenta();
     };
     virtual void on_mui_aceptar_clicked() {
         guardarCuenta();

@@ -205,7 +205,7 @@ void listventanas::cambiaVisible(bool visible) {
 }
 
 
-void listventanas::closeEvent(QCloseEvent *event) {
+void listventanas::closeEvent(QCloseEvent *) {
     emit(cambiaEstadoVisible(FALSE));
     _depura("listventanas::closeEvent", 0);
 }

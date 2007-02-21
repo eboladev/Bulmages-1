@@ -63,10 +63,10 @@ public:
     }
     /// Exporta menues.
     QMenu *mui_MenuHerramientas() {
-	return menuHerramientas;
+	   return menuHerramientas;
     }
     QMenu *mui_MenuVer() {
-	return menuVer;
+	   return menuVer;
     }
 
 protected:
@@ -120,9 +120,9 @@ private slots:
     };
 
 private:
-    /// The name used.
+    /// El nombre de la base de datos.
     QString DBName;
-    /// Setup the statusbar.
+    /// Configura el 'statusbar'.
     void initStatusBar();
 
 public slots:

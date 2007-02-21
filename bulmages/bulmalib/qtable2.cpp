@@ -44,7 +44,7 @@ QTableItemTextDelegate::~QTableItemTextDelegate() {
 /** Creacion del editor basado en un QTextEdit para el caso de edicion de elementos
 de Qtable2
 */
-QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const {
+QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &) const {
 	_depura("QTableItemTextDelegate::createEditor", 0);
 	QTextEdit *textedit = new QTextEdit(parent);
 	_depura("END QTableItemTextDelegate::createEditor", 0);
@@ -87,12 +87,12 @@ QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
 
 /** Este m&eacute;todo no hace nada.
 */
-void QTableWidget2::editItem(QTableWidgetItem *it) {
+void QTableWidget2::editItem(QTableWidgetItem *) {
     _depura("QTableWidget2::editItem", 0);
     _depura("END QTableWidget2::editItem", 0);
 }
 
-void QTableWidget2::sitemChanged(QTableWidgetItem *it) {
+void QTableWidget2::sitemChanged(QTableWidgetItem *) {
     _depura("QTableWidget2::sitemChanged", 0);
     _depura("END QTableWidget2::sitemChanged", 0);
 }

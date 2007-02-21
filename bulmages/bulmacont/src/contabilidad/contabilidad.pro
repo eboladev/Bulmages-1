@@ -23,7 +23,7 @@ INCLUDEPATH += ../../../bulmalib \
 
 LIBPATH += ../../../installbulmages
 
-CONFIG += release 
+CONFIG += release warn_on assistant
 
 LIBS += -rdynamic \
 	-lbulmalib
@@ -55,7 +55,6 @@ FORMS += bulmacontbase.ui \
 	 fpagobase.ui \
 	 tipoivabase.ui \
 	 bbloqfechabase.ui \
-	 actualizacionesbase.ui \
 	 duplicarasientobase.ui \
 	 cambiactabase.ui \
 	 selectcanalbase.ui \
@@ -104,7 +103,6 @@ HEADERS += splashscreen.h \
            extractoprintview.h \
            libromayorprint.h \
            diarioprint.h \
-           actualizacionesview.h \
            diarioprintview.h \
            cambiactaview.h \
            duplicarasientoview.h \
@@ -161,7 +159,6 @@ SOURCES += main.cpp \
            extractoprintview.cpp \
            libromayorprint.cpp \
            diarioprint.cpp \
-           actualizacionesview.cpp \
            diarioprintview.cpp \
            cambiactaview.cpp \
            duplicarasientoview.cpp \

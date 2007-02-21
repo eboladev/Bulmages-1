@@ -27,6 +27,8 @@
 #include <QWidget>
 #include <QSizePolicy>
 #include <QDir>
+#include <QAssistantClient>
+#include <QLibraryInfo>
 
 #include "balanceview.h"
 #include "extractoview1.h"

@@ -27,10 +27,10 @@
 #include "empresa.h"
 #include "asiento1view.h"
 
-#define TIPO_CTA 0
-#define TIPO_FECHA 1
-#define TIPO_TEXTO 2
-#define TIPO_NUMERO 3
+#define TIPO_CTA         0
+#define TIPO_FECHA       1
+#define TIPO_TEXTO       2
+#define TIPO_NUMERO      3
 #define TIPO_PREDEFINIDO 4
 
 /// Estos defines indican posiciones de las variables de apunte.
@@ -40,7 +40,7 @@
 /// Estos defines indican posiciones de las variables predefinidas
 /// Son de uso interno, asi que s&oacute;lo deben conocerse si se agrgan variables
 /// predefinidas.
-#define VAR_PRED_FECHAACTUAL 0
+#define VAR_PRED_FECHAACTUAL  0
 #define VAR_PRED_FECHAASIENTO 1
 
 
@@ -93,13 +93,13 @@ void aplinteligentesview::inicializa(int idasiento) {
 	QStringList listaOrdenada;
 	while(!list.isEmpty()){
 	    QFileInfo fileInfo = list.takeFirst();
-	    listaOrdenada.append(fileInfo.fileName().replace(".xml","")); // cogemos los nombres de los ficheros sin la extension
-	    listasientos.append(fileInfo.filePath()); // y la ruta completa
+	    listaOrdenada.append(fileInfo.fileName().replace(".xml","")); /// cogemos los nombres de los ficheros sin la extension
+	    listasientos.append(fileInfo.filePath()); /// y la ruta completa
 	}
-	listaOrdenada.sort(); // se ordena la lista alfabeticamente
-	listasientos.sort(); // y la de la ruta, que se ordenara igual
+	listaOrdenada.sort(); /// se ordena la lista alfabeticamente
+	listasientos.sort(); /// y la de la ruta, que se ordenara igual
 	while(!listaOrdenada.isEmpty())
-	    mui_comboainteligentes->addItem(listaOrdenada.takeFirst()); // y se carga en el combo
+	    mui_comboainteligentes->addItem(listaOrdenada.takeFirst()); /// y se carga en el combo
 	
 	/// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
 	companyact->begin();
@@ -219,7 +219,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
         companyact->intapuntsempresa()->vaciar();
-	companyact->intapuntsempresa()->iniciar_asiento_nuevo();
+	    companyact->intapuntsempresa()->iniciar_asiento_nuevo();
         numasiento = companyact->intapuntsempresa()->idasiento().toInt();
         recogevalores();
         creaasiento();

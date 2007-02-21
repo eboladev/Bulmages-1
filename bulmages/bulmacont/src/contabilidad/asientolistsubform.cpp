@@ -89,6 +89,36 @@ void AsientoListSubform::contextMenuEvent(QContextMenuEvent *) {
 
     QAction *opcion = popup->exec(QCursor::pos());
 
+    if (opcion == mostapunte) {
+        boton_asiento();
+    } // end if
+    if (opcion == mostextractodia) {
+        boton_extracto1(0);
+    } // end if
+    if (opcion == mostextractomes) {
+        boton_extracto1(1);
+    } // end if
+    if (opcion == mostextractoano) {
+        boton_extracto1(2);
+    } // end if
+    if (opcion == mostbalancedia) {
+        boton_balance1(0);
+    } // end if
+    if (opcion == mostbalancemes) {
+        boton_balance1(1);
+    } // end if
+    if (opcion == mostbalanceano) {
+        boton_balance1(2);
+    } // end if
+    if (opcion == mostbalancejdia) {
+        boton_balancetree(0);
+    } // end if
+    if (opcion == mostbalancejmes) {
+        boton_balancetree(1);
+    } // end if
+    if (opcion == mostbalancejano) {
+        boton_balancetree(2);
+    } // end if
     if (opcion == ajust) {
         resizeColumnsToContents();
     } // end if

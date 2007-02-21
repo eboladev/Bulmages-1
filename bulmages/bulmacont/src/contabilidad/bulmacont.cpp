@@ -26,11 +26,9 @@
 #include <QEvent>
 #include <QProgressBar>
 
-
 #include "bulmacont.h"
 #include "configuracion.h"
 #include "aboutview.h"
-#include "actualizacionesview.h"
 
 
 Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
@@ -83,7 +81,6 @@ Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
     m_list->setVisible(TRUE);
     m_pb->setVisible(FALSE);
 
-    setWindowTitle(tr("BulmaCont -- ") + DBName + " --");
     initStatusBar();
     statusBar()->showMessage(tr("Listo"), 2000);
 
@@ -208,11 +205,13 @@ void Bulmacont::closeEvent(QCloseEvent *) {
 
 void Bulmacont::on_actionAyuda_triggered() {
     _depura("Bulmacont::on_actionAyuda_triggered", 0);
-    actualizacionesview *act = new actualizacionesview(0);
-    m_pWorkspace->addWindow(act);
-    act->show();
+    QAssistantClient *asistenteAyuda = new QAssistantClient(QLibraryInfo::location(QLibraryInfo::BinariesPath), 0);
+    connect(asistenteAyuda, SIGNAL(error(const QString)), this, SLOT(documentacionError(const QString)));
+    QStringList parametros;
+    parametros << "-profile" << QString("/usr/share/bulmages/ayuda/bulmacont/bulmacont.adp");
+    asistenteAyuda->setArguments(parametros);
+    asistenteAyuda->openAssistant();
     _depura("END Bulmacont::on_actionAyuda_triggered", 0);
-
 }
 
 

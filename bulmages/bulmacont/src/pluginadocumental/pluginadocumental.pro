@@ -18,7 +18,8 @@ TEMPLATE = lib
 CONFIG +=  plugin \
            warn_on \
 	   qt \
-	   release
+	   release \
+	   assistant
 	 	 
 TARGET = ../../../installbulmages/plugins/adocumental
 
