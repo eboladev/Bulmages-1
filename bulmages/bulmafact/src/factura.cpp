@@ -194,16 +194,16 @@ int Factura::guardar() {
     Luego hace en este archivo toda la sustitucion de cadenas segun la ficha de factura.
     Por ultimo llama a bgtrml2pdf.py para generear un pdf y lo muestra con el visor predeterminado.
 */
-void  Factura::imprimirFactura() {
-    _depura("Factura::imprimirFactura", 0);
+void  Factura::generaRML() {
+    _depura("Factura::generaRML", 0);
     /// Hacemos el lanzamiento de plugins para este caso.
-    int res = g_plugins->lanza("Factura_imprimirFactura", this);
+    int res = g_plugins->lanza("Factura_generaRML", this);
     if (res)
         return;
 
     base basesimp;
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "facturacliente.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "facturacliente.rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "factura.rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + "factura.rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -345,7 +345,16 @@ void  Factura::imprimirFactura() {
         stream << buff;
         file.close();
     }
-    invocaPDF("facturacliente");
-    _depura("Factura::imprimirFactura", 0);
+    _depura("END Factura::generaRML", 0);
 }
 
+void Factura::imprimirFactura() {
+    _depura("Factura::imprimirFactura", 0);
+    /// Hacemos el lanzamiento de plugins para este caso.
+    int res = g_plugins->lanza("Factura_imprimirFactura", this);
+    if (res)
+        return;
+    generaRML();
+    invocaPDF("factura");
+    _depura("END Factura::imprimirFactura", 0);
+}

@@ -40,16 +40,8 @@ public:
     ~PresupuestoListSubForm() {}
 
 public slots:
-    virtual void cargar() {
-        _depura("PresupuestoListSubForm::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM presupuesto";
-        cursor2 *cur= companyact()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    }
-    virtual void cargar(QString query) {
-        SubForm3::cargar(query);
-    }
+    virtual void cargar();
+    virtual void cargar(QString query);
 };
 
 

@@ -58,6 +58,7 @@ public:
     company *getcompany() {
         return m_company;
     };
+    void createMainWindows();
 
 public slots:
     virtual void closeEvent(QCloseEvent *);

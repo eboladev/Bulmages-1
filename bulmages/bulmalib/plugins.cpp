@@ -49,43 +49,48 @@ void Plugins::cargaLibs(const QString libs) {
     QStringList plugins = cad.split(";");
     for (QStringList::Iterator it = plugins.begin(); it != plugins.end(); ++it) {
         QLibrary *lib = new QLibrary(*it);
-        _depura("Plugins::Resolviendo la libreria: ", 0, *it);
+        _depura("Plugins::cargaLibs", 0, "Plugins::Resolviendo la libreria: " + *it);
         lib->load();
         if (!lib->isLoaded()) {
-            mensajeInfo("Plugins::No se ha podido cargar la libreria: " + *it);
+            mensajeInfo("No se ha podido cargar la libreria: " + *it);
         } else {
             m_lista.append(lib);
         } // end if
     } // end for
+    _depura("END Plugins::cargaLibs", 0);
 }
 
 
 int Plugins::lanza(const char *func, void *clase) {
+    _depura("Plugins::lanza", 0, func);
     int a = 0;
     for (int i = 0; i < m_lista.size(); ++i) {
         myFunction = (MyPrototype) m_lista.at(i)->resolve(func);
         if (myFunction) {
-            _depura("Encontrada una funcion correspondiente con el prototipo", 0);
+            _depura("Plugins::lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
             a = myFunction(clase);
         } else {
-            _depura("No ha entrado la libreria\n", 0);
+            _depura("Plugins::lanza", 0, "No ha entrado la libreria");
         } // end if
-    }
+    } // end for
+    _depura("END Plugins::lanza", 0);
     return a;
 }
 
 
 int Plugins::lanza(const char *func, void *clase, void **ret) {
+    _depura("Plugins::lanza", 0, func);
     int a = 0;
     for (int i = 0; i < m_lista.size(); ++i) {
         myFunction1 = (MyPrototype1) m_lista.at(i)->resolve(func);
         if (myFunction1) {
-            _depura("Encontrada una funcion correspondiente con el prototipo", 0);
+            _depura("Plugins::lanza", 0, "Encontrada una funcion correspondiente con el prototipo");
             a = myFunction1(clase, ret);
         } else {
-            _depura("No ha entrado la libreria\n", 0);
+            _depura("Plugins::lanza", 0, "No ha entrado la libreria");
         } // end if
-    }
+    } // end for
+    _depura("END Plugins::lanza", 0);
     return a;
 }
 

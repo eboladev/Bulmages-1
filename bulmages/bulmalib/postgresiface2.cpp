@@ -113,14 +113,16 @@ QString cursor2::nomcampo(int campo) {
 /// las posiciones para hacer la busqueda mas rapida, pero al ser el numero de registros
 /// siempre muy reducido seguramente no arreglariamos nada de nada.
 int cursor2::numcampo(QString campo) {
+    _depura("cursor2::numcampo", 0);
     int i = 0;
     while (i < numcampos() && campo != nomcampo(i)) {
         i++;
     } // end while
     if (i == numcampos()) {
-        _depura("Campo: " + campo + " no existe en la consulta: " + m_query, 2);
+        _depura("cursor2::numcampo", 2, "Campo: " + campo + " no existe en la consulta: " + m_query);
         return -1;
     } // end if
+    _depura("END cursor2::numcampo", 0);
     return i;
 }
 

@@ -88,6 +88,7 @@
         <file>images/png/i_planCuentas.xpm</file>
         <file>images/png/i_print</file>
         <file>images/png/i_print.xpm</file>
+        <file>images/png/i_print1.png</file>
         <file>images/png/i_redo</file>
         <file>images/png/i_reload.png</file>
         <file>images/png/i_reload.xpm</file>
@@ -772,7 +773,10 @@
         <file>images/png/i_filePrint.xpm</file>
         <file>images/png/i_find.png</file>
         <file>images/png/i_immportar.png</file>
+        <file>images/png/i_invert.png</file>
+        <file>images/png/i_mail.png</file>
         <file>images/png/i_packageSettings.png</file>
+        <file>images/png/i_print1.png</file>
         <file>images/png/i_reload.png</file>
         <file>images/png/i_save.xpm</file>
         <file>images/png/i_tuxPeq.png</file>

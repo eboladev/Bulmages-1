@@ -98,6 +98,9 @@ public:
     FacturasProveedorList *facturasProveedorList() {
     	return m_facturasproveedorlist;
     };
+    PresupuestoList *presupuestoList() {
+	return m_presupuestosList;
+    }
     void listproviders();
     void listClients();
     void listarticles();

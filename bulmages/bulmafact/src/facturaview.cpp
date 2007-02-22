@@ -52,7 +52,7 @@ FacturaView::FacturaView(company *comp, QWidget *parent)
         setupUi(this);
         
         /// Disparamos los plugins.
-        int res = g_plugins->lanza("FacturaView_EFacturaBotonExportar", this);
+        int res = g_plugins->lanza("FacturaView_FacturaView", this);
         if (res != 0)
             return;
         

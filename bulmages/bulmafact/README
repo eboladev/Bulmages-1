@@ -27,3 +27,10 @@ El programa compilado y los plugins se encuentran en installbulmages.
 
 Mire los archivos .pro de cada directorio para comprender mejor el
 sistema de compilacion.
+
+
+Codigo no liberado
+------------------
+Puede crear sus propios plugins de proyecto sin necesidad de generar complicadas estructuras para sortear los commits de bulmages y los de sus
+parches. Agrege los directorios que considere necesarios dentro de src y enlacelos con la compilacion general a traves del archivo privatecode.pro
+De esta forma sus plugins se compilaran junto con todo el programa.

@@ -150,6 +150,7 @@ public:
     virtual QString calculateValues() {
         return "";
     };
+    void generaRML();
 };
 
 #endif

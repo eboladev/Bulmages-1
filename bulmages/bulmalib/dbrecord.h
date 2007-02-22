@@ -32,7 +32,7 @@ class DBCampo {
 public:
     enum dbtype {DBint = 1, DBvarchar = 2, DBdate = 3, DBnumeric = 4, DBboolean = 5};
     enum dbrestrict {DBNothing = 0, DBNotNull = 1, DBPrimaryKey = 2,
-                     DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32};
+                     DBNoSave = 4, DBAuto = 8, DBDupPrimaryKey = 16, DBRequired = 32, DBNoLoad = 64};
 
 protected:
     QString m_nomcampo;

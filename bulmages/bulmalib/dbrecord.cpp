@@ -99,15 +99,17 @@ int DBRecord::DBload(cursor2 *cur) {
     int error = 0;
     for (int i = 0; i < m_lista.size(); ++i) {
         linea = m_lista.at(i);
-        QString nom = linea->nomcampo();
-        QString val = cur->valor(nom);
-        if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
-            m_nuevoCampo = TRUE;
-        if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
-            m_nuevoCampo = TRUE;
-        error += linea->set(val);
-    	/// Al ser una carga consideramos que los cambios estan inicializados.
-	   linea->resetCambio();
+        if (! (linea->restrictcampo() & DBCampo::DBNoLoad)) {
+		QString nom = linea->nomcampo();
+		QString val = cur->valor(nom);
+		if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
+		m_nuevoCampo = TRUE;
+		if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
+		m_nuevoCampo = TRUE;
+		error += linea->set(val);
+		/// Al ser una carga consideramos que los cambios estan inicializados.
+		linea->resetCambio();
+	} // end if
     } // end for
     _depura("END DBRecord::DBload", 0);
     return error;

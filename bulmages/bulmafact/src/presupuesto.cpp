@@ -198,8 +198,8 @@ QString Presupuesto::detalleArticulos() {
 }
 
 
-void Presupuesto::imprimirPresupuesto() {
-    _depura("Presupuesto::imprimirPresupuesto", 0);
+void Presupuesto::generaRML() {
+    _depura("Presupuesto::generaRML", 0);
     /// Disparamos los plugins con Presupuesto_imprimirPresupuesto.
     int res = g_plugins->lanza("Presupuesto_imprimirPresupuesto", this);
     if (res != 0)
@@ -356,6 +356,14 @@ void Presupuesto::imprimirPresupuesto() {
         stream << buff;
         file.close();
     }
+
+    _depura("END Presupuesto::generaRML", 0);
+}
+
+
+void Presupuesto::imprimirPresupuesto() {
+    _depura("Presupuesto::imprimirPresupuesto", 0);
+    generaRML();
     invocaPDF("presupuesto");
     _depura("Presupuesto::imprimirPresupuesto", 0);
 }

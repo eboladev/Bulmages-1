@@ -86,7 +86,7 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
     m_company->setListVentanas(m_list);
-    m_company->createMainWindows();
+
 
     m_list->setVisible(TRUE);
     m_pb->setVisible(FALSE);
@@ -94,6 +94,13 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     _depura("END bulmafact::bulmafact", 0);
 }
 
+/** Hacemos la creacion de las ventanas principales para que enten en plugins
+*/
+void bulmafact::createMainWindows() {
+    _depura("bulmafact::createMainWindows", 0);
+    m_company->createMainWindows();
+    _depura("END bulmafact::createMainWindows", 0);
+}
 
 /** Libera memoria destruyendo todos los objetos creados.
 */

@@ -104,6 +104,9 @@ int main(int argc, char **argv) {
         QString us = argv[3];
         QString pass = argv[4];
 
+
+
+
         /// Dependiendo de los argumentos pasados se lanza con unas opciones u otras para la
         /// conexion con la base de datos.
         if (argc == 5) {
@@ -161,6 +164,10 @@ int main(int argc, char **argv) {
 
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza("entryPoint", bges);
+
+	/// Lanzamos la creacion de las ventanas principales.
+	bges->createMainWindows();
+
         g_main = bges;
         theApp->exec();
     } catch (...) {

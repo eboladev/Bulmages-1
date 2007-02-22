@@ -35,11 +35,6 @@
 /// Administra la informaci&oacute;n de un Presupuesto.
 /** */
 class Presupuesto : public FichaBf {
-protected:
-/*
-    ListLinPresupuestoView *listalineas;
-    ListDescuentoPresupuestoView *listadescuentos;
-*/
 
 public:
     Presupuesto(company *, QWidget *);
@@ -170,6 +165,7 @@ public:
         setDBvalue("idforma_pago", val);
     };
     void vaciaPresupuesto();
+    void generaRML();
 };
 
 #endif

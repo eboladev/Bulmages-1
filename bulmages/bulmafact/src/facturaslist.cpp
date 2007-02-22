@@ -41,6 +41,10 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasList_FacturasList", this);
+    if (res != 0)
+        return;
     m_companyact = NULL;
     m_modo = editmodo;
     mdb_idfactura = "";
@@ -57,6 +61,10 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         : Ficha(parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasList_FacturasList", this);
+    if (res != 0)
+        return;
     m_companyact = comp;
     m_cliente->setcompany(m_companyact);
     m_articulo->setcompany(m_companyact);
@@ -214,6 +222,10 @@ void FacturasList::on_mui_borrar_clicked() {
 */
 FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
     _depura("FacturasListSubform::FacturasListSubform", 0);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasListSubform_FacturasListSubform", this);
+    if (res != 0)
+        return;
     setDBTableName("factura");
     setDBCampoId("idfactura");
     addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id factura"));

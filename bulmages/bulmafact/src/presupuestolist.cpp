@@ -36,6 +36,10 @@ PresupuestoList::PresupuestoList(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
     _depura("PresupuestoList::PresupuestoList(1)", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PresupuestoList_PresupuestoList", this);
+    if (res != 0)
+        return;
     m_companyact = NULL;
     m_modo = 0;
     m_idpresupuesto = "";
@@ -49,6 +53,10 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
         : Ficha(parent, flag) {
     _depura("PresupuestoList::PresupuestoList(2)", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PresupuestoList_PresupuestoList", this);
+    if (res != 0)
+        return;
     m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
@@ -121,21 +129,21 @@ QString PresupuestoList::generaFiltro() {
 void PresupuestoList::editar(int row) {
     _depura("PresupuestoList::editar", 0);
     try {
-	m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
-	if (m_modo == 0) {
-		PresupuestoView *prov = m_companyact->nuevoPresupuestoView();
-		if (prov->cargar(m_idpresupuesto)) {
-		delete prov;
-		return;
-		}
-		m_companyact->m_pWorkspace->addWindow(prov);
-		prov->show();
-	} else {
-		emit(selected(m_idpresupuesto));
-	} // end if
-	_depura("END PresupuestoList::editar", 0);
+        m_idpresupuesto = mui_list->DBvalue(QString("idpresupuesto"), row);
+        if (m_modo == 0) {
+            PresupuestoView *prov = m_companyact->nuevoPresupuestoView();
+            if (prov->cargar(m_idpresupuesto)) {
+                delete prov;
+                return;
+            }
+            m_companyact->m_pWorkspace->addWindow(prov);
+            prov->show();
+        } else {
+            emit(selected(m_idpresupuesto));
+        } // end if
+        _depura("END PresupuestoList::editar", 0);
     } catch(...) {
-	mensajeInfo(tr("Error al editar el presupuesto"));
+        mensajeInfo(tr("Error al editar el presupuesto"));
     } // end try
 }
 
@@ -187,6 +195,11 @@ void PresupuestoList::on_mui_borrar_clicked() {
 ///                    SUBFORMULARIO
 /// =============================================================================
 PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    _depura("PresupuestoListSubForm::PresupuestoListSubForm", 0);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PresupuestoListSubForm_PresupuestoListSubForm", this);
+    if (res != 0)
+        return;
     setDBTableName("presupuesto");
     setDBCampoId("idpresupuesto");
     addSHeader("idpresupuesto", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("ID presupuesto"));
@@ -208,5 +221,25 @@ PresupuestoListSubForm::PresupuestoListSubForm(QWidget *parent, const char *) : 
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);
+    /// Disparamos los plugins.
+    res = g_plugins->lanza("PresupuestoListSubForm_PresupuestoListSubForm_Post", this);
+    if (res != 0)
+        return;
+    _depura("PresupuestoListSubForm::PresupuestoListSubForm", 0);
 }
 
+
+void PresupuestoListSubForm::cargar() {
+        _depura("PresupuestoListSubForm::cargar", 0);
+        QString SQLQuery = "SELECT * FROM presupuesto";
+        cursor2 *cur= companyact()->cargacursor(SQLQuery);
+        SubForm3::cargar(cur);
+        delete cur;
+        _depura("END PresupuestoListSubForm::cargar", 0);
+}
+
+void PresupuestoListSubForm::cargar(QString query) {
+        _depura("PresupuestoListSubForm::cargar", 0, query);
+        SubForm3::cargar(query);
+	_depura("PresupuestoListSubForm::cargar", 0);
+}
