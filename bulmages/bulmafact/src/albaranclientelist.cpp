@@ -25,6 +25,7 @@
 
 #include "albaranclientelist.h"
 #include "albaranclienteview.h"
+#include "plugins.h"
 #include "company.h"
 #include "funcaux.h"
 
@@ -40,6 +41,10 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags, edmode editm
         : Ficha(parent) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
+    if (res != 0)
+        return;
     m_companyact = NULL;
     m_modo = editmodo;
     mdb_idalbaran = "";
@@ -59,6 +64,10 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
         : Ficha(parent) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("AlbaranClienteList_AlbaranClienteList", this);
+    if (res != 0)
+        return;
     m_companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
@@ -225,6 +234,11 @@ QString AlbaranClienteList::generarFiltro() {
 */
 AlbaranClienteListSubform::AlbaranClienteListSubform(QWidget *parent) : SubForm2Bf(parent) {
     _depura("AlbaranClienteListSubform::AlbaranClienteListSubform", 0);
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("AlbaranClienteListSubform_AlbaranClienteListSubform", this);
+    if (res != 0)
+        return;
     setDBTableName("albaran");
     setDBCampoId("idalbaran");
     addSHeader("refalbaran", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Referencia de albaran"));

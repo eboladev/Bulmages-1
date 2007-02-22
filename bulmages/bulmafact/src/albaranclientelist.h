@@ -105,9 +105,12 @@ public:
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
     }
+    company *getcompany() {
+	return m_companyact;
+    };
     void hideBotonera() {
         m_botonera->hide();
-    }
+    };
     void showBotonera() {
         m_botonera->show();
     }

@@ -84,6 +84,9 @@ public:
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
     }
+    company *getcompany() {
+	return companyact;
+    };
     void hideBotonera() {
         m_botonera->hide();
     }

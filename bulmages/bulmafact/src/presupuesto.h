@@ -86,7 +86,6 @@ public:
     virtual void pintaPresupuesto();
     virtual int guardar();
     virtual int borrar();
-    virtual void imprimirPresupuesto();
     virtual QString detalleArticulos();
     virtual void pintaidcliente(QString) {}
     ;
@@ -165,7 +164,6 @@ public:
         setDBvalue("idforma_pago", val);
     };
     void vaciaPresupuesto();
-    void generaRML();
 };
 
 #endif

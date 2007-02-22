@@ -25,24 +25,36 @@
 #include "company.h"
 #include "configuracion.h"
 #include "funcaux.h"
+#include "plugins.h"
 #include "pedidoclienteview.h"
 #include "pedidosclientelist.h"
 
 
 PedidosClienteList::PedidosClienteList(QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
+    _depura("PedidosClienteList::PedidosClienteList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PedidosClienteList_PedidosClienteList", this);
+    if (res != 0)
+        return;
     companyact = NULL;
     m_modo = 0;
     m_idpedidocliente = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END PedidosClienteList::PedidosClienteList", 0);
 }
 
 
 PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlags flag)
         : Ficha(parent, flag) {
+    _depura("PedidosClienteList::PedidosClienteList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PedidosClienteList_PedidosClienteList", this);
+    if (res != 0)
+        return;
     companyact = comp;
     m_cliente->setcompany(comp);
     m_articulo->setcompany(comp);
@@ -52,6 +64,7 @@ PedidosClienteList::PedidosClienteList(company *comp, QWidget *parent, Qt::WFlag
     m_idpedidocliente = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    _depura("END PedidosClienteList::PedidosClienteList", 0);
 }
 
 
@@ -175,6 +188,11 @@ void PedidosClienteList::on_mui_borrar_clicked() {
 ///                    SUBFORMULARIO
 /// =============================================================================
 PedidosClienteListSubform::PedidosClienteListSubform(QWidget *parent, const char *) : SubForm2Bf(parent) {
+    _depura("PedidosClienteListSubform::PedidosClienteListSubform", 0);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("PedidosClienteListSubform_PedidosClienteListSubform", this);
+    if (res != 0)
+        return;
     setDBTableName("pedidocliente");
     setDBCampoId("idpedidocliente");
     addSHeader("numpedidocliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero pedido cliente"));
@@ -196,5 +214,6 @@ PedidosClienteListSubform::PedidosClienteListSubform(QWidget *parent, const char
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);
+    _depura("END PedidosClienteListSubform::PedidosClienteListSubform", 0);
 }
 

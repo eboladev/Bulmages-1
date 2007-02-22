@@ -119,7 +119,6 @@ public:
         setDBvalue("procesadafactura", val);
     };
     void vaciaFactura();
-    virtual void imprimirFactura();
 
     virtual void pintaidcliente(QString) {}
     ;
@@ -150,7 +149,8 @@ public:
     virtual QString calculateValues() {
         return "";
     };
-    void generaRML();
+
+
 };
 
 #endif

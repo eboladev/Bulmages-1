@@ -97,7 +97,6 @@ public slots:
         guardar();
     };
     virtual void on_mui_imprimir_clicked() {
-//        imprimirFactura();
         imprimir();
     };
     virtual void on_mui_agregaralbaran_clicked();

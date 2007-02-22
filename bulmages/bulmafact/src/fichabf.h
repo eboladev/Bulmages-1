@@ -40,6 +40,9 @@ public:
     company *m_companyact;
 
 public:
+    company * getcompany() {
+	return m_companyact;
+    };
     FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0);
     ~FichaBf();
     void setListaLineas(SubForm2Bf *form) {
@@ -54,7 +57,8 @@ public:
     SubForm2Bf* getlistadescuentos() {
         return m_listadescuentos;
     };
-    void imprimir();
+    virtual void imprimir();
+    virtual void generaRML();
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
     virtual int sacaWindow();
