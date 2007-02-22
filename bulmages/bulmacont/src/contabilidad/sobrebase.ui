@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>AboutBase</class>
- <widget class="QDialog" name="AboutBase" >
+ <class>SobreBase</class>
+ <widget class="QDialog" name="SobreBase" >
   <property name="geometry" >
    <rect>
     <x>0</x>
@@ -570,7 +570,7 @@
            </font>
           </property>
           <property name="text" >
-           <string>Contabilidad GPL - Versión 0.9.1 -</string>
+           <string>Contabilidad GPL - Version 0.9.1 -</string>
           </property>
          </widget>
         </item>

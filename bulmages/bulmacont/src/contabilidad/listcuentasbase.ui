@@ -115,7 +115,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Nueva Cuenta</string>
+           <string>Nueva cuenta</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Nueva cuenta</string>
           </property>
           <property name="text" >
            <string/>
@@ -157,10 +160,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Editar Cuenta</string>
+           <string>Editar cuenta</string>
           </property>
           <property name="whatsThis" >
-           <string>Editar Cuenta </string>
+           <string>Editar cuenta</string>
           </property>
           <property name="text" >
            <string/>
@@ -175,7 +178,7 @@
            </size>
           </property>
           <property name="shortcut" >
-           <string>Ctrl+C</string>
+           <string>Ctrl+E</string>
           </property>
          </widget>
         </item>
@@ -202,7 +205,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar Cuenta</string>
+           <string>Borrar cuenta</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Borrar cuenta</string>
           </property>
           <property name="text" >
            <string/>
@@ -236,7 +242,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir Cuentas</string>
+           <string>Imprimir cuentas</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Imprimir cuentas</string>
           </property>
           <property name="text" >
            <string/>
@@ -251,7 +260,7 @@
            </size>
           </property>
           <property name="shortcut" >
-           <string>Ctrl+D</string>
+           <string>Ctrl+P</string>
           </property>
          </widget>
         </item>
@@ -278,7 +287,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Exportar</string>
+           <string>Exportar cuentas</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Exportar cuentas</string>
           </property>
           <property name="text" >
            <string/>
@@ -317,7 +329,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Importar</string>
+           <string>Importar cuentas</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Importar cuentas</string>
           </property>
           <property name="text" >
            <string/>
@@ -356,7 +371,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Importar</string>
+           <string>Actualizar listado</string>
+          </property>
+          <property name="whatsThis" >
+           <string>Actualizar listado</string>
           </property>
           <property name="text" >
            <string/>
@@ -369,6 +387,9 @@
             <width>32</width>
             <height>32</height>
            </size>
+          </property>
+          <property name="shortcut" >
+           <string>F5</string>
           </property>
          </widget>
         </item>

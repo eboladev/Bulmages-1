@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>627</width>
-    <height>550</height>
+    <width>690</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -128,8 +128,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -170,8 +170,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >
@@ -181,6 +181,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="botoninteligente_2" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -220,6 +223,9 @@
         </item>
         <item>
          <widget class="QToolButton" name="ToolButton17" >
+          <property name="enabled" >
+           <bool>false</bool>
+          </property>
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>0</hsizetype>
@@ -290,8 +296,8 @@
           </property>
           <property name="iconSize" >
            <size>
-            <width>22</width>
-            <height>22</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
           <property name="shortcut" >

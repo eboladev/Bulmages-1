@@ -20,13 +20,13 @@
 
 #include "QString"
 
-#include "aboutview.h"
+#include "sobreview.h"
 
 
 /// Constructor de la clase.
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
-aboutview::aboutview(QWidget *parent) : QDialog(parent) {
+sobreview::sobreview(QWidget *parent) : QDialog(parent) {
     QString str_sobre;
     QString str_autores;
     QString str_soporte;
@@ -422,10 +422,10 @@ aboutview::aboutview(QWidget *parent) : QDialog(parent) {
 /// Destructor de la clase
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
-aboutview::~aboutview() {}
+sobreview::~sobreview() {}
 
 
-void aboutview::on_mui_aceptar_clicked() {
+void sobreview::on_mui_aceptar_clicked() {
     close();
 }
 

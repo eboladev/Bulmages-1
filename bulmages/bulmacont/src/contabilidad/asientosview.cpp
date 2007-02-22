@@ -43,7 +43,7 @@ asientosview::asientosview(empresa *emp, QWidget *parent)
 void asientosview::rellenaListaEjercicio() {
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
-    mui_ejercicio->insertItem(0, "--");
+    mui_ejercicio->insertItem(0, tr("(todos)"));
     QString SQLQuery = "SELECT DISTINCT EXTRACT (YEAR FROM fecha) AS ano FROM borrador";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
     while (!cur->eof()) {
@@ -91,7 +91,7 @@ void asientosview::inicializa() {
     /// Componemos la consulta a partir de la parte de filtrado.
     if (saldototal != "") {
         cadwhere = " WHERE ";
-        textsaldototal = " asiento.idasiento IN (SELECT idasiento FROM (SELECT idasiento, sum(debe) AS total from apunte GROUP BY idasiento) AS foo WHERE foo.total = " + saldototal + ")";
+        textsaldototal = " asiento.idasiento IN (SELECT idasiento FROM (SELECT idasiento, SUM(debe) AS total FROM apunte GROUP BY idasiento) AS foo WHERE foo.total = " + saldototal + ")";
         pand = 1;
     } // end if
     if (cantapunt != "" ) {
@@ -99,7 +99,7 @@ void asientosview::inicializa() {
         if (pand) {
             textcantapunt = " AND ";
         } // end if
-        textcantapunt += " asiento.idasiento IN (SELECT idasiento FROM apunte where debe = " + cantapunt + " OR haber = " + cantapunt + ")";
+        textcantapunt += " asiento.idasiento IN (SELECT idasiento FROM apunte WHERE debe = " + cantapunt + " OR haber = " + cantapunt + ")";
         pand = 1;
     } // end if
     if (nombreasiento != "") {
@@ -110,7 +110,7 @@ void asientosview::inicializa() {
         textnombreasiento += " asiento.idasiento in (SELECT idasiento FROM apunte WHERE conceptocontable LIKE '%" + nombreasiento + "%' )";
         pand = 1;
     } // end if
-    if (ejercicio != "--") {
+    if (mui_ejercicio->currentIndex() != 0) {
         if (pand) {
             textejercicio = " AND EXTRACT(YEAR FROM fecha) = '" + ejercicio + "'";
         } else {
@@ -118,7 +118,7 @@ void asientosview::inicializa() {
         } // end if
     } // end if
 
-    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha,  totaldebe, totalhaber, numap, numborr, comentariosasiento, clase   from asiento  LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) as foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT sum(debe) as totaldebe, sum(haber) as totalhaber, count(idapunte) as numap, idasiento from apunte group by idasiento) as fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textcantapunt + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
+    query = "SELECT asiento.ordenasiento, asiento.idasiento, asiento.fecha, totaldebe, totalhaber, numap, numborr, comentariosasiento, clase FROM asiento LEFT JOIN (SELECT count(idborrador) AS numborr, idasiento FROM borrador GROUP BY idasiento) AS foo1 ON foo1.idasiento = asiento.idasiento LEFT JOIN (SELECT SUM(debe) AS totaldebe, SUM(haber) AS totalhaber, count(idapunte) AS numap, idasiento FROM apunte GROUP BY idasiento) AS fula ON asiento.idasiento = fula.idasiento " + cadwhere + textsaldototal + textcantapunt + textnombreasiento + textejercicio + " ORDER BY EXTRACT (YEAR FROM asiento.fecha), asiento.ordenasiento";
     cursor2 *cursoraux = m_companyact->cargacursor(query);
     mui_list->cargar(cursoraux);
     delete cursoraux;

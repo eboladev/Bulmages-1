@@ -51,7 +51,7 @@ void Ficha::on_mui_borrar_clicked() {
 
     int val = QMessageBox::question(this,
                                     tr("Borrar") + " " + windowTitle(),
-                                    tr("Desea eliminar") + " " + windowTitle(),
+                                    tr("Desea eliminar '") + " " + windowTitle() + "' ?",
                                    QMessageBox::Yes,
                                    QMessageBox::Cancel | QMessageBox::Escape | QMessageBox::Default);
 

@@ -99,7 +99,10 @@ public:
         muestraasiento(QString::number(v));
     };
     /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
-    virtual int sacaWindow() {};
+    virtual int sacaWindow() {
+        return 0;
+    };
+
 public:
     void setFecha(QString val) {
         mui_fecha->setText(val);

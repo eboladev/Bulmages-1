@@ -28,7 +28,7 @@
 
 #include "bulmacont.h"
 #include "configuracion.h"
-#include "aboutview.h"
+#include "sobreview.h"
 
 
 Bulmacont::Bulmacont(QWidget *parent, Qt::WFlags f, QString DB)
@@ -216,8 +216,8 @@ void Bulmacont::on_actionAyuda_triggered() {
 
 
 void Bulmacont::on_actionAcerca_de_triggered() {
-    aboutview *about = new aboutview(0);
-    about->exec();
+    sobreview *sobre = new sobreview(0);
+    sobre->exec();
 }
 
 

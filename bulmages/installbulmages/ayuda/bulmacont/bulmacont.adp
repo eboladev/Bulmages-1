@@ -13,12 +13,18 @@
 </profile>
 
 <DCF ref="index.html" icon="imagenes/libro.png" title="Ayuda de BulmaCont">
-        <section ref="./opcion_a.html" title="Opcion A">
-            <keyword ref="./index.html">Opcion 1</keyword>
-            <keyword ref="./index.html">Opcion 2</keyword>
-            <keyword ref="./index.html">Opcion 3</keyword>
+        <section ref="./index.html" title="Manual de usuario de BulmaCont 1.0">
+            <keyword ref="./introduccion.html">Introduccion al programa</keyword>
+            <keyword ref="./propiedades_empresa.html">Propiedades de la empresa</keyword>
 
-            <section ref="./index.html" title="Índice" />
+            <keyword ref="./index.html">Pantalla principal</keyword>
+            <keyword ref="./index.html">Gestion de empresas</keyword>
+            <keyword ref="./index.html">Plan contable</keyword>
+            <keyword ref="./index.html">Asientos</keyword>
+            <keyword ref="./index.html">Libro mayor</keyword>
+            <keyword ref="./index.html">Libro diario</keyword>
+            <keyword ref="./index.html">Balance de cuentas</keyword>
+
         </section>
 </DCF>
 

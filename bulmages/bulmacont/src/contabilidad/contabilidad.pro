@@ -44,7 +44,7 @@ FORMS += bulmacontbase.ui \
 	 balancetreebase.ui \
 	 cuentabase.ui \
 	 listcuentasbase.ui \
-	 aboutbase.ui \
+	 sobrebase.ui \
 	 amortizacionesbase.ui \
 	 amortizacionbase.ui \
 	 busquedacuentabase.ui \
@@ -79,7 +79,7 @@ TRANSLATIONS += bulmacont_es.ts \
 
 HEADERS += splashscreen.h \
            bulmacont.h \
-           aboutview.h \
+           sobreview.h \
            empresa.h \
            listcuentasview1.h \
            cuentaview.h \
@@ -135,7 +135,7 @@ HEADERS += splashscreen.h \
 SOURCES += main.cpp \
            splashscreen.cpp \
            bulmacont.cpp \
-           aboutview.cpp \
+           sobreview.cpp \
            empresa.cpp \
            listcuentasview1.cpp \
            cuentaview.cpp \

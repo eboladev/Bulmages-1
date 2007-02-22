@@ -23,18 +23,18 @@
 
 #include <QWidget>
 
-#include "ui_aboutbase.h"
+#include "ui_sobrebase.h"
 #include "ficha.h"
 
 
 /// Presenta la informaci&oacute;n sobre el programa.
 /** Esta clase muestra el di&aacute;logo de About. Presentan los cr&eacute;ditos del programa. */
-class aboutview : public QDialog, public Ui_AboutBase {
+class sobreview : public QDialog, public Ui_SobreBase {
     Q_OBJECT
 
 public:
-    aboutview(QWidget *parent = 0); /// Constructor de la clase.
-    ~aboutview(); /// Destructor de la clase.
+    sobreview(QWidget *parent = 0); /// Constructor de la clase.
+    ~sobreview(); /// Destructor de la clase.
 
 private slots:
     void on_mui_aceptar_clicked();

@@ -116,110 +116,163 @@
       <attribute name="title" >
        <string>Dí&amp;gitos de cuentas</string>
       </attribute>
-      <layout class="QVBoxLayout" >
+      <layout class="QGridLayout" >
        <property name="margin" >
         <number>5</number>
        </property>
        <property name="spacing" >
         <number>5</number>
        </property>
-       <item>
-        <widget class="QLabel" name="TextLabel1" >
-         <property name="text" >
+       <item row="1" column="0" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>21</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="1" colspan="2" >
+        <widget class="QGroupBox" name="groupBox" >
+         <property name="title" >
           <string>Modelo del código de cuenta:</string>
          </property>
+         <layout class="QGridLayout" >
+          <property name="margin" >
+           <number>5</number>
+          </property>
+          <property name="spacing" >
+           <number>5</number>
+          </property>
+          <item row="0" column="0" >
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>5</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="TextLabel1_2" >
+              <property name="text" >
+               <string>Dígitos estanda&amp;r</string>
+              </property>
+              <property name="buddy" >
+               <cstring>modcodigo</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="modcodigo" >
+              <property name="minimumSize" >
+               <size>
+                <width>250</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maxLength" >
+               <number>50</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="TextLabel2" >
+              <property name="text" >
+               <string>xxxx --> Dígitos de plan contable.
+yyyy --> Dígitos de cuenta.</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0" >
+           <layout class="QHBoxLayout" >
+            <property name="margin" >
+             <number>0</number>
+            </property>
+            <property name="spacing" >
+             <number>5</number>
+            </property>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="mui_modificarplan" >
+              <property name="text" >
+               <string>Modi&amp;ficar plan contable</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
+       <item row="2" column="1" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Vertical</enum>
          </property>
-         <property name="spacing" >
-          <number>5</number>
+         <property name="sizeHint" >
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
          </property>
-         <item>
-          <widget class="QLabel" name="TextLabel1_2" >
-           <property name="text" >
-            <string>Dígitos estanda&amp;r</string>
-           </property>
-           <property name="buddy" >
-            <cstring>modcodigo</cstring>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="modcodigo" >
-           <property name="maxLength" >
-            <number>50</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="TextLabel2" >
-           <property name="text" >
-            <string>xxxx --> Dígitos de plan contable.
-yyyy --> Dígitos de cuenta.</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        </spacer>
        </item>
-       <item>
-        <layout class="QHBoxLayout" >
-         <property name="margin" >
-          <number>0</number>
-         </property>
-         <property name="spacing" >
-          <number>5</number>
-         </property>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QPushButton" name="mui_modificarplan" >
-           <property name="text" >
-            <string>Modi&amp;ficar plan contable</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" >
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
+       <item row="0" column="2" >
         <spacer>
          <property name="orientation" >
           <enum>Qt::Vertical</enum>
          </property>
          <property name="sizeType" >
-          <enum>QSizePolicy::Expanding</enum>
+          <enum>QSizePolicy::Preferred</enum>
          </property>
          <property name="sizeHint" >
           <size>
-           <width>41</width>
-           <height>71</height>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="3" >
+        <spacer>
+         <property name="orientation" >
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" >
+          <size>
+           <width>40</width>
+           <height>20</height>
           </size>
          </property>
         </spacer>

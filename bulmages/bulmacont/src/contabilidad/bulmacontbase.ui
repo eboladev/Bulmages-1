@@ -52,13 +52,6 @@
     <addaction name="actionOrganizaci_n_en_Cascada" />
     <addaction name="actionIndexador" />
    </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>&amp;Empresa</string>
-    </property>
-    <addaction name="actionConfiguracion" />
-    <addaction name="actionSalir" />
-   </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
      <string>&amp;Herramientas</string>
@@ -69,6 +62,28 @@
     <addaction name="separator" />
     <addaction name="actionCanal_por_Defecto" />
     <addaction name="actionCentro_de_Coste_por_Defecto" />
+   </widget>
+   <widget class="QMenu" name="menuAsiento" >
+    <property name="title" >
+     <string>&amp;Asientos</string>
+    </property>
+    <addaction name="actionAbrir_Asientos" />
+    <addaction name="actionOrdenar_Asientos" />
+    <addaction name="separator" />
+    <addaction name="actionAsiento_de_Apertura" />
+    <addaction name="actionAsiento_de_Regularizacion" />
+    <addaction name="actionAsiento_de_Cierre" />
+   </widget>
+   <widget class="QMenu" name="menuListados" >
+    <property name="title" >
+     <string>&amp;Listados</string>
+    </property>
+    <addaction name="actionCuentas_Anuales" />
+    <addaction name="separator" />
+    <addaction name="actionRegistro_de_IVA" />
+    <addaction name="separator" />
+    <addaction name="actionCobros_y_Pagos" />
+    <addaction name="actionAmortizaciones" />
    </widget>
    <widget class="QMenu" name="menuVentana" >
     <property name="title" >
@@ -82,27 +97,12 @@
     <addaction name="actionBalance_de_Cuentas" />
     <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
    </widget>
-   <widget class="QMenu" name="menuListados" >
+   <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
-     <string>&amp;Listados</string>
+     <string>&amp;Empresa</string>
     </property>
-    <addaction name="actionCuentas_Anuales" />
-    <addaction name="separator" />
-    <addaction name="actionRegistro_de_IVA" />
-    <addaction name="separator" />
-    <addaction name="actionCobros_y_Pagos" />
-    <addaction name="actionAmortizaciones" />
-   </widget>
-   <widget class="QMenu" name="menuAsiento" >
-    <property name="title" >
-     <string>&amp;Asientos</string>
-    </property>
-    <addaction name="actionAbrir_Asientos" />
-    <addaction name="actionOrdenar_Asientos" />
-    <addaction name="separator" />
-    <addaction name="actionAsiento_de_Apertura" />
-    <addaction name="actionAsiento_de_Regularizacion" />
-    <addaction name="actionAsiento_de_Cierre" />
+    <addaction name="actionConfiguracion" />
+    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
@@ -145,7 +145,7 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Co&amp;nfiguracion...</string>
+    <string>Propiedades de la empresa...</string>
    </property>
    <property name="iconText" >
     <string>Configuracion</string>
@@ -232,6 +232,9 @@
    <property name="text" >
     <string>&amp;Asientos</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+L</string>
+   </property>
   </action>
   <action name="actionApuntes_Contables" >
    <property name="icon" >
@@ -239,6 +242,9 @@
    </property>
    <property name="text" >
     <string>Apuntes &amp;contables</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+A</string>
    </property>
   </action>
   <action name="actionLibro_Mayor" >
@@ -408,6 +414,9 @@
    <property name="text" >
     <string>Siguiente</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+PgDown</string>
+   </property>
   </action>
   <action name="actionAnterior" >
    <property name="icon" >
@@ -415,6 +424,9 @@
    </property>
    <property name="text" >
     <string>Anterior</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+PgUp</string>
    </property>
   </action>
   <action name="actionInicio" >
@@ -424,6 +436,9 @@
    <property name="text" >
     <string>Inicio</string>
    </property>
+   <property name="shortcut" >
+    <string>Ctrl+Home</string>
+   </property>
   </action>
   <action name="actionFin" >
    <property name="icon" >
@@ -431,6 +446,9 @@
    </property>
    <property name="text" >
     <string>Fin</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+End</string>
    </property>
   </action>
   <action name="actionIndexador" >

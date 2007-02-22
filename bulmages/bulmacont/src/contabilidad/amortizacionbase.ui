@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>654</width>
-    <height>507</height>
+    <width>690</width>
+    <height>495</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -104,10 +104,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Imprimir albaran</string>
+           <string>Guardar amortizacion</string>
           </property>
           <property name="whatsThis" >
-           <string>Imprimir albaran</string>
+           <string>Guardar amortizacion</string>
           </property>
           <property name="text" >
            <string/>
@@ -147,10 +147,10 @@
            </size>
           </property>
           <property name="toolTip" >
-           <string>Borrar albaran</string>
+           <string>Borrar amortizacion</string>
           </property>
           <property name="whatsThis" >
-           <string>Borrar albaran</string>
+           <string>Borrar amortizacion</string>
           </property>
           <property name="text" >
            <string/>
@@ -229,7 +229,7 @@
        <item>
         <widget class="QLabel" name="textLabel1_3" >
          <property name="text" >
-          <string>Agrupación:</string>
+          <string>Agrupacion:</string>
          </property>
         </widget>
        </item>
@@ -242,9 +242,9 @@
    </item>
    <item>
     <widget class="QTabWidget" name="tabWidget3" >
-     <widget class="QWidget" name="tab" >
+     <widget class="QWidget" name="tab1" >
       <attribute name="title" >
-       <string>Amor&amp;tización</string>
+       <string>Amor&amp;tizacion</string>
       </attribute>
       <layout class="QVBoxLayout" >
        <property name="margin" >
@@ -405,7 +405,7 @@
          <item row="1" column="0" >
           <widget class="QLabel" name="textLabel1_2_2_2" >
            <property name="text" >
-            <string>Cuenta de amortización:</string>
+            <string>Cuenta de amortizacion:</string>
            </property>
            <property name="alignment" >
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -455,7 +455,7 @@
             </sizepolicy>
            </property>
            <property name="title" >
-            <string>Método:</string>
+            <string>Metodo:</string>
            </property>
            <layout class="QGridLayout" >
             <property name="margin" >

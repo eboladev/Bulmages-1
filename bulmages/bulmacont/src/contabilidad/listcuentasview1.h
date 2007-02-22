@@ -87,6 +87,7 @@ public:
     listcuentasview1(empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
     ~listcuentasview1();
     int inicializa();
+    virtual void on_mui_borrar_clicked();
 
 private:
     void inicializatabla();
@@ -98,7 +99,6 @@ private slots:
 public slots:
     virtual void on_tablacuentas_doubleClicked(int, int, int, const QPoint &);
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_crear_clicked();
     virtual void on_mui_busqueda_textChanged(const QString &);
     virtual void on_mui_busqueda_editFinished();
