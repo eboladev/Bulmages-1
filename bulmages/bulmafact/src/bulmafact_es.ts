@@ -6793,7 +6793,7 @@ Desea crearlo?</source>
     <message>
         <location filename="splashscreen.cpp" line="42"/>
         <source>&lt;center&gt;&lt;font size=+1 color=&quot;#a3ffa3&quot;&gt;BulmaFact&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#0000ff&quot;&gt;0.9.1&lt;/font&gt;&lt;/center&gt;</source>
-        <translation type="unfinished">&lt;center&gt;&lt;font size=+1 color=&quot;#0000ff&quot;&gt;BulmaFact&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ffcc00&quot;&gt;0.5.9&lt;/font&gt;&lt;/center&gt;</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="splashscreen.cpp" line="107"/>
