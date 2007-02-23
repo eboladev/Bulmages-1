@@ -21,10 +21,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -32,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>0</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -69,7 +69,7 @@
          <number>5</number>
         </property>
         <property name="spacing" >
-         <number>2</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -693,6 +693,11 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaArticulo</class>
+   <extends>QWidget</extends>
+   <header>busquedaarticulo.h</header>
+  </customwidget>
+  <customwidget>
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
@@ -706,11 +711,6 @@
    <class>FacturasListSubform</class>
    <extends>QTableWidget</extends>
    <header>facturaslist.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaArticulo</class>
-   <extends>QWidget</extends>
-   <header>busquedaarticulo.h</header>
   </customwidget>
  </customwidgets>
  <resources>

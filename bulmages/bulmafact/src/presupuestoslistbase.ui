@@ -21,10 +21,10 @@
   </property>
   <layout class="QVBoxLayout" >
    <property name="margin" >
-    <number>9</number>
+    <number>5</number>
    </property>
    <property name="spacing" >
-    <number>6</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" >
@@ -32,7 +32,7 @@
       <number>0</number>
      </property>
      <property name="spacing" >
-      <number>6</number>
+      <number>5</number>
      </property>
      <item>
       <widget class="QLabel" name="label" >
@@ -69,7 +69,7 @@
          <number>5</number>
         </property>
         <property name="spacing" >
-         <number>2</number>
+         <number>5</number>
         </property>
         <item>
          <widget class="QToolButton" name="mui_crear" >
@@ -631,6 +631,11 @@
  <layoutdefault spacing="3" margin="5" />
  <customwidgets>
   <customwidget>
+   <class>BusquedaCliente</class>
+   <extends>QWidget</extends>
+   <header>busquedacliente.h</header>
+  </customwidget>
+  <customwidget>
    <class>PresupuestoListSubForm</class>
    <extends>QTableWidget</extends>
    <header>presupuestolist.h</header>
@@ -644,11 +649,6 @@
    <class>BusquedaFecha</class>
    <extends>QWidget</extends>
    <header>../../../bulmalib/busquedafecha.h</header>
-  </customwidget>
-  <customwidget>
-   <class>BusquedaCliente</class>
-   <extends>QWidget</extends>
-   <header>busquedacliente.h</header>
   </customwidget>
  </customwidgets>
  <resources>
