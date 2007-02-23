@@ -57,7 +57,7 @@ public:
     bool procesaOperador(const QDomNode &);
     bool valorItem(const QDomNode &, QString &, QString &);
     void agregaValores(const QDomNode &, const QString &, const QString &);
-    void imprimir();
+    void imprimir(QString, QString, QString, QString);
 
 public slots:
     virtual void on_mui_aceptar_clicked();

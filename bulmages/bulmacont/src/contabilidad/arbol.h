@@ -79,7 +79,8 @@ public:
     /// Devuelve el contenido de valor solicitado como par&aacute;metro.
     QString hojaactual(QString);
     /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
-    bool irHoja(QString);
+    /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el máximo exigido en un balance abreviado
+    bool irHoja(QString, unsigned int nivel=4);
 };
 
 #endif

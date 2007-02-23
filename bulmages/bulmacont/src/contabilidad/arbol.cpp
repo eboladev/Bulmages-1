@@ -332,9 +332,9 @@ QString Arbol::hojaactual(QString valor) {
     return resultado;
 }
 
-bool Arbol::irHoja(QString codigo) {
+bool Arbol::irHoja(QString codigo, unsigned int nivel) {
     hojaactiva = QString("00");
-    while(deshoja(3,true) && hojaactual("codigo") != codigo);
+    while(deshoja(nivel,true) && hojaactual("codigo") != codigo);
     if(hojaactual("codigo") == codigo)
 	return true;
     else

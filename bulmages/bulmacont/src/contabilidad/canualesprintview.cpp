@@ -132,7 +132,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked() {
     
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 1.
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' AND conceptocontable NOT SIMILAR TO 'Asiento de Regularizaci%' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     cursor2 *hojas;
     hojas = empresaactual->cargacursor(query, "Periodo1");
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
@@ -143,7 +143,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked() {
     
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 2.
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' AND conceptocontable NOT SIMILAR TO 'Asiento de Regularizaci%' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     hojas = empresaactual->cargacursor(query, "Periodo2");
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while (!hojas->eof()) {
@@ -201,7 +201,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked() {
     } // end while
 
     /// Una vez que tenemos el objeto bien generado y a punto pasamos a la generacion del PDF.
-    imprimir();
+    imprimir(finicial, ffinal, finicial1, ffinal1);
     _depura("END CAnualesPrintView::on_mui_aceptar_clicked", 0);
 }
 
@@ -209,6 +209,10 @@ void CAnualesPrintView::on_mui_aceptar_clicked() {
 bool CAnualesPrintView::procesaFormula(const QDomNode &formula) {
     _depura ("CAnualesPrintView::procesaFormula", 0);
     QDomElement valor = formula.firstChildElement("VALORACT");
+    //
+    QString valors = valor.toElement().text();
+    QString codigo = formula.parentNode().firstChildElement("CONCEPTO").toElement().text();
+    //
     if (!valor.isNull()) {
         return TRUE;
     } // end if
@@ -292,40 +296,49 @@ void CAnualesPrintView::agregaValores(const QDomNode &nodo, const QString &valor
     QDomElement enodo = nodo.toElement();
     Fixed fvaloract(valoract);
     Fixed fvalorant(valorant);
-    /// Miramos las opciones pasadas.
-    QDomNodeList opcs = enodo.elementsByTagName("OPCIONES");
-    for (int i = 0; i < opcs.count(); i++) {
-        QDomElement op = opcs.item(i).toElement();
-        QString opciones = op.text();
-        if (opciones == "POSITIVO") {
-            if (fvaloract < 0)
-                fvaloract = fvaloract * -1;
-            if (fvalorant < 0)
-                fvalorant = fvalorant * -1;
-        } // end if
-        if (opciones == "NEGATIVO") {
-            if (fvaloract > 0)
-                fvaloract = fvaloract * -1;
-            if (fvalorant > 0)
-                fvalorant = fvalorant * -1;
-        } // end if
-        if (opciones == "MAYORCERO") {
-            if (fvaloract < 0)
-                fvaloract = 0;
-            if (fvalorant < 0)
-                fvalorant = 0;
-        } // end if
-        if (opciones == "MENORCERO") {
-            if (fvaloract > 0)
-                fvaloract = 0;
-            if (fvalorant > 0)
-                fvalorant = 0;
-        } // end if
-        if (opciones == "RESTAR") {
-            fvaloract = fvaloract * -1;
-            fvalorant = fvalorant * -1;
-        } // end if
-    } // end for
+    /// Miramos las opciones pasadas
+    if(nodo.nodeName() == QString("OPERADOR")) {
+	QDomNodeList opcs = enodo.elementsByTagName("OPCIONES");
+	for (int i = 0; i < opcs.count(); i++) {
+	    QDomElement op = opcs.item(i).toElement();
+	    QString opciones = op.text();
+	    if (opciones == "POSITIVO") {
+		if (fvaloract < 0)
+		    fvaloract = fvaloract * -1;
+		if (fvalorant < 0)
+		    fvalorant = fvalorant * -1;
+	    } // end if
+	    if (opciones == "NEGATIVO") {
+		if (fvaloract > 0)
+		    fvaloract = fvaloract * -1;
+		if (fvalorant > 0)
+		    fvalorant = fvalorant * -1;
+	    } // end if
+	    if (opciones == "RESTAR") {
+		fvaloract = fvaloract * -1;
+		fvalorant = fvalorant * -1;
+	    } // end if
+	} // end for
+    } 
+    else {
+	QDomNodeList opcs = nodo.parentNode().toElement().elementsByTagName("OPCIONES");
+	for (int i = 0; i < opcs.count(); i++) {
+	    QDomElement op = opcs.item(i).toElement();
+	    QString opciones = op.text();
+	    if (opciones == "MAYORCERO") {
+		if (fvaloract < 0)
+		    fvaloract = 0;
+		if (fvalorant < 0)
+		    fvalorant = 0;
+	    } // end if
+	    if (opciones == "MENORCERO") {
+		if (fvaloract > 0)
+		    fvaloract = 0;
+		if (fvalorant > 0)
+		    fvalorant = 0;
+	    } // end if
+	} // end for
+    } // end if
     QDomElement valoract1 = m_doc.createElement("VALORACT");
     valoract1.setTagName("VALORACT");
     QDomText etx = m_doc.createTextNode(fvaloract.toQString());
@@ -341,7 +354,7 @@ void CAnualesPrintView::agregaValores(const QDomNode &nodo, const QString &valor
 }
 
 
-void CAnualesPrintView::imprimir() {
+void CAnualesPrintView::imprimir(QString periodo1finicial, QString periodo1ffinal, QString periodo2finicial, QString periodo2ffinal) {
     _depura("CAnualesPrintView::imprimir", 0);
     QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "canuales.rml";
     QString archivod = confpr->valor(CONF_DIR_USER) + "canuales.rml";
@@ -380,13 +393,13 @@ void CAnualesPrintView::imprimir() {
     for (int j = 0; j < componentes.count(); j++) {
         QDomElement comp = componentes.item(j).toElement();
         /// Escribimos el titulo del componente
-        QDomElement subtitulo = comp.namedItem("SUBTITULO").toElement();
-        fitxersortidatxt += "" + subtitulo.text() + "\n";
+        QString debeohaber = comp.namedItem("SUBTITULO").toElement().text();
+        fitxersortidatxt += "" + debeohaber + "\n";
         /// Cogemos los elementos del componente y los ponemos en forma de tabla.
-        fitxersortidatxt += "<blockTable style=\"tabla\" repeatRows=\"1\">\n";
-        fitxersortidatxt += "<tr><td>Concepto</td>\n";
-        fitxersortidatxt += "<td>Ejercicio</td>\n";
-        fitxersortidatxt += "<td>Ejercicio -1</td></tr>\n";
+        fitxersortidatxt += "<blockTable style=\"tabla\" repeatRows=\"1\" colWidths=\"12cm,3cm,3cm\">\n";
+        fitxersortidatxt += "<tr><td><para style=\"debeohaber\">" + debeohaber + "</para></td>\n";
+        fitxersortidatxt += "<td><para style=\"periodo\">Periodo:</para><para style=\"periodo\">" + periodo1finicial + " ~ " + periodo1ffinal + "</para></td>\n";
+        fitxersortidatxt += "<td><para style=\"periodo\">Periodo:</para><para style=\"periodo\">" + periodo2finicial + " ~ " + periodo2ffinal + "</para></td></tr>\n";
 
         QDomNodeList litems = comp.elementsByTagName("LBALANCE");
         for (int i = 0; i < litems.count(); i++) {
