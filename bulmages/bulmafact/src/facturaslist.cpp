@@ -41,10 +41,7 @@ FacturasList::FacturasList(QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasList_FacturasList", this);
-    if (res != 0)
-        return;
+    iniciaForm();
     m_companyact = NULL;
     m_modo = editmodo;
     mdb_idfactura = "";
@@ -61,10 +58,7 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
         : Ficha(parent, flag) {
     _depura("FacturasList::FacturasList", 0);
     setupUi(this);
-    /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasList_FacturasList", this);
-    if (res != 0)
-        return;
+    iniciaForm();
     m_companyact = comp;
     m_cliente->setcompany(m_companyact);
     m_articulo->setcompany(m_companyact);
@@ -77,6 +71,19 @@ FacturasList::FacturasList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     } // end if
     hideBusqueda();
     _depura("END FacturasList::FacturasList", 0);
+}
+
+
+void FacturasList::iniciaForm() {
+    _depura("FacturasList::iniciaForm");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("FacturasList_FacturasList", this);
+    if (res != 0)
+        return;
+    mui_procesada->insertItem(0, tr("Todas las facturas"));
+    mui_procesada->insertItem(1, tr("Facturas procesadas"));
+    mui_procesada->insertItem(2, tr("Facturas no procesadas"));
+    _depura("END FacturasList::iniciaForm");
 }
 
 
@@ -120,11 +127,16 @@ QString FacturasList::generaFiltro() {
     if (m_cliente->idcliente() != "") {
         filtro += " AND factura.idcliente = " + m_cliente->idcliente();
     } // end if
-    if (!m_procesada->isChecked() ) {
-        filtro += " AND NOT procesadafactura ";
-    } else {
+    if (mui_procesada->currentIndex() == 0) {
+        /// Muestra las procesadas y no procesadas.
+        filtro += "";
+    } else if (mui_procesada->currentIndex() == 1) {
+        /// Muestra solo las procesadas.
         filtro += " AND procesadafactura ";
-    }// end if
+    } else if (mui_procesada->currentIndex() == 2) {
+        /// Muestra solo las NO procesadas.
+        filtro += " AND NOT procesadafactura ";
+    } // end if
     if (m_articulo->idarticulo() != "") {
         filtro += " AND idfactura IN (SELECT DISTINCT idfactura FROM lfactura WHERE idarticulo = '" + m_articulo->idarticulo() + "') ";
     } // end if
@@ -228,23 +240,24 @@ FacturasListSubform::FacturasListSubform(QWidget *parent, const char *) : SubFor
         return;
     setDBTableName("factura");
     setDBCampoId("idfactura");
+    addSHeader("numfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero"));
+    addSHeader("ffactura", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
+    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre cliente"));
+    addSHeader("telfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono factura"));
+    addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
+    addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
+    addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
+    addSHeader("procesadafactura", DBCampo::DBboolean, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Procesada"));
     addSHeader("idfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id factura"));
     addSHeader("reffactura", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Ref factura"));
     addSHeader("codigoserie_factura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Serie"));
-    addSHeader("numfactura", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Numero"));
-    addSHeader("ffactura", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Fecha"));
     addSHeader("cifcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("CIF cliente"));
-    addSHeader("nomcliente", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre cliente"));
     addSHeader("codigoalmacen", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Codigo almacen"));
     addSHeader("contactfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Contact factura"));
-    addSHeader("telfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Telefono factura"));
     addSHeader("comentfactura", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentario factura"));
     addSHeader("idtrabajador", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id trabajador"));
     addSHeader("idcliente", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id cliente"));
     addSHeader("idalmacen", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Id almacen"));
-    addSHeader("total", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Total"));
-    addSHeader("base", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Base imponible"));
-    addSHeader("impuestos", DBCampo::DBnumeric, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Impuestos"));
     setinsercion(FALSE);
     setDelete(FALSE);
     setSortingEnabled(TRUE);

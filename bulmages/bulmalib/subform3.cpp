@@ -149,13 +149,16 @@ SDBRecord *SubForm3::newSDBRecord() {
         SHeader *head = m_lcabecera.at(i);
         Qt::ItemFlags flags = 0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
-        if (!(head->options() & SHeader::DBNoWrite))
-            flags |= Qt::ItemIsEditable;
-        if (head->tipo() == DBCampo::DBboolean)
-            flags |= Qt::ItemIsUserCheckable;
+
         camp->setFlags(flags);
 
-        /// Tratamos el tema de la alineacion dependiendo del tipo.AboutView
+        if (!(head->options() & SHeader::DBNoWrite))
+            flags |= Qt::ItemIsEditable;
+        if (head->tipo() == DBCampo::DBboolean) {
+            flags |= Qt::ItemIsUserCheckable;
+        } // end if
+
+        /// Tratamos el tema de la alineacion dependiendo del tipo.
         if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
             camp->setTextAlignment(Qt::AlignRight);
         } else {
@@ -387,7 +390,7 @@ void SubForm3::cargar(cursor2 *cur) {
     SDBCampo *camp;
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
-	QRegExp rx("^.*00:00:00.*$"); // Para emparejar los valores fechas
+	    QRegExp rx("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
         for (int j = 0; j < reg->lista()->size(); ++j) {
            camp = (SDBCampo *) reg->lista()->at(j);
 	       /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.

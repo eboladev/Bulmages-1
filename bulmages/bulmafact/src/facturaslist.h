@@ -76,6 +76,7 @@ public:
     FacturasList(QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     FacturasList(company *,QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~FacturasList();
+    void iniciaForm();
     void setcompany (company *comp) {
         m_companyact = comp;
         m_cliente->setcompany(comp);
