@@ -39,6 +39,7 @@
 #include "albaranclienteview.h"
 #include "informereferencia.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 
 PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
@@ -48,6 +49,10 @@ PedidoClienteView::PedidoClienteView(company *comp, QWidget *parent)
     try {
         /// Usurpamos la identidad de mlist y ponemos nuestro propio widget con sus cosillas.
         setupUi(this);
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("PedidoClienteView_PedidoClienteView", this);
+        if (res != 0)
+            return;
         subform3->setcompany(comp);
         m_cliente->setcompany(comp);
         m_forma_pago->setcompany(comp);

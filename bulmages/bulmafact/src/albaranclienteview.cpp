@@ -44,6 +44,7 @@
 #include "postgresiface2.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
+#include "plugins.h"
 
 
 /** Constructor de la clase corresponde a la parte visual de la ficha de cliente.
@@ -56,6 +57,10 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("AlbaranClienteView_AlbaranClienteView", this);
+        if (res != 0)
+            return;
         subform2->setcompany(comp);
         m_descuentos->setcompany(comp);
         m_almacen->setcompany(comp);
