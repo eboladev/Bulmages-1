@@ -150,13 +150,13 @@ SDBRecord *SubForm3::newSDBRecord() {
         Qt::ItemFlags flags = 0;
         flags |= Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 
-        camp->setFlags(flags);
-
         if (!(head->options() & SHeader::DBNoWrite))
             flags |= Qt::ItemIsEditable;
         if (head->tipo() == DBCampo::DBboolean) {
             flags |= Qt::ItemIsUserCheckable;
         } // end if
+
+        camp->setFlags(flags);
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
         if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
