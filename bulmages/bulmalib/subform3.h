@@ -188,6 +188,8 @@ public:
         _depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);
     };
     virtual Fixed sumarCampo(QString);
+    bool existsHeader(const QString &);
+
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

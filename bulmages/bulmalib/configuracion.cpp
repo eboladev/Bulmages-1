@@ -333,6 +333,12 @@ bool configuracion::leeconfig(QString fich) {
         QTextStream in(&arch);
         while (!in.atEnd()) {
             QString cad = in.readLine();
+
+	    /// Hacemos la lectura de lineas de configuracion multilinea.
+	    while (cad.endsWith("\\")) {
+		cad = cad.left(cad.length()-2) + in.readLine().trimmed();
+	    } // end while
+
             for (int i = 0; i < 1000; i++) {
                 if (cad.startsWith(nombre(i)) && nombre(i) != "") {
                     _depura("[" + nombre(i) + "]" + "--->" + cad, 1);

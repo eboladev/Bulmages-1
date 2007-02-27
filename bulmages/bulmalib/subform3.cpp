@@ -128,6 +128,17 @@ void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
 }
 
 
+
+bool SubForm3::existsHeader(const QString &head) {
+    SHeader *linea;
+    for (int i = 0; i < m_lcabecera.size(); ++i) {
+        linea = m_lcabecera.at(i);
+        if (linea->nomcampo() == head)
+		return TRUE;
+    } // end for
+    return FALSE;
+}
+
 /// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
 /// tenga todos los elementos necesarios (columnas).
 /// Nota: Esta funcion es de uso interno, no debe ser usada.
