@@ -141,9 +141,6 @@ cp *.png /usr/share/bulmages
 info "Instalando ejecutable del programa y scripts auxiliares. \n"
 tiempo
 cp bulmages /usr/bin
-cp cargaemp /usr/bin
-cp guardaemp /usr/bin
-cp nuevaemp  /usr/bin
 cp bulmafact /usr/bin
 cp bulmacont /usr/bin
 

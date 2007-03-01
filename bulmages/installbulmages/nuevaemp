@@ -1,3 +1,0 @@
-#!/bin/sh
-
-/usr/share/bulmages/dbmodels/creabulmages $1 $2 $3 $4 $5 $6
