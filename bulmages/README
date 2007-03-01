@@ -1,15 +1,5 @@
 Estos son los directorios principales del CVS y sus respectivas explicaciones.
 
-bcontaweb 
------------ 
-Este directorio contiene el codigo fuente de bcontaweb. BContaWeb es una
-aplicacion web (en php) que ofrece algunas funcionalidades de la contabilidad
-via WEB. (Listados y Asientos Inteligentes). Tambien es el lugar donde se esta
-desarrollando una primera sincronizacion entre contabilidad y facturacion.
-Concretamente entre BulmaGes y Galopin. 
-
-Esta en estado de desarrollo, hay cosas que funcionan y cosas que no. 
-
 
 bulmafact 
 ---------- 
@@ -68,6 +58,12 @@ scripts
 Contiene scripts utiles para el desarrollo.
 
 
+images
+------
+Contiene imagenes (recursos) que son usadas junto con el archivo
+bulmages.qrc como iconos de los programas.
+
+
 COMPILACION
 -----------
 
@@ -98,11 +94,11 @@ En dicho caso es util hacer una instalacion y cambiar los siguientes archivos
 por soft links a los ejecutables resultantes del codigo fuente.
 
 Estos son los archivos que se deben enlazar:
-/usr/lib/libbulmages.0.5.9.so
+/usr/lib/libbulmages.0.9.1.so
 /usr/bin/bulmages
 /usr/bin/bulmafact
 /usr/bin/bulmacont
 
-De esta forma siempre se puede tener en ejecucucion una version en desarrollo
+De esta forma siempre se puede tener en ejecucion una version en desarrollo
 
 
