@@ -5,7 +5,7 @@
 # Este documento esta bajo licencia GPL
 #------------------------------------------------------------------------------
 ###############################################################################
-version="v"`cat version`" - server"
+version="v"`cat version`
 direj=$(pwd)
 
 
