@@ -92,13 +92,13 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
 
 
 void SubForm2Bc::on_mui_list_pressedSlash(int row, int col) {
-    _depura("SubForm2Bc::pressedSlash", 0);
+    _depura("SubForm2Bc::on_mui_list_pressedSlash", 0);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     if (camp->nomcampo() == "fecha")
         return;
     QString text = editaTexto(camp->text());
-    camp->set
-    (text);
+    camp->set(text);
+    _depura("END SubForm2Bc::on_mui_list_pressedSlash", 0);
 }
 
 
@@ -360,7 +360,8 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
         QString value = comboBox->currentText();
         value = value.left(value.indexOf(".-"));
-        model->setData(index, value);
+        QString codigoext = extiendecodigo(value, ((empresa *) m_companyact)->numdigitosempresa());
+        model->setData(index, codigoext);
     } else {
         QItemDelegate::setModelData(editor, model, index);
     } // end if
@@ -403,8 +404,6 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     if (obj->isWidgetType()) {
         _depura("QSubForm2BcDelegate:: de tipo toolTip", 0, ((QWidget *)obj)->toolTip());
         _depura("QSubForm2BcDelegate:: de tipo windowRole", 0, ((QWidget *)obj)->windowRole());
-//        _depura("QSubForm2BcDelegate:: de tipo accesibleDescription", 0,   ((QWidget *)obj)->accessibleDescription());
-//        _depura("QSubForm2BcDelegate:: de tipo accesibleName", 0,   ((QWidget *)obj)->accessibleName());
     } // end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.

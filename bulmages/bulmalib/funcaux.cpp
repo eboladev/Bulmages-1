@@ -87,6 +87,7 @@ string extiendecodigo(string cad, unsigned int num1) {
 /// num1 = Numero de digitos totales de la cuenta.
 /// Devuelve un QString con la cuenta extendida al nmero de digitos indicado.
 QString extiendecodigo(QString cad, unsigned int num1) {
+    _depura("funcaux::extiendecodigo", 0, cad +"--"+QString::number(num1));
     QString cod = cad;
     int num = num1;
     if (cod.length() < num) {
@@ -96,6 +97,7 @@ QString extiendecodigo(QString cad, unsigned int num1) {
             cod.replace(pos, 1, str7.c_str());
         } // end if
     } // end if
+    _depura("END funcaux::extiendecodigo", 0);
     return (cod);
 }
 

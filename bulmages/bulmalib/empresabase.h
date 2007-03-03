@@ -45,8 +45,8 @@ public:
 
 public:
     EmpresaBase();
-    ~EmpresaBase();
-    void init(QString bd, QString tipo);
+    virtual ~EmpresaBase();
+    virtual void init(QString bd, QString tipo);
     QString searchCompany(QString);
     void setListVentanas(listventanas *doc) {
         m_listventanas = doc;

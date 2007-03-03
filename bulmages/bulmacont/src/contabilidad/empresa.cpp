@@ -105,9 +105,9 @@ int empresa::inicializa1() {
     _depura("empresa::inicializa1", 0);
     /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene el nivel &uacute;ltimo
     /// de la empresa.
-    QString query = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
+    QString query = "SELECT length(valor) AS numdigitos FROM configuracion WHERE nombre = 'CodCuenta'";
     cursor2 *cursoraux1 = cargacursor(query, "codcuenta");
-    numdigitos = cursoraux1->valor(2).length();
+    numdigitos = cursoraux1->valor("numdigitos").toInt();
     delete cursoraux1;
     if (extracto != NULL) {
         delete extracto;
