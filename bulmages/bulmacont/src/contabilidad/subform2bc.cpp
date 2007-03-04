@@ -384,7 +384,6 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
                || linea->nomcampo() == "haber"	) {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
-        //spinBox->setButtonSymbols(QAbstractSpinBox::PlusMinus);
         spinBox->setValue(value.toDouble());
         spinBox->selectAll();
     } else if (linea->nomcampo() == "codigo") {
