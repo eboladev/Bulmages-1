@@ -145,7 +145,7 @@
     <iconset resource="../../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Propiedades de la empresa...</string>
+    <string>&amp;Propiedades de la empresa...</string>
    </property>
    <property name="iconText" >
     <string>Configuracion</string>

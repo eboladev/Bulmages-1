@@ -77,6 +77,9 @@ public:
     };
 
 public:
+    void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode) {
+        mui_list->setHorizontalScrollMode(mode);
+    };
     void setSortingEnabled(bool);
     bool sortingEnabled();
     void setOrdenEnabled(bool);

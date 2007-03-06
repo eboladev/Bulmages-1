@@ -103,8 +103,10 @@ void FacturasList::presenta() {
     mui_list->cargar("SELECT *, totalfactura AS total, bimpfactura AS base, impfactura AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
 
     /// Hacemos el calculo del total.
-    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalfactura) AS total FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
-    m_total->setText(cur->valor("total"));
+    cursor2 *cur = m_companyact->cargacursor("SELECT SUM(totalfactura) AS total, SUM(bimpfactura) AS base, SUM(impfactura) AS impuestos FROM factura LEFT JOIN cliente ON factura.idcliente = cliente.idcliente LEFT JOIN almacen ON factura.idalmacen = almacen.idalmacen WHERE 1 = 1 " + generaFiltro());
+    mui_totalbimponible->setText(cur->valor("base"));
+    mui_totalimpuestos->setText(cur->valor("impuestos"));
+    mui_totalfacturas->setText(cur->valor("total"));
     delete cur;
 
     _depura("END FacturasList::presenta", 1);

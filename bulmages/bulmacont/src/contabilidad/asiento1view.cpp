@@ -109,7 +109,6 @@ void Asiento1View::asientoabiertop() {
     /// Los apuntes deben ser editables.
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
-            mui_list->item(fila, columna)->setFont(QFont("Courier", -1, -1, false));
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable);
         } // end for
     } // end for
@@ -132,7 +131,6 @@ void Asiento1View::asientocerradop() {
     /// modificaciones por estar en modo CERRADO).
     for (int fila = 0; fila < mui_list->rowCount(); fila++) {
         for (int columna = 0; columna < mui_list->columnCount(); columna++) {
-            mui_list->item(fila, columna)->setFont(QFont("Decorative", -1, -1, false));
             mui_list->item(fila, columna)->setFlags(Qt::ItemIsEnabled);
         } // end for
     } // end for
@@ -291,9 +289,6 @@ void Asiento1View::muestraasiento(QString v) {
 }
 
 
-/// =========================================================================================
-///                       LISTASIENTOS
-/// =========================================================================================
 /// Prepara para guardar.
 void Asiento1View::prepguardar() {
     _depura("Asiento1View::prepguardar", 0);
@@ -319,6 +314,10 @@ void Asiento1View::on_mui_borrar_clicked() {
     _depura("END Asiento1View::on_mui_borrar_clicked", 0);
 }
 
+
+/// =========================================================================================
+///                       LISTASIENTOS
+/// =========================================================================================
 
 ListAsientos::ListAsientos(empresa *emp, QWidget *parent) : Asiento1(emp, parent) {
     _depura("ListAsientos::ListAsientos", 0);
@@ -421,7 +420,7 @@ void ListAsientos::boton_inicio() {
     En el caso de que no haya asiento a mostrar vacia la pantalla para que no salga basura. */
 void ListAsientos::boton_fin() {
     _depura("ListAsientos::boton_fin", 0);
-    if (cursorasientos->numregistros() != 0 ) {
+    if (cursorasientos->numregistros() != 0) {
         cursorasientos->ultimoregistro();
         cargar(cursorasientos->valor("idasiento"));
     } // end if

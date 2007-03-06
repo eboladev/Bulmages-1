@@ -27,8 +27,6 @@
 #include "postgresiface2.h"
 
 
-
-
 /// Muestra y administra la ventana con la informaci&oacute;n de un trabajador.
 /** */
 class TrabajadorView : public FichaBf, private Ui_TrabajadorBase {
@@ -38,7 +36,8 @@ private:
     cursor2 *m_cursortrabajadores;
     /// Indica cual es el objeto que se esta mostrando.
     QString mdb_idtrabajador;
-    /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen tambien lo indica.
+    /// Indica el archivo de imagen que se esta mostrando. Y si se ha cambiado la imagen
+    /// tambien lo indica.
     QString m_archivoimagen;
     /// Indica en la lista de trabajadores cual es el item seleccionado.
     QListWidgetItem *m_item;
@@ -47,7 +46,9 @@ private:
     /// Se encarga de hacer la carga del query inicial y de mostrar la lista bien
     /// y presentar el elemento que se especifique.
     void pintar();
-    virtual void imprimir() {_depura("TrabajadorView::imprimir",0);};
+    virtual void imprimir() {
+        _depura("TrabajadorView::imprimir", 0);
+    };
 
 public:
     TrabajadorView(company * emp, QWidget *parent = 0);

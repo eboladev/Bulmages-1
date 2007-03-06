@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>209</width>
-    <height>78</height>
+    <width>186</width>
+    <height>69</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -44,7 +44,10 @@
         </size>
        </property>
        <property name="text" >
-        <string>Cliente:</string>
+        <string>Clien&amp;te:</string>
+       </property>
+       <property name="buddy" >
+        <cstring>mui_buscar</cstring>
        </property>
       </widget>
      </item>
@@ -100,6 +103,9 @@
            <height>22</height>
           </size>
          </property>
+         <property name="shortcut" >
+          <string>Ctrl+T</string>
+         </property>
         </widget>
        </item>
       </layout>
@@ -126,7 +132,7 @@
       <enum>QFrame::StyledPanel</enum>
      </property>
      <property name="text" >
-      <string>Cliente</string>
+      <string/>
      </property>
     </widget>
    </item>

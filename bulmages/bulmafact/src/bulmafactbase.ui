@@ -44,13 +44,6 @@
     <addaction name="actionNuevo_Pago" />
     <addaction name="actionListado_de_Pagos" />
    </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>E&amp;mpresa</string>
-    </property>
-    <addaction name="actionParametros" />
-    <addaction name="actionSalir" />
-   </widget>
    <widget class="QMenu" name="menuArticulos" >
     <property name="title" >
      <string>Articulo&amp;s</string>
@@ -115,6 +108,13 @@
     <addaction name="actionDocumentacion" />
     <addaction name="separator" />
     <addaction name="actionAcerta_de" />
+   </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>E&amp;mpresa</string>
+    </property>
+    <addaction name="actionParametros" />
+    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuCompras" />
@@ -256,7 +256,10 @@
     <iconset resource="../../bulmages.qrc" >:/Genericos32x32/images/png/i_configuracion.xpm</iconset>
    </property>
    <property name="text" >
-    <string>Configurar &amp;BulmaFact...</string>
+    <string>&amp;Propiedades de la empresa...</string>
+   </property>
+   <property name="toolTip" >
+    <string>Propiedades de la empresa</string>
    </property>
   </action>
   <action name="actionNuevo_Pedido_Proveedor" >

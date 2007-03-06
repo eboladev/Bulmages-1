@@ -29,6 +29,7 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
         : SubForm2Bc(parent) {
     _depura("ListLinAsiento1View::ListLinAsiento1View", 0);
     setDBTableName("borrador");
+    setFileConfig("asientotabla");
     setDBCampoId("idborrador");
     addSHeader("fecha", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNone, tr("Fecha"));
     addSHeader("codigo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo"));

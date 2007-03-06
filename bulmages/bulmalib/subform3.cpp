@@ -418,8 +418,6 @@ void SubForm3::cargar(cursor2 *cur) {
     on_mui_confcol_clicked();
     /// Reactivamos el sorting
     mui_list->setSortingEnabled(m_sorting);
-    resizeColumnsToContents();
-    resizeRowsToContents();
     _depura("END SubForm3::cargar", 0);
 }
 
@@ -749,15 +747,20 @@ void SubForm3::guardaconfig() {
     _depura("SubForm3::guardaconfig", 0);
     QString aux = "";
     QFile file(confpr->valor(CONF_DIR_USER) + m_fileconfig + "tablecfn.cfn");
+    /// Guardado del orden y de configuraciones varias.
     if (file.open(QIODevice::WriteOnly)) {
         QTextStream stream(&file);
         stream << mui_list->colorden() << "\n";
         stream << mui_list->tipoorden() << "\n";
         stream << mui_filaspagina->text() << "\n";
+
+        /// Guardado del ancho de las columnas
         for (int i = 0; i < mui_list->columnCount(); i++) {
             mui_list->showColumn(i);
             stream << mui_list->columnWidth(i) << "\n";
         } // end for
+
+        /// Guarda la visibilidad de los elementos consultando la tabla de configuracion.
         for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
             if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked)
                 stream << "1" << "\n";
@@ -778,40 +781,41 @@ void SubForm3::cargaconfig() {
     if (file.open(QIODevice::ReadOnly)) {
 	error = 0;
         QTextStream stream(&file);
-        
-	/// Establecemos la columna de ordenacion
+        /// Establecemos la columna de ordenacion
         QString linea = stream.readLine();
         mui_list->setcolorden(linea.toInt());
 
-	/// Establecemos el tipo de ordenacion
+        /// Establecemos el tipo de ordenacion
         linea = stream.readLine();
         mui_list->settipoorden(linea.toInt());
 
-	/// Establecemos el numero de filas por pagina
+        /// Establecemos el numero de filas por pagina
         linea = stream.readLine();
-	if (linea.toInt() > 0)
-        	mui_filaspagina->setValue(linea.toInt());
+        if (linea.toInt() > 0) {
+                mui_filaspagina->setValue(linea.toInt());
+        } // end if
 
-	/// Establecemos el ancho de las columnas.
+	    /// Establecemos el ancho de las columnas.
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
-            if (linea.toInt() > 0)
+            if (linea.toInt() > 0) {
                 mui_list->setColumnWidth(i, linea.toInt());
-            else {
+            } else {
                 mui_list->setColumnWidth(i, 30);
-		error = 1;
-	    } // end if
+		         error = 1;
+	        } // end if
         } // end for
 
-	/// Leemos el status de las columnas.
+	    /// Leemos el status de las columnas.
         for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
             linea = stream.readLine();
-            if (linea == "1")
+            if (linea == "1") {
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Checked);
-            else if (linea == "0") 
+            } else if (linea == "0") {
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Unchecked);
-	    else
-		error = 1;
+	        } else {
+		          error = 1;
+            } // end if
         } // end for
         file.close();
         on_mui_confcol_clicked();

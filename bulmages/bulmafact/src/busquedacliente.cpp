@@ -54,7 +54,7 @@ void BusquedaCliente::pinta() {
     _depura ("BusquedaCliente::pinta", 0);
     m_semaforo = TRUE;
     m_cifcliente->setText(mdb_cifcliente);
-    m_nomcliente->setText(mdb_codcliente+".- "+mdb_nomcliente);
+    m_nomcliente->setText(mdb_codcliente + " - " + mdb_nomcliente);
     m_semaforo = FALSE;
     emit(valueChanged(mdb_idcliente));
     _depura ("END BusquedaCliente::pinta", 0);
@@ -70,7 +70,7 @@ void BusquedaCliente::pinta() {
 void BusquedaCliente::setidcliente(QString val) {
     _depura("BusquedaCliente::setidcliente", 0);
     mdb_idcliente = val;
-    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente='" + mdb_idcliente + "'";
+    QString SQLQuery = "SELECT * FROM cliente WHERE idcliente = '" + mdb_idcliente + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
@@ -98,7 +98,7 @@ void BusquedaCliente::setidcliente(QString val) {
 void BusquedaCliente::setcifcliente(QString val) {
     _depura("BusquedaCliente::setcifcliente", 0, val);
     mdb_cifcliente = val;
-    QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='" + mdb_cifcliente + "'";
+    QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + mdb_cifcliente + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
 
     if(!cur->eof()) {
@@ -159,7 +159,7 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
         return;
 
     bool encontrado = FALSE;
-    QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente='" + val + "'";
+    QString SQLQuery = "SELECT * FROM cliente WHERE cifcliente = '" + val + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
     if(!cur->eof()) {
         mdb_idcliente = cur->valor("idcliente");
@@ -171,7 +171,7 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     delete cur;
 
     if (! encontrado) {
-        QString SQLQuery = "SELECT * FROM cliente WHERE codcliente='" + val + "'";
+        QString SQLQuery = "SELECT * FROM cliente WHERE codcliente = '" + val + "'";
         cur = companyact->cargacursor(SQLQuery);
         if(!cur->eof()) {
             mdb_idcliente = cur->valor("idcliente");
@@ -207,7 +207,7 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     } // end if
 
     if (encontrado) {
-        m_nomcliente->setText(mdb_codcliente+".- "+mdb_nomcliente);
+        m_nomcliente->setText(mdb_codcliente + " - " + mdb_nomcliente);
     } // end if
     _depura("END BusquedaCliente::on_m_cifcliente_textChanged", 0);
 
