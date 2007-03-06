@@ -87,19 +87,23 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
 
 /// Busqueda de familias.
 void BusquedaFamilia::on_mui_buscar_clicked() {
-
+    _depura("BusquedaFamilia::on_mui_buscar_clicked", 0);
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-
     FamiliasView *fam = companyact->newfamiliasview(diag, TRUE);
-
     connect(fam, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(fam);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    diag->setLayout(layout);
+    diag->setWindowTitle(fam->windowTitle());
 
     diag->exec();
-
-
     if (fam->codigoCompletoFamilia() != "") {
         m_codigocompletofamilia->setText(fam->codigoCompletoFamilia());
         mdb_codigocompletofamilia = fam->codigoCompletoFamilia();
@@ -109,6 +113,7 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
     } // end if
     delete diag;
     emit(valueChanged(mdb_idfamilia));
+    _depura("END BusquedaFamilia::on_mui_buscar_clicked", 0);
 }
 
 

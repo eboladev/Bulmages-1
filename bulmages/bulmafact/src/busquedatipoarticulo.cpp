@@ -109,11 +109,17 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
 
-
     TipoArticuloList *tip = m_companyact->newTipoArticuloList(diag, TRUE);
-
     connect(tip, SIGNAL(selected(QString)), diag, SLOT(accept()));
 
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(tip);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    diag->setLayout(layout);
+    diag->setWindowTitle(tip->windowTitle());
 
     diag->exec();
 
@@ -124,7 +130,6 @@ void BusquedaTipoArticulo::on_mui_buscar_clicked() {
         mdb_desctipo_articulo = tip->desctipo_articulo();
         mdb_idtipo_articulo = tip->idtipo_articulo();
     } // end if
-
 
     delete diag;
     _depura("END BusquedaTipoArticulo::on_mui_buscar_clicked", 0);

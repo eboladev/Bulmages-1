@@ -42,6 +42,7 @@ BusquedaProveedor::BusquedaProveedor(QWidget *parent)
     _depura("END BusquedaProveedor::BusquedaProveedor", 0);
 }
 
+
 /** Presenta en pantalla el proveedor seleccionado.
     Usa la variable de clase m_semaforo para que no haya dead-lock entre este metodo y 
     el slot on_mui_textChanged
@@ -129,8 +130,17 @@ void BusquedaProveedor::on_mui_buscar_clicked() {
     diag->setModal(true);
 
     ProveedorList *providers = new ProveedorList(companyact, diag, 0, ProveedorList::SelectMode);
-
     connect(providers, SIGNAL(selected(QString)), diag, SLOT(accept()));
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(providers);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    diag->setLayout(layout);
+    diag->setWindowTitle(providers->windowTitle());
+
     diag->exec();
 
     if (providers->cifprovider() != "") {
@@ -186,7 +196,6 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
         } // end if
         delete cur;
     } // end if
-
 
     if (!encontrado) {
         QString SQLQuery = "SELECT * FROM proveedor WHERE upper(nomproveedor) LIKE upper('%" + val + "%')";

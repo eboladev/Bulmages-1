@@ -129,11 +129,22 @@ void BusquedaCliente::on_mui_buscar_clicked() {
 
     ClientsList *clients = new ClientsList(companyact, diag, 0, ClientsList::SelectMode);
     connect(clients, SIGNAL(selected(QString)), diag, SLOT(accept()));
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(clients);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    diag->setLayout(layout);
+    diag->setWindowTitle(clients->windowTitle());
+
     diag->exec();
     if (clients->cifclient() != "") {
         setcifcliente(clients->cifclient());
     } // end if
     delete diag;
+
     _depura("END BusquedaCliente::on_mui_buscar_clicked", 0);
 }
 

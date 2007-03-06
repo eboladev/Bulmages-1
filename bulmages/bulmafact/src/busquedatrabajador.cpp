@@ -37,6 +37,7 @@ BusquedaTrabajador::BusquedaTrabajador(QWidget *parent)
     _depura("END BusquedaTrabajador::BusquedaTrabajador", 0);
 }
 
+
 /** Libera la memoria dinamica que se estaba utilizando.
 */
 BusquedaTrabajador::~BusquedaTrabajador() {

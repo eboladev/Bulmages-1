@@ -23,6 +23,7 @@
 #include "busquedaformapago.h"
 #include "company.h"
 
+
 /** Inicializa todos los componenetes a NULL para que no se produzcan confusiones
     sobre si un elemento ha sido creado o no.
     Conecta el activar un tipo con m_activated.
@@ -83,6 +84,7 @@ void BusquedaFormaPago::setIdCliente(QString idcliente) {
 	delete cur;
 	_depura("END BusquedaFormaPago::setIdCliente", 0);
 }
+
 
 void BusquedaFormaPago::setIdProveedor(QString idproveedor) {
 	_depura("BusquedaFormaPago::setIdProveedor", 0, idproveedor);

@@ -25,7 +25,6 @@
 #include "funcaux.h"
 
 
-
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
     sobre si un elemento ha sido creado o no. 
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
@@ -73,11 +72,11 @@ void BusquedaSerieFactura::setcodigoserie_factura(QString codigo) {
             i1 = i;
         addItem(m_cursorcombo->valor("codigoserie_factura") + ".-" + m_cursorcombo->valor("descserie_factura"));
         m_cursorcombo->siguienteregistro();
-    }
+    } // end if
     if (i1 != 0) {
     	setCurrentIndex(i1);
     } else {
-	setCurrentIndex(i2);
+	   setCurrentIndex(i2);
     } // end if
     _depura("END BusquedaSerieFactura::setcodigoserie_factura", 0);
 }
@@ -88,7 +87,7 @@ void BusquedaSerieFactura::m_activated(int index) {
             emit(valueChanged(m_cursorcombo->valor("codigoserie_factura", index - 1)));
         } else {
             emit(valueChanged(""));
-        }
+        } // end if
 }
 
 
@@ -98,7 +97,7 @@ QString BusquedaSerieFactura::codigoserie_factura() {
             return(m_cursorcombo->valor("codigoserie_factura", index - 1));
         } else {
             return "";
-        }
+        } // end if
 }
 
 
@@ -111,12 +110,4 @@ void BusquedaSerieFactura::setcompany(company *comp) {
 	delete cur;
 
 }
-
-
-
-
-
-
-
-
 

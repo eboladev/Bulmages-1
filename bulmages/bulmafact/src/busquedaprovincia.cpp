@@ -24,6 +24,7 @@
 #include "company.h"
 #include "funcaux.h"
 
+
 /** Con este constructor inicializamos todos los componentes del Widget a NULL.
     De esta forma nos aseguramos que no haya problemas para determinar si un objeto
     ha sido creado o no.

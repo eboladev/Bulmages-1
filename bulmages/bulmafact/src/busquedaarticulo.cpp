@@ -105,6 +105,16 @@ void BusquedaArticulo::on_mui_buscar_clicked() {
     diag->setModal(true);
     ArticuloList *articulos = new ArticuloList(companyact, diag, 0, ArticuloList::SelectMode);
     connect(articulos, SIGNAL(selected(QString)), diag, SLOT(accept()));
+
+    /// Creamos un layout donde estara el contenido de la ventana y la ajustamos al QDialog
+    /// para que sea redimensionable y aparezca el titulo de la ventana.
+    QHBoxLayout *layout = new QHBoxLayout;
+    layout->addWidget(articulos);
+    layout->setMargin(0);
+    layout->setSpacing(0);
+    diag->setLayout(layout);
+    diag->setWindowTitle(articulos->windowTitle());
+
     diag->exec();
     if (articulos->codigocompletoarticulo() != "") {
         m_codigocompletoarticulo->setText(articulos->codigocompletoarticulo());
