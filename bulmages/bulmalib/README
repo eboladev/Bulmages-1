@@ -1,3 +1,10 @@
+========================================
+Software de Gestion Empresarial BulmaGes
+
+(C) 2007, Asociacion IGLUES
+http://www.iglues.org
+========================================
+
 BulmaLib
 ---------
 Este directorio contiene todo el codigo fuente de la libreria comun
@@ -26,4 +33,7 @@ sistema de compilacion.
 
 
 Nota: Si efectua compilacion manual es importante compilar primero esta
-parte ya que es necesaria para compilar los demas.
+parte ya que es necesaria para compilar el resto de componentes.
+
+Nota2: Para la ejecucion de cualquiera de los programas es necesario 
+tener instalada esta libreria.

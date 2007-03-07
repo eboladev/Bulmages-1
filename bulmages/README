@@ -1,3 +1,10 @@
+============================================
+Instalacion del software de gestion BulmaGes
+
+(C) 2007, Asociacion IGLUES
+http://www.iglues.org
+============================================
+
 Estos son los directorios principales del CVS y sus respectivas explicaciones.
 
 
@@ -77,21 +84,22 @@ Los ejecutables estaran dentro de installbulmages
 INSTALACION
 -----------
 
-Nota: Debe ser root para instalar.
+Nota: Debe tener privilegios de root para instalar BulmaGes.
 
 Ejecute los scripts 
 
-$installbulmages-server
-$installbulmages-client
+#installbulmages-server
+#installbulmages-client
 
 
 Notas para la instalacion
 -------------------------
 El programa depende de ciertos archivos en /etc para ejecutarse correctamente.
-Sin embargo cuando se esta desarrollando es incomodo andar reinstalando para
+Sin embargo cuando se esta desarrollando es engorroso reinstalar para
 comprobar el correcto funcionamiento del programa.
-En dicho caso es util hacer una instalacion y cambiar los siguientes archivos
-por soft links a los ejecutables resultantes del codigo fuente.
+En dicho caso es util cambiar en la instalacion los siguientes archivos
+por soft links a los ejecutables resultantes en el directorio installbulmages del
+directorio de desarrollo.
 
 Estos son los archivos que se deben enlazar:
 /usr/lib/libbulmages.0.9.1.so

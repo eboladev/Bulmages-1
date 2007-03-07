@@ -34,6 +34,10 @@
 
 
 /// SubForm3, constructor de la clase base para subformularios.
+/** Proporciona un widget que combina la clase QTable con los
+registros de la base de datos proporcionando un potente manejador
+tabular de datos que puede generar desde listados hasta subformularios
+*/
 class SubForm3: public QWidget, public Ui_SubForm3Base {
     Q_OBJECT
 
@@ -64,80 +68,123 @@ protected:
     bool m_orden;
 
 protected:
+    /// Guarda la configuracion de presentacion del subformulario
+    /// en el directorio .bulmages del home del usuario.
     void guardaconfig();
+    /// Carga la configuracion que tenia el formulario la ultima
+    /// vez que fue utilizado por el usuario.
     void cargaconfig();
+    /// Prepara las columnas de la tabla del formulario y pone en 
+    /// ella los encabezados.
     virtual void pintaCabeceras();
 
 public:
+    /// Devuelve la lista de registros de la base de datos que 
+    /// se presentan en el subformulario.
     QList<SDBRecord *> *lista() {
         return &m_lista;
     };
+    /// Devuelve la lista de cabeceras que forman el subformulario.
     QList<SHeader *> *cabecera() {
         return &m_lcabecera;
     };
 
 public:
+    /// Establece el modo de funcionamiento del scroll horizontal.
     void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode) {
         mui_list->setHorizontalScrollMode(mode);
     };
+    /// Establece que los elementos del subformulario son ordenables
     void setSortingEnabled(bool);
+    /// Indica si los elementos del subformulario son ordenables.
     bool sortingEnabled();
+    /// Establece en el subformulario un modo de funcionamiento mediante
+    /// el cual el orden de los elementos se almacena en la base de datos
+    /// mediante un campo orden"tabla" de tipo numerico.
     void setOrdenEnabled(bool);
+    /// Indica si esta establecido el modo de ordenacion en la base 
+    /// de datos.
     bool ordenEnabled();
+    /// Indica si una fila determinada del subformulario esta lista
+    /// para intentar ser guardada en la base de datos. O lo que es lo mismo 
+    /// si todos los campos necesarios para guardar el registro estan
+    /// rellenados
     bool campoCompleto(int row);
+    /// Establece el modo de borrado de registros que permite al subformulario
+    /// borrar filas con su correspondiente borrado en la base de datos.
     void setDelete(bool f) {
         m_delete = f;
     };
     SubForm3(QWidget *parent);
     virtual ~SubForm3();
+    /// Devuelve el elemento del subformulario ubicado en la posicion
+    /// indicada
     SDBCampo *item(int row, int col) {
         return (SDBCampo *) mui_list->item(row, col);
     };
+    /// Devuelve el numero total de columnas del subformulario.
     int columnCount() {
         return mui_list->columnCount();
     };
+    /// Muestra la columna indicada en el subformulario.
     void showColumn(int i) {
         mui_list->showColumn(i);
     };
+    /// Devuelve el ancho de la columna indicada.
     int columnWidth(int i) {
         return mui_list->columnWidth(i);
     };
+    /// Establece el ancho de la columna indicada.
     void setColumnWidth(int i, int j) {
         mui_list->setColumnWidth(i, j);
     };
+    /// Oculta la columna indicada.
     void hideColumn(int i) {
         mui_list->hideColumn(i);
     };
+    /// Devuelve la fila que en la actualidad poee el foco en el subformulario.
     int currentRow() {
         return mui_list->currentRow();
     };
+    /// Devuelve el numero de filas en el subformulario.
     int rowCount() {
         return mui_list->rowCount();
     };
+    /// Devuelve la columna que en la actualidad posee el foco del subformulario.
     int currentColumn() {
         return mui_list->currentColumn();
     };
+    /// Establece la forma de redimensionado de las columnas del subformulario.
     void setResizeMode(QHeaderView::ResizeMode modo) {
         mui_list->horizontalHeader()->setResizeMode(modo);
     };
+    /// Redimensiona las columnas del subformulario para ajustarlas
+    /// a los contenidos.
     void resizeColumnsToContents() {
         mui_list->resizeColumnsToContents();
     };
+    /// Redimensiona las filas del subformulario para ajustarlas
+    /// a los contenidos.
     void resizeRowsToContents() {
         mui_list->resizeRowsToContents();
     };
+    /// Redimensiona las columnas del subformulario para ajustarlas a los contenidos
     void resizeColumnToContents(int i) {
         mui_list->resizeColumnToContents(i);
     };
+    /// Ajusta la fila indicada a sus contenidos.
     void resizeRowToContents(int i) {
         mui_list->resizeRowToContents(i);
     };
+    /// Oculta el configurador del subformulario
     void hideConfig() {
         mui_configurador->hide();
     };
+    /// Muestra el configurador del subformulario
     void showConfig() {
         mui_configurador->show();
     };
+    /// Hace la impresion del subformulario en formato de tabla RML
     QString imprimir();
     void sortItems(int col, Qt::SortOrder orden);
     void setinsercion(bool b);
