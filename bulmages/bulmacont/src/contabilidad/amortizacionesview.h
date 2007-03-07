@@ -22,17 +22,17 @@
 #define AMORTIZACIONESVIEW_H
 
 #include "ui_amortizacionesbase.h"
-#include "ficha.h"
+#include "fichabc.h"
 
 
 class empresa;
 
 
 /** */
-class amortizacionesview : public Ficha, public Ui_AmortizacionesBase {
+class amortizacionesview : public FichaBc, public Ui_AmortizacionesBase {
     Q_OBJECT
 private:
-    empresa *m_companyact;
+
     /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
     QString m_idamortizacion;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.

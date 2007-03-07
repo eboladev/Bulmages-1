@@ -31,11 +31,10 @@
  */
 /// TODO: Esta derivando de Ficha y deberia derivar de FichaBc
 amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent)
-        : Ficha(parent) {
+        : FichaBc(emp, parent) {
     _depura("amortizacionesview::amortizacionesview", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    m_companyact = emp;
     inicializatabla();
     m_modo = 0;
     m_companyact->meteWindow(windowTitle(), this, FALSE);
@@ -74,6 +73,17 @@ void amortizacionesview::inicializatabla()  {
         i++;
     } // end while
     delete cursoraux1;
+
+
+   /// Hacemos la inicializacion de un listado embebido.
+    mui_listado->setcompany(m_companyact);
+    mui_listado->setDBTableName("amortizacion");
+    mui_listado->setFileConfig("AmortizacionListSubform");
+    mui_listado->setDBCampoId("idamortizacion");
+    mui_listado->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id amortizacion"));
+    mui_listado->addSHeader("nomamortizacion", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
+    mui_listado->setinsercion(FALSE);
+    mui_listado->cargar("SELECT * FROM amortizacion");
     _depura("END amortizacionesview::inicializatabla", 0);
 }
 
