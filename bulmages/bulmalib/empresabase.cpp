@@ -36,6 +36,7 @@ EmpresaBase::~EmpresaBase() {
     _depura("EmpresaBase::~EmpresaBase", 0);
     /// cerramos todas las ventanas y las DestructiveClose se borran.
     m_listventanas->vaciar();
+    /// \NOTE: El vaciado de las ventanas debe hacerse en la clase hija ya que el destructor de la clase derivada se ejecuta primero y se generaria un segfault.
     _depura("END EmpresaBase::~EmpresaBase", 0);
 }
 

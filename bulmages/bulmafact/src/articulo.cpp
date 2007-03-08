@@ -30,9 +30,8 @@
     Prepara el DBRecord para trabajar con la tabla articulo.
     Agrega los campos necesarios para toda la ficha.
 */
-Articulo::Articulo(company *comp) : DBRecord(comp) {
+Articulo::Articulo(company *comp, QWidget *parent, Qt::WFlags f ) : FichaBf(comp, parent, f) {
   _depura("Articulo::Articulo", 0);
-  m_companyact = comp;
   setDBTableName("articulo");
   setDBCampoId("idarticulo");
   addDBCampo("idarticulo", DBCampo::DBint, DBCampo::DBPrimaryKey, QApplication::translate("Articulo", "Identificador"));

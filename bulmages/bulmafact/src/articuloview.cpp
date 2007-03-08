@@ -43,11 +43,10 @@
     Mete la ventana en el worSpace.
 */
 ArticuloView::ArticuloView(company *comp, QWidget *parent)
-        : Ficha(parent), Articulo(comp) {
+        : Articulo(comp, parent) {
     _depura("ArticuloView::ArticuloView", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     try {
-        m_companyact = comp;
         setupUi(this);
 
         /// Disparamos los plugins.
@@ -77,16 +76,6 @@ ArticuloView::~ArticuloView() {
     _depura("END ArticuloView::~ArticuloView", 0);
 }
 
-
-/** Saca la ventana del workSpace.
-    Este metodo es invocado desde la clase Ficha.
-*/
-int ArticuloView::sacaWindow() {
-    _depura("ArticuloView::sacaWindow", 0);
-    m_companyact->sacaWindow(this);
-    _depura("END ArticuloView::sacaWindow", 0);
-    return 0;
-}
 
 
 /** Se encarga de presentar la ventana con los datos cargados en la clase DBRecord.
@@ -166,7 +155,7 @@ int ArticuloView::cargar(QString idarticulo) {
         mensajeInfo(tr("Error en la carga del articulo"));
         return -1;
     } // end try
-    _depura("END ArticuloView::cargar()\n", 0);
+    _depura("END ArticuloView::cargar", 0);
     return 0;
 }
 
@@ -209,6 +198,7 @@ int ArticuloView::cargarcomboiva(QString idIva) {
     Pregunta si se desea borrar y en caso afirmativo hace el borrado.
     Una vez acabo resetea el control de cambios para que se considere que no hay cambios.
 */
+/*
 void ArticuloView::on_mui_borrar_clicked() {
     _depura("ArticuloView::on_mui_borrar_clicked", 0);
 
@@ -223,6 +213,8 @@ void ArticuloView::on_mui_borrar_clicked() {
     } // end if
     _depura("END ArticuloView::on_mui_borrar_clicked", 0);
 }
+*/
+
 
 /** SLOT que responde a la finalizacion de edicion del codigocompleto del articulo.
     En cuyo caso lo que se hace es buscar un articulo que tenga dicho codigo y cargar su 
@@ -250,7 +242,7 @@ void ArticuloView::on_m_codigocompletoarticulo_editingFinished() {
 */
 int ArticuloView::guardar() {
     try {
-        _depura("ArticuloView::guardar()\n", 0);
+        _depura("ArticuloView::guardar", 0);
         setDBvalue("presentablearticulo",  m_presentablearticulo->isChecked() ? "TRUE" : "FALSE");
         setDBvalue("controlstockarticulo", m_controlstockarticulo->isChecked() ? "TRUE" : "FALSE");
         setDBvalue("idtipo_articulo", m_tipoarticulo->idtipo_articulo());
@@ -285,7 +277,7 @@ int ArticuloView::guardar() {
         } // end if
         dialogChanges_cargaInicial();
 
-        _depura("END ArticuloView::guardar()\n", 0);
+        _depura("END ArticuloView::guardar", 0);
         return 0;
     } catch (...) {
         mensajeInfo("Hubo un error al guardar el articulo");
@@ -306,7 +298,6 @@ int ArticuloView::guardar() {
 int ArticuloView::borrar() {
     _depura ("ArticuloView::borrar", 0);
     try {
-        _depura("ArticuloView::borrar", 0);
         m_companyact->begin();
         /// Disparamos los plugins
         int res = g_plugins->lanza("ArticuloView_borrar", this);
@@ -347,6 +338,7 @@ void ArticuloView::on_mui_cambiarimagen_clicked() {
 /** Este metodo responde a la pulsacion del boton aceptar.
 */
 /// \TODO: Deberia estar implementado en la clase Ficha y ser eliminado de aqui.
+/*
 void ArticuloView::on_mui_aceptar_clicked() {
     _depura("ArticuloView::on_mui_aceptar_clicked", 0);
     try {
@@ -355,4 +347,4 @@ void ArticuloView::on_mui_aceptar_clicked() {
     } catch (...) {}
     _depura("END ArticuloView::on_mui_aceptar_clicked", 0);
 }
-
+*/

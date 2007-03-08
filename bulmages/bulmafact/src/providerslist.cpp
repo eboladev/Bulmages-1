@@ -59,7 +59,9 @@ ProveedorList::ProveedorList(company *comp, QWidget *parent, Qt::WFlags flag, ed
 }
 
 
-ProveedorList::~ProveedorList() {}
+ProveedorList::~ProveedorList() {
+    m_companyact->sacaWindow(this);
+}
 
 
 void ProveedorList::presenta() {

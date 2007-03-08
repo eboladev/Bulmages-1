@@ -176,7 +176,9 @@ void bulmafact::s_About() {
 void bulmafact::closeEvent(QCloseEvent *) {
     _depura("bulmafact::closeEvent", 0);
     delete m_company;
+    m_company = NULL;
     delete m_list;
+    m_list = NULL;
 #ifdef WINDOWS
     exit(0);
 #endif
@@ -189,6 +191,11 @@ void bulmafact::closeEvent(QCloseEvent *) {
 */
 void bulmafact::informaindexador(QWidget *w) {
     _depura("bulmafact::informaindexador", 0);
+
+    /// Si no esta inicializado company no se le puede informar.
+    if ( m_company == NULL) 
+	return;
+
     /// No existe una ventana que activar.
     if (w == NULL) {
         m_company->deSeleccionaWindow();

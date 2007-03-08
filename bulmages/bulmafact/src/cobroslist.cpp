@@ -74,6 +74,7 @@ CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
 */
 CobrosList::~CobrosList() {
     _depura("CobrosList::~CobrosList", 0);
+    m_companyact->sacaWindow(this);
     _depura("END CobrosList::~CobrosList", 0);
 }
 

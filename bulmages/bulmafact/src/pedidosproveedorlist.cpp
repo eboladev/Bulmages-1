@@ -59,6 +59,8 @@ PedidosProveedorList::PedidosProveedorList(company *comp, QWidget *parent, Qt::W
 
 PedidosProveedorList::~PedidosProveedorList() {
     _depura("PedidosProveedorList::~PedidosProveedorList", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END PedidosProveedorList::~PedidosProveedorList", 0);
 }
 
 

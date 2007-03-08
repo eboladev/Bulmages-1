@@ -91,6 +91,7 @@ void FacturasList::iniciaForm() {
 */
 FacturasList::~FacturasList() {
     _depura("FacturasList::~FacturasList", 0);
+    m_companyact->sacaWindow(this);
     _depura("END FacturasList::~FacturasList", 0);
 }
 

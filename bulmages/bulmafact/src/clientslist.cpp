@@ -68,6 +68,7 @@ ClientsList::ClientsList(company *comp, QWidget *parent, Qt::WFlags flag, edmode
 */
 ClientsList::~ClientsList() {
     _depura("ClientsList::~ClientsList", 0);
+    m_companyact->sacaWindow(this);
     _depura("END ClientsList::~ClientsList", 0);
 }
 

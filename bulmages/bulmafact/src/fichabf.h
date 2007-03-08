@@ -44,7 +44,7 @@ public:
 	return m_companyact;
     };
     FichaBf(company *comp, QWidget *parent = 0, Qt::WFlags f = 0);
-    ~FichaBf();
+    virtual ~FichaBf();
     void setListaLineas(SubForm2Bf *form) {
         m_listalineas = form;
     };
@@ -62,6 +62,8 @@ public:
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
     virtual int sacaWindow();
+    virtual int guardar();
+    virtual int borrar();
 };
 
 #endif

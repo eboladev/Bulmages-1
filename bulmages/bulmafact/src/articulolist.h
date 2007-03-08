@@ -24,7 +24,7 @@
 #include "company.h"
 #include "pgimportfiles.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /** Clase que maneja el subformulario de la lista de art&iacute;culos.
@@ -65,15 +65,14 @@ private:
     QString mdb_nomarticulo;
     /// El codigo completo del articulo seleccionado si estamos en modo seleccion.
     QString mdb_codigocompletoarticulo;
-    /// El puntero a la clase company para manejar la BD y hacer traspaso de mensajes.
-    company *m_companyact;
     /// El indicador del modo (Seleccion o Edicion). Esta funcionalidad deberia pasarse a la clase Listado.
+    company *m_companyact;
     edmode m_modo;
     void inicializar();
 
 public:
     ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
-    ~ArticuloList();
+    virtual ~ArticuloList();
     QString formaQuery();
     QString detalleArticulos();
     QString idArticle() {

@@ -84,6 +84,7 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
 /** Destructor de la clase */
 AlbaranClienteList::~AlbaranClienteList() {
     _depura("AlbaranClienteList::~AlbaranClienteList", 0);
+    m_companyact->sacaWindow(this);
     _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
 }
 

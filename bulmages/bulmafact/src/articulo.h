@@ -24,22 +24,17 @@
 #include <QString>
 
 #include "company.h"
-//#include "empresa.h"
+#include "fichabf.h"
 #include "dbrecord.h"
 
 
 /** Clase que se encarga de la relacion de un articulo con la base de datos
 */
-class Articulo : public DBRecord {
-protected:
-    /// El puntero a la clase company para poder trabajar con la base de datos
-    /// Y poder hacer comodamente el traspaso de mensajes.
-    company *m_companyact;
+class Articulo : public FichaBf {
+
 public:
-    Articulo(company *);
-    company* companyact() {
-        return m_companyact;
-    };
+    Articulo(company *, QWidget *parent = 0, Qt::WFlags f = 0 );
+
     virtual ~Articulo();
     virtual void pintar();
     void setidarticulo(QString val) {

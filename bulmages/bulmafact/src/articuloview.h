@@ -23,7 +23,6 @@
 
 #include "ui_articleeditbase.h"
 #include "postgresiface2.h"
-#include "ficha.h"
 #include "articulo.h"
 
 
@@ -34,31 +33,25 @@ class company;
     Deriva de la clase Ficha para el control de la ventana y de la clase Articulo
     para el control con la base de datos.
 */
-class ArticuloView : public Ficha, public Ui_ArticuloBase, public Articulo {
+class ArticuloView : public Articulo, public Ui_ArticuloBase {
     Q_OBJECT
 
 private:
     /// La imagen de un articulo es una excepcion ya que no se guarda en la base de datos
     /// por ese motivo la almacenamos en esta variable que hace que corresponda con un archivo.
     QString m_archivoimagen;
-    /// El puntero a la clase company que indica con que empresa estamos trabajando.
-    company *m_companyact;
     cursor2 *m_cursorcombo;
 
 public:
     ArticuloView(company *emp, QWidget *parent = 0);
     ~ArticuloView();
-    company *companyact() {
-        return m_companyact;
-    }
 
 public:
     void pintar();
     int cargar(QString);
-    int guardar();
-    int borrar();
+    virtual int guardar();
+    virtual int borrar();
     int cargarcomboiva(QString);
-    virtual int sacaWindow();
 
 public slots:
     virtual void on_mui_guardar_clicked() {
@@ -66,10 +59,8 @@ public slots:
             guardar();
         } catch (...) {}
     }
-    virtual void on_mui_borrar_clicked();
     virtual void on_m_codigocompletoarticulo_editingFinished();
     virtual void on_mui_cambiarimagen_clicked();
-    virtual void on_mui_aceptar_clicked();
 };
 
 #endif

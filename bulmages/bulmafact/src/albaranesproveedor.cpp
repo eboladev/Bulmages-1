@@ -80,6 +80,7 @@ AlbaranesProveedor::AlbaranesProveedor(company *comp, QWidget *parent, Qt::WFlag
 AlbaranesProveedor::~AlbaranesProveedor() {
     _depura("AlbaranesProveedor::~AlbaranesProveedor", 0);
     m_companyact->refreshAlbaranesProveedor();
+    m_companyact->sacaWindow(this);
     _depura("END AlbaranesProveedor::~AlbaranesProveedor", 0);
 }
 

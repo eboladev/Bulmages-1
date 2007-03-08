@@ -45,7 +45,7 @@
 */
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag), pgimportfiles(comp) {
-    _depura("ArticuloList::INIT_ArticuloList()\n", 0);
+    _depura("ArticuloList::INIT_ArticuloList", 0);
     setupUi(this);
     m_companyact = comp;
     m_tipoarticulo->setcompany(comp);
@@ -67,7 +67,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     } // end if
     presenta();
     hideBusqueda();
-    _depura("ArticuloList::END_ArticuloList()\n", 0);
+    _depura("ArticuloList::END_ArticuloList", 0);
 }
 
 
@@ -127,8 +127,9 @@ void ArticuloList::on_mui_editar_clicked() {
 
 /** No requiere de ninguna accion adicional */
 ArticuloList::~ArticuloList() {
-    _depura("ArticuloList::INIT_destructor()\n", 0);
-    _depura("ArticuloList::END_destructor()\n", 0);
+    _depura("ArticuloList::~ArticuloList", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END ArticuloList::~ArticuloList", 0);
 }
 
 
@@ -285,10 +286,9 @@ void ArticuloList::on_mui_imprimirCatalogo_clicked() {
 /** La impresion del listado esta completamente delegada en SubForm3.
 */
 void ArticuloList::s_imprimir1() {
-    _depura("ArticuloList::INIT_s_imprimir1()\n", 0);
-    //mui_list->imprimirPDF(tr("Listado de articulos"));
+    _depura("ArticuloList::s_imprimir1", 0);
     mui_list->imprimirPDF("Listado de artículos");
-    _depura("ArticuloList::END_s_imprimir1()\n", 0);
+    _depura("END ArticuloList::s_imprimir1", 0);
 }
 
 

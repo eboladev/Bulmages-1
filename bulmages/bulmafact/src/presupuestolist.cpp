@@ -72,6 +72,8 @@ PresupuestoList::PresupuestoList(company *comp, QWidget *parent, Qt::WFlags flag
 
 PresupuestoList::~PresupuestoList() {
     _depura("PresupuestoList::~PresupuestoList", 0);
+    m_companyact->sacaWindow(this);
+    _depura("END PresupuestoList::~PresupuestoList", 0);
 }
 
 

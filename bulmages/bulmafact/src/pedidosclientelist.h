@@ -61,7 +61,7 @@ class PedidosClienteList : public Ficha, public Ui_PedidosClienteListBase {
     Q_OBJECT
 
 private:
-    company *companyact;
+    company *m_companyact;
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     int m_modo;
@@ -80,12 +80,12 @@ public:
     }
     void imprimir();
     void setcompany(company *comp) {
-        companyact = comp;
+        m_companyact = comp;
         m_cliente->setcompany(comp);
         mui_list->setcompany(comp);
     }
     company *getcompany() {
-	return companyact;
+	return m_companyact;
     };
     void hideBotonera() {
         m_botonera->hide();
@@ -107,8 +107,8 @@ public:
         m_cliente->setidcliente(val);
     }
     void meteWindow(QString nom, QObject *obj) {
-        if (companyact != NULL) {
-            companyact->meteWindow(nom, obj);
+        if (m_companyact != NULL) {
+            m_companyact->meteWindow(nom, obj);
         } // end if
     }
     void editar(int);
@@ -128,7 +128,7 @@ public slots:
         imprimir();
     }
     virtual void on_mui_crear_clicked() {
-        companyact->s_newPedidoClienteView();
+        m_companyact->s_newPedidoClienteView();
     }
     virtual void on_mui_actualizar_clicked() {
         presenta();

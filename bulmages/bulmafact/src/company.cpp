@@ -76,6 +76,9 @@ company::company() : EmpresaBase(){
 company::~company() {
     _depura("company::~company", 0);
 
+    /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault 
+    m_listventanas->vaciar();
+
     /// Borramos el resto de ventanas.
     delete m_facturasproveedorlist;
     m_facturasproveedorlist = NULL;

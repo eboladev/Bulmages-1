@@ -29,7 +29,8 @@ Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(
 
 
 Ficha::~Ficha() {
-    _depura("Ficha::~Ficha", 0);
+    _depura("Ficha::~Ficha", 0, this->windowTitle());
+    sacaWindow();
     _depura("END Ficha::~Ficha", 0);
 }
 
@@ -69,8 +70,7 @@ void Ficha::on_mui_borrar_clicked() {
 
 
 void Ficha::closeEvent(QCloseEvent *e) {
-    QString texto = "Ficha::closeEvent - " + windowTitle();
-    _depura(texto, 10);
+    _depura("Ficha::closeEvent", 0, windowTitle());
     try {
         if (dialogChanges_hayCambios()) {
             int val = QMessageBox::warning(this,
@@ -85,11 +85,18 @@ void Ficha::closeEvent(QCloseEvent *e) {
                 return;
             } // end if
         } // end if
+/// \TODO Este sacaWindow encubre un bug. Debe tratarse de otra forma el sacar las ventanas de listventanas.
         sacaWindow();
     } catch (...) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
         e->ignore();
     } // end try
-    _depura("END Ficha::closeEvent", 10);
+    _depura("END Ficha::closeEvent", 0);
 }
 
+int Ficha::sacaWindow() {
+	_depura("Ficha::sacaWindow", 0);
+        _depura("Ficha::sacaWindow existe solo para ser derivado", 2);
+	_depura("END Ficha::sacaWindow", 0);
+        return 0;
+}

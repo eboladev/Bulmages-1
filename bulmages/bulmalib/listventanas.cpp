@@ -84,7 +84,6 @@ void listventanas::vaciar() {
     int i = 0;
     while (i < m_listBox->count()) {
         QListWidgetItem1 *m = (QListWidgetItem1 *)m_listBox->item(i);
-        _depura("Vamos a destruir la ventana", 0, m->nombre());
         if (((QWidget *)m->object())->testAttribute(Qt::WA_DeleteOnClose)) {
             delete m->object();
         } else {
@@ -99,7 +98,7 @@ void listventanas::vaciar() {
 /// nombre This QString is the name of the window that was shown in the listbox
 /// obj This QObject * contains the pointer of the window for furtner reference.
 int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
-    _depura("listventanas::meteWindo)", 0);
+    _depura("listventanas::meteWindow", 0, nombre);
     try {
         int i = 0;
         while (i < m_listBox->count()) {

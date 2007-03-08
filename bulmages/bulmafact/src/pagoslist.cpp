@@ -58,13 +58,11 @@ PagosList::PagosList(company *comp, QWidget *parent, Qt::WFlags flag)
 }
 
 
-PagosList::~PagosList() {}
-
-
-int PagosList::sacaWindow() {
+PagosList::~PagosList() {
     m_companyact->sacaWindow(this);
-    return 0;
 }
+
+
 
 
 void PagosList::presentar() {

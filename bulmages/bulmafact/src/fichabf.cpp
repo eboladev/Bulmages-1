@@ -39,7 +39,8 @@ FichaBf::FichaBf(company *comp, QWidget *parent, Qt::WFlags f)
 
 
 FichaBf::~FichaBf() {
-    _depura("FichaBf::~FichaBf", 0);
+    _depura("FichaBf::~FichaBf", 0, this->windowTitle());
+    m_companyact->sacaWindow(this);
     _depura("END FichaBf::~FichaBf", 0);
 }
 
@@ -365,9 +366,27 @@ void FichaBf::imprimir() {
     Este metodo es invocado desde la clase Ficha.
 */
 int FichaBf::sacaWindow() {
-    _depura("FichaBf::sacaWindow", 0);
+    _depura("FichaBf::sacaWindow", 0, this->windowTitle());
     m_companyact->sacaWindow(this);
     _depura("END FichaBf::sacaWindow", 0);
     return 0;
 }
 
+/** Guarda la ficha en la base de datos
+    Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
+*/
+int FichaBf::guardar() {
+	_depura("FichaBf::guardar", 0);
+	_depura("END FichaBf::guardar", 0);
+	return DBRecord::guardar();
+}
+
+
+/** Borra la ficha en la base de datos
+    Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
+*/
+int FichaBf::borrar() {
+	_depura("FichaBf::borrar", 0);
+	_depura("END FichaBf::borrar", 0);
+	return DBRecord::borrar();
+}
