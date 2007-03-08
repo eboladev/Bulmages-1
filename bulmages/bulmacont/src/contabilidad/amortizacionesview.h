@@ -34,21 +34,24 @@ class amortizacionesview : public FichaBc, public Ui_AmortizacionesBase {
 private:
 
     /// Esta variable contiene el idamortizacion cuando se devuelve un parametro.
-    QString m_idamortizacion;
+    QString mdb_idamortizacion;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
-    QString m_nomamortizacion;
-    int m_modo;
+    QString mdb_nomamortizacion;
  
 public:
    amortizacionesview(empresa *, QWidget *);
     ~amortizacionesview();
     void inicializatabla();
-
+    void editAmortizacion(int );
 public slots:
-    virtual void on_listado_cellDoubleClicked(int, int);
+    virtual void on_mui_listado_cellDoubleClicked(int, int);
     virtual void on_mui_crear_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_actualizar_clicked();
+
+signals:
+    void selected(QString);
+
 };
 
 #endif

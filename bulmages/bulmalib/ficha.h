@@ -30,22 +30,29 @@
 
 class Ficha : public QWidget, public dialogChanges {
     Q_OBJECT
+public:
 
-protected:
+    enum edmode
+    {
+        EditMode = 0, SelectMode = 1
+    };
+
+private:
     /// Indica si es modo consulta o modo edicion. (altera el comportamiento del
     /// doble click sobre la lista)
-    bool m_modoConsulta;
+    edmode m_modo;
 
 protected:
     void setModoConsulta() {
-        m_modoConsulta = TRUE;
+        m_modo = SelectMode;
     };
     void setModoEdicion() {
-        m_modoConsulta = FALSE;
+        m_modo = EditMode;
     };
-
+    bool modoEdicion() { return m_modo==EditMode;};
+    bool modoConsulta() {return m_modo==SelectMode;};
 public:
-    Ficha(QWidget *parent = 0, Qt::WFlags f = 0);
+    Ficha(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo=EditMode);
     virtual ~Ficha();
     virtual int guardar() {
         _depura("Ficha::guardar existe solo para ser derivado", 0);

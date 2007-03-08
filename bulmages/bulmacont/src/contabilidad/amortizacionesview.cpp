@@ -36,7 +36,6 @@ amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent)
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     inicializatabla();
-    m_modo = 0;
     m_companyact->meteWindow(windowTitle(), this, FALSE);
     _depura("END amortizacionesview::amortizacionesview", 0);
 }
@@ -55,26 +54,6 @@ amortizacionesview::~amortizacionesview() {
 /// TODO: La clase se basa en QTableWidget y deberia usar SubForm2Bc
 void amortizacionesview::inicializatabla()  {
     _depura("amortizacionesview::inicializatabla", 0);
-    /// Para el listado de columnas hacemos una inicializaci&oacute;n.
-    QStringList headers;
-    headers << "id" << "nombre" ;
-    listado->setHorizontalHeaderLabels(headers);
-    listado->setColumnCount(2);
-    string query = "SELECT * FROM amortizacion ORDER BY nomamortizacion";
-    cursor2 *cursoraux1 = m_companyact->cargacursor(query.c_str());
-    listado->setRowCount(cursoraux1->numregistros());
-    int i = 0;
-    while (!cursoraux1->eof()) {
-        QTableWidgetItem *it = new QTableWidgetItem(cursoraux1->valor("idamortizacion"));
-        listado->setItem(i, COL_CODIGO, it);
-        it = new QTableWidgetItem(cursoraux1->valor("nomamortizacion"));
-        listado->setItem(i, COL_NOMBRE, it);
-        cursoraux1->siguienteregistro ();
-        i++;
-    } // end while
-    delete cursoraux1;
-
-
    /// Hacemos la inicializacion de un listado embebido.
     mui_listado->setcompany(m_companyact);
     mui_listado->setDBTableName("amortizacion");
@@ -92,21 +71,9 @@ void amortizacionesview::inicializatabla()  {
  * que ha sido clickado y mostrarlo.
  * Si el modo es modo seleccion en lugar de modo edicion coge los valores del elemento seleccionado y cierra la ventana.
  */
-void amortizacionesview::on_listado_cellDoubleClicked(int row, int) {
+void amortizacionesview::on_mui_listado_cellDoubleClicked(int row, int) {
     _depura("amortizacionesview::on_listado_cellDoubleClicked", 0);
-    /// Dependiendo del modo hacemos una cosa u otra.
-    if (m_modo == 0) {
-        m_idamortizacion = listado->item(row,COL_CODIGO)->text();
-        /// Creamos el objeto mpatrimonialview, y lo lanzamos.
-        AmortizacionView *amor = new AmortizacionView(m_companyact, 0);
-        amor->cargar(m_idamortizacion);
-        m_companyact->pWorkspace()->addWindow(amor);
-        amor->show();
-    } else {
-        m_idamortizacion = listado->item(listado->currentRow(), COL_CODIGO)->text();
-        m_nomamortizacion = listado->item(listado->currentRow(), COL_NOMBRE)->text();
-        close();
-    } // end if
+    editAmortizacion( row);
     _depura("END amortizacionesview::on_listado_cellDoubleClicked", 0);
 }
 
@@ -127,7 +94,7 @@ void amortizacionesview::on_mui_crear_clicked() {
 /// La que esta seleccionada en el listado.
 void amortizacionesview::on_mui_borrar_clicked() {
     _depura("amortizacionesview::on_mui_borrar_clicked", 0);
-    QString codigo = listado->item(listado->currentRow(), COL_CODIGO)->text();
+    QString codigo = mui_listado->DBvalue("idamortizacion");
     if (codigo != "") {
         QString query = "DELETE FROM linamortizacion WHERE idamortizacion = " + codigo;
         m_companyact->begin();
@@ -147,5 +114,28 @@ void amortizacionesview::on_mui_actualizar_clicked() {
 	_depura("END amortizacionesview::on_mui_actualizar_clicked", 0);
 }
 
-
+/** Se encarga de la accion preseleccionada al hacer doble click o al darle
+    al boton de editar. 
+    Si estamos en modo seleccion actualiza el valor de los campos de seleccion y
+    cierra la ventana.
+    Si estamos en modo edicion abre una instancia de ArticuloView y lo carga con el
+    valor seleccionado.
+*/
+/// \TODO: este metodo deberia ser editar
+void amortizacionesview::editAmortizacion(int row) {
+    _depura("amortizacionesview::editAmortizacion", 0);
+    mdb_idamortizacion = mui_listado->DBvalue("idamortizacion", row);
+    mdb_nomamortizacion = mui_listado->DBvalue("nomamortizacion", row);
+    if (modoEdicion()) {
+        /// Creamos el objeto mpatrimonialview, y lo lanzamos.
+        AmortizacionView *amor = new AmortizacionView(m_companyact, 0);
+        amor->cargar(mdb_idamortizacion);
+        m_companyact->pWorkspace()->addWindow(amor);
+        amor->show();
+    } else {
+        close();
+        emit(selected(mdb_idamortizacion));
+    } // end if
+    _depura("END amortizacionesview::editAmortizacion", 0);
+}
 

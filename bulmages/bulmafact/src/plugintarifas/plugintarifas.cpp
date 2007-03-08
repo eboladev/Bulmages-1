@@ -107,7 +107,7 @@ int ArticuloView_ArticuloView(ArticuloView *art) {
     _depura("ArticuloView_ArticuloView", 0);
     ListLTarifaView *l = new ListLTarifaView(art);
     l->setObjectName(QString::fromUtf8("ltarifas"));
-    l->setcompany( art->companyact());
+    l->setcompany( art->getcompany());
     l->cargar("0");
     art->mui_tab->addTab(l, "Tarifas");
     _depura("END ArticuloView_ArticuloView", 0);

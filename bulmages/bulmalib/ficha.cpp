@@ -21,8 +21,9 @@
 #include "ficha.h"
 
 
-Ficha::Ficha(QWidget *parent, Qt::WFlags f) : QWidget(parent, f), dialogChanges(this) {
+Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : QWidget(parent, f), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
+    m_modo=modo;
     dialogChanges_cargaInicial();
     _depura("END Ficha::Ficha", 0);
 }
@@ -96,7 +97,7 @@ void Ficha::closeEvent(QCloseEvent *e) {
 
 int Ficha::sacaWindow() {
 	_depura("Ficha::sacaWindow", 0);
-        _depura("Ficha::sacaWindow existe solo para ser derivado", 2);
+        _depura("Ficha::sacaWindow existe solo para ser derivado", 0);
 	_depura("END Ficha::sacaWindow", 0);
         return 0;
 }

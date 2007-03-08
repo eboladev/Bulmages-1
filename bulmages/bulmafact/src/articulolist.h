@@ -52,12 +52,6 @@ public:
 class ArticuloList : public Ficha, private Ui_ArticuloListBase, public pgimportfiles {
     Q_OBJECT
 
-public:
-    enum edmode
-    {
-        EditMode = 0, SelectMode = 1
-    };
-
 private:
     /// El identificador de articulo para el modo seleccion. Indica el articulo seleccionado.
     QString mdb_idarticulo;
@@ -67,7 +61,7 @@ private:
     QString mdb_codigocompletoarticulo;
     /// El indicador del modo (Seleccion o Edicion). Esta funcionalidad deberia pasarse a la clase Listado.
     company *m_companyact;
-    edmode m_modo;
+
     void inicializar();
 
 public:
@@ -92,12 +86,6 @@ public:
     /// Funciones que se encargan en guardar y cargar la configuracion del listado.
     void guardaconfig();
     void cargaconfig();
-    void modoseleccion() {
-        m_modo = SelectMode;
-    };
-    void modoedicion() {
-        m_modo = EditMode;
-    };
     void hideBusqueda() {
         m_busqueda->hide();
     };

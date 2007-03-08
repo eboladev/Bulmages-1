@@ -44,7 +44,7 @@
     Hace la presentacion inicial.
 */
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
-        : Ficha(parent, flag), pgimportfiles(comp) {
+        : Ficha(parent, flag, editmodo), pgimportfiles(comp) {
     _depura("ArticuloList::INIT_ArticuloList", 0);
     setupUi(this);
     m_companyact = comp;
@@ -53,8 +53,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     mui_list->setcompany(comp);
     m_usadoarticulo->setCheckState(Qt::Unchecked);
 
-    m_modo = editmodo;
-    if (m_modo == EditMode) {
+    if (modoEdicion()) {
         m_companyact->meteWindow(windowTitle(), this);
     } else {
         setWindowTitle(tr("Selector de articulos"));
@@ -92,7 +91,7 @@ void ArticuloList::editArticle(int row) {
     mdb_idarticulo = mui_list->DBvalue("idarticulo", row);
     mdb_nomarticulo = mui_list->DBvalue("nomarticulo", row);
     mdb_codigocompletoarticulo = mui_list->DBvalue("codigocompletoarticulo", row);
-    if (m_modo == EditMode) {
+    if (modoEdicion()) {
         ArticuloView *art = m_companyact->newArticuloView();
         m_companyact->m_pWorkspace->addWindow(art);
         /// Si la carga no va bien entonces terminamos.
