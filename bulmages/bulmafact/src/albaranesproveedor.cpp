@@ -85,17 +85,6 @@ AlbaranesProveedor::~AlbaranesProveedor() {
 }
 
 
-/** Saca la ventan del workspace.
-    Este metodo es llamado desde la clase Ficha.
-*/
-int AlbaranesProveedor::sacaWindow() {
-    _depura("AlbaranesProveedor::sacaWindow", 0);
-    m_companyact->sacaWindow(this);
-    _depura("END AlbaranesProveedor::sacaWindow", 0);
-    return 0;
-}
-
-
 /** Hace la carga del listado, 
     Calcula el total de albaranes con las opciones de filtrado descritas y
     lo presenta.

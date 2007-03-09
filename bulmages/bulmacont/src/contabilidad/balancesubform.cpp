@@ -24,6 +24,7 @@
 
 
 BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
+    _depura("BalanceSubForm::BalanceSubForm", 0);
     setDBTableName("borrador");
     setFileConfig("balancesubform");
     setDBCampoId("idborrador");
@@ -39,6 +40,7 @@ BalanceSubForm::BalanceSubForm(QWidget *parent, const char *) : SubForm2Bc(paren
     addSHeader("ejhaber", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejhaber"));
     addSHeader("ejsaldo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("ejsaldo"));
     setinsercion(FALSE);
+    _depura("END BalanceSubForm::BalanceSubForm", 0);
 }
 
 
@@ -128,5 +130,6 @@ void BalanceSubForm::contextMenuEvent(QContextMenuEvent *) {
         boton_balancetree(2);
     } // end if
     delete popup;
+    _depura("END SubForm2Bc::contextMenuEvent", 0);
 }
 

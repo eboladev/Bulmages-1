@@ -55,14 +55,15 @@ ExtractoPrintView::~ExtractoPrintView() {}
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void ExtractoPrintView::accept() {
+    _depura("ExtractoPrintView::accept", 0);
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
     if (radiotexto->isChecked()) {
         presentar("txt");
     } else if (radiohtml->isChecked()) {
         presentar("html");
     } // end if
+    _depura("END ExtractoPrintView::accept", 0);
 }
-
 
 
 /// Esta funci&oacute;n monta la consulta que se va a realizar contra la base de datos.
@@ -119,11 +120,13 @@ QString ExtractoPrintView::montaQuery() {
     query += ccostes;
     query += ccanales;
     query += " ORDER BY codigo, fecha";
+    _depura("END ExtractoPrintView::montaQuery", 0);
     return query;
 }
 
 
 void ExtractoPrintView::presentar(char *tipus) {
+    _depura("ExtractoPrintView::presentar", 0);
     int txt, html;
     float debe, haber,saldo;
     float debeinicial = 0, haberinicial = 0, saldoinicial = 0;
@@ -303,5 +306,6 @@ void ExtractoPrintView::presentar(char *tipus) {
         QString cad = confpr->valor(CONF_NAVEGADOR) + " mayor.html";
         system(cad.toAscii().constData());
     } // end if
+    _depura("END ExtractoPrintView::presentar", 0);
 }
 

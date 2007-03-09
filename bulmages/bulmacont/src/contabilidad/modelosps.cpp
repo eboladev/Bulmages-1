@@ -37,6 +37,7 @@
 
 
 void Modgenps::formatdigits(QString *cad1, QString *cad2, float x) {
+    _depura("Modgenps::formatdigits", 0);
     QString tempstr;
     /// Formatea n&uacute;mero x con 2 cifras decimales (centimos de euro).
     tempstr.sprintf("%.2f", x);
@@ -44,20 +45,25 @@ void Modgenps::formatdigits(QString *cad1, QString *cad2, float x) {
     *cad1 = tempstr.section('.', 0, 0);
     /// Se le a&ntilde;de a la parte entera la coma (a&uacute;n no s&eacute; si dejarlo o no)
     cad1->append(',');
+    _depura("END Modgenps::formatdigits", 0);
 }
 
 
 void Modgenps::escrizq(QString cad, int x, int y) {
+    _depura("Modgenps::escrizq", 0);
     /// Genera c&oacute;digo postscript para escribir 'cad' alineado a la derecha,
     /// suponiendo fuente Courier-Bold 12.
     m_output << "("<< cad<< ") " << x << " "<< y << " " << cad.length() << " escrizq\n";
+    _depura("END Modgenps::escrizq", 0);
 }
 
 
 void Modgenps::escrizq(float valor, int x, int y) {
+    _depura("Modgenps::escrizq", 0);
     QString tempstr;
     tempstr.sprintf("%g", valor);
     escrizq(tempstr, x, y);
+    _depura("END Modgenps::escrizq", 0);
 }
 
 
@@ -67,16 +73,20 @@ void Modgenps::escrizq(float valor, int x, int y) {
     @param x x coordinate of the right point.
     @param y y coordinate of the right point. */
 void Modgenps::escrder(QString cad,int x,int y) {
+    _depura("Modgenps::escrder", 0);
     /// Genera c&oacute;digo postscript para escribir 'cad' alineado a la izquierda,
     /// suponiendo fuente Courier-Bold 12.
     m_output << "("<< cad<< ") " << x << " " << y << " "<< cad.length() << " escrder\n";
+    _depura("END Modgenps::escrder", 0);
 }
 
 
 void Modgenps::escrder(float valor, int x, int y) {
+    _depura("Modgenps::escrder", 0);
     QString tempstr;
     tempstr.sprintf("%g", valor);
     escrder(tempstr, x, y);
+    _depura("END Modgenps::escrder", 0);
 }
 
 
@@ -86,8 +96,10 @@ void Modgenps::escrder(float valor, int x, int y) {
     @param x x coordinate of center.
     @param y y coordinate of center. */
 void Modgenps::escrizqder(QString cad1, QString cad2, int x, int y) {
+    _depura("Modgenps::escrizqder", 0);
     escrizq(cad1, x, y);
     escrder(cad2, x, y);
+    _depura("END Modgenps::escrizqder", 0);
 }
 
 
@@ -97,22 +109,27 @@ void Modgenps::escrizqder(QString cad1, QString cad2, int x, int y) {
     @param x x coordinate of center.
     @param y y coordinate of center. */
 void Modgenps::escrizqder(float valor, int x, int y) {
+    _depura("Modgenps::escrizqder", 0);
     QString cad1, cad2;
     formatdigits(&cad1, &cad2, valor);
 //    cout << "Si le digo" << valor << " me sale:\n";
 //    cout << "OJO!!!:"<< cad1.toAscii().constData() << " ," << cad2.toAscii().constData() <<"\n";
     escrizq(cad1, x, y);
     escrder(cad2, x, y);
+    _depura("END Modgenps::escrizqder", 0);
 }
 
 
 /// Put a character in a square box.
 void Modgenps::marca_casilla(QString marca, int x, int y) {
+    _depura("Modgenps::marca_casilla", 0);
     escrder(marca, x - 2, y);
+    _depura("END Modgenps::marca_casilla", 0);
 }
 
 
 void Modgenps::marcadeagua_borrador() {
+    _depura("Modgenps::marcadeagua_borrador", 0);
     m_output << "gsave\n";
     m_output << "1 setgray\n";
     m_output << "newpath\n";
@@ -131,18 +148,22 @@ void Modgenps::marcadeagua_borrador() {
     m_output << "(BORRADOR) true charpath\n";
     m_output << "stroke\n";
     m_output << "grestore\n";
+    _depura("END Modgenps::marcadeagua_borrador", 0);
 }
 
 
 Genps_thread::Genps_thread(QString pdfnamepar, QString tempnamepar, QProgressDialog *dialpar) {
+    _depura("Genps_thread::Genps_thread", 0);
     m_pdfname = pdfnamepar;
     m_tempname = tempnamepar;
     m_progressdia = dialpar;
+    _depura("END Genps_thread::Genps_thread", 0);
 }
 
 
 /// Invoca al programa Acrobat Reader en un servidor virtual XVfb.
 void Genps_thread::run() {
+    _depura("Genps_thread::run", 0);
     QTextStream m_output;
     QString command;
     /// Lo borro para asegurarme de que Acrobat no me pregunte "overwrite?".
@@ -170,7 +191,7 @@ void Genps_thread::run() {
         sleep(1);
         //QCoreApplication::postEvent(m_progressdia, new QCustomEvent(sleep10));
 //        cout << i << "\n";
-    }
+    } // end for
 
     macro.open(QIODevice::WriteOnly);
     m_output.setDevice(&macro);
@@ -219,6 +240,7 @@ void Genps_thread::run() {
     command = "kill $(ps aux|grep 'Xvfb :5.0'|grep -v grep|awk '{print $2}')";
     system(command.toAscii().constData());
 //    cout << "Se acabo!!\n";
+    _depura("END Genps_thread::run", 0);
 }
 
 

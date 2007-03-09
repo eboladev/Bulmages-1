@@ -25,6 +25,7 @@
 
 #include "ui_mpatrimonialbase.h"
 #include "postgresiface2.h"
+#include "funcaux.h"
 
 
 class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase  {

@@ -27,6 +27,8 @@
 /** En realidad no hace nada porque el di&aacute;logo s&oacute;lo requiere
     visualizaci&oacute;n y no realiza acciones. */
 sobreview::sobreview(QWidget *parent) : QDialog(parent) {
+    _depura("sobreview::sobreview", 0);
+
     QString str_sobre;
     QString str_autores;
     QString str_soporte;
@@ -416,6 +418,7 @@ sobreview::sobreview(QWidget *parent) : QDialog(parent) {
     textEdit_autores->setHtml(str_autores);
     textEdit_soporte->setHtml(str_soporte);
     textEdit_licencia->setHtml(str_licencia);
+    _depura("END sobreview::sobreview", 0);
 }
 
 
@@ -426,6 +429,8 @@ sobreview::~sobreview() {}
 
 
 void sobreview::on_mui_aceptar_clicked() {
+    _depura("sobreview::on_mui_aceptar_clicked", 0);
     close();
+    _depura("END sobreview::on_mui_aceptar_clicked", 0);
 }
 

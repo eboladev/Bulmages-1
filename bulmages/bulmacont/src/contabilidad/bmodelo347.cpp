@@ -25,6 +25,7 @@
 
 BModelo347::BModelo347(postgresiface2 *DBconnect, QString ejerActual, QWidget *parent, Qt::WFlags f)
         : QDialog(parent, f) {
+    _depura("BModelo347::BModelo347", 0);
     setupUi(this);
     importe->setText("3005.06");
     finicial->setText(normalizafecha("01/01/" + ejerActual).toString("dd/MM/yyyy"));
@@ -32,6 +33,7 @@ BModelo347::BModelo347(postgresiface2 *DBconnect, QString ejerActual, QWidget *p
     DBConn = DBconnect;
     /// Carga las tablas en pantalla.
     click_recargar();
+    _depura("END BModelo347::BModelo347", 0);
 }
 
 
@@ -39,6 +41,7 @@ BModelo347::~BModelo347() {}
 
 
 void BModelo347::click_recargar() {
+    _depura("BModelo347::click_recargar", 0);
     int i = 0;
     QTableWidgetItem *item;
     QString query;
@@ -64,7 +67,7 @@ void BModelo347::click_recargar() {
         tablaventas->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
-    }
+    } // end while
     /// A por la tabla de Compras...
     query = QString("SELECT codigo, descripcion, cifent_cuenta as cif, cpent_cuenta as cp, importe FROM cuenta INNER JOIN (SELECT idcuenta, sum(apunte.haber) as importe FROM apunte WHERE idasiento IN (SELECT idasiento FROM (SELECT idcuenta FROM cuenta WHERE (codigo = '4720016' OR codigo = '4720007' OR codigo = '4720004')) AS iva INNER JOIN apunte USING (idcuenta) WHERE fecha <= '") + ffinal->text() + QString("' AND fecha >= '") + finicial->text() + QString("' GROUP BY idasiento) AND idcuenta IN (SELECT idcuenta FROM cuenta WHERE codigo SIMILAR TO '4(0|1)0%') GROUP BY idcuenta) AS facturado USING(idcuenta) WHERE importe > ") + importe->text() + QString(" ORDER BY descripcion");
     DBConn->begin();
@@ -87,11 +90,13 @@ void BModelo347::click_recargar() {
         tablacompras->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
-    }
+    } // end while
+    _depura("END BModelo347::click_recargar", 0);
 }
 
 
 void BModelo347::click_imprimir() {
+    _depura("BModelo347::click_imprimir", 0);
     int i, numventas, numcompras, error, pid;
     char *args[] = {"listado347.txt", "listado347.txt", NULL};
     QString codigo, descripcion, cif, importe, cp;
@@ -113,7 +118,7 @@ void BModelo347::click_imprimir() {
             cp = tablaventas->item(i, 3)->text();
             importe = tablaventas->item(i, 4)->text();
             fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.toAscii().constData(), descripcion.toAscii().constData(), cif.toAscii().constData(), cp.toAscii().constData(), importe.toFloat());
-        }
+        } // end for
         numcompras = tablacompras->rowCount();
         fprintf(mifile, "\nCuenta	 Acreedor				 	    CIF/NIF     CP	Importe\n");
         fprintf(mifile, "________________________________________________________________________________________\n");
@@ -125,7 +130,7 @@ void BModelo347::click_imprimir() {
             cp = tablacompras->item(i, 3)->text();
             importe = tablacompras->item(i, 4)->text();
             fprintf(mifile, "%s %-50s %9s %6s %12.2f\n", codigo.toAscii().constData(), descripcion.toAscii().constData(), cif.toAscii().constData(), cp.toAscii().constData(), importe.toFloat());
-        }
+        } // end for
         fclose(mifile);
     } // end if
 #ifndef WIN32
@@ -138,11 +143,14 @@ void BModelo347::click_imprimir() {
         error = execvp(confpr->valor(CONF_EDITOR).toAscii(), args);
     } // end if
 #endif
+    _depura("END BModelo347::click_imprimir", 0);
 }
 
 
 void BModelo347::formatea_fecha() {
+    _depura("BModelo347::formatea_fecha", 0);
     QLineEdit *fecha = (QLineEdit *) sender();
     fecha->setText(normalizafecha(fecha->text()).toString("dd/MM/yyyy"));
+    _depura("END BModelo347::formatea_fecha", 0);
 }
 

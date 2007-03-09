@@ -54,7 +54,7 @@ ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(par
 }
 
 
-void ExtractoSubForm::contextMenuEvent (QContextMenuEvent *) {
+void ExtractoSubForm::contextMenuEvent(QContextMenuEvent *) {
     _depura("ExtractoSubForm::contextMenuEvent", 0);
     QAction *del = NULL;
     int row = currentRow();
@@ -111,7 +111,7 @@ void ExtractoSubForm::contextMenuEvent (QContextMenuEvent *) {
     if (opcion == ajustac) {
         resizeRowToContents(row);
     } // end if
-    if(opcion == verconfig) {
+    if (opcion == verconfig) {
         showConfig();
     } // end if
     if (opcion == mostdiariodia) {
@@ -142,6 +142,6 @@ void ExtractoSubForm::contextMenuEvent (QContextMenuEvent *) {
         boton_balancetree(2);
     } // end if
     delete popup;
-    _depura("ExtractoSubForm::contextMenuEvent", 0);
+    _depura("END ExtractoSubForm::contextMenuEvent", 0);
 }
 

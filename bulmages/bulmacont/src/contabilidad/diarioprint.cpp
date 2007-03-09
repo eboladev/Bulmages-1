@@ -26,11 +26,11 @@
 
 
 diarioprint::diarioprint(empresa *emp) {
-    fprintf(stderr,"CONSTRUCTOR de diarioprint\n");
+    _depura("diarioprint::diarioprint", 0);
     fichero = NULL;
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
-    fprintf(stderr,"Fin del CONSTRUCTOR de diarioprint\n");
+    _depura("END diarioprint::diarioprint", 0);
 }
 
 
@@ -38,24 +38,31 @@ diarioprint::~diarioprint() {}
 
 
 int diarioprint::inicializa(postgresiface2 *conn) {
+    _depura("diarioprint::inicializa", 0);
     conexionbase = conn;
+    _depura("diarioprint::inicializa", 0);
     return 0;
 }
 
 
 void diarioprint::inicializa1(char *finicial1, char *ffinal1) {
+    _depura("diarioprint::inicializa1", 0);
     finicial = finicial1;
     ffinal = ffinal1;
+    _depura("diarioprint::inicializa1", 0);
 }
 
 
 void diarioprint::inicializa2(char *fich) {
+    _depura("diarioprint::inicializa2", 0);
     fichero = fich;
+    _depura("diarioprint::inicializa2", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void diarioprint::accept() {
+    _depura("diarioprint::accept", 0);
     float debe, haber;
     int idcuenta;
     int idasiento;
@@ -108,5 +115,6 @@ void diarioprint::accept() {
     /// Hacemos la llamada de sistema para imprimir.
     QString cadaux = confpr->valor(CONF_EDITOR) + " diario.txt";
     system(cadaux.toAscii().constData());
+    _depura("END diarioprint::accept", 0);
 }
 

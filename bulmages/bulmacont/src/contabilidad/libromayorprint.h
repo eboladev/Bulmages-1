@@ -35,6 +35,7 @@
 using std::string;
 
 #include "postgresiface2.h"
+#include "funcaux.h"
 
 
 ///

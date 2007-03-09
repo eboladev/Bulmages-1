@@ -35,10 +35,12 @@ using namespace std;
 
 DiarioPrintView::DiarioPrintView(empresa *emp, QWidget *parent)
         : QDialog(parent) {
+    _depura("DiarioPrintView::DiarioPrintView", 0);
     setupUi(this);
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     numdigitos = empresaactual->numdigitosempresa();
+    _depura("END DiarioPrintView::DiarioPrintView", 0);
 }
 
 
@@ -49,6 +51,7 @@ DiarioPrintView::~DiarioPrintView() {}
 /// La consulta es de bastante detalle y por eso es conveniente dedicar una funci&oacute;n
 /// a realizarla. Adem&aacute;s dicha consulta puede ser invocada desde distintos sitios.
 QString DiarioPrintView::montaQuery() {
+    _depura("DiarioPrintView::montaQuery", 0);
     DiarioView *diario = empresaactual->diarioempresa();
     QString query;
     QString fecha;
@@ -80,12 +83,14 @@ QString DiarioPrintView::montaQuery() {
         tabla = "apunte";
     } // end if
     query = "SELECT asiento.ordenasiento, " + tabla + ".contrapartida, " + tabla + ".fecha, asiento.fecha AS fechaasiento,cuenta.tipocuenta, cuenta.descripcion, "+tabla+".conceptocontable,"+tabla+".descripcion AS descapunte, to_char("+tabla+".debe,'MI999G999G990D99') AS debe, to_char("+tabla+".haber,'MI999G999G990D99') AS haber, cuenta.idcuenta, asiento.idasiento, "+tabla+".idc_coste, "+tabla+".idcanal, cuenta.codigo AS codigocuenta FROM asiento, "+tabla+", cuenta WHERE asiento.idasiento="+tabla+".idasiento AND "+tabla+".idcuenta = cuenta.idcuenta AND "+tabla+".fecha >= '"+finicial+"' AND "+tabla+".fecha <= '" + ffinal + "' " + ccostes + " " + ccanales + " ORDER BY asiento.ordenasiento, " + tabla + ".orden";
+    _depura("END DiarioPrintView::montaQuery", 0);
     return query;
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void DiarioPrintView::accept() {
+    _depura("DiarioPrintView::accept", 0);
     /// Versi&oacute;n por si s&oacute;lo permitimos elegir una opci&oacute;n.
     if (radiotexto->isChecked()) {
         if (radionormal->isChecked()) {
@@ -100,10 +105,12 @@ void DiarioPrintView::accept() {
             presentar("htmlapren");
         } // end if
     } // end if
+    _depura("END DiarioPrintView::accept", 0);
 }
 
 
 void DiarioPrintView::presentar(char *tipus) {
+    _depura("DiarioPrintView::presentar", 0);
     DiarioView *diario = empresaactual->diarioempresa();
     int txt, html, txtapren, htmlapren;
     float debe, haber;
@@ -132,7 +139,6 @@ void DiarioPrintView::presentar(char *tipus) {
         /// Creamos los archivos de salida.
         ofstream fitxersortidatxt("diario.txt");
         ofstream fitxersortidahtml("diario.html");
-
 
         if (!fitxersortidatxt) {
             /// Verificamos que se hayan creado correctamente los archivos.
@@ -336,5 +342,6 @@ void DiarioPrintView::presentar(char *tipus) {
             } // end if
         } // end if
     } // end if
+    _depura("END DiarioPrintView::presentar", 0);
 }
 

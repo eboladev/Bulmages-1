@@ -26,6 +26,7 @@
 
 mpatrimonialview::mpatrimonialview(QWidget *parent)
         : QDialog(parent) {
+    _depura("mpatrimonialview::mpatrimonialview", 0);
     setupUi(this);
     conexionbase = NULL;
     idmpatrimonial = "";
@@ -37,6 +38,7 @@ mpatrimonialview::mpatrimonialview(QWidget *parent)
     etiquetas << tr("identificador") << tr("codigo") << tr("descripcion") << tr("tipo");
     componentessuma->setHorizontalHeaderLabels(etiquetas);
     componentesresta->setHorizontalHeaderLabels(etiquetas);
+    _depura("END mpatrimonialview::mpatrimonialview", 0);
 }
 
 
@@ -47,12 +49,15 @@ mpatrimonialview::~mpatrimonialview() {}
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */
 int mpatrimonialview::inicializa(postgresiface2 *conn) {
+    _depura("mpatrimonialview::inicializa", 0);
     conexionbase = conn;
+    _depura("END mpatrimonialview::inicializa", 0);
     return(0);
 }
 
 
 void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
+    _depura("mpatrimonialview::inicializa1", 0);
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i = 0;
     idmpatrimonial = idmpatrimonial1;
@@ -149,12 +154,14 @@ void mpatrimonialview::inicializa1(QString idmpatrimonial1) {
         cursoraux->siguienteregistro();
     } // end while
     delete cursoraux;
+    _depura("mpatrimonialview::inicializa1", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute; de agregar donde est&aacute; la suma.
 /// Tenemos que a&ntilde;dir la masa patrimonial o la cuenta a la suma.
 void mpatrimonialview::on_mui_nuevasuma_clicked() {
+    _depura("mpatrimonialview::on_mui_nuevasuma_clicked", 0);
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i;
 
@@ -202,17 +209,21 @@ void mpatrimonialview::on_mui_nuevasuma_clicked() {
         i++;
         cursoraux1->siguienteregistro();
     } // end while
+    _depura("END mpatrimonialview::on_mui_nuevasuma_clicked", 0);
 }
 
 
 void mpatrimonialview::on_mui_borrasuma_clicked() {
+    _depura("mpatrimonialview::on_mui_nuevasuma_clicked", 0);
     componentessuma->removeRow(componentessuma->currentRow());
+    _depura("END mpatrimonialview::on_mui_borrasuma_clicked", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute; de agregar donde est&aacute; la suma.
 /// Tenemos que a&ntilde;dir la masa patrimonial o la cuenta a la suma.
 void mpatrimonialview::on_mui_nuevaresta_clicked() {
+    _depura("mpatrimonialview::on_mui_nuevaresta_clicked", 0);
     QTableWidgetItem *it0, *it1, *it2, *it3;
     int i;
 
@@ -260,30 +271,38 @@ void mpatrimonialview::on_mui_nuevaresta_clicked() {
         i++;
         cursoraux1->siguienteregistro();
     } // end while
+    _depura("END mpatrimonialview::on_mui_nuevaresta_clicked", 0);
 }
 
 
 void mpatrimonialview::on_mui_borraresta_clicked() {
+    _depura("mpatrimonialview::on_mui_borraresta_clicked", 0);
     componentesresta->removeRow(componentesresta->currentRow());
+    _depura("END mpatrimonialview::on_mui_borraresta_clicked", 0);
 }
 
 
 void mpatrimonialview::on_mui_buscampatrimonial_clicked() {
+    _depura("mpatrimonialview::on_mui_buscampatrimonial_clicked", 0);
     mpatrimonialesview *nuevae = new mpatrimonialesview(0);
     nuevae->inicializa(conexionbase);
     nuevae->setmodoselector();
     nuevae->exec();
     mpatrimonial->setText(nuevae->getidmasa());
     delete nuevae;
+    _depura("END mpatrimonialview::on_mui_buscampatrimonial_clicked", 0);
 }
 
 
 void mpatrimonialview::on_mui_cancelar_clicked() {
+    _depura("mpatrimonialview::on_mui_cancelar_clicked", 0);
     close();
+    _depura("END mpatrimonialview::on_mui_cancelar_clicked", 0);
 }
 
 
 void mpatrimonialview::on_mui_aceptar_clicked() {
+    _depura("mpatrimonialview::on_mui_aceptar_clicked", 0);
     int i;
     QString query;
 
@@ -338,10 +357,12 @@ void mpatrimonialview::on_mui_aceptar_clicked() {
         conexionbase->ejecuta(query);
     } // end for
     close();
+    _depura("END mpatrimonialview::on_mui_aceptar_clicked", 0);
 }
 
 
 QString mpatrimonialview::getnommasa() {
+    _depura("mpatrimonialview::getnommasa", 0);
     return descmpatrimonial->text().toAscii();
 }
 

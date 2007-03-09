@@ -41,6 +41,7 @@ asientosview::asientosview(empresa *emp, QWidget *parent)
 
 
 void asientosview::rellenaListaEjercicio() {
+    _depura("asientosview::rellenaListaEjercicio", 0);
     /// Actualiza el contenido del combobox.
     mui_ejercicio->clear();
     mui_ejercicio->insertItem(0, tr("(todos)"));
@@ -51,6 +52,7 @@ void asientosview::rellenaListaEjercicio() {
         cur->siguienteregistro();
     } // end while
     delete cur;
+    _depura("END asientosview::rellenaListaEjercicio", 0);
 }
 
 

@@ -53,6 +53,7 @@
 void empresa::s_asiento1() {
     _depura("empresa::s_asiento1", 0);
     introapunts2->setWindowState(introapunts2->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+    _depura("empresa::s_asiento1", 0);
 }
 
 
@@ -72,7 +73,7 @@ empresa::empresa() : EmpresaBase() {
 
 
 empresa::~empresa() {
-    _depura("~empresa", 0);
+    _depura("empresa::~empresa", 0);
     if (diario) {
         delete diario;
     } // end if
@@ -97,7 +98,7 @@ empresa::~empresa() {
     if (m_listasientos) {
         delete m_listasientos;
     } // end if
-    _depura("END ~empresa", 0);
+    _depura("END empresa::~empresa", 0);
 }
 
 /// Inicializa la clase con el nombre de la base de datos y con el workspace.
@@ -184,7 +185,9 @@ void empresa::maximiza() {
 
 /// Esta funci&oacute;n abre la ventana que presenta las cuentas contables.
 int empresa::muestracuentas() {
+    _depura("empresa::muestracuentas", 0);
     m_listcuentas->show();
+    _depura("END empresa::muestracuentas", 0);
     return 0;
 }
 
@@ -517,8 +520,6 @@ int empresa::modelo347() {
     _depura("END empresa::modelo347", 0);
     return 0;
 }
-
-
 
 
 void empresa::cierraempresa() {

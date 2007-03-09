@@ -66,6 +66,7 @@ void canalview::pintar() {
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste.
 void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
+    _depura("canalview::on_mui_idcanal_valueChanged", 0);
     int idcanal1 = numcombo.toInt();
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -76,6 +77,7 @@ void canalview::on_mui_idcanal_valueChanged(QString numcombo) {
     } // end if
     idcanal = idcanal1;
     mostrarplantilla();
+    _depura("END canalview::on_mui_idcanal_valueChanged", 0);
 }
 
 

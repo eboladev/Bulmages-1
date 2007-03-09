@@ -46,11 +46,14 @@ selectcanalview::selectcanalview(empresa *emp,QWidget *parent)
 
 
 selectcanalview::~selectcanalview() {
+    _depura("selectcanalview::~selectcanalview", 0);
     delete m_iterador;
+    _depura("END selectcanalview::~selectcanalview", 0);
 }
 
 
 void selectcanalview::cargacanales() {
+    _depura("selectcanalview::cargacanales", 0);
     QMap <int, QTreeWidgetItem *> Lista;
     QTreeWidgetItem *it;
 
@@ -69,11 +72,12 @@ void selectcanalview::cargacanales() {
         it->setText(1, cursoraux1->valor("descripcion"));
         it->setText(0, cursoraux1->valor("nombre"));
         it->setCheckState(0, Qt::Unchecked);
-	it->setExpanded(TRUE);
+         it->setExpanded(TRUE);
         cursoraux1->siguienteregistro();
     } // end while
 
     delete cursoraux1;
+    _depura("END selectcanalview::cargacanales", 0);
 }
 
 
@@ -81,15 +85,17 @@ void selectcanalview::cargacanales() {
 /// Devuelve el idcanal. Si no hay ning&uacute;n canal seleccionado devuelve
 /// cero.
 int selectcanalview::firstcanal() {
+    _depura("selectcanalview::firstcanal", 0);
     delete m_iterador;
     m_iterador = new QTreeWidgetItemIterator(m_listCanales);
-
+    _depura("END selectcanalview::firstcanal", 0);
     return nextcanal();
 }
 
 
 /// Esta funci&oacute;n devuelve el siguiente canal seleccionado de la vista.
 int selectcanalview::nextcanal() {
+    _depura("selectcanalview::nextcanal", 0);
     int idcanal = 0;
     fprintf(stderr, "nextcanal\n");
     while ((**m_iterador) && idcanal == 0) {
@@ -101,11 +107,14 @@ int selectcanalview::nextcanal() {
         ++(*m_iterador);
     } // end while
 
+    _depura("END selectcanalview::nextcanal", 0);
     return idcanal;
 }
 
 
 QString selectcanalview::cadcanal() {
+    _depura("selectcanalview::cadcanal", 0);
+
     int idcanal;
     QString ccanales = "";
 
@@ -118,12 +127,14 @@ QString selectcanalview::cadcanal() {
         idcanal = nextcanal();
     } // end while
 
+    _depura("END selectcanalview::cadcanal", 0);
     return ccanales;
 }
 
 
 /// Esta funci&oacute;n devuelve el nombre de un canal determinado.
 QString selectcanalview::nomcanal() {
+    _depura("selectcanalview::nomcanal", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);
 
     if ((*m_iterador)->checkState(0) == Qt::Checked) {
@@ -134,10 +145,12 @@ QString selectcanalview::nomcanal() {
     } // end if
 
     delete *m_iterador;
+    _depura("END selectcanalview::nomcanal", 0);
 }
 
 
 void selectcanalview::on_mui_todo_clicked() {
+    _depura("selectcanalview::on_mui_todo_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);
 
     while (*m_iterador) {
@@ -146,10 +159,13 @@ void selectcanalview::on_mui_todo_clicked() {
     }
 
     delete *m_iterador;
+    _depura("END selectcanalview::on_mui_todo_clicked", 0);
 }
 
 
 void selectcanalview::on_mui_nada_clicked() {
+    _depura("selectcanalview::on_mui_nada_clicked", 0);
+
     QTreeWidgetItemIterator m_iterador(m_listCanales);
 
     while (*m_iterador) {
@@ -158,10 +174,12 @@ void selectcanalview::on_mui_nada_clicked() {
     }
 
     delete *m_iterador;
+    _depura("END selectcanalview::on_mui_nada_clicked", 0);
 }
 
 
 void selectcanalview::on_mui_invertir_clicked() {
+    _depura("selectcanalview::on_mui_invertir_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCanales);
 
     while (*m_iterador) {
@@ -169,10 +187,11 @@ void selectcanalview::on_mui_invertir_clicked() {
             (*m_iterador)->setCheckState(0, Qt::Checked);
         } else {
             (*m_iterador)->setCheckState(0, Qt::Unchecked);
-        }
+        } // end if
         ++m_iterador;
-    }
+    } // end while
 
     delete *m_iterador;
+    _depura("END selectcanalview::on_mui_invertir_clicked", 0);
 }
 

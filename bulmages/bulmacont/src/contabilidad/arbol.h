@@ -24,7 +24,7 @@
 #include <QString>
 
 #include "postgresiface2.h"
-
+#include "funcaux.h"
 
 
 /// Clase que crea una estructura en forma de arbol para almacenar el plan contable.
@@ -79,7 +79,7 @@ public:
     /// Devuelve el contenido de valor solicitado como par&aacute;metro.
     QString hojaactual(QString);
     /// Se posiciona el puntero en la hoja cuyo codigo corresponde al pasado por parametro e informa del exito o no
-    /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el máximo exigido en un balance abreviado
+    /// El segundo parametro indica a que nivel de profundidad buscar las cuentas; por defecto a 4, el mï¿½imo exigido en un balance abreviado
     bool irHoja(QString, unsigned int nivel=4);
 };
 

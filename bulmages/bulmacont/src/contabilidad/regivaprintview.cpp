@@ -35,10 +35,12 @@ extern Mod300ps *modelo;
 
 regivaprintview::regivaprintview(empresa *emp, QWidget *parent)
         : QDialog(parent) {
+    _depura("regivaprintview::regivaprintview", 0);
     setupUi(this);
     fichero = NULL;
     empresaactual = emp;
     conexionbase = emp->bdempresa();
+    _depura("END regivaprintview::regivaprintview", 0);
 }
 
 
@@ -47,6 +49,7 @@ regivaprintview::~regivaprintview() {}
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void regivaprintview::accept() {
+    _depura("regivaprintview::accept", 0);
     if (radiotexto->isChecked())
         presentar("txt");
     if (radiohtml->isChecked())
@@ -57,17 +60,21 @@ void regivaprintview::accept() {
         /// (listivaview--->modelo, en vez de regivaprintview--->modelo)
         /// modelo->exec();
     } // end if
+    _depura("END regivaprintview::accept", 0);
 }
 
 
 void regivaprintview::inicializa1(QString finicial1, QString ffinal1) {
+    _depura("regivaprintview::inicializa1", 0);
     fechainicial1->setText(finicial1);
     fechafinal1->setText(ffinal1);
+    _depura("END regivaprintview::inicializa1", 0);
 }
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void regivaprintview::presentar(char *tipus) {
+    _depura("regivaprintview::presentar", 0);
 #ifndef WIN32
     int txt, html, txtapren, htmlapren;
     int error;
@@ -317,6 +324,6 @@ void regivaprintview::presentar(char *tipus) {
     }
 
 #endif
-
+    _depura("END regivaprintview::presentar", 0);
 }
 

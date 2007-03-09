@@ -79,7 +79,7 @@ public:
     virtual void cargar(QString query);
     virtual void setcompany(postgresiface2 *c) {
         SubForm3::setcompany(c);
-	m_delegate->setcompany(c);
+        m_delegate->setcompany(c);
     };
 
 

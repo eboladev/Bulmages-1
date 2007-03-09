@@ -43,8 +43,6 @@ FichaBc::~FichaBc() {
 }
 
 
-
-
 /** Saca la ventana del workSpace.
     Este metodo es invocado desde la clase Ficha.
 */

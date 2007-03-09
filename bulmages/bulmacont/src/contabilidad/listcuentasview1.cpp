@@ -43,7 +43,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
         : Ficha(parent, flag), pgimportfiles(emp->bdempresa()) {
     _depura("listcuentasview1::listcuentasview1", 0);
     setupUi(this);
-    
+
     empresaactual = emp;
     m_modo = editmode;
     conexionbase= emp->bdempresa();
@@ -63,7 +63,7 @@ listcuentasview1::listcuentasview1(empresa *emp, QWidget *parent, Qt::WFlags fla
     cimputacion = 9;
     cgrupo = 10;
     ctipocuenta = 11;
-   
+
     ListView1->setColumnWidth(ccuenta,175);
     ListView1->setColumnWidth(cdesccuenta,400);
     ListView1->hideColumn(cidcuenta);
@@ -98,6 +98,7 @@ listcuentasview1::~listcuentasview1() {
 
 
 bool listcuentasview1::eventFilter(QObject *obj, QEvent *event) {
+    _depura("listcuentasview1::eventFilter", 0);
     return QWidget::eventFilter(obj, event);
 }
 
@@ -106,6 +107,7 @@ bool listcuentasview1::eventFilter(QObject *obj, QEvent *event) {
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */
 int listcuentasview1::inicializa() {
+    _depura("listcuentasview1::inicializa", 0);
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista1;
     int idcuenta;
@@ -162,6 +164,7 @@ int listcuentasview1::inicializa() {
     numdigitos = empresaactual->numdigitosempresa();
 
     inicializatabla();
+    _depura("END listcuentasview1::inicializa", 0);
     return 0;
 }
 
@@ -235,22 +238,23 @@ void listcuentasview1::on_ListView1_itemClicked(QTreeWidgetItem *it, int) {
 /** del QLineEdit del buscador se lanza esta funci&oacute;n que hace una b&uacute;squeda
     sobre el &aacute;rbol de cuentas. */
 void listcuentasview1::on_mui_busqueda_textChanged(const QString &string1) {
-    
+    _depura("listcuentasview1::on_mui_busqueda_textChanged", 0);
     QList<QTreeWidgetItem *> it;
     QString cod = extiendecodigo(string1, (int) numdigitos);
     it = ListView1->findItems(cod, Qt::MatchStartsWith, ccuenta);
     if (it.count() > 0) {
         ListView1->setCurrentItem(it.first());
     } else {
-	QTreeWidgetItemIterator it(ListView1);
-	QRegExp patron("^.*"+string1+".*$");
-	patron.setCaseSensitivity(Qt::CaseInsensitive);
-	while(*it){
-	    if (patron.exactMatch((*it)->text(cdesccuenta)))
-		ListView1->setCurrentItem(*it);
-	    ++it;
-	} // end while
+        QTreeWidgetItemIterator it(ListView1);
+        QRegExp patron("^.*" + string1 + ".*$");
+        patron.setCaseSensitivity(Qt::CaseInsensitive);
+        while (*it){
+            if (patron.exactMatch((*it)->text(cdesccuenta)))
+                ListView1->setCurrentItem(*it);
+            ++it;
+        } // end while
     } // end if
+    _depura("END listcuentasview1::on_mui_busqueda_textChanged", 0);
 }
 
 
@@ -338,6 +342,7 @@ void listcuentasview1::on_mui_editar_clicked()  {
 
 /// Esta funci&oacute;n es el SLOT que se activa al pulsar sobre el boton borrar cuenta.
 void listcuentasview1::on_mui_borrar_clicked() {
+    _depura("listcuentasview1::on_mui_borrar_clicked", 0);
     QTreeWidgetItem *it;
     it = ListView1->currentItem();
     if (!it) {
@@ -358,6 +363,7 @@ void listcuentasview1::on_mui_borrar_clicked() {
         } // end if
         conexionbase->commit();
     } // end if
+    _depura("END listcuentasview1::on_mui_borrar_clicked", 0);
 }
 
 

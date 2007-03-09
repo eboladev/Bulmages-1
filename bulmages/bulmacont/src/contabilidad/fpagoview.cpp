@@ -41,17 +41,20 @@ fpagoview::fpagoview(empresa *emp, QWidget *parent)
 /// El destructor de la clase guarda los datos (por si ha habido cambios) y libera
 /// la memoria que se haya ocupado. */
 fpagoview::~fpagoview() {
+    _depura("fpagoview::~fpagoview", 0);
     on_mui_guardar_clicked();
     if (m_curfpago != NULL) {
         delete m_curfpago;
     } /// end if
     empresaactual->sacaWindow(this);
+    _depura("END fpagoview::~fpagoview", 0);
 }
 
 
 /// Pinta la ventana, recarga el combo y si se pasa el par&aacute;metro muestra
 /// el identificador indicado. */
 void fpagoview::pintar(QString idfpago) {
+    _depura("fpagoview::pintar", 0);
     int posicion = 0;
     /// Vamos a inicializar el combo de los tipos de IVA.
     if (m_curfpago != NULL)
@@ -82,7 +85,6 @@ void fpagoview::pintar(QString idfpago) {
         mui_tipoPlazoPrimerPago->setText("");
         mui_plazoEntreRecibos->setText("");
         mui_tipoPlazoEntreRecibos->setText("");
-
     } else {
         mui_nombreFPago->setEnabled(TRUE);
         mui_plazoPrimerPago->setEnabled(TRUE);
@@ -93,6 +95,7 @@ void fpagoview::pintar(QString idfpago) {
 
         mostrarplantilla(posicion);
     } // end if
+    _depura("END fpagoview::pintar", 0);
 }
 
 
@@ -139,17 +142,20 @@ void fpagoview::cambiacombo(int) {
 /// IVA que se est&aacute; editando.
 /** Lo que hace es que se hace un update de todos los campos. */
 void fpagoview::on_mui_guardarFPago_clicked() {
+    _depura("fpagoview::on_mui_guardarFPago_clicked", 0);
     QString idfpago = m_curfpago->valor("idfpago", m_posactual);
     QString query = "UPDATE fpago SET nomfpago = '" + mui_nombreFPago->text() + "', nplazosfpago = " + mui_numeroPlazos->text() + " , plazoprimerpagofpago = " + mui_plazoPrimerPago->text() + ", plazoentrerecibofpago = " + mui_plazoEntreRecibos->text() + " WHERE idfpago = " + m_curfpago->valor("idfpago", m_posactual);
     empresaactual->ejecuta(query);
     dialogChanges_cargaInicial();
     pintar(m_curfpago->valor("idfpago", m_posactual));
+    _depura("END fpagoview::on_mui_guardarFPago_clicked", 0);
 }
 
 
 /// SLOT que responde a la pulsación del botón de nuevo tipo de IVA. Inserta en la tabla
 /// de IVAs.
 void fpagoview::on_mui_crearFPago_clicked() {
+    _depura("fpagoview::on_mui_crearFPago_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -166,12 +172,14 @@ void fpagoview::on_mui_crearFPago_clicked() {
     empresaactual->commit();
     pintar(cur->valor("idfpago"));
     delete cur;
+    _depura("END fpagoview::on_mui_crearFPago_clicked", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
 /** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
 void fpagoview::on_mui_borrarFPago_clicked() {
+    _depura("fpagoview::on_mui_borrarFPago_clicked", 0);
     if (mui_comboFPago->currentIndex() == -1) {
         mensajeInfo(tr("Tiene que seleccionar una forma de pago antes de borrarla"));
         return;
@@ -188,12 +196,14 @@ void fpagoview::on_mui_borrarFPago_clicked() {
             break;
         } // end switch
     } // end if
+    _depura("END fpagoview::on_mui_borrarFPago_clicked", 0);
 }
 
 
 /// Antes de salir de la ventana debemos hacer la comprobaci&oacute;n de si se ha
 /// modificado algo.
 bool fpagoview::close() {
+    _depura("fpagoview::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -202,6 +212,7 @@ bool fpagoview::close() {
                                  QMessageBox::Ok, QMessageBox::Cancel) == QMessageBox::Ok)
             on_mui_guardar_clicked();
     } // end if
+    _depura("END fpagoview::close", 0);
     return QWidget::close();
 }
 

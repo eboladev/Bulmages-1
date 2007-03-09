@@ -41,6 +41,7 @@
 #include "presupuestolist.h"
 #include "presupuestoview.h"
 
+
 /** Inicializa todos los componentes de la ventana.
     Mete la ventana en el workSpace.
 */    
@@ -57,9 +58,8 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
         m_descuentos->setcompany(comp);
         m_refalbaranp->setcompany(comp);
 
-	setListaLineas( subform2);
-	setListaDescuentos( m_descuentos);
-
+        setListaLineas(subform2);
+        setListaDescuentos(m_descuentos);
 
         m_totalBases->setReadOnly(TRUE);
         m_totalBases->setAlignment(Qt::AlignRight);

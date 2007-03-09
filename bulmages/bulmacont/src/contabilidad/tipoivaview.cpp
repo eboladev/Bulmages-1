@@ -56,6 +56,7 @@ tipoivaview::~tipoivaview() {
 /// Pinta la ventana, recarga el combo y si se pasa el parametro muestra el identificador
 /// indicado.
 void tipoivaview::pintar(QString idtipoiva) {
+    _depura("tipoivaview::pintar", 0);
     int posicion = 0;
     /// Vamos a inicializar el combo de los tipos de IVA.
     if (m_curtipoiva != NULL)
@@ -71,6 +72,7 @@ void tipoivaview::pintar(QString idtipoiva) {
         m_curtipoiva->siguienteregistro();
         i++;
     } // end while
+    _depura("END tipoivaview::pintar", 0);
 }
 
 
@@ -78,6 +80,7 @@ void tipoivaview::pintar(QString idtipoiva) {
 /** \param pos, si es distinto de cero se busca en el combo la posici&oacute;n indicada
     sino se usa la posición actual del combo. */
 void tipoivaview::mostrarplantilla(int pos) {
+    _depura("tipoivaview::mostrarplantilla", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -97,12 +100,15 @@ void tipoivaview::mostrarplantilla(int pos) {
         /// Comprobamos cual es la cadena inicial.
         dialogChanges_cargaInicial();
     } // end if
+    _depura("END tipoivaview::mostrarplantilla", 0);
 }
 
 
 /// Esta funci&oacute;n sirve para hacer el cambio sobre un centro de coste .
 void tipoivaview::on_mui_comboTipoIVA_currentIndexChanged(int) {
+    _depura("tipoivaview::on_mui_comboTipoIVA_currentIndexChanged", 0);
     mostrarplantilla();
+    _depura("END tipoivaview::on_mui_comboTipoIVA_currentIndexChanged", 0);
 }
 
 
@@ -110,19 +116,21 @@ void tipoivaview::on_mui_comboTipoIVA_currentIndexChanged(int) {
 /// que se est&aacute; editando.
 /** Lo que hace es que se hace una actualizaci&oacute;n de todos los campos. */
 void tipoivaview::on_mui_guardar2_clicked() {
+    _depura("tipoivaview::on_mui_guardar2_clicked", 0);
     QString idtipoiva = m_curtipoiva->valor("idtipoiva", m_posactual);
     QString query = "UPDATE tipoiva SET nombretipoiva = '" + m_nombreTipoIVA->text() + "', porcentajetipoiva = " + m_porcentTipoIVA->text() + " , idcuenta = id_cuenta('" + m_codigoCtaTipoIVA->text() + "') WHERE idtipoiva = " + m_curtipoiva->valor("idtipoiva", m_posactual);
     empresaactual->ejecuta(query);
     /// Comprobamos cual es la cadena inicial.
     dialogChanges_cargaInicial();
     pintar(m_curtipoiva->valor("idtipoiva", m_posactual));
+    _depura("END tipoivaview::on_mui_guardar2_clicked", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de nuevo tipo de IVA.
 /** Inserta en la tabla de IVAs. */
 void tipoivaview::on_mui_nuevo2_clicked() {
-    _depura("on_mui_nuevo2_clicked()", 10);
+    _depura("tipoivaview::on_mui_nuevo2_clicked()", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -139,14 +147,14 @@ void tipoivaview::on_mui_nuevo2_clicked() {
     empresaactual->commit();
     pintar(cur->valor("idtipoiva"));
     delete cur;
-    _depura("END on_mui_nuevo2_clicked()", 10);
+    _depura("END tipoivaview::on_mui_nuevo2_clicked()", 0);
 }
 
 
 /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de borrar un tipo de IVA.
 /** Borra en la tabla de tiposiva el TIPO de IVA concreto. */
 void tipoivaview::on_mui_borrar2_clicked() {
-    _depura("on_mui_borrar2_clicked", 10);
+    _depura("tipoivaview::on_mui_borrar2_clicked", 0);
     switch (QMessageBox::warning(this,
                                  tr("Borrar tipo de IVA"),
                                  tr("Se va a borrar el tipo de IVA. \nEsto puede ocasionar perdida de datos."),
@@ -159,7 +167,7 @@ void tipoivaview::on_mui_borrar2_clicked() {
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
         break;
     } // end switch
-    _depura("END on_mui_borrar2_clicked", 10);
+    _depura("END tipoivaview::on_mui_borrar2_clicked", 0);
 }
 
 
@@ -167,6 +175,7 @@ void tipoivaview::on_mui_borrar2_clicked() {
 /// modificado algo.
 /** Esta función está dedicada a Francina, Bienvenida al mundo. :) */
 bool tipoivaview::close() {
+    _depura("tipoivaview::close", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -176,6 +185,7 @@ bool tipoivaview::close() {
                                  QMessageBox::Cancel) == QMessageBox::Ok)
             on_mui_guardar2_clicked();
     } // end if
+    _depura("END tipoivaview::close", 0);
     return QWidget::close();
 }
 

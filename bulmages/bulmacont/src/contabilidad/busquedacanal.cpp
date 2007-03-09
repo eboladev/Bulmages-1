@@ -63,18 +63,23 @@ void BusquedaCanal::setidcanal(QString idcanal) {
 }
 
 void BusquedaCanal::m_activated(int index) {
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idcanal", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        } // end if
+    _depura("BusquedaCanal::m_activated", 0);
+    if (index > 0) {
+        emit(valueChanged(m_cursorcombo->valor("idcanal", index - 1)));
+    } else {
+        emit(valueChanged(""));
+    } // end if
+    _depura("END BusquedaCanal::m_activated", 0);
 }
 
 QString BusquedaCanal::idcanal() {
-        int index= currentIndex();
-        if (index > 0) {
-            return(m_cursorcombo->valor("idcanal", index - 1));
-        } else {
-            return "";
-        } // end if
+    _depura("BusquedaCanal::idcanal", 0);
+    int index= currentIndex();
+    if (index > 0) {
+        return(m_cursorcombo->valor("idcanal", index - 1));
+    } else {
+        return "";
+    } // end if
+    _depura("END BusquedaCanal::idcanal", 0);
 }
+

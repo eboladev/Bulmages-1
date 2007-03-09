@@ -95,41 +95,53 @@ Bulmacont::~Bulmacont() {
 
 
 void Bulmacont::initStatusBar() {
+    _depura("Bulmacont::initStatusBar", 0);
     statusBar()->showMessage(tr("Listo."));
+    _depura("END Bulmacont::initStatusBar", 0);
 }
 
 
-bool Bulmacont::eventFilter(QObject *object, QEvent *event)  {
+bool Bulmacont::eventFilter(QObject *object, QEvent *event) {
+    _depura("Bulmacont::eventFilter", 0);
     /// Standard event processing.
-    return QWidget::eventFilter( object, event );
+    return QWidget::eventFilter(object, event);
 }
 
 
 void Bulmacont::slotEditUndo()  {
+    _depura("Bulmacont::slotEditUndo", 0);
     statusBar()->showMessage(tr("Deshaciendo la ultima accion..."));
     statusBar()->showMessage(tr("Listo."));
+    _depura("END Bulmacont::slotEditUndo", 0);
 }
 
 
 void Bulmacont::slotEditCut()  {
+    _depura("Bulmacont::slotEditCut", 0);
     statusBar()->showMessage(tr("Cortando seleccion..."));
     statusBar()->showMessage(tr("Listo."));
+    _depura("EMD Bulmacont::slotEditCut", 0);
 }
 
 
 void Bulmacont::slotEditCopy()  {
+    _depura("Bulmacont::slotEditCopy", 0);
     statusBar()->showMessage(tr("Copiando la seleccion al portapapeles..."));
     statusBar()->showMessage(tr("Listo."));
+    _depura("END Bulmacont::slotEditCopy", 0);
 }
 
 
-void Bulmacont::slotEditPaste()  {
+void Bulmacont::slotEditPaste() {
+    _depura("Bulmacont::slotEditPaste", 0);
     statusBar()->showMessage(tr("Insertando el contenido del portapapeles..."));
     statusBar()->showMessage(tr("Listo."));
+    _depura("END Bulmacont::slotEditPaste", 0);
 }
 
 
 void Bulmacont::slotViewStatusBar(bool toggle)  {
+    _depura("Bulmacont::slotViewStatusBar", 0);
     statusBar()->showMessage(tr("Cambinado barra de estado..."));
     if (toggle == false) {
         statusBar()->hide();
@@ -137,10 +149,12 @@ void Bulmacont::slotViewStatusBar(bool toggle)  {
         statusBar()->show();
     } // end if
     statusBar()->showMessage(tr("Listo."));
+    _depura("END Bulmacont::slotViewStatusBar", 0);
 }
 
 
 void Bulmacont::slotViewFullScreen(bool toggle)  {
+    _depura("Bulmacont::slotViewFullScreen", 0);
     statusBar()->showMessage(tr("Cambiando a modo de pantalla completa..."));
     if (toggle == false) {
         showNormal();
@@ -148,37 +162,50 @@ void Bulmacont::slotViewFullScreen(bool toggle)  {
         showFullScreen();
     } // end if
     statusBar()->showMessage(tr("Listo."));
+    _depura("END Bulmacont::slotViewFullScreen", 0);
 }
 
 
 void Bulmacont::slotStatusHelpMsg(const QString &text) {
+    _depura("Bulmacont::slotStatusHelpMsg", 0);
     /// Change status message of whole statusbar temporary (text, msec).
     statusBar()->showMessage(text, 2000);
+    _depura("END Bulmacont::slotStatusHelpMsg", 0);
 }
 
 
-void Bulmacont::slotListadoCuentas()  {
+void Bulmacont::slotListadoCuentas() {
+    _depura("Bulmacont::slotListadoCuentas", 0);
     statusBar()->showMessage(tr("Listado de cuentas"));
+    _depura("END Bulmacont::slotListadoCuentas", 0);
 }
 
 
 void Bulmacont::slotAsientos()  {
+    _depura("Bulmacont::slotAsientos", 0);
     m_empresaactual->muestraasientos();
+    _depura("END Bulmacont::slotAsientos", 0);
 }
 
 
 void Bulmacont::slotCentrosCoste() {
+    _depura("Bulmacont::slotCentrosCoste", 0);
     m_empresaactual->ccostes();
+    _depura("END Bulmacont::slotCentrosCoste", 0);
 }
 
 
 void Bulmacont::slotCanales() {
+    _depura("Bulmacont::slotCanales", 0);
     m_empresaactual->canales();
+    _depura("END Bulmacont::slotCanales", 0);
 }
 
 
 void Bulmacont::slotCompBalance() {
+    _depura("Bulmacont::slotCompBalance", 0);
     m_empresaactual->compbalance();
+    _depura("END Bulmacont::slotCompBalance", 0);
 }
 
 
@@ -192,7 +219,7 @@ void Bulmacont::slotWindowNewWindow() {}
 
 
 void Bulmacont::closeEvent(QCloseEvent *) {
-    _depura("closeEvent", 0);
+    _depura("Bulmacont::closeEvent", 0);
     delete m_empresaactual;
 #ifdef WINDOWS
 
@@ -200,6 +227,7 @@ void Bulmacont::closeEvent(QCloseEvent *) {
 #endif
 
     delete m_pWorkspace;
+    _depura("END Bulmacont::closeEvent", 0);
 }
 
 
@@ -216,8 +244,10 @@ void Bulmacont::on_actionAyuda_triggered() {
 
 
 void Bulmacont::on_actionAcerca_de_triggered() {
+    _depura("Bulmacont::on_actionAcerca_de_triggered", 0);
     sobreview *sobre = new sobreview(0);
     sobre->exec();
+    _depura("END Bulmacont::on_actionAcerca_de_triggered", 0);
 }
 
 
@@ -225,7 +255,7 @@ void Bulmacont::on_actionAcerca_de_triggered() {
     listado de ventanas para que seleccione la ventana adecuada.
 */
 void Bulmacont::informaindexador(QWidget *w) {
-    _depura("bulmafact::informaindexador", 0);
+    _depura("Bulmacont::informaindexador", 0);
     /// No existe una ventana que activar.
     if (w == NULL) {
         m_empresaactual->deSeleccionaWindow();
@@ -236,6 +266,6 @@ void Bulmacont::informaindexador(QWidget *w) {
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf(texto.toAscii().constData());
     
-    _depura("END bulmafact::informaindexador", 0);
+    _depura("END Bulmacont::informaindexador", 0);
 }
 

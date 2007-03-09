@@ -28,30 +28,36 @@
     Establece que no hay ning&uacute;n dato recogido del XML.
     Inidca que el paso que vamos a procesar es el 0. */
 importbalance::importbalance(empresa *emp) : QXmlDefaultHandler() {
+    _depura("importbalance::importbalance", 0);
     empresaactual = emp;
     conexionbase = emp->bdempresa();
     m_tag = "";
     m_data = "";
     m_paso = 0;
+    _depura("END importbalance::importbalance", 0);
 }
 
 
 /** Dependiendo del paso en que nos encontremos hace la llamada a una funcio u a otra. */
 bool importbalance::startElement(const QString &a, const QString &b, const QString &c, const QXmlAttributes &d) {
+    _depura("importbalance::startElement", 0);
     if (m_paso == 0) {
         return startElement1(a, b, c, d);
     } else {
         return startElement2(a, b, c, d);
     } // end if
+    _depura("END importbalance::startElement", 0);
 }
 
 /// Dependiendo del paso en que nos encontremos hace la llamada a una función u a otra.
 bool importbalance::endElement(const QString &a, const QString &b, const QString &c) {
+    _depura("importbalance::endlement", 0);
     if (m_paso == 0) {
         return endElement1 (a, b, c);
     } else {
         return endElement2 (a, b, c);
     } // end if
+    _depura("END importbalance::startElement", 0);
 }
 
 
@@ -64,6 +70,7 @@ bool importbalance::endElement(const QString &a, const QString &b, const QString
     \param qName el nombre del tag que se ha encontrado.
     \return TRUE para no detener la ejecución del parser en caso de error. */
 bool importbalance::startElement1(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
+    _depura("importbalance::startElement1", 0);
     m_tag = qName;
     QString SQLQuery;
     if (m_tag == "balance") {
@@ -90,6 +97,7 @@ bool importbalance::startElement1(const QString&, const QString&, const QString&
         } // end if
         delete cur;
     } // end if
+    _depura("END importbalance::startElement1", 0);
     return TRUE;
 }
 
@@ -106,6 +114,7 @@ bool importbalance::startElement1(const QString&, const QString&, const QString&
     \param qName El nombre del tag cerrado.
     \return TRUE para no detener la ejecución del parser SAX. */
 bool importbalance::endElement1(const QString&, const QString&, const QString& qName) {
+    _depura("importbalance::endElement1", 0);
     m_tag = qName;
     QString SQLQuery;
     if (qName == "balance") {
@@ -155,6 +164,7 @@ bool importbalance::endElement1(const QString&, const QString&, const QString& q
     } // end if
     m_tag = "";
     m_data = "";
+    _depura("END importbalance::endElement1", 0);
     return TRUE;
 }
 
@@ -165,7 +175,9 @@ bool importbalance::endElement1(const QString&, const QString&, const QString& q
     \param qName el nombre del tag abierto.
     \return TRUE para no detener la ejecuci&oacute;n del algoritmo. */
 bool importbalance::startElement2(const QString&, const QString&, const QString &qName, const QXmlAttributes&) {
+    _depura("importbalance::startElement2", 0);
     m_tag = qName;
+    _depura("END importbalance::startElement2", 0);
     return TRUE;
 }
 
@@ -177,6 +189,7 @@ bool importbalance::startElement2(const QString&, const QString&, const QString 
     \param qName contiene el valor del tag que se acaba de cerrar.
     \return TRUE para no detener nunca la ejecución del algoritmo.  */
 bool importbalance::endElement2(const QString&, const QString&, const QString &qName) {
+    _depura("importbalance::endElement2", 0);
     m_tag = qName;
     QString SQLQuery;
     /// En el segundo paso se hacen las inserciones por el flanco de final en lugar de por
@@ -272,6 +285,7 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
     } // end if
     m_tag="";
     m_data="";
+    _depura("END importbalance::endElement2", 0);
     return TRUE;
 }
 
@@ -282,10 +296,12 @@ bool importbalance::endElement2(const QString&, const QString&, const QString &q
     \param ch El valor del tag abierto.
     \return TRUE porque no nos interesa abortar la ejecución del algoritmo. */
 bool importbalance::characters(const QString& ch) {
+    _depura("importbalance::characters", 0);
     if (m_tag != "") {
         m_data =ch;
         m_tvalores[m_tag] = m_data;
     } // end if
+    _depura("END importbalance::characters", 0);
     return TRUE;
 }
 

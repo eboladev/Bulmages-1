@@ -24,6 +24,7 @@
 
 cuentaview::cuentaview(empresa *emp, QWidget *parent, Qt::WFlags fl)
         : Ficha(parent, fl) {
+    _depura("cuentaview::cuentaview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
     idcuenta = 0;
@@ -33,11 +34,13 @@ cuentaview::cuentaview(empresa *emp, QWidget *parent, Qt::WFlags fl)
     inicializa();
     dialogChanges_cargaInicial();
     empresaactual->meteWindow(windowTitle(), this);
+    _depura("END cuentaview::cuentaview", 0);
 }
 
 
 /// Saca el formulario, crea una cuenta y devuelve su identificador.
 void cuentaview::cuentanueva(QString cod) {
+    _depura("cuentaview::cuentanueva", 0);
     codigo->setText(cod);
     /// Vamos a buscar el posible padre de una cuenta y lo pondremos como toca.
     QString cpadre = conexionbase->searchParent(cod);
@@ -107,16 +110,20 @@ void cuentaview::cuentanueva(QString cod) {
         combogrupos->setCurrentIndex(i);
         delete cur;
     } // end if
+    _depura("END cuentaview::cuentanueva", 0);
 }
 
 
 cuentaview::~cuentaview() {
+    _depura("cuentaview::~cuentaview", 0);
     empresaactual->sacaWindow(this);
+    _depura("cuentaview::~cuentaview", 0);
 }
 
 
 /// Esta funci&oacute;n se activa cada vez que se pulsa una tecla sobre la cuenta.
 void cuentaview::cambiapadre(const QString &cadena) {
+    _depura("cuentaview::cambiapadre", 0);
     QString cad;
     cursor2 *cursoraux;
     cad = codigopadre->text();
@@ -135,6 +142,7 @@ void cuentaview::cambiapadre(const QString &cadena) {
     } // end if
     /// Para quitar el warning.
     cadena.isNull();
+    _depura("END cuentaview::cambiapadre", 0);
 }
 
 
@@ -162,6 +170,7 @@ void cuentaview::closeEvent(QCloseEvent *e) {
 
 
 int cuentaview::inicializa() {
+    _depura("cuentaview::inicializa", 0);
     cursor2 *cursorgrupos;
     for (int i = 0; i < 100; i++) {
         idgrupos[i] = -1;
@@ -176,10 +185,12 @@ int cuentaview::inicializa() {
     } // end while
     delete cursorgrupos;
     return 0;
+    _depura("END cuentaview::inicializa", 0);
 }
 
 
 int cuentaview::cargacuenta(int idcuenta1) {
+    _depura("cuentaview::cargacuenta", 0);
     QString cadena;
     int cpadre;
     cursor2 *cursorcuenta, *cursorpadre;
@@ -277,10 +288,12 @@ int cuentaview::cargacuenta(int idcuenta1) {
     dialogChanges_cargaInicial();
 
     return 0;
+    _depura("END cuentaview::cargacuenta", 0);
 }
 
 
 int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
+    _depura("cuentaview::nuevacuenta", 0);
     /// Suponiendo que las cuentas son num&eacute;ricas, al crear una nueva cuenta
     /// buscamos entre las que ser&aacute;n sus hermanas y le asignamos el n&uacute;mero
     /// siguiente que le corresponda.
@@ -332,14 +345,17 @@ int cuentaview::nuevacuenta(QString codpadre, int idgrupo) {
     if (idgrupos[i] == idgrupo)
         combogrupos->setCurrentIndex(i);
     return 0;
+    _depura("END cuentaview::nuevacuenta", 0);
 }
 
 /// Esta funci&oacute;n se dispara cuando se ha pulsado
 /// return sobre el bot&oacute;n del c&oacute;digo.
 void cuentaview::codigo_ret() {
+    _depura("cuentaview::codigo_ret", 0);
     QString cod = codigo->text();
     cod = extiendecodigo(cod, numdigitos);
     codigo->setText(cod);
+    _depura("END cuentaview::codigo_ret", 0);
 }
 
 
@@ -423,10 +439,12 @@ void cuentaview::guardarCuenta() {
     } // end if
     /// Estamos probando la nueva forma de almacenar cambios.
     dialogChanges_cargaInicial();
+    _depura("END cuentaview::guardarCuenta", 0);
 }
 
 
 void cuentaview::borrarCuenta() {
+    _depura("cuentaview::borrarCuenta", 0);
     switch (QMessageBox::warning(this,
                                  tr("Borrar cuenta"),
                                  tr("Se va a borrar la cuenta,\nEsto puede ocasionar perdida de datos\nTal vez deberia pensarselo mejor antes\nporque igual su trabajo se pierde."),
@@ -438,5 +456,6 @@ void cuentaview::borrarCuenta() {
     case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
         break;
     } // end switch
+    _depura("cuentaview::borrarCuenta", 0);
 }
 

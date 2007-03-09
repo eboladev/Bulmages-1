@@ -36,329 +36,377 @@
 #endif
 
 
-CAnualesPrintView::CAnualesPrintView(empresa *emp, QWidget *parent)
-        : QDialog(parent) {
-    _depura("CAnualesPrintView::CAnualesPrintView", 0);
-    setupUi(this);
+CAnualesPrintView::CAnualesPrintView ( empresa *emp, QWidget *parent )
+        : QDialog ( parent )
+{
+    _depura ( "CAnualesPrintView::CAnualesPrintView", 0 );
+    setupUi ( this );
     empresaactual = emp;
     fichero = NULL;
-    _depura("END CAnualesPrintView::CAnualesPrintView", 0);
+    _depura ( "END CAnualesPrintView::CAnualesPrintView", 0 );
 
 }
 
 
-CAnualesPrintView::~CAnualesPrintView() {
-    _depura("CAnualesPrintView::~CAnualesPrintView", 0);
-    _depura("END CAnualesPrintView::~CAnualesPrintView", 0);
+CAnualesPrintView::~CAnualesPrintView()
+{
+    _depura ( "CAnualesPrintView::~CAnualesPrintView", 0 );
+    _depura ( "END CAnualesPrintView::~CAnualesPrintView", 0 );
 }
 
 
 ///Se ha pulsado sobre el bot&oacute;n de aceptar del formulario con lo que podemosÂº
 /// pasar a hacer la impresi&oacute;n.
 /** PSEUDICODIGO
-	Ponemos todos los valores de las cuentas.
-	Mientras haya sustituciones
-		Para cada una de las formulas
-			Si la formula no esta completa
-				Sustituye todos los valores que se puedan sustituir
-				Intenta Completar la formula
-			FSi
-		FPara
-	FMientras */
-void CAnualesPrintView::on_mui_aceptar_clicked() {
-    _depura("CAnualesPrintView::on_mui_aceptar_clicked", 0);
+    Ponemos todos los valores de las cuentas.
+    Mientras haya sustituciones
+        Para cada una de las formulas
+            Si la formula no esta completa
+                Sustituye todos los valores que se puedan sustituir
+                Intenta Completar la formula
+            FSi
+        FPara
+    FMientras */
+void CAnualesPrintView::on_mui_aceptar_clicked()
+{
+    _depura ( "CAnualesPrintView::on_mui_aceptar_clicked", 0 );
     QString finicial = mui_fechainicial->text();
     QString ffinal = mui_fechafinal->text();
     QString finicial1 = mui_fechainicial1->text();
     QString ffinal1 = mui_fechafinal1->text();
-    if (finicial1 == "") {
-	finicial1 = finicial;
+    if ( finicial1 == "" )
+    {
+        finicial1 = finicial;
     } // end if
-    if (ffinal1 == "") {
-	ffinal1 = ffinal;
+    if ( ffinal1 == "" )
+    {
+        ffinal1 = ffinal;
     }
-    if (finicial == "" || ffinal == "") {
+    if ( finicial == "" || ffinal == "" )
+    {
         return;
     } // end if
 
-    
-/** Versión sin ARBOL
-    
-    /// Ponemos todos los valores de las cuentas. Hacemos la carga.
-    QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
-    for (int i = 0; i < lcuentas.count(); i++) {
-        QDomNode cuenta = lcuentas.item(i);
-        QDomElement e1 = cuenta.toElement(); /// try to convert the node to an element.
-        if( !e1.isNull() ) { /// the node was really an element.
-            /// Este es el c&aacute;lculo de los saldos para la cuenta.
-            QString query = "SELECT saldototal('" + e1.text() + "','" + finicial + "','" + ffinal + "') AS valoract, saldototal('" + e1.text() + "','" + finicial1 + "','" + ffinal1 + "') AS valorant";
-            cursor2 *cur = empresaactual->cargacursor(query);
-            if (!cur->eof()) {
-                QString valoract = cur->valor("valoract");
-                QString valorant = cur->valor("valorant");
-                QDomNode c = e1.parentNode();
-                agregaValores(c, valoract, valorant);
+
+    /** Versiï¿½ sin ARBOL
+
+        /// Ponemos todos los valores de las cuentas. Hacemos la carga.
+        QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
+        for (int i = 0; i < lcuentas.count(); i++) {
+            QDomNode cuenta = lcuentas.item(i);
+            QDomElement e1 = cuenta.toElement(); /// try to convert the node to an element.
+            if( !e1.isNull() ) { /// the node was really an element.
+                /// Este es el c&aacute;lculo de los saldos para la cuenta.
+                QString query = "SELECT saldototal('" + e1.text() + "','" + finicial + "','" + ffinal + "') AS valoract, saldototal('" + e1.text() + "','" + finicial1 + "','" + ffinal1 + "') AS valorant";
+                cursor2 *cur = empresaactual->cargacursor(query);
+                if (!cur->eof()) {
+                    QString valoract = cur->valor("valoract");
+                    QString valorant = cur->valor("valorant");
+                    QDomNode c = e1.parentNode();
+                    agregaValores(c, valoract, valorant);
+                } // end if
+                delete cur;
             } // end if
-            delete cur;
-        } // end if
-    } // end for
-    
-**/
-    
-/** Versión con ARBOL: más rollo de codígo pero muuuucho mas eficiente **/
-    
+        } // end for
+
+    **/
+
+    /** Versiï¿½ con ARBOL: mï¿½ rollo de codï¿½o pero muuuucho mas eficiente **/
+
     /// Vamos a crear un &aacute;rbol en la mem&oacute;ria din&aacute;mica con
     /// los distintos niveles de cuentas.
-    
+
     // Primero, averiguaremos la cantidad de ramas iniciales (tantos como
     // n&uacute;mero de cuentas de nivel 2) y las vamos creando.
     empresaactual->begin();
     QString query = "SELECT *, nivel(codigo) AS nivel FROM cuenta ORDER BY codigo";
     cursor2 *ramas;
-    ramas = empresaactual->cargacursor(query, "Ramas");
+    ramas = empresaactual->cargacursor ( query, "Ramas" );
     Arbol *arbolP1, *arbolP2; // un arbol por cada periodo
     arbolP1 = new Arbol;
     arbolP2 = new Arbol;
-    while (!ramas->eof()) {
-	if (atoi(ramas->valor("nivel").toAscii().constData()) == 2) { /// Cuenta ra&iacute;z.
-	    arbolP1->nuevarama(ramas);
-	    arbolP2->nuevarama(ramas);
-	} // end if
-	ramas->siguienteregistro();
+    while ( !ramas->eof() )
+    {
+        if ( atoi ( ramas->valor ( "nivel" ).toAscii().constData() ) == 2 )
+        { /// Cuenta ra&iacute;z.
+            arbolP1->nuevarama ( ramas );
+            arbolP2->nuevarama ( ramas );
+        } // end if
+        ramas->siguienteregistro();
     } // end while
-    arbolP1->inicializa(ramas);
-    arbolP2->inicializa(ramas);    
+    arbolP1->inicializa ( ramas );
+    arbolP2->inicializa ( ramas );
     delete ramas;
-    
+
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 1.
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' AND conceptocontable NOT SIMILAR TO 'Asiento de Regularizaci%' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     cursor2 *hojas;
-    hojas = empresaactual->cargacursor(query, "Periodo1");
+    hojas = empresaactual->cargacursor ( query, "Periodo1" );
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
-    while (!hojas->eof()) {
-	arbolP1->actualizahojas(hojas);
-	hojas->siguienteregistro();
+    while ( !hojas->eof() )
+    {
+        arbolP1->actualizahojas ( hojas );
+        hojas->siguienteregistro();
     } // end while
-    
+
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 2.
     query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' AND conceptocontable NOT SIMILAR TO 'Asiento de Regularizaci%' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
-    hojas = empresaactual->cargacursor(query, "Periodo2");
+    hojas = empresaactual->cargacursor ( query, "Periodo2" );
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
-    while (!hojas->eof()) {
-	arbolP2->actualizahojas(hojas);
-	hojas->siguienteregistro();
+    while ( !hojas->eof() )
+    {
+        arbolP2->actualizahojas ( hojas );
+        hojas->siguienteregistro();
     } // end while
     delete hojas;
-    
-    QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
-    for (int i = 0; i < lcuentas.count(); i++) {
-	QDomNode cuenta = lcuentas.item(i);
+
+    QDomNodeList lcuentas = m_doc.elementsByTagName ( "CUENTA" );
+    for ( int i = 0; i < lcuentas.count(); i++ )
+    {
+        QDomNode cuenta = lcuentas.item ( i );
         QDomElement e1 = cuenta.toElement();
-	QString valorP1, valorP2;
-	Fixed valor = Fixed("0.0");
-	if( !e1.isNull() ) {
-	    if(arbolP1->irHoja(e1.text())) {
-		valor = Fixed(arbolP1->hojaactual("saldoant"));
-		valor = valor + Fixed(arbolP1->hojaactual("saldo"));
-	    } else {
-		valor = Fixed("0.0");
-	    }
-	    valorP1 = valor.toQString();
-	    if(arbolP2->irHoja(e1.text())) {
-		valor = Fixed(arbolP2->hojaactual("saldoant"));
-		valor = valor + Fixed(arbolP2->hojaactual("saldo"));
-	    } else {
-		valor = Fixed("0.0");
-	    }
-	    valorP2 = valor.toQString();
-	    QDomNode c = e1.parentNode();
-	    agregaValores(c, valorP1, valorP2);
-	} // end if
+        QString valorP1, valorP2;
+        Fixed valor = Fixed ( "0.0" );
+        if ( !e1.isNull() )
+        {
+            if ( arbolP1->irHoja ( e1.text() ) )
+            {
+                valor = Fixed ( arbolP1->hojaactual ( "saldoant" ) );
+                valor = valor + Fixed ( arbolP1->hojaactual ( "saldo" ) );
+            }
+            else
+            {
+                valor = Fixed ( "0.0" );
+            } // end if
+            valorP1 = valor.toQString();
+            if ( arbolP2->irHoja ( e1.text() ) )
+            {
+                valor = Fixed ( arbolP2->hojaactual ( "saldoant" ) );
+                valor = valor + Fixed ( arbolP2->hojaactual ( "saldo" ) );
+            }
+            else
+            {
+                valor = Fixed ( "0.0" );
+            } // end if
+            valorP2 = valor.toQString();
+            QDomNode c = e1.parentNode();
+            agregaValores ( c, valorP1, valorP2 );
+        } // end if
     } // end for
-    
+
     /// Eliminamos el &aacute;rbol y cerramos la conexi&oacute;n con la BD.
     delete arbolP1;
     delete arbolP2;
     empresaactual->commit();
-    
-/** Fin de la versión con ARBOL **/
+
+    /** Fin de la versiï¿½ con ARBOL **/
 
     /// HAcemos el calculo recursivo del balance.
     bool terminado = FALSE;
-    while (!terminado) {
+    while ( !terminado )
+    {
         terminado = TRUE;
         /// Recogemos los valores de cuenta.
-        QDomNodeList litems = m_doc.elementsByTagName("FORMULA");
-        for (int i = 0; i < litems.count(); i++) {
-            QDomNode item = litems.item(i);
+        QDomNodeList litems = m_doc.elementsByTagName ( "FORMULA" );
+        for ( int i = 0; i < litems.count(); i++ )
+        {
+            QDomNode item = litems.item ( i );
             QDomElement e1 = item.toElement(); /// Try to convert the node to an element.
-            if( !e1.isNull() ) { /// The node was really an element.
-                terminado &= procesaFormula(item);
+            if ( !e1.isNull() )
+            { /// The node was really an element.
+                terminado &= procesaFormula ( item );
             } // end if
         } // end for
     } // end while
 
     /// Una vez que tenemos el objeto bien generado y a punto pasamos a la generacion del PDF.
-    imprimir(finicial, ffinal, finicial1, ffinal1);
-    _depura("END CAnualesPrintView::on_mui_aceptar_clicked", 0);
+    imprimir ( finicial, ffinal, finicial1, ffinal1 );
+    _depura ( "END CAnualesPrintView::on_mui_aceptar_clicked", 0 );
 }
 
 
-bool CAnualesPrintView::procesaFormula(const QDomNode &formula) {
-    _depura ("CAnualesPrintView::procesaFormula", 0);
-    QDomElement valor = formula.firstChildElement("VALORACT");
+bool CAnualesPrintView::procesaFormula ( const QDomNode &formula )
+{
+    _depura ( "CAnualesPrintView::procesaFormula", 0 );
+    QDomElement valor = formula.firstChildElement ( "VALORACT" );
     //
     QString valors = valor.toElement().text();
-    QString codigo = formula.parentNode().firstChildElement("CONCEPTO").toElement().text();
+    QString codigo = formula.parentNode().firstChildElement ( "CONCEPTO" ).toElement().text();
     //
-    if (!valor.isNull()) {
+    if ( !valor.isNull() )
+    {
         return TRUE;
     } // end if
-    Fixed tvaloract = Fixed("0.0");
-    Fixed tvalorant = Fixed("0.0");
+    Fixed tvaloract = Fixed ( "0.0" );
+    Fixed tvalorant = Fixed ( "0.0" );
     QDomElement formula3 = formula.toElement();
-    QDomNodeList litems = formula3.elementsByTagName("OPERADOR");
-    for (int i = 0; i < litems.count(); i++) {
-        QDomNode item = litems.item(i);
+    QDomNodeList litems = formula3.elementsByTagName ( "OPERADOR" );
+    for ( int i = 0; i < litems.count(); i++ )
+    {
+        QDomNode item = litems.item ( i );
         QDomElement e1 = item.toElement(); /// Try to convert the node to an element.
-        if( !e1.isNull() ) { /// The node was really an element.
-            if (!procesaOperador(item) )
+        if ( !e1.isNull() )
+        { /// The node was really an element.
+            if ( !procesaOperador ( item ) )
                 return FALSE;
             QString valoract, valorant;
-            if (valorItem(item, valoract, valorant)) {
-                tvaloract = tvaloract + Fixed(valoract);
-                tvalorant = tvalorant + Fixed(valorant);
-            } else
+            if ( valorItem ( item, valoract, valorant ) )
+            {
+                tvaloract = tvaloract + Fixed ( valoract );
+                tvalorant = tvalorant + Fixed ( valorant );
+            }
+            else
                 return FALSE;
         } // end if
     } // end for
     QString tvaloracts = tvaloract.toQString();
     QString tvalorants = tvalorant.toQString();
-    agregaValores(formula, tvaloracts, tvalorants);
-    _depura ("END CAnualesPrintView::procesaFormula", 0);
+    agregaValores ( formula, tvaloracts, tvalorants );
+    _depura ( "END CAnualesPrintView::procesaFormula", 0 );
     return TRUE;
 }
 
 /** Pseudocodigo
-	Si el operador ya tiene valor (devuelve TRUE)
-	Si la formula ya tiene valor le ponemos el valor y devuelve TRUE
-	devuelve FALSe */
-bool CAnualesPrintView::procesaOperador(const QDomNode &operador) {
-    _depura("CAnualesPrintView::procesaOperador", 0, operador.toElement().text());
-    QDomElement valor = operador.firstChildElement("VALORACT");
-    if (!valor.isNull())
+    Si el operador ya tiene valor (devuelve TRUE)
+    Si la formula ya tiene valor le ponemos el valor y devuelve TRUE
+    devuelve FALSe */
+bool CAnualesPrintView::procesaOperador ( const QDomNode &operador )
+{
+    _depura ( "CAnualesPrintView::procesaOperador", 0, operador.toElement().text() );
+    QDomElement valor = operador.firstChildElement ( "VALORACT" );
+    if ( !valor.isNull() )
         return TRUE;
     /// Miramos la f&oacute;rmula.
-    QDomElement lineaid = operador.firstChildElement("LINEAID");
+    QDomElement lineaid = operador.firstChildElement ( "LINEAID" );
 
-    if (!lineaid.isNull()) {
-        QDomNodeList litems = m_doc.elementsByTagName("ID");
-        for (int i = 0; i < litems.count(); i++) {
-            QDomNode item = litems.item(i);
+    if ( !lineaid.isNull() )
+    {
+        QDomNodeList litems = m_doc.elementsByTagName ( "ID" );
+        for ( int i = 0; i < litems.count(); i++ )
+        {
+            QDomNode item = litems.item ( i );
             QDomElement e1 = item.toElement(); /// Try to convert the node to an element.
-            if( !e1.isNull() ) { /// The node was really an element.
-                if (e1.text() == lineaid.text()) {
+            if ( !e1.isNull() )
+            { /// The node was really an element.
+                if ( e1.text() == lineaid.text() )
+                {
                     /// Este item es la f&oacute;rmula referenciada.
-                    QDomNode formula = item.parentNode().firstChildElement("FORMULA");
+                    QDomNode formula = item.parentNode().firstChildElement ( "FORMULA" );
                     QString valoract, valorant;
-                    if (valorItem(formula, valoract, valorant)) {
-                        agregaValores(operador, valoract, valorant);
+                    if ( valorItem ( formula, valoract, valorant ) )
+                    {
+                        agregaValores ( operador, valoract, valorant );
                         return TRUE;
-                    } else {
+                    }
+                    else
+                    {
                         return FALSE;
                     } // end if
                 } // end if
             } // end if
         } // end for
     } // end if
-    _depura("CAnualesPrintView::procesaOperador", 0);
+    _depura ( "CAnualesPrintView::procesaOperador", 0 );
     return FALSE;
 }
 
 
-bool CAnualesPrintView::valorItem(const QDomNode &formula, QString &valoract, QString &valorant) {
-    _depura("CAnualesPrintView::valorItem", 0, formula.toElement().tagName());
-    QDomElement valor = formula.namedItem("VALORACT").toElement();
-    if (valor.isNull())  {
+bool CAnualesPrintView::valorItem ( const QDomNode &formula, QString &valoract, QString &valorant )
+{
+    _depura ( "CAnualesPrintView::valorItem", 0, formula.toElement().tagName() );
+    QDomElement valor = formula.namedItem ( "VALORACT" ).toElement();
+    if ( valor.isNull() )
+    {
         return FALSE;
     } // end if
     valoract = valor.text();
-    valorant = formula.namedItem("VALORANT").toElement().text();
-    _depura("END CAnualesPrintView::valorItem", 0, formula.toElement().text() + "--" + valoract);
+    valorant = formula.namedItem ( "VALORANT" ).toElement().text();
+    _depura ( "END CAnualesPrintView::valorItem", 0, formula.toElement().text() + "--" + valoract );
     return TRUE;
 }
 
 
-void CAnualesPrintView::agregaValores(const QDomNode &nodo, const QString &valoract, const QString &valorant) {
-    _depura("CAnualesPrintView::agregaValores", 0, nodo.toElement().tagName() + " " + valoract);
+void CAnualesPrintView::agregaValores ( const QDomNode &nodo, const QString &valoract, const QString &valorant )
+{
+    _depura ( "CAnualesPrintView::agregaValores", 0, nodo.toElement().tagName() + " " + valoract );
     QDomElement enodo = nodo.toElement();
-    Fixed fvaloract(valoract);
-    Fixed fvalorant(valorant);
+    Fixed fvaloract ( valoract );
+    Fixed fvalorant ( valorant );
     /// Miramos las opciones pasadas
-    if(nodo.nodeName() == QString("OPERADOR")) {
-	QDomNodeList opcs = enodo.elementsByTagName("OPCIONES");
-	for (int i = 0; i < opcs.count(); i++) {
-	    QDomElement op = opcs.item(i).toElement();
-	    QString opciones = op.text();
-	    if (opciones == "POSITIVO") {
-		if (fvaloract < 0)
-		    fvaloract = fvaloract * -1;
-		if (fvalorant < 0)
-		    fvalorant = fvalorant * -1;
-	    } // end if
-	    if (opciones == "NEGATIVO") {
-		if (fvaloract > 0)
-		    fvaloract = fvaloract * -1;
-		if (fvalorant > 0)
-		    fvalorant = fvalorant * -1;
-	    } // end if
-	    if (opciones == "RESTAR") {
-		fvaloract = fvaloract * -1;
-		fvalorant = fvalorant * -1;
-	    } // end if
-	} // end for
-    } 
-    else {
-	QDomNodeList opcs = nodo.parentNode().toElement().elementsByTagName("OPCIONES");
-	for (int i = 0; i < opcs.count(); i++) {
-	    QDomElement op = opcs.item(i).toElement();
-	    QString opciones = op.text();
-	    if (opciones == "MAYORCERO") {
-		if (fvaloract < 0)
-		    fvaloract = 0;
-		if (fvalorant < 0)
-		    fvalorant = 0;
-	    } // end if
-	    if (opciones == "MENORCERO") {
-		if (fvaloract > 0)
-		    fvaloract = 0;
-		if (fvalorant > 0)
-		    fvalorant = 0;
-	    } // end if
-	} // end for
+    if ( nodo.nodeName() == QString ( "OPERADOR" ) )
+    {
+        QDomNodeList opcs = enodo.elementsByTagName ( "OPCIONES" );
+        for ( int i = 0; i < opcs.count(); i++ )
+        {
+            QDomElement op = opcs.item ( i ).toElement();
+            QString opciones = op.text();
+            if ( opciones == "POSITIVO" )
+            {
+                if ( fvaloract < 0 )
+                    fvaloract = fvaloract * -1;
+                if ( fvalorant < 0 )
+                    fvalorant = fvalorant * -1;
+            } // end if
+            if ( opciones == "NEGATIVO" )
+            {
+                if ( fvaloract > 0 )
+                    fvaloract = fvaloract * -1;
+                if ( fvalorant > 0 )
+                    fvalorant = fvalorant * -1;
+            } // end if
+            if ( opciones == "RESTAR" )
+            {
+                fvaloract = fvaloract * -1;
+                fvalorant = fvalorant * -1;
+            } // end if
+        } // end for
+    }
+    else
+    {
+        QDomNodeList opcs = nodo.parentNode().toElement().elementsByTagName ( "OPCIONES" );
+        for ( int i = 0; i < opcs.count(); i++ )
+        {
+            QDomElement op = opcs.item ( i ).toElement();
+            QString opciones = op.text();
+            if ( opciones == "MAYORCERO" )
+            {
+                if ( fvaloract < 0 )
+                    fvaloract = 0;
+                if ( fvalorant < 0 )
+                    fvalorant = 0;
+            } // end if
+            if ( opciones == "MENORCERO" )
+            {
+                if ( fvaloract > 0 )
+                    fvaloract = 0;
+                if ( fvalorant > 0 )
+                    fvalorant = 0;
+            } // end if
+        } // end for
     } // end if
-    QDomElement valoract1 = m_doc.createElement("VALORACT");
-    valoract1.setTagName("VALORACT");
-    QDomText etx = m_doc.createTextNode(fvaloract.toQString());
-    valoract1.appendChild(etx);
-    QDomElement valorant1 = m_doc.createElement("VALORANT");
-    valorant1.setTagName("VALORANT");
-    QDomText etc = m_doc.createTextNode(fvalorant.toQString());
-    valorant1.appendChild(etc);
+    QDomElement valoract1 = m_doc.createElement ( "VALORACT" );
+    valoract1.setTagName ( "VALORACT" );
+    QDomText etx = m_doc.createTextNode ( fvaloract.toQString() );
+    valoract1.appendChild ( etx );
+    QDomElement valorant1 = m_doc.createElement ( "VALORANT" );
+    valorant1.setTagName ( "VALORANT" );
+    QDomText etc = m_doc.createTextNode ( fvalorant.toQString() );
+    valorant1.appendChild ( etc );
     QDomNode n = nodo;
-    enodo.appendChild(valoract1);
-    enodo.appendChild(valorant1);
-    _depura("END CAnualesPrintView::agregaValores", 0);
+    enodo.appendChild ( valoract1 );
+    enodo.appendChild ( valorant1 );
+    _depura ( "END CAnualesPrintView::agregaValores", 0 );
 }
 
 
-void CAnualesPrintView::imprimir(QString periodo1finicial, QString periodo1ffinal, QString periodo2finicial, QString periodo2ffinal) {
-    _depura("CAnualesPrintView::imprimir", 0);
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "canuales.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "canuales.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
+void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffinal, QString periodo2finicial, QString periodo2ffinal )
+{
+    _depura ( "CAnualesPrintView::imprimir", 0 );
+    QString archivo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "canuales.rml";
+    QString archivod = confpr->valor ( CONF_DIR_USER ) + "canuales.rml";
+    QString archivologo = confpr->valor ( CONF_DIR_OPENREPORTS ) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
 
@@ -368,32 +416,33 @@ void CAnualesPrintView::imprimir(QString periodo1finicial, QString periodo1ffina
     archivo = "cp " + archivo + " " + archivod;
 #endif
 
-    system(archivo.toAscii().constData());
+    system ( archivo.toAscii().constData() );
     /// Copiamos el logo.
 #ifdef WINDOWS
 
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "copy " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #else
 
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
+    archivologo = "cp " + archivologo + " " + confpr->valor ( CONF_DIR_USER ) + "logo.jpg";
 #endif
 
-    system(archivologo.toAscii().constData());
+    system ( archivologo.toAscii().constData() );
     QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
+    file.setFileName ( archivod );
+    file.open ( QIODevice::ReadOnly );
+    QTextStream stream ( &file );
     QString buff = stream.readAll();
     file.close();
     QString fitxersortidatxt;
     fitxersortidatxt = "";
 
     /// Iteramos para cada componente del listado.
-    QDomNodeList componentes = m_doc.elementsByTagName("COMPONENTE");
-    for (int j = 0; j < componentes.count(); j++) {
-        QDomElement comp = componentes.item(j).toElement();
+    QDomNodeList componentes = m_doc.elementsByTagName ( "COMPONENTE" );
+    for ( int j = 0; j < componentes.count(); j++ )
+    {
+        QDomElement comp = componentes.item ( j ).toElement();
         /// Escribimos el titulo del componente
-        QString debeohaber = comp.namedItem("SUBTITULO").toElement().text();
+        QString debeohaber = comp.namedItem ( "SUBTITULO" ).toElement().text();
         fitxersortidatxt += "" + debeohaber + "\n";
         /// Cogemos los elementos del componente y los ponemos en forma de tabla.
         fitxersortidatxt += "<blockTable style=\"tabla\" repeatRows=\"1\" colWidths=\"12cm,3cm,3cm\">\n";
@@ -401,15 +450,17 @@ void CAnualesPrintView::imprimir(QString periodo1finicial, QString periodo1ffina
         fitxersortidatxt += "<td><para style=\"periodo\">Periodo:</para><para style=\"periodo\">" + periodo1finicial + " ~ " + periodo1ffinal + "</para></td>\n";
         fitxersortidatxt += "<td><para style=\"periodo\">Periodo:</para><para style=\"periodo\">" + periodo2finicial + " ~ " + periodo2ffinal + "</para></td></tr>\n";
 
-        QDomNodeList litems = comp.elementsByTagName("LBALANCE");
-        for (int i = 0; i < litems.count(); i++) {
-            QDomNode item = litems.item(i);
+        QDomNodeList litems = comp.elementsByTagName ( "LBALANCE" );
+        for ( int i = 0; i < litems.count(); i++ )
+        {
+            QDomNode item = litems.item ( i );
             QDomElement e1 = item.toElement(); /// Try to convert the node to an element.
-            if (!e1.isNull()) { /// The node was really an element.
-                QDomNode formul = item.firstChildElement("FORMULA");
-                QString vact = formul.firstChildElement("VALORACT").toElement().text();
-                QString vant = formul.firstChildElement("VALORANT").toElement().text();
-                QString texto = item.firstChildElement("CONCEPTO").toElement().text();
+            if ( !e1.isNull() )
+            { /// The node was really an element.
+                QDomNode formul = item.firstChildElement ( "FORMULA" );
+                QString vact = formul.firstChildElement ( "VALORACT" ).toElement().text();
+                QString vant = formul.firstChildElement ( "VALORANT" ).toElement().text();
+                QString texto = item.firstChildElement ( "CONCEPTO" ).toElement().text();
                 fitxersortidatxt += "<tr>\n";
                 fitxersortidatxt += "<td>"+texto+"</td>\n";
                 fitxersortidatxt += "<td>"+vact+"</td>\n";
@@ -421,32 +472,35 @@ void CAnualesPrintView::imprimir(QString periodo1finicial, QString periodo1ffina
         fitxersortidatxt += "<nextFrame/>\n";
     } // end for
 
-    buff.replace("[story]", fitxersortidatxt);
-    QDomElement nodo = m_doc.namedItem("BALANCE").namedItem("TITULO").toElement();
-    buff.replace("[titulo]", nodo.text());
+    buff.replace ( "[story]", fitxersortidatxt );
+    QDomElement nodo = m_doc.namedItem ( "BALANCE" ).namedItem ( "TITULO" ).toElement();
+    buff.replace ( "[titulo]", nodo.text() );
 
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
+    if ( file.open ( QIODevice::WriteOnly ) )
+    {
+        QTextStream stream ( &file );
         stream << buff;
         file.close();
     } // end if
 
-    invocaPDF("canuales");
-    _depura("END CAnualesPrintView::imprimir", 0);
+    invocaPDF ( "canuales" );
+    _depura ( "END CAnualesPrintView::imprimir", 0 );
 }
 
 
-void CAnualesPrintView::setidbalance(QString id) {
-    _depura("CAnualesPrintView::setidbalance", 0);
-    QFile f(id);
-    if (!f.open(QIODevice::ReadOnly))
+void CAnualesPrintView::setidbalance ( QString id )
+{
+    _depura ( "CAnualesPrintView::setidbalance", 0 );
+    QFile f ( id );
+    if ( !f.open ( QIODevice::ReadOnly ) )
         return;
-    if (!m_doc.setContent(&f)) {
+    if ( !m_doc.setContent ( &f ) )
+    {
         f.close();
         return;
     } // end if
     f.close();
-    m_nomBalance->setText(id);
-    _depura("END CAnualesPrintView::setidbalance", 0);
+    m_nomBalance->setText ( id );
+    _depura ( "END CAnualesPrintView::setidbalance", 0 );
 }
 

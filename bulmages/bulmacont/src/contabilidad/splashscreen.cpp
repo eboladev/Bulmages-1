@@ -24,6 +24,7 @@
 
 
 Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
+    _depura("Splash::Splash", 0);
     QPixmap image0;
     image0.load(confpr->valor(CONF_SPLASH));
     /// Se modifica la paleta para que utilize la imagen como fondo.
@@ -77,26 +78,31 @@ Splash::Splash() : QDialog(0, Qt::FramelessWindowHint) {
     move((pantalla->screenGeometry().width() / 2) - (image0.width() / 2), (pantalla->screenGeometry().height() / 2) - ((image0.height() + 58) / 2));
 
     /// Nos muestra la ventana en modo MODAL.
-    exec();    
+    exec();
+    _depura("END Splash::Splash", 0);
 }
 
 
 /// Destructor de la clase.
 /** Libera memoria. */
 Splash::~Splash() {
+    _depura("Splash::~Splash", 0);
     delete l1;
+    _depura("END Splash::~Splash", 0);
 }
 
 
 /// Evento que se dispara cada cierto tiempo.
 /** El constructor crea un evento temporal que dispara este metodo. */
 bool Splash::event(QEvent *evt) {
+    _depura("Splash::event", 0);
     if (evt->type() == QEvent::KeyPress) {
         close();
     } // end if
     if (evt->type() == QEvent::MouseButtonDblClick) {
         close();
     } // end if
+    _depura("END Splash::event", 0);
     return QDialog::event(evt);
 }
 
@@ -104,6 +110,7 @@ bool Splash::event(QEvent *evt) {
 /// Pintado de la pantalla.
 /** Actualiza el widget. */
 void Splash::paint() {
+    _depura("Splash::paint", 0);
     static int a = 0;
     int cantidadmensajes;
     QString cad = "";
@@ -138,14 +145,17 @@ void Splash::paint() {
     l1->insertHtml(cad);
     /// Asegura que los ultimos mensajes son visibles haciendo el desplazamiento necesario.
     l1->ensureCursorVisible();
+    _depura("END Splash::paint", 0);
 }
 
 
 void Splash::barraprogreso() {
+    _depura("Splash::barraprogreso", 0);
     if (barra->value() < 10) {
         barra->setValue(barra->value() + 1);
     } else {
         barra->setValue(0);
     } // end if
+    _depura("END Splash::barraprogreso", 0);
 }
 

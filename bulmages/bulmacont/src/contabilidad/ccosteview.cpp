@@ -31,9 +31,9 @@
 /// de controlar la inserci&oacute;n de nuevos centros de coste, borrarlos, etc.
 ccosteview::ccosteview(empresa *emp, QWidget *parent)
         : Ficha(parent) {
+    _depura("ccosteview::ccosteview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    _depura("ccosteview::ccosteview", 0);
     empresaactual = emp;
     conexionbase = empresaactual->bdempresa();
     idc_coste = 0;
@@ -58,6 +58,7 @@ ccosteview::~ccosteview() {
 
 
 void ccosteview::pintar() {
+  _depura("ccosteview::pintar", 0);
     QTreeWidgetItem *it;
     QMap <int, QTreeWidgetItem*> Lista;
     int padre;
@@ -107,11 +108,13 @@ void ccosteview::pintar() {
     /// Se inicializa el selector de centros de coste.
     selectccosteview *scoste = empresaactual->getselccostes();
     scoste->cargacostes();
+    _depura("END ccosteview::pintar", 0);
 }
 
 
 void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
-    int previdccoste = it->text(COL_IDC_COSTE).toInt();
+  _depura("ccosteview::on_mui_list_itemClicked", 0);
+  int previdccoste = it->text(COL_IDC_COSTE).toInt();
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
                                  tr("Guardar centro de coste"),
@@ -122,6 +125,7 @@ void ccosteview::on_mui_list_itemClicked(QTreeWidgetItem *it, int) {
     } // end if
     idc_coste = previdccoste;
     mostrarplantilla();
+    _depura("END ccosteview::on_mui_list_itemClicked", 0);
 }
 
 
@@ -136,10 +140,12 @@ void ccosteview::mostrarplantilla() {
     } // end if
     delete cursorcoste;
     dialogChanges_cargaInicial();
+    _depura("END ccosteview::mostrarplantilla", 0);
 }
 
 
 void ccosteview::on_mui_guardar_clicked() {
+    _depura("ccosteview::on_mui_guardar_clicked", 0);
     QString nom = nomcentro->text();
     QString desc = desccoste->toPlainText();
     QString query;
@@ -150,10 +156,12 @@ void ccosteview::on_mui_guardar_clicked() {
     fprintf(stderr,"Se ha guardado el centro de coste\n");
     dialogChanges_cargaInicial();
     pintar();
+    _depura("END ccosteview::on_mui_guardar_clicked", 0);
 }
 
 
 void ccosteview::on_mui_crear_clicked() {
+    _depura("ccosteview::on_mui_crear_clicked", 0);
     /// Si se ha modificado el contenido advertimos y guardamos.
     if (dialogChanges_hayCambios()) {
         if (QMessageBox::warning(this,
@@ -184,10 +192,12 @@ void ccosteview::on_mui_crear_clicked() {
     delete cur;
     conexionbase->commit();
     pintar();
+    _depura("END ccosteview::on_mui_crear_clicked", 0);
 }
 
 
 void ccosteview::on_mui_borrar_clicked() {
+    _depura("ccosteview::on_mui_borrar_clicked", 0);
     switch (QMessageBox::warning(this,
                                  tr("Borrar centro de coste"),
                                  tr("Se va a borrar el centro de coste.\nEsta operacion puede ocasionar perdida de datos."),
@@ -201,12 +211,13 @@ void ccosteview::on_mui_borrar_clicked() {
         idc_coste = 0;
         pintar();
     } // end switch
+    _depura("END ccosteview::on_mui_borrar_clicked", 0);
 }
 
 
 void ccosteview::closeEvent(QCloseEvent *e) {
     _depura("ccosteview::closeEvent", 0);
-    if (dialogChanges_hayCambios())	{
+    if (dialogChanges_hayCambios()) {
         int val = QMessageBox::warning(this,
                                        tr("Guardar centro de coste"),
                                        tr("Desea guardar los cambios?"),
@@ -218,5 +229,6 @@ void ccosteview::closeEvent(QCloseEvent *e) {
             e->ignore();
         } // end if
     } // end if
+    _depura("END ccosteview::closeEvent", 0);
 }
 

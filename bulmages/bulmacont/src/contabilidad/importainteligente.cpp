@@ -31,11 +31,12 @@
     Contiene la implementación de la clase importainteligente que sirve para importar
     ficheros de XML a la base de datos de BulmaCont. */
 importainteligente::importainteligente(empresa *emp) : QXmlDefaultHandler() {
-    fprintf(stderr, "Inicializador de importainteligente\n");
+    _depura("importainteligente::importainteligente", 0);
     empresaactual = emp;
     conexionbase = emp->bdempresa();
     tag = "";
     data = "";
+    _depura("END importainteligente::importainteligente", 0);
 }
 
 
@@ -50,6 +51,7 @@ importainteligente::importainteligente(empresa *emp) : QXmlDefaultHandler() {
     \returns Devuelve TRUE porque no queremos que se detenga la ejecuci&oacute;n del
     parseo aun habiendo encontrado errores. */
 bool importainteligente::startElement(const QString&, const QString&, const QString& qName, const QXmlAttributes&) {
+    _depura("importainteligente::startElement", 0);
     tag = qName;
     QString SQLQuery;
     if (tag == "ainteligente") {
@@ -76,6 +78,7 @@ bool importainteligente::startElement(const QString&, const QString&, const QStr
         } // end if
         delete cur;
     } // end if
+    _depura("END importainteligente::startElement", 0);
     return TRUE;
 }
 
@@ -94,6 +97,7 @@ bool importainteligente::startElement(const QString&, const QString&, const QStr
     \param qName Nombre del tag del que se ha encontrado el final.
   */
 bool importainteligente::endElement(const QString&, const QString&, const QString& qName) {
+    _depura("importainteligente::endElement", 0);
     QString SQLQuery;
     if (qName == "ainteligente") {
         SQLQuery.sprintf("UPDATE ainteligente SET descripcion = '%s' WHERE idainteligente = %s\n", tvalores["descripcion"].toAscii().constData(), tvalores["idainteligente"].toAscii().constData());
@@ -153,6 +157,7 @@ bool importainteligente::endElement(const QString&, const QString&, const QStrin
     } // end if
     tag = "";
     data = "";
+    _depura("END importainteligente::endElement", 0);
     return TRUE;
 }
 
@@ -161,10 +166,12 @@ bool importainteligente::endElement(const QString&, const QString&, const QStrin
 /** La funci&oacute;n almacena en el mapa de clase \ref tvalores la informaci&oacute;n
     contenida asignandolo al ltimo tag que se ha abierto. */
 bool importainteligente::characters(const QString& ch) {
+    _depura("importainteligente::characters", 0);
     if (tag != "") {
         data = ch;
         tvalores[tag] = data;
     } // end if
+    _depura("END importainteligente::characters", 0);
     return TRUE;
 }
 

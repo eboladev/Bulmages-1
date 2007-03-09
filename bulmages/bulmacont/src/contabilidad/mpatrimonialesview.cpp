@@ -24,8 +24,10 @@
 
 mpatrimonialesview::mpatrimonialesview(QWidget *parent, Qt::WFlags fl)
         : QDialog(parent, fl) {
+    _depura("mpatrimonialesview::mpatrimonialesview", 0);
     setupUi(this);
     modo = 0;
+    _depura("END mpatrimonialesview::mpatrimonialesview", 0);
 }
 
 
@@ -36,6 +38,7 @@ mpatrimonialesview::~mpatrimonialesview() {}
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */
 int mpatrimonialesview::inicializa(postgresiface2 *conn) {
+    _depura("mpatrimonialesview::inicializa", 0);
     cursor2 *cursoraux1;
 
     conexionbase = conn;
@@ -50,11 +53,13 @@ int mpatrimonialesview::inicializa(postgresiface2 *conn) {
     delete cursoraux1;
     fprintf(stderr, "las cuentas tienen %d digitos\n", numdigitos);
     inicializatabla();
+    _depura("END mpatrimonialesview::inicializa", 0);
     return(0);
 }
 
 
 void mpatrimonialesview::inicializatabla() {
+    _depura("mpatrimonialesview::inicializatabla", 0);
     QTableWidgetItem *item0, *item1;
     mui_tabla->setRowCount(0);
     mui_tabla->setColumnCount(2);
@@ -81,10 +86,12 @@ void mpatrimonialesview::inicializatabla() {
         i++;
     } // end while
     delete cursoraux1;
+    _depura("END mpatrimonialesview::inicializatabla", 0);
 }
 
 
 void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint &mouse) {
+    _depura("mpatrimonialesview::dbtabla", 0);
     fprintf(stderr, "Se ha hecho doble click sobre la tabla\n");
     /// Dependiendo del modo hacemos una cosa u otra.
     if (modo == 0) {
@@ -106,19 +113,23 @@ void mpatrimonialesview::dbtabla(int row, int colummn, int button, const QPoint 
     /// Para quitar el warning.
     colummn = button = 0;
     mouse.isNull();
+    _depura("END mpatrimonialesview::dbtabla", 0);
 }
 
 
 void mpatrimonialesview::on_mui_editar_clicked() {
+    _depura("mpatrimonialesview::on_mui_editar_clicked", 0);
     int row = mui_tabla->currentRow();
     int col = mui_tabla->currentColumn();
     QPoint mouse;
     dbtabla(row, col, 0, mouse);
     inicializatabla();
+    _depura("END mpatrimonialesview::on_mui_editar_clicked", 0);
 }
 
 
 void mpatrimonialesview::on_mui_borrar_clicked() {
+    _depura("mpatrimonialesview::on_mui_borrar_clicked", 0);
     int row;
     row = mui_tabla->currentRow();
     idmasa = mui_tabla->item(mui_tabla->currentRow(), 0)->text();
@@ -130,20 +141,25 @@ void mpatrimonialesview::on_mui_borrar_clicked() {
     conexionbase->ejecuta(query);
     conexionbase->commit();
     inicializatabla();
+    _depura("END mpatrimonialesview::on_mui_borrar_clicked", 0);
 }
 
 
 void mpatrimonialesview::on_mui_nuevo_clicked() {
+    _depura("mpatrimonialesview::on_mui_nuevo_clicked", 0);
     mpatrimonialview *masa = new mpatrimonialview(this);
     masa->inicializa(conexionbase);
     masa->exec();
     delete masa;
     /// Como existe la posibilidad de que hayan cambiado las cosas forzamos un repintado.
     inicializatabla();
+    _depura("END mpatrimonialesview::on_mui_nuevo_clicked", 0);
 }
 
 
 void mpatrimonialesview::on_mui_cancelar_clicked() {
+    _depura("mpatrimonialesview::on_mui_cancelar_clicked", 0);
     close();
+    _depura("END mpatrimonialesview::on_mui_cancelar_clicked", 0);
 }
 

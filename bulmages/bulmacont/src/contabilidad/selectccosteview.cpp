@@ -38,16 +38,19 @@ selectccosteview::selectccosteview(empresa *emp, QWidget *parent)
     m_listCostes->setHeaderLabels(etiquetas);
 
     cargacostes();
-    fprintf(stderr, "FIN de Constructor de selectccosteview\n");
+    _depura("END selectccosteview::selectccosteview", 0);
 }
 
 
 selectccosteview::~selectccosteview() {
+    _depura("selectccosteview::~selectccosteview", 0);
     delete m_iterador;
+    _depura("END selectccosteview::~selectccosteview", 0);
 }
 
 
 void selectccosteview::cargacostes() {
+    _depura("selectccosteview::cargacostes", 0);
     /// Rellenamnos la listbox que va a sustituir al combobox correspondiente.
     /// Para que en los listados puedan salir m&aacute;s cosas de las que se dicen.
     fprintf(stderr, "Ahora nos toca rellenar las listas.\n");
@@ -94,6 +97,7 @@ void selectccosteview::cargacostes() {
         cursoraux2->siguienteregistro();
     } // end while
     delete cursoraux2;
+    _depura("END selectccosteview::cargacostes", 0);
 }
 
 /// Esta funci&oaqcute;n devuelve el primer centro de coste seleccionado de la vista.
@@ -122,6 +126,7 @@ int selectccosteview::firstccoste() {
 
 /// Esta funci&oacute;n devuelve el siguiente centro de coste seleccionado de la vista.
 int selectccosteview::nextccoste() {
+    _depura("selectccosteview::nextccoste", 0);
     int idccoste = 0;
     fprintf(stderr, "nextccoste\n");
 
@@ -133,6 +138,7 @@ int selectccosteview::nextccoste() {
         } // end if
         ++(*m_iterador);
     } // end while
+    _depura("END selectccosteview::nextccoste", 0);
     return idccoste;
 }
 
@@ -140,6 +146,7 @@ int selectccosteview::nextccoste() {
 /// Esta funci&oacute;n prepara una lista separada por comas de los costes seleccionados.
 /// Sirve para generar sentencias SQL.
 QString selectccosteview::cadcoste() {
+    _depura("selectccosteview::cadcoste", 0);
     int idc_coste;
     QString ccostes = "";
     idc_coste = firstccoste();
@@ -151,6 +158,7 @@ QString selectccosteview::cadcoste() {
         idc_coste = nextccoste();
     } /// end while
     fprintf(stderr, " cadcoste: %s\n", ccostes.toAscii().constData());
+    _depura("END selectccosteview::cadcoste", 0);
     return ccostes;
 }
 
@@ -158,6 +166,7 @@ QString selectccosteview::cadcoste() {
 /// Esta funci&oacute;n devuelve el nombre del centro de coste actual
 /// Si no existe devuelve ""
 QString selectccosteview::nomcoste() {
+    _depura("selectccosteview::nomcoste", 0);
     QTreeWidgetItemIterator m_iterador(m_listCostes);
 
     fprintf(stderr, "nomcoste()\n");
@@ -170,34 +179,40 @@ QString selectccosteview::nomcoste() {
     } // end if
 
     delete *m_iterador;
+    _depura("END selectccosteview::nomcoste", 0);
 }
 
 
 void selectccosteview::on_mui_todo_clicked() {
+    _depura("selectccosteview::on_mui_todo_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCostes);
 
     while (*m_iterador) {
         (*m_iterador)->setCheckState(0, Qt::Checked);
         ++m_iterador;
-    }
+    } // end while
 
     delete *m_iterador;
+    _depura("END selectccosteview::on_mui_todo_clicked", 0);
 }
 
 
 void selectccosteview::on_mui_nada_clicked() {
+    _depura("selectccosteview::on_mui_nada_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCostes);
 
     while (*m_iterador) {
         (*m_iterador)->setCheckState(0, Qt::Unchecked);
         ++m_iterador;
-    }
+    } // end while
 
     delete *m_iterador;
+    _depura("END selectccosteview::on_mui_nada_clicked", 0);
 }
 
 
 void selectccosteview::on_mui_invertir_clicked() {
+    _depura("selectccosteview::on_mui_invertir_clicked", 0);
     QTreeWidgetItemIterator m_iterador(m_listCostes);
 
     while (*m_iterador) {
@@ -205,10 +220,11 @@ void selectccosteview::on_mui_invertir_clicked() {
             (*m_iterador)->setCheckState(0, Qt::Checked);
         } else {
             (*m_iterador)->setCheckState(0, Qt::Unchecked);
-        }
+        } // end if
         ++m_iterador;
-    }
+    } // end while
 
     delete *m_iterador;
+    _depura("END selectccosteview::on_mui_invertir_clicked", 0);
 }
 

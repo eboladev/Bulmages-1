@@ -76,7 +76,7 @@ int main(int argc, char **argv) {
         /// 4) bulmalib_es
         /// 5) bulmalib_.qm
         /// 6) bulmalib_
-	/// Cogemos traducciones de bulmalib
+        /// Cogemos traducciones de bulmalib
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
             traductor->load(QString("bulmalib_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
         } else {
@@ -85,7 +85,7 @@ int main(int argc, char **argv) {
         } // end if
         theApp->installTranslator(traductor);
 
-	/// Cogemos traducciones de bulmafact
+        /// Cogemos traducciones de bulmafact
         traductor = new QTranslator(0);
         if (confpr->valor(CONF_TRADUCCION) == "locales") {
             traductor->load(QString("bulmafact_") + QLocale::system().name(), confpr->valor(CONF_DIR_TRADUCCION).toAscii().constData());
@@ -103,9 +103,6 @@ int main(int argc, char **argv) {
         QString db = argv[2];
         QString us = argv[3];
         QString pass = argv[4];
-
-
-
 
         /// Dependiendo de los argumentos pasados se lanza con unas opciones u otras para la
         /// conexion con la base de datos.
@@ -165,8 +162,8 @@ int main(int argc, char **argv) {
         /// Disparamos los plugins con entryPoint.
         g_plugins->lanza("entryPoint", bges);
 
-	/// Lanzamos la creacion de las ventanas principales.
-	bges->createMainWindows();
+        /// Lanzamos la creacion de las ventanas principales.
+        bges->createMainWindows();
 
         g_main = bges;
         theApp->exec();

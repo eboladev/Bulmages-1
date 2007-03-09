@@ -41,6 +41,7 @@
 /// adecuados para rellenar el modelo.
 /** Realiza una consulta para obtener las cuentas bancarias. */
 Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
+    _depura("Mod300ps::Mod300ps", 0);
     setupUi(this);
     QString query = "SELECT descripcion, bancoent_cuenta, codigo FROM cuenta WHERE codigo LIKE '572%%' AND codigo > 572";
 
@@ -66,7 +67,7 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
 //        cout << nombresccc[i].toAscii().constData() << "\t" << numerccc[i].toAscii().constData() << "\n";
         combocuentas->addItem(nombresccc[i]);
         cur->siguienteregistro();
-    }
+    } // end for
     delete cur;
     delete metabase;
 
@@ -76,8 +77,8 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
         personalButton->setChecked(true);
         personalButtonPressed();
         cuentaButton->setDisabled(true);
-    }
-    _depura("Objeto Mod300ps generado", 0);
+    } // end if
+    _depura("END Mod300ps::Mod300ps", 0);
 }
 
 
@@ -93,7 +94,7 @@ void Mod300ps::accept() {
 
 //    cout << "Elegida cuenta numero " << ccc->getcodigo("-").toAscii().constData() << "\n";
 //    cout << "dc=" << ccc->getdc().toAscii().constData() << "\n";
- 
+
    if (!ccc->cuentaesvalida()) {
         switch (QMessageBox::warning(this,
                                      QObject::tr("Formulario 300"),
@@ -107,8 +108,10 @@ void Mod300ps::accept() {
         case 1:
             break;
         }
-    } else
+   } else {
         generaps();
+   } // end if
+   _depura("END Mod300ps::accept", 0);
 }
 
 /// Generate the postscript of the 300-model with the given parameters.
@@ -137,7 +140,7 @@ void Mod300ps::generaps() {
                                          "~/.bulmages/formularios/."),
                              QObject::tr("&Aceptar"), 0, 0, 0, 1);
         doit = false;
-    }
+    } // end if
 
     if (doit) {
 //        cout << "Convirtiendo a postscript...\n";
@@ -161,7 +164,7 @@ void Mod300ps::generaps() {
                 doit = false;
             }
         }
-    }
+    } // end if
 
     /// Ahora tengo que procesar tempname y generar psname.
     if (doit) {
@@ -244,17 +247,20 @@ void Mod300ps::generaps() {
         } else {
             _depura("EEEEHH!!! !QUE NO  HE ABIERTO EL FICHEROOOOOOOOOO!", 2);
         } // end if
-    }
+    } // end if
+    _depura("END Mod300ps::generaps", 0);
 }
 
 
 void Mod300ps::personalButtonPressed() {
+    _depura("Mod300ps::personalButtonPressed", 0);
     bool dis = cuentaButton->isChecked();
     banco->setDisabled(dis);
     entidad->setDisabled(dis);
     dc->setDisabled(dis);
     cuenta->setDisabled(dis);
     combocuentas->setDisabled(!dis);
+    _depura("END Mod300ps::personalButtonPressed", 0);
 }
 
 /// Write definitions in the postscript output file, necessary to insert text later.
@@ -263,6 +269,8 @@ void Mod300ps::personalButtonPressed() {
     Escribe un clipping path para evitar que aparezcan las casillas de "rellenar formulario"
     que aparecen si no se usa Acrobat para convertir el pdf a ps. */
 void Mod300ps::escribe_postscriptdefs() {
+    _depura("Mod300ps::escribe_postscriptdefs", 0);
+
     m_output << "%bulmages\n"
     "%Texto introducido manualmente\n"
     "/Courier-Bold\n"
@@ -282,12 +290,15 @@ void Mod300ps::escribe_postscriptdefs() {
     "  %newpath\n"
     "  exch 3 add 3 -2 roll add 5 add exch moveto\n"
     "  show} def\n";
+    _depura("END Mod300ps::escribe_postscriptdefs", 0);
 }
 
 
 /// Write the CCC-number in the 300-model.
 void Mod300ps::escribe_cuenta_bancaria(int x, int y) {
-    const int steps[]= {
+    _depura("Mod300ps::escribe_cuenta_bancaria", 0);
+
+    const int steps[] = {
                            0, 11, 11, 11, 12, 11, 11, 11, 12, 11, 12, 11, 11, 11, 12, 11,
                            11, 11, 12, 11, 11
                        };
@@ -298,13 +309,15 @@ void Mod300ps::escribe_cuenta_bancaria(int x, int y) {
     for (int i = 0; i < 20; i++) {
         acum += steps[i];
         marca_casilla(QString(tem[i]), acum, y);
-    }
+    } // end for
+    _depura("END Mod300ps::escribe_cuenta_bancaria", 0);
 }
 
 
 /// Solucionar problema cuando el nombre de la empresa (u otro campo) lleva acentos.
 /** \todo El tel&eacute;ono no cabe (pero no es culpa m&aacute;!!) */
 void Mod300ps::rellena_identificacion() {
+    _depura("Mod300ps::rellena_identificacion", 0);
     QString cad1;
 
     postgresiface2 *m = new postgresiface2();
@@ -331,13 +344,16 @@ void Mod300ps::rellena_identificacion() {
     marca_casilla("T", 467, 690);
 
     escrder(empresa, 209, 601);
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++) {
         marca_casilla(QString(ano[i]), 453 + i * 14, 706);
+    } // end for
+    _depura("END Mod300ps::rellena_identificacion", 0);
 }
 
 
 /// Write the data in the second part of the 300-model.
 void Mod300ps::rellena_liquidacion() {
+    _depura("Mod300ps::rellena_liquidacion", 0);
     escrizqder(baser16, 328, 516); /// Casilla 01.
     escrizqder(baser7, 328, 502); /// Casilla 04.
     escrizqder(baser4, 328, 487); /// Casilla 07.
@@ -352,10 +368,12 @@ void Mod300ps::rellena_liquidacion() {
     escrizqder(ivas4 + ivas7 + ivas16, 532, 295); /// Casilla 27.
     cas34 = ivas4 + ivas7 + ivas16 - (ivar16 + ivar7 + ivar4);
     escrizqder(cas34, 532, 196); /// Casilla 34.
+    _depura("END Mod300ps::rellena_liquidacion", 0);
 }
 
 
 void Mod300ps::rellena_compensacion() {
+    _depura("Mod300ps::rellena_compensacion", 0);
     if (cas34 < 0) {
         escrizqder(-cas34, 248, 145); /// Casilla a compensar si la 34 sale negativa.
         if (trimestre->currentIndex() == 3) { /// Si estamos en el cuarto trimestre...
@@ -368,17 +386,20 @@ void Mod300ps::rellena_compensacion() {
             escribe_cuenta_bancaria(338, 73);
         } // end if
     } // end if
+    _depura("END Mod300ps::rellena_compensacion", 0);
 }
 
 
 /// Escribe el c&oacute;digo postal en las min&uacute;sculas casillas
 /// destinadas a tal fin.
 void Mod300ps::escribe_codigo_postal(QString cod) {
+    _depura("Mod300ps::escribe_codigo_postal", 0);
     int offset = 3;
     marca_casilla(QString(cod[0]), 528 - offset, 550);
     marca_casilla(QString(cod[1]), 537 - offset, 550);
     marca_casilla(QString(cod[2]), 546 - offset, 550);
     marca_casilla(QString(cod[3]), 554 - offset, 550);
     marca_casilla(QString(cod[4]), 563 - offset, 550);
+    _depura("END Mod300ps::escribe_codigo_postal", 0);
 }
 

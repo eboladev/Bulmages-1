@@ -121,7 +121,6 @@ public:
     };
     QString generaFiltro();
     void editar(int);
-    virtual int sacaWindow();
     virtual void on_mui_borrar_clicked();
 
 public slots:

@@ -37,8 +37,8 @@
     en el listado de ventanas.
     Usando esta clase tampoco se inicializan bien los widgets que contiene.
 */
-AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags, edmode editmodo)
-        : Ficha(parent) {
+AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode editmodo)
+        : Ficha(parent, flags) {
     _depura("AlbaranClienteList::AlbaranClienteList", 0);
     setupUi(this);
     /// Disparamos los plugins.

@@ -33,26 +33,34 @@ libromayorprint::~libromayorprint() {}
 
 
 int libromayorprint::inicializa(postgresiface2 *conn ) {
+    _depura("libromayorprint::inicializa", 0);
     conexionbase = conn;
+    _depura("END libromayorprint::inicializa", 0);
     return(0);
 }
 
 
 void libromayorprint::inicializa1(QString codinicial1, QString codfinal1, QString finicial1, QString ffinal1) {
+    _depura("libromayorprint::inicializa1", 0);
     codinicial= codinicial1;
     codfinal = codfinal1;
     finicial = finicial1;
     ffinal = ffinal1;
+    _depura("END libromayorprint::inicializa1", 0);
 }
 
 
 void libromayorprint::inicializa2(char *fich) {
+    _depura("libromayorprint::inicializa2", 0);
     fichero = fich;
+    _depura("libromayorprint::inicializa2", 0);
 }
+
 
 
 /// Se ha pulsado sobre el bot&oacute;n aceptar del formulario.
 void libromayorprint::accept() {
+    _depura("libromayorprint::accept", 0);
     Fixed debe("0"), haber("0"), saldo("0");
     Fixed debeinicial("0"), haberinicial("0"), saldoinicial("0");
     Fixed debefinal("0"), haberfinal("0"), saldofinal("0");
@@ -131,5 +139,6 @@ void libromayorprint::accept() {
     } // end if
     QString cadaux = confpr->valor(CONF_EDITOR) + " mayor.txt";
     system(cadaux.toAscii().constData());
+    _depura("END libromayorprint::accept", 0);
 }
 

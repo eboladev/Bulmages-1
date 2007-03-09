@@ -44,8 +44,8 @@
 
 DiarioView::DiarioView(empresa *emp, QWidget *parent, int)
         : Ficha(parent) {
-    setupUi(this);
     _depura("DiarioView::DiarioView", 0);
+    setupUi(this);
     m_companyact = emp;
     mui_list->setcompany(emp);
     mui_contrapartida->setempresa(emp);
@@ -181,7 +181,9 @@ void DiarioView::presentar() {
 
 /// Boton de impresion del diario.
 void DiarioView::on_mui_imprimir_clicked() {
-   mui_list->imprimirPDF("Libro Diario");
+    _depura("DiarioView::on_mui_imprimir_clicked", 0);
+    mui_list->imprimirPDF("Libro Diario");
+    _depura("END DiarioView::on_mui_imprimir_clicked", 0);
 }
 
 /*

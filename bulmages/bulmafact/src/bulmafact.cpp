@@ -82,11 +82,9 @@ bulmafact::bulmafact(QString bd) : QMainWindow() {
     m_list->setWorkspace(pWorkspace);
 
     connect(m_list, SIGNAL(cambiaEstadoVisible(bool)), this, SLOT(setActionIndexador(bool)));
-
     addDockWidget(Qt::LeftDockWidgetArea, m_list);
 
     m_company->setListVentanas(m_list);
-
 
     m_list->setVisible(TRUE);
     m_pb->setVisible(FALSE);

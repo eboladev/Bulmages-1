@@ -27,6 +27,8 @@
 #include <QEvent>
 #include <QTextStream>
 
+#include "funcaux.h"
+
 
 enum {sleep10 = 1001, sleep3 = 1002, acabado = 1003};
 
