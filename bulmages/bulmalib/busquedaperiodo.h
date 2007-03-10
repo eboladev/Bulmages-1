@@ -37,19 +37,10 @@ public:
     BusquedaPeriodo(QWidget *parent = 0);
     ~BusquedaPeriodo();
     virtual void setperiodo(QString periodo);
-    QString periodo() {
-        return m_valores[currentIndex()];
-    };
+    QString periodo();
 
 public slots:
-    void s_activated(int index) {
-        _depura("Activado el combo box.", 0);
-        if (index > 0) {
-            emit(valueChanged(m_valores[currentIndex()]));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    void s_activated(int index);
 
 signals:
     void valueChanged(QString);

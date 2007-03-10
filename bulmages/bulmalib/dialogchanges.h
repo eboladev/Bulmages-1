@@ -31,7 +31,6 @@
 /// coger todos los campos de un determinado formulario y formar una cadena.
 /// Luego para saber si hay cambios en el formulario vuelve a comparar.
 class dialogChanges {
-
 private:
     int m_maxQLine;
     int m_maxQText;
@@ -43,11 +42,7 @@ private:
     QObject *m_listaQTable[999];
 
 public:
-    dialogChanges(QObject *ob) {
-        _depura("dialogChanges::dialogChanges", 0);
-        m_obje = ob;
-        _depura("END dialogChanges::dialogChanges", 0);
-    }
+    dialogChanges(QObject *ob);
     ~dialogChanges() {}
     void dialogChanges_cargaInicial();
     bool dialogChanges_hayCambios();

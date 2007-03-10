@@ -73,12 +73,8 @@ public:
     int numregistros();
     /// Devuelve el valor de una determinada posici&oacute;n del query.
     QString valor(int posicion, int registro = -1);
-    bool error() {
-        return m_error;
-    };
-    QString query() {
-        return m_query;
-    };
+    bool error();
+    QString query();
 
 public:
     /// Devuelve el valor de una determinada posici&oacute;n del query.
@@ -92,9 +88,7 @@ public:
     /// Establece la posici&oacute;n del puntero de recorrido de cola en el &uacute;ltimo registro.
     int ultimoregistro();
     /// Devuelve la posici&oacute;n del registro actual.
-    int regactual() {
-        return registroactual;
-    };
+    int regactual();
     /// Libera la memoria que se ha ocupado en las consultas.
     void cerrar();
     /// Devuelve el nombre del campo de una columna determinada de la consulta.
@@ -166,7 +160,6 @@ public:
     int borrarcuenta(int idcuenta);
     int modificacuenta(int idcuenta, QString desccuenta, QString codigo, bool cimputacion, bool cbloqueada, int idgrupo, bool cactivo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
     int nuevacuenta(QString desccuenta, QString codigo, int padre, int idgrupo, QString, QString, QString, QString, QString, QString, QString, QString, QString, int, bool, bool);
-
     /// Carga en un query las empresas especificadas.
     cursor2 *cargaempresas();
     /// Busca en una cadena c&oacute;digo malicioso para SQL y lo elimina (previene el SQLInjection).
@@ -176,9 +169,7 @@ public:
     /// Returns the parent of a determinated account code.
     QString searchParent(QString);
     /// Returns the name of the database opened, if none as open then returns "".
-    QString nameDB() {
-        return dbName;
-    };
+    QString nameDB();
 };
 
 #endif

@@ -29,6 +29,162 @@
 #include "subform3.h"
 
 
+QList<SDBRecord *> *SubForm3::lista() {
+    return &m_lista;
+}
+
+
+QList<SHeader *> *SubForm3::cabecera() {
+    return &m_lcabecera;
+}
+
+
+void SubForm3::setHorizontalScrollMode(QAbstractItemView::ScrollMode mode) {
+    mui_list->setHorizontalScrollMode(mode);
+}
+
+
+void SubForm3::setDelete(bool f) {
+    m_delete = f;
+}
+
+
+SDBCampo *SubForm3::item(int row, int col) {
+    return (SDBCampo *) mui_list->item(row, col);
+}
+
+
+int SubForm3::columnCount() {
+    return mui_list->columnCount();
+}
+
+
+void SubForm3::showColumn(int i) {
+    mui_list->showColumn(i);
+}
+
+
+int SubForm3::columnWidth(int i) {
+    return mui_list->columnWidth(i);
+}
+
+
+void SubForm3::setColumnWidth(int i, int j) {
+    mui_list->setColumnWidth(i, j);
+}
+
+
+void SubForm3::hideColumn(int i) {
+    mui_list->hideColumn(i);
+}
+
+
+int SubForm3::currentRow() {
+    return mui_list->currentRow();
+}
+
+
+int SubForm3::rowCount() {
+    return mui_list->rowCount();
+}
+
+
+int SubForm3::currentColumn() {
+    return mui_list->currentColumn();
+}
+
+
+void SubForm3::setResizeMode(QHeaderView::ResizeMode modo) {
+    mui_list->horizontalHeader()->setResizeMode(modo);
+}
+
+
+void SubForm3::resizeColumnsToContents() {
+    mui_list->resizeColumnsToContents();
+}
+
+
+void SubForm3::resizeRowsToContents() {
+    mui_list->resizeRowsToContents();
+}
+
+
+void SubForm3::resizeColumnToContents(int i) {
+    mui_list->resizeColumnToContents(i);
+}
+
+
+void SubForm3::resizeRowToContents(int i) {
+    mui_list->resizeRowToContents(i);
+}
+
+
+void SubForm3::hideConfig() {
+    mui_configurador->hide();
+}
+
+
+void SubForm3::showConfig() {
+    mui_configurador->show();
+}
+
+
+void SubForm3::setcompany(postgresiface2 *c) {
+    m_companyact = c;
+}
+
+
+postgresiface2 *SubForm3::companyact() {
+    return m_companyact;
+}
+
+
+void SubForm3::setDBTableName(QString nom) {
+    m_tablename = nom;
+    m_fileconfig = nom;
+}
+
+
+QString SubForm3::tableName() {
+    return m_tablename;
+}
+
+
+void SubForm3::setFileConfig(QString nom) {
+    m_fileconfig = nom;
+}
+
+
+void SubForm3::setDBCampoId(QString nom) {
+    m_campoid = nom;
+}
+
+
+void SubForm3::clear() {
+    mui_list->clear();
+}
+
+
+void SubForm3::setRowCount(int i) {
+    mui_list->setRowCount(i);
+}
+
+
+void SubForm3::setColumnCount(int i) {
+    mui_list->setColumnCount(i);
+}
+
+
+void SubForm3::creaMenu(QMenu *) {
+    _depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);
+}
+
+
+void SubForm3::procesaMenu(QAction *) {
+    _depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);
+}
+
+
 /// SubForm3, constructor de la clase base para subformularios.
 SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     setupUi(this);
@@ -128,16 +284,16 @@ void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
 }
 
 
-
 bool SubForm3::existsHeader(const QString &head) {
     SHeader *linea;
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         if (linea->nomcampo() == head)
-		return TRUE;
+        return TRUE;
     } // end for
     return FALSE;
 }
+
 
 /// Se encarga de crear un nuevo registro (una fila entera) y de inicializarla para que
 /// tenga todos los elementos necesarios (columnas).
@@ -263,8 +419,9 @@ void SubForm3::situarse1(unsigned int row, unsigned int col) {
     unsigned int nrow = row;
     unsigned int ncol = col;
     SHeader *linea = m_lcabecera.at(ncol);
-    if(!linea)
+    if (!linea) {
         return;
+    } // end if
     bool invalido = TRUE;
     while (invalido) {
         if (ncol == (unsigned int) m_lcabecera.count()) {
@@ -401,11 +558,11 @@ void SubForm3::cargar(cursor2 *cur) {
     SDBCampo *camp;
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
-	    QRegExp rx("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
+        QRegExp rx("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
         for (int j = 0; j < reg->lista()->size(); ++j) {
            camp = (SDBCampo *) reg->lista()->at(j);
-	       /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
-	       if (rx.exactMatch(camp->valorcampo())) {
+           /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
+           if (rx.exactMatch(camp->valorcampo())) {
                 camp->set(camp->valorcampo().left(10));
            } // end if
            mui_list->setItem(i, j, camp);
@@ -779,7 +936,7 @@ void SubForm3::cargaconfig() {
     QString line;
     int error = 1;
     if (file.open(QIODevice::ReadOnly)) {
-	error = 0;
+    error = 0;
         QTextStream stream(&file);
         /// Establecemos la columna de ordenacion
         QString linea = stream.readLine();
@@ -795,26 +952,26 @@ void SubForm3::cargaconfig() {
                 mui_filaspagina->setValue(linea.toInt());
         } // end if
 
-	    /// Establecemos el ancho de las columnas.
+        /// Establecemos el ancho de las columnas.
         for (int i = 0; i < mui_list->columnCount(); i++) {
             linea = stream.readLine();
             if (linea.toInt() > 0) {
                 mui_list->setColumnWidth(i, linea.toInt());
             } else {
                 mui_list->setColumnWidth(i, 30);
-		         error = 1;
-	        } // end if
+                 error = 1;
+            } // end if
         } // end for
 
-	    /// Leemos el status de las columnas.
+        /// Leemos el status de las columnas.
         for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
             linea = stream.readLine();
             if (linea == "1") {
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Checked);
             } else if (linea == "0") {
                 mui_listcolumnas->item(i, 0)->setCheckState(Qt::Unchecked);
-	        } else {
-		          error = 1;
+            } else {
+                  error = 1;
             } // end if
         } // end for
         file.close();
@@ -822,8 +979,8 @@ void SubForm3::cargaconfig() {
     } // end if
 
     /// Si se ha producido algun error en la carga hacemos un maquetado automatico.
-    if (error) 
-	mui_list->resizeColumnsToContents();
+    if (error)
+    mui_list->resizeColumnsToContents();
 
     m_primero = FALSE;
     _depura("END SubForm3::cargaconfig", 0);
@@ -895,6 +1052,11 @@ void SubForm3::on_mui_confquery_clicked() {
     cargar(cur);
     delete cur;
     _depura("END SubForm3::on_mui_confquery_clicked ", 0);
+}
+
+
+void SubForm3::on_mui_appag_clicked() {
+    on_mui_confquery_clicked();
 }
 
 
@@ -1002,7 +1164,7 @@ void SubForm3::imprimirPDF(const QString &titular) {
     QFile file;
     file.setFileName(archivod);
     file.open(QIODevice::ReadOnly);
- 
+
     QTextStream stream(&file);
     QString buff = stream.readAll();
     file.close();
@@ -1083,6 +1245,16 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
 }
 
 
+void SubForm3::toogleConfig() {
+    mui_configurador->setVisible(mui_configurador->isHidden());
+    emit toogledConfig(mui_configurador->isVisible());
+}
+
+void SubForm3::on_mui_botonCerrar_clicked() {
+    toogleConfig();
+}
+
+
 void SubForm3::on_mui_list_cellChanged(int, int) {
     _depura("SubForm3::on_mui_list_cellChanged", 0);
     _depura("END SubForm3::on_mui_list_cellChanged", 0);
@@ -1090,8 +1262,8 @@ void SubForm3::on_mui_list_cellChanged(int, int) {
 
 
 void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
-	_depura("SubForm3::on_mui_list_itemChanged", 0);
-	_depura("END SubForm3::on_mui_list_itemChanged", 0);
+    _depura("SubForm3::on_mui_list_itemChanged", 0);
+    _depura("END SubForm3::on_mui_list_itemChanged", 0);
 }
 
 
@@ -1105,7 +1277,7 @@ void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
 
 
 void SubForm3::setinsercion(bool b) {
-	_depura("SubForm3::setinsercion", 0);
+    _depura("SubForm3::setinsercion", 0);
         m_insercion = b;
-	_depura("END SubForm3::setinsercion", 0);
+    _depura("END SubForm3::setinsercion", 0);
 }

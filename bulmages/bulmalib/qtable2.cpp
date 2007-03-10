@@ -27,39 +27,44 @@
 #include "configuracion.h"
 #include "funcaux.h"
 
+
 /** Constructor de la clase estandar de delegacion para la edicion de elementos
 en el QTable2 */
 QTableItemTextDelegate::QTableItemTextDelegate(QObject *parent=0) : QItemDelegate(parent) {
-	_depura("QTableItemTextDelegate::QTableItemTextDelegate", 0);
-	_depura("END QTableItemTextDelegate::QTableItemTextDelegate", 0);
+    _depura("QTableItemTextDelegate::QTableItemTextDelegate", 0);
+    _depura("END QTableItemTextDelegate::QTableItemTextDelegate", 0);
 }
+
 
 /** Destructor de la clase estandar de delegacion para la edicion de elementos en el Qtable2
 */
 QTableItemTextDelegate::~QTableItemTextDelegate() {
-	_depura("QTableItemTextDelegate::~QTableItemTextDelegate", 0);
-	_depura("END QTableItemTextDelegate::~QTableItemTextDelegate", 0);
+    _depura("QTableItemTextDelegate::~QTableItemTextDelegate", 0);
+    _depura("END QTableItemTextDelegate::~QTableItemTextDelegate", 0);
 }
+
 
 /** Creacion del editor basado en un QTextEdit para el caso de edicion de elementos
 de Qtable2
 */
 QWidget *QTableItemTextDelegate::createEditor(QWidget *parent, const QStyleOptionViewItem &, const QModelIndex &) const {
-	_depura("QTableItemTextDelegate::createEditor", 0);
-	QTextEdit *textedit = new QTextEdit(parent);
-	_depura("END QTableItemTextDelegate::createEditor", 0);
-	return textedit;
+    _depura("QTableItemTextDelegate::createEditor", 0);
+    QTextEdit *textedit = new QTextEdit(parent);
+    _depura("END QTableItemTextDelegate::createEditor", 0);
+    return textedit;
 }
+
 
 /** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
 de edicion
 */
 void QTableItemTextDelegate::setModelData(QWidget *editor, QAbstractItemModel *model, const QModelIndex &index) const {
-	_depura("QTableItemTextDelegate::setModelData", 0);
+    _depura("QTableItemTextDelegate::setModelData", 0);
         QTextEdit *textedit = qobject_cast<QTextEdit *>(editor);
-	model->setData(index, textedit->toPlainText());	_depura("END QTableItemTextDelegate::setModelData", 0);
+    model->setData(index, textedit->toPlainText()); _depura("END QTableItemTextDelegate::setModelData", 0);
 
 }
+
 
 /** Establecimiento de los datos que pasa entre el modelo de vista y el modelo
 de edicion
@@ -73,7 +78,9 @@ void QTableItemTextDelegate::setEditorData(QWidget* editor, const QModelIndex& i
     _depura("END QTableItemTextDelegate::setEditorData", 0);
 }
 
+
 /// ======================================================================
+
 
 /** Constructor de QTableWidget2 clase derivada de QTableWidget con
 un eventHandler especifico
@@ -85,6 +92,7 @@ QTableWidget2::QTableWidget2(QWidget *parent) : QTableWidget(parent) {
     _depura("END QTableWidget2::QTableWidget2", 0);
 }
 
+
 /** Este m&eacute;todo no hace nada.
 */
 void QTableWidget2::editItem(QTableWidgetItem *) {
@@ -92,10 +100,27 @@ void QTableWidget2::editItem(QTableWidgetItem *) {
     _depura("END QTableWidget2::editItem", 0);
 }
 
+
 void QTableWidget2::sitemChanged(QTableWidgetItem *) {
     _depura("QTableWidget2::sitemChanged", 0);
     _depura("END QTableWidget2::sitemChanged", 0);
 }
+
+
+QTableWidgetItem2::QTableWidgetItem2(int type, int mode) : QTableWidgetItem(type) {
+    modo = mode;
+}
+
+
+QTableWidgetItem2::QTableWidgetItem2(const QString &text, int type, int mode) : QTableWidgetItem(text, type) {
+    modo = mode;
+}
+
+
+QTableWidgetItem2::~QTableWidgetItem2() {
+    _depura("~QTableWidgetItem2", 1);
+}
+
 
 /// Esta funci&oacute;n ya es obsoleta y no se utiliza.
 bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
@@ -124,6 +149,36 @@ bool QTableWidgetItem2::operator< (const QTableWidgetItem & other) const {
     } // end if
     _depura("END QTableWidgetItem2::operator<", 0);
     return TRUE;
+}
+
+
+int QTableWidget2::tipoorden() {
+    return m_tipoorden;
+}
+
+
+int QTableWidget2::colorden() {
+    return m_colorden;
+}
+
+
+void QTableWidget2::settipoorden(int t) {
+    m_tipoorden = t;
+}
+
+
+void QTableWidget2::setcolorden(int t) {
+    m_colorden = t;
+}
+
+
+void QTableWidget2::columnMoved(int column, int oldIndex, int newIndex) {
+    QTableWidget::columnMoved(column, oldIndex, newIndex);
+}
+
+
+QTableWidget2::~QTableWidget2() {
+    _depura("END ~QTableWidget2", 0);
 }
 
 
@@ -226,7 +281,7 @@ bool QTableWidget2::eventFilter(QObject *obj, QEvent *event) {
 }
 
 
-/** Se ha pulsado sobre las cabeceras en la tabla lo que invoca el 
+/** Se ha pulsado sobre las cabeceras en la tabla lo que invoca el
 metodo de ordenacion.
 */
 void QTableWidget2::ordenar() {

@@ -28,6 +28,11 @@
 #include "postgresiface2.h"
 
 
+bool logpass::authOK() {
+    return m_authOK;
+}
+
+
 logpass::logpass(QWidget *parent, const char *name) : QDialog(parent) {
     setWindowTitle(name);
     setupUi(this);

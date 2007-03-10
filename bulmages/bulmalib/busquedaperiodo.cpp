@@ -23,6 +23,21 @@
 #include "busquedaperiodo.h"
 
 
+QString BusquedaPeriodo::periodo() {
+    return m_valores[currentIndex()];
+}
+
+
+void BusquedaPeriodo::s_activated(int index) {
+    _depura("Activado el combo box.", 0);
+    if (index > 0) {
+        emit(valueChanged(m_valores[currentIndex()]));
+    } else {
+        emit(valueChanged(""));
+    } // end if
+}
+
+
 BusquedaPeriodo::BusquedaPeriodo(QWidget *parent) : QComboBox(parent) {
     _depura("BusquedaPeriodo::BusquedaPeriodo", 0);
     m_textos[0] = tr("Semanal");

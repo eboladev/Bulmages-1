@@ -26,9 +26,9 @@
 #include "ui_logpassbase.h"
 #include "postgresiface2.h"
 
-/** Presenta un dialogo que pregunta el usuario y la contrasenya
- * para acceder a la base de datos.
- */
+
+/// Presenta un di&aacute;logo que pregunta el usuario y la contrase&ntilde;a
+/// para acceder a la base de datos.
 class logpass : public QDialog, public Ui_logpassbase {
     Q_OBJECT
 
@@ -41,9 +41,7 @@ private:
 public:
     logpass(QWidget *parent = 0, const char *name = 0);
     ~logpass();
-    bool authOK() {
-        return m_authOK;
-    };
+    bool authOK();
 
 public slots:
     virtual void validar();

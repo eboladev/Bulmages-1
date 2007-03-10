@@ -43,31 +43,14 @@ protected:
 
 public:
     SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp = "");
-    ~SHeader() {
-        _depura("SHeader::~SHeader", 0);
-    };
-    int set(QString val) {
-        m_valorcampo = val;
-        return 0;
-    };
-    unsigned int options() {
-        return m_options;
-    };
-    unsigned int restricciones() {
-        return m_restricciones;
-    };
-    DBCampo::dbtype tipo() {
-        return m_tipo;
-    };
-    QString nompresentacion() {
-        return m_nompresentacion;
-    };
-    int restrictcampo() {
-        return m_restricciones;
-    };
-    QString nomcampo() {
-        return m_nomcampo;
-    };
+    ~SHeader();
+    int set(QString val);
+    unsigned int options();
+    unsigned int restricciones();
+    DBCampo::dbtype tipo();
+    QString nompresentacion();
+    int restrictcampo();
+    QString nomcampo();
 };
 
 
@@ -86,9 +69,7 @@ private:
     SDBRecord *m_pare;
 
 public:
-    SDBRecord *pare() {
-        return m_pare;
-    };
+    SDBRecord *pare();
     SDBCampo(SDBRecord *par, postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
     virtual ~SDBCampo();
     int addDBCampo(QString nom, DBCampo::dbtype typ, int res, QString nomp = "");

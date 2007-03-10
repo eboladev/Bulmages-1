@@ -29,10 +29,8 @@ class QWorkspace2 : public QWorkspace {
     Q_OBJECT
 
 public:
-    QWorkspace2(QWidget *) {}
-    ;
-    ~QWorkspace2() {}
-    ;
+    QWorkspace2(QWidget *);
+    ~QWorkspace2();
     void addWindow(QWidget *);
 };
 

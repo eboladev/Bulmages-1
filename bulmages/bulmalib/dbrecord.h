@@ -45,42 +45,18 @@ protected:
     QString m_valorcampoorig;
 
 public:
-    bool cambiado() {
-        return m_valorcampo != m_valorcampoorig;
-    };
-    void resetCambio() {
-        m_valorcampoorig = m_valorcampo;
-    };
+    bool cambiado();
+    void resetCambio();
     DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp = "");
-    virtual ~DBCampo() {
-        _depura("DBCampo::~DBCampo", 1);
-    };
-    postgresiface2 *conexionbase() {
-        return m_conexionbase;
-    };
-    void setconexionbase(postgresiface2 *comp) {
-        m_conexionbase = comp;
-    };
-    dbtype tipo() {
-        return m_tipo;
-    };
-    virtual int set
-        (QString val) {
-        m_valorcampo = val;
-        return 0;
-    };
-    int restrictcampo() {
-        return m_restrict;
-    };
-    QString nomcampo() {
-        return m_nomcampo;
-    };
-    QString nompresentacion() {
-        return m_nompresentacion;
-    };
-    QString valorcampo() {
-        return m_valorcampo;
-    };
+    virtual ~DBCampo();
+    postgresiface2 *conexionbase();
+    void setconexionbase(postgresiface2 *comp);
+    dbtype tipo();
+    virtual int set(QString val);
+    int restrictcampo();
+    QString nomcampo();
+    QString nompresentacion();
+    QString valorcampo();
     QString valorcampoprep(int &error);
 };
 
@@ -96,43 +72,25 @@ protected:
 public:
     DBRecord(postgresiface2 *);
     virtual ~DBRecord();
-    void setconexionbase(postgresiface2 *comp) {
-        m_conexionbase = comp;
-    };
-    postgresiface2 *conexionbase() {
-        return m_conexionbase;
-    };
+    void setconexionbase(postgresiface2 *comp);
+    postgresiface2 *conexionbase();
     int DBload(cursor2 *);
     virtual int DBsave(QString &id);
     virtual int setDBvalue(QString, QString);
     QString DBvalue(QString);
     bool exists(QString);
     QString DBvalueprep(QString);
-    void setDBTableName(QString nom) {
-        m_tablename = nom;
-    };
-    void setNuevo(bool n) {
-	   m_nuevoCampo = n;
-    };
-    QString tableName() {
-        return m_tablename;
-    };
-    QString campoId() {
-        return m_campoid;
-    };
-    void setDBCampoId(QString nom) {
-        m_campoid = nom;
-    };
+    void setDBTableName(QString nom);
+    void setNuevo(bool n);
+    QString tableName();
+    QString campoId();
+    void setDBCampoId(QString nom);
     int addDBCampo(QString, DBCampo::dbtype, int, QString);
     void DBclear();
-    QList<DBCampo *> *lista() {
-        return &m_lista;
-    };
+    QList<DBCampo *> *lista();
     virtual int borrar();
     virtual int guardar();
-    virtual void vaciar() {
-        DBclear();
-    };
+    virtual void vaciar();
     virtual void imprimir();
     virtual int cargar(QString);
 };

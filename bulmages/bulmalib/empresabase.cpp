@@ -24,6 +24,46 @@
 #include "abreempresaview.h"
 
 
+void EmpresaBase::setListVentanas(listventanas *doc) {
+    m_listventanas = doc;
+}
+
+
+QWorkspace2 *EmpresaBase::pWorkspace() {
+    return m_pWorkspace;
+}
+
+
+void EmpresaBase::setWorkspace(QWorkspace2 *qw) {
+    m_pWorkspace = qw;
+}
+
+
+void EmpresaBase::setProgressBar(QProgressBar *pb) {
+    m_progressbar = pb;
+}
+
+
+int EmpresaBase::meteWindow(QString nom, QObject *obj, bool compdup) {
+    return m_listventanas->meteWindow(nom, obj, compdup);
+}
+
+
+int EmpresaBase::seleccionaWindow(QString nom, QObject *obj) {
+    return m_listventanas->seleccionaWindow(nom, obj);
+}
+
+
+int EmpresaBase::deSeleccionaWindow() {
+    return m_listventanas->deSeleccionaWindow();
+}
+
+
+void EmpresaBase::sacaWindow(QObject *nom) {
+    m_listventanas->sacaWindow(nom);
+}
+
+
 /// No precisa de operaciones en su construccion.
 EmpresaBase::EmpresaBase() {
     _depura("EmpresaBase::EmpresaBase", 0);

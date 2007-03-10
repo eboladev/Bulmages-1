@@ -21,6 +21,48 @@
 #include "ficha.h"
 
 
+void Ficha::setModoConsulta() {
+    m_modo = SelectMode;
+}
+
+
+void Ficha::setModoEdicion() {
+    m_modo = EditMode;
+}
+
+
+bool Ficha::modoEdicion() {
+    return m_modo == EditMode;
+}
+
+
+bool Ficha::modoConsulta() {
+    return m_modo == SelectMode;
+}
+
+
+int Ficha::guardar() {
+    _depura("Ficha::guardar existe solo para ser derivado", 0);
+    return 0;
+}
+
+
+int Ficha::borrar() {
+    _depura("Ficha::borrar existe solo para ser derivado", 0);
+    return 0;
+}
+
+
+void Ficha::on_mui_cancelar_clicked() {
+    close();
+}
+
+
+void Ficha::on_mui_guardar_clicked() {
+    guardar();
+}
+
+
 Ficha::Ficha(QWidget *parent, Qt::WFlags f, edmode modo) : QWidget(parent, f), dialogChanges(this) {
     _depura("Ficha::Ficha", 0);
     m_modo=modo;
@@ -86,7 +128,8 @@ void Ficha::closeEvent(QCloseEvent *e) {
                 return;
             } // end if
         } // end if
-/// \TODO Este sacaWindow encubre un bug. Debe tratarse de otra forma el sacar las ventanas de listventanas.
+        /// \TODO Este sacaWindow encubre un bug. Debe tratarse de otra forma el
+        /// sacar las ventanas de listventanas.
         sacaWindow();
     } catch (...) {
         mensajeInfo(tr("No se pudo cerrar la ventana debido a un error"));
@@ -96,8 +139,9 @@ void Ficha::closeEvent(QCloseEvent *e) {
 }
 
 int Ficha::sacaWindow() {
-	_depura("Ficha::sacaWindow", 0);
-        _depura("Ficha::sacaWindow existe solo para ser derivado", 0);
-	_depura("END Ficha::sacaWindow", 0);
-        return 0;
+    _depura("Ficha::sacaWindow", 0);
+    _depura("Ficha::sacaWindow existe solo para ser derivado", 0);
+    _depura("END Ficha::sacaWindow", 0);
+    return 0;
 }
+

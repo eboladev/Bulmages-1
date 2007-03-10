@@ -119,35 +119,40 @@ int SDBCampo::set(QString val) {
 
 
 bool SDBCampo::operator< (const QTableWidgetItem &other) const {
-	_depura("SDBCampo::operator<", 1);
-	SDBCampo *ot = (SDBCampo *) &other;
-	int tip = ot->tipo();
-	if (tip == m_tipo) {
-		QString val = ot->valorcampo();
+    _depura("SDBCampo::operator<", 1);
+    SDBCampo *ot = (SDBCampo *) &other;
+    int tip = ot->tipo();
+    if (tip == m_tipo) {
+        QString val = ot->valorcampo();
 
-		if (m_tipo == DBCampo::DBnumeric || m_tipo == DBCampo::DBint) {
-		    _depura("SDBCampo::operator< es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
-			double db1 = m_valorcampo.toDouble();
-			double db2 = val.toDouble();
-			return (db1 < db2);
-		} // end if
+        if (m_tipo == DBCampo::DBnumeric || m_tipo == DBCampo::DBint) {
+            _depura("SDBCampo::operator< es del tipo numerico:", 0, m_nomcampo + QString::number(m_tipo));
+            double db1 = m_valorcampo.toDouble();
+            double db2 = val.toDouble();
+            return (db1 < db2);
+        } // end if
 
-		if (m_tipo == DBCampo::DBdate) {
+        if (m_tipo == DBCampo::DBdate) {
             _depura("SDBCampo::operator< es del tipo fecha:", 0, m_nomcampo + QString::number(m_tipo));
                     QDate fech = normalizafecha(m_valorcampo);
                     QString db1 = fech.toString(Qt::ISODate);
-		    QDate fech1 = normalizafecha(val);
-		    QString db2 = fech1.toString(Qt::ISODate);
-		    return (db1 < db2);
-		} // end if
+            QDate fech1 = normalizafecha(val);
+            QString db2 = fech1.toString(Qt::ISODate);
+            return (db1 < db2);
+        } // end if
 
-		if (m_tipo == DBCampo::DBvarchar) {
-			return (m_valorcampo < val);
-		}
-		_depura("tipo desconocido", 0);
-	}
-	return FALSE;
-};
+        if (m_tipo == DBCampo::DBvarchar) {
+            return (m_valorcampo < val);
+        }
+        _depura("tipo desconocido", 0);
+    }
+    return FALSE;
+}
+
+
+SDBRecord *SDBCampo::pare() {
+    return m_pare;
+}
 
 
 SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp) {
@@ -157,5 +162,46 @@ SHeader::SHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nom
     m_options = opt;
     m_nompresentacion = nomp;
     m_valorcampo = "";
+}
+
+
+SHeader::~SHeader() {
+    _depura("SHeader::~SHeader", 0);
+}
+
+
+int SHeader::set(QString val) {
+    m_valorcampo = val;
+    return 0;
+}
+
+
+unsigned int SHeader::options() {
+    return m_options;
+}
+
+
+unsigned int SHeader::restricciones() {
+    return m_restricciones;
+}
+
+
+DBCampo::dbtype SHeader::tipo() {
+    return m_tipo;
+}
+
+
+QString SHeader::nompresentacion() {
+    return m_nompresentacion;
+}
+
+
+int SHeader::restrictcampo() {
+    return m_restricciones;
+}
+
+
+QString SHeader::nomcampo() {
+    return m_nomcampo;
 }
 

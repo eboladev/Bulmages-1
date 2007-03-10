@@ -24,6 +24,7 @@
 #include "QList"
 #include "QLibrary"
 
+
 /** Controla el sistema de carga y disparo segun metodo de los plugins
  */
 class Plugins {

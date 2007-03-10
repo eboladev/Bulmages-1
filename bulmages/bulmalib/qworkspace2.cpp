@@ -25,6 +25,16 @@
 #include "funcaux.h"
 
 
+QWorkspace2::QWorkspace2(QWidget *) {
+    _depura("QWorkspace2::QWorkspace2", 0);
+}
+
+
+QWorkspace2::~QWorkspace2() {
+    _depura("QWorkspace2::~QWorkspace2", 0);
+}
+
+
 void QWorkspace2::addWindow(QWidget * w) {
     int tamdispW;
     int tamdispH;

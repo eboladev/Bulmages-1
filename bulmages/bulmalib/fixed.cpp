@@ -15,6 +15,28 @@
 #include "funcaux.h"
 
 
+Fixed::Fixed(int x, int p) {
+    value = x;
+    precision = p;
+}
+
+
+Fixed::Fixed(QString a) {
+    fromFixed(a.toAscii());
+}
+
+
+Fixed::Fixed(const char *a) {
+    fromFixed(a);
+}
+
+
+Fixed::Fixed() {
+    value = 0;
+    precision = 1;
+}
+
+
 Fixed operator + (Fixed x, Fixed y) {
     x.equalize_precision(y);
     x.value = x.value + y.value;

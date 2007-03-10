@@ -48,30 +48,14 @@ public:
     virtual ~EmpresaBase();
     virtual void init(QString bd, QString tipo);
     QString searchCompany(QString);
-    void setListVentanas(listventanas *doc) {
-        m_listventanas = doc;
-    };
-    QWorkspace2 *pWorkspace() {
-        return m_pWorkspace;
-    };
-    void setWorkspace(QWorkspace2 *qw) {
-        m_pWorkspace = qw;
-    };
-    void setProgressBar(QProgressBar *pb) {
-        m_progressbar = pb;
-    };
-    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE) {
-        return m_listventanas->meteWindow(nom, obj, compdup);
-    };
-    int seleccionaWindow(QString nom, QObject *obj) {
-        return m_listventanas->seleccionaWindow(nom, obj);
-    };
-    int deSeleccionaWindow() {
-        return m_listventanas->deSeleccionaWindow();
-    };
-    void sacaWindow(QObject *nom) {
-        m_listventanas->sacaWindow(nom);
-    };
+    void setListVentanas(listventanas *doc);
+    QWorkspace2 *pWorkspace();
+    void setWorkspace(QWorkspace2 *qw);
+    void setProgressBar(QProgressBar *pb);
+    int meteWindow(QString nom, QObject *obj, bool compdup = TRUE);
+    int seleccionaWindow(QString nom, QObject *obj);
+    int deSeleccionaWindow();
+    void sacaWindow(QObject *nom);
     void s_indexadorCambiaEstado(bool);
 };
 

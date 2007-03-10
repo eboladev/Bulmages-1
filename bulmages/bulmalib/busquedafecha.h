@@ -33,33 +33,18 @@ class BusquedaFecha : public QWidget, public Ui_BusquedaFechaBase {
 public:
     BusquedaFecha(QWidget *parent = 0);
     ~BusquedaFecha();
-    virtual void setfecha(QString val) {
-        m_fecha->setText(val);
-    };
-    virtual void setText(QString val) {
-        m_fecha->setText(val);
-    };
-    virtual QString fecha() {
-        return m_fecha->text();
-    };
-    virtual QString text() {
-        return m_fecha->text();
-    };
+    virtual void setfecha(QString val);
+    virtual void setText(QString val);
+    virtual QString fecha();
+    virtual QString text();
 
 public slots:
     virtual void s_searchFecha();
     virtual void s_fechatextChanged(const QString &);
     virtual void s_fechalostFocus();
-    virtual void s_returnPressed() {
-                             s_fechalostFocus();
-                             emit returnPressed();
-                         };
-    virtual void selectAll() {
-        m_fecha->selectAll();
-    };
-    virtual void setFocus() {
-        m_fecha->setFocus();
-    };
+    virtual void s_returnPressed();
+    virtual void selectAll();
+    virtual void setFocus();
 
 signals:
     void valueChanged(QString);

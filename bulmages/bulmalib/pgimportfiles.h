@@ -31,26 +31,26 @@
 #define IMPORT_TODO 0xFFFFFFFF
 
 /// Tipos para BulmaCont:
-#define IMPORT_CUENTAS 1
-#define IMPORT_TIPOSIVA 2
-#define IMPORT_ASIENTOS 4
-#define IMPORT_AINTELIGENTES 8
-#define IMPORT_BALANCES 16
-#define IMPORT_COBROS 32
-#define IMPORT_FACTURAS 64
+#define IMPORT_CUENTAS                   1
+#define IMPORT_TIPOSIVA                  2
+#define IMPORT_ASIENTOS                  4
+#define IMPORT_AINTELIGENTES             8
+#define IMPORT_BALANCES                 16
+#define IMPORT_COBROS                   32
+#define IMPORT_FACTURAS                 64
 
 /// Tipos para BulmaFact:
-#define IMPORT_FAMILIAS 1
-#define IMPORT_ALBARANESCLIENTE 2
-#define IMPORT_CLIENTES 128
-#define IMPORT_PROVEEDORES 256
-#define IMPORT_ARTICULOS 512
-#define IMPORT_FACTURASCLIENTE 1024
-#define IMPORT_ALMACENES 2048
-#define IMPORT_TRABAJADORES 4096
-#define IMPORT_FORMAS_PAGO 8192
-#define IMPORT_PRESUPUESTOSCLIENTE 16384
-#define IMPORT_PEDIDOSCLIENTE  4
+#define IMPORT_FAMILIAS                  1
+#define IMPORT_ALBARANESCLIENTE          2
+#define IMPORT_CLIENTES                128
+#define IMPORT_PROVEEDORES             256
+#define IMPORT_ARTICULOS               512
+#define IMPORT_FACTURASCLIENTE        1024
+#define IMPORT_ALMACENES              2048
+#define IMPORT_TRABAJADORES           4096
+#define IMPORT_FORMAS_PAGO            8192
+#define IMPORT_PRESUPUESTOSCLIENTE   16384
+#define IMPORT_PEDIDOSCLIENTE            4
 
 
 /// Clase para importaci&oacute;n y exportaci&oacute;n a distintos formatos de archivo de datos.
@@ -73,31 +73,17 @@ private:
 public:
     /// Para que la clase pueda emitir el estado de completitud se inicializa con un puntero
     /// a funci&oacute;n.
-    virtual void alerta(int, int) {}
-    ;
+    virtual void alerta(int, int);
     /// Para que la clase pueda emitir mensajes de error o de alerta se inicializa con un
     /// puntero de funci&oacute;n.
-    virtual void mensajeria(QString) {
-        _depura("Funcion no implementada en esta clase\n", 2);
-    };
-    void setFInicial(QString f) {
-        m_fInicial = f;
-    };
-    void setFFinal(QString f) {
-        m_fFinal = f;
-    };
-    void setModoTest() {
-        m_modoTest = TRUE;
-    };
-    void setModoNormal() {
-        m_modoTest = FALSE;
-    };
-    bool modoTest() {
-        return (m_modoTest == TRUE);
-    };
+    virtual void mensajeria(QString);
+    void setFInicial(QString f);
+    void setFFinal(QString f);
+    void setModoTest();
+    void setModoNormal();
+    bool modoTest();
     pgimportfiles(postgresiface2 *);
-    virtual ~pgimportfiles() {}
-    ;
+    virtual ~pgimportfiles();
     int contaplus2Bulmages(QFile &, QFile &);
     int bulmages2Contaplus(QFile &, QFile &);
     /// Esta funci&oacute;n pasa datos de una empresa al formato XML.

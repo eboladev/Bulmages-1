@@ -39,19 +39,14 @@ public:
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
 };
 
+
 /// Reimplementa los items de QTableWidget2 para que podamos programar cosas en ellos.
 class QTableWidgetItem2 : public QTableWidgetItem {
 public:
     int modo;
-    QTableWidgetItem2(int type = Type, int mode = 0) : QTableWidgetItem(type) {
-        modo = mode;
-    }
-    QTableWidgetItem2(const QString &text, int type = Type, int mode = 0) : QTableWidgetItem(text, type) {
-        modo = mode;
-    }
-    ~QTableWidgetItem2() {
-        _depura("~QTableWidgetItem2", 1);
-    };
+    QTableWidgetItem2(int type = Type, int mode = 0);
+    QTableWidgetItem2(const QString &text, int type = Type, int mode = 0);
+    ~QTableWidgetItem2();
     virtual bool operator< (const QTableWidgetItem &other) const;
 };
 
@@ -67,33 +62,20 @@ private:
     int m_tipoorden;
     int m_colorden;
 public:
-    int tipoorden() {
-        return m_tipoorden;
-    };
-    int colorden() {
-        return m_colorden;
-    };
-    void settipoorden(int t) {
-        m_tipoorden = t;
-    };
-    void setcolorden(int t) {
-        m_colorden = t;
-    };
-    void columnMoved(int column, int oldIndex, int newIndex) {
-        QTableWidget::columnMoved(column, oldIndex, newIndex);
-    };
+    int tipoorden();
+    int colorden();
+    void settipoorden(int t);
+    void setcolorden(int t);
+    void columnMoved(int column, int oldIndex, int newIndex);
     QTableWidget2(QWidget *parent = 0);
-    ~QTableWidget2() {
-        _depura("END ~QTableWidget2", 0);
-    };
+    ~QTableWidget2();
     void editItem(QTableWidgetItem *it);
     virtual bool eventFilter(QObject *obj, QEvent *event);
     void setText(int x, int y, const QString &val);
     virtual void ordenar();
-    
+
 public slots:
     virtual void sitemChanged(QTableWidgetItem *it);
-
 
 signals:
     void pulsadomas(int, int, int);

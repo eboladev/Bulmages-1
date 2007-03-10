@@ -26,6 +26,13 @@
 #include "funcaux.h"
 
 
+dialogChanges::dialogChanges(QObject *ob) {
+    _depura("dialogChanges::dialogChanges", 0);
+    m_obje = ob;
+    _depura("END dialogChanges::dialogChanges", 0);
+}
+
+
 void dialogChanges::dialogChanges_cargaInicial() {
     _depura("dialogChanges::dialogChanges_cargaInicial", 0);
     m_maxQText = 0;

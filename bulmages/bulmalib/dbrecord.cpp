@@ -25,6 +25,62 @@
 #include <QTextStream>
 
 
+bool DBCampo::cambiado() {
+    return m_valorcampo != m_valorcampoorig;
+}
+
+
+void DBCampo::resetCambio() {
+    m_valorcampoorig = m_valorcampo;
+}
+
+
+DBCampo::~DBCampo() {
+    _depura("DBCampo::~DBCampo", 1);
+}
+
+
+postgresiface2 *DBCampo::conexionbase() {
+    return m_conexionbase;
+}
+
+
+void DBCampo::setconexionbase(postgresiface2 *comp) {
+    m_conexionbase = comp;
+}
+
+
+DBCampo::dbtype DBCampo::tipo() {
+    return m_tipo;
+}
+
+
+int DBCampo::set(QString val) {
+    m_valorcampo = val;
+    return 0;
+}
+
+
+int DBCampo::restrictcampo() {
+    return m_restrict;
+}
+
+
+QString DBCampo::nomcampo() {
+    return m_nomcampo;
+}
+
+
+QString DBCampo::nompresentacion() {
+    return m_nompresentacion;
+}
+
+
+QString DBCampo::valorcampo() {
+    return m_valorcampo;
+}
+
+
 DBCampo::DBCampo(postgresiface2 *com, QString nom, dbtype typ, int res, QString nomp) {
     m_conexionbase = com;
     m_nomcampo = nom;
@@ -77,6 +133,51 @@ QString DBCampo::valorcampoprep(int &error) {
 }
 
 
+void DBRecord::setconexionbase(postgresiface2 *comp) {
+    m_conexionbase = comp;
+}
+
+
+postgresiface2 *DBRecord::conexionbase() {
+    return m_conexionbase;
+}
+
+
+void DBRecord::setDBTableName(QString nom) {
+    m_tablename = nom;
+}
+
+
+void DBRecord::setNuevo(bool n) {
+    m_nuevoCampo = n;
+}
+
+
+QString DBRecord::tableName() {
+    return m_tablename;
+}
+
+
+QString DBRecord::campoId() {
+    return m_campoid;
+}
+
+
+void DBRecord::setDBCampoId(QString nom) {
+    m_campoid = nom;
+}
+
+
+QList<DBCampo *> *DBRecord::lista() {
+    return &m_lista;
+}
+
+
+void DBRecord::vaciar() {
+    DBclear();
+}
+
+
 DBRecord::DBRecord(postgresiface2 *con) {
     _depura("DBRecord::DBRecord", 0);
     m_conexionbase = con;
@@ -86,9 +187,9 @@ DBRecord::DBRecord(postgresiface2 *con) {
 
 
 DBRecord::~DBRecord() {
-	_depura("DBRecord::~DBRecord", 0);
-	m_lista.clear();
-	_depura("END DBRecord::~DBRecord", 0);
+    _depura("DBRecord::~DBRecord", 0);
+    m_lista.clear();
+    _depura("END DBRecord::~DBRecord", 0);
 }
 
 
@@ -100,16 +201,16 @@ int DBRecord::DBload(cursor2 *cur) {
     for (int i = 0; i < m_lista.size(); ++i) {
         linea = m_lista.at(i);
         if (! (linea->restrictcampo() & DBCampo::DBNoLoad)) {
-		QString nom = linea->nomcampo();
-		QString val = cur->valor(nom);
-		if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
-		m_nuevoCampo = TRUE;
-		if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
-		m_nuevoCampo = TRUE;
-		error += linea->set(val);
-		/// Al ser una carga consideramos que los cambios estan inicializados.
-		linea->resetCambio();
-	} // end if
+        QString nom = linea->nomcampo();
+        QString val = cur->valor(nom);
+        if ((linea->restrictcampo() & DBCampo::DBPrimaryKey) && (val == ""))
+        m_nuevoCampo = TRUE;
+        if ((linea->restrictcampo() & DBCampo::DBDupPrimaryKey) && (val == ""))
+        m_nuevoCampo = TRUE;
+        error += linea->set(val);
+        /// Al ser una carga consideramos que los cambios estan inicializados.
+        linea->resetCambio();
+    } // end if
     } // end for
     _depura("END DBRecord::DBload", 0);
     return error;
@@ -403,9 +504,9 @@ void DBRecord::imprimir() {
     for (int i = 0; i < m_lista.size(); ++i) {
             linea = m_lista.at(i);
         fitxersortidatxt += "<tr>\n";
-        fitxersortidatxt += "	<td>" + linea->nomcampo() + "</td>\n";
-        fitxersortidatxt += "	<td>" + linea->nompresentacion() + "</td>\n";
-        fitxersortidatxt += "	<td>" + linea->valorcampo() + "</td>\n";
+        fitxersortidatxt += "   <td>" + linea->nomcampo() + "</td>\n";
+        fitxersortidatxt += "   <td>" + linea->nompresentacion() + "</td>\n";
+        fitxersortidatxt += "   <td>" + linea->valorcampo() + "</td>\n";
         fitxersortidatxt += "</tr>";
     } // end for
 

@@ -30,8 +30,7 @@ class QApplication2 : public QApplication {
 
 public:
     QApplication2(int &argc, char **argv);
-    ~QApplication2() {}
-    ;
+    ~QApplication2();
     bool notify(QObject *o, QEvent *e);
 };
 

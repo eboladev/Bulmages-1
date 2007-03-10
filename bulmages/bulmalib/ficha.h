@@ -31,7 +31,6 @@
 class Ficha : public QWidget, public dialogChanges {
     Q_OBJECT
 public:
-
     enum edmode
     {
         EditMode = 0, SelectMode = 1
@@ -43,25 +42,16 @@ private:
     edmode m_modo;
 
 protected:
-    void setModoConsulta() {
-        m_modo = SelectMode;
-    };
-    void setModoEdicion() {
-        m_modo = EditMode;
-    };
-    bool modoEdicion() { return m_modo==EditMode;};
-    bool modoConsulta() {return m_modo==SelectMode;};
+    void setModoConsulta();
+    void setModoEdicion();
+    bool modoEdicion();
+    bool modoConsulta();
+
 public:
-    Ficha(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo=EditMode);
+    Ficha(QWidget *parent = 0, Qt::WFlags f = 0, edmode modo = EditMode);
     virtual ~Ficha();
-    virtual int guardar() {
-        _depura("Ficha::guardar existe solo para ser derivado", 0);
-        return 0;
-    };
-    virtual int borrar() {
-        _depura("Ficha::borrar existe solo para ser derivado", 0);
-        return 0;
-    };
+    virtual int guardar();
+    virtual int borrar();
     virtual void closeEvent(QCloseEvent *);
     virtual int sacaWindow();
 
@@ -69,14 +59,9 @@ public slots:
     virtual void on_mui_aceptar_clicked();
     virtual void on_mui_borrar_clicked();
     /// TODO: Se tiene que pasar de cancelar a cerrar en todas las ventanas.
-    /// Despues quedara obsoleto.
-    virtual void on_mui_cancelar_clicked() {
-        close();
-    };
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    };
-
+    /// Despu&eacute;s quedar&aacute; obsoleto.
+    virtual void on_mui_cancelar_clicked();
+    virtual void on_mui_guardar_clicked();
 
 signals:
     virtual void cerrar();

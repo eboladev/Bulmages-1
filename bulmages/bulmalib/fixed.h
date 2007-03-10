@@ -34,20 +34,10 @@ public:
     void setprecision(int);
 
 public:
-    Fixed(int x, int p) {
-        value = x;
-        precision = p;
-    }
-    Fixed(QString a) {
-        fromFixed(a.toAscii());
-    };
-    Fixed(const char *a) {
-        fromFixed(a);
-    };
-    Fixed() {
-        value = 0;
-        precision = 1;
-    };
+    Fixed(int x, int p);
+    Fixed(QString a);
+    Fixed(const char *a);
+    Fixed();
     Fixed operator [] (int) const;
     Fixed operator = (Fixed);
     Fixed operator = (int);

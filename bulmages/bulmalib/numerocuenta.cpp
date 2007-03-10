@@ -21,6 +21,47 @@
 
 #include "numerocuenta.h"
 
+
+bool numerocuenta::cuentaesvalida() {
+    return (getdc() == dc);
+}
+
+
+QString numerocuenta::getcodigo(QString sep) {
+    return (banco + sep + entidad + sep + dc + sep + numcuenta);
+}
+
+
+QString numerocuenta::getnumcuenta() {
+    return numcuenta;
+}
+
+
+QString numerocuenta::getbanco() {
+    return banco;
+}
+
+
+QString numerocuenta::getentidad() {
+    return entidad;
+}
+
+
+void numerocuenta::setnumcuenta(QString cad) {
+    numcuenta = cad.rightJustified(10, '0');
+}
+
+
+void numerocuenta::setbanco(QString cad) {
+    banco = cad.rightJustified(4, '0');
+}
+
+
+void numerocuenta::setentidad(QString cad) {
+    entidad = cad.rightJustified(4, '0');
+}
+
+
 /// Constructor con los 4 parametros
 /// \param bancopar Codigo banco (4 digitos)
 /// \param entidadpar Codigo entidad (4 digitos)

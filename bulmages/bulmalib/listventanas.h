@@ -31,41 +31,24 @@ class QListWidget1 : public QListWidget {
     Q_OBJECT
 
 public:
-    QListWidget1(QWidget * parent = 0):
-    QListWidget(parent) {}
-    ;
-    ~QListWidget1() {}
-    ;
+    QListWidget1(QWidget * parent = 0);
+    ~QListWidget1();
 };
 
 
 class QListWidgetItem1 : public QListWidgetItem {
-
 private:
     QObject *m_obj;
     QString m_nombre;
     QListWidget1 *m_list;
 
 public:
-    QListWidgetItem1(QListWidget1 *l, QPixmap &p) : QListWidgetItem(l) {
-        setIcon(QIcon(p));
-        m_list = l;
-    };
-    ~QListWidgetItem1() {}
-    ;
-    void setObject(QObject *m) {
-        m_obj = m;
-    };
-    void setNombre(QString m) {
-        m_nombre = m;
-        setText(m);
-    };
-    QObject *object() {
-        return m_obj;
-    };
-    QString nombre() {
-        return m_nombre;
-    };
+    QListWidgetItem1(QListWidget1 *l, QPixmap &p);
+    ~QListWidgetItem1();
+    void setObject(QObject *m);
+    void setNombre(QString m);
+    QObject *object();
+    QString nombre();
 };
 
 
@@ -80,9 +63,7 @@ private:
     QWorkspace2 *m_pWorkspace;
 
 public:
-    void setWorkspace(QWorkspace2 *w) {
-        m_pWorkspace = w;
-    };
+    void setWorkspace(QWorkspace2 *w);
     listventanas(QWidget *a = 0);
     ~listventanas();
 
@@ -103,7 +84,6 @@ public slots:
 
 signals:
     void cambiaEstadoVisible(bool);
-
 };
 
 #endif

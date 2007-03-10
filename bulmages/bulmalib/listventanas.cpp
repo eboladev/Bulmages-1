@@ -30,6 +30,53 @@
 #include "funcaux.h"
 
 
+QListWidget1::QListWidget1(QWidget * parent) : QListWidget(parent) {
+    _depura("QListWidget1::QListWidget1", 0);
+}
+
+
+QListWidget1::~QListWidget1() {
+    _depura("QListWidget1::~QListWidget1", 0);
+}
+
+
+QListWidgetItem1::QListWidgetItem1(QListWidget1 *l, QPixmap &p) : QListWidgetItem(l) {
+    setIcon(QIcon(p));
+    m_list = l;
+}
+
+
+QListWidgetItem1::~QListWidgetItem1() {
+    _depura("QListWidget1::~QListWidgetItem1", 0);
+}
+
+
+void QListWidgetItem1::setObject(QObject *m) {
+    m_obj = m;
+}
+
+
+void QListWidgetItem1::setNombre(QString m) {
+    m_nombre = m;
+    setText(m);
+}
+
+
+QObject *QListWidgetItem1::object() {
+    return m_obj;
+}
+
+
+QString QListWidgetItem1::nombre() {
+    return m_nombre;
+}
+
+
+void listventanas::setWorkspace(QWorkspace2 *w) {
+    m_pWorkspace = w;
+}
+
+
 listventanas::listventanas(QWidget *a) : QDockWidget(a) {
     _depura("listventanas::listventanas", 0);
     m_listBox = new QListWidget1(this);
@@ -116,7 +163,7 @@ int listventanas::meteWindow(QString nombre, QObject *obj, bool compdup) {
                 _depura("listventanas::mostramos la original", 0);
                 ((QWidget *)m->object())->hide();
                 ((QWidget *)m->object())->show();
-	             sacaWindow(obj);
+                 sacaWindow(obj);
                 _depura("listventanas::Establecemos la nueva primaria", 0);
                 throw -1;
             } // end if

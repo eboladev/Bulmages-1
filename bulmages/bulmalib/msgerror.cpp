@@ -21,6 +21,25 @@
 #include "msgerror.h"
 
 
+void msgError::hideFrame() {
+    m_framedetalles->hide();
+}
+
+
+void msgError::showFrame() {
+    m_framedetalles->show();
+}
+
+
+void msgError::s_mostrarDetalles() {
+    if (m_framedetalles->isVisible()) {
+        hideFrame();
+    } else {
+        showFrame();
+    } // end if
+}
+
+
 msgError::msgError(QWidget *parent) : QDialog(parent) {
     setupUi(this);
     QObject::connect(pushButton1, SIGNAL(clicked(bool)), this, SLOT(close()));

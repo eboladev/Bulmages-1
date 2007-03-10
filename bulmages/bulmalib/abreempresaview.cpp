@@ -44,25 +44,67 @@
 
 
 /// Este es el archivo en el que se almacenan las mui_empresas que existen.
-/// Es un archivo separado por comas, que se suele alojar en el 'home/.bulmages' del usuario.
+/// Es un archivo separado por tabuladores, que se suele alojar en
+/// el 'home/.bulmages/' del usuario.
 #define LISTEMPRESAS QString("listempresas.lst")
-/// Numero de columna para el nombre en la lista.
+/// N&uacute;mero de columna para el nombre en la lista.
 #define ABRE_NOMBRE  0
-/// Numero de columna que almacena el ejercicio de la empresa.
+/// N&uacute;mero de columna que almacena el ejercicio de la empresa.
 #define ABRE_ANO     1
-/// Numero de columna que almacena el nombre de la base de datos de la empresa.
+/// N&uacute;mero de columna que almacena el nombre de la base de datos de la empresa.
 #define ABRE_ARCHIVO 2
-/// Numero de columna que almacena el tipo de datos al que hace referencia la linea
-/// (bulmacont o bulmafact).
+/// N&uacute;mero de columna que almacena el tipo de datos al que hace referencia la l&iacute;nea
+/// (BulmaCont o BulmaFact).
 #define ABRE_TIPO    3
 
 
-/// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para hacer la presentacion.
-/// Llama a la funcion 'cargaArchivo'.
+void abreempresaview::mododestructivo() {
+    m_modo = 0;
+}
+
+
+void abreempresaview::modonodestructivo() {
+    m_modo = 1;
+}
+
+
+QString abreempresaview::nomDB() {
+    return m_empresabd;
+}
+
+
+QString abreempresaview::nomEmpresa() {
+    return m_nombreempresa;
+}
+
+
+QString abreempresaview::tipoEmpresa() {
+    return m_tipoempresa;
+}
+
+
+void abreempresaview::s_botonCancelar() {
+    if (m_modo == 0) {
+        exit(1);
+    } else {
+        done(1);
+    } // end if
+}
+
+
+bool abreempresaview::close(bool) {
+    s_botonCancelar();
+    return TRUE;
+}
+
+
+/// Inicia las variables m_tipo y m_tipoempresa y carga el archivo para
+/// hacer la presentaci&oacute;n.
+/// Llama a la funci&oacute;n 'cargaArchivo'.
 /// @param parent La ventana que hace la llamada.
-/// @param tipo String que indica si es contabilidad o facturacion (bulmacont, bulmafact).
-/// @param name nombre de la ventana.
-/// @param modal Indica si la ventana debe comportar de forma modal o no. (por defecto si).
+/// @param tipo Cadena de texto que indica si es contabilidad o facturaci&oacute;n.
+/// @param name Nombre de la ventana.
+/// @param modal Indica si la ventana debe comportar de forma 'modal' o no. (por defecto s&iacute;).
 abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name, bool modal)
         : QDialog(parent) {
     _depura("abreempresaview::abreempresaview", 0);
@@ -78,7 +120,7 @@ abreempresaview::abreempresaview(QWidget *parent, QString tipo, const char *name
     m_tipo = tipo;
     m_tipoempresa = "";
     m_modo = 0;
-    /// si el m_modo es 0 (salir del programa si se cancela la ventana) entonces poner
+    /// Si el m_modo es 0 (salir del programa si se cancela la ventana) entonces se pone
     /// un t&iacute;tulo adecuado al bot&oacute;n.
     if (m_modo == 0) {
         botonCancelar->setText(tr("&Cierra el programa"));
@@ -93,7 +135,7 @@ abreempresaview::~abreempresaview() {
 }
 
 
-/// Inserta una companya en el QList mui_empresas definido en el di&aacute;logo.
+/// Inserta una compa&ntilde;ia en el 'QList' mui_empresas definido en el di&aacute;logo.
 /// Crea un objeto QListViewItem para la QListView 'mui_empresas' y rellena sus
 /// columnas con los datos pasados al m&eacute;todo.
 /// @param nombre Nombre de la empresa.
@@ -115,8 +157,8 @@ void abreempresaview::insertCompany(QString nombre, QString ano, QString archivo
 }
 
 
-/// Se ha pulsado sobre el boton de aceptar con lo que iniciamos la variables y
-/// cerramos esta ventana ya que ha cumplico con su cometido.
+/// Se ha pulsado sobre el bot&oacute;n de aceptar con lo que iniciamos la variables y
+/// cerramos esta ventana ya que ha cumplido con su cometido.
 void abreempresaview::accept() {
     _depura("abreempresaview::accept", 0);
     /// Columna 0: Nombre
@@ -131,9 +173,9 @@ void abreempresaview::accept() {
     QString textoitem1;
     QString textoitem2;
     QString textoitem3;
-    /// Comprueba que la fila esta seleccionada.
-    /// (solo necesitamos comprobar una celda de la fila) y luego
-    /// recupera la informacion de la fila actual.
+    /// Comprueba que la fila est&aacute; seleccionada.
+    /// (S&oacute;lo necesitamos comprobar una celda de la fila) y luego
+    /// recupera la informaci&oacute;n de la fila actual.
     if ((mui_empresas->currentRow() != -1) && (mui_empresas->isItemSelected(mui_empresas->item(mui_empresas->currentRow(), 0)) == TRUE)) {
         itemfilaactual0 = mui_empresas->item(mui_empresas->currentRow(), 0);
         textoitem0 = itemfilaactual0->text();
@@ -169,9 +211,9 @@ void abreempresaview::cargaArchivo() {
 
     /// Si el archivo no existe hacemos una recarga.
     _depura("Vamos a comprobar la existencia\n", 1);
-    /// Comprobamos la existencia del directorio personalizado de bulmages. Y si no
+    /// Comprobamos la existencia del directorio personalizado de BulmaG&eacute;s. Y si no...
     if (!QFile::exists(dir1)) {
-        /// Hacemos una recarga de mui_empresas pq sabemos a ciencia cierta que ha cambiado el listado.
+        /// Hacemos una recarga de mui_empresas porque sabemos a que ha cambiado el listado.
         on_mui_actualizar_clicked();
     } // end if
 
@@ -187,19 +229,19 @@ void abreempresaview::cargaArchivo() {
     QStringList listacampos;
 
     while (!filestr.atEnd()) {
-        /// Lee una linea completa del archivo.
+        /// Lee una l&iacute;nea completa del archivo.
         lineatexto = filestr.readLine();
-        /// Separa los diferentes campos de la linea de texto y la asigna a las variables.
+        /// Separa los diferentes campos de la l&iacute;nea de texto y la asigna a las variables.
         QStringList listacampos = lineatexto.split("\t");
-	   if (listacampos.count() == 4){
-	       nombre = listacampos[0];
-	       ano = listacampos[1];
-	       nombd = listacampos[2];
-	       tipo = listacampos[3];
-	       if (tipo == m_tipo || m_tipo == "") {
-		      insertCompany(nombre, ano, nombd, tipo);
-	       } // end if
-	   } // end if
+       if (listacampos.count() == 4){
+           nombre = listacampos[0];
+           ano = listacampos[1];
+           nombd = listacampos[2];
+           tipo = listacampos[3];
+           if (tipo == m_tipo || m_tipo == "") {
+              insertCompany(nombre, ano, nombd, tipo);
+           } // end if
+       } // end if
     } // end while
     file.close();
     _depura("abreempresaview::cargaArchivo", 0);
@@ -207,7 +249,7 @@ void abreempresaview::cargaArchivo() {
 
 
 /// Guarda en el archivo de mui_empresas las mui_empresas disponibles
-/// Tambien actualiza el listado de mui_empresas visibles.
+/// Tambi&eacute;n actualiza el listado de mui_empresas visibles.
 void abreempresaview::guardaArchivo() {
     _depura("abreempresaview::guardaArchivo", 0);
 #ifndef WINDOWS
@@ -224,10 +266,11 @@ void abreempresaview::guardaArchivo() {
         return;
     } // end if
     QTextStream filestr(&file);
-    /// Deshabilitamos las alertas para que no aparezcan warnings con bases de datos
+    /// Deshabilitamos las alertas para que no aparezcan avisos con bases de datos
     /// que no son del sistema.
     confpr->setValor(CONF_ALERTAS_DB, "No");
-    /// Nos conectamos a template1 para obtener un listado de todas las bases de datos.
+    /// Nos conectamos a la base de datos 'template1' para obtener un listado de todas
+    /// las bases de datos existentes.
     postgresiface2 *db, *db1;
     db = new postgresiface2();
     db->inicializa(QString("template1"));
@@ -238,10 +281,8 @@ void abreempresaview::guardaArchivo() {
     cursor2 *curs = db->cargacursor("SELECT datname FROM pg_database");
     /// Preparamos el listado
     preparamui_empresas();
-    /// Para cada base de datos nos intentamos conectar y miramos de que tipo es.
+    /// Para cada base de datos nos intentamos conectanos y mirar de qu&eacute; tipo es.
     while (!curs->eof()) {
-        /// Realizamos la comprobacion de que el nombre de la base de datos comienze por 'bulma'
-        /// antes de conectarnos a ella. Evitamos que se conecte con Bases de Datos del sistema.
         if (!curs->valor("datname").startsWith("template")) {
             db1 = new postgresiface2();
             db1->inicializa(curs->valor("datname"));
@@ -267,7 +308,8 @@ void abreempresaview::guardaArchivo() {
                 if (tipo == m_tipo || m_tipo == "") {
                     insertCompany(nombre, ano, nomdb, tipo);
                 }// end if
-                /// Independientemente de si deben mostrarse o no hay que guardarlas en el archivo.
+                /// Independientemente de si deben mostrarse o no hay que guardarlas
+                /// en el archivo.
                 filestr << nombre.toAscii().data() << "\t";
                 filestr << ano.toAscii().data() << "\t";
                 filestr << nomdb.toAscii().data() << "\t";
@@ -286,8 +328,8 @@ void abreempresaview::guardaArchivo() {
 }
 
 
-/// Recarga la lista de mui_empresas haciendo las gestiones necesarios con el motor de
-/// Base de Datos. Al mismo tiempo guarda el archivo de bases de datos en el
+/// Recarga la lista de mui_empresas haciendo las gestiones necesarias con el motor de
+/// base de datos. Al mismo tiempo guarda el archivo de bases de datos en el
 /// archivo 'LISTEMPRESAS'.
 void abreempresaview::on_mui_actualizar_clicked() {
     _depura("abreempresaview::on_mui_actualizar_clicked", 0);
@@ -308,7 +350,7 @@ void abreempresaview::preparamui_empresas() {
 
     mui_empresas->verticalHeader()->hide();
     mui_empresas->setShowGrid(FALSE);
-    /// Si es el modo de facturacion ocultamos la fecha.
+    /// Si es el modo de facturaci&oacute;n ocultamos la fecha.
     if (m_tipo == "BulmaFact")
         mui_empresas->hideColumn(ABRE_ANO);
     _depura("END abreempresaview::preparamui_empresas", 0);

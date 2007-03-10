@@ -74,26 +74,20 @@ protected:
     /// Carga la configuracion que tenia el formulario la ultima
     /// vez que fue utilizado por el usuario.
     void cargaconfig();
-    /// Prepara las columnas de la tabla del formulario y pone en 
+    /// Prepara las columnas de la tabla del formulario y pone en
     /// ella los encabezados.
     virtual void pintaCabeceras();
 
 public:
-    /// Devuelve la lista de registros de la base de datos que 
+    /// Devuelve la lista de registros de la base de datos que
     /// se presentan en el subformulario.
-    QList<SDBRecord *> *lista() {
-        return &m_lista;
-    };
+    QList<SDBRecord *> *lista();
     /// Devuelve la lista de cabeceras que forman el subformulario.
-    QList<SHeader *> *cabecera() {
-        return &m_lcabecera;
-    };
+    QList<SHeader *> *cabecera();
 
 public:
     /// Establece el modo de funcionamiento del scroll horizontal.
-    void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode) {
-        mui_list->setHorizontalScrollMode(mode);
-    };
+    void setHorizontalScrollMode(QAbstractItemView::ScrollMode mode);
     /// Establece que los elementos del subformulario son ordenables
     void setSortingEnabled(bool);
     /// Indica si los elementos del subformulario son ordenables.
@@ -102,118 +96,67 @@ public:
     /// el cual el orden de los elementos se almacena en la base de datos
     /// mediante un campo orden"tabla" de tipo numerico.
     void setOrdenEnabled(bool);
-    /// Indica si esta establecido el modo de ordenacion en la base 
+    /// Indica si esta establecido el modo de ordenacion en la base
     /// de datos.
     bool ordenEnabled();
     /// Indica si una fila determinada del subformulario esta lista
-    /// para intentar ser guardada en la base de datos. O lo que es lo mismo 
+    /// para intentar ser guardada en la base de datos. O lo que es lo mismo
     /// si todos los campos necesarios para guardar el registro estan
     /// rellenados
     bool campoCompleto(int row);
     /// Establece el modo de borrado de registros que permite al subformulario
     /// borrar filas con su correspondiente borrado en la base de datos.
-    void setDelete(bool f) {
-        m_delete = f;
-    };
+    void setDelete(bool f);
     SubForm3(QWidget *parent);
     virtual ~SubForm3();
     /// Devuelve el elemento del subformulario ubicado en la posicion
     /// indicada
-    SDBCampo *item(int row, int col) {
-        return (SDBCampo *) mui_list->item(row, col);
-    };
+    SDBCampo *item(int row, int col);
     /// Devuelve el numero total de columnas del subformulario.
-    int columnCount() {
-        return mui_list->columnCount();
-    };
+    int columnCount();
     /// Muestra la columna indicada en el subformulario.
-    void showColumn(int i) {
-        mui_list->showColumn(i);
-    };
+    void showColumn(int i);
     /// Devuelve el ancho de la columna indicada.
-    int columnWidth(int i) {
-        return mui_list->columnWidth(i);
-    };
+    int columnWidth(int i);
     /// Establece el ancho de la columna indicada.
-    void setColumnWidth(int i, int j) {
-        mui_list->setColumnWidth(i, j);
-    };
+    void setColumnWidth(int i, int j);
     /// Oculta la columna indicada.
-    void hideColumn(int i) {
-        mui_list->hideColumn(i);
-    };
+    void hideColumn(int i);
     /// Devuelve la fila que en la actualidad poee el foco en el subformulario.
-    int currentRow() {
-        return mui_list->currentRow();
-    };
+    int currentRow();
     /// Devuelve el numero de filas en el subformulario.
-    int rowCount() {
-        return mui_list->rowCount();
-    };
+    int rowCount();
     /// Devuelve la columna que en la actualidad posee el foco del subformulario.
-    int currentColumn() {
-        return mui_list->currentColumn();
-    };
+    int currentColumn();
     /// Establece la forma de redimensionado de las columnas del subformulario.
-    void setResizeMode(QHeaderView::ResizeMode modo) {
-        mui_list->horizontalHeader()->setResizeMode(modo);
-    };
+    void setResizeMode(QHeaderView::ResizeMode modo);
     /// Redimensiona las columnas del subformulario para ajustarlas
     /// a los contenidos.
-    void resizeColumnsToContents() {
-        mui_list->resizeColumnsToContents();
-    };
+    void resizeColumnsToContents();
     /// Redimensiona las filas del subformulario para ajustarlas
     /// a los contenidos.
-    void resizeRowsToContents() {
-        mui_list->resizeRowsToContents();
-    };
+    void resizeRowsToContents();
     /// Redimensiona las columnas del subformulario para ajustarlas a los contenidos
-    void resizeColumnToContents(int i) {
-        mui_list->resizeColumnToContents(i);
-    };
+    void resizeColumnToContents(int i);
     /// Ajusta la fila indicada a sus contenidos.
-    void resizeRowToContents(int i) {
-        mui_list->resizeRowToContents(i);
-    };
+    void resizeRowToContents(int i);
     /// Oculta el configurador del subformulario
-    void hideConfig() {
-        mui_configurador->hide();
-    };
+    void hideConfig();
     /// Muestra el configurador del subformulario
-    void showConfig() {
-        mui_configurador->show();
-    };
+    void showConfig();
     /// Hace la impresion del subformulario en formato de tabla RML
     QString imprimir();
     void sortItems(int col, Qt::SortOrder orden);
     void setinsercion(bool b);
-    void setcompany(postgresiface2 *c) {
-        m_companyact = c;
-    };
-    postgresiface2 *companyact() {
-        return m_companyact;
-    };
-    void setDBTableName(QString nom) {
-        m_tablename = nom;
-        m_fileconfig = nom;
-    };
-    QString tableName() { return m_tablename;};
-    void setFileConfig(QString nom) {
-        m_fileconfig = nom;
-    };
-    void setDBCampoId(QString nom) {
-        m_campoid = nom;
-    };
-    void clear() {
-        mui_list->clear();
-    };
-    void setRowCount(int i) {
-        mui_list->setRowCount(i);
-    };
-    void setColumnCount(int i) {
-        mui_list->setColumnCount(i);
-    };
+    void setcompany(postgresiface2 *c);
+    postgresiface2 *companyact();
+    void setDBTableName(QString nom);
+    QString tableName();
+    void setFileConfig(QString nom);
+    void setDBCampoId(QString nom);
+    void clear();
+    void setRowCount(int i);
+    void setColumnCount(int i);
     void situarse(unsigned int, unsigned int);
     void situarse1(unsigned int, unsigned int);
     int addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QString nomp);
@@ -231,12 +174,8 @@ public:
     virtual void cargar(QString query);
     virtual int inicializar();
     virtual void pintar();
-    virtual void creaMenu(QMenu *) {
-        _depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);
-    };
-    virtual void procesaMenu(QAction *) {
-        _depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);
-    };
+    virtual void creaMenu(QMenu *);
+    virtual void procesaMenu(QAction *);
     virtual Fixed sumarCampo(QString);
     bool existsHeader(const QString &);
 
@@ -245,9 +184,7 @@ public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
-    virtual void on_mui_appag_clicked() {
-        on_mui_confquery_clicked();
-    };
+    virtual void on_mui_appag_clicked();
     virtual void on_mui_list_editFinished(int row, int col, int key);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);
@@ -259,13 +196,8 @@ public slots:
     virtual void on_mui_paganterior_clicked();
     virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *item);
     virtual void on_mui_list_cellDoubleClicked(int row, int col);
-    virtual void toogleConfig() {
-        mui_configurador->setVisible(mui_configurador->isHidden());
-        emit toogledConfig(mui_configurador->isVisible());
-    };
-    virtual void on_mui_botonCerrar_clicked() {
-        toogleConfig();
-    };
+    virtual void toogleConfig();
+    virtual void on_mui_botonCerrar_clicked();
     virtual void on_mui_list_cellChanged(int, int);
     virtual void on_mui_list_itemChanged(QTableWidgetItem *it);
     virtual void on_mui_list_currentCellChanged(int, int, int, int);

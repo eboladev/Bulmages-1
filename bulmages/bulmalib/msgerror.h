@@ -33,20 +33,11 @@ public:
     msgError(QWidget *parent = 0);
     msgError(QString, QString);
     virtual ~msgError();
-    void hideFrame() {
-        m_framedetalles->hide();
-    };
-    void showFrame() {
-        m_framedetalles->show();
-    };
+    void hideFrame();
+    void showFrame();
 
 public slots:
-    virtual void s_mostrarDetalles() {
-        if (m_framedetalles->isVisible())
-            hideFrame();
-        else
-            showFrame();
-    };
+    virtual void s_mostrarDetalles();
 };
 
 #endif

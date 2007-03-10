@@ -29,6 +29,21 @@
 #include "funcaux.h"
 
 
+bool cursor2::error() {
+    return m_error;
+}
+
+
+QString cursor2::query() {
+    return m_query;
+}
+
+
+int cursor2::regactual() {
+    return registroactual;
+}
+
+
 /// Realiza la consulta en la base de datos y almacena el resultado en las variables de
 /// clase para poder ser manupuladas.
 /// Tambien almacena en variables globales algunos resultados para poder acelerar las
@@ -225,6 +240,14 @@ bool cursor2::esultimoregistro() {
 /// devuelve TRUE si es el primer registro a consear e el query.
 bool cursor2::esprimerregistro() {
     return (registroactual == 0);
+}
+
+
+/// ----------------------------------------------------------------- ///
+
+
+QString postgresiface2::nameDB() {
+    return dbName;
 }
 
 

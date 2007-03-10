@@ -27,54 +27,54 @@
 #include "pgimportfiles.h"
 #include "funcaux.h"
 
-#define EURO  166.386
-#define S_EURO  "166.386"
+#define EURO                166.386
+#define S_EURO             "166.386"
 
-#define LEN_CODIGO_CUENTA 12
-#define LEN_TITULO  40
-#define LEN_NIF  15
-#define LEN_DOMICILIO  35
-#define LEN_POBLACION  25
-#define LEN_PROVINCIA  20
-#define LEN_CODPOSTAL  5
-#define LEN_DIVISA  1
-#define LEN_CTA_CODDIVISA  5
-#define LEN_CTA_DOCUMENTO  1
-#define LEN_AJUSTAME  1
-#define LEN_TIPOIVA  1
+#define LEN_CODIGO_CUENTA    12
+#define LEN_TITULO           40
+#define LEN_NIF              15
+#define LEN_DOMICILIO        35
+#define LEN_POBLACION        25
+#define LEN_PROVINCIA        20
+#define LEN_CODPOSTAL         5
+#define LEN_DIVISA            1
+#define LEN_CTA_CODDIVISA     5
+#define LEN_CTA_DOCUMENTO     1
+#define LEN_AJUSTAME          1
+#define LEN_TIPOIVA           1
 
-#define LEN_ASIEN  6
-#define LEN_FECHA  8
-#define LEN_SUBCTA  12
-#define LEN_CONTRA  12
-#define LEN_PTADEBE  16
-#define LEN_CONCEPTO  25
-#define LEN_PTAHABER  16
-#define LEN_FACTURA  8
-#define LEN_BASEIMPO  16
-#define LEN_IVA  5
-#define LEN_RECEQUIV  5
-#define LEN_DOCUMENTO  10
-#define LEN_DEPARTA  3
-#define LEN_CLAVE  6
-#define LEN_ESTADO  1
-#define LEN_NCASADO  6
-#define LEN_TCASADO  1
-#define LEN_TRANS  6
-#define LEN_CAMBIO  16
-#define LEN_DEBEME  16
-#define LEN_HABERME  16
-#define LEN_AUXILIAR  1
-#define LEN_SERIE  1
-#define LEN_SUCURSAL  4
-#define LEN_CODDIVISA  5
-#define LEN_IMPAUXME  16
-#define LEN_MONEDAUSO  1
-#define LEN_EURODEBE  16
-#define LEN_EUROHABER  16
-#define LEN_BASEEURO  16
-#define LEN_NOCONV  1
-#define LEN_NUMEROINV  10
+#define LEN_ASIEN             6
+#define LEN_FECHA             8
+#define LEN_SUBCTA           12
+#define LEN_CONTRA           12
+#define LEN_PTADEBE          16
+#define LEN_CONCEPTO         25
+#define LEN_PTAHABER         16
+#define LEN_FACTURA           8
+#define LEN_BASEIMPO         16
+#define LEN_IVA               5
+#define LEN_RECEQUIV          5
+#define LEN_DOCUMENTO        10
+#define LEN_DEPARTA           3
+#define LEN_CLAVE             6
+#define LEN_ESTADO            1
+#define LEN_NCASADO           6
+#define LEN_TCASADO           1
+#define LEN_TRANS             6
+#define LEN_CAMBIO           16
+#define LEN_DEBEME           16
+#define LEN_HABERME          16
+#define LEN_AUXILIAR          1
+#define LEN_SERIE             1
+#define LEN_SUCURSAL          4
+#define LEN_CODDIVISA         5
+#define LEN_IMPAUXME         16
+#define LEN_MONEDAUSO         1
+#define LEN_EURODEBE         16
+#define LEN_EUROHABER        16
+#define LEN_BASEEURO         16
+#define LEN_NOCONV            1
+#define LEN_NUMEROINV        10
 
 
 extern QApplication2 *theApp;
@@ -164,7 +164,6 @@ private:
     QList<tvalores> listalpedidocliente;
     QList<tvalores> listadpedidocliente;
 
-
 public:
     ImportBulmaFact(pgimportfiles *, postgresiface2 *, unsigned long long int tip = IMPORT_TODO);
     ~ImportBulmaFact();
@@ -199,6 +198,46 @@ private:
 
 
 /// ---------------------------------------------
+
+
+void pgimportfiles::alerta(int, int) {
+}
+
+
+void pgimportfiles::mensajeria(QString) {
+    _depura("Funcion no implementada en esta clase\n", 2);
+}
+
+
+void pgimportfiles::setFInicial(QString f) {
+    m_fInicial = f;
+}
+
+
+void pgimportfiles::setFFinal(QString f) {
+    m_fFinal = f;
+}
+
+
+void pgimportfiles::setModoTest() {
+    m_modoTest = TRUE;
+}
+
+
+void pgimportfiles::setModoNormal() {
+    m_modoTest = FALSE;
+}
+
+
+bool pgimportfiles::modoTest() {
+    return (m_modoTest == TRUE);
+}
+
+
+pgimportfiles::~pgimportfiles() {
+    _depura("pgimportfiles::~pgimportfiles", 0);
+}
+
 
 pgimportfiles::pgimportfiles(postgresiface2 *con) {
     conexionbase = con;

@@ -23,6 +23,42 @@
 #include "funcaux.h"
 
 
+void BusquedaFecha::setfecha(QString val) {
+    m_fecha->setText(val);
+}
+
+
+void BusquedaFecha::setText(QString val) {
+    m_fecha->setText(val);
+}
+
+
+QString BusquedaFecha::fecha() {
+    return m_fecha->text();
+}
+
+
+QString BusquedaFecha::text() {
+    return m_fecha->text();
+}
+
+
+void BusquedaFecha::s_returnPressed() {
+    s_fechalostFocus();
+    emit returnPressed();
+}
+
+
+void BusquedaFecha::selectAll() {
+    m_fecha->selectAll();
+}
+
+
+void BusquedaFecha::setFocus() {
+    m_fecha->setFocus();
+}
+
+
 /**  Inicializa el objeto y hace todas las conexiones necesarias.
 */
 BusquedaFecha::BusquedaFecha(QWidget *parent) : QWidget(parent) {
