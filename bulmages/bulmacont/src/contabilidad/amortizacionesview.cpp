@@ -23,8 +23,6 @@
 
 #include <empresa.h>
 
-#define COL_CODIGO 0
-#define COL_NOMBRE 1
 
 /** Constructor de la clase del listado.
  *  Inicializa las variables y elementos del listado.
@@ -35,6 +33,14 @@ amortizacionesview::amortizacionesview(empresa *emp, QWidget *parent)
     _depura("amortizacionesview::amortizacionesview", 0);
     this->setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
+   /// Hacemos la inicializacion de un listado embebido.
+    mui_listado->setcompany(m_companyact);
+    mui_listado->setDBTableName("amortizacion");
+    mui_listado->setFileConfig("AmortizacionListSubform");
+    mui_listado->setDBCampoId("idamortizacion");
+    mui_listado->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id amortizacion"));
+    mui_listado->addSHeader("nomamortizacion", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
+    mui_listado->setinsercion(FALSE);
     inicializatabla();
     m_companyact->meteWindow(windowTitle(), this, FALSE);
     _depura("END amortizacionesview::amortizacionesview", 0);
@@ -54,14 +60,6 @@ amortizacionesview::~amortizacionesview() {
 /// TODO: La clase se basa en QTableWidget y deberia usar SubForm2Bc
 void amortizacionesview::inicializatabla()  {
     _depura("amortizacionesview::inicializatabla", 0);
-   /// Hacemos la inicializacion de un listado embebido.
-    mui_listado->setcompany(m_companyact);
-    mui_listado->setDBTableName("amortizacion");
-    mui_listado->setFileConfig("AmortizacionListSubform");
-    mui_listado->setDBCampoId("idamortizacion");
-    mui_listado->addSHeader("idamortizacion", DBCampo::DBint, DBCampo::DBNotNull | DBCampo::DBPrimaryKey, SHeader::DBNoView | SHeader::DBNoWrite, tr("Id amortizacion"));
-    mui_listado->addSHeader("nomamortizacion", DBCampo::DBdate, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Nombre"));
-    mui_listado->setinsercion(FALSE);
     mui_listado->cargar("SELECT * FROM amortizacion");
     _depura("END amortizacionesview::inicializatabla", 0);
 }

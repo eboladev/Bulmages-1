@@ -28,7 +28,8 @@
 class empresa;
 
 
-/** */
+/** Trata la ventana de Listado de Amortizaciones.
+*/
 class amortizacionesview : public FichaBc, public Ui_AmortizacionesBase {
     Q_OBJECT
 private:
