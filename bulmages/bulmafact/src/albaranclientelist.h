@@ -21,40 +21,33 @@
 #ifndef CLIENTDELIVNOTESLIST_H
 #define CLIENTDELIVNOTESLIST_H
 
-
 #include "busquedacliente.h"
 #include "busquedaarticulo.h"
 #include "company.h"
 #include "subform2bf.h"
 #include "ficha.h"
 
+
 /// Subformulario de albaranes de clientes.
 /** Esta clase se encarga de implementar el subformulario de albaranes a clientes.
     Es una clase derivada de SubForm2Bf, donde estan las funciones especificas de la facturacion.
     que a su vez deriva de SubForm3 que tiene las funciones de subformularios.
-    
+
     La funcionalidad de esta clase es configurar el subformulario para que funcione
     con la tabla de albaranes.
-    
+
     Reimplementa los metodos de cargar para producir el query adecuado.
 */
 class AlbaranClienteListSubform : public SubForm2Bf {
     Q_OBJECT
+
 public:
     AlbaranClienteListSubform(QWidget *parent = 0);
     ~AlbaranClienteListSubform() {}
 
 public slots:
-    virtual void cargar() {
-        _depura("AlbaranClienteListSubform::cargar\n", 0);
-        QString SQLQuery = "SELECT * FROM albaran";
-        cursor2 * cur= companyact()->cargacursor(SQLQuery);
-        SubForm3::cargar(cur);
-        delete cur;
-    }
-    virtual void cargar(QString query) {
-        SubForm3::cargar(query);
-    }
+    virtual void cargar();
+    virtual void cargar(QString query);
 };
 
 
@@ -78,13 +71,13 @@ public:
 private:
     /// El puntero a company que se propaga siempre en toda la aplicacion.
     company *m_companyact;
-    
+
     /// El modo del listado, modo edicion o modo selector.
     /// m_modo == 0 es modo edicion.
     /// m_modo == 1 es modo selector.
     /// \TODO: Traspasar a la clase listado.
     int m_modo;
-    
+
     /// En el modo selector esta variable indica el elemento seleccionado.
     QString mdb_idalbaran;
 
@@ -93,74 +86,30 @@ public:
     AlbaranClienteList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     ~AlbaranClienteList();
     void presenta();
-    void modoseleccion() {
-        m_modo = 1;
-    }
-    void modoedicion() {
-        m_modo=0;
-    }
+    void modoseleccion();
+    void modoedicion();
     void imprimir();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        m_cliente->setcompany(comp);
-        mui_list->setcompany(comp);
-    }
-    company *getcompany() {
-	return m_companyact;
-    };
-    void hideBotonera() {
-        m_botonera->hide();
-    };
-    void showBotonera() {
-        m_botonera->show();
-    }
-    void hideBusqueda() {
-        m_busqueda->hide();
-    }
-    void showBusqueda() {
-        m_busqueda->show();
-    }
-    void setidcliente(QString val) {
-        m_cliente->setidcliente(val);
-    }
-    QString idCliDelivNote() {
-        return mdb_idalbaran;
-    }
-    void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
-        }
-    }
+    void setcompany(company *comp);
+    company *getcompany();
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
+    void setidcliente(QString val);
+    QString idCliDelivNote();
+    void meteWindow(QString nom, QObject *obj);
     QString generarFiltro();
     void editar(int);
     virtual void on_mui_borrar_clicked();
 
 public slots:
-    virtual void on_m_filtro_textChanged(const QString &text) {
-        if (text.size() >= 3) {
-            on_mui_actualizar_clicked();
-        } // end if
-    }
-    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
-        on_mui_editar_clicked();
-    }
-    virtual void on_mui_crear_clicked() {
-        m_companyact->s_newAlbaranClienteView();
-    }
+    virtual void on_m_filtro_textChanged(const QString &text);
+    virtual void on_mui_list_itemDoubleClicked(QTableWidgetItem *);
+    virtual void on_mui_crear_clicked();
     virtual void on_mui_editar_clicked();
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    }
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    }
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    }
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked);
 
 signals:
     /// Estando en modo seleccion al seleccionar un elemento se emite esta se&ntilde;al.

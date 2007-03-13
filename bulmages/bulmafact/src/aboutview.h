@@ -31,6 +31,7 @@
     */
 class AboutView : public QDialog, private Ui::aboutdlg {
     Q_OBJECT
+
 public:
     /// Constructor de la clase que hace todas las inicializaciones y muestra el dise&ntilde;o hecho en about.ui.
     AboutView(QDialog *parent = 0);

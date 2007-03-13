@@ -27,10 +27,242 @@
 #include "albarancliente.h"
 
 
+QString AlbaranCliente::idalbaran() {
+    return DBvalue("idalbaran");
+}
+
+
+QString AlbaranCliente::numalbaran() {
+    return DBvalue("numalbaran");
+}
+
+
+QString AlbaranCliente::fechaalbaran() {
+    return DBvalue("fechaalbaran");
+}
+
+
+QString AlbaranCliente::comentalbaran() {
+    return DBvalue("comentalbaran");
+}
+
+
+QString AlbaranCliente::comentprivalbaran() {
+    return DBvalue("comentprivalbaran");
+}
+
+
+QString AlbaranCliente::idcliente() {
+    return DBvalue("idcliente");
+}
+
+
+QString AlbaranCliente::idforma_pago() {
+    return DBvalue("idforma_pago");
+}
+
+
+QString AlbaranCliente::idalmacen() {
+    return DBvalue("idalmacen");
+}
+
+
+QString AlbaranCliente::refalbaran() {
+    return DBvalue("refalbaran");
+}
+
+
+QString AlbaranCliente::descalbaran() {
+    return DBvalue("descalbaran");
+}
+
+
+QString AlbaranCliente::numfactura() {
+    return DBvalue("numfactura");
+}
+
+
+QString AlbaranCliente::idtrabajador() {
+    return DBvalue("idtrabajador");
+}
+
+
+QString AlbaranCliente::procesadoalbaran() {
+    return DBvalue("procesadoalbaran");
+}
+
+
+QString AlbaranCliente::contactalbaran() {
+    return DBvalue("contactalbaran");
+}
+
+
+QString AlbaranCliente::telalbaran() {
+    return DBvalue("telalbaran");
+}
+
+
+void AlbaranCliente::setidalbaran(QString val) {
+    setDBvalue("idalbaran", val);
+    m_listalineas->setColumnValue("idalbaran", val);
+    m_listadescuentos->setColumnValue("idalbaran", val);
+}
+
+
+void AlbaranCliente::setNumAlbaran(QString val) {
+    setDBvalue("numalbaran", val);
+}
+
+
+void AlbaranCliente::setfechaalbaran(QString val) {
+    setDBvalue("fechaalbaran", val);
+}
+
+
+void AlbaranCliente::setcomentalbaran(QString val) {
+    setDBvalue("comentalbaran", val);
+}
+
+
+void AlbaranCliente::setcomentprivalbaran(QString val) {
+    setDBvalue("comentprivalbaran", val);
+}
+
+
+void AlbaranCliente::setidcliente(QString val) {
+    setDBvalue("idcliente", val);
+}
+
+
+void AlbaranCliente::setidforma_pago(QString val) {
+    setDBvalue("idforma_pago", val);
+}
+
+
+void AlbaranCliente::setidtrabajador(QString val) {
+    setDBvalue("idtrabajador", val);
+}
+
+
+void AlbaranCliente::setidalmacen(QString val) {
+    setDBvalue("idalmacen", val);
+}
+
+
+void AlbaranCliente::setNumFactura(QString val) {
+    setDBvalue("numfactura", val);
+}
+
+
+void AlbaranCliente::setrefalbaran(QString val) {
+    setDBvalue("refalbaran", val);
+}
+
+
+void AlbaranCliente::setdescalbaran(QString val) {
+    setDBvalue("descalbaran", val);
+}
+
+
+void AlbaranCliente::setcontactalbaran(QString val) {
+    setDBvalue("contactalbaran", val);
+}
+
+
+void AlbaranCliente::settelalbaran(QString val) {
+    setDBvalue("telalbaran", val);
+}
+
+
+void AlbaranCliente::setprocesadoalbaran(QString val) {
+    setDBvalue("procesadoalbaran", val);
+}
+
+
+void AlbaranCliente::pintaIdAlbaran(QString) {
+    _depura("AlbaranCliente::pintaIdAlbaran", 0);
+}
+
+
+void AlbaranCliente::pintaNumAlbaran(QString) {
+    _depura("AlbaranCliente::pintaNumAlbaran", 0);
+}
+
+
+void AlbaranCliente::pintafechaalbaran(QString) {
+    _depura("AlbaranCliente::pintafechaalbaran", 0);
+}
+
+
+void AlbaranCliente::pintaComentAlbaran(QString) {
+    _depura("AlbaranCliente::pintaComentAlbaran", 0);
+}
+
+
+void AlbaranCliente::pintaComentPrivAlbaran(QString) {
+    _depura("AlbaranCliente::pintaComentPrivAlbaran", 0);
+}
+
+
+void AlbaranCliente::pintaidcliente(QString) {
+    _depura("AlbaranCliente::pintaidcliente", 0);
+}
+
+
+void AlbaranCliente::pintaidforma_pago(QString) {
+    _depura("AlbaranCliente::pintaidforma_pago", 0);
+}
+
+
+void AlbaranCliente::pintaIdFactura(QString) {
+    _depura("AlbaranCliente::pintaIdFactura", 0);
+}
+
+
+void AlbaranCliente::pintaidalmacen(QString) {
+    _depura("AlbaranCliente::pintaidalmacen", 0);
+}
+
+
+void AlbaranCliente::pintaNumFactura(QString) {
+    _depura("AlbaranCliente::pintaNumFactura", 0);
+}
+
+
+void AlbaranCliente::pintadescalbaran(QString) {
+    _depura("AlbaranCliente::pintadescalbaran", 0);
+}
+
+
+void AlbaranCliente::pintarefalbaran(QString) {
+    _depura("AlbaranCliente::pintarefalbaran", 0);
+}
+
+
+void AlbaranCliente::pintaidtrabajador(QString) {
+    _depura("AlbaranCliente::pintaidtrabajador", 0);
+}
+
+
+void AlbaranCliente::pintacontactalbaran(QString) {
+    _depura("AlbaranCliente::pintacontactalbaran", 0);
+}
+
+
+void AlbaranCliente::pintatelalbaran(QString) {
+    _depura("AlbaranCliente::pintatelalbaran", 0);
+}
+
+
+void AlbaranCliente::pintaprocesadoalbaran(QString) {
+    _depura("AlbaranCliente::pintaprocesadoalbaran", 0);
+}
+
+
 /** Constructor de la clase que inicializa la clase, prepara la clase DBRecord
     para que trabaje en la base de datos con la tabla albaran y procese adecuadamente
-    todos los campos de dicha tabla.    
-*/    
+    todos los campos de dicha tabla.
+*/
 AlbaranCliente::AlbaranCliente(company *comp, QWidget *parent) : FichaBf (comp, parent)  {
     _depura("AlbaranCliente::AlbaranCliente", 0);
     setDBTableName("albaran");
@@ -144,15 +376,16 @@ int AlbaranCliente::cargar(QString idalbaran)  {
     return 0;
 }
 
+
 /** Este m&eacute;todo se encarga de hacer el guardado del albar&aacute; en la
     base de datos. Una vez guardado se guardan las lineas de albar&aacute;n y los
     descuentos de albar&aacute;n. Tras hacer el guardado se hace una carga del albaran
     para recuperar los datos que haya podido escribir la base de datos automaticamente.
     Dichos datos son la referencia y el n&uacute;mero de albar&aacute;n.
-    
+
     Si todo funciona bien este m&eacute;todo devuelve 0. Si se produce algun error
     se genera una excepcion -1.
-*/    
+*/
 int AlbaranCliente::guardar() {
     _depura("AlbaranCliente::guardar", 0);
     /// Todo el guardado es una transaccion.
@@ -166,7 +399,6 @@ int AlbaranCliente::guardar() {
         m_companyact->commit();
         /// Hacemos una carga para recuperar datos como la referencia y el numero de albaran
         cargar(id);
-
         _depura("END AlbaranCliente::guardar", 0);
         return 0;
     } catch (...) {

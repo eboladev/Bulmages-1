@@ -30,10 +30,119 @@
 #include "funcaux.h"
 
 
+void AlbaranClienteListSubform::cargar() {
+    _depura("AlbaranClienteListSubform::cargar\n", 0);
+    QString SQLQuery = "SELECT * FROM albaran";
+    cursor2 * cur= companyact()->cargacursor(SQLQuery);
+    SubForm3::cargar(cur);
+    delete cur;
+}
+
+
+void AlbaranClienteListSubform::cargar(QString query) {
+    SubForm3::cargar(query);
+}
+
+
+void AlbaranClienteList::modoseleccion() {
+    m_modo = 1;
+}
+
+
+void AlbaranClienteList::modoedicion() {
+    m_modo = 0;
+}
+
+
+void AlbaranClienteList::setcompany(company *comp) {
+    m_companyact = comp;
+    m_cliente->setcompany(comp);
+    mui_list->setcompany(comp);
+}
+
+
+company *AlbaranClienteList::getcompany() {
+    return m_companyact;
+}
+
+
+void AlbaranClienteList::hideBotonera() {
+    m_botonera->hide();
+}
+
+
+void AlbaranClienteList::showBotonera() {
+    m_botonera->show();
+}
+
+
+void AlbaranClienteList::hideBusqueda() {
+    m_busqueda->hide();
+}
+
+
+void AlbaranClienteList::showBusqueda() {
+    m_busqueda->show();
+}
+
+
+void AlbaranClienteList::setidcliente(QString val) {
+    m_cliente->setidcliente(val);
+}
+
+
+QString AlbaranClienteList::idCliDelivNote() {
+    return mdb_idalbaran;
+}
+
+
+void AlbaranClienteList::meteWindow(QString nom, QObject *obj) {
+    if (m_companyact != NULL) {
+        m_companyact->meteWindow(nom, obj);
+    } // end if
+}
+
+
+void AlbaranClienteList::on_m_filtro_textChanged(const QString &text) {
+    if (text.size() >= 3) {
+        on_mui_actualizar_clicked();
+    } // end if
+}
+
+
+void AlbaranClienteList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+    on_mui_editar_clicked();
+}
+
+
+void AlbaranClienteList::on_mui_crear_clicked() {
+    m_companyact->s_newAlbaranClienteView();
+}
+
+
+void AlbaranClienteList::on_mui_imprimir_clicked() {
+    imprimir();
+}
+
+
+void AlbaranClienteList::on_mui_actualizar_clicked() {
+    presenta();
+}
+
+
+void AlbaranClienteList::on_mui_configurar_toggled(bool checked) {
+    if (checked) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+}
+
+
 /** Constructor de la clase sin inicializacion de company. Usando este
     constructor no se olvide de usar setcompany para que la clase no de
     excepciones.
-    El constructor crea la pantalla, la pone en editmodo por defecto y la mete 
+    El constructor crea la pantalla, la pone en editmodo por defecto y la mete
     en el listado de ventanas.
     Usando esta clase tampoco se inicializan bien los widgets que contiene.
 */
@@ -53,6 +162,7 @@ AlbaranClienteList::AlbaranClienteList(QWidget *parent, Qt::WFlags flags, edmode
     hideBusqueda();
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
+
 
 /** Constructor de la clase.
     Inicializa toda la ventana y los widgets que esta contiene.
@@ -81,12 +191,14 @@ AlbaranClienteList::AlbaranClienteList(company *comp, QWidget *parent, Qt::WFlag
     _depura("END AlbaranClienteList::AlbaranClienteList", 0);
 }
 
+
 /** Destructor de la clase */
 AlbaranClienteList::~AlbaranClienteList() {
     _depura("AlbaranClienteList::~AlbaranClienteList", 0);
     m_companyact->sacaWindow(this);
     _depura("END AlbaranClienteList::~AlbaranClienteList", 0);
 }
+
 
 /** Carga el listado de la base de datos y lo presenta.
     Tambien carga el total y lo presenta.
@@ -108,7 +220,7 @@ void AlbaranClienteList::presenta() {
      o bien haciendo doble click en el modo de edicion se desea invocar la accion
      Editar el elemento si estamos en modo editmode o cerrar la ventana y emitir
      un signal selected() si estamos en el modo selector.
-      
+
      Primero determina el idalbaran seleccionado, luego crea la instancia de
      la ventana de edicion AlbaranClienteView y lo mete en el workspace.
      Por ultimo hace que dicha ventana carge de la base de datos el idalbaran
