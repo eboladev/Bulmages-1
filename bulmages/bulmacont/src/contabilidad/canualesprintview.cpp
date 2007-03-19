@@ -20,6 +20,7 @@
 
 #include <QTextStream>
 #include <QLineEdit>
+#include <QLocale>
 
 #include "canualesprintview.h"
 #include "funcaux.h"
@@ -55,7 +56,7 @@ CAnualesPrintView::~CAnualesPrintView()
 }
 
 
-///Se ha pulsado sobre el bot&oacute;n de aceptar del formulario con lo que podemosº
+///Se ha pulsado sobre el bot&oacute;n de aceptar del formulario con lo que podemosÂº
 /// pasar a hacer la impresi&oacute;n.
 /** PSEUDICODIGO
     Ponemos todos los valores de las cuentas.
@@ -88,7 +89,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     } // end if
 
 
-    /** Versi� sin ARBOL
+    /** Versiï¿½ sin ARBOL
 
         /// Ponemos todos los valores de las cuentas. Hacemos la carga.
         QDomNodeList lcuentas = m_doc.elementsByTagName("CUENTA");
@@ -111,7 +112,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     **/
 
-    /** Versi� con ARBOL: m� rollo de cod�o pero muuuucho mas eficiente **/
+    /** Versiï¿½ con ARBOL: mï¿½ rollo de codï¿½o pero muuuucho mas eficiente **/
 
     /// Vamos a crear un &aacute;rbol en la mem&oacute;ria din&aacute;mica con
     /// los distintos niveles de cuentas.
@@ -140,7 +141,14 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 1.
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' AND conceptocontable NOT SIMILAR TO 'Asiento de Regularizaci%' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    QRegExp rx("^.*perdidas y ganancias.*$");
+    rx.setCaseSensitivity(Qt::CaseInsensitive);
+    QString asiento;
+    if(rx.exactMatch(m_doc.elementsByTagName("TITULO").item(0).toElement().text()))
+	asiento = "%Asiento de Regularizaci%";
+    else
+	asiento = "%Asiento de Cierre%";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial+"' AND fecha <= '"+ffinal+"' AND conceptocontable NOT SIMILAR TO '"+asiento+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     cursor2 *hojas;
     hojas = empresaactual->cargacursor ( query, "Periodo1" );
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
@@ -152,7 +160,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
 
     // Ahora, recopilamos todos los apuntes agrupados por cuenta para poder
     // establecer as&iacute; los valores de cada cuenta para el periodo 2.
-    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' AND conceptocontable NOT SIMILAR TO 'Asiento de Regularizaci%' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
+    query = "SELECT cuenta.idcuenta, numapuntes, cuenta.codigo, saldoant, debe, haber, saldo, debeej, haberej, saldoej FROM (SELECT idcuenta, codigo FROM cuenta) AS cuenta NATURAL JOIN (SELECT idcuenta, count(idcuenta) AS numapuntes,sum(debe) AS debeej, sum(haber) AS haberej, (sum(debe)-sum(haber)) AS saldoej FROM apunte WHERE EXTRACT(year FROM fecha) = EXTRACT(year FROM timestamp '"+finicial1+"') GROUP BY idcuenta) AS ejercicio LEFT OUTER JOIN (SELECT idcuenta,sum(debe) AS debe, sum(haber) AS haber, (sum(debe)-sum(haber)) AS saldo FROM apunte WHERE fecha >= '"+finicial1+"' AND fecha <= '"+ffinal1+"' AND conceptocontable NOT SIMILAR TO '"+asiento+"' GROUP BY idcuenta) AS periodo ON periodo.idcuenta=ejercicio.idcuenta LEFT OUTER JOIN (SELECT idcuenta, (sum(debe)-sum(haber)) AS saldoant FROM apunte WHERE fecha < '"+finicial1+"' GROUP BY idcuenta) AS anterior ON cuenta.idcuenta=anterior.idcuenta ORDER BY codigo";
     hojas = empresaactual->cargacursor ( query, "Periodo2" );
     // Para cada cuenta con sus saldos calculados hay que actualizar hojas del &aacute;rbol.
     while ( !hojas->eof() )
@@ -201,7 +209,7 @@ void CAnualesPrintView::on_mui_aceptar_clicked()
     delete arbolP2;
     empresaactual->commit();
 
-    /** Fin de la versi� con ARBOL **/
+    /** Fin de la versiï¿½ con ARBOL **/
 
     /// HAcemos el calculo recursivo del balance.
     bool terminado = FALSE;
@@ -450,7 +458,9 @@ void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffi
         fitxersortidatxt += "<td><para style=\"periodo\">Periodo:</para><para style=\"periodo\">" + periodo1finicial + " ~ " + periodo1ffinal + "</para></td>\n";
         fitxersortidatxt += "<td><para style=\"periodo\">Periodo:</para><para style=\"periodo\">" + periodo2finicial + " ~ " + periodo2ffinal + "</para></td></tr>\n";
 
-        QDomNodeList litems = comp.elementsByTagName ( "LBALANCE" );
+        QDomNodeList litems = comp.elementsByTagName("LBALANCE");
+	QLocale::setDefault(QLocale(QLocale::Spanish, QLocale::Spain));
+	QLocale spanish;
         for ( int i = 0; i < litems.count(); i++ )
         {
             QDomNode item = litems.item ( i );
@@ -459,7 +469,9 @@ void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffi
             { /// The node was really an element.
                 QDomNode formul = item.firstChildElement ( "FORMULA" );
                 QString vact = formul.firstChildElement ( "VALORACT" ).toElement().text();
+		vact = spanish.toString(vact.toDouble(), 'f', 2);
                 QString vant = formul.firstChildElement ( "VALORANT" ).toElement().text();
+		vant = spanish.toString(vact.toDouble(), 'f', 2);
                 QString texto = item.firstChildElement ( "CONCEPTO" ).toElement().text();
                 fitxersortidatxt += "<tr>\n";
                 fitxersortidatxt += "<td>"+texto+"</td>\n";
@@ -468,6 +480,7 @@ void CAnualesPrintView::imprimir ( QString periodo1finicial, QString periodo1ffi
                 fitxersortidatxt += "</tr>\n";
             } // end if
         } // end for
+	QLocale::setDefault(QLocale::C);
         fitxersortidatxt += "</blockTable>\n";
         fitxersortidatxt += "<nextFrame/>\n";
     } // end for
