@@ -21,8 +21,6 @@
 #ifndef ASIENTOSVIEW_H
 #define ASIENTOSVIEW_H
 
-#include <QWidget>
-#include <QComboBox>
 
 #include "ui_asientolistbase.h"
 #include "ficha.h"
@@ -50,16 +48,8 @@ public:
 
 public slots:
     virtual void on_mui_list_cellDoubleClicked(int, int);
-    virtual void on_mui_actualizar_clicked() {
-        inicializa();
-    };
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    };
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked);
     virtual void on_mui_imprimir_clicked();
 };
 

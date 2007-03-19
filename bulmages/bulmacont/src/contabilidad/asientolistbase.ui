@@ -260,7 +260,74 @@
       <property name="spacing" >
        <number>5</number>
       </property>
-      <item row="0" column="2" >
+      <item row="1" column="6" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="4" >
+       <widget class="QLabel" name="label_5" >
+        <property name="text" >
+         <string>Fecha Final</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="7" >
+       <widget class="QLabel" name="TextLabel2" >
+        <property name="text" >
+         <string>Asientos cuyo nombre se parezca a:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="7" >
+       <widget class="QLineEdit" name="mui_nombreasiento" />
+      </item>
+      <item row="5" column="0" colspan="3" >
+       <widget class="QLineEdit" name="mui_saldoasiento" />
+      </item>
+      <item row="4" column="0" colspan="3" >
+       <widget class="QLabel" name="TextLabel2_2" >
+        <property name="text" >
+         <string>Asientos con saldo:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3" colspan="4" >
+       <widget class="QLabel" name="TextLabel2_2_2" >
+        <property name="text" >
+         <string>Asientos que tengan apuntes con cantidad igual a:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3" colspan="4" >
+       <widget class="QLineEdit" name="mui_cantidadapunte" />
+      </item>
+      <item row="0" column="1" colspan="2" >
+       <widget class="QComboBox" name="mui_ejercicio" >
+        <property name="minimumSize" >
+         <size>
+          <width>150</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" >
+       <widget class="QLabel" name="textLabel1" >
+        <property name="text" >
+         <string>Ejercicio:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3" colspan="4" >
        <spacer>
         <property name="orientation" >
          <enum>Qt::Horizontal</enum>
@@ -273,52 +340,18 @@
         </property>
        </spacer>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="textLabel1" >
+      <item row="1" column="2" colspan="2" >
+       <widget class="BusquedaFecha" name="mui_fechaInicial" />
+      </item>
+      <item row="1" column="5" >
+       <widget class="BusquedaFecha" name="mui_fechaFinal" />
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label_4" >
         <property name="text" >
-         <string>Ejercicio:</string>
+         <string>Fecha Inicial</string>
         </property>
        </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QComboBox" name="mui_ejercicio" >
-        <property name="minimumSize" >
-         <size>
-          <width>150</width>
-          <height>0</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2" >
-       <widget class="QLineEdit" name="mui_cantidadapunte" />
-      </item>
-      <item row="3" column="2" >
-       <widget class="QLabel" name="TextLabel2_2_2" >
-        <property name="text" >
-         <string>Asientos que tengan apuntes con cantidad igual a:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0" colspan="2" >
-       <widget class="QLineEdit" name="mui_saldoasiento" />
-      </item>
-      <item row="3" column="0" colspan="2" >
-       <widget class="QLabel" name="TextLabel2_2" >
-        <property name="text" >
-         <string>Asientos con saldo:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="3" >
-       <widget class="QLabel" name="TextLabel2" >
-        <property name="text" >
-         <string>Asientos cuyo nombre se parezca a:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0" colspan="3" >
-       <widget class="QLineEdit" name="mui_nombreasiento" />
       </item>
      </layout>
     </widget>
@@ -330,9 +363,57 @@
      </property>
     </widget>
    </item>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <spacer>
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" >
+        <size>
+         <width>201</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2" >
+       <property name="text" >
+        <string>Total Debe</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_totalDebe" />
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3" >
+       <property name="text" >
+        <string>Total Haber</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="mui_totalHaber" />
+     </item>
+    </layout>
+   </item>
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>BusquedaFecha</class>
+   <extends>QLineEdit</extends>
+   <header>busquedafecha.h</header>
+  </customwidget>
   <customwidget>
    <class>AsientoListSubform</class>
    <extends>QTableWidget</extends>

@@ -184,7 +184,6 @@ public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);
     virtual void on_mui_confcol_clicked();
     virtual void on_mui_confquery_clicked();
-    virtual void on_mui_appag_clicked();
     virtual void on_mui_list_editFinished(int row, int col, int key);
     virtual void on_mui_list_pressedSlash(int row, int col);
     virtual void on_mui_list_pressedAsterisk(int row, int col);

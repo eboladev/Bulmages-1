@@ -40,6 +40,7 @@ AsientoListSubform::AsientoListSubform(QWidget *parent, const char *)
     addSHeader("comentariosasiento", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Comentarios"));
     addSHeader("clase", DBCampo::DBint, DBCampo::DBNoSave, SHeader::DBNone | SHeader::DBNoWrite, tr("Clase"));
     setinsercion(FALSE);
+    setDelete(FALSE);
     _depura("END AsientoListSubform::AsientoListSubform", 0);
 }
 

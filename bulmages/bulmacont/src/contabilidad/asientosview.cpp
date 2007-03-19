@@ -18,6 +18,10 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include <QWidget>
+#include <QComboBox>
+
+
 #include "asientosview.h"
 #include "asiento1view.h"
 #include "empresa.h"
@@ -76,6 +80,7 @@ void asientosview::on_mui_list_cellDoubleClicked(int, int) {
 
 /// Inicializa la ventana, haciendo la consulta pertinente a la base de datos
 /// y presentando los resultados en pantalla.
+/// \TODO Falta tener en cuenta el filtrado por fechas.
 void asientosview::inicializa() {
     _depura("asientosview::inicializa", 0);
     QString cantapunt = mui_cantidadapunte->text();
@@ -133,6 +138,13 @@ void asientosview::inicializa() {
     ejercicioIndice = mui_ejercicio->findText(ejercicio);
     mui_ejercicio->setCurrentIndex(ejercicioIndice);
 
+
+    /// Calculamos el total en el subformulario y lo presentamos.
+    Fixed td= mui_list->sumarCampo("totaldebe");
+    Fixed th = mui_list->sumarCampo("totalhaber");
+    mui_totalDebe->setText(td.toQString());
+    mui_totalHaber->setText(th.toQString());
+
     _depura("END asientosview::inicializa", 0);
 }
 
@@ -143,3 +155,20 @@ void asientosview::on_mui_imprimir_clicked() {
     _depura("END asientosview::on_mui_imprimir_clicked", 0);
 }
 
+
+void asientosview::on_mui_configurar_toggled(bool checked) {
+    _depura("asientosview::on_mui_configurar_toggled", 0);
+    if (checked) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+    _depura("END asientosview::on_mui_configurar_toggled", 0);
+}
+
+
+void asientosview::on_mui_actualizar_clicked() {
+    _depura("asientosview::on_mui_actualizar_clicked", 0);
+    inicializa();
+    _depura("END asientosview::on_mui_actualizar_clicked", 0);
+}

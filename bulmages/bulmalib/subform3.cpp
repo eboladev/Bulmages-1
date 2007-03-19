@@ -176,12 +176,12 @@ void SubForm3::setColumnCount(int i) {
 
 
 void SubForm3::creaMenu(QMenu *) {
-    _depura("SubForm3:: CreaMenu, funcion para ser sobreescrita", 0);
+    _depura("SubForm3:: CreaMenu", 0, "funcion para ser sobreescrita");
 }
 
 
 void SubForm3::procesaMenu(QAction *) {
-    _depura("SubForm3:: procesaMenu, funcion para ser sobreescrita", 0);
+    _depura("SubForm3:: procesaMenu", 0, "funcion para ser sobreescrita");
 }
 
 
@@ -266,6 +266,7 @@ void SubForm3::setOrdenEnabled(bool sorting) {
 
 bool SubForm3::ordenEnabled() {
     _depura("SubForm3::ordenEnabled", 0);
+    _depura("END SubForm3::ordenEnabled", 0);
     return m_orden;
 }
 
@@ -285,12 +286,16 @@ void SubForm3::on_mui_list_cellDoubleClicked(int row, int col) {
 
 
 bool SubForm3::existsHeader(const QString &head) {
+    _depura("SubForm3::existsHeader", 0);
     SHeader *linea;
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
-        if (linea->nomcampo() == head)
-        return TRUE;
+        if (linea->nomcampo() == head) {
+   		 _depura("END SubForm3::existsHeader", 0);
+        	return TRUE;
+	} // end if
     } // end for
+    _depura("END SubForm3::existsHeader", 0);
     return FALSE;
 }
 
@@ -580,15 +585,18 @@ void SubForm3::cargar(cursor2 *cur) {
 
 
 void SubForm3::cargar(QString query) {
+    _depura("SubForm3::cargar", 0);
     cursor2 *cur = m_companyact->cargacursor(query);
     cargar(cur);
     delete cur;
+    _depura("END SubForm3::cargar", 0);
 }
 
 
 /// Devuelve la linea que se esta tratando actualmente.
 SDBRecord *SubForm3::lineaact() {
-    _depura("SubForm3::lineaact()\n", 0);
+    _depura("SubForm3::lineaact", 0);
+    _depura("END SubForm3::lineaact", 0);
     return lineaat(mui_list->currentRow());
 }
 
@@ -1000,22 +1008,22 @@ void SubForm3::on_mui_confcol_clicked() {
 
 
 void SubForm3::on_mui_list_pressedSlash(int, int) {
-    _depura ("pulsadoSlash aun no implementado", 2);
+    _depura ("SubForm3::on_mui_list_pressedSlash", 1, "pulsadoSlash aun no implementado");
 }
 
 
 void SubForm3::on_mui_list_pressedAsterisk(int, int) {
-    _depura ("pressedAsterisk aun no implementado", 1);
+    _depura ("SubForm3::on_mui_list_pressedAsterisk", 1, "pressedAsterisk aun no implementado");
 }
 
 
 void SubForm3::on_mui_list_pressedPlus(int, int) {
-    _depura ("pulsadoPlus aun no implementado", 1);
+    _depura ("SubForm3::on_mui_list_pressedPlus", 1, "pulsadoPlus aun no implementado");
 }
 
 
 void SubForm3::on_mui_list_pressedMinus(int, int) {
-    _depura ("pressedMinus aun no implementado", 1);
+    _depura ("SubForm3::on_mui_list_pressedMinus", 1, "pressedMinus aun no implementado");
 }
 
 
@@ -1055,9 +1063,6 @@ void SubForm3::on_mui_confquery_clicked() {
 }
 
 
-void SubForm3::on_mui_appag_clicked() {
-    on_mui_confquery_clicked();
-}
 
 
 /// Disparador que se activa al haber pulsado ctrl+Arriba en la tabla
@@ -1118,7 +1123,7 @@ void SubForm3::on_mui_pagsiguiente_clicked() {
     int pag = mui_paginaact->text().toInt();
     pag++;
     mui_paginaact->setValue(pag);
-    on_mui_appag_clicked();
+    on_mui_confquery_clicked();
     _depura("END SubForm3::on_mui_pagsiguiente_clicked", 0);
 }
 
@@ -1129,7 +1134,7 @@ void SubForm3::on_mui_paganterior_clicked() {
     if (pag > 1)
         pag--;
     mui_paginaact->setValue(pag);
-    on_mui_appag_clicked();
+    on_mui_confquery_clicked();
     _depura("END SubForm3::on_mui_paganterior_clicked", 0);
 }
 
@@ -1246,12 +1251,16 @@ void SubForm3::contextMenuEvent(QContextMenuEvent *) {
 
 
 void SubForm3::toogleConfig() {
+    _depura("SubForm3::toogleConfig", 0);
     mui_configurador->setVisible(mui_configurador->isHidden());
     emit toogledConfig(mui_configurador->isVisible());
+    _depura("END SubForm3::toogleConfig", 0);
 }
 
 void SubForm3::on_mui_botonCerrar_clicked() {
+    _depura("SubForm3::on_mui_botonCerrar_clicked", 0);
     toogleConfig();
+    _depura("END SubForm3::on_mui_botonCerrar_clicked", 0);
 }
 
 
