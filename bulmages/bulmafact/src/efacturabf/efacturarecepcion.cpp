@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright (C) 2006 by Arturo Martin Llado                             *
  *   amartin@conetxia.com                                                  *
+ *   Contribution by Tomeu Borras tborras@conetxia.com			   *
  *									   *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -33,7 +34,7 @@ EFacturaRecepcion::EFacturaRecepcion(company *emp, QWidget *parent) : QWidget(pa
 	
 	setupUi(this);  // Para que el form se inicialice bien
 	
-	//m_companyact = emp;
+	m_companyact = emp;
 }
 
 EFacturaRecepcion::~EFacturaRecepcion() {}
@@ -41,11 +42,127 @@ EFacturaRecepcion::~EFacturaRecepcion() {}
 void EFacturaRecepcion::on_mui_recibir_clicked() {
 	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
 	
-	QString diremail = "/home/arturo/efacturamail";
+	/// Obtenemos los valores de configuracion necesarios para obtener eFacturas por e-mail
+	
+	QString query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_dirEmail'";
+	cursor2 *dirEmail = m_companyact->cargacursor(query);
 
-	_depura("recibiendo...", 2);
-	system("cd /home/arturo/efacturamail ; python /usr/lib/bulmages/recibemail.py mail.conetxia.com efactura@conetxia.com art5r4");
-	_depura("recepcion completada", 2);
+	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_serverRec'";
+	cursor2 *serverRec = m_companyact->cargacursor(query);
+	
+	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Email'";
+	cursor2 *Email = m_companyact->cargacursor(query);
+
+	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_Password'";
+	cursor2 *Password = m_companyact->cargacursor(query);
+
+	/// Comprobamos que el directorio especificado existeAboutView
+	
+	QDir *direfactura = new QDir(dirEmail->valor("valor"));
+	
+	if (!direfactura->exists()) {
+		_depura("El directorio especificado en la configuracion para la eFactura no existe. Por favor, creelo e intentelo de nuevo", 2);
+		
+		return;
+	}
+		
+	/// Llamamos al script para recibir e-mails con los parametros obtenidos
+	
+	QString llamada_qstring = "cd " + dirEmail->valor("valor") + " ; python /home/arturo/bulmages/trunk/bulmages/installbulmages/efactura/recibemail.py " + serverRec->valor("valor") + " " + Email->valor("valor") + " " + Password->valor("valor");
+	
+	char llamada[512];
+	
+	strncpy(llamada, llamada_qstring.toLatin1(), sizeof(llamada)-1);
+		
+	system(llamada);
+	
+	/// Obtenemos los directorios alojados en nuestra carpeta de eFacturas recibidas
+	
+	// Filtramos solo por directorios que no sean enlaces
+	direfactura->setFilter(QDir::Dirs);
+	// Ordenamos por fecha de modificacion
+	direfactura->setSorting(QDir::Name);
+	
+	QFileInfoList *listadirs = new QFileInfoList(direfactura->entryInfoList());
+	
+	mui_facturasRecibidas->setColumnCount(2);
+	
+	int cont = 0;
+	
+	mui_facturasRecibidas->setRowCount(0);
+	
+	QFileInfo *fileInfo = NULL;
+	QTableWidgetItem *item = NULL;
+	QFileInfoList *archivos = NULL;
+
+	for (int i = 0; i < listadirs->size(); i++) {
+		
+		fileInfo = new QFileInfo(listadirs->at(i));
+		
+		/// Evitamos los directorios "." y ".."
+		
+		if (!fileInfo->fileName().startsWith(".")) {
+			
+			/// Entramos en el directorio
+			
+			if (!direfactura->cd(fileInfo->fileName())) {
+				_depura("Error intentando entrar en " + fileInfo->fileName(), 2);
+				continue;
+			}
+			
+			/// Buscamos solo archivos
+			
+			direfactura->setFilter(QDir::Files);
+			
+			/// Obtenemos la lista de archivos (en teoria solo debe de haber uno, el XML con la efactura)
+			
+			archivos = new QFileInfoList(direfactura->entryInfoList());
+			
+			if (archivos->size() > 1) {
+				_depura("El directorio " + direfactura->absolutePath() + " contiene mas de un archivo. Por favor, arreglelo dejando solo el fichero XML que contenga la e-factura.", 2);
+				direfactura->cdUp();
+				continue;
+			}
+			
+			/// Obtenemos info del archivo
+			
+			fileInfo = new QFileInfo(archivos->at(0));
+			
+			/// Creamos una nueva fila y la usamos
+			
+			mui_facturasRecibidas->insertRow(cont);
+			
+			/// Nombre del fichero
+			
+			item = new QTableWidgetItem(fileInfo->fileName());
+			mui_facturasRecibidas->setItem(cont, 0, item);
+			
+			/// Nombre del directorio que lo contiene
+			
+			item = new QTableWidgetItem(direfactura->absolutePath());
+			mui_facturasRecibidas->setItem(cont, 1, item);
+			
+			cont++;
+			
+			/// Volvemos al directorio de efacturas
+			
+			direfactura->cdUp();
+			
+		} // end if
+	}
+	
+	/// Obtenemos el nombre del archivo XML incluido en cada uno de ellos y
+	/// los mostramos en pantalla
+		
+	/// Liberamos memoria con los datos que ya no necesitamos
+	
+// 	delete item;
+	delete fileInfo;
+	delete direfactura;
+	delete dirEmail;
+	delete serverRec;
+	delete Email;
+	delete Password;
 
 	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
 }
@@ -58,6 +175,8 @@ void EFacturaRecepcion::on_mui_abrir_clicked() {
 
 void EFacturaRecepcion::on_mui_salir_clicked() {
 	_depura("EFacturaRecepcion::on_mui_salir_clicked", 0);
+	
 	close();
+	
 	_depura("END EFacturaRecepcion::on_mui_salir_clicked", 0);
 }

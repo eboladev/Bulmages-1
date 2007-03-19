@@ -29,26 +29,31 @@
 /// guardar los datos de configuracion
 
 EFactura::EFactura(company *emp, QWidget *parent) : QWidget(parent) {
+	
+	_depura("EFactura::EFactura", 2);
+	
 	QString query;
 	
 	setupUi(this);  // Para que el form se inicialice bien
 	
 	m_companyact = emp;
 	
-	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server'";
-	cursor2 *cur1 = m_companyact->cargacursor(query);
-	mui_URLServidorTiempo->setText(cur1->valor("valor"));
-	delete cur1;
+// 	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server'";
+// 	cursor2 *cur1 = m_companyact->cargacursor(query);
+// 	mui_URLServidorTiempo->setText(cur1->valor("valor"));
+// 	delete cur1;
+// 	
+// 	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_certificado'";
+// 	cursor2 *cur2 = m_companyact->cargacursor(query);
+// 	mui_ficheroECertificado->setText(cur2->valor("valor"));
+// 	delete cur2;
+// 	
+// 	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server_valida'";
+// 	cursor2 *cur3 = m_companyact->cargacursor(query);
+// 	mui_URLServidorValidaCert->setText(cur3->valor("valor"));
+// 	delete cur3;
 	
-	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_certificado'";
-	cursor2 *cur2 = m_companyact->cargacursor(query);
-	mui_ficheroECertificado->setText(cur2->valor("valor"));
-	delete cur2;
-	
-	query = "SELECT valor FROM configuracion WHERE nombre = 'eFactura_server_valida'";
-	cursor2 *cur3 = m_companyact->cargacursor(query);
-	mui_URLServidorValidaCert->setText(cur3->valor("valor"));
-	delete cur3;
+	_depura("END EFactura::EFactura", 2);
 }
 
 /// Destructor
@@ -59,9 +64,9 @@ EFactura::~EFactura() {}
 
 void EFactura::on_mui_guardar_clicked() {
 	
-	QString query;
-
 	_depura("EFactura::on_mui_guardar_clicked", 0);
+	
+	QString query;
 	
 	if (mui_URLServidorTiempo->isModified()) {
 		query = "DELETE FROM configuracion WHERE nombre = 'eFactura_server'";
@@ -84,6 +89,8 @@ void EFactura::on_mui_guardar_clicked() {
 	query += mui_ficheroECertificado->text();
 	query += "')";
 	m_companyact->ejecuta(query);
+
+	_depura("END EFactura::on_mui_guardar_clicked", 0);
 }
 
 /// Funcionalidad del boton Examinar en el apartado del certificado
@@ -102,12 +109,14 @@ void EFactura::on_mui_examinaECertificado_clicked() {
 	
 	if (s != NULL)
 		mui_ficheroECertificado->setText(s);
+	
+	_depura("END EFactura::on_mui_examinar_clicked", 0);
 }
 
 /// Funcionalidad del boton cancelar
 
 void EFactura::on_mui_cancelar_clicked() {
-	_depura("EFactura::on_mui_cancelar_clicked", 2);
+	_depura("EFactura::on_mui_cancelar_clicked", 0);
 	
 // 	QString query = "SELECT * FROM configuracion";
 // 	cursor2 *cur = m_companyact->cargacursor(query);
@@ -122,5 +131,6 @@ void EFactura::on_mui_cancelar_clicked() {
 // 	query = "UPDATE configuracion SET nombre='nombre' WHRE nombre='elnombre'";
 // 	m_companyact->begin();
 // 	m_companyact->ejecuta(query);
-// 	m_companyact->rollback();	
+// 	m_companyact->rollback();
+	_depura("END EFactura::on_mui_cancelar_clicked", 0);
 }

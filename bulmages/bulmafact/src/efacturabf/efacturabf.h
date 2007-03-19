@@ -35,8 +35,8 @@
 #include "facturasplist.h"
 
 extern "C" MY_EXPORT void entryPoint(bulmafact *);
-extern "C" MY_EXPORT int FacturaView_EFacturaBotonExportar(FacturaView *);
-
+extern "C" MY_EXPORT int FacturaView_FacturaView(FacturaView *);
+extern "C" MY_EXPORT int FacturasProveedorList_FacturasProveedorList_Post(FacturasProveedorList *);
 extern QApplication2 *theApp;
 
 
@@ -51,7 +51,7 @@ public:
 	~efacturabf();
 	void inicializa(bulmafact *);
 	int FacturaView_FacturaView(FacturaView *);
-	int FacturasProveedorList_EFacturaBotonImportar(FacturasProveedorList *);
+	int FacturasProveedorList_FacturasProveedorList_Post(FacturasProveedorList *);
 
 public slots:
 	void elslot();

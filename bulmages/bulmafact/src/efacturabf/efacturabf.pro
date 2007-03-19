@@ -3,6 +3,18 @@
 # Subdir relative project main directory: ./src/efacturabf
 # Target is a library:  
 
+TEMPLATE = lib
+
+CONFIG += release \
+	  plugin \
+	  assistant
+
+LIBS += -rdynamic
+
+VERSION = 1.0.0
+
+QMAKE_LIBDIR += ../../../installbulmages
+
 FORMS += efacturabase.ui \
          efacturaenviobase.ui \
          efacturarecepcionbase.ui 
@@ -19,13 +31,6 @@ SOURCES += efacturabf.cpp \
            efqtoolbutton.cpp \
 	   efqtoolbutton_importar.cpp
 	    
-TEMPLATE = lib
-CONFIG += release \
-efacturabf \
-assistant
-LIBS += -rdynamic
-VERSION = 1.0.0
-QMAKE_LIBDIR += ../../../installbulmages
 unix{
   TARGET = ../../../installbulmages/plugins/efacturabf
   INCLUDEPATH = ../../../bulmalib \

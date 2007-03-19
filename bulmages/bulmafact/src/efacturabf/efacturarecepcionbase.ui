@@ -1,7 +1,4 @@
 <ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
  <class>EFacturaRecepcionBase</class>
  <widget class="QWidget" name="EFacturaRecepcionBase" >
   <property name="geometry" >
@@ -15,7 +12,7 @@
   <property name="windowTitle" >
    <string>Menú de recepción de eFacturas</string>
   </property>
-  <widget class="QWidget" name="" >
+  <widget class="QWidget" name="layoutWidget" >
    <property name="geometry" >
     <rect>
      <x>80</x>
@@ -63,9 +60,18 @@
      <height>241</height>
     </rect>
    </property>
+   <column>
+    <property name="text" >
+     <string>Fichero</string>
+    </property>
+   </column>
+   <column>
+    <property name="text" >
+     <string>Directorio</string>
+    </property>
+   </column>
   </widget>
  </widget>
- <pixmapfunction></pixmapfunction>
  <resources/>
  <connections/>
 </ui>

@@ -44,6 +44,6 @@ public:
 	void obten_linea_factura(QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i);
 
 public slots:
-	virtual void click();
+	void click();
 
 };
