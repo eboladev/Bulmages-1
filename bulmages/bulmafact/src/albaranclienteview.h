@@ -54,57 +54,23 @@ public:
     AlbaranClienteView(company *, QWidget *);
     ~AlbaranClienteView();
     void inicializar();
-    void pintaIdAlbaran(QString) {}
-    ;
-    void pintaNumAlbaran(QString val) {
-        m_numalbaran->setText(val);
-    };
-    void pintafechaalbaran(QString val) {
-        m_fechaalbaran->setText(val);
-    };
-    void pintaIdUsuario(QString) {}
-    ;
-    void pintaComentAlbaran(QString val) {
-        m_comentalbaran->setPlainText(val);
-    };
-    void pintaComentPrivAlbaran(QString val) {
-        m_comentprivalbaran->setPlainText(val);
-    };
-    void pintaidcliente(QString val) {
-        m_cliente->setidcliente(val);
-    };
-    void pintaidforma_pago(QString val) {
-        m_forma_pago->setidforma_pago(val);
-    };
-    void pintaIdFactura(QString) {}
-    ;
-    void pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
-    };
-    void pintaidtrabajador(QString id) {
-        m_trabajador->setidtrabajador(id);
-    };
-    void pintadescalbaran(QString val) {
-        m_descalbaran->setText(val);
-    };
-    void pintarefalbaran(QString val) {
-        m_refalbaran->setText(val);
-    };
-    void pintacontactalbaran(QString val) {
-        m_contactalbaran->setText(val);
-    };
-    void pintatelalbaran(QString val) {
-        m_telalbaran->setText(val);
-    };
-    void pintaprocesadoalbaran(QString id) {
-        if (id == "t" || id == "TRUE") {
-            m_procesadoalbaran->setChecked(TRUE);
-        } else {
-            m_procesadoalbaran->setChecked(FALSE);
-        } // end if
-    };
-    void pintaNumFactura(QString) {}
-    ;
+    void pintaIdAlbaran(QString) {};
+    void pintaNumAlbaran(QString val);
+    void pintafechaalbaran(QString val);
+    void pintaIdUsuario(QString) {};
+    void pintaComentAlbaran(QString val);
+    void pintaComentPrivAlbaran(QString val);
+    void pintaidcliente(QString val);
+    void pintaidforma_pago(QString val);
+    void pintaIdFactura(QString) {};
+    void pintaidalmacen(QString id);
+    void pintaidtrabajador(QString id);
+    void pintadescalbaran(QString val);
+    void pintarefalbaran(QString val);
+    void pintacontactalbaran(QString val);
+    void pintatelalbaran(QString val);
+    void pintaprocesadoalbaran(QString id);
+    void pintaNumFactura(QString) {};
     void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed);
     void generarFactura();
     void agregarFactura();

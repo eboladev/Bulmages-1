@@ -390,3 +390,63 @@ void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
 	_depura("END AlbaranClienteView::on_m_cliente_valueChanged", 0);
 }
 
+
+
+
+void AlbaranClienteView::pintaNumAlbaran(QString val) {
+        m_numalbaran->setText(val);
+}
+void AlbaranClienteView::pintafechaalbaran(QString val) {
+        m_fechaalbaran->setText(val);
+}
+
+void AlbaranClienteView::pintaComentAlbaran(QString val) {
+        m_comentalbaran->setPlainText(val);
+}
+
+void AlbaranClienteView::pintaComentPrivAlbaran(QString val) {
+        m_comentprivalbaran->setPlainText(val);
+}
+
+
+void AlbaranClienteView::pintaidcliente(QString val) {
+        m_cliente->setidcliente(val);
+}
+
+void AlbaranClienteView::pintaidforma_pago(QString val) {
+        m_forma_pago->setidforma_pago(val);
+}
+
+void AlbaranClienteView::pintaidalmacen(QString id) {
+        m_almacen->setidalmacen(id);
+}
+
+void AlbaranClienteView::pintaidtrabajador(QString id) {
+        m_trabajador->setidtrabajador(id);
+}
+
+void AlbaranClienteView::pintadescalbaran(QString val) {
+        m_descalbaran->setText(val);
+}
+
+void AlbaranClienteView::pintarefalbaran(QString val) {
+        m_refalbaran->setText(val);
+}
+
+void AlbaranClienteView::pintacontactalbaran(QString val) {
+        m_contactalbaran->setText(val);
+}
+
+void AlbaranClienteView::pintatelalbaran(QString val) {
+        m_telalbaran->setText(val);
+}
+
+void AlbaranClienteView::pintaprocesadoalbaran(QString id) {
+        if (id == "t" || id == "TRUE") {
+            m_procesadoalbaran->setChecked(TRUE);
+        } else {
+            m_procesadoalbaran->setChecked(FALSE);
+        } // end if
+}
+
+
