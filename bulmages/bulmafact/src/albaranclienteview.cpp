@@ -50,7 +50,7 @@
 /** Constructor de la clase corresponde a la parte visual de la ficha de cliente.
     Inicializa la ventana y todos sus componentes.
     Mete la ventana en el WorkSpace.
-*/        
+*/
 AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
         : AlbaranCliente(comp, parent) {
     _depura("AlbaranClienteView::AlbaranClienteView", 0);
@@ -81,7 +81,7 @@ AlbaranClienteView::AlbaranClienteView(company *comp, QWidget *parent)
 /** Destructor de la clase.
     Indica al listado que debe actualizarse.
 */
-/// \TODO: Este metodo deberia mejorarse para que indicase al listado que 
+/// \TODO: Este metodo deberia mejorarse para que indicase al listado que
 /// solo debe eliminar una fila del mismo.
 AlbaranClienteView::~AlbaranClienteView() {
     _depura("AlbaranClienteView::~AlbaranClienteView(", 0);
@@ -190,14 +190,14 @@ void AlbaranClienteView::generarFactura() {
 
     if (!cur->eof()) {
 
-	/// Informamos que ya hay una factura y que la abriremos.
-	/// Si no salimos de la funci&oacute;n.
-	if (QMessageBox::question(this,
-				tr("Factura existente"),
-				tr("Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?"),
-				tr("&Si"), tr("&No"), QString::null, 0, 1)) {
-		return;
-	}
+        /// Informamos que ya hay una factura y que la abriremos.
+        /// Si no salimos de la funci&oacute;n.
+        if (QMessageBox::question(this,
+                                  tr("Factura existente"),
+                                  tr("Existe una factura a este cliente con la misma referencia que este albaran. Desea abrirla para verificar?"),
+                                  tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+            return;
+        }
         FacturaView *bud = m_companyact->newFacturaView();
         m_companyact->m_pWorkspace->addWindow(bud);
         bud->cargar(cur->valor("idfactura"));
@@ -208,12 +208,12 @@ void AlbaranClienteView::generarFactura() {
 
     /// Informamos de que no existe la factura y a ver si lo queremos realizar.
     /// Si no salimos de la funci&oacute;n.
-//    if (QMessageBox::question(this,
-//                              tr("Factura inexistente"),
-//                              tr("No existe una factura asociada a este albaran. Desea crearla?"),
-//                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
-//        return;
-//    }
+    //    if (QMessageBox::question(this,
+    //                              tr("Factura inexistente"),
+    //                              tr("No existe una factura asociada a este albaran. Desea crearla?"),
+    //                              tr("&Si"), tr("&No"), QString::null, 0, 1)) {
+    //        return;
+    //    }
 
     /// Creamos la factura.
     FacturaView *bud = m_companyact->newFacturaView();
@@ -341,27 +341,27 @@ int AlbaranClienteView::cargar(QString id) {
 int AlbaranClienteView::guardar() {
     _depura("AlbaranClienteView::guardar", 0);
     try {
-    /// Cogemos todos los valores del formulario y actualizamos la clase.
-    setcomentalbaran(m_comentalbaran->toPlainText());
-    setcomentprivalbaran(m_comentprivalbaran->toPlainText());
-    setidalmacen(m_almacen->idalmacen());
-    setNumAlbaran(m_numalbaran->text());
-    setidcliente(m_cliente->idcliente());
-    setprocesadoalbaran(m_procesadoalbaran->isChecked() ? "TRUE" : "FALSE");
-    setcontactalbaran(m_contactalbaran->text());
-    settelalbaran(m_telalbaran->text());
-    setfechaalbaran(m_fechaalbaran->text());
-    setidforma_pago(m_forma_pago->idforma_pago());
-    setidtrabajador(m_trabajador->idtrabajador());
-    setrefalbaran(m_refalbaran->text());
-    setdescalbaran(m_descalbaran->text());
-    /// Hacemos el guardado.
-    AlbaranCliente::guardar();
-    dialogChanges_cargaInicial();
-   } catch(...) {
-	_depura("AlbaranClienteView::guardar Error al guardar ", 0);
-	throw -1;
-	} // end try
+        /// Cogemos todos los valores del formulario y actualizamos la clase.
+        setcomentalbaran(m_comentalbaran->toPlainText());
+        setcomentprivalbaran(m_comentprivalbaran->toPlainText());
+        setidalmacen(m_almacen->idalmacen());
+        setNumAlbaran(m_numalbaran->text());
+        setidcliente(m_cliente->idcliente());
+        setprocesadoalbaran(m_procesadoalbaran->isChecked() ? "TRUE" : "FALSE");
+        setcontactalbaran(m_contactalbaran->text());
+        settelalbaran(m_telalbaran->text());
+        setfechaalbaran(m_fechaalbaran->text());
+        setidforma_pago(m_forma_pago->idforma_pago());
+        setidtrabajador(m_trabajador->idtrabajador());
+        setrefalbaran(m_refalbaran->text());
+        setdescalbaran(m_descalbaran->text());
+        /// Hacemos el guardado.
+        AlbaranCliente::guardar();
+        dialogChanges_cargaInicial();
+    } catch(...) {
+        _depura("AlbaranClienteView::guardar Error al guardar ", 0);
+        throw -1;
+    } // end try
     _depura("END AlbaranClienteView::guardar", 0);
     return 0;
 }
@@ -384,69 +384,101 @@ void AlbaranClienteView::on_mui_cobrar_clicked() {
 }
 
 void AlbaranClienteView::on_m_cliente_valueChanged(QString id) {
-	_depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
-	subform2->setIdCliente(id);
-	m_forma_pago->setIdCliente(id);
-	_depura("END AlbaranClienteView::on_m_cliente_valueChanged", 0);
+    _depura("AlbaranClienteView::on_m_cliente_valueChanged", 0);
+    subform2->setIdCliente(id);
+    m_forma_pago->setIdCliente(id);
+    _depura("END AlbaranClienteView::on_m_cliente_valueChanged", 0);
 }
 
 
 
 
 void AlbaranClienteView::pintaNumAlbaran(QString val) {
-        m_numalbaran->setText(val);
+    m_numalbaran->setText(val);
 }
 void AlbaranClienteView::pintafechaalbaran(QString val) {
-        m_fechaalbaran->setText(val);
+    m_fechaalbaran->setText(val);
 }
 
 void AlbaranClienteView::pintaComentAlbaran(QString val) {
-        m_comentalbaran->setPlainText(val);
+    m_comentalbaran->setPlainText(val);
 }
 
 void AlbaranClienteView::pintaComentPrivAlbaran(QString val) {
-        m_comentprivalbaran->setPlainText(val);
+    m_comentprivalbaran->setPlainText(val);
 }
 
 
 void AlbaranClienteView::pintaidcliente(QString val) {
-        m_cliente->setidcliente(val);
+    m_cliente->setidcliente(val);
 }
 
 void AlbaranClienteView::pintaidforma_pago(QString val) {
-        m_forma_pago->setidforma_pago(val);
+    m_forma_pago->setidforma_pago(val);
 }
 
 void AlbaranClienteView::pintaidalmacen(QString id) {
-        m_almacen->setidalmacen(id);
+    m_almacen->setidalmacen(id);
 }
 
 void AlbaranClienteView::pintaidtrabajador(QString id) {
-        m_trabajador->setidtrabajador(id);
+    m_trabajador->setidtrabajador(id);
 }
 
 void AlbaranClienteView::pintadescalbaran(QString val) {
-        m_descalbaran->setText(val);
+    m_descalbaran->setText(val);
 }
 
 void AlbaranClienteView::pintarefalbaran(QString val) {
-        m_refalbaran->setText(val);
+    m_refalbaran->setText(val);
 }
 
 void AlbaranClienteView::pintacontactalbaran(QString val) {
-        m_contactalbaran->setText(val);
+    m_contactalbaran->setText(val);
 }
 
 void AlbaranClienteView::pintatelalbaran(QString val) {
-        m_telalbaran->setText(val);
+    m_telalbaran->setText(val);
 }
 
 void AlbaranClienteView::pintaprocesadoalbaran(QString id) {
-        if (id == "t" || id == "TRUE") {
-            m_procesadoalbaran->setChecked(TRUE);
-        } else {
-            m_procesadoalbaran->setChecked(FALSE);
-        } // end if
+    if (id == "t" || id == "TRUE") {
+        m_procesadoalbaran->setChecked(TRUE);
+    } else {
+        m_procesadoalbaran->setChecked(FALSE);
+    } // end if
 }
 
 
+int AlbaranClienteView::borrar() {
+    return AlbaranCliente::borrar();
+}
+
+void AlbaranClienteView::on_mui_guardar_clicked() {
+    guardar();
+}
+
+/// Este slot se activa cuando hay cambios en los subformularios.
+void AlbaranClienteView::s_pintaTotales() {
+    calculaypintatotales();
+}
+
+void AlbaranClienteView::on_mui_imprimir_clicked() {
+    imprimir();
+}
+
+void AlbaranClienteView::on_mui_facturar_clicked() {
+    generarFactura();
+}
+
+void AlbaranClienteView::on_mui_agregarafactura_clicked() {
+    agregarFactura();
+}
+
+void AlbaranClienteView::on_m_descuentos_editFinish(int, int) {
+    calculaypintatotales();
+}
+
+void AlbaranClienteView::on_subform2_editFinish(int, int) {
+    calculaypintatotales();
+}

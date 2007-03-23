@@ -77,35 +77,19 @@ public:
     /// Estos m&eacute;todos deben existir para poder trabajar con la clase Ficha.
     virtual int guardar();
     virtual int cargar(QString id);
-    virtual int borrar() {
-        return AlbaranCliente::borrar();
-    };
+    virtual int borrar();
 
 public slots:
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    };
+    virtual void on_mui_guardar_clicked();
     /// Este slot se activa cuando hay cambios en los subformularios.
-    virtual void s_pintaTotales() {
-        calculaypintatotales();
-    }
+    virtual void s_pintaTotales();
     virtual void s_verpresupuesto();
     virtual void on_mui_verpedidocliente_clicked();
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    };
-    virtual void on_mui_facturar_clicked() {
-        generarFactura();
-    };
-    virtual void on_mui_agregarafactura_clicked() {
-        agregarFactura();
-    };
-    virtual void on_m_descuentos_editFinish(int, int) {
-        calculaypintatotales();
-    };
-    virtual void on_subform2_editFinish(int, int) {
-        calculaypintatotales();
-    };
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_facturar_clicked();
+    virtual void on_mui_agregarafactura_clicked();
+    virtual void on_m_descuentos_editFinish(int, int);
+    virtual void on_subform2_editFinish(int, int);
     virtual void on_mui_cobrar_clicked();
     virtual void on_m_cliente_valueChanged(QString id);
 };

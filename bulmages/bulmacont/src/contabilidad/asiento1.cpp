@@ -143,7 +143,7 @@ void Asiento1::abrir() {
         _depura("No hay asiento");
         return;
     }
-    m_companyact->abreasiento(id.toInt());    
+    m_companyact->abreasiento(id.toInt());
     trataestadoAsiento1();
 }
 
@@ -151,7 +151,7 @@ void Asiento1::abrir() {
 void Asiento1::cerrar() {
     _depura("Asiento1::cierraAsiento1", 0);
     if (estadoAsiento1() != ASAbierto) {
-	_depura("asiento no abierto", 0);
+        _depura("asiento no abierto", 0);
         return;
     }
     if (guardar())
@@ -192,7 +192,7 @@ Asiento1::estadoasiento  Asiento1::estadoAsiento1() {
     } else if (numap != "0") {
         return ASCerrado;
     } else {
-    	return ASAbierto;
+        return ASAbierto;
     } // end if
 }
 
@@ -222,3 +222,27 @@ int Asiento1::guardar() {
     } // end try
 }
 
+
+empresa *Asiento1::companyact() {
+    _depura("Asiento1::companyact", 0);
+    _depura("END Asiento1::companyact", 0);
+    return m_companyact;
+}
+
+void Asiento1::setidasiento(QString val) {
+    _depura("Asiento1::setidasiento", 0);
+    setDBvalue("idasiento", val);
+    listalineas->setColumnValue("idasiento", val);
+    _depura("END Asiento1::setidasiento", 0);
+}
+QString Asiento1::idasiento() {
+    _depura("Asiento1::idasiento", 0);
+    _depura("END Asiento1::idasiento", 0);
+    return DBvalue("idasiento");
+}
+/// Establece cual es la lista subformulario del presupuesto.
+void Asiento1::setListLinAsiento1(ListLinAsiento1View *a) {
+    _depura("Asiento1::setListLinAsiento1", 0);
+    listalineas = a;
+    _depura("END Asiento1::setListLinAsiento1", 0);
+}

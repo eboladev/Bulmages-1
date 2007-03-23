@@ -122,23 +122,17 @@ public:
     void selectfirst();
     void muestraplantilla(QString);
     void setvalores(QString, QString);
-    void setfechaasiento(QString fecha) {
-        fechaasiento->setText(fecha);
-    }
+    void setfechaasiento(QString fecha);
     /// La funci&oacute;n sirve para especificar el modo de funcionamiento de los asientos
     /// intelgientes. Consultar la variable m&eacute;todo para m&aacute;s detalles.
-    void setmodo(int i) {
-        modo = i;
-    }
+    void setmodo(int i);
 
 public slots:
     void on_mui_aceptar_clicked();
-    void return_numero();
-    void return_texto();
+    void eturn_numero();
+    void eturn_texto();
     void on_mui_comboainteligentes_activated(int index);
-    virtual void on_mui_guardar_clicked() {
-        guardar();
-    }
+    virtual void on_mui_guardar_clicked();
 };
 
 #endif

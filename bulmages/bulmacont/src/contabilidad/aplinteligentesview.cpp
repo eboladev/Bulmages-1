@@ -49,7 +49,7 @@ aplinteligentesview::aplinteligentesview(empresa *emp, QWidget *parent)
     _depura("aplinteligentesview::aplinteligentesview", 0);
     setAttribute(Qt::WA_DeleteOnClose);
     setupUi(this);
-    
+
     companyact = emp;
     /// iniciamos los contadores de variables para que no haya problemas.
     indvariablescta = 0;
@@ -87,29 +87,29 @@ void aplinteligentesview::inicializa(int idasiento) {
     dir.setSorting(QDir::Size | QDir::Reversed);
 
     QFileInfoList list = dir.entryInfoList();
-    
-    if(list.size() > 0){
-	/// Cargamos el combo con los ficheros de asientos inteligentes disponibles
-	QStringList listaOrdenada;
-	while(!list.isEmpty()){
-	    QFileInfo fileInfo = list.takeFirst();
-	    listaOrdenada.append(fileInfo.fileName().replace(".xml","")); /// cogemos los nombres de los ficheros sin la extension
-	    listasientos.append(fileInfo.filePath()); /// y la ruta completa
-	}
-	listaOrdenada.sort(); /// se ordena la lista alfabeticamente
-	listasientos.sort(); /// y la de la ruta, que se ordenara igual
-	while(!listaOrdenada.isEmpty())
-	    mui_comboainteligentes->addItem(listaOrdenada.takeFirst()); /// y se carga en el combo
-	
-	/// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
-	companyact->begin();
-	QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
-	cursor2 *cursoraux1 = companyact->cargacursor(query1, "codcuenta");
-	numdigitos = cursoraux1->valor(2).length();
-	companyact->commit();
-	delete cursoraux1;
-	
-	on_mui_comboainteligentes_activated(0);
+
+    if(list.size() > 0) {
+        /// Cargamos el combo con los ficheros de asientos inteligentes disponibles
+        QStringList listaOrdenada;
+        while(!list.isEmpty()) {
+            QFileInfo fileInfo = list.takeFirst();
+            listaOrdenada.append(fileInfo.fileName().replace(".xml","")); /// cogemos los nombres de los ficheros sin la extension
+            listasientos.append(fileInfo.filePath()); /// y la ruta completa
+        }
+        listaOrdenada.sort(); /// se ordena la lista alfabeticamente
+        listasientos.sort(); /// y la de la ruta, que se ordenara igual
+        while(!listaOrdenada.isEmpty())
+            mui_comboainteligentes->addItem(listaOrdenada.takeFirst()); /// y se carga en el combo
+
+        /// Calculamos el n&uacute;mero de d&iacute;gitos que tiene una cuenta.
+        companyact->begin();
+        QString query1 = "SELECT * FROM configuracion WHERE nombre = 'CodCuenta'";
+        cursor2 *cursoraux1 = companyact->cargacursor(query1, "codcuenta");
+        numdigitos = cursoraux1->valor(2).length();
+        companyact->commit();
+        delete cursoraux1;
+
+        on_mui_comboainteligentes_activated(0);
     }
     _depura("END aplinteligentesview::inicializa", 0);
 }
@@ -165,21 +165,21 @@ void aplinteligentesview::cifcuenta(int idcuenta) {
 }
 
 
-void aplinteligentesview::return_numero() {
-    _depura("aplinteligentesview::return_numero", 0);
+void aplinteligentesview::eturn_numero() {
+    _depura("aplinteligentesview::eturn_numero", 0);
     QLineEdit *numero;
     numero = (QLineEdit *) sender();
     selectsiguiente(numero);
-    _depura("END aplinteligentesview::return_numero", 0);
+    _depura("END aplinteligentesview::eturn_numero", 0);
 }
 
 
-void aplinteligentesview::return_texto() {
-    _depura("aplinteligentesview::return_texto", 0);
+void aplinteligentesview::eturn_texto() {
+    _depura("aplinteligentesview::eturn_texto", 0);
     QLineEdit *texto;
     texto = (QLineEdit *) sender();
     selectsiguiente(texto);
-    _depura("END aplinteligentesview::return_texto", 0);
+    _depura("END aplinteligentesview::eturn_texto", 0);
 }
 
 
@@ -205,7 +205,7 @@ void aplinteligentesview::muestraplantilla(QString plantilla) {
 
 /// La pulsaci&oacute;n sobre el bot&oacute;n de creaci&oacute;n del asiento.
 void aplinteligentesview::on_mui_aceptar_clicked() {
-     _depura("aplinteligentesview::on_mui_aceptar_clicked", 0);
+    _depura("aplinteligentesview::on_mui_aceptar_clicked", 0);
     /// Se est&aacute; insertando sobre un asiento abierto, con lo que debemos
     /// Cerrar la ventana, ya que es un introducci&oacute;n de asiento normal.
     if (numasiento != 0) {
@@ -219,7 +219,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
         variablespredefinidas[VAR_PRED_FECHAASIENTO][1] = fechaasiento->text().toAscii().constData();
         companyact->intapuntsempresa()->setFecha(fechaasiento->text());
         companyact->intapuntsempresa()->vaciar();
-	    companyact->intapuntsempresa()->iniciar_asiento_nuevo();
+        companyact->intapuntsempresa()->iniciar_asiento_nuevo();
         numasiento = companyact->intapuntsempresa()->idasiento().toInt();
         recogevalores();
         creaasiento();
@@ -233,7 +233,7 @@ void aplinteligentesview::on_mui_aceptar_clicked() {
     if (modo == 1) {
         close();
     } // end if
-     _depura("END aplinteligentesview::on_mui_aceptar_clicked", 0);
+    _depura("END aplinteligentesview::on_mui_aceptar_clicked", 0);
 }
 
 
@@ -252,141 +252,141 @@ void aplinteligentesview::mostrarplantilla() {
     numainteligente = idainteligente;
     /// Vamos a intentar borrar todos los datos antes de empezar.
     borrawidgets();
-    if(mui_comboainteligentes->currentIndex() != -1){
-	QFile f(listasientos.at(mui_comboainteligentes->currentIndex()));
-	if (!f.open(QIODevice::ReadOnly))
-	    return;
-	if (!m_doc.setContent(&f)) {
-	    f.close();
-	    return;
-	}
-	f.close();
-	/// Recogemos los valores de cuenta.
-	QDomNodeList litems = m_doc.elementsByTagName("codcuenta");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// The node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(),TIPO_CTA);
-	    } // end if
-	} // end for
-	/// Recogemos los valores de contrapartida.
-	litems = m_doc.elementsByTagName("contrapartida");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// The node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(), TIPO_CTA);
-	    } // end if
-	} // end for
-	/// Recogemos los valores de fecha.
-	litems = m_doc.elementsByTagName("fecha");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// the node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(), TIPO_FECHA);
-	    } // end if
-	} // end for
-	/// Recogemos los valores de debe.
-	litems = m_doc.elementsByTagName("debe");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// The node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(),TIPO_NUMERO);
-	    } // end if
-	} // end for
-	/// Recogemos los valores de haber.
-	litems = m_doc.elementsByTagName("haber");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// The node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(), TIPO_NUMERO);
-	    } // end if
-	} // end for
-	/// Recogemos los valores de conceptocontable
-	litems = m_doc.elementsByTagName("conceptocontable");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// the node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(), TIPO_TEXTO);
-	    } // end if
-	} // end for
-	/// Recogemos los valores de descripci&oacute;n.
-	litems = m_doc.elementsByTagName("descripcion");
-	for (int i = 0; i < litems.count(); i++) {
-	    QDomNode item = litems.item(i);
-	    /// Try to convert the node to an element.
-	    QDomElement e1 = item.toElement();
-	    /// The node was really an element.
-	    if (!e1.isNull()) {
-		recogevariables(e1.text(), TIPO_TEXTO);
-	    } // end if
-	} // end for
-	
-	for (int i = 0;i < indvariablescta; i++) {
-	    labelcta[i] = new QLabel("", mui_datosAsiento);
-	    labelcta[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
-	    labelcta[i]->setText(variablescta[i][2]);
-	    labelcta[i]->show();
-	    varcta[i] = new BusquedaCuenta(mui_datosAsiento);
-	    varcta[i]->setGeometry(QRect(150, inc + 32 * (j++), 300, 25));
-	    varcta[i]->setempresa(companyact);
-	    connect(varcta[i], SIGNAL(returnPressed()), this, SLOT(return_cta()));
-	    connect(varcta[i], SIGNAL(textChanged(const QString &)), this, SLOT(codigo_textChanged(const QString &)));
-	    varcta[i]->show();
-	} // end for
-	
-	for (int i = 0;i < indvariablesfecha; i++) {
-	    labelfecha[i] = new QLabel("", mui_datosAsiento);
-	    labelfecha[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
-	    labelfecha[i]->setText(variablesfecha[i][2]);
-	    labelfecha[i]->show();
-	    
-	    varfecha[i] = new BusquedaFecha(mui_datosAsiento);
-	    varfecha[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
-	    
-	    connect(varfecha[i], SIGNAL(returnPressed()), this, SLOT(return_fecha()));
-	    connect(varfecha[i], SIGNAL(textChanged(const QString &)), this, SLOT(fecha_textChanged(const QString &)));
-	    varfecha[i]->show();
-	} // end for
-	
-	for (int i = 0;i < indvariablesnumero; i++) {
-	    labelnumero[i] = new QLabel("", mui_datosAsiento);
-	    labelnumero[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
-	    labelnumero[i]->setText(variablesnumero[i][2]);
-	    labelnumero[i]->show();
-	    varnumero[i] = new QLineEdit("", mui_datosAsiento);
-	    varnumero[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
-	    connect(varnumero[i], SIGNAL(returnPressed()), this, SLOT(return_numero()));
-	    varnumero[i]->show();
-	} // end for
-	
-	for (int i = 0;i < indvariablestexto; i++) {
-	    labeltexto[i] = new QLabel("", mui_datosAsiento);
-	    labeltexto[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
-	    labeltexto[i]->setText(variablestexto[i][2]);
-	    labeltexto[i]->show();
-	    vartexto[i] = new QLineEdit("", mui_datosAsiento);
-	    vartexto[i]->setGeometry(QRect(150, inc + 32 * (j++), 350, 25));
-	    connect(vartexto[i], SIGNAL(returnPressed()), this, SLOT(return_texto()));
-	    vartexto[i]->show();
-    } // end for
+    if(mui_comboainteligentes->currentIndex() != -1) {
+        QFile f(listasientos.at(mui_comboainteligentes->currentIndex()));
+        if (!f.open(QIODevice::ReadOnly))
+            return;
+        if (!m_doc.setContent(&f)) {
+            f.close();
+            return;
+        }
+        f.close();
+        /// Recogemos los valores de cuenta.
+        QDomNodeList litems = m_doc.elementsByTagName("codcuenta");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// The node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(),TIPO_CTA);
+            } // end if
+        } // end for
+        /// Recogemos los valores de contrapartida.
+        litems = m_doc.elementsByTagName("contrapartida");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// The node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(), TIPO_CTA);
+            } // end if
+        } // end for
+        /// Recogemos los valores de fecha.
+        litems = m_doc.elementsByTagName("fecha");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// the node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(), TIPO_FECHA);
+            } // end if
+        } // end for
+        /// Recogemos los valores de debe.
+        litems = m_doc.elementsByTagName("debe");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// The node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(),TIPO_NUMERO);
+            } // end if
+        } // end for
+        /// Recogemos los valores de haber.
+        litems = m_doc.elementsByTagName("haber");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// The node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(), TIPO_NUMERO);
+            } // end if
+        } // end for
+        /// Recogemos los valores de conceptocontable
+        litems = m_doc.elementsByTagName("conceptocontable");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// the node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(), TIPO_TEXTO);
+            } // end if
+        } // end for
+        /// Recogemos los valores de descripci&oacute;n.
+        litems = m_doc.elementsByTagName("descripcion");
+        for (int i = 0; i < litems.count(); i++) {
+            QDomNode item = litems.item(i);
+            /// Try to convert the node to an element.
+            QDomElement e1 = item.toElement();
+            /// The node was really an element.
+            if (!e1.isNull()) {
+                recogevariables(e1.text(), TIPO_TEXTO);
+            } // end if
+        } // end for
+
+        for (int i = 0;i < indvariablescta; i++) {
+            labelcta[i] = new QLabel("", mui_datosAsiento);
+            labelcta[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
+            labelcta[i]->setText(variablescta[i][2]);
+            labelcta[i]->show();
+            varcta[i] = new BusquedaCuenta(mui_datosAsiento);
+            varcta[i]->setGeometry(QRect(150, inc + 32 * (j++), 300, 25));
+            varcta[i]->setempresa(companyact);
+            connect(varcta[i], SIGNAL(returnPressed()), this, SLOT(return_cta()));
+            connect(varcta[i], SIGNAL(textChanged(const QString &)), this, SLOT(codigo_textChanged(const QString &)));
+            varcta[i]->show();
+        } // end for
+
+        for (int i = 0;i < indvariablesfecha; i++) {
+            labelfecha[i] = new QLabel("", mui_datosAsiento);
+            labelfecha[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
+            labelfecha[i]->setText(variablesfecha[i][2]);
+            labelfecha[i]->show();
+
+            varfecha[i] = new BusquedaFecha(mui_datosAsiento);
+            varfecha[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
+
+            connect(varfecha[i], SIGNAL(returnPressed()), this, SLOT(return_fecha()));
+            connect(varfecha[i], SIGNAL(textChanged(const QString &)), this, SLOT(fecha_textChanged(const QString &)));
+            varfecha[i]->show();
+        } // end for
+
+        for (int i = 0;i < indvariablesnumero; i++) {
+            labelnumero[i] = new QLabel("", mui_datosAsiento);
+            labelnumero[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
+            labelnumero[i]->setText(variablesnumero[i][2]);
+            labelnumero[i]->show();
+            varnumero[i] = new QLineEdit("", mui_datosAsiento);
+            varnumero[i]->setGeometry(QRect(150, inc + 32 * (j++), 150, 25));
+            connect(varnumero[i], SIGNAL(returnPressed()), this, SLOT(eturn_numero()));
+            varnumero[i]->show();
+        } // end for
+
+        for (int i = 0;i < indvariablestexto; i++) {
+            labeltexto[i] = new QLabel("", mui_datosAsiento);
+            labeltexto[i]->setGeometry(QRect(5, inc + 32 * (j), 150, 25));
+            labeltexto[i]->setText(variablestexto[i][2]);
+            labeltexto[i]->show();
+            vartexto[i] = new QLineEdit("", mui_datosAsiento);
+            vartexto[i]->setGeometry(QRect(150, inc + 32 * (j++), 350, 25));
+            connect(vartexto[i], SIGNAL(returnPressed()), this, SLOT(eturn_texto()));
+            vartexto[i]->show();
+        } // end for
     }
     _depura("END aplinteligentesview::mostrarplantilla", 0);
 }
@@ -582,7 +582,8 @@ void aplinteligentesview::recogevariables(QString texto, int tipo) {
                     } // end if
                     break;
                 case TIPO_TEXTO:
-                    for (j = 0; j < indvariablestexto && variablestexto[j][0] != subcadena; j++);
+                    for (j = 0; j < indvariablestexto && variablestexto[j][0] != subcadena; j++)
+                        ;
                     if (j == indvariablestexto) {
                         variablestexto[indvariablestexto][0] = nomvar;
                         variablestexto[indvariablestexto][2] = descvar;
@@ -769,3 +770,24 @@ void aplinteligentesview::selectsiguiente(QObject *edit) {
     _depura("END aplinteligentesview::selectsiguiente", 0);
 }
 
+
+
+void aplinteligentesview::setfechaasiento(QString fecha) {
+    _depura("aplinteligentesview::setfechaasiento",0);
+    fechaasiento->setText(fecha);
+    _depura("END aplinteligentesview::setfechaasiento",0);
+}
+/// La funci&oacute;n sirve para especificar el modo de funcionamiento de los asientos
+/// intelgientes. Consultar la variable m&eacute;todo para m&aacute;s detalles.
+void aplinteligentesview::setmodo(int i) {
+    _depura("aplinteligentesview::setmodo", 0);
+    modo = i;
+    _depura("END aplinteligentesview::setmodo", 0);
+}
+
+
+void aplinteligentesview::on_mui_guardar_clicked() {
+    _depura("aplinteligentesview::on_mui_guardar_clicked", 0);
+    guardar();
+    _depura("END aplinteligentesview::on_mui_guardar_clicked", 0);
+}

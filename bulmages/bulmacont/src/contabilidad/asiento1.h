@@ -44,9 +44,7 @@ protected:
 public:
     Asiento1(empresa *, QWidget *parent);
     virtual ~Asiento1();
-    empresa *companyact() {
-        return m_companyact;
-    };
+    empresa *companyact();
     int cargar(QString);
     Fixed totaldebe(QString);
     Fixed totalhaber(QString);
@@ -55,17 +53,10 @@ public:
     void cerrar();
     estadoasiento estadoAsiento1();
     int guardar();
-    void setidasiento(QString val) {
-        setDBvalue("idasiento", val);
-        listalineas->setColumnValue("idasiento", val);
-    };
-    QString idasiento() {
-        return DBvalue("idasiento");
-    };
+    void setidasiento(QString val);
+    QString idasiento();
     /// Establece cual es la lista subformulario del presupuesto.
-    void setListLinAsiento1(ListLinAsiento1View *a) {
-        listalineas = a;
-    };
+    void setListLinAsiento1(ListLinAsiento1View *a);
     virtual int borrar();
     virtual void pintaidasiento(QString) {
         _depura("funcion no implementada pintaidasiento");
