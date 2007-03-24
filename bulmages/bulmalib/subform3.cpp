@@ -637,6 +637,13 @@ bool SubForm3::campoCompleto(int row) {
             _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
             return FALSE;
         } // end if
+        if (camp->restrictcampo() & DBCampo::DBRequired
+                && camp->text() == "") {
+            _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
+            return FALSE;
+        } // end if
+
+
     } // end for
     return TRUE;
     _depura("END SubForm3::campoCompleto", 0);

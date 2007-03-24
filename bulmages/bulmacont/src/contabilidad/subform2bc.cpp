@@ -406,6 +406,7 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     } // end if
 
     /// Si es un release de tecla se hace la funcionalidad especificada.
+
     if (event->type() == QEvent::KeyPress || event->type() == QEvent::KeyRelease) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         int key = keyEvent->key();
@@ -415,8 +416,11 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
+	   if (event->type() == QEvent::KeyPress) 
+		return TRUE;
             if (obj->objectName() == "QTextEditDelegate") {
                 obj->event(event);
+		_depura("QSubForm2BcDelegate::eventFilter", 2, "Se ha pulsado el enter");
                 return TRUE;
             } // end if
         } // end switch
