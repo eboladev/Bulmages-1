@@ -32,7 +32,7 @@
 
 #include "balanceview.h"
 #include "extractoview1.h"
-#include "bmodelo347.h"
+#include "listado347.h"
 #include "postgresiface2.h"
 #include "listventanas.h"
 #include "qworkspace2.h"
@@ -128,7 +128,7 @@ public:
     int librobalance();
     int librobalancetree();
     int registroiva();
-    int modelo347();
+    int listado347();
     int inicializa1();
     int boton_siguiente();
     int boton_anterior();

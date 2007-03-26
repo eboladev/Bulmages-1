@@ -25,6 +25,18 @@
      <height>29</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>&amp;Ver</string>
+    </property>
+    <addaction name="actionPlan_Contable" />
+    <addaction name="actionAsientos" />
+    <addaction name="actionApuntes_Contables" />
+    <addaction name="actionLibro_Mayor" />
+    <addaction name="actionLibro_Diario" />
+    <addaction name="actionBalance_de_Cuentas" />
+    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
+   </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
      <string>&amp;Maestro</string>
@@ -36,22 +48,6 @@
     <addaction name="actionCanales" />
     <addaction name="separator" />
    </widget>
-   <widget class="QMenu" name="menuAyuda" >
-    <property name="title" >
-     <string>A&amp;yuda</string>
-    </property>
-    <addaction name="actionAyuda" />
-    <addaction name="actionAcerca_de" />
-   </widget>
-   <widget class="QMenu" name="menuVer" >
-    <property name="title" >
-     <string>Ventana</string>
-    </property>
-    <addaction name="actionPantalla_Completa" />
-    <addaction name="actionOrdenar_Ventanas" />
-    <addaction name="actionOrganizaci_n_en_Cascada" />
-    <addaction name="actionIndexador" />
-   </widget>
    <widget class="QMenu" name="menuHerramientas" >
     <property name="title" >
      <string>&amp;Herramientas</string>
@@ -62,6 +58,29 @@
     <addaction name="separator" />
     <addaction name="actionCanal_por_Defecto" />
     <addaction name="actionCentro_de_Coste_por_Defecto" />
+   </widget>
+   <widget class="QMenu" name="menuVer" >
+    <property name="title" >
+     <string>Ventana</string>
+    </property>
+    <addaction name="actionPantalla_Completa" />
+    <addaction name="actionOrdenar_Ventanas" />
+    <addaction name="actionOrganizaci_n_en_Cascada" />
+    <addaction name="actionIndexador" />
+   </widget>
+   <widget class="QMenu" name="menuAyuda" >
+    <property name="title" >
+     <string>A&amp;yuda</string>
+    </property>
+    <addaction name="actionAyuda" />
+    <addaction name="actionAcerca_de" />
+   </widget>
+   <widget class="QMenu" name="menuEmpresa" >
+    <property name="title" >
+     <string>&amp;Empresa</string>
+    </property>
+    <addaction name="actionConfiguracion" />
+    <addaction name="actionSalir" />
    </widget>
    <widget class="QMenu" name="menuAsiento" >
     <property name="title" >
@@ -82,27 +101,10 @@
     <addaction name="separator" />
     <addaction name="actionRegistro_de_IVA" />
     <addaction name="separator" />
+    <addaction name="actionListado_347" />
+    <addaction name="separator" />
     <addaction name="actionCobros_y_Pagos" />
     <addaction name="actionAmortizaciones" />
-   </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>&amp;Ver</string>
-    </property>
-    <addaction name="actionPlan_Contable" />
-    <addaction name="actionAsientos" />
-    <addaction name="actionApuntes_Contables" />
-    <addaction name="actionLibro_Mayor" />
-    <addaction name="actionLibro_Diario" />
-    <addaction name="actionBalance_de_Cuentas" />
-    <addaction name="actionBalance_Jer_rquico_de_Sumas_y_Saldos" />
-   </widget>
-   <widget class="QMenu" name="menuEmpresa" >
-    <property name="title" >
-     <string>&amp;Empresa</string>
-    </property>
-    <addaction name="actionConfiguracion" />
-    <addaction name="actionSalir" />
    </widget>
    <addaction name="menuEmpresa" />
    <addaction name="menuAsiento" />
@@ -200,11 +202,6 @@
   <action name="actionRegistro_de_IVA" >
    <property name="text" >
     <string>Registro de &amp;IVA</string>
-   </property>
-  </action>
-  <action name="actionModelo_347_no_oficial" >
-   <property name="text" >
-    <string>&amp;Modelo 347 no oficial</string>
    </property>
   </action>
   <action name="actionCobros_y_Pagos" >
@@ -463,6 +460,21 @@
    </property>
    <property name="shortcut" >
     <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionListado_347" >
+   <property name="text" >
+    <string>Listado &amp;347</string>
+   </property>
+  </action>
+  <action name="action" >
+   <property name="text" >
+    <string>"</string>
+   </property>
+  </action>
+  <action name="action_2" >
+   <property name="text" >
+    <string>''</string>
    </property>
   </action>
  </widget>

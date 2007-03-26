@@ -512,9 +512,9 @@ int empresa::registroiva() {
 }
 
 
-int empresa::modelo347() {
+int empresa::listado347() {
     _depura("empresa::modelo347", 0);
-    BModelo347 *dlg347 = new BModelo347(this, "0");
+    Listado347 *dlg347 = new Listado347(this, "0");
     dlg347->exec();
     delete dlg347;
     _depura("END empresa::modelo347", 0);

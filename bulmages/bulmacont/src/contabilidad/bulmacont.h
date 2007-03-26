@@ -221,8 +221,8 @@ public slots:
     virtual void on_actionRegistro_de_IVA_triggered() {
         m_empresaactual->registroiva();
     }
-    virtual void on_actionModelo_347_no_oficial_triggered() {
-        m_empresaactual->modelo347();
+    virtual void on_actionListado_347_triggered() {
+        m_empresaactual->listado347();
     }
     virtual void on_actionCobros_y_Pagos_triggered() {
         m_empresaactual->cobPag();

@@ -23,7 +23,7 @@ INCLUDEPATH += ../../../bulmalib \
 
 LIBPATH += ../../../installbulmages
 
-CONFIG += release warn_on assistant
+CONFIG += release warn_on assistant debug
 
 LIBS += -rdynamic \
 	-lbulmalib
@@ -65,7 +65,7 @@ FORMS += bulmacontbase.ui \
 	 balanceprintbase.ui \
 	 mpatrimonialesbase.ui \
 	 mpatrimonialbase.ui \
-	 modelo347base.ui \
+	 listado347base.ui \
 	 modelo300base.ui
 
 #FORMS3 +=  mod300dlg.ui 
@@ -107,7 +107,7 @@ HEADERS += splashscreen.h \
            cambiactaview.h \
            duplicarasientoview.h \
            amortizacionview.h \
-           bmodelo347.h \
+           listado347.h \
            amortizacionesview.h \
            selectccosteview.h \
            selectcanalview.h \
@@ -163,7 +163,7 @@ SOURCES += main.cpp \
            cambiactaview.cpp \
            duplicarasientoview.cpp \
            amortizacionview.cpp \
-           bmodelo347.cpp \
+           listado347.cpp \
            amortizacionesview.cpp \
            selectccosteview.cpp \
            selectcanalview.cpp \
