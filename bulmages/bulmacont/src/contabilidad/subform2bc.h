@@ -24,6 +24,7 @@
 #include <QEvent>
 
 #include "subform3.h"
+#include "qdoublespinbox2.h"
 
 
 class SubForm2Bc;
@@ -73,7 +74,7 @@ public:
     virtual void procesaMenu(QAction *);
     virtual void setcompany(postgresiface2 *c) {
         SubForm3::setcompany(c);
-	m_delegate->setcompany(c);
+        m_delegate->setcompany(c);
     };
 
 public slots:

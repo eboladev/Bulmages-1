@@ -291,9 +291,9 @@ bool SubForm3::existsHeader(const QString &head) {
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         if (linea->nomcampo() == head) {
-   		 _depura("END SubForm3::existsHeader", 0);
-        	return TRUE;
-	} // end if
+         _depura("END SubForm3::existsHeader", 0);
+            return TRUE;
+    } // end if
     } // end for
     _depura("END SubForm3::existsHeader", 0);
     return FALSE;
@@ -642,7 +642,6 @@ bool SubForm3::campoCompleto(int row) {
             _depura("SubForm3::campoCompleto", 0, "El campo no es completo.");
             return FALSE;
         } // end if
-
 
     } // end for
     return TRUE;

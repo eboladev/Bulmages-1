@@ -38,7 +38,7 @@ bool QApplication2::notify(QObject *o, QEvent *e) {
     try {
         return QApplication::notify(o, e);
     } catch (...) {
-        mensajeInfo(tr("Error inesperado en BulmaFact"));
+        _depura("Error inesperado en BulmaFact", 10);
         return FALSE;
     } // end try
 }

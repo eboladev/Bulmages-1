@@ -48,7 +48,8 @@ ListLinAsiento1View::ListLinAsiento1View(QWidget *parent, const char *)
     addSHeader("orden", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Orden"));
     addSHeader("idborrador", DBCampo::DBint,  DBCampo::DBPrimaryKey, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id borrador"));
     addSHeader("idasiento", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id asiento"));
-    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull | DBCampo::DBRequired, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
+//    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull | DBCampo::DBRequired, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
+    addSHeader("idcuenta", DBCampo::DBvarchar, DBCampo::DBNotNull, SHeader::DBNoWrite | SHeader::DBNoView, tr("Id cuenta"));
     addSHeader("tipocuenta", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite | SHeader::DBNoView, tr("Tipo de cuenta"));
     setinsercion(TRUE);
     _depura("END ListLinAsiento1View::ListLinAsiento1View", 0);

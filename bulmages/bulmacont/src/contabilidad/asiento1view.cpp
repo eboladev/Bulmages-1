@@ -515,7 +515,7 @@ QString ListAsientos::idasientosiguiente() {
 
 
 bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event)
-{    
+{
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if ((keyEvent->key() == Qt::Key_Enter) || (keyEvent->key() == Qt::Key_Return)) {

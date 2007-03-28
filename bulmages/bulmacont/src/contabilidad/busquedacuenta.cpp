@@ -25,7 +25,7 @@
 
 BusquedaCuenta::BusquedaCuenta(QWidget *parent)
         : QWidget(parent) {
-    _depura("BusquedaCuenta::BusquedaCuenta", 0);
+    _depura("BusquedaCuenta::BusquedaCuenta", 10);
     setupUi(this);
     m_companyact = NULL;
     mdb_idcuenta = "";
@@ -43,7 +43,7 @@ BusquedaCuenta::~BusquedaCuenta() {
 
 
 void BusquedaCuenta::setempresa(empresa *comp) {
-    _depura("BusquedaCuenta::setempresa", 0);
+    _depura("BusquedaCuenta::setempresa", 10);
     m_companyact = comp;
     m_numdigitos = m_companyact->numdigitosempresa();
     _depura("END BusquedaCuenta::setempresa", 0);
@@ -51,7 +51,7 @@ void BusquedaCuenta::setempresa(empresa *comp) {
 
 
 void BusquedaCuenta::setidcuenta(QString val) {
-    _depura("BusquedaCuenta::setidcuenta", 0);
+    _depura("BusquedaCuenta::setidcuenta", 10);
     mdb_idcuenta=val;
     QString SQLQuery = "SELECT * FROM cuenta WHERE idcuenta = '" + mdb_idcuenta + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
@@ -73,7 +73,7 @@ void BusquedaCuenta::setidcuenta(QString val) {
 
 
 void BusquedaCuenta::setcodigocuenta(QString val) {
-    _depura("BusquedaCuenta::setcodigocuenta", 0);
+    _depura("BusquedaCuenta::setcodigocuenta", 10);
     mdb_codigocuenta = val;
     QString SQLQuery = "SELECT * FROM cuenta WHERE codigo = '" + mdb_codigocuenta + "'";
     cursor2 *cur = m_companyact->cargacursor(SQLQuery);
@@ -95,7 +95,7 @@ void BusquedaCuenta::setcodigocuenta(QString val) {
 
 /// B&uacute;squeda de cuentas.
 void BusquedaCuenta::s_searchCuenta() {
-    _depura("BusquedaCuenta::s_searchCuenta", 0);
+    _depura("BusquedaCuenta::s_searchCuenta", 10);
     /// Generamos un di&aacute;logo.
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
@@ -124,7 +124,7 @@ void BusquedaCuenta::s_searchCuenta() {
 
 
 void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
-    _depura("BusquedaCuenta::s_codigocuentatextChanged", 0, val);
+    _depura("BusquedaCuenta::s_codigocuentatextChanged", 10, val);
     if (val == "+") {
         s_searchCuenta();
         emit(valueChanged(mui_codigocuenta->text()));
@@ -134,7 +134,7 @@ void BusquedaCuenta::s_codigocuentatextChanged(const QString &val) {
 
 
 void BusquedaCuenta::s_lostFocus() {
-    _depura("BusquedaCuenta::s_lostFocus", 0);
+    _depura("BusquedaCuenta::s_lostFocus", 10);
     mdb_codigocuenta=mui_codigocuenta->text();
     QString cad = mdb_codigocuenta;
     if (cad != "") {
@@ -162,23 +162,22 @@ void BusquedaCuenta::s_lostFocus() {
 }
 
 
-
-// ==================================================================0
-// Busqueda Cuenta Delegate para usar con los subforms
-// ===================================================================
+/// ===================================================================
+/// Busqueda Cuenta Delegate para usar con los subforms
+/// ===================================================================
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
-    sobre si un elemento ha sido creado o no. 
+    sobre si un elemento ha sido creado o no.
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
 */
 BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
         : QComboBox(parent) {
-    _depura("BusquedaCuentaDelegate::BusquedaCuentaDelegate", 0);
+    _depura("BusquedaCuentaDelegate::BusquedaCuentaDelegate", 10);
     m_companyact = NULL;
     m_cursorcombo = NULL;
     setEditable(true);
     setSizeAdjustPolicy(QComboBox::AdjustToContents);
 //    setCompleter(0);
-    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+//    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaCuentaDelegate::BusquedaCuentaDelegate", 0);
 }
@@ -187,7 +186,7 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
 /** Libera la memoria reservada.
 */
 BusquedaCuentaDelegate::~BusquedaCuentaDelegate() {
-    _depura("BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 0);
+    _depura("BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 10);
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
     _depura("END BusquedaCuentaDelegate::~BusquedaCuentaDelegate", 0);
@@ -199,36 +198,51 @@ BusquedaCuentaDelegate::~BusquedaCuentaDelegate() {
     como parametro lo establece como el registro activo por el comboBox.
 */
 void BusquedaCuentaDelegate::s_editTextChanged(const QString &cod) {
-    _depura("BusquedaCuentaDelegate::s_editTextChanged", 0);
+    _depura("BusquedaCuentaDelegate::s_editTextChanged", 10);
     static bool semaforo = FALSE;
     QString codigo = cod;
+    QStringList listacodigos;
 
-    if (codigo.size() < 3) return;
+    if (codigo.size() < 3) {
+        /// Si hay menos de 3 caracteres en el QComboBox no tiene que aparecer el autocompletar.
+       // completar->popup->
+        return;
+    } // end if
 
-    if (semaforo) { return; }
-    else  {semaforo = TRUE; }
+    if (codigo.size() > 3) return;
 
-
-    if (m_cursorcombo != NULL)
-        delete m_cursorcombo;
-//    while (count() )
-//	removeItem(0);
+    if (semaforo) {
+        return;
+    } else {
+        semaforo = TRUE;
+    } // end if
 
     codigo = codigo.left(codigo.indexOf(".-"));
+    m_cursorcombo = m_companyact->cargacursor("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25");
 
-
-    m_cursorcombo = m_companyact->cargacursor("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '"+codigo+"%' ORDER BY codigo LIMIT 25");
-    clear();
     while (!m_cursorcombo->eof()) {
-        addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
+        //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
+        listacodigos << m_cursorcombo->valor("codigo");
         m_cursorcombo->siguienteregistro();
     }
-    setEditText(cod);
-//    showPopup();
+    listacodigos.clear();
+    listacodigos << "hola";
+
+    completar = new QCompleter(listacodigos, this);
+    completar->setCompletionMode(QCompleter::PopupCompletion);
+    completar->setCaseSensitivity(Qt::CaseInsensitive);
+
+    setCompleter(completar);
+
     semaforo = FALSE;
     _depura("END BusquedaCuentaDelegate::s_editTextChanged", 0);
 }
 
 
+void BusquedaCuenta::s_returnPressed() {
+    _depura("s_returnPressed", 10);
+    s_lostFocus();
+    emit returnPressed();
+}
 
 

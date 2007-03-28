@@ -28,7 +28,7 @@ SET DATESTYLE TO European;
 
 \echo -n ':: Configuracion ... '
 BEGIN;
-INSERT INTO configuracion (nombre, valor) VALUES ('CodCuenta', 'xxxxyyy');
+INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('CIF', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('TipoVia', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('NombreVia', '--');
@@ -42,13 +42,13 @@ INSERT INTO configuracion (nombre, valor) VALUES ('Provincia', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('Pais', '--');
 INSERT INTO configuracion (nombre, valor) VALUES ('Tipo', 'BulmaFact');
 INSERT INTO configuracion (nombre, valor) VALUES ('ProgramaContabilidad', 'BulmaCont');
-INSERT INTO configuracion (nombre, valor) VALUES ('NombreEmpresa', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('AlmacenDefecto', '**CAMBIAME**');
 INSERT INTO configuracion (nombre, valor) VALUES ('DireccionCompleta', 'Sin definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('Ciudad', 'Sin definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('CodArticuloGenerico', 'Sin Definir');
 INSERT INTO configuracion (nombre, valor) VALUES ('SerieFacturaDefecto', '**CAMBIAME**');
 INSERT INTO configuracion (nombre, valor) VALUES ('IRPF', '0');
+INSERT INTO configuracion (nombre, valor) VALUES ('CodCuenta', 'xxxxyyy');
 \echo -n ':: Configuraciones ... '
 COMMIT;
 

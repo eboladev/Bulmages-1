@@ -24,6 +24,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QComboBox>
+#include <QCompleter>
 
 #include "ui_busquedacuentabase.h"
 #include "postgresiface2.h"
@@ -39,6 +40,7 @@ private:
     empresa *m_companyact;
     /// Este cursor almacena el listado de series de factura para poder trabajar con ellas.
     cursor2 *m_cursorcombo;
+    QCompleter *completar;
 
 public:
     BusquedaCuentaDelegate(QWidget *parent = 0);
@@ -110,10 +112,7 @@ public slots:
     virtual void on_returnPressed() {
                               s_returnPressed();
                           };
-    virtual void s_returnPressed() {
-                             s_lostFocus();
-                             emit returnPressed();
-                         };
+    virtual void s_returnPressed();
     virtual void selectAll() {
         mui_codigocuenta->selectAll();
     };

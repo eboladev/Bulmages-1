@@ -69,25 +69,25 @@ COMMIT;
 
 \echo -n ':: Tasa de IVA ... '
 BEGIN;
-INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(1, 0, '0001-01-01');
-INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 16.00, '0001-01-01');
-INSERT INTO tasa_iva(idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 17.00, '2005-01-01');
+INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(1, 0, '0001-01-01');
+INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 16.00, '0001-01-01');
+INSERT INTO tasa_iva (idtipo_iva, porcentasa_iva, fechatasa_iva) VALUES(2, 17.00, '2005-01-01');
 \echo -n ':: Tasa de IVA ... '
 COMMIT;
 
 \echo -n ':: Familia ... '
 BEGIN;
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('CO', 'Comestibles', NULL);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('DR', 'Drogueria', NULL);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('VE', 'Vehiculos', NULL);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('LA', 'Lacteos', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('CA', 'Carnicos', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('CH', 'Charcuteria', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('PE', 'Pescaderia', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('PA', 'Panaderia', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('FU', 'Fruteria', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('BE', 'Bebidas', 1);
-INSERT INTO familia(codigofamilia, nombrefamilia, padrefamilia) VALUES ('IN', 'Infusiones', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('CO', 'Comestibles', NULL);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('DR', 'Drogueria', NULL);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('VE', 'Vehiculos', NULL);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('LA', 'Lacteos', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('CA', 'Carnicos', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('CH', 'Charcuteria', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('PE', 'Pescaderia', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('PA', 'Panaderia', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('FU', 'Fruteria', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('BE', 'Bebidas', 1);
+INSERT INTO familia (codigofamilia, nombrefamilia, padrefamilia) VALUES ('IN', 'Infusiones', 1);
 \echo -n ':: Familia ... '
 COMMIT;
 

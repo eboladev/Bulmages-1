@@ -109,6 +109,9 @@ int SDBCampo::set(QString val) {
         } else {
             setCheckState(Qt::Unchecked);
         } // end if
+    } else if (tipo() == DBCampo::DBnumeric) {
+        /// \TODO Deberian usarse las locales para determinar el formato de los numeros con decimales.
+        setText(val.replace(".",","));
     } else {
         setText(val);
     } // end if

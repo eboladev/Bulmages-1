@@ -22,6 +22,7 @@
 #include <QMenu>
 #include <QKeyEvent>
 #include <QEvent>
+#include <QLocale>
 
 #include "subform3.h"
 #include "subform2bc.h"
@@ -318,8 +319,8 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         editor->setObjectName("QTextEditDelegate");
         return editor;
     } else if (linea->nomcampo() == "debe"
-               || linea->nomcampo() == "haber"	) {
-        QDoubleSpinBox *editor = new QDoubleSpinBox(parent);
+               || linea->nomcampo() == "haber") {
+        QDoubleSpinBox2 *editor = new QDoubleSpinBox2(parent);
         editor->setMinimum(-1000000);
         editor->setMaximum(1000000);
         return editor;
@@ -350,11 +351,11 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         return;
 
     } else if (linea->nomcampo() == "debe"
-               || linea->nomcampo() == "haber" + m_subform->tableName()	) {
-        QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+               || linea->nomcampo() == "haber" + m_subform->tableName() ) {
+        QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*>(editor);
         spinBox->interpretText();
         QString value = spinBox->text();
-        value = value.replace(",", ".");
+        //value = value.replace(",", ".");
         model->setData(index, value);
     } else if (linea->nomcampo() == "codigo") {
         BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
@@ -381,10 +382,11 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
         textedit->setText(data);
         textedit->selectAll();
     } else if (linea->nomcampo() == "debe"
-               || linea->nomcampo() == "haber"	) {
+               || linea->nomcampo() == "haber") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
-        QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
+        QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*>(editor);
         spinBox->setValue(value.toDouble());
+        //_depura("ggg: " + QString::number(value.toDouble()), 2);
         spinBox->selectAll();
     } else if (linea->nomcampo() == "codigo") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
@@ -416,11 +418,11 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
         switch (key) {
         case Qt::Key_Return:
         case Qt::Key_Enter:
-	   if (event->type() == QEvent::KeyPress) 
-		return TRUE;
+            if (event->type() == QEvent::KeyPress)
+                return TRUE;
             if (obj->objectName() == "QTextEditDelegate") {
                 obj->event(event);
-		_depura("QSubForm2BcDelegate::eventFilter", 2, "Se ha pulsado el enter");
+                _depura("QSubForm2BcDelegate::eventFilter", 2, "Se ha pulsado el enter");
                 return TRUE;
             } // end if
         } // end switch

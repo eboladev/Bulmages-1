@@ -118,7 +118,7 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBnumeric:
         if (m_valorcampo == "")
             return "NULL";
-        return m_valorcampo;
+        return m_valorcampo.replace(",", ".");
     case DBboolean:
         if (m_valorcampo == "")
             return "NULL";
