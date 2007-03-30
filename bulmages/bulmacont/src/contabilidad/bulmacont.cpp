@@ -94,6 +94,7 @@ Bulmacont::~Bulmacont() {
 }
 
 
+
 void Bulmacont::initStatusBar() {
     _depura("Bulmacont::initStatusBar", 0);
     statusBar()->showMessage(tr("Listo."));
@@ -262,10 +263,10 @@ void Bulmacont::informaindexador(QWidget *w) {
         return;
     } // end if
     m_empresaactual->seleccionaWindow(w->windowTitle(), w);
-    
+
     QString texto = "Window activated. " + w->windowTitle() + "\n";
     printf(texto.toAscii().constData());
-    
+
     _depura("END Bulmacont::informaindexador", 0);
 }
 

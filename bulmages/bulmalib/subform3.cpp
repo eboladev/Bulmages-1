@@ -215,12 +215,14 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_listcolumnas->setShowGrid(FALSE);
     mui_listcolumnas->setColumnWidth(0, 25);
     mui_listcolumnas->setColumnWidth(1, 100);
+    mui_listcolumnas->hideColumn(1);
     mui_listcolumnas->setColumnWidth(2, 175);
-    mui_listcolumnas->setColumnWidth(3, 0);
+    mui_listcolumnas->setColumnWidth(3, 100);
+    mui_listcolumnas->hideColumn(3);
     mui_listcolumnas->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_listcolumnas->verticalHeader()->hide();
     mui_listcolumnas->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    mui_listcolumnas->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
+    mui_listcolumnas->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
 
     /// Siempre que arrancamos mostramos la pagina 0.
     mui_paginaact->setValue(1);
@@ -570,6 +572,7 @@ void SubForm3::cargar(cursor2 *cur) {
            if (rx.exactMatch(camp->valorcampo())) {
                 camp->set(camp->valorcampo().left(10));
            } // end if
+           camp->setTextAlignment(Qt::AlignVCenter);
            mui_list->setItem(i, j, camp);
         } // end for
     } // end for
@@ -713,10 +716,14 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     } // end if
 
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
+
     it = new QTableWidgetItem2(nom);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 1, it);
+
     it = new QTableWidgetItem2(nomp);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 2, it);
+    it->setToolTip(tr("Campo") + ": '" + nom + "'");
+
     it = new QTableWidgetItem2("");
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 3, it);
 

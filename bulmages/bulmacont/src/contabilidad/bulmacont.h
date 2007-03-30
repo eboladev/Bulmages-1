@@ -63,10 +63,10 @@ public:
     }
     /// Exporta menues.
     QMenu *mui_MenuHerramientas() {
-	   return menuHerramientas;
+       return menuHerramientas;
     }
     QMenu *mui_MenuVer() {
-	   return menuVer;
+       return menuVer;
     }
 
 protected:

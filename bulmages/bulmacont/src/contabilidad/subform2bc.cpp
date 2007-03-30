@@ -318,8 +318,7 @@ QWidget *QSubForm2BcDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         QTextEditDelegate *editor = new QTextEditDelegate(parent);
         editor->setObjectName("QTextEditDelegate");
         return editor;
-    } else if (linea->nomcampo() == "debe"
-               || linea->nomcampo() == "haber") {
+    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber") {
         QDoubleSpinBox2 *editor = new QDoubleSpinBox2(parent);
         editor->setMinimum(-1000000);
         editor->setMaximum(1000000);
@@ -350,12 +349,10 @@ void QSubForm2BcDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         model->setData(index, textedit->toPlainText());
         return;
 
-    } else if (linea->nomcampo() == "debe"
-               || linea->nomcampo() == "haber" + m_subform->tableName() ) {
+    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber" + m_subform->tableName()) {
         QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*>(editor);
         spinBox->interpretText();
         QString value = spinBox->text();
-        //value = value.replace(",", ".");
         model->setData(index, value);
     } else if (linea->nomcampo() == "codigo") {
         BusquedaCuentaDelegate *comboBox = static_cast<BusquedaCuentaDelegate*>(editor);
@@ -381,12 +378,10 @@ void QSubForm2BcDelegate::setEditorData(QWidget *editor, const QModelIndex &inde
         QTextEditDelegate *textedit = qobject_cast<QTextEditDelegate*>(editor);
         textedit->setText(data);
         textedit->selectAll();
-    } else if (linea->nomcampo() == "debe"
-               || linea->nomcampo() == "haber") {
+    } else if (linea->nomcampo() == "debe" || linea->nomcampo() == "haber") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         QDoubleSpinBox2 *spinBox = static_cast<QDoubleSpinBox2*>(editor);
         spinBox->setValue(value.toDouble());
-        //_depura("ggg: " + QString::number(value.toDouble()), 2);
         spinBox->selectAll();
     } else if (linea->nomcampo() == "codigo") {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();

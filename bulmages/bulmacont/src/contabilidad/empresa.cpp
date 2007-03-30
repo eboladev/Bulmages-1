@@ -20,6 +20,7 @@
 
 #include <QObject>
 
+
 #include "empresa.h"
 #include "abreempresaview.h"
 #include "listcuentasview1.h"
@@ -166,6 +167,7 @@ int empresa::inicializa1() {
 
     /// pb = 100%
     m_progressbar->setValue(100);
+
     _depura("END empresa::inicializa1", 0);
     return(0);
 }

@@ -132,10 +132,10 @@ int main(int argc, char **argv) {
         confpr->leeconfig(confesp);
 
         /// Cargamos las librerias de g_plugins.
-        //g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
-        //g_plugins->lanza("entryPoint", bges);
+        g_plugins->cargaLibs(confpr->valor(CONF_PLUGINS_BULMACONT));
+        g_plugins->lanza("entryPoint", bges);
 
-        //g_main = bges;
+        g_main = bges;
         valorsalida = theApp->exec();
     } catch (...) {
         mensajeInfo("Error inesperado en BulmaCont, el programa se cerrara.");

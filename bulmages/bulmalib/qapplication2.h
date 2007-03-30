@@ -23,10 +23,14 @@
 
 #include <QApplication>
 #include <QWidget>
+#include <QMainWindow>
 
 
 class QApplication2 : public QApplication {
     Q_OBJECT
+
+private:
+    QMainWindow *m_mainWindow;
 
 public:
     QApplication2(int &argc, char **argv);

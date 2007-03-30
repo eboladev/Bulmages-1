@@ -214,6 +214,7 @@ int Asiento1::guardar() {
 
         if (estadoAsiento1() == ASCerrado)
             m_companyact->cierraasiento(id.toInt());
+        g_main->statusBar()->showMessage(tr("El asiento se ha guardado correctamente."), 2000);
         return 0;
     } catch (...) {
         _depura("Error guardando, se cancela la operacion", 1);
@@ -229,20 +230,26 @@ empresa *Asiento1::companyact() {
     return m_companyact;
 }
 
+
 void Asiento1::setidasiento(QString val) {
     _depura("Asiento1::setidasiento", 0);
     setDBvalue("idasiento", val);
     listalineas->setColumnValue("idasiento", val);
     _depura("END Asiento1::setidasiento", 0);
 }
+
+
 QString Asiento1::idasiento() {
     _depura("Asiento1::idasiento", 0);
     _depura("END Asiento1::idasiento", 0);
     return DBvalue("idasiento");
 }
+
+
 /// Establece cual es la lista subformulario del presupuesto.
 void Asiento1::setListLinAsiento1(ListLinAsiento1View *a) {
     _depura("Asiento1::setListLinAsiento1", 0);
     listalineas = a;
     _depura("END Asiento1::setListLinAsiento1", 0);
 }
+
