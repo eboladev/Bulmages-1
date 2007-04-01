@@ -26,12 +26,18 @@
 #include "articulolist.h"
 #include "funcaux.h"
 #include "fixed.h"
+#include "plugins.h"
 
 
 ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
         : SubForm2Bf(parent) {
+    _depura("ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0);
     setDBTableName("lalbaran");
     setDBCampoId("numlalbaran");
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ListLinAlbaranClienteView_ListLinAlbaranClienteView", this);
+    if (res != 0)
+        return;
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
@@ -46,6 +52,10 @@ ListLinAlbaranClienteView::ListLinAlbaranClienteView(QWidget *parent)
     addSHeader("ordenlalbaran", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
+    /// Disparamos los plugins.
+    g_plugins->lanza("ListLinAlbaranClienteView_ListLinAlbaranClienteView_Post", this);
+    _depura("END ListLinAlbaranClienteView::ListLinAlbaranClienteView", 0);
+
 }
 
 void ListLinAlbaranClienteView::cargar(QString idalbaran) {

@@ -282,10 +282,10 @@ void Asiento1View::boton_cargarasiento() {
 
 
 void Asiento1View::muestraasiento(QString v) {
-        _depura("Asiento1View::muestraasiento ", 0);
-        situarasiento(v);
-        cargar(v);
-        _depura("END Asiento1View::muestraasiento ", 0);
+    _depura("Asiento1View::muestraasiento ", 0);
+    situarasiento(v);
+    cargar(v);
+    _depura("END Asiento1View::muestraasiento ", 0);
 }
 
 
@@ -514,8 +514,9 @@ QString ListAsientos::idasientosiguiente() {
 }
 
 
-bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event)
-{
+bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event) {
+    _depura("eventos_mui_ordenasiento::eventFilter", 0);
+
     if (event->type() == QEvent::KeyPress) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if ((keyEvent->key() == Qt::Key_Enter) || (keyEvent->key() == Qt::Key_Return)) {
@@ -526,3 +527,72 @@ bool eventos_mui_ordenasiento::eventFilter(QObject *obj, QEvent *event)
     return QObject::eventFilter(obj, event);
 }
 
+
+/// =================================================================
+
+bool ListAsientos::esprimerasiento() {
+    return cursorasientos->esprimerregistro();
+}
+
+bool ListAsientos::esultimoasiento() {
+    return cursorasientos->esultimoregistro();
+}
+
+
+void Asiento1View::pintafecha(QString val) {
+    mui_fecha->setText(val);
+}
+void Asiento1View::pintaordenasiento(QString val) {
+    mui_ordenasiento->setValue(val.toInt());
+}
+void Asiento1View::pintaclase(QString val) {
+    mui_claseAsiento->setCurrentIndex(val.toInt());
+}
+void Asiento1View::pintacomentariosasiento(QString text) {
+    mui_comentariosAsiento->setPlainText(text);
+}
+
+void Asiento1View::muestraasiento(int v) {
+    muestraasiento(QString::number(v));
+}
+/// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
+int Asiento1View::sacaWindow() {
+    return 0;
+}
+
+
+void Asiento1View::setFecha(QString val) {
+    mui_fecha->setText(val);
+}
+
+void Asiento1View::on_mui_abrirasiento_clicked() {
+    abrir();
+}
+void Asiento1View::on_mui_cerrarasiento_clicked() {
+    prepguardar();
+    cerrar();
+}
+void Asiento1View::on_mui_guardarasiento_clicked() {
+    prepguardar();
+    Asiento1::guardar();
+}
+
+void Asiento1View::on_mui_iva_clicked() {
+    _depura("on_mui_iva_clicked", 0);
+    mui_list->boton_iva();
+    _depura("END on_mui_iva_clicked", 0);
+}
+
+void Asiento1View::s_lineaValueChanged() {
+    calculaypintatotales(idasiento());
+}
+/// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
+/// carga de dicho asiento.
+void Asiento1View::mui_ordenasiento_pulsadoIntro() {
+    boton_cargarasiento();
+}
+
+
+eventos_mui_ordenasiento::eventos_mui_ordenasiento(Asiento1View *ob) {
+    objeto = ob;
+}

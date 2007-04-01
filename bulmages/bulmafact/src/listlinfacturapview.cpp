@@ -26,6 +26,7 @@
 #include "articulolist.h"
 #include "funcaux.h"
 #include "fixed.h"
+#include "plugins.h"
 
 
 ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
@@ -33,6 +34,12 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
     _depura("ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
     setDBTableName("lfacturap");
     setDBCampoId("idlfacturap");
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ListLinFacturaProveedorView_ListLinFacturaProveedorView", this);
+    if (res != 0)
+        return;
+
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre"));
@@ -47,6 +54,10 @@ ListLinFacturaProveedorView::ListLinFacturaProveedorView(QWidget *parent)
     addSHeader("ordenlfacturap", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
+
+    /// Disparamos los plugins.
+    g_plugins->lanza("ListLinFacturaProveedorView_ListLinFacturaProveedorView_Post", this);
+
     _depura("END ListLinFacturaProveedorView::ListLinFacturaProveedorView", 0);
 }
 

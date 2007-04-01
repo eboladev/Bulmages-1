@@ -26,12 +26,18 @@
 #include "articulolist.h"
 #include "funcaux.h"
 #include "fixed.h"
+#include "plugins.h"
 
-
-ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent)
-        : SubForm2Bf(parent) {
+ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent) : SubForm2Bf(parent) {
+    _depura("ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0);
     setDBTableName("lalbaranp");
     setDBCampoId("numlalbaranp");
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ListLinAlbaranProveedorView_ListLinAlbaranProveedorView", this);
+    if (res != 0)
+        return;
+
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
@@ -45,18 +51,23 @@ ListLinAlbaranProveedorView::ListLinAlbaranProveedorView(QWidget *parent)
     addSHeader("idalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id albaranp"));
     addSHeader("ordenlalbaranp", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
+    setDelete(TRUE);
     setOrdenEnabled(TRUE);
+    /// Disparamos los plugins.
+    g_plugins->lanza("ListLinAlbaranProveedorView_ListLinAlbaranProveedorView_Post", this);
+    _depura("END ListLinAlbaranProveedorView::ListLinAlbaranProveedorView", 0);
 }
 
 
 
 
 void ListLinAlbaranProveedorView::cargar(QString idalbaranp) {
-    _depura("ListLinPedidoProveedorView::cargar\n", 0);
+    _depura("ListLinPedidoProveedorView::cargar", 0);
     mdb_idalbaranp = idalbaranp;
     cursor2 * cur= companyact()->cargacursor("SELECT * FROM lalbaranp LEFT JOIN articulo ON lalbaranp.idarticulo = articulo.idarticulo WHERE idalbaranp = " + mdb_idalbaranp + " ORDER BY ordenlalbaranp");
     SubForm3::cargar(cur);
     delete cur;
+    _depura("END ListLinPedidoProveedorView::cargar", 0);
 }
 
 

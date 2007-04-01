@@ -9,5 +9,6 @@ SUBDIRS += src/plugintarifas
 SUBDIRS += src/comercialbf
 SUBDIRS += src/efacturabf
 SUBDIRS += src/pluginvehiculosbf
+SUBDIRS += src/plugintrazabilidad
 
 include(privatecode.pro)

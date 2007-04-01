@@ -26,12 +26,19 @@
 #include "articulolist.h"
 #include "funcaux.h"
 #include "fixed.h"
+#include "plugins.h"
 
 
 ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
     _depura("ListLinFacturaView::ListLinFacturaView", 0);
     setDBTableName("lfactura");
     setDBCampoId("idlfactura");
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ListLinFacturaView_ListLinFacturaView", this);
+    if (res != 0)
+        return;
+
     addSHeader("idarticulo", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Id articulo"));
     addSHeader("codigocompletoarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNone, tr("Codigo completo articulo"));
     addSHeader("nomarticulo", DBCampo::DBvarchar, DBCampo::DBNoSave, SHeader::DBNoWrite, tr("Nombre articulo"));
@@ -46,6 +53,9 @@ ListLinFacturaView::ListLinFacturaView(QWidget *parent) : SubForm2Bf(parent) {
     addSHeader("ordenlfactura", DBCampo::DBint, DBCampo::DBNotNull, SHeader::DBNoView, tr("Orden"));
     setinsercion(TRUE);
     setOrdenEnabled(TRUE);
+    /// Disparamos los plugins.
+    g_plugins->lanza("ListLinFacturaView_ListLinFacturaView_Post", this);
+
     _depura("END ListLinFacturaView::ListLinFacturaView", 0);
 }
 

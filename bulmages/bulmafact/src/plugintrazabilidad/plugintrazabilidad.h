@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Tomeu Borras Riera                              *
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
  *   tborras@conetxia.com                                                  *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,28 +18,47 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#ifndef LISTLINFACTURAVIEW_H
-#define LISTLINFACTURAVIEW_H
+#ifdef Q_WS_WIN
+# define MY_EXPORT __declspec(dllexport)
+#else
+# define MY_EXPORT
+#endif
 
-#include <QEvent>
+#include <QStringList>
+#include <QWidget>
+#include <QIcon>
+#include <QApplication>
+#include <QObject>
 
 #include "company.h"
-#include "subform2bf.h"
-#include "fixed.h"
+#include "bulmafact.h"
+#include "listlinalbaranproveedorview.h"
+#include "listlinalbaranclienteview.h"
+#include "listlinfacturaview.h"
+#include "listlinfacturapview.h"
 
 
-/// Muestra y administra las l&iacute;neas de detalle de una factura a un cliente.
-/** */
-class ListLinFacturaView : public SubForm2Bf {
+extern "C" MY_EXPORT int entryPoint(bulmafact *);
+extern "C" MY_EXPORT int ListLinAlbaranProveedorView_ListLinAlbaranProveedorView(ListLinAlbaranProveedorView *);
+extern "C" MY_EXPORT int ListLinAlbaranClienteView_ListLinAlbaranClienteView(ListLinAlbaranClienteView *);
+extern "C" MY_EXPORT int ListLinFacturaView_ListLinFacturaView(ListLinFacturaView *);
+extern "C" MY_EXPORT int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProveedorView *);
+
+extern QApplication2 *theApp;
+
+
+class myplugin : public QObject {
     Q_OBJECT
 
 public:
-    QString mdb_idfactura;
-    ListLinFacturaView(QWidget *parent = 0);
-    ~ListLinFacturaView() {};
+    company *m_companyact;
+    bulmafact *m_bulmafact;
+
+public:
+    myplugin();
+    ~myplugin();
+    void inicializa(bulmafact *);
+
 public slots:
-    virtual void cargar(QString idfactura);
+    void elslot();
 };
-
-#endif
-

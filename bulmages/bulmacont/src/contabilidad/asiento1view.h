@@ -61,12 +61,8 @@ public:
         mensajeInfo("Funcion no implementada.");
     };
     void situarasiento(QString);
-    bool esprimerasiento() {
-        return cursorasientos->esprimerregistro();
-    };
-    bool esultimoasiento() {
-        return cursorasientos->esultimoregistro();
-    };
+    bool esprimerasiento();
+    bool esultimoasiento();
     QString idasientoanterior();
     QString idasientosiguiente();
 };
@@ -76,18 +72,10 @@ class Asiento1View : public ListAsientos, public Ui_AsientoBase {
     Q_OBJECT
 
 private:
-    void pintafecha(QString val) {
-        mui_fecha->setText(val);
-    };
-    void pintaordenasiento(QString val) {
-        mui_ordenasiento->setValue(val.toInt());
-    };
-    void pintaclase(QString val) {
-        mui_claseAsiento->setCurrentIndex(val.toInt());
-    };
-    void pintacomentariosasiento(QString text) {
-        mui_comentariosAsiento->setPlainText(text);
-    };
+    void pintafecha(QString val);
+    void pintaordenasiento(QString val);
+    void pintaclase(QString val);
+    void pintacomentariosasiento(QString text);
     virtual void calculaypintatotales(QString);
     void prepguardar();
 
@@ -95,35 +83,21 @@ public:
     Asiento1View(empresa *, QWidget *parent = 0, int flags = 0);
     ~Asiento1View();
     void muestraasiento(QString v);
-    void muestraasiento(int v) {
-        muestraasiento(QString::number(v));
-    };
+    void muestraasiento(int v);
     /// Desabilitamos el sacaWindow ya que esta ventana no debe ser sacada ante un close.
-    virtual int sacaWindow() {
-        return 0;
-    };
+    virtual int sacaWindow();
 
 public:
-    void setFecha(QString val) {
-        mui_fecha->setText(val);
-    };
+    void setFecha(QString val);
     virtual void trataestadoAsiento1();
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo(QString nuevoordenasiento = "");
 
 public slots:
-    virtual void on_mui_abrirasiento_clicked() {
-        abrir();
-    };
-    virtual void on_mui_cerrarasiento_clicked() {
-        prepguardar();
-        cerrar();
-    };
-    virtual void on_mui_guardarasiento_clicked() {
-        prepguardar();
-        Asiento1::guardar();
-    };
+    virtual void on_mui_abrirasiento_clicked();
+    virtual void on_mui_cerrarasiento_clicked();
+    virtual void on_mui_guardarasiento_clicked();
     virtual void on_mui_nuevoasiento_clicked();
     virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();
@@ -134,19 +108,11 @@ public slots:
     /// presente con los datos ya introducidos. La clase ivaview hace una inserci&oacute;n
     /// o una modificaci&oacute;n seg&uacute;n exista o no una entrada de IVA para dicho
     /// borrador.
-    virtual void on_mui_iva_clicked() {
-        _depura("on_mui_iva_clicked", 0);
-        mui_list->boton_iva();
-        _depura("END on_mui_iva_clicked", 0);
-    };
-    virtual void s_lineaValueChanged() {
-        calculaypintatotales(idasiento());
-    };
+    virtual void on_mui_iva_clicked();
+    virtual void s_lineaValueChanged();
     /// Al pulsar return sobre el n&uacute;mero de asiento se procede como si fuese una
     /// carga de dicho asiento.
-    void mui_ordenasiento_pulsadoIntro() {
-        boton_cargarasiento();
-    };
+    void mui_ordenasiento_pulsadoIntro();
     virtual void boton_cargarasiento();
 };
 
@@ -160,9 +126,7 @@ private:
     Asiento1View *objeto;
 
 public:
-    eventos_mui_ordenasiento(Asiento1View *ob) {
-        objeto = ob;
-    };
+    eventos_mui_ordenasiento(Asiento1View *ob);
     ~eventos_mui_ordenasiento() {};
 
 protected:
