@@ -186,7 +186,7 @@ void Fixed::fromFixed(const char *s) {
             value = value * 10 + (c - '0');
             if (decimal)
                 precision++;
-        } else if (c == '.') {
+        } else if (c == '.' || c ==',') {
             if (decimal)
                 break;
             decimal = true;

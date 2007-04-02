@@ -29,6 +29,7 @@
 #include "articulolist.h"
 #include "busquedaarticulo.h"
 #include "qtexteditdelegate.h"
+#include "plugins.h"
 
 
 SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
@@ -37,6 +38,7 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     m_delegate = new QSubForm2BfDelegate(this);
     mui_list->setItemDelegate(m_delegate);
     mdb_idcliente = "";
+
     _depura("END SubForm2Bf::SubForm2Bf", 0);
 }
 
@@ -97,6 +99,7 @@ void SubForm2Bf::on_mui_list_pressedSlash(int row, int col) {
 
 void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
     _depura("SubForm2Bf::pressedMinus", 0);
+
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE idarticulo = " + rec->DBvalue("idarticulo"));
@@ -112,6 +115,13 @@ void SubForm2Bf::on_mui_list_pressedMinus(int row, int col) {
 
 void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
     _depura("SubForm2Bf::on_mui_list_editFinished", 0);
+
+
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("SubForm2Bf_on_mui_list_editFinished", this);
+    if (res != 0)
+        return;
+
     SDBRecord *rec = lineaat(row);
     SDBCampo *camp = (SDBCampo *) item(row, col);
     camp->refresh();

@@ -28,6 +28,7 @@
 #include "subform.h"
 #include "subform3.h"
 
+#include "qdoublespinbox2.h"
 
 class SubForm2Bf;
 

@@ -97,3 +97,32 @@ int ListLinFacturaProveedorView_ListLinFacturaProveedorView(ListLinFacturaProvee
     _depura("END ListLinFacturaProveedorView_ListLinFacturaProveedorView", 0);
     return 0;
 }
+
+int SubForm2Bf_on_mui_list_editFinished(SubForm2Bf *subform) {
+    _depura("SubForm2Bf_on_mui_list_editFinished", 0);
+
+    SDBRecord *rec = subform->lineaat(subform->m_prevRow);
+    SDBCampo *camp = (SDBCampo *) subform->item(subform->m_prevRow, subform->m_prevCol);
+    SDBCampo *campact = (SDBCampo *) subform->item(subform->currentRow(), subform->currentColumn());
+    camp->refresh();
+
+    if (camp->nomcampo() == "lote"+subform->tableName()) {
+	QString query = "SELECT * FROM movimiento LEFT JOIN articulo ON movimiento.idarticulo = articulo.idarticulo WHERE lotemovimiento = '"+camp->valorcampo()+"'";
+	cursor2 *cur = subform->companyact()->cargacursor(query);
+	if (!cur->eof()) {
+		if (campact->nomcampo() == "codigocompletoarticulo") {
+			campact->setText(cur->valor("codigocompletoarticulo"));
+		} else {
+			rec->setDBvalue("idarticulo", cur->valor("idarticulo"));
+			rec->setDBvalue("codigocompletoarticulo", cur->valor("codigocompletoarticulo"));
+			rec->setDBvalue("nomarticulo", cur->valor("nomarticulo"));
+			rec->refresh();
+		} // end if
+	} // end if
+	delete cur;
+    } // end if
+
+    return 0;
+
+    _depura("END SubForm2Bf_on_mui_list_editFinished", 0);
+}

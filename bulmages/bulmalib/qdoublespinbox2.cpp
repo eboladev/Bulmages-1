@@ -59,6 +59,6 @@ bool QDoubleSpinBox2::eventFilter(QObject *obj, QEvent *event) {
         } // end switch
     } // end if
     */
-    return QDoubleSpinBox2::eventFilter(obj, event);
+    return QDoubleSpinBox::eventFilter(obj, event);
 }
 

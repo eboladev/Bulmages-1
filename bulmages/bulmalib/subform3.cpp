@@ -232,6 +232,9 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     m_lista.clear();
     m_listaborrar.clear();
 
+    m_prevCol = -1;
+    m_prevRow = -1;
+
     setDelete(TRUE);
     _depura("END SubForm3::SubForm3", 0);
 }
@@ -1291,6 +1294,11 @@ void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
 
 void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
     _depura("SubForm3::on_mui_list_currentCellChanged", 0);
+
+    /// Establecemos las variables de clase para que los plugins puedan acceder a las coordenadas del elemento.
+    m_prevCol = col;
+    m_prevRow = row;
+
     if (row >= 0 && col >= 0) {
         on_mui_list_editFinished(row, col, 0);
     } // end if
