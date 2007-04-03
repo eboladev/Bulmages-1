@@ -53,19 +53,11 @@ private:
 public:
     BusquedaCliente(QWidget *parent = 0);
     ~BusquedaCliente();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     void pinta();
-    virtual QString cifcliente() {
-        return m_cifcliente->text();
-    };
-    virtual QString idcliente() {
-        return mdb_idcliente;
-    };
-    virtual QString nomcliente() {
-        return nomcliente();
-    };
+    virtual QString cifcliente();
+    virtual QString idcliente();
+    virtual QString nomcliente();
     virtual void setidcliente(QString val);
     virtual void setcifcliente(QString val);
 
@@ -73,6 +65,7 @@ public slots:
     virtual void on_mui_buscar_clicked();
     virtual void on_m_cifcliente_textChanged(const QString &);
     virtual void on_m_cifcliente_editingFinished();
+
 signals:
     void valueChanged(QString);
 };

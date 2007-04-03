@@ -119,7 +119,7 @@ void BusquedaCliente::setcifcliente(QString val) {
 /** SLOT que responde a la accion de buscar un cliente.
     Abre el listado de clientes en modo Seleccionar y espera a que cerremos
     dicha ventana o que seleccionemos un elemento.
-    Una vez determinado el elemento lo considera como el elemento seleccionado 
+    Una vez determinado el elemento lo considera como el elemento seleccionado
     y lo muestra.
 */
 void BusquedaCliente::on_mui_buscar_clicked() {
@@ -222,5 +222,25 @@ void BusquedaCliente::on_m_cifcliente_textChanged(const QString &val) {
     } // end if
     _depura("END BusquedaCliente::on_m_cifcliente_textChanged", 0);
 
+}
+
+
+void BusquedaCliente::setcompany(company *comp) {
+    companyact = comp;
+}
+
+
+QString BusquedaCliente::cifcliente() {
+    return m_cifcliente->text();
+}
+
+
+QString BusquedaCliente::idcliente() {
+    return mdb_idcliente;
+}
+
+
+QString BusquedaCliente::nomcliente() {
+    return nomcliente();
 }
 

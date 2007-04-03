@@ -163,23 +163,23 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
                 /// Calculamos el recargo equivalente.
                 cursor2 *cur2 = companyact()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
-		if (!cur2->eof()) {
-			if (cur2->valor("recargoeqcliente") == "t") {
-			rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-			} else {
-			rec->setDBvalue("reqeq"+m_tablename, "0");
-			} // end if
-		} // end if
+        if (!cur2->eof()) {
+            if (cur2->valor("recargoeqcliente") == "t") {
+            rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+            } else {
+            rec->setDBvalue("reqeq"+m_tablename, "0");
+            } // end if
+        } // end if
                 delete cur2;
 
                 cur2 = companyact()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
-		if (!cur2->eof()) {
-			if (cur2->valor("recargoeqproveedor") == "t") {
-			rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-			} else {
-			rec->setDBvalue("reqeq"+m_tablename, "0");
-			} // end if
-		} // end if
+        if (!cur2->eof()) {
+            if (cur2->valor("recargoeqproveedor") == "t") {
+            rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+            } else {
+            rec->setDBvalue("reqeq"+m_tablename, "0");
+            } // end if
+        } // end if
                 delete cur2;
 
             } // end if
@@ -376,11 +376,11 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
     } else if (linea->nomcampo() == "cant" + m_subform->tableName()
                || linea->nomcampo() == "pvp" + m_subform->tableName()
                || linea->nomcampo() == "descuento" + m_subform->tableName()
-               || linea->nomcampo() == "iva" + m_subform->tableName()	) {
+               || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
         spinBox->interpretText();
         QString value = spinBox->text();
-        value = value.replace(",", ".");
+        //value = value.replace(",", ".");
         model->setData(index, value );
     } else if (linea->nomcampo() == "codigocompletoarticulo") {
         BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
@@ -407,7 +407,7 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
     } else if (linea->nomcampo() == "cant" + m_subform->tableName()
                || linea->nomcampo() == "pvp" + m_subform->tableName()
                || linea->nomcampo() == "descuento" + m_subform->tableName()
-               || linea->nomcampo() == "iva" + m_subform->tableName()	) {
+               || linea->nomcampo() == "iva" + m_subform->tableName()   ) {
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         QDoubleSpinBox *spinBox = static_cast<QDoubleSpinBox*>(editor);
         spinBox->setValue(value.toDouble());

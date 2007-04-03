@@ -183,6 +183,11 @@ BusquedaCuentaDelegate::BusquedaCuentaDelegate(QWidget *parent)
 }
 
 
+void BusquedaCuentaDelegate::setcompany(empresa *comp) {
+    m_companyact = comp;
+}
+
+
 /** Libera la memoria reservada.
 */
 BusquedaCuentaDelegate::~BusquedaCuentaDelegate() {
@@ -220,6 +225,8 @@ void BusquedaCuentaDelegate::s_editTextChanged(const QString &cod) {
     codigo = codigo.left(codigo.indexOf(".-"));
     m_cursorcombo = m_companyact->cargacursor("SELECT codigo, descripcion FROM cuenta WHERE codigo LIKE '" + codigo + "%' ORDER BY codigo LIMIT 25");
 
+    ///TODO: La idea es que salga en el desplegable del combobox el listado de cuentas que
+    /// coincidan con el texto escrito para poder elegirlo.
     while (!m_cursorcombo->eof()) {
         //addItem(m_cursorcombo->valor("codigo") + ".-" + m_cursorcombo->valor("descripcion"));
         listacodigos << m_cursorcombo->valor("codigo");

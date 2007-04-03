@@ -45,9 +45,7 @@ private:
 public:
     BusquedaCuentaDelegate(QWidget *parent = 0);
     ~BusquedaCuentaDelegate();
-    void setcompany(empresa *comp) {
-        m_companyact = comp;
-    };
+    void setcompany(empresa *comp);
 
 public slots:
     virtual void s_editTextChanged(const QString &);

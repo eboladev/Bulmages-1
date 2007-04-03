@@ -65,10 +65,10 @@ ClienteView::ClienteView(company *comp, QWidget *parent)
         m_listalbaranes->setcompany(m_companyact);
         m_listfacturas->setcompany(m_companyact);
         m_listcobros->setcompany(m_companyact);
-	mui_forma_pago->setcompany(m_companyact);
+        mui_forma_pago->setcompany(m_companyact);
         mui_forma_pago->setidforma_pago("0");
-	
-	/// Metemos la ventana en el workSpace.
+
+        /// Metemos la ventana en el workSpace.
         m_companyact->meteWindow(windowTitle(), this, FALSE);
         dialogChanges_cargaInicial();
         /// Disparamos los plugins.
@@ -91,14 +91,12 @@ ClienteView::~ClienteView() {
 }
 
 
-
-
 /**
 * cargar
 *
 * Given a valid client ID this function loads the client into the
 * form so that we can edit it.
-* 
+*
 * Otherwise it empties the form and sets it so that we can add
 * a new client
 *
@@ -123,13 +121,13 @@ int ClienteView::cargar(QString idcliente) {
         m_listfacturas->presenta();
         m_listcobros->setidcliente(idcliente);
         m_listcobros->presenta();
-	/// Pintamos
+        /// Pintamos
         pintaCliente();
-	
-	/// Reseteamos el control de cambios.
+
+        /// Reseteamos el control de cambios.
         dialogChanges_cargaInicial();
     } catch (...) {
-	mensajeInfo(tr("Error al cargar el cliente"));
+        mensajeInfo(tr("Error al cargar el cliente"));
         return -1;
     } // end try
     _depura("ClienteView::cargar", 0);
@@ -246,5 +244,140 @@ void ClienteView::on_mui_informe_clicked() {
     inf.setCliente(DBvalue("idcliente"));
     inf.generarInforme();
     _depura("END ClienteView::on_mui_informe_clicked", 0);
+}
+
+
+void ClienteView::pintanomcliente(QString val) {
+    m_nomcliente->setText(val);
+}
+
+
+void ClienteView::pintanomaltcliente(QString val) {
+    m_nomaltcliente->setText(val);
+}
+
+
+void ClienteView::pintacifcliente(QString val) {
+    m_cifcliente->setText(val);
+}
+
+
+void ClienteView::pintacodcliente(QString val) {
+    mui_codcliente->setText(val);
+}
+
+
+void ClienteView::pintacorpcliente(QString val) {
+    mui_corpcliente->setText(val);
+}
+
+
+void ClienteView::pintabancocliente(QString val) {
+    m_bancocliente->setText(val);
+}
+
+
+void ClienteView::pintadircliente(QString val) {
+    m_dircliente->setText(val);
+}
+
+
+void ClienteView::pintapoblcliente(QString val) {
+    m_poblcliente->setText(val);
+}
+
+
+void ClienteView::pintacpcliente(QString val) {
+    m_cpcliente->setText(val);
+}
+
+
+void ClienteView::pintatelcliente(QString val) {
+    m_telcliente->setText(val);
+}
+
+
+void ClienteView::pintateltrabcliente(QString val) {
+    mui_teltrabcliente->setText(val);
+}
+
+
+void ClienteView::pintamovilcliente(QString val) {
+    mui_movilcliente->setText(val);
+}
+
+
+void ClienteView::pintafaxcliente(QString val) {
+    m_faxcliente->setText(val);
+}
+
+
+void ClienteView::pintamailcliente(QString val) {
+    m_mailcliente->setText(val);
+}
+
+
+void ClienteView::pintaurlcliente(QString val) {
+    m_urlcliente->setText(val);
+}
+
+
+void ClienteView::pintacomentcliente(QString val) {
+    m_comentcliente->setPlainText(val);
+}
+
+
+void ClienteView::pintaprovcliente(QString val) {
+    m_provcliente->setProvincia(val);
+}
+
+
+void ClienteView::pintaregimenfiscalcliente(QString val) {
+    mui_regimenfiscalcliente->setRegimenFiscal(val);
+}
+
+
+void ClienteView::pintarecargoeqcliente(QString val) {
+    /// Pintamos el recargo de equivalencia
+    if (val == "t") {
+        mui_recargoeqcliente->setChecked(TRUE);
+    } else {
+        mui_recargoeqcliente->setChecked(FALSE);
+    } // end if
+}
+
+
+void ClienteView::pintaidforma_pago(QString val) {
+    mui_forma_pago->setidforma_pago(val);
+}
+
+void ClienteView::on_mui_aceptar_clicked() {
+    if (!guardar()) {
+        close();
+    } // end if
+}
+
+
+void ClienteView::on_mui_imprimir_clicked() {
+    imprimir();
+}
+
+
+void ClienteView::pintaidcliente(QString) {
+    _depura("ClienteView::pintaidcliente", 0);
+}
+
+
+void ClienteView::pintafaltacliente(QString) {
+    _depura("ClienteView::pintafaltacliente", 0);
+}
+
+
+void ClienteView::pintafbajacliente(QString) {
+    _depura("ClienteView::pintafbajacliente", 0);
+}
+
+
+void ClienteView::pintainactivocliente(QString) {
 }
 

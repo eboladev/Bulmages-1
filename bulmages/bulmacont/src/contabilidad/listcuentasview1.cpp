@@ -502,3 +502,33 @@ void listcuentasview1::on_mui_importar_clicked() {
     _depura("END listcuentasview1::on_mui_importar_clicked", 0);
 }
 
+
+void listcuentasview1::selectMode() {
+    m_modo = SelectMode;
+}
+
+
+void listcuentasview1::editMode() {
+    m_modo = EditMode;
+}
+
+
+QString listcuentasview1::codcuenta() {
+    return mdb_codcuenta;
+}
+
+
+QString listcuentasview1::idcuenta() {
+    return mdb_idcuenta;
+}
+
+
+QString listcuentasview1::desccuenta() {
+    return mdb_desccuenta;
+}
+
+
+void listcuentasview1::on_mui_actualizar_clicked() {
+    inicializa();
+}
+

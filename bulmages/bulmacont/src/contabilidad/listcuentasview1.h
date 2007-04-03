@@ -67,21 +67,11 @@ private:
     QString mdb_desccuenta;
 
 public:
-    void selectMode() {
-        m_modo = SelectMode;
-    };
-    void editMode() {
-        m_modo = EditMode;
-    };
-    QString codcuenta() {
-        return mdb_codcuenta;
-    };
-    QString idcuenta() {
-        return mdb_idcuenta;
-    };
-    QString desccuenta() {
-        return mdb_desccuenta;
-    };
+    void selectMode();
+    void editMode();
+    QString codcuenta();
+    QString idcuenta();
+    QString desccuenta();
 
 public:
     listcuentasview1(empresa *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmode = EditMode);
@@ -106,9 +96,7 @@ public slots:
     virtual void on_mui_imprimir_clicked();
     virtual void on_mui_exportar_clicked();
     virtual void on_mui_importar_clicked();
-    virtual void on_mui_actualizar_clicked() {
-        inicializa();
-    };
+    virtual void on_mui_actualizar_clicked();
 
 signals:
     void selected(QString);

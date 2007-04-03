@@ -66,12 +66,16 @@ void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
 
     QDialog *diag = new QDialog(0);
     diag->setModal(true);
+    ///TODO: De esta manera se recarga de la base de datos toda la info de las cuentas cada
+    /// vez que se necesita la lista de cuentas. Hay que buscar la manera de que este siempre
+    /// disponible para no cargar el trabajo a la red ni al gestor de base de datos.
     listcuentasview1 *listcuentas = new listcuentasview1((empresa *)m_companyact, diag, 0, listcuentasview1::SelectMode);
+    listcuentas->inicializa();
     connect(listcuentas, SIGNAL(selected(QString)), diag, SLOT(accept()));
     diag->exec();
     if (listcuentas->codcuenta() != "") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM cuenta WHERE codigo = '" + listcuentas->codcuenta() + "'");
-        if (!cur->eof() ) {
+        if (!cur->eof()) {
             if (camp->nomcampo() == "codigo") {
                 rec->setDBvalue("idcuenta", cur->valor("idcuenta"));
                 rec->setDBvalue("codigo", cur->valor("codigo"));
