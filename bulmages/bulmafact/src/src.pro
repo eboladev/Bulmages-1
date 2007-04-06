@@ -64,7 +64,9 @@ FORMS += aboutbase.ui \
          listalmacenbase.ui \
          listconfiguracionbase.ui \
          presupuestoclientebase.ui  \
-         busquedareferenciabase.ui
+         busquedareferenciabase.ui \
+	 listtipoivabase.ui \
+	 listtasaivabase.ui
 
 TRANSLATIONS += bulmafact_es.ts \
                 bulmafact_ca.ts \
@@ -153,7 +155,10 @@ HEADERS += bulmafact.h \
            subform2bf.h \
            busquedareferencia.h \
 	   fichabf.h \
-	   busquedaregimenfiscal.h
+	   busquedaregimenfiscal.h \
+	   listtipoivaview.h \
+	   listtasaivaview.h \
+	   busquedatipoiva.h
 
 SOURCES += bulmafact.cpp \
            main.cpp \
@@ -236,7 +241,10 @@ SOURCES += bulmafact.cpp \
            subform2bf.cpp \
            busquedareferencia.cpp \
 	   fichabf.cpp \
-	   busquedaregimenfiscal.cpp
+	   busquedaregimenfiscal.cpp \
+	   listtipoivaview.cpp \
+	   listtasaivaview.cpp \
+	   busquedatipoiva.cpp
 
 
 INCLUDEPATH += ../../bulmalib \

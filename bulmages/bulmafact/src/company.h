@@ -58,6 +58,7 @@ class PedidoClienteView;
 class TipoArticuloList;
 class ProveedorView;
 class FamiliasView;
+class ListTipoIVAView;
 
 
 /// Clase company (empresa).
@@ -156,6 +157,8 @@ public:
     void s_newInventario();
     void viewPagosList();
     void viewCobrosList();
+    void s_TipoIVAView();
+    void s_TasaIVAView();
     FacturaProveedorView *newFacturaProveedorView();
     PresupuestoView *nuevoPresupuestoView();
     PedidoProveedorView *nuevoPedidoProveedorView();

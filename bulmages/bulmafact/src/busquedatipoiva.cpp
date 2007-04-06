@@ -1,0 +1,83 @@
+/***************************************************************************
+ *   Copyright (C) 2004 by Tomeu Borras Riera                              *
+ *   tborras@conetxia.com                                                  *
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   This program is distributed in the hope that it will be useful,       *
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
+ *   GNU General Public License for more details.                          *
+ *                                                                         *
+ *   You should have received a copy of the GNU General Public License     *
+ *   along with this program; if not, write to the                         *
+ *   Free Software Foundation, Inc.,                                       *
+ *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ ***************************************************************************/
+
+#include "busquedatipoiva.h"
+#include "articulolist.h"
+#include "company.h"
+#include "funcaux.h"
+
+// ==================================================================0
+// Busqueda Articulo Delegate para usar con los subforms
+// ===================================================================
+/** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
+    sobre si un elemento ha sido creado o no. 
+    Conecta el SIGNAL activated() con m_activated() para tratarlo.
+*/
+BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
+        : QComboBox(parent) {
+    _depura("BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
+    m_companyact = NULL;
+    m_cursorcombo = NULL;
+//    setEditable(true);
+    setSizeAdjustPolicy(QComboBox::AdjustToContents);
+//    setCompleter(0);
+    connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
+//    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
+    _depura("END BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
+}
+
+
+/** Libera la memoria reservada.
+*/
+BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate() {
+    _depura("BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+    _depura("END BusquedaTipoIVADelegate::~BusquedaTipoIVADelegate", 0);
+}
+
+
+/** Permite indicar al Widget cual es la serie de factura seleccionada por defecto.
+    Recarga cursor de serie_factura y cuando encuentra un registro cuyo codigoserie_factura coincide con el pasado
+    como parametro lo establece como el registro activo por el comboBox.
+*/
+void BusquedaTipoIVADelegate::set(const QString &cod) {
+    _depura("BusquedaTipoIVADelegate::set", 0);
+    int index = 0;
+    QString codigo = cod;
+
+
+    if (m_cursorcombo != NULL)
+        delete m_cursorcombo;
+
+    m_cursorcombo = m_companyact->cargacursor("SELECT desctipo_iva FROM tipo_iva ");
+    clear();
+    while (!m_cursorcombo->eof()) {
+        addItem(m_cursorcombo->valor("desctipo_iva"));
+        m_cursorcombo->siguienteregistro();
+        if(m_cursorcombo->valor("desctipo_iva") == cod)
+		index = m_cursorcombo->regactual();
+    }
+    setEditText(cod);
+    setCurrentIndex(index);
+
+    _depura("END BusquedaTipoIVADelegate::set", 0);
+}
+

@@ -28,6 +28,7 @@
 #include "funcaux.h"
 #include "articulolist.h"
 #include "busquedaarticulo.h"
+#include "busquedatipoiva.h"
 #include "qtexteditdelegate.h"
 #include "plugins.h"
 
@@ -38,7 +39,6 @@ SubForm2Bf::SubForm2Bf(QWidget *parent) : SubForm3(parent) {
     m_delegate = new QSubForm2BfDelegate(this);
     mui_list->setItemDelegate(m_delegate);
     mdb_idcliente = "";
-
     _depura("END SubForm2Bf::SubForm2Bf", 0);
 }
 
@@ -132,6 +132,13 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
         return;
     } // end if
 
+    if (camp->nomcampo() == "desctipo_iva") {
+        cursor2 *cur = companyact()->cargacursor("SELECT * FROM tipo_iva WHERE desctipo_iva = '"+camp->text()+"'");
+        if (!cur->eof()) {
+            rec->setDBvalue("idtipo_iva", cur->valor("idtipo_iva"));
+        } // end if
+    } // end if
+
     if (camp->nomcampo() == "codigocompletoarticulo") {
         cursor2 *cur = companyact()->cargacursor("SELECT * FROM articulo WHERE codigocompletoarticulo = '" + camp->text() + "'");
         if (!cur->eof()) {
@@ -163,23 +170,23 @@ void SubForm2Bf::on_mui_list_editFinished(int row, int col, int key) {
                 rec->setDBvalue("iva"+m_tablename, cur1->valor("porcentasa_iva"));
                 /// Calculamos el recargo equivalente.
                 cursor2 *cur2 = companyact()->cargacursor("SELECT recargoeqcliente FROM cliente WHERE idcliente="+mdb_idcliente);
-        if (!cur2->eof()) {
-            if (cur2->valor("recargoeqcliente") == "t") {
-            rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-            } else {
-            rec->setDBvalue("reqeq"+m_tablename, "0");
-            } // end if
-        } // end if
+                if (!cur2->eof()) {
+                    if (cur2->valor("recargoeqcliente") == "t") {
+                        rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+                    } else {
+                        rec->setDBvalue("reqeq"+m_tablename, "0");
+                    } // end if
+                } // end if
                 delete cur2;
 
                 cur2 = companyact()->cargacursor("SELECT recargoeqproveedor FROM proveedor WHERE idproveedor="+mdb_idproveedor);
-        if (!cur2->eof()) {
-            if (cur2->valor("recargoeqproveedor") == "t") {
-            rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
-            } else {
-            rec->setDBvalue("reqeq"+m_tablename, "0");
-            } // end if
-        } // end if
+                if (!cur2->eof()) {
+                    if (cur2->valor("recargoeqproveedor") == "t") {
+                        rec->setDBvalue("reqeq"+m_tablename, cur1->valor("porcentretasa_iva"));
+                    } else {
+                        rec->setDBvalue("reqeq"+m_tablename, "0");
+                    } // end if
+                } // end if
                 delete cur2;
 
             } // end if
@@ -324,8 +331,8 @@ QSubForm2BfDelegate::QSubForm2BfDelegate(QObject *parent = 0) : QItemDelegate(pa
 
 
 QSubForm2BfDelegate::~QSubForm2BfDelegate() {
-   _depura("QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
-   _depura("END QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
+    _depura("QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
+    _depura("END QSubForm2BfDelegate::~QSubForm2BfDelegate", 0);
 }
 
 
@@ -352,9 +359,14 @@ QWidget *QSubForm2BfDelegate::createEditor(QWidget *parent, const QStyleOptionVi
         BusquedaArticuloDelegate *editor = new BusquedaArticuloDelegate(parent);
         editor->setcompany((company *)m_subform->companyact());
         return editor;
-    } else {
+    } else if (linea->nomcampo() == "desctipo_iva") {
+        BusquedaTipoIVADelegate *editor = new BusquedaTipoIVADelegate(parent);
+        editor->setcompany((company *)m_subform->companyact());
+        return editor;
+    } else  {
         return QItemDelegate::createEditor(parent, option, index);
     } // end if
+    _depura("END QSubForm2BfDelegate::createEditor", 0);
 }
 
 
@@ -387,6 +399,10 @@ void QSubForm2BfDelegate::setModelData(QWidget *editor, QAbstractItemModel *mode
         QString value = comboBox->currentText();
         value = value.left(value.indexOf(".-"));
         model->setData(index, value);
+    } else if(linea->nomcampo() == "desctipo_iva") {
+        BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
+        QString value = comboBox->currentText();
+        model->setData(index, value);
     } else {
         QItemDelegate::setModelData(editor, model, index);
     } // end if
@@ -415,6 +431,10 @@ void QSubForm2BfDelegate::setEditorData(QWidget* editor, const QModelIndex& inde
         QString value = index.model()->data(index, Qt::DisplayRole).toString();
         BusquedaArticuloDelegate *comboBox = static_cast<BusquedaArticuloDelegate*>(editor);
         comboBox->addItem(value);
+    } else if (linea->nomcampo() == "desctipo_iva") {
+        QString value = index.model()->data(index, Qt::DisplayRole).toString();
+        BusquedaTipoIVADelegate *comboBox = static_cast<BusquedaTipoIVADelegate*>(editor);
+        comboBox->set(value);
     } else {
         QItemDelegate::setEditorData(editor, index);
     } // end if

@@ -180,7 +180,12 @@ public slots:
             m_company->s_indexadorCambiaEstado(FALSE);
         } // end if
     };
-
+    virtual void on_actionTipoIVA_triggered() {
+	m_company->s_TipoIVAView();
+    };
+    virtual void on_actionTasaIVA_triggered() {
+	m_company->s_TasaIVAView();
+    };
 private slots:
     /// Este SLOT sirve para actualizar el Indexador cuando se activa una ventana
     void informaindexador(QWidget *w);

@@ -62,6 +62,8 @@
 #include "providerslist.h"
 #include "tiposarticuloview.h"
 #include "trabajadorview.h"
+#include "listtipoivaview.h"
+#include "listtasaivaview.h"
 
 
 /** No precisa de operaciones en su construccion.
@@ -1051,3 +1053,23 @@ void company::s_newfamiliasview() {
     _depura("END company::s_newfamiliasview", 0);
 }
 
+
+/** Crea y muestra el listado de Tipos de IVA
+*/
+void company::s_TipoIVAView() {
+    _depura("company::s_TipoIVAView", 0);
+    ListTipoIVAView *pag = new ListTipoIVAView(this, 0);
+    m_pWorkspace->addWindow(pag);
+    pag->show();
+    _depura("END company::s_TipoIVAView", 0);
+}
+
+/** Crea y muestra el listado de Tasas de IVA
+*/
+void company::s_TasaIVAView() {
+    _depura("company::s_TasaIVAView", 0);
+    ListTasaIVAView *pag = new ListTasaIVAView(this, 0);
+    m_pWorkspace->addWindow(pag);
+    pag->show();
+    _depura("END company::s_TasaIVAView", 0);
+}

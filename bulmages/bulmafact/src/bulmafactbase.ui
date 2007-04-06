@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1015</width>
-    <height>690</height>
+    <width>738</width>
+    <height>508</height>
    </rect>
   </property>
   <property name="focusPolicy" >
@@ -24,8 +24,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1015</width>
-     <height>29</height>
+     <width>738</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuCompras" >
@@ -74,6 +74,21 @@
     <addaction name="actionNuevo_Cobro" />
     <addaction name="actionListado_de_Cobros" />
    </widget>
+   <widget class="QMenu" name="menuVentana" >
+    <property name="title" >
+     <string>Venta&amp;na</string>
+    </property>
+    <addaction name="actionVentana_Completa" />
+    <addaction name="actionIndexador" />
+   </widget>
+   <widget class="QMenu" name="menuAcerca_de" >
+    <property name="title" >
+     <string>A&amp;yuda</string>
+    </property>
+    <addaction name="actionDocumentacion" />
+    <addaction name="separator" />
+    <addaction name="actionAcerta_de" />
+   </widget>
    <widget class="QMenu" name="menuMaestro" >
     <property name="title" >
      <string>Maest&amp;ro</string>
@@ -93,21 +108,9 @@
     <addaction name="actionFormas_de_Pago" />
     <addaction name="separator" />
     <addaction name="actionAlmacenes" />
-   </widget>
-   <widget class="QMenu" name="menuVentana" >
-    <property name="title" >
-     <string>Venta&amp;na</string>
-    </property>
-    <addaction name="actionVentana_Completa" />
-    <addaction name="actionIndexador" />
-   </widget>
-   <widget class="QMenu" name="menuAcerca_de" >
-    <property name="title" >
-     <string>A&amp;yuda</string>
-    </property>
-    <addaction name="actionDocumentacion" />
     <addaction name="separator" />
-    <addaction name="actionAcerta_de" />
+    <addaction name="actionTipoIVA" />
+    <addaction name="actionTasaIVA" />
    </widget>
    <widget class="QMenu" name="menuEmpresa" >
     <property name="title" >
@@ -559,6 +562,22 @@
    </property>
    <property name="shortcut" >
     <string>Ctrl+I</string>
+   </property>
+  </action>
+  <action name="actionTipoIVA" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_iva_listado.32x32.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Tipos de IVA</string>
+   </property>
+  </action>
+  <action name="actionTasaIVA" >
+   <property name="icon" >
+    <iconset resource="../../bulmages.qrc" >:/Bulmafact32x32/images/png/32x32/i_bulmages_iva_mas.32x32.png</iconset>
+   </property>
+   <property name="text" >
+    <string>Tasas de IVA</string>
    </property>
   </action>
  </widget>
