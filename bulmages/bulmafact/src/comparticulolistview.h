@@ -40,16 +40,10 @@ public:
     /// Indica el idarticulo de la ficha con el que trabajamos.
     QString mdb_idarticulo;
     ListCompArticuloView(QWidget *parent = 0, const char *name = 0);
-    ~ListCompArticuloView() {};
+    ~ListCompArticuloView();
 
 public slots:
-    virtual void cargar(QString idarticulo) {
-        _depura("ListCompArticulo::cargaListCompArticulo\n", 0);
-        mdb_idarticulo = idarticulo;
-        cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
-        SubForm3::cargar(cur);
-        delete cur;
-    };
+    virtual void cargar(QString idarticulo);
     virtual void editFinished(int row, int col);
     virtual void pressedAsterisk(int row, int col);
 };

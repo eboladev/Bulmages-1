@@ -71,7 +71,7 @@ Cliente::~Cliente() {
 }
 
 
-/** Metodo que permite borrar un cliente. 
+/** Metodo que permite borrar un cliente.
     Hace un delete sobre la base de datos del cliente que esta viendose.
 */
 /// \TODO: Deberia meterse dentro de un bloque de depuracion try{} catch{}.
@@ -91,7 +91,7 @@ void Cliente::borraCliente() {
 }
 
 
-/** Vacia los valores que pueda contener DBRecord para asegurarnos que no hay 
+/** Vacia los valores que pueda contener DBRecord para asegurarnos que no hay
     Basura en las variables.
 */
 void Cliente::vaciaCliente() {
@@ -185,4 +185,14 @@ int Cliente::guardar() {
         return -1;
     } // end try
 }
+
+/** Devuelve el punteo a la clase company que se esta utilizando
+**/
+company* Cliente::companyact() {
+    _depura("Cliente::companyact", 0);
+    _depura("END Cliente::companyact", 0);
+    return m_companyact;
+}
+
+
 

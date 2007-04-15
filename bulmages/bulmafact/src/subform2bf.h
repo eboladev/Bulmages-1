@@ -47,12 +47,8 @@ public:
     void setEditorData(QWidget *, const QModelIndex &index) const;
     void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    void setcompany(postgresiface2 *c) {
-        m_companyact = c;
-    };
-    postgresiface2 *companyact() {
-        return m_companyact;
-    };
+    void setcompany(postgresiface2 *);
+    postgresiface2 *companyact();
     virtual bool eventFilter(QObject *obj, QEvent *event);
 };
 
@@ -74,15 +70,9 @@ public:
     void setIdProveedor(QString id);
     SubForm2Bf(QWidget *parent = 0);
     virtual ~SubForm2Bf();
-    void setDelete(bool f) {
-        m_delete = f;
-    };
+    void setDelete(bool);
     virtual void cargar(QString query);
-    virtual void setcompany(postgresiface2 *c) {
-        SubForm3::setcompany(c);
-        m_delegate->setcompany(c);
-    };
-
+    virtual void setcompany(postgresiface2 *);
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

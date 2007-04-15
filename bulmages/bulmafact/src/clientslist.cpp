@@ -213,6 +213,96 @@ void ClientsList::on_mui_importar_clicked() {
     _depura("ClientsList::on_mui_importar_clicked", 0);
 }
 
+/** Establece el modo de funcionamiento como selector para esta ventana
+**/
+void ClientsList::selectMode() {
+    m_modo = SelectMode;
+}
+
+/** Establece el modo de funcionamiento como selector para edicion para esta ventana
+**/
+void ClientsList::editMode() {
+    m_modo = EditMode;
+}
+
+/** Devuelve el identificador del cliente seleccionado
+**/
+QString ClientsList::idclient() {
+    return mdb_idcliente;
+}
+
+/** Devuelve el nombre del cliente seleccionado
+**/
+QString ClientsList::nomclient() {
+    return mdb_nomcliente;
+}
+
+/** Devuelve el cif del cliente seleccionado
+**/
+QString ClientsList::cifclient() {
+    return mdb_cifcliente;
+}
+/** Oculta la botonera
+*/
+void ClientsList::hideBotonera() {
+    m_botonera->hide();
+}
+
+/** Muestra la botonera
+**/
+void ClientsList::showBotonera() {
+    m_botonera->show();
+}
+
+/** Oculta el layer de busqueda
+**/
+void ClientsList::hideBusqueda() {
+    m_busqueda->hide();
+}
+
+/** Muestra el layer de busqueda
+**/
+void ClientsList::showBusqueda() {
+    m_busqueda->show();
+}
+
+/** SLOT automatico que se ejecuta al cambiar el texto del QLineEdit de filtrado general
+**/
+void ClientsList::on_m_filtro_textChanged(const QString &text) {
+    if (text.size() >= 3) {
+        on_mui_actualizar_clicked();
+    } // end if
+}
+
+/** SLOT automatico que se ejecuta al hacer doble click sobre un elemento determinado de la lista
+**/
+void ClientsList::on_mui_list_itemDoubleClicked(QTableWidgetItem *) {
+    on_mui_editar_clicked();
+}
+
+/** SLOT automatico que se ejecuta al pulsar sobre el boton de crear en la botonera
+**/
+void ClientsList::on_mui_crear_clicked() {
+    m_companyact->s_newClienteView();
+}
+
+/** SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar en la botonera
+**/
+void ClientsList::on_mui_actualizar_clicked() {
+    presenta();
+}
+
+/** SLOT automatico que se ejecuta al pulsar sobre el boton configurar en la botonera
+**/
+void ClientsList::on_mui_configurar_toggled(bool checked) {
+    if (checked) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+}
+
+
 
 /// =============================================================================
 ///                    SUBFORMULARIO
@@ -247,3 +337,7 @@ ClienteListSubform::ClienteListSubform(QWidget *parent, const char *) : SubForm2
     _depura("END ClienteListSubform::ClienteListSubform", 0);
 }
 
+ClienteListSubform::~ClienteListSubform() {
+    _depura("ClienteListSubform::~ClienteListSubform", 0);
+    _depura("END ClienteListSubform::~ClienteListSubform", 0);
+}

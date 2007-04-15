@@ -46,23 +46,12 @@ private:
 public:
     BusquedaTrabajador(QWidget *parent = 0);
     ~BusquedaTrabajador();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     virtual void setidtrabajador(QString idtrabajador);
-    QString idtrabajador() {
-        return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
-    };
+    QString idtrabajador();
 
 public slots:
-    void m_activated(int index) {
-        _depura("Activado el combo box", 0);
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idtrabajador", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    void m_activated(int index);
 
 signals:
     void valueChanged(QString);

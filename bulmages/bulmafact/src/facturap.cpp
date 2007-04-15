@@ -52,8 +52,8 @@ FacturaProveedor::FacturaProveedor(company *comp, QWidget *parent) : FichaBf(com
 /** No precisa de acciones especiales en el destructor de la clase.
 */
 FacturaProveedor::~FacturaProveedor() {
-	_depura("FacturaProveedor::~FacturaProveedor", 0);
-	_depura("END FacturaProveedor::~FacturaProveedor", 0);
+    _depura("FacturaProveedor::~FacturaProveedor", 0);
+    _depura("END FacturaProveedor::~FacturaProveedor", 0);
 }
 
 
@@ -95,7 +95,7 @@ void FacturaProveedor::pintar() {
     pintaprocesadafacturap(DBvalue("procesadafacturap"));
     pintaidforma_pago(DBvalue("idforma_pago"));
     pintadescfacturap(DBvalue("descfacturap"));
-//     pintatotales(m_listalineas->calculabase(), m_listalineas->calculaiva());
+    //     pintatotales(m_listalineas->calculabase(), m_listalineas->calculaiva());
     calculaypintatotales();
     _depura("END FacturaProveedor::pintar", 0);
 }
@@ -113,21 +113,21 @@ int FacturaProveedor::cargar(QString idfacturap) {
         inicialize();
         QString query = "SELECT * FROM facturap WHERE idfacturap=" + idfacturap;
         cursor2 * cur = m_companyact->cargacursor(query);
-	if (cur->eof()) {
-		delete cur;
-		throw -1;
-	} // end if
+        if (cur->eof()) {
+            delete cur;
+            throw -1;
+        } // end if
         if (DBload(cur)) {
-		delete cur;
-                throw -1;
-	} // end if
+            delete cur;
+            throw -1;
+        } // end if
         delete cur;
         pintar();
         m_listalineas->cargar(idfacturap);
         m_listadescuentos->cargar(idfacturap);
         calculaypintatotales();
     } catch (...) {
-	mensajeInfo("FacturaProveedor::cargar producida una excepcion");
+        mensajeInfo("FacturaProveedor::cargar producida una excepcion");
         throw -1;
     } // end try
     _depura("END FacturaProveedor::cargar", 0);
@@ -151,8 +151,8 @@ int FacturaProveedor::guardar() {
         m_listadescuentos->guardar();
         m_companyact->commit();
 
-	/// Hacemos una carga para recuperar referencias y demás datos
-	cargar(id);
+        /// Hacemos una carga para recuperar referencias y demás datos
+        cargar(id);
 
         _depura("END FacturaProveedor::guardar()", 0);
         return 0;
@@ -340,33 +340,63 @@ void FacturaProveedor::imprimirFacturaProveedor() {
 }
 
 void FacturaProveedor::setidproveedor(QString val) {
-	setDBvalue("idproveedor", val);
+    setDBvalue("idproveedor", val);
 }
 void FacturaProveedor::setreffacturap(QString val) {
-	setDBvalue("reffacturap", val);
+    setDBvalue("reffacturap", val);
 }
 void FacturaProveedor::setnumfacturap(QString val) {
-	setDBvalue("numfacturap", val);
+    setDBvalue("numfacturap", val);
 }
 void FacturaProveedor::setfechafacturap(QString val) {
-	setDBvalue("ffacturap", val);
+    setDBvalue("ffacturap", val);
 }
 void FacturaProveedor::setdescfacturap(QString val) {
-	setDBvalue("descfacturap", val);
+    setDBvalue("descfacturap", val);
 }
 void FacturaProveedor::setcomentfacturap(QString val) {
-	setDBvalue("comentfacturap", val);
+    setDBvalue("comentfacturap", val);
 }
 void FacturaProveedor::setidfacturap(QString val) {
-	_depura("FacturaProveedor::setidfacturap", 0);
-	setDBvalue("idfacturap", val);
-	m_listalineas->setColumnValue("idfacturap", val);
-	m_listadescuentos->setColumnValue("idfacturap", val);
-	_depura("END FacturaProveedor::setidfacturap", 0);
+    _depura("FacturaProveedor::setidfacturap", 0);
+    setDBvalue("idfacturap", val);
+    m_listalineas->setColumnValue("idfacturap", val);
+    m_listadescuentos->setColumnValue("idfacturap", val);
+    _depura("END FacturaProveedor::setidfacturap", 0);
 }
 void FacturaProveedor::setidforma_pago(QString val) {
-	setDBvalue("idforma_pago", val);
+    setDBvalue("idforma_pago", val);
 }
 void FacturaProveedor::setprocesadafacturap(QString val) {
-	setDBvalue("procesadafacturap", val);
+    setDBvalue("procesadafacturap", val);
 }
+
+
+void FacturaProveedor::pintaidproveedor(QString) {}
+
+void FacturaProveedor::pintareffacturap(QString) {}
+
+void FacturaProveedor::pintanumfacturap(QString) {}
+
+void FacturaProveedor::pintafechafacturap(QString) {}
+
+void FacturaProveedor::pintadescfacturap(QString) {}
+
+void FacturaProveedor::pintacomentfacturap(QString) {}
+
+void FacturaProveedor::pintaidforma_pago(QString) {}
+
+void FacturaProveedor::pintaprocesadafacturap(QString) {}
+
+void FacturaProveedor::pintatotales(Fixed, Fixed) {}
+
+void FacturaProveedor::cargaFacturaProveedorDescuentas(QString) {}
+
+void FacturaProveedor::calculateImports() {}
+
+void FacturaProveedor::inicialize() {}
+
+QString FacturaProveedor::calculateValues() {
+    return "";
+}
+

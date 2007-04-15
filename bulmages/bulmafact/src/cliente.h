@@ -43,9 +43,7 @@ protected:
 
 public:
     Cliente(company *);
-    company* companyact() {
-        return m_companyact;
-    };
+    company* companyact();
     virtual ~Cliente();
     virtual void pintaCliente();
     virtual int guardar();

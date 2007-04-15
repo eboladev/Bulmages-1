@@ -85,15 +85,57 @@ int Cobro::guardar() {
         setidcobro(id);
         companyact->commit();
 
-	/// Hacemos una carga para que se actualizen datos como la referencia.
-	cargar(id);
+        /// Hacemos una carga para que se actualizen datos como la referencia.
+        cargar(id);
 
         _depura("END Cobro::guardar", 0);
         return 0;
     } catch (...) {
         mensajeInfo("Error inesperado al guardar");
         companyact->rollback();
-	return -1;
+        return -1;
     } // end try
 }
 
+
+void Cobro::setidcobro(QString val) {
+    _depura("Cobro::setidcobro", 0);
+    setDBvalue("idcobro", val);
+    _depura("END Cobro::setidcobro", 0);
+}
+
+void Cobro::setidcliente(QString val) {
+    _depura("Cobro::setidcliente", 0);
+    setDBvalue("idcliente", val);
+    _depura("END Cobro::setidcliente", 0);
+}
+
+void Cobro::setfechacobro(QString val) {
+    _depura("Cobro::setfechacobro", 0);
+    setDBvalue("fechacobro", val);
+    _depura("END Cobro::setfechacobro", 0);
+}
+
+void Cobro::setcantcobro(QString val) {
+    _depura("Cobro::setcantcobro", 0);
+    setDBvalue("cantcobro", val);
+    _depura("END Cobro::setcantcobro", 0);
+}
+
+void Cobro::setrefcobro(QString val) {
+    _depura("Cobro::setrefcobro", 0);
+    setDBvalue("refcobro", val);
+    _depura("END Cobro::setrefcobro", 0);
+}
+
+void Cobro::setprevisioncobro(QString val) {
+    _depura("Cobro::setprevisioncobro", 0);
+    setDBvalue("previsioncobro", val);
+    _depura("END Cobro::setprevisioncobro", 0);
+}
+
+void Cobro::setcomentcobro(QString val) {
+    _depura("Cobro::setcomentcobro", 0);
+    setDBvalue("comentcobro", val);
+    _depura("END Cobro::setcomentcobro", 0);
+}

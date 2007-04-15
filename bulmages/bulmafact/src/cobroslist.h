@@ -27,7 +27,7 @@
 #include "busquedacliente.h"
 #include "funcaux.h"
 #include "subform2bf.h"
-#include "ficha.h"
+#include "fichabf.h"
 
 
 /** Subformulario especializado en el trabajo con Cobros.
@@ -37,7 +37,7 @@ class CobrosListSubForm : public SubForm2Bf {
 
 public:
     CobrosListSubForm(QWidget *parent = 0);
-    ~CobrosListSubForm() {};
+    ~CobrosListSubForm();
 };
 
 
@@ -48,17 +48,10 @@ public:
     Deriva de la clase Ficha para estandarizacion de Formularios.
     Controla los eventos y la sincronizacion del listado con el filtrado.
 */
-class CobrosList : public Ficha, private Ui_CobrosListBase {
+class CobrosList : public FichaBf, private Ui_CobrosListBase {
     Q_OBJECT
 
 private:
-    /// Puntero a la clase company que sirve para trabajar con la Base de Datos y paso de mensajes.
-    company *m_companyact;
-    
-    /// Indica el modo de trabajo de la pantalla.
-    /// m_modo == 0 es modo edicion.
-    /// m_modo == 1 es modo selector.
-    int m_modo;
     /// Almacena (En el modo seleccion) el identificador del cobro seleccionado.
     QString mdb_idcobro;
 
@@ -67,46 +60,15 @@ public:
     CobrosList(company *comp = NULL, QWidget *parent = 0, Qt::WFlags flag = 0);
     ~CobrosList();
     void presenta();
-    void modoseleccion() {
-        m_modo = 1;
-    };
-    void modoedicion() {
-        m_modo = 0;
-    };
-    void setcompany(company *comp) {
-        m_companyact = comp;
-        m_cliente->setcompany(comp);
-        mui_list->setcompany(comp);
-    };
-    QString idcobro() {
-        return mdb_idcobro;
-    };
-    void hideBotonera() {
-        m_botonera->hide();
-    };
-    void showBotonera() {
-        m_botonera->show();
-    };
-    void hideBusqueda() {
-        m_busqueda->hide();
-    };
-    void showBusqueda() {
-        m_busqueda->show();
-    };
+    void setcompany(company *comp);
+    QString idcobro();
+    void hideBotonera();
+    void showBotonera();
+    void hideBusqueda();
+    void showBusqueda();
     void imprimir();
-    void meteWindow(QString nom, QObject *obj) {
-        if (m_companyact != NULL) {
-            m_companyact->meteWindow(nom, obj);
-        }
-    };
-    void setidcliente(QString val) {
-        m_cliente->setidcliente(val);
-    };
+    void setidcliente(QString val);
     QString generaFiltro();
-
-    /// Funciones que se encarga en guardar y cargar la configuracion del listado.
-    void guardaconfig();
-    void cargaconfig();
     virtual void on_mui_borrar_clicked();
 
 public slots:
@@ -114,19 +76,9 @@ public slots:
     virtual void on_mui_list_customContextMenuRequested(const QPoint &);
     virtual void on_mui_editar_clicked();
     virtual void on_mui_crear_clicked();
-    virtual void on_mui_imprimir_clicked() {
-        imprimir();
-    };
-    virtual void on_mui_actualizar_clicked() {
-        presenta();
-    };
-    virtual void on_mui_configurar_toggled(bool checked) {
-        if (checked) {
-            mui_list->showConfig();
-        } else {
-            mui_list->hideConfig();
-        } // end if
-    };
+    virtual void on_mui_imprimir_clicked();
+    virtual void on_mui_actualizar_clicked();
+    virtual void on_mui_configurar_toggled(bool checked);
 };
 
 #endif

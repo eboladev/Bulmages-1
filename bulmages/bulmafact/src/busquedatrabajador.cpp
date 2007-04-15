@@ -72,3 +72,33 @@ void BusquedaTrabajador::setidtrabajador(QString idtrabajador) {
     _depura("END BusquedaTrabajador::setidtrabajador", 0);
 }
 
+
+/** Inicializa la clase con el puntero a la empresa que se esta utilizando.
+**/
+void BusquedaTrabajador::setcompany(company *comp) {
+    _depura("BusquedaTrabajador::setcompany", 0);
+    companyact = comp;
+    _depura("END BusquedaTrabajador::setcompany", 0);
+}
+
+/** Devuelve el identificador del trabajador seleccionado
+**/
+QString BusquedaTrabajador::idtrabajador() {
+    _depura("BusquedaTrabajador::idtrabajador", 0);
+    _depura("END BusquedaTrabajador::idtrabajador", 0);
+    return m_cursorcombo->valor("idtrabajador", currentIndex() - 1);
+}
+
+/** SLOT que responde a la activacion de un elemento en el QComboBox y que hace que se emita el SIGNAL valueChanged
+**/
+void BusquedaTrabajador::m_activated(int index) {
+    _depura("BusquedaTrabajador::m_activated", 0);
+    if (index > 0) {
+        emit(valueChanged(m_cursorcombo->valor("idtrabajador", index - 1)));
+    } else {
+        emit(valueChanged(""));
+    }
+    _depura("END BusquedaTrabajador::m_activated", 0);
+}
+
+

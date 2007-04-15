@@ -30,7 +30,10 @@
 
 class company;
 
-
+/** Convierte en los SubForms los datos del tipo desctipo_iva en selectores del tipo QComboBox
+    de esta forma la introduccion de tipos de IVA es sencilla.
+    Esta clase se usa conjuntamente con SubForm2Bf para el cambio del editor standar por un ComboBox
+*/
 class BusquedaTipoIVADelegate : public QComboBox {
 Q_OBJECT
 private:
@@ -41,9 +44,7 @@ private:
 public:
     BusquedaTipoIVADelegate(QWidget *parent = 0);
     ~BusquedaTipoIVADelegate();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-    };
+    void setcompany(company *);
     virtual void set(const QString &);
 };
 

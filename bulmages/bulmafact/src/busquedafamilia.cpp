@@ -47,6 +47,7 @@ BusquedaFamilia::~BusquedaFamilia() {
 
 
 void BusquedaFamilia::setidfamilia(QString val) {
+    _depura("BusquedaFamilia::setidfamilia", 0);
     mdb_idfamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE idfamilia='" + mdb_idfamilia + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -63,10 +64,12 @@ void BusquedaFamilia::setidfamilia(QString val) {
     delete cur;
     m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
     m_nombrefamilia->setText(mdb_nombrefamilia);
+    _depura("END BusquedaFamilia::setidfamilia", 0);
 }
 
 
 void BusquedaFamilia::setcodigocompletofamilia(QString val) {
+    _depura("BusquedaFamilia::setcodigocompletofamilia", 0);
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -82,6 +85,7 @@ void BusquedaFamilia::setcodigocompletofamilia(QString val) {
     delete cur;
     m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
     m_nombrefamilia->setText(mdb_nombrefamilia);
+    _depura("END BusquedaFamilia::setcodigocompletofamilia", 0);
 }
 
 
@@ -118,6 +122,7 @@ void BusquedaFamilia::on_mui_buscar_clicked() {
 
 
 void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val) {
+    _depura("BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
     mdb_codigocompletofamilia = val;
     QString SQLQuery = "SELECT * FROM familia WHERE codigocompletofamilia='" + mdb_codigocompletofamilia + "'";
     cursor2 *cur = companyact->cargacursor(SQLQuery);
@@ -134,5 +139,33 @@ void BusquedaFamilia::on_m_codigocompletofamilia_textChanged(const QString &val)
     m_codigocompletofamilia->setText(mdb_codigocompletofamilia);
     m_nombrefamilia->setText(mdb_nombrefamilia);
     emit(valueChanged(mdb_idfamilia));
+    _depura("END BusquedaFamilia::on_m_codigocompletofamilia_textChanged", 0);
+}
+
+void BusquedaFamilia::setcompany(company *comp) {
+    _depura("BusquedaFamilia::setcompany", 0);
+    companyact = comp;
+    _depura("END BusquedaFamilia::setcompany", 0);
+}
+
+
+QString BusquedaFamilia::codigocompletofamilia() {
+    _depura("BusquedaFamilia::codigocompletofamilia", 0);
+    _depura("END BusquedaFamilia::codigocompletofamilia", 0);
+    return m_codigocompletofamilia->text();
+}
+
+
+QString BusquedaFamilia::idfamilia() {
+    _depura("BusquedaFamilia::idfamilia", 0);
+    _depura("END BusquedaFamilia::idfamilia", 0);
+    return mdb_idfamilia;
+}
+
+
+QString BusquedaFamilia::nombrefamilia() {
+    _depura("BusquedaFamilia::nombrefamilia", 0);
+    _depura("END BusquedaFamilia::nombrefamilia", 0);
+    return nombrefamilia();
 }
 

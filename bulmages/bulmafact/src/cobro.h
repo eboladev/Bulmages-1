@@ -42,27 +42,13 @@ public:
     virtual ~Cobro();
     virtual int guardar();
     virtual void pintar();
-    void setidcobro(QString val) {
-        setDBvalue("idcobro", val);
-    };
-    void setidcliente(QString val) {
-        setDBvalue("idcliente", val);
-    };
-    void setfechacobro(QString val) {
-        setDBvalue("fechacobro", val);
-    };
-    void setcantcobro(QString val) {
-        setDBvalue("cantcobro", val);
-    };
-    void setrefcobro(QString val) {
-        setDBvalue("refcobro", val);
-    };
-    void setprevisioncobro(QString val) {
-        setDBvalue("previsioncobro", val);
-    };
-    void setcomentcobro(QString val) {
-        setDBvalue("comentcobro", val);
-    };
+    void setidcobro(QString val);
+    void setidcliente(QString val);
+    void setfechacobro(QString val);
+    void setcantcobro(QString val);
+    void setrefcobro(QString val);
+    void setprevisioncobro(QString val);
+    void setcomentcobro(QString val);
     virtual void pintaidcobro(QString) {}
     ;
     virtual void pintaidcliente(QString) {}

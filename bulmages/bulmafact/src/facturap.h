@@ -39,10 +39,7 @@ Q_OBJECT
 public:
     FacturaProveedor(company *, QWidget *);
     virtual ~FacturaProveedor();
-
     virtual int borrar();
-    
-
     void setidproveedor(QString val);
     void setreffacturap(QString val);
     void setnumfacturap(QString val);
@@ -52,38 +49,23 @@ public:
     void setidfacturap(QString val);
     void setidforma_pago(QString val);
     void setprocesadafacturap(QString val);
-    
     virtual void imprimirFacturaProveedor();
     virtual int cargar(QString);
     virtual void pintar();
     virtual int guardar();
-    virtual void pintaidproveedor(QString) {}
-    ;
-    virtual void pintareffacturap(QString) {}
-    ;
-    virtual void pintanumfacturap(QString) {}
-    ;
-    virtual void pintafechafacturap(QString) {}
-    ;
-    virtual void pintadescfacturap(QString) {}
-    ;
-    virtual void pintacomentfacturap(QString) {}
-    ;
-    virtual void pintaidforma_pago(QString) {}
-    ;
-    virtual void pintaprocesadafacturap(QString) {}
-    ;
-    virtual void pintatotales(Fixed, Fixed) {}
-    ;
-    virtual void cargaFacturaProveedorDescuentas(QString) {}
-    ;
-    virtual void calculateImports() {}
-    ;
-    virtual void inicialize() {}
-    ;
-    virtual QString calculateValues() {
-        return "";
-    };
+    virtual void pintaidproveedor(QString);
+    virtual void pintareffacturap(QString);
+    virtual void pintanumfacturap(QString);
+    virtual void pintafechafacturap(QString);
+    virtual void pintadescfacturap(QString);
+    virtual void pintacomentfacturap(QString);
+    virtual void pintaidforma_pago(QString);
+    virtual void pintaprocesadafacturap(QString);
+    virtual void pintatotales(Fixed, Fixed);
+    virtual void cargaFacturaProveedorDescuentas(QString);
+    virtual void calculateImports();
+    virtual void inicialize();
+    virtual QString calculateValues();
 };
 
 #endif

@@ -42,114 +42,49 @@ public:
     /// Establece cu&aacute;l es la lista subformulario del presupuesto. Normalmente para
     /// apuntar listlinpresupuestoview.
 
-    company *_company() {
-        return m_companyact;
-    };
-    QString codigoserie_factura() {
-        return DBvalue("codigoserie_factura");
-    };
-    QString idcliente() {
-        return DBvalue("idcliente");
-    };
-    QString idalmacen() {
-        return DBvalue("idalmacen");
-    };
-    QString numfactura() {
-        return DBvalue("numfactura");
-    };
-    QString ffactura() {
-        return DBvalue("ffactura");
-    };
-    QString procesadafactura() {
-        return DBvalue("procesadafactura");
-    };
-    QString comentfactura() {
-        return DBvalue("comentfactura");
-    };
-    QString reffactura() {
-        return DBvalue("reffactura");
-    };
-    QString descfactura() {
-        return DBvalue("descfactura");
-    };
-    QString idfactura() {
-        return DBvalue("idfactura");
-    };
-    QString idforma_pago() {
-        return DBvalue("idforma_pago");
-    };
-
+    company *_company();
+    QString codigoserie_factura();
+    QString idcliente();
+    QString idalmacen();
+    QString numfactura();
+    QString ffactura();
+    QString procesadafactura();
+    QString comentfactura();
+    QString reffactura();
+    QString descfactura();
+    QString idfactura();
+    QString idforma_pago();
     virtual int cargar(QString);
     void pintaFactura();
     virtual int guardar();
     virtual int  borrar();
-    void setidcliente(QString val) {
-        setDBvalue("idcliente", val);
-    };
-    void setidalmacen(QString val) {
-        setDBvalue("idalmacen", val);
-    };
-    void setreffactura(QString val) {
-        setDBvalue("reffactura", val);
-    };
-    void setNumFactura(QString val) {
-        setDBvalue("numfactura", val);
-    };
-    void setfechafactura(QString val) {
-        setDBvalue("ffactura", val);
-    };
-    void setdescfactura(QString val) {
-        setDBvalue("descfactura", val);
-    };
-    void setcodigoserie_factura(QString val) {
-        setDBvalue("codigoserie_factura", val);
-    };
-    void setcomentfactura(QString val) {
-        setDBvalue("comentfactura", val);
-    };
-    void setidfactura(QString val) {
-        setDBvalue("idfactura", val);
-        m_listalineas->setColumnValue( "idfactura", val);
-        m_listadescuentos->setColumnValue( "idfactura", val);
-    };
-    void setidforma_pago(QString val) {
-        setDBvalue("idforma_pago", val);
-    };
-    void setprocesadafactura(QString val) {
-        setDBvalue("procesadafactura", val);
-    };
+    void setidcliente(QString val);
+    void setidalmacen(QString val);
+    void setreffactura(QString val);
+    void setNumFactura(QString val);
+    void setfechafactura(QString val);
+    void setdescfactura(QString val);
+    void setcodigoserie_factura(QString val);
+    void setcomentfactura(QString val);
+    void setidfactura(QString val);
+    void setidforma_pago(QString val);
+    void setprocesadafactura(QString val);
     void vaciaFactura();
 
-    virtual void pintaidcliente(QString) {}
-    ;
-    virtual void pintareffactura(QString) {}
-    ;
-    virtual void pintaNumFactura(QString ) {}
-    ;
-    virtual void pintafechafactura(QString ) {}
-    ;
-    virtual void pintadescfactura(QString) {}
-    ;
-    virtual void pintacodigoserie_factura(QString) {}
-    ;
-    virtual void pintaComentFactura(QString) {}
-    ;
-    virtual void pintaidalmacen(QString ) {}
-    ;
-    virtual void pintaidforma_pago(QString) {}
-    ;
-    virtual void pintaprocesadafactura(QString) {}
-    ;
-    virtual void cargaFacturaDescuentas(QString) {}
-    ;
-    virtual void calculateImports() {}
-    ;
-    virtual void inicialize() {}
-    ;
-    virtual QString calculateValues() {
-        return "";
-    };
-
+    virtual void pintaidcliente(QString);
+    virtual void pintareffactura(QString);
+    virtual void pintaNumFactura(QString );
+    virtual void pintafechafactura(QString );
+    virtual void pintadescfactura(QString);
+    virtual void pintacodigoserie_factura(QString);
+    virtual void pintaComentFactura(QString);
+    virtual void pintaidalmacen(QString );
+    virtual void pintaidforma_pago(QString);
+    virtual void pintaprocesadafactura(QString);
+    virtual void cargaFacturaDescuentas(QString);
+    virtual void calculateImports();
+    virtual void inicialize();
+    virtual QString calculateValues();
 
 };
 

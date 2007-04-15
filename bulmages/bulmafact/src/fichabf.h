@@ -62,6 +62,7 @@ public:
     virtual void calculaypintatotales();
     virtual void pintatotales(Fixed, Fixed, Fixed, Fixed, Fixed, Fixed) {};
     virtual int sacaWindow();
+virtual void meteWindow(QString nom, QObject *obj);
     virtual int guardar();
     virtual int borrar();
 };

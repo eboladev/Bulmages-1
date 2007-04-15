@@ -48,18 +48,10 @@ private:
 public:
     BusquedaTipoArticulo(QWidget *parent = 0);
     ~BusquedaTipoArticulo();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-    };
-    virtual QString codtipo_articulo() {
-        return m_codtipo_articulo->text();
-    };
-    virtual QString idtipo_articulo() {
-        return mdb_idtipo_articulo;
-    };
-    virtual QString desctipo_articulo() {
-        return desctipo_articulo();
-    };
+    void setcompany(company *comp);
+    virtual QString codtipo_articulo();
+    virtual QString idtipo_articulo();
+    virtual QString desctipo_articulo();
     virtual void setidtipo_articulo(QString val);
     virtual void setcodtipo_articulo(QString val);
 

@@ -34,14 +34,14 @@
 
 /** Inicializa todos los componentes.
     Mete la ventana en el workSpace.
-    Este constructor no es complete, debe inicializarse con setcompany para que la clase pueda operar.    
+    Este constructor no es completo, debe inicializarse con setcompany para que la clase pueda operar.    
 */
 CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(NULL, parent, flag) {
     _depura("CobrosList::CobrosList", 0);
     setupUi(this);
     m_companyact = NULL;
-    m_modo = 0;
+    setModoEdicion();
     mdb_idcobro = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
@@ -55,14 +55,14 @@ CobrosList::CobrosList(QWidget *parent, Qt::WFlags flag)
     Mete la ventana en el workSpace.
 */
 CobrosList::CobrosList(company *comp, QWidget *parent, Qt::WFlags flag)
-        : Ficha(parent, flag) {
+        : FichaBf(comp, parent, flag) {
     _depura("CobrosList::CobrosList",0);
     setupUi(this);
     m_companyact = comp;
     m_cliente->setcompany(comp);
     mui_list->setcompany(comp);
     presenta();
-    m_modo = 0;
+    setModoEdicion();
     mdb_idcobro = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
@@ -185,7 +185,7 @@ void CobrosList::on_mui_borrar_clicked() {
     } // end if
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
-        if (m_modo == 0) {
+        if (modoEdicion()) {
             CobroView *cv = m_companyact->newCobroView();
             if (cv->cargar(mdb_idcobro))
                 throw -1;
@@ -208,7 +208,7 @@ void CobrosList::on_mui_list_cellDoubleClicked(int, int) {
     _depura("CobrosList::on_mui_list_cellDoubleClicked", 0);
     try {
         mdb_idcobro = mui_list->DBvalue("idcobro");
-        if (m_modo == 0) {
+        if (modoEdicion()) {
             CobroView *bud = m_companyact->newCobroView();
             if (bud->cargar(mdb_idcobro)) {
                 delete bud;
@@ -246,6 +246,92 @@ void CobrosList::on_mui_list_customContextMenuRequested(const QPoint &) {
     _depura("PagosList::on_mui_list_customContextMenuRequested", 0);
 }
 
+/** Inicializa la clase con el puntero a la company que se esta utilizando
+**/
+void CobrosList::setcompany(company *comp) {
+    m_companyact = comp;
+    m_cliente->setcompany(comp);
+    mui_list->setcompany(comp);
+}
+
+/** Devuelve el identificador del cobro seleccionado
+**/
+QString CobrosList::idcobro() {
+    _depura("CobrosList::idcobro", 0);
+    _depura("END CobrosList::idcobro", 0);
+    return mdb_idcobro;
+}
+
+/** Oculta el layer de botones
+**/
+void CobrosList::hideBotonera() {
+    _depura("CobrosList::hideBotonera", 0);
+    m_botonera->hide();
+    _depura("END CobrosList::hideBotonera", 0);
+}
+
+/** Muestra el layer de botones
+**/
+void CobrosList::showBotonera() {
+    _depura("CobrosList::showBotonera", 0);
+    m_botonera->show();
+    _depura("END CobrosList::showBotonera", 0);
+}
+
+/** Oculta el layer de opciones de filtrado
+**/
+void CobrosList::hideBusqueda() {
+    _depura("CobrosList::hideBusqueda", 0);
+    m_busqueda->hide();
+    _depura("END CobrosList::hideBusqueda", 0);
+}
+
+/** Muestra el layer de opciones de filtrado
+**/
+void CobrosList::showBusqueda() {
+    _depura("CobrosList::showBusqueda", 0);
+    m_busqueda->show();
+    _depura("END CobrosList::showBusqueda", 0);
+}
+
+/** Inicializa la la case con un cliente determiando. Lo establece en las opciones de filtrado
+    no actualiza el listado
+**/
+void CobrosList::setidcliente(QString val) {
+    m_cliente->setidcliente(val);
+}
+
+/** SLOT automatico que se ejecuta al pulsar sobre el boton de imprimir
+**/
+void CobrosList::on_mui_imprimir_clicked() {
+    _depura("CobrosList::on_mui_imprimir_clicked", 0);
+    imprimir();
+    _depura("END CobrosList::on_mui_imprimir_clicked", 0);
+}
+
+/** SLOT automatico que se ejecuta al pulsar sobre el boton de actualizar
+**/
+void CobrosList::on_mui_actualizar_clicked() {
+    _depura("CobrosList::on_mui_actualizar_clicked", 0);
+    presenta();
+    _depura("END CobrosList::on_mui_actualizar_clicked", 0);
+}
+
+/** SLOT automatico que se ejecuta al pulsar sobre el boton de configurar listado
+**/
+void CobrosList::on_mui_configurar_toggled(bool checked) {
+    _depura("CobrosList::on_mui_configurar_toggled", 0);
+    if (checked) {
+        mui_list->showConfig();
+    } else {
+        mui_list->hideConfig();
+    } // end if
+    _depura("END CobrosList::on_mui_configurar_toggled", 0);
+}
+
+
+
+
 
 /// =============================================================================
 ///                    SUBFORMULARIO
@@ -275,5 +361,11 @@ CobrosListSubForm::CobrosListSubForm(QWidget *parent) : SubForm2Bf(parent) {
     setDelete(FALSE);
     setSortingEnabled(TRUE);
     _depura("END CobrosListSubForm::CobrosListSubForm", 0);
+}
+
+
+CobrosListSubForm::~CobrosListSubForm() {
+    _depura("CobrosListSubForm::~CobrosListSubForm", 0);
+    _depura("END CobrosListSubForm::~CobrosListSubForm", 0);
 }
 

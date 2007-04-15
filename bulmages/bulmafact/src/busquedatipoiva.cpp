@@ -23,9 +23,6 @@
 #include "company.h"
 #include "funcaux.h"
 
-// ==================================================================0
-// Busqueda Articulo Delegate para usar con los subforms
-// ===================================================================
 /** Inicializa todos los componentes del Widget a NULL para que no haya posibles confusiones
     sobre si un elemento ha sido creado o no. 
     Conecta el SIGNAL activated() con m_activated() para tratarlo.
@@ -35,11 +32,8 @@ BusquedaTipoIVADelegate::BusquedaTipoIVADelegate(QWidget *parent)
     _depura("BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
     m_companyact = NULL;
     m_cursorcombo = NULL;
-//    setEditable(true);
     setSizeAdjustPolicy(QComboBox::AdjustToContents);
-//    setCompleter(0);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
-//    connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaTipoIVADelegate::BusquedaTipoIVADelegate", 0);
 }
 
@@ -63,7 +57,6 @@ void BusquedaTipoIVADelegate::set(const QString &cod) {
     int index = 0;
     QString codigo = cod;
 
-
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
 
@@ -74,10 +67,15 @@ void BusquedaTipoIVADelegate::set(const QString &cod) {
         m_cursorcombo->siguienteregistro();
         if(m_cursorcombo->valor("desctipo_iva") == cod)
 		index = m_cursorcombo->regactual();
-    }
+    }// end while
     setEditText(cod);
     setCurrentIndex(index);
 
     _depura("END BusquedaTipoIVADelegate::set", 0);
 }
 
+void BusquedaTipoIVADelegate::setcompany(company *comp) {
+	_depura("BusquedaTipoIVADelegate::setcompany", 0);
+        m_companyact = comp;
+	_depura("END BusquedaTipoIVADelegate::setcompany", 0);
+}

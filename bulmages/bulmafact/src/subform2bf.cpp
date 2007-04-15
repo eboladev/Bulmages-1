@@ -318,6 +318,19 @@ void SubForm2Bf::setIdProveedor(QString id) {
     _depura("END SubForm2Bf::setIdProveedor", 0);
 }
 
+void SubForm2Bf::setcompany(postgresiface2 *c) {
+	_depura("SubForm2Bf::setcompany", 0);
+        SubForm3::setcompany(c);
+        m_delegate->setcompany(c);
+	_depura("END SubForm2Bf::setcompany", 0);
+}
+
+void SubForm2Bf::setDelete(bool f) {
+	_depura("SubForm2Bf::setDelete", 0);
+        m_delete = f;
+	_depura("END SubForm2Bf::setDelete", 0);
+}
+
 
 /// ===============================================================
 ///  Tratamientos del Item Delegate
@@ -468,7 +481,18 @@ bool QSubForm2BfDelegate::eventFilter(QObject *obj, QEvent *event) {
         } // end switch
 
     } // end if
-    _depura("END QSubForm2BfDelegate::eventFilter()", 0);
+    _depura("END QSubForm2BfDelegate::eventFilter", 0);
     return QItemDelegate::eventFilter(obj, event);
 }
 
+void QSubForm2BfDelegate::setcompany(postgresiface2 *c) {
+	_depura("QSubForm2BfDelegate::setcompany", 0);
+        m_companyact = c;
+	_depura("END QSubForm2BfDelegate::setcompany", 0);
+}
+
+postgresiface2 * QSubForm2BfDelegate::companyact() {
+	_depura("QSubForm2BfDelegate::companyact", 0);
+	_depura("END QSubForm2BfDelegate::companyact", 0);
+        return m_companyact;
+}

@@ -53,22 +53,14 @@ private:
 public:
     BusquedaProveedor(QWidget *parent = 0);
     ~BusquedaProveedor();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     void pinta();
 
     virtual void setidproveedor(QString val);
     virtual void setcifproveedor(QString val);
-    virtual QString cifproveedor() {
-        return m_cifproveedor->text();
-    };
-    virtual QString idproveedor() {
-        return mdb_idproveedor;
-    };
-    virtual QString nomproveedor() {
-        return nomproveedor();
-    };
+    virtual QString cifproveedor();
+    virtual QString idproveedor();
+    virtual QString nomproveedor();
 
 public slots:
     virtual void on_mui_buscar_clicked();

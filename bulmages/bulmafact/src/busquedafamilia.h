@@ -50,18 +50,10 @@ private:
 public:
     BusquedaFamilia(QWidget *parent = 0);
     ~BusquedaFamilia();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
-    virtual QString codigocompletofamilia() {
-        return m_codigocompletofamilia->text();
-    };
-    virtual QString idfamilia() {
-        return mdb_idfamilia;
-    };
-    virtual QString nombrefamilia() {
-        return nombrefamilia();
-    };
+    void setcompany(company *comp);
+    virtual QString codigocompletofamilia();
+    virtual QString idfamilia();
+    virtual QString nombrefamilia();
     virtual void setidfamilia(QString val);
     virtual void setcodigocompletofamilia(QString val);
 

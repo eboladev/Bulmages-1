@@ -38,9 +38,7 @@ public:
     BusquedaRegimenFiscal(QWidget *parent = 0);
     ~BusquedaRegimenFiscal();
     virtual void setRegimenFiscal(QString regimen);
-    QString regimenFiscal() {
-        return (currentText());
-    };
+    QString regimenFiscal();
 
 public slots:
     virtual void m_activated(int index);

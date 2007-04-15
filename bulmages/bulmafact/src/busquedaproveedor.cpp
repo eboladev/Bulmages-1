@@ -221,3 +221,34 @@ void BusquedaProveedor::on_m_cifproveedor_textChanged(const QString &val) {
     _depura("END BusquedaProveedor::on_m_cifproveedor_textChanged", 0);
 }
 
+/** Inicializa la clase con el puntero a la empresa
+**/
+void BusquedaProveedor::setcompany(company *comp) {
+    _depura("BusquedaProveedor::setcompany", 0);
+    companyact = comp;
+    _depura("END BusquedaProveedor::setcompany", 0);
+}
+
+/** Devuelve el cif del proveedor seleccionado, si no hay ningun proveedor seleccionado devuelve un string vacio
+**/
+QString BusquedaProveedor::cifproveedor() {
+    _depura("BusquedaProveedor::cifproveedor", 0);
+    _depura("END BusquedaProveedor::cifproveedor", 0);
+    return m_cifproveedor->text();
+}
+
+/** Devuelve el id del proveedor seleccionado, si ni hay ningun proveedor seleccionado devuelve un string vacio
+**/
+QString BusquedaProveedor::idproveedor() {
+    _depura("BusquedaProveedor::idproveedor", 0);
+    _depura("END BusquedaProveedor::idproveedor", 0);
+    return mdb_idproveedor;
+}
+
+/** Devuelve el nombre del proveedor seleccionado, si no hay ningun proveedor seleccionado devuelve un string vacio **/
+QString BusquedaProveedor::nomproveedor() {
+    _depura("BusquedaProveedor::nomproveedor", 0);
+    _depura("END BusquedaProveedor::nomproveedor", 0);
+    return nomproveedor();
+}
+

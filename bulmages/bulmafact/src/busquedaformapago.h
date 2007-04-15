@@ -43,13 +43,9 @@ private:
 public:
     BusquedaFormaPago(QWidget *parent = 0);
     ~BusquedaFormaPago();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     virtual void setidforma_pago(QString idforma_pago);
-    QString idforma_pago() {
-        return (m_cursorcombo->valor("idforma_pago", currentIndex() - 1));
-    };
+    QString idforma_pago();
     virtual void setIdCliente(QString);
     virtual void setIdProveedor(QString);
 public slots:

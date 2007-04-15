@@ -188,3 +188,223 @@ int Factura::guardar() {
     } // end try
 }
 
+
+/** Devuelve el puntero a la clase company con la que esta trabajando la factura
+**/
+    company * Factura::_company() {
+	_depura("Factura::_company", 0);
+	_depura("END Factura::_company", 0);
+        return m_companyact;
+    }
+
+/** Devuelve la serie de factura que tiene establecida la factura
+**/
+    QString Factura::codigoserie_factura() {
+	_depura("Factura::codigoserie_factura", 0);
+	_depura("END Factura::codigoserie_factura", 0);
+        return DBvalue("codigoserie_factura");
+    }
+
+/** Devuelve el identificador de cliente que tiene establecido la factura
+**/
+    QString Factura::idcliente() {
+	_depura("Factura::idcliente", 0);
+	_depura("END Factura::idcliente", 0);
+        return DBvalue("idcliente");
+    }
+
+/** Devuelve el identificador del almacen que tiene establecido la factura
+**/
+    QString Factura::idalmacen() {
+	_depura("Factura::idalmacen", 0);
+	_depura("END Factura::idalmacen", 0);
+        return DBvalue("idalmacen");
+    }
+
+/** Devuelve el numero de factura que tiene establecida la factura
+**/
+    QString Factura::numfactura() {
+	_depura("Factura::numfactura", 0);
+	_depura("END Factura::numfactura", 0);
+        return DBvalue("numfactura");
+    }
+
+/** Devuelve la fecha de factura que tiene establecida la factura
+**/
+    QString Factura::ffactura() {
+	_depura("Factura::ffactura", 0);
+	_depura("END Factura::ffactura", 0);
+        return DBvalue("ffactura");
+    }
+/** Devuelve si la factura esta procesada o no
+**/
+    QString Factura::procesadafactura() {
+	_depura("Factura::procesadafactura", 0);
+	_depura("END Factura::procesadafactura", 0);
+        return DBvalue("procesadafactura");
+    }
+
+/** Devuelve los comentarios de la factura
+**/
+    QString Factura::comentfactura() {
+	_depura("Factura::comentfactura", 0);
+	_depura("END Factura::comentfactura", 0);
+        return DBvalue("comentfactura");
+    }
+
+/** Devuelve la referencia de la factura 
+**/
+    QString Factura::reffactura() {
+	_depura("Factura::reffactura", 0);
+	_depura("END Factura::reffactura", 0);
+        return DBvalue("reffactura");
+    }
+
+/** Devuelve la descripcion de la factura
+**/
+    QString Factura::descfactura() {
+	_depura("Factura::descfactura", 0);
+	_depura("END Factura::descfactura", 0);
+        return DBvalue("descfactura");
+    }
+
+/** Devuevle el identificador de factura
+**/
+    QString Factura::idfactura() {
+	_depura("Factura::idfactura", 0);
+	_depura("END Factura::idfactura", 0);
+        return DBvalue("idfactura");
+    }
+
+/** Devuelve el identificador de forma de pago establecido en la factura
+**/
+    QString Factura::idforma_pago() {
+	_depura("Factura::idforma_pago", 0);
+	_depura("END Factura::idforma_pago", 0);
+        return DBvalue("idforma_pago");
+    }
+
+/** Establece el identificador de cliente de la factura
+**/
+    void Factura::setidcliente(QString val) {
+	_depura("Factura::setidcliente", 0);
+        setDBvalue("idcliente", val);
+	_depura("END Factura::setidcliente", 0);
+    }
+
+/** Establece el identificador de almacen de la factura
+**/
+    void Factura::setidalmacen(QString val) {
+	_depura("Factura::setidalmacen", 0);
+        setDBvalue("idalmacen", val);
+	_depura("END Factura::setidalmacen", 0);
+    }
+
+/** Establece la referencia de la factura
+**/
+    void Factura::setreffactura(QString val) {
+	_depura("Factura::setreffactura", 0);
+        setDBvalue("reffactura", val);
+	_depura("END Factura::setreffactura", 0);
+    }
+
+/** Establece el numero de factura
+**/
+    void Factura::setNumFactura(QString val) {
+	_depura("Factura::setNumFactura", 0);
+        setDBvalue("numfactura", val);
+	_depura("END Factura::setNumFactura", 0);
+    }
+
+/** Establece la fecha de la factura
+**/
+    void Factura::setfechafactura(QString val) {
+	_depura("Factura::setfechafactura", 0);
+        setDBvalue("ffactura", val);
+	_depura("END Factura::setfechafactura", 0);
+    }
+
+/** Establece la descripcion de la factura
+**/
+    void Factura::setdescfactura(QString val) {
+	_depura("Factura::setdescfactura", 0);
+        setDBvalue("descfactura", val);
+	_depura("END Factura::setdescfactura", 0);
+    }
+
+/** Establece cual es la serie de factura
+**/
+    void Factura::setcodigoserie_factura(QString val) {
+	_depura("Factura::setcodigoserie_factura", 0);
+        setDBvalue("codigoserie_factura", val);
+	_depura("END Factura::setcodigoserie_factura", 0);
+    }
+
+/** Establece cual es el comentario de la factura
+**/
+    void Factura::setcomentfactura(QString val) {
+	_depura("Factura::setcomentfactura", 0);
+        setDBvalue("comentfactura", val);
+	_depura("END Factura::setcomentfactura", 0);
+    }
+
+/** Establece cual es el identificador de factura
+**/
+    void Factura::setidfactura(QString val) {
+	_depura("Factura::setidfactura", 0);
+        setDBvalue("idfactura", val);
+        m_listalineas->setColumnValue( "idfactura", val);
+        m_listadescuentos->setColumnValue( "idfactura", val);
+	_depura("END Factura::setidfactura", 0);
+    }
+
+/** Establece cual es la forma de pago de la factura
+**/
+    void Factura::setidforma_pago(QString val) {
+	_depura("Factura::setidforma_pago", 0);
+        setDBvalue("idforma_pago", val);
+	_depura("END Factura::setidforma_pago", 0);
+    }
+
+/** Establece cual es el estado de procesada de la factura
+**/
+    void Factura::setprocesadafactura(QString val) {
+	_depura("Factura::setprocesadafactura", 0);
+        setDBvalue("procesadafactura", val);
+	_depura("END Factura::setprocesadafactura", 0);
+    }
+
+/** Funciones para ser derivadas en las clases de pintado
+**/
+    void Factura::pintaidcliente(QString) {}
+    
+    void Factura::pintareffactura(QString) {}
+    
+    void Factura::pintaNumFactura(QString ) {}
+    
+    void Factura::pintafechafactura(QString ) {}
+    
+    void Factura::pintadescfactura(QString) {}
+    
+    void Factura::pintacodigoserie_factura(QString) {}
+    
+    void Factura::pintaComentFactura(QString) {}
+    
+    void Factura::pintaidalmacen(QString ) {}
+    
+    void Factura::pintaidforma_pago(QString) {}
+    
+    void Factura::pintaprocesadafactura(QString) {}
+    
+     void Factura::cargaFacturaDescuentas(QString) {}
+    
+     void Factura::calculateImports() {}
+    
+    void Factura::inicialize() {}
+    
+    QString Factura::calculateValues() {
+        return "";
+    }
+
+
+

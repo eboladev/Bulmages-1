@@ -372,6 +372,15 @@ int FichaBf::sacaWindow() {
     return 0;
 }
 
+
+    void FichaBf::meteWindow(QString nom, QObject *obj) {
+	_depura("FichaBf::meteWindow", 0);
+        if (m_companyact != NULL) {
+            m_companyact->meteWindow(nom, obj);
+        }
+	_depura("END FichaBf::meteWindow", 0);
+    }
+
 /** Guarda la ficha en la base de datos
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
 */

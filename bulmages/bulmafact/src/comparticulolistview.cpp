@@ -92,3 +92,22 @@ void ListCompArticuloView::editFinished(int row, int col) {
     _depura("END ListCompArticuloView::editFinished", 0);
 }
 
+/** Destructor de la clase
+**/
+ListCompArticuloView::~ListCompArticuloView() {
+	_depura("ListCompArticuloView::~ListCompArticuloView", 0);
+	_depura("END ListCompArticuloView::~ListCompArticuloView", 0);
+}
+
+/** Realiza la carga del listado creando el query necesario para dicha carga
+**/
+void ListCompArticuloView::cargar(QString idarticulo) {
+        _depura("ListCompActiculo::cargar", 0);
+        mdb_idarticulo = idarticulo;
+        cursor2 * cur= companyact()->cargacursor("SELECT * FROM comparticulo, articulo WHERE comparticulo.idarticulo=" + mdb_idarticulo + " AND articulo.idarticulo = comparticulo.idcomponente");
+        SubForm3::cargar(cur);
+        delete cur;
+        _depura("END ListCompActiculo::cargar", 0);
+}
+
+

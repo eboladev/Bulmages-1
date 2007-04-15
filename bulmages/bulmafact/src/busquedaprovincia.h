@@ -44,19 +44,11 @@ private:
 public:
     BusquedaProvincia(QWidget *parent = 0);
     ~BusquedaProvincia();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
+    void setcompany(company *comp);
     virtual void setProvincia(QString provincia);
 
 public slots:
-    void m_activated(int index) {
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("provincia", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    void m_activated(int index);
 
 signals:
     void valueChanged(QString);

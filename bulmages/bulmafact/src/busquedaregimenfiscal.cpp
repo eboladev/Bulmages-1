@@ -74,3 +74,11 @@ void BusquedaRegimenFiscal::m_activated(int index) {
         _depura("END BusquedaRegimenFiscal::m_activated", 0);
 }
 
+/** Devuelve el regimen fiscal seleccionado
+**/
+    QString BusquedaRegimenFiscal::regimenFiscal() {
+	_depura("BusquedaRegimenFiscal::regimenFiscal", 0);
+	_depura("END BusquedaRegimenFiscal::regimenFiscal", 0);
+        return (currentText());
+    }
+

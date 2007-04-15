@@ -93,7 +93,7 @@ void BusquedaArticulo::setcodigocompletoarticulo(QString val) {
 }
 
 
-/** SLOT que responde a la pulsacion del boton buscar. 
+/** SLOT que responde a la pulsacion del boton buscar.
     Crea un listado de articulos en modo seleccion y lo presenta quedando a la
     espera de que se seleccione un articulo o se cierre dicho listado.
     Una vez seleccionado un articulo lo considera como el articulo seleccionado por
@@ -152,6 +152,31 @@ void BusquedaArticulo::on_m_codigocompletoarticulo_textChanged(const QString &va
 
 
 
+void BusquedaArticulo::setcompany(company *comp) {
+    _depura("BusquedaArticulo::setcompany", 0);
+    companyact = comp;
+    _depura("END BusquedaArticulo::setcompany", 0);
+}
+
+QString BusquedaArticulo::codigocompletoarticulo() {
+    _depura("BusquedaArticulo::codigocompletoarticulo", 0);
+    _depura("END BusquedaArticulo::codigocompletoarticulo", 0);
+    return m_codigocompletoarticulo->text();
+}
+
+QString BusquedaArticulo::idarticulo() {
+    _depura("BusquedaArticulo::idarticulo", 0);
+    _depura("END BusquedaArticulo::idarticulo", 0);
+    return mdb_idarticulo;
+}
+
+QString BusquedaArticulo::nomarticulo() {
+    _depura("BusquedaArticulo::nomarticulo", 0);
+    _depura("END BusquedaArticulo::nomarticulo", 0);
+    return m_nomarticulo->text();
+}
+
+
 // ==================================================================0
 // Busqueda Articulo Delegate para usar con los subforms
 // ===================================================================
@@ -166,7 +191,7 @@ BusquedaArticuloDelegate::BusquedaArticuloDelegate(QWidget *parent)
     m_cursorcombo = NULL;
     setEditable(true);
     setSizeAdjustPolicy(QComboBox::AdjustToContents);
-//    setCompleter(0);
+    //    setCompleter(0);
     connect(this, SIGNAL(activated(int)), this, SLOT(m_activated(int)));
     connect(this, SIGNAL(editTextChanged(const QString &)), this, SLOT(s_editTextChanged(const QString &)));
     _depura("END BusquedaArticuloDelegate::BusquedaArticuloDelegate", 0);
@@ -192,16 +217,20 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
     static bool semaforo = FALSE;
     QString codigo = cod;
 
-    if (codigo.size() < 3) return;
+    if (codigo.size() < 3)
+        return;
 
-    if (semaforo) { return; }
-    else  {semaforo = TRUE; }
+    if (semaforo) {
+        return;
+    } else  {
+        semaforo = TRUE;
+    }
 
 
     if (m_cursorcombo != NULL)
         delete m_cursorcombo;
-//    while (count() )
-//	removeItem(0);
+    //    while (count() )
+    //	removeItem(0);
 
     codigo = codigo.left(codigo.indexOf(".-"));
 
@@ -213,8 +242,14 @@ void BusquedaArticuloDelegate::s_editTextChanged(const QString &cod) {
         m_cursorcombo->siguienteregistro();
     }
     setEditText(cod);
-//    showPopup();
+    //    showPopup();
     semaforo = FALSE;
     _depura("END BusquedaArticuloDelegate::s_editTextChanged", 0);
 }
 
+
+void BusquedaArticuloDelegate::setcompany(company *comp) {
+    _depura("BusquedaArticuloDelegate::setcompany", 0);
+    m_companyact = comp;
+    _depura("END BusquedaArticuloDelegate::setcompany", 0);
+}

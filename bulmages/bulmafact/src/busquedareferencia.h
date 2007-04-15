@@ -42,15 +42,9 @@ private:
 public:
     BusquedaReferencia(QWidget *parent = 0);
     ~BusquedaReferencia();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-    };
-    virtual void setText(QString val) {
-        mui_referencia->setText(val);
-    };
-    virtual QString text() {
-        return mui_referencia->text();
-    };
+    void setcompany(company *comp);
+    virtual void setText(QString val);
+    virtual QString text();
 
 public slots:
     virtual void on_mui_informe_clicked();

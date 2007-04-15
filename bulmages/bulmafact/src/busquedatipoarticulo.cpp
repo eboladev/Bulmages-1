@@ -163,3 +163,40 @@ void BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged(const QString &val)
     _depura("END BusquedaTipoArticulo::on_m_codtipo_articulo_textChanged", 0);
 }
 
+
+/** Inicializa la clase con el puntero a la empresa que se esta utilizando
+**/
+void BusquedaTipoArticulo::setcompany(company *comp) {
+    _depura("BusquedaTipoArticulo::setcompany", 0);
+    m_companyact = comp;
+    _depura("END BusquedaTipoArticulo::setcompany", 0);
+}
+
+/** Devuelve el codigo de tipo de articulo seleccionado, si no hay ningun elemento seleccionado devuelve
+    un string vacio
+**/
+QString BusquedaTipoArticulo::codtipo_articulo() {
+    _depura("BusquedaTipoArticulo::codtipo_articulo", 0);
+    _depura("END BusquedaTipoArticulo::codtipo_articulo", 0);
+    return m_codtipo_articulo->text();
+}
+
+/** Devuelve el identificador del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
+    devuelve un string vacio
+**/
+QString BusquedaTipoArticulo::idtipo_articulo() {
+    _depura("BusquedaTipoArticulo::idtipo_articulo", 0);
+    _depura("END BusquedaTipoArticulo::idtipo_articulo", 0);
+    return mdb_idtipo_articulo;
+}
+
+/** Devuelve la descripcion del tipo de articulo seleccionado, si no hay ningun elemento seleccionado
+    devuelve un string vacio
+**/
+QString BusquedaTipoArticulo::desctipo_articulo() {
+    _depura("BusquedaTipoArticulo::desctipo_articulo", 0);
+    _depura("END BusquedaTipoArticulo::desctipo_articulo", 0);
+    return desctipo_articulo();
+}
+
+

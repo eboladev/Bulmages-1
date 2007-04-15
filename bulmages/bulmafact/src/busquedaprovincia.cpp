@@ -76,3 +76,24 @@ void BusquedaProvincia::setProvincia(QString provincia) {
     _depura("END BusquedaProvincia::setProvincia", 0);
 }
 
+/** Inicializa la clase con el puntero a la empresa
+**/
+void BusquedaProvincia::setcompany(company *comp) {
+    _depura("BusquedaProvincia::setcompany", 0);
+    companyact = comp;
+    _depura("END BusquedaProvincia::setcompany", 0);
+}
+
+/** SLOT que se activa al activar un elemento del desplegable
+**/
+void BusquedaProvincia::m_activated(int index) {
+    _depura("BusquedaProvincia::m_activated", 0);
+    if (index > 0) {
+        emit(valueChanged(m_cursorcombo->valor("provincia", index - 1)));
+    } else {
+        emit(valueChanged(""));
+    }
+    _depura("END BusquedaProvincia::m_activated", 0);
+}
+
+

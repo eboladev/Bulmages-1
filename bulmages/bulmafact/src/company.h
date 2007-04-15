@@ -96,12 +96,8 @@ private:
 public:
     company();
     ~company();
-    FacturasProveedorList *facturasProveedorList() {
-    	return m_facturasproveedorlist;
-    };
-    PresupuestoList *presupuestoList() {
-	return m_presupuestosList;
-    }
+    FacturasProveedorList *facturasProveedorList();
+    PresupuestoList *presupuestoList();
     void listproviders();
     void listClients();
     void listarticles();

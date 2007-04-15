@@ -42,9 +42,7 @@ private:
 public:
     BusquedaArticuloDelegate(QWidget *parent = 0);
     ~BusquedaArticuloDelegate();
-    void setcompany(company *comp) {
-        m_companyact = comp;
-    };
+    void setcompany(company *comp);
 public slots:
     virtual void s_editTextChanged(const QString &);
 };
@@ -70,18 +68,10 @@ private:
 public:
     BusquedaArticulo(QWidget *parent = 0);
     ~BusquedaArticulo();
-    void setcompany(company *comp) {
-        companyact = comp;
-    };
-    virtual QString codigocompletoarticulo() {
-        return m_codigocompletoarticulo->text();
-    };
-    virtual QString idarticulo() {
-        return mdb_idarticulo;
-    };
-    virtual QString nomarticulo() {
-        return m_nomarticulo->text();
-    };
+    void setcompany(company *comp);
+    virtual QString codigocompletoarticulo();
+    virtual QString idarticulo();
+    virtual QString nomarticulo();
     virtual void setidarticulo(QString val);
     virtual void setcodigocompletoarticulo(QString val);
 

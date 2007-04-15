@@ -76,7 +76,7 @@ void BusquedaReferencia::on_mui_referencia_editingFinished() {
     _depura("END BusquedaReferencia::on_m_cifcliente_editingFinished", 0);
 }
 
-/** SLOT que responde a la pulsacion del boton abrirtodo. 
+/** SLOT que responde a la pulsacion del boton abrirtodo.
     Busca en todos los documentos de la base de datos (presupuestos, pedidos, albaranes, facturas, cobros y pagos)
     Todos aquellos elementos que tengan la misma referencia que el objeto abierto.
     Instancia los objetos correspondientes y los lanza.
@@ -108,82 +108,107 @@ void BusquedaReferencia::on_mui_abrirtodo_clicked() {
 
     SQLQuery = "SELECT * FROM albaran WHERE refalbaran = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            AlbaranClienteView *bud = m_companyact->newAlbaranClienteView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idalbaran"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        AlbaranClienteView *bud = m_companyact->newAlbaranClienteView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idalbaran"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM factura WHERE reffactura = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            FacturaView *bud = m_companyact->newFacturaView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idfactura"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        FacturaView *bud = m_companyact->newFacturaView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idfactura"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM cobro WHERE refcobro = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            CobroView *bud = m_companyact->newCobroView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idcobro"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        CobroView *bud = m_companyact->newCobroView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idcobro"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM pago WHERE refpago = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            PagoView *bud = m_companyact->newPagoView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idpago"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        PagoView *bud = m_companyact->newPagoView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idpago"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM pedidoproveedor WHERE refpedidoproveedor = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            PedidoProveedorView *bud = m_companyact->nuevoPedidoProveedorView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idpedidoproveedor"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        PedidoProveedorView *bud = m_companyact->nuevoPedidoProveedorView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idpedidoproveedor"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
     SQLQuery = "SELECT * FROM albaranp WHERE refalbaranp = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            AlbaranProveedorView *bud = m_companyact->newAlbaranProveedorView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idalbaranp"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        AlbaranProveedorView *bud = m_companyact->newAlbaranProveedorView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idalbaranp"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
 
     SQLQuery = "SELECT * FROM facturap WHERE refacturap = '" + mui_referencia->text() + "'";
     cur = m_companyact->cargacursor(SQLQuery);
-        while (!cur->eof()) {
-            FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
-            m_companyact->m_pWorkspace->addWindow(bud);
-            bud->cargar(cur->valor("idfacturap"));
-            bud->show();
-            cur->siguienteregistro();
-        } // end while
+    while (!cur->eof()) {
+        FacturaProveedorView *bud = m_companyact->newFacturaProveedorView();
+        m_companyact->m_pWorkspace->addWindow(bud);
+        bud->cargar(cur->valor("idfacturap"));
+        bud->show();
+        cur->siguienteregistro();
+    } // end while
     delete cur;
 
     _depura("END BusquedddaReferencia::on_mui_abrirtodo_clicked", 0);
 }
+
+/** Inicializa la clase con el puntero a la empresa que se esta usando
+**/
+void BusquedaReferencia::setcompany(company *comp) {
+    _depura("BusquedaReferencia::setcompany", 0);
+    m_companyact = comp;
+    _depura("END BusquedaReferencia::setcompany", 0);
+}
+
+/** Establece la referencia que va a mostrar el control
+**/
+void BusquedaReferencia::setText(QString val) {
+    _depura("BusquedaReferencia::setText", 0);
+    mui_referencia->setText(val);
+    _depura("END BusquedaReferencia::setText", 0);
+}
+
+/** Devuelve el texto que esta escrito en el control
+**/
+QString BusquedaReferencia::text() {
+    _depura("BusquedaReferencia::text", 0);
+    _depura("END BusquedaReferencia::text", 0);
+    return mui_referencia->text();
+}
+
 

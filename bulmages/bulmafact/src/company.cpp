@@ -68,7 +68,7 @@
 
 /** No precisa de operaciones en su construccion.
 */
-company::company() : EmpresaBase(){
+company::company() : EmpresaBase() {
     _depura("company::company", 0);
     _depura("END company::company", 0);
 }
@@ -78,7 +78,7 @@ company::company() : EmpresaBase(){
 company::~company() {
     _depura("company::~company", 0);
 
-    /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault 
+    /// Borramos las ventanas flotantes antes de eliminar esta clase ya que se produciria un segfault
     m_listventanas->vaciar();
 
     /// Borramos el resto de ventanas.
@@ -127,87 +127,88 @@ void company::createMainWindows() {
     /// pb = 8%
     _depura("company::createMainWindows inicializamos m_providerslist\n", 1);
     m_progressbar->setValue(8);
-    m_providerslist = new ProveedorList(this);
-    m_pWorkspace->addWindow(m_providerslist);
-    m_providerslist->hide();
-
-    /// pb = 16%
-    _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
-    m_progressbar->setValue(16);
     m_clientsList = new ClientsList(this);
     m_pWorkspace->addWindow(m_clientsList);
     m_clientsList->hide();
 
+    /// pb = 16%
+    _depura("company::createMainWindows inicializamos m_clientesList\n", 1);
+    m_progressbar->setValue(16);
+    m_providerslist = new ProveedorList(this);
+    m_pWorkspace->addWindow(m_providerslist);
+    m_providerslist->hide();
+
     /// pb = 32%
-    _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
-    m_progressbar->setValue(32);
-    m_cobrosList = new CobrosList(this);
-    m_pWorkspace->addWindow(m_cobrosList);
-    m_cobrosList->hide();
-
-    /// pb = 40%
-    _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
-    m_progressbar->setValue(40);
-    m_pagosList = new PagosList(this);
-    m_pWorkspace->addWindow(m_pagosList);
-    m_pagosList->hide();
-
-    /// pb = 48%
     _depura("company::createMainWindows inicializamos m_presupuestosList\n", 1);
-    m_progressbar->setValue(48);
+    m_progressbar->setValue(32);
     m_presupuestosList = new PresupuestoList(this);
     m_pWorkspace->addWindow(m_presupuestosList);
     m_presupuestosList->hide();
 
-    /// pb = 52%
+    /// pb = 40%
     _depura("company::createMainWindows inicializamos m_pedidosclienteList\n", 1);
-    m_progressbar->setValue(52);
+    m_progressbar->setValue(40);
     m_pedidosclienteList = new PedidosClienteList(this);
     m_pWorkspace->addWindow(m_pedidosclienteList);
     m_pedidosclienteList->hide();
 
-    /// pb = 60%
+    /// pb = 48%
     _depura("company::createMainWindows inicializamos m_clientDelivNotesList\n", 1);
-    m_progressbar->setValue(60);
+    m_progressbar->setValue(48);
     m_clientDelivNotesList = new AlbaranClienteList(this);
     m_pWorkspace->addWindow(m_clientDelivNotesList);
     m_clientDelivNotesList->hide();
 
-    /// pb = 68%
+    /// pb = 56%
     _depura("company::createMainWindows inicializamos m_facturasList\n", 1);
-    m_progressbar->setValue(68);
+    m_progressbar->setValue(56);
     m_facturasList = new FacturasList(this);
     m_pWorkspace->addWindow(m_facturasList);
     m_facturasList->hide();
 
-    /// pb = 76%
+    /// pb = 64%
+    _depura("company::createMainWindows inicializamos m_cobrosList\n", 1);
+    m_progressbar->setValue(64);
+    m_cobrosList = new CobrosList(this);
+    m_pWorkspace->addWindow(m_cobrosList);
+    m_cobrosList->hide();
+
+    /// pb = 72%
     _depura("company::createMainWindows inicializamos m_pedidosproveedorlist\n", 1);
-    m_progressbar->setValue(76);
+    m_progressbar->setValue(72);
     m_pedidosproveedorList = new PedidosProveedorList(this);
     m_pWorkspace->addWindow(m_pedidosproveedorList);
     m_pedidosproveedorList->hide();
 
-    /// pb = 84%
+    /// pb = 80%
     _depura("company::createMainWindows inicializamos m_albaranesproveedorlist\n", 1);
-    m_progressbar->setValue(84);
+    m_progressbar->setValue(80);
     m_albaranesproveedor = new AlbaranesProveedor(this);
     m_pWorkspace->addWindow(m_albaranesproveedor);
     m_albaranesproveedor->hide();
 
-    /// pb = 92%
+    /// pb = 88%
     _depura("company::createMainWindows inicializamos m_facturasproveedorlist\n", 1);
-    m_progressbar->setValue(92);
+    m_progressbar->setValue(88);
     m_facturasproveedorlist = new FacturasProveedorList(this);
     m_pWorkspace->addWindow(m_facturasproveedorlist);
     m_facturasproveedorlist->hide();
 
+    /// pb = 96%
+    _depura("company::createMainWindows inicializamos m_pagosList\n", 1);
+    m_progressbar->setValue(96);
+    m_pagosList = new PagosList(this);
+    m_pWorkspace->addWindow(m_pagosList);
+    m_pagosList->hide();
+
+
     /// pb = 100%
     m_progressbar->setValue(100);
-    
+
     /// Disparamos los plugins.
     int res = g_plugins->lanza("company_createMainWindows_Post", this);
     if (res != 0)
-    	return;	
+        return;
     _depura("END company::createMainWindows\n", 0);
 }
 
@@ -350,13 +351,13 @@ void company::s_newProveedorView() {
     nuestra llamada devolvera el objeto adecuado
 */
 FacturaProveedorView *company::newFacturaProveedorView() {
-	_depura("company::newFacturaProveedorView", 0);
+    _depura("company::newFacturaProveedorView", 0);
     /// Lanzamos los plugins necesarios.
     FacturaProveedorView *bud;
     if (g_plugins->lanza("company_newFacturaProveedorView", this, (void **)&bud))
         return bud;
     bud = new FacturaProveedorView(this, 0);
-    _depura("END company::newFacturaProveedorView", 0);    
+    _depura("END company::newFacturaProveedorView", 0);
     return bud;
 }
 
@@ -1072,4 +1073,17 @@ void company::s_TasaIVAView() {
     m_pWorkspace->addWindow(pag);
     pag->show();
     _depura("END company::s_TasaIVAView", 0);
+}
+
+
+FacturasProveedorList * company::facturasProveedorList() {
+    _depura("company::facturasProveedorList", 0);
+    _depura("END company::facturasProveedorList", 0);
+    return m_facturasproveedorlist;
+}
+
+PresupuestoList * company::presupuestoList() {
+    _depura("company::presupuestoList", 0);
+    _depura("END company::presupuestoList", 0);
+    return m_presupuestosList;
 }
