@@ -18,6 +18,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#ifndef TICKETQTOOLBUTTON_H
+#define TICKETQTOOLBUTTON_H
+
 #include <QWidget>
 #include <QToolButton>
 #include <QString>
@@ -34,7 +37,7 @@
 #include "albaranclienteview.h"
 
 
-class EmailQToolButton : public QToolButton {
+class TicketQToolButton : public QToolButton {
 	Q_OBJECT
 
 private:
@@ -44,12 +47,13 @@ private:
 	AlbaranClienteView *m_albaranClienteView;
 	FacturaView    *m_facturaView;	
 
-	
 public:
-	EmailQToolButton(PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL);
-	~EmailQToolButton();
+	TicketQToolButton(PresupuestoView *, PedidoClienteView *, AlbaranClienteView *,  FacturaView * , QWidget *parent = NULL);
+	~TicketQToolButton();
 	void setBoton();
 public slots:
 	virtual void click();
 
 };
+
+#endif
