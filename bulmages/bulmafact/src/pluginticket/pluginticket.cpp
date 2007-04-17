@@ -25,7 +25,7 @@
 #include "funcaux.h"
 #include "facturaview.h"
 #include "presupuestoview.h"
-#include "impqtoolbutton.h"
+#include "ticketqtoolbutton.h"
 
 
 int entryPoint(bulmafact *bges) {
@@ -39,7 +39,7 @@ int entryPoint(bulmafact *bges) {
 /*
 int PresupuestoView_PresupuestoView(PresupuestoView *l) {
        _depura("PresupuestoView_PresupuestoView", 0);
-       EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(l, NULL, NULL,  NULL, l->mui_plugbotones);
+       TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(l, NULL, NULL,  NULL, l->mui_plugbotones);
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
        m_hboxLayout1->setMargin(5);
@@ -51,7 +51,7 @@ int PresupuestoView_PresupuestoView(PresupuestoView *l) {
 
 int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
        _depura("PedidoClienteView_PedidoClienteView", 0);
-       EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);
+       TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(NULL, l, NULL, NULL, l->mui_plugbotones);
        QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
        m_hboxLayout1->setSpacing(5);
        m_hboxLayout1->setMargin(5);
@@ -64,7 +64,7 @@ int PedidoClienteView_PedidoClienteView(PedidoClienteView *l) {
 int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
        _depura("AlbaranClienteView_AlbaranClienteView", 0);
 //================================
-       EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(NULL, NULL, l, NULL, l->mui_plugbotones);
+       TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(NULL, NULL, l, NULL, l->mui_plugbotones);
 
        QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
        if (!m_hboxLayout1) {
@@ -82,7 +82,7 @@ int AlbaranClienteView_AlbaranClienteView(AlbaranClienteView *l) {
 int FacturaView_FacturaView(FacturaView *l) {
        _depura("FacturaView_FacturaView", 0);
 //================================
-       EmailQToolButton *mui_exporta_efactura2 = new EmailQToolButton(NULL, NULL, NULL, l, l->mui_plugbotones);
+       TicketQToolButton *mui_exporta_efactura2 = new TicketQToolButton(NULL, NULL, NULL, l, l->mui_plugbotones);
 
        QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
        if (!m_hboxLayout1) {

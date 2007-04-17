@@ -241,6 +241,6 @@ QString BusquedaCliente::idcliente() {
 
 
 QString BusquedaCliente::nomcliente() {
-    return nomcliente();
+    return mdb_nomcliente;
 }
 

@@ -40,6 +40,7 @@
 #include "postgresiface2.h"
 #include "presupuestolist.h"
 #include "presupuestoview.h"
+#include "plugins.h"
 
 
 /** Inicializa todos los componentes de la ventana.
@@ -51,6 +52,10 @@ AlbaranProveedorView::AlbaranProveedorView(company *comp, QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
     try {
         setupUi(this);
+        /// Disparamos los plugins.
+        int res = g_plugins->lanza("AlbaranProveedorView_AlbaranProveedorView", this);
+        if (res != 0)
+            return;
         subform2->setcompany(comp);
         m_almacen->setcompany(comp);
         m_forma_pago->setcompany(comp);

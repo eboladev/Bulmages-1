@@ -85,10 +85,10 @@ windows {
 }
 
 SOURCES = pluginticket.cpp \
-	impqtoolbutton.cpp
+	ticketqtoolbutton.cpp
 
 HEADERS = pluginticket.h \
-	impqtoolbutton.h
+	ticketqtoolbutton.h
 
 
 

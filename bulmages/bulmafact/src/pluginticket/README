@@ -26,7 +26,7 @@ Instalacion
 La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT para que llame al archivo de plugin y ya tendra
 la funcionalidad instalada.
 
-
+Debe copiar la imagen ticket.png en el directorio /usr/share/bulmages/icons/
 
 Nota de Conetxia
 ================
