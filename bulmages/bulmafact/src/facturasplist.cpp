@@ -41,7 +41,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
     /// Disparamos los plugins.
-    int res = g_plugins->lanza("FacturasProveedorList_EFacturaBotonImportar", this);
+    int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
     if (res != 0) {
         return;
     } // end if
@@ -50,6 +50,7 @@ FacturasProveedorList::FacturasProveedorList(QWidget *parent, Qt::WFlags flag)
     mdb_idfacturap = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
 }
 
@@ -76,6 +77,7 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     mdb_idfacturap = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
     _depura("END FacturasProveedorList::FacturasProveedorList", 0);
 }
 

@@ -207,6 +207,8 @@ void FichaBf::generaRML() {
     } // end if
     delete cur;
 
+    if (exists("id" + m_tablename))
+        buff.replace("[id" + m_tablename + "]", DBvalue("id" + m_tablename));
     if (exists("num" + m_tablename))
         buff.replace("[num" + m_tablename + "]", DBvalue("num" + m_tablename));
     if (exists("f" + m_tablename))
