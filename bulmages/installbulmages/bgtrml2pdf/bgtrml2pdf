@@ -485,13 +485,13 @@ class _rml_flowable(object):
 			return platypus.Paragraph(self._textual(node), style, **(bgutils.attr_get(node, [], {'bulletText':'str'})))
 		elif node.localName=='barCode':
 			try:
-				import barcode
-				from barcode import code128
-				from barcode import code39
-				from barcode import code93
-				from barcode import common
-				from barcode import fourstate
-				from barcode import usps
+				import reportlab.extensions.barcode
+				from reportlab.extensions.barcode import code128
+				from reportlab.extensions.barcode import code39
+				from reportlab.extensions.barcode import code93
+				from reportlab.extensions.barcode import common
+				from reportlab.extensions.barcode import fourstate
+				from reportlab.extensions.barcode import usps
 			except:
 				print 'Warning: Reportlab barcode extension not installed !'
 				return None
