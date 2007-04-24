@@ -10,5 +10,6 @@ SUBDIRS += src/comercialbf
 SUBDIRS += src/efacturabf
 SUBDIRS += src/pluginvehiculosbf
 SUBDIRS += src/plugintrazabilidad
+SUBDIRS += src/pluginbarcodeopen
 
 include(privatecode.pro)
