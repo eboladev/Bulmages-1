@@ -66,7 +66,7 @@ QString EFQToolButtonImportar::obten_valor_nodo(QString nombre, QDomDocument *do
 /// Esta funcion obtiene los descuentos y los mete dentro de una QList, la cual se
 /// recibe como parametro y devuelve un QString con el valor total de los descuentos.
 QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc, QList< QMap<QString, QString> > &lista_descuentos) {
-	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 2);
+	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0);
 	// Obtenemos el nodo padre
 	QDomNodeList lista_padre = doc->elementsByTagName("Invoice");
 	QDomNode padre = lista_padre.item(0);
@@ -104,7 +104,7 @@ QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc, QList<
 		nodo1 = nodo1.nextSiblingElement("cac:AllowanceCharge");
 	}
 	
-	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 2);
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_descuento_factura", 0);
 	
 	return total_descuento.toQString();
 }
@@ -113,7 +113,7 @@ QString EFQToolButtonImportar::obten_descuento_factura(QDomDocument *doc, QList<
 /// la informacion sobre la linea de factura situada en la posicion indicada por el parametro i,
 /// contando desde 0 hasta numlineas-1 y de arriba a abajo del documento.
 void EFQToolButtonImportar::obten_linea_factura(QDomDocument *doc, QMap<QString, QString> &mapa_lfactura, int i) {
-	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 2);
+	_depura("EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0);
 	QDomNodeList lista_lineas = doc->elementsByTagName("cac:InvoiceLine");
 	QDomNode padre = lista_lineas.item(i);
 	QDomNode tmp;
@@ -159,7 +159,7 @@ void EFQToolButtonImportar::obten_linea_factura(QDomDocument *doc, QMap<QString,
 	
 	mapa_lfactura["idarticulo"] = tmp.toElement().text();
 	
-	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 2);
+	_depura("END EFQToolButtonImportar_EFQToolButtonImportar::obten_linea_factura", 0);
 }
 
 /// Esta funcion obtiene el CIF de la empresa que emitio la factura (el campo
@@ -188,7 +188,7 @@ QString EFQToolButtonImportar::obten_id_proveedor(QDomDocument *doc) {
 /// ------------------ Importa una factura desde un fichero en formato UBL 1.0 ------------------- ///
 
 void EFQToolButtonImportar::importa_factura_ubl() {
-	_depura("EFQToolButtonImportar::importa_factura_ubl", 2);
+	_depura("EFQToolButtonImportar::importa_factura_ubl", 0);
 
 	QString fichero = QFileDialog::getOpenFileName(
 			this,
@@ -229,15 +229,10 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 	/// Comprobamos que el proveedor existe. Si no, abortamos y damos mensaje de error.
 	QString idProveedor = obten_id_proveedor(&doc);
-	
-	_depura("Antes del query de proveedor", 2);
-	
+		
 	QString query = "SELECT * FROM proveedor WHERE cifproveedor = '" + idProveedor + "'";
-	_depura("añsldkfj", 2, query);
 	cursor2 *proveedor = m_companyact->cargacursor(query);
-	
-	_depura("Despues del query de proveedor", 2);
-	
+		
 	if (proveedor->numregistros() == 0) {
 		_depura("El proveedor con CIF " + idProveedor + " no existe en la base de datos. Hay que crearlo antes de importar esta factura.", 2);
 		
@@ -332,7 +327,7 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 /// Pintamos las lineas de factura --------------------------------------------
 
-	ListLinFacturaProveedorView *lineas =(ListLinFacturaProveedorView *) fp->getlistalineas();
+	ListLinFacturaProveedorView *lineas = (ListLinFacturaProveedorView *) fp->getlistalineas();
 	rec = lineas->lista()->last();
 	cursor2 *articulo = NULL;
 	QString idarticulo, nomarticulo;
@@ -366,15 +361,18 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 		idarticulo  = articulo->valor("idarticulo");
 		nomarticulo = articulo->valor("nomarticulo");
 		
+		rec->setDBvalue("codigocompletoarticulo", mapa_lfactura["idarticulo"]);
+		
+// 		rec->refresh();
+		
 		rec->setDBvalue("idarticulo", articulo->valor("idarticulo"));
+		
 		rec->setDBvalue("nomarticulo", articulo->valor("nomarticulo"));
 		rec->setDBvalue("desclfacturap", mapa_lfactura["desclfactura"]);
 		rec->setDBvalue("cantlfacturap", mapa_lfactura["cantlfactura"]);
 		rec->setDBvalue("pvplfacturap", mapa_lfactura["pvplfactura"]);
-		rec->setDBvalue("ivalfacturap", mapa_lfactura["ivalfactura"]);
+		rec->setDBvalue("ivalfacturap", mapa_lfactura["ivalfactura"]);		
 		rec->setDBvalue("descuentolfacturap", mapa_lfactura["descuentolfactura"]);
-		
-		rec->setDBvalue("codigocompletoarticulo", mapa_lfactura["idarticulo"]);
 
 		lineas->setinsercion(TRUE);
 		lineas->nuevoRegistro();
@@ -387,8 +385,6 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 /// FIN lineas de factura ------------------------------------------------------------------------------
 
 /// Empezamos a pintar datos ---------------------------------------------------------------------------
-// 	fp->cargar("0");
-// 	fp->show();
 
 	fp->pintanumfacturap(numeroFactura);
 	fp->pintafechafacturap(fechaFactura);
@@ -423,11 +419,11 @@ void EFQToolButtonImportar::importa_factura_ubl() {
 	
 	fp->setprocesadafacturap("");
 	
-	_depura("END EFQToolButtonImportar::importa_factura_ubl", 2);
+	_depura("END EFQToolButtonImportar::importa_factura_ubl", 0);
 }
 
 void EFQToolButtonImportar::click() {
-	_depura("EFQToolButtonImportar::click", 2);
+	_depura("EFQToolButtonImportar::click", 0);
 	importa_factura_ubl();
-	_depura("END EFQToolButtonImportar::click", 2);
+	_depura("END EFQToolButtonImportar::click", 0);
 }

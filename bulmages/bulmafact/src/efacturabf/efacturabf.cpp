@@ -72,25 +72,25 @@ void efacturabf::inicializa(bulmafact *bges) {
 	m_companyact = bges->getcompany();
 	
 	/// Creamos el menu.
-	QMenu *pPluginMenu = new QMenu("&Factura Electronica");
-	
-	QAction *accion = new QAction("&Configuracion de e-factura", 0);
-	accion->setStatusTip("Muestra statustip");
-	accion->setWhatsThis("Muestra que es esto");
-	
-	QAction *accion1 = new QAction("&Recepcion de e-facturas", 0);
-	accion1->setStatusTip("Muestra statustip");
-	accion1->setWhatsThis("Muestra que es esto");
-
-	connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-	connect(accion1, SIGNAL(activated()), this, SLOT(elslot1()));
-	
-	/// Anyadimos los submenus al menu de efactura
-	pPluginMenu->addAction(accion);
-	pPluginMenu->addAction(accion1);
-
-	/// Anyadimos la nueva opcion al menu principal del programa.
-	bges->menuBar()->addMenu(pPluginMenu);
+// 	QMenu *pPluginMenu = new QMenu("&Factura Electronica");
+// 	
+// 	QAction *accion = new QAction("&Configuracion de e-factura", 0);
+// 	accion->setStatusTip("Muestra statustip");
+// 	accion->setWhatsThis("Muestra que es esto");
+// 	
+// 	QAction *accion1 = new QAction("&Recepcion de e-facturas", 0);
+// 	accion1->setStatusTip("Muestra statustip");
+// 	accion1->setWhatsThis("Muestra que es esto");
+// 
+// 	connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
+// 	connect(accion1, SIGNAL(activated()), this, SLOT(elslot1()));
+// 	
+// 	/// Anyadimos los submenus al menu de efactura
+// 	pPluginMenu->addAction(accion);
+// 	pPluginMenu->addAction(accion1);
+// 
+// 	/// Anyadimos la nueva opcion al menu principal del programa.
+// 	bges->menuBar()->addMenu(pPluginMenu);
 }
 
 
@@ -114,13 +114,19 @@ int FacturaView_FacturaView(FacturaView *fac) {
 	EFQToolButton *mui_exporta_efactura = new EFQToolButton(fac, fac->mui_plugbotones);
 	mui_exporta_efactura->setObjectName(QString::fromUtf8("exporta"));
 	mui_exporta_efactura->setMinimumSize(QSize(32, 32));
-	mui_exporta_efactura->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/pendientes/i_save.xpm")));
+	mui_exporta_efactura->setIcon(QIcon(QString::fromUtf8("/usr/share/bulmages/efactura/efactura.png")));
 	mui_exporta_efactura->setIconSize(QSize(22, 22));
-	
-	QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(fac->mui_plugbotones);
-	m_hboxLayout1->setSpacing(5);
-	m_hboxLayout1->setMargin(5);
-	m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));	
+	mui_exporta_efactura->setStatusTip("Exportar eFactura");
+	mui_exporta_efactura->setToolTip("Exportar eFactura");
+
+       QHBoxLayout *m_hboxLayout1 = fac->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+       if (!m_hboxLayout1) {
+                m_hboxLayout1 = new QHBoxLayout(fac->mui_plugbotones);
+                m_hboxLayout1->setSpacing(5);
+                m_hboxLayout1->setMargin(5);
+                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+       } // end if
+
 	m_hboxLayout1->addWidget(mui_exporta_efactura);
 	
 	_depura("END FacturaView_FacturaView", 0);
@@ -128,19 +134,26 @@ int FacturaView_FacturaView(FacturaView *fac) {
 	return 0;
 }
 
+/// Dibuja el boton de importar en el listado de facturas de proveedor
+
 int FacturasProveedorList_FacturasProveedorList_Post(FacturasProveedorList *listfac) {
 	_depura("FacturasProveedorList_FacturasProveedorList_Post", 0);
 	
 	EFQToolButtonImportar *mui_importa_efactura = new EFQToolButtonImportar(listfac, listfac->mui_plugbotones);
 	mui_importa_efactura->setObjectName(QString::fromUtf8("importa"));
-	mui_importa_efactura->setMinimumSize(QSize(16, 16));
-	mui_importa_efactura->setIcon(QIcon(QString::fromUtf8(":/Genericos32x32/images/pendientes/i_save.xpm")));
-	mui_importa_efactura->setIconSize(QSize(16, 16));
-	
-	QHBoxLayout *m_hboxLayout1 = new QHBoxLayout(listfac->mui_plugbotones);
-	m_hboxLayout1->setSpacing(5);
-	m_hboxLayout1->setMargin(5);
-	m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));	
+	mui_importa_efactura->setMinimumSize(QSize(32, 32));
+	mui_importa_efactura->setIcon(QIcon(QString::fromUtf8("/usr/share/bulmages/efactura/efactura.png")));
+	mui_importa_efactura->setIconSize(QSize(22, 22));
+	mui_importa_efactura->setStatusTip("Importar eFactura");
+	mui_importa_efactura->setToolTip("Importar eFactura");
+
+       QHBoxLayout *m_hboxLayout1 = listfac->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+       if (!m_hboxLayout1) {
+                m_hboxLayout1 = new QHBoxLayout(listfac->mui_plugbotones);
+                m_hboxLayout1->setSpacing(5);
+                m_hboxLayout1->setMargin(5);
+                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+       } // end if
 	m_hboxLayout1->addWidget(mui_importa_efactura);
 
 	_depura("END FacturasProveedorList_FacturasProveedorList_Post", 0);

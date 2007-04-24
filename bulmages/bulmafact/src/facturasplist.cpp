@@ -62,7 +62,6 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
         : Ficha(parent) {
     _depura("FacturasProveedorList::FacturasProveedorList", 0);
     setupUi(this);
-
     /// Disparamos los plugins.
     int res = g_plugins->lanza("FacturasProveedorList_FacturasProveedorList", this);
     if (res != 0) {
@@ -77,7 +76,10 @@ FacturasProveedorList::FacturasProveedorList(company *comp, QWidget *parent)
     mdb_idfacturap = "";
     meteWindow(windowTitle(), this);
     hideBusqueda();
+    
+    /// Disparamos los plugins.
     g_plugins->lanza("FacturasProveedorList_FacturasProveedorList_Post", this);
+    
     _depura("END FacturasProveedorList::FacturasProveedorList", 0);
 }
 
