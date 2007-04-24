@@ -1,0 +1,28 @@
+Plugin de  Apertura Rapida a partir de ccodigos de barras
+=========================================================
+
+Versión: 0.9.1
+
+
+Descripcion: Permite abrir cualquier documento identificado con el codigo de barras. Basta con seleccionar la apertura rapida, pasar el documento por el lector y se abrira
+automaticamente el documento correspondiente.
+
+Compilacion
+===========
+Siuiendo el proceso de compilacion normal el plugin se compilará con el resto de bulmages y el plugin se ubicara en bulmages/installbulmages/plugins con el nombre libpluginbarcodeopen.so
+
+
+
+Instalacion
+===========
+La instalacion no requiere de parches de base de datos ni pasos adicionales. Simplemente cambie el parametro CONF_PLUGINS_BULMAFACT para que llame al archivo de plugin y ya tendra
+la funcionalidad instalada.
+
+
+Nota de Conetxia
+================
+Este plugin forma parte del software de Gestión BulmaGés.
+Si desea conocer nuevas versiones del plugin, u otros componentes relacionados con BulmaGés visite: http://bulmages.conetxia.com
+
+Este plugin se suministra como codigo fuente.
+

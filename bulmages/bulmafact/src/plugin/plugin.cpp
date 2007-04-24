@@ -49,15 +49,24 @@ void myplugin::elslot() {
 
 
 void myplugin::inicializa(bulmafact *bges) {
+    QMenu *pPluginMenu;
+    /// Miramos si existe un menu Herramientas
+    pPluginMenu = bges->menuBar()->findChild<QMenu *>("Herramientas");
+
     /// Creamos el men&uacute;.
-    QMenu *pPluginMenu = new QMenu("&Plugin");
+    if (!pPluginMenu) {
+        pPluginMenu = new QMenu("&Herramientas", bges->menuBar());
+        pPluginMenu->setObjectName(QString::fromUtf8("Herramientas"));
+    } // end if
+    /// Creamos el men&uacute;.
+
     QAction *accion = new QAction("&Prueba de plugin", 0);
     accion->setStatusTip("Muestra statustip");
     accion->setWhatsThis("Muestra que es esto");
     connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
     pPluginMenu->addAction(accion);
     /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar()->addMenu(pPluginMenu);
+    bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
 }
 
 
