@@ -743,8 +743,8 @@ void InformeClientes::generarInforme() {
     while (!cur->eof()) {
 	QString gen = generarCliente(cur->valor("idcliente"));
 	if (gen != "") {
-		fitxersortidatxt += "<h1>Cliente: " + cur->valor("nomcliente");
-		fitxersortidatxt += " -- " + cur->valor("cifcliente") + "</h1>\n";
+		fitxersortidatxt += "<para><H1>Cliente: " + cur->valor("nomcliente");
+		fitxersortidatxt += " -- " + cur->valor("cifcliente") + "</H1></para>\n";
 		fitxersortidatxt += gen;
 		fitxersortidatxt += "\n<nextPage/>\n";
 		fitxersortidatxt += "\n<nextFrame/>\n";
