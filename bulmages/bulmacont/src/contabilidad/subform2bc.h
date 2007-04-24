@@ -44,12 +44,8 @@ public:
     void setEditorData(QWidget *, const QModelIndex &index) const;
     void setModelData(QWidget *editor,  QAbstractItemModel *model, const QModelIndex &index) const;
     QWidget *createEditor(QWidget *parent, const QStyleOptionViewItem &option, const QModelIndex &index) const;
-    void setcompany(postgresiface2 *c) {
-        m_companyact = c;
-    };
-    postgresiface2 *companyact() {
-        return m_companyact;
-    };
+    void setcompany(postgresiface2 *c);
+    postgresiface2 *companyact();
     virtual bool eventFilter(QObject *obj, QEvent *event);
 };
 
@@ -72,10 +68,7 @@ public:
     virtual void boton_diario1(int);
     virtual void creaMenu(QMenu *);
     virtual void procesaMenu(QAction *);
-    virtual void setcompany(postgresiface2 *c) {
-        SubForm3::setcompany(c);
-        m_delegate->setcompany(c);
-    };
+    virtual void setcompany(postgresiface2 *c);
 
 public slots:
     virtual void on_mui_list_editFinished(int row, int col, int key);

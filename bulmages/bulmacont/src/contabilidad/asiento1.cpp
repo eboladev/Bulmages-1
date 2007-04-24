@@ -50,7 +50,11 @@ Asiento1::~Asiento1() {
     _depura("END Asiento1::~Asiento1", 0);
 }
 
-/** Metodo que se encarga del borrado completo de un
+/** Metodo que se encarga del borrado completo de un asiento.
+    Devuelve     0: No se ha especificado asiento a borrar.
+                 2: Se ha cancelado la accion.
+                 3: Se ha borrado correctamente.
+                -1: Ha habido algun error.
 */
 int Asiento1::borrar() {
     _depura("Asiento1::borrar", 0);
@@ -72,9 +76,9 @@ int Asiento1::borrar() {
             } // end if
             m_companyact->commit();
             vaciar();
-            break;
+            return 3;
         case QMessageBox::Cancel: /// Abort clicked or Escape pressed.
-            break;
+            return 2;
         } // end switch
     } // end if
     _depura("END Asiento1::borrar", 0);

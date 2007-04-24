@@ -334,6 +334,7 @@ SDBRecord *SubForm3::newSDBRecord() {
         } // end if
 
         camp->setFlags(flags);
+        camp->setTextAlignment(Qt::AlignVCenter);
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
         if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {

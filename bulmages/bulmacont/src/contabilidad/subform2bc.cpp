@@ -56,6 +56,12 @@ SubForm2Bc::~SubForm2Bc() {
 }
 
 
+void SubForm2Bc::setcompany(postgresiface2 *c) {
+    SubForm3::setcompany(c);
+    m_delegate->setcompany(c);
+}
+
+
 void SubForm2Bc::on_mui_list_pressedAsterisk(int row, int col) {
     _depura ("SubForm2Bc::on_mui_list_pressedAsterisk", 0);
     SDBRecord *rec = lineaat(row);
@@ -428,5 +434,15 @@ bool QSubForm2BcDelegate::eventFilter(QObject *obj, QEvent *event) {
     } // end if
     _depura("END QSubForm2BcDelegate::eventFilter()", 0);
     return QItemDelegate::eventFilter(obj, event);
+}
+
+
+void QSubForm2BcDelegate::setcompany(postgresiface2 *c) {
+    m_companyact = c;
+}
+
+
+postgresiface2 *QSubForm2BcDelegate::companyact() {
+    return m_companyact;
 }
 

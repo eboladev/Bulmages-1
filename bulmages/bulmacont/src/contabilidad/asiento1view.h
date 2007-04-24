@@ -31,6 +31,7 @@
 
 #include "ui_asientobase.h"
 
+
 class empresa;
 
 
@@ -54,12 +55,8 @@ public:
     void boton_fin();
     void boton_siguiente();
     void boton_anterior();
-    void boton_filtrar() {
-        _depura("Funcion no implementada", 2);
-    };
-    virtual void muestraasiento(QString) {
-        mensajeInfo("Funcion no implementada.");
-    };
+    void boton_filtrar();
+    virtual void muestraasiento(QString);
     void situarasiento(QString);
     bool esprimerasiento();
     bool esultimoasiento();
@@ -93,13 +90,13 @@ public:
     void asientoabiertop();
     void asientocerradop();
     void iniciar_asiento_nuevo(QString nuevoordenasiento = "");
+    virtual void on_mui_borrar_clicked();
 
 public slots:
     virtual void on_mui_abrirasiento_clicked();
     virtual void on_mui_cerrarasiento_clicked();
     virtual void on_mui_guardarasiento_clicked();
     virtual void on_mui_nuevoasiento_clicked();
-    virtual void on_mui_borrar_clicked();
     virtual void on_mui_duplicar_clicked();
     virtual void on_mui_inteligente_clicked();
     virtual void on_mui_fecha_editingFinished();
