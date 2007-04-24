@@ -67,8 +67,8 @@ protected:
     /// Indica si se usa ordenacion por la base de datos. (Su uso implica que exista en la tabla el campo orden)
     bool m_orden;
 public:
-    int m_prevRow;	/// Indica cual es el ultimo campo (fila) que se ha editado.
-    int m_prevCol;	/// Indica cual es el ultimo campo (columna) que se ha editado.
+    int m_prevRow;  /// Indica cual es el ultimo campo (fila) que se ha editado.
+    int m_prevCol;  /// Indica cual es el ultimo campo (columna) que se ha editado.
 
 protected:
     /// Guarda la configuracion de presentacion del subformulario
@@ -181,7 +181,6 @@ public:
     virtual void procesaMenu(QAction *);
     virtual Fixed sumarCampo(QString);
     bool existsHeader(const QString &);
-
 
 public slots:
     virtual void contextMenuEvent(QContextMenuEvent *);

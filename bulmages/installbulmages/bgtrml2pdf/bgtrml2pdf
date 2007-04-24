@@ -271,7 +271,13 @@ class _rml_canvas(object):
 				flow.drawOn(self.canvas,infos['x'],infos['y'])
 				infos['height']-=h
 			else:
-				raise ValueError, "Not enough space"
+				sys.stderr.write('----- ERROR --------------\n')
+				sys.stderr.write('X: ' + str(infos['x']) + '\n')
+				sys.stderr.write('Y: ' + str(infos['y']) + '\n')
+				sys.stderr.write('Height: ' + str(infos['height']) + '\n')
+				sys.stderr.write('Width: ' + str(infos['width']) + '\n')
+				sys.stderr.write('----- ERROR --------------\n')
+				#raise ValueError, "Not enough space"
 
 	def _line_mode(self, node):
 		ljoin = {'round':1, 'mitered':0, 'bevelled':2}
@@ -650,6 +656,7 @@ if __name__=="__main__":
 	if len(sys.argv)>1:
 		if sys.argv[1]=='--help':
 			bgtrml2pdf_help()
+		sys.stderr.write('Processing file: ' + sys.argv[1] + '\n')
 		if len(sys.argv)==3:
 			parseString(file(sys.argv[1], 'r').read(), sys.argv[2])
 		else:

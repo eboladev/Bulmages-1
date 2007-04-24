@@ -106,7 +106,8 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBint:
         if (m_valorcampo == "")
             return "NULL";
-        return m_conexionbase->sanearCadena(m_valorcampo);
+        m_valorcampo.replace(",", ".");
+        return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBvarchar:
         if (m_valorcampo == "")
             return "NULL";
@@ -118,7 +119,8 @@ QString DBCampo::valorcampoprep(int &error) {
     case DBnumeric:
         if (m_valorcampo == "")
             return "NULL";
-        return m_valorcampo.replace(",", ".");
+        m_valorcampo.replace(",", ".");
+        return "'" + m_conexionbase->sanearCadena(m_valorcampo) + "'";
     case DBboolean:
         if (m_valorcampo == "")
             return "NULL";
@@ -128,7 +130,7 @@ QString DBCampo::valorcampoprep(int &error) {
     } // end switch
     error = -1;
     _depura("Error en la conversion de tipos", 2);
-    _depura("END DBCampo::valorcampoprep", 0);
+    _depura("END DBCampo::valorcampoprep", 10);
     return "";
 }
 
@@ -251,7 +253,7 @@ int DBRecord::DBsave(QString &id) {
                 separadorwhere = " AND ";
             } // end if
             if (!(linea->restrictcampo() & DBCampo::DBNoSave)) {
-                /// Si el campo es requerido y no está entonces salimos sin dar error.
+                /// Si el campo es requerido y no esta entonces salimos sin dar error.
                 /// No es lo mismo que los not null ya que estos si dan error
                 if (linea->restrictcampo() & DBCampo::DBRequired) {
                     if (linea->valorcampo() == "")
@@ -277,7 +279,7 @@ int DBRecord::DBsave(QString &id) {
                         throw -1;
                     separador = ", ";
                 } // end if
-                /// Si es el id entonces lo asignamos pq ya tiene el valor correspondiente.
+                /// Si es el ID entonces lo asignamos porque ya tiene el valor correspondiente.
                 if (m_campoid == linea->nomcampo()) {
                     id = linea->valorcampo();
                 } // end if

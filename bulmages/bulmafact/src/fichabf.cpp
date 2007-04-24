@@ -64,7 +64,7 @@ void FichaBf::calculaypintatotales() {
     delete cur;
 
     if (exists("idproveedor")) {
-        cur = m_companyact->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor="+DBvalue("idproveedor"));
+        cur = m_companyact->cargacursor("SELECT irpfproveedor FROM proveedor WHERE idproveedor = " + DBvalue("idproveedor"));
         if (!cur->eof()) {
             irpf = Fixed(cur->valor("irpfproveedor"));
         } // end if
@@ -78,7 +78,7 @@ void FichaBf::calculaypintatotales() {
         Fixed desc1(linea->DBvalue("descuento" + m_listalineas->tableName()).toAscii().constData());
         Fixed cantpvp = cant * pvpund;
         Fixed base = cantpvp - cantpvp * desc1 / 100;
-        basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] = basesimp[linea->DBvalue("iva"+m_listalineas->tableName())] + base;
+        basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] = basesimp[linea->DBvalue("iva" + m_listalineas->tableName())] + base;
         basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] = basesimpreqeq[linea->DBvalue("reqeq" + m_listalineas->tableName())] + base;
     } // end for
 
@@ -103,7 +103,7 @@ void FichaBf::calculaypintatotales() {
     Fixed totbaseimp("0.00");
     Fixed parbaseimp("0.00");
     for (it = basesimp.begin(); it != basesimp.end(); ++it) {
-        if (porcentt > Fixed("0.00") ) {
+        if (porcentt > Fixed("0.00")) {
             parbaseimp = it.value() - it.value() * porcentt / 100;
         } else {
             parbaseimp = it.value();
@@ -296,7 +296,7 @@ void FichaBf::generaRML() {
             parbaseimp = it.value();
         } // end if
         totbaseimp = totbaseimp + parbaseimp;
-        tr1 += "    <td>" + QApplication::translate("Presupuesto", "Base ") + " " + XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "Base Imponible") + " " + XMLProtect(it.key()) + " %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", parbaseimp.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
@@ -310,7 +310,7 @@ void FichaBf::generaRML() {
             pariva = it.value() * Fixed(it.key()) / 100;
         } // end if
         totiva = totiva + pariva;
-        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.V.A. ") + " " + XMLProtect(it.key()) + " %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.V.A.") + " " + XMLProtect(it.key()) + " %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", pariva.toQString().toAscii().constData()) + "</td>\n";
     } // end for
 
@@ -325,19 +325,19 @@ void FichaBf::generaRML() {
         } // end if
         totreqeq = totreqeq + parreqeq;
         if (parreqeq > 0) {
-            tr1 += "    <td>" + QApplication::translate("Presupuesto", "R.E. ") + " " + XMLProtect(it.key()) + " %</td>\n";
+            tr1 += "    <td>" + QApplication::translate("Presupuesto", "R.E.") + " " + XMLProtect(it.key()) + " %</td>\n";
             tr2 += "    <td>" + l.sprintf(" %s ", parreqeq.toQString().toAscii().constData()) + "</td>\n";
         } // end if
     } // end for
 
     Fixed totirpf = totbaseimp * irpf / 100;
     if (totirpf > 0) {
-        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.R.P.F  (-") + " " + XMLProtect(irpf.toQString()) + ") %</td>\n";
+        tr1 += "    <td>" + QApplication::translate("Presupuesto", "I.R.P.F (-") + " " + XMLProtect(irpf.toQString()) + ") %</td>\n";
         tr2 += "    <td>" + l.sprintf(" %s ", totirpf.toQString().toAscii().constData()) + "</td>\n";
     } // end if
 
-    tr1 += "    <td>" + QApplication::translate("Presupuesto", "Total ") + "</td>\n";
-    tr2 += "    <td>" + l.sprintf(" %s ", (totiva+totbaseimp + totreqeq - totirpf).toQString().toAscii().constData()) + "</td>\n";
+    tr1 += "    <td>" + QApplication::translate("Presupuesto", "Total") + "</td>\n";
+    tr2 += "    <td>" + l.sprintf(" %s ", (totiva + totbaseimp + totreqeq - totirpf).toQString().toAscii().constData()) + "</td>\n";
     fitxersortidatxt += "<tr>" + tr1 + "</tr><tr>" + tr2 + "</tr></blockTable>\n";
     buff.replace("[totales]", fitxersortidatxt);
 
@@ -387,9 +387,9 @@ int FichaBf::sacaWindow() {
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
 */
 int FichaBf::guardar() {
-	_depura("FichaBf::guardar", 0);
-	_depura("END FichaBf::guardar", 0);
-	return DBRecord::guardar();
+    _depura("FichaBf::guardar", 0);
+    _depura("END FichaBf::guardar", 0);
+    return DBRecord::guardar();
 }
 
 
@@ -397,7 +397,7 @@ int FichaBf::guardar() {
     Este metodo puede ser invocado desde la clase ficha o desde la pantalla previa
 */
 int FichaBf::borrar() {
-	_depura("FichaBf::borrar", 0);
-	_depura("END FichaBf::borrar", 0);
-	return DBRecord::borrar();
+    _depura("FichaBf::borrar", 0);
+    _depura("END FichaBf::borrar", 0);
+    return DBRecord::borrar();
 }

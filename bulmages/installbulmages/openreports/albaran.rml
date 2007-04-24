@@ -29,7 +29,7 @@
 		<setFont name="Helvetica" size="12"/>
 		<drawCentredString x="5.5cm" y="20.4cm">[cifcliente]</drawCentredString>
 		<drawCentredString x="8.5cm" y="20.4cm">[idcliente]</drawCentredString>
-		<drawCentredString x="11.5cm" y="20.4cm">[falbaran]</drawCentredString>
+		<drawCentredString x="11.5cm" y="20.4cm">[fechaalbaran]</drawCentredString>
 		<drawCentredString x="14.5cm" y="20.4cm">[numalbaran]</drawCentredString>
 		<drawCentredString x="17.5cm" y="20.4cm">[refalbaran]</drawCentredString>
 		</pageGraphics>
