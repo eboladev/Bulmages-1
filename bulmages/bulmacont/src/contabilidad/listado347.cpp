@@ -40,6 +40,12 @@ Listado347::Listado347(postgresiface2 *DBconnect, QString ejerActual, QWidget *p
    _depura("END Listado347::Listado347", 0);
 }
 
+
+Listado347::~Listado347() {
+    _depura("Listado347::~Listado347", 0);
+}
+
+
 void Listado347::on_m_boton_recalcular_clicked() {
     _depura("Listado347::click_recargar", 0);
 
@@ -68,9 +74,9 @@ void Listado347::on_m_boton_recalcular_clicked() {
         tablaventas->setItem(i, 2, item);
         item = new QTableWidgetItem(recordSet->valor("cp"));
         tablaventas->setItem(i, 3, item);
-	query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
+    query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
         item = new QTableWidgetItem(query);
-	item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+    item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
         tablaventas->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
@@ -94,9 +100,9 @@ void Listado347::on_m_boton_recalcular_clicked() {
         tablacompras->setItem(i, 2, item);
         item = new QTableWidgetItem(recordSet->valor("cp"));
         tablacompras->setItem(i, 3, item);
-	query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
+    query = spanish.toString(recordSet->valor("importe").toDouble(), 'f', 2);
         item = new QTableWidgetItem(query);
-	item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
+    item->setTextAlignment(Qt::AlignRight|Qt::AlignVCenter);
         tablacompras->setItem(i, 4, item);
         ++i;
         recordSet->siguienteregistro();
@@ -116,9 +122,9 @@ void Listado347::on_m_boton_imprimir_clicked() {
     QString codigo, descripcion, cif, importe, cp;
     QFile fichero(confpr->valor(CONF_DIR_USER)+"listado347.txt");
     if (fichero.open(QIODevice::WriteOnly | QIODevice::Text)) {
-	QTextStream listado(&fichero);
+    QTextStream listado(&fichero);
         listado << "LISTADO 347\n";
-        listado << "\nCuenta	 Deudor 				 	    CIF/NIF     CP	Importe\n";
+        listado << "\nCuenta     Deudor                         CIF/NIF     CP  Importe\n";
         listado << "________________________________________________________________________________________\n";
         numventas = tablaventas->rowCount();
         for (i = 0; i < numventas; i++) {
@@ -130,7 +136,7 @@ void Listado347::on_m_boton_imprimir_clicked() {
             listado << qSetFieldWidth(9) << left << codigo.toAscii().constData() << qSetFieldWidth(50) << descripcion.toAscii().constData() << qSetFieldWidth(11) << cif.toAscii().constData() << qSetFieldWidth(6) << cp.toAscii().constData() << qSetFieldWidth(12) << right << importe.toAscii() << endl;
         } // end for
         numcompras = tablacompras->rowCount();
-        listado << "\nCuenta	 Acreedor				 	    CIF/NIF     CP	Importe\n";
+        listado << "\nCuenta     Acreedor                       CIF/NIF     CP  Importe\n";
         listado << "________________________________________________________________________________________\n";
         numcompras = tablacompras->rowCount();
         for (i = 0; i < numcompras; i++) {

@@ -21,17 +21,18 @@
 #ifndef DIARIOVIEW12_H
 #define DIARIOVIEW12_H
 
-
 #include "ui_diariobase.h"
-
 #include "fichabc.h"
 
+
 class empresa;
+
 
 /// Libro diario.
 /** Clase que muestra el libro diario de la empresa entre dos fechas. */
 class DiarioView : public Ficha, public Ui::DiarioBase {
-Q_OBJECT
+    Q_OBJECT
+
 public:
     empresa *m_companyact;
     DiarioView(empresa *, QWidget *parent = 0, int flags = 0);
@@ -49,9 +50,7 @@ public slots:
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n actualizar en el formulario.
     /// Supuestamente debe repintar el formulario con las nuevas opciones de filtrado
     /// que se hayan elegido.
-    virtual void on_mui_actualizar_clicked() {
-        accept();
-    };
+    virtual void on_mui_actualizar_clicked();
     /// Slot que responde a la pulsaci&oacute;n del bot&oacute;n imprimir en el formulario.
     /// Realiza la impresi&oacute;n del listado que tenemos en pantalla.
     virtual void on_mui_imprimir_clicked();
@@ -63,9 +62,7 @@ public slots:
     virtual void boton_guardar();
     /// SLOT que responde a la activaci&oacute;n del bot&oacute;n de configurar listado.
     /// Muestra el configurador de subform3 \ref subform3
-    virtual void on_mui_configurar_clicked() {
-        mui_list->showConfig();
-    };
+    virtual void on_mui_configurar_clicked();
 };
 
 #endif

@@ -67,56 +67,28 @@ public:
     BusquedaCuenta(QWidget *parent = 0);
     ~BusquedaCuenta();
     void setempresa(empresa *comp);
-    QString text() {
-        return mdb_codigocuenta;
-    };
-    virtual void setText(QString val) {
-        setcodigocuenta(val);
-    };
-    virtual QString codigocuenta() {
-        return mui_codigocuenta->text();
-    };
-    virtual QString idcuenta() {
-        return mdb_idcuenta;
-    };
-    virtual QString nomcuenta() {
-        return mdb_nomcuenta;
-    };
-    virtual QString tipocuenta() {
-        return mdb_tipocuenta;
-    };
+    QString text();
+    virtual void setText(QString val);
+    virtual QString codigocuenta();
+    virtual QString idcuenta();
+    virtual QString nomcuenta();
+    virtual QString tipocuenta();
     virtual void setidcuenta(QString val);
     virtual void setcodigocuenta(QString val);
-    void hideNombre() {
-        mui_nomcuenta->hide();
-    };
-    void showNombre() {
-        mui_nomcuenta->show();
-    };
+    void hideNombre();
+    void showNombre();
 
 public slots:
-    virtual void on_mui_buscar_clicked() {
-        s_searchCuenta();
-    };
+    virtual void on_mui_buscar_clicked();
     virtual void s_searchCuenta();
-    virtual void on_mui_codigocuenta_textChanged(const QString &q) {
-        s_codigocuentatextChanged(q);
-    };
+    virtual void on_mui_codigocuenta_textChanged(const QString &q);
     virtual void s_codigocuentatextChanged(const QString &);
-    virtual void on_lostFocus() {
-        s_lostFocus();
-    };
+    virtual void on_lostFocus();
     virtual void s_lostFocus();
-    virtual void on_returnPressed() {
-                              s_returnPressed();
-                          };
+    virtual void on_returnPressed();
     virtual void s_returnPressed();
-    virtual void selectAll() {
-        mui_codigocuenta->selectAll();
-    };
-    virtual void setFocus() {
-        mui_codigocuenta->setFocus();
-    };
+    virtual void selectAll();
+    virtual void setFocus();
 
 signals:
     void valueChanged(QString);

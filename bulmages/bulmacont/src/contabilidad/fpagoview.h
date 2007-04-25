@@ -56,9 +56,7 @@ private slots:
     virtual void on_mui_guardarFPago_clicked();
     virtual void on_mui_crearFPago_clicked();
     virtual void on_mui_borrarFPago_clicked();
-    virtual void on_mui_comboFPago_currentIndexChanged(int i) {
-        cambiacombo(i);
-    }
+    virtual void on_mui_comboFPago_currentIndexChanged(int i);
     virtual bool close();
 };
 

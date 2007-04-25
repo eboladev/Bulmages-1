@@ -42,15 +42,10 @@ class ListConfiguracionSubForm : public SubForm2Bc {
 
 public:
     ListConfiguracionSubForm(QWidget *parent = 0);
-    ~ListConfiguracionSubForm() {}
+    ~ListConfiguracionSubForm();
 
 public slots:
-    virtual void cargar() {
-        _depura("ListConfiguracionSubForm::cargar", 0);
-        cursor2 *cur = companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
-        SubForm3::cargar(cur);
-        delete cur;
-    };
+    virtual void cargar();
 };
 
 

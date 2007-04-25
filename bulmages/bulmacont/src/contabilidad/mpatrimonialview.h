@@ -28,7 +28,7 @@
 #include "funcaux.h"
 
 
-class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase  {
+class mpatrimonialview : public QDialog, public Ui_MPatrimonialBase {
     Q_OBJECT
 
 public:
@@ -43,9 +43,7 @@ public:
     ~mpatrimonialview();
     int inicializa(postgresiface2 *);
     void inicializa1(QString);
-    QString getidmasa() {
-        return idmpatrimonial;
-    }
+    QString getidmasa();
     QString getnommasa();
 
 public slots:

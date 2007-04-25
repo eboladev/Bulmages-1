@@ -84,9 +84,7 @@ public:
     bool characters(const QString &);
     /// Cambia de numero de paso. Recordar que en este caso la importación se hace en dos
     /// pasos.
-    void cambiapaso() {
-        m_paso = 1;
-    };
+    void cambiapaso();
 };
 
 #endif

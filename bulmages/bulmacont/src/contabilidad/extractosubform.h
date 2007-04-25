@@ -32,8 +32,7 @@ class ExtractoSubForm : public SubForm2Bc {
 
 public:
     ExtractoSubForm(QWidget *parent = 0, const char *name = 0);
-    virtual ~ExtractoSubForm() {}
-    ;
+    virtual ~ExtractoSubForm();
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);

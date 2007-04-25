@@ -30,7 +30,11 @@
 #include "funcaux.h"
 
 
-enum {sleep10 = 1001, sleep3 = 1002, acabado = 1003};
+enum {
+    sleep10 = 1001,
+    sleep3 = 1002,
+    acabado = 1003
+};
 
 
 /// Clase base para rellenar todos los formularios oficiales desde el pdf de www.aeat.es
@@ -56,28 +60,26 @@ public:
     Usa la fuente Courier-Bold a 12 puntos. */
 class Modgenps : public QObject {
 public:
-    Modgenps() {}
-    ;
-    ~Modgenps() {}
-    ;
-    void download_form(QWidget *,QString ,QString );
+    Modgenps();
+    ~Modgenps();
+    void download_form(QWidget *, QString, QString);
     Genps_thread *convierte_a_postscript;
     /// Genera 2 cadenas con parte entera y fraccionaria del float.
-    void formatdigits(QString *,QString *,float);
+    void formatdigits(QString *, QString *, float);
     /// Escribe el texto "a la izquierda de" (o sea, alineado a la derecha).
-    void escrizq(QString,int,int);
+    void escrizq(QString, int, int);
     /// Funcion sobrecargada, igual que antes pero primero convierte float en cadena.
-    void escrizq(float,int,int);
+    void escrizq(float, int, int);
     /// Igual que escrizq pero alineado a la izquierda.
-    void escrder(QString,int,int);
+    void escrder(QString, int, int);
     /// Sobrecargada igual que la anterior.
-    void escrder(float,int,int);
+    void escrder(float, int, int);
     ///escribe primera cadena a la izquierda y segunda a la derecha del punto dado.
-    void escrizqder(QString,QString,int,int);
+    void escrizqder(QString, QString, int, int);
     /// Igual, pero primero convierte float en 2 cadenas con formatdigits.
-    void escrizqder(float,int,int);
+    void escrizqder(float, int, int);
     /// Pone una cruz en la casilla dada por sus coordenadas.
-    void marca_casilla(QString,int,int);
+    void marca_casilla(QString, int, int);
     /// Inserta una marca de agua en el documento con la palabra BORRADOR bien grande, que
     /// sea vea!!
     void marcadeagua_borrador();

@@ -34,6 +34,7 @@
 
 class empresa;
 
+
 /// Balance de Sumas y Saldos plano.
 /** \todo Hay que eliminar el ccostes[200] y cambiarlo por un cursor.
     Esta clase muestra un balance de sumas y saldos de la empresa abierta.

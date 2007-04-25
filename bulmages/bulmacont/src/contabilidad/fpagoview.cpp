@@ -51,6 +51,11 @@ fpagoview::~fpagoview() {
 }
 
 
+void fpagoview::on_mui_comboFPago_currentIndexChanged(int i) {
+    cambiacombo(i);
+}
+
+
 /// Pinta la ventana, recarga el combo y si se pasa el par&aacute;metro muestra
 /// el identificador indicado. */
 void fpagoview::pintar(QString idfpago) {

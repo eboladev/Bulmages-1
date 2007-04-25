@@ -37,9 +37,7 @@ private:
 public:
     BusquedaCanal(QWidget *parent = 0);
     ~BusquedaCanal();
-    void setcompany(empresa *comp) {
-        companyact = comp;
-    };
+    void setcompany(empresa *comp);
     virtual void setidcanal(QString idcanal);
     QString idcanal();
 

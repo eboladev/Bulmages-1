@@ -82,6 +82,11 @@ Mod300ps::Mod300ps(QWidget *parent) : QDialog(parent) {
 }
 
 
+Mod300ps::~Mod300ps() {
+    _depura("Mod300ps::~Mod300ps", 0);
+}
+
+
 /// When pressed, it calls to the \ref generaps method.
 void Mod300ps::accept() {
     _depura("Mod300ps::accept", 0);

@@ -38,8 +38,7 @@ class Mod300ps: public QDialog, public Ui_Modelo300Base, public Modgenps {
 
 public:
     Mod300ps(QWidget *parent);
-    ~Mod300ps() {}
-    ;
+    ~Mod300ps();
     void accept();
     void generaps();
     void escribe_cuenta_bancaria(int, int);
@@ -62,7 +61,8 @@ public:
     float ivar4;
     float ivar7;
     float ivar16;
-    float cas34; /// Contenido de la casilla 34 (Resultado).
+    /// Contenido de la casilla 34 (Resultado).
+    float cas34;
 
 private:
     QString *nombresccc;

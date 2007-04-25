@@ -27,18 +27,18 @@
 #include "empresa.h"
 
 
-/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos comunes a todas las pantallas
+/** Esta clase es una plantilla para las ventanas de BulmaCont. Contiene metodos
+    comunes a todas las pantallas.
 */
 class FichaBc : public Ficha, public DBRecord {
     Q_OBJECT
+
 public:
     /// Puntero al subformulario principal de la ventana (si no tiene debe estar a NULL)
     SubForm2Bc *m_listalineas;
-
-    /// Puntero a la clase company para poder trabajar con la base de datos y hacer traspaso de mensajes.
+    /// Puntero a la clase company para poder trabajar con la base de datos y hacer
+    /// traspaso de mensajes.
     empresa *m_companyact;
-
-
     FichaBc(empresa *comp, QWidget *parent = 0, Qt::WFlags f = 0);
     virtual ~FichaBc();
     void setListaLineas(SubForm2Bc * form);

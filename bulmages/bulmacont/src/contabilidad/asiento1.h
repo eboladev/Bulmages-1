@@ -58,40 +58,18 @@ public:
     /// Establece cual es la lista subformulario del presupuesto.
     void setListLinAsiento1(ListLinAsiento1View *a);
     virtual int borrar();
-    virtual void pintaidasiento(QString) {
-        _depura("funcion no implementada pintaidasiento");
-    };
-    virtual void pintadescripcion(QString) {
-        _depura("funcion no implementada pintadescripcion");
-    };
-    virtual void pintafecha(QString) {
-        _depura("funcion no implementada pintafecha");
-    };
-    virtual void pintacomentariosasiento(QString) {
-        _depura("funcion no implementada pintacomentariosasiento", 2);
-    };
-    virtual void pintaordenasiento(QString) {
-        _depura("funcion no implementada pintaordenasiento", 2);
-    };
-    virtual void pintaclase(QString) {
-        _depura("funcion no implementada pintaclase", 2);
-    };
-    virtual void calculaypintatotales(QString) {
-        _depura("funcion no implementada calculaypintatotales", 2);
-    };
+    virtual void pintaidasiento(QString);
+    virtual void pintadescripcion(QString);
+    virtual void pintafecha(QString);
+    virtual void pintacomentariosasiento(QString);
+    virtual void pintaordenasiento(QString);
+    virtual void pintaclase(QString);
+    virtual void calculaypintatotales(QString);
     virtual void pintar();
-    virtual void trataestadoAsiento1() {
-        _depura("funcion no implementada trataestadoAsiento1", 2);
-    };
-    virtual void asiento_cierre() {
-        _depura("Funcion no implementada", 2);
-    };
-    virtual void asiento_apertura() {
-        _depura("Funcion no implementada", 2);
-    };
-    virtual void asiento_regularizacion() {
-        _depura("Funcion no implementada", 2);
-    };
+    virtual void trataestadoAsiento1();
+    virtual void asiento_cierre();
+    virtual void asiento_apertura();
+    virtual void asiento_regularizacion();
 };
 
 #endif

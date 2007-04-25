@@ -40,6 +40,11 @@ miQTreeWidgetItem::miQTreeWidgetItem(QTreeWidgetItem *parent)
 }
 
 
+miQTreeWidgetItem::~miQTreeWidgetItem() {
+    return;
+}
+
+
 void BbloqFecha::inicializa() {
     _depura("BbloqFecha::inicializa", 0);
     miQTreeWidgetItem *itemlevel0;

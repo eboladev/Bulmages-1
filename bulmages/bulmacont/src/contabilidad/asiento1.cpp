@@ -50,6 +50,62 @@ Asiento1::~Asiento1() {
     _depura("END Asiento1::~Asiento1", 0);
 }
 
+
+void Asiento1::pintaidasiento(QString) {
+    _depura("funcion no implementada pintaidasiento");
+}
+
+
+void Asiento1::pintadescripcion(QString) {
+    _depura("funcion no implementada pintadescripcion");
+}
+
+
+void Asiento1::pintafecha(QString) {
+    _depura("funcion no implementada pintafecha");
+}
+
+
+void Asiento1::pintacomentariosasiento(QString) {
+    _depura("funcion no implementada pintacomentariosasiento", 2);
+}
+
+
+void Asiento1::pintaordenasiento(QString) {
+    _depura("funcion no implementada pintaordenasiento", 2);
+}
+
+
+void Asiento1::pintaclase(QString) {
+    _depura("funcion no implementada pintaclase", 2);
+}
+
+
+void Asiento1::calculaypintatotales(QString) {
+    _depura("funcion no implementada calculaypintatotales", 2);
+}
+
+
+void Asiento1::trataestadoAsiento1() {
+    _depura("funcion no implementada trataestadoAsiento1", 2);
+}
+
+
+void Asiento1::asiento_cierre() {
+    _depura("Funcion no implementada", 2);
+}
+
+
+void Asiento1::asiento_apertura() {
+    _depura("Funcion no implementada", 2);
+}
+
+
+void Asiento1::asiento_regularizacion() {
+    _depura("Funcion no implementada", 2);
+}
+
+
 /** Metodo que se encarga del borrado completo de un asiento.
     Devuelve     0: No se ha especificado asiento a borrar.
                  2: Se ha cancelado la accion.

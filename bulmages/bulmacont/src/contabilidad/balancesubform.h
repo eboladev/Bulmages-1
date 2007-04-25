@@ -31,8 +31,7 @@ class BalanceSubForm : public SubForm2Bc {
 
 public:
     BalanceSubForm(QWidget *parent = 0, const char *name = 0);
-    virtual ~BalanceSubForm() {}
-    ;
+    virtual ~BalanceSubForm() {};
 
 public slots:
     virtual void contextMenuEvent (QContextMenuEvent *);

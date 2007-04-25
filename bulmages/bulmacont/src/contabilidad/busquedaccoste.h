@@ -24,10 +24,9 @@
 #include <QComboBox>
 #include "postgresiface2.h"
 
-//#include "empresa.h"
-
 
 class empresa;
+
 
 class BusquedaCCoste : public QComboBox {
     Q_OBJECT
@@ -39,27 +38,12 @@ private:
 public:
     BusquedaCCoste(QWidget *parent = 0, const char *name = 0);
     ~BusquedaCCoste();
-    void setcompany(empresa *comp) {
-        companyact = comp;
-    };
+    void setcompany(empresa *comp);
     virtual void setidc_coste(QString idc_coste);
-    QString idc_coste() {
-        int index= currentIndex();
-        if (index > 0) {
-            return(m_cursorcombo->valor("idc_coste", index - 1));
-        } else {
-            return "";
-        }
-    };
+    QString idc_coste();
 
 public slots:
-    void m_activated(int index) {
-        if (index > 0) {
-            emit(valueChanged(m_cursorcombo->valor("idc_coste", index - 1)));
-        } else {
-            emit(valueChanged(""));
-        }
-    };
+    void m_activated(int index);
 
 signals:
     void valueChanged(QString);

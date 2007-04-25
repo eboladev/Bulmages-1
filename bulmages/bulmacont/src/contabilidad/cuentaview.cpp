@@ -121,6 +121,22 @@ cuentaview::~cuentaview() {
 }
 
 
+void cuentaview::on_mui_borrar_clicked() {
+    borrarCuenta();
+}
+
+
+void cuentaview::on_mui_guardar_clicked() {
+    guardarCuenta();
+}
+
+
+void cuentaview::on_mui_aceptar_clicked() {
+    guardarCuenta();
+    close();
+}
+
+
 /// Esta funci&oacute;n se activa cada vez que se pulsa una tecla sobre la cuenta.
 void cuentaview::cambiapadre(const QString &cadena) {
     _depura("cuentaview::cambiapadre", 0);

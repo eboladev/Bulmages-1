@@ -24,6 +24,7 @@
 #include "funcaux.h"
 #include "empresa.h"
 
+
 BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
         : QComboBox(parent) {
     _depura("BusquedaCCoste::BusquedaCCoste", 0);
@@ -36,6 +37,30 @@ BusquedaCCoste::BusquedaCCoste(QWidget *parent, const char *)
 
 BusquedaCCoste::~BusquedaCCoste() {
     _depura("BusquedaCCoste::~BusquedaCCoste", 0);
+}
+
+
+void BusquedaCCoste::setcompany(empresa *comp) {
+    companyact = comp;
+}
+
+
+QString BusquedaCCoste::idc_coste() {
+    int index= currentIndex();
+    if (index > 0) {
+        return(m_cursorcombo->valor("idc_coste", index - 1));
+    } else {
+        return "";
+    } // end if
+}
+
+
+void BusquedaCCoste::m_activated(int index) {
+    if (index > 0) {
+        emit(valueChanged(m_cursorcombo->valor("idc_coste", index - 1)));
+    } else {
+        emit(valueChanged(""));
+    } // end if
 }
 
 

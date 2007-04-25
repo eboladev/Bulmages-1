@@ -37,12 +37,8 @@ class AmortizacionSubForm : public SubForm2Bc {
 public:
     AmortizacionSubForm(QWidget *parent);
     virtual ~AmortizacionSubForm();
-    virtual void creaMenu(QMenu *) {
-        _depura("AmortizacionSubForm:: CreaMenu, funcion para ser sobreescrita", 0);
-    }
-    virtual void procesaMenu(QAction *) {
-        _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0);
-    }
+    virtual void creaMenu(QMenu *);
+        virtual void procesaMenu(QAction *);
 };
 
 

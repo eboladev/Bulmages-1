@@ -45,6 +45,11 @@ mpatrimonialview::mpatrimonialview(QWidget *parent)
 mpatrimonialview::~mpatrimonialview() {}
 
 
+QString mpatrimonialview::getidmasa() {
+    return idmpatrimonial;
+}
+
+
 /// Esta funci&oacute;n se encarga de hacer las inicializaciones de todo el formulario.
 /** Se llama as&iacute; y no desde el constructor porque as&iacute; la podemos llamar
     desde dentro de la misma clase, etc, etc, etc. */

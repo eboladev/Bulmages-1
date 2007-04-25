@@ -68,6 +68,16 @@ DiarioView::~DiarioView() {
 }
 
 
+void DiarioView::on_mui_actualizar_clicked() {
+    accept();
+}
+
+
+void DiarioView::on_mui_configurar_clicked() {
+    mui_list->showConfig();
+}
+
+
 void DiarioView::inicializa1(QString finicial, QString ffinal, int) {
     _depura("DiarioView::inicializa1", 0);
     QString s1, s2, s3;

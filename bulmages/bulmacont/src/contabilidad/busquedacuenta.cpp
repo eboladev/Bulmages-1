@@ -42,6 +42,76 @@ BusquedaCuenta::~BusquedaCuenta() {
 }
 
 
+QString BusquedaCuenta::text() {
+    return mdb_codigocuenta;
+}
+
+
+void BusquedaCuenta::setText(QString val) {
+    setcodigocuenta(val);
+}
+
+
+QString BusquedaCuenta::codigocuenta() {
+    return mui_codigocuenta->text();
+}
+
+
+QString BusquedaCuenta::idcuenta() {
+    return mdb_idcuenta;
+}
+
+
+QString BusquedaCuenta::nomcuenta() {
+    return mdb_nomcuenta;
+}
+
+
+QString BusquedaCuenta::tipocuenta() {
+    return mdb_tipocuenta;
+}
+
+
+void BusquedaCuenta::hideNombre() {
+    mui_nomcuenta->hide();
+}
+
+
+void BusquedaCuenta::showNombre() {
+    mui_nomcuenta->show();
+}
+
+
+void BusquedaCuenta::on_mui_buscar_clicked() {
+    s_searchCuenta();
+}
+
+
+void BusquedaCuenta::on_mui_codigocuenta_textChanged(const QString &q) {
+    s_codigocuentatextChanged(q);
+}
+
+
+void BusquedaCuenta::on_lostFocus() {
+    s_lostFocus();
+}
+
+
+void BusquedaCuenta::on_returnPressed() {
+    s_returnPressed();
+}
+
+
+void BusquedaCuenta::selectAll() {
+    mui_codigocuenta->selectAll();
+}
+
+
+void BusquedaCuenta::setFocus() {
+    mui_codigocuenta->setFocus();
+}
+
+
 void BusquedaCuenta::setempresa(empresa *comp) {
     _depura("BusquedaCuenta::setempresa", 10);
     m_companyact = comp;

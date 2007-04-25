@@ -49,6 +49,26 @@ CAnualesView::~CAnualesView() {
 }
 
 
+void CAnualesView::setmodoselector() {
+    m_modo = 1;
+}
+
+
+void CAnualesView::setmodoeditor() {
+    m_modo = 0;
+}
+
+
+QString CAnualesView::nomBalance() {
+    return m_nomBalance;
+}
+
+
+QString CAnualesView::idBalance() {
+    return m_idBalance;
+}
+
+
 void CAnualesView::inicializatabla() {
     _depura("CAnualesView::inicializatabla", 0);
 

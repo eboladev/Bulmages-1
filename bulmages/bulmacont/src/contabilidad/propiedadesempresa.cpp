@@ -136,6 +136,12 @@ void propiedadesempresa::on_mui_modificarplan_clicked() {
 
 
 /// ===================================== SUBFORMULARIO ===============================================
+
+ListConfiguracionSubForm::~ListConfiguracionSubForm() {
+    _depura("ListConfiguracionSubForm::~ListConfiguracionSubForm", 0);
+}
+
+
 ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc(parent) {
     _depura("ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
     setDBTableName("configuracion");
@@ -146,5 +152,13 @@ ListConfiguracionSubForm::ListConfiguracionSubForm(QWidget *parent) : SubForm2Bc
     setinsercion(FALSE);
     setDelete(FALSE);
     _depura("END ListConfiguracionSubForm::ListConfiguracionSubForm", 0);
+}
+
+
+void ListConfiguracionSubForm::cargar() {
+    _depura("ListConfiguracionSubForm::cargar", 0);
+    cursor2 *cur = companyact()->cargacursor("SELECT *, nombre AS nombreorig FROM configuracion");
+    SubForm3::cargar(cur);
+    delete cur;
 }
 

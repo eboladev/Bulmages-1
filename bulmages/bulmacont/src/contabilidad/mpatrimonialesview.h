@@ -51,18 +51,10 @@ public:
     ~mpatrimonialesview();
     int inicializa(postgresiface2 *);
     void inicializatabla();
-    void setmodoselector() {
-        modo = 1;
-    }
-    void setmodoeditor() {
-        modo = 0;
-    }
-    QString getnommasa() {
-        return nommasa;
-    }
-    QString getidmasa() {
-        return idmasa;
-    }
+    void setmodoselector();
+    void setmodoeditor();
+    QString getnommasa();
+    QString getidmasa();
 
 public slots:
     virtual void dbtabla(int, int, int, const QPoint &);

@@ -45,11 +45,10 @@
 /// Este archivo contiene la implementaci&oacute;n de la clase extractoview1 que saca el
 /// extracto por pantalla de una o varias cuentas determinadas. Esta clase es una de las
 /// tres principales junto a \ref introapuntes1 y \ref diarioview1.
-extractoview1::extractoview1 ( empresa *emp, QWidget *parent, int )
-        : Ficha ( parent )
+extractoview1::extractoview1(empresa *emp, QWidget *parent, int) : Ficha(parent)
 {
-    _depura ( "extractoview1::extractoview1", 0 );
-    setupUi ( this );
+    _depura("extractoview1::extractoview1", 0);
+    setupUi(this);
     mui_list->setcompany ( emp );
     m_companyact = emp;
 
@@ -79,6 +78,16 @@ extractoview1::~extractoview1()
     delete m_cursorcta;
     m_companyact->sacaWindow ( this );
     _depura ( "END extractoview1::~extractoview1", 0 );
+}
+
+
+void extractoview1::on_mui_actualizar_clicked() {
+    accept();
+}
+
+
+void extractoview1::on_mui_configurar_clicked() {
+    mui_list->showConfig();
 }
 
 

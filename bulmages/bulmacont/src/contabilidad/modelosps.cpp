@@ -36,6 +36,16 @@
 #include "postgresiface2.h"
 
 
+Modgenps::Modgenps() {
+    _depura("Modgenps::Modgenps", 0);
+}
+
+
+Modgenps::~Modgenps() {
+    _depura("Modgenps::Modgenps", 0);
+}
+
+
 void Modgenps::formatdigits(QString *cad1, QString *cad2, float x) {
     _depura("Modgenps::formatdigits", 0);
     QString tempstr;

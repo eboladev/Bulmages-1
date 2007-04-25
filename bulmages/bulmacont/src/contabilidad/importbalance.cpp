@@ -38,6 +38,11 @@ importbalance::importbalance(empresa *emp) : QXmlDefaultHandler() {
 }
 
 
+void importbalance::cambiapaso() {
+    m_paso = 1;
+}
+
+
 /** Dependiendo del paso en que nos encontremos hace la llamada a una funcio u a otra. */
 bool importbalance::startElement(const QString &a, const QString &b, const QString &c, const QXmlAttributes &d) {
     _depura("importbalance::startElement", 0);

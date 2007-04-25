@@ -28,6 +28,7 @@
 
 class empresa;
 
+
 /// Esta clase mantiene la generaci&oacute;n de extractos contables.
 /** A partir de esta panalla se pueden llevar a cabo todos los temas de punteo y
     casaci&oacute;n.
@@ -54,9 +55,7 @@ public:
 
 public slots:
     virtual void on_mui_guardar_clicked();
-    virtual void on_mui_actualizar_clicked() {
-        accept();
-    };
+    virtual void on_mui_actualizar_clicked();
     virtual void on_mui_imprimir_clicked();
     virtual void accept();
     virtual void boton_siguiente();
@@ -69,9 +68,7 @@ public slots:
     virtual void on_mui_casacion_clicked();
     virtual void on_mui_guardarpunteo_clicked();
     virtual void on_mui_cargarpunteos_clicked();
-    virtual void on_mui_configurar_clicked() {
-        mui_list->showConfig();
-    };
+    virtual void on_mui_configurar_clicked();
 };
 
 #endif

@@ -38,12 +38,12 @@ private:
     QString mdb_idamortizacion;
     /// Esta variable contiene el nomamortizacion cuando se devuelve un parametro.
     QString mdb_nomamortizacion;
- 
+
 public:
    amortizacionesview(empresa *, QWidget *);
     ~amortizacionesview();
     void inicializatabla();
-    void editAmortizacion(int );
+    void editAmortizacion(int);
 public slots:
     virtual void on_mui_listado_cellDoubleClicked(int, int);
     virtual void on_mui_crear_clicked();

@@ -52,22 +52,16 @@ public:
     CAnualesView(empresa *, QWidget *parent = 0);
     ~CAnualesView();
     void inicializatabla();
-    /// Establece el funcionamiento de la ventana como selector (afecta sobre el dobleclick en el listado)
-    void setmodoselector() {
-        m_modo = 1;
-    }
-    /// Establece el funcionamiento de la ventana como editor (afecta sobre el dobleclick en el listado)
-    void setmodoeditor() {
-        m_modo = 0;
-    }
+    /// Establece el funcionamiento de la ventana como selector (afecta sobre
+    /// el dobleclick en el listado)
+    void setmodoselector();
+    /// Establece el funcionamiento de la ventana como editor (afecta sobre el
+    /// dobleclick en el listado)
+    void setmodoeditor();
     /// Devuelve el nombre del Balance seleccionado por la clase.
-    QString nomBalance() {
-        return m_nomBalance;
-    }
+    QString nomBalance();
     /// Devuelve el identificador del Balance que se ha seleccionado.
-    QString idBalance() {
-        return m_idBalance;
-    }
+    QString idBalance();
 
 private slots:
     /// SLOT que responde a la pulsaci&oacute;n del bot&oacute;n de imprimir balance.

@@ -37,8 +37,6 @@
 #include "listventanas.h"
 #include "qworkspace2.h"
 #include "listcuentasview1.h"
-
-
 #include "empresabase.h"
 
 
@@ -88,36 +86,16 @@ public:
     empresa();
     virtual ~empresa();
     /// Devuelve un puntero a la clase de la base de datos.
-    postgresiface2 *bdempresa() {
-        return (this);
-    }
-    BalanceView *balanceempresa() {
-        return balance;
-    }
-    extractoview1 *extractoempresa() {
-        return extracto;
-    }
-    DiarioView *diarioempresa() {
-        return diario;
-    }
-    BalanceTreeView *balance1empresa() {
-        return balance1;
-    }
-    Asiento1View *intapuntsempresa() {
-        return introapunts2;
-    }
-    Asiento1View *intapuntsempresa2() {
-        return introapunts2;
-    }
-    int numdigitosempresa() {
-        return numdigitos;
-    }
-    QString nomuserempresa() {
-        return nombre;
-    }
-    QString nombreempresa() {
-        return nombre;
-    }
+    postgresiface2 *bdempresa();
+    BalanceView *balanceempresa();
+    extractoview1 *extractoempresa();
+    DiarioView *diarioempresa();
+    BalanceTreeView *balance1empresa();
+    Asiento1View *intapuntsempresa();
+    Asiento1View *intapuntsempresa2();
+    int numdigitosempresa();
+    QString nomuserempresa();
+    QString nombreempresa();
     int muestracuentas();
     int nuevacuenta();
     int muestraapuntes1();
@@ -159,7 +137,8 @@ public:
     selectccosteview *getselccostes();
     selectcanalview *getselcanales();
     void recalculasaldos();
-    int cobPag(); /// Gesti&oacute;n de cobros y pagos.
+    /// Gesti&oacute;n de cobros y pagos.
+    int cobPag();
     virtual void s_asiento1();
     cuentaview *newcuentaview();
 };

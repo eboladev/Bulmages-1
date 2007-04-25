@@ -102,6 +102,57 @@ empresa::~empresa() {
     _depura("END empresa::~empresa", 0);
 }
 
+
+postgresiface2 *empresa::bdempresa() {
+    return (this);
+}
+
+
+BalanceView *empresa::balanceempresa() {
+    return balance;
+}
+
+
+extractoview1 *empresa::extractoempresa() {
+    return extracto;
+}
+
+
+DiarioView *empresa::diarioempresa() {
+    return diario;
+}
+
+
+BalanceTreeView *empresa::balance1empresa() {
+    return balance1;
+}
+
+
+Asiento1View *empresa::intapuntsempresa() {
+    return introapunts2;
+}
+
+
+Asiento1View *empresa::intapuntsempresa2() {
+    return introapunts2;
+}
+
+
+int empresa::numdigitosempresa() {
+    return numdigitos;
+}
+
+
+QString empresa::nomuserempresa() {
+    return nombre;
+}
+
+
+QString empresa::nombreempresa() {
+    return nombre;
+}
+
+
 /// Inicializa la clase con el nombre de la base de datos y con el workspace.
 int empresa::inicializa1() {
     _depura("empresa::inicializa1", 0);

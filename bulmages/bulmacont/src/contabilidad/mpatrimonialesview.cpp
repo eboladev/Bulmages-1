@@ -31,7 +31,29 @@ mpatrimonialesview::mpatrimonialesview(QWidget *parent, Qt::WFlags fl)
 }
 
 
-mpatrimonialesview::~mpatrimonialesview() {}
+mpatrimonialesview::~mpatrimonialesview() {
+    _depura("mpatrimonialesview::~mpatrimonialesview", 0);
+}
+
+
+void mpatrimonialesview::setmodoselector() {
+    modo = 1;
+}
+
+
+void mpatrimonialesview::setmodoeditor() {
+    modo = 0;
+}
+
+
+QString mpatrimonialesview::getnommasa() {
+    return nommasa;
+}
+
+
+QString mpatrimonialesview::getidmasa() {
+    return idmasa;
+}
 
 
 /// Esta funci&oacute;n se encarga de hacer las inicializaciones de todo el formulario.

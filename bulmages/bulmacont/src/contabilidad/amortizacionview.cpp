@@ -42,6 +42,16 @@ AmortizacionSubForm::~AmortizacionSubForm() {
 }
 
 
+void AmortizacionSubForm::creaMenu(QMenu *) {
+    _depura("AmortizacionSubForm:: CreaMenu, funcion para ser sobreescrita", 0);
+}
+
+
+void AmortizacionSubForm::procesaMenu(QAction *) {
+    _depura("AmortizacionSubForm:: procesaMenu, funcion para ser sobreescrita", 0);
+}
+
+
 /// Constructor de la clase
 AmortizacionView::AmortizacionView(empresa *emp, QWidget *parent)
         : Ficha(parent), DBRecord(emp) {
@@ -353,7 +363,7 @@ void AmortizacionView::contextMenuRequested(int row, int col, const QPoint &poin
         menupopup->addSeparator();
         QAction *opt5 = menupopup->addAction(tr("Insertar cuota"));
         QAction *opt6 = menupopup->addAction(tr("Borrar cuota"));
-     
+
         if (mui_listcuotas->text(row, COL_IDASIENTO) == "") {
             opt1->setEnabled(TRUE);
             opt2->setEnabled(TRUE);
@@ -369,9 +379,9 @@ void AmortizacionView::contextMenuRequested(int row, int col, const QPoint &poin
             opt5->setEnabled(FALSE);
             opt6->setEnabled(FALSE);
         } // end if
-     
+
         QAction *opcion = menupopup->exec(poin);
-     
+
         delete menupopup;
         /// Inserci&oacute;n de una nueva cuota.
         if (opcion == opt5) {

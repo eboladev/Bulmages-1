@@ -40,6 +40,11 @@ BusquedaCanal::~BusquedaCanal() {
 }
 
 
+void BusquedaCanal::setcompany(empresa *comp) {
+    companyact = comp;
+}
+
+
 void BusquedaCanal::setidcanal(QString idcanal) {
     _depura("BusquedaCanal::setidcanal", 0, idcanal);
     if (m_cursorcombo != NULL) {

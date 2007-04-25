@@ -23,6 +23,11 @@
 #include "extractosubform.h"
 
 
+ExtractoSubForm::~ExtractoSubForm() {
+    _depura("ExtractoSubForm::~ExtractoSubForm", 0);
+}
+
+
 ExtractoSubForm::ExtractoSubForm(QWidget *parent, const char *) : SubForm2Bc(parent) {
     _depura("ExtractoSubForm::ExtractoSubForm", 0);
     setDBTableName("apunte");

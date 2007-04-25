@@ -94,6 +94,243 @@ Bulmacont::~Bulmacont() {
 }
 
 
+empresa *Bulmacont::empresaactual() {
+    return m_empresaactual;
+}
+
+
+/// Exporta menues.
+QMenu *Bulmacont::mui_MenuHerramientas() {
+    return menuHerramientas;
+}
+
+
+QMenu *Bulmacont::mui_MenuVer() {
+    return menuVer;
+}
+
+
+void Bulmacont::s_asiento1() {
+    m_empresaactual->s_asiento1();
+}
+
+
+void Bulmacont::on_actionTipos_de_IVA_triggered() {
+    m_empresaactual->tiposIVA();
+}
+
+
+void Bulmacont::on_actionFormas_de_Pago_triggered() {
+    m_empresaactual->fPago();
+}
+
+
+void Bulmacont::on_actionAsientos_triggered() {
+    m_empresaactual->muestraasientos();
+}
+
+
+void Bulmacont::on_actionConfiguracion_triggered() {
+    m_empresaactual->propiedadempresa();
+}
+
+
+void Bulmacont::on_actionApuntes_Contables_triggered() {
+    m_empresaactual->muestraapuntes1();
+}
+
+
+void Bulmacont::on_actionLibro_Mayor_triggered() {
+    m_empresaactual->libromayor();
+}
+
+
+void Bulmacont::on_actionLibro_Diario_triggered() {
+    m_empresaactual->librodiario();
+}
+
+
+void Bulmacont::on_actionPlan_Contable_triggered() {
+    m_empresaactual->muestracuentas();
+}
+
+
+void Bulmacont::on_actionBalance_de_Cuentas_triggered() {
+    m_empresaactual->librobalance();
+}
+
+
+void Bulmacont::on_actionBalance_Jer_rquico_de_Sumas_y_Saldos_triggered() {
+    m_empresaactual->librobalancetree();
+}
+
+
+void Bulmacont::on_actionImprimir_triggered() {
+    m_empresaactual->boton_imprimir();
+}
+
+
+void Bulmacont::on_actionGuardar_triggered() {
+    m_empresaactual->boton_guardar();
+}
+
+
+void Bulmacont::on_actionActualizar_triggered() {
+    m_empresaactual->boton_reload();
+}
+
+
+void Bulmacont::on_actionFiltrar_triggered() {
+    m_empresaactual->Filtro();
+}
+
+
+void Bulmacont::on_actionRecalcular_Saldos_Iniciales_triggered() {
+    // empresaactual->recalculasaldos();
+}
+
+
+void Bulmacont::on_actionSustituir_Cuentas_triggered() {
+    m_empresaactual->reemplazacuentaenasientos();
+}
+
+
+void Bulmacont::on_actionBloquear_Fechas_triggered() {
+    m_empresaactual->bloqueoFechas();
+}
+
+
+void Bulmacont::on_actionCanal_por_Defecto_triggered() {
+    m_empresaactual->canaldefecto();
+}
+
+
+void Bulmacont::on_actionCentros_de_Coste_triggered() {
+    m_empresaactual->ccostes();
+}
+
+
+void Bulmacont::on_actionCanales_triggered() {
+    m_empresaactual->canales();
+}
+
+
+void Bulmacont::on_actionCentro_de_Coste_por_Defecto_triggered() {
+    m_empresaactual->centrocostedefecto();
+}
+
+
+void Bulmacont::on_actionOrdenar_Ventanas_triggered() {
+    m_pWorkspace->tile();
+}
+
+
+void Bulmacont::on_actionOrganizaci_n_en_Cascada_triggered() {
+    m_pWorkspace->cascade();
+}
+
+
+void Bulmacont::on_actionAbrir_Asientos_triggered() {
+    m_empresaactual->Abrirasientos();
+}
+
+
+void Bulmacont::on_actionOrdenar_Asientos_triggered() {
+    m_empresaactual->Ordenarasientos();
+}
+
+
+void Bulmacont::on_actionAsiento_de_Apertura_triggered() {
+    m_empresaactual->abreempresa();
+}
+
+
+void Bulmacont::on_actionAsiento_de_Regularizacion_triggered() {
+    m_empresaactual->regularizaempresa();
+}
+
+
+void Bulmacont::on_actionAsiento_de_Cierre_triggered() {
+    m_empresaactual->cierraempresa();
+}
+
+
+void Bulmacont::on_actionCuentas_Anuales_triggered() {
+    m_empresaactual->compbalance();
+}
+
+
+void Bulmacont::on_actionMasas_Patrimoniales_triggered() {
+    m_empresaactual->mpatrimoniales();
+}
+
+
+void Bulmacont::on_actionRegistro_de_IVA_triggered() {
+    m_empresaactual->registroiva();
+}
+
+
+void Bulmacont::on_actionListado_347_triggered() {
+    m_empresaactual->listado347();
+}
+
+
+void Bulmacont::on_actionCobros_y_Pagos_triggered() {
+    m_empresaactual->cobPag();
+}
+
+
+void Bulmacont::on_actionAmortizaciones_triggered() {
+    m_empresaactual->amortizaciones();
+}
+
+
+void Bulmacont::on_actionPantalla_Completa_triggered() {
+    if (isFullScreen()) {
+        showNormal();
+    } else {
+        showFullScreen();
+    } // end if
+}
+
+
+void Bulmacont::on_actionSiguiente_triggered() {
+    m_empresaactual->boton_siguiente();
+}
+
+
+void Bulmacont::on_actionAnterior_triggered() {
+    m_empresaactual->boton_anterior();
+}
+
+
+void Bulmacont::on_actionInicio_triggered() {
+    m_empresaactual->boton_primero();
+}
+
+
+void Bulmacont::on_actionFin_triggered() {
+    m_empresaactual->boton_ultimo();
+}
+
+
+void Bulmacont::on_actionIndexador_triggered() {
+    if (actionIndexador->isChecked() == TRUE) {
+        m_empresaactual->s_indexadorCambiaEstado(TRUE);
+    } else {
+        m_empresaactual->s_indexadorCambiaEstado(FALSE);
+    } // end if
+}
+
+
+void Bulmacont::setActionIndexador(bool visible) {
+    if (visible == TRUE) {
+        actionIndexador->setChecked(TRUE);
+    } else {
+        actionIndexador->setChecked(FALSE);
+    } // end if
+}
+
 
 void Bulmacont::initStatusBar() {
     _depura("Bulmacont::initStatusBar", 0);

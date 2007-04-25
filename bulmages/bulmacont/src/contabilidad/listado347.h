@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2003 by Josep Burcion	                           *
+ *   Copyright (C) 2003 by Josep Burcion                               *
  *   josep@burcion.com                                                     *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -32,8 +32,8 @@ private:
     postgresiface2 * DBConn;
 
 public:
-    Listado347(postgresiface2 *DBConn=0, QString ejerActual ="", QWidget *parent=0, Qt::WFlags f=Qt::Window);
-    ~Listado347() {}
+    Listado347(postgresiface2 *DBConn = 0, QString ejerActual = "", QWidget *parent = 0, Qt::WFlags f = Qt::Window);
+    ~Listado347();
 
 private slots:
     void on_m_boton_recalcular_clicked();

@@ -34,9 +34,7 @@ class miQTreeWidgetItem : public QTreeWidgetItem {
 public:
     miQTreeWidgetItem(QTreeWidget *parent);
     miQTreeWidgetItem(QTreeWidgetItem *parent);
-    ~miQTreeWidgetItem() {
-        return;
-    }
+    ~miQTreeWidgetItem();
     QString ej;
     QString per;
 };
