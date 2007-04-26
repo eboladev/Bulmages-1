@@ -25,6 +25,8 @@
 #include <QTextStream>
 #include <QMenu>
 #include <QShortcut>
+#include <QLocale>
+#include <QRegExp>
 
 #include "subform3.h"
 
@@ -215,14 +217,12 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     mui_listcolumnas->setShowGrid(FALSE);
     mui_listcolumnas->setColumnWidth(0, 25);
     mui_listcolumnas->setColumnWidth(1, 100);
-    mui_listcolumnas->hideColumn(1);
     mui_listcolumnas->setColumnWidth(2, 175);
-    mui_listcolumnas->setColumnWidth(3, 100);
-    mui_listcolumnas->hideColumn(3);
+    mui_listcolumnas->setColumnWidth(3, 0);
     mui_listcolumnas->setSelectionBehavior(QAbstractItemView::SelectRows);
     mui_listcolumnas->verticalHeader()->hide();
     mui_listcolumnas->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    mui_listcolumnas->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
+    mui_listcolumnas->horizontalHeader()->setResizeMode(0, QHeaderView::Stretch);
 
     /// Siempre que arrancamos mostramos la pagina 0.
     mui_paginaact->setValue(1);
@@ -231,9 +231,6 @@ SubForm3::SubForm3(QWidget *parent) : QWidget(parent) {
     /// Limpiamos la lista.
     m_lista.clear();
     m_listaborrar.clear();
-
-    m_prevCol = -1;
-    m_prevRow = -1;
 
     setDelete(TRUE);
     _depura("END SubForm3::SubForm3", 0);
@@ -296,9 +293,9 @@ bool SubForm3::existsHeader(const QString &head) {
     for (int i = 0; i < m_lcabecera.size(); ++i) {
         linea = m_lcabecera.at(i);
         if (linea->nomcampo() == head) {
-         _depura("END SubForm3::existsHeader", 0);
-            return TRUE;
-    } // end if
+   		 _depura("END SubForm3::existsHeader", 0);
+        	return TRUE;
+	} // end if
     } // end for
     _depura("END SubForm3::existsHeader", 0);
     return FALSE;
@@ -334,7 +331,6 @@ SDBRecord *SubForm3::newSDBRecord() {
         } // end if
 
         camp->setFlags(flags);
-        camp->setTextAlignment(Qt::AlignVCenter);
 
         /// Tratamos el tema de la alineacion dependiendo del tipo.
         if (head->tipo() == DBCampo::DBint || head->tipo() == DBCampo::DBnumeric || head->tipo() == DBCampo::DBdate) {
@@ -375,7 +371,7 @@ void SubForm3::nuevoRegistro() {
 }
 
 
-/// Pinta los titulares en la tabla.
+/// Pinta los plantillaes en la tabla.
 void SubForm3::pintaCabeceras() {
     _depura("SubForm3::pintaCabeceras", 0);
     QStringList headers;
@@ -569,14 +565,13 @@ void SubForm3::cargar(cursor2 *cur) {
     SDBCampo *camp;
     for (int i = 0; i < m_lista.size(); ++i) {
         reg = m_lista.at(i);
-        QRegExp rx("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
+        QRegExp patronFecha("^.*00:00:00.*$"); /// Para emparejar los valores fechas.
         for (int j = 0; j < reg->lista()->size(); ++j) {
            camp = (SDBCampo *) reg->lista()->at(j);
            /// Si es una fecha lo truncamos a 10 caracteres para presentar solo la fecha.
-           if (rx.exactMatch(camp->valorcampo())) {
+           if (patronFecha.exactMatch(camp->valorcampo())) {
                 camp->set(camp->valorcampo().left(10));
-           } // end if
-           camp->setTextAlignment(Qt::AlignVCenter);
+	   } // end if
            mui_list->setItem(i, j, camp);
         } // end for
     } // end for
@@ -650,6 +645,7 @@ bool SubForm3::campoCompleto(int row) {
             return FALSE;
         } // end if
 
+
     } // end for
     return TRUE;
     _depura("END SubForm3::campoCompleto", 0);
@@ -720,14 +716,10 @@ int SubForm3::addSHeader(QString nom, DBCampo::dbtype typ, int res, int opt, QSt
     } // end if
 
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 0, it);
-
     it = new QTableWidgetItem2(nom);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 1, it);
-
     it = new QTableWidgetItem2(nomp);
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 2, it);
-    it->setToolTip(tr("Campo") + ": '" + nom + "'");
-
     it = new QTableWidgetItem2("");
     mui_listcolumnas->setItem(mui_listcolumnas->rowCount() - 1, 3, it);
 
@@ -1045,25 +1037,26 @@ void SubForm3::on_mui_list_pressedMinus(int, int) {
 
 
 QString SubForm3::imprimir() {
-    _depura("SubForm3::imprimir", 0);
-    QString fitxersortidatxt = "<tr>\n";
-    for (int i = 0; i < mui_listcolumnas->rowCount(); ++i) {
-        if (mui_listcolumnas->item(i, 0)->checkState() == Qt::Checked) {
-            fitxersortidatxt += "    <td>" + XMLProtect(mui_listcolumnas->item(i, 2)->text()) + "</td>\n";
-        } // end if
-    } // end for
-    fitxersortidatxt += "</tr>\n";
-    for (int i = 0; i < mui_list->rowCount(); ++i) {
-        fitxersortidatxt += "<tr>\n";
-        for (int j = 0; j < mui_listcolumnas->rowCount(); ++j) {
-            if (mui_listcolumnas->item(j, 0)->checkState() == Qt::Checked) {
-                fitxersortidatxt += "    <td>" + XMLProtect(mui_list->item(i, j)->text()) + "</td>\n";
-            } // end if
-        } // end for
-        fitxersortidatxt += "</tr>\n";
-    } // end for
-    _depura("END SubForm3::imprimir", 0);
-    return fitxersortidatxt;
+	_depura("SubForm3::imprimir", 0);
+	QString fitxersortidarml = "<tr>\n";
+	for (int h = 0; h < mui_listcolumnas->rowCount(); ++h) {
+		if (mui_listcolumnas->item(h, 0)->checkState() == Qt::Checked) {
+		fitxersortidarml += "    <td>" + XMLProtect(mui_listcolumnas->item(h, 2)->text()) + "</td>\n";
+		} // end if
+	} // end for
+	fitxersortidarml += "</tr>\n";
+    	for (int i = 0; i < mui_list->rowCount(); ++i) {
+		fitxersortidarml += "<tr>\n";
+		for (int j = 0; j < mui_listcolumnas->rowCount(); ++j) {
+			if (mui_listcolumnas->item(j, 0)->checkState() == Qt::Checked) {
+				QString restante;
+				fitxersortidarml += "    <td>" + XMLProtect(mui_list->item(i, j)->text()) + "</td>\n";	
+			} // end if
+		} // end for
+		fitxersortidarml += "</tr>\n";
+	} // end for
+	_depura("END SubForm3::imprimir", 0);
+	return fitxersortidarml;
 }
 
 
@@ -1156,11 +1149,11 @@ void SubForm3::on_mui_paganterior_clicked() {
 }
 
 
-void SubForm3::imprimirPDF(const QString &titular) {
+void SubForm3::imprimirPDF(const QString &plantilla) {
     _depura("SubForm3::imprimir", 0);
 
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "listado.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "listado.rml";
+    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + plantilla.toAscii() + ".rml";
+    QString archivod = confpr->valor(CONF_DIR_USER) + plantilla.toAscii() + ".rml";
     QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
     /// Copiamos el archivo.
 #ifdef WINDOWS
@@ -1192,13 +1185,12 @@ void SubForm3::imprimirPDF(const QString &titular) {
     file.close();
     QString fitxersortidatxt;
 
-    /// Linea de totales del presupuesto
     fitxersortidatxt = "<blockTable style=\"tabla\" repeatRows=\"1\">";
     fitxersortidatxt += imprimir();
     fitxersortidatxt += "</blockTable>";
 
     buff.replace("[story]", fitxersortidatxt);
-    buff.replace("[titulo]", titular);
+    //buff.replace("[titulo]", plantilla);
 
     if (file.open(QIODevice::WriteOnly)) {
 
@@ -1208,7 +1200,7 @@ void SubForm3::imprimirPDF(const QString &titular) {
         file.close();
     } // end if
 
-    invocaPDF("listado");
+    invocaPDF(plantilla.toAscii());
     _depura("END SubForm3::imprimir", 0);
 }
 
@@ -1295,11 +1287,6 @@ void SubForm3::on_mui_list_itemChanged(QTableWidgetItem *) {
 
 void SubForm3::on_mui_list_currentCellChanged(int, int, int row, int col) {
     _depura("SubForm3::on_mui_list_currentCellChanged", 0);
-
-    /// Establecemos las variables de clase para que los plugins puedan acceder a las coordenadas del elemento.
-    m_prevCol = col;
-    m_prevRow = row;
-
     if (row >= 0 && col >= 0) {
         on_mui_list_editFinished(row, col, 0);
     } // end if

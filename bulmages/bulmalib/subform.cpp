@@ -21,6 +21,8 @@
 #include <QKeyEvent>
 #include <QEvent>
 #include <QFile>
+#include <QLocale>
+#include <QRegExp>
 
 #include "subform.h"
 
@@ -100,6 +102,7 @@ void SDBCampo::refresh() {
 
 int SDBCampo::set(QString val) {
     _depura("SDBCampo::set", 0, m_nomcampo + " = " + val);
+    QRegExp importe("^\\d*\\.\\d{2}$"); /// Para emparejar los valores numericos con decimales
     if (tipo() == DBCampo::DBboolean) {
         if (restrictcampo() == SHeader::DBNoWrite) {
             setFlags(this->flags() & (~Qt::ItemIsUserCheckable));
@@ -109,9 +112,13 @@ int SDBCampo::set(QString val) {
         } else {
             setCheckState(Qt::Unchecked);
         } // end if
-    } else if (tipo() == DBCampo::DBnumeric) {
-        /// \TODO Deberian usarse las locales para determinar el formato de los numeros con decimales.
-        setText(val.replace(".",","));
+    } else if (tipo() == DBCampo::DBnumeric && importe.exactMatch(val)) {
+        	//setText(val.replace(".",","));
+    	QLocale::setDefault(QLocale(QLocale::Spanish, QLocale::Spain));
+    	QLocale spanish;
+	setText(spanish.toString(val.toDouble(), 'f', 2));
+    } else if (tipo() == DBCampo::DBdate) {
+	setText(val.left(10));
     } else {
         setText(val);
     } // end if

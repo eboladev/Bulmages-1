@@ -23,6 +23,7 @@
 
 #include <QFile>
 #include <QTextStream>
+#include <QLocale>
 
 
 bool DBCampo::cambiado() {

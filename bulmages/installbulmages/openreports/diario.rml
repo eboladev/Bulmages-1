@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!DOCTYPE document SYSTEM "rml_1_0.dtd">
+
 <document>
-<template pageSize="(29.7cm, 21cm)" leftMargin="0cm" rightMargin="0cm" topMargin="2.0cm" bottomMargin="2.0cm" title="Libro Diario" author="Tomeu Borras" allowSplitting="20">
+
+<template allowSplitting="20">
 	<pageTemplate id="main">
 		<pageGraphics>
 		<!-- EL LOGO DE CABECERA -->
-		<image x="0.5cm" y="19cm" width="10cm" file="logo.jpg"/>
-
-		<!-- EL DRAFT -->
-			<!--setFont name="Helvetica" size="100"/>
-			<fill color="(1,0.9,0.9)"/>
-			<stroke color="(1,0.9,0.9)"/>
-			<translate dx="15cm" dy="-5.5cm"/>
-			<rotate degrees="50"/>
-			<drawString x="23mm" y="15.7cm">BORRADOR</drawString>
-			<lineMode width="4mm"/>
-			<rect round="1cm" x="18mm" y="15cm" width="21cm" height="4cm" fill="no" stroke="yes"/>	
-		<rotate degrees="-50"/>
-		<translate dx="-15cm" dy="5.5cm"/-->
-
-		<!-- EL PIE DE PAGINA -->
-		<setFont name="Helvetica" size="8"/>		
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
-		<drawString x="7.3cm" y="0.5cm">www.iglues.org -- info@iglues.org --</drawString>
-
-		<fill color="(0,0,0)"/>	
-		<stroke color="(0,0,0)"/>
+		<image x="1.5cm" y="26cm" width="5cm" file="logo.jpg"/>
+		<setFont name="Helvetica-Bold" size="12"/>
+		<drawString x="1.7cm" y="25cm">Nombre fiscal de tu Empresa</drawString>
 		<setFont name="Helvetica" size="22"/>
-		<drawString x="18cm" y="19.5cm">Listado de clientes</drawString>
+		<drawString x="15.3cm" y="25cm">Libro Diario</drawString>
+		<!-- EL PIE DE PAGINA -->
+		<setFont name="Helvetica" size="8"/>
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
+		<drawString x="10.5cm" y="0.6cm"><pageNumber/></drawString>
+		<fill color="(0,0,0)"/>	
+		<stroke color="(0,0,0)"/>
 		</pageGraphics>
-	<frame id="column" x1="1cm" y1="1cm" width="27cm" height="17.5cm"/>
+		<frame id="frame" x1="1.5cm" y1="1.2cm" width="18cm" height="23cm"/>
+		<condPageBreak height="2cm"/>
 	</pageTemplate>
 </template>
+
 <stylesheet>
 	<blockTableStyle id="tabla">
-		<blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
+		<!-- SE PONE TODA LA TABLA JUSTIFICADA A LA IZDA. -->
+		<blockAlignment value="LEFT" start="0,0" stop="-1,-1"/>
+		<!-- LA PRIMERA CON CONTENIDOS CENTRADOS -->
 		<blockAlignment value="CENTER" start="0,0" stop="-1,0"/>
-		<blockBackground colorName="(0.7,0.7,0.7)" start="0,0" stop="-1,0"/>
-		<blockTextColor colorName="(0,0,0)" start="0,0" stop="-1,0"/>
-		<lineStyle kind="LINEBEFORE" colorName="(0.5,0.5,0.5)"  start="0,0" stop="-1,-1"/>
-		<lineStyle kind="LINEBELOW" colorName="(0,0,0)"  start="0,0" stop="-1,0"/>
-		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,-1"/>
-		<blockFont name="Helvetica-Bold" size="10" start="0,0" stop="-1,0"/>
-		<blockFont name="Helvetica" size="10" start="0,1" stop="-1,-1"/>
-		<blockFont name="Helvetica" size="8" start="1,1" stop="1,-1"/>
-		<blockValign value="TOP" start="0,0" stop="-1,-1"/>
+		<!-- EL DEBE Y EL HABER (LAS 2 ULTIMAS COLS. DESDE FILA 2) ALINEADOS A LA DCHA. -->
+		<blockAlignment value="RIGHT" start="-2,1" stop="-1,-1"/>
+		<!-- COLOR DE FONDO Y DE LETRA PARA LOS TITULOS-->
+		<blockBackground colorName="lightgrey" start="0,0" stop="-1,0"/>
+		<blockTextColor colorName="black" start="0,0" stop="-1,0"/>
+		<!-- LINEA BAJO CADA UNA DE LAS FILAS, DESDE LA SEGUNDA -->
+		<lineStyle kind="LINEBELOW" colorName="lightgrey" thickness="0" start="0,1" stop="-1,-1"/>
+		<!-- BORDE DE LA TABLA -->
+		<lineStyle kind="OUTLINE" colorName="black"  start="0,0" stop="-1,0"/>
+		<!-- LETRA PARA LA FILA DE CABECERA-->
+		<blockFont name="Helvetica-Bold" size="8" start="0,0" stop="-1,0"/>
+		<!-- LETRA PARA LOS CONTENIDOS DE LA TABLA -->
+		<blockFont name="Helvetica" size="6" start="0,1" stop="-1,-1"/>
+		<!-- JUSTIFICACION VERTICAL DE LAS CELDAS -->
+		<blockValign value="BOTTOM" start="0,1" stop="-1,-1"/>
 	</blockTableStyle>
 </stylesheet>
 
 <story>
 	[story]
-	<spacer length="5mm" width="1mm"/>		
 </story>
+
 </document>
