@@ -192,7 +192,7 @@ void DiarioView::presentar() {
 /// Boton de impresion del diario.
 void DiarioView::on_mui_imprimir_clicked() {
     _depura("DiarioView::on_mui_imprimir_clicked", 0);
-    mui_list->imprimirPDF("Libro Diario");
+    mui_list->imprimirPDF("diario");
     _depura("END DiarioView::on_mui_imprimir_clicked", 0);
 }
 
