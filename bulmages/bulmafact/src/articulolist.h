@@ -49,7 +49,7 @@ public:
 */
 /// \TODO: Deberia crearse la clase Listado y hacer que esta clase derive de Listado en lugar
 /// derivar de Ficha.
-class ArticuloList : public Ficha, private Ui_ArticuloListBase, public pgimportfiles {
+class ArticuloList : public Ficha, public Ui_ArticuloListBase, public pgimportfiles {
     Q_OBJECT
 
 private:
@@ -67,8 +67,10 @@ private:
 public:
     ArticuloList(company *, QWidget *parent = 0, Qt::WFlags flag = 0, edmode editmodo = EditMode);
     virtual ~ArticuloList();
+    company *getcompany() {
+        return m_companyact;
+    };
     QString formaQuery();
-    QString detalleArticulos();
     QString idArticle() {
         return mdb_idarticulo;
     };
@@ -125,7 +127,6 @@ public slots:
     virtual void on_mui_list_toogledConfig(bool check) {
         mui_configurar->setChecked(check);
     };
-    virtual void on_mui_imprimirCatalogo_clicked();
 
 signals:
     void selected(QString);

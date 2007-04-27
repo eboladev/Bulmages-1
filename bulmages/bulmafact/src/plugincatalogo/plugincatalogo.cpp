@@ -19,63 +19,41 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
+#include <QToolButton>
 
-#include <QMenu>
-#include <QAction>
-#include <QObject>
-#include <QMessageBox>
 
-#include <stdio.h>
+#include "catalogoqtoolbutton.h"
 
-#include "plugin.h"
+
+#include "plugincatalogo.h"
 #include "company.h"
 #include "funcaux.h"
 
-
-myplugin::myplugin() {}
-
-
-myplugin::~myplugin() {}
-
-
-void myplugin::elslot() {
-    fprintf(stderr, "Sa ha activado el slot\n");
-    QMessageBox::warning(0,
-                         "Titulo de la ventana",
-                         "Mensaje.",
-                         QMessageBox::Ok,
-                         QMessageBox::Cancel);
-}
-
-
-void myplugin::inicializa(bulmafact *bges) {
-    QMenu *pPluginMenu;
-    /// Miramos si existe un menu Herramientas
-    pPluginMenu = bges->menuBar()->findChild<QMenu *>("Herramientas");
-
-    /// Creamos el men&uacute;.
-    if (!pPluginMenu) {
-        pPluginMenu = new QMenu("&Herramientas", bges->menuBar());
-        pPluginMenu->setObjectName(QString::fromUtf8("Herramientas"));
-    } // end if
-    /// Creamos el men&uacute;.
-
-    QAction *accion = new QAction("&Prueba de plugin", 0);
-    accion->setStatusTip("Muestra statustip");
-    accion->setWhatsThis("Muestra que es esto");
-    connect(accion, SIGNAL(activated()), this, SLOT(elslot()));
-    pPluginMenu->addAction(accion);
-    /// A&ntilde;adimos la nueva opci&oacute;n al men&uacute; principal del programa.
-    bges->menuBar()->insertMenu(bges->menuVentana->menuAction(), pPluginMenu);
-}
-
-
 void entryPoint(bulmafact *bges) {
-    _depura("Estoy dentro del plugin de demo", 0);
-    myplugin *plug = new myplugin();
-    plug->inicializa(bges);
-    /// S&Oacute;LO A MODO DE EJEMPLO: se modifica el t&iacute;tulo de la ventana principal
-    /// del programa para indicar que el plugin se ha cargado.
-    bges->setWindowTitle("Prueba de plugin.");
+    _depura("Estoy dentro del plugin de catalogo", 0);
 }
+
+
+
+int ArticuloList_ArticuloList(ArticuloList *l) {
+       _depura("ArticuloList_ArticuloList", 0);
+//================================
+       CatalogoQToolButton *mui_exporta_efactura2 = new CatalogoQToolButton( l,  l->mui_plugbotones);
+
+       QHBoxLayout *m_hboxLayout1 = l->mui_plugbotones->findChild<QHBoxLayout *>("hboxLayout1");
+       if (!m_hboxLayout1) {
+                m_hboxLayout1 = new QHBoxLayout(l->mui_plugbotones);
+                m_hboxLayout1->setSpacing(5);
+                m_hboxLayout1->setMargin(5);
+                m_hboxLayout1->setObjectName(QString::fromUtf8("hboxLayout1"));
+       } // end if
+       m_hboxLayout1->addWidget(mui_exporta_efactura2);
+//================================
+       _depura("END ArticuloList_ArticuloList", 0);
+       return 0;
+}
+
+
+
+
 

@@ -34,6 +34,7 @@
 #include "busquedafamilia.h"
 #include "busquedatipoarticulo.h"
 #include "funcaux.h"
+#include "plugins.h"
 
 
 /** Constructor de la ventana de listado de articulos
@@ -45,8 +46,12 @@
 */
 ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmode editmodo)
         : Ficha(parent, flag, editmodo), pgimportfiles(comp) {
-    _depura("ArticuloList::INIT_ArticuloList", 0);
+    _depura("ArticuloList::ArticuloList", 0);
     setupUi(this);
+    /// Disparamos los plugins.
+    int res = g_plugins->lanza("ArticuloList_ArticuloList", this);
+    if (res != 0)
+        return;
     m_companyact = comp;
     m_tipoarticulo->setcompany(comp);
     m_familia->setcompany(comp);
@@ -66,7 +71,7 @@ ArticuloList::ArticuloList(company *comp, QWidget *parent, Qt::WFlags flag, edmo
     } // end if
     presenta();
     hideBusqueda();
-    _depura("ArticuloList::END_ArticuloList", 0);
+    _depura("END ArticuloList::ArticuloList", 0);
 }
 
 
@@ -196,90 +201,6 @@ QString ArticuloList::formaQuery() {
 }
 
 
-/** Metodo auxiliar para la creacion del catalogo de articulos
-*/
-QString ArticuloList::detalleArticulos() {
-    _depura("ArticuloList::detalleArticulos", 0);
-    QString texto = "";
-    cursor2 *cur = m_companyact->cargacursor(formaQuery());
-    while (!cur->eof()) {
-        texto += "<blockTable style=\"tabla1\">\n";
-        texto += "<tr>\n";
-        texto += "<td><h1>" + XMLProtect(cur->valor("nomarticulo")) + "</h1>";
-        texto += "<para>" + XMLProtect(cur->valor("obserarticulo")) + "</para></td></tr><tr>\n";
-        QString file = confpr->valor(CONF_DIR_IMG_ARTICLES) + XMLProtect(cur->valor("codigocompletoarticulo")) + ".jpg";
-        QFile f(file);
-        if (f.exists()) {
-            texto += "<td><!-- illustration x=\"0\" y=\"0\" height=\"5cm\" -->\n"
-                     "<image file=\"" + confpr->valor(CONF_DIR_IMG_ARTICLES) +
-                     XMLProtect(cur->valor("codigocompletoarticulo")) +
-                     ".jpg\" x=\"0\" y=\"0\" height=\"5cm\"/>\n"
-                     "<!-- /illustration --></td>\n";
-        } else {
-            texto += "<td></td>\n";
-        }
-        texto += "</tr>\n";
-        texto += "</blockTable>";
-        cur->siguienteregistro();
-    } // end while
-    delete cur;
-    _depura("END ArticuloList::detalleArticulos()\n", 0);
-    return texto;
-}
-
-/** Impresion del catalogo de articulos
-    utiliza la plantilla articulos1.rml para crear un catalogo de articulos.
-    crea una copia de artiulos1.rml en el directorio ~/.bulmages
-    hace la sustitucion y ampliacion en dicho archivo.
-    Al final llama al metodo de bgtrml2pdf.py para generar un PDF 
-    y lo muestra.
-*/
-void ArticuloList::on_mui_imprimirCatalogo_clicked() {
-    _depura("ArticuloList::on_mui_imprimirCatalogo_clicked()\n", 0);
-    QString archivo = confpr->valor(CONF_DIR_OPENREPORTS) + "articulos1.rml";
-    QString archivod = confpr->valor(CONF_DIR_USER) + "articulos.rml";
-    QString archivod1 = confpr->valor(CONF_DIR_USER) + "articulos1.rml";
-    QString archivologo = confpr->valor(CONF_DIR_OPENREPORTS) + "logo.jpg";
-    /// Copiamos el archivo.
-#ifdef WINDOWS
-
-    archivo = "copy " + archivo + " " + archivod;
-#else
-
-    archivo = "cp " + archivo + " " + archivod;
-#endif
-
-    system (archivo.toAscii().constData());
-    /// Copiamos el logo.
-#ifdef WINDOWS
-
-    archivologo = "copy " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#else
-
-    archivologo = "cp " + archivologo + " " + confpr->valor(CONF_DIR_USER) + "logo.jpg";
-#endif
-
-    system(archivologo.toAscii().constData());
-    QFile file;
-    file.setFileName(archivod);
-    file.open(QIODevice::ReadOnly);
-    QTextStream stream(&file);
-    QString buff = stream.readAll();
-    file.close();
-    QString texto;
-    /// Linea de totales del presupuesto.
-    buff.replace("[detallearticulos]", detalleArticulos());
-    if (file.open(QIODevice::WriteOnly)) {
-        QTextStream stream(&file);
-        stream << buff;
-        file.close();
-    } // end if
-
-    QString iconv = "iconv -tUTF8 -c " + archivod + " > " + archivod1;
-    system(iconv.toAscii().constData());
-    invocaPDF("articulos1");
-    _depura("END ArticuloList::on_mui_imprimirCatalogo_clicked", 0);
-}
 
 
 /** La impresion del listado esta completamente delegada en SubForm3.
